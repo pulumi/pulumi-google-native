@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:binaryauthorization/v1beta1:AttestorIamPolicy")]
-    public partial class AttestorIamPolicy : Pulumi.CustomResource
+    public partial class AttestorIamPolicy : global::Pulumi.CustomResource
     {
         [Output("attestorId")]
         public Output<string> AttestorId { get; private set; } = null!;
@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         }
     }
 
-    public sealed class AttestorIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AttestorIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("attestorId", required: true)]
         public Input<string> AttestorId { get; set; } = null!;
@@ -124,5 +124,6 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         public AttestorIamPolicyArgs()
         {
         }
+        public static new AttestorIamPolicyArgs Empty => new AttestorIamPolicyArgs();
     }
 }

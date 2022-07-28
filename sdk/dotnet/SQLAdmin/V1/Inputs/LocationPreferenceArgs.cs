@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// Preferred location. This specifies where a Cloud SQL instance is located. Note that if the preferred location is not available, the instance will be located as close as possible within the region. Only one location may be specified.
     /// </summary>
-    public sealed class LocationPreferenceArgs : Pulumi.ResourceArgs
+    public sealed class LocationPreferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The App Engine application to follow, it must be in the same region as the Cloud SQL instance. WARNING: Changing this might restart the instance.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public LocationPreferenceArgs()
         {
         }
+        public static new LocationPreferenceArgs Empty => new LocationPreferenceArgs();
     }
 }

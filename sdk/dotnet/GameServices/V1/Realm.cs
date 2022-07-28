@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
     /// Creates a new realm in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:gameservices/v1:Realm")]
-    public partial class Realm : Pulumi.CustomResource
+    public partial class Realm : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The creation time.
@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
         }
     }
 
-    public sealed class RealmArgs : Pulumi.ResourceArgs
+    public sealed class RealmArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human readable description of the realm.
@@ -171,5 +171,6 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public RealmArgs()
         {
         }
+        public static new RealmArgs Empty => new RealmArgs();
     }
 }

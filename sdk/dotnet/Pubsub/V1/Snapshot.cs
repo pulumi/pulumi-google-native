@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:pubsub/v1:Snapshot")]
-    public partial class Snapshot : Pulumi.CustomResource
+    public partial class Snapshot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The snapshot is guaranteed to exist up until this time. A newly-created snapshot expires no later than 7 days from the time of its creation. Its exact lifetime is determined at creation by the existing backlog in the source subscription. Specifically, the lifetime of the snapshot is `7 days - (age of oldest unacked message in the subscription)`. For example, consider a subscription whose oldest unacked message is 3 days old. If a snapshot is created from this subscription, the snapshot -- which will always capture this 3-day-old backlog as long as the snapshot exists -- will expire in 4 days. The service will refuse to create a snapshot that would expire in less than 1 hour after creation.
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         }
     }
 
-    public sealed class SnapshotArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -123,5 +123,6 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public SnapshotArgs()
         {
         }
+        public static new SnapshotArgs Empty => new SnapshotArgs();
     }
 }

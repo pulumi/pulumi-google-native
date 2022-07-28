@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1
     }
 
 
-    public sealed class GetSecretArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1
         public GetSecretArgs()
         {
         }
+        public static new GetSecretArgs Empty => new GetSecretArgs();
     }
 
-    public sealed class GetSecretInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1
         public GetSecretInvokeArgs()
         {
         }
+        public static new GetSecretInvokeArgs Empty => new GetSecretInvokeArgs();
     }
 
 

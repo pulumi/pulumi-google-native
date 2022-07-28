@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Represents a single Zypper package repository. This repository is added to a repo file that is stored at `/etc/zypp/repos.d/google_osconfig.repo`.
     /// </summary>
-    public sealed class ZypperRepositoryArgs : Pulumi.ResourceArgs
+    public sealed class ZypperRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location of the repository directory.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public ZypperRepositoryArgs()
         {
         }
+        public static new ZypperRepositoryArgs Empty => new ZypperRepositoryArgs();
     }
 }

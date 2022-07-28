@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigquery/v2:Table")]
-    public partial class Table : Pulumi.CustomResource
+    public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Clone definition.
@@ -304,7 +304,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         }
     }
 
-    public sealed class TableArgs : Pulumi.ResourceArgs
+    public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Beta] Clustering specification for the table. Must be specified with partitioning, data in the table will be first partitioned and subsequently clustered.
@@ -417,5 +417,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public TableArgs()
         {
         }
+        public static new TableArgs Empty => new TableArgs();
     }
 }

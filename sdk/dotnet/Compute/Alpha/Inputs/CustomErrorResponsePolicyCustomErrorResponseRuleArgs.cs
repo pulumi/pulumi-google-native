@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Specifies the mapping between the response code that will be returned along with the custom error content and the response code returned by the backend service.
     /// </summary>
-    public sealed class CustomErrorResponsePolicyCustomErrorResponseRuleArgs : Pulumi.ResourceArgs
+    public sealed class CustomErrorResponsePolicyCustomErrorResponseRuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("matchResponseCodes")]
         private InputList<string>? _matchResponseCodes;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public CustomErrorResponsePolicyCustomErrorResponseRuleArgs()
         {
         }
+        public static new CustomErrorResponsePolicyCustomErrorResponseRuleArgs Empty => new CustomErrorResponsePolicyCustomErrorResponseRuleArgs();
     }
 }

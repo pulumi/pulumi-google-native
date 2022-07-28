@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     /// Creates a new DICOM store within the parent dataset.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1beta1:DicomStore")]
-    public partial class DicomStore : Pulumi.CustomResource
+    public partial class DicomStore : global::Pulumi.CustomResource
     {
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         }
     }
 
-    public sealed class DicomStoreArgs : Pulumi.ResourceArgs
+    public sealed class DicomStoreArgs : global::Pulumi.ResourceArgs
     {
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -159,5 +159,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public DicomStoreArgs()
         {
         }
+        public static new DicomStoreArgs Empty => new DicomStoreArgs();
     }
 }

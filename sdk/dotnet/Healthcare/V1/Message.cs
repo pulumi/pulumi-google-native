@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     /// Parses and stores an HL7v2 message. This method triggers an asynchronous notification to any Pub/Sub topic configured in Hl7V2Store.Hl7V2NotificationConfig, if the filtering matches the message. If an MLLP adapter is configured to listen to a Pub/Sub topic, the adapter transmits the message when a notification is received.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1:Message")]
-    public partial class Message : Pulumi.CustomResource
+    public partial class Message : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The datetime when the message was created. Set by the server.
@@ -137,7 +137,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         }
     }
 
-    public sealed class MessageArgs : Pulumi.ResourceArgs
+    public sealed class MessageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Raw message bytes.
@@ -214,5 +214,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public MessageArgs()
         {
         }
+        public static new MessageArgs Empty => new MessageArgs();
     }
 }

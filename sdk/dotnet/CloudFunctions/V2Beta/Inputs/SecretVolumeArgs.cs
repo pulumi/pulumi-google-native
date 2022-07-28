@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Inputs
     /// <summary>
     /// Configuration for a secret volume. It has the information necessary to fetch the secret value from secret manager and make it available as files mounted at the requested paths within the application container.
     /// </summary>
-    public sealed class SecretVolumeArgs : Pulumi.ResourceArgs
+    public sealed class SecretVolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Beta.Inputs
         public SecretVolumeArgs()
         {
         }
+        public static new SecretVolumeArgs Empty => new SecretVolumeArgs();
     }
 }

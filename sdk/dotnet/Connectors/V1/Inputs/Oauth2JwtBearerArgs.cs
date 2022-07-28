@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
     /// <summary>
     /// Parameters to support JSON Web Token (JWT) Profile for Oauth 2.0 Authorization Grant based authentication. See https://tools.ietf.org/html/rfc7523 for more details.
     /// </summary>
-    public sealed class Oauth2JwtBearerArgs : Pulumi.ResourceArgs
+    public sealed class Oauth2JwtBearerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/*/secrets/*/versions/*`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public Oauth2JwtBearerArgs()
         {
         }
+        public static new Oauth2JwtBearerArgs Empty => new Oauth2JwtBearerArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
     /// <summary>
     /// Specification of how client requests are aborted as part of fault injection before being sent to a destination.
     /// </summary>
-    public sealed class HttpRouteFaultInjectionPolicyAbortArgs : Pulumi.ResourceArgs
+    public sealed class HttpRouteFaultInjectionPolicyAbortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
         public HttpRouteFaultInjectionPolicyAbortArgs()
         {
         }
+        public static new HttpRouteFaultInjectionPolicyAbortArgs Empty => new HttpRouteFaultInjectionPolicyAbortArgs();
     }
 }

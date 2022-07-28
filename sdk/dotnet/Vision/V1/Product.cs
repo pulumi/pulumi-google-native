@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Vision.V1
     /// Creates and returns a new product resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing or longer than 4096 characters. * Returns INVALID_ARGUMENT if description is longer than 4096 characters. * Returns INVALID_ARGUMENT if product_category is missing or invalid.
     /// </summary>
     [GoogleNativeResourceType("google-native:vision/v1:Product")]
-    public partial class Product : Pulumi.CustomResource
+    public partial class Product : global::Pulumi.CustomResource
     {
         /// <summary>
         /// User-provided metadata to be stored with this product. Must be at most 4096 characters long.
@@ -105,7 +105,7 @@ namespace Pulumi.GoogleNative.Vision.V1
         }
     }
 
-    public sealed class ProductArgs : Pulumi.ResourceArgs
+    public sealed class ProductArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-provided metadata to be stored with this product. Must be at most 4096 characters long.
@@ -158,5 +158,6 @@ namespace Pulumi.GoogleNative.Vision.V1
         public ProductArgs()
         {
         }
+        public static new ProductArgs Empty => new ProductArgs();
     }
 }

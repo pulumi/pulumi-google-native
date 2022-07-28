@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
     /// <summary>
     /// Parameters to provide to the template being launched.
     /// </summary>
-    public sealed class GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The runtime environment for the job.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
         public GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs()
         {
         }
+        public static new GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs Empty => new GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs();
     }
 }

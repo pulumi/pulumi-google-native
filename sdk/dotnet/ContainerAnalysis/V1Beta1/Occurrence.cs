@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:containeranalysis/v1beta1:Occurrence")]
-    public partial class Occurrence : Pulumi.CustomResource
+    public partial class Occurrence : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Describes an attestation of an artifact.
@@ -186,7 +186,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         }
     }
 
-    public sealed class OccurrenceArgs : Pulumi.ResourceArgs
+    public sealed class OccurrenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes an attestation of an artifact.
@@ -290,5 +290,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public OccurrenceArgs()
         {
         }
+        public static new OccurrenceArgs Empty => new OccurrenceArgs();
     }
 }

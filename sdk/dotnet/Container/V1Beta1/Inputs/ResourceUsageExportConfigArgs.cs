@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration for exporting cluster resource usages.
     /// </summary>
-    public sealed class ResourceUsageExportConfigArgs : Pulumi.ResourceArgs
+    public sealed class ResourceUsageExportConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration to use BigQuery as usage export destination.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public ResourceUsageExportConfigArgs()
         {
         }
+        public static new ResourceUsageExportConfigArgs Empty => new ResourceUsageExportConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
     /// <summary>
     /// Contains information of the customer's network configurations.
     /// </summary>
-    public sealed class ConsumerArgs : Pulumi.ResourceArgs
+    public sealed class ConsumerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The subnetwork of the customer project from which an IP address is reserved and used as the Dataproc Metastore service's endpoint. It is accessible to hosts in the subnet and to all hosts in a subnet in the same region and same network. There must be at least one IP address available in the subnet's primary range. The subnet is specified in the following form:`projects/{project_number}/regions/{region_id}/subnetworks/{subnetwork_id}
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
         public ConsumerArgs()
         {
         }
+        public static new ConsumerArgs Empty => new ConsumerArgs();
     }
 }

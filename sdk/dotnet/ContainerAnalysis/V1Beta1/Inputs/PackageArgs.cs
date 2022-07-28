@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Package represents a particular package version.
     /// </summary>
-    public sealed class PackageArgs : Pulumi.ResourceArgs
+    public sealed class PackageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public PackageArgs()
         {
         }
+        public static new PackageArgs Empty => new PackageArgs();
     }
 }

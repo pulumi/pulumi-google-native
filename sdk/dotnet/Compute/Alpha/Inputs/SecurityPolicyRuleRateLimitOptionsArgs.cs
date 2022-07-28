@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class SecurityPolicyRuleRateLimitOptionsArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleRateLimitOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
@@ -69,5 +69,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SecurityPolicyRuleRateLimitOptionsArgs()
         {
         }
+        public static new SecurityPolicyRuleRateLimitOptionsArgs Empty => new SecurityPolicyRuleRateLimitOptionsArgs();
     }
 }

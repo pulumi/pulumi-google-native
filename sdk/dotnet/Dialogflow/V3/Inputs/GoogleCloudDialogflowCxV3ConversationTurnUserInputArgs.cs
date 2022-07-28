@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// The input from the human user.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether sentiment analysis is enabled.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs Empty => new GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs();
     }
 }

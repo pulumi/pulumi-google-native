@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     /// Creates a conversation profile in the specified project. ConversationProfile.CreateTime and ConversationProfile.UpdateTime aren't populated in the response. You can retrieve them via GetConversationProfile API.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2beta1:ConversationProfile")]
-    public partial class ConversationProfile : Pulumi.CustomResource
+    public partial class ConversationProfile : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configuration for an automated agent to use with this profile.
@@ -153,7 +153,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         }
     }
 
-    public sealed class ConversationProfileArgs : Pulumi.ResourceArgs
+    public sealed class ConversationProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration for an automated agent to use with this profile.
@@ -236,5 +236,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public ConversationProfileArgs()
         {
         }
+        public static new ConversationProfileArgs Empty => new ConversationProfileArgs();
     }
 }

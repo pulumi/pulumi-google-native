@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Testing.V1
     }
 
 
-    public sealed class GetTestMatrixArgs : Pulumi.InvokeArgs
+    public sealed class GetTestMatrixArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Testing.V1
         public GetTestMatrixArgs()
         {
         }
+        public static new GetTestMatrixArgs Empty => new GetTestMatrixArgs();
     }
 
-    public sealed class GetTestMatrixInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTestMatrixInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Testing.V1
         public GetTestMatrixInvokeArgs()
         {
         }
+        public static new GetTestMatrixInvokeArgs Empty => new GetTestMatrixInvokeArgs();
     }
 
 

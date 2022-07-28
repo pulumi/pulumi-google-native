@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
 
-    public sealed class GetBackupRunArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupRunArgs : global::Pulumi.InvokeArgs
     {
         [Input("id", required: true)]
         public string Id { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public GetBackupRunArgs()
         {
         }
+        public static new GetBackupRunArgs Empty => new GetBackupRunArgs();
     }
 
-    public sealed class GetBackupRunInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupRunInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("id", required: true)]
         public Input<string> Id { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public GetBackupRunInvokeArgs()
         {
         }
+        public static new GetBackupRunInvokeArgs Empty => new GetBackupRunInvokeArgs();
     }
 
 

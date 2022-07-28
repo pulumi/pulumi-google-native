@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1beta1:DatasetFhirStoreIamPolicy")]
-    public partial class DatasetFhirStoreIamPolicy : Pulumi.CustomResource
+    public partial class DatasetFhirStoreIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         }
     }
 
-    public sealed class DatasetFhirStoreIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class DatasetFhirStoreIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -162,5 +162,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public DatasetFhirStoreIamPolicyArgs()
         {
         }
+        public static new DatasetFhirStoreIamPolicyArgs Empty => new DatasetFhirStoreIamPolicyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// GitHubEventsConfig describes the configuration of a trigger that creates a build whenever a GitHub event is received.
     /// </summary>
-    public sealed class GitHubEventsConfigArgs : Pulumi.ResourceArgs
+    public sealed class GitHubEventsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The resource name of the github enterprise config that should be applied to this installation. For example: "projects/{$project_id}/githubEnterpriseConfigs/{$config_id}"
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public GitHubEventsConfigArgs()
         {
         }
+        public static new GitHubEventsConfigArgs Empty => new GitHubEventsConfigArgs();
     }
 }

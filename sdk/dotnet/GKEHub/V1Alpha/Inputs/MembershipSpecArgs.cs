@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
     /// <summary>
     /// **Workload Certificate**: The membership-specific input for WorkloadCertificate feature.
     /// </summary>
-    public sealed class MembershipSpecArgs : Pulumi.ResourceArgs
+    public sealed class MembershipSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies workload certificate management.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         public MembershipSpecArgs()
         {
         }
+        public static new MembershipSpecArgs Empty => new MembershipSpecArgs();
     }
 }

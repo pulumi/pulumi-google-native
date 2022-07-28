@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Inputs
     /// <summary>
     /// An initial split point for a newly created table.
     /// </summary>
-    public sealed class SplitArgs : Pulumi.ResourceArgs
+    public sealed class SplitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Row key to use as an initial tablet boundary.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Inputs
         public SplitArgs()
         {
         }
+        public static new SplitArgs Empty => new SplitArgs();
     }
 }

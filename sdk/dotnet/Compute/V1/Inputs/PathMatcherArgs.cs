@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// A matcher for the path portion of the URL. The BackendService from the longest-matched rule will serve the URL. If no rule was matched, the default service is used.
     /// </summary>
-    public sealed class PathMatcherArgs : Pulumi.ResourceArgs
+    public sealed class PathMatcherArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// defaultRouteAction takes effect when none of the pathRules or routeRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within a path matcher's defaultRouteAction.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public PathMatcherArgs()
         {
         }
+        public static new PathMatcherArgs Empty => new PathMatcherArgs();
     }
 }

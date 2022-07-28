@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     /// <summary>
     /// The configuration of the stream source.
     /// </summary>
-    public sealed class SourceConfigArgs : Pulumi.ResourceArgs
+    public sealed class SourceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// MySQL data source configuration.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public SourceConfigArgs()
         {
         }
+        public static new SourceConfigArgs Empty => new SourceConfigArgs();
     }
 }

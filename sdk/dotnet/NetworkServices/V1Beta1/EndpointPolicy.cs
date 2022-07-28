@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
     /// Creates a new EndpointPolicy in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkservices/v1beta1:EndpointPolicy")]
-    public partial class EndpointPolicy : Pulumi.CustomResource
+    public partial class EndpointPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint.
@@ -142,7 +142,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         }
     }
 
-    public sealed class EndpointPolicyArgs : Pulumi.ResourceArgs
+    public sealed class EndpointPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. This field specifies the URL of AuthorizationPolicy resource that applies authorization policies to the inbound traffic at the matched endpoints. Refer to Authorization. If this field is not specified, authorization is disabled(no authz checks) for this endpoint.
@@ -219,5 +219,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public EndpointPolicyArgs()
         {
         }
+        public static new EndpointPolicyArgs Empty => new EndpointPolicyArgs();
     }
 }

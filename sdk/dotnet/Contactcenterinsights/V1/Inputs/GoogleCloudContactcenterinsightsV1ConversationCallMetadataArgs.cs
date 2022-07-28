@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
     /// <summary>
     /// Call-specific metadata.
     /// </summary>
-    public sealed class GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The audio channel that contains the agent.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
         public GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs()
         {
         }
+        public static new GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs Empty => new GoogleCloudContactcenterinsightsV1ConversationCallMetadataArgs();
     }
 }

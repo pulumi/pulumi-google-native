@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// Represents configurations for a test case.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3TestConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3TestConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Flow name to start the test case with. Format: `projects//locations//agents//flows/`. Only one of `flow` and `page` should be set to indicate the starting point of the test case. If both are set, `page` takes precedence over `flow`. If neither is set, the test case will start with start page on the default start flow.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3TestConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3TestConfigArgs Empty => new GoogleCloudDialogflowCxV3TestConfigArgs();
     }
 }

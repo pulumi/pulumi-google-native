@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Specification that applies to a routine. Valid only for entries with the `ROUTINE` type.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1RoutineSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1RoutineSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Fields specific for BigQuery routines.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1RoutineSpecArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1RoutineSpecArgs Empty => new GoogleCloudDatacatalogV1RoutineSpecArgs();
     }
 }

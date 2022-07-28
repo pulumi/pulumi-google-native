@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:OrganizationEnvironmentIamPolicy")]
-    public partial class OrganizationEnvironmentIamPolicy : Pulumi.CustomResource
+    public partial class OrganizationEnvironmentIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class OrganizationEnvironmentIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationEnvironmentIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.GoogleIamV1AuditConfigArgs>? _auditConfigs;
@@ -148,5 +148,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public OrganizationEnvironmentIamPolicyArgs()
         {
         }
+        public static new OrganizationEnvironmentIamPolicyArgs Empty => new OrganizationEnvironmentIamPolicyArgs();
     }
 }

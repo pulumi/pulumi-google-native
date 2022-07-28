@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1.Inputs
     /// <summary>
     /// Confirguration of PubSubEventWriter.
     /// </summary>
-    public sealed class EventPublishConfigArgs : Pulumi.ResourceArgs
+    public sealed class EventPublishConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Option to enable Event Publishing.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1.Inputs
         public EventPublishConfigArgs()
         {
         }
+        public static new EventPublishConfigArgs Empty => new EventPublishConfigArgs();
     }
 }

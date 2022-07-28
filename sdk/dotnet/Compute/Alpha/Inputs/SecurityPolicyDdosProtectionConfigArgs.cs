@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class SecurityPolicyDdosProtectionConfigArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyDdosProtectionConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("ddosProtection")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.SecurityPolicyDdosProtectionConfigDdosProtection>? DdosProtection { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SecurityPolicyDdosProtectionConfigArgs()
         {
         }
+        public static new SecurityPolicyDdosProtectionConfigArgs Empty => new SecurityPolicyDdosProtectionConfigArgs();
     }
 }

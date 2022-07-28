@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Creates a new ArchiveDeployment.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:ArchiveDeployment")]
-    public partial class ArchiveDeployment : Pulumi.CustomResource
+    public partial class ArchiveDeployment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time at which the Archive Deployment was created in milliseconds since the epoch.
@@ -105,7 +105,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class ArchiveDeploymentArgs : Pulumi.ResourceArgs
+    public sealed class ArchiveDeploymentArgs : global::Pulumi.ResourceArgs
     {
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
@@ -140,5 +140,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public ArchiveDeploymentArgs()
         {
         }
+        public static new ArchiveDeploymentArgs Empty => new ArchiveDeploymentArgs();
     }
 }

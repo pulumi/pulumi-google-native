@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
     }
 
 
-    public sealed class GetFederationArgs : Pulumi.InvokeArgs
+    public sealed class GetFederationArgs : global::Pulumi.InvokeArgs
     {
         [Input("federationId", required: true)]
         public string FederationId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public GetFederationArgs()
         {
         }
+        public static new GetFederationArgs Empty => new GetFederationArgs();
     }
 
-    public sealed class GetFederationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFederationInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("federationId", required: true)]
         public Input<string> FederationId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public GetFederationInvokeArgs()
         {
         }
+        public static new GetFederationInvokeArgs Empty => new GetFederationInvokeArgs();
     }
 
 

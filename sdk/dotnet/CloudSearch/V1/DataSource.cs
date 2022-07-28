@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
     /// Creates a datasource. **Note:** This API requires an admin account to execute.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudsearch/v1:DataSource")]
-    public partial class DataSource : Pulumi.CustomResource
+    public partial class DataSource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data.
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         }
     }
 
-    public sealed class DataSourceArgs : Pulumi.ResourceArgs
+    public sealed class DataSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, sets the datasource to read-only mode. In read-only mode, the Indexing API rejects any requests to index or delete items in this source. Enabling read-only mode does not stop the processing of previously accepted data.
@@ -189,5 +189,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public DataSourceArgs()
         {
         }
+        public static new DataSourceArgs Empty => new DataSourceArgs();
     }
 }

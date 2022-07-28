@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Datapipelines.V1
     }
 
 
-    public sealed class GetPipelineArgs : Pulumi.InvokeArgs
+    public sealed class GetPipelineArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Datapipelines.V1
         public GetPipelineArgs()
         {
         }
+        public static new GetPipelineArgs Empty => new GetPipelineArgs();
     }
 
-    public sealed class GetPipelineInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPipelineInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Datapipelines.V1
         public GetPipelineInvokeArgs()
         {
         }
+        public static new GetPipelineInvokeArgs Empty => new GetPipelineInvokeArgs();
     }
 
 

@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:datamigration/v1beta1:MigrationJobIamPolicy")]
-    public partial class MigrationJobIamPolicy : Pulumi.CustomResource
+    public partial class MigrationJobIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         }
     }
 
-    public sealed class MigrationJobIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class MigrationJobIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         public MigrationJobIamPolicyArgs()
         {
         }
+        public static new MigrationJobIamPolicyArgs Empty => new MigrationJobIamPolicyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// An entity in a dataset is a field or set of fields that correspond to a single person. For example, in medical records the `EntityId` might be a patient identifier, or for financial records it might be an account identifier. This message is used when generalizations or analysis must take into account that multiple rows correspond to the same entity.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2EntityIdArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2EntityIdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Composite key indicating which field contains the entity identifier.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2EntityIdArgs()
         {
         }
+        public static new GooglePrivacyDlpV2EntityIdArgs Empty => new GooglePrivacyDlpV2EntityIdArgs();
     }
 }

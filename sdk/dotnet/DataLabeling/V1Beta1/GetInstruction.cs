@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     }
 
 
-    public sealed class GetInstructionArgs : Pulumi.InvokeArgs
+    public sealed class GetInstructionArgs : global::Pulumi.InvokeArgs
     {
         [Input("instructionId", required: true)]
         public string InstructionId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public GetInstructionArgs()
         {
         }
+        public static new GetInstructionArgs Empty => new GetInstructionArgs();
     }
 
-    public sealed class GetInstructionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstructionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instructionId", required: true)]
         public Input<string> InstructionId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public GetInstructionInvokeArgs()
         {
         }
+        public static new GetInstructionInvokeArgs Empty => new GetInstructionInvokeArgs();
     }
 
 

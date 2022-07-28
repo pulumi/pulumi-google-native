@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datalabeling/v1beta1:Instruction")]
-    public partial class Instruction : Pulumi.CustomResource
+    public partial class Instruction : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The names of any related resources that are blocking changes to the instruction.
@@ -120,7 +120,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         }
     }
 
-    public sealed class InstructionArgs : Pulumi.ResourceArgs
+    public sealed class InstructionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Deprecated: this instruction format is not supported any more. Instruction from a CSV file, such as for classification task. The CSV file should have exact two columns, in the following format: * The first column is labeled data, such as an image reference, text. * The second column is comma separated labels associated with data.
@@ -158,5 +158,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public InstructionArgs()
         {
         }
+        public static new InstructionArgs Empty => new InstructionArgs();
     }
 }

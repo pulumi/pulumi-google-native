@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     }
 
 
-    public sealed class GetRegionJobIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionJobIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("jobId", required: true)]
         public string JobId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public GetRegionJobIamPolicyArgs()
         {
         }
+        public static new GetRegionJobIamPolicyArgs Empty => new GetRegionJobIamPolicyArgs();
     }
 
-    public sealed class GetRegionJobIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionJobIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("jobId", required: true)]
         public Input<string> JobId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public GetRegionJobIamPolicyInvokeArgs()
         {
         }
+        public static new GetRegionJobIamPolicyInvokeArgs Empty => new GetRegionJobIamPolicyInvokeArgs();
     }
 
 

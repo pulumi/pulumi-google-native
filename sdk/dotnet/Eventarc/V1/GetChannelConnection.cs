@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
     }
 
 
-    public sealed class GetChannelConnectionArgs : Pulumi.InvokeArgs
+    public sealed class GetChannelConnectionArgs : global::Pulumi.InvokeArgs
     {
         [Input("channelConnectionId", required: true)]
         public string ChannelConnectionId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public GetChannelConnectionArgs()
         {
         }
+        public static new GetChannelConnectionArgs Empty => new GetChannelConnectionArgs();
     }
 
-    public sealed class GetChannelConnectionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetChannelConnectionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("channelConnectionId", required: true)]
         public Input<string> ChannelConnectionId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public GetChannelConnectionInvokeArgs()
         {
         }
+        public static new GetChannelConnectionInvokeArgs Empty => new GetChannelConnectionInvokeArgs();
     }
 
 

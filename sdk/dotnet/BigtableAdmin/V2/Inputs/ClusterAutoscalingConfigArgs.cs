@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Inputs
     /// <summary>
     /// Autoscaling config for a cluster.
     /// </summary>
-    public sealed class ClusterAutoscalingConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAutoscalingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Autoscaling limits for this cluster.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Inputs
         public ClusterAutoscalingConfigArgs()
         {
         }
+        public static new ClusterAutoscalingConfigArgs Empty => new ClusterAutoscalingConfigArgs();
     }
 }

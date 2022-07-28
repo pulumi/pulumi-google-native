@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
     /// <summary>
     /// The environment values to set at runtime.
     /// </summary>
-    public sealed class GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalExperiments")]
         private InputList<string>? _additionalExperiments;
@@ -126,5 +126,6 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
         public GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs()
         {
         }
+        public static new GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs Empty => new GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs();
     }
 }

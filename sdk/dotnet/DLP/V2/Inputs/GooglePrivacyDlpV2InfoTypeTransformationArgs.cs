@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// A transformation to apply to text that is identified as a specific info_type.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2InfoTypeTransformationArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2InfoTypeTransformationArgs : global::Pulumi.ResourceArgs
     {
         [Input("infoTypes")]
         private InputList<Inputs.GooglePrivacyDlpV2InfoTypeArgs>? _infoTypes;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2InfoTypeTransformationArgs()
         {
         }
+        public static new GooglePrivacyDlpV2InfoTypeTransformationArgs Empty => new GooglePrivacyDlpV2InfoTypeTransformationArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class ClusteringArgs : Pulumi.ResourceArgs
+    public sealed class ClusteringArgs : global::Pulumi.ResourceArgs
     {
         [Input("fields")]
         private InputList<string>? _fields;
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public ClusteringArgs()
         {
         }
+        public static new ClusteringArgs Empty => new ClusteringArgs();
     }
 }

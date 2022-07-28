@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
 {
 
-    public sealed class StepDimensionValueEntryArgs : Pulumi.ResourceArgs
+    public sealed class StepDimensionValueEntryArgs : global::Pulumi.ResourceArgs
     {
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public StepDimensionValueEntryArgs()
         {
         }
+        public static new StepDimensionValueEntryArgs Empty => new StepDimensionValueEntryArgs();
     }
 }

@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Storage.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:storage/v1:ObjectIamPolicy")]
-    public partial class ObjectIamPolicy : Pulumi.CustomResource
+    public partial class ObjectIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An association between a role, which comes with a set of permissions, and members who may assume that role.
@@ -113,7 +113,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         }
     }
 
-    public sealed class ObjectIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ObjectIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("bindings")]
         private InputList<Inputs.ObjectIamPolicyBindingsItemArgs>? _bindings;
@@ -172,5 +172,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         public ObjectIamPolicyArgs()
         {
         }
+        public static new ObjectIamPolicyArgs Empty => new ObjectIamPolicyArgs();
     }
 }

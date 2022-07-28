@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
     /// <summary>
     /// Filtering criteria to select VMs based on OS details.
     /// </summary>
-    public sealed class OSPolicyOSFilterArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyOSFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This should match OS short name emitted by the OS inventory agent. An empty value matches any OS.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public OSPolicyOSFilterArgs()
         {
         }
+        public static new OSPolicyOSFilterArgs Empty => new OSPolicyOSFilterArgs();
     }
 }

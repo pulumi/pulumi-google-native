@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
     }
 
 
-    public sealed class GetOccurrenceArgs : Pulumi.InvokeArgs
+    public sealed class GetOccurrenceArgs : global::Pulumi.InvokeArgs
     {
         [Input("occurrenceId", required: true)]
         public string OccurrenceId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         public GetOccurrenceArgs()
         {
         }
+        public static new GetOccurrenceArgs Empty => new GetOccurrenceArgs();
     }
 
-    public sealed class GetOccurrenceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOccurrenceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("occurrenceId", required: true)]
         public Input<string> OccurrenceId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1
         public GetOccurrenceInvokeArgs()
         {
         }
+        public static new GetOccurrenceInvokeArgs Empty => new GetOccurrenceInvokeArgs();
     }
 
 

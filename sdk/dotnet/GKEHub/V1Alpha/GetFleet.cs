@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
     }
 
 
-    public sealed class GetFleetArgs : Pulumi.InvokeArgs
+    public sealed class GetFleetArgs : global::Pulumi.InvokeArgs
     {
         [Input("fleetId", required: true)]
         public string FleetId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public GetFleetArgs()
         {
         }
+        public static new GetFleetArgs Empty => new GetFleetArgs();
     }
 
-    public sealed class GetFleetInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFleetInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("fleetId", required: true)]
         public Input<string> FleetId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public GetFleetInvokeArgs()
         {
         }
+        public static new GetFleetInvokeArgs Empty => new GetFleetInvokeArgs();
     }
 
 

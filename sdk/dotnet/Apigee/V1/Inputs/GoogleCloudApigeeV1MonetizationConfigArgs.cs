@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Configuration for the Monetization add-on.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1MonetizationConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1MonetizationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Flag that specifies whether the Monetization add-on is enabled.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1MonetizationConfigArgs()
         {
         }
+        public static new GoogleCloudApigeeV1MonetizationConfigArgs Empty => new GoogleCloudApigeeV1MonetizationConfigArgs();
     }
 }

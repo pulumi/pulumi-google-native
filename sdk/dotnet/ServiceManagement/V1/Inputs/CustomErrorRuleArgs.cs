@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// A custom error rule.
     /// </summary>
-    public sealed class CustomErrorRuleArgs : Pulumi.ResourceArgs
+    public sealed class CustomErrorRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Mark this message as possible payload in error response. Otherwise, objects of this type will be filtered when they appear in error payload.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public CustomErrorRuleArgs()
         {
         }
+        public static new CustomErrorRuleArgs Empty => new CustomErrorRuleArgs();
     }
 }

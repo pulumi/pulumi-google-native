@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration options for private clusters.
     /// </summary>
-    public sealed class PrivateClusterConfigArgs : Pulumi.ResourceArgs
+    public sealed class PrivateClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the master's internal IP address is used as the cluster endpoint.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public PrivateClusterConfigArgs()
         {
         }
+        public static new PrivateClusterConfigArgs Empty => new PrivateClusterConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
     /// Creates a new topic.
     /// </summary>
     [GoogleNativeResourceType("google-native:pubsublite/v1:Topic")]
-    public partial class Topic : Pulumi.CustomResource
+    public partial class Topic : global::Pulumi.CustomResource
     {
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         }
     }
 
-    public sealed class TopicArgs : Pulumi.ResourceArgs
+    public sealed class TopicArgs : global::Pulumi.ResourceArgs
     {
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -141,5 +141,6 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         public TopicArgs()
         {
         }
+        public static new TopicArgs Empty => new TopicArgs();
     }
 }

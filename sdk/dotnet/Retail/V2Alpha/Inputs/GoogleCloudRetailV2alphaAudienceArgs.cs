@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
     /// <summary>
     /// An intended audience of the Product for whom it's sold.
     /// </summary>
-    public sealed class GoogleCloudRetailV2alphaAudienceArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2alphaAudienceArgs : global::Pulumi.ResourceArgs
     {
         [Input("ageGroups")]
         private InputList<string>? _ageGroups;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
         public GoogleCloudRetailV2alphaAudienceArgs()
         {
         }
+        public static new GoogleCloudRetailV2alphaAudienceArgs Empty => new GoogleCloudRetailV2alphaAudienceArgs();
     }
 }

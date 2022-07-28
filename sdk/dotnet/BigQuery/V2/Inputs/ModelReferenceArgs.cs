@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class ModelReferenceArgs : Pulumi.ResourceArgs
+    public sealed class ModelReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Required] The ID of the dataset containing this model.
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public ModelReferenceArgs()
         {
         }
+        public static new ModelReferenceArgs Empty => new ModelReferenceArgs();
     }
 }

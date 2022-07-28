@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// WebhookConfig describes the configuration of a trigger that creates a build whenever a webhook is sent to a trigger's webhook URL.
     /// </summary>
-    public sealed class WebhookConfigArgs : Pulumi.ResourceArgs
+    public sealed class WebhookConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource name for the secret required as a URL parameter.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public WebhookConfigArgs()
         {
         }
+        public static new WebhookConfigArgs Empty => new WebhookConfigArgs();
     }
 }

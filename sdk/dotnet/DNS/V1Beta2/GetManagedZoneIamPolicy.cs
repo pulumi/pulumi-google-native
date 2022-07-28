@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
     }
 
 
-    public sealed class GetManagedZoneIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetManagedZoneIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("managedZone", required: true)]
         public string ManagedZone { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         public GetManagedZoneIamPolicyArgs()
         {
         }
+        public static new GetManagedZoneIamPolicyArgs Empty => new GetManagedZoneIamPolicyArgs();
     }
 
-    public sealed class GetManagedZoneIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetManagedZoneIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("managedZone", required: true)]
         public Input<string> ManagedZone { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         public GetManagedZoneIamPolicyInvokeArgs()
         {
         }
+        public static new GetManagedZoneIamPolicyInvokeArgs Empty => new GetManagedZoneIamPolicyInvokeArgs();
     }
 
 

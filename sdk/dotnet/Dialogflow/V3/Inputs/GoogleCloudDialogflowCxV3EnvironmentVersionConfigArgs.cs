@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// Configuration for the version.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Format: projects//locations//agents//flows//versions/.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs Empty => new GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs();
     }
 }

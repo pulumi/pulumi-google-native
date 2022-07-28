@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// The retry policy associates with HttpRouteRule
     /// </summary>
-    public sealed class HttpRetryPolicyArgs : Pulumi.ResourceArgs
+    public sealed class HttpRetryPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the allowed number retries. This number must be &gt; 0. If not specified, defaults to 1.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public HttpRetryPolicyArgs()
         {
         }
+        public static new HttpRetryPolicyArgs Empty => new HttpRetryPolicyArgs();
     }
 }

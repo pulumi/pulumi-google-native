@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// A filter to target VM instances for patching. The targeted VMs must meet all criteria specified. So if both labels and zones are specified, the patch job targets only VMs with those labels and in those zones.
     /// </summary>
-    public sealed class PatchInstanceFilterArgs : Pulumi.ResourceArgs
+    public sealed class PatchInstanceFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Target all VM instances in the project. If true, no other criteria is permitted.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public PatchInstanceFilterArgs()
         {
         }
+        public static new PatchInstanceFilterArgs Empty => new PatchInstanceFilterArgs();
     }
 }

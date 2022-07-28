@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Details of a discovery occurrence.
     /// </summary>
-    public sealed class GrafeasV1beta1DiscoveryDetailsArgs : Pulumi.ResourceArgs
+    public sealed class GrafeasV1beta1DiscoveryDetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Analysis status for the discovered resource.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public GrafeasV1beta1DiscoveryDetailsArgs()
         {
         }
+        public static new GrafeasV1beta1DiscoveryDetailsArgs Empty => new GrafeasV1beta1DiscoveryDetailsArgs();
     }
 }

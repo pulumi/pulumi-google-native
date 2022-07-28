@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
     }
 
 
-    public sealed class GetDomainIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("domainId", required: true)]
         public string DomainId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
         public GetDomainIamPolicyArgs()
         {
         }
+        public static new GetDomainIamPolicyArgs Empty => new GetDomainIamPolicyArgs();
     }
 
-    public sealed class GetDomainIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("domainId", required: true)]
         public Input<string> DomainId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Beta1
         public GetDomainIamPolicyInvokeArgs()
         {
         }
+        public static new GetDomainIamPolicyInvokeArgs Empty => new GetDomainIamPolicyInvokeArgs();
     }
 
 

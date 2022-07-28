@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Iap.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:iap/v1:IdentityAwareProxyClient")]
-    public partial class IdentityAwareProxyClient : Pulumi.CustomResource
+    public partial class IdentityAwareProxyClient : global::Pulumi.CustomResource
     {
         [Output("brandId")]
         public Output<string> BrandId { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Iap.V1
         }
     }
 
-    public sealed class IdentityAwareProxyClientArgs : Pulumi.ResourceArgs
+    public sealed class IdentityAwareProxyClientArgs : global::Pulumi.ResourceArgs
     {
         [Input("brandId", required: true)]
         public Input<string> BrandId { get; set; } = null!;
@@ -105,5 +105,6 @@ namespace Pulumi.GoogleNative.Iap.V1
         public IdentityAwareProxyClientArgs()
         {
         }
+        public static new IdentityAwareProxyClientArgs Empty => new IdentityAwareProxyClientArgs();
     }
 }

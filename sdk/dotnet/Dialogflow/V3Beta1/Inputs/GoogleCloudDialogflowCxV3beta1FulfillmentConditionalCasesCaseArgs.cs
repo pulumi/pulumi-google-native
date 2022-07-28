@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Each case has a Boolean condition. When it is evaluated to be True, the corresponding messages will be selected and evaluated recursively.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseArgs : global::Pulumi.ResourceArgs
     {
         [Input("caseContent")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentArgs>? _caseContent;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseArgs Empty => new GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseArgs();
     }
 }

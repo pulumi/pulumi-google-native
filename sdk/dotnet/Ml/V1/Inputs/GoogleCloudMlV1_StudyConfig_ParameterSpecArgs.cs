@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents a single parameter to optimize.
     /// </summary>
-    public sealed class GoogleCloudMlV1_StudyConfig_ParameterSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1_StudyConfig_ParameterSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The value spec for a 'CATEGORICAL' parameter.
@@ -81,5 +81,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1_StudyConfig_ParameterSpecArgs()
         {
         }
+        public static new GoogleCloudMlV1_StudyConfig_ParameterSpecArgs Empty => new GoogleCloudMlV1_StudyConfig_ParameterSpecArgs();
     }
 }

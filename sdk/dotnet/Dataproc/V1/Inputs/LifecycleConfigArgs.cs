@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Specifies the cluster auto-delete schedule configuration.
     /// </summary>
-    public sealed class LifecycleConfigArgs : Pulumi.ResourceArgs
+    public sealed class LifecycleConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The time when cluster will be auto-deleted (see JSON representation of Timestamp (https://developers.google.com/protocol-buffers/docs/proto3#json)).
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public LifecycleConfigArgs()
         {
         }
+        public static new LifecycleConfigArgs Empty => new LifecycleConfigArgs();
     }
 }

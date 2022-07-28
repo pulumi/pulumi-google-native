@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2
     /// Creates a new function. If a function with the given name already exists in the specified project, the long running operation will return `ALREADY_EXISTS` error.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudfunctions/v2:Function")]
-    public partial class Function : Pulumi.CustomResource
+    public partial class Function : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Describes the Build step of the function that builds a container from the given source.
@@ -135,7 +135,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2
         }
     }
 
-    public sealed class FunctionArgs : Pulumi.ResourceArgs
+    public sealed class FunctionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes the Build step of the function that builds a container from the given source.
@@ -200,5 +200,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2
         public FunctionArgs()
         {
         }
+        public static new FunctionArgs Empty => new FunctionArgs();
     }
 }

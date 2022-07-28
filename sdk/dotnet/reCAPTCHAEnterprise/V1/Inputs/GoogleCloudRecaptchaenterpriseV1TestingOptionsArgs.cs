@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
     /// <summary>
     /// Options for user acceptance testing.
     /// </summary>
-    public sealed class GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// For challenge-based keys only (CHECKBOX, INVISIBLE), all challenge requests for this site will return nocaptcha if NOCAPTCHA, or an unsolvable challenge if CHALLENGE.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
         public GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs()
         {
         }
+        public static new GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs Empty => new GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
 
-    public sealed class GetAgentPoolArgs : Pulumi.InvokeArgs
+    public sealed class GetAgentPoolArgs : global::Pulumi.InvokeArgs
     {
         [Input("agentPoolId", required: true)]
         public string AgentPoolId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public GetAgentPoolArgs()
         {
         }
+        public static new GetAgentPoolArgs Empty => new GetAgentPoolArgs();
     }
 
-    public sealed class GetAgentPoolInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAgentPoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("agentPoolId", required: true)]
         public Input<string> AgentPoolId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public GetAgentPoolInvokeArgs()
         {
         }
+        public static new GetAgentPoolInvokeArgs Empty => new GetAgentPoolInvokeArgs();
     }
 
 

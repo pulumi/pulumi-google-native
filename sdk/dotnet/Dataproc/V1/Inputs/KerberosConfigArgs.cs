@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Specifies Kerberos related configuration.
     /// </summary>
-    public sealed class KerberosConfigArgs : Pulumi.ResourceArgs
+    public sealed class KerberosConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The admin server (IP or hostname) for the remote trusted realm in a cross realm trust relationship.
@@ -108,5 +108,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public KerberosConfigArgs()
         {
         }
+        public static new KerberosConfigArgs Empty => new KerberosConfigArgs();
     }
 }

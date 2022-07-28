@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
     /// <summary>
     /// Code and application artifacts used to deploy a version to App Engine.
     /// </summary>
-    public sealed class DeploymentArgs : Pulumi.ResourceArgs
+    public sealed class DeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Options for any Google Cloud Build builds created as a part of this deployment.These options will only be used if a new build is created, such as when deploying to the App Engine flexible environment using files or zip.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         public DeploymentArgs()
         {
         }
+        public static new DeploymentArgs Empty => new DeploymentArgs();
     }
 }

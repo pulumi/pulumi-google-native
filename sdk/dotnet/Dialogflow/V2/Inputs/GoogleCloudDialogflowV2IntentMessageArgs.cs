@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// A rich response message. Corresponds to the intent `Response` field in the Dialogflow console. For more information, see [Rich response messages](https://cloud.google.com/dialogflow/docs/intents-rich-messages).
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2IntentMessageArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2IntentMessageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The basic card response for Actions on Google.
@@ -114,5 +114,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2IntentMessageArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2IntentMessageArgs Empty => new GoogleCloudDialogflowV2IntentMessageArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
     /// <summary>
     /// A table type
     /// </summary>
-    public sealed class StandardSqlTableTypeArgs : Pulumi.ResourceArgs
+    public sealed class StandardSqlTableTypeArgs : global::Pulumi.ResourceArgs
     {
         [Input("columns")]
         private InputList<Inputs.StandardSqlFieldArgs>? _columns;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public StandardSqlTableTypeArgs()
         {
         }
+        public static new StandardSqlTableTypeArgs Empty => new StandardSqlTableTypeArgs();
     }
 }

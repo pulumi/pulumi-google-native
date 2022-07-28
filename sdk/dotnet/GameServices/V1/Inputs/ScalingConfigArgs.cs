@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
     /// <summary>
     /// Autoscaling config for an Agones fleet.
     /// </summary>
-    public sealed class ScalingConfigArgs : Pulumi.ResourceArgs
+    public sealed class ScalingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Agones fleet autoscaler spec (see [example spec](https://agones.dev/site/docs/reference/fleetautoscaler/)).
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
         public ScalingConfigArgs()
         {
         }
+        public static new ScalingConfigArgs Empty => new ScalingConfigArgs();
     }
 }

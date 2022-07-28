@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2.Inputs
     /// <summary>
     /// Information that is specific to TfLite models.
     /// </summary>
-    public sealed class TfLiteModelArgs : Pulumi.ResourceArgs
+    public sealed class TfLiteModelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The AutoML model id referencing a model you created with the AutoML API. The name should have format 'projects//locations//models/' (This is the model resource name returned from the AutoML API)
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2.Inputs
         public TfLiteModelArgs()
         {
         }
+        public static new TfLiteModelArgs Empty => new TfLiteModelArgs();
     }
 }

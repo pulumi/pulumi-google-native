@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
     /// <summary>
     /// The conversation source, which is a combination of transcript and audio.
     /// </summary>
-    public sealed class GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The source when the conversation comes from Dialogflow.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
         public GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs()
         {
         }
+        public static new GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs Empty => new GoogleCloudContactcenterinsightsV1ConversationDataSourceArgs();
     }
 }

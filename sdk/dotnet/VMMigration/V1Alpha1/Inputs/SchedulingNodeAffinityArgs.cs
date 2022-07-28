@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
     /// <summary>
     /// Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled. Based on https://cloud.google.com/compute/docs/reference/rest/v1/instances/setScheduling
     /// </summary>
-    public sealed class SchedulingNodeAffinityArgs : Pulumi.ResourceArgs
+    public sealed class SchedulingNodeAffinityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The label key of Node resource to reference.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
         public SchedulingNodeAffinityArgs()
         {
         }
+        public static new SchedulingNodeAffinityArgs Empty => new SchedulingNodeAffinityArgs();
     }
 }

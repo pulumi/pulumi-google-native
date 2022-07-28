@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
     /// </summary>
-    public sealed class GceClusterConfigArgs : Pulumi.ResourceArgs
+    public sealed class GceClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs).
@@ -114,5 +114,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public GceClusterConfigArgs()
         {
         }
+        public static new GceClusterConfigArgs Empty => new GceClusterConfigArgs();
     }
 }

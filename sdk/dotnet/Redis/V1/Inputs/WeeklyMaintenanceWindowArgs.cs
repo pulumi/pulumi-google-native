@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Redis.V1.Inputs
     /// <summary>
     /// Time window in which disruptive maintenance updates occur. Non-disruptive updates can occur inside or outside this window.
     /// </summary>
-    public sealed class WeeklyMaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class WeeklyMaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The day of week that maintenance updates occur.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Redis.V1.Inputs
         public WeeklyMaintenanceWindowArgs()
         {
         }
+        public static new WeeklyMaintenanceWindowArgs Empty => new WeeklyMaintenanceWindowArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A filter that ranks streams based on their statistical relation to other streams in a request. Note: This field is deprecated and completely ignored by the API.
     /// </summary>
-    public sealed class StatisticalTimeSeriesFilterArgs : Pulumi.ResourceArgs
+    public sealed class StatisticalTimeSeriesFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How many time series to output.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public StatisticalTimeSeriesFilterArgs()
         {
         }
+        public static new StatisticalTimeSeriesFilterArgs Empty => new StatisticalTimeSeriesFilterArgs();
     }
 }

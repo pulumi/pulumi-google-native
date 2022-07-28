@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class SourceDiskEncryptionKeyArgs : Pulumi.ResourceArgs
+    public sealed class SourceDiskEncryptionKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SourceDiskEncryptionKeyArgs()
         {
         }
+        public static new SourceDiskEncryptionKeyArgs Empty => new SourceDiskEncryptionKeyArgs();
     }
 }

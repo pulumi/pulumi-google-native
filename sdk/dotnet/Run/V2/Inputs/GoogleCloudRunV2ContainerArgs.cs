@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// <summary>
     /// A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
     /// </summary>
-    public sealed class GoogleCloudRunV2ContainerArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRunV2ContainerArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<string>? _args;
@@ -102,5 +102,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public GoogleCloudRunV2ContainerArgs()
         {
         }
+        public static new GoogleCloudRunV2ContainerArgs Empty => new GoogleCloudRunV2ContainerArgs();
     }
 }

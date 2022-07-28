@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2ConditionArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2ConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Field within the record this condition is evaluated against.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2ConditionArgs()
         {
         }
+        public static new GooglePrivacyDlpV2ConditionArgs Empty => new GooglePrivacyDlpV2ConditionArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A test of an Android Application with a Test Loop. The intent \ will be implicitly added, since Games is the only user of this api, for the time being.
     /// </summary>
-    public sealed class AndroidTestLoopArgs : Pulumi.ResourceArgs
+    public sealed class AndroidTestLoopArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The APK for the application under test.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public AndroidTestLoopArgs()
         {
         }
+        public static new AndroidTestLoopArgs Empty => new AndroidTestLoopArgs();
     }
 }

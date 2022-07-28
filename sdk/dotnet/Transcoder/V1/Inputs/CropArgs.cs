@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Video cropping configuration for the input video. The cropped input video is scaled to match the output resolution.
     /// </summary>
-    public sealed class CropArgs : Pulumi.ResourceArgs
+    public sealed class CropArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of pixels to crop from the bottom. The default is 0.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public CropArgs()
         {
         }
+        public static new CropArgs Empty => new CropArgs();
     }
 }

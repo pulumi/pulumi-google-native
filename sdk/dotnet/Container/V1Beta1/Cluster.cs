@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
     /// Creates a cluster, consisting of the specified number and type of Google Compute Engine instances. By default, the cluster is created in the project's [default network](https://cloud.google.com/compute/docs/networks-and-firewalls#networks). One firewall is added for the cluster. After cluster creation, the Kubelet creates routes for each node to allow the containers on that node to communicate with all other instances in the cluster. Finally, an entry is added to the project's global metadata indicating which CIDR range the cluster is using.
     /// </summary>
     [GoogleNativeResourceType("google-native:container/v1beta1:Cluster")]
-    public partial class Cluster : Pulumi.CustomResource
+    public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configurations for the various addons available to run in the cluster.
@@ -483,7 +483,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         }
     }
 
-    public sealed class ClusterArgs : Pulumi.ResourceArgs
+    public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configurations for the various addons available to run in the cluster.
@@ -870,5 +870,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public ClusterArgs()
         {
         }
+        public static new ClusterArgs Empty => new ClusterArgs();
     }
 }

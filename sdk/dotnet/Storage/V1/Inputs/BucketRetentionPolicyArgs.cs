@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The bucket's retention policy. The retention policy enforces a minimum retention time for all objects contained in the bucket, based on their creation time. Any attempt to overwrite or delete objects younger than the retention period will result in a PERMISSION_DENIED error. An unlocked retention policy can be modified or removed from the bucket via a storage.buckets.update operation. A locked retention policy cannot be removed or shortened in duration for the lifetime of the bucket. Attempting to remove or decrease period of a locked retention policy will result in a PERMISSION_DENIED error.
     /// </summary>
-    public sealed class BucketRetentionPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BucketRetentionPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Server-determined value that indicates the time from which policy was enforced and effective. This value is in RFC 3339 format.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketRetentionPolicyArgs()
         {
         }
+        public static new BucketRetentionPolicyArgs Empty => new BucketRetentionPolicyArgs();
     }
 }

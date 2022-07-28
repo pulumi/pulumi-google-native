@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:spanner/v1:InstanceBackupIamPolicy")]
-    public partial class InstanceBackupIamPolicy : Pulumi.CustomResource
+    public partial class InstanceBackupIamPolicy : global::Pulumi.CustomResource
     {
         [Output("backupId")]
         public Output<string> BackupId { get; private set; } = null!;
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
         }
     }
 
-    public sealed class InstanceBackupIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class InstanceBackupIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("backupId", required: true)]
         public Input<string> BackupId { get; set; } = null!;
@@ -131,5 +131,6 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public InstanceBackupIamPolicyArgs()
         {
         }
+        public static new InstanceBackupIamPolicyArgs Empty => new InstanceBackupIamPolicyArgs();
     }
 }

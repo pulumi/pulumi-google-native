@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudasset/v1:Feed")]
-    public partial class Feed : Pulumi.CustomResource
+    public partial class Feed : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of the full names of the assets to receive updates. You must specify either or both of asset_names and asset_types. Only asset updates matching specified asset_names or asset_types are exported to the feed. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. For a list of the full names for supported asset types, see [Resource name format](/asset-inventory/docs/resource-name-format).
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         }
     }
 
-    public sealed class FeedArgs : Pulumi.ResourceArgs
+    public sealed class FeedArgs : global::Pulumi.ResourceArgs
     {
         [Input("assetNames")]
         private InputList<string>? _assetNames;
@@ -189,5 +189,6 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         public FeedArgs()
         {
         }
+        public static new FeedArgs Empty => new FeedArgs();
     }
 }

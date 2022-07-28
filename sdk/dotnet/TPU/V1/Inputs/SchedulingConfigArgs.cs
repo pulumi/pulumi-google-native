@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.TPU.V1.Inputs
     /// <summary>
     /// Sets the scheduling options for this node.
     /// </summary>
-    public sealed class SchedulingConfigArgs : Pulumi.ResourceArgs
+    public sealed class SchedulingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines whether the node is preemptible.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.TPU.V1.Inputs
         public SchedulingConfigArgs()
         {
         }
+        public static new SchedulingConfigArgs Empty => new SchedulingConfigArgs();
     }
 }

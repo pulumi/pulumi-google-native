@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class SSLHealthCheckArgs : Pulumi.ResourceArgs
+    public sealed class SSLHealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The TCP port number for the health check request. The default value is 443. Valid values are 1 through 65535.
@@ -51,5 +51,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SSLHealthCheckArgs()
         {
         }
+        public static new SSLHealthCheckArgs Empty => new SSLHealthCheckArgs();
     }
 }

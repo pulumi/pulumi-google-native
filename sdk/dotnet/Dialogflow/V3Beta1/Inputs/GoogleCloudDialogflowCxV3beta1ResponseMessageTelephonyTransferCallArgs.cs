@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Represents the signal that telles the client to transfer the phone call connected to the agent to a third-party endpoint.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Transfer the call to a phone number in [E.164 format](https://en.wikipedia.org/wiki/E.164).
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallArgs Empty => new GoogleCloudDialogflowCxV3beta1ResponseMessageTelephonyTransferCallArgs();
     }
 }

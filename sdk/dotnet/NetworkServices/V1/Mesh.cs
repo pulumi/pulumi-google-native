@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
     /// Creates a new Mesh in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkservices/v1:Mesh")]
-    public partial class Mesh : Pulumi.CustomResource
+    public partial class Mesh : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp when the resource was created.
@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         }
     }
 
-    public sealed class MeshArgs : Pulumi.ResourceArgs
+    public sealed class MeshArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A free-text description of the resource. Max length 1024 characters.
@@ -165,5 +165,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public MeshArgs()
         {
         }
+        public static new MeshArgs Empty => new MeshArgs();
     }
 }

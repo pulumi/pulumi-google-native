@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Specifies the delay introduced by the load balancer before forwarding the request to the backend service as part of fault injection.
     /// </summary>
-    public sealed class HttpFaultDelayArgs : Pulumi.ResourceArgs
+    public sealed class HttpFaultDelayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the value of the fixed delay interval.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public HttpFaultDelayArgs()
         {
         }
+        public static new HttpFaultDelayArgs Empty => new HttpFaultDelayArgs();
     }
 }

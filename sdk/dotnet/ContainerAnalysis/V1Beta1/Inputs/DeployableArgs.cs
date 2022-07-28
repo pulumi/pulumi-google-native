@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// An artifact that can be deployed in some runtime.
     /// </summary>
-    public sealed class DeployableArgs : Pulumi.ResourceArgs
+    public sealed class DeployableArgs : global::Pulumi.ResourceArgs
     {
         [Input("resourceUri", required: true)]
         private InputList<string>? _resourceUri;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public DeployableArgs()
         {
         }
+        public static new DeployableArgs Empty => new DeployableArgs();
     }
 }

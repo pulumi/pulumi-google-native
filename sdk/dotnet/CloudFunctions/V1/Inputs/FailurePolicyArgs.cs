@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1.Inputs
     /// <summary>
     /// Describes the policy in case of function's execution failure. If empty, then defaults to ignoring failures (i.e. not retrying them).
     /// </summary>
-    public sealed class FailurePolicyArgs : Pulumi.ResourceArgs
+    public sealed class FailurePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If specified, then the function will be retried in case of a failure.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1.Inputs
         public FailurePolicyArgs()
         {
         }
+        public static new FailurePolicyArgs Empty => new FailurePolicyArgs();
     }
 }

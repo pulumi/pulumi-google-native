@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// `Backend` defines the backend configuration for a service.
     /// </summary>
-    public sealed class BackendArgs : Pulumi.ResourceArgs
+    public sealed class BackendArgs : global::Pulumi.ResourceArgs
     {
         [Input("rules")]
         private InputList<Inputs.BackendRuleArgs>? _rules;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public BackendArgs()
         {
         }
+        public static new BackendArgs Empty => new BackendArgs();
     }
 }

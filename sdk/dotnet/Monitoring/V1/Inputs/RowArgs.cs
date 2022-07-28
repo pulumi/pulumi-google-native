@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// Defines the layout properties and content for a row.
     /// </summary>
-    public sealed class RowArgs : Pulumi.ResourceArgs
+    public sealed class RowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The relative weight of this row. The row weight is used to adjust the height of rows on the screen (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of 1 is used while rendering.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public RowArgs()
         {
         }
+        public static new RowArgs Empty => new RowArgs();
     }
 }

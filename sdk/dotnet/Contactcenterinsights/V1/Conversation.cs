@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
     /// Creates a conversation.
     /// </summary>
     [GoogleNativeResourceType("google-native:contactcenterinsights/v1:Conversation")]
-    public partial class Conversation : Pulumi.CustomResource
+    public partial class Conversation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An opaque, user-specified string representing the human agent who handled the conversation.
@@ -189,7 +189,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         }
     }
 
-    public sealed class ConversationArgs : Pulumi.ResourceArgs
+    public sealed class ConversationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An opaque, user-specified string representing the human agent who handled the conversation.
@@ -278,5 +278,6 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public ConversationArgs()
         {
         }
+        public static new ConversationArgs Empty => new ConversationArgs();
     }
 }

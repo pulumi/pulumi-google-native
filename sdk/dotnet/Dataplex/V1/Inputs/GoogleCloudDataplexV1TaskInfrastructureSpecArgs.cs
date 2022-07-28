@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Configuration for the underlying infrastructure used to run workloads.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1TaskInfrastructureSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1TaskInfrastructureSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Compute resources needed for a Task when using Dataproc Serverless.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1TaskInfrastructureSpecArgs()
         {
         }
+        public static new GoogleCloudDataplexV1TaskInfrastructureSpecArgs Empty => new GoogleCloudDataplexV1TaskInfrastructureSpecArgs();
     }
 }

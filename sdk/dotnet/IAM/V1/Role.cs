@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.IAM.V1
     /// Creates a new custom Role.
     /// </summary>
     [GoogleNativeResourceType("google-native:iam/v1:Role")]
-    public partial class Role : Pulumi.CustomResource
+    public partial class Role : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         }
     }
 
-    public sealed class RoleArgs : Pulumi.ResourceArgs
+    public sealed class RoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole.
@@ -169,5 +169,6 @@ namespace Pulumi.GoogleNative.IAM.V1
         public RoleArgs()
         {
         }
+        public static new RoleArgs Empty => new RoleArgs();
     }
 }

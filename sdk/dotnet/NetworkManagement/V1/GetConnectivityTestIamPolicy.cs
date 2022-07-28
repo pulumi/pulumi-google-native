@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
     }
 
 
-    public sealed class GetConnectivityTestIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectivityTestIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("connectivityTestId", required: true)]
         public string ConnectivityTestId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         public GetConnectivityTestIamPolicyArgs()
         {
         }
+        public static new GetConnectivityTestIamPolicyArgs Empty => new GetConnectivityTestIamPolicyArgs();
     }
 
-    public sealed class GetConnectivityTestIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectivityTestIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("connectivityTestId", required: true)]
         public Input<string> ConnectivityTestId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         public GetConnectivityTestIamPolicyInvokeArgs()
         {
         }
+        public static new GetConnectivityTestIamPolicyInvokeArgs Empty => new GetConnectivityTestIamPolicyInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// Basic autoscaling configurations for YARN.
     /// </summary>
-    public sealed class BasicYarnAutoscalingConfigArgs : Pulumi.ResourceArgs
+    public sealed class BasicYarnAutoscalingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public BasicYarnAutoscalingConfigArgs()
         {
         }
+        public static new BasicYarnAutoscalingConfigArgs Empty => new BasicYarnAutoscalingConfigArgs();
     }
 }

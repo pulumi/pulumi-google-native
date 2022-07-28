@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkservices/v1:EdgeCacheServiceIamPolicy")]
-    public partial class EdgeCacheServiceIamPolicy : Pulumi.CustomResource
+    public partial class EdgeCacheServiceIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         }
     }
 
-    public sealed class EdgeCacheServiceIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class EdgeCacheServiceIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public EdgeCacheServiceIamPolicyArgs()
         {
         }
+        public static new EdgeCacheServiceIamPolicyArgs Empty => new EdgeCacheServiceIamPolicyArgs();
     }
 }

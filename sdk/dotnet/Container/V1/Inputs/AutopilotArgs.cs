@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Autopilot is the configuration for Autopilot settings on the cluster.
     /// </summary>
-    public sealed class AutopilotArgs : Pulumi.ResourceArgs
+    public sealed class AutopilotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable Autopilot
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public AutopilotArgs()
         {
         }
+        public static new AutopilotArgs Empty => new AutopilotArgs();
     }
 }

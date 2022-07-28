@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datacatalog/v1beta1:Entry")]
-    public partial class Entry : Pulumi.CustomResource
+    public partial class Entry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
@@ -165,7 +165,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         }
     }
 
-    public sealed class EntryArgs : Pulumi.ResourceArgs
+    public sealed class EntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specification for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding.
@@ -245,5 +245,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public EntryArgs()
         {
         }
+        public static new EntryArgs Empty => new EntryArgs();
     }
 }

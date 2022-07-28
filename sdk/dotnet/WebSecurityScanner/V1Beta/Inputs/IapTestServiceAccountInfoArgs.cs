@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
     /// <summary>
     /// Describes authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies.
     /// </summary>
-    public sealed class IapTestServiceAccountInfoArgs : Pulumi.ResourceArgs
+    public sealed class IapTestServiceAccountInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes OAuth2 Client ID of resources protected by Identity-Aware-Proxy(IAP).
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
         public IapTestServiceAccountInfoArgs()
         {
         }
+        public static new IapTestServiceAccountInfoArgs Empty => new IapTestServiceAccountInfoArgs();
     }
 }

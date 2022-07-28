@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
     /// <summary>
     /// Represents the transport intermediaries created for the trigger to deliver events.
     /// </summary>
-    public sealed class TransportArgs : Pulumi.ResourceArgs
+    public sealed class TransportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Pub/Sub topic and subscription used by Eventarc as a transport intermediary.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
         public TransportArgs()
         {
         }
+        public static new TransportArgs Empty => new TransportArgs();
     }
 }

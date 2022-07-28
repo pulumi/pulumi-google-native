@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Creates an Apigee runtime instance. The instance is accessible from the authorized network configured on the organization. **Note:** Not supported for Apigee hybrid.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. Customer accept list represents the list of projects (id/number) on customer side that can privately connect to the service attachment. It is an optional field which the customers can provide during the instance creation. By default, the customer project associated with the Apigee organization will be included to the list.
@@ -155,7 +155,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         [Input("consumerAcceptList")]
         private InputList<string>? _consumerAcceptList;
@@ -217,5 +217,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 }

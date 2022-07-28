@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigtableadmin/v2:InstanceClusterBackupIamPolicy")]
-    public partial class InstanceClusterBackupIamPolicy : Pulumi.CustomResource
+    public partial class InstanceClusterBackupIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         }
     }
 
-    public sealed class InstanceClusterBackupIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class InstanceClusterBackupIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -162,5 +162,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public InstanceClusterBackupIamPolicyArgs()
         {
         }
+        public static new InstanceClusterBackupIamPolicyArgs Empty => new InstanceClusterBackupIamPolicyArgs();
     }
 }

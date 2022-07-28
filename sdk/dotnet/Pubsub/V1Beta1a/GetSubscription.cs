@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
     }
 
 
-    public sealed class GetSubscriptionArgs : Pulumi.InvokeArgs
+    public sealed class GetSubscriptionArgs : global::Pulumi.InvokeArgs
     {
         [Input("subscriptionId", required: true)]
         public string SubscriptionId { get; set; } = null!;
@@ -33,9 +33,10 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         public GetSubscriptionArgs()
         {
         }
+        public static new GetSubscriptionArgs Empty => new GetSubscriptionArgs();
     }
 
-    public sealed class GetSubscriptionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSubscriptionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("subscriptionId", required: true)]
         public Input<string> SubscriptionId { get; set; } = null!;
@@ -43,6 +44,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         public GetSubscriptionInvokeArgs()
         {
         }
+        public static new GetSubscriptionInvokeArgs Empty => new GetSubscriptionInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Specification for how requests are aborted as part of fault injection.
     /// </summary>
-    public sealed class HttpFaultAbortArgs : Pulumi.ResourceArgs
+    public sealed class HttpFaultAbortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The HTTP status code used to abort the request. The value must be from 200 to 599 inclusive. For gRPC protocol, the gRPC status code is mapped to HTTP status code according to this mapping table. HTTP status 200 is mapped to gRPC status UNKNOWN. Injecting an OK status is currently not supported by Traffic Director.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public HttpFaultAbortArgs()
         {
         }
+        public static new HttpFaultAbortArgs Empty => new HttpFaultAbortArgs();
     }
 }

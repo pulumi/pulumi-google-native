@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Batch compute resources associated with the task.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs()
         {
         }
+        public static new GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs Empty => new GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs();
     }
 }

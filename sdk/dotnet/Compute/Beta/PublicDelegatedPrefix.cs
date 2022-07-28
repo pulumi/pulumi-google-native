@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates a PublicDelegatedPrefix in the specified project in the given region using the parameters that are included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:PublicDelegatedPrefix")]
-    public partial class PublicDelegatedPrefix : Pulumi.CustomResource
+    public partial class PublicDelegatedPrefix : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -141,7 +141,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class PublicDelegatedPrefixArgs : Pulumi.ResourceArgs
+    public sealed class PublicDelegatedPrefixArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -200,5 +200,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public PublicDelegatedPrefixArgs()
         {
         }
+        public static new PublicDelegatedPrefixArgs Empty => new PublicDelegatedPrefixArgs();
     }
 }

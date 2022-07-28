@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Message defining the location of a BigQuery table. A table is uniquely identified by its project_id, dataset_id, and table_name. Within a query a table is often referenced with a string in the format of: `:.` or `..`.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2BigQueryTableArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2BigQueryTableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Dataset ID of the table.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2BigQueryTableArgs()
         {
         }
+        public static new GooglePrivacyDlpV2BigQueryTableArgs Empty => new GooglePrivacyDlpV2BigQueryTableArgs();
     }
 }

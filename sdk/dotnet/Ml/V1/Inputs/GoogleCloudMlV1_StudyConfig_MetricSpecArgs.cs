@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents a metric to optimize.
     /// </summary>
-    public sealed class GoogleCloudMlV1_StudyConfig_MetricSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1_StudyConfig_MetricSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The optimization goal of the metric.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1_StudyConfig_MetricSpecArgs()
         {
         }
+        public static new GoogleCloudMlV1_StudyConfig_MetricSpecArgs Empty => new GoogleCloudMlV1_StudyConfig_MetricSpecArgs();
     }
 }

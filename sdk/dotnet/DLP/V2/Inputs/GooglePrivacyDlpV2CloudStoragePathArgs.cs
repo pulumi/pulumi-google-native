@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Message representing a single file or path in Cloud Storage.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2CloudStoragePathArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2CloudStoragePathArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A url representing a file or path (no wildcards) in Cloud Storage. Example: gs://[BUCKET_NAME]/dictionary.txt
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2CloudStoragePathArgs()
         {
         }
+        public static new GooglePrivacyDlpV2CloudStoragePathArgs Empty => new GooglePrivacyDlpV2CloudStoragePathArgs();
     }
 }

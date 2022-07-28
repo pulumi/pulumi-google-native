@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
     }
 
 
-    public sealed class GetDataSourceArgs : Pulumi.InvokeArgs
+    public sealed class GetDataSourceArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasourceId", required: true)]
         public string DatasourceId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public GetDataSourceArgs()
         {
         }
+        public static new GetDataSourceArgs Empty => new GetDataSourceArgs();
     }
 
-    public sealed class GetDataSourceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDataSourceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasourceId", required: true)]
         public Input<string> DatasourceId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public GetDataSourceInvokeArgs()
         {
         }
+        public static new GetDataSourceInvokeArgs Empty => new GetDataSourceInvokeArgs();
     }
 
 

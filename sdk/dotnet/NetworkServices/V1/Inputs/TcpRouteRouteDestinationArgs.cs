@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
     /// <summary>
     /// Describe the destination for traffic to be routed to.
     /// </summary>
-    public sealed class TcpRouteRouteDestinationArgs : Pulumi.ResourceArgs
+    public sealed class TcpRouteRouteDestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URL of a BackendService to route traffic to.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
         public TcpRouteRouteDestinationArgs()
         {
         }
+        public static new TcpRouteRouteDestinationArgs Empty => new TcpRouteRouteDestinationArgs();
     }
 }

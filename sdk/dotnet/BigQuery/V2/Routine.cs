@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigquery/v2:Routine")]
-    public partial class Routine : Pulumi.CustomResource
+    public partial class Routine : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional.
@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         }
     }
 
-    public sealed class RoutineArgs : Pulumi.ResourceArgs
+    public sealed class RoutineArgs : global::Pulumi.ResourceArgs
     {
         [Input("arguments")]
         private InputList<Inputs.ArgumentArgs>? _arguments;
@@ -255,5 +255,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public RoutineArgs()
         {
         }
+        public static new RoutineArgs Empty => new RoutineArgs();
     }
 }

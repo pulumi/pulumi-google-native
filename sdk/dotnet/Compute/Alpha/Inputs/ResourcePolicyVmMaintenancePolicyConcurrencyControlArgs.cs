@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// A concurrency control configuration. Defines a group config that, when attached to an instance, recognizes that instance as part of a group of instances where only up the concurrency_limit of instances in that group can undergo simultaneous maintenance. For more information: go/concurrency-control-design-doc
     /// </summary>
-    public sealed class ResourcePolicyVmMaintenancePolicyConcurrencyControlArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyVmMaintenancePolicyConcurrencyControlArgs : global::Pulumi.ResourceArgs
     {
         [Input("concurrencyLimit")]
         public Input<int>? ConcurrencyLimit { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public ResourcePolicyVmMaintenancePolicyConcurrencyControlArgs()
         {
         }
+        public static new ResourcePolicyVmMaintenancePolicyConcurrencyControlArgs Empty => new ResourcePolicyVmMaintenancePolicyConcurrencyControlArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
     /// <summary>
     /// Files that make up the template contents of a template type.
     /// </summary>
-    public sealed class TemplateContentsArgs : Pulumi.ResourceArgs
+    public sealed class TemplateContentsArgs : global::Pulumi.ResourceArgs
     {
         [Input("imports")]
         private InputList<Inputs.ImportFileArgs>? _imports;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
         public TemplateContentsArgs()
         {
         }
+        public static new TemplateContentsArgs Empty => new TemplateContentsArgs();
     }
 }

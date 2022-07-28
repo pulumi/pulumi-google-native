@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetInstanceTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTemplateArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceTemplate", required: true)]
         public string InstanceTemplate { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetInstanceTemplateArgs()
         {
         }
+        public static new GetInstanceTemplateArgs Empty => new GetInstanceTemplateArgs();
     }
 
-    public sealed class GetInstanceTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceTemplate", required: true)]
         public Input<string> InstanceTemplate { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetInstanceTemplateInvokeArgs()
         {
         }
+        public static new GetInstanceTemplateInvokeArgs Empty => new GetInstanceTemplateInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
 {
 
-    public sealed class AllowedConfigListArgs : Pulumi.ResourceArgs
+    public sealed class AllowedConfigListArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedConfigValues", required: true)]
         private InputList<Inputs.ReusableConfigWrapperArgs>? _allowedConfigValues;
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         public AllowedConfigListArgs()
         {
         }
+        public static new AllowedConfigListArgs Empty => new AllowedConfigListArgs();
     }
 }

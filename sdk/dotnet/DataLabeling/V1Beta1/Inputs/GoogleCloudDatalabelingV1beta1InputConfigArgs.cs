@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// The configuration of input data, including data type, location, etc.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1InputConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1InputConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The type of annotation to be performed on this data. You must specify this field if you are using this InputConfig in an EvaluationJob.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1InputConfigArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1InputConfigArgs Empty => new GoogleCloudDatalabelingV1beta1InputConfigArgs();
     }
 }

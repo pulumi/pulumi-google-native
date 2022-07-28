@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DNS.V2
     /// Creates a new ManagedZone.
     /// </summary>
     [GoogleNativeResourceType("google-native:dns/v2:ManagedZone")]
-    public partial class ManagedZone : Pulumi.CustomResource
+    public partial class ManagedZone : global::Pulumi.CustomResource
     {
         /// <summary>
         /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
@@ -165,7 +165,7 @@ namespace Pulumi.GoogleNative.DNS.V2
         }
     }
 
-    public sealed class ManagedZoneArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZoneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
@@ -272,5 +272,6 @@ namespace Pulumi.GoogleNative.DNS.V2
         public ManagedZoneArgs()
         {
         }
+        public static new ManagedZoneArgs Empty => new ManagedZoneArgs();
     }
 }

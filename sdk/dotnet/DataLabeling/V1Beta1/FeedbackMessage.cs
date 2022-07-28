@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     /// Create a FeedbackMessage object.
     /// </summary>
     [GoogleNativeResourceType("google-native:datalabeling/v1beta1:FeedbackMessage")]
-    public partial class FeedbackMessage : Pulumi.CustomResource
+    public partial class FeedbackMessage : global::Pulumi.CustomResource
     {
         [Output("annotatedDatasetId")]
         public Output<string> AnnotatedDatasetId { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         }
     }
 
-    public sealed class FeedbackMessageArgs : Pulumi.ResourceArgs
+    public sealed class FeedbackMessageArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotatedDatasetId", required: true)]
         public Input<string> AnnotatedDatasetId { get; set; } = null!;
@@ -154,5 +154,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public FeedbackMessageArgs()
         {
         }
+        public static new FeedbackMessageArgs Empty => new FeedbackMessageArgs();
     }
 }

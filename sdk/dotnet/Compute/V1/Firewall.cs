@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     /// Creates a firewall rule in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:Firewall")]
-    public partial class Firewall : Pulumi.CustomResource
+    public partial class Firewall : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The list of ALLOW rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a permitted connection.
@@ -179,7 +179,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
     }
 
-    public sealed class FirewallArgs : Pulumi.ResourceArgs
+    public sealed class FirewallArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowed")]
         private InputList<Inputs.FirewallAllowedItemArgs>? _allowed;
@@ -331,5 +331,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public FirewallArgs()
         {
         }
+        public static new FirewallArgs Empty => new FirewallArgs();
     }
 }

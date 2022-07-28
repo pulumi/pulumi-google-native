@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// A message describing the state of a particular execution stage.
     /// </summary>
-    public sealed class ExecutionStageStateArgs : Pulumi.ResourceArgs
+    public sealed class ExecutionStageStateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time at which the stage transitioned to this state.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public ExecutionStageStateArgs()
         {
         }
+        public static new ExecutionStageStateArgs Empty => new ExecutionStageStateArgs();
     }
 }

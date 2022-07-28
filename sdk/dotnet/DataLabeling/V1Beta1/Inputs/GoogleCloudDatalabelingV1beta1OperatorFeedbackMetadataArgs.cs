@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Metadata describing the feedback from the operator.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs : global::Pulumi.ResourceArgs
     {
         public GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs Empty => new GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs();
     }
 }

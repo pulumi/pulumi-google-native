@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// A note that indicates a type of analysis a provider would perform. This note exists in a provider's project. A `Discovery` occurrence is created in a consumer's project at the start of analysis.
     /// </summary>
-    public sealed class DiscoveryArgs : Pulumi.ResourceArgs
+    public sealed class DiscoveryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. The kind of analysis that is handled by this discovery.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public DiscoveryArgs()
         {
         }
+        public static new DiscoveryArgs Empty => new DiscoveryArgs();
     }
 }

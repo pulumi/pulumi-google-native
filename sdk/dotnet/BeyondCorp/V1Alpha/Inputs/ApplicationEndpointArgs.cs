@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
     /// <summary>
     /// ApplicationEndpoint represents a remote application endpoint.
     /// </summary>
-    public sealed class ApplicationEndpointArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hostname or IP address of the remote application endpoint.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
         public ApplicationEndpointArgs()
         {
         }
+        public static new ApplicationEndpointArgs Empty => new ApplicationEndpointArgs();
     }
 }

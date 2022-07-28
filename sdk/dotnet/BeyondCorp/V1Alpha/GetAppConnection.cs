@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     }
 
 
-    public sealed class GetAppConnectionArgs : Pulumi.InvokeArgs
+    public sealed class GetAppConnectionArgs : global::Pulumi.InvokeArgs
     {
         [Input("appConnectionId", required: true)]
         public string AppConnectionId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public GetAppConnectionArgs()
         {
         }
+        public static new GetAppConnectionArgs Empty => new GetAppConnectionArgs();
     }
 
-    public sealed class GetAppConnectionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAppConnectionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("appConnectionId", required: true)]
         public Input<string> AppConnectionId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public GetAppConnectionInvokeArgs()
         {
         }
+        public static new GetAppConnectionInvokeArgs Empty => new GetAppConnectionInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
     /// <summary>
     /// A boost action to apply to results matching condition specified above.
     /// </summary>
-    public sealed class GoogleCloudRetailV2betaRuleBoostActionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2betaRuleBoostActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
         public GoogleCloudRetailV2betaRuleBoostActionArgs()
         {
         }
+        public static new GoogleCloudRetailV2betaRuleBoostActionArgs Empty => new GoogleCloudRetailV2betaRuleBoostActionArgs();
     }
 }

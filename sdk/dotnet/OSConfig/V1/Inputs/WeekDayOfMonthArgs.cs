@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// Represents one week day in a month. An example is "the 4th Sunday".
     /// </summary>
-    public sealed class WeekDayOfMonthArgs : Pulumi.ResourceArgs
+    public sealed class WeekDayOfMonthArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A day of the week.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public WeekDayOfMonthArgs()
         {
         }
+        public static new WeekDayOfMonthArgs Empty => new WeekDayOfMonthArgs();
     }
 }

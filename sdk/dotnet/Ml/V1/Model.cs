@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1
     /// Creates a model which will later contain one or more versions. You must add at least one version before you can request predictions from the model. Add versions by calling projects.models.versions.create.
     /// </summary>
     [GoogleNativeResourceType("google-native:ml/v1:Model")]
-    public partial class Model : Pulumi.CustomResource
+    public partial class Model : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The default version of the model. This version will be used to handle prediction requests that do not specify a version. You can change the default version by calling projects.models.versions.setDefault.
@@ -113,7 +113,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         }
     }
 
-    public sealed class ModelArgs : Pulumi.ResourceArgs
+    public sealed class ModelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The description specified for the model when it was created.
@@ -175,5 +175,6 @@ namespace Pulumi.GoogleNative.Ml.V1
         public ModelArgs()
         {
         }
+        public static new ModelArgs Empty => new ModelArgs();
     }
 }

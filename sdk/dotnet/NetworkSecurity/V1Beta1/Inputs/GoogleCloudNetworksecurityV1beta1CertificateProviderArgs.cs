@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Inputs
     /// <summary>
     /// Specification of certificate provider. Defines the mechanism to obtain the certificate and private key for peer to peer authentication.
     /// </summary>
-    public sealed class GoogleCloudNetworksecurityV1beta1CertificateProviderArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudNetworksecurityV1beta1CertificateProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Inputs
         public GoogleCloudNetworksecurityV1beta1CertificateProviderArgs()
         {
         }
+        public static new GoogleCloudNetworksecurityV1beta1CertificateProviderArgs Empty => new GoogleCloudNetworksecurityV1beta1CertificateProviderArgs();
     }
 }

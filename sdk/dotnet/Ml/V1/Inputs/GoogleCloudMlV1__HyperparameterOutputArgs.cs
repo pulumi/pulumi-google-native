@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents the result of a single hyperparameter tuning trial from a training job. The TrainingOutput object that is returned on successful completion of a training job with hyperparameter tuning includes a list of HyperparameterOutput objects, one for each successful trial.
     /// </summary>
-    public sealed class GoogleCloudMlV1__HyperparameterOutputArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__HyperparameterOutputArgs : global::Pulumi.ResourceArgs
     {
         [Input("allMetrics")]
         private InputList<Inputs.GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs>? _allMetrics;
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__HyperparameterOutputArgs()
         {
         }
+        public static new GoogleCloudMlV1__HyperparameterOutputArgs Empty => new GoogleCloudMlV1__HyperparameterOutputArgs();
     }
 }

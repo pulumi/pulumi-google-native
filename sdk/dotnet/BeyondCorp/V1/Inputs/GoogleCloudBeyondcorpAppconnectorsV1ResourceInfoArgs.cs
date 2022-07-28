@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1.Inputs
     /// <summary>
     /// ResourceInfo represents the information/status of an app connector resource. Such as: - remote_agent - container - runtime - appgateway - appconnector - appconnection - tunnel - logagent
     /// </summary>
-    public sealed class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Unique Id for the resource.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1.Inputs
         public GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs()
         {
         }
+        public static new GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs Empty => new GoogleCloudBeyondcorpAppconnectorsV1ResourceInfoArgs();
     }
 }

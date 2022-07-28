@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
     /// <summary>
     /// HTTP request. The task will be pushed to the worker as an HTTP request. An HTTP request embodies a url, an http method, headers, body and authorization for the http task.
     /// </summary>
-    public sealed class HttpRequestArgs : Pulumi.ResourceArgs
+    public sealed class HttpRequestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a task with an incompatible HttpMethod.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
         public HttpRequestArgs()
         {
         }
+        public static new HttpRequestArgs Empty => new HttpRequestArgs();
     }
 }

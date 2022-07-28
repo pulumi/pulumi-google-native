@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// Specifies the config of disk options for a group of VM instances.
     /// </summary>
-    public sealed class DiskConfigArgs : Pulumi.ResourceArgs
+    public sealed class DiskConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Size in GB of the boot disk (default is 500GB).
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public DiskConfigArgs()
         {
         }
+        public static new DiskConfigArgs Empty => new DiskConfigArgs();
     }
 }

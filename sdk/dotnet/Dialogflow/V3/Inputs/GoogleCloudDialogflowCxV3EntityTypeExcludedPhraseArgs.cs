@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// An excluded entity phrase that should not be matched.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The word or phrase to be excluded.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs Empty => new GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs();
     }
 }

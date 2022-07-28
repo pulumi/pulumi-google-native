@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Controls what and how to inspect for findings.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2InspectJobConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2InspectJobConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("actions")]
         private InputList<Inputs.GooglePrivacyDlpV2ActionArgs>? _actions;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2InspectJobConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2InspectJobConfigArgs Empty => new GooglePrivacyDlpV2InspectJobConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// Config to process conversation.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of recent non-small-talk sentences to use as context for article and FAQ suggestion
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigArgs Empty => new GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationProcessConfigArgs();
     }
 }

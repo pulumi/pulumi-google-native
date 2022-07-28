@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     }
 
 
-    public sealed class GetEvaluationArgs : Pulumi.InvokeArgs
+    public sealed class GetEvaluationArgs : global::Pulumi.InvokeArgs
     {
         [Input("conversationModelId", required: true)]
         public string ConversationModelId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public GetEvaluationArgs()
         {
         }
+        public static new GetEvaluationArgs Empty => new GetEvaluationArgs();
     }
 
-    public sealed class GetEvaluationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEvaluationInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("conversationModelId", required: true)]
         public Input<string> ConversationModelId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public GetEvaluationInvokeArgs()
         {
         }
+        public static new GetEvaluationInvokeArgs Empty => new GetEvaluationInvokeArgs();
     }
 
 

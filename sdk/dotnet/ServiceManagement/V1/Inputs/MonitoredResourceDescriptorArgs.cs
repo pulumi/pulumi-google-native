@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// An object that describes the schema of a MonitoredResource object using a type name and a set of labels. For example, the monitored resource descriptor for Google Compute Engine VM instances has a type of `"gce_instance"` and specifies the use of the labels `"instance_id"` and `"zone"` to identify particular VM instances. Different APIs can support different monitored resource types. APIs generally provide a `list` method that returns the monitored resource descriptors used by the API. 
     /// </summary>
-    public sealed class MonitoredResourceDescriptorArgs : Pulumi.ResourceArgs
+    public sealed class MonitoredResourceDescriptorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A detailed description of the monitored resource type that might be used in documentation.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public MonitoredResourceDescriptorArgs()
         {
         }
+        public static new MonitoredResourceDescriptorArgs Empty => new MonitoredResourceDescriptorArgs();
     }
 }

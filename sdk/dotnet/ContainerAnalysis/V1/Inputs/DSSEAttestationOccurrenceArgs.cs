@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Deprecated. Prefer to use a regular Occurrence, and populate the Envelope at the top level of the Occurrence.
     /// </summary>
-    public sealed class DSSEAttestationOccurrenceArgs : Pulumi.ResourceArgs
+    public sealed class DSSEAttestationOccurrenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If doing something security critical, make sure to verify the signatures in this metadata.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public DSSEAttestationOccurrenceArgs()
         {
         }
+        public static new DSSEAttestationOccurrenceArgs Empty => new DSSEAttestationOccurrenceArgs();
     }
 }

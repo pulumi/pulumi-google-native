@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.APIKeys.V2.Inputs
     /// <summary>
     /// The HTTP referrers (websites) that are allowed to use the key.
     /// </summary>
-    public sealed class V2BrowserKeyRestrictionsArgs : Pulumi.ResourceArgs
+    public sealed class V2BrowserKeyRestrictionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedReferrers")]
         private InputList<string>? _allowedReferrers;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.APIKeys.V2.Inputs
         public V2BrowserKeyRestrictionsArgs()
         {
         }
+        public static new V2BrowserKeyRestrictionsArgs Empty => new V2BrowserKeyRestrictionsArgs();
     }
 }

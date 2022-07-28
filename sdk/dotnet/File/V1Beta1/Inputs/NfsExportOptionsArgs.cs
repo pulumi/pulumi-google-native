@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Inputs
     /// <summary>
     /// NFS export options specifications.
     /// </summary>
-    public sealed class NfsExportOptionsArgs : Pulumi.ResourceArgs
+    public sealed class NfsExportOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Either READ_ONLY, for allowing only read requests on the exported directory, or READ_WRITE, for allowing both read and write requests. The default is READ_WRITE.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Inputs
         public NfsExportOptionsArgs()
         {
         }
+        public static new NfsExportOptionsArgs Empty => new NfsExportOptionsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Data provided with a pipeline or transform to provide descriptive info.
     /// </summary>
-    public sealed class DisplayDataArgs : Pulumi.ResourceArgs
+    public sealed class DisplayDataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Contains value if the data is of a boolean type.
@@ -90,5 +90,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public DisplayDataArgs()
         {
         }
+        public static new DisplayDataArgs Empty => new DisplayDataArgs();
     }
 }

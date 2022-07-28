@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A filter to reduce the amount of data charted in relevant widgets.
     /// </summary>
-    public sealed class DashboardFilterArgs : Pulumi.ResourceArgs
+    public sealed class DashboardFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The specified filter type
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public DashboardFilterArgs()
         {
         }
+        public static new DashboardFilterArgs Empty => new DashboardFilterArgs();
     }
 }

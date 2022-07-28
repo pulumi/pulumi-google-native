@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     /// <summary>
     /// The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC.
     /// </summary>
-    public sealed class VpcPeeringConfigArgs : Pulumi.ResourceArgs
+    public sealed class VpcPeeringConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A free subnet for peering. (CIDR of /29)
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public VpcPeeringConfigArgs()
         {
         }
+        public static new VpcPeeringConfigArgs Empty => new VpcPeeringConfigArgs();
     }
 }

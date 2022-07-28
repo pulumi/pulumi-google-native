@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
     /// <summary>
     /// Describes a selector for extracting and matching an MSH field to a value.
     /// </summary>
-    public sealed class VersionSourceArgs : Pulumi.ResourceArgs
+    public sealed class VersionSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The field to extract from the MSH segment. For example, "3.1" or "18[1].1".
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         public VersionSourceArgs()
         {
         }
+        public static new VersionSourceArgs Empty => new VersionSourceArgs();
     }
 }

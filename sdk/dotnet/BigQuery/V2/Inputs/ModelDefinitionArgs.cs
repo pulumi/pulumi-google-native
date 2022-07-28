@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class ModelDefinitionArgs : Pulumi.ResourceArgs
+    public sealed class ModelDefinitionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public ModelDefinitionArgs()
         {
         }
+        public static new ModelDefinitionArgs Empty => new ModelDefinitionArgs();
     }
 }

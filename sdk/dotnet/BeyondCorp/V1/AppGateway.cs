@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
     /// Creates a new AppGateway in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:beyondcorp/v1:AppGateway")]
-    public partial class AppGateway : Pulumi.CustomResource
+    public partial class AppGateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of connections allocated for the Gateway
@@ -153,7 +153,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
         }
     }
 
-    public sealed class AppGatewayArgs : Pulumi.ResourceArgs
+    public sealed class AppGatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. User-settable AppGateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
@@ -218,5 +218,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
         public AppGatewayArgs()
         {
         }
+        public static new AppGatewayArgs Empty => new AppGatewayArgs();
     }
 }

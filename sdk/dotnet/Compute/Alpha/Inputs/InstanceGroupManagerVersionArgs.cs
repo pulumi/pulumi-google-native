@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class InstanceGroupManagerVersionArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupManagerVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URL of the instance template that is specified for this managed instance group. The group uses this template to create new instances in the managed instance group until the `targetSize` for this version is reached. The templates for existing instances in the group do not change unless you run recreateInstances, run applyUpdatesToInstances, or set the group's updatePolicy.type to PROACTIVE; in those cases, existing instances are updated until the `targetSize` for this version is reached.
@@ -39,5 +39,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public InstanceGroupManagerVersionArgs()
         {
         }
+        public static new InstanceGroupManagerVersionArgs Empty => new InstanceGroupManagerVersionArgs();
     }
 }

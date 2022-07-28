@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Inputs
     /// <summary>
     /// A router appliance instance is a Compute Engine virtual machine (VM) instance that acts as a BGP speaker. A router appliance instance is specified by the URI of the VM and the internal IP address of one of the VM's network interfaces.
     /// </summary>
-    public sealed class RouterApplianceInstanceArgs : Pulumi.ResourceArgs
+    public sealed class RouterApplianceInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address on the VM to use for peering.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Inputs
         public RouterApplianceInstanceArgs()
         {
         }
+        public static new RouterApplianceInstanceArgs Empty => new RouterApplianceInstanceArgs();
     }
 }

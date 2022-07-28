@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Detail human agent assistant config.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("featureConfigs")]
         private InputList<Inputs.GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs>? _featureConfigs;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs Empty => new GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs();
     }
 }

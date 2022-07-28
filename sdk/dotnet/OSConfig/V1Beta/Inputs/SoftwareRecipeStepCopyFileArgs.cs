@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Copies the artifact to the specified path on the instance.
     /// </summary>
-    public sealed class SoftwareRecipeStepCopyFileArgs : Pulumi.ResourceArgs
+    public sealed class SoftwareRecipeStepCopyFileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the relevant artifact in the recipe.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public SoftwareRecipeStepCopyFileArgs()
         {
         }
+        public static new SoftwareRecipeStepCopyFileArgs Empty => new SoftwareRecipeStepCopyFileArgs();
     }
 }

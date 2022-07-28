@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// General identifier of a data field in a storage service.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2FieldIdArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2FieldIdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name describing the field.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2FieldIdArgs()
         {
         }
+        public static new GooglePrivacyDlpV2FieldIdArgs Empty => new GooglePrivacyDlpV2FieldIdArgs();
     }
 }

@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:beyondcorp/v1alpha:ClientGatewayIamPolicy")]
-    public partial class ClientGatewayIamPolicy : Pulumi.CustomResource
+    public partial class ClientGatewayIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         }
     }
 
-    public sealed class ClientGatewayIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ClientGatewayIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.GoogleIamV1AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public ClientGatewayIamPolicyArgs()
         {
         }
+        public static new ClientGatewayIamPolicyArgs Empty => new ClientGatewayIamPolicyArgs();
     }
 }

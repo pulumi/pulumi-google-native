@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Configuration of logging on a NAT.
     /// </summary>
-    public sealed class RouterNatLogConfigArgs : Pulumi.ResourceArgs
+    public sealed class RouterNatLogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether or not to export logs. This is false by default.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public RouterNatLogConfigArgs()
         {
         }
+        public static new RouterNatLogConfigArgs Empty => new RouterNatLogConfigArgs();
     }
 }

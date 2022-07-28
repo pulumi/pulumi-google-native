@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// <summary>
     /// RevisionTemplate describes the data a revision should have when created from a template.
     /// </summary>
-    public sealed class GoogleCloudRunV2RevisionTemplateArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRunV2RevisionTemplateArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -114,5 +114,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public GoogleCloudRunV2RevisionTemplateArgs()
         {
         }
+        public static new GoogleCloudRunV2RevisionTemplateArgs Empty => new GoogleCloudRunV2RevisionTemplateArgs();
     }
 }

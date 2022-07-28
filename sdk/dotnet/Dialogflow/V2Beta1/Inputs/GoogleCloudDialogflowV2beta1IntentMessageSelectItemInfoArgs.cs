@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Additional info about the select item for when it is triggered in a dialog.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A unique key that will be sent back to the agent if this response is given.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs();
     }
 }

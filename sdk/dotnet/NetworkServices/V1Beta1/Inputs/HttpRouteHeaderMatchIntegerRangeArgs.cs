@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
     /// <summary>
     /// Represents an integer value range.
     /// </summary>
-    public sealed class HttpRouteHeaderMatchIntegerRangeArgs : Pulumi.ResourceArgs
+    public sealed class HttpRouteHeaderMatchIntegerRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// End of the range (exclusive)
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public HttpRouteHeaderMatchIntegerRangeArgs()
         {
         }
+        public static new HttpRouteHeaderMatchIntegerRangeArgs Empty => new HttpRouteHeaderMatchIntegerRangeArgs();
     }
 }

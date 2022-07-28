@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Options defining a data set within Google Cloud Datastore.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2DatastoreOptionsArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2DatastoreOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The kind to process.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2DatastoreOptionsArgs()
         {
         }
+        public static new GooglePrivacyDlpV2DatastoreOptionsArgs Empty => new GooglePrivacyDlpV2DatastoreOptionsArgs();
     }
 }

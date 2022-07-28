@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
     /// <summary>
     /// Pull target.
     /// </summary>
-    public sealed class PullTargetArgs : Pulumi.ResourceArgs
+    public sealed class PullTargetArgs : global::Pulumi.ResourceArgs
     {
         public PullTargetArgs()
         {
         }
+        public static new PullTargetArgs Empty => new PullTargetArgs();
     }
 }

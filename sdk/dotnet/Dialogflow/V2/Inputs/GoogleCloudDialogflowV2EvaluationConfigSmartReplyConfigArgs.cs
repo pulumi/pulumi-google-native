@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// Smart reply specific configuration for evaluation job.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The allowlist document resource name. Format: `projects//knowledgeBases//documents/`. Only used for smart reply model.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs Empty => new GoogleCloudDialogflowV2EvaluationConfigSmartReplyConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     /// <summary>
     /// EnvVarSource represents a source for the value of an EnvVar.
     /// </summary>
-    public sealed class EnvVarSourceArgs : Pulumi.ResourceArgs
+    public sealed class EnvVarSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public EnvVarSourceArgs()
         {
         }
+        public static new EnvVarSourceArgs Empty => new EnvVarSourceArgs();
     }
 }

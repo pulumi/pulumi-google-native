@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
     }
 
 
-    public sealed class GetProductArgs : Pulumi.InvokeArgs
+    public sealed class GetProductArgs : global::Pulumi.InvokeArgs
     {
         [Input("branchId", required: true)]
         public string BranchId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public GetProductArgs()
         {
         }
+        public static new GetProductArgs Empty => new GetProductArgs();
     }
 
-    public sealed class GetProductInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProductInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("branchId", required: true)]
         public Input<string> BranchId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public GetProductInvokeArgs()
         {
         }
+        public static new GetProductInvokeArgs Empty => new GetProductInvokeArgs();
     }
 
 

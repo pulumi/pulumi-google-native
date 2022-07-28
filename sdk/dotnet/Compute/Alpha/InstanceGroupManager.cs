@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A managed instance group can have up to 1000 VM instances per group. Please contact Cloud Support if you need an increase in this limit.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:InstanceGroupManager")]
-    public partial class InstanceGroupManager : Pulumi.CustomResource
+    public partial class InstanceGroupManager : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies configuration that overrides the instance template configuration for the group.
@@ -249,7 +249,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class InstanceGroupManagerArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupManagerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies configuration that overrides the instance template configuration for the group.
@@ -410,5 +410,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public InstanceGroupManagerArgs()
         {
         }
+        public static new InstanceGroupManagerArgs Empty => new InstanceGroupManagerArgs();
     }
 }

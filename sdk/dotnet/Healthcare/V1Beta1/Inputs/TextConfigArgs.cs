@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
 {
 
-    public sealed class TextConfigArgs : Pulumi.ResourceArgs
+    public sealed class TextConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("transformations")]
         private InputList<Inputs.InfoTypeTransformationArgs>? _transformations;
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public TextConfigArgs()
         {
         }
+        public static new TextConfigArgs Empty => new TextConfigArgs();
     }
 }

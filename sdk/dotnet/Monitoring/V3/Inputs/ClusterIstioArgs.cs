@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Istio service scoped to a single Kubernetes cluster. Learn more at https://istio.io. Clusters running OSS Istio will have their services ingested as this type.
     /// </summary>
-    public sealed class ClusterIstioArgs : Pulumi.ResourceArgs
+    public sealed class ClusterIstioArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Kubernetes cluster in which this Istio service is defined. Corresponds to the cluster_name resource label in k8s_cluster resources.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public ClusterIstioArgs()
         {
         }
+        public static new ClusterIstioArgs Empty => new ClusterIstioArgs();
     }
 }

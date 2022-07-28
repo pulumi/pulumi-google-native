@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Inputs
 {
 
-    public sealed class GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, measurement.elapsed_time is used as the x-axis of each Trials Decay Curve. Otherwise, Measurement.steps will be used as the x-axis.
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs()
         {
         }
+        public static new GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs Empty => new GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
     }
 
 
-    public sealed class GetTriggerIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetTriggerIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public GetTriggerIamPolicyArgs()
         {
         }
+        public static new GetTriggerIamPolicyArgs Empty => new GetTriggerIamPolicyArgs();
     }
 
-    public sealed class GetTriggerIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTriggerIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public GetTriggerIamPolicyInvokeArgs()
         {
         }
+        public static new GetTriggerIamPolicyInvokeArgs Empty => new GetTriggerIamPolicyInvokeArgs();
     }
 
 

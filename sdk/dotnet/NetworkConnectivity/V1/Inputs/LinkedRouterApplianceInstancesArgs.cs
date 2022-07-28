@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Inputs
     /// <summary>
     /// A collection of router appliance instances. If you configure multiple router appliance instances to receive data from the same set of sites outside of Google Cloud, we recommend that you associate those instances with the same spoke.
     /// </summary>
-    public sealed class LinkedRouterApplianceInstancesArgs : Pulumi.ResourceArgs
+    public sealed class LinkedRouterApplianceInstancesArgs : global::Pulumi.ResourceArgs
     {
         [Input("instances")]
         private InputList<Inputs.RouterApplianceInstanceArgs>? _instances;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Inputs
         public LinkedRouterApplianceInstancesArgs()
         {
         }
+        public static new LinkedRouterApplianceInstancesArgs Empty => new LinkedRouterApplianceInstancesArgs();
     }
 }

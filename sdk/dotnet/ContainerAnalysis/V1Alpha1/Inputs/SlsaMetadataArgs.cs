@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Other properties of the build.
     /// </summary>
-    public sealed class SlsaMetadataArgs : Pulumi.ResourceArgs
+    public sealed class SlsaMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The timestamp of when the build completed.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public SlsaMetadataArgs()
         {
         }
+        public static new SlsaMetadataArgs Empty => new SlsaMetadataArgs();
     }
 }

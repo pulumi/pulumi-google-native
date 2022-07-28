@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// An access-control entry.
     /// </summary>
-    public sealed class ObjectAccessControlArgs : Pulumi.ResourceArgs
+    public sealed class ObjectAccessControlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket.
@@ -107,5 +107,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public ObjectAccessControlArgs()
         {
         }
+        public static new ObjectAccessControlArgs Empty => new ObjectAccessControlArgs();
     }
 }

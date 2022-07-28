@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2
     /// Creates a new Service in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:run/v2:Service")]
-    public partial class Service : Pulumi.CustomResource
+    public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
@@ -250,7 +250,7 @@ namespace Pulumi.GoogleNative.Run.V2
         }
     }
 
-    public sealed class ServiceArgs : Pulumi.ResourceArgs
+    public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -357,5 +357,6 @@ namespace Pulumi.GoogleNative.Run.V2
         public ServiceArgs()
         {
         }
+        public static new ServiceArgs Empty => new ServiceArgs();
     }
 }

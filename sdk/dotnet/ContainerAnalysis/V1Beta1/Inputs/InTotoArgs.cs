@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// This contains the fields corresponding to the definition of a software supply chain step in an in-toto layout. This information goes into a Grafeas note.
     /// </summary>
-    public sealed class InTotoArgs : Pulumi.ResourceArgs
+    public sealed class InTotoArgs : global::Pulumi.ResourceArgs
     {
         [Input("expectedCommand")]
         private InputList<string>? _expectedCommand;
@@ -74,5 +74,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public InTotoArgs()
         {
         }
+        public static new InTotoArgs Empty => new InTotoArgs();
     }
 }

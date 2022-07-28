@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class RouterNatRuleActionArgs : Pulumi.ResourceArgs
+    public sealed class RouterNatRuleActionArgs : global::Pulumi.ResourceArgs
     {
         [Input("sourceNatActiveIps")]
         private InputList<string>? _sourceNatActiveIps;
@@ -63,5 +63,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public RouterNatRuleActionArgs()
         {
         }
+        public static new RouterNatRuleActionArgs Empty => new RouterNatRuleActionArgs();
     }
 }

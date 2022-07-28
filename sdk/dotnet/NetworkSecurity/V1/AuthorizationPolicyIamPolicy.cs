@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:networksecurity/v1:AuthorizationPolicyIamPolicy")]
-    public partial class AuthorizationPolicyIamPolicy : Pulumi.CustomResource
+    public partial class AuthorizationPolicyIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         }
     }
 
-    public sealed class AuthorizationPolicyIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AuthorizationPolicyIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.GoogleIamV1AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         public AuthorizationPolicyIamPolicyArgs()
         {
         }
+        public static new AuthorizationPolicyIamPolicyArgs Empty => new AuthorizationPolicyIamPolicyArgs();
     }
 }

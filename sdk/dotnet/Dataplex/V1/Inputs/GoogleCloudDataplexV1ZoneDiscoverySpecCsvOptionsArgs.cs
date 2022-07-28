@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Describe CSV and similar semi-structured data formats.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The delimiter being used to separate values. This defaults to ','.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs()
         {
         }
+        public static new GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs Empty => new GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs();
     }
 }

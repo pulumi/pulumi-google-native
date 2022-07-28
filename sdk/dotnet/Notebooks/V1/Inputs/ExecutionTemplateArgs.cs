@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     /// <summary>
     /// The description a notebook execution workload.
     /// </summary>
-    public sealed class ExecutionTemplateArgs : Pulumi.ResourceArgs
+    public sealed class ExecutionTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration (count and accelerator type) for hardware running notebook execution.
@@ -114,5 +114,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public ExecutionTemplateArgs()
         {
         }
+        public static new ExecutionTemplateArgs Empty => new ExecutionTemplateArgs();
     }
 }

@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2:Participant")]
-    public partial class Participant : Pulumi.CustomResource
+    public partial class Participant : global::Pulumi.CustomResource
     {
         [Output("conversationId")]
         public Output<string> ConversationId { get; private set; } = null!;
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         }
     }
 
-    public sealed class ParticipantArgs : Pulumi.ResourceArgs
+    public sealed class ParticipantArgs : global::Pulumi.ResourceArgs
     {
         [Input("conversationId", required: true)]
         public Input<string> ConversationId { get; set; } = null!;
@@ -143,5 +143,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public ParticipantArgs()
         {
         }
+        public static new ParticipantArgs Empty => new ParticipantArgs();
     }
 }

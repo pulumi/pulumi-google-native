@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
     /// <summary>
     /// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
     /// </summary>
-    public sealed class MultiClusterIngressFeatureSpecArgs : Pulumi.ResourceArgs
+    public sealed class MultiClusterIngressFeatureSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: `projects/foo-proj/locations/global/memberships/bar`
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
         public MultiClusterIngressFeatureSpecArgs()
         {
         }
+        public static new MultiClusterIngressFeatureSpecArgs Empty => new MultiClusterIngressFeatureSpecArgs();
     }
 }

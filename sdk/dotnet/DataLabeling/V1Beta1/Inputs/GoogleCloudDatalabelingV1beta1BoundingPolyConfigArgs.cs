@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Config for image bounding poly (and bounding box) human labeling task.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Annotation spec set resource name.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs Empty => new GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Software Runtime Configuration to run Analyze.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Dataplex Image version.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeArgs()
         {
         }
+        public static new GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeArgs Empty => new GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeArgs();
     }
 }

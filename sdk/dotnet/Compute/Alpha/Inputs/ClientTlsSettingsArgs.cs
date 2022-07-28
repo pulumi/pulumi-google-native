@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] The client side authentication settings for connection originating from the backend service. the backend service.
     /// </summary>
-    public sealed class ClientTlsSettingsArgs : Pulumi.ResourceArgs
+    public sealed class ClientTlsSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configures the mechanism to obtain client-side security certificates and identity information. This field is only applicable when mode is set to MUTUAL.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public ClientTlsSettingsArgs()
         {
         }
+        public static new ClientTlsSettingsArgs Empty => new ClientTlsSettingsArgs();
     }
 }

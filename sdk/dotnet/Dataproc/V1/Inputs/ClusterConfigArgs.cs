@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// The cluster config.
     /// </summary>
-    public sealed class ClusterConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Autoscaling config for the policy associated with the cluster. Cluster does not autoscale if this field is unset.
@@ -120,5 +120,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public ClusterConfigArgs()
         {
         }
+        public static new ClusterConfigArgs Empty => new ClusterConfigArgs();
     }
 }

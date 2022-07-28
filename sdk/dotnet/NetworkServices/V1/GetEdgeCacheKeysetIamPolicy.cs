@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
     }
 
 
-    public sealed class GetEdgeCacheKeysetIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetEdgeCacheKeysetIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("edgeCacheKeysetId", required: true)]
         public string EdgeCacheKeysetId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetEdgeCacheKeysetIamPolicyArgs()
         {
         }
+        public static new GetEdgeCacheKeysetIamPolicyArgs Empty => new GetEdgeCacheKeysetIamPolicyArgs();
     }
 
-    public sealed class GetEdgeCacheKeysetIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEdgeCacheKeysetIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("edgeCacheKeysetId", required: true)]
         public Input<string> EdgeCacheKeysetId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetEdgeCacheKeysetIamPolicyInvokeArgs()
         {
         }
+        public static new GetEdgeCacheKeysetIamPolicyInvokeArgs Empty => new GetEdgeCacheKeysetIamPolicyInvokeArgs();
     }
 
 

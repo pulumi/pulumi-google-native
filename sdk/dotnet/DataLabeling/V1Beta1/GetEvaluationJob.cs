@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     }
 
 
-    public sealed class GetEvaluationJobArgs : Pulumi.InvokeArgs
+    public sealed class GetEvaluationJobArgs : global::Pulumi.InvokeArgs
     {
         [Input("evaluationJobId", required: true)]
         public string EvaluationJobId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public GetEvaluationJobArgs()
         {
         }
+        public static new GetEvaluationJobArgs Empty => new GetEvaluationJobArgs();
     }
 
-    public sealed class GetEvaluationJobInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEvaluationJobInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("evaluationJobId", required: true)]
         public Input<string> EvaluationJobId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public GetEvaluationJobInvokeArgs()
         {
         }
+        public static new GetEvaluationJobInvokeArgs Empty => new GetEvaluationJobInvokeArgs();
     }
 
 

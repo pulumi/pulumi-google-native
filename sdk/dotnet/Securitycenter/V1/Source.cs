@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:securitycenter/v1:Source")]
-    public partial class Source : Pulumi.CustomResource
+    public partial class Source : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}", "folders/{folder_id}/sources/{source_id}" or "projects/{project_number}/sources/{source_id}", depending on the closest CRM ancestor of the resource associated with the finding.
@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         }
     }
 
-    public sealed class SourceArgs : Pulumi.ResourceArgs
+    public sealed class SourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The canonical name of the finding. It's either "organizations/{organization_id}/sources/{source_id}", "folders/{folder_id}/sources/{source_id}" or "projects/{project_number}/sources/{source_id}", depending on the closest CRM ancestor of the resource associated with the finding.
@@ -123,5 +123,6 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public SourceArgs()
         {
         }
+        public static new SourceArgs Empty => new SourceArgs();
     }
 }

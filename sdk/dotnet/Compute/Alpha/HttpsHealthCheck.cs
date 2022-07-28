@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a HttpsHealthCheck resource in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:HttpsHealthCheck")]
-    public partial class HttpsHealthCheck : Pulumi.CustomResource
+    public partial class HttpsHealthCheck : global::Pulumi.CustomResource
     {
         /// <summary>
         /// How often (in seconds) to send a health check. The default value is 5 seconds.
@@ -149,7 +149,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class HttpsHealthCheckArgs : Pulumi.ResourceArgs
+    public sealed class HttpsHealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How often (in seconds) to send a health check. The default value is 5 seconds.
@@ -223,5 +223,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public HttpsHealthCheckArgs()
         {
         }
+        public static new HttpsHealthCheckArgs Empty => new HttpsHealthCheckArgs();
     }
 }

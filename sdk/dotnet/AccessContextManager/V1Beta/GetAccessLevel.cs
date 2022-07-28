@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
     }
 
 
-    public sealed class GetAccessLevelArgs : Pulumi.InvokeArgs
+    public sealed class GetAccessLevelArgs : global::Pulumi.InvokeArgs
     {
         [Input("accessLevelFormat")]
         public string? AccessLevelFormat { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         public GetAccessLevelArgs()
         {
         }
+        public static new GetAccessLevelArgs Empty => new GetAccessLevelArgs();
     }
 
-    public sealed class GetAccessLevelInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccessLevelInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("accessLevelFormat")]
         public Input<string>? AccessLevelFormat { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         public GetAccessLevelInvokeArgs()
         {
         }
+        public static new GetAccessLevelInvokeArgs Empty => new GetAccessLevelInvokeArgs();
     }
 
 

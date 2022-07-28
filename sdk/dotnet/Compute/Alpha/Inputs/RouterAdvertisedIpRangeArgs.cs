@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Description-tagged IP ranges for the router to advertise.
     /// </summary>
-    public sealed class RouterAdvertisedIpRangeArgs : Pulumi.ResourceArgs
+    public sealed class RouterAdvertisedIpRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-specified description for the IP range.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public RouterAdvertisedIpRangeArgs()
         {
         }
+        public static new RouterAdvertisedIpRangeArgs Empty => new RouterAdvertisedIpRangeArgs();
     }
 }

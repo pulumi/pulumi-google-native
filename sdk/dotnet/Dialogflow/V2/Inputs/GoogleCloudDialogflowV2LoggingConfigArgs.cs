@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// Defines logging behavior for conversation lifecycle events.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2LoggingConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2LoggingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to log conversation events like CONVERSATION_STARTED to Stackdriver in the conversation project as JSON format ConversationEvent protos.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2LoggingConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2LoggingConfigArgs Empty => new GoogleCloudDialogflowV2LoggingConfigArgs();
     }
 }

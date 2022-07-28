@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkmanagement/v1:ConnectivityTest")]
-    public partial class ConnectivityTest : Pulumi.CustomResource
+    public partial class ConnectivityTest : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time the test was created.
@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         }
     }
 
-    public sealed class ConnectivityTestArgs : Pulumi.ResourceArgs
+    public sealed class ConnectivityTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The user-supplied description of the Connectivity Test. Maximum of 512 characters.
@@ -207,5 +207,6 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         public ConnectivityTestArgs()
         {
         }
+        public static new ConnectivityTestArgs Empty => new ConnectivityTestArgs();
     }
 }

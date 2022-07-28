@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.File.V1
     }
 
 
-    public sealed class GetSnapshotArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.File.V1
         public GetSnapshotArgs()
         {
         }
+        public static new GetSnapshotArgs Empty => new GetSnapshotArgs();
     }
 
-    public sealed class GetSnapshotInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.File.V1
         public GetSnapshotInvokeArgs()
         {
         }
+        public static new GetSnapshotInvokeArgs Empty => new GetSnapshotInvokeArgs();
     }
 
 

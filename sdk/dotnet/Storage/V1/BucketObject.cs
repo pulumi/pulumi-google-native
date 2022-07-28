@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1
     /// Stores a new object and metadata.
     /// </summary>
     [GoogleNativeResourceType("google-native:storage/v1:BucketObject")]
-    public partial class BucketObject : Pulumi.CustomResource
+    public partial class BucketObject : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Access controls on the object.
@@ -287,7 +287,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         }
     }
 
-    public sealed class BucketObjectArgs : Pulumi.ResourceArgs
+    public sealed class BucketObjectArgs : global::Pulumi.ResourceArgs
     {
         [Input("acl")]
         private InputList<Inputs.ObjectAccessControlArgs>? _acl;
@@ -541,5 +541,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         public BucketObjectArgs()
         {
         }
+        public static new BucketObjectArgs Empty => new BucketObjectArgs();
     }
 }

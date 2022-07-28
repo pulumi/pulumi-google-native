@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     /// <summary>
     /// A POSIX filesystem resource.
     /// </summary>
-    public sealed class PosixFilesystemArgs : Pulumi.ResourceArgs
+    public sealed class PosixFilesystemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Root directory path to the filesystem.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public PosixFilesystemArgs()
         {
         }
+        public static new PosixFilesystemArgs Empty => new PosixFilesystemArgs();
     }
 }

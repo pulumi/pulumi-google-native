@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
     }
 
 
-    public sealed class GetRealmArgs : Pulumi.InvokeArgs
+    public sealed class GetRealmArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         public GetRealmArgs()
         {
         }
+        public static new GetRealmArgs Empty => new GetRealmArgs();
     }
 
-    public sealed class GetRealmInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRealmInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         public GetRealmInvokeArgs()
         {
         }
+        public static new GetRealmInvokeArgs Empty => new GetRealmInvokeArgs();
     }
 
 

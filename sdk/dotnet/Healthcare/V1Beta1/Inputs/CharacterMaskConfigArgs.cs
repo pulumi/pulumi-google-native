@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Mask a string by replacing its characters with a fixed character.
     /// </summary>
-    public sealed class CharacterMaskConfigArgs : Pulumi.ResourceArgs
+    public sealed class CharacterMaskConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Character to mask the sensitive values. If not supplied, defaults to "*".
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public CharacterMaskConfigArgs()
         {
         }
+        public static new CharacterMaskConfigArgs Empty => new CharacterMaskConfigArgs();
     }
 }

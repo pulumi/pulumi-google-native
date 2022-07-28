@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     /// Creates a new Consent artifact in the parent consent store.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1beta1:ConsentArtifact")]
-    public partial class ConsentArtifact : Pulumi.CustomResource
+    public partial class ConsentArtifact : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. Screenshots, PDFs, or other binary information documenting the user's consent.
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         }
     }
 
-    public sealed class ConsentArtifactArgs : Pulumi.ResourceArgs
+    public sealed class ConsentArtifactArgs : global::Pulumi.ResourceArgs
     {
         [Input("consentContentScreenshots")]
         private InputList<Inputs.ImageArgs>? _consentContentScreenshots;
@@ -202,5 +202,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public ConsentArtifactArgs()
         {
         }
+        public static new ConsentArtifactArgs Empty => new ConsentArtifactArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1.Inputs
     /// <summary>
     /// The configuration used for a Replay.
     /// </summary>
-    public sealed class GoogleCloudPolicysimulatorV1ReplayConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudPolicysimulatorV1ReplayConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The logs to use as input for the Replay.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1.Inputs
         public GoogleCloudPolicysimulatorV1ReplayConfigArgs()
         {
         }
+        public static new GoogleCloudPolicysimulatorV1ReplayConfigArgs Empty => new GoogleCloudPolicysimulatorV1ReplayConfigArgs();
     }
 }

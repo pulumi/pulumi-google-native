@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Vision.V1
     /// Creates and returns a new ReferenceImage resource. The `bounding_poly` field is optional. If `bounding_poly` is not specified, the system will try to detect regions of interest in the image that are compatible with the product_category on the parent product. If it is specified, detection is ALWAYS skipped. The system converts polygons into non-rotated rectangles. Note that the pipeline will resize the image if the image resolution is too large to process (above 50MP). Possible errors: * Returns INVALID_ARGUMENT if the image_uri is missing or longer than 4096 characters. * Returns INVALID_ARGUMENT if the product does not exist. * Returns INVALID_ARGUMENT if bounding_poly is not provided, and nothing compatible with the parent product's product_category is detected. * Returns INVALID_ARGUMENT if bounding_poly contains more than 10 polygons.
     /// </summary>
     [GoogleNativeResourceType("google-native:vision/v1:ReferenceImage")]
-    public partial class ReferenceImage : Pulumi.CustomResource
+    public partial class ReferenceImage : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. Bounding polygons around the areas of interest in the reference image. If this field is empty, the system will try to detect regions of interest. At most 10 bounding polygons will be used. The provided shape is converted into a non-rotated rectangle. Once converted, the small edge of the rectangle must be greater than or equal to 300 pixels. The aspect ratio must be 1:4 or less (i.e. 1:3 is ok; 1:5 is not).
@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.Vision.V1
         }
     }
 
-    public sealed class ReferenceImageArgs : Pulumi.ResourceArgs
+    public sealed class ReferenceImageArgs : global::Pulumi.ResourceArgs
     {
         [Input("boundingPolys")]
         private InputList<Inputs.BoundingPolyArgs>? _boundingPolys;
@@ -141,5 +141,6 @@ namespace Pulumi.GoogleNative.Vision.V1
         public ReferenceImageArgs()
         {
         }
+        public static new ReferenceImageArgs Empty => new ReferenceImageArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// A network interface resource attached to an instance.
     /// </summary>
-    public sealed class NetworkInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class NetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessConfigs")]
         private InputList<Inputs.AccessConfigArgs>? _accessConfigs;
@@ -114,5 +114,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public NetworkInterfaceArgs()
         {
         }
+        public static new NetworkInterfaceArgs Empty => new NetworkInterfaceArgs();
     }
 }

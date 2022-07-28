@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1.Inputs
     /// <summary>
     /// Specification of traffic destination attributes.
     /// </summary>
-    public sealed class DestinationArgs : Pulumi.ResourceArgs
+    public sealed class DestinationArgs : global::Pulumi.ResourceArgs
     {
         [Input("hosts", required: true)]
         private InputList<string>? _hosts;
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1.Inputs
         public DestinationArgs()
         {
         }
+        public static new DestinationArgs Empty => new DestinationArgs();
     }
 }

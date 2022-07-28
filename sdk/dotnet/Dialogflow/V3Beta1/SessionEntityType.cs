@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     /// Creates a session entity type.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:SessionEntityType")]
-    public partial class SessionEntityType : Pulumi.CustomResource
+    public partial class SessionEntityType : global::Pulumi.CustomResource
     {
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         }
     }
 
-    public sealed class SessionEntityTypeArgs : Pulumi.ResourceArgs
+    public sealed class SessionEntityTypeArgs : global::Pulumi.ResourceArgs
     {
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -143,5 +143,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public SessionEntityTypeArgs()
         {
         }
+        public static new SessionEntityTypeArgs Empty => new SessionEntityTypeArgs();
     }
 }

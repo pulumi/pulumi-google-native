@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// VPC access connector specification.
     /// </summary>
-    public sealed class VpcAccessConnectorArgs : Pulumi.ResourceArgs
+    public sealed class VpcAccessConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The egress setting for the connector, controlling what traffic is diverted through it.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public VpcAccessConnectorArgs()
         {
         }
+        public static new VpcAccessConnectorArgs Empty => new VpcAccessConnectorArgs();
     }
 }

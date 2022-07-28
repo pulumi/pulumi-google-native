@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration for the PodSecurityPolicy feature.
     /// </summary>
-    public sealed class PodSecurityPolicyConfigArgs : Pulumi.ResourceArgs
+    public sealed class PodSecurityPolicyConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a PodSecurityPolicy to be created.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public PodSecurityPolicyConfigArgs()
         {
         }
+        public static new PodSecurityPolicyConfigArgs Empty => new PodSecurityPolicyConfigArgs();
     }
 }

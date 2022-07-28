@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:managedidentities/v1alpha1:Domain")]
-    public partial class Domain : Pulumi.CustomResource
+    public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
@@ -150,7 +150,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         }
     }
 
-    public sealed class DomainArgs : Pulumi.ResourceArgs
+    public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Configuration for audit logs. True if audit logs are enabled, else false. Default is audit logs disabled.
@@ -218,5 +218,6 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         public DomainArgs()
         {
         }
+        public static new DomainArgs Empty => new DomainArgs();
     }
 }

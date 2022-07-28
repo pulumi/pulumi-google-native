@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
     /// <summary>
     /// Specifies how to select a route rule based on HTTP request headers.
     /// </summary>
-    public sealed class HttpRouteHeaderMatchArgs : Pulumi.ResourceArgs
+    public sealed class HttpRouteHeaderMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The value of the header should match exactly the content of exact_match.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
         public HttpRouteHeaderMatchArgs()
         {
         }
+        public static new HttpRouteHeaderMatchArgs Empty => new HttpRouteHeaderMatchArgs();
     }
 }

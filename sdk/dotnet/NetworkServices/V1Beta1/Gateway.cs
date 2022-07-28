@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
     /// Creates a new Gateway in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkservices/v1beta1:Gateway")]
-    public partial class Gateway : Pulumi.CustomResource
+    public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp when the resource was created.
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         }
     }
 
-    public sealed class GatewayArgs : Pulumi.ResourceArgs
+    public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A free-text description of the resource. Max length 1024 characters.
@@ -207,5 +207,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public GatewayArgs()
         {
         }
+        public static new GatewayArgs Empty => new GatewayArgs();
     }
 }

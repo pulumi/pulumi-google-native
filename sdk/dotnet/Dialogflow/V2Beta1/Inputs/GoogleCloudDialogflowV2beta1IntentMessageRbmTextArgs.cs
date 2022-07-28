@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Rich Business Messaging (RBM) text response with suggestions.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmTextArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmTextArgs : global::Pulumi.ResourceArgs
     {
         [Input("rbmSuggestion")]
         private InputList<Inputs.GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArgs>? _rbmSuggestion;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageRbmTextArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageRbmTextArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageRbmTextArgs();
     }
 }

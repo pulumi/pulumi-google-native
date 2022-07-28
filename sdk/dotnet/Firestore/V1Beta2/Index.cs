@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:firestore/v1beta2:Index")]
-    public partial class Index : Pulumi.CustomResource
+    public partial class Index : global::Pulumi.CustomResource
     {
         [Output("collectionGroupId")]
         public Output<string> CollectionGroupId { get; private set; } = null!;
@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta2
         }
     }
 
-    public sealed class IndexArgs : Pulumi.ResourceArgs
+    public sealed class IndexArgs : global::Pulumi.ResourceArgs
     {
         [Input("collectionGroupId", required: true)]
         public Input<string> CollectionGroupId { get; set; } = null!;
@@ -130,5 +130,6 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta2
         public IndexArgs()
         {
         }
+        public static new IndexArgs Empty => new IndexArgs();
     }
 }

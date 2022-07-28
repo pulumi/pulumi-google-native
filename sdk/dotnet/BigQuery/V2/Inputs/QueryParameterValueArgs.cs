@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class QueryParameterValueArgs : Pulumi.ResourceArgs
+    public sealed class QueryParameterValueArgs : global::Pulumi.ResourceArgs
     {
         [Input("arrayValues")]
         private InputList<Inputs.QueryParameterValueArgs>? _arrayValues;
@@ -45,5 +45,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public QueryParameterValueArgs()
         {
         }
+        public static new QueryParameterValueArgs Empty => new QueryParameterValueArgs();
     }
 }

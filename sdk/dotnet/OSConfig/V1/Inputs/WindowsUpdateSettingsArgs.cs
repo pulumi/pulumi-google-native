@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// Windows patching is performed using the Windows Update Agent.
     /// </summary>
-    public sealed class WindowsUpdateSettingsArgs : Pulumi.ResourceArgs
+    public sealed class WindowsUpdateSettingsArgs : global::Pulumi.ResourceArgs
     {
         [Input("classifications")]
         private InputList<Pulumi.GoogleNative.OSConfig.V1.WindowsUpdateSettingsClassificationsItem>? _classifications;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public WindowsUpdateSettingsArgs()
         {
         }
+        public static new WindowsUpdateSettingsArgs Empty => new WindowsUpdateSettingsArgs();
     }
 }

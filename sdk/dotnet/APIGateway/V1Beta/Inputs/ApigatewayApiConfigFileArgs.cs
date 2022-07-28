@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta.Inputs
     /// <summary>
     /// A lightweight description of a file.
     /// </summary>
-    public sealed class ApigatewayApiConfigFileArgs : Pulumi.ResourceArgs
+    public sealed class ApigatewayApiConfigFileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bytes that constitute the file.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta.Inputs
         public ApigatewayApiConfigFileArgs()
         {
         }
+        public static new ApigatewayApiConfigFileArgs Empty => new ApigatewayApiConfigFileArgs();
     }
 }

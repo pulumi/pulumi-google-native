@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
     /// Creates a composite type.
     /// </summary>
     [GoogleNativeResourceType("google-native:deploymentmanager/v2beta:CompositeType")]
-    public partial class CompositeType : Pulumi.CustomResource
+    public partial class CompositeType : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An optional textual description of the resource; provided by the client when the resource is created.
@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         }
     }
 
-    public sealed class CompositeTypeArgs : Pulumi.ResourceArgs
+    public sealed class CompositeTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional textual description of the resource; provided by the client when the resource is created.
@@ -151,5 +151,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         public CompositeTypeArgs()
         {
         }
+        public static new CompositeTypeArgs Empty => new CompositeTypeArgs();
     }
 }

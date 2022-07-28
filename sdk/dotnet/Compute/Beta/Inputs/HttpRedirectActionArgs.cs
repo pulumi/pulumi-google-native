@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Specifies settings for an HTTP redirect.
     /// </summary>
-    public sealed class HttpRedirectActionArgs : Pulumi.ResourceArgs
+    public sealed class HttpRedirectActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The host that is used in the redirect response instead of the one that was supplied in the request. The value must be from 1 to 255 characters.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public HttpRedirectActionArgs()
         {
         }
+        public static new HttpRedirectActionArgs Empty => new HttpRedirectActionArgs();
     }
 }

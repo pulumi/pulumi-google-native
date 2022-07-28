@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:gameservices/v1beta:GameServerDeploymentIamPolicy")]
-    public partial class GameServerDeploymentIamPolicy : Pulumi.CustomResource
+    public partial class GameServerDeploymentIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -105,7 +105,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         }
     }
 
-    public sealed class GameServerDeploymentIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class GameServerDeploymentIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -173,5 +173,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         public GameServerDeploymentIamPolicyArgs()
         {
         }
+        public static new GameServerDeploymentIamPolicyArgs Empty => new GameServerDeploymentIamPolicyArgs();
     }
 }

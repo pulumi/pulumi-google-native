@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A filter that defines a subset of time series data that is displayed in a widget. Time series data is fetched using the ListTimeSeries (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) method.
     /// </summary>
-    public sealed class TimeSeriesFilterArgs : Pulumi.ResourceArgs
+    public sealed class TimeSeriesFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public TimeSeriesFilterArgs()
         {
         }
+        public static new TimeSeriesFilterArgs Empty => new TimeSeriesFilterArgs();
     }
 }

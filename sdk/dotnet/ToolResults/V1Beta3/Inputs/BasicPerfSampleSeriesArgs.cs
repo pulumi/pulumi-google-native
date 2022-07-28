@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// Encapsulates the metadata for basic sample series represented by a line chart
     /// </summary>
-    public sealed class BasicPerfSampleSeriesArgs : Pulumi.ResourceArgs
+    public sealed class BasicPerfSampleSeriesArgs : global::Pulumi.ResourceArgs
     {
         [Input("perfMetricType")]
         public Input<Pulumi.GoogleNative.ToolResults.V1Beta3.BasicPerfSampleSeriesPerfMetricType>? PerfMetricType { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public BasicPerfSampleSeriesArgs()
         {
         }
+        public static new BasicPerfSampleSeriesArgs Empty => new BasicPerfSampleSeriesArgs();
     }
 }

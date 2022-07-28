@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// DocumentNote represents an SPDX Document Creation Infromation section: https://spdx.github.io/spdx-spec/2-document-creation-information/
     /// </summary>
-    public sealed class DocumentNoteArgs : Pulumi.ResourceArgs
+    public sealed class DocumentNoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Compliance with the SPDX specification includes populating the SPDX fields therein with data related to such fields ("SPDX-Metadata")
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public DocumentNoteArgs()
         {
         }
+        public static new DocumentNoteArgs Empty => new DocumentNoteArgs();
     }
 }

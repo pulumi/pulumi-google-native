@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     /// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A regional managed instance group can contain up to 2000 instances.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:RegionInstanceGroupManager")]
-    public partial class RegionInstanceGroupManager : Pulumi.CustomResource
+    public partial class RegionInstanceGroupManager : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The autohealing policy for this managed instance group. You can specify only one value.
@@ -195,7 +195,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
     }
 
-    public sealed class RegionInstanceGroupManagerArgs : Pulumi.ResourceArgs
+    public sealed class RegionInstanceGroupManagerArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoHealingPolicies")]
         private InputList<Inputs.InstanceGroupManagerAutoHealingPolicyArgs>? _autoHealingPolicies;
@@ -308,5 +308,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public RegionInstanceGroupManagerArgs()
         {
         }
+        public static new RegionInstanceGroupManagerArgs Empty => new RegionInstanceGroupManagerArgs();
     }
 }

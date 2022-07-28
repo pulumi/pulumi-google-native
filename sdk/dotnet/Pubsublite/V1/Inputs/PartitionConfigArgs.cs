@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsublite.V1.Inputs
     /// <summary>
     /// The settings for a topic's partitions.
     /// </summary>
-    public sealed class PartitionConfigArgs : Pulumi.ResourceArgs
+    public sealed class PartitionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The capacity configuration.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Pubsublite.V1.Inputs
         public PartitionConfigArgs()
         {
         }
+        public static new PartitionConfigArgs Empty => new PartitionConfigArgs();
     }
 }

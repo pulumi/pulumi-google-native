@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Rule set for modifying a set of infoTypes to alter behavior under certain circumstances, depending on the specific details of the rules within the set.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2InspectionRuleSetArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2InspectionRuleSetArgs : global::Pulumi.ResourceArgs
     {
         [Input("infoTypes")]
         private InputList<Inputs.GooglePrivacyDlpV2InfoTypeArgs>? _infoTypes;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2InspectionRuleSetArgs()
         {
         }
+        public static new GooglePrivacyDlpV2InspectionRuleSetArgs Empty => new GooglePrivacyDlpV2InspectionRuleSetArgs();
     }
 }

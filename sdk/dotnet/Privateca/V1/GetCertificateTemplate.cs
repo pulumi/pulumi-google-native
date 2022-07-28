@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
     }
 
 
-    public sealed class GetCertificateTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetCertificateTemplateArgs : global::Pulumi.InvokeArgs
     {
         [Input("certificateTemplateId", required: true)]
         public string CertificateTemplateId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public GetCertificateTemplateArgs()
         {
         }
+        public static new GetCertificateTemplateArgs Empty => new GetCertificateTemplateArgs();
     }
 
-    public sealed class GetCertificateTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCertificateTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("certificateTemplateId", required: true)]
         public Input<string> CertificateTemplateId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public GetCertificateTemplateInvokeArgs()
         {
         }
+        public static new GetCertificateTemplateInvokeArgs Empty => new GetCertificateTemplateInvokeArgs();
     }
 
 

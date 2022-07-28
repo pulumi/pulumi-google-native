@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
     /// Creates a new user in a Cloud SQL instance.
     /// </summary>
     [GoogleNativeResourceType("google-native:sqladmin/v1:User")]
-    public partial class User : Pulumi.CustomResource
+    public partial class User : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Dual password status for the user.
@@ -120,7 +120,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         }
     }
 
-    public sealed class UserArgs : Pulumi.ResourceArgs
+    public sealed class UserArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Dual password status for the user.
@@ -188,5 +188,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public UserArgs()
         {
         }
+        public static new UserArgs Empty => new UserArgs();
     }
 }

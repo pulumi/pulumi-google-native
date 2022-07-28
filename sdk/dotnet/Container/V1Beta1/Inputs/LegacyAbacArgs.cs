@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration for the legacy Attribute Based Access Control authorization mode.
     /// </summary>
-    public sealed class LegacyAbacArgs : Pulumi.ResourceArgs
+    public sealed class LegacyAbacArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the ABAC authorizer is enabled for this cluster. When enabled, identities in the system, including service accounts, nodes, and controllers, will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public LegacyAbacArgs()
         {
         }
+        public static new LegacyAbacArgs Empty => new LegacyAbacArgs();
     }
 }

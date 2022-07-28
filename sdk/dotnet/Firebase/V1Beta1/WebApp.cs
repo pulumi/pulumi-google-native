@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:firebase/v1beta1:WebApp")]
-    public partial class WebApp : Pulumi.CustomResource
+    public partial class WebApp : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
@@ -109,7 +109,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         }
     }
 
-    public sealed class WebAppArgs : Pulumi.ResourceArgs
+    public sealed class WebAppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
@@ -147,5 +147,6 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         public WebAppArgs()
         {
         }
+        public static new WebAppArgs Empty => new WebAppArgs();
     }
 }

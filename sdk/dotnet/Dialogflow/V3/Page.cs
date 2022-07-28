@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     /// Creates a page in the specified flow. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3:Page")]
-    public partial class Page : Pulumi.CustomResource
+    public partial class Page : global::Pulumi.CustomResource
     {
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         }
     }
 
-    public sealed class PageArgs : Pulumi.ResourceArgs
+    public sealed class PageArgs : global::Pulumi.ResourceArgs
     {
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -208,5 +208,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public PageArgs()
         {
         }
+        public static new PageArgs Empty => new PageArgs();
     }
 }

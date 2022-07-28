@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// A condition type that checks whether a log message in the scoping project (https://cloud.google.com/monitoring/api/v3#project_name) satisfies the given filter. Logs from other projects in the metrics scope are not evaluated.
     /// </summary>
-    public sealed class LogMatchArgs : Pulumi.ResourceArgs
+    public sealed class LogMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A logs-based filter. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries) for how this filter should be constructed.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public LogMatchArgs()
         {
         }
+        public static new LogMatchArgs Empty => new LogMatchArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudresourcemanager/v3:Project")]
-    public partial class Project : Pulumi.CustomResource
+    public partial class Project : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation time.
@@ -119,7 +119,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         }
     }
 
-    public sealed class ProjectArgs : Pulumi.ResourceArgs
+    public sealed class ProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A user-assigned display name of the project. When present it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `My Project`
@@ -154,5 +154,6 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public ProjectArgs()
         {
         }
+        public static new ProjectArgs Empty => new ProjectArgs();
     }
 }

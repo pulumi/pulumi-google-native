@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     /// Creates an Environment in the specified Agent. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: An empty [Struct message](https://developers.google.com/protocol-buffers/docs/reference/google.protobuf#struct) - `response`: Environment
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:Environment")]
-    public partial class Environment : Pulumi.CustomResource
+    public partial class Environment : global::Pulumi.CustomResource
     {
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         }
     }
 
-    public sealed class EnvironmentArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -171,5 +171,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public EnvironmentArgs()
         {
         }
+        public static new EnvironmentArgs Empty => new EnvironmentArgs();
     }
 }

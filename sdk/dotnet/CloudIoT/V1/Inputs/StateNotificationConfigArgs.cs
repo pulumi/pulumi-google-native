@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
     /// <summary>
     /// The configuration for notification of new states received from the device.
     /// </summary>
-    public sealed class StateNotificationConfigArgs : Pulumi.ResourceArgs
+    public sealed class StateNotificationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         public StateNotificationConfigArgs()
         {
         }
+        public static new StateNotificationConfigArgs Empty => new StateNotificationConfigArgs();
     }
 }

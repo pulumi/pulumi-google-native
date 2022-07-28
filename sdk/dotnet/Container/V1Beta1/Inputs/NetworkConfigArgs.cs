@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// NetworkConfig reports the relative names of network &amp; subnetwork.
     /// </summary>
-    public sealed class NetworkConfigArgs : Pulumi.ResourceArgs
+    public sealed class NetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The desired datapath provider for this cluster. By default, uses the IPTables-based kube-proxy implementation.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public NetworkConfigArgs()
         {
         }
+        public static new NetworkConfigArgs Empty => new NetworkConfigArgs();
     }
 }

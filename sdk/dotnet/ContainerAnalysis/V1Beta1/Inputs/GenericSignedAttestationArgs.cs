@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// An attestation wrapper that uses the Grafeas `Signature` message. This attestation must define the `serialized_payload` that the `signatures` verify and any metadata necessary to interpret that plaintext. The signatures should always be over the `serialized_payload` bytestring.
     /// </summary>
-    public sealed class GenericSignedAttestationArgs : Pulumi.ResourceArgs
+    public sealed class GenericSignedAttestationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public GenericSignedAttestationArgs()
         {
         }
+        public static new GenericSignedAttestationArgs Empty => new GenericSignedAttestationArgs();
     }
 }

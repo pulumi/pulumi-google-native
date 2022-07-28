@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Describes the format of the data within its storage location.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1StorageFormatArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1StorageFormatArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The compression type associated with the stored data. If unspecified, the data is uncompressed.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1StorageFormatArgs()
         {
         }
+        public static new GoogleCloudDataplexV1StorageFormatArgs Empty => new GoogleCloudDataplexV1StorageFormatArgs();
     }
 }

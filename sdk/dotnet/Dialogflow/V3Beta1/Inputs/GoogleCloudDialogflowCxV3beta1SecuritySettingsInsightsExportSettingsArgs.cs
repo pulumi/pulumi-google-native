@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Settings for exporting conversations to [Insights](https://cloud.google.com/contact-center/insights/docs).
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If enabled, we will automatically exports conversations to Insights and Insights runs its analyzers.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsArgs Empty => new GoogleCloudDialogflowCxV3beta1SecuritySettingsInsightsExportSettingsArgs();
     }
 }

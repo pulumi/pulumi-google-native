@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
 {
 
-    public sealed class GrafeasV1beta1IntotoArtifactArgs : Pulumi.ResourceArgs
+    public sealed class GrafeasV1beta1IntotoArtifactArgs : global::Pulumi.ResourceArgs
     {
         [Input("hashes")]
         public Input<Inputs.ArtifactHashesArgs>? Hashes { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public GrafeasV1beta1IntotoArtifactArgs()
         {
         }
+        public static new GrafeasV1beta1IntotoArtifactArgs Empty => new GrafeasV1beta1IntotoArtifactArgs();
     }
 }

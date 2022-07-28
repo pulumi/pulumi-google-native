@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A starting intent specified by an action, uri, and categories.
     /// </summary>
-    public sealed class StartActivityIntentArgs : Pulumi.ResourceArgs
+    public sealed class StartActivityIntentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action name. Required for START_ACTIVITY.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public StartActivityIntentArgs()
         {
         }
+        public static new StartActivityIntentArgs Empty => new StartActivityIntentArgs();
     }
 }

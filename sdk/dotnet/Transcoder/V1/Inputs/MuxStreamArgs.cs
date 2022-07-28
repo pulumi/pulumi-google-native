@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Multiplexing settings for output stream.
     /// </summary>
-    public sealed class MuxStreamArgs : Pulumi.ResourceArgs
+    public sealed class MuxStreamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The container format. The default is `mp4` Supported container formats: - `ts` - `fmp4`- the corresponding file extension is `.m4s` - `mp4` - `vtt` See also: [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats)
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public MuxStreamArgs()
         {
         }
+        public static new MuxStreamArgs Empty => new MuxStreamArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
     }
 
 
-    public sealed class GetVersionArgs : Pulumi.InvokeArgs
+    public sealed class GetVersionArgs : global::Pulumi.InvokeArgs
     {
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         public GetVersionArgs()
         {
         }
+        public static new GetVersionArgs Empty => new GetVersionArgs();
     }
 
-    public sealed class GetVersionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         public GetVersionInvokeArgs()
         {
         }
+        public static new GetVersionInvokeArgs Empty => new GetVersionInvokeArgs();
     }
 
 

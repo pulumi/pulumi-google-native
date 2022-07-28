@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a.Inputs
     /// <summary>
     /// Configuration for a push delivery endpoint.
     /// </summary>
-    public sealed class PushConfigArgs : Pulumi.ResourceArgs
+    public sealed class PushConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push".
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a.Inputs
         public PushConfigArgs()
         {
         }
+        public static new PushConfigArgs Empty => new PushConfigArgs();
     }
 }

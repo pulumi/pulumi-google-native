@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Windows Update represents the metadata about the update for the Windows operating system. The fields in this message come from the Windows Update API documented at https://docs.microsoft.com/en-us/windows/win32/api/wuapi/nn-wuapi-iupdate.
     /// </summary>
-    public sealed class WindowsUpdateArgs : Pulumi.ResourceArgs
+    public sealed class WindowsUpdateArgs : global::Pulumi.ResourceArgs
     {
         [Input("categories")]
         private InputList<Inputs.CategoryArgs>? _categories;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public WindowsUpdateArgs()
         {
         }
+        public static new WindowsUpdateArgs Empty => new WindowsUpdateArgs();
     }
 }

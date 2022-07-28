@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     /// <summary>
     /// Information specifying a GKE Cluster.
     /// </summary>
-    public sealed class GkeClusterArgs : Pulumi.ResourceArgs
+    public sealed class GkeClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
         public GkeClusterArgs()
         {
         }
+        public static new GkeClusterArgs Empty => new GkeClusterArgs();
     }
 }

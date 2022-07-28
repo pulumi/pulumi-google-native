@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class MaterializedViewDefinitionArgs : Pulumi.ResourceArgs
+    public sealed class MaterializedViewDefinitionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] [TrustedTester] Enable automatic refresh of the materialized view when the base table is updated. The default value is "true".
@@ -39,5 +39,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public MaterializedViewDefinitionArgs()
         {
         }
+        public static new MaterializedViewDefinitionArgs Empty => new MaterializedViewDefinitionArgs();
     }
 }

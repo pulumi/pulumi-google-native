@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents a set of hyperparameters to optimize.
     /// </summary>
-    public sealed class GoogleCloudMlV1__HyperparameterSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__HyperparameterSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The search algorithm specified for the hyperparameter tuning job. Uses the default AI Platform hyperparameter tuning algorithm if unspecified.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__HyperparameterSpecArgs()
         {
         }
+        public static new GoogleCloudMlV1__HyperparameterSpecArgs Empty => new GoogleCloudMlV1__HyperparameterSpecArgs();
     }
 }

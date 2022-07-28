@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     }
 
 
-    public sealed class GetOrganizationSinkArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationSinkArgs : global::Pulumi.InvokeArgs
     {
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetOrganizationSinkArgs()
         {
         }
+        public static new GetOrganizationSinkArgs Empty => new GetOrganizationSinkArgs();
     }
 
-    public sealed class GetOrganizationSinkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationSinkInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetOrganizationSinkInvokeArgs()
         {
         }
+        public static new GetOrganizationSinkInvokeArgs Empty => new GetOrganizationSinkInvokeArgs();
     }
 
 

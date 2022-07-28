@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// Exit code from a tool execution.
     /// </summary>
-    public sealed class ToolExitCodeArgs : Pulumi.ResourceArgs
+    public sealed class ToolExitCodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Tool execution exit code. A value of 0 means that the execution was successful. - In response: always set - In create/update request: always set
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public ToolExitCodeArgs()
         {
         }
+        public static new ToolExitCodeArgs Empty => new ToolExitCodeArgs();
     }
 }

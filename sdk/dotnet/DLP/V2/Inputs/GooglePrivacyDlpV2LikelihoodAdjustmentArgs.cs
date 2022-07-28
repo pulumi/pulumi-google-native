@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Message for specifying an adjustment to the likelihood of a finding as part of a detection rule.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2LikelihoodAdjustmentArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2LikelihoodAdjustmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set the likelihood of a finding to a fixed value.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2LikelihoodAdjustmentArgs()
         {
         }
+        public static new GooglePrivacyDlpV2LikelihoodAdjustmentArgs Empty => new GooglePrivacyDlpV2LikelihoodAdjustmentArgs();
     }
 }

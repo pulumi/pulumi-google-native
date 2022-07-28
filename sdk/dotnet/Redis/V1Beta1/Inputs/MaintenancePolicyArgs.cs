@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1.Inputs
     /// <summary>
     /// Maintenance policy for an instance.
     /// </summary>
-    public sealed class MaintenancePolicyArgs : Pulumi.ResourceArgs
+    public sealed class MaintenancePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1.Inputs
         public MaintenancePolicyArgs()
         {
         }
+        public static new MaintenancePolicyArgs Empty => new MaintenancePolicyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration for fine-grained cost management feature.
     /// </summary>
-    public sealed class CostManagementConfigArgs : Pulumi.ResourceArgs
+    public sealed class CostManagementConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the feature is enabled or not.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public CostManagementConfigArgs()
         {
         }
+        public static new CostManagementConfigArgs Empty => new CostManagementConfigArgs();
     }
 }

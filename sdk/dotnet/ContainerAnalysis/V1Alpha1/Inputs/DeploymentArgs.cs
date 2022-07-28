@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// The period during which some deployable was active in a runtime.
     /// </summary>
-    public sealed class DeploymentArgs : Pulumi.ResourceArgs
+    public sealed class DeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Address of the runtime element hosting this deployment.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public DeploymentArgs()
         {
         }
+        public static new DeploymentArgs Empty => new DeploymentArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// A condition for determining whether a transformation should be applied to a field.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2RecordConditionArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2RecordConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An expression.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2RecordConditionArgs()
         {
         }
+        public static new GooglePrivacyDlpV2RecordConditionArgs Empty => new GooglePrivacyDlpV2RecordConditionArgs();
     }
 }

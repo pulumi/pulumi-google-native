@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Inputs
     /// <summary>
     /// The evaluated state of this restriction.
     /// </summary>
-    public sealed class MembershipRoleRestrictionEvaluationArgs : Pulumi.ResourceArgs
+    public sealed class MembershipRoleRestrictionEvaluationArgs : global::Pulumi.ResourceArgs
     {
         public MembershipRoleRestrictionEvaluationArgs()
         {
         }
+        public static new MembershipRoleRestrictionEvaluationArgs Empty => new MembershipRoleRestrictionEvaluationArgs();
     }
 }

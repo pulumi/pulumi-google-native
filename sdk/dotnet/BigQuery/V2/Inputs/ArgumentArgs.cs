@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
     /// <summary>
     /// Input/output argument of a function or a stored procedure.
     /// </summary>
-    public sealed class ArgumentArgs : Pulumi.ResourceArgs
+    public sealed class ArgumentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Defaults to FIXED_TYPE.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public ArgumentArgs()
         {
         }
+        public static new ArgumentArgs Empty => new ArgumentArgs();
     }
 }

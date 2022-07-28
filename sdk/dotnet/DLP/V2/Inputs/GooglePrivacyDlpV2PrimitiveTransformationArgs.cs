@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// A rule for transforming a value.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2PrimitiveTransformationArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2PrimitiveTransformationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bucketing
@@ -90,5 +90,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2PrimitiveTransformationArgs()
         {
         }
+        public static new GooglePrivacyDlpV2PrimitiveTransformationArgs Empty => new GooglePrivacyDlpV2PrimitiveTransformationArgs();
     }
 }

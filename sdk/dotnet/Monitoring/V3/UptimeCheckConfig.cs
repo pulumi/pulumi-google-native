@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     /// Creates a new Uptime check configuration.
     /// </summary>
     [GoogleNativeResourceType("google-native:monitoring/v3:UptimeCheckConfig")]
-    public partial class UptimeCheckConfig : Pulumi.CustomResource
+    public partial class UptimeCheckConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The type of checkers to use to execute the Uptime check.
@@ -143,7 +143,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         }
     }
 
-    public sealed class UptimeCheckConfigArgs : Pulumi.ResourceArgs
+    public sealed class UptimeCheckConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of checkers to use to execute the Uptime check.
@@ -247,5 +247,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public UptimeCheckConfigArgs()
         {
         }
+        public static new UptimeCheckConfigArgs Empty => new UptimeCheckConfigArgs();
     }
 }

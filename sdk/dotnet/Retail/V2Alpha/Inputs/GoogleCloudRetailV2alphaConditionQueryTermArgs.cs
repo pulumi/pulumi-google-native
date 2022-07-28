@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
     /// <summary>
     /// Query terms that we want to match on.
     /// </summary>
-    public sealed class GoogleCloudRetailV2alphaConditionQueryTermArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2alphaConditionQueryTermArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether this is supposed to be a full or partial match.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
         public GoogleCloudRetailV2alphaConditionQueryTermArgs()
         {
         }
+        public static new GoogleCloudRetailV2alphaConditionQueryTermArgs Empty => new GoogleCloudRetailV2alphaConditionQueryTermArgs();
     }
 }

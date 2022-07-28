@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:notebooks/v1:Runtime")]
-    public partial class Runtime : Pulumi.CustomResource
+    public partial class Runtime : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The config settings for accessing runtime.
@@ -137,7 +137,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         }
     }
 
-    public sealed class RuntimeArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The config settings for accessing runtime.
@@ -178,5 +178,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public RuntimeArgs()
         {
         }
+        public static new RuntimeArgs Empty => new RuntimeArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Use this to have a random data crypto key generated. It will be discarded after the request finishes.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2TransientCryptoKeyArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2TransientCryptoKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated).
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2TransientCryptoKeyArgs()
         {
         }
+        public static new GooglePrivacyDlpV2TransientCryptoKeyArgs Empty => new GooglePrivacyDlpV2TransientCryptoKeyArgs();
     }
 }

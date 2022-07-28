@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// ManagedPrometheusConfig defines the configuration for Google Cloud Managed Service for Prometheus.
     /// </summary>
-    public sealed class ManagedPrometheusConfigArgs : Pulumi.ResourceArgs
+    public sealed class ManagedPrometheusConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable Managed Collection.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public ManagedPrometheusConfigArgs()
         {
         }
+        public static new ManagedPrometheusConfigArgs Empty => new ManagedPrometheusConfigArgs();
     }
 }

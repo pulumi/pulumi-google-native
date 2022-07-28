@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetHostQueryArgs : Pulumi.InvokeArgs
+    public sealed class GetHostQueryArgs : global::Pulumi.InvokeArgs
     {
         [Input("hostQueryId", required: true)]
         public string HostQueryId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetHostQueryArgs()
         {
         }
+        public static new GetHostQueryArgs Empty => new GetHostQueryArgs();
     }
 
-    public sealed class GetHostQueryInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHostQueryInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("hostQueryId", required: true)]
         public Input<string> HostQueryId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetHostQueryInvokeArgs()
         {
         }
+        public static new GetHostQueryInvokeArgs Empty => new GetHostQueryInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// A set of Shielded Instance options.
     /// </summary>
-    public sealed class ShieldedInstanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class ShieldedInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines whether the instance has integrity monitoring enabled. Enabled by default.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public ShieldedInstanceConfigArgs()
         {
         }
+        public static new ShieldedInstanceConfigArgs Empty => new ShieldedInstanceConfigArgs();
     }
 }

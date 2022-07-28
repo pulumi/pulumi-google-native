@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// Details for an outcome with a FAILURE outcome summary.
     /// </summary>
-    public sealed class FailureDetailArgs : Pulumi.ResourceArgs
+    public sealed class FailureDetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If the failure was severe because the system (app) under test crashed.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public FailureDetailArgs()
         {
         }
+        public static new FailureDetailArgs Empty => new FailureDetailArgs();
     }
 }

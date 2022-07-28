@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] JWT configuration for origin authentication. JWT configuration for origin authentication.
     /// </summary>
-    public sealed class JwtArgs : Pulumi.ResourceArgs
+    public sealed class JwtArgs : global::Pulumi.ResourceArgs
     {
         [Input("audiences")]
         private InputList<string>? _audiences;
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public JwtArgs()
         {
         }
+        public static new JwtArgs Empty => new JwtArgs();
     }
 }

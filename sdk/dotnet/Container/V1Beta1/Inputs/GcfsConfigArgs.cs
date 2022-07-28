@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// GcfsConfig contains configurations of Google Container File System.
     /// </summary>
-    public sealed class GcfsConfigArgs : Pulumi.ResourceArgs
+    public sealed class GcfsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to use GCFS.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public GcfsConfigArgs()
         {
         }
+        public static new GcfsConfigArgs Empty => new GcfsConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
     /// <summary>
     /// Specifies required connection parameters, and, optionally, the parameters required to create a Cloud SQL destination database instance.
     /// </summary>
-    public sealed class CloudSqlConnectionProfileArgs : Pulumi.ResourceArgs
+    public sealed class CloudSqlConnectionProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. Metadata used to create the destination Cloud SQL database.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         public CloudSqlConnectionProfileArgs()
         {
         }
+        public static new CloudSqlConnectionProfileArgs Empty => new CloudSqlConnectionProfileArgs();
     }
 }

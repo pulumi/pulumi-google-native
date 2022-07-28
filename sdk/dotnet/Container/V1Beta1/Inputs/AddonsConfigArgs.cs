@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality.
     /// </summary>
-    public sealed class AddonsConfigArgs : Pulumi.ResourceArgs
+    public sealed class AddonsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration for the Cloud Run addon. The `IstioConfig` addon must be enabled in order to enable Cloud Run addon. This option can only be enabled at cluster creation time.
@@ -90,5 +90,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public AddonsConfigArgs()
         {
         }
+        public static new AddonsConfigArgs Empty => new AddonsConfigArgs();
     }
 }

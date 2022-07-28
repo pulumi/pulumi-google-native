@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// Volume describes a Docker container volume which is mounted into build steps in order to persist files across build step execution.
     /// </summary>
-    public sealed class VolumeArgs : Pulumi.ResourceArgs
+    public sealed class VolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public VolumeArgs()
         {
         }
+        public static new VolumeArgs Empty => new VolumeArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// An attribution method that approximates Shapley values for features that contribute to the label being predicted. A sampling strategy is used to approximate the value rather than considering all subsets of features.
     /// </summary>
-    public sealed class GoogleCloudMlV1__SampledShapleyAttributionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__SampledShapleyAttributionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of feature permutations to consider when approximating the Shapley values.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__SampledShapleyAttributionArgs()
         {
         }
+        public static new GoogleCloudMlV1__SampledShapleyAttributionArgs Empty => new GoogleCloudMlV1__SampledShapleyAttributionArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Inputs
     /// <summary>
     /// Defines the configuration to be used for creating workers in the worker pool.
     /// </summary>
-    public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The accelerator card attached to each VM.
@@ -90,5 +90,6 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Inputs
         public GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs()
         {
         }
+        public static new GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs Empty => new GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs();
     }
 }

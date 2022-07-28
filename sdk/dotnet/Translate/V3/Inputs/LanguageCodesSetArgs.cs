@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Translate.V3.Inputs
     /// <summary>
     /// Used with equivalent term set glossaries.
     /// </summary>
-    public sealed class LanguageCodesSetArgs : Pulumi.ResourceArgs
+    public sealed class LanguageCodesSetArgs : global::Pulumi.ResourceArgs
     {
         [Input("languageCodes")]
         private InputList<string>? _languageCodes;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Translate.V3.Inputs
         public LanguageCodesSetArgs()
         {
         }
+        public static new LanguageCodesSetArgs Empty => new LanguageCodesSetArgs();
     }
 }

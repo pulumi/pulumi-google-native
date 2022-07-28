@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
     }
 
 
-    public sealed class GetTransferConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetTransferConfigArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         public GetTransferConfigArgs()
         {
         }
+        public static new GetTransferConfigArgs Empty => new GetTransferConfigArgs();
     }
 
-    public sealed class GetTransferConfigInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTransferConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         public GetTransferConfigInvokeArgs()
         {
         }
+        public static new GetTransferConfigInvokeArgs Empty => new GetTransferConfigInvokeArgs();
     }
 
 

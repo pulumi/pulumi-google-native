@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Specifies the type and number of accelerator cards attached to the instances of an instance. See GPUs on Compute Engine (https://cloud.google.com/compute/docs/gpus/).
     /// </summary>
-    public sealed class AcceleratorConfigArgs : Pulumi.ResourceArgs
+    public sealed class AcceleratorConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of the accelerator cards of this type exposed to this instance.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public AcceleratorConfigArgs()
         {
         }
+        public static new AcceleratorConfigArgs Empty => new AcceleratorConfigArgs();
     }
 }

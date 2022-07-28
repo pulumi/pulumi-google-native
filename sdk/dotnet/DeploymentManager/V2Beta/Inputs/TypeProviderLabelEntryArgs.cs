@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
     /// <summary>
     /// Label object for TypeProviders
     /// </summary>
-    public sealed class TypeProviderLabelEntryArgs : Pulumi.ResourceArgs
+    public sealed class TypeProviderLabelEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key of the label
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
         public TypeProviderLabelEntryArgs()
         {
         }
+        public static new TypeProviderLabelEntryArgs Empty => new TypeProviderLabelEntryArgs();
     }
 }

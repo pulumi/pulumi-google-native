@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// This is deprecated and has no effect. Do not use.
     /// </summary>
-    public sealed class ConditionArgs : Pulumi.ResourceArgs
+    public sealed class ConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is deprecated and has no effect. Do not use.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public ConditionArgs()
         {
         }
+        public static new ConditionArgs Empty => new ConditionArgs();
     }
 }

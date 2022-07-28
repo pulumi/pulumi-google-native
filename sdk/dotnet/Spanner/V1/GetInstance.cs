@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
     }
 
 
-    public sealed class GetInstanceArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceArgs : global::Pulumi.InvokeArgs
     {
         [Input("fieldMask")]
         public string? FieldMask { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public GetInstanceArgs()
         {
         }
+        public static new GetInstanceArgs Empty => new GetInstanceArgs();
     }
 
-    public sealed class GetInstanceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("fieldMask")]
         public Input<string>? FieldMask { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public GetInstanceInvokeArgs()
         {
         }
+        public static new GetInstanceInvokeArgs Empty => new GetInstanceInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
     /// <summary>
     /// Specifies connection parameters required specifically for PostgreSQL databases.
     /// </summary>
-    public sealed class PostgreSqlConnectionProfileArgs : Pulumi.ResourceArgs
+    public sealed class PostgreSqlConnectionProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         public PostgreSqlConnectionProfileArgs()
         {
         }
+        public static new PostgreSqlConnectionProfileArgs Empty => new PostgreSqlConnectionProfileArgs();
     }
 }

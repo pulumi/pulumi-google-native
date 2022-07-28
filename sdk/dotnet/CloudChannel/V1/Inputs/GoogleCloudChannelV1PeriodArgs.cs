@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
     /// <summary>
     /// Represents period in days/months/years.
     /// </summary>
-    public sealed class GoogleCloudChannelV1PeriodArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudChannelV1PeriodArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Total duration of Period Type defined.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         public GoogleCloudChannelV1PeriodArgs()
         {
         }
+        public static new GoogleCloudChannelV1PeriodArgs Empty => new GoogleCloudChannelV1PeriodArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// A set of Confidential Instance options.
     /// </summary>
-    public sealed class ConfidentialInstanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConfidentialInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines the type of technology used by the confidential instance.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public ConfidentialInstanceConfigArgs()
         {
         }
+        public static new ConfidentialInstanceConfigArgs Empty => new ConfidentialInstanceConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a machine image in the specified project using the data that is included in the request. If you are creating a new machine image to update an existing instance, your new machine image should use the same network or, if applicable, the same subnetwork as the original instance.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:MachineImage")]
-    public partial class MachineImage : Pulumi.CustomResource
+    public partial class MachineImage : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The creation timestamp for this machine image in RFC3339 text format.
@@ -174,7 +174,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class MachineImageArgs : Pulumi.ResourceArgs
+    public sealed class MachineImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -254,5 +254,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public MachineImageArgs()
         {
         }
+        public static new MachineImageArgs Empty => new MachineImageArgs();
     }
 }

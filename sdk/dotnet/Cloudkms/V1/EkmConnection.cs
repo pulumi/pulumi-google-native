@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudkms/v1:EkmConnection")]
-    public partial class EkmConnection : Pulumi.CustomResource
+    public partial class EkmConnection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time at which the EkmConnection was created.
@@ -102,7 +102,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         }
     }
 
-    public sealed class EkmConnectionArgs : Pulumi.ResourceArgs
+    public sealed class EkmConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`.
@@ -137,5 +137,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public EkmConnectionArgs()
         {
         }
+        public static new EkmConnectionArgs Empty => new EkmConnectionArgs();
     }
 }

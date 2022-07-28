@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3:TestCase")]
-    public partial class TestCase : Pulumi.CustomResource
+    public partial class TestCase : global::Pulumi.CustomResource
     {
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         }
     }
 
-    public sealed class TestCaseArgs : Pulumi.ResourceArgs
+    public sealed class TestCaseArgs : global::Pulumi.ResourceArgs
     {
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -191,5 +191,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public TestCaseArgs()
         {
         }
+        public static new TestCaseArgs Empty => new TestCaseArgs();
     }
 }

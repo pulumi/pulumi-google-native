@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
     }
 
 
-    public sealed class GetTaxonomyArgs : Pulumi.InvokeArgs
+    public sealed class GetTaxonomyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public GetTaxonomyArgs()
         {
         }
+        public static new GetTaxonomyArgs Empty => new GetTaxonomyArgs();
     }
 
-    public sealed class GetTaxonomyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTaxonomyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public GetTaxonomyInvokeArgs()
         {
         }
+        public static new GetTaxonomyInvokeArgs Empty => new GetTaxonomyInvokeArgs();
     }
 
 

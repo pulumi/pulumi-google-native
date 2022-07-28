@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Represents an arbitrary window of time.
     /// </summary>
-    public sealed class TimeWindowArgs : Pulumi.ResourceArgs
+    public sealed class TimeWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time that the window ends. The end time should take place after the start time.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public TimeWindowArgs()
         {
         }
+        public static new TimeWindowArgs Empty => new TimeWindowArgs();
     }
 }

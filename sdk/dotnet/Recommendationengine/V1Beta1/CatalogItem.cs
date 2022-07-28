@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:recommendationengine/v1beta1:CatalogItem")]
-    public partial class CatalogItem : Pulumi.CustomResource
+    public partial class CatalogItem : global::Pulumi.CustomResource
     {
         [Output("catalogId")]
         public Output<string> CatalogId { get; private set; } = null!;
@@ -122,7 +122,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         }
     }
 
-    public sealed class CatalogItemArgs : Pulumi.ResourceArgs
+    public sealed class CatalogItemArgs : global::Pulumi.ResourceArgs
     {
         [Input("catalogId", required: true)]
         public Input<string> CatalogId { get; set; } = null!;
@@ -202,5 +202,6 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         public CatalogItemArgs()
         {
         }
+        public static new CatalogItemArgs Empty => new CatalogItemArgs();
     }
 }

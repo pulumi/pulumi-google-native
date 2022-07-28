@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
-    public sealed class NodeTemplateNodeTypeFlexibilityArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateNodeTypeFlexibilityArgs : global::Pulumi.ResourceArgs
     {
         [Input("cpus")]
         public Input<string>? Cpus { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public NodeTemplateNodeTypeFlexibilityArgs()
         {
         }
+        public static new NodeTemplateNodeTypeFlexibilityArgs Empty => new NodeTemplateNodeTypeFlexibilityArgs();
     }
 }

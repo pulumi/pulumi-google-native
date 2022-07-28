@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
     }
 
 
-    public sealed class GetMigrationJobArgs : Pulumi.InvokeArgs
+    public sealed class GetMigrationJobArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         public GetMigrationJobArgs()
         {
         }
+        public static new GetMigrationJobArgs Empty => new GetMigrationJobArgs();
     }
 
-    public sealed class GetMigrationJobInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMigrationJobInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         public GetMigrationJobInvokeArgs()
         {
         }
+        public static new GetMigrationJobInvokeArgs Empty => new GetMigrationJobInvokeArgs();
     }
 
 

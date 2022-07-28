@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class GoogleSheetsOptionsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleSheetsOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] Range of a sheet to query from. Only used when non-empty. Typical format: sheet_name!top_left_cell_id:bottom_right_cell_id For example: sheet1!A1:B20
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public GoogleSheetsOptionsArgs()
         {
         }
+        public static new GoogleSheetsOptionsArgs Empty => new GoogleSheetsOptionsArgs();
     }
 }

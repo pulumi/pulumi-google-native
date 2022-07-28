@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha
     /// Create an OS policy assignment. This method also creates the first revision of the OS policy assignment. This method returns a long running operation (LRO) that contains the rollout details. The rollout can be cancelled by cancelling the LRO. For more information, see [Method: projects.locations.osPolicyAssignments.operations.cancel](https://cloud.google.com/compute/docs/osconfig/rest/v1alpha/projects.locations.osPolicyAssignments.operations/cancel).
     /// </summary>
     [GoogleNativeResourceType("google-native:osconfig/v1alpha:OsPolicyAssignment")]
-    public partial class OsPolicyAssignment : Pulumi.CustomResource
+    public partial class OsPolicyAssignment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Indicates that this revision has been successfully rolled out in this zone and new VMs will be assigned OS policies from this revision. For a given OS policy assignment, there is only one revision with a value of `true` for this field.
@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha
         }
     }
 
-    public sealed class OsPolicyAssignmentArgs : Pulumi.ResourceArgs
+    public sealed class OsPolicyAssignmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// OS policy assignment description. Length of the description is limited to 1024 characters.
@@ -213,5 +213,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha
         public OsPolicyAssignmentArgs()
         {
         }
+        public static new OsPolicyAssignmentArgs Empty => new OsPolicyAssignmentArgs();
     }
 }

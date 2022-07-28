@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     /// <summary>
     /// Oracle data source configuration
     /// </summary>
-    public sealed class OracleSourceConfigArgs : Pulumi.ResourceArgs
+    public sealed class OracleSourceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Drop large object values.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public OracleSourceConfigArgs()
         {
         }
+        public static new OracleSourceConfigArgs Empty => new OracleSourceConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
     /// <summary>
     /// Configuration for repricing a Google bill over a period of time.
     /// </summary>
-    public sealed class GoogleCloudChannelV1RepricingConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudChannelV1RepricingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Information about the adjustment.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         public GoogleCloudChannelV1RepricingConfigArgs()
         {
         }
+        public static new GoogleCloudChannelV1RepricingConfigArgs Empty => new GoogleCloudChannelV1RepricingConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Configuration of Shielded Nodes feature.
     /// </summary>
-    public sealed class ShieldedNodesArgs : Pulumi.ResourceArgs
+    public sealed class ShieldedNodesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether Shielded Nodes features are enabled on all nodes in this cluster.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public ShieldedNodesArgs()
         {
         }
+        public static new ShieldedNodesArgs Empty => new ShieldedNodesArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datastream/v1:Stream")]
-    public partial class Stream : Pulumi.CustomResource
+    public partial class Stream : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Automatically backfill objects included in the stream source configuration. Specific objects can be excluded.
@@ -167,7 +167,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
         }
     }
 
-    public sealed class StreamArgs : Pulumi.ResourceArgs
+    public sealed class StreamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Automatically backfill objects included in the stream source configuration. Specific objects can be excluded.
@@ -256,5 +256,6 @@ namespace Pulumi.GoogleNative.Datastream.V1
         public StreamArgs()
         {
         }
+        public static new StreamArgs Empty => new StreamArgs();
     }
 }

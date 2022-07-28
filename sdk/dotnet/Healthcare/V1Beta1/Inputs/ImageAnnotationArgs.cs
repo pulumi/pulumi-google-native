@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Image annotation.
     /// </summary>
-    public sealed class ImageAnnotationArgs : Pulumi.ResourceArgs
+    public sealed class ImageAnnotationArgs : global::Pulumi.ResourceArgs
     {
         [Input("boundingPolys")]
         private InputList<Inputs.BoundingPolyArgs>? _boundingPolys;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public ImageAnnotationArgs()
         {
         }
+        public static new ImageAnnotationArgs Empty => new ImageAnnotationArgs();
     }
 }

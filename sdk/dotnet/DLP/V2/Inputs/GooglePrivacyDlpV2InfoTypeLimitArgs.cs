@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Max findings configuration per infoType, per content item or long running DlpJob.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2InfoTypeLimitArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2InfoTypeLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Type of information the findings limit applies to. Only one limit per info_type should be provided. If InfoTypeLimit does not have an info_type, the DLP API applies the limit against all info_types that are found but not specified in another InfoTypeLimit.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2InfoTypeLimitArgs()
         {
         }
+        public static new GooglePrivacyDlpV2InfoTypeLimitArgs Empty => new GooglePrivacyDlpV2InfoTypeLimitArgs();
     }
 }

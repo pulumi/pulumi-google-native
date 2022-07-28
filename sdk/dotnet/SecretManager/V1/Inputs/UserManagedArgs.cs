@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
     /// <summary>
     /// A replication policy that replicates the Secret payload into the locations specified in Secret.replication.user_managed.replicas
     /// </summary>
-    public sealed class UserManagedArgs : Pulumi.ResourceArgs
+    public sealed class UserManagedArgs : global::Pulumi.ResourceArgs
     {
         [Input("replicas", required: true)]
         private InputList<Inputs.ReplicaArgs>? _replicas;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
         public UserManagedArgs()
         {
         }
+        public static new UserManagedArgs Empty => new UserManagedArgs();
     }
 }

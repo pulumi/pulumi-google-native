@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// The rule that adjusts the likelihood of findings within a certain proximity of hotwords.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2HotwordRuleArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2HotwordRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Regular expression pattern defining what qualifies as a hotword.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2HotwordRuleArgs()
         {
         }
+        public static new GooglePrivacyDlpV2HotwordRuleArgs Empty => new GooglePrivacyDlpV2HotwordRuleArgs();
     }
 }

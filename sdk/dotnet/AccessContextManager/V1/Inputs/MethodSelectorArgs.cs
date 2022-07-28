@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
     /// <summary>
     /// An allowed method or permission of a service specified in ApiOperation.
     /// </summary>
-    public sealed class MethodSelectorArgs : Pulumi.ResourceArgs
+    public sealed class MethodSelectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Value for `method` should be a valid method name for the corresponding `service_name` in ApiOperation. If `*` used as value for `method`, then ALL methods and permissions are allowed.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         public MethodSelectorArgs()
         {
         }
+        public static new MethodSelectorArgs Empty => new MethodSelectorArgs();
     }
 }

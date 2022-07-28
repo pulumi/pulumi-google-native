@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
     /// Creates a new ServiceBinding in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkservices/v1beta1:ServiceBinding")]
-    public partial class ServiceBinding : Pulumi.CustomResource
+    public partial class ServiceBinding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp when the resource was created.
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         }
     }
 
-    public sealed class ServiceBindingArgs : Pulumi.ResourceArgs
+    public sealed class ServiceBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A free-text description of the resource. Max length 1024 characters.
@@ -159,5 +159,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public ServiceBindingArgs()
         {
         }
+        public static new ServiceBindingArgs Empty => new ServiceBindingArgs();
     }
 }

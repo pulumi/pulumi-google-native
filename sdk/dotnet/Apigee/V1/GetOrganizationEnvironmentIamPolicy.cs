@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetOrganizationEnvironmentIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationEnvironmentIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("environmentId", required: true)]
         public string EnvironmentId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetOrganizationEnvironmentIamPolicyArgs()
         {
         }
+        public static new GetOrganizationEnvironmentIamPolicyArgs Empty => new GetOrganizationEnvironmentIamPolicyArgs();
     }
 
-    public sealed class GetOrganizationEnvironmentIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationEnvironmentIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetOrganizationEnvironmentIamPolicyInvokeArgs()
         {
         }
+        public static new GetOrganizationEnvironmentIamPolicyInvokeArgs Empty => new GetOrganizationEnvironmentIamPolicyInvokeArgs();
     }
 
 

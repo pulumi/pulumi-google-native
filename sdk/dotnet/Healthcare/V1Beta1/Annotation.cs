@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     /// Creates a new Annotation record. It is valid to create Annotation objects for the same source more than once since a unique ID is assigned to each record by this service.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1beta1:Annotation")]
-    public partial class Annotation : Pulumi.CustomResource
+    public partial class Annotation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Details of the source.
@@ -113,7 +113,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         }
     }
 
-    public sealed class AnnotationArgs : Pulumi.ResourceArgs
+    public sealed class AnnotationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Details of the source.
@@ -172,5 +172,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public AnnotationArgs()
         {
         }
+        public static new AnnotationArgs Empty => new AnnotationArgs();
     }
 }

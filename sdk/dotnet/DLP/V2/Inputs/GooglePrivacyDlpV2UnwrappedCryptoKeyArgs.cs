@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Using raw keys is prone to security risks due to accidentally leaking the key. Choose another type of key if possible.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2UnwrappedCryptoKeyArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2UnwrappedCryptoKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A 128/192/256 bit key.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2UnwrappedCryptoKeyArgs()
         {
         }
+        public static new GooglePrivacyDlpV2UnwrappedCryptoKeyArgs Empty => new GooglePrivacyDlpV2UnwrappedCryptoKeyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates an instant snapshot in the specified region.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:RegionInstantSnapshot")]
-    public partial class RegionInstantSnapshot : Pulumi.CustomResource
+    public partial class RegionInstantSnapshot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The architecture of the instant snapshot. Valid values are ARM64 or X86_64.
@@ -177,7 +177,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class RegionInstantSnapshotArgs : Pulumi.ResourceArgs
+    public sealed class RegionInstantSnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -230,5 +230,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public RegionInstantSnapshotArgs()
         {
         }
+        public static new RegionInstantSnapshotArgs Empty => new RegionInstantSnapshotArgs();
     }
 }

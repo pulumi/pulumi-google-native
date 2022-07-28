@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
     }
 
 
-    public sealed class GetAccessPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetAccessPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("accessPolicyId", required: true)]
         public string AccessPolicyId { get; set; } = null!;
@@ -33,9 +33,10 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public GetAccessPolicyArgs()
         {
         }
+        public static new GetAccessPolicyArgs Empty => new GetAccessPolicyArgs();
     }
 
-    public sealed class GetAccessPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAccessPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("accessPolicyId", required: true)]
         public Input<string> AccessPolicyId { get; set; } = null!;
@@ -43,6 +44,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public GetAccessPolicyInvokeArgs()
         {
         }
+        public static new GetAccessPolicyInvokeArgs Empty => new GetAccessPolicyInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     /// <summary>
     /// JobSpec describes how the job execution will look like.
     /// </summary>
-    public sealed class JobSpecArgs : Pulumi.ResourceArgs
+    public sealed class JobSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Not supported. Specifies the duration in seconds relative to the startTime that the job may be active before the system tries to terminate it. If set to zero, the system will never attempt to terminate the job based on time. Otherwise, the value must be positive integer. +optional
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public JobSpecArgs()
         {
         }
+        public static new JobSpecArgs Empty => new JobSpecArgs();
     }
 }

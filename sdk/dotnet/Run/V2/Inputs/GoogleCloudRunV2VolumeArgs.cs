@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// <summary>
     /// Volume represents a named volume in a container.
     /// </summary>
-    public sealed class GoogleCloudRunV2VolumeArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRunV2VolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public GoogleCloudRunV2VolumeArgs()
         {
         }
+        public static new GoogleCloudRunV2VolumeArgs Empty => new GoogleCloudRunV2VolumeArgs();
     }
 }

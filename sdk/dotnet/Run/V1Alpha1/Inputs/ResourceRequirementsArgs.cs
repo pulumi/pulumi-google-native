@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     /// <summary>
     /// ResourceRequirements describes the compute resource requirements.
     /// </summary>
-    public sealed class ResourceRequirementsArgs : Pulumi.ResourceArgs
+    public sealed class ResourceRequirementsArgs : global::Pulumi.ResourceArgs
     {
         [Input("limits")]
         private InputMap<string>? _limits;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public ResourceRequirementsArgs()
         {
         }
+        public static new ResourceRequirementsArgs Empty => new ResourceRequirementsArgs();
     }
 }

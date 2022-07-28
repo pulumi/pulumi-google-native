@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Defines an SDK harness container for executing Dataflow pipelines.
     /// </summary>
-    public sealed class SdkHarnessContainerImageArgs : Pulumi.ResourceArgs
+    public sealed class SdkHarnessContainerImageArgs : global::Pulumi.ResourceArgs
     {
         [Input("capabilities")]
         private InputList<string>? _capabilities;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public SdkHarnessContainerImageArgs()
         {
         }
+        public static new SdkHarnessContainerImageArgs Empty => new SdkHarnessContainerImageArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
     /// <summary>
     /// The specification for modifying the URL of the request, prior to forwarding the request to the destination.
     /// </summary>
-    public sealed class HttpRouteURLRewriteArgs : Pulumi.ResourceArgs
+    public sealed class HttpRouteURLRewriteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Prior to forwarding the request to the selected destination, the requests host header is replaced by this value.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
         public HttpRouteURLRewriteArgs()
         {
         }
+        public static new HttpRouteURLRewriteArgs Empty => new HttpRouteURLRewriteArgs();
     }
 }

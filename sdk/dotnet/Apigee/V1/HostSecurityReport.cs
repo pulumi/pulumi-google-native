@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:HostSecurityReport")]
-    public partial class HostSecurityReport : Pulumi.CustomResource
+    public partial class HostSecurityReport : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation time of the query.
@@ -146,7 +146,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class HostSecurityReportArgs : Pulumi.ResourceArgs
+    public sealed class HostSecurityReportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
@@ -232,5 +232,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public HostSecurityReportArgs()
         {
         }
+        public static new HostSecurityReportArgs Empty => new HostSecurityReportArgs();
     }
 }

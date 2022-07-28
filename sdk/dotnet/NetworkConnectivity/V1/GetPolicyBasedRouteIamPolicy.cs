@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
     }
 
 
-    public sealed class GetPolicyBasedRouteIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetPolicyBasedRouteIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public GetPolicyBasedRouteIamPolicyArgs()
         {
         }
+        public static new GetPolicyBasedRouteIamPolicyArgs Empty => new GetPolicyBasedRouteIamPolicyArgs();
     }
 
-    public sealed class GetPolicyBasedRouteIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPolicyBasedRouteIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public GetPolicyBasedRouteIamPolicyInvokeArgs()
         {
         }
+        public static new GetPolicyBasedRouteIamPolicyInvokeArgs Empty => new GetPolicyBasedRouteIamPolicyInvokeArgs();
     }
 
 

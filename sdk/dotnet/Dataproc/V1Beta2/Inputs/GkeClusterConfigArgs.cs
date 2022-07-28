@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// The GKE config for this cluster.
     /// </summary>
-    public sealed class GkeClusterConfigArgs : Pulumi.ResourceArgs
+    public sealed class GkeClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A target for the deployment.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public GkeClusterConfigArgs()
         {
         }
+        public static new GkeClusterConfigArgs Empty => new GkeClusterConfigArgs();
     }
 }

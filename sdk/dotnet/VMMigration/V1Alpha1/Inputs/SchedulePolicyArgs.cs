@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
     /// <summary>
     /// A policy for scheduling replications.
     /// </summary>
-    public sealed class SchedulePolicyArgs : Pulumi.ResourceArgs
+    public sealed class SchedulePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The idle duration between replication stages.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
         public SchedulePolicyArgs()
         {
         }
+        public static new SchedulePolicyArgs Empty => new SchedulePolicyArgs();
     }
 }

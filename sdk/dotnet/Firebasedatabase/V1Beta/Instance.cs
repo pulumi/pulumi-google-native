@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
     /// Requests that a new DatabaseInstance be created. The state of a successfully created DatabaseInstance is ACTIVE. Only available for projects on the Blaze plan. Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo. Note that it might take a few minutes for billing enablement state to propagate to Firebase systems.
     /// </summary>
     [GoogleNativeResourceType("google-native:firebasedatabase/v1beta:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The globally unique identifier of the database instance.
@@ -105,7 +105,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The globally unique identifier of the database instance.
@@ -140,5 +140,6 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 }

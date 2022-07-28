@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Identifies the event that kicked off the build.
     /// </summary>
-    public sealed class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes where the config file that kicked off the build came from.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs()
         {
         }
+        public static new GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs Empty => new GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaInvocationArgs();
     }
 }

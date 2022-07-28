@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
     /// <summary>
     /// [Output-only, Beta] Model options used for the first training run. These options are immutable for subsequent training runs. Default values are used for any options not specified in the input query.
     /// </summary>
-    public sealed class ModelDefinitionModelOptionsArgs : Pulumi.ResourceArgs
+    public sealed class ModelDefinitionModelOptionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputList<string>? _labels;
@@ -32,5 +32,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public ModelDefinitionModelOptionsArgs()
         {
         }
+        public static new ModelDefinitionModelOptionsArgs Empty => new ModelDefinitionModelOptionsArgs();
     }
 }

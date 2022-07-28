@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// A Dialogflow CX conversation (session) can be described and visualized as a state machine. The states of a CX session are represented by pages. For each flow, you define many pages, where your combined pages can handle a complete conversation on the topics the flow is designed for. At any given moment, exactly one page is the current page, the current page is considered active, and the flow associated with that page is considered active. Every flow has a special start page. When a flow initially becomes active, the start page page becomes the current page. For each conversational turn, the current page will either stay the same or transition to another page. You configure each page to collect information from the end-user that is relevant for the conversational state represented by the page. For more information, see the [Page guide](https://cloud.google.com/dialogflow/cx/docs/concept/page).
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1PageArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1PageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable name of the page, unique within the flow.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1PageArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1PageArgs Empty => new GoogleCloudDialogflowCxV3beta1PageArgs();
     }
 }

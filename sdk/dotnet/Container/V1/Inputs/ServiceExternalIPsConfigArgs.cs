@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Config to block services with externalIPs field.
     /// </summary>
-    public sealed class ServiceExternalIPsConfigArgs : Pulumi.ResourceArgs
+    public sealed class ServiceExternalIPsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether Services with ExternalIPs field are allowed or not.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public ServiceExternalIPsConfigArgs()
         {
         }
+        public static new ServiceExternalIPsConfigArgs Empty => new ServiceExternalIPsConfigArgs();
     }
 }

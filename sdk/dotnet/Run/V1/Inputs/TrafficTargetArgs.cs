@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     /// <summary>
     /// TrafficTarget holds a single entry of the routing table for a Route.
     /// </summary>
-    public sealed class TrafficTargetArgs : Pulumi.ResourceArgs
+    public sealed class TrafficTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public TrafficTargetArgs()
         {
         }
+        public static new TrafficTargetArgs Empty => new TrafficTargetArgs();
     }
 }

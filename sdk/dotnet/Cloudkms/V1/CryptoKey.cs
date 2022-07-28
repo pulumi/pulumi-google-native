@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudkms/v1:CryptoKey")]
-    public partial class CryptoKey : Pulumi.CustomResource
+    public partial class CryptoKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time at which this CryptoKey was created.
@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         }
     }
 
-    public sealed class CryptoKeyArgs : Pulumi.ResourceArgs
+    public sealed class CryptoKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. The resource name of the backend environment where the key material for all CryptoKeyVersions associated with this CryptoKey reside and where all related cryptographic operations are performed. Only applicable if CryptoKeyVersions have a ProtectionLevel of EXTERNAL_VPC, with the resource name in the format `projects/*/locations/*/ekmConnections/*`. Note, this list is non-exhaustive and may apply to additional ProtectionLevels in the future.
@@ -234,5 +234,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public CryptoKeyArgs()
         {
         }
+        public static new CryptoKeyArgs Empty => new CryptoKeyArgs();
     }
 }

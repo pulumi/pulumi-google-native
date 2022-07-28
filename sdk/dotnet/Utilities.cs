@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative
         }
     }
 
-    internal sealed class GoogleNativeResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class GoogleNativeResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public GoogleNativeResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

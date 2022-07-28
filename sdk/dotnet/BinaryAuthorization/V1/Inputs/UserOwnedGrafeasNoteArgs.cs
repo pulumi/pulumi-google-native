@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Inputs
     /// <summary>
     /// An user owned Grafeas note references a Grafeas Attestation.Authority Note created by the user.
     /// </summary>
-    public sealed class UserOwnedGrafeasNoteArgs : Pulumi.ResourceArgs
+    public sealed class UserOwnedGrafeasNoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Grafeas resource name of a Attestation.Authority Note, created by the user, in the format: `projects/*/notes/*`. This field may not be updated. An attestation by this attestor is stored as a Grafeas Attestation.Authority Occurrence that names a container image and that links to this Note. Grafeas is an external dependency.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1.Inputs
         public UserOwnedGrafeasNoteArgs()
         {
         }
+        public static new UserOwnedGrafeasNoteArgs Empty => new UserOwnedGrafeasNoteArgs();
     }
 }

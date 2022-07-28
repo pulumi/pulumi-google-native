@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Jobs.V3
     }
 
 
-    public sealed class GetCompanyArgs : Pulumi.InvokeArgs
+    public sealed class GetCompanyArgs : global::Pulumi.InvokeArgs
     {
         [Input("companyId", required: true)]
         public string CompanyId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public GetCompanyArgs()
         {
         }
+        public static new GetCompanyArgs Empty => new GetCompanyArgs();
     }
 
-    public sealed class GetCompanyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCompanyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("companyId", required: true)]
         public Input<string> CompanyId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public GetCompanyInvokeArgs()
         {
         }
+        public static new GetCompanyInvokeArgs Empty => new GetCompanyInvokeArgs();
     }
 
 

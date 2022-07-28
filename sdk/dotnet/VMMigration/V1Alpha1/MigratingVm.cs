@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:vmmigration/v1alpha1:MigratingVm")]
-    public partial class MigratingVm : Pulumi.CustomResource
+    public partial class MigratingVm : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Details of the VM from an AWS source.
@@ -207,7 +207,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         }
     }
 
-    public sealed class MigratingVmArgs : Pulumi.ResourceArgs
+    public sealed class MigratingVmArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Details of the target VM in Compute Engine.
@@ -287,5 +287,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public MigratingVmArgs()
         {
         }
+        public static new MigratingVmArgs Empty => new MigratingVmArgs();
     }
 }

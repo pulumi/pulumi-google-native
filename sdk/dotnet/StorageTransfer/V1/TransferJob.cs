@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:storagetransfer/v1:TransferJob")]
-    public partial class TransferJob : Pulumi.CustomResource
+    public partial class TransferJob : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time that the transfer job was created.
@@ -132,7 +132,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         }
     }
 
-    public sealed class TransferJobArgs : Pulumi.ResourceArgs
+    public sealed class TransferJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description provided by the user for the job. Its max length is 1024 bytes when Unicode-encoded.
@@ -191,5 +191,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public TransferJobArgs()
         {
         }
+        public static new TransferJobArgs Empty => new TransferJobArgs();
     }
 }

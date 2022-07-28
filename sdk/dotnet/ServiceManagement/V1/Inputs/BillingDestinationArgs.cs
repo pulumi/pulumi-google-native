@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Configuration of a specific billing destination (Currently only support bill against consumer project).
     /// </summary>
-    public sealed class BillingDestinationArgs : Pulumi.ResourceArgs
+    public sealed class BillingDestinationArgs : global::Pulumi.ResourceArgs
     {
         [Input("metrics")]
         private InputList<string>? _metrics;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public BillingDestinationArgs()
         {
         }
+        public static new BillingDestinationArgs Empty => new BillingDestinationArgs();
     }
 }

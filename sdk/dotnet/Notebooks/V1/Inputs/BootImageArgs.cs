@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     /// <summary>
     /// Definition of the boot image used by the Runtime. Used to facilitate runtime upgradeability.
     /// </summary>
-    public sealed class BootImageArgs : Pulumi.ResourceArgs
+    public sealed class BootImageArgs : global::Pulumi.ResourceArgs
     {
         public BootImageArgs()
         {
         }
+        public static new BootImageArgs Empty => new BootImageArgs();
     }
 }

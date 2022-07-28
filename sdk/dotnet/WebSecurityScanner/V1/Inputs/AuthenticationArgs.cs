@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1.Inputs
     /// <summary>
     /// Scan authentication configuration.
     /// </summary>
-    public sealed class AuthenticationArgs : Pulumi.ResourceArgs
+    public sealed class AuthenticationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Authentication using a custom account.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1.Inputs
         public AuthenticationArgs()
         {
         }
+        public static new AuthenticationArgs Empty => new AuthenticationArgs();
     }
 }

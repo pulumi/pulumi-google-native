@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class ViewDefinitionArgs : Pulumi.ResourceArgs
+    public sealed class ViewDefinitionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Required] A query that BigQuery executes when the view is referenced.
@@ -45,5 +45,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public ViewDefinitionArgs()
         {
         }
+        public static new ViewDefinitionArgs Empty => new ViewDefinitionArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Time window specified for weekly operations.
     /// </summary>
-    public sealed class ResourcePolicyWeeklyCycleArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyWeeklyCycleArgs : global::Pulumi.ResourceArgs
     {
         [Input("dayOfWeeks")]
         private InputList<Inputs.ResourcePolicyWeeklyCycleDayOfWeekArgs>? _dayOfWeeks;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public ResourcePolicyWeeklyCycleArgs()
         {
         }
+        public static new ResourcePolicyWeeklyCycleArgs Empty => new ResourcePolicyWeeklyCycleArgs();
     }
 }

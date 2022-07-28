@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
     }
 
 
-    public sealed class GetClusterArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterArgs : global::Pulumi.InvokeArgs
     {
         [Input("clusterName", required: true)]
         public string ClusterName { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public GetClusterArgs()
         {
         }
+        public static new GetClusterArgs Empty => new GetClusterArgs();
     }
 
-    public sealed class GetClusterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("clusterName", required: true)]
         public Input<string> ClusterName { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public GetClusterInvokeArgs()
         {
         }
+        public static new GetClusterInvokeArgs Empty => new GetClusterInvokeArgs();
     }
 
 

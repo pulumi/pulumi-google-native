@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
     }
 
 
-    public sealed class GetPerfSampleSeriesArgs : Pulumi.InvokeArgs
+    public sealed class GetPerfSampleSeriesArgs : global::Pulumi.InvokeArgs
     {
         [Input("executionId", required: true)]
         public string ExecutionId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         public GetPerfSampleSeriesArgs()
         {
         }
+        public static new GetPerfSampleSeriesArgs Empty => new GetPerfSampleSeriesArgs();
     }
 
-    public sealed class GetPerfSampleSeriesInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPerfSampleSeriesInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("executionId", required: true)]
         public Input<string> ExecutionId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         public GetPerfSampleSeriesInvokeArgs()
         {
         }
+        public static new GetPerfSampleSeriesInvokeArgs Empty => new GetPerfSampleSeriesInvokeArgs();
     }
 
 

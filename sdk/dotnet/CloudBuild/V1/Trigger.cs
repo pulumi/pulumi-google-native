@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     /// Creates a new `BuildTrigger`. This API is experimental.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbuild/v1:Trigger")]
-    public partial class Trigger : Pulumi.CustomResource
+    public partial class Trigger : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configuration for manual approval to start a build invocation of this BuildTrigger.
@@ -220,7 +220,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         }
     }
 
-    public sealed class TriggerArgs : Pulumi.ResourceArgs
+    public sealed class TriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration for manual approval to start a build invocation of this BuildTrigger.
@@ -399,5 +399,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public TriggerArgs()
         {
         }
+        public static new TriggerArgs Empty => new TriggerArgs();
     }
 }

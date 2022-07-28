@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// Specifies a file available as a Cloud Storage Object.
     /// </summary>
-    public sealed class OSPolicyResourceFileGcsArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourceFileGcsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bucket of the Cloud Storage object.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public OSPolicyResourceFileGcsArgs()
         {
         }
+        public static new OSPolicyResourceFileGcsArgs Empty => new OSPolicyResourceFileGcsArgs();
     }
 }

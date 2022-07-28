@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// A confidence interval is a range of possible values for the experiment objective you are trying to measure.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The confidence level used to construct the interval, i.e. there is X% chance that the true value is within this interval.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs Empty => new GoogleCloudDialogflowCxV3beta1ExperimentResultConfidenceIntervalArgs();
     }
 }

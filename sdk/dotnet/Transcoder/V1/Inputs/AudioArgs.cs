@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Audio preprocessing configuration.
     /// </summary>
-    public sealed class AudioArgs : Pulumi.ResourceArgs
+    public sealed class AudioArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable boosting high frequency components. The default is `false`. **Note:** This field is not supported.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public AudioArgs()
         {
         }
+        public static new AudioArgs Empty => new AudioArgs();
     }
 }

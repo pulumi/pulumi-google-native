@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
     /// <summary>
     /// Catalog item thumbnail/detail image.
     /// </summary>
-    public sealed class GoogleCloudRecommendationengineV1beta1ImageArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRecommendationengineV1beta1ImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Height of the image in number of pixels.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
         public GoogleCloudRecommendationengineV1beta1ImageArgs()
         {
         }
+        public static new GoogleCloudRecommendationengineV1beta1ImageArgs Empty => new GoogleCloudRecommendationengineV1beta1ImageArgs();
     }
 }

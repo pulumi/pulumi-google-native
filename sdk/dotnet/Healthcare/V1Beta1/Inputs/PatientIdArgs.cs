@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// A patient identifier and associated type.
     /// </summary>
-    public sealed class PatientIdArgs : Pulumi.ResourceArgs
+    public sealed class PatientIdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID type. For example, MRN or NHS.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public PatientIdArgs()
         {
         }
+        public static new PatientIdArgs Empty => new PatientIdArgs();
     }
 }

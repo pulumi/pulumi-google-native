@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Memcache.V1
     /// Creates a new Instance in a given location.
     /// </summary>
     [GoogleNativeResourceType("google-native:memcache/v1:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The full name of the Google Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. If left unspecified, the `default` network will be used.
@@ -184,7 +184,7 @@ namespace Pulumi.GoogleNative.Memcache.V1
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full name of the Google Compute Engine [network](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. If left unspecified, the `default` network will be used.
@@ -285,5 +285,6 @@ namespace Pulumi.GoogleNative.Memcache.V1
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 }

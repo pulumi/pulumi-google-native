@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     /// <summary>
     /// Definition of a custom Compute Engine virtual machine image for starting a notebook instance with the environment installed directly on the VM.
     /// </summary>
-    public sealed class VmImageArgs : Pulumi.ResourceArgs
+    public sealed class VmImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Use this VM image family to find the image; the newest image in this family will be used.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public VmImageArgs()
         {
         }
+        public static new VmImageArgs Empty => new VmImageArgs();
     }
 }

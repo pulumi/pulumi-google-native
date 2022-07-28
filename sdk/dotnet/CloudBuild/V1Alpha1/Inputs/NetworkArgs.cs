@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1.Inputs
     /// <summary>
     /// Network describes the GCP network used to create workers in.
     /// </summary>
-    public sealed class NetworkArgs : Pulumi.ResourceArgs
+    public sealed class NetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Network on which the workers are created. "default" network is used if empty.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1.Inputs
         public NetworkArgs()
         {
         }
+        public static new NetworkArgs Empty => new NetworkArgs();
     }
 }

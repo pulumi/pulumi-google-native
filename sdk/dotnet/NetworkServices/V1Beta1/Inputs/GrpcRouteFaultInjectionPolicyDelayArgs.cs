@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
     /// <summary>
     /// Specification of how client requests are delayed as part of fault injection before being sent to a destination.
     /// </summary>
-    public sealed class GrpcRouteFaultInjectionPolicyDelayArgs : Pulumi.ResourceArgs
+    public sealed class GrpcRouteFaultInjectionPolicyDelayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify a fixed delay before forwarding the request.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public GrpcRouteFaultInjectionPolicyDelayArgs()
         {
         }
+        public static new GrpcRouteFaultInjectionPolicyDelayArgs Empty => new GrpcRouteFaultInjectionPolicyDelayArgs();
     }
 }

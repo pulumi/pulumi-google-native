@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Binds the resources in an API proxy or remote service with the allowed REST methods and associated quota enforcement.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1OperationConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1OperationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the API proxy or remote service with which the resources, methods, and quota are associated.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1OperationConfigArgs()
         {
         }
+        public static new GoogleCloudApigeeV1OperationConfigArgs Empty => new GoogleCloudApigeeV1OperationConfigArgs();
     }
 }

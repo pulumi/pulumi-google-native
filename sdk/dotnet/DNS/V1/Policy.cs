@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DNS.V1
     /// Creates a new Policy.
     /// </summary>
     [GoogleNativeResourceType("google-native:dns/v1:Policy")]
-    public partial class Policy : Pulumi.CustomResource
+    public partial class Policy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.DNS.V1
         }
     }
 
-    public sealed class PolicyArgs : Pulumi.ResourceArgs
+    public sealed class PolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified.
@@ -169,5 +169,6 @@ namespace Pulumi.GoogleNative.DNS.V1
         public PolicyArgs()
         {
         }
+        public static new PolicyArgs Empty => new PolicyArgs();
     }
 }

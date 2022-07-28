@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
     /// <summary>
     /// A resource that manages the state of a file.
     /// </summary>
-    public sealed class OSPolicyResourceFileResourceArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourceFileResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A a file with this content. The size of the content is limited to 1024 characters.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public OSPolicyResourceFileResourceArgs()
         {
         }
+        public static new OSPolicyResourceFileResourceArgs Empty => new OSPolicyResourceFileResourceArgs();
     }
 }

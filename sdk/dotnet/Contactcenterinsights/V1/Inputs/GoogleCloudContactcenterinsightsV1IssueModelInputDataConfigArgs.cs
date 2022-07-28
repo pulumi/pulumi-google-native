@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
     /// <summary>
     /// Configs for the input data used to create the issue model.
     /// </summary>
-    public sealed class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A filter to reduce the conversations used for training the model to a specific subset.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
         public GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs()
         {
         }
+        public static new GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs Empty => new GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigArgs();
     }
 }

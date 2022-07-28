@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
     /// Creates a new `Note`.
     /// </summary>
     [GoogleNativeResourceType("google-native:containeranalysis/v1alpha1:Note")]
-    public partial class Note : Pulumi.CustomResource
+    public partial class Note : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A note describing an attestation role.
@@ -203,7 +203,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         }
     }
 
-    public sealed class NoteArgs : Pulumi.ResourceArgs
+    public sealed class NoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A note describing an attestation role.
@@ -337,5 +337,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public NoteArgs()
         {
         }
+        public static new NoteArgs Empty => new NoteArgs();
     }
 }

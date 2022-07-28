@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Storage.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:storage/v1:HmacKey")]
-    public partial class HmacKey : Pulumi.CustomResource
+    public partial class HmacKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the HMAC Key.
@@ -121,7 +121,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         }
     }
 
-    public sealed class HmacKeyArgs : Pulumi.ResourceArgs
+    public sealed class HmacKeyArgs : global::Pulumi.ResourceArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -141,5 +141,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         public HmacKeyArgs()
         {
         }
+        public static new HmacKeyArgs Empty => new HmacKeyArgs();
     }
 }

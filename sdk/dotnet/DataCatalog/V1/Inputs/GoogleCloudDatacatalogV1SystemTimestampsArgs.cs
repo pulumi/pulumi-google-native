@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Timestamps associated with this resource in a particular system.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1SystemTimestampsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1SystemTimestampsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation timestamp of the resource within the given system.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1SystemTimestampsArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1SystemTimestampsArgs Empty => new GoogleCloudDatacatalogV1SystemTimestampsArgs();
     }
 }

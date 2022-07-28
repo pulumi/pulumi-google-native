@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Deprecation status for a public resource.
     /// </summary>
-    public sealed class DeprecationStatusArgs : Pulumi.ResourceArgs
+    public sealed class DeprecationStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional RFC3339 timestamp on or after which the state of this resource is intended to change to DELETED. This is only informational and the status will not change unless the client explicitly changes it.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public DeprecationStatusArgs()
         {
         }
+        public static new DeprecationStatusArgs Empty => new DeprecationStatusArgs();
     }
 }

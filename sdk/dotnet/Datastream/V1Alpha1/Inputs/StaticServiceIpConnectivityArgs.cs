@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
     /// <summary>
     /// Static IP address connectivity.
     /// </summary>
-    public sealed class StaticServiceIpConnectivityArgs : Pulumi.ResourceArgs
+    public sealed class StaticServiceIpConnectivityArgs : global::Pulumi.ResourceArgs
     {
         public StaticServiceIpConnectivityArgs()
         {
         }
+        public static new StaticServiceIpConnectivityArgs Empty => new StaticServiceIpConnectivityArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// AcceleratorConfig represents a Hardware Accelerator request.
     /// </summary>
-    public sealed class AcceleratorConfigArgs : Pulumi.ResourceArgs
+    public sealed class AcceleratorConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of the accelerator cards exposed to an instance.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public AcceleratorConfigArgs()
         {
         }
+        public static new AcceleratorConfigArgs Empty => new AcceleratorConfigArgs();
     }
 }

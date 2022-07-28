@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
     /// <summary>
     /// Dump flag definition.
     /// </summary>
-    public sealed class DumpFlagArgs : Pulumi.ResourceArgs
+    public sealed class DumpFlagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the flag
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         public DumpFlagArgs()
         {
         }
+        public static new DumpFlagArgs Empty => new DumpFlagArgs();
     }
 }

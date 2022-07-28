@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a PacketMirroring resource in the specified project and region using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:PacketMirroring")]
-    public partial class PacketMirroring : Pulumi.CustomResource
+    public partial class PacketMirroring : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector for mirrored traffic. The specified forwarding rule must have isMirroringCollector set to true.
@@ -147,7 +147,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class PacketMirroringArgs : Pulumi.ResourceArgs
+    public sealed class PacketMirroringArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Forwarding Rule resource of type loadBalancingScheme=INTERNAL that will be used as collector for mirrored traffic. The specified forwarding rule must have isMirroringCollector set to true.
@@ -212,5 +212,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public PacketMirroringArgs()
         {
         }
+        public static new PacketMirroringArgs Empty => new PacketMirroringArgs();
     }
 }

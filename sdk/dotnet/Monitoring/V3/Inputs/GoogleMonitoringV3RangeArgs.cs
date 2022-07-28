@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Range of numerical values within min and max.
     /// </summary>
-    public sealed class GoogleMonitoringV3RangeArgs : Pulumi.ResourceArgs
+    public sealed class GoogleMonitoringV3RangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Range maximum.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public GoogleMonitoringV3RangeArgs()
         {
         }
+        public static new GoogleMonitoringV3RangeArgs Empty => new GoogleMonitoringV3RangeArgs();
     }
 }

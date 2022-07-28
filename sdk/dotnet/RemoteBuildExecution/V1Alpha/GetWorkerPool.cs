@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
     }
 
 
-    public sealed class GetWorkerPoolArgs : Pulumi.InvokeArgs
+    public sealed class GetWorkerPoolArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         public GetWorkerPoolArgs()
         {
         }
+        public static new GetWorkerPoolArgs Empty => new GetWorkerPoolArgs();
     }
 
-    public sealed class GetWorkerPoolInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetWorkerPoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         public GetWorkerPoolInvokeArgs()
         {
         }
+        public static new GetWorkerPoolInvokeArgs Empty => new GetWorkerPoolInvokeArgs();
     }
 
 

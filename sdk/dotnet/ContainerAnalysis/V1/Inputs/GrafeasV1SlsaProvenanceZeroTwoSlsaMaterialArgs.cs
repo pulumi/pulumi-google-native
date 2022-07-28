@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// The collection of artifacts that influenced the build including sources, dependencies, build tools, base images, and so on.
     /// </summary>
-    public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs : Pulumi.ResourceArgs
+    public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs : global::Pulumi.ResourceArgs
     {
         [Input("digest")]
         private InputMap<string>? _digest;
@@ -29,5 +29,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs()
         {
         }
+        public static new GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs Empty => new GrafeasV1SlsaProvenanceZeroTwoSlsaMaterialArgs();
     }
 }

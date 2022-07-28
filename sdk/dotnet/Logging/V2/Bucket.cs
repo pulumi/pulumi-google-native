@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:logging/v2:Bucket")]
-    public partial class Bucket : Pulumi.CustomResource
+    public partial class Bucket : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
@@ -137,7 +137,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         }
     }
 
-    public sealed class BucketArgs : Pulumi.ResourceArgs
+    public sealed class BucketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
@@ -202,5 +202,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         public BucketArgs()
         {
         }
+        public static new BucketArgs Empty => new BucketArgs();
     }
 }

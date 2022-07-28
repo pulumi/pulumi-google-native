@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// Options for the build operations performed as a part of the version deployment. Only applicable for App Engine flexible environment when creating a version using source code directly.
     /// </summary>
-    public sealed class CloudBuildOptionsArgs : Pulumi.ResourceArgs
+    public sealed class CloudBuildOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Path to the yaml file used in deployment, used to determine runtime configuration details.Required for flexible environment builds.See https://cloud.google.com/appengine/docs/standard/python/config/appref for more details.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public CloudBuildOptionsArgs()
         {
         }
+        public static new CloudBuildOptionsArgs Empty => new CloudBuildOptionsArgs();
     }
 }

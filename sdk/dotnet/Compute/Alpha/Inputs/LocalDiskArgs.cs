@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class LocalDiskArgs : Pulumi.ResourceArgs
+    public sealed class LocalDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the number of such disks.
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public LocalDiskArgs()
         {
         }
+        public static new LocalDiskArgs Empty => new LocalDiskArgs();
     }
 }

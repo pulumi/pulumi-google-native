@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetApiProductArgs : Pulumi.InvokeArgs
+    public sealed class GetApiProductArgs : global::Pulumi.InvokeArgs
     {
         [Input("apiproductId", required: true)]
         public string ApiproductId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetApiProductArgs()
         {
         }
+        public static new GetApiProductArgs Empty => new GetApiProductArgs();
     }
 
-    public sealed class GetApiProductInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetApiProductInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("apiproductId", required: true)]
         public Input<string> ApiproductId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetApiProductInvokeArgs()
         {
         }
+        public static new GetApiProductInvokeArgs Empty => new GetApiProductInvokeArgs();
     }
 
 

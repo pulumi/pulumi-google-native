@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     /// <summary>
     /// Volume represents a named volume in a container.
     /// </summary>
-    public sealed class VolumeArgs : Pulumi.ResourceArgs
+    public sealed class VolumeArgs : global::Pulumi.ResourceArgs
     {
         [Input("configMap")]
         public Input<Inputs.ConfigMapVolumeSourceArgs>? ConfigMap { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public VolumeArgs()
         {
         }
+        public static new VolumeArgs Empty => new VolumeArgs();
     }
 }

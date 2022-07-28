@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
     }
 
 
-    public sealed class GetCertificateMapEntryArgs : Pulumi.InvokeArgs
+    public sealed class GetCertificateMapEntryArgs : global::Pulumi.InvokeArgs
     {
         [Input("certificateMapEntryId", required: true)]
         public string CertificateMapEntryId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public GetCertificateMapEntryArgs()
         {
         }
+        public static new GetCertificateMapEntryArgs Empty => new GetCertificateMapEntryArgs();
     }
 
-    public sealed class GetCertificateMapEntryInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCertificateMapEntryInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("certificateMapEntryId", required: true)]
         public Input<string> CertificateMapEntryId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public GetCertificateMapEntryInvokeArgs()
         {
         }
+        public static new GetCertificateMapEntryInvokeArgs Empty => new GetCertificateMapEntryInvokeArgs();
     }
 
 

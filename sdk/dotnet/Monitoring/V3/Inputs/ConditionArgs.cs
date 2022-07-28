@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// A condition is a true/false test that determines when an alerting policy should open an incident. If a condition evaluates to true, it signifies that something is wrong.
     /// </summary>
-    public sealed class ConditionArgs : Pulumi.ResourceArgs
+    public sealed class ConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A condition that checks that a time series continues to receive new data points.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public ConditionArgs()
         {
         }
+        public static new ConditionArgs Empty => new ConditionArgs();
     }
 }

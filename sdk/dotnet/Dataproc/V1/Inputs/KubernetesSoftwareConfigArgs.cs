@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// The software configuration for this Dataproc cluster running on Kubernetes.
     /// </summary>
-    public sealed class KubernetesSoftwareConfigArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesSoftwareConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("componentVersion")]
         private InputMap<string>? _componentVersion;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public KubernetesSoftwareConfigArgs()
         {
         }
+        public static new KubernetesSoftwareConfigArgs Empty => new KubernetesSoftwareConfigArgs();
     }
 }

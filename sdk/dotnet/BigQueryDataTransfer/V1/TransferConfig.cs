@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
     /// Creates a new data transfer configuration.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigquerydatatransfer/v1:TransferConfig")]
-    public partial class TransferConfig : Pulumi.CustomResource
+    public partial class TransferConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth? client_id=client_id&amp;scope=data_source_scopes &amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;response_type=authorization_code * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
@@ -189,7 +189,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         }
     }
 
-    public sealed class TransferConfigArgs : Pulumi.ResourceArgs
+    public sealed class TransferConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional OAuth2 authorization code to use with this transfer configuration. This is required only if `transferConfig.dataSourceId` is 'youtube_channel' and new credentials are needed, as indicated by `CheckValidCreds`. In order to obtain authorization_code, make a request to the following URL: https://www.gstatic.com/bigquerydatatransfer/oauthz/auth? client_id=client_id&amp;scope=data_source_scopes &amp;redirect_uri=urn:ietf:wg:oauth:2.0:oob&amp;response_type=authorization_code * The client_id is the OAuth client_id of the a data source as returned by ListDataSources method. * data_source_scopes are the scopes returned by ListDataSources method. Note that this should not be set when `service_account_name` is used to create the transfer config.
@@ -296,5 +296,6 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1
         public TransferConfigArgs()
         {
         }
+        public static new TransferConfigArgs Empty => new TransferConfigArgs();
     }
 }

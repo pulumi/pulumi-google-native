@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
     /// <summary>
     /// RouteMatch defines specifications used to match requests. If multiple match types are set, this RouteMatch will match if ALL type of matches are matched.
     /// </summary>
-    public sealed class HttpRouteRouteMatchArgs : Pulumi.ResourceArgs
+    public sealed class HttpRouteRouteMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The HTTP request path value should exactly match this value. Only one of full_path_match, prefix_match, or regex_match should be used.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public HttpRouteRouteMatchArgs()
         {
         }
+        public static new HttpRouteRouteMatchArgs Empty => new HttpRouteRouteMatchArgs();
     }
 }

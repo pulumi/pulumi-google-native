@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
     /// <summary>
     /// CollectionOverride allows resource handling overrides for specific resources within a BaseType
     /// </summary>
-    public sealed class CollectionOverrideArgs : Pulumi.ResourceArgs
+    public sealed class CollectionOverrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The collection that identifies this resource within its service.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
         public CollectionOverrideArgs()
         {
         }
+        public static new CollectionOverrideArgs Empty => new CollectionOverrideArgs();
     }
 }

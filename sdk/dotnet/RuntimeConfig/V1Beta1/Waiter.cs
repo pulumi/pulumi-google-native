@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
     /// Creates a Waiter resource. This operation returns a long-running Operation resource which can be polled for completion. However, a waiter with the given name will exist (and can be retrieved) prior to the operation completing. If the operation fails, the failed Waiter resource will still exist and must be deleted prior to subsequent creation attempts.
     /// </summary>
     [GoogleNativeResourceType("google-native:runtimeconfig/v1beta1:Waiter")]
-    public partial class Waiter : Pulumi.CustomResource
+    public partial class Waiter : global::Pulumi.CustomResource
     {
         [Output("configId")]
         public Output<string> ConfigId { get; private set; } = null!;
@@ -117,7 +117,7 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         }
     }
 
-    public sealed class WaiterArgs : Pulumi.ResourceArgs
+    public sealed class WaiterArgs : global::Pulumi.ResourceArgs
     {
         [Input("configId", required: true)]
         public Input<string> ConfigId { get; set; } = null!;
@@ -158,5 +158,6 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         public WaiterArgs()
         {
         }
+        public static new WaiterArgs Empty => new WaiterArgs();
     }
 }

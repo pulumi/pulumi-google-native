@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
     }
 
 
-    public sealed class GetPolicyIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetPolicyIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         public GetPolicyIamPolicyArgs()
         {
         }
+        public static new GetPolicyIamPolicyArgs Empty => new GetPolicyIamPolicyArgs();
     }
 
-    public sealed class GetPolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPolicyIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         public GetPolicyIamPolicyInvokeArgs()
         {
         }
+        public static new GetPolicyIamPolicyInvokeArgs Empty => new GetPolicyIamPolicyInvokeArgs();
     }
 
 

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
 
-    public sealed class GetRegionDiskIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionDiskIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetRegionDiskIamPolicyArgs()
         {
         }
+        public static new GetRegionDiskIamPolicyArgs Empty => new GetRegionDiskIamPolicyArgs();
     }
 
-    public sealed class GetRegionDiskIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionDiskIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetRegionDiskIamPolicyInvokeArgs()
         {
         }
+        public static new GetRegionDiskIamPolicyInvokeArgs Empty => new GetRegionDiskIamPolicyInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// A description of a label.
     /// </summary>
-    public sealed class LabelDescriptorArgs : Pulumi.ResourceArgs
+    public sealed class LabelDescriptorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description for the label.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public LabelDescriptorArgs()
         {
         }
+        public static new LabelDescriptorArgs Empty => new LabelDescriptorArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// Dataproc job config.
     /// </summary>
-    public sealed class JobPlacementArgs : Pulumi.ResourceArgs
+    public sealed class JobPlacementArgs : global::Pulumi.ResourceArgs
     {
         [Input("clusterLabels")]
         private InputMap<string>? _clusterLabels;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public JobPlacementArgs()
         {
         }
+        public static new JobPlacementArgs Empty => new JobPlacementArgs();
     }
 }

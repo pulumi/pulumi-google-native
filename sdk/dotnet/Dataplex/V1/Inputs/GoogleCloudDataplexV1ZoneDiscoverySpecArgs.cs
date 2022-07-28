@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Settings to manage the metadata discovery and publishing in a zone.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1ZoneDiscoverySpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1ZoneDiscoverySpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Configuration for CSV data.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1ZoneDiscoverySpecArgs()
         {
         }
+        public static new GoogleCloudDataplexV1ZoneDiscoverySpecArgs Empty => new GoogleCloudDataplexV1ZoneDiscoverySpecArgs();
     }
 }

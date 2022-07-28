@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// This message defines settings for a consistent hash style load balancer.
     /// </summary>
-    public sealed class ConsistentHashLoadBalancerSettingsArgs : Pulumi.ResourceArgs
+    public sealed class ConsistentHashLoadBalancerSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hash is based on HTTP Cookie. This field describes a HTTP cookie that will be used as the hash key for the consistent hash load balancer. If the cookie is not present, it will be generated. This field is applicable if the sessionAffinity is set to HTTP_COOKIE. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public ConsistentHashLoadBalancerSettingsArgs()
         {
         }
+        public static new ConsistentHashLoadBalancerSettingsArgs Empty => new ConsistentHashLoadBalancerSettingsArgs();
     }
 }

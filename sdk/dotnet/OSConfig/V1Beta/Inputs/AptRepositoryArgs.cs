@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Represents a single Apt package repository. This repository is added to a repo file that is stored at `/etc/apt/sources.list.d/google_osconfig.list`.
     /// </summary>
-    public sealed class AptRepositoryArgs : Pulumi.ResourceArgs
+    public sealed class AptRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Type of archive files in this repository. The default behavior is DEB.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public AptRepositoryArgs()
         {
         }
+        public static new AptRepositoryArgs Empty => new AptRepositoryArgs();
     }
 }

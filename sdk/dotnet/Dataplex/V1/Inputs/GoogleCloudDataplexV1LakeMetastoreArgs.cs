@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Settings to manage association of Dataproc Metastore with a lake.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1LakeMetastoreArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1LakeMetastoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: projects/{project_id}/locations/{location_id}/services/{service_id}
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1LakeMetastoreArgs()
         {
         }
+        public static new GoogleCloudDataplexV1LakeMetastoreArgs Empty => new GoogleCloudDataplexV1LakeMetastoreArgs();
     }
 }

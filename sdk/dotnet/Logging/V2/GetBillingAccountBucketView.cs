@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     }
 
 
-    public sealed class GetBillingAccountBucketViewArgs : Pulumi.InvokeArgs
+    public sealed class GetBillingAccountBucketViewArgs : global::Pulumi.InvokeArgs
     {
         [Input("billingAccountId", required: true)]
         public string BillingAccountId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetBillingAccountBucketViewArgs()
         {
         }
+        public static new GetBillingAccountBucketViewArgs Empty => new GetBillingAccountBucketViewArgs();
     }
 
-    public sealed class GetBillingAccountBucketViewInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBillingAccountBucketViewInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("billingAccountId", required: true)]
         public Input<string> BillingAccountId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetBillingAccountBucketViewInvokeArgs()
         {
         }
+        public static new GetBillingAccountBucketViewInvokeArgs Empty => new GetBillingAccountBucketViewInvokeArgs();
     }
 
 

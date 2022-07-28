@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1
     /// Create a new environment.
     /// </summary>
     [GoogleNativeResourceType("google-native:composer/v1:Environment")]
-    public partial class Environment : Pulumi.CustomResource
+    public partial class Environment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configuration parameters for this environment.
@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.Composer.V1
         }
     }
 
-    public sealed class EnvironmentArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration parameters for this environment.
@@ -152,5 +152,6 @@ namespace Pulumi.GoogleNative.Composer.V1
         public EnvironmentArgs()
         {
         }
+        public static new EnvironmentArgs Empty => new EnvironmentArgs();
     }
 }

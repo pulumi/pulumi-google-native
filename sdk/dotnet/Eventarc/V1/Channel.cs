@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
     /// Create a new channel in a particular project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:eventarc/v1:Channel")]
-    public partial class Channel : Pulumi.CustomResource
+    public partial class Channel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The activation token for the channel. The token must be used by the provider to register the channel for publishing.
@@ -137,7 +137,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         }
     }
 
-    public sealed class ChannelArgs : Pulumi.ResourceArgs
+    public sealed class ChannelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The user-provided ID to be assigned to the channel.
@@ -178,5 +178,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public ChannelArgs()
         {
         }
+        public static new ChannelArgs Empty => new ChannelArgs();
     }
 }

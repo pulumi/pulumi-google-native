@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudchannel/v1:ChannelPartnerRepricingConfig")]
-    public partial class ChannelPartnerRepricingConfig : Pulumi.CustomResource
+    public partial class ChannelPartnerRepricingConfig : global::Pulumi.CustomResource
     {
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         }
     }
 
-    public sealed class ChannelPartnerRepricingConfigArgs : Pulumi.ResourceArgs
+    public sealed class ChannelPartnerRepricingConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -105,5 +105,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public ChannelPartnerRepricingConfigArgs()
         {
         }
+        public static new ChannelPartnerRepricingConfigArgs Empty => new ChannelPartnerRepricingConfigArgs();
     }
 }

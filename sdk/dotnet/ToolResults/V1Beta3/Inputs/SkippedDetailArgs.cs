@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// Details for an outcome with a SKIPPED outcome summary.
     /// </summary>
-    public sealed class SkippedDetailArgs : Pulumi.ResourceArgs
+    public sealed class SkippedDetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If the App doesn't support the specific API level.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public SkippedDetailArgs()
         {
         }
+        public static new SkippedDetailArgs Empty => new SkippedDetailArgs();
     }
 }

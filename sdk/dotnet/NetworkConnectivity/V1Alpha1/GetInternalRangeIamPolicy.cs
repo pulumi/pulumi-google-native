@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
     }
 
 
-    public sealed class GetInternalRangeIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetInternalRangeIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("internalRangeId", required: true)]
         public string InternalRangeId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         public GetInternalRangeIamPolicyArgs()
         {
         }
+        public static new GetInternalRangeIamPolicyArgs Empty => new GetInternalRangeIamPolicyArgs();
     }
 
-    public sealed class GetInternalRangeIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInternalRangeIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("internalRangeId", required: true)]
         public Input<string> InternalRangeId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         public GetInternalRangeIamPolicyInvokeArgs()
         {
         }
+        public static new GetInternalRangeIamPolicyInvokeArgs Empty => new GetInternalRangeIamPolicyInvokeArgs();
     }
 
 

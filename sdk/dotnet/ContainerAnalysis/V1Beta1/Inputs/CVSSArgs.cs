@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Common Vulnerability Scoring System. This message is compatible with CVSS v2 and v3. For CVSS v2 details, see https://www.first.org/cvss/v2/guide CVSS v2 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v2-calculator For CVSS v3 details, see https://www.first.org/cvss/specification-document CVSS v3 calculator: https://nvd.nist.gov/vuln-metrics/cvss/v3-calculator
     /// </summary>
-    public sealed class CVSSArgs : Pulumi.ResourceArgs
+    public sealed class CVSSArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defined in CVSS v3, CVSS v2
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public CVSSArgs()
         {
         }
+        public static new CVSSArgs Empty => new CVSSArgs();
     }
 }

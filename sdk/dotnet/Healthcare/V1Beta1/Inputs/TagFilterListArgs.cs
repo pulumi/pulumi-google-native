@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// List of tags to be filtered.
     /// </summary>
-    public sealed class TagFilterListArgs : Pulumi.ResourceArgs
+    public sealed class TagFilterListArgs : global::Pulumi.ResourceArgs
     {
         [Input("tags")]
         private InputList<string>? _tags;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public TagFilterListArgs()
         {
         }
+        public static new TagFilterListArgs Empty => new TagFilterListArgs();
     }
 }

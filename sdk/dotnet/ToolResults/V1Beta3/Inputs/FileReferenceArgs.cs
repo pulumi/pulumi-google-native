@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// A reference to a file.
     /// </summary>
-    public sealed class FileReferenceArgs : Pulumi.ResourceArgs
+    public sealed class FileReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URI of a file stored in Google Cloud Storage. For example: http://storage.googleapis.com/mybucket/path/to/test.xml or in gsutil format: gs://mybucket/path/to/test.xml with version-specific info, gs://mybucket/path/to/test.xml#1360383693690000 An INVALID_ARGUMENT error will be returned if the URI format is not supported. - In response: always set - In create/update request: always set
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public FileReferenceArgs()
         {
         }
+        public static new FileReferenceArgs Empty => new FileReferenceArgs();
     }
 }

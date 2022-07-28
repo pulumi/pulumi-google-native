@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// A text or ssml response that is preferentially used for TTS output audio synthesis, as described in the comment on the ResponseMessage message.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The SSML text to be synthesized. For more information, see [SSML](/speech/text-to-speech/docs/ssml).
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs Empty => new GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// An execution of an arbitrary tool. It could be a test runner or a tool copying artifacts or deploying code.
     /// </summary>
-    public sealed class ToolExecutionArgs : Pulumi.ResourceArgs
+    public sealed class ToolExecutionArgs : global::Pulumi.ResourceArgs
     {
         [Input("commandLineArguments")]
         private InputList<string>? _commandLineArguments;
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public ToolExecutionArgs()
         {
         }
+        public static new ToolExecutionArgs Empty => new ToolExecutionArgs();
     }
 }

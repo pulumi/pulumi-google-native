@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// A VPN gateway interface.
     /// </summary>
-    public sealed class VpnGatewayVpnGatewayInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class VpnGatewayVpnGatewayInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URL of the VLAN attachment (interconnectAttachment) resource for this VPN gateway interface. When the value of this field is present, the VPN gateway is used for IPsec-encrypted Cloud Interconnect; all egress or ingress traffic for this VPN gateway interface goes through the specified VLAN attachment resource. Not currently available publicly. 
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public VpnGatewayVpnGatewayInterfaceArgs()
         {
         }
+        public static new VpnGatewayVpnGatewayInterfaceArgs Empty => new VpnGatewayVpnGatewayInterfaceArgs();
     }
 }

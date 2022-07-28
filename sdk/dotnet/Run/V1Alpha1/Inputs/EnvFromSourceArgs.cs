@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     /// <summary>
     /// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
     /// </summary>
-    public sealed class EnvFromSourceArgs : Pulumi.ResourceArgs
+    public sealed class EnvFromSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Optional) The ConfigMap to select from
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public EnvFromSourceArgs()
         {
         }
+        public static new EnvFromSourceArgs Empty => new EnvFromSourceArgs();
     }
 }

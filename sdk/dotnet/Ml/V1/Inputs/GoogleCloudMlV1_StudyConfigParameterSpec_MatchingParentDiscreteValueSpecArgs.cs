@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents the spec to match discrete values from parent parameter.
     /// </summary>
-    public sealed class GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("values")]
         private InputList<double>? _values;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs()
         {
         }
+        public static new GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs Empty => new GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs();
     }
 }

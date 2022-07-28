@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Config for setting up sentiments.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1SentimentConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1SentimentConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to true, contributors will have the option to select sentiment of the label they selected, to mark it as negative or positive label. Default is false.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1SentimentConfigArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1SentimentConfigArgs Empty => new GoogleCloudDatalabelingV1beta1SentimentConfigArgs();
     }
 }

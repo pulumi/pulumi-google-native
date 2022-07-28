@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Rich Business Messaging (RBM) Card content
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Description of the card (at most 2000 bytes). At least one of the title, description or media must be set.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs();
     }
 }

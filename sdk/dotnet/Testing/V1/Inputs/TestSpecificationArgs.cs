@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A description of how to run the test.
     /// </summary>
-    public sealed class TestSpecificationArgs : Pulumi.ResourceArgs
+    public sealed class TestSpecificationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An Android instrumentation test.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public TestSpecificationArgs()
         {
         }
+        public static new TestSpecificationArgs Empty => new TestSpecificationArgs();
     }
 }

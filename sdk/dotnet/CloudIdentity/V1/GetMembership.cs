@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
     }
 
 
-    public sealed class GetMembershipArgs : Pulumi.InvokeArgs
+    public sealed class GetMembershipArgs : global::Pulumi.InvokeArgs
     {
         [Input("groupId", required: true)]
         public string GroupId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         public GetMembershipArgs()
         {
         }
+        public static new GetMembershipArgs Empty => new GetMembershipArgs();
     }
 
-    public sealed class GetMembershipInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMembershipInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         public GetMembershipInvokeArgs()
         {
         }
+        public static new GetMembershipInvokeArgs Empty => new GetMembershipInvokeArgs();
     }
 
 

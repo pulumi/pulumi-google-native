@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// An opaque binary blob file to install on the device before the test starts.
     /// </summary>
-    public sealed class ObbFileArgs : Pulumi.ResourceArgs
+    public sealed class ObbFileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Opaque Binary Blob (OBB) file(s) to install on the device.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public ObbFileArgs()
         {
         }
+        public static new ObbFileArgs Empty => new ObbFileArgs();
     }
 }

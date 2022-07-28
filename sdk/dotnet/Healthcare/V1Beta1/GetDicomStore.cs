@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     }
 
 
-    public sealed class GetDicomStoreArgs : Pulumi.InvokeArgs
+    public sealed class GetDicomStoreArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasetId", required: true)]
         public string DatasetId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public GetDicomStoreArgs()
         {
         }
+        public static new GetDicomStoreArgs Empty => new GetDicomStoreArgs();
     }
 
-    public sealed class GetDicomStoreInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDicomStoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public GetDicomStoreInvokeArgs()
         {
         }
+        public static new GetDicomStoreInvokeArgs Empty => new GetDicomStoreInvokeArgs();
     }
 
 

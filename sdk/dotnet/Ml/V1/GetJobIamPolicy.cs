@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Ml.V1
     }
 
 
-    public sealed class GetJobIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetJobIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("jobId", required: true)]
         public string JobId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Ml.V1
         public GetJobIamPolicyArgs()
         {
         }
+        public static new GetJobIamPolicyArgs Empty => new GetJobIamPolicyArgs();
     }
 
-    public sealed class GetJobIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetJobIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("jobId", required: true)]
         public Input<string> JobId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         public GetJobIamPolicyInvokeArgs()
         {
         }
+        public static new GetJobIamPolicyInvokeArgs Empty => new GetJobIamPolicyInvokeArgs();
     }
 
 

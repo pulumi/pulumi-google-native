@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
     /// <summary>
     /// A policy constraining the storage of messages published to the topic.
     /// </summary>
-    public sealed class MessageStoragePolicyArgs : Pulumi.ResourceArgs
+    public sealed class MessageStoragePolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedPersistenceRegions")]
         private InputList<string>? _allowedPersistenceRegions;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
         public MessageStoragePolicyArgs()
         {
         }
+        public static new MessageStoragePolicyArgs Empty => new MessageStoragePolicyArgs();
     }
 }

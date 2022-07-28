@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
     /// </summary>
-    public sealed class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URI indicating the builder’s identity.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs()
         {
         }
+        public static new GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs Empty => new GoogleDevtoolsContaineranalysisV1alpha1SlsaProvenanceZeroTwoSlsaBuilderArgs();
     }
 }

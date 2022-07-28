@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
     /// <summary>
     /// Filters events based on exact matches on the CloudEvents attributes.
     /// </summary>
-    public sealed class EventFilterArgs : Pulumi.ResourceArgs
+    public sealed class EventFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of a CloudEvents attribute. Currently, only a subset of attributes are supported for filtering. All triggers MUST provide a filter for the 'type' attribute.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
         public EventFilterArgs()
         {
         }
+        public static new EventFilterArgs Empty => new EventFilterArgs();
     }
 }

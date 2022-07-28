@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudidentity/v1:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time when the `Group` was created.
@@ -119,7 +119,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
@@ -172,5 +172,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 }

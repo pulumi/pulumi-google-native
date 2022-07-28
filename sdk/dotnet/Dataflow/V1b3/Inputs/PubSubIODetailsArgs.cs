@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Metadata for a Pub/Sub connector used by the job.
     /// </summary>
-    public sealed class PubSubIODetailsArgs : Pulumi.ResourceArgs
+    public sealed class PubSubIODetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Subscription used in the connection.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public PubSubIODetailsArgs()
         {
         }
+        public static new PubSubIODetailsArgs Empty => new PubSubIODetailsArgs();
     }
 }

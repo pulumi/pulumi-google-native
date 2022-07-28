@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// Executes a script to handle the request that matches the URL pattern.
     /// </summary>
-    public sealed class ScriptHandlerArgs : Pulumi.ResourceArgs
+    public sealed class ScriptHandlerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Path to the script from the application root directory.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public ScriptHandlerArgs()
         {
         }
+        public static new ScriptHandlerArgs Empty => new ScriptHandlerArgs();
     }
 }

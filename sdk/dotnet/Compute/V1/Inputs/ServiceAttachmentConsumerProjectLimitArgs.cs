@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
-    public sealed class ServiceAttachmentConsumerProjectLimitArgs : Pulumi.ResourceArgs
+    public sealed class ServiceAttachmentConsumerProjectLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The value of the limit to set.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public ServiceAttachmentConsumerProjectLimitArgs()
         {
         }
+        public static new ServiceAttachmentConsumerProjectLimitArgs Empty => new ServiceAttachmentConsumerProjectLimitArgs();
     }
 }

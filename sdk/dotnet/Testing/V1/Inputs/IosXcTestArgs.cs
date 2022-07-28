@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A test of an iOS application that uses the XCTest framework. Xcode supports the option to "build for testing", which generates an .xctestrun file that contains a test specification (arguments, test methods, etc). This test type accepts a zip file containing the .xctestrun file and the corresponding contents of the Build/Products directory that contains all the binaries needed to run the tests.
     /// </summary>
-    public sealed class IosXcTestArgs : Pulumi.ResourceArgs
+    public sealed class IosXcTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The option to test special app entitlements. Setting this would re-sign the app having special entitlements with an explicit application-identifier. Currently supports testing aps-environment entitlement.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public IosXcTestArgs()
         {
         }
+        public static new IosXcTestArgs Empty => new IosXcTestArgs();
     }
 }

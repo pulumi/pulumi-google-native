@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Compute resources associated with the analyze interactive workloads.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Size in GB of the disk. Default is 100 GB.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs()
         {
         }
+        public static new GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs Empty => new GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// An internal checker allows Uptime checks to run on private/internal GCP resources.
     /// </summary>
-    public sealed class InternalCheckerArgs : Pulumi.ResourceArgs
+    public sealed class InternalCheckerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The checker's human-readable name. The display name should be unique within a Cloud Monitoring Metrics Scope in order to make it easier to identify; however, uniqueness is not enforced.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public InternalCheckerArgs()
         {
         }
+        public static new InternalCheckerArgs Empty => new InternalCheckerArgs();
     }
 }

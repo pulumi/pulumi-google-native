@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// SlsaProvenance is the slsa provenance as defined by the slsa spec.
     /// </summary>
-    public sealed class SlsaProvenanceArgs : Pulumi.ResourceArgs
+    public sealed class SlsaProvenanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// builder is the builder of this provenance
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public SlsaProvenanceArgs()
         {
         }
+        public static new SlsaProvenanceArgs Empty => new SlsaProvenanceArgs();
     }
 }

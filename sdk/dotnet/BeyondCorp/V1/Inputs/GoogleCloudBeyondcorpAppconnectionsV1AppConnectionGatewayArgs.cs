@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1.Inputs
     /// <summary>
     /// Gateway represents a user facing component that serves as an entrance to enable connectivity.
     /// </summary>
-    public sealed class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1.Inputs
         public GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayArgs()
         {
         }
+        public static new GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayArgs Empty => new GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.OSLogin.V1Beta
     }
 
 
-    public sealed class GetSshPublicKeyArgs : Pulumi.InvokeArgs
+    public sealed class GetSshPublicKeyArgs : global::Pulumi.InvokeArgs
     {
         [Input("sshPublicKeyId", required: true)]
         public string SshPublicKeyId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.OSLogin.V1Beta
         public GetSshPublicKeyArgs()
         {
         }
+        public static new GetSshPublicKeyArgs Empty => new GetSshPublicKeyArgs();
     }
 
-    public sealed class GetSshPublicKeyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSshPublicKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("sshPublicKeyId", required: true)]
         public Input<string> SshPublicKeyId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.OSLogin.V1Beta
         public GetSshPublicKeyInvokeArgs()
         {
         }
+        public static new GetSshPublicKeyInvokeArgs Empty => new GetSshPublicKeyInvokeArgs();
     }
 
 

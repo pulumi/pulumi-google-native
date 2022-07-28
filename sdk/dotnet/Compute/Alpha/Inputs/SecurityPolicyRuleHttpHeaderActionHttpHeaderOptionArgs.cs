@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the header to set.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs()
         {
         }
+        public static new SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs Empty => new SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs();
     }
 }

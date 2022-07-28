@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:RatePlan")]
-    public partial class RatePlan : Pulumi.CustomResource
+    public partial class RatePlan : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the API product that the rate plan is associated with.
@@ -184,7 +184,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class RatePlanArgs : Pulumi.ResourceArgs
+    public sealed class RatePlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the API product that the rate plan is associated with.
@@ -303,5 +303,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public RatePlanArgs()
         {
         }
+        public static new RatePlanArgs Empty => new RatePlanArgs();
     }
 }

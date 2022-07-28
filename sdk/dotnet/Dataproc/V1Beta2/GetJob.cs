@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
     }
 
 
-    public sealed class GetJobArgs : Pulumi.InvokeArgs
+    public sealed class GetJobArgs : global::Pulumi.InvokeArgs
     {
         [Input("jobId", required: true)]
         public string JobId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public GetJobArgs()
         {
         }
+        public static new GetJobArgs Empty => new GetJobArgs();
     }
 
-    public sealed class GetJobInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetJobInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("jobId", required: true)]
         public Input<string> JobId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public GetJobInvokeArgs()
         {
         }
+        public static new GetJobInvokeArgs Empty => new GetJobInvokeArgs();
     }
 
 

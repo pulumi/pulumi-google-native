@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class FirewallPolicyAssociationArgs : Pulumi.ResourceArgs
+    public sealed class FirewallPolicyAssociationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The target that the firewall policy is attached to.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public FirewallPolicyAssociationArgs()
         {
         }
+        public static new FirewallPolicyAssociationArgs Empty => new FirewallPolicyAssociationArgs();
     }
 }

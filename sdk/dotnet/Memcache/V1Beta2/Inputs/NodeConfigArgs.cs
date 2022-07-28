@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2.Inputs
     /// <summary>
     /// Configuration for a Memcached Node.
     /// </summary>
-    public sealed class NodeConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of cpus per Memcached node.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2.Inputs
         public NodeConfigArgs()
         {
         }
+        public static new NodeConfigArgs Empty => new NodeConfigArgs();
     }
 }

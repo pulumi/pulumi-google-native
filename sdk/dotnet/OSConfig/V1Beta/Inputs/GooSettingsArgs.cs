@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Googet patching is performed by running `googet update`.
     /// </summary>
-    public sealed class GooSettingsArgs : Pulumi.ResourceArgs
+    public sealed class GooSettingsArgs : global::Pulumi.ResourceArgs
     {
         public GooSettingsArgs()
         {
         }
+        public static new GooSettingsArgs Empty => new GooSettingsArgs();
     }
 }

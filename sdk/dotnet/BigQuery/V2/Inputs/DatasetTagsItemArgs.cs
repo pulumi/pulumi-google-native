@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class DatasetTagsItemArgs : Pulumi.ResourceArgs
+    public sealed class DatasetTagsItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Required] The namespaced friendly name of the tag key, e.g. "12345/environment" where 12345 is org id.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public DatasetTagsItemArgs()
         {
         }
+        public static new DatasetTagsItemArgs Empty => new DatasetTagsItemArgs();
     }
 }

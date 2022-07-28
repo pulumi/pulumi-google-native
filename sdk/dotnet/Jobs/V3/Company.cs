@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Jobs.V3
     /// Creates a new company entity.
     /// </summary>
     [GoogleNativeResourceType("google-native:jobs/v3:Company")]
-    public partial class Company : Pulumi.CustomResource
+    public partial class Company : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
@@ -143,7 +143,7 @@ namespace Pulumi.GoogleNative.Jobs.V3
         }
     }
 
-    public sealed class CompanyArgs : Pulumi.ResourceArgs
+    public sealed class CompanyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The URI to employer's career site or careers page on the employer's web site, for example, "https://careers.google.com".
@@ -223,5 +223,6 @@ namespace Pulumi.GoogleNative.Jobs.V3
         public CompanyArgs()
         {
         }
+        public static new CompanyArgs Empty => new CompanyArgs();
     }
 }

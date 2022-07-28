@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
     }
 
 
-    public sealed class GetInstanceNamespaceIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceNamespaceIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public GetInstanceNamespaceIamPolicyArgs()
         {
         }
+        public static new GetInstanceNamespaceIamPolicyArgs Empty => new GetInstanceNamespaceIamPolicyArgs();
     }
 
-    public sealed class GetInstanceNamespaceIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceNamespaceIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public GetInstanceNamespaceIamPolicyInvokeArgs()
         {
         }
+        public static new GetInstanceNamespaceIamPolicyInvokeArgs Empty => new GetInstanceNamespaceIamPolicyInvokeArgs();
     }
 
 

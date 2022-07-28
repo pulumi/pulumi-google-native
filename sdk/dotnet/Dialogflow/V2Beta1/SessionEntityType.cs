@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2beta1:SessionEntityType")]
-    public partial class SessionEntityType : Pulumi.CustomResource
+    public partial class SessionEntityType : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The collection of entities associated with this session entity type.
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         }
     }
 
-    public sealed class SessionEntityTypeArgs : Pulumi.ResourceArgs
+    public sealed class SessionEntityTypeArgs : global::Pulumi.ResourceArgs
     {
         [Input("entities", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowV2beta1EntityTypeEntityArgs>? _entities;
@@ -144,5 +144,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public SessionEntityTypeArgs()
         {
         }
+        public static new SessionEntityTypeArgs Empty => new SessionEntityTypeArgs();
     }
 }

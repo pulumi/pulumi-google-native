@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A chart that displays data on a 2D (X and Y axes) plane.
     /// </summary>
-    public sealed class XyChartArgs : Pulumi.ResourceArgs
+    public sealed class XyChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Display options for the chart.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public XyChartArgs()
         {
         }
+        public static new XyChartArgs Empty => new XyChartArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     /// <summary>
     /// The entry of VM image upgrade history.
     /// </summary>
-    public sealed class UpgradeHistoryEntryArgs : Pulumi.ResourceArgs
+    public sealed class UpgradeHistoryEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action. Rolloback or Upgrade.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public UpgradeHistoryEntryArgs()
         {
         }
+        public static new UpgradeHistoryEntryArgs Empty => new UpgradeHistoryEntryArgs();
     }
 }

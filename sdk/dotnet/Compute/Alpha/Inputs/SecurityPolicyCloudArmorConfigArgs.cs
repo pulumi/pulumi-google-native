@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Configuration options for Cloud Armor.
     /// </summary>
-    public sealed class SecurityPolicyCloudArmorConfigArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyCloudArmorConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to true, enables Cloud Armor Machine Learning.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SecurityPolicyCloudArmorConfigArgs()
         {
         }
+        public static new SecurityPolicyCloudArmorConfigArgs Empty => new SecurityPolicyCloudArmorConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Reservation Affinity for consuming Zonal reservation.
     /// </summary>
-    public sealed class ReservationAffinityArgs : Pulumi.ResourceArgs
+    public sealed class ReservationAffinityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Type of reservation to consume
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public ReservationAffinityArgs()
         {
         }
+        public static new ReservationAffinityArgs Empty => new ReservationAffinityArgs();
     }
 }

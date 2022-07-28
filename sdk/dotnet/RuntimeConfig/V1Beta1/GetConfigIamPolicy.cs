@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
     }
 
 
-    public sealed class GetConfigIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetConfigIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("configId", required: true)]
         public string ConfigId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         public GetConfigIamPolicyArgs()
         {
         }
+        public static new GetConfigIamPolicyArgs Empty => new GetConfigIamPolicyArgs();
     }
 
-    public sealed class GetConfigIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConfigIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("configId", required: true)]
         public Input<string> ConfigId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         public GetConfigIamPolicyInvokeArgs()
         {
         }
+        public static new GetConfigIamPolicyInvokeArgs Empty => new GetConfigIamPolicyInvokeArgs();
     }
 
 

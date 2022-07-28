@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:secretmanager/v1:Secret")]
-    public partial class Secret : Pulumi.CustomResource
+    public partial class Secret : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time at which the Secret was created.
@@ -133,7 +133,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         }
     }
 
-    public sealed class SecretArgs : Pulumi.ResourceArgs
+    public sealed class SecretArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Etag of the currently stored Secret.
@@ -213,5 +213,6 @@ namespace Pulumi.GoogleNative.SecretManager.V1
         public SecretArgs()
         {
         }
+        public static new SecretArgs Empty => new SecretArgs();
     }
 }

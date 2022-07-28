@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a regional HealthCheckService resource in the specified project and region using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:RegionHealthCheckService")]
-    public partial class RegionHealthCheckService : Pulumi.CustomResource
+    public partial class RegionHealthCheckService : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -147,7 +147,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class RegionHealthCheckServiceArgs : Pulumi.ResourceArgs
+    public sealed class RegionHealthCheckServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -224,5 +224,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public RegionHealthCheckServiceArgs()
         {
         }
+        public static new RegionHealthCheckServiceArgs Empty => new RegionHealthCheckServiceArgs();
     }
 }

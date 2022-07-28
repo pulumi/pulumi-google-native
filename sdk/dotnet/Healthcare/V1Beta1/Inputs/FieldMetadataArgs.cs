@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Specifies FHIR paths to match, and how to handle de-identification of matching fields.
     /// </summary>
-    public sealed class FieldMetadataArgs : Pulumi.ResourceArgs
+    public sealed class FieldMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Deidentify action for one field.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public FieldMetadataArgs()
         {
         }
+        public static new FieldMetadataArgs Empty => new FieldMetadataArgs();
     }
 }

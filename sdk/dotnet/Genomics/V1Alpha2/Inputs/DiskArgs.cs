@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Inputs
     /// <summary>
     /// A Google Compute Engine disk resource specification.
     /// </summary>
-    public sealed class DiskArgs : Pulumi.ResourceArgs
+    public sealed class DiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Deprecated. Disks created by the Pipelines API will be deleted at the end of the pipeline run, regardless of what this field is set to.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Inputs
         public DiskArgs()
         {
         }
+        public static new DiskArgs Empty => new DiskArgs();
     }
 }

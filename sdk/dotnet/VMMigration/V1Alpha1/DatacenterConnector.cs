@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:vmmigration/v1alpha1:DatacenterConnector")]
-    public partial class DatacenterConnector : Pulumi.CustomResource
+    public partial class DatacenterConnector : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Appliance OVA version. This is the OVA which is manually installed by the user and contains the infrastructure for the automatically updatable components on the appliance.
@@ -171,7 +171,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         }
     }
 
-    public sealed class DatacenterConnectorArgs : Pulumi.ResourceArgs
+    public sealed class DatacenterConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The datacenterConnector identifier.
@@ -215,5 +215,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public DatacenterConnectorArgs()
         {
         }
+        public static new DatacenterConnectorArgs Empty => new DatacenterConnectorArgs();
     }
 }

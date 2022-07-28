@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates a TargetHttpsProxy resource in the specified project and region using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:RegionTargetHttpsProxy")]
-    public partial class RegionTargetHttpsProxy : Pulumi.CustomResource
+    public partial class RegionTargetHttpsProxy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// [Deprecated] Use serverTlsPolicy instead.
@@ -177,7 +177,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class RegionTargetHttpsProxyArgs : Pulumi.ResourceArgs
+    public sealed class RegionTargetHttpsProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Deprecated] Use serverTlsPolicy instead.
@@ -284,5 +284,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public RegionTargetHttpsProxyArgs()
         {
         }
+        public static new RegionTargetHttpsProxyArgs Empty => new RegionTargetHttpsProxyArgs();
     }
 }

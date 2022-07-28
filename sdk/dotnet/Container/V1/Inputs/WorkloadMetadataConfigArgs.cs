@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// WorkloadMetadataConfig defines the metadata configuration to expose to workloads on the node pool.
     /// </summary>
-    public sealed class WorkloadMetadataConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkloadMetadataConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Mode is the configuration for how to expose metadata to workloads running on the node pool.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public WorkloadMetadataConfigArgs()
         {
         }
+        public static new WorkloadMetadataConfigArgs Empty => new WorkloadMetadataConfigArgs();
     }
 }

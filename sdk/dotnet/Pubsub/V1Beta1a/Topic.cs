@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
     /// Creates the given topic with the given name.
     /// </summary>
     [GoogleNativeResourceType("google-native:pubsub/v1beta1a:Topic")]
-    public partial class Topic : Pulumi.CustomResource
+    public partial class Topic : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the topic.
@@ -64,7 +64,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         }
     }
 
-    public sealed class TopicArgs : Pulumi.ResourceArgs
+    public sealed class TopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the topic.
@@ -75,5 +75,6 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         public TopicArgs()
         {
         }
+        public static new TopicArgs Empty => new TopicArgs();
     }
 }

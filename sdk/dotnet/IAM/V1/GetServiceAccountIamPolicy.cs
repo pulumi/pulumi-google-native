@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.IAM.V1
     }
 
 
-    public sealed class GetServiceAccountIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceAccountIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         public GetServiceAccountIamPolicyArgs()
         {
         }
+        public static new GetServiceAccountIamPolicyArgs Empty => new GetServiceAccountIamPolicyArgs();
     }
 
-    public sealed class GetServiceAccountIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceAccountIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         public GetServiceAccountIamPolicyInvokeArgs()
         {
         }
+        public static new GetServiceAccountIamPolicyInvokeArgs Empty => new GetServiceAccountIamPolicyInvokeArgs();
     }
 
 

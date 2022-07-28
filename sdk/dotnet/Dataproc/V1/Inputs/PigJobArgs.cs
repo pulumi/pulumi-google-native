@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// A Dataproc job for running Apache Pig (https://pig.apache.org/) queries on YARN.
     /// </summary>
-    public sealed class PigJobArgs : Pulumi.ResourceArgs
+    public sealed class PigJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public PigJobArgs()
         {
         }
+        public static new PigJobArgs Empty => new PigJobArgs();
     }
 }

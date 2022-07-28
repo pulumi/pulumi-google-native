@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
     /// <summary>
     /// Determines whether or no a connection is locked. If locked, a reason must be specified.
     /// </summary>
-    public sealed class LockConfigArgs : Pulumi.ResourceArgs
+    public sealed class LockConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether or not the connection is locked.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public LockConfigArgs()
         {
         }
+        public static new LockConfigArgs Empty => new LockConfigArgs();
     }
 }

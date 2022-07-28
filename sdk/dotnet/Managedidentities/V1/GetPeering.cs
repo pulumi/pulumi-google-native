@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
     }
 
 
-    public sealed class GetPeeringArgs : Pulumi.InvokeArgs
+    public sealed class GetPeeringArgs : global::Pulumi.InvokeArgs
     {
         [Input("peeringId", required: true)]
         public string PeeringId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         public GetPeeringArgs()
         {
         }
+        public static new GetPeeringArgs Empty => new GetPeeringArgs();
     }
 
-    public sealed class GetPeeringInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPeeringInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("peeringId", required: true)]
         public Input<string> PeeringId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         public GetPeeringInvokeArgs()
         {
         }
+        public static new GetPeeringInvokeArgs Empty => new GetPeeringInvokeArgs();
     }
 
 

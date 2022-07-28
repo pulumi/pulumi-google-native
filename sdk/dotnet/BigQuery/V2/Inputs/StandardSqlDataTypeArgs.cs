@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
     /// <summary>
     /// The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT&gt;: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
     /// </summary>
-    public sealed class StandardSqlDataTypeArgs : Pulumi.ResourceArgs
+    public sealed class StandardSqlDataTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the array's elements, if type_kind = "ARRAY".
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public StandardSqlDataTypeArgs()
         {
         }
+        public static new StandardSqlDataTypeArgs Empty => new StandardSqlDataTypeArgs();
     }
 }

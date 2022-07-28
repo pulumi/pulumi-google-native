@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
     /// <summary>
     /// Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
     /// </summary>
-    public sealed class RRSetRoutingPolicyGeoPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RRSetRoutingPolicyGeoPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("items")]
         private InputList<Inputs.RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs>? _items;
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         public RRSetRoutingPolicyGeoPolicyArgs()
         {
         }
+        public static new RRSetRoutingPolicyGeoPolicyArgs Empty => new RRSetRoutingPolicyGeoPolicyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// The configuration for running the Dataproc cluster on Kubernetes.
     /// </summary>
-    public sealed class KubernetesClusterConfigArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration for running the Dataproc cluster on GKE.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public KubernetesClusterConfigArgs()
         {
         }
+        public static new KubernetesClusterConfigArgs Empty => new KubernetesClusterConfigArgs();
     }
 }

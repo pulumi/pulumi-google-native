@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
     /// Creates a new ClientGateway in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:beyondcorp/v1:ClientGateway")]
-    public partial class ClientGateway : Pulumi.CustomResource
+    public partial class ClientGateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The client connector service name that the client gateway is associated to. Client Connector Services, named as follows: `projects/{project_id}/locations/{location_id}/client_connector_services/{client_connector_service_id}`.
@@ -117,7 +117,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
         }
     }
 
-    public sealed class ClientGatewayArgs : Pulumi.ResourceArgs
+    public sealed class ClientGatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. User-settable client gateway resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
@@ -152,5 +152,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
         public ClientGatewayArgs()
         {
         }
+        public static new ClientGatewayArgs Empty => new ClientGatewayArgs();
     }
 }

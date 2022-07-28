@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
     }
 
 
-    public sealed class GetHubArgs : Pulumi.InvokeArgs
+    public sealed class GetHubArgs : global::Pulumi.InvokeArgs
     {
         [Input("hubId", required: true)]
         public string HubId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public GetHubArgs()
         {
         }
+        public static new GetHubArgs Empty => new GetHubArgs();
     }
 
-    public sealed class GetHubInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHubInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("hubId", required: true)]
         public Input<string> HubId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public GetHubInvokeArgs()
         {
         }
+        public static new GetHubInvokeArgs Empty => new GetHubInvokeArgs();
     }
 
 

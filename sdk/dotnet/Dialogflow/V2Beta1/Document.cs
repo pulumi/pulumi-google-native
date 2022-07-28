@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     /// Creates a new document. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: KnowledgeOperationMetadata - `response`: Document Note: The `projects.agent.knowledgeBases.documents` resource is deprecated; only use `projects.knowledgeBases.documents`.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2beta1:Document")]
-    public partial class Document : Pulumi.CustomResource
+    public partial class Document : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types. Note: This field is in the process of being deprecated, please use raw_content instead.
@@ -145,7 +145,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         }
     }
 
-    public sealed class DocumentArgs : Pulumi.ResourceArgs
+    public sealed class DocumentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The raw content of the document. This field is only permitted for EXTRACTIVE_QA and FAQ knowledge types. Note: This field is in the process of being deprecated, please use raw_content instead.
@@ -231,5 +231,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public DocumentArgs()
         {
         }
+        public static new DocumentArgs Empty => new DocumentArgs();
     }
 }

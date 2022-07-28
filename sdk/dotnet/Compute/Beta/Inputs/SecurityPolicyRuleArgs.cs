@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
     /// </summary>
-    public sealed class SecurityPolicyRuleArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Action to perform when the rule is matched. The following are the valid actions: - allow: allow access to target. - deny(): deny access to target, returns the HTTP response code specified (valid values are 403, 404, and 502). - rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rate_limit_options to be set. - redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. - throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rate_limit_options to be set for this. 
@@ -108,5 +108,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public SecurityPolicyRuleArgs()
         {
         }
+        public static new SecurityPolicyRuleArgs Empty => new SecurityPolicyRuleArgs();
     }
 }

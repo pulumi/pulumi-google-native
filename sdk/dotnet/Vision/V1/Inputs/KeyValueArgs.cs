@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Vision.V1.Inputs
     /// <summary>
     /// A product label represented as a key-value pair.
     /// </summary>
-    public sealed class KeyValueArgs : Pulumi.ResourceArgs
+    public sealed class KeyValueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key of the label attached to the product. Cannot be empty and cannot exceed 128 bytes.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Vision.V1.Inputs
         public KeyValueArgs()
         {
         }
+        public static new KeyValueArgs Empty => new KeyValueArgs();
     }
 }

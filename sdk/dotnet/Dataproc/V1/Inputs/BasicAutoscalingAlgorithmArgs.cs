@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Basic algorithm for autoscaling.
     /// </summary>
-    public sealed class BasicAutoscalingAlgorithmArgs : Pulumi.ResourceArgs
+    public sealed class BasicAutoscalingAlgorithmArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Duration between scaling events. A scaling period starts after the update operation from the previous event has completed.Bounds: 2m, 1d. Default: 2m.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public BasicAutoscalingAlgorithmArgs()
         {
         }
+        public static new BasicAutoscalingAlgorithmArgs Empty => new BasicAutoscalingAlgorithmArgs();
     }
 }

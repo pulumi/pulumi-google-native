@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
     /// Creates a task and adds it to a queue. Tasks cannot be updated after creation; there is no UpdateTask command. * For App Engine queues, the maximum task size is 100KB. * For pull queues, the maximum task size is 1MB.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudtasks/v2beta2:Task")]
-    public partial class Task : Pulumi.CustomResource
+    public partial class Task : global::Pulumi.CustomResource
     {
         /// <summary>
         /// App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
@@ -121,7 +121,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         }
     }
 
-    public sealed class TaskArgs : Pulumi.ResourceArgs
+    public sealed class TaskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// App Engine HTTP request that is sent to the task's target. Can be set only if app_engine_http_target is set on the queue. An App Engine task is a task that has AppEngineHttpRequest set.
@@ -171,5 +171,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         public TaskArgs()
         {
         }
+        public static new TaskArgs Empty => new TaskArgs();
     }
 }

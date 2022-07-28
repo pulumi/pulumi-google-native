@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetImageArgs : Pulumi.InvokeArgs
+    public sealed class GetImageArgs : global::Pulumi.InvokeArgs
     {
         [Input("image", required: true)]
         public string Image { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetImageArgs()
         {
         }
+        public static new GetImageArgs Empty => new GetImageArgs();
     }
 
-    public sealed class GetImageInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetImageInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("image", required: true)]
         public Input<string> Image { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetImageInvokeArgs()
         {
         }
+        public static new GetImageInvokeArgs Empty => new GetImageInvokeArgs();
     }
 
 

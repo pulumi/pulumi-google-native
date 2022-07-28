@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Details on how a particular software package was installed on a system.
     /// </summary>
-    public sealed class PackageOccurrenceArgs : Pulumi.ResourceArgs
+    public sealed class PackageOccurrenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Licenses that have been declared by the authors of the package.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public PackageOccurrenceArgs()
         {
         }
+        public static new PackageOccurrenceArgs Empty => new PackageOccurrenceArgs();
     }
 }

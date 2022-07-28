@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigquery/v2:Job")]
-    public partial class Job : Pulumi.CustomResource
+    public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
         /// [Required] Describes the job configuration.
@@ -114,7 +114,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         }
     }
 
-    public sealed class JobArgs : Pulumi.ResourceArgs
+    public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Required] Describes the job configuration.
@@ -137,5 +137,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public JobArgs()
         {
         }
+        public static new JobArgs Empty => new JobArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     /// CreateApiSpec creates a specified spec.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigeeregistry/v1:Spec")]
-    public partial class Spec : Pulumi.CustomResource
+    public partial class Spec : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
@@ -168,7 +168,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         }
     }
 
-    public sealed class SpecArgs : Pulumi.ResourceArgs
+    public sealed class SpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -251,5 +251,6 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public SpecArgs()
         {
         }
+        public static new SpecArgs Empty => new SpecArgs();
     }
 }

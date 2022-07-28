@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     }
 
 
-    public sealed class GetFolderBucketArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderBucketArgs : global::Pulumi.InvokeArgs
     {
         [Input("bucketId", required: true)]
         public string BucketId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetFolderBucketArgs()
         {
         }
+        public static new GetFolderBucketArgs Empty => new GetFolderBucketArgs();
     }
 
-    public sealed class GetFolderBucketInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderBucketInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("bucketId", required: true)]
         public Input<string> BucketId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetFolderBucketInvokeArgs()
         {
         }
+        public static new GetFolderBucketInvokeArgs Empty => new GetFolderBucketInvokeArgs();
     }
 
 

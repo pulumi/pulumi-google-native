@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
     /// <summary>
     /// A GCP vlan attachment.
     /// </summary>
-    public sealed class IntakeVlanAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class IntakeVlanAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifier of the VLAN attachment.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public IntakeVlanAttachmentArgs()
         {
         }
+        public static new IntakeVlanAttachmentArgs Empty => new IntakeVlanAttachmentArgs();
     }
 }

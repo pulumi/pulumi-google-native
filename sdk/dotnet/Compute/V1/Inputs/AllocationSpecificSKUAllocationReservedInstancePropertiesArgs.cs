@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Properties of the SKU instances being reserved. Next ID: 9
     /// </summary>
-    public sealed class AllocationSpecificSKUAllocationReservedInstancePropertiesArgs : Pulumi.ResourceArgs
+    public sealed class AllocationSpecificSKUAllocationReservedInstancePropertiesArgs : global::Pulumi.ResourceArgs
     {
         [Input("guestAccelerators")]
         private InputList<Inputs.AcceleratorConfigArgs>? _guestAccelerators;
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public AllocationSpecificSKUAllocationReservedInstancePropertiesArgs()
         {
         }
+        public static new AllocationSpecificSKUAllocationReservedInstancePropertiesArgs Empty => new AllocationSpecificSKUAllocationReservedInstancePropertiesArgs();
     }
 }

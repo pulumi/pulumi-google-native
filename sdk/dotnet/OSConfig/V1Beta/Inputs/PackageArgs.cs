@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Package is a reference to the software package to be installed or removed. The agent on the VM instance uses the system package manager to apply the config. These are the commands that the agent uses to install or remove packages. Apt install: `apt-get update &amp;&amp; apt-get -y install package1 package2 package3` remove: `apt-get -y remove package1 package2 package3` Yum install: `yum -y install package1 package2 package3` remove: `yum -y remove package1 package2 package3` Zypper install: `zypper install package1 package2 package3` remove: `zypper rm package1 package2` Googet install: `googet -noconfirm install package1 package2 package3` remove: `googet -noconfirm remove package1 package2 package3`
     /// </summary>
-    public sealed class PackageArgs : Pulumi.ResourceArgs
+    public sealed class PackageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The desired_state the agent should maintain for this package. The default is to ensure the package is installed.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public PackageArgs()
         {
         }
+        public static new PackageArgs Empty => new PackageArgs();
     }
 }

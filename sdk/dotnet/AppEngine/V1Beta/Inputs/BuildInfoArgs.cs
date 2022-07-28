@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// Google Cloud Build information.
     /// </summary>
-    public sealed class BuildInfoArgs : Pulumi.ResourceArgs
+    public sealed class BuildInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Google Cloud Build id. Example: "f966068f-08b2-42c8-bdfe-74137dff2bf9"
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public BuildInfoArgs()
         {
         }
+        public static new BuildInfoArgs Empty => new BuildInfoArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:notebooks/v1:Schedule")]
-    public partial class Schedule : Pulumi.CustomResource
+    public partial class Schedule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time the schedule was created.
@@ -134,7 +134,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         }
     }
 
-    public sealed class ScheduleArgs : Pulumi.ResourceArgs
+    public sealed class ScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cron-tab formatted schedule by which the job will execute. Format: minute, hour, day of month, month, day of week, e.g. 0 0 * * WED = every Wednesday More examples: https://crontab.guru/examples.html
@@ -178,5 +178,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public ScheduleArgs()
         {
         }
+        public static new ScheduleArgs Empty => new ScheduleArgs();
     }
 }

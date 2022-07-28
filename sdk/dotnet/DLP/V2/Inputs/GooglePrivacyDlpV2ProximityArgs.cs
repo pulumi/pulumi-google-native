@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Message for specifying a window around a finding to apply a detection rule.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2ProximityArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2ProximityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of characters after the finding to consider.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2ProximityArgs()
         {
         }
+        public static new GooglePrivacyDlpV2ProximityArgs Empty => new GooglePrivacyDlpV2ProximityArgs();
     }
 }

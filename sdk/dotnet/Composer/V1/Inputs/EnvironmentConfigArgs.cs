@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     /// <summary>
     /// Configuration information for an environment.
     /// </summary>
-    public sealed class EnvironmentConfigArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The configuration settings for Cloud SQL instance used internally by Apache Airflow software.
@@ -90,5 +90,6 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public EnvironmentConfigArgs()
         {
         }
+        public static new EnvironmentConfigArgs Empty => new EnvironmentConfigArgs();
     }
 }

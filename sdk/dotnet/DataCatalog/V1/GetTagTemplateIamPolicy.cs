@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
     }
 
 
-    public sealed class GetTagTemplateIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetTagTemplateIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public GetTagTemplateIamPolicyArgs()
         {
         }
+        public static new GetTagTemplateIamPolicyArgs Empty => new GetTagTemplateIamPolicyArgs();
     }
 
-    public sealed class GetTagTemplateIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTagTemplateIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public GetTagTemplateIamPolicyInvokeArgs()
         {
         }
+        public static new GetTagTemplateIamPolicyInvokeArgs Empty => new GetTagTemplateIamPolicyInvokeArgs();
     }
 
 

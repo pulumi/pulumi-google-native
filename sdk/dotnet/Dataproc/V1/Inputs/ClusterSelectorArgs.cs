@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// A selector that chooses target cluster for jobs based on metadata.
     /// </summary>
-    public sealed class ClusterSelectorArgs : Pulumi.ResourceArgs
+    public sealed class ClusterSelectorArgs : global::Pulumi.ResourceArgs
     {
         [Input("clusterLabels", required: true)]
         private InputMap<string>? _clusterLabels;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public ClusterSelectorArgs()
         {
         }
+        public static new ClusterSelectorArgs Empty => new ClusterSelectorArgs();
     }
 }

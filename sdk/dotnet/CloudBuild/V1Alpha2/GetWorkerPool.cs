@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
     }
 
 
-    public sealed class GetWorkerPoolArgs : Pulumi.InvokeArgs
+    public sealed class GetWorkerPoolArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
         public GetWorkerPoolArgs()
         {
         }
+        public static new GetWorkerPoolArgs Empty => new GetWorkerPoolArgs();
     }
 
-    public sealed class GetWorkerPoolInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetWorkerPoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
         public GetWorkerPoolInvokeArgs()
         {
         }
+        public static new GetWorkerPoolInvokeArgs Empty => new GetWorkerPoolInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// A PublicKey describes a public key.
     /// </summary>
-    public sealed class PublicKeyArgs : Pulumi.ResourceArgs
+    public sealed class PublicKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The format of the public key.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public PublicKeyArgs()
         {
         }
+        public static new PublicKeyArgs Empty => new PublicKeyArgs();
     }
 }

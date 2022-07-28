@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Represents configuration for a generic web service.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedCaCerts")]
         private InputList<string>? _allowedCaCerts;
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs Empty => new GoogleCloudDialogflowCxV3beta1WebhookGenericWebServiceArgs();
     }
 }

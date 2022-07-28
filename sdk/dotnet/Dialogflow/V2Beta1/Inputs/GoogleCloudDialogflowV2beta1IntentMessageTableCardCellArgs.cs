@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Cell of TableCardRow.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Text in this cell.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArgs();
     }
 }

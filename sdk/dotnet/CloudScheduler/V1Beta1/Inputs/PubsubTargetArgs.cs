@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1.Inputs
     /// <summary>
     /// Pub/Sub target. The job will be delivered by publishing a message to the given Pub/Sub topic.
     /// </summary>
-    public sealed class PubsubTargetArgs : Pulumi.ResourceArgs
+    public sealed class PubsubTargetArgs : global::Pulumi.ResourceArgs
     {
         [Input("attributes")]
         private InputMap<string>? _attributes;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1.Inputs
         public PubsubTargetArgs()
         {
         }
+        public static new PubsubTargetArgs Empty => new PubsubTargetArgs();
     }
 }

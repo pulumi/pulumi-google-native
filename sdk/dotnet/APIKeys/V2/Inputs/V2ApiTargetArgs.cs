@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.APIKeys.V2.Inputs
     /// <summary>
     /// A restriction for a specific service and optionally one or multiple specific methods. Both fields are case insensitive.
     /// </summary>
-    public sealed class V2ApiTargetArgs : Pulumi.ResourceArgs
+    public sealed class V2ApiTargetArgs : global::Pulumi.ResourceArgs
     {
         [Input("methods")]
         private InputList<string>? _methods;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.APIKeys.V2.Inputs
         public V2ApiTargetArgs()
         {
         }
+        public static new V2ApiTargetArgs Empty => new V2ApiTargetArgs();
     }
 }

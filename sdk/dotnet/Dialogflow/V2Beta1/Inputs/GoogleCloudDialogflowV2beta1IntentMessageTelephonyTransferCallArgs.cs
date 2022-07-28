@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Transfers the call in Telephony Gateway.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The phone number to transfer the call to in [E.164 format](https://en.wikipedia.org/wiki/E.164). We currently only allow transferring to US numbers (+1xxxyyyzzzz).
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs();
     }
 }

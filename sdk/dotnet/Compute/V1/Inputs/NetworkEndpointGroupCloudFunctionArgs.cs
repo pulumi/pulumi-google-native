@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Configuration for a Cloud Function network endpoint group (NEG). The function must be provided explicitly or in the URL mask. Note: Cloud Function must be in the same project and located in the same region as the Serverless NEG.
     /// </summary>
-    public sealed class NetworkEndpointGroupCloudFunctionArgs : Pulumi.ResourceArgs
+    public sealed class NetworkEndpointGroupCloudFunctionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A user-defined name of the Cloud Function. The function name is case-sensitive and must be 1-63 characters long. Example value: "func1".
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public NetworkEndpointGroupCloudFunctionArgs()
         {
         }
+        public static new NetworkEndpointGroupCloudFunctionArgs Empty => new NetworkEndpointGroupCloudFunctionArgs();
     }
 }

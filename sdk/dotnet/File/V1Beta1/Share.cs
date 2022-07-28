@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:file/v1beta1:Share")]
-    public partial class Share : Pulumi.CustomResource
+    public partial class Share : global::Pulumi.CustomResource
     {
         /// <summary>
         /// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
@@ -129,7 +129,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         }
     }
 
-    public sealed class ShareArgs : Pulumi.ResourceArgs
+    public sealed class ShareArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
@@ -191,5 +191,6 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         public ShareArgs()
         {
         }
+        public static new ShareArgs Empty => new ShareArgs();
     }
 }

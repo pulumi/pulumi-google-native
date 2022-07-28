@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Include to use an existing data crypto key wrapped by KMS. The wrapped key must be a 128-, 192-, or 256-bit key. The key must grant the Cloud IAM permission `cloudkms.cryptoKeyVersions.useToDecrypt` to the project's Cloud Healthcare Service Agent service account. For more information, see [Creating a wrapped key] (https://cloud.google.com/dlp/docs/create-wrapped-key).
     /// </summary>
-    public sealed class KmsWrappedCryptoKeyArgs : Pulumi.ResourceArgs
+    public sealed class KmsWrappedCryptoKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource name of the KMS CryptoKey to use for unwrapping. For example, `projects/{project_id}/locations/{location_id}/keyRings/{keyring}/cryptoKeys/{key}`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public KmsWrappedCryptoKeyArgs()
         {
         }
+        public static new KmsWrappedCryptoKeyArgs Empty => new KmsWrappedCryptoKeyArgs();
     }
 }

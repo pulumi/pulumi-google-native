@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// A backend rule provides configuration for an individual API element.
     /// </summary>
-    public sealed class BackendRuleArgs : Pulumi.ResourceArgs
+    public sealed class BackendRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The address of the API backend. The scheme is used to determine the backend protocol and security. The following schemes are accepted: SCHEME PROTOCOL SECURITY http:// HTTP None https:// HTTP TLS grpc:// gRPC None grpcs:// gRPC TLS It is recommended to explicitly include a scheme. Leaving out the scheme may cause constrasting behaviors across platforms. If the port is unspecified, the default is: - 80 for schemes without TLS - 443 for schemes with TLS For HTTP backends, use protocol to specify the protocol version.
@@ -63,5 +63,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public BackendRuleArgs()
         {
         }
+        public static new BackendRuleArgs Empty => new BackendRuleArgs();
     }
 }

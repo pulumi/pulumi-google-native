@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class NodeGroupAutoscalingPolicyArgs : Pulumi.ResourceArgs
+    public sealed class NodeGroupAutoscalingPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum number of nodes that the group should have. Must be set if autoscaling is enabled. Maximum value allowed is 100.
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public NodeGroupAutoscalingPolicyArgs()
         {
         }
+        public static new NodeGroupAutoscalingPolicyArgs Empty => new NodeGroupAutoscalingPolicyArgs();
     }
 }

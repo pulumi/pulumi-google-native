@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// `QuotaLimit` defines a specific limit that applies over a specified duration for a limit type. There can be at most one limit for a duration and limit type combination defined within a `QuotaGroup`.
     /// </summary>
-    public sealed class QuotaLimitArgs : Pulumi.ResourceArgs
+    public sealed class QuotaLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Default number of tokens that can be consumed during the specified duration. This is the number of tokens assigned when a client application developer activates the service for his/her project. Specifying a value of 0 will block all requests. This can be used if you are provisioning quota to selected consumers and blocking others. Similarly, a value of -1 will indicate an unlimited quota. No other negative values are allowed. Used by group-based quotas only.
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public QuotaLimitArgs()
         {
         }
+        public static new QuotaLimitArgs Empty => new QuotaLimitArgs();
     }
 }

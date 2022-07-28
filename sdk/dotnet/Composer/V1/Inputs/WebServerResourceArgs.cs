@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     /// <summary>
     /// Configuration for resources used by Airflow web server.
     /// </summary>
-    public sealed class WebServerResourceArgs : Pulumi.ResourceArgs
+    public sealed class WebServerResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. CPU request and limit for Airflow web server.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public WebServerResourceArgs()
         {
         }
+        public static new WebServerResourceArgs Empty => new WebServerResourceArgs();
     }
 }

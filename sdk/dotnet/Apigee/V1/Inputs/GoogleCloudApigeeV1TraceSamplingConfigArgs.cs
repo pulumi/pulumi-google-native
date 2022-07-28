@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// TraceSamplingConfig represents the detail settings of distributed tracing. Only the fields that are defined in the distributed trace configuration can be overridden using the distribute trace configuration override APIs.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1TraceSamplingConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1TraceSamplingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Sampler of distributed tracing. OFF is the default value.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1TraceSamplingConfigArgs()
         {
         }
+        public static new GoogleCloudApigeeV1TraceSamplingConfigArgs Empty => new GoogleCloudApigeeV1TraceSamplingConfigArgs();
     }
 }

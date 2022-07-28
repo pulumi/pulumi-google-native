@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     /// <summary>
     /// Parameters used in Vertex AI JobType executions.
     /// </summary>
-    public sealed class VertexAIParametersArgs : Pulumi.ResourceArgs
+    public sealed class VertexAIParametersArgs : global::Pulumi.ResourceArgs
     {
         [Input("env")]
         private InputMap<string>? _env;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public VertexAIParametersArgs()
         {
         }
+        public static new VertexAIParametersArgs Empty => new VertexAIParametersArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DNS.V2
     }
 
 
-    public sealed class GetResponsePolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetResponsePolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("clientOperationId")]
         public string? ClientOperationId { get; set; }
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.DNS.V2
         public GetResponsePolicyArgs()
         {
         }
+        public static new GetResponsePolicyArgs Empty => new GetResponsePolicyArgs();
     }
 
-    public sealed class GetResponsePolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetResponsePolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("clientOperationId")]
         public Input<string>? ClientOperationId { get; set; }
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.DNS.V2
         public GetResponsePolicyInvokeArgs()
         {
         }
+        public static new GetResponsePolicyInvokeArgs Empty => new GetResponsePolicyInvokeArgs();
     }
 
 

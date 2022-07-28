@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// An item in the carousel.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The body text of the card.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArgs();
     }
 }

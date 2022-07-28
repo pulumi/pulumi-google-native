@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Cloud Run service. Learn more at https://cloud.google.com/run.
     /// </summary>
-    public sealed class CloudRunArgs : Pulumi.ResourceArgs
+    public sealed class CloudRunArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision).
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public CloudRunArgs()
         {
         }
+        public static new CloudRunArgs Empty => new CloudRunArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Provides details for how an evaluation job sends email alerts based on the results of a run.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An email address to send alerts to.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs Empty => new GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs();
     }
 }

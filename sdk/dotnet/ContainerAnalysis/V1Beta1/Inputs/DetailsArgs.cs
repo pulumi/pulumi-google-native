@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Details of an attestation occurrence.
     /// </summary>
-    public sealed class DetailsArgs : Pulumi.ResourceArgs
+    public sealed class DetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Attestation for the resource.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public DetailsArgs()
         {
         }
+        public static new DetailsArgs Empty => new DetailsArgs();
     }
 }

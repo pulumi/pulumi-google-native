@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Schema in protocol buffer format.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Protocol buffer source of the schema.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs Empty => new GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs();
     }
 }

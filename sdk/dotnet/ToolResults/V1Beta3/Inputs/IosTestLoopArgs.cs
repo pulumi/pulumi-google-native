@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// A game loop test of an iOS application.
     /// </summary>
-    public sealed class IosTestLoopArgs : Pulumi.ResourceArgs
+    public sealed class IosTestLoopArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bundle ID of the app.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public IosTestLoopArgs()
         {
         }
+        public static new IosTestLoopArgs Empty => new IosTestLoopArgs();
     }
 }

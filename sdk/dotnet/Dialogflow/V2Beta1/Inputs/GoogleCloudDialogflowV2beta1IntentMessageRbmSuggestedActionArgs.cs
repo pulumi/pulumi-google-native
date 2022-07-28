@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Rich Business Messaging (RBM) suggested client-side action that the user can choose from the card.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Suggested client side action: Dial a phone number
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// What event needs to occur for a new job to be started.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2TriggerArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2TriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// For use with hybrid jobs. Jobs must be manually created and finished.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2TriggerArgs()
         {
         }
+        public static new GooglePrivacyDlpV2TriggerArgs Empty => new GooglePrivacyDlpV2TriggerArgs();
     }
 }

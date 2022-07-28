@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Canonical service scoped to an Istio mesh. Anthos clusters running ASM &gt;= 1.6.8 will have their services ingested as this type.
     /// </summary>
-    public sealed class IstioCanonicalServiceArgs : Pulumi.ResourceArgs
+    public sealed class IstioCanonicalServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the canonical service underlying this service. Corresponds to the destination_canonical_service_name metric label in label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio).
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public IstioCanonicalServiceArgs()
         {
         }
+        public static new IstioCanonicalServiceArgs Empty => new IstioCanonicalServiceArgs();
     }
 }

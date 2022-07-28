@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
-    public sealed class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArgs : Pulumi.ResourceArgs
+    public sealed class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the size of the disk in base-2 GB.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArgs()
         {
         }
+        public static new AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArgs Empty => new AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
     /// <summary>
     /// The details of the egress info. One of the following options should be set.
     /// </summary>
-    public sealed class EgressArgs : Pulumi.ResourceArgs
+    public sealed class EgressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A VPC from the consumer project.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
         public EgressArgs()
         {
         }
+        public static new EgressArgs Empty => new EgressArgs();
     }
 }

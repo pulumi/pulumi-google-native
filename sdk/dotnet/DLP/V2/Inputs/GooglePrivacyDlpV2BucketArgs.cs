@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Bucket is represented as a range, along with replacement values.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2BucketArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2BucketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Upper bound of the range, exclusive; type must match min.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2BucketArgs()
         {
         }
+        public static new GooglePrivacyDlpV2BucketArgs Empty => new GooglePrivacyDlpV2BucketArgs();
     }
 }

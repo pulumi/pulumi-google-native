@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetZoneQueuedResourceArgs : Pulumi.InvokeArgs
+    public sealed class GetZoneQueuedResourceArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetZoneQueuedResourceArgs()
         {
         }
+        public static new GetZoneQueuedResourceArgs Empty => new GetZoneQueuedResourceArgs();
     }
 
-    public sealed class GetZoneQueuedResourceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetZoneQueuedResourceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetZoneQueuedResourceInvokeArgs()
         {
         }
+        public static new GetZoneQueuedResourceInvokeArgs Empty => new GetZoneQueuedResourceInvokeArgs();
     }
 
 

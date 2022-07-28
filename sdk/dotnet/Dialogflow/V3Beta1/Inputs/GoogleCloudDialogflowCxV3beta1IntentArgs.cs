@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// An intent represents a user's intent to interact with a conversational agent. You can provide information for the Dialogflow API to use to match user input to an intent by adding training phrases (i.e., examples of user input) to your intent.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1IntentArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1IntentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human readable description for better understanding an intent like its scope, content, result etc. Maximum character limit: 140 characters.
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1IntentArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1IntentArgs Empty => new GoogleCloudDialogflowCxV3beta1IntentArgs();
     }
 }

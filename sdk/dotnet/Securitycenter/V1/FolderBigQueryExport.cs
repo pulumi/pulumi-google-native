@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:securitycenter/v1:FolderBigQueryExport")]
-    public partial class FolderBigQueryExport : Pulumi.CustomResource
+    public partial class FolderBigQueryExport : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
@@ -121,7 +121,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         }
     }
 
-    public sealed class FolderBigQueryExportArgs : Pulumi.ResourceArgs
+    public sealed class FolderBigQueryExportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
@@ -159,5 +159,6 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public FolderBigQueryExportArgs()
         {
         }
+        public static new FolderBigQueryExportArgs Empty => new FolderBigQueryExportArgs();
     }
 }

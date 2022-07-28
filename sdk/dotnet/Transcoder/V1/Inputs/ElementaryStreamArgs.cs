@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Encoding of an input file such as an audio, video, or text track. Elementary streams must be packaged before mapping and sharing between different output formats.
     /// </summary>
-    public sealed class ElementaryStreamArgs : Pulumi.ResourceArgs
+    public sealed class ElementaryStreamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Encoding of an audio stream.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public ElementaryStreamArgs()
         {
         }
+        public static new ElementaryStreamArgs Empty => new ElementaryStreamArgs();
     }
 }

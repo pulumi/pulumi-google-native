@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Taskrunner configuration settings.
     /// </summary>
-    public sealed class TaskRunnerSettingsArgs : Pulumi.ResourceArgs
+    public sealed class TaskRunnerSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to also send taskrunner log info to stderr.
@@ -138,5 +138,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public TaskRunnerSettingsArgs()
         {
         }
+        public static new TaskRunnerSettingsArgs Empty => new TaskRunnerSettingsArgs();
     }
 }

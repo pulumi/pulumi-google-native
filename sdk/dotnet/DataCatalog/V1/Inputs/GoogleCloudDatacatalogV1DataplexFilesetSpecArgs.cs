@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Entry specyfication for a Dataplex fileset.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1DataplexFilesetSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1DataplexFilesetSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Common Dataplex fields.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1DataplexFilesetSpecArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1DataplexFilesetSpecArgs Empty => new GoogleCloudDatacatalogV1DataplexFilesetSpecArgs();
     }
 }

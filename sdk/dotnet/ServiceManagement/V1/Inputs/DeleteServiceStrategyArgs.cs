@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Strategy used to delete a service. This strategy is a placeholder only used by the system generated rollout to delete a service.
     /// </summary>
-    public sealed class DeleteServiceStrategyArgs : Pulumi.ResourceArgs
+    public sealed class DeleteServiceStrategyArgs : global::Pulumi.ResourceArgs
     {
         public DeleteServiceStrategyArgs()
         {
         }
+        public static new DeleteServiceStrategyArgs Empty => new DeleteServiceStrategyArgs();
     }
 }

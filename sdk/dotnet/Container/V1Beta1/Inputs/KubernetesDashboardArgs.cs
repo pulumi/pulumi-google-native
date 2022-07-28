@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration for the Kubernetes Dashboard.
     /// </summary>
-    public sealed class KubernetesDashboardArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesDashboardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the Kubernetes Dashboard is enabled for this cluster.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public KubernetesDashboardArgs()
         {
         }
+        public static new KubernetesDashboardArgs Empty => new KubernetesDashboardArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetDiskArgs : Pulumi.InvokeArgs
+    public sealed class GetDiskArgs : global::Pulumi.InvokeArgs
     {
         [Input("disk", required: true)]
         public string Disk { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetDiskArgs()
         {
         }
+        public static new GetDiskArgs Empty => new GetDiskArgs();
     }
 
-    public sealed class GetDiskInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDiskInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("disk", required: true)]
         public Input<string> Disk { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetDiskInvokeArgs()
         {
         }
+        public static new GetDiskInvokeArgs Empty => new GetDiskInvokeArgs();
     }
 
 

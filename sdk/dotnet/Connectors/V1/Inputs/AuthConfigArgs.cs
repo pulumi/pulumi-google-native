@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
     /// <summary>
     /// AuthConfig defines details of a authentication type.
     /// </summary>
-    public sealed class AuthConfigArgs : Pulumi.ResourceArgs
+    public sealed class AuthConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalVariables")]
         private InputList<Inputs.ConfigVariableArgs>? _additionalVariables;
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public AuthConfigArgs()
         {
         }
+        public static new AuthConfigArgs Empty => new AuthConfigArgs();
     }
 }

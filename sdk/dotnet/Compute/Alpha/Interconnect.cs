@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a Interconnect in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:Interconnect")]
-    public partial class Interconnect : Pulumi.CustomResource
+    public partial class Interconnect : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
@@ -239,7 +239,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class InterconnectArgs : Pulumi.ResourceArgs
+    public sealed class InterconnectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Administrative status of the interconnect. When this is set to true, the Interconnect is functional and can carry traffic. When set to false, no packets can be carried over the interconnect and no BGP routes are exchanged over it. By default, the status is set to true.
@@ -337,5 +337,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public InterconnectArgs()
         {
         }
+        public static new InterconnectArgs Empty => new InterconnectArgs();
     }
 }

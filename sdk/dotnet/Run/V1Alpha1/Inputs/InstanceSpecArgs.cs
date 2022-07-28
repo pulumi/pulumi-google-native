@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     /// <summary>
     /// InstanceSpec is a description of an instance.
     /// </summary>
-    public sealed class InstanceSpecArgs : Pulumi.ResourceArgs
+    public sealed class InstanceSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Optional duration in seconds the instance may be active relative to StartTime before the system will actively try to mark it failed and kill associated containers. If set to zero, the system will never attempt to kill an instance based on time. Otherwise, value must be a positive integer. +optional
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public InstanceSpecArgs()
         {
         }
+        public static new InstanceSpecArgs Empty => new InstanceSpecArgs();
     }
 }

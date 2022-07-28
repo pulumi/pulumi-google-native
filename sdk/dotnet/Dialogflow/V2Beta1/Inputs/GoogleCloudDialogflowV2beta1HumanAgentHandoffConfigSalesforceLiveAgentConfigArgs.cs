@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Configuration specific to Salesforce Live Agent.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Live Agent chat button ID.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs Empty => new GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs();
     }
 }

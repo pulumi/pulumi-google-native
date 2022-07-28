@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Configuration for how to query telemetry on a Service.
     /// </summary>
-    public sealed class TelemetryArgs : Pulumi.ResourceArgs
+    public sealed class TelemetryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public TelemetryArgs()
         {
         }
+        public static new TelemetryArgs Empty => new TelemetryArgs();
     }
 }

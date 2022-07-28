@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
     }
 
 
-    public sealed class GetHttpRouteArgs : Pulumi.InvokeArgs
+    public sealed class GetHttpRouteArgs : global::Pulumi.InvokeArgs
     {
         [Input("httpRouteId", required: true)]
         public string HttpRouteId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetHttpRouteArgs()
         {
         }
+        public static new GetHttpRouteArgs Empty => new GetHttpRouteArgs();
     }
 
-    public sealed class GetHttpRouteInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHttpRouteInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("httpRouteId", required: true)]
         public Input<string> HttpRouteId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetHttpRouteInvokeArgs()
         {
         }
+        public static new GetHttpRouteInvokeArgs Empty => new GetHttpRouteInvokeArgs();
     }
 
 

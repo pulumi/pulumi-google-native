@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:FirewallPolicy")]
-    public partial class FirewallPolicy : Pulumi.CustomResource
+    public partial class FirewallPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of associations that belong to this firewall policy.
@@ -161,7 +161,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class FirewallPolicyArgs : Pulumi.ResourceArgs
+    public sealed class FirewallPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("associations")]
         private InputList<Inputs.FirewallPolicyAssociationArgs>? _associations;
@@ -226,5 +226,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public FirewallPolicyArgs()
         {
         }
+        public static new FirewallPolicyArgs Empty => new FirewallPolicyArgs();
     }
 }

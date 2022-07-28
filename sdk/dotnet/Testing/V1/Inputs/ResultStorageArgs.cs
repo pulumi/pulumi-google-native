@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// Locations where the results of running the test are stored.
     /// </summary>
-    public sealed class ResultStorageArgs : Pulumi.ResourceArgs
+    public sealed class ResultStorageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public ResultStorageArgs()
         {
         }
+        public static new ResultStorageArgs Empty => new ResultStorageArgs();
     }
 }

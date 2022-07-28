@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class SecurityPolicyRuleRateLimitOptionsThresholdArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleRateLimitOptionsThresholdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of HTTP(S) requests for calculating the threshold.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public SecurityPolicyRuleRateLimitOptionsThresholdArgs()
         {
         }
+        public static new SecurityPolicyRuleRateLimitOptionsThresholdArgs Empty => new SecurityPolicyRuleRateLimitOptionsThresholdArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Configuration of a specific monitoring destination (the producer project or the consumer project).
     /// </summary>
-    public sealed class MonitoringDestinationArgs : Pulumi.ResourceArgs
+    public sealed class MonitoringDestinationArgs : global::Pulumi.ResourceArgs
     {
         [Input("metrics")]
         private InputList<string>? _metrics;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public MonitoringDestinationArgs()
         {
         }
+        public static new MonitoringDestinationArgs Empty => new MonitoringDestinationArgs();
     }
 }

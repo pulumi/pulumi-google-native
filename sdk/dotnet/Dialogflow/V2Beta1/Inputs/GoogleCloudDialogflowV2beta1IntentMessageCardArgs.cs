@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// The card response message.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageCardArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageCardArgs : global::Pulumi.ResourceArgs
     {
         [Input("buttons")]
         private InputList<Inputs.GoogleCloudDialogflowV2beta1IntentMessageCardButtonArgs>? _buttons;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageCardArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageCardArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageCardArgs();
     }
 }

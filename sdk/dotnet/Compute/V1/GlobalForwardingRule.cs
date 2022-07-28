@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     /// Creates a GlobalForwardingRule resource in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:GlobalForwardingRule")]
-    public partial class GlobalForwardingRule : Pulumi.CustomResource
+    public partial class GlobalForwardingRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This field is used along with the backend_service field for Internal TCP/UDP Load Balancing or Network Load Balancing, or with the target field for internal and external TargetInstance. You can only use one of ports and port_range, or allPorts. The three are mutually exclusive. For TCP, UDP and SCTP traffic, packets addressed to any ports will be forwarded to the target or backendService.
@@ -245,7 +245,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
     }
 
-    public sealed class GlobalForwardingRuleArgs : Pulumi.ResourceArgs
+    public sealed class GlobalForwardingRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This field is used along with the backend_service field for Internal TCP/UDP Load Balancing or Network Load Balancing, or with the target field for internal and external TargetInstance. You can only use one of ports and port_range, or allPorts. The three are mutually exclusive. For TCP, UDP and SCTP traffic, packets addressed to any ports will be forwarded to the target or backendService.
@@ -409,5 +409,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GlobalForwardingRuleArgs()
         {
         }
+        public static new GlobalForwardingRuleArgs Empty => new GlobalForwardingRuleArgs();
     }
 }

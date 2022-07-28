@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
     /// <summary>
     /// Product image. Recommendations AI and Retail Search do not use product images to improve prediction and search results. However, product images can be returned in results, and are shown in prediction or search previews in the console.
     /// </summary>
-    public sealed class GoogleCloudRetailV2betaImageArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2betaImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Height of the image in number of pixels. This field must be nonnegative. Otherwise, an INVALID_ARGUMENT error is returned.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
         public GoogleCloudRetailV2betaImageArgs()
         {
         }
+        public static new GoogleCloudRetailV2betaImageArgs Empty => new GoogleCloudRetailV2betaImageArgs();
     }
 }

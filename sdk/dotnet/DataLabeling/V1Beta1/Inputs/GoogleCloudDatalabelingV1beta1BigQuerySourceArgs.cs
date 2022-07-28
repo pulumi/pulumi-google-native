@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// The BigQuery location for input data. If used in an EvaluationJob, this is where the service saves the prediction input and output sampled from the model version.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1BigQuerySourceArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1BigQuerySourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// BigQuery URI to a table, up to 2,000 characters long. If you specify the URI of a table that does not exist, Data Labeling Service creates a table at the URI with the correct schema when you create your EvaluationJob. If you specify the URI of a table that already exists, it must have the [correct schema](/ml-engine/docs/continuous-evaluation/create-job#table-schema). Provide the table URI in the following format: "bq://{your_project_id}/ {your_dataset_name}/{your_table_name}" [Learn more](/ml-engine/docs/continuous-evaluation/create-job#table-schema).
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1BigQuerySourceArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1BigQuerySourceArgs Empty => new GoogleCloudDatalabelingV1beta1BigQuerySourceArgs();
     }
 }

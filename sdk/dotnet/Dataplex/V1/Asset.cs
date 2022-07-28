@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataplex/v1:Asset")]
-    public partial class Asset : Pulumi.CustomResource
+    public partial class Asset : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.
@@ -169,7 +169,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         }
     }
 
-    public sealed class AssetArgs : Pulumi.ResourceArgs
+    public sealed class AssetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Asset identifier. This ID will be used to generate names such as table names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique within the zone.
@@ -234,5 +234,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public AssetArgs()
         {
         }
+        public static new AssetArgs Empty => new AssetArgs();
     }
 }

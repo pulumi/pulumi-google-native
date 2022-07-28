@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha2.Inputs
     /// <summary>
     /// MembershipEndpoint contains information needed to contact a Kubernetes API, endpoint and any additional Kubernetes metadata.
     /// </summary>
-    public sealed class MembershipEndpointArgs : Pulumi.ResourceArgs
+    public sealed class MembershipEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Specific information for a GDC Edge Appliance cluster.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha2.Inputs
         public MembershipEndpointArgs()
         {
         }
+        public static new MembershipEndpointArgs Empty => new MembershipEndpointArgs();
     }
 }

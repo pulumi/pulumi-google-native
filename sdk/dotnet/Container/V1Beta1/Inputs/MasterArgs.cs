@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Master is the configuration for components on master.
     /// </summary>
-    public sealed class MasterArgs : Pulumi.ResourceArgs
+    public sealed class MasterArgs : global::Pulumi.ResourceArgs
     {
         public MasterArgs()
         {
         }
+        public static new MasterArgs Empty => new MasterArgs();
     }
 }

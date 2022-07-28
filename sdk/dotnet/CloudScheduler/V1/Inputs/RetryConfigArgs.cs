@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1.Inputs
     /// <summary>
     /// Settings that determine the retry behavior. By default, if a job does not complete successfully (meaning that an acknowledgement is not received from the handler, then it will be retried with exponential backoff according to the settings in RetryConfig.
     /// </summary>
-    public sealed class RetryConfigArgs : Pulumi.ResourceArgs
+    public sealed class RetryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum amount of time to wait before retrying a job after it fails. The default value of this field is 1 hour.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1.Inputs
         public RetryConfigArgs()
         {
         }
+        public static new RetryConfigArgs Empty => new RetryConfigArgs();
     }
 }

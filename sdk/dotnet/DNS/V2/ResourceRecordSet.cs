@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DNS.V2
     /// Creates a new ResourceRecordSet.
     /// </summary>
     [GoogleNativeResourceType("google-native:dns/v2:ResourceRecordSet")]
-    public partial class ResourceRecordSet : Pulumi.CustomResource
+    public partial class ResourceRecordSet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.DNS.V2
         }
     }
 
-    public sealed class ResourceRecordSetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceRecordSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// For mutating operation requests only. An optional identifier specified by the client. Must be unique for operation resources in the Operations collection.
@@ -189,5 +189,6 @@ namespace Pulumi.GoogleNative.DNS.V2
         public ResourceRecordSetArgs()
         {
         }
+        public static new ResourceRecordSetArgs Empty => new ResourceRecordSetArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// An **entity entry** for an associated entity type.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs : global::Pulumi.ResourceArgs
     {
         [Input("synonyms", required: true)]
         private InputList<string>? _synonyms;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs Empty => new GoogleCloudDialogflowCxV3beta1EntityTypeEntityArgs();
     }
 }

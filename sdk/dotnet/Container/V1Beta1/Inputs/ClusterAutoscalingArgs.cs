@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// ClusterAutoscaling contains global, per-cluster information required by Cluster Autoscaler to automatically adjust the size of the cluster and create/delete node pools based on the current needs.
     /// </summary>
-    public sealed class ClusterAutoscalingArgs : Pulumi.ResourceArgs
+    public sealed class ClusterAutoscalingArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoprovisioningLocations")]
         private InputList<string>? _autoprovisioningLocations;
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public ClusterAutoscalingArgs()
         {
         }
+        public static new ClusterAutoscalingArgs Empty => new ClusterAutoscalingArgs();
     }
 }

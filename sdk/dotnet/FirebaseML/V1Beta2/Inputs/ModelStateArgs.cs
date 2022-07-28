@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2.Inputs
     /// <summary>
     /// State common to all model types. Includes publishing and validation information.
     /// </summary>
-    public sealed class ModelStateArgs : Pulumi.ResourceArgs
+    public sealed class ModelStateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates if this model has been published.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2.Inputs
         public ModelStateArgs()
         {
         }
+        public static new ModelStateArgs Empty => new ModelStateArgs();
     }
 }

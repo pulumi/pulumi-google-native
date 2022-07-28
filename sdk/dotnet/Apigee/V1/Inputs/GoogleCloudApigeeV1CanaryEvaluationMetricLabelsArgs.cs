@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Labels that can be used to filter Apigee metrics.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The environment ID associated with the metrics.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs()
         {
         }
+        public static new GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs Empty => new GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs();
     }
 }

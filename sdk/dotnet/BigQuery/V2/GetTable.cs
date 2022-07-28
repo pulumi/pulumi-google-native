@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     }
 
 
-    public sealed class GetTableArgs : Pulumi.InvokeArgs
+    public sealed class GetTableArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasetId", required: true)]
         public string DatasetId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public GetTableArgs()
         {
         }
+        public static new GetTableArgs Empty => new GetTableArgs();
     }
 
-    public sealed class GetTableInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTableInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public GetTableInvokeArgs()
         {
         }
+        public static new GetTableInvokeArgs Empty => new GetTableInvokeArgs();
     }
 
 

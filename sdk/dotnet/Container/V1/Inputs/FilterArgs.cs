@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Allows filtering to one or more specific event types. If event types are present, those and only those event types will be transmitted to the cluster. Other types will be skipped. If no filter is specified, or no event types are present, all event types will be sent
     /// </summary>
-    public sealed class FilterArgs : Pulumi.ResourceArgs
+    public sealed class FilterArgs : global::Pulumi.ResourceArgs
     {
         [Input("eventType")]
         private InputList<Pulumi.GoogleNative.Container.V1.FilterEventTypeItem>? _eventType;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public FilterArgs()
         {
         }
+        public static new FilterArgs Empty => new FilterArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
     /// <summary>
     /// Workload details for creating the pipeline jobs.
     /// </summary>
-    public sealed class GoogleCloudDatapipelinesV1WorkloadArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatapipelinesV1WorkloadArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Template information and additional parameters needed to launch a Dataflow job using the flex launch API.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
         public GoogleCloudDatapipelinesV1WorkloadArgs()
         {
         }
+        public static new GoogleCloudDatapipelinesV1WorkloadArgs Empty => new GoogleCloudDatapipelinesV1WorkloadArgs();
     }
 }

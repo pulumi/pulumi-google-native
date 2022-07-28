@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
     }
 
 
-    public sealed class GetWorkloadArgs : Pulumi.InvokeArgs
+    public sealed class GetWorkloadArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public GetWorkloadArgs()
         {
         }
+        public static new GetWorkloadArgs Empty => new GetWorkloadArgs();
     }
 
-    public sealed class GetWorkloadInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetWorkloadInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public GetWorkloadInvokeArgs()
         {
         }
+        public static new GetWorkloadInvokeArgs Empty => new GetWorkloadInvokeArgs();
     }
 
 

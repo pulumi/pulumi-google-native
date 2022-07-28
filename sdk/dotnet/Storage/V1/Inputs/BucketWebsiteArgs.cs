@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The bucket's website configuration, controlling how the service behaves when accessing bucket contents as a web site. See the Static Website Examples for more information.
     /// </summary>
-    public sealed class BucketWebsiteArgs : Pulumi.ResourceArgs
+    public sealed class BucketWebsiteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If the requested object path is missing, the service will ensure the path has a trailing '/', append this suffix, and attempt to retrieve the resulting object. This allows the creation of index.html objects to represent directory pages.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketWebsiteArgs()
         {
         }
+        public static new BucketWebsiteArgs Empty => new BucketWebsiteArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// The collection of suggestions.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageSuggestionsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageSuggestionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("suggestions", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs>? _suggestions;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageSuggestionsArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageSuggestionsArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageSuggestionsArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1
     }
 
 
-    public sealed class GetSecretIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1
         public GetSecretIamPolicyArgs()
         {
         }
+        public static new GetSecretIamPolicyArgs Empty => new GetSecretIamPolicyArgs();
     }
 
-    public sealed class GetSecretIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecretIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1
         public GetSecretIamPolicyInvokeArgs()
         {
         }
+        public static new GetSecretIamPolicyInvokeArgs Empty => new GetSecretIamPolicyInvokeArgs();
     }
 
 

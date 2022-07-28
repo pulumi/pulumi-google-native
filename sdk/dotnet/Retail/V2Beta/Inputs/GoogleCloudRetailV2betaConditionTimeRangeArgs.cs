@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
     /// <summary>
     /// Used for time-dependent conditions. Example: Want to have rule applied for week long sale.
     /// </summary>
-    public sealed class GoogleCloudRetailV2betaConditionTimeRangeArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2betaConditionTimeRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// End of time range. Range is inclusive.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
         public GoogleCloudRetailV2betaConditionTimeRangeArgs()
         {
         }
+        public static new GoogleCloudRetailV2betaConditionTimeRangeArgs Empty => new GoogleCloudRetailV2betaConditionTimeRangeArgs();
     }
 }

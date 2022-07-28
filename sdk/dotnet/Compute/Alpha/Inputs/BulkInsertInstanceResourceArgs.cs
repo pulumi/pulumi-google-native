@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// A transient resource used in compute.instances.bulkInsert and compute.regionInstances.bulkInsert . This resource is not persisted anywhere, it is used only for processing the requests.
     /// </summary>
-    public sealed class BulkInsertInstanceResourceArgs : Pulumi.ResourceArgs
+    public sealed class BulkInsertInstanceResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum number of instances to create.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public BulkInsertInstanceResourceArgs()
         {
         }
+        public static new BulkInsertInstanceResourceArgs Empty => new BulkInsertInstanceResourceArgs();
     }
 }

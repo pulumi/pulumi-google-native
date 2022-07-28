@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     /// <summary>
     /// Definition of a container image for starting a notebook instance with the environment installed in a container.
     /// </summary>
-    public sealed class ContainerImageArgs : Pulumi.ResourceArgs
+    public sealed class ContainerImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The path to the container image repository. For example: `gcr.io/{project_id}/{image_name}`
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public ContainerImageArgs()
         {
         }
+        public static new ContainerImageArgs Empty => new ContainerImageArgs();
     }
 }

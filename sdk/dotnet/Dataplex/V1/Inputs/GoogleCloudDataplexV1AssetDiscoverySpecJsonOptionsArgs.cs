@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Describe JSON data format.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean).
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs()
         {
         }
+        public static new GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs Empty => new GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs();
     }
 }

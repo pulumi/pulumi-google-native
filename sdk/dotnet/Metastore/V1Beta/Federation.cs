@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
     /// Creates a metastore federation in a project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:metastore/v1beta:Federation")]
-    public partial class Federation : Pulumi.CustomResource
+    public partial class Federation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A map from BackendMetastore rank to BackendMetastores from which the federation service serves metadata at query time. The map key represents the order in which BackendMetastores should be evaluated to resolve database names at query time and should be greater than or equal to zero. A BackendMetastore with a lower number will be evaluated before a BackendMetastore with a higher number.
@@ -142,7 +142,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         }
     }
 
-    public sealed class FederationArgs : Pulumi.ResourceArgs
+    public sealed class FederationArgs : global::Pulumi.ResourceArgs
     {
         [Input("backendMetastores")]
         private InputMap<string>? _backendMetastores;
@@ -201,5 +201,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public FederationArgs()
         {
         }
+        public static new FederationArgs Empty => new FederationArgs();
     }
 }

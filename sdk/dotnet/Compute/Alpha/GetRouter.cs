@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetRouterArgs : Pulumi.InvokeArgs
+    public sealed class GetRouterArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetRouterArgs()
         {
         }
+        public static new GetRouterArgs Empty => new GetRouterArgs();
     }
 
-    public sealed class GetRouterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRouterInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetRouterInvokeArgs()
         {
         }
+        public static new GetRouterInvokeArgs Empty => new GetRouterInvokeArgs();
     }
 
 

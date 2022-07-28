@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Uploads a ZIP-formatted shared flow configuration bundle to an organization. If the shared flow already exists, this creates a new revision of it. If the shared flow does not exist, this creates it. Once imported, the shared flow revision must be deployed before it can be accessed at runtime. The size limit of a shared flow bundle is 15 MB.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Sharedflow")]
-    public partial class Sharedflow : Pulumi.CustomResource
+    public partial class Sharedflow : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. Must be set to either `import` or `validate`.
@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class SharedflowArgs : Pulumi.ResourceArgs
+    public sealed class SharedflowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Must be set to either `import` or `validate`.
@@ -141,5 +141,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public SharedflowArgs()
         {
         }
+        public static new SharedflowArgs Empty => new SharedflowArgs();
     }
 }

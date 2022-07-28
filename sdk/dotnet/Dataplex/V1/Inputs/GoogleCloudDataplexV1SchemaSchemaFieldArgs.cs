@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Represents a column field within a table schema.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1SchemaSchemaFieldArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1SchemaSchemaFieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. User friendly field description. Must be less than or equal to 1024 characters.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1SchemaSchemaFieldArgs()
         {
         }
+        public static new GoogleCloudDataplexV1SchemaSchemaFieldArgs Empty => new GoogleCloudDataplexV1SchemaSchemaFieldArgs();
     }
 }

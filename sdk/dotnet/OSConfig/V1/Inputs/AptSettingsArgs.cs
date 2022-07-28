@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// Apt patching is completed by executing `apt-get update &amp;&amp; apt-get upgrade`. Additional options can be set to control how this is executed.
     /// </summary>
-    public sealed class AptSettingsArgs : Pulumi.ResourceArgs
+    public sealed class AptSettingsArgs : global::Pulumi.ResourceArgs
     {
         [Input("excludes")]
         private InputList<string>? _excludes;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public AptSettingsArgs()
         {
         }
+        public static new AptSettingsArgs Empty => new AptSettingsArgs();
     }
 }

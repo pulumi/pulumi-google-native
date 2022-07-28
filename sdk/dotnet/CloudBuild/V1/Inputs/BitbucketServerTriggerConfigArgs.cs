@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// BitbucketServerTriggerConfig describes the configuration of a trigger that creates a build whenever a Bitbucket Server event is received.
     /// </summary>
-    public sealed class BitbucketServerTriggerConfigArgs : Pulumi.ResourceArgs
+    public sealed class BitbucketServerTriggerConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Bitbucket server config resource that this trigger config maps to.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public BitbucketServerTriggerConfigArgs()
         {
         }
+        public static new BitbucketServerTriggerConfigArgs Empty => new BitbucketServerTriggerConfigArgs();
     }
 }

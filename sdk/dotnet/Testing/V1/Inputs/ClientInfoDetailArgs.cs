@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// Key-value pair of detailed information about the client which invoked the test. Examples: {'Version', '1.0'}, {'Release Track', 'BETA'}.
     /// </summary>
-    public sealed class ClientInfoDetailArgs : Pulumi.ResourceArgs
+    public sealed class ClientInfoDetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key of detailed client information.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public ClientInfoDetailArgs()
         {
         }
+        public static new ClientInfoDetailArgs Empty => new ClientInfoDetailArgs();
     }
 }

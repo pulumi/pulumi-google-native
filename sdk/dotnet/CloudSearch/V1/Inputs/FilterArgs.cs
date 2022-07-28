@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     /// <summary>
     /// A generic way of expressing filters in a query, which supports two approaches: **1. Setting a ValueFilter.** The name must match an operator_name defined in the schema for your data source. **2. Setting a CompositeFilter.** The filters are evaluated using the logical operator. The top-level operators can only be either an AND or a NOT. AND can appear only at the top-most level. OR can appear only under a top-level AND.
     /// </summary>
-    public sealed class FilterArgs : Pulumi.ResourceArgs
+    public sealed class FilterArgs : global::Pulumi.ResourceArgs
     {
         [Input("compositeFilter")]
         public Input<Inputs.CompositeFilterArgs>? CompositeFilter { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public FilterArgs()
         {
         }
+        public static new FilterArgs Empty => new FilterArgs();
     }
 }

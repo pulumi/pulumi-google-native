@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// Volumes mounted within the app container. Only applicable in the App Engine flexible environment.
     /// </summary>
-    public sealed class VolumeArgs : Pulumi.ResourceArgs
+    public sealed class VolumeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Unique name for the volume.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public VolumeArgs()
         {
         }
+        public static new VolumeArgs Empty => new VolumeArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
     /// Creates a `WorkerPool` to run the builds, and returns the new worker pool.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbuild/v1alpha1:WorkerPool")]
-    public partial class WorkerPool : Pulumi.CustomResource
+    public partial class WorkerPool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time at which the request to create the `WorkerPool` was received.
@@ -119,7 +119,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
         }
     }
 
-    public sealed class WorkerPoolArgs : Pulumi.ResourceArgs
+    public sealed class WorkerPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-defined name of the `WorkerPool`.
@@ -160,5 +160,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha1
         public WorkerPoolArgs()
         {
         }
+        public static new WorkerPoolArgs Empty => new WorkerPoolArgs();
     }
 }

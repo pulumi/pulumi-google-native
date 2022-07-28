@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Configuration for Notebook content.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1ContentNotebookArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1ContentNotebookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Kernel Type of the notebook.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1ContentNotebookArgs()
         {
         }
+        public static new GoogleCloudDataplexV1ContentNotebookArgs Empty => new GoogleCloudDataplexV1ContentNotebookArgs();
     }
 }

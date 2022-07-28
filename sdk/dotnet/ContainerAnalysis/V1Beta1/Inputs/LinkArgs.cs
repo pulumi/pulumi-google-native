@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// This corresponds to an in-toto link.
     /// </summary>
-    public sealed class LinkArgs : Pulumi.ResourceArgs
+    public sealed class LinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ByProducts are data generated as part of a software supply chain step, but are not the actual result of the step.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public LinkArgs()
         {
         }
+        public static new LinkArgs Empty => new LinkArgs();
     }
 }

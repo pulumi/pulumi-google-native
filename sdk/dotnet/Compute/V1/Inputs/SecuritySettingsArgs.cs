@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// The authentication and authorization settings for a BackendService.
     /// </summary>
-    public sealed class SecuritySettingsArgs : Pulumi.ResourceArgs
+    public sealed class SecuritySettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A URL referring to a networksecurity.ClientTlsPolicy resource that describes how clients should authenticate with this service's backends. clientTlsPolicy only applies to a global BackendService with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. If left blank, communications are not encrypted. Note: This field currently has no impact.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public SecuritySettingsArgs()
         {
         }
+        public static new SecuritySettingsArgs Empty => new SecuritySettingsArgs();
     }
 }

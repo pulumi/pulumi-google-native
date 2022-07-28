@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Load balancing specific fields for network endpoint group.
     /// </summary>
-    public sealed class NetworkEndpointGroupLbNetworkEndpointGroupArgs : Pulumi.ResourceArgs
+    public sealed class NetworkEndpointGroupLbNetworkEndpointGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default port used if the port number is not specified in the network endpoint. [Deprecated] This field is deprecated.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public NetworkEndpointGroupLbNetworkEndpointGroupArgs()
         {
         }
+        public static new NetworkEndpointGroupLbNetworkEndpointGroupArgs Empty => new NetworkEndpointGroupLbNetworkEndpointGroupArgs();
     }
 }

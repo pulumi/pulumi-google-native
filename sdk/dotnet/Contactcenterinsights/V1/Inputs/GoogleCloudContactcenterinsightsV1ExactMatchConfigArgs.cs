@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
     /// <summary>
     /// Exact match configuration.
     /// </summary>
-    public sealed class GoogleCloudContactcenterinsightsV1ExactMatchConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudContactcenterinsightsV1ExactMatchConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to consider case sensitivity when performing an exact match.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
         public GoogleCloudContactcenterinsightsV1ExactMatchConfigArgs()
         {
         }
+        public static new GoogleCloudContactcenterinsightsV1ExactMatchConfigArgs Empty => new GoogleCloudContactcenterinsightsV1ExactMatchConfigArgs();
     }
 }

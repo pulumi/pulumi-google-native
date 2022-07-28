@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     /// <summary>
     /// KeyUsage.KeyUsageOptions corresponds to the key usage values described in https://tools.ietf.org/html/rfc5280#section-4.2.1.3.
     /// </summary>
-    public sealed class KeyUsageOptionsArgs : Pulumi.ResourceArgs
+    public sealed class KeyUsageOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key may be used to sign certificates.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         public KeyUsageOptionsArgs()
         {
         }
+        public static new KeyUsageOptionsArgs Empty => new KeyUsageOptionsArgs();
     }
 }

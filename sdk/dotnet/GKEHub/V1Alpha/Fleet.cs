@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:gkehub/v1alpha:Fleet")]
-    public partial class Fleet : Pulumi.CustomResource
+    public partial class Fleet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// When the Fleet was created.
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         }
     }
 
-    public sealed class FleetArgs : Pulumi.ResourceArgs
+    public sealed class FleetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
@@ -135,5 +135,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public FleetArgs()
         {
         }
+        public static new FleetArgs Empty => new FleetArgs();
     }
 }

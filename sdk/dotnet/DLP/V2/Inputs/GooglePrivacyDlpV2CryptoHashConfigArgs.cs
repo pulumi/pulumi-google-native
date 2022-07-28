@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Pseudonymization method that generates surrogates via cryptographic hashing. Uses SHA-256. The key size must be either 32 or 64 bytes. Outputs a base64 encoded representation of the hashed output (for example, L7k0BHmF1ha5U3NfGykjro4xWi1MPVQPjhMAZbSV9mM=). Currently, only string and integer values can be hashed. See https://cloud.google.com/dlp/docs/pseudonymization to learn more.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2CryptoHashConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2CryptoHashConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key used by the hash function.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2CryptoHashConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2CryptoHashConfigArgs Empty => new GooglePrivacyDlpV2CryptoHashConfigArgs();
     }
 }

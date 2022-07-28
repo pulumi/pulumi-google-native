@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
-    public sealed class SecurityPolicyRuleHttpHeaderActionArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleHttpHeaderActionArgs : global::Pulumi.ResourceArgs
     {
         [Input("requestHeadersToAdds")]
         private InputList<Inputs.SecurityPolicyRuleHttpHeaderActionHttpHeaderOptionArgs>? _requestHeadersToAdds;
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public SecurityPolicyRuleHttpHeaderActionArgs()
         {
         }
+        public static new SecurityPolicyRuleHttpHeaderActionArgs Empty => new SecurityPolicyRuleHttpHeaderActionArgs();
     }
 }

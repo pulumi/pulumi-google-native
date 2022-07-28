@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datastream/v1alpha1:PrivateConnection")]
-    public partial class PrivateConnection : Pulumi.CustomResource
+    public partial class PrivateConnection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The create time of the resource.
@@ -131,7 +131,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
         }
     }
 
-    public sealed class PrivateConnectionArgs : Pulumi.ResourceArgs
+    public sealed class PrivateConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Display name.
@@ -178,5 +178,6 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
         public PrivateConnectionArgs()
         {
         }
+        public static new PrivateConnectionArgs Empty => new PrivateConnectionArgs();
     }
 }

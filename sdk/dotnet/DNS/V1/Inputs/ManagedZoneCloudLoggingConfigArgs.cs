@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
     /// <summary>
     /// Cloud Logging configurations for publicly visible zones.
     /// </summary>
-    public sealed class ManagedZoneCloudLoggingConfigArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZoneCloudLoggingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
         public ManagedZoneCloudLoggingConfigArgs()
         {
         }
+        public static new ManagedZoneCloudLoggingConfigArgs Empty => new ManagedZoneCloudLoggingConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Inputs
     /// <summary>
     /// **Anthosobservability**: Per-Membership Feature spec.
     /// </summary>
-    public sealed class AnthosObservabilityMembershipSpecArgs : Pulumi.ResourceArgs
+    public sealed class AnthosObservabilityMembershipSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Inputs
         public AnthosObservabilityMembershipSpecArgs()
         {
         }
+        public static new AnthosObservabilityMembershipSpecArgs Empty => new AnthosObservabilityMembershipSpecArgs();
     }
 }

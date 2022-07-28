@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetResourcePolicyIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetResourcePolicyIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetResourcePolicyIamPolicyArgs()
         {
         }
+        public static new GetResourcePolicyIamPolicyArgs Empty => new GetResourcePolicyIamPolicyArgs();
     }
 
-    public sealed class GetResourcePolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetResourcePolicyIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetResourcePolicyIamPolicyInvokeArgs()
         {
         }
+        public static new GetResourcePolicyIamPolicyInvokeArgs Empty => new GetResourcePolicyIamPolicyInvokeArgs();
     }
 
 

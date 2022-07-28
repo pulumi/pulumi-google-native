@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
     /// <summary>
     /// BackupConfig defines the configuration of Backups created via this BackupPlan.
     /// </summary>
-    public sealed class BackupConfigArgs : Pulumi.ResourceArgs
+    public sealed class BackupConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If True, include all namespaced resources
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         public BackupConfigArgs()
         {
         }
+        public static new BackupConfigArgs Empty => new BackupConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Describes any options that have an effect on the debugging of pipelines.
     /// </summary>
-    public sealed class DebugOptionsArgs : Pulumi.ResourceArgs
+    public sealed class DebugOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When true, enables the logging of the literal hot key to the user's Cloud Logging.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public DebugOptionsArgs()
         {
         }
+        public static new DebugOptionsArgs Empty => new DebugOptionsArgs();
     }
 }

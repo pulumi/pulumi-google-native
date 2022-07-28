@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetFirewallArgs : Pulumi.InvokeArgs
+    public sealed class GetFirewallArgs : global::Pulumi.InvokeArgs
     {
         [Input("firewall", required: true)]
         public string Firewall { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetFirewallArgs()
         {
         }
+        public static new GetFirewallArgs Empty => new GetFirewallArgs();
     }
 
-    public sealed class GetFirewallInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFirewallInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("firewall", required: true)]
         public Input<string> Firewall { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetFirewallInvokeArgs()
         {
         }
+        public static new GetFirewallInvokeArgs Empty => new GetFirewallInvokeArgs();
     }
 
 

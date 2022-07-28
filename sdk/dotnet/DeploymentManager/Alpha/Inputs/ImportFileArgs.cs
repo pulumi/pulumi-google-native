@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
 {
 
-    public sealed class ImportFileArgs : Pulumi.ResourceArgs
+    public sealed class ImportFileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The contents of the file.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
         public ImportFileArgs()
         {
         }
+        public static new ImportFileArgs Empty => new ImportFileArgs();
     }
 }

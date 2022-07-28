@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     /// <summary>
     /// Set search results crowding limits. Crowding is a situation in which multiple results from the same source or host "crowd out" other results, diminishing the quality of search for users. To foster better search quality and source diversity in search results, you can set a condition to reduce repetitive results by source.
     /// </summary>
-    public sealed class SourceCrowdingConfigArgs : Pulumi.ResourceArgs
+    public sealed class SourceCrowdingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum number of results allowed from a datasource in a result page as long as results from other sources are not exhausted. Value specified must not be negative. A default value is used if this value is equal to 0. To disable crowding, set the value greater than 100.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public SourceCrowdingConfigArgs()
         {
         }
+        public static new SourceCrowdingConfigArgs Empty => new SourceCrowdingConfigArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     }
 
 
-    public sealed class GetExclusionArgs : Pulumi.InvokeArgs
+    public sealed class GetExclusionArgs : global::Pulumi.InvokeArgs
     {
         [Input("exclusionId", required: true)]
         public string ExclusionId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetExclusionArgs()
         {
         }
+        public static new GetExclusionArgs Empty => new GetExclusionArgs();
     }
 
-    public sealed class GetExclusionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetExclusionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("exclusionId", required: true)]
         public Input<string> ExclusionId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetExclusionInvokeArgs()
         {
         }
+        public static new GetExclusionInvokeArgs Empty => new GetExclusionInvokeArgs();
     }
 
 

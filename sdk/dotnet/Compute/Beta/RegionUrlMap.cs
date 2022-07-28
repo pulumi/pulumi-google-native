@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates a UrlMap resource in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:RegionUrlMap")]
-    public partial class RegionUrlMap : Pulumi.CustomResource
+    public partial class RegionUrlMap : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -153,7 +153,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class RegionUrlMapArgs : Pulumi.ResourceArgs
+    public sealed class RegionUrlMapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// defaultRouteAction takes effect when none of the hostRules match. The load balancer performs advanced routing actions, such as URL rewrites and header transformations, before forwarding the request to the selected backend. If defaultRouteAction specifies any weightedBackendServices, defaultService must not be set. Conversely if defaultService is set, defaultRouteAction cannot contain any weightedBackendServices. Only one of defaultRouteAction or defaultUrlRedirect must be set. UrlMaps for external HTTP(S) load balancers support only the urlRewrite action within defaultRouteAction. defaultRouteAction has no effect when the URL map is bound to a target gRPC proxy that has the validateForProxyless field set to true.
@@ -242,5 +242,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public RegionUrlMapArgs()
         {
         }
+        public static new RegionUrlMapArgs Empty => new RegionUrlMapArgs();
     }
 }

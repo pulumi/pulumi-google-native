@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Control over the rate of notifications sent to this alert policy's notification channels.
     /// </summary>
-    public sealed class NotificationRateLimitArgs : Pulumi.ResourceArgs
+    public sealed class NotificationRateLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Not more than one notification per period.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public NotificationRateLimitArgs()
         {
         }
+        public static new NotificationRateLimitArgs Empty => new NotificationRateLimitArgs();
     }
 }

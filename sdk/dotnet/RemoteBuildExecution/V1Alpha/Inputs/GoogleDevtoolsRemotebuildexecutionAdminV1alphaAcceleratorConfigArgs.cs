@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Inputs
     /// <summary>
     /// AcceleratorConfig defines the accelerator cards to attach to the VM.
     /// </summary>
-    public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of guest accelerator cards exposed to each VM.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Inputs
         public GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs()
         {
         }
+        public static new GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs Empty => new GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs();
     }
 }

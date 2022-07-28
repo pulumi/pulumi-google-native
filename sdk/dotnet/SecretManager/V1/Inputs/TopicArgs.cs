@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
     /// <summary>
     /// A Pub/Sub topic which Secret Manager will publish to when control plane events occur on this secret.
     /// </summary>
-    public sealed class TopicArgs : Pulumi.ResourceArgs
+    public sealed class TopicArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/*/topics/*`. For publication to succeed, the Secret Manager P4SA must have `pubsub.publisher` permissions on the topic.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
         public TopicArgs()
         {
         }
+        public static new TopicArgs Empty => new TopicArgs();
     }
 }

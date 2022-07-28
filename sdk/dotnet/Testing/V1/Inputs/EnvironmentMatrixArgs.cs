@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// The matrix of environments in which the test is to be executed.
     /// </summary>
-    public sealed class EnvironmentMatrixArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentMatrixArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A list of Android devices; the test will be run only on the specified devices.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public EnvironmentMatrixArgs()
         {
         }
+        public static new EnvironmentMatrixArgs Empty => new EnvironmentMatrixArgs();
     }
 }

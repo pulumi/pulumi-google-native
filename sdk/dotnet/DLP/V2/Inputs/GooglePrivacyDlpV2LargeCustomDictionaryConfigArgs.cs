@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Field in a BigQuery table where each cell represents a dictionary phrase.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs Empty => new GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs();
     }
 }

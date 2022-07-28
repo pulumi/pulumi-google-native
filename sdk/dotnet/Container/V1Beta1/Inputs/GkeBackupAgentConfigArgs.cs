@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration for the Backup for GKE Agent.
     /// </summary>
-    public sealed class GkeBackupAgentConfigArgs : Pulumi.ResourceArgs
+    public sealed class GkeBackupAgentConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the Backup for GKE agent is enabled for this cluster.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public GkeBackupAgentConfigArgs()
         {
         }
+        public static new GkeBackupAgentConfigArgs Empty => new GkeBackupAgentConfigArgs();
     }
 }

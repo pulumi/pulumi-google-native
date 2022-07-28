@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
     /// Creates a view.
     /// </summary>
     [GoogleNativeResourceType("google-native:contactcenterinsights/v1:View")]
-    public partial class View : Pulumi.CustomResource
+    public partial class View : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time at which this view was created.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         }
     }
 
-    public sealed class ViewArgs : Pulumi.ResourceArgs
+    public sealed class ViewArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable display name of the view.
@@ -128,5 +128,6 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public ViewArgs()
         {
         }
+        public static new ViewArgs Empty => new ViewArgs();
     }
 }

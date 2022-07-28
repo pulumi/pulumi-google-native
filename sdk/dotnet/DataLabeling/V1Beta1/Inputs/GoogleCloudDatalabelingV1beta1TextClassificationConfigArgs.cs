@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Config for text classification human labeling task.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. If allow_multi_label is true, contributors are able to choose multiple labels for one text segment.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs Empty => new GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs();
     }
 }

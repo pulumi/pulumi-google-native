@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:CanaryEvaluation")]
-    public partial class CanaryEvaluation : Pulumi.CustomResource
+    public partial class CanaryEvaluation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The stable version that is serving requests.
@@ -126,7 +126,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class CanaryEvaluationArgs : Pulumi.ResourceArgs
+    public sealed class CanaryEvaluationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The stable version that is serving requests.
@@ -167,5 +167,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public CanaryEvaluationArgs()
         {
         }
+        public static new CanaryEvaluationArgs Empty => new CanaryEvaluationArgs();
     }
 }

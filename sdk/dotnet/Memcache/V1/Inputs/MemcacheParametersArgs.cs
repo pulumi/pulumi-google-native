@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Memcache.V1.Inputs
 {
 
-    public sealed class MemcacheParametersArgs : Pulumi.ResourceArgs
+    public sealed class MemcacheParametersArgs : global::Pulumi.ResourceArgs
     {
         [Input("params")]
         private InputMap<string>? _params;
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Memcache.V1.Inputs
         public MemcacheParametersArgs()
         {
         }
+        public static new MemcacheParametersArgs Empty => new MemcacheParametersArgs();
     }
 }

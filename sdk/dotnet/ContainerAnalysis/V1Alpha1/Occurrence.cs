@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
     /// Creates a new `Occurrence`. Use this method to create `Occurrences` for a resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:containeranalysis/v1alpha1:Occurrence")]
-    public partial class Occurrence : Pulumi.CustomResource
+    public partial class Occurrence : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Describes an attestation of an artifact.
@@ -203,7 +203,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         }
     }
 
-    public sealed class OccurrenceArgs : Pulumi.ResourceArgs
+    public sealed class OccurrenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes an attestation of an artifact.
@@ -331,5 +331,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public OccurrenceArgs()
         {
         }
+        public static new OccurrenceArgs Empty => new OccurrenceArgs();
     }
 }

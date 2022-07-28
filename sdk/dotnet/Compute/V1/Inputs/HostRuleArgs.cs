@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// UrlMaps A host-matching rule for a URL. If matched, will use the named PathMatcher to select the BackendService.
     /// </summary>
-    public sealed class HostRuleArgs : Pulumi.ResourceArgs
+    public sealed class HostRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public HostRuleArgs()
         {
         }
+        public static new HostRuleArgs Empty => new HostRuleArgs();
     }
 }

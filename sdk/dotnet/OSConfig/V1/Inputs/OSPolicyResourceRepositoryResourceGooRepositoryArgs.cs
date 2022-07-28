@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// Represents a Goo package repository. These are added to a repo file that is managed at `C:/ProgramData/GooGet/repos/google_osconfig.repo`.
     /// </summary>
-    public sealed class OSPolicyResourceRepositoryResourceGooRepositoryArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourceRepositoryResourceGooRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the repository.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public OSPolicyResourceRepositoryResourceGooRepositoryArgs()
         {
         }
+        public static new OSPolicyResourceRepositoryResourceGooRepositoryArgs Empty => new OSPolicyResourceRepositoryResourceGooRepositoryArgs();
     }
 }

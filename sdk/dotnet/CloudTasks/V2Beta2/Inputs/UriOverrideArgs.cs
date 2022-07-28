@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
     /// <summary>
     /// Uri Override. When specified, all the HTTP tasks inside the queue will be partially or fully overridden depending on the configured values.
     /// </summary>
-    public sealed class UriOverrideArgs : Pulumi.ResourceArgs
+    public sealed class UriOverrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Host override. When specified, the host part of url will be overridden. For example, if the original Uri is "https://www.google.com", and host is set to "example.net", the overridden Uri will be "https://example.net".
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
         public UriOverrideArgs()
         {
         }
+        public static new UriOverrideArgs Empty => new UriOverrideArgs();
     }
 }

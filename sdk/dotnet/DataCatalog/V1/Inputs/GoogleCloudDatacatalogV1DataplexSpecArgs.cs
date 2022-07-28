@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Common Dataplex fields.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1DataplexSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1DataplexSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Fully qualified resource name of an asset in Dataplex, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1DataplexSpecArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1DataplexSpecArgs Empty => new GoogleCloudDatacatalogV1DataplexSpecArgs();
     }
 }

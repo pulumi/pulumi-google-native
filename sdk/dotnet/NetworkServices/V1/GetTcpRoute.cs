@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
     }
 
 
-    public sealed class GetTcpRouteArgs : Pulumi.InvokeArgs
+    public sealed class GetTcpRouteArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetTcpRouteArgs()
         {
         }
+        public static new GetTcpRouteArgs Empty => new GetTcpRouteArgs();
     }
 
-    public sealed class GetTcpRouteInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTcpRouteInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetTcpRouteInvokeArgs()
         {
         }
+        public static new GetTcpRouteInvokeArgs Empty => new GetTcpRouteInvokeArgs();
     }
 
 

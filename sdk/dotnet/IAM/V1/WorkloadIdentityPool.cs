@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.IAM.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:iam/v1:WorkloadIdentityPool")]
-    public partial class WorkloadIdentityPool : Pulumi.CustomResource
+    public partial class WorkloadIdentityPool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A description of the pool. Cannot exceed 256 characters.
@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         }
     }
 
-    public sealed class WorkloadIdentityPoolArgs : Pulumi.ResourceArgs
+    public sealed class WorkloadIdentityPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the pool. Cannot exceed 256 characters.
@@ -142,5 +142,6 @@ namespace Pulumi.GoogleNative.IAM.V1
         public WorkloadIdentityPoolArgs()
         {
         }
+        public static new WorkloadIdentityPoolArgs Empty => new WorkloadIdentityPoolArgs();
     }
 }

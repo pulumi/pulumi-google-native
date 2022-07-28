@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
     /// Creates a tag template. You must enable the Data Catalog API in the project identified by the `parent` parameter. For more information, see [Data Catalog resource project] (https://cloud.google.com/data-catalog/docs/concepts/resource-project).
     /// </summary>
     [GoogleNativeResourceType("google-native:datacatalog/v1:TagTemplate")]
-    public partial class TagTemplate : Pulumi.CustomResource
+    public partial class TagTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         }
     }
 
-    public sealed class TagTemplateArgs : Pulumi.ResourceArgs
+    public sealed class TagTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Display name for this template. Defaults to an empty string. The name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), and can't start or end with spaces. The maximum length is 200 characters.
@@ -147,5 +147,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public TagTemplateArgs()
         {
         }
+        public static new TagTemplateArgs Empty => new TagTemplateArgs();
     }
 }

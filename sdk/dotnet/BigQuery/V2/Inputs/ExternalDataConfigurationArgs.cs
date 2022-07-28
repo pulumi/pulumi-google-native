@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class ExternalDataConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class ExternalDataConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Try to detect schema and format options automatically. Any option specified explicitly will be honored.
@@ -117,5 +117,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public ExternalDataConfigurationArgs()
         {
         }
+        public static new ExternalDataConfigurationArgs Empty => new ExternalDataConfigurationArgs();
     }
 }

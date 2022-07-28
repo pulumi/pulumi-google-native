@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// MetadataFilter label name value pairs that are expected to match corresponding labels presented as metadata to the load balancer.
     /// </summary>
-    public sealed class MetadataFilterLabelMatchArgs : Pulumi.ResourceArgs
+    public sealed class MetadataFilterLabelMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of metadata label. The name can have a maximum length of 1024 characters and must be at least 1 character long.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public MetadataFilterLabelMatchArgs()
         {
         }
+        public static new MetadataFilterLabelMatchArgs Empty => new MetadataFilterLabelMatchArgs();
     }
 }

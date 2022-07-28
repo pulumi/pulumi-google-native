@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// The type of Human Agent Assistant API suggestion to perform, and the maximum number of results to return for that type. Multiple `Feature` objects can be specified in the `features` list.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1SuggestionFeatureArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1SuggestionFeatureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Type of Human Agent Assistant API feature to request.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1SuggestionFeatureArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1SuggestionFeatureArgs Empty => new GoogleCloudDialogflowV2beta1SuggestionFeatureArgs();
     }
 }

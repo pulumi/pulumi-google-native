@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Defines an object for the byproducts field in in-toto links. The suggested fields are "stderr", "stdout", and "return-value".
     /// </summary>
-    public sealed class ByProductsArgs : Pulumi.ResourceArgs
+    public sealed class ByProductsArgs : global::Pulumi.ResourceArgs
     {
         [Input("customValues")]
         private InputMap<string>? _customValues;
@@ -26,5 +26,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public ByProductsArgs()
         {
         }
+        public static new ByProductsArgs Empty => new ByProductsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// Webhooks host the developer's business logic. During a session, webhooks allow the developer to use the data extracted by Dialogflow's natural language processing to generate dynamic responses, validate collected data, or trigger actions on the backend.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3WebhookArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3WebhookArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether the webhook is disabled.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3WebhookArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3WebhookArgs Empty => new GoogleCloudDialogflowCxV3WebhookArgs();
     }
 }

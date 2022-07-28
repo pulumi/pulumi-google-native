@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:pubsub/v1beta2:SubscriptionIamPolicy")]
-    public partial class SubscriptionIamPolicy : Pulumi.CustomResource
+    public partial class SubscriptionIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
         }
     }
 
-    public sealed class SubscriptionIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SubscriptionIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("bindings")]
         private InputList<Inputs.BindingArgs>? _bindings;
@@ -124,5 +124,6 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2
         public SubscriptionIamPolicyArgs()
         {
         }
+        public static new SubscriptionIamPolicyArgs Empty => new SubscriptionIamPolicyArgs();
     }
 }

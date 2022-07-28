@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// Encapsulates the full scoping used to reference a job.
     /// </summary>
-    public sealed class JobReferenceArgs : Pulumi.ResourceArgs
+    public sealed class JobReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The job ID, which must be unique within the project. The ID must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), or hyphens (-). The maximum length is 100 characters.If not specified by the caller, the job ID will be provided by the server.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public JobReferenceArgs()
         {
         }
+        public static new JobReferenceArgs Empty => new JobReferenceArgs();
     }
 }

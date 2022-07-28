@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] All fields defined in a permission are ANDed.
     /// </summary>
-    public sealed class PermissionArgs : Pulumi.ResourceArgs
+    public sealed class PermissionArgs : global::Pulumi.ResourceArgs
     {
         [Input("constraints")]
         private InputList<Inputs.PermissionConstraintArgs>? _constraints;
@@ -126,5 +126,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public PermissionArgs()
         {
         }
+        public static new PermissionArgs Empty => new PermissionArgs();
     }
 }

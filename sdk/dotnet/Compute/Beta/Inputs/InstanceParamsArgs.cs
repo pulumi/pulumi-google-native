@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Additional instance params.
     /// </summary>
-    public sealed class InstanceParamsArgs : Pulumi.ResourceArgs
+    public sealed class InstanceParamsArgs : global::Pulumi.ResourceArgs
     {
         [Input("resourceManagerTags")]
         private InputMap<string>? _resourceManagerTags;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public InstanceParamsArgs()
         {
         }
+        public static new InstanceParamsArgs Empty => new InstanceParamsArgs();
     }
 }

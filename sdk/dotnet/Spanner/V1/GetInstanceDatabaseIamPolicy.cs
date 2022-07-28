@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
     }
 
 
-    public sealed class GetInstanceDatabaseIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceDatabaseIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("databaseId", required: true)]
         public string DatabaseId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public GetInstanceDatabaseIamPolicyArgs()
         {
         }
+        public static new GetInstanceDatabaseIamPolicyArgs Empty => new GetInstanceDatabaseIamPolicyArgs();
     }
 
-    public sealed class GetInstanceDatabaseIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceDatabaseIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("databaseId", required: true)]
         public Input<string> DatabaseId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public GetInstanceDatabaseIamPolicyInvokeArgs()
         {
         }
+        public static new GetInstanceDatabaseIamPolicyInvokeArgs Empty => new GetInstanceDatabaseIamPolicyInvokeArgs();
     }
 
 

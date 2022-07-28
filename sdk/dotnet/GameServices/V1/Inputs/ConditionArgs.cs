@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
     /// <summary>
     /// A condition to be met.
     /// </summary>
-    public sealed class ConditionArgs : Pulumi.ResourceArgs
+    public sealed class ConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Trusted attributes supplied by the IAM system.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
         public ConditionArgs()
         {
         }
+        public static new ConditionArgs Empty => new ConditionArgs();
     }
 }

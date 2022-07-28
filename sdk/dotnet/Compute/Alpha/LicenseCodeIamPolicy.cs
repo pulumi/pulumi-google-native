@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:LicenseCodeIamPolicy")]
-    public partial class LicenseCodeIamPolicy : Pulumi.CustomResource
+    public partial class LicenseCodeIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class LicenseCodeIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class LicenseCodeIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -160,5 +160,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public LicenseCodeIamPolicyArgs()
         {
         }
+        public static new LicenseCodeIamPolicyArgs Empty => new LicenseCodeIamPolicyArgs();
     }
 }

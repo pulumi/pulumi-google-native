@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents results of a training job. Output only.
     /// </summary>
-    public sealed class GoogleCloudMlV1__TrainingOutputArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__TrainingOutputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Details related to built-in algorithms jobs. Only set for built-in algorithms jobs.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__TrainingOutputArgs()
         {
         }
+        public static new GoogleCloudMlV1__TrainingOutputArgs Empty => new GoogleCloudMlV1__TrainingOutputArgs();
     }
 }

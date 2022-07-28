@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// Defines notification behavior.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2NotificationConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2NotificationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Format of message.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2NotificationConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2NotificationConfigArgs Empty => new GoogleCloudDialogflowV2NotificationConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Configuration options for Cloud Armor Adaptive Protection (CAAP).
     /// </summary>
-    public sealed class SecurityPolicyAdaptiveProtectionConfigArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyAdaptiveProtectionConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoDeployConfig")]
         public Input<Inputs.SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs>? AutoDeployConfig { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SecurityPolicyAdaptiveProtectionConfigArgs()
         {
         }
+        public static new SecurityPolicyAdaptiveProtectionConfigArgs Empty => new SecurityPolicyAdaptiveProtectionConfigArgs();
     }
 }

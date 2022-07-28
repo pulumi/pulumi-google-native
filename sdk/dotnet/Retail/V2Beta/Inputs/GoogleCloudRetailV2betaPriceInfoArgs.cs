@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
     /// <summary>
     /// The price information of a Product.
     /// </summary>
-    public sealed class GoogleCloudRetailV2betaPriceInfoArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2betaPriceInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
         public GoogleCloudRetailV2betaPriceInfoArgs()
         {
         }
+        public static new GoogleCloudRetailV2betaPriceInfoArgs Empty => new GoogleCloudRetailV2betaPriceInfoArgs();
     }
 }

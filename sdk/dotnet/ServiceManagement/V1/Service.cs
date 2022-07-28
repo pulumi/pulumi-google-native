@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:servicemanagement/v1:Service")]
-    public partial class Service : Pulumi.CustomResource
+    public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ID of the project that produces and owns this service.
@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         }
     }
 
-    public sealed class ServiceArgs : Pulumi.ResourceArgs
+    public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the project that produces and owns this service.
@@ -88,5 +88,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public ServiceArgs()
         {
         }
+        public static new ServiceArgs Empty => new ServiceArgs();
     }
 }

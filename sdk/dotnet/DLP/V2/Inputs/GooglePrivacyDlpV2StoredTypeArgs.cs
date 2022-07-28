@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// A reference to a StoredInfoType to use with scanning.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2StoredTypeArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2StoredTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Timestamp indicating when the version of the `StoredInfoType` used for inspection was created. Output-only field, populated by the system.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2StoredTypeArgs()
         {
         }
+        public static new GooglePrivacyDlpV2StoredTypeArgs Empty => new GooglePrivacyDlpV2StoredTypeArgs();
     }
 }

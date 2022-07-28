@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     }
 
 
-    public sealed class GetTableIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetTableIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasetId", required: true)]
         public string DatasetId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public GetTableIamPolicyArgs()
         {
         }
+        public static new GetTableIamPolicyArgs Empty => new GetTableIamPolicyArgs();
     }
 
-    public sealed class GetTableIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTableIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public GetTableIamPolicyInvokeArgs()
         {
         }
+        public static new GetTableIamPolicyInvokeArgs Empty => new GetTableIamPolicyInvokeArgs();
     }
 
 

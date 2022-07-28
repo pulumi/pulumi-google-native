@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// <summary>
     /// VPC Access settings. For more information on creating a VPC Connector, visit https://cloud.google.com/vpc/docs/configure-serverless-vpc-access For information on how to configure Cloud Run with an existing VPC Connector, visit https://cloud.google.com/run/docs/configuring/connecting-vpc
     /// </summary>
-    public sealed class GoogleCloudRunV2VpcAccessArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRunV2VpcAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// VPC Access connector name. Format: projects/{project}/locations/{location}/connectors/{connector}
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public GoogleCloudRunV2VpcAccessArgs()
         {
         }
+        public static new GoogleCloudRunV2VpcAccessArgs Empty => new GoogleCloudRunV2VpcAccessArgs();
     }
 }

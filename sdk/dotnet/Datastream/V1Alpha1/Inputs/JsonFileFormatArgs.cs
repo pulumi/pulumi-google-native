@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
     /// <summary>
     /// JSON file format configuration.
     /// </summary>
-    public sealed class JsonFileFormatArgs : Pulumi.ResourceArgs
+    public sealed class JsonFileFormatArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Compression of the loaded JSON file.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
         public JsonFileFormatArgs()
         {
         }
+        public static new JsonFileFormatArgs Empty => new JsonFileFormatArgs();
     }
 }

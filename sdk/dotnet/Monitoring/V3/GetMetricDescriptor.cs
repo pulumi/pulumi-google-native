@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     }
 
 
-    public sealed class GetMetricDescriptorArgs : Pulumi.InvokeArgs
+    public sealed class GetMetricDescriptorArgs : global::Pulumi.InvokeArgs
     {
         [Input("metricDescriptorId", required: true)]
         public string MetricDescriptorId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public GetMetricDescriptorArgs()
         {
         }
+        public static new GetMetricDescriptorArgs Empty => new GetMetricDescriptorArgs();
     }
 
-    public sealed class GetMetricDescriptorInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMetricDescriptorInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("metricDescriptorId", required: true)]
         public Input<string> MetricDescriptorId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public GetMetricDescriptorInvokeArgs()
         {
         }
+        public static new GetMetricDescriptorInvokeArgs Empty => new GetMetricDescriptorInvokeArgs();
     }
 
 

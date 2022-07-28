@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// A detail for a distro and package this vulnerability occurrence was found in and its associated fix (if one is available).
     /// </summary>
-    public sealed class PackageIssueArgs : Pulumi.ResourceArgs
+    public sealed class PackageIssueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability was found in.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public PackageIssueArgs()
         {
         }
+        public static new PackageIssueArgs Empty => new PackageIssueArgs();
     }
 }

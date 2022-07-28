@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:firebasehosting/v1beta1:Domain")]
-    public partial class Domain : Pulumi.CustomResource
+    public partial class Domain : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The domain name of the association.
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         }
     }
 
-    public sealed class DomainArgs : Pulumi.ResourceArgs
+    public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain name of the association.
@@ -135,5 +135,6 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         public DomainArgs()
         {
         }
+        public static new DomainArgs Empty => new DomainArgs();
     }
 }

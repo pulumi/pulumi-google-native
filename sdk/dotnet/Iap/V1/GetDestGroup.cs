@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Iap.V1
     }
 
 
-    public sealed class GetDestGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetDestGroupArgs : global::Pulumi.InvokeArgs
     {
         [Input("destGroupId", required: true)]
         public string DestGroupId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Iap.V1
         public GetDestGroupArgs()
         {
         }
+        public static new GetDestGroupArgs Empty => new GetDestGroupArgs();
     }
 
-    public sealed class GetDestGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDestGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("destGroupId", required: true)]
         public Input<string> DestGroupId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Iap.V1
         public GetDestGroupInvokeArgs()
         {
         }
+        public static new GetDestGroupInvokeArgs Empty => new GetDestGroupInvokeArgs();
     }
 
 

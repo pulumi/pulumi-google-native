@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Specified snapshot properties for scheduled snapshots created by this policy.
     /// </summary>
-    public sealed class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Chain name that the snapshot is created in.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs()
         {
         }
+        public static new ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs Empty => new ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs();
     }
 }

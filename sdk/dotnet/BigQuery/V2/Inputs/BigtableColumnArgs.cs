@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class BigtableColumnArgs : Pulumi.ResourceArgs
+    public sealed class BigtableColumnArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] The encoding of the values when the type is not STRING. Acceptable encoding values are: TEXT - indicates values are alphanumeric text strings. BINARY - indicates values are encoded using HBase Bytes.toBytes family of functions. 'encoding' can also be set at the column family level. However, the setting at this level takes precedence if 'encoding' is set at both levels.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public BigtableColumnArgs()
         {
         }
+        public static new BigtableColumnArgs Empty => new BigtableColumnArgs();
     }
 }

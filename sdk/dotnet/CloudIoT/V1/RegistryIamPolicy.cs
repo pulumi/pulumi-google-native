@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudiot/v1:RegistryIamPolicy")]
-    public partial class RegistryIamPolicy : Pulumi.CustomResource
+    public partial class RegistryIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         }
     }
 
-    public sealed class RegistryIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RegistryIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("bindings")]
         private InputList<Inputs.BindingArgs>? _bindings;
@@ -131,5 +131,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         public RegistryIamPolicyArgs()
         {
         }
+        public static new RegistryIamPolicyArgs Empty => new RegistryIamPolicyArgs();
     }
 }

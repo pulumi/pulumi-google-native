@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Settings that determine how to filter recent conversation context when generating suggestions.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to true, the last message from virtual agent (hand off message) and the message before it (trigger message of hand off) are dropped.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs Empty => new GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs();
     }
 }

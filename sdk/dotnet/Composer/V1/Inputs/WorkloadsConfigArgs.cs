@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     /// <summary>
     /// The Kubernetes workloads configuration for GKE cluster associated with the Cloud Composer environment. Supported for Cloud Composer environments in versions composer-2.*.*-airflow-*.*.* and newer.
     /// </summary>
-    public sealed class WorkloadsConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkloadsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Resources used by Airflow schedulers.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public WorkloadsConfigArgs()
         {
         }
+        public static new WorkloadsConfigArgs Empty => new WorkloadsConfigArgs();
     }
 }

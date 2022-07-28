@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// The image response message.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageImageArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A text description of the image to be used for accessibility, e.g., screen readers. Required if image_uri is set for CarouselSelect.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageImageArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageImageArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageImageArgs();
     }
 }

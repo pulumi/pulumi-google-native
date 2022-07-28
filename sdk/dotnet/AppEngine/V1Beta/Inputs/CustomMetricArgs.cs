@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// Allows autoscaling based on Stackdriver metrics.
     /// </summary>
-    public sealed class CustomMetricArgs : Pulumi.ResourceArgs
+    public sealed class CustomMetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allows filtering on the metric's fields.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public CustomMetricArgs()
         {
         }
+        public static new CustomMetricArgs Empty => new CustomMetricArgs();
     }
 }

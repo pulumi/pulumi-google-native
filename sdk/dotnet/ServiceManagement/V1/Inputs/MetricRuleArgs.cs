@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Bind API methods to metrics. Binding a method to a metric causes that metric's configured quota behaviors to apply to the method call.
     /// </summary>
-    public sealed class MetricRuleArgs : Pulumi.ResourceArgs
+    public sealed class MetricRuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("metricCosts")]
         private InputMap<string>? _metricCosts;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public MetricRuleArgs()
         {
         }
+        public static new MetricRuleArgs Empty => new MetricRuleArgs();
     }
 }

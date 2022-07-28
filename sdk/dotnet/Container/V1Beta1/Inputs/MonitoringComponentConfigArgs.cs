@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// MonitoringComponentConfig is cluster monitoring component configuration.
     /// </summary>
-    public sealed class MonitoringComponentConfigArgs : Pulumi.ResourceArgs
+    public sealed class MonitoringComponentConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("enableComponents")]
         private InputList<Pulumi.GoogleNative.Container.V1Beta1.MonitoringComponentConfigEnableComponentsItem>? _enableComponents;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public MonitoringComponentConfigArgs()
         {
         }
+        public static new MonitoringComponentConfigArgs Empty => new MonitoringComponentConfigArgs();
     }
 }

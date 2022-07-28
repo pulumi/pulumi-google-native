@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
     /// Creates a new reCAPTCHA Enterprise key.
     /// </summary>
     [GoogleNativeResourceType("google-native:recaptchaenterprise/v1:Key")]
-    public partial class Key : Pulumi.CustomResource
+    public partial class Key : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Settings for keys that can be used by Android apps.
@@ -119,7 +119,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         }
     }
 
-    public sealed class KeyArgs : Pulumi.ResourceArgs
+    public sealed class KeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Settings for keys that can be used by Android apps.
@@ -187,5 +187,6 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1
         public KeyArgs()
         {
         }
+        public static new KeyArgs Empty => new KeyArgs();
     }
 }

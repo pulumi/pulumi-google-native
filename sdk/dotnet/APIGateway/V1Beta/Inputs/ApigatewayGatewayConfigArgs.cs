@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta.Inputs
     /// <summary>
     /// Configuration settings for Gateways.
     /// </summary>
-    public sealed class ApigatewayGatewayConfigArgs : Pulumi.ResourceArgs
+    public sealed class ApigatewayGatewayConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Backend settings that are applied to all backends of the Gateway.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta.Inputs
         public ApigatewayGatewayConfigArgs()
         {
         }
+        public static new ApigatewayGatewayConfigArgs Empty => new ApigatewayGatewayConfigArgs();
     }
 }

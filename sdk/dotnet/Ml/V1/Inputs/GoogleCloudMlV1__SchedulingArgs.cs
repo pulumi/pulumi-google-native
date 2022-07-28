@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// All parameters related to scheduling of training jobs.
     /// </summary>
-    public sealed class GoogleCloudMlV1__SchedulingArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__SchedulingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The maximum job running time, expressed in seconds. The field can contain up to nine fractional digits, terminated by `s`. If not specified, this field defaults to `604800s` (seven days). If the training job is still running after this duration, AI Platform Training cancels it. The duration is measured from when the job enters the `RUNNING` state; therefore it does not overlap with the duration limited by Scheduling.max_wait_time. For example, if you want to ensure your job runs for no more than 2 hours, set this field to `7200s` (2 hours * 60 minutes / hour * 60 seconds / minute). If you submit your training job using the `gcloud` tool, you can [specify this field in a `config.yaml` file](/ai-platform/training/docs/training-jobs#formatting_your_configuration_parameters). For example: ```yaml trainingInput: scheduling: maxRunningTime: 7200s ```
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__SchedulingArgs()
         {
         }
+        public static new GoogleCloudMlV1__SchedulingArgs Empty => new GoogleCloudMlV1__SchedulingArgs();
     }
 }

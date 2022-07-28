@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A list of iOS device configurations in which the test is to be executed.
     /// </summary>
-    public sealed class IosDeviceListArgs : Pulumi.ResourceArgs
+    public sealed class IosDeviceListArgs : global::Pulumi.ResourceArgs
     {
         [Input("iosDevices", required: true)]
         private InputList<Inputs.IosDeviceArgs>? _iosDevices;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public IosDeviceListArgs()
         {
         }
+        public static new IosDeviceListArgs Empty => new IosDeviceListArgs();
     }
 }

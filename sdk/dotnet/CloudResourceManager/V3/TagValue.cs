@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
     /// Creates a TagValue as a child of the specified TagKey. If a another request with the same parameters is sent while the original request is in process the second request will receive an error. A maximum of 1000 TagValues can exist under a TagKey at any given time.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudresourcemanager/v3:TagValue")]
-    public partial class TagValue : Pulumi.CustomResource
+    public partial class TagValue : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation time.
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         }
     }
 
-    public sealed class TagValueArgs : Pulumi.ResourceArgs
+    public sealed class TagValueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. User-assigned description of the TagValue. Must not exceed 256 characters. Read-write.
@@ -153,5 +153,6 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public TagValueArgs()
         {
         }
+        public static new TagValueArgs Empty => new TagValueArgs();
     }
 }

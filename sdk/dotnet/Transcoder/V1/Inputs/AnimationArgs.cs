@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Animation types.
     /// </summary>
-    public sealed class AnimationArgs : Pulumi.ResourceArgs
+    public sealed class AnimationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// End previous animation.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public AnimationArgs()
         {
         }
+        public static new AnimationArgs Empty => new AnimationArgs();
     }
 }

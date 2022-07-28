@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataproc/v1beta2:RegionAutoscalingPolicyIamPolicy")]
-    public partial class RegionAutoscalingPolicyIamPolicy : Pulumi.CustomResource
+    public partial class RegionAutoscalingPolicyIamPolicy : global::Pulumi.CustomResource
     {
         [Output("autoscalingPolicyId")]
         public Output<string> AutoscalingPolicyId { get; private set; } = null!;
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         }
     }
 
-    public sealed class RegionAutoscalingPolicyIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RegionAutoscalingPolicyIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("autoscalingPolicyId", required: true)]
         public Input<string> AutoscalingPolicyId { get; set; } = null!;
@@ -131,5 +131,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public RegionAutoscalingPolicyIamPolicyArgs()
         {
         }
+        public static new RegionAutoscalingPolicyIamPolicyArgs Empty => new RegionAutoscalingPolicyIamPolicyArgs();
     }
 }

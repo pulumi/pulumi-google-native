@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// A message representing a parameter to be tuned. Contains the name of the parameter and the suggested value to use for this trial.
     /// </summary>
-    public sealed class GoogleCloudMlV1_Trial_ParameterArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1_Trial_ParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Must be set if ParameterType is DOUBLE or DISCRETE.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1_Trial_ParameterArgs()
         {
         }
+        public static new GoogleCloudMlV1_Trial_ParameterArgs Empty => new GoogleCloudMlV1_Trial_ParameterArgs();
     }
 }

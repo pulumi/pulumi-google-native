@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataplex/v1:LakeContentIamPolicy")]
-    public partial class LakeContentIamPolicy : Pulumi.CustomResource
+    public partial class LakeContentIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         }
     }
 
-    public sealed class LakeContentIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class LakeContentIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.GoogleIamV1AuditConfigArgs>? _auditConfigs;
@@ -162,5 +162,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public LakeContentIamPolicyArgs()
         {
         }
+        public static new LakeContentIamPolicyArgs Empty => new LakeContentIamPolicyArgs();
     }
 }

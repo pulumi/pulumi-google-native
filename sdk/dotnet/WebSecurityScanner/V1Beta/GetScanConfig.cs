@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
     }
 
 
-    public sealed class GetScanConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetScanConfigArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
         public GetScanConfigArgs()
         {
         }
+        public static new GetScanConfigArgs Empty => new GetScanConfigArgs();
     }
 
-    public sealed class GetScanConfigInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetScanConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
         public GetScanConfigInvokeArgs()
         {
         }
+        public static new GetScanConfigInvokeArgs Empty => new GetScanConfigInvokeArgs();
     }
 
 

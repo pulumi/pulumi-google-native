@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
     /// </summary>
-    public sealed class EndpointsApiServiceArgs : Pulumi.ResourceArgs
+    public sealed class EndpointsApiServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".By default, the rollout strategy for Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up with a particular configuration ID. When a new configuration is rolled out, Endpoints must be given the new configuration ID. The config_id field is used to give the configuration ID and is required in this case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED. When using this, Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id must be omitted.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public EndpointsApiServiceArgs()
         {
         }
+        public static new EndpointsApiServiceArgs Empty => new EndpointsApiServiceArgs();
     }
 }

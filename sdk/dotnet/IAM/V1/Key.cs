@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.IAM.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:iam/v1:Key")]
-    public partial class Key : Pulumi.CustomResource
+    public partial class Key : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The key status.
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         }
     }
 
-    public sealed class KeyArgs : Pulumi.ResourceArgs
+    public sealed class KeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Which type of key and algorithm to use for the key. The default is currently a 2K RSA key. However this may change in the future.
@@ -153,5 +153,6 @@ namespace Pulumi.GoogleNative.IAM.V1
         public KeyArgs()
         {
         }
+        public static new KeyArgs Empty => new KeyArgs();
     }
 }

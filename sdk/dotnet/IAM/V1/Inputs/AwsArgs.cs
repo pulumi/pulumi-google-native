@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.IAM.V1.Inputs
     /// <summary>
     /// Represents an Amazon Web Services identity provider.
     /// </summary>
-    public sealed class AwsArgs : Pulumi.ResourceArgs
+    public sealed class AwsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The AWS account ID.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.IAM.V1.Inputs
         public AwsArgs()
         {
         }
+        public static new AwsArgs Empty => new AwsArgs();
     }
 }

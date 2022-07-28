@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A storage location within Google cloud storage (GCS).
     /// </summary>
-    public sealed class GoogleCloudStorageArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudStorageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public GoogleCloudStorageArgs()
         {
         }
+        public static new GoogleCloudStorageArgs Empty => new GoogleCloudStorageArgs();
     }
 }

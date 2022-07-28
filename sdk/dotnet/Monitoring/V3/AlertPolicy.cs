@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     /// Creates a new alerting policy.
     /// </summary>
     [GoogleNativeResourceType("google-native:monitoring/v3:AlertPolicy")]
-    public partial class AlertPolicy : Pulumi.CustomResource
+    public partial class AlertPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Control over how this alert policy's notification channels are notified.
@@ -137,7 +137,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         }
     }
 
-    public sealed class AlertPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AlertPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Control over how this alert policy's notification channels are notified.
@@ -235,5 +235,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public AlertPolicyArgs()
         {
         }
+        public static new AlertPolicyArgs Empty => new AlertPolicyArgs();
     }
 }

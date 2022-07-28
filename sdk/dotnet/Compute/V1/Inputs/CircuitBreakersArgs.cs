@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Settings controlling the volume of requests, connections and retries to this backend service.
     /// </summary>
-    public sealed class CircuitBreakersArgs : Pulumi.ResourceArgs
+    public sealed class CircuitBreakersArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum number of connections to the backend service. If not specified, there is no limit. Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public CircuitBreakersArgs()
         {
         }
+        public static new CircuitBreakersArgs Empty => new CircuitBreakersArgs();
     }
 }

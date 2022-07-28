@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     }
 
 
-    public sealed class GetRestoreArgs : Pulumi.InvokeArgs
+    public sealed class GetRestoreArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public GetRestoreArgs()
         {
         }
+        public static new GetRestoreArgs Empty => new GetRestoreArgs();
     }
 
-    public sealed class GetRestoreInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRestoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public GetRestoreInvokeArgs()
         {
         }
+        public static new GetRestoreInvokeArgs Empty => new GetRestoreInvokeArgs();
     }
 
 

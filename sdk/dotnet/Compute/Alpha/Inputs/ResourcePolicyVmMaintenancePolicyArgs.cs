@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class ResourcePolicyVmMaintenancePolicyArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyVmMaintenancePolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("concurrencyControlGroup")]
         public Input<Inputs.ResourcePolicyVmMaintenancePolicyConcurrencyControlArgs>? ConcurrencyControlGroup { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public ResourcePolicyVmMaintenancePolicyArgs()
         {
         }
+        public static new ResourcePolicyVmMaintenancePolicyArgs Empty => new ResourcePolicyVmMaintenancePolicyArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1Beta1
     }
 
 
-    public sealed class GetSourceArgs : Pulumi.InvokeArgs
+    public sealed class GetSourceArgs : global::Pulumi.InvokeArgs
     {
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Securitycenter.V1Beta1
         public GetSourceArgs()
         {
         }
+        public static new GetSourceArgs Empty => new GetSourceArgs();
     }
 
-    public sealed class GetSourceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSourceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1Beta1
         public GetSourceInvokeArgs()
         {
         }
+        public static new GetSourceInvokeArgs Empty => new GetSourceInvokeArgs();
     }
 
 

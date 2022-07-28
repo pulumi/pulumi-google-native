@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration options for the KALM addon.
     /// </summary>
-    public sealed class KalmConfigArgs : Pulumi.ResourceArgs
+    public sealed class KalmConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether KALM is enabled for this cluster.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public KalmConfigArgs()
         {
         }
+        public static new KalmConfigArgs Empty => new KalmConfigArgs();
     }
 }

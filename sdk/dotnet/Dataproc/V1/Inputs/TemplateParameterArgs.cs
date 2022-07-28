@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// A configurable parameter that replaces one or more fields in the template. Parameterizable fields: - Labels - File uris - Job properties - Job arguments - Script variables - Main class (in HadoopJob and SparkJob) - Zone (in ClusterSelector)
     /// </summary>
-    public sealed class TemplateParameterArgs : Pulumi.ResourceArgs
+    public sealed class TemplateParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Brief description of the parameter. Must not exceed 1024 characters.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public TemplateParameterArgs()
         {
         }
+        public static new TemplateParameterArgs Empty => new TemplateParameterArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// URL pattern and description of how the URL should be handled. App Engine can handle URLs by executing application code or by serving static files uploaded with the version, such as images, CSS, or JavaScript.
     /// </summary>
-    public sealed class UrlMapArgs : Pulumi.ResourceArgs
+    public sealed class UrlMapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Uses API Endpoints to handle requests.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public UrlMapArgs()
         {
         }
+        public static new UrlMapArgs Empty => new UrlMapArgs();
     }
 }

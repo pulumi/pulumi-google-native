@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Occurrence that represents a single "attestation". The authenticity of an attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is primarily useful for lookup (how to find this attestation if you already know the authority and artifact to be verified) and intent (for which authority this attestation was intended to sign.
     /// </summary>
-    public sealed class AttestationOccurrenceArgs : Pulumi.ResourceArgs
+    public sealed class AttestationOccurrenceArgs : global::Pulumi.ResourceArgs
     {
         [Input("jwts")]
         private InputList<Inputs.JwtArgs>? _jwts;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public AttestationOccurrenceArgs()
         {
         }
+        public static new AttestationOccurrenceArgs Empty => new AttestationOccurrenceArgs();
     }
 }

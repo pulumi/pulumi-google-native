@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
     /// <summary>
     /// Secret provides a reference to entries in Secret Manager.
     /// </summary>
-    public sealed class SecretArgs : Pulumi.ResourceArgs
+    public sealed class SecretArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource name of the secret version in the format, format as: `projects/*/secrets/*/versions/*`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public SecretArgs()
         {
         }
+        public static new SecretArgs Empty => new SecretArgs();
     }
 }

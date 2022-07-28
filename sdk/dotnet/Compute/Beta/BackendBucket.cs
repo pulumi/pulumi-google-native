@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates a BackendBucket resource in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:BackendBucket")]
-    public partial class BackendBucket : Pulumi.CustomResource
+    public partial class BackendBucket : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Cloud Storage bucket name.
@@ -137,7 +137,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class BackendBucketArgs : Pulumi.ResourceArgs
+    public sealed class BackendBucketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud Storage bucket name.
@@ -205,5 +205,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public BackendBucketArgs()
         {
         }
+        public static new BackendBucketArgs Empty => new BackendBucketArgs();
     }
 }

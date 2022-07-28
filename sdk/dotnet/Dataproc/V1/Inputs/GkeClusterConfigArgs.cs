@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// The cluster's GKE config.
     /// </summary>
-    public sealed class GkeClusterConfigArgs : Pulumi.ResourceArgs
+    public sealed class GkeClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A target GKE cluster to deploy to. It must be in the same project and region as the Dataproc cluster (the GKE cluster can be zonal or regional). Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}'
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public GkeClusterConfigArgs()
         {
         }
+        public static new GkeClusterConfigArgs Empty => new GkeClusterConfigArgs();
     }
 }

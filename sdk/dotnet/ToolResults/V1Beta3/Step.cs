@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:toolresults/v1beta3:Step")]
-    public partial class Step : Pulumi.CustomResource
+    public partial class Step : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time when the step status was set to complete. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set
@@ -171,7 +171,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         }
     }
 
-    public sealed class StepArgs : Pulumi.ResourceArgs
+    public sealed class StepArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time when the step status was set to complete. This value will be set automatically when state transitions to COMPLETE. - In response: set if the execution state is COMPLETE. - In create/update request: never set
@@ -293,5 +293,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         public StepArgs()
         {
         }
+        public static new StepArgs Empty => new StepArgs();
     }
 }

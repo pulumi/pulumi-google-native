@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
     /// <summary>
     /// A Cloud Storage source of conversation data.
     /// </summary>
-    public sealed class GoogleCloudContactcenterinsightsV1GcsSourceArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudContactcenterinsightsV1GcsSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud Storage URI that points to a file that contains the conversation audio.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
         public GoogleCloudContactcenterinsightsV1GcsSourceArgs()
         {
         }
+        public static new GoogleCloudContactcenterinsightsV1GcsSourceArgs Empty => new GoogleCloudContactcenterinsightsV1GcsSourceArgs();
     }
 }

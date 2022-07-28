@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     }
 
 
-    public sealed class GetRegionClusterIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionClusterIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public GetRegionClusterIamPolicyArgs()
         {
         }
+        public static new GetRegionClusterIamPolicyArgs Empty => new GetRegionClusterIamPolicyArgs();
     }
 
-    public sealed class GetRegionClusterIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionClusterIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public GetRegionClusterIamPolicyInvokeArgs()
         {
         }
+        public static new GetRegionClusterIamPolicyInvokeArgs Empty => new GetRegionClusterIamPolicyInvokeArgs();
     }
 
 

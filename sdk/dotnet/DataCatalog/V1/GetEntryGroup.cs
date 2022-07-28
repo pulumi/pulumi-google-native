@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
     }
 
 
-    public sealed class GetEntryGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetEntryGroupArgs : global::Pulumi.InvokeArgs
     {
         [Input("entryGroupId", required: true)]
         public string EntryGroupId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public GetEntryGroupArgs()
         {
         }
+        public static new GetEntryGroupArgs Empty => new GetEntryGroupArgs();
     }
 
-    public sealed class GetEntryGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEntryGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("entryGroupId", required: true)]
         public Input<string> EntryGroupId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public GetEntryGroupInvokeArgs()
         {
         }
+        public static new GetEntryGroupInvokeArgs Empty => new GetEntryGroupInvokeArgs();
     }
 
 

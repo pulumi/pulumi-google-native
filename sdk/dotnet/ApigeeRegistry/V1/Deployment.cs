@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     /// CreateApiDeployment creates a specified deployment.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigeeregistry/v1:Deployment")]
-    public partial class Deployment : Pulumi.CustomResource
+    public partial class Deployment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Text briefly describing how to access the endpoint. Changes to this value will not affect the revision.
@@ -164,7 +164,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         }
     }
 
-    public sealed class DeploymentArgs : Pulumi.ResourceArgs
+    public sealed class DeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Text briefly describing how to access the endpoint. Changes to this value will not affect the revision.
@@ -256,5 +256,6 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public DeploymentArgs()
         {
         }
+        public static new DeploymentArgs Empty => new DeploymentArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
     /// <summary>
     /// Describes the Build step of the function that builds a container from the given source.
     /// </summary>
-    public sealed class BuildConfigArgs : Pulumi.ResourceArgs
+    public sealed class BuildConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. User managed repository created in Artifact Registry optionally with a customer managed encryption key. This is the repository to which the function docker image will be pushed after it is built by Cloud Build. If unspecified, GCF will create and use a repository named 'gcf-artifacts' for every deployed region. It must match the pattern `projects/{project}/locations/{location}/repositories/{repository}`. Cross-project repositories are not supported. Cross-location repositories are not supported. Repository format must be 'DOCKER'.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
         public BuildConfigArgs()
         {
         }
+        public static new BuildConfigArgs Empty => new BuildConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
     /// Create a new trigger in a particular project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:eventarc/v1beta1:Trigger")]
-    public partial class Trigger : Pulumi.CustomResource
+    public partial class Trigger : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The creation time.
@@ -137,7 +137,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         }
     }
 
-    public sealed class TriggerArgs : Pulumi.ResourceArgs
+    public sealed class TriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Destination specifies where the events should be sent to.
@@ -202,5 +202,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         public TriggerArgs()
         {
         }
+        public static new TriggerArgs Empty => new TriggerArgs();
     }
 }

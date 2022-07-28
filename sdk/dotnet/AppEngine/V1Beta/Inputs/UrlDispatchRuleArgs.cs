@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// Rules to match an HTTP request and dispatch that request to a service.
     /// </summary>
-    public sealed class UrlDispatchRuleArgs : Pulumi.ResourceArgs
+    public sealed class UrlDispatchRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Domain name to match against. The wildcard "*" is supported if specified before a period: "*.".Defaults to matching all domains: "*".
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public UrlDispatchRuleArgs()
         {
         }
+        public static new UrlDispatchRuleArgs Empty => new UrlDispatchRuleArgs();
     }
 }

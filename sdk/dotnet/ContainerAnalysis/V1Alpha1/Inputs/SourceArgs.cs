@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Source describes the location of the source used for the build.
     /// </summary>
-    public sealed class SourceArgs : Pulumi.ResourceArgs
+    public sealed class SourceArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalContexts")]
         private InputList<Inputs.GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs>? _additionalContexts;
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public SourceArgs()
         {
         }
+        public static new SourceArgs Empty => new SourceArgs();
     }
 }

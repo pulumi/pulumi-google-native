@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
     }
 
 
-    public sealed class GetSearchApplicationArgs : Pulumi.InvokeArgs
+    public sealed class GetSearchApplicationArgs : global::Pulumi.InvokeArgs
     {
         [Input("debugOptionsEnableDebugging")]
         public string? DebugOptionsEnableDebugging { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public GetSearchApplicationArgs()
         {
         }
+        public static new GetSearchApplicationArgs Empty => new GetSearchApplicationArgs();
     }
 
-    public sealed class GetSearchApplicationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSearchApplicationInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("debugOptionsEnableDebugging")]
         public Input<string>? DebugOptionsEnableDebugging { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public GetSearchApplicationInvokeArgs()
         {
         }
+        public static new GetSearchApplicationInvokeArgs Empty => new GetSearchApplicationInvokeArgs();
     }
 
 

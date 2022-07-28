@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
     /// <summary>
     /// Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes.
     /// </summary>
-    public sealed class ComputeSchedulingArgs : Pulumi.ResourceArgs
+    public sealed class ComputeSchedulingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node. Ignored if no node_affinites are configured.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
         public ComputeSchedulingArgs()
         {
         }
+        public static new ComputeSchedulingArgs Empty => new ComputeSchedulingArgs();
     }
 }

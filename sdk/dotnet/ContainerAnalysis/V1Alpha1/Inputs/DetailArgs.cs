@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Identifies all occurrences of this vulnerability in the package for a specific distro/location For example: glibc in cpe:/o:debian:debian_linux:8 for versions 2.1 - 2.2
     /// </summary>
-    public sealed class DetailArgs : Pulumi.ResourceArgs
+    public sealed class DetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The cpe_uri in [cpe format] (https://cpe.mitre.org/specification/) in which the vulnerability manifests. Examples include distro or storage location for vulnerable jar. This field can be used as a filter in list requests.
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public DetailArgs()
         {
         }
+        public static new DetailArgs Empty => new DetailArgs();
     }
 }

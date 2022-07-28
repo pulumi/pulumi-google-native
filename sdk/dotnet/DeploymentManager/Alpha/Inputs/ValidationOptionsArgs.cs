@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
     /// <summary>
     /// Options for how to validate and process properties on a resource.
     /// </summary>
-    public sealed class ValidationOptionsArgs : Pulumi.ResourceArgs
+    public sealed class ValidationOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Customize how deployment manager will validate the resource against schema errors.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
         public ValidationOptionsArgs()
         {
         }
+        public static new ValidationOptionsArgs Empty => new ValidationOptionsArgs();
     }
 }

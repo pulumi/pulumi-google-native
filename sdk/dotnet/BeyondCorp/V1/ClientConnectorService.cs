@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
     /// Creates a new ClientConnectorService in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:beyondcorp/v1:ClientConnectorService")]
-    public partial class ClientConnectorService : Pulumi.CustomResource
+    public partial class ClientConnectorService : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
@@ -129,7 +129,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
         }
     }
 
-    public sealed class ClientConnectorServiceArgs : Pulumi.ResourceArgs
+    public sealed class ClientConnectorServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. User-settable client connector service resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter. A random system generated name will be assigned if not specified by the user.
@@ -182,5 +182,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
         public ClientConnectorServiceArgs()
         {
         }
+        public static new ClientConnectorServiceArgs Empty => new ClientConnectorServiceArgs();
     }
 }

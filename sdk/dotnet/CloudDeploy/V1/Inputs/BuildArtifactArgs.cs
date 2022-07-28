@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     /// <summary>
     /// Description of an a image to use during Skaffold rendering.
     /// </summary>
-    public sealed class BuildArtifactArgs : Pulumi.ResourceArgs
+    public sealed class BuildArtifactArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Image name in Skaffold configuration.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
         public BuildArtifactArgs()
         {
         }
+        public static new BuildArtifactArgs Empty => new BuildArtifactArgs();
     }
 }

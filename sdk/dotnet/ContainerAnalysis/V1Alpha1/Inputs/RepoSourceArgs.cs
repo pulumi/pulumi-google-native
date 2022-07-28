@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// RepoSource describes the location of the source in a Google Cloud Source Repository.
     /// </summary>
-    public sealed class RepoSourceArgs : Pulumi.ResourceArgs
+    public sealed class RepoSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the branch to build.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public RepoSourceArgs()
         {
         }
+        public static new RepoSourceArgs Empty => new RepoSourceArgs();
     }
 }

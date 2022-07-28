@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Subset of Nodepool message that has defaults.
     /// </summary>
-    public sealed class NodePoolDefaultsArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolDefaultsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Subset of NodeConfig message that has defaults.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public NodePoolDefaultsArgs()
         {
         }
+        public static new NodePoolDefaultsArgs Empty => new NodePoolDefaultsArgs();
     }
 }

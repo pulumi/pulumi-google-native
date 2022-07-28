@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The bucket's uniform bucket-level access configuration. The feature was formerly known as Bucket Policy Only. For backward compatibility, this field will be populated with identical information as the uniformBucketLevelAccess field. We recommend using the uniformBucketLevelAccess field to enable and disable the feature.
     /// </summary>
-    public sealed class BucketIamConfigurationBucketPolicyOnlyArgs : Pulumi.ResourceArgs
+    public sealed class BucketIamConfigurationBucketPolicyOnlyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set, access is controlled only by bucket-level or above IAM policies.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketIamConfigurationBucketPolicyOnlyArgs()
         {
         }
+        public static new BucketIamConfigurationBucketPolicyOnlyArgs Empty => new BucketIamConfigurationBucketPolicyOnlyArgs();
     }
 }

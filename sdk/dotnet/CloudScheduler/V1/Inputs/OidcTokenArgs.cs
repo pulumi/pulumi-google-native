@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1.Inputs
     /// <summary>
     /// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect). This type of authorization can be used for many scenarios, including calling Cloud Run, or endpoints where you intend to validate the token yourself.
     /// </summary>
-    public sealed class OidcTokenArgs : Pulumi.ResourceArgs
+    public sealed class OidcTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Audience to be used when generating OIDC token. If not specified, the URI specified in target will be used.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1.Inputs
         public OidcTokenArgs()
         {
         }
+        public static new OidcTokenArgs Empty => new OidcTokenArgs();
     }
 }

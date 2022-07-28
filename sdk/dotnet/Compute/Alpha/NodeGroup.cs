@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a NodeGroup resource in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:NodeGroup")]
-    public partial class NodeGroup : Pulumi.CustomResource
+    public partial class NodeGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies how autoscaling should behave.
@@ -163,7 +163,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class NodeGroupArgs : Pulumi.ResourceArgs
+    public sealed class NodeGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies how autoscaling should behave.
@@ -231,5 +231,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public NodeGroupArgs()
         {
         }
+        public static new NodeGroupArgs Empty => new NodeGroupArgs();
     }
 }

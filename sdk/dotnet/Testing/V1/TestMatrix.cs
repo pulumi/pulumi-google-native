@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Testing.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:testing/v1:TestMatrix")]
-    public partial class TestMatrix : Pulumi.CustomResource
+    public partial class TestMatrix : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Information about the client which invoked the test.
@@ -146,7 +146,7 @@ namespace Pulumi.GoogleNative.Testing.V1
         }
     }
 
-    public sealed class TestMatrixArgs : Pulumi.ResourceArgs
+    public sealed class TestMatrixArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Information about the client which invoked the test.
@@ -199,5 +199,6 @@ namespace Pulumi.GoogleNative.Testing.V1
         public TestMatrixArgs()
         {
         }
+        public static new TestMatrixArgs Empty => new TestMatrixArgs();
     }
 }

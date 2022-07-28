@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class HivePartitioningOptionsArgs : Pulumi.ResourceArgs
+    public sealed class HivePartitioningOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] When set, what mode of hive partitioning to use when reading data. The following modes are supported. (1) AUTO: automatically infer partition key name(s) and type(s). (2) STRINGS: automatically infer partition key name(s). All types are interpreted as strings. (3) CUSTOM: partition key schema is encoded in the source URI prefix. Not all storage formats support hive partitioning. Requesting hive partitioning on an unsupported format will lead to an error. Currently supported types include: AVRO, CSV, JSON, ORC and Parquet.
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public HivePartitioningOptionsArgs()
         {
         }
+        public static new HivePartitioningOptionsArgs Empty => new HivePartitioningOptionsArgs();
     }
 }

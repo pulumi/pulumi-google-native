@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Configurations of the API Security add-on.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1ApiSecurityConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1ApiSecurityConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Flag that specifies whether the API security add-on is enabled.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1ApiSecurityConfigArgs()
         {
         }
+        public static new GoogleCloudApigeeV1ApiSecurityConfigArgs Empty => new GoogleCloudApigeeV1ApiSecurityConfigArgs();
     }
 }

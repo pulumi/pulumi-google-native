@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     /// <summary>
     /// ContainerPort represents a network port in a single container.
     /// </summary>
-    public sealed class ContainerPortArgs : Pulumi.ResourceArgs
+    public sealed class ContainerPortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Optional) Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public ContainerPortArgs()
         {
         }
+        public static new ContainerPortArgs Empty => new ContainerPortArgs();
     }
 }

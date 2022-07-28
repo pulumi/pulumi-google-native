@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents a single hyperparameter to optimize.
     /// </summary>
-    public sealed class GoogleCloudMlV1__ParameterSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__ParameterSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("categoricalValues")]
         private InputList<string>? _categoricalValues;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__ParameterSpecArgs()
         {
         }
+        public static new GoogleCloudMlV1__ParameterSpecArgs Empty => new GoogleCloudMlV1__ParameterSpecArgs();
     }
 }

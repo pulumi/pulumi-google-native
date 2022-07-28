@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
     /// <summary>
     /// The location of the function source code.
     /// </summary>
-    public sealed class SourceArgs : Pulumi.ResourceArgs
+    public sealed class SourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If provided, get the source from this location in a Cloud Source Repository.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
         public SourceArgs()
         {
         }
+        public static new SourceArgs Empty => new SourceArgs();
     }
 }

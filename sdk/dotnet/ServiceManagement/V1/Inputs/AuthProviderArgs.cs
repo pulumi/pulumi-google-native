@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Configuration for an authentication provider, including support for [JSON Web Token (JWT)](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32).
     /// </summary>
-    public sealed class AuthProviderArgs : Pulumi.ResourceArgs
+    public sealed class AuthProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The list of JWT [audiences](https://tools.ietf.org/html/draft-ietf-oauth-json-web-token-32#section-4.1.3). that are allowed to access. A JWT containing any of these audiences will be accepted. When this setting is absent, JWTs with audiences: - "https://[service.name]/[google.protobuf.Api.name]" - "https://[service.name]/" will be accepted. For example, if no audiences are in the setting, LibraryService API will accept JWTs with the following audiences: - https://library-example.googleapis.com/google.example.library.v1.LibraryService - https://library-example.googleapis.com/ Example: audiences: bookstore_android.apps.googleusercontent.com, bookstore_web.apps.googleusercontent.com
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public AuthProviderArgs()
         {
         }
+        public static new AuthProviderArgs Empty => new AuthProviderArgs();
     }
 }

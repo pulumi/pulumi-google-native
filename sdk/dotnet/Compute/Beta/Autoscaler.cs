@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates an autoscaler in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:Autoscaler")]
-    public partial class Autoscaler : Pulumi.CustomResource
+    public partial class Autoscaler : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
@@ -147,7 +147,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class AutoscalerArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration parameters for the autoscaling algorithm. You can define one or more signals for an autoscaler: cpuUtilization, customMetricUtilizations, and loadBalancingUtilization. If none of these are specified, the default will be to autoscale based on cpuUtilization to 0.6 or 60%.
@@ -188,5 +188,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public AutoscalerArgs()
         {
         }
+        public static new AutoscalerArgs Empty => new AutoscalerArgs();
     }
 }

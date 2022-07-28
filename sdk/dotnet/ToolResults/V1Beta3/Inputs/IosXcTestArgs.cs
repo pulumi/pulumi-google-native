@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// A test of an iOS application that uses the XCTest framework.
     /// </summary>
-    public sealed class IosXcTestArgs : Pulumi.ResourceArgs
+    public sealed class IosXcTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bundle ID of the app.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public IosXcTestArgs()
         {
         }
+        public static new IosXcTestArgs Empty => new IosXcTestArgs();
     }
 }

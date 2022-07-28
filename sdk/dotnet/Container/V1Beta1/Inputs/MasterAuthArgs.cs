@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// The authentication information for accessing the master endpoint. Authentication can be done using HTTP basic auth or using client certificates.
     /// </summary>
-    public sealed class MasterAuthArgs : Pulumi.ResourceArgs
+    public sealed class MasterAuthArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration for client certificate authentication on the cluster. For clusters before v1.12, if no configuration is specified, a client certificate is issued.
@@ -39,5 +39,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public MasterAuthArgs()
         {
         }
+        public static new MasterAuthArgs Empty => new MasterAuthArgs();
     }
 }

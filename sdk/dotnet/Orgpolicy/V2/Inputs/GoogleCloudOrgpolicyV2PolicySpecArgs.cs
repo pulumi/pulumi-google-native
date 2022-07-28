@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2.Inputs
     /// <summary>
     /// Defines a Cloud Organization `PolicySpec` which is used to specify `Constraints` for configurations of Cloud Platform resources.
     /// </summary>
-    public sealed class GoogleCloudOrgpolicyV2PolicySpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudOrgpolicyV2PolicySpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2.Inputs
         public GoogleCloudOrgpolicyV2PolicySpecArgs()
         {
         }
+        public static new GoogleCloudOrgpolicyV2PolicySpecArgs Empty => new GoogleCloudOrgpolicyV2PolicySpecArgs();
     }
 }

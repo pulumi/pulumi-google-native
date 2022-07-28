@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Custom information type provided by the user. Used to find domain-specific sensitive information configurable to the data in question.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2CustomInfoTypeArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2CustomInfoTypeArgs : global::Pulumi.ResourceArgs
     {
         [Input("detectionRules")]
         private InputList<Inputs.GooglePrivacyDlpV2DetectionRuleArgs>? _detectionRules;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2CustomInfoTypeArgs()
         {
         }
+        public static new GooglePrivacyDlpV2CustomInfoTypeArgs Empty => new GooglePrivacyDlpV2CustomInfoTypeArgs();
     }
 }

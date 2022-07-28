@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Telemetry integration for the cluster.
     /// </summary>
-    public sealed class ClusterTelemetryArgs : Pulumi.ResourceArgs
+    public sealed class ClusterTelemetryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Type of the integration.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public ClusterTelemetryArgs()
         {
         }
+        public static new ClusterTelemetryArgs Empty => new ClusterTelemetryArgs();
     }
 }

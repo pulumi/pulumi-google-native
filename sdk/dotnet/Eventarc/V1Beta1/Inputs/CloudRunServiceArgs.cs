@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1.Inputs
     /// <summary>
     /// Represents a Cloud Run service destination.
     /// </summary>
-    public sealed class CloudRunServiceArgs : Pulumi.ResourceArgs
+    public sealed class CloudRunServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute".
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1.Inputs
         public CloudRunServiceArgs()
         {
         }
+        public static new CloudRunServiceArgs Empty => new CloudRunServiceArgs();
     }
 }

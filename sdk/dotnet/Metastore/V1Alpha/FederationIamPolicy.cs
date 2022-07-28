@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:metastore/v1alpha:FederationIamPolicy")]
-    public partial class FederationIamPolicy : Pulumi.CustomResource
+    public partial class FederationIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         }
     }
 
-    public sealed class FederationIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class FederationIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         public FederationIamPolicyArgs()
         {
         }
+        public static new FederationIamPolicyArgs Empty => new FederationIamPolicyArgs();
     }
 }

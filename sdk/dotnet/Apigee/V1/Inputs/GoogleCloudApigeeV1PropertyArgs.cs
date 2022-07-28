@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// A single property entry in the Properties message.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1PropertyArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1PropertyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The property key
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1PropertyArgs()
         {
         }
+        public static new GoogleCloudApigeeV1PropertyArgs Empty => new GoogleCloudApigeeV1PropertyArgs();
     }
 }

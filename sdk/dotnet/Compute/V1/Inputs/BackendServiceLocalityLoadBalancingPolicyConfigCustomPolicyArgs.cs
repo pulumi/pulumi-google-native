@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// The configuration for a custom policy implemented by the user and deployed with the client.
     /// </summary>
-    public sealed class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional, arbitrary JSON object with configuration data, understood by a locally installed custom policy implementation.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs()
         {
         }
+        public static new BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs Empty => new BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs();
     }
 }

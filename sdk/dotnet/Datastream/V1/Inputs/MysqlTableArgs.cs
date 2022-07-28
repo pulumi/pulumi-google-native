@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     /// <summary>
     /// MySQL table.
     /// </summary>
-    public sealed class MysqlTableArgs : Pulumi.ResourceArgs
+    public sealed class MysqlTableArgs : global::Pulumi.ResourceArgs
     {
         [Input("mysqlColumns")]
         private InputList<Inputs.MysqlColumnArgs>? _mysqlColumns;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public MysqlTableArgs()
         {
         }
+        public static new MysqlTableArgs Empty => new MysqlTableArgs();
     }
 }

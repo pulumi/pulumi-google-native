@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Settings for blue-green upgrade.
     /// </summary>
-    public sealed class BlueGreenSettingsArgs : Pulumi.ResourceArgs
+    public sealed class BlueGreenSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Time needed after draining entire blue pool. After this period, blue pool will be cleaned up.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public BlueGreenSettingsArgs()
         {
         }
+        public static new BlueGreenSettingsArgs Empty => new BlueGreenSettingsArgs();
     }
 }

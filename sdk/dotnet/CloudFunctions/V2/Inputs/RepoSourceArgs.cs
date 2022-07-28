@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2.Inputs
     /// <summary>
     /// Location of the source in a Google Cloud Source Repository.
     /// </summary>
-    public sealed class RepoSourceArgs : Pulumi.ResourceArgs
+    public sealed class RepoSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Regex matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2.Inputs
         public RepoSourceArgs()
         {
         }
+        public static new RepoSourceArgs Empty => new RepoSourceArgs();
     }
 }

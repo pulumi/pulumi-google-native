@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:gkehub/v1beta1:Membership")]
-    public partial class Membership : Pulumi.CustomResource
+    public partial class Membership : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
@@ -161,7 +161,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1
         }
     }
 
-    public sealed class MembershipArgs : Pulumi.ResourceArgs
+    public sealed class MembershipArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. How to identify workloads from this Membership. See the documentation on Workload Identity for more details: https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
@@ -226,5 +226,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1
         public MembershipArgs()
         {
         }
+        public static new MembershipArgs Empty => new MembershipArgs();
     }
 }

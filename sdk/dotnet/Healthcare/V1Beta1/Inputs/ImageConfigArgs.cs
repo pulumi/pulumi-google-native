@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Specifies how to handle de-identification of image pixels.
     /// </summary>
-    public sealed class ImageConfigArgs : Pulumi.ResourceArgs
+    public sealed class ImageConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines how to redact text from image.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public ImageConfigArgs()
         {
         }
+        public static new ImageConfigArgs Empty => new ImageConfigArgs();
     }
 }

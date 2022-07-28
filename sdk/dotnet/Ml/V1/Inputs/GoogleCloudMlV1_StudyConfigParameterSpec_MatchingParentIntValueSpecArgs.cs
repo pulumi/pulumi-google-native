@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents the spec to match integer values from parent parameter.
     /// </summary>
-    public sealed class GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("values")]
         private InputList<string>? _values;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs()
         {
         }
+        public static new GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs Empty => new GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs();
     }
 }

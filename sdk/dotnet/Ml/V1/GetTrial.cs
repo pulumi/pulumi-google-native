@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Ml.V1
     }
 
 
-    public sealed class GetTrialArgs : Pulumi.InvokeArgs
+    public sealed class GetTrialArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Ml.V1
         public GetTrialArgs()
         {
         }
+        public static new GetTrialArgs Empty => new GetTrialArgs();
     }
 
-    public sealed class GetTrialInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTrialInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         public GetTrialInvokeArgs()
         {
         }
+        public static new GetTrialInvokeArgs Empty => new GetTrialInvokeArgs();
     }
 
 

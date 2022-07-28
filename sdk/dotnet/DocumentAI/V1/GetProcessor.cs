@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1
     }
 
 
-    public sealed class GetProcessorArgs : Pulumi.InvokeArgs
+    public sealed class GetProcessorArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.DocumentAI.V1
         public GetProcessorArgs()
         {
         }
+        public static new GetProcessorArgs Empty => new GetProcessorArgs();
     }
 
-    public sealed class GetProcessorInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProcessorInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1
         public GetProcessorInvokeArgs()
         {
         }
+        public static new GetProcessorInvokeArgs Empty => new GetProcessorInvokeArgs();
     }
 
 

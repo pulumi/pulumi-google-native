@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Identity related configuration, including service account based secure multi-tenancy user mappings.
     /// </summary>
-    public sealed class IdentityConfigArgs : Pulumi.ResourceArgs
+    public sealed class IdentityConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("userServiceAccountMapping", required: true)]
         private InputMap<string>? _userServiceAccountMapping;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public IdentityConfigArgs()
         {
         }
+        public static new IdentityConfigArgs Empty => new IdentityConfigArgs();
     }
 }

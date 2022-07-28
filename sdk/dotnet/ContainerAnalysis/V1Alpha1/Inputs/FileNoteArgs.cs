@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// FileNote represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
     /// </summary>
-    public sealed class FileNoteArgs : Pulumi.ResourceArgs
+    public sealed class FileNoteArgs : global::Pulumi.ResourceArgs
     {
         [Input("checksum")]
         private InputList<string>? _checksum;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public FileNoteArgs()
         {
         }
+        public static new FileNoteArgs Empty => new FileNoteArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// An auxiliary table containing statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
     /// </summary>
-    public sealed class GooglePrivacyDlpV2StatisticalTableArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2StatisticalTableArgs : global::Pulumi.ResourceArgs
     {
         [Input("quasiIds", required: true)]
         private InputList<Inputs.GooglePrivacyDlpV2QuasiIdentifierFieldArgs>? _quasiIds;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2StatisticalTableArgs()
         {
         }
+        public static new GooglePrivacyDlpV2StatisticalTableArgs Empty => new GooglePrivacyDlpV2StatisticalTableArgs();
     }
 }

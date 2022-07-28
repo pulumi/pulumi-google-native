@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
     /// Creates an issue model.
     /// </summary>
     [GoogleNativeResourceType("google-native:contactcenterinsights/v1:IssueModel")]
-    public partial class IssueModel : Pulumi.CustomResource
+    public partial class IssueModel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time at which this issue model was created.
@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         }
     }
 
-    public sealed class IssueModelArgs : Pulumi.ResourceArgs
+    public sealed class IssueModelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The representative name for the issue model.
@@ -140,5 +140,6 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public IssueModelArgs()
         {
         }
+        public static new IssueModelArgs Empty => new IssueModelArgs();
     }
 }

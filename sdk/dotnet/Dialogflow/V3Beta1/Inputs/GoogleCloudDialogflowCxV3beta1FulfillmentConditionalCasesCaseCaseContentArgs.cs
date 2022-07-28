@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// The list of messages or conditional cases to activate for this case.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Additional cases to be evaluated.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentArgs Empty => new GoogleCloudDialogflowCxV3beta1FulfillmentConditionalCasesCaseCaseContentArgs();
     }
 }

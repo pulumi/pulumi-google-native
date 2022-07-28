@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// Location of the source in an archive file in Google Cloud Storage.
     /// </summary>
-    public sealed class StorageSourceArgs : Pulumi.ResourceArgs
+    public sealed class StorageSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)).
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public StorageSourceArgs()
         {
         }
+        public static new StorageSourceArgs Empty => new StorageSourceArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
     }
 
 
-    public sealed class GetGuestPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetGuestPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("guestPolicyId", required: true)]
         public string GuestPolicyId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         public GetGuestPolicyArgs()
         {
         }
+        public static new GetGuestPolicyArgs Empty => new GetGuestPolicyArgs();
     }
 
-    public sealed class GetGuestPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGuestPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("guestPolicyId", required: true)]
         public Input<string> GuestPolicyId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         public GetGuestPolicyInvokeArgs()
         {
         }
+        public static new GetGuestPolicyInvokeArgs Empty => new GetGuestPolicyInvokeArgs();
     }
 
 

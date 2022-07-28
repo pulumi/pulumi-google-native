@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Represents a gRPC setting that describes one gRPC notification endpoint and the retry duration attempting to send notification to this endpoint.
     /// </summary>
-    public sealed class NotificationEndpointGrpcSettingsArgs : Pulumi.ResourceArgs
+    public sealed class NotificationEndpointGrpcSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. If specified, this field is used to set the authority header by the sender of notifications. See https://tools.ietf.org/html/rfc7540#section-8.1.2.3
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public NotificationEndpointGrpcSettingsArgs()
         {
         }
+        public static new NotificationEndpointGrpcSettingsArgs Empty => new NotificationEndpointGrpcSettingsArgs();
     }
 }

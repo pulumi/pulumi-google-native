@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     }
 
 
-    public sealed class GetApplicationIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("applicationId", required: true)]
         public string ApplicationId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public GetApplicationIamPolicyArgs()
         {
         }
+        public static new GetApplicationIamPolicyArgs Empty => new GetApplicationIamPolicyArgs();
     }
 
-    public sealed class GetApplicationIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetApplicationIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("applicationId", required: true)]
         public Input<string> ApplicationId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public GetApplicationIamPolicyInvokeArgs()
         {
         }
+        public static new GetApplicationIamPolicyInvokeArgs Empty => new GetApplicationIamPolicyInvokeArgs();
     }
 
 

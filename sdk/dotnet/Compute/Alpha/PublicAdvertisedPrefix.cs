@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a PublicAdvertisedPrefix in the specified project using the parameters that are included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:PublicAdvertisedPrefix")]
-    public partial class PublicAdvertisedPrefix : Pulumi.CustomResource
+    public partial class PublicAdvertisedPrefix : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -149,7 +149,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class PublicAdvertisedPrefixArgs : Pulumi.ResourceArgs
+    public sealed class PublicAdvertisedPrefixArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -199,5 +199,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public PublicAdvertisedPrefixArgs()
         {
         }
+        public static new PublicAdvertisedPrefixArgs Empty => new PublicAdvertisedPrefixArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
     /// <summary>
     /// A request to launch a template.
     /// </summary>
-    public sealed class GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A Cloud Storage path to the template from which to create the job. Must be a valid Cloud Storage URL, beginning with 'gs://'.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
         public GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs()
         {
         }
+        public static new GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs Empty => new GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs();
     }
 }

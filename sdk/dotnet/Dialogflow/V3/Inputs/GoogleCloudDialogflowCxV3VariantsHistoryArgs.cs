@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// The history of variants update.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3VariantsHistoryArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3VariantsHistoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Update time of the variants.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3VariantsHistoryArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3VariantsHistoryArgs Empty => new GoogleCloudDialogflowCxV3VariantsHistoryArgs();
     }
 }

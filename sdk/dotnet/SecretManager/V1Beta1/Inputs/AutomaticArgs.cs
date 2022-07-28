@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1.Inputs
     /// <summary>
     /// A replication policy that replicates the Secret payload without any restrictions.
     /// </summary>
-    public sealed class AutomaticArgs : Pulumi.ResourceArgs
+    public sealed class AutomaticArgs : global::Pulumi.ResourceArgs
     {
         public AutomaticArgs()
         {
         }
+        public static new AutomaticArgs Empty => new AutomaticArgs();
     }
 }

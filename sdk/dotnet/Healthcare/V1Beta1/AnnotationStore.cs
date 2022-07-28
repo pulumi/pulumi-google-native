@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     /// Creates a new Annotation store within the parent dataset.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1beta1:AnnotationStore")]
-    public partial class AnnotationStore : Pulumi.CustomResource
+    public partial class AnnotationStore : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         }
     }
 
-    public sealed class AnnotationStoreArgs : Pulumi.ResourceArgs
+    public sealed class AnnotationStoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the Annotation store that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
@@ -129,5 +129,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public AnnotationStoreArgs()
         {
         }
+        public static new AnnotationStoreArgs Empty => new AnnotationStoreArgs();
     }
 }

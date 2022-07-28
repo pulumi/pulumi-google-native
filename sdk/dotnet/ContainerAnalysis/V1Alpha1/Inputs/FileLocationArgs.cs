@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Indicates the location at which a package was found.
     /// </summary>
-    public sealed class FileLocationArgs : Pulumi.ResourceArgs
+    public sealed class FileLocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// For jars that are contained inside .war files, this filepath can indicate the path to war file combined with the path to jar file.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public FileLocationArgs()
         {
         }
+        public static new FileLocationArgs Empty => new FileLocationArgs();
     }
 }

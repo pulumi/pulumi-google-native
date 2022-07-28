@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Inputs
     /// <summary>
     /// A classification object with a product type and value.
     /// </summary>
-    public sealed class CaseClassificationArgs : Pulumi.ResourceArgs
+    public sealed class CaseClassificationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The display name of the classification.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Inputs
         public CaseClassificationArgs()
         {
         }
+        public static new CaseClassificationArgs Empty => new CaseClassificationArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Creates a new environment group.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Envgroup")]
-    public partial class Envgroup : Pulumi.CustomResource
+    public partial class Envgroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time at which the environment group was created as milliseconds since epoch.
@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class EnvgroupArgs : Pulumi.ResourceArgs
+    public sealed class EnvgroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("hostnames", required: true)]
         private InputList<string>? _hostnames;
@@ -121,5 +121,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public EnvgroupArgs()
         {
         }
+        public static new EnvgroupArgs Empty => new EnvgroupArgs();
     }
 }

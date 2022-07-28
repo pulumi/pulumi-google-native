@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
     /// <summary>
     /// Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe".
     /// </summary>
-    public sealed class GoogleCloudRetailV2alphaRuleReplacementActionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2alphaRuleReplacementActionArgs : global::Pulumi.ResourceArgs
     {
         [Input("queryTerms")]
         private InputList<string>? _queryTerms;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
         public GoogleCloudRetailV2alphaRuleReplacementActionArgs()
         {
         }
+        public static new GoogleCloudRetailV2alphaRuleReplacementActionArgs Empty => new GoogleCloudRetailV2alphaRuleReplacementActionArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Set of files to scan.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2FileSetArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2FileSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The regex-filtered set of files to scan. Exactly one of `url` or `regex_file_set` must be set.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2FileSetArgs()
         {
         }
+        public static new GooglePrivacyDlpV2FileSetArgs Empty => new GooglePrivacyDlpV2FileSetArgs();
     }
 }

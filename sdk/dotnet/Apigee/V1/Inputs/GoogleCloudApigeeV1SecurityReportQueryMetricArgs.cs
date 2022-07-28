@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Metric of the Query
     /// </summary>
-    public sealed class GoogleCloudApigeeV1SecurityReportQueryMetricArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1SecurityReportQueryMetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Aggregation function: avg, min, max, or sum.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1SecurityReportQueryMetricArgs()
         {
         }
+        public static new GoogleCloudApigeeV1SecurityReportQueryMetricArgs Empty => new GoogleCloudApigeeV1SecurityReportQueryMetricArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
     /// <summary>
     /// MySQL database structure
     /// </summary>
-    public sealed class MysqlRdbmsArgs : Pulumi.ResourceArgs
+    public sealed class MysqlRdbmsArgs : global::Pulumi.ResourceArgs
     {
         [Input("mysqlDatabases")]
         private InputList<Inputs.MysqlDatabaseArgs>? _mysqlDatabases;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
         public MysqlRdbmsArgs()
         {
         }
+        public static new MysqlRdbmsArgs Empty => new MysqlRdbmsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
     /// <summary>
     /// The content of an HL7v2 message in a structured format as specified by a schema.
     /// </summary>
-    public sealed class SchematizedDataArgs : Pulumi.ResourceArgs
+    public sealed class SchematizedDataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// JSON output of the parser.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         public SchematizedDataArgs()
         {
         }
+        public static new SchematizedDataArgs Empty => new SchematizedDataArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
     }
 
 
-    public sealed class GetConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetConfigArgs : global::Pulumi.InvokeArgs
     {
         [Input("configId", required: true)]
         public string ConfigId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public GetConfigArgs()
         {
         }
+        public static new GetConfigArgs Empty => new GetConfigArgs();
     }
 
-    public sealed class GetConfigInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("configId", required: true)]
         public Input<string> ConfigId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public GetConfigInvokeArgs()
         {
         }
+        public static new GetConfigInvokeArgs Empty => new GetConfigInvokeArgs();
     }
 
 

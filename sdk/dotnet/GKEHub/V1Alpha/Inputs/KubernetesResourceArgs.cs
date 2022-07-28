@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
     /// <summary>
     /// KubernetesResource contains the YAML manifests and configuration for Membership Kubernetes resources in the cluster. After CreateMembership or UpdateMembership, these resources should be re-applied in the cluster.
     /// </summary>
-    public sealed class KubernetesResourceArgs : Pulumi.ResourceArgs
+    public sealed class KubernetesResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Input only. The YAML representation of the Membership CR. This field is ignored for GKE clusters where Hub can read the CR directly. Callers should provide the CR that is currently present in the cluster during CreateMembership or UpdateMembership, or leave this field empty if none exists. The CR manifest is used to validate the cluster has not been registered with another Membership.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         public KubernetesResourceArgs()
         {
         }
+        public static new KubernetesResourceArgs Empty => new KubernetesResourceArgs();
     }
 }

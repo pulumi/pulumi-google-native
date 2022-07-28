@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Create a License resource in the specified project. *Caution* This resource is intended for use only by third-party partners who are creating Cloud Marketplace images.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:License")]
-    public partial class License : Pulumi.CustomResource
+    public partial class License : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Deprecated. This field no longer reflects whether a license charges a usage fee.
@@ -128,7 +128,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class LicenseArgs : Pulumi.ResourceArgs
+    public sealed class LicenseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional textual description of the resource; provided by the client when the resource is created.
@@ -163,5 +163,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public LicenseArgs()
         {
         }
+        public static new LicenseArgs Empty => new LicenseArgs();
     }
 }

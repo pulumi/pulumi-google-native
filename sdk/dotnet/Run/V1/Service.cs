@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Run.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:run/v1:Service")]
-    public partial class Service : Pulumi.CustomResource
+    public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The API version for this call such as "serving.knative.dev/v1".
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.Run.V1
         }
     }
 
-    public sealed class ServiceArgs : Pulumi.ResourceArgs
+    public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The API version for this call such as "serving.knative.dev/v1".
@@ -147,5 +147,6 @@ namespace Pulumi.GoogleNative.Run.V1
         public ServiceArgs()
         {
         }
+        public static new ServiceArgs Empty => new ServiceArgs();
     }
 }

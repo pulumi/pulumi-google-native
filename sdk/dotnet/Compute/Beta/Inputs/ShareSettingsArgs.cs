@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// The share setting for reservations and sole tenancy node groups.
     /// </summary>
-    public sealed class ShareSettingsArgs : Pulumi.ResourceArgs
+    public sealed class ShareSettingsArgs : global::Pulumi.ResourceArgs
     {
         [Input("projectMap")]
         private InputMap<string>? _projectMap;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public ShareSettingsArgs()
         {
         }
+        public static new ShareSettingsArgs Empty => new ShareSettingsArgs();
     }
 }

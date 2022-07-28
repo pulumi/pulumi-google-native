@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
     /// <summary>
     /// Represents a target of an invocation over HTTP.
     /// </summary>
-    public sealed class DestinationArgs : Pulumi.ResourceArgs
+    public sealed class DestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Cloud Function resource name. Only Cloud Functions V2 is supported. Format: `projects/{project}/locations/{location}/functions/{function}`
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
         public DestinationArgs()
         {
         }
+        public static new DestinationArgs Empty => new DestinationArgs();
     }
 }

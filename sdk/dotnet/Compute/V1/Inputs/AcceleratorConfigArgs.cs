@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// A specification of the type and number of accelerator cards attached to the instance.
     /// </summary>
-    public sealed class AcceleratorConfigArgs : Pulumi.ResourceArgs
+    public sealed class AcceleratorConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of the guest accelerator cards exposed to this instance.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public AcceleratorConfigArgs()
         {
         }
+        public static new AcceleratorConfigArgs Empty => new AcceleratorConfigArgs();
     }
 }

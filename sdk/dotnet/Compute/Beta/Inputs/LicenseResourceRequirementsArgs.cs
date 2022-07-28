@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class LicenseResourceRequirementsArgs : Pulumi.ResourceArgs
+    public sealed class LicenseResourceRequirementsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Minimum number of guest cpus required to use the Instance. Enforced at Instance creation and Instance start.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public LicenseResourceRequirementsArgs()
         {
         }
+        public static new LicenseResourceRequirementsArgs Empty => new LicenseResourceRequirementsArgs();
     }
 }

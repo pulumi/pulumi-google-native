@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
     /// <summary>
     /// Reference to another Cloud SQL instance.
     /// </summary>
-    public sealed class InstanceReferenceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Cloud SQL instance being referenced. This does not include the project ID.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public InstanceReferenceArgs()
         {
         }
+        public static new InstanceReferenceArgs Empty => new InstanceReferenceArgs();
     }
 }

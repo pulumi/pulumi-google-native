@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents input parameters for a training job. When using the gcloud command to submit your training job, you can specify the input parameters as command-line arguments and/or in a YAML configuration file referenced from the --config command-line argument. For details, see the guide to [submitting a training job](/ai-platform/training/docs/training-jobs).
     /// </summary>
-    public sealed class GoogleCloudMlV1__TrainingInputArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__TrainingInputArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<string>? _args;
@@ -186,5 +186,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__TrainingInputArgs()
         {
         }
+        public static new GoogleCloudMlV1__TrainingInputArgs Empty => new GoogleCloudMlV1__TrainingInputArgs();
     }
 }

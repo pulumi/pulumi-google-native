@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Represents a result from running a test case in an agent environment.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1TestCaseResultArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1TestCaseResultArgs : global::Pulumi.ResourceArgs
     {
         [Input("conversationTurns")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1ConversationTurnArgs>? _conversationTurns;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1TestCaseResultArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1TestCaseResultArgs Empty => new GoogleCloudDialogflowCxV3beta1TestCaseResultArgs();
     }
 }

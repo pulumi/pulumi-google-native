@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     /// <summary>
     /// Configuration of the environment to use when calling Skaffold.
     /// </summary>
-    public sealed class ExecutionConfigArgs : Pulumi.ResourceArgs
+    public sealed class ExecutionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Cloud Storage location in which to store execution outputs. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
         public ExecutionConfigArgs()
         {
         }
+        public static new ExecutionConfigArgs Empty => new ExecutionConfigArgs();
     }
 }

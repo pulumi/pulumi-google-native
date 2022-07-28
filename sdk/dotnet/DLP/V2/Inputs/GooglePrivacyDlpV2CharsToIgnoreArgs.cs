@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Characters to skip when doing deidentification of a value. These will be left alone and skipped.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2CharsToIgnoreArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2CharsToIgnoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Characters to not transform when masking.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2CharsToIgnoreArgs()
         {
         }
+        public static new GooglePrivacyDlpV2CharsToIgnoreArgs Empty => new GooglePrivacyDlpV2CharsToIgnoreArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Describes where the config file that kicked off the build came from. This is effectively a pointer to the source where buildConfig came from.
     /// </summary>
-    public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs : Pulumi.ResourceArgs
+    public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs : global::Pulumi.ResourceArgs
     {
         [Input("digest")]
         private InputMap<string>? _digest;
@@ -32,5 +32,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs()
         {
         }
+        public static new GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs Empty => new GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs();
     }
 }

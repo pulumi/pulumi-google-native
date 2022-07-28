@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     /// Creates a knowledge base. Note: The `projects.agent.knowledgeBases` resource is deprecated; only use `projects.knowledgeBases`.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2beta1:KnowledgeBase")]
-    public partial class KnowledgeBase : Pulumi.CustomResource
+    public partial class KnowledgeBase : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
@@ -87,7 +87,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         }
     }
 
-    public sealed class KnowledgeBaseArgs : Pulumi.ResourceArgs
+    public sealed class KnowledgeBaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The display name of the knowledge base. The name must be 1024 bytes or less; otherwise, the creation request fails.
@@ -116,5 +116,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public KnowledgeBaseArgs()
         {
         }
+        public static new KnowledgeBaseArgs Empty => new KnowledgeBaseArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
     /// Creates a new CertificateMap in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:certificatemanager/v1:CertificateMap")]
-    public partial class CertificateMap : Pulumi.CustomResource
+    public partial class CertificateMap : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. A user-provided name of the certificate map.
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         }
     }
 
-    public sealed class CertificateMapArgs : Pulumi.ResourceArgs
+    public sealed class CertificateMapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. A user-provided name of the certificate map.
@@ -153,5 +153,6 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public CertificateMapArgs()
         {
         }
+        public static new CertificateMapArgs Empty => new CertificateMapArgs();
     }
 }

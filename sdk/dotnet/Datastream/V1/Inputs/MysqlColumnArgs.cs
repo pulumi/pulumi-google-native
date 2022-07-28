@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     /// <summary>
     /// MySQL Column.
     /// </summary>
-    public sealed class MysqlColumnArgs : Pulumi.ResourceArgs
+    public sealed class MysqlColumnArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Column collation.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public MysqlColumnArgs()
         {
         }
+        public static new MysqlColumnArgs Empty => new MysqlColumnArgs();
     }
 }

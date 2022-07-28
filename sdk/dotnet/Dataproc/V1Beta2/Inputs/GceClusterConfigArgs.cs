@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// Common config settings for resources of Compute Engine cluster instances, applicable to all instances in the cluster.
     /// </summary>
-    public sealed class GceClusterConfigArgs : Pulumi.ResourceArgs
+    public sealed class GceClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. If true, all instances in the cluster will only have internal IP addresses. By default, clusters are not restricted to internal IP addresses, and will have ephemeral external IP addresses assigned to each instance. This internal_ip_only restriction can only be enabled for subnetwork enabled networks, and all off-cluster dependencies must be configured to be accessible without external IP addresses.
@@ -108,5 +108,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public GceClusterConfigArgs()
         {
         }
+        public static new GceClusterConfigArgs Empty => new GceClusterConfigArgs();
     }
 }

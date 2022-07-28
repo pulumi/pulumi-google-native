@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dns/v1beta2:ManagedZoneIamPolicy")]
-    public partial class ManagedZoneIamPolicy : Pulumi.CustomResource
+    public partial class ManagedZoneIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         }
     }
 
-    public sealed class ManagedZoneIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZoneIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.GoogleIamV1AuditConfigArgs>? _auditConfigs;
@@ -148,5 +148,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         public ManagedZoneIamPolicyArgs()
         {
         }
+        public static new ManagedZoneIamPolicyArgs Empty => new ManagedZoneIamPolicyArgs();
     }
 }

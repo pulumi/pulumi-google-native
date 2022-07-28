@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration for controlling how IPs are allocated in the cluster.
     /// </summary>
-    public sealed class IPAllocationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class IPAllocationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, allow allocation of cluster CIDR ranges that overlap with certain kinds of network routes. By default we do not allow cluster CIDR ranges to intersect with any user declared routes. With allow_route_overlap == true, we allow overlapping with CIDR ranges that are larger than the cluster CIDR range. If this field is set to true, then cluster and services CIDRs must be fully-specified (e.g. `10.96.0.0/14`, but not `/14`), which means: 1) When `use_ip_aliases` is true, `cluster_ipv4_cidr_block` and `services_ipv4_cidr_block` must be fully-specified. 2) When `use_ip_aliases` is false, `cluster.cluster_ipv4_cidr` muse be fully-specified.
@@ -114,5 +114,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public IPAllocationPolicyArgs()
         {
         }
+        public static new IPAllocationPolicyArgs Empty => new IPAllocationPolicyArgs();
     }
 }

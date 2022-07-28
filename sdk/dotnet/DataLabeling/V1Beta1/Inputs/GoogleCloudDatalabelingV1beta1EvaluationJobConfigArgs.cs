@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Configures specific details of how a continuous evaluation job works. Provide this configuration when you create an EvaluationJob.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("bigqueryImportKeys", required: true)]
         private InputMap<string>? _bigqueryImportKeys;
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs Empty => new GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs();
     }
 }

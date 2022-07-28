@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Inputs
     /// <summary>
     /// Defines the contact information associated with a `Registration`. [ICANN](https://icann.org/) requires all domain names to have associated contact information. The `registrant_contact` is considered the domain's legal owner, and often the other contacts are identical.
     /// </summary>
-    public sealed class ContactSettingsArgs : Pulumi.ResourceArgs
+    public sealed class ContactSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The administrative contact for the `Registration`.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Inputs
         public ContactSettingsArgs()
         {
         }
+        public static new ContactSettingsArgs Empty => new ContactSettingsArgs();
     }
 }

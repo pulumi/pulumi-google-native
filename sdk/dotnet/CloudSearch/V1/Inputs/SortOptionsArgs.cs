@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
 {
 
-    public sealed class SortOptionsArgs : Pulumi.ResourceArgs
+    public sealed class SortOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the operator corresponding to the field to sort on. The corresponding property must be marked as sortable.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public SortOptionsArgs()
         {
         }
+        public static new SortOptionsArgs Empty => new SortOptionsArgs();
     }
 }

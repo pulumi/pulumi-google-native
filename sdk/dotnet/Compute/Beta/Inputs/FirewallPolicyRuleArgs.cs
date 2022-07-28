@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
     /// </summary>
-    public sealed class FirewallPolicyRuleArgs : Pulumi.ResourceArgs
+    public sealed class FirewallPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Action to perform when the client connection triggers the rule. Can currently be either "allow" or "deny()" where valid values for status are 403, 404, and 502.
@@ -102,5 +102,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public FirewallPolicyRuleArgs()
         {
         }
+        public static new FirewallPolicyRuleArgs Empty => new FirewallPolicyRuleArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetDiskIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetDiskIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetDiskIamPolicyArgs()
         {
         }
+        public static new GetDiskIamPolicyArgs Empty => new GetDiskIamPolicyArgs();
     }
 
-    public sealed class GetDiskIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDiskIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetDiskIamPolicyInvokeArgs()
         {
         }
+        public static new GetDiskIamPolicyInvokeArgs Empty => new GetDiskIamPolicyInvokeArgs();
     }
 
 

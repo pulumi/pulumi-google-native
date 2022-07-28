@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     /// <summary>
     /// Describes a subordinate CA's issuers. This is either a resource path to a known issuing CertificateAuthority, or a PEM issuer certificate chain.
     /// </summary>
-    public sealed class SubordinateConfigArgs : Pulumi.ResourceArgs
+    public sealed class SubordinateConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This can refer to a CertificateAuthority that was used to create a subordinate CertificateAuthority. This field is used for information and usability purposes only. The resource name is in the format `projects/*/locations/*/certificateAuthorities/*`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         public SubordinateConfigArgs()
         {
         }
+        public static new SubordinateConfigArgs Empty => new SubordinateConfigArgs();
     }
 }

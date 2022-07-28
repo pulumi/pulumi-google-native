@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// ApprovalConfig describes configuration for manual approval of a build.
     /// </summary>
-    public sealed class ApprovalConfigArgs : Pulumi.ResourceArgs
+    public sealed class ApprovalConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public ApprovalConfigArgs()
         {
         }
+        public static new ApprovalConfigArgs Empty => new ApprovalConfigArgs();
     }
 }

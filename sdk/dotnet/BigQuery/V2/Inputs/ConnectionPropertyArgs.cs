@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class ConnectionPropertyArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionPropertyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Required] Name of the connection property to set.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public ConnectionPropertyArgs()
         {
         }
+        public static new ConnectionPropertyArgs Empty => new ConnectionPropertyArgs();
     }
 }

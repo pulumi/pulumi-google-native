@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1.Inputs
     /// <summary>
     /// Represents preferences for sending email notifications for transfer run events.
     /// </summary>
-    public sealed class EmailPreferencesArgs : Pulumi.ResourceArgs
+    public sealed class EmailPreferencesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, email notifications will be sent on transfer run failures.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1.Inputs
         public EmailPreferencesArgs()
         {
         }
+        public static new EmailPreferencesArgs Empty => new EmailPreferencesArgs();
     }
 }

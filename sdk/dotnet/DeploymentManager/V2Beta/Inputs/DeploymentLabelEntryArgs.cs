@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
     /// <summary>
     /// Label object for Deployments
     /// </summary>
-    public sealed class DeploymentLabelEntryArgs : Pulumi.ResourceArgs
+    public sealed class DeploymentLabelEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key of the label
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
         public DeploymentLabelEntryArgs()
         {
         }
+        public static new DeploymentLabelEntryArgs Empty => new DeploymentLabelEntryArgs();
     }
 }

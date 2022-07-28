@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataplex/v1:Partition")]
-    public partial class Partition : Pulumi.CustomResource
+    public partial class Partition : global::Pulumi.CustomResource
     {
         [Output("entityId")]
         public Output<string> EntityId { get; private set; } = null!;
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         }
     }
 
-    public sealed class PartitionArgs : Pulumi.ResourceArgs
+    public sealed class PartitionArgs : global::Pulumi.ResourceArgs
     {
         [Input("entityId", required: true)]
         public Input<string> EntityId { get; set; } = null!;
@@ -153,5 +153,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public PartitionArgs()
         {
         }
+        public static new PartitionArgs Empty => new PartitionArgs();
     }
 }

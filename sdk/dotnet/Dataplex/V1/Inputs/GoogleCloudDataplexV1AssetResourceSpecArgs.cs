@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Identifies the cloud resource that is referenced by this asset.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1AssetResourceSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1AssetResourceSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. Relative name of the cloud resource that contains the data that is being managed within a lake. For example: projects/{project_number}/buckets/{bucket_id} projects/{project_number}/datasets/{dataset_id}
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1AssetResourceSpecArgs()
         {
         }
+        public static new GoogleCloudDataplexV1AssetResourceSpecArgs Empty => new GoogleCloudDataplexV1AssetResourceSpecArgs();
     }
 }

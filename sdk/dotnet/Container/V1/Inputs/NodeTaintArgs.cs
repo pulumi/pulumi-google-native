@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Kubernetes taint is comprised of three fields: key, value, and effect. Effect can only be one of three types: NoSchedule, PreferNoSchedule or NoExecute. See [here](https://kubernetes.io/docs/concepts/configuration/taint-and-toleration) for more information, including usage and the valid values.
     /// </summary>
-    public sealed class NodeTaintArgs : Pulumi.ResourceArgs
+    public sealed class NodeTaintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Effect for taint.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public NodeTaintArgs()
         {
         }
+        public static new NodeTaintArgs Empty => new NodeTaintArgs();
     }
 }

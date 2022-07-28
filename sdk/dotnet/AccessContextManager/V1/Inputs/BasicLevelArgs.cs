@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
     /// <summary>
     /// `BasicLevel` is an `AccessLevel` using a set of recommended features.
     /// </summary>
-    public sealed class BasicLevelArgs : Pulumi.ResourceArgs
+    public sealed class BasicLevelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How the `conditions` list should be combined to determine if a request is granted this `AccessLevel`. If AND is used, each `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. If OR is used, at least one `Condition` in `conditions` must be satisfied for the `AccessLevel` to be applied. Default behavior is AND.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         public BasicLevelArgs()
         {
         }
+        public static new BasicLevelArgs Empty => new BasicLevelArgs();
     }
 }

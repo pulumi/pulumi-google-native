@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
     /// Starts creating a new Cloud Spanner Backup. The returned backup long-running operation will have a name of the format `projects//instances//backups//operations/` and can be used to track creation of the backup. The metadata field type is CreateBackupMetadata. The response field type is Backup, if successful. Cancelling the returned operation will stop the creation and delete the backup. There can be only one pending backup creation per database. Backup creation of different databases can run concurrently.
     /// </summary>
     [GoogleNativeResourceType("google-native:spanner/v1:Backup")]
-    public partial class Backup : Pulumi.CustomResource
+    public partial class Backup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`.
@@ -161,7 +161,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
         }
     }
 
-    public sealed class BackupArgs : Pulumi.ResourceArgs
+    public sealed class BackupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The id of the backup to be created. The `backup_id` appended to `parent` forms the full backup name of the form `projects//instances//backups/`.
@@ -214,5 +214,6 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public BackupArgs()
         {
         }
+        public static new BackupArgs Empty => new BackupArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     /// Creates a new document. This method is a [long-running operation](https://cloud.google.com/dialogflow/cx/docs/how/long-running-operation). The returned `Operation` type has the following method-specific fields: - `metadata`: KnowledgeOperationMetadata - `response`: Document
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2:Document")]
-    public partial class Document : Pulumi.CustomResource
+    public partial class Document : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The URI where the file content is located. For documents stored in Google Cloud Storage, these URIs must have the form `gs:///`. NOTE: External URLs must correspond to public webpages, i.e., they must be indexed by Google Search. In particular, URLs for showing documents in Google Cloud Storage (i.e. the URL in your browser) are not supported. Instead use the `gs://` format URI described above.
@@ -133,7 +133,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         }
     }
 
-    public sealed class DocumentArgs : Pulumi.ResourceArgs
+    public sealed class DocumentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URI where the file content is located. For documents stored in Google Cloud Storage, these URIs must have the form `gs:///`. NOTE: External URLs must correspond to public webpages, i.e., they must be indexed by Google Search. In particular, URLs for showing documents in Google Cloud Storage (i.e. the URL in your browser) are not supported. Instead use the `gs://` format URI described above.
@@ -207,5 +207,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public DocumentArgs()
         {
         }
+        public static new DocumentArgs Empty => new DocumentArgs();
     }
 }

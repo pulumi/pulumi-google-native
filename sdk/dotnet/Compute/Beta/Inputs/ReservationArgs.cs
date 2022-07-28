@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read Reserving zonal resources.
     /// </summary>
-    public sealed class ReservationArgs : Pulumi.ResourceArgs
+    public sealed class ReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public ReservationArgs()
         {
         }
+        public static new ReservationArgs Empty => new ReservationArgs();
     }
 }

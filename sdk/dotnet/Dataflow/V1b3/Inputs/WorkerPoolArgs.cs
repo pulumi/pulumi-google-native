@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Describes one particular pool of Cloud Dataflow workers to be instantiated by the Cloud Dataflow service in order to perform the computations required by a job. Note that a workflow job may use multiple pools, in order to match the various computational requirements of the various stages of the job.
     /// </summary>
-    public sealed class WorkerPoolArgs : Pulumi.ResourceArgs
+    public sealed class WorkerPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Settings for autoscaling of this WorkerPool.
@@ -180,5 +180,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public WorkerPoolArgs()
         {
         }
+        public static new WorkerPoolArgs Empty => new WorkerPoolArgs();
     }
 }

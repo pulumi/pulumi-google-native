@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     /// <summary>
     /// Represents a custom encryption key configuration that can be applied to a resource. This will encrypt all disks in Virtual Machine.
     /// </summary>
-    public sealed class EncryptionConfigArgs : Pulumi.ResourceArgs
+    public sealed class EncryptionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a disks. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public EncryptionConfigArgs()
         {
         }
+        public static new EncryptionConfigArgs Empty => new EncryptionConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Column info specific to Looker System.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Looker specific column type of this column.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs Empty => new GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs();
     }
 }

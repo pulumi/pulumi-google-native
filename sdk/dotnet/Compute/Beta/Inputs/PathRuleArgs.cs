@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// A path-matching rule for a URL. If matched, will use the specified BackendService to handle the traffic arriving at this URL.
     /// </summary>
-    public sealed class PathRuleArgs : Pulumi.ResourceArgs
+    public sealed class PathRuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("paths")]
         private InputList<string>? _paths;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public PathRuleArgs()
         {
         }
+        public static new PathRuleArgs Empty => new PathRuleArgs();
     }
 }

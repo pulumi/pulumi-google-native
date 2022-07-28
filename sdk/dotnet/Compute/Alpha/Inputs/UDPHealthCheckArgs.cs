@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class UDPHealthCheckArgs : Pulumi.ResourceArgs
+    public sealed class UDPHealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The UDP port number for the health check request. Valid values are 1 through 65535.
@@ -39,5 +39,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public UDPHealthCheckArgs()
         {
         }
+        public static new UDPHealthCheckArgs Empty => new UDPHealthCheckArgs();
     }
 }

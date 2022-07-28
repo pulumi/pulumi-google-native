@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
     }
 
 
-    public sealed class GetScheduleArgs : Pulumi.InvokeArgs
+    public sealed class GetScheduleArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public GetScheduleArgs()
         {
         }
+        public static new GetScheduleArgs Empty => new GetScheduleArgs();
     }
 
-    public sealed class GetScheduleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetScheduleInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public GetScheduleInvokeArgs()
         {
         }
+        public static new GetScheduleInvokeArgs Empty => new GetScheduleInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     /// Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:logging/v2:Exclusion")]
-    public partial class Exclusion : Pulumi.CustomResource
+    public partial class Exclusion : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The creation timestamp of the exclusion.This field may not be present for older exclusions.
@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         }
     }
 
-    public sealed class ExclusionArgs : Pulumi.ResourceArgs
+    public sealed class ExclusionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A description of this exclusion.
@@ -133,5 +133,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         public ExclusionArgs()
         {
         }
+        public static new ExclusionArgs Empty => new ExclusionArgs();
     }
 }

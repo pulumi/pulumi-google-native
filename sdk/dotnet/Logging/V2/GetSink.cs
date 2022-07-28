@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     }
 
 
-    public sealed class GetSinkArgs : Pulumi.InvokeArgs
+    public sealed class GetSinkArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetSinkArgs()
         {
         }
+        public static new GetSinkArgs Empty => new GetSinkArgs();
     }
 
-    public sealed class GetSinkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSinkInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetSinkInvokeArgs()
         {
         }
+        public static new GetSinkInvokeArgs Empty => new GetSinkInvokeArgs();
     }
 
 

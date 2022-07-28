@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
     }
 
 
-    public sealed class GetControlArgs : Pulumi.InvokeArgs
+    public sealed class GetControlArgs : global::Pulumi.InvokeArgs
     {
         [Input("catalogId", required: true)]
         public string CatalogId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public GetControlArgs()
         {
         }
+        public static new GetControlArgs Empty => new GetControlArgs();
     }
 
-    public sealed class GetControlInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetControlInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("catalogId", required: true)]
         public Input<string> CatalogId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public GetControlInvokeArgs()
         {
         }
+        public static new GetControlInvokeArgs Empty => new GetControlInvokeArgs();
     }
 
 

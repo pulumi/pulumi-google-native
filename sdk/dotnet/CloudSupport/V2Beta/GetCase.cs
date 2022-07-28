@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
     }
 
 
-    public sealed class GetCaseArgs : Pulumi.InvokeArgs
+    public sealed class GetCaseArgs : global::Pulumi.InvokeArgs
     {
         [Input("caseId", required: true)]
         public string CaseId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         public GetCaseArgs()
         {
         }
+        public static new GetCaseArgs Empty => new GetCaseArgs();
     }
 
-    public sealed class GetCaseInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCaseInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("caseId", required: true)]
         public Input<string> CaseId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         public GetCaseInvokeArgs()
         {
         }
+        public static new GetCaseInvokeArgs Empty => new GetCaseInvokeArgs();
     }
 
 

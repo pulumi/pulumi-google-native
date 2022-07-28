@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
     /// <summary>
     /// Represents a GKE destination.
     /// </summary>
-    public sealed class GKEArgs : Pulumi.ResourceArgs
+    public sealed class GKEArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
         public GKEArgs()
         {
         }
+        public static new GKEArgs Empty => new GKEArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] The paths to the mounted TLS Certificates and private key. The paths to the mounted TLS Certificates and private key.
     /// </summary>
-    public sealed class TlsCertificatePathsArgs : Pulumi.ResourceArgs
+    public sealed class TlsCertificatePathsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The path to the file holding the client or server TLS certificate to use.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public TlsCertificatePathsArgs()
         {
         }
+        public static new TlsCertificatePathsArgs Empty => new TlsCertificatePathsArgs();
     }
 }

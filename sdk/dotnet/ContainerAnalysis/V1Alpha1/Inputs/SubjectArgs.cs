@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Subject refers to the subject of the intoto statement
     /// </summary>
-    public sealed class SubjectArgs : Pulumi.ResourceArgs
+    public sealed class SubjectArgs : global::Pulumi.ResourceArgs
     {
         [Input("digest")]
         private InputMap<string>? _digest;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public SubjectArgs()
         {
         }
+        public static new SubjectArgs Empty => new SubjectArgs();
     }
 }

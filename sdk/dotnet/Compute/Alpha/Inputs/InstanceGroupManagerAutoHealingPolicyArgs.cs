@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class InstanceGroupManagerAutoHealingPolicyArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupManagerAutoHealingPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Restricts what triggers autohealing.
@@ -39,5 +39,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public InstanceGroupManagerAutoHealingPolicyArgs()
         {
         }
+        public static new InstanceGroupManagerAutoHealingPolicyArgs Empty => new InstanceGroupManagerAutoHealingPolicyArgs();
     }
 }

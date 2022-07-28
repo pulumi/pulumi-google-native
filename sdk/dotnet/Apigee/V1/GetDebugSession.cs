@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetDebugSessionArgs : Pulumi.InvokeArgs
+    public sealed class GetDebugSessionArgs : global::Pulumi.InvokeArgs
     {
         [Input("apiId", required: true)]
         public string ApiId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetDebugSessionArgs()
         {
         }
+        public static new GetDebugSessionArgs Empty => new GetDebugSessionArgs();
     }
 
-    public sealed class GetDebugSessionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDebugSessionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetDebugSessionInvokeArgs()
         {
         }
+        public static new GetDebugSessionInvokeArgs Empty => new GetDebugSessionInvokeArgs();
     }
 
 

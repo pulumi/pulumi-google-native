@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
     /// Creates a queue. Queues created with this method allow tasks to live for a maximum of 31 days. After a task is 31 days old, the task will be deleted regardless of whether it was dispatched or not. WARNING: Using this method may have unintended side effects if you are using an App Engine `queue.yaml` or `queue.xml` file to manage your queues. Read [Overview of Queue Management and queue.yaml](https://cloud.google.com/tasks/docs/queue-yaml) before using this method.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudtasks/v2beta2:Queue")]
-    public partial class Queue : Pulumi.CustomResource
+    public partial class Queue : global::Pulumi.CustomResource
     {
         /// <summary>
         /// App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
@@ -135,7 +135,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         }
     }
 
-    public sealed class QueueArgs : Pulumi.ResourceArgs
+    public sealed class QueueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// App Engine HTTP target. An App Engine queue is a queue that has an AppEngineHttpTarget.
@@ -194,5 +194,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         public QueueArgs()
         {
         }
+        public static new QueueArgs Empty => new QueueArgs();
     }
 }

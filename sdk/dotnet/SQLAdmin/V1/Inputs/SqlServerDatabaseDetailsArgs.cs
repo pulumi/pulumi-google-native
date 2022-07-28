@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// Represents a Sql Server database on the Cloud SQL instance.
     /// </summary>
-    public sealed class SqlServerDatabaseDetailsArgs : Pulumi.ResourceArgs
+    public sealed class SqlServerDatabaseDetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The version of SQL Server with which the database is to be made compatible
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public SqlServerDatabaseDetailsArgs()
         {
         }
+        public static new SqlServerDatabaseDetailsArgs Empty => new SqlServerDatabaseDetailsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// The suggestion chip message that the user can tap to quickly post a reply to the conversation.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The text shown the in the suggestion chip.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// This message wraps a location affected by a vulnerability and its associated fix (if one is available).
     /// </summary>
-    public sealed class PackageIssueArgs : Pulumi.ResourceArgs
+    public sealed class PackageIssueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location of the vulnerability.
@@ -39,5 +39,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public PackageIssueArgs()
         {
         }
+        public static new PackageIssueArgs Empty => new PackageIssueArgs();
     }
 }

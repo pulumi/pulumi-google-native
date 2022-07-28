@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The bucket's custom placement configuration for Custom Dual Regions.
     /// </summary>
-    public sealed class BucketCustomPlacementConfigArgs : Pulumi.ResourceArgs
+    public sealed class BucketCustomPlacementConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("dataLocations")]
         private InputList<string>? _dataLocations;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketCustomPlacementConfigArgs()
         {
         }
+        public static new BucketCustomPlacementConfigArgs Empty => new BucketCustomPlacementConfigArgs();
     }
 }

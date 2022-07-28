@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] Custom authenticator credentials. Custom authenticator credentials.
     /// </summary>
-    public sealed class MetadataCredentialsFromPluginArgs : Pulumi.ResourceArgs
+    public sealed class MetadataCredentialsFromPluginArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Plugin name.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public MetadataCredentialsFromPluginArgs()
         {
         }
+        public static new MetadataCredentialsFromPluginArgs Empty => new MetadataCredentialsFromPluginArgs();
     }
 }

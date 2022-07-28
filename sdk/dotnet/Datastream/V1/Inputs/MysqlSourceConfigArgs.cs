@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     /// <summary>
     /// MySQL source configuration
     /// </summary>
-    public sealed class MysqlSourceConfigArgs : Pulumi.ResourceArgs
+    public sealed class MysqlSourceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// MySQL objects to exclude from the stream.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public MysqlSourceConfigArgs()
         {
         }
+        public static new MysqlSourceConfigArgs Empty => new MysqlSourceConfigArgs();
     }
 }

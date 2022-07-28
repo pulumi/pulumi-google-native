@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datalabeling/v1beta1:Dataset")]
-    public partial class Dataset : Pulumi.CustomResource
+    public partial class Dataset : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The names of any related resources that are blocking changes to the dataset.
@@ -114,7 +114,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         }
     }
 
-    public sealed class DatasetArgs : Pulumi.ResourceArgs
+    public sealed class DatasetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. User-provided description of the annotation specification set. The description can be up to 10000 characters long.
@@ -140,5 +140,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public DatasetArgs()
         {
         }
+        public static new DatasetArgs Empty => new DatasetArgs();
     }
 }

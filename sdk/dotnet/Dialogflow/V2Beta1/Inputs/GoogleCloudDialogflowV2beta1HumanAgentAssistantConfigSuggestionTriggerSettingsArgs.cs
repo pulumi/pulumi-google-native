@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Settings of suggestion trigger.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Do not trigger if last utterance is small talk.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs Empty => new GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs();
     }
 }

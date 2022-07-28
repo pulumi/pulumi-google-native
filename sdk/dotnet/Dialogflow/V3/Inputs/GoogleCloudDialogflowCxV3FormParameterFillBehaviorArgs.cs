@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// Configuration for how the filling of a parameter should be handled.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3FormParameterFillBehaviorArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3FormParameterFillBehaviorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The fulfillment to provide the initial prompt that the agent can present to the user in order to fill the parameter.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3FormParameterFillBehaviorArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3FormParameterFillBehaviorArgs Empty => new GoogleCloudDialogflowCxV3FormParameterFillBehaviorArgs();
     }
 }

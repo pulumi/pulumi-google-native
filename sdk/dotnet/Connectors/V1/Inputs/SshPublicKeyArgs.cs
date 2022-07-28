@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
     /// <summary>
     /// Parameters to support Ssh public key Authentication.
     /// </summary>
-    public sealed class SshPublicKeyArgs : Pulumi.ResourceArgs
+    public sealed class SshPublicKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Format of SSH Client cert.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public SshPublicKeyArgs()
         {
         }
+        public static new SshPublicKeyArgs Empty => new SshPublicKeyArgs();
     }
 }

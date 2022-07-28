@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
     }
 
 
-    public sealed class GetCryptoKeyVersionArgs : Pulumi.InvokeArgs
+    public sealed class GetCryptoKeyVersionArgs : global::Pulumi.InvokeArgs
     {
         [Input("cryptoKeyId", required: true)]
         public string CryptoKeyId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public GetCryptoKeyVersionArgs()
         {
         }
+        public static new GetCryptoKeyVersionArgs Empty => new GetCryptoKeyVersionArgs();
     }
 
-    public sealed class GetCryptoKeyVersionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCryptoKeyVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("cryptoKeyId", required: true)]
         public Input<string> CryptoKeyId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public GetCryptoKeyVersionInvokeArgs()
         {
         }
+        public static new GetCryptoKeyVersionInvokeArgs Empty => new GetCryptoKeyVersionInvokeArgs();
     }
 
 

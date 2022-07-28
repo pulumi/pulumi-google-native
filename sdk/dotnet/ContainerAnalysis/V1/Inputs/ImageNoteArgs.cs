@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Basis describes the base image portion (Note) of the DockerImage relationship. Linked occurrences are derived from this or an equivalent image via: FROM Or an equivalent reference, e.g., a tag of the resource_url.
     /// </summary>
-    public sealed class ImageNoteArgs : Pulumi.ResourceArgs
+    public sealed class ImageNoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. The fingerprint of the base image.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public ImageNoteArgs()
         {
         }
+        public static new ImageNoteArgs Empty => new ImageNoteArgs();
     }
 }

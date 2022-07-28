@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents a custom encryption key configuration that can be applied to a resource.
     /// </summary>
-    public sealed class GoogleCloudMlV1__EncryptionConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__EncryptionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a training job. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}`
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__EncryptionConfigArgs()
         {
         }
+        public static new GoogleCloudMlV1__EncryptionConfigArgs Empty => new GoogleCloudMlV1__EncryptionConfigArgs();
     }
 }

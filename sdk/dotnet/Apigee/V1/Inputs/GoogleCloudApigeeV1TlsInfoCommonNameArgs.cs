@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Inputs
 {
 
-    public sealed class GoogleCloudApigeeV1TlsInfoCommonNameArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1TlsInfoCommonNameArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The TLS Common Name string of the certificate.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1TlsInfoCommonNameArgs()
         {
         }
+        public static new GoogleCloudApigeeV1TlsInfoCommonNameArgs Empty => new GoogleCloudApigeeV1TlsInfoCommonNameArgs();
     }
 }

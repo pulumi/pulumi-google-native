@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
     /// <summary>
     /// Describes how to route traffic.
     /// </summary>
-    public sealed class GrpcRouteRouteRuleArgs : Pulumi.ResourceArgs
+    public sealed class GrpcRouteRouteRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A detailed rule defining how to route traffic. This field is required.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public GrpcRouteRouteRuleArgs()
         {
         }
+        public static new GrpcRouteRouteRuleArgs Empty => new GrpcRouteRouteRuleArgs();
     }
 }

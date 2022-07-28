@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// Subject describes parts of a distinguished name that, in turn, describes the subject of the certificate.
     /// </summary>
-    public sealed class SubjectArgs : Pulumi.ResourceArgs
+    public sealed class SubjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The "common name" of the subject.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public SubjectArgs()
         {
         }
+        public static new SubjectArgs Empty => new SubjectArgs();
     }
 }

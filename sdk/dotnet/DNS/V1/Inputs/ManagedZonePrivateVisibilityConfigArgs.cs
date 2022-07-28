@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1.Inputs
 {
 
-    public sealed class ManagedZonePrivateVisibilityConfigArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZonePrivateVisibilityConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
         public ManagedZonePrivateVisibilityConfigArgs()
         {
         }
+        public static new ManagedZonePrivateVisibilityConfigArgs Empty => new ManagedZonePrivateVisibilityConfigArgs();
     }
 }

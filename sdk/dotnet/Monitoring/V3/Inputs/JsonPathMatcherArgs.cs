@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Information needed to perform a JSONPath content match. Used for ContentMatcherOption::MATCHES_JSON_PATH and ContentMatcherOption::NOT_MATCHES_JSON_PATH.
     /// </summary>
-    public sealed class JsonPathMatcherArgs : Pulumi.ResourceArgs
+    public sealed class JsonPathMatcherArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of JSONPath match that will be applied to the JSON output (ContentMatcher.content)
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public JsonPathMatcherArgs()
         {
         }
+        public static new JsonPathMatcherArgs Empty => new JsonPathMatcherArgs();
     }
 }

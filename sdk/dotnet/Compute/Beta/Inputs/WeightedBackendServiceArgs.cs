@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// In contrast to a single BackendService in HttpRouteAction to which all matching traffic is directed to, WeightedBackendService allows traffic to be split across multiple backend services. The volume of traffic for each backend service is proportional to the weight specified in each WeightedBackendService
     /// </summary>
-    public sealed class WeightedBackendServiceArgs : Pulumi.ResourceArgs
+    public sealed class WeightedBackendServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full or partial URL to the default BackendService resource. Before forwarding the request to backendService, the load balancer applies any relevant headerActions specified as part of this backendServiceWeight.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public WeightedBackendServiceArgs()
         {
         }
+        public static new WeightedBackendServiceArgs Empty => new WeightedBackendServiceArgs();
     }
 }

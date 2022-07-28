@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
     /// <summary>
     /// PrincipalInfo represents an Identity oneof.
     /// </summary>
-    public sealed class PrincipalInfoArgs : Pulumi.ResourceArgs
+    public sealed class PrincipalInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A GCP service account.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
         public PrincipalInfoArgs()
         {
         }
+        public static new PrincipalInfoArgs Empty => new PrincipalInfoArgs();
     }
 }

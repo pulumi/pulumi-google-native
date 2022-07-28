@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
     /// <summary>
     /// Custom fields. These can be used to create a counter with arbitrary field/value pairs. See: go/rpcsp-custom-fields.
     /// </summary>
-    public sealed class CustomFieldArgs : Pulumi.ResourceArgs
+    public sealed class CustomFieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name is the field name.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
         public CustomFieldArgs()
         {
         }
+        public static new CustomFieldArgs Empty => new CustomFieldArgs();
     }
 }

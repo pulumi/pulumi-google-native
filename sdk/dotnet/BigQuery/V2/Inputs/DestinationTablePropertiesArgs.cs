@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class DestinationTablePropertiesArgs : Pulumi.ResourceArgs
+    public sealed class DestinationTablePropertiesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] The description for the destination table. This will only be used if the destination table is newly created. If the table already exists and a value different than the current description is provided, the job will fail.
@@ -45,5 +45,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public DestinationTablePropertiesArgs()
         {
         }
+        public static new DestinationTablePropertiesArgs Empty => new DestinationTablePropertiesArgs();
     }
 }

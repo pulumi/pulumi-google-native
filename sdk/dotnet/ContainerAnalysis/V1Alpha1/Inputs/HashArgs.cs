@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Container message for hash values.
     /// </summary>
-    public sealed class HashArgs : Pulumi.ResourceArgs
+    public sealed class HashArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of hash that was performed.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public HashArgs()
         {
         }
+        public static new HashArgs Empty => new HashArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Memcache.V1Beta2.Inputs
 {
 
-    public sealed class InstanceMessageArgs : Pulumi.ResourceArgs
+    public sealed class InstanceMessageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A code that correspond to one type of user-facing message.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2.Inputs
         public InstanceMessageArgs()
         {
         }
+        public static new InstanceMessageArgs Empty => new InstanceMessageArgs();
     }
 }

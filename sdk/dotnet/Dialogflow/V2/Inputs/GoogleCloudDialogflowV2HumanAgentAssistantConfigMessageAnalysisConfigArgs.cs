@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// Configuration for analyses to run on each conversation message.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable entity extraction in conversation messages on [agent assist stage](https://cloud.google.com/dialogflow/priv/docs/contact-center/basics#stages). If unspecified, defaults to false. Currently, this feature is not general available, please contact Google to get access.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs Empty => new GoogleCloudDialogflowV2HumanAgentAssistantConfigMessageAnalysisConfigArgs();
     }
 }

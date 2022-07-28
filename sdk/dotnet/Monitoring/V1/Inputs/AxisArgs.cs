@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A chart axis.
     /// </summary>
-    public sealed class AxisArgs : Pulumi.ResourceArgs
+    public sealed class AxisArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The label of the axis.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public AxisArgs()
         {
         }
+        public static new AxisArgs Empty => new AxisArgs();
     }
 }

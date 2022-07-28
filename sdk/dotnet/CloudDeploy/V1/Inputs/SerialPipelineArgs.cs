@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     /// <summary>
     /// SerialPipeline defines a sequential set of stages for a `DeliveryPipeline`.
     /// </summary>
-    public sealed class SerialPipelineArgs : Pulumi.ResourceArgs
+    public sealed class SerialPipelineArgs : global::Pulumi.ResourceArgs
     {
         [Input("stages")]
         private InputList<Inputs.StageArgs>? _stages;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
         public SerialPipelineArgs()
         {
         }
+        public static new SerialPipelineArgs Empty => new SerialPipelineArgs();
     }
 }

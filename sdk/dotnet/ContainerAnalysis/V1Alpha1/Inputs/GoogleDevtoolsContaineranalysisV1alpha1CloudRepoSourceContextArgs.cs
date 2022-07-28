@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// A CloudRepoSourceContext denotes a particular revision in a Google Cloud Source Repo.
     /// </summary>
-    public sealed class GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An alias, which may be a branch or tag.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextArgs()
         {
         }
+        public static new GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextArgs Empty => new GoogleDevtoolsContaineranalysisV1alpha1CloudRepoSourceContextArgs();
     }
 }

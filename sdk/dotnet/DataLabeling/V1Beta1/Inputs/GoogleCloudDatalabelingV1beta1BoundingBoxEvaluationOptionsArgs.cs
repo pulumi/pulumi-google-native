@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Options regarding evaluation between bounding boxes.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Minimum [intersection-over-union (IOU)](/vision/automl/object-detection/docs/evaluate#intersection-over-union) required for 2 bounding boxes to be considered a match. This must be a number between 0 and 1.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs Empty => new GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs();
     }
 }

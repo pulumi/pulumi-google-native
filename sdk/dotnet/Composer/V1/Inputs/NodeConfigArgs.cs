@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     /// <summary>
     /// The configuration information for the Kubernetes Engine nodes running the Apache Airflow software.
     /// </summary>
-    public sealed class NodeConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The disk size in GB used for node VMs. Minimum size is 30GB. If unspecified, defaults to 100GB. Cannot be updated. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
@@ -90,5 +90,6 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public NodeConfigArgs()
         {
         }
+        public static new NodeConfigArgs Empty => new NodeConfigArgs();
     }
 }

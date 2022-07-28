@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Testing.V1.Inputs
 {
 
-    public sealed class SystraceSetupArgs : Pulumi.ResourceArgs
+    public sealed class SystraceSetupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace.
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public SystraceSetupArgs()
         {
         }
+        public static new SystraceSetupArgs Empty => new SystraceSetupArgs();
     }
 }

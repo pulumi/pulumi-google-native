@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
     }
 
 
-    public sealed class GetClusterArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterArgs : global::Pulumi.InvokeArgs
     {
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public GetClusterArgs()
         {
         }
+        public static new GetClusterArgs Empty => new GetClusterArgs();
     }
 
-    public sealed class GetClusterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public GetClusterInvokeArgs()
         {
         }
+        public static new GetClusterInvokeArgs Empty => new GetClusterInvokeArgs();
     }
 
 

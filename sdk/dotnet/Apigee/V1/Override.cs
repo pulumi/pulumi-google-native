@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Creates a trace configuration override. The response contains a system-generated UUID, that can be used to view, update, or delete the configuration override. Use the List API to view the existing trace configuration overrides.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Override")]
-    public partial class Override : Pulumi.CustomResource
+    public partial class Override : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ID of the API proxy that will have its trace configuration overridden.
@@ -87,7 +87,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class OverrideArgs : Pulumi.ResourceArgs
+    public sealed class OverrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the API proxy that will have its trace configuration overridden.
@@ -116,5 +116,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public OverrideArgs()
         {
         }
+        public static new OverrideArgs Empty => new OverrideArgs();
     }
 }

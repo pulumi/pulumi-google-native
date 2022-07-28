@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigateway/v1:Config")]
-    public partial class Config : Pulumi.CustomResource
+    public partial class Config : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
@@ -147,7 +147,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         }
     }
 
-    public sealed class ConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Identifier to assign to the API Config. Must be unique within scope of the parent resource.
@@ -227,5 +227,6 @@ namespace Pulumi.GoogleNative.APIGateway.V1
         public ConfigArgs()
         {
         }
+        public static new ConfigArgs Empty => new ConfigArgs();
     }
 }

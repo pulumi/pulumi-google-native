@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
     }
 
 
-    public sealed class GetModelArgs : Pulumi.InvokeArgs
+    public sealed class GetModelArgs : global::Pulumi.InvokeArgs
     {
         [Input("modelId", required: true)]
         public string ModelId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
         public GetModelArgs()
         {
         }
+        public static new GetModelArgs Empty => new GetModelArgs();
     }
 
-    public sealed class GetModelInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetModelInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("modelId", required: true)]
         public Input<string> ModelId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
         public GetModelInvokeArgs()
         {
         }
+        public static new GetModelInvokeArgs Empty => new GetModelInvokeArgs();
     }
 
 

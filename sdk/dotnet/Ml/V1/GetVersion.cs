@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Ml.V1
     }
 
 
-    public sealed class GetVersionArgs : Pulumi.InvokeArgs
+    public sealed class GetVersionArgs : global::Pulumi.InvokeArgs
     {
         [Input("modelId", required: true)]
         public string ModelId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Ml.V1
         public GetVersionArgs()
         {
         }
+        public static new GetVersionArgs Empty => new GetVersionArgs();
     }
 
-    public sealed class GetVersionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetVersionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("modelId", required: true)]
         public Input<string> ModelId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         public GetVersionInvokeArgs()
         {
         }
+        public static new GetVersionInvokeArgs Empty => new GetVersionInvokeArgs();
     }
 
 

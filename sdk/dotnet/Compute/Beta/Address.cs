@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates an address resource in the specified project by using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:Address")]
-    public partial class Address : Pulumi.CustomResource
+    public partial class Address : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The static IP address represented by this resource.
@@ -177,7 +177,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class AddressArgs : Pulumi.ResourceArgs
+    public sealed class AddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The static IP address represented by this resource.
@@ -266,5 +266,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public AddressArgs()
         {
         }
+        public static new AddressArgs Empty => new AddressArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class ServerBindingArgs : Pulumi.ResourceArgs
+    public sealed class ServerBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("type")]
         public Input<Pulumi.GoogleNative.Compute.Beta.ServerBindingType>? Type { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public ServerBindingArgs()
         {
         }
+        public static new ServerBindingArgs Empty => new ServerBindingArgs();
     }
 }

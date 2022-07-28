@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
     }
 
 
-    public sealed class GetEndpointPolicyIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointPolicyIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("endpointPolicyId", required: true)]
         public string EndpointPolicyId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public GetEndpointPolicyIamPolicyArgs()
         {
         }
+        public static new GetEndpointPolicyIamPolicyArgs Empty => new GetEndpointPolicyIamPolicyArgs();
     }
 
-    public sealed class GetEndpointPolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointPolicyIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("endpointPolicyId", required: true)]
         public Input<string> EndpointPolicyId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public GetEndpointPolicyIamPolicyInvokeArgs()
         {
         }
+        public static new GetEndpointPolicyIamPolicyInvokeArgs Empty => new GetEndpointPolicyIamPolicyInvokeArgs();
     }
 
 

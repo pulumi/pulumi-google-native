@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
 {
 
-    public sealed class ManagedZonePeeringConfigTargetNetworkArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZonePeeringConfigTargetNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time at which the zone was deactivated, in RFC 3339 date-time format. An empty string indicates that the peering connection is active. The producer network can deactivate a zone. The zone is automatically deactivated if the producer network that the zone targeted is deleted. Output only.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         public ManagedZonePeeringConfigTargetNetworkArgs()
         {
         }
+        public static new ManagedZonePeeringConfigTargetNetworkArgs Empty => new ManagedZonePeeringConfigTargetNetworkArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
     /// <summary>
     /// An adjustment that applies a flat markup or markdown to an entire bill.
     /// </summary>
-    public sealed class GoogleCloudChannelV1PercentageAdjustmentArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudChannelV1PercentageAdjustmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The percentage of the bill to adjust. For example: Mark down by 1% =&gt; "-1.00" Mark up by 1% =&gt; "1.00" Pass-Through =&gt; "0.00"
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         public GoogleCloudChannelV1PercentageAdjustmentArgs()
         {
         }
+        public static new GoogleCloudChannelV1PercentageAdjustmentArgs Empty => new GoogleCloudChannelV1PercentageAdjustmentArgs();
     }
 }

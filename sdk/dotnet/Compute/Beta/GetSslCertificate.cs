@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
 
-    public sealed class GetSslCertificateArgs : Pulumi.InvokeArgs
+    public sealed class GetSslCertificateArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetSslCertificateArgs()
         {
         }
+        public static new GetSslCertificateArgs Empty => new GetSslCertificateArgs();
     }
 
-    public sealed class GetSslCertificateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSslCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetSslCertificateInvokeArgs()
         {
         }
+        public static new GetSslCertificateInvokeArgs Empty => new GetSslCertificateInvokeArgs();
     }
 
 

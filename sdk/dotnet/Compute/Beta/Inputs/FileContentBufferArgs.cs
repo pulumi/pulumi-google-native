@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class FileContentBufferArgs : Pulumi.ResourceArgs
+    public sealed class FileContentBufferArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The raw content in the secure keys file.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public FileContentBufferArgs()
         {
         }
+        public static new FileContentBufferArgs Empty => new FileContentBufferArgs();
     }
 }

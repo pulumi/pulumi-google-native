@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     }
 
 
-    public sealed class GetHl7V2StoreArgs : Pulumi.InvokeArgs
+    public sealed class GetHl7V2StoreArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasetId", required: true)]
         public string DatasetId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public GetHl7V2StoreArgs()
         {
         }
+        public static new GetHl7V2StoreArgs Empty => new GetHl7V2StoreArgs();
     }
 
-    public sealed class GetHl7V2StoreInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHl7V2StoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public GetHl7V2StoreInvokeArgs()
         {
         }
+        public static new GetHl7V2StoreInvokeArgs Empty => new GetHl7V2StoreInvokeArgs();
     }
 
 

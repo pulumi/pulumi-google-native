@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     /// <summary>
     /// Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
     /// </summary>
-    public sealed class RuntimeSoftwareConfigArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeSoftwareConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public RuntimeSoftwareConfigArgs()
         {
         }
+        public static new RuntimeSoftwareConfigArgs Empty => new RuntimeSoftwareConfigArgs();
     }
 }

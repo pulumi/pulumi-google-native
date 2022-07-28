@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Options for automatically scaling a model.
     /// </summary>
-    public sealed class GoogleCloudMlV1__AutoScalingArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__AutoScalingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum number of nodes to scale this model under load. The actual value will depend on resource quota and availability.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__AutoScalingArgs()
         {
         }
+        public static new GoogleCloudMlV1__AutoScalingArgs Empty => new GoogleCloudMlV1__AutoScalingArgs();
     }
 }

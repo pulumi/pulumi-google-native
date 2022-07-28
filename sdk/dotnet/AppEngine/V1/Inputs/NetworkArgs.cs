@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
     /// <summary>
     /// Extra network settings. Only applicable in the App Engine flexible environment.
     /// </summary>
-    public sealed class NetworkArgs : Pulumi.ResourceArgs
+    public sealed class NetworkArgs : global::Pulumi.ResourceArgs
     {
         [Input("forwardedPorts")]
         private InputList<string>? _forwardedPorts;
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         public NetworkArgs()
         {
         }
+        public static new NetworkArgs Empty => new NetworkArgs();
     }
 }

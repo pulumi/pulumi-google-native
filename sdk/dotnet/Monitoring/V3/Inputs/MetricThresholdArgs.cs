@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// A condition type that compares a collection of time series against a threshold.
     /// </summary>
-    public sealed class MetricThresholdArgs : Pulumi.ResourceArgs
+    public sealed class MetricThresholdArgs : global::Pulumi.ResourceArgs
     {
         [Input("aggregations")]
         private InputList<Inputs.AggregationArgs>? _aggregations;
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public MetricThresholdArgs()
         {
         }
+        public static new MetricThresholdArgs Empty => new MetricThresholdArgs();
     }
 }

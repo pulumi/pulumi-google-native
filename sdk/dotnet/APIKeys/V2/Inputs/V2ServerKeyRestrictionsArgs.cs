@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.APIKeys.V2.Inputs
     /// <summary>
     /// The IP addresses of callers that are allowed to use the key.
     /// </summary>
-    public sealed class V2ServerKeyRestrictionsArgs : Pulumi.ResourceArgs
+    public sealed class V2ServerKeyRestrictionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedIps")]
         private InputList<string>? _allowedIps;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.APIKeys.V2.Inputs
         public V2ServerKeyRestrictionsArgs()
         {
         }
+        public static new V2ServerKeyRestrictionsArgs Empty => new V2ServerKeyRestrictionsArgs();
     }
 }

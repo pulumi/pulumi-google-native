@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
     /// <summary>
     /// The schedule of a recurring or one time event. The event's time span is specified by start_time and end_time. If the scheduled event's timespan is larger than cron_spec added with cron_job_duration, the event is recurring. If only cron_spec and cron_job_duration are specified, the event starts at the local time specified by cron_spec, and is recurring. ``` start_time|-------[cron job]-------[cron job]-------[cron job]---|end_time cron job: cron spec start time + duration ```
     /// </summary>
-    public sealed class ScheduleArgs : Pulumi.ResourceArgs
+    public sealed class ScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The duration for the cron job event. The duration of the event is effective after the cron job's start time.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
         public ScheduleArgs()
         {
         }
+        public static new ScheduleArgs Empty => new ScheduleArgs();
     }
 }

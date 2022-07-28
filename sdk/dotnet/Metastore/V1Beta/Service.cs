@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
     /// Creates a metastore service in a project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:metastore/v1beta:Service")]
-    public partial class Service : Pulumi.CustomResource
+    public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A Cloud Storage URI (starting with gs://) that specifies where artifacts related to the metastore service are stored.
@@ -202,7 +202,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         }
     }
 
-    public sealed class ServiceArgs : Pulumi.ResourceArgs
+    public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. The database type that the Metastore service stores its data.
@@ -303,5 +303,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public ServiceArgs()
         {
         }
+        public static new ServiceArgs Empty => new ServiceArgs();
     }
 }

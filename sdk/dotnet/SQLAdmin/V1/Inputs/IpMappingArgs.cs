@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// Database instance IP Mapping.
     /// </summary>
-    public sealed class IpMappingArgs : Pulumi.ResourceArgs
+    public sealed class IpMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address assigned.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public IpMappingArgs()
         {
         }
+        public static new IpMappingArgs Empty => new IpMappingArgs();
     }
 }

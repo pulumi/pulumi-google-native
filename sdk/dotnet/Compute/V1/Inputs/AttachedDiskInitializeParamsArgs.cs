@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// [Input Only] Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new instance. This field is persisted and returned for instanceTemplate and not returned in the context of instance. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
     /// </summary>
-    public sealed class AttachedDiskInitializeParamsArgs : Pulumi.ResourceArgs
+    public sealed class AttachedDiskInitializeParamsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The architecture of the attached disk. Valid values are arm64 or x86_64.
@@ -120,5 +120,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public AttachedDiskInitializeParamsArgs()
         {
         }
+        public static new AttachedDiskInitializeParamsArgs Empty => new AttachedDiskInitializeParamsArgs();
     }
 }

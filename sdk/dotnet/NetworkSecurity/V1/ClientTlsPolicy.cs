@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
     /// Creates a new ClientTlsPolicy in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:networksecurity/v1:ClientTlsPolicy")]
-    public partial class ClientTlsPolicy : Pulumi.CustomResource
+    public partial class ClientTlsPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         }
     }
 
-    public sealed class ClientTlsPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ClientTlsPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Defines a mechanism to provision client identity (public and private keys) for peer to peer authentication. The presence of this dictates mTLS.
@@ -189,5 +189,6 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         public ClientTlsPolicyArgs()
         {
         }
+        public static new ClientTlsPolicyArgs Empty => new ClientTlsPolicyArgs();
     }
 }

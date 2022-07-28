@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Privacy metric to compute for reidentification risk analysis.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2PrivacyMetricArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2PrivacyMetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Categorical stats
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2PrivacyMetricArgs()
         {
         }
+        public static new GooglePrivacyDlpV2PrivacyMetricArgs Empty => new GooglePrivacyDlpV2PrivacyMetricArgs();
     }
 }

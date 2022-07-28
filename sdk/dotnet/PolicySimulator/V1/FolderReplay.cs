@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:policysimulator/v1:FolderReplay")]
-    public partial class FolderReplay : Pulumi.CustomResource
+    public partial class FolderReplay : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The configuration used for the `Replay`.
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1
         }
     }
 
-    public sealed class FolderReplayArgs : Pulumi.ResourceArgs
+    public sealed class FolderReplayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration used for the `Replay`.
@@ -113,5 +113,6 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1
         public FolderReplayArgs()
         {
         }
+        public static new FolderReplayArgs Empty => new FolderReplayArgs();
     }
 }

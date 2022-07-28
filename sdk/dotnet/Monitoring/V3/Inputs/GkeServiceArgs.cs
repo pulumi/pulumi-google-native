@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// GKE Service. The "service" here represents a Kubernetes service object (https://kubernetes.io/docs/concepts/services-networking/service). The field names correspond to the resource labels on k8s_service monitored resources (https://cloud.google.com/monitoring/api/resources#tag_k8s_service).
     /// </summary>
-    public sealed class GkeServiceArgs : Pulumi.ResourceArgs
+    public sealed class GkeServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the parent cluster.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public GkeServiceArgs()
         {
         }
+        public static new GkeServiceArgs Empty => new GkeServiceArgs();
     }
 }

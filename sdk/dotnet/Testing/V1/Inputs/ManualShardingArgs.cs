@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
     /// </summary>
-    public sealed class ManualShardingArgs : Pulumi.ResourceArgs
+    public sealed class ManualShardingArgs : global::Pulumi.ResourceArgs
     {
         [Input("testTargetsForShard", required: true)]
         private InputList<Inputs.TestTargetsForShardArgs>? _testTargetsForShard;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public ManualShardingArgs()
         {
         }
+        public static new ManualShardingArgs Empty => new ManualShardingArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Inputs
     /// <summary>
     /// Defines the DNS configuration of a `Registration`, including name servers, DNSSEC, and glue records.
     /// </summary>
-    public sealed class DnsSettingsArgs : Pulumi.ResourceArgs
+    public sealed class DnsSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An arbitrary DNS provider identified by its name servers.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Inputs
         public DnsSettingsArgs()
         {
         }
+        public static new DnsSettingsArgs Empty => new DnsSettingsArgs();
     }
 }

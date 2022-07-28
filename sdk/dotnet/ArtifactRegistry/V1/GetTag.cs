@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
     }
 
 
-    public sealed class GetTagArgs : Pulumi.InvokeArgs
+    public sealed class GetTagArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         public GetTagArgs()
         {
         }
+        public static new GetTagArgs Empty => new GetTagArgs();
     }
 
-    public sealed class GetTagInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTagInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1
         public GetTagInvokeArgs()
         {
         }
+        public static new GetTagInvokeArgs Empty => new GetTagInvokeArgs();
     }
 
 

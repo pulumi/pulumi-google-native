@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// A bounding polygon for the detected image annotation.
     /// </summary>
-    public sealed class BoundingPolyArgs : Pulumi.ResourceArgs
+    public sealed class BoundingPolyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of this polygon.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public BoundingPolyArgs()
         {
         }
+        public static new BoundingPolyArgs Empty => new BoundingPolyArgs();
     }
 }

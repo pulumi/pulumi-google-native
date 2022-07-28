@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1.Inputs
     /// <summary>
     /// Contains details of the data provider.
     /// </summary>
-    public sealed class DataProviderArgs : Pulumi.ResourceArgs
+    public sealed class DataProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Name of the data provider.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1.Inputs
         public DataProviderArgs()
         {
         }
+        public static new DataProviderArgs Empty => new DataProviderArgs();
     }
 }

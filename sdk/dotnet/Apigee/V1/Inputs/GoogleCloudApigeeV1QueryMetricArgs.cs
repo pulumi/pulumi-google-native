@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// More info about Metric: https://docs.apigee.com/api-platform/analytics/analytics-reference#metrics
     /// </summary>
-    public sealed class GoogleCloudApigeeV1QueryMetricArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1QueryMetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Alias for the metric. Alias will be used to replace metric name in query results.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1QueryMetricArgs()
         {
         }
+        public static new GoogleCloudApigeeV1QueryMetricArgs Empty => new GoogleCloudApigeeV1QueryMetricArgs();
     }
 }

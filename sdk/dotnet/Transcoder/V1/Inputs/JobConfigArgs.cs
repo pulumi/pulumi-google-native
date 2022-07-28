@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Job configuration
     /// </summary>
-    public sealed class JobConfigArgs : Pulumi.ResourceArgs
+    public sealed class JobConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("adBreaks")]
         private InputList<Inputs.AdBreakArgs>? _adBreaks;
@@ -126,5 +126,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public JobConfigArgs()
         {
         }
+        public static new JobConfigArgs Empty => new JobConfigArgs();
     }
 }

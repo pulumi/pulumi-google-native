@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Spark History Server configuration for the workload.
     /// </summary>
-    public sealed class SparkHistoryServerConfigArgs : Pulumi.ResourceArgs
+    public sealed class SparkHistoryServerConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.Example: projects/[project_id]/regions/[region]/clusters/[cluster_name]
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public SparkHistoryServerConfigArgs()
         {
         }
+        public static new SparkHistoryServerConfigArgs Empty => new SparkHistoryServerConfigArgs();
     }
 }

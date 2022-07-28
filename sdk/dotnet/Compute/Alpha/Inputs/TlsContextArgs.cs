@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] The TLS settings for the client or server. The TLS settings for the client or server.
     /// </summary>
-    public sealed class TlsContextArgs : Pulumi.ResourceArgs
+    public sealed class TlsContextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines the mechanism to obtain the client or server certificate.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public TlsContextArgs()
         {
         }
+        public static new TlsContextArgs Empty => new TlsContextArgs();
     }
 }

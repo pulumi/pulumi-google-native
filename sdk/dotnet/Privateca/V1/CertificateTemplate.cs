@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:privateca/v1:CertificateTemplate")]
-    public partial class CertificateTemplate : Pulumi.CustomResource
+    public partial class CertificateTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
@@ -131,7 +131,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
         }
     }
 
-    public sealed class CertificateTemplateArgs : Pulumi.ResourceArgs
+    public sealed class CertificateTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
@@ -190,5 +190,6 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public CertificateTemplateArgs()
         {
         }
+        public static new CertificateTemplateArgs Empty => new CertificateTemplateArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Config for suggestion features.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configs of custom conversation model.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs Empty => new GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs();
     }
 }

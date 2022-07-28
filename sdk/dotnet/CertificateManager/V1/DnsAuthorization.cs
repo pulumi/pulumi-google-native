@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
     /// Creates a new DnsAuthorization in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:certificatemanager/v1:DnsAuthorization")]
-    public partial class DnsAuthorization : Pulumi.CustomResource
+    public partial class DnsAuthorization : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The creation timestamp of a DnsAuthorization.
@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         }
     }
 
-    public sealed class DnsAuthorizationArgs : Pulumi.ResourceArgs
+    public sealed class DnsAuthorizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// One or more paragraphs of text description of a DnsAuthorization.
@@ -165,5 +165,6 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public DnsAuthorizationArgs()
         {
         }
+        public static new DnsAuthorizationArgs Empty => new DnsAuthorizationArgs();
     }
 }

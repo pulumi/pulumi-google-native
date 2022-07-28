@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Configuration for Automated Early Stopping of Trials. If no implementation_config is set, automated early stopping will not be run.
     /// </summary>
-    public sealed class GoogleCloudMlV1__AutomatedStoppingConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__AutomatedStoppingConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("decayCurveStoppingConfig")]
         public Input<Inputs.GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs>? DecayCurveStoppingConfig { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__AutomatedStoppingConfigArgs()
         {
         }
+        public static new GoogleCloudMlV1__AutomatedStoppingConfigArgs Empty => new GoogleCloudMlV1__AutomatedStoppingConfigArgs();
     }
 }

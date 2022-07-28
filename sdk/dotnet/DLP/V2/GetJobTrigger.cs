@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DLP.V2
     }
 
 
-    public sealed class GetJobTriggerArgs : Pulumi.InvokeArgs
+    public sealed class GetJobTriggerArgs : global::Pulumi.InvokeArgs
     {
         [Input("jobTriggerId", required: true)]
         public string JobTriggerId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.DLP.V2
         public GetJobTriggerArgs()
         {
         }
+        public static new GetJobTriggerArgs Empty => new GetJobTriggerArgs();
     }
 
-    public sealed class GetJobTriggerInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetJobTriggerInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("jobTriggerId", required: true)]
         public Input<string> JobTriggerId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         public GetJobTriggerInvokeArgs()
         {
         }
+        public static new GetJobTriggerInvokeArgs Empty => new GetJobTriggerInvokeArgs();
     }
 
 

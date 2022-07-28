@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Inputs
     /// <summary>
     /// Specifies connection parameters required specifically for MySQL databases.
     /// </summary>
-    public sealed class MySqlConnectionProfileArgs : Pulumi.ResourceArgs
+    public sealed class MySqlConnectionProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Inputs
         public MySqlConnectionProfileArgs()
         {
         }
+        public static new MySqlConnectionProfileArgs Empty => new MySqlConnectionProfileArgs();
     }
 }

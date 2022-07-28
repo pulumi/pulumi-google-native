@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     }
 
 
-    public sealed class GetInstanceClusterBackupIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceClusterBackupIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("backupId", required: true)]
         public string BackupId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public GetInstanceClusterBackupIamPolicyArgs()
         {
         }
+        public static new GetInstanceClusterBackupIamPolicyArgs Empty => new GetInstanceClusterBackupIamPolicyArgs();
     }
 
-    public sealed class GetInstanceClusterBackupIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceClusterBackupIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("backupId", required: true)]
         public Input<string> BackupId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public GetInstanceClusterBackupIamPolicyInvokeArgs()
         {
         }
+        public static new GetInstanceClusterBackupIamPolicyInvokeArgs Empty => new GetInstanceClusterBackupIamPolicyInvokeArgs();
     }
 
 

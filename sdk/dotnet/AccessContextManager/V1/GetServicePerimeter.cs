@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
     }
 
 
-    public sealed class GetServicePerimeterArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePerimeterArgs : global::Pulumi.InvokeArgs
     {
         [Input("accessPolicyId", required: true)]
         public string AccessPolicyId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public GetServicePerimeterArgs()
         {
         }
+        public static new GetServicePerimeterArgs Empty => new GetServicePerimeterArgs();
     }
 
-    public sealed class GetServicePerimeterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServicePerimeterInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("accessPolicyId", required: true)]
         public Input<string> AccessPolicyId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public GetServicePerimeterInvokeArgs()
         {
         }
+        public static new GetServicePerimeterInvokeArgs Empty => new GetServicePerimeterInvokeArgs();
     }
 
 

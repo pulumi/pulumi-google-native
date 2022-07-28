@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
     /// <summary>
     /// Data type and value of a parameter.
     /// </summary>
-    public sealed class GoogleCloudChannelV1ValueArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudChannelV1ValueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Represents a boolean value.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         public GoogleCloudChannelV1ValueArgs()
         {
         }
+        public static new GoogleCloudChannelV1ValueArgs Empty => new GoogleCloudChannelV1ValueArgs();
     }
 }

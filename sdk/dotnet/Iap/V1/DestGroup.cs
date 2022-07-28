@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Iap.V1
     /// Creates a new TunnelDestGroup.
     /// </summary>
     [GoogleNativeResourceType("google-native:iap/v1:DestGroup")]
-    public partial class DestGroup : Pulumi.CustomResource
+    public partial class DestGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// null List of CIDRs that this group applies to.
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Iap.V1
         }
     }
 
-    public sealed class DestGroupArgs : Pulumi.ResourceArgs
+    public sealed class DestGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("cidrs")]
         private InputList<string>? _cidrs;
@@ -141,5 +141,6 @@ namespace Pulumi.GoogleNative.Iap.V1
         public DestGroupArgs()
         {
         }
+        public static new DestGroupArgs Empty => new DestGroupArgs();
     }
 }

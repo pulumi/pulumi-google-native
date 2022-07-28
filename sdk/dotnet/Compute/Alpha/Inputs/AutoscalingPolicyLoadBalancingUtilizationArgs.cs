@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Configuration parameters of autoscaling based on load balancing.
     /// </summary>
-    public sealed class AutoscalingPolicyLoadBalancingUtilizationArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingPolicyLoadBalancingUtilizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Fraction of backend capacity utilization (set in HTTP(S) load balancing configuration) that the autoscaler maintains. Must be a positive float value. If not defined, the default is 0.8.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public AutoscalingPolicyLoadBalancingUtilizationArgs()
         {
         }
+        public static new AutoscalingPolicyLoadBalancingUtilizationArgs Empty => new AutoscalingPolicyLoadBalancingUtilizationArgs();
     }
 }

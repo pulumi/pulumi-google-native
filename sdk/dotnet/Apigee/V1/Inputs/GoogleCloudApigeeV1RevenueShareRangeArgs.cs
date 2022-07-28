@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// API call volume range and the percentage of revenue to share with the developer when the total number of API calls is within the range.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1RevenueShareRangeArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1RevenueShareRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Ending value of the range. Set to 0 or `null` for the last range of values.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1RevenueShareRangeArgs()
         {
         }
+        public static new GoogleCloudApigeeV1RevenueShareRangeArgs Empty => new GoogleCloudApigeeV1RevenueShareRangeArgs();
     }
 }

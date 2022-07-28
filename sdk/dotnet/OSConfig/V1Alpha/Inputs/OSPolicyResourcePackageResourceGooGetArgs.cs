@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
     /// <summary>
     /// A package managed by GooGet. - install: `googet -noconfirm install package` - remove: `googet -noconfirm remove package`
     /// </summary>
-    public sealed class OSPolicyResourcePackageResourceGooGetArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourcePackageResourceGooGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Package name.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public OSPolicyResourcePackageResourceGooGetArgs()
         {
         }
+        public static new OSPolicyResourcePackageResourceGooGetArgs Empty => new OSPolicyResourcePackageResourceGooGetArgs();
     }
 }

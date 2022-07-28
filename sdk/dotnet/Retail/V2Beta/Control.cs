@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:retail/v2beta:Control")]
-    public partial class Control : Pulumi.CustomResource
+    public partial class Control : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List of serving configuration ids that that are associated with this control. Note the association is managed via the ServingConfig, this is an output only denormalizeed view. Assumed to be in the same catalog.
@@ -117,7 +117,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         }
     }
 
-    public sealed class ControlArgs : Pulumi.ResourceArgs
+    public sealed class ControlArgs : global::Pulumi.ResourceArgs
     {
         [Input("catalogId", required: true)]
         public Input<string> CatalogId { get; set; } = null!;
@@ -173,5 +173,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         public ControlArgs()
         {
         }
+        public static new ControlArgs Empty => new ControlArgs();
     }
 }

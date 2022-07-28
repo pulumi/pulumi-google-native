@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Represents a group of VMs that can be identified as having all these labels, for example "env=prod and app=web".
     /// </summary>
-    public sealed class PatchInstanceFilterGroupLabelArgs : Pulumi.ResourceArgs
+    public sealed class PatchInstanceFilterGroupLabelArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public PatchInstanceFilterGroupLabelArgs()
         {
         }
+        public static new PatchInstanceFilterGroupLabelArgs Empty => new PatchInstanceFilterGroupLabelArgs();
     }
 }

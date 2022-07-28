@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// GkeNodePoolAutoscaling contains information the cluster autoscaler needs to adjust the size of the node pool to the current cluster usage.
     /// </summary>
-    public sealed class GkeNodePoolAutoscalingConfigArgs : Pulumi.ResourceArgs
+    public sealed class GkeNodePoolAutoscalingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum number of nodes in the node pool. Must be &gt;= min_node_count, and must be &gt; 0. Note: Quota must be sufficient to scale up the cluster.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public GkeNodePoolAutoscalingConfigArgs()
         {
         }
+        public static new GkeNodePoolAutoscalingConfigArgs Empty => new GkeNodePoolAutoscalingConfigArgs();
     }
 }

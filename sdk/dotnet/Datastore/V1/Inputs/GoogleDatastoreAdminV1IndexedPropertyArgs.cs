@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastore.V1.Inputs
     /// <summary>
     /// A property of an index.
     /// </summary>
-    public sealed class GoogleDatastoreAdminV1IndexedPropertyArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDatastoreAdminV1IndexedPropertyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The indexed property's direction. Must not be DIRECTION_UNSPECIFIED.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Datastore.V1.Inputs
         public GoogleDatastoreAdminV1IndexedPropertyArgs()
         {
         }
+        public static new GoogleDatastoreAdminV1IndexedPropertyArgs Empty => new GoogleDatastoreAdminV1IndexedPropertyArgs();
     }
 }

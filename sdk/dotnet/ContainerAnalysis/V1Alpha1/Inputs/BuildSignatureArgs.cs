@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Message encapsulating the signature of the verified build.
     /// </summary>
-    public sealed class BuildSignatureArgs : Pulumi.ResourceArgs
+    public sealed class BuildSignatureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An Id for the key used to sign. This could be either an Id for the key stored in `public_key` (such as the Id or fingerprint for a PGP key, or the CN for a cert), or a reference to an external key (such as a reference to a key in Cloud Key Management Service).
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public BuildSignatureArgs()
         {
         }
+        public static new BuildSignatureArgs Empty => new BuildSignatureArgs();
     }
 }

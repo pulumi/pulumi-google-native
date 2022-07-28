@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Inputs
     /// <summary>
     /// An object containing information about the effective user and authenticated principal responsible for an action.
     /// </summary>
-    public sealed class ActorArgs : Pulumi.ResourceArgs
+    public sealed class ActorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name to display for the actor. If not provided, it is inferred from credentials supplied during case creation. When an email is provided, a display name must also be provided. This will be obfuscated if the user is a Google Support agent.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta.Inputs
         public ActorArgs()
         {
         }
+        public static new ActorArgs Empty => new ActorArgs();
     }
 }

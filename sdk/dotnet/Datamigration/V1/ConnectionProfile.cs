@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
     /// Creates a new connection profile in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:datamigration/v1:ConnectionProfile")]
-    public partial class ConnectionProfile : Pulumi.CustomResource
+    public partial class ConnectionProfile : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A CloudSQL database connection profile.
@@ -148,7 +148,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         }
     }
 
-    public sealed class ConnectionProfileArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A CloudSQL database connection profile.
@@ -225,5 +225,6 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public ConnectionProfileArgs()
         {
         }
+        public static new ConnectionProfileArgs Empty => new ConnectionProfileArgs();
     }
 }

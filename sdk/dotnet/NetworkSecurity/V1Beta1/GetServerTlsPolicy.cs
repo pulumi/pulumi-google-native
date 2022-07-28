@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
     }
 
 
-    public sealed class GetServerTlsPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetServerTlsPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public GetServerTlsPolicyArgs()
         {
         }
+        public static new GetServerTlsPolicyArgs Empty => new GetServerTlsPolicyArgs();
     }
 
-    public sealed class GetServerTlsPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServerTlsPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public GetServerTlsPolicyInvokeArgs()
         {
         }
+        public static new GetServerTlsPolicyInvokeArgs Empty => new GetServerTlsPolicyInvokeArgs();
     }
 
 

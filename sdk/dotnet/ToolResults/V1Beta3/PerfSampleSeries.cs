@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:toolresults/v1beta3:PerfSampleSeries")]
-    public partial class PerfSampleSeries : Pulumi.CustomResource
+    public partial class PerfSampleSeries : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Basic series represented by a line chart
@@ -92,7 +92,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         }
     }
 
-    public sealed class PerfSampleSeriesArgs : Pulumi.ResourceArgs
+    public sealed class PerfSampleSeriesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Basic series represented by a line chart
@@ -115,5 +115,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         public PerfSampleSeriesArgs()
         {
         }
+        public static new PerfSampleSeriesArgs Empty => new PerfSampleSeriesArgs();
     }
 }

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:appengine/v1beta:App")]
-    public partial class App : Pulumi.CustomResource
+    public partial class App : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
@@ -142,7 +142,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         }
     }
 
-    public sealed class AppArgs : Pulumi.ResourceArgs
+    public sealed class AppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Google Apps authentication domain that controls which users can access this application.Defaults to open access for any Google Account.
@@ -216,5 +216,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         public AppArgs()
         {
         }
+        public static new AppArgs Empty => new AppArgs();
     }
 }

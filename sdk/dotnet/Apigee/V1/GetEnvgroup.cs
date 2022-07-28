@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetEnvgroupArgs : Pulumi.InvokeArgs
+    public sealed class GetEnvgroupArgs : global::Pulumi.InvokeArgs
     {
         [Input("envgroupId", required: true)]
         public string EnvgroupId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetEnvgroupArgs()
         {
         }
+        public static new GetEnvgroupArgs Empty => new GetEnvgroupArgs();
     }
 
-    public sealed class GetEnvgroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEnvgroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("envgroupId", required: true)]
         public Input<string> EnvgroupId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetEnvgroupInvokeArgs()
         {
         }
+        public static new GetEnvgroupInvokeArgs Empty => new GetEnvgroupInvokeArgs();
     }
 
 

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetLicenseCodeIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetLicenseCodeIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetLicenseCodeIamPolicyArgs()
         {
         }
+        public static new GetLicenseCodeIamPolicyArgs Empty => new GetLicenseCodeIamPolicyArgs();
     }
 
-    public sealed class GetLicenseCodeIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetLicenseCodeIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetLicenseCodeIamPolicyInvokeArgs()
         {
         }
+        public static new GetLicenseCodeIamPolicyInvokeArgs Empty => new GetLicenseCodeIamPolicyInvokeArgs();
     }
 
 

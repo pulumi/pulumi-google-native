@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Inputs
 {
 
-    public sealed class ObjectIamPolicyBindingsItemArgs : Pulumi.ResourceArgs
+    public sealed class ObjectIamPolicyBindingsItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The condition that is associated with this binding. NOTE: an unsatisfied condition will not allow user access via current binding. Different bindings, including their conditions, are examined independently.
@@ -58,5 +58,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public ObjectIamPolicyBindingsItemArgs()
         {
         }
+        public static new ObjectIamPolicyBindingsItemArgs Empty => new ObjectIamPolicyBindingsItemArgs();
     }
 }

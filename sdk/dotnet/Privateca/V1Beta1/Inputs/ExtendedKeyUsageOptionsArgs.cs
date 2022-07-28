@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     /// <summary>
     /// KeyUsage.ExtendedKeyUsageOptions has fields that correspond to certain common OIDs that could be specified as an extended key usage value.
     /// </summary>
-    public sealed class ExtendedKeyUsageOptionsArgs : Pulumi.ResourceArgs
+    public sealed class ExtendedKeyUsageOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Corresponds to OID 1.3.6.1.5.5.7.3.2. Officially described as "TLS WWW client authentication", though regularly used for non-WWW TLS.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         public ExtendedKeyUsageOptionsArgs()
         {
         }
+        public static new ExtendedKeyUsageOptionsArgs Empty => new ExtendedKeyUsageOptionsArgs();
     }
 }

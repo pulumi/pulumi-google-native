@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
     }
 
 
-    public sealed class GetTenantArgs : Pulumi.InvokeArgs
+    public sealed class GetTenantArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Jobs.V4
         public GetTenantArgs()
         {
         }
+        public static new GetTenantArgs Empty => new GetTenantArgs();
     }
 
-    public sealed class GetTenantInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTenantInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
         public GetTenantInvokeArgs()
         {
         }
+        public static new GetTenantInvokeArgs Empty => new GetTenantInvokeArgs();
     }
 
 

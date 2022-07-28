@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// Machine resources for a version.
     /// </summary>
-    public sealed class ResourcesArgs : Pulumi.ResourceArgs
+    public sealed class ResourcesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of CPU cores needed.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public ResourcesArgs()
         {
         }
+        public static new ResourcesArgs Empty => new ResourcesArgs();
     }
 }

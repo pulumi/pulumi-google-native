@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Configuration options for the NetworkPolicy feature. https://kubernetes.io/docs/concepts/services-networking/networkpolicies/
     /// </summary>
-    public sealed class NetworkPolicyArgs : Pulumi.ResourceArgs
+    public sealed class NetworkPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether network policy is enabled on the cluster.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public NetworkPolicyArgs()
         {
         }
+        public static new NetworkPolicyArgs Empty => new NetworkPolicyArgs();
     }
 }

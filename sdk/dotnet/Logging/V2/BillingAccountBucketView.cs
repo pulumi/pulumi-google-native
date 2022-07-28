@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:logging/v2:BillingAccountBucketView")]
-    public partial class BillingAccountBucketView : Pulumi.CustomResource
+    public partial class BillingAccountBucketView : global::Pulumi.CustomResource
     {
         [Output("billingAccountId")]
         public Output<string> BillingAccountId { get; private set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         }
     }
 
-    public sealed class BillingAccountBucketViewArgs : Pulumi.ResourceArgs
+    public sealed class BillingAccountBucketViewArgs : global::Pulumi.ResourceArgs
     {
         [Input("billingAccountId", required: true)]
         public Input<string> BillingAccountId { get; set; } = null!;
@@ -149,5 +149,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         public BillingAccountBucketViewArgs()
         {
         }
+        public static new BillingAccountBucketViewArgs Empty => new BillingAccountBucketViewArgs();
     }
 }

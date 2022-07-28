@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// Metadata of customer-supplied encryption key, if the object is encrypted by such a key.
     /// </summary>
-    public sealed class BucketObjectCustomerEncryptionArgs : Pulumi.ResourceArgs
+    public sealed class BucketObjectCustomerEncryptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The encryption algorithm.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketObjectCustomerEncryptionArgs()
         {
         }
+        public static new BucketObjectCustomerEncryptionArgs Empty => new BucketObjectCustomerEncryptionArgs();
     }
 }

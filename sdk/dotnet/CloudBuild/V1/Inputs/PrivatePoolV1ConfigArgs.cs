@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// Configuration for a V1 `PrivatePool`.
     /// </summary>
-    public sealed class PrivatePoolV1ConfigArgs : Pulumi.ResourceArgs
+    public sealed class PrivatePoolV1ConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Network configuration for the pool.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public PrivatePoolV1ConfigArgs()
         {
         }
+        public static new PrivatePoolV1ConfigArgs Empty => new PrivatePoolV1ConfigArgs();
     }
 }

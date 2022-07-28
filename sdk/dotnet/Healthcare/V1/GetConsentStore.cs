@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     }
 
 
-    public sealed class GetConsentStoreArgs : Pulumi.InvokeArgs
+    public sealed class GetConsentStoreArgs : global::Pulumi.InvokeArgs
     {
         [Input("consentStoreId", required: true)]
         public string ConsentStoreId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public GetConsentStoreArgs()
         {
         }
+        public static new GetConsentStoreArgs Empty => new GetConsentStoreArgs();
     }
 
-    public sealed class GetConsentStoreInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConsentStoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("consentStoreId", required: true)]
         public Input<string> ConsentStoreId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public GetConsentStoreInvokeArgs()
         {
         }
+        public static new GetConsentStoreInvokeArgs Empty => new GetConsentStoreInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     /// <summary>
     /// Maps a string key to a path within a volume.
     /// </summary>
-    public sealed class KeyToPathArgs : Pulumi.ResourceArgs
+    public sealed class KeyToPathArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Cloud Secret Manager secret version. Can be 'latest' for the latest value or an integer for a specific version. The key to project.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public KeyToPathArgs()
         {
         }
+        public static new KeyToPathArgs Empty => new KeyToPathArgs();
     }
 }

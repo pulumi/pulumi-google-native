@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:gkehub/v1alpha:FeatureIamPolicy")]
-    public partial class FeatureIamPolicy : Pulumi.CustomResource
+    public partial class FeatureIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         }
     }
 
-    public sealed class FeatureIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class FeatureIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public FeatureIamPolicyArgs()
         {
         }
+        public static new FeatureIamPolicyArgs Empty => new FeatureIamPolicyArgs();
     }
 }

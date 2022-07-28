@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// Instructs the speech recognizer on how to process the audio content.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3InputAudioConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3InputAudioConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Audio encoding of the audio content to process.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3InputAudioConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3InputAudioConfigArgs Empty => new GoogleCloudDialogflowCxV3InputAudioConfigArgs();
     }
 }

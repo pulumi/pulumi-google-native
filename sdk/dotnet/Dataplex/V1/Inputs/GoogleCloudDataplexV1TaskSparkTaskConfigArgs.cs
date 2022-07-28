@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// User-specified config for running a Spark task.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1TaskSparkTaskConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1TaskSparkTaskConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("archiveUris")]
         private InputList<string>? _archiveUris;
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1TaskSparkTaskConfigArgs()
         {
         }
+        public static new GoogleCloudDataplexV1TaskSparkTaskConfigArgs Empty => new GoogleCloudDataplexV1TaskSparkTaskConfigArgs();
     }
 }

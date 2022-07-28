@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
     /// <summary>
     /// Exact product price.
     /// </summary>
-    public sealed class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Display price of the product.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
         public GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs()
         {
         }
+        public static new GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs Empty => new GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs();
     }
 }

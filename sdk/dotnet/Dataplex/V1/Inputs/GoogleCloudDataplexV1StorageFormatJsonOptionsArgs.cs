@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Describes JSON data format.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1StorageFormatJsonOptionsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1StorageFormatJsonOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The character encoding of the data. Accepts "US-ASCII", "UTF-8" and "ISO-8859-1". Defaults to UTF-8 if not specified.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1StorageFormatJsonOptionsArgs()
         {
         }
+        public static new GoogleCloudDataplexV1StorageFormatJsonOptionsArgs Empty => new GoogleCloudDataplexV1StorageFormatJsonOptionsArgs();
     }
 }

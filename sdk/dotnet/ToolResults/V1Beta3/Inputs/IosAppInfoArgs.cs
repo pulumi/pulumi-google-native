@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// iOS app information
     /// </summary>
-    public sealed class IosAppInfoArgs : Pulumi.ResourceArgs
+    public sealed class IosAppInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the app. Required
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public IosAppInfoArgs()
         {
         }
+        public static new IosAppInfoArgs Empty => new IosAppInfoArgs();
     }
 }

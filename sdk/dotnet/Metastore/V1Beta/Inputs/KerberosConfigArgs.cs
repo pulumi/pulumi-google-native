@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
     /// <summary>
     /// Configuration information for a Kerberos principal.
     /// </summary>
-    public sealed class KerberosConfigArgs : Pulumi.ResourceArgs
+    public sealed class KerberosConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A Kerberos keytab file that can be used to authenticate a service principal with a Kerberos Key Distribution Center (KDC).
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
         public KerberosConfigArgs()
         {
         }
+        public static new KerberosConfigArgs Empty => new KerberosConfigArgs();
     }
 }

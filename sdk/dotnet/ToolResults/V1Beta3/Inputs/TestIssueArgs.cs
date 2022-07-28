@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// An issue detected occurring during a test execution.
     /// </summary>
-    public sealed class TestIssueArgs : Pulumi.ResourceArgs
+    public sealed class TestIssueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Category of issue. Required.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public TestIssueArgs()
         {
         }
+        public static new TestIssueArgs Empty => new TestIssueArgs();
     }
 }

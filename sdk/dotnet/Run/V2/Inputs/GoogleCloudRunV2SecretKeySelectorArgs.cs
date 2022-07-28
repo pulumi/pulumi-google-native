@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// <summary>
     /// SecretEnvVarSource represents a source for the value of an EnvVar.
     /// </summary>
-    public sealed class GoogleCloudRunV2SecretKeySelectorArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRunV2SecretKeySelectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public GoogleCloudRunV2SecretKeySelectorArgs()
         {
         }
+        public static new GoogleCloudRunV2SecretKeySelectorArgs Empty => new GoogleCloudRunV2SecretKeySelectorArgs();
     }
 }

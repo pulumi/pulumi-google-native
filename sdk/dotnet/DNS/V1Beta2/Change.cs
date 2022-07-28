@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dns/v1beta2:Change")]
-    public partial class Change : Pulumi.CustomResource
+    public partial class Change : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Which ResourceRecordSets to add?
@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         }
     }
 
-    public sealed class ChangeArgs : Pulumi.ResourceArgs
+    public sealed class ChangeArgs : global::Pulumi.ResourceArgs
     {
         [Input("additions")]
         private InputList<Inputs.ResourceRecordSetArgs>? _additions;
@@ -161,5 +161,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         public ChangeArgs()
         {
         }
+        public static new ChangeArgs Empty => new ChangeArgs();
     }
 }

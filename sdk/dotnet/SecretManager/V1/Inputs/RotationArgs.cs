@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
     /// <summary>
     /// The rotation time and period for a Secret. At next_rotation_time, Secret Manager will send a Pub/Sub notification to the topics configured on the Secret. Secret.topics must be set to configure rotation.
     /// </summary>
-    public sealed class RotationArgs : Pulumi.ResourceArgs
+    public sealed class RotationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Timestamp in UTC at which the Secret is scheduled to rotate. Cannot be set to less than 300s (5 min) in the future and at most 3153600000s (100 years). next_rotation_time MUST be set if rotation_period is set.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
         public RotationArgs()
         {
         }
+        public static new RotationArgs Empty => new RotationArgs();
     }
 }

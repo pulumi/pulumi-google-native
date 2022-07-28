@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
     /// Creates a new backup in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:metastore/v1beta:Backup")]
-    public partial class Backup : Pulumi.CustomResource
+    public partial class Backup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. The ID of the backup, which is used as the final component of the backup's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
@@ -128,7 +128,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         }
     }
 
-    public sealed class BackupArgs : Pulumi.ResourceArgs
+    public sealed class BackupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The ID of the backup, which is used as the final component of the backup's name.This value must be between 1 and 64 characters long, begin with a letter, end with a letter or number, and consist of alpha-numeric ASCII characters or hyphens.
@@ -166,5 +166,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public BackupArgs()
         {
         }
+        public static new BackupArgs Empty => new BackupArgs();
     }
 }

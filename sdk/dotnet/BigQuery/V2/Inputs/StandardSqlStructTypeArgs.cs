@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class StandardSqlStructTypeArgs : Pulumi.ResourceArgs
+    public sealed class StandardSqlStructTypeArgs : global::Pulumi.ResourceArgs
     {
         [Input("fields")]
         private InputList<Inputs.StandardSqlFieldArgs>? _fields;
@@ -23,5 +23,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public StandardSqlStructTypeArgs()
         {
         }
+        public static new StandardSqlStructTypeArgs Empty => new StandardSqlStructTypeArgs();
     }
 }

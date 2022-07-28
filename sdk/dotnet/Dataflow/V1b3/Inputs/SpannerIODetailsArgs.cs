@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Metadata for a Spanner connector used by the job.
     /// </summary>
-    public sealed class SpannerIODetailsArgs : Pulumi.ResourceArgs
+    public sealed class SpannerIODetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// DatabaseId accessed in the connection.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public SpannerIODetailsArgs()
         {
         }
+        public static new SpannerIODetailsArgs Empty => new SpannerIODetailsArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
     }
 
 
-    public sealed class GetSpokeIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetSpokeIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         public GetSpokeIamPolicyArgs()
         {
         }
+        public static new GetSpokeIamPolicyArgs Empty => new GetSpokeIamPolicyArgs();
     }
 
-    public sealed class GetSpokeIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSpokeIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         public GetSpokeIamPolicyInvokeArgs()
         {
         }
+        public static new GetSpokeIamPolicyInvokeArgs Empty => new GetSpokeIamPolicyInvokeArgs();
     }
 
 

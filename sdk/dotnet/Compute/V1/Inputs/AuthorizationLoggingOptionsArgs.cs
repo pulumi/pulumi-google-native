@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// This is deprecated and has no effect. Do not use.
     /// </summary>
-    public sealed class AuthorizationLoggingOptionsArgs : Pulumi.ResourceArgs
+    public sealed class AuthorizationLoggingOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is deprecated and has no effect. Do not use.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public AuthorizationLoggingOptionsArgs()
         {
         }
+        public static new AuthorizationLoggingOptionsArgs Empty => new AuthorizationLoggingOptionsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// <summary>
     /// Holds a single traffic routing entry for the Service. Allocations can be done to a specific Revision name, or pointing to the latest Ready Revision.
     /// </summary>
-    public sealed class GoogleCloudRunV2TrafficTargetArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRunV2TrafficTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies percent of the traffic to this Revision. This defaults to zero if unspecified.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public GoogleCloudRunV2TrafficTargetArgs()
         {
         }
+        public static new GoogleCloudRunV2TrafficTargetArgs Empty => new GoogleCloudRunV2TrafficTargetArgs();
     }
 }

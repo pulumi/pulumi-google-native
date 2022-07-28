@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:secretmanager/v1beta1:SecretIamPolicy")]
-    public partial class SecretIamPolicy : Pulumi.CustomResource
+    public partial class SecretIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1
         }
     }
 
-    public sealed class SecretIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SecretIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -148,5 +148,6 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1
         public SecretIamPolicyArgs()
         {
         }
+        public static new SecretIamPolicyArgs Empty => new SecretIamPolicyArgs();
     }
 }

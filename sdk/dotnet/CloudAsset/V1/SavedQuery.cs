@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudasset/v1:SavedQuery")]
-    public partial class SavedQuery : Pulumi.CustomResource
+    public partial class SavedQuery : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The query content.
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         }
     }
 
-    public sealed class SavedQueryArgs : Pulumi.ResourceArgs
+    public sealed class SavedQueryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The query content.
@@ -172,5 +172,6 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         public SavedQueryArgs()
         {
         }
+        public static new SavedQueryArgs Empty => new SavedQueryArgs();
     }
 }

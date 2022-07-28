@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
     /// <summary>
     /// Uses Google Cloud Endpoints to handle requests.
     /// </summary>
-    public sealed class ApiEndpointHandlerArgs : Pulumi.ResourceArgs
+    public sealed class ApiEndpointHandlerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Path to the script from the application root directory.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         public ApiEndpointHandlerArgs()
         {
         }
+        public static new ApiEndpointHandlerArgs Empty => new ApiEndpointHandlerArgs();
     }
 }

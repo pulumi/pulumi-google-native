@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Input asset.
     /// </summary>
-    public sealed class InputArgs : Pulumi.ResourceArgs
+    public sealed class InputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A unique key for this input. Must be specified when using advanced mapping and edit lists.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public InputArgs()
         {
         }
+        public static new InputArgs Empty => new InputArgs();
     }
 }

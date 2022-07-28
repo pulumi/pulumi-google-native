@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// This represents a particular channel of distribution for a given package. e.g. Debian's jessie-backports dpkg mirror
     /// </summary>
-    public sealed class DistributionArgs : Pulumi.ResourceArgs
+    public sealed class DistributionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CPU architecture for which packages in this distribution channel were built
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public DistributionArgs()
         {
         }
+        public static new DistributionArgs Empty => new DistributionArgs();
     }
 }

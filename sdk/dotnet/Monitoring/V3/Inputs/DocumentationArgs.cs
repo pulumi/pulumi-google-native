@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// A content string and a MIME type that describes the content string's format.
     /// </summary>
-    public sealed class DocumentationArgs : Pulumi.ResourceArgs
+    public sealed class DocumentationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The text of the documentation, interpreted according to mime_type. The content may not exceed 8,192 Unicode characters and may not exceed more than 10,240 bytes when encoded in UTF-8 format, whichever is smaller. This text can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables).
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public DocumentationArgs()
         {
         }
+        public static new DocumentationArgs Empty => new DocumentationArgs();
     }
 }

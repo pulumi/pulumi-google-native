@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Subscription")]
-    public partial class Subscription : Pulumi.CustomResource
+    public partial class Subscription : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the API product for which the developer is purchasing a subscription.
@@ -108,7 +108,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class SubscriptionArgs : Pulumi.ResourceArgs
+    public sealed class SubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the API product for which the developer is purchasing a subscription.
@@ -137,5 +137,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public SubscriptionArgs()
         {
         }
+        public static new SubscriptionArgs Empty => new SubscriptionArgs();
     }
 }

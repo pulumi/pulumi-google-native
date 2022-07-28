@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
     /// <summary>
     /// Write a Data Access (Gin) log
     /// </summary>
-    public sealed class DataAccessOptionsArgs : Pulumi.ResourceArgs
+    public sealed class DataAccessOptionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("logMode")]
         public Input<Pulumi.GoogleNative.GameServices.V1Beta.DataAccessOptionsLogMode>? LogMode { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
         public DataAccessOptionsArgs()
         {
         }
+        public static new DataAccessOptionsArgs Empty => new DataAccessOptionsArgs();
     }
 }

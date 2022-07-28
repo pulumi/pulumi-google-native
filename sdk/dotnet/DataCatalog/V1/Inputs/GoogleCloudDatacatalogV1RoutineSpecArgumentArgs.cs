@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Input or output argument of a function or stored procedure.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1RoutineSpecArgumentArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1RoutineSpecArgumentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether the argument is input or output.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1RoutineSpecArgumentArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1RoutineSpecArgumentArgs Empty => new GoogleCloudDatacatalogV1RoutineSpecArgumentArgs();
     }
 }

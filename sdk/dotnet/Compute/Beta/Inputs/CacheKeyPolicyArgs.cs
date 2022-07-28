@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Message containing what to include in the cache key for a request for Cloud CDN.
     /// </summary>
-    public sealed class CacheKeyPolicyArgs : Pulumi.ResourceArgs
+    public sealed class CacheKeyPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, requests to different hosts will be cached separately.
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public CacheKeyPolicyArgs()
         {
         }
+        public static new CacheKeyPolicyArgs Empty => new CacheKeyPolicyArgs();
     }
 }

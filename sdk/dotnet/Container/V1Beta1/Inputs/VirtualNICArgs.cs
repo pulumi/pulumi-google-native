@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration of gVNIC feature.
     /// </summary>
-    public sealed class VirtualNICArgs : Pulumi.ResourceArgs
+    public sealed class VirtualNICArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether gVNIC features are enabled in the node pool.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public VirtualNICArgs()
         {
         }
+        public static new VirtualNICArgs Empty => new VirtualNICArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
     /// <summary>
     /// A field or a column.
     /// </summary>
-    public sealed class StandardSqlFieldArgs : Pulumi.ResourceArgs
+    public sealed class StandardSqlFieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The name of this field. Can be absent for struct fields.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public StandardSqlFieldArgs()
         {
         }
+        public static new StandardSqlFieldArgs Empty => new StandardSqlFieldArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents results of a prediction job.
     /// </summary>
-    public sealed class GoogleCloudMlV1__PredictionOutputArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__PredictionOutputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of data instances which resulted in errors.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__PredictionOutputArgs()
         {
         }
+        public static new GoogleCloudMlV1__PredictionOutputArgs Empty => new GoogleCloudMlV1__PredictionOutputArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:connectors/v1:Connection")]
-    public partial class Connection : Pulumi.CustomResource
+    public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. Configuration for establishing the connection's authentication with an external system.
@@ -167,7 +167,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
         }
     }
 
-    public sealed class ConnectionArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Configuration for establishing the connection's authentication with an external system.
@@ -244,5 +244,6 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public ConnectionArgs()
         {
         }
+        public static new ConnectionArgs Empty => new ConnectionArgs();
     }
 }

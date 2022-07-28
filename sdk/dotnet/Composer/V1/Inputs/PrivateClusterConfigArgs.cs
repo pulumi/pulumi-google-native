@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     /// <summary>
     /// Configuration options for the private GKE cluster in a Cloud Composer environment.
     /// </summary>
-    public sealed class PrivateClusterConfigArgs : Pulumi.ResourceArgs
+    public sealed class PrivateClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. If `true`, access to the public endpoint of the GKE cluster is denied.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public PrivateClusterConfigArgs()
         {
         }
+        public static new PrivateClusterConfigArgs Empty => new PrivateClusterConfigArgs();
     }
 }

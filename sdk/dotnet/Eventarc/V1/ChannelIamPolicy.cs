@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:eventarc/v1:ChannelIamPolicy")]
-    public partial class ChannelIamPolicy : Pulumi.CustomResource
+    public partial class ChannelIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         }
     }
 
-    public sealed class ChannelIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ChannelIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public ChannelIamPolicyArgs()
         {
         }
+        public static new ChannelIamPolicyArgs Empty => new ChannelIamPolicyArgs();
     }
 }

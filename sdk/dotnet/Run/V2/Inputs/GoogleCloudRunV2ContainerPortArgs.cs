@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// <summary>
     /// ContainerPort represents a network port in a single container.
     /// </summary>
-    public sealed class GoogleCloudRunV2ContainerPortArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRunV2ContainerPortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Port number the container listens on. This must be a valid TCP port number, 0 &lt; container_port &lt; 65536.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public GoogleCloudRunV2ContainerPortArgs()
         {
         }
+        public static new GoogleCloudRunV2ContainerPortArgs Empty => new GoogleCloudRunV2ContainerPortArgs();
     }
 }

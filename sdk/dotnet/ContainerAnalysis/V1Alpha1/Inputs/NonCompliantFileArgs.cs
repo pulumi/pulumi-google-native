@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Details about files that caused a compliance check to fail.
     /// </summary>
-    public sealed class NonCompliantFileArgs : Pulumi.ResourceArgs
+    public sealed class NonCompliantFileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Command to display the non-compliant files.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public NonCompliantFileArgs()
         {
         }
+        public static new NonCompliantFileArgs Empty => new NonCompliantFileArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// An Upgrade Occurrence represents that a specific resource_url could install a specific upgrade. This presence is supplied via local sources (i.e. it is present in the mirror and the running system has noticed its availability).
     /// </summary>
-    public sealed class UpgradeOccurrenceArgs : Pulumi.ResourceArgs
+    public sealed class UpgradeOccurrenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Metadata about the upgrade for available for the specific operating system for the resource_url. This allows efficient filtering, as well as making it easier to use the occurrence.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public UpgradeOccurrenceArgs()
         {
         }
+        public static new UpgradeOccurrenceArgs Empty => new UpgradeOccurrenceArgs();
     }
 }

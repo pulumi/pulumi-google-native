@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class InstanceGroupManagerAutoHealingPolicyArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupManagerAutoHealingPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URL for the health check that signals autohealing.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public InstanceGroupManagerAutoHealingPolicyArgs()
         {
         }
+        public static new InstanceGroupManagerAutoHealingPolicyArgs Empty => new InstanceGroupManagerAutoHealingPolicyArgs();
     }
 }

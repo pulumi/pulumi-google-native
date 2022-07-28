@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// Specifies an executable to run on a fully configured node and a timeout period for executable completion.
     /// </summary>
-    public sealed class NodeInitializationActionArgs : Pulumi.ResourceArgs
+    public sealed class NodeInitializationActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud Storage URI of executable file.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public NodeInitializationActionArgs()
         {
         }
+        public static new NodeInitializationActionArgs Empty => new NodeInitializationActionArgs();
     }
 }

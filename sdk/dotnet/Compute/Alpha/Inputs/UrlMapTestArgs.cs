@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Message for the expected URL mappings.
     /// </summary>
-    public sealed class UrlMapTestArgs : Pulumi.ResourceArgs
+    public sealed class UrlMapTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The weight to use for the supplied host and path when using advanced routing rules that involve traffic splitting.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public UrlMapTestArgs()
         {
         }
+        public static new UrlMapTestArgs Empty => new UrlMapTestArgs();
     }
 }

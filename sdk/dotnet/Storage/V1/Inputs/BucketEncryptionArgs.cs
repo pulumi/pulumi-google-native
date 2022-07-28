@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// Encryption configuration for a bucket.
     /// </summary>
-    public sealed class BucketEncryptionArgs : Pulumi.ResourceArgs
+    public sealed class BucketEncryptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A Cloud KMS key that will be used to encrypt objects inserted into this bucket, if no encryption method is specified.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketEncryptionArgs()
         {
         }
+        public static new BucketEncryptionArgs Empty => new BucketEncryptionArgs();
     }
 }

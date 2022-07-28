@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     }
 
 
-    public sealed class GetDatasetFhirStoreIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetDatasetFhirStoreIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasetId", required: true)]
         public string DatasetId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public GetDatasetFhirStoreIamPolicyArgs()
         {
         }
+        public static new GetDatasetFhirStoreIamPolicyArgs Empty => new GetDatasetFhirStoreIamPolicyArgs();
     }
 
-    public sealed class GetDatasetFhirStoreIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatasetFhirStoreIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public GetDatasetFhirStoreIamPolicyInvokeArgs()
         {
         }
+        public static new GetDatasetFhirStoreIamPolicyInvokeArgs Empty => new GetDatasetFhirStoreIamPolicyInvokeArgs();
     }
 
 
