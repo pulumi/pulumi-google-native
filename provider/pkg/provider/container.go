@@ -1,3 +1,17 @@
+// Copyright 2016-2022, Pulumi Corporation.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//     http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
 package provider
 
 import (
@@ -15,15 +29,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 )
 
-var emptyPropVal = resource.NewObjectProperty(resource.NewPropertyMapFromMap(nil))
-var nodepoolUpdateHandlers = map[string]func(
+type nodepoolUpdateHandlerFunc func(
 	p *googleCloudProvider,
 	urn resource.URN,
 	label string,
 	res *resources.CloudAPIResource,
 	newInputs,
 	oldState resource.PropertyMap,
-) error{
+) error
+
+var emptyPropVal = resource.NewObjectProperty(resource.NewPropertyMapFromMap(nil))
+var nodepoolUpdateHandlers = map[string]nodepoolUpdateHandlerFunc{
 	"autoscaling": updateNodePoolMapping(
 		mustParsePropertyPath("autoscaling"),
 		"autoscaling",
@@ -63,9 +79,17 @@ var nodepoolUpdateHandlers = map[string]func(
 	"config.workloadMetadataConfig": updateNodePoolConfig(mustParsePropertyPath("config.workloadMetadataConfig"), emptyPropVal),
 }
 
-var updateOrder = []string{"autoscaling", "config.imageType", "config.workloadMetadataConfig", "config.kubeletConfig",
-	"config.linuxNodeConfig", "initialNodeCount" /* is this the right attribute to update? */, "management",
-	"version", "locations", "upgradeSettings"}
+// Following an ordering here that the
+var updateOrder = []string{"autoscaling",
+	"config.imageType",
+	"config.workloadMetadataConfig",
+	"config.kubeletConfig",
+	"config.linuxNodeConfig",
+	"initialNodeCount", /* is this the right attribute to update? */
+	"management",
+	"version",
+	"locations",
+	"upgradeSettings"}
 
 func mustParsePropertyPath(pattern string) resource.PropertyPath {
 	pp, err := resource.ParsePropertyPath(pattern)
@@ -85,10 +109,6 @@ func updateNodepool(
 
 	// Extract old inputs from the `__inputs` field of the old state.
 	oldInputs := parseCheckpointObject(oldState)
-	outputs := resource.NewPropertyMapFromMap(oldState.Mappable())
-	if outputs.HasValue(resource.PropertyKey("__inputs")) {
-		delete(outputs, "__inputs")
-	}
 	// Delete the auto-injected __autonamed tag in old and new inputs to avoid spurious diffs.
 	if v, ok := oldInputs[autonamed]; ok && v.IsBool() {
 		delete(oldInputs, autonamed)
@@ -116,6 +136,7 @@ func updateNodepool(
 				// TODO This should be an error once all the targetted mutations are in place!
 				continue
 			}
+			logging.V(9).Infof("[%s] Invoking update for field: %q", label, key)
 			for k := range detailedDiff {
 				logging.V(9).Infof("[%s] processing diff on field: %q", label, k)
 				var diffPropPath, propPath resource.PropertyPath
@@ -167,7 +188,7 @@ func readNodepoolStatus(
 	uri string,
 ) (map[string]interface{}, error) {
 	// Read the current state of the resource from the API.
-	newState, err := retryRequest(p.client, "GET", uri, nil)
+	newState, err := retryRequest(p.client, "GET", uri, "", nil)
 	if err != nil {
 		return nil, fmt.Errorf("error fetching nodepool status: %w", err)
 	}
@@ -200,7 +221,7 @@ func waitForNodepoolRestingState(p *googleCloudProvider,
 		}
 
 		status, hasStatus := resp["status"].(string)
-		if hasStatus && status == "RUNNING" || status == "RUNNING_WITH_ERROR" || status == "ERROR" {
+		if hasStatus && isNodepoolInRestingStatus(status) {
 			return resp, nil
 		}
 		select {
@@ -210,6 +231,14 @@ func waitForNodepoolRestingState(p *googleCloudProvider,
 		}
 	}
 
+}
+
+func isNodepoolInRestingStatus(status string) bool {
+	switch status {
+	case "RUNNING", "RUNNING_WITH_ERROR", "ERROR":
+		return true
+	}
+	return false
 }
 
 func updateNodePoolMapping(diffPropPath resource.PropertyPath, apiFieldName string, defaultIfMissing resource.
@@ -253,7 +282,7 @@ func updateNodePoolMapping(diffPropPath resource.PropertyPath, apiFieldName stri
 		body := p.prepareAPIInputs(newInputs, oldState, map[string]resources.CloudAPIProperty{
 			apiFieldName: {SdkName: diffPropPath.String()},
 		})
-		op, err := retryRequest(p.client, httpMethod, uri, body)
+		op, err := retryRequest(p.client, httpMethod, uri, "", body)
 		if err != nil {
 			return fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 		}
@@ -313,7 +342,7 @@ func updateNodePoolConfig(diffPropPath resource.PropertyPath, defaultIfMissing r
 			"config": {Flatten: true},
 		})
 		logging.V(9).Infof("[%s] nodepool config update request body: %v", label, body)
-		op, err := retryRequest(p.client, "PUT", uri, body)
+		op, err := retryRequest(p.client, "PUT", uri, "", body)
 		if err != nil {
 			return fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
 		}
