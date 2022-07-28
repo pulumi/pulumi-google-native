@@ -256,6 +256,8 @@ var metadataOverrides = map[string]resources.CloudAPIResource{
 				Verb: "POST",
 			},
 			UpdateMask: resources.UpdateMask{},
+		},
+	},
 	"google-native:container/v1:Cluster": {
 		Create: resources.CreateAPIOperation{
 			CloudAPIOperation: resources.CloudAPIOperation{

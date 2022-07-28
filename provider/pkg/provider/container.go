@@ -243,14 +243,7 @@ func isNodepoolInRestingStatus(status string) bool {
 
 func updateNodePoolMapping(diffPropPath resource.PropertyPath, apiFieldName string, defaultIfMissing resource.
 	PropertyValue,
-	operationSuffix string, httpMethod string) func(
-	p *googleCloudProvider,
-	urn resource.URN,
-	label string,
-	res *resources.CloudAPIResource,
-	newInputs,
-	oldState resource.PropertyMap,
-) error {
+	operationSuffix string, httpMethod string) nodepoolUpdateHandlerFunc {
 	return func(p *googleCloudProvider,
 		urn resource.URN,
 		label string,
@@ -295,14 +288,7 @@ func updateNodePoolMapping(diffPropPath resource.PropertyPath, apiFieldName stri
 	}
 }
 
-func updateNodePoolConfig(diffPropPath resource.PropertyPath, defaultIfMissing resource.PropertyValue) func(
-	p *googleCloudProvider,
-	urn resource.URN,
-	label string,
-	res *resources.CloudAPIResource,
-	newInputs,
-	oldState resource.PropertyMap,
-) error {
+func updateNodePoolConfig(diffPropPath resource.PropertyPath, defaultIfMissing resource.PropertyValue) nodepoolUpdateHandlerFunc {
 	return func(p *googleCloudProvider,
 		urn resource.URN,
 		label string,
