@@ -19,6 +19,8 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
+
 	"github.com/jpillora/backoff"
 
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
@@ -80,12 +82,6 @@ var nodepoolUpdateHandlers = map[string]nodepoolUpdateHandlerFunc{
 		emptyObjVal,
 		"",
 		"PUT"),
-	"name": updateNodePoolMapping(
-		mustParsePropertyPath("name"),
-		"name",
-		emptyObjVal,
-		"",
-		"PUT"),
 	"config.confidentialNodes": updateNodePoolConfig(mustParsePropertyPath("config.confidentialNodes"), nil,
 		emptyObjVal),
 	"config.gcfsConfig": updateNodePoolConfig(mustParsePropertyPath("config.gcfsConfig"), nil,
@@ -126,7 +122,6 @@ var updateOrder = []string{
 	"config.tags",
 	"config.taints",
 	"networkConfig",
-	"name",
 	"initialNodeCount", /* is this the right attribute to update? */
 	"management",
 	"version",
@@ -178,6 +173,8 @@ func updateNodepool(
 				// TODO This should be an error once all the targetted mutations are in place!
 				continue
 			}
+			_ = providerInstance.host.LogStatus(context.Background(), diag.Info, urn,
+				fmt.Sprintf("Performing update for field: %q", key))
 			logging.V(9).Infof("[%s] Invoking update for field: %q", label, key)
 			for k := range detailedDiff {
 				logging.V(9).Infof("[%s] processing diff on field: %q", label, k)
@@ -196,7 +193,7 @@ func updateNodepool(
 					logging.V(9).Infof("[%s] processing diff for %q with handler for %q",
 						label, diffPropPath.String(), propPath.String())
 					logging.V(9).Infof("[%s] waiting for nodepool to reach resting state", label)
-					_, err = waitForNodepoolRestingState(providerInstance, res, inputs, oldState)
+					_, err = waitForNodepoolRestingState(providerInstance, urn, res, inputs, oldState)
 					if err != nil {
 						break
 					}
@@ -237,7 +234,9 @@ func readNodepoolStatus(
 	return newState, nil
 }
 
-func waitForNodepoolRestingState(p *googleCloudProvider,
+func waitForNodepoolRestingState(
+	p *googleCloudProvider,
+	urn resource.URN,
 	res *resources.CloudAPIResource,
 	inputs,
 	oldState resource.PropertyMap,
@@ -265,6 +264,10 @@ func waitForNodepoolRestingState(p *googleCloudProvider,
 		status, hasStatus := resp["status"].(string)
 		if hasStatus && isNodepoolInRestingStatus(status) {
 			return resp, nil
+		} else {
+			_ = p.host.LogStatus(context.Background(), diag.Info, urn,
+				fmt.Sprintf("Waiting for nodepool to reach resting state. "+
+					"Current status: %q", status))
 		}
 		select {
 		case <-time.After(retryPolicy.Duration()):
