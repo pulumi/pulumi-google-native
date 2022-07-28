@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
     }
 
 
-    public sealed class GetServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceArgs : global::Pulumi.InvokeArgs
     {
         [Input("serviceName", required: true)]
         public string ServiceName { get; set; } = null!;
@@ -33,9 +33,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public GetServiceArgs()
         {
         }
+        public static new GetServiceArgs Empty => new GetServiceArgs();
     }
 
-    public sealed class GetServiceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("serviceName", required: true)]
         public Input<string> ServiceName { get; set; } = null!;
@@ -43,6 +44,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public GetServiceInvokeArgs()
         {
         }
+        public static new GetServiceInvokeArgs Empty => new GetServiceInvokeArgs();
     }
 
 

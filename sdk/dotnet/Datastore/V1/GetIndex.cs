@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
     }
 
 
-    public sealed class GetIndexArgs : Pulumi.InvokeArgs
+    public sealed class GetIndexArgs : global::Pulumi.InvokeArgs
     {
         [Input("indexId", required: true)]
         public string IndexId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Datastore.V1
         public GetIndexArgs()
         {
         }
+        public static new GetIndexArgs Empty => new GetIndexArgs();
     }
 
-    public sealed class GetIndexInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIndexInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("indexId", required: true)]
         public Input<string> IndexId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
         public GetIndexInvokeArgs()
         {
         }
+        public static new GetIndexInvokeArgs Empty => new GetIndexInvokeArgs();
     }
 
 

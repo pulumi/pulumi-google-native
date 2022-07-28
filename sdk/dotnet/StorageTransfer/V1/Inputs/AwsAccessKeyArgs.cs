@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     /// <summary>
     /// AWS access key (see [AWS Security Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-security-credentials.html)). For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
     /// </summary>
-    public sealed class AwsAccessKeyArgs : Pulumi.ResourceArgs
+    public sealed class AwsAccessKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AWS access key ID.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public AwsAccessKeyArgs()
         {
         }
+        public static new AwsAccessKeyArgs Empty => new AwsAccessKeyArgs();
     }
 }

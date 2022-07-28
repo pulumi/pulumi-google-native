@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetInterconnectArgs : Pulumi.InvokeArgs
+    public sealed class GetInterconnectArgs : global::Pulumi.InvokeArgs
     {
         [Input("interconnect", required: true)]
         public string Interconnect { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetInterconnectArgs()
         {
         }
+        public static new GetInterconnectArgs Empty => new GetInterconnectArgs();
     }
 
-    public sealed class GetInterconnectInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInterconnectInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("interconnect", required: true)]
         public Input<string> Interconnect { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetInterconnectInvokeArgs()
         {
         }
+        public static new GetInterconnectInvokeArgs Empty => new GetInterconnectInvokeArgs();
     }
 
 

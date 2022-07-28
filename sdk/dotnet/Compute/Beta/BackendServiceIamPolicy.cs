@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:BackendServiceIamPolicy")]
-    public partial class BackendServiceIamPolicy : Pulumi.CustomResource
+    public partial class BackendServiceIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class BackendServiceIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -160,5 +160,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public BackendServiceIamPolicyArgs()
         {
         }
+        public static new BackendServiceIamPolicyArgs Empty => new BackendServiceIamPolicyArgs();
     }
 }

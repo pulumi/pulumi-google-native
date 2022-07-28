@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// PubsubConfig describes the configuration of a trigger that creates a build whenever a Pub/Sub message is published.
     /// </summary>
-    public sealed class PubsubConfigArgs : Pulumi.ResourceArgs
+    public sealed class PubsubConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Service account that will make the push request.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public PubsubConfigArgs()
         {
         }
+        public static new PubsubConfigArgs Empty => new PubsubConfigArgs();
     }
 }

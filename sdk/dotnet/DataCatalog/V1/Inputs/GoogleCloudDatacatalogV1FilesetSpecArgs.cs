@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Specification that applies to a fileset. Valid only for entries with the 'FILESET' type.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1FilesetSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1FilesetSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Fields specific to a Dataplex fileset and present only in the Dataplex fileset entries.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1FilesetSpecArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1FilesetSpecArgs Empty => new GoogleCloudDatacatalogV1FilesetSpecArgs();
     }
 }

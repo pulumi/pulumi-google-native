@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class QueryParameterTypeStructTypesItemArgs : Pulumi.ResourceArgs
+    public sealed class QueryParameterTypeStructTypesItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] Human-oriented description of the field.
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public QueryParameterTypeStructTypesItemArgs()
         {
         }
+        public static new QueryParameterTypeStructTypesItemArgs Empty => new QueryParameterTypeStructTypesItemArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1.Inputs
     /// <summary>
     /// NotificationsRule defines notifications that are sent based on budget spend and thresholds.
     /// </summary>
-    public sealed class GoogleCloudBillingBudgetsV1NotificationsRuleArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudBillingBudgetsV1NotificationsRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. When set to true, disables default notifications sent when a threshold is exceeded. Default notifications are sent to those with Billing Account Administrator and Billing Account User IAM roles for the target account.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1.Inputs
         public GoogleCloudBillingBudgetsV1NotificationsRuleArgs()
         {
         }
+        public static new GoogleCloudBillingBudgetsV1NotificationsRuleArgs Empty => new GoogleCloudBillingBudgetsV1NotificationsRuleArgs();
     }
 }

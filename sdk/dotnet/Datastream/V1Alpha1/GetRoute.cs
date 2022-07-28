@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
     }
 
 
-    public sealed class GetRouteArgs : Pulumi.InvokeArgs
+    public sealed class GetRouteArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
         public GetRouteArgs()
         {
         }
+        public static new GetRouteArgs Empty => new GetRouteArgs();
     }
 
-    public sealed class GetRouteInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRouteInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
         public GetRouteInvokeArgs()
         {
         }
+        public static new GetRouteInvokeArgs Empty => new GetRouteInvokeArgs();
     }
 
 

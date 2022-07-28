@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetRegionNetworkFirewallPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionNetworkFirewallPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("firewallPolicy", required: true)]
         public string FirewallPolicy { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetRegionNetworkFirewallPolicyArgs()
         {
         }
+        public static new GetRegionNetworkFirewallPolicyArgs Empty => new GetRegionNetworkFirewallPolicyArgs();
     }
 
-    public sealed class GetRegionNetworkFirewallPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionNetworkFirewallPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("firewallPolicy", required: true)]
         public Input<string> FirewallPolicy { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetRegionNetworkFirewallPolicyInvokeArgs()
         {
         }
+        public static new GetRegionNetworkFirewallPolicyInvokeArgs Empty => new GetRegionNetworkFirewallPolicyInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Inputs
     /// <summary>
     /// Specification of the GRPC Endpoint.
     /// </summary>
-    public sealed class GoogleCloudNetworksecurityV1beta1GrpcEndpointArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudNetworksecurityV1beta1GrpcEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Inputs
         public GoogleCloudNetworksecurityV1beta1GrpcEndpointArgs()
         {
         }
+        public static new GoogleCloudNetworksecurityV1beta1GrpcEndpointArgs Empty => new GoogleCloudNetworksecurityV1beta1GrpcEndpointArgs();
     }
 }

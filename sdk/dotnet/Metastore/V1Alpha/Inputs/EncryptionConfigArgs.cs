@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
     /// <summary>
     /// Encryption settings for the service.
     /// </summary>
-    public sealed class EncryptionConfigArgs : Pulumi.ResourceArgs
+    public sealed class EncryptionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The fully qualified customer provided Cloud KMS key name to use for customer data encryption, in the following form:projects/{project_number}/locations/{location_id}/keyRings/{key_ring_id}/cryptoKeys/{crypto_key_id}.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
         public EncryptionConfigArgs()
         {
         }
+        public static new EncryptionConfigArgs Empty => new EncryptionConfigArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datacatalog/v1beta1:PolicyTag")]
-    public partial class PolicyTag : Pulumi.CustomResource
+    public partial class PolicyTag : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Resource names of child policy tags of this policy tag.
@@ -104,7 +104,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         }
     }
 
-    public sealed class PolicyTagArgs : Pulumi.ResourceArgs
+    public sealed class PolicyTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of this policy tag. It must: contain only unicode characters, tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes long when encoded in UTF-8. If not set, defaults to an empty description. If not set, defaults to an empty description.
@@ -136,5 +136,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public PolicyTagArgs()
         {
         }
+        public static new PolicyTagArgs Empty => new PolicyTagArgs();
     }
 }

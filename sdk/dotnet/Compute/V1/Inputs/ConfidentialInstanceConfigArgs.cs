@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// A set of Confidential Instance options.
     /// </summary>
-    public sealed class ConfidentialInstanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConfidentialInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines whether the instance should have confidential compute enabled.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public ConfidentialInstanceConfigArgs()
         {
         }
+        public static new ConfidentialInstanceConfigArgs Empty => new ConfidentialInstanceConfigArgs();
     }
 }

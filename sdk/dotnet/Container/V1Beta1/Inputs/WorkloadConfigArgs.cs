@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// WorkloadConfig defines the flags to enable or disable the workload configurations for the cluster.
     /// </summary>
-    public sealed class WorkloadConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkloadConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Sets which mode of auditing should be used for the cluster's workloads.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public WorkloadConfigArgs()
         {
         }
+        public static new WorkloadConfigArgs Empty => new WorkloadConfigArgs();
     }
 }

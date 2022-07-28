@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkconnectivity/v1:Hub")]
-    public partial class Hub : Pulumi.CustomResource
+    public partial class Hub : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time the hub was created.
@@ -127,7 +127,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         }
     }
 
-    public sealed class HubArgs : Pulumi.ResourceArgs
+    public sealed class HubArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of the hub.
@@ -183,5 +183,6 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public HubArgs()
         {
         }
+        public static new HubArgs Empty => new HubArgs();
     }
 }

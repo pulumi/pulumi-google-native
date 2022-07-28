@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Display static overlay object.
     /// </summary>
-    public sealed class AnimationStaticArgs : Pulumi.ResourceArgs
+    public sealed class AnimationStaticArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time to start displaying the overlay object, in seconds. Default: 0
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public AnimationStaticArgs()
         {
         }
+        public static new AnimationStaticArgs Empty => new AnimationStaticArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Istio service scoped to an Istio mesh. Anthos clusters running ASM &lt; 1.6.8 will have their services ingested as this type.
     /// </summary>
-    public sealed class MeshIstioArgs : Pulumi.ResourceArgs
+    public sealed class MeshIstioArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifier for the mesh in which this Istio service is defined. Corresponds to the mesh_uid metric label in Istio metrics.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public MeshIstioArgs()
         {
         }
+        public static new MeshIstioArgs Empty => new MeshIstioArgs();
     }
 }

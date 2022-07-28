@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Execution related settings, like retry and service_account.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1TaskExecutionSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1TaskExecutionSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputMap<string>? _args;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1TaskExecutionSpecArgs()
         {
         }
+        public static new GoogleCloudDataplexV1TaskExecutionSpecArgs Empty => new GoogleCloudDataplexV1TaskExecutionSpecArgs();
     }
 }

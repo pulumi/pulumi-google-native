@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     /// <summary>
     /// Default options to interpret user query.
     /// </summary>
-    public sealed class QueryInterpretationConfigArgs : Pulumi.ResourceArgs
+    public sealed class QueryInterpretationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set this flag to disable supplemental results retrieval, setting a flag here will not retrieve supplemental results for queries associated with a given search application. If this flag is set to True, it will take precedence over the option set at Query level. For the default value of False, query level flag will set the correct interpretation for supplemental results.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public QueryInterpretationConfigArgs()
         {
         }
+        public static new QueryInterpretationConfigArgs Empty => new QueryInterpretationConfigArgs();
     }
 }

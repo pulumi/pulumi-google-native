@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     /// Creates a ServiceAttachment in the specified project in the given scope using the parameters that are included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:ServiceAttachment")]
-    public partial class ServiceAttachment : Pulumi.CustomResource
+    public partial class ServiceAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An array of connections for all the consumers connected to this service attachment.
@@ -171,7 +171,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
     }
 
-    public sealed class ServiceAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class ServiceAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The connection preference of service attachment. The value can be set to ACCEPT_AUTOMATIC. An ACCEPT_AUTOMATIC service attachment is one that always accepts the connection from consumer forwarding rules.
@@ -272,5 +272,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public ServiceAttachmentArgs()
         {
         }
+        public static new ServiceAttachmentArgs Empty => new ServiceAttachmentArgs();
     }
 }

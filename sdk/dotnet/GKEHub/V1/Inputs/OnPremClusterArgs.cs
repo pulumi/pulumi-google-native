@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
     /// <summary>
     /// OnPremCluster contains information specific to GKE On-Prem clusters.
     /// </summary>
-    public sealed class OnPremClusterArgs : Pulumi.ResourceArgs
+    public sealed class OnPremClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. Whether the cluster is an admin cluster.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
         public OnPremClusterArgs()
         {
         }
+        public static new OnPremClusterArgs Empty => new OnPremClusterArgs();
     }
 }

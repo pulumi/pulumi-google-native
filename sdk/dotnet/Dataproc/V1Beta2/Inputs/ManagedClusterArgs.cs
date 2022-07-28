@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// Cluster that is managed by the workflow.
     /// </summary>
-    public sealed class ManagedClusterArgs : Pulumi.ResourceArgs
+    public sealed class ManagedClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public ManagedClusterArgs()
         {
         }
+        public static new ManagedClusterArgs Empty => new ManagedClusterArgs();
     }
 }

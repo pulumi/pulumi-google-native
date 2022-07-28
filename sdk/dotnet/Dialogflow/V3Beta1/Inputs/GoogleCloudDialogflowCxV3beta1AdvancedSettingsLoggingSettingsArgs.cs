@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Define behaviors on logging.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, DF Interaction logging is currently enabled.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs Empty => new GoogleCloudDialogflowCxV3beta1AdvancedSettingsLoggingSettingsArgs();
     }
 }

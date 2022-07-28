@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
     /// Create an OS Config guest policy.
     /// </summary>
     [GoogleNativeResourceType("google-native:osconfig/v1beta:GuestPolicy")]
-    public partial class GuestPolicy : Pulumi.CustomResource
+    public partial class GuestPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
@@ -126,7 +126,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         }
     }
 
-    public sealed class GuestPolicyArgs : Pulumi.ResourceArgs
+    public sealed class GuestPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the VM instances that are assigned to this policy. This allows you to target sets or groups of VM instances by different parameters such as labels, names, OS, or zones. If left empty, all VM instances underneath this policy are targeted. At the same level in the resource hierarchy (that is within a project), the service prevents the creation of multiple policies that conflict with each other. For more information, see how the service [handles assignment conflicts](/compute/docs/os-config-management/create-guest-policy#handle-conflicts).
@@ -200,5 +200,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         public GuestPolicyArgs()
         {
         }
+        public static new GuestPolicyArgs Empty => new GuestPolicyArgs();
     }
 }

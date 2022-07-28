@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class InstanceGroupManagerInstanceLifecyclePolicyArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupManagerInstanceLifecyclePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. However, if you've set up a proactive type of update policy, then configuration updates are applied as usual. - YES: If configuration updates are available, they are applied during repair. 
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public InstanceGroupManagerInstanceLifecyclePolicyArgs()
         {
         }
+        public static new InstanceGroupManagerInstanceLifecyclePolicyArgs Empty => new InstanceGroupManagerInstanceLifecyclePolicyArgs();
     }
 }

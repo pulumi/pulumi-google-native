@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     }
 
 
-    public sealed class GetAppGatewayArgs : Pulumi.InvokeArgs
+    public sealed class GetAppGatewayArgs : global::Pulumi.InvokeArgs
     {
         [Input("appGatewayId", required: true)]
         public string AppGatewayId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public GetAppGatewayArgs()
         {
         }
+        public static new GetAppGatewayArgs Empty => new GetAppGatewayArgs();
     }
 
-    public sealed class GetAppGatewayInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAppGatewayInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("appGatewayId", required: true)]
         public Input<string> AppGatewayId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public GetAppGatewayInvokeArgs()
         {
         }
+        public static new GetAppGatewayInvokeArgs Empty => new GetAppGatewayInvokeArgs();
     }
 
 

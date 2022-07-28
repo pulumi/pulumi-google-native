@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// A reference to a ToolExecution output file.
     /// </summary>
-    public sealed class ToolOutputReferenceArgs : Pulumi.ResourceArgs
+    public sealed class ToolOutputReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The creation time of the file. - In response: present if set by create/update request - In create/update request: optional
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public ToolOutputReferenceArgs()
         {
         }
+        public static new ToolOutputReferenceArgs Empty => new ToolOutputReferenceArgs();
     }
 }

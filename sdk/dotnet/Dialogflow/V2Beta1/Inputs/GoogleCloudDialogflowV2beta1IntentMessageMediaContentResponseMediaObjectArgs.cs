@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Response media object for media content card.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Url where the media is stored.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs();
     }
 }

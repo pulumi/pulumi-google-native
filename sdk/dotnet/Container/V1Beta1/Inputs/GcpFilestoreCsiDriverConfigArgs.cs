@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration for the GCP Filestore CSI driver.
     /// </summary>
-    public sealed class GcpFilestoreCsiDriverConfigArgs : Pulumi.ResourceArgs
+    public sealed class GcpFilestoreCsiDriverConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the GCP Filestore CSI driver is enabled for this cluster.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public GcpFilestoreCsiDriverConfigArgs()
         {
         }
+        public static new GcpFilestoreCsiDriverConfigArgs Empty => new GcpFilestoreCsiDriverConfigArgs();
     }
 }

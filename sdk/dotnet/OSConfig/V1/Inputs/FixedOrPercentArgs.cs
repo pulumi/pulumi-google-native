@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// Message encapsulating a value that can be either absolute ("fixed") or relative ("percent") to a value.
     /// </summary>
-    public sealed class FixedOrPercentArgs : Pulumi.ResourceArgs
+    public sealed class FixedOrPercentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies a fixed value.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public FixedOrPercentArgs()
         {
         }
+        public static new FixedOrPercentArgs Empty => new FixedOrPercentArgs();
     }
 }

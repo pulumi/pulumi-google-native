@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Metadata for the text.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1TextMetadataArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1TextMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The language of this text, as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). Default value is en-US.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1TextMetadataArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1TextMetadataArgs Empty => new GoogleCloudDatalabelingV1beta1TextMetadataArgs();
     }
 }

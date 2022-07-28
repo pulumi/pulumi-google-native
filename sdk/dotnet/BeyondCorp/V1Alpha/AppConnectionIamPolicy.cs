@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:beyondcorp/v1alpha:AppConnectionIamPolicy")]
-    public partial class AppConnectionIamPolicy : Pulumi.CustomResource
+    public partial class AppConnectionIamPolicy : global::Pulumi.CustomResource
     {
         [Output("appConnectionId")]
         public Output<string> AppConnectionId { get; private set; } = null!;
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         }
     }
 
-    public sealed class AppConnectionIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AppConnectionIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("appConnectionId", required: true)]
         public Input<string> AppConnectionId { get; set; } = null!;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public AppConnectionIamPolicyArgs()
         {
         }
+        public static new AppConnectionIamPolicyArgs Empty => new AppConnectionIamPolicyArgs();
     }
 }

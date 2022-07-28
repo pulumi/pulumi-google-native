@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
     }
 
 
-    public sealed class GetDataExchangeIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetDataExchangeIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("dataExchangeId", required: true)]
         public string DataExchangeId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         public GetDataExchangeIamPolicyArgs()
         {
         }
+        public static new GetDataExchangeIamPolicyArgs Empty => new GetDataExchangeIamPolicyArgs();
     }
 
-    public sealed class GetDataExchangeIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDataExchangeIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("dataExchangeId", required: true)]
         public Input<string> DataExchangeId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         public GetDataExchangeIamPolicyInvokeArgs()
         {
         }
+        public static new GetDataExchangeIamPolicyInvokeArgs Empty => new GetDataExchangeIamPolicyInvokeArgs();
     }
 
 

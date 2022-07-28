@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
     }
 
 
-    public sealed class GetGcpUserAccessBindingArgs : Pulumi.InvokeArgs
+    public sealed class GetGcpUserAccessBindingArgs : global::Pulumi.InvokeArgs
     {
         [Input("gcpUserAccessBindingId", required: true)]
         public string GcpUserAccessBindingId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public GetGcpUserAccessBindingArgs()
         {
         }
+        public static new GetGcpUserAccessBindingArgs Empty => new GetGcpUserAccessBindingArgs();
     }
 
-    public sealed class GetGcpUserAccessBindingInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGcpUserAccessBindingInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("gcpUserAccessBindingId", required: true)]
         public Input<string> GcpUserAccessBindingId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public GetGcpUserAccessBindingInvokeArgs()
         {
         }
+        public static new GetGcpUserAccessBindingInvokeArgs Empty => new GetGcpUserAccessBindingInvokeArgs();
     }
 
 

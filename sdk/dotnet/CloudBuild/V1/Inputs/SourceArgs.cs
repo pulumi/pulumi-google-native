@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// Location of the source in a supported storage service.
     /// </summary>
-    public sealed class SourceArgs : Pulumi.ResourceArgs
+    public sealed class SourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If provided, get the source from this location in a Cloud Source Repository.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public SourceArgs()
         {
         }
+        public static new SourceArgs Empty => new SourceArgs();
     }
 }

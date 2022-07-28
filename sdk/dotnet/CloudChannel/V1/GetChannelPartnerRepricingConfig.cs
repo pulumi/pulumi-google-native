@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     }
 
 
-    public sealed class GetChannelPartnerRepricingConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetChannelPartnerRepricingConfigArgs : global::Pulumi.InvokeArgs
     {
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public GetChannelPartnerRepricingConfigArgs()
         {
         }
+        public static new GetChannelPartnerRepricingConfigArgs Empty => new GetChannelPartnerRepricingConfigArgs();
     }
 
-    public sealed class GetChannelPartnerRepricingConfigInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetChannelPartnerRepricingConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public GetChannelPartnerRepricingConfigInvokeArgs()
         {
         }
+        public static new GetChannelPartnerRepricingConfigInvokeArgs Empty => new GetChannelPartnerRepricingConfigInvokeArgs();
     }
 
 

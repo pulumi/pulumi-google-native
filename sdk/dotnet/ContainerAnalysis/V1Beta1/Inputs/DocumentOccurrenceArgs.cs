@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// DocumentOccurrence represents an SPDX Document Creation Information section: https://spdx.github.io/spdx-spec/2-document-creation-information/
     /// </summary>
-    public sealed class DocumentOccurrenceArgs : Pulumi.ResourceArgs
+    public sealed class DocumentOccurrenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identify when the SPDX file was originally created. The date is to be specified according to combined date and time in UTC format as specified in ISO 8601 standard
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public DocumentOccurrenceArgs()
         {
         }
+        public static new DocumentOccurrenceArgs Empty => new DocumentOccurrenceArgs();
     }
 }

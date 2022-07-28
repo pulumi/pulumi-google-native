@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Configuration for the use of Kubernetes Service Accounts in GCP IAM policies.
     /// </summary>
-    public sealed class WorkloadIdentityConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkloadIdentityConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The workload pool to attach all Kubernetes service accounts to.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public WorkloadIdentityConfigArgs()
         {
         }
+        public static new WorkloadIdentityConfigArgs Empty => new WorkloadIdentityConfigArgs();
     }
 }

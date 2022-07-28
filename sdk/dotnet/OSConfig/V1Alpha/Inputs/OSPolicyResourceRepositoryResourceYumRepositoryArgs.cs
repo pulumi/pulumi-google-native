@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
     /// <summary>
     /// Represents a single yum package repository. These are added to a repo file that is managed at `/etc/yum.repos.d/google_osconfig.repo`.
     /// </summary>
-    public sealed class OSPolicyResourceRepositoryResourceYumRepositoryArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourceRepositoryResourceYumRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location of the repository directory.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public OSPolicyResourceRepositoryResourceYumRepositoryArgs()
         {
         }
+        public static new OSPolicyResourceRepositoryResourceYumRepositoryArgs Empty => new OSPolicyResourceRepositoryResourceYumRepositoryArgs();
     }
 }

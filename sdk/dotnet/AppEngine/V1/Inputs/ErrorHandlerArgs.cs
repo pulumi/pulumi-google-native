@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
     /// <summary>
     /// Custom static error page to be served when an error occurs.
     /// </summary>
-    public sealed class ErrorHandlerArgs : Pulumi.ResourceArgs
+    public sealed class ErrorHandlerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Error condition this handler applies to.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         public ErrorHandlerArgs()
         {
         }
+        public static new ErrorHandlerArgs Empty => new ErrorHandlerArgs();
     }
 }

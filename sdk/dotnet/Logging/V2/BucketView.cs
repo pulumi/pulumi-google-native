@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     /// Creates a view over log entries in a log bucket. A bucket may contain a maximum of 30 views.
     /// </summary>
     [GoogleNativeResourceType("google-native:logging/v2:BucketView")]
-    public partial class BucketView : Pulumi.CustomResource
+    public partial class BucketView : global::Pulumi.CustomResource
     {
         [Output("bucketId")]
         public Output<string> BucketId { get; private set; } = null!;
@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         }
     }
 
-    public sealed class BucketViewArgs : Pulumi.ResourceArgs
+    public sealed class BucketViewArgs : global::Pulumi.ResourceArgs
     {
         [Input("bucketId", required: true)]
         public Input<string> BucketId { get; set; } = null!;
@@ -148,5 +148,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         public BucketViewArgs()
         {
         }
+        public static new BucketViewArgs Empty => new BucketViewArgs();
     }
 }

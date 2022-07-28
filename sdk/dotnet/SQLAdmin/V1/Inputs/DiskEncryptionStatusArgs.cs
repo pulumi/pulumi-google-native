@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// Disk encryption status for an instance.
     /// </summary>
-    public sealed class DiskEncryptionStatusArgs : Pulumi.ResourceArgs
+    public sealed class DiskEncryptionStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is always `sql#diskEncryptionStatus`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public DiskEncryptionStatusArgs()
         {
         }
+        public static new DiskEncryptionStatusArgs Empty => new DiskEncryptionStatusArgs();
     }
 }

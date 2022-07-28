@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A key-value pair passed as an environment variable to the test.
     /// </summary>
-    public sealed class EnvironmentVariableArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentVariableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key for the environment variable.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public EnvironmentVariableArgs()
         {
         }
+        public static new EnvironmentVariableArgs Empty => new EnvironmentVariableArgs();
     }
 }

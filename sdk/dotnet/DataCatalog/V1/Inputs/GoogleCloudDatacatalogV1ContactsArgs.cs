@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Contact people for the entry.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1ContactsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1ContactsArgs : global::Pulumi.ResourceArgs
     {
         [Input("people")]
         private InputList<Inputs.GoogleCloudDatacatalogV1ContactsPersonArgs>? _people;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1ContactsArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1ContactsArgs Empty => new GoogleCloudDatacatalogV1ContactsArgs();
     }
 }

@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Define how to redact sensitive values. Default behaviour is erase. For example, "My name is Jane." becomes "My name is ."
     /// </summary>
-    public sealed class RedactConfigArgs : Pulumi.ResourceArgs
+    public sealed class RedactConfigArgs : global::Pulumi.ResourceArgs
     {
         public RedactConfigArgs()
         {
         }
+        public static new RedactConfigArgs Empty => new RedactConfigArgs();
     }
 }

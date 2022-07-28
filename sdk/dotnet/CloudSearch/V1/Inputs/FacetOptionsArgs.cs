@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     /// <summary>
     /// Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
     /// </summary>
-    public sealed class FacetOptionsArgs : Pulumi.ResourceArgs
+    public sealed class FacetOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public FacetOptionsArgs()
         {
         }
+        public static new FacetOptionsArgs Empty => new FacetOptionsArgs();
     }
 }

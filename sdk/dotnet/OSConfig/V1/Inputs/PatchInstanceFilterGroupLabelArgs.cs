@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// Targets a group of VM instances by using their [assigned labels](https://cloud.google.com/compute/docs/labeling-resources). Labels are key-value pairs. A `GroupLabel` is a combination of labels that is used to target VMs for a patch job. For example, a patch job can target VMs that have the following `GroupLabel`: `{"env":"test", "app":"web"}`. This means that the patch job is applied to VMs that have both the labels `env=test` and `app=web`.
     /// </summary>
-    public sealed class PatchInstanceFilterGroupLabelArgs : Pulumi.ResourceArgs
+    public sealed class PatchInstanceFilterGroupLabelArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public PatchInstanceFilterGroupLabelArgs()
         {
         }
+        public static new PatchInstanceFilterGroupLabelArgs Empty => new PatchInstanceFilterGroupLabelArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
 {
 
-    public sealed class ConfigFileArgs : Pulumi.ResourceArgs
+    public sealed class ConfigFileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The contents of the file.
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
         public ConfigFileArgs()
         {
         }
+        public static new ConfigFileArgs Empty => new ConfigFileArgs();
     }
 }

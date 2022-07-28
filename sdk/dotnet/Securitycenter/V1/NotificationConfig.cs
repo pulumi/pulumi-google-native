@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     /// Creates a notification config.
     /// </summary>
     [GoogleNativeResourceType("google-native:securitycenter/v1:NotificationConfig")]
-    public partial class NotificationConfig : Pulumi.CustomResource
+    public partial class NotificationConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
@@ -102,7 +102,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         }
     }
 
-    public sealed class NotificationConfigArgs : Pulumi.ResourceArgs
+    public sealed class NotificationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Unique identifier provided by the client within the parent scope. It must be between 1 and 128 characters, and contains alphanumeric characters, underscores or hyphens only.
@@ -140,5 +140,6 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public NotificationConfigArgs()
         {
         }
+        public static new NotificationConfigArgs Empty => new NotificationConfigArgs();
     }
 }

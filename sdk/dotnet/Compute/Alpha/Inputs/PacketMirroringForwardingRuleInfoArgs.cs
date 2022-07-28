@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class PacketMirroringForwardingRuleInfoArgs : Pulumi.ResourceArgs
+    public sealed class PacketMirroringForwardingRuleInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource URL to the forwarding rule representing the ILB configured as destination of the mirrored traffic.
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public PacketMirroringForwardingRuleInfoArgs()
         {
         }
+        public static new PacketMirroringForwardingRuleInfoArgs Empty => new PacketMirroringForwardingRuleInfoArgs();
     }
 }

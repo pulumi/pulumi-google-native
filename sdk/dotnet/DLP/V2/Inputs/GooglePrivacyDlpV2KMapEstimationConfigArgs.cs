@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Reidentifiability metric. This corresponds to a risk model similar to what is called "journalist risk" in the literature, except the attack dataset is statistically modeled instead of being perfectly known. This can be done using publicly available data (like the US Census), or using a custom statistical model (indicated as one or several BigQuery tables), or by extrapolating from the distribution of values in the input dataset.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2KMapEstimationConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2KMapEstimationConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("auxiliaryTables")]
         private InputList<Inputs.GooglePrivacyDlpV2AuxiliaryTableArgs>? _auxiliaryTables;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2KMapEstimationConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2KMapEstimationConfigArgs Empty => new GooglePrivacyDlpV2KMapEstimationConfigArgs();
     }
 }

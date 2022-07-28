@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
     /// Creates a new Target in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:clouddeploy/v1:Target")]
-    public partial class Target : Pulumi.CustomResource
+    public partial class Target : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         }
     }
 
-    public sealed class TargetArgs : Pulumi.ResourceArgs
+    public sealed class TargetArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -261,5 +261,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public TargetArgs()
         {
         }
+        public static new TargetArgs Empty => new TargetArgs();
     }
 }

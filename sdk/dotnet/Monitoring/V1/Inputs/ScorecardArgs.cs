@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A widget showing the latest value of a metric, and how this value relates to one or more thresholds.
     /// </summary>
-    public sealed class ScorecardArgs : Pulumi.ResourceArgs
+    public sealed class ScorecardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Will cause the scorecard to show a gauge chart.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public ScorecardArgs()
         {
         }
+        public static new ScorecardArgs Empty => new ScorecardArgs();
     }
 }

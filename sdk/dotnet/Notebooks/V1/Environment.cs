@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:notebooks/v1:Environment")]
-    public partial class Environment : Pulumi.CustomResource
+    public partial class Environment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Use a container image to start the notebook instance.
@@ -119,7 +119,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         }
     }
 
-    public sealed class EnvironmentArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Use a container image to start the notebook instance.
@@ -166,5 +166,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public EnvironmentArgs()
         {
         }
+        public static new EnvironmentArgs Empty => new EnvironmentArgs();
     }
 }

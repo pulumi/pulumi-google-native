@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// This represents a particular package that is distributed over various channels. e.g. glibc (aka libc6) is distributed by many, at various versions.
     /// </summary>
-    public sealed class PackageArgs : Pulumi.ResourceArgs
+    public sealed class PackageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public PackageArgs()
         {
         }
+        public static new PackageArgs Empty => new PackageArgs();
     }
 }

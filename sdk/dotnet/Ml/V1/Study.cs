@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Ml.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:ml/v1:Study")]
-    public partial class Study : Pulumi.CustomResource
+    public partial class Study : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time at which the study was created.
@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         }
     }
 
-    public sealed class StudyArgs : Pulumi.ResourceArgs
+    public sealed class StudyArgs : global::Pulumi.ResourceArgs
     {
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -130,5 +130,6 @@ namespace Pulumi.GoogleNative.Ml.V1
         public StudyArgs()
         {
         }
+        public static new StudyArgs Empty => new StudyArgs();
     }
 }

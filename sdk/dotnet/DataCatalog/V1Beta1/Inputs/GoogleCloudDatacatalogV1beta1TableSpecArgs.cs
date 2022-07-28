@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Inputs
     /// <summary>
     /// Normal BigQuery table spec.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1beta1TableSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1beta1TableSpecArgs : global::Pulumi.ResourceArgs
     {
         public GoogleCloudDatacatalogV1beta1TableSpecArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1beta1TableSpecArgs Empty => new GoogleCloudDatacatalogV1beta1TableSpecArgs();
     }
 }

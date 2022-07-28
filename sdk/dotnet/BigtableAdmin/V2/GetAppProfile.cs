@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     }
 
 
-    public sealed class GetAppProfileArgs : Pulumi.InvokeArgs
+    public sealed class GetAppProfileArgs : global::Pulumi.InvokeArgs
     {
         [Input("appProfileId", required: true)]
         public string AppProfileId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public GetAppProfileArgs()
         {
         }
+        public static new GetAppProfileArgs Empty => new GetAppProfileArgs();
     }
 
-    public sealed class GetAppProfileInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAppProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("appProfileId", required: true)]
         public Input<string> AppProfileId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public GetAppProfileInvokeArgs()
         {
         }
+        public static new GetAppProfileInvokeArgs Empty => new GetAppProfileInvokeArgs();
     }
 
 

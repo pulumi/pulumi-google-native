@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     }
 
 
-    public sealed class GetBuildArgs : Pulumi.InvokeArgs
+    public sealed class GetBuildArgs : global::Pulumi.InvokeArgs
     {
         [Input("buildId", required: true)]
         public string BuildId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public GetBuildArgs()
         {
         }
+        public static new GetBuildArgs Empty => new GetBuildArgs();
     }
 
-    public sealed class GetBuildInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBuildInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("buildId", required: true)]
         public Input<string> BuildId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public GetBuildInvokeArgs()
         {
         }
+        public static new GetBuildInvokeArgs Empty => new GetBuildInvokeArgs();
     }
 
 

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
 {
 
-    public sealed class PollingOptionsArgs : Pulumi.ResourceArgs
+    public sealed class PollingOptionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("diagnostics")]
         private InputList<Inputs.DiagnosticArgs>? _diagnostics;
@@ -51,5 +51,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
         public PollingOptionsArgs()
         {
         }
+        public static new PollingOptionsArgs Empty => new PollingOptionsArgs();
     }
 }

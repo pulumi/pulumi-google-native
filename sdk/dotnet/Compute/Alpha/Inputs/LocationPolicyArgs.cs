@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Configuration for location policy among multiple possible locations (e.g. preferences for zone selection among zones in a single region).
     /// </summary>
-    public sealed class LocationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class LocationPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("locations")]
         private InputMap<string>? _locations;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public LocationPolicyArgs()
         {
         }
+        public static new LocationPolicyArgs Empty => new LocationPolicyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// Settings related to speech recognition.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to use speech adaptation for speech recognition.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs Empty => new GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs();
     }
 }

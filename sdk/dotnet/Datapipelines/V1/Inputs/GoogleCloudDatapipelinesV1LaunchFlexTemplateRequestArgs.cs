@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
     /// <summary>
     /// A request to launch a Dataflow job from a Flex Template.
     /// </summary>
-    public sealed class GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Parameter to launch a job from a Flex Template.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
         public GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs()
         {
         }
+        public static new GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs Empty => new GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs();
     }
 }

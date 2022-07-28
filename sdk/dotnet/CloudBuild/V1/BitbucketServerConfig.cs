@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     /// Creates a new `BitbucketServerConfig`. This API is experimental.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbuild/v1:BitbucketServerConfig")]
-    public partial class BitbucketServerConfig : Pulumi.CustomResource
+    public partial class BitbucketServerConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
@@ -135,7 +135,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         }
     }
 
-    public sealed class BitbucketServerConfigArgs : Pulumi.ResourceArgs
+    public sealed class BitbucketServerConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. API Key that will be attached to webhook. Once this field has been set, it cannot be changed. If you need to change it, please create another BitbucketServerConfig.
@@ -200,5 +200,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public BitbucketServerConfigArgs()
         {
         }
+        public static new BitbucketServerConfigArgs Empty => new BitbucketServerConfigArgs();
     }
 }

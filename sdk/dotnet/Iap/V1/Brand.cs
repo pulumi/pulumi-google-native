@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Iap.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:iap/v1:Brand")]
-    public partial class Brand : Pulumi.CustomResource
+    public partial class Brand : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Application name displayed on OAuth consent screen.
@@ -92,7 +92,7 @@ namespace Pulumi.GoogleNative.Iap.V1
         }
     }
 
-    public sealed class BrandArgs : Pulumi.ResourceArgs
+    public sealed class BrandArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Application name displayed on OAuth consent screen.
@@ -112,5 +112,6 @@ namespace Pulumi.GoogleNative.Iap.V1
         public BrandArgs()
         {
         }
+        public static new BrandArgs Empty => new BrandArgs();
     }
 }

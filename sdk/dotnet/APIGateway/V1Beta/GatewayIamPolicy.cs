@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigateway/v1beta:GatewayIamPolicy")]
-    public partial class GatewayIamPolicy : Pulumi.CustomResource
+    public partial class GatewayIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         }
     }
 
-    public sealed class GatewayIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class GatewayIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.ApigatewayAuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         public GatewayIamPolicyArgs()
         {
         }
+        public static new GatewayIamPolicyArgs Empty => new GatewayIamPolicyArgs();
     }
 }

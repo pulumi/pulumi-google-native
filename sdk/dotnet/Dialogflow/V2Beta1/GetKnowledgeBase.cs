@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     }
 
 
-    public sealed class GetKnowledgeBaseArgs : Pulumi.InvokeArgs
+    public sealed class GetKnowledgeBaseArgs : global::Pulumi.InvokeArgs
     {
         [Input("knowledgeBaseId", required: true)]
         public string KnowledgeBaseId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public GetKnowledgeBaseArgs()
         {
         }
+        public static new GetKnowledgeBaseArgs Empty => new GetKnowledgeBaseArgs();
     }
 
-    public sealed class GetKnowledgeBaseInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKnowledgeBaseInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("knowledgeBaseId", required: true)]
         public Input<string> KnowledgeBaseId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public GetKnowledgeBaseInvokeArgs()
         {
         }
+        public static new GetKnowledgeBaseInvokeArgs Empty => new GetKnowledgeBaseInvokeArgs();
     }
 
 

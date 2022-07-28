@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
     }
 
 
-    public sealed class GetTypeProviderArgs : Pulumi.InvokeArgs
+    public sealed class GetTypeProviderArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         public GetTypeProviderArgs()
         {
         }
+        public static new GetTypeProviderArgs Empty => new GetTypeProviderArgs();
     }
 
-    public sealed class GetTypeProviderInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTypeProviderInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         public GetTypeProviderInvokeArgs()
         {
         }
+        public static new GetTypeProviderInvokeArgs Empty => new GetTypeProviderInvokeArgs();
     }
 
 

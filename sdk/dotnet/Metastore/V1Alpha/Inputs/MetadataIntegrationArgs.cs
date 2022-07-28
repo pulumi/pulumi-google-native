@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
     /// <summary>
     /// Specifies how metastore metadata should be integrated with external services.
     /// </summary>
-    public sealed class MetadataIntegrationArgs : Pulumi.ResourceArgs
+    public sealed class MetadataIntegrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The integration config for the Data Catalog service.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
         public MetadataIntegrationArgs()
         {
         }
+        public static new MetadataIntegrationArgs Empty => new MetadataIntegrationArgs();
     }
 }

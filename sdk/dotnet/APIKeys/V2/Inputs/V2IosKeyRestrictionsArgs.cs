@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.APIKeys.V2.Inputs
     /// <summary>
     /// The iOS apps that are allowed to use the key.
     /// </summary>
-    public sealed class V2IosKeyRestrictionsArgs : Pulumi.ResourceArgs
+    public sealed class V2IosKeyRestrictionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedBundleIds")]
         private InputList<string>? _allowedBundleIds;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.APIKeys.V2.Inputs
         public V2IosKeyRestrictionsArgs()
         {
         }
+        public static new V2IosKeyRestrictionsArgs Empty => new V2IosKeyRestrictionsArgs();
     }
 }

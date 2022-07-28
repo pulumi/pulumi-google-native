@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:networksecurity/v1beta1:ClientTlsPolicyIamPolicy")]
-    public partial class ClientTlsPolicyIamPolicy : Pulumi.CustomResource
+    public partial class ClientTlsPolicyIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         }
     }
 
-    public sealed class ClientTlsPolicyIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ClientTlsPolicyIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.GoogleIamV1AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public ClientTlsPolicyIamPolicyArgs()
         {
         }
+        public static new ClientTlsPolicyIamPolicyArgs Empty => new ClientTlsPolicyIamPolicyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Represents the Maintenance exclusion option.
     /// </summary>
-    public sealed class MaintenanceExclusionOptionsArgs : Pulumi.ResourceArgs
+    public sealed class MaintenanceExclusionOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public MaintenanceExclusionOptionsArgs()
         {
         }
+        public static new MaintenanceExclusionOptionsArgs Empty => new MaintenanceExclusionOptionsArgs();
     }
 }

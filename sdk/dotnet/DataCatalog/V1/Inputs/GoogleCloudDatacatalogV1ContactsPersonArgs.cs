@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// A contact person for the entry.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1ContactsPersonArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1ContactsPersonArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Designation of the person, for example, Data Steward.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1ContactsPersonArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1ContactsPersonArgs Empty => new GoogleCloudDatacatalogV1ContactsPersonArgs();
     }
 }

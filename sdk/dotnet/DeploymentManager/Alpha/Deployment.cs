@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
     /// Creates a deployment and all of the resources described by the deployment manifest.
     /// </summary>
     [GoogleNativeResourceType("google-native:deploymentmanager/alpha:Deployment")]
-    public partial class Deployment : Pulumi.CustomResource
+    public partial class Deployment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Sets the policy to use for creating new resources.
@@ -155,7 +155,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         }
     }
 
-    public sealed class DeploymentArgs : Pulumi.ResourceArgs
+    public sealed class DeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Sets the policy to use for creating new resources.
@@ -214,5 +214,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         public DeploymentArgs()
         {
         }
+        public static new DeploymentArgs Empty => new DeploymentArgs();
     }
 }

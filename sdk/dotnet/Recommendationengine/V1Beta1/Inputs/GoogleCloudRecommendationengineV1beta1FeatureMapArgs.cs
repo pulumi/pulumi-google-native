@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
     /// <summary>
     /// FeatureMap represents extra features that customers want to include in the recommendation model for catalogs/user events as categorical/numerical features.
     /// </summary>
-    public sealed class GoogleCloudRecommendationengineV1beta1FeatureMapArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRecommendationengineV1beta1FeatureMapArgs : global::Pulumi.ResourceArgs
     {
         [Input("categoricalFeatures")]
         private InputMap<string>? _categoricalFeatures;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
         public GoogleCloudRecommendationengineV1beta1FeatureMapArgs()
         {
         }
+        public static new GoogleCloudRecommendationengineV1beta1FeatureMapArgs Empty => new GoogleCloudRecommendationengineV1beta1FeatureMapArgs();
     }
 }

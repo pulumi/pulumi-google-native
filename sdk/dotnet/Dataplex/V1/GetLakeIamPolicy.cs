@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     }
 
 
-    public sealed class GetLakeIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetLakeIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("lakeId", required: true)]
         public string LakeId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public GetLakeIamPolicyArgs()
         {
         }
+        public static new GetLakeIamPolicyArgs Empty => new GetLakeIamPolicyArgs();
     }
 
-    public sealed class GetLakeIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetLakeIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("lakeId", required: true)]
         public Input<string> LakeId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public GetLakeIamPolicyInvokeArgs()
         {
         }
+        public static new GetLakeIamPolicyInvokeArgs Empty => new GetLakeIamPolicyInvokeArgs();
     }
 
 

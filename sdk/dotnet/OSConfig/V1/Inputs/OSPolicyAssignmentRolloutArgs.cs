@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// Message to configure the rollout at the zonal level for the OS policy assignment.
     /// </summary>
-    public sealed class OSPolicyAssignmentRolloutArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyAssignmentRolloutArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum number (or percentage) of VMs per zone to disrupt at any given moment.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public OSPolicyAssignmentRolloutArgs()
         {
         }
+        public static new OSPolicyAssignmentRolloutArgs Empty => new OSPolicyAssignmentRolloutArgs();
     }
 }

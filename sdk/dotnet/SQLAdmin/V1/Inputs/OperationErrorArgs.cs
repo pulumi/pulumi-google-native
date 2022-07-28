@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// Database instance operation error.
     /// </summary>
-    public sealed class OperationErrorArgs : Pulumi.ResourceArgs
+    public sealed class OperationErrorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Identifies the specific error that occurred.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public OperationErrorArgs()
         {
         }
+        public static new OperationErrorArgs Empty => new OperationErrorArgs();
     }
 }

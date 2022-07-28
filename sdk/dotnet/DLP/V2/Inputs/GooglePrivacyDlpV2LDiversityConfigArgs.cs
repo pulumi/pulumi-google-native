@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// l-diversity metric, used for analysis of reidentification risk.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2LDiversityConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2LDiversityConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("quasiIds")]
         private InputList<Inputs.GooglePrivacyDlpV2FieldIdArgs>? _quasiIds;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2LDiversityConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2LDiversityConfigArgs Empty => new GooglePrivacyDlpV2LDiversityConfigArgs();
     }
 }

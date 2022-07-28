@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2:Evaluation")]
-    public partial class Evaluation : Pulumi.CustomResource
+    public partial class Evaluation : global::Pulumi.CustomResource
     {
         [Output("conversationModelId")]
         public Output<string> ConversationModelId { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         }
     }
 
-    public sealed class EvaluationArgs : Pulumi.ResourceArgs
+    public sealed class EvaluationArgs : global::Pulumi.ResourceArgs
     {
         [Input("conversationModelId", required: true)]
         public Input<string> ConversationModelId { get; set; } = null!;
@@ -137,5 +137,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public EvaluationArgs()
         {
         }
+        public static new EvaluationArgs Empty => new EvaluationArgs();
     }
 }

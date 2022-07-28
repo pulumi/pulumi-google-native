@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Layer holds metadata specific to a layer of a Docker image.
     /// </summary>
-    public sealed class LayerArgs : Pulumi.ResourceArgs
+    public sealed class LayerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The recovered arguments to the Dockerfile directive.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public LayerArgs()
         {
         }
+        public static new LayerArgs Empty => new LayerArgs();
     }
 }

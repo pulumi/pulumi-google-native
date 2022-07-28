@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// A Robo test for an iOS application.
     /// </summary>
-    public sealed class IosRoboTestArgs : Pulumi.ResourceArgs
+    public sealed class IosRoboTestArgs : global::Pulumi.ResourceArgs
     {
         public IosRoboTestArgs()
         {
         }
+        public static new IosRoboTestArgs Empty => new IosRoboTestArgs();
     }
 }

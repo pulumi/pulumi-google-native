@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// A configuration for running Apache Spark SQL (https://spark.apache.org/sql/) queries as a batch workload.
     /// </summary>
-    public sealed class SparkSqlBatchArgs : Pulumi.ResourceArgs
+    public sealed class SparkSqlBatchArgs : global::Pulumi.ResourceArgs
     {
         [Input("jarFileUris")]
         private InputList<string>? _jarFileUris;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public SparkSqlBatchArgs()
         {
         }
+        public static new SparkSqlBatchArgs Empty => new SparkSqlBatchArgs();
     }
 }

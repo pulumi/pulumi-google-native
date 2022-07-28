@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
     /// Creates an analysis. The long running operation is done when the analysis has completed.
     /// </summary>
     [GoogleNativeResourceType("google-native:contactcenterinsights/v1:Analysis")]
-    public partial class Analysis : Pulumi.CustomResource
+    public partial class Analysis : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The result of the analysis, which is populated when the analysis finishes.
@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         }
     }
 
-    public sealed class AnalysisArgs : Pulumi.ResourceArgs
+    public sealed class AnalysisArgs : global::Pulumi.ResourceArgs
     {
         [Input("conversationId", required: true)]
         public Input<string> ConversationId { get; set; } = null!;
@@ -117,5 +117,6 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public AnalysisArgs()
         {
         }
+        public static new AnalysisArgs Empty => new AnalysisArgs();
     }
 }

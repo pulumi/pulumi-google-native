@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// This encapsulates a metric property of the form sum(message_count) where name is message_count and function is sum
     /// </summary>
-    public sealed class GoogleCloudApigeeV1CustomReportMetricArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1CustomReportMetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// aggregate function
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1CustomReportMetricArgs()
         {
         }
+        public static new GoogleCloudApigeeV1CustomReportMetricArgs Empty => new GoogleCloudApigeeV1CustomReportMetricArgs();
     }
 }

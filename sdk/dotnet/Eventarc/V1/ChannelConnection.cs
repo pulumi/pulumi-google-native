@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
     /// Create a new ChannelConnection in a particular project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:eventarc/v1:ChannelConnection")]
-    public partial class ChannelConnection : Pulumi.CustomResource
+    public partial class ChannelConnection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Input only. Activation token for the channel. The token will be used during the creation of ChannelConnection to bind the channel with the provider project. This field will not be stored in the provider resource.
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         }
     }
 
-    public sealed class ChannelConnectionArgs : Pulumi.ResourceArgs
+    public sealed class ChannelConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Input only. Activation token for the channel. The token will be used during the creation of ChannelConnection to bind the channel with the provider project. This field will not be stored in the provider resource.
@@ -147,5 +147,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public ChannelConnectionArgs()
         {
         }
+        public static new ChannelConnectionArgs Empty => new ChannelConnectionArgs();
     }
 }

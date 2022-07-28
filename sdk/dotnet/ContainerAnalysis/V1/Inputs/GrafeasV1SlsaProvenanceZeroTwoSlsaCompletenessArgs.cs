@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Indicates that the builder claims certain fields in this message to be complete.
     /// </summary>
-    public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs : Pulumi.ResourceArgs
+    public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs : global::Pulumi.ResourceArgs
     {
         [Input("environment")]
         public Input<bool>? Environment { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs()
         {
         }
+        public static new GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs Empty => new GrafeasV1SlsaProvenanceZeroTwoSlsaCompletenessArgs();
     }
 }

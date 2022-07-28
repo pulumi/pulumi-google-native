@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     }
 
 
-    public sealed class GetSecuritySettingArgs : Pulumi.InvokeArgs
+    public sealed class GetSecuritySettingArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public GetSecuritySettingArgs()
         {
         }
+        public static new GetSecuritySettingArgs Empty => new GetSecuritySettingArgs();
     }
 
-    public sealed class GetSecuritySettingInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecuritySettingInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public GetSecuritySettingInvokeArgs()
         {
         }
+        public static new GetSecuritySettingInvokeArgs Empty => new GetSecuritySettingInvokeArgs();
     }
 
 

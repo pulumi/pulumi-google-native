@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
     }
 
 
-    public sealed class GetEkmConnectionArgs : Pulumi.InvokeArgs
+    public sealed class GetEkmConnectionArgs : global::Pulumi.InvokeArgs
     {
         [Input("ekmConnectionId", required: true)]
         public string EkmConnectionId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public GetEkmConnectionArgs()
         {
         }
+        public static new GetEkmConnectionArgs Empty => new GetEkmConnectionArgs();
     }
 
-    public sealed class GetEkmConnectionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEkmConnectionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("ekmConnectionId", required: true)]
         public Input<string> EkmConnectionId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public GetEkmConnectionInvokeArgs()
         {
         }
+        public static new GetEkmConnectionInvokeArgs Empty => new GetEkmConnectionInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
     /// <summary>
     /// RetentionPolicy defines a Backup retention policy for a BackupPlan.
     /// </summary>
-    public sealed class RetentionPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RetentionPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Minimum age for Backups created via this BackupPlan (in days). This field MUST be an integer value between 0-90 (inclusive). A Backup created under this BackupPlan will NOT be deletable until it reaches Backup's (create_time + backup_delete_lock_days). Updating this field of a BackupPlan does NOT affect existing Backups under it. Backups created AFTER a successful update will inherit the new value. Default: 0 (no delete blocking)
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         public RetentionPolicyArgs()
         {
         }
+        public static new RetentionPolicyArgs Empty => new RetentionPolicyArgs();
     }
 }

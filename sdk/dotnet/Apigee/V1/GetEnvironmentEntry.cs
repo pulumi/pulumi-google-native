@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetEnvironmentEntryArgs : Pulumi.InvokeArgs
+    public sealed class GetEnvironmentEntryArgs : global::Pulumi.InvokeArgs
     {
         [Input("entryId", required: true)]
         public string EntryId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetEnvironmentEntryArgs()
         {
         }
+        public static new GetEnvironmentEntryArgs Empty => new GetEnvironmentEntryArgs();
     }
 
-    public sealed class GetEnvironmentEntryInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEnvironmentEntryInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("entryId", required: true)]
         public Input<string> EntryId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetEnvironmentEntryInvokeArgs()
         {
         }
+        public static new GetEnvironmentEntryInvokeArgs Empty => new GetEnvironmentEntryInvokeArgs();
     }
 
 

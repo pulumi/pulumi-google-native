@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
     /// <summary>
     /// Defines the conditions under which an IngressPolicy matches a request. Conditions are based on information about the ApiOperation intended to be performed on the target resource of the request. The request must satisfy what is defined in `operations` AND `resources` in order to match.
     /// </summary>
-    public sealed class IngressToArgs : Pulumi.ResourceArgs
+    public sealed class IngressToArgs : global::Pulumi.ResourceArgs
     {
         [Input("operations")]
         private InputList<Inputs.ApiOperationArgs>? _operations;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         public IngressToArgs()
         {
         }
+        public static new IngressToArgs Empty => new IngressToArgs();
     }
 }

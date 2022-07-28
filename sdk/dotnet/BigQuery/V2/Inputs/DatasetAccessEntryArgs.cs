@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class DatasetAccessEntryArgs : Pulumi.ResourceArgs
+    public sealed class DatasetAccessEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Required] The dataset this entry applies to.
@@ -29,5 +29,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public DatasetAccessEntryArgs()
         {
         }
+        public static new DatasetAccessEntryArgs Empty => new DatasetAccessEntryArgs();
     }
 }

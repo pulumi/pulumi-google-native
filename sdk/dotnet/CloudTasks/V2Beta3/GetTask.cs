@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
     }
 
 
-    public sealed class GetTaskArgs : Pulumi.InvokeArgs
+    public sealed class GetTaskArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
         public GetTaskArgs()
         {
         }
+        public static new GetTaskArgs Empty => new GetTaskArgs();
     }
 
-    public sealed class GetTaskInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTaskInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3
         public GetTaskInvokeArgs()
         {
         }
+        public static new GetTaskInvokeArgs Empty => new GetTaskInvokeArgs();
     }
 
 

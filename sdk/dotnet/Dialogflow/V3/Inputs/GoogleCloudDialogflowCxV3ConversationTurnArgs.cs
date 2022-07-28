@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// One interaction between a human and virtual agent. The human provides some input and the virtual agent provides a response.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3ConversationTurnArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3ConversationTurnArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The user input.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3ConversationTurnArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3ConversationTurnArgs Empty => new GoogleCloudDialogflowCxV3ConversationTurnArgs();
     }
 }

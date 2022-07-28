@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
     /// <summary>
     /// Network configuration for the Dataproc Metastore service.
     /// </summary>
-    public sealed class NetworkConfigArgs : Pulumi.ResourceArgs
+    public sealed class NetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("consumers")]
         private InputList<Inputs.ConsumerArgs>? _consumers;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
         public NetworkConfigArgs()
         {
         }
+        public static new NetworkConfigArgs Empty => new NetworkConfigArgs();
     }
 }

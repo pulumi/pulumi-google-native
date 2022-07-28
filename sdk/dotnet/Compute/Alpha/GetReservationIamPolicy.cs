@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetReservationIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetReservationIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetReservationIamPolicyArgs()
         {
         }
+        public static new GetReservationIamPolicyArgs Empty => new GetReservationIamPolicyArgs();
     }
 
-    public sealed class GetReservationIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetReservationIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetReservationIamPolicyInvokeArgs()
         {
         }
+        public static new GetReservationIamPolicyInvokeArgs Empty => new GetReservationIamPolicyInvokeArgs();
     }
 
 

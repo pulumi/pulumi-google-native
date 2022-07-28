@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1.Inputs
     /// <summary>
     /// A public key in the PkixPublicKey format (see https://tools.ietf.org/html/rfc5280#section-4.1.2.7 for details). Public keys of this type are typically textually encoded using the PEM format.
     /// </summary>
-    public sealed class PkixPublicKeyArgs : Pulumi.ResourceArgs
+    public sealed class PkixPublicKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A PEM-encoded public key, as described in https://tools.ietf.org/html/rfc7468#section-13
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1.Inputs
         public PkixPublicKeyArgs()
         {
         }
+        public static new PkixPublicKeyArgs Empty => new PkixPublicKeyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
     /// <summary>
     /// Contains information about Service Directory-backed zones.
     /// </summary>
-    public sealed class ManagedZoneServiceDirectoryConfigArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZoneServiceDirectoryConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         public ManagedZoneServiceDirectoryConfigArgs()
         {
         }
+        public static new ManagedZoneServiceDirectoryConfigArgs Empty => new ManagedZoneServiceDirectoryConfigArgs();
     }
 }

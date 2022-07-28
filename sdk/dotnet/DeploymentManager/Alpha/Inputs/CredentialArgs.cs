@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
     /// <summary>
     /// The credential used by Deployment Manager and TypeProvider. Only one of the options is permitted.
     /// </summary>
-    public sealed class CredentialArgs : Pulumi.ResourceArgs
+    public sealed class CredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Basic Auth Credential, only used by TypeProvider.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
         public CredentialArgs()
         {
         }
+        public static new CredentialArgs Empty => new CredentialArgs();
     }
 }

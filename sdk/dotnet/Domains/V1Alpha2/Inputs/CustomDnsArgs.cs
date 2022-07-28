@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Inputs
     /// <summary>
     /// Configuration for an arbitrary DNS provider.
     /// </summary>
-    public sealed class CustomDnsArgs : Pulumi.ResourceArgs
+    public sealed class CustomDnsArgs : global::Pulumi.ResourceArgs
     {
         [Input("dsRecords")]
         private InputList<Inputs.DsRecordArgs>? _dsRecords;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Inputs
         public CustomDnsArgs()
         {
         }
+        public static new CustomDnsArgs Empty => new CustomDnsArgs();
     }
 }

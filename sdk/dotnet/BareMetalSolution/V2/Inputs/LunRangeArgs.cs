@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
     /// <summary>
     /// A LUN(Logical Unit Number) range.
     /// </summary>
-    public sealed class LunRangeArgs : Pulumi.ResourceArgs
+    public sealed class LunRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of LUNs to create.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public LunRangeArgs()
         {
         }
+        public static new LunRangeArgs Empty => new LunRangeArgs();
     }
 }

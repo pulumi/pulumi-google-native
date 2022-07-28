@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Ad break.
     /// </summary>
-    public sealed class AdBreakArgs : Pulumi.ResourceArgs
+    public sealed class AdBreakArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Start time in seconds for the ad break, relative to the output file timeline. The default is `0s`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public AdBreakArgs()
         {
         }
+        public static new AdBreakArgs Empty => new AdBreakArgs();
     }
 }

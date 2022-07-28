@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Contains the configuration for FHIR search.
     /// </summary>
-    public sealed class SearchConfigArgs : Pulumi.ResourceArgs
+    public sealed class SearchConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("searchParameters")]
         private InputList<Inputs.SearchParameterArgs>? _searchParameters;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public SearchConfigArgs()
         {
         }
+        public static new SearchConfigArgs Empty => new SearchConfigArgs();
     }
 }

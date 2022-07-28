@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
     /// <summary>
     /// Retry config. These settings determine how a failed task attempt is retried.
     /// </summary>
-    public sealed class RetryConfigArgs : Pulumi.ResourceArgs
+    public sealed class RetryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum number of attempts for a task. Cloud Tasks will attempt the task `max_attempts` times (that is, if the first attempt fails, then there will be `max_attempts - 1` retries). Must be &gt; 0.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
         public RetryConfigArgs()
         {
         }
+        public static new RetryConfigArgs Empty => new RetryConfigArgs();
     }
 }

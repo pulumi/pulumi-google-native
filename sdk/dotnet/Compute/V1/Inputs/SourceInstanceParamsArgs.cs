@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// A specification of the parameters to use when creating the instance template from a source instance.
     /// </summary>
-    public sealed class SourceInstanceParamsArgs : Pulumi.ResourceArgs
+    public sealed class SourceInstanceParamsArgs : global::Pulumi.ResourceArgs
     {
         [Input("diskConfigs")]
         private InputList<Inputs.DiskInstantiationConfigArgs>? _diskConfigs;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public SourceInstanceParamsArgs()
         {
         }
+        public static new SourceInstanceParamsArgs Empty => new SourceInstanceParamsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// Autoscaling Policy config associated with the cluster.
     /// </summary>
-    public sealed class AutoscalingConfigArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id] projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Dataproc region.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public AutoscalingConfigArgs()
         {
         }
+        public static new AutoscalingConfigArgs Empty => new AutoscalingConfigArgs();
     }
 }

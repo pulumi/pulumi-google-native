@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     /// Creates an entity type in the specified agent.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:EntityType")]
-    public partial class EntityType : Pulumi.CustomResource
+    public partial class EntityType : global::Pulumi.CustomResource
     {
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         }
     }
 
-    public sealed class EntityTypeArgs : Pulumi.ResourceArgs
+    public sealed class EntityTypeArgs : global::Pulumi.ResourceArgs
     {
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -207,5 +207,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public EntityTypeArgs()
         {
         }
+        public static new EntityTypeArgs Empty => new EntityTypeArgs();
     }
 }

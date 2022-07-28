@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Inputs
     /// <summary>
     /// LocalCopy defines how a remote file should be copied to and from the VM.
     /// </summary>
-    public sealed class LocalCopyArgs : Pulumi.ResourceArgs
+    public sealed class LocalCopyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the disk where this parameter is located. Can be the name of one of the disks specified in the Resources field, or "boot", which represents the Docker instance's boot disk and has a mount point of `/`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Inputs
         public LocalCopyArgs()
         {
         }
+        public static new LocalCopyArgs Empty => new LocalCopyArgs();
     }
 }

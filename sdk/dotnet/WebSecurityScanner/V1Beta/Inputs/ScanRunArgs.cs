@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
     /// <summary>
     /// A ScanRun is a output-only resource representing an actual run of the scan. Next id: 12
     /// </summary>
-    public sealed class ScanRunArgs : Pulumi.ResourceArgs
+    public sealed class ScanRunArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time at which the ScanRun reached termination state - that the ScanRun is either finished or stopped by user.
@@ -90,5 +90,6 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
         public ScanRunArgs()
         {
         }
+        public static new ScanRunArgs Empty => new ScanRunArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Creates a new data collector.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:DataCollector")]
-    public partial class DataCollector : Pulumi.CustomResource
+    public partial class DataCollector : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time at which the data collector was created in milliseconds since the epoch.
@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class DataCollectorArgs : Pulumi.ResourceArgs
+    public sealed class DataCollectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the data collector. Overrides any ID in the data collector resource. Must be a string beginning with `dc_` that contains only letters, numbers, and underscores.
@@ -133,5 +133,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public DataCollectorArgs()
         {
         }
+        public static new DataCollectorArgs Empty => new DataCollectorArgs();
     }
 }

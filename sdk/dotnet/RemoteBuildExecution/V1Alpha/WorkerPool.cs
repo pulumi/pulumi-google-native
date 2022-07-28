@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
     /// Creates a new worker pool with a specified size and configuration. Returns a long running operation which contains a worker pool on completion. While the long running operation is in progress, any call to `GetWorkerPool` returns a worker pool in state `CREATING`.
     /// </summary>
     [GoogleNativeResourceType("google-native:remotebuildexecution/v1alpha:WorkerPool")]
-    public partial class WorkerPool : Pulumi.CustomResource
+    public partial class WorkerPool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The autoscale policy to apply on a pool.
@@ -105,7 +105,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         }
     }
 
-    public sealed class WorkerPoolArgs : Pulumi.ResourceArgs
+    public sealed class WorkerPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The autoscale policy to apply on a pool.
@@ -158,5 +158,6 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         public WorkerPoolArgs()
         {
         }
+        public static new WorkerPoolArgs Empty => new WorkerPoolArgs();
     }
 }

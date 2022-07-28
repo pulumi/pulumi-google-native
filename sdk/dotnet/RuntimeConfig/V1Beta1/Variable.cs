@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
     /// Creates a variable within the given configuration. You cannot create a variable with a name that is a prefix of an existing variable name, or a name that has an existing variable name as a prefix. To learn more about creating a variable, read the [Setting and Getting Data](/deployment-manager/runtime-configurator/set-and-get-variables) documentation.
     /// </summary>
     [GoogleNativeResourceType("google-native:runtimeconfig/v1beta1:Variable")]
-    public partial class Variable : Pulumi.CustomResource
+    public partial class Variable : global::Pulumi.CustomResource
     {
         [Output("configId")]
         public Output<string> ConfigId { get; private set; } = null!;
@@ -105,7 +105,7 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         }
     }
 
-    public sealed class VariableArgs : Pulumi.ResourceArgs
+    public sealed class VariableArgs : global::Pulumi.ResourceArgs
     {
         [Input("configId", required: true)]
         public Input<string> ConfigId { get; set; } = null!;
@@ -140,5 +140,6 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         public VariableArgs()
         {
         }
+        public static new VariableArgs Empty => new VariableArgs();
     }
 }

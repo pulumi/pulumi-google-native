@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Options defining a file or a set of files within a Google Cloud Storage bucket.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2CloudStorageOptionsArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2CloudStorageOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
@@ -57,5 +57,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2CloudStorageOptionsArgs()
         {
         }
+        public static new GooglePrivacyDlpV2CloudStorageOptionsArgs Empty => new GooglePrivacyDlpV2CloudStorageOptionsArgs();
     }
 }

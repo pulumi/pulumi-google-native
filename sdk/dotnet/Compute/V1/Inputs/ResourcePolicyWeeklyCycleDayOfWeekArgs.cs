@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
-    public sealed class ResourcePolicyWeeklyCycleDayOfWeekArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyWeeklyCycleDayOfWeekArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines a schedule that runs on specific days of the week. Specify one or more days. The following options are available: MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY, SUNDAY.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public ResourcePolicyWeeklyCycleDayOfWeekArgs()
         {
         }
+        public static new ResourcePolicyWeeklyCycleDayOfWeekArgs Empty => new ResourcePolicyWeeklyCycleDayOfWeekArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DLP.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dlp/v2:DlpJob")]
-    public partial class DlpJob : Pulumi.CustomResource
+    public partial class DlpJob : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time when the job was created.
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         }
     }
 
-    public sealed class DlpJobArgs : Pulumi.ResourceArgs
+    public sealed class DlpJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An inspection job scans a storage repository for InfoTypes.
@@ -162,5 +162,6 @@ namespace Pulumi.GoogleNative.DLP.V2
         public DlpJobArgs()
         {
         }
+        public static new DlpJobArgs Empty => new DlpJobArgs();
     }
 }

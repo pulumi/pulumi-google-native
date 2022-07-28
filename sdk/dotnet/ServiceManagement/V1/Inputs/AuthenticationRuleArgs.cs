@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Authentication rules for the service. By default, if a method has any authentication requirements, every request must include a valid credential matching one of the requirements. It's an error to include more than one kind of credential in a single request. If a method doesn't have any auth requirements, request credentials will be ignored.
     /// </summary>
-    public sealed class AuthenticationRuleArgs : Pulumi.ResourceArgs
+    public sealed class AuthenticationRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, the service accepts API keys without any other credential. This flag only applies to HTTP and gRPC requests.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public AuthenticationRuleArgs()
         {
         }
+        public static new AuthenticationRuleArgs Empty => new AuthenticationRuleArgs();
     }
 }

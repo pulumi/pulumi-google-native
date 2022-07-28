@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Details of the derived image portion of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
     /// </summary>
-    public sealed class ImageOccurrenceArgs : Pulumi.ResourceArgs
+    public sealed class ImageOccurrenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The fingerprint of the derived image.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public ImageOccurrenceArgs()
         {
         }
+        public static new ImageOccurrenceArgs Empty => new ImageOccurrenceArgs();
     }
 }

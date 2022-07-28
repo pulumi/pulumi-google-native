@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// The HttpRouteRule setting specifies how to match an HTTP request and the corresponding routing action that load balancing proxies perform.
     /// </summary>
-    public sealed class HttpRouteRuleArgs : Pulumi.ResourceArgs
+    public sealed class HttpRouteRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The short description conveying the intent of this routeRule. The description can have a maximum length of 1024 characters.
@@ -90,5 +90,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public HttpRouteRuleArgs()
         {
         }
+        public static new HttpRouteRuleArgs Empty => new HttpRouteRuleArgs();
     }
 }

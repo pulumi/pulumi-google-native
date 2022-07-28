@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     /// <summary>
     /// The config settings for virtual machine.
     /// </summary>
-    public sealed class VirtualMachineConfigArgs : Pulumi.ResourceArgs
+    public sealed class VirtualMachineConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The Compute Engine accelerator configuration for this runtime.
@@ -132,5 +132,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public VirtualMachineConfigArgs()
         {
         }
+        public static new VirtualMachineConfigArgs Empty => new VirtualMachineConfigArgs();
     }
 }

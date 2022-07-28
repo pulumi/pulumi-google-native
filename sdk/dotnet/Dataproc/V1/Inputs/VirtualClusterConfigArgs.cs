@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// The Dataproc cluster config for a cluster that does not directly control the underlying compute resources, such as a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/guides/dpgke/dataproc-gke).
     /// </summary>
-    public sealed class VirtualClusterConfigArgs : Pulumi.ResourceArgs
+    public sealed class VirtualClusterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Configuration of auxiliary services used by this cluster.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public VirtualClusterConfigArgs()
         {
         }
+        public static new VirtualClusterConfigArgs Empty => new VirtualClusterConfigArgs();
     }
 }

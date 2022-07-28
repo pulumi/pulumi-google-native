@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
     /// <summary>
     /// Configuration of a restore. Next id: 9
     /// </summary>
-    public sealed class RestoreConfigArgs : Pulumi.ResourceArgs
+    public sealed class RestoreConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Restore all namespaced resources in the Backup if set to "True". Specifying this field to "False" is an error.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         public RestoreConfigArgs()
         {
         }
+        public static new RestoreConfigArgs Empty => new RestoreConfigArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
     }
 
 
-    public sealed class GetAndroidAppArgs : Pulumi.InvokeArgs
+    public sealed class GetAndroidAppArgs : global::Pulumi.InvokeArgs
     {
         [Input("androidAppId", required: true)]
         public string AndroidAppId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         public GetAndroidAppArgs()
         {
         }
+        public static new GetAndroidAppArgs Empty => new GetAndroidAppArgs();
     }
 
-    public sealed class GetAndroidAppInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAndroidAppInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("androidAppId", required: true)]
         public Input<string> AndroidAppId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         public GetAndroidAppInvokeArgs()
         {
         }
+        public static new GetAndroidAppInvokeArgs Empty => new GetAndroidAppInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Spanner.V1.Inputs
     /// <summary>
     /// Encryption configuration for a Cloud Spanner database.
     /// </summary>
-    public sealed class EncryptionConfigArgs : Pulumi.ResourceArgs
+    public sealed class EncryptionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Cloud KMS key to be used for encrypting and decrypting the database. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Spanner.V1.Inputs
         public EncryptionConfigArgs()
         {
         }
+        public static new EncryptionConfigArgs Empty => new EncryptionConfigArgs();
     }
 }

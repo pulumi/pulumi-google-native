@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1
     /// Creates a new bucket.
     /// </summary>
     [GoogleNativeResourceType("google-native:storage/v1:Bucket")]
-    public partial class Bucket : Pulumi.CustomResource
+    public partial class Bucket : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Access controls on the bucket.
@@ -266,7 +266,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         }
     }
 
-    public sealed class BucketArgs : Pulumi.ResourceArgs
+    public sealed class BucketArgs : global::Pulumi.ResourceArgs
     {
         [Input("acl")]
         private InputList<Inputs.BucketAccessControlArgs>? _acl;
@@ -505,5 +505,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         public BucketArgs()
         {
         }
+        public static new BucketArgs Empty => new BucketArgs();
     }
 }

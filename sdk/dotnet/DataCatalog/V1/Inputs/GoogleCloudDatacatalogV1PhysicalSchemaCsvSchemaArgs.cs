@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Marks a CSV-encoded data source.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs : global::Pulumi.ResourceArgs
     {
         public GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs Empty => new GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs();
     }
 }

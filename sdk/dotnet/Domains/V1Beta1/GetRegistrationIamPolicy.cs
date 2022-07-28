@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
     }
 
 
-    public sealed class GetRegistrationIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistrationIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
         public GetRegistrationIamPolicyArgs()
         {
         }
+        public static new GetRegistrationIamPolicyArgs Empty => new GetRegistrationIamPolicyArgs();
     }
 
-    public sealed class GetRegistrationIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistrationIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1
         public GetRegistrationIamPolicyInvokeArgs()
         {
         }
+        public static new GetRegistrationIamPolicyInvokeArgs Empty => new GetRegistrationIamPolicyInvokeArgs();
     }
 
 

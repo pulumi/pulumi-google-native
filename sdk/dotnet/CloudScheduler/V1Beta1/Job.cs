@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1
     /// Creates a job.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudscheduler/v1beta1:Job")]
-    public partial class Job : Pulumi.CustomResource
+    public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
         /// App Engine HTTP target.
@@ -159,7 +159,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1
         }
     }
 
-    public sealed class JobArgs : Pulumi.ResourceArgs
+    public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// App Engine HTTP target.
@@ -230,5 +230,6 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1
         public JobArgs()
         {
         }
+        public static new JobArgs Empty => new JobArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
     /// <summary>
     /// Association links that an entitlement has to other entitlements.
     /// </summary>
-    public sealed class GoogleCloudChannelV1AssociationInfoArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudChannelV1AssociationInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the base entitlement, for which this entitlement is an add-on.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         public GoogleCloudChannelV1AssociationInfoArgs()
         {
         }
+        public static new GoogleCloudChannelV1AssociationInfoArgs Empty => new GoogleCloudChannelV1AssociationInfoArgs();
     }
 }

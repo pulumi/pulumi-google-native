@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Key-value pair to store extra metadata.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1AttributeArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1AttributeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// API key of the attribute.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1AttributeArgs()
         {
         }
+        public static new GoogleCloudApigeeV1AttributeArgs Empty => new GoogleCloudApigeeV1AttributeArgs();
     }
 }

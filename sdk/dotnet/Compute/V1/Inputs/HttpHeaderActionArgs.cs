@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// The request and response header transformations that take effect before the request is passed along to the selected backendService.
     /// </summary>
-    public sealed class HttpHeaderActionArgs : Pulumi.ResourceArgs
+    public sealed class HttpHeaderActionArgs : global::Pulumi.ResourceArgs
     {
         [Input("requestHeadersToAdd")]
         private InputList<Inputs.HttpHeaderOptionArgs>? _requestHeadersToAdd;
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public HttpHeaderActionArgs()
         {
         }
+        public static new HttpHeaderActionArgs Empty => new HttpHeaderActionArgs();
     }
 }

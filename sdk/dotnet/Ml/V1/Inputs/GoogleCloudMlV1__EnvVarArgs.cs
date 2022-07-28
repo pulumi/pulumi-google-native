@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents an environment variable to be made available in a container. This message is a subset of the [Kubernetes EnvVar v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#envvar-v1-core).
     /// </summary>
-    public sealed class GoogleCloudMlV1__EnvVarArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__EnvVarArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the environment variable. Must be a [valid C identifier](https://github.com/kubernetes/kubernetes/blob/v1.18.8/staging/src/k8s.io/apimachinery/pkg/util/validation/validation.go#L258) and must not begin with the prefix `AIP_`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__EnvVarArgs()
         {
         }
+        public static new GoogleCloudMlV1__EnvVarArgs Empty => new GoogleCloudMlV1__EnvVarArgs();
     }
 }

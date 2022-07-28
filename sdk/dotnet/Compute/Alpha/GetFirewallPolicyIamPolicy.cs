@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetFirewallPolicyIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetFirewallPolicyIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetFirewallPolicyIamPolicyArgs()
         {
         }
+        public static new GetFirewallPolicyIamPolicyArgs Empty => new GetFirewallPolicyIamPolicyArgs();
     }
 
-    public sealed class GetFirewallPolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFirewallPolicyIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetFirewallPolicyIamPolicyInvokeArgs()
         {
         }
+        public static new GetFirewallPolicyIamPolicyInvokeArgs Empty => new GetFirewallPolicyIamPolicyInvokeArgs();
     }
 
 

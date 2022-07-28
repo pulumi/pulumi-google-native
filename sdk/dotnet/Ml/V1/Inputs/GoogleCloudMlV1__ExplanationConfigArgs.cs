@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Message holding configuration options for explaining model predictions. There are three feature attribution methods supported for TensorFlow models: integrated gradients, sampled Shapley, and XRAI. [Learn more about feature attributions.](/ai-platform/prediction/docs/ai-explanations/overview)
     /// </summary>
-    public sealed class GoogleCloudMlV1__ExplanationConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__ExplanationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Attributes credit by computing the Aumann-Shapley value taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1703.01365
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__ExplanationConfigArgs()
         {
         }
+        public static new GoogleCloudMlV1__ExplanationConfigArgs Empty => new GoogleCloudMlV1__ExplanationConfigArgs();
     }
 }

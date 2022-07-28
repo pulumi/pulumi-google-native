@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
     }
 
 
-    public sealed class GetEdgeCacheServiceIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetEdgeCacheServiceIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("edgeCacheServiceId", required: true)]
         public string EdgeCacheServiceId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetEdgeCacheServiceIamPolicyArgs()
         {
         }
+        public static new GetEdgeCacheServiceIamPolicyArgs Empty => new GetEdgeCacheServiceIamPolicyArgs();
     }
 
-    public sealed class GetEdgeCacheServiceIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEdgeCacheServiceIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("edgeCacheServiceId", required: true)]
         public Input<string> EdgeCacheServiceId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetEdgeCacheServiceIamPolicyInvokeArgs()
         {
         }
+        public static new GetEdgeCacheServiceIamPolicyInvokeArgs Empty => new GetEdgeCacheServiceIamPolicyInvokeArgs();
     }
 
 

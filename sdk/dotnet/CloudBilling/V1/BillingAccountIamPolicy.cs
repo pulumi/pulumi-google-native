@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbilling/v1:BillingAccountIamPolicy")]
-    public partial class BillingAccountIamPolicy : Pulumi.CustomResource
+    public partial class BillingAccountIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         }
     }
 
-    public sealed class BillingAccountIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BillingAccountIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -141,5 +141,6 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         public BillingAccountIamPolicyArgs()
         {
         }
+        public static new BillingAccountIamPolicyArgs Empty => new BillingAccountIamPolicyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Configuration of a specific logging destination (the producer project or the consumer project).
     /// </summary>
-    public sealed class LoggingDestinationArgs : Pulumi.ResourceArgs
+    public sealed class LoggingDestinationArgs : global::Pulumi.ResourceArgs
     {
         [Input("logs")]
         private InputList<string>? _logs;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public LoggingDestinationArgs()
         {
         }
+        public static new LoggingDestinationArgs Empty => new LoggingDestinationArgs();
     }
 }

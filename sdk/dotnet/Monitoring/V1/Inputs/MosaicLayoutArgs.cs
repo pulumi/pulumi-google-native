@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A mosaic layout divides the available space into a grid of blocks, and overlays the grid with tiles. Unlike GridLayout, tiles may span multiple grid blocks and can be placed at arbitrary locations in the grid.
     /// </summary>
-    public sealed class MosaicLayoutArgs : Pulumi.ResourceArgs
+    public sealed class MosaicLayoutArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of columns in the mosaic grid. The number of columns must be between 1 and 12, inclusive.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public MosaicLayoutArgs()
         {
         }
+        public static new MosaicLayoutArgs Empty => new MosaicLayoutArgs();
     }
 }

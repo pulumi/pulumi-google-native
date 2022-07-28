@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
 
-    public sealed class GetUrlMapArgs : Pulumi.InvokeArgs
+    public sealed class GetUrlMapArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetUrlMapArgs()
         {
         }
+        public static new GetUrlMapArgs Empty => new GetUrlMapArgs();
     }
 
-    public sealed class GetUrlMapInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetUrlMapInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetUrlMapInvokeArgs()
         {
         }
+        public static new GetUrlMapInvokeArgs Empty => new GetUrlMapInvokeArgs();
     }
 
 

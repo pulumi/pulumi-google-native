@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Inputs
     /// <summary>
     /// A message defining the database engine and provider.
     /// </summary>
-    public sealed class DatabaseTypeArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The database engine.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Inputs
         public DatabaseTypeArgs()
         {
         }
+        public static new DatabaseTypeArgs Empty => new DatabaseTypeArgs();
     }
 }

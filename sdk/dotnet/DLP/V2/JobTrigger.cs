@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2
     /// Creates a job trigger to run DLP actions such as scanning storage for sensitive information on a set schedule. See https://cloud.google.com/dlp/docs/creating-job-triggers to learn more.
     /// </summary>
     [GoogleNativeResourceType("google-native:dlp/v2:JobTrigger")]
-    public partial class JobTrigger : Pulumi.CustomResource
+    public partial class JobTrigger : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The creation timestamp of a triggeredJob.
@@ -129,7 +129,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         }
     }
 
-    public sealed class JobTriggerArgs : Pulumi.ResourceArgs
+    public sealed class JobTriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User provided description (max 256 chars)
@@ -191,5 +191,6 @@ namespace Pulumi.GoogleNative.DLP.V2
         public JobTriggerArgs()
         {
         }
+        public static new JobTriggerArgs Empty => new JobTriggerArgs();
     }
 }

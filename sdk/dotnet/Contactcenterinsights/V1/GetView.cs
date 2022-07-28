@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
     }
 
 
-    public sealed class GetViewArgs : Pulumi.InvokeArgs
+    public sealed class GetViewArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public GetViewArgs()
         {
         }
+        public static new GetViewArgs Empty => new GetViewArgs();
     }
 
-    public sealed class GetViewInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetViewInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public GetViewInvokeArgs()
         {
         }
+        public static new GetViewInvokeArgs Empty => new GetViewInvokeArgs();
     }
 
 

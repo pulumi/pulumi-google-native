@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// VP9 codec settings.
     /// </summary>
-    public sealed class Vp9CodecSettingsArgs : Pulumi.ResourceArgs
+    public sealed class Vp9CodecSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The video bitrate in bits per second. The minimum value is 1,000. The maximum value is 480,000,000.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public Vp9CodecSettingsArgs()
         {
         }
+        public static new Vp9CodecSettingsArgs Empty => new Vp9CodecSettingsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
     /// <summary>
     /// An RPM package file. RPM packages only support INSTALLED state.
     /// </summary>
-    public sealed class OSPolicyResourcePackageResourceRPMArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourcePackageResourceRPMArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether dependencies should also be installed. - install when false: `rpm --upgrade --replacepkgs package.rpm` - install when true: `yum -y install package.rpm` or `zypper -y install package.rpm`
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public OSPolicyResourcePackageResourceRPMArgs()
         {
         }
+        public static new OSPolicyResourcePackageResourceRPMArgs Empty => new OSPolicyResourcePackageResourceRPMArgs();
     }
 }

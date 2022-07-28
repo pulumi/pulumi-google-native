@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Provenance of a build. Contains all information needed to verify the full details about the build from source to completion.
     /// </summary>
-    public sealed class BuildProvenanceArgs : Pulumi.ResourceArgs
+    public sealed class BuildProvenanceArgs : global::Pulumi.ResourceArgs
     {
         [Input("buildOptions")]
         private InputMap<string>? _buildOptions;
@@ -114,5 +114,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public BuildProvenanceArgs()
         {
         }
+        public static new BuildProvenanceArgs Empty => new BuildProvenanceArgs();
     }
 }

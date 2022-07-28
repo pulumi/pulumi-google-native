@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1.Inputs
     /// <summary>
     /// ExternalProtectionLevelOptions stores a group of additional fields for configuring a CryptoKeyVersion that are specific to the EXTERNAL protection level and EXTERNAL_VPC protection levels.
     /// </summary>
-    public sealed class ExternalProtectionLevelOptionsArgs : Pulumi.ResourceArgs
+    public sealed class ExternalProtectionLevelOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The path to the external key material on the EKM when using EkmConnection e.g., "v0/my/key". Set this field instead of external_key_uri when using an EkmConnection.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1.Inputs
         public ExternalProtectionLevelOptionsArgs()
         {
         }
+        public static new ExternalProtectionLevelOptionsArgs Empty => new ExternalProtectionLevelOptionsArgs();
     }
 }

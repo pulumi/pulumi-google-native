@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
     /// <summary>
     /// Represents a Sql Server user on the Cloud SQL instance.
     /// </summary>
-    public sealed class SqlServerUserDetailsArgs : Pulumi.ResourceArgs
+    public sealed class SqlServerUserDetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If the user has been disabled
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public SqlServerUserDetailsArgs()
         {
         }
+        public static new SqlServerUserDetailsArgs Empty => new SqlServerUserDetailsArgs();
     }
 }

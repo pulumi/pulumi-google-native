@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// Details for an outcome with an INCONCLUSIVE outcome summary.
     /// </summary>
-    public sealed class InconclusiveDetailArgs : Pulumi.ResourceArgs
+    public sealed class InconclusiveDetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If the end user aborted the test execution before a pass or fail could be determined. For example, the user pressed ctrl-c which sent a kill signal to the test runner while the test was running.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public InconclusiveDetailArgs()
         {
         }
+        public static new InconclusiveDetailArgs Empty => new InconclusiveDetailArgs();
     }
 }

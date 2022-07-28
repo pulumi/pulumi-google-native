@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     /// Creates a logs-based metric.
     /// </summary>
     [GoogleNativeResourceType("google-native:logging/v2:Metric")]
-    public partial class Metric : Pulumi.CustomResource
+    public partial class Metric : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. The bucket_options are required when the logs-based metric is using a DISTRIBUTION value type and it describes the bucket boundaries used to create a histogram of the extracted values.
@@ -131,7 +131,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         }
     }
 
-    public sealed class MetricArgs : Pulumi.ResourceArgs
+    public sealed class MetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The bucket_options are required when the logs-based metric is using a DISTRIBUTION value type and it describes the bucket boundaries used to create a histogram of the extracted values.
@@ -199,5 +199,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         public MetricArgs()
         {
         }
+        public static new MetricArgs Empty => new MetricArgs();
     }
 }

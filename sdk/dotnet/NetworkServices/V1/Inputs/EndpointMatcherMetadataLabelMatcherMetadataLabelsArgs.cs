@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
     /// <summary>
     /// Defines a name-pair value for a single label.
     /// </summary>
-    public sealed class EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs : Pulumi.ResourceArgs
+    public sealed class EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Label name presented as key in xDS Node Metadata.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
         public EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs()
         {
         }
+        public static new EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs Empty => new EndpointMatcherMetadataLabelMatcherMetadataLabelsArgs();
     }
 }

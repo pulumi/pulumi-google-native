@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Instructions regarding the table content being inspected.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2TableOptionsArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2TableOptionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("identifyingFields")]
         private InputList<Inputs.GooglePrivacyDlpV2FieldIdArgs>? _identifyingFields;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2TableOptionsArgs()
         {
         }
+        public static new GooglePrivacyDlpV2TableOptionsArgs Empty => new GooglePrivacyDlpV2TableOptionsArgs();
     }
 }

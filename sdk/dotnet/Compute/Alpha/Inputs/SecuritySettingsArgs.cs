@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// The authentication and authorization settings for a BackendService.
     /// </summary>
-    public sealed class SecuritySettingsArgs : Pulumi.ResourceArgs
+    public sealed class SecuritySettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Deprecated] Use clientTlsPolicy instead.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SecuritySettingsArgs()
         {
         }
+        public static new SecuritySettingsArgs Empty => new SecuritySettingsArgs();
     }
 }

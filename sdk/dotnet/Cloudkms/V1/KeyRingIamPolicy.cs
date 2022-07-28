@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudkms/v1:KeyRingIamPolicy")]
-    public partial class KeyRingIamPolicy : Pulumi.CustomResource
+    public partial class KeyRingIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         }
     }
 
-    public sealed class KeyRingIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class KeyRingIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public KeyRingIamPolicyArgs()
         {
         }
+        public static new KeyRingIamPolicyArgs Empty => new KeyRingIamPolicyArgs();
     }
 }

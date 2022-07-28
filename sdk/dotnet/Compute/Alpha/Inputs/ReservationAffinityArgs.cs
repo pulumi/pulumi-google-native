@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Specifies the reservations that this instance can consume from.
     /// </summary>
-    public sealed class ReservationAffinityArgs : Pulumi.ResourceArgs
+    public sealed class ReservationAffinityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public ReservationAffinityArgs()
         {
         }
+        public static new ReservationAffinityArgs Empty => new ReservationAffinityArgs();
     }
 }

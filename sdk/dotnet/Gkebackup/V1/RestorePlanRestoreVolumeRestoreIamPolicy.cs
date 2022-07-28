@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:gkebackup/v1:RestorePlanRestoreVolumeRestoreIamPolicy")]
-    public partial class RestorePlanRestoreVolumeRestoreIamPolicy : Pulumi.CustomResource
+    public partial class RestorePlanRestoreVolumeRestoreIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         }
     }
 
-    public sealed class RestorePlanRestoreVolumeRestoreIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RestorePlanRestoreVolumeRestoreIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -169,5 +169,6 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public RestorePlanRestoreVolumeRestoreIamPolicyArgs()
         {
         }
+        public static new RestorePlanRestoreVolumeRestoreIamPolicyArgs Empty => new RestorePlanRestoreVolumeRestoreIamPolicyArgs();
     }
 }

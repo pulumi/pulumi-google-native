@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The bucket's lifecycle configuration. See lifecycle management for more information.
     /// </summary>
-    public sealed class BucketLifecycleArgs : Pulumi.ResourceArgs
+    public sealed class BucketLifecycleArgs : global::Pulumi.ResourceArgs
     {
         [Input("rule")]
         private InputList<Inputs.BucketLifecycleRuleItemArgs>? _rule;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketLifecycleArgs()
         {
         }
+        public static new BucketLifecycleArgs Empty => new BucketLifecycleArgs();
     }
 }

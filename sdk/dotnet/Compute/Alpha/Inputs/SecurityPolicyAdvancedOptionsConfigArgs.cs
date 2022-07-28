@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class SecurityPolicyAdvancedOptionsConfigArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyAdvancedOptionsConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("jsonParsing")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.SecurityPolicyAdvancedOptionsConfigJsonParsing>? JsonParsing { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SecurityPolicyAdvancedOptionsConfigArgs()
         {
         }
+        public static new SecurityPolicyAdvancedOptionsConfigArgs Empty => new SecurityPolicyAdvancedOptionsConfigArgs();
     }
 }

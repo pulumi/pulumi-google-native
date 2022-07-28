@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudresourcemanager/v2beta1:Folder")]
-    public partial class Folder : Pulumi.CustomResource
+    public partial class Folder : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Timestamp when the Folder was created. Assigned by the server.
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
         }
     }
 
-    public sealed class FolderArgs : Pulumi.ResourceArgs
+    public sealed class FolderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The folder's display name. A folder's display name must be unique amongst its siblings, e.g. no two folders with the same parent can share the same display name. The display name must start and end with a letter or digit, may contain letters, digits, spaces, hyphens and underscores and can be no longer than 30 characters. This is captured by the regular expression: `[\p{L}\p{N}]([\p{L}\p{N}_- ]{0,28}[\p{L}\p{N}])?`.
@@ -110,5 +110,6 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
         public FolderArgs()
         {
         }
+        public static new FolderArgs Empty => new FolderArgs();
     }
 }

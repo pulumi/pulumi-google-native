@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataplex/v1:Contentitem")]
-    public partial class Contentitem : Pulumi.CustomResource
+    public partial class Contentitem : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Content creation time.
@@ -140,7 +140,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         }
     }
 
-    public sealed class ContentitemArgs : Pulumi.ResourceArgs
+    public sealed class ContentitemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Content data in string format.
@@ -202,5 +202,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public ContentitemArgs()
         {
         }
+        public static new ContentitemArgs Empty => new ContentitemArgs();
     }
 }

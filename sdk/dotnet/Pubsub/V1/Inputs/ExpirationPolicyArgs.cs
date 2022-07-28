@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
     /// <summary>
     /// A policy that specifies the conditions for resource expiration (i.e., automatic resource deletion).
     /// </summary>
-    public sealed class ExpirationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ExpirationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the "time-to-live" duration for an associated resource. The resource expires if it is not active for a period of `ttl`. The definition of "activity" depends on the type of the associated resource. The minimum and maximum allowed values for `ttl` depend on the type of the associated resource, as well. If `ttl` is not set, the associated resource never expires.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
         public ExpirationPolicyArgs()
         {
         }
+        public static new ExpirationPolicyArgs Empty => new ExpirationPolicyArgs();
     }
 }

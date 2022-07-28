@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
     /// <summary>
     /// Async options that determine when a resource should finish.
     /// </summary>
-    public sealed class AsyncOptionsArgs : Pulumi.ResourceArgs
+    public sealed class AsyncOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Method regex where this policy will apply.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
         public AsyncOptionsArgs()
         {
         }
+        public static new AsyncOptionsArgs Empty => new AsyncOptionsArgs();
     }
 }

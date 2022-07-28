@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class RouterInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class RouterInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IP address and range of the interface. The IP range must be in the RFC3927 link-local IP address space. The value must be a CIDR-formatted string, for example: 169.254.0.1/30. NOTE: Do not truncate the address as it represents the IP address of the interface.
@@ -57,5 +57,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public RouterInterfaceArgs()
         {
         }
+        public static new RouterInterfaceArgs Empty => new RouterInterfaceArgs();
     }
 }

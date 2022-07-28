@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class StatefulPolicyArgs : Pulumi.ResourceArgs
+    public sealed class StatefulPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("preservedState")]
         public Input<Inputs.StatefulPolicyPreservedStateArgs>? PreservedState { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public StatefulPolicyArgs()
         {
         }
+        public static new StatefulPolicyArgs Empty => new StatefulPolicyArgs();
     }
 }

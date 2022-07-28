@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// Artifacts produced by a build that should be uploaded upon successful completion of all build steps.
     /// </summary>
-    public sealed class ArtifactsArgs : Pulumi.ResourceArgs
+    public sealed class ArtifactsArgs : global::Pulumi.ResourceArgs
     {
         [Input("images")]
         private InputList<string>? _images;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public ArtifactsArgs()
         {
         }
+        public static new ArtifactsArgs Empty => new ArtifactsArgs();
     }
 }

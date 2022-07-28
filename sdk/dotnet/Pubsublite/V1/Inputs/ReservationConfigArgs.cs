@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsublite.V1.Inputs
     /// <summary>
     /// The settings for this topic's Reservation usage.
     /// </summary>
-    public sealed class ReservationConfigArgs : Pulumi.ResourceArgs
+    public sealed class ReservationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id}
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Pubsublite.V1.Inputs
         public ReservationConfigArgs()
         {
         }
+        public static new ReservationConfigArgs Empty => new ReservationConfigArgs();
     }
 }

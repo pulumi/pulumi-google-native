@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     /// <summary>
     /// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
     /// </summary>
-    public sealed class ProbeArgs : Pulumi.ResourceArgs
+    public sealed class ProbeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Optional) Not supported by Cloud Run One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public ProbeArgs()
         {
         }
+        public static new ProbeArgs Empty => new ProbeArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Edit atom.
     /// </summary>
-    public sealed class EditAtomArgs : Pulumi.ResourceArgs
+    public sealed class EditAtomArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// End time in seconds for the atom, relative to the input file timeline. When `end_time_offset` is not specified, the `inputs` are used until the end of the atom.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public EditAtomArgs()
         {
         }
+        public static new EditAtomArgs Empty => new EditAtomArgs();
     }
 }

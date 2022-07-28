@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard.
     /// </summary>
-    public sealed class CorsPolicyArgs : Pulumi.ResourceArgs
+    public sealed class CorsPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This field translates to the Access-Control-Allow-Credentials header. Default is false.
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public CorsPolicyArgs()
         {
         }
+        public static new CorsPolicyArgs Empty => new CorsPolicyArgs();
     }
 }

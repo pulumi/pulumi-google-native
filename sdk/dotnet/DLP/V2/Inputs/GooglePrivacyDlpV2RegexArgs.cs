@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Message defining a custom regular expression.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2RegexArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2RegexArgs : global::Pulumi.ResourceArgs
     {
         [Input("groupIndexes")]
         private InputList<int>? _groupIndexes;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2RegexArgs()
         {
         }
+        public static new GooglePrivacyDlpV2RegexArgs Empty => new GooglePrivacyDlpV2RegexArgs();
     }
 }

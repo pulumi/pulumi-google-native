@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// The environment values to set at runtime.
     /// </summary>
-    public sealed class RuntimeEnvironmentArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeEnvironmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalExperiments")]
         private InputList<string>? _additionalExperiments;
@@ -126,5 +126,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public RuntimeEnvironmentArgs()
         {
         }
+        public static new RuntimeEnvironmentArgs Empty => new RuntimeEnvironmentArgs();
     }
 }

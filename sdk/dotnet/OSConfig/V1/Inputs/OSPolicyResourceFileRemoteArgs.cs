@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// Specifies a file available via some URI.
     /// </summary>
-    public sealed class OSPolicyResourceFileRemoteArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourceFileRemoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// SHA256 checksum of the remote file.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public OSPolicyResourceFileRemoteArgs()
         {
         }
+        public static new OSPolicyResourceFileRemoteArgs Empty => new OSPolicyResourceFileRemoteArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     /// Creates a model. This method is a [long-running operation](https://cloud.google.com/dialogflow/es/docs/how/long-running-operations). The returned `Operation` type has the following method-specific fields: - `metadata`: CreateConversationModelOperationMetadata - `response`: ConversationModel
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2:ConversationModel")]
-    public partial class ConversationModel : Pulumi.CustomResource
+    public partial class ConversationModel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Metadata for article suggestion models.
@@ -117,7 +117,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         }
     }
 
-    public sealed class ConversationModelArgs : Pulumi.ResourceArgs
+    public sealed class ConversationModelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Metadata for article suggestion models.
@@ -170,5 +170,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public ConversationModelArgs()
         {
         }
+        public static new ConversationModelArgs Empty => new ConversationModelArgs();
     }
 }

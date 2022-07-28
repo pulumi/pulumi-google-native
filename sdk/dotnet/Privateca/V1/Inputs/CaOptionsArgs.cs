@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// Describes values that are relevant in a CA certificate.
     /// </summary>
-    public sealed class CaOptionsArgs : Pulumi.ResourceArgs
+    public sealed class CaOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Refers to the "CA" X.509 extension, which is a boolean value. When this value is missing, the extension will be omitted from the CA certificate.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public CaOptionsArgs()
         {
         }
+        public static new CaOptionsArgs Empty => new CaOptionsArgs();
     }
 }

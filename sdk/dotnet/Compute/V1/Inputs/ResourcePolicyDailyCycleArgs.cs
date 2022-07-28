@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Time window specified for daily operations.
     /// </summary>
-    public sealed class ResourcePolicyDailyCycleArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyDailyCycleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines a schedule with units measured in days. The value determines how many days pass between the start of each cycle.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public ResourcePolicyDailyCycleArgs()
         {
         }
+        public static new ResourcePolicyDailyCycleArgs Empty => new ResourcePolicyDailyCycleArgs();
     }
 }

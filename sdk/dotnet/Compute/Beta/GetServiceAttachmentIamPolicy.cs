@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
 
-    public sealed class GetServiceAttachmentIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceAttachmentIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetServiceAttachmentIamPolicyArgs()
         {
         }
+        public static new GetServiceAttachmentIamPolicyArgs Empty => new GetServiceAttachmentIamPolicyArgs();
     }
 
-    public sealed class GetServiceAttachmentIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceAttachmentIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetServiceAttachmentIamPolicyInvokeArgs()
         {
         }
+        public static new GetServiceAttachmentIamPolicyInvokeArgs Empty => new GetServiceAttachmentIamPolicyInvokeArgs();
     }
 
 

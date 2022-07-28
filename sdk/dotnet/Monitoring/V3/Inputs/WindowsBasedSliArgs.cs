@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// A WindowsBasedSli defines good_service as the count of time windows for which the provided service was of good quality. Criteria for determining if service was good are embedded in the window_criterion.
     /// </summary>
-    public sealed class WindowsBasedSliArgs : Pulumi.ResourceArgs
+    public sealed class WindowsBasedSliArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public WindowsBasedSliArgs()
         {
         }
+        public static new WindowsBasedSliArgs Empty => new WindowsBasedSliArgs();
     }
 }

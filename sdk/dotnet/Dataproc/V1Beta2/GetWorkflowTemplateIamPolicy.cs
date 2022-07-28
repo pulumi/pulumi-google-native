@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
     }
 
 
-    public sealed class GetWorkflowTemplateIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetWorkflowTemplateIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public GetWorkflowTemplateIamPolicyArgs()
         {
         }
+        public static new GetWorkflowTemplateIamPolicyArgs Empty => new GetWorkflowTemplateIamPolicyArgs();
     }
 
-    public sealed class GetWorkflowTemplateIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetWorkflowTemplateIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public GetWorkflowTemplateIamPolicyInvokeArgs()
         {
         }
+        public static new GetWorkflowTemplateIamPolicyInvokeArgs Empty => new GetWorkflowTemplateIamPolicyInvokeArgs();
     }
 
 

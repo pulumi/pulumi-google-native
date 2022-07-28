@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
     }
 
 
-    public sealed class GetGatewayArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewayArgs : global::Pulumi.InvokeArgs
     {
         [Input("gatewayId", required: true)]
         public string GatewayId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         public GetGatewayArgs()
         {
         }
+        public static new GetGatewayArgs Empty => new GetGatewayArgs();
     }
 
-    public sealed class GetGatewayInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewayInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("gatewayId", required: true)]
         public Input<string> GatewayId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         public GetGatewayInvokeArgs()
         {
         }
+        public static new GetGatewayInvokeArgs Empty => new GetGatewayInvokeArgs();
     }
 
 

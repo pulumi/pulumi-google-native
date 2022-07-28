@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     /// <summary>
     /// Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
     /// </summary>
-    public sealed class HTTPHeaderArgs : Pulumi.ResourceArgs
+    public sealed class HTTPHeaderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The header field name
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public HTTPHeaderArgs()
         {
         }
+        public static new HTTPHeaderArgs Empty => new HTTPHeaderArgs();
     }
 }

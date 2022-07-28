@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetRegionNetworkArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionNetworkArgs : global::Pulumi.InvokeArgs
     {
         [Input("network", required: true)]
         public string Network { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetRegionNetworkArgs()
         {
         }
+        public static new GetRegionNetworkArgs Empty => new GetRegionNetworkArgs();
     }
 
-    public sealed class GetRegionNetworkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionNetworkInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("network", required: true)]
         public Input<string> Network { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetRegionNetworkInvokeArgs()
         {
         }
+        public static new GetRegionNetworkInvokeArgs Empty => new GetRegionNetworkInvokeArgs();
     }
 
 

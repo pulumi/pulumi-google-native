@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// This message describes a subordinate CA's issuer certificate chain. This wrapper exists for compatibility reasons.
     /// </summary>
-    public sealed class SubordinateConfigChainArgs : Pulumi.ResourceArgs
+    public sealed class SubordinateConfigChainArgs : global::Pulumi.ResourceArgs
     {
         [Input("pemCertificates", required: true)]
         private InputList<string>? _pemCertificates;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public SubordinateConfigChainArgs()
         {
         }
+        public static new SubordinateConfigChainArgs Empty => new SubordinateConfigChainArgs();
     }
 }

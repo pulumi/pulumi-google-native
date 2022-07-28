@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
     /// <summary>
     /// A package managed by Zypper. - install: `zypper -y install package` - remove: `zypper -y rm package`
     /// </summary>
-    public sealed class OSPolicyResourcePackageResourceZypperArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourcePackageResourceZypperArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Package name.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public OSPolicyResourcePackageResourceZypperArgs()
         {
         }
+        public static new OSPolicyResourcePackageResourceZypperArgs Empty => new OSPolicyResourcePackageResourceZypperArgs();
     }
 }

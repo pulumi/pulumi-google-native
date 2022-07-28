@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
     }
 
 
-    public sealed class GetReleaseArgs : Pulumi.InvokeArgs
+    public sealed class GetReleaseArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         public GetReleaseArgs()
         {
         }
+        public static new GetReleaseArgs Empty => new GetReleaseArgs();
     }
 
-    public sealed class GetReleaseInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetReleaseInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         public GetReleaseInvokeArgs()
         {
         }
+        public static new GetReleaseInvokeArgs Empty => new GetReleaseInvokeArgs();
     }
 
 

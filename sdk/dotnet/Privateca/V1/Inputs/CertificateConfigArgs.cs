@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// A CertificateConfig describes an X.509 certificate or CSR that is to be created, as an alternative to using ASN.1.
     /// </summary>
-    public sealed class CertificateConfigArgs : Pulumi.ResourceArgs
+    public sealed class CertificateConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The public key that corresponds to this config. This is, for example, used when issuing Certificates, but not when creating a self-signed CertificateAuthority or CertificateAuthority CSR.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public CertificateConfigArgs()
         {
         }
+        public static new CertificateConfigArgs Empty => new CertificateConfigArgs();
     }
 }

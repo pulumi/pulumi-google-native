@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Configuration for the Compute Engine PD CSI driver.
     /// </summary>
-    public sealed class GcePersistentDiskCsiDriverConfigArgs : Pulumi.ResourceArgs
+    public sealed class GcePersistentDiskCsiDriverConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the Compute Engine PD CSI driver is enabled for this cluster.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public GcePersistentDiskCsiDriverConfigArgs()
         {
         }
+        public static new GcePersistentDiskCsiDriverConfigArgs Empty => new GcePersistentDiskCsiDriverConfigArgs();
     }
 }

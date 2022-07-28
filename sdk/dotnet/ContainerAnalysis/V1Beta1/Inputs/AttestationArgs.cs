@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Occurrence that represents a single "attestation". The authenticity of an attestation can be verified using the attached signature. If the verifier trusts the public key of the signer, then verifying the signature is sufficient to establish trust. In this circumstance, the authority to which this attestation is attached is primarily useful for look-up (how to find this attestation if you already know the authority and artifact to be verified) and intent (which authority was this attestation intended to sign for).
     /// </summary>
-    public sealed class AttestationArgs : Pulumi.ResourceArgs
+    public sealed class AttestationArgs : global::Pulumi.ResourceArgs
     {
         [Input("genericSignedAttestation")]
         public Input<Inputs.GenericSignedAttestationArgs>? GenericSignedAttestation { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public AttestationArgs()
         {
         }
+        public static new AttestationArgs Empty => new AttestationArgs();
     }
 }

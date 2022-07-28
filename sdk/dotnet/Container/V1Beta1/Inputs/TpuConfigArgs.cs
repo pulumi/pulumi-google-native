@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration for Cloud TPU.
     /// </summary>
-    public sealed class TpuConfigArgs : Pulumi.ResourceArgs
+    public sealed class TpuConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether Cloud TPU integration is enabled or not.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public TpuConfigArgs()
         {
         }
+        public static new TpuConfigArgs Empty => new TpuConfigArgs();
     }
 }

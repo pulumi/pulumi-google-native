@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetRegionNotificationEndpointArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionNotificationEndpointArgs : global::Pulumi.InvokeArgs
     {
         [Input("notificationEndpoint", required: true)]
         public string NotificationEndpoint { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetRegionNotificationEndpointArgs()
         {
         }
+        public static new GetRegionNotificationEndpointArgs Empty => new GetRegionNotificationEndpointArgs();
     }
 
-    public sealed class GetRegionNotificationEndpointInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionNotificationEndpointInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("notificationEndpoint", required: true)]
         public Input<string> NotificationEndpoint { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetRegionNotificationEndpointInvokeArgs()
         {
         }
+        public static new GetRegionNotificationEndpointInvokeArgs Empty => new GetRegionNotificationEndpointInvokeArgs();
     }
 
 

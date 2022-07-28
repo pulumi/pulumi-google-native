@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     /// <summary>
     /// Oracle database profile.
     /// </summary>
-    public sealed class OracleProfileArgs : Pulumi.ResourceArgs
+    public sealed class OracleProfileArgs : global::Pulumi.ResourceArgs
     {
         [Input("connectionAttributes")]
         private InputMap<string>? _connectionAttributes;
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public OracleProfileArgs()
         {
         }
+        public static new OracleProfileArgs Empty => new OracleProfileArgs();
     }
 }

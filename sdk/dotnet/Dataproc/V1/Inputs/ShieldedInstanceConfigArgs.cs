@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Shielded Instance Config for clusters using Compute Engine Shielded VMs (https://cloud.google.com/security/shielded-cloud/shielded-vm).
     /// </summary>
-    public sealed class ShieldedInstanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class ShieldedInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Defines whether instances have integrity monitoring enabled.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public ShieldedInstanceConfigArgs()
         {
         }
+        public static new ShieldedInstanceConfigArgs Empty => new ShieldedInstanceConfigArgs();
     }
 }

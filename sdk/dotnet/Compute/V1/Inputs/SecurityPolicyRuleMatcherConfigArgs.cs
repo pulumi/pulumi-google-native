@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
-    public sealed class SecurityPolicyRuleMatcherConfigArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleMatcherConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("srcIpRanges")]
         private InputList<string>? _srcIpRanges;
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public SecurityPolicyRuleMatcherConfigArgs()
         {
         }
+        public static new SecurityPolicyRuleMatcherConfigArgs Empty => new SecurityPolicyRuleMatcherConfigArgs();
     }
 }

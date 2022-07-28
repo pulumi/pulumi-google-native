@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Fields specific for BigQuery routines.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("importedLibraries")]
         private InputList<string>? _importedLibraries;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs Empty => new GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs();
     }
 }

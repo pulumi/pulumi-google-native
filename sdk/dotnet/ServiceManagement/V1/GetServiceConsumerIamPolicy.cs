@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
     }
 
 
-    public sealed class GetServiceConsumerIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceConsumerIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("consumerId", required: true)]
         public string ConsumerId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public GetServiceConsumerIamPolicyArgs()
         {
         }
+        public static new GetServiceConsumerIamPolicyArgs Empty => new GetServiceConsumerIamPolicyArgs();
     }
 
-    public sealed class GetServiceConsumerIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceConsumerIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("consumerId", required: true)]
         public Input<string> ConsumerId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public GetServiceConsumerIamPolicyInvokeArgs()
         {
         }
+        public static new GetServiceConsumerIamPolicyInvokeArgs Empty => new GetServiceConsumerIamPolicyInvokeArgs();
     }
 
 

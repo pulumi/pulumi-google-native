@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
     }
 
 
-    public sealed class GetWebAppArgs : Pulumi.InvokeArgs
+    public sealed class GetWebAppArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         public GetWebAppArgs()
         {
         }
+        public static new GetWebAppArgs Empty => new GetWebAppArgs();
     }
 
-    public sealed class GetWebAppInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetWebAppInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         public GetWebAppInvokeArgs()
         {
         }
+        public static new GetWebAppInvokeArgs Empty => new GetWebAppInvokeArgs();
     }
 
 

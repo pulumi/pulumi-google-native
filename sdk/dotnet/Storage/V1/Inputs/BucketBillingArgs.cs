@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The bucket's billing configuration.
     /// </summary>
-    public sealed class BucketBillingArgs : Pulumi.ResourceArgs
+    public sealed class BucketBillingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When set to true, Requester Pays is enabled for this bucket.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketBillingArgs()
         {
         }
+        public static new BucketBillingArgs Empty => new BucketBillingArgs();
     }
 }

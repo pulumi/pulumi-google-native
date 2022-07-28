@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// IssuanceModes specifies the allowed ways in which Certificates may be requested from this CaPool.
     /// </summary>
-    public sealed class IssuanceModesArgs : Pulumi.ResourceArgs
+    public sealed class IssuanceModesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. When true, allows callers to create Certificates by specifying a CertificateConfig.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public IssuanceModesArgs()
         {
         }
+        public static new IssuanceModesArgs Empty => new IssuanceModesArgs();
     }
 }

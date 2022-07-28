@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
 {
 
-    public sealed class ResponsePolicyRuleLocalDataArgs : Pulumi.ResourceArgs
+    public sealed class ResponsePolicyRuleLocalDataArgs : global::Pulumi.ResourceArgs
     {
         [Input("localDatas")]
         private InputList<Inputs.ResourceRecordSetArgs>? _localDatas;
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         public ResponsePolicyRuleLocalDataArgs()
         {
         }
+        public static new ResponsePolicyRuleLocalDataArgs Empty => new ResponsePolicyRuleLocalDataArgs();
     }
 }

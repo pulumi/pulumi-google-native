@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
     }
 
 
-    public sealed class GetSchemaArgs : Pulumi.InvokeArgs
+    public sealed class GetSchemaArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public GetSchemaArgs()
         {
         }
+        public static new GetSchemaArgs Empty => new GetSchemaArgs();
     }
 
-    public sealed class GetSchemaInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSchemaInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public GetSchemaInvokeArgs()
         {
         }
+        public static new GetSchemaInvokeArgs Empty => new GetSchemaInvokeArgs();
     }
 
 

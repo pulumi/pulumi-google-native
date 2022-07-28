@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
     /// Creates a new game server deployment in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:gameservices/v1beta:GameServerDeployment")]
-    public partial class GameServerDeployment : Pulumi.CustomResource
+    public partial class GameServerDeployment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The creation time.
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         }
     }
 
-    public sealed class GameServerDeploymentArgs : Pulumi.ResourceArgs
+    public sealed class GameServerDeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The ID of the game server deployment resource to create.
@@ -159,5 +159,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta
         public GameServerDeploymentArgs()
         {
         }
+        public static new GameServerDeploymentArgs Empty => new GameServerDeploymentArgs();
     }
 }

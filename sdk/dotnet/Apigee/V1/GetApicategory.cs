@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetApicategoryArgs : Pulumi.InvokeArgs
+    public sealed class GetApicategoryArgs : global::Pulumi.InvokeArgs
     {
         [Input("apicategoryId", required: true)]
         public string ApicategoryId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetApicategoryArgs()
         {
         }
+        public static new GetApicategoryArgs Empty => new GetApicategoryArgs();
     }
 
-    public sealed class GetApicategoryInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetApicategoryInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("apicategoryId", required: true)]
         public Input<string> ApicategoryId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetApicategoryInvokeArgs()
         {
         }
+        public static new GetApicategoryInvokeArgs Empty => new GetApicategoryInvokeArgs();
     }
 
 

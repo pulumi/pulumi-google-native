@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataproc/v1beta2:WorkflowTemplateIamPolicy")]
-    public partial class WorkflowTemplateIamPolicy : Pulumi.CustomResource
+    public partial class WorkflowTemplateIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Associates a list of members to a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one member.
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         }
     }
 
-    public sealed class WorkflowTemplateIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplateIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("bindings")]
         private InputList<Inputs.BindingArgs>? _bindings;
@@ -131,5 +131,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public WorkflowTemplateIamPolicyArgs()
         {
         }
+        public static new WorkflowTemplateIamPolicyArgs Empty => new WorkflowTemplateIamPolicyArgs();
     }
 }

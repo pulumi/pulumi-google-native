@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
     /// <summary>
     /// A unit of data that is returned by the DNS servers.
     /// </summary>
-    public sealed class ResourceRecordSetArgs : Pulumi.ResourceArgs
+    public sealed class ResourceRecordSetArgs : global::Pulumi.ResourceArgs
     {
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -69,5 +69,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         public ResourceRecordSetArgs()
         {
         }
+        public static new ResourceRecordSetArgs Empty => new ResourceRecordSetArgs();
     }
 }

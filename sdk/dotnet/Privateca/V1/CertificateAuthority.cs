@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:privateca/v1:CertificateAuthority")]
-    public partial class CertificateAuthority : Pulumi.CustomResource
+    public partial class CertificateAuthority : global::Pulumi.CustomResource
     {
         /// <summary>
         /// URLs for accessing content published by this CA, such as the CA certificate and CRLs.
@@ -189,7 +189,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
         }
     }
 
-    public sealed class CertificateAuthorityArgs : Pulumi.ResourceArgs
+    public sealed class CertificateAuthorityArgs : global::Pulumi.ResourceArgs
     {
         [Input("caPoolId", required: true)]
         public Input<string> CaPoolId { get; set; } = null!;
@@ -263,5 +263,6 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public CertificateAuthorityArgs()
         {
         }
+        public static new CertificateAuthorityArgs Empty => new CertificateAuthorityArgs();
     }
 }

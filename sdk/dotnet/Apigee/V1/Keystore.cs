@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Creates a keystore or truststore. - Keystore: Contains certificates and their associated keys. - Truststore: Contains trusted certificates used to validate a server's certificate. These certificates are typically self-signed certificates or certificates that are not signed by a trusted CA.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Keystore")]
-    public partial class Keystore : Pulumi.CustomResource
+    public partial class Keystore : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Aliases in this keystore.
@@ -81,7 +81,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class KeystoreArgs : Pulumi.ResourceArgs
+    public sealed class KeystoreArgs : global::Pulumi.ResourceArgs
     {
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
@@ -98,5 +98,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public KeystoreArgs()
         {
         }
+        public static new KeystoreArgs Empty => new KeystoreArgs();
     }
 }

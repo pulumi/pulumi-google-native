@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetEnvgroupAttachmentArgs : Pulumi.InvokeArgs
+    public sealed class GetEnvgroupAttachmentArgs : global::Pulumi.InvokeArgs
     {
         [Input("attachmentId", required: true)]
         public string AttachmentId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetEnvgroupAttachmentArgs()
         {
         }
+        public static new GetEnvgroupAttachmentArgs Empty => new GetEnvgroupAttachmentArgs();
     }
 
-    public sealed class GetEnvgroupAttachmentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEnvgroupAttachmentInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("attachmentId", required: true)]
         public Input<string> AttachmentId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetEnvgroupAttachmentInvokeArgs()
         {
         }
+        public static new GetEnvgroupAttachmentInvokeArgs Empty => new GetEnvgroupAttachmentInvokeArgs();
     }
 
 

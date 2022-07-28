@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Inputs
     /// <summary>
     /// Spec for a group of BigQuery tables with name pattern `[prefix]YYYYMMDD`. Context: https://cloud.google.com/bigquery/docs/partitioned-tables#partitioning_versus_sharding
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs : global::Pulumi.ResourceArgs
     {
         public GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs Empty => new GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpecArgs();
     }
 }

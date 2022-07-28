@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2.Inputs
     /// <summary>
     /// A rule used to express this policy.
     /// </summary>
-    public sealed class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2.Inputs
         public GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs()
         {
         }
+        public static new GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs Empty => new GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs();
     }
 }

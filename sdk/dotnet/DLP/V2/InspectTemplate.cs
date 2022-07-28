@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DLP.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dlp/v2:InspectTemplate")]
-    public partial class InspectTemplate : Pulumi.CustomResource
+    public partial class InspectTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The creation timestamp of an inspectTemplate.
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         }
     }
 
-    public sealed class InspectTemplateArgs : Pulumi.ResourceArgs
+    public sealed class InspectTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Short description (max 256 chars).
@@ -144,5 +144,6 @@ namespace Pulumi.GoogleNative.DLP.V2
         public InspectTemplateArgs()
         {
         }
+        public static new InspectTemplateArgs Empty => new InspectTemplateArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbuild/v1alpha2:WorkerPool")]
-    public partial class WorkerPool : Pulumi.CustomResource
+    public partial class WorkerPool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time at which the request to create the `WorkerPool` was received.
@@ -121,7 +121,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
         }
     }
 
-    public sealed class WorkerPoolArgs : Pulumi.ResourceArgs
+    public sealed class WorkerPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Network configuration for the `WorkerPool`.
@@ -153,5 +153,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2
         public WorkerPoolArgs()
         {
         }
+        public static new WorkerPoolArgs Empty => new WorkerPoolArgs();
     }
 }

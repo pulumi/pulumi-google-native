@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
     /// <summary>
     /// Settings specific to keys that can be used by Android apps.
     /// </summary>
-    public sealed class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to true, allowed_package_names are not enforced.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
         public GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs()
         {
         }
+        public static new GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs Empty => new GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs();
     }
 }

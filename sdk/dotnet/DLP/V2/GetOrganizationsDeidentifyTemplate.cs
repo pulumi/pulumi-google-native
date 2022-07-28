@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DLP.V2
     }
 
 
-    public sealed class GetOrganizationsDeidentifyTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationsDeidentifyTemplateArgs : global::Pulumi.InvokeArgs
     {
         [Input("deidentifyTemplateId", required: true)]
         public string DeidentifyTemplateId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.DLP.V2
         public GetOrganizationsDeidentifyTemplateArgs()
         {
         }
+        public static new GetOrganizationsDeidentifyTemplateArgs Empty => new GetOrganizationsDeidentifyTemplateArgs();
     }
 
-    public sealed class GetOrganizationsDeidentifyTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationsDeidentifyTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("deidentifyTemplateId", required: true)]
         public Input<string> DeidentifyTemplateId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         public GetOrganizationsDeidentifyTemplateInvokeArgs()
         {
         }
+        public static new GetOrganizationsDeidentifyTemplateInvokeArgs Empty => new GetOrganizationsDeidentifyTemplateInvokeArgs();
     }
 
 

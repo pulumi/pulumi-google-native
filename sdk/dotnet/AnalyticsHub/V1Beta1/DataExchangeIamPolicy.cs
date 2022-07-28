@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:analyticshub/v1beta1:DataExchangeIamPolicy")]
-    public partial class DataExchangeIamPolicy : Pulumi.CustomResource
+    public partial class DataExchangeIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         }
     }
 
-    public sealed class DataExchangeIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class DataExchangeIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         public DataExchangeIamPolicyArgs()
         {
         }
+        public static new DataExchangeIamPolicyArgs Empty => new DataExchangeIamPolicyArgs();
     }
 }

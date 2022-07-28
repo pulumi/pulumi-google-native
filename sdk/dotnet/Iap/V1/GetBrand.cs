@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Iap.V1
     }
 
 
-    public sealed class GetBrandArgs : Pulumi.InvokeArgs
+    public sealed class GetBrandArgs : global::Pulumi.InvokeArgs
     {
         [Input("brandId", required: true)]
         public string BrandId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Iap.V1
         public GetBrandArgs()
         {
         }
+        public static new GetBrandArgs Empty => new GetBrandArgs();
     }
 
-    public sealed class GetBrandInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBrandInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("brandId", required: true)]
         public Input<string> BrandId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Iap.V1
         public GetBrandInvokeArgs()
         {
         }
+        public static new GetBrandInvokeArgs Empty => new GetBrandInvokeArgs();
     }
 
 

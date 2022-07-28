@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     /// Creates an agent in the specified location. Note: You should always train flows prior to sending them queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3:Agent")]
-    public partial class Agent : Pulumi.CustomResource
+    public partial class Agent : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
@@ -153,7 +153,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         }
     }
 
-    public sealed class AgentArgs : Pulumi.ResourceArgs
+    public sealed class AgentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hierarchical advanced settings for this agent. The settings exposed at the lower level overrides the settings exposed at the higher level.
@@ -254,5 +254,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public AgentArgs()
         {
         }
+        public static new AgentArgs Empty => new AgentArgs();
     }
 }

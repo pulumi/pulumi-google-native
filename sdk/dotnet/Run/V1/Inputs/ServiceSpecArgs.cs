@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     /// <summary>
     /// ServiceSpec holds the desired state of the Route (from the client), which is used to manipulate the underlying Route and Configuration(s).
     /// </summary>
-    public sealed class ServiceSpecArgs : Pulumi.ResourceArgs
+    public sealed class ServiceSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Template holds the latest specification for the Revision to be stamped out.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public ServiceSpecArgs()
         {
         }
+        public static new ServiceSpecArgs Empty => new ServiceSpecArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:monitoring/v3:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A user-assigned name for this group, used only for display purposes.
@@ -102,7 +102,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A user-assigned name for this group, used only for display purposes.
@@ -140,5 +140,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 }

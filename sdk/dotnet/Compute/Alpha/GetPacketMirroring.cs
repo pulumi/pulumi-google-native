@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetPacketMirroringArgs : Pulumi.InvokeArgs
+    public sealed class GetPacketMirroringArgs : global::Pulumi.InvokeArgs
     {
         [Input("packetMirroring", required: true)]
         public string PacketMirroring { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetPacketMirroringArgs()
         {
         }
+        public static new GetPacketMirroringArgs Empty => new GetPacketMirroringArgs();
     }
 
-    public sealed class GetPacketMirroringInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPacketMirroringInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("packetMirroring", required: true)]
         public Input<string> PacketMirroring { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetPacketMirroringInvokeArgs()
         {
         }
+        public static new GetPacketMirroringInvokeArgs Empty => new GetPacketMirroringInvokeArgs();
     }
 
 

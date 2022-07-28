@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
     }
 
 
-    public sealed class GetMeshArgs : Pulumi.InvokeArgs
+    public sealed class GetMeshArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public GetMeshArgs()
         {
         }
+        public static new GetMeshArgs Empty => new GetMeshArgs();
     }
 
-    public sealed class GetMeshInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMeshInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public GetMeshInvokeArgs()
         {
         }
+        public static new GetMeshInvokeArgs Empty => new GetMeshInvokeArgs();
     }
 
 

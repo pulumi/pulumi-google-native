@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Shared message indicating Cloud storage type.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2StorageConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2StorageConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// BigQuery options.
@@ -45,5 +45,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2StorageConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2StorageConfigArgs Empty => new GooglePrivacyDlpV2StorageConfigArgs();
     }
 }

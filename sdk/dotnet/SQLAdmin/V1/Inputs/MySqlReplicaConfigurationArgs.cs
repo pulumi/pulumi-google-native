@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// Read-replica configuration specific to MySQL databases.
     /// </summary>
-    public sealed class MySqlReplicaConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class MySqlReplicaConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// PEM representation of the trusted CA's x509 certificate.
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public MySqlReplicaConfigurationArgs()
         {
         }
+        public static new MySqlReplicaConfigurationArgs Empty => new MySqlReplicaConfigurationArgs();
     }
 }

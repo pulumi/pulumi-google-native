@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Inputs
     /// <summary>
     /// SSL configuration information.
     /// </summary>
-    public sealed class SslConfigArgs : Pulumi.ResourceArgs
+    public sealed class SslConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Input only. The x509 PEM-encoded certificate of the CA that signed the source database server's certificate. The replica will use this certificate to verify it's connecting to the right host.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Inputs
         public SslConfigArgs()
         {
         }
+        public static new SslConfigArgs Empty => new SslConfigArgs();
     }
 }

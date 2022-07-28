@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Derived describes the derived image portion (Occurrence) of the DockerImage relationship. This image would be produced from a Dockerfile with FROM .
     /// </summary>
-    public sealed class DerivedArgs : Pulumi.ResourceArgs
+    public sealed class DerivedArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The fingerprint of the derived image.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public DerivedArgs()
         {
         }
+        public static new DerivedArgs Empty => new DerivedArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Creates a NAT address. The address is created in the RESERVED state and a static external IP address will be provisioned. At this time, the instance will not use this IP address for Internet egress traffic. The address can be activated for use once any required firewall IP whitelisting has been completed. **Note:** Not supported for Apigee hybrid.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:NatAddress")]
-    public partial class NatAddress : Pulumi.CustomResource
+    public partial class NatAddress : global::Pulumi.CustomResource
     {
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -87,7 +87,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class NatAddressArgs : Pulumi.ResourceArgs
+    public sealed class NatAddressArgs : global::Pulumi.ResourceArgs
     {
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -104,5 +104,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public NatAddressArgs()
         {
         }
+        public static new NatAddressArgs Empty => new NatAddressArgs();
     }
 }

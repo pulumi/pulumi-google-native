@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
     /// Creates a new Cloud SQL instance.
     /// </summary>
     [GoogleNativeResourceType("google-native:sqladmin/v1:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List all maintenance versions applicable on the instance
@@ -275,7 +275,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         [Input("availableMaintenanceVersions")]
         private InputList<string>? _availableMaintenanceVersions;
@@ -508,5 +508,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 }

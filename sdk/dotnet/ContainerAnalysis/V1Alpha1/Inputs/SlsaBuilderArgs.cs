@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// SlsaBuilder encapsulates the identity of the builder of this provenance.
     /// </summary>
-    public sealed class SlsaBuilderArgs : Pulumi.ResourceArgs
+    public sealed class SlsaBuilderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// id is the id of the slsa provenance builder
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public SlsaBuilderArgs()
         {
         }
+        public static new SlsaBuilderArgs Empty => new SlsaBuilderArgs();
     }
 }

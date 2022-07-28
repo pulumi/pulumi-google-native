@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// An expression, consisting or an operator and conditions.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2ExpressionsArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2ExpressionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Conditions to apply to the expression.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2ExpressionsArgs()
         {
         }
+        public static new GooglePrivacyDlpV2ExpressionsArgs Empty => new GooglePrivacyDlpV2ExpressionsArgs();
     }
 }

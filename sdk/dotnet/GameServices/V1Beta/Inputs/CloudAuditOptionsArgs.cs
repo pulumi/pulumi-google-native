@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
     /// <summary>
     /// Write a Cloud Audit log
     /// </summary>
-    public sealed class CloudAuditOptionsArgs : Pulumi.ResourceArgs
+    public sealed class CloudAuditOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Information used by the Cloud Audit Logging pipeline.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
         public CloudAuditOptionsArgs()
         {
         }
+        public static new CloudAuditOptionsArgs Empty => new CloudAuditOptionsArgs();
     }
 }

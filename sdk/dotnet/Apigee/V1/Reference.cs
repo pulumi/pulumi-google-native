@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Creates a Reference in the specified environment.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Reference")]
-    public partial class Reference : Pulumi.CustomResource
+    public partial class Reference : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. A human-readable description of this reference.
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class ReferenceArgs : Pulumi.ResourceArgs
+    public sealed class ReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A human-readable description of this reference.
@@ -128,5 +128,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public ReferenceArgs()
         {
         }
+        public static new ReferenceArgs Empty => new ReferenceArgs();
     }
 }

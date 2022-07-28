@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// InputDataset used to create model or do evaluation. NextID:5
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2InputDatasetArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2InputDatasetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ConversationDataset resource name. Format: `projects//locations//conversationDatasets/`
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2InputDatasetArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2InputDatasetArgs Empty => new GoogleCloudDialogflowV2InputDatasetArgs();
     }
 }

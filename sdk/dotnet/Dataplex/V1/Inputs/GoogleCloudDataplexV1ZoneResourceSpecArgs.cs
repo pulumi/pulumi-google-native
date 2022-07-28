@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Settings for resources attached as assets within a zone.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1ZoneResourceSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1ZoneResourceSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. The location type of the resources that are allowed to be attached to the assets within this zone.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1ZoneResourceSpecArgs()
         {
         }
+        public static new GoogleCloudDataplexV1ZoneResourceSpecArgs Empty => new GoogleCloudDataplexV1ZoneResourceSpecArgs();
     }
 }

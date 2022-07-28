@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Represents configuration for a generic web service. Dialogflow supports two mechanisms for authentications: - Basic authentication with username and password. - Authentication with additional authentication headers. More information could be found at: https://cloud.google.com/dialogflow/docs/fulfillment-configure.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Indicates if generic web service is created through Cloud Functions integration. Defaults to false. is_cloud_function is deprecated. Cloud functions can be configured by its uri as a regular web service now.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs Empty => new GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs();
     }
 }

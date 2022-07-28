@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
     /// <summary>
     /// The configuration for forwarding telemetry events.
     /// </summary>
-    public sealed class EventNotificationConfigArgs : Pulumi.ResourceArgs
+    public sealed class EventNotificationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A Cloud Pub/Sub topic name. For example, `projects/myProject/topics/deviceEvents`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         public EventNotificationConfigArgs()
         {
         }
+        public static new EventNotificationConfigArgs Empty => new EventNotificationConfigArgs();
     }
 }

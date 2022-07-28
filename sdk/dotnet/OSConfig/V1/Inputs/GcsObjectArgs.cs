@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// Cloud Storage object representation.
     /// </summary>
-    public sealed class GcsObjectArgs : Pulumi.ResourceArgs
+    public sealed class GcsObjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bucket of the Cloud Storage object.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public GcsObjectArgs()
         {
         }
+        public static new GcsObjectArgs Empty => new GcsObjectArgs();
     }
 }

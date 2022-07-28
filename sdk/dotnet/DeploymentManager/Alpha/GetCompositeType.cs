@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
     }
 
 
-    public sealed class GetCompositeTypeArgs : Pulumi.InvokeArgs
+    public sealed class GetCompositeTypeArgs : global::Pulumi.InvokeArgs
     {
         [Input("compositeType", required: true)]
         public string CompositeType { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         public GetCompositeTypeArgs()
         {
         }
+        public static new GetCompositeTypeArgs Empty => new GetCompositeTypeArgs();
     }
 
-    public sealed class GetCompositeTypeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCompositeTypeInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("compositeType", required: true)]
         public Input<string> CompositeType { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         public GetCompositeTypeInvokeArgs()
         {
         }
+        public static new GetCompositeTypeInvokeArgs Empty => new GetCompositeTypeInvokeArgs();
     }
 
 

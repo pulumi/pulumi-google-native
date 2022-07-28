@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A single tile in the mosaic. The placement and size of the tile are configurable.
     /// </summary>
-    public sealed class TileArgs : Pulumi.ResourceArgs
+    public sealed class TileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The height of the tile, measured in grid blocks. Tiles must have a minimum height of 1.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public TileArgs()
         {
         }
+        public static new TileArgs Empty => new TileArgs();
     }
 }

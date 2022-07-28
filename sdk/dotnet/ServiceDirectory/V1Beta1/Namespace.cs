@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
     /// Creates a namespace, and returns the new namespace.
     /// </summary>
     [GoogleNativeResourceType("google-native:servicedirectory/v1beta1:Namespace")]
-    public partial class Namespace : Pulumi.CustomResource
+    public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp when the namespace was created.
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         }
     }
 
-    public sealed class NamespaceArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -135,5 +135,6 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public NamespaceArgs()
         {
         }
+        public static new NamespaceArgs Empty => new NamespaceArgs();
     }
 }

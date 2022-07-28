@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     /// <summary>
     /// S3CompatibleMetadata contains the metadata fields that apply to the basic types of S3-compatible data providers.
     /// </summary>
-    public sealed class S3CompatibleMetadataArgs : Pulumi.ResourceArgs
+    public sealed class S3CompatibleMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the authentication and authorization method used by the storage service. When not specified, Transfer Service will attempt to determine right auth method to use.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public S3CompatibleMetadataArgs()
         {
         }
+        public static new S3CompatibleMetadataArgs Empty => new S3CompatibleMetadataArgs();
     }
 }

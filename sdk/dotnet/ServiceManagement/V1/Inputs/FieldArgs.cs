@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// A single field of a message type.
     /// </summary>
-    public sealed class FieldArgs : Pulumi.ResourceArgs
+    public sealed class FieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The field cardinality.
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public FieldArgs()
         {
         }
+        public static new FieldArgs Empty => new FieldArgs();
     }
 }

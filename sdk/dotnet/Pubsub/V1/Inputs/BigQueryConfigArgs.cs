@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
     /// <summary>
     /// Configuration for a BigQuery subscription.
     /// </summary>
-    public sealed class BigQueryConfigArgs : Pulumi.ResourceArgs
+    public sealed class BigQueryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When true and use_topic_schema is true, any fields that are a part of the topic schema that are not part of the BigQuery table schema are dropped when writing to BigQuery. Otherwise, the schemas must be kept in sync and any messages with extra fields are not written and remain in the subscription's backlog.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
         public BigQueryConfigArgs()
         {
         }
+        public static new BigQueryConfigArgs Empty => new BigQueryConfigArgs();
     }
 }

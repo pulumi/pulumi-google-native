@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Defines a metric type and its schema. Once a metric descriptor is created, deleting or altering it stops data collection and makes the metric type's existing data unusable. 
     /// </summary>
-    public sealed class MetricDescriptorArgs : Pulumi.ResourceArgs
+    public sealed class MetricDescriptorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A detailed description of the metric, which can be used in documentation.
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public MetricDescriptorArgs()
         {
         }
+        public static new MetricDescriptorArgs Empty => new MetricDescriptorArgs();
     }
 }

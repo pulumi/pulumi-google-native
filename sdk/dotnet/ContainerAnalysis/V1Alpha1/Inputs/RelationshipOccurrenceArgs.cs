@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// RelationshipOccurrence represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
     /// </summary>
-    public sealed class RelationshipOccurrenceArgs : Pulumi.ResourceArgs
+    public sealed class RelationshipOccurrenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A place for the SPDX file creator to record any general comments about the relationship
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public RelationshipOccurrenceArgs()
         {
         }
+        public static new RelationshipOccurrenceArgs Empty => new RelationshipOccurrenceArgs();
     }
 }

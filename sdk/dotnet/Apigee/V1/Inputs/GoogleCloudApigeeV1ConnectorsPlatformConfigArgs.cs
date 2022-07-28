@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Configuration for the Connectors Platform add-on.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1ConnectorsPlatformConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1ConnectorsPlatformConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Flag that specifies whether the Connectors Platform add-on is enabled.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1ConnectorsPlatformConfigArgs()
         {
         }
+        public static new GoogleCloudApigeeV1ConnectorsPlatformConfigArgs Empty => new GoogleCloudApigeeV1ConnectorsPlatformConfigArgs();
     }
 }

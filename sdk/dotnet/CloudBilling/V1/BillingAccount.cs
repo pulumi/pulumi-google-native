@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbilling/v1:BillingAccount")]
-    public partial class BillingAccount : Pulumi.CustomResource
+    public partial class BillingAccount : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
@@ -85,7 +85,7 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         }
     }
 
-    public sealed class BillingAccountArgs : Pulumi.ResourceArgs
+    public sealed class BillingAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The display name given to the billing account, such as `My Billing Account`. This name is displayed in the Google Cloud Console.
@@ -102,5 +102,6 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         public BillingAccountArgs()
         {
         }
+        public static new BillingAccountArgs Empty => new BillingAccountArgs();
     }
 }

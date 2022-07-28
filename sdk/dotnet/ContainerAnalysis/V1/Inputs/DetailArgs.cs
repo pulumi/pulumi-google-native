@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// A detail for a distro and package affected by this vulnerability and its associated fix (if one is available).
     /// </summary>
-    public sealed class DetailArgs : Pulumi.ResourceArgs
+    public sealed class DetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability affects.
@@ -102,5 +102,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public DetailArgs()
         {
         }
+        public static new DetailArgs Empty => new DetailArgs();
     }
 }

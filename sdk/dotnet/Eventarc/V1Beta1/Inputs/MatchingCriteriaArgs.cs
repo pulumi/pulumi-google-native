@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1.Inputs
     /// <summary>
     /// Matches events based on exact matches on the CloudEvents attributes.
     /// </summary>
-    public sealed class MatchingCriteriaArgs : Pulumi.ResourceArgs
+    public sealed class MatchingCriteriaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of a CloudEvents attribute. Currently, only a subset of attributes can be specified. All triggers MUST provide a matching criteria for the 'type' attribute.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1.Inputs
         public MatchingCriteriaArgs()
         {
         }
+        public static new MatchingCriteriaArgs Empty => new MatchingCriteriaArgs();
     }
 }

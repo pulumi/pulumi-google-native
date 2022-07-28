@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
     /// <summary>
     /// A NFS export entry.
     /// </summary>
-    public sealed class NfsExportArgs : Pulumi.ResourceArgs
+    public sealed class NfsExportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allow dev flag in NfsShare AllowedClientsRequest.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public NfsExportArgs()
         {
         }
+        public static new NfsExportArgs Empty => new NfsExportArgs();
     }
 }

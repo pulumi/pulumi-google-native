@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] gRPC channel credentials to access the SDS server. gRPC channel credentials to access the SDS server.
     /// </summary>
-    public sealed class ChannelCredentialsArgs : Pulumi.ResourceArgs
+    public sealed class ChannelCredentialsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The call credentials to access the SDS server.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public ChannelCredentialsArgs()
         {
         }
+        public static new ChannelCredentialsArgs Empty => new ChannelCredentialsArgs();
     }
 }

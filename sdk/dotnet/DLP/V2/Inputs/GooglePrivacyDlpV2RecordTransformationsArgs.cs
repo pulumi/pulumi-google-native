@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// A type of transformation that is applied over structured data such as a table.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2RecordTransformationsArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2RecordTransformationsArgs : global::Pulumi.ResourceArgs
     {
         [Input("fieldTransformations")]
         private InputList<Inputs.GooglePrivacyDlpV2FieldTransformationArgs>? _fieldTransformations;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2RecordTransformationsArgs()
         {
         }
+        public static new GooglePrivacyDlpV2RecordTransformationsArgs Empty => new GooglePrivacyDlpV2RecordTransformationsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
     /// <summary>
     /// Specifies how metastore metadata should be integrated with the Data Catalog service.
     /// </summary>
-    public sealed class DataCatalogConfigArgs : Pulumi.ResourceArgs
+    public sealed class DataCatalogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines whether the metastore metadata should be synced to Data Catalog. The default value is to disable syncing metastore metadata to Data Catalog.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
         public DataCatalogConfigArgs()
         {
         }
+        public static new DataCatalogConfigArgs Empty => new DataCatalogConfigArgs();
     }
 }

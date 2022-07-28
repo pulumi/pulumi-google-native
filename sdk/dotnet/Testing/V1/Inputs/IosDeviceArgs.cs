@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A single iOS device.
     /// </summary>
-    public sealed class IosDeviceArgs : Pulumi.ResourceArgs
+    public sealed class IosDeviceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public IosDeviceArgs()
         {
         }
+        public static new IosDeviceArgs Empty => new IosDeviceArgs();
     }
 }

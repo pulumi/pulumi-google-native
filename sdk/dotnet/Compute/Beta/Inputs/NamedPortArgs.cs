@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// The named port. For example: &lt;"http", 80&gt;.
     /// </summary>
-    public sealed class NamedPortArgs : Pulumi.ResourceArgs
+    public sealed class NamedPortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name for this named port. The name must be 1-63 characters long, and comply with RFC1035.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public NamedPortArgs()
         {
         }
+        public static new NamedPortArgs Empty => new NamedPortArgs();
     }
 }

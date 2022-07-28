@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
     /// <summary>
     /// A transformation rule to be applied against Kubernetes resources as they are selected for restoration from a Backup. A rule contains both filtering logic (which resources are subject to substitution) and substitution logic.
     /// </summary>
-    public sealed class SubstitutionRuleArgs : Pulumi.ResourceArgs
+    public sealed class SubstitutionRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is the new value to set for any fields that pass the filtering and selection criteria. To remove a value from a Kubernetes resource, either leave this field unspecified, or set it to the empty string ("").
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         public SubstitutionRuleArgs()
         {
         }
+        public static new SubstitutionRuleArgs Empty => new SubstitutionRuleArgs();
     }
 }

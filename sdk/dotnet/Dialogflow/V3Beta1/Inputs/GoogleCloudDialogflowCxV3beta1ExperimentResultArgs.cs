@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// The inference result which includes an objective metric to optimize and the confidence interval.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1ExperimentResultArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1ExperimentResultArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The last time the experiment's stats data was updated. Will have default value if stats have never been computed for this experiment.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1ExperimentResultArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1ExperimentResultArgs Empty => new GoogleCloudDialogflowCxV3beta1ExperimentResultArgs();
     }
 }

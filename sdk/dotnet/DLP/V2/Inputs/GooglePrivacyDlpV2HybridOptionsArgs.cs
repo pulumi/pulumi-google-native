@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Configuration to control jobs where the content being inspected is outside of Google Cloud Platform.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2HybridOptionsArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2HybridOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A short description of where the data is coming from. Will be stored once in the job. 256 max length.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2HybridOptionsArgs()
         {
         }
+        public static new GooglePrivacyDlpV2HybridOptionsArgs Empty => new GooglePrivacyDlpV2HybridOptionsArgs();
     }
 }

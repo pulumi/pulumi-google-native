@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:orgpolicy/v2:FolderPolicy")]
-    public partial class FolderPolicy : Pulumi.CustomResource
+    public partial class FolderPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Deprecated.
@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         }
     }
 
-    public sealed class FolderPolicyArgs : Pulumi.ResourceArgs
+    public sealed class FolderPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Deprecated.
@@ -110,5 +110,6 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         public FolderPolicyArgs()
         {
         }
+        public static new FolderPolicyArgs Empty => new FolderPolicyArgs();
     }
 }

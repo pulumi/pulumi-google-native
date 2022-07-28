@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Pad filter configuration for the input video. The padded input video is scaled after padding with black to match the output resolution.
     /// </summary>
-    public sealed class PadArgs : Pulumi.ResourceArgs
+    public sealed class PadArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of pixels to add to the bottom. The default is 0.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public PadArgs()
         {
         }
+        public static new PadArgs Empty => new PadArgs();
     }
 }

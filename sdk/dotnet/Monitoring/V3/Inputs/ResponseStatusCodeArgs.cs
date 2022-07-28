@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// A status to accept. Either a status code class like "2xx", or an integer status code like "200".
     /// </summary>
-    public sealed class ResponseStatusCodeArgs : Pulumi.ResourceArgs
+    public sealed class ResponseStatusCodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A class of status codes to accept.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public ResponseStatusCodeArgs()
         {
         }
+        public static new ResponseStatusCodeArgs Empty => new ResponseStatusCodeArgs();
     }
 }

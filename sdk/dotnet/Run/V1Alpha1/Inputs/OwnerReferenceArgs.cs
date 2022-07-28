@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     /// <summary>
     /// OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.
     /// </summary>
-    public sealed class OwnerReferenceArgs : Pulumi.ResourceArgs
+    public sealed class OwnerReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// API version of the referent.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public OwnerReferenceArgs()
         {
         }
+        public static new OwnerReferenceArgs Empty => new OwnerReferenceArgs();
     }
 }

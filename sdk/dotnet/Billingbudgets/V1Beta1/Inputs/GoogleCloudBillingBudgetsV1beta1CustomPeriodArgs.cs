@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1.Inputs
     /// <summary>
     /// All date times begin at 12 AM US and Canadian Pacific Time (UTC-8).
     /// </summary>
-    public sealed class GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The end date of the time period. Budgets with elapsed end date won't be processed. If unset, specifies to track all usage incurred since the start_date.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1.Inputs
         public GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs()
         {
         }
+        public static new GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs Empty => new GoogleCloudBillingBudgetsV1beta1CustomPeriodArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.IDS.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:ids/v1:Endpoint")]
-    public partial class Endpoint : Pulumi.CustomResource
+    public partial class Endpoint : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The create time timestamp.
@@ -149,7 +149,7 @@ namespace Pulumi.GoogleNative.IDS.V1
         }
     }
 
-    public sealed class EndpointArgs : Pulumi.ResourceArgs
+    public sealed class EndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-provided description of the endpoint
@@ -208,5 +208,6 @@ namespace Pulumi.GoogleNative.IDS.V1
         public EndpointArgs()
         {
         }
+        public static new EndpointArgs Empty => new EndpointArgs();
     }
 }

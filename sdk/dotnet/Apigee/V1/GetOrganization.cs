@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetOrganizationArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationArgs : global::Pulumi.InvokeArgs
     {
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
@@ -33,9 +33,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetOrganizationArgs()
         {
         }
+        public static new GetOrganizationArgs Empty => new GetOrganizationArgs();
     }
 
-    public sealed class GetOrganizationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -43,6 +44,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetOrganizationInvokeArgs()
         {
         }
+        public static new GetOrganizationInvokeArgs Empty => new GetOrganizationInvokeArgs();
     }
 
 

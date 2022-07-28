@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Constraints applied to pods.
     /// </summary>
-    public sealed class MaxPodsConstraintArgs : Pulumi.ResourceArgs
+    public sealed class MaxPodsConstraintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Constraint enforced on the max num of pods per node.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public MaxPodsConstraintArgs()
         {
         }
+        public static new MaxPodsConstraintArgs Empty => new MaxPodsConstraintArgs();
     }
 }

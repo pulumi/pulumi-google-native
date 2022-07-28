@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// CPU utilization policy.
     /// </summary>
-    public sealed class AutoscalingPolicyCpuUtilizationArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingPolicyCpuUtilizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether predictive autoscaling based on CPU metric is enabled. Valid values are: * NONE (default). No predictive method is used. The autoscaler scales the group to meet current demand based on real-time metrics. * OPTIMIZE_AVAILABILITY. Predictive autoscaling improves availability by monitoring daily and weekly load patterns and scaling out ahead of anticipated demand.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public AutoscalingPolicyCpuUtilizationArgs()
         {
         }
+        public static new AutoscalingPolicyCpuUtilizationArgs Empty => new AutoscalingPolicyCpuUtilizationArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     }
 
 
-    public sealed class GetTransferJobArgs : Pulumi.InvokeArgs
+    public sealed class GetTransferJobArgs : global::Pulumi.InvokeArgs
     {
         [Input("projectId", required: true)]
         public string ProjectId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public GetTransferJobArgs()
         {
         }
+        public static new GetTransferJobArgs Empty => new GetTransferJobArgs();
     }
 
-    public sealed class GetTransferJobInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTransferJobInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("projectId", required: true)]
         public Input<string> ProjectId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public GetTransferJobInvokeArgs()
         {
         }
+        public static new GetTransferJobInvokeArgs Empty => new GetTransferJobInvokeArgs();
     }
 
 

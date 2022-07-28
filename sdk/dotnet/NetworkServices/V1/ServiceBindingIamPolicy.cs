@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkservices/v1:ServiceBindingIamPolicy")]
-    public partial class ServiceBindingIamPolicy : Pulumi.CustomResource
+    public partial class ServiceBindingIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         }
     }
 
-    public sealed class ServiceBindingIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ServiceBindingIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public ServiceBindingIamPolicyArgs()
         {
         }
+        public static new ServiceBindingIamPolicyArgs Empty => new ServiceBindingIamPolicyArgs();
     }
 }

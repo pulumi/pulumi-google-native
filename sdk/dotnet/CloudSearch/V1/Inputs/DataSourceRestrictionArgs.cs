@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     /// <summary>
     /// Restriction on Datasource.
     /// </summary>
-    public sealed class DataSourceRestrictionArgs : Pulumi.ResourceArgs
+    public sealed class DataSourceRestrictionArgs : global::Pulumi.ResourceArgs
     {
         [Input("filterOptions")]
         private InputList<Inputs.FilterOptionsArgs>? _filterOptions;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public DataSourceRestrictionArgs()
         {
         }
+        public static new DataSourceRestrictionArgs Empty => new DataSourceRestrictionArgs();
     }
 }

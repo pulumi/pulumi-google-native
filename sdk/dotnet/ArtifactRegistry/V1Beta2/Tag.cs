@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
     /// Creates a tag.
     /// </summary>
     [GoogleNativeResourceType("google-native:artifactregistry/v1beta2:Tag")]
-    public partial class Tag : Pulumi.CustomResource
+    public partial class Tag : global::Pulumi.CustomResource
     {
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         }
     }
 
-    public sealed class TagArgs : Pulumi.ResourceArgs
+    public sealed class TagArgs : global::Pulumi.ResourceArgs
     {
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -130,5 +130,6 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta2
         public TagArgs()
         {
         }
+        public static new TagArgs Empty => new TagArgs();
     }
 }

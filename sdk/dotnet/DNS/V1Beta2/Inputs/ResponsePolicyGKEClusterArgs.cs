@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
 {
 
-    public sealed class ResponsePolicyGKEClusterArgs : Pulumi.ResourceArgs
+    public sealed class ResponsePolicyGKEClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         public ResponsePolicyGKEClusterArgs()
         {
         }
+        public static new ResponsePolicyGKEClusterArgs Empty => new ResponsePolicyGKEClusterArgs();
     }
 }

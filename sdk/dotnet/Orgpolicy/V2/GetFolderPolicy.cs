@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
     }
 
 
-    public sealed class GetFolderPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("folderId", required: true)]
         public string FolderId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         public GetFolderPolicyArgs()
         {
         }
+        public static new GetFolderPolicyArgs Empty => new GetFolderPolicyArgs();
     }
 
-    public sealed class GetFolderPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("folderId", required: true)]
         public Input<string> FolderId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         public GetFolderPolicyInvokeArgs()
         {
         }
+        public static new GetFolderPolicyInvokeArgs Empty => new GetFolderPolicyInvokeArgs();
     }
 
 

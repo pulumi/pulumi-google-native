@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// Database instance backup configuration.
     /// </summary>
-    public sealed class BackupConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class BackupConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Backup retention settings.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public BackupConfigurationArgs()
         {
         }
+        public static new BackupConfigurationArgs Empty => new BackupConfigurationArgs();
     }
 }

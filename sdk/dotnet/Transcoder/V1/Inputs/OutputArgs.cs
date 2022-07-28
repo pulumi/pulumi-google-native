@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Location of output file(s) in a Cloud Storage bucket.
     /// </summary>
-    public sealed class OutputArgs : Pulumi.ResourceArgs
+    public sealed class OutputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URI for the output file(s). For example, `gs://my-bucket/outputs/`. If empty, the value is populated from `Job.output_uri`. See [Supported input and output formats](https://cloud.google.com/transcoder/docs/concepts/supported-input-and-output-formats).
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public OutputArgs()
         {
         }
+        public static new OutputArgs Empty => new OutputArgs();
     }
 }

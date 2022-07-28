@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
     /// <summary>
     /// GkeCluster contains information specific to GKE clusters.
     /// </summary>
-    public sealed class GkeClusterArgs : Pulumi.ResourceArgs
+    public sealed class GkeClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. Self-link of the GCP resource for the GKE cluster. For example: //container.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster Zonal clusters are also supported.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
         public GkeClusterArgs()
         {
         }
+        public static new GkeClusterArgs Empty => new GkeClusterArgs();
     }
 }

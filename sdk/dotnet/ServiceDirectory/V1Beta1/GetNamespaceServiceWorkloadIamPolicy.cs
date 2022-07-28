@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
     }
 
 
-    public sealed class GetNamespaceServiceWorkloadIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespaceServiceWorkloadIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public GetNamespaceServiceWorkloadIamPolicyArgs()
         {
         }
+        public static new GetNamespaceServiceWorkloadIamPolicyArgs Empty => new GetNamespaceServiceWorkloadIamPolicyArgs();
     }
 
-    public sealed class GetNamespaceServiceWorkloadIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespaceServiceWorkloadIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public GetNamespaceServiceWorkloadIamPolicyInvokeArgs()
         {
         }
+        public static new GetNamespaceServiceWorkloadIamPolicyInvokeArgs Empty => new GetNamespaceServiceWorkloadIamPolicyInvokeArgs();
     }
 
 

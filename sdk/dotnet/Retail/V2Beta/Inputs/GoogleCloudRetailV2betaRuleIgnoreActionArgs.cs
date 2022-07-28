@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
     /// <summary>
     /// Prevents a term in the query from being used in search. Example: Don't search for "shoddy".
     /// </summary>
-    public sealed class GoogleCloudRetailV2betaRuleIgnoreActionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2betaRuleIgnoreActionArgs : global::Pulumi.ResourceArgs
     {
         [Input("ignoreTerms")]
         private InputList<string>? _ignoreTerms;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
         public GoogleCloudRetailV2betaRuleIgnoreActionArgs()
         {
         }
+        public static new GoogleCloudRetailV2betaRuleIgnoreActionArgs Empty => new GoogleCloudRetailV2betaRuleIgnoreActionArgs();
     }
 }

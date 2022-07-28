@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a TargetSslProxy resource in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:TargetSslProxy")]
-    public partial class TargetSslProxy : Pulumi.CustomResource
+    public partial class TargetSslProxy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
@@ -131,7 +131,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class TargetSslProxyArgs : Pulumi.ResourceArgs
+    public sealed class TargetSslProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URL of a certificate map that identifies a certificate map associated with the given target proxy. This field can only be set for global target proxies. If set, sslCertificates will be ignored.
@@ -193,5 +193,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public TargetSslProxyArgs()
         {
         }
+        public static new TargetSslProxyArgs Empty => new TargetSslProxyArgs();
     }
 }

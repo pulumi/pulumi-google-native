@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Jobs.V4.Inputs
     /// <summary>
     /// Options for job processing.
     /// </summary>
-    public sealed class ProcessingOptionsArgs : Pulumi.ResourceArgs
+    public sealed class ProcessingOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to `true`, the service does not attempt to resolve a more precise address for the job.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Jobs.V4.Inputs
         public ProcessingOptionsArgs()
         {
         }
+        public static new ProcessingOptionsArgs Empty => new ProcessingOptionsArgs();
     }
 }

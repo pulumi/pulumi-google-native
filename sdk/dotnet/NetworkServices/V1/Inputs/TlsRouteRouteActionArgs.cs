@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
     /// <summary>
     /// The specifications for routing traffic and applying associated policies.
     /// </summary>
-    public sealed class TlsRouteRouteActionArgs : Pulumi.ResourceArgs
+    public sealed class TlsRouteRouteActionArgs : global::Pulumi.ResourceArgs
     {
         [Input("destinations", required: true)]
         private InputList<Inputs.TlsRouteRouteDestinationArgs>? _destinations;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
         public TlsRouteRouteActionArgs()
         {
         }
+        public static new TlsRouteRouteActionArgs Empty => new TlsRouteRouteActionArgs();
     }
 }

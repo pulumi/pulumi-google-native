@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// HttpFilterConfiguration supplies additional contextual settings for networkservices.HttpFilter resources enabled by Traffic Director.
     /// </summary>
-    public sealed class HttpFilterConfigArgs : Pulumi.ResourceArgs
+    public sealed class HttpFilterConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration needed to enable the networkservices.HttpFilter resource. The configuration must be YAML formatted and only contain fields defined in the protobuf identified in configTypeUrl
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public HttpFilterConfigArgs()
         {
         }
+        public static new HttpFilterConfigArgs Empty => new HttpFilterConfigArgs();
     }
 }

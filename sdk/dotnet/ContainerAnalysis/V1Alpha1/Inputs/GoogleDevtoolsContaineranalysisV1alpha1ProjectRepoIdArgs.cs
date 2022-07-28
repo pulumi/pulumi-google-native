@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Selects a repo using a Google Cloud Platform project ID (e.g., winged-cargo-31) and a repo name within that project.
     /// </summary>
-    public sealed class GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the project.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdArgs()
         {
         }
+        public static new GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdArgs Empty => new GoogleDevtoolsContaineranalysisV1alpha1ProjectRepoIdArgs();
     }
 }

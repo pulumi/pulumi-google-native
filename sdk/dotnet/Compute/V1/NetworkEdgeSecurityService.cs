@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     /// Creates a new service in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:NetworkEdgeSecurityService")]
-    public partial class NetworkEdgeSecurityService : Pulumi.CustomResource
+    public partial class NetworkEdgeSecurityService : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -129,7 +129,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
     }
 
-    public sealed class NetworkEdgeSecurityServiceArgs : Pulumi.ResourceArgs
+    public sealed class NetworkEdgeSecurityServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -170,5 +170,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public NetworkEdgeSecurityServiceArgs()
         {
         }
+        public static new NetworkEdgeSecurityServiceArgs Empty => new NetworkEdgeSecurityServiceArgs();
     }
 }

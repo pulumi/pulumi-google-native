@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Description of an interstitial value between transforms in an execution stage.
     /// </summary>
-    public sealed class ComponentSourceArgs : Pulumi.ResourceArgs
+    public sealed class ComponentSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Dataflow service generated name for this source.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public ComponentSourceArgs()
         {
         }
+        public static new ComponentSourceArgs Empty => new ComponentSourceArgs();
     }
 }

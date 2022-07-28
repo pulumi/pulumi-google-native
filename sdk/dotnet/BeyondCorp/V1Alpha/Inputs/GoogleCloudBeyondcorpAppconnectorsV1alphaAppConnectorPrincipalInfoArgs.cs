@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
     /// <summary>
     /// PrincipalInfo represents an Identity oneof.
     /// </summary>
-    public sealed class GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A GCP service account.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
         public GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs()
         {
         }
+        public static new GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs Empty => new GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs();
     }
 }

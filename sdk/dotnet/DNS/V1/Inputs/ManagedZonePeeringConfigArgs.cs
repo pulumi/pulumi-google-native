@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1.Inputs
 {
 
-    public sealed class ManagedZonePeeringConfigArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZonePeeringConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
         public ManagedZonePeeringConfigArgs()
         {
         }
+        public static new ManagedZonePeeringConfigArgs Empty => new ManagedZonePeeringConfigArgs();
     }
 }

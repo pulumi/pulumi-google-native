@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     /// <summary>
     /// Parameters used in Dataproc JobType executions.
     /// </summary>
-    public sealed class DataprocParametersArgs : Pulumi.ResourceArgs
+    public sealed class DataprocParametersArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URI for cluster used to run Dataproc execution. Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}`
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public DataprocParametersArgs()
         {
         }
+        public static new DataprocParametersArgs Empty => new DataprocParametersArgs();
     }
 }

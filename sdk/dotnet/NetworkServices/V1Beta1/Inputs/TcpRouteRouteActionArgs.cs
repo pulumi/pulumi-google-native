@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
     /// <summary>
     /// The specifications for routing traffic and applying associated policies.
     /// </summary>
-    public sealed class TcpRouteRouteActionArgs : Pulumi.ResourceArgs
+    public sealed class TcpRouteRouteActionArgs : global::Pulumi.ResourceArgs
     {
         [Input("destinations")]
         private InputList<Inputs.TcpRouteRouteDestinationArgs>? _destinations;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public TcpRouteRouteActionArgs()
         {
         }
+        public static new TcpRouteRouteActionArgs Empty => new TcpRouteRouteActionArgs();
     }
 }

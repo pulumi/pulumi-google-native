@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// Options for enabling sharding.
     /// </summary>
-    public sealed class ShardingOptionArgs : Pulumi.ResourceArgs
+    public sealed class ShardingOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Shards test cases into the specified groups of packages, classes, and/or methods.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public ShardingOptionArgs()
         {
         }
+        public static new ShardingOptionArgs Empty => new ShardingOptionArgs();
     }
 }

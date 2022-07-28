@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Parameters for using BigQuery as the destination of resource usage export.
     /// </summary>
-    public sealed class BigQueryDestinationArgs : Pulumi.ResourceArgs
+    public sealed class BigQueryDestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of a BigQuery Dataset.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public BigQueryDestinationArgs()
         {
         }
+        public static new BigQueryDestinationArgs Empty => new BigQueryDestinationArgs();
     }
 }

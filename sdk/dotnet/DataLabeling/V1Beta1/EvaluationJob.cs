@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datalabeling/v1beta1:EvaluationJob")]
-    public partial class EvaluationJob : Pulumi.CustomResource
+    public partial class EvaluationJob : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
@@ -126,7 +126,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         }
     }
 
-    public sealed class EvaluationJobArgs : Pulumi.ResourceArgs
+    public sealed class EvaluationJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the AnnotationSpecSet describing all the labels that your machine learning model outputs. You must create this resource before you create an evaluation job and provide its name in the following format: "projects/{project_id}/annotationSpecSets/{annotation_spec_set_id}"
@@ -170,5 +170,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public EvaluationJobArgs()
         {
         }
+        public static new EvaluationJobArgs Empty => new EvaluationJobArgs();
     }
 }

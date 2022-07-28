@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
     /// Create an OS Config patch deployment.
     /// </summary>
     [GoogleNativeResourceType("google-native:osconfig/v1beta:PatchDeployment")]
-    public partial class PatchDeployment : Pulumi.CustomResource
+    public partial class PatchDeployment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time the patch deployment was created. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
@@ -144,7 +144,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         }
     }
 
-    public sealed class PatchDeploymentArgs : Pulumi.ResourceArgs
+    public sealed class PatchDeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Description of the patch deployment. Length of the description is limited to 1024 characters.
@@ -206,5 +206,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta
         public PatchDeploymentArgs()
         {
         }
+        public static new PatchDeploymentArgs Empty => new PatchDeploymentArgs();
     }
 }

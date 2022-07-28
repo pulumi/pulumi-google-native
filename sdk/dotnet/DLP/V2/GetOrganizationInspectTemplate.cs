@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DLP.V2
     }
 
 
-    public sealed class GetOrganizationInspectTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationInspectTemplateArgs : global::Pulumi.InvokeArgs
     {
         [Input("inspectTemplateId", required: true)]
         public string InspectTemplateId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.DLP.V2
         public GetOrganizationInspectTemplateArgs()
         {
         }
+        public static new GetOrganizationInspectTemplateArgs Empty => new GetOrganizationInspectTemplateArgs();
     }
 
-    public sealed class GetOrganizationInspectTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationInspectTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("inspectTemplateId", required: true)]
         public Input<string> InspectTemplateId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         public GetOrganizationInspectTemplateInvokeArgs()
         {
         }
+        public static new GetOrganizationInspectTemplateInvokeArgs Empty => new GetOrganizationInspectTemplateInvokeArgs();
     }
 
 

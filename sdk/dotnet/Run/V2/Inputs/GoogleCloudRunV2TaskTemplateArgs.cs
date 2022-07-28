@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// <summary>
     /// TaskTemplate describes the data a task should have when created from a template.
     /// </summary>
-    public sealed class GoogleCloudRunV2TaskTemplateArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRunV2TaskTemplateArgs : global::Pulumi.ResourceArgs
     {
         [Input("containers")]
         private InputList<Inputs.GoogleCloudRunV2ContainerArgs>? _containers;
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public GoogleCloudRunV2TaskTemplateArgs()
         {
         }
+        public static new GoogleCloudRunV2TaskTemplateArgs Empty => new GoogleCloudRunV2TaskTemplateArgs();
     }
 }

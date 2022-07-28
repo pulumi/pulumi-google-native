@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
     /// <summary>
     /// A server-stored registry credential used to validate device credentials.
     /// </summary>
-    public sealed class RegistryCredentialArgs : Pulumi.ResourceArgs
+    public sealed class RegistryCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A public key certificate used to verify the device credentials.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         public RegistryCredentialArgs()
         {
         }
+        public static new RegistryCredentialArgs Empty => new RegistryCredentialArgs();
     }
 }

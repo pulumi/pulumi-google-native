@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigquery/v2:TableIamPolicy")]
-    public partial class TableIamPolicy : Pulumi.CustomResource
+    public partial class TableIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         }
     }
 
-    public sealed class TableIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class TableIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public TableIamPolicyArgs()
         {
         }
+        public static new TableIamPolicyArgs Empty => new TableIamPolicyArgs();
     }
 }

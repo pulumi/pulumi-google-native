@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     }
 
 
-    public sealed class GetNotificationChannelArgs : Pulumi.InvokeArgs
+    public sealed class GetNotificationChannelArgs : global::Pulumi.InvokeArgs
     {
         [Input("notificationChannelId", required: true)]
         public string NotificationChannelId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public GetNotificationChannelArgs()
         {
         }
+        public static new GetNotificationChannelArgs Empty => new GetNotificationChannelArgs();
     }
 
-    public sealed class GetNotificationChannelInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNotificationChannelInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("notificationChannelId", required: true)]
         public Input<string> NotificationChannelId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public GetNotificationChannelInvokeArgs()
         {
         }
+        public static new GetNotificationChannelInvokeArgs Empty => new GetNotificationChannelInvokeArgs();
     }
 
 

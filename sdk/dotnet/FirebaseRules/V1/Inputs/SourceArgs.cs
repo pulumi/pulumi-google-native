@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1.Inputs
     /// <summary>
     /// `Source` is one or more `File` messages comprising a logical set of rules.
     /// </summary>
-    public sealed class SourceArgs : Pulumi.ResourceArgs
+    public sealed class SourceArgs : global::Pulumi.ResourceArgs
     {
         [Input("files", required: true)]
         private InputList<Inputs.FileArgs>? _files;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1.Inputs
         public SourceArgs()
         {
         }
+        public static new SourceArgs Empty => new SourceArgs();
     }
 }

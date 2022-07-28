@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
     /// <summary>
     /// **Workload Certificate**: The Hub-wide input for the WorkloadCertificate feature.
     /// </summary>
-    public sealed class FeatureSpecArgs : Pulumi.ResourceArgs
+    public sealed class FeatureSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies default membership spec. Users can override the default in the member_configs for each member.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         public FeatureSpecArgs()
         {
         }
+        public static new FeatureSpecArgs Empty => new FeatureSpecArgs();
     }
 }

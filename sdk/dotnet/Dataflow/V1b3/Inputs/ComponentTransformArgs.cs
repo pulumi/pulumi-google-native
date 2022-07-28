@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Description of a transform executed as part of an execution stage.
     /// </summary>
-    public sealed class ComponentTransformArgs : Pulumi.ResourceArgs
+    public sealed class ComponentTransformArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Dataflow service generated name for this source.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public ComponentTransformArgs()
         {
         }
+        public static new ComponentTransformArgs Empty => new ComponentTransformArgs();
     }
 }

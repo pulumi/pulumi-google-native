@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk. When a cluster is subscribed to a release channel, Google maintains both the master version and the node version. Node auto-upgrade defaults to true and cannot be disabled.
     /// </summary>
-    public sealed class ReleaseChannelArgs : Pulumi.ResourceArgs
+    public sealed class ReleaseChannelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// channel specifies which release channel the cluster is subscribed to.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public ReleaseChannelArgs()
         {
         }
+        public static new ReleaseChannelArgs Empty => new ReleaseChannelArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Defines the IP ranges that want to use NAT for a subnetwork.
     /// </summary>
-    public sealed class RouterNatSubnetworkToNatArgs : Pulumi.ResourceArgs
+    public sealed class RouterNatSubnetworkToNatArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URL for the subnetwork resource that will use NAT.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public RouterNatSubnetworkToNatArgs()
         {
         }
+        public static new RouterNatSubnetworkToNatArgs Empty => new RouterNatSubnetworkToNatArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Inputs
     /// <summary>
     /// FeaturePolicy defines features allowed to be used on RBE instances, as well as instance-wide behavior changes that take effect without opt-in or opt-out at usage time.
     /// </summary>
-    public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Which container image sources are allowed. Currently only RBE-supported registry (gcr.io) is allowed. One can allow all repositories under a project or one specific repository only. E.g. container_image_sources { policy: RESTRICTED allowed_values: [ "gcr.io/project-foo", "gcr.io/project-bar/repo-baz", ] } will allow any repositories under "gcr.io/project-foo" plus the repository "gcr.io/project-bar/repo-baz". Default (UNSPECIFIED) is equivalent to any source is allowed.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Inputs
         public GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs()
         {
         }
+        public static new GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs Empty => new GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs();
     }
 }

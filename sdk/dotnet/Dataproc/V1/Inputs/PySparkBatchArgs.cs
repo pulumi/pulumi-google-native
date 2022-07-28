@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// A configuration for running an Apache PySpark (https://spark.apache.org/docs/latest/api/python/getting_started/quickstart.html) batch workload.
     /// </summary>
-    public sealed class PySparkBatchArgs : Pulumi.ResourceArgs
+    public sealed class PySparkBatchArgs : global::Pulumi.ResourceArgs
     {
         [Input("archiveUris")]
         private InputList<string>? _archiveUris;
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public PySparkBatchArgs()
         {
         }
+        public static new PySparkBatchArgs Empty => new PySparkBatchArgs();
     }
 }

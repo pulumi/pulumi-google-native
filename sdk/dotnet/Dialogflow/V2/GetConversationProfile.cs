@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     }
 
 
-    public sealed class GetConversationProfileArgs : Pulumi.InvokeArgs
+    public sealed class GetConversationProfileArgs : global::Pulumi.InvokeArgs
     {
         [Input("conversationProfileId", required: true)]
         public string ConversationProfileId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public GetConversationProfileArgs()
         {
         }
+        public static new GetConversationProfileArgs Empty => new GetConversationProfileArgs();
     }
 
-    public sealed class GetConversationProfileInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConversationProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("conversationProfileId", required: true)]
         public Input<string> ConversationProfileId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public GetConversationProfileInvokeArgs()
         {
         }
+        public static new GetConversationProfileInvokeArgs Empty => new GetConversationProfileInvokeArgs();
     }
 
 

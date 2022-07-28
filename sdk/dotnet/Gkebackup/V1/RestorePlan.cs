@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:gkebackup/v1:RestorePlan")]
-    public partial class RestorePlan : Pulumi.CustomResource
+    public partial class RestorePlan : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
@@ -137,7 +137,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         }
     }
 
-    public sealed class RestorePlanArgs : Pulumi.ResourceArgs
+    public sealed class RestorePlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
@@ -190,5 +190,6 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public RestorePlanArgs()
         {
         }
+        public static new RestorePlanArgs Empty => new RestorePlanArgs();
     }
 }

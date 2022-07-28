@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     /// <summary>
     /// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
     /// </summary>
-    public sealed class HTTPGetActionArgs : Pulumi.ResourceArgs
+    public sealed class HTTPGetActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public HTTPGetActionArgs()
         {
         }
+        public static new HTTPGetActionArgs Empty => new HTTPGetActionArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
     /// <summary>
     /// A public key format and data.
     /// </summary>
-    public sealed class PublicKeyCredentialArgs : Pulumi.ResourceArgs
+    public sealed class PublicKeyCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The format of the key.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         public PublicKeyCredentialArgs()
         {
         }
+        public static new PublicKeyCredentialArgs Empty => new PublicKeyCredentialArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// A full, namespace-isolated deployment target for an existing GKE cluster.
     /// </summary>
-    public sealed class NamespacedGkeDeploymentTargetArgs : Pulumi.ResourceArgs
+    public sealed class NamespacedGkeDeploymentTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A namespace within the GKE cluster to deploy into.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public NamespacedGkeDeploymentTargetArgs()
         {
         }
+        public static new NamespacedGkeDeploymentTargetArgs Empty => new NamespacedGkeDeploymentTargetArgs();
     }
 }

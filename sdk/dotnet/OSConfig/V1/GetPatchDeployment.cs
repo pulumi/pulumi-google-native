@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1
     }
 
 
-    public sealed class GetPatchDeploymentArgs : Pulumi.InvokeArgs
+    public sealed class GetPatchDeploymentArgs : global::Pulumi.InvokeArgs
     {
         [Input("patchDeploymentId", required: true)]
         public string PatchDeploymentId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         public GetPatchDeploymentArgs()
         {
         }
+        public static new GetPatchDeploymentArgs Empty => new GetPatchDeploymentArgs();
     }
 
-    public sealed class GetPatchDeploymentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPatchDeploymentInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("patchDeploymentId", required: true)]
         public Input<string> PatchDeploymentId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         public GetPatchDeploymentInvokeArgs()
         {
         }
+        public static new GetPatchDeploymentInvokeArgs Empty => new GetPatchDeploymentInvokeArgs();
     }
 
 

@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// AutoUpgradeOptions defines the set of options for the user to control how the Auto Upgrades will proceed.
     /// </summary>
-    public sealed class AutoUpgradeOptionsArgs : Pulumi.ResourceArgs
+    public sealed class AutoUpgradeOptionsArgs : global::Pulumi.ResourceArgs
     {
         public AutoUpgradeOptionsArgs()
         {
         }
+        public static new AutoUpgradeOptionsArgs Empty => new AutoUpgradeOptionsArgs();
     }
 }

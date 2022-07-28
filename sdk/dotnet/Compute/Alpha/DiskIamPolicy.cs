@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:DiskIamPolicy")]
-    public partial class DiskIamPolicy : Pulumi.CustomResource
+    public partial class DiskIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -105,7 +105,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class DiskIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class DiskIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -167,5 +167,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public DiskIamPolicyArgs()
         {
         }
+        public static new DiskIamPolicyArgs Empty => new DiskIamPolicyArgs();
     }
 }

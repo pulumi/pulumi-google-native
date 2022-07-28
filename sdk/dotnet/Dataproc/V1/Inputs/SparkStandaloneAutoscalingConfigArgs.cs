@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Basic autoscaling configurations for Spark Standalone.
     /// </summary>
-    public sealed class SparkStandaloneAutoscalingConfigArgs : Pulumi.ResourceArgs
+    public sealed class SparkStandaloneAutoscalingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decomissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public SparkStandaloneAutoscalingConfigArgs()
         {
         }
+        public static new SparkStandaloneAutoscalingConfigArgs Empty => new SparkStandaloneAutoscalingConfigArgs();
     }
 }

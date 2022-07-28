@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Queuing parameters for the requested deferred capacity.
     /// </summary>
-    public sealed class QueuingPolicyArgs : Pulumi.ResourceArgs
+    public sealed class QueuingPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Relative deadline for waiting for capacity.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public QueuingPolicyArgs()
         {
         }
+        public static new QueuingPolicyArgs Empty => new QueuingPolicyArgs();
     }
 }

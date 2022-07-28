@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
     /// <summary>
     /// Settings specific to keys that can be used by websites.
     /// </summary>
-    public sealed class GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to true, it means allowed_domains will not be enforced.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
         public GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs()
         {
         }
+        public static new GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs Empty => new GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs();
     }
 }

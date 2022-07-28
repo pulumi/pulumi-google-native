@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataflow/v1b3:Template")]
-    public partial class Template : Pulumi.CustomResource
+    public partial class Template : global::Pulumi.CustomResource
     {
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         }
     }
 
-    public sealed class TemplateArgs : Pulumi.ResourceArgs
+    public sealed class TemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The runtime environment for the job.
@@ -140,5 +140,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         public TemplateArgs()
         {
         }
+        public static new TemplateArgs Empty => new TemplateArgs();
     }
 }

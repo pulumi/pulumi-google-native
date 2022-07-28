@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// This is deprecated and has no effect. Do not use.
     /// </summary>
-    public sealed class LogConfigCounterOptionsArgs : Pulumi.ResourceArgs
+    public sealed class LogConfigCounterOptionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("customFields")]
         private InputList<Inputs.LogConfigCounterOptionsCustomFieldArgs>? _customFields;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public LogConfigCounterOptionsArgs()
         {
         }
+        public static new LogConfigCounterOptionsArgs Empty => new LogConfigCounterOptionsArgs();
     }
 }

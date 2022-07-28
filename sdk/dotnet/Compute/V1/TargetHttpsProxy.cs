@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     /// Creates a TargetHttpsProxy resource in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:TargetHttpsProxy")]
-    public partial class TargetHttpsProxy : Pulumi.CustomResource
+    public partial class TargetHttpsProxy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
@@ -161,7 +161,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
     }
 
-    public sealed class TargetHttpsProxyArgs : Pulumi.ResourceArgs
+    public sealed class TargetHttpsProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A URL referring to a networksecurity.AuthorizationPolicy resource that describes how the proxy should authorize inbound traffic. If left blank, access will not be restricted by an authorization policy. Refer to the AuthorizationPolicy resource for additional details. authorizationPolicy only applies to a global TargetHttpsProxy attached to globalForwardingRules with the loadBalancingScheme set to INTERNAL_SELF_MANAGED. Note: This field currently has no impact.
@@ -241,5 +241,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public TargetHttpsProxyArgs()
         {
         }
+        public static new TargetHttpsProxyArgs Empty => new TargetHttpsProxyArgs();
     }
 }

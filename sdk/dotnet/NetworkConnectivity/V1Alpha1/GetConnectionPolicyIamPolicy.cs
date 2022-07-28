@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
     }
 
 
-    public sealed class GetConnectionPolicyIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectionPolicyIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("connectionPolicyId", required: true)]
         public string ConnectionPolicyId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         public GetConnectionPolicyIamPolicyArgs()
         {
         }
+        public static new GetConnectionPolicyIamPolicyArgs Empty => new GetConnectionPolicyIamPolicyArgs();
     }
 
-    public sealed class GetConnectionPolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectionPolicyIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("connectionPolicyId", required: true)]
         public Input<string> ConnectionPolicyId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         public GetConnectionPolicyIamPolicyInvokeArgs()
         {
         }
+        public static new GetConnectionPolicyIamPolicyInvokeArgs Empty => new GetConnectionPolicyIamPolicyInvokeArgs();
     }
 
 

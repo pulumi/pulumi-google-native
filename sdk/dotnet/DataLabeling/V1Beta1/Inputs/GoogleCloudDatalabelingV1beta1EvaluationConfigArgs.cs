@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Configuration details used for calculating evaluation metrics and creating an Evaluation.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1EvaluationConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1EvaluationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Only specify this field if the related model performs image object detection (`IMAGE_BOUNDING_BOX_ANNOTATION`). Describes how to evaluate bounding boxes.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1EvaluationConfigArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1EvaluationConfigArgs Empty => new GoogleCloudDatalabelingV1beta1EvaluationConfigArgs();
     }
 }

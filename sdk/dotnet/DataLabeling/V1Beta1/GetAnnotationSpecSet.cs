@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     }
 
 
-    public sealed class GetAnnotationSpecSetArgs : Pulumi.InvokeArgs
+    public sealed class GetAnnotationSpecSetArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotationSpecSetId", required: true)]
         public string AnnotationSpecSetId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public GetAnnotationSpecSetArgs()
         {
         }
+        public static new GetAnnotationSpecSetArgs Empty => new GetAnnotationSpecSetArgs();
     }
 
-    public sealed class GetAnnotationSpecSetInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAnnotationSpecSetInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotationSpecSetId", required: true)]
         public Input<string> AnnotationSpecSetId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public GetAnnotationSpecSetInvokeArgs()
         {
         }
+        public static new GetAnnotationSpecSetInvokeArgs Empty => new GetAnnotationSpecSetInvokeArgs();
     }
 
 

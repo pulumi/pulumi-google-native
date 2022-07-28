@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// BitbucketServerSecrets represents the secrets in Secret Manager for a Bitbucket Server.
     /// </summary>
-    public sealed class BitbucketServerSecretsArgs : Pulumi.ResourceArgs
+    public sealed class BitbucketServerSecretsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource name for the admin access token's secret version.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public BitbucketServerSecretsArgs()
         {
         }
+        public static new BitbucketServerSecretsArgs Empty => new BitbucketServerSecretsArgs();
     }
 }

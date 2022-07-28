@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:appengine/v1beta:IngressRule")]
-    public partial class IngressRule : Pulumi.CustomResource
+    public partial class IngressRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The action to take on matched requests.
@@ -90,7 +90,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         }
     }
 
-    public sealed class IngressRuleArgs : Pulumi.ResourceArgs
+    public sealed class IngressRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action to take on matched requests.
@@ -122,5 +122,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         public IngressRuleArgs()
         {
         }
+        public static new IngressRuleArgs Empty => new IngressRuleArgs();
     }
 }

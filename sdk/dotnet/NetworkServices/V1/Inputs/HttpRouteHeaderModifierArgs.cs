@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
     /// <summary>
     /// The specification for modifying HTTP header in HTTP request and HTTP response.
     /// </summary>
-    public sealed class HttpRouteHeaderModifierArgs : Pulumi.ResourceArgs
+    public sealed class HttpRouteHeaderModifierArgs : global::Pulumi.ResourceArgs
     {
         [Input("add")]
         private InputMap<string>? _add;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
         public HttpRouteHeaderModifierArgs()
         {
         }
+        public static new HttpRouteHeaderModifierArgs Empty => new HttpRouteHeaderModifierArgs();
     }
 }

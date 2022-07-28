@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1.Inputs
     /// <summary>
     /// The crypto key configuration. This field is used by the Customer-managed encryption keys (CMEK) feature.
     /// </summary>
-    public sealed class CryptoKeyConfigArgs : Pulumi.ResourceArgs
+    public sealed class CryptoKeyConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataFusion.V1.Inputs
         public CryptoKeyConfigArgs()
         {
         }
+        public static new CryptoKeyConfigArgs Empty => new CryptoKeyConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Specifies an artifact available as a Google Cloud Storage object.
     /// </summary>
-    public sealed class SoftwareRecipeArtifactGcsArgs : Pulumi.ResourceArgs
+    public sealed class SoftwareRecipeArtifactGcsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Bucket of the Google Cloud Storage object. Given an example URL: `https://storage.googleapis.com/my-bucket/foo/bar#1234567` this value would be `my-bucket`.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public SoftwareRecipeArtifactGcsArgs()
         {
         }
+        public static new SoftwareRecipeArtifactGcsArgs Empty => new SoftwareRecipeArtifactGcsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
     /// <summary>
     /// Product price range when there are a range of prices for different variations of the same product.
     /// </summary>
-    public sealed class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum product price.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
         public GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs()
         {
         }
+        public static new GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs Empty => new GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs();
     }
 }

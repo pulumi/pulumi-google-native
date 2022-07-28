@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Time window specified for hourly operations.
     /// </summary>
-    public sealed class ResourcePolicyHourlyCycleArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyHourlyCycleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines a schedule with units measured in hours. The value determines how many hours pass between the start of each cycle.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public ResourcePolicyHourlyCycleArgs()
         {
         }
+        public static new ResourcePolicyHourlyCycleArgs Empty => new ResourcePolicyHourlyCycleArgs();
     }
 }

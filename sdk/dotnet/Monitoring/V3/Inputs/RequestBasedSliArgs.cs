@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Service Level Indicators for which atomic units of service are counted directly.
     /// </summary>
-    public sealed class RequestBasedSliArgs : Pulumi.ResourceArgs
+    public sealed class RequestBasedSliArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// distribution_cut is used when good_service is a count of values aggregated in a Distribution that fall into a good range. The total_service is the total count of all values aggregated in the Distribution.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public RequestBasedSliArgs()
         {
         }
+        public static new RequestBasedSliArgs Empty => new RequestBasedSliArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// A schedule for disks where the schedueled operations are performed.
     /// </summary>
-    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicySnapshotSchedulePolicyScheduleArgs : global::Pulumi.ResourceArgs
     {
         [Input("dailySchedule")]
         public Input<Inputs.ResourcePolicyDailyCycleArgs>? DailySchedule { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public ResourcePolicySnapshotSchedulePolicyScheduleArgs()
         {
         }
+        public static new ResourcePolicySnapshotSchedulePolicyScheduleArgs Empty => new ResourcePolicySnapshotSchedulePolicyScheduleArgs();
     }
 }

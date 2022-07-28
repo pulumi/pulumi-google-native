@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// The simple response message containing speech or text.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The text to display.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArgs();
     }
 }

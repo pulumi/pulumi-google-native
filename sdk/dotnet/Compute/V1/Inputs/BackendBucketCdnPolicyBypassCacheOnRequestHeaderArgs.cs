@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Bypass the cache when the specified request headers are present, e.g. Pragma or Authorization headers. Values are case insensitive. The presence of such a header overrides the cache_mode setting.
     /// </summary>
-    public sealed class BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs : Pulumi.ResourceArgs
+    public sealed class BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The header field name to match on when bypassing cache. Values are case-insensitive.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs()
         {
         }
+        public static new BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs Empty => new BackendBucketCdnPolicyBypassCacheOnRequestHeaderArgs();
     }
 }

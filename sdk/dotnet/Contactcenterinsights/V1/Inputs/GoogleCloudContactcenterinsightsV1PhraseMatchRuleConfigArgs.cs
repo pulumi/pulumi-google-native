@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
     /// <summary>
     /// Configuration information of a phrase match rule.
     /// </summary>
-    public sealed class GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration for the exact match rule.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
         public GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigArgs()
         {
         }
+        public static new GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigArgs Empty => new GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfigArgs();
     }
 }

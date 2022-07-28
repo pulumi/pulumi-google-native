@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a new Future Reservation.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:FutureReservation")]
-    public partial class FutureReservation : Pulumi.CustomResource
+    public partial class FutureReservation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The creation timestamp for this future reservation in RFC3339 text format.
@@ -141,7 +141,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class FutureReservationArgs : Pulumi.ResourceArgs
+    public sealed class FutureReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the future reservation.
@@ -194,5 +194,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public FutureReservationArgs()
         {
         }
+        public static new FutureReservationArgs Empty => new FutureReservationArgs();
     }
 }

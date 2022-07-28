@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
     }
 
 
-    public sealed class GetPrivateConnectionArgs : Pulumi.InvokeArgs
+    public sealed class GetPrivateConnectionArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
         public GetPrivateConnectionArgs()
         {
         }
+        public static new GetPrivateConnectionArgs Empty => new GetPrivateConnectionArgs();
     }
 
-    public sealed class GetPrivateConnectionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPrivateConnectionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
         public GetPrivateConnectionInvokeArgs()
         {
         }
+        public static new GetPrivateConnectionInvokeArgs Empty => new GetPrivateConnectionInvokeArgs();
     }
 
 

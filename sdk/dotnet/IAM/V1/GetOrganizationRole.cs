@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.IAM.V1
     }
 
 
-    public sealed class GetOrganizationRoleArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationRoleArgs : global::Pulumi.InvokeArgs
     {
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         public GetOrganizationRoleArgs()
         {
         }
+        public static new GetOrganizationRoleArgs Empty => new GetOrganizationRoleArgs();
     }
 
-    public sealed class GetOrganizationRoleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         public GetOrganizationRoleInvokeArgs()
         {
         }
+        public static new GetOrganizationRoleInvokeArgs Empty => new GetOrganizationRoleInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1.Inputs
     /// <summary>
     /// A Certificate represents an X.509 certificate used to authenticate HTTPS connections to EKM replicas.
     /// </summary>
-    public sealed class CertificateArgs : Pulumi.ResourceArgs
+    public sealed class CertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The raw certificate bytes in DER format.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1.Inputs
         public CertificateArgs()
         {
         }
+        public static new CertificateArgs Empty => new CertificateArgs();
     }
 }

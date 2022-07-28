@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
     /// <summary>
     /// Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
     /// </summary>
-    public sealed class GoogleCloudRetailV2alphaRuleRedirectActionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2alphaRuleRedirectActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URL must have length equal or less than 2000 characters.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
         public GoogleCloudRetailV2alphaRuleRedirectActionArgs()
         {
         }
+        public static new GoogleCloudRetailV2alphaRuleRedirectActionArgs Empty => new GoogleCloudRetailV2alphaRuleRedirectActionArgs();
     }
 }

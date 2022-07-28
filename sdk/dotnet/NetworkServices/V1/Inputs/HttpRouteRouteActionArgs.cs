@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
     /// <summary>
     /// The specifications for routing traffic and applying associated policies.
     /// </summary>
-    public sealed class HttpRouteRouteActionArgs : Pulumi.ResourceArgs
+    public sealed class HttpRouteRouteActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The specification for allowing client side cross-origin requests.
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
         public HttpRouteRouteActionArgs()
         {
         }
+        public static new HttpRouteRouteActionArgs Empty => new HttpRouteRouteActionArgs();
     }
 }

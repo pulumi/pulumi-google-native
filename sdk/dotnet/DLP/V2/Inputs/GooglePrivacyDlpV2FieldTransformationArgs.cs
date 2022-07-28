@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// The transformation to apply to the field.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2FieldTransformationArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2FieldTransformationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Only apply the transformation if the condition evaluates to true for the given `RecordCondition`. The conditions are allowed to reference fields that are not used in the actual transformation. Example Use Cases: - Apply a different bucket transformation to an age column if the zip code column for the same record is within a specific range. - Redact a field if the date of birth field is greater than 85.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2FieldTransformationArgs()
         {
         }
+        public static new GooglePrivacyDlpV2FieldTransformationArgs Empty => new GooglePrivacyDlpV2FieldTransformationArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
     }
 
 
-    public sealed class GetDomainArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainArgs : global::Pulumi.InvokeArgs
     {
         [Input("domainId", required: true)]
         public string DomainId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         public GetDomainArgs()
         {
         }
+        public static new GetDomainArgs Empty => new GetDomainArgs();
     }
 
-    public sealed class GetDomainInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("domainId", required: true)]
         public Input<string> DomainId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         public GetDomainInvokeArgs()
         {
         }
+        public static new GetDomainInvokeArgs Empty => new GetDomainInvokeArgs();
     }
 
 

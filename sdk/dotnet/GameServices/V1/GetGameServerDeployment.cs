@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
     }
 
 
-    public sealed class GetGameServerDeploymentArgs : Pulumi.InvokeArgs
+    public sealed class GetGameServerDeploymentArgs : global::Pulumi.InvokeArgs
     {
         [Input("gameServerDeploymentId", required: true)]
         public string GameServerDeploymentId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public GetGameServerDeploymentArgs()
         {
         }
+        public static new GetGameServerDeploymentArgs Empty => new GetGameServerDeploymentArgs();
     }
 
-    public sealed class GetGameServerDeploymentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGameServerDeploymentInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("gameServerDeploymentId", required: true)]
         public Input<string> GameServerDeploymentId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public GetGameServerDeploymentInvokeArgs()
         {
         }
+        public static new GetGameServerDeploymentInvokeArgs Empty => new GetGameServerDeploymentInvokeArgs();
     }
 
 

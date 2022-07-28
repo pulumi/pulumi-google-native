@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Configuration for a risk analysis job. See https://cloud.google.com/dlp/docs/concepts-risk-analysis to learn more.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2RiskAnalysisJobConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2RiskAnalysisJobConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("actions")]
         private InputList<Inputs.GooglePrivacyDlpV2ActionArgs>? _actions;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2RiskAnalysisJobConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2RiskAnalysisJobConfigArgs Empty => new GooglePrivacyDlpV2RiskAnalysisJobConfigArgs();
     }
 }

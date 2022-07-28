@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1
     /// Creates a new version of a model from a trained TensorFlow model. If the version created in the cloud by this call is the first deployed version of the specified model, it will be made the default version of the model. When you add a version to a model that already has one or more versions, the default version does not automatically change. If you want a new version to be the default, you must call projects.models.versions.setDefault.
     /// </summary>
     [GoogleNativeResourceType("google-native:ml/v1:Version")]
-    public partial class Version : Pulumi.CustomResource
+    public partial class Version : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
@@ -225,7 +225,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         }
     }
 
-    public sealed class VersionArgs : Pulumi.ResourceArgs
+    public sealed class VersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Accelerator config for using GPUs for online prediction (beta). Only specify this field if you have specified a Compute Engine (N1) machine type in the `machineType` field. Learn more about [using GPUs for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
@@ -362,5 +362,6 @@ namespace Pulumi.GoogleNative.Ml.V1
         public VersionArgs()
         {
         }
+        public static new VersionArgs Empty => new VersionArgs();
     }
 }

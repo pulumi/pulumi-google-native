@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
     /// <summary>
     /// Label object for CompositeTypes
     /// </summary>
-    public sealed class CompositeTypeLabelEntryArgs : Pulumi.ResourceArgs
+    public sealed class CompositeTypeLabelEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key of the label
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
         public CompositeTypeLabelEntryArgs()
         {
         }
+        public static new CompositeTypeLabelEntryArgs Empty => new CompositeTypeLabelEntryArgs();
     }
 }

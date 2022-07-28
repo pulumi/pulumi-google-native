@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
     }
 
 
-    public sealed class GetFeatureIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetFeatureIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("featureId", required: true)]
         public string FeatureId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public GetFeatureIamPolicyArgs()
         {
         }
+        public static new GetFeatureIamPolicyArgs Empty => new GetFeatureIamPolicyArgs();
     }
 
-    public sealed class GetFeatureIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFeatureIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("featureId", required: true)]
         public Input<string> FeatureId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public GetFeatureIamPolicyInvokeArgs()
         {
         }
+        public static new GetFeatureIamPolicyInvokeArgs Empty => new GetFeatureIamPolicyInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A file or directory to install on the device before the test starts.
     /// </summary>
-    public sealed class IosDeviceFileArgs : Pulumi.ResourceArgs
+    public sealed class IosDeviceFileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The bundle id of the app where this file lives. iOS apps sandbox their own filesystem, so app files must specify which app installed on the device.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public IosDeviceFileArgs()
         {
         }
+        public static new IosDeviceFileArgs Empty => new IosDeviceFileArgs();
     }
 }

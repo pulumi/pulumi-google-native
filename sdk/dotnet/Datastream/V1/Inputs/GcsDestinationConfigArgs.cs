@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     /// <summary>
     /// Google Cloud Storage destination configuration
     /// </summary>
-    public sealed class GcsDestinationConfigArgs : Pulumi.ResourceArgs
+    public sealed class GcsDestinationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// AVRO file format configuration.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public GcsDestinationConfigArgs()
         {
         }
+        public static new GcsDestinationConfigArgs Empty => new GcsDestinationConfigArgs();
     }
 }

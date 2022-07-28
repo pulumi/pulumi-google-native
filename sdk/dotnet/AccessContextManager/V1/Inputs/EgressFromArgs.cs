@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
     /// <summary>
     /// Defines the conditions under which an EgressPolicy matches a request. Conditions based on information about the source of the request. Note that if the destination of the request is also protected by a ServicePerimeter, then that ServicePerimeter must have an IngressPolicy which allows access in order for this request to succeed.
     /// </summary>
-    public sealed class EgressFromArgs : Pulumi.ResourceArgs
+    public sealed class EgressFromArgs : global::Pulumi.ResourceArgs
     {
         [Input("identities")]
         private InputList<string>? _identities;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         public EgressFromArgs()
         {
         }
+        public static new EgressFromArgs Empty => new EgressFromArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// <summary>
     /// ExecutionTemplate describes the data an execution should have when created from a template.
     /// </summary>
-    public sealed class GoogleCloudRunV2ExecutionTemplateArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRunV2ExecutionTemplateArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public GoogleCloudRunV2ExecutionTemplateArgs()
         {
         }
+        public static new GoogleCloudRunV2ExecutionTemplateArgs Empty => new GoogleCloudRunV2ExecutionTemplateArgs();
     }
 }

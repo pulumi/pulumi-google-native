@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
     /// <summary>
     /// Settings for validating messages published against a schema.
     /// </summary>
-    public sealed class SchemaSettingsArgs : Pulumi.ResourceArgs
+    public sealed class SchemaSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The encoding of messages validated against `schema`.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Pubsub.V1.Inputs
         public SchemaSettingsArgs()
         {
         }
+        public static new SchemaSettingsArgs Empty => new SchemaSettingsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     /// <summary>
     /// A KeyUsage describes key usage values that may appear in an X.509 certificate.
     /// </summary>
-    public sealed class KeyUsageArgs : Pulumi.ResourceArgs
+    public sealed class KeyUsageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Describes high-level ways in which a key may be used.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         public KeyUsageArgs()
         {
         }
+        public static new KeyUsageArgs Empty => new KeyUsageArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
     /// Creates a Network Connectivity Center spoke.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkconnectivity/v1:Spoke")]
-    public partial class Spoke : Pulumi.CustomResource
+    public partial class Spoke : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time the spoke was created.
@@ -148,7 +148,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         }
     }
 
-    public sealed class SpokeArgs : Pulumi.ResourceArgs
+    public sealed class SpokeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of the spoke.
@@ -219,5 +219,6 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public SpokeArgs()
         {
         }
+        public static new SpokeArgs Empty => new SpokeArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
     /// Create a `Release`. Release names should reflect the developer's deployment practices. For example, the release name may include the environment name, application name, application version, or any other name meaningful to the developer. Once a `Release` refers to a `Ruleset`, the rules can be enforced by Firebase Rules-enabled services. More than one `Release` may be 'live' concurrently. Consider the following three `Release` names for `projects/foo` and the `Ruleset` to which they refer. Release Name -&gt; Ruleset Name * projects/foo/releases/prod -&gt; projects/foo/rulesets/uuid123 * projects/foo/releases/prod/beta -&gt; projects/foo/rulesets/uuid123 * projects/foo/releases/prod/v23 -&gt; projects/foo/rulesets/uuid456 The relationships reflect a `Ruleset` rollout in progress. The `prod` and `prod/beta` releases refer to the same `Ruleset`. However, `prod/v23` refers to a new `Ruleset`. The `Ruleset` reference for a `Release` may be updated using the UpdateRelease method.
     /// </summary>
     [GoogleNativeResourceType("google-native:firebaserules/v1:Release")]
-    public partial class Release : Pulumi.CustomResource
+    public partial class Release : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time the release was created.
@@ -89,7 +89,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         }
     }
 
-    public sealed class ReleaseArgs : Pulumi.ResourceArgs
+    public sealed class ReleaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Format: `projects/{project_id}/releases/{release_id}`
@@ -109,5 +109,6 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         public ReleaseArgs()
         {
         }
+        public static new ReleaseArgs Empty => new ReleaseArgs();
     }
 }

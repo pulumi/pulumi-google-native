@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
     /// <summary>
     /// Database flags for Cloud SQL instances.
     /// </summary>
-    public sealed class DatabaseFlagsArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseFlagsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the flag. These flags are passed at instance startup, so include both server options and system variables. Flags are specified with underscores, not hyphens. For more information, see [Configuring Database Flags](https://cloud.google.com/sql/docs/mysql/flags) in the Cloud SQL documentation.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public DatabaseFlagsArgs()
         {
         }
+        public static new DatabaseFlagsArgs Empty => new DatabaseFlagsArgs();
     }
 }

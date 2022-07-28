@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
     /// <summary>
     /// Identity-Aware Proxy
     /// </summary>
-    public sealed class IdentityAwareProxyArgs : Pulumi.ResourceArgs
+    public sealed class IdentityAwareProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the serving infrastructure will authenticate and authorize all incoming requests.If true, the oauth2_client_id and oauth2_client_secret fields must be non-empty.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         public IdentityAwareProxyArgs()
         {
         }
+        public static new IdentityAwareProxyArgs Empty => new IdentityAwareProxyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     /// <summary>
     /// Defines sources for the suggest/search APIs.
     /// </summary>
-    public sealed class SourceArgs : Pulumi.ResourceArgs
+    public sealed class SourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Source name for content indexed by the Indexing API.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public SourceArgs()
         {
         }
+        public static new SourceArgs Empty => new SourceArgs();
     }
 }

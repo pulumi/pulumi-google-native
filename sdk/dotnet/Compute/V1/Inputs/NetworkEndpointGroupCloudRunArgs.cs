@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Configuration for a Cloud Run network endpoint group (NEG). The service must be provided explicitly or in the URL mask. The tag is optional, may be provided explicitly or in the URL mask. Note: Cloud Run service must be in the same project and located in the same region as the Serverless NEG.
     /// </summary>
-    public sealed class NetworkEndpointGroupCloudRunArgs : Pulumi.ResourceArgs
+    public sealed class NetworkEndpointGroupCloudRunArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud Run service is the main resource of Cloud Run. The service must be 1-63 characters long, and comply with RFC1035. Example value: "run-service".
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public NetworkEndpointGroupCloudRunArgs()
         {
         }
+        public static new NetworkEndpointGroupCloudRunArgs Empty => new NetworkEndpointGroupCloudRunArgs();
     }
 }

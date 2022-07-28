@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Container for either a built-in LB policy supported by gRPC or Envoy or a custom one implemented by the end user.
     /// </summary>
-    public sealed class BackendServiceLocalityLoadBalancingPolicyConfigArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceLocalityLoadBalancingPolicyConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("customPolicy")]
         public Input<Inputs.BackendServiceLocalityLoadBalancingPolicyConfigCustomPolicyArgs>? CustomPolicy { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public BackendServiceLocalityLoadBalancingPolicyConfigArgs()
         {
         }
+        public static new BackendServiceLocalityLoadBalancingPolicyConfigArgs Empty => new BackendServiceLocalityLoadBalancingPolicyConfigArgs();
     }
 }

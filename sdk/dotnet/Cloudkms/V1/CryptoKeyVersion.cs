@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudkms/v1:CryptoKeyVersion")]
-    public partial class CryptoKeyVersion : Pulumi.CustomResource
+    public partial class CryptoKeyVersion : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
@@ -163,7 +163,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         }
     }
 
-    public sealed class CryptoKeyVersionArgs : Pulumi.ResourceArgs
+    public sealed class CryptoKeyVersionArgs : global::Pulumi.ResourceArgs
     {
         [Input("cryptoKeyId")]
         public Input<string>? CryptoKeyId { get; set; }
@@ -192,5 +192,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public CryptoKeyVersionArgs()
         {
         }
+        public static new CryptoKeyVersionArgs Empty => new CryptoKeyVersionArgs();
     }
 }

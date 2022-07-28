@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:firestore/v1:Database")]
-    public partial class Database : Pulumi.CustomResource
+    public partial class Database : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The App Engine integration mode to use for this database.
@@ -116,7 +116,7 @@ namespace Pulumi.GoogleNative.Firestore.V1
         }
     }
 
-    public sealed class DatabaseArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The App Engine integration mode to use for this database.
@@ -166,5 +166,6 @@ namespace Pulumi.GoogleNative.Firestore.V1
         public DatabaseArgs()
         {
         }
+        public static new DatabaseArgs Empty => new DatabaseArgs();
     }
 }

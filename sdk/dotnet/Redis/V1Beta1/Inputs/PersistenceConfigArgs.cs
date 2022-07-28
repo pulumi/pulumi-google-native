@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1.Inputs
     /// <summary>
     /// Configuration of the persistence functionality.
     /// </summary>
-    public sealed class PersistenceConfigArgs : Pulumi.ResourceArgs
+    public sealed class PersistenceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Redis.V1Beta1.Inputs
         public PersistenceConfigArgs()
         {
         }
+        public static new PersistenceConfigArgs Empty => new PersistenceConfigArgs();
     }
 }

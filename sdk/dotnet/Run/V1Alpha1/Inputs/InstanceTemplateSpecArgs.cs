@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     /// <summary>
     /// InstanceTemplateSpec describes the data an instance should have when created from a template.
     /// </summary>
-    public sealed class InstanceTemplateSpecArgs : Pulumi.ResourceArgs
+    public sealed class InstanceTemplateSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Specification of the desired behavior of the instance. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public InstanceTemplateSpecArgs()
         {
         }
+        public static new InstanceTemplateSpecArgs Empty => new InstanceTemplateSpecArgs();
     }
 }

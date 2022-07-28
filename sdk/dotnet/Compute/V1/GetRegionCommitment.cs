@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetRegionCommitmentArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionCommitmentArgs : global::Pulumi.InvokeArgs
     {
         [Input("commitment", required: true)]
         public string Commitment { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetRegionCommitmentArgs()
         {
         }
+        public static new GetRegionCommitmentArgs Empty => new GetRegionCommitmentArgs();
     }
 
-    public sealed class GetRegionCommitmentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionCommitmentInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("commitment", required: true)]
         public Input<string> Commitment { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetRegionCommitmentInvokeArgs()
         {
         }
+        public static new GetRegionCommitmentInvokeArgs Empty => new GetRegionCommitmentInvokeArgs();
     }
 
 

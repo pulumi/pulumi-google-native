@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:billingbudgets/v1:Budget")]
-    public partial class Budget : Pulumi.CustomResource
+    public partial class Budget : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Budgeted amount.
@@ -108,7 +108,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
         }
     }
 
-    public sealed class BudgetArgs : Pulumi.ResourceArgs
+    public sealed class BudgetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Budgeted amount.
@@ -158,5 +158,6 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
         public BudgetArgs()
         {
         }
+        public static new BudgetArgs Empty => new BudgetArgs();
     }
 }

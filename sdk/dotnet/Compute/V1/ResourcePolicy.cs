@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     /// Creates a new resource policy.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:ResourcePolicy")]
-    public partial class ResourcePolicy : Pulumi.CustomResource
+    public partial class ResourcePolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -132,7 +132,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
     }
 
-    public sealed class ResourcePolicyArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -176,5 +176,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public ResourcePolicyArgs()
         {
         }
+        public static new ResourcePolicyArgs Empty => new ResourcePolicyArgs();
     }
 }

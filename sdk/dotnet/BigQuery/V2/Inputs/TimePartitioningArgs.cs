@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class TimePartitioningArgs : Pulumi.ResourceArgs
+    public sealed class TimePartitioningArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] Number of milliseconds for which to keep the storage for partitions in the table. The storage in a partition will have an expiration time of its partition time plus this value.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public TimePartitioningArgs()
         {
         }
+        public static new TimePartitioningArgs Empty => new TimePartitioningArgs();
     }
 }

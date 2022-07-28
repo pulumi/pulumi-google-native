@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
     }
 
 
-    public sealed class GetIndexArgs : Pulumi.InvokeArgs
+    public sealed class GetIndexArgs : global::Pulumi.InvokeArgs
     {
         [Input("databaseId", required: true)]
         public string DatabaseId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
         public GetIndexArgs()
         {
         }
+        public static new GetIndexArgs Empty => new GetIndexArgs();
     }
 
-    public sealed class GetIndexInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIndexInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("databaseId", required: true)]
         public Input<string> DatabaseId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
         public GetIndexInvokeArgs()
         {
         }
+        public static new GetIndexInvokeArgs Empty => new GetIndexInvokeArgs();
     }
 
 

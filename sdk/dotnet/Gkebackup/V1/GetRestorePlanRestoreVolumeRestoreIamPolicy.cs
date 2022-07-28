@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     }
 
 
-    public sealed class GetRestorePlanRestoreVolumeRestoreIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetRestorePlanRestoreVolumeRestoreIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -48,9 +48,10 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public GetRestorePlanRestoreVolumeRestoreIamPolicyArgs()
         {
         }
+        public static new GetRestorePlanRestoreVolumeRestoreIamPolicyArgs Empty => new GetRestorePlanRestoreVolumeRestoreIamPolicyArgs();
     }
 
-    public sealed class GetRestorePlanRestoreVolumeRestoreIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRestorePlanRestoreVolumeRestoreIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -73,6 +74,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public GetRestorePlanRestoreVolumeRestoreIamPolicyInvokeArgs()
         {
         }
+        public static new GetRestorePlanRestoreVolumeRestoreIamPolicyInvokeArgs Empty => new GetRestorePlanRestoreVolumeRestoreIamPolicyInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// A context rule provides information about the context for an individual API element.
     /// </summary>
-    public sealed class ContextRuleArgs : Pulumi.ResourceArgs
+    public sealed class ContextRuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedRequestExtensions")]
         private InputList<string>? _allowedRequestExtensions;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public ContextRuleArgs()
         {
         }
+        public static new ContextRuleArgs Empty => new ContextRuleArgs();
     }
 }

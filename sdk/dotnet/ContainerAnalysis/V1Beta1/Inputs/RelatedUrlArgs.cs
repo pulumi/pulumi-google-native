@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Metadata for any related URL information.
     /// </summary>
-    public sealed class RelatedUrlArgs : Pulumi.ResourceArgs
+    public sealed class RelatedUrlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Label to describe usage of the URL.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public RelatedUrlArgs()
         {
         }
+        public static new RelatedUrlArgs Empty => new RelatedUrlArgs();
     }
 }

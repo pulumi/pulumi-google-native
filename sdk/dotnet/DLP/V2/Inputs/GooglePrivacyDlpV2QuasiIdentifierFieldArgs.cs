@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// A quasi-identifier column has a custom_tag, used to know which column in the data corresponds to which column in the statistical model.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2QuasiIdentifierFieldArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2QuasiIdentifierFieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2QuasiIdentifierFieldArgs()
         {
         }
+        public static new GooglePrivacyDlpV2QuasiIdentifierFieldArgs Empty => new GooglePrivacyDlpV2QuasiIdentifierFieldArgs();
     }
 }

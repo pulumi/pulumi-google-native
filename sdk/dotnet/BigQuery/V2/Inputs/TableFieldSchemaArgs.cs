@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class TableFieldSchemaArgs : Pulumi.ResourceArgs
+    public sealed class TableFieldSchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] The categories attached to this field, used for field-level access control.
@@ -90,5 +90,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public TableFieldSchemaArgs()
         {
         }
+        public static new TableFieldSchemaArgs Empty => new TableFieldSchemaArgs();
     }
 }

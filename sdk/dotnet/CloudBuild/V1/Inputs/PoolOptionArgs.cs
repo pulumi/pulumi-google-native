@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// Details about how a build should be executed on a `WorkerPool`. See [running builds in a private pool](https://cloud.google.com/build/docs/private-pools/run-builds-in-private-pool) for more information.
     /// </summary>
-    public sealed class PoolOptionArgs : Pulumi.ResourceArgs
+    public sealed class PoolOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId}
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public PoolOptionArgs()
         {
         }
+        public static new PoolOptionArgs Empty => new PoolOptionArgs();
     }
 }

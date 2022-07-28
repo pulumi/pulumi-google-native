@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] This message specifies a header location to extract JWT token. This message specifies a header location to extract JWT token.
     /// </summary>
-    public sealed class JwtHeaderArgs : Pulumi.ResourceArgs
+    public sealed class JwtHeaderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The HTTP header name.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public JwtHeaderArgs()
         {
         }
+        public static new JwtHeaderArgs Empty => new JwtHeaderArgs();
     }
 }

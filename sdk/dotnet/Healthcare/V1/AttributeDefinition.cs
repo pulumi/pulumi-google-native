@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     /// Creates a new Attribute definition in the parent consent store.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1:AttributeDefinition")]
-    public partial class AttributeDefinition : Pulumi.CustomResource
+    public partial class AttributeDefinition : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Possible values for the attribute. The number of allowed values must not exceed 500. An empty list is invalid. The list can only be expanded after creation.
@@ -120,7 +120,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         }
     }
 
-    public sealed class AttributeDefinitionArgs : Pulumi.ResourceArgs
+    public sealed class AttributeDefinitionArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedValues", required: true)]
         private InputList<string>? _allowedValues;
@@ -191,5 +191,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public AttributeDefinitionArgs()
         {
         }
+        public static new AttributeDefinitionArgs Empty => new AttributeDefinitionArgs();
     }
 }

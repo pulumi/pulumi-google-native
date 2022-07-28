@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     }
 
 
-    public sealed class GetBillingAccountExclusionArgs : Pulumi.InvokeArgs
+    public sealed class GetBillingAccountExclusionArgs : global::Pulumi.InvokeArgs
     {
         [Input("billingAccountId", required: true)]
         public string BillingAccountId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetBillingAccountExclusionArgs()
         {
         }
+        public static new GetBillingAccountExclusionArgs Empty => new GetBillingAccountExclusionArgs();
     }
 
-    public sealed class GetBillingAccountExclusionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBillingAccountExclusionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("billingAccountId", required: true)]
         public Input<string> BillingAccountId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetBillingAccountExclusionInvokeArgs()
         {
         }
+        public static new GetBillingAccountExclusionInvokeArgs Empty => new GetBillingAccountExclusionInvokeArgs();
     }
 
 

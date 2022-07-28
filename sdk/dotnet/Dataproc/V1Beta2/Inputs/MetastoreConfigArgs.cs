@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// Specifies a Metastore configuration.
     /// </summary>
-    public sealed class MetastoreConfigArgs : Pulumi.ResourceArgs
+    public sealed class MetastoreConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name]
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public MetastoreConfigArgs()
         {
         }
+        public static new MetastoreConfigArgs Empty => new MetastoreConfigArgs();
     }
 }

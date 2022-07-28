@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Replace each input value with a value randomly selected from the dictionary.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2ReplaceDictionaryConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2ReplaceDictionaryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A list of words to select from for random replacement. The [limits](https://cloud.google.com/dlp/limits) page contains details about the size limits of dictionaries.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2ReplaceDictionaryConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2ReplaceDictionaryConfigArgs Empty => new GooglePrivacyDlpV2ReplaceDictionaryConfigArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
     }
 
 
-    public sealed class GetWaiterArgs : Pulumi.InvokeArgs
+    public sealed class GetWaiterArgs : global::Pulumi.InvokeArgs
     {
         [Input("configId", required: true)]
         public string ConfigId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         public GetWaiterArgs()
         {
         }
+        public static new GetWaiterArgs Empty => new GetWaiterArgs();
     }
 
-    public sealed class GetWaiterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetWaiterInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("configId", required: true)]
         public Input<string> ConfigId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         public GetWaiterInvokeArgs()
         {
         }
+        public static new GetWaiterInvokeArgs Empty => new GetWaiterInvokeArgs();
     }
 
 

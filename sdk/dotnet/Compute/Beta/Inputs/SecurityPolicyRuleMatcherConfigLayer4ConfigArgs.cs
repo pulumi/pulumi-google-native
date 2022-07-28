@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class SecurityPolicyRuleMatcherConfigLayer4ConfigArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleMatcherConfigLayer4ConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public SecurityPolicyRuleMatcherConfigLayer4ConfigArgs()
         {
         }
+        public static new SecurityPolicyRuleMatcherConfigLayer4ConfigArgs Empty => new SecurityPolicyRuleMatcherConfigLayer4ConfigArgs();
     }
 }

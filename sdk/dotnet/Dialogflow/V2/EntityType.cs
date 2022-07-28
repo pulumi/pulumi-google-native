@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2:EntityType")]
-    public partial class EntityType : Pulumi.CustomResource
+    public partial class EntityType : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. Indicates whether the entity type can be automatically expanded.
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         }
     }
 
-    public sealed class EntityTypeArgs : Pulumi.ResourceArgs
+    public sealed class EntityTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Indicates whether the entity type can be automatically expanded.
@@ -171,5 +171,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public EntityTypeArgs()
         {
         }
+        public static new EntityTypeArgs Empty => new EntityTypeArgs();
     }
 }

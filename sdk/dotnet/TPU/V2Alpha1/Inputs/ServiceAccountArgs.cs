@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Inputs
     /// <summary>
     /// A service account.
     /// </summary>
-    public sealed class ServiceAccountArgs : Pulumi.ResourceArgs
+    public sealed class ServiceAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Email address of the service account. If empty, default Compute service account will be used.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Inputs
         public ServiceAccountArgs()
         {
         }
+        public static new ServiceAccountArgs Empty => new ServiceAccountArgs();
     }
 }

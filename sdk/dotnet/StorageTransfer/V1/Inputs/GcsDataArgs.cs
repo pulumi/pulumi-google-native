@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     /// <summary>
     /// In a GcsData resource, an object's name is the Cloud Storage object's name and its "last modification time" refers to the object's `updated` property of Cloud Storage objects, which changes when the content or the metadata of the object is updated.
     /// </summary>
-    public sealed class GcsDataArgs : Pulumi.ResourceArgs
+    public sealed class GcsDataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud Storage bucket name. Must meet [Bucket Name Requirements](/storage/docs/naming#requirements).
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public GcsDataArgs()
         {
         }
+        public static new GcsDataArgs Empty => new GcsDataArgs();
     }
 }

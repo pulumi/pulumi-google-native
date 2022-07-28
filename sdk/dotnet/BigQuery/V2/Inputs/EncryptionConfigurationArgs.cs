@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class EncryptionConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class EncryptionConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key.
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public EncryptionConfigurationArgs()
         {
         }
+        public static new EncryptionConfigurationArgs Empty => new EncryptionConfigurationArgs();
     }
 }

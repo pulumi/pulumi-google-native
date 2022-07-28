@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class RouterBgpPeerBfdArgs : Pulumi.ResourceArgs
+    public sealed class RouterBgpPeerBfdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The minimum interval, in milliseconds, between BFD control packets received from the peer router. The actual value is negotiated between the two routers and is equal to the greater of this value and the transmit interval of the other router. If set, this value must be between 1000 and 30000. The default is 1000.
@@ -39,5 +39,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public RouterBgpPeerBfdArgs()
         {
         }
+        public static new RouterBgpPeerBfdArgs Empty => new RouterBgpPeerBfdArgs();
     }
 }

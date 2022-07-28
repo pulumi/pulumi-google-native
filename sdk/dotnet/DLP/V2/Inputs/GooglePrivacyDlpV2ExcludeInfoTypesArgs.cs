@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// List of exclude infoTypes.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2ExcludeInfoTypesArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2ExcludeInfoTypesArgs : global::Pulumi.ResourceArgs
     {
         [Input("infoTypes")]
         private InputList<Inputs.GooglePrivacyDlpV2InfoTypeArgs>? _infoTypes;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2ExcludeInfoTypesArgs()
         {
         }
+        public static new GooglePrivacyDlpV2ExcludeInfoTypesArgs Empty => new GooglePrivacyDlpV2ExcludeInfoTypesArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     }
 
 
-    public sealed class GetAnnotationArgs : Pulumi.InvokeArgs
+    public sealed class GetAnnotationArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotationId", required: true)]
         public string AnnotationId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public GetAnnotationArgs()
         {
         }
+        public static new GetAnnotationArgs Empty => new GetAnnotationArgs();
     }
 
-    public sealed class GetAnnotationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAnnotationInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotationId", required: true)]
         public Input<string> AnnotationId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public GetAnnotationInvokeArgs()
         {
         }
+        public static new GetAnnotationInvokeArgs Empty => new GetAnnotationInvokeArgs();
     }
 
 

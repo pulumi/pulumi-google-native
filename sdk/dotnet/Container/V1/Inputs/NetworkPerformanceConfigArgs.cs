@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Configuration of all network bandwidth tiers
     /// </summary>
-    public sealed class NetworkPerformanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class NetworkPerformanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the total network bandwidth tier for the NodePool.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public NetworkPerformanceConfigArgs()
         {
         }
+        public static new NetworkPerformanceConfigArgs Empty => new NetworkPerformanceConfigArgs();
     }
 }

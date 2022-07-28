@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
     }
 
 
-    public sealed class GetRolloutArgs : Pulumi.InvokeArgs
+    public sealed class GetRolloutArgs : global::Pulumi.InvokeArgs
     {
         [Input("deliveryPipelineId", required: true)]
         public string DeliveryPipelineId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public GetRolloutArgs()
         {
         }
+        public static new GetRolloutArgs Empty => new GetRolloutArgs();
     }
 
-    public sealed class GetRolloutInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRolloutInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("deliveryPipelineId", required: true)]
         public Input<string> DeliveryPipelineId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public GetRolloutInvokeArgs()
         {
         }
+        public static new GetRolloutInvokeArgs Empty => new GetRolloutInvokeArgs();
     }
 
 

@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:servicemanagement/v1:Config")]
-    public partial class Config : Pulumi.CustomResource
+    public partial class Config : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A list of API interfaces exported by this service. Only the `name` field of the google.protobuf.Api needs to be provided by the configuration author, as the remaining fields will be derived from the IDL during the normalization process. It is an error to specify an API interface here which cannot be resolved against the associated IDL files.
@@ -223,7 +223,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         }
     }
 
-    public sealed class ConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("apis")]
         private InputList<Inputs.ApiArgs>? _apis;
@@ -435,5 +435,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public ConfigArgs()
         {
         }
+        public static new ConfigArgs Empty => new ConfigArgs();
     }
 }

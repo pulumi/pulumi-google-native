@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// Describes a set of X.509 extensions that may be part of some certificate issuance controls.
     /// </summary>
-    public sealed class CertificateExtensionConstraintsArgs : Pulumi.ResourceArgs
+    public sealed class CertificateExtensionConstraintsArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalExtensions")]
         private InputList<Inputs.ObjectIdArgs>? _additionalExtensions;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public CertificateExtensionConstraintsArgs()
         {
         }
+        public static new CertificateExtensionConstraintsArgs Empty => new CertificateExtensionConstraintsArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     }
 
 
-    public sealed class GetAttributeDefinitionArgs : Pulumi.InvokeArgs
+    public sealed class GetAttributeDefinitionArgs : global::Pulumi.InvokeArgs
     {
         [Input("attributeDefinitionId", required: true)]
         public string AttributeDefinitionId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public GetAttributeDefinitionArgs()
         {
         }
+        public static new GetAttributeDefinitionArgs Empty => new GetAttributeDefinitionArgs();
     }
 
-    public sealed class GetAttributeDefinitionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAttributeDefinitionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("attributeDefinitionId", required: true)]
         public Input<string> AttributeDefinitionId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public GetAttributeDefinitionInvokeArgs()
         {
         }
+        public static new GetAttributeDefinitionInvokeArgs Empty => new GetAttributeDefinitionInvokeArgs();
     }
 
 

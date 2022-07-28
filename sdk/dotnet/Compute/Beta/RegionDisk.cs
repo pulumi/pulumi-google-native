@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates a persistent regional disk in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:RegionDisk")]
-    public partial class RegionDisk : Pulumi.CustomResource
+    public partial class RegionDisk : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The architecture of the disk. Valid values are ARM64 or X86_64.
@@ -321,7 +321,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class RegionDiskArgs : Pulumi.ResourceArgs
+    public sealed class RegionDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The architecture of the disk. Valid values are ARM64 or X86_64.
@@ -542,5 +542,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public RegionDiskArgs()
         {
         }
+        public static new RegionDiskArgs Empty => new RegionDiskArgs();
     }
 }

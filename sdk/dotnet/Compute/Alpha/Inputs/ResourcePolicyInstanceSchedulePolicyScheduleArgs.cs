@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Schedule for an instance operation.
     /// </summary>
-    public sealed class ResourcePolicyInstanceSchedulePolicyScheduleArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyInstanceSchedulePolicyScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the frequency for the operation, using the unix-cron format.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public ResourcePolicyInstanceSchedulePolicyScheduleArgs()
         {
         }
+        public static new ResourcePolicyInstanceSchedulePolicyScheduleArgs Empty => new ResourcePolicyInstanceSchedulePolicyScheduleArgs();
     }
 }

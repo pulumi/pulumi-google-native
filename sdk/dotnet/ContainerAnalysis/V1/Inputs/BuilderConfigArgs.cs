@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
 {
 
-    public sealed class BuilderConfigArgs : Pulumi.ResourceArgs
+    public sealed class BuilderConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public BuilderConfigArgs()
         {
         }
+        public static new BuilderConfigArgs Empty => new BuilderConfigArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
     }
 
 
-    public sealed class GetJobTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetJobTemplateArgs : global::Pulumi.InvokeArgs
     {
         [Input("jobTemplateId", required: true)]
         public string JobTemplateId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         public GetJobTemplateArgs()
         {
         }
+        public static new GetJobTemplateArgs Empty => new GetJobTemplateArgs();
     }
 
-    public sealed class GetJobTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetJobTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("jobTemplateId", required: true)]
         public Input<string> JobTemplateId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         public GetJobTemplateInvokeArgs()
         {
         }
+        public static new GetJobTemplateInvokeArgs Empty => new GetJobTemplateInvokeArgs();
     }
 
 

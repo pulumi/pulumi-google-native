@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Specification for the BigQuery connection to a Cloud SQL instance.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Database name.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs Empty => new GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs();
     }
 }

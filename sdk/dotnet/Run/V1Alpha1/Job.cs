@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:run/v1alpha1:Job")]
-    public partial class Job : Pulumi.CustomResource
+    public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources +optional
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1
         }
     }
 
-    public sealed class JobArgs : Pulumi.ResourceArgs
+    public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources +optional
@@ -128,5 +128,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1
         public JobArgs()
         {
         }
+        public static new JobArgs Empty => new JobArgs();
     }
 }

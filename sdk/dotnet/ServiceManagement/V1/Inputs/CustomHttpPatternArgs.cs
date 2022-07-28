@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// A custom pattern is used for defining custom HTTP verb.
     /// </summary>
-    public sealed class CustomHttpPatternArgs : Pulumi.ResourceArgs
+    public sealed class CustomHttpPatternArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of this custom HTTP verb.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public CustomHttpPatternArgs()
         {
         }
+        public static new CustomHttpPatternArgs Empty => new CustomHttpPatternArgs();
     }
 }

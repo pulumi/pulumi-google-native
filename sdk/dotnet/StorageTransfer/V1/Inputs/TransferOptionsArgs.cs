@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     /// <summary>
     /// TransferOptions define the actions to be performed on objects in a transfer.
     /// </summary>
-    public sealed class TransferOptionsArgs : Pulumi.ResourceArgs
+    public sealed class TransferOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether objects should be deleted from the source after they are transferred to the sink. **Note:** This option and delete_objects_unique_in_sink are mutually exclusive.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public TransferOptionsArgs()
         {
         }
+        public static new TransferOptionsArgs Empty => new TransferOptionsArgs();
     }
 }

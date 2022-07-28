@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1.Inputs
     /// <summary>
     /// Available configurations to provision an Instance.
     /// </summary>
-    public sealed class ConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Customer Managed Encryption Key (CMEK) used for data encryption. The CMEK name should follow the format of `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`, where the `location` must match InstanceConfig.location.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1.Inputs
         public ConfigArgs()
         {
         }
+        public static new ConfigArgs Empty => new ConfigArgs();
     }
 }

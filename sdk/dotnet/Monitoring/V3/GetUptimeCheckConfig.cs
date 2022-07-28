@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     }
 
 
-    public sealed class GetUptimeCheckConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetUptimeCheckConfigArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public GetUptimeCheckConfigArgs()
         {
         }
+        public static new GetUptimeCheckConfigArgs Empty => new GetUptimeCheckConfigArgs();
     }
 
-    public sealed class GetUptimeCheckConfigInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetUptimeCheckConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public GetUptimeCheckConfigInvokeArgs()
         {
         }
+        public static new GetUptimeCheckConfigInvokeArgs Empty => new GetUptimeCheckConfigInvokeArgs();
     }
 
 

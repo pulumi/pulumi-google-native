@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:metastore/v1alpha:MetadataImport")]
-    public partial class MetadataImport : Pulumi.CustomResource
+    public partial class MetadataImport : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time when the metadata import was started.
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         }
     }
 
-    public sealed class MetadataImportArgs : Pulumi.ResourceArgs
+    public sealed class MetadataImportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. A database dump from a pre-existing metastore's database.
@@ -174,5 +174,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         public MetadataImportArgs()
         {
         }
+        public static new MetadataImportArgs Empty => new MetadataImportArgs();
     }
 }

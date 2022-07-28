@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Replace each matching finding with the name of the info_type.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs : global::Pulumi.ResourceArgs
     {
         public GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs Empty => new GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs();
     }
 }

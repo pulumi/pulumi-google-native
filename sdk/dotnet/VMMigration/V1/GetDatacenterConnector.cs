@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
     }
 
 
-    public sealed class GetDatacenterConnectorArgs : Pulumi.InvokeArgs
+    public sealed class GetDatacenterConnectorArgs : global::Pulumi.InvokeArgs
     {
         [Input("datacenterConnectorId", required: true)]
         public string DatacenterConnectorId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         public GetDatacenterConnectorArgs()
         {
         }
+        public static new GetDatacenterConnectorArgs Empty => new GetDatacenterConnectorArgs();
     }
 
-    public sealed class GetDatacenterConnectorInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatacenterConnectorInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("datacenterConnectorId", required: true)]
         public Input<string> DatacenterConnectorId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         public GetDatacenterConnectorInvokeArgs()
         {
         }
+        public static new GetDatacenterConnectorInvokeArgs Empty => new GetDatacenterConnectorInvokeArgs();
     }
 
 

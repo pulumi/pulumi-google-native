@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Node pool configs that apply to all auto-provisioned node pools in autopilot clusters and node auto-provisioning enabled clusters.
     /// </summary>
-    public sealed class NodePoolAutoConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolAutoConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The list of instance tags applied to all nodes. Tags are used to identify valid sources or targets for network firewalls and are specified by the client during cluster creation. Each tag within the list must comply with RFC1035.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public NodePoolAutoConfigArgs()
         {
         }
+        public static new NodePoolAutoConfigArgs Empty => new NodePoolAutoConfigArgs();
     }
 }

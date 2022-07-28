@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class FutureReservationSpecificSKUPropertiesArgs : Pulumi.ResourceArgs
+    public sealed class FutureReservationSpecificSKUPropertiesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Properties of the SKU instances being reserved.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public FutureReservationSpecificSKUPropertiesArgs()
         {
         }
+        public static new FutureReservationSpecificSKUPropertiesArgs Empty => new FutureReservationSpecificSKUPropertiesArgs();
     }
 }

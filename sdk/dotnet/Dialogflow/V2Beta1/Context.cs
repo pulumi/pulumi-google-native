@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2beta1:Context")]
-    public partial class Context : Pulumi.CustomResource
+    public partial class Context : global::Pulumi.CustomResource
     {
         [Output("environmentId")]
         public Output<string> EnvironmentId { get; private set; } = null!;
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         }
     }
 
-    public sealed class ContextArgs : Pulumi.ResourceArgs
+    public sealed class ContextArgs : global::Pulumi.ResourceArgs
     {
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
@@ -144,5 +144,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public ContextArgs()
         {
         }
+        public static new ContextArgs Empty => new ContextArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// Message for specifying the start activities to crawl.
     /// </summary>
-    public sealed class RoboStartingIntentArgs : Pulumi.ResourceArgs
+    public sealed class RoboStartingIntentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An intent that starts the main launcher activity.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public RoboStartingIntentArgs()
         {
         }
+        public static new RoboStartingIntentArgs Empty => new RoboStartingIntentArgs();
     }
 }

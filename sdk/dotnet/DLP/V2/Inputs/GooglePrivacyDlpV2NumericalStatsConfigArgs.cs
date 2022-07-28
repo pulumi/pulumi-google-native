@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Compute numerical stats over an individual column, including min, max, and quantiles.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2NumericalStatsConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2NumericalStatsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp, time.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2NumericalStatsConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2NumericalStatsConfigArgs Empty => new GooglePrivacyDlpV2NumericalStatsConfigArgs();
     }
 }

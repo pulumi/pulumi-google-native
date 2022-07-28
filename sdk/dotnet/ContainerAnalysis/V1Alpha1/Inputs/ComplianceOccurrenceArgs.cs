@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// An indication that the compliance checks in the associated ComplianceNote were not satisfied for particular resources or a specified reason.
     /// </summary>
-    public sealed class ComplianceOccurrenceArgs : Pulumi.ResourceArgs
+    public sealed class ComplianceOccurrenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The reason for non compliance of these files.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public ComplianceOccurrenceArgs()
         {
         }
+        public static new ComplianceOccurrenceArgs Empty => new ComplianceOccurrenceArgs();
     }
 }

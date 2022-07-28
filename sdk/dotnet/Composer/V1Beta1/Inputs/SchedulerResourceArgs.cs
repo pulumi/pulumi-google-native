@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
     /// <summary>
     /// Configuration for resources used by Airflow schedulers.
     /// </summary>
-    public sealed class SchedulerResourceArgs : Pulumi.ResourceArgs
+    public sealed class SchedulerResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The number of schedulers.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         public SchedulerResourceArgs()
         {
         }
+        public static new SchedulerResourceArgs Empty => new SchedulerResourceArgs();
     }
 }

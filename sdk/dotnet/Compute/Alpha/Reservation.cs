@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a new reservation. For more information, read Reserving zonal resources.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:Reservation")]
-    public partial class Reservation : Pulumi.CustomResource
+    public partial class Reservation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Full or partial URL to a parent commitment. This field displays for reservations that are tied to a commitment.
@@ -153,7 +153,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class ReservationArgs : Pulumi.ResourceArgs
+    public sealed class ReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -215,5 +215,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public ReservationArgs()
         {
         }
+        public static new ReservationArgs Empty => new ReservationArgs();
     }
 }

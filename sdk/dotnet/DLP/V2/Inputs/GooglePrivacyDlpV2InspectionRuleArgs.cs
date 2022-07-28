@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// A single inspection rule to be applied to infoTypes, specified in `InspectionRuleSet`.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2InspectionRuleArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2InspectionRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Exclusion rule.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2InspectionRuleArgs()
         {
         }
+        public static new GooglePrivacyDlpV2InspectionRuleArgs Empty => new GooglePrivacyDlpV2InspectionRuleArgs();
     }
 }

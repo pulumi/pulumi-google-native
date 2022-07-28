@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     /// Creates a TargetHttpProxy resource in the specified project and region using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:RegionTargetHttpProxy")]
-    public partial class RegionTargetHttpProxy : Pulumi.CustomResource
+    public partial class RegionTargetHttpProxy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -123,7 +123,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
     }
 
-    public sealed class RegionTargetHttpProxyArgs : Pulumi.ResourceArgs
+    public sealed class RegionTargetHttpProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -164,5 +164,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public RegionTargetHttpProxyArgs()
         {
         }
+        public static new RegionTargetHttpProxyArgs Empty => new RegionTargetHttpProxyArgs();
     }
 }

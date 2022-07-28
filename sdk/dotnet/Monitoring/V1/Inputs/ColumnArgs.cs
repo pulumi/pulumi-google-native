@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// Defines the layout properties and content for a column.
     /// </summary>
-    public sealed class ColumnArgs : Pulumi.ResourceArgs
+    public sealed class ColumnArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The relative weight of this column. The column weight is used to adjust the width of columns on the screen (relative to peers). Greater the weight, greater the width of the column on the screen. If omitted, a value of 1 is used while rendering.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public ColumnArgs()
         {
         }
+        public static new ColumnArgs Empty => new ColumnArgs();
     }
 }

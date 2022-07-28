@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Storage.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:storage/v1:ObjectAccessControl")]
-    public partial class ObjectAccessControl : Pulumi.CustomResource
+    public partial class ObjectAccessControl : global::Pulumi.CustomResource
     {
         [Output("bucket")]
         public Output<string> Bucket { get; private set; } = null!;
@@ -147,7 +147,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         }
     }
 
-    public sealed class ObjectAccessControlArgs : Pulumi.ResourceArgs
+    public sealed class ObjectAccessControlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the bucket.
@@ -247,5 +247,6 @@ namespace Pulumi.GoogleNative.Storage.V1
         public ObjectAccessControlArgs()
         {
         }
+        public static new ObjectAccessControlArgs Empty => new ObjectAccessControlArgs();
     }
 }

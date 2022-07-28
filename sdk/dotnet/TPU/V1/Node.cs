@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.TPU.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:tpu/v1:Node")]
-    public partial class Node : Pulumi.CustomResource
+    public partial class Node : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The type of hardware accelerators associated with this node.
@@ -190,7 +190,7 @@ namespace Pulumi.GoogleNative.TPU.V1
         }
     }
 
-    public sealed class NodeArgs : Pulumi.ResourceArgs
+    public sealed class NodeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of hardware accelerators associated with this node.
@@ -267,5 +267,6 @@ namespace Pulumi.GoogleNative.TPU.V1
         public NodeArgs()
         {
         }
+        public static new NodeArgs Empty => new NodeArgs();
     }
 }

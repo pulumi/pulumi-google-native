@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1.Inputs
     /// <summary>
     /// A filter for a budget, limiting the scope of the cost to calculate.
     /// </summary>
-    public sealed class GoogleCloudBillingBudgetsV1beta1FilterArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudBillingBudgetsV1beta1FilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Specifies to track usage for recurring calendar period. For example, assume that CalendarPeriod.QUARTER is set. The budget will track usage from April 1 to June 30, when the current calendar month is April, May, June. After that, it will track usage from July 1 to September 30 when the current calendar month is July, August, September, so on.
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1Beta1.Inputs
         public GoogleCloudBillingBudgetsV1beta1FilterArgs()
         {
         }
+        public static new GoogleCloudBillingBudgetsV1beta1FilterArgs Empty => new GoogleCloudBillingBudgetsV1beta1FilterArgs();
     }
 }

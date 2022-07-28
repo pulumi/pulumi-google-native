@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1beta1:DatasetAnnotationStoreIamPolicy")]
-    public partial class DatasetAnnotationStoreIamPolicy : Pulumi.CustomResource
+    public partial class DatasetAnnotationStoreIamPolicy : global::Pulumi.CustomResource
     {
         [Output("annotationStoreId")]
         public Output<string> AnnotationStoreId { get; private set; } = null!;
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         }
     }
 
-    public sealed class DatasetAnnotationStoreIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class DatasetAnnotationStoreIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotationStoreId", required: true)]
         public Input<string> AnnotationStoreId { get; set; } = null!;
@@ -162,5 +162,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public DatasetAnnotationStoreIamPolicyArgs()
         {
         }
+        public static new DatasetAnnotationStoreIamPolicyArgs Empty => new DatasetAnnotationStoreIamPolicyArgs();
     }
 }

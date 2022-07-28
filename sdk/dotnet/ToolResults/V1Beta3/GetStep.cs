@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
     }
 
 
-    public sealed class GetStepArgs : Pulumi.InvokeArgs
+    public sealed class GetStepArgs : global::Pulumi.InvokeArgs
     {
         [Input("executionId", required: true)]
         public string ExecutionId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         public GetStepArgs()
         {
         }
+        public static new GetStepArgs Empty => new GetStepArgs();
     }
 
-    public sealed class GetStepInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetStepInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("executionId", required: true)]
         public Input<string> ExecutionId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         public GetStepInvokeArgs()
         {
         }
+        public static new GetStepInvokeArgs Empty => new GetStepInvokeArgs();
     }
 
 

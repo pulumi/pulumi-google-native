@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// State of the auto-rollout process.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1RolloutStateArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1RolloutStateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Start time of the current step.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1RolloutStateArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1RolloutStateArgs Empty => new GoogleCloudDialogflowCxV3beta1RolloutStateArgs();
     }
 }

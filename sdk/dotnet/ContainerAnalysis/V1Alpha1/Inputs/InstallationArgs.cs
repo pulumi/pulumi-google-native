@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// This represents how a particular software package may be installed on a system.
     /// </summary>
-    public sealed class InstallationArgs : Pulumi.ResourceArgs
+    public sealed class InstallationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Licenses that have been declared by the authors of the package.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public InstallationArgs()
         {
         }
+        public static new InstallationArgs Empty => new InstallationArgs();
     }
 }

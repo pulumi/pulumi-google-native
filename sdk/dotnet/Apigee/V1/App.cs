@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Creates an app associated with a developer. This API associates the developer app with the specified API product and auto-generates an API key for the app to use in calls to API proxies inside that API product. The `name` is the unique ID of the app that you can use in API calls. The `DisplayName` (set as an attribute) appears in the UI. If you don't set the `DisplayName` attribute, the `name` appears in the UI.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:App")]
-    public partial class App : Pulumi.CustomResource
+    public partial class App : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List of API products associated with the developer app.
@@ -141,7 +141,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class AppArgs : Pulumi.ResourceArgs
+    public sealed class AppArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiProducts")]
         private InputList<string>? _apiProducts;
@@ -227,5 +227,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public AppArgs()
         {
         }
+        public static new AppArgs Empty => new AppArgs();
     }
 }

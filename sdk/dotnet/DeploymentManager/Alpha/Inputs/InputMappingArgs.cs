@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
     /// <summary>
     /// InputMapping creates a 'virtual' property that will be injected into the properties before sending the request to the underlying API.
     /// </summary>
-    public sealed class InputMappingArgs : Pulumi.ResourceArgs
+    public sealed class InputMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the field that is going to be injected.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
         public InputMappingArgs()
         {
         }
+        public static new InputMappingArgs Empty => new InputMappingArgs();
     }
 }

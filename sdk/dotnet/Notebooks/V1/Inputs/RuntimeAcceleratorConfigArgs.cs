@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     /// <summary>
     /// Definition of the types of hardware accelerators that can be used. Definition of the types of hardware accelerators that can be used. See [Compute Engine AcceleratorTypes](https://cloud.google.com/compute/docs/reference/beta/acceleratorTypes). Examples: * `nvidia-tesla-k80` * `nvidia-tesla-p100` * `nvidia-tesla-v100` * `nvidia-tesla-p4` * `nvidia-tesla-t4` * `nvidia-tesla-a100`
     /// </summary>
-    public sealed class RuntimeAcceleratorConfigArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeAcceleratorConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Count of cores of this accelerator.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public RuntimeAcceleratorConfigArgs()
         {
         }
+        public static new RuntimeAcceleratorConfigArgs Empty => new RuntimeAcceleratorConfigArgs();
     }
 }

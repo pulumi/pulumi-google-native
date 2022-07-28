@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Standalone Rich Business Messaging (RBM) rich card. Rich cards allow you to respond to users with more vivid content, e.g. with media and suggestions. You can group multiple rich cards into one using RbmCarouselCard but carousel cards will give you less control over the card layout.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Card content.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Parameters that describe cluster nodes.
     /// </summary>
-    public sealed class GkeNodeConfigArgs : Pulumi.ResourceArgs
+    public sealed class GkeNodeConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("accelerators")]
         private InputList<Inputs.GkeNodePoolAcceleratorConfigArgs>? _accelerators;
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public GkeNodeConfigArgs()
         {
         }
+        public static new GkeNodeConfigArgs Empty => new GkeNodeConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// <summary>
     /// Settings for Binary Authorization feature.
     /// </summary>
-    public sealed class GoogleCloudRunV2BinaryAuthorizationArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRunV2BinaryAuthorizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If present, indicates to use Breakglass using this justification. If use_default is False, then it must be empty. For more information on breakglass, see https://cloud.google.com/binary-authorization/docs/using-breakglass
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public GoogleCloudRunV2BinaryAuthorizationArgs()
         {
         }
+        public static new GoogleCloudRunV2BinaryAuthorizationArgs Empty => new GoogleCloudRunV2BinaryAuthorizationArgs();
     }
 }

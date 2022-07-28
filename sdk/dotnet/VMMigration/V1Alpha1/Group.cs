@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:vmmigration/v1alpha1:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The create time timestamp.
@@ -113,7 +113,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-provided description of the group.
@@ -148,5 +148,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 }

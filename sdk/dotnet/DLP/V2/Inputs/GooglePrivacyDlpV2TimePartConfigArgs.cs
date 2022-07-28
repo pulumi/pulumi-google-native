@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// For use with `Date`, `Timestamp`, and `TimeOfDay`, extract or preserve a portion of the value.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2TimePartConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2TimePartConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The part of the time to keep.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2TimePartConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2TimePartConfigArgs Empty => new GooglePrivacyDlpV2TimePartConfigArgs();
     }
 }

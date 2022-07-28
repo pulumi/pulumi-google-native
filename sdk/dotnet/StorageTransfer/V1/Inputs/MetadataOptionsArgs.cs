@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     /// <summary>
     /// Specifies the metadata options for running a transfer.
     /// </summary>
-    public sealed class MetadataOptionsArgs : Pulumi.ResourceArgs
+    public sealed class MetadataOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies how each object's ACLs should be preserved for transfers between Google Cloud Storage buckets. If unspecified, the default behavior is the same as ACL_DESTINATION_BUCKET_DEFAULT.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public MetadataOptionsArgs()
         {
         }
+        public static new MetadataOptionsArgs Empty => new MetadataOptionsArgs();
     }
 }

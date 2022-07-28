@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
     /// <summary>
     /// Output configuration for asset feed destination.
     /// </summary>
-    public sealed class FeedOutputConfigArgs : Pulumi.ResourceArgs
+    public sealed class FeedOutputConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Destination on Pub/Sub.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
         public FeedOutputConfigArgs()
         {
         }
+        public static new FeedOutputConfigArgs Empty => new FeedOutputConfigArgs();
     }
 }

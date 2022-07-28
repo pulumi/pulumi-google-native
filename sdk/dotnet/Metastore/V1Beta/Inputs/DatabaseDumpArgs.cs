@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
     /// <summary>
     /// A specification of the location of and metadata about a database dump from a relational database management system.
     /// </summary>
-    public sealed class DatabaseDumpArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseDumpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the database.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
         public DatabaseDumpArgs()
         {
         }
+        public static new DatabaseDumpArgs Empty => new DatabaseDumpArgs();
     }
 }

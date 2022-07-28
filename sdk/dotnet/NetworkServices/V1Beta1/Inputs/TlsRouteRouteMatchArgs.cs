@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
     /// <summary>
     /// RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "AND"ed for evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic.
     /// </summary>
-    public sealed class TlsRouteRouteMatchArgs : Pulumi.ResourceArgs
+    public sealed class TlsRouteRouteMatchArgs : global::Pulumi.ResourceArgs
     {
         [Input("alpn")]
         private InputList<string>? _alpn;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public TlsRouteRouteMatchArgs()
         {
         }
+        public static new TlsRouteRouteMatchArgs Empty => new TlsRouteRouteMatchArgs();
     }
 }

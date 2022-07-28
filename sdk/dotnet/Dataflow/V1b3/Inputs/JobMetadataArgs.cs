@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Metadata available primarily for filtering jobs. Will be included in the ListJob response and Job SUMMARY view.
     /// </summary>
-    public sealed class JobMetadataArgs : Pulumi.ResourceArgs
+    public sealed class JobMetadataArgs : global::Pulumi.ResourceArgs
     {
         [Input("bigTableDetails")]
         private InputList<Inputs.BigTableIODetailsArgs>? _bigTableDetails;
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public JobMetadataArgs()
         {
         }
+        public static new JobMetadataArgs Empty => new JobMetadataArgs();
     }
 }

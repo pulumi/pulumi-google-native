@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
     /// Creates a phrase matcher.
     /// </summary>
     [GoogleNativeResourceType("google-native:contactcenterinsights/v1:PhraseMatcher")]
-    public partial class PhraseMatcher : Pulumi.CustomResource
+    public partial class PhraseMatcher : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The most recent time at which the activation status was updated.
@@ -135,7 +135,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         }
     }
 
-    public sealed class PhraseMatcherArgs : Pulumi.ResourceArgs
+    public sealed class PhraseMatcherArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Applies the phrase matcher only when it is active.
@@ -194,5 +194,6 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public PhraseMatcherArgs()
         {
         }
+        public static new PhraseMatcherArgs Empty => new PhraseMatcherArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
     /// <summary>
     /// Oracle database structure.
     /// </summary>
-    public sealed class OracleRdbmsArgs : Pulumi.ResourceArgs
+    public sealed class OracleRdbmsArgs : global::Pulumi.ResourceArgs
     {
         [Input("oracleSchemas")]
         private InputList<Inputs.OracleSchemaArgs>? _oracleSchemas;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
         public OracleRdbmsArgs()
         {
         }
+        public static new OracleRdbmsArgs Empty => new OracleRdbmsArgs();
     }
 }

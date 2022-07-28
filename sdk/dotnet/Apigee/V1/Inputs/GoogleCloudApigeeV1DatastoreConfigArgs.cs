@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Configuration detail for datastore
     /// </summary>
-    public sealed class GoogleCloudApigeeV1DatastoreConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1DatastoreConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the Cloud Storage bucket. Required for `gcs` target_type.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1DatastoreConfigArgs()
         {
         }
+        public static new GoogleCloudApigeeV1DatastoreConfigArgs Empty => new GoogleCloudApigeeV1DatastoreConfigArgs();
     }
 }

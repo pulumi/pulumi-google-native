@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Deprecated: this instruction format is not supported any more. Instruction from a CSV file.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1CsvInstructionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1CsvInstructionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// CSV file for the instruction. Only gcs path is allowed.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1CsvInstructionArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1CsvInstructionArgs Empty => new GoogleCloudDatalabelingV1beta1CsvInstructionArgs();
     }
 }

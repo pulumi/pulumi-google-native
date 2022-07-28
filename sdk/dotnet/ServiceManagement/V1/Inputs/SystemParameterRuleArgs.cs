@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Define a system parameter rule mapping system parameter definitions to methods.
     /// </summary>
-    public sealed class SystemParameterRuleArgs : Pulumi.ResourceArgs
+    public sealed class SystemParameterRuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("parameters")]
         private InputList<Inputs.SystemParameterArgs>? _parameters;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public SystemParameterRuleArgs()
         {
         }
+        public static new SystemParameterRuleArgs Empty => new SystemParameterRuleArgs();
     }
 }

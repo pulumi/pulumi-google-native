@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
     /// <summary>
     /// The source that IngressPolicy authorizes access from.
     /// </summary>
-    public sealed class IngressSourceArgs : Pulumi.ResourceArgs
+    public sealed class IngressSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         public IngressSourceArgs()
         {
         }
+        public static new IngressSourceArgs Empty => new IngressSourceArgs();
     }
 }

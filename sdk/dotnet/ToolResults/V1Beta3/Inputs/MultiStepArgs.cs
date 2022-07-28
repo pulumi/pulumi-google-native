@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// Details when multiple steps are run with the same configuration as a group.
     /// </summary>
-    public sealed class MultiStepArgs : Pulumi.ResourceArgs
+    public sealed class MultiStepArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public MultiStepArgs()
         {
         }
+        public static new MultiStepArgs Empty => new MultiStepArgs();
     }
 }

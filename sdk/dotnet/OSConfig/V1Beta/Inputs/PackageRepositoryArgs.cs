@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// A package repository.
     /// </summary>
-    public sealed class PackageRepositoryArgs : Pulumi.ResourceArgs
+    public sealed class PackageRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An Apt Repository.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public PackageRepositoryArgs()
         {
         }
+        public static new PackageRepositoryArgs Empty => new PackageRepositoryArgs();
     }
 }

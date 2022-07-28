@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a TargetTcpProxy resource in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:TargetTcpProxy")]
-    public partial class TargetTcpProxy : Pulumi.CustomResource
+    public partial class TargetTcpProxy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class TargetTcpProxyArgs : Pulumi.ResourceArgs
+    public sealed class TargetTcpProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -169,5 +169,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public TargetTcpProxyArgs()
         {
         }
+        public static new TargetTcpProxyArgs Empty => new TargetTcpProxyArgs();
     }
 }

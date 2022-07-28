@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
     /// <summary>
     /// **Cloud Audit Logging**: Spec for Audit Logging Allowlisting.
     /// </summary>
-    public sealed class CloudAuditLoggingFeatureSpecArgs : Pulumi.ResourceArgs
+    public sealed class CloudAuditLoggingFeatureSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowlistedServiceAccounts")]
         private InputList<string>? _allowlistedServiceAccounts;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         public CloudAuditLoggingFeatureSpecArgs()
         {
         }
+        public static new CloudAuditLoggingFeatureSpecArgs Empty => new CloudAuditLoggingFeatureSpecArgs();
     }
 }

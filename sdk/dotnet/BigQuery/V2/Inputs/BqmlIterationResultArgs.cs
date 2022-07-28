@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class BqmlIterationResultArgs : Pulumi.ResourceArgs
+    public sealed class BqmlIterationResultArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Output-only, Beta] Time taken to run the training iteration in milliseconds.
@@ -45,5 +45,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public BqmlIterationResultArgs()
         {
         }
+        public static new BqmlIterationResultArgs Empty => new BqmlIterationResultArgs();
     }
 }

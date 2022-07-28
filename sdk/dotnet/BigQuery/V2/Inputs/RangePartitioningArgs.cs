@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class RangePartitioningArgs : Pulumi.ResourceArgs
+    public sealed class RangePartitioningArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [TrustedTester] [Required] The table is partitioned by this field. The field must be a top-level NULLABLE/REQUIRED field. The only supported type is INTEGER/INT64.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public RangePartitioningArgs()
         {
         }
+        public static new RangePartitioningArgs Empty => new RangePartitioningArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative
     /// The provider type for the Google Cloud package.
     /// </summary>
     [GoogleNativeResourceType("pulumi:providers:google-native")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// The default project to manage resources in. If another project is specified on a resource, it will take precedence.
@@ -59,7 +59,7 @@ namespace Pulumi.GoogleNative
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Additional user-agent string to append to the default one (&lt;prod_name&gt;/&lt;ver&gt;).
@@ -106,5 +106,6 @@ namespace Pulumi.GoogleNative
             Region = Utilities.GetEnv("GOOGLE_REGION", "GCLOUD_REGION", "CLOUDSDK_COMPUTE_REGION");
             Zone = Utilities.GetEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

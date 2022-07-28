@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
     /// <summary>
     /// Allowed IP range with user-provided description.
     /// </summary>
-    public sealed class AllowedIpRangeArgs : Pulumi.ResourceArgs
+    public sealed class AllowedIpRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. User-provided description. It must contain at most 300 characters.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         public AllowedIpRangeArgs()
         {
         }
+        public static new AllowedIpRangeArgs Empty => new AllowedIpRangeArgs();
     }
 }

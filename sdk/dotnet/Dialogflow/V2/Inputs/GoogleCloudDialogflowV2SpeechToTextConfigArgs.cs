@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// Configures speech transcription for ConversationProfile.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2SpeechToTextConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2SpeechToTextConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The speech model used in speech to text. `SPEECH_MODEL_VARIANT_UNSPECIFIED`, `USE_BEST_AVAILABLE` will be treated as `USE_ENHANCED`. It can be overridden in AnalyzeContentRequest and StreamingAnalyzeContentRequest request. If enhanced model variant is specified and an enhanced version of the specified model for the language does not exist, then it would emit an error.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2SpeechToTextConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2SpeechToTextConfigArgs Empty => new GoogleCloudDialogflowV2SpeechToTextConfigArgs();
     }
 }

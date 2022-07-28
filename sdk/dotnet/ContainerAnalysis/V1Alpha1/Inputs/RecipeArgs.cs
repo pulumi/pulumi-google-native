@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Steps taken to build the artifact. For a TaskRun, typically each container corresponds to one step in the recipe.
     /// </summary>
-    public sealed class RecipeArgs : Pulumi.ResourceArgs
+    public sealed class RecipeArgs : global::Pulumi.ResourceArgs
     {
         [Input("arguments")]
         private InputList<ImmutableDictionary<string, string>>? _arguments;
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public RecipeArgs()
         {
         }
+        public static new RecipeArgs Empty => new RecipeArgs();
     }
 }

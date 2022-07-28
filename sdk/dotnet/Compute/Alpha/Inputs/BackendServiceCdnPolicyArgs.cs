@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Message containing Cloud CDN configuration for a backend service.
     /// </summary>
-    public sealed class BackendServiceCdnPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceCdnPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("bypassCacheOnRequestHeaders")]
         private InputList<Inputs.BackendServiceCdnPolicyBypassCacheOnRequestHeaderArgs>? _bypassCacheOnRequestHeaders;
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public BackendServiceCdnPolicyArgs()
         {
         }
+        public static new BackendServiceCdnPolicyArgs Empty => new BackendServiceCdnPolicyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Rich Business Messaging (RBM) Media displayed in Cards The following media-types are currently supported: Image Types * image/jpeg * image/jpg' * image/gif * image/png Video Types * video/h263 * video/m4v * video/mp4 * video/mpeg * video/mpeg4 * video/webm
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Publicly reachable URI of the file. The RBM platform determines the MIME type of the file from the content-type field in the HTTP headers when the platform fetches the file. The content-type field must be present and accurate in the HTTP response from the URL.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs();
     }
 }

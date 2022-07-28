@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Specifies the custom error response policy that must be applied when the backend service or backend bucket responds with an error.
     /// </summary>
-    public sealed class CustomErrorResponsePolicyArgs : Pulumi.ResourceArgs
+    public sealed class CustomErrorResponsePolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("errorResponseRules")]
         private InputList<Inputs.CustomErrorResponsePolicyCustomErrorResponseRuleArgs>? _errorResponseRules;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public CustomErrorResponsePolicyArgs()
         {
         }
+        public static new CustomErrorResponsePolicyArgs Empty => new CustomErrorResponsePolicyArgs();
     }
 }

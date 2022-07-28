@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Composer.V1
     }
 
 
-    public sealed class GetEnvironmentArgs : Pulumi.InvokeArgs
+    public sealed class GetEnvironmentArgs : global::Pulumi.InvokeArgs
     {
         [Input("environmentId", required: true)]
         public string EnvironmentId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Composer.V1
         public GetEnvironmentArgs()
         {
         }
+        public static new GetEnvironmentArgs Empty => new GetEnvironmentArgs();
     }
 
-    public sealed class GetEnvironmentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEnvironmentInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Composer.V1
         public GetEnvironmentInvokeArgs()
         {
         }
+        public static new GetEnvironmentInvokeArgs Empty => new GetEnvironmentInvokeArgs();
     }
 
 

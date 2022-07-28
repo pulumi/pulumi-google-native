@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The owner of the bucket. This is always the project team's owner group.
     /// </summary>
-    public sealed class BucketOwnerArgs : Pulumi.ResourceArgs
+    public sealed class BucketOwnerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The entity, in the form project-owner-projectId.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketOwnerArgs()
         {
         }
+        public static new BucketOwnerArgs Empty => new BucketOwnerArgs();
     }
 }

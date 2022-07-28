@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// Configuration for webhooks.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("webhookOverrides")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3WebhookArgs>? _webhookOverrides;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs Empty => new GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs();
     }
 }

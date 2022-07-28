@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Resource policy for disk consistency groups.
     /// </summary>
-    public sealed class ResourcePolicyDiskConsistencyGroupPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyDiskConsistencyGroupPolicyArgs : global::Pulumi.ResourceArgs
     {
         public ResourcePolicyDiskConsistencyGroupPolicyArgs()
         {
         }
+        public static new ResourcePolicyDiskConsistencyGroupPolicyArgs Empty => new ResourcePolicyDiskConsistencyGroupPolicyArgs();
     }
 }

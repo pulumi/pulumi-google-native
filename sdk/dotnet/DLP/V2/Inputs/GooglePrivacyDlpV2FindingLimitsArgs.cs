@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2FindingLimitsArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2FindingLimitsArgs : global::Pulumi.ResourceArgs
     {
         [Input("maxFindingsPerInfoType")]
         private InputList<Inputs.GooglePrivacyDlpV2InfoTypeLimitArgs>? _maxFindingsPerInfoType;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2FindingLimitsArgs()
         {
         }
+        public static new GooglePrivacyDlpV2FindingLimitsArgs Empty => new GooglePrivacyDlpV2FindingLimitsArgs();
     }
 }

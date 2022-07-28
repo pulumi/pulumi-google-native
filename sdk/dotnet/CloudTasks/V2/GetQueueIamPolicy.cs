@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2
     }
 
 
-    public sealed class GetQueueIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetQueueIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.CloudTasks.V2
         public GetQueueIamPolicyArgs()
         {
         }
+        public static new GetQueueIamPolicyArgs Empty => new GetQueueIamPolicyArgs();
     }
 
-    public sealed class GetQueueIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetQueueIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2
         public GetQueueIamPolicyInvokeArgs()
         {
         }
+        public static new GetQueueIamPolicyInvokeArgs Empty => new GetQueueIamPolicyInvokeArgs();
     }
 
 

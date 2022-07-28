@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     /// CreateApiVersion creates a specified version.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigeeregistry/v1:Version")]
-    public partial class Version : Pulumi.CustomResource
+    public partial class Version : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
@@ -128,7 +128,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         }
     }
 
-    public sealed class VersionArgs : Pulumi.ResourceArgs
+    public sealed class VersionArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -196,5 +196,6 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public VersionArgs()
         {
         }
+        public static new VersionArgs Empty => new VersionArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     /// <summary>
     /// Specifies the selection and configuration of software inside the environment.
     /// </summary>
-    public sealed class SoftwareConfigArgs : Pulumi.ResourceArgs
+    public sealed class SoftwareConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("airflowConfigOverrides")]
         private InputMap<string>? _airflowConfigOverrides;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public SoftwareConfigArgs()
         {
         }
+        public static new SoftwareConfigArgs Empty => new SoftwareConfigArgs();
     }
 }

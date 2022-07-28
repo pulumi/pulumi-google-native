@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents a hardware accelerator request config. Note that the AcceleratorConfig can be used in both Jobs and Versions. Learn more about [accelerators for training](/ml-engine/docs/using-gpus) and [accelerators for online prediction](/ml-engine/docs/machine-types-online-prediction#gpus).
     /// </summary>
-    public sealed class GoogleCloudMlV1__AcceleratorConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__AcceleratorConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of accelerators to attach to each machine running the job.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__AcceleratorConfigArgs()
         {
         }
+        public static new GoogleCloudMlV1__AcceleratorConfigArgs Empty => new GoogleCloudMlV1__AcceleratorConfigArgs();
     }
 }

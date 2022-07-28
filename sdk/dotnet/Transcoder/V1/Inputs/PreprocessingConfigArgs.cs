@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Preprocessing configurations.
     /// </summary>
-    public sealed class PreprocessingConfigArgs : Pulumi.ResourceArgs
+    public sealed class PreprocessingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Audio preprocessing configuration.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public PreprocessingConfigArgs()
         {
         }
+        public static new PreprocessingConfigArgs Empty => new PreprocessingConfigArgs();
     }
 }

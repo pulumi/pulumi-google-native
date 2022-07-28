@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
     /// <summary>
     /// Settings specific to keys that can be used by iOS apps.
     /// </summary>
-    public sealed class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to true, allowed_bundle_ids are not enforced.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
         public GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs()
         {
         }
+        public static new GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs Empty => new GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs();
     }
 }

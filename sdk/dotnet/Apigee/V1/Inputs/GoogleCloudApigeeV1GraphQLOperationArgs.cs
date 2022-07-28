@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Represents the pairing of GraphQL operation types and the GraphQL operation name.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1GraphQLOperationArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1GraphQLOperationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// GraphQL operation name. The name and operation type will be used to apply quotas. If no name is specified, the quota will be applied to all GraphQL operations irrespective of their operation names in the payload.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1GraphQLOperationArgs()
         {
         }
+        public static new GoogleCloudApigeeV1GraphQLOperationArgs Empty => new GoogleCloudApigeeV1GraphQLOperationArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
     }
 
 
-    public sealed class GetProvisioningConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetProvisioningConfigArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         public GetProvisioningConfigArgs()
         {
         }
+        public static new GetProvisioningConfigArgs Empty => new GetProvisioningConfigArgs();
     }
 
-    public sealed class GetProvisioningConfigInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProvisioningConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         public GetProvisioningConfigInvokeArgs()
         {
         }
+        public static new GetProvisioningConfigInvokeArgs Empty => new GetProvisioningConfigInvokeArgs();
     }
 
 

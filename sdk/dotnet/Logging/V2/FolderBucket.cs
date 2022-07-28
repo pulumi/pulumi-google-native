@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:logging/v2:FolderBucket")]
-    public partial class FolderBucket : Pulumi.CustomResource
+    public partial class FolderBucket : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
@@ -137,7 +137,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         }
     }
 
-    public sealed class FolderBucketArgs : Pulumi.ResourceArgs
+    public sealed class FolderBucketArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. A client-assigned identifier such as "my-bucket". Identifiers are limited to 100 characters and can include only letters, digits, underscores, hyphens, and periods.
@@ -202,5 +202,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         public FolderBucketArgs()
         {
         }
+        public static new FolderBucketArgs Empty => new FolderBucketArgs();
     }
 }

@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudsupport/v2beta:Case")]
-    public partial class Case : Pulumi.CustomResource
+    public partial class Case : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The issue classification applicable to this case.
@@ -161,7 +161,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         }
     }
 
-    public sealed class CaseArgs : Pulumi.ResourceArgs
+    public sealed class CaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The issue classification applicable to this case.
@@ -250,5 +250,6 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         public CaseArgs()
         {
         }
+        public static new CaseArgs Empty => new CaseArgs();
     }
 }

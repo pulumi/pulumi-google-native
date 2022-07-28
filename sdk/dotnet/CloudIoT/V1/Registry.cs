@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
     /// Creates a device registry that contains devices.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudiot/v1:Registry")]
-    public partial class Registry : Pulumi.CustomResource
+    public partial class Registry : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The credentials used to verify the device credentials. No more than 10 credentials can be bound to a single registry at a time. The verification process occurs at the time of device creation or update. If this field is empty, no verification is performed. Otherwise, the credentials of a newly created device or added credentials of an updated device should be signed with one of these registry credentials. Note, however, that existing devices will never be affected by modifications to this list of credentials: after a device has been successfully created in a registry, it should be able to connect even if its registry credentials are revoked, deleted, or modified.
@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         }
     }
 
-    public sealed class RegistryArgs : Pulumi.ResourceArgs
+    public sealed class RegistryArgs : global::Pulumi.ResourceArgs
     {
         [Input("credentials")]
         private InputList<Inputs.RegistryCredentialArgs>? _credentials;
@@ -182,5 +182,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         public RegistryArgs()
         {
         }
+        public static new RegistryArgs Empty => new RegistryArgs();
     }
 }

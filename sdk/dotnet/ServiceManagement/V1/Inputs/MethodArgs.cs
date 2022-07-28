@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Method represents a method of an API interface.
     /// </summary>
-    public sealed class MethodArgs : Pulumi.ResourceArgs
+    public sealed class MethodArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The simple name of this method.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public MethodArgs()
         {
         }
+        public static new MethodArgs Empty => new MethodArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1Beta3
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:documentai/v1beta3:Processor")]
-    public partial class Processor : Pulumi.CustomResource
+    public partial class Processor : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time the processor was created.
@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.DocumentAI.V1Beta3
         }
     }
 
-    public sealed class ProcessorArgs : Pulumi.ResourceArgs
+    public sealed class ProcessorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time the processor was created.
@@ -159,5 +159,6 @@ namespace Pulumi.GoogleNative.DocumentAI.V1Beta3
         public ProcessorArgs()
         {
         }
+        public static new ProcessorArgs Empty => new ProcessorArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
     /// <summary>
     /// Launch Flex Template parameter.
     /// </summary>
-    public sealed class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud Storage path to a file with a JSON-serialized ContainerSpec as content.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
         public GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs()
         {
         }
+        public static new GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs Empty => new GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs();
     }
 }

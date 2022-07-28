@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
     /// <summary>
     /// Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
     /// </summary>
-    public sealed class GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs : global::Pulumi.ResourceArgs
     {
         [Input("synonyms")]
         private InputList<string>? _synonyms;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
         public GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs()
         {
         }
+        public static new GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs Empty => new GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs();
     }
 }

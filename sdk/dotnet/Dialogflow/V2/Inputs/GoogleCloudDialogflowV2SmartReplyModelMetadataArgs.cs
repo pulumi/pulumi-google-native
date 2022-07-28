@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// Metadata for smart reply models.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2SmartReplyModelMetadataArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2SmartReplyModelMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Type of the smart reply model. If not provided, model_type is used.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2SmartReplyModelMetadataArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2SmartReplyModelMetadataArgs Empty => new GoogleCloudDialogflowV2SmartReplyModelMetadataArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     }
 
 
-    public sealed class GetEntityTypeArgs : Pulumi.InvokeArgs
+    public sealed class GetEntityTypeArgs : global::Pulumi.InvokeArgs
     {
         [Input("entityTypeId", required: true)]
         public string EntityTypeId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public GetEntityTypeArgs()
         {
         }
+        public static new GetEntityTypeArgs Empty => new GetEntityTypeArgs();
     }
 
-    public sealed class GetEntityTypeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEntityTypeInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("entityTypeId", required: true)]
         public Input<string> EntityTypeId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public GetEntityTypeInvokeArgs()
         {
         }
+        public static new GetEntityTypeInvokeArgs Empty => new GetEntityTypeInvokeArgs();
     }
 
 

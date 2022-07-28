@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
     /// <summary>
     /// The basic ingress config for ClientGateways.
     /// </summary>
-    public sealed class ConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("destinationRoutes", required: true)]
         private InputList<Inputs.DestinationRouteArgs>? _destinationRoutes;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
         public ConfigArgs()
         {
         }
+        public static new ConfigArgs Empty => new ConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
     /// <summary>
     /// Represents a single apt package repository. These will be added to a repo file that will be managed at `/etc/apt/sources.list.d/google_osconfig.list`.
     /// </summary>
-    public sealed class OSPolicyResourceRepositoryResourceAptRepositoryArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourceRepositoryResourceAptRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Type of archive files in this repository.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public OSPolicyResourceRepositoryResourceAptRepositoryArgs()
         {
         }
+        public static new OSPolicyResourceRepositoryResourceAptRepositoryArgs Empty => new OSPolicyResourceRepositoryResourceAptRepositoryArgs();
     }
 }

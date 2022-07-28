@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
 {
 
-    public sealed class GoogleCloudDataplexV1EnvironmentSessionSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1EnvironmentSessionSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. If True, this causes sessions to be pre-created and available for faster startup to enable interactive exploration use-cases. This defaults to False to avoid additional billed charges. These can only be set to True for the environment with name set to "default", and with default configuration.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1EnvironmentSessionSpecArgs()
         {
         }
+        public static new GoogleCloudDataplexV1EnvironmentSessionSpecArgs Empty => new GoogleCloudDataplexV1EnvironmentSessionSpecArgs();
     }
 }

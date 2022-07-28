@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// A set of Display Device options
     /// </summary>
-    public sealed class DisplayDeviceArgs : Pulumi.ResourceArgs
+    public sealed class DisplayDeviceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines whether the instance has Display enabled.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public DisplayDeviceArgs()
         {
         }
+        public static new DisplayDeviceArgs Empty => new DisplayDeviceArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Video stream resource.
     /// </summary>
-    public sealed class VideoStreamArgs : Pulumi.ResourceArgs
+    public sealed class VideoStreamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// H264 codec settings.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public VideoStreamArgs()
         {
         }
+        public static new VideoStreamArgs Empty => new VideoStreamArgs();
     }
 }

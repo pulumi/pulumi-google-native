@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] The authentication settings for the backend service. The authentication settings for the backend service.
     /// </summary>
-    public sealed class AuthenticationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AuthenticationPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("origins")]
         private InputList<Inputs.OriginAuthenticationMethodArgs>? _origins;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public AuthenticationPolicyArgs()
         {
         }
+        public static new AuthenticationPolicyArgs Empty => new AuthenticationPolicyArgs();
     }
 }

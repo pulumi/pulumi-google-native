@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1.Inputs
     /// <summary>
     /// OutputConfig contains a destination for writing trace data.
     /// </summary>
-    public sealed class OutputConfigArgs : Pulumi.ResourceArgs
+    public sealed class OutputConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The destination for writing trace data. Supported formats include: "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]"
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1.Inputs
         public OutputConfigArgs()
         {
         }
+        public static new OutputConfigArgs Empty => new OutputConfigArgs();
     }
 }

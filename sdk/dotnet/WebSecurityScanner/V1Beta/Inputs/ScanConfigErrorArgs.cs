@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
     /// <summary>
     /// Defines a custom error message used by CreateScanConfig and UpdateScanConfig APIs when scan configuration validation fails. It is also reported as part of a ScanRunErrorTrace message if scan validation fails due to a scan configuration error.
     /// </summary>
-    public sealed class ScanConfigErrorArgs : Pulumi.ResourceArgs
+    public sealed class ScanConfigErrorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates the reason code for a configuration failure.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
         public ScanConfigErrorArgs()
         {
         }
+        public static new ScanConfigErrorArgs Empty => new ScanConfigErrorArgs();
     }
 }

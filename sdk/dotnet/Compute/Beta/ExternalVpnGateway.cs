@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates a ExternalVpnGateway in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:ExternalVpnGateway")]
-    public partial class ExternalVpnGateway : Pulumi.CustomResource
+    public partial class ExternalVpnGateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class ExternalVpnGatewayArgs : Pulumi.ResourceArgs
+    public sealed class ExternalVpnGatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -181,5 +181,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public ExternalVpnGatewayArgs()
         {
         }
+        public static new ExternalVpnGatewayArgs Empty => new ExternalVpnGatewayArgs();
     }
 }

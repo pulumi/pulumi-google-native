@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
     /// <summary>
     /// Configuration to drop large object values.
     /// </summary>
-    public sealed class DropLargeObjectsArgs : Pulumi.ResourceArgs
+    public sealed class DropLargeObjectsArgs : global::Pulumi.ResourceArgs
     {
         public DropLargeObjectsArgs()
         {
         }
+        public static new DropLargeObjectsArgs Empty => new DropLargeObjectsArgs();
     }
 }

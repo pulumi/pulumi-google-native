@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Digest information.
     /// </summary>
-    public sealed class DigestArgs : Pulumi.ResourceArgs
+    public sealed class DigestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// `SHA1`, `SHA512` etc.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public DigestArgs()
         {
         }
+        public static new DigestArgs Empty => new DigestArgs();
     }
 }

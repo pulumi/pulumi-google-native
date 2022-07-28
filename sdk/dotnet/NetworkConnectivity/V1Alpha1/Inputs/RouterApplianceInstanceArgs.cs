@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1.Inputs
     /// <summary>
     /// RouterAppliance represents a Router appliance which is specified by a VM URI and a NIC address.
     /// </summary>
-    public sealed class RouterApplianceInstanceArgs : Pulumi.ResourceArgs
+    public sealed class RouterApplianceInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP address of the network interface to use for peering.
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1.Inputs
         public RouterApplianceInstanceArgs()
         {
         }
+        public static new RouterApplianceInstanceArgs Empty => new RouterApplianceInstanceArgs();
     }
 }

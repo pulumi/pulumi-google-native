@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
 {
 
-    public sealed class EnvelopeSignatureArgs : Pulumi.ResourceArgs
+    public sealed class EnvelopeSignatureArgs : global::Pulumi.ResourceArgs
     {
         [Input("keyid")]
         public Input<string>? Keyid { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public EnvelopeSignatureArgs()
         {
         }
+        public static new EnvelopeSignatureArgs Empty => new EnvelopeSignatureArgs();
     }
 }

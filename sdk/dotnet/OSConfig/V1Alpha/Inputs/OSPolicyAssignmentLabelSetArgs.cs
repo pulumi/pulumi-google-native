@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
     /// <summary>
     /// Message representing label set. * A label is a key value pair set for a VM. * A LabelSet is a set of labels. * Labels within a LabelSet are ANDed. In other words, a LabelSet is applicable for a VM only if it matches all the labels in the LabelSet. * Example: A LabelSet with 2 labels: `env=prod` and `type=webserver` will only be applicable for those VMs with both labels present.
     /// </summary>
-    public sealed class OSPolicyAssignmentLabelSetArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyAssignmentLabelSetArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public OSPolicyAssignmentLabelSetArgs()
         {
         }
+        public static new OSPolicyAssignmentLabelSetArgs Empty => new OSPolicyAssignmentLabelSetArgs();
     }
 }

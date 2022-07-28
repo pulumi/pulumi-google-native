@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
     /// <summary>
     /// Defines a header message. A header can have a key and a value.
     /// </summary>
-    public sealed class HeaderArgs : Pulumi.ResourceArgs
+    public sealed class HeaderArgs : global::Pulumi.ResourceArgs
     {
         [Input("key")]
         public Input<string>? Key { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
         public HeaderArgs()
         {
         }
+        public static new HeaderArgs Empty => new HeaderArgs();
     }
 }

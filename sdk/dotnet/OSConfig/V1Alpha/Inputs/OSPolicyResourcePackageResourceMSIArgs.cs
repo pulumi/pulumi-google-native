@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
     /// <summary>
     /// An MSI package. MSI packages only support INSTALLED state.
     /// </summary>
-    public sealed class OSPolicyResourcePackageResourceMSIArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourcePackageResourceMSIArgs : global::Pulumi.ResourceArgs
     {
         [Input("properties")]
         private InputList<string>? _properties;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public OSPolicyResourcePackageResourceMSIArgs()
         {
         }
+        public static new OSPolicyResourcePackageResourceMSIArgs Empty => new OSPolicyResourcePackageResourceMSIArgs();
     }
 }

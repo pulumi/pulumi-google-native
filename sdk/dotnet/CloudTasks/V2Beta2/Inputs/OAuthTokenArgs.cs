@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
     /// <summary>
     /// Contains information needed for generating an [OAuth token](https://developers.google.com/identity/protocols/OAuth2). This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com.
     /// </summary>
-    public sealed class OAuthTokenArgs : Pulumi.ResourceArgs
+    public sealed class OAuthTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// OAuth scope to be used for generating OAuth access token. If not specified, "https://www.googleapis.com/auth/cloud-platform" will be used.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
         public OAuthTokenArgs()
         {
         }
+        public static new OAuthTokenArgs Empty => new OAuthTokenArgs();
     }
 }

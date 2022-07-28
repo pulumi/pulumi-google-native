@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
     /// Creates the specified index. A newly created index's initial state is `CREATING`. On completion of the returned google.longrunning.Operation, the state will be `READY`. If the index already exists, the call will return an `ALREADY_EXISTS` status. During creation, the process could result in an error, in which case the index will move to the `ERROR` state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create. Indexes with a single field cannot be created.
     /// </summary>
     [GoogleNativeResourceType("google-native:firestore/v1beta1:Index")]
-    public partial class Index : Pulumi.CustomResource
+    public partial class Index : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The collection ID to which this index applies. Required.
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
         }
     }
 
-    public sealed class IndexArgs : Pulumi.ResourceArgs
+    public sealed class IndexArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The collection ID to which this index applies. Required.
@@ -134,5 +134,6 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1
         public IndexArgs()
         {
         }
+        public static new IndexArgs Empty => new IndexArgs();
     }
 }

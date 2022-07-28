@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// A column with a semantic tag attached.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2QuasiIdArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2QuasiIdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column (below).
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2QuasiIdArgs()
         {
         }
+        public static new GooglePrivacyDlpV2QuasiIdArgs Empty => new GooglePrivacyDlpV2QuasiIdArgs();
     }
 }

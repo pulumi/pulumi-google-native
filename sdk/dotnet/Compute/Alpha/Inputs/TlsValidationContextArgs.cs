@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] Defines the mechanism to obtain the Certificate Authority certificate to validate the client/server certificate. validate the client/server certificate.
     /// </summary>
-    public sealed class TlsValidationContextArgs : Pulumi.ResourceArgs
+    public sealed class TlsValidationContextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The path to the file holding the CA certificate to validate the client or server certificate.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public TlsValidationContextArgs()
         {
         }
+        public static new TlsValidationContextArgs Empty => new TlsValidationContextArgs();
     }
 }

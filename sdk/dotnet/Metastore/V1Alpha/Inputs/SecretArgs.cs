@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
     /// <summary>
     /// A securely stored value.
     /// </summary>
-    public sealed class SecretArgs : Pulumi.ResourceArgs
+    public sealed class SecretArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The relative resource name of a Secret Manager secret version, in the following form:projects/{project_number}/secrets/{secret_id}/versions/{version_id}.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
         public SecretArgs()
         {
         }
+        public static new SecretArgs Empty => new SecretArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Commitment for a particular license resource.
     /// </summary>
-    public sealed class LicenseResourceCommitmentArgs : Pulumi.ResourceArgs
+    public sealed class LicenseResourceCommitmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of licenses purchased.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public LicenseResourceCommitmentArgs()
         {
         }
+        public static new LicenseResourceCommitmentArgs Empty => new LicenseResourceCommitmentArgs();
     }
 }

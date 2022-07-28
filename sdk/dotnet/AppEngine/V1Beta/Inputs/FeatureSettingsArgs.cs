@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// The feature specific settings to be used in the application. These define behaviors that are user configurable.
     /// </summary>
-    public sealed class FeatureSettingsArgs : Pulumi.ResourceArgs
+    public sealed class FeatureSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Boolean value indicating if split health checks should be used instead of the legacy health checks. At an app.yaml level, this means defaulting to 'readiness_check' and 'liveness_check' values instead of 'health_check' ones. Once the legacy 'health_check' behavior is deprecated, and this value is always true, this setting can be removed.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public FeatureSettingsArgs()
         {
         }
+        public static new FeatureSettingsArgs Empty => new FeatureSettingsArgs();
     }
 }

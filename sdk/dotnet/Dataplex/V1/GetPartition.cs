@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     }
 
 
-    public sealed class GetPartitionArgs : Pulumi.InvokeArgs
+    public sealed class GetPartitionArgs : global::Pulumi.InvokeArgs
     {
         [Input("entityId", required: true)]
         public string EntityId { get; set; } = null!;
@@ -48,9 +48,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public GetPartitionArgs()
         {
         }
+        public static new GetPartitionArgs Empty => new GetPartitionArgs();
     }
 
-    public sealed class GetPartitionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPartitionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("entityId", required: true)]
         public Input<string> EntityId { get; set; } = null!;
@@ -73,6 +74,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public GetPartitionInvokeArgs()
         {
         }
+        public static new GetPartitionInvokeArgs Empty => new GetPartitionInvokeArgs();
     }
 
 

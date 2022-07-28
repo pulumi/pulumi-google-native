@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.IAM.V1
     }
 
 
-    public sealed class GetProviderArgs : Pulumi.InvokeArgs
+    public sealed class GetProviderArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         public GetProviderArgs()
         {
         }
+        public static new GetProviderArgs Empty => new GetProviderArgs();
     }
 
-    public sealed class GetProviderInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProviderInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         public GetProviderInvokeArgs()
         {
         }
+        public static new GetProviderInvokeArgs Empty => new GetProviderInvokeArgs();
     }
 
 

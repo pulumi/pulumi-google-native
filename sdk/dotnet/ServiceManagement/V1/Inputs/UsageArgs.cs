@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Configuration controlling usage of a service.
     /// </summary>
-    public sealed class UsageArgs : Pulumi.ResourceArgs
+    public sealed class UsageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full resource name of a channel used for sending notifications to the service producer. Google Service Management currently only supports [Google Cloud Pub/Sub](https://cloud.google.com/pubsub) as a notification channel. To use Google Cloud Pub/Sub as the channel, this must be the name of a Cloud Pub/Sub topic that uses the Cloud Pub/Sub topic name format documented in https://cloud.google.com/pubsub/docs/overview.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public UsageArgs()
         {
         }
+        public static new UsageArgs Empty => new UsageArgs();
     }
 }

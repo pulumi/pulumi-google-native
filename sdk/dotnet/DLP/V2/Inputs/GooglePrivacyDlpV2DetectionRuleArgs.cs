@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Deprecated; use `InspectionRuleSet` instead. Rule for modifying a `CustomInfoType` to alter behavior under certain circumstances, depending on the specific details of the rule. Not supported for the `surrogate_type` custom infoType.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2DetectionRuleArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2DetectionRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hotword-based detection rule.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2DetectionRuleArgs()
         {
         }
+        public static new GooglePrivacyDlpV2DetectionRuleArgs Empty => new GooglePrivacyDlpV2DetectionRuleArgs();
     }
 }

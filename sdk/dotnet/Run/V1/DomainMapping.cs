@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Run.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:run/v1:DomainMapping")]
-    public partial class DomainMapping : Pulumi.CustomResource
+    public partial class DomainMapping : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The API version for this call such as "domains.cloudrun.com/v1".
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.Run.V1
         }
     }
 
-    public sealed class DomainMappingArgs : Pulumi.ResourceArgs
+    public sealed class DomainMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The API version for this call such as "domains.cloudrun.com/v1".
@@ -147,5 +147,6 @@ namespace Pulumi.GoogleNative.Run.V1
         public DomainMappingArgs()
         {
         }
+        public static new DomainMappingArgs Empty => new DomainMappingArgs();
     }
 }

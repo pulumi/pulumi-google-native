@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// The suggestion chip message that allows the user to jump out to the app or website associated with this agent.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the app or site this chip is linking to.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs Empty => new GoogleCloudDialogflowV2IntentMessageLinkOutSuggestionArgs();
     }
 }

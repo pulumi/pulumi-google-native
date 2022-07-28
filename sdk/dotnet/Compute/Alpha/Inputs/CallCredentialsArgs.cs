@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] gRPC call credentials to access the SDS server. gRPC call credentials to access the SDS server.
     /// </summary>
-    public sealed class CallCredentialsArgs : Pulumi.ResourceArgs
+    public sealed class CallCredentialsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of call credentials to use for GRPC requests to the SDS server. This field can be set to one of the following: - GCE_VM: The local GCE VM service account credentials are used to access the SDS server. - FROM_PLUGIN: Custom authenticator credentials are used to access the SDS server.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public CallCredentialsArgs()
         {
         }
+        public static new CallCredentialsArgs Empty => new CallCredentialsArgs();
     }
 }

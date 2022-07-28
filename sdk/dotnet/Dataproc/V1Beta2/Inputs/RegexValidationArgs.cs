@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// Validation based on regular expressions.
     /// </summary>
-    public sealed class RegexValidationArgs : Pulumi.ResourceArgs
+    public sealed class RegexValidationArgs : global::Pulumi.ResourceArgs
     {
         [Input("regexes", required: true)]
         private InputList<string>? _regexes;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public RegexValidationArgs()
         {
         }
+        public static new RegexValidationArgs Empty => new RegexValidationArgs();
     }
 }

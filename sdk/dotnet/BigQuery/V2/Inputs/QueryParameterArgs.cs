@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class QueryParameterArgs : Pulumi.ResourceArgs
+    public sealed class QueryParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] If unset, this is a positional parameter. Otherwise, should be unique within a query.
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public QueryParameterArgs()
         {
         }
+        public static new QueryParameterArgs Empty => new QueryParameterArgs();
     }
 }

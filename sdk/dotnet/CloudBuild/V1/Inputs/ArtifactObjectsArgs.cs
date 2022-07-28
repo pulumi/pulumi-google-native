@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// Files in the workspace to upload to Cloud Storage upon successful completion of all build steps.
     /// </summary>
-    public sealed class ArtifactObjectsArgs : Pulumi.ResourceArgs
+    public sealed class ArtifactObjectsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public ArtifactObjectsArgs()
         {
         }
+        public static new ArtifactObjectsArgs Empty => new ArtifactObjectsArgs();
     }
 }

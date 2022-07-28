@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetTargetHttpProxyArgs : Pulumi.InvokeArgs
+    public sealed class GetTargetHttpProxyArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetTargetHttpProxyArgs()
         {
         }
+        public static new GetTargetHttpProxyArgs Empty => new GetTargetHttpProxyArgs();
     }
 
-    public sealed class GetTargetHttpProxyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTargetHttpProxyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetTargetHttpProxyInvokeArgs()
         {
         }
+        public static new GetTargetHttpProxyInvokeArgs Empty => new GetTargetHttpProxyInvokeArgs();
     }
 
 

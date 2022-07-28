@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// <summary>
     /// ResourceRequirements describes the compute resource requirements.
     /// </summary>
-    public sealed class GoogleCloudRunV2ResourceRequirementsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRunV2ResourceRequirementsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines whether CPU should be throttled or not outside of requests.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public GoogleCloudRunV2ResourceRequirementsArgs()
         {
         }
+        public static new GoogleCloudRunV2ResourceRequirementsArgs Empty => new GoogleCloudRunV2ResourceRequirementsArgs();
     }
 }

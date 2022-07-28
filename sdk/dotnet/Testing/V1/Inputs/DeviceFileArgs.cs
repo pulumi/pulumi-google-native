@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A single device file description.
     /// </summary>
-    public sealed class DeviceFileArgs : Pulumi.ResourceArgs
+    public sealed class DeviceFileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A reference to an opaque binary blob file.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public DeviceFileArgs()
         {
         }
+        public static new DeviceFileArgs Empty => new DeviceFileArgs();
     }
 }

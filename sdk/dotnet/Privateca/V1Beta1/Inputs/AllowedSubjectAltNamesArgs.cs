@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     /// <summary>
     /// AllowedSubjectAltNames specifies the allowed values for SubjectAltNames by the CertificateAuthority when issuing Certificates.
     /// </summary>
-    public sealed class AllowedSubjectAltNamesArgs : Pulumi.ResourceArgs
+    public sealed class AllowedSubjectAltNamesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Specifies if to allow custom X509Extension values.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         public AllowedSubjectAltNamesArgs()
         {
         }
+        public static new AllowedSubjectAltNamesArgs Empty => new AllowedSubjectAltNamesArgs();
     }
 }

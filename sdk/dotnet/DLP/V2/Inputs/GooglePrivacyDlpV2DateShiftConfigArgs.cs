@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Shifts dates by random number of days, with option to be consistent for the same context. See https://cloud.google.com/dlp/docs/concepts-date-shifting to learn more.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2DateShiftConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2DateShiftConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Points to the field that contains the context, for example, an entity id. If set, must also set cryptoKey. If set, shift will be consistent for the given context.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2DateShiftConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2DateShiftConfigArgs Empty => new GooglePrivacyDlpV2DateShiftConfigArgs();
     }
 }

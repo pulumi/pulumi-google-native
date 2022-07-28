@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// TimeSeriesQuery collects the set of supported methods for querying time series data from the Stackdriver metrics API.
     /// </summary>
-    public sealed class TimeSeriesQueryArgs : Pulumi.ResourceArgs
+    public sealed class TimeSeriesQueryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Filter parameters to fetch time series.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public TimeSeriesQueryArgs()
         {
         }
+        public static new TimeSeriesQueryArgs Empty => new TimeSeriesQueryArgs();
     }
 }

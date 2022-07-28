@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
     /// <summary>
     /// Contact information for a customer account.
     /// </summary>
-    public sealed class GoogleCloudChannelV1ContactInfoArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudChannelV1ContactInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The customer account's contact email. Required for entitlements that create admin.google.com accounts, and serves as the customer's username for those accounts. Use this email to invite Team customers.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         public GoogleCloudChannelV1ContactInfoArgs()
         {
         }
+        public static new GoogleCloudChannelV1ContactInfoArgs Empty => new GoogleCloudChannelV1ContactInfoArgs();
     }
 }

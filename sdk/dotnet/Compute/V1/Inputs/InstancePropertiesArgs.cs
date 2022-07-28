@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
-    public sealed class InstancePropertiesArgs : Pulumi.ResourceArgs
+    public sealed class InstancePropertiesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Controls for advanced machine-related behavior features. Note that for MachineImage, this is not supported yet.
@@ -183,5 +183,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public InstancePropertiesArgs()
         {
         }
+        public static new InstancePropertiesArgs Empty => new InstancePropertiesArgs();
     }
 }

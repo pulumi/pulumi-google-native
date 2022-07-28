@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Auxiliary services configuration for a workload.
     /// </summary>
-    public sealed class PeripheralsConfigArgs : Pulumi.ResourceArgs
+    public sealed class PeripheralsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id]
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public PeripheralsConfigArgs()
         {
         }
+        public static new PeripheralsConfigArgs Empty => new PeripheralsConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Options defining BigQuery table and row identifiers.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2BigQueryOptionsArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2BigQueryOptionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("excludedFields")]
         private InputList<Inputs.GooglePrivacyDlpV2FieldIdArgs>? _excludedFields;
@@ -75,5 +75,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2BigQueryOptionsArgs()
         {
         }
+        public static new GooglePrivacyDlpV2BigQueryOptionsArgs Empty => new GooglePrivacyDlpV2BigQueryOptionsArgs();
     }
 }

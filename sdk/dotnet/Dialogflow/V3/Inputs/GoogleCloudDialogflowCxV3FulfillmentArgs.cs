@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// A fulfillment can do one or more of the following actions at the same time: * Generate rich message responses. * Set parameter values. * Call the webhook. Fulfillments can be called at various stages in the Page or Form lifecycle. For example, when a DetectIntentRequest drives a session to enter a new page, the page's entry fulfillment can add a static response to the QueryResult in the returning DetectIntentResponse, call the webhook (for example, to load user data from a database), or both.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3FulfillmentArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3FulfillmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("conditionalCases")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs>? _conditionalCases;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3FulfillmentArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3FulfillmentArgs Empty => new GoogleCloudDialogflowCxV3FulfillmentArgs();
     }
 }

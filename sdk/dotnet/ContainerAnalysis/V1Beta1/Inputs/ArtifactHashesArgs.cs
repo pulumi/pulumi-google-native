@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Defines a hash object for use in Materials and Products.
     /// </summary>
-    public sealed class ArtifactHashesArgs : Pulumi.ResourceArgs
+    public sealed class ArtifactHashesArgs : global::Pulumi.ResourceArgs
     {
         [Input("sha256")]
         public Input<string>? Sha256 { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public ArtifactHashesArgs()
         {
         }
+        public static new ArtifactHashesArgs Empty => new ArtifactHashesArgs();
     }
 }

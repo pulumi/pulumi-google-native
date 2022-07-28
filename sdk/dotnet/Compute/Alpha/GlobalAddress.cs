@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates an address resource in the specified project by using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:GlobalAddress")]
-    public partial class GlobalAddress : Pulumi.CustomResource
+    public partial class GlobalAddress : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The static IP address represented by this resource.
@@ -191,7 +191,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class GlobalAddressArgs : Pulumi.ResourceArgs
+    public sealed class GlobalAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The static IP address represented by this resource.
@@ -283,5 +283,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GlobalAddressArgs()
         {
         }
+        public static new GlobalAddressArgs Empty => new GlobalAddressArgs();
     }
 }

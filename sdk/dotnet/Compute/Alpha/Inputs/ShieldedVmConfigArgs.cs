@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// A set of Shielded VM options.
     /// </summary>
-    public sealed class ShieldedVmConfigArgs : Pulumi.ResourceArgs
+    public sealed class ShieldedVmConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines whether the instance has integrity monitoring enabled.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public ShieldedVmConfigArgs()
         {
         }
+        public static new ShieldedVmConfigArgs Empty => new ShieldedVmConfigArgs();
     }
 }

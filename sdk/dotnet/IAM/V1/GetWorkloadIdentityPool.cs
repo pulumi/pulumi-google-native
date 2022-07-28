@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.IAM.V1
     }
 
 
-    public sealed class GetWorkloadIdentityPoolArgs : Pulumi.InvokeArgs
+    public sealed class GetWorkloadIdentityPoolArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         public GetWorkloadIdentityPoolArgs()
         {
         }
+        public static new GetWorkloadIdentityPoolArgs Empty => new GetWorkloadIdentityPoolArgs();
     }
 
-    public sealed class GetWorkloadIdentityPoolInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetWorkloadIdentityPoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         public GetWorkloadIdentityPoolInvokeArgs()
         {
         }
+        public static new GetWorkloadIdentityPoolInvokeArgs Empty => new GetWorkloadIdentityPoolInvokeArgs();
     }
 
 

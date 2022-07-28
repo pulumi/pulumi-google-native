@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Compute numerical stats over an individual column, including number of distinct values and value count distribution.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2CategoricalStatsConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2CategoricalStatsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Field to compute categorical stats on. All column types are supported except for arrays and structs. However, it may be more informative to use NumericalStats when the field type is supported, depending on the data.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2CategoricalStatsConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2CategoricalStatsConfigArgs Empty => new GooglePrivacyDlpV2CategoricalStatsConfigArgs();
     }
 }

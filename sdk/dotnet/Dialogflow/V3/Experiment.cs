@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     /// Creates an Experiment in the specified Environment.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3:Experiment")]
-    public partial class Experiment : Pulumi.CustomResource
+    public partial class Experiment : global::Pulumi.CustomResource
     {
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
@@ -167,7 +167,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         }
     }
 
-    public sealed class ExperimentArgs : Pulumi.ResourceArgs
+    public sealed class ExperimentArgs : global::Pulumi.ResourceArgs
     {
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -280,5 +280,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public ExperimentArgs()
         {
         }
+        public static new ExperimentArgs Empty => new ExperimentArgs();
     }
 }

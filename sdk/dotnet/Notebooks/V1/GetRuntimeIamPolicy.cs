@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
     }
 
 
-    public sealed class GetRuntimeIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetRuntimeIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public GetRuntimeIamPolicyArgs()
         {
         }
+        public static new GetRuntimeIamPolicyArgs Empty => new GetRuntimeIamPolicyArgs();
     }
 
-    public sealed class GetRuntimeIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRuntimeIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public GetRuntimeIamPolicyInvokeArgs()
         {
         }
+        public static new GetRuntimeIamPolicyInvokeArgs Empty => new GetRuntimeIamPolicyInvokeArgs();
     }
 
 

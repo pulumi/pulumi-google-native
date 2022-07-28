@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     }
 
 
-    public sealed class GetConnectorArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectorArgs : global::Pulumi.InvokeArgs
     {
         [Input("connectorId", required: true)]
         public string ConnectorId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public GetConnectorArgs()
         {
         }
+        public static new GetConnectorArgs Empty => new GetConnectorArgs();
     }
 
-    public sealed class GetConnectorInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectorInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("connectorId", required: true)]
         public Input<string> ConnectorId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public GetConnectorInvokeArgs()
         {
         }
+        public static new GetConnectorInvokeArgs Empty => new GetConnectorInvokeArgs();
     }
 
 

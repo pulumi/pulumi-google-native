@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Runs a script through an interpreter.
     /// </summary>
-    public sealed class SoftwareRecipeStepRunScriptArgs : Pulumi.ResourceArgs
+    public sealed class SoftwareRecipeStepRunScriptArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedExitCodes")]
         private InputList<int>? _allowedExitCodes;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public SoftwareRecipeStepRunScriptArgs()
         {
         }
+        public static new SoftwareRecipeStepRunScriptArgs Empty => new SoftwareRecipeStepRunScriptArgs();
     }
 }

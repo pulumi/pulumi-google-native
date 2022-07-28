@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Sprite sheet configuration.
     /// </summary>
-    public sealed class SpriteSheetArgs : Pulumi.ResourceArgs
+    public sealed class SpriteSheetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum number of sprites per row in a sprite sheet. The default is 0, which indicates no maximum limit.
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public SpriteSheetArgs()
         {
         }
+        public static new SpriteSheetArgs Empty => new SpriteSheetArgs();
     }
 }

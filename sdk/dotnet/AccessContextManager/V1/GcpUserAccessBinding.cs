@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
     /// Creates a GcpUserAccessBinding. If the client specifies a name, the server ignores it. Fails if a resource already exists with the same group_key. Completion of this long-running operation does not necessarily signify that the new binding is deployed onto all affected users, which may take more time.
     /// </summary>
     [GoogleNativeResourceType("google-native:accesscontextmanager/v1:GcpUserAccessBinding")]
-    public partial class GcpUserAccessBinding : Pulumi.CustomResource
+    public partial class GcpUserAccessBinding : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted"
@@ -83,7 +83,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         }
     }
 
-    public sealed class GcpUserAccessBindingArgs : Pulumi.ResourceArgs
+    public sealed class GcpUserAccessBindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessLevels", required: true)]
         private InputList<string>? _accessLevels;
@@ -115,5 +115,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public GcpUserAccessBindingArgs()
         {
         }
+        public static new GcpUserAccessBindingArgs Empty => new GcpUserAccessBindingArgs();
     }
 }

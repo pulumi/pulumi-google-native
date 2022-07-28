@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Configuration for issuance of mTLS keys and certificates to Kubernetes pods.
     /// </summary>
-    public sealed class MeshCertificatesArgs : Pulumi.ResourceArgs
+    public sealed class MeshCertificatesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty).
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public MeshCertificatesArgs()
         {
         }
+        public static new MeshCertificatesArgs Empty => new MeshCertificatesArgs();
     }
 }

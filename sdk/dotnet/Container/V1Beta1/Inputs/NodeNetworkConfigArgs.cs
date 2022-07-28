@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Parameters for node pool-level network config.
     /// </summary>
-    public sealed class NodeNetworkConfigArgs : Pulumi.ResourceArgs
+    public sealed class NodeNetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Input only. Whether to create a new range for pod IPs in this node pool. Defaults are provided for `pod_range` and `pod_ipv4_cidr_block` if they are not specified. If neither `create_pod_range` or `pod_range` are specified, the cluster-level default (`ip_allocation_policy.cluster_ipv4_cidr_block`) is used. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public NodeNetworkConfigArgs()
         {
         }
+        public static new NodeNetworkConfigArgs Empty => new NodeNetworkConfigArgs();
     }
 }

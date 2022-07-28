@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates an instance group in the specified project using the parameters that are included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:InstanceGroup")]
-    public partial class InstanceGroup : Pulumi.CustomResource
+    public partial class InstanceGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The creation timestamp for this instance group in RFC3339 text format.
@@ -141,7 +141,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class InstanceGroupArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -182,5 +182,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public InstanceGroupArgs()
         {
         }
+        public static new InstanceGroupArgs Empty => new InstanceGroupArgs();
     }
 }

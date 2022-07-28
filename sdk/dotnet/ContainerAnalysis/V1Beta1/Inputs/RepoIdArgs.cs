@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// A unique identifier for a Cloud Repo.
     /// </summary>
-    public sealed class RepoIdArgs : Pulumi.ResourceArgs
+    public sealed class RepoIdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A combination of a project ID and a repo name.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public RepoIdArgs()
         {
         }
+        public static new RepoIdArgs Empty => new RepoIdArgs();
     }
 }

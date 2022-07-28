@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// This is deprecated and has no effect. Do not use.
     /// </summary>
-    public sealed class LogConfigArgs : Pulumi.ResourceArgs
+    public sealed class LogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is deprecated and has no effect. Do not use.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public LogConfigArgs()
         {
         }
+        public static new LogConfigArgs Empty => new LogConfigArgs();
     }
 }

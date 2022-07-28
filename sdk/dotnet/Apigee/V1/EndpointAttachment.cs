@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:EndpointAttachment")]
-    public partial class EndpointAttachment : Pulumi.CustomResource
+    public partial class EndpointAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
@@ -102,7 +102,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class EndpointAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class EndpointAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
@@ -134,5 +134,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public EndpointAttachmentArgs()
         {
         }
+        public static new EndpointAttachmentArgs Empty => new EndpointAttachmentArgs();
     }
 }

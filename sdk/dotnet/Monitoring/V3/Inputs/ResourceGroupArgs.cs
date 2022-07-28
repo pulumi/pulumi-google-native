@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// The resource submessage for group checks. It can be used instead of a monitored resource, when multiple resources are being monitored.
     /// </summary>
-    public sealed class ResourceGroupArgs : Pulumi.ResourceArgs
+    public sealed class ResourceGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID].
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public ResourceGroupArgs()
         {
         }
+        public static new ResourceGroupArgs Empty => new ResourceGroupArgs();
     }
 }

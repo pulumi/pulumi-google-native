@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates an instance template in the specified project and region using the global instance template whose URL is included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:RegionInstanceTemplate")]
-    public partial class RegionInstanceTemplate : Pulumi.CustomResource
+    public partial class RegionInstanceTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The creation timestamp for this instance template in RFC3339 text format.
@@ -129,7 +129,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class RegionInstanceTemplateArgs : Pulumi.ResourceArgs
+    public sealed class RegionInstanceTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -176,5 +176,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public RegionInstanceTemplateArgs()
         {
         }
+        public static new RegionInstanceTemplateArgs Empty => new RegionInstanceTemplateArgs();
     }
 }

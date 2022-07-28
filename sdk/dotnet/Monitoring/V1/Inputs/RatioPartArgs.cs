@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// Describes a query to build the numerator or denominator of a TimeSeriesFilterRatio.
     /// </summary>
-    public sealed class RatioPartArgs : Pulumi.ResourceArgs
+    public sealed class RatioPartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// By default, the raw time series data is returned. Use this field to combine multiple time series for different views of the data.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public RatioPartArgs()
         {
         }
+        public static new RatioPartArgs Empty => new RatioPartArgs();
     }
 }

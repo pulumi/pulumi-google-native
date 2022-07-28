@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// An observed value of a metric.
     /// </summary>
-    public sealed class GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The objective value at this training step.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs()
         {
         }
+        public static new GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs Empty => new GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs();
     }
 }

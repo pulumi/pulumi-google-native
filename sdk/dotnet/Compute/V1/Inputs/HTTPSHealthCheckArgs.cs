@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
-    public sealed class HTTPSHealthCheckArgs : Pulumi.ResourceArgs
+    public sealed class HTTPSHealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The value of the host header in the HTTPS health check request. If left empty (default value), the IP on behalf of which this health check is performed will be used.
@@ -57,5 +57,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public HTTPSHealthCheckArgs()
         {
         }
+        public static new HTTPSHealthCheckArgs Empty => new HTTPSHealthCheckArgs();
     }
 }

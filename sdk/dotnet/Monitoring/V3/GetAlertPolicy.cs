@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     }
 
 
-    public sealed class GetAlertPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetAlertPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("alertPolicyId", required: true)]
         public string AlertPolicyId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public GetAlertPolicyArgs()
         {
         }
+        public static new GetAlertPolicyArgs Empty => new GetAlertPolicyArgs();
     }
 
-    public sealed class GetAlertPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAlertPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("alertPolicyId", required: true)]
         public Input<string> AlertPolicyId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public GetAlertPolicyInvokeArgs()
         {
         }
+        public static new GetAlertPolicyInvokeArgs Empty => new GetAlertPolicyInvokeArgs();
     }
 
 

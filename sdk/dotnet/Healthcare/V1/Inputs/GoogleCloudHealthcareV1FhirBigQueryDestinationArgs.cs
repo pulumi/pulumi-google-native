@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
     /// <summary>
     /// The configuration for exporting to BigQuery.
     /// </summary>
-    public sealed class GoogleCloudHealthcareV1FhirBigQueryDestinationArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudHealthcareV1FhirBigQueryDestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// BigQuery URI to an existing dataset, up to 2000 characters long, in the format `bq://projectId.bqDatasetId`.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         public GoogleCloudHealthcareV1FhirBigQueryDestinationArgs()
         {
         }
+        public static new GoogleCloudHealthcareV1FhirBigQueryDestinationArgs Empty => new GoogleCloudHealthcareV1FhirBigQueryDestinationArgs();
     }
 }

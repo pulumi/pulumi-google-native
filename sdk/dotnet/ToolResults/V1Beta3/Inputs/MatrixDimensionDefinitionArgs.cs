@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// One dimension of the matrix of different runs of a step.
     /// </summary>
-    public sealed class MatrixDimensionDefinitionArgs : Pulumi.ResourceArgs
+    public sealed class MatrixDimensionDefinitionArgs : global::Pulumi.ResourceArgs
     {
         public MatrixDimensionDefinitionArgs()
         {
         }
+        public static new MatrixDimensionDefinitionArgs Empty => new MatrixDimensionDefinitionArgs();
     }
 }

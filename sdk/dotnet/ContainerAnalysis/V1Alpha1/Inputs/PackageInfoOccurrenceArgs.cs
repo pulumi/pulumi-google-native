@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// PackageInfoOccurrence represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
     /// </summary>
-    public sealed class PackageInfoOccurrenceArgs : Pulumi.ResourceArgs
+    public sealed class PackageInfoOccurrenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A place for the SPDX file creator to record any general comments about the package being described
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public PackageInfoOccurrenceArgs()
         {
         }
+        public static new PackageInfoOccurrenceArgs Empty => new PackageInfoOccurrenceArgs();
     }
 }

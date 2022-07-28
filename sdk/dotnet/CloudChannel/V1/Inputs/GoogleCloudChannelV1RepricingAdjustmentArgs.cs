@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
     /// <summary>
     /// A type that represents the various adjustments you can apply to a bill.
     /// </summary>
-    public sealed class GoogleCloudChannelV1RepricingAdjustmentArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudChannelV1RepricingAdjustmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Flat markup or markdown on an entire bill.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         public GoogleCloudChannelV1RepricingAdjustmentArgs()
         {
         }
+        public static new GoogleCloudChannelV1RepricingAdjustmentArgs Empty => new GoogleCloudChannelV1RepricingAdjustmentArgs();
     }
 }

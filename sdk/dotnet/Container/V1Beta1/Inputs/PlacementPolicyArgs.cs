@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// PlacementPolicy defines the placement policy used by the node pool.
     /// </summary>
-    public sealed class PlacementPolicyArgs : Pulumi.ResourceArgs
+    public sealed class PlacementPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of placement.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public PlacementPolicyArgs()
         {
         }
+        public static new PlacementPolicyArgs Empty => new PlacementPolicyArgs();
     }
 }

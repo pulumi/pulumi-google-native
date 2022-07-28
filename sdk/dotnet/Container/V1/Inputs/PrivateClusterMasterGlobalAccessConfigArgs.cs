@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Configuration for controlling master global access settings.
     /// </summary>
-    public sealed class PrivateClusterMasterGlobalAccessConfigArgs : Pulumi.ResourceArgs
+    public sealed class PrivateClusterMasterGlobalAccessConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whenever master is accessible globally or not.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public PrivateClusterMasterGlobalAccessConfigArgs()
         {
         }
+        public static new PrivateClusterMasterGlobalAccessConfigArgs Empty => new PrivateClusterMasterGlobalAccessConfigArgs();
     }
 }

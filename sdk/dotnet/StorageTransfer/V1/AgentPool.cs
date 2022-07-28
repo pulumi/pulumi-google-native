@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
     /// Creates an agent pool resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:storagetransfer/v1:AgentPool")]
-    public partial class AgentPool : Pulumi.CustomResource
+    public partial class AgentPool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`.
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         }
     }
 
-    public sealed class AgentPoolArgs : Pulumi.ResourceArgs
+    public sealed class AgentPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The ID of the agent pool to create. The `agent_pool_id` must meet the following requirements: * Length of 128 characters or less. * Not start with the string `goog`. * Start with a lowercase ASCII character, followed by: * Zero or more: lowercase Latin alphabet characters, numerals, hyphens (`-`), periods (`.`), underscores (`_`), or tildes (`~`). * One or more numerals or lowercase ASCII characters. As expressed by the regular expression: `^(?!goog)[a-z]([a-z0-9-._~]*[a-z0-9])?$`.
@@ -128,5 +128,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1
         public AgentPoolArgs()
         {
         }
+        public static new AgentPoolArgs Empty => new AgentPoolArgs();
     }
 }

@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:datafusion/v1beta1:InstanceIamPolicy")]
-    public partial class InstanceIamPolicy : Pulumi.CustomResource
+    public partial class InstanceIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         }
     }
 
-    public sealed class InstanceIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class InstanceIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public InstanceIamPolicyArgs()
         {
         }
+        public static new InstanceIamPolicyArgs Empty => new InstanceIamPolicyArgs();
     }
 }

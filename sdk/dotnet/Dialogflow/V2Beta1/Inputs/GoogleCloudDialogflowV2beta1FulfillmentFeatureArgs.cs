@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Whether fulfillment is enabled for the specific feature.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the feature that enabled for fulfillment.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs Empty => new GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs();
     }
 }

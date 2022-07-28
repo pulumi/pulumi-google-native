@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class PacketMirroringMirroredResourceInfoSubnetInfoArgs : Pulumi.ResourceArgs
+    public sealed class PacketMirroringMirroredResourceInfoSubnetInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource URL to the subnetwork for which traffic from/to all VM instances will be mirrored.
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public PacketMirroringMirroredResourceInfoSubnetInfoArgs()
         {
         }
+        public static new PacketMirroringMirroredResourceInfoSubnetInfoArgs Empty => new PacketMirroringMirroredResourceInfoSubnetInfoArgs();
     }
 }

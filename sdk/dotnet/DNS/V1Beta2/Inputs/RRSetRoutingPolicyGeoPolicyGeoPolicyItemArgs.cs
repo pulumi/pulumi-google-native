@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
     /// <summary>
     /// ResourceRecordSet data for one geo location.
     /// </summary>
-    public sealed class RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs : Pulumi.ResourceArgs
+    public sealed class RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs : global::Pulumi.ResourceArgs
     {
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -47,5 +47,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         public RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs()
         {
         }
+        public static new RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs Empty => new RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs();
     }
 }

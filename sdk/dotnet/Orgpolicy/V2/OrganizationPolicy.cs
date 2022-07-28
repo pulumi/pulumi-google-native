@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:orgpolicy/v2:OrganizationPolicy")]
-    public partial class OrganizationPolicy : Pulumi.CustomResource
+    public partial class OrganizationPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Deprecated.
@@ -84,7 +84,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         }
     }
 
-    public sealed class OrganizationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Deprecated.
@@ -110,5 +110,6 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         public OrganizationPolicyArgs()
         {
         }
+        public static new OrganizationPolicyArgs Empty => new OrganizationPolicyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     /// <summary>
     /// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
     /// </summary>
-    public sealed class LocalObjectReferenceArgs : Pulumi.ResourceArgs
+    public sealed class LocalObjectReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public LocalObjectReferenceArgs()
         {
         }
+        public static new LocalObjectReferenceArgs Empty => new LocalObjectReferenceArgs();
     }
 }

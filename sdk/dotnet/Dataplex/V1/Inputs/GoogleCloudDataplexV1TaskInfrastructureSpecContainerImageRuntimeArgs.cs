@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Container Image Runtime Configuration used with Batch execution.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Container image to use.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs()
         {
         }
+        public static new GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs Empty => new GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs();
     }
 }

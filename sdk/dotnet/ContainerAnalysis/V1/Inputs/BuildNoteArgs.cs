@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Note holding the version of the provider's builder and the signature of the provenance message in the build details occurrence.
     /// </summary>
-    public sealed class BuildNoteArgs : Pulumi.ResourceArgs
+    public sealed class BuildNoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. Version of the builder which produced this build.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public BuildNoteArgs()
         {
         }
+        public static new BuildNoteArgs Empty => new BuildNoteArgs();
     }
 }

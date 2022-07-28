@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
     /// <summary>
     /// Describes the Service being deployed. Currently Supported : Cloud Run (fully managed).
     /// </summary>
-    public sealed class ServiceConfigArgs : Pulumi.ResourceArgs
+    public sealed class ServiceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether 100% of traffic is routed to the latest revision. On CreateFunction and UpdateFunction, when set to true, the revision being deployed will serve 100% of traffic, ignoring any traffic split settings, if any. On GetFunction, true will be returned if the latest revision is serving 100% of traffic.
@@ -108,5 +108,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
         public ServiceConfigArgs()
         {
         }
+        public static new ServiceConfigArgs Empty => new ServiceConfigArgs();
     }
 }

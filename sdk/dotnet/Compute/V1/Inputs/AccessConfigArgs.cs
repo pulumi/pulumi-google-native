@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// An access configuration attached to an instance's network interface. Only one access config per instance is supported.
     /// </summary>
-    public sealed class AccessConfigArgs : Pulumi.ResourceArgs
+    public sealed class AccessConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The first IPv6 address of the external IPv6 range associated with this instance, prefix length is stored in externalIpv6PrefixLength in ipv6AccessConfig. The field is output only, an IPv6 address from a subnetwork associated with the instance will be allocated dynamically.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public AccessConfigArgs()
         {
         }
+        public static new AccessConfigArgs Empty => new AccessConfigArgs();
     }
 }

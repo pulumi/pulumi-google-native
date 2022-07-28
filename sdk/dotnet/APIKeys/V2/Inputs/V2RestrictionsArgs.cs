@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.APIKeys.V2.Inputs
     /// <summary>
     /// Describes the restrictions on the key.
     /// </summary>
-    public sealed class V2RestrictionsArgs : Pulumi.ResourceArgs
+    public sealed class V2RestrictionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Android apps that are allowed to use the key.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.APIKeys.V2.Inputs
         public V2RestrictionsArgs()
         {
         }
+        public static new V2RestrictionsArgs Empty => new V2RestrictionsArgs();
     }
 }

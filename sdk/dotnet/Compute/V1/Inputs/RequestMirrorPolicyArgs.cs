@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// A policy that specifies how requests intended for the route's backends are shadowed to a separate mirrored backend service. The load balancer doesn't wait for responses from the shadow service. Before sending traffic to the shadow service, the host or authority header is suffixed with -shadow.
     /// </summary>
-    public sealed class RequestMirrorPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RequestMirrorPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full or partial URL to the BackendService resource being mirrored to.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public RequestMirrorPolicyArgs()
         {
         }
+        public static new RequestMirrorPolicyArgs Empty => new RequestMirrorPolicyArgs();
     }
 }

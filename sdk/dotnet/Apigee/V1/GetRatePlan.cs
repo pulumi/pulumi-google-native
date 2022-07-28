@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetRatePlanArgs : Pulumi.InvokeArgs
+    public sealed class GetRatePlanArgs : global::Pulumi.InvokeArgs
     {
         [Input("apiproductId", required: true)]
         public string ApiproductId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetRatePlanArgs()
         {
         }
+        public static new GetRatePlanArgs Empty => new GetRatePlanArgs();
     }
 
-    public sealed class GetRatePlanInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRatePlanInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("apiproductId", required: true)]
         public Input<string> ApiproductId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetRatePlanInvokeArgs()
         {
         }
+        public static new GetRatePlanInvokeArgs Empty => new GetRatePlanInvokeArgs();
     }
 
 

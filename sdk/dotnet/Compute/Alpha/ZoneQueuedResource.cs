@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a QueuedResource.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:ZoneQueuedResource")]
-    public partial class ZoneQueuedResource : Pulumi.CustomResource
+    public partial class ZoneQueuedResource : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specification of VM instances to create.
@@ -141,7 +141,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class ZoneQueuedResourceArgs : Pulumi.ResourceArgs
+    public sealed class ZoneQueuedResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specification of VM instances to create.
@@ -182,5 +182,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public ZoneQueuedResourceArgs()
         {
         }
+        public static new ZoneQueuedResourceArgs Empty => new ZoneQueuedResourceArgs();
     }
 }

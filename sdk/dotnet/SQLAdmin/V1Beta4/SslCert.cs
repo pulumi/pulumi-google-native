@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:sqladmin/v1beta4:SslCert")]
-    public partial class SslCert : Pulumi.CustomResource
+    public partial class SslCert : global::Pulumi.CustomResource
     {
         /// <summary>
         /// PEM representation.
@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         }
     }
 
-    public sealed class SslCertArgs : Pulumi.ResourceArgs
+    public sealed class SslCertArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User supplied name. Must be a distinct name from the other certificates for this instance.
@@ -135,5 +135,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public SslCertArgs()
         {
         }
+        public static new SslCertArgs Empty => new SslCertArgs();
     }
 }

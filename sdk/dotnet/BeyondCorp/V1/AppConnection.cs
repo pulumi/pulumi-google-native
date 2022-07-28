@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
     /// Creates a new AppConnection in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:beyondcorp/v1:AppConnection")]
-    public partial class AppConnection : Pulumi.CustomResource
+    public partial class AppConnection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
@@ -153,7 +153,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
         }
     }
 
-    public sealed class AppConnectionArgs : Pulumi.ResourceArgs
+    public sealed class AppConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. User-settable AppConnection resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
@@ -236,5 +236,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
         public AppConnectionArgs()
         {
         }
+        public static new AppConnectionArgs Empty => new AppConnectionArgs();
     }
 }

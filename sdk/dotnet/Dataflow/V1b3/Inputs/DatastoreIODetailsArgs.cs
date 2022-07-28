@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Metadata for a Datastore connector used by the job.
     /// </summary>
-    public sealed class DatastoreIODetailsArgs : Pulumi.ResourceArgs
+    public sealed class DatastoreIODetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Namespace used in the connection.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public DatastoreIODetailsArgs()
         {
         }
+        public static new DatastoreIODetailsArgs Empty => new DatastoreIODetailsArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetMachineImageArgs : Pulumi.InvokeArgs
+    public sealed class GetMachineImageArgs : global::Pulumi.InvokeArgs
     {
         [Input("machineImage", required: true)]
         public string MachineImage { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetMachineImageArgs()
         {
         }
+        public static new GetMachineImageArgs Empty => new GetMachineImageArgs();
     }
 
-    public sealed class GetMachineImageInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMachineImageInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("machineImage", required: true)]
         public Input<string> MachineImage { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetMachineImageInvokeArgs()
         {
         }
+        public static new GetMachineImageInvokeArgs Empty => new GetMachineImageInvokeArgs();
     }
 
 

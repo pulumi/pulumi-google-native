@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
     /// <summary>
     /// Criteria for matching traffic. A RouteMatch will be considered to match when all supplied fields match.
     /// </summary>
-    public sealed class GrpcRouteRouteMatchArgs : Pulumi.ResourceArgs
+    public sealed class GrpcRouteRouteMatchArgs : global::Pulumi.ResourceArgs
     {
         [Input("headers")]
         private InputList<Inputs.GrpcRouteHeaderMatchArgs>? _headers;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
         public GrpcRouteRouteMatchArgs()
         {
         }
+        public static new GrpcRouteRouteMatchArgs Empty => new GrpcRouteRouteMatchArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetTargetVpnGatewayArgs : Pulumi.InvokeArgs
+    public sealed class GetTargetVpnGatewayArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetTargetVpnGatewayArgs()
         {
         }
+        public static new GetTargetVpnGatewayArgs Empty => new GetTargetVpnGatewayArgs();
     }
 
-    public sealed class GetTargetVpnGatewayInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTargetVpnGatewayInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetTargetVpnGatewayInvokeArgs()
         {
         }
+        public static new GetTargetVpnGatewayInvokeArgs Empty => new GetTargetVpnGatewayInvokeArgs();
     }
 
 

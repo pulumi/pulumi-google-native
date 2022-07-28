@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Endpoint config for this cluster
     /// </summary>
-    public sealed class EndpointConfigArgs : Pulumi.ResourceArgs
+    public sealed class EndpointConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. If true, enable http access to specific ports on the cluster from external sources. Defaults to false.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public EndpointConfigArgs()
         {
         }
+        public static new EndpointConfigArgs Empty => new EndpointConfigArgs();
     }
 }

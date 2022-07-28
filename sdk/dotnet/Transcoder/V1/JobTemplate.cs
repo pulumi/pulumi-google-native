@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
     /// Creates a job template in the specified region.
     /// </summary>
     [GoogleNativeResourceType("google-native:transcoder/v1:JobTemplate")]
-    public partial class JobTemplate : Pulumi.CustomResource
+    public partial class JobTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The configuration for this template.
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         }
     }
 
-    public sealed class JobTemplateArgs : Pulumi.ResourceArgs
+    public sealed class JobTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration for this template.
@@ -135,5 +135,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1
         public JobTemplateArgs()
         {
         }
+        public static new JobTemplateArgs Empty => new JobTemplateArgs();
     }
 }

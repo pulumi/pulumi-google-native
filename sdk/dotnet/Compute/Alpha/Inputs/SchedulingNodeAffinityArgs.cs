@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled.
     /// </summary>
-    public sealed class SchedulingNodeAffinityArgs : Pulumi.ResourceArgs
+    public sealed class SchedulingNodeAffinityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Corresponds to the label key of Node resource.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SchedulingNodeAffinityArgs()
         {
         }
+        public static new SchedulingNodeAffinityArgs Empty => new SchedulingNodeAffinityArgs();
     }
 }

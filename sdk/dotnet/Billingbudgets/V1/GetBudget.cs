@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
     }
 
 
-    public sealed class GetBudgetArgs : Pulumi.InvokeArgs
+    public sealed class GetBudgetArgs : global::Pulumi.InvokeArgs
     {
         [Input("billingAccountId", required: true)]
         public string BillingAccountId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
         public GetBudgetArgs()
         {
         }
+        public static new GetBudgetArgs Empty => new GetBudgetArgs();
     }
 
-    public sealed class GetBudgetInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBudgetInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("billingAccountId", required: true)]
         public Input<string> BillingAccountId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Billingbudgets.V1
         public GetBudgetInvokeArgs()
         {
         }
+        public static new GetBudgetInvokeArgs Empty => new GetBudgetInvokeArgs();
     }
 
 

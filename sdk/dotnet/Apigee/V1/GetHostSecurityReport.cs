@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetHostSecurityReportArgs : Pulumi.InvokeArgs
+    public sealed class GetHostSecurityReportArgs : global::Pulumi.InvokeArgs
     {
         [Input("hostSecurityReportId", required: true)]
         public string HostSecurityReportId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetHostSecurityReportArgs()
         {
         }
+        public static new GetHostSecurityReportArgs Empty => new GetHostSecurityReportArgs();
     }
 
-    public sealed class GetHostSecurityReportInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHostSecurityReportInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("hostSecurityReportId", required: true)]
         public Input<string> HostSecurityReportId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetHostSecurityReportInvokeArgs()
         {
         }
+        public static new GetHostSecurityReportInvokeArgs Empty => new GetHostSecurityReportInvokeArgs();
     }
 
 

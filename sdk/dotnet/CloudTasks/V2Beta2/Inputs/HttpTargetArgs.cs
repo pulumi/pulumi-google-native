@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
     /// <summary>
     /// HTTP target. When specified as a Queue, all the tasks with [HttpRequest] will be overridden according to the target.
     /// </summary>
-    public sealed class HttpTargetArgs : Pulumi.ResourceArgs
+    public sealed class HttpTargetArgs : global::Pulumi.ResourceArgs
     {
         [Input("headerOverrides")]
         private InputList<Inputs.HeaderOverrideArgs>? _headerOverrides;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
         public HttpTargetArgs()
         {
         }
+        public static new HttpTargetArgs Empty => new HttpTargetArgs();
     }
 }

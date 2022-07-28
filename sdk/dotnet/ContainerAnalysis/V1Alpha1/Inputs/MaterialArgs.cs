@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Material is a material used in the generation of the provenance
     /// </summary>
-    public sealed class MaterialArgs : Pulumi.ResourceArgs
+    public sealed class MaterialArgs : global::Pulumi.ResourceArgs
     {
         [Input("digest")]
         private InputMap<string>? _digest;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public MaterialArgs()
         {
         }
+        public static new MaterialArgs Empty => new MaterialArgs();
     }
 }

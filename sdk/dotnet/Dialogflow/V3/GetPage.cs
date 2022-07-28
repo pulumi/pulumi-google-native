@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     }
 
 
-    public sealed class GetPageArgs : Pulumi.InvokeArgs
+    public sealed class GetPageArgs : global::Pulumi.InvokeArgs
     {
         [Input("agentId", required: true)]
         public string AgentId { get; set; } = null!;
@@ -48,9 +48,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public GetPageArgs()
         {
         }
+        public static new GetPageArgs Empty => new GetPageArgs();
     }
 
-    public sealed class GetPageInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPageInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -73,6 +74,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public GetPageInvokeArgs()
         {
         }
+        public static new GetPageInvokeArgs Empty => new GetPageInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
     /// <summary>
     /// Specifies how to route matched traffic.
     /// </summary>
-    public sealed class GrpcRouteRouteActionArgs : Pulumi.ResourceArgs
+    public sealed class GrpcRouteRouteActionArgs : global::Pulumi.ResourceArgs
     {
         [Input("destinations")]
         private InputList<Inputs.GrpcRouteDestinationArgs>? _destinations;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public GrpcRouteRouteActionArgs()
         {
         }
+        public static new GrpcRouteRouteActionArgs Empty => new GrpcRouteRouteActionArgs();
     }
 }

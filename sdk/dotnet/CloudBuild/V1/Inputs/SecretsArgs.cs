@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// Secrets and secret environment variables.
     /// </summary>
-    public sealed class SecretsArgs : Pulumi.ResourceArgs
+    public sealed class SecretsArgs : global::Pulumi.ResourceArgs
     {
         [Input("inline")]
         private InputList<Inputs.InlineSecretArgs>? _inline;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public SecretsArgs()
         {
         }
+        public static new SecretsArgs Empty => new SecretsArgs();
     }
 }

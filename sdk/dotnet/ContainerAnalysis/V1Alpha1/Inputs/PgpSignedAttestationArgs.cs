@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// An attestation wrapper with a PGP-compatible signature. This message only supports `ATTACHED` signatures, where the payload that is signed is included alongside the signature itself in the same file.
     /// </summary>
-    public sealed class PgpSignedAttestationArgs : Pulumi.ResourceArgs
+    public sealed class PgpSignedAttestationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Type (for example schema) of the attestation payload that was signed. The verifier must ensure that the provided type is one that the verifier supports, and that the attestation payload is a valid instantiation of that type (for example by validating a JSON schema).
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public PgpSignedAttestationArgs()
         {
         }
+        public static new PgpSignedAttestationArgs Empty => new PgpSignedAttestationArgs();
     }
 }

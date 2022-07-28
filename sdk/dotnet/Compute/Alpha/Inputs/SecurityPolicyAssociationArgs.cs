@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class SecurityPolicyAssociationArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyAssociationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource that the security policy is attached to.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SecurityPolicyAssociationArgs()
         {
         }
+        public static new SecurityPolicyAssociationArgs Empty => new SecurityPolicyAssociationArgs();
     }
 }

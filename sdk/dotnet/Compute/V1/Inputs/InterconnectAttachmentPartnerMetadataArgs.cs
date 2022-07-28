@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Informational metadata about Partner attachments from Partners to display to customers. These fields are propagated from PARTNER_PROVIDER attachments to their corresponding PARTNER attachments.
     /// </summary>
-    public sealed class InterconnectAttachmentPartnerMetadataArgs : Pulumi.ResourceArgs
+    public sealed class InterconnectAttachmentPartnerMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Plain text name of the Interconnect this attachment is connected to, as displayed in the Partner's portal. For instance "Chicago 1". This value may be validated to match approved Partner values.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public InterconnectAttachmentPartnerMetadataArgs()
         {
         }
+        public static new InterconnectAttachmentPartnerMetadataArgs Empty => new InterconnectAttachmentPartnerMetadataArgs();
     }
 }

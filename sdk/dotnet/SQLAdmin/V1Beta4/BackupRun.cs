@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:sqladmin/v1beta4:BackupRun")]
-    public partial class BackupRun : Pulumi.CustomResource
+    public partial class BackupRun : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         }
     }
 
-    public sealed class BackupRunArgs : Pulumi.ResourceArgs
+    public sealed class BackupRunArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
@@ -252,5 +252,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public BackupRunArgs()
         {
         }
+        public static new BackupRunArgs Empty => new BackupRunArgs();
     }
 }

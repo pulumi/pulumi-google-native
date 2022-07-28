@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V2.Inputs
 {
 
-    public sealed class PolicyAlternativeNameServerConfigArgs : Pulumi.ResourceArgs
+    public sealed class PolicyAlternativeNameServerConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DNS.V2.Inputs
         public PolicyAlternativeNameServerConfigArgs()
         {
         }
+        public static new PolicyAlternativeNameServerConfigArgs Empty => new PolicyAlternativeNameServerConfigArgs();
     }
 }

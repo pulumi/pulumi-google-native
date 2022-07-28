@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Information involved in an HTTP/HTTPS Uptime check request.
     /// </summary>
-    public sealed class HttpCheckArgs : Pulumi.ResourceArgs
+    public sealed class HttpCheckArgs : global::Pulumi.ResourceArgs
     {
         [Input("acceptedResponseStatusCodes")]
         private InputList<Inputs.ResponseStatusCodeArgs>? _acceptedResponseStatusCodes;
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public HttpCheckArgs()
         {
         }
+        public static new HttpCheckArgs Empty => new HttpCheckArgs();
     }
 }

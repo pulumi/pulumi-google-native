@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:metastore/v1beta:ServiceIamPolicy")]
-    public partial class ServiceIamPolicy : Pulumi.CustomResource
+    public partial class ServiceIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         }
     }
 
-    public sealed class ServiceIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ServiceIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public ServiceIamPolicyArgs()
         {
         }
+        public static new ServiceIamPolicyArgs Empty => new ServiceIamPolicyArgs();
     }
 }

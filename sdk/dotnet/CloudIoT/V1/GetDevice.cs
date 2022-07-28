@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
     }
 
 
-    public sealed class GetDeviceArgs : Pulumi.InvokeArgs
+    public sealed class GetDeviceArgs : global::Pulumi.InvokeArgs
     {
         [Input("deviceId", required: true)]
         public string DeviceId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         public GetDeviceArgs()
         {
         }
+        public static new GetDeviceArgs Empty => new GetDeviceArgs();
     }
 
-    public sealed class GetDeviceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDeviceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("deviceId", required: true)]
         public Input<string> DeviceId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         public GetDeviceInvokeArgs()
         {
         }
+        public static new GetDeviceInvokeArgs Empty => new GetDeviceInvokeArgs();
     }
 
 

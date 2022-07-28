@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
     /// <summary>
     /// A Dialogflow source of conversation data.
     /// </summary>
-    public sealed class GoogleCloudContactcenterinsightsV1DialogflowSourceArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudContactcenterinsightsV1DialogflowSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud Storage URI that points to a file that contains the conversation audio.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1.Inputs
         public GoogleCloudContactcenterinsightsV1DialogflowSourceArgs()
         {
         }
+        public static new GoogleCloudContactcenterinsightsV1DialogflowSourceArgs Empty => new GoogleCloudContactcenterinsightsV1DialogflowSourceArgs();
     }
 }

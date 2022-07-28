@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
     /// <summary>
     /// VmwareSourceDetails message describes a specific source details for the vmware source type.
     /// </summary>
-    public sealed class VmwareSourceDetailsArgs : Pulumi.ResourceArgs
+    public sealed class VmwareSourceDetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Input only. The credentials password. This is write only and can not be read in a GET operation.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
         public VmwareSourceDetailsArgs()
         {
         }
+        public static new VmwareSourceDetailsArgs Empty => new VmwareSourceDetailsArgs();
     }
 }

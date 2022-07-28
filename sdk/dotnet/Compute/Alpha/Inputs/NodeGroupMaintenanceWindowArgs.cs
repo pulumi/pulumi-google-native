@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Time window specified for daily maintenance operations. GCE's internal maintenance will be performed within this window.
     /// </summary>
-    public sealed class NodeGroupMaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class NodeGroupMaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Start time of the window. This must be in UTC format that resolves to one of 00:00, 04:00, 08:00, 12:00, 16:00, or 20:00. For example, both 13:00-5 and 08:00 are valid.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public NodeGroupMaintenanceWindowArgs()
         {
         }
+        public static new NodeGroupMaintenanceWindowArgs Empty => new NodeGroupMaintenanceWindowArgs();
     }
 }

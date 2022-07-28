@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Define a parameter's name and location. The parameter may be passed as either an HTTP header or a URL query parameter, and if both are passed the behavior is implementation-dependent.
     /// </summary>
-    public sealed class SystemParameterArgs : Pulumi.ResourceArgs
+    public sealed class SystemParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Define the HTTP header name to use for the parameter. It is case insensitive.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public SystemParameterArgs()
         {
         }
+        public static new SystemParameterArgs Empty => new SystemParameterArgs();
     }
 }

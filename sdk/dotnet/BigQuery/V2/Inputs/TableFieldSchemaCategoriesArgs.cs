@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
     /// <summary>
     /// [Optional] The categories attached to this field, used for field-level access control.
     /// </summary>
-    public sealed class TableFieldSchemaCategoriesArgs : Pulumi.ResourceArgs
+    public sealed class TableFieldSchemaCategoriesArgs : global::Pulumi.ResourceArgs
     {
         [Input("names")]
         private InputList<string>? _names;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public TableFieldSchemaCategoriesArgs()
         {
         }
+        public static new TableFieldSchemaCategoriesArgs Empty => new TableFieldSchemaCategoriesArgs();
     }
 }

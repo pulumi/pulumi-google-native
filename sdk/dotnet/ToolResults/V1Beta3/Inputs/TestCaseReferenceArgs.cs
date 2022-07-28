@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// A reference to a test case. Test case references are canonically ordered lexicographically by these three factors: * First, by test_suite_name. * Second, by class_name. * Third, by name.
     /// </summary>
-    public sealed class TestCaseReferenceArgs : Pulumi.ResourceArgs
+    public sealed class TestCaseReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the class.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public TestCaseReferenceArgs()
         {
         }
+        public static new TestCaseReferenceArgs Empty => new TestCaseReferenceArgs();
     }
 }

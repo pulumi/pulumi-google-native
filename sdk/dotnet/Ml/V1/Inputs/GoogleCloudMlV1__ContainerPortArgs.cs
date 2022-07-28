@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents a network port in a single container. This message is a subset of the [Kubernetes ContainerPort v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#containerport-v1-core).
     /// </summary>
-    public sealed class GoogleCloudMlV1__ContainerPortArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__ContainerPortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of the port to expose on the container. This must be a valid port number: 0 &lt; PORT_NUMBER &lt; 65536.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__ContainerPortArgs()
         {
         }
+        public static new GoogleCloudMlV1__ContainerPortArgs Empty => new GoogleCloudMlV1__ContainerPortArgs();
     }
 }

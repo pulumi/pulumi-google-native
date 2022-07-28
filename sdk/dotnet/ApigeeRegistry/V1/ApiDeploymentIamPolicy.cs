@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigeeregistry/v1:ApiDeploymentIamPolicy")]
-    public partial class ApiDeploymentIamPolicy : Pulumi.CustomResource
+    public partial class ApiDeploymentIamPolicy : global::Pulumi.CustomResource
     {
         [Output("apiId")]
         public Output<string> ApiId { get; private set; } = null!;
@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         }
     }
 
-    public sealed class ApiDeploymentIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ApiDeploymentIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
@@ -138,5 +138,6 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public ApiDeploymentIamPolicyArgs()
         {
         }
+        public static new ApiDeploymentIamPolicyArgs Empty => new ApiDeploymentIamPolicyArgs();
     }
 }

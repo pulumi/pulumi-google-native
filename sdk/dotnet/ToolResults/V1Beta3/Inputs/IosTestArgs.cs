@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// A iOS mobile test specification
     /// </summary>
-    public sealed class IosTestArgs : Pulumi.ResourceArgs
+    public sealed class IosTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Information about the application under test.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public IosTestArgs()
         {
         }
+        public static new IosTestArgs Empty => new IosTestArgs();
     }
 }

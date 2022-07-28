@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// `SourceContext` represents information about the source of a protobuf element, like the file in which it is defined.
     /// </summary>
-    public sealed class SourceContextArgs : Pulumi.ResourceArgs
+    public sealed class SourceContextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The path-qualified name of the .proto file that contained the associated protobuf element. For example: `"google/protobuf/source_context.proto"`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public SourceContextArgs()
         {
         }
+        public static new SourceContextArgs Empty => new SourceContextArgs();
     }
 }

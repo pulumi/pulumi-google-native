@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Inputs
     /// <summary>
     /// Settings specific to the Key Management Service.
     /// </summary>
-    public sealed class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Input only. Immutable. The time at which the Key Management Service will automatically create a new version of the crypto key and mark it as the primary.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Inputs
         public GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs()
         {
         }
+        public static new GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs Empty => new GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs();
     }
 }

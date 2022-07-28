@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A widget that displays textual content.
     /// </summary>
-    public sealed class TextArgs : Pulumi.ResourceArgs
+    public sealed class TextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The text content to be displayed.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public TextArgs()
         {
         }
+        public static new TextArgs Empty => new TextArgs();
     }
 }

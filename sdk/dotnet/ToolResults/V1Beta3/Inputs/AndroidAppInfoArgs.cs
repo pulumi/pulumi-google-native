@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// Android app information.
     /// </summary>
-    public sealed class AndroidAppInfoArgs : Pulumi.ResourceArgs
+    public sealed class AndroidAppInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the app. Optional
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public AndroidAppInfoArgs()
         {
         }
+        public static new AndroidAppInfoArgs Empty => new AndroidAppInfoArgs();
     }
 }

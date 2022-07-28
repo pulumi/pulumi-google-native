@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// A specification of the desired way to instantiate a disk in the instance template when its created from a source instance.
     /// </summary>
-    public sealed class DiskInstantiationConfigArgs : Pulumi.ResourceArgs
+    public sealed class DiskInstantiationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public DiskInstantiationConfigArgs()
         {
         }
+        public static new DiskInstantiationConfigArgs Empty => new DiskInstantiationConfigArgs();
     }
 }

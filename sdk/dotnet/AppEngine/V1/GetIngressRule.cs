@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
     }
 
 
-    public sealed class GetIngressRuleArgs : Pulumi.InvokeArgs
+    public sealed class GetIngressRuleArgs : global::Pulumi.InvokeArgs
     {
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public GetIngressRuleArgs()
         {
         }
+        public static new GetIngressRuleArgs Empty => new GetIngressRuleArgs();
     }
 
-    public sealed class GetIngressRuleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIngressRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public GetIngressRuleInvokeArgs()
         {
         }
+        public static new GetIngressRuleInvokeArgs Empty => new GetIngressRuleInvokeArgs();
     }
 
 

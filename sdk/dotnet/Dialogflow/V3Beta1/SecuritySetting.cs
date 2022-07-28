@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     /// Create security settings in the specified location.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:SecuritySetting")]
-    public partial class SecuritySetting : Pulumi.CustomResource
+    public partial class SecuritySetting : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Controls audio export settings for post-conversation analytics when ingesting audio to conversations via Participants.AnalyzeContent or Participants.StreamingAnalyzeContent. If retention_strategy is set to REMOVE_AFTER_CONVERSATION or audio_export_settings.gcs_bucket is empty, audio export is disabled. If audio export is enabled, audio is recorded and saved to audio_export_settings.gcs_bucket, subject to retention policy of audio_export_settings.gcs_bucket. This setting won't effect audio input for implicit sessions via Sessions.DetectIntent or Sessions.StreamingDetectIntent.
@@ -129,7 +129,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         }
     }
 
-    public sealed class SecuritySettingArgs : Pulumi.ResourceArgs
+    public sealed class SecuritySettingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Controls audio export settings for post-conversation analytics when ingesting audio to conversations via Participants.AnalyzeContent or Participants.StreamingAnalyzeContent. If retention_strategy is set to REMOVE_AFTER_CONVERSATION or audio_export_settings.gcs_bucket is empty, audio export is disabled. If audio export is enabled, audio is recorded and saved to audio_export_settings.gcs_bucket, subject to retention policy of audio_export_settings.gcs_bucket. This setting won't effect audio input for implicit sessions via Sessions.DetectIntent or Sessions.StreamingDetectIntent.
@@ -206,5 +206,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public SecuritySettingArgs()
         {
         }
+        public static new SecuritySettingArgs Empty => new SecuritySettingArgs();
     }
 }

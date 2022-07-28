@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datapipelines.V1
     /// Creates a pipeline. For a batch pipeline, you can pass scheduler information. Data Pipelines uses the scheduler information to create an internal scheduler that runs jobs periodically. If the internal scheduler is not configured, you can use RunPipeline to run jobs.
     /// </summary>
     [GoogleNativeResourceType("google-native:datapipelines/v1:Pipeline")]
-    public partial class Pipeline : Pulumi.CustomResource
+    public partial class Pipeline : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Immutable. The timestamp when the pipeline was initially created. Set by the Data Pipelines service.
@@ -135,7 +135,7 @@ namespace Pulumi.GoogleNative.Datapipelines.V1
         }
     }
 
-    public sealed class PipelineArgs : Pulumi.ResourceArgs
+    public sealed class PipelineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The display name of the pipeline. It can contain only letters ([A-Za-z]), numbers ([0-9]), hyphens (-), and underscores (_).
@@ -200,5 +200,6 @@ namespace Pulumi.GoogleNative.Datapipelines.V1
         public PipelineArgs()
         {
         }
+        public static new PipelineArgs Empty => new PipelineArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
     /// </summary>
-    public sealed class NetworkTagsArgs : Pulumi.ResourceArgs
+    public sealed class NetworkTagsArgs : global::Pulumi.ResourceArgs
     {
         [Input("tags")]
         private InputList<string>? _tags;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public NetworkTagsArgs()
         {
         }
+        public static new NetworkTagsArgs Empty => new NetworkTagsArgs();
     }
 }

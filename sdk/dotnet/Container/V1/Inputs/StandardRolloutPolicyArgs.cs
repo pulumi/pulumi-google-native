@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Standard rollout policy is the default policy for blue-green.
     /// </summary>
-    public sealed class StandardRolloutPolicyArgs : Pulumi.ResourceArgs
+    public sealed class StandardRolloutPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of blue nodes to drain in a batch.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public StandardRolloutPolicyArgs()
         {
         }
+        public static new StandardRolloutPolicyArgs Empty => new StandardRolloutPolicyArgs();
     }
 }

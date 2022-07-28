@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:securitycenter/v1beta1:Source")]
-    public partial class Source : Pulumi.CustomResource
+    public partial class Source : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The description of the source (max of 1024 characters). Example: "Web Security Scanner is a web security scanner for common vulnerabilities in App Engine applications. It can automatically scan and detect four common vulnerabilities, including cross-site-scripting (XSS), Flash injection, mixed content (HTTP in HTTPS), and outdated/insecure libraries."
@@ -85,7 +85,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1Beta1
         }
     }
 
-    public sealed class SourceArgs : Pulumi.ResourceArgs
+    public sealed class SourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the source (max of 1024 characters). Example: "Web Security Scanner is a web security scanner for common vulnerabilities in App Engine applications. It can automatically scan and detect four common vulnerabilities, including cross-site-scripting (XSS), Flash injection, mixed content (HTTP in HTTPS), and outdated/insecure libraries."
@@ -111,5 +111,6 @@ namespace Pulumi.GoogleNative.Securitycenter.V1Beta1
         public SourceArgs()
         {
         }
+        public static new SourceArgs Empty => new SourceArgs();
     }
 }

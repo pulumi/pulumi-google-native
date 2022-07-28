@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Denoise preprocessing configuration. **Note:** This configuration is not supported.
     /// </summary>
-    public sealed class DenoiseArgs : Pulumi.ResourceArgs
+    public sealed class DenoiseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set strength of the denoise. Enter a value between 0 and 1. The higher the value, the smoother the image. 0 is no denoising. The default is 0.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public DenoiseArgs()
         {
         }
+        public static new DenoiseArgs Empty => new DenoiseArgs();
     }
 }

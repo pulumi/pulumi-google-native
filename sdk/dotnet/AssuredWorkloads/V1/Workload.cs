@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
     /// Creates Assured Workload.
     /// </summary>
     [GoogleNativeResourceType("google-native:assuredworkloads/v1:Workload")]
-    public partial class Workload : Pulumi.CustomResource
+    public partial class Workload : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
@@ -159,7 +159,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         }
     }
 
-    public sealed class WorkloadArgs : Pulumi.ResourceArgs
+    public sealed class WorkloadArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The billing account used for the resources which are direct children of workload. This billing account is initially associated with the resources created as part of Workload creation. After the initial creation of these resources, the customer can change the assigned billing account. The resource name has the form `billingAccounts/{billing_account_id}`. For example, `billingAccounts/012345-567890-ABCDEF`.
@@ -248,5 +248,6 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1
         public WorkloadArgs()
         {
         }
+        public static new WorkloadArgs Empty => new WorkloadArgs();
     }
 }

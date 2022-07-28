@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Rich Business Messaging (RBM) suggestion. Suggestions allow user to easily select/click a predefined response or perform an action (like opening a web uri).
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Predefined client side actions that user can choose
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArgs();
     }
 }

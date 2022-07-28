@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
-    public sealed class HttpRouteActionArgs : Pulumi.ResourceArgs
+    public sealed class HttpRouteActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The specification for allowing client-side cross-origin requests. For more information about the W3C recommendation for cross-origin resource sharing (CORS), see Fetch API Living Standard. Not supported when the URL map is bound to a target gRPC proxy.
@@ -69,5 +69,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public HttpRouteActionArgs()
         {
         }
+        public static new HttpRouteActionArgs Empty => new HttpRouteActionArgs();
     }
 }

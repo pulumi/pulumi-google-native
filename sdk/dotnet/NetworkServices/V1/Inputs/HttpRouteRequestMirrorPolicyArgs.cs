@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
     /// <summary>
     /// Specifies the policy on how requests are shadowed to a separate mirrored destination service. The proxy does not wait for responses from the shadow service. Prior to sending traffic to the shadow service, the host/authority header is suffixed with -shadow.
     /// </summary>
-    public sealed class HttpRouteRequestMirrorPolicyArgs : Pulumi.ResourceArgs
+    public sealed class HttpRouteRequestMirrorPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The destination the requests will be mirrored to. The weight of the destination will be ignored.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
         public HttpRouteRequestMirrorPolicyArgs()
         {
         }
+        public static new HttpRouteRequestMirrorPolicyArgs Empty => new HttpRouteRequestMirrorPolicyArgs();
     }
 }

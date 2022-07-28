@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Version contains structured information about the version of a package.
     /// </summary>
-    public sealed class VersionArgs : Pulumi.ResourceArgs
+    public sealed class VersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Used to correct mistakes in the version numbering scheme.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public VersionArgs()
         {
         }
+        public static new VersionArgs Empty => new VersionArgs();
     }
 }

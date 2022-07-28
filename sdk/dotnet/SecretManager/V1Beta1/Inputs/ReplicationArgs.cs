@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1.Inputs
     /// <summary>
     /// A policy that defines the replication configuration of data.
     /// </summary>
-    public sealed class ReplicationArgs : Pulumi.ResourceArgs
+    public sealed class ReplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Secret will automatically be replicated without any restrictions.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1.Inputs
         public ReplicationArgs()
         {
         }
+        public static new ReplicationArgs Empty => new ReplicationArgs();
     }
 }

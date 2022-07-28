@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
     /// <summary>
     /// The device configuration. Eventually delivered to devices.
     /// </summary>
-    public sealed class DeviceConfigArgs : Pulumi.ResourceArgs
+    public sealed class DeviceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The device configuration data.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         public DeviceConfigArgs()
         {
         }
+        public static new DeviceConfigArgs Empty => new DeviceConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates a TargetHttpProxy resource in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:TargetHttpProxy")]
-    public partial class TargetHttpProxy : Pulumi.CustomResource
+    public partial class TargetHttpProxy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -131,7 +131,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class TargetHttpProxyArgs : Pulumi.ResourceArgs
+    public sealed class TargetHttpProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -181,5 +181,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public TargetHttpProxyArgs()
         {
         }
+        public static new TargetHttpProxyArgs Empty => new TargetHttpProxyArgs();
     }
 }

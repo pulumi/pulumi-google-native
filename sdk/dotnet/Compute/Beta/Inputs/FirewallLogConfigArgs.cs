@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// The available logging options for a firewall rule.
     /// </summary>
-    public sealed class FirewallLogConfigArgs : Pulumi.ResourceArgs
+    public sealed class FirewallLogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This field denotes whether to enable logging for a particular firewall rule.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public FirewallLogConfigArgs()
         {
         }
+        public static new FirewallLogConfigArgs Empty => new FirewallLogConfigArgs();
     }
 }

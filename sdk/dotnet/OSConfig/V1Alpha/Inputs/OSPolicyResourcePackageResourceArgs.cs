@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
     /// <summary>
     /// A resource that manages a system package.
     /// </summary>
-    public sealed class OSPolicyResourcePackageResourceArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourcePackageResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A package managed by Apt.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public OSPolicyResourcePackageResourceArgs()
         {
         }
+        public static new OSPolicyResourcePackageResourceArgs Empty => new OSPolicyResourcePackageResourceArgs();
     }
 }

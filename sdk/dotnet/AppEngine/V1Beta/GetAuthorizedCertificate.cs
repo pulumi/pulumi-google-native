@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
     }
 
 
-    public sealed class GetAuthorizedCertificateArgs : Pulumi.InvokeArgs
+    public sealed class GetAuthorizedCertificateArgs : global::Pulumi.InvokeArgs
     {
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         public GetAuthorizedCertificateArgs()
         {
         }
+        public static new GetAuthorizedCertificateArgs Empty => new GetAuthorizedCertificateArgs();
     }
 
-    public sealed class GetAuthorizedCertificateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAuthorizedCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta
         public GetAuthorizedCertificateInvokeArgs()
         {
         }
+        public static new GetAuthorizedCertificateInvokeArgs Empty => new GetAuthorizedCertificateInvokeArgs();
     }
 
 

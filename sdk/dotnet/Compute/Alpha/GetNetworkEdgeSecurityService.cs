@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetNetworkEdgeSecurityServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkEdgeSecurityServiceArgs : global::Pulumi.InvokeArgs
     {
         [Input("networkEdgeSecurityService", required: true)]
         public string NetworkEdgeSecurityService { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetNetworkEdgeSecurityServiceArgs()
         {
         }
+        public static new GetNetworkEdgeSecurityServiceArgs Empty => new GetNetworkEdgeSecurityServiceArgs();
     }
 
-    public sealed class GetNetworkEdgeSecurityServiceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNetworkEdgeSecurityServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("networkEdgeSecurityService", required: true)]
         public Input<string> NetworkEdgeSecurityService { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetNetworkEdgeSecurityServiceInvokeArgs()
         {
         }
+        public static new GetNetworkEdgeSecurityServiceInvokeArgs Empty => new GetNetworkEdgeSecurityServiceInvokeArgs();
     }
 
 

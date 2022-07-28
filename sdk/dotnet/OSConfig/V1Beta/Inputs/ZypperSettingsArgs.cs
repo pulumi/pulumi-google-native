@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Zypper patching is performed by running `zypper patch`. See also https://en.opensuse.org/SDB:Zypper_manual.
     /// </summary>
-    public sealed class ZypperSettingsArgs : Pulumi.ResourceArgs
+    public sealed class ZypperSettingsArgs : global::Pulumi.ResourceArgs
     {
         [Input("categories")]
         private InputList<string>? _categories;
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public ZypperSettingsArgs()
         {
         }
+        public static new ZypperSettingsArgs Empty => new ZypperSettingsArgs();
     }
 }

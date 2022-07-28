@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class FutureReservationTimeWindowArgs : Pulumi.ResourceArgs
+    public sealed class FutureReservationTimeWindowArgs : global::Pulumi.ResourceArgs
     {
         [Input("duration")]
         public Input<Inputs.DurationArgs>? Duration { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public FutureReservationTimeWindowArgs()
         {
         }
+        public static new FutureReservationTimeWindowArgs Empty => new FutureReservationTimeWindowArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Inputs
     /// <summary>
     /// A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
     /// </summary>
-    public sealed class EntityKeyArgs : Pulumi.ResourceArgs
+    public sealed class EntityKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Inputs
         public EntityKeyArgs()
         {
         }
+        public static new EntityKeyArgs Empty => new EntityKeyArgs();
     }
 }

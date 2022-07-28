@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// Defines a threshold for categorizing time series values.
     /// </summary>
-    public sealed class ThresholdArgs : Pulumi.ResourceArgs
+    public sealed class ThresholdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The state color for this threshold. Color is not allowed in a XyChart.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public ThresholdArgs()
         {
         }
+        public static new ThresholdArgs Empty => new ThresholdArgs();
     }
 }

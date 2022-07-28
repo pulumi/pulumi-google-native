@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
     }
 
 
-    public sealed class GetKeyRingImportJobIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetKeyRingImportJobIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("importJobId", required: true)]
         public string ImportJobId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public GetKeyRingImportJobIamPolicyArgs()
         {
         }
+        public static new GetKeyRingImportJobIamPolicyArgs Empty => new GetKeyRingImportJobIamPolicyArgs();
     }
 
-    public sealed class GetKeyRingImportJobIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKeyRingImportJobIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("importJobId", required: true)]
         public Input<string> ImportJobId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public GetKeyRingImportJobIamPolicyInvokeArgs()
         {
         }
+        public static new GetKeyRingImportJobIamPolicyInvokeArgs Empty => new GetKeyRingImportJobIamPolicyInvokeArgs();
     }
 
 

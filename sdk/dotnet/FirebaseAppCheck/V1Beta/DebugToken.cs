@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.FirebaseAppCheck.V1Beta
     /// Creates a new DebugToken for the specified app. For security reasons, after the creation operation completes, the `token` field cannot be updated or retrieved, but you can revoke the debug token using DeleteDebugToken. Each app can have a maximum of 20 debug tokens.
     /// </summary>
     [GoogleNativeResourceType("google-native:firebaseappcheck/v1beta:DebugToken")]
-    public partial class DebugToken : Pulumi.CustomResource
+    public partial class DebugToken : global::Pulumi.CustomResource
     {
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
@@ -87,7 +87,7 @@ namespace Pulumi.GoogleNative.FirebaseAppCheck.V1Beta
         }
     }
 
-    public sealed class DebugTokenArgs : Pulumi.ResourceArgs
+    public sealed class DebugTokenArgs : global::Pulumi.ResourceArgs
     {
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -116,5 +116,6 @@ namespace Pulumi.GoogleNative.FirebaseAppCheck.V1Beta
         public DebugTokenArgs()
         {
         }
+        public static new DebugTokenArgs Empty => new DebugTokenArgs();
     }
 }

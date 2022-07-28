@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     /// <summary>
     /// Input only. Specifies the parameters for a new disk that will be created alongside the new instance. Use initialization parameters to create boot disks or local SSDs attached to the new runtime. This property is mutually exclusive with the source property; you can only define one or the other, but not both.
     /// </summary>
-    public sealed class LocalDiskInitializeParamsArgs : Pulumi.ResourceArgs
+    public sealed class LocalDiskInitializeParamsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Provide this property when creating the disk.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public LocalDiskInitializeParamsArgs()
         {
         }
+        public static new LocalDiskInitializeParamsArgs Empty => new LocalDiskInitializeParamsArgs();
     }
 }

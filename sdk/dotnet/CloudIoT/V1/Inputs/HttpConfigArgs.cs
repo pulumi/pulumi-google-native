@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
     /// <summary>
     /// The configuration of the HTTP bridge for a device registry.
     /// </summary>
-    public sealed class HttpConfigArgs : Pulumi.ResourceArgs
+    public sealed class HttpConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If enabled, allows devices to use DeviceService via the HTTP protocol. Otherwise, any requests to DeviceService will fail for this registry.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         public HttpConfigArgs()
         {
         }
+        public static new HttpConfigArgs Empty => new HttpConfigArgs();
     }
 }

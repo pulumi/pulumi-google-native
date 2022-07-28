@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
     /// <summary>
     /// ConfigVariable represents a configuration variable present in a Connection. or AuthConfig.
     /// </summary>
-    public sealed class ConfigVariableArgs : Pulumi.ResourceArgs
+    public sealed class ConfigVariableArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Value is a bool.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public ConfigVariableArgs()
         {
         }
+        public static new ConfigVariableArgs Empty => new ConfigVariableArgs();
     }
 }

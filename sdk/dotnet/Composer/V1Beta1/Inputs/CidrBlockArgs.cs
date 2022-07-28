@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
     /// <summary>
     /// CIDR block with an optional name.
     /// </summary>
-    public sealed class CidrBlockArgs : Pulumi.ResourceArgs
+    public sealed class CidrBlockArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// CIDR block that must be specified in CIDR notation.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         public CidrBlockArgs()
         {
         }
+        public static new CidrBlockArgs Empty => new CidrBlockArgs();
     }
 }

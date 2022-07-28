@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// This reservation type allows to pre allocate specific instance configuration. Next ID: 6
     /// </summary>
-    public sealed class AllocationSpecificSKUReservationArgs : Pulumi.ResourceArgs
+    public sealed class AllocationSpecificSKUReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the number of resources that are allocated.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public AllocationSpecificSKUReservationArgs()
         {
         }
+        public static new AllocationSpecificSKUReservationArgs Empty => new AllocationSpecificSKUReservationArgs();
     }
 }

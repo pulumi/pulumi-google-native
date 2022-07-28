@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// A list of cascading if-else conditions. Cases are mutually exclusive. The first one with a matching condition is selected, all the rest ignored.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs : global::Pulumi.ResourceArgs
     {
         [Input("cases")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArgs>? _cases;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs Empty => new GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs();
     }
 }

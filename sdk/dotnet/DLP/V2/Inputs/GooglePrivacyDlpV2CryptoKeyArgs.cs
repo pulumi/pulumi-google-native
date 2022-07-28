@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// This is a data encryption key (DEK) (as opposed to a key encryption key (KEK) stored by Cloud Key Management Service (Cloud KMS). When using Cloud KMS to wrap or unwrap a DEK, be sure to set an appropriate IAM policy on the KEK to ensure an attacker cannot unwrap the DEK.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2CryptoKeyArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2CryptoKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key wrapped using Cloud KMS
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2CryptoKeyArgs()
         {
         }
+        public static new GooglePrivacyDlpV2CryptoKeyArgs Empty => new GooglePrivacyDlpV2CryptoKeyArgs();
     }
 }

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudchannel/v1:Entitlement")]
-    public partial class Entitlement : Pulumi.CustomResource
+    public partial class Entitlement : global::Pulumi.CustomResource
     {
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         }
     }
 
-    public sealed class EntitlementArgs : Pulumi.ResourceArgs
+    public sealed class EntitlementArgs : global::Pulumi.ResourceArgs
     {
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -197,5 +197,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public EntitlementArgs()
         {
         }
+        public static new EntitlementArgs Empty => new EntitlementArgs();
     }
 }

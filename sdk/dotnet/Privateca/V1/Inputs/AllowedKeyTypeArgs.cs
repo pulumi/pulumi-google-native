@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// Describes a "type" of key that may be used in a Certificate issued from a CaPool. Note that a single AllowedKeyType may refer to either a fully-qualified key algorithm, such as RSA 4096, or a family of key algorithms, such as any RSA key.
     /// </summary>
-    public sealed class AllowedKeyTypeArgs : Pulumi.ResourceArgs
+    public sealed class AllowedKeyTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Represents an allowed Elliptic Curve key type.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public AllowedKeyTypeArgs()
         {
         }
+        public static new AllowedKeyTypeArgs Empty => new AllowedKeyTypeArgs();
     }
 }

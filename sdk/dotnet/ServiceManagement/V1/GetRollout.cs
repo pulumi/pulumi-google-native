@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
     }
 
 
-    public sealed class GetRolloutArgs : Pulumi.InvokeArgs
+    public sealed class GetRolloutArgs : global::Pulumi.InvokeArgs
     {
         [Input("rolloutId", required: true)]
         public string RolloutId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public GetRolloutArgs()
         {
         }
+        public static new GetRolloutArgs Empty => new GetRolloutArgs();
     }
 
-    public sealed class GetRolloutInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRolloutInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("rolloutId", required: true)]
         public Input<string> RolloutId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public GetRolloutInvokeArgs()
         {
         }
+        public static new GetRolloutInvokeArgs Empty => new GetRolloutInvokeArgs();
     }
 
 

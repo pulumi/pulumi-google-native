@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     /// <summary>
     /// EnvVar represents an environment variable present in a Container.
     /// </summary>
-    public sealed class EnvVarArgs : Pulumi.ResourceArgs
+    public sealed class EnvVarArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the environment variable. Must be a C_IDENTIFIER.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public EnvVarArgs()
         {
         }
+        public static new EnvVarArgs Empty => new EnvVarArgs();
     }
 }

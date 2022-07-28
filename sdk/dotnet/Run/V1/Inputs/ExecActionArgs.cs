@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     /// <summary>
     /// Not supported by Cloud Run ExecAction describes a "run in container" action.
     /// </summary>
-    public sealed class ExecActionArgs : Pulumi.ResourceArgs
+    public sealed class ExecActionArgs : global::Pulumi.ResourceArgs
     {
         [Input("command")]
         private InputList<string>? _command;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public ExecActionArgs()
         {
         }
+        public static new ExecActionArgs Empty => new ExecActionArgs();
     }
 }

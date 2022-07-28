@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates a TargetTcpProxy resource in the specified project and region using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:RegionTargetTcpProxy")]
-    public partial class RegionTargetTcpProxy : Pulumi.CustomResource
+    public partial class RegionTargetTcpProxy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -123,7 +123,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class RegionTargetTcpProxyArgs : Pulumi.ResourceArgs
+    public sealed class RegionTargetTcpProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -170,5 +170,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public RegionTargetTcpProxyArgs()
         {
         }
+        public static new RegionTargetTcpProxyArgs Empty => new RegionTargetTcpProxyArgs();
     }
 }

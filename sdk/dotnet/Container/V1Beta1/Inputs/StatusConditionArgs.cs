@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// StatusCondition describes why a cluster or a node pool has a certain status (e.g., ERROR or DEGRADED).
     /// </summary>
-    public sealed class StatusConditionArgs : Pulumi.ResourceArgs
+    public sealed class StatusConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Canonical code of the condition.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public StatusConditionArgs()
         {
         }
+        public static new StatusConditionArgs Empty => new StatusConditionArgs();
     }
 }

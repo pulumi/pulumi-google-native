@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Spec defined at https://github.com/in-toto/attestation/tree/main/spec#statement The serialized InTotoStatement will be stored as Envelope.payload. Envelope.payloadType is always "application/vnd.in-toto+json".
     /// </summary>
-    public sealed class InTotoStatementArgs : Pulumi.ResourceArgs
+    public sealed class InTotoStatementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// "https://slsa.dev/provenance/v0.1" for SlsaProvenance.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public InTotoStatementArgs()
         {
         }
+        public static new InTotoStatementArgs Empty => new InTotoStatementArgs();
     }
 }

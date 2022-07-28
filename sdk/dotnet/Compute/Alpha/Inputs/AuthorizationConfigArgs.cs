@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] Authorization configuration provides service-level and method-level access control for a service. control for a service.
     /// </summary>
-    public sealed class AuthorizationConfigArgs : Pulumi.ResourceArgs
+    public sealed class AuthorizationConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("policies")]
         private InputList<Inputs.RbacPolicyArgs>? _policies;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public AuthorizationConfigArgs()
         {
         }
+        public static new AuthorizationConfigArgs Empty => new AuthorizationConfigArgs();
     }
 }

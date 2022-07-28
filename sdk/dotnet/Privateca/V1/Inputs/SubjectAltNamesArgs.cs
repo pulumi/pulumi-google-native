@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// SubjectAltNames corresponds to a more modern way of listing what the asserted identity is in a certificate (i.e., compared to the "common name" in the distinguished name).
     /// </summary>
-    public sealed class SubjectAltNamesArgs : Pulumi.ResourceArgs
+    public sealed class SubjectAltNamesArgs : global::Pulumi.ResourceArgs
     {
         [Input("customSans")]
         private InputList<Inputs.X509ExtensionArgs>? _customSans;
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public SubjectAltNamesArgs()
         {
         }
+        public static new SubjectAltNamesArgs Empty => new SubjectAltNamesArgs();
     }
 }

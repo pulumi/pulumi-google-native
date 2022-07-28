@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// PackageNote represents a particular package version.
     /// </summary>
-    public sealed class PackageNoteArgs : Pulumi.ResourceArgs
+    public sealed class PackageNoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The CPU architecture for which packages in this distribution channel were built. Architecture will be blank for language packages.
@@ -97,5 +97,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public PackageNoteArgs()
         {
         }
+        public static new PackageNoteArgs Empty => new PackageNoteArgs();
     }
 }

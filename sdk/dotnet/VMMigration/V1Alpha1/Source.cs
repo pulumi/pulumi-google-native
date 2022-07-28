@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:vmmigration/v1alpha1:Source")]
-    public partial class Source : Pulumi.CustomResource
+    public partial class Source : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The create time timestamp.
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         }
     }
 
-    public sealed class SourceArgs : Pulumi.ResourceArgs
+    public sealed class SourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-provided description of the source.
@@ -172,5 +172,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public SourceArgs()
         {
         }
+        public static new SourceArgs Empty => new SourceArgs();
     }
 }

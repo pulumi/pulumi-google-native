@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     /// Returns the specified SSL policy resource. Gets a list of available SSL policies by making a list() request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:SslPolicy")]
-    public partial class SslPolicy : Pulumi.CustomResource
+    public partial class SslPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -137,7 +137,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
     }
 
-    public sealed class SslPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SslPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("customFeatures")]
         private InputList<string>? _customFeatures;
@@ -187,5 +187,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public SslPolicyArgs()
         {
         }
+        public static new SslPolicyArgs Empty => new SslPolicyArgs();
     }
 }

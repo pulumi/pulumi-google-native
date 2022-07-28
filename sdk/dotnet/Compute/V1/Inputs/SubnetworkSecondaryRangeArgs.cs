@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Represents a secondary IP range of a subnetwork.
     /// </summary>
-    public sealed class SubnetworkSecondaryRangeArgs : Pulumi.ResourceArgs
+    public sealed class SubnetworkSecondaryRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The range of IP addresses belonging to this subnetwork secondary range. Provide this property when you create the subnetwork. Ranges must be unique and non-overlapping with all primary and secondary IP ranges within a network. Only IPv4 is supported. The range can be any range listed in the Valid ranges list.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public SubnetworkSecondaryRangeArgs()
         {
         }
+        public static new SubnetworkSecondaryRangeArgs Empty => new SubnetworkSecondaryRangeArgs();
     }
 }

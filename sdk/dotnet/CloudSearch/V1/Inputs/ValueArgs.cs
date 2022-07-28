@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     /// <summary>
     /// Definition of a single value with generic type.
     /// </summary>
-    public sealed class ValueArgs : Pulumi.ResourceArgs
+    public sealed class ValueArgs : global::Pulumi.ResourceArgs
     {
         [Input("booleanValue")]
         public Input<bool>? BooleanValue { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public ValueArgs()
         {
         }
+        public static new ValueArgs Empty => new ValueArgs();
     }
 }

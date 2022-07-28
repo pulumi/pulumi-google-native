@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// Represents the event to trigger.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3EventInputArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3EventInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the event.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3EventInputArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3EventInputArgs Empty => new GoogleCloudDialogflowCxV3EventInputArgs();
     }
 }

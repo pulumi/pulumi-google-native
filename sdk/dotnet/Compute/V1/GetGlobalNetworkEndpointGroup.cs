@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetGlobalNetworkEndpointGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetGlobalNetworkEndpointGroupArgs : global::Pulumi.InvokeArgs
     {
         [Input("networkEndpointGroup", required: true)]
         public string NetworkEndpointGroup { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetGlobalNetworkEndpointGroupArgs()
         {
         }
+        public static new GetGlobalNetworkEndpointGroupArgs Empty => new GetGlobalNetworkEndpointGroupArgs();
     }
 
-    public sealed class GetGlobalNetworkEndpointGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGlobalNetworkEndpointGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("networkEndpointGroup", required: true)]
         public Input<string> NetworkEndpointGroup { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetGlobalNetworkEndpointGroupInvokeArgs()
         {
         }
+        public static new GetGlobalNetworkEndpointGroupInvokeArgs Empty => new GetGlobalNetworkEndpointGroupInvokeArgs();
     }
 
 

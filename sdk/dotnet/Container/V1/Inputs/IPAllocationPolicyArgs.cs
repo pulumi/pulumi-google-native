@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Configuration for controlling how IPs are allocated in the cluster.
     /// </summary>
-    public sealed class IPAllocationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class IPAllocationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This field is deprecated, use cluster_ipv4_cidr_block.
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public IPAllocationPolicyArgs()
         {
         }
+        public static new IPAllocationPolicyArgs Empty => new IPAllocationPolicyArgs();
     }
 }

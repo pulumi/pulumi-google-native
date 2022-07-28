@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Configuration for the addons that can be automatically spun up in the cluster, enabling additional functionality.
     /// </summary>
-    public sealed class AddonsConfigArgs : Pulumi.ResourceArgs
+    public sealed class AddonsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration for the Cloud Run addon, which allows the user to use a managed Knative service.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public AddonsConfigArgs()
         {
         }
+        public static new AddonsConfigArgs Empty => new AddonsConfigArgs();
     }
 }

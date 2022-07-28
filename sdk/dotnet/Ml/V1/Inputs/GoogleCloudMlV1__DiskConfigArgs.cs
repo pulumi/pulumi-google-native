@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents the config of disk options.
     /// </summary>
-    public sealed class GoogleCloudMlV1__DiskConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__DiskConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Size in GB of the boot disk (default is 100GB).
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__DiskConfigArgs()
         {
         }
+        public static new GoogleCloudMlV1__DiskConfigArgs Empty => new GoogleCloudMlV1__DiskConfigArgs();
     }
 }

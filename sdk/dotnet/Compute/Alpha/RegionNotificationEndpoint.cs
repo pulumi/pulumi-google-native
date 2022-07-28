@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Create a NotificationEndpoint in the specified project in the given region using the parameters that are included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:RegionNotificationEndpoint")]
-    public partial class RegionNotificationEndpoint : Pulumi.CustomResource
+    public partial class RegionNotificationEndpoint : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class RegionNotificationEndpointArgs : Pulumi.ResourceArgs
+    public sealed class RegionNotificationEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -146,5 +146,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public RegionNotificationEndpointArgs()
         {
         }
+        public static new RegionNotificationEndpointArgs Empty => new RegionNotificationEndpointArgs();
     }
 }

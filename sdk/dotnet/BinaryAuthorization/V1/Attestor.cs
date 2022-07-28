@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
     /// Creates an attestor, and returns a copy of the new attestor. Returns NOT_FOUND if the project does not exist, INVALID_ARGUMENT if the request is malformed, ALREADY_EXISTS if the attestor already exists.
     /// </summary>
     [GoogleNativeResourceType("google-native:binaryauthorization/v1:Attestor")]
-    public partial class Attestor : Pulumi.CustomResource
+    public partial class Attestor : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. The attestors ID.
@@ -102,7 +102,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         }
     }
 
-    public sealed class AttestorArgs : Pulumi.ResourceArgs
+    public sealed class AttestorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The attestors ID.
@@ -140,5 +140,6 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1
         public AttestorArgs()
         {
         }
+        public static new AttestorArgs Empty => new AttestorArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// An SSL certificate obtained from a certificate authority.
     /// </summary>
-    public sealed class CertificateRawDataArgs : Pulumi.ResourceArgs
+    public sealed class CertificateRawDataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Unencrypted PEM encoded RSA private key. This field is set once on certificate creation and then encrypted. The key size must be 2048 bits or fewer. Must include the header and footer. Example: -----BEGIN RSA PRIVATE KEY----- -----END RSA PRIVATE KEY----- @InputOnly
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public CertificateRawDataArgs()
         {
         }
+        public static new CertificateRawDataArgs Empty => new CertificateRawDataArgs();
     }
 }

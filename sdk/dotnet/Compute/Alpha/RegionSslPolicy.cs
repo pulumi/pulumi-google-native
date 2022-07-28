@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a new policy in the specified project and region using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:RegionSslPolicy")]
-    public partial class RegionSslPolicy : Pulumi.CustomResource
+    public partial class RegionSslPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -153,7 +153,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class RegionSslPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RegionSslPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("customFeatures")]
         private InputList<string>? _customFeatures;
@@ -212,5 +212,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public RegionSslPolicyArgs()
         {
         }
+        public static new RegionSslPolicyArgs Empty => new RegionSslPolicyArgs();
     }
 }

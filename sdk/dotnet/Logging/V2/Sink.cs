@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
     /// </summary>
     [GoogleNativeResourceType("google-native:logging/v2:Sink")]
-    public partial class Sink : Pulumi.CustomResource
+    public partial class Sink : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. Options that affect sinks exporting data to BigQuery.
@@ -143,7 +143,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         }
     }
 
-    public sealed class SinkArgs : Pulumi.ResourceArgs
+    public sealed class SinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Options that affect sinks exporting data to BigQuery.
@@ -217,5 +217,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         public SinkArgs()
         {
         }
+        public static new SinkArgs Empty => new SinkArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
     /// <summary>
     /// The label selector, used to group labels on the resources.
     /// </summary>
-    public sealed class LabelSelectorArgs : Pulumi.ResourceArgs
+    public sealed class LabelSelectorArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
         public LabelSelectorArgs()
         {
         }
+        public static new LabelSelectorArgs Empty => new LabelSelectorArgs();
     }
 }

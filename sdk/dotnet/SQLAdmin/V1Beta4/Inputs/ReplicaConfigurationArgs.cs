@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
     /// <summary>
     /// Read-replica configuration for connecting to the primary instance.
     /// </summary>
-    public sealed class ReplicaConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class ReplicaConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies if the replica is the failover target. If the field is set to `true` the replica will be designated as a failover replica. In case the primary instance fails, the replica instance will be promoted as the new primary instance. Only one replica can be specified as failover target, and the replica has to be in different zone with the primary instance.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public ReplicaConfigurationArgs()
         {
         }
+        public static new ReplicaConfigurationArgs Empty => new ReplicaConfigurationArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     }
 
 
-    public sealed class GetConversationDatasetArgs : Pulumi.InvokeArgs
+    public sealed class GetConversationDatasetArgs : global::Pulumi.InvokeArgs
     {
         [Input("conversationDatasetId", required: true)]
         public string ConversationDatasetId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public GetConversationDatasetArgs()
         {
         }
+        public static new GetConversationDatasetArgs Empty => new GetConversationDatasetArgs();
     }
 
-    public sealed class GetConversationDatasetInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConversationDatasetInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("conversationDatasetId", required: true)]
         public Input<string> ConversationDatasetId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public GetConversationDatasetInvokeArgs()
         {
         }
+        public static new GetConversationDatasetInvokeArgs Empty => new GetConversationDatasetInvokeArgs();
     }
 
 

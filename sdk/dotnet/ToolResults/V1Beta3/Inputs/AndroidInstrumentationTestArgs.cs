@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// A test of an Android application that can control an Android component independently of its normal lifecycle. See for more information on types of Android tests.
     /// </summary>
-    public sealed class AndroidInstrumentationTestArgs : Pulumi.ResourceArgs
+    public sealed class AndroidInstrumentationTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The java package for the test to be executed. Required
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public AndroidInstrumentationTestArgs()
         {
         }
+        public static new AndroidInstrumentationTestArgs Empty => new AndroidInstrumentationTestArgs();
     }
 }

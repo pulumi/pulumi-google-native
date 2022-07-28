@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A simplified layout that divides the available space into rows and arranges a set of widgets horizontally in each row.
     /// </summary>
-    public sealed class RowLayoutArgs : Pulumi.ResourceArgs
+    public sealed class RowLayoutArgs : global::Pulumi.ResourceArgs
     {
         [Input("rows")]
         private InputList<Inputs.RowArgs>? _rows;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public RowLayoutArgs()
         {
         }
+        public static new RowLayoutArgs Empty => new RowLayoutArgs();
     }
 }

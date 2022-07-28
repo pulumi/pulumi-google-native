@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
 {
 
-    public sealed class InTotoProvenanceArgs : Pulumi.ResourceArgs
+    public sealed class InTotoProvenanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// required
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public InTotoProvenanceArgs()
         {
         }
+        public static new InTotoProvenanceArgs Empty => new InTotoProvenanceArgs();
     }
 }

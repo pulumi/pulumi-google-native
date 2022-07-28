@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     /// <summary>
     /// Stage specifies a location to which to deploy.
     /// </summary>
-    public sealed class StageArgs : Pulumi.ResourceArgs
+    public sealed class StageArgs : global::Pulumi.ResourceArgs
     {
         [Input("profiles")]
         private InputList<string>? _profiles;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
         public StageArgs()
         {
         }
+        public static new StageArgs Empty => new StageArgs();
     }
 }

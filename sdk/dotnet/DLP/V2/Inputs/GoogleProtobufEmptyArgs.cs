@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// A generic empty message that you can re-use to avoid defining duplicated empty messages in your APIs. A typical example is to use it as the request or the response type of an API method. For instance: service Foo { rpc Bar(google.protobuf.Empty) returns (google.protobuf.Empty); }
     /// </summary>
-    public sealed class GoogleProtobufEmptyArgs : Pulumi.ResourceArgs
+    public sealed class GoogleProtobufEmptyArgs : global::Pulumi.ResourceArgs
     {
         public GoogleProtobufEmptyArgs()
         {
         }
+        public static new GoogleProtobufEmptyArgs Empty => new GoogleProtobufEmptyArgs();
     }
 }

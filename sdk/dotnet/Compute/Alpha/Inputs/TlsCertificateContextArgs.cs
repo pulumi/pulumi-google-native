@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] Defines the mechanism to obtain the client or server certificate. Defines the mechanism to obtain the client or server certificate.
     /// </summary>
-    public sealed class TlsCertificateContextArgs : Pulumi.ResourceArgs
+    public sealed class TlsCertificateContextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the certificate and private key paths. This field is applicable only if tlsCertificateSource is set to USE_PATH.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public TlsCertificateContextArgs()
         {
         }
+        public static new TlsCertificateContextArgs Empty => new TlsCertificateContextArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload.
     /// </summary>
-    public sealed class NodePoolArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public NodePoolArgs()
         {
         }
+        public static new NodePoolArgs Empty => new NodePoolArgs();
     }
 }

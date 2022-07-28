@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:logging/v2:OrganizationBucketView")]
-    public partial class OrganizationBucketView : Pulumi.CustomResource
+    public partial class OrganizationBucketView : global::Pulumi.CustomResource
     {
         [Output("bucketId")]
         public Output<string> BucketId { get; private set; } = null!;
@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         }
     }
 
-    public sealed class OrganizationBucketViewArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationBucketViewArgs : global::Pulumi.ResourceArgs
     {
         [Input("bucketId", required: true)]
         public Input<string> BucketId { get; set; } = null!;
@@ -149,5 +149,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         public OrganizationBucketViewArgs()
         {
         }
+        public static new OrganizationBucketViewArgs Empty => new OrganizationBucketViewArgs();
     }
 }

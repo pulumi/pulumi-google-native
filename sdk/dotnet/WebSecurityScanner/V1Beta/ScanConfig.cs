@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
     /// Creates a new ScanConfig.
     /// </summary>
     [GoogleNativeResourceType("google-native:websecurityscanner/v1beta:ScanConfig")]
-    public partial class ScanConfig : Pulumi.CustomResource
+    public partial class ScanConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The authentication configuration. If specified, service will use the authentication configuration during scanning.
@@ -155,7 +155,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
         }
     }
 
-    public sealed class ScanConfigArgs : Pulumi.ResourceArgs
+    public sealed class ScanConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The authentication configuration. If specified, service will use the authentication configuration during scanning.
@@ -271,5 +271,6 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta
         public ScanConfigArgs()
         {
         }
+        public static new ScanConfigArgs Empty => new ScanConfigArgs();
     }
 }

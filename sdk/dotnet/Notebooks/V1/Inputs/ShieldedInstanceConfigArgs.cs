@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     /// <summary>
     /// A set of Shielded Instance options. Check [Images using supported Shielded VM features] Not all combinations are valid.
     /// </summary>
-    public sealed class ShieldedInstanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class ShieldedInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public ShieldedInstanceConfigArgs()
         {
         }
+        public static new ShieldedInstanceConfigArgs Empty => new ShieldedInstanceConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// MaintenanceWindow defines the maintenance window to be used for the cluster.
     /// </summary>
-    public sealed class MaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class MaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// DailyMaintenanceWindow specifies a daily maintenance operation window.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public MaintenanceWindowArgs()
         {
         }
+        public static new MaintenanceWindowArgs Empty => new MaintenanceWindowArgs();
     }
 }

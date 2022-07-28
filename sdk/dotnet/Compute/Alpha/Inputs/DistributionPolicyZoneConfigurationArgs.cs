@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class DistributionPolicyZoneConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class DistributionPolicyZoneConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URL of the zone. The zone must exist in the region where the managed instance group is located.
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public DistributionPolicyZoneConfigurationArgs()
         {
         }
+        public static new DistributionPolicyZoneConfigurationArgs Empty => new DistributionPolicyZoneConfigurationArgs();
     }
 }

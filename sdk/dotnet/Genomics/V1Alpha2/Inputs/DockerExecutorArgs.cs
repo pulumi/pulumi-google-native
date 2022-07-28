@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Inputs
     /// <summary>
     /// The Docker execuctor specification.
     /// </summary>
-    public sealed class DockerExecutorArgs : Pulumi.ResourceArgs
+    public sealed class DockerExecutorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The command or newline delimited script to run. The command string will be executed within a bash shell. If the command exits with a non-zero exit code, output parameter de-localization will be skipped and the pipeline operation's `error` field will be populated. Maximum command string length is 16384.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Inputs
         public DockerExecutorArgs()
         {
         }
+        public static new DockerExecutorArgs Empty => new DockerExecutorArgs();
     }
 }

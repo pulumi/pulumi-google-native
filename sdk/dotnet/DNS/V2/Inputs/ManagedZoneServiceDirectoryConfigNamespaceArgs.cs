@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V2.Inputs
 {
 
-    public sealed class ManagedZoneServiceDirectoryConfigNamespaceArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZoneServiceDirectoryConfigNamespaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time that the namespace backing this zone was deleted; an empty string if it still exists. This is in RFC3339 text format. Output only.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DNS.V2.Inputs
         public ManagedZoneServiceDirectoryConfigNamespaceArgs()
         {
         }
+        public static new ManagedZoneServiceDirectoryConfigNamespaceArgs Empty => new ManagedZoneServiceDirectoryConfigNamespaceArgs();
     }
 }

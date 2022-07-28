@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// PullRequestFilter contains filter properties for matching GitHub Pull Requests.
     /// </summary>
-    public sealed class PullRequestFilterArgs : Pulumi.ResourceArgs
+    public sealed class PullRequestFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public PullRequestFilterArgs()
         {
         }
+        public static new PullRequestFilterArgs Empty => new PullRequestFilterArgs();
     }
 }

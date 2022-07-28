@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
     }
 
 
-    public sealed class GetFeedArgs : Pulumi.InvokeArgs
+    public sealed class GetFeedArgs : global::Pulumi.InvokeArgs
     {
         [Input("feedId", required: true)]
         public string FeedId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         public GetFeedArgs()
         {
         }
+        public static new GetFeedArgs Empty => new GetFeedArgs();
     }
 
-    public sealed class GetFeedInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFeedInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("feedId", required: true)]
         public Input<string> FeedId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         public GetFeedInvokeArgs()
         {
         }
+        public static new GetFeedInvokeArgs Empty => new GetFeedInvokeArgs();
     }
 
 

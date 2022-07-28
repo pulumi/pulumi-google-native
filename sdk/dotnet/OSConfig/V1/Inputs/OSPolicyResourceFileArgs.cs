@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// A remote or local file.
     /// </summary>
-    public sealed class OSPolicyResourceFileArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourceFileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defaults to false. When false, files are subject to validations based on the file type: Remote: A checksum must be specified. Cloud Storage: An object generation number must be specified.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public OSPolicyResourceFileArgs()
         {
         }
+        public static new OSPolicyResourceFileArgs Empty => new OSPolicyResourceFileArgs();
     }
 }

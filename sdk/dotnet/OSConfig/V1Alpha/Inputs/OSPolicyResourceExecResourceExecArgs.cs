@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
     /// <summary>
     /// A file or script to execute.
     /// </summary>
-    public sealed class OSPolicyResourceExecResourceExecArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourceExecResourceExecArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<string>? _args;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public OSPolicyResourceExecResourceExecArgs()
         {
         }
+        public static new OSPolicyResourceExecResourceExecArgs Empty => new OSPolicyResourceExecResourceExecArgs();
     }
 }

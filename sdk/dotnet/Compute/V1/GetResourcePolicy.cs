@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetResourcePolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetResourcePolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetResourcePolicyArgs()
         {
         }
+        public static new GetResourcePolicyArgs Empty => new GetResourcePolicyArgs();
     }
 
-    public sealed class GetResourcePolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetResourcePolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetResourcePolicyInvokeArgs()
         {
         }
+        public static new GetResourcePolicyInvokeArgs Empty => new GetResourcePolicyInvokeArgs();
     }
 
 

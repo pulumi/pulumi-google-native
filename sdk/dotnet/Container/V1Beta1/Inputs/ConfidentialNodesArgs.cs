@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// ConfidentialNodes is configuration for the confidential nodes feature, which makes nodes run on confidential VMs.
     /// </summary>
-    public sealed class ConfidentialNodesArgs : Pulumi.ResourceArgs
+    public sealed class ConfidentialNodesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether Confidential Nodes feature is enabled.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public ConfidentialNodesArgs()
         {
         }
+        public static new ConfidentialNodesArgs Empty => new ConfidentialNodesArgs();
     }
 }

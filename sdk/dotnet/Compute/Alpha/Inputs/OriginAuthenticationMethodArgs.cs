@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] Configuration for the origin authentication method. Configuration for the origin authentication method.
     /// </summary>
-    public sealed class OriginAuthenticationMethodArgs : Pulumi.ResourceArgs
+    public sealed class OriginAuthenticationMethodArgs : global::Pulumi.ResourceArgs
     {
         [Input("jwt")]
         public Input<Inputs.JwtArgs>? Jwt { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public OriginAuthenticationMethodArgs()
         {
         }
+        public static new OriginAuthenticationMethodArgs Empty => new OriginAuthenticationMethodArgs();
     }
 }

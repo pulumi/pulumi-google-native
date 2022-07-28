@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
     /// <summary>
     /// Maintenance window. This specifies when Dataproc Metastore may perform system maintenance operation to the service.
     /// </summary>
-    public sealed class MaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class MaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The day of week, when the window starts.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
         public MaintenanceWindowArgs()
         {
         }
+        public static new MaintenanceWindowArgs Empty => new MaintenanceWindowArgs();
     }
 }

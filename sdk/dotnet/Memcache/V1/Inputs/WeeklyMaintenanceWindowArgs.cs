@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Memcache.V1.Inputs
     /// <summary>
     /// Time window specified for weekly operations.
     /// </summary>
-    public sealed class WeeklyMaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class WeeklyMaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allows to define schedule that runs specified day of the week.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Memcache.V1.Inputs
         public WeeklyMaintenanceWindowArgs()
         {
         }
+        public static new WeeklyMaintenanceWindowArgs Empty => new WeeklyMaintenanceWindowArgs();
     }
 }

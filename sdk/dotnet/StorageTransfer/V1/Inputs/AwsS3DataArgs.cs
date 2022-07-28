@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     /// <summary>
     /// An AwsS3Data resource can be a data source, but not a data sink. In an AwsS3Data resource, an object's name is the S3 object's key name.
     /// </summary>
-    public sealed class AwsS3DataArgs : Pulumi.ResourceArgs
+    public sealed class AwsS3DataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Input only. AWS access key used to sign the API requests to the AWS S3 bucket. Permissions on the bucket must be granted to the access ID of the AWS access key. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public AwsS3DataArgs()
         {
         }
+        public static new AwsS3DataArgs Empty => new AwsS3DataArgs();
     }
 }

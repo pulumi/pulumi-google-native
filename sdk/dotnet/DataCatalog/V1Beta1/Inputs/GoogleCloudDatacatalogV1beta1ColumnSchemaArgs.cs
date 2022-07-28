@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Inputs
     /// <summary>
     /// Representation of a column within a schema. Columns could be nested inside other columns.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1beta1ColumnSchemaArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1beta1ColumnSchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the column.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Inputs
         public GoogleCloudDatacatalogV1beta1ColumnSchemaArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1beta1ColumnSchemaArgs Empty => new GoogleCloudDatacatalogV1beta1ColumnSchemaArgs();
     }
 }

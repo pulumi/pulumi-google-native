@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamPolicy")]
-    public partial class CertificateAuthorityCertificateRevocationListIamPolicy : Pulumi.CustomResource
+    public partial class CertificateAuthorityCertificateRevocationListIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         }
     }
 
-    public sealed class CertificateAuthorityCertificateRevocationListIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class CertificateAuthorityCertificateRevocationListIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -162,5 +162,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public CertificateAuthorityCertificateRevocationListIamPolicyArgs()
         {
         }
+        public static new CertificateAuthorityCertificateRevocationListIamPolicyArgs Empty => new CertificateAuthorityCertificateRevocationListIamPolicyArgs();
     }
 }

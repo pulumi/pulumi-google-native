@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
     /// <summary>
     /// ProductCatalogItem captures item metadata specific to retail products.
     /// </summary>
-    public sealed class GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The available quantity of the item.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
         public GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs()
         {
         }
+        public static new GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs Empty => new GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs();
     }
 }

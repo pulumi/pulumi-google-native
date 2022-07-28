@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class RouterNatRuleArgs : Pulumi.ResourceArgs
+    public sealed class RouterNatRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action to be enforced for traffic that matches this rule.
@@ -39,5 +39,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public RouterNatRuleArgs()
         {
         }
+        public static new RouterNatRuleArgs Empty => new RouterNatRuleArgs();
     }
 }

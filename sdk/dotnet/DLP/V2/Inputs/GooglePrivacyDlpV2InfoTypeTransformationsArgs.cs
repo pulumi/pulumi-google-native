@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// A type of transformation that will scan unstructured text and apply various `PrimitiveTransformation`s to each finding, where the transformation is applied to only values that were identified as a specific info_type.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2InfoTypeTransformationsArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2InfoTypeTransformationsArgs : global::Pulumi.ResourceArgs
     {
         [Input("transformations", required: true)]
         private InputList<Inputs.GooglePrivacyDlpV2InfoTypeTransformationArgs>? _transformations;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2InfoTypeTransformationsArgs()
         {
         }
+        public static new GooglePrivacyDlpV2InfoTypeTransformationsArgs Empty => new GooglePrivacyDlpV2InfoTypeTransformationsArgs();
     }
 }

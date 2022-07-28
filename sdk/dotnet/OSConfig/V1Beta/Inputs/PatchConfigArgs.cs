@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Patch configuration specifications. Contains details on how to apply the patch(es) to a VM instance.
     /// </summary>
-    public sealed class PatchConfigArgs : Pulumi.ResourceArgs
+    public sealed class PatchConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Apt update settings. Use this setting to override the default `apt` patch rules.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public PatchConfigArgs()
         {
         }
+        public static new PatchConfigArgs Empty => new PatchConfigArgs();
     }
 }

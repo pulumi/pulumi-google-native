@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
     }
 
 
-    public sealed class GetTagTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetTagTemplateArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public GetTagTemplateArgs()
         {
         }
+        public static new GetTagTemplateArgs Empty => new GetTagTemplateArgs();
     }
 
-    public sealed class GetTagTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTagTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public GetTagTemplateInvokeArgs()
         {
         }
+        public static new GetTagTemplateInvokeArgs Empty => new GetTagTemplateInvokeArgs();
     }
 
 

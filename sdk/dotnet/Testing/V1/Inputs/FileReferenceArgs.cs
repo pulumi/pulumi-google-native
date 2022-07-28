@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A reference to a file, used for user inputs.
     /// </summary>
-    public sealed class FileReferenceArgs : Pulumi.ResourceArgs
+    public sealed class FileReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding)
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public FileReferenceArgs()
         {
         }
+        public static new FileReferenceArgs Empty => new FileReferenceArgs();
     }
 }

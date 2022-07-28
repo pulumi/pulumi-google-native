@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
     /// Creates a new tenant entity.
     /// </summary>
     [GoogleNativeResourceType("google-native:jobs/v4:Tenant")]
-    public partial class Tenant : Pulumi.CustomResource
+    public partial class Tenant : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Client side tenant identifier, used to uniquely identify the tenant. The maximum number of allowed characters is 255.
@@ -77,7 +77,7 @@ namespace Pulumi.GoogleNative.Jobs.V4
         }
     }
 
-    public sealed class TenantArgs : Pulumi.ResourceArgs
+    public sealed class TenantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Client side tenant identifier, used to uniquely identify the tenant. The maximum number of allowed characters is 255.
@@ -97,5 +97,6 @@ namespace Pulumi.GoogleNative.Jobs.V4
         public TenantArgs()
         {
         }
+        public static new TenantArgs Empty => new TenantArgs();
     }
 }

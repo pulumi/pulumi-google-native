@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// H265 codec settings.
     /// </summary>
-    public sealed class H265CodecSettingsArgs : Pulumi.ResourceArgs
+    public sealed class H265CodecSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether an open Group of Pictures (GOP) structure should be allowed or not. The default is `false`.
@@ -132,5 +132,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public H265CodecSettingsArgs()
         {
         }
+        public static new H265CodecSettingsArgs Empty => new H265CodecSettingsArgs();
     }
 }

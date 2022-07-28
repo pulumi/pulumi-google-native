@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class PacketMirroringNetworkInfoArgs : Pulumi.ResourceArgs
+    public sealed class PacketMirroringNetworkInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URL of the network resource.
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public PacketMirroringNetworkInfoArgs()
         {
         }
+        public static new PacketMirroringNetworkInfoArgs Empty => new PacketMirroringNetworkInfoArgs();
     }
 }

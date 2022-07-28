@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
     }
 
 
-    public sealed class GetGameServerClusterArgs : Pulumi.InvokeArgs
+    public sealed class GetGameServerClusterArgs : global::Pulumi.InvokeArgs
     {
         [Input("gameServerClusterId", required: true)]
         public string GameServerClusterId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public GetGameServerClusterArgs()
         {
         }
+        public static new GetGameServerClusterArgs Empty => new GetGameServerClusterArgs();
     }
 
-    public sealed class GetGameServerClusterInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGameServerClusterInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("gameServerClusterId", required: true)]
         public Input<string> GameServerClusterId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public GetGameServerClusterInvokeArgs()
         {
         }
+        public static new GetGameServerClusterInvokeArgs Empty => new GetGameServerClusterInvokeArgs();
     }
 
 

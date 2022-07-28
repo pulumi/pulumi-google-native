@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// The runtime logging config of the job.
     /// </summary>
-    public sealed class LoggingConfigArgs : Pulumi.ResourceArgs
+    public sealed class LoggingConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("driverLogLevels")]
         private InputMap<string>? _driverLogLevels;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public LoggingConfigArgs()
         {
         }
+        public static new LoggingConfigArgs Empty => new LoggingConfigArgs();
     }
 }

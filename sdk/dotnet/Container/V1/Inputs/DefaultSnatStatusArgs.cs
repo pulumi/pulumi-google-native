@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// DefaultSnatStatus contains the desired state of whether default sNAT should be disabled on the cluster.
     /// </summary>
-    public sealed class DefaultSnatStatusArgs : Pulumi.ResourceArgs
+    public sealed class DefaultSnatStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Disables cluster default sNAT rules.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public DefaultSnatStatusArgs()
         {
         }
+        public static new DefaultSnatStatusArgs Empty => new DefaultSnatStatusArgs();
     }
 }

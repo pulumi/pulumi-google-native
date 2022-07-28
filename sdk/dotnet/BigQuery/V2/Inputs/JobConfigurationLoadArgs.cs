@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class JobConfigurationLoadArgs : Pulumi.ResourceArgs
+    public sealed class JobConfigurationLoadArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
@@ -225,5 +225,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public JobConfigurationLoadArgs()
         {
         }
+        public static new JobConfigurationLoadArgs Empty => new JobConfigurationLoadArgs();
     }
 }

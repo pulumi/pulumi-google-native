@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
     /// <summary>
     /// The IAM conditions context.
     /// </summary>
-    public sealed class ConditionContextArgs : Pulumi.ResourceArgs
+    public sealed class ConditionContextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The hypothetical access timestamp to evaluate IAM conditions. Note that this value must not be earlier than the current time; otherwise, an INVALID_ARGUMENT error will be returned.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
         public ConditionContextArgs()
         {
         }
+        public static new ConditionContextArgs Empty => new ConditionContextArgs();
     }
 }

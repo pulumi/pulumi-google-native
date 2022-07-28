@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     /// Creates an app profile within an instance.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigtableadmin/v2:AppProfile")]
-    public partial class AppProfile : Pulumi.CustomResource
+    public partial class AppProfile : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         }
     }
 
-    public sealed class AppProfileArgs : Pulumi.ResourceArgs
+    public sealed class AppProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
@@ -165,5 +165,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public AppProfileArgs()
         {
         }
+        public static new AppProfileArgs Empty => new AppProfileArgs();
     }
 }

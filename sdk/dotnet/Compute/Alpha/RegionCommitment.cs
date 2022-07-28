@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:RegionCommitment")]
-    public partial class RegionCommitment : Pulumi.CustomResource
+    public partial class RegionCommitment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
@@ -191,7 +191,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class RegionCommitmentArgs : Pulumi.ResourceArgs
+    public sealed class RegionCommitmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether to enable automatic renewal for the commitment. The default value is false if not specified. The field can be updated until the day of the commitment expiration at 12:00am PST. If the field is set to true, the commitment will be automatically renewed for either one or three years according to the terms of the existing commitment.
@@ -292,5 +292,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public RegionCommitmentArgs()
         {
         }
+        public static new RegionCommitmentArgs Empty => new RegionCommitmentArgs();
     }
 }

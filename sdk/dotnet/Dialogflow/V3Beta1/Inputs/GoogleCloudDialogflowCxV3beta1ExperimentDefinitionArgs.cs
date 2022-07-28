@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Definition of the experiment.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The condition defines which subset of sessions are selected for this experiment. If not specified, all sessions are eligible. E.g. "query_input.language_code=en" See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs Empty => new GoogleCloudDialogflowCxV3beta1ExperimentDefinitionArgs();
     }
 }

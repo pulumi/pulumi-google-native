@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Pub/Sub specific notification config.
     /// </summary>
-    public sealed class PubSubArgs : Pulumi.ResourceArgs
+    public sealed class PubSubArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable notifications for Pub/Sub.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public PubSubArgs()
         {
         }
+        public static new PubSubArgs Empty => new PubSubArgs();
     }
 }

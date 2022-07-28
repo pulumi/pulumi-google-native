@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
     /// <summary>
     /// Docker image that is used to create a container and start a VM instance for the version that you deploy. Only applicable for instances running in the App Engine flexible environment.
     /// </summary>
-    public sealed class ContainerInfoArgs : Pulumi.ResourceArgs
+    public sealed class ContainerInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URI to the hosted container image in Google Container Registry. The URI must be fully qualified and include a tag or digest. Examples: "gcr.io/my-project/image:tag" or "gcr.io/my-project/image@digest"
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         public ContainerInfoArgs()
         {
         }
+        public static new ContainerInfoArgs Empty => new ContainerInfoArgs();
     }
 }

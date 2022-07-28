@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     /// <summary>
     /// Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.
     /// </summary>
-    public sealed class GRPCActionArgs : Pulumi.ResourceArgs
+    public sealed class GRPCActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Port number of the gRPC service. Number must be in the range 1 to 65535.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public GRPCActionArgs()
         {
         }
+        public static new GRPCActionArgs Empty => new GRPCActionArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     }
 
 
-    public sealed class GetOrganizationMuteConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationMuteConfigArgs : global::Pulumi.InvokeArgs
     {
         [Input("muteConfigId", required: true)]
         public string MuteConfigId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public GetOrganizationMuteConfigArgs()
         {
         }
+        public static new GetOrganizationMuteConfigArgs Empty => new GetOrganizationMuteConfigArgs();
     }
 
-    public sealed class GetOrganizationMuteConfigInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationMuteConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("muteConfigId", required: true)]
         public Input<string> MuteConfigId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public GetOrganizationMuteConfigInvokeArgs()
         {
         }
+        public static new GetOrganizationMuteConfigInvokeArgs Empty => new GetOrganizationMuteConfigInvokeArgs();
     }
 
 

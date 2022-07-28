@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2.Inputs
     /// <summary>
     /// Rate limits. This message determines the maximum rate that tasks can be dispatched by a queue, regardless of whether the dispatch is a first task attempt or a retry. Note: The debugging command, RunTask, will run a task even if the queue has reached its RateLimits.
     /// </summary>
-    public sealed class RateLimitsArgs : Pulumi.ResourceArgs
+    public sealed class RateLimitsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum number of concurrent tasks that Cloud Tasks allows to be dispatched for this queue. After this threshold has been reached, Cloud Tasks stops dispatching tasks until the number of concurrent requests decreases. If unspecified when the queue is created, Cloud Tasks will pick the default. The maximum allowed value is 5,000. This field has the same meaning as [max_concurrent_requests in queue.yaml/xml](https://cloud.google.com/appengine/docs/standard/python/config/queueref#max_concurrent_requests).
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2.Inputs
         public RateLimitsArgs()
         {
         }
+        public static new RateLimitsArgs Empty => new RateLimitsArgs();
     }
 }

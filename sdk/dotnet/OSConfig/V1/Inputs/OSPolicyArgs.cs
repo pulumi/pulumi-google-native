@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// An OS policy defines the desired state configuration for a VM.
     /// </summary>
-    public sealed class OSPolicyArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This flag determines the OS policy compliance status when none of the resource groups within the policy are applicable for a VM. Set this value to `true` if the policy needs to be reported as compliant even if the policy has nothing to validate or enforce.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public OSPolicyArgs()
         {
         }
+        public static new OSPolicyArgs Empty => new OSPolicyArgs();
     }
 }

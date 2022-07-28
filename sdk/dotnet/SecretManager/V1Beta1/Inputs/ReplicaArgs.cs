@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1.Inputs
     /// <summary>
     /// Represents a Replica for this Secret.
     /// </summary>
-    public sealed class ReplicaArgs : Pulumi.ResourceArgs
+    public sealed class ReplicaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The canonical IDs of the location to replicate data. For example: `"us-east1"`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.SecretManager.V1Beta1.Inputs
         public ReplicaArgs()
         {
         }
+        public static new ReplicaArgs Empty => new ReplicaArgs();
     }
 }

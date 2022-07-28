@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
     }
 
 
-    public sealed class GetRegistryGroupIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistryGroupIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("groupId", required: true)]
         public string GroupId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         public GetRegistryGroupIamPolicyArgs()
         {
         }
+        public static new GetRegistryGroupIamPolicyArgs Empty => new GetRegistryGroupIamPolicyArgs();
     }
 
-    public sealed class GetRegistryGroupIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistryGroupIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         public GetRegistryGroupIamPolicyInvokeArgs()
         {
         }
+        public static new GetRegistryGroupIamPolicyInvokeArgs Empty => new GetRegistryGroupIamPolicyInvokeArgs();
     }
 
 

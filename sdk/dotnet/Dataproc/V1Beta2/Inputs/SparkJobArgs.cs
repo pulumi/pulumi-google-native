@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// A Dataproc job for running Apache Spark (http://spark.apache.org/) applications on YARN. The specification of the main method to call to drive the job. Specify either the jar file that contains the main class or the main class name. To pass both a main jar and a main class in that jar, add the jar to CommonJob.jar_file_uris, and then specify the main class name in main_class.
     /// </summary>
-    public sealed class SparkJobArgs : Pulumi.ResourceArgs
+    public sealed class SparkJobArgs : global::Pulumi.ResourceArgs
     {
         [Input("archiveUris")]
         private InputList<string>? _archiveUris;
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public SparkJobArgs()
         {
         }
+        public static new SparkJobArgs Empty => new SparkJobArgs();
     }
 }

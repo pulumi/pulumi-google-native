@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// A schema package contains a set of schemas and type definitions.
     /// </summary>
-    public sealed class SchemaPackageArgs : Pulumi.ResourceArgs
+    public sealed class SchemaPackageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Flag to ignore all min_occurs restrictions in the schema. This means that incoming messages can omit any group, segment, field, component, or subcomponent.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public SchemaPackageArgs()
         {
         }
+        public static new SchemaPackageArgs Empty => new SchemaPackageArgs();
     }
 }

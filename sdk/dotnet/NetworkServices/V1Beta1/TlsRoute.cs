@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
     /// Creates a new TlsRoute in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkservices/v1beta1:TlsRoute")]
-    public partial class TlsRoute : Pulumi.CustomResource
+    public partial class TlsRoute : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp when the resource was created.
@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         }
     }
 
-    public sealed class TlsRouteArgs : Pulumi.ResourceArgs
+    public sealed class TlsRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A free-text description of the resource. Max length 1024 characters.
@@ -189,5 +189,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public TlsRouteArgs()
         {
         }
+        public static new TlsRouteArgs Empty => new TlsRouteArgs();
     }
 }

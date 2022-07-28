@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
     /// <summary>
     /// Defines a name-pair value for a single label.
     /// </summary>
-    public sealed class MetadataLabelsArgs : Pulumi.ResourceArgs
+    public sealed class MetadataLabelsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Label name presented as key in xDS Node Metadata.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public MetadataLabelsArgs()
         {
         }
+        public static new MetadataLabelsArgs Empty => new MetadataLabelsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents the configuration for a replica in a cluster.
     /// </summary>
-    public sealed class GoogleCloudMlV1__ReplicaConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__ReplicaConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Represents the type and number of accelerators used by the replica. [Learn about restrictions on accelerator configurations for training.](/ai-platform/training/docs/using-gpus#compute-engine-machine-types-with-gpu)
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__ReplicaConfigArgs()
         {
         }
+        public static new GoogleCloudMlV1__ReplicaConfigArgs Empty => new GoogleCloudMlV1__ReplicaConfigArgs();
     }
 }

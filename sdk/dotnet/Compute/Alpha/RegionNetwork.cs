@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a network in the specified project and region using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:RegionNetwork")]
-    public partial class RegionNetwork : Pulumi.CustomResource
+    public partial class RegionNetwork : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
@@ -177,7 +177,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class RegionNetworkArgs : Pulumi.ResourceArgs
+    public sealed class RegionNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Must be set to create a VPC network. If not set, a legacy network is created. When set to true, the VPC network is created in auto mode. When set to false, the VPC network is created in custom mode. An auto mode VPC network starts with one subnet per region. Each subnet has a predetermined range as described in Auto mode VPC network IP ranges. For custom mode VPC networks, you can add subnets using the subnetworks insert method.
@@ -248,5 +248,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public RegionNetworkArgs()
         {
         }
+        public static new RegionNetworkArgs Empty => new RegionNetworkArgs();
     }
 }

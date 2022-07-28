@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Inputs
     /// <summary>
     /// Limits for the number of nodes a Cluster can autoscale up/down to.
     /// </summary>
-    public sealed class AutoscalingLimitsArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingLimitsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum number of nodes to scale up to.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Inputs
         public AutoscalingLimitsArgs()
         {
         }
+        public static new AutoscalingLimitsArgs Empty => new AutoscalingLimitsArgs();
     }
 }

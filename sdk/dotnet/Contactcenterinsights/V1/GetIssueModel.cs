@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
     }
 
 
-    public sealed class GetIssueModelArgs : Pulumi.InvokeArgs
+    public sealed class GetIssueModelArgs : global::Pulumi.InvokeArgs
     {
         [Input("issueModelId", required: true)]
         public string IssueModelId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public GetIssueModelArgs()
         {
         }
+        public static new GetIssueModelArgs Empty => new GetIssueModelArgs();
     }
 
-    public sealed class GetIssueModelInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIssueModelInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("issueModelId", required: true)]
         public Input<string> IssueModelId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public GetIssueModelInvokeArgs()
         {
         }
+        public static new GetIssueModelInvokeArgs Empty => new GetIssueModelInvokeArgs();
     }
 
 

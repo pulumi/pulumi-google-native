@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// Widget contains a single dashboard component and configuration of how to present the component in the dashboard.
     /// </summary>
-    public sealed class WidgetArgs : Pulumi.ResourceArgs
+    public sealed class WidgetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A chart of alert policy data.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public WidgetArgs()
         {
         }
+        public static new WidgetArgs Empty => new WidgetArgs();
     }
 }

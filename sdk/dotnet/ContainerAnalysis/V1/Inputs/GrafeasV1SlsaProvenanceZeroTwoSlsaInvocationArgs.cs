@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Identifies the event that kicked off the build.
     /// </summary>
-    public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs : Pulumi.ResourceArgs
+    public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs : global::Pulumi.ResourceArgs
     {
         [Input("configSource")]
         public Input<Inputs.GrafeasV1SlsaProvenanceZeroTwoSlsaConfigSourceArgs>? ConfigSource { get; set; }
@@ -37,5 +37,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs()
         {
         }
+        public static new GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs Empty => new GrafeasV1SlsaProvenanceZeroTwoSlsaInvocationArgs();
     }
 }

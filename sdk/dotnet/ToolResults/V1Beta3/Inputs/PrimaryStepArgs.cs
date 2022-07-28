@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// Stores rollup test status of multiple steps that were run as a group and outcome of each individual step.
     /// </summary>
-    public sealed class PrimaryStepArgs : Pulumi.ResourceArgs
+    public sealed class PrimaryStepArgs : global::Pulumi.ResourceArgs
     {
         [Input("individualOutcome")]
         private InputList<Inputs.IndividualOutcomeArgs>? _individualOutcome;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public PrimaryStepArgs()
         {
         }
+        public static new PrimaryStepArgs Empty => new PrimaryStepArgs();
     }
 }

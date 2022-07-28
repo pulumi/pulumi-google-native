@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Inputs
 {
 
-    public sealed class BucketLifecycleRuleItemArgs : Pulumi.ResourceArgs
+    public sealed class BucketLifecycleRuleItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action to take.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketLifecycleRuleItemArgs()
         {
         }
+        public static new BucketLifecycleRuleItemArgs Empty => new BucketLifecycleRuleItemArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Jobs.V3.Inputs
     /// <summary>
     /// Job compensation details.
     /// </summary>
-    public sealed class CompensationInfoArgs : Pulumi.ResourceArgs
+    public sealed class CompensationInfoArgs : global::Pulumi.ResourceArgs
     {
         [Input("entries")]
         private InputList<Inputs.CompensationEntryArgs>? _entries;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Jobs.V3.Inputs
         public CompensationInfoArgs()
         {
         }
+        public static new CompensationInfoArgs Empty => new CompensationInfoArgs();
     }
 }

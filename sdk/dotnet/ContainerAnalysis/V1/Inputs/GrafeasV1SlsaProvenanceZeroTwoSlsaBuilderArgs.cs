@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Identifies the entity that executed the recipe, which is trusted to have correctly performed the operation and populated this provenance.
     /// </summary>
-    public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs : Pulumi.ResourceArgs
+    public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs : global::Pulumi.ResourceArgs
     {
         [Input("id")]
         public Input<string>? Id { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs()
         {
         }
+        public static new GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs Empty => new GrafeasV1SlsaProvenanceZeroTwoSlsaBuilderArgs();
     }
 }

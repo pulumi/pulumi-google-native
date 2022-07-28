@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
     /// </summary>
-    public sealed class GoogleRpcStatusArgs : Pulumi.ResourceArgs
+    public sealed class GoogleRpcStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The status code, which should be an enum value of google.rpc.Code.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleRpcStatusArgs()
         {
         }
+        public static new GoogleRpcStatusArgs Empty => new GoogleRpcStatusArgs();
     }
 }

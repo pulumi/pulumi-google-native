@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Settings for exporting audio.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Filename pattern for exported audio.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsArgs Empty => new GoogleCloudDialogflowCxV3beta1SecuritySettingsAudioExportSettingsArgs();
     }
 }

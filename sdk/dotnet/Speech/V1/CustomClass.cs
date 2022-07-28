@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Speech.V1
     /// Create a custom class.
     /// </summary>
     [GoogleNativeResourceType("google-native:speech/v1:CustomClass")]
-    public partial class CustomClass : Pulumi.CustomResource
+    public partial class CustomClass : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If this custom class is a resource, the custom_class_id is the resource id of the CustomClass. Case sensitive.
@@ -87,7 +87,7 @@ namespace Pulumi.GoogleNative.Speech.V1
         }
     }
 
-    public sealed class CustomClassArgs : Pulumi.ResourceArgs
+    public sealed class CustomClassArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID to use for the custom class, which will become the final component of the custom class' resource name. This value should restrict to letters, numbers, and hyphens, with the first character a letter, the last a letter or a number, and be 4-63 characters.
@@ -122,5 +122,6 @@ namespace Pulumi.GoogleNative.Speech.V1
         public CustomClassArgs()
         {
         }
+        public static new CustomClassArgs Empty => new CustomClassArgs();
     }
 }

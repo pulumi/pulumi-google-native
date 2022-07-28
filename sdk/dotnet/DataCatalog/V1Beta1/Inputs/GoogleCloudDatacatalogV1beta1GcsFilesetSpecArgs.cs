@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Inputs
     /// <summary>
     /// Describes a Cloud Storage fileset entry.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("filePatterns", required: true)]
         private InputList<string>? _filePatterns;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Inputs
         public GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs Empty => new GoogleCloudDatacatalogV1beta1GcsFilesetSpecArgs();
     }
 }

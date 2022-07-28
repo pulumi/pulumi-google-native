@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// The available logging options for the load balancer traffic served by this backend service.
     /// </summary>
-    public sealed class BackendServiceLogConfigArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceLogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This field denotes whether to enable logging for the load balancer traffic served by this backend service.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public BackendServiceLogConfigArgs()
         {
         }
+        public static new BackendServiceLogConfigArgs Empty => new BackendServiceLogConfigArgs();
     }
 }

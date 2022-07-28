@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Resource level annotation.
     /// </summary>
-    public sealed class ResourceAnnotationArgs : Pulumi.ResourceArgs
+    public sealed class ResourceAnnotationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the annotation record.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public ResourceAnnotationArgs()
         {
         }
+        public static new ResourceAnnotationArgs Empty => new ResourceAnnotationArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Sets the time for recurring patch deployments.
     /// </summary>
-    public sealed class RecurringScheduleArgs : Pulumi.ResourceArgs
+    public sealed class RecurringScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The end time at which a recurring patch deployment schedule is no longer active.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public RecurringScheduleArgs()
         {
         }
+        public static new RecurringScheduleArgs Empty => new RecurringScheduleArgs();
     }
 }

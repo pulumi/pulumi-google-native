@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// A 2D coordinate in an image. The origin is the top-left.
     /// </summary>
-    public sealed class VertexArgs : Pulumi.ResourceArgs
+    public sealed class VertexArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// X coordinate.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public VertexArgs()
         {
         }
+        public static new VertexArgs Empty => new VertexArgs();
     }
 }

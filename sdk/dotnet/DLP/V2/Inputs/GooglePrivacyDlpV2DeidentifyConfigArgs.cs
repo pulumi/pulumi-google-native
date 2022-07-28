@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// The configuration that controls how the data will change.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2DeidentifyConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2DeidentifyConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Treat the dataset as free-form text and apply the same free text transformation everywhere.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2DeidentifyConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2DeidentifyConfigArgs Empty => new GooglePrivacyDlpV2DeidentifyConfigArgs();
     }
 }

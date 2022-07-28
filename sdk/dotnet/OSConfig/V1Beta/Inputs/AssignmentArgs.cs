@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// An assignment represents the group or groups of VM instances that the policy applies to. If an assignment is empty, it applies to all VM instances. Otherwise, the targeted VM instances must meet all the criteria specified. So if both labels and zones are specified, the policy applies to VM instances with those labels and in those zones.
     /// </summary>
-    public sealed class AssignmentArgs : Pulumi.ResourceArgs
+    public sealed class AssignmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("groupLabels")]
         private InputList<Inputs.AssignmentGroupLabelArgs>? _groupLabels;
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public AssignmentArgs()
         {
         }
+        public static new AssignmentArgs Empty => new AssignmentArgs();
     }
 }

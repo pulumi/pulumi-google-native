@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     }
 
 
-    public sealed class GetFolderSinkArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderSinkArgs : global::Pulumi.InvokeArgs
     {
         [Input("folderId", required: true)]
         public string FolderId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetFolderSinkArgs()
         {
         }
+        public static new GetFolderSinkArgs Empty => new GetFolderSinkArgs();
     }
 
-    public sealed class GetFolderSinkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderSinkInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("folderId", required: true)]
         public Input<string> FolderId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetFolderSinkInvokeArgs()
         {
         }
+        public static new GetFolderSinkInvokeArgs Empty => new GetFolderSinkInvokeArgs();
     }
 
 

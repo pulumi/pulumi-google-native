@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataproc/v1:AutoscalingPolicy")]
-    public partial class AutoscalingPolicy : Pulumi.CustomResource
+    public partial class AutoscalingPolicy : global::Pulumi.CustomResource
     {
         [Output("basicAlgorithm")]
         public Output<Outputs.BasicAutoscalingAlgorithmResponse> BasicAlgorithm { get; private set; } = null!;
@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         }
     }
 
-    public sealed class AutoscalingPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("basicAlgorithm")]
         public Input<Inputs.BasicAutoscalingAlgorithmArgs>? BasicAlgorithm { get; set; }
@@ -141,5 +141,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public AutoscalingPolicyArgs()
         {
         }
+        public static new AutoscalingPolicyArgs Empty => new AutoscalingPolicyArgs();
     }
 }

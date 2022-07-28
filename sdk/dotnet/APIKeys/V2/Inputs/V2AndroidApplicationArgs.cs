@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.APIKeys.V2.Inputs
     /// <summary>
     /// Identifier of an Android application for key use.
     /// </summary>
-    public sealed class V2AndroidApplicationArgs : Pulumi.ResourceArgs
+    public sealed class V2AndroidApplicationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The package name of the application.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.APIKeys.V2.Inputs
         public V2AndroidApplicationArgs()
         {
         }
+        public static new V2AndroidApplicationArgs Empty => new V2AndroidApplicationArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:spanner/v1:Session")]
-    public partial class Session : Pulumi.CustomResource
+    public partial class Session : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The approximate timestamp when the session is last used. It is typically earlier than the actual last use time.
@@ -104,7 +104,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
         }
     }
 
-    public sealed class SessionArgs : Pulumi.ResourceArgs
+    public sealed class SessionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The database role which created this session.
@@ -136,5 +136,6 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public SessionArgs()
         {
         }
+        public static new SessionArgs Empty => new SessionArgs();
     }
 }

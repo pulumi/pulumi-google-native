@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// NodeManagement defines the set of node management services turned on for the node pool.
     /// </summary>
-    public sealed class NodeManagementArgs : Pulumi.ResourceArgs
+    public sealed class NodeManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the nodes will be automatically repaired.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public NodeManagementArgs()
         {
         }
+        public static new NodeManagementArgs Empty => new NodeManagementArgs();
     }
 }

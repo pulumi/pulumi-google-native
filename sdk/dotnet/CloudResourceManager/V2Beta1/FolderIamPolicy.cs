@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudresourcemanager/v2beta1:FolderIamPolicy")]
-    public partial class FolderIamPolicy : Pulumi.CustomResource
+    public partial class FolderIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
         }
     }
 
-    public sealed class FolderIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class FolderIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -141,5 +141,6 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
         public FolderIamPolicyArgs()
         {
         }
+        public static new FolderIamPolicyArgs Empty => new FolderIamPolicyArgs();
     }
 }

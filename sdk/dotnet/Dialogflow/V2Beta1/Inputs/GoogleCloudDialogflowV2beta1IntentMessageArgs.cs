@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Corresponds to the `Response` field in the Dialogflow console.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Displays a basic card for Actions on Google.
@@ -150,5 +150,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageArgs();
     }
 }

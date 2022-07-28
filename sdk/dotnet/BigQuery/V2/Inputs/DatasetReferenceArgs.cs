@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class DatasetReferenceArgs : Pulumi.ResourceArgs
+    public sealed class DatasetReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Required] A unique ID for this dataset, without the project name. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 1,024 characters.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public DatasetReferenceArgs()
         {
         }
+        public static new DatasetReferenceArgs Empty => new DatasetReferenceArgs();
     }
 }

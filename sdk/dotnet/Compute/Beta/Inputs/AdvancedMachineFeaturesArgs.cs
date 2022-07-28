@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Specifies options for controlling advanced machine features. Options that would traditionally be configured in a BIOS belong here. Features that require operating system support may have corresponding entries in the GuestOsFeatures of an Image (e.g., whether or not the OS in the Image supports nested virtualization being enabled or disabled).
     /// </summary>
-    public sealed class AdvancedMachineFeaturesArgs : Pulumi.ResourceArgs
+    public sealed class AdvancedMachineFeaturesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to enable nested virtualization or not (default is false).
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public AdvancedMachineFeaturesArgs()
         {
         }
+        public static new AdvancedMachineFeaturesArgs Empty => new AdvancedMachineFeaturesArgs();
     }
 }

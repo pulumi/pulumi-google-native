@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
     /// <summary>
     /// Maps a set of terms to a set of synonyms. Set of synonyms will be treated as synonyms of each query term only. `query_terms` will not be treated as synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of "sneakers".
     /// </summary>
-    public sealed class GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs : global::Pulumi.ResourceArgs
     {
         [Input("onewayTerms")]
         private InputList<string>? _onewayTerms;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
         public GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs()
         {
         }
+        public static new GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs Empty => new GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1.Inputs
     /// <summary>
     /// Provides the configuration for logging a type of permissions. Example: { "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" } ] } This enables 'DATA_READ' and 'DATA_WRITE' logging, while exempting jose@example.com from DATA_READ logging.
     /// </summary>
-    public sealed class ApigatewayAuditLogConfigArgs : Pulumi.ResourceArgs
+    public sealed class ApigatewayAuditLogConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("exemptedMembers")]
         private InputList<string>? _exemptedMembers;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.APIGateway.V1.Inputs
         public ApigatewayAuditLogConfigArgs()
         {
         }
+        public static new ApigatewayAuditLogConfigArgs Empty => new ApigatewayAuditLogConfigArgs();
     }
 }

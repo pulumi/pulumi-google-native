@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Configuration for NetworkPolicy. This only tracks whether the addon is enabled or not on the Master, it does not track whether network policy is enabled for the nodes.
     /// </summary>
-    public sealed class NetworkPolicyConfigArgs : Pulumi.ResourceArgs
+    public sealed class NetworkPolicyConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether NetworkPolicy is enabled for this cluster.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public NetworkPolicyConfigArgs()
         {
         }
+        public static new NetworkPolicyConfigArgs Empty => new NetworkPolicyConfigArgs();
     }
 }

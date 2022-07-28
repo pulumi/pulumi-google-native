@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The project team associated with the entity, if any.
     /// </summary>
-    public sealed class ObjectAccessControlProjectTeamArgs : Pulumi.ResourceArgs
+    public sealed class ObjectAccessControlProjectTeamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The project number.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public ObjectAccessControlProjectTeamArgs()
         {
         }
+        public static new ObjectAccessControlProjectTeamArgs Empty => new ObjectAccessControlProjectTeamArgs();
     }
 }

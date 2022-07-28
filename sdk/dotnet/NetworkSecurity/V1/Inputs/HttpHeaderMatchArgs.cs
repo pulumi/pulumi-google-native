@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1.Inputs
     /// <summary>
     /// Specification of HTTP header match attributes.
     /// </summary>
-    public sealed class HttpHeaderMatchArgs : Pulumi.ResourceArgs
+    public sealed class HttpHeaderMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the HTTP header to match. For matching against the HTTP request's authority, use a headerMatch with the header name ":authority". For matching a request's method, use the headerName ":method".
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1.Inputs
         public HttpHeaderMatchArgs()
         {
         }
+        public static new HttpHeaderMatchArgs Empty => new HttpHeaderMatchArgs();
     }
 }

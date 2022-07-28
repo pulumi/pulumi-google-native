@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
     /// <summary>
     /// Utilization metrics values for a single VM.
     /// </summary>
-    public sealed class VmUtilizationMetricsArgs : Pulumi.ResourceArgs
+    public sealed class VmUtilizationMetricsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Average CPU usage, percent.
@@ -114,5 +114,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
         public VmUtilizationMetricsArgs()
         {
         }
+        public static new VmUtilizationMetricsArgs Empty => new VmUtilizationMetricsArgs();
     }
 }

@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudkms/v1:ImportJob")]
-    public partial class ImportJob : Pulumi.CustomResource
+    public partial class ImportJob : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Statement that was generated and signed by the key creator (for example, an HSM) at key creation time. Use this statement to verify attributes of the key as stored on the HSM, independently of Google. Only present if the chosen ImportMethod is one with a protection level of HSM.
@@ -142,7 +142,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         }
     }
 
-    public sealed class ImportJobArgs : Pulumi.ResourceArgs
+    public sealed class ImportJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. It must be unique within a KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
@@ -174,5 +174,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public ImportJobArgs()
         {
         }
+        public static new ImportJobArgs Empty => new ImportJobArgs();
     }
 }

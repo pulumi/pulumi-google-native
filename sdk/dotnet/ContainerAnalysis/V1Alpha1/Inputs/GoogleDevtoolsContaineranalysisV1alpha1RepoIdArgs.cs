@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// A unique identifier for a Cloud Repo.
     /// </summary>
-    public sealed class GoogleDevtoolsContaineranalysisV1alpha1RepoIdArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDevtoolsContaineranalysisV1alpha1RepoIdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A combination of a project ID and a repo name.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public GoogleDevtoolsContaineranalysisV1alpha1RepoIdArgs()
         {
         }
+        public static new GoogleDevtoolsContaineranalysisV1alpha1RepoIdArgs Empty => new GoogleDevtoolsContaineranalysisV1alpha1RepoIdArgs();
     }
 }

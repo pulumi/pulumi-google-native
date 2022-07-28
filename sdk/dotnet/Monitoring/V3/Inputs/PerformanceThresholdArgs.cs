@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// A PerformanceThreshold is used when each window is good when that window has a sufficiently high performance.
     /// </summary>
-    public sealed class PerformanceThresholdArgs : Pulumi.ResourceArgs
+    public sealed class PerformanceThresholdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// BasicSli to evaluate to judge window quality.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public PerformanceThresholdArgs()
         {
         }
+        public static new PerformanceThresholdArgs Empty => new PerformanceThresholdArgs();
     }
 }

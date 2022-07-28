@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Inputs
     /// <summary>
     /// POSIX Group definition to represent a group in a POSIX compliant system.
     /// </summary>
-    public sealed class PosixGroupArgs : Pulumi.ResourceArgs
+    public sealed class PosixGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// GID of the POSIX group.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Inputs
         public PosixGroupArgs()
         {
         }
+        public static new PosixGroupArgs Empty => new PosixGroupArgs();
     }
 }

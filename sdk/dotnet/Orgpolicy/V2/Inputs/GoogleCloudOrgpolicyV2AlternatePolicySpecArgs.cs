@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2.Inputs
     /// <summary>
     /// Similar to PolicySpec but with an extra 'launch' field for launch reference. The PolicySpec here is specific for dry-run/darklaunch.
     /// </summary>
-    public sealed class GoogleCloudOrgpolicyV2AlternatePolicySpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudOrgpolicyV2AlternatePolicySpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2.Inputs
         public GoogleCloudOrgpolicyV2AlternatePolicySpecArgs()
         {
         }
+        public static new GoogleCloudOrgpolicyV2AlternatePolicySpecArgs Empty => new GoogleCloudOrgpolicyV2AlternatePolicySpecArgs();
     }
 }

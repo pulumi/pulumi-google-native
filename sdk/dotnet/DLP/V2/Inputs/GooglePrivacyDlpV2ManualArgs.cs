@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Job trigger option for hybrid jobs. Jobs must be manually created and finished.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2ManualArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2ManualArgs : global::Pulumi.ResourceArgs
     {
         public GooglePrivacyDlpV2ManualArgs()
         {
         }
+        public static new GooglePrivacyDlpV2ManualArgs Empty => new GooglePrivacyDlpV2ManualArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2ActionArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2ActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable email notification for project owners and editors on job's completion/failure.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2ActionArgs()
         {
         }
+        public static new GooglePrivacyDlpV2ActionArgs Empty => new GooglePrivacyDlpV2ActionArgs();
     }
 }

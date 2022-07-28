@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
     /// <summary>
     /// Configuration for a secret environment variable. It has the information necessary to fetch the secret value from secret manager and expose it as an environment variable.
     /// </summary>
-    public sealed class SecretEnvVarArgs : Pulumi.ResourceArgs
+    public sealed class SecretEnvVarArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the environment variable.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
         public SecretEnvVarArgs()
         {
         }
+        public static new SecretEnvVarArgs Empty => new SecretEnvVarArgs();
     }
 }

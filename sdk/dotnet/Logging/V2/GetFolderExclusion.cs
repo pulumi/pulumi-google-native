@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     }
 
 
-    public sealed class GetFolderExclusionArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderExclusionArgs : global::Pulumi.InvokeArgs
     {
         [Input("exclusionId", required: true)]
         public string ExclusionId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetFolderExclusionArgs()
         {
         }
+        public static new GetFolderExclusionArgs Empty => new GetFolderExclusionArgs();
     }
 
-    public sealed class GetFolderExclusionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderExclusionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("exclusionId", required: true)]
         public Input<string> ExclusionId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetFolderExclusionInvokeArgs()
         {
         }
+        public static new GetFolderExclusionInvokeArgs Empty => new GetFolderExclusionInvokeArgs();
     }
 
 

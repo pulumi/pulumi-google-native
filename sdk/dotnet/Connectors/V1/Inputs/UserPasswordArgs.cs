@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
     /// <summary>
     /// Parameters to support Username and Password Authentication.
     /// </summary>
-    public sealed class UserPasswordArgs : Pulumi.ResourceArgs
+    public sealed class UserPasswordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Secret version reference containing the password.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public UserPasswordArgs()
         {
         }
+        public static new UserPasswordArgs Empty => new UserPasswordArgs();
     }
 }

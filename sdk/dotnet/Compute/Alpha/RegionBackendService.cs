@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a regional BackendService resource in the specified project using the data included in the request. For more information, see Backend services overview.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:RegionBackendService")]
-    public partial class RegionBackendService : Pulumi.CustomResource
+    public partial class RegionBackendService : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -306,7 +306,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class RegionBackendServiceArgs : Pulumi.ResourceArgs
+    public sealed class RegionBackendServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -548,5 +548,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public RegionBackendServiceArgs()
         {
         }
+        public static new RegionBackendServiceArgs Empty => new RegionBackendServiceArgs();
     }
 }

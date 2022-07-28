@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// Specifies an intent that starts the main launcher activity.
     /// </summary>
-    public sealed class LauncherActivityIntentArgs : Pulumi.ResourceArgs
+    public sealed class LauncherActivityIntentArgs : global::Pulumi.ResourceArgs
     {
         public LauncherActivityIntentArgs()
         {
         }
+        public static new LauncherActivityIntentArgs Empty => new LauncherActivityIntentArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// Options to control visual rendering of a chart.
     /// </summary>
-    public sealed class ChartOptionsArgs : Pulumi.ResourceArgs
+    public sealed class ChartOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The chart mode.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public ChartOptionsArgs()
         {
         }
+        public static new ChartOptionsArgs Empty => new ChartOptionsArgs();
     }
 }

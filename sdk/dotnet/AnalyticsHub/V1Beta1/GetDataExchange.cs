@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
     }
 
 
-    public sealed class GetDataExchangeArgs : Pulumi.InvokeArgs
+    public sealed class GetDataExchangeArgs : global::Pulumi.InvokeArgs
     {
         [Input("dataExchangeId", required: true)]
         public string DataExchangeId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         public GetDataExchangeArgs()
         {
         }
+        public static new GetDataExchangeArgs Empty => new GetDataExchangeArgs();
     }
 
-    public sealed class GetDataExchangeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDataExchangeInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("dataExchangeId", required: true)]
         public Input<string> DataExchangeId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         public GetDataExchangeInvokeArgs()
         {
         }
+        public static new GetDataExchangeInvokeArgs Empty => new GetDataExchangeInvokeArgs();
     }
 
 

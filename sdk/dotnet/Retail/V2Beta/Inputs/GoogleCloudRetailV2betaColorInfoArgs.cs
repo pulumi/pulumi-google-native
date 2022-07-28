@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
     /// <summary>
     /// The color information of a Product.
     /// </summary>
-    public sealed class GoogleCloudRetailV2betaColorInfoArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2betaColorInfoArgs : global::Pulumi.ResourceArgs
     {
         [Input("colorFamilies")]
         private InputList<string>? _colorFamilies;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
         public GoogleCloudRetailV2betaColorInfoArgs()
         {
         }
+        public static new GoogleCloudRetailV2betaColorInfoArgs Empty => new GoogleCloudRetailV2betaColorInfoArgs();
     }
 }

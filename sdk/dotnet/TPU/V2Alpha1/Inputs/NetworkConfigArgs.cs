@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Inputs
     /// <summary>
     /// Network related configurations.
     /// </summary>
-    public sealed class NetworkConfigArgs : Pulumi.ResourceArgs
+    public sealed class NetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is required if you plan to use the TPU workers to forward routes.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Inputs
         public NetworkConfigArgs()
         {
         }
+        public static new NetworkConfigArgs Empty => new NetworkConfigArgs();
     }
 }

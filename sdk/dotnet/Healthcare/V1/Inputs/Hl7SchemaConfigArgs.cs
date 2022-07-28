@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
     /// <summary>
     /// Root config message for HL7v2 schema. This contains a schema structure of groups and segments, and filters that determine which messages to apply the schema structure to.
     /// </summary>
-    public sealed class Hl7SchemaConfigArgs : Pulumi.ResourceArgs
+    public sealed class Hl7SchemaConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("messageSchemaConfigs")]
         private InputMap<string>? _messageSchemaConfigs;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         public Hl7SchemaConfigArgs()
         {
         }
+        public static new Hl7SchemaConfigArgs Empty => new Hl7SchemaConfigArgs();
     }
 }

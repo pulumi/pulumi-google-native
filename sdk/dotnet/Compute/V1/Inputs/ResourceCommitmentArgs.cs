@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Commitment for a particular resource (a Commitment is composed of one or more of these).
     /// </summary>
-    public sealed class ResourceCommitmentArgs : Pulumi.ResourceArgs
+    public sealed class ResourceCommitmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the accelerator type resource. Applicable only when the type is ACCELERATOR.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public ResourceCommitmentArgs()
         {
         }
+        public static new ResourceCommitmentArgs Empty => new ResourceCommitmentArgs();
     }
 }

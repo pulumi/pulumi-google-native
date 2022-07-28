@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// A maintenance window for VMs. When set, we restrict our maintenance operations to this window.
     /// </summary>
-    public sealed class ResourcePolicyVmMaintenancePolicyMaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyVmMaintenancePolicyMaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         [Input("dailyMaintenanceWindow")]
         public Input<Inputs.ResourcePolicyDailyCycleArgs>? DailyMaintenanceWindow { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public ResourcePolicyVmMaintenancePolicyMaintenanceWindowArgs()
         {
         }
+        public static new ResourcePolicyVmMaintenancePolicyMaintenanceWindowArgs Empty => new ResourcePolicyVmMaintenancePolicyMaintenanceWindowArgs();
     }
 }

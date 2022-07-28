@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Extracts an archive of the type specified in the specified directory.
     /// </summary>
-    public sealed class SoftwareRecipeStepExtractArchiveArgs : Pulumi.ResourceArgs
+    public sealed class SoftwareRecipeStepExtractArchiveArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the relevant artifact in the recipe.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public SoftwareRecipeStepExtractArchiveArgs()
         {
         }
+        public static new SoftwareRecipeStepExtractArchiveArgs Empty => new SoftwareRecipeStepExtractArchiveArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// These values are used to create the distinguished name and subject alternative name fields in an X.509 certificate.
     /// </summary>
-    public sealed class SubjectConfigArgs : Pulumi.ResourceArgs
+    public sealed class SubjectConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Contains distinguished name fields such as the common name, location and organization.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public SubjectConfigArgs()
         {
         }
+        public static new SubjectConfigArgs Empty => new SubjectConfigArgs();
     }
 }

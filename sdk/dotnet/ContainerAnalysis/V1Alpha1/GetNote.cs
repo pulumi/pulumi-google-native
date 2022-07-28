@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
     }
 
 
-    public sealed class GetNoteArgs : Pulumi.InvokeArgs
+    public sealed class GetNoteArgs : global::Pulumi.InvokeArgs
     {
         [Input("noteId", required: true)]
         public string NoteId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public GetNoteArgs()
         {
         }
+        public static new GetNoteArgs Empty => new GetNoteArgs();
     }
 
-    public sealed class GetNoteInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNoteInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("noteId", required: true)]
         public Input<string> NoteId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public GetNoteInvokeArgs()
         {
         }
+        public static new GetNoteInvokeArgs Empty => new GetNoteInvokeArgs();
     }
 
 

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
     }
 
 
-    public sealed class GetTagValueArgs : Pulumi.InvokeArgs
+    public sealed class GetTagValueArgs : global::Pulumi.InvokeArgs
     {
         [Input("tagValueId", required: true)]
         public string TagValueId { get; set; } = null!;
@@ -33,9 +33,10 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public GetTagValueArgs()
         {
         }
+        public static new GetTagValueArgs Empty => new GetTagValueArgs();
     }
 
-    public sealed class GetTagValueInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTagValueInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("tagValueId", required: true)]
         public Input<string> TagValueId { get; set; } = null!;
@@ -43,6 +44,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public GetTagValueInvokeArgs()
         {
         }
+        public static new GetTagValueInvokeArgs Empty => new GetTagValueInvokeArgs();
     }
 
 

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.OSLogin.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:oslogin/v1:SshPublicKey")]
-    public partial class SshPublicKey : Pulumi.CustomResource
+    public partial class SshPublicKey : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An expiration time in microseconds since epoch.
@@ -90,7 +90,7 @@ namespace Pulumi.GoogleNative.OSLogin.V1
         }
     }
 
-    public sealed class SshPublicKeyArgs : Pulumi.ResourceArgs
+    public sealed class SshPublicKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An expiration time in microseconds since epoch.
@@ -110,5 +110,6 @@ namespace Pulumi.GoogleNative.OSLogin.V1
         public SshPublicKeyArgs()
         {
         }
+        public static new SshPublicKeyArgs Empty => new SshPublicKeyArgs();
     }
 }

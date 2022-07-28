@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Details about the work the de-identify operation performed.
     /// </summary>
-    public sealed class DeidentifyOperationMetadataArgs : Pulumi.ResourceArgs
+    public sealed class DeidentifyOperationMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Details about the FHIR store to write the output to.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public DeidentifyOperationMetadataArgs()
         {
         }
+        public static new DeidentifyOperationMetadataArgs Empty => new DeidentifyOperationMetadataArgs();
     }
 }

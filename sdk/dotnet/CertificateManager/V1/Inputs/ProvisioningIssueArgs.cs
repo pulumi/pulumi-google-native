@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1.Inputs
     /// <summary>
     /// Information about issues with provisioning a Managed Certificate.
     /// </summary>
-    public sealed class ProvisioningIssueArgs : Pulumi.ResourceArgs
+    public sealed class ProvisioningIssueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Human readable explanation about the issue. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use Reason enum.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CertificateManager.V1.Inputs
         public ProvisioningIssueArgs()
         {
         }
+        public static new ProvisioningIssueArgs Empty => new ProvisioningIssueArgs();
     }
 }

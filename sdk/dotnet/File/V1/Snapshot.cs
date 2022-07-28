@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.File.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:file/v1:Snapshot")]
-    public partial class Snapshot : Pulumi.CustomResource
+    public partial class Snapshot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time when the snapshot was created.
@@ -117,7 +117,7 @@ namespace Pulumi.GoogleNative.File.V1
         }
     }
 
-    public sealed class SnapshotArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the snapshot with 2048 characters or less. Requests with longer descriptions will be rejected.
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.File.V1
         public SnapshotArgs()
         {
         }
+        public static new SnapshotArgs Empty => new SnapshotArgs();
     }
 }

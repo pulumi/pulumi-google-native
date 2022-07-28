@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DLP.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dlp/v2:OrganizationsDeidentifyTemplate")]
-    public partial class OrganizationsDeidentifyTemplate : Pulumi.CustomResource
+    public partial class OrganizationsDeidentifyTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The creation timestamp of an inspectTemplate.
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         }
     }
 
-    public sealed class OrganizationsDeidentifyTemplateArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationsDeidentifyTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The core content of the template.
@@ -144,5 +144,6 @@ namespace Pulumi.GoogleNative.DLP.V2
         public OrganizationsDeidentifyTemplateArgs()
         {
         }
+        public static new OrganizationsDeidentifyTemplateArgs Empty => new OrganizationsDeidentifyTemplateArgs();
     }
 }

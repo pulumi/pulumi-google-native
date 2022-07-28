@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetSharedflowArgs : Pulumi.InvokeArgs
+    public sealed class GetSharedflowArgs : global::Pulumi.InvokeArgs
     {
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetSharedflowArgs()
         {
         }
+        public static new GetSharedflowArgs Empty => new GetSharedflowArgs();
     }
 
-    public sealed class GetSharedflowInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSharedflowInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetSharedflowInvokeArgs()
         {
         }
+        public static new GetSharedflowInvokeArgs Empty => new GetSharedflowInvokeArgs();
     }
 
 

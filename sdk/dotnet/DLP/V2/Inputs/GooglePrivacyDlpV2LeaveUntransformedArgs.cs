@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Skips the data without modifying it if the requested transformation would cause an error. For example, if a `DateShift` transformation were applied an an IP address, this mode would leave the IP address unchanged in the response.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2LeaveUntransformedArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2LeaveUntransformedArgs : global::Pulumi.ResourceArgs
     {
         public GooglePrivacyDlpV2LeaveUntransformedArgs()
         {
         }
+        public static new GooglePrivacyDlpV2LeaveUntransformedArgs Empty => new GooglePrivacyDlpV2LeaveUntransformedArgs();
     }
 }

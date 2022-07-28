@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
     }
 
 
-    public sealed class GetSourceArgs : Pulumi.InvokeArgs
+    public sealed class GetSourceArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public GetSourceArgs()
         {
         }
+        public static new GetSourceArgs Empty => new GetSourceArgs();
     }
 
-    public sealed class GetSourceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSourceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public GetSourceInvokeArgs()
         {
         }
+        public static new GetSourceInvokeArgs Empty => new GetSourceInvokeArgs();
     }
 
 

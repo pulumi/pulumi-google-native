@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
     }
 
 
-    public sealed class GetAuthorizationPolicyIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetAuthorizationPolicyIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("authorizationPolicyId", required: true)]
         public string AuthorizationPolicyId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public GetAuthorizationPolicyIamPolicyArgs()
         {
         }
+        public static new GetAuthorizationPolicyIamPolicyArgs Empty => new GetAuthorizationPolicyIamPolicyArgs();
     }
 
-    public sealed class GetAuthorizationPolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAuthorizationPolicyIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("authorizationPolicyId", required: true)]
         public Input<string> AuthorizationPolicyId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1
         public GetAuthorizationPolicyIamPolicyInvokeArgs()
         {
         }
+        public static new GetAuthorizationPolicyIamPolicyInvokeArgs Empty => new GetAuthorizationPolicyIamPolicyInvokeArgs();
     }
 
 

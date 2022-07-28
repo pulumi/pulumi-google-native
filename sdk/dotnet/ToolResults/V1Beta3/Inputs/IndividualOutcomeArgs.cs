@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// Step Id and outcome of each individual step that was run as a group with other steps with the same configuration.
     /// </summary>
-    public sealed class IndividualOutcomeArgs : Pulumi.ResourceArgs
+    public sealed class IndividualOutcomeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Unique int given to each step. Ranges from 0(inclusive) to total number of steps(exclusive). The primary step is 0.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public IndividualOutcomeArgs()
         {
         }
+        public static new IndividualOutcomeArgs Empty => new IndividualOutcomeArgs();
     }
 }

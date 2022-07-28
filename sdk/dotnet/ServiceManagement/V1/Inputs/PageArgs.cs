@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Represents a documentation page. A page can contain subpages to represent nested documentation set structure.
     /// </summary>
-    public sealed class PageArgs : Pulumi.ResourceArgs
+    public sealed class PageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Markdown content of the page. You can use (== include {path} ==) to include content from a Markdown file. The content can be used to produce the documentation page such as HTML format page.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public PageArgs()
         {
         }
+        public static new PageArgs Empty => new PageArgs();
     }
 }

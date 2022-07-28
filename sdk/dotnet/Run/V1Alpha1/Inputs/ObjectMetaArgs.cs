@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     /// <summary>
     /// k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
     /// </summary>
-    public sealed class ObjectMetaArgs : Pulumi.ResourceArgs
+    public sealed class ObjectMetaArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -132,5 +132,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public ObjectMetaArgs()
         {
         }
+        public static new ObjectMetaArgs Empty => new ObjectMetaArgs();
     }
 }

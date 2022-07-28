@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// AutoprovisioningNodePoolDefaults contains defaults for a node pool created by NAP.
     /// </summary>
-    public sealed class AutoprovisioningNodePoolDefaultsArgs : Pulumi.ResourceArgs
+    public sealed class AutoprovisioningNodePoolDefaultsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public AutoprovisioningNodePoolDefaultsArgs()
         {
         }
+        public static new AutoprovisioningNodePoolDefaultsArgs Empty => new AutoprovisioningNodePoolDefaultsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Additional disk params.
     /// </summary>
-    public sealed class DiskParamsArgs : Pulumi.ResourceArgs
+    public sealed class DiskParamsArgs : global::Pulumi.ResourceArgs
     {
         [Input("resourceManagerTags")]
         private InputMap<string>? _resourceManagerTags;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public DiskParamsArgs()
         {
         }
+        public static new DiskParamsArgs Empty => new DiskParamsArgs();
     }
 }

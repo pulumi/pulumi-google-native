@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
     /// <summary>
     /// A (sub) field of a type.
     /// </summary>
-    public sealed class FieldArgs : Pulumi.ResourceArgs
+    public sealed class FieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximum number of times this field can be repeated. 0 or -1 means unbounded.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         public FieldArgs()
         {
         }
+        public static new FieldArgs Empty => new FieldArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration for direct-path (via ALTS) with workload identity.
     /// </summary>
-    public sealed class WorkloadALTSConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkloadALTSConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty).
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public WorkloadALTSConfigArgs()
         {
         }
+        public static new WorkloadALTSConfigArgs Empty => new WorkloadALTSConfigArgs();
     }
 }

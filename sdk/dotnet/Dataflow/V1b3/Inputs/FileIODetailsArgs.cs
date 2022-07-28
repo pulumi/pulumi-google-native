@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Metadata for a File connector used by the job.
     /// </summary>
-    public sealed class FileIODetailsArgs : Pulumi.ResourceArgs
+    public sealed class FileIODetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// File Pattern used to access files by the connector.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public FileIODetailsArgs()
         {
         }
+        public static new FileIODetailsArgs Empty => new FileIODetailsArgs();
     }
 }

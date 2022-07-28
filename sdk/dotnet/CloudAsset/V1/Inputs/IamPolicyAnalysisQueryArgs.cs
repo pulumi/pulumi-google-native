@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
     /// <summary>
     /// IAM policy analysis query message.
     /// </summary>
-    public sealed class IamPolicyAnalysisQueryArgs : Pulumi.ResourceArgs
+    public sealed class IamPolicyAnalysisQueryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Specifies roles or permissions for analysis. This is optional.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
         public IamPolicyAnalysisQueryArgs()
         {
         }
+        public static new IamPolicyAnalysisQueryArgs Empty => new IamPolicyAnalysisQueryArgs();
     }
 }

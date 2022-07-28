@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// The spec for modifying the path before sending the request to the matched backend service.
     /// </summary>
-    public sealed class UrlRewriteArgs : Pulumi.ResourceArgs
+    public sealed class UrlRewriteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Before forwarding the request to the selected service, the request's host header is replaced with contents of hostRewrite. The value must be from 1 to 255 characters.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public UrlRewriteArgs()
         {
         }
+        public static new UrlRewriteArgs Empty => new UrlRewriteArgs();
     }
 }

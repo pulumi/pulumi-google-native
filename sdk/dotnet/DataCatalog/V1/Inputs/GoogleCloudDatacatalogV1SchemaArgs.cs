@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Represents a schema, for example, a BigQuery, GoogleSQL, or Avro schema.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1SchemaArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1SchemaArgs : global::Pulumi.ResourceArgs
     {
         [Input("columns")]
         private InputList<Inputs.GoogleCloudDatacatalogV1ColumnSchemaArgs>? _columns;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1SchemaArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1SchemaArgs Empty => new GoogleCloudDatacatalogV1SchemaArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
     /// <summary>
     /// MySQL database profile.
     /// </summary>
-    public sealed class MysqlProfileArgs : Pulumi.ResourceArgs
+    public sealed class MysqlProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hostname for the MySQL connection.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
         public MysqlProfileArgs()
         {
         }
+        public static new MysqlProfileArgs Empty => new MysqlProfileArgs();
     }
 }

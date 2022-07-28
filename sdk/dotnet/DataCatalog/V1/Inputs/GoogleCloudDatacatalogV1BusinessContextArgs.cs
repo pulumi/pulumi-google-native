@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Business Context of the entry.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1BusinessContextArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1BusinessContextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Contact people for the entry.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1BusinessContextArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1BusinessContextArgs Empty => new GoogleCloudDatacatalogV1BusinessContextArgs();
     }
 }

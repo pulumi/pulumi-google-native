@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates a TargetInstance resource in the specified project and zone using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:TargetInstance")]
-    public partial class TargetInstance : Pulumi.CustomResource
+    public partial class TargetInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -123,7 +123,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class TargetInstanceArgs : Pulumi.ResourceArgs
+    public sealed class TargetInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -170,5 +170,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public TargetInstanceArgs()
         {
         }
+        public static new TargetInstanceArgs Empty => new TargetInstanceArgs();
     }
 }

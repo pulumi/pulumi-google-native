@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataproc/v1beta2:Job")]
-    public partial class Job : Pulumi.CustomResource
+    public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Indicates whether the job is completed. If the value is false, the job is still in progress. If true, the job is completed, and status.state field will indicate if it was successful, failed, or cancelled.
@@ -190,7 +190,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         }
     }
 
-    public sealed class JobArgs : Pulumi.ResourceArgs
+    public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Job is a Hadoop job.
@@ -285,5 +285,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public JobArgs()
         {
         }
+        public static new JobArgs Empty => new JobArgs();
     }
 }

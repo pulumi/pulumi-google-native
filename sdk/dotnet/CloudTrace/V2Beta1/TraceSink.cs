@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
     /// Creates a sink that exports trace spans to a destination. The export of newly-ingested traces begins immediately, unless the sink's `writer_identity` is not permitted to write to the destination. A sink can export traces only from the resource owning the sink (the 'parent').
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudtrace/v2beta1:TraceSink")]
-    public partial class TraceSink : Pulumi.CustomResource
+    public partial class TraceSink : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The canonical sink resource name, unique within the project. Must be of the form: projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
@@ -83,7 +83,7 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
         }
     }
 
-    public sealed class TraceSinkArgs : Pulumi.ResourceArgs
+    public sealed class TraceSinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The canonical sink resource name, unique within the project. Must be of the form: projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods.
@@ -103,5 +103,6 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
         public TraceSinkArgs()
         {
         }
+        public static new TraceSinkArgs Empty => new TraceSinkArgs();
     }
 }

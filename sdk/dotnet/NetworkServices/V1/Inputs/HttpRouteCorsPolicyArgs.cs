@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
     /// <summary>
     /// The Specification for allowing client side cross-origin requests.
     /// </summary>
-    public sealed class HttpRouteCorsPolicyArgs : Pulumi.ResourceArgs
+    public sealed class HttpRouteCorsPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default value is false.
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
         public HttpRouteCorsPolicyArgs()
         {
         }
+        public static new HttpRouteCorsPolicyArgs Empty => new HttpRouteCorsPolicyArgs();
     }
 }

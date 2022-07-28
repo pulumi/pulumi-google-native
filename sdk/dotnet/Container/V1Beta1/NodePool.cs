@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
     /// Creates a node pool for a cluster.
     /// </summary>
     [GoogleNativeResourceType("google-native:container/v1beta1:NodePool")]
-    public partial class NodePool : Pulumi.CustomResource
+    public partial class NodePool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
@@ -181,7 +181,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         }
     }
 
-    public sealed class NodePoolArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Autoscaler configuration for this NodePool. Autoscaler is enabled only if a valid configuration is present.
@@ -297,5 +297,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         public NodePoolArgs()
         {
         }
+        public static new NodePoolArgs Empty => new NodePoolArgs();
     }
 }

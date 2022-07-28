@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
     /// <summary>
     /// Represents a user's consent in terms of the resources that can be accessed and under what conditions.
     /// </summary>
-    public sealed class GoogleCloudHealthcareV1ConsentPolicyArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudHealthcareV1ConsentPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The request conditions to meet to grant access. In addition to any supported comparison operators, authorization rules may have `IN` operator as well as at most 10 logical operators that are limited to `AND` (`&amp;&amp;`), `OR` (`||`).
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         public GoogleCloudHealthcareV1ConsentPolicyArgs()
         {
         }
+        public static new GoogleCloudHealthcareV1ConsentPolicyArgs Empty => new GoogleCloudHealthcareV1ConsentPolicyArgs();
     }
 }

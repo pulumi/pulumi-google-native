@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
     /// Creates a repository. The returned Operation will finish once the repository has been created. Its response will be the created Repository.
     /// </summary>
     [GoogleNativeResourceType("google-native:artifactregistry/v1beta1:Repository")]
-    public partial class Repository : Pulumi.CustomResource
+    public partial class Repository : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time when the repository was created.
@@ -123,7 +123,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         }
     }
 
-    public sealed class RepositoryArgs : Pulumi.ResourceArgs
+    public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time when the repository was created.
@@ -188,5 +188,6 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1Beta1
         public RepositoryArgs()
         {
         }
+        public static new RepositoryArgs Empty => new RepositoryArgs();
     }
 }

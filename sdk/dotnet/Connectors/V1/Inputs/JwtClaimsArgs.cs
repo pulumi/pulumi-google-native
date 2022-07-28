@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
     /// <summary>
     /// JWT claims used for the jwt-bearer authorization grant.
     /// </summary>
-    public sealed class JwtClaimsArgs : Pulumi.ResourceArgs
+    public sealed class JwtClaimsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Value for the "aud" claim.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public JwtClaimsArgs()
         {
         }
+        public static new JwtClaimsArgs Empty => new JwtClaimsArgs();
     }
 }

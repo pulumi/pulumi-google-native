@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
     /// Creates a new channel in the specified site.
     /// </summary>
     [GoogleNativeResourceType("google-native:firebasehosting/v1beta1:Channel")]
-    public partial class Channel : Pulumi.CustomResource
+    public partial class Channel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. Immutable. A unique ID within the site that identifies the channel.
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         }
     }
 
-    public sealed class ChannelArgs : Pulumi.ResourceArgs
+    public sealed class ChannelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Immutable. A unique ID within the site that identifies the channel.
@@ -183,5 +183,6 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         public ChannelArgs()
         {
         }
+        public static new ChannelArgs Empty => new ChannelArgs();
     }
 }

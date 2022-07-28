@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Information required for a TCP Uptime check request.
     /// </summary>
-    public sealed class TcpCheckArgs : Pulumi.ResourceArgs
+    public sealed class TcpCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public TcpCheckArgs()
         {
         }
+        public static new TcpCheckArgs Empty => new TcpCheckArgs();
     }
 }

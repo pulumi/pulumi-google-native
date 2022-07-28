@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Contains information about amount of some resource in the cluster. For memory, value should be in GB.
     /// </summary>
-    public sealed class ResourceLimitArgs : Pulumi.ResourceArgs
+    public sealed class ResourceLimitArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum amount of the resource in the cluster.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public ResourceLimitArgs()
         {
         }
+        public static new ResourceLimitArgs Empty => new ResourceLimitArgs();
     }
 }

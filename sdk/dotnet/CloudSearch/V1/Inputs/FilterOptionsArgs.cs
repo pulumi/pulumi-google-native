@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     /// <summary>
     /// Filter options to be applied on query.
     /// </summary>
-    public sealed class FilterOptionsArgs : Pulumi.ResourceArgs
+    public sealed class FilterOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Generic filter to restrict the search, such as `lang:en`, `site:xyz`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public FilterOptionsArgs()
         {
         }
+        public static new FilterOptionsArgs Empty => new FilterOptionsArgs();
     }
 }

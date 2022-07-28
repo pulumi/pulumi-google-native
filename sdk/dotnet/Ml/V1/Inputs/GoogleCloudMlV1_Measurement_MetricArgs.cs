@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// A message representing a metric in the measurement.
     /// </summary>
-    public sealed class GoogleCloudMlV1_Measurement_MetricArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1_Measurement_MetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Metric name.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1_Measurement_MetricArgs()
         {
         }
+        public static new GoogleCloudMlV1_Measurement_MetricArgs Empty => new GoogleCloudMlV1_Measurement_MetricArgs();
     }
 }

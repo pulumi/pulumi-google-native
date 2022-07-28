@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// The quick replies response message.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesArgs : global::Pulumi.ResourceArgs
     {
         [Input("quickReplies")]
         private InputList<string>? _quickReplies;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesArgs();
     }
 }

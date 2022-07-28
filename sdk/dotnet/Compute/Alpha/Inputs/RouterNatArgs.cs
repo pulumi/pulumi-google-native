@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Represents a Nat resource. It enables the VMs within the specified subnetworks to access Internet without external IP addresses. It specifies a list of subnetworks (and the ranges within) that want to use NAT. Customers can also provide the external IPs that would be used for NAT. GCP would auto-allocate ephemeral IPs if no external IPs are provided.
     /// </summary>
-    public sealed class RouterNatArgs : Pulumi.ResourceArgs
+    public sealed class RouterNatArgs : global::Pulumi.ResourceArgs
     {
         [Input("drainNatIps")]
         private InputList<string>? _drainNatIps;
@@ -159,5 +159,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public RouterNatArgs()
         {
         }
+        public static new RouterNatArgs Empty => new RouterNatArgs();
     }
 }

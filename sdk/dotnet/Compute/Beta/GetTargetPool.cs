@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
 
-    public sealed class GetTargetPoolArgs : Pulumi.InvokeArgs
+    public sealed class GetTargetPoolArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetTargetPoolArgs()
         {
         }
+        public static new GetTargetPoolArgs Empty => new GetTargetPoolArgs();
     }
 
-    public sealed class GetTargetPoolInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTargetPoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetTargetPoolInvokeArgs()
         {
         }
+        public static new GetTargetPoolInvokeArgs Empty => new GetTargetPoolInvokeArgs();
     }
 
 

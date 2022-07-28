@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Specifies a location to extract JWT from an API request.
     /// </summary>
-    public sealed class JwtLocationArgs : Pulumi.ResourceArgs
+    public sealed class JwtLocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies cookie name to extract JWT token.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public JwtLocationArgs()
         {
         }
+        public static new JwtLocationArgs Empty => new JwtLocationArgs();
     }
 }

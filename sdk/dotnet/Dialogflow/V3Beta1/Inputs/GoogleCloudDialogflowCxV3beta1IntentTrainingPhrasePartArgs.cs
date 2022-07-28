@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Represents a part of a training phrase.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The parameter used to annotate this part of the training phrase. This field is required for annotated parts of the training phrase.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs Empty => new GoogleCloudDialogflowCxV3beta1IntentTrainingPhrasePartArgs();
     }
 }

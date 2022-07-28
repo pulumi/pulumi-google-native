@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
     /// </summary>
-    public sealed class BasicScalingArgs : Pulumi.ResourceArgs
+    public sealed class BasicScalingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Duration of time after the last request that an instance must wait before the instance is shut down.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public BasicScalingArgs()
         {
         }
+        public static new BasicScalingArgs Empty => new BasicScalingArgs();
     }
 }

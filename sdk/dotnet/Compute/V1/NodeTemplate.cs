@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     /// Creates a NodeTemplate resource in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:NodeTemplate")]
-    public partial class NodeTemplate : Pulumi.CustomResource
+    public partial class NodeTemplate : global::Pulumi.CustomResource
     {
         [Output("accelerators")]
         public Output<ImmutableArray<Outputs.AcceleratorConfigResponse>> Accelerators { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
     }
 
-    public sealed class NodeTemplateArgs : Pulumi.ResourceArgs
+    public sealed class NodeTemplateArgs : global::Pulumi.ResourceArgs
     {
         [Input("accelerators")]
         private InputList<Inputs.AcceleratorConfigArgs>? _accelerators;
@@ -234,5 +234,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public NodeTemplateArgs()
         {
         }
+        public static new NodeTemplateArgs Empty => new NodeTemplateArgs();
     }
 }

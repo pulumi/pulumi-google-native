@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// Generic tool step to be used for binaries we do not explicitly support. For example: running cp to copy artifacts from one location to another.
     /// </summary>
-    public sealed class ToolExecutionStepArgs : Pulumi.ResourceArgs
+    public sealed class ToolExecutionStepArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A Tool execution. - In response: present if set by create/update request - In create/update request: optional
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public ToolExecutionStepArgs()
         {
         }
+        public static new ToolExecutionStepArgs Empty => new ToolExecutionStepArgs();
     }
 }

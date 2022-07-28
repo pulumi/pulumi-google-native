@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// δ-presence metric, used to estimate how likely it is for an attacker to figure out that one given individual appears in a de-identified dataset. Similarly to the k-map metric, we cannot compute δ-presence exactly without knowing the attack dataset, so we use a statistical model instead.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("auxiliaryTables")]
         private InputList<Inputs.GooglePrivacyDlpV2StatisticalTableArgs>? _auxiliaryTables;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs Empty => new GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs();
     }
 }

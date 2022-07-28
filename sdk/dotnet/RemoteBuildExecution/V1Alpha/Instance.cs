@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:remotebuildexecution/v1alpha:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The policy to define whether or not RBE features can be used or how they can be used.
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The policy to define whether or not RBE features can be used or how they can be used.
@@ -128,5 +128,6 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 }

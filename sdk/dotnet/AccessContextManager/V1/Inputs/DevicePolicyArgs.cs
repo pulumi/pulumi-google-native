@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
     /// <summary>
     /// `DevicePolicy` specifies device specific restrictions necessary to acquire a given access level. A `DevicePolicy` specifies requirements for requests from devices to be granted access levels, it does not do any enforcement on the device. `DevicePolicy` acts as an AND over all specified fields, and each repeated field is an OR over its elements. Any unset fields are ignored. For example, if the proto is { os_type : DESKTOP_WINDOWS, os_type : DESKTOP_LINUX, encryption_status: ENCRYPTED}, then the DevicePolicy will be true for requests originating from encrypted Linux desktops and encrypted Windows desktops.
     /// </summary>
-    public sealed class DevicePolicyArgs : Pulumi.ResourceArgs
+    public sealed class DevicePolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedDeviceManagementLevels")]
         private InputList<Pulumi.GoogleNative.AccessContextManager.V1.DevicePolicyAllowedDeviceManagementLevelsItem>? _allowedDeviceManagementLevels;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         public DevicePolicyArgs()
         {
         }
+        public static new DevicePolicyArgs Empty => new DevicePolicyArgs();
     }
 }

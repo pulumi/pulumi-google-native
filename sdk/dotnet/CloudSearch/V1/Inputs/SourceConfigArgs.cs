@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     /// <summary>
     /// Configurations for a source while processing a Search or Suggest request.
     /// </summary>
-    public sealed class SourceConfigArgs : Pulumi.ResourceArgs
+    public sealed class SourceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The crowding configuration for the source.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public SourceConfigArgs()
         {
         }
+        public static new SourceConfigArgs Empty => new SourceConfigArgs();
     }
 }

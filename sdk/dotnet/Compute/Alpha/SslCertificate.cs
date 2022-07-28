@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a SslCertificate resource in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:SslCertificate")]
-    public partial class SslCertificate : Pulumi.CustomResource
+    public partial class SslCertificate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A value read into memory from a certificate file. The certificate file must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
@@ -155,7 +155,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class SslCertificateArgs : Pulumi.ResourceArgs
+    public sealed class SslCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A value read into memory from a certificate file. The certificate file must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
@@ -211,5 +211,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public SslCertificateArgs()
         {
         }
+        public static new SslCertificateArgs Empty => new SslCertificateArgs();
     }
 }

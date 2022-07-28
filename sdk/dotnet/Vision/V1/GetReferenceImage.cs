@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Vision.V1
     }
 
 
-    public sealed class GetReferenceImageArgs : Pulumi.InvokeArgs
+    public sealed class GetReferenceImageArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Vision.V1
         public GetReferenceImageArgs()
         {
         }
+        public static new GetReferenceImageArgs Empty => new GetReferenceImageArgs();
     }
 
-    public sealed class GetReferenceImageInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetReferenceImageInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Vision.V1
         public GetReferenceImageInvokeArgs()
         {
         }
+        public static new GetReferenceImageInvokeArgs Empty => new GetReferenceImageInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Defines the criteria for selecting VM Instances by OS type.
     /// </summary>
-    public sealed class AssignmentOsTypeArgs : Pulumi.ResourceArgs
+    public sealed class AssignmentOsTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Targets VM instances with OS Inventory enabled and having the following OS architecture.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public AssignmentOsTypeArgs()
         {
         }
+        public static new AssignmentOsTypeArgs Empty => new AssignmentOsTypeArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// A Dataproc OSS metric.
     /// </summary>
-    public sealed class MetricArgs : Pulumi.ResourceArgs
+    public sealed class MetricArgs : global::Pulumi.ResourceArgs
     {
         [Input("metricOverrides")]
         private InputList<string>? _metricOverrides;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public MetricArgs()
         {
         }
+        public static new MetricArgs Empty => new MetricArgs();
     }
 }

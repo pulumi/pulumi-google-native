@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Encapsulates numeric value that can be either absolute or relative.
     /// </summary>
-    public sealed class FixedOrPercentArgs : Pulumi.ResourceArgs
+    public sealed class FixedOrPercentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies a fixed number of VM instances. This must be a positive integer.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public FixedOrPercentArgs()
         {
         }
+        public static new FixedOrPercentArgs Empty => new FixedOrPercentArgs();
     }
 }

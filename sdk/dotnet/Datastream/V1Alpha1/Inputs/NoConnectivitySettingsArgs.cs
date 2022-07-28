@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
     /// <summary>
     /// No connectivity settings.
     /// </summary>
-    public sealed class NoConnectivitySettingsArgs : Pulumi.ResourceArgs
+    public sealed class NoConnectivitySettingsArgs : global::Pulumi.ResourceArgs
     {
         public NoConnectivitySettingsArgs()
         {
         }
+        public static new NoConnectivitySettingsArgs Empty => new NoConnectivitySettingsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     /// <summary>
     /// Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
     /// </summary>
-    public sealed class SecurityContextArgs : Pulumi.ResourceArgs
+    public sealed class SecurityContextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public SecurityContextArgs()
         {
         }
+        public static new SecurityContextArgs Empty => new SecurityContextArgs();
     }
 }

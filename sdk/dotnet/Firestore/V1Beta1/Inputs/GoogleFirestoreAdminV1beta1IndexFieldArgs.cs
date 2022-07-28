@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1.Inputs
     /// <summary>
     /// A field of an index.
     /// </summary>
-    public sealed class GoogleFirestoreAdminV1beta1IndexFieldArgs : Pulumi.ResourceArgs
+    public sealed class GoogleFirestoreAdminV1beta1IndexFieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The path of the field. Must match the field path specification described by google.firestore.v1beta1.Document.fields. Special field path `__name__` may be used by itself or at the end of a path. `__type__` may be used only at the end of path.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Firestore.V1Beta1.Inputs
         public GoogleFirestoreAdminV1beta1IndexFieldArgs()
         {
         }
+        public static new GoogleFirestoreAdminV1beta1IndexFieldArgs Empty => new GoogleFirestoreAdminV1beta1IndexFieldArgs();
     }
 }

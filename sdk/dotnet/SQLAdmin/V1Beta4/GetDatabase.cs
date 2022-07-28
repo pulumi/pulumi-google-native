@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
 
-    public sealed class GetDatabaseArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseArgs : global::Pulumi.InvokeArgs
     {
         [Input("database", required: true)]
         public string Database { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public GetDatabaseArgs()
         {
         }
+        public static new GetDatabaseArgs Empty => new GetDatabaseArgs();
     }
 
-    public sealed class GetDatabaseInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatabaseInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("database", required: true)]
         public Input<string> Database { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public GetDatabaseInvokeArgs()
         {
         }
+        public static new GetDatabaseInvokeArgs Empty => new GetDatabaseInvokeArgs();
     }
 
 

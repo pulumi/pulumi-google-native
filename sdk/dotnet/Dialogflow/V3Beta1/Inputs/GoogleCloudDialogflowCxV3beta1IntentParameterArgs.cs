@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Represents an intent parameter.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1IntentParameterArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1IntentParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The entity type of the parameter. Format: `projects/-/locations/-/agents/-/entityTypes/` for system entity types (for example, `projects/-/locations/-/agents/-/entityTypes/sys.date`), or `projects//locations//agents//entityTypes/` for developer entity types.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1IntentParameterArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1IntentParameterArgs Empty => new GoogleCloudDialogflowCxV3beta1IntentParameterArgs();
     }
 }

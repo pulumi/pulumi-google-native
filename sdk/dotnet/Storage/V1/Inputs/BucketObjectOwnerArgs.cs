@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The owner of the object. This will always be the uploader of the object.
     /// </summary>
-    public sealed class BucketObjectOwnerArgs : Pulumi.ResourceArgs
+    public sealed class BucketObjectOwnerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The entity, in the form user-userId.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketObjectOwnerArgs()
         {
         }
+        public static new BucketObjectOwnerArgs Empty => new BucketObjectOwnerArgs();
     }
 }

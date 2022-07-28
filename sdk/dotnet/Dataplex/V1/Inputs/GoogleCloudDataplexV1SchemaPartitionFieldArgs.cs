@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Represents a key field within the entity's partition structure. You could have up to 20 partition fields, but only the first 10 partitions have the filtering ability due to performance consideration. Note: Partition fields are immutable.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1SchemaPartitionFieldArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1SchemaPartitionFieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Partition field name must consist of letters, numbers, and underscores only, with a maximum of length of 256 characters, and must begin with a letter or underscore..
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1SchemaPartitionFieldArgs()
         {
         }
+        public static new GoogleCloudDataplexV1SchemaPartitionFieldArgs Empty => new GoogleCloudDataplexV1SchemaPartitionFieldArgs();
     }
 }

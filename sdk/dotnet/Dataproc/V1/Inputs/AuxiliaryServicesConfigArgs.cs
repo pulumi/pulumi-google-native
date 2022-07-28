@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Auxiliary services configuration for a Cluster.
     /// </summary>
-    public sealed class AuxiliaryServicesConfigArgs : Pulumi.ResourceArgs
+    public sealed class AuxiliaryServicesConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The Hive Metastore configuration for this workload.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public AuxiliaryServicesConfigArgs()
         {
         }
+        public static new AuxiliaryServicesConfigArgs Empty => new AuxiliaryServicesConfigArgs();
     }
 }

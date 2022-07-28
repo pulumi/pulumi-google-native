@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
     /// Creates a type provider.
     /// </summary>
     [GoogleNativeResourceType("google-native:deploymentmanager/alpha:TypeProvider")]
-    public partial class TypeProvider : Pulumi.CustomResource
+    public partial class TypeProvider : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Allows resource handling overrides for specific collections
@@ -131,7 +131,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         }
     }
 
-    public sealed class TypeProviderArgs : Pulumi.ResourceArgs
+    public sealed class TypeProviderArgs : global::Pulumi.ResourceArgs
     {
         [Input("collectionOverrides")]
         private InputList<Inputs.CollectionOverrideArgs>? _collectionOverrides;
@@ -205,5 +205,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         public TypeProviderArgs()
         {
         }
+        public static new TypeProviderArgs Empty => new TypeProviderArgs();
     }
 }

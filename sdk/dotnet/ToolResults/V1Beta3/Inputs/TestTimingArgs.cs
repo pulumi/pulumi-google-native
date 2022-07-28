@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// Testing timing break down to know phases.
     /// </summary>
-    public sealed class TestTimingArgs : Pulumi.ResourceArgs
+    public sealed class TestTimingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How long it took to run the test process. - In response: present if previously set. - In create/update request: optional
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public TestTimingArgs()
         {
         }
+        public static new TestTimingArgs Empty => new TestTimingArgs();
     }
 }

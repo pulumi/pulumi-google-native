@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// A collection of conditions.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2ConditionsArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2ConditionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("conditions")]
         private InputList<Inputs.GooglePrivacyDlpV2ConditionArgs>? _conditions;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2ConditionsArgs()
         {
         }
+        public static new GooglePrivacyDlpV2ConditionsArgs Empty => new GooglePrivacyDlpV2ConditionsArgs();
     }
 }

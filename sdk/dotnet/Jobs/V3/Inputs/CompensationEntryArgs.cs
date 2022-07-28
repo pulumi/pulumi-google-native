@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Jobs.V3.Inputs
     /// <summary>
     /// A compensation entry that represents one component of compensation, such as base pay, bonus, or other compensation type. Annualization: One compensation entry can be annualized if - it contains valid amount or range. - and its expected_units_per_year is set or can be derived. Its annualized range is determined as (amount or range) times expected_units_per_year.
     /// </summary>
-    public sealed class CompensationEntryArgs : Pulumi.ResourceArgs
+    public sealed class CompensationEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Compensation amount.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Jobs.V3.Inputs
         public CompensationEntryArgs()
         {
         }
+        public static new CompensationEntryArgs Empty => new CompensationEntryArgs();
     }
 }

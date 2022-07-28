@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Provides data to pass through to the worker harness.
     /// </summary>
-    public sealed class WorkerSettingsArgs : Pulumi.ResourceArgs
+    public sealed class WorkerSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The base URL for accessing Google Cloud APIs. When workers access Google Cloud APIs, they logically do so via relative URLs. If this field is specified, it supplies the base URL to use for resolving these relative URLs. The normative algorithm used is defined by RFC 1808, "Relative Uniform Resource Locators". If not specified, the default value is "http://www.googleapis.com/"
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public WorkerSettingsArgs()
         {
         }
+        public static new WorkerSettingsArgs Empty => new WorkerSettingsArgs();
     }
 }

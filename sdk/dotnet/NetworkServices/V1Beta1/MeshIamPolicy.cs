@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkservices/v1beta1:MeshIamPolicy")]
-    public partial class MeshIamPolicy : Pulumi.CustomResource
+    public partial class MeshIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         }
     }
 
-    public sealed class MeshIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class MeshIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public MeshIamPolicyArgs()
         {
         }
+        public static new MeshIamPolicyArgs Empty => new MeshIamPolicyArgs();
     }
 }

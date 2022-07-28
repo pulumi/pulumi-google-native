@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Other properties of the build.
     /// </summary>
-    public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs : Pulumi.ResourceArgs
+    public sealed class GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs : global::Pulumi.ResourceArgs
     {
         [Input("buildFinishedOn")]
         public Input<string>? BuildFinishedOn { get; set; }
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs()
         {
         }
+        public static new GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs Empty => new GrafeasV1SlsaProvenanceZeroTwoSlsaMetadataArgs();
     }
 }

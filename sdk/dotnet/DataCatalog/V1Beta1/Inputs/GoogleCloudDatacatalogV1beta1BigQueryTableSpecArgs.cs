@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Inputs
     /// <summary>
     /// Describes a BigQuery table.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Spec of a BigQuery table. This field should only be populated if `table_source_type` is `BIGQUERY_TABLE`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Inputs
         public GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs Empty => new GoogleCloudDatacatalogV1beta1BigQueryTableSpecArgs();
     }
 }

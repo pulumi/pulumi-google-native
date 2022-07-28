@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// A list of flow version variants.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1VersionVariantsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1VersionVariantsArgs : global::Pulumi.ResourceArgs
     {
         [Input("variants")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1VersionVariantsVariantArgs>? _variants;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1VersionVariantsArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1VersionVariantsArgs Empty => new GoogleCloudDialogflowCxV3beta1VersionVariantsArgs();
     }
 }

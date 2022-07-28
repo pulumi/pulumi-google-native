@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Container of information related to one possible annotation that can be used in a labeling task. For example, an image classification task where images are labeled as `dog` or `cat` must reference an AnnotationSpec for `dog` and an AnnotationSpec for `cat`.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1AnnotationSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1AnnotationSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. User-provided description of the annotation specification. The description can be up to 10,000 characters long.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1AnnotationSpecArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1AnnotationSpecArgs Empty => new GoogleCloudDatalabelingV1beta1AnnotationSpecArgs();
     }
 }

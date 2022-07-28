@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataplex/v1:LakeAssetIamPolicy")]
-    public partial class LakeAssetIamPolicy : Pulumi.CustomResource
+    public partial class LakeAssetIamPolicy : global::Pulumi.CustomResource
     {
         [Output("assetId")]
         public Output<string> AssetId { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         }
     }
 
-    public sealed class LakeAssetIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class LakeAssetIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("assetId", required: true)]
         public Input<string> AssetId { get; set; } = null!;
@@ -169,5 +169,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public LakeAssetIamPolicyArgs()
         {
         }
+        public static new LakeAssetIamPolicyArgs Empty => new LakeAssetIamPolicyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// Represents a weekly schedule.
     /// </summary>
-    public sealed class WeeklyScheduleArgs : Pulumi.ResourceArgs
+    public sealed class WeeklyScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Day of the week.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public WeeklyScheduleArgs()
         {
         }
+        public static new WeeklyScheduleArgs Empty => new WeeklyScheduleArgs();
     }
 }

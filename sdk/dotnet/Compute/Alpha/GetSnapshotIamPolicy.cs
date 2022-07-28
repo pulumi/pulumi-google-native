@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetSnapshotIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetSnapshotIamPolicyArgs()
         {
         }
+        public static new GetSnapshotIamPolicyArgs Empty => new GetSnapshotIamPolicyArgs();
     }
 
-    public sealed class GetSnapshotIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetSnapshotIamPolicyInvokeArgs()
         {
         }
+        public static new GetSnapshotIamPolicyInvokeArgs Empty => new GetSnapshotIamPolicyInvokeArgs();
     }
 
 

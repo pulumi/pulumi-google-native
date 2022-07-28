@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     }
 
 
-    public sealed class GetDocumentArgs : Pulumi.InvokeArgs
+    public sealed class GetDocumentArgs : global::Pulumi.InvokeArgs
     {
         [Input("documentId", required: true)]
         public string DocumentId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public GetDocumentArgs()
         {
         }
+        public static new GetDocumentArgs Empty => new GetDocumentArgs();
     }
 
-    public sealed class GetDocumentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDocumentInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("documentId", required: true)]
         public Input<string> DocumentId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public GetDocumentInvokeArgs()
         {
         }
+        public static new GetDocumentInvokeArgs Empty => new GetDocumentInvokeArgs();
     }
 
 

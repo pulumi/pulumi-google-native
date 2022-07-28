@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
     /// <summary>
     /// VmwareVmDetails describes a VM in vCenter.
     /// </summary>
-    public sealed class VmwareVmDetailsArgs : Pulumi.ResourceArgs
+    public sealed class VmwareVmDetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The total size of the storage allocated to the VM in MB.
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
         public VmwareVmDetailsArgs()
         {
         }
+        public static new VmwareVmDetailsArgs Empty => new VmwareVmDetailsArgs();
     }
 }

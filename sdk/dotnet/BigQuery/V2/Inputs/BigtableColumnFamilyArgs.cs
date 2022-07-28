@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class BigtableColumnFamilyArgs : Pulumi.ResourceArgs
+    public sealed class BigtableColumnFamilyArgs : global::Pulumi.ResourceArgs
     {
         [Input("columns")]
         private InputList<Inputs.BigtableColumnArgs>? _columns;
@@ -51,5 +51,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public BigtableColumnFamilyArgs()
         {
         }
+        public static new BigtableColumnFamilyArgs Empty => new BigtableColumnFamilyArgs();
     }
 }

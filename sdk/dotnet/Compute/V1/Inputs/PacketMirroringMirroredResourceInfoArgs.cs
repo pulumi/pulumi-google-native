@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
-    public sealed class PacketMirroringMirroredResourceInfoArgs : Pulumi.ResourceArgs
+    public sealed class PacketMirroringMirroredResourceInfoArgs : global::Pulumi.ResourceArgs
     {
         [Input("instances")]
         private InputList<Inputs.PacketMirroringMirroredResourceInfoInstanceInfoArgs>? _instances;
@@ -51,5 +51,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public PacketMirroringMirroredResourceInfoArgs()
         {
         }
+        public static new PacketMirroringMirroredResourceInfoArgs Empty => new PacketMirroringMirroredResourceInfoArgs();
     }
 }

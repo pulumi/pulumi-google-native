@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudidentity/v1beta1:Membership")]
-    public partial class Membership : Pulumi.CustomResource
+    public partial class Membership : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time when the `Membership` was created.
@@ -108,7 +108,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         }
     }
 
-    public sealed class MembershipArgs : Pulumi.ResourceArgs
+    public sealed class MembershipArgs : global::Pulumi.ResourceArgs
     {
         [Input("groupId", required: true)]
         public Input<string> GroupId { get; set; } = null!;
@@ -140,5 +140,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         public MembershipArgs()
         {
         }
+        public static new MembershipArgs Empty => new MembershipArgs();
     }
 }

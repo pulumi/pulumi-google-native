@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// Custom conversation models used in agent assist feature. Supported feature: ARTICLE_SUGGESTION, SMART_COMPOSE, SMART_REPLY, CONVERSATION_SUMMARIZATION.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Conversation model resource name. Format: `projects//conversationModels/`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs Empty => new GoogleCloudDialogflowV2HumanAgentAssistantConfigConversationModelConfigArgs();
     }
 }

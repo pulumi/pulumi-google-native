@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Metadata for classification annotations.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the classification task is multi-label or not.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs Empty => new GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs();
     }
 }

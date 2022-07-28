@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// Encryption settings for the cluster.
     /// </summary>
-    public sealed class EncryptionConfigArgs : Pulumi.ResourceArgs
+    public sealed class EncryptionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The Cloud KMS key name to use for PD disk encryption for all instances in the cluster.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public EncryptionConfigArgs()
         {
         }
+        public static new EncryptionConfigArgs Empty => new EncryptionConfigArgs();
     }
 }

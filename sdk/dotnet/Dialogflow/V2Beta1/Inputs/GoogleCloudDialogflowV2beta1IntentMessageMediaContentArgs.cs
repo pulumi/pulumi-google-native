@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// The media content card for Actions on Google.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs : global::Pulumi.ResourceArgs
     {
         [Input("mediaObjects", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs>? _mediaObjects;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs();
     }
 }

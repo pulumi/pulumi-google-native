@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetRegionHealthCheckArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionHealthCheckArgs : global::Pulumi.InvokeArgs
     {
         [Input("healthCheck", required: true)]
         public string HealthCheck { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetRegionHealthCheckArgs()
         {
         }
+        public static new GetRegionHealthCheckArgs Empty => new GetRegionHealthCheckArgs();
     }
 
-    public sealed class GetRegionHealthCheckInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionHealthCheckInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("healthCheck", required: true)]
         public Input<string> HealthCheck { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetRegionHealthCheckInvokeArgs()
         {
         }
+        public static new GetRegionHealthCheckInvokeArgs Empty => new GetRegionHealthCheckInvokeArgs();
     }
 
 

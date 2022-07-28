@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// A Dataproc job for running Apache Hive (https://hive.apache.org/) queries on YARN.
     /// </summary>
-    public sealed class HiveJobArgs : Pulumi.ResourceArgs
+    public sealed class HiveJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public HiveJobArgs()
         {
         }
+        public static new HiveJobArgs Empty => new HiveJobArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// This is deprecated and has no effect. Do not use.
     /// </summary>
-    public sealed class LogConfigCloudAuditOptionsArgs : Pulumi.ResourceArgs
+    public sealed class LogConfigCloudAuditOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is deprecated and has no effect. Do not use.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public LogConfigCloudAuditOptionsArgs()
         {
         }
+        public static new LogConfigCloudAuditOptionsArgs Empty => new LogConfigCloudAuditOptionsArgs();
     }
 }

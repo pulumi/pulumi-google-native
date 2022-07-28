@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// AnnotationSource holds the source information of the annotation.
     /// </summary>
-    public sealed class AnnotationSourceArgs : Pulumi.ResourceArgs
+    public sealed class AnnotationSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud Healthcare API resource.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public AnnotationSourceArgs()
         {
         }
+        public static new AnnotationSourceArgs Empty => new AnnotationSourceArgs();
     }
 }

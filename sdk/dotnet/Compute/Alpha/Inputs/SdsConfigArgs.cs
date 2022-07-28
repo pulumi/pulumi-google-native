@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] The configuration to access the SDS server. The configuration to access the SDS server.
     /// </summary>
-    public sealed class SdsConfigArgs : Pulumi.ResourceArgs
+    public sealed class SdsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration to access the SDS server over GRPC.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SdsConfigArgs()
         {
         }
+        public static new SdsConfigArgs Empty => new SdsConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Manifest configuration.
     /// </summary>
-    public sealed class ManifestArgs : Pulumi.ResourceArgs
+    public sealed class ManifestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the generated file. The default is `manifest` with the extension suffix corresponding to the `Manifest.type`.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public ManifestArgs()
         {
         }
+        public static new ManifestArgs Empty => new ManifestArgs();
     }
 }

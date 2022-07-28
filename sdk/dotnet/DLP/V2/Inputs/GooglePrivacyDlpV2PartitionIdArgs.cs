@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Datastore partition ID. A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty. A partition ID contains several dimensions: project ID and namespace ID.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2PartitionIdArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2PartitionIdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If not empty, the ID of the namespace to which the entities belong.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2PartitionIdArgs()
         {
         }
+        public static new GooglePrivacyDlpV2PartitionIdArgs Empty => new GooglePrivacyDlpV2PartitionIdArgs();
     }
 }

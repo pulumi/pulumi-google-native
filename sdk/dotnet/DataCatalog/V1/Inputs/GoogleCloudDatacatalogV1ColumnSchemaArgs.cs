@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// A column within a schema. Columns can be nested inside other columns.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1ColumnSchemaArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1ColumnSchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1ColumnSchemaArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1ColumnSchemaArgs Empty => new GoogleCloudDatacatalogV1ColumnSchemaArgs();
     }
 }

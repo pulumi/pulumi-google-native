@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:domains/v1alpha2:Registration")]
-    public partial class Registration : Pulumi.CustomResource
+    public partial class Registration : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Settings for contact information linked to the `Registration`. You cannot update these with the `UpdateRegistration` method. To update these settings, use the `ConfigureContactSettings` method.
@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         }
     }
 
-    public sealed class RegistrationArgs : Pulumi.ResourceArgs
+    public sealed class RegistrationArgs : global::Pulumi.ResourceArgs
     {
         [Input("contactNotices")]
         private InputList<Pulumi.GoogleNative.Domains.V1Alpha2.RegistrationContactNoticesItem>? _contactNotices;
@@ -237,5 +237,6 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2
         public RegistrationArgs()
         {
         }
+        public static new RegistrationArgs Empty => new RegistrationArgs();
     }
 }

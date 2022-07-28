@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Shift a date forward or backward in time by a random amount which is consistent for a given patient and crypto key combination.
     /// </summary>
-    public sealed class DateShiftConfigArgs : Pulumi.ResourceArgs
+    public sealed class DateShiftConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An AES 128/192/256 bit key. Causes the shift to be computed based on this key and the patient ID. A default key is generated for each de-identification operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public DateShiftConfigArgs()
         {
         }
+        public static new DateShiftConfigArgs Empty => new DateShiftConfigArgs();
     }
 }

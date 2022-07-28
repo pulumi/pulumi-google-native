@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
 {
 
-    public sealed class CompositeFilterArgs : Pulumi.ResourceArgs
+    public sealed class CompositeFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The logic operator of the sub filter.
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public CompositeFilterArgs()
         {
         }
+        public static new CompositeFilterArgs Empty => new CompositeFilterArgs();
     }
 }

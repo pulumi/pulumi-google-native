@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     /// Creates an intent in the specified agent. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:Intent")]
-    public partial class Intent : Pulumi.CustomResource
+    public partial class Intent : global::Pulumi.CustomResource
     {
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
@@ -127,7 +127,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         }
     }
 
-    public sealed class IntentArgs : Pulumi.ResourceArgs
+    public sealed class IntentArgs : global::Pulumi.ResourceArgs
     {
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -213,5 +213,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public IntentArgs()
         {
         }
+        public static new IntentArgs Empty => new IntentArgs();
     }
 }

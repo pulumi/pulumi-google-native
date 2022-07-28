@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
     /// <summary>
     /// Options allows customized resource handling by Deployment Manager.
     /// </summary>
-    public sealed class OptionsArgs : Pulumi.ResourceArgs
+    public sealed class OptionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("asyncOptions")]
         private InputList<Inputs.AsyncOptionsArgs>? _asyncOptions;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
         public OptionsArgs()
         {
         }
+        public static new OptionsArgs Empty => new OptionsArgs();
     }
 }

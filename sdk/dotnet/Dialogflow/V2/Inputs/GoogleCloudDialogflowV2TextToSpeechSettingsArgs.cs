@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// Instructs the speech synthesizer on how to generate the output audio content.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2TextToSpeechSettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2TextToSpeechSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Indicates whether text to speech is enabled. Even when this field is false, other settings in this proto are still retained.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2TextToSpeechSettingsArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2TextToSpeechSettingsArgs Empty => new GoogleCloudDialogflowV2TextToSpeechSettingsArgs();
     }
 }

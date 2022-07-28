@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// A DSSE signature
     /// </summary>
-    public sealed class EnvelopeSignatureArgs : Pulumi.ResourceArgs
+    public sealed class EnvelopeSignatureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A reference id to the key being used for signing
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public EnvelopeSignatureArgs()
         {
         }
+        public static new EnvelopeSignatureArgs Empty => new EnvelopeSignatureArgs();
     }
 }

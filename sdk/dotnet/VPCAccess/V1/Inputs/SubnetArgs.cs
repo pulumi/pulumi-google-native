@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.VPCAccess.V1.Inputs
     /// <summary>
     /// The subnet in which to house the connector
     /// </summary>
-    public sealed class SubnetArgs : Pulumi.ResourceArgs
+    public sealed class SubnetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Subnet name (relative, not fully qualified). E.g. if the full subnet selfLink is https://compute.googleapis.com/compute/v1/projects/{project}/regions/{region}/subnetworks/{subnetName} the correct input for this field would be {subnetName}
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.VPCAccess.V1.Inputs
         public SubnetArgs()
         {
         }
+        public static new SubnetArgs Empty => new SubnetArgs();
     }
 }

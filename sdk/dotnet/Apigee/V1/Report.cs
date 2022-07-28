@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Creates a Custom Report for an Organization. A Custom Report provides Apigee Customers to create custom dashboards in addition to the standard dashboards which are provided. The Custom Report in its simplest form contains specifications about metrics, dimensions and filters. It is important to note that the custom report by itself does not provide an executable entity. The Edge UI converts the custom report definition into an analytics query and displays the result in a chart.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Report")]
-    public partial class Report : Pulumi.CustomResource
+    public partial class Report : global::Pulumi.CustomResource
     {
         /// <summary>
         /// This field contains the chart type for the report
@@ -197,7 +197,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class ReportArgs : Pulumi.ResourceArgs
+    public sealed class ReportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This field contains the chart type for the report
@@ -343,5 +343,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public ReportArgs()
         {
         }
+        public static new ReportArgs Empty => new ReportArgs();
     }
 }

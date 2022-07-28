@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// A job executed by the workflow.
     /// </summary>
-    public sealed class OrderedJobArgs : Pulumi.ResourceArgs
+    public sealed class OrderedJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Job is a Hadoop job.
@@ -102,5 +102,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public OrderedJobArgs()
         {
         }
+        public static new OrderedJobArgs Empty => new OrderedJobArgs();
     }
 }

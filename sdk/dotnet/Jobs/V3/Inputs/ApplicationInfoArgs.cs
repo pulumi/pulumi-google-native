@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Jobs.V3.Inputs
     /// <summary>
     /// Application related details of a job posting.
     /// </summary>
-    public sealed class ApplicationInfoArgs : Pulumi.ResourceArgs
+    public sealed class ApplicationInfoArgs : global::Pulumi.ResourceArgs
     {
         [Input("emails")]
         private InputList<string>? _emails;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Jobs.V3.Inputs
         public ApplicationInfoArgs()
         {
         }
+        public static new ApplicationInfoArgs Empty => new ApplicationInfoArgs();
     }
 }

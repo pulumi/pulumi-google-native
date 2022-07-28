@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration for NodeLocal DNSCache
     /// </summary>
-    public sealed class DnsCacheConfigArgs : Pulumi.ResourceArgs
+    public sealed class DnsCacheConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether NodeLocal DNSCache is enabled for this cluster.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public DnsCacheConfigArgs()
         {
         }
+        public static new DnsCacheConfigArgs Empty => new DnsCacheConfigArgs();
     }
 }

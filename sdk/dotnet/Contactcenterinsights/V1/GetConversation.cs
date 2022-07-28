@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
     }
 
 
-    public sealed class GetConversationArgs : Pulumi.InvokeArgs
+    public sealed class GetConversationArgs : global::Pulumi.InvokeArgs
     {
         [Input("conversationId", required: true)]
         public string ConversationId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public GetConversationArgs()
         {
         }
+        public static new GetConversationArgs Empty => new GetConversationArgs();
     }
 
-    public sealed class GetConversationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConversationInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("conversationId", required: true)]
         public Input<string> ConversationId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Contactcenterinsights.V1
         public GetConversationInvokeArgs()
         {
         }
+        public static new GetConversationInvokeArgs Empty => new GetConversationInvokeArgs();
     }
 
 

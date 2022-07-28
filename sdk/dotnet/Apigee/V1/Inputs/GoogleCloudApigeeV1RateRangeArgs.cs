@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// API call volume range and the fees charged when the total number of API calls is within the range.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1RateRangeArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1RateRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Ending value of the range. Set to 0 or `null` for the last range of values.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1RateRangeArgs()
         {
         }
+        public static new GoogleCloudApigeeV1RateRangeArgs Empty => new GoogleCloudApigeeV1RateRangeArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V2.Inputs
 {
 
-    public sealed class ManagedZonePrivateVisibilityConfigArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZonePrivateVisibilityConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("gkeClusters")]
         private InputList<Inputs.ManagedZonePrivateVisibilityConfigGKEClusterArgs>? _gkeClusters;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.DNS.V2.Inputs
         public ManagedZonePrivateVisibilityConfigArgs()
         {
         }
+        public static new ManagedZonePrivateVisibilityConfigArgs Empty => new ManagedZonePrivateVisibilityConfigArgs();
     }
 }

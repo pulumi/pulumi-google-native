@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// A note describing an attestation
     /// </summary>
-    public sealed class DSSEAttestationNoteArgs : Pulumi.ResourceArgs
+    public sealed class DSSEAttestationNoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// DSSEHint hints at the purpose of the attestation authority.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public DSSEAttestationNoteArgs()
         {
         }
+        public static new DSSEAttestationNoteArgs Empty => new DSSEAttestationNoteArgs();
     }
 }

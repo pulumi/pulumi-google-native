@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
     /// <summary>
     /// Configuration for encrypting secret payloads using customer-managed encryption keys (CMEK).
     /// </summary>
-    public sealed class CustomerManagedEncryptionArgs : Pulumi.ResourceArgs
+    public sealed class CustomerManagedEncryptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
         public CustomerManagedEncryptionArgs()
         {
         }
+        public static new CustomerManagedEncryptionArgs Empty => new CustomerManagedEncryptionArgs();
     }
 }

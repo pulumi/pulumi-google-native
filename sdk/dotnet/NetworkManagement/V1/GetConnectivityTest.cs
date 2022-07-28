@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
     }
 
 
-    public sealed class GetConnectivityTestArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectivityTestArgs : global::Pulumi.InvokeArgs
     {
         [Input("connectivityTestId", required: true)]
         public string ConnectivityTestId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         public GetConnectivityTestArgs()
         {
         }
+        public static new GetConnectivityTestArgs Empty => new GetConnectivityTestArgs();
     }
 
-    public sealed class GetConnectivityTestInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectivityTestInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("connectivityTestId", required: true)]
         public Input<string> ConnectivityTestId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1
         public GetConnectivityTestInvokeArgs()
         {
         }
+        public static new GetConnectivityTestInvokeArgs Empty => new GetConnectivityTestInvokeArgs();
     }
 
 

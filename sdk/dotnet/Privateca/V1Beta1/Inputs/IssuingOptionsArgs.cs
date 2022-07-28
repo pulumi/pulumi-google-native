@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     /// <summary>
     /// Options that affect all certificates issued by a CertificateAuthority.
     /// </summary>
-    public sealed class IssuingOptionsArgs : Pulumi.ResourceArgs
+    public sealed class IssuingOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When true, includes a URL to the issuing CA certificate in the "authority information access" X.509 extension.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         public IssuingOptionsArgs()
         {
         }
+        public static new IssuingOptionsArgs Empty => new IssuingOptionsArgs();
     }
 }

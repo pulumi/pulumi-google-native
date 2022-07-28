@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:vmmigration/v1:CloneJob")]
-    public partial class CloneJob : Pulumi.CustomResource
+    public partial class CloneJob : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. The clone job identifier.
@@ -135,7 +135,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         }
     }
 
-    public sealed class CloneJobArgs : Pulumi.ResourceArgs
+    public sealed class CloneJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The clone job identifier.
@@ -164,5 +164,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         public CloneJobArgs()
         {
         }
+        public static new CloneJobArgs Empty => new CloneJobArgs();
     }
 }

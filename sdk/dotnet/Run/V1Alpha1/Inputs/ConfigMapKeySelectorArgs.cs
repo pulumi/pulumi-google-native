@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
     /// <summary>
     /// Not supported by Cloud Run Selects a key from a ConfigMap.
     /// </summary>
-    public sealed class ConfigMapKeySelectorArgs : Pulumi.ResourceArgs
+    public sealed class ConfigMapKeySelectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key to select.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Run.V1Alpha1.Inputs
         public ConfigMapKeySelectorArgs()
         {
         }
+        public static new ConfigMapKeySelectorArgs Empty => new ConfigMapKeySelectorArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// LoggingComponentConfig is cluster logging component configuration.
     /// </summary>
-    public sealed class LoggingComponentConfigArgs : Pulumi.ResourceArgs
+    public sealed class LoggingComponentConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("enableComponents")]
         private InputList<Pulumi.GoogleNative.Container.V1.LoggingComponentConfigEnableComponentsItem>? _enableComponents;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public LoggingComponentConfigArgs()
         {
         }
+        public static new LoggingComponentConfigArgs Empty => new LoggingComponentConfigArgs();
     }
 }
