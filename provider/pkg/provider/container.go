@@ -38,7 +38,8 @@ type nodepoolUpdateHandlerFunc func(
 	oldState resource.PropertyMap,
 ) error
 
-var emptyPropVal = resource.NewObjectProperty(resource.NewPropertyMapFromMap(nil))
+var emptyObjVal = resource.NewObjectProperty(resource.NewPropertyMapFromMap(nil))
+var emptyArrayVal = resource.NewArrayProperty([]resource.PropertyValue{})
 var nodepoolUpdateHandlers = map[string]nodepoolUpdateHandlerFunc{
 	"autoscaling": updateNodePoolMapping(
 		mustParsePropertyPath("autoscaling"),
@@ -52,13 +53,13 @@ var nodepoolUpdateHandlers = map[string]nodepoolUpdateHandlerFunc{
 	"management": updateNodePoolMapping(
 		mustParsePropertyPath("management"),
 		"management",
-		emptyPropVal,
+		emptyObjVal,
 		":setManagement",
 		"POST"),
 	"upgradeSettings": updateNodePoolMapping(
 		mustParsePropertyPath("upgradeSettings"),
 		"upgradeSettings",
-		emptyPropVal,
+		emptyObjVal,
 		"",
 		"PUT"),
 	"locations": updateNodePoolMapping(
@@ -73,18 +74,59 @@ var nodepoolUpdateHandlers = map[string]nodepoolUpdateHandlerFunc{
 		resource.NewStringProperty(""),
 		"",
 		"PUT"),
-	"config.imageType":              updateNodePoolConfig(mustParsePropertyPath("config.imageType"), resource.NewStringProperty("")),
-	"config.kubeletConfig":          updateNodePoolConfig(mustParsePropertyPath("config.kubeletConfig"), emptyPropVal),
-	"config.linuxNodeConfig":        updateNodePoolConfig(mustParsePropertyPath("config.linuxNodeConfig"), emptyPropVal),
-	"config.workloadMetadataConfig": updateNodePoolConfig(mustParsePropertyPath("config.workloadMetadataConfig"), emptyPropVal),
+	"networkConfig": updateNodePoolMapping(
+		mustParsePropertyPath("networkConfig"),
+		"nodeNetworkConfig",
+		emptyObjVal,
+		"",
+		"PUT"),
+	"name": updateNodePoolMapping(
+		mustParsePropertyPath("name"),
+		"name",
+		emptyObjVal,
+		"",
+		"PUT"),
+	"config.confidentialNodes": updateNodePoolConfig(mustParsePropertyPath("config.confidentialNodes"), nil,
+		emptyObjVal),
+	"config.gcfsConfig": updateNodePoolConfig(mustParsePropertyPath("config.gcfsConfig"), nil,
+		emptyObjVal),
+	"config.gvnic": updateNodePoolConfig(mustParsePropertyPath("config.gvnic"), nil,
+		emptyObjVal),
+	"config.imageType": updateNodePoolConfig(mustParsePropertyPath("config.imageType"), nil,
+		resource.NewStringProperty("")),
+	"config.kubeletConfig": updateNodePoolConfig(mustParsePropertyPath("config.kubeletConfig"), nil,
+		emptyObjVal),
+	"config.labels": updateNodePoolConfig(mustParsePropertyPath("config.labels"),
+		mustParsePropertyPath("config.labels.labels"),
+		emptyObjVal),
+	"config.linuxNodeConfig": updateNodePoolConfig(mustParsePropertyPath("config.linuxNodeConfig"), nil,
+		emptyObjVal),
+	"config.tags": updateNodePoolConfig(mustParsePropertyPath("config.tags"),
+		mustParsePropertyPath("config.tags.tags"),
+		emptyArrayVal),
+	"config.taints": updateNodePoolConfig(mustParsePropertyPath("config.taints"),
+		mustParsePropertyPath("config.taints.taints"),
+		emptyArrayVal),
+	"config.workloadMetadataConfig": updateNodePoolConfig(mustParsePropertyPath("config.workloadMetadataConfig"), nil,
+		emptyObjVal),
 }
 
-// Following an ordering here that the
-var updateOrder = []string{"autoscaling",
+// Following an ordering here that the terraform provider performs updates in.
+// We have a lot more mutations defined than the terraform providers does though.
+var updateOrder = []string{
+	"autoscaling",
 	"config.imageType",
 	"config.workloadMetadataConfig",
 	"config.kubeletConfig",
 	"config.linuxNodeConfig",
+	"config.confidentialNodes",
+	"config.gcfsConfig",
+	"config.gvnic",
+	"config.labels",
+	"config.tags",
+	"config.taints",
+	"networkConfig",
+	"name",
 	"initialNodeCount", /* is this the right attribute to update? */
 	"management",
 	"version",
@@ -288,7 +330,8 @@ func updateNodePoolMapping(diffPropPath resource.PropertyPath, apiFieldName stri
 	}
 }
 
-func updateNodePoolConfig(diffPropPath resource.PropertyPath, defaultIfMissing resource.PropertyValue) nodepoolUpdateHandlerFunc {
+func updateNodePoolConfig(diffPropPath, targetPropPath resource.PropertyPath,
+	defaultIfMissing resource.PropertyValue) nodepoolUpdateHandlerFunc {
 	return func(p *googleCloudProvider,
 		urn resource.URN,
 		label string,
@@ -318,10 +361,13 @@ func updateNodePoolConfig(diffPropPath resource.PropertyPath, defaultIfMissing r
 		}
 		// Overwrite the config object where the one value for fieldName has been updated.
 		newConfig := resource.NewObjectProperty(resource.NewPropertyMapFromMap(nil))
+		if targetPropPath == nil {
+			targetPropPath = diffPropPath
+		}
 		// Now updatedConfigField essentially is a config object with just one field - `fieldName`
-		updatedConfigField, ok := diffPropPath.Add(newConfig, newConfigField)
+		updatedConfigField, ok := targetPropPath.Add(newConfig, newConfigField)
 		if !ok {
-			return fmt.Errorf("failed to inject node config at property path: %q", diffPropPath.String())
+			return fmt.Errorf("failed to inject node config at property path: %q", targetPropPath.String())
 		}
 		logging.V(9).Infof("[%s] staged property value: %+v", label, updatedConfigField.ObjectValue().Mappable())
 		body := p.prepareAPIInputs(updatedConfigField.ObjectValue(), oldState, map[string]resources.CloudAPIProperty{
