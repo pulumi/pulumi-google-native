@@ -19,16 +19,13 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
-
 	"github.com/jpillora/backoff"
-
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
-
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 )
 
 type nodepoolUpdateHandlerFunc func(
@@ -42,69 +39,82 @@ type nodepoolUpdateHandlerFunc func(
 
 var emptyObjVal = resource.NewObjectProperty(resource.NewPropertyMapFromMap(nil))
 var emptyArrayVal = resource.NewArrayProperty([]resource.PropertyValue{})
+
+type propValueIfMissingFunc func(oldState resource.PropertyMap, propPath resource.PropertyPath) resource.PropertyValue
+
+func extractFromDefaults(valIfMissing resource.PropertyValue) propValueIfMissingFunc {
+	return func(oldState resource.PropertyMap, propPath resource.PropertyPath) resource.PropertyValue {
+		defaults := parseDefaultsObject(oldState)
+		if val, ok := propPath.Get(resource.NewObjectProperty(defaults)); ok {
+			return val
+		}
+		return valIfMissing
+	}
+}
+
 var nodepoolUpdateHandlers = map[string]nodepoolUpdateHandlerFunc{
 	"autoscaling": updateNodePoolMapping(
 		mustParsePropertyPath("autoscaling"),
 		"autoscaling",
-		resource.NewObjectProperty(
+		extractFromDefaults(resource.NewObjectProperty(
 			resource.PropertyMap{
 				"enabled": resource.NewBoolProperty(false),
-			}),
+			})),
 		":setAutoscaling",
 		"POST"),
 	"management": updateNodePoolMapping(
 		mustParsePropertyPath("management"),
 		"management",
-		emptyObjVal,
+		extractFromDefaults(emptyObjVal),
 		":setManagement",
 		"POST"),
 	"upgradeSettings": updateNodePoolMapping(
 		mustParsePropertyPath("upgradeSettings"),
 		"upgradeSettings",
-		emptyObjVal,
+		extractFromDefaults(emptyObjVal),
 		"",
 		"PUT"),
 	"locations": updateNodePoolMapping(
 		mustParsePropertyPath("locations"),
 		"locations",
-		resource.NewArrayProperty([]resource.PropertyValue{}),
+		extractFromDefaults(resource.NewArrayProperty([]resource.PropertyValue{})),
 		"",
 		"PUT"),
 	"version": updateNodePoolMapping(
 		mustParsePropertyPath("version"),
 		"nodeVersion",
-		resource.NewStringProperty(""),
+		extractFromDefaults(resource.NewStringProperty("")),
 		"",
 		"PUT"),
 	"networkConfig": updateNodePoolMapping(
 		mustParsePropertyPath("networkConfig"),
 		"nodeNetworkConfig",
-		emptyObjVal,
+		extractFromDefaults(emptyObjVal),
 		"",
 		"PUT"),
 	"config.confidentialNodes": updateNodePoolConfig(mustParsePropertyPath("config.confidentialNodes"), nil,
-		emptyObjVal),
+		extractFromDefaults(emptyObjVal)),
 	"config.gcfsConfig": updateNodePoolConfig(mustParsePropertyPath("config.gcfsConfig"), nil,
-		emptyObjVal),
+		extractFromDefaults(emptyObjVal)),
 	"config.gvnic": updateNodePoolConfig(mustParsePropertyPath("config.gvnic"), nil,
-		emptyObjVal),
+		extractFromDefaults(emptyObjVal)),
 	"config.imageType": updateNodePoolConfig(mustParsePropertyPath("config.imageType"), nil,
-		resource.NewStringProperty("")),
+		extractFromDefaults(resource.NewStringProperty(""))),
 	"config.kubeletConfig": updateNodePoolConfig(mustParsePropertyPath("config.kubeletConfig"), nil,
-		emptyObjVal),
+		extractFromDefaults(emptyObjVal)),
 	"config.labels": updateNodePoolConfig(mustParsePropertyPath("config.labels"),
 		mustParsePropertyPath("config.labels.labels"),
-		emptyObjVal),
+		extractFromDefaults(emptyObjVal)),
 	"config.linuxNodeConfig": updateNodePoolConfig(mustParsePropertyPath("config.linuxNodeConfig"), nil,
-		emptyObjVal),
+		extractFromDefaults(emptyObjVal)),
 	"config.tags": updateNodePoolConfig(mustParsePropertyPath("config.tags"),
 		mustParsePropertyPath("config.tags.tags"),
-		emptyArrayVal),
+		extractFromDefaults(emptyArrayVal)),
 	"config.taints": updateNodePoolConfig(mustParsePropertyPath("config.taints"),
 		mustParsePropertyPath("config.taints.taints"),
-		emptyArrayVal),
+		extractFromDefaults(emptyArrayVal)),
 	"config.workloadMetadataConfig": updateNodePoolConfig(mustParsePropertyPath("config.workloadMetadataConfig"), nil,
-		emptyObjVal),
+		extractFromDefaults(emptyObjVal)),
 }
 
 // Following an ordering here that the terraform provider performs updates in.
@@ -286,9 +296,13 @@ func isNodepoolInRestingStatus(status string) bool {
 	return false
 }
 
-func updateNodePoolMapping(diffPropPath resource.PropertyPath, apiFieldName string, defaultIfMissing resource.
-	PropertyValue,
-	operationSuffix string, httpMethod string) nodepoolUpdateHandlerFunc {
+func updateNodePoolMapping(
+	diffPropPath resource.PropertyPath,
+	apiFieldName string,
+	defaultIfMissing propValueIfMissingFunc,
+	operationSuffix string,
+	httpMethod string,
+) nodepoolUpdateHandlerFunc {
 	return func(p *googleCloudProvider,
 		urn resource.URN,
 		label string,
@@ -313,7 +327,7 @@ func updateNodePoolMapping(diffPropPath resource.PropertyPath, apiFieldName stri
 		// If key is omitted, use default.
 		_, ok := diffPropPath.Get(resource.NewObjectProperty(newInputs))
 		if !ok {
-			updated, _ := diffPropPath.Add(resource.NewObjectProperty(newInputs), defaultIfMissing)
+			updated, _ := diffPropPath.Add(resource.NewObjectProperty(newInputs), defaultIfMissing(oldState, diffPropPath))
 			newInputs = updated.ObjectValue()
 		}
 
@@ -334,7 +348,7 @@ func updateNodePoolMapping(diffPropPath resource.PropertyPath, apiFieldName stri
 }
 
 func updateNodePoolConfig(diffPropPath, targetPropPath resource.PropertyPath,
-	defaultIfMissing resource.PropertyValue) nodepoolUpdateHandlerFunc {
+	defaultIfMissing propValueIfMissingFunc) nodepoolUpdateHandlerFunc {
 	return func(p *googleCloudProvider,
 		urn resource.URN,
 		label string,
@@ -360,7 +374,7 @@ func updateNodePoolConfig(diffPropPath, targetPropPath resource.PropertyPath,
 		if !ok {
 			logging.V(9).Infof("[%s] no update found at path: %q. Assuming the field is deleted.", label,
 				diffPropPath.String())
-			newConfigField = defaultIfMissing
+			newConfigField = defaultIfMissing(oldState, diffPropPath)
 		}
 		// Overwrite the config object where the one value for fieldName has been updated.
 		newConfig := resource.NewObjectProperty(resource.NewPropertyMapFromMap(nil))

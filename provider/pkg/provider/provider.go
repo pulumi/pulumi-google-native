@@ -536,8 +536,13 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		if getErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / read state %s", getErr)
 		}
+		defaults, err := extractDefaultsFromResponse(res, inputs, readResp)
+		if err != nil {
+			return nil, err
+		}
+
 		checkpoint, cpErr := plugin.MarshalProperties(
-			checkpointObject(inputs, readResp),
+			checkpointObject(inputs, defaults, readResp),
 			plugin.MarshalOptions{Label: fmt.Sprintf("%s.partialCheckpoint", label), KeepSecrets: true, SkipNulls: true},
 		)
 		if cpErr != nil {
@@ -546,9 +551,14 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		return nil, partialError(id, err, checkpoint, req.GetProperties())
 	}
 
-	// Store both outputs and inputs into the state.
+	defaults, err := extractDefaultsFromResponse(res, inputs, resp)
+	if err != nil {
+		return nil, err
+	}
+
+	// Checkpoint defaults, outputs and inputs into the state.
 	checkpoint, err := plugin.MarshalProperties(
-		checkpointObject(inputs, resp),
+		checkpointObject(inputs, defaults, resp),
 		plugin.MarshalOptions{Label: fmt.Sprintf("%s.checkpoint", label), KeepSecrets: true, SkipNulls: true},
 	)
 	if err != nil {
@@ -564,6 +574,32 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		Id:         id,
 		Properties: checkpoint,
 	}, nil
+}
+
+func extractDefaultsFromResponse(res resources.CloudAPIResource, inputs resource.PropertyMap,
+	resp map[string]interface{}) (resource.PropertyMap, error) {
+	defaults := resource.NewObjectProperty(resource.NewPropertyMapFromMap(nil))
+	for propName, _ := range res.Create.RecordDefaults {
+		propPath, err := resource.ParsePropertyPath(propName)
+		if err != nil {
+			return nil, fmt.Errorf("failed to parse propertypath: %q: %w", propName, err)
+		}
+		// Lookup property path in inputs.
+		_, ok := propPath.Get(resource.NewObjectProperty(inputs))
+		// If specified, skip recording in __defaults
+		if ok {
+			continue
+		}
+		// Otherwise, try to get the corresponding field from the response and record it in defaults object.
+		propVal, ok := propPath.Get(resource.NewObjectProperty(resource.NewPropertyMapFromMap(resp)))
+		if ok {
+			defaults, ok = propPath.Add(defaults, propVal)
+			if !ok {
+				return nil, fmt.Errorf("failed to add default for property: %q", propName)
+			}
+		}
+	}
+	return defaults.ObjectValue(), nil
 }
 
 func (p *googleCloudProvider) prepareAPIInputs(
@@ -853,9 +889,12 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 	// 4. Apply this difference to the actual inputs (not a projection) that we have in state.
 	inputs = applyDiff(inputs, diff)
 
+	// Extract old defaults from the `__defaults` field of the old state so we retain it in checkpoint
+	defaults := parseDefaultsObject(oldState)
+
 	// Store both outputs and inputs into the state checkpoint.
 	checkpoint, err := plugin.MarshalProperties(
-		checkpointObject(inputs, newState),
+		checkpointObject(inputs, defaults, newState),
 		plugin.MarshalOptions{Label: fmt.Sprintf("%s.checkpoint", label), KeepSecrets: true, SkipNulls: true},
 	)
 	if err != nil {
@@ -912,6 +951,8 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 			resourceKey, req.GetId()))
 		return &rpc.UpdateResponse{}, nil
 	}
+	// Extract old defaults from the `__defaults` field of the old state.
+	defaults := parseDefaultsObject(oldState)
 
 	var resp, op map[string]interface{}
 	if f, ok := resourceUpdateOverrides[resourceKey]; ok {
@@ -922,7 +963,7 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 			logging.V(9).Infof("[%s] custom update override failed: %+v, resp: %+v", label, err, resp)
 			if resp != nil {
 				checkpoint, cpErr := plugin.MarshalProperties(
-					checkpointObject(inputs, resp),
+					checkpointObject(inputs, defaults, resp),
 					plugin.MarshalOptions{
 						Label:        fmt.Sprintf("%s.partialCheckpoint", label),
 						KeepUnknowns: true,
@@ -937,9 +978,7 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 			}
 			return nil, err
 		}
-	}
-
-	if needsMultiPartFormdataContentType(contentType, res) {
+	} else if needsMultiPartFormdataContentType(contentType, res) {
 		var err error
 		uri, err := res.Update.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
 		if err != nil {
@@ -1021,7 +1060,7 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 
 	// Store both outputs and inputs into the state and return RPC checkpoint.
 	outputs, err := plugin.MarshalProperties(
-		checkpointObject(newInputs, resp),
+		checkpointObject(newInputs, defaults, resp),
 		plugin.MarshalOptions{Label: fmt.Sprintf("%s.response", label), KeepSecrets: true, SkipNulls: true},
 	)
 	if err != nil {
@@ -1222,10 +1261,12 @@ func partialError(id string, err error, state *structpb.Struct, inputs *structpb
 	return rpcerror.WithDetails(rpcerror.New(codes.Unknown, err.Error()), &detail)
 }
 
-// checkpointObject puts inputs in the `__inputs` field of the state.
-func checkpointObject(inputs resource.PropertyMap, outputs map[string]interface{}) resource.PropertyMap {
+// checkpointObject puts inputs in the `__inputs` field of the state and defaults in the `__defaults` field of the
+// state.
+func checkpointObject(inputs, defaults resource.PropertyMap, outputs map[string]interface{}) resource.PropertyMap {
 	object := resource.NewPropertyMapFromMap(outputs)
 	object["__inputs"] = resource.MakeSecret(resource.NewObjectProperty(inputs))
+	saveDefaults(defaults, object)
 	return object
 }
 
@@ -1236,6 +1277,28 @@ func parseCheckpointObject(obj resource.PropertyMap) resource.PropertyMap {
 			return inputs.SecretValue().Element.ObjectValue()
 		}
 		return inputs.ObjectValue()
+	}
+
+	return nil
+}
+
+// saveDefaults puts defaults in the `__defaults` field of the property map in object.
+func saveDefaults(defaults resource.PropertyMap, object resource.PropertyMap) resource.PropertyMap {
+	if defaults.ContainsSecrets() {
+		object["__defaults"] = resource.MakeSecret(resource.NewObjectProperty(defaults))
+	} else {
+		object["__defaults"] = resource.NewObjectProperty(defaults)
+	}
+	return object
+}
+
+// parseDefaultsObject returns inputs that are saved in the `__defaults` field of the state.
+func parseDefaultsObject(obj resource.PropertyMap) resource.PropertyMap {
+	if defaults, ok := obj["__defaults"]; ok {
+		if defaults.IsSecret() {
+			defaults.SecretValue().Element.ObjectValue()
+		}
+		return defaults.ObjectValue()
 	}
 
 	return nil

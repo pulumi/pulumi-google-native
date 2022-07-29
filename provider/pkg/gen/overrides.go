@@ -275,6 +275,10 @@ var metadataOverrides = map[string]resources.CloudAPIResource{
 			CloudAPIOperation: resources.CloudAPIOperation{
 				Polling: &resources.Polling{Strategy: resources.NodepoolAwaitRestingStatePoll},
 			},
+			RecordDefaults: map[string]resources.CloudAPIProperty{
+				"version":          {},
+				"config.imageType": {},
+			},
 		},
 		Update: resources.UpdateAPIOperation{
 			CloudAPIOperation: resources.CloudAPIOperation{
