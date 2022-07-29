@@ -27,6 +27,14 @@ export const AppEngineHttpRequestHttpMethod = {
      * HTTP DELETE
      */
     Delete: "DELETE",
+    /**
+     * HTTP PATCH
+     */
+    Patch: "PATCH",
+    /**
+     * HTTP OPTIONS
+     */
+    Options: "OPTIONS",
 } as const;
 
 /**
@@ -59,6 +67,14 @@ export const HttpRequestHttpMethod = {
      * HTTP DELETE
      */
     Delete: "DELETE",
+    /**
+     * HTTP PATCH
+     */
+    Patch: "PATCH",
+    /**
+     * HTTP OPTIONS
+     */
+    Options: "OPTIONS",
 } as const;
 
 /**
@@ -91,6 +107,14 @@ export const HttpTargetHttpMethod = {
      * HTTP DELETE
      */
     Delete: "DELETE",
+    /**
+     * HTTP PATCH
+     */
+    Patch: "PATCH",
+    /**
+     * HTTP OPTIONS
+     */
+    Options: "OPTIONS",
 } as const;
 
 /**

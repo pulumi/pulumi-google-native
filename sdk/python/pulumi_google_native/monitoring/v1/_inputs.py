@@ -1495,12 +1495,16 @@ class TimeSeriesQueryArgs:
 @pulumi.input_type
 class TimeSeriesTableArgs:
     def __init__(__self__, *,
-                 data_sets: pulumi.Input[Sequence[pulumi.Input['TableDataSetArgs']]]):
+                 data_sets: pulumi.Input[Sequence[pulumi.Input['TableDataSetArgs']]],
+                 metric_visualization: Optional[pulumi.Input['TimeSeriesTableMetricVisualization']] = None):
         """
         A table that displays time series data.
         :param pulumi.Input[Sequence[pulumi.Input['TableDataSetArgs']]] data_sets: The data displayed in this table.
+        :param pulumi.Input['TimeSeriesTableMetricVisualization'] metric_visualization: Optional. Store rendering strategy
         """
         pulumi.set(__self__, "data_sets", data_sets)
+        if metric_visualization is not None:
+            pulumi.set(__self__, "metric_visualization", metric_visualization)
 
     @property
     @pulumi.getter(name="dataSets")
@@ -1513,6 +1517,18 @@ class TimeSeriesTableArgs:
     @data_sets.setter
     def data_sets(self, value: pulumi.Input[Sequence[pulumi.Input['TableDataSetArgs']]]):
         pulumi.set(self, "data_sets", value)
+
+    @property
+    @pulumi.getter(name="metricVisualization")
+    def metric_visualization(self) -> Optional[pulumi.Input['TimeSeriesTableMetricVisualization']]:
+        """
+        Optional. Store rendering strategy
+        """
+        return pulumi.get(self, "metric_visualization")
+
+    @metric_visualization.setter
+    def metric_visualization(self, value: Optional[pulumi.Input['TimeSeriesTableMetricVisualization']]):
+        pulumi.set(self, "metric_visualization", value)
 
 
 @pulumi.input_type

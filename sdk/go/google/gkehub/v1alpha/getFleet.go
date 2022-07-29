@@ -33,10 +33,10 @@ type LookupFleetResult struct {
 	DeleteTime string `pulumi:"deleteTime"`
 	// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
 	DisplayName string `pulumi:"displayName"`
-	// The name for the fleet. The name must meet the following constraints: + The name of a fleet should be unique within the organization; + It must consist of lower case alphanumeric characters or `-`; + The length of the name must be less than or equal to 63; + Unicode names must be expressed in Punycode format (rfc3492). Examples: + prod-fleet + xn--wlq33vhyw9jb （Punycode form for "生产环境")
-	FleetName string `pulumi:"fleetName"`
 	// The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one fleet resource, named "default".
 	Name string `pulumi:"name"`
+	// State of the namespace resource.
+	State FleetLifecycleStateResponse `pulumi:"state"`
 	// Google-generated UUID for this resource. This is unique across all Fleet resources. If a Fleet resource is deleted and another resource with the same name is created, it gets a different uid.
 	Uid string `pulumi:"uid"`
 	// When the Fleet was last updated.
@@ -95,14 +95,14 @@ func (o LookupFleetResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The name for the fleet. The name must meet the following constraints: + The name of a fleet should be unique within the organization; + It must consist of lower case alphanumeric characters or `-`; + The length of the name must be less than or equal to 63; + Unicode names must be expressed in Punycode format (rfc3492). Examples: + prod-fleet + xn--wlq33vhyw9jb （Punycode form for "生产环境")
-func (o LookupFleetResultOutput) FleetName() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupFleetResult) string { return v.FleetName }).(pulumi.StringOutput)
-}
-
 // The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one fleet resource, named "default".
 func (o LookupFleetResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFleetResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// State of the namespace resource.
+func (o LookupFleetResultOutput) State() FleetLifecycleStateResponseOutput {
+	return o.ApplyT(func(v LookupFleetResult) FleetLifecycleStateResponse { return v.State }).(FleetLifecycleStateResponseOutput)
 }
 
 // Google-generated UUID for this resource. This is unique across all Fleet resources. If a Fleet resource is deleted and another resource with the same name is created, it gets a different uid.

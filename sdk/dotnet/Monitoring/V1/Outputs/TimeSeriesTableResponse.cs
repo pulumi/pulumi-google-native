@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Outputs
         /// The data displayed in this table.
         /// </summary>
         public readonly ImmutableArray<Outputs.TableDataSetResponse> DataSets;
+        /// <summary>
+        /// Optional. Store rendering strategy
+        /// </summary>
+        public readonly string MetricVisualization;
 
         [OutputConstructor]
-        private TimeSeriesTableResponse(ImmutableArray<Outputs.TableDataSetResponse> dataSets)
+        private TimeSeriesTableResponse(
+            ImmutableArray<Outputs.TableDataSetResponse> dataSets,
+
+            string metricVisualization)
         {
             DataSets = dataSets;
+            MetricVisualization = metricVisualization;
         }
     }
 }

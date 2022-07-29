@@ -2615,6 +2615,175 @@ func (in *thresholdTargetAxisPtr) ToThresholdTargetAxisPtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(ThresholdTargetAxisPtrOutput)
 }
 
+// Optional. Store rendering strategy
+type TimeSeriesTableMetricVisualization string
+
+const (
+	// Unspecified state
+	TimeSeriesTableMetricVisualizationMetricVisualizationUnspecified = TimeSeriesTableMetricVisualization("METRIC_VISUALIZATION_UNSPECIFIED")
+	// Default text rendering
+	TimeSeriesTableMetricVisualizationNumber = TimeSeriesTableMetricVisualization("NUMBER")
+	// Horizontal bar rendering
+	TimeSeriesTableMetricVisualizationBar = TimeSeriesTableMetricVisualization("BAR")
+)
+
+func (TimeSeriesTableMetricVisualization) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesTableMetricVisualization)(nil)).Elem()
+}
+
+func (e TimeSeriesTableMetricVisualization) ToTimeSeriesTableMetricVisualizationOutput() TimeSeriesTableMetricVisualizationOutput {
+	return pulumi.ToOutput(e).(TimeSeriesTableMetricVisualizationOutput)
+}
+
+func (e TimeSeriesTableMetricVisualization) ToTimeSeriesTableMetricVisualizationOutputWithContext(ctx context.Context) TimeSeriesTableMetricVisualizationOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(TimeSeriesTableMetricVisualizationOutput)
+}
+
+func (e TimeSeriesTableMetricVisualization) ToTimeSeriesTableMetricVisualizationPtrOutput() TimeSeriesTableMetricVisualizationPtrOutput {
+	return e.ToTimeSeriesTableMetricVisualizationPtrOutputWithContext(context.Background())
+}
+
+func (e TimeSeriesTableMetricVisualization) ToTimeSeriesTableMetricVisualizationPtrOutputWithContext(ctx context.Context) TimeSeriesTableMetricVisualizationPtrOutput {
+	return TimeSeriesTableMetricVisualization(e).ToTimeSeriesTableMetricVisualizationOutputWithContext(ctx).ToTimeSeriesTableMetricVisualizationPtrOutputWithContext(ctx)
+}
+
+func (e TimeSeriesTableMetricVisualization) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TimeSeriesTableMetricVisualization) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e TimeSeriesTableMetricVisualization) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e TimeSeriesTableMetricVisualization) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type TimeSeriesTableMetricVisualizationOutput struct{ *pulumi.OutputState }
+
+func (TimeSeriesTableMetricVisualizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TimeSeriesTableMetricVisualization)(nil)).Elem()
+}
+
+func (o TimeSeriesTableMetricVisualizationOutput) ToTimeSeriesTableMetricVisualizationOutput() TimeSeriesTableMetricVisualizationOutput {
+	return o
+}
+
+func (o TimeSeriesTableMetricVisualizationOutput) ToTimeSeriesTableMetricVisualizationOutputWithContext(ctx context.Context) TimeSeriesTableMetricVisualizationOutput {
+	return o
+}
+
+func (o TimeSeriesTableMetricVisualizationOutput) ToTimeSeriesTableMetricVisualizationPtrOutput() TimeSeriesTableMetricVisualizationPtrOutput {
+	return o.ToTimeSeriesTableMetricVisualizationPtrOutputWithContext(context.Background())
+}
+
+func (o TimeSeriesTableMetricVisualizationOutput) ToTimeSeriesTableMetricVisualizationPtrOutputWithContext(ctx context.Context) TimeSeriesTableMetricVisualizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TimeSeriesTableMetricVisualization) *TimeSeriesTableMetricVisualization {
+		return &v
+	}).(TimeSeriesTableMetricVisualizationPtrOutput)
+}
+
+func (o TimeSeriesTableMetricVisualizationOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o TimeSeriesTableMetricVisualizationOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TimeSeriesTableMetricVisualization) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o TimeSeriesTableMetricVisualizationOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TimeSeriesTableMetricVisualizationOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e TimeSeriesTableMetricVisualization) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type TimeSeriesTableMetricVisualizationPtrOutput struct{ *pulumi.OutputState }
+
+func (TimeSeriesTableMetricVisualizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TimeSeriesTableMetricVisualization)(nil)).Elem()
+}
+
+func (o TimeSeriesTableMetricVisualizationPtrOutput) ToTimeSeriesTableMetricVisualizationPtrOutput() TimeSeriesTableMetricVisualizationPtrOutput {
+	return o
+}
+
+func (o TimeSeriesTableMetricVisualizationPtrOutput) ToTimeSeriesTableMetricVisualizationPtrOutputWithContext(ctx context.Context) TimeSeriesTableMetricVisualizationPtrOutput {
+	return o
+}
+
+func (o TimeSeriesTableMetricVisualizationPtrOutput) Elem() TimeSeriesTableMetricVisualizationOutput {
+	return o.ApplyT(func(v *TimeSeriesTableMetricVisualization) TimeSeriesTableMetricVisualization {
+		if v != nil {
+			return *v
+		}
+		var ret TimeSeriesTableMetricVisualization
+		return ret
+	}).(TimeSeriesTableMetricVisualizationOutput)
+}
+
+func (o TimeSeriesTableMetricVisualizationPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o TimeSeriesTableMetricVisualizationPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *TimeSeriesTableMetricVisualization) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// TimeSeriesTableMetricVisualizationInput is an input type that accepts TimeSeriesTableMetricVisualizationArgs and TimeSeriesTableMetricVisualizationOutput values.
+// You can construct a concrete instance of `TimeSeriesTableMetricVisualizationInput` via:
+//
+//          TimeSeriesTableMetricVisualizationArgs{...}
+type TimeSeriesTableMetricVisualizationInput interface {
+	pulumi.Input
+
+	ToTimeSeriesTableMetricVisualizationOutput() TimeSeriesTableMetricVisualizationOutput
+	ToTimeSeriesTableMetricVisualizationOutputWithContext(context.Context) TimeSeriesTableMetricVisualizationOutput
+}
+
+var timeSeriesTableMetricVisualizationPtrType = reflect.TypeOf((**TimeSeriesTableMetricVisualization)(nil)).Elem()
+
+type TimeSeriesTableMetricVisualizationPtrInput interface {
+	pulumi.Input
+
+	ToTimeSeriesTableMetricVisualizationPtrOutput() TimeSeriesTableMetricVisualizationPtrOutput
+	ToTimeSeriesTableMetricVisualizationPtrOutputWithContext(context.Context) TimeSeriesTableMetricVisualizationPtrOutput
+}
+
+type timeSeriesTableMetricVisualizationPtr string
+
+func TimeSeriesTableMetricVisualizationPtr(v string) TimeSeriesTableMetricVisualizationPtrInput {
+	return (*timeSeriesTableMetricVisualizationPtr)(&v)
+}
+
+func (*timeSeriesTableMetricVisualizationPtr) ElementType() reflect.Type {
+	return timeSeriesTableMetricVisualizationPtrType
+}
+
+func (in *timeSeriesTableMetricVisualizationPtr) ToTimeSeriesTableMetricVisualizationPtrOutput() TimeSeriesTableMetricVisualizationPtrOutput {
+	return pulumi.ToOutput(in).(TimeSeriesTableMetricVisualizationPtrOutput)
+}
+
+func (in *timeSeriesTableMetricVisualizationPtr) ToTimeSeriesTableMetricVisualizationPtrOutputWithContext(ctx context.Context) TimeSeriesTableMetricVisualizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(TimeSeriesTableMetricVisualizationPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationCrossSeriesReducerInput)(nil)).Elem(), AggregationCrossSeriesReducer("REDUCE_NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*AggregationCrossSeriesReducerPtrInput)(nil)).Elem(), AggregationCrossSeriesReducer("REDUCE_NONE"))
@@ -2646,6 +2815,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ThresholdDirectionPtrInput)(nil)).Elem(), ThresholdDirection("DIRECTION_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ThresholdTargetAxisInput)(nil)).Elem(), ThresholdTargetAxis("TARGET_AXIS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ThresholdTargetAxisPtrInput)(nil)).Elem(), ThresholdTargetAxis("TARGET_AXIS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesTableMetricVisualizationInput)(nil)).Elem(), TimeSeriesTableMetricVisualization("METRIC_VISUALIZATION_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*TimeSeriesTableMetricVisualizationPtrInput)(nil)).Elem(), TimeSeriesTableMetricVisualization("METRIC_VISUALIZATION_UNSPECIFIED"))
 	pulumi.RegisterOutputType(AggregationCrossSeriesReducerOutput{})
 	pulumi.RegisterOutputType(AggregationCrossSeriesReducerPtrOutput{})
 	pulumi.RegisterOutputType(AggregationPerSeriesAlignerOutput{})
@@ -2676,4 +2847,6 @@ func init() {
 	pulumi.RegisterOutputType(ThresholdDirectionPtrOutput{})
 	pulumi.RegisterOutputType(ThresholdTargetAxisOutput{})
 	pulumi.RegisterOutputType(ThresholdTargetAxisPtrOutput{})
+	pulumi.RegisterOutputType(TimeSeriesTableMetricVisualizationOutput{})
+	pulumi.RegisterOutputType(TimeSeriesTableMetricVisualizationPtrOutput{})
 }

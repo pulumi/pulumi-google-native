@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly Outputs.ScheduleResponse BackupSchedule;
         /// <summary>
-        /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+        /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
         /// </summary>
         public readonly string Cluster;
         /// <summary>
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
+        /// The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`
         /// </summary>
         public readonly string Name;
         /// <summary>

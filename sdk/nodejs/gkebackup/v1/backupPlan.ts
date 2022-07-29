@@ -49,7 +49,7 @@ export class BackupPlan extends pulumi.CustomResource {
      */
     public readonly backupSchedule!: pulumi.Output<outputs.gkebackup.v1.ScheduleResponse>;
     /**
-     * Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/*
+     * Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*&#47;locations/*&#47;clusters/*` - `projects/*&#47;zones/*&#47;clusters/*`
      */
     public readonly cluster!: pulumi.Output<string>;
     /**
@@ -74,7 +74,7 @@ export class BackupPlan extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The full name of the BackupPlan resource. Format: projects/*&#47;locations/*&#47;backupPlans/*
+     * The full name of the BackupPlan resource. Format: `projects/*&#47;locations/*&#47;backupPlans/*`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -170,7 +170,7 @@ export interface BackupPlanArgs {
      */
     backupSchedule?: pulumi.Input<inputs.gkebackup.v1.ScheduleArgs>;
     /**
-     * Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/*
+     * Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*&#47;locations/*&#47;clusters/*` - `projects/*&#47;zones/*&#47;clusters/*`
      */
     cluster: pulumi.Input<string>;
     /**

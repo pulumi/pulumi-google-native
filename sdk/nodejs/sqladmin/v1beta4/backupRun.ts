@@ -87,7 +87,7 @@ export class BackupRun extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
-     * The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+     * The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -209,7 +209,7 @@ export interface BackupRunArgs {
      */
     startTime?: pulumi.Input<string>;
     /**
-     * The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+     * The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
      */
     type?: pulumi.Input<enums.sqladmin.v1beta4.BackupRunType>;
     /**

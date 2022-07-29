@@ -47,4 +47,86 @@ namespace Pulumi.GoogleNative.Spanner.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
+    /// </summary>
+    [EnumType]
+    public readonly struct FreeInstanceMetadataExpireBehavior : IEquatable<FreeInstanceMetadataExpireBehavior>
+    {
+        private readonly string _value;
+
+        private FreeInstanceMetadataExpireBehavior(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not specified.
+        /// </summary>
+        public static FreeInstanceMetadataExpireBehavior ExpireBehaviorUnspecified { get; } = new FreeInstanceMetadataExpireBehavior("EXPIRE_BEHAVIOR_UNSPECIFIED");
+        /// <summary>
+        /// When the free instance expires, upgrade the instance to a provisioned instance.
+        /// </summary>
+        public static FreeInstanceMetadataExpireBehavior FreeToProvisioned { get; } = new FreeInstanceMetadataExpireBehavior("FREE_TO_PROVISIONED");
+        /// <summary>
+        /// When the free instance expires, disable the instance, and delete it after the grace period passes if it has not been upgraded.
+        /// </summary>
+        public static FreeInstanceMetadataExpireBehavior RemoveAfterGracePeriod { get; } = new FreeInstanceMetadataExpireBehavior("REMOVE_AFTER_GRACE_PERIOD");
+
+        public static bool operator ==(FreeInstanceMetadataExpireBehavior left, FreeInstanceMetadataExpireBehavior right) => left.Equals(right);
+        public static bool operator !=(FreeInstanceMetadataExpireBehavior left, FreeInstanceMetadataExpireBehavior right) => !left.Equals(right);
+
+        public static explicit operator string(FreeInstanceMetadataExpireBehavior value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FreeInstanceMetadataExpireBehavior other && Equals(other);
+        public bool Equals(FreeInstanceMetadataExpireBehavior other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The `InstanceType` of the current instance.
+    /// </summary>
+    [EnumType]
+    public readonly struct InstanceInstanceType : IEquatable<InstanceInstanceType>
+    {
+        private readonly string _value;
+
+        private InstanceInstanceType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Not specified.
+        /// </summary>
+        public static InstanceInstanceType InstanceTypeUnspecified { get; } = new InstanceInstanceType("INSTANCE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Provisioned instances have dedicated resources, standard usage limits and support.
+        /// </summary>
+        public static InstanceInstanceType Provisioned { get; } = new InstanceInstanceType("PROVISIONED");
+        /// <summary>
+        /// Free instances provide no guarantee for dedicated resources, [node_count, processing_units] should be 0. They come with stricter usage limits and limited support.
+        /// </summary>
+        public static InstanceInstanceType FreeInstance { get; } = new InstanceInstanceType("FREE_INSTANCE");
+
+        public static bool operator ==(InstanceInstanceType left, InstanceInstanceType right) => left.Equals(right);
+        public static bool operator !=(InstanceInstanceType left, InstanceInstanceType right) => !left.Equals(right);
+
+        public static explicit operator string(InstanceInstanceType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is InstanceInstanceType other && Equals(other);
+        public bool Equals(InstanceInstanceType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }

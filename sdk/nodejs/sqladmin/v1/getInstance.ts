@@ -135,7 +135,7 @@ export interface GetInstanceResult {
      */
     readonly replicaNames: string[];
     /**
-     * Initial root password. Use only on creation.
+     * Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
      */
     readonly rootPassword: string;
     /**

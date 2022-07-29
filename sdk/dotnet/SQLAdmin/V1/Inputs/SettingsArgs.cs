@@ -94,6 +94,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         [Input("databaseReplicationEnabled")]
         public Input<bool>? DatabaseReplicationEnabled { get; set; }
 
+        /// <summary>
+        /// Configuration to protect against accidental instance deletion.
+        /// </summary>
+        [Input("deletionProtectionEnabled")]
+        public Input<bool>? DeletionProtectionEnabled { get; set; }
+
         [Input("denyMaintenancePeriods")]
         private InputList<Inputs.DenyMaintenancePeriodArgs>? _denyMaintenancePeriods;
 

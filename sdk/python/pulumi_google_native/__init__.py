@@ -2680,14 +2680,6 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
-  "mod": "run/v1alpha1",
-  "fqn": "pulumi_google_native.run.v1alpha1",
-  "classes": {
-   "google-native:run/v1alpha1:Job": "Job"
-  }
- },
- {
-  "pkg": "google-native",
   "mod": "run/v2",
   "fqn": "pulumi_google_native.run.v2",
   "classes": {
@@ -2772,6 +2764,7 @@ _utilities.register(
    "google-native:servicedirectory/v1beta1:NamespaceIamPolicy": "NamespaceIamPolicy",
    "google-native:servicedirectory/v1beta1:NamespaceServiceIamPolicy": "NamespaceServiceIamPolicy",
    "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamPolicy": "NamespaceServiceWorkloadIamPolicy",
+   "google-native:servicedirectory/v1beta1:RegistrationPolicyIamPolicy": "RegistrationPolicyIamPolicy",
    "google-native:servicedirectory/v1beta1:Service": "Service"
   }
  },

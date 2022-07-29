@@ -129,7 +129,7 @@ class NamespaceServiceWorkloadIamPolicy(pulumi.CustomResource):
                  version: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
-        Sets the IAM Policy for a resource (namespace or service only).
+        Sets the IAM Policy for a resource
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 
@@ -146,7 +146,7 @@ class NamespaceServiceWorkloadIamPolicy(pulumi.CustomResource):
                  args: NamespaceServiceWorkloadIamPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Sets the IAM Policy for a resource (namespace or service only).
+        Sets the IAM Policy for a resource
         Note - this resource's API doesn't support deletion. When deleted, the resource will persist
         on Google Cloud even though it will be deleted from Pulumi state.
 

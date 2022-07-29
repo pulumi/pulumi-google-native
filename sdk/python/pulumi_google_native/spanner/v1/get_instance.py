@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetInstanceResult',
@@ -18,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetInstanceResult:
-    def __init__(__self__, config=None, create_time=None, display_name=None, endpoint_uris=None, labels=None, name=None, node_count=None, processing_units=None, state=None, update_time=None):
+    def __init__(__self__, config=None, create_time=None, display_name=None, endpoint_uris=None, free_instance_metadata=None, instance_type=None, labels=None, name=None, node_count=None, processing_units=None, state=None, update_time=None):
         if config and not isinstance(config, str):
             raise TypeError("Expected argument 'config' to be a str")
         pulumi.set(__self__, "config", config)
@@ -35,6 +36,12 @@ class GetInstanceResult:
             pulumi.log.warn("""endpoint_uris is deprecated: Deprecated. This field is not populated.""")
 
         pulumi.set(__self__, "endpoint_uris", endpoint_uris)
+        if free_instance_metadata and not isinstance(free_instance_metadata, dict):
+            raise TypeError("Expected argument 'free_instance_metadata' to be a dict")
+        pulumi.set(__self__, "free_instance_metadata", free_instance_metadata)
+        if instance_type and not isinstance(instance_type, str):
+            raise TypeError("Expected argument 'instance_type' to be a str")
+        pulumi.set(__self__, "instance_type", instance_type)
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
@@ -85,6 +92,22 @@ class GetInstanceResult:
         Deprecated. This field is not populated.
         """
         return pulumi.get(self, "endpoint_uris")
+
+    @property
+    @pulumi.getter(name="freeInstanceMetadata")
+    def free_instance_metadata(self) -> 'outputs.FreeInstanceMetadataResponse':
+        """
+        Free instance metadata. Only populated for free instances.
+        """
+        return pulumi.get(self, "free_instance_metadata")
+
+    @property
+    @pulumi.getter(name="instanceType")
+    def instance_type(self) -> str:
+        """
+        The `InstanceType` of the current instance.
+        """
+        return pulumi.get(self, "instance_type")
 
     @property
     @pulumi.getter
@@ -145,6 +168,8 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             create_time=self.create_time,
             display_name=self.display_name,
             endpoint_uris=self.endpoint_uris,
+            free_instance_metadata=self.free_instance_metadata,
+            instance_type=self.instance_type,
             labels=self.labels,
             name=self.name,
             node_count=self.node_count,
@@ -172,6 +197,8 @@ def get_instance(field_mask: Optional[str] = None,
         create_time=__ret__.create_time,
         display_name=__ret__.display_name,
         endpoint_uris=__ret__.endpoint_uris,
+        free_instance_metadata=__ret__.free_instance_metadata,
+        instance_type=__ret__.instance_type,
         labels=__ret__.labels,
         name=__ret__.name,
         node_count=__ret__.node_count,

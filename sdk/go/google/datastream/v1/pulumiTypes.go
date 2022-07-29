@@ -2563,6 +2563,8 @@ type MysqlSourceConfig struct {
 	ExcludeObjects *MysqlRdbms `pulumi:"excludeObjects"`
 	// MySQL objects to retrieve from the source.
 	IncludeObjects *MysqlRdbms `pulumi:"includeObjects"`
+	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentCdcTasks *int `pulumi:"maxConcurrentCdcTasks"`
 }
 
 // MysqlSourceConfigInput is an input type that accepts MysqlSourceConfigArgs and MysqlSourceConfigOutput values.
@@ -2582,6 +2584,8 @@ type MysqlSourceConfigArgs struct {
 	ExcludeObjects MysqlRdbmsPtrInput `pulumi:"excludeObjects"`
 	// MySQL objects to retrieve from the source.
 	IncludeObjects MysqlRdbmsPtrInput `pulumi:"includeObjects"`
+	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentCdcTasks pulumi.IntPtrInput `pulumi:"maxConcurrentCdcTasks"`
 }
 
 func (MysqlSourceConfigArgs) ElementType() reflect.Type {
@@ -2672,6 +2676,11 @@ func (o MysqlSourceConfigOutput) IncludeObjects() MysqlRdbmsPtrOutput {
 	return o.ApplyT(func(v MysqlSourceConfig) *MysqlRdbms { return v.IncludeObjects }).(MysqlRdbmsPtrOutput)
 }
 
+// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+func (o MysqlSourceConfigOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MysqlSourceConfig) *int { return v.MaxConcurrentCdcTasks }).(pulumi.IntPtrOutput)
+}
+
 type MysqlSourceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (MysqlSourceConfigPtrOutput) ElementType() reflect.Type {
@@ -2716,12 +2725,24 @@ func (o MysqlSourceConfigPtrOutput) IncludeObjects() MysqlRdbmsPtrOutput {
 	}).(MysqlRdbmsPtrOutput)
 }
 
+// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+func (o MysqlSourceConfigPtrOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MysqlSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentCdcTasks
+	}).(pulumi.IntPtrOutput)
+}
+
 // MySQL source configuration
 type MysqlSourceConfigResponse struct {
 	// MySQL objects to exclude from the stream.
 	ExcludeObjects MysqlRdbmsResponse `pulumi:"excludeObjects"`
 	// MySQL objects to retrieve from the source.
 	IncludeObjects MysqlRdbmsResponse `pulumi:"includeObjects"`
+	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentCdcTasks int `pulumi:"maxConcurrentCdcTasks"`
 }
 
 // MySQL source configuration
@@ -2747,6 +2768,11 @@ func (o MysqlSourceConfigResponseOutput) ExcludeObjects() MysqlRdbmsResponseOutp
 // MySQL objects to retrieve from the source.
 func (o MysqlSourceConfigResponseOutput) IncludeObjects() MysqlRdbmsResponseOutput {
 	return o.ApplyT(func(v MysqlSourceConfigResponse) MysqlRdbmsResponse { return v.IncludeObjects }).(MysqlRdbmsResponseOutput)
+}
+
+// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+func (o MysqlSourceConfigResponseOutput) MaxConcurrentCdcTasks() pulumi.IntOutput {
+	return o.ApplyT(func(v MysqlSourceConfigResponse) int { return v.MaxConcurrentCdcTasks }).(pulumi.IntOutput)
 }
 
 // MySQL SSL configuration information.
@@ -4056,6 +4082,10 @@ type OracleSourceConfig struct {
 	ExcludeObjects *OracleRdbms `pulumi:"excludeObjects"`
 	// Oracle objects to include in the stream.
 	IncludeObjects *OracleRdbms `pulumi:"includeObjects"`
+	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentCdcTasks *int `pulumi:"maxConcurrentCdcTasks"`
+	// Stream large object values.
+	StreamLargeObjects *StreamLargeObjects `pulumi:"streamLargeObjects"`
 }
 
 // OracleSourceConfigInput is an input type that accepts OracleSourceConfigArgs and OracleSourceConfigOutput values.
@@ -4077,6 +4107,10 @@ type OracleSourceConfigArgs struct {
 	ExcludeObjects OracleRdbmsPtrInput `pulumi:"excludeObjects"`
 	// Oracle objects to include in the stream.
 	IncludeObjects OracleRdbmsPtrInput `pulumi:"includeObjects"`
+	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentCdcTasks pulumi.IntPtrInput `pulumi:"maxConcurrentCdcTasks"`
+	// Stream large object values.
+	StreamLargeObjects StreamLargeObjectsPtrInput `pulumi:"streamLargeObjects"`
 }
 
 func (OracleSourceConfigArgs) ElementType() reflect.Type {
@@ -4172,6 +4206,16 @@ func (o OracleSourceConfigOutput) IncludeObjects() OracleRdbmsPtrOutput {
 	return o.ApplyT(func(v OracleSourceConfig) *OracleRdbms { return v.IncludeObjects }).(OracleRdbmsPtrOutput)
 }
 
+// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+func (o OracleSourceConfigOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v OracleSourceConfig) *int { return v.MaxConcurrentCdcTasks }).(pulumi.IntPtrOutput)
+}
+
+// Stream large object values.
+func (o OracleSourceConfigOutput) StreamLargeObjects() StreamLargeObjectsPtrOutput {
+	return o.ApplyT(func(v OracleSourceConfig) *StreamLargeObjects { return v.StreamLargeObjects }).(StreamLargeObjectsPtrOutput)
+}
+
 type OracleSourceConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (OracleSourceConfigPtrOutput) ElementType() reflect.Type {
@@ -4226,6 +4270,26 @@ func (o OracleSourceConfigPtrOutput) IncludeObjects() OracleRdbmsPtrOutput {
 	}).(OracleRdbmsPtrOutput)
 }
 
+// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+func (o OracleSourceConfigPtrOutput) MaxConcurrentCdcTasks() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *OracleSourceConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxConcurrentCdcTasks
+	}).(pulumi.IntPtrOutput)
+}
+
+// Stream large object values.
+func (o OracleSourceConfigPtrOutput) StreamLargeObjects() StreamLargeObjectsPtrOutput {
+	return o.ApplyT(func(v *OracleSourceConfig) *StreamLargeObjects {
+		if v == nil {
+			return nil
+		}
+		return v.StreamLargeObjects
+	}).(StreamLargeObjectsPtrOutput)
+}
+
 // Oracle data source configuration
 type OracleSourceConfigResponse struct {
 	// Drop large object values.
@@ -4234,6 +4298,10 @@ type OracleSourceConfigResponse struct {
 	ExcludeObjects OracleRdbmsResponse `pulumi:"excludeObjects"`
 	// Oracle objects to include in the stream.
 	IncludeObjects OracleRdbmsResponse `pulumi:"includeObjects"`
+	// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+	MaxConcurrentCdcTasks int `pulumi:"maxConcurrentCdcTasks"`
+	// Stream large object values.
+	StreamLargeObjects StreamLargeObjectsResponse `pulumi:"streamLargeObjects"`
 }
 
 // Oracle data source configuration
@@ -4264,6 +4332,16 @@ func (o OracleSourceConfigResponseOutput) ExcludeObjects() OracleRdbmsResponseOu
 // Oracle objects to include in the stream.
 func (o OracleSourceConfigResponseOutput) IncludeObjects() OracleRdbmsResponseOutput {
 	return o.ApplyT(func(v OracleSourceConfigResponse) OracleRdbmsResponse { return v.IncludeObjects }).(OracleRdbmsResponseOutput)
+}
+
+// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+func (o OracleSourceConfigResponseOutput) MaxConcurrentCdcTasks() pulumi.IntOutput {
+	return o.ApplyT(func(v OracleSourceConfigResponse) int { return v.MaxConcurrentCdcTasks }).(pulumi.IntOutput)
+}
+
+// Stream large object values.
+func (o OracleSourceConfigResponseOutput) StreamLargeObjects() StreamLargeObjectsResponseOutput {
+	return o.ApplyT(func(v OracleSourceConfigResponse) StreamLargeObjectsResponse { return v.StreamLargeObjects }).(StreamLargeObjectsResponseOutput)
 }
 
 // Oracle table.
@@ -4847,6 +4925,146 @@ func (o StaticServiceIpConnectivityResponseOutput) ToStaticServiceIpConnectivity
 	return o
 }
 
+// Configuration to stream large object values.
+type StreamLargeObjects struct {
+}
+
+// StreamLargeObjectsInput is an input type that accepts StreamLargeObjectsArgs and StreamLargeObjectsOutput values.
+// You can construct a concrete instance of `StreamLargeObjectsInput` via:
+//
+//          StreamLargeObjectsArgs{...}
+type StreamLargeObjectsInput interface {
+	pulumi.Input
+
+	ToStreamLargeObjectsOutput() StreamLargeObjectsOutput
+	ToStreamLargeObjectsOutputWithContext(context.Context) StreamLargeObjectsOutput
+}
+
+// Configuration to stream large object values.
+type StreamLargeObjectsArgs struct {
+}
+
+func (StreamLargeObjectsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamLargeObjects)(nil)).Elem()
+}
+
+func (i StreamLargeObjectsArgs) ToStreamLargeObjectsOutput() StreamLargeObjectsOutput {
+	return i.ToStreamLargeObjectsOutputWithContext(context.Background())
+}
+
+func (i StreamLargeObjectsArgs) ToStreamLargeObjectsOutputWithContext(ctx context.Context) StreamLargeObjectsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamLargeObjectsOutput)
+}
+
+func (i StreamLargeObjectsArgs) ToStreamLargeObjectsPtrOutput() StreamLargeObjectsPtrOutput {
+	return i.ToStreamLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i StreamLargeObjectsArgs) ToStreamLargeObjectsPtrOutputWithContext(ctx context.Context) StreamLargeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamLargeObjectsOutput).ToStreamLargeObjectsPtrOutputWithContext(ctx)
+}
+
+// StreamLargeObjectsPtrInput is an input type that accepts StreamLargeObjectsArgs, StreamLargeObjectsPtr and StreamLargeObjectsPtrOutput values.
+// You can construct a concrete instance of `StreamLargeObjectsPtrInput` via:
+//
+//          StreamLargeObjectsArgs{...}
+//
+//  or:
+//
+//          nil
+type StreamLargeObjectsPtrInput interface {
+	pulumi.Input
+
+	ToStreamLargeObjectsPtrOutput() StreamLargeObjectsPtrOutput
+	ToStreamLargeObjectsPtrOutputWithContext(context.Context) StreamLargeObjectsPtrOutput
+}
+
+type streamLargeObjectsPtrType StreamLargeObjectsArgs
+
+func StreamLargeObjectsPtr(v *StreamLargeObjectsArgs) StreamLargeObjectsPtrInput {
+	return (*streamLargeObjectsPtrType)(v)
+}
+
+func (*streamLargeObjectsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamLargeObjects)(nil)).Elem()
+}
+
+func (i *streamLargeObjectsPtrType) ToStreamLargeObjectsPtrOutput() StreamLargeObjectsPtrOutput {
+	return i.ToStreamLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (i *streamLargeObjectsPtrType) ToStreamLargeObjectsPtrOutputWithContext(ctx context.Context) StreamLargeObjectsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamLargeObjectsPtrOutput)
+}
+
+// Configuration to stream large object values.
+type StreamLargeObjectsOutput struct{ *pulumi.OutputState }
+
+func (StreamLargeObjectsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamLargeObjects)(nil)).Elem()
+}
+
+func (o StreamLargeObjectsOutput) ToStreamLargeObjectsOutput() StreamLargeObjectsOutput {
+	return o
+}
+
+func (o StreamLargeObjectsOutput) ToStreamLargeObjectsOutputWithContext(ctx context.Context) StreamLargeObjectsOutput {
+	return o
+}
+
+func (o StreamLargeObjectsOutput) ToStreamLargeObjectsPtrOutput() StreamLargeObjectsPtrOutput {
+	return o.ToStreamLargeObjectsPtrOutputWithContext(context.Background())
+}
+
+func (o StreamLargeObjectsOutput) ToStreamLargeObjectsPtrOutputWithContext(ctx context.Context) StreamLargeObjectsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamLargeObjects) *StreamLargeObjects {
+		return &v
+	}).(StreamLargeObjectsPtrOutput)
+}
+
+type StreamLargeObjectsPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamLargeObjectsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamLargeObjects)(nil)).Elem()
+}
+
+func (o StreamLargeObjectsPtrOutput) ToStreamLargeObjectsPtrOutput() StreamLargeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamLargeObjectsPtrOutput) ToStreamLargeObjectsPtrOutputWithContext(ctx context.Context) StreamLargeObjectsPtrOutput {
+	return o
+}
+
+func (o StreamLargeObjectsPtrOutput) Elem() StreamLargeObjectsOutput {
+	return o.ApplyT(func(v *StreamLargeObjects) StreamLargeObjects {
+		if v != nil {
+			return *v
+		}
+		var ret StreamLargeObjects
+		return ret
+	}).(StreamLargeObjectsOutput)
+}
+
+// Configuration to stream large object values.
+type StreamLargeObjectsResponse struct {
+}
+
+// Configuration to stream large object values.
+type StreamLargeObjectsResponseOutput struct{ *pulumi.OutputState }
+
+func (StreamLargeObjectsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamLargeObjectsResponse)(nil)).Elem()
+}
+
+func (o StreamLargeObjectsResponseOutput) ToStreamLargeObjectsResponseOutput() StreamLargeObjectsResponseOutput {
+	return o
+}
+
+func (o StreamLargeObjectsResponseOutput) ToStreamLargeObjectsResponseOutputWithContext(ctx context.Context) StreamLargeObjectsResponseOutput {
+	return o
+}
+
 // The VPC Peering configuration is used to create VPC peering between Datastream and the consumer's VPC.
 type VpcPeeringConfig struct {
 	// A free subnet for peering. (CIDR of /29)
@@ -5088,6 +5306,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceConfigInput)(nil)).Elem(), SourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticServiceIpConnectivityInput)(nil)).Elem(), StaticServiceIpConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticServiceIpConnectivityPtrInput)(nil)).Elem(), StaticServiceIpConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamLargeObjectsInput)(nil)).Elem(), StreamLargeObjectsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamLargeObjectsPtrInput)(nil)).Elem(), StreamLargeObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConfigInput)(nil)).Elem(), VpcPeeringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConfigPtrInput)(nil)).Elem(), VpcPeeringConfigArgs{})
 	pulumi.RegisterOutputType(AvroFileFormatOutput{})
@@ -5171,6 +5391,9 @@ func init() {
 	pulumi.RegisterOutputType(StaticServiceIpConnectivityOutput{})
 	pulumi.RegisterOutputType(StaticServiceIpConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(StaticServiceIpConnectivityResponseOutput{})
+	pulumi.RegisterOutputType(StreamLargeObjectsOutput{})
+	pulumi.RegisterOutputType(StreamLargeObjectsPtrOutput{})
+	pulumi.RegisterOutputType(StreamLargeObjectsResponseOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConfigOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConfigPtrOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConfigResponseOutput{})

@@ -21,12 +21,12 @@ type Fleet struct {
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// The name for the fleet. The name must meet the following constraints: + The name of a fleet should be unique within the organization; + It must consist of lower case alphanumeric characters or `-`; + The length of the name must be less than or equal to 63; + Unicode names must be expressed in Punycode format (rfc3492). Examples: + prod-fleet + xn--wlq33vhyw9jb （Punycode form for "生产环境")
-	FleetName pulumi.StringOutput `pulumi:"fleetName"`
-	Location  pulumi.StringOutput `pulumi:"location"`
+	Location    pulumi.StringOutput `pulumi:"location"`
 	// The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one fleet resource, named "default".
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
+	// State of the namespace resource.
+	State FleetLifecycleStateResponseOutput `pulumi:"state"`
 	// Google-generated UUID for this resource. This is unique across all Fleet resources. If a Fleet resource is deleted and another resource with the same name is created, it gets a different uid.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// When the Fleet was last updated.
@@ -79,20 +79,16 @@ func (FleetState) ElementType() reflect.Type {
 type fleetArgs struct {
 	// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
 	DisplayName *string `pulumi:"displayName"`
-	// The name for the fleet. The name must meet the following constraints: + The name of a fleet should be unique within the organization; + It must consist of lower case alphanumeric characters or `-`; + The length of the name must be less than or equal to 63; + Unicode names must be expressed in Punycode format (rfc3492). Examples: + prod-fleet + xn--wlq33vhyw9jb （Punycode form for "生产环境")
-	FleetName *string `pulumi:"fleetName"`
-	Location  *string `pulumi:"location"`
-	Project   *string `pulumi:"project"`
+	Location    *string `pulumi:"location"`
+	Project     *string `pulumi:"project"`
 }
 
 // The set of arguments for constructing a Fleet resource.
 type FleetArgs struct {
 	// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
 	DisplayName pulumi.StringPtrInput
-	// The name for the fleet. The name must meet the following constraints: + The name of a fleet should be unique within the organization; + It must consist of lower case alphanumeric characters or `-`; + The length of the name must be less than or equal to 63; + Unicode names must be expressed in Punycode format (rfc3492). Examples: + prod-fleet + xn--wlq33vhyw9jb （Punycode form for "生产环境")
-	FleetName pulumi.StringPtrInput
-	Location  pulumi.StringPtrInput
-	Project   pulumi.StringPtrInput
+	Location    pulumi.StringPtrInput
+	Project     pulumi.StringPtrInput
 }
 
 func (FleetArgs) ElementType() reflect.Type {
@@ -147,11 +143,6 @@ func (o FleetOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// The name for the fleet. The name must meet the following constraints: + The name of a fleet should be unique within the organization; + It must consist of lower case alphanumeric characters or `-`; + The length of the name must be less than or equal to 63; + Unicode names must be expressed in Punycode format (rfc3492). Examples: + prod-fleet + xn--wlq33vhyw9jb （Punycode form for "生产环境")
-func (o FleetOutput) FleetName() pulumi.StringOutput {
-	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.FleetName }).(pulumi.StringOutput)
-}
-
 func (o FleetOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -163,6 +154,11 @@ func (o FleetOutput) Name() pulumi.StringOutput {
 
 func (o FleetOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// State of the namespace resource.
+func (o FleetOutput) State() FleetLifecycleStateResponseOutput {
+	return o.ApplyT(func(v *Fleet) FleetLifecycleStateResponseOutput { return v.State }).(FleetLifecycleStateResponseOutput)
 }
 
 // Google-generated UUID for this resource. This is unique across all Fleet resources. If a Fleet resource is deleted and another resource with the same name is created, it gets a different uid.

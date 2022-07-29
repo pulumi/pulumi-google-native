@@ -34,6 +34,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string NullMarker;
         /// <summary>
+        /// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+        /// </summary>
+        public readonly bool PreserveAsciiControlCharacters;
+        /// <summary>
         /// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
         /// </summary>
         public readonly string Quote;
@@ -54,6 +58,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             string nullMarker,
 
+            bool preserveAsciiControlCharacters,
+
             string quote,
 
             string skipLeadingRows)
@@ -63,6 +69,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             Encoding = encoding;
             FieldDelimiter = fieldDelimiter;
             NullMarker = nullMarker;
+            PreserveAsciiControlCharacters = preserveAsciiControlCharacters;
             Quote = quote;
             SkipLeadingRows = skipLeadingRows;
         }

@@ -349,7 +349,7 @@ class GetInstanceResult:
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> str:
         """
-        Initial root password. Use only on creation.
+        Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
         """
         return pulumi.get(self, "root_password")
 

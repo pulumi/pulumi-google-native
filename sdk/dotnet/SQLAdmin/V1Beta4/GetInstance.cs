@@ -162,7 +162,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         public readonly ImmutableArray<string> ReplicaNames;
         /// <summary>
-        /// Initial root password. Use only on creation.
+        /// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
         /// </summary>
         public readonly string RootPassword;
         /// <summary>

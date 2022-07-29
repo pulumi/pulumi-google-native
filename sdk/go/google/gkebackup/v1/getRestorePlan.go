@@ -27,9 +27,9 @@ type LookupRestorePlanArgs struct {
 }
 
 type LookupRestorePlanResult struct {
-	// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+	// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.
 	BackupPlan string `pulumi:"backupPlan"`
-	// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+	// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
 	Cluster string `pulumi:"cluster"`
 	// The timestamp when this RestorePlan resource was created.
 	CreateTime string `pulumi:"createTime"`
@@ -39,7 +39,7 @@ type LookupRestorePlanResult struct {
 	Etag string `pulumi:"etag"`
 	// A set of custom labels supplied by user.
 	Labels map[string]string `pulumi:"labels"`
-	// The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
+	// The full name of the RestorePlan resource. Format: `projects/*/locations/*/restorePlans/*`.
 	Name string `pulumi:"name"`
 	// Configuration of Restores created via this RestorePlan.
 	RestoreConfig RestoreConfigResponse `pulumi:"restoreConfig"`
@@ -86,12 +86,12 @@ func (o LookupRestorePlanResultOutput) ToLookupRestorePlanResultOutputWithContex
 	return o
 }
 
-// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.
 func (o LookupRestorePlanResultOutput) BackupPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.BackupPlan }).(pulumi.StringOutput)
 }
 
-// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
 func (o LookupRestorePlanResultOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -116,7 +116,7 @@ func (o LookupRestorePlanResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
+// The full name of the RestorePlan resource. Format: `projects/*/locations/*/restorePlans/*`.
 func (o LookupRestorePlanResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRestorePlanResult) string { return v.Name }).(pulumi.StringOutput)
 }

@@ -884,6 +884,7 @@ class CsvOptionsArgs:
                  encoding: Optional[pulumi.Input[str]] = None,
                  field_delimiter: Optional[pulumi.Input[str]] = None,
                  null_marker: Optional[pulumi.Input[str]] = None,
+                 preserve_ascii_control_characters: Optional[pulumi.Input[bool]] = None,
                  quote: Optional[pulumi.Input[str]] = None,
                  skip_leading_rows: Optional[pulumi.Input[str]] = None):
         """
@@ -892,6 +893,7 @@ class CsvOptionsArgs:
         :param pulumi.Input[str] encoding: [Optional] The character encoding of the data. The supported values are UTF-8 or ISO-8859-1. The default value is UTF-8. BigQuery decodes the data after the raw, binary data has been split using the values of the quote and fieldDelimiter properties.
         :param pulumi.Input[str] field_delimiter: [Optional] The separator for fields in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. BigQuery also supports the escape sequence "\\t" to specify a tab separator. The default value is a comma (',').
         :param pulumi.Input[str] null_marker: [Optional] An custom string that will represent a NULL value in CSV import data.
+        :param pulumi.Input[bool] preserve_ascii_control_characters: [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\\x00' to '\\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
         :param pulumi.Input[str] quote: [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
         :param pulumi.Input[str] skip_leading_rows: [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
         """
@@ -905,6 +907,8 @@ class CsvOptionsArgs:
             pulumi.set(__self__, "field_delimiter", field_delimiter)
         if null_marker is not None:
             pulumi.set(__self__, "null_marker", null_marker)
+        if preserve_ascii_control_characters is not None:
+            pulumi.set(__self__, "preserve_ascii_control_characters", preserve_ascii_control_characters)
         if quote is not None:
             pulumi.set(__self__, "quote", quote)
         if skip_leading_rows is not None:
@@ -969,6 +973,18 @@ class CsvOptionsArgs:
     @null_marker.setter
     def null_marker(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "null_marker", value)
+
+    @property
+    @pulumi.getter(name="preserveAsciiControlCharacters")
+    def preserve_ascii_control_characters(self) -> Optional[pulumi.Input[bool]]:
+        """
+        [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\\x00' to '\\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+        """
+        return pulumi.get(self, "preserve_ascii_control_characters")
+
+    @preserve_ascii_control_characters.setter
+    def preserve_ascii_control_characters(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "preserve_ascii_control_characters", value)
 
     @property
     @pulumi.getter
@@ -1440,6 +1456,7 @@ class ExternalDataConfigurationArgs:
                  ignore_unknown_values: Optional[pulumi.Input[bool]] = None,
                  max_bad_records: Optional[pulumi.Input[int]] = None,
                  parquet_options: Optional[pulumi.Input['ParquetOptionsArgs']] = None,
+                 reference_file_schema_uri: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input['TableSchemaArgs']] = None,
                  source_format: Optional[pulumi.Input[str]] = None,
                  source_uris: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -1456,6 +1473,7 @@ class ExternalDataConfigurationArgs:
         :param pulumi.Input[bool] ignore_unknown_values: [Optional] Indicates if BigQuery should allow extra values that are not represented in the table schema. If true, the extra values are ignored. If false, records with extra columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. The sourceFormat property determines what BigQuery treats as an extra value: CSV: Trailing columns JSON: Named values that don't match any column names Google Cloud Bigtable: This setting is ignored. Google Cloud Datastore backups: This setting is ignored. Avro: This setting is ignored.
         :param pulumi.Input[int] max_bad_records: [Optional] The maximum number of bad records that BigQuery can ignore when reading data. If the number of bad records exceeds this value, an invalid error is returned in the job result. This is only valid for CSV, JSON, and Google Sheets. The default value is 0, which requires that all records are valid. This setting is ignored for Google Cloud Bigtable, Google Cloud Datastore backups and Avro formats.
         :param pulumi.Input['ParquetOptionsArgs'] parquet_options: Additional properties to set if sourceFormat is set to Parquet.
+        :param pulumi.Input[str] reference_file_schema_uri: [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
         :param pulumi.Input['TableSchemaArgs'] schema: [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
         :param pulumi.Input[str] source_format: [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_uris: [Required] The fully-qualified URIs that point to your data in Google Cloud. For Google Cloud Storage URIs: Each URI can contain one '*' wildcard character and it must come after the 'bucket' name. Size limits related to load jobs apply to external data sources. For Google Cloud Bigtable URIs: Exactly one URI can be specified and it has be a fully specified and valid HTTPS URL for a Google Cloud Bigtable table. For Google Cloud Datastore backups, exactly one URI can be specified. Also, the '*' wildcard character is not allowed.
@@ -1484,6 +1502,8 @@ class ExternalDataConfigurationArgs:
             pulumi.set(__self__, "max_bad_records", max_bad_records)
         if parquet_options is not None:
             pulumi.set(__self__, "parquet_options", parquet_options)
+        if reference_file_schema_uri is not None:
+            pulumi.set(__self__, "reference_file_schema_uri", reference_file_schema_uri)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if source_format is not None:
@@ -1634,6 +1654,18 @@ class ExternalDataConfigurationArgs:
     @parquet_options.setter
     def parquet_options(self, value: Optional[pulumi.Input['ParquetOptionsArgs']]):
         pulumi.set(self, "parquet_options", value)
+
+    @property
+    @pulumi.getter(name="referenceFileSchemaUri")
+    def reference_file_schema_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
+        """
+        return pulumi.get(self, "reference_file_schema_uri")
+
+    @reference_file_schema_uri.setter
+    def reference_file_schema_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reference_file_schema_uri", value)
 
     @property
     @pulumi.getter
@@ -1941,6 +1973,7 @@ class JobConfigurationLoadArgs:
                  projection_fields: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  quote: Optional[pulumi.Input[str]] = None,
                  range_partitioning: Optional[pulumi.Input['RangePartitioningArgs']] = None,
+                 reference_file_schema_uri: Optional[pulumi.Input[str]] = None,
                  schema: Optional[pulumi.Input['TableSchemaArgs']] = None,
                  schema_inline: Optional[pulumi.Input[str]] = None,
                  schema_inline_format: Optional[pulumi.Input[str]] = None,
@@ -1973,6 +2006,7 @@ class JobConfigurationLoadArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] projection_fields: If sourceFormat is set to "DATASTORE_BACKUP", indicates which entity properties to load into BigQuery from a Cloud Datastore backup. Property names are case sensitive and must be top-level properties. If no properties are specified, BigQuery loads all properties. If any named property isn't found in the Cloud Datastore backup, an invalid error is returned in the job result.
         :param pulumi.Input[str] quote: [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
         :param pulumi.Input['RangePartitioningArgs'] range_partitioning: [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
+        :param pulumi.Input[str] reference_file_schema_uri: User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET, ORC.
         :param pulumi.Input['TableSchemaArgs'] schema: [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
         :param pulumi.Input[str] schema_inline: [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
         :param pulumi.Input[str] schema_inline_format: [Deprecated] The format of the schemaInline property.
@@ -2026,6 +2060,8 @@ class JobConfigurationLoadArgs:
             pulumi.set(__self__, "quote", quote)
         if range_partitioning is not None:
             pulumi.set(__self__, "range_partitioning", range_partitioning)
+        if reference_file_schema_uri is not None:
+            pulumi.set(__self__, "reference_file_schema_uri", reference_file_schema_uri)
         if schema is not None:
             pulumi.set(__self__, "schema", schema)
         if schema_inline is not None:
@@ -2304,6 +2340,18 @@ class JobConfigurationLoadArgs:
     @range_partitioning.setter
     def range_partitioning(self, value: Optional[pulumi.Input['RangePartitioningArgs']]):
         pulumi.set(self, "range_partitioning", value)
+
+    @property
+    @pulumi.getter(name="referenceFileSchemaUri")
+    def reference_file_schema_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET, ORC.
+        """
+        return pulumi.get(self, "reference_file_schema_uri")
+
+    @reference_file_schema_uri.setter
+    def reference_file_schema_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reference_file_schema_uri", value)
 
     @property
     @pulumi.getter

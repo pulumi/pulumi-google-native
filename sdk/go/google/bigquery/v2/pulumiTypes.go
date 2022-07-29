@@ -2688,6 +2688,8 @@ type CsvOptions struct {
 	FieldDelimiter *string `pulumi:"fieldDelimiter"`
 	// [Optional] An custom string that will represent a NULL value in CSV import data.
 	NullMarker *string `pulumi:"nullMarker"`
+	// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+	PreserveAsciiControlCharacters *bool `pulumi:"preserveAsciiControlCharacters"`
 	// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
 	Quote *string `pulumi:"quote"`
 	// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
@@ -2716,6 +2718,8 @@ type CsvOptionsArgs struct {
 	FieldDelimiter pulumi.StringPtrInput `pulumi:"fieldDelimiter"`
 	// [Optional] An custom string that will represent a NULL value in CSV import data.
 	NullMarker pulumi.StringPtrInput `pulumi:"nullMarker"`
+	// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+	PreserveAsciiControlCharacters pulumi.BoolPtrInput `pulumi:"preserveAsciiControlCharacters"`
 	// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
 	Quote pulumi.StringPtrInput `pulumi:"quote"`
 	// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
@@ -2824,6 +2828,11 @@ func (o CsvOptionsOutput) NullMarker() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CsvOptions) *string { return v.NullMarker }).(pulumi.StringPtrOutput)
 }
 
+// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+func (o CsvOptionsOutput) PreserveAsciiControlCharacters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v CsvOptions) *bool { return v.PreserveAsciiControlCharacters }).(pulumi.BoolPtrOutput)
+}
+
 // [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
 func (o CsvOptionsOutput) Quote() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CsvOptions) *string { return v.Quote }).(pulumi.StringPtrOutput)
@@ -2908,6 +2917,16 @@ func (o CsvOptionsPtrOutput) NullMarker() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+func (o CsvOptionsPtrOutput) PreserveAsciiControlCharacters() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CsvOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PreserveAsciiControlCharacters
+	}).(pulumi.BoolPtrOutput)
+}
+
 // [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
 func (o CsvOptionsPtrOutput) Quote() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CsvOptions) *string {
@@ -2939,6 +2958,8 @@ type CsvOptionsResponse struct {
 	FieldDelimiter string `pulumi:"fieldDelimiter"`
 	// [Optional] An custom string that will represent a NULL value in CSV import data.
 	NullMarker string `pulumi:"nullMarker"`
+	// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+	PreserveAsciiControlCharacters bool `pulumi:"preserveAsciiControlCharacters"`
 	// [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
 	Quote string `pulumi:"quote"`
 	// [Optional] The number of rows at the top of a CSV file that BigQuery will skip when reading the data. The default value is 0. This property is useful if you have header rows in the file that should be skipped. When autodetect is on, the behavior is the following: * skipLeadingRows unspecified - Autodetect tries to detect headers in the first row. If they are not detected, the row is read as data. Otherwise data is read starting from the second row. * skipLeadingRows is 0 - Instructs autodetect that there are no headers and data should be read starting from the first row. * skipLeadingRows = N > 0 - Autodetect skips N-1 rows and tries to detect headers in row N. If headers are not detected, row N is just skipped. Otherwise row N is used to extract column names for the detected schema.
@@ -2982,6 +3003,11 @@ func (o CsvOptionsResponseOutput) FieldDelimiter() pulumi.StringOutput {
 // [Optional] An custom string that will represent a NULL value in CSV import data.
 func (o CsvOptionsResponseOutput) NullMarker() pulumi.StringOutput {
 	return o.ApplyT(func(v CsvOptionsResponse) string { return v.NullMarker }).(pulumi.StringOutput)
+}
+
+// [Optional] Preserves the embedded ASCII control characters (the first 32 characters in the ASCII-table, from '\x00' to '\x1F') when loading from CSV. Only applicable to CSV, ignored for other formats.
+func (o CsvOptionsResponseOutput) PreserveAsciiControlCharacters() pulumi.BoolOutput {
+	return o.ApplyT(func(v CsvOptionsResponse) bool { return v.PreserveAsciiControlCharacters }).(pulumi.BoolOutput)
 }
 
 // [Optional] The value that is used to quote data sections in a CSV file. BigQuery converts the string to ISO-8859-1 encoding, and then uses the first byte of the encoded string to split the data in its raw, binary state. The default value is a double-quote ('"'). If your data does not contain quoted sections, set the property value to an empty string. If your data contains quoted newline characters, you must also set the allowQuotedNewlines property to true.
@@ -4851,6 +4877,8 @@ type ExternalDataConfiguration struct {
 	MaxBadRecords *int `pulumi:"maxBadRecords"`
 	// Additional properties to set if sourceFormat is set to Parquet.
 	ParquetOptions *ParquetOptions `pulumi:"parquetOptions"`
+	// [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
+	ReferenceFileSchemaUri *string `pulumi:"referenceFileSchemaUri"`
 	// [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
 	Schema *TableSchema `pulumi:"schema"`
 	// [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
@@ -4895,6 +4923,8 @@ type ExternalDataConfigurationArgs struct {
 	MaxBadRecords pulumi.IntPtrInput `pulumi:"maxBadRecords"`
 	// Additional properties to set if sourceFormat is set to Parquet.
 	ParquetOptions ParquetOptionsPtrInput `pulumi:"parquetOptions"`
+	// [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
+	ReferenceFileSchemaUri pulumi.StringPtrInput `pulumi:"referenceFileSchemaUri"`
 	// [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
 	Schema TableSchemaPtrInput `pulumi:"schema"`
 	// [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
@@ -5038,6 +5068,11 @@ func (o ExternalDataConfigurationOutput) MaxBadRecords() pulumi.IntPtrOutput {
 // Additional properties to set if sourceFormat is set to Parquet.
 func (o ExternalDataConfigurationOutput) ParquetOptions() ParquetOptionsPtrOutput {
 	return o.ApplyT(func(v ExternalDataConfiguration) *ParquetOptions { return v.ParquetOptions }).(ParquetOptionsPtrOutput)
+}
+
+// [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
+func (o ExternalDataConfigurationOutput) ReferenceFileSchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalDataConfiguration) *string { return v.ReferenceFileSchemaUri }).(pulumi.StringPtrOutput)
 }
 
 // [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
@@ -5199,6 +5234,16 @@ func (o ExternalDataConfigurationPtrOutput) ParquetOptions() ParquetOptionsPtrOu
 	}).(ParquetOptionsPtrOutput)
 }
 
+// [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
+func (o ExternalDataConfigurationPtrOutput) ReferenceFileSchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ExternalDataConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReferenceFileSchemaUri
+	}).(pulumi.StringPtrOutput)
+}
+
 // [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
 func (o ExternalDataConfigurationPtrOutput) Schema() TableSchemaPtrOutput {
 	return o.ApplyT(func(v *ExternalDataConfiguration) *TableSchema {
@@ -5254,6 +5299,8 @@ type ExternalDataConfigurationResponse struct {
 	MaxBadRecords int `pulumi:"maxBadRecords"`
 	// Additional properties to set if sourceFormat is set to Parquet.
 	ParquetOptions ParquetOptionsResponse `pulumi:"parquetOptions"`
+	// [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
+	ReferenceFileSchemaUri string `pulumi:"referenceFileSchemaUri"`
 	// [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
 	Schema TableSchemaResponse `pulumi:"schema"`
 	// [Required] The data format. For CSV files, specify "CSV". For Google sheets, specify "GOOGLE_SHEETS". For newline-delimited JSON, specify "NEWLINE_DELIMITED_JSON". For Avro files, specify "AVRO". For Google Cloud Datastore backups, specify "DATASTORE_BACKUP". [Beta] For Google Cloud Bigtable, specify "BIGTABLE".
@@ -5336,6 +5383,11 @@ func (o ExternalDataConfigurationResponseOutput) MaxBadRecords() pulumi.IntOutpu
 // Additional properties to set if sourceFormat is set to Parquet.
 func (o ExternalDataConfigurationResponseOutput) ParquetOptions() ParquetOptionsResponseOutput {
 	return o.ApplyT(func(v ExternalDataConfigurationResponse) ParquetOptionsResponse { return v.ParquetOptions }).(ParquetOptionsResponseOutput)
+}
+
+// [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
+func (o ExternalDataConfigurationResponseOutput) ReferenceFileSchemaUri() pulumi.StringOutput {
+	return o.ApplyT(func(v ExternalDataConfigurationResponse) string { return v.ReferenceFileSchemaUri }).(pulumi.StringOutput)
 }
 
 // [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
@@ -6553,6 +6605,8 @@ type JobConfigurationLoad struct {
 	Quote *string `pulumi:"quote"`
 	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 	RangePartitioning *RangePartitioning `pulumi:"rangePartitioning"`
+	// User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET, ORC.
+	ReferenceFileSchemaUri *string `pulumi:"referenceFileSchemaUri"`
 	// [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
 	Schema *TableSchema `pulumi:"schema"`
 	// [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
@@ -6633,6 +6687,8 @@ type JobConfigurationLoadArgs struct {
 	Quote pulumi.StringPtrInput `pulumi:"quote"`
 	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 	RangePartitioning RangePartitioningPtrInput `pulumi:"rangePartitioning"`
+	// User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET, ORC.
+	ReferenceFileSchemaUri pulumi.StringPtrInput `pulumi:"referenceFileSchemaUri"`
 	// [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
 	Schema TableSchemaPtrInput `pulumi:"schema"`
 	// [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
@@ -6839,6 +6895,11 @@ func (o JobConfigurationLoadOutput) Quote() pulumi.StringPtrOutput {
 // [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 func (o JobConfigurationLoadOutput) RangePartitioning() RangePartitioningPtrOutput {
 	return o.ApplyT(func(v JobConfigurationLoad) *RangePartitioning { return v.RangePartitioning }).(RangePartitioningPtrOutput)
+}
+
+// User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET, ORC.
+func (o JobConfigurationLoadOutput) ReferenceFileSchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v JobConfigurationLoad) *string { return v.ReferenceFileSchemaUri }).(pulumi.StringPtrOutput)
 }
 
 // [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
@@ -7129,6 +7190,16 @@ func (o JobConfigurationLoadPtrOutput) RangePartitioning() RangePartitioningPtrO
 	}).(RangePartitioningPtrOutput)
 }
 
+// User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET, ORC.
+func (o JobConfigurationLoadPtrOutput) ReferenceFileSchemaUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *JobConfigurationLoad) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ReferenceFileSchemaUri
+	}).(pulumi.StringPtrOutput)
+}
+
 // [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
 func (o JobConfigurationLoadPtrOutput) Schema() TableSchemaPtrOutput {
 	return o.ApplyT(func(v *JobConfigurationLoad) *TableSchema {
@@ -7276,6 +7347,8 @@ type JobConfigurationLoadResponse struct {
 	Quote string `pulumi:"quote"`
 	// [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 	RangePartitioning RangePartitioningResponse `pulumi:"rangePartitioning"`
+	// User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET, ORC.
+	ReferenceFileSchemaUri string `pulumi:"referenceFileSchemaUri"`
 	// [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
 	Schema TableSchemaResponse `pulumi:"schema"`
 	// [Deprecated] The inline schema. For CSV schemas, specify as "Field1:Type1[,Field2:Type2]*". For example, "foo:STRING, bar:INTEGER, baz:FLOAT".
@@ -7423,6 +7496,11 @@ func (o JobConfigurationLoadResponseOutput) Quote() pulumi.StringOutput {
 // [TrustedTester] Range partitioning specification for this table. Only one of timePartitioning and rangePartitioning should be specified.
 func (o JobConfigurationLoadResponseOutput) RangePartitioning() RangePartitioningResponseOutput {
 	return o.ApplyT(func(v JobConfigurationLoadResponse) RangePartitioningResponse { return v.RangePartitioning }).(RangePartitioningResponseOutput)
+}
+
+// User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET, ORC.
+func (o JobConfigurationLoadResponseOutput) ReferenceFileSchemaUri() pulumi.StringOutput {
+	return o.ApplyT(func(v JobConfigurationLoadResponse) string { return v.ReferenceFileSchemaUri }).(pulumi.StringOutput)
 }
 
 // [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
@@ -11501,7 +11579,7 @@ type QueryTimelineSampleResponse struct {
 	ElapsedMs string `pulumi:"elapsedMs"`
 	// Units of work that can be scheduled immediately. Providing additional slots for these units of work will speed up the query, provided no other query in the reservation needs additional slots.
 	EstimatedRunnableUnits string `pulumi:"estimatedRunnableUnits"`
-	// Total parallel units of work remaining for the active stages.
+	// Total units of work remaining for the query. This number can be revised (increased or decreased) while the query is running.
 	PendingUnits string `pulumi:"pendingUnits"`
 	// Cumulative slot-ms consumed by the query.
 	TotalSlotMs string `pulumi:"totalSlotMs"`
@@ -11541,7 +11619,7 @@ func (o QueryTimelineSampleResponseOutput) EstimatedRunnableUnits() pulumi.Strin
 	return o.ApplyT(func(v QueryTimelineSampleResponse) string { return v.EstimatedRunnableUnits }).(pulumi.StringOutput)
 }
 
-// Total parallel units of work remaining for the active stages.
+// Total units of work remaining for the query. This number can be revised (increased or decreased) while the query is running.
 func (o QueryTimelineSampleResponseOutput) PendingUnits() pulumi.StringOutput {
 	return o.ApplyT(func(v QueryTimelineSampleResponse) string { return v.PendingUnits }).(pulumi.StringOutput)
 }

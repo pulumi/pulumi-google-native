@@ -20,6 +20,7 @@ __all__ = [
     'ThresholdColor',
     'ThresholdDirection',
     'ThresholdTargetAxis',
+    'TimeSeriesTableMetricVisualization',
 ]
 
 
@@ -430,4 +431,22 @@ class ThresholdTargetAxis(str, Enum):
     Y2 = "Y2"
     """
     The y2_axis (the left axis of chart).
+    """
+
+
+class TimeSeriesTableMetricVisualization(str, Enum):
+    """
+    Optional. Store rendering strategy
+    """
+    METRIC_VISUALIZATION_UNSPECIFIED = "METRIC_VISUALIZATION_UNSPECIFIED"
+    """
+    Unspecified state
+    """
+    NUMBER = "NUMBER"
+    """
+    Default text rendering
+    """
+    BAR = "BAR"
+    """
+    Horizontal bar rendering
     """

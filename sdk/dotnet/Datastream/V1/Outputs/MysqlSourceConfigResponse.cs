@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
         /// MySQL objects to retrieve from the source.
         /// </summary>
         public readonly Outputs.MysqlRdbmsResponse IncludeObjects;
+        /// <summary>
+        /// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        /// </summary>
+        public readonly int MaxConcurrentCdcTasks;
 
         [OutputConstructor]
         private MysqlSourceConfigResponse(
             Outputs.MysqlRdbmsResponse excludeObjects,
 
-            Outputs.MysqlRdbmsResponse includeObjects)
+            Outputs.MysqlRdbmsResponse includeObjects,
+
+            int maxConcurrentCdcTasks)
         {
             ExcludeObjects = excludeObjects;
             IncludeObjects = includeObjects;
+            MaxConcurrentCdcTasks = maxConcurrentCdcTasks;
         }
     }
 }

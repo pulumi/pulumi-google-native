@@ -38,6 +38,7 @@ __all__ = [
     'PrivateConnectivityResponse',
     'SourceConfigResponse',
     'StaticServiceIpConnectivityResponse',
+    'StreamLargeObjectsResponse',
     'VpcPeeringConfigResponse',
 ]
 
@@ -831,6 +832,8 @@ class MysqlSourceConfigResponse(dict):
             suggest = "exclude_objects"
         elif key == "includeObjects":
             suggest = "include_objects"
+        elif key == "maxConcurrentCdcTasks":
+            suggest = "max_concurrent_cdc_tasks"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in MysqlSourceConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -845,14 +848,17 @@ class MysqlSourceConfigResponse(dict):
 
     def __init__(__self__, *,
                  exclude_objects: 'outputs.MysqlRdbmsResponse',
-                 include_objects: 'outputs.MysqlRdbmsResponse'):
+                 include_objects: 'outputs.MysqlRdbmsResponse',
+                 max_concurrent_cdc_tasks: int):
         """
         MySQL source configuration
         :param 'MysqlRdbmsResponse' exclude_objects: MySQL objects to exclude from the stream.
         :param 'MysqlRdbmsResponse' include_objects: MySQL objects to retrieve from the source.
+        :param int max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
         """
         pulumi.set(__self__, "exclude_objects", exclude_objects)
         pulumi.set(__self__, "include_objects", include_objects)
+        pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
 
     @property
     @pulumi.getter(name="excludeObjects")
@@ -869,6 +875,14 @@ class MysqlSourceConfigResponse(dict):
         MySQL objects to retrieve from the source.
         """
         return pulumi.get(self, "include_objects")
+
+    @property
+    @pulumi.getter(name="maxConcurrentCdcTasks")
+    def max_concurrent_cdc_tasks(self) -> int:
+        """
+        Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_cdc_tasks")
 
 
 @pulumi.output_type
@@ -1355,6 +1369,10 @@ class OracleSourceConfigResponse(dict):
             suggest = "exclude_objects"
         elif key == "includeObjects":
             suggest = "include_objects"
+        elif key == "maxConcurrentCdcTasks":
+            suggest = "max_concurrent_cdc_tasks"
+        elif key == "streamLargeObjects":
+            suggest = "stream_large_objects"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OracleSourceConfigResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1370,16 +1388,22 @@ class OracleSourceConfigResponse(dict):
     def __init__(__self__, *,
                  drop_large_objects: 'outputs.DropLargeObjectsResponse',
                  exclude_objects: 'outputs.OracleRdbmsResponse',
-                 include_objects: 'outputs.OracleRdbmsResponse'):
+                 include_objects: 'outputs.OracleRdbmsResponse',
+                 max_concurrent_cdc_tasks: int,
+                 stream_large_objects: 'outputs.StreamLargeObjectsResponse'):
         """
         Oracle data source configuration
         :param 'DropLargeObjectsResponse' drop_large_objects: Drop large object values.
         :param 'OracleRdbmsResponse' exclude_objects: Oracle objects to exclude from the stream.
         :param 'OracleRdbmsResponse' include_objects: Oracle objects to include in the stream.
+        :param int max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        :param 'StreamLargeObjectsResponse' stream_large_objects: Stream large object values.
         """
         pulumi.set(__self__, "drop_large_objects", drop_large_objects)
         pulumi.set(__self__, "exclude_objects", exclude_objects)
         pulumi.set(__self__, "include_objects", include_objects)
+        pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+        pulumi.set(__self__, "stream_large_objects", stream_large_objects)
 
     @property
     @pulumi.getter(name="dropLargeObjects")
@@ -1404,6 +1428,22 @@ class OracleSourceConfigResponse(dict):
         Oracle objects to include in the stream.
         """
         return pulumi.get(self, "include_objects")
+
+    @property
+    @pulumi.getter(name="maxConcurrentCdcTasks")
+    def max_concurrent_cdc_tasks(self) -> int:
+        """
+        Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        """
+        return pulumi.get(self, "max_concurrent_cdc_tasks")
+
+    @property
+    @pulumi.getter(name="streamLargeObjects")
+    def stream_large_objects(self) -> 'outputs.StreamLargeObjectsResponse':
+        """
+        Stream large object values.
+        """
+        return pulumi.get(self, "stream_large_objects")
 
 
 @pulumi.output_type
@@ -1568,6 +1608,18 @@ class StaticServiceIpConnectivityResponse(dict):
     def __init__(__self__):
         """
         Static IP address connectivity.
+        """
+        pass
+
+
+@pulumi.output_type
+class StreamLargeObjectsResponse(dict):
+    """
+    Configuration to stream large object values.
+    """
+    def __init__(__self__):
+        """
+        Configuration to stream large object values.
         """
         pass
 

@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Gets the IAM Policy for a resource (namespace or service only).
+ * Gets the IAM Policy for a resource
  */
 export function getNamespaceServiceIamPolicy(args: GetNamespaceServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetNamespaceServiceIamPolicyResult> {
     if (!opts) {

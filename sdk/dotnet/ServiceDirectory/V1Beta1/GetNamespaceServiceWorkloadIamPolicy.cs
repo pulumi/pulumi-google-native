@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
     public static class GetNamespaceServiceWorkloadIamPolicy
     {
         /// <summary>
-        /// Gets the IAM Policy for a resource (namespace or service only).
+        /// Gets the IAM Policy for a resource
         /// </summary>
         public static Task<GetNamespaceServiceWorkloadIamPolicyResult> InvokeAsync(GetNamespaceServiceWorkloadIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceServiceWorkloadIamPolicyResult>("google-native:servicedirectory/v1beta1:getNamespaceServiceWorkloadIamPolicy", args ?? new GetNamespaceServiceWorkloadIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets the IAM Policy for a resource (namespace or service only).
+        /// Gets the IAM Policy for a resource
         /// </summary>
         public static Output<GetNamespaceServiceWorkloadIamPolicyResult> Invoke(GetNamespaceServiceWorkloadIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetNamespaceServiceWorkloadIamPolicyResult>("google-native:servicedirectory/v1beta1:getNamespaceServiceWorkloadIamPolicy", args ?? new GetNamespaceServiceWorkloadIamPolicyInvokeArgs(), options.WithDefaults());

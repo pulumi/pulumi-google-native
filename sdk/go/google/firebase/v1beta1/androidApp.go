@@ -27,6 +27,10 @@ type AndroidApp struct {
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
 	PackageName pulumi.StringOutput `pulumi:"packageName"`
 	Project     pulumi.StringOutput `pulumi:"project"`
+	// The SHA1 certificate hashes for the AndroidApp.
+	Sha1Hashes pulumi.StringArrayOutput `pulumi:"sha1Hashes"`
+	// The SHA256 certificate hashes for the AndroidApp.
+	Sha256Hashes pulumi.StringArrayOutput `pulumi:"sha256Hashes"`
 	// The lifecycle state of the App.
 	State pulumi.StringOutput `pulumi:"state"`
 }
@@ -83,6 +87,10 @@ type androidAppArgs struct {
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
 	PackageName *string `pulumi:"packageName"`
 	Project     *string `pulumi:"project"`
+	// The SHA1 certificate hashes for the AndroidApp.
+	Sha1Hashes []string `pulumi:"sha1Hashes"`
+	// The SHA256 certificate hashes for the AndroidApp.
+	Sha256Hashes []string `pulumi:"sha256Hashes"`
 }
 
 // The set of arguments for constructing a AndroidApp resource.
@@ -96,6 +104,10 @@ type AndroidAppArgs struct {
 	// Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
 	PackageName pulumi.StringPtrInput
 	Project     pulumi.StringPtrInput
+	// The SHA1 certificate hashes for the AndroidApp.
+	Sha1Hashes pulumi.StringArrayInput
+	// The SHA256 certificate hashes for the AndroidApp.
+	Sha256Hashes pulumi.StringArrayInput
 }
 
 func (AndroidAppArgs) ElementType() reflect.Type {
@@ -162,6 +174,16 @@ func (o AndroidAppOutput) PackageName() pulumi.StringOutput {
 
 func (o AndroidAppOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AndroidApp) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The SHA1 certificate hashes for the AndroidApp.
+func (o AndroidAppOutput) Sha1Hashes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AndroidApp) pulumi.StringArrayOutput { return v.Sha1Hashes }).(pulumi.StringArrayOutput)
+}
+
+// The SHA256 certificate hashes for the AndroidApp.
+func (o AndroidAppOutput) Sha256Hashes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AndroidApp) pulumi.StringArrayOutput { return v.Sha256Hashes }).(pulumi.StringArrayOutput)
 }
 
 // The lifecycle state of the App.

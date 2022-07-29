@@ -2744,6 +2744,16 @@ export const ShareSettingsShareType = {
  */
 export type ShareSettingsShareType = (typeof ShareSettingsShareType)[keyof typeof ShareSettingsShareType];
 
+export const SnapshotSnapshotType = {
+    Archive: "ARCHIVE",
+    Standard: "STANDARD",
+} as const;
+
+/**
+ * Indicates the type of the snapshot.
+ */
+export type SnapshotSnapshotType = (typeof SnapshotSnapshotType)[keyof typeof SnapshotSnapshotType];
+
 export const SslCertificateType = {
     /**
      * Google-managed SSLCertificate.
@@ -2997,7 +3007,7 @@ export const TargetInstanceNatPolicy = {
 } as const;
 
 /**
- * NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+ * Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
  */
 export type TargetInstanceNatPolicy = (typeof TargetInstanceNatPolicy)[keyof typeof TargetInstanceNatPolicy];
 

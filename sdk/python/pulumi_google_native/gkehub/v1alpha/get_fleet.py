@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetFleetResult',
@@ -18,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFleetResult:
-    def __init__(__self__, create_time=None, delete_time=None, display_name=None, fleet_name=None, name=None, uid=None, update_time=None):
+    def __init__(__self__, create_time=None, delete_time=None, display_name=None, name=None, state=None, uid=None, update_time=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -28,12 +29,12 @@ class GetFleetResult:
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
-        if fleet_name and not isinstance(fleet_name, str):
-            raise TypeError("Expected argument 'fleet_name' to be a str")
-        pulumi.set(__self__, "fleet_name", fleet_name)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if state and not isinstance(state, dict):
+            raise TypeError("Expected argument 'state' to be a dict")
+        pulumi.set(__self__, "state", state)
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
@@ -66,20 +67,20 @@ class GetFleetResult:
         return pulumi.get(self, "display_name")
 
     @property
-    @pulumi.getter(name="fleetName")
-    def fleet_name(self) -> str:
-        """
-        The name for the fleet. The name must meet the following constraints: + The name of a fleet should be unique within the organization; + It must consist of lower case alphanumeric characters or `-`; + The length of the name must be less than or equal to 63; + Unicode names must be expressed in Punycode format (rfc3492). Examples: + prod-fleet + xn--wlq33vhyw9jb （Punycode form for "生产环境")
-        """
-        return pulumi.get(self, "fleet_name")
-
-    @property
     @pulumi.getter
     def name(self) -> str:
         """
         The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one fleet resource, named "default".
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> 'outputs.FleetLifecycleStateResponse':
+        """
+        State of the namespace resource.
+        """
+        return pulumi.get(self, "state")
 
     @property
     @pulumi.getter
@@ -107,8 +108,8 @@ class AwaitableGetFleetResult(GetFleetResult):
             create_time=self.create_time,
             delete_time=self.delete_time,
             display_name=self.display_name,
-            fleet_name=self.fleet_name,
             name=self.name,
+            state=self.state,
             uid=self.uid,
             update_time=self.update_time)
 
@@ -131,8 +132,8 @@ def get_fleet(fleet_id: Optional[str] = None,
         create_time=__ret__.create_time,
         delete_time=__ret__.delete_time,
         display_name=__ret__.display_name,
-        fleet_name=__ret__.fleet_name,
         name=__ret__.name,
+        state=__ret__.state,
         uid=__ret__.uid,
         update_time=__ret__.update_time)
 

@@ -61,10 +61,6 @@ export interface GetCaseResult {
      */
     readonly priority: string;
     /**
-     * The ID of the project associated with the case.
-     */
-    readonly project: string;
-    /**
      * The severity of this case. Deprecated. Use priority instead.
      *
      * @deprecated The severity of this case. Deprecated. Use priority instead.

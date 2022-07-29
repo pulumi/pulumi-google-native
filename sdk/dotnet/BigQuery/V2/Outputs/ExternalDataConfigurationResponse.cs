@@ -62,6 +62,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.ParquetOptionsResponse ParquetOptions;
         /// <summary>
+        /// [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
+        /// </summary>
+        public readonly string ReferenceFileSchemaUri;
+        /// <summary>
         /// [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
         /// </summary>
         public readonly Outputs.TableSchemaResponse Schema;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             Outputs.ParquetOptionsResponse parquetOptions,
 
+            string referenceFileSchemaUri,
+
             Outputs.TableSchemaResponse schema,
 
             string sourceFormat,
@@ -118,6 +124,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             IgnoreUnknownValues = ignoreUnknownValues;
             MaxBadRecords = maxBadRecords;
             ParquetOptions = parquetOptions;
+            ReferenceFileSchemaUri = referenceFileSchemaUri;
             Schema = schema;
             SourceFormat = sourceFormat;
             SourceUris = sourceUris;

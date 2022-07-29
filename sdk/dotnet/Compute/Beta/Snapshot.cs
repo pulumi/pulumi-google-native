@@ -34,6 +34,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> ChainName { get; private set; } = null!;
 
         /// <summary>
+        /// Size in bytes of the snapshot at creation time.
+        /// </summary>
+        [Output("creationSizeBytes")]
+        public Output<string> CreationSizeBytes { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -131,6 +137,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("snapshotEncryptionKey")]
         public Output<Outputs.CustomerEncryptionKeyResponse> SnapshotEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates the type of the snapshot.
+        /// </summary>
+        [Output("snapshotType")]
+        public Output<string> SnapshotType { get; private set; } = null!;
 
         /// <summary>
         /// The source disk used to create this snapshot.
@@ -297,6 +309,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Input("snapshotEncryptionKey")]
         public Input<Inputs.CustomerEncryptionKeyArgs>? SnapshotEncryptionKey { get; set; }
+
+        /// <summary>
+        /// Indicates the type of the snapshot.
+        /// </summary>
+        [Input("snapshotType")]
+        public Input<Pulumi.GoogleNative.Compute.Beta.SnapshotSnapshotType>? SnapshotType { get; set; }
 
         /// <summary>
         /// The source disk used to create this snapshot.

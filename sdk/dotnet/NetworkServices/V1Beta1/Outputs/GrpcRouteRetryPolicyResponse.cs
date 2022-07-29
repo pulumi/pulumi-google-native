@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Outputs
     public sealed class GrpcRouteRetryPolicyResponse
     {
         /// <summary>
-        /// Specifies the allowed number of retries. This number must be &gt; 0. If not specpfied, default to 1.
+        /// Specifies the allowed number of retries. This number must be &gt; 0. If not specified, default to 1.
         /// </summary>
         public readonly int NumRetries;
         /// <summary>

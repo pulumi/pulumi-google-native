@@ -32,6 +32,8 @@ type LookupSnapshotResult struct {
 	AutoCreated bool `pulumi:"autoCreated"`
 	// Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
 	ChainName string `pulumi:"chainName"`
+	// Size in bytes of the snapshot at creation time.
+	CreationSizeBytes string `pulumi:"creationSizeBytes"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
@@ -60,6 +62,8 @@ type LookupSnapshotResult struct {
 	SelfLink string `pulumi:"selfLink"`
 	// Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
 	SnapshotEncryptionKey CustomerEncryptionKeyResponse `pulumi:"snapshotEncryptionKey"`
+	// Indicates the type of the snapshot.
+	SnapshotType string `pulumi:"snapshotType"`
 	// The source disk used to create this snapshot.
 	SourceDisk string `pulumi:"sourceDisk"`
 	// The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
@@ -131,6 +135,11 @@ func (o LookupSnapshotResultOutput) ChainName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.ChainName }).(pulumi.StringOutput)
 }
 
+// Size in bytes of the snapshot at creation time.
+func (o LookupSnapshotResultOutput) CreationSizeBytes() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.CreationSizeBytes }).(pulumi.StringOutput)
+}
+
 // Creation timestamp in RFC3339 text format.
 func (o LookupSnapshotResultOutput) CreationTimestamp() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) string { return v.CreationTimestamp }).(pulumi.StringOutput)
@@ -199,6 +208,11 @@ func (o LookupSnapshotResultOutput) SelfLink() pulumi.StringOutput {
 // Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
 func (o LookupSnapshotResultOutput) SnapshotEncryptionKey() CustomerEncryptionKeyResponseOutput {
 	return o.ApplyT(func(v LookupSnapshotResult) CustomerEncryptionKeyResponse { return v.SnapshotEncryptionKey }).(CustomerEncryptionKeyResponseOutput)
+}
+
+// Indicates the type of the snapshot.
+func (o LookupSnapshotResultOutput) SnapshotType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSnapshotResult) string { return v.SnapshotType }).(pulumi.StringOutput)
 }
 
 // The source disk used to create this snapshot.

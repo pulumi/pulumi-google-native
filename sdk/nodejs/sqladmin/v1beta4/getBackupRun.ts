@@ -81,7 +81,7 @@ export interface GetBackupRunResult {
      */
     readonly status: string;
     /**
-     * The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+     * The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
      */
     readonly type: string;
     /**

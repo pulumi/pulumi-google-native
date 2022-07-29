@@ -1538,6 +1538,8 @@ class TimeSeriesTableResponse(dict):
         suggest = None
         if key == "dataSets":
             suggest = "data_sets"
+        elif key == "metricVisualization":
+            suggest = "metric_visualization"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in TimeSeriesTableResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1551,12 +1553,15 @@ class TimeSeriesTableResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 data_sets: Sequence['outputs.TableDataSetResponse']):
+                 data_sets: Sequence['outputs.TableDataSetResponse'],
+                 metric_visualization: str):
         """
         A table that displays time series data.
         :param Sequence['TableDataSetResponse'] data_sets: The data displayed in this table.
+        :param str metric_visualization: Optional. Store rendering strategy
         """
         pulumi.set(__self__, "data_sets", data_sets)
+        pulumi.set(__self__, "metric_visualization", metric_visualization)
 
     @property
     @pulumi.getter(name="dataSets")
@@ -1565,6 +1570,14 @@ class TimeSeriesTableResponse(dict):
         The data displayed in this table.
         """
         return pulumi.get(self, "data_sets")
+
+    @property
+    @pulumi.getter(name="metricVisualization")
+    def metric_visualization(self) -> str:
+        """
+        Optional. Store rendering strategy
+        """
+        return pulumi.get(self, "metric_visualization")
 
 
 @pulumi.output_type

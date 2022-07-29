@@ -37,6 +37,10 @@ type LookupInstanceResult struct {
 	//
 	// Deprecated: Deprecated. This field is not populated.
 	EndpointUris []string `pulumi:"endpointUris"`
+	// Free instance metadata. Only populated for free instances.
+	FreeInstanceMetadata FreeInstanceMetadataResponse `pulumi:"freeInstanceMetadata"`
+	// The `InstanceType` of the current instance.
+	InstanceType string `pulumi:"instanceType"`
 	// Cloud Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. Cloud Labels can be used to filter collections of resources. They can be used to control how resource metrics are aggregated. And they can be used as arguments to policy management rules (e.g. route, firewall, load balancing, etc.). * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `[a-z0-9_-]{0,63}`. * No more than 64 labels can be associated with a given resource. See https://goo.gl/xmQnxf for more information on and examples of labels. If you plan to use labels in your own code, please note that additional characters may be allowed in the future. And so you are advised to use an internal label representation, such as JSON, which doesn't rely upon specific characters being disallowed. For example, representing labels as the string: name + "_" + value would prove problematic if we were to allow "_" in a future release.
 	Labels map[string]string `pulumi:"labels"`
 	// A unique identifier for the instance, which cannot be changed after the instance is created. Values are of the form `projects//instances/a-z*[a-z0-9]`. The final segment of the name must be between 2 and 64 characters in length.
@@ -108,6 +112,16 @@ func (o LookupInstanceResultOutput) DisplayName() pulumi.StringOutput {
 // Deprecated: Deprecated. This field is not populated.
 func (o LookupInstanceResultOutput) EndpointUris() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []string { return v.EndpointUris }).(pulumi.StringArrayOutput)
+}
+
+// Free instance metadata. Only populated for free instances.
+func (o LookupInstanceResultOutput) FreeInstanceMetadata() FreeInstanceMetadataResponseOutput {
+	return o.ApplyT(func(v LookupInstanceResult) FreeInstanceMetadataResponse { return v.FreeInstanceMetadata }).(FreeInstanceMetadataResponseOutput)
+}
+
+// The `InstanceType` of the current instance.
+func (o LookupInstanceResultOutput) InstanceType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.InstanceType }).(pulumi.StringOutput)
 }
 
 // Cloud Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. Cloud Labels can be used to filter collections of resources. They can be used to control how resource metrics are aggregated. And they can be used as arguments to policy management rules (e.g. route, firewall, load balancing, etc.). * Label keys must be between 1 and 63 characters long and must conform to the following regular expression: `a-z{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression `[a-z0-9_-]{0,63}`. * No more than 64 labels can be associated with a given resource. See https://goo.gl/xmQnxf for more information on and examples of labels. If you plan to use labels in your own code, please note that additional characters may be allowed in the future. And so you are advised to use an internal label representation, such as JSON, which doesn't rely upon specific characters being disallowed. For example, representing labels as the string: name + "_" + value would prove problematic if we were to allow "_" in a future release.

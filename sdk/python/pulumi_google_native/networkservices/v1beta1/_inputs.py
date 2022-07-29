@@ -577,7 +577,7 @@ class GrpcRouteRetryPolicyArgs:
                  retry_conditions: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The specifications for retries.
-        :param pulumi.Input[int] num_retries: Specifies the allowed number of retries. This number must be > 0. If not specpfied, default to 1.
+        :param pulumi.Input[int] num_retries: Specifies the allowed number of retries. This number must be > 0. If not specified, default to 1.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] retry_conditions: - connect-failure: Router will retry on failures connecting to Backend Services, for example due to connection timeouts. - refused-stream: Router will retry if the backend service resets the stream with a REFUSED_STREAM error code. This reset type indicates that it is safe to retry. - cancelled: Router will retry if the gRPC status code in the response header is set to cancelled - deadline-exceeded: Router will retry if the gRPC status code in the response header is set to deadline-exceeded - resource-exhausted: Router will retry if the gRPC status code in the response header is set to resource-exhausted - unavailable: Router will retry if the gRPC status code in the response header is set to unavailable
         """
         if num_retries is not None:
@@ -589,7 +589,7 @@ class GrpcRouteRetryPolicyArgs:
     @pulumi.getter(name="numRetries")
     def num_retries(self) -> Optional[pulumi.Input[int]]:
         """
-        Specifies the allowed number of retries. This number must be > 0. If not specpfied, default to 1.
+        Specifies the allowed number of retries. This number must be > 0. If not specified, default to 1.
         """
         return pulumi.get(self, "num_retries")
 

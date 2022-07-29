@@ -28,13 +28,13 @@ class GatewayArgs:
         """
         The set of arguments for constructing a Gateway resource.
         :param pulumi.Input[str] gateway_id: Required. Short name of the Gateway resource to be created.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
         :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the Gateway resource.
         :param pulumi.Input[str] name: Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
         :param pulumi.Input[str] server_tls_policy: Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
-        :param pulumi.Input['GatewayType'] type: Immutable. The type of the customer managed gateway.
+        :param pulumi.Input['GatewayType'] type: Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
         """
         pulumi.set(__self__, "gateway_id", gateway_id)
         pulumi.set(__self__, "ports", ports)
@@ -70,7 +70,7 @@ class GatewayArgs:
     @pulumi.getter
     def ports(self) -> pulumi.Input[Sequence[pulumi.Input[int]]]:
         """
-        One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+        One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
         """
         return pulumi.get(self, "ports")
 
@@ -160,7 +160,7 @@ class GatewayArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['GatewayType']]:
         """
-        Immutable. The type of the customer managed gateway.
+        Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
         """
         return pulumi.get(self, "type")
 
@@ -194,10 +194,10 @@ class Gateway(pulumi.CustomResource):
         :param pulumi.Input[str] gateway_id: Required. Short name of the Gateway resource to be created.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the Gateway resource.
         :param pulumi.Input[str] name: Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
-        :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] ports: One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
         :param pulumi.Input[str] scope: Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
         :param pulumi.Input[str] server_tls_policy: Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
-        :param pulumi.Input['GatewayType'] type: Immutable. The type of the customer managed gateway.
+        :param pulumi.Input['GatewayType'] type: Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
         """
         ...
     @overload
@@ -349,7 +349,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def ports(self) -> pulumi.Output[Sequence[int]]:
         """
-        One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+        One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
         """
         return pulumi.get(self, "ports")
 
@@ -386,7 +386,7 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
         """
-        Immutable. The type of the customer managed gateway.
+        Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
         """
         return pulumi.get(self, "type")
 

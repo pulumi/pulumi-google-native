@@ -209,6 +209,8 @@ const (
 	WorkloadComplianceRegimeCaRegionsAndSupport = WorkloadComplianceRegime("CA_REGIONS_AND_SUPPORT")
 	// International Traffic in Arms Regulations
 	WorkloadComplianceRegimeItar = WorkloadComplianceRegime("ITAR")
+	// Assured Workloads for Australia Regions and Support controls
+	WorkloadComplianceRegimeAuRegionsAndUsSupport = WorkloadComplianceRegime("AU_REGIONS_AND_US_SUPPORT")
 )
 
 func (WorkloadComplianceRegime) ElementType() reflect.Type {

@@ -41,6 +41,14 @@ class AppEngineHttpRequestHttpMethod(str, Enum):
     """
     HTTP DELETE
     """
+    PATCH = "PATCH"
+    """
+    HTTP PATCH
+    """
+    OPTIONS = "OPTIONS"
+    """
+    HTTP OPTIONS
+    """
 
 
 class HttpRequestHttpMethod(str, Enum):
@@ -71,6 +79,14 @@ class HttpRequestHttpMethod(str, Enum):
     """
     HTTP DELETE
     """
+    PATCH = "PATCH"
+    """
+    HTTP PATCH
+    """
+    OPTIONS = "OPTIONS"
+    """
+    HTTP OPTIONS
+    """
 
 
 class HttpTargetHttpMethod(str, Enum):
@@ -100,6 +116,14 @@ class HttpTargetHttpMethod(str, Enum):
     DELETE = "DELETE"
     """
     HTTP DELETE
+    """
+    PATCH = "PATCH"
+    """
+    HTTP PATCH
+    """
+    OPTIONS = "OPTIONS"
+    """
+    HTTP OPTIONS
     """
 
 

@@ -1555,6 +1555,8 @@ class SettingsResponse(dict):
             suggest = "database_flags"
         elif key == "databaseReplicationEnabled":
             suggest = "database_replication_enabled"
+        elif key == "deletionProtectionEnabled":
+            suggest = "deletion_protection_enabled"
         elif key == "denyMaintenancePeriods":
             suggest = "deny_maintenance_periods"
         elif key == "insightsConfig":
@@ -1605,6 +1607,7 @@ class SettingsResponse(dict):
                  data_disk_type: str,
                  database_flags: Sequence['outputs.DatabaseFlagsResponse'],
                  database_replication_enabled: bool,
+                 deletion_protection_enabled: bool,
                  deny_maintenance_periods: Sequence['outputs.DenyMaintenancePeriodResponse'],
                  insights_config: 'outputs.InsightsConfigResponse',
                  ip_configuration: 'outputs.IpConfigurationResponse',
@@ -1633,6 +1636,7 @@ class SettingsResponse(dict):
         :param str data_disk_type: The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
         :param Sequence['DatabaseFlagsResponse'] database_flags: The database flags passed to the instance at startup.
         :param bool database_replication_enabled: Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
+        :param bool deletion_protection_enabled: Configuration to protect against accidental instance deletion.
         :param Sequence['DenyMaintenancePeriodResponse'] deny_maintenance_periods: Deny maintenance periods
         :param 'InsightsConfigResponse' insights_config: Insights configuration, for now relevant only for Postgres.
         :param 'IpConfigurationResponse' ip_configuration: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
@@ -1660,6 +1664,7 @@ class SettingsResponse(dict):
         pulumi.set(__self__, "data_disk_type", data_disk_type)
         pulumi.set(__self__, "database_flags", database_flags)
         pulumi.set(__self__, "database_replication_enabled", database_replication_enabled)
+        pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         pulumi.set(__self__, "deny_maintenance_periods", deny_maintenance_periods)
         pulumi.set(__self__, "insights_config", insights_config)
         pulumi.set(__self__, "ip_configuration", ip_configuration)
@@ -1763,6 +1768,14 @@ class SettingsResponse(dict):
         Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
         """
         return pulumi.get(self, "database_replication_enabled")
+
+    @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> bool:
+        """
+        Configuration to protect against accidental instance deletion.
+        """
+        return pulumi.get(self, "deletion_protection_enabled")
 
     @property
     @pulumi.getter(name="denyMaintenancePeriods")
