@@ -82,7 +82,7 @@ export const GatewayType = {
 } as const;
 
 /**
- * Immutable. The type of the customer managed gateway.
+ * Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
  */
 export type GatewayType = (typeof GatewayType)[keyof typeof GatewayType];
 

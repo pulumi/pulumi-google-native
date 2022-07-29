@@ -37,7 +37,7 @@ export interface GetBackupPlanResult {
      */
     readonly backupSchedule: outputs.gkebackup.v1.ScheduleResponse;
     /**
-     * Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/*
+     * Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*&#47;locations/*&#47;clusters/*` - `projects/*&#47;zones/*&#47;clusters/*`
      */
     readonly cluster: string;
     /**
@@ -61,7 +61,7 @@ export interface GetBackupPlanResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * The full name of the BackupPlan resource. Format: projects/*&#47;locations/*&#47;backupPlans/*
+     * The full name of the BackupPlan resource. Format: `projects/*&#47;locations/*&#47;backupPlans/*`
      */
     readonly name: string;
     /**

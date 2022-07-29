@@ -44,7 +44,7 @@ export interface GetGatewayResult {
      */
     readonly name: string;
     /**
-     * One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+     * One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
      */
     readonly ports: number[];
     /**
@@ -60,7 +60,7 @@ export interface GetGatewayResult {
      */
     readonly serverTlsPolicy: string;
     /**
-     * Immutable. The type of the customer managed gateway.
+     * Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
      */
     readonly type: string;
     /**

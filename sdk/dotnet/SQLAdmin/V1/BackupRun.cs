@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+        /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -238,7 +238,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+        /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.SQLAdmin.V1.BackupRunType>? Type { get; set; }

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetSnapshotResult:
-    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzs=None, self_link=None, snapshot_encryption_key=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None):
+    def __init__(__self__, architecture=None, auto_created=None, chain_name=None, creation_size_bytes=None, creation_timestamp=None, description=None, disk_size_gb=None, download_bytes=None, kind=None, label_fingerprint=None, labels=None, license_codes=None, licenses=None, location_hint=None, name=None, satisfies_pzs=None, self_link=None, snapshot_encryption_key=None, snapshot_type=None, source_disk=None, source_disk_encryption_key=None, source_disk_id=None, source_snapshot_schedule_policy=None, source_snapshot_schedule_policy_id=None, status=None, storage_bytes=None, storage_bytes_status=None, storage_locations=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -29,6 +29,9 @@ class GetSnapshotResult:
         if chain_name and not isinstance(chain_name, str):
             raise TypeError("Expected argument 'chain_name' to be a str")
         pulumi.set(__self__, "chain_name", chain_name)
+        if creation_size_bytes and not isinstance(creation_size_bytes, str):
+            raise TypeError("Expected argument 'creation_size_bytes' to be a str")
+        pulumi.set(__self__, "creation_size_bytes", creation_size_bytes)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -71,6 +74,9 @@ class GetSnapshotResult:
         if snapshot_encryption_key and not isinstance(snapshot_encryption_key, dict):
             raise TypeError("Expected argument 'snapshot_encryption_key' to be a dict")
         pulumi.set(__self__, "snapshot_encryption_key", snapshot_encryption_key)
+        if snapshot_type and not isinstance(snapshot_type, str):
+            raise TypeError("Expected argument 'snapshot_type' to be a str")
+        pulumi.set(__self__, "snapshot_type", snapshot_type)
         if source_disk and not isinstance(source_disk, str):
             raise TypeError("Expected argument 'source_disk' to be a str")
         pulumi.set(__self__, "source_disk", source_disk)
@@ -122,6 +128,14 @@ class GetSnapshotResult:
         Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
         """
         return pulumi.get(self, "chain_name")
+
+    @property
+    @pulumi.getter(name="creationSizeBytes")
+    def creation_size_bytes(self) -> str:
+        """
+        Size in bytes of the snapshot at creation time.
+        """
+        return pulumi.get(self, "creation_size_bytes")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -236,6 +250,14 @@ class GetSnapshotResult:
         return pulumi.get(self, "snapshot_encryption_key")
 
     @property
+    @pulumi.getter(name="snapshotType")
+    def snapshot_type(self) -> str:
+        """
+        Indicates the type of the snapshot.
+        """
+        return pulumi.get(self, "snapshot_type")
+
+    @property
     @pulumi.getter(name="sourceDisk")
     def source_disk(self) -> str:
         """
@@ -317,6 +339,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             architecture=self.architecture,
             auto_created=self.auto_created,
             chain_name=self.chain_name,
+            creation_size_bytes=self.creation_size_bytes,
             creation_timestamp=self.creation_timestamp,
             description=self.description,
             disk_size_gb=self.disk_size_gb,
@@ -331,6 +354,7 @@ class AwaitableGetSnapshotResult(GetSnapshotResult):
             satisfies_pzs=self.satisfies_pzs,
             self_link=self.self_link,
             snapshot_encryption_key=self.snapshot_encryption_key,
+            snapshot_type=self.snapshot_type,
             source_disk=self.source_disk,
             source_disk_encryption_key=self.source_disk_encryption_key,
             source_disk_id=self.source_disk_id,
@@ -358,6 +382,7 @@ def get_snapshot(project: Optional[str] = None,
         architecture=__ret__.architecture,
         auto_created=__ret__.auto_created,
         chain_name=__ret__.chain_name,
+        creation_size_bytes=__ret__.creation_size_bytes,
         creation_timestamp=__ret__.creation_timestamp,
         description=__ret__.description,
         disk_size_gb=__ret__.disk_size_gb,
@@ -372,6 +397,7 @@ def get_snapshot(project: Optional[str] = None,
         satisfies_pzs=__ret__.satisfies_pzs,
         self_link=__ret__.self_link,
         snapshot_encryption_key=__ret__.snapshot_encryption_key,
+        snapshot_type=__ret__.snapshot_type,
         source_disk=__ret__.source_disk,
         source_disk_encryption_key=__ret__.source_disk_encryption_key,
         source_disk_id=__ret__.source_disk_id,

@@ -84,3 +84,7 @@ class WorkloadComplianceRegime(str, Enum):
     """
     International Traffic in Arms Regulations
     """
+    AU_REGIONS_AND_US_SUPPORT = "AU_REGIONS_AND_US_SUPPORT"
+    """
+    Assured Workloads for Australia Regions and Support controls
+    """

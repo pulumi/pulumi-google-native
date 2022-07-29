@@ -78,6 +78,10 @@ export interface GetUptimeCheckConfigResult {
      * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
      */
     readonly timeout: string;
+    /**
+     * User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     */
+    readonly userLabels: {[key: string]: string};
 }
 
 export function getUptimeCheckConfigOutput(args: GetUptimeCheckConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUptimeCheckConfigResult> {

@@ -98,6 +98,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.RangePartitioningResponse RangePartitioning;
         /// <summary>
+        /// User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET, ORC.
+        /// </summary>
+        public readonly string ReferenceFileSchemaUri;
+        /// <summary>
         /// [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
         /// </summary>
         public readonly Outputs.TableSchemaResponse Schema;
@@ -182,6 +186,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             Outputs.RangePartitioningResponse rangePartitioning,
 
+            string referenceFileSchemaUri,
+
             Outputs.TableSchemaResponse schema,
 
             string schemaInline,
@@ -223,6 +229,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             ProjectionFields = projectionFields;
             Quote = quote;
             RangePartitioning = rangePartitioning;
+            ReferenceFileSchemaUri = referenceFileSchemaUri;
             Schema = schema;
             SchemaInline = schemaInline;
             SchemaInlineFormat = schemaInlineFormat;

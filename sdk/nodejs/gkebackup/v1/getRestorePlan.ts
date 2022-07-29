@@ -29,11 +29,11 @@ export interface GetRestorePlanArgs {
 
 export interface GetRestorePlanResult {
     /**
-     * Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*&#47;locations/*&#47;backupPlans/*.
+     * Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*&#47;locations/*&#47;backupPlans/*`.
      */
     readonly backupPlan: string;
     /**
-     * Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/*
+     * Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*&#47;locations/*&#47;clusters/*` - `projects/*&#47;zones/*&#47;clusters/*`
      */
     readonly cluster: string;
     /**
@@ -53,7 +53,7 @@ export interface GetRestorePlanResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * The full name of the RestorePlan resource. Format: projects/*&#47;locations/*&#47;restorePlans/*.
+     * The full name of the RestorePlan resource. Format: `projects/*&#47;locations/*&#47;restorePlans/*`.
      */
     readonly name: string;
     /**

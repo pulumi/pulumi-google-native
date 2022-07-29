@@ -173,6 +173,7 @@ __all__ = [
     'ServerBindingType',
     'ServiceAttachmentConnectionPreference',
     'ShareSettingsShareType',
+    'SnapshotSnapshotType',
     'SslCertificateType',
     'SslPolicyMinTlsVersion',
     'SslPolicyProfile',
@@ -2924,6 +2925,14 @@ class ShareSettingsShareType(str, Enum):
     """
 
 
+class SnapshotSnapshotType(str, Enum):
+    """
+    Indicates the type of the snapshot.
+    """
+    ARCHIVE = "ARCHIVE"
+    STANDARD = "STANDARD"
+
+
 class SslCertificateType(str, Enum):
     """
     (Optional) Specifies the type of SSL certificate, either "SELF_MANAGED" or "MANAGED". If not specified, the certificate is self-managed and the fields certificate and private_key are used.
@@ -3143,7 +3152,7 @@ class TargetHttpsProxyQuicOverride(str, Enum):
 
 class TargetInstanceNatPolicy(str, Enum):
     """
-    NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+    Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
     """
     NO_NAT = "NO_NAT"
     """

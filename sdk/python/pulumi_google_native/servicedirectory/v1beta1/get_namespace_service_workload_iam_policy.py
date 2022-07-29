@@ -72,7 +72,7 @@ def get_namespace_service_workload_iam_policy(location: Optional[str] = None,
                                               service_workload_id: Optional[str] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNamespaceServiceWorkloadIamPolicyResult:
     """
-    Gets the IAM Policy for a resource (namespace or service only).
+    Gets the IAM Policy for a resource
     """
     __args__ = dict()
     __args__['location'] = location
@@ -95,6 +95,6 @@ def get_namespace_service_workload_iam_policy_output(location: Optional[pulumi.I
                                                      service_workload_id: Optional[pulumi.Input[str]] = None,
                                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNamespaceServiceWorkloadIamPolicyResult]:
     """
-    Gets the IAM Policy for a resource (namespace or service only).
+    Gets the IAM Policy for a resource
     """
     ...

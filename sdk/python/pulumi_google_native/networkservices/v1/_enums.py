@@ -75,7 +75,7 @@ class EndpointPolicyType(str, Enum):
 
 class GatewayType(str, Enum):
     """
-    Immutable. The type of the customer managed gateway.
+    Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
     """
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
     """

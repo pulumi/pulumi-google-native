@@ -56,7 +56,7 @@ export class TargetInstance extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+     * Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
      */
     public readonly natPolicy!: pulumi.Output<string>;
     /**
@@ -133,7 +133,7 @@ export interface TargetInstanceArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+     * Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
      */
     natPolicy?: pulumi.Input<enums.compute.v1.TargetInstanceNatPolicy>;
     /**

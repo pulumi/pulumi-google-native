@@ -44,6 +44,14 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         /// HTTP DELETE
         /// </summary>
         public static AppEngineHttpRequestHttpMethod Delete { get; } = new AppEngineHttpRequestHttpMethod("DELETE");
+        /// <summary>
+        /// HTTP PATCH
+        /// </summary>
+        public static AppEngineHttpRequestHttpMethod Patch { get; } = new AppEngineHttpRequestHttpMethod("PATCH");
+        /// <summary>
+        /// HTTP OPTIONS
+        /// </summary>
+        public static AppEngineHttpRequestHttpMethod Options { get; } = new AppEngineHttpRequestHttpMethod("OPTIONS");
 
         public static bool operator ==(AppEngineHttpRequestHttpMethod left, AppEngineHttpRequestHttpMethod right) => left.Equals(right);
         public static bool operator !=(AppEngineHttpRequestHttpMethod left, AppEngineHttpRequestHttpMethod right) => !left.Equals(right);
@@ -97,6 +105,14 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         /// HTTP DELETE
         /// </summary>
         public static HttpRequestHttpMethod Delete { get; } = new HttpRequestHttpMethod("DELETE");
+        /// <summary>
+        /// HTTP PATCH
+        /// </summary>
+        public static HttpRequestHttpMethod Patch { get; } = new HttpRequestHttpMethod("PATCH");
+        /// <summary>
+        /// HTTP OPTIONS
+        /// </summary>
+        public static HttpRequestHttpMethod Options { get; } = new HttpRequestHttpMethod("OPTIONS");
 
         public static bool operator ==(HttpRequestHttpMethod left, HttpRequestHttpMethod right) => left.Equals(right);
         public static bool operator !=(HttpRequestHttpMethod left, HttpRequestHttpMethod right) => !left.Equals(right);
@@ -150,6 +166,14 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2
         /// HTTP DELETE
         /// </summary>
         public static HttpTargetHttpMethod Delete { get; } = new HttpTargetHttpMethod("DELETE");
+        /// <summary>
+        /// HTTP PATCH
+        /// </summary>
+        public static HttpTargetHttpMethod Patch { get; } = new HttpTargetHttpMethod("PATCH");
+        /// <summary>
+        /// HTTP OPTIONS
+        /// </summary>
+        public static HttpTargetHttpMethod Options { get; } = new HttpTargetHttpMethod("OPTIONS");
 
         public static bool operator ==(HttpTargetHttpMethod left, HttpTargetHttpMethod right) => left.Equals(right);
         public static bool operator !=(HttpTargetHttpMethod left, HttpTargetHttpMethod right) => !left.Equals(right);

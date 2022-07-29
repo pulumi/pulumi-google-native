@@ -3575,7 +3575,7 @@ type GoogleCloudDataplexV1TaskExecutionSpec struct {
 	KmsKey *string `pulumi:"kmsKey"`
 	// Optional. The maximum duration after which the job execution is expired.
 	MaxJobExecutionLifetime *string `pulumi:"maxJobExecutionLifetime"`
-	// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+	// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
 	Project *string `pulumi:"project"`
 	// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
 	ServiceAccount string `pulumi:"serviceAccount"`
@@ -3600,7 +3600,7 @@ type GoogleCloudDataplexV1TaskExecutionSpecArgs struct {
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
 	// Optional. The maximum duration after which the job execution is expired.
 	MaxJobExecutionLifetime pulumi.StringPtrInput `pulumi:"maxJobExecutionLifetime"`
-	// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+	// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
 	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
@@ -3648,7 +3648,7 @@ func (o GoogleCloudDataplexV1TaskExecutionSpecOutput) MaxJobExecutionLifetime() 
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpec) *string { return v.MaxJobExecutionLifetime }).(pulumi.StringPtrOutput)
 }
 
-// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
 func (o GoogleCloudDataplexV1TaskExecutionSpecOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpec) *string { return v.Project }).(pulumi.StringPtrOutput)
 }
@@ -3666,7 +3666,7 @@ type GoogleCloudDataplexV1TaskExecutionSpecResponse struct {
 	KmsKey string `pulumi:"kmsKey"`
 	// Optional. The maximum duration after which the job execution is expired.
 	MaxJobExecutionLifetime string `pulumi:"maxJobExecutionLifetime"`
-	// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+	// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
 	Project string `pulumi:"project"`
 	// Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
 	ServiceAccount string `pulumi:"serviceAccount"`
@@ -3702,7 +3702,7 @@ func (o GoogleCloudDataplexV1TaskExecutionSpecResponseOutput) MaxJobExecutionLif
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpecResponse) string { return v.MaxJobExecutionLifetime }).(pulumi.StringOutput)
 }
 
-// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
 func (o GoogleCloudDataplexV1TaskExecutionSpecResponseOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1TaskExecutionSpecResponse) string { return v.Project }).(pulumi.StringOutput)
 }

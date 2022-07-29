@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+        /// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
         /// </summary>
         [Output("ports")]
         public Output<ImmutableArray<int>> Ports { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public Output<string> ServerTlsPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The type of the customer managed gateway.
+        /// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         private InputList<int>? _ports;
 
         /// <summary>
-        /// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+        /// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
         /// </summary>
         public InputList<int> Ports
         {
@@ -199,7 +199,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public Input<string>? ServerTlsPolicy { get; set; }
 
         /// <summary>
-        /// Immutable. The type of the customer managed gateway.
+        /// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.NetworkServices.V1.GatewayType>? Type { get; set; }

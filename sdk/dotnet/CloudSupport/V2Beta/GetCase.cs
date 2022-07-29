@@ -96,10 +96,6 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         /// </summary>
         public readonly string Priority;
         /// <summary>
-        /// The ID of the project associated with the case.
-        /// </summary>
-        public readonly string Project;
-        /// <summary>
         /// The severity of this case. Deprecated. Use priority instead.
         /// </summary>
         public readonly string Severity;
@@ -142,8 +138,6 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
 
             string priority,
 
-            string project,
-
             string severity,
 
             string state,
@@ -164,7 +158,6 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
             Escalated = escalated;
             Name = name;
             Priority = priority;
-            Project = project;
             Severity = severity;
             State = state;
             SubscriberEmailAddresses = subscriberEmailAddresses;

@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+        /// Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
         /// </summary>
         [Output("natPolicy")]
         public Output<string> NatPolicy { get; private set; } = null!;
@@ -144,7 +144,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+        /// Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
         /// </summary>
         [Input("natPolicy")]
         public Input<Pulumi.GoogleNative.Compute.V1.TargetInstanceNatPolicy>? NatPolicy { get; set; }

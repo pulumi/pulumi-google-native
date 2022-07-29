@@ -71,7 +71,7 @@ def get_namespace_iam_policy(location: Optional[str] = None,
                              project: Optional[str] = None,
                              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNamespaceIamPolicyResult:
     """
-    Gets the IAM Policy for a resource (namespace or service only).
+    Gets the IAM Policy for a resource
     """
     __args__ = dict()
     __args__['location'] = location
@@ -92,6 +92,6 @@ def get_namespace_iam_policy_output(location: Optional[pulumi.Input[str]] = None
                                     project: Optional[pulumi.Input[Optional[str]]] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNamespaceIamPolicyResult]:
     """
-    Gets the IAM Policy for a resource (namespace or service only).
+    Gets the IAM Policy for a resource
     """
     ...

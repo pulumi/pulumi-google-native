@@ -69,7 +69,7 @@ type Instance struct {
 	ReplicaConfiguration ReplicaConfigurationResponseOutput `pulumi:"replicaConfiguration"`
 	// The replicas of the instance.
 	ReplicaNames pulumi.StringArrayOutput `pulumi:"replicaNames"`
-	// Initial root password. Use only on creation.
+	// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
 	RootPassword pulumi.StringOutput `pulumi:"rootPassword"`
 	// The status indicating if instance satisfiesPzs. Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
@@ -186,7 +186,7 @@ type instanceArgs struct {
 	ReplicaConfiguration *ReplicaConfiguration `pulumi:"replicaConfiguration"`
 	// The replicas of the instance.
 	ReplicaNames []string `pulumi:"replicaNames"`
-	// Initial root password. Use only on creation.
+	// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
 	RootPassword *string `pulumi:"rootPassword"`
 	// The status indicating if instance satisfiesPzs. Reserved for future use.
 	SatisfiesPzs *bool `pulumi:"satisfiesPzs"`
@@ -262,7 +262,7 @@ type InstanceArgs struct {
 	ReplicaConfiguration ReplicaConfigurationPtrInput
 	// The replicas of the instance.
 	ReplicaNames pulumi.StringArrayInput
-	// Initial root password. Use only on creation.
+	// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
 	RootPassword pulumi.StringPtrInput
 	// The status indicating if instance satisfiesPzs. Reserved for future use.
 	SatisfiesPzs pulumi.BoolPtrInput
@@ -454,7 +454,7 @@ func (o InstanceOutput) ReplicaNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.ReplicaNames }).(pulumi.StringArrayOutput)
 }
 
-// Initial root password. Use only on creation.
+// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
 func (o InstanceOutput) RootPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.RootPassword }).(pulumi.StringOutput)
 }

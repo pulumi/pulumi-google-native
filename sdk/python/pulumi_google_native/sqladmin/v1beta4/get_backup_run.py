@@ -174,7 +174,7 @@ class GetBackupRunResult:
     @pulumi.getter
     def type(self) -> str:
         """
-        The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+        The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         """
         return pulumi.get(self, "type")
 

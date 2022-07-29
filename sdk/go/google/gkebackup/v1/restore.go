@@ -16,9 +16,9 @@ import (
 type Restore struct {
 	pulumi.CustomResourceState
 
-	// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+	// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*/locations/*/backupPlans/*/backups/*`.
 	Backup pulumi.StringOutput `pulumi:"backup"`
-	// The target cluster into which this Restore will restore data. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster value.
+	// The target cluster into which this Restore will restore data. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` Inherited from parent RestorePlan's cluster value.
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// Timestamp of when the restore operation completed.
 	CompleteTime pulumi.StringOutput `pulumi:"completeTime"`
@@ -31,7 +31,7 @@ type Restore struct {
 	// A set of custom labels supplied by user.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// The full name of the Restore resource. Format: projects/*/locations/*/restorePlans/*/restores/*
+	// The full name of the Restore resource. Format: `projects/*/locations/*/restorePlans/*/restores/*`
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Number of resources excluded during the restore execution.
@@ -112,7 +112,7 @@ func (RestoreState) ElementType() reflect.Type {
 }
 
 type restoreArgs struct {
-	// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+	// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*/locations/*/backupPlans/*/backups/*`.
 	Backup string `pulumi:"backup"`
 	// User specified descriptive string for this Restore.
 	Description *string `pulumi:"description"`
@@ -127,7 +127,7 @@ type restoreArgs struct {
 
 // The set of arguments for constructing a Restore resource.
 type RestoreArgs struct {
-	// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+	// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*/locations/*/backupPlans/*/backups/*`.
 	Backup pulumi.StringInput
 	// User specified descriptive string for this Restore.
 	Description pulumi.StringPtrInput
@@ -177,12 +177,12 @@ func (o RestoreOutput) ToRestoreOutputWithContext(ctx context.Context) RestoreOu
 	return o
 }
 
-// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*/locations/*/backupPlans/*/backups/*`.
 func (o RestoreOutput) Backup() pulumi.StringOutput {
 	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.Backup }).(pulumi.StringOutput)
 }
 
-// The target cluster into which this Restore will restore data. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster value.
+// The target cluster into which this Restore will restore data. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` Inherited from parent RestorePlan's cluster value.
 func (o RestoreOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -216,7 +216,7 @@ func (o RestoreOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The full name of the Restore resource. Format: projects/*/locations/*/restorePlans/*/restores/*
+// The full name of the Restore resource. Format: `projects/*/locations/*/restorePlans/*/restores/*`
 func (o RestoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Restore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

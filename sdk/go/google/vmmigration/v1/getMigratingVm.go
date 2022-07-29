@@ -29,8 +29,6 @@ type LookupMigratingVmArgs struct {
 }
 
 type LookupMigratingVmResult struct {
-	// Details of the VM from an AWS source.
-	AwsSourceVmDetails AwsSourceVmDetailsResponse `pulumi:"awsSourceVmDetails"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults ComputeEngineTargetDefaultsResponse `pulumi:"computeEngineTargetDefaults"`
 	// The time the migrating VM was created (this refers to this resource and not to the time it was installed in the source).
@@ -104,11 +102,6 @@ func (o LookupMigratingVmResultOutput) ToLookupMigratingVmResultOutput() LookupM
 
 func (o LookupMigratingVmResultOutput) ToLookupMigratingVmResultOutputWithContext(ctx context.Context) LookupMigratingVmResultOutput {
 	return o
-}
-
-// Details of the VM from an AWS source.
-func (o LookupMigratingVmResultOutput) AwsSourceVmDetails() AwsSourceVmDetailsResponseOutput {
-	return o.ApplyT(func(v LookupMigratingVmResult) AwsSourceVmDetailsResponse { return v.AwsSourceVmDetails }).(AwsSourceVmDetailsResponseOutput)
 }
 
 // Details of the target VM in Compute Engine.

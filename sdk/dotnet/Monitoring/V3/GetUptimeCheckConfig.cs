@@ -109,6 +109,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
         /// </summary>
         public readonly string Timeout;
+        /// <summary>
+        /// User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> UserLabels;
 
         [OutputConstructor]
         private GetUptimeCheckConfigResult(
@@ -136,7 +140,9 @@ namespace Pulumi.GoogleNative.Monitoring.V3
 
             Outputs.TcpCheckResponse tcpCheck,
 
-            string timeout)
+            string timeout,
+
+            ImmutableDictionary<string, string> userLabels)
         {
             CheckerType = checkerType;
             ContentMatchers = contentMatchers;
@@ -151,6 +157,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
             SelectedRegions = selectedRegions;
             TcpCheck = tcpCheck;
             Timeout = timeout;
+            UserLabels = userLabels;
         }
     }
 }

@@ -151,6 +151,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<Inputs.RangePartitioningArgs>? RangePartitioning { get; set; }
 
         /// <summary>
+        /// User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET, ORC.
+        /// </summary>
+        [Input("referenceFileSchemaUri")]
+        public Input<string>? ReferenceFileSchemaUri { get; set; }
+
+        /// <summary>
         /// [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
         /// </summary>
         [Input("schema")]

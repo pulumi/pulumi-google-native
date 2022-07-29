@@ -14,6 +14,7 @@ __all__ = [
     'BindingArgs',
     'EncryptionConfigArgs',
     'ExprArgs',
+    'FreeInstanceMetadataArgs',
 ]
 
 @pulumi.input_type
@@ -166,5 +167,29 @@ class ExprArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+@pulumi.input_type
+class FreeInstanceMetadataArgs:
+    def __init__(__self__, *,
+                 expire_behavior: Optional[pulumi.Input['FreeInstanceMetadataExpireBehavior']] = None):
+        """
+        Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes.
+        :param pulumi.Input['FreeInstanceMetadataExpireBehavior'] expire_behavior: Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
+        """
+        if expire_behavior is not None:
+            pulumi.set(__self__, "expire_behavior", expire_behavior)
+
+    @property
+    @pulumi.getter(name="expireBehavior")
+    def expire_behavior(self) -> Optional[pulumi.Input['FreeInstanceMetadataExpireBehavior']]:
+        """
+        Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
+        """
+        return pulumi.get(self, "expire_behavior")
+
+    @expire_behavior.setter
+    def expire_behavior(self, value: Optional[pulumi.Input['FreeInstanceMetadataExpireBehavior']]):
+        pulumi.set(self, "expire_behavior", value)
 
 

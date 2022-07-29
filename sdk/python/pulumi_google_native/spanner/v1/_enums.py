@@ -6,6 +6,8 @@ from enum import Enum
 
 __all__ = [
     'DatabaseDatabaseDialect',
+    'FreeInstanceMetadataExpireBehavior',
+    'InstanceInstanceType',
 ]
 
 
@@ -24,4 +26,40 @@ class DatabaseDatabaseDialect(str, Enum):
     POSTGRESQL = "POSTGRESQL"
     """
     PostgreSQL supported SQL.
+    """
+
+
+class FreeInstanceMetadataExpireBehavior(str, Enum):
+    """
+    Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
+    """
+    EXPIRE_BEHAVIOR_UNSPECIFIED = "EXPIRE_BEHAVIOR_UNSPECIFIED"
+    """
+    Not specified.
+    """
+    FREE_TO_PROVISIONED = "FREE_TO_PROVISIONED"
+    """
+    When the free instance expires, upgrade the instance to a provisioned instance.
+    """
+    REMOVE_AFTER_GRACE_PERIOD = "REMOVE_AFTER_GRACE_PERIOD"
+    """
+    When the free instance expires, disable the instance, and delete it after the grace period passes if it has not been upgraded.
+    """
+
+
+class InstanceInstanceType(str, Enum):
+    """
+    The `InstanceType` of the current instance.
+    """
+    INSTANCE_TYPE_UNSPECIFIED = "INSTANCE_TYPE_UNSPECIFIED"
+    """
+    Not specified.
+    """
+    PROVISIONED = "PROVISIONED"
+    """
+    Provisioned instances have dedicated resources, standard usage limits and support.
+    """
+    FREE_INSTANCE = "FREE_INSTANCE"
+    """
+    Free instances provide no guarantee for dedicated resources, [node_count, processing_units] should be 0. They come with stricter usage limits and limited support.
     """

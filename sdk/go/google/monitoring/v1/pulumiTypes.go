@@ -5738,6 +5738,8 @@ func (o TimeSeriesQueryResponseOutput) UnitOverride() pulumi.StringOutput {
 type TimeSeriesTable struct {
 	// The data displayed in this table.
 	DataSets []TableDataSet `pulumi:"dataSets"`
+	// Optional. Store rendering strategy
+	MetricVisualization *TimeSeriesTableMetricVisualization `pulumi:"metricVisualization"`
 }
 
 // TimeSeriesTableInput is an input type that accepts TimeSeriesTableArgs and TimeSeriesTableOutput values.
@@ -5755,6 +5757,8 @@ type TimeSeriesTableInput interface {
 type TimeSeriesTableArgs struct {
 	// The data displayed in this table.
 	DataSets TableDataSetArrayInput `pulumi:"dataSets"`
+	// Optional. Store rendering strategy
+	MetricVisualization TimeSeriesTableMetricVisualizationPtrInput `pulumi:"metricVisualization"`
 }
 
 func (TimeSeriesTableArgs) ElementType() reflect.Type {
@@ -5840,6 +5844,11 @@ func (o TimeSeriesTableOutput) DataSets() TableDataSetArrayOutput {
 	return o.ApplyT(func(v TimeSeriesTable) []TableDataSet { return v.DataSets }).(TableDataSetArrayOutput)
 }
 
+// Optional. Store rendering strategy
+func (o TimeSeriesTableOutput) MetricVisualization() TimeSeriesTableMetricVisualizationPtrOutput {
+	return o.ApplyT(func(v TimeSeriesTable) *TimeSeriesTableMetricVisualization { return v.MetricVisualization }).(TimeSeriesTableMetricVisualizationPtrOutput)
+}
+
 type TimeSeriesTablePtrOutput struct{ *pulumi.OutputState }
 
 func (TimeSeriesTablePtrOutput) ElementType() reflect.Type {
@@ -5874,10 +5883,22 @@ func (o TimeSeriesTablePtrOutput) DataSets() TableDataSetArrayOutput {
 	}).(TableDataSetArrayOutput)
 }
 
+// Optional. Store rendering strategy
+func (o TimeSeriesTablePtrOutput) MetricVisualization() TimeSeriesTableMetricVisualizationPtrOutput {
+	return o.ApplyT(func(v *TimeSeriesTable) *TimeSeriesTableMetricVisualization {
+		if v == nil {
+			return nil
+		}
+		return v.MetricVisualization
+	}).(TimeSeriesTableMetricVisualizationPtrOutput)
+}
+
 // A table that displays time series data.
 type TimeSeriesTableResponse struct {
 	// The data displayed in this table.
 	DataSets []TableDataSetResponse `pulumi:"dataSets"`
+	// Optional. Store rendering strategy
+	MetricVisualization string `pulumi:"metricVisualization"`
 }
 
 // A table that displays time series data.
@@ -5898,6 +5919,11 @@ func (o TimeSeriesTableResponseOutput) ToTimeSeriesTableResponseOutputWithContex
 // The data displayed in this table.
 func (o TimeSeriesTableResponseOutput) DataSets() TableDataSetResponseArrayOutput {
 	return o.ApplyT(func(v TimeSeriesTableResponse) []TableDataSetResponse { return v.DataSets }).(TableDataSetResponseArrayOutput)
+}
+
+// Optional. Store rendering strategy
+func (o TimeSeriesTableResponseOutput) MetricVisualization() pulumi.StringOutput {
+	return o.ApplyT(func(v TimeSeriesTableResponse) string { return v.MetricVisualization }).(pulumi.StringOutput)
 }
 
 // Widget contains a single dashboard component and configuration of how to present the component in the dashboard.

@@ -91,6 +91,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<Inputs.ParquetOptionsArgs>? ParquetOptions { get; set; }
 
         /// <summary>
+        /// [Optional] Provide a referencing file with the expected table schema. Enabled for the format: AVRO, PARQUET, ORC.
+        /// </summary>
+        [Input("referenceFileSchemaUri")]
+        public Input<string>? ReferenceFileSchemaUri { get; set; }
+
+        /// <summary>
         /// [Optional] The schema for the data. Schema is required for CSV and JSON formats. Schema is disallowed for Google Cloud Bigtable, Cloud Datastore backups, and Avro formats.
         /// </summary>
         [Input("schema")]

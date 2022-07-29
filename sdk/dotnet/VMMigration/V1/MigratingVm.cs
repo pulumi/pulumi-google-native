@@ -17,12 +17,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1
     public partial class MigratingVm : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Details of the VM from an AWS source.
-        /// </summary>
-        [Output("awsSourceVmDetails")]
-        public Output<Outputs.AwsSourceVmDetailsResponse> AwsSourceVmDetails { get; private set; } = null!;
-
-        /// <summary>
         /// Details of the target VM in Compute Engine.
         /// </summary>
         [Output("computeEngineTargetDefaults")]

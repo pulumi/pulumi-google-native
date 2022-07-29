@@ -26,7 +26,7 @@ type Gateway struct {
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+	// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
 	Ports   pulumi.IntArrayOutput `pulumi:"ports"`
 	Project pulumi.StringOutput   `pulumi:"project"`
 	// Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
@@ -35,7 +35,7 @@ type Gateway struct {
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
 	// Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
 	ServerTlsPolicy pulumi.StringOutput `pulumi:"serverTlsPolicy"`
-	// Immutable. The type of the customer managed gateway.
+	// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The timestamp when the resource was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -104,14 +104,14 @@ type gatewayArgs struct {
 	Location *string           `pulumi:"location"`
 	// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
 	Name *string `pulumi:"name"`
-	// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+	// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
 	Ports   []int   `pulumi:"ports"`
 	Project *string `pulumi:"project"`
 	// Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
 	Scope string `pulumi:"scope"`
 	// Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
 	ServerTlsPolicy *string `pulumi:"serverTlsPolicy"`
-	// Immutable. The type of the customer managed gateway.
+	// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
 	Type *GatewayType `pulumi:"type"`
 }
 
@@ -126,14 +126,14 @@ type GatewayArgs struct {
 	Location pulumi.StringPtrInput
 	// Name of the Gateway resource. It matches pattern `projects/*/locations/*/gateways/`.
 	Name pulumi.StringPtrInput
-	// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+	// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
 	Ports   pulumi.IntArrayInput
 	Project pulumi.StringPtrInput
 	// Immutable. Scope determines how configuration across multiple Gateway instances are merged. The configuration for multiple Gateway instances with the same scope will be merged as presented as a single coniguration to the proxy/load balancer. Max length 64 characters. Scope should start with a letter and can only have letters, numbers, hyphens.
 	Scope pulumi.StringInput
 	// Optional. A fully-qualified ServerTLSPolicy URL reference. Specifies how TLS traffic is terminated. If empty, TLS termination is disabled.
 	ServerTlsPolicy pulumi.StringPtrInput
-	// Immutable. The type of the customer managed gateway.
+	// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
 	Type GatewayTypePtrInput
 }
 
@@ -203,7 +203,7 @@ func (o GatewayOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
 func (o GatewayOutput) Ports() pulumi.IntArrayOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.IntArrayOutput { return v.Ports }).(pulumi.IntArrayOutput)
 }
@@ -227,7 +227,7 @@ func (o GatewayOutput) ServerTlsPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.ServerTlsPolicy }).(pulumi.StringOutput)
 }
 
-// Immutable. The type of the customer managed gateway.
+// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
 func (o GatewayOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *Gateway) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

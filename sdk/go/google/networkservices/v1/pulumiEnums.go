@@ -519,7 +519,7 @@ func (in *endpointPolicyTypePtr) ToEndpointPolicyTypePtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(EndpointPolicyTypePtrOutput)
 }
 
-// Immutable. The type of the customer managed gateway.
+// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
 type GatewayType string
 
 const (

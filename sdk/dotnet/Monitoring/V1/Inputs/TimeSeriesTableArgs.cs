@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
             set => _dataSets = value;
         }
 
+        /// <summary>
+        /// Optional. Store rendering strategy
+        /// </summary>
+        [Input("metricVisualization")]
+        public Input<Pulumi.GoogleNative.Monitoring.V1.TimeSeriesTableMetricVisualization>? MetricVisualization { get; set; }
+
         public TimeSeriesTableArgs()
         {
         }

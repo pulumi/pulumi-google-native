@@ -96,6 +96,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Output("timeout")]
         public Output<string> Timeout { get; private set; } = null!;
 
+        /// <summary>
+        /// User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        /// </summary>
+        [Output("userLabels")]
+        public Output<ImmutableDictionary<string, string>> UserLabels { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a UptimeCheckConfig resource with the given unique name, arguments, and options.
@@ -243,6 +249,18 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// </summary>
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }
+
+        [Input("userLabels")]
+        private InputMap<string>? _userLabels;
+
+        /// <summary>
+        /// User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        /// </summary>
+        public InputMap<string> UserLabels
+        {
+            get => _userLabels ?? (_userLabels = new InputMap<string>());
+            set => _userLabels = value;
+        }
 
         public UptimeCheckConfigArgs()
         {

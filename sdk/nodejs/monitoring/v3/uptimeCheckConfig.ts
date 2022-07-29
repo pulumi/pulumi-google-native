@@ -88,6 +88,10 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
      * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
      */
     public readonly timeout!: pulumi.Output<string>;
+    /**
+     * User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     */
+    public readonly userLabels!: pulumi.Output<{[key: string]: string}>;
 
     /**
      * Create a UptimeCheckConfig resource with the given unique name, arguments, and options.
@@ -114,6 +118,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             resourceInputs["selectedRegions"] = args ? args.selectedRegions : undefined;
             resourceInputs["tcpCheck"] = args ? args.tcpCheck : undefined;
             resourceInputs["timeout"] = args ? args.timeout : undefined;
+            resourceInputs["userLabels"] = args ? args.userLabels : undefined;
         } else {
             resourceInputs["checkerType"] = undefined /*out*/;
             resourceInputs["contentMatchers"] = undefined /*out*/;
@@ -129,6 +134,7 @@ export class UptimeCheckConfig extends pulumi.CustomResource {
             resourceInputs["selectedRegions"] = undefined /*out*/;
             resourceInputs["tcpCheck"] = undefined /*out*/;
             resourceInputs["timeout"] = undefined /*out*/;
+            resourceInputs["userLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const replaceOnChanges = { replaceOnChanges: ["project"] };
@@ -194,4 +200,8 @@ export interface UptimeCheckConfigArgs {
      * The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
      */
     timeout?: pulumi.Input<string>;
+    /**
+     * User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+     */
+    userLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

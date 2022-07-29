@@ -21,3 +21,43 @@ export const DatabaseDatabaseDialect = {
  * Optional. The dialect of the Cloud Spanner Database.
  */
 export type DatabaseDatabaseDialect = (typeof DatabaseDatabaseDialect)[keyof typeof DatabaseDatabaseDialect];
+
+export const FreeInstanceMetadataExpireBehavior = {
+    /**
+     * Not specified.
+     */
+    ExpireBehaviorUnspecified: "EXPIRE_BEHAVIOR_UNSPECIFIED",
+    /**
+     * When the free instance expires, upgrade the instance to a provisioned instance.
+     */
+    FreeToProvisioned: "FREE_TO_PROVISIONED",
+    /**
+     * When the free instance expires, disable the instance, and delete it after the grace period passes if it has not been upgraded.
+     */
+    RemoveAfterGracePeriod: "REMOVE_AFTER_GRACE_PERIOD",
+} as const;
+
+/**
+ * Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
+ */
+export type FreeInstanceMetadataExpireBehavior = (typeof FreeInstanceMetadataExpireBehavior)[keyof typeof FreeInstanceMetadataExpireBehavior];
+
+export const InstanceInstanceType = {
+    /**
+     * Not specified.
+     */
+    InstanceTypeUnspecified: "INSTANCE_TYPE_UNSPECIFIED",
+    /**
+     * Provisioned instances have dedicated resources, standard usage limits and support.
+     */
+    Provisioned: "PROVISIONED",
+    /**
+     * Free instances provide no guarantee for dedicated resources, [node_count, processing_units] should be 0. They come with stricter usage limits and limited support.
+     */
+    FreeInstance: "FREE_INSTANCE",
+} as const;
+
+/**
+ * The `InstanceType` of the current instance.
+ */
+export type InstanceInstanceType = (typeof InstanceInstanceType)[keyof typeof InstanceInstanceType];

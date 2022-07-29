@@ -76,10 +76,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1
     public sealed class GetMigratingVmResult
     {
         /// <summary>
-        /// Details of the VM from an AWS source.
-        /// </summary>
-        public readonly Outputs.AwsSourceVmDetailsResponse AwsSourceVmDetails;
-        /// <summary>
         /// Details of the target VM in Compute Engine.
         /// </summary>
         public readonly Outputs.ComputeEngineTargetDefaultsResponse ComputeEngineTargetDefaults;
@@ -150,8 +146,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1
 
         [OutputConstructor]
         private GetMigratingVmResult(
-            Outputs.AwsSourceVmDetailsResponse awsSourceVmDetails,
-
             Outputs.ComputeEngineTargetDefaultsResponse computeEngineTargetDefaults,
 
             string createTime,
@@ -186,7 +180,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1
 
             string updateTime)
         {
-            AwsSourceVmDetails = awsSourceVmDetails;
             ComputeEngineTargetDefaults = computeEngineTargetDefaults;
             CreateTime = createTime;
             CurrentSyncInfo = currentSyncInfo;

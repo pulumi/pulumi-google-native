@@ -30,7 +30,8 @@ class UptimeCheckConfigArgs:
                  resource_group: Optional[pulumi.Input['ResourceGroupArgs']] = None,
                  selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]]] = None,
                  tcp_check: Optional[pulumi.Input['TcpCheckArgs']] = None,
-                 timeout: Optional[pulumi.Input[str]] = None):
+                 timeout: Optional[pulumi.Input[str]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a UptimeCheckConfig resource.
         :param pulumi.Input['UptimeCheckConfigCheckerType'] checker_type: The type of checkers to use to execute the Uptime check.
@@ -46,6 +47,7 @@ class UptimeCheckConfigArgs:
         :param pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
         :param pulumi.Input['TcpCheckArgs'] tcp_check: Contains information needed to make a TCP check.
         :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
         if checker_type is not None:
             pulumi.set(__self__, "checker_type", checker_type)
@@ -75,6 +77,8 @@ class UptimeCheckConfigArgs:
             pulumi.set(__self__, "tcp_check", tcp_check)
         if timeout is not None:
             pulumi.set(__self__, "timeout", timeout)
+        if user_labels is not None:
+            pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter(name="checkerType")
@@ -241,6 +245,18 @@ class UptimeCheckConfigArgs:
     def timeout(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "timeout", value)
 
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        """
+        return pulumi.get(self, "user_labels")
+
+    @user_labels.setter
+    def user_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "user_labels", value)
+
 
 class UptimeCheckConfig(pulumi.CustomResource):
     @overload
@@ -261,6 +277,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]]] = None,
                  tcp_check: Optional[pulumi.Input[pulumi.InputType['TcpCheckArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Creates a new Uptime check configuration.
@@ -280,6 +297,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]] selected_regions: The list of regions from which the check will be run. Some regions contain one location, and others contain more than one. If this field is specified, enough regions must be provided to include a minimum of 3 locations. Not specifying this field will result in Uptime checks running from all available regions.
         :param pulumi.Input[pulumi.InputType['TcpCheckArgs']] tcp_check: Contains information needed to make a TCP check.
         :param pulumi.Input[str] timeout: The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
         """
         ...
     @overload
@@ -319,6 +337,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
                  selected_regions: Optional[pulumi.Input[Sequence[pulumi.Input['UptimeCheckConfigSelectedRegionsItem']]]] = None,
                  tcp_check: Optional[pulumi.Input[pulumi.InputType['TcpCheckArgs']]] = None,
                  timeout: Optional[pulumi.Input[str]] = None,
+                 user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -342,6 +361,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
             __props__.__dict__["selected_regions"] = selected_regions
             __props__.__dict__["tcp_check"] = tcp_check
             __props__.__dict__["timeout"] = timeout
+            __props__.__dict__["user_labels"] = user_labels
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(UptimeCheckConfig, __self__).__init__(
@@ -380,6 +400,7 @@ class UptimeCheckConfig(pulumi.CustomResource):
         __props__.__dict__["selected_regions"] = None
         __props__.__dict__["tcp_check"] = None
         __props__.__dict__["timeout"] = None
+        __props__.__dict__["user_labels"] = None
         return UptimeCheckConfig(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -490,4 +511,12 @@ class UptimeCheckConfig(pulumi.CustomResource):
         The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
         """
         return pulumi.get(self, "timeout")
+
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        """
+        return pulumi.get(self, "user_labels")
 

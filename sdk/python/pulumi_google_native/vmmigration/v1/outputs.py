@@ -15,7 +15,6 @@ __all__ = [
     'ApplianceVersionResponse',
     'AppliedLicenseResponse',
     'AvailableUpdatesResponse',
-    'AwsSourceVmDetailsResponse',
     'CloneJobResponse',
     'ComputeEngineTargetDefaultsResponse',
     'ComputeEngineTargetDetailsResponse',
@@ -206,56 +205,6 @@ class AvailableUpdatesResponse(dict):
         The newest deployable version of the appliance. The current appliance can't be updated into this version, and the owner must manually deploy this OVA to a new appliance.
         """
         return pulumi.get(self, "new_deployable_appliance")
-
-
-@pulumi.output_type
-class AwsSourceVmDetailsResponse(dict):
-    """
-    Represent the source AWS VM details.
-    """
-    @staticmethod
-    def __key_warning(key: str):
-        suggest = None
-        if key == "committedStorageBytes":
-            suggest = "committed_storage_bytes"
-
-        if suggest:
-            pulumi.log.warn(f"Key '{key}' not found in AwsSourceVmDetailsResponse. Access the value via the '{suggest}' property getter instead.")
-
-    def __getitem__(self, key: str) -> Any:
-        AwsSourceVmDetailsResponse.__key_warning(key)
-        return super().__getitem__(key)
-
-    def get(self, key: str, default = None) -> Any:
-        AwsSourceVmDetailsResponse.__key_warning(key)
-        return super().get(key, default)
-
-    def __init__(__self__, *,
-                 committed_storage_bytes: str,
-                 firmware: str):
-        """
-        Represent the source AWS VM details.
-        :param str committed_storage_bytes: The total size of the disks being migrated in bytes.
-        :param str firmware: The firmware type of the source VM.
-        """
-        pulumi.set(__self__, "committed_storage_bytes", committed_storage_bytes)
-        pulumi.set(__self__, "firmware", firmware)
-
-    @property
-    @pulumi.getter(name="committedStorageBytes")
-    def committed_storage_bytes(self) -> str:
-        """
-        The total size of the disks being migrated in bytes.
-        """
-        return pulumi.get(self, "committed_storage_bytes")
-
-    @property
-    @pulumi.getter
-    def firmware(self) -> str:
-        """
-        The firmware type of the source VM.
-        """
-        return pulumi.get(self, "firmware")
 
 
 @pulumi.output_type

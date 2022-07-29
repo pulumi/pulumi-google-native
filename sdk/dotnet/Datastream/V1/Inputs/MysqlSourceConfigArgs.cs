@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         [Input("includeObjects")]
         public Input<Inputs.MysqlRdbmsArgs>? IncludeObjects { get; set; }
 
+        /// <summary>
+        /// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        /// </summary>
+        [Input("maxConcurrentCdcTasks")]
+        public Input<int>? MaxConcurrentCdcTasks { get; set; }
+
         public MysqlSourceConfigArgs()
         {
         }

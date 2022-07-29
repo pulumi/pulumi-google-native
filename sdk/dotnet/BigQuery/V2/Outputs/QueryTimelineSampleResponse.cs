@@ -30,7 +30,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly string EstimatedRunnableUnits;
         /// <summary>
-        /// Total parallel units of work remaining for the active stages.
+        /// Total units of work remaining for the query. This number can be revised (increased or decreased) while the query is running.
         /// </summary>
         public readonly string PendingUnits;
         /// <summary>

@@ -1519,6 +1519,7 @@ class SettingsArgs:
                  data_disk_type: Optional[pulumi.Input['SettingsDataDiskType']] = None,
                  database_flags: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseFlagsArgs']]]] = None,
                  database_replication_enabled: Optional[pulumi.Input[bool]] = None,
+                 deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  deny_maintenance_periods: Optional[pulumi.Input[Sequence[pulumi.Input['DenyMaintenancePeriodArgs']]]] = None,
                  insights_config: Optional[pulumi.Input['InsightsConfigArgs']] = None,
                  ip_configuration: Optional[pulumi.Input['IpConfigurationArgs']] = None,
@@ -1547,6 +1548,7 @@ class SettingsArgs:
         :param pulumi.Input['SettingsDataDiskType'] data_disk_type: The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseFlagsArgs']]] database_flags: The database flags passed to the instance at startup.
         :param pulumi.Input[bool] database_replication_enabled: Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
+        :param pulumi.Input[bool] deletion_protection_enabled: Configuration to protect against accidental instance deletion.
         :param pulumi.Input[Sequence[pulumi.Input['DenyMaintenancePeriodArgs']]] deny_maintenance_periods: Deny maintenance periods
         :param pulumi.Input['InsightsConfigArgs'] insights_config: Insights configuration, for now relevant only for Postgres.
         :param pulumi.Input['IpConfigurationArgs'] ip_configuration: The settings for IP Management. This allows to enable or disable the instance IP and manage which external networks can connect to the instance. The IPv4 address cannot be disabled for Second Generation instances.
@@ -1588,6 +1590,8 @@ class SettingsArgs:
             pulumi.set(__self__, "database_flags", database_flags)
         if database_replication_enabled is not None:
             pulumi.set(__self__, "database_replication_enabled", database_replication_enabled)
+        if deletion_protection_enabled is not None:
+            pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if deny_maintenance_periods is not None:
             pulumi.set(__self__, "deny_maintenance_periods", deny_maintenance_periods)
         if insights_config is not None:
@@ -1753,6 +1757,18 @@ class SettingsArgs:
     @database_replication_enabled.setter
     def database_replication_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "database_replication_enabled", value)
+
+    @property
+    @pulumi.getter(name="deletionProtectionEnabled")
+    def deletion_protection_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Configuration to protect against accidental instance deletion.
+        """
+        return pulumi.get(self, "deletion_protection_enabled")
+
+    @deletion_protection_enabled.setter
+    def deletion_protection_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection_enabled", value)
 
     @property
     @pulumi.getter(name="denyMaintenancePeriods")

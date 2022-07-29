@@ -141,7 +141,7 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly replicaNames!: pulumi.Output<string[]>;
     /**
-     * Initial root password. Use only on creation.
+     * Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
      */
     public readonly rootPassword!: pulumi.Output<string>;
     /**
@@ -378,7 +378,7 @@ export interface InstanceArgs {
      */
     replicaNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Initial root password. Use only on creation.
+     * Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
      */
     rootPassword?: pulumi.Input<string>;
     /**

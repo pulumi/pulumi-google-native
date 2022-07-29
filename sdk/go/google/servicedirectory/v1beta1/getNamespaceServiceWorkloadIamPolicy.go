@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Gets the IAM Policy for a resource (namespace or service only).
+// Gets the IAM Policy for a resource
 func LookupNamespaceServiceWorkloadIamPolicy(ctx *pulumi.Context, args *LookupNamespaceServiceWorkloadIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupNamespaceServiceWorkloadIamPolicyResult, error) {
 	var rv LookupNamespaceServiceWorkloadIamPolicyResult
 	err := ctx.Invoke("google-native:servicedirectory/v1beta1:getNamespaceServiceWorkloadIamPolicy", args, &rv, opts...)

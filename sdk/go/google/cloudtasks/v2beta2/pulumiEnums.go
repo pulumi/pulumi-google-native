@@ -26,6 +26,10 @@ const (
 	AppEngineHttpRequestHttpMethodPut = AppEngineHttpRequestHttpMethod("PUT")
 	// HTTP DELETE
 	AppEngineHttpRequestHttpMethodDelete = AppEngineHttpRequestHttpMethod("DELETE")
+	// HTTP PATCH
+	AppEngineHttpRequestHttpMethodPatch = AppEngineHttpRequestHttpMethod("PATCH")
+	// HTTP OPTIONS
+	AppEngineHttpRequestHttpMethodOptions = AppEngineHttpRequestHttpMethod("OPTIONS")
 )
 
 func (AppEngineHttpRequestHttpMethod) ElementType() reflect.Type {
@@ -201,6 +205,10 @@ const (
 	HttpRequestHttpMethodPut = HttpRequestHttpMethod("PUT")
 	// HTTP DELETE
 	HttpRequestHttpMethodDelete = HttpRequestHttpMethod("DELETE")
+	// HTTP PATCH
+	HttpRequestHttpMethodPatch = HttpRequestHttpMethod("PATCH")
+	// HTTP OPTIONS
+	HttpRequestHttpMethodOptions = HttpRequestHttpMethod("OPTIONS")
 )
 
 func (HttpRequestHttpMethod) ElementType() reflect.Type {
@@ -376,6 +384,10 @@ const (
 	HttpTargetHttpMethodPut = HttpTargetHttpMethod("PUT")
 	// HTTP DELETE
 	HttpTargetHttpMethodDelete = HttpTargetHttpMethod("DELETE")
+	// HTTP PATCH
+	HttpTargetHttpMethodPatch = HttpTargetHttpMethod("PATCH")
+	// HTTP OPTIONS
+	HttpTargetHttpMethodOptions = HttpTargetHttpMethod("OPTIONS")
 )
 
 func (HttpTargetHttpMethod) ElementType() reflect.Type {

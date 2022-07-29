@@ -75,6 +75,10 @@ export const WorkloadComplianceRegime = {
      * International Traffic in Arms Regulations
      */
     Itar: "ITAR",
+    /**
+     * Assured Workloads for Australia Regions and Support controls
+     */
+    AuRegionsAndUsSupport: "AU_REGIONS_AND_US_SUPPORT",
 } as const;
 
 /**

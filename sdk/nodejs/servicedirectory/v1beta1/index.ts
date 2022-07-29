@@ -11,11 +11,13 @@ export * from "./getNamespace";
 export * from "./getNamespaceIamPolicy";
 export * from "./getNamespaceServiceIamPolicy";
 export * from "./getNamespaceServiceWorkloadIamPolicy";
+export * from "./getRegistrationPolicyIamPolicy";
 export * from "./getService";
 export * from "./namespace";
 export * from "./namespaceIamPolicy";
 export * from "./namespaceServiceIamPolicy";
 export * from "./namespaceServiceWorkloadIamPolicy";
+export * from "./registrationPolicyIamPolicy";
 export * from "./service";
 
 // Import resources to register:
@@ -24,6 +26,7 @@ import { Namespace } from "./namespace";
 import { NamespaceIamPolicy } from "./namespaceIamPolicy";
 import { NamespaceServiceIamPolicy } from "./namespaceServiceIamPolicy";
 import { NamespaceServiceWorkloadIamPolicy } from "./namespaceServiceWorkloadIamPolicy";
+import { RegistrationPolicyIamPolicy } from "./registrationPolicyIamPolicy";
 import { Service } from "./service";
 
 const _module = {
@@ -40,6 +43,8 @@ const _module = {
                 return new NamespaceServiceIamPolicy(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamPolicy":
                 return new NamespaceServiceWorkloadIamPolicy(name, <any>undefined, { urn })
+            case "google-native:servicedirectory/v1beta1:RegistrationPolicyIamPolicy":
+                return new RegistrationPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:servicedirectory/v1beta1:Service":
                 return new Service(name, <any>undefined, { urn })
             default:

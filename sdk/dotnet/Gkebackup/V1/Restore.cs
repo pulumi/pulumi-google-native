@@ -17,13 +17,13 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     public partial class Restore : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+        /// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*/locations/*/backupPlans/*/backups/*`.
         /// </summary>
         [Output("backup")]
         public Output<string> Backup { get; private set; } = null!;
 
         /// <summary>
-        /// The target cluster into which this Restore will restore data. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster value.
+        /// The target cluster into which this Restore will restore data. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` Inherited from parent RestorePlan's cluster value.
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The full name of the Restore resource. Format: projects/*/locations/*/restorePlans/*/restores/*
+        /// The full name of the Restore resource. Format: `projects/*/locations/*/restorePlans/*/restores/*`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -186,7 +186,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     public sealed class RestoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+        /// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*/locations/*/backupPlans/*/backups/*`.
         /// </summary>
         [Input("backup", required: true)]
         public Input<string> Backup { get; set; } = null!;

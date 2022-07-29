@@ -77,7 +77,7 @@ class InstanceArgs:
         :param pulumi.Input[str] region: The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
         :param pulumi.Input['ReplicaConfigurationArgs'] replica_configuration: Configuration specific to failover replicas and read replicas.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_names: The replicas of the instance.
-        :param pulumi.Input[str] root_password: Initial root password. Use only on creation.
+        :param pulumi.Input[str] root_password: Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
         :param pulumi.Input[bool] satisfies_pzs: The status indicating if instance satisfiesPzs. Reserved for future use.
         :param pulumi.Input['SqlScheduledMaintenanceArgs'] scheduled_maintenance: The start time of any upcoming scheduled maintenance for this instance.
         :param pulumi.Input[str] secondary_gce_zone: The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
@@ -455,7 +455,7 @@ class InstanceArgs:
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> Optional[pulumi.Input[str]]:
         """
-        Initial root password. Use only on creation.
+        Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
         """
         return pulumi.get(self, "root_password")
 
@@ -641,7 +641,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] region: The geographical region. Can be: * `us-central` (`FIRST_GEN` instances only) * `us-central1` (`SECOND_GEN` instances only) * `asia-east1` or `europe-west1`. Defaults to `us-central` or `us-central1` depending on the instance type. The region cannot be changed after instance creation.
         :param pulumi.Input[pulumi.InputType['ReplicaConfigurationArgs']] replica_configuration: Configuration specific to failover replicas and read replicas.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_names: The replicas of the instance.
-        :param pulumi.Input[str] root_password: Initial root password. Use only on creation.
+        :param pulumi.Input[str] root_password: Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
         :param pulumi.Input[bool] satisfies_pzs: The status indicating if instance satisfiesPzs. Reserved for future use.
         :param pulumi.Input[pulumi.InputType['SqlScheduledMaintenanceArgs']] scheduled_maintenance: The start time of any upcoming scheduled maintenance for this instance.
         :param pulumi.Input[str] secondary_gce_zone: The Compute Engine zone that the failover instance is currently serving from for a regional instance. This value could be different from the zone that was specified when the instance was created if the instance has failed over to its secondary/failover zone.
@@ -1032,7 +1032,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="rootPassword")
     def root_password(self) -> pulumi.Output[str]:
         """
-        Initial root password. Use only on creation.
+        Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
         """
         return pulumi.get(self, "root_password")
 

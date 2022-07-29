@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Outputs
         /// </summary>
         public readonly ImmutableDictionary<string, string> BackupCrdVersions;
         /// <summary>
-        /// The source cluster from which this Backup was created. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* This is inherited from the parent BackupPlan's cluster field.
+        /// The source cluster from which this Backup was created. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` This is inherited from the parent BackupPlan's cluster field.
         /// </summary>
         public readonly string Cluster;
         /// <summary>

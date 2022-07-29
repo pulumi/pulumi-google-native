@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['SnapshotArgs', 'Snapshot']
@@ -24,6 +25,7 @@ class SnapshotArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  snapshot_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
+                 snapshot_type: Optional[pulumi.Input['SnapshotSnapshotType']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -36,6 +38,7 @@ class SnapshotArgs:
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['CustomerEncryptionKeyArgs'] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
+        :param pulumi.Input['SnapshotSnapshotType'] snapshot_type: Indicates the type of the snapshot.
         :param pulumi.Input[str] source_disk: The source disk used to create this snapshot.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
@@ -56,6 +59,8 @@ class SnapshotArgs:
             pulumi.set(__self__, "request_id", request_id)
         if snapshot_encryption_key is not None:
             pulumi.set(__self__, "snapshot_encryption_key", snapshot_encryption_key)
+        if snapshot_type is not None:
+            pulumi.set(__self__, "snapshot_type", snapshot_type)
         if source_disk is not None:
             pulumi.set(__self__, "source_disk", source_disk)
         if source_disk_encryption_key is not None:
@@ -157,6 +162,18 @@ class SnapshotArgs:
         pulumi.set(self, "snapshot_encryption_key", value)
 
     @property
+    @pulumi.getter(name="snapshotType")
+    def snapshot_type(self) -> Optional[pulumi.Input['SnapshotSnapshotType']]:
+        """
+        Indicates the type of the snapshot.
+        """
+        return pulumi.get(self, "snapshot_type")
+
+    @snapshot_type.setter
+    def snapshot_type(self, value: Optional[pulumi.Input['SnapshotSnapshotType']]):
+        pulumi.set(self, "snapshot_type", value)
+
+    @property
     @pulumi.getter(name="sourceDisk")
     def source_disk(self) -> Optional[pulumi.Input[str]]:
         """
@@ -206,6 +223,7 @@ class Snapshot(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 snapshot_type: Optional[pulumi.Input['SnapshotSnapshotType']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -222,6 +240,7 @@ class Snapshot(pulumi.CustomResource):
         :param pulumi.Input[str] name: Name of the resource; provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] snapshot_encryption_key: Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
+        :param pulumi.Input['SnapshotSnapshotType'] snapshot_type: Indicates the type of the snapshot.
         :param pulumi.Input[str] source_disk: The source disk used to create this snapshot.
         :param pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']] source_disk_encryption_key: The customer-supplied encryption key of the source disk. Required if the source disk is protected by a customer-supplied encryption key.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] storage_locations: Cloud Storage bucket storage location of the snapshot (regional or multi-regional).
@@ -258,6 +277,7 @@ class Snapshot(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  snapshot_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
+                 snapshot_type: Optional[pulumi.Input['SnapshotSnapshotType']] = None,
                  source_disk: Optional[pulumi.Input[str]] = None,
                  source_disk_encryption_key: Optional[pulumi.Input[pulumi.InputType['CustomerEncryptionKeyArgs']]] = None,
                  storage_locations: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -278,11 +298,13 @@ class Snapshot(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["snapshot_encryption_key"] = snapshot_encryption_key
+            __props__.__dict__["snapshot_type"] = snapshot_type
             __props__.__dict__["source_disk"] = source_disk
             __props__.__dict__["source_disk_encryption_key"] = source_disk_encryption_key
             __props__.__dict__["storage_locations"] = storage_locations
             __props__.__dict__["architecture"] = None
             __props__.__dict__["auto_created"] = None
+            __props__.__dict__["creation_size_bytes"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["disk_size_gb"] = None
             __props__.__dict__["download_bytes"] = None
@@ -325,6 +347,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["architecture"] = None
         __props__.__dict__["auto_created"] = None
         __props__.__dict__["chain_name"] = None
+        __props__.__dict__["creation_size_bytes"] = None
         __props__.__dict__["creation_timestamp"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["disk_size_gb"] = None
@@ -341,6 +364,7 @@ class Snapshot(pulumi.CustomResource):
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["snapshot_encryption_key"] = None
+        __props__.__dict__["snapshot_type"] = None
         __props__.__dict__["source_disk"] = None
         __props__.__dict__["source_disk_encryption_key"] = None
         __props__.__dict__["source_disk_id"] = None
@@ -375,6 +399,14 @@ class Snapshot(pulumi.CustomResource):
         Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
         """
         return pulumi.get(self, "chain_name")
+
+    @property
+    @pulumi.getter(name="creationSizeBytes")
+    def creation_size_bytes(self) -> pulumi.Output[str]:
+        """
+        Size in bytes of the snapshot at creation time.
+        """
+        return pulumi.get(self, "creation_size_bytes")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -500,6 +532,14 @@ class Snapshot(pulumi.CustomResource):
         Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
         """
         return pulumi.get(self, "snapshot_encryption_key")
+
+    @property
+    @pulumi.getter(name="snapshotType")
+    def snapshot_type(self) -> pulumi.Output[str]:
+        """
+        Indicates the type of the snapshot.
+        """
+        return pulumi.get(self, "snapshot_type")
 
     @property
     @pulumi.getter(name="sourceDisk")

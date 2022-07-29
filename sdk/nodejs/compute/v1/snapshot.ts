@@ -48,6 +48,10 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly chainName!: pulumi.Output<string>;
     /**
+     * Size in bytes of the snapshot at creation time.
+     */
+    public /*out*/ readonly creationSizeBytes!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -109,6 +113,10 @@ export class Snapshot extends pulumi.CustomResource {
      */
     public readonly snapshotEncryptionKey!: pulumi.Output<outputs.compute.v1.CustomerEncryptionKeyResponse>;
     /**
+     * Indicates the type of the snapshot.
+     */
+    public readonly snapshotType!: pulumi.Output<string>;
+    /**
      * The source disk used to create this snapshot.
      */
     public readonly sourceDisk!: pulumi.Output<string>;
@@ -164,11 +172,13 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["snapshotEncryptionKey"] = args ? args.snapshotEncryptionKey : undefined;
+            resourceInputs["snapshotType"] = args ? args.snapshotType : undefined;
             resourceInputs["sourceDisk"] = args ? args.sourceDisk : undefined;
             resourceInputs["sourceDiskEncryptionKey"] = args ? args.sourceDiskEncryptionKey : undefined;
             resourceInputs["storageLocations"] = args ? args.storageLocations : undefined;
             resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["autoCreated"] = undefined /*out*/;
+            resourceInputs["creationSizeBytes"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;
             resourceInputs["downloadBytes"] = undefined /*out*/;
@@ -188,6 +198,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["architecture"] = undefined /*out*/;
             resourceInputs["autoCreated"] = undefined /*out*/;
             resourceInputs["chainName"] = undefined /*out*/;
+            resourceInputs["creationSizeBytes"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["diskSizeGb"] = undefined /*out*/;
@@ -204,6 +215,7 @@ export class Snapshot extends pulumi.CustomResource {
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["snapshotEncryptionKey"] = undefined /*out*/;
+            resourceInputs["snapshotType"] = undefined /*out*/;
             resourceInputs["sourceDisk"] = undefined /*out*/;
             resourceInputs["sourceDiskEncryptionKey"] = undefined /*out*/;
             resourceInputs["sourceDiskId"] = undefined /*out*/;
@@ -254,6 +266,10 @@ export interface SnapshotArgs {
      * Encrypts the snapshot using a customer-supplied encryption key. After you encrypt a snapshot using a customer-supplied key, you must provide the same key if you use the snapshot later. For example, you must provide the encryption key when you create a disk from the encrypted snapshot in a future request. Customer-supplied encryption keys do not protect access to metadata of the snapshot. If you do not provide an encryption key when creating the snapshot, then the snapshot will be encrypted using an automatically generated key and you do not need to provide a key to use the snapshot later.
      */
     snapshotEncryptionKey?: pulumi.Input<inputs.compute.v1.CustomerEncryptionKeyArgs>;
+    /**
+     * Indicates the type of the snapshot.
+     */
+    snapshotType?: pulumi.Input<enums.compute.v1.SnapshotSnapshotType>;
     /**
      * The source disk used to create this snapshot.
      */

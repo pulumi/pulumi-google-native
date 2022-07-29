@@ -126,7 +126,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly bool Manual;
         /// <summary>
-        /// The fully qualified name of the Backup. projects/*/locations/*/backupPlans/*/backups/*
+        /// The fully qualified name of the Backup. `projects/*/locations/*/backupPlans/*/backups/*`
         /// </summary>
         public readonly string Name;
         /// <summary>
@@ -138,7 +138,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly int ResourceCount;
         /// <summary>
-        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days and &lt;= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         /// </summary>
         public readonly int RetainDays;
         /// <summary>

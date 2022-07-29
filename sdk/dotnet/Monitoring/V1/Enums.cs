@@ -761,4 +761,45 @@ namespace Pulumi.GoogleNative.Monitoring.V1
 
         public override string ToString() => _value;
     }
+
+    /// <summary>
+    /// Optional. Store rendering strategy
+    /// </summary>
+    [EnumType]
+    public readonly struct TimeSeriesTableMetricVisualization : IEquatable<TimeSeriesTableMetricVisualization>
+    {
+        private readonly string _value;
+
+        private TimeSeriesTableMetricVisualization(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Unspecified state
+        /// </summary>
+        public static TimeSeriesTableMetricVisualization MetricVisualizationUnspecified { get; } = new TimeSeriesTableMetricVisualization("METRIC_VISUALIZATION_UNSPECIFIED");
+        /// <summary>
+        /// Default text rendering
+        /// </summary>
+        public static TimeSeriesTableMetricVisualization Number { get; } = new TimeSeriesTableMetricVisualization("NUMBER");
+        /// <summary>
+        /// Horizontal bar rendering
+        /// </summary>
+        public static TimeSeriesTableMetricVisualization Bar { get; } = new TimeSeriesTableMetricVisualization("BAR");
+
+        public static bool operator ==(TimeSeriesTableMetricVisualization left, TimeSeriesTableMetricVisualization right) => left.Equals(right);
+        public static bool operator !=(TimeSeriesTableMetricVisualization left, TimeSeriesTableMetricVisualization right) => !left.Equals(right);
+
+        public static explicit operator string(TimeSeriesTableMetricVisualization value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is TimeSeriesTableMetricVisualization other && Equals(other);
+        public bool Equals(TimeSeriesTableMetricVisualization other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
 }
