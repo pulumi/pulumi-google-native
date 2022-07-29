@@ -724,7 +724,11 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 		var pollURI string
 
 		logging.V(9).Infof("waiting for completion: polling strategy: %q: %+v", pollingStrategy, resp)
-		if details, has := resp["detail"]; has {
+		details, ok := resp["detail"]
+		if !ok {
+			details, ok = resp["details"]
+		}
+		if ok {
 			_ = p.host.LogStatus(context.Background(), diag.Info, urn, fmt.Sprintf("%v", details))
 		}
 

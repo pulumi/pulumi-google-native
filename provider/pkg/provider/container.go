@@ -52,11 +52,17 @@ func extractFromDefaults(valIfMissing resource.PropertyValue) propValueIfMissing
 	}
 }
 
+func defaultValue(defVal resource.PropertyValue) propValueIfMissingFunc {
+	return func(_ resource.PropertyMap, _ resource.PropertyPath) resource.PropertyValue {
+		return defVal
+	}
+}
+
 var nodepoolUpdateHandlers = map[string]nodepoolUpdateHandlerFunc{
 	"autoscaling": updateNodePoolMapping(
 		mustParsePropertyPath("autoscaling"),
 		"autoscaling",
-		extractFromDefaults(resource.NewObjectProperty(
+		defaultValue(resource.NewObjectProperty(
 			resource.PropertyMap{
 				"enabled": resource.NewBoolProperty(false),
 			})),
@@ -65,19 +71,19 @@ var nodepoolUpdateHandlers = map[string]nodepoolUpdateHandlerFunc{
 	"management": updateNodePoolMapping(
 		mustParsePropertyPath("management"),
 		"management",
-		extractFromDefaults(emptyObjVal),
+		defaultValue(emptyObjVal),
 		":setManagement",
 		"POST"),
 	"upgradeSettings": updateNodePoolMapping(
 		mustParsePropertyPath("upgradeSettings"),
 		"upgradeSettings",
-		extractFromDefaults(emptyObjVal),
+		defaultValue(emptyObjVal),
 		"",
 		"PUT"),
 	"locations": updateNodePoolMapping(
 		mustParsePropertyPath("locations"),
 		"locations",
-		extractFromDefaults(resource.NewArrayProperty([]resource.PropertyValue{})),
+		defaultValue(resource.NewArrayProperty([]resource.PropertyValue{})),
 		"",
 		"PUT"),
 	"version": updateNodePoolMapping(
@@ -89,32 +95,38 @@ var nodepoolUpdateHandlers = map[string]nodepoolUpdateHandlerFunc{
 	"networkConfig": updateNodePoolMapping(
 		mustParsePropertyPath("networkConfig"),
 		"nodeNetworkConfig",
-		extractFromDefaults(emptyObjVal),
+		defaultValue(emptyObjVal),
 		"",
 		"PUT"),
+	"initialNodeCount": updateNodePoolMapping(
+		mustParsePropertyPath("initialNodeCount"),
+		"nodeCount",
+		defaultValue(resource.NewNumberProperty(0)),
+		":setSize",
+		"POST"),
 	"config.confidentialNodes": updateNodePoolConfig(mustParsePropertyPath("config.confidentialNodes"), nil,
-		extractFromDefaults(emptyObjVal)),
+		defaultValue(emptyObjVal)),
 	"config.gcfsConfig": updateNodePoolConfig(mustParsePropertyPath("config.gcfsConfig"), nil,
-		extractFromDefaults(emptyObjVal)),
+		defaultValue(emptyObjVal)),
 	"config.gvnic": updateNodePoolConfig(mustParsePropertyPath("config.gvnic"), nil,
-		extractFromDefaults(emptyObjVal)),
+		defaultValue(emptyObjVal)),
 	"config.imageType": updateNodePoolConfig(mustParsePropertyPath("config.imageType"), nil,
 		extractFromDefaults(resource.NewStringProperty(""))),
 	"config.kubeletConfig": updateNodePoolConfig(mustParsePropertyPath("config.kubeletConfig"), nil,
-		extractFromDefaults(emptyObjVal)),
+		defaultValue(emptyObjVal)),
 	"config.labels": updateNodePoolConfig(mustParsePropertyPath("config.labels"),
 		mustParsePropertyPath("config.labels.labels"),
-		extractFromDefaults(emptyObjVal)),
+		defaultValue(emptyObjVal)),
 	"config.linuxNodeConfig": updateNodePoolConfig(mustParsePropertyPath("config.linuxNodeConfig"), nil,
-		extractFromDefaults(emptyObjVal)),
+		defaultValue(emptyObjVal)),
 	"config.tags": updateNodePoolConfig(mustParsePropertyPath("config.tags"),
 		mustParsePropertyPath("config.tags.tags"),
-		extractFromDefaults(emptyArrayVal)),
+		defaultValue(emptyArrayVal)),
 	"config.taints": updateNodePoolConfig(mustParsePropertyPath("config.taints"),
 		mustParsePropertyPath("config.taints.taints"),
-		extractFromDefaults(emptyArrayVal)),
+		defaultValue(emptyArrayVal)),
 	"config.workloadMetadataConfig": updateNodePoolConfig(mustParsePropertyPath("config.workloadMetadataConfig"), nil,
-		extractFromDefaults(emptyObjVal)),
+		defaultValue(emptyObjVal)),
 }
 
 // Following an ordering here that the terraform provider performs updates in.
@@ -132,7 +144,7 @@ var updateOrder = []string{
 	"config.tags",
 	"config.taints",
 	"networkConfig",
-	"initialNodeCount", /* is this the right attribute to update? */
+	"initialNodeCount",
 	"management",
 	"version",
 	"locations",
@@ -183,8 +195,6 @@ func updateNodepool(
 				// TODO This should be an error once all the targetted mutations are in place!
 				continue
 			}
-			_ = providerInstance.host.LogStatus(context.Background(), diag.Info, urn,
-				fmt.Sprintf("Performing update for field: %q", key))
 			logging.V(9).Infof("[%s] Invoking update for field: %q", label, key)
 			for k := range detailedDiff {
 				logging.V(9).Infof("[%s] processing diff on field: %q", label, k)
@@ -200,6 +210,8 @@ func updateNodepool(
 					break
 				}
 				if propPath.Contains(diffPropPath) {
+					_ = providerInstance.host.LogStatus(context.Background(), diag.Info, urn,
+						fmt.Sprintf("Performing update for field: %q", key))
 					logging.V(9).Infof("[%s] processing diff for %q with handler for %q",
 						label, diffPropPath.String(), propPath.String())
 					logging.V(9).Infof("[%s] waiting for nodepool to reach resting state", label)
