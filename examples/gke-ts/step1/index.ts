@@ -41,3 +41,12 @@ const cluster = new google.container.v1.Cluster("cluster", {
         name: "initial",
     }],
 });
+
+const nodepool = new google.container.v1.Nodepool("nodepool", {
+    clusterId: cluster.name,
+    initialNodeCount: 1,
+    management: {
+        autoRepair: false,
+        autoUpgrade: false,
+    },
+});
