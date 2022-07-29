@@ -258,6 +258,34 @@ var metadataOverrides = map[string]resources.CloudAPIResource{
 			UpdateMask: resources.UpdateMask{},
 		},
 	},
+	"google-native:container/v1:Cluster": {
+		Create: resources.CreateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Polling: &resources.Polling{Strategy: resources.ClusterAwaitRestingStatePoll},
+			},
+		},
+		Update: resources.UpdateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Polling: &resources.Polling{Strategy: resources.ClusterAwaitRestingStatePoll},
+			},
+		},
+	},
+	"google-native:container/v1:NodePool": {
+		Create: resources.CreateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Polling: &resources.Polling{Strategy: resources.NodepoolAwaitRestingStatePoll},
+			},
+			RecordDefaults: map[string]resources.CloudAPIProperty{
+				"version":          {},
+				"config.imageType": {},
+			},
+		},
+		Update: resources.UpdateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Polling: &resources.Polling{Strategy: resources.NodepoolAwaitRestingStatePoll},
+			},
+		},
+	},
 }
 
 // csharpNamespaceOverrides is a map of canonical C# namespaces per lowercase module name. It only lists the ones

@@ -17,10 +17,23 @@ package provider
 import (
 	"context"
 
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
+
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
 	"google.golang.org/api/cloudkms/v1"
 	"google.golang.org/api/option"
 )
+
+var resourceUpdateOverrides = map[string]func(
+	providerInstance *googleCloudProvider,
+	urn resource.URN,
+	label string,
+	res *resources.CloudAPIResource,
+	inputs,
+	oldState resource.PropertyMap,
+) (map[string]interface{}, error){
+	"google-native:container/v1:NodePool": updateNodepool,
+}
 
 var ResourceDeleteOverrides = map[string]func(
 	providerInstance *googleCloudProvider,

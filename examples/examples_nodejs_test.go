@@ -28,10 +28,25 @@ import (
 func TestGKE(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir:         filepath.Join(getCwd(t), "gke-ts"),
-			SkipRefresh: true,
+			Dir:           filepath.Join(getCwd(t), "gke-ts", "step1"),
+			SkipRefresh:   true,
+			RunUpdateTest: false,
+			EditDirs: []integration.EditDir{
+				{
+					Dir:      filepath.Join(getCwd(t), "gke-ts", "step2"),
+					Additive: true,
+					// TODO: This seems to succeed consistently locally but fails in CI. Will re-enable this separately.
+					// ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+					// 	t.Logf("outputs: %+v", stack.Outputs)
+					//	nodepoolTag, ok := stack.Outputs["nodepoolTag"]
+					//	assert.True(t, ok)
+					//	assert.Equal(t, "nodepool", nodepoolTag)
+					//	taintsKey, ok := stack.Outputs["taintsKey"]
+					//	assert.Equal(t, "important", taintsKey)
+					// },
+				},
+			},
 		})
-
 	integration.ProgramTest(t, &test)
 }
 
