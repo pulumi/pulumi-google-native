@@ -50,3 +50,6 @@ const nodepool = new google.container.v1.NodePool("nodepool", {
         autoUpgrade: false,
     },
 });
+
+export const nodepoolTag = nodepool.config.tags[0];
+export const taintsKey = nodepool.config.taints[0].key;
