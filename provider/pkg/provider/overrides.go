@@ -17,22 +17,96 @@ package provider
 import (
 	"context"
 
-	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
-
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"google.golang.org/api/cloudkms/v1"
 	"google.golang.org/api/option"
 )
 
-var resourceUpdateOverrides = map[string]func(
-	providerInstance *googleCloudProvider,
-	urn resource.URN,
-	label string,
-	res *resources.CloudAPIResource,
-	inputs,
-	oldState resource.PropertyMap,
-) (map[string]interface{}, error){
-	"google-native:container/v1:NodePool": updateNodepool,
+type customMutationsHandler interface {
+	mutablePropertyPaths() []string
+	update(providerInstance *googleCloudProvider,
+		urn resource.URN,
+		label string,
+		res *resources.CloudAPIResource,
+		inputs resource.PropertyMap,
+		oldState resource.PropertyMap,
+	) (map[string]interface{}, error)
+}
+
+var customMutations = map[string]customMutationsHandler{
+	"google-native:container/v1:NodePool": nodepoolMutations{
+		updateHandlers: map[string]nodepoolUpdateHandlerFunc{
+			"autoscaling": updateNodePoolMapping(
+				mustParsePropertyPath("autoscaling"),
+				"autoscaling",
+				defaultValue(resource.NewObjectProperty(
+					resource.PropertyMap{
+						"enabled": resource.NewBoolProperty(false),
+					})),
+				":setAutoscaling",
+				"POST"),
+			"management": updateNodePoolMapping(
+				mustParsePropertyPath("management"),
+				"management",
+				defaultValue(emptyObjVal),
+				":setManagement",
+				"POST"),
+			"upgradeSettings": updateNodePoolMapping(
+				mustParsePropertyPath("upgradeSettings"),
+				"upgradeSettings",
+				defaultValue(emptyObjVal),
+				"",
+				"PUT"),
+			"locations": updateNodePoolMapping(
+				mustParsePropertyPath("locations"),
+				"locations",
+				defaultValue(resource.NewArrayProperty([]resource.PropertyValue{})),
+				"",
+				"PUT"),
+			"version": updateNodePoolMapping(
+				mustParsePropertyPath("version"),
+				"nodeVersion",
+				extractFromDefaults(resource.NewStringProperty("")),
+				"",
+				"PUT"),
+			"networkConfig": updateNodePoolMapping(
+				mustParsePropertyPath("networkConfig"),
+				"nodeNetworkConfig",
+				defaultValue(emptyObjVal),
+				"",
+				"PUT"),
+			"initialNodeCount": updateNodePoolMapping(
+				mustParsePropertyPath("initialNodeCount"),
+				"nodeCount",
+				defaultValue(resource.NewNumberProperty(0)),
+				":setSize",
+				"POST"),
+			"config.confidentialNodes": updateNodePoolConfig(mustParsePropertyPath("config.confidentialNodes"), nil,
+				defaultValue(emptyObjVal)),
+			"config.gcfsConfig": updateNodePoolConfig(mustParsePropertyPath("config.gcfsConfig"), nil,
+				defaultValue(emptyObjVal)),
+			"config.gvnic": updateNodePoolConfig(mustParsePropertyPath("config.gvnic"), nil,
+				defaultValue(emptyObjVal)),
+			"config.imageType": updateNodePoolConfig(mustParsePropertyPath("config.imageType"), nil,
+				extractFromDefaults(resource.NewStringProperty(""))),
+			"config.kubeletConfig": updateNodePoolConfig(mustParsePropertyPath("config.kubeletConfig"), nil,
+				defaultValue(emptyObjVal)),
+			"config.labels": updateNodePoolConfig(mustParsePropertyPath("config.labels"),
+				mustParsePropertyPath("config.labels.labels"),
+				defaultValue(emptyObjVal)),
+			"config.linuxNodeConfig": updateNodePoolConfig(mustParsePropertyPath("config.linuxNodeConfig"), nil,
+				defaultValue(emptyObjVal)),
+			"config.tags": updateNodePoolConfig(mustParsePropertyPath("config.tags"),
+				mustParsePropertyPath("config.tags.tags"),
+				defaultValue(emptyArrayVal)),
+			"config.taints": updateNodePoolConfig(mustParsePropertyPath("config.taints"),
+				mustParsePropertyPath("config.taints.taints"),
+				defaultValue(emptyArrayVal)),
+			"config.workloadMetadataConfig": updateNodePoolConfig(mustParsePropertyPath("config.workloadMetadataConfig"), nil,
+				defaultValue(emptyObjVal)),
+		},
+	},
 }
 
 var ResourceDeleteOverrides = map[string]func(

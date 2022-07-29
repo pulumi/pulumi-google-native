@@ -30,6 +30,8 @@ import (
 	"strings"
 	"time"
 
+	"github.com/pulumi/pulumi/pkg/v3/codegen"
+
 	jsonpatch "github.com/evanphx/json-patch"
 	"github.com/golang/protobuf/ptypes/empty"
 	structpb "github.com/golang/protobuf/ptypes/struct"
@@ -441,8 +443,13 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	// Calculate the detailed diff object containing information about replacements.
 	detailedDiff := calculateDetailedDiff(&res, p.resourceMap.Types, diff)
 
+	var mutablePropertyPaths []string
+	if customMutation, hasCustomMutation := customMutations[resourceKey]; hasCustomMutation {
+		mutablePropertyPaths = customMutation.mutablePropertyPaths()
+	}
 	// Based on the detailed diff above, calculate the list of changes and replacements.
-	var changes, replaces []string
+	var changes []string
+	replaces := codegen.NewStringSet()
 	for k, v := range detailedDiff {
 		parts := strings.Split(k, ".")
 		changes = append(changes, parts[0])
@@ -450,7 +457,27 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 
 		switch v.Kind {
 		case rpc.PropertyDiff_ADD_REPLACE, rpc.PropertyDiff_DELETE_REPLACE, rpc.PropertyDiff_UPDATE_REPLACE:
-			replaces = append(replaces, k)
+			replaces.Add(k)
+			continue
+		}
+
+		changedPropPath, err := resource.ParsePropertyPath(k)
+		if err != nil {
+			return nil, fmt.Errorf("failed to parse property path: %q: %w", k, err)
+		}
+		found := false
+		for _, p := range mutablePropertyPaths {
+			propPath, err := resource.ParsePropertyPath(p)
+			if err != nil {
+				return nil, fmt.Errorf("failed to parse property path: %q: %w", p, err)
+			}
+			if propPath.Contains(changedPropPath) {
+				found = true
+				break
+			}
+		}
+		if !found {
+			replaces.Add(k)
 		}
 	}
 
@@ -466,7 +493,7 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 
 	response := rpc.DiffResponse{
 		Changes:             changeType,
-		Replaces:            replaces,
+		Replaces:            replaces.SortedValues(),
 		DeleteBeforeReplace: deleteBeforeReplace,
 		Diffs:               changes,
 		DetailedDiff:        detailedDiff,
@@ -962,10 +989,10 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 	defaults := parseDefaultsObject(oldState)
 
 	var resp, op map[string]interface{}
-	if f, ok := resourceUpdateOverrides[resourceKey]; ok {
+	if mutations, ok := customMutations[resourceKey]; ok {
 		var err error
 		logging.V(9).Infof("[%s] calling custom update function for resource: %+v", label, resourceKey)
-		resp, err = f(p, urn, label, &res, inputs, oldState)
+		resp, err = mutations.update(p, urn, label, &res, inputs, oldState)
 		if err != nil {
 			logging.V(9).Infof("[%s] custom update override failed: %+v, resp: %+v", label, err, resp)
 			if resp != nil {
