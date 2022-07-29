@@ -28,13 +28,15 @@ import (
 func TestGKE(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir:         filepath.Join(getCwd(t), "gke-ts", "step1"),
-			SkipRefresh: true,
+			Dir:           filepath.Join(getCwd(t), "gke-ts", "step1"),
+			SkipRefresh:   true,
+			RunUpdateTest: false,
 			EditDirs: []integration.EditDir{
 				{
 					Dir:      filepath.Join(getCwd(t), "gke-ts", "step2"),
 					Additive: true,
 					ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+						t.Logf("outputs: %+v", stack.Outputs)
 						nodepoolTag, ok := stack.Outputs["nodepoolTag"]
 						assert.True(t, ok)
 						assert.Equal(t, "nodepool", nodepoolTag)
