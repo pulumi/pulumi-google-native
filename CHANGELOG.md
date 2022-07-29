@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 - Add support for apigee resources that use multipart/form-data content-type [#590](https://github.com/pulumi/pulumi-google-native/pull/590)
+- Add support for nodepool mutations [#588](https://github.com/pulumi/pulumi-google-native/pull/588)
 
 ## 0.21.0 (2022-07-14)
 - Handle network timeouts as retryable [#524](https://github.com/pulumi/pulumi-google-native/pull/524)
