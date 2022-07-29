@@ -19,6 +19,8 @@ import (
 	"fmt"
 	"time"
 
+	"github.com/pulumi/pulumi/pkg/v3/codegen"
+
 	"github.com/jpillora/backoff"
 	"github.com/pkg/errors"
 	"github.com/pulumi/pulumi-google-native/provider/pkg/resources"
@@ -28,142 +30,15 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 )
 
-type nodepoolUpdateHandlerFunc func(
-	p *googleCloudProvider,
-	urn resource.URN,
-	label string,
-	res *resources.CloudAPIResource,
-	newInputs,
-	oldState resource.PropertyMap,
-) error
-
-var emptyObjVal = resource.NewObjectProperty(resource.NewPropertyMapFromMap(nil))
-var emptyArrayVal = resource.NewArrayProperty([]resource.PropertyValue{})
-
-type propValueIfMissingFunc func(oldState resource.PropertyMap, propPath resource.PropertyPath) resource.PropertyValue
-
-func extractFromDefaults(valIfMissing resource.PropertyValue) propValueIfMissingFunc {
-	return func(oldState resource.PropertyMap, propPath resource.PropertyPath) resource.PropertyValue {
-		defaults := parseDefaultsObject(oldState)
-		if val, ok := propPath.Get(resource.NewObjectProperty(defaults)); ok {
-			return val
-		}
-		return valIfMissing
-	}
+type nodepoolMutations struct {
+	updateHandlers map[string]nodepoolUpdateHandlerFunc
 }
 
-func defaultValue(defVal resource.PropertyValue) propValueIfMissingFunc {
-	return func(_ resource.PropertyMap, _ resource.PropertyPath) resource.PropertyValue {
-		return defVal
-	}
+func (n nodepoolMutations) mutablePropertyPaths() []string {
+	return codegen.SortedKeys(n.updateHandlers)
 }
 
-var nodepoolUpdateHandlers = map[string]nodepoolUpdateHandlerFunc{
-	"autoscaling": updateNodePoolMapping(
-		mustParsePropertyPath("autoscaling"),
-		"autoscaling",
-		defaultValue(resource.NewObjectProperty(
-			resource.PropertyMap{
-				"enabled": resource.NewBoolProperty(false),
-			})),
-		":setAutoscaling",
-		"POST"),
-	"management": updateNodePoolMapping(
-		mustParsePropertyPath("management"),
-		"management",
-		defaultValue(emptyObjVal),
-		":setManagement",
-		"POST"),
-	"upgradeSettings": updateNodePoolMapping(
-		mustParsePropertyPath("upgradeSettings"),
-		"upgradeSettings",
-		defaultValue(emptyObjVal),
-		"",
-		"PUT"),
-	"locations": updateNodePoolMapping(
-		mustParsePropertyPath("locations"),
-		"locations",
-		defaultValue(resource.NewArrayProperty([]resource.PropertyValue{})),
-		"",
-		"PUT"),
-	"version": updateNodePoolMapping(
-		mustParsePropertyPath("version"),
-		"nodeVersion",
-		extractFromDefaults(resource.NewStringProperty("")),
-		"",
-		"PUT"),
-	"networkConfig": updateNodePoolMapping(
-		mustParsePropertyPath("networkConfig"),
-		"nodeNetworkConfig",
-		defaultValue(emptyObjVal),
-		"",
-		"PUT"),
-	"initialNodeCount": updateNodePoolMapping(
-		mustParsePropertyPath("initialNodeCount"),
-		"nodeCount",
-		defaultValue(resource.NewNumberProperty(0)),
-		":setSize",
-		"POST"),
-	"config.confidentialNodes": updateNodePoolConfig(mustParsePropertyPath("config.confidentialNodes"), nil,
-		defaultValue(emptyObjVal)),
-	"config.gcfsConfig": updateNodePoolConfig(mustParsePropertyPath("config.gcfsConfig"), nil,
-		defaultValue(emptyObjVal)),
-	"config.gvnic": updateNodePoolConfig(mustParsePropertyPath("config.gvnic"), nil,
-		defaultValue(emptyObjVal)),
-	"config.imageType": updateNodePoolConfig(mustParsePropertyPath("config.imageType"), nil,
-		extractFromDefaults(resource.NewStringProperty(""))),
-	"config.kubeletConfig": updateNodePoolConfig(mustParsePropertyPath("config.kubeletConfig"), nil,
-		defaultValue(emptyObjVal)),
-	"config.labels": updateNodePoolConfig(mustParsePropertyPath("config.labels"),
-		mustParsePropertyPath("config.labels.labels"),
-		defaultValue(emptyObjVal)),
-	"config.linuxNodeConfig": updateNodePoolConfig(mustParsePropertyPath("config.linuxNodeConfig"), nil,
-		defaultValue(emptyObjVal)),
-	"config.tags": updateNodePoolConfig(mustParsePropertyPath("config.tags"),
-		mustParsePropertyPath("config.tags.tags"),
-		defaultValue(emptyArrayVal)),
-	"config.taints": updateNodePoolConfig(mustParsePropertyPath("config.taints"),
-		mustParsePropertyPath("config.taints.taints"),
-		defaultValue(emptyArrayVal)),
-	"config.workloadMetadataConfig": updateNodePoolConfig(mustParsePropertyPath("config.workloadMetadataConfig"), nil,
-		defaultValue(emptyObjVal)),
-}
-
-// Following an ordering here that the terraform provider performs updates in.
-// We have a lot more mutations defined than the terraform providers does though.
-var updateOrder = []string{
-	"autoscaling",
-	"config.imageType",
-	"config.workloadMetadataConfig",
-	"config.kubeletConfig",
-	"config.linuxNodeConfig",
-	"config.confidentialNodes",
-	"config.gcfsConfig",
-	"config.gvnic",
-	"config.labels",
-	"config.tags",
-	"config.taints",
-	"networkConfig",
-	"initialNodeCount",
-	"management",
-	"version",
-	"locations",
-	"upgradeSettings"}
-
-func mustParsePropertyPath(pattern string) resource.PropertyPath {
-	pp, err := resource.ParsePropertyPath(pattern)
-	contract.AssertNoError(err)
-	return pp
-}
-
-func updateNodepool(
-	providerInstance *googleCloudProvider,
-	urn resource.URN,
-	label string,
-	res *resources.CloudAPIResource,
-	inputs resource.PropertyMap,
-	oldState resource.PropertyMap,
-) (map[string]interface{}, error) {
+func (n nodepoolMutations) update(providerInstance *googleCloudProvider, urn resource.URN, label string, res *resources.CloudAPIResource, inputs resource.PropertyMap, oldState resource.PropertyMap) (map[string]interface{}, error) {
 	// TODO wait for the cluster to be in resting state
 
 	// Extract old inputs from the `__inputs` field of the old state.
@@ -189,7 +64,7 @@ func updateNodepool(
 		logging.V(9).Infof("[%s] updateNodepool oldState: %+v", label, oldState)
 
 		for _, key := range updateOrder {
-			updateHandler, ok := nodepoolUpdateHandlers[key]
+			updateHandler, ok := n.updateHandlers[key]
 			if !ok {
 				logging.V(9).Infof("[%s] No handler found for field: %q", label, key)
 				// TODO This should be an error once all the targetted mutations are in place!
@@ -242,6 +117,63 @@ func updateNodepool(
 		return nil, fmt.Errorf("failed to retrieve nodepool status: %v. Previous error: %w", err2, err)
 	}
 	return resp, err
+}
+
+type nodepoolUpdateHandlerFunc func(
+	p *googleCloudProvider,
+	urn resource.URN,
+	label string,
+	res *resources.CloudAPIResource,
+	newInputs,
+	oldState resource.PropertyMap,
+) error
+
+var emptyObjVal = resource.NewObjectProperty(resource.NewPropertyMapFromMap(nil))
+var emptyArrayVal = resource.NewArrayProperty([]resource.PropertyValue{})
+
+type propValueIfMissingFunc func(oldState resource.PropertyMap, propPath resource.PropertyPath) resource.PropertyValue
+
+func extractFromDefaults(valIfMissing resource.PropertyValue) propValueIfMissingFunc {
+	return func(oldState resource.PropertyMap, propPath resource.PropertyPath) resource.PropertyValue {
+		defaults := parseDefaultsObject(oldState)
+		if val, ok := propPath.Get(resource.NewObjectProperty(defaults)); ok {
+			return val
+		}
+		return valIfMissing
+	}
+}
+
+func defaultValue(defVal resource.PropertyValue) propValueIfMissingFunc {
+	return func(_ resource.PropertyMap, _ resource.PropertyPath) resource.PropertyValue {
+		return defVal
+	}
+}
+
+// Following an ordering here that the terraform provider performs updates in.
+// We have a lot more mutations defined than the terraform providers does though.
+var updateOrder = []string{
+	"autoscaling",
+	"config.imageType",
+	"config.workloadMetadataConfig",
+	"config.kubeletConfig",
+	"config.linuxNodeConfig",
+	"config.confidentialNodes",
+	"config.gcfsConfig",
+	"config.gvnic",
+	"config.labels",
+	"config.tags",
+	"config.taints",
+	"networkConfig",
+	"initialNodeCount",
+	"management",
+	"version",
+	"locations",
+	"upgradeSettings"}
+
+func mustParsePropertyPath(pattern string) resource.PropertyPath {
+	pp, err := resource.ParsePropertyPath(pattern)
+	contract.AssertNoError(err)
+	return pp
 }
 
 func readNodepoolStatus(
