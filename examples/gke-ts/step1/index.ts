@@ -42,7 +42,7 @@ const cluster = new google.container.v1.Cluster("cluster", {
     }],
 });
 
-const nodepool = new google.container.v1.Nodepool("nodepool", {
+const nodepool = new google.container.v1.NodePool("nodepool", {
     clusterId: cluster.name,
     initialNodeCount: 1,
     management: {
