@@ -989,15 +989,16 @@ func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest
 	defaults := parseDefaultsObject(oldState)
 
 	var resp, op map[string]interface{}
+	var appliedInputs resource.PropertyMap
 	if mutations, ok := customMutations[resourceKey]; ok {
 		var err error
 		logging.V(9).Infof("[%s] calling custom update function for resource: %+v", label, resourceKey)
-		resp, err = mutations.update(p, urn, label, &res, inputs, oldState)
+		appliedInputs, resp, err = mutations.update(p, urn, label, &res, inputs, oldState)
 		if err != nil {
 			logging.V(9).Infof("[%s] custom update override failed: %+v, resp: %+v", label, err, resp)
 			if resp != nil {
 				checkpoint, cpErr := plugin.MarshalProperties(
-					checkpointObject(inputs, defaults, resp),
+					checkpointObject(appliedInputs, defaults, resp),
 					plugin.MarshalOptions{
 						Label:        fmt.Sprintf("%s.partialCheckpoint", label),
 						KeepUnknowns: true,
