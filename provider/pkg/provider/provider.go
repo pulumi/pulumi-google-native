@@ -579,14 +579,17 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 func extractDefaultsFromResponse(res resources.CloudAPIResource, inputs resource.PropertyMap,
 	resp map[string]interface{}) (resource.PropertyMap, error) {
 	defaults := resource.NewObjectProperty(resource.NewPropertyMapFromMap(nil))
-	for propName, _ := range res.Create.RecordDefaults {
+	for propName, prop := range res.Create.RecordDefaults {
+		if prop.SdkName != "" {
+			propName = prop.SdkName
+		}
 		propPath, err := resource.ParsePropertyPath(propName)
 		if err != nil {
 			return nil, fmt.Errorf("failed to parse propertypath: %q: %w", propName, err)
 		}
 		// Lookup property path in inputs.
 		_, ok := propPath.Get(resource.NewObjectProperty(inputs))
-		// If specified, skip recording in __defaults
+		// If explicitly specified, skip recording in __defaults
 		if ok {
 			continue
 		}
