@@ -6007,7 +6007,7 @@
       }
     }
   },
-  "revision": "20220722",
+  "revision": "20220726",
   "rootUrl": "https://logging.googleapis.com/",
   "schemas": {
     "BigQueryOptions": {
