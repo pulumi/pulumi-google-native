@@ -38,7 +38,14 @@ func (n nodepoolMutations) mutablePropertyPaths() []string {
 	return codegen.SortedKeys(n.updateHandlers)
 }
 
-func (n nodepoolMutations) update(providerInstance *googleCloudProvider, urn resource.URN, label string, res *resources.CloudAPIResource, inputs resource.PropertyMap, oldState resource.PropertyMap) (map[string]interface{}, error) {
+func (n nodepoolMutations) update(
+	providerInstance *googleCloudProvider,
+	urn resource.URN,
+	label string,
+	res *resources.CloudAPIResource,
+	inputs resource.PropertyMap,
+	oldState resource.PropertyMap,
+) (appliedInputs resource.PropertyMap, resp map[string]interface{}, err error) {
 	// TODO wait for the cluster to be in resting state
 
 	// Extract old inputs from the `__inputs` field of the old state.
@@ -53,8 +60,8 @@ func (n nodepoolMutations) update(providerInstance *googleCloudProvider, urn res
 	}
 
 	diff := oldInputs.Diff(inputs)
+	batchedInputs := resource.NewObjectProperty(oldInputs)
 
-	var err error
 	if diff == nil {
 		logging.V(9).Infof("[%s] no diff found in update!", label)
 	} else {
@@ -94,10 +101,16 @@ func (n nodepoolMutations) update(providerInstance *googleCloudProvider, urn res
 					if err != nil {
 						break
 					}
+					newVal, _ := diffPropPath.Get(resource.NewObjectProperty(inputs))
 					logging.V(9).Infof("[%s] calling update handler", label)
 					err = updateHandler(providerInstance, urn, label, res, inputs, oldState)
 					if err != nil {
 						logging.V(9).Infof("[%s] failure updating: %+v", label, err)
+						break
+					}
+					batchedInputs, ok = diffPropPath.Add(batchedInputs, newVal)
+					if !ok {
+						err = fmt.Errorf("failed to record update at field: %q", k)
 						break
 					}
 				}
@@ -107,16 +120,18 @@ func (n nodepoolMutations) update(providerInstance *googleCloudProvider, urn res
 			}
 		}
 	}
+	appliedInputs = batchedInputs.ObjectValue()
 	uri, readErr := res.Read.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
 	if readErr != nil {
-		return nil, readErr
+		return nil, nil, readErr
 	}
 	resp, err2 := readNodepoolStatus(providerInstance, uri)
 	if err2 != nil {
 		logging.V(9).Infof("[%s] Failed to read nodepool status: %v", label, err2)
-		return nil, fmt.Errorf("failed to retrieve nodepool status: %v. Previous error: %w", err2, err)
+		return nil, nil, fmt.Errorf("failed to retrieve nodepool status: %v. Previous error: %w", err2, err)
 	}
-	return resp, err
+
+	return appliedInputs, resp, err
 }
 
 type nodepoolUpdateHandlerFunc func(
