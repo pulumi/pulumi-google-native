@@ -31,7 +31,7 @@ type customMutationsHandler interface {
 		res *resources.CloudAPIResource,
 		inputs resource.PropertyMap,
 		oldState resource.PropertyMap,
-	) (map[string]interface{}, error)
+	) (appliedInputs resource.PropertyMap, resp map[string]interface{}, err error)
 }
 
 var customMutations = map[string]customMutationsHandler{
