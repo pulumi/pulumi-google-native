@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Policy for retention of scheduled snapshots.
     /// </summary>
-    public sealed class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum age of the snapshot that is allowed to be kept.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs()
         {
         }
+        public static new ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs Empty => new ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
     /// <summary>
     /// Fleet configs for Agones.
     /// </summary>
-    public sealed class FleetConfigArgs : Pulumi.ResourceArgs
+    public sealed class FleetConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Agones fleet spec (see [example spec](https://agones.dev/site/docs/reference/fleet/)).
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
         public FleetConfigArgs()
         {
         }
+        public static new FleetConfigArgs Empty => new FleetConfigArgs();
     }
 }

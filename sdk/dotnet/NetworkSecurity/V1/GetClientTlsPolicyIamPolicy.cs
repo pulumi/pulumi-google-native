@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
     }
 
 
-    public sealed class GetClientTlsPolicyIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetClientTlsPolicyIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("clientTlsPolicyId", required: true)]
         public string ClientTlsPolicyId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         public GetClientTlsPolicyIamPolicyArgs()
         {
         }
+        public static new GetClientTlsPolicyIamPolicyArgs Empty => new GetClientTlsPolicyIamPolicyArgs();
     }
 
-    public sealed class GetClientTlsPolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClientTlsPolicyIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("clientTlsPolicyId", required: true)]
         public Input<string> ClientTlsPolicyId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         public GetClientTlsPolicyIamPolicyInvokeArgs()
         {
         }
+        public static new GetClientTlsPolicyIamPolicyInvokeArgs Empty => new GetClientTlsPolicyIamPolicyInvokeArgs();
     }
 
 

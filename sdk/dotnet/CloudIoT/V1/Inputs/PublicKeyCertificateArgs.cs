@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
     /// <summary>
     /// A public key certificate format and data.
     /// </summary>
-    public sealed class PublicKeyCertificateArgs : Pulumi.ResourceArgs
+    public sealed class PublicKeyCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The certificate data.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         public PublicKeyCertificateArgs()
         {
         }
+        public static new PublicKeyCertificateArgs Empty => new PublicKeyCertificateArgs();
     }
 }

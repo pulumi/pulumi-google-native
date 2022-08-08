@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
     /// <summary>
     /// Represents a Replica for this Secret.
     /// </summary>
-    public sealed class ReplicaArgs : Pulumi.ResourceArgs
+    public sealed class ReplicaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The customer-managed encryption configuration of the User-Managed Replica. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
         public ReplicaArgs()
         {
         }
+        public static new ReplicaArgs Empty => new ReplicaArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
     /// <summary>
     /// ComputeEngineTargetDefaults is a collection of details for creating a VM in a target Compute Engine project.
     /// </summary>
-    public sealed class ComputeEngineTargetDefaultsArgs : Pulumi.ResourceArgs
+    public sealed class ComputeEngineTargetDefaultsArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalLicenses")]
         private InputList<string>? _additionalLicenses;
@@ -144,5 +144,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
         public ComputeEngineTargetDefaultsArgs()
         {
         }
+        public static new ComputeEngineTargetDefaultsArgs Empty => new ComputeEngineTargetDefaultsArgs();
     }
 }

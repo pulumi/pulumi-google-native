@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
     /// <summary>
     /// The configuration for the parser. It determines how the server parses the messages.
     /// </summary>
-    public sealed class ParserConfigArgs : Pulumi.ResourceArgs
+    public sealed class ParserConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines whether messages with no header are allowed.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         public ParserConfigArgs()
         {
         }
+        public static new ParserConfigArgs Empty => new ParserConfigArgs();
     }
 }

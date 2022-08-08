@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:firebase/v1beta1:AndroidApp")]
-    public partial class AndroidApp : Pulumi.CustomResource
+    public partial class AndroidApp : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
@@ -49,6 +49,18 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The SHA1 certificate hashes for the AndroidApp.
+        /// </summary>
+        [Output("sha1Hashes")]
+        public Output<ImmutableArray<string>> Sha1Hashes { get; private set; } = null!;
+
+        /// <summary>
+        /// The SHA256 certificate hashes for the AndroidApp.
+        /// </summary>
+        [Output("sha256Hashes")]
+        public Output<ImmutableArray<string>> Sha256Hashes { get; private set; } = null!;
 
         /// <summary>
         /// The lifecycle state of the App.
@@ -103,7 +115,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         }
     }
 
-    public sealed class AndroidAppArgs : Pulumi.ResourceArgs
+    public sealed class AndroidAppArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key_id of the GCP ApiKey associated with this App. If set must have no restrictions, or only have restrictions that are valid for the associated Firebase App. Cannot be set in create requests, instead an existing valid API Key will be chosen, or if no valid API Keys exist, one will be provisioned for you. Cannot be set to an empty value in update requests.
@@ -132,8 +144,33 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("sha1Hashes")]
+        private InputList<string>? _sha1Hashes;
+
+        /// <summary>
+        /// The SHA1 certificate hashes for the AndroidApp.
+        /// </summary>
+        public InputList<string> Sha1Hashes
+        {
+            get => _sha1Hashes ?? (_sha1Hashes = new InputList<string>());
+            set => _sha1Hashes = value;
+        }
+
+        [Input("sha256Hashes")]
+        private InputList<string>? _sha256Hashes;
+
+        /// <summary>
+        /// The SHA256 certificate hashes for the AndroidApp.
+        /// </summary>
+        public InputList<string> Sha256Hashes
+        {
+            get => _sha256Hashes ?? (_sha256Hashes = new InputList<string>());
+            set => _sha256Hashes = value;
+        }
+
         public AndroidAppArgs()
         {
         }
+        public static new AndroidAppArgs Empty => new AndroidAppArgs();
     }
 }

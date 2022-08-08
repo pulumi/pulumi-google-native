@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// An Upgrade Note represents a potential upgrade of a package to a given version. For each package version combination (i.e. bash 4.0, bash 4.1, bash 4.1.2), there will be a Upgrade Note.
     /// </summary>
-    public sealed class UpgradeNoteArgs : Pulumi.ResourceArgs
+    public sealed class UpgradeNoteArgs : global::Pulumi.ResourceArgs
     {
         [Input("distributions")]
         private InputList<Inputs.UpgradeDistributionArgs>? _distributions;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public UpgradeNoteArgs()
         {
         }
+        public static new UpgradeNoteArgs Empty => new UpgradeNoteArgs();
     }
 }

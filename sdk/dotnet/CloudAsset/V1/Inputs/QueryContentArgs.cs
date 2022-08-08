@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
     /// <summary>
     /// The query content.
     /// </summary>
-    public sealed class QueryContentArgs : Pulumi.ResourceArgs
+    public sealed class QueryContentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An IAM Policy Analysis query, which could be used in the AssetService.AnalyzeIamPolicy rpc or the AssetService.AnalyzeIamPolicyLongrunning rpc.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
         public QueryContentArgs()
         {
         }
+        public static new QueryContentArgs Empty => new QueryContentArgs();
     }
 }

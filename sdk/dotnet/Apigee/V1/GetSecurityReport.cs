@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetSecurityReportArgs : Pulumi.InvokeArgs
+    public sealed class GetSecurityReportArgs : global::Pulumi.InvokeArgs
     {
         [Input("environmentId", required: true)]
         public string EnvironmentId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetSecurityReportArgs()
         {
         }
+        public static new GetSecurityReportArgs Empty => new GetSecurityReportArgs();
     }
 
-    public sealed class GetSecurityReportInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSecurityReportInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetSecurityReportInvokeArgs()
         {
         }
+        public static new GetSecurityReportInvokeArgs Empty => new GetSecurityReportInvokeArgs();
     }
 
 

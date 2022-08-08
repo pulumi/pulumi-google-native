@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
-    public sealed class InstanceGroupManagerUpdatePolicyArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupManagerUpdatePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The instance redistribution policy for regional managed instance groups. Valid values are: - PROACTIVE (default): The group attempts to maintain an even distribution of VM instances across zones in the region. - NONE: For non-autoscaled groups, proactive redistribution is disabled. 
@@ -57,5 +57,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public InstanceGroupManagerUpdatePolicyArgs()
         {
         }
+        public static new InstanceGroupManagerUpdatePolicyArgs Empty => new InstanceGroupManagerUpdatePolicyArgs();
     }
 }

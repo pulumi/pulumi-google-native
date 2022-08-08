@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     /// <summary>
     /// An AzureBlobStorageData resource can be a data source, but not a data sink. An AzureBlobStorageData resource represents one Azure container. The storage account determines the [Azure endpoint](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account#storage-account-endpoints). In an AzureBlobStorageData resource, a blobs's name is the [Azure Blob Storage blob's key name](https://docs.microsoft.com/en-us/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#blob-names).
     /// </summary>
-    public sealed class AzureBlobStorageDataArgs : Pulumi.ResourceArgs
+    public sealed class AzureBlobStorageDataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Input only. Credentials used to authenticate API requests to Azure. For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public AzureBlobStorageDataArgs()
         {
         }
+        public static new AzureBlobStorageDataArgs Empty => new AzureBlobStorageDataArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Configuration for the Advanced API Ops add-on.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1AdvancedApiOpsConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1AdvancedApiOpsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Flag that specifies whether the Advanced API Ops add-on is enabled.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1AdvancedApiOpsConfigArgs()
         {
         }
+        public static new GoogleCloudApigeeV1AdvancedApiOpsConfigArgs Empty => new GoogleCloudApigeeV1AdvancedApiOpsConfigArgs();
     }
 }

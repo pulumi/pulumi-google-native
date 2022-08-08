@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2.Inputs
     /// <summary>
     /// Describes EventTrigger, used to request events to be sent from another service.
     /// </summary>
-    public sealed class EventTriggerArgs : Pulumi.ResourceArgs
+    public sealed class EventTriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2.Inputs
         public EventTriggerArgs()
         {
         }
+        public static new EventTriggerArgs Empty => new EventTriggerArgs();
     }
 }

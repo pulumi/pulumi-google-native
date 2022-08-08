@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class RbacPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RbacPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the RbacPolicy.
@@ -45,5 +45,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public RbacPolicyArgs()
         {
         }
+        public static new RbacPolicyArgs Empty => new RbacPolicyArgs();
     }
 }

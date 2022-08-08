@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1
     }
 
 
-    public sealed class GetOsPolicyAssignmentArgs : Pulumi.InvokeArgs
+    public sealed class GetOsPolicyAssignmentArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         public GetOsPolicyAssignmentArgs()
         {
         }
+        public static new GetOsPolicyAssignmentArgs Empty => new GetOsPolicyAssignmentArgs();
     }
 
-    public sealed class GetOsPolicyAssignmentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOsPolicyAssignmentInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1
         public GetOsPolicyAssignmentInvokeArgs()
         {
         }
+        public static new GetOsPolicyAssignmentInvokeArgs Empty => new GetOsPolicyAssignmentInvokeArgs();
     }
 
 

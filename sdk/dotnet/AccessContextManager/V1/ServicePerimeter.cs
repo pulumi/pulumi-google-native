@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
     /// Creates a service perimeter. The long-running operation from this RPC has a successful status after the service perimeter propagates to long-lasting storage. If a service perimeter contains errors, an error response is returned for the first error encountered.
     /// </summary>
     [GoogleNativeResourceType("google-native:accesscontextmanager/v1:ServicePerimeter")]
-    public partial class ServicePerimeter : Pulumi.CustomResource
+    public partial class ServicePerimeter : global::Pulumi.CustomResource
     {
         [Output("accessPolicyId")]
         public Output<string> AccessPolicyId { get; private set; } = null!;
@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         }
     }
 
-    public sealed class ServicePerimeterArgs : Pulumi.ResourceArgs
+    public sealed class ServicePerimeterArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessPolicyId", required: true)]
         public Input<string> AccessPolicyId { get; set; } = null!;
@@ -151,5 +151,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public ServicePerimeterArgs()
         {
         }
+        public static new ServicePerimeterArgs Empty => new ServicePerimeterArgs();
     }
 }

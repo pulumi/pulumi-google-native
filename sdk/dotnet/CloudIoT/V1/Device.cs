@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
     /// Creates a device in a device registry.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudiot/v1:Device")]
-    public partial class Device : Pulumi.CustomResource
+    public partial class Device : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If a device is blocked, connections or requests from this device will fail. Can be used to temporarily prevent the device from connecting if, for example, the sensor is generating bad data and needs maintenance.
@@ -169,7 +169,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         }
     }
 
-    public sealed class DeviceArgs : Pulumi.ResourceArgs
+    public sealed class DeviceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If a device is blocked, connections or requests from this device will fail. Can be used to temporarily prevent the device from connecting if, for example, the sensor is generating bad data and needs maintenance.
@@ -243,5 +243,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         public DeviceArgs()
         {
         }
+        public static new DeviceArgs Empty => new DeviceArgs();
     }
 }

@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1.Inputs
     /// <summary>
     /// The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
     /// </summary>
-    public sealed class StaticIpConnectivityArgs : Pulumi.ResourceArgs
+    public sealed class StaticIpConnectivityArgs : global::Pulumi.ResourceArgs
     {
         public StaticIpConnectivityArgs()
         {
         }
+        public static new StaticIpConnectivityArgs Empty => new StaticIpConnectivityArgs();
     }
 }

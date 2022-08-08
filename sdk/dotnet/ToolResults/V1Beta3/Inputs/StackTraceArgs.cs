@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// A stacktrace.
     /// </summary>
-    public sealed class StackTraceArgs : Pulumi.ResourceArgs
+    public sealed class StackTraceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The stack trace message. Required
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public StackTraceArgs()
         {
         }
+        public static new StackTraceArgs Empty => new StackTraceArgs();
     }
 }

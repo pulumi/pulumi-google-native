@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datalabeling/v1beta1:AnnotationSpecSet")]
-    public partial class AnnotationSpecSet : Pulumi.CustomResource
+    public partial class AnnotationSpecSet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The array of AnnotationSpecs that you define when you create the AnnotationSpecSet. These are the possible labels for the labeling task.
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         }
     }
 
-    public sealed class AnnotationSpecSetArgs : Pulumi.ResourceArgs
+    public sealed class AnnotationSpecSetArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotationSpecs", required: true)]
         private InputList<Inputs.GoogleCloudDatalabelingV1beta1AnnotationSpecArgs>? _annotationSpecs;
@@ -128,5 +128,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public AnnotationSpecSetArgs()
         {
         }
+        public static new AnnotationSpecSetArgs Empty => new AnnotationSpecSetArgs();
     }
 }

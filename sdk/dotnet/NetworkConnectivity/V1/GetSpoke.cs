@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
     }
 
 
-    public sealed class GetSpokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSpokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public GetSpokeArgs()
         {
         }
+        public static new GetSpokeArgs Empty => new GetSpokeArgs();
     }
 
-    public sealed class GetSpokeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSpokeInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public GetSpokeInvokeArgs()
         {
         }
+        public static new GetSpokeInvokeArgs Empty => new GetSpokeInvokeArgs();
     }
 
 

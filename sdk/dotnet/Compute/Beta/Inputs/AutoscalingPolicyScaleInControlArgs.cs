@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Configuration that allows for slower scale in so that even if Autoscaler recommends an abrupt scale in of a MIG, it will be throttled as specified by the parameters below.
     /// </summary>
-    public sealed class AutoscalingPolicyScaleInControlArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingPolicyScaleInControlArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum allowed number (or %) of VMs that can be deducted from the peak recommendation during the window autoscaler looks at when computing recommendations. Possibly all these VMs can be deleted at once so user service needs to be prepared to lose that many VMs in one step.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public AutoscalingPolicyScaleInControlArgs()
         {
         }
+        public static new AutoscalingPolicyScaleInControlArgs Empty => new AutoscalingPolicyScaleInControlArgs();
     }
 }

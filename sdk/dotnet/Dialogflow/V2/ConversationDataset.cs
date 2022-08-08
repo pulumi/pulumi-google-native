@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2:ConversationDataset")]
-    public partial class ConversationDataset : Pulumi.CustomResource
+    public partial class ConversationDataset : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The number of conversations this conversation dataset contains.
@@ -112,7 +112,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         }
     }
 
-    public sealed class ConversationDatasetArgs : Pulumi.ResourceArgs
+    public sealed class ConversationDatasetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The description of the dataset. Maximum of 10000 bytes.
@@ -135,5 +135,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         public ConversationDatasetArgs()
         {
         }
+        public static new ConversationDatasetArgs Empty => new ConversationDatasetArgs();
     }
 }

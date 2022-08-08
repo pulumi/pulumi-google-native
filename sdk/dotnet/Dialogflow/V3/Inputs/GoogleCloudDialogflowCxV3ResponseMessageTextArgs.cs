@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// The text response message.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3ResponseMessageTextArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3ResponseMessageTextArgs : global::Pulumi.ResourceArgs
     {
         [Input("text", required: true)]
         private InputList<string>? _text;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3ResponseMessageTextArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3ResponseMessageTextArgs Empty => new GoogleCloudDialogflowCxV3ResponseMessageTextArgs();
     }
 }

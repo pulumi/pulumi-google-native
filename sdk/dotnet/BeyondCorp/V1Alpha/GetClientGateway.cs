@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     }
 
 
-    public sealed class GetClientGatewayArgs : Pulumi.InvokeArgs
+    public sealed class GetClientGatewayArgs : global::Pulumi.InvokeArgs
     {
         [Input("clientGatewayId", required: true)]
         public string ClientGatewayId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public GetClientGatewayArgs()
         {
         }
+        public static new GetClientGatewayArgs Empty => new GetClientGatewayArgs();
     }
 
-    public sealed class GetClientGatewayInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClientGatewayInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("clientGatewayId", required: true)]
         public Input<string> ClientGatewayId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public GetClientGatewayInvokeArgs()
         {
         }
+        public static new GetClientGatewayInvokeArgs Empty => new GetClientGatewayInvokeArgs();
     }
 
 

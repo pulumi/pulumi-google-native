@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// NotificationConfig is the configuration of notifications.
     /// </summary>
-    public sealed class NotificationConfigArgs : Pulumi.ResourceArgs
+    public sealed class NotificationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Notification config for Pub/Sub.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public NotificationConfigArgs()
         {
         }
+        public static new NotificationConfigArgs Empty => new NotificationConfigArgs();
     }
 }

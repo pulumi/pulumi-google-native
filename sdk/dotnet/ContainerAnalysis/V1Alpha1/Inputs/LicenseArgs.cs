@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// License information.
     /// </summary>
-    public sealed class LicenseArgs : Pulumi.ResourceArgs
+    public sealed class LicenseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Comments
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public LicenseArgs()
         {
         }
+        public static new LicenseArgs Empty => new LicenseArgs();
     }
 }

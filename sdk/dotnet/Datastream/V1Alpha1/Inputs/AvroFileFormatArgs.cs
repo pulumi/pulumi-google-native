@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
     /// <summary>
     /// AVRO file format configuration.
     /// </summary>
-    public sealed class AvroFileFormatArgs : Pulumi.ResourceArgs
+    public sealed class AvroFileFormatArgs : global::Pulumi.ResourceArgs
     {
         public AvroFileFormatArgs()
         {
         }
+        public static new AvroFileFormatArgs Empty => new AvroFileFormatArgs();
     }
 }

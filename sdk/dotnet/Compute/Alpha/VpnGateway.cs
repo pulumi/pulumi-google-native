@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a VPN gateway in the specified project and region using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:VpnGateway")]
-    public partial class VpnGateway : Pulumi.CustomResource
+    public partial class VpnGateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -135,7 +135,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class VpnGatewayArgs : Pulumi.ResourceArgs
+    public sealed class VpnGatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -200,5 +200,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public VpnGatewayArgs()
         {
         }
+        public static new VpnGatewayArgs Empty => new VpnGatewayArgs();
     }
 }

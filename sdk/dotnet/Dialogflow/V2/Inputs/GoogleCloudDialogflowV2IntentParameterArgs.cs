@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// Represents intent parameters.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2IntentParameterArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2IntentParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The default value to use when the `value` yields an empty result. Default values can be extracted from contexts by using the following syntax: `#context_name.parameter_name`.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2IntentParameterArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2IntentParameterArgs Empty => new GoogleCloudDialogflowV2IntentParameterArgs();
     }
 }

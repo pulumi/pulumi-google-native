@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Inputs
     /// <summary>
     /// The system resources for the pipeline run.
     /// </summary>
-    public sealed class PipelineResourcesArgs : Pulumi.ResourceArgs
+    public sealed class PipelineResourcesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The number of accelerators of the specified type to attach. By specifying this parameter, you will download and install the following third-party software onto your managed Compute Engine instances: NVIDIA® Tesla® drivers and NVIDIA® CUDA toolkit.
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2.Inputs
         public PipelineResourcesArgs()
         {
         }
+        public static new PipelineResourcesArgs Empty => new PipelineResourcesArgs();
     }
 }

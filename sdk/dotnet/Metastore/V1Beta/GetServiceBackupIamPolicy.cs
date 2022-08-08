@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
     }
 
 
-    public sealed class GetServiceBackupIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceBackupIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("backupId", required: true)]
         public string BackupId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public GetServiceBackupIamPolicyArgs()
         {
         }
+        public static new GetServiceBackupIamPolicyArgs Empty => new GetServiceBackupIamPolicyArgs();
     }
 
-    public sealed class GetServiceBackupIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceBackupIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("backupId", required: true)]
         public Input<string> BackupId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public GetServiceBackupIamPolicyInvokeArgs()
         {
         }
+        public static new GetServiceBackupIamPolicyInvokeArgs Empty => new GetServiceBackupIamPolicyInvokeArgs();
     }
 
 

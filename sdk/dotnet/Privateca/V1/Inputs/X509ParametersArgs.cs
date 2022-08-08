@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// An X509Parameters is used to describe certain fields of an X.509 certificate, such as the key usage fields, fields specific to CA certificates, certificate policy extensions and custom extensions.
     /// </summary>
-    public sealed class X509ParametersArgs : Pulumi.ResourceArgs
+    public sealed class X509ParametersArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalExtensions")]
         private InputList<Inputs.X509ExtensionArgs>? _additionalExtensions;
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public X509ParametersArgs()
         {
         }
+        public static new X509ParametersArgs Empty => new X509ParametersArgs();
     }
 }

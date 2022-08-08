@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:vmmigration/v1:TargetProject")]
-    public partial class TargetProject : Pulumi.CustomResource
+    public partial class TargetProject : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time this target project resource was created (not related to when the Compute Engine project it points to was created).
@@ -107,7 +107,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         }
     }
 
-    public sealed class TargetProjectArgs : Pulumi.ResourceArgs
+    public sealed class TargetProjectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The target project's description.
@@ -139,5 +139,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         public TargetProjectArgs()
         {
         }
+        public static new TargetProjectArgs Empty => new TargetProjectArgs();
     }
 }

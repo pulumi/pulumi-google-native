@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
 {
 
-    public sealed class TargetConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class TargetConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration to use for this deployment.
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
         public TargetConfigurationArgs()
         {
         }
+        public static new TargetConfigurationArgs Empty => new TargetConfigurationArgs();
     }
 }

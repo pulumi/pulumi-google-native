@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// A Dataproc job for running Apache Hadoop MapReduce (https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html) jobs on Apache Hadoop YARN (https://hadoop.apache.org/docs/r2.7.1/hadoop-yarn/hadoop-yarn-site/YARN.html).
     /// </summary>
-    public sealed class HadoopJobArgs : Pulumi.ResourceArgs
+    public sealed class HadoopJobArgs : global::Pulumi.ResourceArgs
     {
         [Input("archiveUris")]
         private InputList<string>? _archiveUris;
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public HadoopJobArgs()
         {
         }
+        public static new HadoopJobArgs Empty => new HadoopJobArgs();
     }
 }

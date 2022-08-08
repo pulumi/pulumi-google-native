@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataproc/v1beta2:RegionOperationIamPolicy")]
-    public partial class RegionOperationIamPolicy : Pulumi.CustomResource
+    public partial class RegionOperationIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Associates a list of members to a role. Optionally, may specify a condition that determines how and when the bindings are applied. Each of the bindings must contain at least one member.
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         }
     }
 
-    public sealed class RegionOperationIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RegionOperationIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("bindings")]
         private InputList<Inputs.BindingArgs>? _bindings;
@@ -131,5 +131,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public RegionOperationIamPolicyArgs()
         {
         }
+        public static new RegionOperationIamPolicyArgs Empty => new RegionOperationIamPolicyArgs();
     }
 }

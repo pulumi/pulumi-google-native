@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Description of an input or output of an execution stage.
     /// </summary>
-    public sealed class StageSourceArgs : Pulumi.ResourceArgs
+    public sealed class StageSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Dataflow service generated name for this source.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public StageSourceArgs()
         {
         }
+        public static new StageSourceArgs Empty => new StageSourceArgs();
     }
 }

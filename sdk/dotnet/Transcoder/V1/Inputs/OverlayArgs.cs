@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Overlay configuration.
     /// </summary>
-    public sealed class OverlayArgs : Pulumi.ResourceArgs
+    public sealed class OverlayArgs : global::Pulumi.ResourceArgs
     {
         [Input("animations")]
         private InputList<Inputs.AnimationArgs>? _animations;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public OverlayArgs()
         {
         }
+        public static new OverlayArgs Empty => new OverlayArgs();
     }
 }

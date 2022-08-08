@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A description of how to set up the Android device prior to running the test.
     /// </summary>
-    public sealed class TestSetupArgs : Pulumi.ResourceArgs
+    public sealed class TestSetupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The device will be logged in on this account for the duration of the test.
@@ -90,5 +90,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public TestSetupArgs()
         {
         }
+        public static new TestSetupArgs Empty => new TestSetupArgs();
     }
 }

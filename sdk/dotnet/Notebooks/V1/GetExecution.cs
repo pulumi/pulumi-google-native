@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
     }
 
 
-    public sealed class GetExecutionArgs : Pulumi.InvokeArgs
+    public sealed class GetExecutionArgs : global::Pulumi.InvokeArgs
     {
         [Input("executionId", required: true)]
         public string ExecutionId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public GetExecutionArgs()
         {
         }
+        public static new GetExecutionArgs Empty => new GetExecutionArgs();
     }
 
-    public sealed class GetExecutionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetExecutionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("executionId", required: true)]
         public Input<string> ExecutionId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         public GetExecutionInvokeArgs()
         {
         }
+        public static new GetExecutionInvokeArgs Empty => new GetExecutionInvokeArgs();
     }
 
 

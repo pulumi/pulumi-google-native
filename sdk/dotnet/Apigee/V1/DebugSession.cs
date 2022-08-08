@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:DebugSession")]
-    public partial class DebugSession : Pulumi.CustomResource
+    public partial class DebugSession : global::Pulumi.CustomResource
     {
         [Output("apiId")]
         public Output<string> ApiId { get; private set; } = null!;
@@ -121,7 +121,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class DebugSessionArgs : Pulumi.ResourceArgs
+    public sealed class DebugSessionArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
@@ -174,5 +174,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public DebugSessionArgs()
         {
         }
+        public static new DebugSessionArgs Empty => new DebugSessionArgs();
     }
 }

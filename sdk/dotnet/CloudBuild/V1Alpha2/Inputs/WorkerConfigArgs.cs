@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2.Inputs
     /// <summary>
     /// WorkerConfig defines the configuration to be used for a creating workers in the pool.
     /// </summary>
-    public sealed class WorkerConfigArgs : Pulumi.ResourceArgs
+    public sealed class WorkerConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Size of the disk attached to the worker, in GB. See https://cloud.google.com/compute/docs/disks/ If `0` is specified, Cloud Build will use a standard disk size.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1Alpha2.Inputs
         public WorkerConfigArgs()
         {
         }
+        public static new WorkerConfigArgs Empty => new WorkerConfigArgs();
     }
 }

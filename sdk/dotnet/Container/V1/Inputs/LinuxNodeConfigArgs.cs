@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Parameters that can be configured on Linux nodes.
     /// </summary>
-    public sealed class LinuxNodeConfigArgs : Pulumi.ResourceArgs
+    public sealed class LinuxNodeConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("sysctls")]
         private InputMap<string>? _sysctls;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public LinuxNodeConfigArgs()
         {
         }
+        public static new LinuxNodeConfigArgs Empty => new LinuxNodeConfigArgs();
     }
 }

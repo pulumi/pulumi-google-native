@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a subnetwork in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:Subnetwork")]
-    public partial class Subnetwork : Pulumi.CustomResource
+    public partial class Subnetwork : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Can only be specified if VPC flow logging for this subnetwork is enabled. Sets the aggregation interval for collecting flow logs. Increasing the interval time reduces the amount of generated flow logs for long-lasting connections. Default is an interval of 5 seconds per connection. Valid values: INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN, INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN.
@@ -261,7 +261,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class SubnetworkArgs : Pulumi.ResourceArgs
+    public sealed class SubnetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Can only be specified if VPC flow logging for this subnetwork is enabled. Sets the aggregation interval for collecting flow logs. Increasing the interval time reduces the amount of generated flow logs for long-lasting connections. Default is an interval of 5 seconds per connection. Valid values: INTERVAL_5_SEC, INTERVAL_30_SEC, INTERVAL_1_MIN, INTERVAL_5_MIN, INTERVAL_10_MIN, INTERVAL_15_MIN.
@@ -419,5 +419,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public SubnetworkArgs()
         {
         }
+        public static new SubnetworkArgs Empty => new SubnetworkArgs();
     }
 }

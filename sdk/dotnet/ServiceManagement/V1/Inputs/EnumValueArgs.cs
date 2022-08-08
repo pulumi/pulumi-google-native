@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Enum value definition.
     /// </summary>
-    public sealed class EnumValueArgs : Pulumi.ResourceArgs
+    public sealed class EnumValueArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enum value name.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public EnumValueArgs()
         {
         }
+        public static new EnumValueArgs Empty => new EnumValueArgs();
     }
 }

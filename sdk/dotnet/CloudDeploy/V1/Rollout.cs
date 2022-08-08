@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:clouddeploy/v1:Rollout")]
-    public partial class Rollout : Pulumi.CustomResource
+    public partial class Rollout : global::Pulumi.CustomResource
     {
         /// <summary>
         /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
@@ -201,7 +201,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         }
     }
 
-    public sealed class RolloutArgs : Pulumi.ResourceArgs
+    public sealed class RolloutArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -284,5 +284,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public RolloutArgs()
         {
         }
+        public static new RolloutArgs Empty => new RolloutArgs();
     }
 }

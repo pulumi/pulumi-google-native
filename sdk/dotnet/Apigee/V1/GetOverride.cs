@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetOverrideArgs : Pulumi.InvokeArgs
+    public sealed class GetOverrideArgs : global::Pulumi.InvokeArgs
     {
         [Input("environmentId", required: true)]
         public string EnvironmentId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetOverrideArgs()
         {
         }
+        public static new GetOverrideArgs Empty => new GetOverrideArgs();
     }
 
-    public sealed class GetOverrideInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOverrideInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetOverrideInvokeArgs()
         {
         }
+        public static new GetOverrideInvokeArgs Empty => new GetOverrideInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     /// <summary>
     /// An AwsS3CompatibleData resource.
     /// </summary>
-    public sealed class AwsS3CompatibleDataArgs : Pulumi.ResourceArgs
+    public sealed class AwsS3CompatibleDataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the name of the bucket.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public AwsS3CompatibleDataArgs()
         {
         }
+        public static new AwsS3CompatibleDataArgs Empty => new AwsS3CompatibleDataArgs();
     }
 }

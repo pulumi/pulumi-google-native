@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.IDS.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:ids/v1:EndpointIamPolicy")]
-    public partial class EndpointIamPolicy : Pulumi.CustomResource
+    public partial class EndpointIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.IDS.V1
         }
     }
 
-    public sealed class EndpointIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class EndpointIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.IDS.V1
         public EndpointIamPolicyArgs()
         {
         }
+        public static new EndpointIamPolicyArgs Empty => new EndpointIamPolicyArgs();
     }
 }

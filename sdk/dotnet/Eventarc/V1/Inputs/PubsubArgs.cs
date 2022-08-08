@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
     /// <summary>
     /// Represents a Pub/Sub transport.
     /// </summary>
-    public sealed class PubsubArgs : Pulumi.ResourceArgs
+    public sealed class PubsubArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1.Inputs
         public PubsubArgs()
         {
         }
+        public static new PubsubArgs Empty => new PubsubArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1.Inputs
     /// <summary>
     /// Describes authentication configuration that uses a Google account.
     /// </summary>
-    public sealed class GoogleAccountArgs : Pulumi.ResourceArgs
+    public sealed class GoogleAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1.Inputs
         public GoogleAccountArgs()
         {
         }
+        public static new GoogleAccountArgs Empty => new GoogleAccountArgs();
     }
 }

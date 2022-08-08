@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Specification determining how headers are added to requests or responses.
     /// </summary>
-    public sealed class HttpHeaderOptionArgs : Pulumi.ResourceArgs
+    public sealed class HttpHeaderOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the header.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public HttpHeaderOptionArgs()
         {
         }
+        public static new HttpHeaderOptionArgs Empty => new HttpHeaderOptionArgs();
     }
 }

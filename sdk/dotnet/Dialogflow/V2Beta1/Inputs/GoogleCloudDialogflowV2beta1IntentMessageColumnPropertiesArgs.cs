@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Column properties for TableCard.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Column heading.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs();
     }
 }

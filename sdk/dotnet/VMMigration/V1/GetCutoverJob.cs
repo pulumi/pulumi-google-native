@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
     }
 
 
-    public sealed class GetCutoverJobArgs : Pulumi.InvokeArgs
+    public sealed class GetCutoverJobArgs : global::Pulumi.InvokeArgs
     {
         [Input("cutoverJobId", required: true)]
         public string CutoverJobId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         public GetCutoverJobArgs()
         {
         }
+        public static new GetCutoverJobArgs Empty => new GetCutoverJobArgs();
     }
 
-    public sealed class GetCutoverJobInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCutoverJobInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("cutoverJobId", required: true)]
         public Input<string> CutoverJobId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         public GetCutoverJobInvokeArgs()
         {
         }
+        public static new GetCutoverJobInvokeArgs Empty => new GetCutoverJobInvokeArgs();
     }
 
 

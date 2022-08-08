@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// A signature object consists of the KeyID used and the signature itself.
     /// </summary>
-    public sealed class GrafeasV1beta1IntotoSignatureArgs : Pulumi.ResourceArgs
+    public sealed class GrafeasV1beta1IntotoSignatureArgs : global::Pulumi.ResourceArgs
     {
         [Input("keyid")]
         public Input<string>? Keyid { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public GrafeasV1beta1IntotoSignatureArgs()
         {
         }
+        public static new GrafeasV1beta1IntotoSignatureArgs Empty => new GrafeasV1beta1IntotoSignatureArgs();
     }
 }

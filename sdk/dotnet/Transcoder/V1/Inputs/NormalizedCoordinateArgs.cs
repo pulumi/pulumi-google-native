@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// 2D normalized coordinates. Default: `{0.0, 0.0}`
     /// </summary>
-    public sealed class NormalizedCoordinateArgs : Pulumi.ResourceArgs
+    public sealed class NormalizedCoordinateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Normalized x coordinate.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public NormalizedCoordinateArgs()
         {
         }
+        public static new NormalizedCoordinateArgs Empty => new NormalizedCoordinateArgs();
     }
 }

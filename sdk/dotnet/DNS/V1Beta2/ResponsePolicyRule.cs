@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dns/v1beta2:ResponsePolicyRule")]
-    public partial class ResponsePolicyRule : Pulumi.CustomResource
+    public partial class ResponsePolicyRule : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Answer this query with a behavior rather than DNS data.
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         }
     }
 
-    public sealed class ResponsePolicyRuleArgs : Pulumi.ResourceArgs
+    public sealed class ResponsePolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Answer this query with a behavior rather than DNS data.
@@ -147,5 +147,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2
         public ResponsePolicyRuleArgs()
         {
         }
+        public static new ResponsePolicyRuleArgs Empty => new ResponsePolicyRuleArgs();
     }
 }

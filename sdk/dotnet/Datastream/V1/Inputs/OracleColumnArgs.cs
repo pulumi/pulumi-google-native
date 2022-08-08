@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     /// <summary>
     /// Oracle Column.
     /// </summary>
-    public sealed class OracleColumnArgs : Pulumi.ResourceArgs
+    public sealed class OracleColumnArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Column name.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public OracleColumnArgs()
         {
         }
+        public static new OracleColumnArgs Empty => new OracleColumnArgs();
     }
 }

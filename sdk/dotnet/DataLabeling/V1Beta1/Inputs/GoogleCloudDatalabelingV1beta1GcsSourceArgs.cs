@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Source of the Cloud Storage file to be imported.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1GcsSourceArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1GcsSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The input URI of source file. This must be a Cloud Storage path (`gs://...`).
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1GcsSourceArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1GcsSourceArgs Empty => new GoogleCloudDatalabelingV1beta1GcsSourceArgs();
     }
 }

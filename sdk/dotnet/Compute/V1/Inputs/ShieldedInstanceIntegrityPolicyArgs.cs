@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// The policy describes the baseline against which Instance boot integrity is measured.
     /// </summary>
-    public sealed class ShieldedInstanceIntegrityPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ShieldedInstanceIntegrityPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Updates the integrity policy baseline using the measurements from the VM instance's most recent boot.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public ShieldedInstanceIntegrityPolicyArgs()
         {
         }
+        public static new ShieldedInstanceIntegrityPolicyArgs Empty => new ShieldedInstanceIntegrityPolicyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Inputs
     /// <summary>
     /// RoutingVPC contains information about the VPC networks associated with the spokes of a Network Connectivity Center hub.
     /// </summary>
-    public sealed class RoutingVPCArgs : Pulumi.ResourceArgs
+    public sealed class RoutingVPCArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The URI of the VPC network.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1.Inputs
         public RoutingVPCArgs()
         {
         }
+        public static new RoutingVPCArgs Empty => new RoutingVPCArgs();
     }
 }

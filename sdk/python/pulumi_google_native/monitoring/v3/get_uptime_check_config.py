@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetUptimeCheckConfigResult:
-    def __init__(__self__, checker_type=None, content_matchers=None, display_name=None, http_check=None, internal_checkers=None, is_internal=None, monitored_resource=None, name=None, period=None, resource_group=None, selected_regions=None, tcp_check=None, timeout=None):
+    def __init__(__self__, checker_type=None, content_matchers=None, display_name=None, http_check=None, internal_checkers=None, is_internal=None, monitored_resource=None, name=None, period=None, resource_group=None, selected_regions=None, tcp_check=None, timeout=None, user_labels=None):
         if checker_type and not isinstance(checker_type, str):
             raise TypeError("Expected argument 'checker_type' to be a str")
         pulumi.set(__self__, "checker_type", checker_type)
@@ -59,6 +59,9 @@ class GetUptimeCheckConfigResult:
         if timeout and not isinstance(timeout, str):
             raise TypeError("Expected argument 'timeout' to be a str")
         pulumi.set(__self__, "timeout", timeout)
+        if user_labels and not isinstance(user_labels, dict):
+            raise TypeError("Expected argument 'user_labels' to be a dict")
+        pulumi.set(__self__, "user_labels", user_labels)
 
     @property
     @pulumi.getter(name="checkerType")
@@ -164,6 +167,14 @@ class GetUptimeCheckConfigResult:
         """
         return pulumi.get(self, "timeout")
 
+    @property
+    @pulumi.getter(name="userLabels")
+    def user_labels(self) -> Mapping[str, str]:
+        """
+        User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        """
+        return pulumi.get(self, "user_labels")
+
 
 class AwaitableGetUptimeCheckConfigResult(GetUptimeCheckConfigResult):
     # pylint: disable=using-constant-test
@@ -183,7 +194,8 @@ class AwaitableGetUptimeCheckConfigResult(GetUptimeCheckConfigResult):
             resource_group=self.resource_group,
             selected_regions=self.selected_regions,
             tcp_check=self.tcp_check,
-            timeout=self.timeout)
+            timeout=self.timeout,
+            user_labels=self.user_labels)
 
 
 def get_uptime_check_config(project: Optional[str] = None,
@@ -211,7 +223,8 @@ def get_uptime_check_config(project: Optional[str] = None,
         resource_group=__ret__.resource_group,
         selected_regions=__ret__.selected_regions,
         tcp_check=__ret__.tcp_check,
-        timeout=__ret__.timeout)
+        timeout=__ret__.timeout,
+        user_labels=__ret__.user_labels)
 
 
 @_utilities.lift_output_func(get_uptime_check_config)

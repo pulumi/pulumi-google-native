@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetDeveloperArgs : Pulumi.InvokeArgs
+    public sealed class GetDeveloperArgs : global::Pulumi.InvokeArgs
     {
         [Input("action")]
         public string? Action { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetDeveloperArgs()
         {
         }
+        public static new GetDeveloperArgs Empty => new GetDeveloperArgs();
     }
 
-    public sealed class GetDeveloperInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDeveloperInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("action")]
         public Input<string>? Action { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetDeveloperInvokeArgs()
         {
         }
+        public static new GetDeveloperInvokeArgs Empty => new GetDeveloperInvokeArgs();
     }
 
 

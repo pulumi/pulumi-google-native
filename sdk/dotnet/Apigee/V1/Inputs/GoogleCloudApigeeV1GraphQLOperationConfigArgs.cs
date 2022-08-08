@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Binds the resources in a proxy or remote service with the GraphQL operation and its associated quota enforcement.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1GraphQLOperationConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1GraphQLOperationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the API proxy endpoint or remote service with which the GraphQL operation and quota are associated.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1GraphQLOperationConfigArgs()
         {
         }
+        public static new GoogleCloudApigeeV1GraphQLOperationConfigArgs Empty => new GoogleCloudApigeeV1GraphQLOperationConfigArgs();
     }
 }

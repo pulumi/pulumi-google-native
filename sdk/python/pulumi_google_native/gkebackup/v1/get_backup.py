@@ -218,7 +218,7 @@ class GetBackupResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        The fully qualified name of the Backup. projects/*/locations/*/backupPlans/*/backups/*
+        The fully qualified name of the Backup. `projects/*/locations/*/backupPlans/*/backups/*`
         """
         return pulumi.get(self, "name")
 
@@ -242,7 +242,7 @@ class GetBackupResult:
     @pulumi.getter(name="retainDays")
     def retain_days(self) -> int:
         """
-        The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+        The age (in days) after which this Backup will be automatically deleted. Must be an integer value >= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be >= delete_lock_days and <= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         """
         return pulumi.get(self, "retain_days")
 

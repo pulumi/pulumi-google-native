@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     }
 
 
-    public sealed class GetInstanceTableIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTableIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public GetInstanceTableIamPolicyArgs()
         {
         }
+        public static new GetInstanceTableIamPolicyArgs Empty => new GetInstanceTableIamPolicyArgs();
     }
 
-    public sealed class GetInstanceTableIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceTableIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public GetInstanceTableIamPolicyInvokeArgs()
         {
         }
+        public static new GetInstanceTableIamPolicyInvokeArgs Empty => new GetInstanceTableIamPolicyInvokeArgs();
     }
 
 

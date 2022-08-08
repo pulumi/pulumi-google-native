@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
     /// <summary>
     /// The specification for redirecting traffic.
     /// </summary>
-    public sealed class HttpRouteRedirectArgs : Pulumi.ResourceArgs
+    public sealed class HttpRouteRedirectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The host that will be used in the redirect response instead of the one that was supplied in the request.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public HttpRouteRedirectArgs()
         {
         }
+        public static new HttpRouteRedirectArgs Empty => new HttpRouteRedirectArgs();
     }
 }

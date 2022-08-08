@@ -705,6 +705,186 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes.
+type FreeInstanceMetadata struct {
+	// Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
+	ExpireBehavior *FreeInstanceMetadataExpireBehavior `pulumi:"expireBehavior"`
+}
+
+// FreeInstanceMetadataInput is an input type that accepts FreeInstanceMetadataArgs and FreeInstanceMetadataOutput values.
+// You can construct a concrete instance of `FreeInstanceMetadataInput` via:
+//
+//          FreeInstanceMetadataArgs{...}
+type FreeInstanceMetadataInput interface {
+	pulumi.Input
+
+	ToFreeInstanceMetadataOutput() FreeInstanceMetadataOutput
+	ToFreeInstanceMetadataOutputWithContext(context.Context) FreeInstanceMetadataOutput
+}
+
+// Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes.
+type FreeInstanceMetadataArgs struct {
+	// Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
+	ExpireBehavior FreeInstanceMetadataExpireBehaviorPtrInput `pulumi:"expireBehavior"`
+}
+
+func (FreeInstanceMetadataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FreeInstanceMetadata)(nil)).Elem()
+}
+
+func (i FreeInstanceMetadataArgs) ToFreeInstanceMetadataOutput() FreeInstanceMetadataOutput {
+	return i.ToFreeInstanceMetadataOutputWithContext(context.Background())
+}
+
+func (i FreeInstanceMetadataArgs) ToFreeInstanceMetadataOutputWithContext(ctx context.Context) FreeInstanceMetadataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FreeInstanceMetadataOutput)
+}
+
+func (i FreeInstanceMetadataArgs) ToFreeInstanceMetadataPtrOutput() FreeInstanceMetadataPtrOutput {
+	return i.ToFreeInstanceMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i FreeInstanceMetadataArgs) ToFreeInstanceMetadataPtrOutputWithContext(ctx context.Context) FreeInstanceMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FreeInstanceMetadataOutput).ToFreeInstanceMetadataPtrOutputWithContext(ctx)
+}
+
+// FreeInstanceMetadataPtrInput is an input type that accepts FreeInstanceMetadataArgs, FreeInstanceMetadataPtr and FreeInstanceMetadataPtrOutput values.
+// You can construct a concrete instance of `FreeInstanceMetadataPtrInput` via:
+//
+//          FreeInstanceMetadataArgs{...}
+//
+//  or:
+//
+//          nil
+type FreeInstanceMetadataPtrInput interface {
+	pulumi.Input
+
+	ToFreeInstanceMetadataPtrOutput() FreeInstanceMetadataPtrOutput
+	ToFreeInstanceMetadataPtrOutputWithContext(context.Context) FreeInstanceMetadataPtrOutput
+}
+
+type freeInstanceMetadataPtrType FreeInstanceMetadataArgs
+
+func FreeInstanceMetadataPtr(v *FreeInstanceMetadataArgs) FreeInstanceMetadataPtrInput {
+	return (*freeInstanceMetadataPtrType)(v)
+}
+
+func (*freeInstanceMetadataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FreeInstanceMetadata)(nil)).Elem()
+}
+
+func (i *freeInstanceMetadataPtrType) ToFreeInstanceMetadataPtrOutput() FreeInstanceMetadataPtrOutput {
+	return i.ToFreeInstanceMetadataPtrOutputWithContext(context.Background())
+}
+
+func (i *freeInstanceMetadataPtrType) ToFreeInstanceMetadataPtrOutputWithContext(ctx context.Context) FreeInstanceMetadataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FreeInstanceMetadataPtrOutput)
+}
+
+// Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes.
+type FreeInstanceMetadataOutput struct{ *pulumi.OutputState }
+
+func (FreeInstanceMetadataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FreeInstanceMetadata)(nil)).Elem()
+}
+
+func (o FreeInstanceMetadataOutput) ToFreeInstanceMetadataOutput() FreeInstanceMetadataOutput {
+	return o
+}
+
+func (o FreeInstanceMetadataOutput) ToFreeInstanceMetadataOutputWithContext(ctx context.Context) FreeInstanceMetadataOutput {
+	return o
+}
+
+func (o FreeInstanceMetadataOutput) ToFreeInstanceMetadataPtrOutput() FreeInstanceMetadataPtrOutput {
+	return o.ToFreeInstanceMetadataPtrOutputWithContext(context.Background())
+}
+
+func (o FreeInstanceMetadataOutput) ToFreeInstanceMetadataPtrOutputWithContext(ctx context.Context) FreeInstanceMetadataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FreeInstanceMetadata) *FreeInstanceMetadata {
+		return &v
+	}).(FreeInstanceMetadataPtrOutput)
+}
+
+// Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
+func (o FreeInstanceMetadataOutput) ExpireBehavior() FreeInstanceMetadataExpireBehaviorPtrOutput {
+	return o.ApplyT(func(v FreeInstanceMetadata) *FreeInstanceMetadataExpireBehavior { return v.ExpireBehavior }).(FreeInstanceMetadataExpireBehaviorPtrOutput)
+}
+
+type FreeInstanceMetadataPtrOutput struct{ *pulumi.OutputState }
+
+func (FreeInstanceMetadataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FreeInstanceMetadata)(nil)).Elem()
+}
+
+func (o FreeInstanceMetadataPtrOutput) ToFreeInstanceMetadataPtrOutput() FreeInstanceMetadataPtrOutput {
+	return o
+}
+
+func (o FreeInstanceMetadataPtrOutput) ToFreeInstanceMetadataPtrOutputWithContext(ctx context.Context) FreeInstanceMetadataPtrOutput {
+	return o
+}
+
+func (o FreeInstanceMetadataPtrOutput) Elem() FreeInstanceMetadataOutput {
+	return o.ApplyT(func(v *FreeInstanceMetadata) FreeInstanceMetadata {
+		if v != nil {
+			return *v
+		}
+		var ret FreeInstanceMetadata
+		return ret
+	}).(FreeInstanceMetadataOutput)
+}
+
+// Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
+func (o FreeInstanceMetadataPtrOutput) ExpireBehavior() FreeInstanceMetadataExpireBehaviorPtrOutput {
+	return o.ApplyT(func(v *FreeInstanceMetadata) *FreeInstanceMetadataExpireBehavior {
+		if v == nil {
+			return nil
+		}
+		return v.ExpireBehavior
+	}).(FreeInstanceMetadataExpireBehaviorPtrOutput)
+}
+
+// Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes.
+type FreeInstanceMetadataResponse struct {
+	// Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
+	ExpireBehavior string `pulumi:"expireBehavior"`
+	// Timestamp after which the instance will either be upgraded or scheduled for deletion after a grace period. ExpireBehavior is used to choose between upgrading or scheduling the free instance for deletion. This timestamp is set during the creation of a free instance.
+	ExpireTime string `pulumi:"expireTime"`
+	// If present, the timestamp at which the free instance was upgraded to a provisioned instance.
+	UpgradeTime string `pulumi:"upgradeTime"`
+}
+
+// Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes.
+type FreeInstanceMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (FreeInstanceMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FreeInstanceMetadataResponse)(nil)).Elem()
+}
+
+func (o FreeInstanceMetadataResponseOutput) ToFreeInstanceMetadataResponseOutput() FreeInstanceMetadataResponseOutput {
+	return o
+}
+
+func (o FreeInstanceMetadataResponseOutput) ToFreeInstanceMetadataResponseOutputWithContext(ctx context.Context) FreeInstanceMetadataResponseOutput {
+	return o
+}
+
+// Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
+func (o FreeInstanceMetadataResponseOutput) ExpireBehavior() pulumi.StringOutput {
+	return o.ApplyT(func(v FreeInstanceMetadataResponse) string { return v.ExpireBehavior }).(pulumi.StringOutput)
+}
+
+// Timestamp after which the instance will either be upgraded or scheduled for deletion after a grace period. ExpireBehavior is used to choose between upgrading or scheduling the free instance for deletion. This timestamp is set during the creation of a free instance.
+func (o FreeInstanceMetadataResponseOutput) ExpireTime() pulumi.StringOutput {
+	return o.ApplyT(func(v FreeInstanceMetadataResponse) string { return v.ExpireTime }).(pulumi.StringOutput)
+}
+
+// If present, the timestamp at which the free instance was upgraded to a provisioned instance.
+func (o FreeInstanceMetadataResponseOutput) UpgradeTime() pulumi.StringOutput {
+	return o.ApplyT(func(v FreeInstanceMetadataResponse) string { return v.UpgradeTime }).(pulumi.StringOutput)
+}
+
 // Information about the database restore.
 type RestoreInfoResponse struct {
 	// Information about the backup used to restore the database. The backup may no longer exist.
@@ -785,6 +965,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EncryptionConfigPtrInput)(nil)).Elem(), EncryptionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FreeInstanceMetadataInput)(nil)).Elem(), FreeInstanceMetadataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FreeInstanceMetadataPtrInput)(nil)).Elem(), FreeInstanceMetadataArgs{})
 	pulumi.RegisterOutputType(BackupInfoResponseOutput{})
 	pulumi.RegisterOutputType(BindingOutput{})
 	pulumi.RegisterOutputType(BindingArrayOutput{})
@@ -798,6 +980,9 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(FreeInstanceMetadataOutput{})
+	pulumi.RegisterOutputType(FreeInstanceMetadataPtrOutput{})
+	pulumi.RegisterOutputType(FreeInstanceMetadataResponseOutput{})
 	pulumi.RegisterOutputType(RestoreInfoResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
 }

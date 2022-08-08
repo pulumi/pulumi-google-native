@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Schema information describing the structure and layout of the data.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1SchemaArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1SchemaArgs : global::Pulumi.ResourceArgs
     {
         [Input("fields")]
         private InputList<Inputs.GoogleCloudDataplexV1SchemaSchemaFieldArgs>? _fields;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1SchemaArgs()
         {
         }
+        public static new GoogleCloudDataplexV1SchemaArgs Empty => new GoogleCloudDataplexV1SchemaArgs();
     }
 }

@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:RegionNetworkFirewallPolicyIamPolicy")]
-    public partial class RegionNetworkFirewallPolicyIamPolicy : Pulumi.CustomResource
+    public partial class RegionNetworkFirewallPolicyIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -105,7 +105,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class RegionNetworkFirewallPolicyIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RegionNetworkFirewallPolicyIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -167,5 +167,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public RegionNetworkFirewallPolicyIamPolicyArgs()
         {
         }
+        public static new RegionNetworkFirewallPolicyIamPolicyArgs Empty => new RegionNetworkFirewallPolicyIamPolicyArgs();
     }
 }

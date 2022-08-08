@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// An occurrence of a particular package installation found within a system's filesystem. E.g., glibc was found in `/var/lib/dpkg/status`.
     /// </summary>
-    public sealed class LocationArgs : Pulumi.ResourceArgs
+    public sealed class LocationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Deprecated. The CPE URI in [CPE format](https://cpe.mitre.org/specification/)
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public LocationArgs()
         {
         }
+        public static new LocationArgs Empty => new LocationArgs();
     }
 }

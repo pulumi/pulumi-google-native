@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     /// <summary>
     /// A ReusableConfigWrapper describes values that may assist in creating an X.509 certificate, or a reference to a pre-defined set of values.
     /// </summary>
-    public sealed class ReusableConfigWrapperArgs : Pulumi.ResourceArgs
+    public sealed class ReusableConfigWrapperArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A resource path to a ReusableConfig in the format `projects/*/locations/*/reusableConfigs/*`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         public ReusableConfigWrapperArgs()
         {
         }
+        public static new ReusableConfigWrapperArgs Empty => new ReusableConfigWrapperArgs();
     }
 }

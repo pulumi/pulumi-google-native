@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class RoutineReferenceArgs : Pulumi.ResourceArgs
+    public sealed class RoutineReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Required] The ID of the dataset containing this routine.
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public RoutineReferenceArgs()
         {
         }
+        public static new RoutineReferenceArgs Empty => new RoutineReferenceArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Identity-Aware Proxy
     /// </summary>
-    public sealed class BackendServiceIAPArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceIAPArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the serving infrastructure will authenticate and authorize all incoming requests. If true, the oauth2ClientId and oauth2ClientSecret fields must be non-empty.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public BackendServiceIAPArgs()
         {
         }
+        public static new BackendServiceIAPArgs Empty => new BackendServiceIAPArgs();
     }
 }

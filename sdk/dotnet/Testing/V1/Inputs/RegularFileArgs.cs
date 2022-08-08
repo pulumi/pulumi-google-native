@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A file or directory to install on the device before the test starts.
     /// </summary>
-    public sealed class RegularFileArgs : Pulumi.ResourceArgs
+    public sealed class RegularFileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The source file.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public RegularFileArgs()
         {
         }
+        public static new RegularFileArgs Empty => new RegularFileArgs();
     }
 }

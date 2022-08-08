@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
     /// <summary>
     /// The entrypoint for the application.
     /// </summary>
-    public sealed class EntrypointArgs : Pulumi.ResourceArgs
+    public sealed class EntrypointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The format should be a shell command that can be fed to bash -c.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         public EntrypointArgs()
         {
         }
+        public static new EntrypointArgs Empty => new EntrypointArgs();
     }
 }

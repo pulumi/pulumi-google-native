@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
     /// <summary>
     /// Contains the configuration for FHIR profiles and validation.
     /// </summary>
-    public sealed class ValidationConfigArgs : Pulumi.ResourceArgs
+    public sealed class ValidationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to disable FHIRPath validation for incoming resources. Set this to true to disable checking incoming resources for conformance against FHIRPath requirement defined in the FHIR specification. This property only affects resource types that do not have profiles configured for them, any rules in enabled implementation guides will still be enforced.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         public ValidationConfigArgs()
         {
         }
+        public static new ValidationConfigArgs Empty => new ValidationConfigArgs();
     }
 }

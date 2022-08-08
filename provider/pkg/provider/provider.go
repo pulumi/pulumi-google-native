@@ -20,13 +20,17 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"log"
+	"mime/multipart"
 	"net"
 	"net/http"
 	"os"
 	"runtime/debug"
 	"strings"
 	"time"
+
+	"github.com/pulumi/pulumi/pkg/v3/codegen"
 
 	jsonpatch "github.com/evanphx/json-patch"
 	"github.com/golang/protobuf/ptypes/empty"
@@ -211,7 +215,7 @@ func (p *googleCloudProvider) Invoke(_ context.Context, req *rpc.InvokeRequest) 
 			return nil, err
 		}
 
-		resp, err = p.client.RequestWithTimeout(inv.Verb, uri, nil, 0)
+		resp, err = p.client.RequestWithTimeout(inv.Verb, uri, "", nil, 0)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s", err)
 		}
@@ -439,8 +443,13 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	// Calculate the detailed diff object containing information about replacements.
 	detailedDiff := calculateDetailedDiff(&res, p.resourceMap.Types, diff)
 
+	var mutablePropertyPaths []string
+	if customMutation, hasCustomMutation := customMutations[resourceKey]; hasCustomMutation {
+		mutablePropertyPaths = customMutation.mutablePropertyPaths()
+	}
 	// Based on the detailed diff above, calculate the list of changes and replacements.
-	var changes, replaces []string
+	var changes []string
+	replaces := codegen.NewStringSet()
 	for k, v := range detailedDiff {
 		parts := strings.Split(k, ".")
 		changes = append(changes, parts[0])
@@ -448,7 +457,27 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 
 		switch v.Kind {
 		case rpc.PropertyDiff_ADD_REPLACE, rpc.PropertyDiff_DELETE_REPLACE, rpc.PropertyDiff_UPDATE_REPLACE:
-			replaces = append(replaces, k)
+			replaces.Add(k)
+			continue
+		}
+
+		changedPropPath, err := resource.ParsePropertyPath(k)
+		if err != nil {
+			return nil, fmt.Errorf("failed to parse property path: %q: %w", k, err)
+		}
+		found := false
+		for _, p := range mutablePropertyPaths {
+			propPath, err := resource.ParsePropertyPath(p)
+			if err != nil {
+				return nil, fmt.Errorf("failed to parse property path: %q: %w", p, err)
+			}
+			if propPath.Contains(changedPropPath) {
+				found = true
+				break
+			}
+		}
+		if !found {
+			replaces.Add(k)
 		}
 	}
 
@@ -464,7 +493,7 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 
 	response := rpc.DiffResponse{
 		Changes:             changeType,
-		Replaces:            replaces,
+		Replaces:            replaces.SortedValues(),
 		DeleteBeforeReplace: deleteBeforeReplace,
 		Diffs:               changes,
 		DetailedDiff:        detailedDiff,
@@ -503,30 +532,23 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	body := p.prepareAPIInputs(inputs, nil, res.Create.SDKProperties)
 
 	var op map[string]interface{}
-	if res.AssetUpload {
-		var content []byte
-		source := inputs["source"]
-		if source.IsAsset() {
-			content, err = source.AssetValue().Bytes()
-		} else if source.IsArchive() {
-			content, err = source.ArchiveValue().Bytes(resource.ZIPArchive)
-		}
-		if err != nil {
-			return nil, err
-		}
+	var contentType string
+	if val, hasContentType := inputs["contentType"]; hasContentType {
+		contentType = val.StringValue()
+	}
 
-		op, err = p.client.UploadWithTimeout(res.Create.Verb, uri, body, content, 0)
-		if err != nil {
-			return nil, fmt.Errorf("error sending upload request: %s: %q %+v %d", err, uri, inputs.Mappable(), len(content))
-		}
+	if res.AssetUpload {
+		op, err = p.handleAssetUpload(uri, &res, inputs, body)
+	} else if needsMultiPartFormdataContentType(contentType, res) {
+		op, err = p.handleFormDataUpload(uri, &res, inputs)
 	} else {
-		op, err = retryRequest(p.client, res.Create.Verb, uri, body)
+		op, err = retryRequest(p.client, res.Create.Verb, uri, contentType, body)
 		if err != nil {
 			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, inputs.Mappable())
 		}
 	}
 
-	resp, err := p.waitForResourceOpCompletion(res.Create.CloudAPIOperation, op)
+	resp, err := p.waitForResourceOpCompletion(urn, res.Create.CloudAPIOperation, op)
 	if err != nil {
 		if resp == nil {
 			return nil, errors.Wrapf(err, "waiting for completion")
@@ -537,12 +559,17 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		if idErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / calculate ID %s", idErr)
 		}
-		readResp, getErr := p.client.RequestWithTimeout("GET", resources.AssembleURL(res.RootURL, id), nil, 0)
+		readResp, getErr := p.client.RequestWithTimeout("GET", resources.AssembleURL(res.RootURL, id), "", nil, 0)
 		if getErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / read state %s", getErr)
 		}
+		defaults, err := extractDefaultsFromResponse(res, inputs, readResp)
+		if err != nil {
+			return nil, err
+		}
+
 		checkpoint, cpErr := plugin.MarshalProperties(
-			checkpointObject(inputs, readResp),
+			checkpointObject(inputs, defaults, readResp),
 			plugin.MarshalOptions{Label: fmt.Sprintf("%s.partialCheckpoint", label), KeepSecrets: true, SkipNulls: true},
 		)
 		if cpErr != nil {
@@ -551,9 +578,14 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		return nil, partialError(id, err, checkpoint, req.GetProperties())
 	}
 
-	// Store both outputs and inputs into the state.
+	defaults, err := extractDefaultsFromResponse(res, inputs, resp)
+	if err != nil {
+		return nil, err
+	}
+
+	// Checkpoint defaults, outputs and inputs into the state.
 	checkpoint, err := plugin.MarshalProperties(
-		checkpointObject(inputs, resp),
+		checkpointObject(inputs, defaults, resp),
 		plugin.MarshalOptions{Label: fmt.Sprintf("%s.checkpoint", label), KeepSecrets: true, SkipNulls: true},
 	)
 	if err != nil {
@@ -571,11 +603,126 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	}, nil
 }
 
+func extractDefaultsFromResponse(res resources.CloudAPIResource, inputs resource.PropertyMap,
+	resp map[string]interface{}) (resource.PropertyMap, error) {
+	defaults := resource.NewObjectProperty(resource.NewPropertyMapFromMap(nil))
+	for propName, prop := range res.Create.RecordDefaults {
+		if prop.SdkName != "" {
+			propName = prop.SdkName
+		}
+		propPath, err := resource.ParsePropertyPath(propName)
+		if err != nil {
+			return nil, fmt.Errorf("failed to parse propertypath: %q: %w", propName, err)
+		}
+		// Lookup property path in inputs.
+		_, ok := propPath.Get(resource.NewObjectProperty(inputs))
+		// If explicitly specified, skip recording in __defaults
+		if ok {
+			continue
+		}
+		// Otherwise, try to get the corresponding field from the response and record it in defaults object.
+		propVal, ok := propPath.Get(resource.NewObjectProperty(resource.NewPropertyMapFromMap(resp)))
+		if ok {
+			defaults, ok = propPath.Add(defaults, propVal)
+			if !ok {
+				return nil, fmt.Errorf("failed to add default for property: %q", propName)
+			}
+		}
+	}
+	return defaults.ObjectValue(), nil
+}
+
 func (p *googleCloudProvider) prepareAPIInputs(
 	inputs, state resource.PropertyMap,
 	properties map[string]resources.CloudAPIProperty,
 ) map[string]interface{} {
 	return p.converter.SdkPropertiesToRequestBody(properties, inputs.Mappable(), state.Mappable())
+}
+
+func (p *googleCloudProvider) handleAssetUpload(uri string, res *resources.CloudAPIResource,
+	inputs resource.PropertyMap, body map[string]interface{}) (op map[string]interface{}, err error) {
+	var content []byte
+
+	source := inputs["source"]
+	if source.IsAsset() {
+		content, err = source.AssetValue().Bytes()
+	} else if source.IsArchive() {
+		content, err = source.ArchiveValue().Bytes(resource.ZIPArchive)
+	}
+	if err != nil {
+		return nil, err
+	}
+
+	op, err = p.client.UploadWithTimeout(res.Create.Verb, uri, body, content, 0)
+	if err != nil {
+		return nil, fmt.Errorf("error sending upload request: %s: %q %+v %d", err, uri, inputs.Mappable(), len(content))
+	}
+	return
+}
+
+func (p *googleCloudProvider) handleFormDataUpload(uri string, res *resources.CloudAPIResource,
+	inputs resource.PropertyMap) (map[string]interface{}, error) {
+	buf := bytes.Buffer{}
+	mp := multipart.NewWriter(&buf)
+	var closables []io.Closer
+	defer func() {
+		for _, c := range closables {
+			_ = c.Close()
+		}
+	}()
+
+	for k, v := range res.FormDataUpload.FormFields {
+		if v.SdkName != "" {
+			k = v.SdkName
+		}
+		field, ok := inputs[resource.PropertyKey(k)]
+		if !ok {
+			logging.V(9).Infof("Missing form field: %v in inputs", k)
+			continue
+		}
+
+		var err error
+		if field.IsAsset() {
+			p := field.AssetValue().Path
+			file, err := os.Open(p)
+			if err != nil {
+				return nil, err
+			}
+			closables = append(closables, file)
+			fw, err := mp.CreateFormFile(k, p)
+			if err != nil {
+				return nil, err
+			}
+			_, err = io.Copy(fw, file)
+		} else if field.IsArchive() {
+			fw, err := mp.CreateFormField(k)
+			if err != nil {
+				return nil, err
+			}
+			b, err := field.ArchiveValue().Bytes(resource.ZIPArchive)
+			if err != nil {
+				return nil, err
+			}
+			_, err = io.Copy(fw, bytes.NewReader(b))
+		} else if field.IsString() {
+			fw, err := mp.CreateFormField(k)
+			if err != nil {
+				return nil, err
+			}
+			_, err = io.Copy(fw, strings.NewReader(field.StringValue()))
+		}
+		if err != nil {
+			return nil, fmt.Errorf("error sending multipart/form-data: %w", err)
+		}
+	}
+	if err := mp.Close(); err != nil {
+		logging.V(9).Infof("failed to close multipart/form-data writer: %v", err)
+	}
+	op, err := retryRequest(p.client, res.Create.Verb, uri, mp.FormDataContentType(), buf.Bytes())
+	if err != nil {
+		return nil, fmt.Errorf("error sending multipart/form-data: %w", err)
+	}
+	return op, nil
 }
 
 // waitForResourceOpCompletion keeps polling the resource or operation URL until it gets
@@ -586,6 +733,7 @@ func (p *googleCloudProvider) prepareAPIInputs(
 // N.B if a resource is partially created it is important to return the partial state in addition
 // to the error. Otherwise, the partially created resource will be leaked.
 func (p *googleCloudProvider) waitForResourceOpCompletion(
+	urn resource.URN,
 	operation resources.CloudAPIOperation,
 	resp map[string]interface{},
 ) (map[string]interface{}, error) {
@@ -600,9 +748,16 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 		pollingStrategy = operation.Polling.Strategy
 	}
 	for {
-		logging.V(9).Infof("waiting for completion: polling strategy: %q: %+v", pollingStrategy, resp)
-
 		var pollURI string
+
+		logging.V(9).Infof("waiting for completion: polling strategy: %q: %+v", pollingStrategy, resp)
+		details, ok := resp["detail"]
+		if !ok {
+			details, ok = resp["details"]
+		}
+		if ok {
+			_ = p.host.LogStatus(context.Background(), diag.Info, urn, fmt.Sprintf("%v", details))
+		}
 
 		// if the resource has a custom polling strategy, use that.
 		switch pollingStrategy {
@@ -643,10 +798,12 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 					strings.Contains(strings.ToLower(operationType), "delete") {
 					return resp, err
 				}
+
+				continuePollingForRestingState := false
 				// Check if there's a target link.
 				if targetLink, has := resp["targetLink"].(string); has {
 					// Try reading resource state.
-					state, getErr := p.client.RequestWithTimeout("GET", targetLink, nil, 0)
+					state, getErr := p.client.RequestWithTimeout("GET", targetLink, "", nil, 0)
 					if getErr != nil {
 						if err != nil {
 							// Return the original creation error if resource read failed.
@@ -654,14 +811,30 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 						}
 						return resp, getErr
 					}
-					// A partial error could happen, so both response and error could be available.
-					return state, err
+					if pollingStrategy == resources.NodepoolAwaitRestingStatePoll {
+						npStatus, hasStatus := state["status"].(string)
+						if hasStatus && npStatus == "RUNNING" || npStatus == "RUNNING_WITH_ERROR" || npStatus == "ERROR" {
+							return state, err
+						}
+						continuePollingForRestingState = true
+					} else if pollingStrategy == resources.ClusterAwaitRestingStatePoll {
+						cStatus, hasStatus := state["status"].(string)
+						if hasStatus && cStatus == "RUNNING" || cStatus == "DEGRADED" || cStatus == "ERROR" {
+							return state, err
+						}
+						continuePollingForRestingState = true
+					} else {
+						// A partial error could happen, so both response and error could be available.
+						return state, err
+					}
 				}
 				// At this point, we assume either a complete failure or a clean response.
 				if err != nil {
 					return resp, err
 				}
-				return resp, nil
+				if !continuePollingForRestingState {
+					return resp, nil
+				}
 			}
 
 			if selfLink, has := resp["selfLink"].(string); has && hasStatus {
@@ -686,7 +859,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 		time.Sleep(retryPolicy.Duration())
 
 		logging.V(9).Infof("Polling URL: %q", pollURI)
-		op, err := p.client.RequestWithTimeout("GET", pollURI, nil, 0)
+		op, err := p.client.RequestWithTimeout("GET", pollURI, "", nil, 0)
 		if err != nil {
 			return resp, errors.Wrapf(err, "polling operation status")
 		}
@@ -724,7 +897,7 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 	}
 
 	// Read the current state of the resource from the API.
-	newState, err := retryRequest(p.client, res.Read.Verb, uri, nil)
+	newState, err := retryRequest(p.client, res.Read.Verb, uri, "", nil)
 	if err != nil {
 		if reqErr, ok := err.(*googleapi.Error); ok && reqErr.Code == http.StatusNotFound {
 			// 404 means that the resource was deleted.
@@ -750,9 +923,12 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 	// 4. Apply this difference to the actual inputs (not a projection) that we have in state.
 	inputs = applyDiff(inputs, diff)
 
+	// Extract old defaults from the `__defaults` field of the old state so we retain it in checkpoint
+	defaults := parseDefaultsObject(oldState)
+
 	// Store both outputs and inputs into the state checkpoint.
 	checkpoint, err := plugin.MarshalProperties(
-		checkpointObject(inputs, newState),
+		checkpointObject(inputs, defaults, newState),
 		plugin.MarshalOptions{Label: fmt.Sprintf("%s.checkpoint", label), KeepSecrets: true, SkipNulls: true},
 	)
 	if err != nil {
@@ -771,7 +947,7 @@ func (p *googleCloudProvider) Read(_ context.Context, req *rpc.ReadRequest) (*rp
 }
 
 // Update updates an existing resource with new values.
-func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) (*rpc.UpdateResponse, error) {
+func (p *googleCloudProvider) Update(ctx context.Context, req *rpc.UpdateRequest) (*rpc.UpdateResponse, error) {
 	urn := resource.URN(req.GetUrn())
 	label := fmt.Sprintf("%s.Update(%s)", p.name, urn)
 	logging.V(9).Infof("%s executing", label)
@@ -792,6 +968,11 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 		return nil, errors.Wrapf(err, "reading resource state")
 	}
 
+	var contentType string
+	if val, hasContentType := inputs["contentType"]; hasContentType {
+		contentType = val.StringValue()
+	}
+
 	resourceKey := string(urn.Type())
 	res, ok := p.resourceMap.Resources[resourceKey]
 	if !ok {
@@ -799,69 +980,109 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 	}
 
 	if res.Update.Undefined() {
-		logging.V(1).Infof("update is currently undefined for resource: %q. %s will not be updated",
-			resourceKey, req.GetId())
+		_ = p.host.Log(ctx, diag.Warning, urn, fmt.Sprintf("update is currently undefined for resource: %q. "+
+			"%s will not be updated",
+			resourceKey, req.GetId()))
 		return &rpc.UpdateResponse{}, nil
 	}
+	// Extract old defaults from the `__defaults` field of the old state.
+	defaults := parseDefaultsObject(oldState)
 
-	body := p.prepareAPIInputs(inputs, oldState, res.Update.SDKProperties)
-	if res.Update.UpdateMask.BodyPropertyName != "" || res.Update.UpdateMask.QueryParamName != "" {
-		newJson, err := json.Marshal(inputs)
+	var resp, op map[string]interface{}
+	var appliedInputs resource.PropertyMap
+	if mutations, ok := customMutations[resourceKey]; ok {
+		var err error
+		logging.V(9).Infof("[%s] calling custom update function for resource: %+v", label, resourceKey)
+		appliedInputs, resp, err = mutations.update(p, urn, label, &res, inputs, oldState)
 		if err != nil {
-			return nil, errors.Errorf("failed to serialize new inputs as json")
+			logging.V(9).Infof("[%s] custom update override failed: %+v, resp: %+v", label, err, resp)
+			if resp != nil {
+				checkpoint, cpErr := plugin.MarshalProperties(
+					checkpointObject(appliedInputs, defaults, resp),
+					plugin.MarshalOptions{
+						Label:        fmt.Sprintf("%s.partialCheckpoint", label),
+						KeepUnknowns: true,
+						KeepSecrets:  true,
+						SkipNulls:    true,
+					},
+				)
+				if cpErr != nil {
+					return nil, errors.Wrapf(err, "checkpointing update: %s", cpErr)
+				}
+				return nil, partialError(req.Id, err, checkpoint, nil)
+			}
+			return nil, err
 		}
-		// Extract old inputs from the `__inputs` field of the old state.
-		oldInputs := parseCheckpointObject(oldState)
-		oldJson, err := json.Marshal(oldInputs)
+	} else if needsMultiPartFormdataContentType(contentType, res) {
+		var err error
+		uri, err := res.Update.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
 		if err != nil {
-			return nil, errors.Errorf("failed to serialize existing inputs as json")
+			return nil, fmt.Errorf("failed to generate URL with inputs: %+v: %w", inputs, err)
 		}
-		patch, err := jsonpatch.CreateMergePatch(oldJson, newJson)
+		// It's a bit hacky to shortcircuit and just update with data upload but in all the 3
+		// resources affected (apigee) - this seems the right thing to do.
+		op, err = p.handleFormDataUpload(uri, &res, inputs)
 		if err != nil {
-			return nil, errors.Errorf("failed to generate patch")
+			return nil, fmt.Errorf("error sending formdata request for URI %q: %w", uri, err)
 		}
-		var keys []string
-		patchObj := map[string]interface{}{}
-		if err = json.Unmarshal(patch, &patchObj); err != nil {
-			return nil, errors.Errorf("failed to unmarshal patch object")
-		}
-		for k := range patchObj {
-			found := false
-			for name, sdkProp := range res.Update.SDKProperties {
-				if sdkProp.SdkName == k {
-					keys = append(keys, strcase.ToSnake(name))
-					found = true
-					break
+	} else {
+		body := p.prepareAPIInputs(inputs, oldState, res.Update.SDKProperties)
+		if res.Update.UpdateMask.BodyPropertyName != "" || res.Update.UpdateMask.QueryParamName != "" {
+			newJson, err := json.Marshal(inputs)
+			if err != nil {
+				return nil, errors.Errorf("failed to serialize new inputs as json")
+			}
+			// Extract old inputs from the `__inputs` field of the old state.
+			oldInputs := parseCheckpointObject(oldState)
+			oldJson, err := json.Marshal(oldInputs)
+			if err != nil {
+				return nil, errors.Errorf("failed to serialize existing inputs as json")
+			}
+			patch, err := jsonpatch.CreateMergePatch(oldJson, newJson)
+			if err != nil {
+				return nil, errors.Errorf("failed to generate patch")
+			}
+			var keys []string
+			patchObj := map[string]interface{}{}
+			if err = json.Unmarshal(patch, &patchObj); err != nil {
+				return nil, errors.Errorf("failed to unmarshal patch object")
+			}
+			for k := range patchObj {
+				found := false
+				for name, sdkProp := range res.Update.SDKProperties {
+					if sdkProp.SdkName == k {
+						keys = append(keys, strcase.ToSnake(name))
+						found = true
+						break
+					}
+				}
+				if !found {
+					keys = append(keys, strcase.ToSnake(k))
 				}
 			}
-			if !found {
-				keys = append(keys, strcase.ToSnake(k))
+			if res.Update.UpdateMask.QueryParamName != "" {
+				inputs[resource.PropertyKey(res.Update.UpdateMask.QueryParamName)] =
+					resource.NewStringProperty(strings.Join(keys, ","))
+			}
+			if res.Update.UpdateMask.BodyPropertyName != "" {
+				body[res.Update.UpdateMask.BodyPropertyName] = map[string]interface{}{"paths": keys}
 			}
 		}
-		if res.Update.UpdateMask.QueryParamName != "" {
-			inputs[resource.PropertyKey(res.Update.UpdateMask.QueryParamName)] =
-				resource.NewStringProperty(strings.Join(keys, ","))
+
+		uri, err := res.Update.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
+		if err != nil {
+			return nil, fmt.Errorf("failed to generate URL with inputs: %+v: %w", inputs, err)
 		}
-		if res.Update.UpdateMask.BodyPropertyName != "" {
-			body[res.Update.UpdateMask.BodyPropertyName] = map[string]interface{}{"paths": keys}
+
+		op, err = retryRequest(p.client, res.Update.Verb, uri, "", body)
+		if err != nil {
+			return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
+		}
+		resp, err = p.waitForResourceOpCompletion(urn, res.Update.CloudAPIOperation, op)
+		if err != nil {
+			return nil, errors.Wrapf(err, "waiting for completion")
 		}
 	}
-
-	uri, err := res.Update.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
-	if err != nil {
-		return nil, err
-	}
-
-	op, err := retryRequest(p.client, res.Update.Verb, uri, body)
-	if err != nil {
-		return nil, fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
-	}
-
-	resp, err := p.waitForResourceOpCompletion(res.Update.CloudAPIOperation, op)
-	if err != nil {
-		return nil, errors.Wrapf(err, "waiting for completion")
-	}
-
 	// Read the inputs to persist them into state.
 	newInputs, err := plugin.UnmarshalProperties(req.GetNews(), plugin.MarshalOptions{
 		Label:        fmt.Sprintf("%s.newInputs", label),
@@ -874,7 +1095,7 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 
 	// Store both outputs and inputs into the state and return RPC checkpoint.
 	outputs, err := plugin.MarshalProperties(
-		checkpointObject(newInputs, resp),
+		checkpointObject(newInputs, defaults, resp),
 		plugin.MarshalOptions{Label: fmt.Sprintf("%s.response", label), KeepSecrets: true, SkipNulls: true},
 	)
 	if err != nil {
@@ -884,6 +1105,10 @@ func (p *googleCloudProvider) Update(_ context.Context, req *rpc.UpdateRequest) 
 	return &rpc.UpdateResponse{
 		Properties: outputs,
 	}, nil
+}
+
+func needsMultiPartFormdataContentType(contentType string, res resources.CloudAPIResource) bool {
+	return contentType == "multipart/form-data" && len(res.FormDataUpload.FormFields) > 0
 }
 
 // Delete tears down an existing resource with the given ID. If it fails, the resource is assumed
@@ -935,12 +1160,12 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 		return &empty.Empty{}, nil
 	}
 
-	resp, err := retryRequest(p.client, res.Delete.Verb, uri, nil)
+	resp, err := retryRequest(p.client, res.Delete.Verb, uri, "", nil)
 	if err != nil {
 		return nil, fmt.Errorf("error sending request: %s", err)
 	}
 
-	_, err = p.waitForResourceOpCompletion(res.Delete, resp)
+	_, err = p.waitForResourceOpCompletion(urn, res.Delete, resp)
 	if err != nil {
 		return nil, errors.Wrapf(err, "waiting for completion")
 	}
@@ -950,7 +1175,8 @@ func (p *googleCloudProvider) Delete(_ context.Context, req *rpc.DeleteRequest) 
 
 // Deprecated: retryRequest is a temporary retry helper that will be replaced by centralized retry logic after some
 // additional refactoring. This function should not be used outside the provider CRUD methods.
-func retryRequest(client *googleclient.GoogleClient, method string, rawurl string, body map[string]interface{},
+func retryRequest(client *googleclient.GoogleClient, method string, rawurl string,
+	contentType string, body interface{},
 ) (map[string]interface{}, error) {
 	retryPolicy := backoff.Backoff{
 		Min:    1 * time.Second,
@@ -966,7 +1192,7 @@ func retryRequest(client *googleclient.GoogleClient, method string, rawurl strin
 		case <-ctx.Done():
 			return nil, fmt.Errorf("request %s %s timed out after %s", method, rawurl, timeout)
 		case <-time.After(retryPolicy.Duration()):
-			resp, err := client.RequestWithTimeout(method, rawurl, body, 0)
+			resp, err := client.RequestWithTimeout(method, rawurl, contentType, body, 0)
 			if err != nil {
 				// Retryable error
 				if gerr, ok := err.(*googleapi.Error); ok {
@@ -1070,10 +1296,12 @@ func partialError(id string, err error, state *structpb.Struct, inputs *structpb
 	return rpcerror.WithDetails(rpcerror.New(codes.Unknown, err.Error()), &detail)
 }
 
-// checkpointObject puts inputs in the `__inputs` field of the state.
-func checkpointObject(inputs resource.PropertyMap, outputs map[string]interface{}) resource.PropertyMap {
+// checkpointObject puts inputs in the `__inputs` field of the state and defaults in the `__defaults` field of the
+// state.
+func checkpointObject(inputs, defaults resource.PropertyMap, outputs map[string]interface{}) resource.PropertyMap {
 	object := resource.NewPropertyMapFromMap(outputs)
 	object["__inputs"] = resource.MakeSecret(resource.NewObjectProperty(inputs))
+	saveDefaults(defaults, object)
 	return object
 }
 
@@ -1084,6 +1312,28 @@ func parseCheckpointObject(obj resource.PropertyMap) resource.PropertyMap {
 			return inputs.SecretValue().Element.ObjectValue()
 		}
 		return inputs.ObjectValue()
+	}
+
+	return nil
+}
+
+// saveDefaults puts defaults in the `__defaults` field of the property map in object.
+func saveDefaults(defaults resource.PropertyMap, object resource.PropertyMap) resource.PropertyMap {
+	if defaults.ContainsSecrets() {
+		object["__defaults"] = resource.MakeSecret(resource.NewObjectProperty(defaults))
+	} else {
+		object["__defaults"] = resource.NewObjectProperty(defaults)
+	}
+	return object
+}
+
+// parseDefaultsObject returns inputs that are saved in the `__defaults` field of the state.
+func parseDefaultsObject(obj resource.PropertyMap) resource.PropertyMap {
+	if defaults, ok := obj["__defaults"]; ok {
+		if defaults.IsSecret() {
+			defaults.SecretValue().Element.ObjectValue()
+		}
+		return defaults.ObjectValue()
 	}
 
 	return nil

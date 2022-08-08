@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// Sets the time for a one time patch deployment. Timestamp is in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format.
     /// </summary>
-    public sealed class OneTimeScheduleArgs : Pulumi.ResourceArgs
+    public sealed class OneTimeScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The desired patch job execution time.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public OneTimeScheduleArgs()
         {
         }
+        public static new OneTimeScheduleArgs Empty => new OneTimeScheduleArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:appengine/v1:Version")]
-    public partial class Version : Pulumi.CustomResource
+    public partial class Version : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
@@ -304,7 +304,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         }
     }
 
-    public sealed class VersionArgs : Pulumi.ResourceArgs
+    public sealed class VersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
@@ -574,5 +574,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public VersionArgs()
         {
         }
+        public static new VersionArgs Empty => new VersionArgs();
     }
 }

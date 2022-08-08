@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
 {
 
-    public sealed class GSuitePrincipalArgs : Pulumi.ResourceArgs
+    public sealed class GSuitePrincipalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This principal represents all users of the Google Workspace domain of the customer.
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public GSuitePrincipalArgs()
         {
         }
+        public static new GSuitePrincipalArgs Empty => new GSuitePrincipalArgs();
     }
 }

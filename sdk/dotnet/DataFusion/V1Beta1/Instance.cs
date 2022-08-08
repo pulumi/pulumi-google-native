@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datafusion/v1beta1:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List of accelerators enabled for this CDF instance.
@@ -251,7 +251,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         [Input("accelerators")]
         private InputList<Inputs.AcceleratorArgs>? _accelerators;
@@ -394,5 +394,6 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 }

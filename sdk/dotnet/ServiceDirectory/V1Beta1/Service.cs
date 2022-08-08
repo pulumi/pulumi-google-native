@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
     /// Creates a service, and returns the new service.
     /// </summary>
     [GoogleNativeResourceType("google-native:servicedirectory/v1beta1:Service")]
-    public partial class Service : Pulumi.CustomResource
+    public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp when the service was created.
@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         }
     }
 
-    public sealed class ServiceArgs : Pulumi.ResourceArgs
+    public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -148,5 +148,6 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public ServiceArgs()
         {
         }
+        public static new ServiceArgs Empty => new ServiceArgs();
     }
 }

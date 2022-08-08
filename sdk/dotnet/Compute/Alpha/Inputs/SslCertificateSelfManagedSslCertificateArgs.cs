@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Configuration and status of a self-managed SSL certificate.
     /// </summary>
-    public sealed class SslCertificateSelfManagedSslCertificateArgs : Pulumi.ResourceArgs
+    public sealed class SslCertificateSelfManagedSslCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A local certificate file. The certificate must be in PEM format. The certificate chain must be no greater than 5 certs long. The chain must include at least one intermediate cert.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SslCertificateSelfManagedSslCertificateArgs()
         {
         }
+        public static new SslCertificateSelfManagedSslCertificateArgs Empty => new SslCertificateSelfManagedSslCertificateArgs();
     }
 }

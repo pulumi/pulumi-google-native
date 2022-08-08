@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Storage.V1.Inputs
 {
 
-    public sealed class BucketCorsItemArgs : Pulumi.ResourceArgs
+    public sealed class BucketCorsItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The value, in seconds, to return in the  Access-Control-Max-Age header used in preflight responses.
@@ -57,5 +57,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketCorsItemArgs()
         {
         }
+        public static new BucketCorsItemArgs Empty => new BucketCorsItemArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
     /// <summary>
     /// On-premises instance configuration.
     /// </summary>
-    public sealed class OnPremisesConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class OnPremisesConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// PEM representation of the trusted CA's x509 certificate.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public OnPremisesConfigurationArgs()
         {
         }
+        public static new OnPremisesConfigurationArgs Empty => new OnPremisesConfigurationArgs();
     }
 }

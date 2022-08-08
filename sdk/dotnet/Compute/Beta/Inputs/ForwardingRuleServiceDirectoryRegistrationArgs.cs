@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Describes the auto-registration of the Forwarding Rule to Service Directory. The region and project of the Service Directory resource generated from this registration will be the same as this Forwarding Rule.
     /// </summary>
-    public sealed class ForwardingRuleServiceDirectoryRegistrationArgs : Pulumi.ResourceArgs
+    public sealed class ForwardingRuleServiceDirectoryRegistrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Service Directory namespace to register the forwarding rule under.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public ForwardingRuleServiceDirectoryRegistrationArgs()
         {
         }
+        public static new ForwardingRuleServiceDirectoryRegistrationArgs Empty => new ForwardingRuleServiceDirectoryRegistrationArgs();
     }
 }

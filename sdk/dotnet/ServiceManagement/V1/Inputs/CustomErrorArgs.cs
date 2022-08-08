@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Customize service error responses. For example, list any service specific protobuf types that can appear in error detail lists of error responses. Example: custom_error: types: - google.foo.v1.CustomError - google.foo.v1.AnotherError
     /// </summary>
-    public sealed class CustomErrorArgs : Pulumi.ResourceArgs
+    public sealed class CustomErrorArgs : global::Pulumi.ResourceArgs
     {
         [Input("rules")]
         private InputList<Inputs.CustomErrorRuleArgs>? _rules;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public CustomErrorArgs()
         {
         }
+        public static new CustomErrorArgs Empty => new CustomErrorArgs();
     }
 }

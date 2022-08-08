@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:firebaserules/v1:Ruleset")]
-    public partial class Ruleset : Pulumi.CustomResource
+    public partial class Ruleset : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time the `Ruleset` was created.
@@ -90,7 +90,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         }
     }
 
-    public sealed class RulesetArgs : Pulumi.ResourceArgs
+    public sealed class RulesetArgs : global::Pulumi.ResourceArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -104,5 +104,6 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         public RulesetArgs()
         {
         }
+        public static new RulesetArgs Empty => new RulesetArgs();
     }
 }

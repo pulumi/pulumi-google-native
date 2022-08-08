@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// The image response message.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2IntentMessageImageArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2IntentMessageImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A text description of the image to be used for accessibility, e.g., screen readers.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2IntentMessageImageArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2IntentMessageImageArgs Empty => new GoogleCloudDialogflowV2IntentMessageImageArgs();
     }
 }

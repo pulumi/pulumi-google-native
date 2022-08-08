@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Inputs
 {
 
-    public sealed class GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Must be specified if type is `DOUBLE`. Maximum value of the parameter.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs()
         {
         }
+        public static new GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs Empty => new GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs();
     }
 }

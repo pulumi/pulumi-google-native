@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
     }
 
 
-    public sealed class GetCloneJobArgs : Pulumi.InvokeArgs
+    public sealed class GetCloneJobArgs : global::Pulumi.InvokeArgs
     {
         [Input("cloneJobId", required: true)]
         public string CloneJobId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         public GetCloneJobArgs()
         {
         }
+        public static new GetCloneJobArgs Empty => new GetCloneJobArgs();
     }
 
-    public sealed class GetCloneJobInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCloneJobInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("cloneJobId", required: true)]
         public Input<string> CloneJobId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         public GetCloneJobInvokeArgs()
         {
         }
+        public static new GetCloneJobInvokeArgs Empty => new GetCloneJobInvokeArgs();
     }
 
 

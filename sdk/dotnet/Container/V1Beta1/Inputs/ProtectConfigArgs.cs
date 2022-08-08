@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// ProtectConfig defines the flags needed to enable/disable features for the Protect API.
     /// </summary>
-    public sealed class ProtectConfigArgs : Pulumi.ResourceArgs
+    public sealed class ProtectConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// WorkloadConfig defines which actions are enabled for a cluster's workload configurations.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public ProtectConfigArgs()
         {
         }
+        public static new ProtectConfigArgs Empty => new ProtectConfigArgs();
     }
 }

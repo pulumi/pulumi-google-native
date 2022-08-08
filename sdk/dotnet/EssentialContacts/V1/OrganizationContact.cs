@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:essentialcontacts/v1:OrganizationContact")]
-    public partial class OrganizationContact : Pulumi.CustomResource
+    public partial class OrganizationContact : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The email address to send notifications to. This does not need to be a Google account.
@@ -102,7 +102,7 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         }
     }
 
-    public sealed class OrganizationContactArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationContactArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The email address to send notifications to. This does not need to be a Google account.
@@ -152,5 +152,6 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         public OrganizationContactArgs()
         {
         }
+        public static new OrganizationContactArgs Empty => new OrganizationContactArgs();
     }
 }

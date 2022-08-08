@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     /// <summary>
     /// Azure credentials For information on our data retention policy for user credentials, see [User credentials](/storage-transfer/docs/data-retention#user-credentials).
     /// </summary>
-    public sealed class AzureCredentialsArgs : Pulumi.ResourceArgs
+    public sealed class AzureCredentialsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Azure shared access signature (SAS). For more information about SAS, see [Grant limited access to Azure Storage resources using shared access signatures (SAS)](https://docs.microsoft.com/en-us/azure/storage/common/storage-sas-overview).
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public AzureCredentialsArgs()
         {
         }
+        public static new AzureCredentialsArgs Empty => new AzureCredentialsArgs();
     }
 }

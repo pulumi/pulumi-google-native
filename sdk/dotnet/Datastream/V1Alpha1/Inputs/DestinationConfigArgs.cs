@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
     /// <summary>
     /// The configuration of the stream destination.
     /// </summary>
-    public sealed class DestinationConfigArgs : Pulumi.ResourceArgs
+    public sealed class DestinationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Destination connection profile identifier.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
         public DestinationConfigArgs()
         {
         }
+        public static new DestinationConfigArgs Empty => new DestinationConfigArgs();
     }
 }

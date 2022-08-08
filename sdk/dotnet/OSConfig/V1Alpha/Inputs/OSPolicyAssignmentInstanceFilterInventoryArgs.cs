@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
     /// <summary>
     /// VM inventory details.
     /// </summary>
-    public sealed class OSPolicyAssignmentInstanceFilterInventoryArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyAssignmentInstanceFilterInventoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The OS short name
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public OSPolicyAssignmentInstanceFilterInventoryArgs()
         {
         }
+        public static new OSPolicyAssignmentInstanceFilterInventoryArgs Empty => new OSPolicyAssignmentInstanceFilterInventoryArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
     /// <summary>
     /// Root config for HL7v2 datatype definitions for a specific HL7v2 version.
     /// </summary>
-    public sealed class Hl7TypesConfigArgs : Pulumi.ResourceArgs
+    public sealed class Hl7TypesConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("type")]
         private InputList<Inputs.TypeArgs>? _type;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         public Hl7TypesConfigArgs()
         {
         }
+        public static new Hl7TypesConfigArgs Empty => new Hl7TypesConfigArgs();
     }
 }

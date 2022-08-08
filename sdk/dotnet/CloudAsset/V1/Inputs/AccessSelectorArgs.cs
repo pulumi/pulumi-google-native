@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
     /// <summary>
     /// Specifies roles and/or permissions to analyze, to determine both the identities possessing them and the resources they control. If multiple values are specified, results will include roles or permissions matching any of them. The total number of roles and permissions should be equal or less than 10.
     /// </summary>
-    public sealed class AccessSelectorArgs : Pulumi.ResourceArgs
+    public sealed class AccessSelectorArgs : global::Pulumi.ResourceArgs
     {
         [Input("permissions")]
         private InputList<string>? _permissions;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
         public AccessSelectorArgs()
         {
         }
+        public static new AccessSelectorArgs Empty => new AccessSelectorArgs();
     }
 }

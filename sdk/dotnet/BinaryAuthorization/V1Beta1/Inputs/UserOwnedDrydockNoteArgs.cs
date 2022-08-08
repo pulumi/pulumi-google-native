@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1.Inputs
     /// <summary>
     /// An user owned drydock note references a Drydock ATTESTATION_AUTHORITY Note created by the user.
     /// </summary>
-    public sealed class UserOwnedDrydockNoteArgs : Pulumi.ResourceArgs
+    public sealed class UserOwnedDrydockNoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/*/notes/*` (or the legacy `providers/*/notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1.Inputs
         public UserOwnedDrydockNoteArgs()
         {
         }
+        public static new UserOwnedDrydockNoteArgs Empty => new UserOwnedDrydockNoteArgs();
     }
 }

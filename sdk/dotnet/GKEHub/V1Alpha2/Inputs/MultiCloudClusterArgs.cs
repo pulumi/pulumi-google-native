@@ -13,10 +13,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha2.Inputs
     /// <summary>
     /// MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
     /// </summary>
-    public sealed class MultiCloudClusterArgs : Pulumi.ResourceArgs
+    public sealed class MultiCloudClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+        /// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
         /// </summary>
         [Input("resourceLink")]
         public Input<string>? ResourceLink { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha2.Inputs
         public MultiCloudClusterArgs()
         {
         }
+        public static new MultiCloudClusterArgs Empty => new MultiCloudClusterArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// See full explanation of fields at slsa.dev/provenance/v0.2.
     /// </summary>
-    public sealed class SlsaProvenanceZeroTwoArgs : Pulumi.ResourceArgs
+    public sealed class SlsaProvenanceZeroTwoArgs : global::Pulumi.ResourceArgs
     {
         [Input("buildConfig")]
         private InputMap<string>? _buildConfig;
@@ -46,5 +46,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public SlsaProvenanceZeroTwoArgs()
         {
         }
+        public static new SlsaProvenanceZeroTwoArgs Empty => new SlsaProvenanceZeroTwoArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2
     }
 
 
-    public sealed class GetDeploymentIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetDeploymentIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2
         public GetDeploymentIamPolicyArgs()
         {
         }
+        public static new GetDeploymentIamPolicyArgs Empty => new GetDeploymentIamPolicyArgs();
     }
 
-    public sealed class GetDeploymentIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDeploymentIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2
         public GetDeploymentIamPolicyInvokeArgs()
         {
         }
+        public static new GetDeploymentIamPolicyInvokeArgs Empty => new GetDeploymentIamPolicyInvokeArgs();
     }
 
 

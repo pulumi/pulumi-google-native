@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Alias")]
-    public partial class Alias : Pulumi.CustomResource
+    public partial class Alias : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body.
@@ -117,7 +117,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class AliasArgs : Pulumi.ResourceArgs
+    public sealed class AliasArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Alias for the key/certificate pair. Values must match the regular expression `[\w\s-.]{1,255}`. This must be provided for all formats except `selfsignedcert`; self-signed certs may specify the alias in either this parameter or the JSON body.
@@ -153,6 +153,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
 
         /// <summary>
+        /// File to upload.
+        /// </summary>
+        [Input("file")]
+        public Input<AssetOrArchive>? File { get; set; }
+
+        /// <summary>
         /// Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
         /// </summary>
         [Input("format", required: true)]
@@ -185,5 +191,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public AliasArgs()
         {
         }
+        public static new AliasArgs Empty => new AliasArgs();
     }
 }

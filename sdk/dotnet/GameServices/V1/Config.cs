@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
     /// Creates a new game server config in a given project, location, and game server deployment. Game server configs are immutable, and are not applied until referenced in the game server deployment rollout resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:gameservices/v1:Config")]
-    public partial class Config : Pulumi.CustomResource
+    public partial class Config : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. The ID of the game server config resource to create.
@@ -122,7 +122,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
         }
     }
 
-    public sealed class ConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The ID of the game server config resource to create.
@@ -190,5 +190,6 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public ConfigArgs()
         {
         }
+        public static new ConfigArgs Empty => new ConfigArgs();
     }
 }

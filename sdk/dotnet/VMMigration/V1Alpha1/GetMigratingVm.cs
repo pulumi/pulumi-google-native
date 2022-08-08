@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
     }
 
 
-    public sealed class GetMigratingVmArgs : Pulumi.InvokeArgs
+    public sealed class GetMigratingVmArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public GetMigratingVmArgs()
         {
         }
+        public static new GetMigratingVmArgs Empty => new GetMigratingVmArgs();
     }
 
-    public sealed class GetMigratingVmInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMigratingVmInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -67,16 +68,13 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
         public GetMigratingVmInvokeArgs()
         {
         }
+        public static new GetMigratingVmInvokeArgs Empty => new GetMigratingVmInvokeArgs();
     }
 
 
     [OutputType]
     public sealed class GetMigratingVmResult
     {
-        /// <summary>
-        /// Details of the VM from an AWS source.
-        /// </summary>
-        public readonly Outputs.AwsSourceVmDetailsResponse AwsSourceVmDetails;
         /// <summary>
         /// Details of the target VM in Compute Engine.
         /// </summary>
@@ -156,8 +154,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 
         [OutputConstructor]
         private GetMigratingVmResult(
-            Outputs.AwsSourceVmDetailsResponse awsSourceVmDetails,
-
             Outputs.ComputeEngineTargetDefaultsResponse computeEngineTargetDefaults,
 
             Outputs.TargetVMDetailsResponse computeEngineVmDefaults,
@@ -196,7 +192,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1
 
             string updateTime)
         {
-            AwsSourceVmDetails = awsSourceVmDetails;
             ComputeEngineTargetDefaults = computeEngineTargetDefaults;
             ComputeEngineVmDefaults = computeEngineVmDefaults;
             CreateTime = createTime;

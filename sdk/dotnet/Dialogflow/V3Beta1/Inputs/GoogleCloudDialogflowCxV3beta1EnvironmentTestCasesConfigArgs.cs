@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// The configuration for continuous tests.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to run test cases in TestCasesConfig.test_cases periodically. Default false. If set to true, run once a day.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs Empty => new GoogleCloudDialogflowCxV3beta1EnvironmentTestCasesConfigArgs();
     }
 }

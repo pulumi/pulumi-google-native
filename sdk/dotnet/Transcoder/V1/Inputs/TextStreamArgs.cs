@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Encoding of a text stream. For example, closed captions or subtitles.
     /// </summary>
-    public sealed class TextStreamArgs : Pulumi.ResourceArgs
+    public sealed class TextStreamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The codec for this text stream. The default is `webvtt`. Supported text codecs: - `srt` - `ttml` - `cea608` - `cea708` - `webvtt`
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public TextStreamArgs()
         {
         }
+        public static new TextStreamArgs Empty => new TextStreamArgs();
     }
 }

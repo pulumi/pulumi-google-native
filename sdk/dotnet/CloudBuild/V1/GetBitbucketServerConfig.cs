@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     }
 
 
-    public sealed class GetBitbucketServerConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetBitbucketServerConfigArgs : global::Pulumi.InvokeArgs
     {
         [Input("bitbucketServerConfigId", required: true)]
         public string BitbucketServerConfigId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public GetBitbucketServerConfigArgs()
         {
         }
+        public static new GetBitbucketServerConfigArgs Empty => new GetBitbucketServerConfigArgs();
     }
 
-    public sealed class GetBitbucketServerConfigInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBitbucketServerConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("bitbucketServerConfigId", required: true)]
         public Input<string> BitbucketServerConfigId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public GetBitbucketServerConfigInvokeArgs()
         {
         }
+        public static new GetBitbucketServerConfigInvokeArgs Empty => new GetBitbucketServerConfigInvokeArgs();
     }
 
 

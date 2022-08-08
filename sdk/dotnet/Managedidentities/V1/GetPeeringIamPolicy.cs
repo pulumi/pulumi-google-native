@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
     }
 
 
-    public sealed class GetPeeringIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetPeeringIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         public GetPeeringIamPolicyArgs()
         {
         }
+        public static new GetPeeringIamPolicyArgs Empty => new GetPeeringIamPolicyArgs();
     }
 
-    public sealed class GetPeeringIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPeeringIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         public GetPeeringIamPolicyInvokeArgs()
         {
         }
+        public static new GetPeeringIamPolicyInvokeArgs Empty => new GetPeeringIamPolicyInvokeArgs();
     }
 
 

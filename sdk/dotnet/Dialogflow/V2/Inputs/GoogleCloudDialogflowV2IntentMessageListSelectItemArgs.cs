@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// An item in the list.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2IntentMessageListSelectItemArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2IntentMessageListSelectItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The main text describing the item.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2IntentMessageListSelectItemArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2IntentMessageListSelectItemArgs Empty => new GoogleCloudDialogflowV2IntentMessageListSelectItemArgs();
     }
 }

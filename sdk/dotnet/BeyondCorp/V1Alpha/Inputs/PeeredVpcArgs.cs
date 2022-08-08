@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
     /// <summary>
     /// The peered VPC owned by the consumer project.
     /// </summary>
-    public sealed class PeeredVpcArgs : Pulumi.ResourceArgs
+    public sealed class PeeredVpcArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the peered VPC owned by the consumer project.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
         public PeeredVpcArgs()
         {
         }
+        public static new PeeredVpcArgs Empty => new PeeredVpcArgs();
     }
 }

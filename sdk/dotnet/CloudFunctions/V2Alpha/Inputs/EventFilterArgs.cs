@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
     /// <summary>
     /// Filters events based on exact matches on the CloudEvents attributes.
     /// </summary>
-    public sealed class EventFilterArgs : Pulumi.ResourceArgs
+    public sealed class EventFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of a CloudEvents attribute.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha.Inputs
         public EventFilterArgs()
         {
         }
+        public static new EventFilterArgs Empty => new EventFilterArgs();
     }
 }

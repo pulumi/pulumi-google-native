@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Message containing connection draining configuration.
     /// </summary>
-    public sealed class ConnectionDrainingArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionDrainingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configures a duration timeout for existing requests on a removed backend instance. For supported load balancers and protocols, as described in Enabling connection draining.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public ConnectionDrainingArgs()
         {
         }
+        public static new ConnectionDrainingArgs Empty => new ConnectionDrainingArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     }
 
 
-    public sealed class GetOrganizationBigQueryExportArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationBigQueryExportArgs : global::Pulumi.InvokeArgs
     {
         [Input("bigQueryExportId", required: true)]
         public string BigQueryExportId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public GetOrganizationBigQueryExportArgs()
         {
         }
+        public static new GetOrganizationBigQueryExportArgs Empty => new GetOrganizationBigQueryExportArgs();
     }
 
-    public sealed class GetOrganizationBigQueryExportInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationBigQueryExportInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("bigQueryExportId", required: true)]
         public Input<string> BigQueryExportId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public GetOrganizationBigQueryExportInvokeArgs()
         {
         }
+        public static new GetOrganizationBigQueryExportInvokeArgs Empty => new GetOrganizationBigQueryExportInvokeArgs();
     }
 
 

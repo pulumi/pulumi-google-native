@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// User signature.
     /// </summary>
-    public sealed class SignatureArgs : Pulumi.ResourceArgs
+    public sealed class SignatureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. An image of the user's signature.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public SignatureArgs()
         {
         }
+        public static new SignatureArgs Empty => new SignatureArgs();
     }
 }

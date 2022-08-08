@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// Options relating to the publication of each CertificateAuthority's CA certificate and CRLs and their inclusion as extensions in issued Certificates. The options set here apply to certificates issued by any CertificateAuthority in the CaPool.
     /// </summary>
-    public sealed class PublishingOptionsArgs : Pulumi.ResourceArgs
+    public sealed class PublishingOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. When true, publishes each CertificateAuthority's CA certificate and includes its URL in the "Authority Information Access" X.509 extension in all issued Certificates. If this is false, the CA certificate will not be published and the corresponding X.509 extension will not be written in issued certificates.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public PublishingOptionsArgs()
         {
         }
+        public static new PublishingOptionsArgs Empty => new PublishingOptionsArgs();
     }
 }

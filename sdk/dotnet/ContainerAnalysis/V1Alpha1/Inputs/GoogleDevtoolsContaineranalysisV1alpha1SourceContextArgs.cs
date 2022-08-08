@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// A SourceContext is a reference to a tree of files. A SourceContext together with a path point to a unique revision of a single file or directory.
     /// </summary>
-    public sealed class GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A SourceContext referring to a revision in a Google Cloud Source Repo.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs()
         {
         }
+        public static new GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs Empty => new GoogleDevtoolsContaineranalysisV1alpha1SourceContextArgs();
     }
 }

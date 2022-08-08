@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// Defines the network configuration for the pool.
     /// </summary>
-    public sealed class NetworkConfigArgs : Pulumi.ResourceArgs
+    public sealed class NetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Option to configure network egress for the workers.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public NetworkConfigArgs()
         {
         }
+        public static new NetworkConfigArgs Empty => new NetworkConfigArgs();
     }
 }

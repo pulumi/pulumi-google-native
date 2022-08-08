@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     /// <summary>
     /// The issuing policy for a CertificateAuthority. Certificates will not be successfully issued from this CertificateAuthority if they violate the policy.
     /// </summary>
-    public sealed class CertificateAuthorityPolicyArgs : Pulumi.ResourceArgs
+    public sealed class CertificateAuthorityPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedCommonNames")]
         private InputList<string>? _allowedCommonNames;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         public CertificateAuthorityPolicyArgs()
         {
         }
+        public static new CertificateAuthorityPolicyArgs Empty => new CertificateAuthorityPolicyArgs();
     }
 }

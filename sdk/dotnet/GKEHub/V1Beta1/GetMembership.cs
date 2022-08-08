@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1
     }
 
 
-    public sealed class GetMembershipArgs : Pulumi.InvokeArgs
+    public sealed class GetMembershipArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1
         public GetMembershipArgs()
         {
         }
+        public static new GetMembershipArgs Empty => new GetMembershipArgs();
     }
 
-    public sealed class GetMembershipInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMembershipInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1
         public GetMembershipInvokeArgs()
         {
         }
+        public static new GetMembershipInvokeArgs Empty => new GetMembershipInvokeArgs();
     }
 
 

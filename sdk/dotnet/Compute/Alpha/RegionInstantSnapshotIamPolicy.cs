@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:RegionInstantSnapshotIamPolicy")]
-    public partial class RegionInstantSnapshotIamPolicy : Pulumi.CustomResource
+    public partial class RegionInstantSnapshotIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -105,7 +105,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class RegionInstantSnapshotIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RegionInstantSnapshotIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -167,5 +167,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public RegionInstantSnapshotIamPolicyArgs()
         {
         }
+        public static new RegionInstantSnapshotIamPolicyArgs Empty => new RegionInstantSnapshotIamPolicyArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
     }
 
 
-    public sealed class GetRegionAutoscalingPolicyIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionAutoscalingPolicyIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("autoscalingPolicyId", required: true)]
         public string AutoscalingPolicyId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public GetRegionAutoscalingPolicyIamPolicyArgs()
         {
         }
+        public static new GetRegionAutoscalingPolicyIamPolicyArgs Empty => new GetRegionAutoscalingPolicyIamPolicyArgs();
     }
 
-    public sealed class GetRegionAutoscalingPolicyIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionAutoscalingPolicyIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("autoscalingPolicyId", required: true)]
         public Input<string> AutoscalingPolicyId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public GetRegionAutoscalingPolicyIamPolicyInvokeArgs()
         {
         }
+        public static new GetRegionAutoscalingPolicyIamPolicyInvokeArgs Empty => new GetRegionAutoscalingPolicyIamPolicyInvokeArgs();
     }
 
 

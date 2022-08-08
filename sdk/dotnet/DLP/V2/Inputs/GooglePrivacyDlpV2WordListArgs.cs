@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Message defining a list of words or phrases to search for in the data.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2WordListArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2WordListArgs : global::Pulumi.ResourceArgs
     {
         [Input("words")]
         private InputList<string>? _words;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2WordListArgs()
         {
         }
+        public static new GooglePrivacyDlpV2WordListArgs Empty => new GooglePrivacyDlpV2WordListArgs();
     }
 }

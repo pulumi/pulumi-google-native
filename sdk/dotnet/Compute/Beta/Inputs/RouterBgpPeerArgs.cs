@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class RouterBgpPeerArgs : Pulumi.ResourceArgs
+    public sealed class RouterBgpPeerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-specified flag to indicate which mode to use for advertisement.
@@ -123,5 +123,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public RouterBgpPeerArgs()
         {
         }
+        public static new RouterBgpPeerArgs Empty => new RouterBgpPeerArgs();
     }
 }

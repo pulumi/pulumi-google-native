@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Export")]
-    public partial class Export : Pulumi.CustomResource
+    public partial class Export : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time the export job was created.
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class ExportArgs : Pulumi.ResourceArgs
+    public sealed class ExportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Delimiter used in the CSV file, if `outputFormat` is set to `csv`. Defaults to the `,` (comma) character. Supported delimiter characters include comma (`,`), pipe (`|`), and tab (`\t`).
@@ -172,5 +172,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public ExportArgs()
         {
         }
+        public static new ExportArgs Empty => new ExportArgs();
     }
 }

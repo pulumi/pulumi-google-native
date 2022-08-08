@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:retail/v2beta:ServingConfig")]
-    public partial class ServingConfig : Pulumi.CustomResource
+    public partial class ServingConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Condition boost specifications. If a product matches multiple conditions in the specifications, boost scores from these specifications are all applied and combined in a non-linear way. Maximum number of specifications is 100. Notice that if both ServingConfig.boost_control_ids and SearchRequest.boost_spec are set, the boost conditions from both places are evaluated. If a search request matches multiple boost conditions, the final boost score is equal to the sum of the boost scores from all matched boost conditions. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
@@ -183,7 +183,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         }
     }
 
-    public sealed class ServingConfigArgs : Pulumi.ResourceArgs
+    public sealed class ServingConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("boostControlIds")]
         private InputList<string>? _boostControlIds;
@@ -365,5 +365,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         public ServingConfigArgs()
         {
         }
+        public static new ServingConfigArgs Empty => new ServingConfigArgs();
     }
 }

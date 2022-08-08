@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
     }
 
 
-    public sealed class GetIosAppArgs : Pulumi.InvokeArgs
+    public sealed class GetIosAppArgs : global::Pulumi.InvokeArgs
     {
         [Input("iosAppId", required: true)]
         public string IosAppId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         public GetIosAppArgs()
         {
         }
+        public static new GetIosAppArgs Empty => new GetIosAppArgs();
     }
 
-    public sealed class GetIosAppInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIosAppInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("iosAppId", required: true)]
         public Input<string> IosAppId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         public GetIosAppInvokeArgs()
         {
         }
+        public static new GetIosAppInvokeArgs Empty => new GetIosAppInvokeArgs();
     }
 
 

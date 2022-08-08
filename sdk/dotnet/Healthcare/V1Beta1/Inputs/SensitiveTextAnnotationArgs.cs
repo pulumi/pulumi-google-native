@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// A TextAnnotation specifies a text range that includes sensitive information.
     /// </summary>
-    public sealed class SensitiveTextAnnotationArgs : Pulumi.ResourceArgs
+    public sealed class SensitiveTextAnnotationArgs : global::Pulumi.ResourceArgs
     {
         [Input("details")]
         private InputMap<string>? _details;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public SensitiveTextAnnotationArgs()
         {
         }
+        public static new SensitiveTextAnnotationArgs Empty => new SensitiveTextAnnotationArgs();
     }
 }

@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:managedidentities/v1alpha1:DomainBackupIamPolicy")]
-    public partial class DomainBackupIamPolicy : Pulumi.CustomResource
+    public partial class DomainBackupIamPolicy : global::Pulumi.CustomResource
     {
         [Output("backupId")]
         public Output<string> BackupId { get; private set; } = null!;
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         }
     }
 
-    public sealed class DomainBackupIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class DomainBackupIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("backupId", required: true)]
         public Input<string> BackupId { get; set; } = null!;
@@ -131,5 +131,6 @@ namespace Pulumi.GoogleNative.Managedidentities.V1Alpha1
         public DomainBackupIamPolicyArgs()
         {
         }
+        public static new DomainBackupIamPolicyArgs Empty => new DomainBackupIamPolicyArgs();
     }
 }

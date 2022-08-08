@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// ComplianceNote encapsulates all information about a specific compliance check.
     /// </summary>
-    public sealed class ComplianceNoteArgs : Pulumi.ResourceArgs
+    public sealed class ComplianceNoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Right now we only have one compliance type, but we may add additional types in the future.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public ComplianceNoteArgs()
         {
         }
+        public static new ComplianceNoteArgs Empty => new ComplianceNoteArgs();
     }
 }

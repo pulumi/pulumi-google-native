@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
 {
 
-    public sealed class WindowsDetailArgs : Pulumi.ResourceArgs
+    public sealed class WindowsDetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The [CPE URI](https://cpe.mitre.org/specification/) this vulnerability affects.
@@ -45,5 +45,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public WindowsDetailArgs()
         {
         }
+        public static new WindowsDetailArgs Empty => new WindowsDetailArgs();
     }
 }

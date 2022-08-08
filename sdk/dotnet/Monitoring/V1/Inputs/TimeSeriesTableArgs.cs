@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A table that displays time series data.
     /// </summary>
-    public sealed class TimeSeriesTableArgs : Pulumi.ResourceArgs
+    public sealed class TimeSeriesTableArgs : global::Pulumi.ResourceArgs
     {
         [Input("dataSets", required: true)]
         private InputList<Inputs.TableDataSetArgs>? _dataSets;
@@ -27,8 +27,15 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
             set => _dataSets = value;
         }
 
+        /// <summary>
+        /// Optional. Store rendering strategy
+        /// </summary>
+        [Input("metricVisualization")]
+        public Input<Pulumi.GoogleNative.Monitoring.V1.TimeSeriesTableMetricVisualization>? MetricVisualization { get; set; }
+
         public TimeSeriesTableArgs()
         {
         }
+        public static new TimeSeriesTableArgs Empty => new TimeSeriesTableArgs();
     }
 }

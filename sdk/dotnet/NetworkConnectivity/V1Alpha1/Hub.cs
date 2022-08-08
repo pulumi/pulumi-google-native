@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
     /// Creates a new Network Connectivity Center hub in the specified project.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkconnectivity/v1alpha1:Hub")]
-    public partial class Hub : Pulumi.CustomResource
+    public partial class Hub : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time when the Hub was created.
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         }
     }
 
-    public sealed class HubArgs : Pulumi.ResourceArgs
+    public sealed class HubArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Time when the Hub was created.
@@ -181,5 +181,6 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         public HubArgs()
         {
         }
+        public static new HubArgs Empty => new HubArgs();
     }
 }

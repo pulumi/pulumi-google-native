@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
     /// Creates an endpoint, and returns the new endpoint.
     /// </summary>
     [GoogleNativeResourceType("google-native:servicedirectory/v1:Endpoint")]
-    public partial class Endpoint : Pulumi.CustomResource
+    public partial class Endpoint : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.
@@ -114,7 +114,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         }
     }
 
-    public sealed class EndpointArgs : Pulumi.ResourceArgs
+    public sealed class EndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. An IPv4 or IPv6 address. Service Directory rejects bad addresses like: * `8.8.8` * `8.8.8.8:53` * `test:bad:address` * `[::1]` * `[::1]:8080` Limited to 45 characters.
@@ -173,5 +173,6 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         public EndpointArgs()
         {
         }
+        public static new EndpointArgs Empty => new EndpointArgs();
     }
 }

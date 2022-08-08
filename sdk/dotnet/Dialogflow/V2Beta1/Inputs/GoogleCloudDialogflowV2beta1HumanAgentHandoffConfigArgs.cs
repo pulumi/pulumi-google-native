@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Defines the hand off to a live agent, typically on which external agent service provider to connect to a conversation. Currently, this feature is not general available, please contact Google to get access.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Uses LivePerson (https://www.liveperson.com).
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs Empty => new GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs();
     }
 }

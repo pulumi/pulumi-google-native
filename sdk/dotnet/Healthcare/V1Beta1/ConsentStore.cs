@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     /// Creates a new consent store in the parent dataset. Attempting to create a consent store with the same ID as an existing store fails with an ALREADY_EXISTS error.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1beta1:ConsentStore")]
-    public partial class ConsentStore : Pulumi.CustomResource
+    public partial class ConsentStore : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. The ID of the consent store to create. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`. Cannot be changed after creation.
@@ -104,7 +104,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         }
     }
 
-    public sealed class ConsentStoreArgs : Pulumi.ResourceArgs
+    public sealed class ConsentStoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The ID of the consent store to create. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`. Cannot be changed after creation.
@@ -154,5 +154,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public ConsentStoreArgs()
         {
         }
+        public static new ConsentStoreArgs Empty => new ConsentStoreArgs();
     }
 }

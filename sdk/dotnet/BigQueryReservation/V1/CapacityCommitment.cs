@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigqueryreservation/v1:CapacityCommitment")]
-    public partial class CapacityCommitment : Pulumi.CustomResource
+    public partial class CapacityCommitment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         }
     }
 
-    public sealed class CapacityCommitmentArgs : Pulumi.ResourceArgs
+    public sealed class CapacityCommitmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
@@ -183,5 +183,6 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         public CapacityCommitmentArgs()
         {
         }
+        public static new CapacityCommitmentArgs Empty => new CapacityCommitmentArgs();
     }
 }

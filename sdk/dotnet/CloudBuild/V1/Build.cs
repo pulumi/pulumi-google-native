@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbuild/v1:Build")]
-    public partial class Build : Pulumi.CustomResource
+    public partial class Build : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Describes this build's approval configuration, status, and result.
@@ -241,7 +241,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         }
     }
 
-    public sealed class BuildArgs : Pulumi.ResourceArgs
+    public sealed class BuildArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Artifacts produced by the build that should be uploaded upon successful completion of all build steps.
@@ -366,5 +366,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public BuildArgs()
         {
         }
+        public static new BuildArgs Empty => new BuildArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Configuration for stored infoTypes. All fields and subfield are provided by the user. For more information, see https://cloud.google.com/dlp/docs/creating-custom-infotypes.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2StoredInfoTypeConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2StoredInfoTypeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the StoredInfoType (max 256 characters).
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2StoredInfoTypeConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2StoredInfoTypeConfigArgs Empty => new GooglePrivacyDlpV2StoredInfoTypeConfigArgs();
     }
 }

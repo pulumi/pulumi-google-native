@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:monitoring/v3:Service")]
-    public partial class Service : Pulumi.CustomResource
+    public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Type used for App Engine services.
@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         }
     }
 
-    public sealed class ServiceArgs : Pulumi.ResourceArgs
+    public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Type used for App Engine services.
@@ -267,5 +267,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public ServiceArgs()
         {
         }
+        public static new ServiceArgs Empty => new ServiceArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetInstanceArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetInstanceArgs()
         {
         }
+        public static new GetInstanceArgs Empty => new GetInstanceArgs();
     }
 
-    public sealed class GetInstanceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetInstanceInvokeArgs()
         {
         }
+        public static new GetInstanceInvokeArgs Empty => new GetInstanceInvokeArgs();
     }
 
 
@@ -80,7 +82,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Host;
         /// <summary>
-        /// Optional. IP range represents the customer-provided CIDR block of length 22 that will be used for the Apigee instance creation. This optional range, if provided, should be freely available as part of larger named range the customer has allocated to the Service Networking peering. If this is not provided, Apigee will automatically request for any available /22 CIDR block from Service Networking. The customer should use this CIDR block for configuring their firewall needs to allow traffic from Apigee. Input format: "a.b.c.d/22", Output format: a.b.c.d/22, e.f.g.h/28"
+        /// Optional. Comma-separated list of CIDR blocks of length 22 and/or 28 used to create the Apigee instance. Providing CIDR ranges is optional. You can provide just /22 or /28 or both (or neither). Ranges you provide should be freely available as part of a larger named range you have allocated to the Service Networking peering. If this parameter is not provided, Apigee automatically requests an available /22 and /28 CIDR block from Service Networking. Use the /22 CIDR block for configuring your firewall needs to allow traffic from Apigee. Input formats: `a.b.c.d/22` or `e.f.g.h/28` or `a.b.c.d/22,e.f.g.h/28`
         /// </summary>
         public readonly string IpRange;
         /// <summary>

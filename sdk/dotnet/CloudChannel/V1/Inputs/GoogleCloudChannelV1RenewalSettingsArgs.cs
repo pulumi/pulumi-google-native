@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
     /// <summary>
     /// Renewal settings for renewable Offers.
     /// </summary>
-    public sealed class GoogleCloudChannelV1RenewalSettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudChannelV1RenewalSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If false, the plan will be completed at the end date.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         public GoogleCloudChannelV1RenewalSettingsArgs()
         {
         }
+        public static new GoogleCloudChannelV1RenewalSettingsArgs Empty => new GoogleCloudChannelV1RenewalSettingsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The action to take.
     /// </summary>
-    public sealed class BucketLifecycleRuleItemActionArgs : Pulumi.ResourceArgs
+    public sealed class BucketLifecycleRuleItemActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Target storage class. Required iff the type of the action is SetStorageClass.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketLifecycleRuleItemActionArgs()
         {
         }
+        public static new BucketLifecycleRuleItemActionArgs Empty => new BucketLifecycleRuleItemActionArgs();
     }
 }

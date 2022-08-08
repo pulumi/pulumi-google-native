@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Overlaid jpeg image.
     /// </summary>
-    public sealed class ImageArgs : Pulumi.ResourceArgs
+    public sealed class ImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Target image opacity. Valid values are from `1.0` (solid, default) to `0.0` (transparent), exclusive. Set this to a value greater than `0.0`.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public ImageArgs()
         {
         }
+        public static new ImageArgs Empty => new ImageArgs();
     }
 }

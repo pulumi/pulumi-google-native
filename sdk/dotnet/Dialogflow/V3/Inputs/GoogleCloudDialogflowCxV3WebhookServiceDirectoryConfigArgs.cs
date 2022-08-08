@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// Represents configuration for a [Service Directory](https://cloud.google.com/service-directory) service.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Generic Service configuration of this webhook.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs Empty => new GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs();
     }
 }

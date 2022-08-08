@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
     /// <summary>
     /// Raw bytes representing consent artifact content.
     /// </summary>
-    public sealed class ImageArgs : Pulumi.ResourceArgs
+    public sealed class ImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Input only. Points to a Cloud Storage URI containing the consent artifact content. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. The consent artifact content at this URI is copied to a Cloud Storage location managed by the Cloud Healthcare API. Responses to fetching requests return the consent artifact content in raw_bytes.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         public ImageArgs()
         {
         }
+        public static new ImageArgs Empty => new ImageArgs();
     }
 }

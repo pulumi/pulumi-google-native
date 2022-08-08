@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
     /// Creates a repo in the given project with the given name. If the named repository already exists, `CreateRepo` returns `ALREADY_EXISTS`.
     /// </summary>
     [GoogleNativeResourceType("google-native:sourcerepo/v1:Repo")]
-    public partial class Repo : Pulumi.CustomResource
+    public partial class Repo : global::Pulumi.CustomResource
     {
         /// <summary>
         /// How this repository mirrors a repository managed by another service. Read-only field.
@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         }
     }
 
-    public sealed class RepoArgs : Pulumi.ResourceArgs
+    public sealed class RepoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// How this repository mirrors a repository managed by another service. Read-only field.
@@ -139,5 +139,6 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         public RepoArgs()
         {
         }
+        public static new RepoArgs Empty => new RepoArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Inputs
     /// <summary>
     /// CommonFeatureSpec contains Hub-wide configuration information
     /// </summary>
-    public sealed class CommonFeatureSpecArgs : Pulumi.ResourceArgs
+    public sealed class CommonFeatureSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Anthos Observability spec
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Inputs
         public CommonFeatureSpecArgs()
         {
         }
+        public static new CommonFeatureSpecArgs Empty => new CommonFeatureSpecArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Storage.V1
     }
 
 
-    public sealed class GetHmacKeyArgs : Pulumi.InvokeArgs
+    public sealed class GetHmacKeyArgs : global::Pulumi.InvokeArgs
     {
         [Input("accessId", required: true)]
         public string AccessId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         public GetHmacKeyArgs()
         {
         }
+        public static new GetHmacKeyArgs Empty => new GetHmacKeyArgs();
     }
 
-    public sealed class GetHmacKeyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHmacKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("accessId", required: true)]
         public Input<string> AccessId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         public GetHmacKeyInvokeArgs()
         {
         }
+        public static new GetHmacKeyInvokeArgs Empty => new GetHmacKeyInvokeArgs();
     }
 
 

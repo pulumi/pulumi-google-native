@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     }
 
 
-    public sealed class GetTransitionRouteGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetTransitionRouteGroupArgs : global::Pulumi.InvokeArgs
     {
         [Input("agentId", required: true)]
         public string AgentId { get; set; } = null!;
@@ -48,9 +48,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public GetTransitionRouteGroupArgs()
         {
         }
+        public static new GetTransitionRouteGroupArgs Empty => new GetTransitionRouteGroupArgs();
     }
 
-    public sealed class GetTransitionRouteGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTransitionRouteGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -73,6 +74,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public GetTransitionRouteGroupInvokeArgs()
         {
         }
+        public static new GetTransitionRouteGroupInvokeArgs Empty => new GetTransitionRouteGroupInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
     /// <summary>
     /// TargetVMDetails is a collection of details for creating a VM in a target Compute Engine project.
     /// </summary>
-    public sealed class TargetVMDetailsArgs : Pulumi.ResourceArgs
+    public sealed class TargetVMDetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Compute instance scheduling information (if empty default is used).
@@ -150,5 +150,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
         public TargetVMDetailsArgs()
         {
         }
+        public static new TargetVMDetailsArgs Empty => new TargetVMDetailsArgs();
     }
 }

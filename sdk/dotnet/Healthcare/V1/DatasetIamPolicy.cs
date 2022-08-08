@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1:DatasetIamPolicy")]
-    public partial class DatasetIamPolicy : Pulumi.CustomResource
+    public partial class DatasetIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         }
     }
 
-    public sealed class DatasetIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class DatasetIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public DatasetIamPolicyArgs()
         {
         }
+        public static new DatasetIamPolicyArgs Empty => new DatasetIamPolicyArgs();
     }
 }

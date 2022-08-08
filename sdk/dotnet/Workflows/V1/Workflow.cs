@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
     /// Creates a new workflow. If a workflow with the specified name already exists in the specified project and location, the long running operation will return ALREADY_EXISTS error.
     /// </summary>
     [GoogleNativeResourceType("google-native:workflows/v1:Workflow")]
-    public partial class Workflow : Pulumi.CustomResource
+    public partial class Workflow : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp of when the workflow was created.
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.Workflows.V1
         }
     }
 
-    public sealed class WorkflowArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
@@ -189,5 +189,6 @@ namespace Pulumi.GoogleNative.Workflows.V1
         public WorkflowArgs()
         {
         }
+        public static new WorkflowArgs Empty => new WorkflowArgs();
     }
 }

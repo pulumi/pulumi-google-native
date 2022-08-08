@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// A software recipe is a set of instructions for installing and configuring a piece of software. It consists of a set of artifacts that are downloaded, and a set of steps that install, configure, and/or update the software. Recipes support installing and updating software from artifacts in the following formats: Zip archive, Tar archive, Windows MSI, Debian package, and RPM package. Additionally, recipes support executing a script (either defined in a file or directly in this api) in bash, sh, cmd, and powershell. Updating a software recipe If a recipe is assigned to an instance and there is a recipe with the same name but a lower version already installed and the assigned state of the recipe is `UPDATED`, then the recipe is updated to the new version. Script Working Directories Each script or execution step is run in its own temporary directory which is deleted after completing the step.
     /// </summary>
-    public sealed class SoftwareRecipeArgs : Pulumi.ResourceArgs
+    public sealed class SoftwareRecipeArgs : global::Pulumi.ResourceArgs
     {
         [Input("artifacts")]
         private InputList<Inputs.SoftwareRecipeArtifactArgs>? _artifacts;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public SoftwareRecipeArgs()
         {
         }
+        public static new SoftwareRecipeArgs Empty => new SoftwareRecipeArgs();
     }
 }

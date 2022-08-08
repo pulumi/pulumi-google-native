@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Storage.V1
     }
 
 
-    public sealed class GetObjectAccessControlArgs : Pulumi.InvokeArgs
+    public sealed class GetObjectAccessControlArgs : global::Pulumi.InvokeArgs
     {
         [Input("bucket", required: true)]
         public string Bucket { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.Storage.V1
         public GetObjectAccessControlArgs()
         {
         }
+        public static new GetObjectAccessControlArgs Empty => new GetObjectAccessControlArgs();
     }
 
-    public sealed class GetObjectAccessControlInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetObjectAccessControlInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("bucket", required: true)]
         public Input<string> Bucket { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         public GetObjectAccessControlInvokeArgs()
         {
         }
+        public static new GetObjectAccessControlInvokeArgs Empty => new GetObjectAccessControlInvokeArgs();
     }
 
 

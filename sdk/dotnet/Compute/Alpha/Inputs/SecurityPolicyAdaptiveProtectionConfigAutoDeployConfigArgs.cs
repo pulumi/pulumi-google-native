@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Configuration options for Adaptive Protection auto-deploy feature.
     /// </summary>
-    public sealed class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("confidenceThreshold")]
         public Input<double>? ConfidenceThreshold { get; set; }
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs()
         {
         }
+        public static new SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs Empty => new SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs();
     }
 }

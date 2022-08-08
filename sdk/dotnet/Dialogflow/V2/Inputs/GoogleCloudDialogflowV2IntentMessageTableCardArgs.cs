@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// Table card for Actions on Google.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2IntentMessageTableCardArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2IntentMessageTableCardArgs : global::Pulumi.ResourceArgs
     {
         [Input("buttons")]
         private InputList<Inputs.GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs>? _buttons;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2IntentMessageTableCardArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2IntentMessageTableCardArgs Empty => new GoogleCloudDialogflowV2IntentMessageTableCardArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
     /// <summary>
     /// Associates `members`, or principals, with a `role`.
     /// </summary>
-    public sealed class BindingArgs : Pulumi.ResourceArgs
+    public sealed class BindingArgs : global::Pulumi.ResourceArgs
     {
         [Input("bindingId")]
         public Input<string>? BindingId { get; set; }
@@ -45,5 +45,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
         public BindingArgs()
         {
         }
+        public static new BindingArgs Empty => new BindingArgs();
     }
 }

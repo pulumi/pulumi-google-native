@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Inputs
     /// <summary>
     /// Configuration for using the free DNS zone provided by Google Domains as a `Registration`'s `dns_provider`. You cannot configure the DNS zone itself using the API. To configure the DNS zone, go to [Google Domains](https://domains.google/).
     /// </summary>
-    public sealed class GoogleDomainsDnsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDomainsDnsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The state of DS records for this domain. Used to enable or disable automatic DNSSEC.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Inputs
         public GoogleDomainsDnsArgs()
         {
         }
+        public static new GoogleDomainsDnsArgs Empty => new GoogleDomainsDnsArgs();
     }
 }

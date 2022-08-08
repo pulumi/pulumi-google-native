@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Initial State for shielded instance, these are public keys which are safe to store in public
     /// </summary>
-    public sealed class InitialStateConfigArgs : Pulumi.ResourceArgs
+    public sealed class InitialStateConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("dbs")]
         private InputList<Inputs.FileContentBufferArgs>? _dbs;
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public InitialStateConfigArgs()
         {
         }
+        public static new InitialStateConfigArgs Empty => new InitialStateConfigArgs();
     }
 }

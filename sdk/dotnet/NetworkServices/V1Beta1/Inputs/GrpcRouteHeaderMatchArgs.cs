@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
     /// <summary>
     /// A match against a collection of headers.
     /// </summary>
-    public sealed class GrpcRouteHeaderMatchArgs : Pulumi.ResourceArgs
+    public sealed class GrpcRouteHeaderMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key of the header.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public GrpcRouteHeaderMatchArgs()
         {
         }
+        public static new GrpcRouteHeaderMatchArgs Empty => new GrpcRouteHeaderMatchArgs();
     }
 }

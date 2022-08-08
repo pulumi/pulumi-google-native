@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Quota contains the essential parameters needed that can be applied on the resources, methods, API source combination associated with this API product. While Quota is optional, setting it prevents requests from exceeding the provisioned parameters.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1QuotaArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1QuotaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Time interval over which the number of request messages is calculated.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1QuotaArgs()
         {
         }
+        public static new GoogleCloudApigeeV1QuotaArgs Empty => new GoogleCloudApigeeV1QuotaArgs();
     }
 }

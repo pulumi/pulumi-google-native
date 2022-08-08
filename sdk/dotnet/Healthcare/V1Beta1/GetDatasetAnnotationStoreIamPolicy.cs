@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     }
 
 
-    public sealed class GetDatasetAnnotationStoreIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetDatasetAnnotationStoreIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotationStoreId", required: true)]
         public string AnnotationStoreId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public GetDatasetAnnotationStoreIamPolicyArgs()
         {
         }
+        public static new GetDatasetAnnotationStoreIamPolicyArgs Empty => new GetDatasetAnnotationStoreIamPolicyArgs();
     }
 
-    public sealed class GetDatasetAnnotationStoreIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatasetAnnotationStoreIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotationStoreId", required: true)]
         public Input<string> AnnotationStoreId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public GetDatasetAnnotationStoreIamPolicyInvokeArgs()
         {
         }
+        public static new GetDatasetAnnotationStoreIamPolicyInvokeArgs Empty => new GetDatasetAnnotationStoreIamPolicyInvokeArgs();
     }
 
 

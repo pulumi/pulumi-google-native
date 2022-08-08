@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetCanaryEvaluationArgs : Pulumi.InvokeArgs
+    public sealed class GetCanaryEvaluationArgs : global::Pulumi.InvokeArgs
     {
         [Input("canaryevaluationId", required: true)]
         public string CanaryevaluationId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetCanaryEvaluationArgs()
         {
         }
+        public static new GetCanaryEvaluationArgs Empty => new GetCanaryEvaluationArgs();
     }
 
-    public sealed class GetCanaryEvaluationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCanaryEvaluationInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("canaryevaluationId", required: true)]
         public Input<string> CanaryevaluationId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetCanaryEvaluationInvokeArgs()
         {
         }
+        public static new GetCanaryEvaluationInvokeArgs Empty => new GetCanaryEvaluationInvokeArgs();
     }
 
 

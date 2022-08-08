@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The bucket's uniform bucket-level access configuration.
     /// </summary>
-    public sealed class BucketIamConfigurationUniformBucketLevelAccessArgs : Pulumi.ResourceArgs
+    public sealed class BucketIamConfigurationUniformBucketLevelAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set, access is controlled only by bucket-level or above IAM policies.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketIamConfigurationUniformBucketLevelAccessArgs()
         {
         }
+        public static new BucketIamConfigurationUniformBucketLevelAccessArgs Empty => new BucketIamConfigurationUniformBucketLevelAccessArgs();
     }
 }

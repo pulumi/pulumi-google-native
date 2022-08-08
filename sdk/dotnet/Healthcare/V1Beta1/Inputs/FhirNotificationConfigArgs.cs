@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Contains the configuration for FHIR notifications.
     /// </summary>
-    public sealed class FhirNotificationConfigArgs : Pulumi.ResourceArgs
+    public sealed class FhirNotificationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging).
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public FhirNotificationConfigArgs()
         {
         }
+        public static new FhirNotificationConfigArgs Empty => new FhirNotificationConfigArgs();
     }
 }

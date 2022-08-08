@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Creates a TargetServer in the specified environment.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:TargetServer")]
-    public partial class TargetServer : Pulumi.CustomResource
+    public partial class TargetServer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. A human-readable description of this TargetServer.
@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class TargetServerArgs : Pulumi.ResourceArgs
+    public sealed class TargetServerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A human-readable description of this TargetServer.
@@ -164,5 +164,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public TargetServerArgs()
         {
         }
+        public static new TargetServerArgs Empty => new TargetServerArgs();
     }
 }

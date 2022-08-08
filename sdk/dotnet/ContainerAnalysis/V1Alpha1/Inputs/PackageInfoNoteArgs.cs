@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// PackageInfoNote represents an SPDX Package Information section: https://spdx.github.io/spdx-spec/3-package-information/
     /// </summary>
-    public sealed class PackageInfoNoteArgs : Pulumi.ResourceArgs
+    public sealed class PackageInfoNoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether the file content of this package has been available for or subjected to analysis when creating the SPDX document
@@ -132,5 +132,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public PackageInfoNoteArgs()
         {
         }
+        public static new PackageInfoNoteArgs Empty => new PackageInfoNoteArgs();
     }
 }

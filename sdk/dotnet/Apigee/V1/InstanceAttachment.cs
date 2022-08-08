@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:InstanceAttachment")]
-    public partial class InstanceAttachment : Pulumi.CustomResource
+    public partial class InstanceAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Time the attachment was created in milliseconds since epoch.
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class InstanceAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class InstanceAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the attached environment.
@@ -105,5 +105,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public InstanceAttachmentArgs()
         {
         }
+        public static new InstanceAttachmentArgs Empty => new InstanceAttachmentArgs();
     }
 }

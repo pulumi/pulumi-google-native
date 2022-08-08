@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// GPUSharingConfig represents the GPU sharing configuration for Hardware Accelerators.
     /// </summary>
-    public sealed class GPUSharingConfigArgs : Pulumi.ResourceArgs
+    public sealed class GPUSharingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of GPU sharing strategy to enable on the GPU node.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public GPUSharingConfigArgs()
         {
         }
+        public static new GPUSharingConfigArgs Empty => new GPUSharingConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Configuration of logging on a health check. If logging is enabled, logs will be exported to Stackdriver.
     /// </summary>
-    public sealed class HealthCheckLogConfigArgs : Pulumi.ResourceArgs
+    public sealed class HealthCheckLogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether or not to export logs. This is false by default, which means no health check logging will be done.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public HealthCheckLogConfigArgs()
         {
         }
+        public static new HealthCheckLogConfigArgs Empty => new HealthCheckLogConfigArgs();
     }
 }

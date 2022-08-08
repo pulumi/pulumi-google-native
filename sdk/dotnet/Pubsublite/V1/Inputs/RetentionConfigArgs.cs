@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsublite.V1.Inputs
     /// <summary>
     /// The settings for a topic's message retention.
     /// </summary>
-    public sealed class RetentionConfigArgs : Pulumi.ResourceArgs
+    public sealed class RetentionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Pubsublite.V1.Inputs
         public RetentionConfigArgs()
         {
         }
+        public static new RetentionConfigArgs Empty => new RetentionConfigArgs();
     }
 }

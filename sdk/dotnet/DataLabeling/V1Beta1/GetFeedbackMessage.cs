@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     }
 
 
-    public sealed class GetFeedbackMessageArgs : Pulumi.InvokeArgs
+    public sealed class GetFeedbackMessageArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotatedDatasetId", required: true)]
         public string AnnotatedDatasetId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public GetFeedbackMessageArgs()
         {
         }
+        public static new GetFeedbackMessageArgs Empty => new GetFeedbackMessageArgs();
     }
 
-    public sealed class GetFeedbackMessageInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFeedbackMessageInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("annotatedDatasetId", required: true)]
         public Input<string> AnnotatedDatasetId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public GetFeedbackMessageInvokeArgs()
         {
         }
+        public static new GetFeedbackMessageInvokeArgs Empty => new GetFeedbackMessageInvokeArgs();
     }
 
 

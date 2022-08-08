@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkconnectivity/v1alpha1:InternalRangeIamPolicy")]
-    public partial class InternalRangeIamPolicy : Pulumi.CustomResource
+    public partial class InternalRangeIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         }
     }
 
-    public sealed class InternalRangeIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class InternalRangeIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1Alpha1
         public InternalRangeIamPolicyArgs()
         {
         }
+        public static new InternalRangeIamPolicyArgs Empty => new InternalRangeIamPolicyArgs();
     }
 }

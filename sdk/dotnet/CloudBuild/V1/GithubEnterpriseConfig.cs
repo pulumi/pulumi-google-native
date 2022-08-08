@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     /// Create an association between a GCP project and a GitHub Enterprise server.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudbuild/v1:GithubEnterpriseConfig")]
-    public partial class GithubEnterpriseConfig : Pulumi.CustomResource
+    public partial class GithubEnterpriseConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The GitHub app id of the Cloud Build app on the GitHub Enterprise server.
@@ -135,7 +135,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         }
     }
 
-    public sealed class GithubEnterpriseConfigArgs : Pulumi.ResourceArgs
+    public sealed class GithubEnterpriseConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GitHub app id of the Cloud Build app on the GitHub Enterprise server.
@@ -206,5 +206,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public GithubEnterpriseConfigArgs()
         {
         }
+        public static new GithubEnterpriseConfigArgs Empty => new GithubEnterpriseConfigArgs();
     }
 }

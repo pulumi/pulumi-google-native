@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Configuration information for enabling Media Access Control security (Macsec) on this Interconnect between Google and your on-premises router.
     /// </summary>
-    public sealed class InterconnectMacsecArgs : Pulumi.ResourceArgs
+    public sealed class InterconnectMacsecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If set to true, the Interconnect will be configured with a should-secure MACsec security policy, that allows the Google router to fallback to cleartext traffic if the MKA session cannot be established. By default, the Interconnect will be configured with a must-secure security policy that drops all traffic if the MKA session cannot be established with your router.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public InterconnectMacsecArgs()
         {
         }
+        public static new InterconnectMacsecArgs Empty => new InterconnectMacsecArgs();
     }
 }

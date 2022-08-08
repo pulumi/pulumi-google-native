@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// The information about the HTTP Cookie on which the hash function is based for load balancing policies that use a consistent hash.
     /// </summary>
-    public sealed class ConsistentHashLoadBalancerSettingsHttpCookieArgs : Pulumi.ResourceArgs
+    public sealed class ConsistentHashLoadBalancerSettingsHttpCookieArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the cookie.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public ConsistentHashLoadBalancerSettingsHttpCookieArgs()
         {
         }
+        public static new ConsistentHashLoadBalancerSettingsHttpCookieArgs Empty => new ConsistentHashLoadBalancerSettingsHttpCookieArgs();
     }
 }

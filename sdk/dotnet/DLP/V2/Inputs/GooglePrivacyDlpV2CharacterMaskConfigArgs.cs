@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Partially mask a string by replacing a given number of characters with a fixed character. Masking can start from the beginning or end of the string. This can be used on data of any type (numbers, longs, and so on) and when de-identifying structured data we'll attempt to preserve the original data's type. (This allows you to take a long like 123 and modify it to a string like **3.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2CharacterMaskConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2CharacterMaskConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("charactersToIgnore")]
         private InputList<Inputs.GooglePrivacyDlpV2CharsToIgnoreArgs>? _charactersToIgnore;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2CharacterMaskConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2CharacterMaskConfigArgs Empty => new GooglePrivacyDlpV2CharacterMaskConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Message defining a field of a BigQuery table.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2BigQueryFieldArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2BigQueryFieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Designated field in the BigQuery table.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2BigQueryFieldArgs()
         {
         }
+        public static new GooglePrivacyDlpV2BigQueryFieldArgs Empty => new GooglePrivacyDlpV2BigQueryFieldArgs();
     }
 }

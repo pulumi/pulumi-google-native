@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
     /// Creates a new subscription.
     /// </summary>
     [GoogleNativeResourceType("google-native:pubsublite/v1:Subscription")]
-    public partial class Subscription : Pulumi.CustomResource
+    public partial class Subscription : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The settings for this subscription's message delivery.
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         }
     }
 
-    public sealed class SubscriptionArgs : Pulumi.ResourceArgs
+    public sealed class SubscriptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The settings for this subscription's message delivery.
@@ -141,5 +141,6 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         public SubscriptionArgs()
         {
         }
+        public static new SubscriptionArgs Empty => new SubscriptionArgs();
     }
 }

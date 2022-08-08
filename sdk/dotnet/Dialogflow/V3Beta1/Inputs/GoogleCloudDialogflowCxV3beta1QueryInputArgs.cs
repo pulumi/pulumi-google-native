@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Represents the query input. It can contain one of: 1. A conversational query in the form of text. 2. An intent query that specifies which intent to trigger. 3. Natural language speech audio to be processed. 4. An event to be triggered. 
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1QueryInputArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1QueryInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The natural language speech audio to be processed.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1QueryInputArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1QueryInputArgs Empty => new GoogleCloudDialogflowCxV3beta1QueryInputArgs();
     }
 }

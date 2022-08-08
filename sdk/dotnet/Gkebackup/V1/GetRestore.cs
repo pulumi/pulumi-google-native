@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     }
 
 
-    public sealed class GetRestoreArgs : Pulumi.InvokeArgs
+    public sealed class GetRestoreArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public GetRestoreArgs()
         {
         }
+        public static new GetRestoreArgs Empty => new GetRestoreArgs();
     }
 
-    public sealed class GetRestoreInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRestoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public GetRestoreInvokeArgs()
         {
         }
+        public static new GetRestoreInvokeArgs Empty => new GetRestoreInvokeArgs();
     }
 
 
@@ -68,11 +70,11 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     public sealed class GetRestoreResult
     {
         /// <summary>
-        /// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*/locations/*/backupPlans/*/backups/*.
+        /// Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*/locations/*/backupPlans/*/backups/*`.
         /// </summary>
         public readonly string Backup;
         /// <summary>
-        /// The target cluster into which this Restore will restore data. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/* Inherited from parent RestorePlan's cluster value.
+        /// The target cluster into which this Restore will restore data. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*` Inherited from parent RestorePlan's cluster value.
         /// </summary>
         public readonly string Cluster;
         /// <summary>
@@ -96,7 +98,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// The full name of the Restore resource. Format: projects/*/locations/*/restorePlans/*/restores/*
+        /// The full name of the Restore resource. Format: `projects/*/locations/*/restorePlans/*/restores/*`
         /// </summary>
         public readonly string Name;
         /// <summary>

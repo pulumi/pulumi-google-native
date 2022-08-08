@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1.Inputs
     /// <summary>
     /// ApplianceCluster contains information specific to GDC Edge Appliance Clusters.
     /// </summary>
-    public sealed class ApplianceClusterArgs : Pulumi.ResourceArgs
+    public sealed class ApplianceClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. Self-link of the GCP resource for the Appliance Cluster. For example: //transferappliance.googleapis.com/projects/my-project/locations/us-west1-a/appliances/my-appliance
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta1.Inputs
         public ApplianceClusterArgs()
         {
         }
+        public static new ApplianceClusterArgs Empty => new ApplianceClusterArgs();
     }
 }

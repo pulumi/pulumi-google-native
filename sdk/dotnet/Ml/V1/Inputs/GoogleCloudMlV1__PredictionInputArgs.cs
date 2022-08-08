@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents input parameters for a prediction job.
     /// </summary>
-    public sealed class GoogleCloudMlV1__PredictionInputArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__PredictionInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Number of records per batch, defaults to 64. The service will buffer batch_size number of records in memory before invoking one Tensorflow prediction call internally. So take the record size and memory available into consideration when setting this parameter.
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__PredictionInputArgs()
         {
         }
+        public static new GoogleCloudMlV1__PredictionInputArgs Empty => new GoogleCloudMlV1__PredictionInputArgs();
     }
 }

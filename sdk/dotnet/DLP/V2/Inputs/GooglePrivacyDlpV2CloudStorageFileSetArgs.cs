@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Message representing a set of files in Cloud Storage.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2CloudStorageFileSetArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2CloudStorageFileSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The url, in the format `gs:///`. Trailing wildcard in the path is allowed.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2CloudStorageFileSetArgs()
         {
         }
+        public static new GooglePrivacyDlpV2CloudStorageFileSetArgs Empty => new GooglePrivacyDlpV2CloudStorageFileSetArgs();
     }
 }

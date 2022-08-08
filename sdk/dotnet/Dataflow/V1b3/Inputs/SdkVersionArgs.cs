@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// The version of the SDK used to run the job.
     /// </summary>
-    public sealed class SdkVersionArgs : Pulumi.ResourceArgs
+    public sealed class SdkVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The support status for this SDK version.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public SdkVersionArgs()
         {
         }
+        public static new SdkVersionArgs Empty => new SdkVersionArgs();
     }
 }

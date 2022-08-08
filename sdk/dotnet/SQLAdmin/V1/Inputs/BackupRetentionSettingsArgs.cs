@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// We currently only support backup retention by specifying the number of backups we will retain.
     /// </summary>
-    public sealed class BackupRetentionSettingsArgs : Pulumi.ResourceArgs
+    public sealed class BackupRetentionSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Depending on the value of retention_unit, this is used to determine if a backup needs to be deleted. If retention_unit is 'COUNT', we will retain this many backups.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public BackupRetentionSettingsArgs()
         {
         }
+        public static new BackupRetentionSettingsArgs Empty => new BackupRetentionSettingsArgs();
     }
 }

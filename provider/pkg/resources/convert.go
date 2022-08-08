@@ -112,6 +112,14 @@ func (k *SdkShapeConverter) SdkPropertiesToRequestBody(props map[string]CloudAPI
 		}
 
 		if value, has := values[sdkName]; has {
+			if prop.Flatten {
+				child := k.convertPropValue(&p, value, state[sdkName], k.SdkPropertiesToRequestBody)
+				asMap := child.(map[string]interface{})
+				for k, v := range asMap {
+					parent[k] = v
+				}
+				continue
+			}
 			if prop.Container != "" {
 				if v, has := body[prop.Container].(map[string]interface{}); has {
 					parent = v

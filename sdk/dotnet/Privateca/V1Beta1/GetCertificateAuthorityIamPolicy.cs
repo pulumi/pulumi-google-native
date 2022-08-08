@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
     }
 
 
-    public sealed class GetCertificateAuthorityIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetCertificateAuthorityIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("certificateAuthorityId", required: true)]
         public string CertificateAuthorityId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public GetCertificateAuthorityIamPolicyArgs()
         {
         }
+        public static new GetCertificateAuthorityIamPolicyArgs Empty => new GetCertificateAuthorityIamPolicyArgs();
     }
 
-    public sealed class GetCertificateAuthorityIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCertificateAuthorityIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("certificateAuthorityId", required: true)]
         public Input<string> CertificateAuthorityId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public GetCertificateAuthorityIamPolicyInvokeArgs()
         {
         }
+        public static new GetCertificateAuthorityIamPolicyInvokeArgs Empty => new GetCertificateAuthorityIamPolicyInvokeArgs();
     }
 
 

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:vmmigration/v1:CutoverJob")]
-    public partial class CutoverJob : Pulumi.CustomResource
+    public partial class CutoverJob : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Details of the target VM in Compute Engine.
@@ -147,7 +147,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         }
     }
 
-    public sealed class CutoverJobArgs : Pulumi.ResourceArgs
+    public sealed class CutoverJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The cutover job identifier.
@@ -176,5 +176,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         public CutoverJobArgs()
         {
         }
+        public static new CutoverJobArgs Empty => new CutoverJobArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
     /// Creates a new User data mapping in the parent consent store.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1:UserDataMapping")]
-    public partial class UserDataMapping : Pulumi.CustomResource
+    public partial class UserDataMapping : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Indicates the time when this mapping was archived.
@@ -113,7 +113,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         }
     }
 
-    public sealed class UserDataMappingArgs : Pulumi.ResourceArgs
+    public sealed class UserDataMappingArgs : global::Pulumi.ResourceArgs
     {
         [Input("consentStoreId", required: true)]
         public Input<string> ConsentStoreId { get; set; } = null!;
@@ -160,5 +160,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         public UserDataMappingArgs()
         {
         }
+        public static new UserDataMappingArgs Empty => new UserDataMappingArgs();
     }
 }

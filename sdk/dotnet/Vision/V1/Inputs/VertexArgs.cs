@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Vision.V1.Inputs
     /// <summary>
     /// A vertex represents a 2D point in the image. NOTE: the vertex coordinates are in the same scale as the original image.
     /// </summary>
-    public sealed class VertexArgs : Pulumi.ResourceArgs
+    public sealed class VertexArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// X coordinate.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Vision.V1.Inputs
         public VertexArgs()
         {
         }
+        public static new VertexArgs Empty => new VertexArgs();
     }
 }

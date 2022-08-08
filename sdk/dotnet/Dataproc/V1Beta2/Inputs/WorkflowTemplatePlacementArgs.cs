@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// Specifies workflow execution target.Either managed_cluster or cluster_selector is required.
     /// </summary>
-    public sealed class WorkflowTemplatePlacementArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplatePlacementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A selector that chooses target cluster for jobs based on metadata.The selector is evaluated at the time each job is submitted.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public WorkflowTemplatePlacementArgs()
         {
         }
+        public static new WorkflowTemplatePlacementArgs Empty => new WorkflowTemplatePlacementArgs();
     }
 }

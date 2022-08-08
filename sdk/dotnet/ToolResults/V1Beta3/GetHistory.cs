@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
     }
 
 
-    public sealed class GetHistoryArgs : Pulumi.InvokeArgs
+    public sealed class GetHistoryArgs : global::Pulumi.InvokeArgs
     {
         [Input("historyId", required: true)]
         public string HistoryId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         public GetHistoryArgs()
         {
         }
+        public static new GetHistoryArgs Empty => new GetHistoryArgs();
     }
 
-    public sealed class GetHistoryInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHistoryInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("historyId", required: true)]
         public Input<string> HistoryId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         public GetHistoryInvokeArgs()
         {
         }
+        public static new GetHistoryInvokeArgs Empty => new GetHistoryInvokeArgs();
     }
 
 

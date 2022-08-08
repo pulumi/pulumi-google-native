@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Entry overview fields for rich text descriptions of entries.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1EntryOverviewArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1EntryOverviewArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1EntryOverviewArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1EntryOverviewArgs Empty => new GoogleCloudDatacatalogV1EntryOverviewArgs();
     }
 }

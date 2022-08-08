@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// Metadata for article suggestion models.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Type of the article suggestion model. If not provided, model_type is used.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs Empty => new GoogleCloudDialogflowV2ArticleSuggestionModelMetadataArgs();
     }
 }

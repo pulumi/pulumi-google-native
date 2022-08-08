@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     /// Creates an image in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:Image")]
-    public partial class Image : Pulumi.CustomResource
+    public partial class Image : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The architecture of the image. Valid values are ARM64 or X86_64.
@@ -263,7 +263,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
     }
 
-    public sealed class ImageArgs : Pulumi.ResourceArgs
+    public sealed class ImageArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The architecture of the image. Valid values are ARM64 or X86_64.
@@ -445,5 +445,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public ImageArgs()
         {
         }
+        public static new ImageArgs Empty => new ImageArgs();
     }
 }

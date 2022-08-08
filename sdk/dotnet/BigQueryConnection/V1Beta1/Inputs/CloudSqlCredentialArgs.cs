@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1.Inputs
     /// <summary>
     /// Credential info for the Cloud SQL.
     /// </summary>
-    public sealed class CloudSqlCredentialArgs : Pulumi.ResourceArgs
+    public sealed class CloudSqlCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The password for the credential.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1.Inputs
         public CloudSqlCredentialArgs()
         {
         }
+        public static new CloudSqlCredentialArgs Empty => new CloudSqlCredentialArgs();
     }
 }

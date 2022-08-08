@@ -19,6 +19,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"net/http"
 	"net/http/httputil"
@@ -93,12 +94,15 @@ func (c *GoogleClient) OAuth2Token() *oauth2.Token { return c.token }
 // TODO: This is taken from the TF provider (cut down to a minimal viable thing). We need to make it "good".
 func (c *GoogleClient) RequestWithTimeout(
 	method, rawurl string,
-	body map[string]interface{},
+	contentType string,
+	body interface{},
 	timeout time.Duration,
 ) (map[string]interface{}, error) {
 	reqHeaders := make(http.Header)
 	reqHeaders.Set("User-Agent", c.userAgent)
-	reqHeaders.Set("Content-Type", "application/json")
+	if contentType == "" {
+		contentType = "application/json"
+	}
 
 	if timeout == 0 {
 		timeout = time.Duration(1) * time.Hour
@@ -106,23 +110,30 @@ func (c *GoogleClient) RequestWithTimeout(
 
 	var res *http.Response
 	var buf bytes.Buffer
-	if body != nil {
+
+	if body != nil && contentType == "application/json" {
 		err := json.NewEncoder(&buf).Encode(body)
 		if err != nil {
 			return nil, err
 		}
+		rawurl, err = addQueryParams(rawurl, map[string]string{"alt": "json"})
+		if err != nil {
+			return nil, err
+		}
+	} else if body != nil {
+		_, err := io.Copy(&buf, bytes.NewReader(body.([]byte)))
+		if err != nil {
+			return nil, err
+		}
 	}
+	reqHeaders.Set("Content-Type", contentType)
 
 	if err := c.refreshClientCredentials(context.Background()); err != nil {
 		return nil, err
 	}
 
-	u, err := addQueryParams(rawurl, map[string]string{"alt": "json"})
-	if err != nil {
-		return nil, err
-	}
 	// TODO: request not handling timeout
-	req, err := http.NewRequest(method, u, &buf)
+	req, err := http.NewRequest(method, rawurl, &buf)
 	if err != nil {
 		return nil, err
 	}

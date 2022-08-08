@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// A package managed by YUM. - install: `yum -y install package` - remove: `yum -y remove package`
     /// </summary>
-    public sealed class OSPolicyResourcePackageResourceYUMArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourcePackageResourceYUMArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Package name.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public OSPolicyResourcePackageResourceYUMArgs()
         {
         }
+        public static new OSPolicyResourcePackageResourceYUMArgs Empty => new OSPolicyResourcePackageResourceYUMArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetHttpsHealthCheckArgs : Pulumi.InvokeArgs
+    public sealed class GetHttpsHealthCheckArgs : global::Pulumi.InvokeArgs
     {
         [Input("httpsHealthCheck", required: true)]
         public string HttpsHealthCheck { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetHttpsHealthCheckArgs()
         {
         }
+        public static new GetHttpsHealthCheckArgs Empty => new GetHttpsHealthCheckArgs();
     }
 
-    public sealed class GetHttpsHealthCheckInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetHttpsHealthCheckInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("httpsHealthCheck", required: true)]
         public Input<string> HttpsHealthCheck { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetHttpsHealthCheckInvokeArgs()
         {
         }
+        public static new GetHttpsHealthCheckInvokeArgs Empty => new GetHttpsHealthCheckInvokeArgs();
     }
 
 

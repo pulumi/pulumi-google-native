@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Description of the type, names/ids, and input/outputs for a transform.
     /// </summary>
-    public sealed class TransformSummaryArgs : Pulumi.ResourceArgs
+    public sealed class TransformSummaryArgs : global::Pulumi.ResourceArgs
     {
         [Input("displayData")]
         private InputList<Inputs.DisplayDataArgs>? _displayData;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public TransformSummaryArgs()
         {
         }
+        public static new TransformSummaryArgs Empty => new TransformSummaryArgs();
     }
 }

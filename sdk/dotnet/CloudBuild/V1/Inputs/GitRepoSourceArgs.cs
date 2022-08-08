@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// GitRepoSource describes a repo and ref of a code repository.
     /// </summary>
-    public sealed class GitRepoSourceArgs : Pulumi.ResourceArgs
+    public sealed class GitRepoSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public GitRepoSourceArgs()
         {
         }
+        public static new GitRepoSourceArgs Empty => new GitRepoSourceArgs();
     }
 }

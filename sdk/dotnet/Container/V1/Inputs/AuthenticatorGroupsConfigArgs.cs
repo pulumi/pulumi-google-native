@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Configuration for returning group information from authenticators.
     /// </summary>
-    public sealed class AuthenticatorGroupsConfigArgs : Pulumi.ResourceArgs
+    public sealed class AuthenticatorGroupsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether this cluster should return group membership lookups during authentication using a group of security groups.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public AuthenticatorGroupsConfigArgs()
         {
         }
+        public static new AuthenticatorGroupsConfigArgs Empty => new AuthenticatorGroupsConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// A step in the build pipeline.
     /// </summary>
-    public sealed class BuildStepArgs : Pulumi.ResourceArgs
+    public sealed class BuildStepArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<string>? _args;
@@ -114,5 +114,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public BuildStepArgs()
         {
         }
+        public static new BuildStepArgs Empty => new BuildStepArgs();
     }
 }

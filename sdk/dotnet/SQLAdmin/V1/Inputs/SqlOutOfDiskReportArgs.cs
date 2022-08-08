@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// This message wraps up the information written by out-of-disk detection job.
     /// </summary>
-    public sealed class SqlOutOfDiskReportArgs : Pulumi.ResourceArgs
+    public sealed class SqlOutOfDiskReportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The minimum recommended increase size in GigaBytes This field is consumed by the frontend * Writers: * the proactive database wellness job for OOD. * Readers:
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public SqlOutOfDiskReportArgs()
         {
         }
+        public static new SqlOutOfDiskReportArgs Empty => new SqlOutOfDiskReportArgs();
     }
 }

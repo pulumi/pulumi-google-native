@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
     /// <summary>
     /// **Anthos Observability**: Spec
     /// </summary>
-    public sealed class AnthosObservabilityFeatureSpecArgs : Pulumi.ResourceArgs
+    public sealed class AnthosObservabilityFeatureSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// default membership spec for unconfigured memberships
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         public AnthosObservabilityFeatureSpecArgs()
         {
         }
+        public static new AnthosObservabilityFeatureSpecArgs Empty => new AnthosObservabilityFeatureSpecArgs();
     }
 }

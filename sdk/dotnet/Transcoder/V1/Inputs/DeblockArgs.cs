@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Deblock preprocessing configuration. **Note:** This configuration is not supported.
     /// </summary>
-    public sealed class DeblockArgs : Pulumi.ResourceArgs
+    public sealed class DeblockArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable deblocker. The default is `false`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public DeblockArgs()
         {
         }
+        public static new DeblockArgs Empty => new DeblockArgs();
     }
 }

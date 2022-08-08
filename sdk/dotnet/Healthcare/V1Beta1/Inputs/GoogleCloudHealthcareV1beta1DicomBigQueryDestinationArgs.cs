@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// The BigQuery table where the server writes output.
     /// </summary>
-    public sealed class GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Use `write_disposition` instead. If `write_disposition` is specified, this parameter is ignored. force=false is equivalent to write_disposition=WRITE_EMPTY and force=true is equivalent to write_disposition=WRITE_TRUNCATE.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs()
         {
         }
+        public static new GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs Empty => new GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs();
     }
 }

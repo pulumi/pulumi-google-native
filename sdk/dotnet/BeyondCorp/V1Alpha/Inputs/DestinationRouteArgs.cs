@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
     /// <summary>
     /// The setting used to configure ClientGateways. It is adding routes to the client's routing table after the connection is established.
     /// </summary>
-    public sealed class DestinationRouteArgs : Pulumi.ResourceArgs
+    public sealed class DestinationRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The network address of the subnet for which the packet is routed to the ClientGateway.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
         public DestinationRouteArgs()
         {
         }
+        public static new DestinationRouteArgs Empty => new DestinationRouteArgs();
     }
 }

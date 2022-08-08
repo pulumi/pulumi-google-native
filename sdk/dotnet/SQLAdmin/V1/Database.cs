@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
     /// Inserts a resource containing information about a database inside a Cloud SQL instance.
     /// </summary>
     [GoogleNativeResourceType("google-native:sqladmin/v1:Database")]
-    public partial class Database : Pulumi.CustomResource
+    public partial class Database : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The Cloud SQL charset value.
@@ -108,7 +108,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         }
     }
 
-    public sealed class DatabaseArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Cloud SQL charset value.
@@ -164,5 +164,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public DatabaseArgs()
         {
         }
+        public static new DatabaseArgs Empty => new DatabaseArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     /// <summary>
     /// MySQL source configuration
     /// </summary>
-    public sealed class MysqlSourceConfigArgs : Pulumi.ResourceArgs
+    public sealed class MysqlSourceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// MySQL objects to exclude from the stream.
@@ -27,8 +27,15 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         [Input("includeObjects")]
         public Input<Inputs.MysqlRdbmsArgs>? IncludeObjects { get; set; }
 
+        /// <summary>
+        /// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        /// </summary>
+        [Input("maxConcurrentCdcTasks")]
+        public Input<int>? MaxConcurrentCdcTasks { get; set; }
+
         public MysqlSourceConfigArgs()
         {
         }
+        public static new MysqlSourceConfigArgs Empty => new MysqlSourceConfigArgs();
     }
 }

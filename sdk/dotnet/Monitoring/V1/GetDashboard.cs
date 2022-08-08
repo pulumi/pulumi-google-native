@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1
     }
 
 
-    public sealed class GetDashboardArgs : Pulumi.InvokeArgs
+    public sealed class GetDashboardArgs : global::Pulumi.InvokeArgs
     {
         [Input("dashboardId", required: true)]
         public string DashboardId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         public GetDashboardArgs()
         {
         }
+        public static new GetDashboardArgs Empty => new GetDashboardArgs();
     }
 
-    public sealed class GetDashboardInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDashboardInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("dashboardId", required: true)]
         public Input<string> DashboardId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         public GetDashboardInvokeArgs()
         {
         }
+        public static new GetDashboardInvokeArgs Empty => new GetDashboardInvokeArgs();
     }
 
 

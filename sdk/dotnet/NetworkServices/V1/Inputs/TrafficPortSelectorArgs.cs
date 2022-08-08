@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
     /// <summary>
     /// Specification of a port-based selector.
     /// </summary>
-    public sealed class TrafficPortSelectorArgs : Pulumi.ResourceArgs
+    public sealed class TrafficPortSelectorArgs : global::Pulumi.ResourceArgs
     {
         [Input("ports")]
         private InputList<string>? _ports;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
         public TrafficPortSelectorArgs()
         {
         }
+        public static new TrafficPortSelectorArgs Empty => new TrafficPortSelectorArgs();
     }
 }

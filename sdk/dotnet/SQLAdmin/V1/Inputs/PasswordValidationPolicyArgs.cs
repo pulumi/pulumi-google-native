@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// Database instance local user password validation policy
     /// </summary>
-    public sealed class PasswordValidationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class PasswordValidationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The complexity of the password.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public PasswordValidationPolicyArgs()
         {
         }
+        public static new PasswordValidationPolicyArgs Empty => new PasswordValidationPolicyArgs();
     }
 }

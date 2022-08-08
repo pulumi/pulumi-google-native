@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Message containing what to include in the cache key for a request for Cloud CDN.
     /// </summary>
-    public sealed class BackendBucketCdnPolicyCacheKeyPolicyArgs : Pulumi.ResourceArgs
+    public sealed class BackendBucketCdnPolicyCacheKeyPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("includeHttpHeaders")]
         private InputList<string>? _includeHttpHeaders;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public BackendBucketCdnPolicyCacheKeyPolicyArgs()
         {
         }
+        public static new BackendBucketCdnPolicyCacheKeyPolicyArgs Empty => new BackendBucketCdnPolicyCacheKeyPolicyArgs();
     }
 }

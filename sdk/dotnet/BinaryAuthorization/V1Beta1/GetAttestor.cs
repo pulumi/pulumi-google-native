@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
     }
 
 
-    public sealed class GetAttestorArgs : Pulumi.InvokeArgs
+    public sealed class GetAttestorArgs : global::Pulumi.InvokeArgs
     {
         [Input("attestorId", required: true)]
         public string AttestorId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         public GetAttestorArgs()
         {
         }
+        public static new GetAttestorArgs Empty => new GetAttestorArgs();
     }
 
-    public sealed class GetAttestorInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAttestorInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("attestorId", required: true)]
         public Input<string> AttestorId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1
         public GetAttestorInvokeArgs()
         {
         }
+        public static new GetAttestorInvokeArgs Empty => new GetAttestorInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Inputs
     /// <summary>
     /// File share configuration for the instance.
     /// </summary>
-    public sealed class FileShareConfigArgs : Pulumi.ResourceArgs
+    public sealed class FileShareConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.File.V1Beta1.Inputs
         public FileShareConfigArgs()
         {
         }
+        public static new FileShareConfigArgs Empty => new FileShareConfigArgs();
     }
 }

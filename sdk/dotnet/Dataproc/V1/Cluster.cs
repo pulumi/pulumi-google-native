@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataproc/v1:Cluster")]
-    public partial class Cluster : Pulumi.CustomResource
+    public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. Failure action when primary worker creation fails.
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         }
     }
 
-    public sealed class ClusterArgs : Pulumi.ResourceArgs
+    public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Failure action when primary worker creation fails.
@@ -186,5 +186,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public ClusterArgs()
         {
         }
+        public static new ClusterArgs Empty => new ClusterArgs();
     }
 }

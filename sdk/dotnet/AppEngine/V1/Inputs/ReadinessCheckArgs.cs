@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
     /// <summary>
     /// Readiness checking configuration for VM instances. Unhealthy instances are removed from traffic rotation.
     /// </summary>
-    public sealed class ReadinessCheckArgs : Pulumi.ResourceArgs
+    public sealed class ReadinessCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A maximum time limit on application initialization, measured from moment the application successfully replies to a healthcheck until it is ready to serve traffic.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         public ReadinessCheckArgs()
         {
         }
+        public static new ReadinessCheckArgs Empty => new ReadinessCheckArgs();
     }
 }

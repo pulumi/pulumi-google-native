@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration options for Istio addon.
     /// </summary>
-    public sealed class IstioConfigArgs : Pulumi.ResourceArgs
+    public sealed class IstioConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The specified Istio auth mode, either none, or mutual TLS.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public IstioConfigArgs()
         {
         }
+        public static new IstioConfigArgs Empty => new IstioConfigArgs();
     }
 }

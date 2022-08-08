@@ -751,6 +751,21 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 	}
 
+	if strings.Contains(dd.createMethod.Description, "multipart/form-data") && dd.createMethod.Request.Ref == "GoogleApiHttpBody" {
+		resourceMeta.FormDataUpload = resources.FormDataUpload{
+			FormFields: map[string]resources.CloudAPIProperty{
+				"data": {},
+				"file": {},
+			},
+		}
+		inputProperties["file"] = schema.PropertySpec{
+			Description: "File to upload.",
+			TypeSpec: schema.TypeSpec{
+				Ref: "pulumi.json#/Asset",
+			},
+		}
+	}
+
 	description := dd.createMethod.Description
 
 	// Apply auto-naming.

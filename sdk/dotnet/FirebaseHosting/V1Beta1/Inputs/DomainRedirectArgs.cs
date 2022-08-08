@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Inputs
     /// <summary>
     /// Defines the behavior of a domain-level redirect. Domain redirects preserve the path of the redirect but replace the requested domain with the one specified in the redirect configuration.
     /// </summary>
-    public sealed class DomainRedirectArgs : Pulumi.ResourceArgs
+    public sealed class DomainRedirectArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The domain name to redirect to.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1.Inputs
         public DomainRedirectArgs()
         {
         }
+        public static new DomainRedirectArgs Empty => new DomainRedirectArgs();
     }
 }

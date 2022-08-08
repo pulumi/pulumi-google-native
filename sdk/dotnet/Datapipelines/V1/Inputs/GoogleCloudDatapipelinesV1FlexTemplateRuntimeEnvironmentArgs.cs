@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
     /// <summary>
     /// The environment values to be set at runtime for a Flex Template.
     /// </summary>
-    public sealed class GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalExperiments")]
         private InputList<string>? _additionalExperiments;
@@ -126,5 +126,6 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
         public GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs()
         {
         }
+        public static new GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs Empty => new GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs();
     }
 }

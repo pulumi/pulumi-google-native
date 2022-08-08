@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource.
     /// </summary>
-    public sealed class AnalysisCompletedArgs : Pulumi.ResourceArgs
+    public sealed class AnalysisCompletedArgs : global::Pulumi.ResourceArgs
     {
         [Input("analysisType")]
         private InputList<string>? _analysisType;
@@ -26,5 +26,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public AnalysisCompletedArgs()
         {
         }
+        public static new AnalysisCompletedArgs Empty => new AnalysisCompletedArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetNatAddressArgs : Pulumi.InvokeArgs
+    public sealed class GetNatAddressArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetNatAddressArgs()
         {
         }
+        public static new GetNatAddressArgs Empty => new GetNatAddressArgs();
     }
 
-    public sealed class GetNatAddressInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNatAddressInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetNatAddressInvokeArgs()
         {
         }
+        public static new GetNatAddressInvokeArgs Empty => new GetNatAddressInvokeArgs();
     }
 
 

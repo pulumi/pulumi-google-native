@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
     /// <summary>
     /// A definition of a matcher that selects endpoints to which the policies should be applied.
     /// </summary>
-    public sealed class EndpointMatcherArgs : Pulumi.ResourceArgs
+    public sealed class EndpointMatcherArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The matcher is based on node metadata presented by xDS clients.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public EndpointMatcherArgs()
         {
         }
+        public static new EndpointMatcherArgs Empty => new EndpointMatcherArgs();
     }
 }

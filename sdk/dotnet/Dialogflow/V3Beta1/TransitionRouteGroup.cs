@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     /// Creates an TransitionRouteGroup in the specified flow. Note: You should always train a flow prior to sending it queries. See the [training documentation](https://cloud.google.com/dialogflow/cx/docs/concept/training).
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3beta1:TransitionRouteGroup")]
-    public partial class TransitionRouteGroup : Pulumi.CustomResource
+    public partial class TransitionRouteGroup : global::Pulumi.CustomResource
     {
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         }
     }
 
-    public sealed class TransitionRouteGroupArgs : Pulumi.ResourceArgs
+    public sealed class TransitionRouteGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -148,5 +148,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public TransitionRouteGroupArgs()
         {
         }
+        public static new TransitionRouteGroupArgs Empty => new TransitionRouteGroupArgs();
     }
 }

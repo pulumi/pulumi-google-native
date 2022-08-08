@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Cloud VPC Network used to run the infrastructure.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs()
         {
         }
+        public static new GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs Empty => new GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs();
     }
 }

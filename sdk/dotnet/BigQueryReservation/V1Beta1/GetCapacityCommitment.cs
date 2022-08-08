@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
     }
 
 
-    public sealed class GetCapacityCommitmentArgs : Pulumi.InvokeArgs
+    public sealed class GetCapacityCommitmentArgs : global::Pulumi.InvokeArgs
     {
         [Input("capacityCommitmentId", required: true)]
         public string CapacityCommitmentId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
         public GetCapacityCommitmentArgs()
         {
         }
+        public static new GetCapacityCommitmentArgs Empty => new GetCapacityCommitmentArgs();
     }
 
-    public sealed class GetCapacityCommitmentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCapacityCommitmentInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("capacityCommitmentId", required: true)]
         public Input<string> CapacityCommitmentId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
         public GetCapacityCommitmentInvokeArgs()
         {
         }
+        public static new GetCapacityCommitmentInvokeArgs Empty => new GetCapacityCommitmentInvokeArgs();
     }
 
 

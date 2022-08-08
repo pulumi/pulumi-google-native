@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A chart that displays alert policy data.
     /// </summary>
-    public sealed class AlertChartArgs : Pulumi.ResourceArgs
+    public sealed class AlertChartArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] 
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public AlertChartArgs()
         {
         }
+        public static new AlertChartArgs Empty => new AlertChartArgs();
     }
 }

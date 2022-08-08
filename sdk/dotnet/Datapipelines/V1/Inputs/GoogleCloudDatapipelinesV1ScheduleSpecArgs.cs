@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
     /// <summary>
     /// Details of the schedule the pipeline runs on.
     /// </summary>
-    public sealed class GoogleCloudDatapipelinesV1ScheduleSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatapipelinesV1ScheduleSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Unix-cron format of the schedule. This information is retrieved from the linked Cloud Scheduler.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Datapipelines.V1.Inputs
         public GoogleCloudDatapipelinesV1ScheduleSpecArgs()
         {
         }
+        public static new GoogleCloudDatapipelinesV1ScheduleSpecArgs Empty => new GoogleCloudDatapipelinesV1ScheduleSpecArgs();
     }
 }

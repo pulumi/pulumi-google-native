@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
     }
 
 
-    public sealed class GetTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetTemplateArgs : global::Pulumi.InvokeArgs
     {
         [Input("gcsPath", required: true)]
         public string GcsPath { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         public GetTemplateArgs()
         {
         }
+        public static new GetTemplateArgs Empty => new GetTemplateArgs();
     }
 
-    public sealed class GetTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("gcsPath", required: true)]
         public Input<string> GcsPath { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3
         public GetTemplateInvokeArgs()
         {
         }
+        public static new GetTemplateInvokeArgs Empty => new GetTemplateInvokeArgs();
     }
 
 

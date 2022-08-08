@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Inputs
     /// <summary>
     /// Details required for a contact associated with a `Registration`.
     /// </summary>
-    public sealed class ContactArgs : Pulumi.ResourceArgs
+    public sealed class ContactArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Email address of the contact.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Inputs
         public ContactArgs()
         {
         }
+        public static new ContactArgs Empty => new ContactArgs();
     }
 }

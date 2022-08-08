@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
     /// <summary>
     /// IP Management configuration.
     /// </summary>
-    public sealed class SqlIpConfigArgs : Pulumi.ResourceArgs
+    public sealed class SqlIpConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("authorizedNetworks")]
         private InputList<Inputs.SqlAclEntryArgs>? _authorizedNetworks;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         public SqlIpConfigArgs()
         {
         }
+        public static new SqlIpConfigArgs Empty => new SqlIpConfigArgs();
     }
 }

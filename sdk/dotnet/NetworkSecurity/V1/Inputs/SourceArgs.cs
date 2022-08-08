@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1.Inputs
     /// <summary>
     /// Specification of traffic source attributes.
     /// </summary>
-    public sealed class SourceArgs : Pulumi.ResourceArgs
+    public sealed class SourceArgs : global::Pulumi.ResourceArgs
     {
         [Input("ipBlocks")]
         private InputList<string>? _ipBlocks;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1.Inputs
         public SourceArgs()
         {
         }
+        public static new SourceArgs Empty => new SourceArgs();
     }
 }

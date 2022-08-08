@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// Configuration for parameter validation.
     /// </summary>
-    public sealed class ParameterValidationArgs : Pulumi.ResourceArgs
+    public sealed class ParameterValidationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Validation based on regular expressions.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public ParameterValidationArgs()
         {
         }
+        public static new ParameterValidationArgs Empty => new ParameterValidationArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Settings for WorkerPool autoscaling.
     /// </summary>
-    public sealed class AutoscalingSettingsArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The algorithm to use for autoscaling.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public AutoscalingSettingsArgs()
         {
         }
+        public static new AutoscalingSettingsArgs Empty => new AutoscalingSettingsArgs();
     }
 }

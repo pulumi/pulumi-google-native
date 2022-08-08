@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     /// Creates a new notification channel, representing a single notification endpoint such as an email address, SMS number, or PagerDuty service.
     /// </summary>
     [GoogleNativeResourceType("google-native:monitoring/v3:NotificationChannel")]
-    public partial class NotificationChannel : Pulumi.CustomResource
+    public partial class NotificationChannel : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Record of the creation of this channel.
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         }
     }
 
-    public sealed class NotificationChannelArgs : Pulumi.ResourceArgs
+    public sealed class NotificationChannelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Record of the creation of this channel.
@@ -211,5 +211,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public NotificationChannelArgs()
         {
         }
+        public static new NotificationChannelArgs Empty => new NotificationChannelArgs();
     }
 }

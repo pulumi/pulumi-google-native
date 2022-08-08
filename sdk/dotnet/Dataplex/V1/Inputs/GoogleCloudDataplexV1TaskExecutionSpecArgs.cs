@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Execution related settings, like retry and service_account.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1TaskExecutionSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1TaskExecutionSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputMap<string>? _args;
@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public Input<string>? MaxJobExecutionLifetime { get; set; }
 
         /// <summary>
-        /// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+        /// Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1TaskExecutionSpecArgs()
         {
         }
+        public static new GoogleCloudDataplexV1TaskExecutionSpecArgs Empty => new GoogleCloudDataplexV1TaskExecutionSpecArgs();
     }
 }

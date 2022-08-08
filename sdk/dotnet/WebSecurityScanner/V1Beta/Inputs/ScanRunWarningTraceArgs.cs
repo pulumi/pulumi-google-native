@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
     /// <summary>
     /// Output only. Defines a warning trace message for ScanRun. Warning traces provide customers with useful information that helps make the scanning process more effective.
     /// </summary>
-    public sealed class ScanRunWarningTraceArgs : Pulumi.ResourceArgs
+    public sealed class ScanRunWarningTraceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates the warning code.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
         public ScanRunWarningTraceArgs()
         {
         }
+        public static new ScanRunWarningTraceArgs Empty => new ScanRunWarningTraceArgs();
     }
 }

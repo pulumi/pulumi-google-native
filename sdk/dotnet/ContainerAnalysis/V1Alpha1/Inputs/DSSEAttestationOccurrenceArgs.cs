@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// An occurrence describing an attestation on a resource
     /// </summary>
-    public sealed class DSSEAttestationOccurrenceArgs : Pulumi.ResourceArgs
+    public sealed class DSSEAttestationOccurrenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If doing something security critical, make sure to verify the signatures in this metadata.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public DSSEAttestationOccurrenceArgs()
         {
         }
+        public static new DSSEAttestationOccurrenceArgs Empty => new DSSEAttestationOccurrenceArgs();
     }
 }

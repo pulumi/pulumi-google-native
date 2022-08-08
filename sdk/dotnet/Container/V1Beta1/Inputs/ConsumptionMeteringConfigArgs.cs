@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Parameters for controlling consumption metering.
     /// </summary>
-    public sealed class ConsumptionMeteringConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConsumptionMeteringConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created to hold resource consumption records.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public ConsumptionMeteringConfigArgs()
         {
         }
+        public static new ConsumptionMeteringConfigArgs Empty => new ConsumptionMeteringConfigArgs();
     }
 }

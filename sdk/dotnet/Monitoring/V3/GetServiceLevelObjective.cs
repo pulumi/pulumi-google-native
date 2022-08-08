@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     }
 
 
-    public sealed class GetServiceLevelObjectiveArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceLevelObjectiveArgs : global::Pulumi.InvokeArgs
     {
         [Input("serviceId", required: true)]
         public string ServiceId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public GetServiceLevelObjectiveArgs()
         {
         }
+        public static new GetServiceLevelObjectiveArgs Empty => new GetServiceLevelObjectiveArgs();
     }
 
-    public sealed class GetServiceLevelObjectiveInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceLevelObjectiveInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("serviceId", required: true)]
         public Input<string> ServiceId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public GetServiceLevelObjectiveInvokeArgs()
         {
         }
+        public static new GetServiceLevelObjectiveInvokeArgs Empty => new GetServiceLevelObjectiveInvokeArgs();
     }
 
 

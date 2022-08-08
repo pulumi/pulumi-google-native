@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
     /// <summary>
     /// The rating of a Product.
     /// </summary>
-    public sealed class GoogleCloudRetailV2alphaRatingArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2alphaRatingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The average rating of the Product. The rating is scaled at 1-5. Otherwise, an INVALID_ARGUMENT error is returned.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
         public GoogleCloudRetailV2alphaRatingArgs()
         {
         }
+        public static new GoogleCloudRetailV2alphaRatingArgs Empty => new GoogleCloudRetailV2alphaRatingArgs();
     }
 }

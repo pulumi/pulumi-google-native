@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
 
-    public sealed class GetTargetInstanceArgs : Pulumi.InvokeArgs
+    public sealed class GetTargetInstanceArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetTargetInstanceArgs()
         {
         }
+        public static new GetTargetInstanceArgs Empty => new GetTargetInstanceArgs();
     }
 
-    public sealed class GetTargetInstanceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTargetInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetTargetInstanceInvokeArgs()
         {
         }
+        public static new GetTargetInstanceInvokeArgs Empty => new GetTargetInstanceInvokeArgs();
     }
 
 
@@ -82,7 +84,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+        /// Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
         /// </summary>
         public readonly string NatPolicy;
         /// <summary>

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
     /// <summary>
     /// CommonFeatureSpec contains Hub-wide configuration information
     /// </summary>
-    public sealed class CommonFeatureSpecArgs : Pulumi.ResourceArgs
+    public sealed class CommonFeatureSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Appdevexperience specific spec.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
         public CommonFeatureSpecArgs()
         {
         }
+        public static new CommonFeatureSpecArgs Empty => new CommonFeatureSpecArgs();
     }
 }

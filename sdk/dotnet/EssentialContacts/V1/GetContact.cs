@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
     }
 
 
-    public sealed class GetContactArgs : Pulumi.InvokeArgs
+    public sealed class GetContactArgs : global::Pulumi.InvokeArgs
     {
         [Input("contactId", required: true)]
         public string ContactId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         public GetContactArgs()
         {
         }
+        public static new GetContactArgs Empty => new GetContactArgs();
     }
 
-    public sealed class GetContactInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetContactInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("contactId", required: true)]
         public Input<string> ContactId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.EssentialContacts.V1
         public GetContactInvokeArgs()
         {
         }
+        public static new GetContactInvokeArgs Empty => new GetContactInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1
     /// Creates a job.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudscheduler/v1:Job")]
-    public partial class Job : Pulumi.CustomResource
+    public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
         /// App Engine HTTP target.
@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1
         public Output<Outputs.AppEngineHttpTargetResponse> AppEngineHttpTarget { get; private set; } = null!;
 
         /// <summary>
-        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours 15 seconds.
+        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The default and the allowed values depend on the type of target: * For HTTP targets, the default is 3 minutes. The deadline must be in the interval [15 seconds, 30 minutes]. * For App Engine HTTP targets, 0 indicates that the request has the default deadline. The default deadline depends on the scaling type of the service: 10 minutes for standard apps with automatic scaling, 24 hours for standard apps with manual and basic scaling, and 60 minutes for flex apps. If the request deadline is set, it must be in the interval [15 seconds, 24 hours 15 seconds]. * For Pub/Sub targets, this field is ignored.
         /// </summary>
         [Output("attemptDeadline")]
         public Output<string> AttemptDeadline { get; private set; } = null!;
@@ -153,7 +153,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1
         }
     }
 
-    public sealed class JobArgs : Pulumi.ResourceArgs
+    public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// App Engine HTTP target.
@@ -162,7 +162,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1
         public Input<Inputs.AppEngineHttpTargetArgs>? AppEngineHttpTarget { get; set; }
 
         /// <summary>
-        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The allowed duration for this deadline is: * For HTTP targets, between 15 seconds and 30 minutes. * For App Engine HTTP targets, between 15 seconds and 24 hours 15 seconds.
+        /// The deadline for job attempts. If the request handler does not respond by this deadline then the request is cancelled and the attempt is marked as a `DEADLINE_EXCEEDED` failure. The failed attempt can be viewed in execution logs. Cloud Scheduler will retry the job according to the RetryConfig. The default and the allowed values depend on the type of target: * For HTTP targets, the default is 3 minutes. The deadline must be in the interval [15 seconds, 30 minutes]. * For App Engine HTTP targets, 0 indicates that the request has the default deadline. The default deadline depends on the scaling type of the service: 10 minutes for standard apps with automatic scaling, 24 hours for standard apps with manual and basic scaling, and 60 minutes for flex apps. If the request deadline is set, it must be in the interval [15 seconds, 24 hours 15 seconds]. * For Pub/Sub targets, this field is ignored.
         /// </summary>
         [Input("attemptDeadline")]
         public Input<string>? AttemptDeadline { get; set; }
@@ -218,5 +218,6 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1
         public JobArgs()
         {
         }
+        public static new JobArgs Empty => new JobArgs();
     }
 }

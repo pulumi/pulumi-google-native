@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Vision.V1.Inputs
     /// <summary>
     /// A vertex represents a 2D point in the image. NOTE: the normalized vertex coordinates are relative to the original image and range from 0 to 1.
     /// </summary>
-    public sealed class NormalizedVertexArgs : Pulumi.ResourceArgs
+    public sealed class NormalizedVertexArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// X coordinate.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Vision.V1.Inputs
         public NormalizedVertexArgs()
         {
         }
+        public static new NormalizedVertexArgs Empty => new NormalizedVertexArgs();
     }
 }

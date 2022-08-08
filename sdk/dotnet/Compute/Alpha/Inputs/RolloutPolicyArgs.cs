@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// A rollout policy configuration.
     /// </summary>
-    public sealed class RolloutPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RolloutPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional RFC3339 timestamp on or after which the update is considered rolled out to any zone that is not explicitly stated.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public RolloutPolicyArgs()
         {
         }
+        public static new RolloutPolicyArgs Empty => new RolloutPolicyArgs();
     }
 }

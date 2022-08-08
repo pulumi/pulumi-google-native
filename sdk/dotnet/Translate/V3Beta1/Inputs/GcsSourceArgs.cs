@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1.Inputs
     /// <summary>
     /// The Google Cloud Storage location for the input content.
     /// </summary>
-    public sealed class GcsSourceArgs : Pulumi.ResourceArgs
+    public sealed class GcsSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Source data URI. For example, `gs://my_bucket/my_object`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1.Inputs
         public GcsSourceArgs()
         {
         }
+        public static new GcsSourceArgs Empty => new GcsSourceArgs();
     }
 }

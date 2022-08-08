@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// A Duration represents a fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". Range is approximately 10,000 years.
     /// </summary>
-    public sealed class DurationArgs : Pulumi.ResourceArgs
+    public sealed class DurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 `seconds` field and a positive `nanos` field. Must be from 0 to 999,999,999 inclusive.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public DurationArgs()
         {
         }
+        public static new DurationArgs Empty => new DurationArgs();
     }
 }

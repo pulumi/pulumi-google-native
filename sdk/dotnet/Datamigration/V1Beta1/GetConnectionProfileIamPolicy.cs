@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
     }
 
 
-    public sealed class GetConnectionProfileIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectionProfileIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("connectionProfileId", required: true)]
         public string ConnectionProfileId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         public GetConnectionProfileIamPolicyArgs()
         {
         }
+        public static new GetConnectionProfileIamPolicyArgs Empty => new GetConnectionProfileIamPolicyArgs();
     }
 
-    public sealed class GetConnectionProfileIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectionProfileIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("connectionProfileId", required: true)]
         public Input<string> ConnectionProfileId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1Beta1
         public GetConnectionProfileIamPolicyInvokeArgs()
         {
         }
+        public static new GetConnectionProfileIamPolicyInvokeArgs Empty => new GetConnectionProfileIamPolicyInvokeArgs();
     }
 
 

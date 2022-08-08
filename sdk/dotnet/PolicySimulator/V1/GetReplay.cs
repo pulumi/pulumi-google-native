@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1
     }
 
 
-    public sealed class GetReplayArgs : Pulumi.InvokeArgs
+    public sealed class GetReplayArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1
         public GetReplayArgs()
         {
         }
+        public static new GetReplayArgs Empty => new GetReplayArgs();
     }
 
-    public sealed class GetReplayInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetReplayInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1
         public GetReplayInvokeArgs()
         {
         }
+        public static new GetReplayInvokeArgs Empty => new GetReplayInvokeArgs();
     }
 
 

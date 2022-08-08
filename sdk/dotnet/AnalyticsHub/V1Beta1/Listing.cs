@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:analyticshub/v1beta1:Listing")]
-    public partial class Listing : Pulumi.CustomResource
+    public partial class Listing : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Shared dataset i.e. BigQuery dataset source.
@@ -153,7 +153,7 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         }
     }
 
-    public sealed class ListingArgs : Pulumi.ResourceArgs
+    public sealed class ListingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Shared dataset i.e. BigQuery dataset source.
@@ -239,5 +239,6 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         public ListingArgs()
         {
         }
+        public static new ListingArgs Empty => new ListingArgs();
     }
 }

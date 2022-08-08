@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Specifies how many time series must fail a predicate to trigger a condition. If not specified, then a {count: 1} trigger is used.
     /// </summary>
-    public sealed class TriggerArgs : Pulumi.ResourceArgs
+    public sealed class TriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The absolute number of time series that must fail the predicate for the condition to be triggered.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public TriggerArgs()
         {
         }
+        public static new TriggerArgs Empty => new TriggerArgs();
     }
 }

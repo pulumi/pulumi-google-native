@@ -10,12 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
 {
     /// <summary>
-    /// Sets the IAM Policy for a resource (namespace or service only).
+    /// Sets the IAM Policy for a resource
     /// Note - this resource's API doesn't support deletion. When deleted, the resource will persist
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:servicedirectory/v1beta1:NamespaceIamPolicy")]
-    public partial class NamespaceIamPolicy : Pulumi.CustomResource
+    public partial class NamespaceIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`.
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         }
     }
 
-    public sealed class NamespaceIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("bindings")]
         private InputList<Inputs.BindingArgs>? _bindings;
@@ -131,5 +131,6 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public NamespaceIamPolicyArgs()
         {
         }
+        public static new NamespaceIamPolicyArgs Empty => new NamespaceIamPolicyArgs();
     }
 }

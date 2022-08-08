@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Configuration for the Sql Script content.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1ContentSqlScriptArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1ContentSqlScriptArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Query Engine to be used for the Sql Query.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1ContentSqlScriptArgs()
         {
         }
+        public static new GoogleCloudDataplexV1ContentSqlScriptArgs Empty => new GoogleCloudDataplexV1ContentSqlScriptArgs();
     }
 }

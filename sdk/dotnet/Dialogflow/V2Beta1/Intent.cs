@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v2beta1:Intent")]
-    public partial class Intent : Pulumi.CustomResource
+    public partial class Intent : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. The name of the action associated with the intent. Note: The action name must not contain whitespaces.
@@ -208,7 +208,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         }
     }
 
-    public sealed class IntentArgs : Pulumi.ResourceArgs
+    public sealed class IntentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The name of the action associated with the intent. Note: The action name must not contain whitespaces.
@@ -387,5 +387,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public IntentArgs()
         {
         }
+        public static new IntentArgs Empty => new IntentArgs();
     }
 }

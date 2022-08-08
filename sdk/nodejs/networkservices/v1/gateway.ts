@@ -57,7 +57,7 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
-     * One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+     * One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
      */
     public readonly ports!: pulumi.Output<number[]>;
     public readonly project!: pulumi.Output<string>;
@@ -74,7 +74,7 @@ export class Gateway extends pulumi.CustomResource {
      */
     public readonly serverTlsPolicy!: pulumi.Output<string>;
     /**
-     * Immutable. The type of the customer managed gateway.
+     * Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -159,7 +159,7 @@ export interface GatewayArgs {
      */
     name?: pulumi.Input<string>;
     /**
-     * One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+     * One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
      */
     ports: pulumi.Input<pulumi.Input<number>[]>;
     project?: pulumi.Input<string>;
@@ -172,7 +172,7 @@ export interface GatewayArgs {
      */
     serverTlsPolicy?: pulumi.Input<string>;
     /**
-     * Immutable. The type of the customer managed gateway.
+     * Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
      */
     type?: pulumi.Input<enums.networkservices.v1.GatewayType>;
 }

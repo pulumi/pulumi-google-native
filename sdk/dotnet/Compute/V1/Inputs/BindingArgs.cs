@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Associates `members`, or principals, with a `role`.
     /// </summary>
-    public sealed class BindingArgs : Pulumi.ResourceArgs
+    public sealed class BindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is deprecated and has no effect. Do not use.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public BindingArgs()
         {
         }
+        public static new BindingArgs Empty => new BindingArgs();
     }
 }

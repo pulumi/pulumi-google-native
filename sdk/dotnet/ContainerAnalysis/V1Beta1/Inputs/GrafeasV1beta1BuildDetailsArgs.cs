@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Details of a build occurrence.
     /// </summary>
-    public sealed class GrafeasV1beta1BuildDetailsArgs : Pulumi.ResourceArgs
+    public sealed class GrafeasV1beta1BuildDetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The actual provenance for the build.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public GrafeasV1beta1BuildDetailsArgs()
         {
         }
+        public static new GrafeasV1beta1BuildDetailsArgs Empty => new GrafeasV1beta1BuildDetailsArgs();
     }
 }

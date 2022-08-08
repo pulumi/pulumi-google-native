@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// NodeManagement defines the set of node management services turned on for the node pool.
     /// </summary>
-    public sealed class NodeManagementArgs : Pulumi.ResourceArgs
+    public sealed class NodeManagementArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A flag that specifies whether the node auto-repair is enabled for the node pool. If enabled, the nodes in this node pool will be monitored and, if they fail health checks too many times, an automatic repair action will be triggered.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public NodeManagementArgs()
         {
         }
+        public static new NodeManagementArgs Empty => new NodeManagementArgs();
     }
 }

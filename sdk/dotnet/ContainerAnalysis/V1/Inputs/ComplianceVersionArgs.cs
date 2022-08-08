@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Describes the CIS benchmark version that is applicable to a given OS and os version.
     /// </summary>
-    public sealed class ComplianceVersionArgs : Pulumi.ResourceArgs
+    public sealed class ComplianceVersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the document that defines this benchmark, e.g. "CIS Container-Optimized OS".
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public ComplianceVersionArgs()
         {
         }
+        public static new ComplianceVersionArgs Empty => new ComplianceVersionArgs();
     }
 }

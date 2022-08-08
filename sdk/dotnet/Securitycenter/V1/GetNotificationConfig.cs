@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     }
 
 
-    public sealed class GetNotificationConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetNotificationConfigArgs : global::Pulumi.InvokeArgs
     {
         [Input("notificationConfigId", required: true)]
         public string NotificationConfigId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public GetNotificationConfigArgs()
         {
         }
+        public static new GetNotificationConfigArgs Empty => new GetNotificationConfigArgs();
     }
 
-    public sealed class GetNotificationConfigInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNotificationConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("notificationConfigId", required: true)]
         public Input<string> NotificationConfigId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public GetNotificationConfigInvokeArgs()
         {
         }
+        public static new GetNotificationConfigInvokeArgs Empty => new GetNotificationConfigInvokeArgs();
     }
 
 

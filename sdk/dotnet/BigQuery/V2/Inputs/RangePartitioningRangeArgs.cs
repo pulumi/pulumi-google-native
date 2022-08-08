@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
     /// <summary>
     /// [TrustedTester] [Required] Defines the ranges for range partitioning.
     /// </summary>
-    public sealed class RangePartitioningRangeArgs : Pulumi.ResourceArgs
+    public sealed class RangePartitioningRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [TrustedTester] [Required] The end of range partitioning, exclusive.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public RangePartitioningRangeArgs()
         {
         }
+        public static new RangePartitioningRangeArgs Empty => new RangePartitioningRangeArgs();
     }
 }

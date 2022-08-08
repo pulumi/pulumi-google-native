@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// The basic card message. Useful for displaying information.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2IntentMessageBasicCardArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2IntentMessageBasicCardArgs : global::Pulumi.ResourceArgs
     {
         [Input("buttons")]
         private InputList<Inputs.GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs>? _buttons;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2IntentMessageBasicCardArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2IntentMessageBasicCardArgs Empty => new GoogleCloudDialogflowV2IntentMessageBasicCardArgs();
     }
 }

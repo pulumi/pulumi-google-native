@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
     /// Creates a webhook in the specified agent.
     /// </summary>
     [GoogleNativeResourceType("google-native:dialogflow/v3:Webhook")]
-    public partial class Webhook : Pulumi.CustomResource
+    public partial class Webhook : global::Pulumi.CustomResource
     {
         [Output("agentId")]
         public Output<string> AgentId { get; private set; } = null!;
@@ -109,7 +109,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         }
     }
 
-    public sealed class WebhookArgs : Pulumi.ResourceArgs
+    public sealed class WebhookArgs : global::Pulumi.ResourceArgs
     {
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -159,5 +159,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3
         public WebhookArgs()
         {
         }
+        public static new WebhookArgs Empty => new WebhookArgs();
     }
 }

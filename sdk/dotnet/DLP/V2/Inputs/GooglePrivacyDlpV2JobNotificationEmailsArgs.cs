@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Enable email notification to project owners and editors on jobs's completion/failure.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2JobNotificationEmailsArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2JobNotificationEmailsArgs : global::Pulumi.ResourceArgs
     {
         public GooglePrivacyDlpV2JobNotificationEmailsArgs()
         {
         }
+        public static new GooglePrivacyDlpV2JobNotificationEmailsArgs Empty => new GooglePrivacyDlpV2JobNotificationEmailsArgs();
     }
 }

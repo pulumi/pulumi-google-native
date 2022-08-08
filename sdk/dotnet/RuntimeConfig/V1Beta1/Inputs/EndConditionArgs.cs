@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1.Inputs
     /// <summary>
     /// The condition that a Waiter resource is waiting for.
     /// </summary>
-    public sealed class EndConditionArgs : Pulumi.ResourceArgs
+    public sealed class EndConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The cardinality of the `EndCondition`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1.Inputs
         public EndConditionArgs()
         {
         }
+        public static new EndConditionArgs Empty => new EndConditionArgs();
     }
 }

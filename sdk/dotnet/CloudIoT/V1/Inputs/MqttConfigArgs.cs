@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
     /// <summary>
     /// The configuration of MQTT for a device registry.
     /// </summary>
-    public sealed class MqttConfigArgs : Pulumi.ResourceArgs
+    public sealed class MqttConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If enabled, allows connections using the MQTT protocol. Otherwise, MQTT connections to this registry will fail.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         public MqttConfigArgs()
         {
         }
+        public static new MqttConfigArgs Empty => new MqttConfigArgs();
     }
 }

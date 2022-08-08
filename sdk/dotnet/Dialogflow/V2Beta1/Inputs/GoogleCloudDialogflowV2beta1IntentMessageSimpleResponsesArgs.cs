@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// The collection of simple response candidates. This message in `QueryResult.fulfillment_messages` and `WebhookResponse.fulfillment_messages` should contain only one `SimpleResponse`.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesArgs : global::Pulumi.ResourceArgs
     {
         [Input("simpleResponses", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArgs>? _simpleResponses;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesArgs();
     }
 }

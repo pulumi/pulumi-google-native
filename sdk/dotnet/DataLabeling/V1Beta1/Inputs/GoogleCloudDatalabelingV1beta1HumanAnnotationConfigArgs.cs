@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Configuration for how human labeling task should be done.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A human-readable description for AnnotatedDataset. The description can be up to 10000 characters long.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs Empty => new GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs();
     }
 }

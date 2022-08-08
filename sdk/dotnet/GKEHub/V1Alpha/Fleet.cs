@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:gkehub/v1alpha:Fleet")]
-    public partial class Fleet : Pulumi.CustomResource
+    public partial class Fleet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// When the Fleet was created.
@@ -34,12 +34,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         [Output("displayName")]
         public Output<string> DisplayName { get; private set; } = null!;
 
-        /// <summary>
-        /// The name for the fleet. The name must meet the following constraints: + The name of a fleet should be unique within the organization; + It must consist of lower case alphanumeric characters or `-`; + The length of the name must be less than or equal to 63; + Unicode names must be expressed in Punycode format (rfc3492). Examples: + prod-fleet + xn--wlq33vhyw9jb （Punycode form for "生产环境")
-        /// </summary>
-        [Output("fleetName")]
-        public Output<string> FleetName { get; private set; } = null!;
-
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
 
@@ -51,6 +45,12 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// State of the namespace resource.
+        /// </summary>
+        [Output("state")]
+        public Output<Outputs.FleetLifecycleStateResponse> State { get; private set; } = null!;
 
         /// <summary>
         /// Google-generated UUID for this resource. This is unique across all Fleet resources. If a Fleet resource is deleted and another resource with the same name is created, it gets a different uid.
@@ -112,19 +112,13 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         }
     }
 
-    public sealed class FleetArgs : Pulumi.ResourceArgs
+    public sealed class FleetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters. Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point. Example: `Production Fleet`
         /// </summary>
         [Input("displayName")]
         public Input<string>? DisplayName { get; set; }
-
-        /// <summary>
-        /// The name for the fleet. The name must meet the following constraints: + The name of a fleet should be unique within the organization; + It must consist of lower case alphanumeric characters or `-`; + The length of the name must be less than or equal to 63; + Unicode names must be expressed in Punycode format (rfc3492). Examples: + prod-fleet + xn--wlq33vhyw9jb （Punycode form for "生产环境")
-        /// </summary>
-        [Input("fleetName")]
-        public Input<string>? FleetName { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -135,5 +129,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public FleetArgs()
         {
         }
+        public static new FleetArgs Empty => new FleetArgs();
     }
 }

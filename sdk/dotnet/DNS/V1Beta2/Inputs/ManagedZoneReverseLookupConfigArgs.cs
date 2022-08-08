@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
 {
 
-    public sealed class ManagedZoneReverseLookupConfigArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZoneReverseLookupConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
         public ManagedZoneReverseLookupConfigArgs()
         {
         }
+        public static new ManagedZoneReverseLookupConfigArgs Empty => new ManagedZoneReverseLookupConfigArgs();
     }
 }

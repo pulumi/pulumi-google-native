@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:baremetalsolution/v2:ProvisioningConfig")]
-    public partial class ProvisioningConfig : Pulumi.CustomResource
+    public partial class ProvisioningConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// URI to Cloud Console UI view of this provisioning config.
@@ -144,7 +144,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         }
     }
 
-    public sealed class ProvisioningConfigArgs : Pulumi.ResourceArgs
+    public sealed class ProvisioningConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Email provided to send a confirmation with provisioning config to. Deprecated in favour of email field in request messages.
@@ -224,5 +224,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         public ProvisioningConfigArgs()
         {
         }
+        public static new ProvisioningConfigArgs Empty => new ProvisioningConfigArgs();
     }
 }

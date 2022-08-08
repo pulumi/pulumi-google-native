@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// The configuration for model evaluation.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2EvaluationConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2EvaluationConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("datasets", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowV2InputDatasetArgs>? _datasets;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2EvaluationConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2EvaluationConfigArgs Empty => new GoogleCloudDialogflowV2EvaluationConfigArgs();
     }
 }

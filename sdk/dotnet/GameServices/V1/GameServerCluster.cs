@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
     /// Creates a new game server cluster in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:gameservices/v1:GameServerCluster")]
-    public partial class GameServerCluster : Pulumi.CustomResource
+    public partial class GameServerCluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The state of the Kubernetes cluster in preview. This will be available if view is set to FULL in the relevant list/get/preview request.
@@ -128,7 +128,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
         }
     }
 
-    public sealed class GameServerClusterArgs : Pulumi.ResourceArgs
+    public sealed class GameServerClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The game server cluster connection information. This information is used to manage game server clusters.
@@ -184,5 +184,6 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public GameServerClusterArgs()
         {
         }
+        public static new GameServerClusterArgs Empty => new GameServerClusterArgs();
     }
 }

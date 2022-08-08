@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:analyticshub/v1beta1:DataExchange")]
-    public partial class DataExchange : Pulumi.CustomResource
+    public partial class DataExchange : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
@@ -119,7 +119,7 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         }
     }
 
-    public sealed class DataExchangeArgs : Pulumi.ResourceArgs
+    public sealed class DataExchangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The ID of the data exchange. Must contain only Unicode letters, numbers (0-9), underscores (_). Should not use characters that require URL-escaping, or characters outside of ASCII, spaces. Max length: 100 bytes.
@@ -166,5 +166,6 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1
         public DataExchangeArgs()
         {
         }
+        public static new DataExchangeArgs Empty => new DataExchangeArgs();
     }
 }

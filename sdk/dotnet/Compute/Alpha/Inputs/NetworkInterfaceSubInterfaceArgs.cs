@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class NetworkInterfaceSubInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class NetworkInterfaceSubInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An IPv4 internal IP address to assign to the instance for this subinterface. If specified, ip_allocation_mode should be set to ALLOCATE_IP.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public NetworkInterfaceSubInterfaceArgs()
         {
         }
+        public static new NetworkInterfaceSubInterfaceArgs Empty => new NetworkInterfaceSubInterfaceArgs();
     }
 }

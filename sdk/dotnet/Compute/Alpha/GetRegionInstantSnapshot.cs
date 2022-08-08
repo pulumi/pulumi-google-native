@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetRegionInstantSnapshotArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionInstantSnapshotArgs : global::Pulumi.InvokeArgs
     {
         [Input("instantSnapshot", required: true)]
         public string InstantSnapshot { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetRegionInstantSnapshotArgs()
         {
         }
+        public static new GetRegionInstantSnapshotArgs Empty => new GetRegionInstantSnapshotArgs();
     }
 
-    public sealed class GetRegionInstantSnapshotInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionInstantSnapshotInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instantSnapshot", required: true)]
         public Input<string> InstantSnapshot { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetRegionInstantSnapshotInvokeArgs()
         {
         }
+        public static new GetRegionInstantSnapshotInvokeArgs Empty => new GetRegionInstantSnapshotInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Specification that applies to a table resource. Valid only for entries with the `TABLE` type.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1DatabaseTableSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1DatabaseTableSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Type of this table.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1DatabaseTableSpecArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1DatabaseTableSpecArgs Empty => new GoogleCloudDatacatalogV1DatabaseTableSpecArgs();
     }
 }

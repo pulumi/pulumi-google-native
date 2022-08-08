@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NamespaceServiceIamPolicy{}
 	case "google-native:servicedirectory/v1beta1:NamespaceServiceWorkloadIamPolicy":
 		r = &NamespaceServiceWorkloadIamPolicy{}
+	case "google-native:servicedirectory/v1beta1:RegistrationPolicyIamPolicy":
+		r = &RegistrationPolicyIamPolicy{}
 	case "google-native:servicedirectory/v1beta1:Service":
 		r = &Service{}
 	default:

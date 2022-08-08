@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
 {
 
-    public sealed class DSSEAttestationNoteArgs : Pulumi.ResourceArgs
+    public sealed class DSSEAttestationNoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// DSSEHint hints at the purpose of the attestation authority.
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public DSSEAttestationNoteArgs()
         {
         }
+        public static new DSSEAttestationNoteArgs Empty => new DSSEAttestationNoteArgs();
     }
 }

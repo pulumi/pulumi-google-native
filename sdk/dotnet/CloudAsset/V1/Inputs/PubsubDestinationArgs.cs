@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
     /// <summary>
     /// A Pub/Sub destination.
     /// </summary>
-    public sealed class PubsubDestinationArgs : Pulumi.ResourceArgs
+    public sealed class PubsubDestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Pub/Sub topic to publish to. Example: `projects/PROJECT_ID/topics/TOPIC_ID`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
         public PubsubDestinationArgs()
         {
         }
+        public static new PubsubDestinationArgs Empty => new PubsubDestinationArgs();
     }
 }

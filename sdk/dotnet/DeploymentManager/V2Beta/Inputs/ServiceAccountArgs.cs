@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
     /// <summary>
     /// Service Account used as a credential.
     /// </summary>
-    public sealed class ServiceAccountArgs : Pulumi.ResourceArgs
+    public sealed class ServiceAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IAM service account email address like test@myproject.iam.gserviceaccount.com
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
         public ServiceAccountArgs()
         {
         }
+        public static new ServiceAccountArgs Empty => new ServiceAccountArgs();
     }
 }

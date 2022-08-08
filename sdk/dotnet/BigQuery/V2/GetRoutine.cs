@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
     }
 
 
-    public sealed class GetRoutineArgs : Pulumi.InvokeArgs
+    public sealed class GetRoutineArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasetId", required: true)]
         public string DatasetId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public GetRoutineArgs()
         {
         }
+        public static new GetRoutineArgs Empty => new GetRoutineArgs();
     }
 
-    public sealed class GetRoutineInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRoutineInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public GetRoutineInvokeArgs()
         {
         }
+        public static new GetRoutineInvokeArgs Empty => new GetRoutineInvokeArgs();
     }
 
 

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     }
 
 
-    public sealed class GetArtifactArgs : Pulumi.InvokeArgs
+    public sealed class GetArtifactArgs : global::Pulumi.InvokeArgs
     {
         [Input("apiId", required: true)]
         public string ApiId { get; set; } = null!;
@@ -48,9 +48,10 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public GetArtifactArgs()
         {
         }
+        public static new GetArtifactArgs Empty => new GetArtifactArgs();
     }
 
-    public sealed class GetArtifactInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetArtifactInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
@@ -73,6 +74,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public GetArtifactInvokeArgs()
         {
         }
+        public static new GetArtifactInvokeArgs Empty => new GetArtifactInvokeArgs();
     }
 
 

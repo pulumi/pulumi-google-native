@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
     /// <summary>
     /// Authorization-related information used by Cloud Audit Logging.
     /// </summary>
-    public sealed class AuthorizationLoggingOptionsArgs : Pulumi.ResourceArgs
+    public sealed class AuthorizationLoggingOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of the permission that was checked.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
         public AuthorizationLoggingOptionsArgs()
         {
         }
+        public static new AuthorizationLoggingOptionsArgs Empty => new AuthorizationLoggingOptionsArgs();
     }
 }

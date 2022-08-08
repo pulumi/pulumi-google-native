@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Metadata for a Cloud Bigtable connector used by the job.
     /// </summary>
-    public sealed class BigTableIODetailsArgs : Pulumi.ResourceArgs
+    public sealed class BigTableIODetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// InstanceId accessed in the connection.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public BigTableIODetailsArgs()
         {
         }
+        public static new BigTableIODetailsArgs Empty => new BigTableIODetailsArgs();
     }
 }

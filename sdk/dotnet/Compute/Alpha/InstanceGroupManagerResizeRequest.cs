@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a new resize request that starts provisioning VMs immediately or queues VM creation.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:InstanceGroupManagerResizeRequest")]
-    public partial class InstanceGroupManagerResizeRequest : Pulumi.CustomResource
+    public partial class InstanceGroupManagerResizeRequest : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The count of instances to create as part of this resize request.
@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class InstanceGroupManagerResizeRequestArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupManagerResizeRequestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The count of instances to create as part of this resize request.
@@ -183,5 +183,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public InstanceGroupManagerResizeRequestArgs()
         {
         }
+        public static new InstanceGroupManagerResizeRequestArgs Empty => new InstanceGroupManagerResizeRequestArgs();
     }
 }

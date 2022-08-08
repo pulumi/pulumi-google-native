@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// FileOccurrence represents an SPDX File Information section: https://spdx.github.io/spdx-spec/4-file-information/
     /// </summary>
-    public sealed class FileOccurrenceArgs : Pulumi.ResourceArgs
+    public sealed class FileOccurrenceArgs : global::Pulumi.ResourceArgs
     {
         [Input("attributions")]
         private InputList<string>? _attributions;
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public FileOccurrenceArgs()
         {
         }
+        public static new FileOccurrenceArgs Empty => new FileOccurrenceArgs();
     }
 }

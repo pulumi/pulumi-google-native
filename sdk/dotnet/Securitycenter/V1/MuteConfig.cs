@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:securitycenter/v1:MuteConfig")]
-    public partial class MuteConfig : Pulumi.CustomResource
+    public partial class MuteConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time at which the mute config was created. This field is set by the server and will be ignored if provided on config creation.
@@ -115,7 +115,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         }
     }
 
-    public sealed class MuteConfigArgs : Pulumi.ResourceArgs
+    public sealed class MuteConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A description of the mute config.
@@ -153,5 +153,6 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public MuteConfigArgs()
         {
         }
+        public static new MuteConfigArgs Empty => new MuteConfigArgs();
     }
 }

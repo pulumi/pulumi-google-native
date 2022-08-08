@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Configuration options for the Cloud Run feature.
     /// </summary>
-    public sealed class CloudRunConfigArgs : Pulumi.ResourceArgs
+    public sealed class CloudRunConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether Cloud Run addon is enabled for this cluster.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public CloudRunConfigArgs()
         {
         }
+        public static new CloudRunConfigArgs Empty => new CloudRunConfigArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetReferenceArgs : Pulumi.InvokeArgs
+    public sealed class GetReferenceArgs : global::Pulumi.InvokeArgs
     {
         [Input("environmentId", required: true)]
         public string EnvironmentId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetReferenceArgs()
         {
         }
+        public static new GetReferenceArgs Empty => new GetReferenceArgs();
     }
 
-    public sealed class GetReferenceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetReferenceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetReferenceInvokeArgs()
         {
         }
+        public static new GetReferenceInvokeArgs Empty => new GetReferenceInvokeArgs();
     }
 
 

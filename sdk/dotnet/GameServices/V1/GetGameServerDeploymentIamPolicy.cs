@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
     }
 
 
-    public sealed class GetGameServerDeploymentIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetGameServerDeploymentIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("gameServerDeploymentId", required: true)]
         public string GameServerDeploymentId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public GetGameServerDeploymentIamPolicyArgs()
         {
         }
+        public static new GetGameServerDeploymentIamPolicyArgs Empty => new GetGameServerDeploymentIamPolicyArgs();
     }
 
-    public sealed class GetGameServerDeploymentIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGameServerDeploymentIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("gameServerDeploymentId", required: true)]
         public Input<string> GameServerDeploymentId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.GameServices.V1
         public GetGameServerDeploymentIamPolicyInvokeArgs()
         {
         }
+        public static new GetGameServerDeploymentIamPolicyInvokeArgs Empty => new GetGameServerDeploymentIamPolicyInvokeArgs();
     }
 
 

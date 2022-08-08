@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1.Inputs
     /// <summary>
     /// Represents a target of an invocation over HTTP.
     /// </summary>
-    public sealed class DestinationArgs : Pulumi.ResourceArgs
+    public sealed class DestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud Run fully-managed service that receives the events. The service should be running in the same project as the trigger.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1.Inputs
         public DestinationArgs()
         {
         }
+        public static new DestinationArgs Empty => new DestinationArgs();
     }
 }

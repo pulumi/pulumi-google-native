@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Ml.V1
     }
 
 
-    public sealed class GetModelIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetModelIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("modelId", required: true)]
         public string ModelId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Ml.V1
         public GetModelIamPolicyArgs()
         {
         }
+        public static new GetModelIamPolicyArgs Empty => new GetModelIamPolicyArgs();
     }
 
-    public sealed class GetModelIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetModelIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("modelId", required: true)]
         public Input<string> ModelId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         public GetModelIamPolicyInvokeArgs()
         {
         }
+        public static new GetModelIamPolicyInvokeArgs Empty => new GetModelIamPolicyInvokeArgs();
     }
 
 

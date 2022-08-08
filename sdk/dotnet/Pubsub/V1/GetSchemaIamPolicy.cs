@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
     }
 
 
-    public sealed class GetSchemaIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetSchemaIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public GetSchemaIamPolicyArgs()
         {
         }
+        public static new GetSchemaIamPolicyArgs Empty => new GetSchemaIamPolicyArgs();
     }
 
-    public sealed class GetSchemaIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSchemaIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public GetSchemaIamPolicyInvokeArgs()
         {
         }
+        public static new GetSchemaIamPolicyInvokeArgs Empty => new GetSchemaIamPolicyInvokeArgs();
     }
 
 

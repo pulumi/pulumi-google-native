@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
     /// <summary>
     /// Identification for an API Operation.
     /// </summary>
-    public sealed class ApiOperationArgs : Pulumi.ResourceArgs
+    public sealed class ApiOperationArgs : global::Pulumi.ResourceArgs
     {
         [Input("methodSelectors")]
         private InputList<Inputs.MethodSelectorArgs>? _methodSelectors;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         public ApiOperationArgs()
         {
         }
+        public static new ApiOperationArgs Empty => new ApiOperationArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics.
     /// </summary>
-    public sealed class PipelineDescriptionArgs : Pulumi.ResourceArgs
+    public sealed class PipelineDescriptionArgs : global::Pulumi.ResourceArgs
     {
         [Input("displayData")]
         private InputList<Inputs.DisplayDataArgs>? _displayData;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public PipelineDescriptionArgs()
         {
         }
+        public static new PipelineDescriptionArgs Empty => new PipelineDescriptionArgs();
     }
 }

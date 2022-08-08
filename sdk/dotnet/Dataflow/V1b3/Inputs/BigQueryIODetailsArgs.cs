@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Metadata for a BigQuery connector used by the job.
     /// </summary>
-    public sealed class BigQueryIODetailsArgs : Pulumi.ResourceArgs
+    public sealed class BigQueryIODetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Dataset accessed in the connection.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public BigQueryIODetailsArgs()
         {
         }
+        public static new BigQueryIODetailsArgs Empty => new BigQueryIODetailsArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class FirewallPolicyRuleSecureTagArgs : Pulumi.ResourceArgs
+    public sealed class FirewallPolicyRuleSecureTagArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the secure tag, created with TagManager's TagValue API.
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public FirewallPolicyRuleSecureTagArgs()
         {
         }
+        public static new FirewallPolicyRuleSecureTagArgs Empty => new FirewallPolicyRuleSecureTagArgs();
     }
 }

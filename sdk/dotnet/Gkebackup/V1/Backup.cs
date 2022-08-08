@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:gkebackup/v1:Backup")]
-    public partial class Backup : Pulumi.CustomResource
+    public partial class Backup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// If True, all namespaces were included in the Backup.
@@ -113,7 +113,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<bool> Manual { get; private set; } = null!;
 
         /// <summary>
-        /// The fully qualified name of the Backup. projects/*/locations/*/backupPlans/*/backups/*
+        /// The fully qualified name of the Backup. `projects/*/locations/*/backupPlans/*/backups/*`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -134,7 +134,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<int> ResourceCount { get; private set; } = null!;
 
         /// <summary>
-        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days and &lt;= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         /// </summary>
         [Output("retainDays")]
         public Output<int> RetainDays { get; private set; } = null!;
@@ -242,7 +242,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         }
     }
 
-    public sealed class BackupArgs : Pulumi.ResourceArgs
+    public sealed class BackupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The client-provided short name for the Backup resource. This name must: - be between 1 and 63 characters long (inclusive) - consist of only lower-case ASCII letters, numbers, and dashes - start with a lower-case letter - end with a lower-case letter or number - be unique within the set of Backups in this BackupPlan
@@ -284,7 +284,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
+        /// The age (in days) after which this Backup will be automatically deleted. Must be an integer value &gt;= 0: - If 0, no automatic deletion will occur for this Backup. - If not 0, this must be &gt;= delete_lock_days and &lt;= 365. Once a Backup is created, this value may only be increased. Defaults to the parent BackupPlan's backup_retain_days value.
         /// </summary>
         [Input("retainDays")]
         public Input<int>? RetainDays { get; set; }
@@ -292,5 +292,6 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public BackupArgs()
         {
         }
+        public static new BackupArgs Empty => new BackupArgs();
     }
 }

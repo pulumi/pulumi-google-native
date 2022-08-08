@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// matchRule criteria for request header matches.
     /// </summary>
-    public sealed class HttpHeaderMatchArgs : Pulumi.ResourceArgs
+    public sealed class HttpHeaderMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The value should exactly match contents of exactMatch. Only one of exactMatch, prefixMatch, suffixMatch, regexMatch, presentMatch or rangeMatch must be set.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public HttpHeaderMatchArgs()
         {
         }
+        public static new HttpHeaderMatchArgs Empty => new HttpHeaderMatchArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
     /// <summary>
     /// A package managed by APT. - install: `apt-get update &amp;&amp; apt-get -y install [name]` - remove: `apt-get -y remove [name]`
     /// </summary>
-    public sealed class OSPolicyResourcePackageResourceAPTArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourcePackageResourceAPTArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Package name.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public OSPolicyResourcePackageResourceAPTArgs()
         {
         }
+        public static new OSPolicyResourcePackageResourceAPTArgs Empty => new OSPolicyResourcePackageResourceAPTArgs();
     }
 }

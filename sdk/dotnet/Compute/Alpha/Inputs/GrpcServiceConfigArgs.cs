@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] gRPC config to access the SDS server. gRPC config to access the SDS server.
     /// </summary>
-    public sealed class GrpcServiceConfigArgs : Pulumi.ResourceArgs
+    public sealed class GrpcServiceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The call credentials to access the SDS server.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public GrpcServiceConfigArgs()
         {
         }
+        public static new GrpcServiceConfigArgs Empty => new GrpcServiceConfigArgs();
     }
 }

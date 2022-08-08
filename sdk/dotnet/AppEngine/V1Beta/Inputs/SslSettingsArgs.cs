@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// SSL configuration for a DomainMapping resource.
     /// </summary>
-    public sealed class SslSettingsArgs : Pulumi.ResourceArgs
+    public sealed class SslSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the AuthorizedCertificate resource configuring SSL for the application. Clearing this field will remove SSL support.By default, a managed certificate is automatically created for every domain mapping. To omit SSL support or to configure SSL manually, specify SslManagementType.MANUAL on a CREATE or UPDATE request. You must be authorized to administer the AuthorizedCertificate resource to manually map it to a DomainMapping resource. Example: 12345.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public SslSettingsArgs()
         {
         }
+        public static new SslSettingsArgs Empty => new SslSettingsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Runtime configuration for a workload.
     /// </summary>
-    public sealed class RuntimeConfigArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public RuntimeConfigArgs()
         {
         }
+        public static new RuntimeConfigArgs Empty => new RuntimeConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     /// <summary>
     /// SecretKeySelector selects a key of a Secret.
     /// </summary>
-    public sealed class SecretKeySelectorArgs : Pulumi.ResourceArgs
+    public sealed class SecretKeySelectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public SecretKeySelectorArgs()
         {
         }
+        public static new SecretKeySelectorArgs Empty => new SecretKeySelectorArgs();
     }
 }

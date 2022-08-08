@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1.Inputs
     /// <summary>
     /// Options customizing the data transfer schedule.
     /// </summary>
-    public sealed class ScheduleOptionsArgs : Pulumi.ResourceArgs
+    public sealed class ScheduleOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, automatic scheduling of data transfer runs for this configuration will be disabled. The runs can be started on ad-hoc basis using StartManualTransferRuns API. When automatic scheduling is disabled, the TransferConfig.schedule field will be ignored.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.BigQueryDataTransfer.V1.Inputs
         public ScheduleOptionsArgs()
         {
         }
+        public static new ScheduleOptionsArgs Empty => new ScheduleOptionsArgs();
     }
 }

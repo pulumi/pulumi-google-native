@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing, Internal HTTP(S) load balancing and Traffic Director.
     /// </summary>
-    public sealed class SubsettingArgs : Pulumi.ResourceArgs
+    public sealed class SubsettingArgs : global::Pulumi.ResourceArgs
     {
         [Input("policy")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.SubsettingPolicy>? Policy { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SubsettingArgs()
         {
         }
+        public static new SubsettingArgs Empty => new SubsettingArgs();
     }
 }

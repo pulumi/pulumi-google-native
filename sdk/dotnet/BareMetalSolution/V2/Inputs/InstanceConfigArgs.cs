@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
     /// <summary>
     /// Configuration parameters for a new instance.
     /// </summary>
-    public sealed class InstanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class InstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true networks can be from different projects of the same vendor account.
@@ -90,5 +90,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public InstanceConfigArgs()
         {
         }
+        public static new InstanceConfigArgs Empty => new InstanceConfigArgs();
     }
 }

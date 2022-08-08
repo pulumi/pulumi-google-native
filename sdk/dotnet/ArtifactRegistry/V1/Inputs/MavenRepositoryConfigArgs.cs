@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Inputs
     /// <summary>
     /// MavenRepositoryConfig is maven related repository details. Provides additional configuration details for repositories of the maven format type.
     /// </summary>
-    public sealed class MavenRepositoryConfigArgs : Pulumi.ResourceArgs
+    public sealed class MavenRepositoryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The repository with this flag will allow publishing the same snapshot versions.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ArtifactRegistry.V1.Inputs
         public MavenRepositoryConfigArgs()
         {
         }
+        public static new MavenRepositoryConfigArgs Empty => new MavenRepositoryConfigArgs();
     }
 }

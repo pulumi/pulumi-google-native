@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudchannel/v1:Customer")]
-    public partial class Customer : Pulumi.CustomResource
+    public partial class Customer : global::Pulumi.CustomResource
     {
         [Output("accountId")]
         public Output<string> AccountId { get; private set; } = null!;
@@ -142,7 +142,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         }
     }
 
-    public sealed class CustomerArgs : Pulumi.ResourceArgs
+    public sealed class CustomerArgs : global::Pulumi.ResourceArgs
     {
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -195,5 +195,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public CustomerArgs()
         {
         }
+        public static new CustomerArgs Empty => new CustomerArgs();
     }
 }

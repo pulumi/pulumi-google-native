@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
     /// <summary>
     /// ResourceInfo represents the information/status of the associated resource.
     /// </summary>
-    public sealed class ResourceInfoArgs : Pulumi.ResourceArgs
+    public sealed class ResourceInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Unique Id for the resource.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
         public ResourceInfoArgs()
         {
         }
+        public static new ResourceInfoArgs Empty => new ResourceInfoArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
     /// <summary>
     /// **Multi-cluster Ingress**: The configuration for the MultiClusterIngress feature.
     /// </summary>
-    public sealed class MultiClusterIngressFeatureSpecArgs : Pulumi.ResourceArgs
+    public sealed class MultiClusterIngressFeatureSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Deprecated: This field will be ignored and should not be set. Customer's billing structure.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
         public MultiClusterIngressFeatureSpecArgs()
         {
         }
+        public static new MultiClusterIngressFeatureSpecArgs Empty => new MultiClusterIngressFeatureSpecArgs();
     }
 }

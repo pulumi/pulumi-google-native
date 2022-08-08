@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class SecurityPolicyRuleRedirectOptionsArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleRedirectOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Target for the redirect action. This is required if the type is EXTERNAL_302 and cannot be specified for GOOGLE_RECAPTCHA.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public SecurityPolicyRuleRedirectOptionsArgs()
         {
         }
+        public static new SecurityPolicyRuleRedirectOptionsArgs Empty => new SecurityPolicyRuleRedirectOptionsArgs();
     }
 }

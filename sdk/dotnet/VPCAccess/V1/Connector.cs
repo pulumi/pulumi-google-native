@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
     /// Creates a Serverless VPC Access connector, returns an operation.
     /// </summary>
     [GoogleNativeResourceType("google-native:vpcaccess/v1:Connector")]
-    public partial class Connector : Pulumi.CustomResource
+    public partial class Connector : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List of projects using the connector.
@@ -142,7 +142,7 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
         }
     }
 
-    public sealed class ConnectorArgs : Pulumi.ResourceArgs
+    public sealed class ConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The ID to use for this connector.
@@ -213,5 +213,6 @@ namespace Pulumi.GoogleNative.VPCAccess.V1
         public ConnectorArgs()
         {
         }
+        public static new ConnectorArgs Empty => new ConnectorArgs();
     }
 }

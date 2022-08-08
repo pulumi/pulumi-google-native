@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
     /// <summary>
     /// Deployment Manager will call these methods during the events of creation/deletion/update/get/setIamPolicy
     /// </summary>
-    public sealed class MethodMapArgs : Pulumi.ResourceArgs
+    public sealed class MethodMapArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action identifier for the create method to be used for this collection
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
         public MethodMapArgs()
         {
         }
+        public static new MethodMapArgs Empty => new MethodMapArgs();
     }
 }

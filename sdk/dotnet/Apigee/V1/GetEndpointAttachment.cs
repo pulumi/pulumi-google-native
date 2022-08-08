@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetEndpointAttachmentArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointAttachmentArgs : global::Pulumi.InvokeArgs
     {
         [Input("endpointAttachmentId", required: true)]
         public string EndpointAttachmentId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetEndpointAttachmentArgs()
         {
         }
+        public static new GetEndpointAttachmentArgs Empty => new GetEndpointAttachmentArgs();
     }
 
-    public sealed class GetEndpointAttachmentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointAttachmentInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("endpointAttachmentId", required: true)]
         public Input<string> EndpointAttachmentId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetEndpointAttachmentInvokeArgs()
         {
         }
+        public static new GetEndpointAttachmentInvokeArgs Empty => new GetEndpointAttachmentInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
     /// <summary>
     /// Private Connectivity
     /// </summary>
-    public sealed class PrivateConnectivityArgs : Pulumi.ResourceArgs
+    public sealed class PrivateConnectivityArgs : global::Pulumi.ResourceArgs
     {
         [Input("privateConnectionName")]
         public Input<string>? PrivateConnectionName { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
         public PrivateConnectivityArgs()
         {
         }
+        public static new PrivateConnectivityArgs Empty => new PrivateConnectivityArgs();
     }
 }

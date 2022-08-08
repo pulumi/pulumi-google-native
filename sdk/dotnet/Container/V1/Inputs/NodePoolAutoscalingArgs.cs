@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// NodePoolAutoscaling contains information required by cluster autoscaler to adjust the size of the node pool to the current cluster usage.
     /// </summary>
-    public sealed class NodePoolAutoscalingArgs : Pulumi.ResourceArgs
+    public sealed class NodePoolAutoscalingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Can this node pool be deleted automatically.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public NodePoolAutoscalingArgs()
         {
         }
+        public static new NodePoolAutoscalingArgs Empty => new NodePoolAutoscalingArgs();
     }
 }

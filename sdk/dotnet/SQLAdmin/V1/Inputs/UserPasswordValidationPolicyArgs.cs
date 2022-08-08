@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// User level password validation policy.
     /// </summary>
-    public sealed class UserPasswordValidationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class UserPasswordValidationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Number of failed login attempts allowed before user get locked.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public UserPasswordValidationPolicyArgs()
         {
         }
+        public static new UserPasswordValidationPolicyArgs Empty => new UserPasswordValidationPolicyArgs();
     }
 }

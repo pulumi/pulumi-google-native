@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// SslCerts Resource
     /// </summary>
-    public sealed class SslCertArgs : Pulumi.ResourceArgs
+    public sealed class SslCertArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// PEM representation.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public SslCertArgs()
         {
         }
+        public static new SslCertArgs Empty => new SslCertArgs();
     }
 }

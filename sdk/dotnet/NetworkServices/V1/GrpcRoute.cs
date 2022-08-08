@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
     /// Creates a new GrpcRoute in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkservices/v1:GrpcRoute")]
-    public partial class GrpcRoute : Pulumi.CustomResource
+    public partial class GrpcRoute : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp when the resource was created.
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         }
     }
 
-    public sealed class GrpcRouteArgs : Pulumi.ResourceArgs
+    public sealed class GrpcRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A free-text description of the resource. Max length 1024 characters.
@@ -225,5 +225,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GrpcRouteArgs()
         {
         }
+        public static new GrpcRouteArgs Empty => new GrpcRouteArgs();
     }
 }

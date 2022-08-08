@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     /// <summary>
     /// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
     /// </summary>
-    public sealed class TCPSocketActionArgs : Pulumi.ResourceArgs
+    public sealed class TCPSocketActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// (Optional) Optional: Host name to connect to, defaults to the pod IP.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public TCPSocketActionArgs()
         {
         }
+        public static new TCPSocketActionArgs Empty => new TCPSocketActionArgs();
     }
 }

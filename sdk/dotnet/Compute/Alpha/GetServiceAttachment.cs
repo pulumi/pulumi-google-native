@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetServiceAttachmentArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceAttachmentArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetServiceAttachmentArgs()
         {
         }
+        public static new GetServiceAttachmentArgs Empty => new GetServiceAttachmentArgs();
     }
 
-    public sealed class GetServiceAttachmentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceAttachmentInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetServiceAttachmentInvokeArgs()
         {
         }
+        public static new GetServiceAttachmentInvokeArgs Empty => new GetServiceAttachmentInvokeArgs();
     }
 
 

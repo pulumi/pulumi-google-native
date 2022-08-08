@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
     /// Creates a new HttpRoute in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkservices/v1beta1:HttpRoute")]
-    public partial class HttpRoute : Pulumi.CustomResource
+    public partial class HttpRoute : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp when the resource was created.
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         }
     }
 
-    public sealed class HttpRouteArgs : Pulumi.ResourceArgs
+    public sealed class HttpRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A free-text description of the resource. Max length 1024 characters.
@@ -225,5 +225,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
         public HttpRouteArgs()
         {
         }
+        public static new HttpRouteArgs Empty => new HttpRouteArgs();
     }
 }

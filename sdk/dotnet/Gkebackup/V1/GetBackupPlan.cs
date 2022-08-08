@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     }
 
 
-    public sealed class GetBackupPlanArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupPlanArgs : global::Pulumi.InvokeArgs
     {
         [Input("backupPlanId", required: true)]
         public string BackupPlanId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public GetBackupPlanArgs()
         {
         }
+        public static new GetBackupPlanArgs Empty => new GetBackupPlanArgs();
     }
 
-    public sealed class GetBackupPlanInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBackupPlanInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("backupPlanId", required: true)]
         public Input<string> BackupPlanId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public GetBackupPlanInvokeArgs()
         {
         }
+        public static new GetBackupPlanInvokeArgs Empty => new GetBackupPlanInvokeArgs();
     }
 
 
@@ -70,7 +72,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly Outputs.ScheduleResponse BackupSchedule;
         /// <summary>
-        /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+        /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
         /// </summary>
         public readonly string Cluster;
         /// <summary>
@@ -94,7 +96,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
+        /// The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`
         /// </summary>
         public readonly string Name;
         /// <summary>

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
     /// Creates a new reservation.
     /// </summary>
     [GoogleNativeResourceType("google-native:pubsublite/v1:Reservation")]
-    public partial class Reservation : Pulumi.CustomResource
+    public partial class Reservation : global::Pulumi.CustomResource
     {
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         }
     }
 
-    public sealed class ReservationArgs : Pulumi.ResourceArgs
+    public sealed class ReservationArgs : global::Pulumi.ResourceArgs
     {
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -117,5 +117,6 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         public ReservationArgs()
         {
         }
+        public static new ReservationArgs Empty => new ReservationArgs();
     }
 }

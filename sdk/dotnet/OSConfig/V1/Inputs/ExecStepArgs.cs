@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// A step that runs an executable for a PatchJob.
     /// </summary>
-    public sealed class ExecStepArgs : Pulumi.ResourceArgs
+    public sealed class ExecStepArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ExecStepConfig for all Linux VMs targeted by the PatchJob.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public ExecStepArgs()
         {
         }
+        public static new ExecStepArgs Empty => new ExecStepArgs();
     }
 }

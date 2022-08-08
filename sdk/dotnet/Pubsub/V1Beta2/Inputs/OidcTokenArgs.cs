@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2.Inputs
     /// <summary>
     /// Contains information needed for generating an [OpenID Connect token](https://developers.google.com/identity/protocols/OpenIDConnect).
     /// </summary>
-    public sealed class OidcTokenArgs : Pulumi.ResourceArgs
+    public sealed class OidcTokenArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Audience to be used when generating OIDC token. The audience claim identifies the recipients that the JWT is intended for. The audience value is a single case-sensitive string. Having multiple values (array) for the audience field is not supported. More info about the OIDC JWT token audience here: https://tools.ietf.org/html/rfc7519#section-4.1.3 Note: if not specified, the Push endpoint URL will be used.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2.Inputs
         public OidcTokenArgs()
         {
         }
+        public static new OidcTokenArgs Empty => new OidcTokenArgs();
     }
 }

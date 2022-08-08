@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudkms/v1:KeyRing")]
-    public partial class KeyRing : Pulumi.CustomResource
+    public partial class KeyRing : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time at which this KeyRing was created.
@@ -90,7 +90,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         }
     }
 
-    public sealed class KeyRingArgs : Pulumi.ResourceArgs
+    public sealed class KeyRingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
@@ -107,5 +107,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public KeyRingArgs()
         {
         }
+        public static new KeyRingArgs Empty => new KeyRingArgs();
     }
 }

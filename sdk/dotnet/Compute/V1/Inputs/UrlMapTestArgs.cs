@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Message for the expected URL mappings.
     /// </summary>
-    public sealed class UrlMapTestArgs : Pulumi.ResourceArgs
+    public sealed class UrlMapTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of this test case.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public UrlMapTestArgs()
         {
         }
+        public static new UrlMapTestArgs Empty => new UrlMapTestArgs();
     }
 }

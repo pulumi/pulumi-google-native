@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
     /// Creates an entry group. An entry group contains logically related entries together with [Cloud Identity and Access Management](/data-catalog/docs/concepts/iam) policies. These policies specify users who can create, edit, and view entries within entry groups. Data Catalog automatically creates entry groups with names that start with the `@` symbol for the following resources: * BigQuery entries (`@bigquery`) * Pub/Sub topics (`@pubsub`) * Dataproc Metastore services (`@dataproc_metastore_{SERVICE_NAME_HASH}`) You can create your own entry groups for Cloud Storage fileset entries and custom entries together with the corresponding IAM policies. User-created entry groups can't contain the `@` symbol, it is reserved for automatically created groups. Entry groups, like entries, can be searched. A maximum of 10,000 entry groups may be created per organization across all locations. You must enable the Data Catalog API in the project identified by the `parent` parameter. For more information, see [Data Catalog resource project](https://cloud.google.com/data-catalog/docs/concepts/resource-project).
     /// </summary>
     [GoogleNativeResourceType("google-native:datacatalog/v1:EntryGroup")]
-    public partial class EntryGroup : Pulumi.CustomResource
+    public partial class EntryGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Timestamps of the entry group. Default value is empty.
@@ -100,7 +100,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         }
     }
 
-    public sealed class EntryGroupArgs : Pulumi.ResourceArgs
+    public sealed class EntryGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Entry group description. Can consist of several sentences or paragraphs that describe the entry group contents. Default value is an empty string.
@@ -135,5 +135,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public EntryGroupArgs()
         {
         }
+        public static new EntryGroupArgs Empty => new EntryGroupArgs();
     }
 }

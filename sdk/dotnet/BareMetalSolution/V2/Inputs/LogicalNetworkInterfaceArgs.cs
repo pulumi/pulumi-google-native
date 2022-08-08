@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
     /// <summary>
     /// Each logical network interface is effectively a network and IP pair.
     /// </summary>
-    public sealed class LogicalNetworkInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class LogicalNetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether this interface is the default gateway for the instance. Only one interface can be the default gateway for the instance.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public LogicalNetworkInterfaceArgs()
         {
         }
+        public static new LogicalNetworkInterfaceArgs Empty => new LogicalNetworkInterfaceArgs();
     }
 }

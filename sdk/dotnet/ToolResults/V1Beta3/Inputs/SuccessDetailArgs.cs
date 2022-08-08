@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// Details for an outcome with a SUCCESS outcome summary. LINT.IfChange
     /// </summary>
-    public sealed class SuccessDetailArgs : Pulumi.ResourceArgs
+    public sealed class SuccessDetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If a native process other than the app crashed.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public SuccessDetailArgs()
         {
         }
+        public static new SuccessDetailArgs Empty => new SuccessDetailArgs();
     }
 }

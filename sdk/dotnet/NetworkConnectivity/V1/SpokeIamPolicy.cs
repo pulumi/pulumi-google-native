@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkconnectivity/v1:SpokeIamPolicy")]
-    public partial class SpokeIamPolicy : Pulumi.CustomResource
+    public partial class SpokeIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         }
     }
 
-    public sealed class SpokeIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class SpokeIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
         public SpokeIamPolicyArgs()
         {
         }
+        public static new SpokeIamPolicyArgs Empty => new SpokeIamPolicyArgs();
     }
 }

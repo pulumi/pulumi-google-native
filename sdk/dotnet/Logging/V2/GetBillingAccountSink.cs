@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     }
 
 
-    public sealed class GetBillingAccountSinkArgs : Pulumi.InvokeArgs
+    public sealed class GetBillingAccountSinkArgs : global::Pulumi.InvokeArgs
     {
         [Input("billingAccountId", required: true)]
         public string BillingAccountId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetBillingAccountSinkArgs()
         {
         }
+        public static new GetBillingAccountSinkArgs Empty => new GetBillingAccountSinkArgs();
     }
 
-    public sealed class GetBillingAccountSinkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBillingAccountSinkInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("billingAccountId", required: true)]
         public Input<string> BillingAccountId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetBillingAccountSinkInvokeArgs()
         {
         }
+        public static new GetBillingAccountSinkInvokeArgs Empty => new GetBillingAccountSinkInvokeArgs();
     }
 
 
@@ -100,7 +102,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// </summary>
         public readonly string UpdateTime;
         /// <summary>
-        /// An IAM identity—a service account or group—under which Cloud Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.Sinks that have a destination that is a log bucket in the same project as the sink do not have a writer_identity and no additional permissions are required.
+        /// An IAM identity—a service account or group—under which Cloud Logging writes the exported log entries to the sink's destination. This field is either set by specifying custom_writer_identity or set automatically by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.Sinks that have a destination that is a log bucket in the same project as the sink cannot have a writer_identity and no additional permissions are required.
         /// </summary>
         public readonly string WriterIdentity;
 

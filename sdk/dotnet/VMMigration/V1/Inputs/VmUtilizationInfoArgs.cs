@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
     /// <summary>
     /// Utilization information of a single VM.
     /// </summary>
-    public sealed class VmUtilizationInfoArgs : Pulumi.ResourceArgs
+    public sealed class VmUtilizationInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Utilization metrics for this VM.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
         public VmUtilizationInfoArgs()
         {
         }
+        public static new VmUtilizationInfoArgs Empty => new VmUtilizationInfoArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:managedidentities/v1:Peering")]
-    public partial class Peering : Pulumi.CustomResource
+    public partial class Peering : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
@@ -121,7 +121,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         }
     }
 
-    public sealed class PeeringArgs : Pulumi.ResourceArgs
+    public sealed class PeeringArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full names of the Google Compute Engine [networks](/compute/docs/networks-and-firewalls#networks) to which the instance is connected. Caller needs to make sure that CIDR subnets do not overlap between networks, else peering creation will fail.
@@ -159,5 +159,6 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
         public PeeringArgs()
         {
         }
+        public static new PeeringArgs Empty => new PeeringArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
     /// <summary>
     /// Settings specific to keys that can be used for WAF (Web Application Firewall).
     /// </summary>
-    public sealed class GoogleCloudRecaptchaenterpriseV1WafSettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRecaptchaenterpriseV1WafSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The WAF feature for which this key is enabled.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.reCAPTCHAEnterprise.V1.Inputs
         public GoogleCloudRecaptchaenterpriseV1WafSettingsArgs()
         {
         }
+        public static new GoogleCloudRecaptchaenterpriseV1WafSettingsArgs Empty => new GoogleCloudRecaptchaenterpriseV1WafSettingsArgs();
     }
 }

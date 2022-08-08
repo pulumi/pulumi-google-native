@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Rich Business Messaging (RBM) suggested reply that the user can click instead of typing in their own response.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Opaque payload that the Dialogflow receives in a user event when the user taps the suggested reply. This data will be also forwarded to webhook to allow performing custom business logic.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyArgs();
     }
 }

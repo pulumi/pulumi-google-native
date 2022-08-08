@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     /// Creates a new Cloud SQL instance.
     /// </summary>
     [GoogleNativeResourceType("google-native:sqladmin/v1beta4:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// List all maintenance versions applicable on the instance
@@ -169,7 +169,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<ImmutableArray<string>> ReplicaNames { get; private set; } = null!;
 
         /// <summary>
-        /// Initial root password. Use only on creation.
+        /// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
         /// </summary>
         [Output("rootPassword")]
         public Output<string> RootPassword { get; private set; } = null!;
@@ -275,7 +275,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         [Input("availableMaintenanceVersions")]
         private InputList<string>? _availableMaintenanceVersions;
@@ -440,7 +440,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         }
 
         /// <summary>
-        /// Initial root password. Use only on creation.
+        /// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
         /// </summary>
         [Input("rootPassword")]
         public Input<string>? RootPassword { get; set; }
@@ -508,5 +508,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 }

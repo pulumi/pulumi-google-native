@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
     }
 
 
-    public sealed class GetRulesetArgs : Pulumi.InvokeArgs
+    public sealed class GetRulesetArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         public GetRulesetArgs()
         {
         }
+        public static new GetRulesetArgs Empty => new GetRulesetArgs();
     }
 
-    public sealed class GetRulesetInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRulesetInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1
         public GetRulesetInvokeArgs()
         {
         }
+        public static new GetRulesetInvokeArgs Empty => new GetRulesetInvokeArgs();
     }
 
 

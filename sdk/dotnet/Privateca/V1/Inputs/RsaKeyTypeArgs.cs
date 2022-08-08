@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// Describes an RSA key that may be used in a Certificate issued from a CaPool.
     /// </summary>
-    public sealed class RsaKeyTypeArgs : Pulumi.ResourceArgs
+    public sealed class RsaKeyTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The maximum allowed RSA modulus size (inclusive), in bits. If this is not set, or if set to zero, the service will not enforce an explicit upper bound on RSA modulus sizes.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public RsaKeyTypeArgs()
         {
         }
+        public static new RsaKeyTypeArgs Empty => new RsaKeyTypeArgs();
     }
 }

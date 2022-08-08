@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     ///  A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
     /// </summary>
-    public sealed class DurationArgs : Pulumi.ResourceArgs
+    public sealed class DurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one second are represented with a 0 `seconds` field and a positive or negative `nanos` field. For durations of one second or more, a non-zero value for the `nanos` field must be of the same sign as the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public DurationArgs()
         {
         }
+        public static new DurationArgs Empty => new DurationArgs();
     }
 }

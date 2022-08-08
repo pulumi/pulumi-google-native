@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
 
-    public sealed class GetRegionBackendServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionBackendServiceArgs : global::Pulumi.InvokeArgs
     {
         [Input("backendService", required: true)]
         public string BackendService { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetRegionBackendServiceArgs()
         {
         }
+        public static new GetRegionBackendServiceArgs Empty => new GetRegionBackendServiceArgs();
     }
 
-    public sealed class GetRegionBackendServiceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionBackendServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("backendService", required: true)]
         public Input<string> BackendService { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetRegionBackendServiceInvokeArgs()
         {
         }
+        public static new GetRegionBackendServiceInvokeArgs Empty => new GetRegionBackendServiceInvokeArgs();
     }
 
 

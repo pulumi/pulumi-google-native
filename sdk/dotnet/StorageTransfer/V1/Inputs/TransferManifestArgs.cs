@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     /// <summary>
     /// Specifies where the manifest is located.
     /// </summary>
-    public sealed class TransferManifestArgs : Pulumi.ResourceArgs
+    public sealed class TransferManifestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the path to the manifest in Cloud Storage. The Google-managed service account for the transfer must have `storage.objects.get` permission for this object. An example path is `gs://bucket_name/path/manifest.csv`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public TransferManifestArgs()
         {
         }
+        public static new TransferManifestArgs Empty => new TransferManifestArgs();
     }
 }

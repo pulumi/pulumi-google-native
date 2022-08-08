@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetFutureReservationArgs : Pulumi.InvokeArgs
+    public sealed class GetFutureReservationArgs : global::Pulumi.InvokeArgs
     {
         [Input("futureReservation", required: true)]
         public string FutureReservation { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetFutureReservationArgs()
         {
         }
+        public static new GetFutureReservationArgs Empty => new GetFutureReservationArgs();
     }
 
-    public sealed class GetFutureReservationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFutureReservationInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("futureReservation", required: true)]
         public Input<string> FutureReservation { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetFutureReservationInvokeArgs()
         {
         }
+        public static new GetFutureReservationInvokeArgs Empty => new GetFutureReservationInvokeArgs();
     }
 
 

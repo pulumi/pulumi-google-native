@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// HTTP headers used in UrlMapTests.
     /// </summary>
-    public sealed class UrlMapTestHeaderArgs : Pulumi.ResourceArgs
+    public sealed class UrlMapTestHeaderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Header name.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public UrlMapTestHeaderArgs()
         {
         }
+        public static new UrlMapTestHeaderArgs Empty => new UrlMapTestHeaderArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     /// Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
     /// </summary>
     [GoogleNativeResourceType("google-native:logging/v2:OrganizationSink")]
-    public partial class OrganizationSink : Pulumi.CustomResource
+    public partial class OrganizationSink : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. Options that affect sinks exporting data to BigQuery.
@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// An IAM identity—a service account or group—under which Cloud Logging writes the exported log entries to the sink's destination. This field is set by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.Sinks that have a destination that is a log bucket in the same project as the sink do not have a writer_identity and no additional permissions are required.
+        /// An IAM identity—a service account or group—under which Cloud Logging writes the exported log entries to the sink's destination. This field is either set by specifying custom_writer_identity or set automatically by sinks.create and sinks.update based on the value of unique_writer_identity in those methods.Until you grant this identity write-access to the destination, log entry exports from this sink will fail. For more information, see Granting Access for a Resource (https://cloud.google.com/iam/docs/granting-roles-to-service-accounts#granting_access_to_a_service_account_for_a_resource). Consult the destination service's documentation to determine the appropriate IAM roles to assign to the identity.Sinks that have a destination that is a log bucket in the same project as the sink cannot have a writer_identity and no additional permissions are required.
         /// </summary>
         [Output("writerIdentity")]
         public Output<string> WriterIdentity { get; private set; } = null!;
@@ -143,7 +143,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         }
     }
 
-    public sealed class OrganizationSinkArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationSinkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Options that affect sinks exporting data to BigQuery.
@@ -217,5 +217,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         public OrganizationSinkArgs()
         {
         }
+        public static new OrganizationSinkArgs Empty => new OrganizationSinkArgs();
     }
 }

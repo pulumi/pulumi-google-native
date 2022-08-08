@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:file/v1beta1:Backup")]
-    public partial class Backup : Pulumi.CustomResource
+    public partial class Backup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
@@ -155,7 +155,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         }
     }
 
-    public sealed class BackupArgs : Pulumi.ResourceArgs
+    public sealed class BackupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The ID to use for the backup. The ID must be unique within the specified project and location. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
@@ -208,5 +208,6 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         public BackupArgs()
         {
         }
+        public static new BackupArgs Empty => new BackupArgs();
     }
 }

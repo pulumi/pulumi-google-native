@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
     /// <summary>
     /// Maintenance window. This specifies when a Cloud SQL instance is restarted for system maintenance purposes.
     /// </summary>
-    public sealed class MaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class MaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// day of week (1-7), starting on Monday.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public MaintenanceWindowArgs()
         {
         }
+        public static new MaintenanceWindowArgs Empty => new MaintenanceWindowArgs();
     }
 }

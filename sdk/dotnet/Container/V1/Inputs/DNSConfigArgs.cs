@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// DNSConfig contains the desired set of options for configuring clusterDNS.
     /// </summary>
-    public sealed class DNSConfigArgs : Pulumi.ResourceArgs
+    public sealed class DNSConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// cluster_dns indicates which in-cluster DNS provider should be used.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public DNSConfigArgs()
         {
         }
+        public static new DNSConfigArgs Empty => new DNSConfigArgs();
     }
 }

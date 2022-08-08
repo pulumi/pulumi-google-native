@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Google Cloud Storage and BigQuery.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2TimespanConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2TimespanConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2TimespanConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2TimespanConfigArgs Empty => new GooglePrivacyDlpV2TimespanConfigArgs();
     }
 }

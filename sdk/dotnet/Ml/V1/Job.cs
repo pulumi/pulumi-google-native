@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Ml.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:ml/v1:Job")]
-    public partial class Job : Pulumi.CustomResource
+    public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
         /// When the job was created.
@@ -146,7 +146,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         }
     }
 
-    public sealed class JobArgs : Pulumi.ResourceArgs
+    public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a job from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform job updates in order to avoid race conditions: An `etag` is returned in the response to `GetJob`, and systems are expected to put that etag in the request to `UpdateJob` to ensure that their change will be applied to the same version of the job.
@@ -202,5 +202,6 @@ namespace Pulumi.GoogleNative.Ml.V1
         public JobArgs()
         {
         }
+        public static new JobArgs Empty => new JobArgs();
     }
 }

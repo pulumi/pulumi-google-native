@@ -28,6 +28,14 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
         /// Oracle objects to include in the stream.
         /// </summary>
         public readonly Outputs.OracleRdbmsResponse IncludeObjects;
+        /// <summary>
+        /// Maximum number of concurrent CDC tasks. The number should be non negative. If not set (or set to 0), the system's default value will be used.
+        /// </summary>
+        public readonly int MaxConcurrentCdcTasks;
+        /// <summary>
+        /// Stream large object values.
+        /// </summary>
+        public readonly Outputs.StreamLargeObjectsResponse StreamLargeObjects;
 
         [OutputConstructor]
         private OracleSourceConfigResponse(
@@ -35,11 +43,17 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
 
             Outputs.OracleRdbmsResponse excludeObjects,
 
-            Outputs.OracleRdbmsResponse includeObjects)
+            Outputs.OracleRdbmsResponse includeObjects,
+
+            int maxConcurrentCdcTasks,
+
+            Outputs.StreamLargeObjectsResponse streamLargeObjects)
         {
             DropLargeObjects = dropLargeObjects;
             ExcludeObjects = excludeObjects;
             IncludeObjects = includeObjects;
+            MaxConcurrentCdcTasks = maxConcurrentCdcTasks;
+            StreamLargeObjects = streamLargeObjects;
         }
     }
 }

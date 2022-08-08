@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     /// Creates a new Connector in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:beyondcorp/v1alpha:Connector")]
-    public partial class Connector : Pulumi.CustomResource
+    public partial class Connector : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
@@ -141,7 +141,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         }
     }
 
-    public sealed class ConnectorArgs : Pulumi.ResourceArgs
+    public sealed class ConnectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. User-settable connector resource ID. * Must start with a letter. * Must contain between 4-63 characters from `/a-z-/`. * Must end with a number or a letter.
@@ -206,5 +206,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public ConnectorArgs()
         {
         }
+        public static new ConnectorArgs Empty => new ConnectorArgs();
     }
 }

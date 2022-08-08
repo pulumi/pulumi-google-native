@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents the spec to match categorical values from parent parameter.
     /// </summary>
-    public sealed class GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("values")]
         private InputList<string>? _values;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs()
         {
         }
+        public static new GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs Empty => new GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs();
     }
 }

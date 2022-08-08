@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
     /// <summary>
     /// The game server cluster connection information.
     /// </summary>
-    public sealed class GameServerClusterConnectionInfoArgs : Pulumi.ResourceArgs
+    public sealed class GameServerClusterConnectionInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Reference to the GKE cluster where the game servers are installed.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.GameServices.V1.Inputs
         public GameServerClusterConnectionInfoArgs()
         {
         }
+        public static new GameServerClusterConnectionInfoArgs Empty => new GameServerClusterConnectionInfoArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
     /// <summary>
     /// MySQL SSL configuration information.
     /// </summary>
-    public sealed class MysqlSslConfigArgs : Pulumi.ResourceArgs
+    public sealed class MysqlSslConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Input only. PEM-encoded certificate of the CA that signed the source database server's certificate.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
         public MysqlSslConfigArgs()
         {
         }
+        public static new MysqlSslConfigArgs Empty => new MysqlSslConfigArgs();
     }
 }

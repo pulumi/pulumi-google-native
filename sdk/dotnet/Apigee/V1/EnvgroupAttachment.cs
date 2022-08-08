@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Creates a new attachment of an environment to an environment group.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:EnvgroupAttachment")]
-    public partial class EnvgroupAttachment : Pulumi.CustomResource
+    public partial class EnvgroupAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time at which the environment group attachment was created as milliseconds since epoch.
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class EnvgroupAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class EnvgroupAttachmentArgs : global::Pulumi.ResourceArgs
     {
         [Input("envgroupId", required: true)]
         public Input<string> EnvgroupId { get; set; } = null!;
@@ -116,5 +116,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public EnvgroupAttachmentArgs()
         {
         }
+        public static new EnvgroupAttachmentArgs Empty => new EnvgroupAttachmentArgs();
     }
 }

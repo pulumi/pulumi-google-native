@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Developer")]
-    public partial class Developer : Pulumi.CustomResource
+    public partial class Developer : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Access type.
@@ -150,7 +150,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class DeveloperArgs : Pulumi.ResourceArgs
+    public sealed class DeveloperArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Access type.
@@ -236,5 +236,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public DeveloperArgs()
         {
         }
+        public static new DeveloperArgs Empty => new DeveloperArgs();
     }
 }

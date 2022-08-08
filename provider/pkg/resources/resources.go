@@ -16,7 +16,10 @@ package resources
 
 import (
 	"fmt"
+	"net/url"
 	"strings"
+
+	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 )
 
 // CloudAPIMetadata is a collection of all resources and functions in the Google Cloud REST API.
@@ -46,19 +49,32 @@ func (e CloudAPIEndpoint) URI(
 	if len(e.SelfLinkProperty) > 0 {
 		v, ok := outputs[e.SelfLinkProperty].(string)
 		if !ok {
+			logging.V(9).Infof("missing selfLink property in %+v", outputs)
 			return "", fmt.Errorf("selfLink property %q not found", e.SelfLinkProperty)
 		}
 		return v, nil
 	}
 
 	id := e.Template
+	queryMap := map[string]string{}
 	idParams := e.Values
 	for _, param := range idParams {
 		var propValue string
-		if v, has := EvalPropertyValue(inputs, param.SdkName); has {
+		sdkName := param.SdkName
+		if sdkName == "" {
+			sdkName = param.Name
+		}
+		if v, has := EvalPropertyValue(inputs, sdkName); has {
 			propValue = v
-		} else if v, has := EvalPropertyValue(outputs, param.SdkName); has {
+		} else if v, has := EvalPropertyValue(outputs, sdkName); has {
 			propValue = v
+		}
+
+		if param.Kind == "query" {
+			if propValue != "" {
+				queryMap[param.Name] = propValue
+			}
+			continue
 		}
 
 		if propValue == "" {
@@ -72,7 +88,16 @@ func (e CloudAPIEndpoint) URI(
 
 		id = strings.Replace(id, fmt.Sprintf("{%s}", param.Name), propValue, 1)
 	}
-	return id, nil
+	uri, err := url.Parse(id)
+	if err != nil {
+		return "", fmt.Errorf("parsing resource URL %q: %w", id, err)
+	}
+	query := uri.Query()
+	for key, value := range queryMap {
+		query.Set(key, value)
+	}
+	uri.RawQuery = query.Encode()
+	return uri.String(), nil
 }
 
 func EvalPropertyValue(values map[string]interface{}, path string) (string, bool) {
@@ -126,8 +151,10 @@ type ResourceAutoname struct {
 type PollingStrategy string
 
 const (
-	DefaultPoll       = PollingStrategy("")
-	KNativeStatusPoll = PollingStrategy("KNativeStatusPoll")
+	DefaultPoll                   = PollingStrategy("")
+	KNativeStatusPoll             = PollingStrategy("KNativeStatusPoll")
+	ClusterAwaitRestingStatePoll  = PollingStrategy("ClusterAwaitRestingStatePoll")
+	NodepoolAwaitRestingStatePoll = PollingStrategy("NodepoolAwaitRestingStatePoll")
 )
 
 // Polling specifies the polling strategy to use for a resource.
@@ -147,7 +174,8 @@ type Operations struct {
 // CreateAPIOperation is a Create resource operation in the Google Cloud REST API.
 type CreateAPIOperation struct {
 	CloudAPIOperation
-	Autoname ResourceAutoname `json:"autoname,omitempty"`
+	Autoname       ResourceAutoname            `json:"autoname,omitempty"`
+	RecordDefaults map[string]CloudAPIProperty `json:"recordDefaults,omitempty"`
 }
 
 type UpdateAPIOperation struct {
@@ -173,9 +201,9 @@ type CloudAPIResource struct {
 
 	// RootURL is the root URL of the REST API.
 	// Example: `https://cloudkms.googleapis.com/`
-	RootURL string `json:"rootUrl"`
-
-	AssetUpload bool `json:"assetUpload,omitempty"`
+	RootURL        string         `json:"rootUrl"`
+	FormDataUpload FormDataUpload `json:"formDataUpload,omitempty"`
+	AssetUpload    bool           `json:"assetUpload,omitempty"`
 	// IDProperty contains the name of the output property that represents resource ID (a self link).
 	// Example: `selfLink`
 	IDProperty string `json:"idProperty,omitempty"`
@@ -184,6 +212,10 @@ type CloudAPIResource struct {
 	// Example: `projects/{project}/global/backendBuckets/{resource}/getIamPolicy`
 	IDPath   string            `json:"idPath,omitempty"`
 	IDParams map[string]string `json:"idParams,omitempty"`
+}
+
+type FormDataUpload struct {
+	FormFields map[string]CloudAPIProperty `json:"formFields,omitempty"`
 }
 
 // CloudAPIFunction is a function in Google Cloud REST API.
@@ -232,7 +264,11 @@ type CloudAPIProperty struct {
 	// The name of the container property that was "flattened" during SDK generation, i.e. extra layer that exists
 	// in the API payload but does not exist in the SDK.
 	Container string `json:"container,omitempty"`
-	SdkName   string `json:"sdkName,omitempty"`
+	// Flatten is the opposite of the container - i.e. this layer of the property will be flattened so any properties
+	// within this property will be promoted to this position. This essentially removes a layer that exists in the SDK
+	// but doesn't in the API payload.
+	Flatten bool   `json:"flatten,omitempty"`
+	SdkName string `json:"sdkName,omitempty"`
 	// CopyFromOutputs equal to true means that the value for this property during an update should be taken from
 	// the previous state of the resource, not user inputs.
 	CopyFromOutputs bool `json:"copyFromOutputs,omitempty"`

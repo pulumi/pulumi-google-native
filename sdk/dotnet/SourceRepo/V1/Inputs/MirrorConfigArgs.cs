@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SourceRepo.V1.Inputs
     /// <summary>
     /// Configuration to automatically mirror a repository from another hosting service, for example GitHub or Bitbucket.
     /// </summary>
-    public sealed class MirrorConfigArgs : Pulumi.ResourceArgs
+    public sealed class MirrorConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ID of the SSH deploy key at the other hosting service. Removing this key from the other service would deauthorize Google Cloud Source Repositories from mirroring.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.SourceRepo.V1.Inputs
         public MirrorConfigArgs()
         {
         }
+        public static new MirrorConfigArgs Empty => new MirrorConfigArgs();
     }
 }

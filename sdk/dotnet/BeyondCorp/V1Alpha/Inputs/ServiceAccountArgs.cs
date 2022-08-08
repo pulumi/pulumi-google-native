@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
     /// <summary>
     /// ServiceAccount represents a GCP service account.
     /// </summary>
-    public sealed class ServiceAccountArgs : Pulumi.ResourceArgs
+    public sealed class ServiceAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Email address of the service account.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
         public ServiceAccountArgs()
         {
         }
+        public static new ServiceAccountArgs Empty => new ServiceAccountArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// The specification for fault injection introduced into traffic to test the resiliency of clients to backend service failure. As part of fault injection, when clients send requests to a backend service, delays can be introduced by the load balancer on a percentage of requests before sending those request to the backend service. Similarly requests from clients can be aborted by the load balancer for a percentage of requests.
     /// </summary>
-    public sealed class HttpFaultInjectionArgs : Pulumi.ResourceArgs
+    public sealed class HttpFaultInjectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The specification for how client requests are aborted as part of fault injection.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public HttpFaultInjectionArgs()
         {
         }
+        public static new HttpFaultInjectionArgs Empty => new HttpFaultInjectionArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
     /// <summary>
     /// Network-level access control policy for the Airflow web server.
     /// </summary>
-    public sealed class WebServerNetworkAccessControlArgs : Pulumi.ResourceArgs
+    public sealed class WebServerNetworkAccessControlArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedIpRanges")]
         private InputList<Inputs.AllowedIpRangeArgs>? _allowedIpRanges;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         public WebServerNetworkAccessControlArgs()
         {
         }
+        public static new WebServerNetworkAccessControlArgs Empty => new WebServerNetworkAccessControlArgs();
     }
 }

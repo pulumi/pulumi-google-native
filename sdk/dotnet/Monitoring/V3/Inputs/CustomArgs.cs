@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Custom view of service telemetry. Currently a place-holder pending final design.
     /// </summary>
-    public sealed class CustomArgs : Pulumi.ResourceArgs
+    public sealed class CustomArgs : global::Pulumi.ResourceArgs
     {
         public CustomArgs()
         {
         }
+        public static new CustomArgs Empty => new CustomArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta.Inputs
     /// <summary>
     /// A restriction on the OS type and version of devices making requests.
     /// </summary>
-    public sealed class OsConstraintArgs : Pulumi.ResourceArgs
+    public sealed class OsConstraintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The minimum allowed OS version. If not set, any version of this OS satisfies the constraint. Format: `"major.minor.patch"`. Examples: `"10.5.301"`, `"9.2.1"`.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta.Inputs
         public OsConstraintArgs()
         {
         }
+        public static new OsConstraintArgs Empty => new OsConstraintArgs();
     }
 }

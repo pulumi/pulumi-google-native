@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:servicemanagement/v1:Rollout")]
-    public partial class Rollout : Pulumi.CustomResource
+    public partial class Rollout : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation time of the rollout. Readonly.
@@ -104,7 +104,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         }
     }
 
-    public sealed class RolloutArgs : Pulumi.ResourceArgs
+    public sealed class RolloutArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creation time of the rollout. Readonly.
@@ -145,5 +145,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1
         public RolloutArgs()
         {
         }
+        public static new RolloutArgs Empty => new RolloutArgs();
     }
 }

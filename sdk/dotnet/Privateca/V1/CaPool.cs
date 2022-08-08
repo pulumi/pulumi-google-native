@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:privateca/v1:CaPool")]
-    public partial class CaPool : Pulumi.CustomResource
+    public partial class CaPool : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
@@ -113,7 +113,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
         }
     }
 
-    public sealed class CaPoolArgs : Pulumi.ResourceArgs
+    public sealed class CaPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
@@ -166,5 +166,6 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public CaPoolArgs()
         {
         }
+        public static new CaPoolArgs Empty => new CaPoolArgs();
     }
 }

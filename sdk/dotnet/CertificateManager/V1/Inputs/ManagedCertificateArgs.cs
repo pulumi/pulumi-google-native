@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1.Inputs
     /// <summary>
     /// Configuration and state of a Managed Certificate. Certificate Manager provisions and renews Managed Certificates automatically, for as long as it's authorized to do so.
     /// </summary>
-    public sealed class ManagedCertificateArgs : Pulumi.ResourceArgs
+    public sealed class ManagedCertificateArgs : global::Pulumi.ResourceArgs
     {
         [Input("dnsAuthorizations")]
         private InputList<string>? _dnsAuthorizations;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.CertificateManager.V1.Inputs
         public ManagedCertificateArgs()
         {
         }
+        public static new ManagedCertificateArgs Empty => new ManagedCertificateArgs();
     }
 }

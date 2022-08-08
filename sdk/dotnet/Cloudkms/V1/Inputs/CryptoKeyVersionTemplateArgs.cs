@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1.Inputs
     /// <summary>
     /// A CryptoKeyVersionTemplate specifies the properties to use when creating a new CryptoKeyVersion, either manually with CreateCryptoKeyVersion or automatically as a result of auto-rotation.
     /// </summary>
-    public sealed class CryptoKeyVersionTemplateArgs : Pulumi.ResourceArgs
+    public sealed class CryptoKeyVersionTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1.Inputs
         public CryptoKeyVersionTemplateArgs()
         {
         }
+        public static new CryptoKeyVersionTemplateArgs Empty => new CryptoKeyVersionTemplateArgs();
     }
 }

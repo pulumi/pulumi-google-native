@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// k-anonymity metric, used for analysis of reidentification risk.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2KAnonymityConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2KAnonymityConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Message indicating that multiple rows might be associated to a single individual. If the same entity_id is associated to multiple quasi-identifier tuples over distinct rows, we consider the entire collection of tuples as the composite quasi-identifier. This collection is a multiset: the order in which the different tuples appear in the dataset is ignored, but their frequency is taken into account. Important note: a maximum of 1000 rows can be associated to a single entity ID. If more rows are associated with the same entity ID, some might be ignored.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2KAnonymityConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2KAnonymityConfigArgs Empty => new GooglePrivacyDlpV2KAnonymityConfigArgs();
     }
 }

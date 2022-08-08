@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
     }
 
 
-    public sealed class GetReusableConfigIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetReusableConfigIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public GetReusableConfigIamPolicyArgs()
         {
         }
+        public static new GetReusableConfigIamPolicyArgs Empty => new GetReusableConfigIamPolicyArgs();
     }
 
-    public sealed class GetReusableConfigIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetReusableConfigIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public GetReusableConfigIamPolicyInvokeArgs()
         {
         }
+        public static new GetReusableConfigIamPolicyInvokeArgs Empty => new GetReusableConfigIamPolicyInvokeArgs();
     }
 
 

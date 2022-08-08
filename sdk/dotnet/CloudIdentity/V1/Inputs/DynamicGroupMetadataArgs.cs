@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1.Inputs
     /// <summary>
     /// Dynamic group metadata like queries and status.
     /// </summary>
-    public sealed class DynamicGroupMetadataArgs : Pulumi.ResourceArgs
+    public sealed class DynamicGroupMetadataArgs : global::Pulumi.ResourceArgs
     {
         [Input("queries")]
         private InputList<Inputs.DynamicGroupQueryArgs>? _queries;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1.Inputs
         public DynamicGroupMetadataArgs()
         {
         }
+        public static new DynamicGroupMetadataArgs Empty => new DynamicGroupMetadataArgs();
     }
 }

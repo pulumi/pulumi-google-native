@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     }
 
 
-    public sealed class GetApiVersionSpecIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetApiVersionSpecIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("apiId", required: true)]
         public string ApiId { get; set; } = null!;
@@ -48,9 +48,10 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public GetApiVersionSpecIamPolicyArgs()
         {
         }
+        public static new GetApiVersionSpecIamPolicyArgs Empty => new GetApiVersionSpecIamPolicyArgs();
     }
 
-    public sealed class GetApiVersionSpecIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetApiVersionSpecIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
@@ -73,6 +74,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public GetApiVersionSpecIamPolicyInvokeArgs()
         {
         }
+        public static new GetApiVersionSpecIamPolicyInvokeArgs Empty => new GetApiVersionSpecIamPolicyInvokeArgs();
     }
 
 

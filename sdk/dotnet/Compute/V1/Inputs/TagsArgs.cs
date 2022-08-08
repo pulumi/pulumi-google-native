@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// A set of instance tags.
     /// </summary>
-    public sealed class TagsArgs : Pulumi.ResourceArgs
+    public sealed class TagsArgs : global::Pulumi.ResourceArgs
     {
         [Input("items")]
         private InputList<string>? _items;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public TagsArgs()
         {
         }
+        public static new TagsArgs Empty => new TagsArgs();
     }
 }

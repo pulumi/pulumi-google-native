@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// An ObjectId specifies an object identifier (OID). These provide context and describe types in ASN.1 messages.
     /// </summary>
-    public sealed class ObjectIdArgs : Pulumi.ResourceArgs
+    public sealed class ObjectIdArgs : global::Pulumi.ResourceArgs
     {
         [Input("objectIdPath", required: true)]
         private InputList<int>? _objectIdPath;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public ObjectIdArgs()
         {
         }
+        public static new ObjectIdArgs Empty => new ObjectIdArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1.Inputs
     /// <summary>
     /// Identifies Data Fusion accelerators for an instance.
     /// </summary>
-    public sealed class AcceleratorArgs : Pulumi.ResourceArgs
+    public sealed class AcceleratorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of an accelator for a CDF instance.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1.Inputs
         public AcceleratorArgs()
         {
         }
+        public static new AcceleratorArgs Empty => new AcceleratorArgs();
     }
 }

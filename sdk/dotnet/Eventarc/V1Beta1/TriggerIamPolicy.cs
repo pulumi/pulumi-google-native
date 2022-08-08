@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:eventarc/v1beta1:TriggerIamPolicy")]
-    public partial class TriggerIamPolicy : Pulumi.CustomResource
+    public partial class TriggerIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         }
     }
 
-    public sealed class TriggerIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class TriggerIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1Beta1
         public TriggerIamPolicyArgs()
         {
         }
+        public static new TriggerIamPolicyArgs Empty => new TriggerIamPolicyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     /// <summary>
     /// The configuration settings for Cloud Composer maintenance window. The following example: ``` { "startTime":"2019-08-01T01:00:00Z" "endTime":"2019-08-01T07:00:00Z" "recurrence":"FREQ=WEEKLY;BYDAY=TU,WE" } ``` would define a maintenance window between 01 and 07 hours UTC during each Tuesday and Wednesday.
     /// </summary>
-    public sealed class MaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class MaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maintenance window end time. It is used only to calculate the duration of the maintenance window. The value for end-time must be in the future, relative to `start_time`.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public MaintenanceWindowArgs()
         {
         }
+        public static new MaintenanceWindowArgs Empty => new MaintenanceWindowArgs();
     }
 }

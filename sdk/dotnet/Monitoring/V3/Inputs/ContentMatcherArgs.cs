@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Optional. Used to perform content matching. This allows matching based on substrings and regular expressions, together with their negations. Only the first 4 MB of an HTTP or HTTPS check's response (and the first 1 MB of a TCP check's response) are examined for purposes of content matching.
     /// </summary>
-    public sealed class ContentMatcherArgs : Pulumi.ResourceArgs
+    public sealed class ContentMatcherArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public ContentMatcherArgs()
         {
         }
+        public static new ContentMatcherArgs Empty => new ContentMatcherArgs();
     }
 }

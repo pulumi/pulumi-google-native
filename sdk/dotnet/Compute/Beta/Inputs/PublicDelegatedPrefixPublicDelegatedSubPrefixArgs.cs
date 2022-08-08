@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Represents a sub PublicDelegatedPrefix.
     /// </summary>
-    public sealed class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs : Pulumi.ResourceArgs
+    public sealed class PublicDelegatedPrefixPublicDelegatedSubPrefixArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the project scoping this PublicDelegatedSubPrefix.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public PublicDelegatedPrefixPublicDelegatedSubPrefixArgs()
         {
         }
+        public static new PublicDelegatedPrefixPublicDelegatedSubPrefixArgs Empty => new PublicDelegatedPrefixPublicDelegatedSubPrefixArgs();
     }
 }

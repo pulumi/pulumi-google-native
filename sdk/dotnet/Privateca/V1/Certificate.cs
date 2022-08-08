@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:privateca/v1:Certificate")]
-    public partial class Certificate : Pulumi.CustomResource
+    public partial class Certificate : global::Pulumi.CustomResource
     {
         [Output("caPoolId")]
         public Output<string> CaPoolId { get; private set; } = null!;
@@ -184,7 +184,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
         }
     }
 
-    public sealed class CertificateArgs : Pulumi.ResourceArgs
+    public sealed class CertificateArgs : global::Pulumi.ResourceArgs
     {
         [Input("caPoolId", required: true)]
         public Input<string> CaPoolId { get; set; } = null!;
@@ -264,5 +264,6 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public CertificateArgs()
         {
         }
+        public static new CertificateArgs Empty => new CertificateArgs();
     }
 }

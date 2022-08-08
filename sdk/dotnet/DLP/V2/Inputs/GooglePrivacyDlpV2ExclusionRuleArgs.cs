@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// The rule that specifies conditions when findings of infoTypes specified in `InspectionRuleSet` are removed from results.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2ExclusionRuleArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2ExclusionRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Dictionary which defines the rule.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2ExclusionRuleArgs()
         {
         }
+        public static new GooglePrivacyDlpV2ExclusionRuleArgs Empty => new GooglePrivacyDlpV2ExclusionRuleArgs();
     }
 }

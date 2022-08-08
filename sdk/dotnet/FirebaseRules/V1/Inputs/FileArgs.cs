@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1.Inputs
     /// <summary>
     /// `File` containing source content.
     /// </summary>
-    public sealed class FileArgs : Pulumi.ResourceArgs
+    public sealed class FileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Textual Content.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.FirebaseRules.V1.Inputs
         public FileArgs()
         {
         }
+        public static new FileArgs Empty => new FileArgs();
     }
 }

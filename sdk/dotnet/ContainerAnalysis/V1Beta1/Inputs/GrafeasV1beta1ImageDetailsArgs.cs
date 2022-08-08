@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Details of an image occurrence.
     /// </summary>
-    public sealed class GrafeasV1beta1ImageDetailsArgs : Pulumi.ResourceArgs
+    public sealed class GrafeasV1beta1ImageDetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. The child image derived from the base image.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public GrafeasV1beta1ImageDetailsArgs()
         {
         }
+        public static new GrafeasV1beta1ImageDetailsArgs Empty => new GrafeasV1beta1ImageDetailsArgs();
     }
 }

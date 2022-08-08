@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// A Dataproc job for running Apache Spark SQL (http://spark.apache.org/sql/) queries.
     /// </summary>
-    public sealed class SparkSqlJobArgs : Pulumi.ResourceArgs
+    public sealed class SparkSqlJobArgs : global::Pulumi.ResourceArgs
     {
         [Input("jarFileUris")]
         private InputList<string>? _jarFileUris;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public SparkSqlJobArgs()
         {
         }
+        public static new SparkSqlJobArgs Empty => new SparkSqlJobArgs();
     }
 }

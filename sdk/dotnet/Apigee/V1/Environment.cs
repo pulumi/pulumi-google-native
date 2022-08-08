@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Creates an environment in an organization.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Environment")]
-    public partial class Environment : Pulumi.CustomResource
+    public partial class Environment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class EnvironmentArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. API Proxy type supported by the environment. The type can be set when creating the Environment and cannot be changed.
@@ -175,5 +175,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public EnvironmentArgs()
         {
         }
+        public static new EnvironmentArgs Empty => new EnvironmentArgs();
     }
 }

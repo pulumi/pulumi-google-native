@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     /// <summary>
     /// Configuration for running a transfer.
     /// </summary>
-    public sealed class TransferSpecArgs : Pulumi.ResourceArgs
+    public sealed class TransferSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An AWS S3 compatible data source.
@@ -102,5 +102,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public TransferSpecArgs()
         {
         }
+        public static new TransferSpecArgs Empty => new TransferSpecArgs();
     }
 }

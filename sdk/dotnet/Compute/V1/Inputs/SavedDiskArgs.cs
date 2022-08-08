@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// An instance-attached disk resource.
     /// </summary>
-    public sealed class SavedDiskArgs : Pulumi.ResourceArgs
+    public sealed class SavedDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies a URL of the disk attached to the source instance.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public SavedDiskArgs()
         {
         }
+        public static new SavedDiskArgs Empty => new SavedDiskArgs();
     }
 }

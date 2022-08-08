@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     /// Creates a snapshot in the specified project using the data included in the request. For regular snapshot creation, consider using this method instead of disks.createSnapshot, as this method supports more features, such as creating snapshots in a project different from the source disk project.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:Snapshot")]
-    public partial class Snapshot : Pulumi.CustomResource
+    public partial class Snapshot : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The architecture of the snapshot. Valid values are ARM64 or X86_64.
@@ -32,6 +32,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Output("chainName")]
         public Output<string> ChainName { get; private set; } = null!;
+
+        /// <summary>
+        /// Size in bytes of the snapshot at creation time.
+        /// </summary>
+        [Output("creationSizeBytes")]
+        public Output<string> CreationSizeBytes { get; private set; } = null!;
 
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -125,6 +131,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Output("snapshotEncryptionKey")]
         public Output<Outputs.CustomerEncryptionKeyResponse> SnapshotEncryptionKey { get; private set; } = null!;
+
+        /// <summary>
+        /// Indicates the type of the snapshot.
+        /// </summary>
+        [Output("snapshotType")]
+        public Output<string> SnapshotType { get; private set; } = null!;
 
         /// <summary>
         /// The source disk used to create this snapshot.
@@ -227,7 +239,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
     }
 
-    public sealed class SnapshotArgs : Pulumi.ResourceArgs
+    public sealed class SnapshotArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
@@ -281,6 +293,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Input<Inputs.CustomerEncryptionKeyArgs>? SnapshotEncryptionKey { get; set; }
 
         /// <summary>
+        /// Indicates the type of the snapshot.
+        /// </summary>
+        [Input("snapshotType")]
+        public Input<Pulumi.GoogleNative.Compute.V1.SnapshotSnapshotType>? SnapshotType { get; set; }
+
+        /// <summary>
         /// The source disk used to create this snapshot.
         /// </summary>
         [Input("sourceDisk")]
@@ -307,5 +325,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public SnapshotArgs()
         {
         }
+        public static new SnapshotArgs Empty => new SnapshotArgs();
     }
 }

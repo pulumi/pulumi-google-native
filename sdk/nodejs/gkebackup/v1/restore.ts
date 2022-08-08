@@ -37,11 +37,11 @@ export class Restore extends pulumi.CustomResource {
     }
 
     /**
-     * Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*.
+     * Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*`.
      */
     public readonly backup!: pulumi.Output<string>;
     /**
-     * The target cluster into which this Restore will restore data. Valid formats: - projects/*&#47;locations/*&#47;clusters/* - projects/*&#47;zones/*&#47;clusters/* Inherited from parent RestorePlan's cluster value.
+     * The target cluster into which this Restore will restore data. Valid formats: - `projects/*&#47;locations/*&#47;clusters/*` - `projects/*&#47;zones/*&#47;clusters/*` Inherited from parent RestorePlan's cluster value.
      */
     public /*out*/ readonly cluster!: pulumi.Output<string>;
     /**
@@ -66,7 +66,7 @@ export class Restore extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The full name of the Restore resource. Format: projects/*&#47;locations/*&#47;restorePlans/*&#47;restores/*
+     * The full name of the Restore resource. Format: `projects/*&#47;locations/*&#47;restorePlans/*&#47;restores/*`
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -188,7 +188,7 @@ export class Restore extends pulumi.CustomResource {
  */
 export interface RestoreArgs {
     /**
-     * Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*.
+     * Immutable. A reference to the Backup used as the source from which this Restore will restore. Note that this Backup must be a sub-resource of the RestorePlan's backup_plan. Format: `projects/*&#47;locations/*&#47;backupPlans/*&#47;backups/*`.
      */
     backup: pulumi.Input<string>;
     /**

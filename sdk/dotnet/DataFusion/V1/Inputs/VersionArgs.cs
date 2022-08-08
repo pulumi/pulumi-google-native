@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1.Inputs
     /// <summary>
     /// The Data Fusion version. This proto message stores information about certain Data Fusion version, which is used for Data Fusion version upgrade.
     /// </summary>
-    public sealed class VersionArgs : Pulumi.ResourceArgs
+    public sealed class VersionArgs : global::Pulumi.ResourceArgs
     {
         [Input("availableFeatures")]
         private InputList<string>? _availableFeatures;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.DataFusion.V1.Inputs
         public VersionArgs()
         {
         }
+        public static new VersionArgs Empty => new VersionArgs();
     }
 }

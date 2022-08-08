@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
     /// <summary>
     /// Cloud Storage bucket profile.
     /// </summary>
-    public sealed class GcsProfileArgs : Pulumi.ResourceArgs
+    public sealed class GcsProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full project and resource path for Cloud Storage bucket including the name.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1.Inputs
         public GcsProfileArgs()
         {
         }
+        public static new GcsProfileArgs Empty => new GcsProfileArgs();
     }
 }

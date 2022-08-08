@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Details of a package occurrence.
     /// </summary>
-    public sealed class GrafeasV1beta1PackageDetailsArgs : Pulumi.ResourceArgs
+    public sealed class GrafeasV1beta1PackageDetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Where the package was installed.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public GrafeasV1beta1PackageDetailsArgs()
         {
         }
+        public static new GrafeasV1beta1PackageDetailsArgs Empty => new GrafeasV1beta1PackageDetailsArgs();
     }
 }

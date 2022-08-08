@@ -1722,7 +1722,7 @@ class GoogleCloudDataplexV1TaskExecutionSpecResponse(dict):
         :param Mapping[str, str] args: Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument.
         :param str kms_key: Optional. The Cloud KMS key to use for encryption, of the form: projects/{project_number}/locations/{location_id}/keyRings/{key-ring-name}/cryptoKeys/{key-name}.
         :param str max_job_execution_lifetime: Optional. The maximum duration after which the job execution is expired.
-        :param str project: Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+        :param str project: Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
         :param str service_account: Service account to use to execute a task. If not provided, the default Compute service account for the project is used.
         """
         pulumi.set(__self__, "args", args)
@@ -1759,7 +1759,7 @@ class GoogleCloudDataplexV1TaskExecutionSpecResponse(dict):
     @pulumi.getter
     def project(self) -> str:
         """
-        Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the executionspec.service_account must belong to this same project.
+        Optional. The project in which jobs are run. By default, the project containing the Lake is used. If a project is provided, the ExecutionSpec.service_account must belong to this project.
         """
         return pulumi.get(self, "project")
 

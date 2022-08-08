@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     }
 
 
-    public sealed class GetClientConnectorServiceArgs : Pulumi.InvokeArgs
+    public sealed class GetClientConnectorServiceArgs : global::Pulumi.InvokeArgs
     {
         [Input("clientConnectorServiceId", required: true)]
         public string ClientConnectorServiceId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public GetClientConnectorServiceArgs()
         {
         }
+        public static new GetClientConnectorServiceArgs Empty => new GetClientConnectorServiceArgs();
     }
 
-    public sealed class GetClientConnectorServiceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClientConnectorServiceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("clientConnectorServiceId", required: true)]
         public Input<string> ClientConnectorServiceId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public GetClientConnectorServiceInvokeArgs()
         {
         }
+        public static new GetClientConnectorServiceInvokeArgs Empty => new GetClientConnectorServiceInvokeArgs();
     }
 
 

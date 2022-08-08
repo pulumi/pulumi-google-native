@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// A documentation rule provides information about individual API elements.
     /// </summary>
-    public sealed class DocumentationRuleArgs : Pulumi.ResourceArgs
+    public sealed class DocumentationRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Deprecation description of the selected element(s). It can be provided if an element is marked as `deprecated`.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public DocumentationRuleArgs()
         {
         }
+        public static new DocumentationRuleArgs Empty => new DocumentationRuleArgs();
     }
 }

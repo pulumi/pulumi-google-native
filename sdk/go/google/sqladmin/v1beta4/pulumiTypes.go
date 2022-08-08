@@ -4703,6 +4703,8 @@ type Settings struct {
 	DatabaseFlags []DatabaseFlags `pulumi:"databaseFlags"`
 	// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
 	DatabaseReplicationEnabled *bool `pulumi:"databaseReplicationEnabled"`
+	// Configuration to protect against accidental instance deletion.
+	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// Deny maintenance periods
 	DenyMaintenancePeriods []DenyMaintenancePeriod `pulumi:"denyMaintenancePeriods"`
 	// Insights configuration, for now relevant only for Postgres.
@@ -4774,6 +4776,8 @@ type SettingsArgs struct {
 	DatabaseFlags DatabaseFlagsArrayInput `pulumi:"databaseFlags"`
 	// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
 	DatabaseReplicationEnabled pulumi.BoolPtrInput `pulumi:"databaseReplicationEnabled"`
+	// Configuration to protect against accidental instance deletion.
+	DeletionProtectionEnabled pulumi.BoolPtrInput `pulumi:"deletionProtectionEnabled"`
 	// Deny maintenance periods
 	DenyMaintenancePeriods DenyMaintenancePeriodArrayInput `pulumi:"denyMaintenancePeriods"`
 	// Insights configuration, for now relevant only for Postgres.
@@ -4941,6 +4945,11 @@ func (o SettingsOutput) DatabaseFlags() DatabaseFlagsArrayOutput {
 // Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
 func (o SettingsOutput) DatabaseReplicationEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v Settings) *bool { return v.DatabaseReplicationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Configuration to protect against accidental instance deletion.
+func (o SettingsOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v Settings) *bool { return v.DeletionProtectionEnabled }).(pulumi.BoolPtrOutput)
 }
 
 // Deny maintenance periods
@@ -5156,6 +5165,16 @@ func (o SettingsPtrOutput) DatabaseReplicationEnabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+// Configuration to protect against accidental instance deletion.
+func (o SettingsPtrOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Settings) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeletionProtectionEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Deny maintenance periods
 func (o SettingsPtrOutput) DenyMaintenancePeriods() DenyMaintenancePeriodArrayOutput {
 	return o.ApplyT(func(v *Settings) []DenyMaintenancePeriod {
@@ -5334,6 +5353,8 @@ type SettingsResponse struct {
 	DatabaseFlags []DatabaseFlagsResponse `pulumi:"databaseFlags"`
 	// Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
 	DatabaseReplicationEnabled bool `pulumi:"databaseReplicationEnabled"`
+	// Configuration to protect against accidental instance deletion.
+	DeletionProtectionEnabled bool `pulumi:"deletionProtectionEnabled"`
 	// Deny maintenance periods
 	DenyMaintenancePeriods []DenyMaintenancePeriodResponse `pulumi:"denyMaintenancePeriods"`
 	// Insights configuration, for now relevant only for Postgres.
@@ -5438,6 +5459,11 @@ func (o SettingsResponseOutput) DatabaseFlags() DatabaseFlagsResponseArrayOutput
 // Configuration specific to read replica instances. Indicates whether replication is enabled or not. WARNING: Changing this restarts the instance.
 func (o SettingsResponseOutput) DatabaseReplicationEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v SettingsResponse) bool { return v.DatabaseReplicationEnabled }).(pulumi.BoolOutput)
+}
+
+// Configuration to protect against accidental instance deletion.
+func (o SettingsResponseOutput) DeletionProtectionEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v SettingsResponse) bool { return v.DeletionProtectionEnabled }).(pulumi.BoolOutput)
 }
 
 // Deny maintenance periods

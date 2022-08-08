@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class NetworkPerformanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class NetworkPerformanceConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("externalIpEgressBandwidthTier")]
         public Input<Pulumi.GoogleNative.Compute.Alpha.NetworkPerformanceConfigExternalIpEgressBandwidthTier>? ExternalIpEgressBandwidthTier { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public NetworkPerformanceConfigArgs()
         {
         }
+        public static new NetworkPerformanceConfigArgs Empty => new NetworkPerformanceConfigArgs();
     }
 }

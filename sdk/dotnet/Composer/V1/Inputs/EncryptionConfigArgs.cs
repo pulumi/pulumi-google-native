@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     /// <summary>
     /// The encryption options for the Cloud Composer environment and its dependencies.Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*.
     /// </summary>
-    public sealed class EncryptionConfigArgs : Pulumi.ResourceArgs
+    public sealed class EncryptionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public EncryptionConfigArgs()
         {
         }
+        public static new EncryptionConfigArgs Empty => new EncryptionConfigArgs();
     }
 }

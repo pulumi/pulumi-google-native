@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates an instance template in the specified project using the data that is included in the request. If you are creating a new template to update an existing instance group, your new instance template must use the same network or, if applicable, the same subnetwork as the original template.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:InstanceTemplate")]
-    public partial class InstanceTemplate : Pulumi.CustomResource
+    public partial class InstanceTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The creation timestamp for this instance template in RFC3339 text format.
@@ -131,7 +131,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class InstanceTemplateArgs : Pulumi.ResourceArgs
+    public sealed class InstanceTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -175,5 +175,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public InstanceTemplateArgs()
         {
         }
+        public static new InstanceTemplateArgs Empty => new InstanceTemplateArgs();
     }
 }

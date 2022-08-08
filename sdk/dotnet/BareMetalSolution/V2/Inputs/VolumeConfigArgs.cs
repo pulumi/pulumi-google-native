@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
     /// <summary>
     /// Configuration parameters for a new volume.
     /// </summary>
-    public sealed class VolumeConfigArgs : Pulumi.ResourceArgs
+    public sealed class VolumeConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The GCP service of the storage volume. Available gcp_service are in https://cloud.google.com/bare-metal/docs/bms-planning.
@@ -96,5 +96,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public VolumeConfigArgs()
         {
         }
+        public static new VolumeConfigArgs Empty => new VolumeConfigArgs();
     }
 }

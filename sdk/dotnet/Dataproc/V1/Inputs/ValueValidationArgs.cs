@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Validation based on a list of allowed values.
     /// </summary>
-    public sealed class ValueValidationArgs : Pulumi.ResourceArgs
+    public sealed class ValueValidationArgs : global::Pulumi.ResourceArgs
     {
         [Input("values", required: true)]
         private InputList<string>? _values;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public ValueValidationArgs()
         {
         }
+        public static new ValueValidationArgs Empty => new ValueValidationArgs();
     }
 }

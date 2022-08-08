@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// An instance-attached disk resource.
     /// </summary>
-    public sealed class AttachedDiskArgs : Pulumi.ResourceArgs
+    public sealed class AttachedDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance).
@@ -102,5 +102,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public AttachedDiskArgs()
         {
         }
+        public static new AttachedDiskArgs Empty => new AttachedDiskArgs();
     }
 }

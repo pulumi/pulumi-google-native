@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// The TLS settings for the server.
     /// </summary>
-    public sealed class ServerTlsSettingsArgs : Pulumi.ResourceArgs
+    public sealed class ServerTlsSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configures the mechanism to obtain security certificates and identity information.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public ServerTlsSettingsArgs()
         {
         }
+        public static new ServerTlsSettingsArgs Empty => new ServerTlsSettingsArgs();
     }
 }

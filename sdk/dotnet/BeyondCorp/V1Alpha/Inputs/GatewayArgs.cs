@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
     /// <summary>
     /// Gateway represents a user facing component that serves as an entrance to enable connectivity.
     /// </summary>
-    public sealed class GatewayArgs : Pulumi.ResourceArgs
+    public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of hosting used by the gateway.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
         public GatewayArgs()
         {
         }
+        public static new GatewayArgs Empty => new GatewayArgs();
     }
 }

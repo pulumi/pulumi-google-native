@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// A compliance check that is a CIS benchmark.
     /// </summary>
-    public sealed class CisBenchmarkArgs : Pulumi.ResourceArgs
+    public sealed class CisBenchmarkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The profile level of this CIS benchmark check.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public CisBenchmarkArgs()
         {
         }
+        public static new CisBenchmarkArgs Empty => new CisBenchmarkArgs();
     }
 }

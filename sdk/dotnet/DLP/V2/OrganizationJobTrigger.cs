@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DLP.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dlp/v2:OrganizationJobTrigger")]
-    public partial class OrganizationJobTrigger : Pulumi.CustomResource
+    public partial class OrganizationJobTrigger : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The creation timestamp of a triggeredJob.
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         }
     }
 
-    public sealed class OrganizationJobTriggerArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationJobTriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User provided description (max 256 chars)
@@ -192,5 +192,6 @@ namespace Pulumi.GoogleNative.DLP.V2
         public OrganizationJobTriggerArgs()
         {
         }
+        public static new OrganizationJobTriggerArgs Empty => new OrganizationJobTriggerArgs();
     }
 }

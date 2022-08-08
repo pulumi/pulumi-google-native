@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// Groups a time series query definition with charting options.
     /// </summary>
-    public sealed class DataSetArgs : Pulumi.ResourceArgs
+    public sealed class DataSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public DataSetArgs()
         {
         }
+        public static new DataSetArgs Empty => new DataSetArgs();
     }
 }

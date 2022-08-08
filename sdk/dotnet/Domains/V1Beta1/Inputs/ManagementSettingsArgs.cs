@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Inputs
     /// <summary>
     /// Defines renewal, billing, and transfer settings for a `Registration`.
     /// </summary>
-    public sealed class ManagementSettingsArgs : Pulumi.ResourceArgs
+    public sealed class ManagementSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Controls whether the domain can be transferred to another registrar.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Domains.V1Beta1.Inputs
         public ManagementSettingsArgs()
         {
         }
+        public static new ManagementSettingsArgs Empty => new ManagementSettingsArgs();
     }
 }

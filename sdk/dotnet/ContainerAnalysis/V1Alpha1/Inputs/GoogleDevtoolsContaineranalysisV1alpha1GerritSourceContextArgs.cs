@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// A SourceContext referring to a Gerrit project.
     /// </summary>
-    public sealed class GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An alias, which may be a branch or tag.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextArgs()
         {
         }
+        public static new GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextArgs Empty => new GoogleDevtoolsContaineranalysisV1alpha1GerritSourceContextArgs();
     }
 }

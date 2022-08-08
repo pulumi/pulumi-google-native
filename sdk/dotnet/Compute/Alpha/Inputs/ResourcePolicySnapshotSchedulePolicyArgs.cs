@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// A snapshot schedule policy specifies when and how frequently snapshots are to be created for the target disk. Also specifies how many and how long these scheduled snapshots should be retained.
     /// </summary>
-    public sealed class ResourcePolicySnapshotSchedulePolicyArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicySnapshotSchedulePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Retention policy applied to snapshots created by this resource policy.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public ResourcePolicySnapshotSchedulePolicyArgs()
         {
         }
+        public static new ResourcePolicySnapshotSchedulePolicyArgs Empty => new ResourcePolicySnapshotSchedulePolicyArgs();
     }
 }

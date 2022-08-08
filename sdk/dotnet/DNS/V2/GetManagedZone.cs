@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DNS.V2
     }
 
 
-    public sealed class GetManagedZoneArgs : Pulumi.InvokeArgs
+    public sealed class GetManagedZoneArgs : global::Pulumi.InvokeArgs
     {
         [Input("clientOperationId")]
         public string? ClientOperationId { get; set; }
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.DNS.V2
         public GetManagedZoneArgs()
         {
         }
+        public static new GetManagedZoneArgs Empty => new GetManagedZoneArgs();
     }
 
-    public sealed class GetManagedZoneInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetManagedZoneInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("clientOperationId")]
         public Input<string>? ClientOperationId { get; set; }
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.DNS.V2
         public GetManagedZoneInvokeArgs()
         {
         }
+        public static new GetManagedZoneInvokeArgs Empty => new GetManagedZoneInvokeArgs();
     }
 
 

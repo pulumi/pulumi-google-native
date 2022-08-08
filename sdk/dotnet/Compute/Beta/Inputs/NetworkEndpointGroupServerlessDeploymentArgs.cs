@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
     /// </summary>
-    public sealed class NetworkEndpointGroupServerlessDeploymentArgs : Pulumi.ResourceArgs
+    public sealed class NetworkEndpointGroupServerlessDeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public NetworkEndpointGroupServerlessDeploymentArgs()
         {
         }
+        public static new NetworkEndpointGroupServerlessDeploymentArgs Empty => new NetworkEndpointGroupServerlessDeploymentArgs();
     }
 }

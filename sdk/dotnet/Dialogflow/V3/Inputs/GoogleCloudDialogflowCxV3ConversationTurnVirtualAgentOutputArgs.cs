@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// The output from the virtual agent.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The Page on which the utterance was spoken. Only name and displayName will be set.
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs Empty => new GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs();
     }
 }

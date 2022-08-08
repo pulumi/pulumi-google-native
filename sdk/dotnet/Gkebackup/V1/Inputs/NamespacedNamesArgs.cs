@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
     /// <summary>
     /// A list of namespaced Kubernetes resources.
     /// </summary>
-    public sealed class NamespacedNamesArgs : Pulumi.ResourceArgs
+    public sealed class NamespacedNamesArgs : global::Pulumi.ResourceArgs
     {
         [Input("namespacedNames")]
         private InputList<Inputs.NamespacedNameArgs>? _namespacedNames;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         public NamespacedNamesArgs()
         {
         }
+        public static new NamespacedNamesArgs Empty => new NamespacedNamesArgs();
     }
 }

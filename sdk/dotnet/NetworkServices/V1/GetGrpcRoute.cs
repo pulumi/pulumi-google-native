@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
     }
 
 
-    public sealed class GetGrpcRouteArgs : Pulumi.InvokeArgs
+    public sealed class GetGrpcRouteArgs : global::Pulumi.InvokeArgs
     {
         [Input("grpcRouteId", required: true)]
         public string GrpcRouteId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetGrpcRouteArgs()
         {
         }
+        public static new GetGrpcRouteArgs Empty => new GetGrpcRouteArgs();
     }
 
-    public sealed class GetGrpcRouteInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGrpcRouteInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("grpcRouteId", required: true)]
         public Input<string> GrpcRouteId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetGrpcRouteInvokeArgs()
         {
         }
+        public static new GetGrpcRouteInvokeArgs Empty => new GetGrpcRouteInvokeArgs();
     }
 
 

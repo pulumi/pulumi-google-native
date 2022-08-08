@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration for Binary Authorization.
     /// </summary>
-    public sealed class BinaryAuthorizationArgs : Pulumi.ResourceArgs
+    public sealed class BinaryAuthorizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public BinaryAuthorizationArgs()
         {
         }
+        public static new BinaryAuthorizationArgs Empty => new BinaryAuthorizationArgs();
     }
 }

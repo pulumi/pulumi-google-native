@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
 
-    public sealed class GetSnapshotArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetSnapshotArgs()
         {
         }
+        public static new GetSnapshotArgs Empty => new GetSnapshotArgs();
     }
 
-    public sealed class GetSnapshotInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSnapshotInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetSnapshotInvokeArgs()
         {
         }
+        public static new GetSnapshotInvokeArgs Empty => new GetSnapshotInvokeArgs();
     }
 
 
@@ -67,6 +69,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// Creates the new snapshot in the snapshot chain labeled with the specified name. The chain name must be 1-63 characters long and comply with RFC1035. This is an uncommon option only for advanced service owners who needs to create separate snapshot chains, for example, for chargeback tracking. When you describe your snapshot resource, this field is visible only if it has a non-empty value.
         /// </summary>
         public readonly string ChainName;
+        /// <summary>
+        /// Size in bytes of the snapshot at creation time.
+        /// </summary>
+        public readonly string CreationSizeBytes;
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
@@ -128,6 +134,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly Outputs.CustomerEncryptionKeyResponse SnapshotEncryptionKey;
         /// <summary>
+        /// Indicates the type of the snapshot.
+        /// </summary>
+        public readonly string SnapshotType;
+        /// <summary>
         /// The source disk used to create this snapshot.
         /// </summary>
         public readonly string SourceDisk;
@@ -176,6 +186,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string chainName,
 
+            string creationSizeBytes,
+
             string creationTimestamp,
 
             string description,
@@ -206,6 +218,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             Outputs.CustomerEncryptionKeyResponse snapshotEncryptionKey,
 
+            string snapshotType,
+
             string sourceDisk,
 
             Outputs.CustomerEncryptionKeyResponse sourceDiskEncryptionKey,
@@ -229,6 +243,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             Architecture = architecture;
             AutoCreated = autoCreated;
             ChainName = chainName;
+            CreationSizeBytes = creationSizeBytes;
             CreationTimestamp = creationTimestamp;
             Description = description;
             DiskSizeGb = diskSizeGb;
@@ -244,6 +259,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             SnapshotEncryptionKey = snapshotEncryptionKey;
+            SnapshotType = snapshotType;
             SourceDisk = sourceDisk;
             SourceDiskEncryptionKey = sourceDiskEncryptionKey;
             SourceDiskId = sourceDiskId;

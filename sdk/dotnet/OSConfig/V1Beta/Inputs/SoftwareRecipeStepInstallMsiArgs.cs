@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Installs an MSI file.
     /// </summary>
-    public sealed class SoftwareRecipeStepInstallMsiArgs : Pulumi.ResourceArgs
+    public sealed class SoftwareRecipeStepInstallMsiArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedExitCodes")]
         private InputList<int>? _allowedExitCodes;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public SoftwareRecipeStepInstallMsiArgs()
         {
         }
+        public static new SoftwareRecipeStepInstallMsiArgs Empty => new SoftwareRecipeStepInstallMsiArgs();
     }
 }

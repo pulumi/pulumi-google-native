@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetGlobalAddressArgs : Pulumi.InvokeArgs
+    public sealed class GetGlobalAddressArgs : global::Pulumi.InvokeArgs
     {
         [Input("address", required: true)]
         public string Address { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetGlobalAddressArgs()
         {
         }
+        public static new GetGlobalAddressArgs Empty => new GetGlobalAddressArgs();
     }
 
-    public sealed class GetGlobalAddressInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGlobalAddressInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("address", required: true)]
         public Input<string> Address { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetGlobalAddressInvokeArgs()
         {
         }
+        public static new GetGlobalAddressInvokeArgs Empty => new GetGlobalAddressInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates a new policy in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:OrganizationSecurityPolicy")]
-    public partial class OrganizationSecurityPolicy : Pulumi.CustomResource
+    public partial class OrganizationSecurityPolicy : global::Pulumi.CustomResource
     {
         [Output("adaptiveProtectionConfig")]
         public Output<Outputs.SecurityPolicyAdaptiveProtectionConfigResponse> AdaptiveProtectionConfig { get; private set; } = null!;
@@ -178,7 +178,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class OrganizationSecurityPolicyArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationSecurityPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("adaptiveProtectionConfig")]
         public Input<Inputs.SecurityPolicyAdaptiveProtectionConfigArgs>? AdaptiveProtectionConfig { get; set; }
@@ -267,5 +267,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public OrganizationSecurityPolicyArgs()
         {
         }
+        public static new OrganizationSecurityPolicyArgs Empty => new OrganizationSecurityPolicyArgs();
     }
 }

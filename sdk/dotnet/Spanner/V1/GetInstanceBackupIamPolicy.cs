@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
     }
 
 
-    public sealed class GetInstanceBackupIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceBackupIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("backupId", required: true)]
         public string BackupId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public GetInstanceBackupIamPolicyArgs()
         {
         }
+        public static new GetInstanceBackupIamPolicyArgs Empty => new GetInstanceBackupIamPolicyArgs();
     }
 
-    public sealed class GetInstanceBackupIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceBackupIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("backupId", required: true)]
         public Input<string> BackupId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
         public GetInstanceBackupIamPolicyInvokeArgs()
         {
         }
+        public static new GetInstanceBackupIamPolicyInvokeArgs Empty => new GetInstanceBackupIamPolicyInvokeArgs();
     }
 
 

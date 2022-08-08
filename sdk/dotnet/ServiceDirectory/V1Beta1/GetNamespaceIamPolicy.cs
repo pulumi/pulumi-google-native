@@ -12,20 +12,20 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
     public static class GetNamespaceIamPolicy
     {
         /// <summary>
-        /// Gets the IAM Policy for a resource (namespace or service only).
+        /// Gets the IAM Policy for a resource
         /// </summary>
         public static Task<GetNamespaceIamPolicyResult> InvokeAsync(GetNamespaceIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceIamPolicyResult>("google-native:servicedirectory/v1beta1:getNamespaceIamPolicy", args ?? new GetNamespaceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets the IAM Policy for a resource (namespace or service only).
+        /// Gets the IAM Policy for a resource
         /// </summary>
         public static Output<GetNamespaceIamPolicyResult> Invoke(GetNamespaceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetNamespaceIamPolicyResult>("google-native:servicedirectory/v1beta1:getNamespaceIamPolicy", args ?? new GetNamespaceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNamespaceIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespaceIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public GetNamespaceIamPolicyArgs()
         {
         }
+        public static new GetNamespaceIamPolicyArgs Empty => new GetNamespaceIamPolicyArgs();
     }
 
-    public sealed class GetNamespaceIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespaceIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public GetNamespaceIamPolicyInvokeArgs()
         {
         }
+        public static new GetNamespaceIamPolicyInvokeArgs Empty => new GetNamespaceIamPolicyInvokeArgs();
     }
 
 

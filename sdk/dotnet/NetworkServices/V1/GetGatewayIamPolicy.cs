@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
     }
 
 
-    public sealed class GetGatewayIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewayIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("gatewayId", required: true)]
         public string GatewayId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetGatewayIamPolicyArgs()
         {
         }
+        public static new GetGatewayIamPolicyArgs Empty => new GetGatewayIamPolicyArgs();
     }
 
-    public sealed class GetGatewayIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewayIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("gatewayId", required: true)]
         public Input<string> GatewayId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetGatewayIamPolicyInvokeArgs()
         {
         }
+        public static new GetGatewayIamPolicyInvokeArgs Empty => new GetGatewayIamPolicyInvokeArgs();
     }
 
 

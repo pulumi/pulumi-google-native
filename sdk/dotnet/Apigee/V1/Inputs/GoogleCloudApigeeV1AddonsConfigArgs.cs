@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Add-on configurations for the Apigee organization.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1AddonsConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1AddonsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration for the Advanced API Ops add-on.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1AddonsConfigArgs()
         {
         }
+        public static new GoogleCloudApigeeV1AddonsConfigArgs Empty => new GoogleCloudApigeeV1AddonsConfigArgs();
     }
 }

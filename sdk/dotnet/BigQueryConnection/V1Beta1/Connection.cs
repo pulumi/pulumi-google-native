@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
     /// Creates a new connection.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigqueryconnection/v1beta1:Connection")]
-    public partial class Connection : Pulumi.CustomResource
+    public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Cloud SQL properties.
@@ -117,7 +117,7 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         }
     }
 
-    public sealed class ConnectionArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud SQL properties.
@@ -158,5 +158,6 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1
         public ConnectionArgs()
         {
         }
+        public static new ConnectionArgs Empty => new ConnectionArgs();
     }
 }

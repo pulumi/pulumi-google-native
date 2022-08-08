@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a managed instance group using the information that you specify in the request. After the group is created, instances in the group are created using the specified instance template. This operation is marked as DONE when the group is created even if the instances in the group have not yet been created. You must separately verify the status of the individual instances with the listmanagedinstances method. A regional managed instance group can contain up to 2000 instances.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:RegionInstanceGroupManager")]
-    public partial class RegionInstanceGroupManager : Pulumi.CustomResource
+    public partial class RegionInstanceGroupManager : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies configuration that overrides the instance template configuration for the group.
@@ -249,7 +249,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class RegionInstanceGroupManagerArgs : Pulumi.ResourceArgs
+    public sealed class RegionInstanceGroupManagerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies configuration that overrides the instance template configuration for the group.
@@ -410,5 +410,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public RegionInstanceGroupManagerArgs()
         {
         }
+        public static new RegionInstanceGroupManagerArgs Empty => new RegionInstanceGroupManagerArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Defines an object to declare an in-toto artifact rule
     /// </summary>
-    public sealed class ArtifactRuleArgs : Pulumi.ResourceArgs
+    public sealed class ArtifactRuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("artifactRule")]
         private InputList<string>? _artifactRule;
@@ -26,5 +26,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public ArtifactRuleArgs()
         {
         }
+        public static new ArtifactRuleArgs Empty => new ArtifactRuleArgs();
     }
 }

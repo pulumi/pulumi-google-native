@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
     /// <summary>
     /// Specifies configuration information specific to running Hive metastore software as the metastore service.
     /// </summary>
-    public sealed class HiveMetastoreConfigArgs : Pulumi.ResourceArgs
+    public sealed class HiveMetastoreConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("auxiliaryVersions")]
         private InputMap<string>? _auxiliaryVersions;
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha.Inputs
         public HiveMetastoreConfigArgs()
         {
         }
+        public static new HiveMetastoreConfigArgs Empty => new HiveMetastoreConfigArgs();
     }
 }

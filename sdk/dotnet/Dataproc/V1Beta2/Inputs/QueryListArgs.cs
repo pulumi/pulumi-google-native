@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// A list of queries to run on a cluster.
     /// </summary>
-    public sealed class QueryListArgs : Pulumi.ResourceArgs
+    public sealed class QueryListArgs : global::Pulumi.ResourceArgs
     {
         [Input("queries", required: true)]
         private InputList<string>? _queries;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public QueryListArgs()
         {
         }
+        public static new QueryListArgs Empty => new QueryListArgs();
     }
 }

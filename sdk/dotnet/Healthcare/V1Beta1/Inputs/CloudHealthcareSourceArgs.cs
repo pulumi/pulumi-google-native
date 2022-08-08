@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Cloud Healthcare API resource.
     /// </summary>
-    public sealed class CloudHealthcareSourceArgs : Pulumi.ResourceArgs
+    public sealed class CloudHealthcareSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Full path of a Cloud Healthcare API resource.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public CloudHealthcareSourceArgs()
         {
         }
+        public static new CloudHealthcareSourceArgs Empty => new CloudHealthcareSourceArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A basic layout divides the available space into vertical columns of equal width and arranges a list of widgets using a row-first strategy.
     /// </summary>
-    public sealed class GridLayoutArgs : Pulumi.ResourceArgs
+    public sealed class GridLayoutArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public GridLayoutArgs()
         {
         }
+        public static new GridLayoutArgs Empty => new GridLayoutArgs();
     }
 }

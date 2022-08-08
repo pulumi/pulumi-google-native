@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Represents an example that the agent is trained on.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs : global::Pulumi.ResourceArgs
     {
         [Input("parts", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs>? _parts;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs Empty => new GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs();
     }
 }

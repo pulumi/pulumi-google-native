@@ -17,6 +17,7 @@ __all__ = [
     'EncryptionConfigResponse',
     'EncryptionInfoResponse',
     'ExprResponse',
+    'FreeInstanceMetadataResponse',
     'RestoreInfoResponse',
     'StatusResponse',
 ]
@@ -298,6 +299,71 @@ class ExprResponse(dict):
         Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class FreeInstanceMetadataResponse(dict):
+    """
+    Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expireBehavior":
+            suggest = "expire_behavior"
+        elif key == "expireTime":
+            suggest = "expire_time"
+        elif key == "upgradeTime":
+            suggest = "upgrade_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FreeInstanceMetadataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FreeInstanceMetadataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FreeInstanceMetadataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expire_behavior: str,
+                 expire_time: str,
+                 upgrade_time: str):
+        """
+        Free instance specific metadata that is kept even after an instance has been upgraded for tracking purposes.
+        :param str expire_behavior: Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
+        :param str expire_time: Timestamp after which the instance will either be upgraded or scheduled for deletion after a grace period. ExpireBehavior is used to choose between upgrading or scheduling the free instance for deletion. This timestamp is set during the creation of a free instance.
+        :param str upgrade_time: If present, the timestamp at which the free instance was upgraded to a provisioned instance.
+        """
+        pulumi.set(__self__, "expire_behavior", expire_behavior)
+        pulumi.set(__self__, "expire_time", expire_time)
+        pulumi.set(__self__, "upgrade_time", upgrade_time)
+
+    @property
+    @pulumi.getter(name="expireBehavior")
+    def expire_behavior(self) -> str:
+        """
+        Specifies the expiration behavior of a free instance. The default of ExpireBehavior is `REMOVE_AFTER_GRACE_PERIOD`. This can be modified during or after creation, and before expiration.
+        """
+        return pulumi.get(self, "expire_behavior")
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        Timestamp after which the instance will either be upgraded or scheduled for deletion after a grace period. ExpireBehavior is used to choose between upgrading or scheduling the free instance for deletion. This timestamp is set during the creation of a free instance.
+        """
+        return pulumi.get(self, "expire_time")
+
+    @property
+    @pulumi.getter(name="upgradeTime")
+    def upgrade_time(self) -> str:
+        """
+        If present, the timestamp at which the free instance was upgraded to a provisioned instance.
+        """
+        return pulumi.get(self, "upgrade_time")
 
 
 @pulumi.output_type

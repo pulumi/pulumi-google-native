@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Represents configuration of a study.
     /// </summary>
-    public sealed class GoogleCloudMlV1__StudyConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__StudyConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The search algorithm specified for the study.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__StudyConfigArgs()
         {
         }
+        public static new GoogleCloudMlV1__StudyConfigArgs Empty => new GoogleCloudMlV1__StudyConfigArgs();
     }
 }

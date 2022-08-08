@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Marks an ORC-encoded data source.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs : global::Pulumi.ResourceArgs
     {
         public GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs Empty => new GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs();
     }
 }

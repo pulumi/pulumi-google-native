@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Configuration of preserved resources.
     /// </summary>
-    public sealed class StatefulPolicyPreservedStateArgs : Pulumi.ResourceArgs
+    public sealed class StatefulPolicyPreservedStateArgs : global::Pulumi.ResourceArgs
     {
         [Input("disks")]
         private InputMap<string>? _disks;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public StatefulPolicyPreservedStateArgs()
         {
         }
+        public static new StatefulPolicyPreservedStateArgs Empty => new StatefulPolicyPreservedStateArgs();
     }
 }

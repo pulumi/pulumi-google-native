@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// Interprets a result so that humans and machines can act on it.
     /// </summary>
-    public sealed class OutcomeArgs : Pulumi.ResourceArgs
+    public sealed class OutcomeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// More information about a FAILURE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not FAILURE. Optional
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public OutcomeArgs()
         {
         }
+        public static new OutcomeArgs Empty => new OutcomeArgs();
     }
 }

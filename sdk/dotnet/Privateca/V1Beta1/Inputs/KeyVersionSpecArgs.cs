@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     /// <summary>
     /// A Cloud KMS key configuration that a CertificateAuthority will use.
     /// </summary>
-    public sealed class KeyVersionSpecArgs : Pulumi.ResourceArgs
+    public sealed class KeyVersionSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The algorithm to use for creating a managed Cloud KMS key for a for a simplified experience. All managed keys will be have their ProtectionLevel as `HSM`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         public KeyVersionSpecArgs()
         {
         }
+        public static new KeyVersionSpecArgs Empty => new KeyVersionSpecArgs();
     }
 }

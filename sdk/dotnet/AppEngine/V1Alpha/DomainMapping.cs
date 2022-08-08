@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:appengine/v1alpha:DomainMapping")]
-    public partial class DomainMapping : Pulumi.CustomResource
+    public partial class DomainMapping : global::Pulumi.CustomResource
     {
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
         }
     }
 
-    public sealed class DomainMappingArgs : Pulumi.ResourceArgs
+    public sealed class DomainMappingArgs : global::Pulumi.ResourceArgs
     {
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -128,5 +128,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Alpha
         public DomainMappingArgs()
         {
         }
+        public static new DomainMappingArgs Empty => new DomainMappingArgs();
     }
 }

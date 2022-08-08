@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
     /// <summary>
     /// A routing block which contains the routing information for one WRR item.
     /// </summary>
-    public sealed class RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs : Pulumi.ResourceArgs
+    public sealed class RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs : global::Pulumi.ResourceArgs
     {
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -47,5 +47,6 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
         public RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs()
         {
         }
+        public static new RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs Empty => new RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs();
     }
 }

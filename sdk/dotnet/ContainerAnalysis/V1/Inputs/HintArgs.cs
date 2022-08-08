@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// This submessage provides human-readable hints about the purpose of the authority. Because the name of a note acts as its resource reference, it is important to disambiguate the canonical name of the Note (which might be a UUID for security purposes) from "readable" names more suitable for debug output. Note that these hints should not be used to look up authorities in security sensitive contexts, such as when looking up attestations to verify.
     /// </summary>
-    public sealed class HintArgs : Pulumi.ResourceArgs
+    public sealed class HintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human readable name of this attestation authority, for example "qa".
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public HintArgs()
         {
         }
+        public static new HintArgs Empty => new HintArgs();
     }
 }

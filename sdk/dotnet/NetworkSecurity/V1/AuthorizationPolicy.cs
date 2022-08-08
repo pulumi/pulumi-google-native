@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
     /// Creates a new AuthorizationPolicy in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:networksecurity/v1:AuthorizationPolicy")]
-    public partial class AuthorizationPolicy : Pulumi.CustomResource
+    public partial class AuthorizationPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         }
     }
 
-    public sealed class AuthorizationPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AuthorizationPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The action to take when a rule match is found. Possible values are "ALLOW" or "DENY".
@@ -177,5 +177,6 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1
         public AuthorizationPolicyArgs()
         {
         }
+        public static new AuthorizationPolicyArgs Empty => new AuthorizationPolicyArgs();
     }
 }

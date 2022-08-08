@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
     /// <summary>
     /// A server-stored device credential used for authentication.
     /// </summary>
-    public sealed class DeviceCredentialArgs : Pulumi.ResourceArgs
+    public sealed class DeviceCredentialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] The time at which this credential becomes invalid. This credential will be ignored for new client authentication requests after this timestamp; however, it will not be automatically deleted.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         public DeviceCredentialArgs()
         {
         }
+        public static new DeviceCredentialArgs Empty => new DeviceCredentialArgs();
     }
 }

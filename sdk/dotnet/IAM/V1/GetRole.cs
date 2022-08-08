@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.IAM.V1
     }
 
 
-    public sealed class GetRoleArgs : Pulumi.InvokeArgs
+    public sealed class GetRoleArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         public GetRoleArgs()
         {
         }
+        public static new GetRoleArgs Empty => new GetRoleArgs();
     }
 
-    public sealed class GetRoleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRoleInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         public GetRoleInvokeArgs()
         {
         }
+        public static new GetRoleInvokeArgs Empty => new GetRoleInvokeArgs();
     }
 
 

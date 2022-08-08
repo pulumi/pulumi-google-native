@@ -16,9 +16,9 @@ import (
 type RestorePlan struct {
 	pulumi.CustomResourceState
 
-	// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+	// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.
 	BackupPlan pulumi.StringOutput `pulumi:"backupPlan"`
-	// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+	// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
 	Cluster pulumi.StringOutput `pulumi:"cluster"`
 	// The timestamp when this RestorePlan resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -29,7 +29,7 @@ type RestorePlan struct {
 	// A set of custom labels supplied by user.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
+	// The full name of the RestorePlan resource. Format: `projects/*/locations/*/restorePlans/*`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Configuration of Restores created via this RestorePlan.
@@ -99,9 +99,9 @@ func (RestorePlanState) ElementType() reflect.Type {
 }
 
 type restorePlanArgs struct {
-	// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+	// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.
 	BackupPlan string `pulumi:"backupPlan"`
-	// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+	// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
 	Cluster string `pulumi:"cluster"`
 	// User specified descriptive string for this RestorePlan.
 	Description *string `pulumi:"description"`
@@ -117,9 +117,9 @@ type restorePlanArgs struct {
 
 // The set of arguments for constructing a RestorePlan resource.
 type RestorePlanArgs struct {
-	// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+	// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.
 	BackupPlan pulumi.StringInput
-	// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+	// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
 	Cluster pulumi.StringInput
 	// User specified descriptive string for this RestorePlan.
 	Description pulumi.StringPtrInput
@@ -170,12 +170,12 @@ func (o RestorePlanOutput) ToRestorePlanOutputWithContext(ctx context.Context) R
 	return o
 }
 
-// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.
 func (o RestorePlanOutput) BackupPlan() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.BackupPlan }).(pulumi.StringOutput)
 }
 
-// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
 func (o RestorePlanOutput) Cluster() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Cluster }).(pulumi.StringOutput)
 }
@@ -204,7 +204,7 @@ func (o RestorePlanOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
+// The full name of the RestorePlan resource. Format: `projects/*/locations/*/restorePlans/*`.
 func (o RestorePlanOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RestorePlan) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

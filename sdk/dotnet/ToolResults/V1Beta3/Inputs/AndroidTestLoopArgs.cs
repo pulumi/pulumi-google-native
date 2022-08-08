@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// Test Loops are tests that can be launched by the app itself, determining when to run by listening for an intent.
     /// </summary>
-    public sealed class AndroidTestLoopArgs : Pulumi.ResourceArgs
+    public sealed class AndroidTestLoopArgs : global::Pulumi.ResourceArgs
     {
         public AndroidTestLoopArgs()
         {
         }
+        public static new AndroidTestLoopArgs Empty => new AndroidTestLoopArgs();
     }
 }

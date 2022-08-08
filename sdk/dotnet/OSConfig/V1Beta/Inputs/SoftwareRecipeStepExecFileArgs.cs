@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Executes an artifact or local file.
     /// </summary>
-    public sealed class SoftwareRecipeStepExecFileArgs : Pulumi.ResourceArgs
+    public sealed class SoftwareRecipeStepExecFileArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedExitCodes")]
         private InputList<int>? _allowedExitCodes;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public SoftwareRecipeStepExecFileArgs()
         {
         }
+        public static new SoftwareRecipeStepExecFileArgs Empty => new SoftwareRecipeStepExecFileArgs();
     }
 }

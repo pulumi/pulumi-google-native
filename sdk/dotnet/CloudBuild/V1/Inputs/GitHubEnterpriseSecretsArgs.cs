@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// GitHubEnterpriseSecrets represents the names of all necessary secrets in Secret Manager for a GitHub Enterprise server. Format is: projects//secrets/.
     /// </summary>
-    public sealed class GitHubEnterpriseSecretsArgs : Pulumi.ResourceArgs
+    public sealed class GitHubEnterpriseSecretsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource name for the OAuth client ID secret in Secret Manager.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public GitHubEnterpriseSecretsArgs()
         {
         }
+        public static new GitHubEnterpriseSecretsArgs Empty => new GitHubEnterpriseSecretsArgs();
     }
 }

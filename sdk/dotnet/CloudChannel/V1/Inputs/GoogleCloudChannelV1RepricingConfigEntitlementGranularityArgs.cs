@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
     /// <summary>
     /// Applies the repricing configuration at the entitlement level.
     /// </summary>
-    public sealed class GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id}
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         public GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs()
         {
         }
+        public static new GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs Empty => new GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs();
     }
 }

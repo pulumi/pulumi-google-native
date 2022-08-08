@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class SecurityPolicyRecaptchaOptionsConfigArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRecaptchaOptionsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of GOOGLE_RECAPTCHA under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public SecurityPolicyRecaptchaOptionsConfigArgs()
         {
         }
+        public static new SecurityPolicyRecaptchaOptionsConfigArgs Empty => new SecurityPolicyRecaptchaOptionsConfigArgs();
     }
 }

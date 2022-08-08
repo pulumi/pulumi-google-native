@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
     }
 
 
-    public sealed class GetMetadataImportArgs : Pulumi.InvokeArgs
+    public sealed class GetMetadataImportArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         public GetMetadataImportArgs()
         {
         }
+        public static new GetMetadataImportArgs Empty => new GetMetadataImportArgs();
     }
 
-    public sealed class GetMetadataImportInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetMetadataImportInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Alpha
         public GetMetadataImportInvokeArgs()
         {
         }
+        public static new GetMetadataImportInvokeArgs Empty => new GetMetadataImportInvokeArgs();
     }
 
 

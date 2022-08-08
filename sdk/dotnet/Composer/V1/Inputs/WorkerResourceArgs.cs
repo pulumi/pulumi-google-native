@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     /// <summary>
     /// Configuration for resources used by Airflow workers.
     /// </summary>
-    public sealed class WorkerResourceArgs : Pulumi.ResourceArgs
+    public sealed class WorkerResourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. CPU request and limit for a single Airflow worker replica.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public WorkerResourceArgs()
         {
         }
+        public static new WorkerResourceArgs Empty => new WorkerResourceArgs();
     }
 }

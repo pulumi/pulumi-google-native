@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// HttpRouteRuleMatch specifies a set of criteria for matching requests to an HttpRouteRule. All specified criteria must be satisfied for a match to occur.
     /// </summary>
-    public sealed class HttpRouteRuleMatchArgs : Pulumi.ResourceArgs
+    public sealed class HttpRouteRuleMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// For satisfying the matchRule condition, the path of the request must exactly match the value specified in fullPathMatch after removing any query parameters and anchor that may be part of the original URL. fullPathMatch must be from 1 to 1024 characters. Only one of prefixMatch, fullPathMatch or regexMatch must be specified.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public HttpRouteRuleMatchArgs()
         {
         }
+        public static new HttpRouteRuleMatchArgs Empty => new HttpRouteRuleMatchArgs();
     }
 }

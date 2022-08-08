@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
     }
 
 
-    public sealed class GetRepoArgs : Pulumi.InvokeArgs
+    public sealed class GetRepoArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         public GetRepoArgs()
         {
         }
+        public static new GetRepoArgs Empty => new GetRepoArgs();
     }
 
-    public sealed class GetRepoInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRepoInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         public GetRepoInvokeArgs()
         {
         }
+        public static new GetRepoInvokeArgs Empty => new GetRepoInvokeArgs();
     }
 
 

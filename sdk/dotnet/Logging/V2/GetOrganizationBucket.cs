@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     }
 
 
-    public sealed class GetOrganizationBucketArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationBucketArgs : global::Pulumi.InvokeArgs
     {
         [Input("bucketId", required: true)]
         public string BucketId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetOrganizationBucketArgs()
         {
         }
+        public static new GetOrganizationBucketArgs Empty => new GetOrganizationBucketArgs();
     }
 
-    public sealed class GetOrganizationBucketInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationBucketInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("bucketId", required: true)]
         public Input<string> BucketId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         public GetOrganizationBucketInvokeArgs()
         {
         }
+        public static new GetOrganizationBucketInvokeArgs Empty => new GetOrganizationBucketInvokeArgs();
     }
 
 

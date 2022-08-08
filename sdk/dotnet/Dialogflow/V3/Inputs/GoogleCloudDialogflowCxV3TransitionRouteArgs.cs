@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// A transition route specifies a intent that can be matched and/or a data condition that can be evaluated during a session. When a specified transition is matched, the following actions are taken in order: * If there is a `trigger_fulfillment` associated with the transition, it will be called. * If there is a `target_page` associated with the transition, the session will transition into the specified page. * If there is a `target_flow` associated with the transition, the session will transition into the specified flow.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3TransitionRouteArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3TransitionRouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The condition to evaluate against form parameters or session parameters. See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition). At least one of `intent` or `condition` must be specified. When both `intent` and `condition` are specified, the transition can only happen when both are fulfilled.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3TransitionRouteArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3TransitionRouteArgs Empty => new GoogleCloudDialogflowCxV3TransitionRouteArgs();
     }
 }

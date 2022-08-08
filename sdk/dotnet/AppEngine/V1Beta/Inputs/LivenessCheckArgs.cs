@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// Health checking configuration for VM instances. Unhealthy instances are killed and replaced with new instances.
     /// </summary>
-    public sealed class LivenessCheckArgs : Pulumi.ResourceArgs
+    public sealed class LivenessCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Interval between health checks.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public LivenessCheckArgs()
         {
         }
+        public static new LivenessCheckArgs Empty => new LivenessCheckArgs();
     }
 }

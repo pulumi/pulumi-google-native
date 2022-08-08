@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     /// <summary>
     /// A ReusableConfigValues is used to describe certain fields of an X.509 certificate, such as the key usage fields, fields specific to CA certificates, certificate policy extensions and custom extensions.
     /// </summary>
-    public sealed class ReusableConfigValuesArgs : Pulumi.ResourceArgs
+    public sealed class ReusableConfigValuesArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalExtensions")]
         private InputList<Inputs.X509ExtensionArgs>? _additionalExtensions;
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         public ReusableConfigValuesArgs()
         {
         }
+        public static new ReusableConfigValuesArgs Empty => new ReusableConfigValuesArgs();
     }
 }

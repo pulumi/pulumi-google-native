@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// RelationshipNote represents an SPDX Relationship section: https://spdx.github.io/spdx-spec/7-relationships-between-SPDX-elements/
     /// </summary>
-    public sealed class RelationshipNoteArgs : Pulumi.ResourceArgs
+    public sealed class RelationshipNoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of relationship between the source and target SPDX elements
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public RelationshipNoteArgs()
         {
         }
+        public static new RelationshipNoteArgs Empty => new RelationshipNoteArgs();
     }
 }

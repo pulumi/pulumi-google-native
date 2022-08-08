@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Schema in Avro JSON format.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// JSON source of the Avro schema.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs Empty => new GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs();
     }
 }

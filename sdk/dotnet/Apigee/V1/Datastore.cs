@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Datastore")]
-    public partial class Datastore : Pulumi.CustomResource
+    public partial class Datastore : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Datastore create time, in milliseconds since the epoch of 1970-01-01T00:00:00Z
@@ -108,7 +108,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class DatastoreArgs : Pulumi.ResourceArgs
+    public sealed class DatastoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Datastore Configurations.
@@ -134,5 +134,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public DatastoreArgs()
         {
         }
+        public static new DatastoreArgs Empty => new DatastoreArgs();
     }
 }

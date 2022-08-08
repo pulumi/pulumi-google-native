@@ -14,16 +14,16 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:gkebackup/v1:RestorePlan")]
-    public partial class RestorePlan : Pulumi.CustomResource
+    public partial class RestorePlan : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+        /// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.
         /// </summary>
         [Output("backupPlan")]
         public Output<string> BackupPlan { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+        /// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
@@ -56,7 +56,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The full name of the RestorePlan resource. Format: projects/*/locations/*/restorePlans/*.
+        /// The full name of the RestorePlan resource. Format: `projects/*/locations/*/restorePlans/*`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -137,16 +137,16 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         }
     }
 
-    public sealed class RestorePlanArgs : Pulumi.ResourceArgs
+    public sealed class RestorePlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: projects/*/locations/*/backupPlans/*.
+        /// Immutable. A reference to the BackupPlan from which Backups may be used as the source for Restores created via this RestorePlan. Format: `projects/*/locations/*/backupPlans/*`.
         /// </summary>
         [Input("backupPlan", required: true)]
         public Input<string> BackupPlan { get; set; } = null!;
 
         /// <summary>
-        /// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+        /// Immutable. The target cluster into which Restores created via this RestorePlan will restore data. NOTE: the cluster's region must be the same as the RestorePlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
@@ -190,5 +190,6 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public RestorePlanArgs()
         {
         }
+        public static new RestorePlanArgs Empty => new RestorePlanArgs();
     }
 }

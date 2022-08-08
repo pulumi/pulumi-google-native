@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
     /// <summary>
     /// Wraps the Header object.
     /// </summary>
-    public sealed class HeaderOverrideArgs : Pulumi.ResourceArgs
+    public sealed class HeaderOverrideArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// header embodying a key and a value.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta2.Inputs
         public HeaderOverrideArgs()
         {
         }
+        public static new HeaderOverrideArgs Empty => new HeaderOverrideArgs();
     }
 }

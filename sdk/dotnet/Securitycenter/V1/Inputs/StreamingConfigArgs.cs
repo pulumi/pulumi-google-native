@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1.Inputs
     /// <summary>
     /// The config for streaming-based notifications, which send each event as soon as it is detected.
     /// </summary>
-    public sealed class StreamingConfigArgs : Pulumi.ResourceArgs
+    public sealed class StreamingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Expression that defines the filter to apply across create/update events of assets or findings as specified by the event type. The expression is a list of zero or more restrictions combined via logical operators `AND` and `OR`. Parentheses are supported, and `OR` has higher precedence than `AND`. Restrictions have the form ` ` and may have a `-` character in front of them to indicate negation. The fields map to those defined in the corresponding resource. The supported operators are: * `=` for all value types. * `&gt;`, `&lt;`, `&gt;=`, `&lt;=` for integer values. * `:`, meaning substring matching, for strings. The supported value types are: * string literals in quotes. * integer literals without quotes. * boolean literals `true` and `false` without quotes.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Securitycenter.V1.Inputs
         public StreamingConfigArgs()
         {
         }
+        public static new StreamingConfigArgs Empty => new StreamingConfigArgs();
     }
 }

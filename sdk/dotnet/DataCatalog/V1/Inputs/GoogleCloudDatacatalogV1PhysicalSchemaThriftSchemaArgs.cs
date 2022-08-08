@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Schema in Thrift format.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Thrift IDL source of the schema.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs Empty => new GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs();
     }
 }

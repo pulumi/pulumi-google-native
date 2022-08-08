@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1.Inputs
     /// <summary>
     /// Network configuration for a Data Fusion instance. These configurations are used for peering with the customer network. Configurations are optional when a public Data Fusion instance is to be created. However, providing these configurations allows several benefits, such as reduced network latency while accessing the customer resources from managed Data Fusion instance nodes, as well as access to the customer on-prem resources.
     /// </summary>
-    public sealed class NetworkConfigArgs : Pulumi.ResourceArgs
+    public sealed class NetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The IP range in CIDR notation to use for the managed Data Fusion instance nodes. This range must not overlap with any other ranges used in the customer network.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DataFusion.V1.Inputs
         public NetworkConfigArgs()
         {
         }
+        public static new NetworkConfigArgs Empty => new NetworkConfigArgs();
     }
 }

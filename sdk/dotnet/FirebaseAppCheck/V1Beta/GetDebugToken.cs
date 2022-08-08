@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.FirebaseAppCheck.V1Beta
     }
 
 
-    public sealed class GetDebugTokenArgs : Pulumi.InvokeArgs
+    public sealed class GetDebugTokenArgs : global::Pulumi.InvokeArgs
     {
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.FirebaseAppCheck.V1Beta
         public GetDebugTokenArgs()
         {
         }
+        public static new GetDebugTokenArgs Empty => new GetDebugTokenArgs();
     }
 
-    public sealed class GetDebugTokenInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDebugTokenInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.FirebaseAppCheck.V1Beta
         public GetDebugTokenInvokeArgs()
         {
         }
+        public static new GetDebugTokenInvokeArgs Empty => new GetDebugTokenInvokeArgs();
     }
 
 

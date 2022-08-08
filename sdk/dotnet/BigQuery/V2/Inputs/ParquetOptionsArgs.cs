@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class ParquetOptionsArgs : Pulumi.ResourceArgs
+    public sealed class ParquetOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] Indicates whether to use schema inference specifically for Parquet LIST logical type.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public ParquetOptionsArgs()
         {
         }
+        public static new ParquetOptionsArgs Empty => new ParquetOptionsArgs();
     }
 }

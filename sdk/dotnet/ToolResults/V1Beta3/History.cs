@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:toolresults/v1beta3:History")]
-    public partial class History : Pulumi.CustomResource
+    public partial class History : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
@@ -97,7 +97,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         }
     }
 
-    public sealed class HistoryArgs : Pulumi.ResourceArgs
+    public sealed class HistoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A short human-readable (plain text) name to display in the UI. Maximum of 100 characters. - In response: present if set during create. - In create request: optional
@@ -135,5 +135,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         public HistoryArgs()
         {
         }
+        public static new HistoryArgs Empty => new HistoryArgs();
     }
 }

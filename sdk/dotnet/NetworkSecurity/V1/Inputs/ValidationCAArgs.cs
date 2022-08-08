@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1.Inputs
     /// <summary>
     /// Specification of ValidationCA. Defines the mechanism to obtain the Certificate Authority certificate to validate the peer certificate.
     /// </summary>
-    public sealed class ValidationCAArgs : Pulumi.ResourceArgs
+    public sealed class ValidationCAArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1.Inputs
         public ValidationCAArgs()
         {
         }
+        public static new ValidationCAArgs Empty => new ValidationCAArgs();
     }
 }

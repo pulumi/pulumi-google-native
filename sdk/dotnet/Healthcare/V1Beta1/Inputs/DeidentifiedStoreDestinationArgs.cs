@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Contains configuration for streaming de-identified FHIR export.
     /// </summary>
-    public sealed class DeidentifiedStoreDestinationArgs : Pulumi.ResourceArgs
+    public sealed class DeidentifiedStoreDestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration to use when de-identifying resources that are added to this store.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public DeidentifiedStoreDestinationArgs()
         {
         }
+        public static new DeidentifiedStoreDestinationArgs Empty => new DeidentifiedStoreDestinationArgs();
     }
 }

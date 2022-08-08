@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Specifies an artifact available via some URI.
     /// </summary>
-    public sealed class SoftwareRecipeArtifactRemoteArgs : Pulumi.ResourceArgs
+    public sealed class SoftwareRecipeArtifactRemoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Must be provided if `allow_insecure` is `false`. SHA256 checksum in hex format, to compare to the checksum of the artifact. If the checksum is not empty and it doesn't match the artifact then the recipe installation fails before running any of the steps.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public SoftwareRecipeArtifactRemoteArgs()
         {
         }
+        public static new SoftwareRecipeArtifactRemoteArgs Empty => new SoftwareRecipeArtifactRemoteArgs();
     }
 }

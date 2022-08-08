@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
     }
 
 
-    public sealed class GetRegistryIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistryIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         public GetRegistryIamPolicyArgs()
         {
         }
+        public static new GetRegistryIamPolicyArgs Empty => new GetRegistryIamPolicyArgs();
     }
 
-    public sealed class GetRegistryIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegistryIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1
         public GetRegistryIamPolicyInvokeArgs()
         {
         }
+        public static new GetRegistryIamPolicyInvokeArgs Empty => new GetRegistryIamPolicyInvokeArgs();
     }
 
 

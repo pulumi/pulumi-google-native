@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
     /// Create a new trigger in a particular project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:eventarc/v1:Trigger")]
-    public partial class Trigger : Pulumi.CustomResource
+    public partial class Trigger : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
@@ -155,7 +155,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         }
     }
 
-    public sealed class TriggerArgs : Pulumi.ResourceArgs
+    public sealed class TriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
@@ -232,5 +232,6 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         public TriggerArgs()
         {
         }
+        public static new TriggerArgs Empty => new TriggerArgs();
     }
 }

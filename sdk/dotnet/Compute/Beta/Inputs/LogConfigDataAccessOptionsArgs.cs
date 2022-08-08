@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// This is deprecated and has no effect. Do not use.
     /// </summary>
-    public sealed class LogConfigDataAccessOptionsArgs : Pulumi.ResourceArgs
+    public sealed class LogConfigDataAccessOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This is deprecated and has no effect. Do not use.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public LogConfigDataAccessOptionsArgs()
         {
         }
+        public static new LogConfigDataAccessOptionsArgs Empty => new LogConfigDataAccessOptionsArgs();
     }
 }

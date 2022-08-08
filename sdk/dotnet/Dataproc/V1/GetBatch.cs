@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     }
 
 
-    public sealed class GetBatchArgs : Pulumi.InvokeArgs
+    public sealed class GetBatchArgs : global::Pulumi.InvokeArgs
     {
         [Input("batchId", required: true)]
         public string BatchId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public GetBatchArgs()
         {
         }
+        public static new GetBatchArgs Empty => new GetBatchArgs();
     }
 
-    public sealed class GetBatchInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBatchInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("batchId", required: true)]
         public Input<string> BatchId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public GetBatchInvokeArgs()
         {
         }
+        public static new GetBatchInvokeArgs Empty => new GetBatchInvokeArgs();
     }
 
 

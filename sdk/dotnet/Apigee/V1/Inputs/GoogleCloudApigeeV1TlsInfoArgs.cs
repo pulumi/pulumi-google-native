@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// TLS configuration information for virtual hosts and TargetServers.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1TlsInfoArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1TlsInfoArgs : global::Pulumi.ResourceArgs
     {
         [Input("ciphers")]
         private InputList<string>? _ciphers;
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1TlsInfoArgs()
         {
         }
+        public static new GoogleCloudApigeeV1TlsInfoArgs Empty => new GoogleCloudApigeeV1TlsInfoArgs();
     }
 }

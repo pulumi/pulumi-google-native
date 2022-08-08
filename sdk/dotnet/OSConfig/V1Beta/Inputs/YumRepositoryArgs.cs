@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Represents a single Yum package repository. This repository is added to a repo file that is stored at `/etc/yum.repos.d/google_osconfig.repo`.
     /// </summary>
-    public sealed class YumRepositoryArgs : Pulumi.ResourceArgs
+    public sealed class YumRepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The location of the repository directory.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public YumRepositoryArgs()
         {
         }
+        public static new YumRepositoryArgs Empty => new YumRepositoryArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
     /// Creates a namespace, and returns the new namespace.
     /// </summary>
     [GoogleNativeResourceType("google-native:servicedirectory/v1:Namespace")]
-    public partial class Namespace : Pulumi.CustomResource
+    public partial class Namespace : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. Resource labels associated with this namespace. No more than 64 user labels can be associated with a given resource. Label keys and values can be no longer than 63 characters.
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         }
     }
 
-    public sealed class NamespaceArgs : Pulumi.ResourceArgs
+    public sealed class NamespaceArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -123,5 +123,6 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1
         public NamespaceArgs()
         {
         }
+        public static new NamespaceArgs Empty => new NamespaceArgs();
     }
 }

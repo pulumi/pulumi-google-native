@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
     }
 
 
-    public sealed class GetOrganizationPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("organizationId", required: true)]
         public string OrganizationId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         public GetOrganizationPolicyArgs()
         {
         }
+        public static new GetOrganizationPolicyArgs Empty => new GetOrganizationPolicyArgs();
     }
 
-    public sealed class GetOrganizationPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Orgpolicy.V2
         public GetOrganizationPolicyInvokeArgs()
         {
         }
+        public static new GetOrganizationPolicyInvokeArgs Empty => new GetOrganizationPolicyInvokeArgs();
     }
 
 

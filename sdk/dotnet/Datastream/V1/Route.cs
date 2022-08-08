@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datastream/v1:Route")]
-    public partial class Route : Pulumi.CustomResource
+    public partial class Route : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The create time of the resource.
@@ -129,7 +129,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
         }
     }
 
-    public sealed class RouteArgs : Pulumi.ResourceArgs
+    public sealed class RouteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Destination address for connection
@@ -185,5 +185,6 @@ namespace Pulumi.GoogleNative.Datastream.V1
         public RouteArgs()
         {
         }
+        public static new RouteArgs Empty => new RouteArgs();
     }
 }

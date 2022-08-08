@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Vision.V1.Inputs
     /// <summary>
     /// A bounding polygon for the detected image annotation.
     /// </summary>
-    public sealed class BoundingPolyArgs : Pulumi.ResourceArgs
+    public sealed class BoundingPolyArgs : global::Pulumi.ResourceArgs
     {
         [Input("normalizedVertices")]
         private InputList<Inputs.NormalizedVertexArgs>? _normalizedVertices;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Vision.V1.Inputs
         public BoundingPolyArgs()
         {
         }
+        public static new BoundingPolyArgs Empty => new BoundingPolyArgs();
     }
 }

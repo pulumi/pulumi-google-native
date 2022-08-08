@@ -82,7 +82,7 @@ type LookupInstanceResult struct {
 	ReplicaConfiguration ReplicaConfigurationResponse `pulumi:"replicaConfiguration"`
 	// The replicas of the instance.
 	ReplicaNames []string `pulumi:"replicaNames"`
-	// Initial root password. Use only on creation.
+	// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
 	RootPassword string `pulumi:"rootPassword"`
 	// The status indicating if instance satisfiesPzs. Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
@@ -274,7 +274,7 @@ func (o LookupInstanceResultOutput) ReplicaNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []string { return v.ReplicaNames }).(pulumi.StringArrayOutput)
 }
 
-// Initial root password. Use only on creation.
+// Initial root password. Use only on creation. You must set root passwords before you can connect to PostgreSQL instances.
 func (o LookupInstanceResultOutput) RootPassword() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.RootPassword }).(pulumi.StringOutput)
 }

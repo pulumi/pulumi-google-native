@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
 {
 
-    public sealed class MaterialArgs : Pulumi.ResourceArgs
+    public sealed class MaterialArgs : global::Pulumi.ResourceArgs
     {
         [Input("digest")]
         private InputMap<string>? _digest;
@@ -26,5 +26,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public MaterialArgs()
         {
         }
+        public static new MaterialArgs Empty => new MaterialArgs();
     }
 }

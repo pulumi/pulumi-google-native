@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// The Upgrade Distribution represents metadata about the Upgrade for each operating system (CPE). Some distributions have additional metadata around updates, classifying them into various categories and severities.
     /// </summary>
-    public sealed class UpgradeDistributionArgs : Pulumi.ResourceArgs
+    public sealed class UpgradeDistributionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The operating system classification of this Upgrade, as specified by the upstream operating system upgrade feed.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public UpgradeDistributionArgs()
         {
         }
+        public static new UpgradeDistributionArgs Empty => new UpgradeDistributionArgs();
     }
 }

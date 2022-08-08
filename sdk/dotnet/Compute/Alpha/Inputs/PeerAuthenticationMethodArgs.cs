@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] Configuration for the peer authentication method. Configuration for the peer authentication method.
     /// </summary>
-    public sealed class PeerAuthenticationMethodArgs : Pulumi.ResourceArgs
+    public sealed class PeerAuthenticationMethodArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Set if mTLS is used for peer authentication.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public PeerAuthenticationMethodArgs()
         {
         }
+        public static new PeerAuthenticationMethodArgs Empty => new PeerAuthenticationMethodArgs();
     }
 }

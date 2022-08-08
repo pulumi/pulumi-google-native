@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2.Inputs
     /// <summary>
     /// Configuration options for writing logs to [Stackdriver Logging](https://cloud.google.com/logging/docs/).
     /// </summary>
-    public sealed class StackdriverLoggingConfigArgs : Pulumi.ResourceArgs
+    public sealed class StackdriverLoggingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the fraction of operations to write to [Stackdriver Logging](https://cloud.google.com/logging/docs/). This field may contain any value between 0.0 and 1.0, inclusive. 0.0 is the default and means that no operations are logged.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2.Inputs
         public StackdriverLoggingConfigArgs()
         {
         }
+        public static new StackdriverLoggingConfigArgs Empty => new StackdriverLoggingConfigArgs();
     }
 }

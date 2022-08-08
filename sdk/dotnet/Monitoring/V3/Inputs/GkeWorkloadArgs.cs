@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// A GKE Workload (Deployment, StatefulSet, etc). The field names correspond to the metadata labels on monitored resources that fall under a workload (for example, k8s_container or k8s_pod).
     /// </summary>
-    public sealed class GkeWorkloadArgs : Pulumi.ResourceArgs
+    public sealed class GkeWorkloadArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the parent cluster.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public GkeWorkloadArgs()
         {
         }
+        public static new GkeWorkloadArgs Empty => new GkeWorkloadArgs();
     }
 }

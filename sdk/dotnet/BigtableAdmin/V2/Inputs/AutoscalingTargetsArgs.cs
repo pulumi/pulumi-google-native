@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Inputs
     /// <summary>
     /// The Autoscaling targets for a Cluster. These determine the recommended nodes.
     /// </summary>
-    public sealed class AutoscalingTargetsArgs : Pulumi.ResourceArgs
+    public sealed class AutoscalingTargetsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Inputs
         public AutoscalingTargetsArgs()
         {
         }
+        public static new AutoscalingTargetsArgs Empty => new AutoscalingTargetsArgs();
     }
 }

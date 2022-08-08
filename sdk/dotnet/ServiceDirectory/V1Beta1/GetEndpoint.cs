@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
     }
 
 
-    public sealed class GetEndpointArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointArgs : global::Pulumi.InvokeArgs
     {
         [Input("endpointId", required: true)]
         public string EndpointId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public GetEndpointArgs()
         {
         }
+        public static new GetEndpointArgs Empty => new GetEndpointArgs();
     }
 
-    public sealed class GetEndpointInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("endpointId", required: true)]
         public Input<string> EndpointId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public GetEndpointInvokeArgs()
         {
         }
+        public static new GetEndpointInvokeArgs Empty => new GetEndpointInvokeArgs();
     }
 
 

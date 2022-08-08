@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// The mapping for the `Job.edit_list` atoms with text `EditAtom.inputs`.
     /// </summary>
-    public sealed class TextMappingArgs : Pulumi.ResourceArgs
+    public sealed class TextMappingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The `EditAtom.key` that references atom with text inputs in the `Job.edit_list`.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public TextMappingArgs()
         {
         }
+        public static new TextMappingArgs Empty => new TextMappingArgs();
     }
 }

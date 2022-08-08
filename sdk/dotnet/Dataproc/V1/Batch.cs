@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataproc/v1:Batch")]
-    public partial class Batch : Pulumi.CustomResource
+    public partial class Batch : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
@@ -184,7 +184,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         }
     }
 
-    public sealed class BatchArgs : Pulumi.ResourceArgs
+    public sealed class BatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The ID to use for the batch, which will become the final component of the batch's resource name.This value must be 4-63 characters. Valid characters are /[a-z][0-9]-/.
@@ -255,5 +255,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public BatchArgs()
         {
         }
+        public static new BatchArgs Empty => new BatchArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Vision.V1
     }
 
 
-    public sealed class GetProductSetArgs : Pulumi.InvokeArgs
+    public sealed class GetProductSetArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Vision.V1
         public GetProductSetArgs()
         {
         }
+        public static new GetProductSetArgs Empty => new GetProductSetArgs();
     }
 
-    public sealed class GetProductSetInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProductSetInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Vision.V1
         public GetProductSetInvokeArgs()
         {
         }
+        public static new GetProductSetInvokeArgs Empty => new GetProductSetInvokeArgs();
     }
 
 

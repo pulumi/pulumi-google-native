@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     /// Creates a BackendService resource in the specified project using the data included in the request. For more information, see Backend services overview .
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:BackendService")]
-    public partial class BackendService : Pulumi.CustomResource
+    public partial class BackendService : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -284,7 +284,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
     }
 
-    public sealed class BackendServiceArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
@@ -505,5 +505,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public BackendServiceArgs()
         {
         }
+        public static new BackendServiceArgs Empty => new BackendServiceArgs();
     }
 }

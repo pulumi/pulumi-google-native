@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Vision.V1
     /// Creates and returns a new ProductSet resource. Possible errors: * Returns INVALID_ARGUMENT if display_name is missing, or is longer than 4096 characters.
     /// </summary>
     [GoogleNativeResourceType("google-native:vision/v1:ProductSet")]
-    public partial class ProductSet : Pulumi.CustomResource
+    public partial class ProductSet : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Vision.V1
         }
     }
 
-    public sealed class ProductSetArgs : Pulumi.ResourceArgs
+    public sealed class ProductSetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The user-provided name for this ProductSet. Must not be empty. Must be at most 4096 characters long.
@@ -128,5 +128,6 @@ namespace Pulumi.GoogleNative.Vision.V1
         public ProductSetArgs()
         {
         }
+        public static new ProductSetArgs Empty => new ProductSetArgs();
     }
 }

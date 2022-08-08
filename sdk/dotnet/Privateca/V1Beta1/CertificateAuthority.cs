@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:privateca/v1beta1:CertificateAuthority")]
-    public partial class CertificateAuthority : Pulumi.CustomResource
+    public partial class CertificateAuthority : global::Pulumi.CustomResource
     {
         /// <summary>
         /// URLs for accessing content published by this CA, such as the CA certificate and CRLs.
@@ -193,7 +193,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         }
     }
 
-    public sealed class CertificateAuthorityArgs : Pulumi.ResourceArgs
+    public sealed class CertificateAuthorityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. It must be unique within a location and match the regular expression `[a-zA-Z0-9_-]{1,63}`
@@ -282,5 +282,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1
         public CertificateAuthorityArgs()
         {
         }
+        public static new CertificateAuthorityArgs Empty => new CertificateAuthorityArgs();
     }
 }

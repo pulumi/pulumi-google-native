@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class RouterMd5AuthenticationKeyArgs : Pulumi.ResourceArgs
+    public sealed class RouterMd5AuthenticationKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Input only] Value of the key. For patch and update calls, it can be skipped to copy the value from the previous configuration. This is allowed if the key with the same name existed before the operation. Maximum length is 80 characters. Can only contain printable ASCII characters.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public RouterMd5AuthenticationKeyArgs()
         {
         }
+        public static new RouterMd5AuthenticationKeyArgs Empty => new RouterMd5AuthenticationKeyArgs();
     }
 }

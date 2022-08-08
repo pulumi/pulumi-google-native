@@ -85,6 +85,7 @@ export class Resourcefile extends pulumi.CustomResource {
             resourceInputs["data"] = args ? args.data : undefined;
             resourceInputs["environmentId"] = args ? args.environmentId : undefined;
             resourceInputs["extensions"] = args ? args.extensions : undefined;
+            resourceInputs["file"] = args ? args.file : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
@@ -121,6 +122,10 @@ export interface ResourcefileArgs {
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
     extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    /**
+     * File to upload.
+     */
+    file?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**
      * Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&{}\[\]()+\-=,.~'` ]{1,255}
      */

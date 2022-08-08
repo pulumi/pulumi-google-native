@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:gkehub/v1beta:Feature")]
-    public partial class Feature : Pulumi.CustomResource
+    public partial class Feature : global::Pulumi.CustomResource
     {
         /// <summary>
         /// When the Feature resource was created.
@@ -142,7 +142,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         }
     }
 
-    public sealed class FeatureArgs : Pulumi.ResourceArgs
+    public sealed class FeatureArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the feature to create.
@@ -195,5 +195,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta
         public FeatureArgs()
         {
         }
+        public static new FeatureArgs Empty => new FeatureArgs();
     }
 }

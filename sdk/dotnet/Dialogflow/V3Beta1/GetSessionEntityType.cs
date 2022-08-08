@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
     }
 
 
-    public sealed class GetSessionEntityTypeArgs : Pulumi.InvokeArgs
+    public sealed class GetSessionEntityTypeArgs : global::Pulumi.InvokeArgs
     {
         [Input("agentId", required: true)]
         public string AgentId { get; set; } = null!;
@@ -48,9 +48,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public GetSessionEntityTypeArgs()
         {
         }
+        public static new GetSessionEntityTypeArgs Empty => new GetSessionEntityTypeArgs();
     }
 
-    public sealed class GetSessionEntityTypeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSessionEntityTypeInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("agentId", required: true)]
         public Input<string> AgentId { get; set; } = null!;
@@ -73,6 +74,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1
         public GetSessionEntityTypeInvokeArgs()
         {
         }
+        public static new GetSessionEntityTypeInvokeArgs Empty => new GetSessionEntityTypeInvokeArgs();
     }
 
 

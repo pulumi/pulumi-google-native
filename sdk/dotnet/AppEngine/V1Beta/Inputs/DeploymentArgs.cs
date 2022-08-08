@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// Code and application artifacts used to deploy a version to App Engine.
     /// </summary>
-    public sealed class DeploymentArgs : Pulumi.ResourceArgs
+    public sealed class DeploymentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Google Cloud Build build information. Only applicable for instances running in the App Engine flexible environment.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public DeploymentArgs()
         {
         }
+        public static new DeploymentArgs Empty => new DeploymentArgs();
     }
 }

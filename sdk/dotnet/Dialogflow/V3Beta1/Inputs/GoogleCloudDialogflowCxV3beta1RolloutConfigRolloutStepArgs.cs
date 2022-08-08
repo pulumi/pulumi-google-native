@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// A single rollout step with specified traffic allocation.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStepArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStepArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the rollout step;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStepArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStepArgs Empty => new GoogleCloudDialogflowCxV3beta1RolloutConfigRolloutStepArgs();
     }
 }

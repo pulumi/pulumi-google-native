@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.APIKeys.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apikeys/v2:Key")]
-    public partial class Key : Pulumi.CustomResource
+    public partial class Key : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Annotations is an unstructured key-value map stored with a policy that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects.
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.APIKeys.V2
         }
     }
 
-    public sealed class KeyArgs : Pulumi.ResourceArgs
+    public sealed class KeyArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -177,5 +177,6 @@ namespace Pulumi.GoogleNative.APIKeys.V2
         public KeyArgs()
         {
         }
+        public static new KeyArgs Empty => new KeyArgs();
     }
 }

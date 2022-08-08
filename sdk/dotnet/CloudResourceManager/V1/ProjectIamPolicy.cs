@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudresourcemanager/v1:ProjectIamPolicy")]
-    public partial class ProjectIamPolicy : Pulumi.CustomResource
+    public partial class ProjectIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1
         }
     }
 
-    public sealed class ProjectIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ProjectIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -141,5 +141,6 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1
         public ProjectIamPolicyArgs()
         {
         }
+        public static new ProjectIamPolicyArgs Empty => new ProjectIamPolicyArgs();
     }
 }

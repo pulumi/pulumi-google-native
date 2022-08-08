@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DNS.V2
     }
 
 
-    public sealed class GetChangeArgs : Pulumi.InvokeArgs
+    public sealed class GetChangeArgs : global::Pulumi.InvokeArgs
     {
         [Input("changeId", required: true)]
         public string ChangeId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.DNS.V2
         public GetChangeArgs()
         {
         }
+        public static new GetChangeArgs Empty => new GetChangeArgs();
     }
 
-    public sealed class GetChangeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetChangeInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("changeId", required: true)]
         public Input<string> ChangeId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.DNS.V2
         public GetChangeInvokeArgs()
         {
         }
+        public static new GetChangeInvokeArgs Empty => new GetChangeInvokeArgs();
     }
 
 

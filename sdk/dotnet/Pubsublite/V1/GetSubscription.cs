@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
     }
 
 
-    public sealed class GetSubscriptionArgs : Pulumi.InvokeArgs
+    public sealed class GetSubscriptionArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         public GetSubscriptionArgs()
         {
         }
+        public static new GetSubscriptionArgs Empty => new GetSubscriptionArgs();
     }
 
-    public sealed class GetSubscriptionInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSubscriptionInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Pubsublite.V1
         public GetSubscriptionInvokeArgs()
         {
         }
+        public static new GetSubscriptionInvokeArgs Empty => new GetSubscriptionInvokeArgs();
     }
 
 

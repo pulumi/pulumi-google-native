@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// A step that represents running tests. It accepts ant-junit xml files which will be parsed into structured test results by the service. Xml file paths are updated in order to append more files, however they can't be deleted. Users can also add test results manually by using the test_result field.
     /// </summary>
-    public sealed class TestExecutionStepArgs : Pulumi.ResourceArgs
+    public sealed class TestExecutionStepArgs : global::Pulumi.ResourceArgs
     {
         [Input("testIssues")]
         private InputList<Inputs.TestIssueArgs>? _testIssues;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public TestExecutionStepArgs()
         {
         }
+        public static new TestExecutionStepArgs Empty => new TestExecutionStepArgs();
     }
 }

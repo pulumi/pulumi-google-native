@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] Configuration for the mutual Tls mode for peer authentication. Configuration for the mutual Tls mode for peer authentication.
     /// </summary>
-    public sealed class MutualTlsArgs : Pulumi.ResourceArgs
+    public sealed class MutualTlsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies if the server TLS is configured to be strict or permissive. This field can be set to one of the following: STRICT: Client certificate must be presented, connection is in TLS. PERMISSIVE: Client certificate can be omitted, connection can be either plaintext or TLS.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public MutualTlsArgs()
         {
         }
+        public static new MutualTlsArgs Empty => new MutualTlsArgs();
     }
 }

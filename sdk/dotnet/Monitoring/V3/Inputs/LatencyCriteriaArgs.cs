@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Parameters for a latency threshold SLI.
     /// </summary>
-    public sealed class LatencyCriteriaArgs : Pulumi.ResourceArgs
+    public sealed class LatencyCriteriaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Good service is defined to be the count of requests made to this service that return in no more than threshold.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public LatencyCriteriaArgs()
         {
         }
+        public static new LatencyCriteriaArgs Empty => new LatencyCriteriaArgs();
     }
 }

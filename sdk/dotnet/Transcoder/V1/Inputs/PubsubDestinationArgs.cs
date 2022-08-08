@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// A Pub/Sub destination.
     /// </summary>
-    public sealed class PubsubDestinationArgs : Pulumi.ResourceArgs
+    public sealed class PubsubDestinationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the Pub/Sub topic to publish job completion notification to. For example: `projects/{project}/topics/{topic}`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public PubsubDestinationArgs()
         {
         }
+        public static new PubsubDestinationArgs Empty => new PubsubDestinationArgs();
     }
 }

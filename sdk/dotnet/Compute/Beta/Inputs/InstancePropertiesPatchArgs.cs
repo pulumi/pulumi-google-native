@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Represents the change that you want to make to the instance properties.
     /// </summary>
-    public sealed class InstancePropertiesPatchArgs : Pulumi.ResourceArgs
+    public sealed class InstancePropertiesPatchArgs : global::Pulumi.ResourceArgs
     {
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public InstancePropertiesPatchArgs()
         {
         }
+        public static new InstancePropertiesPatchArgs Empty => new InstancePropertiesPatchArgs();
     }
 }

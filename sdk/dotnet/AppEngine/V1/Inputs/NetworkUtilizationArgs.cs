@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
     /// <summary>
     /// Target scaling by network usage. Only applicable in the App Engine flexible environment.
     /// </summary>
-    public sealed class NetworkUtilizationArgs : Pulumi.ResourceArgs
+    public sealed class NetworkUtilizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Target bytes received per second.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         public NetworkUtilizationArgs()
         {
         }
+        public static new NetworkUtilizationArgs Empty => new NetworkUtilizationArgs();
     }
 }

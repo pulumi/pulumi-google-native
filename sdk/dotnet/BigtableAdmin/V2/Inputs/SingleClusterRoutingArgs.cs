@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Inputs
     /// <summary>
     /// Unconditionally routes all read/write requests to a specific cluster. This option preserves read-your-writes consistency but does not improve availability.
     /// </summary>
-    public sealed class SingleClusterRoutingArgs : Pulumi.ResourceArgs
+    public sealed class SingleClusterRoutingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether or not `CheckAndMutateRow` and `ReadModifyWriteRow` requests are allowed by this app profile. It is unsafe to send these requests to the same table/row/column in multiple clusters.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2.Inputs
         public SingleClusterRoutingArgs()
         {
         }
+        public static new SingleClusterRoutingArgs Empty => new SingleClusterRoutingArgs();
     }
 }

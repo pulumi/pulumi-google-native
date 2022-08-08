@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:appengine/v1:AuthorizedCertificate")]
-    public partial class AuthorizedCertificate : Pulumi.CustomResource
+    public partial class AuthorizedCertificate : global::Pulumi.CustomResource
     {
         [Output("appId")]
         public Output<string> AppId { get; private set; } = null!;
@@ -114,7 +114,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         }
     }
 
-    public sealed class AuthorizedCertificateArgs : Pulumi.ResourceArgs
+    public sealed class AuthorizedCertificateArgs : global::Pulumi.ResourceArgs
     {
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -134,5 +134,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1
         public AuthorizedCertificateArgs()
         {
         }
+        public static new AuthorizedCertificateArgs Empty => new AuthorizedCertificateArgs();
     }
 }

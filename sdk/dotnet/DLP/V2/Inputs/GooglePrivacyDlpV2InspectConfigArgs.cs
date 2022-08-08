@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Configuration description of the scanning process. When used with redactContent only info_types and min_likelihood are currently used.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2InspectConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2InspectConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("contentOptions")]
         private InputList<Pulumi.GoogleNative.DLP.V2.GooglePrivacyDlpV2InspectConfigContentOptionsItem>? _contentOptions;
@@ -91,5 +91,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2InspectConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2InspectConfigArgs Empty => new GooglePrivacyDlpV2InspectConfigArgs();
     }
 }

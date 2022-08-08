@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
     /// <summary>
     /// ResourceOptions represent options for Kubernetes resource generation.
     /// </summary>
-    public sealed class ResourceOptionsArgs : Pulumi.ResourceArgs
+    public sealed class ResourceOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The Connect agent version to use for connect_resources. Defaults to the latest GKE Connect version. The version must be a currently supported version, obsolete versions will be rejected.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
         public ResourceOptionsArgs()
         {
         }
+        public static new ResourceOptionsArgs Empty => new ResourceOptionsArgs();
     }
 }

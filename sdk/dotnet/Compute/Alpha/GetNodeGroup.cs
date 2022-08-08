@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetNodeGroupArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeGroupArgs : global::Pulumi.InvokeArgs
     {
         [Input("nodeGroup", required: true)]
         public string NodeGroup { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetNodeGroupArgs()
         {
         }
+        public static new GetNodeGroupArgs Empty => new GetNodeGroupArgs();
     }
 
-    public sealed class GetNodeGroupInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeGroupInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("nodeGroup", required: true)]
         public Input<string> NodeGroup { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetNodeGroupInvokeArgs()
         {
         }
+        public static new GetNodeGroupInvokeArgs Empty => new GetNodeGroupInvokeArgs();
     }
 
 

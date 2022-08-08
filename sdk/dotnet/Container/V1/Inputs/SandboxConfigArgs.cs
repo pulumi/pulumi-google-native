@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// SandboxConfig contains configurations of the sandbox to use for the node.
     /// </summary>
-    public sealed class SandboxConfigArgs : Pulumi.ResourceArgs
+    public sealed class SandboxConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Type of the sandbox to use for the node.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public SandboxConfigArgs()
         {
         }
+        public static new SandboxConfigArgs Empty => new SandboxConfigArgs();
     }
 }

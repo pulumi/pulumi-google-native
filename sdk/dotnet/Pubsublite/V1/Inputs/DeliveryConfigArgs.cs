@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsublite.V1.Inputs
     /// <summary>
     /// The settings for a subscription's message delivery.
     /// </summary>
-    public sealed class DeliveryConfigArgs : Pulumi.ResourceArgs
+    public sealed class DeliveryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The DeliveryRequirement for this subscription.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Pubsublite.V1.Inputs
         public DeliveryConfigArgs()
         {
         }
+        public static new DeliveryConfigArgs Empty => new DeliveryConfigArgs();
     }
 }

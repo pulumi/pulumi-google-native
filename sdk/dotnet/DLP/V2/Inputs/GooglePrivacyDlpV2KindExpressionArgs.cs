@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// A representation of a Datastore kind.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2KindExpressionArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2KindExpressionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the kind.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2KindExpressionArgs()
         {
         }
+        public static new GooglePrivacyDlpV2KindExpressionArgs Empty => new GooglePrivacyDlpV2KindExpressionArgs();
     }
 }

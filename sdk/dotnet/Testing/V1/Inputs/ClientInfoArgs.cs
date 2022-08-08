@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// Information about the client which invoked the test.
     /// </summary>
-    public sealed class ClientInfoArgs : Pulumi.ResourceArgs
+    public sealed class ClientInfoArgs : global::Pulumi.ResourceArgs
     {
         [Input("clientInfoDetails")]
         private InputList<Inputs.ClientInfoDetailArgs>? _clientInfoDetails;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public ClientInfoArgs()
         {
         }
+        public static new ClientInfoArgs Empty => new ClientInfoArgs();
     }
 }

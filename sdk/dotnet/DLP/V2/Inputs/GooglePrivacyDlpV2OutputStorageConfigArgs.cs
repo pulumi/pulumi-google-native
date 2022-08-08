@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Cloud repository for storing output.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2OutputStorageConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2OutputStorageConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing table, any columns from the predefined schema that are missing will be added. No columns in the existing table will be deleted. If unspecified, then all available columns will be used for a new table or an (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only for use with external storage.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2OutputStorageConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2OutputStorageConfigArgs Empty => new GooglePrivacyDlpV2OutputStorageConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
     /// Creates a new migration job in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:datamigration/v1:MigrationJob")]
-    public partial class MigrationJob : Pulumi.CustomResource
+    public partial class MigrationJob : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp when the migration job resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -202,7 +202,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         }
     }
 
-    public sealed class MigrationJobArgs : Pulumi.ResourceArgs
+    public sealed class MigrationJobArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The resource name (URI) of the destination connection profile.
@@ -315,5 +315,6 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         public MigrationJobArgs()
         {
         }
+        public static new MigrationJobArgs Empty => new MigrationJobArgs();
     }
 }

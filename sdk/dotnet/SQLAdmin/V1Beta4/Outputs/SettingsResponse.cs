@@ -61,6 +61,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly bool DatabaseReplicationEnabled;
         /// <summary>
+        /// Configuration to protect against accidental instance deletion.
+        /// </summary>
+        public readonly bool DeletionProtectionEnabled;
+        /// <summary>
         /// Deny maintenance periods
         /// </summary>
         public readonly ImmutableArray<Outputs.DenyMaintenancePeriodResponse> DenyMaintenancePeriods;
@@ -145,6 +149,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 
             bool databaseReplicationEnabled,
 
+            bool deletionProtectionEnabled,
+
             ImmutableArray<Outputs.DenyMaintenancePeriodResponse> denyMaintenancePeriods,
 
             Outputs.InsightsConfigResponse insightsConfig,
@@ -186,6 +192,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
             DataDiskType = dataDiskType;
             DatabaseFlags = databaseFlags;
             DatabaseReplicationEnabled = databaseReplicationEnabled;
+            DeletionProtectionEnabled = deletionProtectionEnabled;
             DenyMaintenancePeriods = denyMaintenancePeriods;
             InsightsConfig = insightsConfig;
             IpConfiguration = ipConfiguration;

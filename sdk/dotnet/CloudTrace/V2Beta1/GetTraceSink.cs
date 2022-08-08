@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
     }
 
 
-    public sealed class GetTraceSinkArgs : Pulumi.InvokeArgs
+    public sealed class GetTraceSinkArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
         public GetTraceSinkArgs()
         {
         }
+        public static new GetTraceSinkArgs Empty => new GetTraceSinkArgs();
     }
 
-    public sealed class GetTraceSinkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTraceSinkInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.CloudTrace.V2Beta1
         public GetTraceSinkInvokeArgs()
         {
         }
+        public static new GetTraceSinkInvokeArgs Empty => new GetTraceSinkInvokeArgs();
     }
 
 

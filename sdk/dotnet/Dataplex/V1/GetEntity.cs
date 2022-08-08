@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     }
 
 
-    public sealed class GetEntityArgs : Pulumi.InvokeArgs
+    public sealed class GetEntityArgs : global::Pulumi.InvokeArgs
     {
         [Input("entityId", required: true)]
         public string EntityId { get; set; } = null!;
@@ -48,9 +48,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public GetEntityArgs()
         {
         }
+        public static new GetEntityArgs Empty => new GetEntityArgs();
     }
 
-    public sealed class GetEntityInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEntityInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("entityId", required: true)]
         public Input<string> EntityId { get; set; } = null!;
@@ -73,6 +74,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public GetEntityInvokeArgs()
         {
         }
+        public static new GetEntityInvokeArgs Empty => new GetEntityInvokeArgs();
     }
 
 

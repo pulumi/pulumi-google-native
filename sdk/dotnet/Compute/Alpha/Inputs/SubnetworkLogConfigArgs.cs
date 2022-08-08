@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// The available logging options for this subnetwork.
     /// </summary>
-    public sealed class SubnetworkLogConfigArgs : Pulumi.ResourceArgs
+    public sealed class SubnetworkLogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Can only be specified if VPC flow logging for this subnetwork is enabled. Toggles the aggregation interval for collecting flow logs. Increasing the interval time will reduce the amount of generated flow logs for long lasting connections. Default is an interval of 5 seconds per connection.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SubnetworkLogConfigArgs()
         {
         }
+        public static new SubnetworkLogConfigArgs Empty => new SubnetworkLogConfigArgs();
     }
 }

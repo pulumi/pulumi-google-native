@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
     }
 
 
-    public sealed class GetShareArgs : Pulumi.InvokeArgs
+    public sealed class GetShareArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         public GetShareArgs()
         {
         }
+        public static new GetShareArgs Empty => new GetShareArgs();
     }
 
-    public sealed class GetShareInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetShareInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
         public GetShareInvokeArgs()
         {
         }
+        public static new GetShareInvokeArgs Empty => new GetShareInvokeArgs();
     }
 
 

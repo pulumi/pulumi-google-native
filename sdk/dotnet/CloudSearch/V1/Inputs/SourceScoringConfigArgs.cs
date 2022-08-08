@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     /// <summary>
     /// Set the scoring configuration. This allows modifying the ranking of results for a source.
     /// </summary>
-    public sealed class SourceScoringConfigArgs : Pulumi.ResourceArgs
+    public sealed class SourceScoringConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Importance of the source.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public SourceScoringConfigArgs()
         {
         }
+        public static new SourceScoringConfigArgs Empty => new SourceScoringConfigArgs();
     }
 }

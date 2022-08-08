@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:sqladmin/v1:BackupRun")]
-    public partial class BackupRun : Pulumi.CustomResource
+    public partial class BackupRun : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
-        /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+        /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -154,7 +154,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         }
     }
 
-    public sealed class BackupRunArgs : Pulumi.ResourceArgs
+    public sealed class BackupRunArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Specifies the kind of backup, PHYSICAL or DEFAULT_SNAPSHOT.
@@ -238,7 +238,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
+        /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.SQLAdmin.V1.BackupRunType>? Type { get; set; }
@@ -252,5 +252,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         public BackupRunArgs()
         {
         }
+        public static new BackupRunArgs Empty => new BackupRunArgs();
     }
 }

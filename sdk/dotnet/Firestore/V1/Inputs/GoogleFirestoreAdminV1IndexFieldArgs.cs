@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Firestore.V1.Inputs
     /// <summary>
     /// A field in an index. The field_path describes which field is indexed, the value_mode describes how the field value is indexed.
     /// </summary>
-    public sealed class GoogleFirestoreAdminV1IndexFieldArgs : Pulumi.ResourceArgs
+    public sealed class GoogleFirestoreAdminV1IndexFieldArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates that this field supports operations on `array_value`s.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Firestore.V1.Inputs
         public GoogleFirestoreAdminV1IndexFieldArgs()
         {
         }
+        public static new GoogleFirestoreAdminV1IndexFieldArgs Empty => new GoogleFirestoreAdminV1IndexFieldArgs();
     }
 }

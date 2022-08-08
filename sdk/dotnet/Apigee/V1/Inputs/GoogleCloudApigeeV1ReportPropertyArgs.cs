@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Apigee.V1.Inputs
 {
 
-    public sealed class GoogleCloudApigeeV1ReportPropertyArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1ReportPropertyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// name of the property
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1ReportPropertyArgs()
         {
         }
+        public static new GoogleCloudApigeeV1ReportPropertyArgs Empty => new GoogleCloudApigeeV1ReportPropertyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1.Inputs
     /// <summary>
     /// Describes HttpsTrigger, could be used to connect web hooks to function.
     /// </summary>
-    public sealed class HttpsTriggerArgs : Pulumi.ResourceArgs
+    public sealed class HttpsTriggerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The security level for the function.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudFunctions.V1.Inputs
         public HttpsTriggerArgs()
         {
         }
+        public static new HttpsTriggerArgs Empty => new HttpsTriggerArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Indicates that the builder claims certain fields in this message to be complete.
     /// </summary>
-    public sealed class CompletenessArgs : Pulumi.ResourceArgs
+    public sealed class CompletenessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If true, the builder claims that recipe.arguments is complete, meaning that all external inputs are properly captured in the recipe.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public CompletenessArgs()
         {
         }
+        public static new CompletenessArgs Empty => new CompletenessArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     /// Creates a new table in the specified instance. The table can be created with a full set of initial column families, specified in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigtableadmin/v2:Table")]
-    public partial class Table : Pulumi.CustomResource
+    public partial class Table : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Map from cluster ID to per-cluster table state. If it could not be determined whether or not the table has data in a particular cluster (for example, if its zone is unavailable), then there will be an entry for the cluster with UNKNOWN `replication_status`. Views: `REPLICATION_VIEW`, `ENCRYPTION_VIEW`, `FULL`
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         }
     }
 
-    public sealed class TableArgs : Pulumi.ResourceArgs
+    public sealed class TableArgs : global::Pulumi.ResourceArgs
     {
         [Input("columnFamilies")]
         private InputMap<string>? _columnFamilies;
@@ -152,5 +152,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public TableArgs()
         {
         }
+        public static new TableArgs Empty => new TableArgs();
     }
 }

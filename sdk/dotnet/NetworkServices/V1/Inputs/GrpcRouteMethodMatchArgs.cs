@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
     /// <summary>
     /// Specifies a match against a method.
     /// </summary>
-    public sealed class GrpcRouteMethodMatchArgs : Pulumi.ResourceArgs
+    public sealed class GrpcRouteMethodMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Specifies that matches are case sensitive. The default value is true. case_sensitive must not be used with a type of REGULAR_EXPRESSION.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1.Inputs
         public GrpcRouteMethodMatchArgs()
         {
         }
+        public static new GrpcRouteMethodMatchArgs Empty => new GrpcRouteMethodMatchArgs();
     }
 }

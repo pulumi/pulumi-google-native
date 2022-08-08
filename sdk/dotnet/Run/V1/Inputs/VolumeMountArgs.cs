@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     /// <summary>
     /// VolumeMount describes a mounting of a Volume within a container.
     /// </summary>
-    public sealed class VolumeMountArgs : Pulumi.ResourceArgs
+    public sealed class VolumeMountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Path within the container at which the volume should be mounted. Must not contain ':'.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public VolumeMountArgs()
         {
         }
+        public static new VolumeMountArgs Empty => new VolumeMountArgs();
     }
 }

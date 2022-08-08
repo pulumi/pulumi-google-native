@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// A transformation to apply to text that is identified as a specific info_type.
     /// </summary>
-    public sealed class InfoTypeTransformationArgs : Pulumi.ResourceArgs
+    public sealed class InfoTypeTransformationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Config for character mask.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public InfoTypeTransformationArgs()
         {
         }
+        public static new InfoTypeTransformationArgs Empty => new InfoTypeTransformationArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
     /// <summary>
     /// Target scaling by disk usage. Only applicable in the App Engine flexible environment.
     /// </summary>
-    public sealed class DiskUtilizationArgs : Pulumi.ResourceArgs
+    public sealed class DiskUtilizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Target bytes read per second.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         public DiskUtilizationArgs()
         {
         }
+        public static new DiskUtilizationArgs Empty => new DiskUtilizationArgs();
     }
 }

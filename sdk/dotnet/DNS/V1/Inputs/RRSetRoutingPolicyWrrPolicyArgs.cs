@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
     /// <summary>
     /// Configures a RRSetRoutingPolicy that routes in a weighted round robin fashion.
     /// </summary>
-    public sealed class RRSetRoutingPolicyWrrPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RRSetRoutingPolicyWrrPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("items")]
         private InputList<Inputs.RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs>? _items;
@@ -29,5 +29,6 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
         public RRSetRoutingPolicyWrrPolicyArgs()
         {
         }
+        public static new RRSetRoutingPolicyWrrPolicyArgs Empty => new RRSetRoutingPolicyWrrPolicyArgs();
     }
 }

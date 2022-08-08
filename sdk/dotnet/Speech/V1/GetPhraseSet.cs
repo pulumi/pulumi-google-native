@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Speech.V1
     }
 
 
-    public sealed class GetPhraseSetArgs : Pulumi.InvokeArgs
+    public sealed class GetPhraseSetArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Speech.V1
         public GetPhraseSetArgs()
         {
         }
+        public static new GetPhraseSetArgs Empty => new GetPhraseSetArgs();
     }
 
-    public sealed class GetPhraseSetInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPhraseSetInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Speech.V1
         public GetPhraseSetInvokeArgs()
         {
         }
+        public static new GetPhraseSetInvokeArgs Empty => new GetPhraseSetInvokeArgs();
     }
 
 

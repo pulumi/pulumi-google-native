@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// Represents a time zone from the [IANA Time Zone Database](https://www.iana.org/time-zones).
     /// </summary>
-    public sealed class TimeZoneArgs : Pulumi.ResourceArgs
+    public sealed class TimeZoneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IANA Time Zone Database time zone, e.g. "America/New_York".
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public TimeZoneArgs()
         {
         }
+        public static new TimeZoneArgs Empty => new TimeZoneArgs();
     }
 }

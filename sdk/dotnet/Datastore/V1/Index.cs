@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datastore/v1:Index")]
-    public partial class Index : Pulumi.CustomResource
+    public partial class Index : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.Datastore.V1
         }
     }
 
-    public sealed class IndexArgs : Pulumi.ResourceArgs
+    public sealed class IndexArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The index's ancestor mode. Must not be ANCESTOR_MODE_UNSPECIFIED.
@@ -128,5 +128,6 @@ namespace Pulumi.GoogleNative.Datastore.V1
         public IndexArgs()
         {
         }
+        public static new IndexArgs Empty => new IndexArgs();
     }
 }

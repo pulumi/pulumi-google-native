@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// An action that can be taken as part of installing or updating a recipe.
     /// </summary>
-    public sealed class SoftwareRecipeStepArgs : Pulumi.ResourceArgs
+    public sealed class SoftwareRecipeStepArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Extracts an archive into the specified directory.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public SoftwareRecipeStepArgs()
         {
         }
+        public static new SoftwareRecipeStepArgs Empty => new SoftwareRecipeStepArgs();
     }
 }

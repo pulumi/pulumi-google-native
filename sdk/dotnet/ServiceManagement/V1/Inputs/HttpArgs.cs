@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// Defines the HTTP configuration for an API service. It contains a list of HttpRule, each specifying the mapping of an RPC method to one or more HTTP REST API methods.
     /// </summary>
-    public sealed class HttpArgs : Pulumi.ResourceArgs
+    public sealed class HttpArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When set to true, URL path parameters will be fully URI-decoded except in cases of single segment matches in reserved expansion, where "%2F" will be left encoded. The default behavior is to not decode RFC 6570 reserved characters in multi segment matches.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public HttpArgs()
         {
         }
+        public static new HttpArgs Empty => new HttpArgs();
     }
 }

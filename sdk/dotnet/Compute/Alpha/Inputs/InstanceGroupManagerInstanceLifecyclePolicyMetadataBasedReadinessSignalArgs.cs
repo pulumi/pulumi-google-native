@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of seconds to wait for a readiness signal during initialization before timing out.
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalArgs()
         {
         }
+        public static new InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalArgs Empty => new InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalArgs();
     }
 }

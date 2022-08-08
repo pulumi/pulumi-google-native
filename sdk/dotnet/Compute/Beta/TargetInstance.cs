@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates a TargetInstance resource in the specified project and zone using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:TargetInstance")]
-    public partial class TargetInstance : Pulumi.CustomResource
+    public partial class TargetInstance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+        /// Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
         /// </summary>
         [Output("natPolicy")]
         public Output<string> NatPolicy { get; private set; } = null!;
@@ -123,7 +123,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class TargetInstanceArgs : Pulumi.ResourceArgs
+    public sealed class TargetInstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource.
@@ -144,7 +144,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// NAT option controlling how IPs are NAT'ed to the instance. Currently only NO_NAT (default value) is supported.
+        /// Must have a value of NO_NAT. Protocol forwarding delivers packets while preserving the destination IP address of the forwarding rule referencing the target instance.
         /// </summary>
         [Input("natPolicy")]
         public Input<Pulumi.GoogleNative.Compute.Beta.TargetInstanceNatPolicy>? NatPolicy { get; set; }
@@ -170,5 +170,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public TargetInstanceArgs()
         {
         }
+        public static new TargetInstanceArgs Empty => new TargetInstanceArgs();
     }
 }

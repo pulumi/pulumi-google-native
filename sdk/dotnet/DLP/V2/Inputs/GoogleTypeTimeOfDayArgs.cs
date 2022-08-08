@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Represents a time of day. The date and time zone are either not significant or are specified elsewhere. An API may choose to allow leap seconds. Related types are google.type.Date and `google.protobuf.Timestamp`.
     /// </summary>
-    public sealed class GoogleTypeTimeOfDayArgs : Pulumi.ResourceArgs
+    public sealed class GoogleTypeTimeOfDayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hours of day in 24 hour format. Should be from 0 to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GoogleTypeTimeOfDayArgs()
         {
         }
+        public static new GoogleTypeTimeOfDayArgs Empty => new GoogleTypeTimeOfDayArgs();
     }
 }

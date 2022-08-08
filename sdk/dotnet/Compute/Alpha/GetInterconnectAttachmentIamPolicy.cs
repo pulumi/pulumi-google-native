@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetInterconnectAttachmentIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetInterconnectAttachmentIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetInterconnectAttachmentIamPolicyArgs()
         {
         }
+        public static new GetInterconnectAttachmentIamPolicyArgs Empty => new GetInterconnectAttachmentIamPolicyArgs();
     }
 
-    public sealed class GetInterconnectAttachmentIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInterconnectAttachmentIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetInterconnectAttachmentIamPolicyInvokeArgs()
         {
         }
+        public static new GetInterconnectAttachmentIamPolicyInvokeArgs Empty => new GetInterconnectAttachmentIamPolicyInvokeArgs();
     }
 
 

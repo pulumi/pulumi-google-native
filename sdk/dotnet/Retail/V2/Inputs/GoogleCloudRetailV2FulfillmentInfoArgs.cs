@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2.Inputs
     /// <summary>
     /// Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods.
     /// </summary>
-    public sealed class GoogleCloudRetailV2FulfillmentInfoArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2FulfillmentInfoArgs : global::Pulumi.ResourceArgs
     {
         [Input("placeIds")]
         private InputList<string>? _placeIds;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Retail.V2.Inputs
         public GoogleCloudRetailV2FulfillmentInfoArgs()
         {
         }
+        public static new GoogleCloudRetailV2FulfillmentInfoArgs Empty => new GoogleCloudRetailV2FulfillmentInfoArgs();
     }
 }

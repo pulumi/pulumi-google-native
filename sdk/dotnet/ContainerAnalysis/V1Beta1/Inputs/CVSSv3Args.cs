@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Deprecated. Common Vulnerability Scoring System version 3. For details, see https://www.first.org/cvss/specification-document
     /// </summary>
-    public sealed class CVSSv3Args : Pulumi.ResourceArgs
+    public sealed class CVSSv3Args : global::Pulumi.ResourceArgs
     {
         [Input("attackComplexity")]
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.CVSSv3AttackComplexity>? AttackComplexity { get; set; }
@@ -57,5 +57,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public CVSSv3Args()
         {
         }
+        public static new CVSSv3Args Empty => new CVSSv3Args();
     }
 }

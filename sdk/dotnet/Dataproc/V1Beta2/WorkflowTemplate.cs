@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataproc/v1beta2:WorkflowTemplate")]
-    public partial class WorkflowTemplate : Pulumi.CustomResource
+    public partial class WorkflowTemplate : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time template was created.
@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         }
     }
 
-    public sealed class WorkflowTemplateArgs : Pulumi.ResourceArgs
+    public sealed class WorkflowTemplateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Timeout duration for the DAG of jobs, expressed in seconds (see JSON representation of duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). The timeout duration must be from 10 minutes ("600s") to 24 hours ("86400s"). The timer begins when the first job is submitted. If the workflow is running at the end of the timeout period, any remaining jobs are cancelled, the workflow is ended, and if the workflow was running on a managed cluster, the cluster is deleted.
@@ -195,5 +195,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public WorkflowTemplateArgs()
         {
         }
+        public static new WorkflowTemplateArgs Empty => new WorkflowTemplateArgs();
     }
 }

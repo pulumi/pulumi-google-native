@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
     /// </summary>
-    public sealed class FirewallPolicyRuleMatcherArgs : Pulumi.ResourceArgs
+    public sealed class FirewallPolicyRuleMatcherArgs : global::Pulumi.ResourceArgs
     {
         [Input("destIpRanges")]
         private InputList<string>? _destIpRanges;
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public FirewallPolicyRuleMatcherArgs()
         {
         }
+        public static new FirewallPolicyRuleMatcherArgs Empty => new FirewallPolicyRuleMatcherArgs();
     }
 }

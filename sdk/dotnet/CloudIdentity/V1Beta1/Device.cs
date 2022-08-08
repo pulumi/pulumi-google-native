@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudidentity/v1beta1:Device")]
-    public partial class Device : Pulumi.CustomResource
+    public partial class Device : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Attributes specific to Android devices.
@@ -239,7 +239,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         }
     }
 
-    public sealed class DeviceArgs : Pulumi.ResourceArgs
+    public sealed class DeviceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Asset tag of the device.
@@ -280,5 +280,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         public DeviceArgs()
         {
         }
+        public static new DeviceArgs Empty => new DeviceArgs();
     }
 }

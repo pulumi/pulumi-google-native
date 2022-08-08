@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
     /// Creates a pipeline that can be run later. Create takes a Pipeline that has all fields other than `pipelineId` populated, and then returns the same pipeline with `pipelineId` populated. This id can be used to run the pipeline. Caller must have WRITE permission to the project.
     /// </summary>
     [GoogleNativeResourceType("google-native:genomics/v1alpha2:Pipeline")]
-    public partial class Pipeline : Pulumi.CustomResource
+    public partial class Pipeline : global::Pulumi.CustomResource
     {
         /// <summary>
         /// User-specified description.
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         }
     }
 
-    public sealed class PipelineArgs : Pulumi.ResourceArgs
+    public sealed class PipelineArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-specified description.
@@ -171,5 +171,6 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         public PipelineArgs()
         {
         }
+        public static new PipelineArgs Empty => new PipelineArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigateway/v1beta:Gateway")]
-    public partial class Gateway : Pulumi.CustomResource
+    public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         }
     }
 
-    public sealed class GatewayArgs : Pulumi.ResourceArgs
+    public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}
@@ -166,5 +166,6 @@ namespace Pulumi.GoogleNative.APIGateway.V1Beta
         public GatewayArgs()
         {
         }
+        public static new GatewayArgs Empty => new GatewayArgs();
     }
 }

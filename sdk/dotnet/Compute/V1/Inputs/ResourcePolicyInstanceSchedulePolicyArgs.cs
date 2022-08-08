@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// An InstanceSchedulePolicy specifies when and how frequent certain operations are performed on the instance.
     /// </summary>
-    public sealed class ResourcePolicyInstanceSchedulePolicyArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyInstanceSchedulePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The expiration time of the schedule. The timestamp is an RFC3339 string.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public ResourcePolicyInstanceSchedulePolicyArgs()
         {
         }
+        public static new ResourcePolicyInstanceSchedulePolicyArgs Empty => new ResourcePolicyInstanceSchedulePolicyArgs();
     }
 }

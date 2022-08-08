@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
     /// <summary>
     /// A network.
     /// </summary>
-    public sealed class NetworkAddressArgs : Pulumi.ResourceArgs
+    public sealed class NetworkAddressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// IPv4 address to be assigned to the server.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public NetworkAddressArgs()
         {
         }
+        public static new NetworkAddressArgs Empty => new NetworkAddressArgs();
     }
 }

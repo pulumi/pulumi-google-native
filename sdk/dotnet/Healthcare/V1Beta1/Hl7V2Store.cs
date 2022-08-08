@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     /// Creates a new HL7v2 store within the parent dataset.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1beta1:Hl7V2Store")]
-    public partial class Hl7V2Store : Pulumi.CustomResource
+    public partial class Hl7V2Store : global::Pulumi.CustomResource
     {
         [Output("datasetId")]
         public Output<string> DatasetId { get; private set; } = null!;
@@ -115,7 +115,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         }
     }
 
-    public sealed class Hl7V2StoreArgs : Pulumi.ResourceArgs
+    public sealed class Hl7V2StoreArgs : global::Pulumi.ResourceArgs
     {
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -183,5 +183,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public Hl7V2StoreArgs()
         {
         }
+        public static new Hl7V2StoreArgs Empty => new Hl7V2StoreArgs();
     }
 }

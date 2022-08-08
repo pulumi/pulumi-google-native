@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
     /// <summary>
     /// Specifies how APIs are allowed to communicate within the Service Perimeter.
     /// </summary>
-    public sealed class VpcAccessibleServicesArgs : Pulumi.ResourceArgs
+    public sealed class VpcAccessibleServicesArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedServices")]
         private InputList<string>? _allowedServices;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         public VpcAccessibleServicesArgs()
         {
         }
+        public static new VpcAccessibleServicesArgs Empty => new VpcAccessibleServicesArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
     }
 
 
-    public sealed class GetSslCertArgs : Pulumi.InvokeArgs
+    public sealed class GetSslCertArgs : global::Pulumi.InvokeArgs
     {
         [Input("instance", required: true)]
         public string Instance { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public GetSslCertArgs()
         {
         }
+        public static new GetSslCertArgs Empty => new GetSslCertArgs();
     }
 
-    public sealed class GetSslCertInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSslCertInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instance", required: true)]
         public Input<string> Instance { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public GetSslCertInvokeArgs()
         {
         }
+        public static new GetSslCertInvokeArgs Empty => new GetSslCertInvokeArgs();
     }
 
 

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
     }
 
 
-    public sealed class GetConnectionProfileArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectionProfileArgs : global::Pulumi.InvokeArgs
     {
         [Input("connectionProfileId", required: true)]
         public string ConnectionProfileId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Datastream.V1
         public GetConnectionProfileArgs()
         {
         }
+        public static new GetConnectionProfileArgs Empty => new GetConnectionProfileArgs();
     }
 
-    public sealed class GetConnectionProfileInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetConnectionProfileInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("connectionProfileId", required: true)]
         public Input<string> ConnectionProfileId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
         public GetConnectionProfileInvokeArgs()
         {
         }
+        public static new GetConnectionProfileInvokeArgs Empty => new GetConnectionProfileInvokeArgs();
     }
 
 

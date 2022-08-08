@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// Files served directly to the user for a given URL, such as images, CSS stylesheets, or JavaScript source files. Static file handlers describe which files in the application directory are static files, and which URLs serve them.
     /// </summary>
-    public sealed class StaticFilesHandlerArgs : Pulumi.ResourceArgs
+    public sealed class StaticFilesHandlerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether files should also be uploaded as code data. By default, files declared in static file handlers are uploaded as static data and are only served to end users; they cannot be read by the application. If enabled, uploads are charged against both your code and static data storage resource quotas.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public StaticFilesHandlerArgs()
         {
         }
+        public static new StaticFilesHandlerArgs Empty => new StaticFilesHandlerArgs();
     }
 }

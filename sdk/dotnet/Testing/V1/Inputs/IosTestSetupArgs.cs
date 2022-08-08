@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A description of how to set up an iOS device prior to running the test.
     /// </summary>
-    public sealed class IosTestSetupArgs : Pulumi.ResourceArgs
+    public sealed class IosTestSetupArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalIpas")]
         private InputList<Inputs.FileReferenceArgs>? _additionalIpas;
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public IosTestSetupArgs()
         {
         }
+        public static new IosTestSetupArgs Empty => new IosTestSetupArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
     }
 
 
-    public sealed class GetCaseArgs : Pulumi.InvokeArgs
+    public sealed class GetCaseArgs : global::Pulumi.InvokeArgs
     {
         [Input("caseId", required: true)]
         public string CaseId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         public GetCaseArgs()
         {
         }
+        public static new GetCaseArgs Empty => new GetCaseArgs();
     }
 
-    public sealed class GetCaseInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCaseInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("caseId", required: true)]
         public Input<string> CaseId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         public GetCaseInvokeArgs()
         {
         }
+        public static new GetCaseInvokeArgs Empty => new GetCaseInvokeArgs();
     }
 
 
@@ -93,10 +95,6 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         /// The priority of this case. If this is set, do not set severity.
         /// </summary>
         public readonly string Priority;
-        /// <summary>
-        /// The ID of the project associated with the case.
-        /// </summary>
-        public readonly string Project;
         /// <summary>
         /// The severity of this case. Deprecated. Use priority instead.
         /// </summary>
@@ -140,8 +138,6 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
 
             string priority,
 
-            string project,
-
             string severity,
 
             string state,
@@ -162,7 +158,6 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
             Escalated = escalated;
             Name = name;
             Priority = priority;
-            Project = project;
             Severity = severity;
             State = state;
             SubscriberEmailAddresses = subscriberEmailAddresses;

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration of etcd encryption.
     /// </summary>
-    public sealed class DatabaseEncryptionArgs : Pulumi.ResourceArgs
+    public sealed class DatabaseEncryptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of CloudKMS key to use for the encryption of secrets in etcd. Ex. projects/my-project/locations/global/keyRings/my-ring/cryptoKeys/my-key
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public DatabaseEncryptionArgs()
         {
         }
+        public static new DatabaseEncryptionArgs Empty => new DatabaseEncryptionArgs();
     }
 }

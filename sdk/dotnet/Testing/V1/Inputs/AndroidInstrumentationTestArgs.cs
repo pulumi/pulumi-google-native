@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A test of an Android application that can control an Android component independently of its normal lifecycle. Android instrumentation tests run an application APK and test APK inside the same process on a virtual or physical AndroidDevice. They also specify a test runner class, such as com.google.GoogleTestRunner, which can vary on the specific instrumentation framework chosen. See for more information on types of Android tests.
     /// </summary>
-    public sealed class AndroidInstrumentationTestArgs : Pulumi.ResourceArgs
+    public sealed class AndroidInstrumentationTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The APK for the application under test.
@@ -78,5 +78,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public AndroidInstrumentationTestArgs()
         {
         }
+        public static new AndroidInstrumentationTestArgs Empty => new AndroidInstrumentationTestArgs();
     }
 }

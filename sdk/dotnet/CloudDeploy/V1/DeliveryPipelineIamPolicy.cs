@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:clouddeploy/v1:DeliveryPipelineIamPolicy")]
-    public partial class DeliveryPipelineIamPolicy : Pulumi.CustomResource
+    public partial class DeliveryPipelineIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         }
     }
 
-    public sealed class DeliveryPipelineIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class DeliveryPipelineIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public DeliveryPipelineIamPolicyArgs()
         {
         }
+        public static new DeliveryPipelineIamPolicyArgs Empty => new DeliveryPipelineIamPolicyArgs();
     }
 }

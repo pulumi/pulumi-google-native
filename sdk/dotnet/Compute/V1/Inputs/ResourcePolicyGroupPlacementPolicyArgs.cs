@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// A GroupPlacementPolicy specifies resource placement configuration. It specifies the failure bucket separation as well as network locality
     /// </summary>
-    public sealed class ResourcePolicyGroupPlacementPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ResourcePolicyGroupPlacementPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of availability domains to spread instances across. If two instances are in different availability domain, they are not in the same low latency network.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public ResourcePolicyGroupPlacementPolicyArgs()
         {
         }
+        public static new ResourcePolicyGroupPlacementPolicyArgs Empty => new ResourcePolicyGroupPlacementPolicyArgs();
     }
 }

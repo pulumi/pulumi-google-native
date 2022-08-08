@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.IAM.V1.Inputs
     /// <summary>
     /// Represents an OpenId Connect 1.0 identity provider.
     /// </summary>
-    public sealed class OidcArgs : Pulumi.ResourceArgs
+    public sealed class OidcArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedAudiences")]
         private InputList<string>? _allowedAudiences;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.IAM.V1.Inputs
         public OidcArgs()
         {
         }
+        public static new OidcArgs Empty => new OidcArgs();
     }
 }

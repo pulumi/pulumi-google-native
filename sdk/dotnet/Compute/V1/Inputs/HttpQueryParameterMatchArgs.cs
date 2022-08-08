@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// HttpRouteRuleMatch criteria for a request's query parameter.
     /// </summary>
-    public sealed class HttpQueryParameterMatchArgs : Pulumi.ResourceArgs
+    public sealed class HttpQueryParameterMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The queryParameterMatch matches if the value of the parameter exactly matches the contents of exactMatch. Only one of presentMatch, exactMatch, or regexMatch must be set. 
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public HttpQueryParameterMatchArgs()
         {
         }
+        public static new HttpQueryParameterMatchArgs Empty => new HttpQueryParameterMatchArgs();
     }
 }

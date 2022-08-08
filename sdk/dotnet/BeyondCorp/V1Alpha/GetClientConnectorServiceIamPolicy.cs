@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     }
 
 
-    public sealed class GetClientConnectorServiceIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetClientConnectorServiceIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("clientConnectorServiceId", required: true)]
         public string ClientConnectorServiceId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public GetClientConnectorServiceIamPolicyArgs()
         {
         }
+        public static new GetClientConnectorServiceIamPolicyArgs Empty => new GetClientConnectorServiceIamPolicyArgs();
     }
 
-    public sealed class GetClientConnectorServiceIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetClientConnectorServiceIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("clientConnectorServiceId", required: true)]
         public Input<string> ClientConnectorServiceId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public GetClientConnectorServiceIamPolicyInvokeArgs()
         {
         }
+        public static new GetClientConnectorServiceIamPolicyInvokeArgs Empty => new GetClientConnectorServiceIamPolicyInvokeArgs();
     }
 
 

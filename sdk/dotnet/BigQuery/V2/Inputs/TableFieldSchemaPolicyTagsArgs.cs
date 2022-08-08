@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class TableFieldSchemaPolicyTagsArgs : Pulumi.ResourceArgs
+    public sealed class TableFieldSchemaPolicyTagsArgs : global::Pulumi.ResourceArgs
     {
         [Input("names")]
         private InputList<string>? _names;
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public TableFieldSchemaPolicyTagsArgs()
         {
         }
+        public static new TableFieldSchemaPolicyTagsArgs Empty => new TableFieldSchemaPolicyTagsArgs();
     }
 }

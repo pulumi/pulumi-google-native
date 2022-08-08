@@ -2522,7 +2522,7 @@ func (o MembershipStateResponseOutput) Code() pulumi.StringOutput {
 
 // MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
 type MultiCloudCluster struct {
-	// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+	// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
 	ResourceLink *string `pulumi:"resourceLink"`
 }
 
@@ -2539,7 +2539,7 @@ type MultiCloudClusterInput interface {
 
 // MultiCloudCluster contains information specific to GKE Multi-Cloud clusters.
 type MultiCloudClusterArgs struct {
-	// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+	// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
 	ResourceLink pulumi.StringPtrInput `pulumi:"resourceLink"`
 }
 
@@ -2621,7 +2621,7 @@ func (o MultiCloudClusterOutput) ToMultiCloudClusterPtrOutputWithContext(ctx con
 	}).(MultiCloudClusterPtrOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
 func (o MultiCloudClusterOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MultiCloudCluster) *string { return v.ResourceLink }).(pulumi.StringPtrOutput)
 }
@@ -2650,7 +2650,7 @@ func (o MultiCloudClusterPtrOutput) Elem() MultiCloudClusterOutput {
 	}).(MultiCloudClusterOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
 func (o MultiCloudClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MultiCloudCluster) *string {
 		if v == nil {
@@ -2664,7 +2664,7 @@ func (o MultiCloudClusterPtrOutput) ResourceLink() pulumi.StringPtrOutput {
 type MultiCloudClusterResponse struct {
 	// If cluster_missing is set then it denotes that API(gkemulticloud.googleapis.com) resource for this GKE Multi-Cloud cluster no longer exists.
 	ClusterMissing bool `pulumi:"clusterMissing"`
-	// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+	// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
 	ResourceLink string `pulumi:"resourceLink"`
 }
 
@@ -2688,7 +2688,7 @@ func (o MultiCloudClusterResponseOutput) ClusterMissing() pulumi.BoolOutput {
 	return o.ApplyT(func(v MultiCloudClusterResponse) bool { return v.ClusterMissing }).(pulumi.BoolOutput)
 }
 
-// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster
+// Immutable. Self-link of the GCP resource for the GKE Multi-Cloud cluster. For example: //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/awsClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/azureClusters/my-cluster //gkemulticloud.googleapis.com/projects/my-project/locations/us-west1-a/attachedClusters/my-cluster
 func (o MultiCloudClusterResponseOutput) ResourceLink() pulumi.StringOutput {
 	return o.ApplyT(func(v MultiCloudClusterResponse) string { return v.ResourceLink }).(pulumi.StringOutput)
 }

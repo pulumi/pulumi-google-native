@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetRegionInstanceGroupManagerArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionInstanceGroupManagerArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceGroupManager", required: true)]
         public string InstanceGroupManager { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetRegionInstanceGroupManagerArgs()
         {
         }
+        public static new GetRegionInstanceGroupManagerArgs Empty => new GetRegionInstanceGroupManagerArgs();
     }
 
-    public sealed class GetRegionInstanceGroupManagerInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionInstanceGroupManagerInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceGroupManager", required: true)]
         public Input<string> InstanceGroupManager { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetRegionInstanceGroupManagerInvokeArgs()
         {
         }
+        public static new GetRegionInstanceGroupManagerInvokeArgs Empty => new GetRegionInstanceGroupManagerInvokeArgs();
     }
 
 

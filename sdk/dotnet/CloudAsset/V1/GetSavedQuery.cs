@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
     }
 
 
-    public sealed class GetSavedQueryArgs : Pulumi.InvokeArgs
+    public sealed class GetSavedQueryArgs : global::Pulumi.InvokeArgs
     {
         [Input("savedQueryId", required: true)]
         public string SavedQueryId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         public GetSavedQueryArgs()
         {
         }
+        public static new GetSavedQueryArgs Empty => new GetSavedQueryArgs();
     }
 
-    public sealed class GetSavedQueryInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSavedQueryInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("savedQueryId", required: true)]
         public Input<string> SavedQueryId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1
         public GetSavedQueryInvokeArgs()
         {
         }
+        public static new GetSavedQueryInvokeArgs Empty => new GetSavedQueryInvokeArgs();
     }
 
 

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
     }
 
 
-    public sealed class GetDatasetArgs : Pulumi.InvokeArgs
+    public sealed class GetDatasetArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasetId", required: true)]
         public string DatasetId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public GetDatasetArgs()
         {
         }
+        public static new GetDatasetArgs Empty => new GetDatasetArgs();
     }
 
-    public sealed class GetDatasetInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatasetInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("datasetId", required: true)]
         public Input<string> DatasetId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1
         public GetDatasetInvokeArgs()
         {
         }
+        public static new GetDatasetInvokeArgs Empty => new GetDatasetInvokeArgs();
     }
 
 

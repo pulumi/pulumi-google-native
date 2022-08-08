@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
     /// <summary>
     /// Scan schedule configuration.
     /// </summary>
-    public sealed class ScheduleArgs : Pulumi.ResourceArgs
+    public sealed class ScheduleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The duration of time between executions in days.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
         public ScheduleArgs()
         {
         }
+        public static new ScheduleArgs Empty => new ScheduleArgs();
     }
 }

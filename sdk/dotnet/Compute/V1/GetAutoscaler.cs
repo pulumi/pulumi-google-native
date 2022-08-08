@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetAutoscalerArgs : Pulumi.InvokeArgs
+    public sealed class GetAutoscalerArgs : global::Pulumi.InvokeArgs
     {
         [Input("autoscaler", required: true)]
         public string Autoscaler { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetAutoscalerArgs()
         {
         }
+        public static new GetAutoscalerArgs Empty => new GetAutoscalerArgs();
     }
 
-    public sealed class GetAutoscalerInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAutoscalerInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("autoscaler", required: true)]
         public Input<string> Autoscaler { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetAutoscalerInvokeArgs()
         {
         }
+        public static new GetAutoscalerInvokeArgs Empty => new GetAutoscalerInvokeArgs();
     }
 
 

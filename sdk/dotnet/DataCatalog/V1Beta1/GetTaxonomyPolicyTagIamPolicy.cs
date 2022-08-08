@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
     }
 
 
-    public sealed class GetTaxonomyPolicyTagIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetTaxonomyPolicyTagIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public GetTaxonomyPolicyTagIamPolicyArgs()
         {
         }
+        public static new GetTaxonomyPolicyTagIamPolicyArgs Empty => new GetTaxonomyPolicyTagIamPolicyArgs();
     }
 
-    public sealed class GetTaxonomyPolicyTagIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTaxonomyPolicyTagIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public GetTaxonomyPolicyTagIamPolicyInvokeArgs()
         {
         }
+        public static new GetTaxonomyPolicyTagIamPolicyInvokeArgs Empty => new GetTaxonomyPolicyTagIamPolicyInvokeArgs();
     }
 
 

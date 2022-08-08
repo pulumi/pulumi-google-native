@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Simplified google.rpc.Status type (omitting details).
     /// </summary>
-    public sealed class SecurityPolicyRuleRateLimitOptionsRpcStatusArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleRateLimitOptionsRpcStatusArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The status code, which should be an enum value of google.rpc.Code.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SecurityPolicyRuleRateLimitOptionsRpcStatusArgs()
         {
         }
+        public static new SecurityPolicyRuleRateLimitOptionsRpcStatusArgs Empty => new SecurityPolicyRuleRateLimitOptionsRpcStatusArgs();
     }
 }

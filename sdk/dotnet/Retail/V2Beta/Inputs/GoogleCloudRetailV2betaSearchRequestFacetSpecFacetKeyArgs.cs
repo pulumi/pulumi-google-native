@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
     /// <summary>
     /// Specifies how a facet is computed.
     /// </summary>
-    public sealed class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
@@ -90,5 +90,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
         public GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs()
         {
         }
+        public static new GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs Empty => new GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs();
     }
 }

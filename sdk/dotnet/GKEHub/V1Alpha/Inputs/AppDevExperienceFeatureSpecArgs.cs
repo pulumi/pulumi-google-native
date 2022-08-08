@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
     /// <summary>
     /// Spec for App Dev Experience Feature.
     /// </summary>
-    public sealed class AppDevExperienceFeatureSpecArgs : Pulumi.ResourceArgs
+    public sealed class AppDevExperienceFeatureSpecArgs : global::Pulumi.ResourceArgs
     {
         public AppDevExperienceFeatureSpecArgs()
         {
         }
+        public static new AppDevExperienceFeatureSpecArgs Empty => new AppDevExperienceFeatureSpecArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// Describes constraints on a Certificate's Subject and SubjectAltNames.
     /// </summary>
-    public sealed class CertificateIdentityConstraintsArgs : Pulumi.ResourceArgs
+    public sealed class CertificateIdentityConstraintsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If this is true, the SubjectAltNames extension may be copied from a certificate request into the signed certificate. Otherwise, the requested SubjectAltNames will be discarded.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public CertificateIdentityConstraintsArgs()
         {
         }
+        public static new CertificateIdentityConstraintsArgs Empty => new CertificateIdentityConstraintsArgs();
     }
 }

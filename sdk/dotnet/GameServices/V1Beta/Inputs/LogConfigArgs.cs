@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
     /// <summary>
     /// Specifies what kind of log the caller must write
     /// </summary>
-    public sealed class LogConfigArgs : Pulumi.ResourceArgs
+    public sealed class LogConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Cloud audit options.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.GameServices.V1Beta.Inputs
         public LogConfigArgs()
         {
         }
+        public static new LogConfigArgs Empty => new LogConfigArgs();
     }
 }

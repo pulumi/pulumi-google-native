@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Control over how the notification channels in notification_channels are notified when this alert fires.
     /// </summary>
-    public sealed class AlertStrategyArgs : Pulumi.ResourceArgs
+    public sealed class AlertStrategyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// If an alert policy that was active has no data for this long, any open incidents will close
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public AlertStrategyArgs()
         {
         }
+        public static new AlertStrategyArgs Empty => new AlertStrategyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// Specifies an audio clip to be played by the client as part of the response.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URI of the audio clip. Dialogflow does not impose any validation on this value. It is specific to the client that reads it.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs Empty => new GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// GitFileSource describes a file within a (possibly remote) code repository.
     /// </summary>
-    public sealed class GitFileSourceArgs : Pulumi.ResourceArgs
+    public sealed class GitFileSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public GitFileSourceArgs()
         {
         }
+        public static new GitFileSourceArgs Empty => new GitFileSourceArgs();
     }
 }

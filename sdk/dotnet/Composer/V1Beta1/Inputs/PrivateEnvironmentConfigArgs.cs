@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
     /// <summary>
     /// The configuration information for configuring a Private IP Cloud Composer environment.
     /// </summary>
-    public sealed class PrivateEnvironmentConfigArgs : Pulumi.ResourceArgs
+    public sealed class PrivateEnvironmentConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. When specified, the environment will use Private Service Connect instead of VPC peerings to connect to Cloud SQL in the Tenant Project, and the PSC endpoint in the Customer Project will use an IP address from this subnetwork.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Composer.V1Beta1.Inputs
         public PrivateEnvironmentConfigArgs()
         {
         }
+        public static new PrivateEnvironmentConfigArgs Empty => new PrivateEnvironmentConfigArgs();
     }
 }

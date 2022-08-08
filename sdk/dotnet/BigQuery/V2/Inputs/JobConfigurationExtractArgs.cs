@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class JobConfigurationExtractArgs : Pulumi.ResourceArgs
+    public sealed class JobConfigurationExtractArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] The compression type to use for exported files. Possible values include GZIP, DEFLATE, SNAPPY, and NONE. The default value is NONE. DEFLATE and SNAPPY are only supported for Avro. Not applicable when extracting models.
@@ -75,5 +75,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public JobConfigurationExtractArgs()
         {
         }
+        public static new JobConfigurationExtractArgs Empty => new JobConfigurationExtractArgs();
     }
 }

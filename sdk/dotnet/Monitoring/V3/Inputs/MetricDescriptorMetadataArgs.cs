@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Additional annotations that can be used to guide the usage of a metric.
     /// </summary>
-    public sealed class MetricDescriptorMetadataArgs : Pulumi.ResourceArgs
+    public sealed class MetricDescriptorMetadataArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The delay of data points caused by ingestion. Data points older than this age are guaranteed to be ingested and available to be read, excluding data loss due to errors.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public MetricDescriptorMetadataArgs()
         {
         }
+        public static new MetricDescriptorMetadataArgs Empty => new MetricDescriptorMetadataArgs();
     }
 }

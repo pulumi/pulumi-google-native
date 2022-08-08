@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// Browse Carousel Card for Actions on Google. https://developers.google.com/actions/assistant/responses#browsing_carousel
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Settings for displaying the image. Applies to every image in items.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardArgs Empty => new GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The bucket's Autoclass configuration.
     /// </summary>
-    public sealed class BucketAutoclassArgs : Pulumi.ResourceArgs
+    public sealed class BucketAutoclassArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether or not Autoclass is enabled on this bucket
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketAutoclassArgs()
         {
         }
+        public static new BucketAutoclassArgs Empty => new BucketAutoclassArgs();
     }
 }

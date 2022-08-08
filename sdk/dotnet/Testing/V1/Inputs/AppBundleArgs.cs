@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// An Android App Bundle file format, containing a BundleConfig.pb file, a base module directory, zero or more dynamic feature module directories. See https://developer.android.com/guide/app-bundle/build for guidance on building App Bundles.
     /// </summary>
-    public sealed class AppBundleArgs : Pulumi.ResourceArgs
+    public sealed class AppBundleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// .aab file representing the app bundle under test.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public AppBundleArgs()
         {
         }
+        public static new AppBundleArgs Empty => new AppBundleArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     /// <summary>
     /// The desired state of the Domain Mapping.
     /// </summary>
-    public sealed class DomainMappingSpecArgs : Pulumi.ResourceArgs
+    public sealed class DomainMappingSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The mode of the certificate.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public DomainMappingSpecArgs()
         {
         }
+        public static new DomainMappingSpecArgs Empty => new DomainMappingSpecArgs();
     }
 }

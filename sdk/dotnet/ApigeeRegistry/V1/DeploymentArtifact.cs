@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     /// CreateArtifact creates a specified artifact.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigeeregistry/v1:DeploymentArtifact")]
-    public partial class DeploymentArtifact : Pulumi.CustomResource
+    public partial class DeploymentArtifact : global::Pulumi.CustomResource
     {
         [Output("apiId")]
         public Output<string> ApiId { get; private set; } = null!;
@@ -126,7 +126,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         }
     }
 
-    public sealed class DeploymentArtifactArgs : Pulumi.ResourceArgs
+    public sealed class DeploymentArtifactArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
@@ -167,5 +167,6 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public DeploymentArtifactArgs()
         {
         }
+        public static new DeploymentArtifactArgs Empty => new DeploymentArtifactArgs();
     }
 }

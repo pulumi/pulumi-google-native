@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha
     }
 
 
-    public sealed class GetFunctionIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetFunctionIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("functionId", required: true)]
         public string FunctionId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha
         public GetFunctionIamPolicyArgs()
         {
         }
+        public static new GetFunctionIamPolicyArgs Empty => new GetFunctionIamPolicyArgs();
     }
 
-    public sealed class GetFunctionIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFunctionIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("functionId", required: true)]
         public Input<string> FunctionId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.CloudFunctions.V2Alpha
         public GetFunctionIamPolicyInvokeArgs()
         {
         }
+        public static new GetFunctionIamPolicyInvokeArgs Empty => new GetFunctionIamPolicyInvokeArgs();
     }
 
 

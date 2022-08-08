@@ -12,20 +12,20 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
     public static class GetNamespaceServiceWorkloadIamPolicy
     {
         /// <summary>
-        /// Gets the IAM Policy for a resource (namespace or service only).
+        /// Gets the IAM Policy for a resource
         /// </summary>
         public static Task<GetNamespaceServiceWorkloadIamPolicyResult> InvokeAsync(GetNamespaceServiceWorkloadIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceServiceWorkloadIamPolicyResult>("google-native:servicedirectory/v1beta1:getNamespaceServiceWorkloadIamPolicy", args ?? new GetNamespaceServiceWorkloadIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets the IAM Policy for a resource (namespace or service only).
+        /// Gets the IAM Policy for a resource
         /// </summary>
         public static Output<GetNamespaceServiceWorkloadIamPolicyResult> Invoke(GetNamespaceServiceWorkloadIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetNamespaceServiceWorkloadIamPolicyResult>("google-native:servicedirectory/v1beta1:getNamespaceServiceWorkloadIamPolicy", args ?? new GetNamespaceServiceWorkloadIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNamespaceServiceWorkloadIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespaceServiceWorkloadIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public GetNamespaceServiceWorkloadIamPolicyArgs()
         {
         }
+        public static new GetNamespaceServiceWorkloadIamPolicyArgs Empty => new GetNamespaceServiceWorkloadIamPolicyArgs();
     }
 
-    public sealed class GetNamespaceServiceWorkloadIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespaceServiceWorkloadIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public GetNamespaceServiceWorkloadIamPolicyInvokeArgs()
         {
         }
+        public static new GetNamespaceServiceWorkloadIamPolicyInvokeArgs Empty => new GetNamespaceServiceWorkloadIamPolicyInvokeArgs();
     }
 
 

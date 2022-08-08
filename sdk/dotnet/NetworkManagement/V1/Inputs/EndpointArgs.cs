@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Inputs
     /// <summary>
     /// Source or destination of the Connectivity Test.
     /// </summary>
-    public sealed class EndpointArgs : Pulumi.ResourceArgs
+    public sealed class EndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Inputs
         public EndpointArgs()
         {
         }
+        public static new EndpointArgs Empty => new EndpointArgs();
     }
 }

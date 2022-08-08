@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// Browsing carousel tile
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Description of the carousel item. Maximum of four lines of text.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs Empty => new GoogleCloudDialogflowV2IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs();
     }
 }

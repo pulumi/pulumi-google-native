@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Future parameters for the availability SLI.
     /// </summary>
-    public sealed class AvailabilityCriteriaArgs : Pulumi.ResourceArgs
+    public sealed class AvailabilityCriteriaArgs : global::Pulumi.ResourceArgs
     {
         public AvailabilityCriteriaArgs()
         {
         }
+        public static new AvailabilityCriteriaArgs Empty => new AvailabilityCriteriaArgs();
     }
 }

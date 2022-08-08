@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Plays audio from a file in Telephony Gateway.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// URI to a Google Cloud Storage object containing the audio to play, e.g., "gs://bucket/object". The object must contain a single channel (mono) of linear PCM audio (2 bytes / sample) at 8kHz. This object must be readable by the `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` service account where is the number of the Telephony Gateway project (usually the same as the Dialogflow agent project). If the Google Cloud Storage bucket is in the Telephony Gateway project, this permission is added by default when enabling the Dialogflow V2 API. For audio from other sources, consider using the `TelephonySynthesizeSpeech` message with SSML.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioArgs();
     }
 }

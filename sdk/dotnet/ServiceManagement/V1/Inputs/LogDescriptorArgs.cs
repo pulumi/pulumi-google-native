@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// A description of a log type. Example in YAML format: - name: library.googleapis.com/activity_history description: The history of borrowing and returning library items. display_name: Activity labels: - key: /customer_id description: Identifier of a library customer
     /// </summary>
-    public sealed class LogDescriptorArgs : Pulumi.ResourceArgs
+    public sealed class LogDescriptorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A human-readable description of this log. This information appears in the documentation and can contain details.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public LogDescriptorArgs()
         {
         }
+        public static new LogDescriptorArgs Empty => new LogDescriptorArgs();
     }
 }

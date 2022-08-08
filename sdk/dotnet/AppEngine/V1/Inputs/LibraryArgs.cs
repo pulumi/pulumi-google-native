@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
     /// <summary>
     /// Third-party Python runtime library that is required by the application.
     /// </summary>
-    public sealed class LibraryArgs : Pulumi.ResourceArgs
+    public sealed class LibraryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the library. Example: "django".
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         public LibraryArgs()
         {
         }
+        public static new LibraryArgs Empty => new LibraryArgs();
     }
 }

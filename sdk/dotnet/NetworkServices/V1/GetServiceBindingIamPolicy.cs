@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
     }
 
 
-    public sealed class GetServiceBindingIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceBindingIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetServiceBindingIamPolicyArgs()
         {
         }
+        public static new GetServiceBindingIamPolicyArgs Empty => new GetServiceBindingIamPolicyArgs();
     }
 
-    public sealed class GetServiceBindingIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceBindingIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetServiceBindingIamPolicyInvokeArgs()
         {
         }
+        public static new GetServiceBindingIamPolicyInvokeArgs Empty => new GetServiceBindingIamPolicyInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// Common configurations for an ExecStep.
     /// </summary>
-    public sealed class ExecStepConfigArgs : Pulumi.ResourceArgs
+    public sealed class ExecStepConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedSuccessCodes")]
         private InputList<int>? _allowedSuccessCodes;
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public ExecStepConfigArgs()
         {
         }
+        public static new ExecStepConfigArgs Empty => new ExecStepConfigArgs();
     }
 }

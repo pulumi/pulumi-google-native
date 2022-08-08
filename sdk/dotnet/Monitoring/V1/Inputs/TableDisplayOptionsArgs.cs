@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// Table display options that can be reused.
     /// </summary>
-    public sealed class TableDisplayOptionsArgs : Pulumi.ResourceArgs
+    public sealed class TableDisplayOptionsArgs : global::Pulumi.ResourceArgs
     {
         [Input("shownColumns")]
         private InputList<string>? _shownColumns;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public TableDisplayOptionsArgs()
         {
         }
+        public static new TableDisplayOptionsArgs Empty => new TableDisplayOptionsArgs();
     }
 }

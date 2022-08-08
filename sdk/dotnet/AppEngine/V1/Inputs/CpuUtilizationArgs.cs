@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
     /// <summary>
     /// Target scaling by CPU usage.
     /// </summary>
-    public sealed class CpuUtilizationArgs : Pulumi.ResourceArgs
+    public sealed class CpuUtilizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Period of time over which CPU utilization is calculated.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
         public CpuUtilizationArgs()
         {
         }
+        public static new CpuUtilizationArgs Empty => new CpuUtilizationArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:vmmigration/v1:UtilizationReport")]
-    public partial class UtilizationReport : Pulumi.CustomResource
+    public partial class UtilizationReport : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time the report was created (this refers to the time of the request, not the time the report creation completed).
@@ -147,7 +147,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         }
     }
 
-    public sealed class UtilizationReportArgs : Pulumi.ResourceArgs
+    public sealed class UtilizationReportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The report display name, as assigned by the user.
@@ -197,5 +197,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1
         public UtilizationReportArgs()
         {
         }
+        public static new UtilizationReportArgs Empty => new UtilizationReportArgs();
     }
 }

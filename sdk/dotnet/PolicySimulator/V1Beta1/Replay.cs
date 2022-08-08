@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:policysimulator/v1beta1:Replay")]
-    public partial class Replay : Pulumi.CustomResource
+    public partial class Replay : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The configuration used for the `Replay`.
@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
         }
     }
 
-    public sealed class ReplayArgs : Pulumi.ResourceArgs
+    public sealed class ReplayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration used for the `Replay`.
@@ -113,5 +113,6 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
         public ReplayArgs()
         {
         }
+        public static new ReplayArgs Empty => new ReplayArgs();
     }
 }

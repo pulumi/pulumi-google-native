@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     /// Creates a persistent disk in the specified project using the data in the request. You can create a disk from a source (sourceImage, sourceSnapshot, or sourceDisk) or create an empty 500 GB data disk by omitting all properties. You can also create a disk that is larger than the default size by specifying the sizeGb property.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/beta:Disk")]
-    public partial class Disk : Pulumi.CustomResource
+    public partial class Disk : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The architecture of the disk. Valid values are ARM64 or X86_64.
@@ -321,7 +321,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         }
     }
 
-    public sealed class DiskArgs : Pulumi.ResourceArgs
+    public sealed class DiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The architecture of the disk. Valid values are ARM64 or X86_64.
@@ -542,5 +542,6 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public DiskArgs()
         {
         }
+        public static new DiskArgs Empty => new DiskArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
     /// <summary>
     /// Output only. Defines an error trace message for a ScanRun.
     /// </summary>
-    public sealed class ScanRunErrorTraceArgs : Pulumi.ResourceArgs
+    public sealed class ScanRunErrorTraceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates the error reason code.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1Beta.Inputs
         public ScanRunErrorTraceArgs()
         {
         }
+        public static new ScanRunErrorTraceArgs Empty => new ScanRunErrorTraceArgs();
     }
 }

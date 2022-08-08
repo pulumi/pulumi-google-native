@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1.Inputs
     /// <summary>
     /// The `MembershipRole` expiry details.
     /// </summary>
-    public sealed class ExpiryDetailArgs : Pulumi.ResourceArgs
+    public sealed class ExpiryDetailArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time at which the `MembershipRole` will expire.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1.Inputs
         public ExpiryDetailArgs()
         {
         }
+        public static new ExpiryDetailArgs Empty => new ExpiryDetailArgs();
     }
 }

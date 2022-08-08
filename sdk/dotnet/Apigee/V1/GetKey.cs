@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetKeyArgs : Pulumi.InvokeArgs
+    public sealed class GetKeyArgs : global::Pulumi.InvokeArgs
     {
         [Input("appId", required: true)]
         public string AppId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetKeyArgs()
         {
         }
+        public static new GetKeyArgs Empty => new GetKeyArgs();
     }
 
-    public sealed class GetKeyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("appId", required: true)]
         public Input<string> AppId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetKeyInvokeArgs()
         {
         }
+        public static new GetKeyInvokeArgs Empty => new GetKeyInvokeArgs();
     }
 
 

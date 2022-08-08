@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// MetricSpec contains the specifications to use to calculate the desired nodes count when autoscaling is enabled.
     /// </summary>
-    public sealed class GoogleCloudMlV1__MetricSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__MetricSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// metric name.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__MetricSpecArgs()
         {
         }
+        public static new GoogleCloudMlV1__MetricSpecArgs Empty => new GoogleCloudMlV1__MetricSpecArgs();
     }
 }

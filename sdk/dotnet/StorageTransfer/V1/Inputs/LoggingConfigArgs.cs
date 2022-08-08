@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     /// <summary>
     /// Specifies the logging behavior for transfer operations. For cloud-to-cloud transfers, logs are sent to Cloud Logging. See [Read transfer logs](https://cloud.google.com/storage-transfer/docs/read-transfer-logs) for details. For transfers to or from a POSIX file system, logs are stored in the Cloud Storage bucket that is the source or sink of the transfer. See [Managing Transfer for on-premises jobs] (https://cloud.google.com/storage-transfer/docs/managing-on-prem-jobs#viewing-logs) for details.
     /// </summary>
-    public sealed class LoggingConfigArgs : Pulumi.ResourceArgs
+    public sealed class LoggingConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// For transfers with a PosixFilesystem source, this option enables the Cloud Storage transfer logs for this transfer.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public LoggingConfigArgs()
         {
         }
+        public static new LoggingConfigArgs Empty => new LoggingConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A list of Android device configurations in which the test is to be executed.
     /// </summary>
-    public sealed class AndroidDeviceListArgs : Pulumi.ResourceArgs
+    public sealed class AndroidDeviceListArgs : global::Pulumi.ResourceArgs
     {
         [Input("androidDevices", required: true)]
         private InputList<Inputs.AndroidDeviceArgs>? _androidDevices;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public AndroidDeviceListArgs()
         {
         }
+        public static new AndroidDeviceListArgs Empty => new AndroidDeviceListArgs();
     }
 }

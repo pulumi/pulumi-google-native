@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// A single flow version with specified traffic allocation.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3VersionVariantsVariantArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3VersionVariantsVariantArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether the variant is for the control group.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3VersionVariantsVariantArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3VersionVariantsVariantArgs Empty => new GoogleCloudDialogflowCxV3VersionVariantsVariantArgs();
     }
 }

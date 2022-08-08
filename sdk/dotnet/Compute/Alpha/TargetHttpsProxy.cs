@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a TargetHttpsProxy resource in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:TargetHttpsProxy")]
-    public partial class TargetHttpsProxy : Pulumi.CustomResource
+    public partial class TargetHttpsProxy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// [Deprecated] Use serverTlsPolicy instead.
@@ -185,7 +185,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class TargetHttpsProxyArgs : Pulumi.ResourceArgs
+    public sealed class TargetHttpsProxyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Deprecated] Use serverTlsPolicy instead.
@@ -289,5 +289,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public TargetHttpsProxyArgs()
         {
         }
+        public static new TargetHttpsProxyArgs Empty => new TargetHttpsProxyArgs();
     }
 }

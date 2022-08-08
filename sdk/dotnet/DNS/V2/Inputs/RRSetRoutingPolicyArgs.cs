@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DNS.V2.Inputs
     /// <summary>
     /// A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
     /// </summary>
-    public sealed class RRSetRoutingPolicyArgs : Pulumi.ResourceArgs
+    public sealed class RRSetRoutingPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("geo")]
         public Input<Inputs.RRSetRoutingPolicyGeoPolicyArgs>? Geo { get; set; }
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.DNS.V2.Inputs
         public RRSetRoutingPolicyArgs()
         {
         }
+        public static new RRSetRoutingPolicyArgs Empty => new RRSetRoutingPolicyArgs();
     }
 }

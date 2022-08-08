@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
     /// <summary>
     /// The parameters of the raw disk image.
     /// </summary>
-    public sealed class ImageRawDiskArgs : Pulumi.ResourceArgs
+    public sealed class ImageRawDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The format used to encode and transmit the block device, which should be TAR. This is just a container and transmission format and not a runtime format. Provided by the client when the disk image is created.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public ImageRawDiskArgs()
         {
         }
+        public static new ImageRawDiskArgs Empty => new ImageRawDiskArgs();
     }
 }

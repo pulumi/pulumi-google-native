@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A set of Android device configuration permutations is defined by the the cross-product of the given axes. Internally, the given AndroidMatrix will be expanded into a set of AndroidDevices. Only supported permutations will be instantiated. Invalid permutations (e.g., incompatible models/versions) are ignored.
     /// </summary>
-    public sealed class AndroidMatrixArgs : Pulumi.ResourceArgs
+    public sealed class AndroidMatrixArgs : global::Pulumi.ResourceArgs
     {
         [Input("androidModelIds", required: true)]
         private InputList<string>? _androidModelIds;
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public AndroidMatrixArgs()
         {
         }
+        public static new AndroidMatrixArgs Empty => new AndroidMatrixArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class JobConfigurationArgs : Pulumi.ResourceArgs
+    public sealed class JobConfigurationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Pick one] Copies a table.
@@ -63,5 +63,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public JobConfigurationArgs()
         {
         }
+        public static new JobConfigurationArgs Empty => new JobConfigurationArgs();
     }
 }

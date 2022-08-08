@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Speech.V1
     }
 
 
-    public sealed class GetCustomClassArgs : Pulumi.InvokeArgs
+    public sealed class GetCustomClassArgs : global::Pulumi.InvokeArgs
     {
         [Input("customClassId", required: true)]
         public string CustomClassId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Speech.V1
         public GetCustomClassArgs()
         {
         }
+        public static new GetCustomClassArgs Empty => new GetCustomClassArgs();
     }
 
-    public sealed class GetCustomClassInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCustomClassInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("customClassId", required: true)]
         public Input<string> CustomClassId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Speech.V1
         public GetCustomClassInvokeArgs()
         {
         }
+        public static new GetCustomClassInvokeArgs Empty => new GetCustomClassInvokeArgs();
     }
 
 

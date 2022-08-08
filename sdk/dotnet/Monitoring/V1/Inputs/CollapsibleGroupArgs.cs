@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A widget that groups the other widgets. All widgets that are within the area spanned by the grouping widget are considered member widgets.
     /// </summary>
-    public sealed class CollapsibleGroupArgs : Pulumi.ResourceArgs
+    public sealed class CollapsibleGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The collapsed state of the widget on first page load.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public CollapsibleGroupArgs()
         {
         }
+        public static new CollapsibleGroupArgs Empty => new CollapsibleGroupArgs();
     }
 }

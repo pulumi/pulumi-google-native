@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
     }
 
 
-    public sealed class GetLienArgs : Pulumi.InvokeArgs
+    public sealed class GetLienArgs : global::Pulumi.InvokeArgs
     {
         [Input("lienId", required: true)]
         public string LienId { get; set; } = null!;
@@ -33,9 +33,10 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public GetLienArgs()
         {
         }
+        public static new GetLienArgs Empty => new GetLienArgs();
     }
 
-    public sealed class GetLienInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetLienInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("lienId", required: true)]
         public Input<string> LienId { get; set; } = null!;
@@ -43,6 +44,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         public GetLienInvokeArgs()
         {
         }
+        public static new GetLienInvokeArgs Empty => new GetLienInvokeArgs();
     }
 
 

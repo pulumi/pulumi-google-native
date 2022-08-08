@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
     /// Creates a big query export.
     /// </summary>
     [GoogleNativeResourceType("google-native:securitycenter/v1:OrganizationBigQueryExport")]
-    public partial class OrganizationBigQueryExport : Pulumi.CustomResource
+    public partial class OrganizationBigQueryExport : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
@@ -120,7 +120,7 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         }
     }
 
-    public sealed class OrganizationBigQueryExportArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationBigQueryExportArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. Unique identifier provided by the client within the parent scope. It must consist of lower case letters, numbers, and hyphen, with the first character a letter, the last a letter or a number, and a 63 character maximum.
@@ -158,5 +158,6 @@ namespace Pulumi.GoogleNative.Securitycenter.V1
         public OrganizationBigQueryExportArgs()
         {
         }
+        public static new OrganizationBigQueryExportArgs Empty => new OrganizationBigQueryExportArgs();
     }
 }

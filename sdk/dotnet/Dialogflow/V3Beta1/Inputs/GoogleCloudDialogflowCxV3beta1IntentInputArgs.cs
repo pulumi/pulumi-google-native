@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Represents the intent to trigger programmatically rather than as a result of natural language processing.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1IntentInputArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1IntentInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The unique identifier of the intent. Format: `projects//locations//agents//intents/`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1IntentInputArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1IntentInputArgs Empty => new GoogleCloudDialogflowCxV3beta1IntentInputArgs();
     }
 }

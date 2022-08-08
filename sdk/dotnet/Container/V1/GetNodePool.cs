@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
 
-    public sealed class GetNodePoolArgs : Pulumi.InvokeArgs
+    public sealed class GetNodePoolArgs : global::Pulumi.InvokeArgs
     {
         [Input("clusterId", required: true)]
         public string ClusterId { get; set; } = null!;
@@ -48,9 +48,10 @@ namespace Pulumi.GoogleNative.Container.V1
         public GetNodePoolArgs()
         {
         }
+        public static new GetNodePoolArgs Empty => new GetNodePoolArgs();
     }
 
-    public sealed class GetNodePoolInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodePoolInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("clusterId", required: true)]
         public Input<string> ClusterId { get; set; } = null!;
@@ -73,6 +74,7 @@ namespace Pulumi.GoogleNative.Container.V1
         public GetNodePoolInvokeArgs()
         {
         }
+        public static new GetNodePoolInvokeArgs Empty => new GetNodePoolInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Security related configuration, including encryption, Kerberos, etc.
     /// </summary>
-    public sealed class SecurityConfigArgs : Pulumi.ResourceArgs
+    public sealed class SecurityConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Identity related configuration, including service account based secure multi-tenancy user mappings.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public SecurityConfigArgs()
         {
         }
+        public static new SecurityConfigArgs Empty => new SecurityConfigArgs();
     }
 }

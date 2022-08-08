@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Installs an rpm file via the rpm utility.
     /// </summary>
-    public sealed class SoftwareRecipeStepInstallRpmArgs : Pulumi.ResourceArgs
+    public sealed class SoftwareRecipeStepInstallRpmArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the relevant artifact in the recipe.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public SoftwareRecipeStepInstallRpmArgs()
         {
         }
+        public static new SoftwareRecipeStepInstallRpmArgs Empty => new SoftwareRecipeStepInstallRpmArgs();
     }
 }

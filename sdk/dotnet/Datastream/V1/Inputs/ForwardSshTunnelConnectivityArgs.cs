@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     /// <summary>
     /// Forward SSH Tunnel connectivity.
     /// </summary>
-    public sealed class ForwardSshTunnelConnectivityArgs : Pulumi.ResourceArgs
+    public sealed class ForwardSshTunnelConnectivityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hostname for the SSH tunnel.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public ForwardSshTunnelConnectivityArgs()
         {
         }
+        public static new ForwardSshTunnelConnectivityArgs Empty => new ForwardSshTunnelConnectivityArgs();
     }
 }

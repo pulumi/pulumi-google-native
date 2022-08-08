@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
     /// <summary>
     /// Insights configuration. This specifies when Cloud SQL Insights feature is enabled and optional configuration.
     /// </summary>
-    public sealed class InsightsConfigArgs : Pulumi.ResourceArgs
+    public sealed class InsightsConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether Query Insights feature is enabled.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public InsightsConfigArgs()
         {
         }
+        public static new InsightsConfigArgs Empty => new InsightsConfigArgs();
     }
 }

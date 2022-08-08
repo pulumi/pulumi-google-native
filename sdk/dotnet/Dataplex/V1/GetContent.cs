@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     }
 
 
-    public sealed class GetContentArgs : Pulumi.InvokeArgs
+    public sealed class GetContentArgs : global::Pulumi.InvokeArgs
     {
         [Input("contentId", required: true)]
         public string ContentId { get; set; } = null!;
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public GetContentArgs()
         {
         }
+        public static new GetContentArgs Empty => new GetContentArgs();
     }
 
-    public sealed class GetContentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetContentInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("contentId", required: true)]
         public Input<string> ContentId { get; set; } = null!;
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public GetContentInvokeArgs()
         {
         }
+        public static new GetContentInvokeArgs Empty => new GetContentInvokeArgs();
     }
 
 

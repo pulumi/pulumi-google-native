@@ -23,6 +23,7 @@ class AliasArgs:
                  content_type: Optional[pulumi.Input[str]] = None,
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
                  ignore_newline_validation: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None):
@@ -33,6 +34,7 @@ class AliasArgs:
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] file: File to upload.
         :param pulumi.Input[str] ignore_expiry_validation: Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
         :param pulumi.Input[str] ignore_newline_validation: Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
         :param pulumi.Input[str] password: DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
@@ -49,6 +51,8 @@ class AliasArgs:
             pulumi.set(__self__, "data", data)
         if extensions is not None:
             pulumi.set(__self__, "extensions", extensions)
+        if file is not None:
+            pulumi.set(__self__, "file", file)
         if ignore_expiry_validation is not None:
             pulumi.set(__self__, "ignore_expiry_validation", ignore_expiry_validation)
         if ignore_newline_validation is not None:
@@ -144,6 +148,18 @@ class AliasArgs:
         pulumi.set(self, "extensions", value)
 
     @property
+    @pulumi.getter
+    def file(self) -> Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]:
+        """
+        File to upload.
+        """
+        return pulumi.get(self, "file")
+
+    @file.setter
+    def file(self, value: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]]):
+        pulumi.set(self, "file", value)
+
+    @property
     @pulumi.getter(name="ignoreExpiryValidation")
     def ignore_expiry_validation(self) -> Optional[pulumi.Input[str]]:
         """
@@ -190,6 +206,7 @@ class Alias(pulumi.CustomResource):
                  data: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
                  ignore_newline_validation: Optional[pulumi.Input[str]] = None,
@@ -207,6 +224,7 @@ class Alias(pulumi.CustomResource):
         :param pulumi.Input[str] content_type: The HTTP Content-Type header value specifying the content type of the body.
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
+        :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] file: File to upload.
         :param pulumi.Input[str] format: Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
         :param pulumi.Input[str] ignore_expiry_validation: Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
         :param pulumi.Input[str] ignore_newline_validation: Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
@@ -242,6 +260,7 @@ class Alias(pulumi.CustomResource):
                  data: Optional[pulumi.Input[str]] = None,
                  environment_id: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
+                 file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
                  ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
                  ignore_newline_validation: Optional[pulumi.Input[str]] = None,
@@ -264,6 +283,7 @@ class Alias(pulumi.CustomResource):
                 raise TypeError("Missing required property 'environment_id'")
             __props__.__dict__["environment_id"] = environment_id
             __props__.__dict__["extensions"] = extensions
+            __props__.__dict__["file"] = file
             if format is None and not opts.urn:
                 raise TypeError("Missing required property 'format'")
             __props__.__dict__["format"] = format

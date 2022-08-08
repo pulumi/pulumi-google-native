@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Version variant and associated metrics.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs : global::Pulumi.ResourceArgs
     {
         [Input("metrics")]
         private InputList<Inputs.GoogleCloudDialogflowCxV3beta1ExperimentResultMetricArgs>? _metrics;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs Empty => new GoogleCloudDialogflowCxV3beta1ExperimentResultVersionMetricsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Provides information about the analysis status of a discovered resource.
     /// </summary>
-    public sealed class DiscoveredArgs : Pulumi.ResourceArgs
+    public sealed class DiscoveredArgs : global::Pulumi.ResourceArgs
     {
         [Input("analysisCompleted")]
         public Input<Inputs.AnalysisCompletedArgs>? AnalysisCompleted { get; set; }
@@ -57,5 +57,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public DiscoveredArgs()
         {
         }
+        public static new DiscoveredArgs Empty => new DiscoveredArgs();
     }
 }

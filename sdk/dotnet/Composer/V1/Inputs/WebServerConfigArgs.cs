@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
     /// <summary>
     /// The configuration settings for the Airflow web server App Engine instance. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*
     /// </summary>
-    public sealed class WebServerConfigArgs : Pulumi.ResourceArgs
+    public sealed class WebServerConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Composer.V1.Inputs
         public WebServerConfigArgs()
         {
         }
+        public static new WebServerConfigArgs Empty => new WebServerConfigArgs();
     }
 }

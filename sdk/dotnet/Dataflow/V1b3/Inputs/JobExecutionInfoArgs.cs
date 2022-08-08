@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
     /// <summary>
     /// Additional information about how a Cloud Dataflow job will be executed that isn't contained in the submitted job.
     /// </summary>
-    public sealed class JobExecutionInfoArgs : Pulumi.ResourceArgs
+    public sealed class JobExecutionInfoArgs : global::Pulumi.ResourceArgs
     {
         [Input("stages")]
         private InputMap<string>? _stages;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
         public JobExecutionInfoArgs()
         {
         }
+        public static new JobExecutionInfoArgs Empty => new JobExecutionInfoArgs();
     }
 }

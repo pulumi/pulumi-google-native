@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Inputs
     /// <summary>
     /// A node-attached disk resource. Next ID: 8;
     /// </summary>
-    public sealed class AttachedDiskArgs : Pulumi.ResourceArgs
+    public sealed class AttachedDiskArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The mode in which to attach this disk. If not specified, the default is READ_WRITE mode. Only applicable to data_disks.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1.Inputs
         public AttachedDiskArgs()
         {
         }
+        public static new AttachedDiskArgs Empty => new AttachedDiskArgs();
     }
 }

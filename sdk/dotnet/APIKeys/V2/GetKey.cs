@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.APIKeys.V2
     }
 
 
-    public sealed class GetKeyArgs : Pulumi.InvokeArgs
+    public sealed class GetKeyArgs : global::Pulumi.InvokeArgs
     {
         [Input("keyId", required: true)]
         public string KeyId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.APIKeys.V2
         public GetKeyArgs()
         {
         }
+        public static new GetKeyArgs Empty => new GetKeyArgs();
     }
 
-    public sealed class GetKeyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKeyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("keyId", required: true)]
         public Input<string> KeyId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.APIKeys.V2
         public GetKeyInvokeArgs()
         {
         }
+        public static new GetKeyInvokeArgs Empty => new GetKeyInvokeArgs();
     }
 
 

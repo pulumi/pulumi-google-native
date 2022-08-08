@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1
     }
 
 
-    public sealed class GetGlossaryArgs : Pulumi.InvokeArgs
+    public sealed class GetGlossaryArgs : global::Pulumi.InvokeArgs
     {
         [Input("glossaryId", required: true)]
         public string GlossaryId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1
         public GetGlossaryArgs()
         {
         }
+        public static new GetGlossaryArgs Empty => new GetGlossaryArgs();
     }
 
-    public sealed class GetGlossaryInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGlossaryInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("glossaryId", required: true)]
         public Input<string> GlossaryId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1
         public GetGlossaryInvokeArgs()
         {
         }
+        public static new GetGlossaryInvokeArgs Empty => new GetGlossaryInvokeArgs();
     }
 
 

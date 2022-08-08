@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// This corresponds to a signed in-toto link - it is made up of one or more signatures and the in-toto link itself. This is used for occurrences of a Grafeas in-toto note.
     /// </summary>
-    public sealed class GrafeasV1beta1IntotoDetailsArgs : Pulumi.ResourceArgs
+    public sealed class GrafeasV1beta1IntotoDetailsArgs : global::Pulumi.ResourceArgs
     {
         [Input("signatures")]
         private InputList<Inputs.GrafeasV1beta1IntotoSignatureArgs>? _signatures;
@@ -29,5 +29,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public GrafeasV1beta1IntotoDetailsArgs()
         {
         }
+        public static new GrafeasV1beta1IntotoDetailsArgs Empty => new GrafeasV1beta1IntotoDetailsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// HttpRouteRuleMatch criteria for field values that must stay within the specified integer range.
     /// </summary>
-    public sealed class Int64RangeMatchArgs : Pulumi.ResourceArgs
+    public sealed class Int64RangeMatchArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The end of the range (exclusive) in signed long integer format.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Int64RangeMatchArgs()
         {
         }
+        public static new Int64RangeMatchArgs Empty => new Int64RangeMatchArgs();
     }
 }

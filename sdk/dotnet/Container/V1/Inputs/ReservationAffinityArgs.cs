@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// [ReservationAffinity](https://cloud.google.com/compute/docs/instances/reserving-zonal-resources) is the configuration of desired reservation which instances could take capacity from.
     /// </summary>
-    public sealed class ReservationAffinityArgs : Pulumi.ResourceArgs
+    public sealed class ReservationAffinityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Corresponds to the type of reservation consumption.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public ReservationAffinityArgs()
         {
         }
+        public static new ReservationAffinityArgs Empty => new ReservationAffinityArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
     /// <summary>
     /// NetworkInterface represents a NIC of a VM.
     /// </summary>
-    public sealed class NetworkInterfaceArgs : Pulumi.ResourceArgs
+    public sealed class NetworkInterfaceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The external IP to define in the NIC.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1.Inputs
         public NetworkInterfaceArgs()
         {
         }
+        public static new NetworkInterfaceArgs Empty => new NetworkInterfaceArgs();
     }
 }

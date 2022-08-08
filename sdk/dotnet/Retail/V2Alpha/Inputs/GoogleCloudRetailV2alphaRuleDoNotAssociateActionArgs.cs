@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
     /// <summary>
     /// Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap".
     /// </summary>
-    public sealed class GoogleCloudRetailV2alphaRuleDoNotAssociateActionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2alphaRuleDoNotAssociateActionArgs : global::Pulumi.ResourceArgs
     {
         [Input("doNotAssociateTerms")]
         private InputList<string>? _doNotAssociateTerms;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
         public GoogleCloudRetailV2alphaRuleDoNotAssociateActionArgs()
         {
         }
+        public static new GoogleCloudRetailV2alphaRuleDoNotAssociateActionArgs Empty => new GoogleCloudRetailV2alphaRuleDoNotAssociateActionArgs();
     }
 }

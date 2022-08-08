@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetDatastoreArgs : Pulumi.InvokeArgs
+    public sealed class GetDatastoreArgs : global::Pulumi.InvokeArgs
     {
         [Input("datastoreId", required: true)]
         public string DatastoreId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetDatastoreArgs()
         {
         }
+        public static new GetDatastoreArgs Empty => new GetDatastoreArgs();
     }
 
-    public sealed class GetDatastoreInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDatastoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("datastoreId", required: true)]
         public Input<string> DatastoreId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetDatastoreInvokeArgs()
         {
         }
+        public static new GetDatastoreInvokeArgs Empty => new GetDatastoreInvokeArgs();
     }
 
 

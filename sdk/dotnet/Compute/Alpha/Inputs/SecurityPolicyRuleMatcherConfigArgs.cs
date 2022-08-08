@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class SecurityPolicyRuleMatcherConfigArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleMatcherConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("destIpRanges")]
         private InputList<string>? _destIpRanges;
@@ -63,5 +63,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SecurityPolicyRuleMatcherConfigArgs()
         {
         }
+        public static new SecurityPolicyRuleMatcherConfigArgs Empty => new SecurityPolicyRuleMatcherConfigArgs();
     }
 }

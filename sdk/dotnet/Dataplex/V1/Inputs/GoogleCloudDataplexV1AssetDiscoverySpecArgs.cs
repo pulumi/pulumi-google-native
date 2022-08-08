@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Settings to manage the metadata discovery and publishing for an asset.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1AssetDiscoverySpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1AssetDiscoverySpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Configuration for CSV data.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1AssetDiscoverySpecArgs()
         {
         }
+        public static new GoogleCloudDataplexV1AssetDiscoverySpecArgs Empty => new GoogleCloudDataplexV1AssetDiscoverySpecArgs();
     }
 }

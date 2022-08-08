@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
     }
 
 
-    public sealed class GetCatalogItemArgs : Pulumi.InvokeArgs
+    public sealed class GetCatalogItemArgs : global::Pulumi.InvokeArgs
     {
         [Input("catalogId", required: true)]
         public string CatalogId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         public GetCatalogItemArgs()
         {
         }
+        public static new GetCatalogItemArgs Empty => new GetCatalogItemArgs();
     }
 
-    public sealed class GetCatalogItemInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCatalogItemInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("catalogId", required: true)]
         public Input<string> CatalogId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1
         public GetCatalogItemInvokeArgs()
         {
         }
+        public static new GetCatalogItemInvokeArgs Empty => new GetCatalogItemInvokeArgs();
     }
 
 

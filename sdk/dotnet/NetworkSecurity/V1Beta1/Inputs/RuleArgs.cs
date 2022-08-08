@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Inputs
     /// <summary>
     /// Specification of rules.
     /// </summary>
-    public sealed class RuleArgs : Pulumi.ResourceArgs
+    public sealed class RuleArgs : global::Pulumi.ResourceArgs
     {
         [Input("destinations")]
         private InputList<Inputs.DestinationArgs>? _destinations;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1Beta1.Inputs
         public RuleArgs()
         {
         }
+        public static new RuleArgs Empty => new RuleArgs();
     }
 }

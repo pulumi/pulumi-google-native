@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Environment configuration for a workload.
     /// </summary>
-    public sealed class EnvironmentConfigArgs : Pulumi.ResourceArgs
+    public sealed class EnvironmentConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Execution configuration for a workload.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public EnvironmentConfigArgs()
         {
         }
+        public static new EnvironmentConfigArgs Empty => new EnvironmentConfigArgs();
     }
 }

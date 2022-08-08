@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Message for compatibility with legacy Edge specification for Java Properties object in JSON.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1PropertiesArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1PropertiesArgs : global::Pulumi.ResourceArgs
     {
         [Input("property")]
         private InputList<Inputs.GoogleCloudApigeeV1PropertyArgs>? _property;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1PropertiesArgs()
         {
         }
+        public static new GoogleCloudApigeeV1PropertiesArgs Empty => new GoogleCloudApigeeV1PropertiesArgs();
     }
 }

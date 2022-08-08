@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
     /// </summary>
-    public sealed class ApiConfigHandlerArgs : Pulumi.ResourceArgs
+    public sealed class ApiConfigHandlerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action to take when users access resources that require authentication. Defaults to redirect.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public ApiConfigHandlerArgs()
         {
         }
+        public static new ApiConfigHandlerArgs Empty => new ApiConfigHandlerArgs();
     }
 }

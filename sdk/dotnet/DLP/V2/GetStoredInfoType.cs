@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DLP.V2
     }
 
 
-    public sealed class GetStoredInfoTypeArgs : Pulumi.InvokeArgs
+    public sealed class GetStoredInfoTypeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.DLP.V2
         public GetStoredInfoTypeArgs()
         {
         }
+        public static new GetStoredInfoTypeArgs Empty => new GetStoredInfoTypeArgs();
     }
 
-    public sealed class GetStoredInfoTypeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetStoredInfoTypeInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         public GetStoredInfoTypeInvokeArgs()
         {
         }
+        public static new GetStoredInfoTypeInvokeArgs Empty => new GetStoredInfoTypeInvokeArgs();
     }
 
 

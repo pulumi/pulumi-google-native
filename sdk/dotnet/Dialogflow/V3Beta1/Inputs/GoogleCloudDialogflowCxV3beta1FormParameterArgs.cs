@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Represents a form parameter.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1FormParameterArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1FormParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The default value of an optional parameter. If the parameter is required, the default value will be ignored.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1FormParameterArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1FormParameterArgs Empty => new GoogleCloudDialogflowCxV3beta1FormParameterArgs();
     }
 }

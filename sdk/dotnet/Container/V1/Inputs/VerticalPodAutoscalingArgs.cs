@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// VerticalPodAutoscaling contains global, per-cluster information required by Vertical Pod Autoscaler to automatically adjust the resources of pods controlled by it.
     /// </summary>
-    public sealed class VerticalPodAutoscalingArgs : Pulumi.ResourceArgs
+    public sealed class VerticalPodAutoscalingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Enables vertical pod autoscaling.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public VerticalPodAutoscalingArgs()
         {
         }
+        public static new VerticalPodAutoscalingArgs Empty => new VerticalPodAutoscalingArgs();
     }
 }

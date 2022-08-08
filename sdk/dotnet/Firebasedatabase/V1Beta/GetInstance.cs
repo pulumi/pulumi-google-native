@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
     }
 
 
-    public sealed class GetInstanceArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public string InstanceId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         public GetInstanceArgs()
         {
         }
+        public static new GetInstanceArgs Empty => new GetInstanceArgs();
     }
 
-    public sealed class GetInstanceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         public GetInstanceInvokeArgs()
         {
         }
+        public static new GetInstanceInvokeArgs Empty => new GetInstanceInvokeArgs();
     }
 
 

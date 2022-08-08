@@ -52,6 +52,8 @@ type LookupUptimeCheckConfigResult struct {
 	TcpCheck TcpCheckResponse `pulumi:"tcpCheck"`
 	// The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
 	Timeout string `pulumi:"timeout"`
+	// User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+	UserLabels map[string]string `pulumi:"userLabels"`
 }
 
 func LookupUptimeCheckConfigOutput(ctx *pulumi.Context, args LookupUptimeCheckConfigOutputArgs, opts ...pulumi.InvokeOption) LookupUptimeCheckConfigResultOutput {
@@ -153,6 +155,11 @@ func (o LookupUptimeCheckConfigResultOutput) TcpCheck() TcpCheckResponseOutput {
 // The maximum amount of time to wait for the request to complete (must be between 1 and 60 seconds). Required.
 func (o LookupUptimeCheckConfigResultOutput) Timeout() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupUptimeCheckConfigResult) string { return v.Timeout }).(pulumi.StringOutput)
+}
+
+// User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+func (o LookupUptimeCheckConfigResultOutput) UserLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupUptimeCheckConfigResult) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
 }
 
 func init() {

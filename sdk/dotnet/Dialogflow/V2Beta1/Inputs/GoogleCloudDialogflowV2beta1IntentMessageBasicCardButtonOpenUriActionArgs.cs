@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Opens the given URI.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The HTTP or HTTPS scheme URI.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionArgs();
     }
 }

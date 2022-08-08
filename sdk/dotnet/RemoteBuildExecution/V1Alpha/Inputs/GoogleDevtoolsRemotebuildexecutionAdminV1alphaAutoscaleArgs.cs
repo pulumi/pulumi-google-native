@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Inputs
     /// <summary>
     /// Autoscale defines the autoscaling policy of a worker pool.
     /// </summary>
-    public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The maximal number of workers. Must be equal to or greater than min_size.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Inputs
         public GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs()
         {
         }
+        public static new GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs Empty => new GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs();
     }
 }

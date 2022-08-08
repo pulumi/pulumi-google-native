@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
     /// <summary>
     /// Specifies how to match traffic and how to route traffic when traffic is matched.
     /// </summary>
-    public sealed class TlsRouteRouteRuleArgs : Pulumi.ResourceArgs
+    public sealed class TlsRouteRouteRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The detailed rule defining how to route matched traffic.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public TlsRouteRouteRuleArgs()
         {
         }
+        public static new TlsRouteRouteRuleArgs Empty => new TlsRouteRouteRuleArgs();
     }
 }

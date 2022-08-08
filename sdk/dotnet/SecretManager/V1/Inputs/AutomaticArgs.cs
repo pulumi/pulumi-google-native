@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
     /// <summary>
     /// A replication policy that replicates the Secret payload without any restrictions.
     /// </summary>
-    public sealed class AutomaticArgs : Pulumi.ResourceArgs
+    public sealed class AutomaticArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The customer-managed encryption configuration of the Secret. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.SecretManager.V1.Inputs
         public AutomaticArgs()
         {
         }
+        public static new AutomaticArgs Empty => new AutomaticArgs();
     }
 }

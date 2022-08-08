@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class BackendServiceIAPOAuth2ClientInfoArgs : Pulumi.ResourceArgs
+    public sealed class BackendServiceIAPOAuth2ClientInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Application name to be used in OAuth consent screen.
@@ -33,5 +33,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public BackendServiceIAPOAuth2ClientInfoArgs()
         {
         }
+        public static new BackendServiceIAPOAuth2ClientInfoArgs Empty => new BackendServiceIAPOAuth2ClientInfoArgs();
     }
 }

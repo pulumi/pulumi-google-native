@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Options for manually scaling a model.
     /// </summary>
-    public sealed class GoogleCloudMlV1__ManualScalingArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__ManualScalingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The number of nodes to allocate for this model. These nodes are always up, starting from the time the model is deployed, so the cost of operating this model will be proportional to `nodes` * number of hours since last billing cycle plus the cost for each prediction performed.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__ManualScalingArgs()
         {
         }
+        public static new GoogleCloudMlV1__ManualScalingArgs Empty => new GoogleCloudMlV1__ManualScalingArgs();
     }
 }

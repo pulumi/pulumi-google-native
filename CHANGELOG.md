@@ -2,7 +2,16 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-(None)
+- Ensure inputs in partial error checkpoints for nodepools are correctly resumable [#602](https://github.com/pulumi/pulumi-google-native/pull/602)
+
+## 0.22.0 (2022-07-29)
+- Add support for apigee resources that use multipart/form-data content-type [#590](https://github.com/pulumi/pulumi-google-native/pull/590)
+- Add support for nodepool mutations [#588](https://github.com/pulumi/pulumi-google-native/pull/588)
+- Mark immutable fields for nodepools as replacements in diff [#598](https://github.com/pulumi/pulumi-google-native/pull/598)
+- Update discovery docs [#600](https://github.com/pulumi/pulumi-google-native/pull/600)
+
+### BREAKING CHANGE
+- run/v1alpha1 API version of Cloud Run was removed [#600](https://github.com/pulumi/pulumi-google-native/pull/600)
 
 ## 0.21.0 (2022-07-14)
 - Handle network timeouts as retryable [#524](https://github.com/pulumi/pulumi-google-native/pull/524)

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
     /// <summary>
     /// Gateway-related configuration and state.
     /// </summary>
-    public sealed class GatewayConfigArgs : Pulumi.ResourceArgs
+    public sealed class GatewayConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates how to authorize and/or authenticate devices to access the gateway.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudIoT.V1.Inputs
         public GatewayConfigArgs()
         {
         }
+        public static new GatewayConfigArgs Empty => new GatewayConfigArgs();
     }
 }

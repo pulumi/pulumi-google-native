@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
     /// <summary>
     /// Represents the input for dtmf event.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3beta1DtmfInputArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3beta1DtmfInputArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The dtmf digits.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3Beta1.Inputs
         public GoogleCloudDialogflowCxV3beta1DtmfInputArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3beta1DtmfInputArgs Empty => new GoogleCloudDialogflowCxV3beta1DtmfInputArgs();
     }
 }

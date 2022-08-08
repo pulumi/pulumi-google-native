@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
     }
 
 
-    public sealed class GetTopicArgs : Pulumi.InvokeArgs
+    public sealed class GetTopicArgs : global::Pulumi.InvokeArgs
     {
         [Input("topicId", required: true)]
         public string TopicId { get; set; } = null!;
@@ -33,9 +33,10 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         public GetTopicArgs()
         {
         }
+        public static new GetTopicArgs Empty => new GetTopicArgs();
     }
 
-    public sealed class GetTopicInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTopicInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("topicId", required: true)]
         public Input<string> TopicId { get; set; } = null!;
@@ -43,6 +44,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta1a
         public GetTopicInvokeArgs()
         {
         }
+        public static new GetTopicInvokeArgs Empty => new GetTopicInvokeArgs();
     }
 
 

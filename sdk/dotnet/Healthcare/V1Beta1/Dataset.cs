@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
     /// Creates a new health dataset. Results are returned through the Operation interface which returns either an `Operation.response` which contains a Dataset or `Operation.error`. The metadata field type is OperationMetadata.
     /// </summary>
     [GoogleNativeResourceType("google-native:healthcare/v1beta1:Dataset")]
-    public partial class Dataset : Pulumi.CustomResource
+    public partial class Dataset : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
@@ -87,7 +87,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         }
     }
 
-    public sealed class DatasetArgs : Pulumi.ResourceArgs
+    public sealed class DatasetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The ID of the dataset that is being created. The string must match the following regex: `[\p{L}\p{N}_\-\.]{1,256}`.
@@ -116,5 +116,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         public DatasetArgs()
         {
         }
+        public static new DatasetArgs Empty => new DatasetArgs();
     }
 }

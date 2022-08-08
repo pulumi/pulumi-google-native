@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Metadata
     /// </summary>
-    public sealed class MetadataItemsItemArgs : Pulumi.ResourceArgs
+    public sealed class MetadataItemsItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key for the metadata entry. Keys must conform to the following regexp: [a-zA-Z0-9-_]+, and be less than 128 bytes in length. This is reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public MetadataItemsItemArgs()
         {
         }
+        public static new MetadataItemsItemArgs Empty => new MetadataItemsItemArgs();
     }
 }

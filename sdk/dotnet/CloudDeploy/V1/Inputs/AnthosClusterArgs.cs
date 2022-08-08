@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     /// <summary>
     /// Information specifying an Anthos Cluster.
     /// </summary>
-    public sealed class AnthosClusterArgs : Pulumi.ResourceArgs
+    public sealed class AnthosClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
         public AnthosClusterArgs()
         {
         }
+        public static new AnthosClusterArgs Empty => new AnthosClusterArgs();
     }
 }

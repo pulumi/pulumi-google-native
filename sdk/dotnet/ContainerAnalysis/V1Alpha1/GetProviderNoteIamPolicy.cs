@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
     }
 
 
-    public sealed class GetProviderNoteIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetProviderNoteIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("noteId", required: true)]
         public string NoteId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public GetProviderNoteIamPolicyArgs()
         {
         }
+        public static new GetProviderNoteIamPolicyArgs Empty => new GetProviderNoteIamPolicyArgs();
     }
 
-    public sealed class GetProviderNoteIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetProviderNoteIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("noteId", required: true)]
         public Input<string> NoteId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1
         public GetProviderNoteIamPolicyInvokeArgs()
         {
         }
+        public static new GetProviderNoteIamPolicyInvokeArgs Empty => new GetProviderNoteIamPolicyInvokeArgs();
     }
 
 

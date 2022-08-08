@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Configuration and status of a managed SSL certificate.
     /// </summary>
-    public sealed class SslCertificateManagedSslCertificateArgs : Pulumi.ResourceArgs
+    public sealed class SslCertificateManagedSslCertificateArgs : global::Pulumi.ResourceArgs
     {
         [Input("domains")]
         private InputList<string>? _domains;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public SslCertificateManagedSslCertificateArgs()
         {
         }
+        public static new SslCertificateManagedSslCertificateArgs Empty => new SslCertificateManagedSslCertificateArgs();
     }
 }

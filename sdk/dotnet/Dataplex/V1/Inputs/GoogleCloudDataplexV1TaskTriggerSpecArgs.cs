@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Task scheduling and trigger settings.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1TaskTriggerSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1TaskTriggerSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Prevent the task from executing. This does not cancel already running tasks. It is intended to temporarily disable RECURRING tasks.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1TaskTriggerSpecArgs()
         {
         }
+        public static new GoogleCloudDataplexV1TaskTriggerSpecArgs Empty => new GoogleCloudDataplexV1TaskTriggerSpecArgs();
     }
 }

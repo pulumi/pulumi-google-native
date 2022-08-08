@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetLicenseArgs : Pulumi.InvokeArgs
+    public sealed class GetLicenseArgs : global::Pulumi.InvokeArgs
     {
         [Input("license", required: true)]
         public string License { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetLicenseArgs()
         {
         }
+        public static new GetLicenseArgs Empty => new GetLicenseArgs();
     }
 
-    public sealed class GetLicenseInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetLicenseInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("license", required: true)]
         public Input<string> License { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetLicenseInvokeArgs()
         {
         }
+        public static new GetLicenseInvokeArgs Empty => new GetLicenseInvokeArgs();
     }
 
 

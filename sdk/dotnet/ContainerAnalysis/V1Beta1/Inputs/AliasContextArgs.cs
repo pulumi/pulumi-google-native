@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// An alias to a repo revision.
     /// </summary>
-    public sealed class AliasContextArgs : Pulumi.ResourceArgs
+    public sealed class AliasContextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The alias kind.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public AliasContextArgs()
         {
         }
+        public static new AliasContextArgs Empty => new AliasContextArgs();
     }
 }

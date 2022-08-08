@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Inputs
     /// <summary>
     /// Represents an amount of money with its currency type.
     /// </summary>
-    public sealed class MoneyArgs : Pulumi.ResourceArgs
+    public sealed class MoneyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The three-letter currency code defined in ISO 4217.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Inputs
         public MoneyArgs()
         {
         }
+        public static new MoneyArgs Empty => new MoneyArgs();
     }
 }

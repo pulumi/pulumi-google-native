@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.Run.V2
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:run/v2:JobIamPolicy")]
-    public partial class JobIamPolicy : Pulumi.CustomResource
+    public partial class JobIamPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Specifies cloud audit logging configuration for this policy.
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.Run.V2
         }
     }
 
-    public sealed class JobIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class JobIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("auditConfigs")]
         private InputList<Inputs.GoogleIamV1AuditConfigArgs>? _auditConfigs;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.Run.V2
         public JobIamPolicyArgs()
         {
         }
+        public static new JobIamPolicyArgs Empty => new JobIamPolicyArgs();
     }
 }

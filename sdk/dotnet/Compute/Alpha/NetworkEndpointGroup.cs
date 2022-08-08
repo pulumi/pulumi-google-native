@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a network endpoint group in the specified project using the parameters that are included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:NetworkEndpointGroup")]
-    public partial class NetworkEndpointGroup : Pulumi.CustomResource
+    public partial class NetworkEndpointGroup : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Metadata defined as annotations on the network endpoint group.
@@ -195,7 +195,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class NetworkEndpointGroupArgs : Pulumi.ResourceArgs
+    public sealed class NetworkEndpointGroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -302,5 +302,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public NetworkEndpointGroupArgs()
         {
         }
+        public static new NetworkEndpointGroupArgs Empty => new NetworkEndpointGroupArgs();
     }
 }

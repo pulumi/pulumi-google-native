@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Inputs
 {
 
-    public sealed class GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Must be specified if type is `INTEGER`. Maximum value of the parameter.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs()
         {
         }
+        public static new GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs Empty => new GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs();
     }
 }

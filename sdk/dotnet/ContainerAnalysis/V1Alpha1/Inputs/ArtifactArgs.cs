@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Artifact describes a build product.
     /// </summary>
-    public sealed class ArtifactArgs : Pulumi.ResourceArgs
+    public sealed class ArtifactArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public ArtifactArgs()
         {
         }
+        public static new ArtifactArgs Empty => new ArtifactArgs();
     }
 }

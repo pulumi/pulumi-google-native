@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Contains the versioned name and the URL for one SearchParameter.
     /// </summary>
-    public sealed class SearchParameterArgs : Pulumi.ResourceArgs
+    public sealed class SearchParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The canonical url of the search parameter resource.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public SearchParameterArgs()
         {
         }
+        public static new SearchParameterArgs Empty => new SearchParameterArgs();
     }
 }

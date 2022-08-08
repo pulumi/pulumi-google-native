@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
     /// <summary>
     /// Settings for creating a Cloud SQL database instance.
     /// </summary>
-    public sealed class CloudSqlSettingsArgs : Pulumi.ResourceArgs
+    public sealed class CloudSqlSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is 'RUNNABLE'. Valid values: 'ALWAYS': The instance is on, and remains so even in the absence of connection requests. `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
@@ -120,5 +120,6 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Inputs
         public CloudSqlSettingsArgs()
         {
         }
+        public static new CloudSqlSettingsArgs Empty => new CloudSqlSettingsArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// Setting a parameter value.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Display name of the parameter.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArgs Empty => new GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArgs();
     }
 }

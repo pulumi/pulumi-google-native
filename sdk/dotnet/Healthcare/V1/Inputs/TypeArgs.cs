@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
     /// <summary>
     /// A type definition for some HL7v2 type (incl. Segments and Datatypes).
     /// </summary>
-    public sealed class TypeArgs : Pulumi.ResourceArgs
+    public sealed class TypeArgs : global::Pulumi.ResourceArgs
     {
         [Input("fields")]
         private InputList<Inputs.FieldArgs>? _fields;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         public TypeArgs()
         {
         }
+        public static new TypeArgs Empty => new TypeArgs();
     }
 }

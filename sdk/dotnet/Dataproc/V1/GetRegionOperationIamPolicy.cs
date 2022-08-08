@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
     }
 
 
-    public sealed class GetRegionOperationIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionOperationIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("operationId", required: true)]
         public string OperationId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public GetRegionOperationIamPolicyArgs()
         {
         }
+        public static new GetRegionOperationIamPolicyArgs Empty => new GetRegionOperationIamPolicyArgs();
     }
 
-    public sealed class GetRegionOperationIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRegionOperationIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("operationId", required: true)]
         public Input<string> OperationId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public GetRegionOperationIamPolicyInvokeArgs()
         {
         }
+        public static new GetRegionOperationIamPolicyInvokeArgs Empty => new GetRegionOperationIamPolicyInvokeArgs();
     }
 
 

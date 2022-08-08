@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V2.Inputs
 {
 
-    public sealed class ManagedZoneDnsSecConfigArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZoneDnsSecConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("defaultKeySpecs")]
         private InputList<Inputs.DnsKeySpecArgs>? _defaultKeySpecs;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.DNS.V2.Inputs
         public ManagedZoneDnsSecConfigArgs()
         {
         }
+        public static new ManagedZoneDnsSecConfigArgs Empty => new ManagedZoneDnsSecConfigArgs();
     }
 }

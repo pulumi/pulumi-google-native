@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A widget that displays a stream of log.
     /// </summary>
-    public sealed class LogsPanelArgs : Pulumi.ResourceArgs
+    public sealed class LogsPanelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public LogsPanelArgs()
         {
         }
+        public static new LogsPanelArgs Empty => new LogsPanelArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
     /// <summary>
     /// Specification to configure notifications published to Pub/Sub. Notifications are published to the customer-provided topic using the following `PubsubMessage.attributes`: * `"eventType"`: one of the EventType values * `"payloadFormat"`: one of the PayloadFormat values * `"projectId"`: the project_id of the `TransferOperation` * `"transferJobName"`: the transfer_job_name of the `TransferOperation` * `"transferOperationName"`: the name of the `TransferOperation` The `PubsubMessage.data` contains a TransferOperation resource formatted according to the specified `PayloadFormat`.
     /// </summary>
-    public sealed class NotificationConfigArgs : Pulumi.ResourceArgs
+    public sealed class NotificationConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("eventTypes")]
         private InputList<Pulumi.GoogleNative.StorageTransfer.V1.NotificationConfigEventTypesItem>? _eventTypes;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.StorageTransfer.V1.Inputs
         public NotificationConfigArgs()
         {
         }
+        public static new NotificationConfigArgs Empty => new NotificationConfigArgs();
     }
 }

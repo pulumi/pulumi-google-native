@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Represents a match condition that incoming traffic is evaluated against. Exactly one field must be specified.
     /// </summary>
-    public sealed class SecurityPolicyRuleMatcherArgs : Pulumi.ResourceArgs
+    public sealed class SecurityPolicyRuleMatcherArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The configuration options available when specifying versioned_expr. This field must be specified if versioned_expr is specified and cannot be specified if versioned_expr is not specified.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public SecurityPolicyRuleMatcherArgs()
         {
         }
+        public static new SecurityPolicyRuleMatcherArgs Empty => new SecurityPolicyRuleMatcherArgs();
     }
 }

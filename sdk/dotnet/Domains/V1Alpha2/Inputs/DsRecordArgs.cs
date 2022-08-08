@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Inputs
     /// <summary>
     /// Defines a Delegation Signer (DS) record, which is needed to enable DNSSEC for a domain. It contains a digest (hash) of a DNSKEY record that must be present in the domain's DNS zone.
     /// </summary>
-    public sealed class DsRecordArgs : Pulumi.ResourceArgs
+    public sealed class DsRecordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The algorithm used to generate the referenced DNSKEY.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Domains.V1Alpha2.Inputs
         public DsRecordArgs()
         {
         }
+        public static new DsRecordArgs Empty => new DsRecordArgs();
     }
 }

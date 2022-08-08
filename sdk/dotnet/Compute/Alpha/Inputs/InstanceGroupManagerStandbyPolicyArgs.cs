@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
 {
 
-    public sealed class InstanceGroupManagerStandbyPolicyArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupManagerStandbyPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("initialDelaySec")]
         public Input<int>? InitialDelaySec { get; set; }
@@ -18,5 +18,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public InstanceGroupManagerStandbyPolicyArgs()
         {
         }
+        public static new InstanceGroupManagerStandbyPolicyArgs Empty => new InstanceGroupManagerStandbyPolicyArgs();
     }
 }

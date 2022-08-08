@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1.Inputs
     /// <summary>
     /// Specification of the MTLSPolicy.
     /// </summary>
-    public sealed class MTLSPolicyArgs : Pulumi.ResourceArgs
+    public sealed class MTLSPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("clientValidationCa")]
         private InputList<Inputs.ValidationCAArgs>? _clientValidationCa;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.NetworkSecurity.V1.Inputs
         public MTLSPolicyArgs()
         {
         }
+        public static new MTLSPolicyArgs Empty => new MTLSPolicyArgs();
     }
 }

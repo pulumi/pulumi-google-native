@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1OperationArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1OperationArgs : global::Pulumi.ResourceArgs
     {
         [Input("methods")]
         private InputList<string>? _methods;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1OperationArgs()
         {
         }
+        public static new GoogleCloudApigeeV1OperationArgs Empty => new GoogleCloudApigeeV1OperationArgs();
     }
 }

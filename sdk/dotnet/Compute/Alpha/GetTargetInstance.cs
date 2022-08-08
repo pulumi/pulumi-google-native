@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetTargetInstanceArgs : Pulumi.InvokeArgs
+    public sealed class GetTargetInstanceArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetTargetInstanceArgs()
         {
         }
+        public static new GetTargetInstanceArgs Empty => new GetTargetInstanceArgs();
     }
 
-    public sealed class GetTargetInstanceInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetTargetInstanceInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetTargetInstanceInvokeArgs()
         {
         }
+        public static new GetTargetInstanceInvokeArgs Empty => new GetTargetInstanceInvokeArgs();
     }
 
 

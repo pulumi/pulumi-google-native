@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates an InterconnectAttachment in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:InterconnectAttachment")]
-    public partial class InterconnectAttachment : Pulumi.CustomResource
+    public partial class InterconnectAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER.
@@ -315,7 +315,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class InterconnectAttachmentArgs : Pulumi.ResourceArgs
+    public sealed class InterconnectAttachmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Determines whether this Attachment will carry packets. Not present for PARTNER_PROVIDER.
@@ -494,5 +494,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public InterconnectAttachmentArgs()
         {
         }
+        public static new InterconnectAttachmentArgs Empty => new InterconnectAttachmentArgs();
     }
 }

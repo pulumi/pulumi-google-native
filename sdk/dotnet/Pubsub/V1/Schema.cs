@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
     /// Creates a schema.
     /// </summary>
     [GoogleNativeResourceType("google-native:pubsub/v1:Schema")]
-    public partial class Schema : Pulumi.CustomResource
+    public partial class Schema : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         }
     }
 
-    public sealed class SchemaArgs : Pulumi.ResourceArgs
+    public sealed class SchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The definition of the schema. This should contain a string representing the full definition of the schema that is a valid schema definition of the type specified in `type`.
@@ -133,5 +133,6 @@ namespace Pulumi.GoogleNative.Pubsub.V1
         public SchemaArgs()
         {
         }
+        public static new SchemaArgs Empty => new SchemaArgs();
     }
 }

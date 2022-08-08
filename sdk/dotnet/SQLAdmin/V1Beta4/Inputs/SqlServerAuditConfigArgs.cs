@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
     /// <summary>
     /// SQL Server specific audit configuration.
     /// </summary>
-    public sealed class SqlServerAuditConfigArgs : Pulumi.ResourceArgs
+    public sealed class SqlServerAuditConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the destination bucket (e.g., gs://mybucket).
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public SqlServerAuditConfigArgs()
         {
         }
+        public static new SqlServerAuditConfigArgs Empty => new SqlServerAuditConfigArgs();
     }
 }

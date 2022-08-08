@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     /// Creates a subnetwork in the specified project using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/v1:Subnetwork")]
-    public partial class Subnetwork : Pulumi.CustomResource
+    public partial class Subnetwork : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Creation timestamp in RFC3339 text format.
@@ -207,7 +207,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
     }
 
-    public sealed class SubnetworkArgs : Pulumi.ResourceArgs
+    public sealed class SubnetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of this resource. Provide this property when you create the resource. This field can be set only at resource creation time.
@@ -311,5 +311,6 @@ namespace Pulumi.GoogleNative.Compute.V1
         public SubnetworkArgs()
         {
         }
+        public static new SubnetworkArgs Empty => new SubnetworkArgs();
     }
 }

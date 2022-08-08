@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Inputs
     /// <summary>
     /// Defines whether a feature can be used or what values are accepted.
     /// </summary>
-    public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs : global::Pulumi.ResourceArgs
     {
         [Input("allowedValues")]
         private InputList<string>? _allowedValues;
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.RemoteBuildExecution.V1Alpha.Inputs
         public GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs()
         {
         }
+        public static new GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs Empty => new GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs();
     }
 }

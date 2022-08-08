@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
     /// Creates a new RuntimeConfig resource. The configuration name must be unique within project.
     /// </summary>
     [GoogleNativeResourceType("google-native:runtimeconfig/v1beta1:Config")]
-    public partial class Config : Pulumi.CustomResource
+    public partial class Config : global::Pulumi.CustomResource
     {
         /// <summary>
         /// An optional description of the RuntimeConfig object.
@@ -83,7 +83,7 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         }
     }
 
-    public sealed class ConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of the RuntimeConfig object.
@@ -109,5 +109,6 @@ namespace Pulumi.GoogleNative.RuntimeConfig.V1Beta1
         public ConfigArgs()
         {
         }
+        public static new ConfigArgs Empty => new ConfigArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class DatasetAccessItemArgs : Pulumi.ResourceArgs
+    public sealed class DatasetAccessItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Pick one] A grant authorizing all resources of a particular type in a particular dataset access to this dataset. Only views are supported for now. The role field is not required when this field is set. If that dataset is deleted and re-created, its access needs to be granted again via an update operation.
@@ -69,5 +69,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public DatasetAccessItemArgs()
         {
         }
+        public static new DatasetAccessItemArgs Empty => new DatasetAccessItemArgs();
     }
 }

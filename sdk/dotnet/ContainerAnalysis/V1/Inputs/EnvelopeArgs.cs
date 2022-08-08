@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// MUST match https://github.com/secure-systems-lab/dsse/blob/master/envelope.proto. An authenticated message of arbitrary type.
     /// </summary>
-    public sealed class EnvelopeArgs : Pulumi.ResourceArgs
+    public sealed class EnvelopeArgs : global::Pulumi.ResourceArgs
     {
         [Input("payload")]
         public Input<string>? Payload { get; set; }
@@ -32,5 +32,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public EnvelopeArgs()
         {
         }
+        public static new EnvelopeArgs Empty => new EnvelopeArgs();
     }
 }

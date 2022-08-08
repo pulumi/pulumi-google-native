@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DNS.V2.Inputs
 {
 
-    public sealed class ManagedZoneForwardingConfigNameServerTargetArgs : Pulumi.ResourceArgs
+    public sealed class ManagedZoneForwardingConfigNameServerTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Forwarding path for this NameServerTarget. If unset or set to DEFAULT, Cloud DNS makes forwarding decisions based on IP address ranges; that is, RFC1918 addresses go to the VPC network, non-RFC1918 addresses go to the internet. When set to PRIVATE, Cloud DNS always sends queries through the VPC network for this target.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DNS.V2.Inputs
         public ManagedZoneForwardingConfigNameServerTargetArgs()
         {
         }
+        public static new ManagedZoneForwardingConfigNameServerTargetArgs Empty => new ManagedZoneForwardingConfigNameServerTargetArgs();
     }
 }

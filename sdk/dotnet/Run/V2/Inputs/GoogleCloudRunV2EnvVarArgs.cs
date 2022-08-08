@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// <summary>
     /// EnvVar represents an environment variable present in a Container.
     /// </summary>
-    public sealed class GoogleCloudRunV2EnvVarArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRunV2EnvVarArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the environment variable. Must be a C_IDENTIFIER, and mnay not exceed 32768 characters.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public GoogleCloudRunV2EnvVarArgs()
         {
         }
+        public static new GoogleCloudRunV2EnvVarArgs Empty => new GoogleCloudRunV2EnvVarArgs();
     }
 }

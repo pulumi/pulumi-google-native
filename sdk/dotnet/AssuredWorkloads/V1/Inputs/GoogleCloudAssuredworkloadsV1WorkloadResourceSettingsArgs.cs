@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Inputs
     /// <summary>
     /// Represent the custom settings for the resources to be created.
     /// </summary>
-    public sealed class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// User-assigned resource display name. If not empty it will be used to create a resource with the specified name.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.AssuredWorkloads.V1.Inputs
         public GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs()
         {
         }
+        public static new GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs Empty => new GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs();
     }
 }

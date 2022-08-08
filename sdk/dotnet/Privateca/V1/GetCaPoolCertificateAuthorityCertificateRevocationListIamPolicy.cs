@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
     }
 
 
-    public sealed class GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("caPoolId", required: true)]
         public string CaPoolId { get; set; } = null!;
@@ -48,9 +48,10 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs()
         {
         }
+        public static new GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs Empty => new GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs();
     }
 
-    public sealed class GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("caPoolId", required: true)]
         public Input<string> CaPoolId { get; set; } = null!;
@@ -73,6 +74,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs()
         {
         }
+        public static new GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs Empty => new GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyInvokeArgs();
     }
 
 

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataplex/v1:Zone")]
-    public partial class Zone : Pulumi.CustomResource
+    public partial class Zone : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Aggregated status of the underlying assets of the zone.
@@ -159,7 +159,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         }
     }
 
-    public sealed class ZoneArgs : Pulumi.ResourceArgs
+    public sealed class ZoneArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Description of the zone.
@@ -227,5 +227,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public ZoneArgs()
         {
         }
+        public static new ZoneArgs Empty => new ZoneArgs();
     }
 }

@@ -13,10 +13,10 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
     /// <summary>
     /// Defined a customer managed encryption key that will be used to encrypt Backup artifacts.
     /// </summary>
-    public sealed class EncryptionKeyArgs : Pulumi.ResourceArgs
+    public sealed class EncryptionKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Google Cloud KMS encryption key. Format: projects/*/locations/*/keyRings/*/cryptoKeys/*
+        /// Google Cloud KMS encryption key. Format: `projects/*/locations/*/keyRings/*/cryptoKeys/*`
         /// </summary>
         [Input("gcpKmsEncryptionKey")]
         public Input<string>? GcpKmsEncryptionKey { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         public EncryptionKeyArgs()
         {
         }
+        public static new EncryptionKeyArgs Empty => new EncryptionKeyArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Yum patching is performed by executing `yum update`. Additional options can be set to control how this is executed. Note that not all settings are supported on all platforms.
     /// </summary>
-    public sealed class YumSettingsArgs : Pulumi.ResourceArgs
+    public sealed class YumSettingsArgs : global::Pulumi.ResourceArgs
     {
         [Input("excludes")]
         private InputList<string>? _excludes;
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public YumSettingsArgs()
         {
         }
+        public static new YumSettingsArgs Empty => new YumSettingsArgs();
     }
 }

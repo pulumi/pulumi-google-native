@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1.Inputs
     /// <summary>
     /// An attestor public key that will be used to verify attestations signed by this attestor.
     /// </summary>
-    public sealed class AttestorPublicKeyArgs : Pulumi.ResourceArgs
+    public sealed class AttestorPublicKeyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// ASCII-armored representation of a PGP public key, as the entire output by the command `gpg --export --armor foo@example.com` (either LF or CRLF line endings). When using this field, `id` should be left blank. The BinAuthz API handlers will calculate the ID and fill it in automatically. BinAuthz computes this ID as the OpenPGP RFC4880 V4 fingerprint, represented as upper-case hex. If `id` is provided by the caller, it will be overwritten by the API-calculated ID.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.BinaryAuthorization.V1Beta1.Inputs
         public AttestorPublicKeyArgs()
         {
         }
+        public static new AttestorPublicKeyArgs Empty => new AttestorPublicKeyArgs();
     }
 }

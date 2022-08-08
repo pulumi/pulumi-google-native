@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Enable Stackdriver metric dlp.googleapis.com/finding_count. This will publish a metric to stack driver on each infotype requested and how many findings were found for it. CustomDetectors will be bucketed as 'Custom' under the Stackdriver label 'info_type'.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2PublishToStackdriverArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2PublishToStackdriverArgs : global::Pulumi.ResourceArgs
     {
         public GooglePrivacyDlpV2PublishToStackdriverArgs()
         {
         }
+        public static new GooglePrivacyDlpV2PublishToStackdriverArgs Empty => new GooglePrivacyDlpV2PublishToStackdriverArgs();
     }
 }

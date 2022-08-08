@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Segment settings for `ts`, `fmp4` and `vtt`.
     /// </summary>
-    public sealed class SegmentSettingsArgs : Pulumi.ResourceArgs
+    public sealed class SegmentSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Create an individual segment file. The default is `false`.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public SegmentSettingsArgs()
         {
         }
+        public static new SegmentSettingsArgs Empty => new SegmentSettingsArgs();
     }
 }

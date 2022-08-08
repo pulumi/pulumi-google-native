@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
 {
 
-    public sealed class DiagnosticArgs : Pulumi.ResourceArgs
+    public sealed class DiagnosticArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// JsonPath expression on the resource that if non empty, indicates that this field needs to be extracted as a diagnostic.
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta.Inputs
         public DiagnosticArgs()
         {
         }
+        public static new DiagnosticArgs Empty => new DiagnosticArgs();
     }
 }

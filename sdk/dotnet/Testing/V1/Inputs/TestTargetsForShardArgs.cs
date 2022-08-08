@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// Test targets for a shard.
     /// </summary>
-    public sealed class TestTargetsForShardArgs : Pulumi.ResourceArgs
+    public sealed class TestTargetsForShardArgs : global::Pulumi.ResourceArgs
     {
         [Input("testTargets")]
         private InputList<string>? _testTargets;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public TestTargetsForShardArgs()
         {
         }
+        public static new TestTargetsForShardArgs Empty => new TestTargetsForShardArgs();
     }
 }

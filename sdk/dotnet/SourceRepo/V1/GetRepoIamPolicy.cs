@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
     }
 
 
-    public sealed class GetRepoIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetRepoIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public string? OptionsRequestedPolicyVersion { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         public GetRepoIamPolicyArgs()
         {
         }
+        public static new GetRepoIamPolicyArgs Empty => new GetRepoIamPolicyArgs();
     }
 
-    public sealed class GetRepoIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetRepoIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
         public Input<string>? OptionsRequestedPolicyVersion { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.SourceRepo.V1
         public GetRepoIamPolicyInvokeArgs()
         {
         }
+        public static new GetRepoIamPolicyInvokeArgs Empty => new GetRepoIamPolicyInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// A test of an android application that explores the application on a virtual or physical Android Device, finding culprits and crashes as it goes.
     /// </summary>
-    public sealed class AndroidRoboTestArgs : Pulumi.ResourceArgs
+    public sealed class AndroidRoboTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The APK for the application under test.
@@ -90,5 +90,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public AndroidRoboTestArgs()
         {
         }
+        public static new AndroidRoboTestArgs Empty => new AndroidRoboTestArgs();
     }
 }

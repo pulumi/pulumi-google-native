@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1.Inputs
     /// <summary>
     /// Http target. The job will be pushed to the job handler by means of an HTTP request via an http_method such as HTTP POST, HTTP GET, etc. The job is acknowledged by means of an HTTP response code in the range [200 - 299]. A failure to receive a response constitutes a failed execution. For a redirected request, the response returned by the redirected request is considered.
     /// </summary>
-    public sealed class HttpTargetArgs : Pulumi.ResourceArgs
+    public sealed class HttpTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// HTTP request body. A request body is allowed only if the HTTP method is POST, PUT, or PATCH. It is an error to set body on a job with an incompatible HttpMethod.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.CloudScheduler.V1Beta1.Inputs
         public HttpTargetArgs()
         {
         }
+        public static new HttpTargetArgs Empty => new HttpTargetArgs();
     }
 }

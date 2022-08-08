@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// The card for presenting a list of options to select from.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs : global::Pulumi.ResourceArgs
     {
         [Input("items", required: true)]
         private InputList<Inputs.GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArgs>? _items;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs Empty => new GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs();
     }
 }

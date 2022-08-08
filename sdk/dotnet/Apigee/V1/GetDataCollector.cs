@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetDataCollectorArgs : Pulumi.InvokeArgs
+    public sealed class GetDataCollectorArgs : global::Pulumi.InvokeArgs
     {
         [Input("datacollectorId", required: true)]
         public string DatacollectorId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetDataCollectorArgs()
         {
         }
+        public static new GetDataCollectorArgs Empty => new GetDataCollectorArgs();
     }
 
-    public sealed class GetDataCollectorInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDataCollectorInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("datacollectorId", required: true)]
         public Input<string> DatacollectorId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetDataCollectorInvokeArgs()
         {
         }
+        public static new GetDataCollectorInvokeArgs Empty => new GetDataCollectorInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// Represents a tool results history resource.
     /// </summary>
-    public sealed class ToolResultsHistoryArgs : Pulumi.ResourceArgs
+    public sealed class ToolResultsHistoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A tool results history ID.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public ToolResultsHistoryArgs()
         {
         }
+        public static new ToolResultsHistoryArgs Empty => new ToolResultsHistoryArgs();
     }
 }

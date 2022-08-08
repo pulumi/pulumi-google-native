@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
     /// <summary>
     /// An attribute value for a Consent or User data mapping. Each Attribute must have a corresponding AttributeDefinition in the consent store that defines the default and allowed values.
     /// </summary>
-    public sealed class AttributeArgs : Pulumi.ResourceArgs
+    public sealed class AttributeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates the name of an attribute defined in the consent store.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1.Inputs
         public AttributeArgs()
         {
         }
+        public static new AttributeArgs Empty => new AttributeArgs();
     }
 }

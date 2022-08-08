@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// Automatic scaling is based on request rate, response latencies, and other application metrics.
     /// </summary>
-    public sealed class AutomaticScalingArgs : Pulumi.ResourceArgs
+    public sealed class AutomaticScalingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time period that the Autoscaler (https://cloud.google.com/compute/docs/autoscaler/) should wait before it starts collecting information from a new instance. This prevents the autoscaler from collecting information when the instance is initializing, during which the collected usage would not be reliable. Only applicable in the App Engine flexible environment.
@@ -108,5 +108,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public AutomaticScalingArgs()
         {
         }
+        public static new AutomaticScalingArgs Empty => new AutomaticScalingArgs();
     }
 }

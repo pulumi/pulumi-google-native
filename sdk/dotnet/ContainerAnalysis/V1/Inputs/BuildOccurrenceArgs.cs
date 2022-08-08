@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Details of a build occurrence.
     /// </summary>
-    public sealed class BuildOccurrenceArgs : Pulumi.ResourceArgs
+    public sealed class BuildOccurrenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Deprecated. See InTotoStatement for the replacement. In-toto Provenance representation as defined in spec.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public BuildOccurrenceArgs()
         {
         }
+        public static new BuildOccurrenceArgs Empty => new BuildOccurrenceArgs();
     }
 }

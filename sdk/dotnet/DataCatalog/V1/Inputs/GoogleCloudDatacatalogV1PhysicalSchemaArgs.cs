@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
     /// <summary>
     /// Native schema used by a resource represented as an entry. Used by query engines for deserializing and parsing source data.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1PhysicalSchemaArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1PhysicalSchemaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Schema in Avro JSON format.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
         public GoogleCloudDatacatalogV1PhysicalSchemaArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1PhysicalSchemaArgs Empty => new GoogleCloudDatacatalogV1PhysicalSchemaArgs();
     }
 }

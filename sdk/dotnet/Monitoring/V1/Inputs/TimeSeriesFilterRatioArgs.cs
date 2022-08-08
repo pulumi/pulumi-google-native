@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A pair of time series filters that define a ratio computation. The output time series is the pair-wise division of each aligned element from the numerator and denominator time series.
     /// </summary>
-    public sealed class TimeSeriesFilterRatioArgs : Pulumi.ResourceArgs
+    public sealed class TimeSeriesFilterRatioArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The denominator of the ratio.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public TimeSeriesFilterRatioArgs()
         {
         }
+        public static new TimeSeriesFilterRatioArgs Empty => new TimeSeriesFilterRatioArgs();
     }
 }

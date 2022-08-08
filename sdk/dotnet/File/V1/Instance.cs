@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.File.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:file/v1:Instance")]
-    public partial class Instance : Pulumi.CustomResource
+    public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The time when the instance was created.
@@ -155,7 +155,7 @@ namespace Pulumi.GoogleNative.File.V1
         }
     }
 
-    public sealed class InstanceArgs : Pulumi.ResourceArgs
+    public sealed class InstanceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The description of the instance (2048 characters or less).
@@ -232,5 +232,6 @@ namespace Pulumi.GoogleNative.File.V1
         public InstanceArgs()
         {
         }
+        public static new InstanceArgs Empty => new InstanceArgs();
     }
 }

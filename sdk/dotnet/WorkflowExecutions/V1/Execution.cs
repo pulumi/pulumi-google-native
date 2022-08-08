@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:workflowexecutions/v1:Execution")]
-    public partial class Execution : Pulumi.CustomResource
+    public partial class Execution : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         }
     }
 
-    public sealed class ExecutionArgs : Pulumi.ResourceArgs
+    public sealed class ExecutionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Input parameters of the execution represented as a JSON string. The size limit is 32KB. *Note*: If you are using the REST API directly to run your workflow, you must escape any JSON string value of `argument`. Example: `'{"argument":"{\"firstName\":\"FIRST\",\"lastName\":\"LAST\"}"}'`
@@ -156,5 +156,6 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         public ExecutionArgs()
         {
         }
+        public static new ExecutionArgs Empty => new ExecutionArgs();
     }
 }

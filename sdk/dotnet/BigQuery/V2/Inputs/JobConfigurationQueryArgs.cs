@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class JobConfigurationQueryArgs : Pulumi.ResourceArgs
+    public sealed class JobConfigurationQueryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] If true and query uses legacy SQL dialect, allows the query to produce arbitrarily large result tables at a slight cost in performance. Requires destinationTable to be set. For standard SQL queries, this flag is ignored and large results are always allowed. However, you must still set destinationTable when result size exceeds the allowed maximum response size.
@@ -189,5 +189,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public JobConfigurationQueryArgs()
         {
         }
+        public static new JobConfigurationQueryArgs Empty => new JobConfigurationQueryArgs();
     }
 }

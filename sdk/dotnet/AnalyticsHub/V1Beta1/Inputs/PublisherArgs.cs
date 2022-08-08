@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1.Inputs
     /// <summary>
     /// Contains details of the listing publisher.
     /// </summary>
-    public sealed class PublisherArgs : Pulumi.ResourceArgs
+    public sealed class PublisherArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Name of the listing publisher.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.AnalyticsHub.V1Beta1.Inputs
         public PublisherArgs()
         {
         }
+        public static new PublisherArgs Empty => new PublisherArgs();
     }
 }

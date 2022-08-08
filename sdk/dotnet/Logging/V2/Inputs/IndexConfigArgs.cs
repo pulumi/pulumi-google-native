@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Logging.V2.Inputs
     /// <summary>
     /// Configuration for an indexed field.
     /// </summary>
-    public sealed class IndexConfigArgs : Pulumi.ResourceArgs
+    public sealed class IndexConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The LogEntry field path to index.Note that some paths are automatically indexed, and other paths are not eligible for indexing. See indexing documentation( https://cloud.google.com/logging/docs/view/advanced-queries#indexed-fields) for details.For example: jsonPayload.request.status
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Logging.V2.Inputs
         public IndexConfigArgs()
         {
         }
+        public static new IndexConfigArgs Empty => new IndexConfigArgs();
     }
 }

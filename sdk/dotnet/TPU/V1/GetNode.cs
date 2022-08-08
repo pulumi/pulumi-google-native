@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.TPU.V1
     }
 
 
-    public sealed class GetNodeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.TPU.V1
         public GetNodeArgs()
         {
         }
+        public static new GetNodeArgs Empty => new GetNodeArgs();
     }
 
-    public sealed class GetNodeInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.TPU.V1
         public GetNodeInvokeArgs()
         {
         }
+        public static new GetNodeInvokeArgs Empty => new GetNodeInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
     /// <summary>
     /// Push contains filter properties for matching GitHub git pushes.
     /// </summary>
-    public sealed class PushFilterArgs : Pulumi.ResourceArgs
+    public sealed class PushFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Inputs
         public PushFilterArgs()
         {
         }
+        public static new PushFilterArgs Empty => new PushFilterArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:clouddeploy/v1:DeliveryPipeline")]
-    public partial class DeliveryPipeline : Pulumi.CustomResource
+    public partial class DeliveryPipeline : global::Pulumi.CustomResource
     {
         /// <summary>
         /// User annotations. These attributes can only be set and used by the user, and not by Google Cloud Deploy. See https://google.aip.dev/128#annotations for more details such as format and size limitations.
@@ -155,7 +155,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         }
     }
 
-    public sealed class DeliveryPipelineArgs : Pulumi.ResourceArgs
+    public sealed class DeliveryPipelineArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -238,5 +238,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public DeliveryPipelineArgs()
         {
         }
+        public static new DeliveryPipelineArgs Empty => new DeliveryPipelineArgs();
     }
 }

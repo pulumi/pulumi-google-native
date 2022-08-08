@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Settings controlling the eviction of unhealthy hosts from the load balancing pool for the backend service.
     /// </summary>
-    public sealed class OutlierDetectionArgs : Pulumi.ResourceArgs
+    public sealed class OutlierDetectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The base time that a host is ejected for. The real ejection time is equal to the base ejection time multiplied by the number of times the host has been ejected. Defaults to 30000ms or 30s.
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public OutlierDetectionArgs()
         {
         }
+        public static new OutlierDetectionArgs Empty => new OutlierDetectionArgs();
     }
 }

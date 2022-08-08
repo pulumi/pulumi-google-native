@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Execution configuration for a workload.
     /// </summary>
-    public sealed class ExecutionConfigArgs : Pulumi.ResourceArgs
+    public sealed class ExecutionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The Cloud KMS key to use for encryption.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public ExecutionConfigArgs()
         {
         }
+        public static new ExecutionConfigArgs Empty => new ExecutionConfigArgs();
     }
 }

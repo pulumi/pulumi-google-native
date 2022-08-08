@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Resourcefile")]
-    public partial class Resourcefile : Pulumi.CustomResource
+    public partial class Resourcefile : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The HTTP Content-Type header value specifying the content type of the body.
@@ -102,7 +102,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class ResourcefileArgs : Pulumi.ResourceArgs
+    public sealed class ResourcefileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The HTTP Content-Type header value specifying the content type of the body.
@@ -132,6 +132,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
 
         /// <summary>
+        /// File to upload.
+        /// </summary>
+        [Input("file")]
+        public Input<AssetOrArchive>? File { get; set; }
+
+        /// <summary>
         /// Required. Name of the resource file. Must match the regular expression: [a-zA-Z0-9:/\\!@#$%^&amp;{}\[\]()+\-=,.~'` ]{1,255}
         /// </summary>
         [Input("name", required: true)]
@@ -149,5 +155,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public ResourcefileArgs()
         {
         }
+        public static new ResourcefileArgs Empty => new ResourcefileArgs();
     }
 }

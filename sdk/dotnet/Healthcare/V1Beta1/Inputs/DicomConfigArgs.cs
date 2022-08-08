@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
     /// <summary>
     /// Specifies the parameters needed for de-identification of DICOM stores.
     /// </summary>
-    public sealed class DicomConfigArgs : Pulumi.ResourceArgs
+    public sealed class DicomConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Tag filtering profile that determines which tags to keep/remove.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1.Inputs
         public DicomConfigArgs()
         {
         }
+        public static new DicomConfigArgs Empty => new DicomConfigArgs();
     }
 }

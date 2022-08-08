@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1
     /// Creates a glossary and returns the long-running operation. Returns NOT_FOUND, if the project doesn't exist.
     /// </summary>
     [GoogleNativeResourceType("google-native:translate/v3beta1:Glossary")]
-    public partial class Glossary : Pulumi.CustomResource
+    public partial class Glossary : global::Pulumi.CustomResource
     {
         /// <summary>
         /// When the glossary creation was finished.
@@ -111,7 +111,7 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1
         }
     }
 
-    public sealed class GlossaryArgs : Pulumi.ResourceArgs
+    public sealed class GlossaryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
@@ -146,5 +146,6 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1
         public GlossaryArgs()
         {
         }
+        public static new GlossaryArgs Empty => new GlossaryArgs();
     }
 }

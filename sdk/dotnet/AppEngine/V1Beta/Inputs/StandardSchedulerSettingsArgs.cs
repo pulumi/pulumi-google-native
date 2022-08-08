@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// Scheduler settings for standard environment.
     /// </summary>
-    public sealed class StandardSchedulerSettingsArgs : Pulumi.ResourceArgs
+    public sealed class StandardSchedulerSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum number of instances to run for this version. Set to zero to disable max_instances configuration.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public StandardSchedulerSettingsArgs()
         {
         }
+        public static new StandardSchedulerSettingsArgs Empty => new StandardSchedulerSettingsArgs();
     }
 }

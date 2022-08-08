@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// Describes a change made to a configuration.
     /// </summary>
-    public sealed class MutationRecordArgs : Pulumi.ResourceArgs
+    public sealed class MutationRecordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// When the change occurred.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public MutationRecordArgs()
         {
         }
+        public static new MutationRecordArgs Empty => new MutationRecordArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
     /// <summary>
     /// Identifies the cluster-scoped resources to restore from the Backup.
     /// </summary>
-    public sealed class ClusterResourceRestoreScopeArgs : Pulumi.ResourceArgs
+    public sealed class ClusterResourceRestoreScopeArgs : global::Pulumi.ResourceArgs
     {
         [Input("selectedGroupKinds")]
         private InputList<Inputs.GroupKindArgs>? _selectedGroupKinds;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         public ClusterResourceRestoreScopeArgs()
         {
         }
+        public static new ClusterResourceRestoreScopeArgs Empty => new ClusterResourceRestoreScopeArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.IAM.V1
     }
 
 
-    public sealed class GetServiceAccountArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceAccountArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.IAM.V1
         public GetServiceAccountArgs()
         {
         }
+        public static new GetServiceAccountArgs Empty => new GetServiceAccountArgs();
     }
 
-    public sealed class GetServiceAccountInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetServiceAccountInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         public GetServiceAccountInvokeArgs()
         {
         }
+        public static new GetServiceAccountInvokeArgs Empty => new GetServiceAccountInvokeArgs();
     }
 
 

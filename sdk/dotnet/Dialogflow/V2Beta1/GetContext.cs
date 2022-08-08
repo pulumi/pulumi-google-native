@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
     }
 
 
-    public sealed class GetContextArgs : Pulumi.InvokeArgs
+    public sealed class GetContextArgs : global::Pulumi.InvokeArgs
     {
         [Input("contextId", required: true)]
         public string ContextId { get; set; } = null!;
@@ -48,9 +48,10 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public GetContextArgs()
         {
         }
+        public static new GetContextArgs Empty => new GetContextArgs();
     }
 
-    public sealed class GetContextInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetContextInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("contextId", required: true)]
         public Input<string> ContextId { get; set; } = null!;
@@ -73,6 +74,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         public GetContextInvokeArgs()
         {
         }
+        public static new GetContextInvokeArgs Empty => new GetContextInvokeArgs();
     }
 
 

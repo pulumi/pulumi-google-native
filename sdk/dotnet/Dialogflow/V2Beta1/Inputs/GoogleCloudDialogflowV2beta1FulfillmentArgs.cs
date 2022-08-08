@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// By default, your agent responds to a matched intent with a static response. As an alternative, you can provide a more dynamic response by using fulfillment. When you enable fulfillment for an intent, Dialogflow responds to that intent by calling a service that you define. For example, if an end-user wants to schedule a haircut on Friday, your service can check your database and respond to the end-user with availability information for Friday. For more information, see the [fulfillment guide](https://cloud.google.com/dialogflow/docs/fulfillment-overview).
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1FulfillmentArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1FulfillmentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The human-readable name of the fulfillment, unique within the agent. This field is not used for Fulfillment in an Environment.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1FulfillmentArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1FulfillmentArgs Empty => new GoogleCloudDialogflowV2beta1FulfillmentArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
     }
 
 
-    public sealed class GetFolderIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("folderId", required: true)]
         public string FolderId { get; set; } = null!;
@@ -33,9 +33,10 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
         public GetFolderIamPolicyArgs()
         {
         }
+        public static new GetFolderIamPolicyArgs Empty => new GetFolderIamPolicyArgs();
     }
 
-    public sealed class GetFolderIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("folderId", required: true)]
         public Input<string> FolderId { get; set; } = null!;
@@ -43,6 +44,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V2Beta1
         public GetFolderIamPolicyInvokeArgs()
         {
         }
+        public static new GetFolderIamPolicyInvokeArgs Empty => new GetFolderIamPolicyInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// <summary>
     /// Settings for revision-level scaling settings.
     /// </summary>
-    public sealed class GoogleCloudRunV2RevisionScalingArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRunV2RevisionScalingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum number of serving instances that this resource should have.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public GoogleCloudRunV2RevisionScalingArgs()
         {
         }
+        public static new GoogleCloudRunV2RevisionScalingArgs Empty => new GoogleCloudRunV2RevisionScalingArgs();
     }
 }

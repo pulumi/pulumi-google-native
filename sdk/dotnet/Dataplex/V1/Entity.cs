@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataplex/v1:Entity")]
-    public partial class Entity : Pulumi.CustomResource
+    public partial class Entity : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Immutable. The ID of the asset associated with the storage location containing the entity data. The entity must be with in the same zone with the asset.
@@ -174,7 +174,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         }
     }
 
-    public sealed class EntityArgs : Pulumi.ResourceArgs
+    public sealed class EntityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. The ID of the asset associated with the storage location containing the entity data. The entity must be with in the same zone with the asset.
@@ -263,5 +263,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public EntityArgs()
         {
         }
+        public static new EntityArgs Empty => new EntityArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     /// Creates a new Uptime check configuration.
     /// </summary>
     [GoogleNativeResourceType("google-native:monitoring/v3:UptimeCheckConfig")]
-    public partial class UptimeCheckConfig : Pulumi.CustomResource
+    public partial class UptimeCheckConfig : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The type of checkers to use to execute the Uptime check.
@@ -96,6 +96,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Output("timeout")]
         public Output<string> Timeout { get; private set; } = null!;
 
+        /// <summary>
+        /// User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        /// </summary>
+        [Output("userLabels")]
+        public Output<ImmutableDictionary<string, string>> UserLabels { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a UptimeCheckConfig resource with the given unique name, arguments, and options.
@@ -143,7 +149,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         }
     }
 
-    public sealed class UptimeCheckConfigArgs : Pulumi.ResourceArgs
+    public sealed class UptimeCheckConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of checkers to use to execute the Uptime check.
@@ -244,8 +250,21 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         [Input("timeout")]
         public Input<string>? Timeout { get; set; }
 
+        [Input("userLabels")]
+        private InputMap<string>? _userLabels;
+
+        /// <summary>
+        /// User-supplied key/value data to be used for organizing and identifying the UptimeCheckConfig objects.The field can contain up to 64 entries. Each key and value is limited to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values can contain only lowercase letters, numerals, underscores, and dashes. Keys must begin with a letter.
+        /// </summary>
+        public InputMap<string> UserLabels
+        {
+            get => _userLabels ?? (_userLabels = new InputMap<string>());
+            set => _userLabels = value;
+        }
+
         public UptimeCheckConfigArgs()
         {
         }
+        public static new UptimeCheckConfigArgs Empty => new UptimeCheckConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
     /// <summary>
     /// The zip file information for a zip deployment.
     /// </summary>
-    public sealed class ZipInfoArgs : Pulumi.ResourceArgs
+    public sealed class ZipInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An estimate of the number of files in a zip for a zip deployment. If set, must be greater than or equal to the actual number of files. Used for optimizing performance; if not provided, deployment may be slow.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.AppEngine.V1Beta.Inputs
         public ZipInfoArgs()
         {
         }
+        public static new ZipInfoArgs Empty => new ZipInfoArgs();
     }
 }

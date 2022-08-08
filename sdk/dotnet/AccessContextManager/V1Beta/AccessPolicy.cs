@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:accesscontextmanager/v1beta:AccessPolicy")]
-    public partial class AccessPolicy : Pulumi.CustomResource
+    public partial class AccessPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Resource name of the `AccessPolicy`. Format: `accessPolicies/{policy_id}`
@@ -77,7 +77,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         }
     }
 
-    public sealed class AccessPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AccessPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The parent of this `AccessPolicy` in the Cloud Resource Hierarchy. Currently immutable once created. Format: `organizations/{organization_id}`
@@ -94,5 +94,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         public AccessPolicyArgs()
         {
         }
+        public static new AccessPolicyArgs Empty => new AccessPolicyArgs();
     }
 }

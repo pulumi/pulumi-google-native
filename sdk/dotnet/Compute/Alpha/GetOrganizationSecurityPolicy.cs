@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetOrganizationSecurityPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationSecurityPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("securityPolicy", required: true)]
         public string SecurityPolicy { get; set; } = null!;
@@ -33,9 +33,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetOrganizationSecurityPolicyArgs()
         {
         }
+        public static new GetOrganizationSecurityPolicyArgs Empty => new GetOrganizationSecurityPolicyArgs();
     }
 
-    public sealed class GetOrganizationSecurityPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetOrganizationSecurityPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("securityPolicy", required: true)]
         public Input<string> SecurityPolicy { get; set; } = null!;
@@ -43,6 +44,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetOrganizationSecurityPolicyInvokeArgs()
         {
         }
+        public static new GetOrganizationSecurityPolicyInvokeArgs Empty => new GetOrganizationSecurityPolicyInvokeArgs();
     }
 
 

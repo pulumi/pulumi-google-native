@@ -12,20 +12,20 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
     public static class GetNamespaceServiceIamPolicy
     {
         /// <summary>
-        /// Gets the IAM Policy for a resource (namespace or service only).
+        /// Gets the IAM Policy for a resource
         /// </summary>
         public static Task<GetNamespaceServiceIamPolicyResult> InvokeAsync(GetNamespaceServiceIamPolicyArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetNamespaceServiceIamPolicyResult>("google-native:servicedirectory/v1beta1:getNamespaceServiceIamPolicy", args ?? new GetNamespaceServiceIamPolicyArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Gets the IAM Policy for a resource (namespace or service only).
+        /// Gets the IAM Policy for a resource
         /// </summary>
         public static Output<GetNamespaceServiceIamPolicyResult> Invoke(GetNamespaceServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetNamespaceServiceIamPolicyResult>("google-native:servicedirectory/v1beta1:getNamespaceServiceIamPolicy", args ?? new GetNamespaceServiceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 
-    public sealed class GetNamespaceServiceIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespaceServiceIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public GetNamespaceServiceIamPolicyArgs()
         {
         }
+        public static new GetNamespaceServiceIamPolicyArgs Empty => new GetNamespaceServiceIamPolicyArgs();
     }
 
-    public sealed class GetNamespaceServiceIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNamespaceServiceIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.ServiceDirectory.V1Beta1
         public GetNamespaceServiceIamPolicyInvokeArgs()
         {
         }
+        public static new GetNamespaceServiceIamPolicyInvokeArgs Empty => new GetNamespaceServiceIamPolicyInvokeArgs();
     }
 
 

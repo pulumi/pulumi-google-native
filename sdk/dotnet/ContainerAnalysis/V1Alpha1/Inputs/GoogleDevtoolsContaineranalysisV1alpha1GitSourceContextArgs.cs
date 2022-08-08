@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// A GitSourceContext denotes a particular revision in a third party Git repository (e.g., GitHub).
     /// </summary>
-    public sealed class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextArgs : Pulumi.ResourceArgs
+    public sealed class GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Git commit hash.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextArgs()
         {
         }
+        public static new GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextArgs Empty => new GoogleDevtoolsContaineranalysisV1alpha1GitSourceContextArgs();
     }
 }

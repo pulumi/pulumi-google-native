@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
     /// Creates a new reservation resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigqueryreservation/v1:Reservation")]
-    public partial class Reservation : Pulumi.CustomResource
+    public partial class Reservation : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
@@ -117,7 +117,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         }
     }
 
-    public sealed class ReservationArgs : Pulumi.ResourceArgs
+    public sealed class ReservationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Maximum number of queries that are allowed to run concurrently in this reservation. This is a soft limit due to asynchronous nature of the system and various optimizations for small queries. Default value is 0 which means that concurrency will be automatically set based on the reservation size.
@@ -164,5 +164,6 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1
         public ReservationArgs()
         {
         }
+        public static new ReservationArgs Empty => new ReservationArgs();
     }
 }

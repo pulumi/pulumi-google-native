@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Ml.V1.Inputs
 {
 
-    public sealed class GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("values")]
         private InputList<string>? _values;
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs()
         {
         }
+        public static new GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs Empty => new GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs();
     }
 }

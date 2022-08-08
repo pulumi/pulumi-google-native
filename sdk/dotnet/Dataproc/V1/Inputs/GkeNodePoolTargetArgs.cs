@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// GKE node pools that Dataproc workloads run on.
     /// </summary>
-    public sealed class GkeNodePoolTargetArgs : Pulumi.ResourceArgs
+    public sealed class GkeNodePoolTargetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}'
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public GkeNodePoolTargetArgs()
         {
         }
+        public static new GkeNodePoolTargetArgs Empty => new GkeNodePoolTargetArgs();
     }
 }

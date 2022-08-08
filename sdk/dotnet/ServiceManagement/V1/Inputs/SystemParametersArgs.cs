@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// ### System parameter configuration A system parameter is a special kind of parameter defined by the API system, not by an individual API. It is typically mapped to an HTTP header and/or a URL query parameter. This configuration specifies which methods change the names of the system parameters.
     /// </summary>
-    public sealed class SystemParametersArgs : Pulumi.ResourceArgs
+    public sealed class SystemParametersArgs : global::Pulumi.ResourceArgs
     {
         [Input("rules")]
         private InputList<Inputs.SystemParameterRuleArgs>? _rules;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public SystemParametersArgs()
         {
         }
+        public static new SystemParametersArgs Empty => new SystemParametersArgs();
     }
 }

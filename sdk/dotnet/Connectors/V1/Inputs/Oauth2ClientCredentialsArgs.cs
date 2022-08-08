@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
     /// <summary>
     /// Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
     /// </summary>
-    public sealed class Oauth2ClientCredentialsArgs : Pulumi.ResourceArgs
+    public sealed class Oauth2ClientCredentialsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The client identifier.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Connectors.V1.Inputs
         public Oauth2ClientCredentialsArgs()
         {
         }
+        public static new Oauth2ClientCredentialsArgs Empty => new Oauth2ClientCredentialsArgs();
     }
 }

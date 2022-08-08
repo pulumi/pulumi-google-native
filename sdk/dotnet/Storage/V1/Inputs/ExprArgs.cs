@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// Represents an expression text. Example: title: "User account presence" description: "Determines whether the request has a user account" expression: "size(request.user) &gt; 0"
     /// </summary>
-    public sealed class ExprArgs : Pulumi.ResourceArgs
+    public sealed class ExprArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public ExprArgs()
         {
         }
+        public static new ExprArgs Empty => new ExprArgs();
     }
 }

@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datacatalog/v1beta1:Taxonomy")]
-    public partial class Taxonomy : Pulumi.CustomResource
+    public partial class Taxonomy : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. A list of policy types that are activated for this taxonomy. If not set, defaults to an empty list.
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         }
     }
 
-    public sealed class TaxonomyArgs : Pulumi.ResourceArgs
+    public sealed class TaxonomyArgs : global::Pulumi.ResourceArgs
     {
         [Input("activatedPolicyTypes")]
         private InputList<Pulumi.GoogleNative.DataCatalog.V1Beta1.TaxonomyActivatedPolicyTypesItem>? _activatedPolicyTypes;
@@ -141,5 +141,6 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1
         public TaxonomyArgs()
         {
         }
+        public static new TaxonomyArgs Empty => new TaxonomyArgs();
     }
 }

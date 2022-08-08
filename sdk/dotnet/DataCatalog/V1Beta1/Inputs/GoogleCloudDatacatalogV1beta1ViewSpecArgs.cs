@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.DataCatalog.V1Beta1.Inputs
     /// <summary>
     /// Table view specification.
     /// </summary>
-    public sealed class GoogleCloudDatacatalogV1beta1ViewSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatacatalogV1beta1ViewSpecArgs : global::Pulumi.ResourceArgs
     {
         public GoogleCloudDatacatalogV1beta1ViewSpecArgs()
         {
         }
+        public static new GoogleCloudDatacatalogV1beta1ViewSpecArgs Empty => new GoogleCloudDatacatalogV1beta1ViewSpecArgs();
     }
 }

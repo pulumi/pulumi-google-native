@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
     }
 
 
-    public sealed class GetBillingAccountIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetBillingAccountIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("billingAccountId", required: true)]
         public string BillingAccountId { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         public GetBillingAccountIamPolicyArgs()
         {
         }
+        public static new GetBillingAccountIamPolicyArgs Empty => new GetBillingAccountIamPolicyArgs();
     }
 
-    public sealed class GetBillingAccountIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBillingAccountIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("billingAccountId", required: true)]
         public Input<string> BillingAccountId { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         public GetBillingAccountIamPolicyInvokeArgs()
         {
         }
+        public static new GetBillingAccountIamPolicyInvokeArgs Empty => new GetBillingAccountIamPolicyInvokeArgs();
     }
 
 

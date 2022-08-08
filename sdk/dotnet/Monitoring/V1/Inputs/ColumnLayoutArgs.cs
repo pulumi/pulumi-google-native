@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
     /// <summary>
     /// A simplified layout that divides the available space into vertical columns and arranges a set of widgets vertically in each column.
     /// </summary>
-    public sealed class ColumnLayoutArgs : Pulumi.ResourceArgs
+    public sealed class ColumnLayoutArgs : global::Pulumi.ResourceArgs
     {
         [Input("columns")]
         private InputList<Inputs.ColumnArgs>? _columns;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1.Inputs
         public ColumnLayoutArgs()
         {
         }
+        public static new ColumnLayoutArgs Empty => new ColumnLayoutArgs();
     }
 }

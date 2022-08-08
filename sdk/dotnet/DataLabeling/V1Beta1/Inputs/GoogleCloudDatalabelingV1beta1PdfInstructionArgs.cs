@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
     /// <summary>
     /// Instruction from a PDF file.
     /// </summary>
-    public sealed class GoogleCloudDatalabelingV1beta1PdfInstructionArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDatalabelingV1beta1PdfInstructionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// PDF file for the instruction. Only gcs path is allowed.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DataLabeling.V1Beta1.Inputs
         public GoogleCloudDatalabelingV1beta1PdfInstructionArgs()
         {
         }
+        public static new GoogleCloudDatalabelingV1beta1PdfInstructionArgs Empty => new GoogleCloudDatalabelingV1beta1PdfInstructionArgs();
     }
 }

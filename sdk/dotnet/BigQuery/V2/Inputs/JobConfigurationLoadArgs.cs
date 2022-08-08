@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class JobConfigurationLoadArgs : Pulumi.ResourceArgs
+    public sealed class JobConfigurationLoadArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] Accept rows that are missing trailing optional columns. The missing values are treated as nulls. If false, records with missing trailing columns are treated as bad records, and if there are too many bad records, an invalid error is returned in the job result. The default value is false. Only applicable to CSV, ignored for other formats.
@@ -151,6 +151,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public Input<Inputs.RangePartitioningArgs>? RangePartitioning { get; set; }
 
         /// <summary>
+        /// User provided referencing file with the expected reader schema, Available for the format: AVRO, PARQUET, ORC.
+        /// </summary>
+        [Input("referenceFileSchemaUri")]
+        public Input<string>? ReferenceFileSchemaUri { get; set; }
+
+        /// <summary>
         /// [Optional] The schema for the destination table. The schema can be omitted if the destination table already exists, or if you're loading data from Google Cloud Datastore.
         /// </summary>
         [Input("schema")]
@@ -225,5 +231,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public JobConfigurationLoadArgs()
         {
         }
+        public static new JobConfigurationLoadArgs Empty => new JobConfigurationLoadArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.APIGateway.V1.Inputs
     /// <summary>
     /// An OpenAPI Specification Document describing an API.
     /// </summary>
-    public sealed class ApigatewayApiConfigOpenApiDocumentArgs : Pulumi.ResourceArgs
+    public sealed class ApigatewayApiConfigOpenApiDocumentArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The OpenAPI Specification document file.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.APIGateway.V1.Inputs
         public ApigatewayApiConfigOpenApiDocumentArgs()
         {
         }
+        public static new ApigatewayApiConfigOpenApiDocumentArgs Empty => new ApigatewayApiConfigOpenApiDocumentArgs();
     }
 }

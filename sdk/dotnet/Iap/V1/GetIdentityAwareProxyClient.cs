@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Iap.V1
     }
 
 
-    public sealed class GetIdentityAwareProxyClientArgs : Pulumi.InvokeArgs
+    public sealed class GetIdentityAwareProxyClientArgs : global::Pulumi.InvokeArgs
     {
         [Input("brandId", required: true)]
         public string BrandId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Iap.V1
         public GetIdentityAwareProxyClientArgs()
         {
         }
+        public static new GetIdentityAwareProxyClientArgs Empty => new GetIdentityAwareProxyClientArgs();
     }
 
-    public sealed class GetIdentityAwareProxyClientInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetIdentityAwareProxyClientInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("brandId", required: true)]
         public Input<string> BrandId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Iap.V1
         public GetIdentityAwareProxyClientInvokeArgs()
         {
         }
+        public static new GetIdentityAwareProxyClientInvokeArgs Empty => new GetIdentityAwareProxyClientInvokeArgs();
     }
 
 

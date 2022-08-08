@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudsupport/v2beta:Case")]
-    public partial class Case : Pulumi.CustomResource
+    public partial class Case : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The issue classification applicable to this case.
@@ -64,12 +64,6 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         /// </summary>
         [Output("priority")]
         public Output<string> Priority { get; private set; } = null!;
-
-        /// <summary>
-        /// The ID of the project associated with the case.
-        /// </summary>
-        [Output("project")]
-        public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// The severity of this case. Deprecated. Use priority instead.
@@ -161,7 +155,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         }
     }
 
-    public sealed class CaseArgs : Pulumi.ResourceArgs
+    public sealed class CaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The issue classification applicable to this case.
@@ -206,12 +200,6 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         public Input<Pulumi.GoogleNative.CloudSupport.V2Beta.CasePriority>? Priority { get; set; }
 
         /// <summary>
-        /// The ID of the project associated with the case.
-        /// </summary>
-        [Input("project")]
-        public Input<string>? Project { get; set; }
-
-        /// <summary>
         /// The severity of this case. Deprecated. Use priority instead.
         /// </summary>
         [Input("severity")]
@@ -250,5 +238,6 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         public CaseArgs()
         {
         }
+        public static new CaseArgs Empty => new CaseArgs();
     }
 }

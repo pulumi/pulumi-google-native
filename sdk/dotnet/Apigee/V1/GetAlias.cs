@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetAliasArgs : Pulumi.InvokeArgs
+    public sealed class GetAliasArgs : global::Pulumi.InvokeArgs
     {
         [Input("aliasId", required: true)]
         public string AliasId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetAliasArgs()
         {
         }
+        public static new GetAliasArgs Empty => new GetAliasArgs();
     }
 
-    public sealed class GetAliasInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetAliasInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("aliasId", required: true)]
         public Input<string> AliasId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetAliasInvokeArgs()
         {
         }
+        public static new GetAliasInvokeArgs Empty => new GetAliasInvokeArgs();
     }
 
 

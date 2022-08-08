@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// The config settings for Compute Engine resources in an instance group, such as a master or worker group.
     /// </summary>
-    public sealed class InstanceGroupConfigArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("accelerators")]
         private InputList<Inputs.AcceleratorConfigArgs>? _accelerators;
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public InstanceGroupConfigArgs()
         {
         }
+        public static new InstanceGroupConfigArgs Empty => new InstanceGroupConfigArgs();
     }
 }

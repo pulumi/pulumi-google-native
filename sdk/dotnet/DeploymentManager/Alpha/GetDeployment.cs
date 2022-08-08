@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
     }
 
 
-    public sealed class GetDeploymentArgs : Pulumi.InvokeArgs
+    public sealed class GetDeploymentArgs : global::Pulumi.InvokeArgs
     {
         [Input("deployment", required: true)]
         public string Deployment { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         public GetDeploymentArgs()
         {
         }
+        public static new GetDeploymentArgs Empty => new GetDeploymentArgs();
     }
 
-    public sealed class GetDeploymentInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDeploymentInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("deployment", required: true)]
         public Input<string> Deployment { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha
         public GetDeploymentInvokeArgs()
         {
         }
+        public static new GetDeploymentInvokeArgs Empty => new GetDeploymentInvokeArgs();
     }
 
 

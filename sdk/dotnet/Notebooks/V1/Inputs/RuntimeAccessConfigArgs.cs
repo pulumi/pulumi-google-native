@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
     /// <summary>
     /// Specifies the login configuration for Runtime
     /// </summary>
-    public sealed class RuntimeAccessConfigArgs : Pulumi.ResourceArgs
+    public sealed class RuntimeAccessConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of access mode this instance.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public RuntimeAccessConfigArgs()
         {
         }
+        public static new RuntimeAccessConfigArgs Empty => new RuntimeAccessConfigArgs();
     }
 }

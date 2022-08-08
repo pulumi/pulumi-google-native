@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
     /// <summary>
     /// Specification of a custom container for serving predictions. This message is a subset of the [Kubernetes Container v1 core specification](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#container-v1-core).
     /// </summary>
-    public sealed class GoogleCloudMlV1__ContainerSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMlV1__ContainerSpecArgs : global::Pulumi.ResourceArgs
     {
         [Input("args")]
         private InputList<string>? _args;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Ml.V1.Inputs
         public GoogleCloudMlV1__ContainerSpecArgs()
         {
         }
+        public static new GoogleCloudMlV1__ContainerSpecArgs Empty => new GoogleCloudMlV1__ContainerSpecArgs();
     }
 }

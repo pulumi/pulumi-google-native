@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Configuration options for the Config Connector add-on.
     /// </summary>
-    public sealed class ConfigConnectorConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConfigConnectorConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether Cloud Connector is enabled for this cluster.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public ConfigConnectorConfigArgs()
         {
         }
+        public static new ConfigConnectorConfigArgs Empty => new ConfigConnectorConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Inputs
     /// <summary>
     /// Evaluations of restrictions applied to parent group on this membership.
     /// </summary>
-    public sealed class RestrictionEvaluationsArgs : Pulumi.ResourceArgs
+    public sealed class RestrictionEvaluationsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1.Inputs
         public RestrictionEvaluationsArgs()
         {
         }
+        public static new RestrictionEvaluationsArgs Empty => new RestrictionEvaluationsArgs();
     }
 }

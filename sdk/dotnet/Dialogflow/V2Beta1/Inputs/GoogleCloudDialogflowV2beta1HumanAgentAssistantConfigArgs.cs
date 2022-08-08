@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Defines the Human Agent Assistant to connect to a conversation.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration for agent assistance of end user participant. Currently, this feature is not general available, please contact Google to get access.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs Empty => new GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs();
     }
 }

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
 {
 
-    public sealed class ComplianceNoteArgs : Pulumi.ResourceArgs
+    public sealed class ComplianceNoteArgs : global::Pulumi.ResourceArgs
     {
         [Input("cisBenchmark")]
         public Input<Inputs.CisBenchmarkArgs>? CisBenchmark { get; set; }
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public ComplianceNoteArgs()
         {
         }
+        public static new ComplianceNoteArgs Empty => new ComplianceNoteArgs();
     }
 }

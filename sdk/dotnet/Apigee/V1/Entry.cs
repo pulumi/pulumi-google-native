@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Creates key value entries in a key value map scoped to an organization, environment, or API proxy.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Entry")]
-    public partial class Entry : Pulumi.CustomResource
+    public partial class Entry : global::Pulumi.CustomResource
     {
         [Output("apiId")]
         public Output<string> ApiId { get; private set; } = null!;
@@ -85,7 +85,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class EntryArgs : Pulumi.ResourceArgs
+    public sealed class EntryArgs : global::Pulumi.ResourceArgs
     {
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
@@ -111,5 +111,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public EntryArgs()
         {
         }
+        public static new EntryArgs Empty => new EntryArgs();
     }
 }

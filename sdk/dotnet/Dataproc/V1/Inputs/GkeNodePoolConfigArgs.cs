@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// The configuration of a GKE node pool used by a Dataproc-on-GKE cluster (https://cloud.google.com/dataproc/docs/concepts/jobs/dataproc-gke#create-a-dataproc-on-gke-cluster).
     /// </summary>
-    public sealed class GkeNodePoolConfigArgs : Pulumi.ResourceArgs
+    public sealed class GkeNodePoolConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The autoscaler configuration for this node pool. The autoscaler is enabled only when a valid configuration is present.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public GkeNodePoolConfigArgs()
         {
         }
+        public static new GkeNodePoolConfigArgs Empty => new GkeNodePoolConfigArgs();
     }
 }

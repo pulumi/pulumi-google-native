@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// Active Directory configuration, relevant only for Cloud SQL for SQL Server.
     /// </summary>
-    public sealed class SqlActiveDirectoryConfigArgs : Pulumi.ResourceArgs
+    public sealed class SqlActiveDirectoryConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the domain (e.g., mydomain.com).
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public SqlActiveDirectoryConfigArgs()
         {
         }
+        public static new SqlActiveDirectoryConfigArgs Empty => new SqlActiveDirectoryConfigArgs();
     }
 }

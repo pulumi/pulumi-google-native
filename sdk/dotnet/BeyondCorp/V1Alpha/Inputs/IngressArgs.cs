@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
     /// <summary>
     /// Settings of how to connect to the ClientGateway. One of the following options should be set.
     /// </summary>
-    public sealed class IngressArgs : Pulumi.ResourceArgs
+    public sealed class IngressArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The basic ingress config for ClientGateways.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Inputs
         public IngressArgs()
         {
         }
+        public static new IngressArgs Empty => new IngressArgs();
     }
 }

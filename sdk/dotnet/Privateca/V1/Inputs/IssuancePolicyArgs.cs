@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
     /// <summary>
     /// Defines controls over all certificate issuance within a CaPool.
     /// </summary>
-    public sealed class IssuancePolicyArgs : Pulumi.ResourceArgs
+    public sealed class IssuancePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. If specified, then only methods allowed in the IssuanceModes may be used to issue Certificates.
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.Privateca.V1.Inputs
         public IssuancePolicyArgs()
         {
         }
+        public static new IssuancePolicyArgs Empty => new IssuancePolicyArgs();
     }
 }

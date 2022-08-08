@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Audio stream resource.
     /// </summary>
-    public sealed class AudioStreamArgs : Pulumi.ResourceArgs
+    public sealed class AudioStreamArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Audio bitrate in bits per second. Must be between 1 and 10,000,000.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public AudioStreamArgs()
         {
         }
+        public static new AudioStreamArgs Empty => new AudioStreamArgs();
     }
 }

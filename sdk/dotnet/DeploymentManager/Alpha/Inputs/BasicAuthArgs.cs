@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
     /// <summary>
     /// Basic Auth used as a credential.
     /// </summary>
-    public sealed class BasicAuthArgs : Pulumi.ResourceArgs
+    public sealed class BasicAuthArgs : global::Pulumi.ResourceArgs
     {
         [Input("password")]
         public Input<string>? Password { get; set; }
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DeploymentManager.Alpha.Inputs
         public BasicAuthArgs()
         {
         }
+        public static new BasicAuthArgs Empty => new BasicAuthArgs();
     }
 }

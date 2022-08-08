@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
     /// <summary>
     /// A list of Kubernetes Namespaces
     /// </summary>
-    public sealed class NamespacesArgs : Pulumi.ResourceArgs
+    public sealed class NamespacesArgs : global::Pulumi.ResourceArgs
     {
         [Input("namespaces")]
         private InputList<string>? _namespaces;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Gkebackup.V1.Inputs
         public NamespacesArgs()
         {
         }
+        public static new NamespacesArgs Empty => new NamespacesArgs();
     }
 }

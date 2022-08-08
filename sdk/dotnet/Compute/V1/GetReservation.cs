@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.V1
     }
 
 
-    public sealed class GetReservationArgs : Pulumi.InvokeArgs
+    public sealed class GetReservationArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetReservationArgs()
         {
         }
+        public static new GetReservationArgs Empty => new GetReservationArgs();
     }
 
-    public sealed class GetReservationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetReservationInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public GetReservationInvokeArgs()
         {
         }
+        public static new GetReservationInvokeArgs Empty => new GetReservationInvokeArgs();
     }
 
 

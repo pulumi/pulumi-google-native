@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3.Inputs
     /// <summary>
     /// App Engine Routing. Defines routing characteristics specific to App Engine - service, version, and instance. For more information about services, versions, and instances see [An Overview of App Engine](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine), [Microservices Architecture on Google App Engine](https://cloud.google.com/appengine/docs/python/microservices-on-app-engine), [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed), and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
     /// </summary>
-    public sealed class AppEngineRoutingArgs : Pulumi.ResourceArgs
+    public sealed class AppEngineRoutingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// App instance. By default, the task is sent to an instance which is available when the task is attempted. Requests can only be sent to a specific instance if [manual scaling is used in App Engine Standard](https://cloud.google.com/appengine/docs/python/an-overview-of-app-engine?hl=en_US#scaling_types_and_instance_classes). App Engine Flex does not support instances. For more information, see [App Engine Standard request routing](https://cloud.google.com/appengine/docs/standard/python/how-requests-are-routed) and [App Engine Flex request routing](https://cloud.google.com/appengine/docs/flexible/python/how-requests-are-routed).
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.CloudTasks.V2Beta3.Inputs
         public AppEngineRoutingArgs()
         {
         }
+        public static new AppEngineRoutingArgs Empty => new AppEngineRoutingArgs();
     }
 }

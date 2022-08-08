@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Inputs
     /// <summary>
     /// Wrapper for cloud function attributes.
     /// </summary>
-    public sealed class CloudFunctionEndpointArgs : Pulumi.ResourceArgs
+    public sealed class CloudFunctionEndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A [Cloud function](https://cloud.google.com/functions) name.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1Beta1.Inputs
         public CloudFunctionEndpointArgs()
         {
         }
+        public static new CloudFunctionEndpointArgs Empty => new CloudFunctionEndpointArgs();
     }
 }

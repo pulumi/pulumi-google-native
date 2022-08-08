@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     /// <summary>
     /// Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
     /// </summary>
-    public sealed class BackfillAllStrategyArgs : Pulumi.ResourceArgs
+    public sealed class BackfillAllStrategyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// MySQL data source objects to avoid backfilling.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public BackfillAllStrategyArgs()
         {
         }
+        public static new BackfillAllStrategyArgs Empty => new BackfillAllStrategyArgs();
     }
 }

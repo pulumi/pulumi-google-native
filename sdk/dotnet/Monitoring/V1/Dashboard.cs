@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1
     /// Creates a new custom dashboard. For examples on how you can use this API to create dashboards, see Managing dashboards by API (https://cloud.google.com/monitoring/dashboards/api-dashboard). This method requires the monitoring.dashboards.create permission on the specified project. For more information about permissions, see Cloud Identity and Access Management (https://cloud.google.com/iam).
     /// </summary>
     [GoogleNativeResourceType("google-native:monitoring/v1:Dashboard")]
-    public partial class Dashboard : Pulumi.CustomResource
+    public partial class Dashboard : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The content is divided into equally spaced columns and the widgets are arranged vertically.
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         }
     }
 
-    public sealed class DashboardArgs : Pulumi.ResourceArgs
+    public sealed class DashboardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The content is divided into equally spaced columns and the widgets are arranged vertically.
@@ -205,5 +205,6 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         public DashboardArgs()
         {
         }
+        public static new DashboardArgs Empty => new DashboardArgs();
     }
 }

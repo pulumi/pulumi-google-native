@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// Confidential Instance Config for clusters using Confidential VMs (https://cloud.google.com/compute/confidential-vm/docs)
     /// </summary>
-    public sealed class ConfidentialInstanceConfigArgs : Pulumi.ResourceArgs
+    public sealed class ConfidentialInstanceConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Defines whether the instance should have confidential compute enabled.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public ConfidentialInstanceConfigArgs()
         {
         }
+        public static new ConfidentialInstanceConfigArgs Empty => new ConfidentialInstanceConfigArgs();
     }
 }

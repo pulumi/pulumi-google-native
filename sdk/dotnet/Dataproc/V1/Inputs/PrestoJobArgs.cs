@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
     /// <summary>
     /// A Dataproc job for running Presto (https://prestosql.io/) queries. IMPORTANT: The Dataproc Presto Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/presto) must be enabled when the cluster is created to submit a Presto job to the cluster.
     /// </summary>
-    public sealed class PrestoJobArgs : Pulumi.ResourceArgs
+    public sealed class PrestoJobArgs : global::Pulumi.ResourceArgs
     {
         [Input("clientTags")]
         private InputList<string>? _clientTags;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         public PrestoJobArgs()
         {
         }
+        public static new PrestoJobArgs Empty => new PrestoJobArgs();
     }
 }

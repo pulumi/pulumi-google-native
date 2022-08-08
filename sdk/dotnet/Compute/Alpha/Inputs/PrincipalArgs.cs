@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// [Deprecated] All fields defined in a principal are ANDed.
     /// </summary>
-    public sealed class PrincipalArgs : Pulumi.ResourceArgs
+    public sealed class PrincipalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An expression to specify custom condition.
@@ -132,5 +132,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public PrincipalArgs()
         {
         }
+        public static new PrincipalArgs Empty => new PrincipalArgs();
     }
 }

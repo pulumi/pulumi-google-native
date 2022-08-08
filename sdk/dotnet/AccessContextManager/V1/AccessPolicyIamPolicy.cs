@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:accesscontextmanager/v1:AccessPolicyIamPolicy")]
-    public partial class AccessPolicyIamPolicy : Pulumi.CustomResource
+    public partial class AccessPolicyIamPolicy : global::Pulumi.CustomResource
     {
         [Output("accessPolicyId")]
         public Output<string> AccessPolicyId { get; private set; } = null!;
@@ -91,7 +91,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         }
     }
 
-    public sealed class AccessPolicyIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AccessPolicyIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessPolicyId", required: true)]
         public Input<string> AccessPolicyId { get; set; } = null!;
@@ -141,5 +141,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1
         public AccessPolicyIamPolicyArgs()
         {
         }
+        public static new AccessPolicyIamPolicyArgs Empty => new AccessPolicyIamPolicyArgs();
     }
 }

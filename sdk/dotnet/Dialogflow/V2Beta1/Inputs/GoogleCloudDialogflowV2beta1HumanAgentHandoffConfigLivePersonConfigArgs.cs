@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
     /// <summary>
     /// Configuration specific to LivePerson (https://www.liveperson.com).
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Account number of the LivePerson account to connect. This is the account number you input at the login page.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1.Inputs
         public GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs Empty => new GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs();
     }
 }

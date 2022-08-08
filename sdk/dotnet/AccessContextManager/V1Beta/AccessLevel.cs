@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
     /// Create an Access Level. The longrunning operation from this RPC will have a successful status once the Access Level has propagated to long-lasting storage. Access Levels containing errors will result in an error response for the first error encountered.
     /// </summary>
     [GoogleNativeResourceType("google-native:accesscontextmanager/v1beta:AccessLevel")]
-    public partial class AccessLevel : Pulumi.CustomResource
+    public partial class AccessLevel : global::Pulumi.CustomResource
     {
         [Output("accessPolicyId")]
         public Output<string> AccessPolicyId { get; private set; } = null!;
@@ -95,7 +95,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         }
     }
 
-    public sealed class AccessLevelArgs : Pulumi.ResourceArgs
+    public sealed class AccessLevelArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessPolicyId", required: true)]
         public Input<string> AccessPolicyId { get; set; } = null!;
@@ -133,5 +133,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1Beta
         public AccessLevelArgs()
         {
         }
+        public static new AccessLevelArgs Empty => new AccessLevelArgs();
     }
 }

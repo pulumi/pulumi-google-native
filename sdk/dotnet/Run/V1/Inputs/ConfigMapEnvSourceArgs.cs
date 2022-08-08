@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     /// <summary>
     /// Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
     /// </summary>
-    public sealed class ConfigMapEnvSourceArgs : Pulumi.ResourceArgs
+    public sealed class ConfigMapEnvSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public ConfigMapEnvSourceArgs()
         {
         }
+        public static new ConfigMapEnvSourceArgs Empty => new ConfigMapEnvSourceArgs();
     }
 }

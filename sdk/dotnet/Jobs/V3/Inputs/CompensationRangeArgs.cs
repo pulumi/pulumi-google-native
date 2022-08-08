@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Jobs.V3.Inputs
     /// <summary>
     /// Compensation range.
     /// </summary>
-    public sealed class CompensationRangeArgs : Pulumi.ResourceArgs
+    public sealed class CompensationRangeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The maximum amount of compensation. If left empty, the value is set to a maximal compensation value and the currency code is set to match the currency code of min_compensation.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Jobs.V3.Inputs
         public CompensationRangeArgs()
         {
         }
+        public static new CompensationRangeArgs Empty => new CompensationRangeArgs();
     }
 }

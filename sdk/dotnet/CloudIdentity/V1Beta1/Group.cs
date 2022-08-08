@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudidentity/v1beta1:Group")]
-    public partial class Group : Pulumi.CustomResource
+    public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Additional entity key aliases for a Group.
@@ -135,7 +135,7 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         }
     }
 
-    public sealed class GroupArgs : Pulumi.ResourceArgs
+    public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
         [Input("additionalGroupKeys")]
         private InputList<Inputs.EntityKeyArgs>? _additionalGroupKeys;
@@ -212,5 +212,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
         public GroupArgs()
         {
         }
+        public static new GroupArgs Empty => new GroupArgs();
     }
 }

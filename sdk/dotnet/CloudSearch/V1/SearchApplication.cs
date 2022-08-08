@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
     /// Creates a search application. **Note:** This API requires an admin account to execute.
     /// </summary>
     [GoogleNativeResourceType("google-native:cloudsearch/v1:SearchApplication")]
-    public partial class SearchApplication : Pulumi.CustomResource
+    public partial class SearchApplication : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Retrictions applied to the configurations. The maximum number of elements is 10.
@@ -124,7 +124,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         }
     }
 
-    public sealed class SearchApplicationArgs : Pulumi.ResourceArgs
+    public sealed class SearchApplicationArgs : global::Pulumi.ResourceArgs
     {
         [Input("dataSourceRestrictions")]
         private InputList<Inputs.DataSourceRestrictionArgs>? _dataSourceRestrictions;
@@ -207,5 +207,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public SearchApplicationArgs()
         {
         }
+        public static new SearchApplicationArgs Empty => new SearchApplicationArgs();
     }
 }

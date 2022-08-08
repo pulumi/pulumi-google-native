@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
     /// <summary>
     /// `ServicePerimeterConfig` specifies a set of Google Cloud resources that describe specific Service Perimeter configuration.
     /// </summary>
-    public sealed class ServicePerimeterConfigArgs : Pulumi.ResourceArgs
+    public sealed class ServicePerimeterConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("accessLevels")]
         private InputList<string>? _accessLevels;
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.AccessContextManager.V1.Inputs
         public ServicePerimeterConfigArgs()
         {
         }
+        public static new ServicePerimeterConfigArgs Empty => new ServicePerimeterConfigArgs();
     }
 }

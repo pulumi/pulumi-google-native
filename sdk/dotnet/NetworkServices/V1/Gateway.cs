@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
     /// Creates a new Gateway in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:networkservices/v1:Gateway")]
-    public partial class Gateway : Pulumi.CustomResource
+    public partial class Gateway : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The timestamp when the resource was created.
@@ -49,7 +49,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+        /// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
         /// </summary>
         [Output("ports")]
         public Output<ImmutableArray<int>> Ports { get; private set; } = null!;
@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public Output<string> ServerTlsPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The type of the customer managed gateway.
+        /// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         }
     }
 
-    public sealed class GatewayArgs : Pulumi.ResourceArgs
+    public sealed class GatewayArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. A free-text description of the resource. Max length 1024 characters.
@@ -175,7 +175,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         private InputList<int>? _ports;
 
         /// <summary>
-        /// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+        /// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
         /// </summary>
         public InputList<int> Ports
         {
@@ -199,7 +199,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public Input<string>? ServerTlsPolicy { get; set; }
 
         /// <summary>
-        /// Immutable. The type of the customer managed gateway.
+        /// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
         /// </summary>
         [Input("type")]
         public Input<Pulumi.GoogleNative.NetworkServices.V1.GatewayType>? Type { get; set; }
@@ -207,5 +207,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GatewayArgs()
         {
         }
+        public static new GatewayArgs Empty => new GatewayArgs();
     }
 }

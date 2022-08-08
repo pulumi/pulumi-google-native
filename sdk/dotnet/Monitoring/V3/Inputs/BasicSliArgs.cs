@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     /// <summary>
     /// An SLI measuring performance on a well-known service type. Performance will be computed on the basis of pre-defined metrics. The type of the service_resource determines the metrics to use and the service_resource.labels and metric_labels are used to construct a monitoring filter to filter that metric down to just the data relevant to this service.
     /// </summary>
-    public sealed class BasicSliArgs : Pulumi.ResourceArgs
+    public sealed class BasicSliArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Good service is defined to be the count of requests made to this service that return successfully.
@@ -66,5 +66,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public BasicSliArgs()
         {
         }
+        public static new BasicSliArgs Empty => new BasicSliArgs();
     }
 }

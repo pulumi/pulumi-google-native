@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
     /// <summary>
     /// Configuration for client certificates on the cluster.
     /// </summary>
-    public sealed class ClientCertificateConfigArgs : Pulumi.ResourceArgs
+    public sealed class ClientCertificateConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Issue a client certificate.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public ClientCertificateConfigArgs()
         {
         }
+        public static new ClientCertificateConfigArgs Empty => new ClientCertificateConfigArgs();
     }
 }

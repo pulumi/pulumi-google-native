@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.IDS.V1
     }
 
 
-    public sealed class GetEndpointIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("endpointId", required: true)]
         public string EndpointId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.IDS.V1
         public GetEndpointIamPolicyArgs()
         {
         }
+        public static new GetEndpointIamPolicyArgs Empty => new GetEndpointIamPolicyArgs();
     }
 
-    public sealed class GetEndpointIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetEndpointIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("endpointId", required: true)]
         public Input<string> EndpointId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.IDS.V1
         public GetEndpointIamPolicyInvokeArgs()
         {
         }
+        public static new GetEndpointIamPolicyInvokeArgs Empty => new GetEndpointIamPolicyInvokeArgs();
     }
 
 

@@ -13,10 +13,11 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Throw an error and fail the request when a transformation error occurs.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2ThrowErrorArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2ThrowErrorArgs : global::Pulumi.ResourceArgs
     {
         public GooglePrivacyDlpV2ThrowErrorArgs()
         {
         }
+        public static new GooglePrivacyDlpV2ThrowErrorArgs Empty => new GooglePrivacyDlpV2ThrowErrorArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
     /// <summary>
     /// Execution using the default Cloud Build pool.
     /// </summary>
-    public sealed class DefaultPoolArgs : Pulumi.ResourceArgs
+    public sealed class DefaultPoolArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1.Inputs
         public DefaultPoolArgs()
         {
         }
+        public static new DefaultPoolArgs Empty => new DefaultPoolArgs();
     }
 }

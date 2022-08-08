@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Ml.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:ml/v1:Trial")]
-    public partial class Trial : Pulumi.CustomResource
+    public partial class Trial : global::Pulumi.CustomResource
     {
         /// <summary>
         /// The identifier of the client that originally requested this trial.
@@ -134,7 +134,7 @@ namespace Pulumi.GoogleNative.Ml.V1
         }
     }
 
-    public sealed class TrialArgs : Pulumi.ResourceArgs
+    public sealed class TrialArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The final measurement containing the objective value.
@@ -184,5 +184,6 @@ namespace Pulumi.GoogleNative.Ml.V1
         public TrialArgs()
         {
         }
+        public static new TrialArgs Empty => new TrialArgs();
     }
 }

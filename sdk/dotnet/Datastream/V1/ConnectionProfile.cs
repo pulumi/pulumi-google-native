@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:datastream/v1:ConnectionProfile")]
-    public partial class ConnectionProfile : Pulumi.CustomResource
+    public partial class ConnectionProfile : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Required. The connection profile identifier.
@@ -161,7 +161,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
         }
     }
 
-    public sealed class ConnectionProfileArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Required. The connection profile identifier.
@@ -250,5 +250,6 @@ namespace Pulumi.GoogleNative.Datastream.V1
         public ConnectionProfileArgs()
         {
         }
+        public static new ConnectionProfileArgs Empty => new ConnectionProfileArgs();
     }
 }

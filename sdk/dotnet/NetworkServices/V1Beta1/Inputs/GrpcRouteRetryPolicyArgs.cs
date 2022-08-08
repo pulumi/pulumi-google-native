@@ -13,10 +13,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
     /// <summary>
     /// The specifications for retries.
     /// </summary>
-    public sealed class GrpcRouteRetryPolicyArgs : Pulumi.ResourceArgs
+    public sealed class GrpcRouteRetryPolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specifies the allowed number of retries. This number must be &gt; 0. If not specpfied, default to 1.
+        /// Specifies the allowed number of retries. This number must be &gt; 0. If not specified, default to 1.
         /// </summary>
         [Input("numRetries")]
         public Input<int>? NumRetries { get; set; }
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1.Inputs
         public GrpcRouteRetryPolicyArgs()
         {
         }
+        public static new GrpcRouteRetryPolicyArgs Empty => new GrpcRouteRetryPolicyArgs();
     }
 }

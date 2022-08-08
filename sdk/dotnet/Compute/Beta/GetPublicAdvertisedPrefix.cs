@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
 
-    public sealed class GetPublicAdvertisedPrefixArgs : Pulumi.InvokeArgs
+    public sealed class GetPublicAdvertisedPrefixArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetPublicAdvertisedPrefixArgs()
         {
         }
+        public static new GetPublicAdvertisedPrefixArgs Empty => new GetPublicAdvertisedPrefixArgs();
     }
 
-    public sealed class GetPublicAdvertisedPrefixInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPublicAdvertisedPrefixInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetPublicAdvertisedPrefixInvokeArgs()
         {
         }
+        public static new GetPublicAdvertisedPrefixInvokeArgs Empty => new GetPublicAdvertisedPrefixInvokeArgs();
     }
 
 

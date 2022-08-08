@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigee/v1:Organization")]
-    public partial class Organization : Pulumi.CustomResource
+    public partial class Organization : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Addon configurations of the Apigee organization.
@@ -207,7 +207,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         }
     }
 
-    public sealed class OrganizationArgs : Pulumi.ResourceArgs
+    public sealed class OrganizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Addon configurations of the Apigee organization.
@@ -302,5 +302,6 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public OrganizationArgs()
         {
         }
+        public static new OrganizationArgs Empty => new OrganizationArgs();
     }
 }

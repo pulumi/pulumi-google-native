@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
-    public sealed class PacketMirroringMirroredResourceInfoInstanceInfoArgs : Pulumi.ResourceArgs
+    public sealed class PacketMirroringMirroredResourceInfoInstanceInfoArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Resource URL to the virtual machine instance which is being mirrored.
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public PacketMirroringMirroredResourceInfoInstanceInfoArgs()
         {
         }
+        public static new PacketMirroringMirroredResourceInfoInstanceInfoArgs Empty => new PacketMirroringMirroredResourceInfoInstanceInfoArgs();
     }
 }

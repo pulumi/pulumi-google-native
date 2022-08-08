@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// Custom constraint that specifies a key and a list of allowed values for Istio attributes.
     /// </summary>
-    public sealed class PermissionConstraintArgs : Pulumi.ResourceArgs
+    public sealed class PermissionConstraintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Key of the constraint.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public PermissionConstraintArgs()
         {
         }
+        public static new PermissionConstraintArgs Empty => new PermissionConstraintArgs();
     }
 }

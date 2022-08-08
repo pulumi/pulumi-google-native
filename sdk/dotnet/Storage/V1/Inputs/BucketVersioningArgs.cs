@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The bucket's versioning configuration.
     /// </summary>
-    public sealed class BucketVersioningArgs : Pulumi.ResourceArgs
+    public sealed class BucketVersioningArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// While set to true, versioning is fully enabled for this bucket.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketVersioningArgs()
         {
         }
+        public static new BucketVersioningArgs Empty => new BucketVersioningArgs();
     }
 }

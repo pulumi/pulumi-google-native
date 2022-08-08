@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
     /// Creates a new Connection in a given project and location.
     /// </summary>
     [GoogleNativeResourceType("google-native:beyondcorp/v1alpha:Connection")]
-    public partial class Connection : Pulumi.CustomResource
+    public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Address of the remote application endpoint for the BeyondCorp Connection.
@@ -153,7 +153,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         }
     }
 
-    public sealed class ConnectionArgs : Pulumi.ResourceArgs
+    public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Address of the remote application endpoint for the BeyondCorp Connection.
@@ -236,5 +236,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha
         public ConnectionArgs()
         {
         }
+        public static new ConnectionArgs Empty => new ConnectionArgs();
     }
 }

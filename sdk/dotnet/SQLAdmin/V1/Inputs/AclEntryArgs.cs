@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// An entry for an Access Control list.
     /// </summary>
-    public sealed class AclEntryArgs : Pulumi.ResourceArgs
+    public sealed class AclEntryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time when this access control entry expires in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public AclEntryArgs()
         {
         }
+        public static new AclEntryArgs Empty => new AclEntryArgs();
     }
 }

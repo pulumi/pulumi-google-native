@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.DLP.V2
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dlp/v2:StoredInfoType")]
-    public partial class StoredInfoType : Pulumi.CustomResource
+    public partial class StoredInfoType : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Current version of the stored info type.
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         }
     }
 
-    public sealed class StoredInfoTypeArgs : Pulumi.ResourceArgs
+    public sealed class StoredInfoTypeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration of the storedInfoType to create.
@@ -114,5 +114,6 @@ namespace Pulumi.GoogleNative.DLP.V2
         public StoredInfoTypeArgs()
         {
         }
+        public static new StoredInfoTypeArgs Empty => new StoredInfoTypeArgs();
     }
 }

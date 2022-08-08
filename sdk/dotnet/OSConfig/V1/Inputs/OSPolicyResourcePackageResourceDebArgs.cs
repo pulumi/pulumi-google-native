@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
     /// <summary>
     /// A deb package file. dpkg packages only support INSTALLED state.
     /// </summary>
-    public sealed class OSPolicyResourcePackageResourceDebArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyResourcePackageResourceDebArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether dependencies should also be installed. - install when false: `dpkg -i package` - install when true: `apt-get update &amp;&amp; apt-get -y install package.deb`
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1.Inputs
         public OSPolicyResourcePackageResourceDebArgs()
         {
         }
+        public static new OSPolicyResourcePackageResourceDebArgs Empty => new OSPolicyResourcePackageResourceDebArgs();
     }
 }

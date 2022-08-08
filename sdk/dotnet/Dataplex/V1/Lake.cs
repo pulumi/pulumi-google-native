@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:dataplex/v1:Lake")]
-    public partial class Lake : Pulumi.CustomResource
+    public partial class Lake : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Aggregated status of the underlying assets of the lake.
@@ -155,7 +155,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         }
     }
 
-    public sealed class LakeArgs : Pulumi.ResourceArgs
+    public sealed class LakeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Description of the lake.
@@ -208,5 +208,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         public LakeArgs()
         {
         }
+        public static new LakeArgs Empty => new LakeArgs();
     }
 }

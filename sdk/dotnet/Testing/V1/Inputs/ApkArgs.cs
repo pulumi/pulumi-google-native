@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// An Android package file to install.
     /// </summary>
-    public sealed class ApkArgs : Pulumi.ResourceArgs
+    public sealed class ApkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The path to an APK to be installed on the device before the test begins.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public ApkArgs()
         {
         }
+        public static new ApkArgs Empty => new ApkArgs();
     }
 }

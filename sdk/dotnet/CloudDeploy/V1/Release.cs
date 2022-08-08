@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:clouddeploy/v1:Release")]
-    public partial class Release : Pulumi.CustomResource
+    public partial class Release : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Indicates whether this is an abandoned release.
@@ -209,7 +209,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         }
     }
 
-    public sealed class ReleaseArgs : Pulumi.ResourceArgs
+    public sealed class ReleaseArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -313,5 +313,6 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public ReleaseArgs()
         {
         }
+        public static new ReleaseArgs Empty => new ReleaseArgs();
     }
 }

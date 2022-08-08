@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
     /// <summary>
     /// Scoring configurations for a source while processing a Search or Suggest request.
     /// </summary>
-    public sealed class ScoringConfigArgs : Pulumi.ResourceArgs
+    public sealed class ScoringConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Whether to use freshness as a ranking signal. By default, freshness is used as a ranking signal. Note that this setting is not available in the Admin UI.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudSearch.V1.Inputs
         public ScoringConfigArgs()
         {
         }
+        public static new ScoringConfigArgs Empty => new ScoringConfigArgs();
     }
 }

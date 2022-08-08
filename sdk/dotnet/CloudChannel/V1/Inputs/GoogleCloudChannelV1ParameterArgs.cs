@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
     /// <summary>
     /// Definition for extended entitlement parameters.
     /// </summary>
-    public sealed class GoogleCloudChannelV1ParameterArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudChannelV1ParameterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Name of the parameter.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         public GoogleCloudChannelV1ParameterArgs()
         {
         }
+        public static new GoogleCloudChannelV1ParameterArgs Empty => new GoogleCloudChannelV1ParameterArgs();
     }
 }

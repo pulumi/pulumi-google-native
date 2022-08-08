@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2.Inputs
     /// <summary>
     /// Configuration for a push delivery endpoint.
     /// </summary>
-    public sealed class PushConfigArgs : Pulumi.ResourceArgs
+    public sealed class PushConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("attributes")]
         private InputMap<string>? _attributes;
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Pubsub.V1Beta2.Inputs
         public PushConfigArgs()
         {
         }
+        public static new PushConfigArgs Empty => new PushConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     /// Creates a cluster within an instance. Note that exactly one of Cluster.serve_nodes and Cluster.cluster_config.cluster_autoscaling_config can be set. If serve_nodes is set to non-zero, then the cluster is manually scaled. If cluster_config.cluster_autoscaling_config is non-empty, then autoscaling is enabled.
     /// </summary>
     [GoogleNativeResourceType("google-native:bigtableadmin/v2:Cluster")]
-    public partial class Cluster : Pulumi.CustomResource
+    public partial class Cluster : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Configuration for this cluster.
@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         }
     }
 
-    public sealed class ClusterArgs : Pulumi.ResourceArgs
+    public sealed class ClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Configuration for this cluster.
@@ -171,5 +171,6 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         public ClusterArgs()
         {
         }
+        public static new ClusterArgs Empty => new ClusterArgs();
     }
 }

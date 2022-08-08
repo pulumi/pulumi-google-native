@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The bucket's logging configuration, which defines the destination bucket and optional name prefix for the current bucket's logs.
     /// </summary>
-    public sealed class BucketLoggingArgs : Pulumi.ResourceArgs
+    public sealed class BucketLoggingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The destination bucket where the current bucket's logs should be placed.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketLoggingArgs()
         {
         }
+        public static new BucketLoggingArgs Empty => new BucketLoggingArgs();
     }
 }

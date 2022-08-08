@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Run.V1
     }
 
 
-    public sealed class GetDomainMappingArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainMappingArgs : global::Pulumi.InvokeArgs
     {
         [Input("domainmappingId", required: true)]
         public string DomainmappingId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Run.V1
         public GetDomainMappingArgs()
         {
         }
+        public static new GetDomainMappingArgs Empty => new GetDomainMappingArgs();
     }
 
-    public sealed class GetDomainMappingInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDomainMappingInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("domainmappingId", required: true)]
         public Input<string> DomainmappingId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Run.V1
         public GetDomainMappingInvokeArgs()
         {
         }
+        public static new GetDomainMappingInvokeArgs Empty => new GetDomainMappingInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// A metadata key/value entry.
     /// </summary>
-    public sealed class MetadataArgs : Pulumi.ResourceArgs
+    public sealed class MetadataArgs : global::Pulumi.ResourceArgs
     {
         [Input("items")]
         private InputList<Inputs.MetadataItemsItemArgs>? _items;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public MetadataArgs()
         {
         }
+        public static new MetadataArgs Empty => new MetadataArgs();
     }
 }

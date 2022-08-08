@@ -16,8 +16,6 @@ import (
 type MigratingVm struct {
 	pulumi.CustomResourceState
 
-	// Details of the VM from an AWS source.
-	AwsSourceVmDetails AwsSourceVmDetailsResponseOutput `pulumi:"awsSourceVmDetails"`
 	// Details of the target VM in Compute Engine.
 	ComputeEngineTargetDefaults ComputeEngineTargetDefaultsResponseOutput `pulumi:"computeEngineTargetDefaults"`
 	// Details of the VM in Compute Engine. Deprecated: Use compute_engine_target_defaults instead.
@@ -216,11 +214,6 @@ func (o MigratingVmOutput) ToMigratingVmOutput() MigratingVmOutput {
 
 func (o MigratingVmOutput) ToMigratingVmOutputWithContext(ctx context.Context) MigratingVmOutput {
 	return o
-}
-
-// Details of the VM from an AWS source.
-func (o MigratingVmOutput) AwsSourceVmDetails() AwsSourceVmDetailsResponseOutput {
-	return o.ApplyT(func(v *MigratingVm) AwsSourceVmDetailsResponseOutput { return v.AwsSourceVmDetails }).(AwsSourceVmDetailsResponseOutput)
 }
 
 // Details of the target VM in Compute Engine.

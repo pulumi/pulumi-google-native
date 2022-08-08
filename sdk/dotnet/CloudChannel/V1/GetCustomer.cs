@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
     }
 
 
-    public sealed class GetCustomerArgs : Pulumi.InvokeArgs
+    public sealed class GetCustomerArgs : global::Pulumi.InvokeArgs
     {
         [Input("accountId", required: true)]
         public string AccountId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public GetCustomerArgs()
         {
         }
+        public static new GetCustomerArgs Empty => new GetCustomerArgs();
     }
 
-    public sealed class GetCustomerInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCustomerInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("accountId", required: true)]
         public Input<string> AccountId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1
         public GetCustomerInvokeArgs()
         {
         }
+        public static new GetCustomerInvokeArgs Empty => new GetCustomerInvokeArgs();
     }
 
 

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
     /// <summary>
     /// Settings controlling the volume of requests, connections and retries to this backend service.
     /// </summary>
-    public sealed class CircuitBreakersArgs : Pulumi.ResourceArgs
+    public sealed class CircuitBreakersArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The timeout for new network connections to hosts.
@@ -54,5 +54,6 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public CircuitBreakersArgs()
         {
         }
+        public static new CircuitBreakersArgs Empty => new CircuitBreakersArgs();
     }
 }

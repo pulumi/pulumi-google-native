@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// A set of properties that uniquely identify a given Docker image.
     /// </summary>
-    public sealed class FingerprintArgs : Pulumi.ResourceArgs
+    public sealed class FingerprintArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The layer-id of the final layer in the Docker image's v1 representation. This field can be used as a filter in list requests.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public FingerprintArgs()
         {
         }
+        public static new FingerprintArgs Empty => new FingerprintArgs();
     }
 }

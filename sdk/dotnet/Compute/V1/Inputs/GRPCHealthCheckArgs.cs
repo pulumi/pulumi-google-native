@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Compute.V1.Inputs
 {
 
-    public sealed class GRPCHealthCheckArgs : Pulumi.ResourceArgs
+    public sealed class GRPCHealthCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The gRPC service name for the health check. This field is optional. The value of grpc_service_name has the following meanings by convention: - Empty service_name means the overall status of all services at the backend. - Non-empty service_name means the health of that gRPC service, as defined by the owner of the service. The grpc_service_name can only be ASCII.
@@ -39,5 +39,6 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         public GRPCHealthCheckArgs()
         {
         }
+        public static new GRPCHealthCheckArgs Empty => new GRPCHealthCheckArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1.Inputs
     /// <summary>
     /// A ServiceResolver represents an EKM replica that can be reached within an EkmConnection.
     /// </summary>
-    public sealed class ServiceResolverArgs : Pulumi.ResourceArgs
+    public sealed class ServiceResolverArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The filter applied to the endpoints of the resolved service. If no filter is specified, all endpoints will be considered. An endpoint will be chosen arbitrarily from the filtered list for each request. For endpoint filter syntax and examples, see https://cloud.google.com/service-directory/docs/reference/rpc/google.cloud.servicedirectory.v1#resolveservicerequest.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Cloudkms.V1.Inputs
         public ServiceResolverArgs()
         {
         }
+        public static new ServiceResolverArgs Empty => new ServiceResolverArgs();
     }
 }

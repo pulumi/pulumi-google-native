@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1Beta1
     }
 
     /// <summary>
-    /// Immutable. The type of the customer managed gateway.
+    /// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
     /// </summary>
     [EnumType]
     public readonly struct GatewayType : IEquatable<GatewayType>

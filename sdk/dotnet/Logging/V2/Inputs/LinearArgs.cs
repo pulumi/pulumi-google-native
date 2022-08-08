@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Logging.V2.Inputs
     /// <summary>
     /// Specifies a linear sequence of buckets that all have the same width (except overflow and underflow). Each bucket represents a constant absolute uncertainty on the specific value in the bucket.There are num_finite_buckets + 2 (= N) buckets. Bucket i has the following boundaries:Upper bound (0 &lt;= i &lt; N-1): offset + (width * i). Lower bound (1 &lt;= i &lt; N): offset + (width * (i - 1)).
     /// </summary>
-    public sealed class LinearArgs : Pulumi.ResourceArgs
+    public sealed class LinearArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Must be greater than 0.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Logging.V2.Inputs
         public LinearArgs()
         {
         }
+        public static new LinearArgs Empty => new LinearArgs();
     }
 }

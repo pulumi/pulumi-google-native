@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:gkebackup/v1:BackupPlan")]
-    public partial class BackupPlan : Pulumi.CustomResource
+    public partial class BackupPlan : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Defines the configuration of Backups created via this BackupPlan.
@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<Outputs.ScheduleResponse> BackupSchedule { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+        /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
         /// </summary>
         [Output("cluster")]
         public Output<string> Cluster { get; private set; } = null!;
@@ -74,7 +74,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// The full name of the BackupPlan resource. Format: projects/*/locations/*/backupPlans/*
+        /// The full name of the BackupPlan resource. Format: `projects/*/locations/*/backupPlans/*`
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -155,7 +155,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         }
     }
 
-    public sealed class BackupPlanArgs : Pulumi.ResourceArgs
+    public sealed class BackupPlanArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defines the configuration of Backups created via this BackupPlan.
@@ -176,7 +176,7 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public Input<Inputs.ScheduleArgs>? BackupSchedule { get; set; }
 
         /// <summary>
-        /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - projects/*/locations/*/clusters/* - projects/*/zones/*/clusters/*
+        /// Immutable. The source cluster from which Backups will be created via this BackupPlan. Valid formats: - `projects/*/locations/*/clusters/*` - `projects/*/zones/*/clusters/*`
         /// </summary>
         [Input("cluster", required: true)]
         public Input<string> Cluster { get; set; } = null!;
@@ -220,5 +220,6 @@ namespace Pulumi.GoogleNative.Gkebackup.V1
         public BackupPlanArgs()
         {
         }
+        public static new BackupPlanArgs Empty => new BackupPlanArgs();
     }
 }

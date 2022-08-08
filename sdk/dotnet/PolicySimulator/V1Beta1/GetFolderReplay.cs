@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
     }
 
 
-    public sealed class GetFolderReplayArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderReplayArgs : global::Pulumi.InvokeArgs
     {
         [Input("folderId", required: true)]
         public string FolderId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
         public GetFolderReplayArgs()
         {
         }
+        public static new GetFolderReplayArgs Empty => new GetFolderReplayArgs();
     }
 
-    public sealed class GetFolderReplayInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFolderReplayInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("folderId", required: true)]
         public Input<string> FolderId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.PolicySimulator.V1Beta1
         public GetFolderReplayInvokeArgs()
         {
         }
+        public static new GetFolderReplayInvokeArgs Empty => new GetFolderReplayInvokeArgs();
     }
 
 

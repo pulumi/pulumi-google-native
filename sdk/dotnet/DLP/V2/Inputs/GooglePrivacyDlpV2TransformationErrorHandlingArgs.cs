@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// How to handle transformation errors during de-identification. A transformation error occurs when the requested transformation is incompatible with the data. For example, trying to de-identify an IP address using a `DateShift` transformation would result in a transformation error, since date info cannot be extracted from an IP address. Information about any incompatible transformations, and how they were handled, is returned in the response as part of the `TransformationOverviews`.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2TransformationErrorHandlingArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2TransformationErrorHandlingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Ignore errors
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2TransformationErrorHandlingArgs()
         {
         }
+        public static new GooglePrivacyDlpV2TransformationErrorHandlingArgs Empty => new GooglePrivacyDlpV2TransformationErrorHandlingArgs();
     }
 }

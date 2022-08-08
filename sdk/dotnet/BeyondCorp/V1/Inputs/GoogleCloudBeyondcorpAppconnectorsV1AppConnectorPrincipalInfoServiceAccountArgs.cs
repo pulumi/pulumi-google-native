@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1.Inputs
     /// <summary>
     /// ServiceAccount represents a GCP service account.
     /// </summary>
-    public sealed class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Email address of the service account.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1.Inputs
         public GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountArgs()
         {
         }
+        public static new GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountArgs Empty => new GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccountArgs();
     }
 }

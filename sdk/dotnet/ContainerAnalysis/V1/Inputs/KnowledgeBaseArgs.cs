@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
 {
 
-    public sealed class KnowledgeBaseArgs : Pulumi.ResourceArgs
+    public sealed class KnowledgeBaseArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The KB name (generally of the form KB[0-9]+ (e.g., KB123456)).
@@ -27,5 +27,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public KnowledgeBaseArgs()
         {
         }
+        public static new KnowledgeBaseArgs Empty => new KnowledgeBaseArgs();
     }
 }

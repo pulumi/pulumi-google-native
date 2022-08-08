@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
     /// Creates a model in Firebase ML. The longrunning operation will eventually return a Model
     /// </summary>
     [GoogleNativeResourceType("google-native:firebaseml/v1beta2:Model")]
-    public partial class Model : Pulumi.CustomResource
+    public partial class Model : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Lists operation ids associated with this model whose status is NOT done.
@@ -125,7 +125,7 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
         }
     }
 
-    public sealed class ModelArgs : Pulumi.ResourceArgs
+    public sealed class ModelArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The name of the model to create. The name can be up to 32 characters long and can consist only of ASCII Latin letters A-Z and a-z, underscores(_) and ASCII digits 0-9. It must start with a letter.
@@ -169,5 +169,6 @@ namespace Pulumi.GoogleNative.FirebaseML.V1Beta2
         public ModelArgs()
         {
         }
+        public static new ModelArgs Empty => new ModelArgs();
     }
 }

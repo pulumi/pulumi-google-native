@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetNodeTemplateArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeTemplateArgs : global::Pulumi.InvokeArgs
     {
         [Input("nodeTemplate", required: true)]
         public string NodeTemplate { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetNodeTemplateArgs()
         {
         }
+        public static new GetNodeTemplateArgs Empty => new GetNodeTemplateArgs();
     }
 
-    public sealed class GetNodeTemplateInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetNodeTemplateInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("nodeTemplate", required: true)]
         public Input<string> NodeTemplate { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetNodeTemplateInvokeArgs()
         {
         }
+        public static new GetNodeTemplateInvokeArgs Empty => new GetNodeTemplateInvokeArgs();
     }
 
 

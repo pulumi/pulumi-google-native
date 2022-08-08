@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:beyondcorp/v1:AppGatewayIamPolicy")]
-    public partial class AppGatewayIamPolicy : Pulumi.CustomResource
+    public partial class AppGatewayIamPolicy : global::Pulumi.CustomResource
     {
         [Output("appGatewayId")]
         public Output<string> AppGatewayId { get; private set; } = null!;
@@ -99,7 +99,7 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
         }
     }
 
-    public sealed class AppGatewayIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class AppGatewayIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("appGatewayId", required: true)]
         public Input<string> AppGatewayId { get; set; } = null!;
@@ -155,5 +155,6 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1
         public AppGatewayIamPolicyArgs()
         {
         }
+        public static new AppGatewayIamPolicyArgs Empty => new AppGatewayIamPolicyArgs();
     }
 }

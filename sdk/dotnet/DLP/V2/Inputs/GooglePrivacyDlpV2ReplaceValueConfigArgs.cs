@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     /// <summary>
     /// Replace each input value with a given `Value`.
     /// </summary>
-    public sealed class GooglePrivacyDlpV2ReplaceValueConfigArgs : Pulumi.ResourceArgs
+    public sealed class GooglePrivacyDlpV2ReplaceValueConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Value to replace it with.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public GooglePrivacyDlpV2ReplaceValueConfigArgs()
         {
         }
+        public static new GooglePrivacyDlpV2ReplaceValueConfigArgs Empty => new GooglePrivacyDlpV2ReplaceValueConfigArgs();
     }
 }

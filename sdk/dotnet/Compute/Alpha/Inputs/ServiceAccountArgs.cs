@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
     /// <summary>
     /// A service account.
     /// </summary>
-    public sealed class ServiceAccountArgs : Pulumi.ResourceArgs
+    public sealed class ServiceAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Email address of the service account.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public ServiceAccountArgs()
         {
         }
+        public static new ServiceAccountArgs Empty => new ServiceAccountArgs();
     }
 }

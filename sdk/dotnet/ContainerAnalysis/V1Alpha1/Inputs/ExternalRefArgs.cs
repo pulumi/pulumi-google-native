@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
     /// </summary>
-    public sealed class ExternalRefArgs : Pulumi.ResourceArgs
+    public sealed class ExternalRefArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// An External Reference allows a Package to reference an external source of additional information, metadata, enumerations, asset identifiers, or downloadable content believed to be relevant to the Package
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public ExternalRefArgs()
         {
         }
+        public static new ExternalRefArgs Empty => new ExternalRefArgs();
     }
 }

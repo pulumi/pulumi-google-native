@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
     }
 
 
-    public sealed class GetGatewayArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewayArgs : global::Pulumi.InvokeArgs
     {
         [Input("gatewayId", required: true)]
         public string GatewayId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetGatewayArgs()
         {
         }
+        public static new GetGatewayArgs Empty => new GetGatewayArgs();
     }
 
-    public sealed class GetGatewayInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGatewayInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("gatewayId", required: true)]
         public Input<string> GatewayId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public GetGatewayInvokeArgs()
         {
         }
+        public static new GetGatewayInvokeArgs Empty => new GetGatewayInvokeArgs();
     }
 
 
@@ -78,7 +80,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// One or more ports that the Gateway must receive traffic on. The proxy binds to the ports specified. Gateway listen on 0.0.0.0 on the ports specified below.
+        /// One or more port numbers (1-65535), on which the Gateway will receive traffic. The proxy binds to the specified ports. Gateways of type 'SECURE_WEB_GATEWAY' are limited to 1 port. Gateways of type 'OPEN_MESH' listen on 0.0.0.0 and support multiple ports.
         /// </summary>
         public readonly ImmutableArray<int> Ports;
         /// <summary>
@@ -94,7 +96,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         /// </summary>
         public readonly string ServerTlsPolicy;
         /// <summary>
-        /// Immutable. The type of the customer managed gateway.
+        /// Immutable. The type of the customer managed gateway. This field is required. If unspecified, an error is returned.
         /// </summary>
         public readonly string Type;
         /// <summary>

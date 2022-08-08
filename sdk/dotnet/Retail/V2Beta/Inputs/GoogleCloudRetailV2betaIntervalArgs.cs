@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
     /// <summary>
     /// A floating point interval.
     /// </summary>
-    public sealed class GoogleCloudRetailV2betaIntervalArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2betaIntervalArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Exclusive upper bound.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
         public GoogleCloudRetailV2betaIntervalArgs()
         {
         }
+        public static new GoogleCloudRetailV2betaIntervalArgs Empty => new GoogleCloudRetailV2betaIntervalArgs();
     }
 }

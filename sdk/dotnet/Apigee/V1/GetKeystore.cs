@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
     }
 
 
-    public sealed class GetKeystoreArgs : Pulumi.InvokeArgs
+    public sealed class GetKeystoreArgs : global::Pulumi.InvokeArgs
     {
         [Input("environmentId", required: true)]
         public string EnvironmentId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetKeystoreArgs()
         {
         }
+        public static new GetKeystoreArgs Empty => new GetKeystoreArgs();
     }
 
-    public sealed class GetKeystoreInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKeystoreInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("environmentId", required: true)]
         public Input<string> EnvironmentId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public GetKeystoreInvokeArgs()
         {
         }
+        public static new GetKeystoreInvokeArgs Empty => new GetKeystoreInvokeArgs();
     }
 
 

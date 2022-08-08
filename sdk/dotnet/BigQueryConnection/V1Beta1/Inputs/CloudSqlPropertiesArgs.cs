@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1.Inputs
     /// <summary>
     /// Connection properties specific to the Cloud SQL.
     /// </summary>
-    public sealed class CloudSqlPropertiesArgs : Pulumi.ResourceArgs
+    public sealed class CloudSqlPropertiesArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Input only. Cloud SQL credential.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1.Inputs
         public CloudSqlPropertiesArgs()
         {
         }
+        public static new CloudSqlPropertiesArgs Empty => new CloudSqlPropertiesArgs();
     }
 }

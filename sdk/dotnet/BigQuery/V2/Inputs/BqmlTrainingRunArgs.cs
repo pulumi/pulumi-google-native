@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class BqmlTrainingRunArgs : Pulumi.ResourceArgs
+    public sealed class BqmlTrainingRunArgs : global::Pulumi.ResourceArgs
     {
         [Input("iterationResults")]
         private InputList<Inputs.BqmlIterationResultArgs>? _iterationResults;
@@ -45,5 +45,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public BqmlTrainingRunArgs()
         {
         }
+        public static new BqmlTrainingRunArgs Empty => new BqmlTrainingRunArgs();
     }
 }

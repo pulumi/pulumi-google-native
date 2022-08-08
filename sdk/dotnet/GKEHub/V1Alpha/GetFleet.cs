@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
     }
 
 
-    public sealed class GetFleetArgs : Pulumi.InvokeArgs
+    public sealed class GetFleetArgs : global::Pulumi.InvokeArgs
     {
         [Input("fleetId", required: true)]
         public string FleetId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public GetFleetArgs()
         {
         }
+        public static new GetFleetArgs Empty => new GetFleetArgs();
     }
 
-    public sealed class GetFleetInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetFleetInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("fleetId", required: true)]
         public Input<string> FleetId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         public GetFleetInvokeArgs()
         {
         }
+        public static new GetFleetInvokeArgs Empty => new GetFleetInvokeArgs();
     }
 
 
@@ -74,13 +76,13 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// The name for the fleet. The name must meet the following constraints: + The name of a fleet should be unique within the organization; + It must consist of lower case alphanumeric characters or `-`; + The length of the name must be less than or equal to 63; + Unicode names must be expressed in Punycode format (rfc3492). Examples: + prod-fleet + xn--wlq33vhyw9jb （Punycode form for "生产环境")
-        /// </summary>
-        public readonly string FleetName;
-        /// <summary>
         /// The full, unique resource name of this fleet in the format of `projects/{project}/locations/{location}/fleets/{fleet}`. Each GCP project can have at most one fleet resource, named "default".
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// State of the namespace resource.
+        /// </summary>
+        public readonly Outputs.FleetLifecycleStateResponse State;
         /// <summary>
         /// Google-generated UUID for this resource. This is unique across all Fleet resources. If a Fleet resource is deleted and another resource with the same name is created, it gets a different uid.
         /// </summary>
@@ -98,9 +100,9 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
 
             string displayName,
 
-            string fleetName,
-
             string name,
+
+            Outputs.FleetLifecycleStateResponse state,
 
             string uid,
 
@@ -109,8 +111,8 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha
             CreateTime = createTime;
             DeleteTime = deleteTime;
             DisplayName = displayName;
-            FleetName = fleetName;
             Name = name;
+            State = state;
             Uid = uid;
             UpdateTime = updateTime;
         }

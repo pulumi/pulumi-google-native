@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// Metric and corresponding confidence intervals.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3ExperimentResultMetricArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3ExperimentResultMetricArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The probability that the treatment is better than all other treatments in the experiment
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3ExperimentResultMetricArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3ExperimentResultMetricArgs Empty => new GoogleCloudDialogflowCxV3ExperimentResultMetricArgs();
     }
 }

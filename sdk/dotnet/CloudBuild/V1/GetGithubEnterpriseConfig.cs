@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
     }
 
 
-    public sealed class GetGithubEnterpriseConfigArgs : Pulumi.InvokeArgs
+    public sealed class GetGithubEnterpriseConfigArgs : global::Pulumi.InvokeArgs
     {
         [Input("configId")]
         public string? ConfigId { get; set; }
@@ -45,9 +45,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public GetGithubEnterpriseConfigArgs()
         {
         }
+        public static new GetGithubEnterpriseConfigArgs Empty => new GetGithubEnterpriseConfigArgs();
     }
 
-    public sealed class GetGithubEnterpriseConfigInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetGithubEnterpriseConfigInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("configId")]
         public Input<string>? ConfigId { get; set; }
@@ -67,6 +68,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         public GetGithubEnterpriseConfigInvokeArgs()
         {
         }
+        public static new GetGithubEnterpriseConfigInvokeArgs Empty => new GetGithubEnterpriseConfigInvokeArgs();
     }
 
 

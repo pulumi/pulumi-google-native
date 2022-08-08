@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
     }
 
 
-    public sealed class GetKeyRingIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetKeyRingIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("keyRingId", required: true)]
         public string KeyRingId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public GetKeyRingIamPolicyArgs()
         {
         }
+        public static new GetKeyRingIamPolicyArgs Empty => new GetKeyRingIamPolicyArgs();
     }
 
-    public sealed class GetKeyRingIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetKeyRingIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("keyRingId", required: true)]
         public Input<string> KeyRingId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         public GetKeyRingIamPolicyInvokeArgs()
         {
         }
+        public static new GetKeyRingIamPolicyInvokeArgs Empty => new GetKeyRingIamPolicyInvokeArgs();
     }
 
 

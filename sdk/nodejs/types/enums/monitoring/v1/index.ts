@@ -441,3 +441,23 @@ export const ThresholdTargetAxis = {
  * The target axis to use for plotting the threshold. Target axis is not allowed in a Scorecard.
  */
 export type ThresholdTargetAxis = (typeof ThresholdTargetAxis)[keyof typeof ThresholdTargetAxis];
+
+export const TimeSeriesTableMetricVisualization = {
+    /**
+     * Unspecified state
+     */
+    MetricVisualizationUnspecified: "METRIC_VISUALIZATION_UNSPECIFIED",
+    /**
+     * Default text rendering
+     */
+    Number: "NUMBER",
+    /**
+     * Horizontal bar rendering
+     */
+    Bar: "BAR",
+} as const;
+
+/**
+ * Optional. Store rendering strategy
+ */
+export type TimeSeriesTableMetricVisualization = (typeof TimeSeriesTableMetricVisualization)[keyof typeof TimeSeriesTableMetricVisualization];

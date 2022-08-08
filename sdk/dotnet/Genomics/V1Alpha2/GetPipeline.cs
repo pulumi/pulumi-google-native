@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
     }
 
 
-    public sealed class GetPipelineArgs : Pulumi.InvokeArgs
+    public sealed class GetPipelineArgs : global::Pulumi.InvokeArgs
     {
         [Input("pipelineId", required: true)]
         public string PipelineId { get; set; } = null!;
@@ -33,9 +33,10 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         public GetPipelineArgs()
         {
         }
+        public static new GetPipelineArgs Empty => new GetPipelineArgs();
     }
 
-    public sealed class GetPipelineInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetPipelineInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("pipelineId", required: true)]
         public Input<string> PipelineId { get; set; } = null!;
@@ -43,6 +44,7 @@ namespace Pulumi.GoogleNative.Genomics.V1Alpha2
         public GetPipelineInvokeArgs()
         {
         }
+        public static new GetPipelineInvokeArgs Empty => new GetPipelineInvokeArgs();
     }
 
 

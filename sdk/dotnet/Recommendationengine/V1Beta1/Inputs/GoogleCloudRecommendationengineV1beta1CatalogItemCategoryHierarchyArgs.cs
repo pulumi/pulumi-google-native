@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
     /// <summary>
     /// Category represents catalog item category hierarchy.
     /// </summary>
-    public sealed class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs : global::Pulumi.ResourceArgs
     {
         [Input("categories", required: true)]
         private InputList<string>? _categories;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Recommendationengine.V1Beta1.Inputs
         public GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs()
         {
         }
+        public static new GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs Empty => new GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs();
     }
 }

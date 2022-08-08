@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:monitoring/v3:ServiceLevelObjective")]
-    public partial class ServiceLevelObjective : Pulumi.CustomResource
+    public partial class ServiceLevelObjective : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
@@ -122,7 +122,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         }
     }
 
-    public sealed class ServiceLevelObjectiveArgs : Pulumi.ResourceArgs
+    public sealed class ServiceLevelObjectiveArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A calendar period, semantically "since the start of the current ". At this time, only DAY, WEEK, FORTNIGHT, and MONTH are supported.
@@ -190,5 +190,6 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         public ServiceLevelObjectiveArgs()
         {
         }
+        public static new ServiceLevelObjectiveArgs Empty => new ServiceLevelObjectiveArgs();
     }
 }

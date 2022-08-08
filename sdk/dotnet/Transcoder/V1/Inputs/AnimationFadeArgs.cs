@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
     /// <summary>
     /// Display overlay object with fade animation.
     /// </summary>
-    public sealed class AnimationFadeArgs : Pulumi.ResourceArgs
+    public sealed class AnimationFadeArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The time to end the fade animation, in seconds. Default: `start_time_offset` + 1s
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public AnimationFadeArgs()
         {
         }
+        public static new AnimationFadeArgs Empty => new AnimationFadeArgs();
     }
 }

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
     }
 
 
-    public sealed class GetDnsAuthorizationArgs : Pulumi.InvokeArgs
+    public sealed class GetDnsAuthorizationArgs : global::Pulumi.InvokeArgs
     {
         [Input("dnsAuthorizationId", required: true)]
         public string DnsAuthorizationId { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public GetDnsAuthorizationArgs()
         {
         }
+        public static new GetDnsAuthorizationArgs Empty => new GetDnsAuthorizationArgs();
     }
 
-    public sealed class GetDnsAuthorizationInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetDnsAuthorizationInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("dnsAuthorizationId", required: true)]
         public Input<string> DnsAuthorizationId { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
         public GetDnsAuthorizationInvokeArgs()
         {
         }
+        public static new GetDnsAuthorizationInvokeArgs Empty => new GetDnsAuthorizationInvokeArgs();
     }
 
 

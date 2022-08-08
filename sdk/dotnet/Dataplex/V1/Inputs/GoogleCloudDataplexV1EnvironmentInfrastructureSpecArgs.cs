@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
     /// <summary>
     /// Configuration for the underlying infrastructure used to run workloads.
     /// </summary>
-    public sealed class GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Compute resources needed for analyze interactive workloads.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dataplex.V1.Inputs
         public GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs()
         {
         }
+        public static new GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs Empty => new GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs();
     }
 }

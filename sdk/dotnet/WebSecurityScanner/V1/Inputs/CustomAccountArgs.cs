@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1.Inputs
     /// <summary>
     /// Describes authentication configuration that uses a custom account.
     /// </summary>
-    public sealed class CustomAccountArgs : Pulumi.ResourceArgs
+    public sealed class CustomAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The login form URL of the website.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.WebSecurityScanner.V1.Inputs
         public CustomAccountArgs()
         {
         }
+        public static new CustomAccountArgs Empty => new CustomAccountArgs();
     }
 }

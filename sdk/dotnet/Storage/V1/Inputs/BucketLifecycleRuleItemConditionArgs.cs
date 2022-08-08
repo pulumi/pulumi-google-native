@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
     /// <summary>
     /// The condition(s) under which the action will be taken.
     /// </summary>
-    public sealed class BucketLifecycleRuleItemConditionArgs : Pulumi.ResourceArgs
+    public sealed class BucketLifecycleRuleItemConditionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Age of an object (in days). This condition is satisfied when an object reaches the specified age.
@@ -108,5 +108,6 @@ namespace Pulumi.GoogleNative.Storage.V1.Inputs
         public BucketLifecycleRuleItemConditionArgs()
         {
         }
+        public static new BucketLifecycleRuleItemConditionArgs Empty => new BucketLifecycleRuleItemConditionArgs();
     }
 }

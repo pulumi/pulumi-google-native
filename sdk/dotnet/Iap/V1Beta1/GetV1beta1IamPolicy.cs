@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Iap.V1Beta1
     }
 
 
-    public sealed class GetV1beta1IamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetV1beta1IamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("v1beta1Id", required: true)]
         public string V1beta1Id { get; set; } = null!;
@@ -33,9 +33,10 @@ namespace Pulumi.GoogleNative.Iap.V1Beta1
         public GetV1beta1IamPolicyArgs()
         {
         }
+        public static new GetV1beta1IamPolicyArgs Empty => new GetV1beta1IamPolicyArgs();
     }
 
-    public sealed class GetV1beta1IamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetV1beta1IamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("v1beta1Id", required: true)]
         public Input<string> V1beta1Id { get; set; } = null!;
@@ -43,6 +44,7 @@ namespace Pulumi.GoogleNative.Iap.V1Beta1
         public GetV1beta1IamPolicyInvokeArgs()
         {
         }
+        public static new GetV1beta1IamPolicyInvokeArgs Empty => new GetV1beta1IamPolicyInvokeArgs();
     }
 
 

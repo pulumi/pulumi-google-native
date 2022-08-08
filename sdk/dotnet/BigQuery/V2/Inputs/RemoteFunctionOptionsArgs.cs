@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
     /// <summary>
     /// Options for a remote user-defined function.
     /// </summary>
-    public sealed class RemoteFunctionOptionsArgs : Pulumi.ResourceArgs
+    public sealed class RemoteFunctionOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public RemoteFunctionOptionsArgs()
         {
         }
+        public static new RemoteFunctionOptionsArgs Empty => new RemoteFunctionOptionsArgs();
     }
 }

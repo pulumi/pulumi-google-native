@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
     /// <summary>
     /// Details of a deployment occurrence.
     /// </summary>
-    public sealed class GrafeasV1beta1DeploymentDetailsArgs : Pulumi.ResourceArgs
+    public sealed class GrafeasV1beta1DeploymentDetailsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Deployment history for the resource.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1.Inputs
         public GrafeasV1beta1DeploymentDetailsArgs()
         {
         }
+        public static new GrafeasV1beta1DeploymentDetailsArgs Empty => new GrafeasV1beta1DeploymentDetailsArgs();
     }
 }

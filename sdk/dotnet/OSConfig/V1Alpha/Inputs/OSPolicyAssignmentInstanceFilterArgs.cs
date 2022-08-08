@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
     /// <summary>
     /// Filters to select target VMs for an assignment. If more than one filter criteria is specified below, a VM will be selected if and only if it satisfies all of them.
     /// </summary>
-    public sealed class OSPolicyAssignmentInstanceFilterArgs : Pulumi.ResourceArgs
+    public sealed class OSPolicyAssignmentInstanceFilterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Target all VMs in the project. If true, no other criteria is permitted.
@@ -73,5 +73,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Alpha.Inputs
         public OSPolicyAssignmentInstanceFilterArgs()
         {
         }
+        public static new OSPolicyAssignmentInstanceFilterArgs Empty => new OSPolicyAssignmentInstanceFilterArgs();
     }
 }

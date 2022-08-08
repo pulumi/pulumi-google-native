@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
     /// <summary>
     /// EdgeCluster contains information specific to Google Edge Clusters.
     /// </summary>
-    public sealed class EdgeClusterArgs : Pulumi.ResourceArgs
+    public sealed class EdgeClusterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Immutable. Self-link of the GCP resource for the Edge Cluster. For example: //edgecontainer.googleapis.com/projects/my-project/locations/us-west1-a/clusters/my-cluster
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.GKEHub.V1.Inputs
         public EdgeClusterArgs()
         {
         }
+        public static new EdgeClusterArgs Empty => new EdgeClusterArgs();
     }
 }

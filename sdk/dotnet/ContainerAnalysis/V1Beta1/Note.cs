@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:containeranalysis/v1beta1:Note")]
-    public partial class Note : Pulumi.CustomResource
+    public partial class Note : global::Pulumi.CustomResource
     {
         /// <summary>
         /// A note describing an attestation role.
@@ -199,7 +199,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         }
     }
 
-    public sealed class NoteArgs : Pulumi.ResourceArgs
+    public sealed class NoteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// A note describing an attestation role.
@@ -327,5 +327,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Beta1
         public NoteArgs()
         {
         }
+        public static new NoteArgs Empty => new NoteArgs();
     }
 }

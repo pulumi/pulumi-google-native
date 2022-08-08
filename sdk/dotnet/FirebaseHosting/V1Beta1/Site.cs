@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:firebasehosting/v1beta1:Site")]
-    public partial class Site : Pulumi.CustomResource
+    public partial class Site : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
@@ -103,7 +103,7 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         }
     }
 
-    public sealed class SiteArgs : Pulumi.ResourceArgs
+    public sealed class SiteArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. The [ID of a Web App](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps#WebApp.FIELDS.app_id) associated with the Hosting site.
@@ -135,5 +135,6 @@ namespace Pulumi.GoogleNative.FirebaseHosting.V1Beta1
         public SiteArgs()
         {
         }
+        public static new SiteArgs Empty => new SiteArgs();
     }
 }

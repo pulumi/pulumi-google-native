@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     /// Creates a Router resource in the specified project and region using the data included in the request.
     /// </summary>
     [GoogleNativeResourceType("google-native:compute/alpha:Router")]
-    public partial class Router : Pulumi.CustomResource
+    public partial class Router : global::Pulumi.CustomResource
     {
         /// <summary>
         /// BGP information specific to this router.
@@ -153,7 +153,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         }
     }
 
-    public sealed class RouterArgs : Pulumi.ResourceArgs
+    public sealed class RouterArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// BGP information specific to this router.
@@ -248,5 +248,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public RouterArgs()
         {
         }
+        public static new RouterArgs Empty => new RouterArgs();
     }
 }

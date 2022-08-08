@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2
     /// Create a Job.
     /// </summary>
     [GoogleNativeResourceType("google-native:run/v2:Job")]
-    public partial class Job : Pulumi.CustomResource
+    public partial class Job : global::Pulumi.CustomResource
     {
         /// <summary>
         /// KRM-style annotations for the resource. Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and should be preserved when modifying objects. Cloud Run will populate some annotations using 'run.googleapis.com' or 'serving.knative.dev' namespaces. This field follows Kubernetes annotations' namespacing, limits, and rules. More info: https://kubernetes.io/docs/user-guide/annotations
@@ -220,7 +220,7 @@ namespace Pulumi.GoogleNative.Run.V2
         }
     }
 
-    public sealed class JobArgs : Pulumi.ResourceArgs
+    public sealed class JobArgs : global::Pulumi.ResourceArgs
     {
         [Input("annotations")]
         private InputMap<string>? _annotations;
@@ -303,5 +303,6 @@ namespace Pulumi.GoogleNative.Run.V2
         public JobArgs()
         {
         }
+        public static new JobArgs Empty => new JobArgs();
     }
 }

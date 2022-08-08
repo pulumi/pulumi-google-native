@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Specifies a resource to be used in the recipe.
     /// </summary>
-    public sealed class SoftwareRecipeArtifactArgs : Pulumi.ResourceArgs
+    public sealed class SoftwareRecipeArtifactArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Defaults to false. When false, recipes are subject to validations based on the artifact type: Remote: A checksum must be specified, and only protocols with transport-layer security are permitted. GCS: An object generation number must be specified.
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public SoftwareRecipeArtifactArgs()
         {
         }
+        public static new SoftwareRecipeArtifactArgs Empty => new SoftwareRecipeArtifactArgs();
     }
 }

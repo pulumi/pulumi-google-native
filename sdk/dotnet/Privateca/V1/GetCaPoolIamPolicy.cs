@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
     }
 
 
-    public sealed class GetCaPoolIamPolicyArgs : Pulumi.InvokeArgs
+    public sealed class GetCaPoolIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("caPoolId", required: true)]
         public string CaPoolId { get; set; } = null!;
@@ -42,9 +42,10 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public GetCaPoolIamPolicyArgs()
         {
         }
+        public static new GetCaPoolIamPolicyArgs Empty => new GetCaPoolIamPolicyArgs();
     }
 
-    public sealed class GetCaPoolIamPolicyInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetCaPoolIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("caPoolId", required: true)]
         public Input<string> CaPoolId { get; set; } = null!;
@@ -61,6 +62,7 @@ namespace Pulumi.GoogleNative.Privateca.V1
         public GetCaPoolIamPolicyInvokeArgs()
         {
         }
+        public static new GetCaPoolIamPolicyInvokeArgs Empty => new GetCaPoolIamPolicyInvokeArgs();
     }
 
 

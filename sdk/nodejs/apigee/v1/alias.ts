@@ -96,6 +96,7 @@ export class Alias extends pulumi.CustomResource {
             resourceInputs["data"] = args ? args.data : undefined;
             resourceInputs["environmentId"] = args ? args.environmentId : undefined;
             resourceInputs["extensions"] = args ? args.extensions : undefined;
+            resourceInputs["file"] = args ? args.file : undefined;
             resourceInputs["format"] = args ? args.format : undefined;
             resourceInputs["ignoreExpiryValidation"] = args ? args.ignoreExpiryValidation : undefined;
             resourceInputs["ignoreNewlineValidation"] = args ? args.ignoreNewlineValidation : undefined;
@@ -144,6 +145,10 @@ export interface AliasArgs {
      * Application specific response metadata. Must be set in the first response for streaming APIs.
      */
     extensions?: pulumi.Input<pulumi.Input<{[key: string]: pulumi.Input<string>}>[]>;
+    /**
+     * File to upload.
+     */
+    file?: pulumi.Input<pulumi.asset.Asset | pulumi.asset.Archive>;
     /**
      * Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
      */

@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetSubnetworkArgs : Pulumi.InvokeArgs
+    public sealed class GetSubnetworkArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public string? Project { get; set; }
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetSubnetworkArgs()
         {
         }
+        public static new GetSubnetworkArgs Empty => new GetSubnetworkArgs();
     }
 
-    public sealed class GetSubnetworkInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetSubnetworkInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetSubnetworkInvokeArgs()
         {
         }
+        public static new GetSubnetworkInvokeArgs Empty => new GetSubnetworkInvokeArgs();
     }
 
 

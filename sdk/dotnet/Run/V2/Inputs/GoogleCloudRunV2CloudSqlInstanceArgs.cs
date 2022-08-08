@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
     /// <summary>
     /// Represents a specific Cloud SQL instance.
     /// </summary>
-    public sealed class GoogleCloudRunV2CloudSqlInstanceArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRunV2CloudSqlInstanceArgs : global::Pulumi.ResourceArgs
     {
         [Input("instances")]
         private InputList<string>? _instances;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Run.V2.Inputs
         public GoogleCloudRunV2CloudSqlInstanceArgs()
         {
         }
+        public static new GoogleCloudRunV2CloudSqlInstanceArgs Empty => new GoogleCloudRunV2CloudSqlInstanceArgs();
     }
 }

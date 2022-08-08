@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
     /// <summary>
     /// Commitment settings for commitment-based offers.
     /// </summary>
-    public sealed class GoogleCloudChannelV1CommitmentSettingsArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudChannelV1CommitmentSettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Renewal settings applicable for a commitment-based Offer.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudChannel.V1.Inputs
         public GoogleCloudChannelV1CommitmentSettingsArgs()
         {
         }
+        public static new GoogleCloudChannelV1CommitmentSettingsArgs Empty => new GoogleCloudChannelV1CommitmentSettingsArgs();
     }
 }

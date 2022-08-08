@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
     /// <summary>
     /// Specifies how metastore metadata should be integrated with the Dataplex service.
     /// </summary>
-    public sealed class DataplexConfigArgs : Pulumi.ResourceArgs
+    public sealed class DataplexConfigArgs : global::Pulumi.ResourceArgs
     {
         [Input("lakeResources")]
         private InputMap<string>? _lakeResources;
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Inputs
         public DataplexConfigArgs()
         {
         }
+        public static new DataplexConfigArgs Empty => new DataplexConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// Configuration for the size bounds of an instance group, including its proportional size to other groups.
     /// </summary>
-    public sealed class InstanceGroupAutoscalingPolicyConfigArgs : Pulumi.ResourceArgs
+    public sealed class InstanceGroupAutoscalingPolicyConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Optional. Maximum number of instances for this group. Required for primary workers. Note that by default, clusters will not use secondary workers. Required for secondary workers if the minimum secondary instances is set.Primary workers - Bounds: [min_instances, ). Required. Secondary workers - Bounds: [min_instances, ). Default: 0.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public InstanceGroupAutoscalingPolicyConfigArgs()
         {
         }
+        public static new InstanceGroupAutoscalingPolicyConfigArgs Empty => new InstanceGroupAutoscalingPolicyConfigArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
     /// <summary>
     /// Configuration parameters for a new network.
     /// </summary>
-    public sealed class NetworkConfigArgs : Pulumi.ResourceArgs
+    public sealed class NetworkConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Interconnect bandwidth. Set only when type is CLIENT.
@@ -84,5 +84,6 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public NetworkConfigArgs()
         {
         }
+        public static new NetworkConfigArgs Empty => new NetworkConfigArgs();
     }
 }

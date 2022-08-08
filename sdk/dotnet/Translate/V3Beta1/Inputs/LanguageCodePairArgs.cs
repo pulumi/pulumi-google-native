@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1.Inputs
     /// <summary>
     /// Used with unidirectional glossaries.
     /// </summary>
-    public sealed class LanguageCodePairArgs : Pulumi.ResourceArgs
+    public sealed class LanguageCodePairArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Translate.V3Beta1.Inputs
         public LanguageCodePairArgs()
         {
         }
+        public static new LanguageCodePairArgs Empty => new LanguageCodePairArgs();
     }
 }

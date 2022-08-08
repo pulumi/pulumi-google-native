@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
     /// <summary>
     /// The specifications of dynamically generated facets.
     /// </summary>
-    public sealed class GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
         public GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs()
         {
         }
+        public static new GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs Empty => new GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs();
     }
 }

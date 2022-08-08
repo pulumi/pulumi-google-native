@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
     /// <summary>
     /// An Android mobile test specification.
     /// </summary>
-    public sealed class AndroidTestArgs : Pulumi.ResourceArgs
+    public sealed class AndroidTestArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Information about the application under test.
@@ -48,5 +48,6 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3.Inputs
         public AndroidTestArgs()
         {
         }
+        public static new AndroidTestArgs Empty => new AndroidTestArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
     /// <summary>
     /// Scheduling information for VM on maintenance/restart behaviour and node allocation in sole tenant nodes.
     /// </summary>
-    public sealed class ComputeSchedulingArgs : Pulumi.ResourceArgs
+    public sealed class ComputeSchedulingArgs : global::Pulumi.ResourceArgs
     {
         [Input("automaticRestart")]
         public Input<bool>? AutomaticRestart { get; set; }
@@ -51,5 +51,6 @@ namespace Pulumi.GoogleNative.VMMigration.V1Alpha1.Inputs
         public ComputeSchedulingArgs()
         {
         }
+        public static new ComputeSchedulingArgs Empty => new ComputeSchedulingArgs();
     }
 }

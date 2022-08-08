@@ -14,7 +14,7 @@ namespace Pulumi.GoogleNative.IAM.V1
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:iam/v1:ServiceAccount")]
-    public partial class ServiceAccount : Pulumi.CustomResource
+    public partial class ServiceAccount : global::Pulumi.CustomResource
     {
         /// <summary>
         /// Optional. A user-specified, human-readable description of the service account. The maximum length is 256 UTF-8 bytes.
@@ -114,7 +114,7 @@ namespace Pulumi.GoogleNative.IAM.V1
         }
     }
 
-    public sealed class ServiceAccountArgs : Pulumi.ResourceArgs
+    public sealed class ServiceAccountArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035.
@@ -152,5 +152,6 @@ namespace Pulumi.GoogleNative.IAM.V1
         public ServiceAccountArgs()
         {
         }
+        public static new ServiceAccountArgs Empty => new ServiceAccountArgs();
     }
 }

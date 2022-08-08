@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Speech.V1.Inputs
     /// <summary>
     /// An item of the class.
     /// </summary>
-    public sealed class ClassItemArgs : Pulumi.ResourceArgs
+    public sealed class ClassItemArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The class item's value.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Speech.V1.Inputs
         public ClassItemArgs()
         {
         }
+        public static new ClassItemArgs Empty => new ClassItemArgs();
     }
 }

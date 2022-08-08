@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// Common Vulnerability Scoring System. For details, see https://www.first.org/cvss/specification-document This is a message we will try to use for storing various versions of CVSS rather than making a separate proto for storing a specific version.
     /// </summary>
-    public sealed class CVSSArgs : Pulumi.ResourceArgs
+    public sealed class CVSSArgs : global::Pulumi.ResourceArgs
     {
         [Input("attackComplexity")]
         public Input<Pulumi.GoogleNative.ContainerAnalysis.V1.CVSSAttackComplexity>? AttackComplexity { get; set; }
@@ -60,5 +60,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public CVSSArgs()
         {
         }
+        public static new CVSSArgs Empty => new CVSSArgs();
     }
 }

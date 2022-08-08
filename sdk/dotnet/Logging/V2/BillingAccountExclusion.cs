@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Logging.V2
     /// Creates a new exclusion in the _Default sink in a specified parent resource. Only log entries belonging to that resource can be excluded. You can have up to 10 exclusions in a resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:logging/v2:BillingAccountExclusion")]
-    public partial class BillingAccountExclusion : Pulumi.CustomResource
+    public partial class BillingAccountExclusion : global::Pulumi.CustomResource
     {
         [Output("billingAccountId")]
         public Output<string> BillingAccountId { get; private set; } = null!;
@@ -101,7 +101,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         }
     }
 
-    public sealed class BillingAccountExclusionArgs : Pulumi.ResourceArgs
+    public sealed class BillingAccountExclusionArgs : global::Pulumi.ResourceArgs
     {
         [Input("billingAccountId", required: true)]
         public Input<string> BillingAccountId { get; set; } = null!;
@@ -133,5 +133,6 @@ namespace Pulumi.GoogleNative.Logging.V2
         public BillingAccountExclusionArgs()
         {
         }
+        public static new BillingAccountExclusionArgs Empty => new BillingAccountExclusionArgs();
     }
 }

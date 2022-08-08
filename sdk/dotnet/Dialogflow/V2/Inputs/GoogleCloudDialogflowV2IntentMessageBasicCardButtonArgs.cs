@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
     /// <summary>
     /// The button object that appears at the bottom of a card.
     /// </summary>
-    public sealed class GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Action to take when a user taps on the button.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V2.Inputs
         public GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs()
         {
         }
+        public static new GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs Empty => new GoogleCloudDialogflowV2IntentMessageBasicCardButtonArgs();
     }
 }

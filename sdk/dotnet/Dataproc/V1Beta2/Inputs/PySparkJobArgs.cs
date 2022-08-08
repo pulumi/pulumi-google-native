@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
     /// <summary>
     /// A Dataproc job for running Apache PySpark (https://spark.apache.org/docs/0.9.0/python-programming-guide.html) applications on YARN.
     /// </summary>
-    public sealed class PySparkJobArgs : Pulumi.ResourceArgs
+    public sealed class PySparkJobArgs : global::Pulumi.ResourceArgs
     {
         [Input("archiveUris")]
         private InputList<string>? _archiveUris;
@@ -102,5 +102,6 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2.Inputs
         public PySparkJobArgs()
         {
         }
+        public static new PySparkJobArgs Empty => new PySparkJobArgs();
     }
 }

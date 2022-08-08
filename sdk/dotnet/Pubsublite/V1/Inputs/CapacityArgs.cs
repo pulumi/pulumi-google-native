@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Pubsublite.V1.Inputs
     /// <summary>
     /// The throughput capacity configuration for each partition.
     /// </summary>
-    public sealed class CapacityArgs : Pulumi.ResourceArgs
+    public sealed class CapacityArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Publish throughput capacity per partition in MiB/s. Must be &gt;= 4 and &lt;= 16.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.Pubsublite.V1.Inputs
         public CapacityArgs()
         {
         }
+        public static new CapacityArgs Empty => new CapacityArgs();
     }
 }

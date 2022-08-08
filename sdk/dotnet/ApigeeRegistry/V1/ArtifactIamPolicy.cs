@@ -15,7 +15,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     /// on Google Cloud even though it will be deleted from Pulumi state.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigeeregistry/v1:ArtifactIamPolicy")]
-    public partial class ArtifactIamPolicy : Pulumi.CustomResource
+    public partial class ArtifactIamPolicy : global::Pulumi.CustomResource
     {
         [Output("artifactId")]
         public Output<string> ArtifactId { get; private set; } = null!;
@@ -93,7 +93,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         }
     }
 
-    public sealed class ArtifactIamPolicyArgs : Pulumi.ResourceArgs
+    public sealed class ArtifactIamPolicyArgs : global::Pulumi.ResourceArgs
     {
         [Input("artifactId", required: true)]
         public Input<string> ArtifactId { get; set; } = null!;
@@ -131,5 +131,6 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public ArtifactIamPolicyArgs()
         {
         }
+        public static new ArtifactIamPolicyArgs Empty => new ArtifactIamPolicyArgs();
     }
 }

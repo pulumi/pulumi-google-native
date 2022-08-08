@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
     /// <summary>
     /// Database instance settings.
     /// </summary>
-    public sealed class SettingsArgs : Pulumi.ResourceArgs
+    public sealed class SettingsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The activation policy specifies when the instance is activated; it is applicable only when the instance state is RUNNABLE. Valid values: * `ALWAYS`: The instance is on, and remains so even in the absence of connection requests. * `NEVER`: The instance is off; it is not activated, even if a connection request arrives.
@@ -93,6 +93,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         /// </summary>
         [Input("databaseReplicationEnabled")]
         public Input<bool>? DatabaseReplicationEnabled { get; set; }
+
+        /// <summary>
+        /// Configuration to protect against accidental instance deletion.
+        /// </summary>
+        [Input("deletionProtectionEnabled")]
+        public Input<bool>? DeletionProtectionEnabled { get; set; }
 
         [Input("denyMaintenancePeriods")]
         private InputList<Inputs.DenyMaintenancePeriodArgs>? _denyMaintenancePeriods;
@@ -199,5 +205,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1.Inputs
         public SettingsArgs()
         {
         }
+        public static new SettingsArgs Empty => new SettingsArgs();
     }
 }

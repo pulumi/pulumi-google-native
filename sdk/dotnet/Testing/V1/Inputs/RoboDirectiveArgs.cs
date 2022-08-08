@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
     /// <summary>
     /// Directs Robo to interact with a specific UI element if it is encountered during the crawl. Currently, Robo can perform text entry or element click.
     /// </summary>
-    public sealed class RoboDirectiveArgs : Pulumi.ResourceArgs
+    public sealed class RoboDirectiveArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The type of action that Robo should perform on the specified element.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Testing.V1.Inputs
         public RoboDirectiveArgs()
         {
         }
+        public static new RoboDirectiveArgs Empty => new RoboDirectiveArgs();
     }
 }

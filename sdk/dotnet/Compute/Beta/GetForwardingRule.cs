@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
 
-    public sealed class GetForwardingRuleArgs : Pulumi.InvokeArgs
+    public sealed class GetForwardingRuleArgs : global::Pulumi.InvokeArgs
     {
         [Input("forwardingRule", required: true)]
         public string ForwardingRule { get; set; } = null!;
@@ -39,9 +39,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetForwardingRuleArgs()
         {
         }
+        public static new GetForwardingRuleArgs Empty => new GetForwardingRuleArgs();
     }
 
-    public sealed class GetForwardingRuleInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetForwardingRuleInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("forwardingRule", required: true)]
         public Input<string> ForwardingRule { get; set; } = null!;
@@ -55,6 +56,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public GetForwardingRuleInvokeArgs()
         {
         }
+        public static new GetForwardingRuleInvokeArgs Empty => new GetForwardingRuleInvokeArgs();
     }
 
 

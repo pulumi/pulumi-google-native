@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     /// <summary>
     /// Time window specified for daily maintenance operations.
     /// </summary>
-    public sealed class DailyMaintenanceWindowArgs : Pulumi.ResourceArgs
+    public sealed class DailyMaintenanceWindowArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Time within the maintenance window to start the maintenance operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-59] GMT.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
         public DailyMaintenanceWindowArgs()
         {
         }
+        public static new DailyMaintenanceWindowArgs Empty => new DailyMaintenanceWindowArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
     /// <summary>
     /// Note kind that represents a logical attestation "role" or "authority". For example, an organization might have one `AttestationAuthority` for "QA" and one for "build". This Note is intended to act strictly as a grouping mechanism for the attached Occurrences (Attestations). This grouping mechanism also provides a security boundary, since IAM ACLs gate the ability for a principle to attach an Occurrence to a given Note. It also provides a single point of lookup to find all attached Attestation Occurrences, even if they don't all live in the same project.
     /// </summary>
-    public sealed class AttestationAuthorityArgs : Pulumi.ResourceArgs
+    public sealed class AttestationAuthorityArgs : global::Pulumi.ResourceArgs
     {
         [Input("hint")]
         public Input<Inputs.AttestationAuthorityHintArgs>? Hint { get; set; }
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Inputs
         public AttestationAuthorityArgs()
         {
         }
+        public static new AttestationAuthorityArgs Empty => new AttestationAuthorityArgs();
     }
 }

@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
     /// <summary>
     /// Parameters for DnsKey key generation. Used for generating initial keys for a new ManagedZone and as default when adding a new DnsKey.
     /// </summary>
-    public sealed class DnsKeySpecArgs : Pulumi.ResourceArgs
+    public sealed class DnsKeySpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// String mnemonic specifying the DNSSEC algorithm of this key.
@@ -39,5 +39,6 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
         public DnsKeySpecArgs()
         {
         }
+        public static new DnsKeySpecArgs Empty => new DnsKeySpecArgs();
     }
 }

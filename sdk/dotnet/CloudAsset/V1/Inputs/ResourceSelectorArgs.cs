@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
     /// <summary>
     /// Specifies the resource to analyze for access policies, which may be set directly on the resource, or on ancestors such as organizations, folders or projects.
     /// </summary>
-    public sealed class ResourceSelectorArgs : Pulumi.ResourceArgs
+    public sealed class ResourceSelectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The [full resource name] (https://cloud.google.com/asset-inventory/docs/resource-name-format) of a resource of [supported resource types](https://cloud.google.com/asset-inventory/docs/supported-asset-types#analyzable_asset_types).
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.CloudAsset.V1.Inputs
         public ResourceSelectorArgs()
         {
         }
+        public static new ResourceSelectorArgs Empty => new ResourceSelectorArgs();
     }
 }

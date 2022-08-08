@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
     /// <summary>
     /// Any scheduled maintenance for this instance.
     /// </summary>
-    public sealed class SqlScheduledMaintenanceArgs : Pulumi.ResourceArgs
+    public sealed class SqlScheduledMaintenanceArgs : global::Pulumi.ResourceArgs
     {
         [Input("canDefer")]
         public Input<bool>? CanDefer { get; set; }
@@ -39,5 +39,6 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Inputs
         public SqlScheduledMaintenanceArgs()
         {
         }
+        public static new SqlScheduledMaintenanceArgs Empty => new SqlScheduledMaintenanceArgs();
     }
 }

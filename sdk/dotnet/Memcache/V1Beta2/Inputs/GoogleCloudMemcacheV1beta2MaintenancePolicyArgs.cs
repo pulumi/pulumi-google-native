@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2.Inputs
     /// <summary>
     /// Maintenance policy per instance.
     /// </summary>
-    public sealed class GoogleCloudMemcacheV1beta2MaintenancePolicyArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudMemcacheV1beta2MaintenancePolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512.
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Memcache.V1Beta2.Inputs
         public GoogleCloudMemcacheV1beta2MaintenancePolicyArgs()
         {
         }
+        public static new GoogleCloudMemcacheV1beta2MaintenancePolicyArgs Empty => new GoogleCloudMemcacheV1beta2MaintenancePolicyArgs();
     }
 }

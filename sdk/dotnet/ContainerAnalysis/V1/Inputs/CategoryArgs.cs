@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
     /// <summary>
     /// The category to which the update belongs.
     /// </summary>
-    public sealed class CategoryArgs : Pulumi.ResourceArgs
+    public sealed class CategoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The identifier of the category.
@@ -30,5 +30,6 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1.Inputs
         public CategoryArgs()
         {
         }
+        public static new CategoryArgs Empty => new CategoryArgs();
     }
 }

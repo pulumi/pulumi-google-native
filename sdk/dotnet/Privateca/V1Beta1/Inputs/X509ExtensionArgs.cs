@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
     /// <summary>
     /// An X509Extension specifies an X.509 extension, which may be used in different parts of X.509 objects like certificates, CSRs, and CRLs.
     /// </summary>
-    public sealed class X509ExtensionArgs : Pulumi.ResourceArgs
+    public sealed class X509ExtensionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Indicates whether or not this extension is critical (i.e., if the client does not know how to handle this extension, the client should consider this to be an error).
@@ -36,5 +36,6 @@ namespace Pulumi.GoogleNative.Privateca.V1Beta1.Inputs
         public X509ExtensionArgs()
         {
         }
+        public static new X509ExtensionArgs Empty => new X509ExtensionArgs();
     }
 }

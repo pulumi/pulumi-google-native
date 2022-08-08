@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
     /// <summary>
     /// Configuration for the Integration add-on.
     /// </summary>
-    public sealed class GoogleCloudApigeeV1IntegrationConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudApigeeV1IntegrationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// Flag that specifies whether the Integration add-on is enabled.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.Apigee.V1.Inputs
         public GoogleCloudApigeeV1IntegrationConfigArgs()
         {
         }
+        public static new GoogleCloudApigeeV1IntegrationConfigArgs Empty => new GoogleCloudApigeeV1IntegrationConfigArgs();
     }
 }

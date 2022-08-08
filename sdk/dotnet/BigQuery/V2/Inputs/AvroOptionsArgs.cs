@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
 {
 
-    public sealed class AvroOptionsArgs : Pulumi.ResourceArgs
+    public sealed class AvroOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// [Optional] If sourceFormat is set to "AVRO", indicates whether to interpret logical types as the corresponding BigQuery data type (for example, TIMESTAMP), instead of using the raw type (for example, INTEGER).
@@ -21,5 +21,6 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         public AvroOptionsArgs()
         {
         }
+        public static new AvroOptionsArgs Empty => new AvroOptionsArgs();
     }
 }

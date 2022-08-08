@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
     /// <summary>
     /// Installs a deb via dpkg.
     /// </summary>
-    public sealed class SoftwareRecipeStepInstallDpkgArgs : Pulumi.ResourceArgs
+    public sealed class SoftwareRecipeStepInstallDpkgArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The id of the relevant artifact in the recipe.
@@ -24,5 +24,6 @@ namespace Pulumi.GoogleNative.OSConfig.V1Beta.Inputs
         public SoftwareRecipeStepInstallDpkgArgs()
         {
         }
+        public static new SoftwareRecipeStepInstallDpkgArgs Empty => new SoftwareRecipeStepInstallDpkgArgs();
     }
 }

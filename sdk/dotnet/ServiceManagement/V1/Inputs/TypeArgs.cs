@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
     /// <summary>
     /// A protocol buffer message type.
     /// </summary>
-    public sealed class TypeArgs : Pulumi.ResourceArgs
+    public sealed class TypeArgs : global::Pulumi.ResourceArgs
     {
         [Input("fields")]
         private InputList<Inputs.FieldArgs>? _fields;
@@ -72,5 +72,6 @@ namespace Pulumi.GoogleNative.ServiceManagement.V1.Inputs
         public TypeArgs()
         {
         }
+        public static new TypeArgs Empty => new TypeArgs();
     }
 }

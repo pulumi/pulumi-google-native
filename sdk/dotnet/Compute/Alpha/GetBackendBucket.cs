@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
 
-    public sealed class GetBackendBucketArgs : Pulumi.InvokeArgs
+    public sealed class GetBackendBucketArgs : global::Pulumi.InvokeArgs
     {
         [Input("backendBucket", required: true)]
         public string BackendBucket { get; set; } = null!;
@@ -36,9 +36,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetBackendBucketArgs()
         {
         }
+        public static new GetBackendBucketArgs Empty => new GetBackendBucketArgs();
     }
 
-    public sealed class GetBackendBucketInvokeArgs : Pulumi.InvokeArgs
+    public sealed class GetBackendBucketInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("backendBucket", required: true)]
         public Input<string> BackendBucket { get; set; } = null!;
@@ -49,6 +50,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public GetBackendBucketInvokeArgs()
         {
         }
+        public static new GetBackendBucketInvokeArgs Empty => new GetBackendBucketInvokeArgs();
     }
 
 

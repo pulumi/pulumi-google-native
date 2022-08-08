@@ -13,7 +13,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
     /// <summary>
     /// The configuration for auto rollout.
     /// </summary>
-    public sealed class GoogleCloudDialogflowCxV3RolloutConfigArgs : Pulumi.ResourceArgs
+    public sealed class GoogleCloudDialogflowCxV3RolloutConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The conditions that are used to evaluate the failure of a rollout step. If not specified, no rollout steps will fail. E.g. "containment_rate &lt; 10% OR average_turn_count &lt; 3". See the [conditions reference](https://cloud.google.com/dialogflow/cx/docs/reference/condition).
@@ -42,5 +42,6 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Inputs
         public GoogleCloudDialogflowCxV3RolloutConfigArgs()
         {
         }
+        public static new GoogleCloudDialogflowCxV3RolloutConfigArgs Empty => new GoogleCloudDialogflowCxV3RolloutConfigArgs();
     }
 }
