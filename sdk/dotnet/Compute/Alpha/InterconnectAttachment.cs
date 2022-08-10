@@ -259,7 +259,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// If true, the request will not be committed.
         /// </summary>
         [Output("validateOnly")]
-        public Output<string?> ValidateOnly { get; private set; } = null!;
+        public Output<bool?> ValidateOnly { get; private set; } = null!;
 
         /// <summary>
         /// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
@@ -483,7 +483,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// If true, the request will not be committed.
         /// </summary>
         [Input("validateOnly")]
-        public Input<string>? ValidateOnly { get; set; }
+        public Input<bool>? ValidateOnly { get; set; }
 
         /// <summary>
         /// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.

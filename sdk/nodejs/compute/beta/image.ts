@@ -66,7 +66,7 @@ export class Image extends pulumi.CustomResource {
     /**
      * Force image creation if true.
      */
-    public readonly forceCreate!: pulumi.Output<string | undefined>;
+    public readonly forceCreate!: pulumi.Output<boolean | undefined>;
     /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
      */
@@ -306,7 +306,7 @@ export interface ImageArgs {
     /**
      * Force image creation if true.
      */
-    forceCreate?: pulumi.Input<string>;
+    forceCreate?: pulumi.Input<boolean>;
     /**
      * A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
      */

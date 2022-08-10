@@ -21,7 +21,7 @@ export function getFirewallPolicyIamPolicy(args: GetFirewallPolicyIamPolicyArgs,
 }
 
 export interface GetFirewallPolicyIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     resource: string;
 }
 
@@ -53,6 +53,6 @@ export function getFirewallPolicyIamPolicyOutput(args: GetFirewallPolicyIamPolic
 }
 
 export interface GetFirewallPolicyIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     resource: pulumi.Input<string>;
 }

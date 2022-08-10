@@ -68,7 +68,7 @@ class AwaitableGetDomainBackupIamPolicyResult(GetDomainBackupIamPolicyResult):
 
 def get_domain_backup_iam_policy(backup_id: Optional[str] = None,
                                  domain_id: Optional[str] = None,
-                                 options_requested_policy_version: Optional[str] = None,
+                                 options_requested_policy_version: Optional[int] = None,
                                  project: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDomainBackupIamPolicyResult:
     """
@@ -91,7 +91,7 @@ def get_domain_backup_iam_policy(backup_id: Optional[str] = None,
 @_utilities.lift_output_func(get_domain_backup_iam_policy)
 def get_domain_backup_iam_policy_output(backup_id: Optional[pulumi.Input[str]] = None,
                                         domain_id: Optional[pulumi.Input[str]] = None,
-                                        options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                        options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                         project: Optional[pulumi.Input[Optional[str]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDomainBackupIamPolicyResult]:
     """

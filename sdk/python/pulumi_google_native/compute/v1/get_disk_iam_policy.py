@@ -90,7 +90,7 @@ class AwaitableGetDiskIamPolicyResult(GetDiskIamPolicyResult):
             version=self.version)
 
 
-def get_disk_iam_policy(options_requested_policy_version: Optional[str] = None,
+def get_disk_iam_policy(options_requested_policy_version: Optional[int] = None,
                         project: Optional[str] = None,
                         resource: Optional[str] = None,
                         zone: Optional[str] = None,
@@ -115,7 +115,7 @@ def get_disk_iam_policy(options_requested_policy_version: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_disk_iam_policy)
-def get_disk_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+def get_disk_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                resource: Optional[pulumi.Input[str]] = None,
                                zone: Optional[pulumi.Input[str]] = None,

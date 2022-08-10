@@ -22,7 +22,7 @@ export function getPeeringIamPolicy(args: GetPeeringIamPolicyArgs, opts?: pulumi
 }
 
 export interface GetPeeringIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     peeringId: string;
     project?: string;
 }
@@ -47,7 +47,7 @@ export function getPeeringIamPolicyOutput(args: GetPeeringIamPolicyOutputArgs, o
 }
 
 export interface GetPeeringIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     peeringId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

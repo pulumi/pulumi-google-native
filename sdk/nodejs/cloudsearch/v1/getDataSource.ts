@@ -22,7 +22,7 @@ export function getDataSource(args: GetDataSourceArgs, opts?: pulumi.InvokeOptio
 
 export interface GetDataSourceArgs {
     datasourceId: string;
-    debugOptionsEnableDebugging?: string;
+    debugOptionsEnableDebugging?: boolean;
 }
 
 export interface GetDataSourceResult {
@@ -70,5 +70,5 @@ export function getDataSourceOutput(args: GetDataSourceOutputArgs, opts?: pulumi
 
 export interface GetDataSourceOutputArgs {
     datasourceId: pulumi.Input<string>;
-    debugOptionsEnableDebugging?: pulumi.Input<string>;
+    debugOptionsEnableDebugging?: pulumi.Input<boolean>;
 }

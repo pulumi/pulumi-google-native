@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Initial count of nodes in the node group.
         /// </summary>
         [Output("initialNodeCount")]
-        public Output<string> InitialNodeCount { get; private set; } = null!;
+        public Output<int> InitialNodeCount { get; private set; } = null!;
 
         /// <summary>
         /// The type of the resource. Always compute#nodeGroup for node group.
@@ -181,7 +181,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Initial count of nodes in the node group.
         /// </summary>
         [Input("initialNodeCount", required: true)]
-        public Input<string> InitialNodeCount { get; set; } = null!;
+        public Input<int> InitialNodeCount { get; set; } = null!;
 
         /// <summary>
         /// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.

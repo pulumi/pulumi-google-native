@@ -22,7 +22,7 @@ export function getBillingAccountIamPolicy(args: GetBillingAccountIamPolicyArgs,
 
 export interface GetBillingAccountIamPolicyArgs {
     billingAccountId: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
 }
 
 export interface GetBillingAccountIamPolicyResult {
@@ -50,5 +50,5 @@ export function getBillingAccountIamPolicyOutput(args: GetBillingAccountIamPolic
 
 export interface GetBillingAccountIamPolicyOutputArgs {
     billingAccountId: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
 }

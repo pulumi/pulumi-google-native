@@ -78,7 +78,7 @@ export class TagKey extends pulumi.CustomResource {
     /**
      * Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a TagKey resource with the given unique name, arguments, and options.
@@ -158,5 +158,5 @@ export interface TagKeyArgs {
     /**
      * Optional. Set to true to perform validations necessary for creating the resource, but not actually perform the action.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
 }

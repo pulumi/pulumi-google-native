@@ -21,8 +21,8 @@ func LookupDataSource(ctx *pulumi.Context, args *LookupDataSourceArgs, opts ...p
 }
 
 type LookupDataSourceArgs struct {
-	DatasourceId                string  `pulumi:"datasourceId"`
-	DebugOptionsEnableDebugging *string `pulumi:"debugOptionsEnableDebugging"`
+	DatasourceId                string `pulumi:"datasourceId"`
+	DebugOptionsEnableDebugging *bool  `pulumi:"debugOptionsEnableDebugging"`
 }
 
 type LookupDataSourceResult struct {
@@ -60,8 +60,8 @@ func LookupDataSourceOutput(ctx *pulumi.Context, args LookupDataSourceOutputArgs
 }
 
 type LookupDataSourceOutputArgs struct {
-	DatasourceId                pulumi.StringInput    `pulumi:"datasourceId"`
-	DebugOptionsEnableDebugging pulumi.StringPtrInput `pulumi:"debugOptionsEnableDebugging"`
+	DatasourceId                pulumi.StringInput  `pulumi:"datasourceId"`
+	DebugOptionsEnableDebugging pulumi.BoolPtrInput `pulumi:"debugOptionsEnableDebugging"`
 }
 
 func (LookupDataSourceOutputArgs) ElementType() reflect.Type {

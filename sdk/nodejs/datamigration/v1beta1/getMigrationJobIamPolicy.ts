@@ -25,7 +25,7 @@ export function getMigrationJobIamPolicy(args: GetMigrationJobIamPolicyArgs, opt
 export interface GetMigrationJobIamPolicyArgs {
     location: string;
     migrationJobId: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getMigrationJobIamPolicyOutput(args: GetMigrationJobIamPolicyOut
 export interface GetMigrationJobIamPolicyOutputArgs {
     location: pulumi.Input<string>;
     migrationJobId: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

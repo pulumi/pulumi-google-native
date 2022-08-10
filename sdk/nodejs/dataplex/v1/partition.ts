@@ -50,7 +50,7 @@ export class Partition extends pulumi.CustomResource {
     /**
      * Optional. Only validate the request, but do not perform mutations. The default is false.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
     /**
      * Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
      */
@@ -122,7 +122,7 @@ export interface PartitionArgs {
     /**
      * Optional. Only validate the request, but do not perform mutations. The default is false.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
     /**
      * Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
      */

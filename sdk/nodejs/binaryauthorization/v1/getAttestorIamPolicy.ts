@@ -23,7 +23,7 @@ export function getAttestorIamPolicy(args: GetAttestorIamPolicyArgs, opts?: pulu
 
 export interface GetAttestorIamPolicyArgs {
     attestorId: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -48,6 +48,6 @@ export function getAttestorIamPolicyOutput(args: GetAttestorIamPolicyOutputArgs,
 
 export interface GetAttestorIamPolicyOutputArgs {
     attestorId: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

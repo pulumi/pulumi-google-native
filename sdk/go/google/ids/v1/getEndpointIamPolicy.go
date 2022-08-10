@@ -23,7 +23,7 @@ func LookupEndpointIamPolicy(ctx *pulumi.Context, args *LookupEndpointIamPolicyA
 type LookupEndpointIamPolicyArgs struct {
 	EndpointId                    string  `pulumi:"endpointId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ func LookupEndpointIamPolicyOutput(ctx *pulumi.Context, args LookupEndpointIamPo
 type LookupEndpointIamPolicyOutputArgs struct {
 	EndpointId                    pulumi.StringInput    `pulumi:"endpointId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

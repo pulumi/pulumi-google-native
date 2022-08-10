@@ -20,14 +20,14 @@ class PartitionArgs:
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Partition resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
         :param pulumi.Input[str] etag: Optional. The etag for this partition.
         :param pulumi.Input[str] location: Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
-        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "entity_id", entity_id)
         pulumi.set(__self__, "lake_id", lake_id)
@@ -108,14 +108,14 @@ class PartitionArgs:
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[str]]:
+    def validate_only(self) -> Optional[pulumi.Input[bool]]:
         """
         Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[str]]):
+    def validate_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "validate_only", value)
 
     @property
@@ -138,7 +138,7 @@ class Partition(pulumi.CustomResource):
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -150,7 +150,7 @@ class Partition(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] etag: Optional. The etag for this partition.
         :param pulumi.Input[str] location: Immutable. The location of the entity data within the partition, for example, gs://bucket/path/to/entity/key1=value1/key2=value2. Or projects//datasets//tables/
-        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] values: Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
         """
         ...
@@ -183,7 +183,7 @@ class Partition(pulumi.CustomResource):
                  lake_id: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -283,7 +283,7 @@ class Partition(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[str]]:
+    def validate_only(self) -> pulumi.Output[Optional[bool]]:
         """
         Optional. Only validate the request, but do not perform mutations. The default is false.
         """

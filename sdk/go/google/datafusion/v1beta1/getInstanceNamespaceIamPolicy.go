@@ -24,7 +24,7 @@ type LookupInstanceNamespaceIamPolicyArgs struct {
 	InstanceId                    string  `pulumi:"instanceId"`
 	Location                      string  `pulumi:"location"`
 	NamespaceId                   string  `pulumi:"namespaceId"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -56,7 +56,7 @@ type LookupInstanceNamespaceIamPolicyOutputArgs struct {
 	InstanceId                    pulumi.StringInput    `pulumi:"instanceId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
 	NamespaceId                   pulumi.StringInput    `pulumi:"namespaceId"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

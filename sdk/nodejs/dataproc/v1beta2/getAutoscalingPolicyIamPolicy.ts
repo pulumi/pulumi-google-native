@@ -25,7 +25,7 @@ export function getAutoscalingPolicyIamPolicy(args: GetAutoscalingPolicyIamPolic
 export interface GetAutoscalingPolicyIamPolicyArgs {
     autoscalingPolicyId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -51,6 +51,6 @@ export function getAutoscalingPolicyIamPolicyOutput(args: GetAutoscalingPolicyIa
 export interface GetAutoscalingPolicyIamPolicyOutputArgs {
     autoscalingPolicyId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

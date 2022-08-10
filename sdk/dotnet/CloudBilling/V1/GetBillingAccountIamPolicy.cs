@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         public string BillingAccountId { get; set; } = null!;
 
         [Input("optionsRequestedPolicyVersion")]
-        public string? OptionsRequestedPolicyVersion { get; set; }
+        public int? OptionsRequestedPolicyVersion { get; set; }
 
         public GetBillingAccountIamPolicyArgs()
         {
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.CloudBilling.V1
         public Input<string> BillingAccountId { get; set; } = null!;
 
         [Input("optionsRequestedPolicyVersion")]
-        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+        public Input<int>? OptionsRequestedPolicyVersion { get; set; }
 
         public GetBillingAccountIamPolicyInvokeArgs()
         {

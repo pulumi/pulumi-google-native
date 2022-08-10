@@ -25,7 +25,7 @@ export function getMeshIamPolicy(args: GetMeshIamPolicyArgs, opts?: pulumi.Invok
 export interface GetMeshIamPolicyArgs {
     location: string;
     meshId: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getMeshIamPolicyOutput(args: GetMeshIamPolicyOutputArgs, opts?: 
 export interface GetMeshIamPolicyOutputArgs {
     location: pulumi.Input<string>;
     meshId: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

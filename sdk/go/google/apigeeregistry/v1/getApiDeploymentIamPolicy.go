@@ -24,7 +24,7 @@ type LookupApiDeploymentIamPolicyArgs struct {
 	ApiId                         string  `pulumi:"apiId"`
 	DeploymentId                  string  `pulumi:"deploymentId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ type LookupApiDeploymentIamPolicyOutputArgs struct {
 	ApiId                         pulumi.StringInput    `pulumi:"apiId"`
 	DeploymentId                  pulumi.StringInput    `pulumi:"deploymentId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

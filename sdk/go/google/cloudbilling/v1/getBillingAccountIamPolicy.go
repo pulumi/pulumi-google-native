@@ -21,8 +21,8 @@ func LookupBillingAccountIamPolicy(ctx *pulumi.Context, args *LookupBillingAccou
 }
 
 type LookupBillingAccountIamPolicyArgs struct {
-	BillingAccountId              string  `pulumi:"billingAccountId"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	BillingAccountId              string `pulumi:"billingAccountId"`
+	OptionsRequestedPolicyVersion *int   `pulumi:"optionsRequestedPolicyVersion"`
 }
 
 type LookupBillingAccountIamPolicyResult struct {
@@ -50,8 +50,8 @@ func LookupBillingAccountIamPolicyOutput(ctx *pulumi.Context, args LookupBilling
 }
 
 type LookupBillingAccountIamPolicyOutputArgs struct {
-	BillingAccountId              pulumi.StringInput    `pulumi:"billingAccountId"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	BillingAccountId              pulumi.StringInput `pulumi:"billingAccountId"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput `pulumi:"optionsRequestedPolicyVersion"`
 }
 
 func (LookupBillingAccountIamPolicyOutputArgs) ElementType() reflect.Type {

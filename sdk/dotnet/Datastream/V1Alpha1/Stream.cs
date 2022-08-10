@@ -62,7 +62,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
         /// Optional. Create the stream without validating it.
         /// </summary>
         [Output("force")]
-        public Output<string?> Force { get; private set; } = null!;
+        public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
         /// Labels.
@@ -116,7 +116,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
         /// Optional. Only validate the stream, but do not create any resources. The default is false.
         /// </summary>
         [Output("validateOnly")]
-        public Output<string?> ValidateOnly { get; private set; } = null!;
+        public Output<bool?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
         /// Optional. Create the stream without validating it.
         /// </summary>
         [Input("force")]
-        public Input<string>? Force { get; set; }
+        public Input<bool>? Force { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -251,7 +251,7 @@ namespace Pulumi.GoogleNative.Datastream.V1Alpha1
         /// Optional. Only validate the stream, but do not create any resources. The default is false.
         /// </summary>
         [Input("validateOnly")]
-        public Input<string>? ValidateOnly { get; set; }
+        public Input<bool>? ValidateOnly { get; set; }
 
         public StreamArgs()
         {

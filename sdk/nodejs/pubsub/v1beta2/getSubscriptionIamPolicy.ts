@@ -22,7 +22,7 @@ export function getSubscriptionIamPolicy(args: GetSubscriptionIamPolicyArgs, opt
 }
 
 export interface GetSubscriptionIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     subscriptionId: string;
 }
@@ -47,7 +47,7 @@ export function getSubscriptionIamPolicyOutput(args: GetSubscriptionIamPolicyOut
 }
 
 export interface GetSubscriptionIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     subscriptionId: pulumi.Input<string>;
 }

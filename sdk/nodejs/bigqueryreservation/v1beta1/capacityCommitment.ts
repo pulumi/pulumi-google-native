@@ -51,7 +51,7 @@ export class CapacityCommitment extends pulumi.CustomResource {
     /**
      * If true, fail the request if another project in the organization has a capacity commitment.
      */
-    public readonly enforceSingleAdminProjectPerOrg!: pulumi.Output<string | undefined>;
+    public readonly enforceSingleAdminProjectPerOrg!: pulumi.Output<boolean | undefined>;
     /**
      * For FAILED commitment plan, provides the reason of failure.
      */
@@ -140,7 +140,7 @@ export interface CapacityCommitmentArgs {
     /**
      * If true, fail the request if another project in the organization has a capacity commitment.
      */
-    enforceSingleAdminProjectPerOrg?: pulumi.Input<string>;
+    enforceSingleAdminProjectPerOrg?: pulumi.Input<boolean>;
     location?: pulumi.Input<string>;
     /**
      * Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.

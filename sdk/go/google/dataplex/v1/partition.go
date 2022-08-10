@@ -25,7 +25,7 @@ type Partition struct {
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 	// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
 	Values pulumi.StringArrayOutput `pulumi:"values"`
 	Zone   pulumi.StringOutput      `pulumi:"zone"`
@@ -95,7 +95,7 @@ type partitionArgs struct {
 	Location *string `pulumi:"location"`
 	Project  *string `pulumi:"project"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 	// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
 	Values []string `pulumi:"values"`
 	Zone   *string  `pulumi:"zone"`
@@ -111,7 +111,7 @@ type PartitionArgs struct {
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 	// Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.
 	Values pulumi.StringArrayInput
 	Zone   pulumi.StringPtrInput
@@ -181,8 +181,8 @@ func (o PartitionOutput) Project() pulumi.StringOutput {
 }
 
 // Optional. Only validate the request, but do not perform mutations. The default is false.
-func (o PartitionOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Partition) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o PartitionOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Partition) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 // Immutable. The set of values representing the partition, which correspond to the partition schema defined in the parent entity.

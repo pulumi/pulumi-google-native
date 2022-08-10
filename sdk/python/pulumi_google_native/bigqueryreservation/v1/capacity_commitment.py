@@ -17,7 +17,7 @@ __all__ = ['CapacityCommitmentArgs', 'CapacityCommitment']
 class CapacityCommitmentArgs:
     def __init__(__self__, *,
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
-                 enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
+                 enforce_single_admin_project_per_org: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input['CapacityCommitmentPlan']] = None,
@@ -27,7 +27,7 @@ class CapacityCommitmentArgs:
         """
         The set of arguments for constructing a CapacityCommitment resource.
         :param pulumi.Input[str] capacity_commitment_id: The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
-        :param pulumi.Input[str] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
+        :param pulumi.Input[bool] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
         :param pulumi.Input['CapacityCommitmentPlan'] plan: Capacity commitment commitment plan.
         :param pulumi.Input['CapacityCommitmentRenewalPlan'] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
@@ -64,14 +64,14 @@ class CapacityCommitmentArgs:
 
     @property
     @pulumi.getter(name="enforceSingleAdminProjectPerOrg")
-    def enforce_single_admin_project_per_org(self) -> Optional[pulumi.Input[str]]:
+    def enforce_single_admin_project_per_org(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, fail the request if another project in the organization has a capacity commitment.
         """
         return pulumi.get(self, "enforce_single_admin_project_per_org")
 
     @enforce_single_admin_project_per_org.setter
-    def enforce_single_admin_project_per_org(self, value: Optional[pulumi.Input[str]]):
+    def enforce_single_admin_project_per_org(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enforce_single_admin_project_per_org", value)
 
     @property
@@ -147,7 +147,7 @@ class CapacityCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
-                 enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
+                 enforce_single_admin_project_per_org: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input['CapacityCommitmentPlan']] = None,
@@ -162,7 +162,7 @@ class CapacityCommitment(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] capacity_commitment_id: The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
-        :param pulumi.Input[str] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
+        :param pulumi.Input[bool] enforce_single_admin_project_per_org: If true, fail the request if another project in the organization has a capacity commitment.
         :param pulumi.Input[bool] multi_region_auxiliary: Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
         :param pulumi.Input['CapacityCommitmentPlan'] plan: Capacity commitment commitment plan.
         :param pulumi.Input['CapacityCommitmentRenewalPlan'] renewal_plan: The plan this capacity commitment is converted to after commitment_end_time passes. Once the plan is changed, committed period is extended according to commitment plan. Only applicable for ANNUAL and TRIAL commitments.
@@ -194,7 +194,7 @@ class CapacityCommitment(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_commitment_id: Optional[pulumi.Input[str]] = None,
-                 enforce_single_admin_project_per_org: Optional[pulumi.Input[str]] = None,
+                 enforce_single_admin_project_per_org: Optional[pulumi.Input[bool]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  multi_region_auxiliary: Optional[pulumi.Input[bool]] = None,
                  plan: Optional[pulumi.Input['CapacityCommitmentPlan']] = None,
@@ -288,7 +288,7 @@ class CapacityCommitment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="enforceSingleAdminProjectPerOrg")
-    def enforce_single_admin_project_per_org(self) -> pulumi.Output[Optional[str]]:
+    def enforce_single_admin_project_per_org(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, fail the request if another project in the organization has a capacity commitment.
         """

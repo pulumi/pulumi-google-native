@@ -50,7 +50,7 @@ export class AppProfile extends pulumi.CustomResource {
     /**
      * If true, ignore safety checks when creating the app profile.
      */
-    public readonly ignoreWarnings!: pulumi.Output<string | undefined>;
+    public readonly ignoreWarnings!: pulumi.Output<boolean | undefined>;
     public readonly instanceId!: pulumi.Output<string>;
     /**
      * Use a multi-cluster routing policy.
@@ -129,7 +129,7 @@ export interface AppProfileArgs {
     /**
      * If true, ignore safety checks when creating the app profile.
      */
-    ignoreWarnings?: pulumi.Input<string>;
+    ignoreWarnings?: pulumi.Input<boolean>;
     instanceId: pulumi.Input<string>;
     /**
      * Use a multi-cluster routing policy.

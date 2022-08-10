@@ -79,7 +79,7 @@ class AwaitableGetProviderIamPolicyResult(GetProviderIamPolicyResult):
 
 
 def get_provider_iam_policy(location: Optional[str] = None,
-                            options_requested_policy_version: Optional[str] = None,
+                            options_requested_policy_version: Optional[int] = None,
                             project: Optional[str] = None,
                             provider_id: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetProviderIamPolicyResult:
@@ -103,7 +103,7 @@ def get_provider_iam_policy(location: Optional[str] = None,
 
 @_utilities.lift_output_func(get_provider_iam_policy)
 def get_provider_iam_policy_output(location: Optional[pulumi.Input[str]] = None,
-                                   options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                   options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
                                    provider_id: Optional[pulumi.Input[str]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProviderIamPolicyResult]:

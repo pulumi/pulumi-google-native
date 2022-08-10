@@ -41,7 +41,7 @@ class InterconnectAttachmentArgs:
                  stack_type: Optional[pulumi.Input['InterconnectAttachmentStackType']] = None,
                  subnet_length: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input['InterconnectAttachmentType']] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a InterconnectAttachment resource.
@@ -67,7 +67,7 @@ class InterconnectAttachmentArgs:
         :param pulumi.Input['InterconnectAttachmentStackType'] stack_type: The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
         :param pulumi.Input[int] subnet_length: Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. 
         :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
-        :param pulumi.Input[str] validate_only: If true, the request will not be committed.
+        :param pulumi.Input[bool] validate_only: If true, the request will not be committed.
         :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
         """
         pulumi.set(__self__, "region", region)
@@ -406,14 +406,14 @@ class InterconnectAttachmentArgs:
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[str]]:
+    def validate_only(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, the request will not be committed.
         """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[str]]):
+    def validate_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "validate_only", value)
 
     @property
@@ -458,7 +458,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  stack_type: Optional[pulumi.Input['InterconnectAttachmentStackType']] = None,
                  subnet_length: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input['InterconnectAttachmentType']] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         """
@@ -488,7 +488,7 @@ class InterconnectAttachment(pulumi.CustomResource):
         :param pulumi.Input['InterconnectAttachmentStackType'] stack_type: The stack type for this interconnect attachment to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used. This field can be both set at interconnect attachments creation and update interconnect attachment operations.
         :param pulumi.Input[int] subnet_length: Length of the IPv4 subnet mask. Allowed values: - 29 (default) - 30 The default value is 29, except for Cross-Cloud Interconnect connections that use an InterconnectRemoteLocation with a constraints.subnetLengthRange.min equal to 30. For example, connections that use an Azure remote location fall into this category. In these cases, the default value is 30, and requesting 29 returns an error. Where both 29 and 30 are allowed, 29 is preferred, because it gives Google Cloud Support more debugging visibility. 
         :param pulumi.Input['InterconnectAttachmentType'] type: The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner. 
-        :param pulumi.Input[str] validate_only: If true, the request will not be committed.
+        :param pulumi.Input[bool] validate_only: If true, the request will not be committed.
         :param pulumi.Input[int] vlan_tag8021q: The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
         """
         ...
@@ -539,7 +539,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  stack_type: Optional[pulumi.Input['InterconnectAttachmentStackType']] = None,
                  subnet_length: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input['InterconnectAttachmentType']] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  vlan_tag8021q: Optional[pulumi.Input[int]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -988,7 +988,7 @@ class InterconnectAttachment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[str]]:
+    def validate_only(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, the request will not be committed.
         """

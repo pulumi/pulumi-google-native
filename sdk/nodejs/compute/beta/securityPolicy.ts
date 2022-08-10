@@ -111,7 +111,7 @@ export class SecurityPolicy extends pulumi.CustomResource {
     /**
      * If true, the request will not be committed.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a SecurityPolicy resource with the given unique name, arguments, and options.
@@ -223,5 +223,5 @@ export interface SecurityPolicyArgs {
     /**
      * If true, the request will not be committed.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
 }

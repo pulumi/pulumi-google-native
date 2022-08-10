@@ -24,7 +24,7 @@ type LookupDatasetHl7V2StoreIamPolicyArgs struct {
 	DatasetId                     string  `pulumi:"datasetId"`
 	Hl7V2StoreId                  string  `pulumi:"hl7V2StoreId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -56,7 +56,7 @@ type LookupDatasetHl7V2StoreIamPolicyOutputArgs struct {
 	DatasetId                     pulumi.StringInput    `pulumi:"datasetId"`
 	Hl7V2StoreId                  pulumi.StringInput    `pulumi:"hl7V2StoreId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

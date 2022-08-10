@@ -23,7 +23,7 @@ export function getJobIamPolicy(args: GetJobIamPolicyArgs, opts?: pulumi.InvokeO
 
 export interface GetJobIamPolicyArgs {
     jobId: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -52,6 +52,6 @@ export function getJobIamPolicyOutput(args: GetJobIamPolicyOutputArgs, opts?: pu
 
 export interface GetJobIamPolicyOutputArgs {
     jobId: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

@@ -69,7 +69,7 @@ class AwaitableGetApiVersionArtifactIamPolicyResult(GetApiVersionArtifactIamPoli
 def get_api_version_artifact_iam_policy(api_id: Optional[str] = None,
                                         artifact_id: Optional[str] = None,
                                         location: Optional[str] = None,
-                                        options_requested_policy_version: Optional[str] = None,
+                                        options_requested_policy_version: Optional[int] = None,
                                         project: Optional[str] = None,
                                         version_id: Optional[str] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiVersionArtifactIamPolicyResult:
@@ -96,7 +96,7 @@ def get_api_version_artifact_iam_policy(api_id: Optional[str] = None,
 def get_api_version_artifact_iam_policy_output(api_id: Optional[pulumi.Input[str]] = None,
                                                artifact_id: Optional[pulumi.Input[str]] = None,
                                                location: Optional[pulumi.Input[str]] = None,
-                                               options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                               options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                                version_id: Optional[pulumi.Input[str]] = None,
                                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiVersionArtifactIamPolicyResult]:

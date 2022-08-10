@@ -82,7 +82,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
         /// </summary>
         [Output("uniqueWriterIdentity")]
-        public Output<string?> UniqueWriterIdentity { get; private set; } = null!;
+        public Output<bool?> UniqueWriterIdentity { get; private set; } = null!;
 
         /// <summary>
         /// The last update timestamp of the sink.This field may not be present for older sinks.
@@ -212,7 +212,7 @@ namespace Pulumi.GoogleNative.Logging.V2
         /// Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
         /// </summary>
         [Input("uniqueWriterIdentity")]
-        public Input<string>? UniqueWriterIdentity { get; set; }
+        public Input<bool>? UniqueWriterIdentity { get; set; }
 
         public SinkArgs()
         {

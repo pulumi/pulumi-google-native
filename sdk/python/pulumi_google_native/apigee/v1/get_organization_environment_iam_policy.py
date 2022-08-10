@@ -79,7 +79,7 @@ class AwaitableGetOrganizationEnvironmentIamPolicyResult(GetOrganizationEnvironm
 
 
 def get_organization_environment_iam_policy(environment_id: Optional[str] = None,
-                                            options_requested_policy_version: Optional[str] = None,
+                                            options_requested_policy_version: Optional[int] = None,
                                             organization_id: Optional[str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetOrganizationEnvironmentIamPolicyResult:
     """
@@ -101,7 +101,7 @@ def get_organization_environment_iam_policy(environment_id: Optional[str] = None
 
 @_utilities.lift_output_func(get_organization_environment_iam_policy)
 def get_organization_environment_iam_policy_output(environment_id: Optional[pulumi.Input[str]] = None,
-                                                   options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                                   options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                                    organization_id: Optional[pulumi.Input[str]] = None,
                                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationEnvironmentIamPolicyResult]:
     """

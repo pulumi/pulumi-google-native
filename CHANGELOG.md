@@ -4,6 +4,8 @@ CHANGELOG
 ## HEAD (Unreleased)
 - Ensure inputs in partial error checkpoints for nodepools are correctly resumable [#602](https://github.com/pulumi/pulumi-google-native/pull/602)
 - Fix operation to target resolution [#615](https://github.com/pulumi/pulumi-google-native/pull/615)
+- Fix schema types for query params [#616](https://github.com/pulumi/pulumi-google-native/pull/616)
+- Disable autonaming for vpcaccess/v1:Connector [#618](https://github.com/pulumi/pulumi-google-native/pull/618)
 
 ## 0.22.0 (2022-07-29)
 - Add support for apigee resources that use multipart/form-data content-type [#590](https://github.com/pulumi/pulumi-google-native/pull/590)

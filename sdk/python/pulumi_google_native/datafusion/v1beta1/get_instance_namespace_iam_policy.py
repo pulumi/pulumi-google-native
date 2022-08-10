@@ -81,7 +81,7 @@ class AwaitableGetInstanceNamespaceIamPolicyResult(GetInstanceNamespaceIamPolicy
 def get_instance_namespace_iam_policy(instance_id: Optional[str] = None,
                                       location: Optional[str] = None,
                                       namespace_id: Optional[str] = None,
-                                      options_requested_policy_version: Optional[str] = None,
+                                      options_requested_policy_version: Optional[int] = None,
                                       project: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetInstanceNamespaceIamPolicyResult:
     """
@@ -107,7 +107,7 @@ def get_instance_namespace_iam_policy(instance_id: Optional[str] = None,
 def get_instance_namespace_iam_policy_output(instance_id: Optional[pulumi.Input[str]] = None,
                                              location: Optional[pulumi.Input[str]] = None,
                                              namespace_id: Optional[pulumi.Input[str]] = None,
-                                             options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                             options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                              project: Optional[pulumi.Input[Optional[str]]] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceNamespaceIamPolicyResult]:
     """

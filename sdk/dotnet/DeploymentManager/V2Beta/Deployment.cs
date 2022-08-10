@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         /// If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
         /// </summary>
         [Output("preview")]
-        public Output<string?> Preview { get; private set; } = null!;
+        public Output<bool?> Preview { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -182,7 +182,7 @@ namespace Pulumi.GoogleNative.DeploymentManager.V2Beta
         /// If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
         /// </summary>
         [Input("preview")]
-        public Input<string>? Preview { get; set; }
+        public Input<bool>? Preview { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

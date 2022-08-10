@@ -25,7 +25,7 @@ export function getWorkflowTemplate(args: GetWorkflowTemplateArgs, opts?: pulumi
 export interface GetWorkflowTemplateArgs {
     location: string;
     project?: string;
-    version?: string;
+    version?: number;
     workflowTemplateId: string;
 }
 
@@ -75,6 +75,6 @@ export function getWorkflowTemplateOutput(args: GetWorkflowTemplateOutputArgs, o
 export interface GetWorkflowTemplateOutputArgs {
     location: pulumi.Input<string>;
     project?: pulumi.Input<string>;
-    version?: pulumi.Input<string>;
+    version?: pulumi.Input<number>;
     workflowTemplateId: pulumi.Input<string>;
 }

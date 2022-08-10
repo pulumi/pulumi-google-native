@@ -67,7 +67,7 @@ export class Stream extends pulumi.CustomResource {
     /**
      * Optional. Create the stream without validating it.
      */
-    public readonly force!: pulumi.Output<string | undefined>;
+    public readonly force!: pulumi.Output<boolean | undefined>;
     /**
      * Labels.
      */
@@ -101,7 +101,7 @@ export class Stream extends pulumi.CustomResource {
     /**
      * Optional. Only validate the stream, but don't create any resources. The default is false.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Stream resource with the given unique name, arguments, and options.
@@ -198,7 +198,7 @@ export interface StreamArgs {
     /**
      * Optional. Create the stream without validating it.
      */
-    force?: pulumi.Input<string>;
+    force?: pulumi.Input<boolean>;
     /**
      * Labels.
      */
@@ -224,5 +224,5 @@ export interface StreamArgs {
     /**
      * Optional. Only validate the stream, but don't create any resources. The default is false.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
 }

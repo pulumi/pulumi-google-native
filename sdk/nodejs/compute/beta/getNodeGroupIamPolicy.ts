@@ -23,7 +23,7 @@ export function getNodeGroupIamPolicy(args: GetNodeGroupIamPolicyArgs, opts?: pu
 }
 
 export interface GetNodeGroupIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     resource: string;
     zone: string;
@@ -57,7 +57,7 @@ export function getNodeGroupIamPolicyOutput(args: GetNodeGroupIamPolicyOutputArg
 }
 
 export interface GetNodeGroupIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     resource: pulumi.Input<string>;
     zone: pulumi.Input<string>;

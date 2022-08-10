@@ -79,7 +79,7 @@ class AwaitableGetServerTlsPolicyIamPolicyResult(GetServerTlsPolicyIamPolicyResu
 
 
 def get_server_tls_policy_iam_policy(location: Optional[str] = None,
-                                     options_requested_policy_version: Optional[str] = None,
+                                     options_requested_policy_version: Optional[int] = None,
                                      project: Optional[str] = None,
                                      server_tls_policy_id: Optional[str] = None,
                                      opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetServerTlsPolicyIamPolicyResult:
@@ -103,7 +103,7 @@ def get_server_tls_policy_iam_policy(location: Optional[str] = None,
 
 @_utilities.lift_output_func(get_server_tls_policy_iam_policy)
 def get_server_tls_policy_iam_policy_output(location: Optional[pulumi.Input[str]] = None,
-                                            options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                            options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                             project: Optional[pulumi.Input[Optional[str]]] = None,
                                             server_tls_policy_id: Optional[pulumi.Input[str]] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServerTlsPolicyIamPolicyResult]:

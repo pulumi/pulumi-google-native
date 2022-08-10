@@ -24,7 +24,7 @@ export function getTriggerIamPolicy(args: GetTriggerIamPolicyArgs, opts?: pulumi
 
 export interface GetTriggerIamPolicyArgs {
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     triggerId: string;
 }
@@ -54,7 +54,7 @@ export function getTriggerIamPolicyOutput(args: GetTriggerIamPolicyOutputArgs, o
 
 export interface GetTriggerIamPolicyOutputArgs {
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     triggerId: pulumi.Input<string>;
 }

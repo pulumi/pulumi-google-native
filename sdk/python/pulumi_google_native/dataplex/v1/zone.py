@@ -27,7 +27,7 @@ class ZoneArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None):
+                 validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Zone resource.
         :param pulumi.Input['GoogleCloudDataplexV1ZoneResourceSpecArgs'] resource_spec: Specification of the resources that are referenced by the assets within this zone.
@@ -37,7 +37,7 @@ class ZoneArgs:
         :param pulumi.Input['GoogleCloudDataplexV1ZoneDiscoverySpecArgs'] discovery_spec: Optional. Specification of the discovery feature applied to data in this zone.
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone.
-        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "lake_id", lake_id)
         pulumi.set(__self__, "resource_spec", resource_spec)
@@ -171,14 +171,14 @@ class ZoneArgs:
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[str]]:
+    def validate_only(self) -> Optional[pulumi.Input[bool]]:
         """
         Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[str]]):
+    def validate_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "validate_only", value)
 
 
@@ -196,7 +196,7 @@ class Zone(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  resource_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ZoneResourceSpecArgs']]] = None,
                  type: Optional[pulumi.Input['ZoneType']] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -211,7 +211,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the zone.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ZoneResourceSpecArgs']] resource_spec: Specification of the resources that are referenced by the assets within this zone.
         :param pulumi.Input['ZoneType'] type: Immutable. The type of the zone.
-        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         :param pulumi.Input[str] zone_id: Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
         """
         ...
@@ -248,7 +248,7 @@ class Zone(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  resource_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ZoneResourceSpecArgs']]] = None,
                  type: Optional[pulumi.Input['ZoneType']] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -440,7 +440,7 @@ class Zone(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[str]]:
+    def validate_only(self) -> pulumi.Output[Optional[bool]]:
         """
         Optional. Only validate the request, but do not perform mutations. The default is false.
         """

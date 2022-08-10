@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         public string Bucket { get; set; } = null!;
 
         [Input("optionsRequestedPolicyVersion")]
-        public string? OptionsRequestedPolicyVersion { get; set; }
+        public int? OptionsRequestedPolicyVersion { get; set; }
 
         [Input("userProject")]
         public string? UserProject { get; set; }
@@ -48,7 +48,7 @@ namespace Pulumi.GoogleNative.Storage.V1
         public Input<string> Bucket { get; set; } = null!;
 
         [Input("optionsRequestedPolicyVersion")]
-        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+        public Input<int>? OptionsRequestedPolicyVersion { get; set; }
 
         [Input("userProject")]
         public Input<string>? UserProject { get; set; }

@@ -23,7 +23,7 @@ func LookupCaPoolIamPolicy(ctx *pulumi.Context, args *LookupCaPoolIamPolicyArgs,
 type LookupCaPoolIamPolicyArgs struct {
 	CaPoolId                      string  `pulumi:"caPoolId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ func LookupCaPoolIamPolicyOutput(ctx *pulumi.Context, args LookupCaPoolIamPolicy
 type LookupCaPoolIamPolicyOutputArgs struct {
 	CaPoolId                      pulumi.StringInput    `pulumi:"caPoolId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

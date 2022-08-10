@@ -45,7 +45,7 @@ type DeliveryPipeline struct {
 	// Most recent time at which the pipeline was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewDeliveryPipeline registers a new resource with the given unique name, arguments, and options.
@@ -117,7 +117,7 @@ type deliveryPipelineArgs struct {
 	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
 	Suspended *bool `pulumi:"suspended"`
 	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a DeliveryPipeline resource.
@@ -143,7 +143,7 @@ type DeliveryPipelineArgs struct {
 	// When suspended, no new releases or rollouts can be created, but in-progress ones will complete.
 	Suspended pulumi.BoolPtrInput
 	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (DeliveryPipelineArgs) ElementType() reflect.Type {
@@ -257,8 +257,8 @@ func (o DeliveryPipelineOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-func (o DeliveryPipelineOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DeliveryPipeline) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o DeliveryPipelineOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipeline) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

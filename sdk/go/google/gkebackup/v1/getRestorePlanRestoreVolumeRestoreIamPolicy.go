@@ -22,7 +22,7 @@ func LookupRestorePlanRestoreVolumeRestoreIamPolicy(ctx *pulumi.Context, args *L
 
 type LookupRestorePlanRestoreVolumeRestoreIamPolicyArgs struct {
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	RestoreId                     string  `pulumi:"restoreId"`
 	RestorePlanId                 string  `pulumi:"restorePlanId"`
@@ -55,7 +55,7 @@ func LookupRestorePlanRestoreVolumeRestoreIamPolicyOutput(ctx *pulumi.Context, a
 
 type LookupRestorePlanRestoreVolumeRestoreIamPolicyOutputArgs struct {
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	RestoreId                     pulumi.StringInput    `pulumi:"restoreId"`
 	RestorePlanId                 pulumi.StringInput    `pulumi:"restorePlanId"`

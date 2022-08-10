@@ -22,7 +22,7 @@ class ApiArgs:
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 validate: Optional[pulumi.Input[str]] = None):
+                 validate: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Api resource.
         :param pulumi.Input[str] action: Action to perform when importing an API proxy configuration bundle. Set this parameter to one of the following values: * `import` to import the API proxy configuration bundle. * `validate` to validate the API proxy configuration bundle without importing it.
@@ -31,7 +31,7 @@ class ApiArgs:
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] file: File to upload.
         :param pulumi.Input[str] name: Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
-        :param pulumi.Input[str] validate: Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
+        :param pulumi.Input[bool] validate: Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
         """
         pulumi.set(__self__, "organization_id", organization_id)
         if action is not None:
@@ -132,14 +132,14 @@ class ApiArgs:
 
     @property
     @pulumi.getter
-    def validate(self) -> Optional[pulumi.Input[str]]:
+    def validate(self) -> Optional[pulumi.Input[bool]]:
         """
         Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
         """
         return pulumi.get(self, "validate")
 
     @validate.setter
-    def validate(self, value: Optional[pulumi.Input[str]]):
+    def validate(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "validate", value)
 
 
@@ -155,7 +155,7 @@ class Api(pulumi.CustomResource):
                  file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 validate: Optional[pulumi.Input[str]] = None,
+                 validate: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates an API proxy. The API proxy created will not be accessible at runtime until it is deployed to an environment. Create a new API proxy by setting the `name` query parameter to the name of the API proxy. Import an API proxy configuration bundle stored in zip format on your local machine to your organization by doing the following: * Set the `name` query parameter to the name of the API proxy. * Set the `action` query parameter to `import`. * Set the `Content-Type` header to `multipart/form-data`. * Pass as a file the name of API proxy configuration bundle stored in zip format on your local machine using the `file` form field. **Note**: To validate the API proxy configuration bundle only without importing it, set the `action` query parameter to `validate`. When importing an API proxy configuration bundle, if the API proxy does not exist, it will be created. If the API proxy exists, then a new revision is created. Invalid API proxy configurations are rejected, and a list of validation errors is returned to the client.
@@ -168,7 +168,7 @@ class Api(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] file: File to upload.
         :param pulumi.Input[str] name: Name of the API proxy. Restrict the characters used to: A-Za-z0-9._-
-        :param pulumi.Input[str] validate: Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
+        :param pulumi.Input[bool] validate: Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
         """
         ...
     @overload
@@ -201,7 +201,7 @@ class Api(pulumi.CustomResource):
                  file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
-                 validate: Optional[pulumi.Input[str]] = None,
+                 validate: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -334,7 +334,7 @@ class Api(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def validate(self) -> pulumi.Output[Optional[str]]:
+    def validate(self) -> pulumi.Output[Optional[bool]]:
         """
         Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
         """

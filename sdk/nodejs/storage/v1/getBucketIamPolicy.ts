@@ -23,7 +23,7 @@ export function getBucketIamPolicy(args: GetBucketIamPolicyArgs, opts?: pulumi.I
 
 export interface GetBucketIamPolicyArgs {
     bucket: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     userProject?: string;
 }
 
@@ -56,6 +56,6 @@ export function getBucketIamPolicyOutput(args: GetBucketIamPolicyOutputArgs, opt
 
 export interface GetBucketIamPolicyOutputArgs {
     bucket: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     userProject?: pulumi.Input<string>;
 }

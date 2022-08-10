@@ -81,7 +81,7 @@ class AwaitableGetBackupPlanBackupVolumeBackupIamPolicyResult(GetBackupPlanBacku
 def get_backup_plan_backup_volume_backup_iam_policy(backup_id: Optional[str] = None,
                                                     backup_plan_id: Optional[str] = None,
                                                     location: Optional[str] = None,
-                                                    options_requested_policy_version: Optional[str] = None,
+                                                    options_requested_policy_version: Optional[int] = None,
                                                     project: Optional[str] = None,
                                                     volume_backup_id: Optional[str] = None,
                                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBackupPlanBackupVolumeBackupIamPolicyResult:
@@ -109,7 +109,7 @@ def get_backup_plan_backup_volume_backup_iam_policy(backup_id: Optional[str] = N
 def get_backup_plan_backup_volume_backup_iam_policy_output(backup_id: Optional[pulumi.Input[str]] = None,
                                                            backup_plan_id: Optional[pulumi.Input[str]] = None,
                                                            location: Optional[pulumi.Input[str]] = None,
-                                                           options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                                           options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                                            project: Optional[pulumi.Input[Optional[str]]] = None,
                                                            volume_backup_id: Optional[pulumi.Input[str]] = None,
                                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupPlanBackupVolumeBackupIamPolicyResult]:

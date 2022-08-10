@@ -140,7 +140,7 @@ class AwaitableGetWorkflowTemplateResult(GetWorkflowTemplateResult):
 
 def get_workflow_template(location: Optional[str] = None,
                           project: Optional[str] = None,
-                          version: Optional[str] = None,
+                          version: Optional[int] = None,
                           workflow_template_id: Optional[str] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetWorkflowTemplateResult:
     """
@@ -169,7 +169,7 @@ def get_workflow_template(location: Optional[str] = None,
 @_utilities.lift_output_func(get_workflow_template)
 def get_workflow_template_output(location: Optional[pulumi.Input[str]] = None,
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
-                                 version: Optional[pulumi.Input[Optional[str]]] = None,
+                                 version: Optional[pulumi.Input[Optional[int]]] = None,
                                  workflow_template_id: Optional[pulumi.Input[str]] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkflowTemplateResult]:
     """

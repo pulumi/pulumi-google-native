@@ -25,7 +25,7 @@ export function getLakeIamPolicy(args: GetLakeIamPolicyArgs, opts?: pulumi.Invok
 export interface GetLakeIamPolicyArgs {
     lakeId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getLakeIamPolicyOutput(args: GetLakeIamPolicyOutputArgs, opts?: 
 export interface GetLakeIamPolicyOutputArgs {
     lakeId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

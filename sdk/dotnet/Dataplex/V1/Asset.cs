@@ -113,7 +113,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// Optional. Only validate the request, but do not perform mutations. The default is false.
         /// </summary>
         [Output("validateOnly")]
-        public Output<string?> ValidateOnly { get; private set; } = null!;
+        public Output<bool?> ValidateOnly { get; private set; } = null!;
 
         [Output("zone")]
         public Output<string> Zone { get; private set; } = null!;
@@ -226,7 +226,7 @@ namespace Pulumi.GoogleNative.Dataplex.V1
         /// Optional. Only validate the request, but do not perform mutations. The default is false.
         /// </summary>
         [Input("validateOnly")]
-        public Input<string>? ValidateOnly { get; set; }
+        public Input<bool>? ValidateOnly { get; set; }
 
         [Input("zone")]
         public Input<string>? Zone { get; set; }

@@ -44,7 +44,7 @@ type AppConnection struct {
 	// Timestamp when the resource was last modified.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewAppConnection registers a new resource with the given unique name, arguments, and options.
@@ -118,7 +118,7 @@ type appConnectionArgs struct {
 	// The type of network connectivity used by the AppConnection.
 	Type AppConnectionType `pulumi:"type"`
 	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a AppConnection resource.
@@ -144,7 +144,7 @@ type AppConnectionArgs struct {
 	// The type of network connectivity used by the AppConnection.
 	Type AppConnectionTypeInput
 	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (AppConnectionArgs) ElementType() reflect.Type {
@@ -262,8 +262,8 @@ func (o AppConnectionOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-func (o AppConnectionOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppConnection) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o AppConnectionOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppConnection) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

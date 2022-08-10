@@ -22,7 +22,7 @@ export function getInstanceTemplateIamPolicy(args: GetInstanceTemplateIamPolicyA
 }
 
 export interface GetInstanceTemplateIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     resource: string;
 }
@@ -55,7 +55,7 @@ export function getInstanceTemplateIamPolicyOutput(args: GetInstanceTemplateIamP
 }
 
 export interface GetInstanceTemplateIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     resource: pulumi.Input<string>;
 }

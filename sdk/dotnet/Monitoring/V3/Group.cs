@@ -53,7 +53,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// If true, validate this request but do not create the group.
         /// </summary>
         [Output("validateOnly")]
-        public Output<string?> ValidateOnly { get; private set; } = null!;
+        public Output<bool?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Pulumi.GoogleNative.Monitoring.V3
         /// If true, validate this request but do not create the group.
         /// </summary>
         [Input("validateOnly")]
-        public Input<string>? ValidateOnly { get; set; }
+        public Input<bool>? ValidateOnly { get; set; }
 
         public GroupArgs()
         {

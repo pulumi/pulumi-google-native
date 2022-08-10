@@ -26,7 +26,7 @@ class ContentArgs:
                  notebook: Optional[pulumi.Input['GoogleCloudDataplexV1ContentNotebookArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  sql_script: Optional[pulumi.Input['GoogleCloudDataplexV1ContentSqlScriptArgs']] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None):
+                 validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Content resource.
         :param pulumi.Input[str] data_text: Content data in string format.
@@ -35,7 +35,7 @@ class ContentArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the content.
         :param pulumi.Input['GoogleCloudDataplexV1ContentNotebookArgs'] notebook: Notebook related configurations.
         :param pulumi.Input['GoogleCloudDataplexV1ContentSqlScriptArgs'] sql_script: Sql Script related configurations.
-        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "data_text", data_text)
         pulumi.set(__self__, "lake_id", lake_id)
@@ -156,14 +156,14 @@ class ContentArgs:
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[str]]:
+    def validate_only(self) -> Optional[pulumi.Input[bool]]:
         """
         Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[str]]):
+    def validate_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "validate_only", value)
 
 
@@ -181,7 +181,7 @@ class Content(pulumi.CustomResource):
                  path: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  sql_script: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ContentSqlScriptArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Create a content.
@@ -195,7 +195,7 @@ class Content(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ContentNotebookArgs']] notebook: Notebook related configurations.
         :param pulumi.Input[str] path: The path for the Content file, represented as directory structure. Unique within a lake. Limited to alphanumerics, hyphens, underscores, dots and slashes.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ContentSqlScriptArgs']] sql_script: Sql Script related configurations.
-        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload
@@ -231,7 +231,7 @@ class Content(pulumi.CustomResource):
                  path: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  sql_script: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1ContentSqlScriptArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -398,7 +398,7 @@ class Content(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[str]]:
+    def validate_only(self) -> pulumi.Output[Optional[bool]]:
         """
         Optional. Only validate the request, but do not perform mutations. The default is false.
         """

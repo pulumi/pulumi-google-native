@@ -24,7 +24,7 @@ type LookupKeyRingCryptoKeyIamPolicyArgs struct {
 	CryptoKeyId                   string  `pulumi:"cryptoKeyId"`
 	KeyRingId                     string  `pulumi:"keyRingId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -56,7 +56,7 @@ type LookupKeyRingCryptoKeyIamPolicyOutputArgs struct {
 	CryptoKeyId                   pulumi.StringInput    `pulumi:"cryptoKeyId"`
 	KeyRingId                     pulumi.StringInput    `pulumi:"keyRingId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

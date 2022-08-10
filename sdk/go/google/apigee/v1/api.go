@@ -33,7 +33,7 @@ type Api struct {
 	// List of revisions defined for the API proxy.
 	Revision pulumi.StringArrayOutput `pulumi:"revision"`
 	// Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
-	Validate pulumi.StringPtrOutput `pulumi:"validate"`
+	Validate pulumi.BoolPtrOutput `pulumi:"validate"`
 }
 
 // NewApi registers a new resource with the given unique name, arguments, and options.
@@ -96,7 +96,7 @@ type apiArgs struct {
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
 	// Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
-	Validate *string `pulumi:"validate"`
+	Validate *bool `pulumi:"validate"`
 }
 
 // The set of arguments for constructing a Api resource.
@@ -115,7 +115,7 @@ type ApiArgs struct {
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 	// Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
-	Validate pulumi.StringPtrInput
+	Validate pulumi.BoolPtrInput
 }
 
 func (ApiArgs) ElementType() reflect.Type {
@@ -200,8 +200,8 @@ func (o ApiOutput) Revision() pulumi.StringArrayOutput {
 }
 
 // Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
-func (o ApiOutput) Validate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Api) pulumi.StringPtrOutput { return v.Validate }).(pulumi.StringPtrOutput)
+func (o ApiOutput) Validate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Api) pulumi.BoolPtrOutput { return v.Validate }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

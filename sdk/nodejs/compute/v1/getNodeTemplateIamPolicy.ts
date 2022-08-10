@@ -23,7 +23,7 @@ export function getNodeTemplateIamPolicy(args: GetNodeTemplateIamPolicyArgs, opt
 }
 
 export interface GetNodeTemplateIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     region: string;
     resource: string;
@@ -57,7 +57,7 @@ export function getNodeTemplateIamPolicyOutput(args: GetNodeTemplateIamPolicyOut
 }
 
 export interface GetNodeTemplateIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     resource: pulumi.Input<string>;

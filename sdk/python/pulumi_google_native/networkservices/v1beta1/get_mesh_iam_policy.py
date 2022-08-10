@@ -80,7 +80,7 @@ class AwaitableGetMeshIamPolicyResult(GetMeshIamPolicyResult):
 
 def get_mesh_iam_policy(location: Optional[str] = None,
                         mesh_id: Optional[str] = None,
-                        options_requested_policy_version: Optional[str] = None,
+                        options_requested_policy_version: Optional[int] = None,
                         project: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMeshIamPolicyResult:
     """
@@ -104,7 +104,7 @@ def get_mesh_iam_policy(location: Optional[str] = None,
 @_utilities.lift_output_func(get_mesh_iam_policy)
 def get_mesh_iam_policy_output(location: Optional[pulumi.Input[str]] = None,
                                mesh_id: Optional[pulumi.Input[str]] = None,
-                               options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                               options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMeshIamPolicyResult]:
     """

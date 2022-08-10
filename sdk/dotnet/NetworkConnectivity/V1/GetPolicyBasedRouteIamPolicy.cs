@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
     public sealed class GetPolicyBasedRouteIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
-        public string? OptionsRequestedPolicyVersion { get; set; }
+        public int? OptionsRequestedPolicyVersion { get; set; }
 
         [Input("policyBasedRouteId", required: true)]
         public string PolicyBasedRouteId { get; set; } = null!;
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.NetworkConnectivity.V1
     public sealed class GetPolicyBasedRouteIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
-        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+        public Input<int>? OptionsRequestedPolicyVersion { get; set; }
 
         [Input("policyBasedRouteId", required: true)]
         public Input<string> PolicyBasedRouteId { get; set; } = null!;

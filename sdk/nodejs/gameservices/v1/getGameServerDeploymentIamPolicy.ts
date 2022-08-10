@@ -25,7 +25,7 @@ export function getGameServerDeploymentIamPolicy(args: GetGameServerDeploymentIa
 export interface GetGameServerDeploymentIamPolicyArgs {
     gameServerDeploymentId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -59,6 +59,6 @@ export function getGameServerDeploymentIamPolicyOutput(args: GetGameServerDeploy
 export interface GetGameServerDeploymentIamPolicyOutputArgs {
     gameServerDeploymentId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

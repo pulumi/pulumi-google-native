@@ -27,7 +27,7 @@ export interface GetApiConfigIamPolicyArgs {
     apiId: string;
     configId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -58,6 +58,6 @@ export interface GetApiConfigIamPolicyOutputArgs {
     apiId: pulumi.Input<string>;
     configId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

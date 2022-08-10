@@ -79,7 +79,7 @@ class AwaitableGetRestorePlanRestoreIamPolicyResult(GetRestorePlanRestoreIamPoli
 
 
 def get_restore_plan_restore_iam_policy(location: Optional[str] = None,
-                                        options_requested_policy_version: Optional[str] = None,
+                                        options_requested_policy_version: Optional[int] = None,
                                         project: Optional[str] = None,
                                         restore_id: Optional[str] = None,
                                         restore_plan_id: Optional[str] = None,
@@ -105,7 +105,7 @@ def get_restore_plan_restore_iam_policy(location: Optional[str] = None,
 
 @_utilities.lift_output_func(get_restore_plan_restore_iam_policy)
 def get_restore_plan_restore_iam_policy_output(location: Optional[pulumi.Input[str]] = None,
-                                               options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                               options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                                restore_id: Optional[pulumi.Input[str]] = None,
                                                restore_plan_id: Optional[pulumi.Input[str]] = None,

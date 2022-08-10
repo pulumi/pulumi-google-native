@@ -36,7 +36,7 @@ type NetworkEdgeSecurityService struct {
 	// Server-defined URL for this resource with the resource id.
 	SelfLinkWithId pulumi.StringOutput `pulumi:"selfLinkWithId"`
 	// If true, the request will not be committed.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewNetworkEdgeSecurityService registers a new resource with the given unique name, arguments, and options.
@@ -97,7 +97,7 @@ type networkEdgeSecurityServiceArgs struct {
 	// The resource URL for the network edge security service associated with this network edge security service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// If true, the request will not be committed.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a NetworkEdgeSecurityService resource.
@@ -113,7 +113,7 @@ type NetworkEdgeSecurityServiceArgs struct {
 	// The resource URL for the network edge security service associated with this network edge security service.
 	SecurityPolicy pulumi.StringPtrInput
 	// If true, the request will not be committed.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (NetworkEdgeSecurityServiceArgs) ElementType() reflect.Type {
@@ -207,8 +207,8 @@ func (o NetworkEdgeSecurityServiceOutput) SelfLinkWithId() pulumi.StringOutput {
 }
 
 // If true, the request will not be committed.
-func (o NetworkEdgeSecurityServiceOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *NetworkEdgeSecurityService) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o NetworkEdgeSecurityServiceOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkEdgeSecurityService) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

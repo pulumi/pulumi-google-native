@@ -25,7 +25,7 @@ export function getCaPoolIamPolicy(args: GetCaPoolIamPolicyArgs, opts?: pulumi.I
 export interface GetCaPoolIamPolicyArgs {
     caPoolId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getCaPoolIamPolicyOutput(args: GetCaPoolIamPolicyOutputArgs, opt
 export interface GetCaPoolIamPolicyOutputArgs {
     caPoolId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

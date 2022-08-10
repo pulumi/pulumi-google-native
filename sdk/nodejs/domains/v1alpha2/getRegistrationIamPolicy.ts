@@ -24,7 +24,7 @@ export function getRegistrationIamPolicy(args: GetRegistrationIamPolicyArgs, opt
 
 export interface GetRegistrationIamPolicyArgs {
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     registrationId: string;
 }
@@ -54,7 +54,7 @@ export function getRegistrationIamPolicyOutput(args: GetRegistrationIamPolicyOut
 
 export interface GetRegistrationIamPolicyOutputArgs {
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     registrationId: pulumi.Input<string>;
 }
