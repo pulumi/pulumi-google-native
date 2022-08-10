@@ -319,7 +319,7 @@ func (p *googleCloudProvider) Check(_ context.Context, req *rpc.CheckRequest) (*
 	}
 	if res.Create.Autoname.FieldName != "" && !news.HasValue(nameKey) {
 		var randomlyNamed bool
-		news[nameKey], randomlyNamed = getDefaultName(urn, nameKey, res.Create.Autoname.FieldName, olds, news)
+		news[nameKey], randomlyNamed = getDefaultName(req.RandomSeed, urn, nameKey, res.Create.Autoname.FieldName, olds, news)
 		if randomlyNamed {
 			news[autonamed] = resource.NewBoolProperty(true)
 		}

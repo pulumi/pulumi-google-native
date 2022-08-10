@@ -71,7 +71,7 @@ func TestGetDefaultName_Generated(t *testing.T) {
 		"location": "west",
 		"ignoreMe": 1.2,
 	})
-	actual, autonamed := getDefaultName(urn, "name", "projects/{project}/locations/{location}/things/{name}", olds,
+	actual, autonamed := getDefaultName(nil, urn, "name", "projects/{project}/locations/{location}/things/{name}", olds,
 		news)
 	expectedPrefix := "projects/p01/locations/west/things/myName-"
 	assert.True(t, autonamed)
@@ -90,7 +90,7 @@ func TestGetDefaultName_NamedToGenerated(t *testing.T) {
 		"project":  "p01",
 		"location": "west",
 	})
-	actual, autonamed := getDefaultName(urn, "name", "projects/{project}/locations/{location}/things/{name}", olds,
+	actual, autonamed := getDefaultName(nil, urn, "name", "projects/{project}/locations/{location}/things/{name}", olds,
 		news)
 	expectedPrefix := "projects/p01/locations/west/things/myName-"
 	assert.True(t, autonamed)
@@ -106,7 +106,7 @@ func TestGetDefaultName_SimpleAutonamePatternField(t *testing.T) {
 		"__autonamed": true,
 	})
 	news := resource.NewPropertyMapFromMap(map[string]interface{}{})
-	actual, autonamed := getDefaultName(urn, "keyRingId", "keyRingId", olds, news)
+	actual, autonamed := getDefaultName(nil, urn, "keyRingId", "keyRingId", olds, news)
 	assert.True(t, autonamed)
 	assert.Equal(t, fixedName, actual.StringValue())
 }
@@ -123,7 +123,7 @@ func TestGetDefaultName_OldApplied(t *testing.T) {
 		"location": "west",
 		"ignoreMe": 1.2,
 	})
-	actual, autonamed := getDefaultName(urn, "name", "projects/{project}/locations/{location}/things/{name}", olds,
+	actual, autonamed := getDefaultName(nil, urn, "name", "projects/{project}/locations/{location}/things/{name}", olds,
 		news)
 	assert.True(t, autonamed)
 	assert.Equal(t, fixedName, actual.StringValue())
