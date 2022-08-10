@@ -23,7 +23,7 @@ func LookupMeshIamPolicy(ctx *pulumi.Context, args *LookupMeshIamPolicyArgs, opt
 type LookupMeshIamPolicyArgs struct {
 	Location                      string  `pulumi:"location"`
 	MeshId                        string  `pulumi:"meshId"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ func LookupMeshIamPolicyOutput(ctx *pulumi.Context, args LookupMeshIamPolicyOutp
 type LookupMeshIamPolicyOutputArgs struct {
 	Location                      pulumi.StringInput    `pulumi:"location"`
 	MeshId                        pulumi.StringInput    `pulumi:"meshId"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

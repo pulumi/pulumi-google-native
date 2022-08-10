@@ -162,7 +162,7 @@ class AwaitableGetSearchApplicationResult(GetSearchApplicationResult):
             source_config=self.source_config)
 
 
-def get_search_application(debug_options_enable_debugging: Optional[str] = None,
+def get_search_application(debug_options_enable_debugging: Optional[bool] = None,
                            searchapplication_id: Optional[str] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSearchApplicationResult:
     """
@@ -189,7 +189,7 @@ def get_search_application(debug_options_enable_debugging: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_search_application)
-def get_search_application_output(debug_options_enable_debugging: Optional[pulumi.Input[Optional[str]]] = None,
+def get_search_application_output(debug_options_enable_debugging: Optional[pulumi.Input[Optional[bool]]] = None,
                                   searchapplication_id: Optional[pulumi.Input[str]] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSearchApplicationResult]:
     """

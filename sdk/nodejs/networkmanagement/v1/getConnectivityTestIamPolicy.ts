@@ -23,7 +23,7 @@ export function getConnectivityTestIamPolicy(args: GetConnectivityTestIamPolicyA
 
 export interface GetConnectivityTestIamPolicyArgs {
     connectivityTestId: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -52,6 +52,6 @@ export function getConnectivityTestIamPolicyOutput(args: GetConnectivityTestIamP
 
 export interface GetConnectivityTestIamPolicyOutputArgs {
     connectivityTestId: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

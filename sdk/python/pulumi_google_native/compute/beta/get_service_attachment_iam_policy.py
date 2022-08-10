@@ -90,7 +90,7 @@ class AwaitableGetServiceAttachmentIamPolicyResult(GetServiceAttachmentIamPolicy
             version=self.version)
 
 
-def get_service_attachment_iam_policy(options_requested_policy_version: Optional[str] = None,
+def get_service_attachment_iam_policy(options_requested_policy_version: Optional[int] = None,
                                       project: Optional[str] = None,
                                       region: Optional[str] = None,
                                       resource: Optional[str] = None,
@@ -115,7 +115,7 @@ def get_service_attachment_iam_policy(options_requested_policy_version: Optional
 
 
 @_utilities.lift_output_func(get_service_attachment_iam_policy)
-def get_service_attachment_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+def get_service_attachment_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                              project: Optional[pulumi.Input[Optional[str]]] = None,
                                              region: Optional[pulumi.Input[str]] = None,
                                              resource: Optional[pulumi.Input[str]] = None,

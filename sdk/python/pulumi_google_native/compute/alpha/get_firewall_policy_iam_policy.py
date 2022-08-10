@@ -90,7 +90,7 @@ class AwaitableGetFirewallPolicyIamPolicyResult(GetFirewallPolicyIamPolicyResult
             version=self.version)
 
 
-def get_firewall_policy_iam_policy(options_requested_policy_version: Optional[str] = None,
+def get_firewall_policy_iam_policy(options_requested_policy_version: Optional[int] = None,
                                    resource: Optional[str] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetFirewallPolicyIamPolicyResult:
     """
@@ -111,7 +111,7 @@ def get_firewall_policy_iam_policy(options_requested_policy_version: Optional[st
 
 
 @_utilities.lift_output_func(get_firewall_policy_iam_policy)
-def get_firewall_policy_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+def get_firewall_policy_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                           resource: Optional[pulumi.Input[str]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFirewallPolicyIamPolicyResult]:
     """

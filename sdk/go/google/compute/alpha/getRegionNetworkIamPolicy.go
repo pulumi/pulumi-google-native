@@ -21,7 +21,7 @@ func LookupRegionNetworkIamPolicy(ctx *pulumi.Context, args *LookupRegionNetwork
 }
 
 type LookupRegionNetworkIamPolicyArgs struct {
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	Region                        string  `pulumi:"region"`
 	Resource                      string  `pulumi:"resource"`
@@ -54,7 +54,7 @@ func LookupRegionNetworkIamPolicyOutput(ctx *pulumi.Context, args LookupRegionNe
 }
 
 type LookupRegionNetworkIamPolicyOutputArgs struct {
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	Region                        pulumi.StringInput    `pulumi:"region"`
 	Resource                      pulumi.StringInput    `pulumi:"resource"`

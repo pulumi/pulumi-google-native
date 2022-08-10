@@ -24,7 +24,7 @@ export function getServiceBindingIamPolicy(args: GetServiceBindingIamPolicyArgs,
 
 export interface GetServiceBindingIamPolicyArgs {
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     serviceBindingId: string;
 }
@@ -54,7 +54,7 @@ export function getServiceBindingIamPolicyOutput(args: GetServiceBindingIamPolic
 
 export interface GetServiceBindingIamPolicyOutputArgs {
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     serviceBindingId: pulumi.Input<string>;
 }

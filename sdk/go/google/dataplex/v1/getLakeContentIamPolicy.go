@@ -24,7 +24,7 @@ type LookupLakeContentIamPolicyArgs struct {
 	ContentId                     string  `pulumi:"contentId"`
 	LakeId                        string  `pulumi:"lakeId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -56,7 +56,7 @@ type LookupLakeContentIamPolicyOutputArgs struct {
 	ContentId                     pulumi.StringInput    `pulumi:"contentId"`
 	LakeId                        pulumi.StringInput    `pulumi:"lakeId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

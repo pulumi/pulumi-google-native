@@ -79,7 +79,7 @@ class AwaitableGetBillingAccountIamPolicyResult(GetBillingAccountIamPolicyResult
 
 
 def get_billing_account_iam_policy(billing_account_id: Optional[str] = None,
-                                   options_requested_policy_version: Optional[str] = None,
+                                   options_requested_policy_version: Optional[int] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBillingAccountIamPolicyResult:
     """
     Gets the access control policy for a billing account. The caller must have the `billing.accounts.getIamPolicy` permission on the account, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).
@@ -99,7 +99,7 @@ def get_billing_account_iam_policy(billing_account_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_billing_account_iam_policy)
 def get_billing_account_iam_policy_output(billing_account_id: Optional[pulumi.Input[str]] = None,
-                                          options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                          options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingAccountIamPolicyResult]:
     """
     Gets the access control policy for a billing account. The caller must have the `billing.accounts.getIamPolicy` permission on the account, which is often given to billing account [viewers](https://cloud.google.com/billing/docs/how-to/billing-access).

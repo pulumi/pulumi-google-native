@@ -15,7 +15,7 @@ __all__ = ['ChannelArgs', 'Channel']
 class ChannelArgs:
     def __init__(__self__, *,
                  channel_id: pulumi.Input[str],
-                 validate_only: pulumi.Input[str],
+                 validate_only: pulumi.Input[bool],
                  crypto_key_name: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -24,7 +24,7 @@ class ChannelArgs:
         """
         The set of arguments for constructing a Channel resource.
         :param pulumi.Input[str] channel_id: Required. The user-provided ID to be assigned to the channel.
-        :param pulumi.Input[str] validate_only: Required. If set, validate the request and preview the review, but do not post it.
+        :param pulumi.Input[bool] validate_only: Required. If set, validate the request and preview the review, but do not post it.
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] name: The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
         :param pulumi.Input[str] provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
@@ -56,14 +56,14 @@ class ChannelArgs:
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Input[str]:
+    def validate_only(self) -> pulumi.Input[bool]:
         """
         Required. If set, validate the request and preview the review, but do not post it.
         """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
-    def validate_only(self, value: pulumi.Input[str]):
+    def validate_only(self, value: pulumi.Input[bool]):
         pulumi.set(self, "validate_only", value)
 
     @property
@@ -132,7 +132,7 @@ class Channel(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Create a new channel in a particular project and location.
@@ -143,7 +143,7 @@ class Channel(pulumi.CustomResource):
         :param pulumi.Input[str] crypto_key_name: Optional. Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt their event data. It must match the pattern `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[str] name: The resource name of the channel. Must be unique within the location on the project and must be in `projects/{project}/locations/{location}/channels/{channel_id}` format.
         :param pulumi.Input[str] provider: The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
-        :param pulumi.Input[str] validate_only: Required. If set, validate the request and preview the review, but do not post it.
+        :param pulumi.Input[bool] validate_only: Required. If set, validate the request and preview the review, but do not post it.
         """
         ...
     @overload
@@ -175,7 +175,7 @@ class Channel(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provider: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -333,7 +333,7 @@ class Channel(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[str]:
+    def validate_only(self) -> pulumi.Output[bool]:
         """
         Required. If set, validate the request and preview the review, but do not post it.
         """

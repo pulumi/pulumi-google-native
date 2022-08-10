@@ -71,7 +71,7 @@ export class Api extends pulumi.CustomResource {
     /**
      * Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
      */
-    public readonly validate!: pulumi.Output<string | undefined>;
+    public readonly validate!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Api resource with the given unique name, arguments, and options.
@@ -152,5 +152,5 @@ export interface ApiArgs {
     /**
      * Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
      */
-    validate?: pulumi.Input<string>;
+    validate?: pulumi.Input<boolean>;
 }

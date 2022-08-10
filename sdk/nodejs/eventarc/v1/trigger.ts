@@ -92,7 +92,7 @@ export class Trigger extends pulumi.CustomResource {
     /**
      * Required. If set, validate the request and preview the review, but do not post it.
      */
-    public readonly validateOnly!: pulumi.Output<string>;
+    public readonly validateOnly!: pulumi.Output<boolean>;
 
     /**
      * Create a Trigger resource with the given unique name, arguments, and options.
@@ -199,5 +199,5 @@ export interface TriggerArgs {
     /**
      * Required. If set, validate the request and preview the review, but do not post it.
      */
-    validateOnly: pulumi.Input<string>;
+    validateOnly: pulumi.Input<boolean>;
 }

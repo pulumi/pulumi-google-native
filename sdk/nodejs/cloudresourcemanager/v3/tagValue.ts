@@ -69,7 +69,7 @@ export class TagValue extends pulumi.CustomResource {
     /**
      * Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a TagValue resource with the given unique name, arguments, and options.
@@ -137,5 +137,5 @@ export interface TagValueArgs {
     /**
      * Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
 }

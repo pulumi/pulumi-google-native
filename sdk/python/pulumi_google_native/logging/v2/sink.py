@@ -27,7 +27,7 @@ class SinkArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  output_version_format: Optional[pulumi.Input['SinkOutputVersionFormat']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 unique_writer_identity: Optional[pulumi.Input[str]] = None):
+                 unique_writer_identity: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Sink resource.
         :param pulumi.Input[str] destination: The export destination: "storage.googleapis.com/[GCS_BUCKET]" "bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]" "pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]" The sink's writer_identity, set when the sink is created, must have permission to write to the destination or else the log entries are not exported. For more information, see Exporting Logs with Sinks (https://cloud.google.com/logging/docs/api/tasks/exporting-logs).
@@ -39,7 +39,7 @@ class SinkArgs:
         :param pulumi.Input[bool] include_children: Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then log entries from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent.To only export entries from certain child projects, filter on the project part of the log name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
         :param pulumi.Input[str] name: The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
         :param pulumi.Input['SinkOutputVersionFormat'] output_version_format: Deprecated. This field is unused.
-        :param pulumi.Input[str] unique_writer_identity: Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
+        :param pulumi.Input[bool] unique_writer_identity: Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
         """
         pulumi.set(__self__, "destination", destination)
         if bigquery_options is not None:
@@ -185,14 +185,14 @@ class SinkArgs:
 
     @property
     @pulumi.getter(name="uniqueWriterIdentity")
-    def unique_writer_identity(self) -> Optional[pulumi.Input[str]]:
+    def unique_writer_identity(self) -> Optional[pulumi.Input[bool]]:
         """
         Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
         """
         return pulumi.get(self, "unique_writer_identity")
 
     @unique_writer_identity.setter
-    def unique_writer_identity(self, value: Optional[pulumi.Input[str]]):
+    def unique_writer_identity(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "unique_writer_identity", value)
 
 
@@ -211,7 +211,7 @@ class Sink(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  output_version_format: Optional[pulumi.Input['SinkOutputVersionFormat']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 unique_writer_identity: Optional[pulumi.Input[str]] = None,
+                 unique_writer_identity: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a sink that exports specified log entries to a destination. The export of newly-ingested log entries begins immediately, unless the sink's writer_identity is not permitted to write to the destination. A sink can export log entries only from the resource owning the sink.
@@ -227,7 +227,7 @@ class Sink(pulumi.CustomResource):
         :param pulumi.Input[bool] include_children: Optional. This field applies only to sinks owned by organizations and folders. If the field is false, the default, only the logs owned by the sink's parent resource are available for export. If the field is true, then log entries from all the projects, folders, and billing accounts contained in the sink's parent resource are also available for export. Whether a particular log entry from the children is exported depends on the sink's filter expression.For example, if this field is true, then the filter resource.type=gce_instance would export all Compute Engine VM instance log entries from all projects in the sink's parent.To only export entries from certain child projects, filter on the project part of the log name:logName:("projects/test-project1/" OR "projects/test-project2/") AND resource.type=gce_instance
         :param pulumi.Input[str] name: The client-assigned sink identifier, unique within the project.For example: "my-syslog-errors-to-pubsub". Sink identifiers are limited to 100 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. First character has to be alphanumeric.
         :param pulumi.Input['SinkOutputVersionFormat'] output_version_format: Deprecated. This field is unused.
-        :param pulumi.Input[str] unique_writer_identity: Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
+        :param pulumi.Input[bool] unique_writer_identity: Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
         """
         ...
     @overload
@@ -263,7 +263,7 @@ class Sink(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  output_version_format: Optional[pulumi.Input['SinkOutputVersionFormat']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 unique_writer_identity: Optional[pulumi.Input[str]] = None,
+                 unique_writer_identity: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -419,7 +419,7 @@ class Sink(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="uniqueWriterIdentity")
-    def unique_writer_identity(self) -> pulumi.Output[Optional[str]]:
+    def unique_writer_identity(self) -> pulumi.Output[Optional[bool]]:
         """
         Optional. Determines the kind of IAM identity returned as writer_identity in the new sink. If this value is omitted or set to false, and if the sink's parent is a project, then the value returned as writer_identity is the same group or service account used by Cloud Logging before the addition of writer identities to this API. The sink's destination must be in the same project as the sink itself.If this field is set to true, or if the sink is owned by a non-project resource such as an organization, then the value of writer_identity will be a unique service account used only for exports from the new sink. For more information, see writer_identity in LogSink.
         """

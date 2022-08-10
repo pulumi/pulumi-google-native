@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
         /// </summary>
         [Output("validateOnly")]
-        public Output<string?> ValidateOnly { get; private set; } = null!;
+        public Output<bool?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// Optional. Set as true to perform the validations necessary for creating the resource, but not actually perform the action.
         /// </summary>
         [Input("validateOnly")]
-        public Input<string>? ValidateOnly { get; set; }
+        public Input<bool>? ValidateOnly { get; set; }
 
         public TagValueArgs()
         {

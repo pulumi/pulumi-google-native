@@ -81,7 +81,7 @@ class AwaitableGetDatasetAnnotationStoreIamPolicyResult(GetDatasetAnnotationStor
 def get_dataset_annotation_store_iam_policy(annotation_store_id: Optional[str] = None,
                                             dataset_id: Optional[str] = None,
                                             location: Optional[str] = None,
-                                            options_requested_policy_version: Optional[str] = None,
+                                            options_requested_policy_version: Optional[int] = None,
                                             project: Optional[str] = None,
                                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatasetAnnotationStoreIamPolicyResult:
     """
@@ -107,7 +107,7 @@ def get_dataset_annotation_store_iam_policy(annotation_store_id: Optional[str] =
 def get_dataset_annotation_store_iam_policy_output(annotation_store_id: Optional[pulumi.Input[str]] = None,
                                                    dataset_id: Optional[pulumi.Input[str]] = None,
                                                    location: Optional[pulumi.Input[str]] = None,
-                                                   options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                                   options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                                    project: Optional[pulumi.Input[Optional[str]]] = None,
                                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetAnnotationStoreIamPolicyResult]:
     """

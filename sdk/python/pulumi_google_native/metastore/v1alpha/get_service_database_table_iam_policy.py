@@ -80,7 +80,7 @@ class AwaitableGetServiceDatabaseTableIamPolicyResult(GetServiceDatabaseTableIam
 
 def get_service_database_table_iam_policy(database_id: Optional[str] = None,
                                           location: Optional[str] = None,
-                                          options_requested_policy_version: Optional[str] = None,
+                                          options_requested_policy_version: Optional[int] = None,
                                           project: Optional[str] = None,
                                           service_id: Optional[str] = None,
                                           table_id: Optional[str] = None,
@@ -108,7 +108,7 @@ def get_service_database_table_iam_policy(database_id: Optional[str] = None,
 @_utilities.lift_output_func(get_service_database_table_iam_policy)
 def get_service_database_table_iam_policy_output(database_id: Optional[pulumi.Input[str]] = None,
                                                  location: Optional[pulumi.Input[str]] = None,
-                                                 options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                                 options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                                  project: Optional[pulumi.Input[Optional[str]]] = None,
                                                  service_id: Optional[pulumi.Input[str]] = None,
                                                  table_id: Optional[pulumi.Input[str]] = None,

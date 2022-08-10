@@ -109,7 +109,7 @@ export class RegionSecurityPolicy extends pulumi.CustomResource {
     /**
      * If true, the request will not be committed.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a RegionSecurityPolicy resource with the given unique name, arguments, and options.
@@ -228,5 +228,5 @@ export interface RegionSecurityPolicyArgs {
     /**
      * If true, the request will not be committed.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
 }

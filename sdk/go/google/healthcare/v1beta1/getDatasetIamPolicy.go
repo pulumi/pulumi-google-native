@@ -23,7 +23,7 @@ func LookupDatasetIamPolicy(ctx *pulumi.Context, args *LookupDatasetIamPolicyArg
 type LookupDatasetIamPolicyArgs struct {
 	DatasetId                     string  `pulumi:"datasetId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ func LookupDatasetIamPolicyOutput(ctx *pulumi.Context, args LookupDatasetIamPoli
 type LookupDatasetIamPolicyOutputArgs struct {
 	DatasetId                     pulumi.StringInput    `pulumi:"datasetId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

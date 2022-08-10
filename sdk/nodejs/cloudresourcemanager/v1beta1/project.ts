@@ -66,7 +66,7 @@ export class Project extends pulumi.CustomResource {
     /**
      * A now unused experiment opt-out option.
      */
-    public readonly useLegacyStack!: pulumi.Output<string | undefined>;
+    public readonly useLegacyStack!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Project resource with the given unique name, arguments, and options.
@@ -137,5 +137,5 @@ export interface ProjectArgs {
     /**
      * A now unused experiment opt-out option.
      */
-    useLegacyStack?: pulumi.Input<string>;
+    useLegacyStack?: pulumi.Input<boolean>;
 }

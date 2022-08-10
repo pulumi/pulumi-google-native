@@ -22,7 +22,7 @@ export function getDeploymentIamPolicy(args: GetDeploymentIamPolicyArgs, opts?: 
 }
 
 export interface GetDeploymentIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     resource: string;
 }
@@ -51,7 +51,7 @@ export function getDeploymentIamPolicyOutput(args: GetDeploymentIamPolicyOutputA
 }
 
 export interface GetDeploymentIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     resource: pulumi.Input<string>;
 }

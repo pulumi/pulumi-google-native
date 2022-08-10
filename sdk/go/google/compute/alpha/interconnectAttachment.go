@@ -98,7 +98,7 @@ type InterconnectAttachment struct {
 	// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// If true, the request will not be committed.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
 	VlanTag8021q pulumi.IntOutput `pulumi:"vlanTag8021q"`
 }
@@ -197,7 +197,7 @@ type interconnectAttachmentArgs struct {
 	// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
 	Type *InterconnectAttachmentType `pulumi:"type"`
 	// If true, the request will not be committed.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
 	VlanTag8021q *int `pulumi:"vlanTag8021q"`
 }
@@ -251,7 +251,7 @@ type InterconnectAttachmentArgs struct {
 	// The type of interconnect attachment this is, which can take one of the following values: - DEDICATED: an attachment to a Dedicated Interconnect. - PARTNER: an attachment to a Partner Interconnect, created by the customer. - PARTNER_PROVIDER: an attachment to a Partner Interconnect, created by the partner.
 	Type InterconnectAttachmentTypePtrInput
 	// If true, the request will not be committed.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 	// The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
 	VlanTag8021q pulumi.IntPtrInput
 }
@@ -505,8 +505,8 @@ func (o InterconnectAttachmentOutput) Type() pulumi.StringOutput {
 }
 
 // If true, the request will not be committed.
-func (o InterconnectAttachmentOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *InterconnectAttachment) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o InterconnectAttachmentOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InterconnectAttachment) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 // The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.

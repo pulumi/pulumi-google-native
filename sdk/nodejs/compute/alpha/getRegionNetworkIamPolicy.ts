@@ -23,7 +23,7 @@ export function getRegionNetworkIamPolicy(args: GetRegionNetworkIamPolicyArgs, o
 }
 
 export interface GetRegionNetworkIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     region: string;
     resource: string;
@@ -57,7 +57,7 @@ export function getRegionNetworkIamPolicyOutput(args: GetRegionNetworkIamPolicyO
 }
 
 export interface GetRegionNetworkIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     resource: pulumi.Input<string>;

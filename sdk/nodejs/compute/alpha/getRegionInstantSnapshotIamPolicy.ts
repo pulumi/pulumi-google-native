@@ -23,7 +23,7 @@ export function getRegionInstantSnapshotIamPolicy(args: GetRegionInstantSnapshot
 }
 
 export interface GetRegionInstantSnapshotIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     region: string;
     resource: string;
@@ -57,7 +57,7 @@ export function getRegionInstantSnapshotIamPolicyOutput(args: GetRegionInstantSn
 }
 
 export interface GetRegionInstantSnapshotIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     resource: pulumi.Input<string>;

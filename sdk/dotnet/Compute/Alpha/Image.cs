@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Force image creation if true.
         /// </summary>
         [Output("forceCreate")]
-        public Output<string?> ForceCreate { get; private set; } = null!;
+        public Output<bool?> ForceCreate { get; private set; } = null!;
 
         /// <summary>
         /// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
@@ -329,7 +329,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Force image creation if true.
         /// </summary>
         [Input("forceCreate")]
-        public Input<string>? ForceCreate { get; set; }
+        public Input<bool>? ForceCreate { get; set; }
 
         [Input("guestOsFeatures")]
         private InputList<Inputs.GuestOsFeatureArgs>? _guestOsFeatures;

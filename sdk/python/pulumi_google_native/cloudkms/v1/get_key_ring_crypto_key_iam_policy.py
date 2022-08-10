@@ -81,7 +81,7 @@ class AwaitableGetKeyRingCryptoKeyIamPolicyResult(GetKeyRingCryptoKeyIamPolicyRe
 def get_key_ring_crypto_key_iam_policy(crypto_key_id: Optional[str] = None,
                                        key_ring_id: Optional[str] = None,
                                        location: Optional[str] = None,
-                                       options_requested_policy_version: Optional[str] = None,
+                                       options_requested_policy_version: Optional[int] = None,
                                        project: Optional[str] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetKeyRingCryptoKeyIamPolicyResult:
     """
@@ -107,7 +107,7 @@ def get_key_ring_crypto_key_iam_policy(crypto_key_id: Optional[str] = None,
 def get_key_ring_crypto_key_iam_policy_output(crypto_key_id: Optional[pulumi.Input[str]] = None,
                                               key_ring_id: Optional[pulumi.Input[str]] = None,
                                               location: Optional[pulumi.Input[str]] = None,
-                                              options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                              options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                               project: Optional[pulumi.Input[Optional[str]]] = None,
                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyRingCryptoKeyIamPolicyResult]:
     """

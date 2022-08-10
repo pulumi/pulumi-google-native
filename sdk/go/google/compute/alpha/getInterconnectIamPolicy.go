@@ -21,7 +21,7 @@ func LookupInterconnectIamPolicy(ctx *pulumi.Context, args *LookupInterconnectIa
 }
 
 type LookupInterconnectIamPolicyArgs struct {
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	Resource                      string  `pulumi:"resource"`
 }
@@ -53,7 +53,7 @@ func LookupInterconnectIamPolicyOutput(ctx *pulumi.Context, args LookupInterconn
 }
 
 type LookupInterconnectIamPolicyOutputArgs struct {
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	Resource                      pulumi.StringInput    `pulumi:"resource"`
 }

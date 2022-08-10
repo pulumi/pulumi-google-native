@@ -20,7 +20,7 @@ type DomainMapping struct {
 	// Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
-	NoManagedCertificate pulumi.StringPtrOutput `pulumi:"noManagedCertificate"`
+	NoManagedCertificate pulumi.BoolPtrOutput `pulumi:"noManagedCertificate"`
 	// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
 	OverrideStrategy pulumi.StringPtrOutput `pulumi:"overrideStrategy"`
 	// The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
@@ -79,7 +79,7 @@ type domainMappingArgs struct {
 	// Relative name of the domain serving the application. Example: example.com.
 	Id *string `pulumi:"id"`
 	// Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
-	NoManagedCertificate *string `pulumi:"noManagedCertificate"`
+	NoManagedCertificate *bool `pulumi:"noManagedCertificate"`
 	// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
 	OverrideStrategy *string `pulumi:"overrideStrategy"`
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
@@ -92,7 +92,7 @@ type DomainMappingArgs struct {
 	// Relative name of the domain serving the application. Example: example.com.
 	Id pulumi.StringPtrInput
 	// Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
-	NoManagedCertificate pulumi.StringPtrInput
+	NoManagedCertificate pulumi.BoolPtrInput
 	// Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
 	OverrideStrategy pulumi.StringPtrInput
 	// SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
@@ -146,8 +146,8 @@ func (o DomainMappingOutput) Name() pulumi.StringOutput {
 }
 
 // Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
-func (o DomainMappingOutput) NoManagedCertificate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DomainMapping) pulumi.StringPtrOutput { return v.NoManagedCertificate }).(pulumi.StringPtrOutput)
+func (o DomainMappingOutput) NoManagedCertificate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DomainMapping) pulumi.BoolPtrOutput { return v.NoManagedCertificate }).(pulumi.BoolPtrOutput)
 }
 
 // Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.

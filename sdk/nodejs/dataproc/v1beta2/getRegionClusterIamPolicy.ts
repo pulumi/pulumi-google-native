@@ -24,7 +24,7 @@ export function getRegionClusterIamPolicy(args: GetRegionClusterIamPolicyArgs, o
 
 export interface GetRegionClusterIamPolicyArgs {
     clusterId: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     regionId: string;
 }
@@ -50,7 +50,7 @@ export function getRegionClusterIamPolicyOutput(args: GetRegionClusterIamPolicyO
 
 export interface GetRegionClusterIamPolicyOutputArgs {
     clusterId: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     regionId: pulumi.Input<string>;
 }

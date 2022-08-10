@@ -21,7 +21,7 @@ func LookupServiceAccountIamPolicy(ctx *pulumi.Context, args *LookupServiceAccou
 }
 
 type LookupServiceAccountIamPolicyArgs struct {
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	ServiceAccountId              string  `pulumi:"serviceAccountId"`
 }
@@ -51,7 +51,7 @@ func LookupServiceAccountIamPolicyOutput(ctx *pulumi.Context, args LookupService
 }
 
 type LookupServiceAccountIamPolicyOutputArgs struct {
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	ServiceAccountId              pulumi.StringInput    `pulumi:"serviceAccountId"`
 }

@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public string DatasourceId { get; set; } = null!;
 
         [Input("debugOptionsEnableDebugging")]
-        public string? DebugOptionsEnableDebugging { get; set; }
+        public bool? DebugOptionsEnableDebugging { get; set; }
 
         public GetDataSourceArgs()
         {
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
         public Input<string> DatasourceId { get; set; } = null!;
 
         [Input("debugOptionsEnableDebugging")]
-        public Input<string>? DebugOptionsEnableDebugging { get; set; }
+        public Input<bool>? DebugOptionsEnableDebugging { get; set; }
 
         public GetDataSourceInvokeArgs()
         {

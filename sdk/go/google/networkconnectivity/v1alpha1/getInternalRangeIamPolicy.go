@@ -23,7 +23,7 @@ func LookupInternalRangeIamPolicy(ctx *pulumi.Context, args *LookupInternalRange
 type LookupInternalRangeIamPolicyArgs struct {
 	InternalRangeId               string  `pulumi:"internalRangeId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ func LookupInternalRangeIamPolicyOutput(ctx *pulumi.Context, args LookupInternal
 type LookupInternalRangeIamPolicyOutputArgs struct {
 	InternalRangeId               pulumi.StringInput    `pulumi:"internalRangeId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

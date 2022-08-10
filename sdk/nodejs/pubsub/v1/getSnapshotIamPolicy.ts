@@ -22,7 +22,7 @@ export function getSnapshotIamPolicy(args: GetSnapshotIamPolicyArgs, opts?: pulu
 }
 
 export interface GetSnapshotIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     snapshotId: string;
 }
@@ -47,7 +47,7 @@ export function getSnapshotIamPolicyOutput(args: GetSnapshotIamPolicyOutputArgs,
 }
 
 export interface GetSnapshotIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     snapshotId: pulumi.Input<string>;
 }

@@ -44,7 +44,7 @@ type AppGateway struct {
 	// Server-defined URI for this resource.
 	Uri pulumi.StringOutput `pulumi:"uri"`
 	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewAppGateway registers a new resource with the given unique name, arguments, and options.
@@ -114,7 +114,7 @@ type appGatewayArgs struct {
 	// The type of network connectivity used by the AppGateway.
 	Type AppGatewayType `pulumi:"type"`
 	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a AppGateway resource.
@@ -136,7 +136,7 @@ type AppGatewayArgs struct {
 	// The type of network connectivity used by the AppGateway.
 	Type AppGatewayTypeInput
 	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (AppGatewayArgs) ElementType() reflect.Type {
@@ -250,8 +250,8 @@ func (o AppGatewayOutput) Uri() pulumi.StringOutput {
 }
 
 // Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-func (o AppGatewayOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppGateway) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o AppGatewayOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppGateway) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

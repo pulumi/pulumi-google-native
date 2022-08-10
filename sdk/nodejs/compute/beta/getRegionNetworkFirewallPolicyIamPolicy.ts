@@ -23,7 +23,7 @@ export function getRegionNetworkFirewallPolicyIamPolicy(args: GetRegionNetworkFi
 }
 
 export interface GetRegionNetworkFirewallPolicyIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     region: string;
     resource: string;
@@ -57,7 +57,7 @@ export function getRegionNetworkFirewallPolicyIamPolicyOutput(args: GetRegionNet
 }
 
 export interface GetRegionNetworkFirewallPolicyIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     resource: pulumi.Input<string>;

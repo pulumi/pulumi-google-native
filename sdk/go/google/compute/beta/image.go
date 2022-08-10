@@ -29,7 +29,7 @@ type Image struct {
 	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
 	Family pulumi.StringOutput `pulumi:"family"`
 	// Force image creation if true.
-	ForceCreate pulumi.StringPtrOutput `pulumi:"forceCreate"`
+	ForceCreate pulumi.BoolPtrOutput `pulumi:"forceCreate"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
 	GuestOsFeatures GuestOsFeatureResponseArrayOutput `pulumi:"guestOsFeatures"`
 	// Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
@@ -145,7 +145,7 @@ type imageArgs struct {
 	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
 	Family *string `pulumi:"family"`
 	// Force image creation if true.
-	ForceCreate *string `pulumi:"forceCreate"`
+	ForceCreate *bool `pulumi:"forceCreate"`
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
 	GuestOsFeatures []GuestOsFeature `pulumi:"guestOsFeatures"`
 	// Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
@@ -204,7 +204,7 @@ type ImageArgs struct {
 	// The name of the image family to which this image belongs. You can create disks by specifying an image family instead of a specific image name. The image family always returns its latest image that is not deprecated. The name of the image family must comply with RFC1035.
 	Family pulumi.StringPtrInput
 	// Force image creation if true.
-	ForceCreate pulumi.StringPtrInput
+	ForceCreate pulumi.BoolPtrInput
 	// A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.
 	GuestOsFeatures GuestOsFeatureArrayInput
 	// Encrypts the image using a customer-supplied encryption key. After you encrypt an image with a customer-supplied key, you must provide the same key if you use the image later (e.g. to create a disk from the image). Customer-supplied encryption keys do not protect access to metadata of the disk. If you do not provide an encryption key when creating the image, then the disk will be encrypted using an automatically generated key and you do not need to provide a key to use the image later.
@@ -321,8 +321,8 @@ func (o ImageOutput) Family() pulumi.StringOutput {
 }
 
 // Force image creation if true.
-func (o ImageOutput) ForceCreate() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Image) pulumi.StringPtrOutput { return v.ForceCreate }).(pulumi.StringPtrOutput)
+func (o ImageOutput) ForceCreate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Image) pulumi.BoolPtrOutput { return v.ForceCreate }).(pulumi.BoolPtrOutput)
 }
 
 // A list of features to enable on the guest operating system. Applicable only for bootable images. To see a list of available options, see the guestOSfeatures[].type parameter.

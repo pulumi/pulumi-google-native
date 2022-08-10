@@ -199,7 +199,7 @@ namespace Pulumi.GoogleNative.Run.V2
         /// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
         /// </summary>
         [Output("validateOnly")]
-        public Output<string?> ValidateOnly { get; private set; } = null!;
+        public Output<bool?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>
@@ -352,7 +352,7 @@ namespace Pulumi.GoogleNative.Run.V2
         /// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
         /// </summary>
         [Input("validateOnly")]
-        public Input<string>? ValidateOnly { get; set; }
+        public Input<bool>? ValidateOnly { get; set; }
 
         public ServiceArgs()
         {

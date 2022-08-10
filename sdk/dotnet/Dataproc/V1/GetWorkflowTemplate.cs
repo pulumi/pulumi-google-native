@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public string? Project { get; set; }
 
         [Input("version")]
-        public string? Version { get; set; }
+        public int? Version { get; set; }
 
         [Input("workflowTemplateId", required: true)]
         public string WorkflowTemplateId { get; set; } = null!;
@@ -54,7 +54,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Input<string>? Project { get; set; }
 
         [Input("version")]
-        public Input<string>? Version { get; set; }
+        public Input<int>? Version { get; set; }
 
         [Input("workflowTemplateId", required: true)]
         public Input<string> WorkflowTemplateId { get; set; } = null!;

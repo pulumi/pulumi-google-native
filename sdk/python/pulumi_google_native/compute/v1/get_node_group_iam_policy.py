@@ -90,7 +90,7 @@ class AwaitableGetNodeGroupIamPolicyResult(GetNodeGroupIamPolicyResult):
             version=self.version)
 
 
-def get_node_group_iam_policy(options_requested_policy_version: Optional[str] = None,
+def get_node_group_iam_policy(options_requested_policy_version: Optional[int] = None,
                               project: Optional[str] = None,
                               resource: Optional[str] = None,
                               zone: Optional[str] = None,
@@ -115,7 +115,7 @@ def get_node_group_iam_policy(options_requested_policy_version: Optional[str] = 
 
 
 @_utilities.lift_output_func(get_node_group_iam_policy)
-def get_node_group_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+def get_node_group_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
                                      resource: Optional[pulumi.Input[str]] = None,
                                      zone: Optional[pulumi.Input[str]] = None,

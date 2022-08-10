@@ -25,7 +25,7 @@ export function getEdgeCacheOriginIamPolicy(args: GetEdgeCacheOriginIamPolicyArg
 export interface GetEdgeCacheOriginIamPolicyArgs {
     edgeCacheOriginId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getEdgeCacheOriginIamPolicyOutput(args: GetEdgeCacheOriginIamPol
 export interface GetEdgeCacheOriginIamPolicyOutputArgs {
     edgeCacheOriginId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

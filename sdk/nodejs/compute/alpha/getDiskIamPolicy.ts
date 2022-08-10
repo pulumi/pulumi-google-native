@@ -23,7 +23,7 @@ export function getDiskIamPolicy(args: GetDiskIamPolicyArgs, opts?: pulumi.Invok
 }
 
 export interface GetDiskIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     resource: string;
     zone: string;
@@ -57,7 +57,7 @@ export function getDiskIamPolicyOutput(args: GetDiskIamPolicyOutputArgs, opts?: 
 }
 
 export interface GetDiskIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     resource: pulumi.Input<string>;
     zone: pulumi.Input<string>;

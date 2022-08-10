@@ -22,7 +22,7 @@ func LookupRepositoryIamPolicy(ctx *pulumi.Context, args *LookupRepositoryIamPol
 
 type LookupRepositoryIamPolicyArgs struct {
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	RepositoryId                  string  `pulumi:"repositoryId"`
 }
@@ -51,7 +51,7 @@ func LookupRepositoryIamPolicyOutput(ctx *pulumi.Context, args LookupRepositoryI
 
 type LookupRepositoryIamPolicyOutputArgs struct {
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	RepositoryId                  pulumi.StringInput    `pulumi:"repositoryId"`
 }

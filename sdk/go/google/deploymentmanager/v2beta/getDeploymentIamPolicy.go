@@ -21,7 +21,7 @@ func LookupDeploymentIamPolicy(ctx *pulumi.Context, args *LookupDeploymentIamPol
 }
 
 type LookupDeploymentIamPolicyArgs struct {
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	Resource                      string  `pulumi:"resource"`
 }
@@ -51,7 +51,7 @@ func LookupDeploymentIamPolicyOutput(ctx *pulumi.Context, args LookupDeploymentI
 }
 
 type LookupDeploymentIamPolicyOutputArgs struct {
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	Resource                      pulumi.StringInput    `pulumi:"resource"`
 }

@@ -26,7 +26,7 @@ export function getLakeZoneIamPolicy(args: GetLakeZoneIamPolicyArgs, opts?: pulu
 export interface GetLakeZoneIamPolicyArgs {
     lakeId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     zone: string;
 }
@@ -57,7 +57,7 @@ export function getLakeZoneIamPolicyOutput(args: GetLakeZoneIamPolicyOutputArgs,
 export interface GetLakeZoneIamPolicyOutputArgs {
     lakeId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     zone: pulumi.Input<string>;
 }

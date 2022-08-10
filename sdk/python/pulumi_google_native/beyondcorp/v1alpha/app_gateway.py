@@ -25,7 +25,7 @@ class AppGatewayArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None):
+                 validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a AppGateway resource.
         :param pulumi.Input['AppGatewayHostType'] host_type: The type of hosting used by the AppGateway.
@@ -35,7 +35,7 @@ class AppGatewayArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user provided metadata.
         :param pulumi.Input[str] name: Unique resource name of the AppGateway. The name is ignored when creating an AppGateway.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
-        :param pulumi.Input[str] validate_only: Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+        :param pulumi.Input[bool] validate_only: Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
         """
         pulumi.set(__self__, "host_type", host_type)
         pulumi.set(__self__, "type", type)
@@ -160,14 +160,14 @@ class AppGatewayArgs:
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[str]]:
+    def validate_only(self) -> Optional[pulumi.Input[bool]]:
         """
         Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
         """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[str]]):
+    def validate_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "validate_only", value)
 
 
@@ -185,7 +185,7 @@ class AppGateway(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['AppGatewayType']] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a new AppGateway in a given project and location.
@@ -199,7 +199,7 @@ class AppGateway(pulumi.CustomResource):
         :param pulumi.Input[str] name: Unique resource name of the AppGateway. The name is ignored when creating an AppGateway.
         :param pulumi.Input[str] request_id: Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and t he request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['AppGatewayType'] type: The type of network connectivity used by the AppGateway.
-        :param pulumi.Input[str] validate_only: Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
+        :param pulumi.Input[bool] validate_only: Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
         """
         ...
     @overload
@@ -234,7 +234,7 @@ class AppGateway(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['AppGatewayType']] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -422,7 +422,7 @@ class AppGateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[str]]:
+    def validate_only(self) -> pulumi.Output[Optional[bool]]:
         """
         Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
         """

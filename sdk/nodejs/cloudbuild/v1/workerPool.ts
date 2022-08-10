@@ -81,7 +81,7 @@ export class WorkerPool extends pulumi.CustomResource {
     /**
      * If set, validate the request and preview the response, but do not actually post it.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
     /**
      * Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
      */
@@ -159,7 +159,7 @@ export interface WorkerPoolArgs {
     /**
      * If set, validate the request and preview the response, but do not actually post it.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
     /**
      * Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
      */

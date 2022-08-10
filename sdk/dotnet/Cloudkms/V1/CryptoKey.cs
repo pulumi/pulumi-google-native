@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
         /// </summary>
         [Output("skipInitialVersionCreation")]
-        public Output<string?> SkipInitialVersionCreation { get; private set; } = null!;
+        public Output<bool?> SkipInitialVersionCreation { get; private set; } = null!;
 
         /// <summary>
         /// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
@@ -223,7 +223,7 @@ namespace Pulumi.GoogleNative.Cloudkms.V1
         /// If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
         /// </summary>
         [Input("skipInitialVersionCreation")]
-        public Input<string>? SkipInitialVersionCreation { get; set; }
+        public Input<bool>? SkipInitialVersionCreation { get; set; }
 
         /// <summary>
         /// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.

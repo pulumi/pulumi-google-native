@@ -78,7 +78,7 @@ export class Deployment extends pulumi.CustomResource {
     /**
      * If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
      */
-    public readonly preview!: pulumi.Output<string | undefined>;
+    public readonly preview!: pulumi.Output<boolean | undefined>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Server defined URL for the resource.
@@ -178,7 +178,7 @@ export interface DeploymentArgs {
     /**
      * If set to true, creates a deployment and creates "shell" resources but does not actually instantiate these resources. This allows you to preview what your deployment looks like. After previewing a deployment, you can deploy your resources by making a request with the `update()` method or you can use the `cancelPreview()` method to cancel the preview altogether. Note that the deployment will still exist after you cancel the preview and you must separately delete this deployment if you want to remove it.
      */
-    preview?: pulumi.Input<string>;
+    preview?: pulumi.Input<boolean>;
     project?: pulumi.Input<string>;
     /**
      * [Input Only] The parameters that define your deployment, including the deployment configuration and relevant templates.

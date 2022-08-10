@@ -22,7 +22,7 @@ export function getBackendServiceIamPolicy(args: GetBackendServiceIamPolicyArgs,
 }
 
 export interface GetBackendServiceIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     resource: string;
 }
@@ -55,7 +55,7 @@ export function getBackendServiceIamPolicyOutput(args: GetBackendServiceIamPolic
 }
 
 export interface GetBackendServiceIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     resource: pulumi.Input<string>;
 }

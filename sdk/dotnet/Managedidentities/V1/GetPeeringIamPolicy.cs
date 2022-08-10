@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
     public sealed class GetPeeringIamPolicyArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
-        public string? OptionsRequestedPolicyVersion { get; set; }
+        public int? OptionsRequestedPolicyVersion { get; set; }
 
         [Input("peeringId", required: true)]
         public string PeeringId { get; set; } = null!;
@@ -45,7 +45,7 @@ namespace Pulumi.GoogleNative.Managedidentities.V1
     public sealed class GetPeeringIamPolicyInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("optionsRequestedPolicyVersion")]
-        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+        public Input<int>? OptionsRequestedPolicyVersion { get; set; }
 
         [Input("peeringId", required: true)]
         public Input<string> PeeringId { get; set; } = null!;

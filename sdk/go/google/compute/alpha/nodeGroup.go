@@ -23,7 +23,7 @@ type NodeGroup struct {
 	Description pulumi.StringOutput `pulumi:"description"`
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// Initial count of nodes in the node group.
-	InitialNodeCount pulumi.StringOutput `pulumi:"initialNodeCount"`
+	InitialNodeCount pulumi.IntOutput `pulumi:"initialNodeCount"`
 	// The type of the resource. Always compute#nodeGroup for node group.
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
@@ -103,7 +103,7 @@ type nodeGroupArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
 	// Initial count of nodes in the node group.
-	InitialNodeCount string `pulumi:"initialNodeCount"`
+	InitialNodeCount int `pulumi:"initialNodeCount"`
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint *string `pulumi:"locationHint"`
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
@@ -128,7 +128,7 @@ type NodeGroupArgs struct {
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
 	// Initial count of nodes in the node group.
-	InitialNodeCount pulumi.StringInput
+	InitialNodeCount pulumi.IntInput
 	// An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
 	LocationHint pulumi.StringPtrInput
 	// Specifies how to handle instances when a node in the group undergoes maintenance. Set to one of: DEFAULT, RESTART_IN_PLACE, or MIGRATE_WITHIN_NODE_GROUP. The default value is DEFAULT. For more information, see Maintenance policies.
@@ -203,8 +203,8 @@ func (o NodeGroupOutput) Fingerprint() pulumi.StringOutput {
 }
 
 // Initial count of nodes in the node group.
-func (o NodeGroupOutput) InitialNodeCount() pulumi.StringOutput {
-	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.InitialNodeCount }).(pulumi.StringOutput)
+func (o NodeGroupOutput) InitialNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v *NodeGroup) pulumi.IntOutput { return v.InitialNodeCount }).(pulumi.IntOutput)
 }
 
 // The type of the resource. Always compute#nodeGroup for node group.

@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         /// If set, validate the request and preview the review, but do not actually save it.
         /// </summary>
         [Output("validateOnly")]
-        public Output<string?> ValidateOnly { get; private set; } = null!;
+        public Output<bool?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace Pulumi.GoogleNative.Monitoring.V1
         /// If set, validate the request and preview the review, but do not actually save it.
         /// </summary>
         [Input("validateOnly")]
-        public Input<string>? ValidateOnly { get; set; }
+        public Input<bool>? ValidateOnly { get; set; }
 
         public DashboardArgs()
         {

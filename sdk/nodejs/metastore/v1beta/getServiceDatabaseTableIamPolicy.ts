@@ -27,7 +27,7 @@ export function getServiceDatabaseTableIamPolicy(args: GetServiceDatabaseTableIa
 export interface GetServiceDatabaseTableIamPolicyArgs {
     databaseId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     serviceId: string;
     tableId: string;
@@ -59,7 +59,7 @@ export function getServiceDatabaseTableIamPolicyOutput(args: GetServiceDatabaseT
 export interface GetServiceDatabaseTableIamPolicyOutputArgs {
     databaseId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     serviceId: pulumi.Input<string>;
     tableId: pulumi.Input<string>;

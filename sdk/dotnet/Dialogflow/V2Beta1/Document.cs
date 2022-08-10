@@ -43,7 +43,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
         /// </summary>
         [Output("importGcsCustomMetadata")]
-        public Output<string?> ImportGcsCustomMetadata { get; private set; } = null!;
+        public Output<bool?> ImportGcsCustomMetadata { get; private set; } = null!;
 
         [Output("knowledgeBaseId")]
         public Output<string> KnowledgeBaseId { get; private set; } = null!;
@@ -175,7 +175,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
         /// </summary>
         [Input("importGcsCustomMetadata")]
-        public Input<string>? ImportGcsCustomMetadata { get; set; }
+        public Input<bool>? ImportGcsCustomMetadata { get; set; }
 
         [Input("knowledgeBaseId", required: true)]
         public Input<string> KnowledgeBaseId { get; set; } = null!;

@@ -18,7 +18,7 @@ class ConnectionProfileArgs:
     def __init__(__self__, *,
                  connection_profile_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
-                 force: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
                  forward_ssh_connectivity: Optional[pulumi.Input['ForwardSshTunnelConnectivityArgs']] = None,
                  gcs_profile: Optional[pulumi.Input['GcsProfileArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -29,12 +29,12 @@ class ConnectionProfileArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  static_service_ip_connectivity: Optional[pulumi.Input['StaticServiceIpConnectivityArgs']] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None):
+                 validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ConnectionProfile resource.
         :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
-        :param pulumi.Input[str] force: Optional. Create the connection profile without validating it.
+        :param pulumi.Input[bool] force: Optional. Create the connection profile without validating it.
         :param pulumi.Input['ForwardSshTunnelConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
         :param pulumi.Input['GcsProfileArgs'] gcs_profile: Cloud Storage ConnectionProfile configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
@@ -43,7 +43,7 @@ class ConnectionProfileArgs:
         :param pulumi.Input['PrivateConnectivityArgs'] private_connectivity: Private connectivity.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['StaticServiceIpConnectivityArgs'] static_service_ip_connectivity: Static Service IP connectivity.
-        :param pulumi.Input[str] validate_only: Optional. Only validate the connection profile, but don't create any resources. The default is false.
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the connection profile, but don't create any resources. The default is false.
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         pulumi.set(__self__, "display_name", display_name)
@@ -98,14 +98,14 @@ class ConnectionProfileArgs:
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[str]]:
+    def force(self) -> Optional[pulumi.Input[bool]]:
         """
         Optional. Create the connection profile without validating it.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[str]]):
+    def force(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force", value)
 
     @property
@@ -224,14 +224,14 @@ class ConnectionProfileArgs:
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[str]]:
+    def validate_only(self) -> Optional[pulumi.Input[bool]]:
         """
         Optional. Only validate the connection profile, but don't create any resources. The default is false.
         """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[str]]):
+    def validate_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "validate_only", value)
 
 
@@ -242,7 +242,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 force: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
                  forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ForwardSshTunnelConnectivityArgs']]] = None,
                  gcs_profile: Optional[pulumi.Input[pulumi.InputType['GcsProfileArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -253,7 +253,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  static_service_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Use this method to create a connection profile in a project and location.
@@ -263,7 +263,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
-        :param pulumi.Input[str] force: Optional. Create the connection profile without validating it.
+        :param pulumi.Input[bool] force: Optional. Create the connection profile without validating it.
         :param pulumi.Input[pulumi.InputType['ForwardSshTunnelConnectivityArgs']] forward_ssh_connectivity: Forward SSH tunnel connectivity.
         :param pulumi.Input[pulumi.InputType['GcsProfileArgs']] gcs_profile: Cloud Storage ConnectionProfile configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
@@ -272,7 +272,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['PrivateConnectivityArgs']] private_connectivity: Private connectivity.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']] static_service_ip_connectivity: Static Service IP connectivity.
-        :param pulumi.Input[str] validate_only: Optional. Only validate the connection profile, but don't create any resources. The default is false.
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the connection profile, but don't create any resources. The default is false.
         """
         ...
     @overload
@@ -301,7 +301,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 force: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
                  forward_ssh_connectivity: Optional[pulumi.Input[pulumi.InputType['ForwardSshTunnelConnectivityArgs']]] = None,
                  gcs_profile: Optional[pulumi.Input[pulumi.InputType['GcsProfileArgs']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -312,7 +312,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  static_service_ip_connectivity: Optional[pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -412,7 +412,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def force(self) -> pulumi.Output[Optional[str]]:
+    def force(self) -> pulumi.Output[Optional[bool]]:
         """
         Optional. Create the connection profile without validating it.
         """
@@ -510,7 +510,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[str]]:
+    def validate_only(self) -> pulumi.Output[Optional[bool]]:
         """
         Optional. Only validate the connection profile, but don't create any resources. The default is false.
         """

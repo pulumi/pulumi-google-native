@@ -23,7 +23,7 @@ func LookupMigrationJobIamPolicy(ctx *pulumi.Context, args *LookupMigrationJobIa
 type LookupMigrationJobIamPolicyArgs struct {
 	Location                      string  `pulumi:"location"`
 	MigrationJobId                string  `pulumi:"migrationJobId"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ func LookupMigrationJobIamPolicyOutput(ctx *pulumi.Context, args LookupMigration
 type LookupMigrationJobIamPolicyOutputArgs struct {
 	Location                      pulumi.StringInput    `pulumi:"location"`
 	MigrationJobId                pulumi.StringInput    `pulumi:"migrationJobId"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

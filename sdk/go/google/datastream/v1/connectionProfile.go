@@ -23,7 +23,7 @@ type ConnectionProfile struct {
 	// Display name.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// Optional. Create the connection profile without validating it.
-	Force pulumi.StringPtrOutput `pulumi:"force"`
+	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// Forward SSH tunnel connectivity.
 	ForwardSshConnectivity ForwardSshTunnelConnectivityResponseOutput `pulumi:"forwardSshConnectivity"`
 	// Cloud Storage ConnectionProfile configuration.
@@ -47,7 +47,7 @@ type ConnectionProfile struct {
 	// The update time of the resource.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. Only validate the connection profile, but don't create any resources. The default is false.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewConnectionProfile registers a new resource with the given unique name, arguments, and options.
@@ -106,7 +106,7 @@ type connectionProfileArgs struct {
 	// Display name.
 	DisplayName string `pulumi:"displayName"`
 	// Optional. Create the connection profile without validating it.
-	Force *string `pulumi:"force"`
+	Force *bool `pulumi:"force"`
 	// Forward SSH tunnel connectivity.
 	ForwardSshConnectivity *ForwardSshTunnelConnectivity `pulumi:"forwardSshConnectivity"`
 	// Cloud Storage ConnectionProfile configuration.
@@ -126,7 +126,7 @@ type connectionProfileArgs struct {
 	// Static Service IP connectivity.
 	StaticServiceIpConnectivity *StaticServiceIpConnectivity `pulumi:"staticServiceIpConnectivity"`
 	// Optional. Only validate the connection profile, but don't create any resources. The default is false.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a ConnectionProfile resource.
@@ -136,7 +136,7 @@ type ConnectionProfileArgs struct {
 	// Display name.
 	DisplayName pulumi.StringInput
 	// Optional. Create the connection profile without validating it.
-	Force pulumi.StringPtrInput
+	Force pulumi.BoolPtrInput
 	// Forward SSH tunnel connectivity.
 	ForwardSshConnectivity ForwardSshTunnelConnectivityPtrInput
 	// Cloud Storage ConnectionProfile configuration.
@@ -156,7 +156,7 @@ type ConnectionProfileArgs struct {
 	// Static Service IP connectivity.
 	StaticServiceIpConnectivity StaticServiceIpConnectivityPtrInput
 	// Optional. Only validate the connection profile, but don't create any resources. The default is false.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (ConnectionProfileArgs) ElementType() reflect.Type {
@@ -212,8 +212,8 @@ func (o ConnectionProfileOutput) DisplayName() pulumi.StringOutput {
 }
 
 // Optional. Create the connection profile without validating it.
-func (o ConnectionProfileOutput) Force() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringPtrOutput { return v.Force }).(pulumi.StringPtrOutput)
+func (o ConnectionProfileOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
 // Forward SSH tunnel connectivity.
@@ -277,8 +277,8 @@ func (o ConnectionProfileOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Optional. Only validate the connection profile, but don't create any resources. The default is false.
-func (o ConnectionProfileOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ConnectionProfile) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o ConnectionProfileOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ConnectionProfile) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

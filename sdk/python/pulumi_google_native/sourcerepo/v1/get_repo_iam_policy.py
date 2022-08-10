@@ -78,7 +78,7 @@ class AwaitableGetRepoIamPolicyResult(GetRepoIamPolicyResult):
             version=self.version)
 
 
-def get_repo_iam_policy(options_requested_policy_version: Optional[str] = None,
+def get_repo_iam_policy(options_requested_policy_version: Optional[int] = None,
                         project: Optional[str] = None,
                         repo_id: Optional[str] = None,
                         opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRepoIamPolicyResult:
@@ -100,7 +100,7 @@ def get_repo_iam_policy(options_requested_policy_version: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_repo_iam_policy)
-def get_repo_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+def get_repo_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                repo_id: Optional[pulumi.Input[str]] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepoIamPolicyResult]:

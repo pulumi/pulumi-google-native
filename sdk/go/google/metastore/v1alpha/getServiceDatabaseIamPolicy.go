@@ -23,7 +23,7 @@ func LookupServiceDatabaseIamPolicy(ctx *pulumi.Context, args *LookupServiceData
 type LookupServiceDatabaseIamPolicyArgs struct {
 	DatabaseId                    string  `pulumi:"databaseId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	ServiceId                     string  `pulumi:"serviceId"`
 }
@@ -55,7 +55,7 @@ func LookupServiceDatabaseIamPolicyOutput(ctx *pulumi.Context, args LookupServic
 type LookupServiceDatabaseIamPolicyOutputArgs struct {
 	DatabaseId                    pulumi.StringInput    `pulumi:"databaseId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	ServiceId                     pulumi.StringInput    `pulumi:"serviceId"`
 }

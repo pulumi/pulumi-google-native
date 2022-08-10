@@ -23,7 +23,7 @@ export function getReservationIamPolicy(args: GetReservationIamPolicyArgs, opts?
 }
 
 export interface GetReservationIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     resource: string;
     zone: string;
@@ -57,7 +57,7 @@ export function getReservationIamPolicyOutput(args: GetReservationIamPolicyOutpu
 }
 
 export interface GetReservationIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     resource: pulumi.Input<string>;
     zone: pulumi.Input<string>;

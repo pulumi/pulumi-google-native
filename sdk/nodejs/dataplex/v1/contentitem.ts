@@ -82,7 +82,7 @@ export class Contentitem extends pulumi.CustomResource {
     /**
      * Optional. Only validate the request, but do not perform mutations. The default is false.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Contentitem resource with the given unique name, arguments, and options.
@@ -175,5 +175,5 @@ export interface ContentitemArgs {
     /**
      * Optional. Only validate the request, but do not perform mutations. The default is false.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
 }

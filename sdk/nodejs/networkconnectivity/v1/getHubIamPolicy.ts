@@ -23,7 +23,7 @@ export function getHubIamPolicy(args: GetHubIamPolicyArgs, opts?: pulumi.InvokeO
 
 export interface GetHubIamPolicyArgs {
     hubId: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -52,6 +52,6 @@ export function getHubIamPolicyOutput(args: GetHubIamPolicyOutputArgs, opts?: pu
 
 export interface GetHubIamPolicyOutputArgs {
     hubId: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

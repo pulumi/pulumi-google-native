@@ -24,7 +24,7 @@ type LookupDatasetAnnotationStoreIamPolicyArgs struct {
 	AnnotationStoreId             string  `pulumi:"annotationStoreId"`
 	DatasetId                     string  `pulumi:"datasetId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -56,7 +56,7 @@ type LookupDatasetAnnotationStoreIamPolicyOutputArgs struct {
 	AnnotationStoreId             pulumi.StringInput    `pulumi:"annotationStoreId"`
 	DatasetId                     pulumi.StringInput    `pulumi:"datasetId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

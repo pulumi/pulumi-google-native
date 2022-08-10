@@ -31,7 +31,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public string JobId { get; set; } = null!;
 
         [Input("optionsRequestedPolicyVersion")]
-        public string? OptionsRequestedPolicyVersion { get; set; }
+        public int? OptionsRequestedPolicyVersion { get; set; }
 
         [Input("project")]
         public string? Project { get; set; }
@@ -51,7 +51,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1Beta2
         public Input<string> JobId { get; set; } = null!;
 
         [Input("optionsRequestedPolicyVersion")]
-        public Input<string>? OptionsRequestedPolicyVersion { get; set; }
+        public Input<int>? OptionsRequestedPolicyVersion { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

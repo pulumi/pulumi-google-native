@@ -22,7 +22,7 @@ func LookupServiceBindingIamPolicy(ctx *pulumi.Context, args *LookupServiceBindi
 
 type LookupServiceBindingIamPolicyArgs struct {
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	ServiceBindingId              string  `pulumi:"serviceBindingId"`
 }
@@ -53,7 +53,7 @@ func LookupServiceBindingIamPolicyOutput(ctx *pulumi.Context, args LookupService
 
 type LookupServiceBindingIamPolicyOutputArgs struct {
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	ServiceBindingId              pulumi.StringInput    `pulumi:"serviceBindingId"`
 }

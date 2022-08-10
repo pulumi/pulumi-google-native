@@ -21,8 +21,8 @@ func LookupSearchApplication(ctx *pulumi.Context, args *LookupSearchApplicationA
 }
 
 type LookupSearchApplicationArgs struct {
-	DebugOptionsEnableDebugging *string `pulumi:"debugOptionsEnableDebugging"`
-	SearchapplicationId         string  `pulumi:"searchapplicationId"`
+	DebugOptionsEnableDebugging *bool  `pulumi:"debugOptionsEnableDebugging"`
+	SearchapplicationId         string `pulumi:"searchapplicationId"`
 }
 
 type LookupSearchApplicationResult struct {
@@ -64,8 +64,8 @@ func LookupSearchApplicationOutput(ctx *pulumi.Context, args LookupSearchApplica
 }
 
 type LookupSearchApplicationOutputArgs struct {
-	DebugOptionsEnableDebugging pulumi.StringPtrInput `pulumi:"debugOptionsEnableDebugging"`
-	SearchapplicationId         pulumi.StringInput    `pulumi:"searchapplicationId"`
+	DebugOptionsEnableDebugging pulumi.BoolPtrInput `pulumi:"debugOptionsEnableDebugging"`
+	SearchapplicationId         pulumi.StringInput  `pulumi:"searchapplicationId"`
 }
 
 func (LookupSearchApplicationOutputArgs) ElementType() reflect.Type {

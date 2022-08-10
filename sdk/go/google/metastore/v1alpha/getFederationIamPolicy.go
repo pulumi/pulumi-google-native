@@ -23,7 +23,7 @@ func LookupFederationIamPolicy(ctx *pulumi.Context, args *LookupFederationIamPol
 type LookupFederationIamPolicyArgs struct {
 	FederationId                  string  `pulumi:"federationId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ func LookupFederationIamPolicyOutput(ctx *pulumi.Context, args LookupFederationI
 type LookupFederationIamPolicyOutputArgs struct {
 	FederationId                  pulumi.StringInput    `pulumi:"federationId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

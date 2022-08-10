@@ -75,7 +75,7 @@ export class Dashboard extends pulumi.CustomResource {
     /**
      * If set, validate the request and preview the review, but do not actually save it.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Dashboard resource with the given unique name, arguments, and options.
@@ -166,5 +166,5 @@ export interface DashboardArgs {
     /**
      * If set, validate the request and preview the review, but do not actually save it.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
 }

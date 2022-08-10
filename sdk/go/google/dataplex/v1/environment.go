@@ -46,7 +46,7 @@ type Environment struct {
 	// The time when the environment was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewEnvironment registers a new resource with the given unique name, arguments, and options.
@@ -120,7 +120,7 @@ type environmentArgs struct {
 	// Optional. Configuration for sessions created for this environment.
 	SessionSpec *GoogleCloudDataplexV1EnvironmentSessionSpec `pulumi:"sessionSpec"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Environment resource.
@@ -141,7 +141,7 @@ type EnvironmentArgs struct {
 	// Optional. Configuration for sessions created for this environment.
 	SessionSpec GoogleCloudDataplexV1EnvironmentSessionSpecPtrInput
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (EnvironmentArgs) ElementType() reflect.Type {
@@ -263,8 +263,8 @@ func (o EnvironmentOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Optional. Only validate the request, but do not perform mutations. The default is false.
-func (o EnvironmentOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Environment) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o EnvironmentOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Environment) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

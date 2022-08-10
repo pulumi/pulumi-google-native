@@ -24,7 +24,7 @@ export function getRepositoryIamPolicy(args: GetRepositoryIamPolicyArgs, opts?: 
 
 export interface GetRepositoryIamPolicyArgs {
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     repositoryId: string;
 }
@@ -50,7 +50,7 @@ export function getRepositoryIamPolicyOutput(args: GetRepositoryIamPolicyOutputA
 
 export interface GetRepositoryIamPolicyOutputArgs {
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     repositoryId: pulumi.Input<string>;
 }

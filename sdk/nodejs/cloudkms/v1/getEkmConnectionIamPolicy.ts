@@ -25,7 +25,7 @@ export function getEkmConnectionIamPolicy(args: GetEkmConnectionIamPolicyArgs, o
 export interface GetEkmConnectionIamPolicyArgs {
     ekmConnectionId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getEkmConnectionIamPolicyOutput(args: GetEkmConnectionIamPolicyO
 export interface GetEkmConnectionIamPolicyOutputArgs {
     ekmConnectionId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

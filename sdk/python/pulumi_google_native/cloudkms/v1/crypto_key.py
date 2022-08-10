@@ -28,7 +28,7 @@ class CryptoKeyArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input['CryptoKeyPurpose']] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
-                 skip_initial_version_creation: Optional[pulumi.Input[str]] = None,
+                 skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
                  version_template: Optional[pulumi.Input['CryptoKeyVersionTemplateArgs']] = None):
         """
         The set of arguments for constructing a CryptoKey resource.
@@ -40,7 +40,7 @@ class CryptoKeyArgs:
         :param pulumi.Input[str] next_rotation_time: At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
         :param pulumi.Input['CryptoKeyPurpose'] purpose: Immutable. The immutable purpose of this CryptoKey.
         :param pulumi.Input[str] rotation_period: next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
-        :param pulumi.Input[str] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
+        :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
         :param pulumi.Input['CryptoKeyVersionTemplateArgs'] version_template: A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
         """
         pulumi.set(__self__, "key_ring_id", key_ring_id)
@@ -194,14 +194,14 @@ class CryptoKeyArgs:
 
     @property
     @pulumi.getter(name="skipInitialVersionCreation")
-    def skip_initial_version_creation(self) -> Optional[pulumi.Input[str]]:
+    def skip_initial_version_creation(self) -> Optional[pulumi.Input[bool]]:
         """
         If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
         """
         return pulumi.get(self, "skip_initial_version_creation")
 
     @skip_initial_version_creation.setter
-    def skip_initial_version_creation(self, value: Optional[pulumi.Input[str]]):
+    def skip_initial_version_creation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "skip_initial_version_creation", value)
 
     @property
@@ -233,7 +233,7 @@ class CryptoKey(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input['CryptoKeyPurpose']] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
-                 skip_initial_version_creation: Optional[pulumi.Input[str]] = None,
+                 skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
                  version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
                  __props__=None):
         """
@@ -251,7 +251,7 @@ class CryptoKey(pulumi.CustomResource):
         :param pulumi.Input[str] next_rotation_time: At next_rotation_time, the Key Management Service will automatically: 1. Create a new version of this CryptoKey. 2. Mark the new version as primary. Key rotations performed manually via CreateCryptoKeyVersion and UpdateCryptoKeyPrimaryVersion do not affect next_rotation_time. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
         :param pulumi.Input['CryptoKeyPurpose'] purpose: Immutable. The immutable purpose of this CryptoKey.
         :param pulumi.Input[str] rotation_period: next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
-        :param pulumi.Input[str] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
+        :param pulumi.Input[bool] skip_initial_version_creation: If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
         :param pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']] version_template: A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
         """
         ...
@@ -291,7 +291,7 @@ class CryptoKey(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  purpose: Optional[pulumi.Input['CryptoKeyPurpose']] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
-                 skip_initial_version_creation: Optional[pulumi.Input[str]] = None,
+                 skip_initial_version_creation: Optional[pulumi.Input[bool]] = None,
                  version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -467,7 +467,7 @@ class CryptoKey(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="skipInitialVersionCreation")
-    def skip_initial_version_creation(self) -> pulumi.Output[Optional[str]]:
+    def skip_initial_version_creation(self) -> pulumi.Output[Optional[bool]]:
         """
         If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
         """

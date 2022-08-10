@@ -21,9 +21,9 @@ func LookupOrganizationEnvironmentIamPolicy(ctx *pulumi.Context, args *LookupOrg
 }
 
 type LookupOrganizationEnvironmentIamPolicyArgs struct {
-	EnvironmentId                 string  `pulumi:"environmentId"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	OrganizationId                string  `pulumi:"organizationId"`
+	EnvironmentId                 string `pulumi:"environmentId"`
+	OptionsRequestedPolicyVersion *int   `pulumi:"optionsRequestedPolicyVersion"`
+	OrganizationId                string `pulumi:"organizationId"`
 }
 
 type LookupOrganizationEnvironmentIamPolicyResult struct {
@@ -51,9 +51,9 @@ func LookupOrganizationEnvironmentIamPolicyOutput(ctx *pulumi.Context, args Look
 }
 
 type LookupOrganizationEnvironmentIamPolicyOutputArgs struct {
-	EnvironmentId                 pulumi.StringInput    `pulumi:"environmentId"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
-	OrganizationId                pulumi.StringInput    `pulumi:"organizationId"`
+	EnvironmentId                 pulumi.StringInput `pulumi:"environmentId"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OrganizationId                pulumi.StringInput `pulumi:"organizationId"`
 }
 
 func (LookupOrganizationEnvironmentIamPolicyOutputArgs) ElementType() reflect.Type {

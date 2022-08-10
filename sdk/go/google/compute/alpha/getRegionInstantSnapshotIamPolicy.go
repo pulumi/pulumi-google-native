@@ -21,7 +21,7 @@ func LookupRegionInstantSnapshotIamPolicy(ctx *pulumi.Context, args *LookupRegio
 }
 
 type LookupRegionInstantSnapshotIamPolicyArgs struct {
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	Region                        string  `pulumi:"region"`
 	Resource                      string  `pulumi:"resource"`
@@ -54,7 +54,7 @@ func LookupRegionInstantSnapshotIamPolicyOutput(ctx *pulumi.Context, args Lookup
 }
 
 type LookupRegionInstantSnapshotIamPolicyOutputArgs struct {
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	Region                        pulumi.StringInput    `pulumi:"region"`
 	Resource                      pulumi.StringInput    `pulumi:"resource"`

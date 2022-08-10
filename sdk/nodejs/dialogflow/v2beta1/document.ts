@@ -54,7 +54,7 @@ export class Document extends pulumi.CustomResource {
     /**
      * Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
      */
-    public readonly importGcsCustomMetadata!: pulumi.Output<string | undefined>;
+    public readonly importGcsCustomMetadata!: pulumi.Output<boolean | undefined>;
     public readonly knowledgeBaseId!: pulumi.Output<string>;
     /**
      * The knowledge type of document content.
@@ -172,7 +172,7 @@ export interface DocumentArgs {
     /**
      * Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
      */
-    importGcsCustomMetadata?: pulumi.Input<string>;
+    importGcsCustomMetadata?: pulumi.Input<boolean>;
     knowledgeBaseId: pulumi.Input<string>;
     /**
      * The knowledge type of document content.

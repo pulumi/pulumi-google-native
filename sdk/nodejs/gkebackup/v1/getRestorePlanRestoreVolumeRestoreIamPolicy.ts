@@ -26,7 +26,7 @@ export function getRestorePlanRestoreVolumeRestoreIamPolicy(args: GetRestorePlan
 
 export interface GetRestorePlanRestoreVolumeRestoreIamPolicyArgs {
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     restoreId: string;
     restorePlanId: string;
@@ -58,7 +58,7 @@ export function getRestorePlanRestoreVolumeRestoreIamPolicyOutput(args: GetResto
 
 export interface GetRestorePlanRestoreVolumeRestoreIamPolicyOutputArgs {
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     restoreId: pulumi.Input<string>;
     restorePlanId: pulumi.Input<string>;

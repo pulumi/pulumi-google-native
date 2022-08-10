@@ -20,7 +20,7 @@ class AppProfileArgs:
                  instance_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 ignore_warnings: Optional[pulumi.Input[str]] = None,
+                 ignore_warnings: Optional[pulumi.Input[bool]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input['MultiClusterRoutingUseAnyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -30,7 +30,7 @@ class AppProfileArgs:
         :param pulumi.Input[str] app_profile_id: Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
         :param pulumi.Input[str] description: Long form description of the use case for this AppProfile.
         :param pulumi.Input[str] etag: Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
-        :param pulumi.Input[str] ignore_warnings: If true, ignore safety checks when creating the app profile.
+        :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when creating the app profile.
         :param pulumi.Input['MultiClusterRoutingUseAnyArgs'] multi_cluster_routing_use_any: Use a multi-cluster routing policy.
         :param pulumi.Input[str] name: The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
         :param pulumi.Input['SingleClusterRoutingArgs'] single_cluster_routing: Use a single-cluster routing policy.
@@ -99,14 +99,14 @@ class AppProfileArgs:
 
     @property
     @pulumi.getter(name="ignoreWarnings")
-    def ignore_warnings(self) -> Optional[pulumi.Input[str]]:
+    def ignore_warnings(self) -> Optional[pulumi.Input[bool]]:
         """
         If true, ignore safety checks when creating the app profile.
         """
         return pulumi.get(self, "ignore_warnings")
 
     @ignore_warnings.setter
-    def ignore_warnings(self, value: Optional[pulumi.Input[str]]):
+    def ignore_warnings(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ignore_warnings", value)
 
     @property
@@ -163,7 +163,7 @@ class AppProfile(pulumi.CustomResource):
                  app_profile_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 ignore_warnings: Optional[pulumi.Input[str]] = None,
+                 ignore_warnings: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[pulumi.InputType['MultiClusterRoutingUseAnyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -178,7 +178,7 @@ class AppProfile(pulumi.CustomResource):
         :param pulumi.Input[str] app_profile_id: Required. The ID to be used when referring to the new app profile within its instance, e.g., just `myprofile` rather than `projects/myproject/instances/myinstance/appProfiles/myprofile`.
         :param pulumi.Input[str] description: Long form description of the use case for this AppProfile.
         :param pulumi.Input[str] etag: Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
-        :param pulumi.Input[str] ignore_warnings: If true, ignore safety checks when creating the app profile.
+        :param pulumi.Input[bool] ignore_warnings: If true, ignore safety checks when creating the app profile.
         :param pulumi.Input[pulumi.InputType['MultiClusterRoutingUseAnyArgs']] multi_cluster_routing_use_any: Use a multi-cluster routing policy.
         :param pulumi.Input[str] name: The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
         :param pulumi.Input[pulumi.InputType['SingleClusterRoutingArgs']] single_cluster_routing: Use a single-cluster routing policy.
@@ -210,7 +210,7 @@ class AppProfile(pulumi.CustomResource):
                  app_profile_id: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
-                 ignore_warnings: Optional[pulumi.Input[str]] = None,
+                 ignore_warnings: Optional[pulumi.Input[bool]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
                  multi_cluster_routing_use_any: Optional[pulumi.Input[pulumi.InputType['MultiClusterRoutingUseAnyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -299,7 +299,7 @@ class AppProfile(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ignoreWarnings")
-    def ignore_warnings(self) -> pulumi.Output[Optional[str]]:
+    def ignore_warnings(self) -> pulumi.Output[Optional[bool]]:
         """
         If true, ignore safety checks when creating the app profile.
         """

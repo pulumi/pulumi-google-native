@@ -41,13 +41,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
         /// </summary>
         [Output("ignoreExpiryValidation")]
-        public Output<string?> IgnoreExpiryValidation { get; private set; } = null!;
+        public Output<bool?> IgnoreExpiryValidation { get; private set; } = null!;
 
         /// <summary>
         /// Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
         /// </summary>
         [Output("ignoreNewlineValidation")]
-        public Output<string?> IgnoreNewlineValidation { get; private set; } = null!;
+        public Output<bool?> IgnoreNewlineValidation { get; private set; } = null!;
 
         [Output("keystoreId")]
         public Output<string> KeystoreId { get; private set; } = null!;
@@ -168,13 +168,13 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
         /// </summary>
         [Input("ignoreExpiryValidation")]
-        public Input<string>? IgnoreExpiryValidation { get; set; }
+        public Input<bool>? IgnoreExpiryValidation { get; set; }
 
         /// <summary>
         /// Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
         /// </summary>
         [Input("ignoreNewlineValidation")]
-        public Input<string>? IgnoreNewlineValidation { get; set; }
+        public Input<bool>? IgnoreNewlineValidation { get; set; }
 
         [Input("keystoreId", required: true)]
         public Input<string> KeystoreId { get; set; } = null!;

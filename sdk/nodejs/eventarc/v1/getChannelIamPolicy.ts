@@ -25,7 +25,7 @@ export function getChannelIamPolicy(args: GetChannelIamPolicyArgs, opts?: pulumi
 export interface GetChannelIamPolicyArgs {
     channelId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getChannelIamPolicyOutput(args: GetChannelIamPolicyOutputArgs, o
 export interface GetChannelIamPolicyOutputArgs {
     channelId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

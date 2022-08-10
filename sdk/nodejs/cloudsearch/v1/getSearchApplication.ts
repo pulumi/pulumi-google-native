@@ -21,7 +21,7 @@ export function getSearchApplication(args: GetSearchApplicationArgs, opts?: pulu
 }
 
 export interface GetSearchApplicationArgs {
-    debugOptionsEnableDebugging?: string;
+    debugOptionsEnableDebugging?: boolean;
     searchapplicationId: string;
 }
 
@@ -77,6 +77,6 @@ export function getSearchApplicationOutput(args: GetSearchApplicationOutputArgs,
 }
 
 export interface GetSearchApplicationOutputArgs {
-    debugOptionsEnableDebugging?: pulumi.Input<string>;
+    debugOptionsEnableDebugging?: pulumi.Input<boolean>;
     searchapplicationId: pulumi.Input<string>;
 }

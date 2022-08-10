@@ -21,7 +21,7 @@ func LookupReservationIamPolicy(ctx *pulumi.Context, args *LookupReservationIamP
 }
 
 type LookupReservationIamPolicyArgs struct {
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	Resource                      string  `pulumi:"resource"`
 	Zone                          string  `pulumi:"zone"`
@@ -54,7 +54,7 @@ func LookupReservationIamPolicyOutput(ctx *pulumi.Context, args LookupReservatio
 }
 
 type LookupReservationIamPolicyOutputArgs struct {
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	Resource                      pulumi.StringInput    `pulumi:"resource"`
 	Zone                          pulumi.StringInput    `pulumi:"zone"`

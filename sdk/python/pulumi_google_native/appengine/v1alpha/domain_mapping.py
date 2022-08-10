@@ -18,13 +18,13 @@ class DomainMappingArgs:
     def __init__(__self__, *,
                  app_id: pulumi.Input[str],
                  id: Optional[pulumi.Input[str]] = None,
-                 no_managed_certificate: Optional[pulumi.Input[str]] = None,
+                 no_managed_certificate: Optional[pulumi.Input[bool]] = None,
                  override_strategy: Optional[pulumi.Input[str]] = None,
                  ssl_settings: Optional[pulumi.Input['SslSettingsArgs']] = None):
         """
         The set of arguments for constructing a DomainMapping resource.
         :param pulumi.Input[str] id: Relative name of the domain serving the application. Example: example.com.
-        :param pulumi.Input[str] no_managed_certificate: Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
+        :param pulumi.Input[bool] no_managed_certificate: Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
         :param pulumi.Input['SslSettingsArgs'] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
         """
@@ -61,14 +61,14 @@ class DomainMappingArgs:
 
     @property
     @pulumi.getter(name="noManagedCertificate")
-    def no_managed_certificate(self) -> Optional[pulumi.Input[str]]:
+    def no_managed_certificate(self) -> Optional[pulumi.Input[bool]]:
         """
         Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
         """
         return pulumi.get(self, "no_managed_certificate")
 
     @no_managed_certificate.setter
-    def no_managed_certificate(self, value: Optional[pulumi.Input[str]]):
+    def no_managed_certificate(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "no_managed_certificate", value)
 
     @property
@@ -103,7 +103,7 @@ class DomainMapping(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 no_managed_certificate: Optional[pulumi.Input[str]] = None,
+                 no_managed_certificate: Optional[pulumi.Input[bool]] = None,
                  override_strategy: Optional[pulumi.Input[str]] = None,
                  ssl_settings: Optional[pulumi.Input[pulumi.InputType['SslSettingsArgs']]] = None,
                  __props__=None):
@@ -114,7 +114,7 @@ class DomainMapping(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] id: Relative name of the domain serving the application. Example: example.com.
-        :param pulumi.Input[str] no_managed_certificate: Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
+        :param pulumi.Input[bool] no_managed_certificate: Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
         :param pulumi.Input[str] override_strategy: Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
         :param pulumi.Input[pulumi.InputType['SslSettingsArgs']] ssl_settings: SSL configuration for this domain. If unconfigured, this domain will not serve with SSL.
         """
@@ -145,7 +145,7 @@ class DomainMapping(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  app_id: Optional[pulumi.Input[str]] = None,
                  id: Optional[pulumi.Input[str]] = None,
-                 no_managed_certificate: Optional[pulumi.Input[str]] = None,
+                 no_managed_certificate: Optional[pulumi.Input[bool]] = None,
                  override_strategy: Optional[pulumi.Input[str]] = None,
                  ssl_settings: Optional[pulumi.Input[pulumi.InputType['SslSettingsArgs']]] = None,
                  __props__=None):
@@ -213,7 +213,7 @@ class DomainMapping(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="noManagedCertificate")
-    def no_managed_certificate(self) -> pulumi.Output[Optional[str]]:
+    def no_managed_certificate(self) -> pulumi.Output[Optional[bool]]:
         """
         Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
         """

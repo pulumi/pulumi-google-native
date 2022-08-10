@@ -24,7 +24,7 @@ export function getReusableConfigIamPolicy(args: GetReusableConfigIamPolicyArgs,
 
 export interface GetReusableConfigIamPolicyArgs {
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     reusableConfigId: string;
 }
@@ -54,7 +54,7 @@ export function getReusableConfigIamPolicyOutput(args: GetReusableConfigIamPolic
 
 export interface GetReusableConfigIamPolicyOutputArgs {
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     reusableConfigId: pulumi.Input<string>;
 }

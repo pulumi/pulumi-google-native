@@ -23,7 +23,7 @@ func LookupCertificateTemplateIamPolicy(ctx *pulumi.Context, args *LookupCertifi
 type LookupCertificateTemplateIamPolicyArgs struct {
 	CertificateTemplateId         string  `pulumi:"certificateTemplateId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ func LookupCertificateTemplateIamPolicyOutput(ctx *pulumi.Context, args LookupCe
 type LookupCertificateTemplateIamPolicyOutputArgs struct {
 	CertificateTemplateId         pulumi.StringInput    `pulumi:"certificateTemplateId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

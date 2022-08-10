@@ -98,7 +98,7 @@ export class Asset extends pulumi.CustomResource {
     /**
      * Optional. Only validate the request, but do not perform mutations. The default is false.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
     public readonly zone!: pulumi.Output<string>;
 
     /**
@@ -202,6 +202,6 @@ export interface AssetArgs {
     /**
      * Optional. Only validate the request, but do not perform mutations. The default is false.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
     zone?: pulumi.Input<string>;
 }

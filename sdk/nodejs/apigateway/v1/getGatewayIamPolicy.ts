@@ -25,7 +25,7 @@ export function getGatewayIamPolicy(args: GetGatewayIamPolicyArgs, opts?: pulumi
 export interface GetGatewayIamPolicyArgs {
     gatewayId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getGatewayIamPolicyOutput(args: GetGatewayIamPolicyOutputArgs, o
 export interface GetGatewayIamPolicyOutputArgs {
     gatewayId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

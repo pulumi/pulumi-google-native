@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// If true, ignore safety checks when creating the app profile.
         /// </summary>
         [Output("ignoreWarnings")]
-        public Output<string?> IgnoreWarnings { get; private set; } = null!;
+        public Output<bool?> IgnoreWarnings { get; private set; } = null!;
 
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// If true, ignore safety checks when creating the app profile.
         /// </summary>
         [Input("ignoreWarnings")]
-        public Input<string>? IgnoreWarnings { get; set; }
+        public Input<bool>? IgnoreWarnings { get; set; }
 
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;

@@ -22,7 +22,7 @@ export function getTopicIamPolicy(args: GetTopicIamPolicyArgs, opts?: pulumi.Inv
 }
 
 export interface GetTopicIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     topicId: string;
 }
@@ -47,7 +47,7 @@ export function getTopicIamPolicyOutput(args: GetTopicIamPolicyOutputArgs, opts?
 }
 
 export interface GetTopicIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     topicId: pulumi.Input<string>;
 }

@@ -23,7 +23,7 @@ func LookupLakeTaskIamPolicy(ctx *pulumi.Context, args *LookupLakeTaskIamPolicyA
 type LookupLakeTaskIamPolicyArgs struct {
 	LakeId                        string  `pulumi:"lakeId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	TaskId                        string  `pulumi:"taskId"`
 }
@@ -55,7 +55,7 @@ func LookupLakeTaskIamPolicyOutput(ctx *pulumi.Context, args LookupLakeTaskIamPo
 type LookupLakeTaskIamPolicyOutputArgs struct {
 	LakeId                        pulumi.StringInput    `pulumi:"lakeId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	TaskId                        pulumi.StringInput    `pulumi:"taskId"`
 }

@@ -29,7 +29,7 @@ export interface GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicy
     certificateAuthorityId: string;
     certificateRevocationListId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -61,6 +61,6 @@ export interface GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicy
     certificateAuthorityId: pulumi.Input<string>;
     certificateRevocationListId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

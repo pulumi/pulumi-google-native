@@ -22,7 +22,7 @@ export function getPolicyBasedRouteIamPolicy(args: GetPolicyBasedRouteIamPolicyA
 }
 
 export interface GetPolicyBasedRouteIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     policyBasedRouteId: string;
     project?: string;
 }
@@ -51,7 +51,7 @@ export function getPolicyBasedRouteIamPolicyOutput(args: GetPolicyBasedRouteIamP
 }
 
 export interface GetPolicyBasedRouteIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     policyBasedRouteId: pulumi.Input<string>;
     project?: pulumi.Input<string>;
 }

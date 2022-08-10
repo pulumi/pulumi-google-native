@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
     public sealed class GetSearchApplicationArgs : global::Pulumi.InvokeArgs
     {
         [Input("debugOptionsEnableDebugging")]
-        public string? DebugOptionsEnableDebugging { get; set; }
+        public bool? DebugOptionsEnableDebugging { get; set; }
 
         [Input("searchapplicationId", required: true)]
         public string SearchapplicationId { get; set; } = null!;
@@ -42,7 +42,7 @@ namespace Pulumi.GoogleNative.CloudSearch.V1
     public sealed class GetSearchApplicationInvokeArgs : global::Pulumi.InvokeArgs
     {
         [Input("debugOptionsEnableDebugging")]
-        public Input<string>? DebugOptionsEnableDebugging { get; set; }
+        public Input<bool>? DebugOptionsEnableDebugging { get; set; }
 
         [Input("searchapplicationId", required: true)]
         public Input<string> SearchapplicationId { get; set; } = null!;

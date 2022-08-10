@@ -25,7 +25,7 @@ export function getConnectionIamPolicy(args: GetConnectionIamPolicyArgs, opts?: 
 export interface GetConnectionIamPolicyArgs {
     connectionId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getConnectionIamPolicyOutput(args: GetConnectionIamPolicyOutputA
 export interface GetConnectionIamPolicyOutputArgs {
     connectionId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

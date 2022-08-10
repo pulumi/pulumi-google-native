@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
         /// </summary>
         [Output("validate")]
-        public Output<string?> Validate { get; private set; } = null!;
+        public Output<bool?> Validate { get; private set; } = null!;
 
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Ignored. All uploads are validated regardless of the value of this field. Maintained for compatibility with Apigee Edge API.
         /// </summary>
         [Input("validate")]
-        public Input<string>? Validate { get; set; }
+        public Input<bool>? Validate { get; set; }
 
         public ApiArgs()
         {

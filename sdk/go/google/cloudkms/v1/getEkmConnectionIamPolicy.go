@@ -23,7 +23,7 @@ func LookupEkmConnectionIamPolicy(ctx *pulumi.Context, args *LookupEkmConnection
 type LookupEkmConnectionIamPolicyArgs struct {
 	EkmConnectionId               string  `pulumi:"ekmConnectionId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ func LookupEkmConnectionIamPolicyOutput(ctx *pulumi.Context, args LookupEkmConne
 type LookupEkmConnectionIamPolicyOutputArgs struct {
 	EkmConnectionId               pulumi.StringInput    `pulumi:"ekmConnectionId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

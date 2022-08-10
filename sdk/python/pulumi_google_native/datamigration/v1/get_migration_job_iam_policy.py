@@ -80,7 +80,7 @@ class AwaitableGetMigrationJobIamPolicyResult(GetMigrationJobIamPolicyResult):
 
 def get_migration_job_iam_policy(location: Optional[str] = None,
                                  migration_job_id: Optional[str] = None,
-                                 options_requested_policy_version: Optional[str] = None,
+                                 options_requested_policy_version: Optional[int] = None,
                                  project: Optional[str] = None,
                                  opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetMigrationJobIamPolicyResult:
     """
@@ -104,7 +104,7 @@ def get_migration_job_iam_policy(location: Optional[str] = None,
 @_utilities.lift_output_func(get_migration_job_iam_policy)
 def get_migration_job_iam_policy_output(location: Optional[pulumi.Input[str]] = None,
                                         migration_job_id: Optional[pulumi.Input[str]] = None,
-                                        options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                        options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                         project: Optional[pulumi.Input[Optional[str]]] = None,
                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMigrationJobIamPolicyResult]:
     """

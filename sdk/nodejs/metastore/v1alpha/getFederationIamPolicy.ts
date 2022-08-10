@@ -25,7 +25,7 @@ export function getFederationIamPolicy(args: GetFederationIamPolicyArgs, opts?: 
 export interface GetFederationIamPolicyArgs {
     federationId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getFederationIamPolicyOutput(args: GetFederationIamPolicyOutputA
 export interface GetFederationIamPolicyOutputArgs {
     federationId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

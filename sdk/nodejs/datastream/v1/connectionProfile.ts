@@ -51,7 +51,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
     /**
      * Optional. Create the connection profile without validating it.
      */
-    public readonly force!: pulumi.Output<string | undefined>;
+    public readonly force!: pulumi.Output<boolean | undefined>;
     /**
      * Forward SSH tunnel connectivity.
      */
@@ -97,7 +97,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
     /**
      * Optional. Only validate the connection profile, but don't create any resources. The default is false.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a ConnectionProfile resource with the given unique name, arguments, and options.
@@ -174,7 +174,7 @@ export interface ConnectionProfileArgs {
     /**
      * Optional. Create the connection profile without validating it.
      */
-    force?: pulumi.Input<string>;
+    force?: pulumi.Input<boolean>;
     /**
      * Forward SSH tunnel connectivity.
      */
@@ -212,5 +212,5 @@ export interface ConnectionProfileArgs {
     /**
      * Optional. Only validate the connection profile, but don't create any resources. The default is false.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
 }

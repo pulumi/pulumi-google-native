@@ -23,7 +23,7 @@ func LookupAutoscalingPolicyIamPolicy(ctx *pulumi.Context, args *LookupAutoscali
 type LookupAutoscalingPolicyIamPolicyArgs struct {
 	AutoscalingPolicyId           string  `pulumi:"autoscalingPolicyId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -52,7 +52,7 @@ func LookupAutoscalingPolicyIamPolicyOutput(ctx *pulumi.Context, args LookupAuto
 type LookupAutoscalingPolicyIamPolicyOutputArgs struct {
 	AutoscalingPolicyId           pulumi.StringInput    `pulumi:"autoscalingPolicyId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 
