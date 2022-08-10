@@ -25,7 +25,7 @@ export function getAuthorizationPolicyIamPolicy(args: GetAuthorizationPolicyIamP
 export interface GetAuthorizationPolicyIamPolicyArgs {
     authorizationPolicyId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getAuthorizationPolicyIamPolicyOutput(args: GetAuthorizationPoli
 export interface GetAuthorizationPolicyIamPolicyOutputArgs {
     authorizationPolicyId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

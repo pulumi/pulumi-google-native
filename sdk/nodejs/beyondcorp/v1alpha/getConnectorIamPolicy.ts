@@ -25,7 +25,7 @@ export function getConnectorIamPolicy(args: GetConnectorIamPolicyArgs, opts?: pu
 export interface GetConnectorIamPolicyArgs {
     connectorId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getConnectorIamPolicyOutput(args: GetConnectorIamPolicyOutputArg
 export interface GetConnectorIamPolicyOutputArgs {
     connectorId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

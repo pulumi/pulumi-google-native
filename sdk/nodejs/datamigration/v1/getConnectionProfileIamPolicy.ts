@@ -25,7 +25,7 @@ export function getConnectionProfileIamPolicy(args: GetConnectionProfileIamPolic
 export interface GetConnectionProfileIamPolicyArgs {
     connectionProfileId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getConnectionProfileIamPolicyOutput(args: GetConnectionProfileIa
 export interface GetConnectionProfileIamPolicyOutputArgs {
     connectionProfileId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

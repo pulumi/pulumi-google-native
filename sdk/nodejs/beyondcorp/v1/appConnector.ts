@@ -84,7 +84,7 @@ export class AppConnector extends pulumi.CustomResource {
     /**
      * Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a AppConnector resource with the given unique name, arguments, and options.
@@ -174,5 +174,5 @@ export interface AppConnectorArgs {
     /**
      * Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
 }

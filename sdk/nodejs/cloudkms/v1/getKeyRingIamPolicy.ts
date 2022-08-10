@@ -25,7 +25,7 @@ export function getKeyRingIamPolicy(args: GetKeyRingIamPolicyArgs, opts?: pulumi
 export interface GetKeyRingIamPolicyArgs {
     keyRingId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getKeyRingIamPolicyOutput(args: GetKeyRingIamPolicyOutputArgs, o
 export interface GetKeyRingIamPolicyOutputArgs {
     keyRingId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

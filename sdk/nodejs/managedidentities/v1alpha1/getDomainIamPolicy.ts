@@ -23,7 +23,7 @@ export function getDomainIamPolicy(args: GetDomainIamPolicyArgs, opts?: pulumi.I
 
 export interface GetDomainIamPolicyArgs {
     domainId: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -48,6 +48,6 @@ export function getDomainIamPolicyOutput(args: GetDomainIamPolicyOutputArgs, opt
 
 export interface GetDomainIamPolicyOutputArgs {
     domainId: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

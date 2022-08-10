@@ -25,7 +25,7 @@ export function getApplicationIamPolicy(args: GetApplicationIamPolicyArgs, opts?
 export interface GetApplicationIamPolicyArgs {
     applicationId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getApplicationIamPolicyOutput(args: GetApplicationIamPolicyOutpu
 export interface GetApplicationIamPolicyOutputArgs {
     applicationId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

@@ -25,7 +25,7 @@ export function getMembershipIamPolicy(args: GetMembershipIamPolicyArgs, opts?: 
 export interface GetMembershipIamPolicyArgs {
     location: string;
     membershipId: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getMembershipIamPolicyOutput(args: GetMembershipIamPolicyOutputA
 export interface GetMembershipIamPolicyOutputArgs {
     location: pulumi.Input<string>;
     membershipId: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

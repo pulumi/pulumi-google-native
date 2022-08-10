@@ -23,7 +23,7 @@ export function getRuntimeIamPolicy(args: GetRuntimeIamPolicyArgs, opts?: pulumi
 
 export interface GetRuntimeIamPolicyArgs {
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -48,6 +48,6 @@ export function getRuntimeIamPolicyOutput(args: GetRuntimeIamPolicyOutputArgs, o
 
 export interface GetRuntimeIamPolicyOutputArgs {
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

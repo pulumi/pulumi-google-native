@@ -26,7 +26,7 @@ export function getServiceBackupIamPolicy(args: GetServiceBackupIamPolicyArgs, o
 export interface GetServiceBackupIamPolicyArgs {
     backupId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     serviceId: string;
 }
@@ -57,7 +57,7 @@ export function getServiceBackupIamPolicyOutput(args: GetServiceBackupIamPolicyO
 export interface GetServiceBackupIamPolicyOutputArgs {
     backupId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     serviceId: pulumi.Input<string>;
 }

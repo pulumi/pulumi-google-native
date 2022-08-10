@@ -87,7 +87,7 @@ export class CryptoKey extends pulumi.CustomResource {
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
      */
-    public readonly skipInitialVersionCreation!: pulumi.Output<string | undefined>;
+    public readonly skipInitialVersionCreation!: pulumi.Output<boolean | undefined>;
     /**
      * A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
      */
@@ -190,7 +190,7 @@ export interface CryptoKeyArgs {
     /**
      * If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
      */
-    skipInitialVersionCreation?: pulumi.Input<string>;
+    skipInitialVersionCreation?: pulumi.Input<boolean>;
     /**
      * A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
      */

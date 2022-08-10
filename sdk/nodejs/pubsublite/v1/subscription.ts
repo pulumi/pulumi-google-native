@@ -48,7 +48,7 @@ export class Subscription extends pulumi.CustomResource {
     /**
      * If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
      */
-    public readonly skipBacklog!: pulumi.Output<string | undefined>;
+    public readonly skipBacklog!: pulumi.Output<boolean | undefined>;
     /**
      * Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
      */
@@ -112,7 +112,7 @@ export interface SubscriptionArgs {
     /**
      * If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
      */
-    skipBacklog?: pulumi.Input<string>;
+    skipBacklog?: pulumi.Input<boolean>;
     /**
      * Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
      */

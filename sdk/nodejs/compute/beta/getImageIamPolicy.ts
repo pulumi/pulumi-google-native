@@ -22,7 +22,7 @@ export function getImageIamPolicy(args: GetImageIamPolicyArgs, opts?: pulumi.Inv
 }
 
 export interface GetImageIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     resource: string;
 }
@@ -55,7 +55,7 @@ export function getImageIamPolicyOutput(args: GetImageIamPolicyOutputArgs, opts?
 }
 
 export interface GetImageIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     resource: pulumi.Input<string>;
 }

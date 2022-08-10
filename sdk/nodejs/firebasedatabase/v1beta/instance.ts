@@ -60,7 +60,7 @@ export class Instance extends pulumi.CustomResource {
     /**
      * When set to true, the request will be validated but not submitted.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -119,5 +119,5 @@ export interface InstanceArgs {
     /**
      * When set to true, the request will be validated but not submitted.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
 }

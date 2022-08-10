@@ -22,7 +22,7 @@ export function getSecretIamPolicy(args: GetSecretIamPolicyArgs, opts?: pulumi.I
 }
 
 export interface GetSecretIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     secretId: string;
 }
@@ -51,7 +51,7 @@ export function getSecretIamPolicyOutput(args: GetSecretIamPolicyOutputArgs, opt
 }
 
 export interface GetSecretIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     secretId: pulumi.Input<string>;
 }

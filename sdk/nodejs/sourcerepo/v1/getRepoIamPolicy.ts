@@ -22,7 +22,7 @@ export function getRepoIamPolicy(args: GetRepoIamPolicyArgs, opts?: pulumi.Invok
 }
 
 export interface GetRepoIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     repoId: string;
 }
@@ -51,7 +51,7 @@ export function getRepoIamPolicyOutput(args: GetRepoIamPolicyOutputArgs, opts?: 
 }
 
 export interface GetRepoIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     repoId: pulumi.Input<string>;
 }

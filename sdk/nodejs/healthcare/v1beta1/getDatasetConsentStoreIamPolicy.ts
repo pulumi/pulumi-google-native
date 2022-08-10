@@ -27,7 +27,7 @@ export interface GetDatasetConsentStoreIamPolicyArgs {
     consentStoreId: string;
     datasetId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -58,6 +58,6 @@ export interface GetDatasetConsentStoreIamPolicyOutputArgs {
     consentStoreId: pulumi.Input<string>;
     datasetId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

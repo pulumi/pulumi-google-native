@@ -23,7 +23,7 @@ export function getRegionWorkflowTemplateIamPolicy(args: GetRegionWorkflowTempla
 }
 
 export interface GetRegionWorkflowTemplateIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     regionId: string;
     workflowTemplateId: string;
@@ -49,7 +49,7 @@ export function getRegionWorkflowTemplateIamPolicyOutput(args: GetRegionWorkflow
 }
 
 export interface GetRegionWorkflowTemplateIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     regionId: pulumi.Input<string>;
     workflowTemplateId: pulumi.Input<string>;

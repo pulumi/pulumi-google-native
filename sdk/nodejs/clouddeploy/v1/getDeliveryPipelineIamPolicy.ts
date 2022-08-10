@@ -25,7 +25,7 @@ export function getDeliveryPipelineIamPolicy(args: GetDeliveryPipelineIamPolicyA
 export interface GetDeliveryPipelineIamPolicyArgs {
     deliveryPipelineId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getDeliveryPipelineIamPolicyOutput(args: GetDeliveryPipelineIamP
 export interface GetDeliveryPipelineIamPolicyOutputArgs {
     deliveryPipelineId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

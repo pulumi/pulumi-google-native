@@ -182,7 +182,7 @@ export class InterconnectAttachment extends pulumi.CustomResource {
     /**
      * If true, the request will not be committed.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
     /**
      * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
      */
@@ -382,7 +382,7 @@ export interface InterconnectAttachmentArgs {
     /**
      * If true, the request will not be committed.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
     /**
      * The IEEE 802.1Q VLAN tag for this attachment, in the range 2-4094. Only specified at creation time.
      */

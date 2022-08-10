@@ -90,7 +90,7 @@ export class Zone extends pulumi.CustomResource {
     /**
      * Optional. Only validate the request, but do not perform mutations. The default is false.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
     /**
      * Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
      */
@@ -196,7 +196,7 @@ export interface ZoneArgs {
     /**
      * Optional. Only validate the request, but do not perform mutations. The default is false.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
     /**
      * Required. Zone identifier. This ID will be used to generate names such as database and dataset names when publishing metadata to Hive Metastore and BigQuery. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must end with a number or a letter. * Must be between 1-63 characters. * Must be unique across all lakes from all locations in a project. * Must not be one of the reserved IDs (i.e. "default", "global-temp")
      */

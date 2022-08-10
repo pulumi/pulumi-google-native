@@ -44,7 +44,7 @@ export class DomainMapping extends pulumi.CustomResource {
     /**
      * Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
      */
-    public readonly noManagedCertificate!: pulumi.Output<string | undefined>;
+    public readonly noManagedCertificate!: pulumi.Output<boolean | undefined>;
     /**
      * Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
      */
@@ -106,7 +106,7 @@ export interface DomainMappingArgs {
     /**
      * Whether a managed certificate should be provided by App Engine. If true, a certificate ID must be manaually set in the DomainMapping resource to configure SSL for this domain. If false, a managed certificate will be provisioned and a certificate ID will be automatically populated.
      */
-    noManagedCertificate?: pulumi.Input<string>;
+    noManagedCertificate?: pulumi.Input<boolean>;
     /**
      * Whether the domain creation should override any existing mappings for this domain. By default, overrides are rejected.
      */

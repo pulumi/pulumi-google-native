@@ -25,7 +25,7 @@ export function getDomainBackupIamPolicy(args: GetDomainBackupIamPolicyArgs, opt
 export interface GetDomainBackupIamPolicyArgs {
     backupId: string;
     domainId: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -51,6 +51,6 @@ export function getDomainBackupIamPolicyOutput(args: GetDomainBackupIamPolicyOut
 export interface GetDomainBackupIamPolicyOutputArgs {
     backupId: pulumi.Input<string>;
     domainId: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

@@ -23,7 +23,7 @@ export function getOrganizationEnvironmentIamPolicy(args: GetOrganizationEnviron
 
 export interface GetOrganizationEnvironmentIamPolicyArgs {
     environmentId: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     organizationId: string;
 }
 
@@ -52,6 +52,6 @@ export function getOrganizationEnvironmentIamPolicyOutput(args: GetOrganizationE
 
 export interface GetOrganizationEnvironmentIamPolicyOutputArgs {
     environmentId: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     organizationId: pulumi.Input<string>;
 }

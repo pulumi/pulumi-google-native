@@ -24,7 +24,7 @@ export function getRegionJobIamPolicy(args: GetRegionJobIamPolicyArgs, opts?: pu
 
 export interface GetRegionJobIamPolicyArgs {
     jobId: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     regionId: string;
 }
@@ -50,7 +50,7 @@ export function getRegionJobIamPolicyOutput(args: GetRegionJobIamPolicyOutputArg
 
 export interface GetRegionJobIamPolicyOutputArgs {
     jobId: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     regionId: pulumi.Input<string>;
 }

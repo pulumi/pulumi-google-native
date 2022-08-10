@@ -23,7 +23,7 @@ export function getConfigIamPolicy(args: GetConfigIamPolicyArgs, opts?: pulumi.I
 
 export interface GetConfigIamPolicyArgs {
     configId: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -48,6 +48,6 @@ export function getConfigIamPolicyOutput(args: GetConfigIamPolicyOutputArgs, opt
 
 export interface GetConfigIamPolicyOutputArgs {
     configId: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

@@ -27,7 +27,7 @@ export interface GetLakeEnvironmentIamPolicyArgs {
     environmentId: string;
     lakeId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -58,6 +58,6 @@ export interface GetLakeEnvironmentIamPolicyOutputArgs {
     environmentId: pulumi.Input<string>;
     lakeId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

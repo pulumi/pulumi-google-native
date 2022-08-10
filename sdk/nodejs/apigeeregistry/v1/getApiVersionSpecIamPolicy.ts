@@ -27,7 +27,7 @@ export function getApiVersionSpecIamPolicy(args: GetApiVersionSpecIamPolicyArgs,
 export interface GetApiVersionSpecIamPolicyArgs {
     apiId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     specId: string;
     versionId: string;
@@ -55,7 +55,7 @@ export function getApiVersionSpecIamPolicyOutput(args: GetApiVersionSpecIamPolic
 export interface GetApiVersionSpecIamPolicyOutputArgs {
     apiId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     specId: pulumi.Input<string>;
     versionId: pulumi.Input<string>;

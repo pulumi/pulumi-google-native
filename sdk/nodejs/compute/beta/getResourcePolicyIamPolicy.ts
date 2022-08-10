@@ -23,7 +23,7 @@ export function getResourcePolicyIamPolicy(args: GetResourcePolicyIamPolicyArgs,
 }
 
 export interface GetResourcePolicyIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     region: string;
     resource: string;
@@ -57,7 +57,7 @@ export function getResourcePolicyIamPolicyOutput(args: GetResourcePolicyIamPolic
 }
 
 export interface GetResourcePolicyIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     resource: pulumi.Input<string>;

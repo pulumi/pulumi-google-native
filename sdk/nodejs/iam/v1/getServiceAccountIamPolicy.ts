@@ -22,7 +22,7 @@ export function getServiceAccountIamPolicy(args: GetServiceAccountIamPolicyArgs,
 }
 
 export interface GetServiceAccountIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     serviceAccountId: string;
 }
@@ -51,7 +51,7 @@ export function getServiceAccountIamPolicyOutput(args: GetServiceAccountIamPolic
 }
 
 export interface GetServiceAccountIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     serviceAccountId: pulumi.Input<string>;
 }

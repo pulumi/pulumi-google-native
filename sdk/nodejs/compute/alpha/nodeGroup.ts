@@ -51,7 +51,7 @@ export class NodeGroup extends pulumi.CustomResource {
     /**
      * Initial count of nodes in the node group.
      */
-    public readonly initialNodeCount!: pulumi.Output<string>;
+    public readonly initialNodeCount!: pulumi.Output<number>;
     /**
      * The type of the resource. Always compute#nodeGroup for node group.
      */
@@ -173,7 +173,7 @@ export interface NodeGroupArgs {
     /**
      * Initial count of nodes in the node group.
      */
-    initialNodeCount: pulumi.Input<string>;
+    initialNodeCount: pulumi.Input<number>;
     /**
      * An opaque location hint used to place the Node close to other resources. This field is for use by internal tools that use the public API. The location hint here on the NodeGroup overrides any location_hint present in the NodeTemplate.
      */

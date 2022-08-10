@@ -25,7 +25,7 @@ export function getCertificateTemplateIamPolicy(args: GetCertificateTemplateIamP
 export interface GetCertificateTemplateIamPolicyArgs {
     certificateTemplateId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -55,6 +55,6 @@ export function getCertificateTemplateIamPolicyOutput(args: GetCertificateTempla
 export interface GetCertificateTemplateIamPolicyOutputArgs {
     certificateTemplateId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

@@ -23,7 +23,7 @@ export function getInterconnectAttachmentIamPolicy(args: GetInterconnectAttachme
 }
 
 export interface GetInterconnectAttachmentIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     region: string;
     resource: string;
@@ -57,7 +57,7 @@ export function getInterconnectAttachmentIamPolicyOutput(args: GetInterconnectAt
 }
 
 export interface GetInterconnectAttachmentIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     resource: pulumi.Input<string>;

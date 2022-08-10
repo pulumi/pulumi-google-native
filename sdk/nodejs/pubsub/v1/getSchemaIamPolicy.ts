@@ -22,7 +22,7 @@ export function getSchemaIamPolicy(args: GetSchemaIamPolicyArgs, opts?: pulumi.I
 }
 
 export interface GetSchemaIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     schemaId: string;
 }
@@ -47,7 +47,7 @@ export function getSchemaIamPolicyOutput(args: GetSchemaIamPolicyOutputArgs, opt
 }
 
 export interface GetSchemaIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     schemaId: pulumi.Input<string>;
 }

@@ -52,11 +52,11 @@ export class Alias extends pulumi.CustomResource {
     /**
      * Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
      */
-    public readonly ignoreExpiryValidation!: pulumi.Output<string | undefined>;
+    public readonly ignoreExpiryValidation!: pulumi.Output<boolean | undefined>;
     /**
      * Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
      */
-    public readonly ignoreNewlineValidation!: pulumi.Output<string | undefined>;
+    public readonly ignoreNewlineValidation!: pulumi.Output<boolean | undefined>;
     public readonly keystoreId!: pulumi.Output<string>;
     public readonly organizationId!: pulumi.Output<string>;
     /**
@@ -156,11 +156,11 @@ export interface AliasArgs {
     /**
      * Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
      */
-    ignoreExpiryValidation?: pulumi.Input<string>;
+    ignoreExpiryValidation?: pulumi.Input<boolean>;
     /**
      * Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
      */
-    ignoreNewlineValidation?: pulumi.Input<string>;
+    ignoreNewlineValidation?: pulumi.Input<boolean>;
     keystoreId: pulumi.Input<string>;
     organizationId: pulumi.Input<string>;
     /**

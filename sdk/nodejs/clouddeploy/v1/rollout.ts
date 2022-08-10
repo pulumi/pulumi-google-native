@@ -120,7 +120,7 @@ export class Rollout extends pulumi.CustomResource {
     /**
      * Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Rollout resource with the given unique name, arguments, and options.
@@ -245,5 +245,5 @@ export interface RolloutArgs {
     /**
      * Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
 }

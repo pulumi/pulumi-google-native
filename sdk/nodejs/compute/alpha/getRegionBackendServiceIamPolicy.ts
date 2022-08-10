@@ -23,7 +23,7 @@ export function getRegionBackendServiceIamPolicy(args: GetRegionBackendServiceIa
 }
 
 export interface GetRegionBackendServiceIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     region: string;
     resource: string;
@@ -57,7 +57,7 @@ export function getRegionBackendServiceIamPolicyOutput(args: GetRegionBackendSer
 }
 
 export interface GetRegionBackendServiceIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     region: pulumi.Input<string>;
     resource: pulumi.Input<string>;

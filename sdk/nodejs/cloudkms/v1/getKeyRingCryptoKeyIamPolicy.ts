@@ -27,7 +27,7 @@ export interface GetKeyRingCryptoKeyIamPolicyArgs {
     cryptoKeyId: string;
     keyRingId: string;
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
 }
 
@@ -58,6 +58,6 @@ export interface GetKeyRingCryptoKeyIamPolicyOutputArgs {
     cryptoKeyId: pulumi.Input<string>;
     keyRingId: pulumi.Input<string>;
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
 }

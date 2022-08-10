@@ -22,7 +22,7 @@ export function getLicenseCodeIamPolicy(args: GetLicenseCodeIamPolicyArgs, opts?
 }
 
 export interface GetLicenseCodeIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     resource: string;
 }
@@ -55,7 +55,7 @@ export function getLicenseCodeIamPolicyOutput(args: GetLicenseCodeIamPolicyOutpu
 }
 
 export interface GetLicenseCodeIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     resource: pulumi.Input<string>;
 }

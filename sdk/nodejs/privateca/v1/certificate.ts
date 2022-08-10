@@ -112,7 +112,7 @@ export class Certificate extends pulumi.CustomResource {
     /**
      * Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Certificate resource with the given unique name, arguments, and options.
@@ -228,5 +228,5 @@ export interface CertificateArgs {
     /**
      * Optional. If this is true, no Certificate resource will be persisted regardless of the CaPool's tier, and the returned Certificate will not contain the pem_certificate field.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
 }

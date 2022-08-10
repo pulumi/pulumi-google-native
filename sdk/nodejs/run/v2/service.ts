@@ -156,7 +156,7 @@ export class Service extends pulumi.CustomResource {
     /**
      * Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
      */
-    public readonly validateOnly!: pulumi.Output<string | undefined>;
+    public readonly validateOnly!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -305,5 +305,5 @@ export interface ServiceArgs {
     /**
      * Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
      */
-    validateOnly?: pulumi.Input<string>;
+    validateOnly?: pulumi.Input<boolean>;
 }

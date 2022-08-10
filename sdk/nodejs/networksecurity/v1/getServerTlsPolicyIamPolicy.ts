@@ -24,7 +24,7 @@ export function getServerTlsPolicyIamPolicy(args: GetServerTlsPolicyIamPolicyArg
 
 export interface GetServerTlsPolicyIamPolicyArgs {
     location: string;
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     serverTlsPolicyId: string;
 }
@@ -54,7 +54,7 @@ export function getServerTlsPolicyIamPolicyOutput(args: GetServerTlsPolicyIamPol
 
 export interface GetServerTlsPolicyIamPolicyOutputArgs {
     location: pulumi.Input<string>;
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     serverTlsPolicyId: pulumi.Input<string>;
 }

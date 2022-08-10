@@ -22,7 +22,7 @@ export function getNetworkFirewallPolicyIamPolicy(args: GetNetworkFirewallPolicy
 }
 
 export interface GetNetworkFirewallPolicyIamPolicyArgs {
-    optionsRequestedPolicyVersion?: string;
+    optionsRequestedPolicyVersion?: number;
     project?: string;
     resource: string;
 }
@@ -55,7 +55,7 @@ export function getNetworkFirewallPolicyIamPolicyOutput(args: GetNetworkFirewall
 }
 
 export interface GetNetworkFirewallPolicyIamPolicyOutputArgs {
-    optionsRequestedPolicyVersion?: pulumi.Input<string>;
+    optionsRequestedPolicyVersion?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     resource: pulumi.Input<string>;
 }
