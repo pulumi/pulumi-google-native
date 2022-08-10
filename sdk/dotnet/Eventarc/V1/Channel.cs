@@ -85,7 +85,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// Required. If set, validate the request and preview the review, but do not post it.
         /// </summary>
         [Output("validateOnly")]
-        public Output<string> ValidateOnly { get; private set; } = null!;
+        public Output<bool> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>
@@ -173,7 +173,7 @@ namespace Pulumi.GoogleNative.Eventarc.V1
         /// Required. If set, validate the request and preview the review, but do not post it.
         /// </summary>
         [Input("validateOnly", required: true)]
-        public Input<string> ValidateOnly { get; set; } = null!;
+        public Input<bool> ValidateOnly { get; set; } = null!;
 
         public ChannelArgs()
         {

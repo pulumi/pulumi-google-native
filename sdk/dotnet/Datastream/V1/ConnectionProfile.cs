@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
         /// Optional. Create the connection profile without validating it.
         /// </summary>
         [Output("force")]
-        public Output<string?> Force { get; private set; } = null!;
+        public Output<bool?> Force { get; private set; } = null!;
 
         /// <summary>
         /// Forward SSH tunnel connectivity.
@@ -110,7 +110,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
         /// Optional. Only validate the connection profile, but don't create any resources. The default is false.
         /// </summary>
         [Output("validateOnly")]
-        public Output<string?> ValidateOnly { get; private set; } = null!;
+        public Output<bool?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>
@@ -179,7 +179,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
         /// Optional. Create the connection profile without validating it.
         /// </summary>
         [Input("force")]
-        public Input<string>? Force { get; set; }
+        public Input<bool>? Force { get; set; }
 
         /// <summary>
         /// Forward SSH tunnel connectivity.
@@ -245,7 +245,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
         /// Optional. Only validate the connection profile, but don't create any resources. The default is false.
         /// </summary>
         [Input("validateOnly")]
-        public Input<string>? ValidateOnly { get; set; }
+        public Input<bool>? ValidateOnly { get; set; }
 
         public ConnectionProfileArgs()
         {

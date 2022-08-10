@@ -86,7 +86,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// If set, validate the request and preview the response, but do not actually post it.
         /// </summary>
         [Output("validateOnly")]
-        public Output<string?> ValidateOnly { get; private set; } = null!;
+        public Output<bool?> ValidateOnly { get; private set; } = null!;
 
         /// <summary>
         /// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.
@@ -179,7 +179,7 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         /// If set, validate the request and preview the response, but do not actually post it.
         /// </summary>
         [Input("validateOnly")]
-        public Input<string>? ValidateOnly { get; set; }
+        public Input<bool>? ValidateOnly { get; set; }
 
         /// <summary>
         /// Required. Immutable. The ID to use for the `WorkerPool`, which will become the final component of the resource name. This value should be 1-63 characters, and valid characters are /a-z-/.

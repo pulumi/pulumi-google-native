@@ -61,7 +61,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1Beta1
         /// A now unused experiment opt-out option.
         /// </summary>
         [Output("useLegacyStack")]
-        public Output<string?> UseLegacyStack { get; private set; } = null!;
+        public Output<bool?> UseLegacyStack { get; private set; } = null!;
 
 
         /// <summary>
@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V1Beta1
         /// A now unused experiment opt-out option.
         /// </summary>
         [Input("useLegacyStack")]
-        public Input<string>? UseLegacyStack { get; set; }
+        public Input<bool>? UseLegacyStack { get; set; }
 
         public ProjectArgs()
         {

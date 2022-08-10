@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
         /// If true, fail the request if another project in the organization has a capacity commitment.
         /// </summary>
         [Output("enforceSingleAdminProjectPerOrg")]
-        public Output<string?> EnforceSingleAdminProjectPerOrg { get; private set; } = null!;
+        public Output<bool?> EnforceSingleAdminProjectPerOrg { get; private set; } = null!;
 
         /// <summary>
         /// For FAILED commitment plan, provides the reason of failure.
@@ -148,7 +148,7 @@ namespace Pulumi.GoogleNative.BigQueryReservation.V1Beta1
         /// If true, fail the request if another project in the organization has a capacity commitment.
         /// </summary>
         [Input("enforceSingleAdminProjectPerOrg")]
-        public Input<string>? EnforceSingleAdminProjectPerOrg { get; set; }
+        public Input<bool>? EnforceSingleAdminProjectPerOrg { get; set; }
 
         [Input("location")]
         public Input<string>? Location { get; set; }

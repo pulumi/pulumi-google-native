@@ -55,7 +55,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         /// When set to true, the request will be validated but not submitted.
         /// </summary>
         [Output("validateOnly")]
-        public Output<string?> ValidateOnly { get; private set; } = null!;
+        public Output<bool?> ValidateOnly { get; private set; } = null!;
 
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Pulumi.GoogleNative.Firebasedatabase.V1Beta
         /// When set to true, the request will be validated but not submitted.
         /// </summary>
         [Input("validateOnly")]
-        public Input<string>? ValidateOnly { get; set; }
+        public Input<bool>? ValidateOnly { get; set; }
 
         public InstanceArgs()
         {
