@@ -497,12 +497,16 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		if sdkName != name {
 			p.SdkName = sdkName
 		}
+		queryType := param.Type
+		if queryType == "" {
+			queryType = "string"
+		}
 		resourceMeta.Create.Endpoint.Values = append(resourceMeta.Create.Endpoint.Values, p)
 		patternParams.Add(sdkName)
 
 		inputProperties[sdkName] = schema.PropertySpec{
 			Description:      param.Description,
-			TypeSpec:         schema.TypeSpec{Type: "string"},
+			TypeSpec:         schema.TypeSpec{Type: queryType},
 			ReplaceOnChanges: isRequired(param),
 		}
 		if isRequired(param) {
@@ -864,9 +868,12 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 			p.SdkName = sdkName
 		}
 		functionMeta.URL.Values = append(functionMeta.URL.Values, p)
-
+		queryType := param.Type
+		if queryType == "" {
+			queryType = "string"
+		}
 		inputProperties[sdkName] = schema.PropertySpec{
-			TypeSpec: schema.TypeSpec{Type: "string"},
+			TypeSpec: schema.TypeSpec{Type: queryType},
 		}
 		if isRequired(param) {
 			requiredInputProperties.Add(sdkName)
