@@ -563,11 +563,10 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		if getErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / read state %s", getErr)
 		}
-		defaults, err := extractDefaultsFromResponse(res, inputs, readResp)
-		if err != nil {
-			return nil, err
+		defaults, defErr := extractDefaultsFromResponse(res, inputs, readResp)
+		if defErr != nil {
+			return nil, errors.Wrapf(err, "failed to extract defaults from response: %s", defErr)
 		}
-
 		checkpoint, cpErr := plugin.MarshalProperties(
 			checkpointObject(inputs, defaults, readResp),
 			plugin.MarshalOptions{Label: fmt.Sprintf("%s.partialCheckpoint", label), KeepSecrets: true, SkipNulls: true},
