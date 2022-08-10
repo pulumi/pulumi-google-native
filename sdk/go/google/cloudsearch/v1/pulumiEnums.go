@@ -143,7 +143,7 @@ func (o CompositeFilterLogicOperatorPtrOutput) ToStringPtrOutputWithContext(ctx 
 // CompositeFilterLogicOperatorInput is an input type that accepts CompositeFilterLogicOperatorArgs and CompositeFilterLogicOperatorOutput values.
 // You can construct a concrete instance of `CompositeFilterLogicOperatorInput` via:
 //
-//          CompositeFilterLogicOperatorArgs{...}
+//	CompositeFilterLogicOperatorArgs{...}
 type CompositeFilterLogicOperatorInput interface {
 	pulumi.Input
 
@@ -308,7 +308,7 @@ func (o SortOptionsSortOrderPtrOutput) ToStringPtrOutputWithContext(ctx context.
 // SortOptionsSortOrderInput is an input type that accepts SortOptionsSortOrderArgs and SortOptionsSortOrderOutput values.
 // You can construct a concrete instance of `SortOptionsSortOrderInput` via:
 //
-//          SortOptionsSortOrderArgs{...}
+//	SortOptionsSortOrderArgs{...}
 type SortOptionsSortOrderInput interface {
 	pulumi.Input
 
@@ -482,7 +482,7 @@ func (o SourcePredefinedSourcePtrOutput) ToStringPtrOutputWithContext(ctx contex
 // SourcePredefinedSourceInput is an input type that accepts SourcePredefinedSourceArgs and SourcePredefinedSourceOutput values.
 // You can construct a concrete instance of `SourcePredefinedSourceInput` via:
 //
-//          SourcePredefinedSourceArgs{...}
+//	SourcePredefinedSourceArgs{...}
 type SourcePredefinedSourceInput interface {
 	pulumi.Input
 
@@ -648,7 +648,7 @@ func (o SourceScoringConfigSourceImportancePtrOutput) ToStringPtrOutputWithConte
 // SourceScoringConfigSourceImportanceInput is an input type that accepts SourceScoringConfigSourceImportanceArgs and SourceScoringConfigSourceImportanceOutput values.
 // You can construct a concrete instance of `SourceScoringConfigSourceImportanceInput` via:
 //
-//          SourceScoringConfigSourceImportanceArgs{...}
+//	SourceScoringConfigSourceImportanceArgs{...}
 type SourceScoringConfigSourceImportanceInput interface {
 	pulumi.Input
 

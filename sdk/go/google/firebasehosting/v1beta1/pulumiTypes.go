@@ -228,7 +228,7 @@ type DomainRedirect struct {
 // DomainRedirectInput is an input type that accepts DomainRedirectArgs and DomainRedirectOutput values.
 // You can construct a concrete instance of `DomainRedirectInput` via:
 //
-//          DomainRedirectArgs{...}
+//	DomainRedirectArgs{...}
 type DomainRedirectInput interface {
 	pulumi.Input
 
@@ -267,11 +267,11 @@ func (i DomainRedirectArgs) ToDomainRedirectPtrOutputWithContext(ctx context.Con
 // DomainRedirectPtrInput is an input type that accepts DomainRedirectArgs, DomainRedirectPtr and DomainRedirectPtrOutput values.
 // You can construct a concrete instance of `DomainRedirectPtrInput` via:
 //
-//          DomainRedirectArgs{...}
+//	        DomainRedirectArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DomainRedirectPtrInput interface {
 	pulumi.Input
 
@@ -562,7 +562,7 @@ func (o RedirectResponseArrayOutput) Index(i pulumi.IntInput) RedirectResponseOu
 	}).(RedirectResponseOutput)
 }
 
-//  A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at a particular time.
+// A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at a particular time.
 type ReleaseResponse struct {
 	// The deploy description when the release was created. The value can be up to 512 characters.
 	Message string `pulumi:"message"`
@@ -578,7 +578,7 @@ type ReleaseResponse struct {
 	Version VersionResponse `pulumi:"version"`
 }
 
-//  A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at a particular time.
+// A `Release` is a particular [collection of configurations and files](sites.versions) that is set to be public at a particular time.
 type ReleaseResponseOutput struct{ *pulumi.OutputState }
 
 func (ReleaseResponseOutput) ElementType() reflect.Type {

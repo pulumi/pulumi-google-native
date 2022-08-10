@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -328,7 +328,7 @@ func (o ListingCategoriesItemPtrOutput) ToStringPtrOutputWithContext(ctx context
 // ListingCategoriesItemInput is an input type that accepts ListingCategoriesItemArgs and ListingCategoriesItemOutput values.
 // You can construct a concrete instance of `ListingCategoriesItemInput` via:
 //
-//          ListingCategoriesItemArgs{...}
+//	ListingCategoriesItemArgs{...}
 type ListingCategoriesItemInput interface {
 	pulumi.Input
 
@@ -366,7 +366,7 @@ func (in *listingCategoriesItemPtr) ToListingCategoriesItemPtrOutputWithContext(
 // ListingCategoriesItemArrayInput is an input type that accepts ListingCategoriesItemArray and ListingCategoriesItemArrayOutput values.
 // You can construct a concrete instance of `ListingCategoriesItemArrayInput` via:
 //
-//          ListingCategoriesItemArray{ ListingCategoriesItemArgs{...} }
+//	ListingCategoriesItemArray{ ListingCategoriesItemArgs{...} }
 type ListingCategoriesItemArrayInput interface {
 	pulumi.Input
 

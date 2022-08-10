@@ -19,7 +19,7 @@ type GoogleCloudChannelV1AssociationInfo struct {
 // GoogleCloudChannelV1AssociationInfoInput is an input type that accepts GoogleCloudChannelV1AssociationInfoArgs and GoogleCloudChannelV1AssociationInfoOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1AssociationInfoInput` via:
 //
-//          GoogleCloudChannelV1AssociationInfoArgs{...}
+//	GoogleCloudChannelV1AssociationInfoArgs{...}
 type GoogleCloudChannelV1AssociationInfoInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i GoogleCloudChannelV1AssociationInfoArgs) ToGoogleCloudChannelV1Associati
 // GoogleCloudChannelV1AssociationInfoPtrInput is an input type that accepts GoogleCloudChannelV1AssociationInfoArgs, GoogleCloudChannelV1AssociationInfoPtr and GoogleCloudChannelV1AssociationInfoPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1AssociationInfoPtrInput` via:
 //
-//          GoogleCloudChannelV1AssociationInfoArgs{...}
+//	        GoogleCloudChannelV1AssociationInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudChannelV1AssociationInfoPtrInput interface {
 	pulumi.Input
 
@@ -262,7 +262,7 @@ type GoogleCloudChannelV1CommitmentSettings struct {
 // GoogleCloudChannelV1CommitmentSettingsInput is an input type that accepts GoogleCloudChannelV1CommitmentSettingsArgs and GoogleCloudChannelV1CommitmentSettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1CommitmentSettingsInput` via:
 //
-//          GoogleCloudChannelV1CommitmentSettingsArgs{...}
+//	GoogleCloudChannelV1CommitmentSettingsArgs{...}
 type GoogleCloudChannelV1CommitmentSettingsInput interface {
 	pulumi.Input
 
@@ -299,11 +299,11 @@ func (i GoogleCloudChannelV1CommitmentSettingsArgs) ToGoogleCloudChannelV1Commit
 // GoogleCloudChannelV1CommitmentSettingsPtrInput is an input type that accepts GoogleCloudChannelV1CommitmentSettingsArgs, GoogleCloudChannelV1CommitmentSettingsPtr and GoogleCloudChannelV1CommitmentSettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1CommitmentSettingsPtrInput` via:
 //
-//          GoogleCloudChannelV1CommitmentSettingsArgs{...}
+//	        GoogleCloudChannelV1CommitmentSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudChannelV1CommitmentSettingsPtrInput interface {
 	pulumi.Input
 
@@ -454,7 +454,7 @@ type GoogleCloudChannelV1ContactInfo struct {
 // GoogleCloudChannelV1ContactInfoInput is an input type that accepts GoogleCloudChannelV1ContactInfoArgs and GoogleCloudChannelV1ContactInfoOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1ContactInfoInput` via:
 //
-//          GoogleCloudChannelV1ContactInfoArgs{...}
+//	GoogleCloudChannelV1ContactInfoArgs{...}
 type GoogleCloudChannelV1ContactInfoInput interface {
 	pulumi.Input
 
@@ -499,11 +499,11 @@ func (i GoogleCloudChannelV1ContactInfoArgs) ToGoogleCloudChannelV1ContactInfoPt
 // GoogleCloudChannelV1ContactInfoPtrInput is an input type that accepts GoogleCloudChannelV1ContactInfoArgs, GoogleCloudChannelV1ContactInfoPtr and GoogleCloudChannelV1ContactInfoPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1ContactInfoPtrInput` via:
 //
-//          GoogleCloudChannelV1ContactInfoArgs{...}
+//	        GoogleCloudChannelV1ContactInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudChannelV1ContactInfoPtrInput interface {
 	pulumi.Input
 
@@ -765,7 +765,7 @@ type GoogleCloudChannelV1Parameter struct {
 // GoogleCloudChannelV1ParameterInput is an input type that accepts GoogleCloudChannelV1ParameterArgs and GoogleCloudChannelV1ParameterOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1ParameterInput` via:
 //
-//          GoogleCloudChannelV1ParameterArgs{...}
+//	GoogleCloudChannelV1ParameterArgs{...}
 type GoogleCloudChannelV1ParameterInput interface {
 	pulumi.Input
 
@@ -796,7 +796,7 @@ func (i GoogleCloudChannelV1ParameterArgs) ToGoogleCloudChannelV1ParameterOutput
 // GoogleCloudChannelV1ParameterArrayInput is an input type that accepts GoogleCloudChannelV1ParameterArray and GoogleCloudChannelV1ParameterArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1ParameterArrayInput` via:
 //
-//          GoogleCloudChannelV1ParameterArray{ GoogleCloudChannelV1ParameterArgs{...} }
+//	GoogleCloudChannelV1ParameterArray{ GoogleCloudChannelV1ParameterArgs{...} }
 type GoogleCloudChannelV1ParameterArrayInput interface {
 	pulumi.Input
 
@@ -932,7 +932,7 @@ type GoogleCloudChannelV1PercentageAdjustment struct {
 // GoogleCloudChannelV1PercentageAdjustmentInput is an input type that accepts GoogleCloudChannelV1PercentageAdjustmentArgs and GoogleCloudChannelV1PercentageAdjustmentOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1PercentageAdjustmentInput` via:
 //
-//          GoogleCloudChannelV1PercentageAdjustmentArgs{...}
+//	GoogleCloudChannelV1PercentageAdjustmentArgs{...}
 type GoogleCloudChannelV1PercentageAdjustmentInput interface {
 	pulumi.Input
 
@@ -969,11 +969,11 @@ func (i GoogleCloudChannelV1PercentageAdjustmentArgs) ToGoogleCloudChannelV1Perc
 // GoogleCloudChannelV1PercentageAdjustmentPtrInput is an input type that accepts GoogleCloudChannelV1PercentageAdjustmentArgs, GoogleCloudChannelV1PercentageAdjustmentPtr and GoogleCloudChannelV1PercentageAdjustmentPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1PercentageAdjustmentPtrInput` via:
 //
-//          GoogleCloudChannelV1PercentageAdjustmentArgs{...}
+//	        GoogleCloudChannelV1PercentageAdjustmentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudChannelV1PercentageAdjustmentPtrInput interface {
 	pulumi.Input
 
@@ -1102,7 +1102,7 @@ type GoogleCloudChannelV1Period struct {
 // GoogleCloudChannelV1PeriodInput is an input type that accepts GoogleCloudChannelV1PeriodArgs and GoogleCloudChannelV1PeriodOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1PeriodInput` via:
 //
-//          GoogleCloudChannelV1PeriodArgs{...}
+//	GoogleCloudChannelV1PeriodArgs{...}
 type GoogleCloudChannelV1PeriodInput interface {
 	pulumi.Input
 
@@ -1141,11 +1141,11 @@ func (i GoogleCloudChannelV1PeriodArgs) ToGoogleCloudChannelV1PeriodPtrOutputWit
 // GoogleCloudChannelV1PeriodPtrInput is an input type that accepts GoogleCloudChannelV1PeriodArgs, GoogleCloudChannelV1PeriodPtr and GoogleCloudChannelV1PeriodPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1PeriodPtrInput` via:
 //
-//          GoogleCloudChannelV1PeriodArgs{...}
+//	        GoogleCloudChannelV1PeriodArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudChannelV1PeriodPtrInput interface {
 	pulumi.Input
 
@@ -1338,7 +1338,7 @@ type GoogleCloudChannelV1RenewalSettings struct {
 // GoogleCloudChannelV1RenewalSettingsInput is an input type that accepts GoogleCloudChannelV1RenewalSettingsArgs and GoogleCloudChannelV1RenewalSettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1RenewalSettingsInput` via:
 //
-//          GoogleCloudChannelV1RenewalSettingsArgs{...}
+//	GoogleCloudChannelV1RenewalSettingsArgs{...}
 type GoogleCloudChannelV1RenewalSettingsInput interface {
 	pulumi.Input
 
@@ -1381,11 +1381,11 @@ func (i GoogleCloudChannelV1RenewalSettingsArgs) ToGoogleCloudChannelV1RenewalSe
 // GoogleCloudChannelV1RenewalSettingsPtrInput is an input type that accepts GoogleCloudChannelV1RenewalSettingsArgs, GoogleCloudChannelV1RenewalSettingsPtr and GoogleCloudChannelV1RenewalSettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1RenewalSettingsPtrInput` via:
 //
-//          GoogleCloudChannelV1RenewalSettingsArgs{...}
+//	        GoogleCloudChannelV1RenewalSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudChannelV1RenewalSettingsPtrInput interface {
 	pulumi.Input
 
@@ -1580,7 +1580,7 @@ type GoogleCloudChannelV1RepricingAdjustment struct {
 // GoogleCloudChannelV1RepricingAdjustmentInput is an input type that accepts GoogleCloudChannelV1RepricingAdjustmentArgs and GoogleCloudChannelV1RepricingAdjustmentOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1RepricingAdjustmentInput` via:
 //
-//          GoogleCloudChannelV1RepricingAdjustmentArgs{...}
+//	GoogleCloudChannelV1RepricingAdjustmentArgs{...}
 type GoogleCloudChannelV1RepricingAdjustmentInput interface {
 	pulumi.Input
 
@@ -1673,7 +1673,7 @@ type GoogleCloudChannelV1RepricingConfig struct {
 // GoogleCloudChannelV1RepricingConfigInput is an input type that accepts GoogleCloudChannelV1RepricingConfigArgs and GoogleCloudChannelV1RepricingConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1RepricingConfigInput` via:
 //
-//          GoogleCloudChannelV1RepricingConfigArgs{...}
+//	GoogleCloudChannelV1RepricingConfigArgs{...}
 type GoogleCloudChannelV1RepricingConfigInput interface {
 	pulumi.Input
 
@@ -1762,7 +1762,7 @@ type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity struct {
 // GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityInput is an input type that accepts GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs and GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityInput` via:
 //
-//          GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs{...}
+//	GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs{...}
 type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityInput interface {
 	pulumi.Input
 
@@ -1797,11 +1797,11 @@ func (i GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs) ToGoog
 // GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrInput is an input type that accepts GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs, GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtr and GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrInput` via:
 //
-//          GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs{...}
+//	        GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudChannelV1RepricingConfigChannelPartnerGranularityPtrInput interface {
 	pulumi.Input
 
@@ -1904,7 +1904,7 @@ type GoogleCloudChannelV1RepricingConfigEntitlementGranularity struct {
 // GoogleCloudChannelV1RepricingConfigEntitlementGranularityInput is an input type that accepts GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs and GoogleCloudChannelV1RepricingConfigEntitlementGranularityOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1RepricingConfigEntitlementGranularityInput` via:
 //
-//          GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs{...}
+//	GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs{...}
 type GoogleCloudChannelV1RepricingConfigEntitlementGranularityInput interface {
 	pulumi.Input
 
@@ -1941,11 +1941,11 @@ func (i GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs) ToGoogleC
 // GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrInput is an input type that accepts GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs, GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtr and GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrInput` via:
 //
-//          GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs{...}
+//	        GoogleCloudChannelV1RepricingConfigEntitlementGranularityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudChannelV1RepricingConfigEntitlementGranularityPtrInput interface {
 	pulumi.Input
 
@@ -2173,7 +2173,7 @@ type GoogleCloudChannelV1Value struct {
 // GoogleCloudChannelV1ValueInput is an input type that accepts GoogleCloudChannelV1ValueArgs and GoogleCloudChannelV1ValueOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1ValueInput` via:
 //
-//          GoogleCloudChannelV1ValueArgs{...}
+//	GoogleCloudChannelV1ValueArgs{...}
 type GoogleCloudChannelV1ValueInput interface {
 	pulumi.Input
 
@@ -2218,11 +2218,11 @@ func (i GoogleCloudChannelV1ValueArgs) ToGoogleCloudChannelV1ValuePtrOutputWithC
 // GoogleCloudChannelV1ValuePtrInput is an input type that accepts GoogleCloudChannelV1ValueArgs, GoogleCloudChannelV1ValuePtr and GoogleCloudChannelV1ValuePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1ValuePtrInput` via:
 //
-//          GoogleCloudChannelV1ValueArgs{...}
+//	        GoogleCloudChannelV1ValueArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudChannelV1ValuePtrInput interface {
 	pulumi.Input
 
@@ -2439,7 +2439,7 @@ type GoogleTypeDate struct {
 // GoogleTypeDateInput is an input type that accepts GoogleTypeDateArgs and GoogleTypeDateOutput values.
 // You can construct a concrete instance of `GoogleTypeDateInput` via:
 //
-//          GoogleTypeDateArgs{...}
+//	GoogleTypeDateArgs{...}
 type GoogleTypeDateInput interface {
 	pulumi.Input
 
@@ -2548,7 +2548,7 @@ type GoogleTypeDecimal struct {
 // GoogleTypeDecimalInput is an input type that accepts GoogleTypeDecimalArgs and GoogleTypeDecimalOutput values.
 // You can construct a concrete instance of `GoogleTypeDecimalInput` via:
 //
-//          GoogleTypeDecimalArgs{...}
+//	GoogleTypeDecimalArgs{...}
 type GoogleTypeDecimalInput interface {
 	pulumi.Input
 
@@ -2585,11 +2585,11 @@ func (i GoogleTypeDecimalArgs) ToGoogleTypeDecimalPtrOutputWithContext(ctx conte
 // GoogleTypeDecimalPtrInput is an input type that accepts GoogleTypeDecimalArgs, GoogleTypeDecimalPtr and GoogleTypeDecimalPtrOutput values.
 // You can construct a concrete instance of `GoogleTypeDecimalPtrInput` via:
 //
-//          GoogleTypeDecimalArgs{...}
+//	        GoogleTypeDecimalArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleTypeDecimalPtrInput interface {
 	pulumi.Input
 
@@ -2734,7 +2734,7 @@ type GoogleTypePostalAddress struct {
 // GoogleTypePostalAddressInput is an input type that accepts GoogleTypePostalAddressArgs and GoogleTypePostalAddressOutput values.
 // You can construct a concrete instance of `GoogleTypePostalAddressInput` via:
 //
-//          GoogleTypePostalAddressArgs{...}
+//	GoogleTypePostalAddressArgs{...}
 type GoogleTypePostalAddressInput interface {
 	pulumi.Input
 

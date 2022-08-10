@@ -144,7 +144,7 @@ func (o BuildSignatureKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // BuildSignatureKeyTypeInput is an input type that accepts BuildSignatureKeyTypeArgs and BuildSignatureKeyTypeOutput values.
 // You can construct a concrete instance of `BuildSignatureKeyTypeInput` via:
 //
-//          BuildSignatureKeyTypeArgs{...}
+//	BuildSignatureKeyTypeArgs{...}
 type BuildSignatureKeyTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o CVSSAttackComplexityPtrOutput) ToStringPtrOutputWithContext(ctx context.
 // CVSSAttackComplexityInput is an input type that accepts CVSSAttackComplexityArgs and CVSSAttackComplexityOutput values.
 // You can construct a concrete instance of `CVSSAttackComplexityInput` via:
 //
-//          CVSSAttackComplexityArgs{...}
+//	CVSSAttackComplexityArgs{...}
 type CVSSAttackComplexityInput interface {
 	pulumi.Input
 
@@ -488,7 +488,7 @@ func (o CVSSAttackVectorPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // CVSSAttackVectorInput is an input type that accepts CVSSAttackVectorArgs and CVSSAttackVectorOutput values.
 // You can construct a concrete instance of `CVSSAttackVectorInput` via:
 //
-//          CVSSAttackVectorArgs{...}
+//	CVSSAttackVectorArgs{...}
 type CVSSAttackVectorInput interface {
 	pulumi.Input
 
@@ -659,7 +659,7 @@ func (o CVSSAuthenticationPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // CVSSAuthenticationInput is an input type that accepts CVSSAuthenticationArgs and CVSSAuthenticationOutput values.
 // You can construct a concrete instance of `CVSSAuthenticationInput` via:
 //
-//          CVSSAuthenticationArgs{...}
+//	CVSSAuthenticationArgs{...}
 type CVSSAuthenticationInput interface {
 	pulumi.Input
 
@@ -834,7 +834,7 @@ func (o CVSSAvailabilityImpactPtrOutput) ToStringPtrOutputWithContext(ctx contex
 // CVSSAvailabilityImpactInput is an input type that accepts CVSSAvailabilityImpactArgs and CVSSAvailabilityImpactOutput values.
 // You can construct a concrete instance of `CVSSAvailabilityImpactInput` via:
 //
-//          CVSSAvailabilityImpactArgs{...}
+//	CVSSAvailabilityImpactArgs{...}
 type CVSSAvailabilityImpactInput interface {
 	pulumi.Input
 
@@ -1009,7 +1009,7 @@ func (o CVSSConfidentialityImpactPtrOutput) ToStringPtrOutputWithContext(ctx con
 // CVSSConfidentialityImpactInput is an input type that accepts CVSSConfidentialityImpactArgs and CVSSConfidentialityImpactOutput values.
 // You can construct a concrete instance of `CVSSConfidentialityImpactInput` via:
 //
-//          CVSSConfidentialityImpactArgs{...}
+//	CVSSConfidentialityImpactArgs{...}
 type CVSSConfidentialityImpactInput interface {
 	pulumi.Input
 
@@ -1184,7 +1184,7 @@ func (o CVSSIntegrityImpactPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // CVSSIntegrityImpactInput is an input type that accepts CVSSIntegrityImpactArgs and CVSSIntegrityImpactOutput values.
 // You can construct a concrete instance of `CVSSIntegrityImpactInput` via:
 //
-//          CVSSIntegrityImpactArgs{...}
+//	CVSSIntegrityImpactArgs{...}
 type CVSSIntegrityImpactInput interface {
 	pulumi.Input
 
@@ -1355,7 +1355,7 @@ func (o CVSSPrivilegesRequiredPtrOutput) ToStringPtrOutputWithContext(ctx contex
 // CVSSPrivilegesRequiredInput is an input type that accepts CVSSPrivilegesRequiredArgs and CVSSPrivilegesRequiredOutput values.
 // You can construct a concrete instance of `CVSSPrivilegesRequiredInput` via:
 //
-//          CVSSPrivilegesRequiredArgs{...}
+//	CVSSPrivilegesRequiredArgs{...}
 type CVSSPrivilegesRequiredInput interface {
 	pulumi.Input
 
@@ -1524,7 +1524,7 @@ func (o CVSSScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 // CVSSScopeInput is an input type that accepts CVSSScopeArgs and CVSSScopeOutput values.
 // You can construct a concrete instance of `CVSSScopeInput` via:
 //
-//          CVSSScopeArgs{...}
+//	CVSSScopeArgs{...}
 type CVSSScopeInput interface {
 	pulumi.Input
 
@@ -1693,7 +1693,7 @@ func (o CVSSUserInteractionPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // CVSSUserInteractionInput is an input type that accepts CVSSUserInteractionArgs and CVSSUserInteractionOutput values.
 // You can construct a concrete instance of `CVSSUserInteractionInput` via:
 //
-//          CVSSUserInteractionArgs{...}
+//	CVSSUserInteractionArgs{...}
 type CVSSUserInteractionInput interface {
 	pulumi.Input
 
@@ -1868,7 +1868,7 @@ func (o CisBenchmarkSeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.
 // CisBenchmarkSeverityInput is an input type that accepts CisBenchmarkSeverityArgs and CisBenchmarkSeverityOutput values.
 // You can construct a concrete instance of `CisBenchmarkSeverityInput` via:
 //
-//          CisBenchmarkSeverityArgs{...}
+//	CisBenchmarkSeverityArgs{...}
 type CisBenchmarkSeverityInput interface {
 	pulumi.Input
 
@@ -2039,7 +2039,7 @@ func (o DeploymentPlatformPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // DeploymentPlatformInput is an input type that accepts DeploymentPlatformArgs and DeploymentPlatformOutput values.
 // You can construct a concrete instance of `DeploymentPlatformInput` via:
 //
-//          DeploymentPlatformArgs{...}
+//	DeploymentPlatformArgs{...}
 type DeploymentPlatformInput interface {
 	pulumi.Input
 
@@ -2214,7 +2214,7 @@ func (o DiscoveredAnalysisStatusPtrOutput) ToStringPtrOutputWithContext(ctx cont
 // DiscoveredAnalysisStatusInput is an input type that accepts DiscoveredAnalysisStatusArgs and DiscoveredAnalysisStatusOutput values.
 // You can construct a concrete instance of `DiscoveredAnalysisStatusInput` via:
 //
-//          DiscoveredAnalysisStatusArgs{...}
+//	DiscoveredAnalysisStatusArgs{...}
 type DiscoveredAnalysisStatusInput interface {
 	pulumi.Input
 
@@ -2383,7 +2383,7 @@ func (o DiscoveredContinuousAnalysisPtrOutput) ToStringPtrOutputWithContext(ctx 
 // DiscoveredContinuousAnalysisInput is an input type that accepts DiscoveredContinuousAnalysisArgs and DiscoveredContinuousAnalysisOutput values.
 // You can construct a concrete instance of `DiscoveredContinuousAnalysisInput` via:
 //
-//          DiscoveredContinuousAnalysisArgs{...}
+//	DiscoveredContinuousAnalysisArgs{...}
 type DiscoveredContinuousAnalysisInput interface {
 	pulumi.Input
 
@@ -2576,7 +2576,7 @@ func (o DiscoveryAnalysisKindPtrOutput) ToStringPtrOutputWithContext(ctx context
 // DiscoveryAnalysisKindInput is an input type that accepts DiscoveryAnalysisKindArgs and DiscoveryAnalysisKindOutput values.
 // You can construct a concrete instance of `DiscoveryAnalysisKindInput` via:
 //
-//          DiscoveryAnalysisKindArgs{...}
+//	DiscoveryAnalysisKindArgs{...}
 type DiscoveryAnalysisKindInput interface {
 	pulumi.Input
 
@@ -2745,7 +2745,7 @@ func (o DistributionArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // DistributionArchitectureInput is an input type that accepts DistributionArchitectureArgs and DistributionArchitectureOutput values.
 // You can construct a concrete instance of `DistributionArchitectureInput` via:
 //
-//          DistributionArchitectureArgs{...}
+//	DistributionArchitectureArgs{...}
 type DistributionArchitectureInput interface {
 	pulumi.Input
 
@@ -2918,7 +2918,7 @@ func (o ExternalRefCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // ExternalRefCategoryInput is an input type that accepts ExternalRefCategoryArgs and ExternalRefCategoryOutput values.
 // You can construct a concrete instance of `ExternalRefCategoryInput` via:
 //
-//          ExternalRefCategoryArgs{...}
+//	ExternalRefCategoryArgs{...}
 type ExternalRefCategoryInput interface {
 	pulumi.Input
 
@@ -3105,7 +3105,7 @@ func (o FileNoteFileTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // FileNoteFileTypeInput is an input type that accepts FileNoteFileTypeArgs and FileNoteFileTypeOutput values.
 // You can construct a concrete instance of `FileNoteFileTypeInput` via:
 //
-//          FileNoteFileTypeArgs{...}
+//	FileNoteFileTypeArgs{...}
 type FileNoteFileTypeInput interface {
 	pulumi.Input
 
@@ -3276,7 +3276,7 @@ func (o GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindPtrOutput) ToStri
 // GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindInput is an input type that accepts GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindArgs and GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindOutput values.
 // You can construct a concrete instance of `GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindInput` via:
 //
-//          GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindArgs{...}
+//	GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindArgs{...}
 type GoogleDevtoolsContaineranalysisV1alpha1AliasContextKindInput interface {
 	pulumi.Input
 
@@ -3443,7 +3443,7 @@ func (o HashTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 // HashTypeInput is an input type that accepts HashTypeArgs and HashTypeOutput values.
 // You can construct a concrete instance of `HashTypeInput` via:
 //
-//          HashTypeArgs{...}
+//	HashTypeArgs{...}
 type HashTypeInput interface {
 	pulumi.Input
 
@@ -3642,7 +3642,7 @@ func (o LayerDirectivePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // LayerDirectiveInput is an input type that accepts LayerDirectiveArgs and LayerDirectiveOutput values.
 // You can construct a concrete instance of `LayerDirectiveInput` via:
 //
-//          LayerDirectiveArgs{...}
+//	LayerDirectiveArgs{...}
 type LayerDirectiveInput interface {
 	pulumi.Input
 
@@ -3811,7 +3811,7 @@ func (o PackageArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // PackageArchitectureInput is an input type that accepts PackageArchitectureArgs and PackageArchitectureOutput values.
 // You can construct a concrete instance of `PackageArchitectureInput` via:
 //
-//          PackageArchitectureArgs{...}
+//	PackageArchitectureArgs{...}
 type PackageArchitectureInput interface {
 	pulumi.Input
 
@@ -3978,7 +3978,7 @@ func (o PgpSignedAttestationContentTypePtrOutput) ToStringPtrOutputWithContext(c
 // PgpSignedAttestationContentTypeInput is an input type that accepts PgpSignedAttestationContentTypeArgs and PgpSignedAttestationContentTypeOutput values.
 // You can construct a concrete instance of `PgpSignedAttestationContentTypeInput` via:
 //
-//          PgpSignedAttestationContentTypeArgs{...}
+//	PgpSignedAttestationContentTypeArgs{...}
 type PgpSignedAttestationContentTypeInput interface {
 	pulumi.Input
 
@@ -4229,7 +4229,7 @@ func (o RelationshipNoteTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // RelationshipNoteTypeInput is an input type that accepts RelationshipNoteTypeArgs and RelationshipNoteTypeOutput values.
 // You can construct a concrete instance of `RelationshipNoteTypeInput` via:
 //
-//          RelationshipNoteTypeArgs{...}
+//	RelationshipNoteTypeArgs{...}
 type RelationshipNoteTypeInput interface {
 	pulumi.Input
 
@@ -4398,7 +4398,7 @@ func (o VersionKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // VersionKindInput is an input type that accepts VersionKindArgs and VersionKindOutput values.
 // You can construct a concrete instance of `VersionKindInput` via:
 //
-//          VersionKindArgs{...}
+//	VersionKindArgs{...}
 type VersionKindInput interface {
 	pulumi.Input
 
@@ -4573,7 +4573,7 @@ func (o VulnerabilityDetailsEffectiveSeverityPtrOutput) ToStringPtrOutputWithCon
 // VulnerabilityDetailsEffectiveSeverityInput is an input type that accepts VulnerabilityDetailsEffectiveSeverityArgs and VulnerabilityDetailsEffectiveSeverityOutput values.
 // You can construct a concrete instance of `VulnerabilityDetailsEffectiveSeverityInput` via:
 //
-//          VulnerabilityDetailsEffectiveSeverityArgs{...}
+//	VulnerabilityDetailsEffectiveSeverityArgs{...}
 type VulnerabilityDetailsEffectiveSeverityInput interface {
 	pulumi.Input
 
@@ -4748,7 +4748,7 @@ func (o VulnerabilityTypeSeverityPtrOutput) ToStringPtrOutputWithContext(ctx con
 // VulnerabilityTypeSeverityInput is an input type that accepts VulnerabilityTypeSeverityArgs and VulnerabilityTypeSeverityOutput values.
 // You can construct a concrete instance of `VulnerabilityTypeSeverityInput` via:
 //
-//          VulnerabilityTypeSeverityArgs{...}
+//	VulnerabilityTypeSeverityArgs{...}
 type VulnerabilityTypeSeverityInput interface {
 	pulumi.Input
 

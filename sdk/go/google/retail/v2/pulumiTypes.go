@@ -21,7 +21,7 @@ type GoogleCloudRetailV2Audience struct {
 // GoogleCloudRetailV2AudienceInput is an input type that accepts GoogleCloudRetailV2AudienceArgs and GoogleCloudRetailV2AudienceOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2AudienceInput` via:
 //
-//          GoogleCloudRetailV2AudienceArgs{...}
+//	GoogleCloudRetailV2AudienceArgs{...}
 type GoogleCloudRetailV2AudienceInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i GoogleCloudRetailV2AudienceArgs) ToGoogleCloudRetailV2AudiencePtrOutputW
 // GoogleCloudRetailV2AudiencePtrInput is an input type that accepts GoogleCloudRetailV2AudienceArgs, GoogleCloudRetailV2AudiencePtr and GoogleCloudRetailV2AudiencePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2AudiencePtrInput` via:
 //
-//          GoogleCloudRetailV2AudienceArgs{...}
+//	        GoogleCloudRetailV2AudienceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2AudiencePtrInput interface {
 	pulumi.Input
 
@@ -213,7 +213,7 @@ type GoogleCloudRetailV2ColorInfo struct {
 // GoogleCloudRetailV2ColorInfoInput is an input type that accepts GoogleCloudRetailV2ColorInfoArgs and GoogleCloudRetailV2ColorInfoOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2ColorInfoInput` via:
 //
-//          GoogleCloudRetailV2ColorInfoArgs{...}
+//	GoogleCloudRetailV2ColorInfoArgs{...}
 type GoogleCloudRetailV2ColorInfoInput interface {
 	pulumi.Input
 
@@ -252,11 +252,11 @@ func (i GoogleCloudRetailV2ColorInfoArgs) ToGoogleCloudRetailV2ColorInfoPtrOutpu
 // GoogleCloudRetailV2ColorInfoPtrInput is an input type that accepts GoogleCloudRetailV2ColorInfoArgs, GoogleCloudRetailV2ColorInfoPtr and GoogleCloudRetailV2ColorInfoPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2ColorInfoPtrInput` via:
 //
-//          GoogleCloudRetailV2ColorInfoArgs{...}
+//	        GoogleCloudRetailV2ColorInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2ColorInfoPtrInput interface {
 	pulumi.Input
 
@@ -405,7 +405,7 @@ type GoogleCloudRetailV2FulfillmentInfo struct {
 // GoogleCloudRetailV2FulfillmentInfoInput is an input type that accepts GoogleCloudRetailV2FulfillmentInfoArgs and GoogleCloudRetailV2FulfillmentInfoOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2FulfillmentInfoInput` via:
 //
-//          GoogleCloudRetailV2FulfillmentInfoArgs{...}
+//	GoogleCloudRetailV2FulfillmentInfoArgs{...}
 type GoogleCloudRetailV2FulfillmentInfoInput interface {
 	pulumi.Input
 
@@ -436,7 +436,7 @@ func (i GoogleCloudRetailV2FulfillmentInfoArgs) ToGoogleCloudRetailV2Fulfillment
 // GoogleCloudRetailV2FulfillmentInfoArrayInput is an input type that accepts GoogleCloudRetailV2FulfillmentInfoArray and GoogleCloudRetailV2FulfillmentInfoArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2FulfillmentInfoArrayInput` via:
 //
-//          GoogleCloudRetailV2FulfillmentInfoArray{ GoogleCloudRetailV2FulfillmentInfoArgs{...} }
+//	GoogleCloudRetailV2FulfillmentInfoArray{ GoogleCloudRetailV2FulfillmentInfoArgs{...} }
 type GoogleCloudRetailV2FulfillmentInfoArrayInput interface {
 	pulumi.Input
 
@@ -569,7 +569,7 @@ type GoogleCloudRetailV2Image struct {
 // GoogleCloudRetailV2ImageInput is an input type that accepts GoogleCloudRetailV2ImageArgs and GoogleCloudRetailV2ImageOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2ImageInput` via:
 //
-//          GoogleCloudRetailV2ImageArgs{...}
+//	GoogleCloudRetailV2ImageArgs{...}
 type GoogleCloudRetailV2ImageInput interface {
 	pulumi.Input
 
@@ -602,7 +602,7 @@ func (i GoogleCloudRetailV2ImageArgs) ToGoogleCloudRetailV2ImageOutputWithContex
 // GoogleCloudRetailV2ImageArrayInput is an input type that accepts GoogleCloudRetailV2ImageArray and GoogleCloudRetailV2ImageArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2ImageArrayInput` via:
 //
-//          GoogleCloudRetailV2ImageArray{ GoogleCloudRetailV2ImageArgs{...} }
+//	GoogleCloudRetailV2ImageArray{ GoogleCloudRetailV2ImageArgs{...} }
 type GoogleCloudRetailV2ImageArrayInput interface {
 	pulumi.Input
 
@@ -800,7 +800,7 @@ type GoogleCloudRetailV2PriceInfo struct {
 // GoogleCloudRetailV2PriceInfoInput is an input type that accepts GoogleCloudRetailV2PriceInfoArgs and GoogleCloudRetailV2PriceInfoOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2PriceInfoInput` via:
 //
-//          GoogleCloudRetailV2PriceInfoArgs{...}
+//	GoogleCloudRetailV2PriceInfoArgs{...}
 type GoogleCloudRetailV2PriceInfoInput interface {
 	pulumi.Input
 
@@ -847,11 +847,11 @@ func (i GoogleCloudRetailV2PriceInfoArgs) ToGoogleCloudRetailV2PriceInfoPtrOutpu
 // GoogleCloudRetailV2PriceInfoPtrInput is an input type that accepts GoogleCloudRetailV2PriceInfoArgs, GoogleCloudRetailV2PriceInfoPtr and GoogleCloudRetailV2PriceInfoPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2PriceInfoPtrInput` via:
 //
-//          GoogleCloudRetailV2PriceInfoArgs{...}
+//	        GoogleCloudRetailV2PriceInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2PriceInfoPtrInput interface {
 	pulumi.Input
 
@@ -1397,7 +1397,7 @@ type GoogleCloudRetailV2Promotion struct {
 // GoogleCloudRetailV2PromotionInput is an input type that accepts GoogleCloudRetailV2PromotionArgs and GoogleCloudRetailV2PromotionOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2PromotionInput` via:
 //
-//          GoogleCloudRetailV2PromotionArgs{...}
+//	GoogleCloudRetailV2PromotionArgs{...}
 type GoogleCloudRetailV2PromotionInput interface {
 	pulumi.Input
 
@@ -1426,7 +1426,7 @@ func (i GoogleCloudRetailV2PromotionArgs) ToGoogleCloudRetailV2PromotionOutputWi
 // GoogleCloudRetailV2PromotionArrayInput is an input type that accepts GoogleCloudRetailV2PromotionArray and GoogleCloudRetailV2PromotionArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2PromotionArrayInput` via:
 //
-//          GoogleCloudRetailV2PromotionArray{ GoogleCloudRetailV2PromotionArgs{...} }
+//	GoogleCloudRetailV2PromotionArray{ GoogleCloudRetailV2PromotionArgs{...} }
 type GoogleCloudRetailV2PromotionArrayInput interface {
 	pulumi.Input
 
@@ -1547,7 +1547,7 @@ type GoogleCloudRetailV2Rating struct {
 // GoogleCloudRetailV2RatingInput is an input type that accepts GoogleCloudRetailV2RatingArgs and GoogleCloudRetailV2RatingOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2RatingInput` via:
 //
-//          GoogleCloudRetailV2RatingArgs{...}
+//	GoogleCloudRetailV2RatingArgs{...}
 type GoogleCloudRetailV2RatingInput interface {
 	pulumi.Input
 
@@ -1588,11 +1588,11 @@ func (i GoogleCloudRetailV2RatingArgs) ToGoogleCloudRetailV2RatingPtrOutputWithC
 // GoogleCloudRetailV2RatingPtrInput is an input type that accepts GoogleCloudRetailV2RatingArgs, GoogleCloudRetailV2RatingPtr and GoogleCloudRetailV2RatingPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2RatingPtrInput` via:
 //
-//          GoogleCloudRetailV2RatingArgs{...}
+//	        GoogleCloudRetailV2RatingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2RatingPtrInput interface {
 	pulumi.Input
 

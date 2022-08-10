@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaPtrOutput) 
 // EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaInput is an input type that accepts EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaArgs and EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaOutput values.
 // You can construct a concrete instance of `EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaInput` via:
 //
-//          EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaArgs{...}
+//	EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaArgs{...}
 type EndpointMatcherMetadataLabelMatcherMetadataLabelMatchCriteriaInput interface {
 	pulumi.Input
 
@@ -484,7 +484,7 @@ func (o EndpointPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // EndpointPolicyTypeInput is an input type that accepts EndpointPolicyTypeArgs and EndpointPolicyTypeOutput values.
 // You can construct a concrete instance of `EndpointPolicyTypeInput` via:
 //
-//          EndpointPolicyTypeArgs{...}
+//	EndpointPolicyTypeArgs{...}
 type EndpointPolicyTypeInput interface {
 	pulumi.Input
 
@@ -653,7 +653,7 @@ func (o GatewayTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // GatewayTypeInput is an input type that accepts GatewayTypeArgs and GatewayTypeOutput values.
 // You can construct a concrete instance of `GatewayTypeInput` via:
 //
-//          GatewayTypeArgs{...}
+//	GatewayTypeArgs{...}
 type GatewayTypeInput interface {
 	pulumi.Input
 
@@ -822,7 +822,7 @@ func (o GrpcRouteHeaderMatchTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // GrpcRouteHeaderMatchTypeInput is an input type that accepts GrpcRouteHeaderMatchTypeArgs and GrpcRouteHeaderMatchTypeOutput values.
 // You can construct a concrete instance of `GrpcRouteHeaderMatchTypeInput` via:
 //
-//          GrpcRouteHeaderMatchTypeArgs{...}
+//	GrpcRouteHeaderMatchTypeArgs{...}
 type GrpcRouteHeaderMatchTypeInput interface {
 	pulumi.Input
 
@@ -991,7 +991,7 @@ func (o GrpcRouteMethodMatchTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // GrpcRouteMethodMatchTypeInput is an input type that accepts GrpcRouteMethodMatchTypeArgs and GrpcRouteMethodMatchTypeOutput values.
 // You can construct a concrete instance of `GrpcRouteMethodMatchTypeInput` via:
 //
-//          GrpcRouteMethodMatchTypeArgs{...}
+//	GrpcRouteMethodMatchTypeArgs{...}
 type GrpcRouteMethodMatchTypeInput interface {
 	pulumi.Input
 
@@ -1166,7 +1166,7 @@ func (o HttpRouteRedirectResponseCodePtrOutput) ToStringPtrOutputWithContext(ctx
 // HttpRouteRedirectResponseCodeInput is an input type that accepts HttpRouteRedirectResponseCodeArgs and HttpRouteRedirectResponseCodeOutput values.
 // You can construct a concrete instance of `HttpRouteRedirectResponseCodeInput` via:
 //
-//          HttpRouteRedirectResponseCodeArgs{...}
+//	HttpRouteRedirectResponseCodeArgs{...}
 type HttpRouteRedirectResponseCodeInput interface {
 	pulumi.Input
 

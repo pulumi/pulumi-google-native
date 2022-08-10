@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,7 +319,7 @@ func (o CryptoKeyPurposePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // CryptoKeyPurposeInput is an input type that accepts CryptoKeyPurposeArgs and CryptoKeyPurposeOutput values.
 // You can construct a concrete instance of `CryptoKeyPurposeInput` via:
 //
-//          CryptoKeyPurposeArgs{...}
+//	CryptoKeyPurposeArgs{...}
 type CryptoKeyPurposeInput interface {
 	pulumi.Input
 
@@ -498,7 +498,7 @@ func (o CryptoKeyVersionStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx con
 // CryptoKeyVersionStateEnumInput is an input type that accepts CryptoKeyVersionStateEnumArgs and CryptoKeyVersionStateEnumOutput values.
 // You can construct a concrete instance of `CryptoKeyVersionStateEnumInput` via:
 //
-//          CryptoKeyVersionStateEnumArgs{...}
+//	CryptoKeyVersionStateEnumArgs{...}
 type CryptoKeyVersionStateEnumInput interface {
 	pulumi.Input
 
@@ -711,7 +711,7 @@ func (o CryptoKeyVersionTemplateAlgorithmPtrOutput) ToStringPtrOutputWithContext
 // CryptoKeyVersionTemplateAlgorithmInput is an input type that accepts CryptoKeyVersionTemplateAlgorithmArgs and CryptoKeyVersionTemplateAlgorithmOutput values.
 // You can construct a concrete instance of `CryptoKeyVersionTemplateAlgorithmInput` via:
 //
-//          CryptoKeyVersionTemplateAlgorithmArgs{...}
+//	CryptoKeyVersionTemplateAlgorithmArgs{...}
 type CryptoKeyVersionTemplateAlgorithmInput interface {
 	pulumi.Input
 
@@ -884,7 +884,7 @@ func (o CryptoKeyVersionTemplateProtectionLevelPtrOutput) ToStringPtrOutputWithC
 // CryptoKeyVersionTemplateProtectionLevelInput is an input type that accepts CryptoKeyVersionTemplateProtectionLevelArgs and CryptoKeyVersionTemplateProtectionLevelOutput values.
 // You can construct a concrete instance of `CryptoKeyVersionTemplateProtectionLevelInput` via:
 //
-//          CryptoKeyVersionTemplateProtectionLevelArgs{...}
+//	CryptoKeyVersionTemplateProtectionLevelArgs{...}
 type CryptoKeyVersionTemplateProtectionLevelInput interface {
 	pulumi.Input
 
@@ -1061,7 +1061,7 @@ func (o ImportJobImportMethodPtrOutput) ToStringPtrOutputWithContext(ctx context
 // ImportJobImportMethodInput is an input type that accepts ImportJobImportMethodArgs and ImportJobImportMethodOutput values.
 // You can construct a concrete instance of `ImportJobImportMethodInput` via:
 //
-//          ImportJobImportMethodArgs{...}
+//	ImportJobImportMethodArgs{...}
 type ImportJobImportMethodInput interface {
 	pulumi.Input
 
@@ -1234,7 +1234,7 @@ func (o ImportJobProtectionLevelPtrOutput) ToStringPtrOutputWithContext(ctx cont
 // ImportJobProtectionLevelInput is an input type that accepts ImportJobProtectionLevelArgs and ImportJobProtectionLevelOutput values.
 // You can construct a concrete instance of `ImportJobProtectionLevelInput` via:
 //
-//          ImportJobProtectionLevelArgs{...}
+//	ImportJobProtectionLevelArgs{...}
 type ImportJobProtectionLevelInput interface {
 	pulumi.Input
 

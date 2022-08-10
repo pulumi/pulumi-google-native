@@ -70,7 +70,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -103,7 +103,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -244,7 +244,7 @@ type EncryptionConfig struct {
 // EncryptionConfigInput is an input type that accepts EncryptionConfigArgs and EncryptionConfigOutput values.
 // You can construct a concrete instance of `EncryptionConfigInput` via:
 //
-//          EncryptionConfigArgs{...}
+//	EncryptionConfigArgs{...}
 type EncryptionConfigInput interface {
 	pulumi.Input
 
@@ -281,11 +281,11 @@ func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutputWithContext(ctx context
 // EncryptionConfigPtrInput is an input type that accepts EncryptionConfigArgs, EncryptionConfigPtr and EncryptionConfigPtrOutput values.
 // You can construct a concrete instance of `EncryptionConfigPtrInput` via:
 //
-//          EncryptionConfigArgs{...}
+//	        EncryptionConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EncryptionConfigPtrInput interface {
 	pulumi.Input
 
@@ -476,7 +476,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -519,11 +519,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -714,7 +714,7 @@ type FreeInstanceMetadata struct {
 // FreeInstanceMetadataInput is an input type that accepts FreeInstanceMetadataArgs and FreeInstanceMetadataOutput values.
 // You can construct a concrete instance of `FreeInstanceMetadataInput` via:
 //
-//          FreeInstanceMetadataArgs{...}
+//	FreeInstanceMetadataArgs{...}
 type FreeInstanceMetadataInput interface {
 	pulumi.Input
 
@@ -751,11 +751,11 @@ func (i FreeInstanceMetadataArgs) ToFreeInstanceMetadataPtrOutputWithContext(ctx
 // FreeInstanceMetadataPtrInput is an input type that accepts FreeInstanceMetadataArgs, FreeInstanceMetadataPtr and FreeInstanceMetadataPtrOutput values.
 // You can construct a concrete instance of `FreeInstanceMetadataPtrInput` via:
 //
-//          FreeInstanceMetadataArgs{...}
+//	        FreeInstanceMetadataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FreeInstanceMetadataPtrInput interface {
 	pulumi.Input
 

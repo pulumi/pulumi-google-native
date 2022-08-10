@@ -143,7 +143,7 @@ func (o DnsKeySpecAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // DnsKeySpecAlgorithmInput is an input type that accepts DnsKeySpecAlgorithmArgs and DnsKeySpecAlgorithmOutput values.
 // You can construct a concrete instance of `DnsKeySpecAlgorithmInput` via:
 //
-//          DnsKeySpecAlgorithmArgs{...}
+//	DnsKeySpecAlgorithmArgs{...}
 type DnsKeySpecAlgorithmInput interface {
 	pulumi.Input
 
@@ -308,7 +308,7 @@ func (o DnsKeySpecKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // DnsKeySpecKeyTypeInput is an input type that accepts DnsKeySpecKeyTypeArgs and DnsKeySpecKeyTypeOutput values.
 // You can construct a concrete instance of `DnsKeySpecKeyTypeInput` via:
 //
-//          DnsKeySpecKeyTypeArgs{...}
+//	DnsKeySpecKeyTypeArgs{...}
 type DnsKeySpecKeyTypeInput interface {
 	pulumi.Input
 
@@ -479,7 +479,7 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(
 // GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` via:
 //
-//          GoogleIamV1AuditLogConfigLogTypeArgs{...}
+//	GoogleIamV1AuditLogConfigLogTypeArgs{...}
 type GoogleIamV1AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -644,7 +644,7 @@ func (o ManagedZoneDnsSecConfigNonExistencePtrOutput) ToStringPtrOutputWithConte
 // ManagedZoneDnsSecConfigNonExistenceInput is an input type that accepts ManagedZoneDnsSecConfigNonExistenceArgs and ManagedZoneDnsSecConfigNonExistenceOutput values.
 // You can construct a concrete instance of `ManagedZoneDnsSecConfigNonExistenceInput` via:
 //
-//          ManagedZoneDnsSecConfigNonExistenceArgs{...}
+//	ManagedZoneDnsSecConfigNonExistenceArgs{...}
 type ManagedZoneDnsSecConfigNonExistenceInput interface {
 	pulumi.Input
 
@@ -813,7 +813,7 @@ func (o ManagedZoneDnsSecConfigStatePtrOutput) ToStringPtrOutputWithContext(ctx 
 // ManagedZoneDnsSecConfigStateInput is an input type that accepts ManagedZoneDnsSecConfigStateArgs and ManagedZoneDnsSecConfigStateOutput values.
 // You can construct a concrete instance of `ManagedZoneDnsSecConfigStateInput` via:
 //
-//          ManagedZoneDnsSecConfigStateArgs{...}
+//	ManagedZoneDnsSecConfigStateArgs{...}
 type ManagedZoneDnsSecConfigStateInput interface {
 	pulumi.Input
 
@@ -980,7 +980,7 @@ func (o ManagedZoneForwardingConfigNameServerTargetForwardingPathPtrOutput) ToSt
 // ManagedZoneForwardingConfigNameServerTargetForwardingPathInput is an input type that accepts ManagedZoneForwardingConfigNameServerTargetForwardingPathArgs and ManagedZoneForwardingConfigNameServerTargetForwardingPathOutput values.
 // You can construct a concrete instance of `ManagedZoneForwardingConfigNameServerTargetForwardingPathInput` via:
 //
-//          ManagedZoneForwardingConfigNameServerTargetForwardingPathArgs{...}
+//	ManagedZoneForwardingConfigNameServerTargetForwardingPathArgs{...}
 type ManagedZoneForwardingConfigNameServerTargetForwardingPathInput interface {
 	pulumi.Input
 
@@ -1145,7 +1145,7 @@ func (o ManagedZoneVisibilityPtrOutput) ToStringPtrOutputWithContext(ctx context
 // ManagedZoneVisibilityInput is an input type that accepts ManagedZoneVisibilityArgs and ManagedZoneVisibilityOutput values.
 // You can construct a concrete instance of `ManagedZoneVisibilityInput` via:
 //
-//          ManagedZoneVisibilityArgs{...}
+//	ManagedZoneVisibilityArgs{...}
 type ManagedZoneVisibilityInput interface {
 	pulumi.Input
 
@@ -1312,7 +1312,7 @@ func (o PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput
 // PolicyAlternativeNameServerConfigTargetNameServerForwardingPathInput is an input type that accepts PolicyAlternativeNameServerConfigTargetNameServerForwardingPathArgs and PolicyAlternativeNameServerConfigTargetNameServerForwardingPathOutput values.
 // You can construct a concrete instance of `PolicyAlternativeNameServerConfigTargetNameServerForwardingPathInput` via:
 //
-//          PolicyAlternativeNameServerConfigTargetNameServerForwardingPathArgs{...}
+//	PolicyAlternativeNameServerConfigTargetNameServerForwardingPathArgs{...}
 type PolicyAlternativeNameServerConfigTargetNameServerForwardingPathInput interface {
 	pulumi.Input
 
@@ -1478,7 +1478,7 @@ func (o ResponsePolicyRuleBehaviorPtrOutput) ToStringPtrOutputWithContext(ctx co
 // ResponsePolicyRuleBehaviorInput is an input type that accepts ResponsePolicyRuleBehaviorArgs and ResponsePolicyRuleBehaviorOutput values.
 // You can construct a concrete instance of `ResponsePolicyRuleBehaviorInput` via:
 //
-//          ResponsePolicyRuleBehaviorArgs{...}
+//	ResponsePolicyRuleBehaviorArgs{...}
 type ResponsePolicyRuleBehaviorInput interface {
 	pulumi.Input
 

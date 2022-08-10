@@ -21,7 +21,7 @@ type AnnotationConfig struct {
 // AnnotationConfigInput is an input type that accepts AnnotationConfigArgs and AnnotationConfigOutput values.
 // You can construct a concrete instance of `AnnotationConfigInput` via:
 //
-//          AnnotationConfigArgs{...}
+//	AnnotationConfigArgs{...}
 type AnnotationConfigInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i AnnotationConfigArgs) ToAnnotationConfigPtrOutputWithContext(ctx context
 // AnnotationConfigPtrInput is an input type that accepts AnnotationConfigArgs, AnnotationConfigPtr and AnnotationConfigPtrOutput values.
 // You can construct a concrete instance of `AnnotationConfigPtrInput` via:
 //
-//          AnnotationConfigArgs{...}
+//	        AnnotationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AnnotationConfigPtrInput interface {
 	pulumi.Input
 
@@ -211,7 +211,7 @@ type AnnotationSource struct {
 // AnnotationSourceInput is an input type that accepts AnnotationSourceArgs and AnnotationSourceOutput values.
 // You can construct a concrete instance of `AnnotationSourceInput` via:
 //
-//          AnnotationSourceArgs{...}
+//	AnnotationSourceArgs{...}
 type AnnotationSourceInput interface {
 	pulumi.Input
 
@@ -248,11 +248,11 @@ func (i AnnotationSourceArgs) ToAnnotationSourcePtrOutputWithContext(ctx context
 // AnnotationSourcePtrInput is an input type that accepts AnnotationSourceArgs, AnnotationSourcePtr and AnnotationSourcePtrOutput values.
 // You can construct a concrete instance of `AnnotationSourcePtrInput` via:
 //
-//          AnnotationSourceArgs{...}
+//	        AnnotationSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AnnotationSourcePtrInput interface {
 	pulumi.Input
 
@@ -379,7 +379,7 @@ type Attribute struct {
 // AttributeInput is an input type that accepts AttributeArgs and AttributeOutput values.
 // You can construct a concrete instance of `AttributeInput` via:
 //
-//          AttributeArgs{...}
+//	AttributeArgs{...}
 type AttributeInput interface {
 	pulumi.Input
 
@@ -410,7 +410,7 @@ func (i AttributeArgs) ToAttributeOutputWithContext(ctx context.Context) Attribu
 // AttributeArrayInput is an input type that accepts AttributeArray and AttributeArrayOutput values.
 // You can construct a concrete instance of `AttributeArrayInput` via:
 //
-//          AttributeArray{ AttributeArgs{...} }
+//	AttributeArray{ AttributeArgs{...} }
 type AttributeArrayInput interface {
 	pulumi.Input
 
@@ -541,7 +541,7 @@ type AuditConfig struct {
 // AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
 // You can construct a concrete instance of `AuditConfigInput` via:
 //
-//          AuditConfigArgs{...}
+//	AuditConfigArgs{...}
 type AuditConfigInput interface {
 	pulumi.Input
 
@@ -572,7 +572,7 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
-//          AuditConfigArray{ AuditConfigArgs{...} }
+//	AuditConfigArray{ AuditConfigArgs{...} }
 type AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -703,7 +703,7 @@ type AuditLogConfig struct {
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
 // You can construct a concrete instance of `AuditLogConfigInput` via:
 //
-//          AuditLogConfigArgs{...}
+//	AuditLogConfigArgs{...}
 type AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -734,7 +734,7 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -867,7 +867,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -900,7 +900,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -1043,7 +1043,7 @@ type BoundingPoly struct {
 // BoundingPolyInput is an input type that accepts BoundingPolyArgs and BoundingPolyOutput values.
 // You can construct a concrete instance of `BoundingPolyInput` via:
 //
-//          BoundingPolyArgs{...}
+//	BoundingPolyArgs{...}
 type BoundingPolyInput interface {
 	pulumi.Input
 
@@ -1074,7 +1074,7 @@ func (i BoundingPolyArgs) ToBoundingPolyOutputWithContext(ctx context.Context) B
 // BoundingPolyArrayInput is an input type that accepts BoundingPolyArray and BoundingPolyArrayOutput values.
 // You can construct a concrete instance of `BoundingPolyArrayInput` via:
 //
-//          BoundingPolyArray{ BoundingPolyArgs{...} }
+//	BoundingPolyArray{ BoundingPolyArgs{...} }
 type BoundingPolyArrayInput interface {
 	pulumi.Input
 
@@ -1203,7 +1203,7 @@ type CharacterMaskConfig struct {
 // CharacterMaskConfigInput is an input type that accepts CharacterMaskConfigArgs and CharacterMaskConfigOutput values.
 // You can construct a concrete instance of `CharacterMaskConfigInput` via:
 //
-//          CharacterMaskConfigArgs{...}
+//	CharacterMaskConfigArgs{...}
 type CharacterMaskConfigInput interface {
 	pulumi.Input
 
@@ -1240,11 +1240,11 @@ func (i CharacterMaskConfigArgs) ToCharacterMaskConfigPtrOutputWithContext(ctx c
 // CharacterMaskConfigPtrInput is an input type that accepts CharacterMaskConfigArgs, CharacterMaskConfigPtr and CharacterMaskConfigPtrOutput values.
 // You can construct a concrete instance of `CharacterMaskConfigPtrInput` via:
 //
-//          CharacterMaskConfigArgs{...}
+//	        CharacterMaskConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CharacterMaskConfigPtrInput interface {
 	pulumi.Input
 
@@ -1369,7 +1369,7 @@ type CloudHealthcareSource struct {
 // CloudHealthcareSourceInput is an input type that accepts CloudHealthcareSourceArgs and CloudHealthcareSourceOutput values.
 // You can construct a concrete instance of `CloudHealthcareSourceInput` via:
 //
-//          CloudHealthcareSourceArgs{...}
+//	CloudHealthcareSourceArgs{...}
 type CloudHealthcareSourceInput interface {
 	pulumi.Input
 
@@ -1406,11 +1406,11 @@ func (i CloudHealthcareSourceArgs) ToCloudHealthcareSourcePtrOutputWithContext(c
 // CloudHealthcareSourcePtrInput is an input type that accepts CloudHealthcareSourceArgs, CloudHealthcareSourcePtr and CloudHealthcareSourcePtrOutput values.
 // You can construct a concrete instance of `CloudHealthcareSourcePtrInput` via:
 //
-//          CloudHealthcareSourceArgs{...}
+//	        CloudHealthcareSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CloudHealthcareSourcePtrInput interface {
 	pulumi.Input
 
@@ -1537,7 +1537,7 @@ type CryptoHashConfig struct {
 // CryptoHashConfigInput is an input type that accepts CryptoHashConfigArgs and CryptoHashConfigOutput values.
 // You can construct a concrete instance of `CryptoHashConfigInput` via:
 //
-//          CryptoHashConfigArgs{...}
+//	CryptoHashConfigArgs{...}
 type CryptoHashConfigInput interface {
 	pulumi.Input
 
@@ -1576,11 +1576,11 @@ func (i CryptoHashConfigArgs) ToCryptoHashConfigPtrOutputWithContext(ctx context
 // CryptoHashConfigPtrInput is an input type that accepts CryptoHashConfigArgs, CryptoHashConfigPtr and CryptoHashConfigPtrOutput values.
 // You can construct a concrete instance of `CryptoHashConfigPtrInput` via:
 //
-//          CryptoHashConfigArgs{...}
+//	        CryptoHashConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CryptoHashConfigPtrInput interface {
 	pulumi.Input
 
@@ -1729,7 +1729,7 @@ type DateShiftConfig struct {
 // DateShiftConfigInput is an input type that accepts DateShiftConfigArgs and DateShiftConfigOutput values.
 // You can construct a concrete instance of `DateShiftConfigInput` via:
 //
-//          DateShiftConfigArgs{...}
+//	DateShiftConfigArgs{...}
 type DateShiftConfigInput interface {
 	pulumi.Input
 
@@ -1768,11 +1768,11 @@ func (i DateShiftConfigArgs) ToDateShiftConfigPtrOutputWithContext(ctx context.C
 // DateShiftConfigPtrInput is an input type that accepts DateShiftConfigArgs, DateShiftConfigPtr and DateShiftConfigPtrOutput values.
 // You can construct a concrete instance of `DateShiftConfigPtrInput` via:
 //
-//          DateShiftConfigArgs{...}
+//	        DateShiftConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DateShiftConfigPtrInput interface {
 	pulumi.Input
 
@@ -1921,7 +1921,7 @@ type DeidentifiedStoreDestination struct {
 // DeidentifiedStoreDestinationInput is an input type that accepts DeidentifiedStoreDestinationArgs and DeidentifiedStoreDestinationOutput values.
 // You can construct a concrete instance of `DeidentifiedStoreDestinationInput` via:
 //
-//          DeidentifiedStoreDestinationArgs{...}
+//	DeidentifiedStoreDestinationArgs{...}
 type DeidentifiedStoreDestinationInput interface {
 	pulumi.Input
 
@@ -1960,11 +1960,11 @@ func (i DeidentifiedStoreDestinationArgs) ToDeidentifiedStoreDestinationPtrOutpu
 // DeidentifiedStoreDestinationPtrInput is an input type that accepts DeidentifiedStoreDestinationArgs, DeidentifiedStoreDestinationPtr and DeidentifiedStoreDestinationPtrOutput values.
 // You can construct a concrete instance of `DeidentifiedStoreDestinationPtrInput` via:
 //
-//          DeidentifiedStoreDestinationArgs{...}
+//	        DeidentifiedStoreDestinationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DeidentifiedStoreDestinationPtrInput interface {
 	pulumi.Input
 
@@ -2121,7 +2121,7 @@ type DeidentifyConfig struct {
 // DeidentifyConfigInput is an input type that accepts DeidentifyConfigArgs and DeidentifyConfigOutput values.
 // You can construct a concrete instance of `DeidentifyConfigInput` via:
 //
-//          DeidentifyConfigArgs{...}
+//	DeidentifyConfigArgs{...}
 type DeidentifyConfigInput interface {
 	pulumi.Input
 
@@ -2168,11 +2168,11 @@ func (i DeidentifyConfigArgs) ToDeidentifyConfigPtrOutputWithContext(ctx context
 // DeidentifyConfigPtrInput is an input type that accepts DeidentifyConfigArgs, DeidentifyConfigPtr and DeidentifyConfigPtrOutput values.
 // You can construct a concrete instance of `DeidentifyConfigPtrInput` via:
 //
-//          DeidentifyConfigArgs{...}
+//	        DeidentifyConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DeidentifyConfigPtrInput interface {
 	pulumi.Input
 
@@ -2407,7 +2407,7 @@ type DeidentifyOperationMetadata struct {
 // DeidentifyOperationMetadataInput is an input type that accepts DeidentifyOperationMetadataArgs and DeidentifyOperationMetadataOutput values.
 // You can construct a concrete instance of `DeidentifyOperationMetadataInput` via:
 //
-//          DeidentifyOperationMetadataArgs{...}
+//	DeidentifyOperationMetadataArgs{...}
 type DeidentifyOperationMetadataInput interface {
 	pulumi.Input
 
@@ -2444,11 +2444,11 @@ func (i DeidentifyOperationMetadataArgs) ToDeidentifyOperationMetadataPtrOutputW
 // DeidentifyOperationMetadataPtrInput is an input type that accepts DeidentifyOperationMetadataArgs, DeidentifyOperationMetadataPtr and DeidentifyOperationMetadataPtrOutput values.
 // You can construct a concrete instance of `DeidentifyOperationMetadataPtrInput` via:
 //
-//          DeidentifyOperationMetadataArgs{...}
+//	        DeidentifyOperationMetadataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DeidentifyOperationMetadataPtrInput interface {
 	pulumi.Input
 
@@ -2579,7 +2579,7 @@ type DicomConfig struct {
 // DicomConfigInput is an input type that accepts DicomConfigArgs and DicomConfigOutput values.
 // You can construct a concrete instance of `DicomConfigInput` via:
 //
-//          DicomConfigArgs{...}
+//	DicomConfigArgs{...}
 type DicomConfigInput interface {
 	pulumi.Input
 
@@ -2622,11 +2622,11 @@ func (i DicomConfigArgs) ToDicomConfigPtrOutputWithContext(ctx context.Context) 
 // DicomConfigPtrInput is an input type that accepts DicomConfigArgs, DicomConfigPtr and DicomConfigPtrOutput values.
 // You can construct a concrete instance of `DicomConfigPtrInput` via:
 //
-//          DicomConfigArgs{...}
+//	        DicomConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DicomConfigPtrInput interface {
 	pulumi.Input
 
@@ -2823,7 +2823,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -2866,11 +2866,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -3063,7 +3063,7 @@ type FhirConfig struct {
 // FhirConfigInput is an input type that accepts FhirConfigArgs and FhirConfigOutput values.
 // You can construct a concrete instance of `FhirConfigInput` via:
 //
-//          FhirConfigArgs{...}
+//	FhirConfigArgs{...}
 type FhirConfigInput interface {
 	pulumi.Input
 
@@ -3102,11 +3102,11 @@ func (i FhirConfigArgs) ToFhirConfigPtrOutputWithContext(ctx context.Context) Fh
 // FhirConfigPtrInput is an input type that accepts FhirConfigArgs, FhirConfigPtr and FhirConfigPtrOutput values.
 // You can construct a concrete instance of `FhirConfigPtrInput` via:
 //
-//          FhirConfigArgs{...}
+//	        FhirConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FhirConfigPtrInput interface {
 	pulumi.Input
 
@@ -3255,7 +3255,7 @@ type FhirNotificationConfig struct {
 // FhirNotificationConfigInput is an input type that accepts FhirNotificationConfigArgs and FhirNotificationConfigOutput values.
 // You can construct a concrete instance of `FhirNotificationConfigInput` via:
 //
-//          FhirNotificationConfigArgs{...}
+//	FhirNotificationConfigArgs{...}
 type FhirNotificationConfigInput interface {
 	pulumi.Input
 
@@ -3286,7 +3286,7 @@ func (i FhirNotificationConfigArgs) ToFhirNotificationConfigOutputWithContext(ct
 // FhirNotificationConfigArrayInput is an input type that accepts FhirNotificationConfigArray and FhirNotificationConfigArrayOutput values.
 // You can construct a concrete instance of `FhirNotificationConfigArrayInput` via:
 //
-//          FhirNotificationConfigArray{ FhirNotificationConfigArgs{...} }
+//	FhirNotificationConfigArray{ FhirNotificationConfigArgs{...} }
 type FhirNotificationConfigArrayInput interface {
 	pulumi.Input
 
@@ -3415,7 +3415,7 @@ type FhirOutput struct {
 // FhirOutputInput is an input type that accepts FhirOutputArgs and FhirOutputOutput values.
 // You can construct a concrete instance of `FhirOutputInput` via:
 //
-//          FhirOutputArgs{...}
+//	FhirOutputArgs{...}
 type FhirOutputInput interface {
 	pulumi.Input
 
@@ -3452,11 +3452,11 @@ func (i FhirOutputArgs) ToFhirOutputPtrOutputWithContext(ctx context.Context) Fh
 // FhirOutputPtrInput is an input type that accepts FhirOutputArgs, FhirOutputPtr and FhirOutputPtrOutput values.
 // You can construct a concrete instance of `FhirOutputPtrInput` via:
 //
-//          FhirOutputArgs{...}
+//	        FhirOutputArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FhirOutputPtrInput interface {
 	pulumi.Input
 
@@ -3589,7 +3589,7 @@ type Field struct {
 // FieldInput is an input type that accepts FieldArgs and FieldOutput values.
 // You can construct a concrete instance of `FieldInput` via:
 //
-//          FieldArgs{...}
+//	FieldArgs{...}
 type FieldInput interface {
 	pulumi.Input
 
@@ -3626,7 +3626,7 @@ func (i FieldArgs) ToFieldOutputWithContext(ctx context.Context) FieldOutput {
 // FieldArrayInput is an input type that accepts FieldArray and FieldArrayOutput values.
 // You can construct a concrete instance of `FieldArrayInput` via:
 //
-//          FieldArray{ FieldArgs{...} }
+//	FieldArray{ FieldArgs{...} }
 type FieldArrayInput interface {
 	pulumi.Input
 
@@ -3719,7 +3719,7 @@ type FieldMetadata struct {
 // FieldMetadataInput is an input type that accepts FieldMetadataArgs and FieldMetadataOutput values.
 // You can construct a concrete instance of `FieldMetadataInput` via:
 //
-//          FieldMetadataArgs{...}
+//	FieldMetadataArgs{...}
 type FieldMetadataInput interface {
 	pulumi.Input
 
@@ -3750,7 +3750,7 @@ func (i FieldMetadataArgs) ToFieldMetadataOutputWithContext(ctx context.Context)
 // FieldMetadataArrayInput is an input type that accepts FieldMetadataArray and FieldMetadataArrayOutput values.
 // You can construct a concrete instance of `FieldMetadataArrayInput` via:
 //
-//          FieldMetadataArray{ FieldMetadataArgs{...} }
+//	FieldMetadataArray{ FieldMetadataArgs{...} }
 type FieldMetadataArrayInput interface {
 	pulumi.Input
 
@@ -3955,7 +3955,7 @@ type GoogleCloudHealthcareV1beta1ConsentPolicy struct {
 // GoogleCloudHealthcareV1beta1ConsentPolicyInput is an input type that accepts GoogleCloudHealthcareV1beta1ConsentPolicyArgs and GoogleCloudHealthcareV1beta1ConsentPolicyOutput values.
 // You can construct a concrete instance of `GoogleCloudHealthcareV1beta1ConsentPolicyInput` via:
 //
-//          GoogleCloudHealthcareV1beta1ConsentPolicyArgs{...}
+//	GoogleCloudHealthcareV1beta1ConsentPolicyArgs{...}
 type GoogleCloudHealthcareV1beta1ConsentPolicyInput interface {
 	pulumi.Input
 
@@ -3986,7 +3986,7 @@ func (i GoogleCloudHealthcareV1beta1ConsentPolicyArgs) ToGoogleCloudHealthcareV1
 // GoogleCloudHealthcareV1beta1ConsentPolicyArrayInput is an input type that accepts GoogleCloudHealthcareV1beta1ConsentPolicyArray and GoogleCloudHealthcareV1beta1ConsentPolicyArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudHealthcareV1beta1ConsentPolicyArrayInput` via:
 //
-//          GoogleCloudHealthcareV1beta1ConsentPolicyArray{ GoogleCloudHealthcareV1beta1ConsentPolicyArgs{...} }
+//	GoogleCloudHealthcareV1beta1ConsentPolicyArray{ GoogleCloudHealthcareV1beta1ConsentPolicyArgs{...} }
 type GoogleCloudHealthcareV1beta1ConsentPolicyArrayInput interface {
 	pulumi.Input
 
@@ -4121,7 +4121,7 @@ type GoogleCloudHealthcareV1beta1DicomBigQueryDestination struct {
 // GoogleCloudHealthcareV1beta1DicomBigQueryDestinationInput is an input type that accepts GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs and GoogleCloudHealthcareV1beta1DicomBigQueryDestinationOutput values.
 // You can construct a concrete instance of `GoogleCloudHealthcareV1beta1DicomBigQueryDestinationInput` via:
 //
-//          GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs{...}
+//	GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs{...}
 type GoogleCloudHealthcareV1beta1DicomBigQueryDestinationInput interface {
 	pulumi.Input
 
@@ -4162,11 +4162,11 @@ func (i GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs) ToGoogleCloudH
 // GoogleCloudHealthcareV1beta1DicomBigQueryDestinationPtrInput is an input type that accepts GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs, GoogleCloudHealthcareV1beta1DicomBigQueryDestinationPtr and GoogleCloudHealthcareV1beta1DicomBigQueryDestinationPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudHealthcareV1beta1DicomBigQueryDestinationPtrInput` via:
 //
-//          GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs{...}
+//	        GoogleCloudHealthcareV1beta1DicomBigQueryDestinationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudHealthcareV1beta1DicomBigQueryDestinationPtrInput interface {
 	pulumi.Input
 
@@ -4337,7 +4337,7 @@ type GoogleCloudHealthcareV1beta1DicomStreamConfig struct {
 // GoogleCloudHealthcareV1beta1DicomStreamConfigInput is an input type that accepts GoogleCloudHealthcareV1beta1DicomStreamConfigArgs and GoogleCloudHealthcareV1beta1DicomStreamConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudHealthcareV1beta1DicomStreamConfigInput` via:
 //
-//          GoogleCloudHealthcareV1beta1DicomStreamConfigArgs{...}
+//	GoogleCloudHealthcareV1beta1DicomStreamConfigArgs{...}
 type GoogleCloudHealthcareV1beta1DicomStreamConfigInput interface {
 	pulumi.Input
 
@@ -4366,7 +4366,7 @@ func (i GoogleCloudHealthcareV1beta1DicomStreamConfigArgs) ToGoogleCloudHealthca
 // GoogleCloudHealthcareV1beta1DicomStreamConfigArrayInput is an input type that accepts GoogleCloudHealthcareV1beta1DicomStreamConfigArray and GoogleCloudHealthcareV1beta1DicomStreamConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudHealthcareV1beta1DicomStreamConfigArrayInput` via:
 //
-//          GoogleCloudHealthcareV1beta1DicomStreamConfigArray{ GoogleCloudHealthcareV1beta1DicomStreamConfigArgs{...} }
+//	GoogleCloudHealthcareV1beta1DicomStreamConfigArray{ GoogleCloudHealthcareV1beta1DicomStreamConfigArgs{...} }
 type GoogleCloudHealthcareV1beta1DicomStreamConfigArrayInput interface {
 	pulumi.Input
 
@@ -4493,7 +4493,7 @@ type GoogleCloudHealthcareV1beta1FhirBigQueryDestination struct {
 // GoogleCloudHealthcareV1beta1FhirBigQueryDestinationInput is an input type that accepts GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs and GoogleCloudHealthcareV1beta1FhirBigQueryDestinationOutput values.
 // You can construct a concrete instance of `GoogleCloudHealthcareV1beta1FhirBigQueryDestinationInput` via:
 //
-//          GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs{...}
+//	GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs{...}
 type GoogleCloudHealthcareV1beta1FhirBigQueryDestinationInput interface {
 	pulumi.Input
 
@@ -4536,11 +4536,11 @@ func (i GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs) ToGoogleCloudHe
 // GoogleCloudHealthcareV1beta1FhirBigQueryDestinationPtrInput is an input type that accepts GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs, GoogleCloudHealthcareV1beta1FhirBigQueryDestinationPtr and GoogleCloudHealthcareV1beta1FhirBigQueryDestinationPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudHealthcareV1beta1FhirBigQueryDestinationPtrInput` via:
 //
-//          GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs{...}
+//	        GoogleCloudHealthcareV1beta1FhirBigQueryDestinationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudHealthcareV1beta1FhirBigQueryDestinationPtrInput interface {
 	pulumi.Input
 
@@ -4737,7 +4737,7 @@ type Hl7SchemaConfig struct {
 // Hl7SchemaConfigInput is an input type that accepts Hl7SchemaConfigArgs and Hl7SchemaConfigOutput values.
 // You can construct a concrete instance of `Hl7SchemaConfigInput` via:
 //
-//          Hl7SchemaConfigArgs{...}
+//	Hl7SchemaConfigArgs{...}
 type Hl7SchemaConfigInput interface {
 	pulumi.Input
 
@@ -4768,7 +4768,7 @@ func (i Hl7SchemaConfigArgs) ToHl7SchemaConfigOutputWithContext(ctx context.Cont
 // Hl7SchemaConfigArrayInput is an input type that accepts Hl7SchemaConfigArray and Hl7SchemaConfigArrayOutput values.
 // You can construct a concrete instance of `Hl7SchemaConfigArrayInput` via:
 //
-//          Hl7SchemaConfigArray{ Hl7SchemaConfigArgs{...} }
+//	Hl7SchemaConfigArray{ Hl7SchemaConfigArgs{...} }
 type Hl7SchemaConfigArrayInput interface {
 	pulumi.Input
 
@@ -4899,7 +4899,7 @@ type Hl7TypesConfig struct {
 // Hl7TypesConfigInput is an input type that accepts Hl7TypesConfigArgs and Hl7TypesConfigOutput values.
 // You can construct a concrete instance of `Hl7TypesConfigInput` via:
 //
-//          Hl7TypesConfigArgs{...}
+//	Hl7TypesConfigArgs{...}
 type Hl7TypesConfigInput interface {
 	pulumi.Input
 
@@ -4930,7 +4930,7 @@ func (i Hl7TypesConfigArgs) ToHl7TypesConfigOutputWithContext(ctx context.Contex
 // Hl7TypesConfigArrayInput is an input type that accepts Hl7TypesConfigArray and Hl7TypesConfigArrayOutput values.
 // You can construct a concrete instance of `Hl7TypesConfigArrayInput` via:
 //
-//          Hl7TypesConfigArray{ Hl7TypesConfigArgs{...} }
+//	Hl7TypesConfigArray{ Hl7TypesConfigArgs{...} }
 type Hl7TypesConfigArrayInput interface {
 	pulumi.Input
 
@@ -5061,7 +5061,7 @@ type Hl7V2NotificationConfig struct {
 // Hl7V2NotificationConfigInput is an input type that accepts Hl7V2NotificationConfigArgs and Hl7V2NotificationConfigOutput values.
 // You can construct a concrete instance of `Hl7V2NotificationConfigInput` via:
 //
-//          Hl7V2NotificationConfigArgs{...}
+//	Hl7V2NotificationConfigArgs{...}
 type Hl7V2NotificationConfigInput interface {
 	pulumi.Input
 
@@ -5092,7 +5092,7 @@ func (i Hl7V2NotificationConfigArgs) ToHl7V2NotificationConfigOutputWithContext(
 // Hl7V2NotificationConfigArrayInput is an input type that accepts Hl7V2NotificationConfigArray and Hl7V2NotificationConfigArrayOutput values.
 // You can construct a concrete instance of `Hl7V2NotificationConfigArrayInput` via:
 //
-//          Hl7V2NotificationConfigArray{ Hl7V2NotificationConfigArgs{...} }
+//	Hl7V2NotificationConfigArray{ Hl7V2NotificationConfigArgs{...} }
 type Hl7V2NotificationConfigArrayInput interface {
 	pulumi.Input
 
@@ -5223,7 +5223,7 @@ type Image struct {
 // ImageInput is an input type that accepts ImageArgs and ImageOutput values.
 // You can construct a concrete instance of `ImageInput` via:
 //
-//          ImageArgs{...}
+//	ImageArgs{...}
 type ImageInput interface {
 	pulumi.Input
 
@@ -5262,11 +5262,11 @@ func (i ImageArgs) ToImagePtrOutputWithContext(ctx context.Context) ImagePtrOutp
 // ImagePtrInput is an input type that accepts ImageArgs, ImagePtr and ImagePtrOutput values.
 // You can construct a concrete instance of `ImagePtrInput` via:
 //
-//          ImageArgs{...}
+//	        ImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ImagePtrInput interface {
 	pulumi.Input
 
@@ -5295,7 +5295,7 @@ func (i *imagePtrType) ToImagePtrOutputWithContext(ctx context.Context) ImagePtr
 // ImageArrayInput is an input type that accepts ImageArray and ImageArrayOutput values.
 // You can construct a concrete instance of `ImageArrayInput` via:
 //
-//          ImageArray{ ImageArgs{...} }
+//	ImageArray{ ImageArgs{...} }
 type ImageArrayInput interface {
 	pulumi.Input
 
@@ -5427,7 +5427,7 @@ type ImageAnnotation struct {
 // ImageAnnotationInput is an input type that accepts ImageAnnotationArgs and ImageAnnotationOutput values.
 // You can construct a concrete instance of `ImageAnnotationInput` via:
 //
-//          ImageAnnotationArgs{...}
+//	ImageAnnotationArgs{...}
 type ImageAnnotationInput interface {
 	pulumi.Input
 
@@ -5466,11 +5466,11 @@ func (i ImageAnnotationArgs) ToImageAnnotationPtrOutputWithContext(ctx context.C
 // ImageAnnotationPtrInput is an input type that accepts ImageAnnotationArgs, ImageAnnotationPtr and ImageAnnotationPtrOutput values.
 // You can construct a concrete instance of `ImageAnnotationPtrInput` via:
 //
-//          ImageAnnotationArgs{...}
+//	        ImageAnnotationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ImageAnnotationPtrInput interface {
 	pulumi.Input
 
@@ -5617,7 +5617,7 @@ type ImageConfig struct {
 // ImageConfigInput is an input type that accepts ImageConfigArgs and ImageConfigOutput values.
 // You can construct a concrete instance of `ImageConfigInput` via:
 //
-//          ImageConfigArgs{...}
+//	ImageConfigArgs{...}
 type ImageConfigInput interface {
 	pulumi.Input
 
@@ -5654,11 +5654,11 @@ func (i ImageConfigArgs) ToImageConfigPtrOutputWithContext(ctx context.Context) 
 // ImageConfigPtrInput is an input type that accepts ImageConfigArgs, ImageConfigPtr and ImageConfigPtrOutput values.
 // You can construct a concrete instance of `ImageConfigPtrInput` via:
 //
-//          ImageConfigArgs{...}
+//	        ImageConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ImageConfigPtrInput interface {
 	pulumi.Input
 
@@ -5846,7 +5846,7 @@ type InfoTypeTransformation struct {
 // InfoTypeTransformationInput is an input type that accepts InfoTypeTransformationArgs and InfoTypeTransformationOutput values.
 // You can construct a concrete instance of `InfoTypeTransformationInput` via:
 //
-//          InfoTypeTransformationArgs{...}
+//	InfoTypeTransformationArgs{...}
 type InfoTypeTransformationInput interface {
 	pulumi.Input
 
@@ -5885,7 +5885,7 @@ func (i InfoTypeTransformationArgs) ToInfoTypeTransformationOutputWithContext(ct
 // InfoTypeTransformationArrayInput is an input type that accepts InfoTypeTransformationArray and InfoTypeTransformationArrayOutput values.
 // You can construct a concrete instance of `InfoTypeTransformationArrayInput` via:
 //
-//          InfoTypeTransformationArray{ InfoTypeTransformationArgs{...} }
+//	InfoTypeTransformationArray{ InfoTypeTransformationArgs{...} }
 type InfoTypeTransformationArrayInput interface {
 	pulumi.Input
 
@@ -6066,7 +6066,7 @@ type KmsWrappedCryptoKey struct {
 // KmsWrappedCryptoKeyInput is an input type that accepts KmsWrappedCryptoKeyArgs and KmsWrappedCryptoKeyOutput values.
 // You can construct a concrete instance of `KmsWrappedCryptoKeyInput` via:
 //
-//          KmsWrappedCryptoKeyArgs{...}
+//	KmsWrappedCryptoKeyArgs{...}
 type KmsWrappedCryptoKeyInput interface {
 	pulumi.Input
 
@@ -6105,11 +6105,11 @@ func (i KmsWrappedCryptoKeyArgs) ToKmsWrappedCryptoKeyPtrOutputWithContext(ctx c
 // KmsWrappedCryptoKeyPtrInput is an input type that accepts KmsWrappedCryptoKeyArgs, KmsWrappedCryptoKeyPtr and KmsWrappedCryptoKeyPtrOutput values.
 // You can construct a concrete instance of `KmsWrappedCryptoKeyPtrInput` via:
 //
-//          KmsWrappedCryptoKeyArgs{...}
+//	        KmsWrappedCryptoKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type KmsWrappedCryptoKeyPtrInput interface {
 	pulumi.Input
 
@@ -6258,7 +6258,7 @@ type NotificationConfig struct {
 // NotificationConfigInput is an input type that accepts NotificationConfigArgs and NotificationConfigOutput values.
 // You can construct a concrete instance of `NotificationConfigInput` via:
 //
-//          NotificationConfigArgs{...}
+//	NotificationConfigArgs{...}
 type NotificationConfigInput interface {
 	pulumi.Input
 
@@ -6297,11 +6297,11 @@ func (i NotificationConfigArgs) ToNotificationConfigPtrOutputWithContext(ctx con
 // NotificationConfigPtrInput is an input type that accepts NotificationConfigArgs, NotificationConfigPtr and NotificationConfigPtrOutput values.
 // You can construct a concrete instance of `NotificationConfigPtrInput` via:
 //
-//          NotificationConfigArgs{...}
+//	        NotificationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NotificationConfigPtrInput interface {
 	pulumi.Input
 
@@ -6478,7 +6478,7 @@ type ParserConfig struct {
 // ParserConfigInput is an input type that accepts ParserConfigArgs and ParserConfigOutput values.
 // You can construct a concrete instance of `ParserConfigInput` via:
 //
-//          ParserConfigArgs{...}
+//	ParserConfigArgs{...}
 type ParserConfigInput interface {
 	pulumi.Input
 
@@ -6521,11 +6521,11 @@ func (i ParserConfigArgs) ToParserConfigPtrOutputWithContext(ctx context.Context
 // ParserConfigPtrInput is an input type that accepts ParserConfigArgs, ParserConfigPtr and ParserConfigPtrOutput values.
 // You can construct a concrete instance of `ParserConfigPtrInput` via:
 //
-//          ParserConfigArgs{...}
+//	        ParserConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ParserConfigPtrInput interface {
 	pulumi.Input
 
@@ -6718,7 +6718,7 @@ type PatientId struct {
 // PatientIdInput is an input type that accepts PatientIdArgs and PatientIdOutput values.
 // You can construct a concrete instance of `PatientIdInput` via:
 //
-//          PatientIdArgs{...}
+//	PatientIdArgs{...}
 type PatientIdInput interface {
 	pulumi.Input
 
@@ -6749,7 +6749,7 @@ func (i PatientIdArgs) ToPatientIdOutputWithContext(ctx context.Context) Patient
 // PatientIdArrayInput is an input type that accepts PatientIdArray and PatientIdArrayOutput values.
 // You can construct a concrete instance of `PatientIdArrayInput` via:
 //
-//          PatientIdArray{ PatientIdArgs{...} }
+//	PatientIdArray{ PatientIdArgs{...} }
 type PatientIdArrayInput interface {
 	pulumi.Input
 
@@ -6876,7 +6876,7 @@ type RedactConfig struct {
 // RedactConfigInput is an input type that accepts RedactConfigArgs and RedactConfigOutput values.
 // You can construct a concrete instance of `RedactConfigInput` via:
 //
-//          RedactConfigArgs{...}
+//	RedactConfigArgs{...}
 type RedactConfigInput interface {
 	pulumi.Input
 
@@ -6911,11 +6911,11 @@ func (i RedactConfigArgs) ToRedactConfigPtrOutputWithContext(ctx context.Context
 // RedactConfigPtrInput is an input type that accepts RedactConfigArgs, RedactConfigPtr and RedactConfigPtrOutput values.
 // You can construct a concrete instance of `RedactConfigPtrInput` via:
 //
-//          RedactConfigArgs{...}
+//	        RedactConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RedactConfigPtrInput interface {
 	pulumi.Input
 
@@ -7016,7 +7016,7 @@ type ReplaceWithInfoTypeConfig struct {
 // ReplaceWithInfoTypeConfigInput is an input type that accepts ReplaceWithInfoTypeConfigArgs and ReplaceWithInfoTypeConfigOutput values.
 // You can construct a concrete instance of `ReplaceWithInfoTypeConfigInput` via:
 //
-//          ReplaceWithInfoTypeConfigArgs{...}
+//	ReplaceWithInfoTypeConfigArgs{...}
 type ReplaceWithInfoTypeConfigInput interface {
 	pulumi.Input
 
@@ -7051,11 +7051,11 @@ func (i ReplaceWithInfoTypeConfigArgs) ToReplaceWithInfoTypeConfigPtrOutputWithC
 // ReplaceWithInfoTypeConfigPtrInput is an input type that accepts ReplaceWithInfoTypeConfigArgs, ReplaceWithInfoTypeConfigPtr and ReplaceWithInfoTypeConfigPtrOutput values.
 // You can construct a concrete instance of `ReplaceWithInfoTypeConfigPtrInput` via:
 //
-//          ReplaceWithInfoTypeConfigArgs{...}
+//	        ReplaceWithInfoTypeConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ReplaceWithInfoTypeConfigPtrInput interface {
 	pulumi.Input
 
@@ -7158,7 +7158,7 @@ type ResourceAnnotation struct {
 // ResourceAnnotationInput is an input type that accepts ResourceAnnotationArgs and ResourceAnnotationOutput values.
 // You can construct a concrete instance of `ResourceAnnotationInput` via:
 //
-//          ResourceAnnotationArgs{...}
+//	ResourceAnnotationArgs{...}
 type ResourceAnnotationInput interface {
 	pulumi.Input
 
@@ -7195,11 +7195,11 @@ func (i ResourceAnnotationArgs) ToResourceAnnotationPtrOutputWithContext(ctx con
 // ResourceAnnotationPtrInput is an input type that accepts ResourceAnnotationArgs, ResourceAnnotationPtr and ResourceAnnotationPtrOutput values.
 // You can construct a concrete instance of `ResourceAnnotationPtrInput` via:
 //
-//          ResourceAnnotationArgs{...}
+//	        ResourceAnnotationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceAnnotationPtrInput interface {
 	pulumi.Input
 
@@ -7326,7 +7326,7 @@ type SchemaConfig struct {
 // SchemaConfigInput is an input type that accepts SchemaConfigArgs and SchemaConfigOutput values.
 // You can construct a concrete instance of `SchemaConfigInput` via:
 //
-//          SchemaConfigArgs{...}
+//	SchemaConfigArgs{...}
 type SchemaConfigInput interface {
 	pulumi.Input
 
@@ -7365,11 +7365,11 @@ func (i SchemaConfigArgs) ToSchemaConfigPtrOutputWithContext(ctx context.Context
 // SchemaConfigPtrInput is an input type that accepts SchemaConfigArgs, SchemaConfigPtr and SchemaConfigPtrOutput values.
 // You can construct a concrete instance of `SchemaConfigPtrInput` via:
 //
-//          SchemaConfigArgs{...}
+//	        SchemaConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SchemaConfigPtrInput interface {
 	pulumi.Input
 
@@ -7524,7 +7524,7 @@ type SchemaPackage struct {
 // SchemaPackageInput is an input type that accepts SchemaPackageArgs and SchemaPackageOutput values.
 // You can construct a concrete instance of `SchemaPackageInput` via:
 //
-//          SchemaPackageArgs{...}
+//	SchemaPackageArgs{...}
 type SchemaPackageInput interface {
 	pulumi.Input
 
@@ -7569,11 +7569,11 @@ func (i SchemaPackageArgs) ToSchemaPackagePtrOutputWithContext(ctx context.Conte
 // SchemaPackagePtrInput is an input type that accepts SchemaPackageArgs, SchemaPackagePtr and SchemaPackagePtrOutput values.
 // You can construct a concrete instance of `SchemaPackagePtrInput` via:
 //
-//          SchemaPackageArgs{...}
+//	        SchemaPackageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SchemaPackagePtrInput interface {
 	pulumi.Input
 
@@ -7788,7 +7788,7 @@ type SchematizedData struct {
 // SchematizedDataInput is an input type that accepts SchematizedDataArgs and SchematizedDataOutput values.
 // You can construct a concrete instance of `SchematizedDataInput` via:
 //
-//          SchematizedDataArgs{...}
+//	SchematizedDataArgs{...}
 type SchematizedDataInput interface {
 	pulumi.Input
 
@@ -7827,11 +7827,11 @@ func (i SchematizedDataArgs) ToSchematizedDataPtrOutputWithContext(ctx context.C
 // SchematizedDataPtrInput is an input type that accepts SchematizedDataArgs, SchematizedDataPtr and SchematizedDataPtrOutput values.
 // You can construct a concrete instance of `SchematizedDataPtrInput` via:
 //
-//          SchematizedDataArgs{...}
+//	        SchematizedDataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SchematizedDataPtrInput interface {
 	pulumi.Input
 
@@ -7978,7 +7978,7 @@ type SearchConfig struct {
 // SearchConfigInput is an input type that accepts SearchConfigArgs and SearchConfigOutput values.
 // You can construct a concrete instance of `SearchConfigInput` via:
 //
-//          SearchConfigArgs{...}
+//	SearchConfigArgs{...}
 type SearchConfigInput interface {
 	pulumi.Input
 
@@ -8015,11 +8015,11 @@ func (i SearchConfigArgs) ToSearchConfigPtrOutputWithContext(ctx context.Context
 // SearchConfigPtrInput is an input type that accepts SearchConfigArgs, SearchConfigPtr and SearchConfigPtrOutput values.
 // You can construct a concrete instance of `SearchConfigPtrInput` via:
 //
-//          SearchConfigArgs{...}
+//	        SearchConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SearchConfigPtrInput interface {
 	pulumi.Input
 
@@ -8146,7 +8146,7 @@ type SearchParameter struct {
 // SearchParameterInput is an input type that accepts SearchParameterArgs and SearchParameterOutput values.
 // You can construct a concrete instance of `SearchParameterInput` via:
 //
-//          SearchParameterArgs{...}
+//	SearchParameterArgs{...}
 type SearchParameterInput interface {
 	pulumi.Input
 
@@ -8177,7 +8177,7 @@ func (i SearchParameterArgs) ToSearchParameterOutputWithContext(ctx context.Cont
 // SearchParameterArrayInput is an input type that accepts SearchParameterArray and SearchParameterArrayOutput values.
 // You can construct a concrete instance of `SearchParameterArrayInput` via:
 //
-//          SearchParameterArray{ SearchParameterArgs{...} }
+//	SearchParameterArray{ SearchParameterArgs{...} }
 type SearchParameterArrayInput interface {
 	pulumi.Input
 
@@ -8366,7 +8366,7 @@ type SensitiveTextAnnotation struct {
 // SensitiveTextAnnotationInput is an input type that accepts SensitiveTextAnnotationArgs and SensitiveTextAnnotationOutput values.
 // You can construct a concrete instance of `SensitiveTextAnnotationInput` via:
 //
-//          SensitiveTextAnnotationArgs{...}
+//	SensitiveTextAnnotationArgs{...}
 type SensitiveTextAnnotationInput interface {
 	pulumi.Input
 
@@ -8403,11 +8403,11 @@ func (i SensitiveTextAnnotationArgs) ToSensitiveTextAnnotationPtrOutputWithConte
 // SensitiveTextAnnotationPtrInput is an input type that accepts SensitiveTextAnnotationArgs, SensitiveTextAnnotationPtr and SensitiveTextAnnotationPtrOutput values.
 // You can construct a concrete instance of `SensitiveTextAnnotationPtrInput` via:
 //
-//          SensitiveTextAnnotationArgs{...}
+//	        SensitiveTextAnnotationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SensitiveTextAnnotationPtrInput interface {
 	pulumi.Input
 
@@ -8538,7 +8538,7 @@ type Signature struct {
 // SignatureInput is an input type that accepts SignatureArgs and SignatureOutput values.
 // You can construct a concrete instance of `SignatureInput` via:
 //
-//          SignatureArgs{...}
+//	SignatureArgs{...}
 type SignatureInput interface {
 	pulumi.Input
 
@@ -8581,11 +8581,11 @@ func (i SignatureArgs) ToSignaturePtrOutputWithContext(ctx context.Context) Sign
 // SignaturePtrInput is an input type that accepts SignatureArgs, SignaturePtr and SignaturePtrOutput values.
 // You can construct a concrete instance of `SignaturePtrInput` via:
 //
-//          SignatureArgs{...}
+//	        SignatureArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SignaturePtrInput interface {
 	pulumi.Input
 
@@ -8780,7 +8780,7 @@ type StreamConfig struct {
 // StreamConfigInput is an input type that accepts StreamConfigArgs and StreamConfigOutput values.
 // You can construct a concrete instance of `StreamConfigInput` via:
 //
-//          StreamConfigArgs{...}
+//	StreamConfigArgs{...}
 type StreamConfigInput interface {
 	pulumi.Input
 
@@ -8813,7 +8813,7 @@ func (i StreamConfigArgs) ToStreamConfigOutputWithContext(ctx context.Context) S
 // StreamConfigArrayInput is an input type that accepts StreamConfigArray and StreamConfigArrayOutput values.
 // You can construct a concrete instance of `StreamConfigArrayInput` via:
 //
-//          StreamConfigArray{ StreamConfigArgs{...} }
+//	StreamConfigArray{ StreamConfigArgs{...} }
 type StreamConfigArrayInput interface {
 	pulumi.Input
 
@@ -8960,7 +8960,7 @@ type TagFilterList struct {
 // TagFilterListInput is an input type that accepts TagFilterListArgs and TagFilterListOutput values.
 // You can construct a concrete instance of `TagFilterListInput` via:
 //
-//          TagFilterListArgs{...}
+//	TagFilterListArgs{...}
 type TagFilterListInput interface {
 	pulumi.Input
 
@@ -8997,11 +8997,11 @@ func (i TagFilterListArgs) ToTagFilterListPtrOutputWithContext(ctx context.Conte
 // TagFilterListPtrInput is an input type that accepts TagFilterListArgs, TagFilterListPtr and TagFilterListPtrOutput values.
 // You can construct a concrete instance of `TagFilterListPtrInput` via:
 //
-//          TagFilterListArgs{...}
+//	        TagFilterListArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TagFilterListPtrInput interface {
 	pulumi.Input
 
@@ -9125,7 +9125,7 @@ type TextConfig struct {
 // TextConfigInput is an input type that accepts TextConfigArgs and TextConfigOutput values.
 // You can construct a concrete instance of `TextConfigInput` via:
 //
-//          TextConfigArgs{...}
+//	TextConfigArgs{...}
 type TextConfigInput interface {
 	pulumi.Input
 
@@ -9161,11 +9161,11 @@ func (i TextConfigArgs) ToTextConfigPtrOutputWithContext(ctx context.Context) Te
 // TextConfigPtrInput is an input type that accepts TextConfigArgs, TextConfigPtr and TextConfigPtrOutput values.
 // You can construct a concrete instance of `TextConfigPtrInput` via:
 //
-//          TextConfigArgs{...}
+//	        TextConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TextConfigPtrInput interface {
 	pulumi.Input
 
@@ -9291,7 +9291,7 @@ type Type struct {
 // TypeInput is an input type that accepts TypeArgs and TypeOutput values.
 // You can construct a concrete instance of `TypeInput` via:
 //
-//          TypeArgs{...}
+//	TypeArgs{...}
 type TypeInput interface {
 	pulumi.Input
 
@@ -9324,7 +9324,7 @@ func (i TypeArgs) ToTypeOutputWithContext(ctx context.Context) TypeOutput {
 // TypeArrayInput is an input type that accepts TypeArray and TypeArrayOutput values.
 // You can construct a concrete instance of `TypeArrayInput` via:
 //
-//          TypeArray{ TypeArgs{...} }
+//	TypeArray{ TypeArgs{...} }
 type TypeArrayInput interface {
 	pulumi.Input
 
@@ -9473,7 +9473,7 @@ type ValidationConfig struct {
 // ValidationConfigInput is an input type that accepts ValidationConfigArgs and ValidationConfigOutput values.
 // You can construct a concrete instance of `ValidationConfigInput` via:
 //
-//          ValidationConfigArgs{...}
+//	ValidationConfigArgs{...}
 type ValidationConfigInput interface {
 	pulumi.Input
 
@@ -9518,11 +9518,11 @@ func (i ValidationConfigArgs) ToValidationConfigPtrOutputWithContext(ctx context
 // ValidationConfigPtrInput is an input type that accepts ValidationConfigArgs, ValidationConfigPtr and ValidationConfigPtrOutput values.
 // You can construct a concrete instance of `ValidationConfigPtrInput` via:
 //
-//          ValidationConfigArgs{...}
+//	        ValidationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ValidationConfigPtrInput interface {
 	pulumi.Input
 
@@ -9737,7 +9737,7 @@ type VersionSource struct {
 // VersionSourceInput is an input type that accepts VersionSourceArgs and VersionSourceOutput values.
 // You can construct a concrete instance of `VersionSourceInput` via:
 //
-//          VersionSourceArgs{...}
+//	VersionSourceArgs{...}
 type VersionSourceInput interface {
 	pulumi.Input
 
@@ -9768,7 +9768,7 @@ func (i VersionSourceArgs) ToVersionSourceOutputWithContext(ctx context.Context)
 // VersionSourceArrayInput is an input type that accepts VersionSourceArray and VersionSourceArrayOutput values.
 // You can construct a concrete instance of `VersionSourceArrayInput` via:
 //
-//          VersionSourceArray{ VersionSourceArgs{...} }
+//	VersionSourceArray{ VersionSourceArgs{...} }
 type VersionSourceArrayInput interface {
 	pulumi.Input
 
@@ -9899,7 +9899,7 @@ type Vertex struct {
 // VertexInput is an input type that accepts VertexArgs and VertexOutput values.
 // You can construct a concrete instance of `VertexInput` via:
 //
-//          VertexArgs{...}
+//	VertexArgs{...}
 type VertexInput interface {
 	pulumi.Input
 
@@ -9930,7 +9930,7 @@ func (i VertexArgs) ToVertexOutputWithContext(ctx context.Context) VertexOutput 
 // VertexArrayInput is an input type that accepts VertexArray and VertexArrayOutput values.
 // You can construct a concrete instance of `VertexArrayInput` via:
 //
-//          VertexArray{ VertexArgs{...} }
+//	VertexArray{ VertexArgs{...} }
 type VertexArrayInput interface {
 	pulumi.Input
 

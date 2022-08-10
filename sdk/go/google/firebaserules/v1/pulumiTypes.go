@@ -23,7 +23,7 @@ type File struct {
 // FileInput is an input type that accepts FileArgs and FileOutput values.
 // You can construct a concrete instance of `FileInput` via:
 //
-//          FileArgs{...}
+//	FileArgs{...}
 type FileInput interface {
 	pulumi.Input
 
@@ -56,7 +56,7 @@ func (i FileArgs) ToFileOutputWithContext(ctx context.Context) FileOutput {
 // FileArrayInput is an input type that accepts FileArray and FileArrayOutput values.
 // You can construct a concrete instance of `FileArrayInput` via:
 //
-//          FileArray{ FileArgs{...} }
+//	FileArray{ FileArgs{...} }
 type FileArrayInput interface {
 	pulumi.Input
 
@@ -223,7 +223,7 @@ type Source struct {
 // SourceInput is an input type that accepts SourceArgs and SourceOutput values.
 // You can construct a concrete instance of `SourceInput` via:
 //
-//          SourceArgs{...}
+//	SourceArgs{...}
 type SourceInput interface {
 	pulumi.Input
 

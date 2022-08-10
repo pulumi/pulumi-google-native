@@ -29,7 +29,7 @@ type GoogleCloudDataplexV1AssetDiscoverySpec struct {
 // GoogleCloudDataplexV1AssetDiscoverySpecInput is an input type that accepts GoogleCloudDataplexV1AssetDiscoverySpecArgs and GoogleCloudDataplexV1AssetDiscoverySpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1AssetDiscoverySpecInput` via:
 //
-//          GoogleCloudDataplexV1AssetDiscoverySpecArgs{...}
+//	GoogleCloudDataplexV1AssetDiscoverySpecArgs{...}
 type GoogleCloudDataplexV1AssetDiscoverySpecInput interface {
 	pulumi.Input
 
@@ -76,11 +76,11 @@ func (i GoogleCloudDataplexV1AssetDiscoverySpecArgs) ToGoogleCloudDataplexV1Asse
 // GoogleCloudDataplexV1AssetDiscoverySpecPtrInput is an input type that accepts GoogleCloudDataplexV1AssetDiscoverySpecArgs, GoogleCloudDataplexV1AssetDiscoverySpecPtr and GoogleCloudDataplexV1AssetDiscoverySpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1AssetDiscoverySpecPtrInput` via:
 //
-//          GoogleCloudDataplexV1AssetDiscoverySpecArgs{...}
+//	        GoogleCloudDataplexV1AssetDiscoverySpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1AssetDiscoverySpecPtrInput interface {
 	pulumi.Input
 
@@ -264,7 +264,7 @@ type GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions struct {
 // GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsInput is an input type that accepts GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsArgs and GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsInput` via:
 //
-//          GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsArgs{...}
+//	GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsArgs{...}
 type GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsInput interface {
 	pulumi.Input
 
@@ -307,11 +307,11 @@ func (i GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsArgs) ToGoogleCloudData
 // GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrInput is an input type that accepts GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsArgs, GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtr and GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrInput` via:
 //
-//          GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsArgs{...}
+//	        GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1AssetDiscoverySpecCsvOptionsPtrInput interface {
 	pulumi.Input
 
@@ -504,7 +504,7 @@ type GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions struct {
 // GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsInput is an input type that accepts GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs and GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsInput` via:
 //
-//          GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs{...}
+//	GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs{...}
 type GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsInput interface {
 	pulumi.Input
 
@@ -543,11 +543,11 @@ func (i GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs) ToGoogleCloudDat
 // GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrInput is an input type that accepts GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs, GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtr and GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrInput` via:
 //
-//          GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs{...}
+//	        GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1AssetDiscoverySpecJsonOptionsPtrInput interface {
 	pulumi.Input
 
@@ -871,7 +871,7 @@ type GoogleCloudDataplexV1AssetResourceSpec struct {
 // GoogleCloudDataplexV1AssetResourceSpecInput is an input type that accepts GoogleCloudDataplexV1AssetResourceSpecArgs and GoogleCloudDataplexV1AssetResourceSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1AssetResourceSpecInput` via:
 //
-//          GoogleCloudDataplexV1AssetResourceSpecArgs{...}
+//	GoogleCloudDataplexV1AssetResourceSpecArgs{...}
 type GoogleCloudDataplexV1AssetResourceSpecInput interface {
 	pulumi.Input
 
@@ -1088,7 +1088,7 @@ type GoogleCloudDataplexV1ContentNotebook struct {
 // GoogleCloudDataplexV1ContentNotebookInput is an input type that accepts GoogleCloudDataplexV1ContentNotebookArgs and GoogleCloudDataplexV1ContentNotebookOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1ContentNotebookInput` via:
 //
-//          GoogleCloudDataplexV1ContentNotebookArgs{...}
+//	GoogleCloudDataplexV1ContentNotebookArgs{...}
 type GoogleCloudDataplexV1ContentNotebookInput interface {
 	pulumi.Input
 
@@ -1125,11 +1125,11 @@ func (i GoogleCloudDataplexV1ContentNotebookArgs) ToGoogleCloudDataplexV1Content
 // GoogleCloudDataplexV1ContentNotebookPtrInput is an input type that accepts GoogleCloudDataplexV1ContentNotebookArgs, GoogleCloudDataplexV1ContentNotebookPtr and GoogleCloudDataplexV1ContentNotebookPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1ContentNotebookPtrInput` via:
 //
-//          GoogleCloudDataplexV1ContentNotebookArgs{...}
+//	        GoogleCloudDataplexV1ContentNotebookArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1ContentNotebookPtrInput interface {
 	pulumi.Input
 
@@ -1256,7 +1256,7 @@ type GoogleCloudDataplexV1ContentSqlScript struct {
 // GoogleCloudDataplexV1ContentSqlScriptInput is an input type that accepts GoogleCloudDataplexV1ContentSqlScriptArgs and GoogleCloudDataplexV1ContentSqlScriptOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1ContentSqlScriptInput` via:
 //
-//          GoogleCloudDataplexV1ContentSqlScriptArgs{...}
+//	GoogleCloudDataplexV1ContentSqlScriptArgs{...}
 type GoogleCloudDataplexV1ContentSqlScriptInput interface {
 	pulumi.Input
 
@@ -1293,11 +1293,11 @@ func (i GoogleCloudDataplexV1ContentSqlScriptArgs) ToGoogleCloudDataplexV1Conten
 // GoogleCloudDataplexV1ContentSqlScriptPtrInput is an input type that accepts GoogleCloudDataplexV1ContentSqlScriptArgs, GoogleCloudDataplexV1ContentSqlScriptPtr and GoogleCloudDataplexV1ContentSqlScriptPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1ContentSqlScriptPtrInput` via:
 //
-//          GoogleCloudDataplexV1ContentSqlScriptArgs{...}
+//	        GoogleCloudDataplexV1ContentSqlScriptArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1ContentSqlScriptPtrInput interface {
 	pulumi.Input
 
@@ -1527,7 +1527,7 @@ type GoogleCloudDataplexV1EnvironmentInfrastructureSpec struct {
 // GoogleCloudDataplexV1EnvironmentInfrastructureSpecInput is an input type that accepts GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs and GoogleCloudDataplexV1EnvironmentInfrastructureSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1EnvironmentInfrastructureSpecInput` via:
 //
-//          GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs{...}
+//	GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs{...}
 type GoogleCloudDataplexV1EnvironmentInfrastructureSpecInput interface {
 	pulumi.Input
 
@@ -1597,7 +1597,7 @@ type GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResources struct {
 // GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesInput is an input type that accepts GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs and GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesInput` via:
 //
-//          GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs{...}
+//	GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs{...}
 type GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesInput interface {
 	pulumi.Input
 
@@ -1638,11 +1638,11 @@ func (i GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs) 
 // GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrInput is an input type that accepts GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs, GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtr and GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrInput` via:
 //
-//          GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs{...}
+//	        GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1EnvironmentInfrastructureSpecComputeResourcesPtrInput interface {
 	pulumi.Input
 
@@ -1823,7 +1823,7 @@ type GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntime struct {
 // GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeInput is an input type that accepts GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeArgs and GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeInput` via:
 //
-//          GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeArgs{...}
+//	GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeArgs{...}
 type GoogleCloudDataplexV1EnvironmentInfrastructureSpecOsImageRuntimeInput interface {
 	pulumi.Input
 
@@ -1998,7 +1998,7 @@ type GoogleCloudDataplexV1EnvironmentSessionSpec struct {
 // GoogleCloudDataplexV1EnvironmentSessionSpecInput is an input type that accepts GoogleCloudDataplexV1EnvironmentSessionSpecArgs and GoogleCloudDataplexV1EnvironmentSessionSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1EnvironmentSessionSpecInput` via:
 //
-//          GoogleCloudDataplexV1EnvironmentSessionSpecArgs{...}
+//	GoogleCloudDataplexV1EnvironmentSessionSpecArgs{...}
 type GoogleCloudDataplexV1EnvironmentSessionSpecInput interface {
 	pulumi.Input
 
@@ -2036,11 +2036,11 @@ func (i GoogleCloudDataplexV1EnvironmentSessionSpecArgs) ToGoogleCloudDataplexV1
 // GoogleCloudDataplexV1EnvironmentSessionSpecPtrInput is an input type that accepts GoogleCloudDataplexV1EnvironmentSessionSpecArgs, GoogleCloudDataplexV1EnvironmentSessionSpecPtr and GoogleCloudDataplexV1EnvironmentSessionSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1EnvironmentSessionSpecPtrInput` via:
 //
-//          GoogleCloudDataplexV1EnvironmentSessionSpecArgs{...}
+//	        GoogleCloudDataplexV1EnvironmentSessionSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1EnvironmentSessionSpecPtrInput interface {
 	pulumi.Input
 
@@ -2290,7 +2290,7 @@ type GoogleCloudDataplexV1LakeMetastore struct {
 // GoogleCloudDataplexV1LakeMetastoreInput is an input type that accepts GoogleCloudDataplexV1LakeMetastoreArgs and GoogleCloudDataplexV1LakeMetastoreOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1LakeMetastoreInput` via:
 //
-//          GoogleCloudDataplexV1LakeMetastoreArgs{...}
+//	GoogleCloudDataplexV1LakeMetastoreArgs{...}
 type GoogleCloudDataplexV1LakeMetastoreInput interface {
 	pulumi.Input
 
@@ -2327,11 +2327,11 @@ func (i GoogleCloudDataplexV1LakeMetastoreArgs) ToGoogleCloudDataplexV1LakeMetas
 // GoogleCloudDataplexV1LakeMetastorePtrInput is an input type that accepts GoogleCloudDataplexV1LakeMetastoreArgs, GoogleCloudDataplexV1LakeMetastorePtr and GoogleCloudDataplexV1LakeMetastorePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1LakeMetastorePtrInput` via:
 //
-//          GoogleCloudDataplexV1LakeMetastoreArgs{...}
+//	        GoogleCloudDataplexV1LakeMetastoreArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1LakeMetastorePtrInput interface {
 	pulumi.Input
 
@@ -2509,7 +2509,7 @@ type GoogleCloudDataplexV1Schema struct {
 // GoogleCloudDataplexV1SchemaInput is an input type that accepts GoogleCloudDataplexV1SchemaArgs and GoogleCloudDataplexV1SchemaOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1SchemaInput` via:
 //
-//          GoogleCloudDataplexV1SchemaArgs{...}
+//	GoogleCloudDataplexV1SchemaArgs{...}
 type GoogleCloudDataplexV1SchemaInput interface {
 	pulumi.Input
 
@@ -2591,7 +2591,7 @@ type GoogleCloudDataplexV1SchemaPartitionField struct {
 // GoogleCloudDataplexV1SchemaPartitionFieldInput is an input type that accepts GoogleCloudDataplexV1SchemaPartitionFieldArgs and GoogleCloudDataplexV1SchemaPartitionFieldOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1SchemaPartitionFieldInput` via:
 //
-//          GoogleCloudDataplexV1SchemaPartitionFieldArgs{...}
+//	GoogleCloudDataplexV1SchemaPartitionFieldArgs{...}
 type GoogleCloudDataplexV1SchemaPartitionFieldInput interface {
 	pulumi.Input
 
@@ -2622,7 +2622,7 @@ func (i GoogleCloudDataplexV1SchemaPartitionFieldArgs) ToGoogleCloudDataplexV1Sc
 // GoogleCloudDataplexV1SchemaPartitionFieldArrayInput is an input type that accepts GoogleCloudDataplexV1SchemaPartitionFieldArray and GoogleCloudDataplexV1SchemaPartitionFieldArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1SchemaPartitionFieldArrayInput` via:
 //
-//          GoogleCloudDataplexV1SchemaPartitionFieldArray{ GoogleCloudDataplexV1SchemaPartitionFieldArgs{...} }
+//	GoogleCloudDataplexV1SchemaPartitionFieldArray{ GoogleCloudDataplexV1SchemaPartitionFieldArgs{...} }
 type GoogleCloudDataplexV1SchemaPartitionFieldArrayInput interface {
 	pulumi.Input
 
@@ -2812,7 +2812,7 @@ type GoogleCloudDataplexV1SchemaSchemaField struct {
 // GoogleCloudDataplexV1SchemaSchemaFieldInput is an input type that accepts GoogleCloudDataplexV1SchemaSchemaFieldArgs and GoogleCloudDataplexV1SchemaSchemaFieldOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1SchemaSchemaFieldInput` via:
 //
-//          GoogleCloudDataplexV1SchemaSchemaFieldArgs{...}
+//	GoogleCloudDataplexV1SchemaSchemaFieldArgs{...}
 type GoogleCloudDataplexV1SchemaSchemaFieldInput interface {
 	pulumi.Input
 
@@ -2849,7 +2849,7 @@ func (i GoogleCloudDataplexV1SchemaSchemaFieldArgs) ToGoogleCloudDataplexV1Schem
 // GoogleCloudDataplexV1SchemaSchemaFieldArrayInput is an input type that accepts GoogleCloudDataplexV1SchemaSchemaFieldArray and GoogleCloudDataplexV1SchemaSchemaFieldArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1SchemaSchemaFieldArrayInput` via:
 //
-//          GoogleCloudDataplexV1SchemaSchemaFieldArray{ GoogleCloudDataplexV1SchemaSchemaFieldArgs{...} }
+//	GoogleCloudDataplexV1SchemaSchemaFieldArray{ GoogleCloudDataplexV1SchemaSchemaFieldArgs{...} }
 type GoogleCloudDataplexV1SchemaSchemaFieldArrayInput interface {
 	pulumi.Input
 
@@ -3028,7 +3028,7 @@ type GoogleCloudDataplexV1StorageFormat struct {
 // GoogleCloudDataplexV1StorageFormatInput is an input type that accepts GoogleCloudDataplexV1StorageFormatArgs and GoogleCloudDataplexV1StorageFormatOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1StorageFormatInput` via:
 //
-//          GoogleCloudDataplexV1StorageFormatArgs{...}
+//	GoogleCloudDataplexV1StorageFormatArgs{...}
 type GoogleCloudDataplexV1StorageFormatInput interface {
 	pulumi.Input
 
@@ -3114,7 +3114,7 @@ type GoogleCloudDataplexV1StorageFormatCsvOptions struct {
 // GoogleCloudDataplexV1StorageFormatCsvOptionsInput is an input type that accepts GoogleCloudDataplexV1StorageFormatCsvOptionsArgs and GoogleCloudDataplexV1StorageFormatCsvOptionsOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1StorageFormatCsvOptionsInput` via:
 //
-//          GoogleCloudDataplexV1StorageFormatCsvOptionsArgs{...}
+//	GoogleCloudDataplexV1StorageFormatCsvOptionsArgs{...}
 type GoogleCloudDataplexV1StorageFormatCsvOptionsInput interface {
 	pulumi.Input
 
@@ -3157,11 +3157,11 @@ func (i GoogleCloudDataplexV1StorageFormatCsvOptionsArgs) ToGoogleCloudDataplexV
 // GoogleCloudDataplexV1StorageFormatCsvOptionsPtrInput is an input type that accepts GoogleCloudDataplexV1StorageFormatCsvOptionsArgs, GoogleCloudDataplexV1StorageFormatCsvOptionsPtr and GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1StorageFormatCsvOptionsPtrInput` via:
 //
-//          GoogleCloudDataplexV1StorageFormatCsvOptionsArgs{...}
+//	        GoogleCloudDataplexV1StorageFormatCsvOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1StorageFormatCsvOptionsPtrInput interface {
 	pulumi.Input
 
@@ -3227,7 +3227,7 @@ func (o GoogleCloudDataplexV1StorageFormatCsvOptionsOutput) HeaderRows() pulumi.
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatCsvOptions) *int { return v.HeaderRows }).(pulumi.IntPtrOutput)
 }
 
-// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
+// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ”' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
 func (o GoogleCloudDataplexV1StorageFormatCsvOptionsOutput) Quote() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatCsvOptions) *string { return v.Quote }).(pulumi.StringPtrOutput)
 }
@@ -3286,7 +3286,7 @@ func (o GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput) HeaderRows() pulu
 	}).(pulumi.IntPtrOutput)
 }
 
-// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
+// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ”' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
 func (o GoogleCloudDataplexV1StorageFormatCsvOptionsPtrOutput) Quote() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GoogleCloudDataplexV1StorageFormatCsvOptions) *string {
 		if v == nil {
@@ -3338,7 +3338,7 @@ func (o GoogleCloudDataplexV1StorageFormatCsvOptionsResponseOutput) HeaderRows()
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatCsvOptionsResponse) int { return v.HeaderRows }).(pulumi.IntOutput)
 }
 
-// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ''' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
+// Optional. The character used to quote column values. Accepts '"' (double quotation mark) or ”' (single quotation mark). Defaults to '"' (double quotation mark) if unspecified.
 func (o GoogleCloudDataplexV1StorageFormatCsvOptionsResponseOutput) Quote() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDataplexV1StorageFormatCsvOptionsResponse) string { return v.Quote }).(pulumi.StringOutput)
 }
@@ -3352,7 +3352,7 @@ type GoogleCloudDataplexV1StorageFormatJsonOptions struct {
 // GoogleCloudDataplexV1StorageFormatJsonOptionsInput is an input type that accepts GoogleCloudDataplexV1StorageFormatJsonOptionsArgs and GoogleCloudDataplexV1StorageFormatJsonOptionsOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1StorageFormatJsonOptionsInput` via:
 //
-//          GoogleCloudDataplexV1StorageFormatJsonOptionsArgs{...}
+//	GoogleCloudDataplexV1StorageFormatJsonOptionsArgs{...}
 type GoogleCloudDataplexV1StorageFormatJsonOptionsInput interface {
 	pulumi.Input
 
@@ -3389,11 +3389,11 @@ func (i GoogleCloudDataplexV1StorageFormatJsonOptionsArgs) ToGoogleCloudDataplex
 // GoogleCloudDataplexV1StorageFormatJsonOptionsPtrInput is an input type that accepts GoogleCloudDataplexV1StorageFormatJsonOptionsArgs, GoogleCloudDataplexV1StorageFormatJsonOptionsPtr and GoogleCloudDataplexV1StorageFormatJsonOptionsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1StorageFormatJsonOptionsPtrInput` via:
 //
-//          GoogleCloudDataplexV1StorageFormatJsonOptionsArgs{...}
+//	        GoogleCloudDataplexV1StorageFormatJsonOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1StorageFormatJsonOptionsPtrInput interface {
 	pulumi.Input
 
@@ -3584,7 +3584,7 @@ type GoogleCloudDataplexV1TaskExecutionSpec struct {
 // GoogleCloudDataplexV1TaskExecutionSpecInput is an input type that accepts GoogleCloudDataplexV1TaskExecutionSpecArgs and GoogleCloudDataplexV1TaskExecutionSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1TaskExecutionSpecInput` via:
 //
-//          GoogleCloudDataplexV1TaskExecutionSpecArgs{...}
+//	GoogleCloudDataplexV1TaskExecutionSpecArgs{...}
 type GoogleCloudDataplexV1TaskExecutionSpecInput interface {
 	pulumi.Input
 
@@ -3760,7 +3760,7 @@ type GoogleCloudDataplexV1TaskInfrastructureSpec struct {
 // GoogleCloudDataplexV1TaskInfrastructureSpecInput is an input type that accepts GoogleCloudDataplexV1TaskInfrastructureSpecArgs and GoogleCloudDataplexV1TaskInfrastructureSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1TaskInfrastructureSpecInput` via:
 //
-//          GoogleCloudDataplexV1TaskInfrastructureSpecArgs{...}
+//	GoogleCloudDataplexV1TaskInfrastructureSpecArgs{...}
 type GoogleCloudDataplexV1TaskInfrastructureSpecInput interface {
 	pulumi.Input
 
@@ -3801,11 +3801,11 @@ func (i GoogleCloudDataplexV1TaskInfrastructureSpecArgs) ToGoogleCloudDataplexV1
 // GoogleCloudDataplexV1TaskInfrastructureSpecPtrInput is an input type that accepts GoogleCloudDataplexV1TaskInfrastructureSpecArgs, GoogleCloudDataplexV1TaskInfrastructureSpecPtr and GoogleCloudDataplexV1TaskInfrastructureSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1TaskInfrastructureSpecPtrInput` via:
 //
-//          GoogleCloudDataplexV1TaskInfrastructureSpecArgs{...}
+//	        GoogleCloudDataplexV1TaskInfrastructureSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1TaskInfrastructureSpecPtrInput interface {
 	pulumi.Input
 
@@ -3942,7 +3942,7 @@ type GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources struct {
 // GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesInput is an input type that accepts GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs and GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesInput` via:
 //
-//          GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs{...}
+//	GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs{...}
 type GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesInput interface {
 	pulumi.Input
 
@@ -3981,11 +3981,11 @@ func (i GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs) To
 // GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrInput is an input type that accepts GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs, GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtr and GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrInput` via:
 //
-//          GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs{...}
+//	        GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResourcesPtrInput interface {
 	pulumi.Input
 
@@ -4144,7 +4144,7 @@ type GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime struct {
 // GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeInput is an input type that accepts GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs and GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeInput` via:
 //
-//          GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs{...}
+//	GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs{...}
 type GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeInput interface {
 	pulumi.Input
 
@@ -4187,11 +4187,11 @@ func (i GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs) To
 // GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrInput is an input type that accepts GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs, GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtr and GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrInput` via:
 //
-//          GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs{...}
+//	        GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntimePtrInput interface {
 	pulumi.Input
 
@@ -4444,7 +4444,7 @@ type GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork struct {
 // GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkInput is an input type that accepts GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs and GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkInput` via:
 //
-//          GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs{...}
+//	GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs{...}
 type GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkInput interface {
 	pulumi.Input
 
@@ -4485,11 +4485,11 @@ func (i GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs) ToGoogleCloud
 // GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrInput is an input type that accepts GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs, GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtr and GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrInput` via:
 //
-//          GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs{...}
+//	        GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetworkPtrInput interface {
 	pulumi.Input
 
@@ -4672,7 +4672,7 @@ type GoogleCloudDataplexV1TaskSparkTaskConfig struct {
 // GoogleCloudDataplexV1TaskSparkTaskConfigInput is an input type that accepts GoogleCloudDataplexV1TaskSparkTaskConfigArgs and GoogleCloudDataplexV1TaskSparkTaskConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1TaskSparkTaskConfigInput` via:
 //
-//          GoogleCloudDataplexV1TaskSparkTaskConfigArgs{...}
+//	GoogleCloudDataplexV1TaskSparkTaskConfigArgs{...}
 type GoogleCloudDataplexV1TaskSparkTaskConfigInput interface {
 	pulumi.Input
 
@@ -4723,11 +4723,11 @@ func (i GoogleCloudDataplexV1TaskSparkTaskConfigArgs) ToGoogleCloudDataplexV1Tas
 // GoogleCloudDataplexV1TaskSparkTaskConfigPtrInput is an input type that accepts GoogleCloudDataplexV1TaskSparkTaskConfigArgs, GoogleCloudDataplexV1TaskSparkTaskConfigPtr and GoogleCloudDataplexV1TaskSparkTaskConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1TaskSparkTaskConfigPtrInput` via:
 //
-//          GoogleCloudDataplexV1TaskSparkTaskConfigArgs{...}
+//	        GoogleCloudDataplexV1TaskSparkTaskConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1TaskSparkTaskConfigPtrInput interface {
 	pulumi.Input
 
@@ -5018,7 +5018,7 @@ type GoogleCloudDataplexV1TaskTriggerSpec struct {
 // GoogleCloudDataplexV1TaskTriggerSpecInput is an input type that accepts GoogleCloudDataplexV1TaskTriggerSpecArgs and GoogleCloudDataplexV1TaskTriggerSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1TaskTriggerSpecInput` via:
 //
-//          GoogleCloudDataplexV1TaskTriggerSpecArgs{...}
+//	GoogleCloudDataplexV1TaskTriggerSpecArgs{...}
 type GoogleCloudDataplexV1TaskTriggerSpecInput interface {
 	pulumi.Input
 
@@ -5165,7 +5165,7 @@ type GoogleCloudDataplexV1ZoneDiscoverySpec struct {
 // GoogleCloudDataplexV1ZoneDiscoverySpecInput is an input type that accepts GoogleCloudDataplexV1ZoneDiscoverySpecArgs and GoogleCloudDataplexV1ZoneDiscoverySpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1ZoneDiscoverySpecInput` via:
 //
-//          GoogleCloudDataplexV1ZoneDiscoverySpecArgs{...}
+//	GoogleCloudDataplexV1ZoneDiscoverySpecArgs{...}
 type GoogleCloudDataplexV1ZoneDiscoverySpecInput interface {
 	pulumi.Input
 
@@ -5212,11 +5212,11 @@ func (i GoogleCloudDataplexV1ZoneDiscoverySpecArgs) ToGoogleCloudDataplexV1ZoneD
 // GoogleCloudDataplexV1ZoneDiscoverySpecPtrInput is an input type that accepts GoogleCloudDataplexV1ZoneDiscoverySpecArgs, GoogleCloudDataplexV1ZoneDiscoverySpecPtr and GoogleCloudDataplexV1ZoneDiscoverySpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1ZoneDiscoverySpecPtrInput` via:
 //
-//          GoogleCloudDataplexV1ZoneDiscoverySpecArgs{...}
+//	        GoogleCloudDataplexV1ZoneDiscoverySpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1ZoneDiscoverySpecPtrInput interface {
 	pulumi.Input
 
@@ -5400,7 +5400,7 @@ type GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions struct {
 // GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsInput is an input type that accepts GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs and GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsInput` via:
 //
-//          GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs{...}
+//	GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs{...}
 type GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsInput interface {
 	pulumi.Input
 
@@ -5443,11 +5443,11 @@ func (i GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs) ToGoogleCloudDatap
 // GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrInput is an input type that accepts GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs, GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtr and GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrInput` via:
 //
-//          GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs{...}
+//	        GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptionsPtrInput interface {
 	pulumi.Input
 
@@ -5640,7 +5640,7 @@ type GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions struct {
 // GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsInput is an input type that accepts GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsArgs and GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsInput` via:
 //
-//          GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsArgs{...}
+//	GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsArgs{...}
 type GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsInput interface {
 	pulumi.Input
 
@@ -5679,11 +5679,11 @@ func (i GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsArgs) ToGoogleCloudData
 // GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrInput is an input type that accepts GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsArgs, GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtr and GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrInput` via:
 //
-//          GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsArgs{...}
+//	        GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptionsPtrInput interface {
 	pulumi.Input
 
@@ -5895,7 +5895,7 @@ type GoogleCloudDataplexV1ZoneResourceSpec struct {
 // GoogleCloudDataplexV1ZoneResourceSpecInput is an input type that accepts GoogleCloudDataplexV1ZoneResourceSpecArgs and GoogleCloudDataplexV1ZoneResourceSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1ZoneResourceSpecInput` via:
 //
-//          GoogleCloudDataplexV1ZoneResourceSpecArgs{...}
+//	GoogleCloudDataplexV1ZoneResourceSpecArgs{...}
 type GoogleCloudDataplexV1ZoneResourceSpecInput interface {
 	pulumi.Input
 
@@ -5980,7 +5980,7 @@ type GoogleIamV1AuditConfig struct {
 // GoogleIamV1AuditConfigInput is an input type that accepts GoogleIamV1AuditConfigArgs and GoogleIamV1AuditConfigOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigInput` via:
 //
-//          GoogleIamV1AuditConfigArgs{...}
+//	GoogleIamV1AuditConfigArgs{...}
 type GoogleIamV1AuditConfigInput interface {
 	pulumi.Input
 
@@ -6011,7 +6011,7 @@ func (i GoogleIamV1AuditConfigArgs) ToGoogleIamV1AuditConfigOutputWithContext(ct
 // GoogleIamV1AuditConfigArrayInput is an input type that accepts GoogleIamV1AuditConfigArray and GoogleIamV1AuditConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigArrayInput` via:
 //
-//          GoogleIamV1AuditConfigArray{ GoogleIamV1AuditConfigArgs{...} }
+//	GoogleIamV1AuditConfigArray{ GoogleIamV1AuditConfigArgs{...} }
 type GoogleIamV1AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -6142,7 +6142,7 @@ type GoogleIamV1AuditLogConfig struct {
 // GoogleIamV1AuditLogConfigInput is an input type that accepts GoogleIamV1AuditLogConfigArgs and GoogleIamV1AuditLogConfigOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigInput` via:
 //
-//          GoogleIamV1AuditLogConfigArgs{...}
+//	GoogleIamV1AuditLogConfigArgs{...}
 type GoogleIamV1AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -6173,7 +6173,7 @@ func (i GoogleIamV1AuditLogConfigArgs) ToGoogleIamV1AuditLogConfigOutputWithCont
 // GoogleIamV1AuditLogConfigArrayInput is an input type that accepts GoogleIamV1AuditLogConfigArray and GoogleIamV1AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigArrayInput` via:
 //
-//          GoogleIamV1AuditLogConfigArray{ GoogleIamV1AuditLogConfigArgs{...} }
+//	GoogleIamV1AuditLogConfigArray{ GoogleIamV1AuditLogConfigArgs{...} }
 type GoogleIamV1AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -6306,7 +6306,7 @@ type GoogleIamV1Binding struct {
 // GoogleIamV1BindingInput is an input type that accepts GoogleIamV1BindingArgs and GoogleIamV1BindingOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingInput` via:
 //
-//          GoogleIamV1BindingArgs{...}
+//	GoogleIamV1BindingArgs{...}
 type GoogleIamV1BindingInput interface {
 	pulumi.Input
 
@@ -6339,7 +6339,7 @@ func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutputWithContext(ctx contex
 // GoogleIamV1BindingArrayInput is an input type that accepts GoogleIamV1BindingArray and GoogleIamV1BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingArrayInput` via:
 //
-//          GoogleIamV1BindingArray{ GoogleIamV1BindingArgs{...} }
+//	GoogleIamV1BindingArray{ GoogleIamV1BindingArgs{...} }
 type GoogleIamV1BindingArrayInput interface {
 	pulumi.Input
 
@@ -6486,7 +6486,7 @@ type GoogleTypeExpr struct {
 // GoogleTypeExprInput is an input type that accepts GoogleTypeExprArgs and GoogleTypeExprOutput values.
 // You can construct a concrete instance of `GoogleTypeExprInput` via:
 //
-//          GoogleTypeExprArgs{...}
+//	GoogleTypeExprArgs{...}
 type GoogleTypeExprInput interface {
 	pulumi.Input
 
@@ -6529,11 +6529,11 @@ func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutputWithContext(ctx context.Con
 // GoogleTypeExprPtrInput is an input type that accepts GoogleTypeExprArgs, GoogleTypeExprPtr and GoogleTypeExprPtrOutput values.
 // You can construct a concrete instance of `GoogleTypeExprPtrInput` via:
 //
-//          GoogleTypeExprArgs{...}
+//	        GoogleTypeExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleTypeExprPtrInput interface {
 	pulumi.Input
 

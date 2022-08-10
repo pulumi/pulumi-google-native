@@ -74,7 +74,7 @@ type SchedulingConfig struct {
 // SchedulingConfigInput is an input type that accepts SchedulingConfigArgs and SchedulingConfigOutput values.
 // You can construct a concrete instance of `SchedulingConfigInput` via:
 //
-//          SchedulingConfigArgs{...}
+//	SchedulingConfigArgs{...}
 type SchedulingConfigInput interface {
 	pulumi.Input
 
@@ -113,11 +113,11 @@ func (i SchedulingConfigArgs) ToSchedulingConfigPtrOutputWithContext(ctx context
 // SchedulingConfigPtrInput is an input type that accepts SchedulingConfigArgs, SchedulingConfigPtr and SchedulingConfigPtrOutput values.
 // You can construct a concrete instance of `SchedulingConfigPtrInput` via:
 //
-//          SchedulingConfigArgs{...}
+//	        SchedulingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SchedulingConfigPtrInput interface {
 	pulumi.Input
 

@@ -148,7 +148,7 @@ func (o DeviceLogLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // DeviceLogLevelInput is an input type that accepts DeviceLogLevelArgs and DeviceLogLevelOutput values.
 // You can construct a concrete instance of `DeviceLogLevelInput` via:
 //
-//          DeviceLogLevelArgs{...}
+//	DeviceLogLevelArgs{...}
 type DeviceLogLevelInput interface {
 	pulumi.Input
 
@@ -319,7 +319,7 @@ func (o GatewayConfigGatewayAuthMethodPtrOutput) ToStringPtrOutputWithContext(ct
 // GatewayConfigGatewayAuthMethodInput is an input type that accepts GatewayConfigGatewayAuthMethodArgs and GatewayConfigGatewayAuthMethodOutput values.
 // You can construct a concrete instance of `GatewayConfigGatewayAuthMethodInput` via:
 //
-//          GatewayConfigGatewayAuthMethodArgs{...}
+//	GatewayConfigGatewayAuthMethodArgs{...}
 type GatewayConfigGatewayAuthMethodInput interface {
 	pulumi.Input
 
@@ -488,7 +488,7 @@ func (o GatewayConfigGatewayTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // GatewayConfigGatewayTypeInput is an input type that accepts GatewayConfigGatewayTypeArgs and GatewayConfigGatewayTypeOutput values.
 // You can construct a concrete instance of `GatewayConfigGatewayTypeInput` via:
 //
-//          GatewayConfigGatewayTypeArgs{...}
+//	GatewayConfigGatewayTypeArgs{...}
 type GatewayConfigGatewayTypeInput interface {
 	pulumi.Input
 
@@ -657,7 +657,7 @@ func (o HttpConfigHttpEnabledStatePtrOutput) ToStringPtrOutputWithContext(ctx co
 // HttpConfigHttpEnabledStateInput is an input type that accepts HttpConfigHttpEnabledStateArgs and HttpConfigHttpEnabledStateOutput values.
 // You can construct a concrete instance of `HttpConfigHttpEnabledStateInput` via:
 //
-//          HttpConfigHttpEnabledStateArgs{...}
+//	HttpConfigHttpEnabledStateArgs{...}
 type HttpConfigHttpEnabledStateInput interface {
 	pulumi.Input
 
@@ -826,7 +826,7 @@ func (o MqttConfigMqttEnabledStatePtrOutput) ToStringPtrOutputWithContext(ctx co
 // MqttConfigMqttEnabledStateInput is an input type that accepts MqttConfigMqttEnabledStateArgs and MqttConfigMqttEnabledStateOutput values.
 // You can construct a concrete instance of `MqttConfigMqttEnabledStateInput` via:
 //
-//          MqttConfigMqttEnabledStateArgs{...}
+//	MqttConfigMqttEnabledStateArgs{...}
 type MqttConfigMqttEnabledStateInput interface {
 	pulumi.Input
 
@@ -993,7 +993,7 @@ func (o PublicKeyCertificateFormatPtrOutput) ToStringPtrOutputWithContext(ctx co
 // PublicKeyCertificateFormatInput is an input type that accepts PublicKeyCertificateFormatArgs and PublicKeyCertificateFormatOutput values.
 // You can construct a concrete instance of `PublicKeyCertificateFormatInput` via:
 //
-//          PublicKeyCertificateFormatArgs{...}
+//	PublicKeyCertificateFormatArgs{...}
 type PublicKeyCertificateFormatInput interface {
 	pulumi.Input
 
@@ -1166,7 +1166,7 @@ func (o PublicKeyCredentialFormatPtrOutput) ToStringPtrOutputWithContext(ctx con
 // PublicKeyCredentialFormatInput is an input type that accepts PublicKeyCredentialFormatArgs and PublicKeyCredentialFormatOutput values.
 // You can construct a concrete instance of `PublicKeyCredentialFormatInput` via:
 //
-//          PublicKeyCredentialFormatArgs{...}
+//	PublicKeyCredentialFormatArgs{...}
 type PublicKeyCredentialFormatInput interface {
 	pulumi.Input
 
@@ -1339,7 +1339,7 @@ func (o RegistryLogLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // RegistryLogLevelInput is an input type that accepts RegistryLogLevelArgs and RegistryLogLevelOutput values.
 // You can construct a concrete instance of `RegistryLogLevelInput` via:
 //
-//          RegistryLogLevelArgs{...}
+//	RegistryLogLevelArgs{...}
 type RegistryLogLevelInput interface {
 	pulumi.Input
 

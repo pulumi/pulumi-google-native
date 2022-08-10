@@ -146,7 +146,7 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodPtrOutput) ToStringP
 // GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodArgs and GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodInput` via:
 //
-//          GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodArgs{...}
+//	GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodArgs{...}
 type GoogleCloudBillingBudgetsV1beta1FilterCalendarPeriodInput interface {
 	pulumi.Input
 
@@ -316,7 +316,7 @@ func (o GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentPtrOutput) ToS
 // GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentArgs and GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentInput` via:
 //
-//          GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentArgs{...}
+//	GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentArgs{...}
 type GoogleCloudBillingBudgetsV1beta1FilterCreditTypesTreatmentInput interface {
 	pulumi.Input
 
@@ -485,7 +485,7 @@ func (o GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisPtrOutput) ToStri
 // GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisInput is an input type that accepts GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisArgs and GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisInput` via:
 //
-//          GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisArgs{...}
+//	GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisArgs{...}
 type GoogleCloudBillingBudgetsV1beta1ThresholdRuleSpendBasisInput interface {
 	pulumi.Input
 

@@ -19,7 +19,7 @@ type NetworkConfig struct {
 // NetworkConfigInput is an input type that accepts NetworkConfigArgs and NetworkConfigOutput values.
 // You can construct a concrete instance of `NetworkConfigInput` via:
 //
-//          NetworkConfigArgs{...}
+//	NetworkConfigArgs{...}
 type NetworkConfigInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i NetworkConfigArgs) ToNetworkConfigPtrOutputWithContext(ctx context.Conte
 // NetworkConfigPtrInput is an input type that accepts NetworkConfigArgs, NetworkConfigPtr and NetworkConfigPtrOutput values.
 // You can construct a concrete instance of `NetworkConfigPtrInput` via:
 //
-//          NetworkConfigArgs{...}
+//	        NetworkConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NetworkConfigPtrInput interface {
 	pulumi.Input
 
@@ -189,7 +189,7 @@ type WorkerConfig struct {
 // WorkerConfigInput is an input type that accepts WorkerConfigArgs and WorkerConfigOutput values.
 // You can construct a concrete instance of `WorkerConfigInput` via:
 //
-//          WorkerConfigArgs{...}
+//	WorkerConfigArgs{...}
 type WorkerConfigInput interface {
 	pulumi.Input
 
@@ -230,11 +230,11 @@ func (i WorkerConfigArgs) ToWorkerConfigPtrOutputWithContext(ctx context.Context
 // WorkerConfigPtrInput is an input type that accepts WorkerConfigArgs, WorkerConfigPtr and WorkerConfigPtrOutput values.
 // You can construct a concrete instance of `WorkerConfigPtrInput` via:
 //
-//          WorkerConfigArgs{...}
+//	        WorkerConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type WorkerConfigPtrInput interface {
 	pulumi.Input
 

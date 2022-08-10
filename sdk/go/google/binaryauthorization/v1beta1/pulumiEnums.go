@@ -176,7 +176,7 @@ func (o PkixPublicKeySignatureAlgorithmPtrOutput) ToStringPtrOutputWithContext(c
 // PkixPublicKeySignatureAlgorithmInput is an input type that accepts PkixPublicKeySignatureAlgorithmArgs and PkixPublicKeySignatureAlgorithmOutput values.
 // You can construct a concrete instance of `PkixPublicKeySignatureAlgorithmInput` via:
 //
-//          PkixPublicKeySignatureAlgorithmArgs{...}
+//	PkixPublicKeySignatureAlgorithmArgs{...}
 type PkixPublicKeySignatureAlgorithmInput interface {
 	pulumi.Input
 

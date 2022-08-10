@@ -147,7 +147,7 @@ func (o WorkerPoolRegionsItemPtrOutput) ToStringPtrOutputWithContext(ctx context
 // WorkerPoolRegionsItemInput is an input type that accepts WorkerPoolRegionsItemArgs and WorkerPoolRegionsItemOutput values.
 // You can construct a concrete instance of `WorkerPoolRegionsItemInput` via:
 //
-//          WorkerPoolRegionsItemArgs{...}
+//	WorkerPoolRegionsItemArgs{...}
 type WorkerPoolRegionsItemInput interface {
 	pulumi.Input
 
@@ -185,7 +185,7 @@ func (in *workerPoolRegionsItemPtr) ToWorkerPoolRegionsItemPtrOutputWithContext(
 // WorkerPoolRegionsItemArrayInput is an input type that accepts WorkerPoolRegionsItemArray and WorkerPoolRegionsItemArrayOutput values.
 // You can construct a concrete instance of `WorkerPoolRegionsItemArrayInput` via:
 //
-//          WorkerPoolRegionsItemArray{ WorkerPoolRegionsItemArgs{...} }
+//	WorkerPoolRegionsItemArray{ WorkerPoolRegionsItemArgs{...} }
 type WorkerPoolRegionsItemArrayInput interface {
 	pulumi.Input
 

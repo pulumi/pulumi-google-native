@@ -19,7 +19,7 @@ type OutputConfig struct {
 // OutputConfigInput is an input type that accepts OutputConfigArgs and OutputConfigOutput values.
 // You can construct a concrete instance of `OutputConfigInput` via:
 //
-//          OutputConfigArgs{...}
+//	OutputConfigArgs{...}
 type OutputConfigInput interface {
 	pulumi.Input
 

@@ -21,7 +21,7 @@ type GoogleFirestoreAdminV1beta1IndexField struct {
 // GoogleFirestoreAdminV1beta1IndexFieldInput is an input type that accepts GoogleFirestoreAdminV1beta1IndexFieldArgs and GoogleFirestoreAdminV1beta1IndexFieldOutput values.
 // You can construct a concrete instance of `GoogleFirestoreAdminV1beta1IndexFieldInput` via:
 //
-//          GoogleFirestoreAdminV1beta1IndexFieldArgs{...}
+//	GoogleFirestoreAdminV1beta1IndexFieldArgs{...}
 type GoogleFirestoreAdminV1beta1IndexFieldInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i GoogleFirestoreAdminV1beta1IndexFieldArgs) ToGoogleFirestoreAdminV1beta1
 // GoogleFirestoreAdminV1beta1IndexFieldArrayInput is an input type that accepts GoogleFirestoreAdminV1beta1IndexFieldArray and GoogleFirestoreAdminV1beta1IndexFieldArrayOutput values.
 // You can construct a concrete instance of `GoogleFirestoreAdminV1beta1IndexFieldArrayInput` via:
 //
-//          GoogleFirestoreAdminV1beta1IndexFieldArray{ GoogleFirestoreAdminV1beta1IndexFieldArgs{...} }
+//	GoogleFirestoreAdminV1beta1IndexFieldArray{ GoogleFirestoreAdminV1beta1IndexFieldArgs{...} }
 type GoogleFirestoreAdminV1beta1IndexFieldArrayInput interface {
 	pulumi.Input
 

@@ -144,7 +144,7 @@ func (o InstanceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // InstanceTypeInput is an input type that accepts InstanceTypeArgs and InstanceTypeOutput values.
 // You can construct a concrete instance of `InstanceTypeInput` via:
 //
-//          InstanceTypeArgs{...}
+//	InstanceTypeArgs{...}
 type InstanceTypeInput interface {
 	pulumi.Input
 

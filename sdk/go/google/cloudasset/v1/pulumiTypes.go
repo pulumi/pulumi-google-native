@@ -21,7 +21,7 @@ type AccessSelector struct {
 // AccessSelectorInput is an input type that accepts AccessSelectorArgs and AccessSelectorOutput values.
 // You can construct a concrete instance of `AccessSelectorInput` via:
 //
-//          AccessSelectorArgs{...}
+//	AccessSelectorArgs{...}
 type AccessSelectorInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i AccessSelectorArgs) ToAccessSelectorPtrOutputWithContext(ctx context.Con
 // AccessSelectorPtrInput is an input type that accepts AccessSelectorArgs, AccessSelectorPtr and AccessSelectorPtrOutput values.
 // You can construct a concrete instance of `AccessSelectorPtrInput` via:
 //
-//          AccessSelectorArgs{...}
+//	        AccessSelectorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccessSelectorPtrInput interface {
 	pulumi.Input
 
@@ -211,7 +211,7 @@ type ConditionContext struct {
 // ConditionContextInput is an input type that accepts ConditionContextArgs and ConditionContextOutput values.
 // You can construct a concrete instance of `ConditionContextInput` via:
 //
-//          ConditionContextArgs{...}
+//	ConditionContextArgs{...}
 type ConditionContextInput interface {
 	pulumi.Input
 
@@ -248,11 +248,11 @@ func (i ConditionContextArgs) ToConditionContextPtrOutputWithContext(ctx context
 // ConditionContextPtrInput is an input type that accepts ConditionContextArgs, ConditionContextPtr and ConditionContextPtrOutput values.
 // You can construct a concrete instance of `ConditionContextPtrInput` via:
 //
-//          ConditionContextArgs{...}
+//	        ConditionContextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ConditionContextPtrInput interface {
 	pulumi.Input
 
@@ -383,7 +383,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -426,11 +426,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -621,7 +621,7 @@ type FeedOutputConfig struct {
 // FeedOutputConfigInput is an input type that accepts FeedOutputConfigArgs and FeedOutputConfigOutput values.
 // You can construct a concrete instance of `FeedOutputConfigInput` via:
 //
-//          FeedOutputConfigArgs{...}
+//	FeedOutputConfigArgs{...}
 type FeedOutputConfigInput interface {
 	pulumi.Input
 
@@ -712,7 +712,7 @@ type IamPolicyAnalysisQuery struct {
 // IamPolicyAnalysisQueryInput is an input type that accepts IamPolicyAnalysisQueryArgs and IamPolicyAnalysisQueryOutput values.
 // You can construct a concrete instance of `IamPolicyAnalysisQueryInput` via:
 //
-//          IamPolicyAnalysisQueryArgs{...}
+//	IamPolicyAnalysisQueryArgs{...}
 type IamPolicyAnalysisQueryInput interface {
 	pulumi.Input
 
@@ -759,11 +759,11 @@ func (i IamPolicyAnalysisQueryArgs) ToIamPolicyAnalysisQueryPtrOutputWithContext
 // IamPolicyAnalysisQueryPtrInput is an input type that accepts IamPolicyAnalysisQueryArgs, IamPolicyAnalysisQueryPtr and IamPolicyAnalysisQueryPtrOutput values.
 // You can construct a concrete instance of `IamPolicyAnalysisQueryPtrInput` via:
 //
-//          IamPolicyAnalysisQueryArgs{...}
+//	        IamPolicyAnalysisQueryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IamPolicyAnalysisQueryPtrInput interface {
 	pulumi.Input
 
@@ -998,7 +998,7 @@ type IdentitySelector struct {
 // IdentitySelectorInput is an input type that accepts IdentitySelectorArgs and IdentitySelectorOutput values.
 // You can construct a concrete instance of `IdentitySelectorInput` via:
 //
-//          IdentitySelectorArgs{...}
+//	IdentitySelectorArgs{...}
 type IdentitySelectorInput interface {
 	pulumi.Input
 
@@ -1035,11 +1035,11 @@ func (i IdentitySelectorArgs) ToIdentitySelectorPtrOutputWithContext(ctx context
 // IdentitySelectorPtrInput is an input type that accepts IdentitySelectorArgs, IdentitySelectorPtr and IdentitySelectorPtrOutput values.
 // You can construct a concrete instance of `IdentitySelectorPtrInput` via:
 //
-//          IdentitySelectorArgs{...}
+//	        IdentitySelectorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IdentitySelectorPtrInput interface {
 	pulumi.Input
 
@@ -1174,7 +1174,7 @@ type Options struct {
 // OptionsInput is an input type that accepts OptionsArgs and OptionsOutput values.
 // You can construct a concrete instance of `OptionsInput` via:
 //
-//          OptionsArgs{...}
+//	OptionsArgs{...}
 type OptionsInput interface {
 	pulumi.Input
 
@@ -1221,11 +1221,11 @@ func (i OptionsArgs) ToOptionsPtrOutputWithContext(ctx context.Context) OptionsP
 // OptionsPtrInput is an input type that accepts OptionsArgs, OptionsPtr and OptionsPtrOutput values.
 // You can construct a concrete instance of `OptionsPtrInput` via:
 //
-//          OptionsArgs{...}
+//	        OptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OptionsPtrInput interface {
 	pulumi.Input
 
@@ -1460,7 +1460,7 @@ type PubsubDestination struct {
 // PubsubDestinationInput is an input type that accepts PubsubDestinationArgs and PubsubDestinationOutput values.
 // You can construct a concrete instance of `PubsubDestinationInput` via:
 //
-//          PubsubDestinationArgs{...}
+//	PubsubDestinationArgs{...}
 type PubsubDestinationInput interface {
 	pulumi.Input
 
@@ -1497,11 +1497,11 @@ func (i PubsubDestinationArgs) ToPubsubDestinationPtrOutputWithContext(ctx conte
 // PubsubDestinationPtrInput is an input type that accepts PubsubDestinationArgs, PubsubDestinationPtr and PubsubDestinationPtrOutput values.
 // You can construct a concrete instance of `PubsubDestinationPtrInput` via:
 //
-//          PubsubDestinationArgs{...}
+//	        PubsubDestinationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PubsubDestinationPtrInput interface {
 	pulumi.Input
 
@@ -1626,7 +1626,7 @@ type QueryContent struct {
 // QueryContentInput is an input type that accepts QueryContentArgs and QueryContentOutput values.
 // You can construct a concrete instance of `QueryContentInput` via:
 //
-//          QueryContentArgs{...}
+//	QueryContentArgs{...}
 type QueryContentInput interface {
 	pulumi.Input
 
@@ -1663,11 +1663,11 @@ func (i QueryContentArgs) ToQueryContentPtrOutputWithContext(ctx context.Context
 // QueryContentPtrInput is an input type that accepts QueryContentArgs, QueryContentPtr and QueryContentPtrOutput values.
 // You can construct a concrete instance of `QueryContentPtrInput` via:
 //
-//          QueryContentArgs{...}
+//	        QueryContentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type QueryContentPtrInput interface {
 	pulumi.Input
 
@@ -1792,7 +1792,7 @@ type ResourceSelector struct {
 // ResourceSelectorInput is an input type that accepts ResourceSelectorArgs and ResourceSelectorOutput values.
 // You can construct a concrete instance of `ResourceSelectorInput` via:
 //
-//          ResourceSelectorArgs{...}
+//	ResourceSelectorArgs{...}
 type ResourceSelectorInput interface {
 	pulumi.Input
 
@@ -1829,11 +1829,11 @@ func (i ResourceSelectorArgs) ToResourceSelectorPtrOutputWithContext(ctx context
 // ResourceSelectorPtrInput is an input type that accepts ResourceSelectorArgs, ResourceSelectorPtr and ResourceSelectorPtrOutput values.
 // You can construct a concrete instance of `ResourceSelectorPtrInput` via:
 //
-//          ResourceSelectorArgs{...}
+//	        ResourceSelectorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceSelectorPtrInput interface {
 	pulumi.Input
 

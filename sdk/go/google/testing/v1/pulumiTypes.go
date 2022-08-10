@@ -19,7 +19,7 @@ type Account struct {
 // AccountInput is an input type that accepts AccountArgs and AccountOutput values.
 // You can construct a concrete instance of `AccountInput` via:
 //
-//          AccountArgs{...}
+//	AccountArgs{...}
 type AccountInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i AccountArgs) ToAccountPtrOutputWithContext(ctx context.Context) AccountP
 // AccountPtrInput is an input type that accepts AccountArgs, AccountPtr and AccountPtrOutput values.
 // You can construct a concrete instance of `AccountPtrInput` via:
 //
-//          AccountArgs{...}
+//	        AccountArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AccountPtrInput interface {
 	pulumi.Input
 
@@ -191,7 +191,7 @@ type AndroidDevice struct {
 // AndroidDeviceInput is an input type that accepts AndroidDeviceArgs and AndroidDeviceOutput values.
 // You can construct a concrete instance of `AndroidDeviceInput` via:
 //
-//          AndroidDeviceArgs{...}
+//	AndroidDeviceArgs{...}
 type AndroidDeviceInput interface {
 	pulumi.Input
 
@@ -226,7 +226,7 @@ func (i AndroidDeviceArgs) ToAndroidDeviceOutputWithContext(ctx context.Context)
 // AndroidDeviceArrayInput is an input type that accepts AndroidDeviceArray and AndroidDeviceArrayOutput values.
 // You can construct a concrete instance of `AndroidDeviceArrayInput` via:
 //
-//          AndroidDeviceArray{ AndroidDeviceArgs{...} }
+//	AndroidDeviceArray{ AndroidDeviceArgs{...} }
 type AndroidDeviceArrayInput interface {
 	pulumi.Input
 
@@ -312,7 +312,7 @@ type AndroidDeviceList struct {
 // AndroidDeviceListInput is an input type that accepts AndroidDeviceListArgs and AndroidDeviceListOutput values.
 // You can construct a concrete instance of `AndroidDeviceListInput` via:
 //
-//          AndroidDeviceListArgs{...}
+//	AndroidDeviceListArgs{...}
 type AndroidDeviceListInput interface {
 	pulumi.Input
 
@@ -349,11 +349,11 @@ func (i AndroidDeviceListArgs) ToAndroidDeviceListPtrOutputWithContext(ctx conte
 // AndroidDeviceListPtrInput is an input type that accepts AndroidDeviceListArgs, AndroidDeviceListPtr and AndroidDeviceListPtrOutput values.
 // You can construct a concrete instance of `AndroidDeviceListPtrInput` via:
 //
-//          AndroidDeviceListArgs{...}
+//	        AndroidDeviceListArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AndroidDeviceListPtrInput interface {
 	pulumi.Input
 
@@ -561,7 +561,7 @@ type AndroidInstrumentationTest struct {
 // AndroidInstrumentationTestInput is an input type that accepts AndroidInstrumentationTestArgs and AndroidInstrumentationTestOutput values.
 // You can construct a concrete instance of `AndroidInstrumentationTestInput` via:
 //
-//          AndroidInstrumentationTestArgs{...}
+//	AndroidInstrumentationTestArgs{...}
 type AndroidInstrumentationTestInput interface {
 	pulumi.Input
 
@@ -614,11 +614,11 @@ func (i AndroidInstrumentationTestArgs) ToAndroidInstrumentationTestPtrOutputWit
 // AndroidInstrumentationTestPtrInput is an input type that accepts AndroidInstrumentationTestArgs, AndroidInstrumentationTestPtr and AndroidInstrumentationTestPtrOutput values.
 // You can construct a concrete instance of `AndroidInstrumentationTestPtrInput` via:
 //
-//          AndroidInstrumentationTestArgs{...}
+//	        AndroidInstrumentationTestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AndroidInstrumentationTestPtrInput interface {
 	pulumi.Input
 
@@ -927,7 +927,7 @@ type AndroidMatrix struct {
 // AndroidMatrixInput is an input type that accepts AndroidMatrixArgs and AndroidMatrixOutput values.
 // You can construct a concrete instance of `AndroidMatrixInput` via:
 //
-//          AndroidMatrixArgs{...}
+//	AndroidMatrixArgs{...}
 type AndroidMatrixInput interface {
 	pulumi.Input
 
@@ -970,11 +970,11 @@ func (i AndroidMatrixArgs) ToAndroidMatrixPtrOutputWithContext(ctx context.Conte
 // AndroidMatrixPtrInput is an input type that accepts AndroidMatrixArgs, AndroidMatrixPtr and AndroidMatrixPtrOutput values.
 // You can construct a concrete instance of `AndroidMatrixPtrInput` via:
 //
-//          AndroidMatrixArgs{...}
+//	        AndroidMatrixArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AndroidMatrixPtrInput interface {
 	pulumi.Input
 
@@ -1183,7 +1183,7 @@ type AndroidRoboTest struct {
 // AndroidRoboTestInput is an input type that accepts AndroidRoboTestArgs and AndroidRoboTestOutput values.
 // You can construct a concrete instance of `AndroidRoboTestInput` via:
 //
-//          AndroidRoboTestArgs{...}
+//	AndroidRoboTestArgs{...}
 type AndroidRoboTestInput interface {
 	pulumi.Input
 
@@ -1238,11 +1238,11 @@ func (i AndroidRoboTestArgs) ToAndroidRoboTestPtrOutputWithContext(ctx context.C
 // AndroidRoboTestPtrInput is an input type that accepts AndroidRoboTestArgs, AndroidRoboTestPtr and AndroidRoboTestPtrOutput values.
 // You can construct a concrete instance of `AndroidRoboTestPtrInput` via:
 //
-//          AndroidRoboTestArgs{...}
+//	        AndroidRoboTestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AndroidRoboTestPtrInput interface {
 	pulumi.Input
 
@@ -1573,7 +1573,7 @@ type AndroidTestLoop struct {
 // AndroidTestLoopInput is an input type that accepts AndroidTestLoopArgs and AndroidTestLoopOutput values.
 // You can construct a concrete instance of `AndroidTestLoopInput` via:
 //
-//          AndroidTestLoopArgs{...}
+//	AndroidTestLoopArgs{...}
 type AndroidTestLoopInput interface {
 	pulumi.Input
 
@@ -1618,11 +1618,11 @@ func (i AndroidTestLoopArgs) ToAndroidTestLoopPtrOutputWithContext(ctx context.C
 // AndroidTestLoopPtrInput is an input type that accepts AndroidTestLoopArgs, AndroidTestLoopPtr and AndroidTestLoopPtrOutput values.
 // You can construct a concrete instance of `AndroidTestLoopPtrInput` via:
 //
-//          AndroidTestLoopArgs{...}
+//	        AndroidTestLoopArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AndroidTestLoopPtrInput interface {
 	pulumi.Input
 
@@ -1837,7 +1837,7 @@ type Apk struct {
 // ApkInput is an input type that accepts ApkArgs and ApkOutput values.
 // You can construct a concrete instance of `ApkInput` via:
 //
-//          ApkArgs{...}
+//	ApkArgs{...}
 type ApkInput interface {
 	pulumi.Input
 
@@ -1868,7 +1868,7 @@ func (i ApkArgs) ToApkOutputWithContext(ctx context.Context) ApkOutput {
 // ApkArrayInput is an input type that accepts ApkArray and ApkArrayOutput values.
 // You can construct a concrete instance of `ApkArrayInput` via:
 //
-//          ApkArray{ ApkArgs{...} }
+//	ApkArray{ ApkArgs{...} }
 type ApkArrayInput interface {
 	pulumi.Input
 
@@ -1997,7 +1997,7 @@ type AppBundle struct {
 // AppBundleInput is an input type that accepts AppBundleArgs and AppBundleOutput values.
 // You can construct a concrete instance of `AppBundleInput` via:
 //
-//          AppBundleArgs{...}
+//	AppBundleArgs{...}
 type AppBundleInput interface {
 	pulumi.Input
 
@@ -2034,11 +2034,11 @@ func (i AppBundleArgs) ToAppBundlePtrOutputWithContext(ctx context.Context) AppB
 // AppBundlePtrInput is an input type that accepts AppBundleArgs, AppBundlePtr and AppBundlePtrOutput values.
 // You can construct a concrete instance of `AppBundlePtrInput` via:
 //
-//          AppBundleArgs{...}
+//	        AppBundleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppBundlePtrInput interface {
 	pulumi.Input
 
@@ -2165,7 +2165,7 @@ type ClientInfo struct {
 // ClientInfoInput is an input type that accepts ClientInfoArgs and ClientInfoOutput values.
 // You can construct a concrete instance of `ClientInfoInput` via:
 //
-//          ClientInfoArgs{...}
+//	ClientInfoArgs{...}
 type ClientInfoInput interface {
 	pulumi.Input
 
@@ -2204,11 +2204,11 @@ func (i ClientInfoArgs) ToClientInfoPtrOutputWithContext(ctx context.Context) Cl
 // ClientInfoPtrInput is an input type that accepts ClientInfoArgs, ClientInfoPtr and ClientInfoPtrOutput values.
 // You can construct a concrete instance of `ClientInfoPtrInput` via:
 //
-//          ClientInfoArgs{...}
+//	        ClientInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClientInfoPtrInput interface {
 	pulumi.Input
 
@@ -2324,7 +2324,7 @@ type ClientInfoDetail struct {
 // ClientInfoDetailInput is an input type that accepts ClientInfoDetailArgs and ClientInfoDetailOutput values.
 // You can construct a concrete instance of `ClientInfoDetailInput` via:
 //
-//          ClientInfoDetailArgs{...}
+//	ClientInfoDetailArgs{...}
 type ClientInfoDetailInput interface {
 	pulumi.Input
 
@@ -2355,7 +2355,7 @@ func (i ClientInfoDetailArgs) ToClientInfoDetailOutputWithContext(ctx context.Co
 // ClientInfoDetailArrayInput is an input type that accepts ClientInfoDetailArray and ClientInfoDetailArrayOutput values.
 // You can construct a concrete instance of `ClientInfoDetailArrayInput` via:
 //
-//          ClientInfoDetailArray{ ClientInfoDetailArgs{...} }
+//	ClientInfoDetailArray{ ClientInfoDetailArgs{...} }
 type ClientInfoDetailArrayInput interface {
 	pulumi.Input
 
@@ -2519,7 +2519,7 @@ type DeviceFile struct {
 // DeviceFileInput is an input type that accepts DeviceFileArgs and DeviceFileOutput values.
 // You can construct a concrete instance of `DeviceFileInput` via:
 //
-//          DeviceFileArgs{...}
+//	DeviceFileArgs{...}
 type DeviceFileInput interface {
 	pulumi.Input
 
@@ -2550,7 +2550,7 @@ func (i DeviceFileArgs) ToDeviceFileOutputWithContext(ctx context.Context) Devic
 // DeviceFileArrayInput is an input type that accepts DeviceFileArray and DeviceFileArrayOutput values.
 // You can construct a concrete instance of `DeviceFileArrayInput` via:
 //
-//          DeviceFileArray{ DeviceFileArgs{...} }
+//	DeviceFileArray{ DeviceFileArgs{...} }
 type DeviceFileArrayInput interface {
 	pulumi.Input
 
@@ -2683,7 +2683,7 @@ type EnvironmentMatrix struct {
 // EnvironmentMatrixInput is an input type that accepts EnvironmentMatrixArgs and EnvironmentMatrixOutput values.
 // You can construct a concrete instance of `EnvironmentMatrixInput` via:
 //
-//          EnvironmentMatrixArgs{...}
+//	EnvironmentMatrixArgs{...}
 type EnvironmentMatrixInput interface {
 	pulumi.Input
 
@@ -2827,7 +2827,7 @@ type EnvironmentVariable struct {
 // EnvironmentVariableInput is an input type that accepts EnvironmentVariableArgs and EnvironmentVariableOutput values.
 // You can construct a concrete instance of `EnvironmentVariableInput` via:
 //
-//          EnvironmentVariableArgs{...}
+//	EnvironmentVariableArgs{...}
 type EnvironmentVariableInput interface {
 	pulumi.Input
 
@@ -2858,7 +2858,7 @@ func (i EnvironmentVariableArgs) ToEnvironmentVariableOutputWithContext(ctx cont
 // EnvironmentVariableArrayInput is an input type that accepts EnvironmentVariableArray and EnvironmentVariableArrayOutput values.
 // You can construct a concrete instance of `EnvironmentVariableArrayInput` via:
 //
-//          EnvironmentVariableArray{ EnvironmentVariableArgs{...} }
+//	EnvironmentVariableArray{ EnvironmentVariableArgs{...} }
 type EnvironmentVariableArrayInput interface {
 	pulumi.Input
 
@@ -2987,7 +2987,7 @@ type FileReference struct {
 // FileReferenceInput is an input type that accepts FileReferenceArgs and FileReferenceOutput values.
 // You can construct a concrete instance of `FileReferenceInput` via:
 //
-//          FileReferenceArgs{...}
+//	FileReferenceArgs{...}
 type FileReferenceInput interface {
 	pulumi.Input
 
@@ -3024,11 +3024,11 @@ func (i FileReferenceArgs) ToFileReferencePtrOutputWithContext(ctx context.Conte
 // FileReferencePtrInput is an input type that accepts FileReferenceArgs, FileReferencePtr and FileReferencePtrOutput values.
 // You can construct a concrete instance of `FileReferencePtrInput` via:
 //
-//          FileReferenceArgs{...}
+//	        FileReferenceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FileReferencePtrInput interface {
 	pulumi.Input
 
@@ -3057,7 +3057,7 @@ func (i *fileReferencePtrType) ToFileReferencePtrOutputWithContext(ctx context.C
 // FileReferenceArrayInput is an input type that accepts FileReferenceArray and FileReferenceArrayOutput values.
 // You can construct a concrete instance of `FileReferenceArrayInput` via:
 //
-//          FileReferenceArray{ FileReferenceArgs{...} }
+//	FileReferenceArray{ FileReferenceArgs{...} }
 type FileReferenceArrayInput interface {
 	pulumi.Input
 
@@ -3216,7 +3216,7 @@ type GoogleAuto struct {
 // GoogleAutoInput is an input type that accepts GoogleAutoArgs and GoogleAutoOutput values.
 // You can construct a concrete instance of `GoogleAutoInput` via:
 //
-//          GoogleAutoArgs{...}
+//	GoogleAutoArgs{...}
 type GoogleAutoInput interface {
 	pulumi.Input
 
@@ -3251,11 +3251,11 @@ func (i GoogleAutoArgs) ToGoogleAutoPtrOutputWithContext(ctx context.Context) Go
 // GoogleAutoPtrInput is an input type that accepts GoogleAutoArgs, GoogleAutoPtr and GoogleAutoPtrOutput values.
 // You can construct a concrete instance of `GoogleAutoPtrInput` via:
 //
-//          GoogleAutoArgs{...}
+//	        GoogleAutoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleAutoPtrInput interface {
 	pulumi.Input
 
@@ -3358,7 +3358,7 @@ type GoogleCloudStorage struct {
 // GoogleCloudStorageInput is an input type that accepts GoogleCloudStorageArgs and GoogleCloudStorageOutput values.
 // You can construct a concrete instance of `GoogleCloudStorageInput` via:
 //
-//          GoogleCloudStorageArgs{...}
+//	GoogleCloudStorageArgs{...}
 type GoogleCloudStorageInput interface {
 	pulumi.Input
 
@@ -3445,7 +3445,7 @@ type IosDevice struct {
 // IosDeviceInput is an input type that accepts IosDeviceArgs and IosDeviceOutput values.
 // You can construct a concrete instance of `IosDeviceInput` via:
 //
-//          IosDeviceArgs{...}
+//	IosDeviceArgs{...}
 type IosDeviceInput interface {
 	pulumi.Input
 
@@ -3480,7 +3480,7 @@ func (i IosDeviceArgs) ToIosDeviceOutputWithContext(ctx context.Context) IosDevi
 // IosDeviceArrayInput is an input type that accepts IosDeviceArray and IosDeviceArrayOutput values.
 // You can construct a concrete instance of `IosDeviceArrayInput` via:
 //
-//          IosDeviceArray{ IosDeviceArgs{...} }
+//	IosDeviceArray{ IosDeviceArgs{...} }
 type IosDeviceArrayInput interface {
 	pulumi.Input
 
@@ -3570,7 +3570,7 @@ type IosDeviceFile struct {
 // IosDeviceFileInput is an input type that accepts IosDeviceFileArgs and IosDeviceFileOutput values.
 // You can construct a concrete instance of `IosDeviceFileInput` via:
 //
-//          IosDeviceFileArgs{...}
+//	IosDeviceFileArgs{...}
 type IosDeviceFileInput interface {
 	pulumi.Input
 
@@ -3603,7 +3603,7 @@ func (i IosDeviceFileArgs) ToIosDeviceFileOutputWithContext(ctx context.Context)
 // IosDeviceFileArrayInput is an input type that accepts IosDeviceFileArray and IosDeviceFileArrayOutput values.
 // You can construct a concrete instance of `IosDeviceFileArrayInput` via:
 //
-//          IosDeviceFileArray{ IosDeviceFileArgs{...} }
+//	IosDeviceFileArray{ IosDeviceFileArgs{...} }
 type IosDeviceFileArrayInput interface {
 	pulumi.Input
 
@@ -3744,7 +3744,7 @@ type IosDeviceList struct {
 // IosDeviceListInput is an input type that accepts IosDeviceListArgs and IosDeviceListOutput values.
 // You can construct a concrete instance of `IosDeviceListInput` via:
 //
-//          IosDeviceListArgs{...}
+//	IosDeviceListArgs{...}
 type IosDeviceListInput interface {
 	pulumi.Input
 
@@ -3781,11 +3781,11 @@ func (i IosDeviceListArgs) ToIosDeviceListPtrOutputWithContext(ctx context.Conte
 // IosDeviceListPtrInput is an input type that accepts IosDeviceListArgs, IosDeviceListPtr and IosDeviceListPtrOutput values.
 // You can construct a concrete instance of `IosDeviceListPtrInput` via:
 //
-//          IosDeviceListArgs{...}
+//	        IosDeviceListArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IosDeviceListPtrInput interface {
 	pulumi.Input
 
@@ -3979,7 +3979,7 @@ type IosTestLoop struct {
 // IosTestLoopInput is an input type that accepts IosTestLoopArgs and IosTestLoopOutput values.
 // You can construct a concrete instance of `IosTestLoopInput` via:
 //
-//          IosTestLoopArgs{...}
+//	IosTestLoopArgs{...}
 type IosTestLoopInput interface {
 	pulumi.Input
 
@@ -4018,11 +4018,11 @@ func (i IosTestLoopArgs) ToIosTestLoopPtrOutputWithContext(ctx context.Context) 
 // IosTestLoopPtrInput is an input type that accepts IosTestLoopArgs, IosTestLoopPtr and IosTestLoopPtrOutput values.
 // You can construct a concrete instance of `IosTestLoopPtrInput` via:
 //
-//          IosTestLoopArgs{...}
+//	        IosTestLoopArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IosTestLoopPtrInput interface {
 	pulumi.Input
 
@@ -4182,7 +4182,7 @@ type IosTestSetup struct {
 // IosTestSetupInput is an input type that accepts IosTestSetupArgs and IosTestSetupOutput values.
 // You can construct a concrete instance of `IosTestSetupInput` via:
 //
-//          IosTestSetupArgs{...}
+//	IosTestSetupArgs{...}
 type IosTestSetupInput interface {
 	pulumi.Input
 
@@ -4225,11 +4225,11 @@ func (i IosTestSetupArgs) ToIosTestSetupPtrOutputWithContext(ctx context.Context
 // IosTestSetupPtrInput is an input type that accepts IosTestSetupArgs, IosTestSetupPtr and IosTestSetupPtrOutput values.
 // You can construct a concrete instance of `IosTestSetupPtrInput` via:
 //
-//          IosTestSetupArgs{...}
+//	        IosTestSetupArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IosTestSetupPtrInput interface {
 	pulumi.Input
 
@@ -4426,7 +4426,7 @@ type IosXcTest struct {
 // IosXcTestInput is an input type that accepts IosXcTestArgs and IosXcTestOutput values.
 // You can construct a concrete instance of `IosXcTestInput` via:
 //
-//          IosXcTestArgs{...}
+//	IosXcTestArgs{...}
 type IosXcTestInput interface {
 	pulumi.Input
 
@@ -4469,11 +4469,11 @@ func (i IosXcTestArgs) ToIosXcTestPtrOutputWithContext(ctx context.Context) IosX
 // IosXcTestPtrInput is an input type that accepts IosXcTestArgs, IosXcTestPtr and IosXcTestPtrOutput values.
 // You can construct a concrete instance of `IosXcTestPtrInput` via:
 //
-//          IosXcTestArgs{...}
+//	        IosXcTestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IosXcTestPtrInput interface {
 	pulumi.Input
 
@@ -4669,7 +4669,7 @@ type LauncherActivityIntent struct {
 // LauncherActivityIntentInput is an input type that accepts LauncherActivityIntentArgs and LauncherActivityIntentOutput values.
 // You can construct a concrete instance of `LauncherActivityIntentInput` via:
 //
-//          LauncherActivityIntentArgs{...}
+//	LauncherActivityIntentArgs{...}
 type LauncherActivityIntentInput interface {
 	pulumi.Input
 
@@ -4704,11 +4704,11 @@ func (i LauncherActivityIntentArgs) ToLauncherActivityIntentPtrOutputWithContext
 // LauncherActivityIntentPtrInput is an input type that accepts LauncherActivityIntentArgs, LauncherActivityIntentPtr and LauncherActivityIntentPtrOutput values.
 // You can construct a concrete instance of `LauncherActivityIntentPtrInput` via:
 //
-//          LauncherActivityIntentArgs{...}
+//	        LauncherActivityIntentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LauncherActivityIntentPtrInput interface {
 	pulumi.Input
 
@@ -4811,7 +4811,7 @@ type ManualSharding struct {
 // ManualShardingInput is an input type that accepts ManualShardingArgs and ManualShardingOutput values.
 // You can construct a concrete instance of `ManualShardingInput` via:
 //
-//          ManualShardingArgs{...}
+//	ManualShardingArgs{...}
 type ManualShardingInput interface {
 	pulumi.Input
 
@@ -4848,11 +4848,11 @@ func (i ManualShardingArgs) ToManualShardingPtrOutputWithContext(ctx context.Con
 // ManualShardingPtrInput is an input type that accepts ManualShardingArgs, ManualShardingPtr and ManualShardingPtrOutput values.
 // You can construct a concrete instance of `ManualShardingPtrInput` via:
 //
-//          ManualShardingArgs{...}
+//	        ManualShardingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ManualShardingPtrInput interface {
 	pulumi.Input
 
@@ -4979,7 +4979,7 @@ type ObbFile struct {
 // ObbFileInput is an input type that accepts ObbFileArgs and ObbFileOutput values.
 // You can construct a concrete instance of `ObbFileInput` via:
 //
-//          ObbFileArgs{...}
+//	ObbFileArgs{...}
 type ObbFileInput interface {
 	pulumi.Input
 
@@ -5018,11 +5018,11 @@ func (i ObbFileArgs) ToObbFilePtrOutputWithContext(ctx context.Context) ObbFileP
 // ObbFilePtrInput is an input type that accepts ObbFileArgs, ObbFilePtr and ObbFilePtrOutput values.
 // You can construct a concrete instance of `ObbFilePtrInput` via:
 //
-//          ObbFileArgs{...}
+//	        ObbFileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ObbFilePtrInput interface {
 	pulumi.Input
 
@@ -5171,7 +5171,7 @@ type RegularFile struct {
 // RegularFileInput is an input type that accepts RegularFileArgs and RegularFileOutput values.
 // You can construct a concrete instance of `RegularFileInput` via:
 //
-//          RegularFileArgs{...}
+//	RegularFileArgs{...}
 type RegularFileInput interface {
 	pulumi.Input
 
@@ -5210,11 +5210,11 @@ func (i RegularFileArgs) ToRegularFilePtrOutputWithContext(ctx context.Context) 
 // RegularFilePtrInput is an input type that accepts RegularFileArgs, RegularFilePtr and RegularFilePtrOutput values.
 // You can construct a concrete instance of `RegularFilePtrInput` via:
 //
-//          RegularFileArgs{...}
+//	        RegularFileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RegularFilePtrInput interface {
 	pulumi.Input
 
@@ -5363,7 +5363,7 @@ type ResultStorage struct {
 // ResultStorageInput is an input type that accepts ResultStorageArgs and ResultStorageOutput values.
 // You can construct a concrete instance of `ResultStorageInput` via:
 //
-//          ResultStorageArgs{...}
+//	ResultStorageArgs{...}
 type ResultStorageInput interface {
 	pulumi.Input
 
@@ -5476,7 +5476,7 @@ type RoboDirective struct {
 // RoboDirectiveInput is an input type that accepts RoboDirectiveArgs and RoboDirectiveOutput values.
 // You can construct a concrete instance of `RoboDirectiveInput` via:
 //
-//          RoboDirectiveArgs{...}
+//	RoboDirectiveArgs{...}
 type RoboDirectiveInput interface {
 	pulumi.Input
 
@@ -5509,7 +5509,7 @@ func (i RoboDirectiveArgs) ToRoboDirectiveOutputWithContext(ctx context.Context)
 // RoboDirectiveArrayInput is an input type that accepts RoboDirectiveArray and RoboDirectiveArrayOutput values.
 // You can construct a concrete instance of `RoboDirectiveArrayInput` via:
 //
-//          RoboDirectiveArray{ RoboDirectiveArgs{...} }
+//	RoboDirectiveArray{ RoboDirectiveArgs{...} }
 type RoboDirectiveArrayInput interface {
 	pulumi.Input
 
@@ -5654,7 +5654,7 @@ type RoboStartingIntent struct {
 // RoboStartingIntentInput is an input type that accepts RoboStartingIntentArgs and RoboStartingIntentOutput values.
 // You can construct a concrete instance of `RoboStartingIntentInput` via:
 //
-//          RoboStartingIntentArgs{...}
+//	RoboStartingIntentArgs{...}
 type RoboStartingIntentInput interface {
 	pulumi.Input
 
@@ -5687,7 +5687,7 @@ func (i RoboStartingIntentArgs) ToRoboStartingIntentOutputWithContext(ctx contex
 // RoboStartingIntentArrayInput is an input type that accepts RoboStartingIntentArray and RoboStartingIntentArrayOutput values.
 // You can construct a concrete instance of `RoboStartingIntentArrayInput` via:
 //
-//          RoboStartingIntentArray{ RoboStartingIntentArgs{...} }
+//	RoboStartingIntentArray{ RoboStartingIntentArgs{...} }
 type RoboStartingIntentArrayInput interface {
 	pulumi.Input
 
@@ -5870,7 +5870,7 @@ type ShardingOption struct {
 // ShardingOptionInput is an input type that accepts ShardingOptionArgs and ShardingOptionOutput values.
 // You can construct a concrete instance of `ShardingOptionInput` via:
 //
-//          ShardingOptionArgs{...}
+//	ShardingOptionArgs{...}
 type ShardingOptionInput interface {
 	pulumi.Input
 
@@ -5909,11 +5909,11 @@ func (i ShardingOptionArgs) ToShardingOptionPtrOutputWithContext(ctx context.Con
 // ShardingOptionPtrInput is an input type that accepts ShardingOptionArgs, ShardingOptionPtr and ShardingOptionPtrOutput values.
 // You can construct a concrete instance of `ShardingOptionPtrInput` via:
 //
-//          ShardingOptionArgs{...}
+//	        ShardingOptionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ShardingOptionPtrInput interface {
 	pulumi.Input
 
@@ -6064,7 +6064,7 @@ type StartActivityIntent struct {
 // StartActivityIntentInput is an input type that accepts StartActivityIntentArgs and StartActivityIntentOutput values.
 // You can construct a concrete instance of `StartActivityIntentInput` via:
 //
-//          StartActivityIntentArgs{...}
+//	StartActivityIntentArgs{...}
 type StartActivityIntentInput interface {
 	pulumi.Input
 
@@ -6105,11 +6105,11 @@ func (i StartActivityIntentArgs) ToStartActivityIntentPtrOutputWithContext(ctx c
 // StartActivityIntentPtrInput is an input type that accepts StartActivityIntentArgs, StartActivityIntentPtr and StartActivityIntentPtrOutput values.
 // You can construct a concrete instance of `StartActivityIntentPtrInput` via:
 //
-//          StartActivityIntentArgs{...}
+//	        StartActivityIntentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StartActivityIntentPtrInput interface {
 	pulumi.Input
 
@@ -6277,7 +6277,7 @@ type SystraceSetup struct {
 // SystraceSetupInput is an input type that accepts SystraceSetupArgs and SystraceSetupOutput values.
 // You can construct a concrete instance of `SystraceSetupInput` via:
 //
-//          SystraceSetupArgs{...}
+//	SystraceSetupArgs{...}
 type SystraceSetupInput interface {
 	pulumi.Input
 
@@ -6313,11 +6313,11 @@ func (i SystraceSetupArgs) ToSystraceSetupPtrOutputWithContext(ctx context.Conte
 // SystraceSetupPtrInput is an input type that accepts SystraceSetupArgs, SystraceSetupPtr and SystraceSetupPtrOutput values.
 // You can construct a concrete instance of `SystraceSetupPtrInput` via:
 //
-//          SystraceSetupArgs{...}
+//	        SystraceSetupArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SystraceSetupPtrInput interface {
 	pulumi.Input
 
@@ -6590,7 +6590,7 @@ type TestSetup struct {
 // TestSetupInput is an input type that accepts TestSetupArgs and TestSetupOutput values.
 // You can construct a concrete instance of `TestSetupInput` via:
 //
-//          TestSetupArgs{...}
+//	TestSetupArgs{...}
 type TestSetupInput interface {
 	pulumi.Input
 
@@ -6643,11 +6643,11 @@ func (i TestSetupArgs) ToTestSetupPtrOutputWithContext(ctx context.Context) Test
 // TestSetupPtrInput is an input type that accepts TestSetupArgs, TestSetupPtr and TestSetupPtrOutput values.
 // You can construct a concrete instance of `TestSetupPtrInput` via:
 //
-//          TestSetupArgs{...}
+//	        TestSetupArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TestSetupPtrInput interface {
 	pulumi.Input
 
@@ -6952,7 +6952,7 @@ type TestSpecification struct {
 // TestSpecificationInput is an input type that accepts TestSpecificationArgs and TestSpecificationOutput values.
 // You can construct a concrete instance of `TestSpecificationInput` via:
 //
-//          TestSpecificationArgs{...}
+//	TestSpecificationArgs{...}
 type TestSpecificationInput interface {
 	pulumi.Input
 
@@ -7161,7 +7161,7 @@ type TestTargetsForShard struct {
 // TestTargetsForShardInput is an input type that accepts TestTargetsForShardArgs and TestTargetsForShardOutput values.
 // You can construct a concrete instance of `TestTargetsForShardInput` via:
 //
-//          TestTargetsForShardArgs{...}
+//	TestTargetsForShardArgs{...}
 type TestTargetsForShardInput interface {
 	pulumi.Input
 
@@ -7190,7 +7190,7 @@ func (i TestTargetsForShardArgs) ToTestTargetsForShardOutputWithContext(ctx cont
 // TestTargetsForShardArrayInput is an input type that accepts TestTargetsForShardArray and TestTargetsForShardArrayOutput values.
 // You can construct a concrete instance of `TestTargetsForShardArrayInput` via:
 //
-//          TestTargetsForShardArray{ TestTargetsForShardArgs{...} }
+//	TestTargetsForShardArray{ TestTargetsForShardArgs{...} }
 type TestTargetsForShardArrayInput interface {
 	pulumi.Input
 
@@ -7349,7 +7349,7 @@ type ToolResultsHistory struct {
 // ToolResultsHistoryInput is an input type that accepts ToolResultsHistoryArgs and ToolResultsHistoryOutput values.
 // You can construct a concrete instance of `ToolResultsHistoryInput` via:
 //
-//          ToolResultsHistoryArgs{...}
+//	ToolResultsHistoryArgs{...}
 type ToolResultsHistoryInput interface {
 	pulumi.Input
 
@@ -7388,11 +7388,11 @@ func (i ToolResultsHistoryArgs) ToToolResultsHistoryPtrOutputWithContext(ctx con
 // ToolResultsHistoryPtrInput is an input type that accepts ToolResultsHistoryArgs, ToolResultsHistoryPtr and ToolResultsHistoryPtrOutput values.
 // You can construct a concrete instance of `ToolResultsHistoryPtrInput` via:
 //
-//          ToolResultsHistoryArgs{...}
+//	        ToolResultsHistoryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ToolResultsHistoryPtrInput interface {
 	pulumi.Input
 
@@ -7586,7 +7586,7 @@ type UniformSharding struct {
 // UniformShardingInput is an input type that accepts UniformShardingArgs and UniformShardingOutput values.
 // You can construct a concrete instance of `UniformShardingInput` via:
 //
-//          UniformShardingArgs{...}
+//	UniformShardingArgs{...}
 type UniformShardingInput interface {
 	pulumi.Input
 
@@ -7623,11 +7623,11 @@ func (i UniformShardingArgs) ToUniformShardingPtrOutputWithContext(ctx context.C
 // UniformShardingPtrInput is an input type that accepts UniformShardingArgs, UniformShardingPtr and UniformShardingPtrOutput values.
 // You can construct a concrete instance of `UniformShardingPtrInput` via:
 //
-//          UniformShardingArgs{...}
+//	        UniformShardingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type UniformShardingPtrInput interface {
 	pulumi.Input
 

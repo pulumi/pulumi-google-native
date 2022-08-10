@@ -21,7 +21,7 @@ type AuditConfig struct {
 // AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
 // You can construct a concrete instance of `AuditConfigInput` via:
 //
-//          AuditConfigArgs{...}
+//	AuditConfigArgs{...}
 type AuditConfigInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
-//          AuditConfigArray{ AuditConfigArgs{...} }
+//	AuditConfigArray{ AuditConfigArgs{...} }
 type AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type AuditLogConfig struct {
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
 // You can construct a concrete instance of `AuditLogConfigInput` via:
 //
-//          AuditLogConfigArgs{...}
+//	AuditLogConfigArgs{...}
 type AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -353,7 +353,7 @@ type AuthConfig struct {
 // AuthConfigInput is an input type that accepts AuthConfigArgs and AuthConfigOutput values.
 // You can construct a concrete instance of `AuthConfigInput` via:
 //
-//          AuthConfigArgs{...}
+//	AuthConfigArgs{...}
 type AuthConfigInput interface {
 	pulumi.Input
 
@@ -400,11 +400,11 @@ func (i AuthConfigArgs) ToAuthConfigPtrOutputWithContext(ctx context.Context) Au
 // AuthConfigPtrInput is an input type that accepts AuthConfigArgs, AuthConfigPtr and AuthConfigPtrOutput values.
 // You can construct a concrete instance of `AuthConfigPtrInput` via:
 //
-//          AuthConfigArgs{...}
+//	        AuthConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AuthConfigPtrInput interface {
 	pulumi.Input
 
@@ -643,7 +643,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -676,7 +676,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -825,7 +825,7 @@ type ConfigVariable struct {
 // ConfigVariableInput is an input type that accepts ConfigVariableArgs and ConfigVariableOutput values.
 // You can construct a concrete instance of `ConfigVariableInput` via:
 //
-//          ConfigVariableArgs{...}
+//	ConfigVariableArgs{...}
 type ConfigVariableInput interface {
 	pulumi.Input
 
@@ -862,7 +862,7 @@ func (i ConfigVariableArgs) ToConfigVariableOutputWithContext(ctx context.Contex
 // ConfigVariableArrayInput is an input type that accepts ConfigVariableArray and ConfigVariableArrayOutput values.
 // You can construct a concrete instance of `ConfigVariableArrayInput` via:
 //
-//          ConfigVariableArray{ ConfigVariableArgs{...} }
+//	ConfigVariableArray{ ConfigVariableArgs{...} }
 type ConfigVariableArrayInput interface {
 	pulumi.Input
 
@@ -1073,7 +1073,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -1116,11 +1116,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -1315,7 +1315,7 @@ type JwtClaims struct {
 // JwtClaimsInput is an input type that accepts JwtClaimsArgs and JwtClaimsOutput values.
 // You can construct a concrete instance of `JwtClaimsInput` via:
 //
-//          JwtClaimsArgs{...}
+//	JwtClaimsArgs{...}
 type JwtClaimsInput interface {
 	pulumi.Input
 
@@ -1356,11 +1356,11 @@ func (i JwtClaimsArgs) ToJwtClaimsPtrOutputWithContext(ctx context.Context) JwtC
 // JwtClaimsPtrInput is an input type that accepts JwtClaimsArgs, JwtClaimsPtr and JwtClaimsPtrOutput values.
 // You can construct a concrete instance of `JwtClaimsPtrInput` via:
 //
-//          JwtClaimsArgs{...}
+//	        JwtClaimsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JwtClaimsPtrInput interface {
 	pulumi.Input
 
@@ -1531,7 +1531,7 @@ type LockConfig struct {
 // LockConfigInput is an input type that accepts LockConfigArgs and LockConfigOutput values.
 // You can construct a concrete instance of `LockConfigInput` via:
 //
-//          LockConfigArgs{...}
+//	LockConfigArgs{...}
 type LockConfigInput interface {
 	pulumi.Input
 
@@ -1570,11 +1570,11 @@ func (i LockConfigArgs) ToLockConfigPtrOutputWithContext(ctx context.Context) Lo
 // LockConfigPtrInput is an input type that accepts LockConfigArgs, LockConfigPtr and LockConfigPtrOutput values.
 // You can construct a concrete instance of `LockConfigPtrInput` via:
 //
-//          LockConfigArgs{...}
+//	        LockConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LockConfigPtrInput interface {
 	pulumi.Input
 
@@ -1723,7 +1723,7 @@ type Oauth2ClientCredentials struct {
 // Oauth2ClientCredentialsInput is an input type that accepts Oauth2ClientCredentialsArgs and Oauth2ClientCredentialsOutput values.
 // You can construct a concrete instance of `Oauth2ClientCredentialsInput` via:
 //
-//          Oauth2ClientCredentialsArgs{...}
+//	Oauth2ClientCredentialsArgs{...}
 type Oauth2ClientCredentialsInput interface {
 	pulumi.Input
 
@@ -1762,11 +1762,11 @@ func (i Oauth2ClientCredentialsArgs) ToOauth2ClientCredentialsPtrOutputWithConte
 // Oauth2ClientCredentialsPtrInput is an input type that accepts Oauth2ClientCredentialsArgs, Oauth2ClientCredentialsPtr and Oauth2ClientCredentialsPtrOutput values.
 // You can construct a concrete instance of `Oauth2ClientCredentialsPtrInput` via:
 //
-//          Oauth2ClientCredentialsArgs{...}
+//	        Oauth2ClientCredentialsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type Oauth2ClientCredentialsPtrInput interface {
 	pulumi.Input
 
@@ -1915,7 +1915,7 @@ type Oauth2JwtBearer struct {
 // Oauth2JwtBearerInput is an input type that accepts Oauth2JwtBearerArgs and Oauth2JwtBearerOutput values.
 // You can construct a concrete instance of `Oauth2JwtBearerInput` via:
 //
-//          Oauth2JwtBearerArgs{...}
+//	Oauth2JwtBearerArgs{...}
 type Oauth2JwtBearerInput interface {
 	pulumi.Input
 
@@ -1954,11 +1954,11 @@ func (i Oauth2JwtBearerArgs) ToOauth2JwtBearerPtrOutputWithContext(ctx context.C
 // Oauth2JwtBearerPtrInput is an input type that accepts Oauth2JwtBearerArgs, Oauth2JwtBearerPtr and Oauth2JwtBearerPtrOutput values.
 // You can construct a concrete instance of `Oauth2JwtBearerPtrInput` via:
 //
-//          Oauth2JwtBearerArgs{...}
+//	        Oauth2JwtBearerArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type Oauth2JwtBearerPtrInput interface {
 	pulumi.Input
 
@@ -2105,7 +2105,7 @@ type Secret struct {
 // SecretInput is an input type that accepts SecretArgs and SecretOutput values.
 // You can construct a concrete instance of `SecretInput` via:
 //
-//          SecretArgs{...}
+//	SecretArgs{...}
 type SecretInput interface {
 	pulumi.Input
 
@@ -2142,11 +2142,11 @@ func (i SecretArgs) ToSecretPtrOutputWithContext(ctx context.Context) SecretPtrO
 // SecretPtrInput is an input type that accepts SecretArgs, SecretPtr and SecretPtrOutput values.
 // You can construct a concrete instance of `SecretPtrInput` via:
 //
-//          SecretArgs{...}
+//	        SecretArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SecretPtrInput interface {
 	pulumi.Input
 
@@ -2279,7 +2279,7 @@ type SshPublicKey struct {
 // SshPublicKeyInput is an input type that accepts SshPublicKeyArgs and SshPublicKeyOutput values.
 // You can construct a concrete instance of `SshPublicKeyInput` via:
 //
-//          SshPublicKeyArgs{...}
+//	SshPublicKeyArgs{...}
 type SshPublicKeyInput interface {
 	pulumi.Input
 
@@ -2324,11 +2324,11 @@ func (i SshPublicKeyArgs) ToSshPublicKeyPtrOutputWithContext(ctx context.Context
 // SshPublicKeyPtrInput is an input type that accepts SshPublicKeyArgs, SshPublicKeyPtr and SshPublicKeyPtrOutput values.
 // You can construct a concrete instance of `SshPublicKeyPtrInput` via:
 //
-//          SshPublicKeyArgs{...}
+//	        SshPublicKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SshPublicKeyPtrInput interface {
 	pulumi.Input
 
@@ -2543,7 +2543,7 @@ type UserPassword struct {
 // UserPasswordInput is an input type that accepts UserPasswordArgs and UserPasswordOutput values.
 // You can construct a concrete instance of `UserPasswordInput` via:
 //
-//          UserPasswordArgs{...}
+//	UserPasswordArgs{...}
 type UserPasswordInput interface {
 	pulumi.Input
 
@@ -2582,11 +2582,11 @@ func (i UserPasswordArgs) ToUserPasswordPtrOutputWithContext(ctx context.Context
 // UserPasswordPtrInput is an input type that accepts UserPasswordArgs, UserPasswordPtr and UserPasswordPtrOutput values.
 // You can construct a concrete instance of `UserPasswordPtrInput` via:
 //
-//          UserPasswordArgs{...}
+//	        UserPasswordArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type UserPasswordPtrInput interface {
 	pulumi.Input
 

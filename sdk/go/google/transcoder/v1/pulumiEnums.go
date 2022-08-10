@@ -144,7 +144,7 @@ func (o AnimationFadeFadeTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AnimationFadeFadeTypeInput is an input type that accepts AnimationFadeFadeTypeArgs and AnimationFadeFadeTypeOutput values.
 // You can construct a concrete instance of `AnimationFadeFadeTypeInput` via:
 //
-//          AnimationFadeFadeTypeArgs{...}
+//	AnimationFadeFadeTypeArgs{...}
 type AnimationFadeFadeTypeInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o ManifestTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // ManifestTypeInput is an input type that accepts ManifestTypeArgs and ManifestTypeOutput values.
 // You can construct a concrete instance of `ManifestTypeInput` via:
 //
-//          ManifestTypeArgs{...}
+//	ManifestTypeArgs{...}
 type ManifestTypeInput interface {
 	pulumi.Input
 

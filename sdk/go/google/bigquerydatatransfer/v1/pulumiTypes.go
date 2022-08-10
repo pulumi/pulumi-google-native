@@ -19,7 +19,7 @@ type EmailPreferences struct {
 // EmailPreferencesInput is an input type that accepts EmailPreferencesArgs and EmailPreferencesOutput values.
 // You can construct a concrete instance of `EmailPreferencesInput` via:
 //
-//          EmailPreferencesArgs{...}
+//	EmailPreferencesArgs{...}
 type EmailPreferencesInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i EmailPreferencesArgs) ToEmailPreferencesPtrOutputWithContext(ctx context
 // EmailPreferencesPtrInput is an input type that accepts EmailPreferencesArgs, EmailPreferencesPtr and EmailPreferencesPtrOutput values.
 // You can construct a concrete instance of `EmailPreferencesPtrInput` via:
 //
-//          EmailPreferencesArgs{...}
+//	        EmailPreferencesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EmailPreferencesPtrInput interface {
 	pulumi.Input
 
@@ -189,7 +189,7 @@ type ScheduleOptions struct {
 // ScheduleOptionsInput is an input type that accepts ScheduleOptionsArgs and ScheduleOptionsOutput values.
 // You can construct a concrete instance of `ScheduleOptionsInput` via:
 //
-//          ScheduleOptionsArgs{...}
+//	ScheduleOptionsArgs{...}
 type ScheduleOptionsInput interface {
 	pulumi.Input
 
@@ -230,11 +230,11 @@ func (i ScheduleOptionsArgs) ToScheduleOptionsPtrOutputWithContext(ctx context.C
 // ScheduleOptionsPtrInput is an input type that accepts ScheduleOptionsArgs, ScheduleOptionsPtr and ScheduleOptionsPtrOutput values.
 // You can construct a concrete instance of `ScheduleOptionsPtrInput` via:
 //
-//          ScheduleOptionsArgs{...}
+//	        ScheduleOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ScheduleOptionsPtrInput interface {
 	pulumi.Input
 

@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o CertificateAuthorityTierPtrOutput) ToStringPtrOutputWithContext(ctx cont
 // CertificateAuthorityTierInput is an input type that accepts CertificateAuthorityTierArgs and CertificateAuthorityTierOutput values.
 // You can construct a concrete instance of `CertificateAuthorityTierInput` via:
 //
-//          CertificateAuthorityTierArgs{...}
+//	CertificateAuthorityTierArgs{...}
 type CertificateAuthorityTierInput interface {
 	pulumi.Input
 
@@ -484,7 +484,7 @@ func (o CertificateAuthorityTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // CertificateAuthorityTypeInput is an input type that accepts CertificateAuthorityTypeArgs and CertificateAuthorityTypeOutput values.
 // You can construct a concrete instance of `CertificateAuthorityTypeInput` via:
 //
-//          CertificateAuthorityTypeArgs{...}
+//	CertificateAuthorityTypeArgs{...}
 type CertificateAuthorityTypeInput interface {
 	pulumi.Input
 
@@ -665,7 +665,7 @@ func (o KeyVersionSpecAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // KeyVersionSpecAlgorithmInput is an input type that accepts KeyVersionSpecAlgorithmArgs and KeyVersionSpecAlgorithmOutput values.
 // You can construct a concrete instance of `KeyVersionSpecAlgorithmInput` via:
 //
-//          KeyVersionSpecAlgorithmArgs{...}
+//	KeyVersionSpecAlgorithmArgs{...}
 type KeyVersionSpecAlgorithmInput interface {
 	pulumi.Input
 
@@ -834,7 +834,7 @@ func (o PublicKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 // PublicKeyTypeInput is an input type that accepts PublicKeyTypeArgs and PublicKeyTypeOutput values.
 // You can construct a concrete instance of `PublicKeyTypeInput` via:
 //
-//          PublicKeyTypeArgs{...}
+//	PublicKeyTypeArgs{...}
 type PublicKeyTypeInput interface {
 	pulumi.Input
 

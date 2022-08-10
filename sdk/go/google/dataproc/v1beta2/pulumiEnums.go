@@ -146,7 +146,7 @@ func (o GceClusterConfigPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutputWithC
 // GceClusterConfigPrivateIpv6GoogleAccessInput is an input type that accepts GceClusterConfigPrivateIpv6GoogleAccessArgs and GceClusterConfigPrivateIpv6GoogleAccessOutput values.
 // You can construct a concrete instance of `GceClusterConfigPrivateIpv6GoogleAccessInput` via:
 //
-//          GceClusterConfigPrivateIpv6GoogleAccessArgs{...}
+//	GceClusterConfigPrivateIpv6GoogleAccessArgs{...}
 type GceClusterConfigPrivateIpv6GoogleAccessInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o InstanceGroupConfigPreemptibilityPtrOutput) ToStringPtrOutputWithContext
 // InstanceGroupConfigPreemptibilityInput is an input type that accepts InstanceGroupConfigPreemptibilityArgs and InstanceGroupConfigPreemptibilityOutput values.
 // You can construct a concrete instance of `InstanceGroupConfigPreemptibilityInput` via:
 //
-//          InstanceGroupConfigPreemptibilityArgs{...}
+//	InstanceGroupConfigPreemptibilityArgs{...}
 type InstanceGroupConfigPreemptibilityInput interface {
 	pulumi.Input
 
@@ -485,7 +485,7 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutputWit
 // ReservationAffinityConsumeReservationTypeInput is an input type that accepts ReservationAffinityConsumeReservationTypeArgs and ReservationAffinityConsumeReservationTypeOutput values.
 // You can construct a concrete instance of `ReservationAffinityConsumeReservationTypeInput` via:
 //
-//          ReservationAffinityConsumeReservationTypeArgs{...}
+//	ReservationAffinityConsumeReservationTypeArgs{...}
 type ReservationAffinityConsumeReservationTypeInput interface {
 	pulumi.Input
 
@@ -675,7 +675,7 @@ func (o SoftwareConfigOptionalComponentsItemPtrOutput) ToStringPtrOutputWithCont
 // SoftwareConfigOptionalComponentsItemInput is an input type that accepts SoftwareConfigOptionalComponentsItemArgs and SoftwareConfigOptionalComponentsItemOutput values.
 // You can construct a concrete instance of `SoftwareConfigOptionalComponentsItemInput` via:
 //
-//          SoftwareConfigOptionalComponentsItemArgs{...}
+//	SoftwareConfigOptionalComponentsItemArgs{...}
 type SoftwareConfigOptionalComponentsItemInput interface {
 	pulumi.Input
 
@@ -713,7 +713,7 @@ func (in *softwareConfigOptionalComponentsItemPtr) ToSoftwareConfigOptionalCompo
 // SoftwareConfigOptionalComponentsItemArrayInput is an input type that accepts SoftwareConfigOptionalComponentsItemArray and SoftwareConfigOptionalComponentsItemArrayOutput values.
 // You can construct a concrete instance of `SoftwareConfigOptionalComponentsItemArrayInput` via:
 //
-//          SoftwareConfigOptionalComponentsItemArray{ SoftwareConfigOptionalComponentsItemArgs{...} }
+//	SoftwareConfigOptionalComponentsItemArray{ SoftwareConfigOptionalComponentsItemArgs{...} }
 type SoftwareConfigOptionalComponentsItemArrayInput interface {
 	pulumi.Input
 

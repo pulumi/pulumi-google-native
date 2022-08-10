@@ -25,7 +25,7 @@ type BigQueryConfig struct {
 // BigQueryConfigInput is an input type that accepts BigQueryConfigArgs and BigQueryConfigOutput values.
 // You can construct a concrete instance of `BigQueryConfigInput` via:
 //
-//          BigQueryConfigArgs{...}
+//	BigQueryConfigArgs{...}
 type BigQueryConfigInput interface {
 	pulumi.Input
 
@@ -68,11 +68,11 @@ func (i BigQueryConfigArgs) ToBigQueryConfigPtrOutputWithContext(ctx context.Con
 // BigQueryConfigPtrInput is an input type that accepts BigQueryConfigArgs, BigQueryConfigPtr and BigQueryConfigPtrOutput values.
 // You can construct a concrete instance of `BigQueryConfigPtrInput` via:
 //
-//          BigQueryConfigArgs{...}
+//	        BigQueryConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type BigQueryConfigPtrInput interface {
 	pulumi.Input
 
@@ -274,7 +274,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -307,7 +307,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -450,7 +450,7 @@ type DeadLetterPolicy struct {
 // DeadLetterPolicyInput is an input type that accepts DeadLetterPolicyArgs and DeadLetterPolicyOutput values.
 // You can construct a concrete instance of `DeadLetterPolicyInput` via:
 //
-//          DeadLetterPolicyArgs{...}
+//	DeadLetterPolicyArgs{...}
 type DeadLetterPolicyInput interface {
 	pulumi.Input
 
@@ -489,11 +489,11 @@ func (i DeadLetterPolicyArgs) ToDeadLetterPolicyPtrOutputWithContext(ctx context
 // DeadLetterPolicyPtrInput is an input type that accepts DeadLetterPolicyArgs, DeadLetterPolicyPtr and DeadLetterPolicyPtrOutput values.
 // You can construct a concrete instance of `DeadLetterPolicyPtrInput` via:
 //
-//          DeadLetterPolicyArgs{...}
+//	        DeadLetterPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DeadLetterPolicyPtrInput interface {
 	pulumi.Input
 
@@ -640,7 +640,7 @@ type ExpirationPolicy struct {
 // ExpirationPolicyInput is an input type that accepts ExpirationPolicyArgs and ExpirationPolicyOutput values.
 // You can construct a concrete instance of `ExpirationPolicyInput` via:
 //
-//          ExpirationPolicyArgs{...}
+//	ExpirationPolicyArgs{...}
 type ExpirationPolicyInput interface {
 	pulumi.Input
 
@@ -677,11 +677,11 @@ func (i ExpirationPolicyArgs) ToExpirationPolicyPtrOutputWithContext(ctx context
 // ExpirationPolicyPtrInput is an input type that accepts ExpirationPolicyArgs, ExpirationPolicyPtr and ExpirationPolicyPtrOutput values.
 // You can construct a concrete instance of `ExpirationPolicyPtrInput` via:
 //
-//          ExpirationPolicyArgs{...}
+//	        ExpirationPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExpirationPolicyPtrInput interface {
 	pulumi.Input
 
@@ -812,7 +812,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -855,11 +855,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -1050,7 +1050,7 @@ type MessageStoragePolicy struct {
 // MessageStoragePolicyInput is an input type that accepts MessageStoragePolicyArgs and MessageStoragePolicyOutput values.
 // You can construct a concrete instance of `MessageStoragePolicyInput` via:
 //
-//          MessageStoragePolicyArgs{...}
+//	MessageStoragePolicyArgs{...}
 type MessageStoragePolicyInput interface {
 	pulumi.Input
 
@@ -1087,11 +1087,11 @@ func (i MessageStoragePolicyArgs) ToMessageStoragePolicyPtrOutputWithContext(ctx
 // MessageStoragePolicyPtrInput is an input type that accepts MessageStoragePolicyArgs, MessageStoragePolicyPtr and MessageStoragePolicyPtrOutput values.
 // You can construct a concrete instance of `MessageStoragePolicyPtrInput` via:
 //
-//          MessageStoragePolicyArgs{...}
+//	        MessageStoragePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MessageStoragePolicyPtrInput interface {
 	pulumi.Input
 
@@ -1217,7 +1217,7 @@ type OidcToken struct {
 // OidcTokenInput is an input type that accepts OidcTokenArgs and OidcTokenOutput values.
 // You can construct a concrete instance of `OidcTokenInput` via:
 //
-//          OidcTokenArgs{...}
+//	OidcTokenArgs{...}
 type OidcTokenInput interface {
 	pulumi.Input
 
@@ -1255,11 +1255,11 @@ func (i OidcTokenArgs) ToOidcTokenPtrOutputWithContext(ctx context.Context) Oidc
 // OidcTokenPtrInput is an input type that accepts OidcTokenArgs, OidcTokenPtr and OidcTokenPtrOutput values.
 // You can construct a concrete instance of `OidcTokenPtrInput` via:
 //
-//          OidcTokenArgs{...}
+//	        OidcTokenArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OidcTokenPtrInput interface {
 	pulumi.Input
 
@@ -1406,7 +1406,7 @@ type PushConfig struct {
 // PushConfigInput is an input type that accepts PushConfigArgs and PushConfigOutput values.
 // You can construct a concrete instance of `PushConfigInput` via:
 //
-//          PushConfigArgs{...}
+//	PushConfigArgs{...}
 type PushConfigInput interface {
 	pulumi.Input
 
@@ -1447,11 +1447,11 @@ func (i PushConfigArgs) ToPushConfigPtrOutputWithContext(ctx context.Context) Pu
 // PushConfigPtrInput is an input type that accepts PushConfigArgs, PushConfigPtr and PushConfigPtrOutput values.
 // You can construct a concrete instance of `PushConfigPtrInput` via:
 //
-//          PushConfigArgs{...}
+//	        PushConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PushConfigPtrInput interface {
 	pulumi.Input
 
@@ -1622,7 +1622,7 @@ type RetryPolicy struct {
 // RetryPolicyInput is an input type that accepts RetryPolicyArgs and RetryPolicyOutput values.
 // You can construct a concrete instance of `RetryPolicyInput` via:
 //
-//          RetryPolicyArgs{...}
+//	RetryPolicyArgs{...}
 type RetryPolicyInput interface {
 	pulumi.Input
 
@@ -1661,11 +1661,11 @@ func (i RetryPolicyArgs) ToRetryPolicyPtrOutputWithContext(ctx context.Context) 
 // RetryPolicyPtrInput is an input type that accepts RetryPolicyArgs, RetryPolicyPtr and RetryPolicyPtrOutput values.
 // You can construct a concrete instance of `RetryPolicyPtrInput` via:
 //
-//          RetryPolicyArgs{...}
+//	        RetryPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RetryPolicyPtrInput interface {
 	pulumi.Input
 
@@ -1818,7 +1818,7 @@ type SchemaSettings struct {
 // SchemaSettingsInput is an input type that accepts SchemaSettingsArgs and SchemaSettingsOutput values.
 // You can construct a concrete instance of `SchemaSettingsInput` via:
 //
-//          SchemaSettingsArgs{...}
+//	SchemaSettingsArgs{...}
 type SchemaSettingsInput interface {
 	pulumi.Input
 
@@ -1861,11 +1861,11 @@ func (i SchemaSettingsArgs) ToSchemaSettingsPtrOutputWithContext(ctx context.Con
 // SchemaSettingsPtrInput is an input type that accepts SchemaSettingsArgs, SchemaSettingsPtr and SchemaSettingsPtrOutput values.
 // You can construct a concrete instance of `SchemaSettingsPtrInput` via:
 //
-//          SchemaSettingsArgs{...}
+//	        SchemaSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SchemaSettingsPtrInput interface {
 	pulumi.Input
 

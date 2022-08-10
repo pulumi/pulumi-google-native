@@ -21,7 +21,7 @@ type AuditConfig struct {
 // AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
 // You can construct a concrete instance of `AuditConfigInput` via:
 //
-//          AuditConfigArgs{...}
+//	AuditConfigArgs{...}
 type AuditConfigInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
-//          AuditConfigArray{ AuditConfigArgs{...} }
+//	AuditConfigArray{ AuditConfigArgs{...} }
 type AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type AuditLogConfig struct {
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
 // You can construct a concrete instance of `AuditLogConfigInput` via:
 //
-//          AuditLogConfigArgs{...}
+//	AuditLogConfigArgs{...}
 type AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -341,7 +341,7 @@ type Automatic struct {
 // AutomaticInput is an input type that accepts AutomaticArgs and AutomaticOutput values.
 // You can construct a concrete instance of `AutomaticInput` via:
 //
-//          AutomaticArgs{...}
+//	AutomaticArgs{...}
 type AutomaticInput interface {
 	pulumi.Input
 
@@ -376,11 +376,11 @@ func (i AutomaticArgs) ToAutomaticPtrOutputWithContext(ctx context.Context) Auto
 // AutomaticPtrInput is an input type that accepts AutomaticArgs, AutomaticPtr and AutomaticPtrOutput values.
 // You can construct a concrete instance of `AutomaticPtrInput` via:
 //
-//          AutomaticArgs{...}
+//	        AutomaticArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AutomaticPtrInput interface {
 	pulumi.Input
 
@@ -487,7 +487,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -520,7 +520,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -667,7 +667,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -710,11 +710,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -905,7 +905,7 @@ type Replica struct {
 // ReplicaInput is an input type that accepts ReplicaArgs and ReplicaOutput values.
 // You can construct a concrete instance of `ReplicaInput` via:
 //
-//          ReplicaArgs{...}
+//	ReplicaArgs{...}
 type ReplicaInput interface {
 	pulumi.Input
 
@@ -934,7 +934,7 @@ func (i ReplicaArgs) ToReplicaOutputWithContext(ctx context.Context) ReplicaOutp
 // ReplicaArrayInput is an input type that accepts ReplicaArray and ReplicaArrayOutput values.
 // You can construct a concrete instance of `ReplicaArrayInput` via:
 //
-//          ReplicaArray{ ReplicaArgs{...} }
+//	ReplicaArray{ ReplicaArgs{...} }
 type ReplicaArrayInput interface {
 	pulumi.Input
 
@@ -1053,7 +1053,7 @@ type Replication struct {
 // ReplicationInput is an input type that accepts ReplicationArgs and ReplicationOutput values.
 // You can construct a concrete instance of `ReplicationInput` via:
 //
-//          ReplicationArgs{...}
+//	ReplicationArgs{...}
 type ReplicationInput interface {
 	pulumi.Input
 
@@ -1148,7 +1148,7 @@ type UserManaged struct {
 // UserManagedInput is an input type that accepts UserManagedArgs and UserManagedOutput values.
 // You can construct a concrete instance of `UserManagedInput` via:
 //
-//          UserManagedArgs{...}
+//	UserManagedArgs{...}
 type UserManagedInput interface {
 	pulumi.Input
 
@@ -1185,11 +1185,11 @@ func (i UserManagedArgs) ToUserManagedPtrOutputWithContext(ctx context.Context) 
 // UserManagedPtrInput is an input type that accepts UserManagedArgs, UserManagedPtr and UserManagedPtrOutput values.
 // You can construct a concrete instance of `UserManagedPtrInput` via:
 //
-//          UserManagedArgs{...}
+//	        UserManagedArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type UserManagedPtrInput interface {
 	pulumi.Input
 

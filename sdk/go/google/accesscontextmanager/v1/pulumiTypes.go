@@ -21,7 +21,7 @@ type ApiOperation struct {
 // ApiOperationInput is an input type that accepts ApiOperationArgs and ApiOperationOutput values.
 // You can construct a concrete instance of `ApiOperationInput` via:
 //
-//          ApiOperationArgs{...}
+//	ApiOperationArgs{...}
 type ApiOperationInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i ApiOperationArgs) ToApiOperationOutputWithContext(ctx context.Context) A
 // ApiOperationArrayInput is an input type that accepts ApiOperationArray and ApiOperationArrayOutput values.
 // You can construct a concrete instance of `ApiOperationArrayInput` via:
 //
-//          ApiOperationArray{ ApiOperationArgs{...} }
+//	ApiOperationArray{ ApiOperationArgs{...} }
 type ApiOperationArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type AuditConfig struct {
 // AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
 // You can construct a concrete instance of `AuditConfigInput` via:
 //
-//          AuditConfigArgs{...}
+//	AuditConfigArgs{...}
 type AuditConfigInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
-//          AuditConfigArray{ AuditConfigArgs{...} }
+//	AuditConfigArray{ AuditConfigArgs{...} }
 type AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -345,7 +345,7 @@ type AuditLogConfig struct {
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
 // You can construct a concrete instance of `AuditLogConfigInput` via:
 //
-//          AuditLogConfigArgs{...}
+//	AuditLogConfigArgs{...}
 type AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -376,7 +376,7 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -507,7 +507,7 @@ type BasicLevel struct {
 // BasicLevelInput is an input type that accepts BasicLevelArgs and BasicLevelOutput values.
 // You can construct a concrete instance of `BasicLevelInput` via:
 //
-//          BasicLevelArgs{...}
+//	BasicLevelArgs{...}
 type BasicLevelInput interface {
 	pulumi.Input
 
@@ -546,11 +546,11 @@ func (i BasicLevelArgs) ToBasicLevelPtrOutputWithContext(ctx context.Context) Ba
 // BasicLevelPtrInput is an input type that accepts BasicLevelArgs, BasicLevelPtr and BasicLevelPtrOutput values.
 // You can construct a concrete instance of `BasicLevelPtrInput` via:
 //
-//          BasicLevelArgs{...}
+//	        BasicLevelArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type BasicLevelPtrInput interface {
 	pulumi.Input
 
@@ -701,7 +701,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -734,7 +734,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -885,7 +885,7 @@ type Condition struct {
 // ConditionInput is an input type that accepts ConditionArgs and ConditionOutput values.
 // You can construct a concrete instance of `ConditionInput` via:
 //
-//          ConditionArgs{...}
+//	ConditionArgs{...}
 type ConditionInput interface {
 	pulumi.Input
 
@@ -924,7 +924,7 @@ func (i ConditionArgs) ToConditionOutputWithContext(ctx context.Context) Conditi
 // ConditionArrayInput is an input type that accepts ConditionArray and ConditionArrayOutput values.
 // You can construct a concrete instance of `ConditionArrayInput` via:
 //
-//          ConditionArray{ ConditionArgs{...} }
+//	ConditionArray{ ConditionArgs{...} }
 type ConditionArrayInput interface {
 	pulumi.Input
 
@@ -1101,7 +1101,7 @@ type CustomLevel struct {
 // CustomLevelInput is an input type that accepts CustomLevelArgs and CustomLevelOutput values.
 // You can construct a concrete instance of `CustomLevelInput` via:
 //
-//          CustomLevelArgs{...}
+//	CustomLevelArgs{...}
 type CustomLevelInput interface {
 	pulumi.Input
 
@@ -1138,11 +1138,11 @@ func (i CustomLevelArgs) ToCustomLevelPtrOutputWithContext(ctx context.Context) 
 // CustomLevelPtrInput is an input type that accepts CustomLevelArgs, CustomLevelPtr and CustomLevelPtrOutput values.
 // You can construct a concrete instance of `CustomLevelPtrInput` via:
 //
-//          CustomLevelArgs{...}
+//	        CustomLevelArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CustomLevelPtrInput interface {
 	pulumi.Input
 
@@ -1277,7 +1277,7 @@ type DevicePolicy struct {
 // DevicePolicyInput is an input type that accepts DevicePolicyArgs and DevicePolicyOutput values.
 // You can construct a concrete instance of `DevicePolicyInput` via:
 //
-//          DevicePolicyArgs{...}
+//	DevicePolicyArgs{...}
 type DevicePolicyInput interface {
 	pulumi.Input
 
@@ -1324,11 +1324,11 @@ func (i DevicePolicyArgs) ToDevicePolicyPtrOutputWithContext(ctx context.Context
 // DevicePolicyPtrInput is an input type that accepts DevicePolicyArgs, DevicePolicyPtr and DevicePolicyPtrOutput values.
 // You can construct a concrete instance of `DevicePolicyPtrInput` via:
 //
-//          DevicePolicyArgs{...}
+//	        DevicePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DevicePolicyPtrInput interface {
 	pulumi.Input
 
@@ -1567,7 +1567,7 @@ type EgressFrom struct {
 // EgressFromInput is an input type that accepts EgressFromArgs and EgressFromOutput values.
 // You can construct a concrete instance of `EgressFromInput` via:
 //
-//          EgressFromArgs{...}
+//	EgressFromArgs{...}
 type EgressFromInput interface {
 	pulumi.Input
 
@@ -1606,11 +1606,11 @@ func (i EgressFromArgs) ToEgressFromPtrOutputWithContext(ctx context.Context) Eg
 // EgressFromPtrInput is an input type that accepts EgressFromArgs, EgressFromPtr and EgressFromPtrOutput values.
 // You can construct a concrete instance of `EgressFromPtrInput` via:
 //
-//          EgressFromArgs{...}
+//	        EgressFromArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EgressFromPtrInput interface {
 	pulumi.Input
 
@@ -1759,7 +1759,7 @@ type EgressPolicy struct {
 // EgressPolicyInput is an input type that accepts EgressPolicyArgs and EgressPolicyOutput values.
 // You can construct a concrete instance of `EgressPolicyInput` via:
 //
-//          EgressPolicyArgs{...}
+//	EgressPolicyArgs{...}
 type EgressPolicyInput interface {
 	pulumi.Input
 
@@ -1790,7 +1790,7 @@ func (i EgressPolicyArgs) ToEgressPolicyOutputWithContext(ctx context.Context) E
 // EgressPolicyArrayInput is an input type that accepts EgressPolicyArray and EgressPolicyArrayOutput values.
 // You can construct a concrete instance of `EgressPolicyArrayInput` via:
 //
-//          EgressPolicyArray{ EgressPolicyArgs{...} }
+//	EgressPolicyArray{ EgressPolicyArgs{...} }
 type EgressPolicyArrayInput interface {
 	pulumi.Input
 
@@ -1923,7 +1923,7 @@ type EgressTo struct {
 // EgressToInput is an input type that accepts EgressToArgs and EgressToOutput values.
 // You can construct a concrete instance of `EgressToInput` via:
 //
-//          EgressToArgs{...}
+//	EgressToArgs{...}
 type EgressToInput interface {
 	pulumi.Input
 
@@ -1964,11 +1964,11 @@ func (i EgressToArgs) ToEgressToPtrOutputWithContext(ctx context.Context) Egress
 // EgressToPtrInput is an input type that accepts EgressToArgs, EgressToPtr and EgressToPtrOutput values.
 // You can construct a concrete instance of `EgressToPtrInput` via:
 //
-//          EgressToArgs{...}
+//	        EgressToArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EgressToPtrInput interface {
 	pulumi.Input
 
@@ -2143,7 +2143,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -2186,11 +2186,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -2385,7 +2385,7 @@ type IngressFrom struct {
 // IngressFromInput is an input type that accepts IngressFromArgs and IngressFromOutput values.
 // You can construct a concrete instance of `IngressFromInput` via:
 //
-//          IngressFromArgs{...}
+//	IngressFromArgs{...}
 type IngressFromInput interface {
 	pulumi.Input
 
@@ -2426,11 +2426,11 @@ func (i IngressFromArgs) ToIngressFromPtrOutputWithContext(ctx context.Context) 
 // IngressFromPtrInput is an input type that accepts IngressFromArgs, IngressFromPtr and IngressFromPtrOutput values.
 // You can construct a concrete instance of `IngressFromPtrInput` via:
 //
-//          IngressFromArgs{...}
+//	        IngressFromArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IngressFromPtrInput interface {
 	pulumi.Input
 
@@ -2601,7 +2601,7 @@ type IngressPolicy struct {
 // IngressPolicyInput is an input type that accepts IngressPolicyArgs and IngressPolicyOutput values.
 // You can construct a concrete instance of `IngressPolicyInput` via:
 //
-//          IngressPolicyArgs{...}
+//	IngressPolicyArgs{...}
 type IngressPolicyInput interface {
 	pulumi.Input
 
@@ -2632,7 +2632,7 @@ func (i IngressPolicyArgs) ToIngressPolicyOutputWithContext(ctx context.Context)
 // IngressPolicyArrayInput is an input type that accepts IngressPolicyArray and IngressPolicyArrayOutput values.
 // You can construct a concrete instance of `IngressPolicyArrayInput` via:
 //
-//          IngressPolicyArray{ IngressPolicyArgs{...} }
+//	IngressPolicyArray{ IngressPolicyArgs{...} }
 type IngressPolicyArrayInput interface {
 	pulumi.Input
 
@@ -2763,7 +2763,7 @@ type IngressSource struct {
 // IngressSourceInput is an input type that accepts IngressSourceArgs and IngressSourceOutput values.
 // You can construct a concrete instance of `IngressSourceInput` via:
 //
-//          IngressSourceArgs{...}
+//	IngressSourceArgs{...}
 type IngressSourceInput interface {
 	pulumi.Input
 
@@ -2794,7 +2794,7 @@ func (i IngressSourceArgs) ToIngressSourceOutputWithContext(ctx context.Context)
 // IngressSourceArrayInput is an input type that accepts IngressSourceArray and IngressSourceArrayOutput values.
 // You can construct a concrete instance of `IngressSourceArrayInput` via:
 //
-//          IngressSourceArray{ IngressSourceArgs{...} }
+//	IngressSourceArray{ IngressSourceArgs{...} }
 type IngressSourceArrayInput interface {
 	pulumi.Input
 
@@ -2925,7 +2925,7 @@ type IngressTo struct {
 // IngressToInput is an input type that accepts IngressToArgs and IngressToOutput values.
 // You can construct a concrete instance of `IngressToInput` via:
 //
-//          IngressToArgs{...}
+//	IngressToArgs{...}
 type IngressToInput interface {
 	pulumi.Input
 
@@ -2964,11 +2964,11 @@ func (i IngressToArgs) ToIngressToPtrOutputWithContext(ctx context.Context) Ingr
 // IngressToPtrInput is an input type that accepts IngressToArgs, IngressToPtr and IngressToPtrOutput values.
 // You can construct a concrete instance of `IngressToPtrInput` via:
 //
-//          IngressToArgs{...}
+//	        IngressToArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IngressToPtrInput interface {
 	pulumi.Input
 
@@ -3117,7 +3117,7 @@ type MethodSelector struct {
 // MethodSelectorInput is an input type that accepts MethodSelectorArgs and MethodSelectorOutput values.
 // You can construct a concrete instance of `MethodSelectorInput` via:
 //
-//          MethodSelectorArgs{...}
+//	MethodSelectorArgs{...}
 type MethodSelectorInput interface {
 	pulumi.Input
 
@@ -3148,7 +3148,7 @@ func (i MethodSelectorArgs) ToMethodSelectorOutputWithContext(ctx context.Contex
 // MethodSelectorArrayInput is an input type that accepts MethodSelectorArray and MethodSelectorArrayOutput values.
 // You can construct a concrete instance of `MethodSelectorArrayInput` via:
 //
-//          MethodSelectorArray{ MethodSelectorArgs{...} }
+//	MethodSelectorArray{ MethodSelectorArgs{...} }
 type MethodSelectorArrayInput interface {
 	pulumi.Input
 
@@ -3281,7 +3281,7 @@ type OsConstraint struct {
 // OsConstraintInput is an input type that accepts OsConstraintArgs and OsConstraintOutput values.
 // You can construct a concrete instance of `OsConstraintInput` via:
 //
-//          OsConstraintArgs{...}
+//	OsConstraintArgs{...}
 type OsConstraintInput interface {
 	pulumi.Input
 
@@ -3314,7 +3314,7 @@ func (i OsConstraintArgs) ToOsConstraintOutputWithContext(ctx context.Context) O
 // OsConstraintArrayInput is an input type that accepts OsConstraintArray and OsConstraintArrayOutput values.
 // You can construct a concrete instance of `OsConstraintArrayInput` via:
 //
-//          OsConstraintArray{ OsConstraintArgs{...} }
+//	OsConstraintArray{ OsConstraintArgs{...} }
 type OsConstraintArrayInput interface {
 	pulumi.Input
 
@@ -3465,7 +3465,7 @@ type ServicePerimeterConfig struct {
 // ServicePerimeterConfigInput is an input type that accepts ServicePerimeterConfigArgs and ServicePerimeterConfigOutput values.
 // You can construct a concrete instance of `ServicePerimeterConfigInput` via:
 //
-//          ServicePerimeterConfigArgs{...}
+//	ServicePerimeterConfigArgs{...}
 type ServicePerimeterConfigInput interface {
 	pulumi.Input
 
@@ -3512,11 +3512,11 @@ func (i ServicePerimeterConfigArgs) ToServicePerimeterConfigPtrOutputWithContext
 // ServicePerimeterConfigPtrInput is an input type that accepts ServicePerimeterConfigArgs, ServicePerimeterConfigPtr and ServicePerimeterConfigPtrOutput values.
 // You can construct a concrete instance of `ServicePerimeterConfigPtrInput` via:
 //
-//          ServicePerimeterConfigArgs{...}
+//	        ServicePerimeterConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServicePerimeterConfigPtrInput interface {
 	pulumi.Input
 
@@ -3753,7 +3753,7 @@ type VpcAccessibleServices struct {
 // VpcAccessibleServicesInput is an input type that accepts VpcAccessibleServicesArgs and VpcAccessibleServicesOutput values.
 // You can construct a concrete instance of `VpcAccessibleServicesInput` via:
 //
-//          VpcAccessibleServicesArgs{...}
+//	VpcAccessibleServicesArgs{...}
 type VpcAccessibleServicesInput interface {
 	pulumi.Input
 
@@ -3792,11 +3792,11 @@ func (i VpcAccessibleServicesArgs) ToVpcAccessibleServicesPtrOutputWithContext(c
 // VpcAccessibleServicesPtrInput is an input type that accepts VpcAccessibleServicesArgs, VpcAccessibleServicesPtr and VpcAccessibleServicesPtrOutput values.
 // You can construct a concrete instance of `VpcAccessibleServicesPtrInput` via:
 //
-//          VpcAccessibleServicesArgs{...}
+//	        VpcAccessibleServicesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VpcAccessibleServicesPtrInput interface {
 	pulumi.Input
 

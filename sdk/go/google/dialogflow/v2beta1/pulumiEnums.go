@@ -144,7 +144,7 @@ func (o ConversationConversationStagePtrOutput) ToStringPtrOutputWithContext(ctx
 // ConversationConversationStageInput is an input type that accepts ConversationConversationStageArgs and ConversationConversationStageOutput values.
 // You can construct a concrete instance of `ConversationConversationStageInput` via:
 //
-//          ConversationConversationStageArgs{...}
+//	ConversationConversationStageArgs{...}
 type ConversationConversationStageInput interface {
 	pulumi.Input
 
@@ -318,7 +318,7 @@ func (o DocumentKnowledgeTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx co
 // DocumentKnowledgeTypesItemInput is an input type that accepts DocumentKnowledgeTypesItemArgs and DocumentKnowledgeTypesItemOutput values.
 // You can construct a concrete instance of `DocumentKnowledgeTypesItemInput` via:
 //
-//          DocumentKnowledgeTypesItemArgs{...}
+//	DocumentKnowledgeTypesItemArgs{...}
 type DocumentKnowledgeTypesItemInput interface {
 	pulumi.Input
 
@@ -356,7 +356,7 @@ func (in *documentKnowledgeTypesItemPtr) ToDocumentKnowledgeTypesItemPtrOutputWi
 // DocumentKnowledgeTypesItemArrayInput is an input type that accepts DocumentKnowledgeTypesItemArray and DocumentKnowledgeTypesItemArrayOutput values.
 // You can construct a concrete instance of `DocumentKnowledgeTypesItemArrayInput` via:
 //
-//          DocumentKnowledgeTypesItemArray{ DocumentKnowledgeTypesItemArgs{...} }
+//	DocumentKnowledgeTypesItemArray{ DocumentKnowledgeTypesItemArgs{...} }
 type DocumentKnowledgeTypesItemArrayInput interface {
 	pulumi.Input
 
@@ -530,7 +530,7 @@ func (o EntityTypeAutoExpansionModePtrOutput) ToStringPtrOutputWithContext(ctx c
 // EntityTypeAutoExpansionModeInput is an input type that accepts EntityTypeAutoExpansionModeArgs and EntityTypeAutoExpansionModeOutput values.
 // You can construct a concrete instance of `EntityTypeAutoExpansionModeInput` via:
 //
-//          EntityTypeAutoExpansionModeArgs{...}
+//	EntityTypeAutoExpansionModeArgs{...}
 type EntityTypeAutoExpansionModeInput interface {
 	pulumi.Input
 
@@ -701,7 +701,7 @@ func (o EntityTypeKindPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // EntityTypeKindInput is an input type that accepts EntityTypeKindArgs and EntityTypeKindOutput values.
 // You can construct a concrete instance of `EntityTypeKindInput` via:
 //
-//          EntityTypeKindArgs{...}
+//	EntityTypeKindArgs{...}
 type EntityTypeKindInput interface {
 	pulumi.Input
 
@@ -868,7 +868,7 @@ func (o GoogleCloudDialogflowV2beta1FulfillmentFeatureTypePtrOutput) ToStringPtr
 // GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeArgs and GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeInput` via:
 //
-//          GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeArgs{...}
+//	GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeArgs{...}
 type GoogleCloudDialogflowV2beta1FulfillmentFeatureTypeInput interface {
 	pulumi.Input
 
@@ -1037,7 +1037,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouse
 // GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintArgs and GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionUrlTypeHintInput interface {
 	pulumi.Input
 
@@ -1210,7 +1210,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayO
 // GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsArgs and GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardImageDisplayOptionsInput interface {
 	pulumi.Input
 
@@ -1381,7 +1381,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlign
 // GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentArgs and GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesHorizontalAlignmentInput interface {
 	pulumi.Input
 
@@ -1548,7 +1548,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypePtrOutput)
 // GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeArgs and GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageMediaContentMediaTypeInput interface {
 	pulumi.Input
 
@@ -1733,7 +1733,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessagePlatformPtrOutput) ToStringPtrO
 // GoogleCloudDialogflowV2beta1IntentMessagePlatformInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessagePlatformArgs and GoogleCloudDialogflowV2beta1IntentMessagePlatformOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessagePlatformInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessagePlatformArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessagePlatformArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessagePlatformInput interface {
 	pulumi.Input
 
@@ -1904,7 +1904,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightPtr
 // GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaHeightInput interface {
 	pulumi.Input
 
@@ -2073,7 +2073,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthPtrOutp
 // GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardCardWidthInput interface {
 	pulumi.Input
 
@@ -2242,7 +2242,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientatio
 // GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardCardOrientationInput interface {
 	pulumi.Input
 
@@ -2411,7 +2411,7 @@ func (o GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImage
 // GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardThumbnailImageAlignmentInput interface {
 	pulumi.Input
 
@@ -2580,7 +2580,7 @@ func (o GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypePtrOutput) ToStringP
 // GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeArgs and GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeArgs{...}
 type GoogleCloudDialogflowV2beta1IntentTrainingPhraseTypeInput interface {
 	pulumi.Input
 
@@ -2749,7 +2749,7 @@ func (o GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatPtrOutput) To
 // GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatInput is an input type that accepts GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatArgs and GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatInput` via:
 //
-//          GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatArgs{...}
+//	GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatArgs{...}
 type GoogleCloudDialogflowV2beta1NotificationConfigMessageFormatInput interface {
 	pulumi.Input
 
@@ -2920,7 +2920,7 @@ func (o GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantPtrOutpu
 // GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantInput is an input type that accepts GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantArgs and GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantInput` via:
 //
-//          GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantArgs{...}
+//	GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantArgs{...}
 type GoogleCloudDialogflowV2beta1SpeechToTextConfigSpeechModelVariantInput interface {
 	pulumi.Input
 
@@ -3091,7 +3091,7 @@ func (o GoogleCloudDialogflowV2beta1SuggestionFeatureTypePtrOutput) ToStringPtrO
 // GoogleCloudDialogflowV2beta1SuggestionFeatureTypeInput is an input type that accepts GoogleCloudDialogflowV2beta1SuggestionFeatureTypeArgs and GoogleCloudDialogflowV2beta1SuggestionFeatureTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1SuggestionFeatureTypeInput` via:
 //
-//          GoogleCloudDialogflowV2beta1SuggestionFeatureTypeArgs{...}
+//	GoogleCloudDialogflowV2beta1SuggestionFeatureTypeArgs{...}
 type GoogleCloudDialogflowV2beta1SuggestionFeatureTypeInput interface {
 	pulumi.Input
 
@@ -3266,7 +3266,7 @@ func (o GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingPtrOu
 // GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingInput is an input type that accepts GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingArgs and GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingInput` via:
 //
-//          GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingArgs{...}
+//	GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingArgs{...}
 type GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncodingInput interface {
 	pulumi.Input
 
@@ -3450,7 +3450,7 @@ func (o IntentDefaultResponsePlatformsItemPtrOutput) ToStringPtrOutputWithContex
 // IntentDefaultResponsePlatformsItemInput is an input type that accepts IntentDefaultResponsePlatformsItemArgs and IntentDefaultResponsePlatformsItemOutput values.
 // You can construct a concrete instance of `IntentDefaultResponsePlatformsItemInput` via:
 //
-//          IntentDefaultResponsePlatformsItemArgs{...}
+//	IntentDefaultResponsePlatformsItemArgs{...}
 type IntentDefaultResponsePlatformsItemInput interface {
 	pulumi.Input
 
@@ -3488,7 +3488,7 @@ func (in *intentDefaultResponsePlatformsItemPtr) ToIntentDefaultResponsePlatform
 // IntentDefaultResponsePlatformsItemArrayInput is an input type that accepts IntentDefaultResponsePlatformsItemArray and IntentDefaultResponsePlatformsItemArrayOutput values.
 // You can construct a concrete instance of `IntentDefaultResponsePlatformsItemArrayInput` via:
 //
-//          IntentDefaultResponsePlatformsItemArray{ IntentDefaultResponsePlatformsItemArgs{...} }
+//	IntentDefaultResponsePlatformsItemArray{ IntentDefaultResponsePlatformsItemArgs{...} }
 type IntentDefaultResponsePlatformsItemArrayInput interface {
 	pulumi.Input
 
@@ -3664,7 +3664,7 @@ func (o IntentWebhookStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // IntentWebhookStateInput is an input type that accepts IntentWebhookStateArgs and IntentWebhookStateOutput values.
 // You can construct a concrete instance of `IntentWebhookStateInput` via:
 //
-//          IntentWebhookStateArgs{...}
+//	IntentWebhookStateArgs{...}
 type IntentWebhookStateInput interface {
 	pulumi.Input
 
@@ -3835,7 +3835,7 @@ func (o ParticipantRolePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // ParticipantRoleInput is an input type that accepts ParticipantRoleArgs and ParticipantRoleOutput values.
 // You can construct a concrete instance of `ParticipantRoleInput` via:
 //
-//          ParticipantRoleArgs{...}
+//	ParticipantRoleArgs{...}
 type ParticipantRoleInput interface {
 	pulumi.Input
 
@@ -4004,7 +4004,7 @@ func (o SessionEntityTypeEntityOverrideModePtrOutput) ToStringPtrOutputWithConte
 // SessionEntityTypeEntityOverrideModeInput is an input type that accepts SessionEntityTypeEntityOverrideModeArgs and SessionEntityTypeEntityOverrideModeOutput values.
 // You can construct a concrete instance of `SessionEntityTypeEntityOverrideModeInput` via:
 //
-//          SessionEntityTypeEntityOverrideModeArgs{...}
+//	SessionEntityTypeEntityOverrideModeArgs{...}
 type SessionEntityTypeEntityOverrideModeInput interface {
 	pulumi.Input
 

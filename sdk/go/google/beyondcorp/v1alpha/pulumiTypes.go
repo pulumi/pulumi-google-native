@@ -74,7 +74,7 @@ type ApplicationEndpoint struct {
 // ApplicationEndpointInput is an input type that accepts ApplicationEndpointArgs and ApplicationEndpointOutput values.
 // You can construct a concrete instance of `ApplicationEndpointInput` via:
 //
-//          ApplicationEndpointArgs{...}
+//	ApplicationEndpointArgs{...}
 type ApplicationEndpointInput interface {
 	pulumi.Input
 
@@ -171,7 +171,7 @@ type Config struct {
 // ConfigInput is an input type that accepts ConfigArgs and ConfigOutput values.
 // You can construct a concrete instance of `ConfigInput` via:
 //
-//          ConfigArgs{...}
+//	ConfigArgs{...}
 type ConfigInput interface {
 	pulumi.Input
 
@@ -210,11 +210,11 @@ func (i ConfigArgs) ToConfigPtrOutputWithContext(ctx context.Context) ConfigPtrO
 // ConfigPtrInput is an input type that accepts ConfigArgs, ConfigPtr and ConfigPtrOutput values.
 // You can construct a concrete instance of `ConfigPtrInput` via:
 //
-//          ConfigArgs{...}
+//	        ConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ConfigPtrInput interface {
 	pulumi.Input
 
@@ -363,7 +363,7 @@ type DestinationRoute struct {
 // DestinationRouteInput is an input type that accepts DestinationRouteArgs and DestinationRouteOutput values.
 // You can construct a concrete instance of `DestinationRouteInput` via:
 //
-//          DestinationRouteArgs{...}
+//	DestinationRouteArgs{...}
 type DestinationRouteInput interface {
 	pulumi.Input
 
@@ -394,7 +394,7 @@ func (i DestinationRouteArgs) ToDestinationRouteOutputWithContext(ctx context.Co
 // DestinationRouteArrayInput is an input type that accepts DestinationRouteArray and DestinationRouteArrayOutput values.
 // You can construct a concrete instance of `DestinationRouteArrayInput` via:
 //
-//          DestinationRouteArray{ DestinationRouteArgs{...} }
+//	DestinationRouteArray{ DestinationRouteArgs{...} }
 type DestinationRouteArrayInput interface {
 	pulumi.Input
 
@@ -523,7 +523,7 @@ type Egress struct {
 // EgressInput is an input type that accepts EgressArgs and EgressOutput values.
 // You can construct a concrete instance of `EgressInput` via:
 //
-//          EgressArgs{...}
+//	EgressArgs{...}
 type EgressInput interface {
 	pulumi.Input
 
@@ -604,7 +604,7 @@ type Gateway struct {
 // GatewayInput is an input type that accepts GatewayArgs and GatewayOutput values.
 // You can construct a concrete instance of `GatewayInput` via:
 //
-//          GatewayArgs{...}
+//	GatewayArgs{...}
 type GatewayInput interface {
 	pulumi.Input
 
@@ -641,11 +641,11 @@ func (i GatewayArgs) ToGatewayPtrOutputWithContext(ctx context.Context) GatewayP
 // GatewayPtrInput is an input type that accepts GatewayArgs, GatewayPtr and GatewayPtrOutput values.
 // You can construct a concrete instance of `GatewayPtrInput` via:
 //
-//          GatewayArgs{...}
+//	        GatewayArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GatewayPtrInput interface {
 	pulumi.Input
 
@@ -786,7 +786,7 @@ type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpoint 
 // GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointInput is an input type that accepts GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointArgs and GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointOutput values.
 // You can construct a concrete instance of `GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointInput` via:
 //
-//          GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointArgs{...}
+//	GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointArgs{...}
 type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionApplicationEndpointInput interface {
 	pulumi.Input
 
@@ -889,7 +889,7 @@ type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGateway struct {
 // GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayInput is an input type that accepts GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayArgs and GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayOutput values.
 // You can construct a concrete instance of `GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayInput` via:
 //
-//          GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayArgs{...}
+//	GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayArgs{...}
 type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayInput interface {
 	pulumi.Input
 
@@ -928,11 +928,11 @@ func (i GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayArgs) ToGo
 // GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayPtrInput is an input type that accepts GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayArgs, GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayPtr and GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayPtrInput` via:
 //
-//          GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayArgs{...}
+//	        GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayPtrInput interface {
 	pulumi.Input
 
@@ -1099,7 +1099,7 @@ type GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfo struct {
 // GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoInput is an input type that accepts GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs and GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoOutput values.
 // You can construct a concrete instance of `GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoInput` via:
 //
-//          GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs{...}
+//	GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoArgs{...}
 type GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoInput interface {
 	pulumi.Input
 
@@ -1184,7 +1184,7 @@ type GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAc
 // GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountInput is an input type that accepts GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountArgs and GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountOutput values.
 // You can construct a concrete instance of `GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountInput` via:
 //
-//          GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountArgs{...}
+//	GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountArgs{...}
 type GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountInput interface {
 	pulumi.Input
 
@@ -1221,11 +1221,11 @@ func (i GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServic
 // GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountPtrInput is an input type that accepts GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountArgs, GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountPtr and GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountPtrInput` via:
 //
-//          GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountArgs{...}
+//	        GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorPrincipalInfoServiceAccountPtrInput interface {
 	pulumi.Input
 
@@ -1362,7 +1362,7 @@ type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfo struct {
 // GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoInput is an input type that accepts GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs and GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoOutput values.
 // You can construct a concrete instance of `GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoInput` via:
 //
-//          GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs{...}
+//	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs{...}
 type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoInput interface {
 	pulumi.Input
 
@@ -1407,11 +1407,11 @@ func (i GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs) ToGoogleCloud
 // GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtrInput is an input type that accepts GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs, GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtr and GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtrInput` via:
 //
-//          GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs{...}
+//	        GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtrInput interface {
 	pulumi.Input
 
@@ -1440,7 +1440,7 @@ func (i *googleCloudBeyondcorpAppconnectorsV1alphaResourceInfoPtrType) ToGoogleC
 // GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArrayInput is an input type that accepts GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArray and GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArrayInput` via:
 //
-//          GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArray{ GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs{...} }
+//	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArray{ GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArgs{...} }
 type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoArrayInput interface {
 	pulumi.Input
 
@@ -1692,7 +1692,7 @@ type GoogleIamV1AuditConfig struct {
 // GoogleIamV1AuditConfigInput is an input type that accepts GoogleIamV1AuditConfigArgs and GoogleIamV1AuditConfigOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigInput` via:
 //
-//          GoogleIamV1AuditConfigArgs{...}
+//	GoogleIamV1AuditConfigArgs{...}
 type GoogleIamV1AuditConfigInput interface {
 	pulumi.Input
 
@@ -1723,7 +1723,7 @@ func (i GoogleIamV1AuditConfigArgs) ToGoogleIamV1AuditConfigOutputWithContext(ct
 // GoogleIamV1AuditConfigArrayInput is an input type that accepts GoogleIamV1AuditConfigArray and GoogleIamV1AuditConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigArrayInput` via:
 //
-//          GoogleIamV1AuditConfigArray{ GoogleIamV1AuditConfigArgs{...} }
+//	GoogleIamV1AuditConfigArray{ GoogleIamV1AuditConfigArgs{...} }
 type GoogleIamV1AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -1854,7 +1854,7 @@ type GoogleIamV1AuditLogConfig struct {
 // GoogleIamV1AuditLogConfigInput is an input type that accepts GoogleIamV1AuditLogConfigArgs and GoogleIamV1AuditLogConfigOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigInput` via:
 //
-//          GoogleIamV1AuditLogConfigArgs{...}
+//	GoogleIamV1AuditLogConfigArgs{...}
 type GoogleIamV1AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -1885,7 +1885,7 @@ func (i GoogleIamV1AuditLogConfigArgs) ToGoogleIamV1AuditLogConfigOutputWithCont
 // GoogleIamV1AuditLogConfigArrayInput is an input type that accepts GoogleIamV1AuditLogConfigArray and GoogleIamV1AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigArrayInput` via:
 //
-//          GoogleIamV1AuditLogConfigArray{ GoogleIamV1AuditLogConfigArgs{...} }
+//	GoogleIamV1AuditLogConfigArray{ GoogleIamV1AuditLogConfigArgs{...} }
 type GoogleIamV1AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -2018,7 +2018,7 @@ type GoogleIamV1Binding struct {
 // GoogleIamV1BindingInput is an input type that accepts GoogleIamV1BindingArgs and GoogleIamV1BindingOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingInput` via:
 //
-//          GoogleIamV1BindingArgs{...}
+//	GoogleIamV1BindingArgs{...}
 type GoogleIamV1BindingInput interface {
 	pulumi.Input
 
@@ -2051,7 +2051,7 @@ func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutputWithContext(ctx contex
 // GoogleIamV1BindingArrayInput is an input type that accepts GoogleIamV1BindingArray and GoogleIamV1BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingArrayInput` via:
 //
-//          GoogleIamV1BindingArray{ GoogleIamV1BindingArgs{...} }
+//	GoogleIamV1BindingArray{ GoogleIamV1BindingArgs{...} }
 type GoogleIamV1BindingArrayInput interface {
 	pulumi.Input
 
@@ -2198,7 +2198,7 @@ type GoogleTypeExpr struct {
 // GoogleTypeExprInput is an input type that accepts GoogleTypeExprArgs and GoogleTypeExprOutput values.
 // You can construct a concrete instance of `GoogleTypeExprInput` via:
 //
-//          GoogleTypeExprArgs{...}
+//	GoogleTypeExprArgs{...}
 type GoogleTypeExprInput interface {
 	pulumi.Input
 
@@ -2241,11 +2241,11 @@ func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutputWithContext(ctx context.Con
 // GoogleTypeExprPtrInput is an input type that accepts GoogleTypeExprArgs, GoogleTypeExprPtr and GoogleTypeExprPtrOutput values.
 // You can construct a concrete instance of `GoogleTypeExprPtrInput` via:
 //
-//          GoogleTypeExprArgs{...}
+//	        GoogleTypeExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleTypeExprPtrInput interface {
 	pulumi.Input
 
@@ -2436,7 +2436,7 @@ type Ingress struct {
 // IngressInput is an input type that accepts IngressArgs and IngressOutput values.
 // You can construct a concrete instance of `IngressInput` via:
 //
-//          IngressArgs{...}
+//	IngressArgs{...}
 type IngressInput interface {
 	pulumi.Input
 
@@ -2517,7 +2517,7 @@ type PeeredVpc struct {
 // PeeredVpcInput is an input type that accepts PeeredVpcArgs and PeeredVpcOutput values.
 // You can construct a concrete instance of `PeeredVpcInput` via:
 //
-//          PeeredVpcArgs{...}
+//	PeeredVpcArgs{...}
 type PeeredVpcInput interface {
 	pulumi.Input
 
@@ -2554,11 +2554,11 @@ func (i PeeredVpcArgs) ToPeeredVpcPtrOutputWithContext(ctx context.Context) Peer
 // PeeredVpcPtrInput is an input type that accepts PeeredVpcArgs, PeeredVpcPtr and PeeredVpcPtrOutput values.
 // You can construct a concrete instance of `PeeredVpcPtrInput` via:
 //
-//          PeeredVpcArgs{...}
+//	        PeeredVpcArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PeeredVpcPtrInput interface {
 	pulumi.Input
 
@@ -2683,7 +2683,7 @@ type PrincipalInfo struct {
 // PrincipalInfoInput is an input type that accepts PrincipalInfoArgs and PrincipalInfoOutput values.
 // You can construct a concrete instance of `PrincipalInfoInput` via:
 //
-//          PrincipalInfoArgs{...}
+//	PrincipalInfoArgs{...}
 type PrincipalInfoInput interface {
 	pulumi.Input
 
@@ -2772,7 +2772,7 @@ type ResourceInfo struct {
 // ResourceInfoInput is an input type that accepts ResourceInfoArgs and ResourceInfoOutput values.
 // You can construct a concrete instance of `ResourceInfoInput` via:
 //
-//          ResourceInfoArgs{...}
+//	ResourceInfoArgs{...}
 type ResourceInfoInput interface {
 	pulumi.Input
 
@@ -2817,11 +2817,11 @@ func (i ResourceInfoArgs) ToResourceInfoPtrOutputWithContext(ctx context.Context
 // ResourceInfoPtrInput is an input type that accepts ResourceInfoArgs, ResourceInfoPtr and ResourceInfoPtrOutput values.
 // You can construct a concrete instance of `ResourceInfoPtrInput` via:
 //
-//          ResourceInfoArgs{...}
+//	        ResourceInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ResourceInfoPtrInput interface {
 	pulumi.Input
 
@@ -2850,7 +2850,7 @@ func (i *resourceInfoPtrType) ToResourceInfoPtrOutputWithContext(ctx context.Con
 // ResourceInfoArrayInput is an input type that accepts ResourceInfoArray and ResourceInfoArrayOutput values.
 // You can construct a concrete instance of `ResourceInfoArrayInput` via:
 //
-//          ResourceInfoArray{ ResourceInfoArgs{...} }
+//	ResourceInfoArray{ ResourceInfoArgs{...} }
 type ResourceInfoArrayInput interface {
 	pulumi.Input
 
@@ -3092,7 +3092,7 @@ type ServiceAccount struct {
 // ServiceAccountInput is an input type that accepts ServiceAccountArgs and ServiceAccountOutput values.
 // You can construct a concrete instance of `ServiceAccountInput` via:
 //
-//          ServiceAccountArgs{...}
+//	ServiceAccountArgs{...}
 type ServiceAccountInput interface {
 	pulumi.Input
 
@@ -3129,11 +3129,11 @@ func (i ServiceAccountArgs) ToServiceAccountPtrOutputWithContext(ctx context.Con
 // ServiceAccountPtrInput is an input type that accepts ServiceAccountArgs, ServiceAccountPtr and ServiceAccountPtrOutput values.
 // You can construct a concrete instance of `ServiceAccountPtrInput` via:
 //
-//          ServiceAccountArgs{...}
+//	        ServiceAccountArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceAccountPtrInput interface {
 	pulumi.Input
 

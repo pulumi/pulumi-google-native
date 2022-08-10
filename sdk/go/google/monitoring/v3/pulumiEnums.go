@@ -166,7 +166,7 @@ func (o AggregationCrossSeriesReducerPtrOutput) ToStringPtrOutputWithContext(ctx
 // AggregationCrossSeriesReducerInput is an input type that accepts AggregationCrossSeriesReducerArgs and AggregationCrossSeriesReducerOutput values.
 // You can construct a concrete instance of `AggregationCrossSeriesReducerInput` via:
 //
-//          AggregationCrossSeriesReducerArgs{...}
+//	AggregationCrossSeriesReducerArgs{...}
 type AggregationCrossSeriesReducerInput interface {
 	pulumi.Input
 
@@ -367,7 +367,7 @@ func (o AggregationPerSeriesAlignerPtrOutput) ToStringPtrOutputWithContext(ctx c
 // AggregationPerSeriesAlignerInput is an input type that accepts AggregationPerSeriesAlignerArgs and AggregationPerSeriesAlignerOutput values.
 // You can construct a concrete instance of `AggregationPerSeriesAlignerInput` via:
 //
-//          AggregationPerSeriesAlignerArgs{...}
+//	AggregationPerSeriesAlignerArgs{...}
 type AggregationPerSeriesAlignerInput interface {
 	pulumi.Input
 
@@ -538,7 +538,7 @@ func (o AlertPolicyCombinerPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // AlertPolicyCombinerInput is an input type that accepts AlertPolicyCombinerArgs and AlertPolicyCombinerOutput values.
 // You can construct a concrete instance of `AlertPolicyCombinerInput` via:
 //
-//          AlertPolicyCombinerArgs{...}
+//	AlertPolicyCombinerArgs{...}
 type AlertPolicyCombinerInput interface {
 	pulumi.Input
 
@@ -715,7 +715,7 @@ func (o ContentMatcherMatcherPtrOutput) ToStringPtrOutputWithContext(ctx context
 // ContentMatcherMatcherInput is an input type that accepts ContentMatcherMatcherArgs and ContentMatcherMatcherOutput values.
 // You can construct a concrete instance of `ContentMatcherMatcherInput` via:
 //
-//          ContentMatcherMatcherArgs{...}
+//	ContentMatcherMatcherArgs{...}
 type ContentMatcherMatcherInput interface {
 	pulumi.Input
 
@@ -882,7 +882,7 @@ func (o HttpCheckContentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // HttpCheckContentTypeInput is an input type that accepts HttpCheckContentTypeArgs and HttpCheckContentTypeOutput values.
 // You can construct a concrete instance of `HttpCheckContentTypeInput` via:
 //
-//          HttpCheckContentTypeArgs{...}
+//	HttpCheckContentTypeArgs{...}
 type HttpCheckContentTypeInput interface {
 	pulumi.Input
 
@@ -1051,7 +1051,7 @@ func (o HttpCheckRequestMethodPtrOutput) ToStringPtrOutputWithContext(ctx contex
 // HttpCheckRequestMethodInput is an input type that accepts HttpCheckRequestMethodArgs and HttpCheckRequestMethodOutput values.
 // You can construct a concrete instance of `HttpCheckRequestMethodInput` via:
 //
-//          HttpCheckRequestMethodArgs{...}
+//	HttpCheckRequestMethodArgs{...}
 type HttpCheckRequestMethodInput interface {
 	pulumi.Input
 
@@ -1220,7 +1220,7 @@ func (o InternalCheckerStatePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // InternalCheckerStateInput is an input type that accepts InternalCheckerStateArgs and InternalCheckerStateOutput values.
 // You can construct a concrete instance of `InternalCheckerStateInput` via:
 //
-//          InternalCheckerStateArgs{...}
+//	InternalCheckerStateArgs{...}
 type InternalCheckerStateInput interface {
 	pulumi.Input
 
@@ -1389,7 +1389,7 @@ func (o JsonPathMatcherJsonMatcherPtrOutput) ToStringPtrOutputWithContext(ctx co
 // JsonPathMatcherJsonMatcherInput is an input type that accepts JsonPathMatcherJsonMatcherArgs and JsonPathMatcherJsonMatcherOutput values.
 // You can construct a concrete instance of `JsonPathMatcherJsonMatcherInput` via:
 //
-//          JsonPathMatcherJsonMatcherArgs{...}
+//	JsonPathMatcherJsonMatcherArgs{...}
 type JsonPathMatcherJsonMatcherInput interface {
 	pulumi.Input
 
@@ -1558,7 +1558,7 @@ func (o LabelDescriptorValueTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // LabelDescriptorValueTypeInput is an input type that accepts LabelDescriptorValueTypeArgs and LabelDescriptorValueTypeOutput values.
 // You can construct a concrete instance of `LabelDescriptorValueTypeInput` via:
 //
-//          LabelDescriptorValueTypeArgs{...}
+//	LabelDescriptorValueTypeArgs{...}
 type LabelDescriptorValueTypeInput interface {
 	pulumi.Input
 
@@ -1737,7 +1737,7 @@ func (o MetricDescriptorLaunchStagePtrOutput) ToStringPtrOutputWithContext(ctx c
 // MetricDescriptorLaunchStageInput is an input type that accepts MetricDescriptorLaunchStageArgs and MetricDescriptorLaunchStageOutput values.
 // You can construct a concrete instance of `MetricDescriptorLaunchStageInput` via:
 //
-//          MetricDescriptorLaunchStageArgs{...}
+//	MetricDescriptorLaunchStageArgs{...}
 type MetricDescriptorLaunchStageInput interface {
 	pulumi.Input
 
@@ -1916,7 +1916,7 @@ func (o MetricDescriptorMetadataLaunchStagePtrOutput) ToStringPtrOutputWithConte
 // MetricDescriptorMetadataLaunchStageInput is an input type that accepts MetricDescriptorMetadataLaunchStageArgs and MetricDescriptorMetadataLaunchStageOutput values.
 // You can construct a concrete instance of `MetricDescriptorMetadataLaunchStageInput` via:
 //
-//          MetricDescriptorMetadataLaunchStageArgs{...}
+//	MetricDescriptorMetadataLaunchStageArgs{...}
 type MetricDescriptorMetadataLaunchStageInput interface {
 	pulumi.Input
 
@@ -2087,7 +2087,7 @@ func (o MetricDescriptorMetricKindPtrOutput) ToStringPtrOutputWithContext(ctx co
 // MetricDescriptorMetricKindInput is an input type that accepts MetricDescriptorMetricKindArgs and MetricDescriptorMetricKindOutput values.
 // You can construct a concrete instance of `MetricDescriptorMetricKindInput` via:
 //
-//          MetricDescriptorMetricKindArgs{...}
+//	MetricDescriptorMetricKindArgs{...}
 type MetricDescriptorMetricKindInput interface {
 	pulumi.Input
 
@@ -2264,7 +2264,7 @@ func (o MetricDescriptorValueTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 // MetricDescriptorValueTypeInput is an input type that accepts MetricDescriptorValueTypeArgs and MetricDescriptorValueTypeOutput values.
 // You can construct a concrete instance of `MetricDescriptorValueTypeInput` via:
 //
-//          MetricDescriptorValueTypeArgs{...}
+//	MetricDescriptorValueTypeArgs{...}
 type MetricDescriptorValueTypeInput interface {
 	pulumi.Input
 
@@ -2441,7 +2441,7 @@ func (o MetricThresholdComparisonPtrOutput) ToStringPtrOutputWithContext(ctx con
 // MetricThresholdComparisonInput is an input type that accepts MetricThresholdComparisonArgs and MetricThresholdComparisonOutput values.
 // You can construct a concrete instance of `MetricThresholdComparisonInput` via:
 //
-//          MetricThresholdComparisonArgs{...}
+//	MetricThresholdComparisonArgs{...}
 type MetricThresholdComparisonInput interface {
 	pulumi.Input
 
@@ -2612,7 +2612,7 @@ func (o MetricThresholdEvaluationMissingDataPtrOutput) ToStringPtrOutputWithCont
 // MetricThresholdEvaluationMissingDataInput is an input type that accepts MetricThresholdEvaluationMissingDataArgs and MetricThresholdEvaluationMissingDataOutput values.
 // You can construct a concrete instance of `MetricThresholdEvaluationMissingDataInput` via:
 //
-//          MetricThresholdEvaluationMissingDataArgs{...}
+//	MetricThresholdEvaluationMissingDataArgs{...}
 type MetricThresholdEvaluationMissingDataInput interface {
 	pulumi.Input
 
@@ -2783,7 +2783,7 @@ func (o MonitoringQueryLanguageConditionEvaluationMissingDataPtrOutput) ToString
 // MonitoringQueryLanguageConditionEvaluationMissingDataInput is an input type that accepts MonitoringQueryLanguageConditionEvaluationMissingDataArgs and MonitoringQueryLanguageConditionEvaluationMissingDataOutput values.
 // You can construct a concrete instance of `MonitoringQueryLanguageConditionEvaluationMissingDataInput` via:
 //
-//          MonitoringQueryLanguageConditionEvaluationMissingDataArgs{...}
+//	MonitoringQueryLanguageConditionEvaluationMissingDataArgs{...}
 type MonitoringQueryLanguageConditionEvaluationMissingDataInput interface {
 	pulumi.Input
 
@@ -2952,7 +2952,7 @@ func (o NotificationChannelVerificationStatusPtrOutput) ToStringPtrOutputWithCon
 // NotificationChannelVerificationStatusInput is an input type that accepts NotificationChannelVerificationStatusArgs and NotificationChannelVerificationStatusOutput values.
 // You can construct a concrete instance of `NotificationChannelVerificationStatusInput` via:
 //
-//          NotificationChannelVerificationStatusArgs{...}
+//	NotificationChannelVerificationStatusArgs{...}
 type NotificationChannelVerificationStatusInput interface {
 	pulumi.Input
 
@@ -3121,7 +3121,7 @@ func (o ResourceGroupResourceTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 // ResourceGroupResourceTypeInput is an input type that accepts ResourceGroupResourceTypeArgs and ResourceGroupResourceTypeOutput values.
 // You can construct a concrete instance of `ResourceGroupResourceTypeInput` via:
 //
-//          ResourceGroupResourceTypeArgs{...}
+//	ResourceGroupResourceTypeArgs{...}
 type ResourceGroupResourceTypeInput interface {
 	pulumi.Input
 
@@ -3298,7 +3298,7 @@ func (o ResponseStatusCodeStatusClassPtrOutput) ToStringPtrOutputWithContext(ctx
 // ResponseStatusCodeStatusClassInput is an input type that accepts ResponseStatusCodeStatusClassArgs and ResponseStatusCodeStatusClassOutput values.
 // You can construct a concrete instance of `ResponseStatusCodeStatusClassInput` via:
 //
-//          ResponseStatusCodeStatusClassArgs{...}
+//	ResponseStatusCodeStatusClassArgs{...}
 type ResponseStatusCodeStatusClassInput interface {
 	pulumi.Input
 
@@ -3477,7 +3477,7 @@ func (o ServiceLevelObjectiveCalendarPeriodPtrOutput) ToStringPtrOutputWithConte
 // ServiceLevelObjectiveCalendarPeriodInput is an input type that accepts ServiceLevelObjectiveCalendarPeriodArgs and ServiceLevelObjectiveCalendarPeriodOutput values.
 // You can construct a concrete instance of `ServiceLevelObjectiveCalendarPeriodInput` via:
 //
-//          ServiceLevelObjectiveCalendarPeriodArgs{...}
+//	ServiceLevelObjectiveCalendarPeriodArgs{...}
 type ServiceLevelObjectiveCalendarPeriodInput interface {
 	pulumi.Input
 
@@ -3646,7 +3646,7 @@ func (o UptimeCheckConfigCheckerTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 // UptimeCheckConfigCheckerTypeInput is an input type that accepts UptimeCheckConfigCheckerTypeArgs and UptimeCheckConfigCheckerTypeOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigCheckerTypeInput` via:
 //
-//          UptimeCheckConfigCheckerTypeArgs{...}
+//	UptimeCheckConfigCheckerTypeArgs{...}
 type UptimeCheckConfigCheckerTypeInput interface {
 	pulumi.Input
 
@@ -3818,7 +3818,7 @@ func (o UptimeCheckConfigSelectedRegionsItemPtrOutput) ToStringPtrOutputWithCont
 // UptimeCheckConfigSelectedRegionsItemInput is an input type that accepts UptimeCheckConfigSelectedRegionsItemArgs and UptimeCheckConfigSelectedRegionsItemOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigSelectedRegionsItemInput` via:
 //
-//          UptimeCheckConfigSelectedRegionsItemArgs{...}
+//	UptimeCheckConfigSelectedRegionsItemArgs{...}
 type UptimeCheckConfigSelectedRegionsItemInput interface {
 	pulumi.Input
 
@@ -3856,7 +3856,7 @@ func (in *uptimeCheckConfigSelectedRegionsItemPtr) ToUptimeCheckConfigSelectedRe
 // UptimeCheckConfigSelectedRegionsItemArrayInput is an input type that accepts UptimeCheckConfigSelectedRegionsItemArray and UptimeCheckConfigSelectedRegionsItemArrayOutput values.
 // You can construct a concrete instance of `UptimeCheckConfigSelectedRegionsItemArrayInput` via:
 //
-//          UptimeCheckConfigSelectedRegionsItemArray{ UptimeCheckConfigSelectedRegionsItemArgs{...} }
+//	UptimeCheckConfigSelectedRegionsItemArray{ UptimeCheckConfigSelectedRegionsItemArgs{...} }
 type UptimeCheckConfigSelectedRegionsItemArrayInput interface {
 	pulumi.Input
 

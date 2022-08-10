@@ -142,7 +142,7 @@ func (o DomainRedirectTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // DomainRedirectTypeInput is an input type that accepts DomainRedirectTypeArgs and DomainRedirectTypeOutput values.
 // You can construct a concrete instance of `DomainRedirectTypeInput` via:
 //
-//          DomainRedirectTypeArgs{...}
+//	DomainRedirectTypeArgs{...}
 type DomainRedirectTypeInput interface {
 	pulumi.Input
 

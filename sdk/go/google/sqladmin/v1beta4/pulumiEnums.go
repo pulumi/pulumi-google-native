@@ -142,7 +142,7 @@ func (o BackupRetentionSettingsRetentionUnitPtrOutput) ToStringPtrOutputWithCont
 // BackupRetentionSettingsRetentionUnitInput is an input type that accepts BackupRetentionSettingsRetentionUnitArgs and BackupRetentionSettingsRetentionUnitOutput values.
 // You can construct a concrete instance of `BackupRetentionSettingsRetentionUnitInput` via:
 //
-//          BackupRetentionSettingsRetentionUnitArgs{...}
+//	BackupRetentionSettingsRetentionUnitArgs{...}
 type BackupRetentionSettingsRetentionUnitInput interface {
 	pulumi.Input
 
@@ -311,7 +311,7 @@ func (o BackupRunBackupKindPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // BackupRunBackupKindInput is an input type that accepts BackupRunBackupKindArgs and BackupRunBackupKindOutput values.
 // You can construct a concrete instance of `BackupRunBackupKindInput` via:
 //
-//          BackupRunBackupKindArgs{...}
+//	BackupRunBackupKindArgs{...}
 type BackupRunBackupKindInput interface {
 	pulumi.Input
 
@@ -506,7 +506,7 @@ func (o BackupRunTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 // BackupRunTypeInput is an input type that accepts BackupRunTypeArgs and BackupRunTypeOutput values.
 // You can construct a concrete instance of `BackupRunTypeInput` via:
 //
-//          BackupRunTypeArgs{...}
+//	BackupRunTypeArgs{...}
 type BackupRunTypeInput interface {
 	pulumi.Input
 
@@ -677,7 +677,7 @@ func (o InstanceBackendTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // InstanceBackendTypeInput is an input type that accepts InstanceBackendTypeArgs and InstanceBackendTypeOutput values.
 // You can construct a concrete instance of `InstanceBackendTypeInput` via:
 //
-//          InstanceBackendTypeArgs{...}
+//	InstanceBackendTypeArgs{...}
 type InstanceBackendTypeInput interface {
 	pulumi.Input
 
@@ -890,7 +890,7 @@ func (o InstanceDatabaseVersionPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // InstanceDatabaseVersionInput is an input type that accepts InstanceDatabaseVersionArgs and InstanceDatabaseVersionOutput values.
 // You can construct a concrete instance of `InstanceDatabaseVersionInput` via:
 //
-//          InstanceDatabaseVersionArgs{...}
+//	InstanceDatabaseVersionArgs{...}
 type InstanceDatabaseVersionInput interface {
 	pulumi.Input
 
@@ -1061,7 +1061,7 @@ func (o InstanceInstanceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // InstanceInstanceTypeInput is an input type that accepts InstanceInstanceTypeArgs and InstanceInstanceTypeOutput values.
 // You can construct a concrete instance of `InstanceInstanceTypeInput` via:
 //
-//          InstanceInstanceTypeArgs{...}
+//	InstanceInstanceTypeArgs{...}
 type InstanceInstanceTypeInput interface {
 	pulumi.Input
 
@@ -1240,7 +1240,7 @@ func (o InstanceStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // InstanceStateEnumInput is an input type that accepts InstanceStateEnumArgs and InstanceStateEnumOutput values.
 // You can construct a concrete instance of `InstanceStateEnumInput` via:
 //
-//          InstanceStateEnumArgs{...}
+//	InstanceStateEnumArgs{...}
 type InstanceStateEnumInput interface {
 	pulumi.Input
 
@@ -1412,7 +1412,7 @@ func (o InstanceSuspensionReasonItemPtrOutput) ToStringPtrOutputWithContext(ctx 
 // InstanceSuspensionReasonItemInput is an input type that accepts InstanceSuspensionReasonItemArgs and InstanceSuspensionReasonItemOutput values.
 // You can construct a concrete instance of `InstanceSuspensionReasonItemInput` via:
 //
-//          InstanceSuspensionReasonItemArgs{...}
+//	InstanceSuspensionReasonItemArgs{...}
 type InstanceSuspensionReasonItemInput interface {
 	pulumi.Input
 
@@ -1450,7 +1450,7 @@ func (in *instanceSuspensionReasonItemPtr) ToInstanceSuspensionReasonItemPtrOutp
 // InstanceSuspensionReasonItemArrayInput is an input type that accepts InstanceSuspensionReasonItemArray and InstanceSuspensionReasonItemArrayOutput values.
 // You can construct a concrete instance of `InstanceSuspensionReasonItemArrayInput` via:
 //
-//          InstanceSuspensionReasonItemArray{ InstanceSuspensionReasonItemArgs{...} }
+//	InstanceSuspensionReasonItemArray{ InstanceSuspensionReasonItemArgs{...} }
 type InstanceSuspensionReasonItemArrayInput interface {
 	pulumi.Input
 
@@ -1630,7 +1630,7 @@ func (o IpMappingTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 // IpMappingTypeInput is an input type that accepts IpMappingTypeArgs and IpMappingTypeOutput values.
 // You can construct a concrete instance of `IpMappingTypeInput` via:
 //
-//          IpMappingTypeArgs{...}
+//	IpMappingTypeArgs{...}
 type IpMappingTypeInput interface {
 	pulumi.Input
 
@@ -1799,7 +1799,7 @@ func (o MaintenanceWindowUpdateTrackPtrOutput) ToStringPtrOutputWithContext(ctx 
 // MaintenanceWindowUpdateTrackInput is an input type that accepts MaintenanceWindowUpdateTrackArgs and MaintenanceWindowUpdateTrackOutput values.
 // You can construct a concrete instance of `MaintenanceWindowUpdateTrackInput` via:
 //
-//          MaintenanceWindowUpdateTrackArgs{...}
+//	MaintenanceWindowUpdateTrackArgs{...}
 type MaintenanceWindowUpdateTrackInput interface {
 	pulumi.Input
 
@@ -1966,7 +1966,7 @@ func (o PasswordValidationPolicyComplexityPtrOutput) ToStringPtrOutputWithContex
 // PasswordValidationPolicyComplexityInput is an input type that accepts PasswordValidationPolicyComplexityArgs and PasswordValidationPolicyComplexityOutput values.
 // You can construct a concrete instance of `PasswordValidationPolicyComplexityInput` via:
 //
-//          PasswordValidationPolicyComplexityArgs{...}
+//	PasswordValidationPolicyComplexityArgs{...}
 type PasswordValidationPolicyComplexityInput interface {
 	pulumi.Input
 
@@ -2137,7 +2137,7 @@ func (o SettingsActivationPolicyPtrOutput) ToStringPtrOutputWithContext(ctx cont
 // SettingsActivationPolicyInput is an input type that accepts SettingsActivationPolicyArgs and SettingsActivationPolicyOutput values.
 // You can construct a concrete instance of `SettingsActivationPolicyInput` via:
 //
-//          SettingsActivationPolicyArgs{...}
+//	SettingsActivationPolicyArgs{...}
 type SettingsActivationPolicyInput interface {
 	pulumi.Input
 
@@ -2306,7 +2306,7 @@ func (o SettingsAvailabilityTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // SettingsAvailabilityTypeInput is an input type that accepts SettingsAvailabilityTypeArgs and SettingsAvailabilityTypeOutput values.
 // You can construct a concrete instance of `SettingsAvailabilityTypeInput` via:
 //
-//          SettingsAvailabilityTypeArgs{...}
+//	SettingsAvailabilityTypeArgs{...}
 type SettingsAvailabilityTypeInput interface {
 	pulumi.Input
 
@@ -2477,7 +2477,7 @@ func (o SettingsDataDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // SettingsDataDiskTypeInput is an input type that accepts SettingsDataDiskTypeArgs and SettingsDataDiskTypeOutput values.
 // You can construct a concrete instance of `SettingsDataDiskTypeInput` via:
 //
-//          SettingsDataDiskTypeArgs{...}
+//	SettingsDataDiskTypeArgs{...}
 type SettingsDataDiskTypeInput interface {
 	pulumi.Input
 
@@ -2646,7 +2646,7 @@ func (o SettingsPricingPlanPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // SettingsPricingPlanInput is an input type that accepts SettingsPricingPlanArgs and SettingsPricingPlanOutput values.
 // You can construct a concrete instance of `SettingsPricingPlanInput` via:
 //
-//          SettingsPricingPlanArgs{...}
+//	SettingsPricingPlanArgs{...}
 type SettingsPricingPlanInput interface {
 	pulumi.Input
 
@@ -2815,7 +2815,7 @@ func (o SettingsReplicationTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 // SettingsReplicationTypeInput is an input type that accepts SettingsReplicationTypeArgs and SettingsReplicationTypeOutput values.
 // You can construct a concrete instance of `SettingsReplicationTypeInput` via:
 //
-//          SettingsReplicationTypeArgs{...}
+//	SettingsReplicationTypeArgs{...}
 type SettingsReplicationTypeInput interface {
 	pulumi.Input
 
@@ -2984,7 +2984,7 @@ func (o SqlOutOfDiskReportSqlOutOfDiskStatePtrOutput) ToStringPtrOutputWithConte
 // SqlOutOfDiskReportSqlOutOfDiskStateInput is an input type that accepts SqlOutOfDiskReportSqlOutOfDiskStateArgs and SqlOutOfDiskReportSqlOutOfDiskStateOutput values.
 // You can construct a concrete instance of `SqlOutOfDiskReportSqlOutOfDiskStateInput` via:
 //
-//          SqlOutOfDiskReportSqlOutOfDiskStateArgs{...}
+//	SqlOutOfDiskReportSqlOutOfDiskStateArgs{...}
 type SqlOutOfDiskReportSqlOutOfDiskStateInput interface {
 	pulumi.Input
 
@@ -3155,7 +3155,7 @@ func (o UserDualPasswordTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // UserDualPasswordTypeInput is an input type that accepts UserDualPasswordTypeArgs and UserDualPasswordTypeOutput values.
 // You can construct a concrete instance of `UserDualPasswordTypeInput` via:
 //
-//          UserDualPasswordTypeArgs{...}
+//	UserDualPasswordTypeArgs{...}
 type UserDualPasswordTypeInput interface {
 	pulumi.Input
 
@@ -3324,7 +3324,7 @@ func (o UserTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 // UserTypeInput is an input type that accepts UserTypeArgs and UserTypeOutput values.
 // You can construct a concrete instance of `UserTypeInput` via:
 //
-//          UserTypeArgs{...}
+//	UserTypeArgs{...}
 type UserTypeInput interface {
 	pulumi.Input
 

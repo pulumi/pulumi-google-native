@@ -20,7 +20,7 @@ type CompositeFilter struct {
 // CompositeFilterInput is an input type that accepts CompositeFilterArgs and CompositeFilterOutput values.
 // You can construct a concrete instance of `CompositeFilterInput` via:
 //
-//          CompositeFilterArgs{...}
+//	CompositeFilterArgs{...}
 type CompositeFilterInput interface {
 	pulumi.Input
 
@@ -58,11 +58,11 @@ func (i CompositeFilterArgs) ToCompositeFilterPtrOutputWithContext(ctx context.C
 // CompositeFilterPtrInput is an input type that accepts CompositeFilterArgs, CompositeFilterPtr and CompositeFilterPtrOutput values.
 // You can construct a concrete instance of `CompositeFilterPtrInput` via:
 //
-//          CompositeFilterArgs{...}
+//	        CompositeFilterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CompositeFilterPtrInput interface {
 	pulumi.Input
 
@@ -208,7 +208,7 @@ type DataSourceRestriction struct {
 // DataSourceRestrictionInput is an input type that accepts DataSourceRestrictionArgs and DataSourceRestrictionOutput values.
 // You can construct a concrete instance of `DataSourceRestrictionInput` via:
 //
-//          DataSourceRestrictionArgs{...}
+//	DataSourceRestrictionArgs{...}
 type DataSourceRestrictionInput interface {
 	pulumi.Input
 
@@ -239,7 +239,7 @@ func (i DataSourceRestrictionArgs) ToDataSourceRestrictionOutputWithContext(ctx 
 // DataSourceRestrictionArrayInput is an input type that accepts DataSourceRestrictionArray and DataSourceRestrictionArrayOutput values.
 // You can construct a concrete instance of `DataSourceRestrictionArrayInput` via:
 //
-//          DataSourceRestrictionArray{ DataSourceRestrictionArgs{...} }
+//	DataSourceRestrictionArray{ DataSourceRestrictionArgs{...} }
 type DataSourceRestrictionArrayInput interface {
 	pulumi.Input
 
@@ -372,7 +372,7 @@ type Date struct {
 // DateInput is an input type that accepts DateArgs and DateOutput values.
 // You can construct a concrete instance of `DateInput` via:
 //
-//          DateArgs{...}
+//	DateArgs{...}
 type DateInput interface {
 	pulumi.Input
 
@@ -413,11 +413,11 @@ func (i DateArgs) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOutput 
 // DatePtrInput is an input type that accepts DateArgs, DatePtr and DatePtrOutput values.
 // You can construct a concrete instance of `DatePtrInput` via:
 //
-//          DateArgs{...}
+//	        DateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatePtrInput interface {
 	pulumi.Input
 
@@ -598,7 +598,7 @@ type FacetOptions struct {
 // FacetOptionsInput is an input type that accepts FacetOptionsArgs and FacetOptionsOutput values.
 // You can construct a concrete instance of `FacetOptionsInput` via:
 //
-//          FacetOptionsArgs{...}
+//	FacetOptionsArgs{...}
 type FacetOptionsInput interface {
 	pulumi.Input
 
@@ -633,7 +633,7 @@ func (i FacetOptionsArgs) ToFacetOptionsOutputWithContext(ctx context.Context) F
 // FacetOptionsArrayInput is an input type that accepts FacetOptionsArray and FacetOptionsArrayOutput values.
 // You can construct a concrete instance of `FacetOptionsArrayInput` via:
 //
-//          FacetOptionsArray{ FacetOptionsArgs{...} }
+//	FacetOptionsArray{ FacetOptionsArgs{...} }
 type FacetOptionsArrayInput interface {
 	pulumi.Input
 
@@ -786,7 +786,7 @@ type Filter struct {
 // FilterInput is an input type that accepts FilterArgs and FilterOutput values.
 // You can construct a concrete instance of `FilterInput` via:
 //
-//          FilterArgs{...}
+//	FilterArgs{...}
 type FilterInput interface {
 	pulumi.Input
 
@@ -823,11 +823,11 @@ func (i FilterArgs) ToFilterPtrOutputWithContext(ctx context.Context) FilterPtrO
 // FilterPtrInput is an input type that accepts FilterArgs, FilterPtr and FilterPtrOutput values.
 // You can construct a concrete instance of `FilterPtrInput` via:
 //
-//          FilterArgs{...}
+//	        FilterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FilterPtrInput interface {
 	pulumi.Input
 
@@ -856,7 +856,7 @@ func (i *filterPtrType) ToFilterPtrOutputWithContext(ctx context.Context) Filter
 // FilterArrayInput is an input type that accepts FilterArray and FilterArrayOutput values.
 // You can construct a concrete instance of `FilterArrayInput` via:
 //
-//          FilterArray{ FilterArgs{...} }
+//	FilterArray{ FilterArgs{...} }
 type FilterArrayInput interface {
 	pulumi.Input
 
@@ -984,7 +984,7 @@ type FilterOptions struct {
 // FilterOptionsInput is an input type that accepts FilterOptionsArgs and FilterOptionsOutput values.
 // You can construct a concrete instance of `FilterOptionsInput` via:
 //
-//          FilterOptionsArgs{...}
+//	FilterOptionsArgs{...}
 type FilterOptionsInput interface {
 	pulumi.Input
 
@@ -1015,7 +1015,7 @@ func (i FilterOptionsArgs) ToFilterOptionsOutputWithContext(ctx context.Context)
 // FilterOptionsArrayInput is an input type that accepts FilterOptionsArray and FilterOptionsArrayOutput values.
 // You can construct a concrete instance of `FilterOptionsArrayInput` via:
 //
-//          FilterOptionsArray{ FilterOptionsArgs{...} }
+//	FilterOptionsArray{ FilterOptionsArgs{...} }
 type FilterOptionsArrayInput interface {
 	pulumi.Input
 
@@ -1196,7 +1196,7 @@ type GSuitePrincipal struct {
 // GSuitePrincipalInput is an input type that accepts GSuitePrincipalArgs and GSuitePrincipalOutput values.
 // You can construct a concrete instance of `GSuitePrincipalInput` via:
 //
-//          GSuitePrincipalArgs{...}
+//	GSuitePrincipalArgs{...}
 type GSuitePrincipalInput interface {
 	pulumi.Input
 
@@ -1228,7 +1228,7 @@ func (i GSuitePrincipalArgs) ToGSuitePrincipalOutputWithContext(ctx context.Cont
 // GSuitePrincipalArrayInput is an input type that accepts GSuitePrincipalArray and GSuitePrincipalArrayOutput values.
 // You can construct a concrete instance of `GSuitePrincipalArrayInput` via:
 //
-//          GSuitePrincipalArray{ GSuitePrincipalArgs{...} }
+//	GSuitePrincipalArray{ GSuitePrincipalArgs{...} }
 type GSuitePrincipalArrayInput interface {
 	pulumi.Input
 
@@ -1368,7 +1368,7 @@ type QueryInterpretationConfig struct {
 // QueryInterpretationConfigInput is an input type that accepts QueryInterpretationConfigArgs and QueryInterpretationConfigOutput values.
 // You can construct a concrete instance of `QueryInterpretationConfigInput` via:
 //
-//          QueryInterpretationConfigArgs{...}
+//	QueryInterpretationConfigArgs{...}
 type QueryInterpretationConfigInput interface {
 	pulumi.Input
 
@@ -1407,11 +1407,11 @@ func (i QueryInterpretationConfigArgs) ToQueryInterpretationConfigPtrOutputWithC
 // QueryInterpretationConfigPtrInput is an input type that accepts QueryInterpretationConfigArgs, QueryInterpretationConfigPtr and QueryInterpretationConfigPtrOutput values.
 // You can construct a concrete instance of `QueryInterpretationConfigPtrInput` via:
 //
-//          QueryInterpretationConfigArgs{...}
+//	        QueryInterpretationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type QueryInterpretationConfigPtrInput interface {
 	pulumi.Input
 
@@ -1560,7 +1560,7 @@ type ScoringConfig struct {
 // ScoringConfigInput is an input type that accepts ScoringConfigArgs and ScoringConfigOutput values.
 // You can construct a concrete instance of `ScoringConfigInput` via:
 //
-//          ScoringConfigArgs{...}
+//	ScoringConfigArgs{...}
 type ScoringConfigInput interface {
 	pulumi.Input
 
@@ -1599,11 +1599,11 @@ func (i ScoringConfigArgs) ToScoringConfigPtrOutputWithContext(ctx context.Conte
 // ScoringConfigPtrInput is an input type that accepts ScoringConfigArgs, ScoringConfigPtr and ScoringConfigPtrOutput values.
 // You can construct a concrete instance of `ScoringConfigPtrInput` via:
 //
-//          ScoringConfigArgs{...}
+//	        ScoringConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ScoringConfigPtrInput interface {
 	pulumi.Input
 
@@ -1751,7 +1751,7 @@ type SortOptions struct {
 // SortOptionsInput is an input type that accepts SortOptionsArgs and SortOptionsOutput values.
 // You can construct a concrete instance of `SortOptionsInput` via:
 //
-//          SortOptionsArgs{...}
+//	SortOptionsArgs{...}
 type SortOptionsInput interface {
 	pulumi.Input
 
@@ -1789,11 +1789,11 @@ func (i SortOptionsArgs) ToSortOptionsPtrOutputWithContext(ctx context.Context) 
 // SortOptionsPtrInput is an input type that accepts SortOptionsArgs, SortOptionsPtr and SortOptionsPtrOutput values.
 // You can construct a concrete instance of `SortOptionsPtrInput` via:
 //
-//          SortOptionsArgs{...}
+//	        SortOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SortOptionsPtrInput interface {
 	pulumi.Input
 
@@ -1939,7 +1939,7 @@ type Source struct {
 // SourceInput is an input type that accepts SourceArgs and SourceOutput values.
 // You can construct a concrete instance of `SourceInput` via:
 //
-//          SourceArgs{...}
+//	SourceArgs{...}
 type SourceInput interface {
 	pulumi.Input
 
@@ -1978,11 +1978,11 @@ func (i SourceArgs) ToSourcePtrOutputWithContext(ctx context.Context) SourcePtrO
 // SourcePtrInput is an input type that accepts SourceArgs, SourcePtr and SourcePtrOutput values.
 // You can construct a concrete instance of `SourcePtrInput` via:
 //
-//          SourceArgs{...}
+//	        SourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SourcePtrInput interface {
 	pulumi.Input
 
@@ -2100,7 +2100,7 @@ type SourceConfig struct {
 // SourceConfigInput is an input type that accepts SourceConfigArgs and SourceConfigOutput values.
 // You can construct a concrete instance of `SourceConfigInput` via:
 //
-//          SourceConfigArgs{...}
+//	SourceConfigArgs{...}
 type SourceConfigInput interface {
 	pulumi.Input
 
@@ -2133,7 +2133,7 @@ func (i SourceConfigArgs) ToSourceConfigOutputWithContext(ctx context.Context) S
 // SourceConfigArrayInput is an input type that accepts SourceConfigArray and SourceConfigArrayOutput values.
 // You can construct a concrete instance of `SourceConfigArrayInput` via:
 //
-//          SourceConfigArray{ SourceConfigArgs{...} }
+//	SourceConfigArray{ SourceConfigArgs{...} }
 type SourceConfigArrayInput interface {
 	pulumi.Input
 
@@ -2276,7 +2276,7 @@ type SourceCrowdingConfig struct {
 // SourceCrowdingConfigInput is an input type that accepts SourceCrowdingConfigArgs and SourceCrowdingConfigOutput values.
 // You can construct a concrete instance of `SourceCrowdingConfigInput` via:
 //
-//          SourceCrowdingConfigArgs{...}
+//	SourceCrowdingConfigArgs{...}
 type SourceCrowdingConfigInput interface {
 	pulumi.Input
 
@@ -2315,11 +2315,11 @@ func (i SourceCrowdingConfigArgs) ToSourceCrowdingConfigPtrOutputWithContext(ctx
 // SourceCrowdingConfigPtrInput is an input type that accepts SourceCrowdingConfigArgs, SourceCrowdingConfigPtr and SourceCrowdingConfigPtrOutput values.
 // You can construct a concrete instance of `SourceCrowdingConfigPtrInput` via:
 //
-//          SourceCrowdingConfigArgs{...}
+//	        SourceCrowdingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SourceCrowdingConfigPtrInput interface {
 	pulumi.Input
 
@@ -2499,7 +2499,7 @@ type SourceScoringConfig struct {
 // SourceScoringConfigInput is an input type that accepts SourceScoringConfigArgs and SourceScoringConfigOutput values.
 // You can construct a concrete instance of `SourceScoringConfigInput` via:
 //
-//          SourceScoringConfigArgs{...}
+//	SourceScoringConfigArgs{...}
 type SourceScoringConfigInput interface {
 	pulumi.Input
 
@@ -2536,11 +2536,11 @@ func (i SourceScoringConfigArgs) ToSourceScoringConfigPtrOutputWithContext(ctx c
 // SourceScoringConfigPtrInput is an input type that accepts SourceScoringConfigArgs, SourceScoringConfigPtr and SourceScoringConfigPtrOutput values.
 // You can construct a concrete instance of `SourceScoringConfigPtrInput` via:
 //
-//          SourceScoringConfigArgs{...}
+//	        SourceScoringConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SourceScoringConfigPtrInput interface {
 	pulumi.Input
 
@@ -2669,7 +2669,7 @@ type Value struct {
 // ValueInput is an input type that accepts ValueArgs and ValueOutput values.
 // You can construct a concrete instance of `ValueInput` via:
 //
-//          ValueArgs{...}
+//	ValueArgs{...}
 type ValueInput interface {
 	pulumi.Input
 
@@ -2710,11 +2710,11 @@ func (i ValueArgs) ToValuePtrOutputWithContext(ctx context.Context) ValuePtrOutp
 // ValuePtrInput is an input type that accepts ValueArgs, ValuePtr and ValuePtrOutput values.
 // You can construct a concrete instance of `ValuePtrInput` via:
 //
-//          ValueArgs{...}
+//	        ValueArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ValuePtrInput interface {
 	pulumi.Input
 
@@ -2877,7 +2877,7 @@ type ValueFilter struct {
 // ValueFilterInput is an input type that accepts ValueFilterArgs and ValueFilterOutput values.
 // You can construct a concrete instance of `ValueFilterInput` via:
 //
-//          ValueFilterArgs{...}
+//	ValueFilterArgs{...}
 type ValueFilterInput interface {
 	pulumi.Input
 
@@ -2915,11 +2915,11 @@ func (i ValueFilterArgs) ToValueFilterPtrOutputWithContext(ctx context.Context) 
 // ValueFilterPtrInput is an input type that accepts ValueFilterArgs, ValueFilterPtr and ValueFilterPtrOutput values.
 // You can construct a concrete instance of `ValueFilterPtrInput` via:
 //
-//          ValueFilterArgs{...}
+//	        ValueFilterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ValueFilterPtrInput interface {
 	pulumi.Input
 

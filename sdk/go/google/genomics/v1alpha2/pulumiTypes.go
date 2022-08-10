@@ -33,7 +33,7 @@ type Disk struct {
 // DiskInput is an input type that accepts DiskArgs and DiskOutput values.
 // You can construct a concrete instance of `DiskInput` via:
 //
-//          DiskArgs{...}
+//	DiskArgs{...}
 type DiskInput interface {
 	pulumi.Input
 
@@ -76,7 +76,7 @@ func (i DiskArgs) ToDiskOutputWithContext(ctx context.Context) DiskOutput {
 // DiskArrayInput is an input type that accepts DiskArray and DiskArrayOutput values.
 // You can construct a concrete instance of `DiskArrayInput` via:
 //
-//          DiskArray{ DiskArgs{...} }
+//	DiskArray{ DiskArgs{...} }
 type DiskArrayInput interface {
 	pulumi.Input
 
@@ -273,7 +273,7 @@ type DockerExecutor struct {
 // DockerExecutorInput is an input type that accepts DockerExecutorArgs and DockerExecutorOutput values.
 // You can construct a concrete instance of `DockerExecutorInput` via:
 //
-//          DockerExecutorArgs{...}
+//	DockerExecutorArgs{...}
 type DockerExecutorInput interface {
 	pulumi.Input
 
@@ -312,11 +312,11 @@ func (i DockerExecutorArgs) ToDockerExecutorPtrOutputWithContext(ctx context.Con
 // DockerExecutorPtrInput is an input type that accepts DockerExecutorArgs, DockerExecutorPtr and DockerExecutorPtrOutput values.
 // You can construct a concrete instance of `DockerExecutorPtrInput` via:
 //
-//          DockerExecutorArgs{...}
+//	        DockerExecutorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DockerExecutorPtrInput interface {
 	pulumi.Input
 
@@ -465,7 +465,7 @@ type LocalCopy struct {
 // LocalCopyInput is an input type that accepts LocalCopyArgs and LocalCopyOutput values.
 // You can construct a concrete instance of `LocalCopyInput` via:
 //
-//          LocalCopyArgs{...}
+//	LocalCopyArgs{...}
 type LocalCopyInput interface {
 	pulumi.Input
 
@@ -504,11 +504,11 @@ func (i LocalCopyArgs) ToLocalCopyPtrOutputWithContext(ctx context.Context) Loca
 // LocalCopyPtrInput is an input type that accepts LocalCopyArgs, LocalCopyPtr and LocalCopyPtrOutput values.
 // You can construct a concrete instance of `LocalCopyPtrInput` via:
 //
-//          LocalCopyArgs{...}
+//	        LocalCopyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LocalCopyPtrInput interface {
 	pulumi.Input
 
@@ -661,7 +661,7 @@ type PipelineParameter struct {
 // PipelineParameterInput is an input type that accepts PipelineParameterArgs and PipelineParameterOutput values.
 // You can construct a concrete instance of `PipelineParameterInput` via:
 //
-//          PipelineParameterArgs{...}
+//	PipelineParameterArgs{...}
 type PipelineParameterInput interface {
 	pulumi.Input
 
@@ -696,7 +696,7 @@ func (i PipelineParameterArgs) ToPipelineParameterOutputWithContext(ctx context.
 // PipelineParameterArrayInput is an input type that accepts PipelineParameterArray and PipelineParameterArrayOutput values.
 // You can construct a concrete instance of `PipelineParameterArrayInput` via:
 //
-//          PipelineParameterArray{ PipelineParameterArgs{...} }
+//	PipelineParameterArray{ PipelineParameterArgs{...} }
 type PipelineParameterArrayInput interface {
 	pulumi.Input
 
@@ -865,7 +865,7 @@ type PipelineResources struct {
 // PipelineResourcesInput is an input type that accepts PipelineResourcesArgs and PipelineResourcesOutput values.
 // You can construct a concrete instance of `PipelineResourcesInput` via:
 //
-//          PipelineResourcesArgs{...}
+//	PipelineResourcesArgs{...}
 type PipelineResourcesInput interface {
 	pulumi.Input
 

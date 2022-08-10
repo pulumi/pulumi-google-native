@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o FeatureSpecProvisionGoogleCaPtrOutput) ToStringPtrOutputWithContext(ctx 
 // FeatureSpecProvisionGoogleCaInput is an input type that accepts FeatureSpecProvisionGoogleCaArgs and FeatureSpecProvisionGoogleCaOutput values.
 // You can construct a concrete instance of `FeatureSpecProvisionGoogleCaInput` via:
 //
-//          FeatureSpecProvisionGoogleCaArgs{...}
+//	FeatureSpecProvisionGoogleCaArgs{...}
 type FeatureSpecProvisionGoogleCaInput interface {
 	pulumi.Input
 
@@ -484,7 +484,7 @@ func (o MembershipSpecCertificateManagementPtrOutput) ToStringPtrOutputWithConte
 // MembershipSpecCertificateManagementInput is an input type that accepts MembershipSpecCertificateManagementArgs and MembershipSpecCertificateManagementOutput values.
 // You can construct a concrete instance of `MembershipSpecCertificateManagementInput` via:
 //
-//          MembershipSpecCertificateManagementArgs{...}
+//	MembershipSpecCertificateManagementArgs{...}
 type MembershipSpecCertificateManagementInput interface {
 	pulumi.Input
 
@@ -653,7 +653,7 @@ func (o MultiClusterIngressFeatureSpecBillingPtrOutput) ToStringPtrOutputWithCon
 // MultiClusterIngressFeatureSpecBillingInput is an input type that accepts MultiClusterIngressFeatureSpecBillingArgs and MultiClusterIngressFeatureSpecBillingOutput values.
 // You can construct a concrete instance of `MultiClusterIngressFeatureSpecBillingInput` via:
 //
-//          MultiClusterIngressFeatureSpecBillingArgs{...}
+//	MultiClusterIngressFeatureSpecBillingArgs{...}
 type MultiClusterIngressFeatureSpecBillingInput interface {
 	pulumi.Input
 
@@ -826,7 +826,7 @@ func (o OnPremClusterClusterTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // OnPremClusterClusterTypeInput is an input type that accepts OnPremClusterClusterTypeArgs and OnPremClusterClusterTypeOutput values.
 // You can construct a concrete instance of `OnPremClusterClusterTypeInput` via:
 //
-//          OnPremClusterClusterTypeArgs{...}
+//	OnPremClusterClusterTypeArgs{...}
 type OnPremClusterClusterTypeInput interface {
 	pulumi.Input
 

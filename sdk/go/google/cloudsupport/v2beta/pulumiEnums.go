@@ -150,7 +150,7 @@ func (o CasePriorityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // CasePriorityInput is an input type that accepts CasePriorityArgs and CasePriorityOutput values.
 // You can construct a concrete instance of `CasePriorityInput` via:
 //
-//          CasePriorityArgs{...}
+//	CasePriorityArgs{...}
 type CasePriorityInput interface {
 	pulumi.Input
 
@@ -325,7 +325,7 @@ func (o CaseSeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // CaseSeverityInput is an input type that accepts CaseSeverityArgs and CaseSeverityOutput values.
 // You can construct a concrete instance of `CaseSeverityInput` via:
 //
-//          CaseSeverityArgs{...}
+//	CaseSeverityArgs{...}
 type CaseSeverityInput interface {
 	pulumi.Input
 

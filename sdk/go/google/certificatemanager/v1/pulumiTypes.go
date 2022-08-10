@@ -243,7 +243,7 @@ type ManagedCertificate struct {
 // ManagedCertificateInput is an input type that accepts ManagedCertificateArgs and ManagedCertificateOutput values.
 // You can construct a concrete instance of `ManagedCertificateInput` via:
 //
-//          ManagedCertificateArgs{...}
+//	ManagedCertificateArgs{...}
 type ManagedCertificateInput interface {
 	pulumi.Input
 
@@ -284,11 +284,11 @@ func (i ManagedCertificateArgs) ToManagedCertificatePtrOutputWithContext(ctx con
 // ManagedCertificatePtrInput is an input type that accepts ManagedCertificateArgs, ManagedCertificatePtr and ManagedCertificatePtrOutput values.
 // You can construct a concrete instance of `ManagedCertificatePtrInput` via:
 //
-//          ManagedCertificateArgs{...}
+//	        ManagedCertificateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ManagedCertificatePtrInput interface {
 	pulumi.Input
 
@@ -475,7 +475,7 @@ type ProvisioningIssue struct {
 // ProvisioningIssueInput is an input type that accepts ProvisioningIssueArgs and ProvisioningIssueOutput values.
 // You can construct a concrete instance of `ProvisioningIssueInput` via:
 //
-//          ProvisioningIssueArgs{...}
+//	ProvisioningIssueArgs{...}
 type ProvisioningIssueInput interface {
 	pulumi.Input
 
@@ -514,11 +514,11 @@ func (i ProvisioningIssueArgs) ToProvisioningIssuePtrOutputWithContext(ctx conte
 // ProvisioningIssuePtrInput is an input type that accepts ProvisioningIssueArgs, ProvisioningIssuePtr and ProvisioningIssuePtrOutput values.
 // You can construct a concrete instance of `ProvisioningIssuePtrInput` via:
 //
-//          ProvisioningIssueArgs{...}
+//	        ProvisioningIssueArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ProvisioningIssuePtrInput interface {
 	pulumi.Input
 
@@ -667,7 +667,7 @@ type SelfManagedCertificate struct {
 // SelfManagedCertificateInput is an input type that accepts SelfManagedCertificateArgs and SelfManagedCertificateOutput values.
 // You can construct a concrete instance of `SelfManagedCertificateInput` via:
 //
-//          SelfManagedCertificateArgs{...}
+//	SelfManagedCertificateArgs{...}
 type SelfManagedCertificateInput interface {
 	pulumi.Input
 
@@ -706,11 +706,11 @@ func (i SelfManagedCertificateArgs) ToSelfManagedCertificatePtrOutputWithContext
 // SelfManagedCertificatePtrInput is an input type that accepts SelfManagedCertificateArgs, SelfManagedCertificatePtr and SelfManagedCertificatePtrOutput values.
 // You can construct a concrete instance of `SelfManagedCertificatePtrInput` via:
 //
-//          SelfManagedCertificateArgs{...}
+//	        SelfManagedCertificateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SelfManagedCertificatePtrInput interface {
 	pulumi.Input
 

@@ -23,7 +23,7 @@ type Authentication struct {
 // AuthenticationInput is an input type that accepts AuthenticationArgs and AuthenticationOutput values.
 // You can construct a concrete instance of `AuthenticationInput` via:
 //
-//          AuthenticationArgs{...}
+//	AuthenticationArgs{...}
 type AuthenticationInput interface {
 	pulumi.Input
 
@@ -64,11 +64,11 @@ func (i AuthenticationArgs) ToAuthenticationPtrOutputWithContext(ctx context.Con
 // AuthenticationPtrInput is an input type that accepts AuthenticationArgs, AuthenticationPtr and AuthenticationPtrOutput values.
 // You can construct a concrete instance of `AuthenticationPtrInput` via:
 //
-//          AuthenticationArgs{...}
+//	        AuthenticationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AuthenticationPtrInput interface {
 	pulumi.Input
 
@@ -241,7 +241,7 @@ type CustomAccount struct {
 // CustomAccountInput is an input type that accepts CustomAccountArgs and CustomAccountOutput values.
 // You can construct a concrete instance of `CustomAccountInput` via:
 //
-//          CustomAccountArgs{...}
+//	CustomAccountArgs{...}
 type CustomAccountInput interface {
 	pulumi.Input
 
@@ -282,11 +282,11 @@ func (i CustomAccountArgs) ToCustomAccountPtrOutputWithContext(ctx context.Conte
 // CustomAccountPtrInput is an input type that accepts CustomAccountArgs, CustomAccountPtr and CustomAccountPtrOutput values.
 // You can construct a concrete instance of `CustomAccountPtrInput` via:
 //
-//          CustomAccountArgs{...}
+//	        CustomAccountArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CustomAccountPtrInput interface {
 	pulumi.Input
 
@@ -457,7 +457,7 @@ type GoogleAccount struct {
 // GoogleAccountInput is an input type that accepts GoogleAccountArgs and GoogleAccountOutput values.
 // You can construct a concrete instance of `GoogleAccountInput` via:
 //
-//          GoogleAccountArgs{...}
+//	GoogleAccountArgs{...}
 type GoogleAccountInput interface {
 	pulumi.Input
 
@@ -496,11 +496,11 @@ func (i GoogleAccountArgs) ToGoogleAccountPtrOutputWithContext(ctx context.Conte
 // GoogleAccountPtrInput is an input type that accepts GoogleAccountArgs, GoogleAccountPtr and GoogleAccountPtrOutput values.
 // You can construct a concrete instance of `GoogleAccountPtrInput` via:
 //
-//          GoogleAccountArgs{...}
+//	        GoogleAccountArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleAccountPtrInput interface {
 	pulumi.Input
 
@@ -647,7 +647,7 @@ type IapCredential struct {
 // IapCredentialInput is an input type that accepts IapCredentialArgs and IapCredentialOutput values.
 // You can construct a concrete instance of `IapCredentialInput` via:
 //
-//          IapCredentialArgs{...}
+//	IapCredentialArgs{...}
 type IapCredentialInput interface {
 	pulumi.Input
 
@@ -684,11 +684,11 @@ func (i IapCredentialArgs) ToIapCredentialPtrOutputWithContext(ctx context.Conte
 // IapCredentialPtrInput is an input type that accepts IapCredentialArgs, IapCredentialPtr and IapCredentialPtrOutput values.
 // You can construct a concrete instance of `IapCredentialPtrInput` via:
 //
-//          IapCredentialArgs{...}
+//	        IapCredentialArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IapCredentialPtrInput interface {
 	pulumi.Input
 
@@ -813,7 +813,7 @@ type IapTestServiceAccountInfo struct {
 // IapTestServiceAccountInfoInput is an input type that accepts IapTestServiceAccountInfoArgs and IapTestServiceAccountInfoOutput values.
 // You can construct a concrete instance of `IapTestServiceAccountInfoInput` via:
 //
-//          IapTestServiceAccountInfoArgs{...}
+//	IapTestServiceAccountInfoArgs{...}
 type IapTestServiceAccountInfoInput interface {
 	pulumi.Input
 
@@ -850,11 +850,11 @@ func (i IapTestServiceAccountInfoArgs) ToIapTestServiceAccountInfoPtrOutputWithC
 // IapTestServiceAccountInfoPtrInput is an input type that accepts IapTestServiceAccountInfoArgs, IapTestServiceAccountInfoPtr and IapTestServiceAccountInfoPtrOutput values.
 // You can construct a concrete instance of `IapTestServiceAccountInfoPtrInput` via:
 //
-//          IapTestServiceAccountInfoArgs{...}
+//	        IapTestServiceAccountInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IapTestServiceAccountInfoPtrInput interface {
 	pulumi.Input
 
@@ -981,7 +981,7 @@ type ScanConfigError struct {
 // ScanConfigErrorInput is an input type that accepts ScanConfigErrorArgs and ScanConfigErrorOutput values.
 // You can construct a concrete instance of `ScanConfigErrorInput` via:
 //
-//          ScanConfigErrorArgs{...}
+//	ScanConfigErrorArgs{...}
 type ScanConfigErrorInput interface {
 	pulumi.Input
 
@@ -1020,11 +1020,11 @@ func (i ScanConfigErrorArgs) ToScanConfigErrorPtrOutputWithContext(ctx context.C
 // ScanConfigErrorPtrInput is an input type that accepts ScanConfigErrorArgs, ScanConfigErrorPtr and ScanConfigErrorPtrOutput values.
 // You can construct a concrete instance of `ScanConfigErrorPtrInput` via:
 //
-//          ScanConfigErrorArgs{...}
+//	        ScanConfigErrorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ScanConfigErrorPtrInput interface {
 	pulumi.Input
 
@@ -1191,7 +1191,7 @@ type ScanRun struct {
 // ScanRunInput is an input type that accepts ScanRunArgs and ScanRunOutput values.
 // You can construct a concrete instance of `ScanRunInput` via:
 //
-//          ScanRunArgs{...}
+//	ScanRunArgs{...}
 type ScanRunInput interface {
 	pulumi.Input
 
@@ -1248,11 +1248,11 @@ func (i ScanRunArgs) ToScanRunPtrOutputWithContext(ctx context.Context) ScanRunP
 // ScanRunPtrInput is an input type that accepts ScanRunArgs, ScanRunPtr and ScanRunPtrOutput values.
 // You can construct a concrete instance of `ScanRunPtrInput` via:
 //
-//          ScanRunArgs{...}
+//	        ScanRunArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ScanRunPtrInput interface {
 	pulumi.Input
 
@@ -1505,7 +1505,7 @@ type ScanRunErrorTrace struct {
 // ScanRunErrorTraceInput is an input type that accepts ScanRunErrorTraceArgs and ScanRunErrorTraceOutput values.
 // You can construct a concrete instance of `ScanRunErrorTraceInput` via:
 //
-//          ScanRunErrorTraceArgs{...}
+//	ScanRunErrorTraceArgs{...}
 type ScanRunErrorTraceInput interface {
 	pulumi.Input
 
@@ -1546,11 +1546,11 @@ func (i ScanRunErrorTraceArgs) ToScanRunErrorTracePtrOutputWithContext(ctx conte
 // ScanRunErrorTracePtrInput is an input type that accepts ScanRunErrorTraceArgs, ScanRunErrorTracePtr and ScanRunErrorTracePtrOutput values.
 // You can construct a concrete instance of `ScanRunErrorTracePtrInput` via:
 //
-//          ScanRunErrorTraceArgs{...}
+//	        ScanRunErrorTraceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ScanRunErrorTracePtrInput interface {
 	pulumi.Input
 
@@ -1815,7 +1815,7 @@ type ScanRunWarningTrace struct {
 // ScanRunWarningTraceInput is an input type that accepts ScanRunWarningTraceArgs and ScanRunWarningTraceOutput values.
 // You can construct a concrete instance of `ScanRunWarningTraceInput` via:
 //
-//          ScanRunWarningTraceArgs{...}
+//	ScanRunWarningTraceArgs{...}
 type ScanRunWarningTraceInput interface {
 	pulumi.Input
 
@@ -1844,7 +1844,7 @@ func (i ScanRunWarningTraceArgs) ToScanRunWarningTraceOutputWithContext(ctx cont
 // ScanRunWarningTraceArrayInput is an input type that accepts ScanRunWarningTraceArray and ScanRunWarningTraceArrayOutput values.
 // You can construct a concrete instance of `ScanRunWarningTraceArrayInput` via:
 //
-//          ScanRunWarningTraceArray{ ScanRunWarningTraceArgs{...} }
+//	ScanRunWarningTraceArray{ ScanRunWarningTraceArgs{...} }
 type ScanRunWarningTraceArrayInput interface {
 	pulumi.Input
 
@@ -1963,7 +1963,7 @@ type Schedule struct {
 // ScheduleInput is an input type that accepts ScheduleArgs and ScheduleOutput values.
 // You can construct a concrete instance of `ScheduleInput` via:
 //
-//          ScheduleArgs{...}
+//	ScheduleArgs{...}
 type ScheduleInput interface {
 	pulumi.Input
 
@@ -2002,11 +2002,11 @@ func (i ScheduleArgs) ToSchedulePtrOutputWithContext(ctx context.Context) Schedu
 // SchedulePtrInput is an input type that accepts ScheduleArgs, SchedulePtr and SchedulePtrOutput values.
 // You can construct a concrete instance of `SchedulePtrInput` via:
 //
-//          ScheduleArgs{...}
+//	        ScheduleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SchedulePtrInput interface {
 	pulumi.Input
 

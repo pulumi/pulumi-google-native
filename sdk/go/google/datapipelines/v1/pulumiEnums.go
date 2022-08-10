@@ -144,7 +144,7 @@ func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalPtrOut
 // GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalInput is an input type that accepts GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalArgs and GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalInput` via:
 //
-//          GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalArgs{...}
+//	GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalArgs{...}
 type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentFlexrsGoalInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationP
 // GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationInput is an input type that accepts GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationArgs and GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationInput` via:
 //
-//          GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationArgs{...}
+//	GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationArgs{...}
 type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentIpConfigurationInput interface {
 	pulumi.Input
 
@@ -482,7 +482,7 @@ func (o GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationPtrOutput) To
 // GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationInput is an input type that accepts GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationArgs and GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationInput` via:
 //
-//          GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationArgs{...}
+//	GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationArgs{...}
 type GoogleCloudDatapipelinesV1RuntimeEnvironmentIpConfigurationInput interface {
 	pulumi.Input
 
@@ -657,7 +657,7 @@ func (o PipelineStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // PipelineStateEnumInput is an input type that accepts PipelineStateEnumArgs and PipelineStateEnumOutput values.
 // You can construct a concrete instance of `PipelineStateEnumInput` via:
 //
-//          PipelineStateEnumArgs{...}
+//	PipelineStateEnumArgs{...}
 type PipelineStateEnumInput interface {
 	pulumi.Input
 
@@ -826,7 +826,7 @@ func (o PipelineTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // PipelineTypeInput is an input type that accepts PipelineTypeArgs and PipelineTypeOutput values.
 // You can construct a concrete instance of `PipelineTypeInput` via:
 //
-//          PipelineTypeArgs{...}
+//	PipelineTypeArgs{...}
 type PipelineTypeInput interface {
 	pulumi.Input
 

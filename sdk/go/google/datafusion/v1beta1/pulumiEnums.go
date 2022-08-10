@@ -144,7 +144,7 @@ func (o AcceleratorAcceleratorTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 // AcceleratorAcceleratorTypeInput is an input type that accepts AcceleratorAcceleratorTypeArgs and AcceleratorAcceleratorTypeOutput values.
 // You can construct a concrete instance of `AcceleratorAcceleratorTypeInput` via:
 //
-//          AcceleratorAcceleratorTypeArgs{...}
+//	AcceleratorAcceleratorTypeArgs{...}
 type AcceleratorAcceleratorTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -486,7 +486,7 @@ func (o InstanceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // InstanceTypeInput is an input type that accepts InstanceTypeArgs and InstanceTypeOutput values.
 // You can construct a concrete instance of `InstanceTypeInput` via:
 //
-//          InstanceTypeArgs{...}
+//	InstanceTypeArgs{...}
 type InstanceTypeInput interface {
 	pulumi.Input
 
@@ -655,7 +655,7 @@ func (o VersionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // VersionTypeInput is an input type that accepts VersionTypeArgs and VersionTypeOutput values.
 // You can construct a concrete instance of `VersionTypeInput` via:
 //
-//          VersionTypeArgs{...}
+//	VersionTypeArgs{...}
 type VersionTypeInput interface {
 	pulumi.Input
 

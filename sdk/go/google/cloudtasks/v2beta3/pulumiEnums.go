@@ -154,7 +154,7 @@ func (o AppEngineHttpRequestHttpMethodPtrOutput) ToStringPtrOutputWithContext(ct
 // AppEngineHttpRequestHttpMethodInput is an input type that accepts AppEngineHttpRequestHttpMethodArgs and AppEngineHttpRequestHttpMethodOutput values.
 // You can construct a concrete instance of `AppEngineHttpRequestHttpMethodInput` via:
 //
-//          AppEngineHttpRequestHttpMethodArgs{...}
+//	AppEngineHttpRequestHttpMethodArgs{...}
 type AppEngineHttpRequestHttpMethodInput interface {
 	pulumi.Input
 
@@ -333,7 +333,7 @@ func (o HttpRequestHttpMethodPtrOutput) ToStringPtrOutputWithContext(ctx context
 // HttpRequestHttpMethodInput is an input type that accepts HttpRequestHttpMethodArgs and HttpRequestHttpMethodOutput values.
 // You can construct a concrete instance of `HttpRequestHttpMethodInput` via:
 //
-//          HttpRequestHttpMethodArgs{...}
+//	HttpRequestHttpMethodArgs{...}
 type HttpRequestHttpMethodInput interface {
 	pulumi.Input
 
@@ -502,7 +502,7 @@ func (o QueueTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 // QueueTypeInput is an input type that accepts QueueTypeArgs and QueueTypeOutput values.
 // You can construct a concrete instance of `QueueTypeInput` via:
 //
-//          QueueTypeArgs{...}
+//	QueueTypeArgs{...}
 type QueueTypeInput interface {
 	pulumi.Input
 
@@ -671,7 +671,7 @@ func (o TaskResponseViewPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // TaskResponseViewInput is an input type that accepts TaskResponseViewArgs and TaskResponseViewOutput values.
 // You can construct a concrete instance of `TaskResponseViewInput` via:
 //
-//          TaskResponseViewArgs{...}
+//	TaskResponseViewArgs{...}
 type TaskResponseViewInput interface {
 	pulumi.Input
 

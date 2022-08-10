@@ -21,7 +21,7 @@ type GoogleCloudDatalabelingV1beta1AnnotationSpec struct {
 // GoogleCloudDatalabelingV1beta1AnnotationSpecInput is an input type that accepts GoogleCloudDatalabelingV1beta1AnnotationSpecArgs and GoogleCloudDatalabelingV1beta1AnnotationSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1AnnotationSpecInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1AnnotationSpecArgs{...}
+//	GoogleCloudDatalabelingV1beta1AnnotationSpecArgs{...}
 type GoogleCloudDatalabelingV1beta1AnnotationSpecInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i GoogleCloudDatalabelingV1beta1AnnotationSpecArgs) ToGoogleCloudDatalabel
 // GoogleCloudDatalabelingV1beta1AnnotationSpecArrayInput is an input type that accepts GoogleCloudDatalabelingV1beta1AnnotationSpecArray and GoogleCloudDatalabelingV1beta1AnnotationSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1AnnotationSpecArrayInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1AnnotationSpecArray{ GoogleCloudDatalabelingV1beta1AnnotationSpecArgs{...} }
+//	GoogleCloudDatalabelingV1beta1AnnotationSpecArray{ GoogleCloudDatalabelingV1beta1AnnotationSpecArgs{...} }
 type GoogleCloudDatalabelingV1beta1AnnotationSpecArrayInput interface {
 	pulumi.Input
 
@@ -241,7 +241,7 @@ type GoogleCloudDatalabelingV1beta1BigQuerySource struct {
 // GoogleCloudDatalabelingV1beta1BigQuerySourceInput is an input type that accepts GoogleCloudDatalabelingV1beta1BigQuerySourceArgs and GoogleCloudDatalabelingV1beta1BigQuerySourceOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1BigQuerySourceInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1BigQuerySourceArgs{...}
+//	GoogleCloudDatalabelingV1beta1BigQuerySourceArgs{...}
 type GoogleCloudDatalabelingV1beta1BigQuerySourceInput interface {
 	pulumi.Input
 
@@ -278,11 +278,11 @@ func (i GoogleCloudDatalabelingV1beta1BigQuerySourceArgs) ToGoogleCloudDatalabel
 // GoogleCloudDatalabelingV1beta1BigQuerySourcePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1BigQuerySourceArgs, GoogleCloudDatalabelingV1beta1BigQuerySourcePtr and GoogleCloudDatalabelingV1beta1BigQuerySourcePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1BigQuerySourcePtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1BigQuerySourceArgs{...}
+//	        GoogleCloudDatalabelingV1beta1BigQuerySourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1BigQuerySourcePtrInput interface {
 	pulumi.Input
 
@@ -407,7 +407,7 @@ type GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptions struct {
 // GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsInput is an input type that accepts GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs and GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs{...}
+//	GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs{...}
 type GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsInput interface {
 	pulumi.Input
 
@@ -444,11 +444,11 @@ func (i GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs) ToGoogle
 // GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs, GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtr and GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs{...}
+//	        GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1BoundingBoxEvaluationOptionsPtrInput interface {
 	pulumi.Input
 
@@ -577,7 +577,7 @@ type GoogleCloudDatalabelingV1beta1BoundingPolyConfig struct {
 // GoogleCloudDatalabelingV1beta1BoundingPolyConfigInput is an input type that accepts GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs and GoogleCloudDatalabelingV1beta1BoundingPolyConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1BoundingPolyConfigInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs{...}
+//	GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs{...}
 type GoogleCloudDatalabelingV1beta1BoundingPolyConfigInput interface {
 	pulumi.Input
 
@@ -616,11 +616,11 @@ func (i GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs) ToGoogleCloudDatal
 // GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs, GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtr and GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs{...}
+//	        GoogleCloudDatalabelingV1beta1BoundingPolyConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1BoundingPolyConfigPtrInput interface {
 	pulumi.Input
 
@@ -767,7 +767,7 @@ type GoogleCloudDatalabelingV1beta1ClassificationMetadata struct {
 // GoogleCloudDatalabelingV1beta1ClassificationMetadataInput is an input type that accepts GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs and GoogleCloudDatalabelingV1beta1ClassificationMetadataOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1ClassificationMetadataInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs{...}
+//	GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs{...}
 type GoogleCloudDatalabelingV1beta1ClassificationMetadataInput interface {
 	pulumi.Input
 
@@ -804,11 +804,11 @@ func (i GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs) ToGoogleCloudD
 // GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs, GoogleCloudDatalabelingV1beta1ClassificationMetadataPtr and GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs{...}
+//	        GoogleCloudDatalabelingV1beta1ClassificationMetadataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1ClassificationMetadataPtrInput interface {
 	pulumi.Input
 
@@ -933,7 +933,7 @@ type GoogleCloudDatalabelingV1beta1CsvInstruction struct {
 // GoogleCloudDatalabelingV1beta1CsvInstructionInput is an input type that accepts GoogleCloudDatalabelingV1beta1CsvInstructionArgs and GoogleCloudDatalabelingV1beta1CsvInstructionOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1CsvInstructionInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1CsvInstructionArgs{...}
+//	GoogleCloudDatalabelingV1beta1CsvInstructionArgs{...}
 type GoogleCloudDatalabelingV1beta1CsvInstructionInput interface {
 	pulumi.Input
 
@@ -970,11 +970,11 @@ func (i GoogleCloudDatalabelingV1beta1CsvInstructionArgs) ToGoogleCloudDatalabel
 // GoogleCloudDatalabelingV1beta1CsvInstructionPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1CsvInstructionArgs, GoogleCloudDatalabelingV1beta1CsvInstructionPtr and GoogleCloudDatalabelingV1beta1CsvInstructionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1CsvInstructionPtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1CsvInstructionArgs{...}
+//	        GoogleCloudDatalabelingV1beta1CsvInstructionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1CsvInstructionPtrInput interface {
 	pulumi.Input
 
@@ -1099,7 +1099,7 @@ type GoogleCloudDatalabelingV1beta1EvaluationConfig struct {
 // GoogleCloudDatalabelingV1beta1EvaluationConfigInput is an input type that accepts GoogleCloudDatalabelingV1beta1EvaluationConfigArgs and GoogleCloudDatalabelingV1beta1EvaluationConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1EvaluationConfigInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1EvaluationConfigArgs{...}
+//	GoogleCloudDatalabelingV1beta1EvaluationConfigArgs{...}
 type GoogleCloudDatalabelingV1beta1EvaluationConfigInput interface {
 	pulumi.Input
 
@@ -1186,7 +1186,7 @@ type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfig struct {
 // GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigInput is an input type that accepts GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs and GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs{...}
+//	GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs{...}
 type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigInput interface {
 	pulumi.Input
 
@@ -1225,11 +1225,11 @@ func (i GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs) ToGoogleClou
 // GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs, GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtr and GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs{...}
+//	        GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1EvaluationJobAlertConfigPtrInput interface {
 	pulumi.Input
 
@@ -1398,7 +1398,7 @@ type GoogleCloudDatalabelingV1beta1EvaluationJobConfig struct {
 // GoogleCloudDatalabelingV1beta1EvaluationJobConfigInput is an input type that accepts GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs and GoogleCloudDatalabelingV1beta1EvaluationJobConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1EvaluationJobConfigInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs{...}
+//	GoogleCloudDatalabelingV1beta1EvaluationJobConfigArgs{...}
 type GoogleCloudDatalabelingV1beta1EvaluationJobConfigInput interface {
 	pulumi.Input
 
@@ -1641,7 +1641,7 @@ type GoogleCloudDatalabelingV1beta1GcsSource struct {
 // GoogleCloudDatalabelingV1beta1GcsSourceInput is an input type that accepts GoogleCloudDatalabelingV1beta1GcsSourceArgs and GoogleCloudDatalabelingV1beta1GcsSourceOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1GcsSourceInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1GcsSourceArgs{...}
+//	GoogleCloudDatalabelingV1beta1GcsSourceArgs{...}
 type GoogleCloudDatalabelingV1beta1GcsSourceInput interface {
 	pulumi.Input
 
@@ -1680,11 +1680,11 @@ func (i GoogleCloudDatalabelingV1beta1GcsSourceArgs) ToGoogleCloudDatalabelingV1
 // GoogleCloudDatalabelingV1beta1GcsSourcePtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1GcsSourceArgs, GoogleCloudDatalabelingV1beta1GcsSourcePtr and GoogleCloudDatalabelingV1beta1GcsSourcePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1GcsSourcePtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1GcsSourceArgs{...}
+//	        GoogleCloudDatalabelingV1beta1GcsSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1GcsSourcePtrInput interface {
 	pulumi.Input
 
@@ -1847,7 +1847,7 @@ type GoogleCloudDatalabelingV1beta1HumanAnnotationConfig struct {
 // GoogleCloudDatalabelingV1beta1HumanAnnotationConfigInput is an input type that accepts GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs and GoogleCloudDatalabelingV1beta1HumanAnnotationConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1HumanAnnotationConfigInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs{...}
+//	GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs{...}
 type GoogleCloudDatalabelingV1beta1HumanAnnotationConfigInput interface {
 	pulumi.Input
 
@@ -1900,11 +1900,11 @@ func (i GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs) ToGoogleCloudDa
 // GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs, GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtr and GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs{...}
+//	        GoogleCloudDatalabelingV1beta1HumanAnnotationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1HumanAnnotationConfigPtrInput interface {
 	pulumi.Input
 
@@ -2219,7 +2219,7 @@ type GoogleCloudDatalabelingV1beta1ImageClassificationConfig struct {
 // GoogleCloudDatalabelingV1beta1ImageClassificationConfigInput is an input type that accepts GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs and GoogleCloudDatalabelingV1beta1ImageClassificationConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1ImageClassificationConfigInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs{...}
+//	GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs{...}
 type GoogleCloudDatalabelingV1beta1ImageClassificationConfigInput interface {
 	pulumi.Input
 
@@ -2260,11 +2260,11 @@ func (i GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs) ToGoogleClo
 // GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs, GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtr and GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs{...}
+//	        GoogleCloudDatalabelingV1beta1ImageClassificationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1ImageClassificationConfigPtrInput interface {
 	pulumi.Input
 
@@ -2449,7 +2449,7 @@ type GoogleCloudDatalabelingV1beta1InputConfig struct {
 // GoogleCloudDatalabelingV1beta1InputConfigInput is an input type that accepts GoogleCloudDatalabelingV1beta1InputConfigArgs and GoogleCloudDatalabelingV1beta1InputConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1InputConfigInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1InputConfigArgs{...}
+//	GoogleCloudDatalabelingV1beta1InputConfigArgs{...}
 type GoogleCloudDatalabelingV1beta1InputConfigInput interface {
 	pulumi.Input
 
@@ -2496,11 +2496,11 @@ func (i GoogleCloudDatalabelingV1beta1InputConfigArgs) ToGoogleCloudDatalabeling
 // GoogleCloudDatalabelingV1beta1InputConfigPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1InputConfigArgs, GoogleCloudDatalabelingV1beta1InputConfigPtr and GoogleCloudDatalabelingV1beta1InputConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1InputConfigPtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1InputConfigArgs{...}
+//	        GoogleCloudDatalabelingV1beta1InputConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1InputConfigPtrInput interface {
 	pulumi.Input
 
@@ -2773,7 +2773,7 @@ type GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadata struct {
 // GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataInput is an input type that accepts GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs and GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs{...}
+//	GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs{...}
 type GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataInput interface {
 	pulumi.Input
 
@@ -2808,11 +2808,11 @@ func (i GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs) ToGoogleClou
 // GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs, GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtr and GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs{...}
+//	        GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1OperatorFeedbackMetadataPtrInput interface {
 	pulumi.Input
 
@@ -2915,7 +2915,7 @@ type GoogleCloudDatalabelingV1beta1PdfInstruction struct {
 // GoogleCloudDatalabelingV1beta1PdfInstructionInput is an input type that accepts GoogleCloudDatalabelingV1beta1PdfInstructionArgs and GoogleCloudDatalabelingV1beta1PdfInstructionOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1PdfInstructionInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1PdfInstructionArgs{...}
+//	GoogleCloudDatalabelingV1beta1PdfInstructionArgs{...}
 type GoogleCloudDatalabelingV1beta1PdfInstructionInput interface {
 	pulumi.Input
 
@@ -2952,11 +2952,11 @@ func (i GoogleCloudDatalabelingV1beta1PdfInstructionArgs) ToGoogleCloudDatalabel
 // GoogleCloudDatalabelingV1beta1PdfInstructionPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1PdfInstructionArgs, GoogleCloudDatalabelingV1beta1PdfInstructionPtr and GoogleCloudDatalabelingV1beta1PdfInstructionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1PdfInstructionPtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1PdfInstructionArgs{...}
+//	        GoogleCloudDatalabelingV1beta1PdfInstructionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1PdfInstructionPtrInput interface {
 	pulumi.Input
 
@@ -3079,7 +3079,7 @@ type GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadata struct {
 // GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataInput is an input type that accepts GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs and GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs{...}
+//	GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs{...}
 type GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataInput interface {
 	pulumi.Input
 
@@ -3114,11 +3114,11 @@ func (i GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs) ToGoogleClo
 // GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs, GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtr and GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs{...}
+//	        GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1RequesterFeedbackMetadataPtrInput interface {
 	pulumi.Input
 
@@ -3221,7 +3221,7 @@ type GoogleCloudDatalabelingV1beta1SentimentConfig struct {
 // GoogleCloudDatalabelingV1beta1SentimentConfigInput is an input type that accepts GoogleCloudDatalabelingV1beta1SentimentConfigArgs and GoogleCloudDatalabelingV1beta1SentimentConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1SentimentConfigInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1SentimentConfigArgs{...}
+//	GoogleCloudDatalabelingV1beta1SentimentConfigArgs{...}
 type GoogleCloudDatalabelingV1beta1SentimentConfigInput interface {
 	pulumi.Input
 
@@ -3258,11 +3258,11 @@ func (i GoogleCloudDatalabelingV1beta1SentimentConfigArgs) ToGoogleCloudDatalabe
 // GoogleCloudDatalabelingV1beta1SentimentConfigPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1SentimentConfigArgs, GoogleCloudDatalabelingV1beta1SentimentConfigPtr and GoogleCloudDatalabelingV1beta1SentimentConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1SentimentConfigPtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1SentimentConfigArgs{...}
+//	        GoogleCloudDatalabelingV1beta1SentimentConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1SentimentConfigPtrInput interface {
 	pulumi.Input
 
@@ -3393,7 +3393,7 @@ type GoogleCloudDatalabelingV1beta1TextClassificationConfig struct {
 // GoogleCloudDatalabelingV1beta1TextClassificationConfigInput is an input type that accepts GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs and GoogleCloudDatalabelingV1beta1TextClassificationConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1TextClassificationConfigInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs{...}
+//	GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs{...}
 type GoogleCloudDatalabelingV1beta1TextClassificationConfigInput interface {
 	pulumi.Input
 
@@ -3434,11 +3434,11 @@ func (i GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs) ToGoogleClou
 // GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs, GoogleCloudDatalabelingV1beta1TextClassificationConfigPtr and GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs{...}
+//	        GoogleCloudDatalabelingV1beta1TextClassificationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1TextClassificationConfigPtrInput interface {
 	pulumi.Input
 
@@ -3613,7 +3613,7 @@ type GoogleCloudDatalabelingV1beta1TextMetadata struct {
 // GoogleCloudDatalabelingV1beta1TextMetadataInput is an input type that accepts GoogleCloudDatalabelingV1beta1TextMetadataArgs and GoogleCloudDatalabelingV1beta1TextMetadataOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1TextMetadataInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1TextMetadataArgs{...}
+//	GoogleCloudDatalabelingV1beta1TextMetadataArgs{...}
 type GoogleCloudDatalabelingV1beta1TextMetadataInput interface {
 	pulumi.Input
 
@@ -3650,11 +3650,11 @@ func (i GoogleCloudDatalabelingV1beta1TextMetadataArgs) ToGoogleCloudDatalabelin
 // GoogleCloudDatalabelingV1beta1TextMetadataPtrInput is an input type that accepts GoogleCloudDatalabelingV1beta1TextMetadataArgs, GoogleCloudDatalabelingV1beta1TextMetadataPtr and GoogleCloudDatalabelingV1beta1TextMetadataPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1TextMetadataPtrInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1TextMetadataArgs{...}
+//	        GoogleCloudDatalabelingV1beta1TextMetadataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatalabelingV1beta1TextMetadataPtrInput interface {
 	pulumi.Input
 

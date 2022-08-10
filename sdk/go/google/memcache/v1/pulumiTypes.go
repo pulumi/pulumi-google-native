@@ -21,7 +21,7 @@ type GoogleCloudMemcacheV1MaintenancePolicy struct {
 // GoogleCloudMemcacheV1MaintenancePolicyInput is an input type that accepts GoogleCloudMemcacheV1MaintenancePolicyArgs and GoogleCloudMemcacheV1MaintenancePolicyOutput values.
 // You can construct a concrete instance of `GoogleCloudMemcacheV1MaintenancePolicyInput` via:
 //
-//          GoogleCloudMemcacheV1MaintenancePolicyArgs{...}
+//	GoogleCloudMemcacheV1MaintenancePolicyArgs{...}
 type GoogleCloudMemcacheV1MaintenancePolicyInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i GoogleCloudMemcacheV1MaintenancePolicyArgs) ToGoogleCloudMemcacheV1Maint
 // GoogleCloudMemcacheV1MaintenancePolicyPtrInput is an input type that accepts GoogleCloudMemcacheV1MaintenancePolicyArgs, GoogleCloudMemcacheV1MaintenancePolicyPtr and GoogleCloudMemcacheV1MaintenancePolicyPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMemcacheV1MaintenancePolicyPtrInput` via:
 //
-//          GoogleCloudMemcacheV1MaintenancePolicyArgs{...}
+//	        GoogleCloudMemcacheV1MaintenancePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMemcacheV1MaintenancePolicyPtrInput interface {
 	pulumi.Input
 
@@ -230,7 +230,7 @@ type InstanceMessage struct {
 // InstanceMessageInput is an input type that accepts InstanceMessageArgs and InstanceMessageOutput values.
 // You can construct a concrete instance of `InstanceMessageInput` via:
 //
-//          InstanceMessageArgs{...}
+//	InstanceMessageArgs{...}
 type InstanceMessageInput interface {
 	pulumi.Input
 
@@ -260,7 +260,7 @@ func (i InstanceMessageArgs) ToInstanceMessageOutputWithContext(ctx context.Cont
 // InstanceMessageArrayInput is an input type that accepts InstanceMessageArray and InstanceMessageArrayOutput values.
 // You can construct a concrete instance of `InstanceMessageArrayInput` via:
 //
-//          InstanceMessageArray{ InstanceMessageArgs{...} }
+//	InstanceMessageArray{ InstanceMessageArgs{...} }
 type InstanceMessageArrayInput interface {
 	pulumi.Input
 
@@ -425,7 +425,7 @@ type MemcacheParameters struct {
 // MemcacheParametersInput is an input type that accepts MemcacheParametersArgs and MemcacheParametersOutput values.
 // You can construct a concrete instance of `MemcacheParametersInput` via:
 //
-//          MemcacheParametersArgs{...}
+//	MemcacheParametersArgs{...}
 type MemcacheParametersInput interface {
 	pulumi.Input
 
@@ -461,11 +461,11 @@ func (i MemcacheParametersArgs) ToMemcacheParametersPtrOutputWithContext(ctx con
 // MemcacheParametersPtrInput is an input type that accepts MemcacheParametersArgs, MemcacheParametersPtr and MemcacheParametersPtrOutput values.
 // You can construct a concrete instance of `MemcacheParametersPtrInput` via:
 //
-//          MemcacheParametersArgs{...}
+//	        MemcacheParametersArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MemcacheParametersPtrInput interface {
 	pulumi.Input
 
@@ -589,7 +589,7 @@ type NodeConfig struct {
 // NodeConfigInput is an input type that accepts NodeConfigArgs and NodeConfigOutput values.
 // You can construct a concrete instance of `NodeConfigInput` via:
 //
-//          NodeConfigArgs{...}
+//	NodeConfigArgs{...}
 type NodeConfigInput interface {
 	pulumi.Input
 
@@ -769,7 +769,7 @@ type TimeOfDay struct {
 // TimeOfDayInput is an input type that accepts TimeOfDayArgs and TimeOfDayOutput values.
 // You can construct a concrete instance of `TimeOfDayInput` via:
 //
-//          TimeOfDayArgs{...}
+//	TimeOfDayArgs{...}
 type TimeOfDayInput interface {
 	pulumi.Input
 
@@ -896,7 +896,7 @@ type WeeklyMaintenanceWindow struct {
 // WeeklyMaintenanceWindowInput is an input type that accepts WeeklyMaintenanceWindowArgs and WeeklyMaintenanceWindowOutput values.
 // You can construct a concrete instance of `WeeklyMaintenanceWindowInput` via:
 //
-//          WeeklyMaintenanceWindowArgs{...}
+//	WeeklyMaintenanceWindowArgs{...}
 type WeeklyMaintenanceWindowInput interface {
 	pulumi.Input
 
@@ -929,7 +929,7 @@ func (i WeeklyMaintenanceWindowArgs) ToWeeklyMaintenanceWindowOutputWithContext(
 // WeeklyMaintenanceWindowArrayInput is an input type that accepts WeeklyMaintenanceWindowArray and WeeklyMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `WeeklyMaintenanceWindowArrayInput` via:
 //
-//          WeeklyMaintenanceWindowArray{ WeeklyMaintenanceWindowArgs{...} }
+//	WeeklyMaintenanceWindowArray{ WeeklyMaintenanceWindowArgs{...} }
 type WeeklyMaintenanceWindowArrayInput interface {
 	pulumi.Input
 

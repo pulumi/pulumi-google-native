@@ -180,7 +180,7 @@ func (o LookupOccurrenceResultOutput) Remediation() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupOccurrenceResult) string { return v.Remediation }).(pulumi.StringOutput)
 }
 
-//  The resource for which the `Occurrence` applies.
+// The resource for which the `Occurrence` applies.
 func (o LookupOccurrenceResultOutput) Resource() ResourceResponseOutput {
 	return o.ApplyT(func(v LookupOccurrenceResult) ResourceResponse { return v.Resource }).(ResourceResponseOutput)
 }

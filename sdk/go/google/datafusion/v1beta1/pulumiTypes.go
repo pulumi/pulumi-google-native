@@ -19,7 +19,7 @@ type Accelerator struct {
 // AcceleratorInput is an input type that accepts AcceleratorArgs and AcceleratorOutput values.
 // You can construct a concrete instance of `AcceleratorInput` via:
 //
-//          AcceleratorArgs{...}
+//	AcceleratorArgs{...}
 type AcceleratorInput interface {
 	pulumi.Input
 
@@ -48,7 +48,7 @@ func (i AcceleratorArgs) ToAcceleratorOutputWithContext(ctx context.Context) Acc
 // AcceleratorArrayInput is an input type that accepts AcceleratorArray and AcceleratorArrayOutput values.
 // You can construct a concrete instance of `AcceleratorArrayInput` via:
 //
-//          AcceleratorArray{ AcceleratorArgs{...} }
+//	AcceleratorArray{ AcceleratorArgs{...} }
 type AcceleratorArrayInput interface {
 	pulumi.Input
 
@@ -167,7 +167,7 @@ type AuditConfig struct {
 // AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
 // You can construct a concrete instance of `AuditConfigInput` via:
 //
-//          AuditConfigArgs{...}
+//	AuditConfigArgs{...}
 type AuditConfigInput interface {
 	pulumi.Input
 
@@ -198,7 +198,7 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
-//          AuditConfigArray{ AuditConfigArgs{...} }
+//	AuditConfigArray{ AuditConfigArgs{...} }
 type AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -329,7 +329,7 @@ type AuditLogConfig struct {
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
 // You can construct a concrete instance of `AuditLogConfigInput` via:
 //
-//          AuditLogConfigArgs{...}
+//	AuditLogConfigArgs{...}
 type AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -360,7 +360,7 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -493,7 +493,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -526,7 +526,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -667,7 +667,7 @@ type CryptoKeyConfig struct {
 // CryptoKeyConfigInput is an input type that accepts CryptoKeyConfigArgs and CryptoKeyConfigOutput values.
 // You can construct a concrete instance of `CryptoKeyConfigInput` via:
 //
-//          CryptoKeyConfigArgs{...}
+//	CryptoKeyConfigArgs{...}
 type CryptoKeyConfigInput interface {
 	pulumi.Input
 
@@ -704,11 +704,11 @@ func (i CryptoKeyConfigArgs) ToCryptoKeyConfigPtrOutputWithContext(ctx context.C
 // CryptoKeyConfigPtrInput is an input type that accepts CryptoKeyConfigArgs, CryptoKeyConfigPtr and CryptoKeyConfigPtrOutput values.
 // You can construct a concrete instance of `CryptoKeyConfigPtrInput` via:
 //
-//          CryptoKeyConfigArgs{...}
+//	        CryptoKeyConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CryptoKeyConfigPtrInput interface {
 	pulumi.Input
 
@@ -835,7 +835,7 @@ type EventPublishConfig struct {
 // EventPublishConfigInput is an input type that accepts EventPublishConfigArgs and EventPublishConfigOutput values.
 // You can construct a concrete instance of `EventPublishConfigInput` via:
 //
-//          EventPublishConfigArgs{...}
+//	EventPublishConfigArgs{...}
 type EventPublishConfigInput interface {
 	pulumi.Input
 
@@ -874,11 +874,11 @@ func (i EventPublishConfigArgs) ToEventPublishConfigPtrOutputWithContext(ctx con
 // EventPublishConfigPtrInput is an input type that accepts EventPublishConfigArgs, EventPublishConfigPtr and EventPublishConfigPtrOutput values.
 // You can construct a concrete instance of `EventPublishConfigPtrInput` via:
 //
-//          EventPublishConfigArgs{...}
+//	        EventPublishConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EventPublishConfigPtrInput interface {
 	pulumi.Input
 
@@ -1031,7 +1031,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -1074,11 +1074,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -1271,7 +1271,7 @@ type NetworkConfig struct {
 // NetworkConfigInput is an input type that accepts NetworkConfigArgs and NetworkConfigOutput values.
 // You can construct a concrete instance of `NetworkConfigInput` via:
 //
-//          NetworkConfigArgs{...}
+//	NetworkConfigArgs{...}
 type NetworkConfigInput interface {
 	pulumi.Input
 
@@ -1310,11 +1310,11 @@ func (i NetworkConfigArgs) ToNetworkConfigPtrOutputWithContext(ctx context.Conte
 // NetworkConfigPtrInput is an input type that accepts NetworkConfigArgs, NetworkConfigPtr and NetworkConfigPtrOutput values.
 // You can construct a concrete instance of `NetworkConfigPtrInput` via:
 //
-//          NetworkConfigArgs{...}
+//	        NetworkConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NetworkConfigPtrInput interface {
 	pulumi.Input
 
@@ -1467,7 +1467,7 @@ type Version struct {
 // VersionInput is an input type that accepts VersionArgs and VersionOutput values.
 // You can construct a concrete instance of `VersionInput` via:
 //
-//          VersionArgs{...}
+//	VersionArgs{...}
 type VersionInput interface {
 	pulumi.Input
 
@@ -1502,7 +1502,7 @@ func (i VersionArgs) ToVersionOutputWithContext(ctx context.Context) VersionOutp
 // VersionArrayInput is an input type that accepts VersionArray and VersionArrayOutput values.
 // You can construct a concrete instance of `VersionArrayInput` via:
 //
-//          VersionArray{ VersionArgs{...} }
+//	VersionArray{ VersionArgs{...} }
 type VersionArrayInput interface {
 	pulumi.Input
 

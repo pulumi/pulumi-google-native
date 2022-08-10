@@ -21,7 +21,7 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfig struct {
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigOutput values.
 // You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigInput` via:
 //
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs{...}
+//	GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs{...}
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs) ToG
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs, GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtr and GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrInput` via:
 //
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs{...}
+//	        GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAcceleratorConfigPtrInput interface {
 	pulumi.Input
 
@@ -221,7 +221,7 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscale struct {
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleOutput values.
 // You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleInput` via:
 //
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs{...}
+//	GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs{...}
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleInput interface {
 	pulumi.Input
 
@@ -260,11 +260,11 @@ func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs) ToGoogleDev
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs, GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtr and GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrOutput values.
 // You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrInput` via:
 //
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs{...}
+//	        GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscaleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaAutoscalePtrInput interface {
 	pulumi.Input
 
@@ -427,7 +427,7 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicy struct {
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyOutput values.
 // You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyInput` via:
 //
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs{...}
+//	GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs{...}
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyInput interface {
 	pulumi.Input
 
@@ -480,11 +480,11 @@ func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs) ToGoogl
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs, GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtr and GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrOutput values.
 // You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrInput` via:
 //
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs{...}
+//	        GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyPtrInput interface {
 	pulumi.Input
 
@@ -723,7 +723,7 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeature struct {
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureOutput values.
 // You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureInput` via:
 //
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs{...}
+//	GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs{...}
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureInput interface {
 	pulumi.Input
 
@@ -762,11 +762,11 @@ func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs) 
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs, GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtr and GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrOutput values.
 // You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrInput` via:
 //
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs{...}
+//	        GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeatureArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePtrInput interface {
 	pulumi.Input
 
@@ -1041,7 +1041,7 @@ type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfig struct {
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigOutput values.
 // You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigInput` via:
 //
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs{...}
+//	GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs{...}
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigInput interface {
 	pulumi.Input
 
@@ -1098,11 +1098,11 @@ func (i GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs) ToGoogle
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs, GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtr and GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrInput` via:
 //
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs{...}
+//	        GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaWorkerConfigPtrInput interface {
 	pulumi.Input
 

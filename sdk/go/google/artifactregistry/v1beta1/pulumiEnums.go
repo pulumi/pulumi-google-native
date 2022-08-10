@@ -152,7 +152,7 @@ func (o RepositoryFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // RepositoryFormatInput is an input type that accepts RepositoryFormatArgs and RepositoryFormatOutput values.
 // You can construct a concrete instance of `RepositoryFormatInput` via:
 //
-//          RepositoryFormatArgs{...}
+//	RepositoryFormatArgs{...}
 type RepositoryFormatInput interface {
 	pulumi.Input
 

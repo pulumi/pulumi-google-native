@@ -21,7 +21,7 @@ type ApigatewayApiConfigFile struct {
 // ApigatewayApiConfigFileInput is an input type that accepts ApigatewayApiConfigFileArgs and ApigatewayApiConfigFileOutput values.
 // You can construct a concrete instance of `ApigatewayApiConfigFileInput` via:
 //
-//          ApigatewayApiConfigFileArgs{...}
+//	ApigatewayApiConfigFileArgs{...}
 type ApigatewayApiConfigFileInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i ApigatewayApiConfigFileArgs) ToApigatewayApiConfigFilePtrOutputWithConte
 // ApigatewayApiConfigFilePtrInput is an input type that accepts ApigatewayApiConfigFileArgs, ApigatewayApiConfigFilePtr and ApigatewayApiConfigFilePtrOutput values.
 // You can construct a concrete instance of `ApigatewayApiConfigFilePtrInput` via:
 //
-//          ApigatewayApiConfigFileArgs{...}
+//	        ApigatewayApiConfigFileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApigatewayApiConfigFilePtrInput interface {
 	pulumi.Input
 
@@ -93,7 +93,7 @@ func (i *apigatewayApiConfigFilePtrType) ToApigatewayApiConfigFilePtrOutputWithC
 // ApigatewayApiConfigFileArrayInput is an input type that accepts ApigatewayApiConfigFileArray and ApigatewayApiConfigFileArrayOutput values.
 // You can construct a concrete instance of `ApigatewayApiConfigFileArrayInput` via:
 //
-//          ApigatewayApiConfigFileArray{ ApigatewayApiConfigFileArgs{...} }
+//	ApigatewayApiConfigFileArray{ ApigatewayApiConfigFileArgs{...} }
 type ApigatewayApiConfigFileArrayInput interface {
 	pulumi.Input
 
@@ -278,7 +278,7 @@ type ApigatewayApiConfigGrpcServiceDefinition struct {
 // ApigatewayApiConfigGrpcServiceDefinitionInput is an input type that accepts ApigatewayApiConfigGrpcServiceDefinitionArgs and ApigatewayApiConfigGrpcServiceDefinitionOutput values.
 // You can construct a concrete instance of `ApigatewayApiConfigGrpcServiceDefinitionInput` via:
 //
-//          ApigatewayApiConfigGrpcServiceDefinitionArgs{...}
+//	ApigatewayApiConfigGrpcServiceDefinitionArgs{...}
 type ApigatewayApiConfigGrpcServiceDefinitionInput interface {
 	pulumi.Input
 
@@ -309,7 +309,7 @@ func (i ApigatewayApiConfigGrpcServiceDefinitionArgs) ToApigatewayApiConfigGrpcS
 // ApigatewayApiConfigGrpcServiceDefinitionArrayInput is an input type that accepts ApigatewayApiConfigGrpcServiceDefinitionArray and ApigatewayApiConfigGrpcServiceDefinitionArrayOutput values.
 // You can construct a concrete instance of `ApigatewayApiConfigGrpcServiceDefinitionArrayInput` via:
 //
-//          ApigatewayApiConfigGrpcServiceDefinitionArray{ ApigatewayApiConfigGrpcServiceDefinitionArgs{...} }
+//	ApigatewayApiConfigGrpcServiceDefinitionArray{ ApigatewayApiConfigGrpcServiceDefinitionArgs{...} }
 type ApigatewayApiConfigGrpcServiceDefinitionArrayInput interface {
 	pulumi.Input
 
@@ -442,7 +442,7 @@ type ApigatewayApiConfigOpenApiDocument struct {
 // ApigatewayApiConfigOpenApiDocumentInput is an input type that accepts ApigatewayApiConfigOpenApiDocumentArgs and ApigatewayApiConfigOpenApiDocumentOutput values.
 // You can construct a concrete instance of `ApigatewayApiConfigOpenApiDocumentInput` via:
 //
-//          ApigatewayApiConfigOpenApiDocumentArgs{...}
+//	ApigatewayApiConfigOpenApiDocumentArgs{...}
 type ApigatewayApiConfigOpenApiDocumentInput interface {
 	pulumi.Input
 
@@ -471,7 +471,7 @@ func (i ApigatewayApiConfigOpenApiDocumentArgs) ToApigatewayApiConfigOpenApiDocu
 // ApigatewayApiConfigOpenApiDocumentArrayInput is an input type that accepts ApigatewayApiConfigOpenApiDocumentArray and ApigatewayApiConfigOpenApiDocumentArrayOutput values.
 // You can construct a concrete instance of `ApigatewayApiConfigOpenApiDocumentArrayInput` via:
 //
-//          ApigatewayApiConfigOpenApiDocumentArray{ ApigatewayApiConfigOpenApiDocumentArgs{...} }
+//	ApigatewayApiConfigOpenApiDocumentArray{ ApigatewayApiConfigOpenApiDocumentArgs{...} }
 type ApigatewayApiConfigOpenApiDocumentArrayInput interface {
 	pulumi.Input
 
@@ -590,7 +590,7 @@ type ApigatewayAuditConfig struct {
 // ApigatewayAuditConfigInput is an input type that accepts ApigatewayAuditConfigArgs and ApigatewayAuditConfigOutput values.
 // You can construct a concrete instance of `ApigatewayAuditConfigInput` via:
 //
-//          ApigatewayAuditConfigArgs{...}
+//	ApigatewayAuditConfigArgs{...}
 type ApigatewayAuditConfigInput interface {
 	pulumi.Input
 
@@ -621,7 +621,7 @@ func (i ApigatewayAuditConfigArgs) ToApigatewayAuditConfigOutputWithContext(ctx 
 // ApigatewayAuditConfigArrayInput is an input type that accepts ApigatewayAuditConfigArray and ApigatewayAuditConfigArrayOutput values.
 // You can construct a concrete instance of `ApigatewayAuditConfigArrayInput` via:
 //
-//          ApigatewayAuditConfigArray{ ApigatewayAuditConfigArgs{...} }
+//	ApigatewayAuditConfigArray{ ApigatewayAuditConfigArgs{...} }
 type ApigatewayAuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -752,7 +752,7 @@ type ApigatewayAuditLogConfig struct {
 // ApigatewayAuditLogConfigInput is an input type that accepts ApigatewayAuditLogConfigArgs and ApigatewayAuditLogConfigOutput values.
 // You can construct a concrete instance of `ApigatewayAuditLogConfigInput` via:
 //
-//          ApigatewayAuditLogConfigArgs{...}
+//	ApigatewayAuditLogConfigArgs{...}
 type ApigatewayAuditLogConfigInput interface {
 	pulumi.Input
 
@@ -783,7 +783,7 @@ func (i ApigatewayAuditLogConfigArgs) ToApigatewayAuditLogConfigOutputWithContex
 // ApigatewayAuditLogConfigArrayInput is an input type that accepts ApigatewayAuditLogConfigArray and ApigatewayAuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `ApigatewayAuditLogConfigArrayInput` via:
 //
-//          ApigatewayAuditLogConfigArray{ ApigatewayAuditLogConfigArgs{...} }
+//	ApigatewayAuditLogConfigArray{ ApigatewayAuditLogConfigArgs{...} }
 type ApigatewayAuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -912,7 +912,7 @@ type ApigatewayBackendConfig struct {
 // ApigatewayBackendConfigInput is an input type that accepts ApigatewayBackendConfigArgs and ApigatewayBackendConfigOutput values.
 // You can construct a concrete instance of `ApigatewayBackendConfigInput` via:
 //
-//          ApigatewayBackendConfigArgs{...}
+//	ApigatewayBackendConfigArgs{...}
 type ApigatewayBackendConfigInput interface {
 	pulumi.Input
 
@@ -949,11 +949,11 @@ func (i ApigatewayBackendConfigArgs) ToApigatewayBackendConfigPtrOutputWithConte
 // ApigatewayBackendConfigPtrInput is an input type that accepts ApigatewayBackendConfigArgs, ApigatewayBackendConfigPtr and ApigatewayBackendConfigPtrOutput values.
 // You can construct a concrete instance of `ApigatewayBackendConfigPtrInput` via:
 //
-//          ApigatewayBackendConfigArgs{...}
+//	        ApigatewayBackendConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApigatewayBackendConfigPtrInput interface {
 	pulumi.Input
 
@@ -1082,7 +1082,7 @@ type ApigatewayBinding struct {
 // ApigatewayBindingInput is an input type that accepts ApigatewayBindingArgs and ApigatewayBindingOutput values.
 // You can construct a concrete instance of `ApigatewayBindingInput` via:
 //
-//          ApigatewayBindingArgs{...}
+//	ApigatewayBindingArgs{...}
 type ApigatewayBindingInput interface {
 	pulumi.Input
 
@@ -1115,7 +1115,7 @@ func (i ApigatewayBindingArgs) ToApigatewayBindingOutputWithContext(ctx context.
 // ApigatewayBindingArrayInput is an input type that accepts ApigatewayBindingArray and ApigatewayBindingArrayOutput values.
 // You can construct a concrete instance of `ApigatewayBindingArrayInput` via:
 //
-//          ApigatewayBindingArray{ ApigatewayBindingArgs{...} }
+//	ApigatewayBindingArray{ ApigatewayBindingArgs{...} }
 type ApigatewayBindingArrayInput interface {
 	pulumi.Input
 
@@ -1262,7 +1262,7 @@ type ApigatewayExpr struct {
 // ApigatewayExprInput is an input type that accepts ApigatewayExprArgs and ApigatewayExprOutput values.
 // You can construct a concrete instance of `ApigatewayExprInput` via:
 //
-//          ApigatewayExprArgs{...}
+//	ApigatewayExprArgs{...}
 type ApigatewayExprInput interface {
 	pulumi.Input
 
@@ -1305,11 +1305,11 @@ func (i ApigatewayExprArgs) ToApigatewayExprPtrOutputWithContext(ctx context.Con
 // ApigatewayExprPtrInput is an input type that accepts ApigatewayExprArgs, ApigatewayExprPtr and ApigatewayExprPtrOutput values.
 // You can construct a concrete instance of `ApigatewayExprPtrInput` via:
 //
-//          ApigatewayExprArgs{...}
+//	        ApigatewayExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApigatewayExprPtrInput interface {
 	pulumi.Input
 
@@ -1500,7 +1500,7 @@ type ApigatewayGatewayConfig struct {
 // ApigatewayGatewayConfigInput is an input type that accepts ApigatewayGatewayConfigArgs and ApigatewayGatewayConfigOutput values.
 // You can construct a concrete instance of `ApigatewayGatewayConfigInput` via:
 //
-//          ApigatewayGatewayConfigArgs{...}
+//	ApigatewayGatewayConfigArgs{...}
 type ApigatewayGatewayConfigInput interface {
 	pulumi.Input
 
@@ -1537,11 +1537,11 @@ func (i ApigatewayGatewayConfigArgs) ToApigatewayGatewayConfigPtrOutputWithConte
 // ApigatewayGatewayConfigPtrInput is an input type that accepts ApigatewayGatewayConfigArgs, ApigatewayGatewayConfigPtr and ApigatewayGatewayConfigPtrOutput values.
 // You can construct a concrete instance of `ApigatewayGatewayConfigPtrInput` via:
 //
-//          ApigatewayGatewayConfigArgs{...}
+//	        ApigatewayGatewayConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ApigatewayGatewayConfigPtrInput interface {
 	pulumi.Input
 

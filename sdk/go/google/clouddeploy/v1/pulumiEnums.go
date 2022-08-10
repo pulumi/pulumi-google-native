@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -314,7 +314,7 @@ func (o ExecutionConfigUsagesItemPtrOutput) ToStringPtrOutputWithContext(ctx con
 // ExecutionConfigUsagesItemInput is an input type that accepts ExecutionConfigUsagesItemArgs and ExecutionConfigUsagesItemOutput values.
 // You can construct a concrete instance of `ExecutionConfigUsagesItemInput` via:
 //
-//          ExecutionConfigUsagesItemArgs{...}
+//	ExecutionConfigUsagesItemArgs{...}
 type ExecutionConfigUsagesItemInput interface {
 	pulumi.Input
 
@@ -352,7 +352,7 @@ func (in *executionConfigUsagesItemPtr) ToExecutionConfigUsagesItemPtrOutputWith
 // ExecutionConfigUsagesItemArrayInput is an input type that accepts ExecutionConfigUsagesItemArray and ExecutionConfigUsagesItemArrayOutput values.
 // You can construct a concrete instance of `ExecutionConfigUsagesItemArrayInput` via:
 //
-//          ExecutionConfigUsagesItemArray{ ExecutionConfigUsagesItemArgs{...} }
+//	ExecutionConfigUsagesItemArray{ ExecutionConfigUsagesItemArgs{...} }
 type ExecutionConfigUsagesItemArrayInput interface {
 	pulumi.Input
 

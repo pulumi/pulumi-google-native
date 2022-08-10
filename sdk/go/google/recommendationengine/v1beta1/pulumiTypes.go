@@ -19,7 +19,7 @@ type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy struct {
 // GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyInput is an input type that accepts GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs and GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyOutput values.
 // You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyInput` via:
 //
-//          GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs{...}
+//	GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs{...}
 type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyInput interface {
 	pulumi.Input
 
@@ -48,7 +48,7 @@ func (i GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs) 
 // GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayInput is an input type that accepts GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArray and GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayInput` via:
 //
-//          GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArray{ GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs{...} }
+//	GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArray{ GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArgs{...} }
 type GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchyArrayInput interface {
 	pulumi.Input
 
@@ -171,7 +171,7 @@ type GoogleCloudRecommendationengineV1beta1FeatureMap struct {
 // GoogleCloudRecommendationengineV1beta1FeatureMapInput is an input type that accepts GoogleCloudRecommendationengineV1beta1FeatureMap and GoogleCloudRecommendationengineV1beta1FeatureMapOutput values.
 // You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1FeatureMapInput` via:
 //
-//          GoogleCloudRecommendationengineV1beta1FeatureMap{ "key": GoogleCloudRecommendationengineV1beta1FeatureArgs{...} }
+//	GoogleCloudRecommendationengineV1beta1FeatureMap{ "key": GoogleCloudRecommendationengineV1beta1FeatureArgs{...} }
 type GoogleCloudRecommendationengineV1beta1FeatureMapInput interface {
 	pulumi.Input
 
@@ -210,11 +210,11 @@ func (i GoogleCloudRecommendationengineV1beta1FeatureMapArgs) ToGoogleCloudRecom
 // GoogleCloudRecommendationengineV1beta1FeatureMapPtrInput is an input type that accepts GoogleCloudRecommendationengineV1beta1FeatureMapArgs, GoogleCloudRecommendationengineV1beta1FeatureMapPtr and GoogleCloudRecommendationengineV1beta1FeatureMapPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1FeatureMapPtrInput` via:
 //
-//          GoogleCloudRecommendationengineV1beta1FeatureMapArgs{...}
+//	        GoogleCloudRecommendationengineV1beta1FeatureMapArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRecommendationengineV1beta1FeatureMapPtrInput interface {
 	pulumi.Input
 
@@ -371,7 +371,7 @@ type GoogleCloudRecommendationengineV1beta1Image struct {
 // GoogleCloudRecommendationengineV1beta1ImageInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ImageArgs and GoogleCloudRecommendationengineV1beta1ImageOutput values.
 // You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1ImageInput` via:
 //
-//          GoogleCloudRecommendationengineV1beta1ImageArgs{...}
+//	GoogleCloudRecommendationengineV1beta1ImageArgs{...}
 type GoogleCloudRecommendationengineV1beta1ImageInput interface {
 	pulumi.Input
 
@@ -404,7 +404,7 @@ func (i GoogleCloudRecommendationengineV1beta1ImageArgs) ToGoogleCloudRecommenda
 // GoogleCloudRecommendationengineV1beta1ImageArrayInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ImageArray and GoogleCloudRecommendationengineV1beta1ImageArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1ImageArrayInput` via:
 //
-//          GoogleCloudRecommendationengineV1beta1ImageArray{ GoogleCloudRecommendationengineV1beta1ImageArgs{...} }
+//	GoogleCloudRecommendationengineV1beta1ImageArray{ GoogleCloudRecommendationengineV1beta1ImageArgs{...} }
 type GoogleCloudRecommendationengineV1beta1ImageArrayInput interface {
 	pulumi.Input
 
@@ -559,7 +559,7 @@ type GoogleCloudRecommendationengineV1beta1ProductCatalogItem struct {
 // GoogleCloudRecommendationengineV1beta1ProductCatalogItemInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs and GoogleCloudRecommendationengineV1beta1ProductCatalogItemOutput values.
 // You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1ProductCatalogItemInput` via:
 //
-//          GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs{...}
+//	GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs{...}
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemInput interface {
 	pulumi.Input
 
@@ -610,11 +610,11 @@ func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs) ToGoogleCl
 // GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs, GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtr and GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrInput` via:
 //
-//          GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs{...}
+//	        GoogleCloudRecommendationengineV1beta1ProductCatalogItemArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPtrInput interface {
 	pulumi.Input
 
@@ -828,7 +828,7 @@ type GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice struct {
 // GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs and GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceOutput values.
 // You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceInput` via:
 //
-//          GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs{...}
+//	GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs{...}
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceInput interface {
 	pulumi.Input
 
@@ -867,11 +867,11 @@ func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs) 
 // GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs, GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtr and GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrInput` via:
 //
-//          GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs{...}
+//	        GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPriceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPricePtrInput interface {
 	pulumi.Input
 
@@ -1028,7 +1028,7 @@ type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange struct {
 // GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs and GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeOutput values.
 // You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeInput` via:
 //
-//          GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs{...}
+//	GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs{...}
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeInput interface {
 	pulumi.Input
 
@@ -1067,11 +1067,11 @@ func (i GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs) 
 // GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrInput is an input type that accepts GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs, GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtr and GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrInput` via:
 //
-//          GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs{...}
+//	        GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRangePtrInput interface {
 	pulumi.Input
 

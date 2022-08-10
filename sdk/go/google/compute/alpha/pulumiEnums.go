@@ -148,7 +148,7 @@ func (o AccessConfigNetworkTierPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // AccessConfigNetworkTierInput is an input type that accepts AccessConfigNetworkTierArgs and AccessConfigNetworkTierOutput values.
 // You can construct a concrete instance of `AccessConfigNetworkTierInput` via:
 //
-//          AccessConfigNetworkTierArgs{...}
+//	AccessConfigNetworkTierArgs{...}
 type AccessConfigNetworkTierInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o AccessConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // AccessConfigTypeInput is an input type that accepts AccessConfigTypeArgs and AccessConfigTypeOutput values.
 // You can construct a concrete instance of `AccessConfigTypeInput` via:
 //
-//          AccessConfigTypeArgs{...}
+//	AccessConfigTypeArgs{...}
 type AccessConfigTypeInput interface {
 	pulumi.Input
 
@@ -483,7 +483,7 @@ func (o AddressAddressTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // AddressAddressTypeInput is an input type that accepts AddressAddressTypeArgs and AddressAddressTypeOutput values.
 // You can construct a concrete instance of `AddressAddressTypeInput` via:
 //
-//          AddressAddressTypeArgs{...}
+//	AddressAddressTypeArgs{...}
 type AddressAddressTypeInput interface {
 	pulumi.Input
 
@@ -649,7 +649,7 @@ func (o AddressIpVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // AddressIpVersionInput is an input type that accepts AddressIpVersionArgs and AddressIpVersionOutput values.
 // You can construct a concrete instance of `AddressIpVersionInput` via:
 //
-//          AddressIpVersionArgs{...}
+//	AddressIpVersionArgs{...}
 type AddressIpVersionInput interface {
 	pulumi.Input
 
@@ -814,7 +814,7 @@ func (o AddressIpv6EndpointTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 // AddressIpv6EndpointTypeInput is an input type that accepts AddressIpv6EndpointTypeArgs and AddressIpv6EndpointTypeOutput values.
 // You can construct a concrete instance of `AddressIpv6EndpointTypeInput` via:
 //
-//          AddressIpv6EndpointTypeArgs{...}
+//	AddressIpv6EndpointTypeArgs{...}
 type AddressIpv6EndpointTypeInput interface {
 	pulumi.Input
 
@@ -987,7 +987,7 @@ func (o AddressNetworkTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // AddressNetworkTierInput is an input type that accepts AddressNetworkTierArgs and AddressNetworkTierOutput values.
 // You can construct a concrete instance of `AddressNetworkTierInput` via:
 //
-//          AddressNetworkTierArgs{...}
+//	AddressNetworkTierArgs{...}
 type AddressNetworkTierInput interface {
 	pulumi.Input
 
@@ -1166,7 +1166,7 @@ func (o AddressPurposePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // AddressPurposeInput is an input type that accepts AddressPurposeArgs and AddressPurposeOutput values.
 // You can construct a concrete instance of `AddressPurposeInput` via:
 //
-//          AddressPurposeArgs{...}
+//	AddressPurposeArgs{...}
 type AddressPurposeInput interface {
 	pulumi.Input
 
@@ -1332,7 +1332,7 @@ func (o AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskIn
 // AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceInput is an input type that accepts AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceArgs and AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceOutput values.
 // You can construct a concrete instance of `AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceInput` via:
 //
-//          AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceArgs{...}
+//	AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceArgs{...}
 type AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskInterfaceInput interface {
 	pulumi.Input
 
@@ -1497,7 +1497,7 @@ func (o AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceInte
 // AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalInput is an input type that accepts AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalArgs and AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalOutput values.
 // You can construct a concrete instance of `AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalInput` via:
 //
-//          AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalArgs{...}
+//	AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalArgs{...}
 type AllocationSpecificSKUAllocationReservedInstancePropertiesMaintenanceIntervalInput interface {
 	pulumi.Input
 
@@ -1666,7 +1666,7 @@ func (o AttachedDiskInitializeParamsArchitecturePtrOutput) ToStringPtrOutputWith
 // AttachedDiskInitializeParamsArchitectureInput is an input type that accepts AttachedDiskInitializeParamsArchitectureArgs and AttachedDiskInitializeParamsArchitectureOutput values.
 // You can construct a concrete instance of `AttachedDiskInitializeParamsArchitectureInput` via:
 //
-//          AttachedDiskInitializeParamsArchitectureArgs{...}
+//	AttachedDiskInitializeParamsArchitectureArgs{...}
 type AttachedDiskInitializeParamsArchitectureInput interface {
 	pulumi.Input
 
@@ -1832,7 +1832,7 @@ func (o AttachedDiskInitializeParamsInterfacePtrOutput) ToStringPtrOutputWithCon
 // AttachedDiskInitializeParamsInterfaceInput is an input type that accepts AttachedDiskInitializeParamsInterfaceArgs and AttachedDiskInitializeParamsInterfaceOutput values.
 // You can construct a concrete instance of `AttachedDiskInitializeParamsInterfaceInput` via:
 //
-//          AttachedDiskInitializeParamsInterfaceArgs{...}
+//	AttachedDiskInitializeParamsInterfaceArgs{...}
 type AttachedDiskInitializeParamsInterfaceInput interface {
 	pulumi.Input
 
@@ -2001,7 +2001,7 @@ func (o AttachedDiskInitializeParamsOnUpdateActionPtrOutput) ToStringPtrOutputWi
 // AttachedDiskInitializeParamsOnUpdateActionInput is an input type that accepts AttachedDiskInitializeParamsOnUpdateActionArgs and AttachedDiskInitializeParamsOnUpdateActionOutput values.
 // You can construct a concrete instance of `AttachedDiskInitializeParamsOnUpdateActionInput` via:
 //
-//          AttachedDiskInitializeParamsOnUpdateActionArgs{...}
+//	AttachedDiskInitializeParamsOnUpdateActionArgs{...}
 type AttachedDiskInitializeParamsOnUpdateActionInput interface {
 	pulumi.Input
 
@@ -2167,7 +2167,7 @@ func (o AttachedDiskInterfacePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AttachedDiskInterfaceInput is an input type that accepts AttachedDiskInterfaceArgs and AttachedDiskInterfaceOutput values.
 // You can construct a concrete instance of `AttachedDiskInterfaceInput` via:
 //
-//          AttachedDiskInterfaceArgs{...}
+//	AttachedDiskInterfaceArgs{...}
 type AttachedDiskInterfaceInput interface {
 	pulumi.Input
 
@@ -2334,7 +2334,7 @@ func (o AttachedDiskModePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // AttachedDiskModeInput is an input type that accepts AttachedDiskModeArgs and AttachedDiskModeOutput values.
 // You can construct a concrete instance of `AttachedDiskModeInput` via:
 //
-//          AttachedDiskModeArgs{...}
+//	AttachedDiskModeArgs{...}
 type AttachedDiskModeInput interface {
 	pulumi.Input
 
@@ -2501,7 +2501,7 @@ func (o AttachedDiskSavedStatePtrOutput) ToStringPtrOutputWithContext(ctx contex
 // AttachedDiskSavedStateInput is an input type that accepts AttachedDiskSavedStateArgs and AttachedDiskSavedStateOutput values.
 // You can construct a concrete instance of `AttachedDiskSavedStateInput` via:
 //
-//          AttachedDiskSavedStateArgs{...}
+//	AttachedDiskSavedStateArgs{...}
 type AttachedDiskSavedStateInput interface {
 	pulumi.Input
 
@@ -2666,7 +2666,7 @@ func (o AttachedDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // AttachedDiskTypeInput is an input type that accepts AttachedDiskTypeArgs and AttachedDiskTypeOutput values.
 // You can construct a concrete instance of `AttachedDiskTypeInput` via:
 //
-//          AttachedDiskTypeArgs{...}
+//	AttachedDiskTypeArgs{...}
 type AttachedDiskTypeInput interface {
 	pulumi.Input
 
@@ -2837,7 +2837,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -3005,7 +3005,7 @@ func (o AuthenticationPolicyPrincipalBindingPtrOutput) ToStringPtrOutputWithCont
 // AuthenticationPolicyPrincipalBindingInput is an input type that accepts AuthenticationPolicyPrincipalBindingArgs and AuthenticationPolicyPrincipalBindingOutput values.
 // You can construct a concrete instance of `AuthenticationPolicyPrincipalBindingInput` via:
 //
-//          AuthenticationPolicyPrincipalBindingArgs{...}
+//	AuthenticationPolicyPrincipalBindingArgs{...}
 type AuthenticationPolicyPrincipalBindingInput interface {
 	pulumi.Input
 
@@ -3178,7 +3178,7 @@ func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToStringPtrOutputWit
 // AuthorizationLoggingOptionsPermissionTypeInput is an input type that accepts AuthorizationLoggingOptionsPermissionTypeArgs and AuthorizationLoggingOptionsPermissionTypeOutput values.
 // You can construct a concrete instance of `AuthorizationLoggingOptionsPermissionTypeInput` via:
 //
-//          AuthorizationLoggingOptionsPermissionTypeArgs{...}
+//	AuthorizationLoggingOptionsPermissionTypeArgs{...}
 type AuthorizationLoggingOptionsPermissionTypeInput interface {
 	pulumi.Input
 
@@ -3348,7 +3348,7 @@ func (o AutoscalingPolicyCpuUtilizationPredictiveMethodPtrOutput) ToStringPtrOut
 // AutoscalingPolicyCpuUtilizationPredictiveMethodInput is an input type that accepts AutoscalingPolicyCpuUtilizationPredictiveMethodArgs and AutoscalingPolicyCpuUtilizationPredictiveMethodOutput values.
 // You can construct a concrete instance of `AutoscalingPolicyCpuUtilizationPredictiveMethodInput` via:
 //
-//          AutoscalingPolicyCpuUtilizationPredictiveMethodArgs{...}
+//	AutoscalingPolicyCpuUtilizationPredictiveMethodArgs{...}
 type AutoscalingPolicyCpuUtilizationPredictiveMethodInput interface {
 	pulumi.Input
 
@@ -3517,7 +3517,7 @@ func (o AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypePtrOutput) 
 // AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeInput is an input type that accepts AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeArgs and AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeOutput values.
 // You can construct a concrete instance of `AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeInput` via:
 //
-//          AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeArgs{...}
+//	AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeArgs{...}
 type AutoscalingPolicyCustomMetricUtilizationUtilizationTargetTypeInput interface {
 	pulumi.Input
 
@@ -3688,7 +3688,7 @@ func (o AutoscalingPolicyModePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AutoscalingPolicyModeInput is an input type that accepts AutoscalingPolicyModeArgs and AutoscalingPolicyModeOutput values.
 // You can construct a concrete instance of `AutoscalingPolicyModeInput` via:
 //
-//          AutoscalingPolicyModeArgs{...}
+//	AutoscalingPolicyModeArgs{...}
 type AutoscalingPolicyModeInput interface {
 	pulumi.Input
 
@@ -3857,7 +3857,7 @@ func (o BackendBalancingModePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // BackendBalancingModeInput is an input type that accepts BackendBalancingModeArgs and BackendBalancingModeOutput values.
 // You can construct a concrete instance of `BackendBalancingModeInput` via:
 //
-//          BackendBalancingModeArgs{...}
+//	BackendBalancingModeArgs{...}
 type BackendBalancingModeInput interface {
 	pulumi.Input
 
@@ -4027,7 +4027,7 @@ func (o BackendBucketCdnPolicyCacheModePtrOutput) ToStringPtrOutputWithContext(c
 // BackendBucketCdnPolicyCacheModeInput is an input type that accepts BackendBucketCdnPolicyCacheModeArgs and BackendBucketCdnPolicyCacheModeOutput values.
 // You can construct a concrete instance of `BackendBucketCdnPolicyCacheModeInput` via:
 //
-//          BackendBucketCdnPolicyCacheModeArgs{...}
+//	BackendBucketCdnPolicyCacheModeArgs{...}
 type BackendBucketCdnPolicyCacheModeInput interface {
 	pulumi.Input
 
@@ -4194,7 +4194,7 @@ func (o BackendBucketCompressionModePtrOutput) ToStringPtrOutputWithContext(ctx 
 // BackendBucketCompressionModeInput is an input type that accepts BackendBucketCompressionModeArgs and BackendBucketCompressionModeOutput values.
 // You can construct a concrete instance of `BackendBucketCompressionModeInput` via:
 //
-//          BackendBucketCompressionModeArgs{...}
+//	BackendBucketCompressionModeArgs{...}
 type BackendBucketCompressionModeInput interface {
 	pulumi.Input
 
@@ -4364,7 +4364,7 @@ func (o BackendServiceCdnPolicyCacheModePtrOutput) ToStringPtrOutputWithContext(
 // BackendServiceCdnPolicyCacheModeInput is an input type that accepts BackendServiceCdnPolicyCacheModeArgs and BackendServiceCdnPolicyCacheModeOutput values.
 // You can construct a concrete instance of `BackendServiceCdnPolicyCacheModeInput` via:
 //
-//          BackendServiceCdnPolicyCacheModeArgs{...}
+//	BackendServiceCdnPolicyCacheModeArgs{...}
 type BackendServiceCdnPolicyCacheModeInput interface {
 	pulumi.Input
 
@@ -4531,7 +4531,7 @@ func (o BackendServiceCompressionModePtrOutput) ToStringPtrOutputWithContext(ctx
 // BackendServiceCompressionModeInput is an input type that accepts BackendServiceCompressionModeArgs and BackendServiceCompressionModeOutput values.
 // You can construct a concrete instance of `BackendServiceCompressionModeInput` via:
 //
-//          BackendServiceCompressionModeArgs{...}
+//	BackendServiceCompressionModeArgs{...}
 type BackendServiceCompressionModeInput interface {
 	pulumi.Input
 
@@ -4697,7 +4697,7 @@ func (o BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBa
 // BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsInput is an input type that accepts BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsArgs and BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsOutput values.
 // You can construct a concrete instance of `BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsInput` via:
 //
-//          BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsArgs{...}
+//	BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsArgs{...}
 type BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsInput interface {
 	pulumi.Input
 
@@ -4863,7 +4863,7 @@ func (o BackendServiceConnectionTrackingPolicyTrackingModePtrOutput) ToStringPtr
 // BackendServiceConnectionTrackingPolicyTrackingModeInput is an input type that accepts BackendServiceConnectionTrackingPolicyTrackingModeArgs and BackendServiceConnectionTrackingPolicyTrackingModeOutput values.
 // You can construct a concrete instance of `BackendServiceConnectionTrackingPolicyTrackingModeInput` via:
 //
-//          BackendServiceConnectionTrackingPolicyTrackingModeArgs{...}
+//	BackendServiceConnectionTrackingPolicyTrackingModeArgs{...}
 type BackendServiceConnectionTrackingPolicyTrackingModeInput interface {
 	pulumi.Input
 
@@ -5037,7 +5037,7 @@ func (o BackendServiceLoadBalancingSchemePtrOutput) ToStringPtrOutputWithContext
 // BackendServiceLoadBalancingSchemeInput is an input type that accepts BackendServiceLoadBalancingSchemeArgs and BackendServiceLoadBalancingSchemeOutput values.
 // You can construct a concrete instance of `BackendServiceLoadBalancingSchemeInput` via:
 //
-//          BackendServiceLoadBalancingSchemeArgs{...}
+//	BackendServiceLoadBalancingSchemeArgs{...}
 type BackendServiceLoadBalancingSchemeInput interface {
 	pulumi.Input
 
@@ -5215,7 +5215,7 @@ func (o BackendServiceLocalityLbPolicyPtrOutput) ToStringPtrOutputWithContext(ct
 // BackendServiceLocalityLbPolicyInput is an input type that accepts BackendServiceLocalityLbPolicyArgs and BackendServiceLocalityLbPolicyOutput values.
 // You can construct a concrete instance of `BackendServiceLocalityLbPolicyInput` via:
 //
-//          BackendServiceLocalityLbPolicyArgs{...}
+//	BackendServiceLocalityLbPolicyArgs{...}
 type BackendServiceLocalityLbPolicyInput interface {
 	pulumi.Input
 
@@ -5393,7 +5393,7 @@ func (o BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput) ToSt
 // BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameInput is an input type that accepts BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameArgs and BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput values.
 // You can construct a concrete instance of `BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameInput` via:
 //
-//          BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameArgs{...}
+//	BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameArgs{...}
 type BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameInput interface {
 	pulumi.Input
 
@@ -5572,7 +5572,7 @@ func (o BackendServiceProtocolPtrOutput) ToStringPtrOutputWithContext(ctx contex
 // BackendServiceProtocolInput is an input type that accepts BackendServiceProtocolArgs and BackendServiceProtocolOutput values.
 // You can construct a concrete instance of `BackendServiceProtocolInput` via:
 //
-//          BackendServiceProtocolArgs{...}
+//	BackendServiceProtocolArgs{...}
 type BackendServiceProtocolInput interface {
 	pulumi.Input
 
@@ -5751,7 +5751,7 @@ func (o BackendServiceSessionAffinityPtrOutput) ToStringPtrOutputWithContext(ctx
 // BackendServiceSessionAffinityInput is an input type that accepts BackendServiceSessionAffinityArgs and BackendServiceSessionAffinityOutput values.
 // You can construct a concrete instance of `BackendServiceSessionAffinityInput` via:
 //
-//          BackendServiceSessionAffinityArgs{...}
+//	BackendServiceSessionAffinityArgs{...}
 type BackendServiceSessionAffinityInput interface {
 	pulumi.Input
 
@@ -5918,7 +5918,7 @@ func (o BackendServiceVpcNetworkScopePtrOutput) ToStringPtrOutputWithContext(ctx
 // BackendServiceVpcNetworkScopeInput is an input type that accepts BackendServiceVpcNetworkScopeArgs and BackendServiceVpcNetworkScopeOutput values.
 // You can construct a concrete instance of `BackendServiceVpcNetworkScopeInput` via:
 //
-//          BackendServiceVpcNetworkScopeArgs{...}
+//	BackendServiceVpcNetworkScopeArgs{...}
 type BackendServiceVpcNetworkScopeInput interface {
 	pulumi.Input
 
@@ -6086,7 +6086,7 @@ func (o CallCredentialsCallCredentialTypePtrOutput) ToStringPtrOutputWithContext
 // CallCredentialsCallCredentialTypeInput is an input type that accepts CallCredentialsCallCredentialTypeArgs and CallCredentialsCallCredentialTypeOutput values.
 // You can construct a concrete instance of `CallCredentialsCallCredentialTypeInput` via:
 //
-//          CallCredentialsCallCredentialTypeArgs{...}
+//	CallCredentialsCallCredentialTypeArgs{...}
 type CallCredentialsCallCredentialTypeInput interface {
 	pulumi.Input
 
@@ -6254,7 +6254,7 @@ func (o ChannelCredentialsChannelCredentialTypePtrOutput) ToStringPtrOutputWithC
 // ChannelCredentialsChannelCredentialTypeInput is an input type that accepts ChannelCredentialsChannelCredentialTypeArgs and ChannelCredentialsChannelCredentialTypeOutput values.
 // You can construct a concrete instance of `ChannelCredentialsChannelCredentialTypeInput` via:
 //
-//          ChannelCredentialsChannelCredentialTypeArgs{...}
+//	ChannelCredentialsChannelCredentialTypeArgs{...}
 type ChannelCredentialsChannelCredentialTypeInput interface {
 	pulumi.Input
 
@@ -6424,7 +6424,7 @@ func (o ClientTlsSettingsModePtrOutput) ToStringPtrOutputWithContext(ctx context
 // ClientTlsSettingsModeInput is an input type that accepts ClientTlsSettingsModeArgs and ClientTlsSettingsModeOutput values.
 // You can construct a concrete instance of `ClientTlsSettingsModeInput` via:
 //
-//          ClientTlsSettingsModeArgs{...}
+//	ClientTlsSettingsModeArgs{...}
 type ClientTlsSettingsModeInput interface {
 	pulumi.Input
 
@@ -6603,7 +6603,7 @@ func (o ConditionIamPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // ConditionIamInput is an input type that accepts ConditionIamArgs and ConditionIamOutput values.
 // You can construct a concrete instance of `ConditionIamInput` via:
 //
-//          ConditionIamArgs{...}
+//	ConditionIamArgs{...}
 type ConditionIamInput interface {
 	pulumi.Input
 
@@ -6778,7 +6778,7 @@ func (o ConditionOpPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // ConditionOpInput is an input type that accepts ConditionOpArgs and ConditionOpOutput values.
 // You can construct a concrete instance of `ConditionOpInput` via:
 //
-//          ConditionOpArgs{...}
+//	ConditionOpArgs{...}
 type ConditionOpInput interface {
 	pulumi.Input
 
@@ -6951,7 +6951,7 @@ func (o ConditionSysPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // ConditionSysInput is an input type that accepts ConditionSysArgs and ConditionSysOutput values.
 // You can construct a concrete instance of `ConditionSysInput` via:
 //
-//          ConditionSysArgs{...}
+//	ConditionSysArgs{...}
 type ConditionSysInput interface {
 	pulumi.Input
 
@@ -7120,7 +7120,7 @@ func (o ConfidentialInstanceConfigConfidentialInstanceTypePtrOutput) ToStringPtr
 // ConfidentialInstanceConfigConfidentialInstanceTypeInput is an input type that accepts ConfidentialInstanceConfigConfidentialInstanceTypeArgs and ConfidentialInstanceConfigConfidentialInstanceTypeOutput values.
 // You can construct a concrete instance of `ConfidentialInstanceConfigConfidentialInstanceTypeInput` via:
 //
-//          ConfidentialInstanceConfigConfidentialInstanceTypeArgs{...}
+//	ConfidentialInstanceConfigConfidentialInstanceTypeArgs{...}
 type ConfidentialInstanceConfigConfidentialInstanceTypeInput interface {
 	pulumi.Input
 
@@ -7287,7 +7287,7 @@ func (o DeprecationStatusStatePtrOutput) ToStringPtrOutputWithContext(ctx contex
 // DeprecationStatusStateInput is an input type that accepts DeprecationStatusStateArgs and DeprecationStatusStateOutput values.
 // You can construct a concrete instance of `DeprecationStatusStateInput` via:
 //
-//          DeprecationStatusStateArgs{...}
+//	DeprecationStatusStateArgs{...}
 type DeprecationStatusStateInput interface {
 	pulumi.Input
 
@@ -7456,7 +7456,7 @@ func (o DiskArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // DiskArchitectureInput is an input type that accepts DiskArchitectureArgs and DiskArchitectureOutput values.
 // You can construct a concrete instance of `DiskArchitectureInput` via:
 //
-//          DiskArchitectureArgs{...}
+//	DiskArchitectureArgs{...}
 type DiskArchitectureInput interface {
 	pulumi.Input
 
@@ -7633,7 +7633,7 @@ func (o DiskInstantiationConfigInstantiateFromPtrOutput) ToStringPtrOutputWithCo
 // DiskInstantiationConfigInstantiateFromInput is an input type that accepts DiskInstantiationConfigInstantiateFromArgs and DiskInstantiationConfigInstantiateFromOutput values.
 // You can construct a concrete instance of `DiskInstantiationConfigInstantiateFromInput` via:
 //
-//          DiskInstantiationConfigInstantiateFromArgs{...}
+//	DiskInstantiationConfigInstantiateFromArgs{...}
 type DiskInstantiationConfigInstantiateFromInput interface {
 	pulumi.Input
 
@@ -7799,7 +7799,7 @@ func (o DiskInterfacePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 // DiskInterfaceInput is an input type that accepts DiskInterfaceArgs and DiskInterfaceOutput values.
 // You can construct a concrete instance of `DiskInterfaceInput` via:
 //
-//          DiskInterfaceArgs{...}
+//	DiskInterfaceArgs{...}
 type DiskInterfaceInput interface {
 	pulumi.Input
 
@@ -7964,7 +7964,7 @@ func (o DiskStorageTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // DiskStorageTypeInput is an input type that accepts DiskStorageTypeArgs and DiskStorageTypeOutput values.
 // You can construct a concrete instance of `DiskStorageTypeInput` via:
 //
-//          DiskStorageTypeArgs{...}
+//	DiskStorageTypeArgs{...}
 type DiskStorageTypeInput interface {
 	pulumi.Input
 
@@ -8135,7 +8135,7 @@ func (o DistributionPolicyTargetShapePtrOutput) ToStringPtrOutputWithContext(ctx
 // DistributionPolicyTargetShapeInput is an input type that accepts DistributionPolicyTargetShapeArgs and DistributionPolicyTargetShapeOutput values.
 // You can construct a concrete instance of `DistributionPolicyTargetShapeInput` via:
 //
-//          DistributionPolicyTargetShapeArgs{...}
+//	DistributionPolicyTargetShapeArgs{...}
 type DistributionPolicyTargetShapeInput interface {
 	pulumi.Input
 
@@ -8304,7 +8304,7 @@ func (o ExternalVpnGatewayRedundancyTypePtrOutput) ToStringPtrOutputWithContext(
 // ExternalVpnGatewayRedundancyTypeInput is an input type that accepts ExternalVpnGatewayRedundancyTypeArgs and ExternalVpnGatewayRedundancyTypeOutput values.
 // You can construct a concrete instance of `ExternalVpnGatewayRedundancyTypeInput` via:
 //
-//          ExternalVpnGatewayRedundancyTypeArgs{...}
+//	ExternalVpnGatewayRedundancyTypeArgs{...}
 type ExternalVpnGatewayRedundancyTypeInput interface {
 	pulumi.Input
 
@@ -8470,7 +8470,7 @@ func (o FileContentBufferFileTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 // FileContentBufferFileTypeInput is an input type that accepts FileContentBufferFileTypeArgs and FileContentBufferFileTypeOutput values.
 // You can construct a concrete instance of `FileContentBufferFileTypeInput` via:
 //
-//          FileContentBufferFileTypeArgs{...}
+//	FileContentBufferFileTypeArgs{...}
 type FileContentBufferFileTypeInput interface {
 	pulumi.Input
 
@@ -8637,7 +8637,7 @@ func (o FirewallDirectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // FirewallDirectionInput is an input type that accepts FirewallDirectionArgs and FirewallDirectionOutput values.
 // You can construct a concrete instance of `FirewallDirectionInput` via:
 //
-//          FirewallDirectionArgs{...}
+//	FirewallDirectionArgs{...}
 type FirewallDirectionInput interface {
 	pulumi.Input
 
@@ -8802,7 +8802,7 @@ func (o FirewallLogConfigMetadataPtrOutput) ToStringPtrOutputWithContext(ctx con
 // FirewallLogConfigMetadataInput is an input type that accepts FirewallLogConfigMetadataArgs and FirewallLogConfigMetadataOutput values.
 // You can construct a concrete instance of `FirewallLogConfigMetadataInput` via:
 //
-//          FirewallLogConfigMetadataArgs{...}
+//	FirewallLogConfigMetadataArgs{...}
 type FirewallLogConfigMetadataInput interface {
 	pulumi.Input
 
@@ -8967,7 +8967,7 @@ func (o FirewallPolicyRuleDirectionPtrOutput) ToStringPtrOutputWithContext(ctx c
 // FirewallPolicyRuleDirectionInput is an input type that accepts FirewallPolicyRuleDirectionArgs and FirewallPolicyRuleDirectionOutput values.
 // You can construct a concrete instance of `FirewallPolicyRuleDirectionInput` via:
 //
-//          FirewallPolicyRuleDirectionArgs{...}
+//	FirewallPolicyRuleDirectionArgs{...}
 type FirewallPolicyRuleDirectionInput interface {
 	pulumi.Input
 
@@ -9134,7 +9134,7 @@ func (o FirewallPolicyVpcNetworkScopePtrOutput) ToStringPtrOutputWithContext(ctx
 // FirewallPolicyVpcNetworkScopeInput is an input type that accepts FirewallPolicyVpcNetworkScopeArgs and FirewallPolicyVpcNetworkScopeOutput values.
 // You can construct a concrete instance of `FirewallPolicyVpcNetworkScopeInput` via:
 //
-//          FirewallPolicyVpcNetworkScopeArgs{...}
+//	FirewallPolicyVpcNetworkScopeArgs{...}
 type FirewallPolicyVpcNetworkScopeInput interface {
 	pulumi.Input
 
@@ -9305,7 +9305,7 @@ func (o ForwardingRuleIpProtocolPtrOutput) ToStringPtrOutputWithContext(ctx cont
 // ForwardingRuleIpProtocolInput is an input type that accepts ForwardingRuleIpProtocolArgs and ForwardingRuleIpProtocolOutput values.
 // You can construct a concrete instance of `ForwardingRuleIpProtocolInput` via:
 //
-//          ForwardingRuleIpProtocolArgs{...}
+//	ForwardingRuleIpProtocolArgs{...}
 type ForwardingRuleIpProtocolInput interface {
 	pulumi.Input
 
@@ -9471,7 +9471,7 @@ func (o ForwardingRuleIpVersionPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // ForwardingRuleIpVersionInput is an input type that accepts ForwardingRuleIpVersionArgs and ForwardingRuleIpVersionOutput values.
 // You can construct a concrete instance of `ForwardingRuleIpVersionInput` via:
 //
-//          ForwardingRuleIpVersionArgs{...}
+//	ForwardingRuleIpVersionArgs{...}
 type ForwardingRuleIpVersionInput interface {
 	pulumi.Input
 
@@ -9640,7 +9640,7 @@ func (o ForwardingRuleLoadBalancingSchemePtrOutput) ToStringPtrOutputWithContext
 // ForwardingRuleLoadBalancingSchemeInput is an input type that accepts ForwardingRuleLoadBalancingSchemeArgs and ForwardingRuleLoadBalancingSchemeOutput values.
 // You can construct a concrete instance of `ForwardingRuleLoadBalancingSchemeInput` via:
 //
-//          ForwardingRuleLoadBalancingSchemeArgs{...}
+//	ForwardingRuleLoadBalancingSchemeArgs{...}
 type ForwardingRuleLoadBalancingSchemeInput interface {
 	pulumi.Input
 
@@ -9813,7 +9813,7 @@ func (o ForwardingRuleNetworkTierPtrOutput) ToStringPtrOutputWithContext(ctx con
 // ForwardingRuleNetworkTierInput is an input type that accepts ForwardingRuleNetworkTierArgs and ForwardingRuleNetworkTierOutput values.
 // You can construct a concrete instance of `ForwardingRuleNetworkTierInput` via:
 //
-//          ForwardingRuleNetworkTierArgs{...}
+//	ForwardingRuleNetworkTierArgs{...}
 type ForwardingRuleNetworkTierInput interface {
 	pulumi.Input
 
@@ -9986,7 +9986,7 @@ func (o ForwardingRulePscConnectionStatusPtrOutput) ToStringPtrOutputWithContext
 // ForwardingRulePscConnectionStatusInput is an input type that accepts ForwardingRulePscConnectionStatusArgs and ForwardingRulePscConnectionStatusOutput values.
 // You can construct a concrete instance of `ForwardingRulePscConnectionStatusInput` via:
 //
-//          ForwardingRulePscConnectionStatusArgs{...}
+//	ForwardingRulePscConnectionStatusArgs{...}
 type ForwardingRulePscConnectionStatusInput interface {
 	pulumi.Input
 
@@ -10155,7 +10155,7 @@ func (o GRPCHealthCheckPortSpecificationPtrOutput) ToStringPtrOutputWithContext(
 // GRPCHealthCheckPortSpecificationInput is an input type that accepts GRPCHealthCheckPortSpecificationArgs and GRPCHealthCheckPortSpecificationOutput values.
 // You can construct a concrete instance of `GRPCHealthCheckPortSpecificationInput` via:
 //
-//          GRPCHealthCheckPortSpecificationArgs{...}
+//	GRPCHealthCheckPortSpecificationArgs{...}
 type GRPCHealthCheckPortSpecificationInput interface {
 	pulumi.Input
 
@@ -10325,7 +10325,7 @@ func (o GlobalAddressAddressTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // GlobalAddressAddressTypeInput is an input type that accepts GlobalAddressAddressTypeArgs and GlobalAddressAddressTypeOutput values.
 // You can construct a concrete instance of `GlobalAddressAddressTypeInput` via:
 //
-//          GlobalAddressAddressTypeArgs{...}
+//	GlobalAddressAddressTypeArgs{...}
 type GlobalAddressAddressTypeInput interface {
 	pulumi.Input
 
@@ -10491,7 +10491,7 @@ func (o GlobalAddressIpVersionPtrOutput) ToStringPtrOutputWithContext(ctx contex
 // GlobalAddressIpVersionInput is an input type that accepts GlobalAddressIpVersionArgs and GlobalAddressIpVersionOutput values.
 // You can construct a concrete instance of `GlobalAddressIpVersionInput` via:
 //
-//          GlobalAddressIpVersionArgs{...}
+//	GlobalAddressIpVersionArgs{...}
 type GlobalAddressIpVersionInput interface {
 	pulumi.Input
 
@@ -10656,7 +10656,7 @@ func (o GlobalAddressIpv6EndpointTypePtrOutput) ToStringPtrOutputWithContext(ctx
 // GlobalAddressIpv6EndpointTypeInput is an input type that accepts GlobalAddressIpv6EndpointTypeArgs and GlobalAddressIpv6EndpointTypeOutput values.
 // You can construct a concrete instance of `GlobalAddressIpv6EndpointTypeInput` via:
 //
-//          GlobalAddressIpv6EndpointTypeArgs{...}
+//	GlobalAddressIpv6EndpointTypeArgs{...}
 type GlobalAddressIpv6EndpointTypeInput interface {
 	pulumi.Input
 
@@ -10829,7 +10829,7 @@ func (o GlobalAddressNetworkTierPtrOutput) ToStringPtrOutputWithContext(ctx cont
 // GlobalAddressNetworkTierInput is an input type that accepts GlobalAddressNetworkTierArgs and GlobalAddressNetworkTierOutput values.
 // You can construct a concrete instance of `GlobalAddressNetworkTierInput` via:
 //
-//          GlobalAddressNetworkTierArgs{...}
+//	GlobalAddressNetworkTierArgs{...}
 type GlobalAddressNetworkTierInput interface {
 	pulumi.Input
 
@@ -11008,7 +11008,7 @@ func (o GlobalAddressPurposePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // GlobalAddressPurposeInput is an input type that accepts GlobalAddressPurposeArgs and GlobalAddressPurposeOutput values.
 // You can construct a concrete instance of `GlobalAddressPurposeInput` via:
 //
-//          GlobalAddressPurposeArgs{...}
+//	GlobalAddressPurposeArgs{...}
 type GlobalAddressPurposeInput interface {
 	pulumi.Input
 
@@ -11179,7 +11179,7 @@ func (o GlobalForwardingRuleIpProtocolPtrOutput) ToStringPtrOutputWithContext(ct
 // GlobalForwardingRuleIpProtocolInput is an input type that accepts GlobalForwardingRuleIpProtocolArgs and GlobalForwardingRuleIpProtocolOutput values.
 // You can construct a concrete instance of `GlobalForwardingRuleIpProtocolInput` via:
 //
-//          GlobalForwardingRuleIpProtocolArgs{...}
+//	GlobalForwardingRuleIpProtocolArgs{...}
 type GlobalForwardingRuleIpProtocolInput interface {
 	pulumi.Input
 
@@ -11345,7 +11345,7 @@ func (o GlobalForwardingRuleIpVersionPtrOutput) ToStringPtrOutputWithContext(ctx
 // GlobalForwardingRuleIpVersionInput is an input type that accepts GlobalForwardingRuleIpVersionArgs and GlobalForwardingRuleIpVersionOutput values.
 // You can construct a concrete instance of `GlobalForwardingRuleIpVersionInput` via:
 //
-//          GlobalForwardingRuleIpVersionArgs{...}
+//	GlobalForwardingRuleIpVersionArgs{...}
 type GlobalForwardingRuleIpVersionInput interface {
 	pulumi.Input
 
@@ -11514,7 +11514,7 @@ func (o GlobalForwardingRuleLoadBalancingSchemePtrOutput) ToStringPtrOutputWithC
 // GlobalForwardingRuleLoadBalancingSchemeInput is an input type that accepts GlobalForwardingRuleLoadBalancingSchemeArgs and GlobalForwardingRuleLoadBalancingSchemeOutput values.
 // You can construct a concrete instance of `GlobalForwardingRuleLoadBalancingSchemeInput` via:
 //
-//          GlobalForwardingRuleLoadBalancingSchemeArgs{...}
+//	GlobalForwardingRuleLoadBalancingSchemeArgs{...}
 type GlobalForwardingRuleLoadBalancingSchemeInput interface {
 	pulumi.Input
 
@@ -11687,7 +11687,7 @@ func (o GlobalForwardingRuleNetworkTierPtrOutput) ToStringPtrOutputWithContext(c
 // GlobalForwardingRuleNetworkTierInput is an input type that accepts GlobalForwardingRuleNetworkTierArgs and GlobalForwardingRuleNetworkTierOutput values.
 // You can construct a concrete instance of `GlobalForwardingRuleNetworkTierInput` via:
 //
-//          GlobalForwardingRuleNetworkTierArgs{...}
+//	GlobalForwardingRuleNetworkTierArgs{...}
 type GlobalForwardingRuleNetworkTierInput interface {
 	pulumi.Input
 
@@ -11860,7 +11860,7 @@ func (o GlobalForwardingRulePscConnectionStatusPtrOutput) ToStringPtrOutputWithC
 // GlobalForwardingRulePscConnectionStatusInput is an input type that accepts GlobalForwardingRulePscConnectionStatusArgs and GlobalForwardingRulePscConnectionStatusOutput values.
 // You can construct a concrete instance of `GlobalForwardingRulePscConnectionStatusInput` via:
 //
-//          GlobalForwardingRulePscConnectionStatusArgs{...}
+//	GlobalForwardingRulePscConnectionStatusArgs{...}
 type GlobalForwardingRulePscConnectionStatusInput interface {
 	pulumi.Input
 
@@ -12039,7 +12039,7 @@ func (o GlobalNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToStringPtrOutpu
 // GlobalNetworkEndpointGroupNetworkEndpointTypeInput is an input type that accepts GlobalNetworkEndpointGroupNetworkEndpointTypeArgs and GlobalNetworkEndpointGroupNetworkEndpointTypeOutput values.
 // You can construct a concrete instance of `GlobalNetworkEndpointGroupNetworkEndpointTypeInput` via:
 //
-//          GlobalNetworkEndpointGroupNetworkEndpointTypeArgs{...}
+//	GlobalNetworkEndpointGroupNetworkEndpointTypeArgs{...}
 type GlobalNetworkEndpointGroupNetworkEndpointTypeInput interface {
 	pulumi.Input
 
@@ -12204,7 +12204,7 @@ func (o GlobalNetworkEndpointGroupTypePtrOutput) ToStringPtrOutputWithContext(ct
 // GlobalNetworkEndpointGroupTypeInput is an input type that accepts GlobalNetworkEndpointGroupTypeArgs and GlobalNetworkEndpointGroupTypeOutput values.
 // You can construct a concrete instance of `GlobalNetworkEndpointGroupTypeInput` via:
 //
-//          GlobalNetworkEndpointGroupTypeArgs{...}
+//	GlobalNetworkEndpointGroupTypeArgs{...}
 type GlobalNetworkEndpointGroupTypeInput interface {
 	pulumi.Input
 
@@ -12378,7 +12378,7 @@ func (o GuestOsFeatureTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // GuestOsFeatureTypeInput is an input type that accepts GuestOsFeatureTypeArgs and GuestOsFeatureTypeOutput values.
 // You can construct a concrete instance of `GuestOsFeatureTypeInput` via:
 //
-//          GuestOsFeatureTypeArgs{...}
+//	GuestOsFeatureTypeArgs{...}
 type GuestOsFeatureTypeInput interface {
 	pulumi.Input
 
@@ -12547,7 +12547,7 @@ func (o HTTP2HealthCheckPortSpecificationPtrOutput) ToStringPtrOutputWithContext
 // HTTP2HealthCheckPortSpecificationInput is an input type that accepts HTTP2HealthCheckPortSpecificationArgs and HTTP2HealthCheckPortSpecificationOutput values.
 // You can construct a concrete instance of `HTTP2HealthCheckPortSpecificationInput` via:
 //
-//          HTTP2HealthCheckPortSpecificationArgs{...}
+//	HTTP2HealthCheckPortSpecificationArgs{...}
 type HTTP2HealthCheckPortSpecificationInput interface {
 	pulumi.Input
 
@@ -12712,7 +12712,7 @@ func (o HTTP2HealthCheckProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx c
 // HTTP2HealthCheckProxyHeaderInput is an input type that accepts HTTP2HealthCheckProxyHeaderArgs and HTTP2HealthCheckProxyHeaderOutput values.
 // You can construct a concrete instance of `HTTP2HealthCheckProxyHeaderInput` via:
 //
-//          HTTP2HealthCheckProxyHeaderArgs{...}
+//	HTTP2HealthCheckProxyHeaderArgs{...}
 type HTTP2HealthCheckProxyHeaderInput interface {
 	pulumi.Input
 
@@ -12881,7 +12881,7 @@ func (o HTTP2HealthCheckWeightReportModePtrOutput) ToStringPtrOutputWithContext(
 // HTTP2HealthCheckWeightReportModeInput is an input type that accepts HTTP2HealthCheckWeightReportModeArgs and HTTP2HealthCheckWeightReportModeOutput values.
 // You can construct a concrete instance of `HTTP2HealthCheckWeightReportModeInput` via:
 //
-//          HTTP2HealthCheckWeightReportModeArgs{...}
+//	HTTP2HealthCheckWeightReportModeArgs{...}
 type HTTP2HealthCheckWeightReportModeInput interface {
 	pulumi.Input
 
@@ -13050,7 +13050,7 @@ func (o HTTPHealthCheckPortSpecificationPtrOutput) ToStringPtrOutputWithContext(
 // HTTPHealthCheckPortSpecificationInput is an input type that accepts HTTPHealthCheckPortSpecificationArgs and HTTPHealthCheckPortSpecificationOutput values.
 // You can construct a concrete instance of `HTTPHealthCheckPortSpecificationInput` via:
 //
-//          HTTPHealthCheckPortSpecificationArgs{...}
+//	HTTPHealthCheckPortSpecificationArgs{...}
 type HTTPHealthCheckPortSpecificationInput interface {
 	pulumi.Input
 
@@ -13215,7 +13215,7 @@ func (o HTTPHealthCheckProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx co
 // HTTPHealthCheckProxyHeaderInput is an input type that accepts HTTPHealthCheckProxyHeaderArgs and HTTPHealthCheckProxyHeaderOutput values.
 // You can construct a concrete instance of `HTTPHealthCheckProxyHeaderInput` via:
 //
-//          HTTPHealthCheckProxyHeaderArgs{...}
+//	HTTPHealthCheckProxyHeaderArgs{...}
 type HTTPHealthCheckProxyHeaderInput interface {
 	pulumi.Input
 
@@ -13384,7 +13384,7 @@ func (o HTTPHealthCheckWeightReportModePtrOutput) ToStringPtrOutputWithContext(c
 // HTTPHealthCheckWeightReportModeInput is an input type that accepts HTTPHealthCheckWeightReportModeArgs and HTTPHealthCheckWeightReportModeOutput values.
 // You can construct a concrete instance of `HTTPHealthCheckWeightReportModeInput` via:
 //
-//          HTTPHealthCheckWeightReportModeArgs{...}
+//	HTTPHealthCheckWeightReportModeArgs{...}
 type HTTPHealthCheckWeightReportModeInput interface {
 	pulumi.Input
 
@@ -13553,7 +13553,7 @@ func (o HTTPSHealthCheckPortSpecificationPtrOutput) ToStringPtrOutputWithContext
 // HTTPSHealthCheckPortSpecificationInput is an input type that accepts HTTPSHealthCheckPortSpecificationArgs and HTTPSHealthCheckPortSpecificationOutput values.
 // You can construct a concrete instance of `HTTPSHealthCheckPortSpecificationInput` via:
 //
-//          HTTPSHealthCheckPortSpecificationArgs{...}
+//	HTTPSHealthCheckPortSpecificationArgs{...}
 type HTTPSHealthCheckPortSpecificationInput interface {
 	pulumi.Input
 
@@ -13718,7 +13718,7 @@ func (o HTTPSHealthCheckProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx c
 // HTTPSHealthCheckProxyHeaderInput is an input type that accepts HTTPSHealthCheckProxyHeaderArgs and HTTPSHealthCheckProxyHeaderOutput values.
 // You can construct a concrete instance of `HTTPSHealthCheckProxyHeaderInput` via:
 //
-//          HTTPSHealthCheckProxyHeaderArgs{...}
+//	HTTPSHealthCheckProxyHeaderArgs{...}
 type HTTPSHealthCheckProxyHeaderInput interface {
 	pulumi.Input
 
@@ -13887,7 +13887,7 @@ func (o HTTPSHealthCheckWeightReportModePtrOutput) ToStringPtrOutputWithContext(
 // HTTPSHealthCheckWeightReportModeInput is an input type that accepts HTTPSHealthCheckWeightReportModeArgs and HTTPSHealthCheckWeightReportModeOutput values.
 // You can construct a concrete instance of `HTTPSHealthCheckWeightReportModeInput` via:
 //
-//          HTTPSHealthCheckWeightReportModeArgs{...}
+//	HTTPSHealthCheckWeightReportModeArgs{...}
 type HTTPSHealthCheckWeightReportModeInput interface {
 	pulumi.Input
 
@@ -14058,7 +14058,7 @@ func (o HealthCheckTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // HealthCheckTypeInput is an input type that accepts HealthCheckTypeArgs and HealthCheckTypeOutput values.
 // You can construct a concrete instance of `HealthCheckTypeInput` via:
 //
-//          HealthCheckTypeArgs{...}
+//	HealthCheckTypeArgs{...}
 type HealthCheckTypeInput interface {
 	pulumi.Input
 
@@ -14231,7 +14231,7 @@ func (o HttpRedirectActionRedirectResponseCodePtrOutput) ToStringPtrOutputWithCo
 // HttpRedirectActionRedirectResponseCodeInput is an input type that accepts HttpRedirectActionRedirectResponseCodeArgs and HttpRedirectActionRedirectResponseCodeOutput values.
 // You can construct a concrete instance of `HttpRedirectActionRedirectResponseCodeInput` via:
 //
-//          HttpRedirectActionRedirectResponseCodeArgs{...}
+//	HttpRedirectActionRedirectResponseCodeArgs{...}
 type HttpRedirectActionRedirectResponseCodeInput interface {
 	pulumi.Input
 
@@ -14400,7 +14400,7 @@ func (o ImageArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // ImageArchitectureInput is an input type that accepts ImageArchitectureArgs and ImageArchitectureOutput values.
 // You can construct a concrete instance of `ImageArchitectureInput` via:
 //
-//          ImageArchitectureArgs{...}
+//	ImageArchitectureArgs{...}
 type ImageArchitectureInput interface {
 	pulumi.Input
 
@@ -14564,7 +14564,7 @@ func (o ImageRawDiskContainerTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 // ImageRawDiskContainerTypeInput is an input type that accepts ImageRawDiskContainerTypeArgs and ImageRawDiskContainerTypeOutput values.
 // You can construct a concrete instance of `ImageRawDiskContainerTypeInput` via:
 //
-//          ImageRawDiskContainerTypeArgs{...}
+//	ImageRawDiskContainerTypeArgs{...}
 type ImageRawDiskContainerTypeInput interface {
 	pulumi.Input
 
@@ -14728,7 +14728,7 @@ func (o ImageSourceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // ImageSourceTypeInput is an input type that accepts ImageSourceTypeArgs and ImageSourceTypeOutput values.
 // You can construct a concrete instance of `ImageSourceTypeInput` via:
 //
-//          ImageSourceTypeArgs{...}
+//	ImageSourceTypeArgs{...}
 type ImageSourceTypeInput interface {
 	pulumi.Input
 
@@ -14895,7 +14895,7 @@ func (o InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckPtr
 // InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckInput is an input type that accepts InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckArgs and InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckOutput values.
 // You can construct a concrete instance of `InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckInput` via:
 //
-//          InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckArgs{...}
+//	InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckArgs{...}
 type InstanceGroupManagerAutoHealingPolicyAutoHealingTriggersOnHealthCheckInput interface {
 	pulumi.Input
 
@@ -15060,7 +15060,7 @@ func (o InstanceGroupManagerFailoverActionPtrOutput) ToStringPtrOutputWithContex
 // InstanceGroupManagerFailoverActionInput is an input type that accepts InstanceGroupManagerFailoverActionArgs and InstanceGroupManagerFailoverActionOutput values.
 // You can construct a concrete instance of `InstanceGroupManagerFailoverActionInput` via:
 //
-//          InstanceGroupManagerFailoverActionArgs{...}
+//	InstanceGroupManagerFailoverActionArgs{...}
 type InstanceGroupManagerFailoverActionInput interface {
 	pulumi.Input
 
@@ -15225,7 +15225,7 @@ func (o InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairPtrOutput)
 // InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairInput is an input type that accepts InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairArgs and InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairOutput values.
 // You can construct a concrete instance of `InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairInput` via:
 //
-//          InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairArgs{...}
+//	InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairArgs{...}
 type InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepairInput interface {
 	pulumi.Input
 
@@ -15392,7 +15392,7 @@ func (o InstanceGroupManagerListManagedInstancesResultsPtrOutput) ToStringPtrOut
 // InstanceGroupManagerListManagedInstancesResultsInput is an input type that accepts InstanceGroupManagerListManagedInstancesResultsArgs and InstanceGroupManagerListManagedInstancesResultsOutput values.
 // You can construct a concrete instance of `InstanceGroupManagerListManagedInstancesResultsInput` via:
 //
-//          InstanceGroupManagerListManagedInstancesResultsArgs{...}
+//	InstanceGroupManagerListManagedInstancesResultsArgs{...}
 type InstanceGroupManagerListManagedInstancesResultsInput interface {
 	pulumi.Input
 
@@ -15559,7 +15559,7 @@ func (o InstanceGroupManagerUpdatePolicyInstanceRedistributionTypePtrOutput) ToS
 // InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeInput is an input type that accepts InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeArgs and InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeOutput values.
 // You can construct a concrete instance of `InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeInput` via:
 //
-//          InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeArgs{...}
+//	InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeArgs{...}
 type InstanceGroupManagerUpdatePolicyInstanceRedistributionTypeInput interface {
 	pulumi.Input
 
@@ -15730,7 +15730,7 @@ func (o InstanceGroupManagerUpdatePolicyMinimalActionPtrOutput) ToStringPtrOutpu
 // InstanceGroupManagerUpdatePolicyMinimalActionInput is an input type that accepts InstanceGroupManagerUpdatePolicyMinimalActionArgs and InstanceGroupManagerUpdatePolicyMinimalActionOutput values.
 // You can construct a concrete instance of `InstanceGroupManagerUpdatePolicyMinimalActionInput` via:
 //
-//          InstanceGroupManagerUpdatePolicyMinimalActionArgs{...}
+//	InstanceGroupManagerUpdatePolicyMinimalActionArgs{...}
 type InstanceGroupManagerUpdatePolicyMinimalActionInput interface {
 	pulumi.Input
 
@@ -15901,7 +15901,7 @@ func (o InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionPtrOutput) To
 // InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionInput is an input type that accepts InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionArgs and InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionOutput values.
 // You can construct a concrete instance of `InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionInput` via:
 //
-//          InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionArgs{...}
+//	InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionArgs{...}
 type InstanceGroupManagerUpdatePolicyMostDisruptiveAllowedActionInput interface {
 	pulumi.Input
 
@@ -16068,7 +16068,7 @@ func (o InstanceGroupManagerUpdatePolicyReplacementMethodPtrOutput) ToStringPtrO
 // InstanceGroupManagerUpdatePolicyReplacementMethodInput is an input type that accepts InstanceGroupManagerUpdatePolicyReplacementMethodArgs and InstanceGroupManagerUpdatePolicyReplacementMethodOutput values.
 // You can construct a concrete instance of `InstanceGroupManagerUpdatePolicyReplacementMethodInput` via:
 //
-//          InstanceGroupManagerUpdatePolicyReplacementMethodArgs{...}
+//	InstanceGroupManagerUpdatePolicyReplacementMethodArgs{...}
 type InstanceGroupManagerUpdatePolicyReplacementMethodInput interface {
 	pulumi.Input
 
@@ -16235,7 +16235,7 @@ func (o InstanceGroupManagerUpdatePolicyTypePtrOutput) ToStringPtrOutputWithCont
 // InstanceGroupManagerUpdatePolicyTypeInput is an input type that accepts InstanceGroupManagerUpdatePolicyTypeArgs and InstanceGroupManagerUpdatePolicyTypeOutput values.
 // You can construct a concrete instance of `InstanceGroupManagerUpdatePolicyTypeInput` via:
 //
-//          InstanceGroupManagerUpdatePolicyTypeArgs{...}
+//	InstanceGroupManagerUpdatePolicyTypeArgs{...}
 type InstanceGroupManagerUpdatePolicyTypeInput interface {
 	pulumi.Input
 
@@ -16404,7 +16404,7 @@ func (o InstanceKeyRevocationActionTypePtrOutput) ToStringPtrOutputWithContext(c
 // InstanceKeyRevocationActionTypeInput is an input type that accepts InstanceKeyRevocationActionTypeArgs and InstanceKeyRevocationActionTypeOutput values.
 // You can construct a concrete instance of `InstanceKeyRevocationActionTypeInput` via:
 //
-//          InstanceKeyRevocationActionTypeArgs{...}
+//	InstanceKeyRevocationActionTypeArgs{...}
 type InstanceKeyRevocationActionTypeInput interface {
 	pulumi.Input
 
@@ -16573,7 +16573,7 @@ func (o InstancePostKeyRevocationActionTypePtrOutput) ToStringPtrOutputWithConte
 // InstancePostKeyRevocationActionTypeInput is an input type that accepts InstancePostKeyRevocationActionTypeArgs and InstancePostKeyRevocationActionTypeOutput values.
 // You can construct a concrete instance of `InstancePostKeyRevocationActionTypeInput` via:
 //
-//          InstancePostKeyRevocationActionTypeArgs{...}
+//	InstancePostKeyRevocationActionTypeArgs{...}
 type InstancePostKeyRevocationActionTypeInput interface {
 	pulumi.Input
 
@@ -16742,7 +16742,7 @@ func (o InstancePrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutputWithContext(c
 // InstancePrivateIpv6GoogleAccessInput is an input type that accepts InstancePrivateIpv6GoogleAccessArgs and InstancePrivateIpv6GoogleAccessOutput values.
 // You can construct a concrete instance of `InstancePrivateIpv6GoogleAccessInput` via:
 //
-//          InstancePrivateIpv6GoogleAccessArgs{...}
+//	InstancePrivateIpv6GoogleAccessArgs{...}
 type InstancePrivateIpv6GoogleAccessInput interface {
 	pulumi.Input
 
@@ -16911,7 +16911,7 @@ func (o InstancePropertiesKeyRevocationActionTypePtrOutput) ToStringPtrOutputWit
 // InstancePropertiesKeyRevocationActionTypeInput is an input type that accepts InstancePropertiesKeyRevocationActionTypeArgs and InstancePropertiesKeyRevocationActionTypeOutput values.
 // You can construct a concrete instance of `InstancePropertiesKeyRevocationActionTypeInput` via:
 //
-//          InstancePropertiesKeyRevocationActionTypeArgs{...}
+//	InstancePropertiesKeyRevocationActionTypeArgs{...}
 type InstancePropertiesKeyRevocationActionTypeInput interface {
 	pulumi.Input
 
@@ -17080,7 +17080,7 @@ func (o InstancePropertiesPostKeyRevocationActionTypePtrOutput) ToStringPtrOutpu
 // InstancePropertiesPostKeyRevocationActionTypeInput is an input type that accepts InstancePropertiesPostKeyRevocationActionTypeArgs and InstancePropertiesPostKeyRevocationActionTypeOutput values.
 // You can construct a concrete instance of `InstancePropertiesPostKeyRevocationActionTypeInput` via:
 //
-//          InstancePropertiesPostKeyRevocationActionTypeArgs{...}
+//	InstancePropertiesPostKeyRevocationActionTypeArgs{...}
 type InstancePropertiesPostKeyRevocationActionTypeInput interface {
 	pulumi.Input
 
@@ -17249,7 +17249,7 @@ func (o InstancePropertiesPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutputWit
 // InstancePropertiesPrivateIpv6GoogleAccessInput is an input type that accepts InstancePropertiesPrivateIpv6GoogleAccessArgs and InstancePropertiesPrivateIpv6GoogleAccessOutput values.
 // You can construct a concrete instance of `InstancePropertiesPrivateIpv6GoogleAccessInput` via:
 //
-//          InstancePropertiesPrivateIpv6GoogleAccessArgs{...}
+//	InstancePropertiesPrivateIpv6GoogleAccessArgs{...}
 type InstancePropertiesPrivateIpv6GoogleAccessInput interface {
 	pulumi.Input
 
@@ -17436,7 +17436,7 @@ func (o InterconnectAttachmentBandwidthPtrOutput) ToStringPtrOutputWithContext(c
 // InterconnectAttachmentBandwidthInput is an input type that accepts InterconnectAttachmentBandwidthArgs and InterconnectAttachmentBandwidthOutput values.
 // You can construct a concrete instance of `InterconnectAttachmentBandwidthInput` via:
 //
-//          InterconnectAttachmentBandwidthArgs{...}
+//	InterconnectAttachmentBandwidthArgs{...}
 type InterconnectAttachmentBandwidthInput interface {
 	pulumi.Input
 
@@ -17602,7 +17602,7 @@ func (o InterconnectAttachmentEdgeAvailabilityDomainPtrOutput) ToStringPtrOutput
 // InterconnectAttachmentEdgeAvailabilityDomainInput is an input type that accepts InterconnectAttachmentEdgeAvailabilityDomainArgs and InterconnectAttachmentEdgeAvailabilityDomainOutput values.
 // You can construct a concrete instance of `InterconnectAttachmentEdgeAvailabilityDomainInput` via:
 //
-//          InterconnectAttachmentEdgeAvailabilityDomainArgs{...}
+//	InterconnectAttachmentEdgeAvailabilityDomainArgs{...}
 type InterconnectAttachmentEdgeAvailabilityDomainInput interface {
 	pulumi.Input
 
@@ -17769,7 +17769,7 @@ func (o InterconnectAttachmentEncryptionPtrOutput) ToStringPtrOutputWithContext(
 // InterconnectAttachmentEncryptionInput is an input type that accepts InterconnectAttachmentEncryptionArgs and InterconnectAttachmentEncryptionOutput values.
 // You can construct a concrete instance of `InterconnectAttachmentEncryptionInput` via:
 //
-//          InterconnectAttachmentEncryptionArgs{...}
+//	InterconnectAttachmentEncryptionArgs{...}
 type InterconnectAttachmentEncryptionInput interface {
 	pulumi.Input
 
@@ -17936,7 +17936,7 @@ func (o InterconnectAttachmentStackTypePtrOutput) ToStringPtrOutputWithContext(c
 // InterconnectAttachmentStackTypeInput is an input type that accepts InterconnectAttachmentStackTypeArgs and InterconnectAttachmentStackTypeOutput values.
 // You can construct a concrete instance of `InterconnectAttachmentStackTypeInput` via:
 //
-//          InterconnectAttachmentStackTypeArgs{...}
+//	InterconnectAttachmentStackTypeArgs{...}
 type InterconnectAttachmentStackTypeInput interface {
 	pulumi.Input
 
@@ -18105,7 +18105,7 @@ func (o InterconnectAttachmentTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 // InterconnectAttachmentTypeInput is an input type that accepts InterconnectAttachmentTypeArgs and InterconnectAttachmentTypeOutput values.
 // You can construct a concrete instance of `InterconnectAttachmentTypeInput` via:
 //
-//          InterconnectAttachmentTypeArgs{...}
+//	InterconnectAttachmentTypeArgs{...}
 type InterconnectAttachmentTypeInput interface {
 	pulumi.Input
 
@@ -18274,7 +18274,7 @@ func (o InterconnectInterconnectTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 // InterconnectInterconnectTypeInput is an input type that accepts InterconnectInterconnectTypeArgs and InterconnectInterconnectTypeOutput values.
 // You can construct a concrete instance of `InterconnectInterconnectTypeInput` via:
 //
-//          InterconnectInterconnectTypeArgs{...}
+//	InterconnectInterconnectTypeArgs{...}
 type InterconnectInterconnectTypeInput interface {
 	pulumi.Input
 
@@ -18441,7 +18441,7 @@ func (o InterconnectLinkTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // InterconnectLinkTypeInput is an input type that accepts InterconnectLinkTypeArgs and InterconnectLinkTypeOutput values.
 // You can construct a concrete instance of `InterconnectLinkTypeInput` via:
 //
-//          InterconnectLinkTypeArgs{...}
+//	InterconnectLinkTypeArgs{...}
 type InterconnectLinkTypeInput interface {
 	pulumi.Input
 
@@ -18610,7 +18610,7 @@ func (o LocationPolicyTargetShapePtrOutput) ToStringPtrOutputWithContext(ctx con
 // LocationPolicyTargetShapeInput is an input type that accepts LocationPolicyTargetShapeArgs and LocationPolicyTargetShapeOutput values.
 // You can construct a concrete instance of `LocationPolicyTargetShapeInput` via:
 //
-//          LocationPolicyTargetShapeArgs{...}
+//	LocationPolicyTargetShapeArgs{...}
 type LocationPolicyTargetShapeInput interface {
 	pulumi.Input
 
@@ -18779,7 +18779,7 @@ func (o LogConfigCloudAuditOptionsLogNamePtrOutput) ToStringPtrOutputWithContext
 // LogConfigCloudAuditOptionsLogNameInput is an input type that accepts LogConfigCloudAuditOptionsLogNameArgs and LogConfigCloudAuditOptionsLogNameOutput values.
 // You can construct a concrete instance of `LogConfigCloudAuditOptionsLogNameInput` via:
 //
-//          LogConfigCloudAuditOptionsLogNameArgs{...}
+//	LogConfigCloudAuditOptionsLogNameArgs{...}
 type LogConfigCloudAuditOptionsLogNameInput interface {
 	pulumi.Input
 
@@ -18946,7 +18946,7 @@ func (o LogConfigDataAccessOptionsLogModePtrOutput) ToStringPtrOutputWithContext
 // LogConfigDataAccessOptionsLogModeInput is an input type that accepts LogConfigDataAccessOptionsLogModeArgs and LogConfigDataAccessOptionsLogModeOutput values.
 // You can construct a concrete instance of `LogConfigDataAccessOptionsLogModeInput` via:
 //
-//          LogConfigDataAccessOptionsLogModeArgs{...}
+//	LogConfigDataAccessOptionsLogModeArgs{...}
 type LogConfigDataAccessOptionsLogModeInput interface {
 	pulumi.Input
 
@@ -19115,7 +19115,7 @@ func (o MetadataFilterFilterMatchCriteriaPtrOutput) ToStringPtrOutputWithContext
 // MetadataFilterFilterMatchCriteriaInput is an input type that accepts MetadataFilterFilterMatchCriteriaArgs and MetadataFilterFilterMatchCriteriaOutput values.
 // You can construct a concrete instance of `MetadataFilterFilterMatchCriteriaInput` via:
 //
-//          MetadataFilterFilterMatchCriteriaArgs{...}
+//	MetadataFilterFilterMatchCriteriaArgs{...}
 type MetadataFilterFilterMatchCriteriaInput interface {
 	pulumi.Input
 
@@ -19283,7 +19283,7 @@ func (o MutualTlsModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 // MutualTlsModeInput is an input type that accepts MutualTlsModeArgs and MutualTlsModeOutput values.
 // You can construct a concrete instance of `MutualTlsModeInput` via:
 //
-//          MutualTlsModeArgs{...}
+//	MutualTlsModeArgs{...}
 type MutualTlsModeInput interface {
 	pulumi.Input
 
@@ -19462,7 +19462,7 @@ func (o NetworkEndpointGroupNetworkEndpointTypePtrOutput) ToStringPtrOutputWithC
 // NetworkEndpointGroupNetworkEndpointTypeInput is an input type that accepts NetworkEndpointGroupNetworkEndpointTypeArgs and NetworkEndpointGroupNetworkEndpointTypeOutput values.
 // You can construct a concrete instance of `NetworkEndpointGroupNetworkEndpointTypeInput` via:
 //
-//          NetworkEndpointGroupNetworkEndpointTypeArgs{...}
+//	NetworkEndpointGroupNetworkEndpointTypeArgs{...}
 type NetworkEndpointGroupNetworkEndpointTypeInput interface {
 	pulumi.Input
 
@@ -19627,7 +19627,7 @@ func (o NetworkEndpointGroupTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // NetworkEndpointGroupTypeInput is an input type that accepts NetworkEndpointGroupTypeArgs and NetworkEndpointGroupTypeOutput values.
 // You can construct a concrete instance of `NetworkEndpointGroupTypeInput` via:
 //
-//          NetworkEndpointGroupTypeArgs{...}
+//	NetworkEndpointGroupTypeArgs{...}
 type NetworkEndpointGroupTypeInput interface {
 	pulumi.Input
 
@@ -19794,7 +19794,7 @@ func (o NetworkFirewallPolicyVpcNetworkScopePtrOutput) ToStringPtrOutputWithCont
 // NetworkFirewallPolicyVpcNetworkScopeInput is an input type that accepts NetworkFirewallPolicyVpcNetworkScopeArgs and NetworkFirewallPolicyVpcNetworkScopeOutput values.
 // You can construct a concrete instance of `NetworkFirewallPolicyVpcNetworkScopeInput` via:
 //
-//          NetworkFirewallPolicyVpcNetworkScopeArgs{...}
+//	NetworkFirewallPolicyVpcNetworkScopeArgs{...}
 type NetworkFirewallPolicyVpcNetworkScopeInput interface {
 	pulumi.Input
 
@@ -19963,7 +19963,7 @@ func (o NetworkInterfaceNicTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 // NetworkInterfaceNicTypeInput is an input type that accepts NetworkInterfaceNicTypeArgs and NetworkInterfaceNicTypeOutput values.
 // You can construct a concrete instance of `NetworkInterfaceNicTypeInput` via:
 //
-//          NetworkInterfaceNicTypeArgs{...}
+//	NetworkInterfaceNicTypeArgs{...}
 type NetworkInterfaceNicTypeInput interface {
 	pulumi.Input
 
@@ -20130,7 +20130,7 @@ func (o NetworkInterfaceStackTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 // NetworkInterfaceStackTypeInput is an input type that accepts NetworkInterfaceStackTypeArgs and NetworkInterfaceStackTypeOutput values.
 // You can construct a concrete instance of `NetworkInterfaceStackTypeInput` via:
 //
-//          NetworkInterfaceStackTypeArgs{...}
+//	NetworkInterfaceStackTypeArgs{...}
 type NetworkInterfaceStackTypeInput interface {
 	pulumi.Input
 
@@ -20297,7 +20297,7 @@ func (o NetworkInterfaceSubInterfaceIpAllocationModePtrOutput) ToStringPtrOutput
 // NetworkInterfaceSubInterfaceIpAllocationModeInput is an input type that accepts NetworkInterfaceSubInterfaceIpAllocationModeArgs and NetworkInterfaceSubInterfaceIpAllocationModeOutput values.
 // You can construct a concrete instance of `NetworkInterfaceSubInterfaceIpAllocationModeInput` via:
 //
-//          NetworkInterfaceSubInterfaceIpAllocationModeArgs{...}
+//	NetworkInterfaceSubInterfaceIpAllocationModeArgs{...}
 type NetworkInterfaceSubInterfaceIpAllocationModeInput interface {
 	pulumi.Input
 
@@ -20462,7 +20462,7 @@ func (o NetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToStringPtrOutput
 // NetworkNetworkFirewallPolicyEnforcementOrderInput is an input type that accepts NetworkNetworkFirewallPolicyEnforcementOrderArgs and NetworkNetworkFirewallPolicyEnforcementOrderOutput values.
 // You can construct a concrete instance of `NetworkNetworkFirewallPolicyEnforcementOrderInput` via:
 //
-//          NetworkNetworkFirewallPolicyEnforcementOrderArgs{...}
+//	NetworkNetworkFirewallPolicyEnforcementOrderArgs{...}
 type NetworkNetworkFirewallPolicyEnforcementOrderInput interface {
 	pulumi.Input
 
@@ -20626,7 +20626,7 @@ func (o NetworkPerformanceConfigExternalIpEgressBandwidthTierPtrOutput) ToString
 // NetworkPerformanceConfigExternalIpEgressBandwidthTierInput is an input type that accepts NetworkPerformanceConfigExternalIpEgressBandwidthTierArgs and NetworkPerformanceConfigExternalIpEgressBandwidthTierOutput values.
 // You can construct a concrete instance of `NetworkPerformanceConfigExternalIpEgressBandwidthTierInput` via:
 //
-//          NetworkPerformanceConfigExternalIpEgressBandwidthTierArgs{...}
+//	NetworkPerformanceConfigExternalIpEgressBandwidthTierArgs{...}
 type NetworkPerformanceConfigExternalIpEgressBandwidthTierInput interface {
 	pulumi.Input
 
@@ -20790,7 +20790,7 @@ func (o NetworkPerformanceConfigTotalEgressBandwidthTierPtrOutput) ToStringPtrOu
 // NetworkPerformanceConfigTotalEgressBandwidthTierInput is an input type that accepts NetworkPerformanceConfigTotalEgressBandwidthTierArgs and NetworkPerformanceConfigTotalEgressBandwidthTierOutput values.
 // You can construct a concrete instance of `NetworkPerformanceConfigTotalEgressBandwidthTierInput` via:
 //
-//          NetworkPerformanceConfigTotalEgressBandwidthTierArgs{...}
+//	NetworkPerformanceConfigTotalEgressBandwidthTierArgs{...}
 type NetworkPerformanceConfigTotalEgressBandwidthTierInput interface {
 	pulumi.Input
 
@@ -20955,7 +20955,7 @@ func (o NetworkRoutingConfigRoutingModePtrOutput) ToStringPtrOutputWithContext(c
 // NetworkRoutingConfigRoutingModeInput is an input type that accepts NetworkRoutingConfigRoutingModeArgs and NetworkRoutingConfigRoutingModeOutput values.
 // You can construct a concrete instance of `NetworkRoutingConfigRoutingModeInput` via:
 //
-//          NetworkRoutingConfigRoutingModeArgs{...}
+//	NetworkRoutingConfigRoutingModeArgs{...}
 type NetworkRoutingConfigRoutingModeInput interface {
 	pulumi.Input
 
@@ -21125,7 +21125,7 @@ func (o NodeGroupAutoscalingPolicyModePtrOutput) ToStringPtrOutputWithContext(ct
 // NodeGroupAutoscalingPolicyModeInput is an input type that accepts NodeGroupAutoscalingPolicyModeArgs and NodeGroupAutoscalingPolicyModeOutput values.
 // You can construct a concrete instance of `NodeGroupAutoscalingPolicyModeInput` via:
 //
-//          NodeGroupAutoscalingPolicyModeArgs{...}
+//	NodeGroupAutoscalingPolicyModeArgs{...}
 type NodeGroupAutoscalingPolicyModeInput interface {
 	pulumi.Input
 
@@ -21295,7 +21295,7 @@ func (o NodeGroupMaintenancePolicyPtrOutput) ToStringPtrOutputWithContext(ctx co
 // NodeGroupMaintenancePolicyInput is an input type that accepts NodeGroupMaintenancePolicyArgs and NodeGroupMaintenancePolicyOutput values.
 // You can construct a concrete instance of `NodeGroupMaintenancePolicyInput` via:
 //
-//          NodeGroupMaintenancePolicyArgs{...}
+//	NodeGroupMaintenancePolicyArgs{...}
 type NodeGroupMaintenancePolicyInput interface {
 	pulumi.Input
 
@@ -21470,7 +21470,7 @@ func (o NodeTemplateCpuOvercommitTypePtrOutput) ToStringPtrOutputWithContext(ctx
 // NodeTemplateCpuOvercommitTypeInput is an input type that accepts NodeTemplateCpuOvercommitTypeArgs and NodeTemplateCpuOvercommitTypeOutput values.
 // You can construct a concrete instance of `NodeTemplateCpuOvercommitTypeInput` via:
 //
-//          NodeTemplateCpuOvercommitTypeArgs{...}
+//	NodeTemplateCpuOvercommitTypeArgs{...}
 type NodeTemplateCpuOvercommitTypeInput interface {
 	pulumi.Input
 
@@ -21638,7 +21638,7 @@ func (o OrganizationSecurityPolicyTypePtrOutput) ToStringPtrOutputWithContext(ct
 // OrganizationSecurityPolicyTypeInput is an input type that accepts OrganizationSecurityPolicyTypeArgs and OrganizationSecurityPolicyTypeOutput values.
 // You can construct a concrete instance of `OrganizationSecurityPolicyTypeInput` via:
 //
-//          OrganizationSecurityPolicyTypeArgs{...}
+//	OrganizationSecurityPolicyTypeArgs{...}
 type OrganizationSecurityPolicyTypeInput interface {
 	pulumi.Input
 
@@ -21803,7 +21803,7 @@ func (o PacketMirroringEnablePtrOutput) ToStringPtrOutputWithContext(ctx context
 // PacketMirroringEnableInput is an input type that accepts PacketMirroringEnableArgs and PacketMirroringEnableOutput values.
 // You can construct a concrete instance of `PacketMirroringEnableInput` via:
 //
-//          PacketMirroringEnableArgs{...}
+//	PacketMirroringEnableArgs{...}
 type PacketMirroringEnableInput interface {
 	pulumi.Input
 
@@ -21972,7 +21972,7 @@ func (o PacketMirroringFilterDirectionPtrOutput) ToStringPtrOutputWithContext(ct
 // PacketMirroringFilterDirectionInput is an input type that accepts PacketMirroringFilterDirectionArgs and PacketMirroringFilterDirectionOutput values.
 // You can construct a concrete instance of `PacketMirroringFilterDirectionInput` via:
 //
-//          PacketMirroringFilterDirectionArgs{...}
+//	PacketMirroringFilterDirectionArgs{...}
 type PacketMirroringFilterDirectionInput interface {
 	pulumi.Input
 
@@ -22141,7 +22141,7 @@ func (o PublicAdvertisedPrefixPdpScopePtrOutput) ToStringPtrOutputWithContext(ct
 // PublicAdvertisedPrefixPdpScopeInput is an input type that accepts PublicAdvertisedPrefixPdpScopeArgs and PublicAdvertisedPrefixPdpScopeOutput values.
 // You can construct a concrete instance of `PublicAdvertisedPrefixPdpScopeInput` via:
 //
-//          PublicAdvertisedPrefixPdpScopeArgs{...}
+//	PublicAdvertisedPrefixPdpScopeArgs{...}
 type PublicAdvertisedPrefixPdpScopeInput interface {
 	pulumi.Input
 
@@ -22322,7 +22322,7 @@ func (o PublicAdvertisedPrefixStatusPtrOutput) ToStringPtrOutputWithContext(ctx 
 // PublicAdvertisedPrefixStatusInput is an input type that accepts PublicAdvertisedPrefixStatusArgs and PublicAdvertisedPrefixStatusOutput values.
 // You can construct a concrete instance of `PublicAdvertisedPrefixStatusInput` via:
 //
-//          PublicAdvertisedPrefixStatusArgs{...}
+//	PublicAdvertisedPrefixStatusArgs{...}
 type PublicAdvertisedPrefixStatusInput interface {
 	pulumi.Input
 
@@ -22489,7 +22489,7 @@ func (o RegionBackendServiceCompressionModePtrOutput) ToStringPtrOutputWithConte
 // RegionBackendServiceCompressionModeInput is an input type that accepts RegionBackendServiceCompressionModeArgs and RegionBackendServiceCompressionModeOutput values.
 // You can construct a concrete instance of `RegionBackendServiceCompressionModeInput` via:
 //
-//          RegionBackendServiceCompressionModeArgs{...}
+//	RegionBackendServiceCompressionModeArgs{...}
 type RegionBackendServiceCompressionModeInput interface {
 	pulumi.Input
 
@@ -22663,7 +22663,7 @@ func (o RegionBackendServiceLoadBalancingSchemePtrOutput) ToStringPtrOutputWithC
 // RegionBackendServiceLoadBalancingSchemeInput is an input type that accepts RegionBackendServiceLoadBalancingSchemeArgs and RegionBackendServiceLoadBalancingSchemeOutput values.
 // You can construct a concrete instance of `RegionBackendServiceLoadBalancingSchemeInput` via:
 //
-//          RegionBackendServiceLoadBalancingSchemeArgs{...}
+//	RegionBackendServiceLoadBalancingSchemeArgs{...}
 type RegionBackendServiceLoadBalancingSchemeInput interface {
 	pulumi.Input
 
@@ -22841,7 +22841,7 @@ func (o RegionBackendServiceLocalityLbPolicyPtrOutput) ToStringPtrOutputWithCont
 // RegionBackendServiceLocalityLbPolicyInput is an input type that accepts RegionBackendServiceLocalityLbPolicyArgs and RegionBackendServiceLocalityLbPolicyOutput values.
 // You can construct a concrete instance of `RegionBackendServiceLocalityLbPolicyInput` via:
 //
-//          RegionBackendServiceLocalityLbPolicyArgs{...}
+//	RegionBackendServiceLocalityLbPolicyArgs{...}
 type RegionBackendServiceLocalityLbPolicyInput interface {
 	pulumi.Input
 
@@ -23020,7 +23020,7 @@ func (o RegionBackendServiceProtocolPtrOutput) ToStringPtrOutputWithContext(ctx 
 // RegionBackendServiceProtocolInput is an input type that accepts RegionBackendServiceProtocolArgs and RegionBackendServiceProtocolOutput values.
 // You can construct a concrete instance of `RegionBackendServiceProtocolInput` via:
 //
-//          RegionBackendServiceProtocolArgs{...}
+//	RegionBackendServiceProtocolArgs{...}
 type RegionBackendServiceProtocolInput interface {
 	pulumi.Input
 
@@ -23199,7 +23199,7 @@ func (o RegionBackendServiceSessionAffinityPtrOutput) ToStringPtrOutputWithConte
 // RegionBackendServiceSessionAffinityInput is an input type that accepts RegionBackendServiceSessionAffinityArgs and RegionBackendServiceSessionAffinityOutput values.
 // You can construct a concrete instance of `RegionBackendServiceSessionAffinityInput` via:
 //
-//          RegionBackendServiceSessionAffinityArgs{...}
+//	RegionBackendServiceSessionAffinityArgs{...}
 type RegionBackendServiceSessionAffinityInput interface {
 	pulumi.Input
 
@@ -23366,7 +23366,7 @@ func (o RegionBackendServiceVpcNetworkScopePtrOutput) ToStringPtrOutputWithConte
 // RegionBackendServiceVpcNetworkScopeInput is an input type that accepts RegionBackendServiceVpcNetworkScopeArgs and RegionBackendServiceVpcNetworkScopeOutput values.
 // You can construct a concrete instance of `RegionBackendServiceVpcNetworkScopeInput` via:
 //
-//          RegionBackendServiceVpcNetworkScopeArgs{...}
+//	RegionBackendServiceVpcNetworkScopeArgs{...}
 type RegionBackendServiceVpcNetworkScopeInput interface {
 	pulumi.Input
 
@@ -23532,7 +23532,7 @@ func (o RegionCommitmentCategoryPtrOutput) ToStringPtrOutputWithContext(ctx cont
 // RegionCommitmentCategoryInput is an input type that accepts RegionCommitmentCategoryArgs and RegionCommitmentCategoryOutput values.
 // You can construct a concrete instance of `RegionCommitmentCategoryInput` via:
 //
-//          RegionCommitmentCategoryArgs{...}
+//	RegionCommitmentCategoryArgs{...}
 type RegionCommitmentCategoryInput interface {
 	pulumi.Input
 
@@ -23698,7 +23698,7 @@ func (o RegionCommitmentPlanPtrOutput) ToStringPtrOutputWithContext(ctx context.
 // RegionCommitmentPlanInput is an input type that accepts RegionCommitmentPlanArgs and RegionCommitmentPlanOutput values.
 // You can construct a concrete instance of `RegionCommitmentPlanInput` via:
 //
-//          RegionCommitmentPlanArgs{...}
+//	RegionCommitmentPlanArgs{...}
 type RegionCommitmentPlanInput interface {
 	pulumi.Input
 
@@ -23872,7 +23872,7 @@ func (o RegionCommitmentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // RegionCommitmentTypeInput is an input type that accepts RegionCommitmentTypeArgs and RegionCommitmentTypeOutput values.
 // You can construct a concrete instance of `RegionCommitmentTypeInput` via:
 //
-//          RegionCommitmentTypeArgs{...}
+//	RegionCommitmentTypeArgs{...}
 type RegionCommitmentTypeInput interface {
 	pulumi.Input
 
@@ -24041,7 +24041,7 @@ func (o RegionDiskArchitecturePtrOutput) ToStringPtrOutputWithContext(ctx contex
 // RegionDiskArchitectureInput is an input type that accepts RegionDiskArchitectureArgs and RegionDiskArchitectureOutput values.
 // You can construct a concrete instance of `RegionDiskArchitectureInput` via:
 //
-//          RegionDiskArchitectureArgs{...}
+//	RegionDiskArchitectureArgs{...}
 type RegionDiskArchitectureInput interface {
 	pulumi.Input
 
@@ -24207,7 +24207,7 @@ func (o RegionDiskInterfacePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // RegionDiskInterfaceInput is an input type that accepts RegionDiskInterfaceArgs and RegionDiskInterfaceOutput values.
 // You can construct a concrete instance of `RegionDiskInterfaceInput` via:
 //
-//          RegionDiskInterfaceArgs{...}
+//	RegionDiskInterfaceArgs{...}
 type RegionDiskInterfaceInput interface {
 	pulumi.Input
 
@@ -24372,7 +24372,7 @@ func (o RegionDiskStorageTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // RegionDiskStorageTypeInput is an input type that accepts RegionDiskStorageTypeArgs and RegionDiskStorageTypeOutput values.
 // You can construct a concrete instance of `RegionDiskStorageTypeInput` via:
 //
-//          RegionDiskStorageTypeArgs{...}
+//	RegionDiskStorageTypeArgs{...}
 type RegionDiskStorageTypeInput interface {
 	pulumi.Input
 
@@ -24539,7 +24539,7 @@ func (o RegionHealthCheckServiceHealthStatusAggregationPolicyPtrOutput) ToString
 // RegionHealthCheckServiceHealthStatusAggregationPolicyInput is an input type that accepts RegionHealthCheckServiceHealthStatusAggregationPolicyArgs and RegionHealthCheckServiceHealthStatusAggregationPolicyOutput values.
 // You can construct a concrete instance of `RegionHealthCheckServiceHealthStatusAggregationPolicyInput` via:
 //
-//          RegionHealthCheckServiceHealthStatusAggregationPolicyArgs{...}
+//	RegionHealthCheckServiceHealthStatusAggregationPolicyArgs{...}
 type RegionHealthCheckServiceHealthStatusAggregationPolicyInput interface {
 	pulumi.Input
 
@@ -24706,7 +24706,7 @@ func (o RegionHealthCheckServiceHealthStatusAggregationStrategyPtrOutput) ToStri
 // RegionHealthCheckServiceHealthStatusAggregationStrategyInput is an input type that accepts RegionHealthCheckServiceHealthStatusAggregationStrategyArgs and RegionHealthCheckServiceHealthStatusAggregationStrategyOutput values.
 // You can construct a concrete instance of `RegionHealthCheckServiceHealthStatusAggregationStrategyInput` via:
 //
-//          RegionHealthCheckServiceHealthStatusAggregationStrategyArgs{...}
+//	RegionHealthCheckServiceHealthStatusAggregationStrategyArgs{...}
 type RegionHealthCheckServiceHealthStatusAggregationStrategyInput interface {
 	pulumi.Input
 
@@ -24877,7 +24877,7 @@ func (o RegionHealthCheckTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // RegionHealthCheckTypeInput is an input type that accepts RegionHealthCheckTypeArgs and RegionHealthCheckTypeOutput values.
 // You can construct a concrete instance of `RegionHealthCheckTypeInput` via:
 //
-//          RegionHealthCheckTypeArgs{...}
+//	RegionHealthCheckTypeArgs{...}
 type RegionHealthCheckTypeInput interface {
 	pulumi.Input
 
@@ -25042,7 +25042,7 @@ func (o RegionInstanceGroupManagerFailoverActionPtrOutput) ToStringPtrOutputWith
 // RegionInstanceGroupManagerFailoverActionInput is an input type that accepts RegionInstanceGroupManagerFailoverActionArgs and RegionInstanceGroupManagerFailoverActionOutput values.
 // You can construct a concrete instance of `RegionInstanceGroupManagerFailoverActionInput` via:
 //
-//          RegionInstanceGroupManagerFailoverActionArgs{...}
+//	RegionInstanceGroupManagerFailoverActionArgs{...}
 type RegionInstanceGroupManagerFailoverActionInput interface {
 	pulumi.Input
 
@@ -25209,7 +25209,7 @@ func (o RegionInstanceGroupManagerListManagedInstancesResultsPtrOutput) ToString
 // RegionInstanceGroupManagerListManagedInstancesResultsInput is an input type that accepts RegionInstanceGroupManagerListManagedInstancesResultsArgs and RegionInstanceGroupManagerListManagedInstancesResultsOutput values.
 // You can construct a concrete instance of `RegionInstanceGroupManagerListManagedInstancesResultsInput` via:
 //
-//          RegionInstanceGroupManagerListManagedInstancesResultsArgs{...}
+//	RegionInstanceGroupManagerListManagedInstancesResultsArgs{...}
 type RegionInstanceGroupManagerListManagedInstancesResultsInput interface {
 	pulumi.Input
 
@@ -25388,7 +25388,7 @@ func (o RegionNetworkEndpointGroupNetworkEndpointTypePtrOutput) ToStringPtrOutpu
 // RegionNetworkEndpointGroupNetworkEndpointTypeInput is an input type that accepts RegionNetworkEndpointGroupNetworkEndpointTypeArgs and RegionNetworkEndpointGroupNetworkEndpointTypeOutput values.
 // You can construct a concrete instance of `RegionNetworkEndpointGroupNetworkEndpointTypeInput` via:
 //
-//          RegionNetworkEndpointGroupNetworkEndpointTypeArgs{...}
+//	RegionNetworkEndpointGroupNetworkEndpointTypeArgs{...}
 type RegionNetworkEndpointGroupNetworkEndpointTypeInput interface {
 	pulumi.Input
 
@@ -25553,7 +25553,7 @@ func (o RegionNetworkEndpointGroupTypePtrOutput) ToStringPtrOutputWithContext(ct
 // RegionNetworkEndpointGroupTypeInput is an input type that accepts RegionNetworkEndpointGroupTypeArgs and RegionNetworkEndpointGroupTypeOutput values.
 // You can construct a concrete instance of `RegionNetworkEndpointGroupTypeInput` via:
 //
-//          RegionNetworkEndpointGroupTypeArgs{...}
+//	RegionNetworkEndpointGroupTypeArgs{...}
 type RegionNetworkEndpointGroupTypeInput interface {
 	pulumi.Input
 
@@ -25720,7 +25720,7 @@ func (o RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput) ToStringPtrOutputWi
 // RegionNetworkFirewallPolicyVpcNetworkScopeInput is an input type that accepts RegionNetworkFirewallPolicyVpcNetworkScopeArgs and RegionNetworkFirewallPolicyVpcNetworkScopeOutput values.
 // You can construct a concrete instance of `RegionNetworkFirewallPolicyVpcNetworkScopeInput` via:
 //
-//          RegionNetworkFirewallPolicyVpcNetworkScopeArgs{...}
+//	RegionNetworkFirewallPolicyVpcNetworkScopeArgs{...}
 type RegionNetworkFirewallPolicyVpcNetworkScopeInput interface {
 	pulumi.Input
 
@@ -25885,7 +25885,7 @@ func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToStringPtr
 // RegionNetworkNetworkFirewallPolicyEnforcementOrderInput is an input type that accepts RegionNetworkNetworkFirewallPolicyEnforcementOrderArgs and RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput values.
 // You can construct a concrete instance of `RegionNetworkNetworkFirewallPolicyEnforcementOrderInput` via:
 //
-//          RegionNetworkNetworkFirewallPolicyEnforcementOrderArgs{...}
+//	RegionNetworkNetworkFirewallPolicyEnforcementOrderArgs{...}
 type RegionNetworkNetworkFirewallPolicyEnforcementOrderInput interface {
 	pulumi.Input
 
@@ -26053,7 +26053,7 @@ func (o RegionSecurityPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // RegionSecurityPolicyTypeInput is an input type that accepts RegionSecurityPolicyTypeArgs and RegionSecurityPolicyTypeOutput values.
 // You can construct a concrete instance of `RegionSecurityPolicyTypeInput` via:
 //
-//          RegionSecurityPolicyTypeArgs{...}
+//	RegionSecurityPolicyTypeArgs{...}
 type RegionSecurityPolicyTypeInput interface {
 	pulumi.Input
 
@@ -26221,7 +26221,7 @@ func (o RegionSslCertificateTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // RegionSslCertificateTypeInput is an input type that accepts RegionSslCertificateTypeArgs and RegionSslCertificateTypeOutput values.
 // You can construct a concrete instance of `RegionSslCertificateTypeInput` via:
 //
-//          RegionSslCertificateTypeArgs{...}
+//	RegionSslCertificateTypeArgs{...}
 type RegionSslCertificateTypeInput interface {
 	pulumi.Input
 
@@ -26390,7 +26390,7 @@ func (o RegionSslPolicyMinTlsVersionPtrOutput) ToStringPtrOutputWithContext(ctx 
 // RegionSslPolicyMinTlsVersionInput is an input type that accepts RegionSslPolicyMinTlsVersionArgs and RegionSslPolicyMinTlsVersionOutput values.
 // You can construct a concrete instance of `RegionSslPolicyMinTlsVersionInput` via:
 //
-//          RegionSslPolicyMinTlsVersionArgs{...}
+//	RegionSslPolicyMinTlsVersionArgs{...}
 type RegionSslPolicyMinTlsVersionInput interface {
 	pulumi.Input
 
@@ -26561,7 +26561,7 @@ func (o RegionSslPolicyProfilePtrOutput) ToStringPtrOutputWithContext(ctx contex
 // RegionSslPolicyProfileInput is an input type that accepts RegionSslPolicyProfileArgs and RegionSslPolicyProfileOutput values.
 // You can construct a concrete instance of `RegionSslPolicyProfileInput` via:
 //
-//          RegionSslPolicyProfileArgs{...}
+//	RegionSslPolicyProfileArgs{...}
 type RegionSslPolicyProfileInput interface {
 	pulumi.Input
 
@@ -26730,7 +26730,7 @@ func (o RegionTargetHttpsProxyQuicOverridePtrOutput) ToStringPtrOutputWithContex
 // RegionTargetHttpsProxyQuicOverrideInput is an input type that accepts RegionTargetHttpsProxyQuicOverrideArgs and RegionTargetHttpsProxyQuicOverrideOutput values.
 // You can construct a concrete instance of `RegionTargetHttpsProxyQuicOverrideInput` via:
 //
-//          RegionTargetHttpsProxyQuicOverrideArgs{...}
+//	RegionTargetHttpsProxyQuicOverrideArgs{...}
 type RegionTargetHttpsProxyQuicOverrideInput interface {
 	pulumi.Input
 
@@ -26895,7 +26895,7 @@ func (o RegionTargetTcpProxyProxyHeaderPtrOutput) ToStringPtrOutputWithContext(c
 // RegionTargetTcpProxyProxyHeaderInput is an input type that accepts RegionTargetTcpProxyProxyHeaderArgs and RegionTargetTcpProxyProxyHeaderOutput values.
 // You can construct a concrete instance of `RegionTargetTcpProxyProxyHeaderInput` via:
 //
-//          RegionTargetTcpProxyProxyHeaderArgs{...}
+//	RegionTargetTcpProxyProxyHeaderArgs{...}
 type RegionTargetTcpProxyProxyHeaderInput interface {
 	pulumi.Input
 
@@ -27067,7 +27067,7 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutputWit
 // ReservationAffinityConsumeReservationTypeInput is an input type that accepts ReservationAffinityConsumeReservationTypeArgs and ReservationAffinityConsumeReservationTypeOutput values.
 // You can construct a concrete instance of `ReservationAffinityConsumeReservationTypeInput` via:
 //
-//          ReservationAffinityConsumeReservationTypeArgs{...}
+//	ReservationAffinityConsumeReservationTypeArgs{...}
 type ReservationAffinityConsumeReservationTypeInput interface {
 	pulumi.Input
 
@@ -27235,7 +27235,7 @@ func (o ResourceCommitmentTypePtrOutput) ToStringPtrOutputWithContext(ctx contex
 // ResourceCommitmentTypeInput is an input type that accepts ResourceCommitmentTypeArgs and ResourceCommitmentTypeOutput values.
 // You can construct a concrete instance of `ResourceCommitmentTypeInput` via:
 //
-//          ResourceCommitmentTypeArgs{...}
+//	ResourceCommitmentTypeArgs{...}
 type ResourceCommitmentTypeInput interface {
 	pulumi.Input
 
@@ -27402,7 +27402,7 @@ func (o ResourcePolicyGroupPlacementPolicyCollocationPtrOutput) ToStringPtrOutpu
 // ResourcePolicyGroupPlacementPolicyCollocationInput is an input type that accepts ResourcePolicyGroupPlacementPolicyCollocationArgs and ResourcePolicyGroupPlacementPolicyCollocationOutput values.
 // You can construct a concrete instance of `ResourcePolicyGroupPlacementPolicyCollocationInput` via:
 //
-//          ResourcePolicyGroupPlacementPolicyCollocationArgs{...}
+//	ResourcePolicyGroupPlacementPolicyCollocationArgs{...}
 type ResourcePolicyGroupPlacementPolicyCollocationInput interface {
 	pulumi.Input
 
@@ -27568,7 +27568,7 @@ func (o ResourcePolicyGroupPlacementPolicyLocalityPtrOutput) ToStringPtrOutputWi
 // ResourcePolicyGroupPlacementPolicyLocalityInput is an input type that accepts ResourcePolicyGroupPlacementPolicyLocalityArgs and ResourcePolicyGroupPlacementPolicyLocalityOutput values.
 // You can construct a concrete instance of `ResourcePolicyGroupPlacementPolicyLocalityInput` via:
 //
-//          ResourcePolicyGroupPlacementPolicyLocalityArgs{...}
+//	ResourcePolicyGroupPlacementPolicyLocalityArgs{...}
 type ResourcePolicyGroupPlacementPolicyLocalityInput interface {
 	pulumi.Input
 
@@ -27735,7 +27735,7 @@ func (o ResourcePolicyGroupPlacementPolicyScopePtrOutput) ToStringPtrOutputWithC
 // ResourcePolicyGroupPlacementPolicyScopeInput is an input type that accepts ResourcePolicyGroupPlacementPolicyScopeArgs and ResourcePolicyGroupPlacementPolicyScopeOutput values.
 // You can construct a concrete instance of `ResourcePolicyGroupPlacementPolicyScopeInput` via:
 //
-//          ResourcePolicyGroupPlacementPolicyScopeArgs{...}
+//	ResourcePolicyGroupPlacementPolicyScopeArgs{...}
 type ResourcePolicyGroupPlacementPolicyScopeInput interface {
 	pulumi.Input
 
@@ -27903,7 +27903,7 @@ func (o ResourcePolicyGroupPlacementPolicyStylePtrOutput) ToStringPtrOutputWithC
 // ResourcePolicyGroupPlacementPolicyStyleInput is an input type that accepts ResourcePolicyGroupPlacementPolicyStyleArgs and ResourcePolicyGroupPlacementPolicyStyleOutput values.
 // You can construct a concrete instance of `ResourcePolicyGroupPlacementPolicyStyleInput` via:
 //
-//          ResourcePolicyGroupPlacementPolicyStyleArgs{...}
+//	ResourcePolicyGroupPlacementPolicyStyleArgs{...}
 type ResourcePolicyGroupPlacementPolicyStyleInput interface {
 	pulumi.Input
 
@@ -28068,7 +28068,7 @@ func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchPtrOutp
 // ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchInput is an input type that accepts ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchArgs and ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchOutput values.
 // You can construct a concrete instance of `ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchInput` via:
 //
-//          ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchArgs{...}
+//	ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchArgs{...}
 type ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnPolicySwitchInput interface {
 	pulumi.Input
 
@@ -28234,7 +28234,7 @@ func (o ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeletePtr
 // ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteInput is an input type that accepts ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteArgs and ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteOutput values.
 // You can construct a concrete instance of `ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteInput` via:
 //
-//          ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteArgs{...}
+//	ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteArgs{...}
 type ResourcePolicySnapshotSchedulePolicyRetentionPolicyOnSourceDiskDeleteInput interface {
 	pulumi.Input
 
@@ -28405,7 +28405,7 @@ func (o ResourcePolicyWeeklyCycleDayOfWeekDayPtrOutput) ToStringPtrOutputWithCon
 // ResourcePolicyWeeklyCycleDayOfWeekDayInput is an input type that accepts ResourcePolicyWeeklyCycleDayOfWeekDayArgs and ResourcePolicyWeeklyCycleDayOfWeekDayOutput values.
 // You can construct a concrete instance of `ResourcePolicyWeeklyCycleDayOfWeekDayInput` via:
 //
-//          ResourcePolicyWeeklyCycleDayOfWeekDayArgs{...}
+//	ResourcePolicyWeeklyCycleDayOfWeekDayArgs{...}
 type ResourcePolicyWeeklyCycleDayOfWeekDayInput interface {
 	pulumi.Input
 
@@ -28572,7 +28572,7 @@ func (o RouteIlbRouteBehaviorOnUnhealthyPtrOutput) ToStringPtrOutputWithContext(
 // RouteIlbRouteBehaviorOnUnhealthyInput is an input type that accepts RouteIlbRouteBehaviorOnUnhealthyArgs and RouteIlbRouteBehaviorOnUnhealthyOutput values.
 // You can construct a concrete instance of `RouteIlbRouteBehaviorOnUnhealthyInput` via:
 //
-//          RouteIlbRouteBehaviorOnUnhealthyArgs{...}
+//	RouteIlbRouteBehaviorOnUnhealthyArgs{...}
 type RouteIlbRouteBehaviorOnUnhealthyInput interface {
 	pulumi.Input
 
@@ -28737,7 +28737,7 @@ func (o RouterBgpAdvertiseModePtrOutput) ToStringPtrOutputWithContext(ctx contex
 // RouterBgpAdvertiseModeInput is an input type that accepts RouterBgpAdvertiseModeArgs and RouterBgpAdvertiseModeOutput values.
 // You can construct a concrete instance of `RouterBgpAdvertiseModeInput` via:
 //
-//          RouterBgpAdvertiseModeArgs{...}
+//	RouterBgpAdvertiseModeArgs{...}
 type RouterBgpAdvertiseModeInput interface {
 	pulumi.Input
 
@@ -28905,7 +28905,7 @@ func (o RouterBgpAdvertisedGroupsItemPtrOutput) ToStringPtrOutputWithContext(ctx
 // RouterBgpAdvertisedGroupsItemInput is an input type that accepts RouterBgpAdvertisedGroupsItemArgs and RouterBgpAdvertisedGroupsItemOutput values.
 // You can construct a concrete instance of `RouterBgpAdvertisedGroupsItemInput` via:
 //
-//          RouterBgpAdvertisedGroupsItemArgs{...}
+//	RouterBgpAdvertisedGroupsItemArgs{...}
 type RouterBgpAdvertisedGroupsItemInput interface {
 	pulumi.Input
 
@@ -28943,7 +28943,7 @@ func (in *routerBgpAdvertisedGroupsItemPtr) ToRouterBgpAdvertisedGroupsItemPtrOu
 // RouterBgpAdvertisedGroupsItemArrayInput is an input type that accepts RouterBgpAdvertisedGroupsItemArray and RouterBgpAdvertisedGroupsItemArrayOutput values.
 // You can construct a concrete instance of `RouterBgpAdvertisedGroupsItemArrayInput` via:
 //
-//          RouterBgpAdvertisedGroupsItemArray{ RouterBgpAdvertisedGroupsItemArgs{...} }
+//	RouterBgpAdvertisedGroupsItemArray{ RouterBgpAdvertisedGroupsItemArgs{...} }
 type RouterBgpAdvertisedGroupsItemArrayInput interface {
 	pulumi.Input
 
@@ -29115,7 +29115,7 @@ func (o RouterBgpPeerAdvertiseModePtrOutput) ToStringPtrOutputWithContext(ctx co
 // RouterBgpPeerAdvertiseModeInput is an input type that accepts RouterBgpPeerAdvertiseModeArgs and RouterBgpPeerAdvertiseModeOutput values.
 // You can construct a concrete instance of `RouterBgpPeerAdvertiseModeInput` via:
 //
-//          RouterBgpPeerAdvertiseModeArgs{...}
+//	RouterBgpPeerAdvertiseModeArgs{...}
 type RouterBgpPeerAdvertiseModeInput interface {
 	pulumi.Input
 
@@ -29283,7 +29283,7 @@ func (o RouterBgpPeerAdvertisedGroupsItemPtrOutput) ToStringPtrOutputWithContext
 // RouterBgpPeerAdvertisedGroupsItemInput is an input type that accepts RouterBgpPeerAdvertisedGroupsItemArgs and RouterBgpPeerAdvertisedGroupsItemOutput values.
 // You can construct a concrete instance of `RouterBgpPeerAdvertisedGroupsItemInput` via:
 //
-//          RouterBgpPeerAdvertisedGroupsItemArgs{...}
+//	RouterBgpPeerAdvertisedGroupsItemArgs{...}
 type RouterBgpPeerAdvertisedGroupsItemInput interface {
 	pulumi.Input
 
@@ -29321,7 +29321,7 @@ func (in *routerBgpPeerAdvertisedGroupsItemPtr) ToRouterBgpPeerAdvertisedGroupsI
 // RouterBgpPeerAdvertisedGroupsItemArrayInput is an input type that accepts RouterBgpPeerAdvertisedGroupsItemArray and RouterBgpPeerAdvertisedGroupsItemArrayOutput values.
 // You can construct a concrete instance of `RouterBgpPeerAdvertisedGroupsItemArrayInput` via:
 //
-//          RouterBgpPeerAdvertisedGroupsItemArray{ RouterBgpPeerAdvertisedGroupsItemArgs{...} }
+//	RouterBgpPeerAdvertisedGroupsItemArray{ RouterBgpPeerAdvertisedGroupsItemArgs{...} }
 type RouterBgpPeerAdvertisedGroupsItemArrayInput interface {
 	pulumi.Input
 
@@ -29494,7 +29494,7 @@ func (o RouterBgpPeerBfdModePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // RouterBgpPeerBfdModeInput is an input type that accepts RouterBgpPeerBfdModeArgs and RouterBgpPeerBfdModeOutput values.
 // You can construct a concrete instance of `RouterBgpPeerBfdModeInput` via:
 //
-//          RouterBgpPeerBfdModeArgs{...}
+//	RouterBgpPeerBfdModeArgs{...}
 type RouterBgpPeerBfdModeInput interface {
 	pulumi.Input
 
@@ -29659,7 +29659,7 @@ func (o RouterBgpPeerBfdPacketModePtrOutput) ToStringPtrOutputWithContext(ctx co
 // RouterBgpPeerBfdPacketModeInput is an input type that accepts RouterBgpPeerBfdPacketModeArgs and RouterBgpPeerBfdPacketModeOutput values.
 // You can construct a concrete instance of `RouterBgpPeerBfdPacketModeInput` via:
 //
-//          RouterBgpPeerBfdPacketModeArgs{...}
+//	RouterBgpPeerBfdPacketModeArgs{...}
 type RouterBgpPeerBfdPacketModeInput interface {
 	pulumi.Input
 
@@ -29825,7 +29825,7 @@ func (o RouterBgpPeerBfdSessionInitializationModePtrOutput) ToStringPtrOutputWit
 // RouterBgpPeerBfdSessionInitializationModeInput is an input type that accepts RouterBgpPeerBfdSessionInitializationModeArgs and RouterBgpPeerBfdSessionInitializationModeOutput values.
 // You can construct a concrete instance of `RouterBgpPeerBfdSessionInitializationModeInput` via:
 //
-//          RouterBgpPeerBfdSessionInitializationModeArgs{...}
+//	RouterBgpPeerBfdSessionInitializationModeArgs{...}
 type RouterBgpPeerBfdSessionInitializationModeInput interface {
 	pulumi.Input
 
@@ -29990,7 +29990,7 @@ func (o RouterBgpPeerEnablePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // RouterBgpPeerEnableInput is an input type that accepts RouterBgpPeerEnableArgs and RouterBgpPeerEnableOutput values.
 // You can construct a concrete instance of `RouterBgpPeerEnableInput` via:
 //
-//          RouterBgpPeerEnableArgs{...}
+//	RouterBgpPeerEnableArgs{...}
 type RouterBgpPeerEnableInput interface {
 	pulumi.Input
 
@@ -30156,7 +30156,7 @@ func (o RouterNatEndpointTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx co
 // RouterNatEndpointTypesItemInput is an input type that accepts RouterNatEndpointTypesItemArgs and RouterNatEndpointTypesItemOutput values.
 // You can construct a concrete instance of `RouterNatEndpointTypesItemInput` via:
 //
-//          RouterNatEndpointTypesItemArgs{...}
+//	RouterNatEndpointTypesItemArgs{...}
 type RouterNatEndpointTypesItemInput interface {
 	pulumi.Input
 
@@ -30194,7 +30194,7 @@ func (in *routerNatEndpointTypesItemPtr) ToRouterNatEndpointTypesItemPtrOutputWi
 // RouterNatEndpointTypesItemArrayInput is an input type that accepts RouterNatEndpointTypesItemArray and RouterNatEndpointTypesItemArrayOutput values.
 // You can construct a concrete instance of `RouterNatEndpointTypesItemArrayInput` via:
 //
-//          RouterNatEndpointTypesItemArray{ RouterNatEndpointTypesItemArgs{...} }
+//	RouterNatEndpointTypesItemArray{ RouterNatEndpointTypesItemArgs{...} }
 type RouterNatEndpointTypesItemArrayInput interface {
 	pulumi.Input
 
@@ -30370,7 +30370,7 @@ func (o RouterNatLogConfigFilterPtrOutput) ToStringPtrOutputWithContext(ctx cont
 // RouterNatLogConfigFilterInput is an input type that accepts RouterNatLogConfigFilterArgs and RouterNatLogConfigFilterOutput values.
 // You can construct a concrete instance of `RouterNatLogConfigFilterInput` via:
 //
-//          RouterNatLogConfigFilterArgs{...}
+//	RouterNatLogConfigFilterArgs{...}
 type RouterNatLogConfigFilterInput interface {
 	pulumi.Input
 
@@ -30537,7 +30537,7 @@ func (o RouterNatNatIpAllocateOptionPtrOutput) ToStringPtrOutputWithContext(ctx 
 // RouterNatNatIpAllocateOptionInput is an input type that accepts RouterNatNatIpAllocateOptionArgs and RouterNatNatIpAllocateOptionOutput values.
 // You can construct a concrete instance of `RouterNatNatIpAllocateOptionInput` via:
 //
-//          RouterNatNatIpAllocateOptionArgs{...}
+//	RouterNatNatIpAllocateOptionArgs{...}
 type RouterNatNatIpAllocateOptionInput interface {
 	pulumi.Input
 
@@ -30706,7 +30706,7 @@ func (o RouterNatSourceSubnetworkIpRangesToNatPtrOutput) ToStringPtrOutputWithCo
 // RouterNatSourceSubnetworkIpRangesToNatInput is an input type that accepts RouterNatSourceSubnetworkIpRangesToNatArgs and RouterNatSourceSubnetworkIpRangesToNatOutput values.
 // You can construct a concrete instance of `RouterNatSourceSubnetworkIpRangesToNatInput` via:
 //
-//          RouterNatSourceSubnetworkIpRangesToNatArgs{...}
+//	RouterNatSourceSubnetworkIpRangesToNatArgs{...}
 type RouterNatSourceSubnetworkIpRangesToNatInput interface {
 	pulumi.Input
 
@@ -30874,7 +30874,7 @@ func (o RouterNatSubnetworkToNatSourceIpRangesToNatItemPtrOutput) ToStringPtrOut
 // RouterNatSubnetworkToNatSourceIpRangesToNatItemInput is an input type that accepts RouterNatSubnetworkToNatSourceIpRangesToNatItemArgs and RouterNatSubnetworkToNatSourceIpRangesToNatItemOutput values.
 // You can construct a concrete instance of `RouterNatSubnetworkToNatSourceIpRangesToNatItemInput` via:
 //
-//          RouterNatSubnetworkToNatSourceIpRangesToNatItemArgs{...}
+//	RouterNatSubnetworkToNatSourceIpRangesToNatItemArgs{...}
 type RouterNatSubnetworkToNatSourceIpRangesToNatItemInput interface {
 	pulumi.Input
 
@@ -30912,7 +30912,7 @@ func (in *routerNatSubnetworkToNatSourceIpRangesToNatItemPtr) ToRouterNatSubnetw
 // RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayInput is an input type that accepts RouterNatSubnetworkToNatSourceIpRangesToNatItemArray and RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayOutput values.
 // You can construct a concrete instance of `RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayInput` via:
 //
-//          RouterNatSubnetworkToNatSourceIpRangesToNatItemArray{ RouterNatSubnetworkToNatSourceIpRangesToNatItemArgs{...} }
+//	RouterNatSubnetworkToNatSourceIpRangesToNatItemArray{ RouterNatSubnetworkToNatSourceIpRangesToNatItemArgs{...} }
 type RouterNatSubnetworkToNatSourceIpRangesToNatItemArrayInput interface {
 	pulumi.Input
 
@@ -31086,7 +31086,7 @@ func (o RouterNatTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 // RouterNatTypeInput is an input type that accepts RouterNatTypeArgs and RouterNatTypeOutput values.
 // You can construct a concrete instance of `RouterNatTypeInput` via:
 //
-//          RouterNatTypeArgs{...}
+//	RouterNatTypeArgs{...}
 type RouterNatTypeInput interface {
 	pulumi.Input
 
@@ -31261,7 +31261,7 @@ func (o RuleActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 // RuleActionInput is an input type that accepts RuleActionArgs and RuleActionOutput values.
 // You can construct a concrete instance of `RuleActionInput` via:
 //
-//          RuleActionArgs{...}
+//	RuleActionArgs{...}
 type RuleActionInput interface {
 	pulumi.Input
 
@@ -31430,7 +31430,7 @@ func (o SSLHealthCheckPortSpecificationPtrOutput) ToStringPtrOutputWithContext(c
 // SSLHealthCheckPortSpecificationInput is an input type that accepts SSLHealthCheckPortSpecificationArgs and SSLHealthCheckPortSpecificationOutput values.
 // You can construct a concrete instance of `SSLHealthCheckPortSpecificationInput` via:
 //
-//          SSLHealthCheckPortSpecificationArgs{...}
+//	SSLHealthCheckPortSpecificationArgs{...}
 type SSLHealthCheckPortSpecificationInput interface {
 	pulumi.Input
 
@@ -31595,7 +31595,7 @@ func (o SSLHealthCheckProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx con
 // SSLHealthCheckProxyHeaderInput is an input type that accepts SSLHealthCheckProxyHeaderArgs and SSLHealthCheckProxyHeaderOutput values.
 // You can construct a concrete instance of `SSLHealthCheckProxyHeaderInput` via:
 //
-//          SSLHealthCheckProxyHeaderArgs{...}
+//	SSLHealthCheckProxyHeaderArgs{...}
 type SSLHealthCheckProxyHeaderInput interface {
 	pulumi.Input
 
@@ -31764,7 +31764,7 @@ func (o SchedulingInstanceTerminationActionPtrOutput) ToStringPtrOutputWithConte
 // SchedulingInstanceTerminationActionInput is an input type that accepts SchedulingInstanceTerminationActionArgs and SchedulingInstanceTerminationActionOutput values.
 // You can construct a concrete instance of `SchedulingInstanceTerminationActionInput` via:
 //
-//          SchedulingInstanceTerminationActionArgs{...}
+//	SchedulingInstanceTerminationActionArgs{...}
 type SchedulingInstanceTerminationActionInput interface {
 	pulumi.Input
 
@@ -31929,7 +31929,7 @@ func (o SchedulingMaintenanceIntervalPtrOutput) ToStringPtrOutputWithContext(ctx
 // SchedulingMaintenanceIntervalInput is an input type that accepts SchedulingMaintenanceIntervalArgs and SchedulingMaintenanceIntervalOutput values.
 // You can construct a concrete instance of `SchedulingMaintenanceIntervalInput` via:
 //
-//          SchedulingMaintenanceIntervalArgs{...}
+//	SchedulingMaintenanceIntervalArgs{...}
 type SchedulingMaintenanceIntervalInput interface {
 	pulumi.Input
 
@@ -32097,7 +32097,7 @@ func (o SchedulingNodeAffinityOperatorPtrOutput) ToStringPtrOutputWithContext(ct
 // SchedulingNodeAffinityOperatorInput is an input type that accepts SchedulingNodeAffinityOperatorArgs and SchedulingNodeAffinityOperatorOutput values.
 // You can construct a concrete instance of `SchedulingNodeAffinityOperatorInput` via:
 //
-//          SchedulingNodeAffinityOperatorArgs{...}
+//	SchedulingNodeAffinityOperatorArgs{...}
 type SchedulingNodeAffinityOperatorInput interface {
 	pulumi.Input
 
@@ -32264,7 +32264,7 @@ func (o SchedulingOnHostMaintenancePtrOutput) ToStringPtrOutputWithContext(ctx c
 // SchedulingOnHostMaintenanceInput is an input type that accepts SchedulingOnHostMaintenanceArgs and SchedulingOnHostMaintenanceOutput values.
 // You can construct a concrete instance of `SchedulingOnHostMaintenanceInput` via:
 //
-//          SchedulingOnHostMaintenanceArgs{...}
+//	SchedulingOnHostMaintenanceArgs{...}
 type SchedulingOnHostMaintenanceInput interface {
 	pulumi.Input
 
@@ -32431,7 +32431,7 @@ func (o SchedulingProvisioningModelPtrOutput) ToStringPtrOutputWithContext(ctx c
 // SchedulingProvisioningModelInput is an input type that accepts SchedulingProvisioningModelArgs and SchedulingProvisioningModelOutput values.
 // You can construct a concrete instance of `SchedulingProvisioningModelInput` via:
 //
-//          SchedulingProvisioningModelArgs{...}
+//	SchedulingProvisioningModelArgs{...}
 type SchedulingProvisioningModelInput interface {
 	pulumi.Input
 
@@ -32596,7 +32596,7 @@ func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibil
 // SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityArgs and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityOutput values.
 // You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityInput` via:
 //
-//          SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityArgs{...}
+//	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityArgs{...}
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigRuleVisibilityInput interface {
 	pulumi.Input
 
@@ -32760,7 +32760,7 @@ func (o SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput) ToStringPtrOutp
 // SecurityPolicyAdvancedOptionsConfigJsonParsingInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigJsonParsingArgs and SecurityPolicyAdvancedOptionsConfigJsonParsingOutput values.
 // You can construct a concrete instance of `SecurityPolicyAdvancedOptionsConfigJsonParsingInput` via:
 //
-//          SecurityPolicyAdvancedOptionsConfigJsonParsingArgs{...}
+//	SecurityPolicyAdvancedOptionsConfigJsonParsingArgs{...}
 type SecurityPolicyAdvancedOptionsConfigJsonParsingInput interface {
 	pulumi.Input
 
@@ -32924,7 +32924,7 @@ func (o SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput) ToStringPtrOutputW
 // SecurityPolicyAdvancedOptionsConfigLogLevelInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigLogLevelArgs and SecurityPolicyAdvancedOptionsConfigLogLevelOutput values.
 // You can construct a concrete instance of `SecurityPolicyAdvancedOptionsConfigLogLevelInput` via:
 //
-//          SecurityPolicyAdvancedOptionsConfigLogLevelArgs{...}
+//	SecurityPolicyAdvancedOptionsConfigLogLevelArgs{...}
 type SecurityPolicyAdvancedOptionsConfigLogLevelInput interface {
 	pulumi.Input
 
@@ -33088,7 +33088,7 @@ func (o SecurityPolicyDdosProtectionConfigDdosProtectionPtrOutput) ToStringPtrOu
 // SecurityPolicyDdosProtectionConfigDdosProtectionInput is an input type that accepts SecurityPolicyDdosProtectionConfigDdosProtectionArgs and SecurityPolicyDdosProtectionConfigDdosProtectionOutput values.
 // You can construct a concrete instance of `SecurityPolicyDdosProtectionConfigDdosProtectionInput` via:
 //
-//          SecurityPolicyDdosProtectionConfigDdosProtectionArgs{...}
+//	SecurityPolicyDdosProtectionConfigDdosProtectionArgs{...}
 type SecurityPolicyDdosProtectionConfigDdosProtectionInput interface {
 	pulumi.Input
 
@@ -33253,7 +33253,7 @@ func (o SecurityPolicyRuleDirectionPtrOutput) ToStringPtrOutputWithContext(ctx c
 // SecurityPolicyRuleDirectionInput is an input type that accepts SecurityPolicyRuleDirectionArgs and SecurityPolicyRuleDirectionOutput values.
 // You can construct a concrete instance of `SecurityPolicyRuleDirectionInput` via:
 //
-//          SecurityPolicyRuleDirectionArgs{...}
+//	SecurityPolicyRuleDirectionArgs{...}
 type SecurityPolicyRuleDirectionInput interface {
 	pulumi.Input
 
@@ -33419,7 +33419,7 @@ func (o SecurityPolicyRuleMatcherVersionedExprPtrOutput) ToStringPtrOutputWithCo
 // SecurityPolicyRuleMatcherVersionedExprInput is an input type that accepts SecurityPolicyRuleMatcherVersionedExprArgs and SecurityPolicyRuleMatcherVersionedExprOutput values.
 // You can construct a concrete instance of `SecurityPolicyRuleMatcherVersionedExprInput` via:
 //
-//          SecurityPolicyRuleMatcherVersionedExprArgs{...}
+//	SecurityPolicyRuleMatcherVersionedExprArgs{...}
 type SecurityPolicyRuleMatcherVersionedExprInput interface {
 	pulumi.Input
 
@@ -33588,7 +33588,7 @@ func (o SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput) ToStringPtrOutp
 // SecurityPolicyRuleRateLimitOptionsEnforceOnKeyInput is an input type that accepts SecurityPolicyRuleRateLimitOptionsEnforceOnKeyArgs and SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput values.
 // You can construct a concrete instance of `SecurityPolicyRuleRateLimitOptionsEnforceOnKeyInput` via:
 //
-//          SecurityPolicyRuleRateLimitOptionsEnforceOnKeyArgs{...}
+//	SecurityPolicyRuleRateLimitOptionsEnforceOnKeyArgs{...}
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKeyInput interface {
 	pulumi.Input
 
@@ -33753,7 +33753,7 @@ func (o SecurityPolicyRuleRedirectOptionsTypePtrOutput) ToStringPtrOutputWithCon
 // SecurityPolicyRuleRedirectOptionsTypeInput is an input type that accepts SecurityPolicyRuleRedirectOptionsTypeArgs and SecurityPolicyRuleRedirectOptionsTypeOutput values.
 // You can construct a concrete instance of `SecurityPolicyRuleRedirectOptionsTypeInput` via:
 //
-//          SecurityPolicyRuleRedirectOptionsTypeArgs{...}
+//	SecurityPolicyRuleRedirectOptionsTypeArgs{...}
 type SecurityPolicyRuleRedirectOptionsTypeInput interface {
 	pulumi.Input
 
@@ -33921,7 +33921,7 @@ func (o SecurityPolicyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // SecurityPolicyTypeInput is an input type that accepts SecurityPolicyTypeArgs and SecurityPolicyTypeOutput values.
 // You can construct a concrete instance of `SecurityPolicyTypeInput` via:
 //
-//          SecurityPolicyTypeArgs{...}
+//	SecurityPolicyTypeArgs{...}
 type SecurityPolicyTypeInput interface {
 	pulumi.Input
 
@@ -34088,7 +34088,7 @@ func (o ServerBindingTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // ServerBindingTypeInput is an input type that accepts ServerBindingTypeArgs and ServerBindingTypeOutput values.
 // You can construct a concrete instance of `ServerBindingTypeInput` via:
 //
-//          ServerBindingTypeArgs{...}
+//	ServerBindingTypeArgs{...}
 type ServerBindingTypeInput interface {
 	pulumi.Input
 
@@ -34256,7 +34256,7 @@ func (o ServerTlsSettingsTlsModePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // ServerTlsSettingsTlsModeInput is an input type that accepts ServerTlsSettingsTlsModeArgs and ServerTlsSettingsTlsModeOutput values.
 // You can construct a concrete instance of `ServerTlsSettingsTlsModeInput` via:
 //
-//          ServerTlsSettingsTlsModeArgs{...}
+//	ServerTlsSettingsTlsModeArgs{...}
 type ServerTlsSettingsTlsModeInput interface {
 	pulumi.Input
 
@@ -34422,7 +34422,7 @@ func (o ServiceAttachmentConnectionPreferencePtrOutput) ToStringPtrOutputWithCon
 // ServiceAttachmentConnectionPreferenceInput is an input type that accepts ServiceAttachmentConnectionPreferenceArgs and ServiceAttachmentConnectionPreferenceOutput values.
 // You can construct a concrete instance of `ServiceAttachmentConnectionPreferenceInput` via:
 //
-//          ServiceAttachmentConnectionPreferenceArgs{...}
+//	ServiceAttachmentConnectionPreferenceArgs{...}
 type ServiceAttachmentConnectionPreferenceInput interface {
 	pulumi.Input
 
@@ -34595,7 +34595,7 @@ func (o ShareSettingsShareTypePtrOutput) ToStringPtrOutputWithContext(ctx contex
 // ShareSettingsShareTypeInput is an input type that accepts ShareSettingsShareTypeArgs and ShareSettingsShareTypeOutput values.
 // You can construct a concrete instance of `ShareSettingsShareTypeInput` via:
 //
-//          ShareSettingsShareTypeArgs{...}
+//	ShareSettingsShareTypeArgs{...}
 type ShareSettingsShareTypeInput interface {
 	pulumi.Input
 
@@ -34760,7 +34760,7 @@ func (o SnapshotSnapshotTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // SnapshotSnapshotTypeInput is an input type that accepts SnapshotSnapshotTypeArgs and SnapshotSnapshotTypeOutput values.
 // You can construct a concrete instance of `SnapshotSnapshotTypeInput` via:
 //
-//          SnapshotSnapshotTypeArgs{...}
+//	SnapshotSnapshotTypeArgs{...}
 type SnapshotSnapshotTypeInput interface {
 	pulumi.Input
 
@@ -34928,7 +34928,7 @@ func (o SslCertificateTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // SslCertificateTypeInput is an input type that accepts SslCertificateTypeArgs and SslCertificateTypeOutput values.
 // You can construct a concrete instance of `SslCertificateTypeInput` via:
 //
-//          SslCertificateTypeArgs{...}
+//	SslCertificateTypeArgs{...}
 type SslCertificateTypeInput interface {
 	pulumi.Input
 
@@ -35097,7 +35097,7 @@ func (o SslPolicyMinTlsVersionPtrOutput) ToStringPtrOutputWithContext(ctx contex
 // SslPolicyMinTlsVersionInput is an input type that accepts SslPolicyMinTlsVersionArgs and SslPolicyMinTlsVersionOutput values.
 // You can construct a concrete instance of `SslPolicyMinTlsVersionInput` via:
 //
-//          SslPolicyMinTlsVersionArgs{...}
+//	SslPolicyMinTlsVersionArgs{...}
 type SslPolicyMinTlsVersionInput interface {
 	pulumi.Input
 
@@ -35268,7 +35268,7 @@ func (o SslPolicyProfilePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // SslPolicyProfileInput is an input type that accepts SslPolicyProfileArgs and SslPolicyProfileOutput values.
 // You can construct a concrete instance of `SslPolicyProfileInput` via:
 //
-//          SslPolicyProfileArgs{...}
+//	SslPolicyProfileArgs{...}
 type SslPolicyProfileInput interface {
 	pulumi.Input
 
@@ -35437,7 +35437,7 @@ func (o SubnetworkAggregationIntervalPtrOutput) ToStringPtrOutputWithContext(ctx
 // SubnetworkAggregationIntervalInput is an input type that accepts SubnetworkAggregationIntervalArgs and SubnetworkAggregationIntervalOutput values.
 // You can construct a concrete instance of `SubnetworkAggregationIntervalInput` via:
 //
-//          SubnetworkAggregationIntervalArgs{...}
+//	SubnetworkAggregationIntervalArgs{...}
 type SubnetworkAggregationIntervalInput interface {
 	pulumi.Input
 
@@ -35604,7 +35604,7 @@ func (o SubnetworkIpv6AccessTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // SubnetworkIpv6AccessTypeInput is an input type that accepts SubnetworkIpv6AccessTypeArgs and SubnetworkIpv6AccessTypeOutput values.
 // You can construct a concrete instance of `SubnetworkIpv6AccessTypeInput` via:
 //
-//          SubnetworkIpv6AccessTypeArgs{...}
+//	SubnetworkIpv6AccessTypeArgs{...}
 type SubnetworkIpv6AccessTypeInput interface {
 	pulumi.Input
 
@@ -35773,7 +35773,7 @@ func (o SubnetworkLogConfigAggregationIntervalPtrOutput) ToStringPtrOutputWithCo
 // SubnetworkLogConfigAggregationIntervalInput is an input type that accepts SubnetworkLogConfigAggregationIntervalArgs and SubnetworkLogConfigAggregationIntervalOutput values.
 // You can construct a concrete instance of `SubnetworkLogConfigAggregationIntervalInput` via:
 //
-//          SubnetworkLogConfigAggregationIntervalArgs{...}
+//	SubnetworkLogConfigAggregationIntervalArgs{...}
 type SubnetworkLogConfigAggregationIntervalInput interface {
 	pulumi.Input
 
@@ -35939,7 +35939,7 @@ func (o SubnetworkLogConfigMetadataPtrOutput) ToStringPtrOutputWithContext(ctx c
 // SubnetworkLogConfigMetadataInput is an input type that accepts SubnetworkLogConfigMetadataArgs and SubnetworkLogConfigMetadataOutput values.
 // You can construct a concrete instance of `SubnetworkLogConfigMetadataInput` via:
 //
-//          SubnetworkLogConfigMetadataArgs{...}
+//	SubnetworkLogConfigMetadataArgs{...}
 type SubnetworkLogConfigMetadataInput interface {
 	pulumi.Input
 
@@ -36104,7 +36104,7 @@ func (o SubnetworkMetadataPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // SubnetworkMetadataInput is an input type that accepts SubnetworkMetadataArgs and SubnetworkMetadataOutput values.
 // You can construct a concrete instance of `SubnetworkMetadataInput` via:
 //
-//          SubnetworkMetadataArgs{...}
+//	SubnetworkMetadataArgs{...}
 type SubnetworkMetadataInput interface {
 	pulumi.Input
 
@@ -36273,7 +36273,7 @@ func (o SubnetworkPrivateIpv6GoogleAccessPtrOutput) ToStringPtrOutputWithContext
 // SubnetworkPrivateIpv6GoogleAccessInput is an input type that accepts SubnetworkPrivateIpv6GoogleAccessArgs and SubnetworkPrivateIpv6GoogleAccessOutput values.
 // You can construct a concrete instance of `SubnetworkPrivateIpv6GoogleAccessInput` via:
 //
-//          SubnetworkPrivateIpv6GoogleAccessArgs{...}
+//	SubnetworkPrivateIpv6GoogleAccessArgs{...}
 type SubnetworkPrivateIpv6GoogleAccessInput interface {
 	pulumi.Input
 
@@ -36454,7 +36454,7 @@ func (o SubnetworkPurposePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // SubnetworkPurposeInput is an input type that accepts SubnetworkPurposeArgs and SubnetworkPurposeOutput values.
 // You can construct a concrete instance of `SubnetworkPurposeInput` via:
 //
-//          SubnetworkPurposeArgs{...}
+//	SubnetworkPurposeArgs{...}
 type SubnetworkPurposeInput interface {
 	pulumi.Input
 
@@ -36621,7 +36621,7 @@ func (o SubnetworkRolePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // SubnetworkRoleInput is an input type that accepts SubnetworkRoleArgs and SubnetworkRoleOutput values.
 // You can construct a concrete instance of `SubnetworkRoleInput` via:
 //
-//          SubnetworkRoleArgs{...}
+//	SubnetworkRoleArgs{...}
 type SubnetworkRoleInput interface {
 	pulumi.Input
 
@@ -36788,7 +36788,7 @@ func (o SubnetworkStackTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // SubnetworkStackTypeInput is an input type that accepts SubnetworkStackTypeArgs and SubnetworkStackTypeOutput values.
 // You can construct a concrete instance of `SubnetworkStackTypeInput` via:
 //
-//          SubnetworkStackTypeArgs{...}
+//	SubnetworkStackTypeArgs{...}
 type SubnetworkStackTypeInput interface {
 	pulumi.Input
 
@@ -36954,7 +36954,7 @@ func (o SubsettingPolicyPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // SubsettingPolicyInput is an input type that accepts SubsettingPolicyArgs and SubsettingPolicyOutput values.
 // You can construct a concrete instance of `SubsettingPolicyInput` via:
 //
-//          SubsettingPolicyArgs{...}
+//	SubsettingPolicyArgs{...}
 type SubsettingPolicyInput interface {
 	pulumi.Input
 
@@ -37123,7 +37123,7 @@ func (o TCPHealthCheckPortSpecificationPtrOutput) ToStringPtrOutputWithContext(c
 // TCPHealthCheckPortSpecificationInput is an input type that accepts TCPHealthCheckPortSpecificationArgs and TCPHealthCheckPortSpecificationOutput values.
 // You can construct a concrete instance of `TCPHealthCheckPortSpecificationInput` via:
 //
-//          TCPHealthCheckPortSpecificationArgs{...}
+//	TCPHealthCheckPortSpecificationArgs{...}
 type TCPHealthCheckPortSpecificationInput interface {
 	pulumi.Input
 
@@ -37288,7 +37288,7 @@ func (o TCPHealthCheckProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx con
 // TCPHealthCheckProxyHeaderInput is an input type that accepts TCPHealthCheckProxyHeaderArgs and TCPHealthCheckProxyHeaderOutput values.
 // You can construct a concrete instance of `TCPHealthCheckProxyHeaderInput` via:
 //
-//          TCPHealthCheckProxyHeaderArgs{...}
+//	TCPHealthCheckProxyHeaderArgs{...}
 type TCPHealthCheckProxyHeaderInput interface {
 	pulumi.Input
 
@@ -37457,7 +37457,7 @@ func (o TargetHttpsProxyQuicOverridePtrOutput) ToStringPtrOutputWithContext(ctx 
 // TargetHttpsProxyQuicOverrideInput is an input type that accepts TargetHttpsProxyQuicOverrideArgs and TargetHttpsProxyQuicOverrideOutput values.
 // You can construct a concrete instance of `TargetHttpsProxyQuicOverrideInput` via:
 //
-//          TargetHttpsProxyQuicOverrideArgs{...}
+//	TargetHttpsProxyQuicOverrideArgs{...}
 type TargetHttpsProxyQuicOverrideInput interface {
 	pulumi.Input
 
@@ -37622,7 +37622,7 @@ func (o TargetInstanceNatPolicyPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // TargetInstanceNatPolicyInput is an input type that accepts TargetInstanceNatPolicyArgs and TargetInstanceNatPolicyOutput values.
 // You can construct a concrete instance of `TargetInstanceNatPolicyInput` via:
 //
-//          TargetInstanceNatPolicyArgs{...}
+//	TargetInstanceNatPolicyArgs{...}
 type TargetInstanceNatPolicyInput interface {
 	pulumi.Input
 
@@ -37801,7 +37801,7 @@ func (o TargetPoolSessionAffinityPtrOutput) ToStringPtrOutputWithContext(ctx con
 // TargetPoolSessionAffinityInput is an input type that accepts TargetPoolSessionAffinityArgs and TargetPoolSessionAffinityOutput values.
 // You can construct a concrete instance of `TargetPoolSessionAffinityInput` via:
 //
-//          TargetPoolSessionAffinityArgs{...}
+//	TargetPoolSessionAffinityArgs{...}
 type TargetPoolSessionAffinityInput interface {
 	pulumi.Input
 
@@ -37966,7 +37966,7 @@ func (o TargetSslProxyProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx con
 // TargetSslProxyProxyHeaderInput is an input type that accepts TargetSslProxyProxyHeaderArgs and TargetSslProxyProxyHeaderOutput values.
 // You can construct a concrete instance of `TargetSslProxyProxyHeaderInput` via:
 //
-//          TargetSslProxyProxyHeaderArgs{...}
+//	TargetSslProxyProxyHeaderArgs{...}
 type TargetSslProxyProxyHeaderInput interface {
 	pulumi.Input
 
@@ -38131,7 +38131,7 @@ func (o TargetTcpProxyProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx con
 // TargetTcpProxyProxyHeaderInput is an input type that accepts TargetTcpProxyProxyHeaderArgs and TargetTcpProxyProxyHeaderOutput values.
 // You can construct a concrete instance of `TargetTcpProxyProxyHeaderInput` via:
 //
-//          TargetTcpProxyProxyHeaderArgs{...}
+//	TargetTcpProxyProxyHeaderArgs{...}
 type TargetTcpProxyProxyHeaderInput interface {
 	pulumi.Input
 
@@ -38299,7 +38299,7 @@ func (o TlsCertificateContextCertificateSourcePtrOutput) ToStringPtrOutputWithCo
 // TlsCertificateContextCertificateSourceInput is an input type that accepts TlsCertificateContextCertificateSourceArgs and TlsCertificateContextCertificateSourceOutput values.
 // You can construct a concrete instance of `TlsCertificateContextCertificateSourceInput` via:
 //
-//          TlsCertificateContextCertificateSourceArgs{...}
+//	TlsCertificateContextCertificateSourceArgs{...}
 type TlsCertificateContextCertificateSourceInput interface {
 	pulumi.Input
 
@@ -38467,7 +38467,7 @@ func (o TlsValidationContextValidationSourcePtrOutput) ToStringPtrOutputWithCont
 // TlsValidationContextValidationSourceInput is an input type that accepts TlsValidationContextValidationSourceArgs and TlsValidationContextValidationSourceOutput values.
 // You can construct a concrete instance of `TlsValidationContextValidationSourceInput` via:
 //
-//          TlsValidationContextValidationSourceArgs{...}
+//	TlsValidationContextValidationSourceArgs{...}
 type TlsValidationContextValidationSourceInput interface {
 	pulumi.Input
 
@@ -38634,7 +38634,7 @@ func (o VpnGatewayStackTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // VpnGatewayStackTypeInput is an input type that accepts VpnGatewayStackTypeArgs and VpnGatewayStackTypeOutput values.
 // You can construct a concrete instance of `VpnGatewayStackTypeInput` via:
 //
-//          VpnGatewayStackTypeArgs{...}
+//	VpnGatewayStackTypeArgs{...}
 type VpnGatewayStackTypeInput interface {
 	pulumi.Input
 

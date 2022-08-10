@@ -23,7 +23,7 @@ type ApplicationInfo struct {
 // ApplicationInfoInput is an input type that accepts ApplicationInfoArgs and ApplicationInfoOutput values.
 // You can construct a concrete instance of `ApplicationInfoInput` via:
 //
-//          ApplicationInfoArgs{...}
+//	ApplicationInfoArgs{...}
 type ApplicationInfoInput interface {
 	pulumi.Input
 
@@ -168,7 +168,7 @@ type CompensationEntry struct {
 // CompensationEntryInput is an input type that accepts CompensationEntryArgs and CompensationEntryOutput values.
 // You can construct a concrete instance of `CompensationEntryInput` via:
 //
-//          CompensationEntryArgs{...}
+//	CompensationEntryArgs{...}
 type CompensationEntryInput interface {
 	pulumi.Input
 
@@ -207,7 +207,7 @@ func (i CompensationEntryArgs) ToCompensationEntryOutputWithContext(ctx context.
 // CompensationEntryArrayInput is an input type that accepts CompensationEntryArray and CompensationEntryArrayOutput values.
 // You can construct a concrete instance of `CompensationEntryArrayInput` via:
 //
-//          CompensationEntryArray{ CompensationEntryArgs{...} }
+//	CompensationEntryArray{ CompensationEntryArgs{...} }
 type CompensationEntryArrayInput interface {
 	pulumi.Input
 
@@ -384,7 +384,7 @@ type CompensationInfo struct {
 // CompensationInfoInput is an input type that accepts CompensationInfoArgs and CompensationInfoOutput values.
 // You can construct a concrete instance of `CompensationInfoInput` via:
 //
-//          CompensationInfoArgs{...}
+//	CompensationInfoArgs{...}
 type CompensationInfoInput interface {
 	pulumi.Input
 
@@ -421,11 +421,11 @@ func (i CompensationInfoArgs) ToCompensationInfoPtrOutputWithContext(ctx context
 // CompensationInfoPtrInput is an input type that accepts CompensationInfoArgs, CompensationInfoPtr and CompensationInfoPtrOutput values.
 // You can construct a concrete instance of `CompensationInfoPtrInput` via:
 //
-//          CompensationInfoArgs{...}
+//	        CompensationInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CompensationInfoPtrInput interface {
 	pulumi.Input
 
@@ -566,7 +566,7 @@ type CompensationRange struct {
 // CompensationRangeInput is an input type that accepts CompensationRangeArgs and CompensationRangeOutput values.
 // You can construct a concrete instance of `CompensationRangeInput` via:
 //
-//          CompensationRangeArgs{...}
+//	CompensationRangeArgs{...}
 type CompensationRangeInput interface {
 	pulumi.Input
 
@@ -605,11 +605,11 @@ func (i CompensationRangeArgs) ToCompensationRangePtrOutputWithContext(ctx conte
 // CompensationRangePtrInput is an input type that accepts CompensationRangeArgs, CompensationRangePtr and CompensationRangePtrOutput values.
 // You can construct a concrete instance of `CompensationRangePtrInput` via:
 //
-//          CompensationRangeArgs{...}
+//	        CompensationRangeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CompensationRangePtrInput interface {
 	pulumi.Input
 
@@ -893,7 +893,7 @@ type Money struct {
 // MoneyInput is an input type that accepts MoneyArgs and MoneyOutput values.
 // You can construct a concrete instance of `MoneyInput` via:
 //
-//          MoneyArgs{...}
+//	MoneyArgs{...}
 type MoneyInput interface {
 	pulumi.Input
 
@@ -934,11 +934,11 @@ func (i MoneyArgs) ToMoneyPtrOutputWithContext(ctx context.Context) MoneyPtrOutp
 // MoneyPtrInput is an input type that accepts MoneyArgs, MoneyPtr and MoneyPtrOutput values.
 // You can construct a concrete instance of `MoneyPtrInput` via:
 //
-//          MoneyArgs{...}
+//	        MoneyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MoneyPtrInput interface {
 	pulumi.Input
 
@@ -1205,7 +1205,7 @@ type ProcessingOptions struct {
 // ProcessingOptionsInput is an input type that accepts ProcessingOptionsArgs and ProcessingOptionsOutput values.
 // You can construct a concrete instance of `ProcessingOptionsInput` via:
 //
-//          ProcessingOptionsArgs{...}
+//	ProcessingOptionsArgs{...}
 type ProcessingOptionsInput interface {
 	pulumi.Input
 
@@ -1244,11 +1244,11 @@ func (i ProcessingOptionsArgs) ToProcessingOptionsPtrOutputWithContext(ctx conte
 // ProcessingOptionsPtrInput is an input type that accepts ProcessingOptionsArgs, ProcessingOptionsPtr and ProcessingOptionsPtrOutput values.
 // You can construct a concrete instance of `ProcessingOptionsPtrInput` via:
 //
-//          ProcessingOptionsArgs{...}
+//	        ProcessingOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ProcessingOptionsPtrInput interface {
 	pulumi.Input
 

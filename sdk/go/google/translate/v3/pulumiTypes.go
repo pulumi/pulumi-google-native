@@ -19,7 +19,7 @@ type GcsSource struct {
 // GcsSourceInput is an input type that accepts GcsSourceArgs and GcsSourceOutput values.
 // You can construct a concrete instance of `GcsSourceInput` via:
 //
-//          GcsSourceArgs{...}
+//	GcsSourceArgs{...}
 type GcsSourceInput interface {
 	pulumi.Input
 
@@ -100,7 +100,7 @@ type GlossaryInputConfig struct {
 // GlossaryInputConfigInput is an input type that accepts GlossaryInputConfigArgs and GlossaryInputConfigOutput values.
 // You can construct a concrete instance of `GlossaryInputConfigInput` via:
 //
-//          GlossaryInputConfigArgs{...}
+//	GlossaryInputConfigArgs{...}
 type GlossaryInputConfigInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type LanguageCodePair struct {
 // LanguageCodePairInput is an input type that accepts LanguageCodePairArgs and LanguageCodePairOutput values.
 // You can construct a concrete instance of `LanguageCodePairInput` via:
 //
-//          LanguageCodePairArgs{...}
+//	LanguageCodePairArgs{...}
 type LanguageCodePairInput interface {
 	pulumi.Input
 
@@ -222,11 +222,11 @@ func (i LanguageCodePairArgs) ToLanguageCodePairPtrOutputWithContext(ctx context
 // LanguageCodePairPtrInput is an input type that accepts LanguageCodePairArgs, LanguageCodePairPtr and LanguageCodePairPtrOutput values.
 // You can construct a concrete instance of `LanguageCodePairPtrInput` via:
 //
-//          LanguageCodePairArgs{...}
+//	        LanguageCodePairArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LanguageCodePairPtrInput interface {
 	pulumi.Input
 
@@ -373,7 +373,7 @@ type LanguageCodesSet struct {
 // LanguageCodesSetInput is an input type that accepts LanguageCodesSetArgs and LanguageCodesSetOutput values.
 // You can construct a concrete instance of `LanguageCodesSetInput` via:
 //
-//          LanguageCodesSetArgs{...}
+//	LanguageCodesSetArgs{...}
 type LanguageCodesSetInput interface {
 	pulumi.Input
 
@@ -410,11 +410,11 @@ func (i LanguageCodesSetArgs) ToLanguageCodesSetPtrOutputWithContext(ctx context
 // LanguageCodesSetPtrInput is an input type that accepts LanguageCodesSetArgs, LanguageCodesSetPtr and LanguageCodesSetPtrOutput values.
 // You can construct a concrete instance of `LanguageCodesSetPtrInput` via:
 //
-//          LanguageCodesSetArgs{...}
+//	        LanguageCodesSetArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LanguageCodesSetPtrInput interface {
 	pulumi.Input
 

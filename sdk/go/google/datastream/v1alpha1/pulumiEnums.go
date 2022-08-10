@@ -142,7 +142,7 @@ func (o GcsDestinationConfigGcsFileFormatPtrOutput) ToStringPtrOutputWithContext
 // GcsDestinationConfigGcsFileFormatInput is an input type that accepts GcsDestinationConfigGcsFileFormatArgs and GcsDestinationConfigGcsFileFormatOutput values.
 // You can construct a concrete instance of `GcsDestinationConfigGcsFileFormatInput` via:
 //
-//          GcsDestinationConfigGcsFileFormatArgs{...}
+//	GcsDestinationConfigGcsFileFormatArgs{...}
 type GcsDestinationConfigGcsFileFormatInput interface {
 	pulumi.Input
 
@@ -311,7 +311,7 @@ func (o JsonFileFormatCompressionPtrOutput) ToStringPtrOutputWithContext(ctx con
 // JsonFileFormatCompressionInput is an input type that accepts JsonFileFormatCompressionArgs and JsonFileFormatCompressionOutput values.
 // You can construct a concrete instance of `JsonFileFormatCompressionInput` via:
 //
-//          JsonFileFormatCompressionArgs{...}
+//	JsonFileFormatCompressionArgs{...}
 type JsonFileFormatCompressionInput interface {
 	pulumi.Input
 
@@ -480,7 +480,7 @@ func (o JsonFileFormatSchemaFileFormatPtrOutput) ToStringPtrOutputWithContext(ct
 // JsonFileFormatSchemaFileFormatInput is an input type that accepts JsonFileFormatSchemaFileFormatArgs and JsonFileFormatSchemaFileFormatOutput values.
 // You can construct a concrete instance of `JsonFileFormatSchemaFileFormatInput` via:
 //
-//          JsonFileFormatSchemaFileFormatArgs{...}
+//	JsonFileFormatSchemaFileFormatArgs{...}
 type JsonFileFormatSchemaFileFormatInput interface {
 	pulumi.Input
 
@@ -661,7 +661,7 @@ func (o StreamStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // StreamStateEnumInput is an input type that accepts StreamStateEnumArgs and StreamStateEnumOutput values.
 // You can construct a concrete instance of `StreamStateEnumInput` via:
 //
-//          StreamStateEnumArgs{...}
+//	StreamStateEnumArgs{...}
 type StreamStateEnumInput interface {
 	pulumi.Input
 

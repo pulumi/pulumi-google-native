@@ -144,7 +144,7 @@ func (o AndroidInstrumentationTestOrchestratorOptionPtrOutput) ToStringPtrOutput
 // AndroidInstrumentationTestOrchestratorOptionInput is an input type that accepts AndroidInstrumentationTestOrchestratorOptionArgs and AndroidInstrumentationTestOrchestratorOptionOutput values.
 // You can construct a concrete instance of `AndroidInstrumentationTestOrchestratorOptionInput` via:
 //
-//          AndroidInstrumentationTestOrchestratorOptionArgs{...}
+//	AndroidInstrumentationTestOrchestratorOptionArgs{...}
 type AndroidInstrumentationTestOrchestratorOptionInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o AndroidRoboTestRoboModePtrOutput) ToStringPtrOutputWithContext(ctx conte
 // AndroidRoboTestRoboModeInput is an input type that accepts AndroidRoboTestRoboModeArgs and AndroidRoboTestRoboModeOutput values.
 // You can construct a concrete instance of `AndroidRoboTestRoboModeInput` via:
 //
-//          AndroidRoboTestRoboModeArgs{...}
+//	AndroidRoboTestRoboModeArgs{...}
 type AndroidRoboTestRoboModeInput interface {
 	pulumi.Input
 
@@ -484,7 +484,7 @@ func (o RoboDirectiveActionTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 // RoboDirectiveActionTypeInput is an input type that accepts RoboDirectiveActionTypeArgs and RoboDirectiveActionTypeOutput values.
 // You can construct a concrete instance of `RoboDirectiveActionTypeInput` via:
 //
-//          RoboDirectiveActionTypeArgs{...}
+//	RoboDirectiveActionTypeArgs{...}
 type RoboDirectiveActionTypeInput interface {
 	pulumi.Input
 

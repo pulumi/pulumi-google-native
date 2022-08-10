@@ -201,7 +201,7 @@ type DynamicGroupMetadata struct {
 // DynamicGroupMetadataInput is an input type that accepts DynamicGroupMetadataArgs and DynamicGroupMetadataOutput values.
 // You can construct a concrete instance of `DynamicGroupMetadataInput` via:
 //
-//          DynamicGroupMetadataArgs{...}
+//	DynamicGroupMetadataArgs{...}
 type DynamicGroupMetadataInput interface {
 	pulumi.Input
 
@@ -238,11 +238,11 @@ func (i DynamicGroupMetadataArgs) ToDynamicGroupMetadataPtrOutputWithContext(ctx
 // DynamicGroupMetadataPtrInput is an input type that accepts DynamicGroupMetadataArgs, DynamicGroupMetadataPtr and DynamicGroupMetadataPtrOutput values.
 // You can construct a concrete instance of `DynamicGroupMetadataPtrInput` via:
 //
-//          DynamicGroupMetadataArgs{...}
+//	        DynamicGroupMetadataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DynamicGroupMetadataPtrInput interface {
 	pulumi.Input
 
@@ -375,7 +375,7 @@ type DynamicGroupQuery struct {
 // DynamicGroupQueryInput is an input type that accepts DynamicGroupQueryArgs and DynamicGroupQueryOutput values.
 // You can construct a concrete instance of `DynamicGroupQueryInput` via:
 //
-//          DynamicGroupQueryArgs{...}
+//	DynamicGroupQueryArgs{...}
 type DynamicGroupQueryInput interface {
 	pulumi.Input
 
@@ -405,7 +405,7 @@ func (i DynamicGroupQueryArgs) ToDynamicGroupQueryOutputWithContext(ctx context.
 // DynamicGroupQueryArrayInput is an input type that accepts DynamicGroupQueryArray and DynamicGroupQueryArrayOutput values.
 // You can construct a concrete instance of `DynamicGroupQueryArrayInput` via:
 //
-//          DynamicGroupQueryArray{ DynamicGroupQueryArgs{...} }
+//	DynamicGroupQueryArray{ DynamicGroupQueryArgs{...} }
 type DynamicGroupQueryArrayInput interface {
 	pulumi.Input
 
@@ -594,7 +594,7 @@ type EntityKey struct {
 // EntityKeyInput is an input type that accepts EntityKeyArgs and EntityKeyOutput values.
 // You can construct a concrete instance of `EntityKeyInput` via:
 //
-//          EntityKeyArgs{...}
+//	EntityKeyArgs{...}
 type EntityKeyInput interface {
 	pulumi.Input
 
@@ -633,11 +633,11 @@ func (i EntityKeyArgs) ToEntityKeyPtrOutputWithContext(ctx context.Context) Enti
 // EntityKeyPtrInput is an input type that accepts EntityKeyArgs, EntityKeyPtr and EntityKeyPtrOutput values.
 // You can construct a concrete instance of `EntityKeyPtrInput` via:
 //
-//          EntityKeyArgs{...}
+//	        EntityKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EntityKeyPtrInput interface {
 	pulumi.Input
 
@@ -666,7 +666,7 @@ func (i *entityKeyPtrType) ToEntityKeyPtrOutputWithContext(ctx context.Context) 
 // EntityKeyArrayInput is an input type that accepts EntityKeyArray and EntityKeyArrayOutput values.
 // You can construct a concrete instance of `EntityKeyArrayInput` via:
 //
-//          EntityKeyArray{ EntityKeyArgs{...} }
+//	EntityKeyArray{ EntityKeyArgs{...} }
 type EntityKeyArrayInput interface {
 	pulumi.Input
 
@@ -842,7 +842,7 @@ type ExpiryDetail struct {
 // ExpiryDetailInput is an input type that accepts ExpiryDetailArgs and ExpiryDetailOutput values.
 // You can construct a concrete instance of `ExpiryDetailInput` via:
 //
-//          ExpiryDetailArgs{...}
+//	ExpiryDetailArgs{...}
 type ExpiryDetailInput interface {
 	pulumi.Input
 
@@ -879,11 +879,11 @@ func (i ExpiryDetailArgs) ToExpiryDetailPtrOutputWithContext(ctx context.Context
 // ExpiryDetailPtrInput is an input type that accepts ExpiryDetailArgs, ExpiryDetailPtr and ExpiryDetailPtrOutput values.
 // You can construct a concrete instance of `ExpiryDetailPtrInput` via:
 //
-//          ExpiryDetailArgs{...}
+//	        ExpiryDetailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExpiryDetailPtrInput interface {
 	pulumi.Input
 
@@ -1012,7 +1012,7 @@ type MembershipRole struct {
 // MembershipRoleInput is an input type that accepts MembershipRoleArgs and MembershipRoleOutput values.
 // You can construct a concrete instance of `MembershipRoleInput` via:
 //
-//          MembershipRoleArgs{...}
+//	MembershipRoleArgs{...}
 type MembershipRoleInput interface {
 	pulumi.Input
 
@@ -1045,7 +1045,7 @@ func (i MembershipRoleArgs) ToMembershipRoleOutputWithContext(ctx context.Contex
 // MembershipRoleArrayInput is an input type that accepts MembershipRoleArray and MembershipRoleArrayOutput values.
 // You can construct a concrete instance of `MembershipRoleArrayInput` via:
 //
-//          MembershipRoleArray{ MembershipRoleArgs{...} }
+//	MembershipRoleArray{ MembershipRoleArgs{...} }
 type MembershipRoleArrayInput interface {
 	pulumi.Input
 
@@ -1184,7 +1184,7 @@ type MembershipRoleRestrictionEvaluation struct {
 // MembershipRoleRestrictionEvaluationInput is an input type that accepts MembershipRoleRestrictionEvaluationArgs and MembershipRoleRestrictionEvaluationOutput values.
 // You can construct a concrete instance of `MembershipRoleRestrictionEvaluationInput` via:
 //
-//          MembershipRoleRestrictionEvaluationArgs{...}
+//	MembershipRoleRestrictionEvaluationArgs{...}
 type MembershipRoleRestrictionEvaluationInput interface {
 	pulumi.Input
 
@@ -1219,11 +1219,11 @@ func (i MembershipRoleRestrictionEvaluationArgs) ToMembershipRoleRestrictionEval
 // MembershipRoleRestrictionEvaluationPtrInput is an input type that accepts MembershipRoleRestrictionEvaluationArgs, MembershipRoleRestrictionEvaluationPtr and MembershipRoleRestrictionEvaluationPtrOutput values.
 // You can construct a concrete instance of `MembershipRoleRestrictionEvaluationPtrInput` via:
 //
-//          MembershipRoleRestrictionEvaluationArgs{...}
+//	        MembershipRoleRestrictionEvaluationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MembershipRoleRestrictionEvaluationPtrInput interface {
 	pulumi.Input
 
@@ -1337,7 +1337,7 @@ type PosixGroup struct {
 // PosixGroupInput is an input type that accepts PosixGroupArgs and PosixGroupOutput values.
 // You can construct a concrete instance of `PosixGroupInput` via:
 //
-//          PosixGroupArgs{...}
+//	PosixGroupArgs{...}
 type PosixGroupInput interface {
 	pulumi.Input
 
@@ -1370,7 +1370,7 @@ func (i PosixGroupArgs) ToPosixGroupOutputWithContext(ctx context.Context) Posix
 // PosixGroupArrayInput is an input type that accepts PosixGroupArray and PosixGroupArrayOutput values.
 // You can construct a concrete instance of `PosixGroupArrayInput` via:
 //
-//          PosixGroupArray{ PosixGroupArgs{...} }
+//	PosixGroupArray{ PosixGroupArgs{...} }
 type PosixGroupArrayInput interface {
 	pulumi.Input
 
@@ -1511,7 +1511,7 @@ type RestrictionEvaluations struct {
 // RestrictionEvaluationsInput is an input type that accepts RestrictionEvaluationsArgs and RestrictionEvaluationsOutput values.
 // You can construct a concrete instance of `RestrictionEvaluationsInput` via:
 //
-//          RestrictionEvaluationsArgs{...}
+//	RestrictionEvaluationsArgs{...}
 type RestrictionEvaluationsInput interface {
 	pulumi.Input
 
@@ -1548,11 +1548,11 @@ func (i RestrictionEvaluationsArgs) ToRestrictionEvaluationsPtrOutputWithContext
 // RestrictionEvaluationsPtrInput is an input type that accepts RestrictionEvaluationsArgs, RestrictionEvaluationsPtr and RestrictionEvaluationsPtrOutput values.
 // You can construct a concrete instance of `RestrictionEvaluationsPtrInput` via:
 //
-//          RestrictionEvaluationsArgs{...}
+//	        RestrictionEvaluationsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RestrictionEvaluationsPtrInput interface {
 	pulumi.Input
 

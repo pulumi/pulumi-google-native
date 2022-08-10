@@ -23,7 +23,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -56,7 +56,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -199,7 +199,7 @@ type Cardinality struct {
 // CardinalityInput is an input type that accepts CardinalityArgs and CardinalityOutput values.
 // You can construct a concrete instance of `CardinalityInput` via:
 //
-//          CardinalityArgs{...}
+//	CardinalityArgs{...}
 type CardinalityInput interface {
 	pulumi.Input
 
@@ -238,11 +238,11 @@ func (i CardinalityArgs) ToCardinalityPtrOutputWithContext(ctx context.Context) 
 // CardinalityPtrInput is an input type that accepts CardinalityArgs, CardinalityPtr and CardinalityPtrOutput values.
 // You can construct a concrete instance of `CardinalityPtrInput` via:
 //
-//          CardinalityArgs{...}
+//	        CardinalityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CardinalityPtrInput interface {
 	pulumi.Input
 
@@ -389,7 +389,7 @@ type EndCondition struct {
 // EndConditionInput is an input type that accepts EndConditionArgs and EndConditionOutput values.
 // You can construct a concrete instance of `EndConditionInput` via:
 //
-//          EndConditionArgs{...}
+//	EndConditionArgs{...}
 type EndConditionInput interface {
 	pulumi.Input
 
@@ -426,11 +426,11 @@ func (i EndConditionArgs) ToEndConditionPtrOutputWithContext(ctx context.Context
 // EndConditionPtrInput is an input type that accepts EndConditionArgs, EndConditionPtr and EndConditionPtrOutput values.
 // You can construct a concrete instance of `EndConditionPtrInput` via:
 //
-//          EndConditionArgs{...}
+//	        EndConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EndConditionPtrInput interface {
 	pulumi.Input
 
@@ -561,7 +561,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -604,11 +604,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 

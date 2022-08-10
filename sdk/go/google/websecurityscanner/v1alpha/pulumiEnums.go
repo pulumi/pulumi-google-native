@@ -147,7 +147,7 @@ func (o ScanConfigTargetPlatformsItemPtrOutput) ToStringPtrOutputWithContext(ctx
 // ScanConfigTargetPlatformsItemInput is an input type that accepts ScanConfigTargetPlatformsItemArgs and ScanConfigTargetPlatformsItemOutput values.
 // You can construct a concrete instance of `ScanConfigTargetPlatformsItemInput` via:
 //
-//          ScanConfigTargetPlatformsItemArgs{...}
+//	ScanConfigTargetPlatformsItemArgs{...}
 type ScanConfigTargetPlatformsItemInput interface {
 	pulumi.Input
 
@@ -185,7 +185,7 @@ func (in *scanConfigTargetPlatformsItemPtr) ToScanConfigTargetPlatformsItemPtrOu
 // ScanConfigTargetPlatformsItemArrayInput is an input type that accepts ScanConfigTargetPlatformsItemArray and ScanConfigTargetPlatformsItemArrayOutput values.
 // You can construct a concrete instance of `ScanConfigTargetPlatformsItemArrayInput` via:
 //
-//          ScanConfigTargetPlatformsItemArray{ ScanConfigTargetPlatformsItemArgs{...} }
+//	ScanConfigTargetPlatformsItemArray{ ScanConfigTargetPlatformsItemArgs{...} }
 type ScanConfigTargetPlatformsItemArrayInput interface {
 	pulumi.Input
 
@@ -363,7 +363,7 @@ func (o ScanConfigUserAgentPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // ScanConfigUserAgentInput is an input type that accepts ScanConfigUserAgentArgs and ScanConfigUserAgentOutput values.
 // You can construct a concrete instance of `ScanConfigUserAgentInput` via:
 //
-//          ScanConfigUserAgentArgs{...}
+//	ScanConfigUserAgentArgs{...}
 type ScanConfigUserAgentInput interface {
 	pulumi.Input
 
@@ -534,7 +534,7 @@ func (o ScanRunExecutionStatePtrOutput) ToStringPtrOutputWithContext(ctx context
 // ScanRunExecutionStateInput is an input type that accepts ScanRunExecutionStateArgs and ScanRunExecutionStateOutput values.
 // You can construct a concrete instance of `ScanRunExecutionStateInput` via:
 //
-//          ScanRunExecutionStateArgs{...}
+//	ScanRunExecutionStateArgs{...}
 type ScanRunExecutionStateInput interface {
 	pulumi.Input
 
@@ -705,7 +705,7 @@ func (o ScanRunResultStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // ScanRunResultStateInput is an input type that accepts ScanRunResultStateArgs and ScanRunResultStateOutput values.
 // You can construct a concrete instance of `ScanRunResultStateInput` via:
 //
-//          ScanRunResultStateArgs{...}
+//	ScanRunResultStateArgs{...}
 type ScanRunResultStateInput interface {
 	pulumi.Input
 

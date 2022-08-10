@@ -19,7 +19,7 @@ type GoogleCloudDialogflowCxV3AdvancedSettings struct {
 // GoogleCloudDialogflowCxV3AdvancedSettingsInput is an input type that accepts GoogleCloudDialogflowCxV3AdvancedSettingsArgs and GoogleCloudDialogflowCxV3AdvancedSettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3AdvancedSettingsInput` via:
 //
-//          GoogleCloudDialogflowCxV3AdvancedSettingsArgs{...}
+//	GoogleCloudDialogflowCxV3AdvancedSettingsArgs{...}
 type GoogleCloudDialogflowCxV3AdvancedSettingsInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i GoogleCloudDialogflowCxV3AdvancedSettingsArgs) ToGoogleCloudDialogflowCx
 // GoogleCloudDialogflowCxV3AdvancedSettingsPtrInput is an input type that accepts GoogleCloudDialogflowCxV3AdvancedSettingsArgs, GoogleCloudDialogflowCxV3AdvancedSettingsPtr and GoogleCloudDialogflowCxV3AdvancedSettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3AdvancedSettingsPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3AdvancedSettingsArgs{...}
+//	        GoogleCloudDialogflowCxV3AdvancedSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3AdvancedSettingsPtrInput interface {
 	pulumi.Input
 
@@ -163,7 +163,7 @@ type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettings struct {
 // GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsInput is an input type that accepts GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs and GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsInput` via:
 //
-//          GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs{...}
+//	GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs{...}
 type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsInput interface {
 	pulumi.Input
 
@@ -202,11 +202,11 @@ func (i GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs) ToGoogleCl
 // GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrInput is an input type that accepts GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs, GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtr and GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs{...}
+//	        GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3AdvancedSettingsLoggingSettingsPtrInput interface {
 	pulumi.Input
 
@@ -391,7 +391,7 @@ type GoogleCloudDialogflowCxV3AudioInput struct {
 // GoogleCloudDialogflowCxV3AudioInputInput is an input type that accepts GoogleCloudDialogflowCxV3AudioInputArgs and GoogleCloudDialogflowCxV3AudioInputOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3AudioInputInput` via:
 //
-//          GoogleCloudDialogflowCxV3AudioInputArgs{...}
+//	GoogleCloudDialogflowCxV3AudioInputArgs{...}
 type GoogleCloudDialogflowCxV3AudioInputInput interface {
 	pulumi.Input
 
@@ -430,11 +430,11 @@ func (i GoogleCloudDialogflowCxV3AudioInputArgs) ToGoogleCloudDialogflowCxV3Audi
 // GoogleCloudDialogflowCxV3AudioInputPtrInput is an input type that accepts GoogleCloudDialogflowCxV3AudioInputArgs, GoogleCloudDialogflowCxV3AudioInputPtr and GoogleCloudDialogflowCxV3AudioInputPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3AudioInputPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3AudioInputArgs{...}
+//	        GoogleCloudDialogflowCxV3AudioInputArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3AudioInputPtrInput interface {
 	pulumi.Input
 
@@ -585,7 +585,7 @@ type GoogleCloudDialogflowCxV3ConversationTurn struct {
 // GoogleCloudDialogflowCxV3ConversationTurnInput is an input type that accepts GoogleCloudDialogflowCxV3ConversationTurnArgs and GoogleCloudDialogflowCxV3ConversationTurnOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ConversationTurnInput` via:
 //
-//          GoogleCloudDialogflowCxV3ConversationTurnArgs{...}
+//	GoogleCloudDialogflowCxV3ConversationTurnArgs{...}
 type GoogleCloudDialogflowCxV3ConversationTurnInput interface {
 	pulumi.Input
 
@@ -616,7 +616,7 @@ func (i GoogleCloudDialogflowCxV3ConversationTurnArgs) ToGoogleCloudDialogflowCx
 // GoogleCloudDialogflowCxV3ConversationTurnArrayInput is an input type that accepts GoogleCloudDialogflowCxV3ConversationTurnArray and GoogleCloudDialogflowCxV3ConversationTurnArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ConversationTurnArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3ConversationTurnArray{ GoogleCloudDialogflowCxV3ConversationTurnArgs{...} }
+//	GoogleCloudDialogflowCxV3ConversationTurnArray{ GoogleCloudDialogflowCxV3ConversationTurnArgs{...} }
 type GoogleCloudDialogflowCxV3ConversationTurnArrayInput interface {
 	pulumi.Input
 
@@ -759,7 +759,7 @@ type GoogleCloudDialogflowCxV3ConversationTurnUserInput struct {
 // GoogleCloudDialogflowCxV3ConversationTurnUserInputInput is an input type that accepts GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs and GoogleCloudDialogflowCxV3ConversationTurnUserInputOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ConversationTurnUserInputInput` via:
 //
-//          GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs{...}
+//	GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs{...}
 type GoogleCloudDialogflowCxV3ConversationTurnUserInputInput interface {
 	pulumi.Input
 
@@ -802,11 +802,11 @@ func (i GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs) ToGoogleCloudDia
 // GoogleCloudDialogflowCxV3ConversationTurnUserInputPtrInput is an input type that accepts GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs, GoogleCloudDialogflowCxV3ConversationTurnUserInputPtr and GoogleCloudDialogflowCxV3ConversationTurnUserInputPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ConversationTurnUserInputPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs{...}
+//	        GoogleCloudDialogflowCxV3ConversationTurnUserInputArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3ConversationTurnUserInputPtrInput interface {
 	pulumi.Input
 
@@ -1017,7 +1017,7 @@ type GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutput struct {
 // GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputInput is an input type that accepts GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs and GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputInput` via:
 //
-//          GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs{...}
+//	GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs{...}
 type GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputInput interface {
 	pulumi.Input
 
@@ -1064,11 +1064,11 @@ func (i GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs) ToGoogl
 // GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputPtrInput is an input type that accepts GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs, GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputPtr and GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs{...}
+//	        GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3ConversationTurnVirtualAgentOutputPtrInput interface {
 	pulumi.Input
 
@@ -1336,7 +1336,7 @@ type GoogleCloudDialogflowCxV3DtmfInput struct {
 // GoogleCloudDialogflowCxV3DtmfInputInput is an input type that accepts GoogleCloudDialogflowCxV3DtmfInputArgs and GoogleCloudDialogflowCxV3DtmfInputOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3DtmfInputInput` via:
 //
-//          GoogleCloudDialogflowCxV3DtmfInputArgs{...}
+//	GoogleCloudDialogflowCxV3DtmfInputArgs{...}
 type GoogleCloudDialogflowCxV3DtmfInputInput interface {
 	pulumi.Input
 
@@ -1375,11 +1375,11 @@ func (i GoogleCloudDialogflowCxV3DtmfInputArgs) ToGoogleCloudDialogflowCxV3DtmfI
 // GoogleCloudDialogflowCxV3DtmfInputPtrInput is an input type that accepts GoogleCloudDialogflowCxV3DtmfInputArgs, GoogleCloudDialogflowCxV3DtmfInputPtr and GoogleCloudDialogflowCxV3DtmfInputPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3DtmfInputPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3DtmfInputArgs{...}
+//	        GoogleCloudDialogflowCxV3DtmfInputArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3DtmfInputPtrInput interface {
 	pulumi.Input
 
@@ -1528,7 +1528,7 @@ type GoogleCloudDialogflowCxV3EntityTypeEntity struct {
 // GoogleCloudDialogflowCxV3EntityTypeEntityInput is an input type that accepts GoogleCloudDialogflowCxV3EntityTypeEntityArgs and GoogleCloudDialogflowCxV3EntityTypeEntityOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3EntityTypeEntityInput` via:
 //
-//          GoogleCloudDialogflowCxV3EntityTypeEntityArgs{...}
+//	GoogleCloudDialogflowCxV3EntityTypeEntityArgs{...}
 type GoogleCloudDialogflowCxV3EntityTypeEntityInput interface {
 	pulumi.Input
 
@@ -1559,7 +1559,7 @@ func (i GoogleCloudDialogflowCxV3EntityTypeEntityArgs) ToGoogleCloudDialogflowCx
 // GoogleCloudDialogflowCxV3EntityTypeEntityArrayInput is an input type that accepts GoogleCloudDialogflowCxV3EntityTypeEntityArray and GoogleCloudDialogflowCxV3EntityTypeEntityArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3EntityTypeEntityArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3EntityTypeEntityArray{ GoogleCloudDialogflowCxV3EntityTypeEntityArgs{...} }
+//	GoogleCloudDialogflowCxV3EntityTypeEntityArray{ GoogleCloudDialogflowCxV3EntityTypeEntityArgs{...} }
 type GoogleCloudDialogflowCxV3EntityTypeEntityArrayInput interface {
 	pulumi.Input
 
@@ -1688,7 +1688,7 @@ type GoogleCloudDialogflowCxV3EntityTypeExcludedPhrase struct {
 // GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseInput is an input type that accepts GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs and GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseInput` via:
 //
-//          GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs{...}
+//	GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs{...}
 type GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseInput interface {
 	pulumi.Input
 
@@ -1717,7 +1717,7 @@ func (i GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs) ToGoogleCloudDial
 // GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArrayInput is an input type that accepts GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArray and GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArray{ GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs{...} }
+//	GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArray{ GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArgs{...} }
 type GoogleCloudDialogflowCxV3EntityTypeExcludedPhraseArrayInput interface {
 	pulumi.Input
 
@@ -1838,7 +1838,7 @@ type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfig struct {
 // GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigInput is an input type that accepts GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs and GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigInput` via:
 //
-//          GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs{...}
+//	GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs{...}
 type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigInput interface {
 	pulumi.Input
 
@@ -1879,11 +1879,11 @@ func (i GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs) ToGoogleCloudDi
 // GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrInput is an input type that accepts GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs, GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtr and GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs{...}
+//	        GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3EnvironmentTestCasesConfigPtrInput interface {
 	pulumi.Input
 
@@ -2054,7 +2054,7 @@ type GoogleCloudDialogflowCxV3EnvironmentVersionConfig struct {
 // GoogleCloudDialogflowCxV3EnvironmentVersionConfigInput is an input type that accepts GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs and GoogleCloudDialogflowCxV3EnvironmentVersionConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3EnvironmentVersionConfigInput` via:
 //
-//          GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs{...}
+//	GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs{...}
 type GoogleCloudDialogflowCxV3EnvironmentVersionConfigInput interface {
 	pulumi.Input
 
@@ -2083,7 +2083,7 @@ func (i GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs) ToGoogleCloudDial
 // GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayInput is an input type that accepts GoogleCloudDialogflowCxV3EnvironmentVersionConfigArray and GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3EnvironmentVersionConfigArray{ GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs{...} }
+//	GoogleCloudDialogflowCxV3EnvironmentVersionConfigArray{ GoogleCloudDialogflowCxV3EnvironmentVersionConfigArgs{...} }
 type GoogleCloudDialogflowCxV3EnvironmentVersionConfigArrayInput interface {
 	pulumi.Input
 
@@ -2200,7 +2200,7 @@ type GoogleCloudDialogflowCxV3EnvironmentWebhookConfig struct {
 // GoogleCloudDialogflowCxV3EnvironmentWebhookConfigInput is an input type that accepts GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs and GoogleCloudDialogflowCxV3EnvironmentWebhookConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3EnvironmentWebhookConfigInput` via:
 //
-//          GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs{...}
+//	GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs{...}
 type GoogleCloudDialogflowCxV3EnvironmentWebhookConfigInput interface {
 	pulumi.Input
 
@@ -2237,11 +2237,11 @@ func (i GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs) ToGoogleCloudDial
 // GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrInput is an input type that accepts GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs, GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtr and GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs{...}
+//	        GoogleCloudDialogflowCxV3EnvironmentWebhookConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3EnvironmentWebhookConfigPtrInput interface {
 	pulumi.Input
 
@@ -2376,7 +2376,7 @@ type GoogleCloudDialogflowCxV3EventHandler struct {
 // GoogleCloudDialogflowCxV3EventHandlerInput is an input type that accepts GoogleCloudDialogflowCxV3EventHandlerArgs and GoogleCloudDialogflowCxV3EventHandlerOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3EventHandlerInput` via:
 //
-//          GoogleCloudDialogflowCxV3EventHandlerArgs{...}
+//	GoogleCloudDialogflowCxV3EventHandlerArgs{...}
 type GoogleCloudDialogflowCxV3EventHandlerInput interface {
 	pulumi.Input
 
@@ -2411,7 +2411,7 @@ func (i GoogleCloudDialogflowCxV3EventHandlerArgs) ToGoogleCloudDialogflowCxV3Ev
 // GoogleCloudDialogflowCxV3EventHandlerArrayInput is an input type that accepts GoogleCloudDialogflowCxV3EventHandlerArray and GoogleCloudDialogflowCxV3EventHandlerArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3EventHandlerArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3EventHandlerArray{ GoogleCloudDialogflowCxV3EventHandlerArgs{...} }
+//	GoogleCloudDialogflowCxV3EventHandlerArray{ GoogleCloudDialogflowCxV3EventHandlerArgs{...} }
 type GoogleCloudDialogflowCxV3EventHandlerArrayInput interface {
 	pulumi.Input
 
@@ -2575,7 +2575,7 @@ type GoogleCloudDialogflowCxV3EventInput struct {
 // GoogleCloudDialogflowCxV3EventInputInput is an input type that accepts GoogleCloudDialogflowCxV3EventInputArgs and GoogleCloudDialogflowCxV3EventInputOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3EventInputInput` via:
 //
-//          GoogleCloudDialogflowCxV3EventInputArgs{...}
+//	GoogleCloudDialogflowCxV3EventInputArgs{...}
 type GoogleCloudDialogflowCxV3EventInputInput interface {
 	pulumi.Input
 
@@ -2612,11 +2612,11 @@ func (i GoogleCloudDialogflowCxV3EventInputArgs) ToGoogleCloudDialogflowCxV3Even
 // GoogleCloudDialogflowCxV3EventInputPtrInput is an input type that accepts GoogleCloudDialogflowCxV3EventInputArgs, GoogleCloudDialogflowCxV3EventInputPtr and GoogleCloudDialogflowCxV3EventInputPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3EventInputPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3EventInputArgs{...}
+//	        GoogleCloudDialogflowCxV3EventInputArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3EventInputPtrInput interface {
 	pulumi.Input
 
@@ -2743,7 +2743,7 @@ type GoogleCloudDialogflowCxV3ExperimentDefinition struct {
 // GoogleCloudDialogflowCxV3ExperimentDefinitionInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentDefinitionArgs and GoogleCloudDialogflowCxV3ExperimentDefinitionOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ExperimentDefinitionInput` via:
 //
-//          GoogleCloudDialogflowCxV3ExperimentDefinitionArgs{...}
+//	GoogleCloudDialogflowCxV3ExperimentDefinitionArgs{...}
 type GoogleCloudDialogflowCxV3ExperimentDefinitionInput interface {
 	pulumi.Input
 
@@ -2782,11 +2782,11 @@ func (i GoogleCloudDialogflowCxV3ExperimentDefinitionArgs) ToGoogleCloudDialogfl
 // GoogleCloudDialogflowCxV3ExperimentDefinitionPtrInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentDefinitionArgs, GoogleCloudDialogflowCxV3ExperimentDefinitionPtr and GoogleCloudDialogflowCxV3ExperimentDefinitionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ExperimentDefinitionPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3ExperimentDefinitionArgs{...}
+//	        GoogleCloudDialogflowCxV3ExperimentDefinitionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3ExperimentDefinitionPtrInput interface {
 	pulumi.Input
 
@@ -2939,7 +2939,7 @@ type GoogleCloudDialogflowCxV3ExperimentResult struct {
 // GoogleCloudDialogflowCxV3ExperimentResultInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentResultArgs and GoogleCloudDialogflowCxV3ExperimentResultOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ExperimentResultInput` via:
 //
-//          GoogleCloudDialogflowCxV3ExperimentResultArgs{...}
+//	GoogleCloudDialogflowCxV3ExperimentResultArgs{...}
 type GoogleCloudDialogflowCxV3ExperimentResultInput interface {
 	pulumi.Input
 
@@ -2978,11 +2978,11 @@ func (i GoogleCloudDialogflowCxV3ExperimentResultArgs) ToGoogleCloudDialogflowCx
 // GoogleCloudDialogflowCxV3ExperimentResultPtrInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentResultArgs, GoogleCloudDialogflowCxV3ExperimentResultPtr and GoogleCloudDialogflowCxV3ExperimentResultPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ExperimentResultPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3ExperimentResultArgs{...}
+//	        GoogleCloudDialogflowCxV3ExperimentResultArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3ExperimentResultPtrInput interface {
 	pulumi.Input
 
@@ -3104,7 +3104,7 @@ type GoogleCloudDialogflowCxV3ExperimentResultConfidenceInterval struct {
 // GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalArgs and GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalInput` via:
 //
-//          GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalArgs{...}
+//	GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalArgs{...}
 type GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalInput interface {
 	pulumi.Input
 
@@ -3147,11 +3147,11 @@ func (i GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalArgs) ToGoogl
 // GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalPtrInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalArgs, GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalPtr and GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalArgs{...}
+//	        GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3ExperimentResultConfidenceIntervalPtrInput interface {
 	pulumi.Input
 
@@ -3356,7 +3356,7 @@ type GoogleCloudDialogflowCxV3ExperimentResultMetric struct {
 // GoogleCloudDialogflowCxV3ExperimentResultMetricInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentResultMetricArgs and GoogleCloudDialogflowCxV3ExperimentResultMetricOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ExperimentResultMetricInput` via:
 //
-//          GoogleCloudDialogflowCxV3ExperimentResultMetricArgs{...}
+//	GoogleCloudDialogflowCxV3ExperimentResultMetricArgs{...}
 type GoogleCloudDialogflowCxV3ExperimentResultMetricInput interface {
 	pulumi.Input
 
@@ -3393,7 +3393,7 @@ func (i GoogleCloudDialogflowCxV3ExperimentResultMetricArgs) ToGoogleCloudDialog
 // GoogleCloudDialogflowCxV3ExperimentResultMetricArrayInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentResultMetricArray and GoogleCloudDialogflowCxV3ExperimentResultMetricArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ExperimentResultMetricArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3ExperimentResultMetricArray{ GoogleCloudDialogflowCxV3ExperimentResultMetricArgs{...} }
+//	GoogleCloudDialogflowCxV3ExperimentResultMetricArray{ GoogleCloudDialogflowCxV3ExperimentResultMetricArgs{...} }
 type GoogleCloudDialogflowCxV3ExperimentResultMetricArrayInput interface {
 	pulumi.Input
 
@@ -3605,7 +3605,7 @@ type GoogleCloudDialogflowCxV3ExperimentResultVersionMetrics struct {
 // GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArgs and GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsInput` via:
 //
-//          GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArgs{...}
+//	GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArgs{...}
 type GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsInput interface {
 	pulumi.Input
 
@@ -3638,7 +3638,7 @@ func (i GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArgs) ToGoogleClo
 // GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArrayInput is an input type that accepts GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArray and GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArray{ GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArgs{...} }
+//	GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArray{ GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArgs{...} }
 type GoogleCloudDialogflowCxV3ExperimentResultVersionMetricsArrayInput interface {
 	pulumi.Input
 
@@ -3783,7 +3783,7 @@ type GoogleCloudDialogflowCxV3Form struct {
 // GoogleCloudDialogflowCxV3FormInput is an input type that accepts GoogleCloudDialogflowCxV3FormArgs and GoogleCloudDialogflowCxV3FormOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FormInput` via:
 //
-//          GoogleCloudDialogflowCxV3FormArgs{...}
+//	GoogleCloudDialogflowCxV3FormArgs{...}
 type GoogleCloudDialogflowCxV3FormInput interface {
 	pulumi.Input
 
@@ -3820,11 +3820,11 @@ func (i GoogleCloudDialogflowCxV3FormArgs) ToGoogleCloudDialogflowCxV3FormPtrOut
 // GoogleCloudDialogflowCxV3FormPtrInput is an input type that accepts GoogleCloudDialogflowCxV3FormArgs, GoogleCloudDialogflowCxV3FormPtr and GoogleCloudDialogflowCxV3FormPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FormPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3FormArgs{...}
+//	        GoogleCloudDialogflowCxV3FormArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3FormPtrInput interface {
 	pulumi.Input
 
@@ -3935,7 +3935,7 @@ type GoogleCloudDialogflowCxV3FormParameter struct {
 // GoogleCloudDialogflowCxV3FormParameterInput is an input type that accepts GoogleCloudDialogflowCxV3FormParameterArgs and GoogleCloudDialogflowCxV3FormParameterOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FormParameterInput` via:
 //
-//          GoogleCloudDialogflowCxV3FormParameterArgs{...}
+//	GoogleCloudDialogflowCxV3FormParameterArgs{...}
 type GoogleCloudDialogflowCxV3FormParameterInput interface {
 	pulumi.Input
 
@@ -3976,7 +3976,7 @@ func (i GoogleCloudDialogflowCxV3FormParameterArgs) ToGoogleCloudDialogflowCxV3F
 // GoogleCloudDialogflowCxV3FormParameterArrayInput is an input type that accepts GoogleCloudDialogflowCxV3FormParameterArray and GoogleCloudDialogflowCxV3FormParameterArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FormParameterArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3FormParameterArray{ GoogleCloudDialogflowCxV3FormParameterArgs{...} }
+//	GoogleCloudDialogflowCxV3FormParameterArray{ GoogleCloudDialogflowCxV3FormParameterArgs{...} }
 type GoogleCloudDialogflowCxV3FormParameterArrayInput interface {
 	pulumi.Input
 
@@ -4081,7 +4081,7 @@ type GoogleCloudDialogflowCxV3FormParameterFillBehavior struct {
 // GoogleCloudDialogflowCxV3FormParameterFillBehaviorInput is an input type that accepts GoogleCloudDialogflowCxV3FormParameterFillBehaviorArgs and GoogleCloudDialogflowCxV3FormParameterFillBehaviorOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FormParameterFillBehaviorInput` via:
 //
-//          GoogleCloudDialogflowCxV3FormParameterFillBehaviorArgs{...}
+//	GoogleCloudDialogflowCxV3FormParameterFillBehaviorArgs{...}
 type GoogleCloudDialogflowCxV3FormParameterFillBehaviorInput interface {
 	pulumi.Input
 
@@ -4312,7 +4312,7 @@ type GoogleCloudDialogflowCxV3Fulfillment struct {
 // GoogleCloudDialogflowCxV3FulfillmentInput is an input type that accepts GoogleCloudDialogflowCxV3FulfillmentArgs and GoogleCloudDialogflowCxV3FulfillmentOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FulfillmentInput` via:
 //
-//          GoogleCloudDialogflowCxV3FulfillmentArgs{...}
+//	GoogleCloudDialogflowCxV3FulfillmentArgs{...}
 type GoogleCloudDialogflowCxV3FulfillmentInput interface {
 	pulumi.Input
 
@@ -4359,11 +4359,11 @@ func (i GoogleCloudDialogflowCxV3FulfillmentArgs) ToGoogleCloudDialogflowCxV3Ful
 // GoogleCloudDialogflowCxV3FulfillmentPtrInput is an input type that accepts GoogleCloudDialogflowCxV3FulfillmentArgs, GoogleCloudDialogflowCxV3FulfillmentPtr and GoogleCloudDialogflowCxV3FulfillmentPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FulfillmentPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3FulfillmentArgs{...}
+//	        GoogleCloudDialogflowCxV3FulfillmentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3FulfillmentPtrInput interface {
 	pulumi.Input
 
@@ -4543,7 +4543,7 @@ type GoogleCloudDialogflowCxV3FulfillmentConditionalCases struct {
 // GoogleCloudDialogflowCxV3FulfillmentConditionalCasesInput is an input type that accepts GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs and GoogleCloudDialogflowCxV3FulfillmentConditionalCasesOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FulfillmentConditionalCasesInput` via:
 //
-//          GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs{...}
+//	GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs{...}
 type GoogleCloudDialogflowCxV3FulfillmentConditionalCasesInput interface {
 	pulumi.Input
 
@@ -4580,11 +4580,11 @@ func (i GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs) ToGoogleCloudD
 // GoogleCloudDialogflowCxV3FulfillmentConditionalCasesPtrInput is an input type that accepts GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs, GoogleCloudDialogflowCxV3FulfillmentConditionalCasesPtr and GoogleCloudDialogflowCxV3FulfillmentConditionalCasesPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FulfillmentConditionalCasesPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs{...}
+//	        GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3FulfillmentConditionalCasesPtrInput interface {
 	pulumi.Input
 
@@ -4613,7 +4613,7 @@ func (i *googleCloudDialogflowCxV3FulfillmentConditionalCasesPtrType) ToGoogleCl
 // GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArrayInput is an input type that accepts GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArray and GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArray{ GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs{...} }
+//	GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArray{ GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArgs{...} }
 type GoogleCloudDialogflowCxV3FulfillmentConditionalCasesArrayInput interface {
 	pulumi.Input
 
@@ -4732,7 +4732,7 @@ type GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCase struct {
 // GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseInput is an input type that accepts GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArgs and GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseInput` via:
 //
-//          GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArgs{...}
+//	GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArgs{...}
 type GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseInput interface {
 	pulumi.Input
 
@@ -4763,7 +4763,7 @@ func (i GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArgs) ToGoogleCl
 // GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArrayInput is an input type that accepts GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArray and GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArray{ GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArgs{...} }
+//	GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArray{ GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArgs{...} }
 type GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseArrayInput interface {
 	pulumi.Input
 
@@ -4843,7 +4843,7 @@ type GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContent struct 
 // GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentInput is an input type that accepts GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArgs and GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentInput` via:
 //
-//          GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArgs{...}
+//	GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArgs{...}
 type GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentInput interface {
 	pulumi.Input
 
@@ -4874,7 +4874,7 @@ func (i GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArgs)
 // GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArrayInput is an input type that accepts GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArray and GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArray{ GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArgs{...} }
+//	GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArray{ GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArgs{...} }
 type GoogleCloudDialogflowCxV3FulfillmentConditionalCasesCaseCaseContentArrayInput interface {
 	pulumi.Input
 
@@ -5183,7 +5183,7 @@ type GoogleCloudDialogflowCxV3FulfillmentSetParameterAction struct {
 // GoogleCloudDialogflowCxV3FulfillmentSetParameterActionInput is an input type that accepts GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArgs and GoogleCloudDialogflowCxV3FulfillmentSetParameterActionOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FulfillmentSetParameterActionInput` via:
 //
-//          GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArgs{...}
+//	GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArgs{...}
 type GoogleCloudDialogflowCxV3FulfillmentSetParameterActionInput interface {
 	pulumi.Input
 
@@ -5214,7 +5214,7 @@ func (i GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArgs) ToGoogleClou
 // GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArrayInput is an input type that accepts GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArray and GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArray{ GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArgs{...} }
+//	GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArray{ GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArgs{...} }
 type GoogleCloudDialogflowCxV3FulfillmentSetParameterActionArrayInput interface {
 	pulumi.Input
 
@@ -5355,7 +5355,7 @@ type GoogleCloudDialogflowCxV3InputAudioConfig struct {
 // GoogleCloudDialogflowCxV3InputAudioConfigInput is an input type that accepts GoogleCloudDialogflowCxV3InputAudioConfigArgs and GoogleCloudDialogflowCxV3InputAudioConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3InputAudioConfigInput` via:
 //
-//          GoogleCloudDialogflowCxV3InputAudioConfigArgs{...}
+//	GoogleCloudDialogflowCxV3InputAudioConfigArgs{...}
 type GoogleCloudDialogflowCxV3InputAudioConfigInput interface {
 	pulumi.Input
 
@@ -5404,11 +5404,11 @@ func (i GoogleCloudDialogflowCxV3InputAudioConfigArgs) ToGoogleCloudDialogflowCx
 // GoogleCloudDialogflowCxV3InputAudioConfigPtrInput is an input type that accepts GoogleCloudDialogflowCxV3InputAudioConfigArgs, GoogleCloudDialogflowCxV3InputAudioConfigPtr and GoogleCloudDialogflowCxV3InputAudioConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3InputAudioConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3InputAudioConfigArgs{...}
+//	        GoogleCloudDialogflowCxV3InputAudioConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3InputAudioConfigPtrInput interface {
 	pulumi.Input
 
@@ -5683,7 +5683,7 @@ type GoogleCloudDialogflowCxV3Intent struct {
 // GoogleCloudDialogflowCxV3IntentInput is an input type that accepts GoogleCloudDialogflowCxV3IntentArgs and GoogleCloudDialogflowCxV3IntentOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3IntentInput` via:
 //
-//          GoogleCloudDialogflowCxV3IntentArgs{...}
+//	GoogleCloudDialogflowCxV3IntentArgs{...}
 type GoogleCloudDialogflowCxV3IntentInput interface {
 	pulumi.Input
 
@@ -5734,11 +5734,11 @@ func (i GoogleCloudDialogflowCxV3IntentArgs) ToGoogleCloudDialogflowCxV3IntentPt
 // GoogleCloudDialogflowCxV3IntentPtrInput is an input type that accepts GoogleCloudDialogflowCxV3IntentArgs, GoogleCloudDialogflowCxV3IntentPtr and GoogleCloudDialogflowCxV3IntentPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3IntentPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3IntentArgs{...}
+//	        GoogleCloudDialogflowCxV3IntentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3IntentPtrInput interface {
 	pulumi.Input
 
@@ -5946,7 +5946,7 @@ type GoogleCloudDialogflowCxV3IntentInputType struct {
 // GoogleCloudDialogflowCxV3IntentInputTypeInput is an input type that accepts GoogleCloudDialogflowCxV3IntentInputTypeArgs and GoogleCloudDialogflowCxV3IntentInputTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3IntentInputTypeInput` via:
 //
-//          GoogleCloudDialogflowCxV3IntentInputTypeArgs{...}
+//	GoogleCloudDialogflowCxV3IntentInputTypeArgs{...}
 type GoogleCloudDialogflowCxV3IntentInputTypeInput interface {
 	pulumi.Input
 
@@ -5983,11 +5983,11 @@ func (i GoogleCloudDialogflowCxV3IntentInputTypeArgs) ToGoogleCloudDialogflowCxV
 // GoogleCloudDialogflowCxV3IntentInputTypePtrInput is an input type that accepts GoogleCloudDialogflowCxV3IntentInputTypeArgs, GoogleCloudDialogflowCxV3IntentInputTypePtr and GoogleCloudDialogflowCxV3IntentInputTypePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3IntentInputTypePtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3IntentInputTypeArgs{...}
+//	        GoogleCloudDialogflowCxV3IntentInputTypeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3IntentInputTypePtrInput interface {
 	pulumi.Input
 
@@ -6118,7 +6118,7 @@ type GoogleCloudDialogflowCxV3IntentParameter struct {
 // GoogleCloudDialogflowCxV3IntentParameterInput is an input type that accepts GoogleCloudDialogflowCxV3IntentParameterArgs and GoogleCloudDialogflowCxV3IntentParameterOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3IntentParameterInput` via:
 //
-//          GoogleCloudDialogflowCxV3IntentParameterArgs{...}
+//	GoogleCloudDialogflowCxV3IntentParameterArgs{...}
 type GoogleCloudDialogflowCxV3IntentParameterInput interface {
 	pulumi.Input
 
@@ -6153,7 +6153,7 @@ func (i GoogleCloudDialogflowCxV3IntentParameterArgs) ToGoogleCloudDialogflowCxV
 // GoogleCloudDialogflowCxV3IntentParameterArrayInput is an input type that accepts GoogleCloudDialogflowCxV3IntentParameterArray and GoogleCloudDialogflowCxV3IntentParameterArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3IntentParameterArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3IntentParameterArray{ GoogleCloudDialogflowCxV3IntentParameterArgs{...} }
+//	GoogleCloudDialogflowCxV3IntentParameterArray{ GoogleCloudDialogflowCxV3IntentParameterArgs{...} }
 type GoogleCloudDialogflowCxV3IntentParameterArrayInput interface {
 	pulumi.Input
 
@@ -6380,7 +6380,7 @@ type GoogleCloudDialogflowCxV3IntentTrainingPhrase struct {
 // GoogleCloudDialogflowCxV3IntentTrainingPhraseInput is an input type that accepts GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs and GoogleCloudDialogflowCxV3IntentTrainingPhraseOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3IntentTrainingPhraseInput` via:
 //
-//          GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs{...}
+//	GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs{...}
 type GoogleCloudDialogflowCxV3IntentTrainingPhraseInput interface {
 	pulumi.Input
 
@@ -6411,7 +6411,7 @@ func (i GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs) ToGoogleCloudDialogfl
 // GoogleCloudDialogflowCxV3IntentTrainingPhraseArrayInput is an input type that accepts GoogleCloudDialogflowCxV3IntentTrainingPhraseArray and GoogleCloudDialogflowCxV3IntentTrainingPhraseArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3IntentTrainingPhraseArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3IntentTrainingPhraseArray{ GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs{...} }
+//	GoogleCloudDialogflowCxV3IntentTrainingPhraseArray{ GoogleCloudDialogflowCxV3IntentTrainingPhraseArgs{...} }
 type GoogleCloudDialogflowCxV3IntentTrainingPhraseArrayInput interface {
 	pulumi.Input
 
@@ -6491,7 +6491,7 @@ type GoogleCloudDialogflowCxV3IntentTrainingPhrasePart struct {
 // GoogleCloudDialogflowCxV3IntentTrainingPhrasePartInput is an input type that accepts GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArgs and GoogleCloudDialogflowCxV3IntentTrainingPhrasePartOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3IntentTrainingPhrasePartInput` via:
 //
-//          GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArgs{...}
+//	GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArgs{...}
 type GoogleCloudDialogflowCxV3IntentTrainingPhrasePartInput interface {
 	pulumi.Input
 
@@ -6522,7 +6522,7 @@ func (i GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArgs) ToGoogleCloudDial
 // GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArrayInput is an input type that accepts GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArray and GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArray{ GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArgs{...} }
+//	GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArray{ GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArgs{...} }
 type GoogleCloudDialogflowCxV3IntentTrainingPhrasePartArrayInput interface {
 	pulumi.Input
 
@@ -6710,7 +6710,7 @@ type GoogleCloudDialogflowCxV3NluSettings struct {
 // GoogleCloudDialogflowCxV3NluSettingsInput is an input type that accepts GoogleCloudDialogflowCxV3NluSettingsArgs and GoogleCloudDialogflowCxV3NluSettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3NluSettingsInput` via:
 //
-//          GoogleCloudDialogflowCxV3NluSettingsArgs{...}
+//	GoogleCloudDialogflowCxV3NluSettingsArgs{...}
 type GoogleCloudDialogflowCxV3NluSettingsInput interface {
 	pulumi.Input
 
@@ -6751,11 +6751,11 @@ func (i GoogleCloudDialogflowCxV3NluSettingsArgs) ToGoogleCloudDialogflowCxV3Nlu
 // GoogleCloudDialogflowCxV3NluSettingsPtrInput is an input type that accepts GoogleCloudDialogflowCxV3NluSettingsArgs, GoogleCloudDialogflowCxV3NluSettingsPtr and GoogleCloudDialogflowCxV3NluSettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3NluSettingsPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3NluSettingsArgs{...}
+//	        GoogleCloudDialogflowCxV3NluSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3NluSettingsPtrInput interface {
 	pulumi.Input
 
@@ -6940,7 +6940,7 @@ type GoogleCloudDialogflowCxV3Page struct {
 // GoogleCloudDialogflowCxV3PageInput is an input type that accepts GoogleCloudDialogflowCxV3PageArgs and GoogleCloudDialogflowCxV3PageOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3PageInput` via:
 //
-//          GoogleCloudDialogflowCxV3PageArgs{...}
+//	GoogleCloudDialogflowCxV3PageArgs{...}
 type GoogleCloudDialogflowCxV3PageInput interface {
 	pulumi.Input
 
@@ -6989,11 +6989,11 @@ func (i GoogleCloudDialogflowCxV3PageArgs) ToGoogleCloudDialogflowCxV3PagePtrOut
 // GoogleCloudDialogflowCxV3PagePtrInput is an input type that accepts GoogleCloudDialogflowCxV3PageArgs, GoogleCloudDialogflowCxV3PagePtr and GoogleCloudDialogflowCxV3PagePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3PagePtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3PageArgs{...}
+//	        GoogleCloudDialogflowCxV3PageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3PagePtrInput interface {
 	pulumi.Input
 
@@ -7268,7 +7268,7 @@ type GoogleCloudDialogflowCxV3QueryInput struct {
 // GoogleCloudDialogflowCxV3QueryInputInput is an input type that accepts GoogleCloudDialogflowCxV3QueryInputArgs and GoogleCloudDialogflowCxV3QueryInputOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3QueryInputInput` via:
 //
-//          GoogleCloudDialogflowCxV3QueryInputArgs{...}
+//	GoogleCloudDialogflowCxV3QueryInputArgs{...}
 type GoogleCloudDialogflowCxV3QueryInputInput interface {
 	pulumi.Input
 
@@ -7315,11 +7315,11 @@ func (i GoogleCloudDialogflowCxV3QueryInputArgs) ToGoogleCloudDialogflowCxV3Quer
 // GoogleCloudDialogflowCxV3QueryInputPtrInput is an input type that accepts GoogleCloudDialogflowCxV3QueryInputArgs, GoogleCloudDialogflowCxV3QueryInputPtr and GoogleCloudDialogflowCxV3QueryInputPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3QueryInputPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3QueryInputArgs{...}
+//	        GoogleCloudDialogflowCxV3QueryInputArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3QueryInputPtrInput interface {
 	pulumi.Input
 
@@ -7576,7 +7576,7 @@ type GoogleCloudDialogflowCxV3ResponseMessage struct {
 // GoogleCloudDialogflowCxV3ResponseMessageInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageArgs and GoogleCloudDialogflowCxV3ResponseMessageOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessageArgs{...}
+//	GoogleCloudDialogflowCxV3ResponseMessageArgs{...}
 type GoogleCloudDialogflowCxV3ResponseMessageInput interface {
 	pulumi.Input
 
@@ -7625,11 +7625,11 @@ func (i GoogleCloudDialogflowCxV3ResponseMessageArgs) ToGoogleCloudDialogflowCxV
 // GoogleCloudDialogflowCxV3ResponseMessagePtrInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageArgs, GoogleCloudDialogflowCxV3ResponseMessagePtr and GoogleCloudDialogflowCxV3ResponseMessagePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessagePtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessageArgs{...}
+//	        GoogleCloudDialogflowCxV3ResponseMessageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3ResponseMessagePtrInput interface {
 	pulumi.Input
 
@@ -7658,7 +7658,7 @@ func (i *googleCloudDialogflowCxV3ResponseMessagePtrType) ToGoogleCloudDialogflo
 // GoogleCloudDialogflowCxV3ResponseMessageArrayInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageArray and GoogleCloudDialogflowCxV3ResponseMessageArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessageArray{ GoogleCloudDialogflowCxV3ResponseMessageArgs{...} }
+//	GoogleCloudDialogflowCxV3ResponseMessageArray{ GoogleCloudDialogflowCxV3ResponseMessageArgs{...} }
 type GoogleCloudDialogflowCxV3ResponseMessageArrayInput interface {
 	pulumi.Input
 
@@ -7875,7 +7875,7 @@ type GoogleCloudDialogflowCxV3ResponseMessageConversationSuccess struct {
 // GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs and GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs{...}
+//	GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs{...}
 type GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessInput interface {
 	pulumi.Input
 
@@ -7912,11 +7912,11 @@ func (i GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs) ToGoogl
 // GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessPtrInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs, GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessPtr and GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs{...}
+//	        GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3ResponseMessageConversationSuccessPtrInput interface {
 	pulumi.Input
 
@@ -8064,7 +8064,7 @@ type GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoff struct {
 // GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs and GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs{...}
+//	GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs{...}
 type GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffInput interface {
 	pulumi.Input
 
@@ -8101,11 +8101,11 @@ func (i GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs) ToGoogleCl
 // GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffPtrInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs, GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffPtr and GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs{...}
+//	        GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3ResponseMessageLiveAgentHandoffPtrInput interface {
 	pulumi.Input
 
@@ -8324,7 +8324,7 @@ type GoogleCloudDialogflowCxV3ResponseMessageOutputAudioText struct {
 // GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs and GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs{...}
+//	GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs{...}
 type GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextInput interface {
 	pulumi.Input
 
@@ -8363,11 +8363,11 @@ func (i GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs) ToGoogleClo
 // GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextPtrInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs, GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextPtr and GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs{...}
+//	        GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3ResponseMessageOutputAudioTextPtrInput interface {
 	pulumi.Input
 
@@ -8523,7 +8523,7 @@ type GoogleCloudDialogflowCxV3ResponseMessagePlayAudio struct {
 // GoogleCloudDialogflowCxV3ResponseMessagePlayAudioInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs and GoogleCloudDialogflowCxV3ResponseMessagePlayAudioOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessagePlayAudioInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs{...}
+//	GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs{...}
 type GoogleCloudDialogflowCxV3ResponseMessagePlayAudioInput interface {
 	pulumi.Input
 
@@ -8560,11 +8560,11 @@ func (i GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs) ToGoogleCloudDial
 // GoogleCloudDialogflowCxV3ResponseMessagePlayAudioPtrInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs, GoogleCloudDialogflowCxV3ResponseMessagePlayAudioPtr and GoogleCloudDialogflowCxV3ResponseMessagePlayAudioPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessagePlayAudioPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs{...}
+//	        GoogleCloudDialogflowCxV3ResponseMessagePlayAudioArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3ResponseMessagePlayAudioPtrInput interface {
 	pulumi.Input
 
@@ -8816,7 +8816,7 @@ type GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCall struct {
 // GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs and GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs{...}
+//	GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs{...}
 type GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallInput interface {
 	pulumi.Input
 
@@ -8853,11 +8853,11 @@ func (i GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs) ToGoo
 // GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs, GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtr and GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs{...}
+//	        GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3ResponseMessageTelephonyTransferCallPtrInput interface {
 	pulumi.Input
 
@@ -8984,7 +8984,7 @@ type GoogleCloudDialogflowCxV3ResponseMessageText struct {
 // GoogleCloudDialogflowCxV3ResponseMessageTextInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageTextArgs and GoogleCloudDialogflowCxV3ResponseMessageTextOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageTextInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessageTextArgs{...}
+//	GoogleCloudDialogflowCxV3ResponseMessageTextArgs{...}
 type GoogleCloudDialogflowCxV3ResponseMessageTextInput interface {
 	pulumi.Input
 
@@ -9021,11 +9021,11 @@ func (i GoogleCloudDialogflowCxV3ResponseMessageTextArgs) ToGoogleCloudDialogflo
 // GoogleCloudDialogflowCxV3ResponseMessageTextPtrInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageTextArgs, GoogleCloudDialogflowCxV3ResponseMessageTextPtr and GoogleCloudDialogflowCxV3ResponseMessageTextPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageTextPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessageTextArgs{...}
+//	        GoogleCloudDialogflowCxV3ResponseMessageTextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3ResponseMessageTextPtrInput interface {
 	pulumi.Input
 
@@ -9054,7 +9054,7 @@ func (i *googleCloudDialogflowCxV3ResponseMessageTextPtrType) ToGoogleCloudDialo
 // GoogleCloudDialogflowCxV3ResponseMessageTextArrayInput is an input type that accepts GoogleCloudDialogflowCxV3ResponseMessageTextArray and GoogleCloudDialogflowCxV3ResponseMessageTextArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3ResponseMessageTextArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3ResponseMessageTextArray{ GoogleCloudDialogflowCxV3ResponseMessageTextArgs{...} }
+//	GoogleCloudDialogflowCxV3ResponseMessageTextArray{ GoogleCloudDialogflowCxV3ResponseMessageTextArgs{...} }
 type GoogleCloudDialogflowCxV3ResponseMessageTextArrayInput interface {
 	pulumi.Input
 
@@ -9226,7 +9226,7 @@ type GoogleCloudDialogflowCxV3RolloutConfig struct {
 // GoogleCloudDialogflowCxV3RolloutConfigInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutConfigArgs and GoogleCloudDialogflowCxV3RolloutConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutConfigInput` via:
 //
-//          GoogleCloudDialogflowCxV3RolloutConfigArgs{...}
+//	GoogleCloudDialogflowCxV3RolloutConfigArgs{...}
 type GoogleCloudDialogflowCxV3RolloutConfigInput interface {
 	pulumi.Input
 
@@ -9267,11 +9267,11 @@ func (i GoogleCloudDialogflowCxV3RolloutConfigArgs) ToGoogleCloudDialogflowCxV3R
 // GoogleCloudDialogflowCxV3RolloutConfigPtrInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutConfigArgs, GoogleCloudDialogflowCxV3RolloutConfigPtr and GoogleCloudDialogflowCxV3RolloutConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3RolloutConfigArgs{...}
+//	        GoogleCloudDialogflowCxV3RolloutConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3RolloutConfigPtrInput interface {
 	pulumi.Input
 
@@ -9448,7 +9448,7 @@ type GoogleCloudDialogflowCxV3RolloutConfigRolloutStep struct {
 // GoogleCloudDialogflowCxV3RolloutConfigRolloutStepInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs and GoogleCloudDialogflowCxV3RolloutConfigRolloutStepOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutConfigRolloutStepInput` via:
 //
-//          GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs{...}
+//	GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs{...}
 type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepInput interface {
 	pulumi.Input
 
@@ -9481,7 +9481,7 @@ func (i GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs) ToGoogleCloudDial
 // GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArray and GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArray{ GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs{...} }
+//	GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArray{ GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArgs{...} }
 type GoogleCloudDialogflowCxV3RolloutConfigRolloutStepArrayInput interface {
 	pulumi.Input
 
@@ -9626,7 +9626,7 @@ type GoogleCloudDialogflowCxV3RolloutState struct {
 // GoogleCloudDialogflowCxV3RolloutStateInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutStateArgs and GoogleCloudDialogflowCxV3RolloutStateOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutStateInput` via:
 //
-//          GoogleCloudDialogflowCxV3RolloutStateArgs{...}
+//	GoogleCloudDialogflowCxV3RolloutStateArgs{...}
 type GoogleCloudDialogflowCxV3RolloutStateInput interface {
 	pulumi.Input
 
@@ -9667,11 +9667,11 @@ func (i GoogleCloudDialogflowCxV3RolloutStateArgs) ToGoogleCloudDialogflowCxV3Ro
 // GoogleCloudDialogflowCxV3RolloutStatePtrInput is an input type that accepts GoogleCloudDialogflowCxV3RolloutStateArgs, GoogleCloudDialogflowCxV3RolloutStatePtr and GoogleCloudDialogflowCxV3RolloutStatePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3RolloutStatePtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3RolloutStateArgs{...}
+//	        GoogleCloudDialogflowCxV3RolloutStateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3RolloutStatePtrInput interface {
 	pulumi.Input
 
@@ -9846,7 +9846,7 @@ type GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettings struct {
 // GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsInput is an input type that accepts GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs and GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsInput` via:
 //
-//          GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs{...}
+//	GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs{...}
 type GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsInput interface {
 	pulumi.Input
 
@@ -9889,11 +9889,11 @@ func (i GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs) ToGoog
 // GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrInput is an input type that accepts GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs, GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtr and GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs{...}
+//	        GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3SecuritySettingsAudioExportSettingsPtrInput interface {
 	pulumi.Input
 
@@ -10098,7 +10098,7 @@ type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettings struct {
 // GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsInput is an input type that accepts GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs and GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsInput` via:
 //
-//          GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs{...}
+//	GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs{...}
 type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsInput interface {
 	pulumi.Input
 
@@ -10135,11 +10135,11 @@ func (i GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs) ToG
 // GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrInput is an input type that accepts GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs, GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtr and GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs{...}
+//	        GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3SecuritySettingsInsightsExportSettingsPtrInput interface {
 	pulumi.Input
 
@@ -10268,7 +10268,7 @@ type GoogleCloudDialogflowCxV3SpeechToTextSettings struct {
 // GoogleCloudDialogflowCxV3SpeechToTextSettingsInput is an input type that accepts GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs and GoogleCloudDialogflowCxV3SpeechToTextSettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3SpeechToTextSettingsInput` via:
 //
-//          GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs{...}
+//	GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs{...}
 type GoogleCloudDialogflowCxV3SpeechToTextSettingsInput interface {
 	pulumi.Input
 
@@ -10305,11 +10305,11 @@ func (i GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs) ToGoogleCloudDialogfl
 // GoogleCloudDialogflowCxV3SpeechToTextSettingsPtrInput is an input type that accepts GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs, GoogleCloudDialogflowCxV3SpeechToTextSettingsPtr and GoogleCloudDialogflowCxV3SpeechToTextSettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3SpeechToTextSettingsPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs{...}
+//	        GoogleCloudDialogflowCxV3SpeechToTextSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3SpeechToTextSettingsPtrInput interface {
 	pulumi.Input
 
@@ -10442,7 +10442,7 @@ type GoogleCloudDialogflowCxV3TestCaseResult struct {
 // GoogleCloudDialogflowCxV3TestCaseResultInput is an input type that accepts GoogleCloudDialogflowCxV3TestCaseResultArgs and GoogleCloudDialogflowCxV3TestCaseResultOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3TestCaseResultInput` via:
 //
-//          GoogleCloudDialogflowCxV3TestCaseResultArgs{...}
+//	GoogleCloudDialogflowCxV3TestCaseResultArgs{...}
 type GoogleCloudDialogflowCxV3TestCaseResultInput interface {
 	pulumi.Input
 
@@ -10487,11 +10487,11 @@ func (i GoogleCloudDialogflowCxV3TestCaseResultArgs) ToGoogleCloudDialogflowCxV3
 // GoogleCloudDialogflowCxV3TestCaseResultPtrInput is an input type that accepts GoogleCloudDialogflowCxV3TestCaseResultArgs, GoogleCloudDialogflowCxV3TestCaseResultPtr and GoogleCloudDialogflowCxV3TestCaseResultPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3TestCaseResultPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3TestCaseResultArgs{...}
+//	        GoogleCloudDialogflowCxV3TestCaseResultArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3TestCaseResultPtrInput interface {
 	pulumi.Input
 
@@ -10714,7 +10714,7 @@ type GoogleCloudDialogflowCxV3TestConfig struct {
 // GoogleCloudDialogflowCxV3TestConfigInput is an input type that accepts GoogleCloudDialogflowCxV3TestConfigArgs and GoogleCloudDialogflowCxV3TestConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3TestConfigInput` via:
 //
-//          GoogleCloudDialogflowCxV3TestConfigArgs{...}
+//	GoogleCloudDialogflowCxV3TestConfigArgs{...}
 type GoogleCloudDialogflowCxV3TestConfigInput interface {
 	pulumi.Input
 
@@ -10755,11 +10755,11 @@ func (i GoogleCloudDialogflowCxV3TestConfigArgs) ToGoogleCloudDialogflowCxV3Test
 // GoogleCloudDialogflowCxV3TestConfigPtrInput is an input type that accepts GoogleCloudDialogflowCxV3TestConfigArgs, GoogleCloudDialogflowCxV3TestConfigPtr and GoogleCloudDialogflowCxV3TestConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3TestConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3TestConfigArgs{...}
+//	        GoogleCloudDialogflowCxV3TestConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3TestConfigPtrInput interface {
 	pulumi.Input
 
@@ -10981,7 +10981,7 @@ type GoogleCloudDialogflowCxV3TextInput struct {
 // GoogleCloudDialogflowCxV3TextInputInput is an input type that accepts GoogleCloudDialogflowCxV3TextInputArgs and GoogleCloudDialogflowCxV3TextInputOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3TextInputInput` via:
 //
-//          GoogleCloudDialogflowCxV3TextInputArgs{...}
+//	GoogleCloudDialogflowCxV3TextInputArgs{...}
 type GoogleCloudDialogflowCxV3TextInputInput interface {
 	pulumi.Input
 
@@ -11018,11 +11018,11 @@ func (i GoogleCloudDialogflowCxV3TextInputArgs) ToGoogleCloudDialogflowCxV3TextI
 // GoogleCloudDialogflowCxV3TextInputPtrInput is an input type that accepts GoogleCloudDialogflowCxV3TextInputArgs, GoogleCloudDialogflowCxV3TextInputPtr and GoogleCloudDialogflowCxV3TextInputPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3TextInputPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3TextInputArgs{...}
+//	        GoogleCloudDialogflowCxV3TextInputArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3TextInputPtrInput interface {
 	pulumi.Input
 
@@ -11155,7 +11155,7 @@ type GoogleCloudDialogflowCxV3TransitionRoute struct {
 // GoogleCloudDialogflowCxV3TransitionRouteInput is an input type that accepts GoogleCloudDialogflowCxV3TransitionRouteArgs and GoogleCloudDialogflowCxV3TransitionRouteOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3TransitionRouteInput` via:
 //
-//          GoogleCloudDialogflowCxV3TransitionRouteArgs{...}
+//	GoogleCloudDialogflowCxV3TransitionRouteArgs{...}
 type GoogleCloudDialogflowCxV3TransitionRouteInput interface {
 	pulumi.Input
 
@@ -11192,7 +11192,7 @@ func (i GoogleCloudDialogflowCxV3TransitionRouteArgs) ToGoogleCloudDialogflowCxV
 // GoogleCloudDialogflowCxV3TransitionRouteArrayInput is an input type that accepts GoogleCloudDialogflowCxV3TransitionRouteArray and GoogleCloudDialogflowCxV3TransitionRouteArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3TransitionRouteArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3TransitionRouteArray{ GoogleCloudDialogflowCxV3TransitionRouteArgs{...} }
+//	GoogleCloudDialogflowCxV3TransitionRouteArray{ GoogleCloudDialogflowCxV3TransitionRouteArgs{...} }
 type GoogleCloudDialogflowCxV3TransitionRouteArrayInput interface {
 	pulumi.Input
 
@@ -11370,7 +11370,7 @@ type GoogleCloudDialogflowCxV3VariantsHistory struct {
 // GoogleCloudDialogflowCxV3VariantsHistoryInput is an input type that accepts GoogleCloudDialogflowCxV3VariantsHistoryArgs and GoogleCloudDialogflowCxV3VariantsHistoryOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3VariantsHistoryInput` via:
 //
-//          GoogleCloudDialogflowCxV3VariantsHistoryArgs{...}
+//	GoogleCloudDialogflowCxV3VariantsHistoryArgs{...}
 type GoogleCloudDialogflowCxV3VariantsHistoryInput interface {
 	pulumi.Input
 
@@ -11401,7 +11401,7 @@ func (i GoogleCloudDialogflowCxV3VariantsHistoryArgs) ToGoogleCloudDialogflowCxV
 // GoogleCloudDialogflowCxV3VariantsHistoryArrayInput is an input type that accepts GoogleCloudDialogflowCxV3VariantsHistoryArray and GoogleCloudDialogflowCxV3VariantsHistoryArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3VariantsHistoryArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3VariantsHistoryArray{ GoogleCloudDialogflowCxV3VariantsHistoryArgs{...} }
+//	GoogleCloudDialogflowCxV3VariantsHistoryArray{ GoogleCloudDialogflowCxV3VariantsHistoryArgs{...} }
 type GoogleCloudDialogflowCxV3VariantsHistoryArrayInput interface {
 	pulumi.Input
 
@@ -11534,7 +11534,7 @@ type GoogleCloudDialogflowCxV3VersionVariants struct {
 // GoogleCloudDialogflowCxV3VersionVariantsInput is an input type that accepts GoogleCloudDialogflowCxV3VersionVariantsArgs and GoogleCloudDialogflowCxV3VersionVariantsOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3VersionVariantsInput` via:
 //
-//          GoogleCloudDialogflowCxV3VersionVariantsArgs{...}
+//	GoogleCloudDialogflowCxV3VersionVariantsArgs{...}
 type GoogleCloudDialogflowCxV3VersionVariantsInput interface {
 	pulumi.Input
 
@@ -11571,11 +11571,11 @@ func (i GoogleCloudDialogflowCxV3VersionVariantsArgs) ToGoogleCloudDialogflowCxV
 // GoogleCloudDialogflowCxV3VersionVariantsPtrInput is an input type that accepts GoogleCloudDialogflowCxV3VersionVariantsArgs, GoogleCloudDialogflowCxV3VersionVariantsPtr and GoogleCloudDialogflowCxV3VersionVariantsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3VersionVariantsPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3VersionVariantsArgs{...}
+//	        GoogleCloudDialogflowCxV3VersionVariantsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3VersionVariantsPtrInput interface {
 	pulumi.Input
 
@@ -11708,7 +11708,7 @@ type GoogleCloudDialogflowCxV3VersionVariantsVariant struct {
 // GoogleCloudDialogflowCxV3VersionVariantsVariantInput is an input type that accepts GoogleCloudDialogflowCxV3VersionVariantsVariantArgs and GoogleCloudDialogflowCxV3VersionVariantsVariantOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3VersionVariantsVariantInput` via:
 //
-//          GoogleCloudDialogflowCxV3VersionVariantsVariantArgs{...}
+//	GoogleCloudDialogflowCxV3VersionVariantsVariantArgs{...}
 type GoogleCloudDialogflowCxV3VersionVariantsVariantInput interface {
 	pulumi.Input
 
@@ -11741,7 +11741,7 @@ func (i GoogleCloudDialogflowCxV3VersionVariantsVariantArgs) ToGoogleCloudDialog
 // GoogleCloudDialogflowCxV3VersionVariantsVariantArrayInput is an input type that accepts GoogleCloudDialogflowCxV3VersionVariantsVariantArray and GoogleCloudDialogflowCxV3VersionVariantsVariantArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3VersionVariantsVariantArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3VersionVariantsVariantArray{ GoogleCloudDialogflowCxV3VersionVariantsVariantArgs{...} }
+//	GoogleCloudDialogflowCxV3VersionVariantsVariantArray{ GoogleCloudDialogflowCxV3VersionVariantsVariantArgs{...} }
 type GoogleCloudDialogflowCxV3VersionVariantsVariantArrayInput interface {
 	pulumi.Input
 
@@ -11892,7 +11892,7 @@ type GoogleCloudDialogflowCxV3Webhook struct {
 // GoogleCloudDialogflowCxV3WebhookInput is an input type that accepts GoogleCloudDialogflowCxV3WebhookArgs and GoogleCloudDialogflowCxV3WebhookOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3WebhookInput` via:
 //
-//          GoogleCloudDialogflowCxV3WebhookArgs{...}
+//	GoogleCloudDialogflowCxV3WebhookArgs{...}
 type GoogleCloudDialogflowCxV3WebhookInput interface {
 	pulumi.Input
 
@@ -11931,7 +11931,7 @@ func (i GoogleCloudDialogflowCxV3WebhookArgs) ToGoogleCloudDialogflowCxV3Webhook
 // GoogleCloudDialogflowCxV3WebhookArrayInput is an input type that accepts GoogleCloudDialogflowCxV3WebhookArray and GoogleCloudDialogflowCxV3WebhookArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3WebhookArrayInput` via:
 //
-//          GoogleCloudDialogflowCxV3WebhookArray{ GoogleCloudDialogflowCxV3WebhookArgs{...} }
+//	GoogleCloudDialogflowCxV3WebhookArray{ GoogleCloudDialogflowCxV3WebhookArgs{...} }
 type GoogleCloudDialogflowCxV3WebhookArrayInput interface {
 	pulumi.Input
 
@@ -12039,7 +12039,7 @@ type GoogleCloudDialogflowCxV3WebhookGenericWebService struct {
 // GoogleCloudDialogflowCxV3WebhookGenericWebServiceInput is an input type that accepts GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs and GoogleCloudDialogflowCxV3WebhookGenericWebServiceOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3WebhookGenericWebServiceInput` via:
 //
-//          GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs{...}
+//	GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs{...}
 type GoogleCloudDialogflowCxV3WebhookGenericWebServiceInput interface {
 	pulumi.Input
 
@@ -12084,11 +12084,11 @@ func (i GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs) ToGoogleCloudDial
 // GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrInput is an input type that accepts GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs, GoogleCloudDialogflowCxV3WebhookGenericWebServicePtr and GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs{...}
+//	        GoogleCloudDialogflowCxV3WebhookGenericWebServiceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3WebhookGenericWebServicePtrInput interface {
 	pulumi.Input
 
@@ -12390,7 +12390,7 @@ type GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfig struct {
 // GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigInput is an input type that accepts GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs and GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigInput` via:
 //
-//          GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs{...}
+//	GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs{...}
 type GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigInput interface {
 	pulumi.Input
 
@@ -12429,11 +12429,11 @@ func (i GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs) ToGoogleClou
 // GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigPtrInput is an input type that accepts GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs, GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigPtr and GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs{...}
+//	        GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowCxV3WebhookServiceDirectoryConfigPtrInput interface {
 	pulumi.Input
 
@@ -12588,7 +12588,7 @@ type GoogleRpcStatus struct {
 // GoogleRpcStatusInput is an input type that accepts GoogleRpcStatusArgs and GoogleRpcStatusOutput values.
 // You can construct a concrete instance of `GoogleRpcStatusInput` via:
 //
-//          GoogleRpcStatusArgs{...}
+//	GoogleRpcStatusArgs{...}
 type GoogleRpcStatusInput interface {
 	pulumi.Input
 
@@ -12629,11 +12629,11 @@ func (i GoogleRpcStatusArgs) ToGoogleRpcStatusPtrOutputWithContext(ctx context.C
 // GoogleRpcStatusPtrInput is an input type that accepts GoogleRpcStatusArgs, GoogleRpcStatusPtr and GoogleRpcStatusPtrOutput values.
 // You can construct a concrete instance of `GoogleRpcStatusPtrInput` via:
 //
-//          GoogleRpcStatusArgs{...}
+//	        GoogleRpcStatusArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleRpcStatusPtrInput interface {
 	pulumi.Input
 

@@ -148,7 +148,7 @@ func (o ChannelPartnerLinkLinkStatePtrOutput) ToStringPtrOutputWithContext(ctx c
 // ChannelPartnerLinkLinkStateInput is an input type that accepts ChannelPartnerLinkLinkStateArgs and ChannelPartnerLinkLinkStateOutput values.
 // You can construct a concrete instance of `ChannelPartnerLinkLinkStateInput` via:
 //
-//          ChannelPartnerLinkLinkStateArgs{...}
+//	ChannelPartnerLinkLinkStateArgs{...}
 type ChannelPartnerLinkLinkStateInput interface {
 	pulumi.Input
 
@@ -319,7 +319,7 @@ func (o GoogleCloudChannelV1PeriodPeriodTypePtrOutput) ToStringPtrOutputWithCont
 // GoogleCloudChannelV1PeriodPeriodTypeInput is an input type that accepts GoogleCloudChannelV1PeriodPeriodTypeArgs and GoogleCloudChannelV1PeriodPeriodTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1PeriodPeriodTypeInput` via:
 //
-//          GoogleCloudChannelV1PeriodPeriodTypeArgs{...}
+//	GoogleCloudChannelV1PeriodPeriodTypeArgs{...}
 type GoogleCloudChannelV1PeriodPeriodTypeInput interface {
 	pulumi.Input
 
@@ -494,7 +494,7 @@ func (o GoogleCloudChannelV1RenewalSettingsPaymentPlanPtrOutput) ToStringPtrOutp
 // GoogleCloudChannelV1RenewalSettingsPaymentPlanInput is an input type that accepts GoogleCloudChannelV1RenewalSettingsPaymentPlanArgs and GoogleCloudChannelV1RenewalSettingsPaymentPlanOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1RenewalSettingsPaymentPlanInput` via:
 //
-//          GoogleCloudChannelV1RenewalSettingsPaymentPlanArgs{...}
+//	GoogleCloudChannelV1RenewalSettingsPaymentPlanArgs{...}
 type GoogleCloudChannelV1RenewalSettingsPaymentPlanInput interface {
 	pulumi.Input
 
@@ -663,7 +663,7 @@ func (o GoogleCloudChannelV1RepricingConfigRebillingBasisPtrOutput) ToStringPtrO
 // GoogleCloudChannelV1RepricingConfigRebillingBasisInput is an input type that accepts GoogleCloudChannelV1RepricingConfigRebillingBasisArgs and GoogleCloudChannelV1RepricingConfigRebillingBasisOutput values.
 // You can construct a concrete instance of `GoogleCloudChannelV1RepricingConfigRebillingBasisInput` via:
 //
-//          GoogleCloudChannelV1RepricingConfigRebillingBasisArgs{...}
+//	GoogleCloudChannelV1RepricingConfigRebillingBasisArgs{...}
 type GoogleCloudChannelV1RepricingConfigRebillingBasisInput interface {
 	pulumi.Input
 

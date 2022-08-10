@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -317,7 +317,7 @@ func (o ProjectLifecycleStatePtrOutput) ToStringPtrOutputWithContext(ctx context
 // ProjectLifecycleStateInput is an input type that accepts ProjectLifecycleStateArgs and ProjectLifecycleStateOutput values.
 // You can construct a concrete instance of `ProjectLifecycleStateInput` via:
 //
-//          ProjectLifecycleStateArgs{...}
+//	ProjectLifecycleStateArgs{...}
 type ProjectLifecycleStateInput interface {
 	pulumi.Input
 

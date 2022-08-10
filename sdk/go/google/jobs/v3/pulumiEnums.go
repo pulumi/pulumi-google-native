@@ -154,7 +154,7 @@ func (o CompanySizePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // CompanySizeInput is an input type that accepts CompanySizeArgs and CompanySizeOutput values.
 // You can construct a concrete instance of `CompanySizeInput` via:
 //
-//          CompanySizeArgs{...}
+//	CompanySizeArgs{...}
 type CompanySizeInput interface {
 	pulumi.Input
 
@@ -335,7 +335,7 @@ func (o CompensationEntryTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // CompensationEntryTypeInput is an input type that accepts CompensationEntryTypeArgs and CompensationEntryTypeOutput values.
 // You can construct a concrete instance of `CompensationEntryTypeInput` via:
 //
-//          CompensationEntryTypeArgs{...}
+//	CompensationEntryTypeArgs{...}
 type CompensationEntryTypeInput interface {
 	pulumi.Input
 
@@ -514,7 +514,7 @@ func (o CompensationEntryUnitPtrOutput) ToStringPtrOutputWithContext(ctx context
 // CompensationEntryUnitInput is an input type that accepts CompensationEntryUnitArgs and CompensationEntryUnitOutput values.
 // You can construct a concrete instance of `CompensationEntryUnitInput` via:
 //
-//          CompensationEntryUnitArgs{...}
+//	CompensationEntryUnitArgs{...}
 type CompensationEntryUnitInput interface {
 	pulumi.Input
 
@@ -694,7 +694,7 @@ func (o JobDegreeTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // JobDegreeTypesItemInput is an input type that accepts JobDegreeTypesItemArgs and JobDegreeTypesItemOutput values.
 // You can construct a concrete instance of `JobDegreeTypesItemInput` via:
 //
-//          JobDegreeTypesItemArgs{...}
+//	JobDegreeTypesItemArgs{...}
 type JobDegreeTypesItemInput interface {
 	pulumi.Input
 
@@ -732,7 +732,7 @@ func (in *jobDegreeTypesItemPtr) ToJobDegreeTypesItemPtrOutputWithContext(ctx co
 // JobDegreeTypesItemArrayInput is an input type that accepts JobDegreeTypesItemArray and JobDegreeTypesItemArrayOutput values.
 // You can construct a concrete instance of `JobDegreeTypesItemArrayInput` via:
 //
-//          JobDegreeTypesItemArray{ JobDegreeTypesItemArgs{...} }
+//	JobDegreeTypesItemArray{ JobDegreeTypesItemArgs{...} }
 type JobDegreeTypesItemArrayInput interface {
 	pulumi.Input
 
@@ -923,7 +923,7 @@ func (o JobEmploymentTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx contex
 // JobEmploymentTypesItemInput is an input type that accepts JobEmploymentTypesItemArgs and JobEmploymentTypesItemOutput values.
 // You can construct a concrete instance of `JobEmploymentTypesItemInput` via:
 //
-//          JobEmploymentTypesItemArgs{...}
+//	JobEmploymentTypesItemArgs{...}
 type JobEmploymentTypesItemInput interface {
 	pulumi.Input
 
@@ -961,7 +961,7 @@ func (in *jobEmploymentTypesItemPtr) ToJobEmploymentTypesItemPtrOutputWithContex
 // JobEmploymentTypesItemArrayInput is an input type that accepts JobEmploymentTypesItemArray and JobEmploymentTypesItemArrayOutput values.
 // You can construct a concrete instance of `JobEmploymentTypesItemArrayInput` via:
 //
-//          JobEmploymentTypesItemArray{ JobEmploymentTypesItemArgs{...} }
+//	JobEmploymentTypesItemArray{ JobEmploymentTypesItemArgs{...} }
 type JobEmploymentTypesItemArrayInput interface {
 	pulumi.Input
 
@@ -1154,7 +1154,7 @@ func (o JobJobBenefitsItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // JobJobBenefitsItemInput is an input type that accepts JobJobBenefitsItemArgs and JobJobBenefitsItemOutput values.
 // You can construct a concrete instance of `JobJobBenefitsItemInput` via:
 //
-//          JobJobBenefitsItemArgs{...}
+//	JobJobBenefitsItemArgs{...}
 type JobJobBenefitsItemInput interface {
 	pulumi.Input
 
@@ -1192,7 +1192,7 @@ func (in *jobJobBenefitsItemPtr) ToJobJobBenefitsItemPtrOutputWithContext(ctx co
 // JobJobBenefitsItemArrayInput is an input type that accepts JobJobBenefitsItemArray and JobJobBenefitsItemArrayOutput values.
 // You can construct a concrete instance of `JobJobBenefitsItemArrayInput` via:
 //
-//          JobJobBenefitsItemArray{ JobJobBenefitsItemArgs{...} }
+//	JobJobBenefitsItemArray{ JobJobBenefitsItemArgs{...} }
 type JobJobBenefitsItemArrayInput interface {
 	pulumi.Input
 
@@ -1374,7 +1374,7 @@ func (o JobJobLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // JobJobLevelInput is an input type that accepts JobJobLevelArgs and JobJobLevelOutput values.
 // You can construct a concrete instance of `JobJobLevelInput` via:
 //
-//          JobJobLevelArgs{...}
+//	JobJobLevelArgs{...}
 type JobJobLevelInput interface {
 	pulumi.Input
 
@@ -1545,7 +1545,7 @@ func (o JobPostingRegionPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // JobPostingRegionInput is an input type that accepts JobPostingRegionArgs and JobPostingRegionOutput values.
 // You can construct a concrete instance of `JobPostingRegionInput` via:
 //
-//          JobPostingRegionArgs{...}
+//	JobPostingRegionArgs{...}
 type JobPostingRegionInput interface {
 	pulumi.Input
 
@@ -1716,7 +1716,7 @@ func (o JobVisibilityPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 // JobVisibilityInput is an input type that accepts JobVisibilityArgs and JobVisibilityOutput values.
 // You can construct a concrete instance of `JobVisibilityInput` via:
 //
-//          JobVisibilityArgs{...}
+//	JobVisibilityArgs{...}
 type JobVisibilityInput interface {
 	pulumi.Input
 
@@ -1885,7 +1885,7 @@ func (o ProcessingOptionsHtmlSanitizationPtrOutput) ToStringPtrOutputWithContext
 // ProcessingOptionsHtmlSanitizationInput is an input type that accepts ProcessingOptionsHtmlSanitizationArgs and ProcessingOptionsHtmlSanitizationOutput values.
 // You can construct a concrete instance of `ProcessingOptionsHtmlSanitizationInput` via:
 //
-//          ProcessingOptionsHtmlSanitizationArgs{...}
+//	ProcessingOptionsHtmlSanitizationArgs{...}
 type ProcessingOptionsHtmlSanitizationInput interface {
 	pulumi.Input
 
