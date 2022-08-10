@@ -78,7 +78,7 @@ class AwaitableGetPolicyBasedRouteIamPolicyResult(GetPolicyBasedRouteIamPolicyRe
             version=self.version)
 
 
-def get_policy_based_route_iam_policy(options_requested_policy_version: Optional[str] = None,
+def get_policy_based_route_iam_policy(options_requested_policy_version: Optional[int] = None,
                                       policy_based_route_id: Optional[str] = None,
                                       project: Optional[str] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetPolicyBasedRouteIamPolicyResult:
@@ -100,7 +100,7 @@ def get_policy_based_route_iam_policy(options_requested_policy_version: Optional
 
 
 @_utilities.lift_output_func(get_policy_based_route_iam_policy)
-def get_policy_based_route_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+def get_policy_based_route_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                              policy_based_route_id: Optional[pulumi.Input[str]] = None,
                                              project: Optional[pulumi.Input[Optional[str]]] = None,
                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyBasedRouteIamPolicyResult]:

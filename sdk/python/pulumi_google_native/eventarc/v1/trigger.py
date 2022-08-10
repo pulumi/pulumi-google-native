@@ -19,7 +19,7 @@ class TriggerArgs:
                  destination: pulumi.Input['DestinationArgs'],
                  event_filters: pulumi.Input[Sequence[pulumi.Input['EventFilterArgs']]],
                  trigger_id: pulumi.Input[str],
-                 validate_only: pulumi.Input[str],
+                 validate_only: pulumi.Input[bool],
                  channel: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -32,7 +32,7 @@ class TriggerArgs:
         :param pulumi.Input['DestinationArgs'] destination: Destination specifies where the events should be sent to.
         :param pulumi.Input[Sequence[pulumi.Input['EventFilterArgs']]] event_filters: null The list of filters that applies to event attributes. Only events that match all the provided filters are sent to the destination.
         :param pulumi.Input[str] trigger_id: Required. The user-provided ID to be assigned to the trigger.
-        :param pulumi.Input[str] validate_only: Required. If set, validate the request and preview the review, but do not post it.
+        :param pulumi.Input[bool] validate_only: Required. If set, validate the request and preview the review, but do not post it.
         :param pulumi.Input[str] channel: Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User labels attached to the triggers that can be used to group resources.
         :param pulumi.Input[str] name: The resource name of the trigger. Must be unique within the location of the project and must be in `projects/{project}/locations/{location}/triggers/{trigger}` format.
@@ -96,14 +96,14 @@ class TriggerArgs:
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Input[str]:
+    def validate_only(self) -> pulumi.Input[bool]:
         """
         Required. If set, validate the request and preview the review, but do not post it.
         """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
-    def validate_only(self, value: pulumi.Input[str]):
+    def validate_only(self, value: pulumi.Input[bool]):
         pulumi.set(self, "validate_only", value)
 
     @property
@@ -200,7 +200,7 @@ class Trigger(pulumi.CustomResource):
                  service_account: Optional[pulumi.Input[str]] = None,
                  transport: Optional[pulumi.Input[pulumi.InputType['TransportArgs']]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Create a new trigger in a particular project and location.
@@ -215,7 +215,7 @@ class Trigger(pulumi.CustomResource):
         :param pulumi.Input[str] service_account: Optional. The IAM service account email associated with the trigger. The service account represents the identity of the trigger. The principal who calls this API must have the `iam.serviceAccounts.actAs` permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts?hl=en#sa_common for more information. For Cloud Run destinations, this service account is used to generate identity tokens when invoking the service. See https://cloud.google.com/run/docs/triggering/pubsub-push#create-service-account for information on how to invoke authenticated Cloud Run services. To create Audit Log triggers, the service account should also have the `roles/eventarc.eventReceiver` IAM role.
         :param pulumi.Input[pulumi.InputType['TransportArgs']] transport: Optional. To deliver messages, Eventarc might use other GCP products as a transport intermediary. This field contains a reference to that transport intermediary. This information can be used for debugging purposes.
         :param pulumi.Input[str] trigger_id: Required. The user-provided ID to be assigned to the trigger.
-        :param pulumi.Input[str] validate_only: Required. If set, validate the request and preview the review, but do not post it.
+        :param pulumi.Input[bool] validate_only: Required. If set, validate the request and preview the review, but do not post it.
         """
         ...
     @overload
@@ -251,7 +251,7 @@ class Trigger(pulumi.CustomResource):
                  service_account: Optional[pulumi.Input[str]] = None,
                  transport: Optional[pulumi.Input[pulumi.InputType['TransportArgs']]] = None,
                  trigger_id: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -443,7 +443,7 @@ class Trigger(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[str]:
+    def validate_only(self) -> pulumi.Output[bool]:
         """
         Required. If set, validate the request and preview the review, but do not post it.
         """

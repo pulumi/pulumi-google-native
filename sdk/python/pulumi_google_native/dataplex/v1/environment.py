@@ -25,7 +25,7 @@ class EnvironmentArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  session_spec: Optional[pulumi.Input['GoogleCloudDataplexV1EnvironmentSessionSpecArgs']] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None):
+                 validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Environment resource.
         :param pulumi.Input[str] environment_id: Required. Environment identifier. * Must contain only lowercase letters, numbers and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the lake.
@@ -34,7 +34,7 @@ class EnvironmentArgs:
         :param pulumi.Input[str] display_name: Optional. User friendly display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the environment.
         :param pulumi.Input['GoogleCloudDataplexV1EnvironmentSessionSpecArgs'] session_spec: Optional. Configuration for sessions created for this environment.
-        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "infrastructure_spec", infrastructure_spec)
@@ -155,14 +155,14 @@ class EnvironmentArgs:
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[str]]:
+    def validate_only(self) -> Optional[pulumi.Input[bool]]:
         """
         Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[str]]):
+    def validate_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "validate_only", value)
 
 
@@ -180,7 +180,7 @@ class Environment(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  session_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1EnvironmentSessionSpecArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Create an environment resource.
@@ -194,7 +194,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1EnvironmentInfrastructureSpecArgs']] infrastructure_spec: Infrastructure specification for the Environment.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. User defined labels for the environment.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1EnvironmentSessionSpecArgs']] session_spec: Optional. Configuration for sessions created for this environment.
-        :param pulumi.Input[str] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the request, but do not perform mutations. The default is false.
         """
         ...
     @overload
@@ -230,7 +230,7 @@ class Environment(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  session_spec: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDataplexV1EnvironmentSessionSpecArgs']]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -427,7 +427,7 @@ class Environment(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[str]]:
+    def validate_only(self) -> pulumi.Output[Optional[bool]]:
         """
         Optional. Only validate the request, but do not perform mutations. The default is false.
         """

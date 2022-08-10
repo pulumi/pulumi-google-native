@@ -24,13 +24,13 @@ class StreamArgs:
                  backfill_all: Optional[pulumi.Input['BackfillAllStrategyArgs']] = None,
                  backfill_none: Optional[pulumi.Input['BackfillNoneStrategyArgs']] = None,
                  customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
-                 force: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input['StreamState']] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None):
+                 validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Stream resource.
         :param pulumi.Input['DestinationConfigArgs'] destination_config: Destination connection profile configuration.
@@ -40,11 +40,11 @@ class StreamArgs:
         :param pulumi.Input['BackfillAllStrategyArgs'] backfill_all: Automatically backfill objects included in the stream source configuration. Specific objects can be excluded.
         :param pulumi.Input['BackfillNoneStrategyArgs'] backfill_none: Do not automatically backfill any objects.
         :param pulumi.Input[str] customer_managed_encryption_key: Immutable. A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
-        :param pulumi.Input[str] force: Optional. Create the stream without validating it.
+        :param pulumi.Input[bool] force: Optional. Create the stream without validating it.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['StreamState'] state: The state of the stream.
-        :param pulumi.Input[str] validate_only: Optional. Only validate the stream, but do not create any resources. The default is false.
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the stream, but do not create any resources. The default is false.
         """
         pulumi.set(__self__, "destination_config", destination_config)
         pulumi.set(__self__, "display_name", display_name)
@@ -157,14 +157,14 @@ class StreamArgs:
 
     @property
     @pulumi.getter
-    def force(self) -> Optional[pulumi.Input[str]]:
+    def force(self) -> Optional[pulumi.Input[bool]]:
         """
         Optional. Create the stream without validating it.
         """
         return pulumi.get(self, "force")
 
     @force.setter
-    def force(self, value: Optional[pulumi.Input[str]]):
+    def force(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "force", value)
 
     @property
@@ -223,14 +223,14 @@ class StreamArgs:
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[str]]:
+    def validate_only(self) -> Optional[pulumi.Input[bool]]:
         """
         Optional. Only validate the stream, but do not create any resources. The default is false.
         """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[str]]):
+    def validate_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "validate_only", value)
 
 
@@ -244,7 +244,7 @@ class Stream(pulumi.CustomResource):
                  customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
                  destination_config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 force: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -252,7 +252,7 @@ class Stream(pulumi.CustomResource):
                  source_config: Optional[pulumi.Input[pulumi.InputType['SourceConfigArgs']]] = None,
                  state: Optional[pulumi.Input['StreamState']] = None,
                  stream_id: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Use this method to create a stream.
@@ -265,13 +265,13 @@ class Stream(pulumi.CustomResource):
         :param pulumi.Input[str] customer_managed_encryption_key: Immutable. A reference to a KMS encryption key. If provided, it will be used to encrypt the data. If left blank, data will be encrypted using an internal Stream-specific encryption key provisioned through KMS.
         :param pulumi.Input[pulumi.InputType['DestinationConfigArgs']] destination_config: Destination connection profile configuration.
         :param pulumi.Input[str] display_name: Display name.
-        :param pulumi.Input[str] force: Optional. Create the stream without validating it.
+        :param pulumi.Input[bool] force: Optional. Create the stream without validating it.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['SourceConfigArgs']] source_config: Source connection profile configuration.
         :param pulumi.Input['StreamState'] state: The state of the stream.
         :param pulumi.Input[str] stream_id: Required. The stream identifier.
-        :param pulumi.Input[str] validate_only: Optional. Only validate the stream, but do not create any resources. The default is false.
+        :param pulumi.Input[bool] validate_only: Optional. Only validate the stream, but do not create any resources. The default is false.
         """
         ...
     @overload
@@ -303,7 +303,7 @@ class Stream(pulumi.CustomResource):
                  customer_managed_encryption_key: Optional[pulumi.Input[str]] = None,
                  destination_config: Optional[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
-                 force: Optional[pulumi.Input[str]] = None,
+                 force: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -311,7 +311,7 @@ class Stream(pulumi.CustomResource):
                  source_config: Optional[pulumi.Input[pulumi.InputType['SourceConfigArgs']]] = None,
                  state: Optional[pulumi.Input['StreamState']] = None,
                  stream_id: Optional[pulumi.Input[str]] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -449,7 +449,7 @@ class Stream(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def force(self) -> pulumi.Output[Optional[str]]:
+    def force(self) -> pulumi.Output[Optional[bool]]:
         """
         Optional. Create the stream without validating it.
         """
@@ -523,7 +523,7 @@ class Stream(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[str]]:
+    def validate_only(self) -> pulumi.Output[Optional[bool]]:
         """
         Optional. Only validate the stream, but do not create any resources. The default is false.
         """

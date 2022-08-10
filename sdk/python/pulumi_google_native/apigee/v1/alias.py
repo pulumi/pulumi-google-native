@@ -24,8 +24,8 @@ class AliasArgs:
                  data: Optional[pulumi.Input[str]] = None,
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
-                 ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
-                 ignore_newline_validation: Optional[pulumi.Input[str]] = None,
+                 ignore_expiry_validation: Optional[pulumi.Input[bool]] = None,
+                 ignore_newline_validation: Optional[pulumi.Input[bool]] = None,
                  password: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Alias resource.
@@ -35,8 +35,8 @@ class AliasArgs:
         :param pulumi.Input[str] data: The HTTP request/response body as raw binary.
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] file: File to upload.
-        :param pulumi.Input[str] ignore_expiry_validation: Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
-        :param pulumi.Input[str] ignore_newline_validation: Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
+        :param pulumi.Input[bool] ignore_expiry_validation: Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
+        :param pulumi.Input[bool] ignore_newline_validation: Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
         :param pulumi.Input[str] password: DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
         """
         pulumi.set(__self__, "environment_id", environment_id)
@@ -161,26 +161,26 @@ class AliasArgs:
 
     @property
     @pulumi.getter(name="ignoreExpiryValidation")
-    def ignore_expiry_validation(self) -> Optional[pulumi.Input[str]]:
+    def ignore_expiry_validation(self) -> Optional[pulumi.Input[bool]]:
         """
         Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
         """
         return pulumi.get(self, "ignore_expiry_validation")
 
     @ignore_expiry_validation.setter
-    def ignore_expiry_validation(self, value: Optional[pulumi.Input[str]]):
+    def ignore_expiry_validation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ignore_expiry_validation", value)
 
     @property
     @pulumi.getter(name="ignoreNewlineValidation")
-    def ignore_newline_validation(self) -> Optional[pulumi.Input[str]]:
+    def ignore_newline_validation(self) -> Optional[pulumi.Input[bool]]:
         """
         Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
         """
         return pulumi.get(self, "ignore_newline_validation")
 
     @ignore_newline_validation.setter
-    def ignore_newline_validation(self, value: Optional[pulumi.Input[str]]):
+    def ignore_newline_validation(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "ignore_newline_validation", value)
 
     @property
@@ -208,8 +208,8 @@ class Alias(pulumi.CustomResource):
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
-                 ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
-                 ignore_newline_validation: Optional[pulumi.Input[str]] = None,
+                 ignore_expiry_validation: Optional[pulumi.Input[bool]] = None,
+                 ignore_newline_validation: Optional[pulumi.Input[bool]] = None,
                  keystore_id: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -226,8 +226,8 @@ class Alias(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]] extensions: Application specific response metadata. Must be set in the first response for streaming APIs.
         :param pulumi.Input[Union[pulumi.Asset, pulumi.Archive]] file: File to upload.
         :param pulumi.Input[str] format: Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
-        :param pulumi.Input[str] ignore_expiry_validation: Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
-        :param pulumi.Input[str] ignore_newline_validation: Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
+        :param pulumi.Input[bool] ignore_expiry_validation: Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
+        :param pulumi.Input[bool] ignore_newline_validation: Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
         :param pulumi.Input[str] password: DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
         """
         ...
@@ -262,8 +262,8 @@ class Alias(pulumi.CustomResource):
                  extensions: Optional[pulumi.Input[Sequence[pulumi.Input[Mapping[str, pulumi.Input[str]]]]]] = None,
                  file: Optional[pulumi.Input[Union[pulumi.Asset, pulumi.Archive]]] = None,
                  format: Optional[pulumi.Input[str]] = None,
-                 ignore_expiry_validation: Optional[pulumi.Input[str]] = None,
-                 ignore_newline_validation: Optional[pulumi.Input[str]] = None,
+                 ignore_expiry_validation: Optional[pulumi.Input[bool]] = None,
+                 ignore_newline_validation: Optional[pulumi.Input[bool]] = None,
                  keystore_id: Optional[pulumi.Input[str]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  password: Optional[pulumi.Input[str]] = None,
@@ -365,7 +365,7 @@ class Alias(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ignoreExpiryValidation")
-    def ignore_expiry_validation(self) -> pulumi.Output[Optional[str]]:
+    def ignore_expiry_validation(self) -> pulumi.Output[Optional[bool]]:
         """
         Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
         """
@@ -373,7 +373,7 @@ class Alias(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="ignoreNewlineValidation")
-    def ignore_newline_validation(self) -> pulumi.Output[Optional[str]]:
+    def ignore_newline_validation(self) -> pulumi.Output[Optional[bool]]:
         """
         Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
         """

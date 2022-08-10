@@ -139,7 +139,7 @@ class AwaitableGetDataSourceResult(GetDataSourceResult):
 
 
 def get_data_source(datasource_id: Optional[str] = None,
-                    debug_options_enable_debugging: Optional[str] = None,
+                    debug_options_enable_debugging: Optional[bool] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDataSourceResult:
     """
     Gets a datasource. **Note:** This API requires an admin account to execute.
@@ -164,7 +164,7 @@ def get_data_source(datasource_id: Optional[str] = None,
 
 @_utilities.lift_output_func(get_data_source)
 def get_data_source_output(datasource_id: Optional[pulumi.Input[str]] = None,
-                           debug_options_enable_debugging: Optional[pulumi.Input[Optional[str]]] = None,
+                           debug_options_enable_debugging: Optional[pulumi.Input[Optional[bool]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDataSourceResult]:
     """
     Gets a datasource. **Note:** This API requires an admin account to execute.

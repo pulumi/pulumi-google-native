@@ -20,13 +20,13 @@ class InstanceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['InstanceType']] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None):
+                 validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] database_id: The globally unique identifier of the database instance.
         :param pulumi.Input[str] name: The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
         :param pulumi.Input['InstanceType'] type: Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
-        :param pulumi.Input[str] validate_only: When set to true, the request will be validated but not submitted.
+        :param pulumi.Input[bool] validate_only: When set to true, the request will be validated but not submitted.
         """
         if database_id is not None:
             pulumi.set(__self__, "database_id", database_id)
@@ -97,14 +97,14 @@ class InstanceArgs:
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> Optional[pulumi.Input[str]]:
+    def validate_only(self) -> Optional[pulumi.Input[bool]]:
         """
         When set to true, the request will be validated but not submitted.
         """
         return pulumi.get(self, "validate_only")
 
     @validate_only.setter
-    def validate_only(self, value: Optional[pulumi.Input[str]]):
+    def validate_only(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "validate_only", value)
 
 
@@ -118,7 +118,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['InstanceType']] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Requests that a new DatabaseInstance be created. The state of a successfully created DatabaseInstance is ACTIVE. Only available for projects on the Blaze plan. Projects can be upgraded using the Cloud Billing API https://cloud.google.com/billing/reference/rest/v1/projects/updateBillingInfo. Note that it might take a few minutes for billing enablement state to propagate to Firebase systems.
@@ -128,7 +128,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] database_id: The globally unique identifier of the database instance.
         :param pulumi.Input[str] name: The fully qualified resource name of the database instance, in the form: `projects/{project-number}/locations/{location-id}/instances/{database-id}`.
         :param pulumi.Input['InstanceType'] type: Immutable. The database instance type. On creation only USER_DATABASE is allowed, which is also the default when omitted.
-        :param pulumi.Input[str] validate_only: When set to true, the request will be validated but not submitted.
+        :param pulumi.Input[bool] validate_only: When set to true, the request will be validated but not submitted.
         """
         ...
     @overload
@@ -159,7 +159,7 @@ class Instance(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['InstanceType']] = None,
-                 validate_only: Optional[pulumi.Input[str]] = None,
+                 validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -263,7 +263,7 @@ class Instance(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="validateOnly")
-    def validate_only(self) -> pulumi.Output[Optional[str]]:
+    def validate_only(self) -> pulumi.Output[Optional[bool]]:
         """
         When set to true, the request will be validated but not submitted.
         """

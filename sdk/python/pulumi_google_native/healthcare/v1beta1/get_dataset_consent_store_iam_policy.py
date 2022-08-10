@@ -81,7 +81,7 @@ class AwaitableGetDatasetConsentStoreIamPolicyResult(GetDatasetConsentStoreIamPo
 def get_dataset_consent_store_iam_policy(consent_store_id: Optional[str] = None,
                                          dataset_id: Optional[str] = None,
                                          location: Optional[str] = None,
-                                         options_requested_policy_version: Optional[str] = None,
+                                         options_requested_policy_version: Optional[int] = None,
                                          project: Optional[str] = None,
                                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDatasetConsentStoreIamPolicyResult:
     """
@@ -107,7 +107,7 @@ def get_dataset_consent_store_iam_policy(consent_store_id: Optional[str] = None,
 def get_dataset_consent_store_iam_policy_output(consent_store_id: Optional[pulumi.Input[str]] = None,
                                                 dataset_id: Optional[pulumi.Input[str]] = None,
                                                 location: Optional[pulumi.Input[str]] = None,
-                                                options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                                options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                                 project: Optional[pulumi.Input[Optional[str]]] = None,
                                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetConsentStoreIamPolicyResult]:
     """

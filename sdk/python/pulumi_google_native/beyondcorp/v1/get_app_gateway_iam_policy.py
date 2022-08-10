@@ -80,7 +80,7 @@ class AwaitableGetAppGatewayIamPolicyResult(GetAppGatewayIamPolicyResult):
 
 def get_app_gateway_iam_policy(app_gateway_id: Optional[str] = None,
                                location: Optional[str] = None,
-                               options_requested_policy_version: Optional[str] = None,
+                               options_requested_policy_version: Optional[int] = None,
                                project: Optional[str] = None,
                                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetAppGatewayIamPolicyResult:
     """
@@ -104,7 +104,7 @@ def get_app_gateway_iam_policy(app_gateway_id: Optional[str] = None,
 @_utilities.lift_output_func(get_app_gateway_iam_policy)
 def get_app_gateway_iam_policy_output(app_gateway_id: Optional[pulumi.Input[str]] = None,
                                       location: Optional[pulumi.Input[str]] = None,
-                                      options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+                                      options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                       project: Optional[pulumi.Input[Optional[str]]] = None,
                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppGatewayIamPolicyResult]:
     """

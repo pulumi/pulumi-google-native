@@ -66,7 +66,7 @@ class AwaitableGetSubscriptionIamPolicyResult(GetSubscriptionIamPolicyResult):
             version=self.version)
 
 
-def get_subscription_iam_policy(options_requested_policy_version: Optional[str] = None,
+def get_subscription_iam_policy(options_requested_policy_version: Optional[int] = None,
                                 project: Optional[str] = None,
                                 subscription_id: Optional[str] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetSubscriptionIamPolicyResult:
@@ -87,7 +87,7 @@ def get_subscription_iam_policy(options_requested_policy_version: Optional[str] 
 
 
 @_utilities.lift_output_func(get_subscription_iam_policy)
-def get_subscription_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[str]]] = None,
+def get_subscription_iam_policy_output(options_requested_policy_version: Optional[pulumi.Input[Optional[int]]] = None,
                                        project: Optional[pulumi.Input[Optional[str]]] = None,
                                        subscription_id: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubscriptionIamPolicyResult]:

@@ -24,7 +24,7 @@ class ProjectArgs:
                  parent: Optional[pulumi.Input['ResourceIdArgs']] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
-                 use_legacy_stack: Optional[pulumi.Input[str]] = None):
+                 use_legacy_stack: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Project resource.
         :param pulumi.Input[str] create_time: Creation time. Read-only.
@@ -34,7 +34,7 @@ class ProjectArgs:
         :param pulumi.Input['ResourceIdArgs'] parent: An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
         :param pulumi.Input[str] project_id: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         :param pulumi.Input[str] project_number: The number uniquely identifying the project. Example: `415104041262` Read-only.
-        :param pulumi.Input[str] use_legacy_stack: A now unused experiment opt-out option.
+        :param pulumi.Input[bool] use_legacy_stack: A now unused experiment opt-out option.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -139,14 +139,14 @@ class ProjectArgs:
 
     @property
     @pulumi.getter(name="useLegacyStack")
-    def use_legacy_stack(self) -> Optional[pulumi.Input[str]]:
+    def use_legacy_stack(self) -> Optional[pulumi.Input[bool]]:
         """
         A now unused experiment opt-out option.
         """
         return pulumi.get(self, "use_legacy_stack")
 
     @use_legacy_stack.setter
-    def use_legacy_stack(self, value: Optional[pulumi.Input[str]]):
+    def use_legacy_stack(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_legacy_stack", value)
 
 
@@ -162,7 +162,7 @@ class Project(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[pulumi.InputType['ResourceIdArgs']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
-                 use_legacy_stack: Optional[pulumi.Input[str]] = None,
+                 use_legacy_stack: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         Creates a Project resource. Initially, the Project resource is owned by its creator exclusively. The creator can later grant permission to others to read or update the Project. Several APIs are activated automatically for the Project, including Google Cloud Storage. The parent is identified by a specified ResourceId, which must include both an ID and a type, such as project, folder, or organization. This method does not associate the new project with a billing account. You can set or update the billing account associated with a project using the [`projects.updateBillingInfo`] (/billing/reference/rest/v1/projects/updateBillingInfo) method.
@@ -176,7 +176,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ResourceIdArgs']] parent: An optional reference to a parent Resource. Supported parent types include "organization" and "folder". Once set, the parent cannot be cleared. The `parent` can be set on creation or using the `UpdateProject` method; the end user must have the `resourcemanager.projects.create` permission on the parent. Read-write.
         :param pulumi.Input[str] project_id: The unique, user-assigned ID of the Project. It must be 6 to 30 lowercase letters, digits, or hyphens. It must start with a letter. Trailing hyphens are prohibited. Example: `tokyo-rain-123` Read-only after creation.
         :param pulumi.Input[str] project_number: The number uniquely identifying the project. Example: `415104041262` Read-only.
-        :param pulumi.Input[str] use_legacy_stack: A now unused experiment opt-out option.
+        :param pulumi.Input[bool] use_legacy_stack: A now unused experiment opt-out option.
         """
         ...
     @overload
@@ -209,7 +209,7 @@ class Project(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[pulumi.InputType['ResourceIdArgs']]] = None,
                  project_id: Optional[pulumi.Input[str]] = None,
                  project_number: Optional[pulumi.Input[str]] = None,
-                 use_legacy_stack: Optional[pulumi.Input[str]] = None,
+                 use_legacy_stack: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -317,7 +317,7 @@ class Project(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="useLegacyStack")
-    def use_legacy_stack(self) -> pulumi.Output[Optional[str]]:
+    def use_legacy_stack(self) -> pulumi.Output[Optional[bool]]:
         """
         A now unused experiment opt-out option.
         """
