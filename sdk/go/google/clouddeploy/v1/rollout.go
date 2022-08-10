@@ -61,7 +61,7 @@ type Rollout struct {
 	// Unique identifier of the `Rollout`.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewRollout registers a new resource with the given unique name, arguments, and options.
@@ -144,7 +144,7 @@ type rolloutArgs struct {
 	// The ID of Target to which this `Rollout` is deploying.
 	TargetId string `pulumi:"targetId"`
 	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Rollout resource.
@@ -170,7 +170,7 @@ type RolloutArgs struct {
 	// The ID of Target to which this `Rollout` is deploying.
 	TargetId pulumi.StringInput
 	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (RolloutArgs) ElementType() reflect.Type {
@@ -322,8 +322,8 @@ func (o RolloutOutput) Uid() pulumi.StringOutput {
 }
 
 // Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
-func (o RolloutOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Rollout) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o RolloutOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Rollout) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

@@ -23,7 +23,7 @@ func LookupKeyRingIamPolicy(ctx *pulumi.Context, args *LookupKeyRingIamPolicyArg
 type LookupKeyRingIamPolicyArgs struct {
 	KeyRingId                     string  `pulumi:"keyRingId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ func LookupKeyRingIamPolicyOutput(ctx *pulumi.Context, args LookupKeyRingIamPoli
 type LookupKeyRingIamPolicyOutputArgs struct {
 	KeyRingId                     pulumi.StringInput    `pulumi:"keyRingId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

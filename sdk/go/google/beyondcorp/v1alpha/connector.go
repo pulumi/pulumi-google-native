@@ -40,7 +40,7 @@ type Connector struct {
 	// Timestamp when the resource was last modified.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewConnector registers a new resource with the given unique name, arguments, and options.
@@ -107,7 +107,7 @@ type connectorArgs struct {
 	// Optional. Resource info of the connector.
 	ResourceInfo *ResourceInfo `pulumi:"resourceInfo"`
 	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Connector resource.
@@ -129,7 +129,7 @@ type ConnectorArgs struct {
 	// Optional. Resource info of the connector.
 	ResourceInfo ResourceInfoPtrInput
 	// Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (ConnectorArgs) ElementType() reflect.Type {
@@ -233,8 +233,8 @@ func (o ConnectorOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Optional. If set, validates request by executing a dry-run which would not alter the resource in any way.
-func (o ConnectorOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Connector) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o ConnectorOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Connector) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

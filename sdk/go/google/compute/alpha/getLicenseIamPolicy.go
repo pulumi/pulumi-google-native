@@ -21,7 +21,7 @@ func LookupLicenseIamPolicy(ctx *pulumi.Context, args *LookupLicenseIamPolicyArg
 }
 
 type LookupLicenseIamPolicyArgs struct {
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	Resource                      string  `pulumi:"resource"`
 }
@@ -53,7 +53,7 @@ func LookupLicenseIamPolicyOutput(ctx *pulumi.Context, args LookupLicenseIamPoli
 }
 
 type LookupLicenseIamPolicyOutputArgs struct {
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	Resource                      pulumi.StringInput    `pulumi:"resource"`
 }

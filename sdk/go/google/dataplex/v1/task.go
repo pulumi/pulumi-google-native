@@ -46,7 +46,7 @@ type Task struct {
 	// The time when the task was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewTask registers a new resource with the given unique name, arguments, and options.
@@ -125,7 +125,7 @@ type taskArgs struct {
 	// Spec related to how often and when a task should be triggered.
 	TriggerSpec GoogleCloudDataplexV1TaskTriggerSpec `pulumi:"triggerSpec"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Task resource.
@@ -148,7 +148,7 @@ type TaskArgs struct {
 	// Spec related to how often and when a task should be triggered.
 	TriggerSpec GoogleCloudDataplexV1TaskTriggerSpecInput
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (TaskArgs) ElementType() reflect.Type {
@@ -266,8 +266,8 @@ func (o TaskOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Optional. Only validate the request, but do not perform mutations. The default is false.
-func (o TaskOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Task) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o TaskOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Task) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

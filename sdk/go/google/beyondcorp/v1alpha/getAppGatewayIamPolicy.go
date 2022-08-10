@@ -23,7 +23,7 @@ func LookupAppGatewayIamPolicy(ctx *pulumi.Context, args *LookupAppGatewayIamPol
 type LookupAppGatewayIamPolicyArgs struct {
 	AppGatewayId                  string  `pulumi:"appGatewayId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ func LookupAppGatewayIamPolicyOutput(ctx *pulumi.Context, args LookupAppGatewayI
 type LookupAppGatewayIamPolicyOutputArgs struct {
 	AppGatewayId                  pulumi.StringInput    `pulumi:"appGatewayId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

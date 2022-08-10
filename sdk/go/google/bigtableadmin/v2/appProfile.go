@@ -22,8 +22,8 @@ type AppProfile struct {
 	// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// If true, ignore safety checks when creating the app profile.
-	IgnoreWarnings pulumi.StringPtrOutput `pulumi:"ignoreWarnings"`
-	InstanceId     pulumi.StringOutput    `pulumi:"instanceId"`
+	IgnoreWarnings pulumi.BoolPtrOutput `pulumi:"ignoreWarnings"`
+	InstanceId     pulumi.StringOutput  `pulumi:"instanceId"`
 	// Use a multi-cluster routing policy.
 	MultiClusterRoutingUseAny MultiClusterRoutingUseAnyResponseOutput `pulumi:"multiClusterRoutingUseAny"`
 	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
@@ -91,8 +91,8 @@ type appProfileArgs struct {
 	// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
 	Etag *string `pulumi:"etag"`
 	// If true, ignore safety checks when creating the app profile.
-	IgnoreWarnings *string `pulumi:"ignoreWarnings"`
-	InstanceId     string  `pulumi:"instanceId"`
+	IgnoreWarnings *bool  `pulumi:"ignoreWarnings"`
+	InstanceId     string `pulumi:"instanceId"`
 	// Use a multi-cluster routing policy.
 	MultiClusterRoutingUseAny *MultiClusterRoutingUseAny `pulumi:"multiClusterRoutingUseAny"`
 	// The unique name of the app profile. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`.
@@ -111,7 +111,7 @@ type AppProfileArgs struct {
 	// Strongly validated etag for optimistic concurrency control. Preserve the value returned from `GetAppProfile` when calling `UpdateAppProfile` to fail the request if there has been a modification in the mean time. The `update_mask` of the request need not include `etag` for this protection to apply. See [Wikipedia](https://en.wikipedia.org/wiki/HTTP_ETag) and [RFC 7232](https://tools.ietf.org/html/rfc7232#section-2.3) for more details.
 	Etag pulumi.StringPtrInput
 	// If true, ignore safety checks when creating the app profile.
-	IgnoreWarnings pulumi.StringPtrInput
+	IgnoreWarnings pulumi.BoolPtrInput
 	InstanceId     pulumi.StringInput
 	// Use a multi-cluster routing policy.
 	MultiClusterRoutingUseAny MultiClusterRoutingUseAnyPtrInput
@@ -175,8 +175,8 @@ func (o AppProfileOutput) Etag() pulumi.StringOutput {
 }
 
 // If true, ignore safety checks when creating the app profile.
-func (o AppProfileOutput) IgnoreWarnings() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *AppProfile) pulumi.StringPtrOutput { return v.IgnoreWarnings }).(pulumi.StringPtrOutput)
+func (o AppProfileOutput) IgnoreWarnings() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AppProfile) pulumi.BoolPtrOutput { return v.IgnoreWarnings }).(pulumi.BoolPtrOutput)
 }
 
 func (o AppProfileOutput) InstanceId() pulumi.StringOutput {

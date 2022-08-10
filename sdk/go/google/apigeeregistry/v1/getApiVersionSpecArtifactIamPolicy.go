@@ -24,7 +24,7 @@ type LookupApiVersionSpecArtifactIamPolicyArgs struct {
 	ApiId                         string  `pulumi:"apiId"`
 	ArtifactId                    string  `pulumi:"artifactId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	SpecId                        string  `pulumi:"specId"`
 	VersionId                     string  `pulumi:"versionId"`
@@ -56,7 +56,7 @@ type LookupApiVersionSpecArtifactIamPolicyOutputArgs struct {
 	ApiId                         pulumi.StringInput    `pulumi:"apiId"`
 	ArtifactId                    pulumi.StringInput    `pulumi:"artifactId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	SpecId                        pulumi.StringInput    `pulumi:"specId"`
 	VersionId                     pulumi.StringInput    `pulumi:"versionId"`

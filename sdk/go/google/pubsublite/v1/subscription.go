@@ -22,7 +22,7 @@ type Subscription struct {
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
-	SkipBacklog pulumi.StringPtrOutput `pulumi:"skipBacklog"`
+	SkipBacklog pulumi.BoolPtrOutput `pulumi:"skipBacklog"`
 	// Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
 	SubscriptionId pulumi.StringOutput `pulumi:"subscriptionId"`
 	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
@@ -84,7 +84,7 @@ type subscriptionArgs struct {
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
-	SkipBacklog *string `pulumi:"skipBacklog"`
+	SkipBacklog *bool `pulumi:"skipBacklog"`
 	// Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
 	SubscriptionId string `pulumi:"subscriptionId"`
 	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
@@ -100,7 +100,7 @@ type SubscriptionArgs struct {
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
-	SkipBacklog pulumi.StringPtrInput
+	SkipBacklog pulumi.BoolPtrInput
 	// Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.
 	SubscriptionId pulumi.StringInput
 	// The name of the topic this subscription is attached to. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id}
@@ -163,8 +163,8 @@ func (o SubscriptionOutput) Project() pulumi.StringOutput {
 }
 
 // If true, the newly created subscription will only receive messages published after the subscription was created. Otherwise, the entire message backlog will be received on the subscription. Defaults to false.
-func (o SubscriptionOutput) SkipBacklog() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Subscription) pulumi.StringPtrOutput { return v.SkipBacklog }).(pulumi.StringPtrOutput)
+func (o SubscriptionOutput) SkipBacklog() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Subscription) pulumi.BoolPtrOutput { return v.SkipBacklog }).(pulumi.BoolPtrOutput)
 }
 
 // Required. The ID to use for the subscription, which will become the final component of the subscription's name. This value is structured like: `my-sub-name`.

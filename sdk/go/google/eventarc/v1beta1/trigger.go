@@ -38,7 +38,7 @@ type Trigger struct {
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Required. If set, validate the request and preview the review, but do not actually post it.
-	ValidateOnly pulumi.StringOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolOutput `pulumi:"validateOnly"`
 }
 
 // NewTrigger registers a new resource with the given unique name, arguments, and options.
@@ -114,7 +114,7 @@ type triggerArgs struct {
 	// Required. The user-provided ID to be assigned to the trigger.
 	TriggerId string `pulumi:"triggerId"`
 	// Required. If set, validate the request and preview the review, but do not actually post it.
-	ValidateOnly string `pulumi:"validateOnly"`
+	ValidateOnly bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Trigger resource.
@@ -134,7 +134,7 @@ type TriggerArgs struct {
 	// Required. The user-provided ID to be assigned to the trigger.
 	TriggerId pulumi.StringInput
 	// Required. If set, validate the request and preview the review, but do not actually post it.
-	ValidateOnly pulumi.StringInput
+	ValidateOnly pulumi.BoolInput
 }
 
 func (TriggerArgs) ElementType() reflect.Type {
@@ -233,8 +233,8 @@ func (o TriggerOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Required. If set, validate the request and preview the review, but do not actually post it.
-func (o TriggerOutput) ValidateOnly() pulumi.StringOutput {
-	return o.ApplyT(func(v *Trigger) pulumi.StringOutput { return v.ValidateOnly }).(pulumi.StringOutput)
+func (o TriggerOutput) ValidateOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Trigger) pulumi.BoolOutput { return v.ValidateOnly }).(pulumi.BoolOutput)
 }
 
 func init() {

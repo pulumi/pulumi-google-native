@@ -35,7 +35,7 @@ type Dashboard struct {
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
 	RowLayout RowLayoutResponseOutput `pulumi:"rowLayout"`
 	// If set, validate the request and preview the review, but do not actually save it.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewDashboard registers a new resource with the given unique name, arguments, and options.
@@ -104,7 +104,7 @@ type dashboardArgs struct {
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
 	RowLayout *RowLayout `pulumi:"rowLayout"`
 	// If set, validate the request and preview the review, but do not actually save it.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Dashboard resource.
@@ -129,7 +129,7 @@ type DashboardArgs struct {
 	// The content is divided into equally spaced rows and the widgets are arranged horizontally.
 	RowLayout RowLayoutPtrInput
 	// If set, validate the request and preview the review, but do not actually save it.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (DashboardArgs) ElementType() reflect.Type {
@@ -219,8 +219,8 @@ func (o DashboardOutput) RowLayout() RowLayoutResponseOutput {
 }
 
 // If set, validate the request and preview the review, but do not actually save it.
-func (o DashboardOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Dashboard) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o DashboardOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Dashboard) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

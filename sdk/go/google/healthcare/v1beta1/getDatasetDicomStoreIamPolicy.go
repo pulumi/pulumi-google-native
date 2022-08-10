@@ -24,7 +24,7 @@ type LookupDatasetDicomStoreIamPolicyArgs struct {
 	DatasetId                     string  `pulumi:"datasetId"`
 	DicomStoreId                  string  `pulumi:"dicomStoreId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -56,7 +56,7 @@ type LookupDatasetDicomStoreIamPolicyOutputArgs struct {
 	DatasetId                     pulumi.StringInput    `pulumi:"datasetId"`
 	DicomStoreId                  pulumi.StringInput    `pulumi:"dicomStoreId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

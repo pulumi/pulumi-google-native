@@ -29,7 +29,7 @@ type Project struct {
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber pulumi.StringOutput `pulumi:"projectNumber"`
 	// A now unused experiment opt-out option.
-	UseLegacyStack pulumi.StringPtrOutput `pulumi:"useLegacyStack"`
+	UseLegacyStack pulumi.BoolPtrOutput `pulumi:"useLegacyStack"`
 }
 
 // NewProject registers a new resource with the given unique name, arguments, and options.
@@ -86,7 +86,7 @@ type projectArgs struct {
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber *string `pulumi:"projectNumber"`
 	// A now unused experiment opt-out option.
-	UseLegacyStack *string `pulumi:"useLegacyStack"`
+	UseLegacyStack *bool `pulumi:"useLegacyStack"`
 }
 
 // The set of arguments for constructing a Project resource.
@@ -106,7 +106,7 @@ type ProjectArgs struct {
 	// The number uniquely identifying the project. Example: `415104041262` Read-only.
 	ProjectNumber pulumi.StringPtrInput
 	// A now unused experiment opt-out option.
-	UseLegacyStack pulumi.StringPtrInput
+	UseLegacyStack pulumi.BoolPtrInput
 }
 
 func (ProjectArgs) ElementType() reflect.Type {
@@ -182,8 +182,8 @@ func (o ProjectOutput) ProjectNumber() pulumi.StringOutput {
 }
 
 // A now unused experiment opt-out option.
-func (o ProjectOutput) UseLegacyStack() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Project) pulumi.StringPtrOutput { return v.UseLegacyStack }).(pulumi.StringPtrOutput)
+func (o ProjectOutput) UseLegacyStack() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Project) pulumi.BoolPtrOutput { return v.UseLegacyStack }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

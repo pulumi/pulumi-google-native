@@ -21,7 +21,7 @@ func LookupSnapshotIamPolicy(ctx *pulumi.Context, args *LookupSnapshotIamPolicyA
 }
 
 type LookupSnapshotIamPolicyArgs struct {
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	SnapshotId                    string  `pulumi:"snapshotId"`
 }
@@ -49,7 +49,7 @@ func LookupSnapshotIamPolicyOutput(ctx *pulumi.Context, args LookupSnapshotIamPo
 }
 
 type LookupSnapshotIamPolicyOutputArgs struct {
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	SnapshotId                    pulumi.StringInput    `pulumi:"snapshotId"`
 }

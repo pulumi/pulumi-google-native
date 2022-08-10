@@ -21,7 +21,7 @@ func LookupPolicyBasedRouteIamPolicy(ctx *pulumi.Context, args *LookupPolicyBase
 }
 
 type LookupPolicyBasedRouteIamPolicyArgs struct {
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	PolicyBasedRouteId            string  `pulumi:"policyBasedRouteId"`
 	Project                       *string `pulumi:"project"`
 }
@@ -51,7 +51,7 @@ func LookupPolicyBasedRouteIamPolicyOutput(ctx *pulumi.Context, args LookupPolic
 }
 
 type LookupPolicyBasedRouteIamPolicyOutputArgs struct {
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	PolicyBasedRouteId            pulumi.StringInput    `pulumi:"policyBasedRouteId"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }

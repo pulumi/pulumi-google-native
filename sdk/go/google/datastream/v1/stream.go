@@ -31,7 +31,7 @@ type Stream struct {
 	// Errors on the Stream.
 	Errors ErrorResponseArrayOutput `pulumi:"errors"`
 	// Optional. Create the stream without validating it.
-	Force pulumi.StringPtrOutput `pulumi:"force"`
+	Force pulumi.BoolPtrOutput `pulumi:"force"`
 	// Labels.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
@@ -49,7 +49,7 @@ type Stream struct {
 	// The last update time of the stream.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. Only validate the stream, but don't create any resources. The default is false.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewStream registers a new resource with the given unique name, arguments, and options.
@@ -120,7 +120,7 @@ type streamArgs struct {
 	// Display name.
 	DisplayName string `pulumi:"displayName"`
 	// Optional. Create the stream without validating it.
-	Force *string `pulumi:"force"`
+	Force *bool `pulumi:"force"`
 	// Labels.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
@@ -134,7 +134,7 @@ type streamArgs struct {
 	// Required. The stream identifier.
 	StreamId string `pulumi:"streamId"`
 	// Optional. Only validate the stream, but don't create any resources. The default is false.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Stream resource.
@@ -150,7 +150,7 @@ type StreamArgs struct {
 	// Display name.
 	DisplayName pulumi.StringInput
 	// Optional. Create the stream without validating it.
-	Force pulumi.StringPtrInput
+	Force pulumi.BoolPtrInput
 	// Labels.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
@@ -164,7 +164,7 @@ type StreamArgs struct {
 	// Required. The stream identifier.
 	StreamId pulumi.StringInput
 	// Optional. Only validate the stream, but don't create any resources. The default is false.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (StreamArgs) ElementType() reflect.Type {
@@ -240,8 +240,8 @@ func (o StreamOutput) Errors() ErrorResponseArrayOutput {
 }
 
 // Optional. Create the stream without validating it.
-func (o StreamOutput) Force() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.Force }).(pulumi.StringPtrOutput)
+func (o StreamOutput) Force() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Stream) pulumi.BoolPtrOutput { return v.Force }).(pulumi.BoolPtrOutput)
 }
 
 // Labels.
@@ -288,8 +288,8 @@ func (o StreamOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Optional. Only validate the stream, but don't create any resources. The default is false.
-func (o StreamOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Stream) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o StreamOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Stream) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

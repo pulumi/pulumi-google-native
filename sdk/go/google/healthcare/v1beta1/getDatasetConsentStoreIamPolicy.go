@@ -24,7 +24,7 @@ type LookupDatasetConsentStoreIamPolicyArgs struct {
 	ConsentStoreId                string  `pulumi:"consentStoreId"`
 	DatasetId                     string  `pulumi:"datasetId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -56,7 +56,7 @@ type LookupDatasetConsentStoreIamPolicyOutputArgs struct {
 	ConsentStoreId                pulumi.StringInput    `pulumi:"consentStoreId"`
 	DatasetId                     pulumi.StringInput    `pulumi:"datasetId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

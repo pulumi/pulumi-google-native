@@ -24,7 +24,7 @@ type LookupDatasetFhirStoreIamPolicyArgs struct {
 	DatasetId                     string  `pulumi:"datasetId"`
 	FhirStoreId                   string  `pulumi:"fhirStoreId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -56,7 +56,7 @@ type LookupDatasetFhirStoreIamPolicyOutputArgs struct {
 	DatasetId                     pulumi.StringInput    `pulumi:"datasetId"`
 	FhirStoreId                   pulumi.StringInput    `pulumi:"fhirStoreId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

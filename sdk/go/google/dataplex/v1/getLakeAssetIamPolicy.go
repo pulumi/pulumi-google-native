@@ -24,7 +24,7 @@ type LookupLakeAssetIamPolicyArgs struct {
 	AssetId                       string  `pulumi:"assetId"`
 	LakeId                        string  `pulumi:"lakeId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	Zone                          string  `pulumi:"zone"`
 }
@@ -57,7 +57,7 @@ type LookupLakeAssetIamPolicyOutputArgs struct {
 	AssetId                       pulumi.StringInput    `pulumi:"assetId"`
 	LakeId                        pulumi.StringInput    `pulumi:"lakeId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	Zone                          pulumi.StringInput    `pulumi:"zone"`
 }

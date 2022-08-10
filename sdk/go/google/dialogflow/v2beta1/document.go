@@ -24,8 +24,8 @@ type Document struct {
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload pulumi.BoolOutput `pulumi:"enableAutoReload"`
 	// Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
-	ImportGcsCustomMetadata pulumi.StringPtrOutput `pulumi:"importGcsCustomMetadata"`
-	KnowledgeBaseId         pulumi.StringOutput    `pulumi:"knowledgeBaseId"`
+	ImportGcsCustomMetadata pulumi.BoolPtrOutput `pulumi:"importGcsCustomMetadata"`
+	KnowledgeBaseId         pulumi.StringOutput  `pulumi:"knowledgeBaseId"`
 	// The knowledge type of document content.
 	KnowledgeTypes pulumi.StringArrayOutput `pulumi:"knowledgeTypes"`
 	// The time and status of the latest reload. This reload may have been triggered automatically or manually and may not have succeeded.
@@ -110,8 +110,8 @@ type documentArgs struct {
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload *bool `pulumi:"enableAutoReload"`
 	// Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
-	ImportGcsCustomMetadata *string `pulumi:"importGcsCustomMetadata"`
-	KnowledgeBaseId         string  `pulumi:"knowledgeBaseId"`
+	ImportGcsCustomMetadata *bool  `pulumi:"importGcsCustomMetadata"`
+	KnowledgeBaseId         string `pulumi:"knowledgeBaseId"`
 	// The knowledge type of document content.
 	KnowledgeTypes []DocumentKnowledgeTypesItem `pulumi:"knowledgeTypes"`
 	Location       *string                      `pulumi:"location"`
@@ -137,7 +137,7 @@ type DocumentArgs struct {
 	// Optional. If true, we try to automatically reload the document every day (at a time picked by the system). If false or unspecified, we don't try to automatically reload the document. Currently you can only enable automatic reload for documents sourced from a public url, see `source` field for the source types. Reload status can be tracked in `latest_reload_status`. If a reload fails, we will keep the document unchanged. If a reload fails with internal errors, the system will try to reload the document on the next day. If a reload fails with non-retriable errors (e.g. PERMISSION_DENIED), the system will not try to reload the document anymore. You need to manually reload the document successfully by calling `ReloadDocument` and clear the errors.
 	EnableAutoReload pulumi.BoolPtrInput
 	// Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
-	ImportGcsCustomMetadata pulumi.StringPtrInput
+	ImportGcsCustomMetadata pulumi.BoolPtrInput
 	KnowledgeBaseId         pulumi.StringInput
 	// The knowledge type of document content.
 	KnowledgeTypes DocumentKnowledgeTypesItemArrayInput
@@ -211,8 +211,8 @@ func (o DocumentOutput) EnableAutoReload() pulumi.BoolOutput {
 }
 
 // Whether to import custom metadata from Google Cloud Storage. Only valid when the document source is Google Cloud Storage URI.
-func (o DocumentOutput) ImportGcsCustomMetadata() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Document) pulumi.StringPtrOutput { return v.ImportGcsCustomMetadata }).(pulumi.StringPtrOutput)
+func (o DocumentOutput) ImportGcsCustomMetadata() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Document) pulumi.BoolPtrOutput { return v.ImportGcsCustomMetadata }).(pulumi.BoolPtrOutput)
 }
 
 func (o DocumentOutput) KnowledgeBaseId() pulumi.StringOutput {

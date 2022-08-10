@@ -21,8 +21,8 @@ func LookupFirewallPolicyIamPolicy(ctx *pulumi.Context, args *LookupFirewallPoli
 }
 
 type LookupFirewallPolicyIamPolicyArgs struct {
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
-	Resource                      string  `pulumi:"resource"`
+	OptionsRequestedPolicyVersion *int   `pulumi:"optionsRequestedPolicyVersion"`
+	Resource                      string `pulumi:"resource"`
 }
 
 type LookupFirewallPolicyIamPolicyResult struct {
@@ -52,8 +52,8 @@ func LookupFirewallPolicyIamPolicyOutput(ctx *pulumi.Context, args LookupFirewal
 }
 
 type LookupFirewallPolicyIamPolicyOutputArgs struct {
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
-	Resource                      pulumi.StringInput    `pulumi:"resource"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	Resource                      pulumi.StringInput `pulumi:"resource"`
 }
 
 func (LookupFirewallPolicyIamPolicyOutputArgs) ElementType() reflect.Type {

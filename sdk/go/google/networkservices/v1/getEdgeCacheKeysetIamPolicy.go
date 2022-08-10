@@ -23,7 +23,7 @@ func LookupEdgeCacheKeysetIamPolicy(ctx *pulumi.Context, args *LookupEdgeCacheKe
 type LookupEdgeCacheKeysetIamPolicyArgs struct {
 	EdgeCacheKeysetId             string  `pulumi:"edgeCacheKeysetId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ func LookupEdgeCacheKeysetIamPolicyOutput(ctx *pulumi.Context, args LookupEdgeCa
 type LookupEdgeCacheKeysetIamPolicyOutputArgs struct {
 	EdgeCacheKeysetId             pulumi.StringInput    `pulumi:"edgeCacheKeysetId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

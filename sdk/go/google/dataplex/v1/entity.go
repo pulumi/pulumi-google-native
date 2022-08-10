@@ -50,8 +50,8 @@ type Entity struct {
 	// The time when the entity was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
-	Zone         pulumi.StringOutput    `pulumi:"zone"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
+	Zone         pulumi.StringOutput  `pulumi:"zone"`
 }
 
 // NewEntity registers a new resource with the given unique name, arguments, and options.
@@ -150,7 +150,7 @@ type entityArgs struct {
 	// Immutable. The type of entity.
 	Type EntityType `pulumi:"type"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool   `pulumi:"validateOnly"`
 	Zone         *string `pulumi:"zone"`
 }
 
@@ -182,7 +182,7 @@ type EntityArgs struct {
 	// Immutable. The type of entity.
 	Type EntityTypeInput
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 	Zone         pulumi.StringPtrInput
 }
 
@@ -311,8 +311,8 @@ func (o EntityOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Optional. Only validate the request, but do not perform mutations. The default is false.
-func (o EntityOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Entity) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o EntityOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Entity) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func (o EntityOutput) Zone() pulumi.StringOutput {

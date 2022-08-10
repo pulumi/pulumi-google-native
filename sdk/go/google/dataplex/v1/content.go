@@ -40,7 +40,7 @@ type Content struct {
 	// The time when the content was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewContent registers a new resource with the given unique name, arguments, and options.
@@ -113,7 +113,7 @@ type contentArgs struct {
 	// Sql Script related configurations.
 	SqlScript *GoogleCloudDataplexV1ContentSqlScript `pulumi:"sqlScript"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Content resource.
@@ -134,7 +134,7 @@ type ContentArgs struct {
 	// Sql Script related configurations.
 	SqlScript GoogleCloudDataplexV1ContentSqlScriptPtrInput
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (ContentArgs) ElementType() reflect.Type {
@@ -237,8 +237,8 @@ func (o ContentOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Optional. Only validate the request, but do not perform mutations. The default is false.
-func (o ContentOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Content) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o ContentOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Content) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

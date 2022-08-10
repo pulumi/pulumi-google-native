@@ -24,7 +24,7 @@ type LookupBackupPlanBackupVolumeBackupIamPolicyArgs struct {
 	BackupId                      string  `pulumi:"backupId"`
 	BackupPlanId                  string  `pulumi:"backupPlanId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	VolumeBackupId                string  `pulumi:"volumeBackupId"`
 }
@@ -57,7 +57,7 @@ type LookupBackupPlanBackupVolumeBackupIamPolicyOutputArgs struct {
 	BackupId                      pulumi.StringInput    `pulumi:"backupId"`
 	BackupPlanId                  pulumi.StringInput    `pulumi:"backupPlanId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	VolumeBackupId                pulumi.StringInput    `pulumi:"volumeBackupId"`
 }

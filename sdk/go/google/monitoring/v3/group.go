@@ -27,7 +27,7 @@ type Group struct {
 	ParentName pulumi.StringOutput `pulumi:"parentName"`
 	Project    pulumi.StringOutput `pulumi:"project"`
 	// If true, validate this request but do not create the group.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewGroup registers a new resource with the given unique name, arguments, and options.
@@ -83,7 +83,7 @@ type groupArgs struct {
 	ParentName *string `pulumi:"parentName"`
 	Project    *string `pulumi:"project"`
 	// If true, validate this request but do not create the group.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Group resource.
@@ -98,7 +98,7 @@ type GroupArgs struct {
 	ParentName pulumi.StringPtrInput
 	Project    pulumi.StringPtrInput
 	// If true, validate this request but do not create the group.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (GroupArgs) ElementType() reflect.Type {
@@ -168,8 +168,8 @@ func (o GroupOutput) Project() pulumi.StringOutput {
 }
 
 // If true, validate this request but do not create the group.
-func (o GroupOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Group) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o GroupOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Group) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

@@ -45,7 +45,7 @@ type Lake struct {
 	// The time when the lake was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewLake registers a new resource with the given unique name, arguments, and options.
@@ -109,7 +109,7 @@ type lakeArgs struct {
 	Metastore *GoogleCloudDataplexV1LakeMetastore `pulumi:"metastore"`
 	Project   *string                             `pulumi:"project"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Lake resource.
@@ -127,7 +127,7 @@ type LakeArgs struct {
 	Metastore GoogleCloudDataplexV1LakeMetastorePtrInput
 	Project   pulumi.StringPtrInput
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (LakeArgs) ElementType() reflect.Type {
@@ -241,8 +241,8 @@ func (o LakeOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Optional. Only validate the request, but do not perform mutations. The default is false.
-func (o LakeOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Lake) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o LakeOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Lake) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

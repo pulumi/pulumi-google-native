@@ -22,7 +22,7 @@ type CapacityCommitment struct {
 	// The start of the current commitment period. It is applicable only for ACTIVE capacity commitments.
 	CommitmentStartTime pulumi.StringOutput `pulumi:"commitmentStartTime"`
 	// If true, fail the request if another project in the organization has a capacity commitment.
-	EnforceSingleAdminProjectPerOrg pulumi.StringPtrOutput `pulumi:"enforceSingleAdminProjectPerOrg"`
+	EnforceSingleAdminProjectPerOrg pulumi.BoolPtrOutput `pulumi:"enforceSingleAdminProjectPerOrg"`
 	// For FAILED commitment plan, provides the reason of failure.
 	FailureStatus StatusResponseOutput `pulumi:"failureStatus"`
 	Location      pulumi.StringOutput  `pulumi:"location"`
@@ -88,7 +88,7 @@ type capacityCommitmentArgs struct {
 	// The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
 	CapacityCommitmentId *string `pulumi:"capacityCommitmentId"`
 	// If true, fail the request if another project in the organization has a capacity commitment.
-	EnforceSingleAdminProjectPerOrg *string `pulumi:"enforceSingleAdminProjectPerOrg"`
+	EnforceSingleAdminProjectPerOrg *bool   `pulumi:"enforceSingleAdminProjectPerOrg"`
 	Location                        *string `pulumi:"location"`
 	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
 	MultiRegionAuxiliary *bool `pulumi:"multiRegionAuxiliary"`
@@ -106,7 +106,7 @@ type CapacityCommitmentArgs struct {
 	// The optional capacity commitment ID. Capacity commitment name will be generated automatically if this field is empty. This field must only contain lower case alphanumeric characters or dashes. The first and last character cannot be a dash. Max length is 64 characters. NOTE: this ID won't be kept if the capacity commitment is split or merged.
 	CapacityCommitmentId pulumi.StringPtrInput
 	// If true, fail the request if another project in the organization has a capacity commitment.
-	EnforceSingleAdminProjectPerOrg pulumi.StringPtrInput
+	EnforceSingleAdminProjectPerOrg pulumi.BoolPtrInput
 	Location                        pulumi.StringPtrInput
 	// Applicable only for commitments located within one of the BigQuery multi-regions (US or EU). If set to true, this commitment is placed in the organization's secondary region which is designated for disaster recovery purposes. If false, this commitment is placed in the organization's default region.
 	MultiRegionAuxiliary pulumi.BoolPtrInput
@@ -172,8 +172,8 @@ func (o CapacityCommitmentOutput) CommitmentStartTime() pulumi.StringOutput {
 }
 
 // If true, fail the request if another project in the organization has a capacity commitment.
-func (o CapacityCommitmentOutput) EnforceSingleAdminProjectPerOrg() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CapacityCommitment) pulumi.StringPtrOutput { return v.EnforceSingleAdminProjectPerOrg }).(pulumi.StringPtrOutput)
+func (o CapacityCommitmentOutput) EnforceSingleAdminProjectPerOrg() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CapacityCommitment) pulumi.BoolPtrOutput { return v.EnforceSingleAdminProjectPerOrg }).(pulumi.BoolPtrOutput)
 }
 
 // For FAILED commitment plan, provides the reason of failure.

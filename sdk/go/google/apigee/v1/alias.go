@@ -24,11 +24,11 @@ type Alias struct {
 	// Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
 	Format pulumi.StringOutput `pulumi:"format"`
 	// Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
-	IgnoreExpiryValidation pulumi.StringPtrOutput `pulumi:"ignoreExpiryValidation"`
+	IgnoreExpiryValidation pulumi.BoolPtrOutput `pulumi:"ignoreExpiryValidation"`
 	// Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
-	IgnoreNewlineValidation pulumi.StringPtrOutput `pulumi:"ignoreNewlineValidation"`
-	KeystoreId              pulumi.StringOutput    `pulumi:"keystoreId"`
-	OrganizationId          pulumi.StringOutput    `pulumi:"organizationId"`
+	IgnoreNewlineValidation pulumi.BoolPtrOutput `pulumi:"ignoreNewlineValidation"`
+	KeystoreId              pulumi.StringOutput  `pulumi:"keystoreId"`
+	OrganizationId          pulumi.StringOutput  `pulumi:"organizationId"`
 	// DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
 	Password pulumi.StringPtrOutput `pulumi:"password"`
 	// Type of alias.
@@ -107,11 +107,11 @@ type aliasArgs struct {
 	// Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
 	Format string `pulumi:"format"`
 	// Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
-	IgnoreExpiryValidation *string `pulumi:"ignoreExpiryValidation"`
+	IgnoreExpiryValidation *bool `pulumi:"ignoreExpiryValidation"`
 	// Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
-	IgnoreNewlineValidation *string `pulumi:"ignoreNewlineValidation"`
-	KeystoreId              string  `pulumi:"keystoreId"`
-	OrganizationId          string  `pulumi:"organizationId"`
+	IgnoreNewlineValidation *bool  `pulumi:"ignoreNewlineValidation"`
+	KeystoreId              string `pulumi:"keystoreId"`
+	OrganizationId          string `pulumi:"organizationId"`
 	// DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
 	Password *string `pulumi:"password"`
 }
@@ -132,9 +132,9 @@ type AliasArgs struct {
 	// Required. Format of the data. Valid values include: `selfsignedcert`, `keycertfile`, or `pkcs12`
 	Format pulumi.StringInput
 	// Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
-	IgnoreExpiryValidation pulumi.StringPtrInput
+	IgnoreExpiryValidation pulumi.BoolPtrInput
 	// Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
-	IgnoreNewlineValidation pulumi.StringPtrInput
+	IgnoreNewlineValidation pulumi.BoolPtrInput
 	KeystoreId              pulumi.StringInput
 	OrganizationId          pulumi.StringInput
 	// DEPRECATED: For improved security, specify the password in the request body instead of using the query parameter. To specify the password in the request body, set `Content-type: multipart/form-data` part with name `password`. Password for the private key file, if required.
@@ -198,13 +198,13 @@ func (o AliasOutput) Format() pulumi.StringOutput {
 }
 
 // Flag that specifies whether to ignore expiry validation. If set to `true`, no expiry validation will be performed.
-func (o AliasOutput) IgnoreExpiryValidation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Alias) pulumi.StringPtrOutput { return v.IgnoreExpiryValidation }).(pulumi.StringPtrOutput)
+func (o AliasOutput) IgnoreExpiryValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Alias) pulumi.BoolPtrOutput { return v.IgnoreExpiryValidation }).(pulumi.BoolPtrOutput)
 }
 
 // Flag that specifies whether to ignore newline validation. If set to `true`, no error is thrown when the file contains a certificate chain with no newline between each certificate. Defaults to `false`.
-func (o AliasOutput) IgnoreNewlineValidation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Alias) pulumi.StringPtrOutput { return v.IgnoreNewlineValidation }).(pulumi.StringPtrOutput)
+func (o AliasOutput) IgnoreNewlineValidation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Alias) pulumi.BoolPtrOutput { return v.IgnoreNewlineValidation }).(pulumi.BoolPtrOutput)
 }
 
 func (o AliasOutput) KeystoreId() pulumi.StringOutput {

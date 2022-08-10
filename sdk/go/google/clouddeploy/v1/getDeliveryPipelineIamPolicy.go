@@ -23,7 +23,7 @@ func LookupDeliveryPipelineIamPolicy(ctx *pulumi.Context, args *LookupDeliveryPi
 type LookupDeliveryPipelineIamPolicyArgs struct {
 	DeliveryPipelineId            string  `pulumi:"deliveryPipelineId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ func LookupDeliveryPipelineIamPolicyOutput(ctx *pulumi.Context, args LookupDeliv
 type LookupDeliveryPipelineIamPolicyOutputArgs struct {
 	DeliveryPipelineId            pulumi.StringInput    `pulumi:"deliveryPipelineId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

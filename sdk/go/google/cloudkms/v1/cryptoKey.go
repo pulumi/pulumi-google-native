@@ -43,7 +43,7 @@ type CryptoKey struct {
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 	RotationPeriod pulumi.StringOutput `pulumi:"rotationPeriod"`
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
-	SkipInitialVersionCreation pulumi.StringPtrOutput `pulumi:"skipInitialVersionCreation"`
+	SkipInitialVersionCreation pulumi.BoolPtrOutput `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
 	VersionTemplate CryptoKeyVersionTemplateResponseOutput `pulumi:"versionTemplate"`
 }
@@ -117,7 +117,7 @@ type cryptoKeyArgs struct {
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 	RotationPeriod *string `pulumi:"rotationPeriod"`
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
-	SkipInitialVersionCreation *string `pulumi:"skipInitialVersionCreation"`
+	SkipInitialVersionCreation *bool `pulumi:"skipInitialVersionCreation"`
 	// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
 	VersionTemplate *CryptoKeyVersionTemplate `pulumi:"versionTemplate"`
 }
@@ -144,7 +144,7 @@ type CryptoKeyArgs struct {
 	// next_rotation_time will be advanced by this period when the service automatically rotates a key. Must be at least 24 hours and at most 876,000 hours. If rotation_period is set, next_rotation_time must also be set. Keys with purpose ENCRYPT_DECRYPT support automatic rotation. For other keys, this field must be omitted.
 	RotationPeriod pulumi.StringPtrInput
 	// If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
-	SkipInitialVersionCreation pulumi.StringPtrInput
+	SkipInitialVersionCreation pulumi.BoolPtrInput
 	// A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.
 	VersionTemplate CryptoKeyVersionTemplatePtrInput
 }
@@ -254,8 +254,8 @@ func (o CryptoKeyOutput) RotationPeriod() pulumi.StringOutput {
 }
 
 // If set to true, the request will create a CryptoKey without any CryptoKeyVersions. You must manually call CreateCryptoKeyVersion or ImportCryptoKeyVersion before you can use this CryptoKey.
-func (o CryptoKeyOutput) SkipInitialVersionCreation() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *CryptoKey) pulumi.StringPtrOutput { return v.SkipInitialVersionCreation }).(pulumi.StringPtrOutput)
+func (o CryptoKeyOutput) SkipInitialVersionCreation() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CryptoKey) pulumi.BoolPtrOutput { return v.SkipInitialVersionCreation }).(pulumi.BoolPtrOutput)
 }
 
 // A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template.

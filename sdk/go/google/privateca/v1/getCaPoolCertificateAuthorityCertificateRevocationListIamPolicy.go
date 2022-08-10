@@ -25,7 +25,7 @@ type LookupCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs stru
 	CertificateAuthorityId        string  `pulumi:"certificateAuthorityId"`
 	CertificateRevocationListId   string  `pulumi:"certificateRevocationListId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -58,7 +58,7 @@ type LookupCaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutputArg
 	CertificateAuthorityId        pulumi.StringInput    `pulumi:"certificateAuthorityId"`
 	CertificateRevocationListId   pulumi.StringInput    `pulumi:"certificateRevocationListId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

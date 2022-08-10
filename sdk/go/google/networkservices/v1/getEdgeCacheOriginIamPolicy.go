@@ -23,7 +23,7 @@ func LookupEdgeCacheOriginIamPolicy(ctx *pulumi.Context, args *LookupEdgeCacheOr
 type LookupEdgeCacheOriginIamPolicyArgs struct {
 	EdgeCacheOriginId             string  `pulumi:"edgeCacheOriginId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -54,7 +54,7 @@ func LookupEdgeCacheOriginIamPolicyOutput(ctx *pulumi.Context, args LookupEdgeCa
 type LookupEdgeCacheOriginIamPolicyOutputArgs struct {
 	EdgeCacheOriginId             pulumi.StringInput    `pulumi:"edgeCacheOriginId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

@@ -21,7 +21,7 @@ func LookupBackendBucketIamPolicy(ctx *pulumi.Context, args *LookupBackendBucket
 }
 
 type LookupBackendBucketIamPolicyArgs struct {
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 	Resource                      string  `pulumi:"resource"`
 }
@@ -53,7 +53,7 @@ func LookupBackendBucketIamPolicyOutput(ctx *pulumi.Context, args LookupBackendB
 }
 
 type LookupBackendBucketIamPolicyOutputArgs struct {
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 	Resource                      pulumi.StringInput    `pulumi:"resource"`
 }

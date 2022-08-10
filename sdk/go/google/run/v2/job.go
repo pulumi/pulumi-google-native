@@ -66,7 +66,7 @@ type Job struct {
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
 }
 
 // NewJob registers a new resource with the given unique name, arguments, and options.
@@ -141,7 +141,7 @@ type jobArgs struct {
 	// The template used to create executions for this Job.
 	Template GoogleCloudRunV2ExecutionTemplate `pulumi:"template"`
 	// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Job resource.
@@ -167,7 +167,7 @@ type JobArgs struct {
 	// The template used to create executions for this Job.
 	Template GoogleCloudRunV2ExecutionTemplateInput
 	// Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 }
 
 func (JobArgs) ElementType() reflect.Type {
@@ -336,8 +336,8 @@ func (o JobOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Indicates that the request should be validated and default values populated, without persisting the request or creating any resources.
-func (o JobOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Job) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o JobOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Job) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func init() {

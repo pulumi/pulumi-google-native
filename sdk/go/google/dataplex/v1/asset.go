@@ -48,8 +48,8 @@ type Asset struct {
 	// The time when the asset was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.StringPtrOutput `pulumi:"validateOnly"`
-	Zone         pulumi.StringOutput    `pulumi:"zone"`
+	ValidateOnly pulumi.BoolPtrOutput `pulumi:"validateOnly"`
+	Zone         pulumi.StringOutput  `pulumi:"zone"`
 }
 
 // NewAsset registers a new resource with the given unique name, arguments, and options.
@@ -124,7 +124,7 @@ type assetArgs struct {
 	// Specification of the resource that is referenced by this asset.
 	ResourceSpec GoogleCloudDataplexV1AssetResourceSpec `pulumi:"resourceSpec"`
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly *string `pulumi:"validateOnly"`
+	ValidateOnly *bool   `pulumi:"validateOnly"`
 	Zone         *string `pulumi:"zone"`
 }
 
@@ -146,7 +146,7 @@ type AssetArgs struct {
 	// Specification of the resource that is referenced by this asset.
 	ResourceSpec GoogleCloudDataplexV1AssetResourceSpecInput
 	// Optional. Only validate the request, but do not perform mutations. The default is false.
-	ValidateOnly pulumi.StringPtrInput
+	ValidateOnly pulumi.BoolPtrInput
 	Zone         pulumi.StringPtrInput
 }
 
@@ -270,8 +270,8 @@ func (o AssetOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Optional. Only validate the request, but do not perform mutations. The default is false.
-func (o AssetOutput) ValidateOnly() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Asset) pulumi.StringPtrOutput { return v.ValidateOnly }).(pulumi.StringPtrOutput)
+func (o AssetOutput) ValidateOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Asset) pulumi.BoolPtrOutput { return v.ValidateOnly }).(pulumi.BoolPtrOutput)
 }
 
 func (o AssetOutput) Zone() pulumi.StringOutput {

@@ -23,7 +23,7 @@ func LookupGameServerDeploymentIamPolicy(ctx *pulumi.Context, args *LookupGameSe
 type LookupGameServerDeploymentIamPolicyArgs struct {
 	GameServerDeploymentId        string  `pulumi:"gameServerDeploymentId"`
 	Location                      string  `pulumi:"location"`
-	OptionsRequestedPolicyVersion *string `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion *int    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       *string `pulumi:"project"`
 }
 
@@ -56,7 +56,7 @@ func LookupGameServerDeploymentIamPolicyOutput(ctx *pulumi.Context, args LookupG
 type LookupGameServerDeploymentIamPolicyOutputArgs struct {
 	GameServerDeploymentId        pulumi.StringInput    `pulumi:"gameServerDeploymentId"`
 	Location                      pulumi.StringInput    `pulumi:"location"`
-	OptionsRequestedPolicyVersion pulumi.StringPtrInput `pulumi:"optionsRequestedPolicyVersion"`
+	OptionsRequestedPolicyVersion pulumi.IntPtrInput    `pulumi:"optionsRequestedPolicyVersion"`
 	Project                       pulumi.StringPtrInput `pulumi:"project"`
 }
 

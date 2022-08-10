@@ -38,7 +38,7 @@ type Channel struct {
 	// The last-modified time.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 	// Required. If set, validate the request and preview the review, but do not post it.
-	ValidateOnly pulumi.StringOutput `pulumi:"validateOnly"`
+	ValidateOnly pulumi.BoolOutput `pulumi:"validateOnly"`
 }
 
 // NewChannel registers a new resource with the given unique name, arguments, and options.
@@ -104,7 +104,7 @@ type channelArgs struct {
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
 	Provider *string `pulumi:"provider"`
 	// Required. If set, validate the request and preview the review, but do not post it.
-	ValidateOnly string `pulumi:"validateOnly"`
+	ValidateOnly bool `pulumi:"validateOnly"`
 }
 
 // The set of arguments for constructing a Channel resource.
@@ -120,7 +120,7 @@ type ChannelArgs struct {
 	// The name of the event provider (e.g. Eventarc SaaS partner) associated with the channel. This provider will be granted permissions to publish events to the channel. Format: `projects/{project}/locations/{location}/providers/{provider_id}`.
 	Provider pulumi.StringPtrInput
 	// Required. If set, validate the request and preview the review, but do not post it.
-	ValidateOnly pulumi.StringInput
+	ValidateOnly pulumi.BoolInput
 }
 
 func (ChannelArgs) ElementType() reflect.Type {
@@ -219,8 +219,8 @@ func (o ChannelOutput) UpdateTime() pulumi.StringOutput {
 }
 
 // Required. If set, validate the request and preview the review, but do not post it.
-func (o ChannelOutput) ValidateOnly() pulumi.StringOutput {
-	return o.ApplyT(func(v *Channel) pulumi.StringOutput { return v.ValidateOnly }).(pulumi.StringOutput)
+func (o ChannelOutput) ValidateOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Channel) pulumi.BoolOutput { return v.ValidateOnly }).(pulumi.BoolOutput)
 }
 
 func init() {
