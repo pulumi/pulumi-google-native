@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 - Ensure inputs in partial error checkpoints for nodepools are correctly resumable [#602](https://github.com/pulumi/pulumi-google-native/pull/602)
+- Fix operation to target resolution [#615](https://github.com/pulumi/pulumi-google-native/pull/615)
 
 ## 0.22.0 (2022-07-29)
 - Add support for apigee resources that use multipart/form-data content-type [#590](https://github.com/pulumi/pulumi-google-native/pull/590)
