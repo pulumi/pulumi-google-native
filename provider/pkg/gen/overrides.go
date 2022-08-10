@@ -156,7 +156,8 @@ var autonameExcludes = codegen.NewStringSet(
 	"google-native:dialogflow/v3beta1:Agent",
 	"google-native:monitoring/v3:NotificationChannel",
 	"google-native:monitoring/v3:AlertPolicy",
-	"google-native:monitoring/v3:UptimeCheckConfig")
+	"google-native:monitoring/v3:UptimeCheckConfig",
+	"google-native:vpcaccess/v1:Connector")
 
 // metadataOverrides is a map of values static overlays to merge into the metadata for
 // individual resource tokens. In case of conflict, the values in this mapping are preferred.
