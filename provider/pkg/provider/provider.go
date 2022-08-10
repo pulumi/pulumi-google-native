@@ -798,9 +798,13 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 					return resp, err
 				}
 
+				targetLink, hasTargetLink := getTargetLink(resp)
+				if !hasTargetLink {
+					targetLink, hasTargetLink = getSelfLink(resp)
+				}
+
 				continuePollingForRestingState := false
-				// Check if there's a target link.
-				if targetLink, has := resp["targetLink"].(string); has {
+				if hasTargetLink {
 					// Try reading resource state.
 					state, getErr := p.client.RequestWithTimeout("GET", targetLink, "", nil, 0)
 					if getErr != nil {
@@ -826,17 +830,19 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 						// A partial error could happen, so both response and error could be available.
 						return state, err
 					}
+					pollURI = targetLink
 				}
-				// At this point, we assume either a complete failure or a clean response.
 				if err != nil {
 					return resp, err
 				}
+				// At this point, we assume either a complete failure or a clean response.
 				if !continuePollingForRestingState {
 					return resp, nil
 				}
 			}
 
-			if selfLink, has := resp["selfLink"].(string); has && hasStatus {
+			selfLink, has := getSelfLink(resp)
+			if has && hasStatus {
 				pollURI = selfLink
 			} else if operation.Operations != nil && operation.Operations.OperationsBaseURL != "" {
 				tmpl, err := uritemplates.Parse(operation.Operations.OperationsBaseURL)
@@ -865,6 +871,18 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 
 		resp = op
 	}
+}
+
+// Check if there's a target link.
+func getTargetLink(resp map[string]interface{}) (targetLink string, hasTargetLink bool) {
+	targetLink, hasTargetLink = resp["targetLink"].(string)
+	return
+}
+
+// Check if there's a selfLink property
+func getSelfLink(resp map[string]interface{}) (selfLink string, hasSelfLink bool) {
+	selfLink, hasSelfLink = resp["selfLink"].(string)
+	return
 }
 
 // Read the current live state associated with a resource.
