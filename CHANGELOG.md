@@ -2,10 +2,17 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+(None)
+
+## 0.23.0 (2022-07-29)
 - Ensure inputs in partial error checkpoints for nodepools are correctly resumable [#602](https://github.com/pulumi/pulumi-google-native/pull/602)
 - Fix operation to target resolution [#615](https://github.com/pulumi/pulumi-google-native/pull/615)
 - Fix schema types for query params [#616](https://github.com/pulumi/pulumi-google-native/pull/616)
 - Disable autonaming for vpcaccess/v1:Connector [#618](https://github.com/pulumi/pulumi-google-native/pull/618)
+
+### BREAKING CHANGE
+- A number of properties were previously modeled as strings in the SDK incorrectly previously. See [here](https://github.com/pulumi/pulumi-google-native/pull/616#issuecomment-1210150665) for affected resources. [#616](https://github.com/pulumi/pulumi-google-native/pull/616)
+- Multiple breaking changes were made to the gameservices v1 and v1beta API spec by Google. See [622](https://github.com/pulumi/pulumi-google-native/pull/622) for details
 
 ## 0.22.0 (2022-07-29)
 - Add support for apigee resources that use multipart/form-data content-type [#590](https://github.com/pulumi/pulumi-google-native/pull/590)
