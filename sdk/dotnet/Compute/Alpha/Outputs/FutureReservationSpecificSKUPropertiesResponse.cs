@@ -18,6 +18,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly Outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse InstanceProperties;
         /// <summary>
+        /// The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+        /// </summary>
+        public readonly string SourceInstanceTemplate;
+        /// <summary>
         /// Total number of instances for which capacity assurance is requested at a future time period.
         /// </summary>
         public readonly string TotalCount;
@@ -26,9 +30,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         private FutureReservationSpecificSKUPropertiesResponse(
             Outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse instanceProperties,
 
+            string sourceInstanceTemplate,
+
             string totalCount)
         {
             InstanceProperties = instanceProperties;
+            SourceInstanceTemplate = sourceInstanceTemplate;
             TotalCount = totalCount;
         }
     }

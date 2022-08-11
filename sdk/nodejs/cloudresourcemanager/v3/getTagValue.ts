@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * Retrieves TagValue. If the TagValue or namespaced name does not exist, or if the user does not have permission to view it, this method will return `PERMISSION_DENIED`.
+ * Retrieves a TagValue. This method will return `PERMISSION_DENIED` if the value does not exist or the user does not have permission to view it.
  */
 export function getTagValue(args: GetTagValueArgs, opts?: pulumi.InvokeOptions): Promise<GetTagValueResult> {
     if (!opts) {
@@ -40,7 +40,7 @@ export interface GetTagValueResult {
      */
     readonly name: string;
     /**
-     * Namespaced name of the TagValue. Must be in the format `{organization_id}/{tag_key_short_name}/{short_name}`.
+     * Namespaced name of the TagValue. Now only supported in the format `{organization_id}/{tag_key_short_name}/{short_name}`. Other formats will be supported when we add non-org parented tags.
      */
     readonly namespacedName: string;
     /**

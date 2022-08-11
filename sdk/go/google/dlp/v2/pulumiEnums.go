@@ -1440,6 +1440,235 @@ func (in *googlePrivacyDlpV2CustomInfoTypeLikelihoodPtr) ToGooglePrivacyDlpV2Cus
 	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput)
 }
 
+type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem string
+
+const (
+	// Includes all files.
+	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemFileTypeUnspecified = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("FILE_TYPE_UNSPECIFIED")
+	// Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.
+	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemBinaryFile = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("BINARY_FILE")
+	// Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
+	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemTextFile = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("TEXT_FILE")
+	// Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
+	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemImage = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("IMAGE")
+	// Word files >30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm
+	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemWord = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("WORD")
+	// PDF files >30 MB will be scanned as binary files. Included file extensions: pdf
+	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPdf = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("PDF")
+	// Included file extensions: avro
+	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemAvro = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("AVRO")
+	// Included file extensions: csv
+	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemCsv = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("CSV")
+	// Included file extensions: tsv
+	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemTsv = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("TSV")
+	// Powerpoint files >30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPowerpoint = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("POWERPOINT")
+	// Excel files >30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemExcel = GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("EXCEL")
+)
+
+func (GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem)(nil)).Elem()
+}
+
+func (e GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput {
+	return pulumi.ToOutput(e).(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput)
+}
+
+func (e GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput)
+}
+
+func (e GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput {
+	return e.ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput {
+	return GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem(e).ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutputWithContext(ctx).ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutputWithContext(ctx)
+}
+
+func (e GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput {
+	return o.ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem) *GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem {
+		return &v
+	}).(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput) Elem() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem
+		return ret
+	}).(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput)
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemInput is an input type that accepts GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArgs and GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemInput` via:
+//
+//          GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArgs{...}
+type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput
+	ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutputWithContext(context.Context) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput
+}
+
+var googlePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrType = reflect.TypeOf((**GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem)(nil)).Elem()
+
+type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput
+	ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutputWithContext(context.Context) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput
+}
+
+type googlePrivacyDlpV2DeidentifyFileTypesToTransformItemPtr string
+
+func GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtr(v string) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrInput {
+	return (*googlePrivacyDlpV2DeidentifyFileTypesToTransformItemPtr)(&v)
+}
+
+func (*googlePrivacyDlpV2DeidentifyFileTypesToTransformItemPtr) ElementType() reflect.Type {
+	return googlePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrType
+}
+
+func (in *googlePrivacyDlpV2DeidentifyFileTypesToTransformItemPtr) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput {
+	return pulumi.ToOutput(in).(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput)
+}
+
+func (in *googlePrivacyDlpV2DeidentifyFileTypesToTransformItemPtr) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput)
+}
+
+// GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayInput is an input type that accepts GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArray and GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayInput` via:
+//
+//          GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArray{ GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArgs{...} }
+type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput
+	ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutputWithContext(context.Context) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput
+}
+
+type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArray []GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem
+
+func (GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArray) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput {
+	return i.ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArray) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput)
+}
+
+type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput) ToGooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem {
+		return vs[0].([]GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput)
+}
+
 // How the rule is applied, see MatchingType documentation for details.
 type GooglePrivacyDlpV2ExclusionRuleMatchingType string
 
@@ -2345,7 +2574,7 @@ const (
 	GooglePrivacyDlpV2OutputStorageConfigOutputSchemaOutputSchemaUnspecified = GooglePrivacyDlpV2OutputStorageConfigOutputSchema("OUTPUT_SCHEMA_UNSPECIFIED")
 	// Basic schema including only `info_type`, `quote`, `certainty`, and `timestamp`.
 	GooglePrivacyDlpV2OutputStorageConfigOutputSchemaBasicColumns = GooglePrivacyDlpV2OutputStorageConfigOutputSchema("BASIC_COLUMNS")
-	// Schema tailored to findings from scanning Google Cloud Storage.
+	// Schema tailored to findings from scanning Cloud Storage.
 	GooglePrivacyDlpV2OutputStorageConfigOutputSchemaGcsColumns = GooglePrivacyDlpV2OutputStorageConfigOutputSchema("GCS_COLUMNS")
 	// Schema tailored to findings from scanning Google Datastore.
 	GooglePrivacyDlpV2OutputStorageConfigOutputSchemaDatastoreColumns = GooglePrivacyDlpV2OutputStorageConfigOutputSchema("DATASTORE_COLUMNS")
@@ -3228,6 +3457,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrInput)(nil)).Elem(), GooglePrivacyDlpV2CustomInfoTypeExclusionType("EXCLUSION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CustomInfoTypeLikelihoodInput)(nil)).Elem(), GooglePrivacyDlpV2CustomInfoTypeLikelihood("LIKELIHOOD_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrInput)(nil)).Elem(), GooglePrivacyDlpV2CustomInfoTypeLikelihood("LIKELIHOOD_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemInput)(nil)).Elem(), GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("FILE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("FILE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayInput)(nil)).Elem(), GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExclusionRuleMatchingTypeInput)(nil)).Elem(), GooglePrivacyDlpV2ExclusionRuleMatchingType("MATCHING_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrInput)(nil)).Elem(), GooglePrivacyDlpV2ExclusionRuleMatchingType("MATCHING_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ExpressionsLogicalOperatorInput)(nil)).Elem(), GooglePrivacyDlpV2ExpressionsLogicalOperator("LOGICAL_OPERATOR_UNSPECIFIED"))
@@ -3266,6 +3498,9 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CustomInfoTypeLikelihoodOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExclusionRuleMatchingTypeOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ExpressionsLogicalOperatorOutput{})

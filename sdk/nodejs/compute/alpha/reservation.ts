@@ -65,6 +65,10 @@ export class Reservation extends pulumi.CustomResource {
      */
     public readonly resourcePolicies!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Status information for Reservation resource.
+     */
+    public /*out*/ readonly resourceStatus!: pulumi.Output<outputs.compute.alpha.AllocationResourceStatusResponse>;
+    /**
      * Reserved for future use.
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
@@ -117,6 +121,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["commitment"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
+            resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;
@@ -130,6 +135,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["resourcePolicies"] = undefined /*out*/;
+            resourceInputs["resourceStatus"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["selfLinkWithId"] = undefined /*out*/;

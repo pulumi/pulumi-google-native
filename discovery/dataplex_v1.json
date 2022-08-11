@@ -2764,7 +2764,7 @@
       }
     }
   },
-  "revision": "20220723",
+  "revision": "20220725",
   "rootUrl": "https://dataplex.googleapis.com/",
   "schemas": {
     "Empty": {

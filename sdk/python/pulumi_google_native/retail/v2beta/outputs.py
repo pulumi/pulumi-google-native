@@ -708,7 +708,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
         :param str available_time: The timestamp when this Product becomes available for SearchService.Search.
         :param Sequence[str] brands: The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
         :param Sequence[str] categories: Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
-        :param Sequence[str] collection_member_ids: The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise and INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+        :param Sequence[str] collection_member_ids: The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise an INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
         :param 'GoogleCloudRetailV2betaColorInfoResponse' color_info: The color of the product. Corresponding properties: Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
         :param Sequence[str] conditions: The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used". A maximum of 1 value is allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://schema.org/itemCondition).
         :param str description: Product description. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [description](https://support.google.com/merchants/answer/6324468). Schema.org property [Product.description](https://schema.org/description).
@@ -827,7 +827,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
     @pulumi.getter(name="collectionMemberIds")
     def collection_member_ids(self) -> Sequence[str]:
         """
-        The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise and INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+        The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise an INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
         """
         return pulumi.get(self, "collection_member_ids")
 
@@ -1666,6 +1666,8 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse(dict):
             suggest = "order_by"
         elif key == "restrictedValues":
             suggest = "restricted_values"
+        elif key == "returnMinMax":
+            suggest = "return_min_max"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1686,7 +1688,8 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse(dict):
                  order_by: str,
                  prefixes: Sequence[str],
                  query: str,
-                 restricted_values: Sequence[str]):
+                 restricted_values: Sequence[str],
+                 return_min_max: bool):
         """
         Specifies how a facet is computed.
         :param bool case_insensitive: True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
@@ -1697,6 +1700,7 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse(dict):
         :param Sequence[str] prefixes: Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
         :param str query: The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value will be always "1" and SearchResponse.Facet.values.count will be the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\\"IN_STOCK\\") AND shipToStore: ANY(\\"123\\")". Then the facet will count the products that are both in stock and ship to store "123".
         :param Sequence[str] restricted_values: Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
+        :param bool return_min_max: Returns the min and max value for each numerical facet intervals. Ignored for textual facets.
         """
         pulumi.set(__self__, "case_insensitive", case_insensitive)
         pulumi.set(__self__, "contains", contains)
@@ -1706,6 +1710,7 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse(dict):
         pulumi.set(__self__, "prefixes", prefixes)
         pulumi.set(__self__, "query", query)
         pulumi.set(__self__, "restricted_values", restricted_values)
+        pulumi.set(__self__, "return_min_max", return_min_max)
 
     @property
     @pulumi.getter(name="caseInsensitive")
@@ -1770,6 +1775,14 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse(dict):
         Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
         """
         return pulumi.get(self, "restricted_values")
+
+    @property
+    @pulumi.getter(name="returnMinMax")
+    def return_min_max(self) -> bool:
+        """
+        Returns the min and max value for each numerical facet intervals. Ignored for textual facets.
+        """
+        return pulumi.get(self, "return_min_max")
 
 
 @pulumi.output_type

@@ -5,41 +5,21 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./config";
-export * from "./gameServerCluster";
-export * from "./gameServerDeployment";
 export * from "./gameServerDeploymentIamPolicy";
-export * from "./getConfig";
-export * from "./getGameServerCluster";
-export * from "./getGameServerDeployment";
 export * from "./getGameServerDeploymentIamPolicy";
-export * from "./getRealm";
-export * from "./realm";
 
 // Export enums:
 export * from "../../types/enums/gameservices/v1";
 
 // Import resources to register:
-import { Config } from "./config";
-import { GameServerCluster } from "./gameServerCluster";
-import { GameServerDeployment } from "./gameServerDeployment";
 import { GameServerDeploymentIamPolicy } from "./gameServerDeploymentIamPolicy";
-import { Realm } from "./realm";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "google-native:gameservices/v1:Config":
-                return new Config(name, <any>undefined, { urn })
-            case "google-native:gameservices/v1:GameServerCluster":
-                return new GameServerCluster(name, <any>undefined, { urn })
-            case "google-native:gameservices/v1:GameServerDeployment":
-                return new GameServerDeployment(name, <any>undefined, { urn })
             case "google-native:gameservices/v1:GameServerDeploymentIamPolicy":
                 return new GameServerDeploymentIamPolicy(name, <any>undefined, { urn })
-            case "google-native:gameservices/v1:Realm":
-                return new Realm(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

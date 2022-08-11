@@ -17,15 +17,15 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
     public sealed class RemoteFunctionOptionsResponse
     {
         /// <summary>
-        /// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+        /// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. Format: ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"```
         /// </summary>
         public readonly string Connection;
         /// <summary>
-        /// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+        /// Endpoint of the user-provided remote service, e.g. ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
         /// </summary>
         public readonly string Endpoint;
         /// <summary>
-        /// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+        /// Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides the number of rows in a batch.
         /// </summary>
         public readonly string MaxBatchingRows;
         /// <summary>

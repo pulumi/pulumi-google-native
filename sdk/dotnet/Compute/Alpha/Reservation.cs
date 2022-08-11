@@ -61,6 +61,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         public Output<ImmutableDictionary<string, string>> ResourcePolicies { get; private set; } = null!;
 
         /// <summary>
+        /// Status information for Reservation resource.
+        /// </summary>
+        [Output("resourceStatus")]
+        public Output<Outputs.AllocationResourceStatusResponse> ResourceStatus { get; private set; } = null!;
+
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         [Output("satisfiesPzs")]

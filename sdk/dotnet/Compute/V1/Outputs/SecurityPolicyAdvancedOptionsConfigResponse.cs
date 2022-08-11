@@ -13,15 +13,22 @@ namespace Pulumi.GoogleNative.Compute.V1.Outputs
     [OutputType]
     public sealed class SecurityPolicyAdvancedOptionsConfigResponse
     {
+        /// <summary>
+        /// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+        /// </summary>
+        public readonly Outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse JsonCustomConfig;
         public readonly string JsonParsing;
         public readonly string LogLevel;
 
         [OutputConstructor]
         private SecurityPolicyAdvancedOptionsConfigResponse(
+            Outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse jsonCustomConfig,
+
             string jsonParsing,
 
             string logLevel)
         {
+            JsonCustomConfig = jsonCustomConfig;
             JsonParsing = jsonParsing;
             LogLevel = logLevel;
         }

@@ -55,6 +55,10 @@ export class FutureReservation extends pulumi.CustomResource {
      * Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      */
     public readonly namePrefix!: pulumi.Output<string>;
+    /**
+     * Planning state before being submitted for evaluation
+     */
+    public readonly planningStatus!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -100,6 +104,7 @@ export class FutureReservation extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["namePrefix"] = args ? args.namePrefix : undefined;
+            resourceInputs["planningStatus"] = args ? args.planningStatus : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
@@ -117,6 +122,7 @@ export class FutureReservation extends pulumi.CustomResource {
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["namePrefix"] = undefined /*out*/;
+            resourceInputs["planningStatus"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
@@ -150,6 +156,10 @@ export interface FutureReservationArgs {
      * Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
      */
     namePrefix?: pulumi.Input<string>;
+    /**
+     * Planning state before being submitted for evaluation
+     */
+    planningStatus?: pulumi.Input<enums.compute.alpha.FutureReservationPlanningStatus>;
     project?: pulumi.Input<string>;
     /**
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).

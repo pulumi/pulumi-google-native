@@ -80,7 +80,7 @@ class GetTagValueResult:
     @pulumi.getter(name="namespacedName")
     def namespaced_name(self) -> str:
         """
-        Namespaced name of the TagValue. Must be in the format `{organization_id}/{tag_key_short_name}/{short_name}`.
+        Namespaced name of the TagValue. Now only supported in the format `{organization_id}/{tag_key_short_name}/{short_name}`. Other formats will be supported when we add non-org parented tags.
         """
         return pulumi.get(self, "namespaced_name")
 
@@ -128,7 +128,7 @@ class AwaitableGetTagValueResult(GetTagValueResult):
 def get_tag_value(tag_value_id: Optional[str] = None,
                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetTagValueResult:
     """
-    Retrieves TagValue. If the TagValue or namespaced name does not exist, or if the user does not have permission to view it, this method will return `PERMISSION_DENIED`.
+    Retrieves a TagValue. This method will return `PERMISSION_DENIED` if the value does not exist or the user does not have permission to view it.
     """
     __args__ = dict()
     __args__['tagValueId'] = tag_value_id
@@ -150,6 +150,6 @@ def get_tag_value(tag_value_id: Optional[str] = None,
 def get_tag_value_output(tag_value_id: Optional[pulumi.Input[str]] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagValueResult]:
     """
-    Retrieves TagValue. If the TagValue or namespaced name does not exist, or if the user does not have permission to view it, this method will return `PERMISSION_DENIED`.
+    Retrieves a TagValue. This method will return `PERMISSION_DENIED` if the value does not exist or the user does not have permission to view it.
     """
     ...

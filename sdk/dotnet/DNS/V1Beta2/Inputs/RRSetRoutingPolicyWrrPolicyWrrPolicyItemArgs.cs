@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Inputs
     /// </summary>
     public sealed class RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+        /// </summary>
+        [Input("healthCheckedTargets")]
+        public Input<Inputs.RRSetRoutingPolicyHealthCheckTargetsArgs>? HealthCheckedTargets { get; set; }
+
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 

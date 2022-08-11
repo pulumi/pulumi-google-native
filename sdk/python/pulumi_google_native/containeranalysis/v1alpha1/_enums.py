@@ -339,6 +339,10 @@ class DiscoveredAnalysisStatus(str, Enum):
     """
     Resource is being analyzed.
     """
+    COMPLETE = "COMPLETE"
+    """
+    Analysis has completed
+    """
     FINISHED_SUCCESS = "FINISHED_SUCCESS"
     """
     Analysis has finished successfully.

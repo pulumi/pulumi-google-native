@@ -1964,6 +1964,8 @@ const (
 	TestIssueTypeDeviceOutOfMemory = TestIssueType("deviceOutOfMemory")
 	// Problems detected while collecting logcat
 	TestIssueTypeLogcatCollectionError = TestIssueType("logcatCollectionError")
+	// Robo detected a splash screen provided by app (vs. Android OS splash screen).
+	TestIssueTypeDetectedAppSplashScreen = TestIssueType("detectedAppSplashScreen")
 )
 
 func (TestIssueType) ElementType() reflect.Type {

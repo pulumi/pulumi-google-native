@@ -1810,7 +1810,7 @@ type GoogleCloudRetailV2alphaProductResponse struct {
 	Brands []string `pulumi:"brands"`
 	// Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
 	Categories []string `pulumi:"categories"`
-	// The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise and INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+	// The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise an INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
 	CollectionMemberIds []string `pulumi:"collectionMemberIds"`
 	// The color of the product. Corresponding properties: Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
 	ColorInfo GoogleCloudRetailV2alphaColorInfoResponse `pulumi:"colorInfo"`
@@ -1914,7 +1914,7 @@ func (o GoogleCloudRetailV2alphaProductResponseOutput) Categories() pulumi.Strin
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaProductResponse) []string { return v.Categories }).(pulumi.StringArrayOutput)
 }
 
-// The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise and INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
+// The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise an INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
 func (o GoogleCloudRetailV2alphaProductResponseOutput) CollectionMemberIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaProductResponse) []string { return v.CollectionMemberIds }).(pulumi.StringArrayOutput)
 }
@@ -4736,6 +4736,8 @@ type GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey struct {
 	Query *string `pulumi:"query"`
 	// Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
 	RestrictedValues []string `pulumi:"restrictedValues"`
+	// Returns the min and max value for each numerical facet intervals. Ignored for textual facets.
+	ReturnMinMax *bool `pulumi:"returnMinMax"`
 }
 
 // GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyInput is an input type that accepts GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyArgs and GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyOutput values.
@@ -4767,6 +4769,8 @@ type GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyArgs struct {
 	Query pulumi.StringPtrInput `pulumi:"query"`
 	// Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
 	RestrictedValues pulumi.StringArrayInput `pulumi:"restrictedValues"`
+	// Returns the min and max value for each numerical facet intervals. Ignored for textual facets.
+	ReturnMinMax pulumi.BoolPtrInput `pulumi:"returnMinMax"`
 }
 
 func (GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyArgs) ElementType() reflect.Type {
@@ -4889,6 +4893,11 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyOutput) Restricted
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) []string { return v.RestrictedValues }).(pulumi.StringArrayOutput)
 }
 
+// Returns the min and max value for each numerical facet intervals. Ignored for textual facets.
+func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyOutput) ReturnMinMax() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) *bool { return v.ReturnMinMax }).(pulumi.BoolPtrOutput)
+}
+
 type GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput) ElementType() reflect.Type {
@@ -4993,6 +5002,16 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput) Restric
 	}).(pulumi.StringArrayOutput)
 }
 
+// Returns the min and max value for each numerical facet intervals. Ignored for textual facets.
+func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyPtrOutput) ReturnMinMax() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKey) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReturnMinMax
+	}).(pulumi.BoolPtrOutput)
+}
+
 // Specifies how a facet is computed.
 type GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse struct {
 	// True to make facet keys case insensitive when getting faceting values with prefixes or contains; false otherwise.
@@ -5011,6 +5030,8 @@ type GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse struct {
 	Query string `pulumi:"query"`
 	// Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
 	RestrictedValues []string `pulumi:"restrictedValues"`
+	// Returns the min and max value for each numerical facet intervals. Ignored for textual facets.
+	ReturnMinMax bool `pulumi:"returnMinMax"`
 }
 
 // Specifies how a facet is computed.
@@ -5070,6 +5091,11 @@ func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponseOutput) Re
 	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse) []string {
 		return v.RestrictedValues
 	}).(pulumi.StringArrayOutput)
+}
+
+// Returns the min and max value for each numerical facet intervals. Ignored for textual facets.
+func (o GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponseOutput) ReturnMinMax() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyResponse) bool { return v.ReturnMinMax }).(pulumi.BoolOutput)
 }
 
 // A facet specification to perform faceted search.

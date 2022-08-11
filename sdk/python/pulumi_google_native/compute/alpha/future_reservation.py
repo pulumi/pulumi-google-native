@@ -20,6 +20,7 @@ class FutureReservationArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
+                 planning_status: Optional[pulumi.Input['FutureReservationPlanningStatus']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  share_settings: Optional[pulumi.Input['ShareSettingsArgs']] = None,
@@ -31,6 +32,7 @@ class FutureReservationArgs:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the future reservation.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] name_prefix: Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
+        :param pulumi.Input['FutureReservationPlanningStatus'] planning_status: Planning state before being submitted for evaluation
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['ShareSettingsArgs'] share_settings: List of Projects/Folders to share with.
         :param pulumi.Input['FutureReservationSpecificSKUPropertiesArgs'] specific_sku_properties: Future Reservation configuration to indicate instance properties and total count.
@@ -42,6 +44,8 @@ class FutureReservationArgs:
             pulumi.set(__self__, "name", name)
         if name_prefix is not None:
             pulumi.set(__self__, "name_prefix", name_prefix)
+        if planning_status is not None:
+            pulumi.set(__self__, "planning_status", planning_status)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
@@ -90,6 +94,18 @@ class FutureReservationArgs:
     @name_prefix.setter
     def name_prefix(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name_prefix", value)
+
+    @property
+    @pulumi.getter(name="planningStatus")
+    def planning_status(self) -> Optional[pulumi.Input['FutureReservationPlanningStatus']]:
+        """
+        Planning state before being submitted for evaluation
+        """
+        return pulumi.get(self, "planning_status")
+
+    @planning_status.setter
+    def planning_status(self, value: Optional[pulumi.Input['FutureReservationPlanningStatus']]):
+        pulumi.set(self, "planning_status", value)
 
     @property
     @pulumi.getter
@@ -166,6 +182,7 @@ class FutureReservation(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
+                 planning_status: Optional[pulumi.Input['FutureReservationPlanningStatus']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
@@ -181,6 +198,7 @@ class FutureReservation(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the future reservation.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] name_prefix: Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
+        :param pulumi.Input['FutureReservationPlanningStatus'] planning_status: Planning state before being submitted for evaluation
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['ShareSettingsArgs']] share_settings: List of Projects/Folders to share with.
         :param pulumi.Input[pulumi.InputType['FutureReservationSpecificSKUPropertiesArgs']] specific_sku_properties: Future Reservation configuration to indicate instance properties and total count.
@@ -213,6 +231,7 @@ class FutureReservation(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  name_prefix: Optional[pulumi.Input[str]] = None,
+                 planning_status: Optional[pulumi.Input['FutureReservationPlanningStatus']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
@@ -231,6 +250,7 @@ class FutureReservation(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["name"] = name
             __props__.__dict__["name_prefix"] = name_prefix
+            __props__.__dict__["planning_status"] = planning_status
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["share_settings"] = share_settings
@@ -271,6 +291,7 @@ class FutureReservation(pulumi.CustomResource):
         __props__.__dict__["kind"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["name_prefix"] = None
+        __props__.__dict__["planning_status"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
@@ -321,6 +342,14 @@ class FutureReservation(pulumi.CustomResource):
         Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         """
         return pulumi.get(self, "name_prefix")
+
+    @property
+    @pulumi.getter(name="planningStatus")
+    def planning_status(self) -> pulumi.Output[str]:
+        """
+        Planning state before being submitted for evaluation
+        """
+        return pulumi.get(self, "planning_status")
 
     @property
     @pulumi.getter

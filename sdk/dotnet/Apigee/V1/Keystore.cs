@@ -87,7 +87,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Input<string> EnvironmentId { get; set; } = null!;
 
         /// <summary>
-        /// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+        /// Resource ID for this keystore. Values must match the regular expression `[\w[:space:].-]{1,255}`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

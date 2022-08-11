@@ -3660,6 +3660,8 @@ func (o RuntimeShieldedInstanceConfigResponseOutput) EnableVtpm() pulumi.BoolOut
 type RuntimeSoftwareConfig struct {
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 	CustomGpuDriverPath *string `pulumi:"customGpuDriverPath"`
+	// Bool indicating whether JupyterLab terminal will be available or not. Default: False
+	DisableTerminal *bool `pulumi:"disableTerminal"`
 	// Verifies core internal services are running. Default: True
 	EnableHealthMonitoring *bool `pulumi:"enableHealthMonitoring"`
 	// Runtime will automatically shutdown after idle_shutdown_time. Default: True
@@ -3693,6 +3695,8 @@ type RuntimeSoftwareConfigInput interface {
 type RuntimeSoftwareConfigArgs struct {
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 	CustomGpuDriverPath pulumi.StringPtrInput `pulumi:"customGpuDriverPath"`
+	// Bool indicating whether JupyterLab terminal will be available or not. Default: False
+	DisableTerminal pulumi.BoolPtrInput `pulumi:"disableTerminal"`
 	// Verifies core internal services are running. Default: True
 	EnableHealthMonitoring pulumi.BoolPtrInput `pulumi:"enableHealthMonitoring"`
 	// Runtime will automatically shutdown after idle_shutdown_time. Default: True
@@ -3794,6 +3798,11 @@ func (o RuntimeSoftwareConfigOutput) CustomGpuDriverPath() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *string { return v.CustomGpuDriverPath }).(pulumi.StringPtrOutput)
 }
 
+// Bool indicating whether JupyterLab terminal will be available or not. Default: False
+func (o RuntimeSoftwareConfigOutput) DisableTerminal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfig) *bool { return v.DisableTerminal }).(pulumi.BoolPtrOutput)
+}
+
 // Verifies core internal services are running. Default: True
 func (o RuntimeSoftwareConfigOutput) EnableHealthMonitoring() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfig) *bool { return v.EnableHealthMonitoring }).(pulumi.BoolPtrOutput)
@@ -3868,6 +3877,16 @@ func (o RuntimeSoftwareConfigPtrOutput) CustomGpuDriverPath() pulumi.StringPtrOu
 		}
 		return v.CustomGpuDriverPath
 	}).(pulumi.StringPtrOutput)
+}
+
+// Bool indicating whether JupyterLab terminal will be available or not. Default: False
+func (o RuntimeSoftwareConfigPtrOutput) DisableTerminal() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RuntimeSoftwareConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableTerminal
+	}).(pulumi.BoolPtrOutput)
 }
 
 // Verifies core internal services are running. Default: True
@@ -3954,6 +3973,8 @@ func (o RuntimeSoftwareConfigPtrOutput) PostStartupScriptBehavior() RuntimeSoftw
 type RuntimeSoftwareConfigResponse struct {
 	// Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 	CustomGpuDriverPath string `pulumi:"customGpuDriverPath"`
+	// Bool indicating whether JupyterLab terminal will be available or not. Default: False
+	DisableTerminal bool `pulumi:"disableTerminal"`
 	// Verifies core internal services are running. Default: True
 	EnableHealthMonitoring bool `pulumi:"enableHealthMonitoring"`
 	// Runtime will automatically shutdown after idle_shutdown_time. Default: True
@@ -3992,6 +4013,11 @@ func (o RuntimeSoftwareConfigResponseOutput) ToRuntimeSoftwareConfigResponseOutp
 // Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
 func (o RuntimeSoftwareConfigResponseOutput) CustomGpuDriverPath() pulumi.StringOutput {
 	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) string { return v.CustomGpuDriverPath }).(pulumi.StringOutput)
+}
+
+// Bool indicating whether JupyterLab terminal will be available or not. Default: False
+func (o RuntimeSoftwareConfigResponseOutput) DisableTerminal() pulumi.BoolOutput {
+	return o.ApplyT(func(v RuntimeSoftwareConfigResponse) bool { return v.DisableTerminal }).(pulumi.BoolOutput)
 }
 
 // Verifies core internal services are running. Default: True
@@ -5091,7 +5117,7 @@ type VirtualMachineConfig struct {
 	MachineType string `pulumi:"machineType"`
 	// Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 	Metadata map[string]string `pulumi:"metadata"`
-	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
+	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default` * `projects/[project_id]/global/networks/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
 	Network *string `pulumi:"network"`
 	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 	NicType *VirtualMachineConfigNicType `pulumi:"nicType"`
@@ -5136,7 +5162,7 @@ type VirtualMachineConfigArgs struct {
 	MachineType pulumi.StringInput `pulumi:"machineType"`
 	// Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 	Metadata pulumi.StringMapInput `pulumi:"metadata"`
-	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
+	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default` * `projects/[project_id]/global/networks/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 	NicType VirtualMachineConfigNicTypePtrInput `pulumi:"nicType"`
@@ -5273,7 +5299,7 @@ func (o VirtualMachineConfigOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VirtualMachineConfig) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
+// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default` * `projects/[project_id]/global/networks/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
 func (o VirtualMachineConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VirtualMachineConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
@@ -5417,7 +5443,7 @@ func (o VirtualMachineConfigPtrOutput) Metadata() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
+// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default` * `projects/[project_id]/global/networks/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
 func (o VirtualMachineConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VirtualMachineConfig) *string {
 		if v == nil {
@@ -5499,7 +5525,7 @@ type VirtualMachineConfigResponse struct {
 	MachineType string `pulumi:"machineType"`
 	// Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
 	Metadata map[string]string `pulumi:"metadata"`
-	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
+	// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default` * `projects/[project_id]/global/networks/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
 	Network string `pulumi:"network"`
 	// Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
 	NicType string `pulumi:"nicType"`
@@ -5580,7 +5606,7 @@ func (o VirtualMachineConfigResponseOutput) Metadata() pulumi.StringMapOutput {
 	return o.ApplyT(func(v VirtualMachineConfigResponse) map[string]string { return v.Metadata }).(pulumi.StringMapOutput)
 }
 
-// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
+// Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default` * `projects/[project_id]/global/networks/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
 func (o VirtualMachineConfigResponseOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v VirtualMachineConfigResponse) string { return v.Network }).(pulumi.StringOutput)
 }

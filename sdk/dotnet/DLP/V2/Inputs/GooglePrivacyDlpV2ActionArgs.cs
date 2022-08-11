@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     public sealed class GooglePrivacyDlpV2ActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+        /// </summary>
+        [Input("deidentify")]
+        public Input<Inputs.GooglePrivacyDlpV2DeidentifyArgs>? Deidentify { get; set; }
+
+        /// <summary>
         /// Enable email notification for project owners and editors on job's completion/failure.
         /// </summary>
         [Input("jobNotificationEmails")]

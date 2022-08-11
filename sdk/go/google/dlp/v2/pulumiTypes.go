@@ -12,6 +12,8 @@ import (
 
 // A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
 type GooglePrivacyDlpV2Action struct {
+	// Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+	Deidentify *GooglePrivacyDlpV2Deidentify `pulumi:"deidentify"`
 	// Enable email notification for project owners and editors on job's completion/failure.
 	JobNotificationEmails *GooglePrivacyDlpV2JobNotificationEmails `pulumi:"jobNotificationEmails"`
 	// Publish a notification to a pubsub topic.
@@ -39,6 +41,8 @@ type GooglePrivacyDlpV2ActionInput interface {
 
 // A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
 type GooglePrivacyDlpV2ActionArgs struct {
+	// Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+	Deidentify GooglePrivacyDlpV2DeidentifyPtrInput `pulumi:"deidentify"`
 	// Enable email notification for project owners and editors on job's completion/failure.
 	JobNotificationEmails GooglePrivacyDlpV2JobNotificationEmailsPtrInput `pulumi:"jobNotificationEmails"`
 	// Publish a notification to a pubsub topic.
@@ -105,6 +109,11 @@ func (o GooglePrivacyDlpV2ActionOutput) ToGooglePrivacyDlpV2ActionOutputWithCont
 	return o
 }
 
+// Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+func (o GooglePrivacyDlpV2ActionOutput) Deidentify() GooglePrivacyDlpV2DeidentifyPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2Action) *GooglePrivacyDlpV2Deidentify { return v.Deidentify }).(GooglePrivacyDlpV2DeidentifyPtrOutput)
+}
+
 // Enable email notification for project owners and editors on job's completion/failure.
 func (o GooglePrivacyDlpV2ActionOutput) JobNotificationEmails() GooglePrivacyDlpV2JobNotificationEmailsPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2Action) *GooglePrivacyDlpV2JobNotificationEmails {
@@ -165,6 +174,8 @@ func (o GooglePrivacyDlpV2ActionArrayOutput) Index(i pulumi.IntInput) GooglePriv
 
 // A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
 type GooglePrivacyDlpV2ActionResponse struct {
+	// Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+	Deidentify GooglePrivacyDlpV2DeidentifyResponse `pulumi:"deidentify"`
 	// Enable email notification for project owners and editors on job's completion/failure.
 	JobNotificationEmails GooglePrivacyDlpV2JobNotificationEmailsResponse `pulumi:"jobNotificationEmails"`
 	// Publish a notification to a pubsub topic.
@@ -192,6 +203,11 @@ func (o GooglePrivacyDlpV2ActionResponseOutput) ToGooglePrivacyDlpV2ActionRespon
 
 func (o GooglePrivacyDlpV2ActionResponseOutput) ToGooglePrivacyDlpV2ActionResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ActionResponseOutput {
 	return o
+}
+
+// Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+func (o GooglePrivacyDlpV2ActionResponseOutput) Deidentify() GooglePrivacyDlpV2DeidentifyResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ActionResponse) GooglePrivacyDlpV2DeidentifyResponse { return v.Deidentify }).(GooglePrivacyDlpV2DeidentifyResponseOutput)
 }
 
 // Enable email notification for project owners and editors on job's completion/failure.
@@ -2472,7 +2488,7 @@ func (o GooglePrivacyDlpV2CloudStorageFileSetResponseOutput) Url() pulumi.String
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageFileSetResponse) string { return v.Url }).(pulumi.StringOutput)
 }
 
-// Options defining a file or a set of files within a Google Cloud Storage bucket.
+// Options defining a file or a set of files within a Cloud Storage bucket.
 type GooglePrivacyDlpV2CloudStorageOptions struct {
 	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
 	BytesLimitPerFile *string `pulumi:"bytesLimitPerFile"`
@@ -2498,7 +2514,7 @@ type GooglePrivacyDlpV2CloudStorageOptionsInput interface {
 	ToGooglePrivacyDlpV2CloudStorageOptionsOutputWithContext(context.Context) GooglePrivacyDlpV2CloudStorageOptionsOutput
 }
 
-// Options defining a file or a set of files within a Google Cloud Storage bucket.
+// Options defining a file or a set of files within a Cloud Storage bucket.
 type GooglePrivacyDlpV2CloudStorageOptionsArgs struct {
 	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
 	BytesLimitPerFile pulumi.StringPtrInput `pulumi:"bytesLimitPerFile"`
@@ -2566,7 +2582,7 @@ func (i *googlePrivacyDlpV2CloudStorageOptionsPtrType) ToGooglePrivacyDlpV2Cloud
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2CloudStorageOptionsPtrOutput)
 }
 
-// Options defining a file or a set of files within a Google Cloud Storage bucket.
+// Options defining a file or a set of files within a Cloud Storage bucket.
 type GooglePrivacyDlpV2CloudStorageOptionsOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CloudStorageOptionsOutput) ElementType() reflect.Type {
@@ -2707,7 +2723,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsPtrOutput) SampleMethod() GooglePri
 	}).(GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput)
 }
 
-// Options defining a file or a set of files within a Google Cloud Storage bucket.
+// Options defining a file or a set of files within a Cloud Storage bucket.
 type GooglePrivacyDlpV2CloudStorageOptionsResponse struct {
 	// Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
 	BytesLimitPerFile string `pulumi:"bytesLimitPerFile"`
@@ -2722,7 +2738,7 @@ type GooglePrivacyDlpV2CloudStorageOptionsResponse struct {
 	SampleMethod      string `pulumi:"sampleMethod"`
 }
 
-// Options defining a file or a set of files within a Google Cloud Storage bucket.
+// Options defining a file or a set of files within a Cloud Storage bucket.
 type GooglePrivacyDlpV2CloudStorageOptionsResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2CloudStorageOptionsResponseOutput) ElementType() reflect.Type {
@@ -3500,7 +3516,7 @@ func (o GooglePrivacyDlpV2ConditionsResponseOutput) Conditions() GooglePrivacyDl
 
 // Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC https://tools.ietf.org/html/rfc5297.
 type GooglePrivacyDlpV2CryptoDeterministicConfig struct {
-	// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
+	// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s.
 	Context *GooglePrivacyDlpV2FieldId `pulumi:"context"`
 	// The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
 	CryptoKey *GooglePrivacyDlpV2CryptoKey `pulumi:"cryptoKey"`
@@ -3521,7 +3537,7 @@ type GooglePrivacyDlpV2CryptoDeterministicConfigInput interface {
 
 // Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC https://tools.ietf.org/html/rfc5297.
 type GooglePrivacyDlpV2CryptoDeterministicConfigArgs struct {
-	// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
+	// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s.
 	Context GooglePrivacyDlpV2FieldIdPtrInput `pulumi:"context"`
 	// The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
 	CryptoKey GooglePrivacyDlpV2CryptoKeyPtrInput `pulumi:"cryptoKey"`
@@ -3607,7 +3623,7 @@ func (o GooglePrivacyDlpV2CryptoDeterministicConfigOutput) ToGooglePrivacyDlpV2C
 	}).(GooglePrivacyDlpV2CryptoDeterministicConfigPtrOutput)
 }
 
-// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
+// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s.
 func (o GooglePrivacyDlpV2CryptoDeterministicConfigOutput) Context() GooglePrivacyDlpV2FieldIdPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoDeterministicConfig) *GooglePrivacyDlpV2FieldId { return v.Context }).(GooglePrivacyDlpV2FieldIdPtrOutput)
 }
@@ -3648,7 +3664,7 @@ func (o GooglePrivacyDlpV2CryptoDeterministicConfigPtrOutput) Elem() GooglePriva
 	}).(GooglePrivacyDlpV2CryptoDeterministicConfigOutput)
 }
 
-// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
+// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s.
 func (o GooglePrivacyDlpV2CryptoDeterministicConfigPtrOutput) Context() GooglePrivacyDlpV2FieldIdPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CryptoDeterministicConfig) *GooglePrivacyDlpV2FieldId {
 		if v == nil {
@@ -3680,7 +3696,7 @@ func (o GooglePrivacyDlpV2CryptoDeterministicConfigPtrOutput) SurrogateInfoType(
 
 // Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC https://tools.ietf.org/html/rfc5297.
 type GooglePrivacyDlpV2CryptoDeterministicConfigResponse struct {
-	// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
+	// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s.
 	Context GooglePrivacyDlpV2FieldIdResponse `pulumi:"context"`
 	// The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
 	CryptoKey GooglePrivacyDlpV2CryptoKeyResponse `pulumi:"cryptoKey"`
@@ -3703,7 +3719,7 @@ func (o GooglePrivacyDlpV2CryptoDeterministicConfigResponseOutput) ToGooglePriva
 	return o
 }
 
-// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
+// A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s.
 func (o GooglePrivacyDlpV2CryptoDeterministicConfigResponseOutput) Context() GooglePrivacyDlpV2FieldIdResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoDeterministicConfigResponse) GooglePrivacyDlpV2FieldIdResponse {
 		return v.Context
@@ -4120,7 +4136,7 @@ func (o GooglePrivacyDlpV2CryptoKeyResponseOutput) Unwrapped() GooglePrivacyDlpV
 type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig struct {
 	// Common alphabets.
 	CommonAlphabet *GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet `pulumi:"commonAlphabet"`
-	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
+	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
 	Context *GooglePrivacyDlpV2FieldId `pulumi:"context"`
 	// The key used by the encryption algorithm.
 	CryptoKey GooglePrivacyDlpV2CryptoKey `pulumi:"cryptoKey"`
@@ -4147,7 +4163,7 @@ type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigInput interface {
 type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs struct {
 	// Common alphabets.
 	CommonAlphabet GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrInput `pulumi:"commonAlphabet"`
-	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
+	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
 	Context GooglePrivacyDlpV2FieldIdPtrInput `pulumi:"context"`
 	// The key used by the encryption algorithm.
 	CryptoKey GooglePrivacyDlpV2CryptoKeyInput `pulumi:"cryptoKey"`
@@ -4244,7 +4260,7 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput) CommonAlphabet() Goog
 	}).(GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput)
 }
 
-// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
+// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput) Context() GooglePrivacyDlpV2FieldIdPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig) *GooglePrivacyDlpV2FieldId { return v.Context }).(GooglePrivacyDlpV2FieldIdPtrOutput)
 }
@@ -4305,7 +4321,7 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutput) CommonAlphabet() G
 	}).(GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput)
 }
 
-// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
+// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutput) Context() GooglePrivacyDlpV2FieldIdPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig) *GooglePrivacyDlpV2FieldId {
 		if v == nil {
@@ -4359,7 +4375,7 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutput) SurrogateInfoType(
 type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse struct {
 	// Common alphabets.
 	CommonAlphabet string `pulumi:"commonAlphabet"`
-	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
+	// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
 	Context GooglePrivacyDlpV2FieldIdResponse `pulumi:"context"`
 	// The key used by the encryption algorithm.
 	CryptoKey GooglePrivacyDlpV2CryptoKeyResponse `pulumi:"cryptoKey"`
@@ -4391,7 +4407,7 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput) CommonAlphabe
 	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse) string { return v.CommonAlphabet }).(pulumi.StringOutput)
 }
 
-// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
+// The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
 func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponseOutput) Context() GooglePrivacyDlpV2FieldIdResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse) GooglePrivacyDlpV2FieldIdResponse {
 		return v.Context
@@ -5134,6 +5150,209 @@ func (o GooglePrivacyDlpV2DateShiftConfigResponseOutput) UpperBoundDays() pulumi
 	return o.ApplyT(func(v GooglePrivacyDlpV2DateShiftConfigResponse) int { return v.UpperBoundDays }).(pulumi.IntOutput)
 }
 
+// Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+type GooglePrivacyDlpV2Deidentify struct {
+	// User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+	CloudStorageOutput string `pulumi:"cloudStorageOutput"`
+	// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
+	FileTypesToTransform []GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem `pulumi:"fileTypesToTransform"`
+	// User specified deidentify templates and configs for structured, unstructured, and image files.
+	TransformationConfig *GooglePrivacyDlpV2TransformationConfig `pulumi:"transformationConfig"`
+	// Config for storing transformation details. This is separate from the de-identified content, and contains metadata about the successful transformations and/or failures that occurred while de-identifying. This needs to be set in order for users to access information about the status of each transformation (see TransformationDetails message for more information about what is noted).
+	TransformationDetailsStorageConfig *GooglePrivacyDlpV2TransformationDetailsStorageConfig `pulumi:"transformationDetailsStorageConfig"`
+}
+
+// GooglePrivacyDlpV2DeidentifyInput is an input type that accepts GooglePrivacyDlpV2DeidentifyArgs and GooglePrivacyDlpV2DeidentifyOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyInput` via:
+//
+//          GooglePrivacyDlpV2DeidentifyArgs{...}
+type GooglePrivacyDlpV2DeidentifyInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DeidentifyOutput() GooglePrivacyDlpV2DeidentifyOutput
+	ToGooglePrivacyDlpV2DeidentifyOutputWithContext(context.Context) GooglePrivacyDlpV2DeidentifyOutput
+}
+
+// Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+type GooglePrivacyDlpV2DeidentifyArgs struct {
+	// User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+	CloudStorageOutput pulumi.StringInput `pulumi:"cloudStorageOutput"`
+	// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
+	FileTypesToTransform GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayInput `pulumi:"fileTypesToTransform"`
+	// User specified deidentify templates and configs for structured, unstructured, and image files.
+	TransformationConfig GooglePrivacyDlpV2TransformationConfigPtrInput `pulumi:"transformationConfig"`
+	// Config for storing transformation details. This is separate from the de-identified content, and contains metadata about the successful transformations and/or failures that occurred while de-identifying. This needs to be set in order for users to access information about the status of each transformation (see TransformationDetails message for more information about what is noted).
+	TransformationDetailsStorageConfig GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrInput `pulumi:"transformationDetailsStorageConfig"`
+}
+
+func (GooglePrivacyDlpV2DeidentifyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2Deidentify)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2DeidentifyArgs) ToGooglePrivacyDlpV2DeidentifyOutput() GooglePrivacyDlpV2DeidentifyOutput {
+	return i.ToGooglePrivacyDlpV2DeidentifyOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DeidentifyArgs) ToGooglePrivacyDlpV2DeidentifyOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyOutput)
+}
+
+func (i GooglePrivacyDlpV2DeidentifyArgs) ToGooglePrivacyDlpV2DeidentifyPtrOutput() GooglePrivacyDlpV2DeidentifyPtrOutput {
+	return i.ToGooglePrivacyDlpV2DeidentifyPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2DeidentifyArgs) ToGooglePrivacyDlpV2DeidentifyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyOutput).ToGooglePrivacyDlpV2DeidentifyPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2DeidentifyPtrInput is an input type that accepts GooglePrivacyDlpV2DeidentifyArgs, GooglePrivacyDlpV2DeidentifyPtr and GooglePrivacyDlpV2DeidentifyPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyPtrInput` via:
+//
+//          GooglePrivacyDlpV2DeidentifyArgs{...}
+//
+//  or:
+//
+//          nil
+type GooglePrivacyDlpV2DeidentifyPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2DeidentifyPtrOutput() GooglePrivacyDlpV2DeidentifyPtrOutput
+	ToGooglePrivacyDlpV2DeidentifyPtrOutputWithContext(context.Context) GooglePrivacyDlpV2DeidentifyPtrOutput
+}
+
+type googlePrivacyDlpV2DeidentifyPtrType GooglePrivacyDlpV2DeidentifyArgs
+
+func GooglePrivacyDlpV2DeidentifyPtr(v *GooglePrivacyDlpV2DeidentifyArgs) GooglePrivacyDlpV2DeidentifyPtrInput {
+	return (*googlePrivacyDlpV2DeidentifyPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2DeidentifyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2Deidentify)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2DeidentifyPtrType) ToGooglePrivacyDlpV2DeidentifyPtrOutput() GooglePrivacyDlpV2DeidentifyPtrOutput {
+	return i.ToGooglePrivacyDlpV2DeidentifyPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2DeidentifyPtrType) ToGooglePrivacyDlpV2DeidentifyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyPtrOutput)
+}
+
+// Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+type GooglePrivacyDlpV2DeidentifyOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DeidentifyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2Deidentify)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DeidentifyOutput) ToGooglePrivacyDlpV2DeidentifyOutput() GooglePrivacyDlpV2DeidentifyOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DeidentifyOutput) ToGooglePrivacyDlpV2DeidentifyOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DeidentifyOutput) ToGooglePrivacyDlpV2DeidentifyPtrOutput() GooglePrivacyDlpV2DeidentifyPtrOutput {
+	return o.ToGooglePrivacyDlpV2DeidentifyPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2DeidentifyOutput) ToGooglePrivacyDlpV2DeidentifyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2Deidentify) *GooglePrivacyDlpV2Deidentify {
+		return &v
+	}).(GooglePrivacyDlpV2DeidentifyPtrOutput)
+}
+
+// User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+func (o GooglePrivacyDlpV2DeidentifyOutput) CloudStorageOutput() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2Deidentify) string { return v.CloudStorageOutput }).(pulumi.StringOutput)
+}
+
+// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
+func (o GooglePrivacyDlpV2DeidentifyOutput) FileTypesToTransform() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2Deidentify) []GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem {
+		return v.FileTypesToTransform
+	}).(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput)
+}
+
+// User specified deidentify templates and configs for structured, unstructured, and image files.
+func (o GooglePrivacyDlpV2DeidentifyOutput) TransformationConfig() GooglePrivacyDlpV2TransformationConfigPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2Deidentify) *GooglePrivacyDlpV2TransformationConfig {
+		return v.TransformationConfig
+	}).(GooglePrivacyDlpV2TransformationConfigPtrOutput)
+}
+
+// Config for storing transformation details. This is separate from the de-identified content, and contains metadata about the successful transformations and/or failures that occurred while de-identifying. This needs to be set in order for users to access information about the status of each transformation (see TransformationDetails message for more information about what is noted).
+func (o GooglePrivacyDlpV2DeidentifyOutput) TransformationDetailsStorageConfig() GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2Deidentify) *GooglePrivacyDlpV2TransformationDetailsStorageConfig {
+		return v.TransformationDetailsStorageConfig
+	}).(GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput)
+}
+
+type GooglePrivacyDlpV2DeidentifyPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DeidentifyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2Deidentify)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DeidentifyPtrOutput) ToGooglePrivacyDlpV2DeidentifyPtrOutput() GooglePrivacyDlpV2DeidentifyPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DeidentifyPtrOutput) ToGooglePrivacyDlpV2DeidentifyPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DeidentifyPtrOutput) Elem() GooglePrivacyDlpV2DeidentifyOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Deidentify) GooglePrivacyDlpV2Deidentify {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2Deidentify
+		return ret
+	}).(GooglePrivacyDlpV2DeidentifyOutput)
+}
+
+// User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+func (o GooglePrivacyDlpV2DeidentifyPtrOutput) CloudStorageOutput() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Deidentify) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CloudStorageOutput
+	}).(pulumi.StringPtrOutput)
+}
+
+// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
+func (o GooglePrivacyDlpV2DeidentifyPtrOutput) FileTypesToTransform() GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Deidentify) []GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem {
+		if v == nil {
+			return nil
+		}
+		return v.FileTypesToTransform
+	}).(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput)
+}
+
+// User specified deidentify templates and configs for structured, unstructured, and image files.
+func (o GooglePrivacyDlpV2DeidentifyPtrOutput) TransformationConfig() GooglePrivacyDlpV2TransformationConfigPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Deidentify) *GooglePrivacyDlpV2TransformationConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TransformationConfig
+	}).(GooglePrivacyDlpV2TransformationConfigPtrOutput)
+}
+
+// Config for storing transformation details. This is separate from the de-identified content, and contains metadata about the successful transformations and/or failures that occurred while de-identifying. This needs to be set in order for users to access information about the status of each transformation (see TransformationDetails message for more information about what is noted).
+func (o GooglePrivacyDlpV2DeidentifyPtrOutput) TransformationDetailsStorageConfig() GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Deidentify) *GooglePrivacyDlpV2TransformationDetailsStorageConfig {
+		if v == nil {
+			return nil
+		}
+		return v.TransformationDetailsStorageConfig
+	}).(GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput)
+}
+
 // The configuration that controls how the data will change.
 type GooglePrivacyDlpV2DeidentifyConfig struct {
 	// Treat the dataset as free-form text and apply the same free text transformation everywhere.
@@ -5362,6 +5581,57 @@ func (o GooglePrivacyDlpV2DeidentifyConfigResponseOutput) TransformationErrorHan
 	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyConfigResponse) GooglePrivacyDlpV2TransformationErrorHandlingResponse {
 		return v.TransformationErrorHandling
 	}).(GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput)
+}
+
+// Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+type GooglePrivacyDlpV2DeidentifyResponse struct {
+	// User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+	CloudStorageOutput string `pulumi:"cloudStorageOutput"`
+	// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
+	FileTypesToTransform []string `pulumi:"fileTypesToTransform"`
+	// User specified deidentify templates and configs for structured, unstructured, and image files.
+	TransformationConfig GooglePrivacyDlpV2TransformationConfigResponse `pulumi:"transformationConfig"`
+	// Config for storing transformation details. This is separate from the de-identified content, and contains metadata about the successful transformations and/or failures that occurred while de-identifying. This needs to be set in order for users to access information about the status of each transformation (see TransformationDetails message for more information about what is noted).
+	TransformationDetailsStorageConfig GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse `pulumi:"transformationDetailsStorageConfig"`
+}
+
+// Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+type GooglePrivacyDlpV2DeidentifyResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2DeidentifyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2DeidentifyResponseOutput) ToGooglePrivacyDlpV2DeidentifyResponseOutput() GooglePrivacyDlpV2DeidentifyResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2DeidentifyResponseOutput) ToGooglePrivacyDlpV2DeidentifyResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2DeidentifyResponseOutput {
+	return o
+}
+
+// User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+func (o GooglePrivacyDlpV2DeidentifyResponseOutput) CloudStorageOutput() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyResponse) string { return v.CloudStorageOutput }).(pulumi.StringOutput)
+}
+
+// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
+func (o GooglePrivacyDlpV2DeidentifyResponseOutput) FileTypesToTransform() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyResponse) []string { return v.FileTypesToTransform }).(pulumi.StringArrayOutput)
+}
+
+// User specified deidentify templates and configs for structured, unstructured, and image files.
+func (o GooglePrivacyDlpV2DeidentifyResponseOutput) TransformationConfig() GooglePrivacyDlpV2TransformationConfigResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyResponse) GooglePrivacyDlpV2TransformationConfigResponse {
+		return v.TransformationConfig
+	}).(GooglePrivacyDlpV2TransformationConfigResponseOutput)
+}
+
+// Config for storing transformation details. This is separate from the de-identified content, and contains metadata about the successful transformations and/or failures that occurred while de-identifying. This needs to be set in order for users to access information about the status of each transformation (see TransformationDetails message for more information about what is noted).
+func (o GooglePrivacyDlpV2DeidentifyResponseOutput) TransformationDetailsStorageConfig() GooglePrivacyDlpV2TransformationDetailsStorageConfigResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyResponse) GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse {
+		return v.TransformationDetailsStorageConfig
+	}).(GooglePrivacyDlpV2TransformationDetailsStorageConfigResponseOutput)
 }
 
 // δ-presence metric, used to estimate how likely it is for an attacker to figure out that one given individual appears in a de-identified dataset. Similarly to the k-map metric, we cannot compute δ-presence exactly without knowing the attack dataset, so we use a statistical model instead.
@@ -6316,7 +6586,7 @@ func (o GooglePrivacyDlpV2ErrorResponseArrayOutput) Index(i pulumi.IntInput) Goo
 	}).(GooglePrivacyDlpV2ErrorResponseOutput)
 }
 
-// List of exclude infoTypes.
+// List of excluded infoTypes.
 type GooglePrivacyDlpV2ExcludeInfoTypes struct {
 	// InfoType list in ExclusionRule rule drops a finding when it overlaps or contained within with a finding of an infoType from this list. For example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"`and`exclusion_rule`containing`exclude_info_types.info_types` with "EMAIL_ADDRESS" the phone number findings are dropped if they overlap with EMAIL_ADDRESS finding. That leads to "555-222-2222@example.org" to generate only a single finding, namely email address.
 	InfoTypes []GooglePrivacyDlpV2InfoType `pulumi:"infoTypes"`
@@ -6333,7 +6603,7 @@ type GooglePrivacyDlpV2ExcludeInfoTypesInput interface {
 	ToGooglePrivacyDlpV2ExcludeInfoTypesOutputWithContext(context.Context) GooglePrivacyDlpV2ExcludeInfoTypesOutput
 }
 
-// List of exclude infoTypes.
+// List of excluded infoTypes.
 type GooglePrivacyDlpV2ExcludeInfoTypesArgs struct {
 	// InfoType list in ExclusionRule rule drops a finding when it overlaps or contained within with a finding of an infoType from this list. For example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"`and`exclusion_rule`containing`exclude_info_types.info_types` with "EMAIL_ADDRESS" the phone number findings are dropped if they overlap with EMAIL_ADDRESS finding. That leads to "555-222-2222@example.org" to generate only a single finding, namely email address.
 	InfoTypes GooglePrivacyDlpV2InfoTypeArrayInput `pulumi:"infoTypes"`
@@ -6392,7 +6662,7 @@ func (i *googlePrivacyDlpV2ExcludeInfoTypesPtrType) ToGooglePrivacyDlpV2ExcludeI
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ExcludeInfoTypesPtrOutput)
 }
 
-// List of exclude infoTypes.
+// List of excluded infoTypes.
 type GooglePrivacyDlpV2ExcludeInfoTypesOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2ExcludeInfoTypesOutput) ElementType() reflect.Type {
@@ -6456,13 +6726,13 @@ func (o GooglePrivacyDlpV2ExcludeInfoTypesPtrOutput) InfoTypes() GooglePrivacyDl
 	}).(GooglePrivacyDlpV2InfoTypeArrayOutput)
 }
 
-// List of exclude infoTypes.
+// List of excluded infoTypes.
 type GooglePrivacyDlpV2ExcludeInfoTypesResponse struct {
 	// InfoType list in ExclusionRule rule drops a finding when it overlaps or contained within with a finding of an infoType from this list. For example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"`and`exclusion_rule`containing`exclude_info_types.info_types` with "EMAIL_ADDRESS" the phone number findings are dropped if they overlap with EMAIL_ADDRESS finding. That leads to "555-222-2222@example.org" to generate only a single finding, namely email address.
 	InfoTypes []GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoTypes"`
 }
 
-// List of exclude infoTypes.
+// List of excluded infoTypes.
 type GooglePrivacyDlpV2ExcludeInfoTypesResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2ExcludeInfoTypesResponseOutput) ElementType() reflect.Type {
@@ -6734,7 +7004,7 @@ func (o GooglePrivacyDlpV2ExclusionRuleResponseOutput) Regex() GooglePrivacyDlpV
 	return o.ApplyT(func(v GooglePrivacyDlpV2ExclusionRuleResponse) GooglePrivacyDlpV2RegexResponse { return v.Regex }).(GooglePrivacyDlpV2RegexResponseOutput)
 }
 
-// An expression, consisting or an operator and conditions.
+// An expression, consisting of an operator and conditions.
 type GooglePrivacyDlpV2Expressions struct {
 	// Conditions to apply to the expression.
 	Conditions *GooglePrivacyDlpV2Conditions `pulumi:"conditions"`
@@ -6753,7 +7023,7 @@ type GooglePrivacyDlpV2ExpressionsInput interface {
 	ToGooglePrivacyDlpV2ExpressionsOutputWithContext(context.Context) GooglePrivacyDlpV2ExpressionsOutput
 }
 
-// An expression, consisting or an operator and conditions.
+// An expression, consisting of an operator and conditions.
 type GooglePrivacyDlpV2ExpressionsArgs struct {
 	// Conditions to apply to the expression.
 	Conditions GooglePrivacyDlpV2ConditionsPtrInput `pulumi:"conditions"`
@@ -6814,7 +7084,7 @@ func (i *googlePrivacyDlpV2ExpressionsPtrType) ToGooglePrivacyDlpV2ExpressionsPt
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ExpressionsPtrOutput)
 }
 
-// An expression, consisting or an operator and conditions.
+// An expression, consisting of an operator and conditions.
 type GooglePrivacyDlpV2ExpressionsOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2ExpressionsOutput) ElementType() reflect.Type {
@@ -6895,7 +7165,7 @@ func (o GooglePrivacyDlpV2ExpressionsPtrOutput) LogicalOperator() GooglePrivacyD
 	}).(GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput)
 }
 
-// An expression, consisting or an operator and conditions.
+// An expression, consisting of an operator and conditions.
 type GooglePrivacyDlpV2ExpressionsResponse struct {
 	// Conditions to apply to the expression.
 	Conditions GooglePrivacyDlpV2ConditionsResponse `pulumi:"conditions"`
@@ -6903,7 +7173,7 @@ type GooglePrivacyDlpV2ExpressionsResponse struct {
 	LogicalOperator string `pulumi:"logicalOperator"`
 }
 
-// An expression, consisting or an operator and conditions.
+// An expression, consisting of an operator and conditions.
 type GooglePrivacyDlpV2ExpressionsResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2ExpressionsResponseOutput) ElementType() reflect.Type {
@@ -7561,7 +7831,7 @@ func (o GooglePrivacyDlpV2FileSetResponseOutput) Url() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2FileSetResponse) string { return v.Url }).(pulumi.StringOutput)
 }
 
-// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
+// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
 type GooglePrivacyDlpV2FindingLimits struct {
 	// Configuration of findings limit given for specified infoTypes.
 	MaxFindingsPerInfoType []GooglePrivacyDlpV2InfoTypeLimit `pulumi:"maxFindingsPerInfoType"`
@@ -7582,7 +7852,7 @@ type GooglePrivacyDlpV2FindingLimitsInput interface {
 	ToGooglePrivacyDlpV2FindingLimitsOutputWithContext(context.Context) GooglePrivacyDlpV2FindingLimitsOutput
 }
 
-// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
+// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
 type GooglePrivacyDlpV2FindingLimitsArgs struct {
 	// Configuration of findings limit given for specified infoTypes.
 	MaxFindingsPerInfoType GooglePrivacyDlpV2InfoTypeLimitArrayInput `pulumi:"maxFindingsPerInfoType"`
@@ -7645,7 +7915,7 @@ func (i *googlePrivacyDlpV2FindingLimitsPtrType) ToGooglePrivacyDlpV2FindingLimi
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2FindingLimitsPtrOutput)
 }
 
-// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
+// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
 type GooglePrivacyDlpV2FindingLimitsOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2FindingLimitsOutput) ElementType() reflect.Type {
@@ -7741,7 +8011,7 @@ func (o GooglePrivacyDlpV2FindingLimitsPtrOutput) MaxFindingsPerRequest() pulumi
 	}).(pulumi.IntPtrOutput)
 }
 
-// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
+// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
 type GooglePrivacyDlpV2FindingLimitsResponse struct {
 	// Configuration of findings limit given for specified infoTypes.
 	MaxFindingsPerInfoType []GooglePrivacyDlpV2InfoTypeLimitResponse `pulumi:"maxFindingsPerInfoType"`
@@ -7751,7 +8021,7 @@ type GooglePrivacyDlpV2FindingLimitsResponse struct {
 	MaxFindingsPerRequest int `pulumi:"maxFindingsPerRequest"`
 }
 
-// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
+// Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
 type GooglePrivacyDlpV2FindingLimitsResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2FindingLimitsResponseOutput) ElementType() reflect.Type {
@@ -9337,7 +9607,7 @@ type GooglePrivacyDlpV2InspectConfig struct {
 	IncludeQuote *bool `pulumi:"includeQuote"`
 	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes []GooglePrivacyDlpV2InfoType `pulumi:"infoTypes"`
-	// Configuration to control the number of findings returned. This is not used for data profiling.
+	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
 	Limits *GooglePrivacyDlpV2FindingLimits `pulumi:"limits"`
 	// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
 	MinLikelihood *GooglePrivacyDlpV2InspectConfigMinLikelihood `pulumi:"minLikelihood"`
@@ -9370,7 +9640,7 @@ type GooglePrivacyDlpV2InspectConfigArgs struct {
 	IncludeQuote pulumi.BoolPtrInput `pulumi:"includeQuote"`
 	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes GooglePrivacyDlpV2InfoTypeArrayInput `pulumi:"infoTypes"`
-	// Configuration to control the number of findings returned. This is not used for data profiling.
+	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
 	Limits GooglePrivacyDlpV2FindingLimitsPtrInput `pulumi:"limits"`
 	// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
 	MinLikelihood GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrInput `pulumi:"minLikelihood"`
@@ -9485,7 +9755,7 @@ func (o GooglePrivacyDlpV2InspectConfigOutput) InfoTypes() GooglePrivacyDlpV2Inf
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) []GooglePrivacyDlpV2InfoType { return v.InfoTypes }).(GooglePrivacyDlpV2InfoTypeArrayOutput)
 }
 
-// Configuration to control the number of findings returned. This is not used for data profiling.
+// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
 func (o GooglePrivacyDlpV2InspectConfigOutput) Limits() GooglePrivacyDlpV2FindingLimitsPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfig) *GooglePrivacyDlpV2FindingLimits { return v.Limits }).(GooglePrivacyDlpV2FindingLimitsPtrOutput)
 }
@@ -9578,7 +9848,7 @@ func (o GooglePrivacyDlpV2InspectConfigPtrOutput) InfoTypes() GooglePrivacyDlpV2
 	}).(GooglePrivacyDlpV2InfoTypeArrayOutput)
 }
 
-// Configuration to control the number of findings returned. This is not used for data profiling.
+// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
 func (o GooglePrivacyDlpV2InspectConfigPtrOutput) Limits() GooglePrivacyDlpV2FindingLimitsPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2InspectConfig) *GooglePrivacyDlpV2FindingLimits {
 		if v == nil {
@@ -9622,7 +9892,7 @@ type GooglePrivacyDlpV2InspectConfigResponse struct {
 	IncludeQuote bool `pulumi:"includeQuote"`
 	// Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
 	InfoTypes []GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoTypes"`
-	// Configuration to control the number of findings returned. This is not used for data profiling.
+	// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
 	Limits GooglePrivacyDlpV2FindingLimitsResponse `pulumi:"limits"`
 	// Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
 	MinLikelihood string `pulumi:"minLikelihood"`
@@ -9676,7 +9946,7 @@ func (o GooglePrivacyDlpV2InspectConfigResponseOutput) InfoTypes() GooglePrivacy
 	}).(GooglePrivacyDlpV2InfoTypeResponseArrayOutput)
 }
 
-// Configuration to control the number of findings returned. This is not used for data profiling.
+// Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
 func (o GooglePrivacyDlpV2InspectConfigResponseOutput) Limits() GooglePrivacyDlpV2FindingLimitsResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2InspectConfigResponse) GooglePrivacyDlpV2FindingLimitsResponse {
 		return v.Limits
@@ -11994,13 +12264,13 @@ func (o GooglePrivacyDlpV2LDiversityResultResponseOutput) SensitiveValueFrequenc
 	}).(GooglePrivacyDlpV2LDiversityHistogramBucketResponseArrayOutput)
 }
 
-// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
+// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
 type GooglePrivacyDlpV2LargeCustomDictionaryConfig struct {
 	// Field in a BigQuery table where each cell represents a dictionary phrase.
 	BigQueryField *GooglePrivacyDlpV2BigQueryField `pulumi:"bigQueryField"`
 	// Set of files containing newline-delimited lists of dictionary phrases.
 	CloudStorageFileSet *GooglePrivacyDlpV2CloudStorageFileSet `pulumi:"cloudStorageFileSet"`
-	// Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
+	// Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
 	OutputPath *GooglePrivacyDlpV2CloudStoragePath `pulumi:"outputPath"`
 }
 
@@ -12015,13 +12285,13 @@ type GooglePrivacyDlpV2LargeCustomDictionaryConfigInput interface {
 	ToGooglePrivacyDlpV2LargeCustomDictionaryConfigOutputWithContext(context.Context) GooglePrivacyDlpV2LargeCustomDictionaryConfigOutput
 }
 
-// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
+// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
 type GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs struct {
 	// Field in a BigQuery table where each cell represents a dictionary phrase.
 	BigQueryField GooglePrivacyDlpV2BigQueryFieldPtrInput `pulumi:"bigQueryField"`
 	// Set of files containing newline-delimited lists of dictionary phrases.
 	CloudStorageFileSet GooglePrivacyDlpV2CloudStorageFileSetPtrInput `pulumi:"cloudStorageFileSet"`
-	// Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
+	// Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
 	OutputPath GooglePrivacyDlpV2CloudStoragePathPtrInput `pulumi:"outputPath"`
 }
 
@@ -12078,7 +12348,7 @@ func (i *googlePrivacyDlpV2LargeCustomDictionaryConfigPtrType) ToGooglePrivacyDl
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutput)
 }
 
-// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
+// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
 type GooglePrivacyDlpV2LargeCustomDictionaryConfigOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2LargeCustomDictionaryConfigOutput) ElementType() reflect.Type {
@@ -12117,7 +12387,7 @@ func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigOutput) CloudStorageFileSet
 	}).(GooglePrivacyDlpV2CloudStorageFileSetPtrOutput)
 }
 
-// Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
+// Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
 func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigOutput) OutputPath() GooglePrivacyDlpV2CloudStoragePathPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2LargeCustomDictionaryConfig) *GooglePrivacyDlpV2CloudStoragePath {
 		return v.OutputPath
@@ -12168,7 +12438,7 @@ func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutput) CloudStorageFile
 	}).(GooglePrivacyDlpV2CloudStorageFileSetPtrOutput)
 }
 
-// Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
+// Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
 func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutput) OutputPath() GooglePrivacyDlpV2CloudStoragePathPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2LargeCustomDictionaryConfig) *GooglePrivacyDlpV2CloudStoragePath {
 		if v == nil {
@@ -12178,17 +12448,17 @@ func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutput) OutputPath() Goo
 	}).(GooglePrivacyDlpV2CloudStoragePathPtrOutput)
 }
 
-// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
+// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
 type GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse struct {
 	// Field in a BigQuery table where each cell represents a dictionary phrase.
 	BigQueryField GooglePrivacyDlpV2BigQueryFieldResponse `pulumi:"bigQueryField"`
 	// Set of files containing newline-delimited lists of dictionary phrases.
 	CloudStorageFileSet GooglePrivacyDlpV2CloudStorageFileSetResponse `pulumi:"cloudStorageFileSet"`
-	// Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
+	// Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
 	OutputPath GooglePrivacyDlpV2CloudStoragePathResponse `pulumi:"outputPath"`
 }
 
-// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
+// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
 type GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput) ElementType() reflect.Type {
@@ -12217,7 +12487,7 @@ func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput) CloudStorag
 	}).(GooglePrivacyDlpV2CloudStorageFileSetResponseOutput)
 }
 
-// Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
+// Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
 func (o GooglePrivacyDlpV2LargeCustomDictionaryConfigResponseOutput) OutputPath() GooglePrivacyDlpV2CloudStoragePathResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse) GooglePrivacyDlpV2CloudStoragePathResponse {
 		return v.OutputPath
@@ -12942,7 +13212,7 @@ func (o GooglePrivacyDlpV2NumericalStatsResultResponseOutput) QuantileValues() G
 type GooglePrivacyDlpV2OutputStorageConfig struct {
 	// Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing table, any columns from the predefined schema that are missing will be added. No columns in the existing table will be deleted. If unspecified, then all available columns will be used for a new table or an (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only for use with external storage.
 	OutputSchema *GooglePrivacyDlpV2OutputStorageConfigOutputSchema `pulumi:"outputSchema"`
-	// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
+	// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
 	Table *GooglePrivacyDlpV2BigQueryTable `pulumi:"table"`
 }
 
@@ -12961,7 +13231,7 @@ type GooglePrivacyDlpV2OutputStorageConfigInput interface {
 type GooglePrivacyDlpV2OutputStorageConfigArgs struct {
 	// Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing table, any columns from the predefined schema that are missing will be added. No columns in the existing table will be deleted. If unspecified, then all available columns will be used for a new table or an (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only for use with external storage.
 	OutputSchema GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrInput `pulumi:"outputSchema"`
-	// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
+	// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
 	Table GooglePrivacyDlpV2BigQueryTablePtrInput `pulumi:"table"`
 }
 
@@ -13050,7 +13320,7 @@ func (o GooglePrivacyDlpV2OutputStorageConfigOutput) OutputSchema() GooglePrivac
 	}).(GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput)
 }
 
-// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
+// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
 func (o GooglePrivacyDlpV2OutputStorageConfigOutput) Table() GooglePrivacyDlpV2BigQueryTablePtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2OutputStorageConfig) *GooglePrivacyDlpV2BigQueryTable { return v.Table }).(GooglePrivacyDlpV2BigQueryTablePtrOutput)
 }
@@ -13089,7 +13359,7 @@ func (o GooglePrivacyDlpV2OutputStorageConfigPtrOutput) OutputSchema() GooglePri
 	}).(GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput)
 }
 
-// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
+// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
 func (o GooglePrivacyDlpV2OutputStorageConfigPtrOutput) Table() GooglePrivacyDlpV2BigQueryTablePtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2OutputStorageConfig) *GooglePrivacyDlpV2BigQueryTable {
 		if v == nil {
@@ -13103,7 +13373,7 @@ func (o GooglePrivacyDlpV2OutputStorageConfigPtrOutput) Table() GooglePrivacyDlp
 type GooglePrivacyDlpV2OutputStorageConfigResponse struct {
 	// Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing table, any columns from the predefined schema that are missing will be added. No columns in the existing table will be deleted. If unspecified, then all available columns will be used for a new table or an (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only for use with external storage.
 	OutputSchema string `pulumi:"outputSchema"`
-	// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
+	// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
 	Table GooglePrivacyDlpV2BigQueryTableResponse `pulumi:"table"`
 }
 
@@ -13127,7 +13397,7 @@ func (o GooglePrivacyDlpV2OutputStorageConfigResponseOutput) OutputSchema() pulu
 	return o.ApplyT(func(v GooglePrivacyDlpV2OutputStorageConfigResponse) string { return v.OutputSchema }).(pulumi.StringOutput)
 }
 
-// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
+// Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
 func (o GooglePrivacyDlpV2OutputStorageConfigResponseOutput) Table() GooglePrivacyDlpV2BigQueryTableResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2OutputStorageConfigResponse) GooglePrivacyDlpV2BigQueryTableResponse {
 		return v.Table
@@ -14334,7 +14604,7 @@ func (o GooglePrivacyDlpV2ProximityResponseOutput) WindowBefore() pulumi.IntOutp
 	return o.ApplyT(func(v GooglePrivacyDlpV2ProximityResponse) int { return v.WindowBefore }).(pulumi.IntOutput)
 }
 
-// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. In Data Catalog, tag templates are applied to the resource that Cloud DLP scanned. Data Catalog tag templates are stored in the same project and region where the BigQuery table exists. For Cloud DLP to create and apply the tag template, the Cloud DLP service agent must have the `roles/datacatalog.tagTemplateOwner` permission on the project. The tag template contains fields summarizing the results of the DlpJob. Any field values previously written by another DlpJob are deleted. InfoType naming patterns are strictly enforced when using this feature. Findings are persisted in Data Catalog storage and are governed by service-specific policies for Data Catalog. For more information, see [Service Specific Terms](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. This action is allowed only if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog struct {
 }
 
@@ -14349,7 +14619,7 @@ type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogInput interface {
 	ToGooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutputWithContext(context.Context) GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput
 }
 
-// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. In Data Catalog, tag templates are applied to the resource that Cloud DLP scanned. Data Catalog tag templates are stored in the same project and region where the BigQuery table exists. For Cloud DLP to create and apply the tag template, the Cloud DLP service agent must have the `roles/datacatalog.tagTemplateOwner` permission on the project. The tag template contains fields summarizing the results of the DlpJob. Any field values previously written by another DlpJob are deleted. InfoType naming patterns are strictly enforced when using this feature. Findings are persisted in Data Catalog storage and are governed by service-specific policies for Data Catalog. For more information, see [Service Specific Terms](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. This action is allowed only if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs struct {
 }
 
@@ -14406,7 +14676,7 @@ func (i *googlePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrType) ToGooglePri
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrOutput)
 }
 
-// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. In Data Catalog, tag templates are applied to the resource that Cloud DLP scanned. Data Catalog tag templates are stored in the same project and region where the BigQuery table exists. For Cloud DLP to create and apply the tag template, the Cloud DLP service agent must have the `roles/datacatalog.tagTemplateOwner` permission on the project. The tag template contains fields summarizing the results of the DlpJob. Any field values previously written by another DlpJob are deleted. InfoType naming patterns are strictly enforced when using this feature. Findings are persisted in Data Catalog storage and are governed by service-specific policies for Data Catalog. For more information, see [Service Specific Terms](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. This action is allowed only if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput) ElementType() reflect.Type {
@@ -14455,11 +14725,11 @@ func (o GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrOutput) Elem() Goo
 	}).(GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput)
 }
 
-// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. In Data Catalog, tag templates are applied to the resource that Cloud DLP scanned. Data Catalog tag templates are stored in the same project and region where the BigQuery table exists. For Cloud DLP to create and apply the tag template, the Cloud DLP service agent must have the `roles/datacatalog.tagTemplateOwner` permission on the project. The tag template contains fields summarizing the results of the DlpJob. Any field values previously written by another DlpJob are deleted. InfoType naming patterns are strictly enforced when using this feature. Findings are persisted in Data Catalog storage and are governed by service-specific policies for Data Catalog. For more information, see [Service Specific Terms](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. This action is allowed only if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse struct {
 }
 
-// Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+// Publish findings of a DlpJob to Data Catalog. In Data Catalog, tag templates are applied to the resource that Cloud DLP scanned. Data Catalog tag templates are stored in the same project and region where the BigQuery table exists. For Cloud DLP to create and apply the tag template, the Cloud DLP service agent must have the `roles/datacatalog.tagTemplateOwner` permission on the project. The tag template contains fields summarizing the results of the DlpJob. Any field values previously written by another DlpJob are deleted. InfoType naming patterns are strictly enforced when using this feature. Findings are persisted in Data Catalog storage and are governed by service-specific policies for Data Catalog. For more information, see [Service Specific Terms](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. This action is allowed only if all resources being scanned are BigQuery tables. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput) ElementType() reflect.Type {
@@ -14474,7 +14744,7 @@ func (o GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponseOutput) ToGoo
 	return o
 }
 
-// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
+// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish the count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishSummaryToCscc struct {
 }
 
@@ -14489,7 +14759,7 @@ type GooglePrivacyDlpV2PublishSummaryToCsccInput interface {
 	ToGooglePrivacyDlpV2PublishSummaryToCsccOutputWithContext(context.Context) GooglePrivacyDlpV2PublishSummaryToCsccOutput
 }
 
-// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
+// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish the count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishSummaryToCsccArgs struct {
 }
 
@@ -14546,7 +14816,7 @@ func (i *googlePrivacyDlpV2PublishSummaryToCsccPtrType) ToGooglePrivacyDlpV2Publ
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PublishSummaryToCsccPtrOutput)
 }
 
-// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
+// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish the count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishSummaryToCsccOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2PublishSummaryToCsccOutput) ElementType() reflect.Type {
@@ -14595,11 +14865,11 @@ func (o GooglePrivacyDlpV2PublishSummaryToCsccPtrOutput) Elem() GooglePrivacyDlp
 	}).(GooglePrivacyDlpV2PublishSummaryToCsccOutput)
 }
 
-// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
+// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish the count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishSummaryToCsccResponse struct {
 }
 
-// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
+// Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish the count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
 type GooglePrivacyDlpV2PublishSummaryToCsccResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2PublishSummaryToCsccResponseOutput) ElementType() reflect.Type {
@@ -14614,7 +14884,7 @@ func (o GooglePrivacyDlpV2PublishSummaryToCsccResponseOutput) ToGooglePrivacyDlp
 	return o
 }
 
-// Publish a message into given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
 type GooglePrivacyDlpV2PublishToPubSub struct {
 	// Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to the DLP API service account executing the long running DlpJob sending the notifications. Format is projects/{project}/topics/{topic}.
 	Topic *string `pulumi:"topic"`
@@ -14631,7 +14901,7 @@ type GooglePrivacyDlpV2PublishToPubSubInput interface {
 	ToGooglePrivacyDlpV2PublishToPubSubOutputWithContext(context.Context) GooglePrivacyDlpV2PublishToPubSubOutput
 }
 
-// Publish a message into given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
 type GooglePrivacyDlpV2PublishToPubSubArgs struct {
 	// Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to the DLP API service account executing the long running DlpJob sending the notifications. Format is projects/{project}/topics/{topic}.
 	Topic pulumi.StringPtrInput `pulumi:"topic"`
@@ -14690,7 +14960,7 @@ func (i *googlePrivacyDlpV2PublishToPubSubPtrType) ToGooglePrivacyDlpV2PublishTo
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2PublishToPubSubPtrOutput)
 }
 
-// Publish a message into given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
 type GooglePrivacyDlpV2PublishToPubSubOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2PublishToPubSubOutput) ElementType() reflect.Type {
@@ -14754,13 +15024,13 @@ func (o GooglePrivacyDlpV2PublishToPubSubPtrOutput) Topic() pulumi.StringPtrOutp
 	}).(pulumi.StringPtrOutput)
 }
 
-// Publish a message into given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
 type GooglePrivacyDlpV2PublishToPubSubResponse struct {
 	// Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to the DLP API service account executing the long running DlpJob sending the notifications. Format is projects/{project}/topics/{topic}.
 	Topic string `pulumi:"topic"`
 }
 
-// Publish a message into given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+// Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
 type GooglePrivacyDlpV2PublishToPubSubResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2PublishToPubSubResponseOutput) ElementType() reflect.Type {
@@ -17276,7 +17546,7 @@ func (o GooglePrivacyDlpV2SaveFindingsResponseOutput) OutputConfig() GooglePriva
 
 // Schedule for inspect job triggers.
 type GooglePrivacyDlpV2Schedule struct {
-	// With this option a job is started a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
+	// With this option a job is started on a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
 	RecurrencePeriodDuration *string `pulumi:"recurrencePeriodDuration"`
 }
 
@@ -17293,7 +17563,7 @@ type GooglePrivacyDlpV2ScheduleInput interface {
 
 // Schedule for inspect job triggers.
 type GooglePrivacyDlpV2ScheduleArgs struct {
-	// With this option a job is started a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
+	// With this option a job is started on a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
 	RecurrencePeriodDuration pulumi.StringPtrInput `pulumi:"recurrencePeriodDuration"`
 }
 
@@ -17375,7 +17645,7 @@ func (o GooglePrivacyDlpV2ScheduleOutput) ToGooglePrivacyDlpV2SchedulePtrOutputW
 	}).(GooglePrivacyDlpV2SchedulePtrOutput)
 }
 
-// With this option a job is started a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
+// With this option a job is started on a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
 func (o GooglePrivacyDlpV2ScheduleOutput) RecurrencePeriodDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2Schedule) *string { return v.RecurrencePeriodDuration }).(pulumi.StringPtrOutput)
 }
@@ -17404,7 +17674,7 @@ func (o GooglePrivacyDlpV2SchedulePtrOutput) Elem() GooglePrivacyDlpV2ScheduleOu
 	}).(GooglePrivacyDlpV2ScheduleOutput)
 }
 
-// With this option a job is started a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
+// With this option a job is started on a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
 func (o GooglePrivacyDlpV2SchedulePtrOutput) RecurrencePeriodDuration() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2Schedule) *string {
 		if v == nil {
@@ -17416,7 +17686,7 @@ func (o GooglePrivacyDlpV2SchedulePtrOutput) RecurrencePeriodDuration() pulumi.S
 
 // Schedule for inspect job triggers.
 type GooglePrivacyDlpV2ScheduleResponse struct {
-	// With this option a job is started a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
+	// With this option a job is started on a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
 	RecurrencePeriodDuration string `pulumi:"recurrencePeriodDuration"`
 }
 
@@ -17435,7 +17705,7 @@ func (o GooglePrivacyDlpV2ScheduleResponseOutput) ToGooglePrivacyDlpV2ScheduleRe
 	return o
 }
 
-// With this option a job is started a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
+// With this option a job is started on a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
 func (o GooglePrivacyDlpV2ScheduleResponseOutput) RecurrencePeriodDuration() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ScheduleResponse) string { return v.RecurrencePeriodDuration }).(pulumi.StringOutput)
 }
@@ -17628,7 +17898,7 @@ func (o GooglePrivacyDlpV2StatisticalTableResponseArrayOutput) Index(i pulumi.In
 type GooglePrivacyDlpV2StorageConfig struct {
 	// BigQuery options.
 	BigQueryOptions *GooglePrivacyDlpV2BigQueryOptions `pulumi:"bigQueryOptions"`
-	// Google Cloud Storage options.
+	// Cloud Storage options.
 	CloudStorageOptions *GooglePrivacyDlpV2CloudStorageOptions `pulumi:"cloudStorageOptions"`
 	// Google Cloud Datastore options.
 	DatastoreOptions *GooglePrivacyDlpV2DatastoreOptions `pulumi:"datastoreOptions"`
@@ -17652,7 +17922,7 @@ type GooglePrivacyDlpV2StorageConfigInput interface {
 type GooglePrivacyDlpV2StorageConfigArgs struct {
 	// BigQuery options.
 	BigQueryOptions GooglePrivacyDlpV2BigQueryOptionsPtrInput `pulumi:"bigQueryOptions"`
-	// Google Cloud Storage options.
+	// Cloud Storage options.
 	CloudStorageOptions GooglePrivacyDlpV2CloudStorageOptionsPtrInput `pulumi:"cloudStorageOptions"`
 	// Google Cloud Datastore options.
 	DatastoreOptions GooglePrivacyDlpV2DatastoreOptionsPtrInput `pulumi:"datastoreOptions"`
@@ -17744,7 +18014,7 @@ func (o GooglePrivacyDlpV2StorageConfigOutput) BigQueryOptions() GooglePrivacyDl
 	return o.ApplyT(func(v GooglePrivacyDlpV2StorageConfig) *GooglePrivacyDlpV2BigQueryOptions { return v.BigQueryOptions }).(GooglePrivacyDlpV2BigQueryOptionsPtrOutput)
 }
 
-// Google Cloud Storage options.
+// Cloud Storage options.
 func (o GooglePrivacyDlpV2StorageConfigOutput) CloudStorageOptions() GooglePrivacyDlpV2CloudStorageOptionsPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2StorageConfig) *GooglePrivacyDlpV2CloudStorageOptions {
 		return v.CloudStorageOptions
@@ -17799,7 +18069,7 @@ func (o GooglePrivacyDlpV2StorageConfigPtrOutput) BigQueryOptions() GooglePrivac
 	}).(GooglePrivacyDlpV2BigQueryOptionsPtrOutput)
 }
 
-// Google Cloud Storage options.
+// Cloud Storage options.
 func (o GooglePrivacyDlpV2StorageConfigPtrOutput) CloudStorageOptions() GooglePrivacyDlpV2CloudStorageOptionsPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2StorageConfig) *GooglePrivacyDlpV2CloudStorageOptions {
 		if v == nil {
@@ -17842,7 +18112,7 @@ func (o GooglePrivacyDlpV2StorageConfigPtrOutput) TimespanConfig() GooglePrivacy
 type GooglePrivacyDlpV2StorageConfigResponse struct {
 	// BigQuery options.
 	BigQueryOptions GooglePrivacyDlpV2BigQueryOptionsResponse `pulumi:"bigQueryOptions"`
-	// Google Cloud Storage options.
+	// Cloud Storage options.
 	CloudStorageOptions GooglePrivacyDlpV2CloudStorageOptionsResponse `pulumi:"cloudStorageOptions"`
 	// Google Cloud Datastore options.
 	DatastoreOptions GooglePrivacyDlpV2DatastoreOptionsResponse `pulumi:"datastoreOptions"`
@@ -17873,7 +18143,7 @@ func (o GooglePrivacyDlpV2StorageConfigResponseOutput) BigQueryOptions() GoogleP
 	}).(GooglePrivacyDlpV2BigQueryOptionsResponseOutput)
 }
 
-// Google Cloud Storage options.
+// Cloud Storage options.
 func (o GooglePrivacyDlpV2StorageConfigResponseOutput) CloudStorageOptions() GooglePrivacyDlpV2CloudStorageOptionsResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2StorageConfigResponse) GooglePrivacyDlpV2CloudStorageOptionsResponse {
 		return v.CloudStorageOptions
@@ -18085,7 +18355,7 @@ type GooglePrivacyDlpV2StoredInfoTypeVersionResponse struct {
 	Config GooglePrivacyDlpV2StoredInfoTypeConfigResponse `pulumi:"config"`
 	// Create timestamp of the version. Read-only, determined by the system when the version is created.
 	CreateTime string `pulumi:"createTime"`
-	// Errors that occurred when creating this storedInfoType version, or anomalies detected in the storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the most recent error appearing first. For example, some of the data for stored custom dictionaries is put in the user's Google Cloud Storage bucket, and if this data is modified or deleted by the user or another system, the dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue using it, reusing the same `config` if it was not the source of the error.
+	// Errors that occurred when creating this storedInfoType version, or anomalies detected in the storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the most recent error appearing first. For example, some of the data for stored custom dictionaries is put in the user's Cloud Storage bucket, and if this data is modified or deleted by the user or another system, the dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue using it, reusing the same `config` if it was not the source of the error.
 	Errors []GooglePrivacyDlpV2ErrorResponse `pulumi:"errors"`
 	// Stored info type version state. Read-only, updated by the system during dictionary creation.
 	State string `pulumi:"state"`
@@ -18120,7 +18390,7 @@ func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput) CreateTime() pulu
 	return o.ApplyT(func(v GooglePrivacyDlpV2StoredInfoTypeVersionResponse) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Errors that occurred when creating this storedInfoType version, or anomalies detected in the storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the most recent error appearing first. For example, some of the data for stored custom dictionaries is put in the user's Google Cloud Storage bucket, and if this data is modified or deleted by the user or another system, the dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue using it, reusing the same `config` if it was not the source of the error.
+// Errors that occurred when creating this storedInfoType version, or anomalies detected in the storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the most recent error appearing first. For example, some of the data for stored custom dictionaries is put in the user's Cloud Storage bucket, and if this data is modified or deleted by the user or another system, the dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue using it, reusing the same `config` if it was not the source of the error.
 func (o GooglePrivacyDlpV2StoredInfoTypeVersionResponseOutput) Errors() GooglePrivacyDlpV2ErrorResponseArrayOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2StoredInfoTypeVersionResponse) []GooglePrivacyDlpV2ErrorResponse {
 		return v.Errors
@@ -19161,7 +19431,7 @@ func (o GooglePrivacyDlpV2TimePartConfigResponseOutput) PartToExtract() pulumi.S
 	return o.ApplyT(func(v GooglePrivacyDlpV2TimePartConfigResponse) string { return v.PartToExtract }).(pulumi.StringOutput)
 }
 
-// Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Google Cloud Storage and BigQuery.
+// Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Cloud Storage and BigQuery.
 type GooglePrivacyDlpV2TimespanConfig struct {
 	// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
 	EnableAutoPopulationOfTimespanConfig *bool `pulumi:"enableAutoPopulationOfTimespanConfig"`
@@ -19169,7 +19439,7 @@ type GooglePrivacyDlpV2TimespanConfig struct {
 	EndTime *string `pulumi:"endTime"`
 	// Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
 	StartTime *string `pulumi:"startTime"`
-	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. For BigQuery: If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. For Datastore: If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`.
+	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
 	TimestampField *GooglePrivacyDlpV2FieldId `pulumi:"timestampField"`
 }
 
@@ -19184,7 +19454,7 @@ type GooglePrivacyDlpV2TimespanConfigInput interface {
 	ToGooglePrivacyDlpV2TimespanConfigOutputWithContext(context.Context) GooglePrivacyDlpV2TimespanConfigOutput
 }
 
-// Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Google Cloud Storage and BigQuery.
+// Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Cloud Storage and BigQuery.
 type GooglePrivacyDlpV2TimespanConfigArgs struct {
 	// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
 	EnableAutoPopulationOfTimespanConfig pulumi.BoolPtrInput `pulumi:"enableAutoPopulationOfTimespanConfig"`
@@ -19192,7 +19462,7 @@ type GooglePrivacyDlpV2TimespanConfigArgs struct {
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
 	// Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
 	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
-	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. For BigQuery: If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. For Datastore: If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`.
+	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
 	TimestampField GooglePrivacyDlpV2FieldIdPtrInput `pulumi:"timestampField"`
 }
 
@@ -19249,7 +19519,7 @@ func (i *googlePrivacyDlpV2TimespanConfigPtrType) ToGooglePrivacyDlpV2TimespanCo
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TimespanConfigPtrOutput)
 }
 
-// Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Google Cloud Storage and BigQuery.
+// Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Cloud Storage and BigQuery.
 type GooglePrivacyDlpV2TimespanConfigOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2TimespanConfigOutput) ElementType() reflect.Type {
@@ -19289,7 +19559,7 @@ func (o GooglePrivacyDlpV2TimespanConfigOutput) StartTime() pulumi.StringPtrOutp
 	return o.ApplyT(func(v GooglePrivacyDlpV2TimespanConfig) *string { return v.StartTime }).(pulumi.StringPtrOutput)
 }
 
-// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. For BigQuery: If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. For Datastore: If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`.
+// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
 func (o GooglePrivacyDlpV2TimespanConfigOutput) TimestampField() GooglePrivacyDlpV2FieldIdPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2TimespanConfig) *GooglePrivacyDlpV2FieldId { return v.TimestampField }).(GooglePrivacyDlpV2FieldIdPtrOutput)
 }
@@ -19348,7 +19618,7 @@ func (o GooglePrivacyDlpV2TimespanConfigPtrOutput) StartTime() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. For BigQuery: If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. For Datastore: If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`.
+// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
 func (o GooglePrivacyDlpV2TimespanConfigPtrOutput) TimestampField() GooglePrivacyDlpV2FieldIdPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2TimespanConfig) *GooglePrivacyDlpV2FieldId {
 		if v == nil {
@@ -19358,7 +19628,7 @@ func (o GooglePrivacyDlpV2TimespanConfigPtrOutput) TimestampField() GooglePrivac
 	}).(GooglePrivacyDlpV2FieldIdPtrOutput)
 }
 
-// Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Google Cloud Storage and BigQuery.
+// Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Cloud Storage and BigQuery.
 type GooglePrivacyDlpV2TimespanConfigResponse struct {
 	// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
 	EnableAutoPopulationOfTimespanConfig bool `pulumi:"enableAutoPopulationOfTimespanConfig"`
@@ -19366,11 +19636,11 @@ type GooglePrivacyDlpV2TimespanConfigResponse struct {
 	EndTime string `pulumi:"endTime"`
 	// Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
 	StartTime string `pulumi:"startTime"`
-	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. For BigQuery: If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. For Datastore: If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`.
+	// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
 	TimestampField GooglePrivacyDlpV2FieldIdResponse `pulumi:"timestampField"`
 }
 
-// Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Google Cloud Storage and BigQuery.
+// Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Cloud Storage and BigQuery.
 type GooglePrivacyDlpV2TimespanConfigResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2TimespanConfigResponseOutput) ElementType() reflect.Type {
@@ -19400,11 +19670,399 @@ func (o GooglePrivacyDlpV2TimespanConfigResponseOutput) StartTime() pulumi.Strin
 	return o.ApplyT(func(v GooglePrivacyDlpV2TimespanConfigResponse) string { return v.StartTime }).(pulumi.StringOutput)
 }
 
-// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. For BigQuery: If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. For Datastore: If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`.
+// Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
 func (o GooglePrivacyDlpV2TimespanConfigResponseOutput) TimestampField() GooglePrivacyDlpV2FieldIdResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2TimespanConfigResponse) GooglePrivacyDlpV2FieldIdResponse {
 		return v.TimestampField
 	}).(GooglePrivacyDlpV2FieldIdResponseOutput)
+}
+
+// User specified templates and configs for how to deidentify structured, unstructures, and image files. User must provide either a unstructured deidentify template or at least one redact image config.
+type GooglePrivacyDlpV2TransformationConfig struct {
+	// De-identify template. If this template is specified, it will serve as the default de-identify template. This template cannot contain `record_transformations` since it can be used for unstructured content such as free-form text files. If this template is not set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify unstructured content.
+	DeidentifyTemplate *string `pulumi:"deidentifyTemplate"`
+	// Image redact template. If this template is specified, it will serve as the de-identify template for images. If this template is not set, all findings in the image will be redacted with a black box.
+	ImageRedactTemplate *string `pulumi:"imageRedactTemplate"`
+	// Structured de-identify template. If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables. If this template is not set but the `deidentify_template` is set, then `deidentify_template` will also apply to the structured content. If neither template is set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify structured content.
+	StructuredDeidentifyTemplate *string `pulumi:"structuredDeidentifyTemplate"`
+}
+
+// GooglePrivacyDlpV2TransformationConfigInput is an input type that accepts GooglePrivacyDlpV2TransformationConfigArgs and GooglePrivacyDlpV2TransformationConfigOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2TransformationConfigInput` via:
+//
+//          GooglePrivacyDlpV2TransformationConfigArgs{...}
+type GooglePrivacyDlpV2TransformationConfigInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2TransformationConfigOutput() GooglePrivacyDlpV2TransformationConfigOutput
+	ToGooglePrivacyDlpV2TransformationConfigOutputWithContext(context.Context) GooglePrivacyDlpV2TransformationConfigOutput
+}
+
+// User specified templates and configs for how to deidentify structured, unstructures, and image files. User must provide either a unstructured deidentify template or at least one redact image config.
+type GooglePrivacyDlpV2TransformationConfigArgs struct {
+	// De-identify template. If this template is specified, it will serve as the default de-identify template. This template cannot contain `record_transformations` since it can be used for unstructured content such as free-form text files. If this template is not set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify unstructured content.
+	DeidentifyTemplate pulumi.StringPtrInput `pulumi:"deidentifyTemplate"`
+	// Image redact template. If this template is specified, it will serve as the de-identify template for images. If this template is not set, all findings in the image will be redacted with a black box.
+	ImageRedactTemplate pulumi.StringPtrInput `pulumi:"imageRedactTemplate"`
+	// Structured de-identify template. If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables. If this template is not set but the `deidentify_template` is set, then `deidentify_template` will also apply to the structured content. If neither template is set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify structured content.
+	StructuredDeidentifyTemplate pulumi.StringPtrInput `pulumi:"structuredDeidentifyTemplate"`
+}
+
+func (GooglePrivacyDlpV2TransformationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2TransformationConfig)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2TransformationConfigArgs) ToGooglePrivacyDlpV2TransformationConfigOutput() GooglePrivacyDlpV2TransformationConfigOutput {
+	return i.ToGooglePrivacyDlpV2TransformationConfigOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2TransformationConfigArgs) ToGooglePrivacyDlpV2TransformationConfigOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TransformationConfigOutput)
+}
+
+func (i GooglePrivacyDlpV2TransformationConfigArgs) ToGooglePrivacyDlpV2TransformationConfigPtrOutput() GooglePrivacyDlpV2TransformationConfigPtrOutput {
+	return i.ToGooglePrivacyDlpV2TransformationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2TransformationConfigArgs) ToGooglePrivacyDlpV2TransformationConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TransformationConfigOutput).ToGooglePrivacyDlpV2TransformationConfigPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2TransformationConfigPtrInput is an input type that accepts GooglePrivacyDlpV2TransformationConfigArgs, GooglePrivacyDlpV2TransformationConfigPtr and GooglePrivacyDlpV2TransformationConfigPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2TransformationConfigPtrInput` via:
+//
+//          GooglePrivacyDlpV2TransformationConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GooglePrivacyDlpV2TransformationConfigPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2TransformationConfigPtrOutput() GooglePrivacyDlpV2TransformationConfigPtrOutput
+	ToGooglePrivacyDlpV2TransformationConfigPtrOutputWithContext(context.Context) GooglePrivacyDlpV2TransformationConfigPtrOutput
+}
+
+type googlePrivacyDlpV2TransformationConfigPtrType GooglePrivacyDlpV2TransformationConfigArgs
+
+func GooglePrivacyDlpV2TransformationConfigPtr(v *GooglePrivacyDlpV2TransformationConfigArgs) GooglePrivacyDlpV2TransformationConfigPtrInput {
+	return (*googlePrivacyDlpV2TransformationConfigPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2TransformationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2TransformationConfig)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2TransformationConfigPtrType) ToGooglePrivacyDlpV2TransformationConfigPtrOutput() GooglePrivacyDlpV2TransformationConfigPtrOutput {
+	return i.ToGooglePrivacyDlpV2TransformationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2TransformationConfigPtrType) ToGooglePrivacyDlpV2TransformationConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TransformationConfigPtrOutput)
+}
+
+// User specified templates and configs for how to deidentify structured, unstructures, and image files. User must provide either a unstructured deidentify template or at least one redact image config.
+type GooglePrivacyDlpV2TransformationConfigOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2TransformationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2TransformationConfig)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2TransformationConfigOutput) ToGooglePrivacyDlpV2TransformationConfigOutput() GooglePrivacyDlpV2TransformationConfigOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2TransformationConfigOutput) ToGooglePrivacyDlpV2TransformationConfigOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationConfigOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2TransformationConfigOutput) ToGooglePrivacyDlpV2TransformationConfigPtrOutput() GooglePrivacyDlpV2TransformationConfigPtrOutput {
+	return o.ToGooglePrivacyDlpV2TransformationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2TransformationConfigOutput) ToGooglePrivacyDlpV2TransformationConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2TransformationConfig) *GooglePrivacyDlpV2TransformationConfig {
+		return &v
+	}).(GooglePrivacyDlpV2TransformationConfigPtrOutput)
+}
+
+// De-identify template. If this template is specified, it will serve as the default de-identify template. This template cannot contain `record_transformations` since it can be used for unstructured content such as free-form text files. If this template is not set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify unstructured content.
+func (o GooglePrivacyDlpV2TransformationConfigOutput) DeidentifyTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2TransformationConfig) *string { return v.DeidentifyTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Image redact template. If this template is specified, it will serve as the de-identify template for images. If this template is not set, all findings in the image will be redacted with a black box.
+func (o GooglePrivacyDlpV2TransformationConfigOutput) ImageRedactTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2TransformationConfig) *string { return v.ImageRedactTemplate }).(pulumi.StringPtrOutput)
+}
+
+// Structured de-identify template. If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables. If this template is not set but the `deidentify_template` is set, then `deidentify_template` will also apply to the structured content. If neither template is set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify structured content.
+func (o GooglePrivacyDlpV2TransformationConfigOutput) StructuredDeidentifyTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2TransformationConfig) *string { return v.StructuredDeidentifyTemplate }).(pulumi.StringPtrOutput)
+}
+
+type GooglePrivacyDlpV2TransformationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2TransformationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2TransformationConfig)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2TransformationConfigPtrOutput) ToGooglePrivacyDlpV2TransformationConfigPtrOutput() GooglePrivacyDlpV2TransformationConfigPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2TransformationConfigPtrOutput) ToGooglePrivacyDlpV2TransformationConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationConfigPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2TransformationConfigPtrOutput) Elem() GooglePrivacyDlpV2TransformationConfigOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2TransformationConfig) GooglePrivacyDlpV2TransformationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2TransformationConfig
+		return ret
+	}).(GooglePrivacyDlpV2TransformationConfigOutput)
+}
+
+// De-identify template. If this template is specified, it will serve as the default de-identify template. This template cannot contain `record_transformations` since it can be used for unstructured content such as free-form text files. If this template is not set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify unstructured content.
+func (o GooglePrivacyDlpV2TransformationConfigPtrOutput) DeidentifyTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2TransformationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DeidentifyTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Image redact template. If this template is specified, it will serve as the de-identify template for images. If this template is not set, all findings in the image will be redacted with a black box.
+func (o GooglePrivacyDlpV2TransformationConfigPtrOutput) ImageRedactTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2TransformationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageRedactTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// Structured de-identify template. If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables. If this template is not set but the `deidentify_template` is set, then `deidentify_template` will also apply to the structured content. If neither template is set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify structured content.
+func (o GooglePrivacyDlpV2TransformationConfigPtrOutput) StructuredDeidentifyTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2TransformationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StructuredDeidentifyTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
+// User specified templates and configs for how to deidentify structured, unstructures, and image files. User must provide either a unstructured deidentify template or at least one redact image config.
+type GooglePrivacyDlpV2TransformationConfigResponse struct {
+	// De-identify template. If this template is specified, it will serve as the default de-identify template. This template cannot contain `record_transformations` since it can be used for unstructured content such as free-form text files. If this template is not set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify unstructured content.
+	DeidentifyTemplate string `pulumi:"deidentifyTemplate"`
+	// Image redact template. If this template is specified, it will serve as the de-identify template for images. If this template is not set, all findings in the image will be redacted with a black box.
+	ImageRedactTemplate string `pulumi:"imageRedactTemplate"`
+	// Structured de-identify template. If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables. If this template is not set but the `deidentify_template` is set, then `deidentify_template` will also apply to the structured content. If neither template is set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify structured content.
+	StructuredDeidentifyTemplate string `pulumi:"structuredDeidentifyTemplate"`
+}
+
+// User specified templates and configs for how to deidentify structured, unstructures, and image files. User must provide either a unstructured deidentify template or at least one redact image config.
+type GooglePrivacyDlpV2TransformationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2TransformationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2TransformationConfigResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2TransformationConfigResponseOutput) ToGooglePrivacyDlpV2TransformationConfigResponseOutput() GooglePrivacyDlpV2TransformationConfigResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2TransformationConfigResponseOutput) ToGooglePrivacyDlpV2TransformationConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationConfigResponseOutput {
+	return o
+}
+
+// De-identify template. If this template is specified, it will serve as the default de-identify template. This template cannot contain `record_transformations` since it can be used for unstructured content such as free-form text files. If this template is not set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify unstructured content.
+func (o GooglePrivacyDlpV2TransformationConfigResponseOutput) DeidentifyTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2TransformationConfigResponse) string { return v.DeidentifyTemplate }).(pulumi.StringOutput)
+}
+
+// Image redact template. If this template is specified, it will serve as the de-identify template for images. If this template is not set, all findings in the image will be redacted with a black box.
+func (o GooglePrivacyDlpV2TransformationConfigResponseOutput) ImageRedactTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2TransformationConfigResponse) string { return v.ImageRedactTemplate }).(pulumi.StringOutput)
+}
+
+// Structured de-identify template. If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables. If this template is not set but the `deidentify_template` is set, then `deidentify_template` will also apply to the structured content. If neither template is set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify structured content.
+func (o GooglePrivacyDlpV2TransformationConfigResponseOutput) StructuredDeidentifyTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2TransformationConfigResponse) string { return v.StructuredDeidentifyTemplate }).(pulumi.StringOutput)
+}
+
+// Config for storing transformation details.
+type GooglePrivacyDlpV2TransformationDetailsStorageConfig struct {
+	// The BigQuery table in which to store the output. This may be an existing table or in a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_transformation_details_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details.
+	Table *GooglePrivacyDlpV2BigQueryTable `pulumi:"table"`
+}
+
+// GooglePrivacyDlpV2TransformationDetailsStorageConfigInput is an input type that accepts GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs and GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2TransformationDetailsStorageConfigInput` via:
+//
+//          GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs{...}
+type GooglePrivacyDlpV2TransformationDetailsStorageConfigInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2TransformationDetailsStorageConfigOutput() GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput
+	ToGooglePrivacyDlpV2TransformationDetailsStorageConfigOutputWithContext(context.Context) GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput
+}
+
+// Config for storing transformation details.
+type GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs struct {
+	// The BigQuery table in which to store the output. This may be an existing table or in a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_transformation_details_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details.
+	Table GooglePrivacyDlpV2BigQueryTablePtrInput `pulumi:"table"`
+}
+
+func (GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2TransformationDetailsStorageConfig)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs) ToGooglePrivacyDlpV2TransformationDetailsStorageConfigOutput() GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput {
+	return i.ToGooglePrivacyDlpV2TransformationDetailsStorageConfigOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs) ToGooglePrivacyDlpV2TransformationDetailsStorageConfigOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput)
+}
+
+func (i GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs) ToGooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput() GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput {
+	return i.ToGooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs) ToGooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput).ToGooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrInput is an input type that accepts GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs, GooglePrivacyDlpV2TransformationDetailsStorageConfigPtr and GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrInput` via:
+//
+//          GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput() GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput
+	ToGooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutputWithContext(context.Context) GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput
+}
+
+type googlePrivacyDlpV2TransformationDetailsStorageConfigPtrType GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs
+
+func GooglePrivacyDlpV2TransformationDetailsStorageConfigPtr(v *GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs) GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrInput {
+	return (*googlePrivacyDlpV2TransformationDetailsStorageConfigPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2TransformationDetailsStorageConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2TransformationDetailsStorageConfig)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2TransformationDetailsStorageConfigPtrType) ToGooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput() GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput {
+	return i.ToGooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2TransformationDetailsStorageConfigPtrType) ToGooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput)
+}
+
+// Config for storing transformation details.
+type GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2TransformationDetailsStorageConfig)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput) ToGooglePrivacyDlpV2TransformationDetailsStorageConfigOutput() GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput) ToGooglePrivacyDlpV2TransformationDetailsStorageConfigOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput) ToGooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput() GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput {
+	return o.ToGooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput) ToGooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2TransformationDetailsStorageConfig) *GooglePrivacyDlpV2TransformationDetailsStorageConfig {
+		return &v
+	}).(GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput)
+}
+
+// The BigQuery table in which to store the output. This may be an existing table or in a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_transformation_details_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details.
+func (o GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput) Table() GooglePrivacyDlpV2BigQueryTablePtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2TransformationDetailsStorageConfig) *GooglePrivacyDlpV2BigQueryTable {
+		return v.Table
+	}).(GooglePrivacyDlpV2BigQueryTablePtrOutput)
+}
+
+type GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2TransformationDetailsStorageConfig)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput) ToGooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput() GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput) ToGooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput) Elem() GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2TransformationDetailsStorageConfig) GooglePrivacyDlpV2TransformationDetailsStorageConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2TransformationDetailsStorageConfig
+		return ret
+	}).(GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput)
+}
+
+// The BigQuery table in which to store the output. This may be an existing table or in a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_transformation_details_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details.
+func (o GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput) Table() GooglePrivacyDlpV2BigQueryTablePtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2TransformationDetailsStorageConfig) *GooglePrivacyDlpV2BigQueryTable {
+		if v == nil {
+			return nil
+		}
+		return v.Table
+	}).(GooglePrivacyDlpV2BigQueryTablePtrOutput)
+}
+
+// Config for storing transformation details.
+type GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse struct {
+	// The BigQuery table in which to store the output. This may be an existing table or in a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_transformation_details_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details.
+	Table GooglePrivacyDlpV2BigQueryTableResponse `pulumi:"table"`
+}
+
+// Config for storing transformation details.
+type GooglePrivacyDlpV2TransformationDetailsStorageConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2TransformationDetailsStorageConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2TransformationDetailsStorageConfigResponseOutput) ToGooglePrivacyDlpV2TransformationDetailsStorageConfigResponseOutput() GooglePrivacyDlpV2TransformationDetailsStorageConfigResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2TransformationDetailsStorageConfigResponseOutput) ToGooglePrivacyDlpV2TransformationDetailsStorageConfigResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2TransformationDetailsStorageConfigResponseOutput {
+	return o
+}
+
+// The BigQuery table in which to store the output. This may be an existing table or in a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_transformation_details_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details.
+func (o GooglePrivacyDlpV2TransformationDetailsStorageConfigResponseOutput) Table() GooglePrivacyDlpV2BigQueryTableResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse) GooglePrivacyDlpV2BigQueryTableResponse {
+		return v.Table
+	}).(GooglePrivacyDlpV2BigQueryTableResponseOutput)
 }
 
 // How to handle transformation errors during de-identification. A transformation error occurs when the requested transformation is incompatible with the data. For example, trying to de-identify an IP address using a `DateShift` transformation would result in a transformation error, since date info cannot be extracted from an IP address. Information about any incompatible transformations, and how they were handled, is returned in the response as part of the `TransformationOverviews`.
@@ -21377,6 +22035,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DatastoreOptionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DatastoreOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DateShiftConfigInput)(nil)).Elem(), GooglePrivacyDlpV2DateShiftConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DateShiftConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DateShiftConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyInput)(nil)).Elem(), GooglePrivacyDlpV2DeidentifyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DeidentifyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyConfigInput)(nil)).Elem(), GooglePrivacyDlpV2DeidentifyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeidentifyConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2DeidentifyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2DeltaPresenceEstimationConfigInput)(nil)).Elem(), GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs{})
@@ -21512,6 +22172,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TimePartConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2TimePartConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TimespanConfigInput)(nil)).Elem(), GooglePrivacyDlpV2TimespanConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TimespanConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2TimespanConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TransformationConfigInput)(nil)).Elem(), GooglePrivacyDlpV2TransformationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TransformationConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2TransformationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TransformationDetailsStorageConfigInput)(nil)).Elem(), GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrInput)(nil)).Elem(), GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TransformationErrorHandlingInput)(nil)).Elem(), GooglePrivacyDlpV2TransformationErrorHandlingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TransformationErrorHandlingPtrInput)(nil)).Elem(), GooglePrivacyDlpV2TransformationErrorHandlingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2TransientCryptoKeyInput)(nil)).Elem(), GooglePrivacyDlpV2TransientCryptoKeyArgs{})
@@ -21609,9 +22273,12 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DateShiftConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DateShiftConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DateShiftConfigResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyConfigResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeidentifyResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponseOutput{})
@@ -21860,6 +22527,12 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TimespanConfigOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TimespanConfigPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TimespanConfigResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransformationConfigOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransformationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransformationConfigResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransformationDetailsStorageConfigResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransformationErrorHandlingOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransformationErrorHandlingPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput{})

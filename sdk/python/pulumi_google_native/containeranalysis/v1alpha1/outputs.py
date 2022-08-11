@@ -12,6 +12,7 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AnalysisCompletedResponse',
     'ArtifactResponse',
     'AttestationAuthorityHintResponse',
     'AttestationAuthorityResponse',
@@ -104,6 +105,45 @@ __all__ = [
     'VulnerabilityLocationResponse',
     'VulnerabilityTypeResponse',
 ]
+
+@pulumi.output_type
+class AnalysisCompletedResponse(dict):
+    """
+    Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "analysisType":
+            suggest = "analysis_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AnalysisCompletedResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AnalysisCompletedResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AnalysisCompletedResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 analysis_type: Sequence[str]):
+        """
+        Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource.
+        :param Sequence[str] analysis_type: type of analysis that were completed on a resource.
+        """
+        pulumi.set(__self__, "analysis_type", analysis_type)
+
+    @property
+    @pulumi.getter(name="analysisType")
+    def analysis_type(self) -> Sequence[str]:
+        """
+        type of analysis that were completed on a resource.
+        """
+        return pulumi.get(self, "analysis_type")
+
 
 @pulumi.output_type
 class ArtifactResponse(dict):
@@ -303,7 +343,7 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
@@ -322,7 +362,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -1821,7 +1861,11 @@ class DiscoveredResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "analysisStatus":
+        if key == "analysisCompleted":
+            suggest = "analysis_completed"
+        elif key == "analysisError":
+            suggest = "analysis_error"
+        elif key == "analysisStatus":
             suggest = "analysis_status"
         elif key == "analysisStatusError":
             suggest = "analysis_status_error"
@@ -1844,6 +1888,8 @@ class DiscoveredResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 analysis_completed: 'outputs.AnalysisCompletedResponse',
+                 analysis_error: Sequence['outputs.StatusResponse'],
                  analysis_status: str,
                  analysis_status_error: 'outputs.StatusResponse',
                  archive_time: str,
@@ -1853,6 +1899,8 @@ class DiscoveredResponse(dict):
                  operation: 'outputs.OperationResponse'):
         """
         Provides information about the scan status of a discovered resource.
+        :param 'AnalysisCompletedResponse' analysis_completed: The list of analysis that were completed for a resource.
+        :param Sequence['StatusResponse'] analysis_error: Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
         :param str analysis_status: The status of discovery for the resource.
         :param 'StatusResponse' analysis_status_error: When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
         :param str archive_time: The time occurrences related to this discovery occurrence were archived.
@@ -1861,6 +1909,8 @@ class DiscoveredResponse(dict):
         :param str last_scan_time: The last time this resource was scanned.
         :param 'OperationResponse' operation: An operation that indicates the status of the current scan. This field is deprecated, do not use.
         """
+        pulumi.set(__self__, "analysis_completed", analysis_completed)
+        pulumi.set(__self__, "analysis_error", analysis_error)
         pulumi.set(__self__, "analysis_status", analysis_status)
         pulumi.set(__self__, "analysis_status_error", analysis_status_error)
         pulumi.set(__self__, "archive_time", archive_time)
@@ -1868,6 +1918,22 @@ class DiscoveredResponse(dict):
         pulumi.set(__self__, "cpe", cpe)
         pulumi.set(__self__, "last_scan_time", last_scan_time)
         pulumi.set(__self__, "operation", operation)
+
+    @property
+    @pulumi.getter(name="analysisCompleted")
+    def analysis_completed(self) -> 'outputs.AnalysisCompletedResponse':
+        """
+        The list of analysis that were completed for a resource.
+        """
+        return pulumi.get(self, "analysis_completed")
+
+    @property
+    @pulumi.getter(name="analysisError")
+    def analysis_error(self) -> Sequence['outputs.StatusResponse']:
+        """
+        Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+        """
+        return pulumi.get(self, "analysis_error")
 
     @property
     @pulumi.getter(name="analysisStatus")

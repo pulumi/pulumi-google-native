@@ -12,6 +12,9 @@ from ... import _utilities
 __all__ = [
     'GcsSourceArgs',
     'GlossaryInputConfigArgs',
+    'GlossaryTermsPairArgs',
+    'GlossaryTermsSetArgs',
+    'GlossaryTermArgs',
     'LanguageCodePairArgs',
     'LanguageCodesSetArgs',
 ]
@@ -60,6 +63,110 @@ class GlossaryInputConfigArgs:
     @gcs_source.setter
     def gcs_source(self, value: pulumi.Input['GcsSourceArgs']):
         pulumi.set(self, "gcs_source", value)
+
+
+@pulumi.input_type
+class GlossaryTermsPairArgs:
+    def __init__(__self__, *,
+                 source_term: Optional[pulumi.Input['GlossaryTermArgs']] = None,
+                 target_term: Optional[pulumi.Input['GlossaryTermArgs']] = None):
+        """
+        Represents a single entry for an unidirectional glossary.
+        :param pulumi.Input['GlossaryTermArgs'] source_term: The source term is the term that will get match in the text,
+        :param pulumi.Input['GlossaryTermArgs'] target_term: The term that will replace the match source term.
+        """
+        if source_term is not None:
+            pulumi.set(__self__, "source_term", source_term)
+        if target_term is not None:
+            pulumi.set(__self__, "target_term", target_term)
+
+    @property
+    @pulumi.getter(name="sourceTerm")
+    def source_term(self) -> Optional[pulumi.Input['GlossaryTermArgs']]:
+        """
+        The source term is the term that will get match in the text,
+        """
+        return pulumi.get(self, "source_term")
+
+    @source_term.setter
+    def source_term(self, value: Optional[pulumi.Input['GlossaryTermArgs']]):
+        pulumi.set(self, "source_term", value)
+
+    @property
+    @pulumi.getter(name="targetTerm")
+    def target_term(self) -> Optional[pulumi.Input['GlossaryTermArgs']]:
+        """
+        The term that will replace the match source term.
+        """
+        return pulumi.get(self, "target_term")
+
+    @target_term.setter
+    def target_term(self, value: Optional[pulumi.Input['GlossaryTermArgs']]):
+        pulumi.set(self, "target_term", value)
+
+
+@pulumi.input_type
+class GlossaryTermsSetArgs:
+    def __init__(__self__, *,
+                 terms: Optional[pulumi.Input[Sequence[pulumi.Input['GlossaryTermArgs']]]] = None):
+        """
+        Represents a single entry for an equivalent term set glossary. This is used for equivalent term sets where each term can be replaced by the other terms in the set.
+        :param pulumi.Input[Sequence[pulumi.Input['GlossaryTermArgs']]] terms: Each term in the set represents a term that can be replaced by the other terms.
+        """
+        if terms is not None:
+            pulumi.set(__self__, "terms", terms)
+
+    @property
+    @pulumi.getter
+    def terms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GlossaryTermArgs']]]]:
+        """
+        Each term in the set represents a term that can be replaced by the other terms.
+        """
+        return pulumi.get(self, "terms")
+
+    @terms.setter
+    def terms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GlossaryTermArgs']]]]):
+        pulumi.set(self, "terms", value)
+
+
+@pulumi.input_type
+class GlossaryTermArgs:
+    def __init__(__self__, *,
+                 language_code: Optional[pulumi.Input[str]] = None,
+                 text: Optional[pulumi.Input[str]] = None):
+        """
+        Represents a single glossary term
+        :param pulumi.Input[str] language_code: The language for this glossary term.
+        :param pulumi.Input[str] text: The text for the glossary term.
+        """
+        if language_code is not None:
+            pulumi.set(__self__, "language_code", language_code)
+        if text is not None:
+            pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> Optional[pulumi.Input[str]]:
+        """
+        The language for this glossary term.
+        """
+        return pulumi.get(self, "language_code")
+
+    @language_code.setter
+    def language_code(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "language_code", value)
+
+    @property
+    @pulumi.getter
+    def text(self) -> Optional[pulumi.Input[str]]:
+        """
+        The text for the glossary term.
+        """
+        return pulumi.get(self, "text")
+
+    @text.setter
+    def text(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "text", value)
 
 
 @pulumi.input_type

@@ -39,6 +39,8 @@ type LookupReservationResult struct {
 	Name string `pulumi:"name"`
 	// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
 	ResourcePolicies map[string]string `pulumi:"resourcePolicies"`
+	// Status information for Reservation resource.
+	ResourceStatus AllocationResourceStatusResponse `pulumi:"resourceStatus"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
@@ -122,6 +124,11 @@ func (o LookupReservationResultOutput) Name() pulumi.StringOutput {
 // Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
 func (o LookupReservationResultOutput) ResourcePolicies() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupReservationResult) map[string]string { return v.ResourcePolicies }).(pulumi.StringMapOutput)
+}
+
+// Status information for Reservation resource.
+func (o LookupReservationResultOutput) ResourceStatus() AllocationResourceStatusResponseOutput {
+	return o.ApplyT(func(v LookupReservationResult) AllocationResourceStatusResponse { return v.ResourceStatus }).(AllocationResourceStatusResponseOutput)
 }
 
 // Reserved for future use.

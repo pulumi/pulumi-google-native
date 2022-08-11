@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Outputs
         /// </summary>
         public readonly int IngressPort;
         /// <summary>
+        /// L7 private service connection for this resource.
+        /// </summary>
+        public readonly string L7psc;
+        /// <summary>
         /// The type of hosting used by the gateway.
         /// </summary>
         public readonly string Type;
@@ -39,12 +43,15 @@ namespace Pulumi.GoogleNative.BeyondCorp.V1Alpha.Outputs
 
             int ingressPort,
 
+            string l7psc,
+
             string type,
 
             string uri)
         {
             AppGateway = appGateway;
             IngressPort = ingressPort;
+            L7psc = l7psc;
             Type = type;
             Uri = uri;
         }

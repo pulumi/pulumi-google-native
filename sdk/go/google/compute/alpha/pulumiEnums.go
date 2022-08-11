@@ -10021,6 +10021,174 @@ func (in *forwardingRulePscConnectionStatusPtr) ToForwardingRulePscConnectionSta
 	return pulumi.ToOutputWithContext(ctx, in).(ForwardingRulePscConnectionStatusPtrOutput)
 }
 
+// Planning state before being submitted for evaluation
+type FutureReservationPlanningStatus string
+
+const (
+	// Future Reservation is being drafted.
+	FutureReservationPlanningStatusDraft                     = FutureReservationPlanningStatus("DRAFT")
+	FutureReservationPlanningStatusPlanningStatusUnspecified = FutureReservationPlanningStatus("PLANNING_STATUS_UNSPECIFIED")
+	// Future Reservation has been submitted for evaluation by GCP.
+	FutureReservationPlanningStatusSubmitted = FutureReservationPlanningStatus("SUBMITTED")
+)
+
+func (FutureReservationPlanningStatus) ElementType() reflect.Type {
+	return reflect.TypeOf((*FutureReservationPlanningStatus)(nil)).Elem()
+}
+
+func (e FutureReservationPlanningStatus) ToFutureReservationPlanningStatusOutput() FutureReservationPlanningStatusOutput {
+	return pulumi.ToOutput(e).(FutureReservationPlanningStatusOutput)
+}
+
+func (e FutureReservationPlanningStatus) ToFutureReservationPlanningStatusOutputWithContext(ctx context.Context) FutureReservationPlanningStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(FutureReservationPlanningStatusOutput)
+}
+
+func (e FutureReservationPlanningStatus) ToFutureReservationPlanningStatusPtrOutput() FutureReservationPlanningStatusPtrOutput {
+	return e.ToFutureReservationPlanningStatusPtrOutputWithContext(context.Background())
+}
+
+func (e FutureReservationPlanningStatus) ToFutureReservationPlanningStatusPtrOutputWithContext(ctx context.Context) FutureReservationPlanningStatusPtrOutput {
+	return FutureReservationPlanningStatus(e).ToFutureReservationPlanningStatusOutputWithContext(ctx).ToFutureReservationPlanningStatusPtrOutputWithContext(ctx)
+}
+
+func (e FutureReservationPlanningStatus) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FutureReservationPlanningStatus) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e FutureReservationPlanningStatus) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e FutureReservationPlanningStatus) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type FutureReservationPlanningStatusOutput struct{ *pulumi.OutputState }
+
+func (FutureReservationPlanningStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FutureReservationPlanningStatus)(nil)).Elem()
+}
+
+func (o FutureReservationPlanningStatusOutput) ToFutureReservationPlanningStatusOutput() FutureReservationPlanningStatusOutput {
+	return o
+}
+
+func (o FutureReservationPlanningStatusOutput) ToFutureReservationPlanningStatusOutputWithContext(ctx context.Context) FutureReservationPlanningStatusOutput {
+	return o
+}
+
+func (o FutureReservationPlanningStatusOutput) ToFutureReservationPlanningStatusPtrOutput() FutureReservationPlanningStatusPtrOutput {
+	return o.ToFutureReservationPlanningStatusPtrOutputWithContext(context.Background())
+}
+
+func (o FutureReservationPlanningStatusOutput) ToFutureReservationPlanningStatusPtrOutputWithContext(ctx context.Context) FutureReservationPlanningStatusPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FutureReservationPlanningStatus) *FutureReservationPlanningStatus {
+		return &v
+	}).(FutureReservationPlanningStatusPtrOutput)
+}
+
+func (o FutureReservationPlanningStatusOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o FutureReservationPlanningStatusOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FutureReservationPlanningStatus) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o FutureReservationPlanningStatusOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FutureReservationPlanningStatusOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e FutureReservationPlanningStatus) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type FutureReservationPlanningStatusPtrOutput struct{ *pulumi.OutputState }
+
+func (FutureReservationPlanningStatusPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FutureReservationPlanningStatus)(nil)).Elem()
+}
+
+func (o FutureReservationPlanningStatusPtrOutput) ToFutureReservationPlanningStatusPtrOutput() FutureReservationPlanningStatusPtrOutput {
+	return o
+}
+
+func (o FutureReservationPlanningStatusPtrOutput) ToFutureReservationPlanningStatusPtrOutputWithContext(ctx context.Context) FutureReservationPlanningStatusPtrOutput {
+	return o
+}
+
+func (o FutureReservationPlanningStatusPtrOutput) Elem() FutureReservationPlanningStatusOutput {
+	return o.ApplyT(func(v *FutureReservationPlanningStatus) FutureReservationPlanningStatus {
+		if v != nil {
+			return *v
+		}
+		var ret FutureReservationPlanningStatus
+		return ret
+	}).(FutureReservationPlanningStatusOutput)
+}
+
+func (o FutureReservationPlanningStatusPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o FutureReservationPlanningStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *FutureReservationPlanningStatus) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// FutureReservationPlanningStatusInput is an input type that accepts FutureReservationPlanningStatusArgs and FutureReservationPlanningStatusOutput values.
+// You can construct a concrete instance of `FutureReservationPlanningStatusInput` via:
+//
+//          FutureReservationPlanningStatusArgs{...}
+type FutureReservationPlanningStatusInput interface {
+	pulumi.Input
+
+	ToFutureReservationPlanningStatusOutput() FutureReservationPlanningStatusOutput
+	ToFutureReservationPlanningStatusOutputWithContext(context.Context) FutureReservationPlanningStatusOutput
+}
+
+var futureReservationPlanningStatusPtrType = reflect.TypeOf((**FutureReservationPlanningStatus)(nil)).Elem()
+
+type FutureReservationPlanningStatusPtrInput interface {
+	pulumi.Input
+
+	ToFutureReservationPlanningStatusPtrOutput() FutureReservationPlanningStatusPtrOutput
+	ToFutureReservationPlanningStatusPtrOutputWithContext(context.Context) FutureReservationPlanningStatusPtrOutput
+}
+
+type futureReservationPlanningStatusPtr string
+
+func FutureReservationPlanningStatusPtr(v string) FutureReservationPlanningStatusPtrInput {
+	return (*futureReservationPlanningStatusPtr)(&v)
+}
+
+func (*futureReservationPlanningStatusPtr) ElementType() reflect.Type {
+	return futureReservationPlanningStatusPtrType
+}
+
+func (in *futureReservationPlanningStatusPtr) ToFutureReservationPlanningStatusPtrOutput() FutureReservationPlanningStatusPtrOutput {
+	return pulumi.ToOutput(in).(FutureReservationPlanningStatusPtrOutput)
+}
+
+func (in *futureReservationPlanningStatusPtr) ToFutureReservationPlanningStatusPtrOutputWithContext(ctx context.Context) FutureReservationPlanningStatusPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(FutureReservationPlanningStatusPtrOutput)
+}
+
 // Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
 type GRPCHealthCheckPortSpecification string
 
@@ -38788,6 +38956,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRuleNetworkTierPtrInput)(nil)).Elem(), ForwardingRuleNetworkTier("FIXED_STANDARD"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRulePscConnectionStatusInput)(nil)).Elem(), ForwardingRulePscConnectionStatus("ACCEPTED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ForwardingRulePscConnectionStatusPtrInput)(nil)).Elem(), ForwardingRulePscConnectionStatus("ACCEPTED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FutureReservationPlanningStatusInput)(nil)).Elem(), FutureReservationPlanningStatus("DRAFT"))
+	pulumi.RegisterInputType(reflect.TypeOf((*FutureReservationPlanningStatusPtrInput)(nil)).Elem(), FutureReservationPlanningStatus("DRAFT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GRPCHealthCheckPortSpecificationInput)(nil)).Elem(), GRPCHealthCheckPortSpecification("USE_FIXED_PORT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GRPCHealthCheckPortSpecificationPtrInput)(nil)).Elem(), GRPCHealthCheckPortSpecification("USE_FIXED_PORT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GlobalAddressAddressTypeInput)(nil)).Elem(), GlobalAddressAddressType("DNS_FORWARDING"))
@@ -39248,6 +39418,8 @@ func init() {
 	pulumi.RegisterOutputType(ForwardingRuleNetworkTierPtrOutput{})
 	pulumi.RegisterOutputType(ForwardingRulePscConnectionStatusOutput{})
 	pulumi.RegisterOutputType(ForwardingRulePscConnectionStatusPtrOutput{})
+	pulumi.RegisterOutputType(FutureReservationPlanningStatusOutput{})
+	pulumi.RegisterOutputType(FutureReservationPlanningStatusPtrOutput{})
 	pulumi.RegisterOutputType(GRPCHealthCheckPortSpecificationOutput{})
 	pulumi.RegisterOutputType(GRPCHealthCheckPortSpecificationPtrOutput{})
 	pulumi.RegisterOutputType(GlobalAddressAddressTypeOutput{})

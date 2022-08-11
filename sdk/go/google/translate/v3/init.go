@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:translate/v3:Glossary":
 		r = &Glossary{}
+	case "google-native:translate/v3:GlossaryEntry":
+		r = &GlossaryEntry{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}

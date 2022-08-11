@@ -21,6 +21,9 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
+        [Input("primaryBackup")]
+        public Input<Inputs.RRSetRoutingPolicyPrimaryBackupPolicyArgs>? PrimaryBackup { get; set; }
+
         [Input("wrr")]
         public Input<Inputs.RRSetRoutingPolicyWrrPolicyArgs>? Wrr { get; set; }
 

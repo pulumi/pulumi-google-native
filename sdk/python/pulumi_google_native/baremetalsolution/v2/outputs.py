@@ -17,10 +17,18 @@ __all__ = [
     'IntakeVlanAttachmentResponse',
     'LogicalNetworkInterfaceResponse',
     'LunRangeResponse',
+    'LunResponse',
+    'NetworkAddressReservationResponse',
     'NetworkAddressResponse',
     'NetworkConfigResponse',
+    'NetworkResponse',
     'NfsExportResponse',
+    'QosPolicyResponse',
+    'SnapshotReservationDetailResponse',
+    'VRFResponse',
+    'VlanAttachmentResponse',
     'VolumeConfigResponse',
+    'VolumeResponse',
 ]
 
 @pulumi.output_type
@@ -417,6 +425,204 @@ class LunRangeResponse(dict):
 
 
 @pulumi.output_type
+class LunResponse(dict):
+    """
+    A storage volume logical unit number (LUN).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bootLun":
+            suggest = "boot_lun"
+        elif key == "multiprotocolType":
+            suggest = "multiprotocol_type"
+        elif key == "sizeGb":
+            suggest = "size_gb"
+        elif key == "storageType":
+            suggest = "storage_type"
+        elif key == "storageVolume":
+            suggest = "storage_volume"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in LunResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        LunResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        LunResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 boot_lun: bool,
+                 multiprotocol_type: str,
+                 name: str,
+                 shareable: bool,
+                 size_gb: str,
+                 state: str,
+                 storage_type: str,
+                 storage_volume: str,
+                 wwid: str):
+        """
+        A storage volume logical unit number (LUN).
+        :param bool boot_lun: Display if this LUN is a boot LUN.
+        :param str multiprotocol_type: The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
+        :param str name: The name of the LUN.
+        :param bool shareable: Display if this LUN can be shared between multiple physical servers.
+        :param str size_gb: The size of this LUN, in gigabytes.
+        :param str state: The state of this storage volume.
+        :param str storage_type: The storage type for this LUN.
+        :param str storage_volume: Display the storage volume for this LUN.
+        :param str wwid: The WWID for this LUN.
+        """
+        pulumi.set(__self__, "boot_lun", boot_lun)
+        pulumi.set(__self__, "multiprotocol_type", multiprotocol_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "shareable", shareable)
+        pulumi.set(__self__, "size_gb", size_gb)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "storage_type", storage_type)
+        pulumi.set(__self__, "storage_volume", storage_volume)
+        pulumi.set(__self__, "wwid", wwid)
+
+    @property
+    @pulumi.getter(name="bootLun")
+    def boot_lun(self) -> bool:
+        """
+        Display if this LUN is a boot LUN.
+        """
+        return pulumi.get(self, "boot_lun")
+
+    @property
+    @pulumi.getter(name="multiprotocolType")
+    def multiprotocol_type(self) -> str:
+        """
+        The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
+        """
+        return pulumi.get(self, "multiprotocol_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the LUN.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def shareable(self) -> bool:
+        """
+        Display if this LUN can be shared between multiple physical servers.
+        """
+        return pulumi.get(self, "shareable")
+
+    @property
+    @pulumi.getter(name="sizeGb")
+    def size_gb(self) -> str:
+        """
+        The size of this LUN, in gigabytes.
+        """
+        return pulumi.get(self, "size_gb")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of this storage volume.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> str:
+        """
+        The storage type for this LUN.
+        """
+        return pulumi.get(self, "storage_type")
+
+    @property
+    @pulumi.getter(name="storageVolume")
+    def storage_volume(self) -> str:
+        """
+        Display the storage volume for this LUN.
+        """
+        return pulumi.get(self, "storage_volume")
+
+    @property
+    @pulumi.getter
+    def wwid(self) -> str:
+        """
+        The WWID for this LUN.
+        """
+        return pulumi.get(self, "wwid")
+
+
+@pulumi.output_type
+class NetworkAddressReservationResponse(dict):
+    """
+    A reservation of one or more addresses in a network.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endAddress":
+            suggest = "end_address"
+        elif key == "startAddress":
+            suggest = "start_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkAddressReservationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkAddressReservationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkAddressReservationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_address: str,
+                 note: str,
+                 start_address: str):
+        """
+        A reservation of one or more addresses in a network.
+        :param str end_address: The last address of this reservation block, inclusive. I.e., for cases when reservations are only single addresses, end_address and start_address will be the same. Must be specified as a single IPv4 address, e.g. 10.1.2.2.
+        :param str note: A note about this reservation, intended for human consumption.
+        :param str start_address: The first address of this reservation block. Must be specified as a single IPv4 address, e.g. 10.1.2.2.
+        """
+        pulumi.set(__self__, "end_address", end_address)
+        pulumi.set(__self__, "note", note)
+        pulumi.set(__self__, "start_address", start_address)
+
+    @property
+    @pulumi.getter(name="endAddress")
+    def end_address(self) -> str:
+        """
+        The last address of this reservation block, inclusive. I.e., for cases when reservations are only single addresses, end_address and start_address will be the same. Must be specified as a single IPv4 address, e.g. 10.1.2.2.
+        """
+        return pulumi.get(self, "end_address")
+
+    @property
+    @pulumi.getter
+    def note(self) -> str:
+        """
+        A note about this reservation, intended for human consumption.
+        """
+        return pulumi.get(self, "note")
+
+    @property
+    @pulumi.getter(name="startAddress")
+    def start_address(self) -> str:
+        """
+        The first address of this reservation block. Must be specified as a single IPv4 address, e.g. 10.1.2.2.
+        """
+        return pulumi.get(self, "start_address")
+
+
+@pulumi.output_type
 class NetworkAddressResponse(dict):
     """
     A network.
@@ -628,6 +834,161 @@ class NetworkConfigResponse(dict):
 
 
 @pulumi.output_type
+class NetworkResponse(dict):
+    """
+    A Network.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "macAddress":
+            suggest = "mac_address"
+        elif key == "servicesCidr":
+            suggest = "services_cidr"
+        elif key == "vlanId":
+            suggest = "vlan_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cidr: str,
+                 ip_address: str,
+                 labels: Mapping[str, str],
+                 mac_address: Sequence[str],
+                 name: str,
+                 reservations: Sequence['outputs.NetworkAddressReservationResponse'],
+                 services_cidr: str,
+                 state: str,
+                 type: str,
+                 vlan_id: str,
+                 vrf: 'outputs.VRFResponse'):
+        """
+        A Network.
+        :param str cidr: The cidr of the Network.
+        :param str ip_address: IP address configured.
+        :param Mapping[str, str] labels: Labels as key value pairs.
+        :param Sequence[str] mac_address: List of physical interfaces.
+        :param str name: The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}`
+        :param Sequence['NetworkAddressReservationResponse'] reservations: List of IP address reservations in this network. When updating this field, an error will be generated if a reservation conflicts with an IP address already allocated to a physical server.
+        :param str services_cidr: IP range for reserved for services (e.g. NFS).
+        :param str state: The Network state.
+        :param str type: The type of this network.
+        :param str vlan_id: The vlan id of the Network.
+        :param 'VRFResponse' vrf: The vrf for the Network.
+        """
+        pulumi.set(__self__, "cidr", cidr)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "mac_address", mac_address)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "reservations", reservations)
+        pulumi.set(__self__, "services_cidr", services_cidr)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "vlan_id", vlan_id)
+        pulumi.set(__self__, "vrf", vrf)
+
+    @property
+    @pulumi.getter
+    def cidr(self) -> str:
+        """
+        The cidr of the Network.
+        """
+        return pulumi.get(self, "cidr")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        IP address configured.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Labels as key value pairs.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="macAddress")
+    def mac_address(self) -> Sequence[str]:
+        """
+        List of physical interfaces.
+        """
+        return pulumi.get(self, "mac_address")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def reservations(self) -> Sequence['outputs.NetworkAddressReservationResponse']:
+        """
+        List of IP address reservations in this network. When updating this field, an error will be generated if a reservation conflicts with an IP address already allocated to a physical server.
+        """
+        return pulumi.get(self, "reservations")
+
+    @property
+    @pulumi.getter(name="servicesCidr")
+    def services_cidr(self) -> str:
+        """
+        IP range for reserved for services (e.g. NFS).
+        """
+        return pulumi.get(self, "services_cidr")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The Network state.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of this network.
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter(name="vlanId")
+    def vlan_id(self) -> str:
+        """
+        The vlan id of the Network.
+        """
+        return pulumi.get(self, "vlan_id")
+
+    @property
+    @pulumi.getter
+    def vrf(self) -> 'outputs.VRFResponse':
+        """
+        The vrf for the Network.
+        """
+        return pulumi.get(self, "vrf")
+
+
+@pulumi.output_type
 class NfsExportResponse(dict):
     """
     A NFS export entry.
@@ -738,6 +1099,262 @@ class NfsExportResponse(dict):
         Export permissions.
         """
         return pulumi.get(self, "permissions")
+
+
+@pulumi.output_type
+class QosPolicyResponse(dict):
+    """
+    QOS policy parameters.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bandwidthGbps":
+            suggest = "bandwidth_gbps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in QosPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        QosPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        QosPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bandwidth_gbps: float):
+        """
+        QOS policy parameters.
+        :param float bandwidth_gbps: The bandwidth permitted by the QOS policy, in gbps.
+        """
+        pulumi.set(__self__, "bandwidth_gbps", bandwidth_gbps)
+
+    @property
+    @pulumi.getter(name="bandwidthGbps")
+    def bandwidth_gbps(self) -> float:
+        """
+        The bandwidth permitted by the QOS policy, in gbps.
+        """
+        return pulumi.get(self, "bandwidth_gbps")
+
+
+@pulumi.output_type
+class SnapshotReservationDetailResponse(dict):
+    """
+    Details about snapshot space reservation and usage on the storage volume.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "reservedSpaceGib":
+            suggest = "reserved_space_gib"
+        elif key == "reservedSpacePercent":
+            suggest = "reserved_space_percent"
+        elif key == "reservedSpaceRemainingGib":
+            suggest = "reserved_space_remaining_gib"
+        elif key == "reservedSpaceUsedPercent":
+            suggest = "reserved_space_used_percent"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SnapshotReservationDetailResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SnapshotReservationDetailResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SnapshotReservationDetailResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 reserved_space_gib: str,
+                 reserved_space_percent: int,
+                 reserved_space_remaining_gib: str,
+                 reserved_space_used_percent: int):
+        """
+        Details about snapshot space reservation and usage on the storage volume.
+        :param str reserved_space_gib: The space on this storage volume reserved for snapshots, shown in GiB.
+        :param int reserved_space_percent: Percent of the total Volume size reserved for snapshot copies. Enabling snapshots requires reserving 20% or more of the storage volume space for snapshots. Maximum reserved space for snapshots is 40%. Setting this field will effectively set snapshot_enabled to true.
+        :param str reserved_space_remaining_gib: The amount, in GiB, of available space in this storage volume's reserved snapshot space.
+        :param int reserved_space_used_percent: The percent of snapshot space on this storage volume actually being used by the snapshot copies. This value might be higher than 100% if the snapshot copies have overflowed into the data portion of the storage volume.
+        """
+        pulumi.set(__self__, "reserved_space_gib", reserved_space_gib)
+        pulumi.set(__self__, "reserved_space_percent", reserved_space_percent)
+        pulumi.set(__self__, "reserved_space_remaining_gib", reserved_space_remaining_gib)
+        pulumi.set(__self__, "reserved_space_used_percent", reserved_space_used_percent)
+
+    @property
+    @pulumi.getter(name="reservedSpaceGib")
+    def reserved_space_gib(self) -> str:
+        """
+        The space on this storage volume reserved for snapshots, shown in GiB.
+        """
+        return pulumi.get(self, "reserved_space_gib")
+
+    @property
+    @pulumi.getter(name="reservedSpacePercent")
+    def reserved_space_percent(self) -> int:
+        """
+        Percent of the total Volume size reserved for snapshot copies. Enabling snapshots requires reserving 20% or more of the storage volume space for snapshots. Maximum reserved space for snapshots is 40%. Setting this field will effectively set snapshot_enabled to true.
+        """
+        return pulumi.get(self, "reserved_space_percent")
+
+    @property
+    @pulumi.getter(name="reservedSpaceRemainingGib")
+    def reserved_space_remaining_gib(self) -> str:
+        """
+        The amount, in GiB, of available space in this storage volume's reserved snapshot space.
+        """
+        return pulumi.get(self, "reserved_space_remaining_gib")
+
+    @property
+    @pulumi.getter(name="reservedSpaceUsedPercent")
+    def reserved_space_used_percent(self) -> int:
+        """
+        The percent of snapshot space on this storage volume actually being used by the snapshot copies. This value might be higher than 100% if the snapshot copies have overflowed into the data portion of the storage volume.
+        """
+        return pulumi.get(self, "reserved_space_used_percent")
+
+
+@pulumi.output_type
+class VRFResponse(dict):
+    """
+    A network VRF.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "qosPolicy":
+            suggest = "qos_policy"
+        elif key == "vlanAttachments":
+            suggest = "vlan_attachments"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VRFResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VRFResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VRFResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 name: str,
+                 qos_policy: 'outputs.QosPolicyResponse',
+                 state: str,
+                 vlan_attachments: Sequence['outputs.VlanAttachmentResponse']):
+        """
+        A network VRF.
+        :param str name: The name of the VRF.
+        :param 'QosPolicyResponse' qos_policy: The QOS policy applied to this VRF.
+        :param str state: The possible state of VRF.
+        :param Sequence['VlanAttachmentResponse'] vlan_attachments: The list of VLAN attachments for the VRF.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "qos_policy", qos_policy)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "vlan_attachments", vlan_attachments)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the VRF.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="qosPolicy")
+    def qos_policy(self) -> 'outputs.QosPolicyResponse':
+        """
+        The QOS policy applied to this VRF.
+        """
+        return pulumi.get(self, "qos_policy")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The possible state of VRF.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="vlanAttachments")
+    def vlan_attachments(self) -> Sequence['outputs.VlanAttachmentResponse']:
+        """
+        The list of VLAN attachments for the VRF.
+        """
+        return pulumi.get(self, "vlan_attachments")
+
+
+@pulumi.output_type
+class VlanAttachmentResponse(dict):
+    """
+    VLAN attachment details.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "peerIp":
+            suggest = "peer_ip"
+        elif key == "peerVlanId":
+            suggest = "peer_vlan_id"
+        elif key == "routerIp":
+            suggest = "router_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VlanAttachmentResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VlanAttachmentResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VlanAttachmentResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 peer_ip: str,
+                 peer_vlan_id: str,
+                 router_ip: str):
+        """
+        VLAN attachment details.
+        :param str peer_ip: The peer IP of the attachment.
+        :param str peer_vlan_id: The peer vlan ID of the attachment.
+        :param str router_ip: The router IP of the attachment.
+        """
+        pulumi.set(__self__, "peer_ip", peer_ip)
+        pulumi.set(__self__, "peer_vlan_id", peer_vlan_id)
+        pulumi.set(__self__, "router_ip", router_ip)
+
+    @property
+    @pulumi.getter(name="peerIp")
+    def peer_ip(self) -> str:
+        """
+        The peer IP of the attachment.
+        """
+        return pulumi.get(self, "peer_ip")
+
+    @property
+    @pulumi.getter(name="peerVlanId")
+    def peer_vlan_id(self) -> str:
+        """
+        The peer vlan ID of the attachment.
+        """
+        return pulumi.get(self, "peer_vlan_id")
+
+    @property
+    @pulumi.getter(name="routerIp")
+    def router_ip(self) -> str:
+        """
+        The router IP of the attachment.
+        """
+        return pulumi.get(self, "router_ip")
 
 
 @pulumi.output_type
@@ -888,5 +1505,255 @@ class VolumeConfigResponse(dict):
         User note field, it can be used by customers to add additional information for the BMS Ops team .
         """
         return pulumi.get(self, "user_note")
+
+
+@pulumi.output_type
+class VolumeResponse(dict):
+    """
+    A storage volume.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoGrownSizeGib":
+            suggest = "auto_grown_size_gib"
+        elif key == "bootVolume":
+            suggest = "boot_volume"
+        elif key == "currentSizeGib":
+            suggest = "current_size_gib"
+        elif key == "emergencySizeGib":
+            suggest = "emergency_size_gib"
+        elif key == "maxSizeGib":
+            suggest = "max_size_gib"
+        elif key == "originallyRequestedSizeGib":
+            suggest = "originally_requested_size_gib"
+        elif key == "remainingSpaceGib":
+            suggest = "remaining_space_gib"
+        elif key == "requestedSizeGib":
+            suggest = "requested_size_gib"
+        elif key == "snapshotAutoDeleteBehavior":
+            suggest = "snapshot_auto_delete_behavior"
+        elif key == "snapshotEnabled":
+            suggest = "snapshot_enabled"
+        elif key == "snapshotReservationDetail":
+            suggest = "snapshot_reservation_detail"
+        elif key == "snapshotSchedulePolicy":
+            suggest = "snapshot_schedule_policy"
+        elif key == "storageType":
+            suggest = "storage_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VolumeResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VolumeResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VolumeResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_grown_size_gib: str,
+                 boot_volume: bool,
+                 current_size_gib: str,
+                 emergency_size_gib: str,
+                 labels: Mapping[str, str],
+                 max_size_gib: str,
+                 name: str,
+                 originally_requested_size_gib: str,
+                 pod: str,
+                 protocol: str,
+                 remaining_space_gib: str,
+                 requested_size_gib: str,
+                 snapshot_auto_delete_behavior: str,
+                 snapshot_enabled: bool,
+                 snapshot_reservation_detail: 'outputs.SnapshotReservationDetailResponse',
+                 snapshot_schedule_policy: str,
+                 state: str,
+                 storage_type: str):
+        """
+        A storage volume.
+        :param str auto_grown_size_gib: The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
+        :param bool boot_volume: Whether this volume is a boot volume. A boot volume is one which contains a boot LUN.
+        :param str current_size_gib: The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be different than the requested size if the storage volume has been configured with auto grow or auto shrink.
+        :param str emergency_size_gib: Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
+        :param Mapping[str, str] labels: Labels as key value pairs.
+        :param str max_size_gib: Maximum size volume can be expanded to in case of evergency, in GiB.
+        :param str name: The resource name of this `Volume`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/volumes/{volume}`
+        :param str originally_requested_size_gib: Originally requested size, in GiB.
+        :param str pod: Immutable. Pod name.
+        :param str protocol: Storage protocol for the Volume.
+        :param str remaining_space_gib: The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots.
+        :param str requested_size_gib: The requested size of this storage volume, in GiB.
+        :param str snapshot_auto_delete_behavior: The behavior to use when snapshot reserved space is full.
+        :param bool snapshot_enabled: Whether snapshots are enabled.
+        :param 'SnapshotReservationDetailResponse' snapshot_reservation_detail: Details about snapshot space reservation and usage on the storage volume.
+        :param str snapshot_schedule_policy: The name of the snapshot schedule policy in use for this volume, if any.
+        :param str state: The state of this storage volume.
+        :param str storage_type: The storage type for this volume.
+        """
+        pulumi.set(__self__, "auto_grown_size_gib", auto_grown_size_gib)
+        pulumi.set(__self__, "boot_volume", boot_volume)
+        pulumi.set(__self__, "current_size_gib", current_size_gib)
+        pulumi.set(__self__, "emergency_size_gib", emergency_size_gib)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "max_size_gib", max_size_gib)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "originally_requested_size_gib", originally_requested_size_gib)
+        pulumi.set(__self__, "pod", pod)
+        pulumi.set(__self__, "protocol", protocol)
+        pulumi.set(__self__, "remaining_space_gib", remaining_space_gib)
+        pulumi.set(__self__, "requested_size_gib", requested_size_gib)
+        pulumi.set(__self__, "snapshot_auto_delete_behavior", snapshot_auto_delete_behavior)
+        pulumi.set(__self__, "snapshot_enabled", snapshot_enabled)
+        pulumi.set(__self__, "snapshot_reservation_detail", snapshot_reservation_detail)
+        pulumi.set(__self__, "snapshot_schedule_policy", snapshot_schedule_policy)
+        pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "storage_type", storage_type)
+
+    @property
+    @pulumi.getter(name="autoGrownSizeGib")
+    def auto_grown_size_gib(self) -> str:
+        """
+        The size, in GiB, that this storage volume has expanded as a result of an auto grow policy. In the absence of auto-grow, the value is 0.
+        """
+        return pulumi.get(self, "auto_grown_size_gib")
+
+    @property
+    @pulumi.getter(name="bootVolume")
+    def boot_volume(self) -> bool:
+        """
+        Whether this volume is a boot volume. A boot volume is one which contains a boot LUN.
+        """
+        return pulumi.get(self, "boot_volume")
+
+    @property
+    @pulumi.getter(name="currentSizeGib")
+    def current_size_gib(self) -> str:
+        """
+        The current size of this storage volume, in GiB, including space reserved for snapshots. This size might be different than the requested size if the storage volume has been configured with auto grow or auto shrink.
+        """
+        return pulumi.get(self, "current_size_gib")
+
+    @property
+    @pulumi.getter(name="emergencySizeGib")
+    def emergency_size_gib(self) -> str:
+        """
+        Additional emergency size that was requested for this Volume, in GiB. current_size_gib includes this value.
+        """
+        return pulumi.get(self, "emergency_size_gib")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Labels as key value pairs.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="maxSizeGib")
+    def max_size_gib(self) -> str:
+        """
+        Maximum size volume can be expanded to in case of evergency, in GiB.
+        """
+        return pulumi.get(self, "max_size_gib")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of this `Volume`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/volumes/{volume}`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="originallyRequestedSizeGib")
+    def originally_requested_size_gib(self) -> str:
+        """
+        Originally requested size, in GiB.
+        """
+        return pulumi.get(self, "originally_requested_size_gib")
+
+    @property
+    @pulumi.getter
+    def pod(self) -> str:
+        """
+        Immutable. Pod name.
+        """
+        return pulumi.get(self, "pod")
+
+    @property
+    @pulumi.getter
+    def protocol(self) -> str:
+        """
+        Storage protocol for the Volume.
+        """
+        return pulumi.get(self, "protocol")
+
+    @property
+    @pulumi.getter(name="remainingSpaceGib")
+    def remaining_space_gib(self) -> str:
+        """
+        The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots.
+        """
+        return pulumi.get(self, "remaining_space_gib")
+
+    @property
+    @pulumi.getter(name="requestedSizeGib")
+    def requested_size_gib(self) -> str:
+        """
+        The requested size of this storage volume, in GiB.
+        """
+        return pulumi.get(self, "requested_size_gib")
+
+    @property
+    @pulumi.getter(name="snapshotAutoDeleteBehavior")
+    def snapshot_auto_delete_behavior(self) -> str:
+        """
+        The behavior to use when snapshot reserved space is full.
+        """
+        return pulumi.get(self, "snapshot_auto_delete_behavior")
+
+    @property
+    @pulumi.getter(name="snapshotEnabled")
+    def snapshot_enabled(self) -> bool:
+        """
+        Whether snapshots are enabled.
+        """
+        return pulumi.get(self, "snapshot_enabled")
+
+    @property
+    @pulumi.getter(name="snapshotReservationDetail")
+    def snapshot_reservation_detail(self) -> 'outputs.SnapshotReservationDetailResponse':
+        """
+        Details about snapshot space reservation and usage on the storage volume.
+        """
+        return pulumi.get(self, "snapshot_reservation_detail")
+
+    @property
+    @pulumi.getter(name="snapshotSchedulePolicy")
+    def snapshot_schedule_policy(self) -> str:
+        """
+        The name of the snapshot schedule policy in use for this volume, if any.
+        """
+        return pulumi.get(self, "snapshot_schedule_policy")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The state of this storage volume.
+        """
+        return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="storageType")
+    def storage_type(self) -> str:
+        """
+        The storage type for this volume.
+        """
+        return pulumi.get(self, "storage_type")
 
 

@@ -19,6 +19,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
         public readonly Outputs.RRSetRoutingPolicyGeoPolicyResponse Geo;
         public readonly Outputs.RRSetRoutingPolicyGeoPolicyResponse GeoPolicy;
         public readonly string Kind;
+        public readonly Outputs.RRSetRoutingPolicyPrimaryBackupPolicyResponse PrimaryBackup;
         public readonly Outputs.RRSetRoutingPolicyWrrPolicyResponse Wrr;
         public readonly Outputs.RRSetRoutingPolicyWrrPolicyResponse WrrPolicy;
 
@@ -30,6 +31,8 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
 
             string kind,
 
+            Outputs.RRSetRoutingPolicyPrimaryBackupPolicyResponse primaryBackup,
+
             Outputs.RRSetRoutingPolicyWrrPolicyResponse wrr,
 
             Outputs.RRSetRoutingPolicyWrrPolicyResponse wrrPolicy)
@@ -37,6 +40,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
             Geo = geo;
             GeoPolicy = geoPolicy;
             Kind = kind;
+            PrimaryBackup = primaryBackup;
             Wrr = wrr;
             WrrPolicy = wrrPolicy;
         }

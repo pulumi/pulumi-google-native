@@ -2084,6 +2084,8 @@ const (
 	DiscoveredAnalysisStatusPending = DiscoveredAnalysisStatus("PENDING")
 	// Resource is being analyzed.
 	DiscoveredAnalysisStatusScanning = DiscoveredAnalysisStatus("SCANNING")
+	// Analysis has completed
+	DiscoveredAnalysisStatusComplete = DiscoveredAnalysisStatus("COMPLETE")
 	// Analysis has finished successfully.
 	DiscoveredAnalysisStatusFinishedSuccess = DiscoveredAnalysisStatus("FINISHED_SUCCESS")
 	// Analysis has finished unsuccessfully, the analysis itself is in a bad state.

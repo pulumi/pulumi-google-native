@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 {
 
     /// <summary>
-    /// Sets the scheduling options for an Instance. NextID: 21
+    /// Sets the scheduling options for an Instance.
     /// </summary>
     public sealed class SchedulingArgs : global::Pulumi.ResourceArgs
     {

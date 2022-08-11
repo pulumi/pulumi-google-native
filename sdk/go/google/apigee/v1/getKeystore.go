@@ -29,7 +29,7 @@ type LookupKeystoreArgs struct {
 type LookupKeystoreResult struct {
 	// Aliases in this keystore.
 	Aliases []string `pulumi:"aliases"`
-	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:].-]{1,255}`.
 	Name string `pulumi:"name"`
 }
 
@@ -75,7 +75,7 @@ func (o LookupKeystoreResultOutput) Aliases() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupKeystoreResult) []string { return v.Aliases }).(pulumi.StringArrayOutput)
 }
 
-// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+// Resource ID for this keystore. Values must match the regular expression `[\w[:space:].-]{1,255}`.
 func (o LookupKeystoreResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupKeystoreResult) string { return v.Name }).(pulumi.StringOutput)
 }

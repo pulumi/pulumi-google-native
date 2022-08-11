@@ -348,6 +348,515 @@ func (in *logicalNetworkInterfaceNetworkTypePtr) ToLogicalNetworkInterfaceNetwor
 	return pulumi.ToOutputWithContext(ctx, in).(LogicalNetworkInterfaceNetworkTypePtrOutput)
 }
 
+// The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
+type LunMultiprotocolType string
+
+const (
+	// Server has no OS specified.
+	LunMultiprotocolTypeMultiprotocolTypeUnspecified = LunMultiprotocolType("MULTIPROTOCOL_TYPE_UNSPECIFIED")
+	// Server with Linux OS.
+	LunMultiprotocolTypeLinux = LunMultiprotocolType("LINUX")
+)
+
+func (LunMultiprotocolType) ElementType() reflect.Type {
+	return reflect.TypeOf((*LunMultiprotocolType)(nil)).Elem()
+}
+
+func (e LunMultiprotocolType) ToLunMultiprotocolTypeOutput() LunMultiprotocolTypeOutput {
+	return pulumi.ToOutput(e).(LunMultiprotocolTypeOutput)
+}
+
+func (e LunMultiprotocolType) ToLunMultiprotocolTypeOutputWithContext(ctx context.Context) LunMultiprotocolTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LunMultiprotocolTypeOutput)
+}
+
+func (e LunMultiprotocolType) ToLunMultiprotocolTypePtrOutput() LunMultiprotocolTypePtrOutput {
+	return e.ToLunMultiprotocolTypePtrOutputWithContext(context.Background())
+}
+
+func (e LunMultiprotocolType) ToLunMultiprotocolTypePtrOutputWithContext(ctx context.Context) LunMultiprotocolTypePtrOutput {
+	return LunMultiprotocolType(e).ToLunMultiprotocolTypeOutputWithContext(ctx).ToLunMultiprotocolTypePtrOutputWithContext(ctx)
+}
+
+func (e LunMultiprotocolType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LunMultiprotocolType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LunMultiprotocolType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LunMultiprotocolType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LunMultiprotocolTypeOutput struct{ *pulumi.OutputState }
+
+func (LunMultiprotocolTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LunMultiprotocolType)(nil)).Elem()
+}
+
+func (o LunMultiprotocolTypeOutput) ToLunMultiprotocolTypeOutput() LunMultiprotocolTypeOutput {
+	return o
+}
+
+func (o LunMultiprotocolTypeOutput) ToLunMultiprotocolTypeOutputWithContext(ctx context.Context) LunMultiprotocolTypeOutput {
+	return o
+}
+
+func (o LunMultiprotocolTypeOutput) ToLunMultiprotocolTypePtrOutput() LunMultiprotocolTypePtrOutput {
+	return o.ToLunMultiprotocolTypePtrOutputWithContext(context.Background())
+}
+
+func (o LunMultiprotocolTypeOutput) ToLunMultiprotocolTypePtrOutputWithContext(ctx context.Context) LunMultiprotocolTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LunMultiprotocolType) *LunMultiprotocolType {
+		return &v
+	}).(LunMultiprotocolTypePtrOutput)
+}
+
+func (o LunMultiprotocolTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LunMultiprotocolTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LunMultiprotocolType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LunMultiprotocolTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LunMultiprotocolTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LunMultiprotocolType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LunMultiprotocolTypePtrOutput struct{ *pulumi.OutputState }
+
+func (LunMultiprotocolTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LunMultiprotocolType)(nil)).Elem()
+}
+
+func (o LunMultiprotocolTypePtrOutput) ToLunMultiprotocolTypePtrOutput() LunMultiprotocolTypePtrOutput {
+	return o
+}
+
+func (o LunMultiprotocolTypePtrOutput) ToLunMultiprotocolTypePtrOutputWithContext(ctx context.Context) LunMultiprotocolTypePtrOutput {
+	return o
+}
+
+func (o LunMultiprotocolTypePtrOutput) Elem() LunMultiprotocolTypeOutput {
+	return o.ApplyT(func(v *LunMultiprotocolType) LunMultiprotocolType {
+		if v != nil {
+			return *v
+		}
+		var ret LunMultiprotocolType
+		return ret
+	}).(LunMultiprotocolTypeOutput)
+}
+
+func (o LunMultiprotocolTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LunMultiprotocolTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LunMultiprotocolType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LunMultiprotocolTypeInput is an input type that accepts LunMultiprotocolTypeArgs and LunMultiprotocolTypeOutput values.
+// You can construct a concrete instance of `LunMultiprotocolTypeInput` via:
+//
+//          LunMultiprotocolTypeArgs{...}
+type LunMultiprotocolTypeInput interface {
+	pulumi.Input
+
+	ToLunMultiprotocolTypeOutput() LunMultiprotocolTypeOutput
+	ToLunMultiprotocolTypeOutputWithContext(context.Context) LunMultiprotocolTypeOutput
+}
+
+var lunMultiprotocolTypePtrType = reflect.TypeOf((**LunMultiprotocolType)(nil)).Elem()
+
+type LunMultiprotocolTypePtrInput interface {
+	pulumi.Input
+
+	ToLunMultiprotocolTypePtrOutput() LunMultiprotocolTypePtrOutput
+	ToLunMultiprotocolTypePtrOutputWithContext(context.Context) LunMultiprotocolTypePtrOutput
+}
+
+type lunMultiprotocolTypePtr string
+
+func LunMultiprotocolTypePtr(v string) LunMultiprotocolTypePtrInput {
+	return (*lunMultiprotocolTypePtr)(&v)
+}
+
+func (*lunMultiprotocolTypePtr) ElementType() reflect.Type {
+	return lunMultiprotocolTypePtrType
+}
+
+func (in *lunMultiprotocolTypePtr) ToLunMultiprotocolTypePtrOutput() LunMultiprotocolTypePtrOutput {
+	return pulumi.ToOutput(in).(LunMultiprotocolTypePtrOutput)
+}
+
+func (in *lunMultiprotocolTypePtr) ToLunMultiprotocolTypePtrOutputWithContext(ctx context.Context) LunMultiprotocolTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LunMultiprotocolTypePtrOutput)
+}
+
+// The state of this storage volume.
+type LunState string
+
+const (
+	// The LUN is in an unknown state.
+	LunStateStateUnspecified = LunState("STATE_UNSPECIFIED")
+	// The LUN is being created.
+	LunStateCreating = LunState("CREATING")
+	// The LUN is being updated.
+	LunStateUpdating = LunState("UPDATING")
+	// The LUN is ready for use.
+	LunStateReady = LunState("READY")
+	// The LUN has been requested to be deleted.
+	LunStateDeleting = LunState("DELETING")
+)
+
+func (LunState) ElementType() reflect.Type {
+	return reflect.TypeOf((*LunState)(nil)).Elem()
+}
+
+func (e LunState) ToLunStateOutput() LunStateOutput {
+	return pulumi.ToOutput(e).(LunStateOutput)
+}
+
+func (e LunState) ToLunStateOutputWithContext(ctx context.Context) LunStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LunStateOutput)
+}
+
+func (e LunState) ToLunStatePtrOutput() LunStatePtrOutput {
+	return e.ToLunStatePtrOutputWithContext(context.Background())
+}
+
+func (e LunState) ToLunStatePtrOutputWithContext(ctx context.Context) LunStatePtrOutput {
+	return LunState(e).ToLunStateOutputWithContext(ctx).ToLunStatePtrOutputWithContext(ctx)
+}
+
+func (e LunState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LunState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LunState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LunState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LunStateOutput struct{ *pulumi.OutputState }
+
+func (LunStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LunState)(nil)).Elem()
+}
+
+func (o LunStateOutput) ToLunStateOutput() LunStateOutput {
+	return o
+}
+
+func (o LunStateOutput) ToLunStateOutputWithContext(ctx context.Context) LunStateOutput {
+	return o
+}
+
+func (o LunStateOutput) ToLunStatePtrOutput() LunStatePtrOutput {
+	return o.ToLunStatePtrOutputWithContext(context.Background())
+}
+
+func (o LunStateOutput) ToLunStatePtrOutputWithContext(ctx context.Context) LunStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LunState) *LunState {
+		return &v
+	}).(LunStatePtrOutput)
+}
+
+func (o LunStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LunStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LunState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LunStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LunStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LunState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LunStatePtrOutput struct{ *pulumi.OutputState }
+
+func (LunStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LunState)(nil)).Elem()
+}
+
+func (o LunStatePtrOutput) ToLunStatePtrOutput() LunStatePtrOutput {
+	return o
+}
+
+func (o LunStatePtrOutput) ToLunStatePtrOutputWithContext(ctx context.Context) LunStatePtrOutput {
+	return o
+}
+
+func (o LunStatePtrOutput) Elem() LunStateOutput {
+	return o.ApplyT(func(v *LunState) LunState {
+		if v != nil {
+			return *v
+		}
+		var ret LunState
+		return ret
+	}).(LunStateOutput)
+}
+
+func (o LunStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LunStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LunState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LunStateInput is an input type that accepts LunStateArgs and LunStateOutput values.
+// You can construct a concrete instance of `LunStateInput` via:
+//
+//          LunStateArgs{...}
+type LunStateInput interface {
+	pulumi.Input
+
+	ToLunStateOutput() LunStateOutput
+	ToLunStateOutputWithContext(context.Context) LunStateOutput
+}
+
+var lunStatePtrType = reflect.TypeOf((**LunState)(nil)).Elem()
+
+type LunStatePtrInput interface {
+	pulumi.Input
+
+	ToLunStatePtrOutput() LunStatePtrOutput
+	ToLunStatePtrOutputWithContext(context.Context) LunStatePtrOutput
+}
+
+type lunStatePtr string
+
+func LunStatePtr(v string) LunStatePtrInput {
+	return (*lunStatePtr)(&v)
+}
+
+func (*lunStatePtr) ElementType() reflect.Type {
+	return lunStatePtrType
+}
+
+func (in *lunStatePtr) ToLunStatePtrOutput() LunStatePtrOutput {
+	return pulumi.ToOutput(in).(LunStatePtrOutput)
+}
+
+func (in *lunStatePtr) ToLunStatePtrOutputWithContext(ctx context.Context) LunStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LunStatePtrOutput)
+}
+
+// The storage type for this LUN.
+type LunStorageType string
+
+const (
+	// The storage type for this LUN is unknown.
+	LunStorageTypeStorageTypeUnspecified = LunStorageType("STORAGE_TYPE_UNSPECIFIED")
+	// This storage type for this LUN is SSD.
+	LunStorageTypeSsd = LunStorageType("SSD")
+	// This storage type for this LUN is HDD.
+	LunStorageTypeHdd = LunStorageType("HDD")
+)
+
+func (LunStorageType) ElementType() reflect.Type {
+	return reflect.TypeOf((*LunStorageType)(nil)).Elem()
+}
+
+func (e LunStorageType) ToLunStorageTypeOutput() LunStorageTypeOutput {
+	return pulumi.ToOutput(e).(LunStorageTypeOutput)
+}
+
+func (e LunStorageType) ToLunStorageTypeOutputWithContext(ctx context.Context) LunStorageTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LunStorageTypeOutput)
+}
+
+func (e LunStorageType) ToLunStorageTypePtrOutput() LunStorageTypePtrOutput {
+	return e.ToLunStorageTypePtrOutputWithContext(context.Background())
+}
+
+func (e LunStorageType) ToLunStorageTypePtrOutputWithContext(ctx context.Context) LunStorageTypePtrOutput {
+	return LunStorageType(e).ToLunStorageTypeOutputWithContext(ctx).ToLunStorageTypePtrOutputWithContext(ctx)
+}
+
+func (e LunStorageType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LunStorageType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LunStorageType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LunStorageType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LunStorageTypeOutput struct{ *pulumi.OutputState }
+
+func (LunStorageTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LunStorageType)(nil)).Elem()
+}
+
+func (o LunStorageTypeOutput) ToLunStorageTypeOutput() LunStorageTypeOutput {
+	return o
+}
+
+func (o LunStorageTypeOutput) ToLunStorageTypeOutputWithContext(ctx context.Context) LunStorageTypeOutput {
+	return o
+}
+
+func (o LunStorageTypeOutput) ToLunStorageTypePtrOutput() LunStorageTypePtrOutput {
+	return o.ToLunStorageTypePtrOutputWithContext(context.Background())
+}
+
+func (o LunStorageTypeOutput) ToLunStorageTypePtrOutputWithContext(ctx context.Context) LunStorageTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LunStorageType) *LunStorageType {
+		return &v
+	}).(LunStorageTypePtrOutput)
+}
+
+func (o LunStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LunStorageTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LunStorageType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LunStorageTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LunStorageTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LunStorageType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LunStorageTypePtrOutput struct{ *pulumi.OutputState }
+
+func (LunStorageTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LunStorageType)(nil)).Elem()
+}
+
+func (o LunStorageTypePtrOutput) ToLunStorageTypePtrOutput() LunStorageTypePtrOutput {
+	return o
+}
+
+func (o LunStorageTypePtrOutput) ToLunStorageTypePtrOutputWithContext(ctx context.Context) LunStorageTypePtrOutput {
+	return o
+}
+
+func (o LunStorageTypePtrOutput) Elem() LunStorageTypeOutput {
+	return o.ApplyT(func(v *LunStorageType) LunStorageType {
+		if v != nil {
+			return *v
+		}
+		var ret LunStorageType
+		return ret
+	}).(LunStorageTypeOutput)
+}
+
+func (o LunStorageTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LunStorageTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LunStorageType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LunStorageTypeInput is an input type that accepts LunStorageTypeArgs and LunStorageTypeOutput values.
+// You can construct a concrete instance of `LunStorageTypeInput` via:
+//
+//          LunStorageTypeArgs{...}
+type LunStorageTypeInput interface {
+	pulumi.Input
+
+	ToLunStorageTypeOutput() LunStorageTypeOutput
+	ToLunStorageTypeOutputWithContext(context.Context) LunStorageTypeOutput
+}
+
+var lunStorageTypePtrType = reflect.TypeOf((**LunStorageType)(nil)).Elem()
+
+type LunStorageTypePtrInput interface {
+	pulumi.Input
+
+	ToLunStorageTypePtrOutput() LunStorageTypePtrOutput
+	ToLunStorageTypePtrOutputWithContext(context.Context) LunStorageTypePtrOutput
+}
+
+type lunStorageTypePtr string
+
+func LunStorageTypePtr(v string) LunStorageTypePtrInput {
+	return (*lunStorageTypePtr)(&v)
+}
+
+func (*lunStorageTypePtr) ElementType() reflect.Type {
+	return lunStorageTypePtrType
+}
+
+func (in *lunStorageTypePtr) ToLunStorageTypePtrOutput() LunStorageTypePtrOutput {
+	return pulumi.ToOutput(in).(LunStorageTypePtrOutput)
+}
+
+func (in *lunStorageTypePtr) ToLunStorageTypePtrOutputWithContext(ctx context.Context) LunStorageTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LunStorageTypePtrOutput)
+}
+
 // Interconnect bandwidth. Set only when type is CLIENT.
 type NetworkConfigBandwidth string
 
@@ -1370,11 +1879,528 @@ func (in *volumeConfigTypePtr) ToVolumeConfigTypePtrOutputWithContext(ctx contex
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeConfigTypePtrOutput)
 }
 
+// The behavior to use when snapshot reserved space is full.
+type VolumeSnapshotAutoDeleteBehavior string
+
+const (
+	// The unspecified behavior.
+	VolumeSnapshotAutoDeleteBehaviorSnapshotAutoDeleteBehaviorUnspecified = VolumeSnapshotAutoDeleteBehavior("SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED")
+	// Don't delete any snapshots. This disables new snapshot creation, as long as the snapshot reserved space is full.
+	VolumeSnapshotAutoDeleteBehaviorDisabled = VolumeSnapshotAutoDeleteBehavior("DISABLED")
+	// Delete the oldest snapshots first.
+	VolumeSnapshotAutoDeleteBehaviorOldestFirst = VolumeSnapshotAutoDeleteBehavior("OLDEST_FIRST")
+	// Delete the newest snapshots first.
+	VolumeSnapshotAutoDeleteBehaviorNewestFirst = VolumeSnapshotAutoDeleteBehavior("NEWEST_FIRST")
+)
+
+func (VolumeSnapshotAutoDeleteBehavior) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeSnapshotAutoDeleteBehavior)(nil)).Elem()
+}
+
+func (e VolumeSnapshotAutoDeleteBehavior) ToVolumeSnapshotAutoDeleteBehaviorOutput() VolumeSnapshotAutoDeleteBehaviorOutput {
+	return pulumi.ToOutput(e).(VolumeSnapshotAutoDeleteBehaviorOutput)
+}
+
+func (e VolumeSnapshotAutoDeleteBehavior) ToVolumeSnapshotAutoDeleteBehaviorOutputWithContext(ctx context.Context) VolumeSnapshotAutoDeleteBehaviorOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VolumeSnapshotAutoDeleteBehaviorOutput)
+}
+
+func (e VolumeSnapshotAutoDeleteBehavior) ToVolumeSnapshotAutoDeleteBehaviorPtrOutput() VolumeSnapshotAutoDeleteBehaviorPtrOutput {
+	return e.ToVolumeSnapshotAutoDeleteBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (e VolumeSnapshotAutoDeleteBehavior) ToVolumeSnapshotAutoDeleteBehaviorPtrOutputWithContext(ctx context.Context) VolumeSnapshotAutoDeleteBehaviorPtrOutput {
+	return VolumeSnapshotAutoDeleteBehavior(e).ToVolumeSnapshotAutoDeleteBehaviorOutputWithContext(ctx).ToVolumeSnapshotAutoDeleteBehaviorPtrOutputWithContext(ctx)
+}
+
+func (e VolumeSnapshotAutoDeleteBehavior) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VolumeSnapshotAutoDeleteBehavior) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VolumeSnapshotAutoDeleteBehavior) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VolumeSnapshotAutoDeleteBehavior) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VolumeSnapshotAutoDeleteBehaviorOutput struct{ *pulumi.OutputState }
+
+func (VolumeSnapshotAutoDeleteBehaviorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeSnapshotAutoDeleteBehavior)(nil)).Elem()
+}
+
+func (o VolumeSnapshotAutoDeleteBehaviorOutput) ToVolumeSnapshotAutoDeleteBehaviorOutput() VolumeSnapshotAutoDeleteBehaviorOutput {
+	return o
+}
+
+func (o VolumeSnapshotAutoDeleteBehaviorOutput) ToVolumeSnapshotAutoDeleteBehaviorOutputWithContext(ctx context.Context) VolumeSnapshotAutoDeleteBehaviorOutput {
+	return o
+}
+
+func (o VolumeSnapshotAutoDeleteBehaviorOutput) ToVolumeSnapshotAutoDeleteBehaviorPtrOutput() VolumeSnapshotAutoDeleteBehaviorPtrOutput {
+	return o.ToVolumeSnapshotAutoDeleteBehaviorPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeSnapshotAutoDeleteBehaviorOutput) ToVolumeSnapshotAutoDeleteBehaviorPtrOutputWithContext(ctx context.Context) VolumeSnapshotAutoDeleteBehaviorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeSnapshotAutoDeleteBehavior) *VolumeSnapshotAutoDeleteBehavior {
+		return &v
+	}).(VolumeSnapshotAutoDeleteBehaviorPtrOutput)
+}
+
+func (o VolumeSnapshotAutoDeleteBehaviorOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VolumeSnapshotAutoDeleteBehaviorOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VolumeSnapshotAutoDeleteBehavior) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VolumeSnapshotAutoDeleteBehaviorOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeSnapshotAutoDeleteBehaviorOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VolumeSnapshotAutoDeleteBehavior) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VolumeSnapshotAutoDeleteBehaviorPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeSnapshotAutoDeleteBehaviorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeSnapshotAutoDeleteBehavior)(nil)).Elem()
+}
+
+func (o VolumeSnapshotAutoDeleteBehaviorPtrOutput) ToVolumeSnapshotAutoDeleteBehaviorPtrOutput() VolumeSnapshotAutoDeleteBehaviorPtrOutput {
+	return o
+}
+
+func (o VolumeSnapshotAutoDeleteBehaviorPtrOutput) ToVolumeSnapshotAutoDeleteBehaviorPtrOutputWithContext(ctx context.Context) VolumeSnapshotAutoDeleteBehaviorPtrOutput {
+	return o
+}
+
+func (o VolumeSnapshotAutoDeleteBehaviorPtrOutput) Elem() VolumeSnapshotAutoDeleteBehaviorOutput {
+	return o.ApplyT(func(v *VolumeSnapshotAutoDeleteBehavior) VolumeSnapshotAutoDeleteBehavior {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeSnapshotAutoDeleteBehavior
+		return ret
+	}).(VolumeSnapshotAutoDeleteBehaviorOutput)
+}
+
+func (o VolumeSnapshotAutoDeleteBehaviorPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeSnapshotAutoDeleteBehaviorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VolumeSnapshotAutoDeleteBehavior) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VolumeSnapshotAutoDeleteBehaviorInput is an input type that accepts VolumeSnapshotAutoDeleteBehaviorArgs and VolumeSnapshotAutoDeleteBehaviorOutput values.
+// You can construct a concrete instance of `VolumeSnapshotAutoDeleteBehaviorInput` via:
+//
+//          VolumeSnapshotAutoDeleteBehaviorArgs{...}
+type VolumeSnapshotAutoDeleteBehaviorInput interface {
+	pulumi.Input
+
+	ToVolumeSnapshotAutoDeleteBehaviorOutput() VolumeSnapshotAutoDeleteBehaviorOutput
+	ToVolumeSnapshotAutoDeleteBehaviorOutputWithContext(context.Context) VolumeSnapshotAutoDeleteBehaviorOutput
+}
+
+var volumeSnapshotAutoDeleteBehaviorPtrType = reflect.TypeOf((**VolumeSnapshotAutoDeleteBehavior)(nil)).Elem()
+
+type VolumeSnapshotAutoDeleteBehaviorPtrInput interface {
+	pulumi.Input
+
+	ToVolumeSnapshotAutoDeleteBehaviorPtrOutput() VolumeSnapshotAutoDeleteBehaviorPtrOutput
+	ToVolumeSnapshotAutoDeleteBehaviorPtrOutputWithContext(context.Context) VolumeSnapshotAutoDeleteBehaviorPtrOutput
+}
+
+type volumeSnapshotAutoDeleteBehaviorPtr string
+
+func VolumeSnapshotAutoDeleteBehaviorPtr(v string) VolumeSnapshotAutoDeleteBehaviorPtrInput {
+	return (*volumeSnapshotAutoDeleteBehaviorPtr)(&v)
+}
+
+func (*volumeSnapshotAutoDeleteBehaviorPtr) ElementType() reflect.Type {
+	return volumeSnapshotAutoDeleteBehaviorPtrType
+}
+
+func (in *volumeSnapshotAutoDeleteBehaviorPtr) ToVolumeSnapshotAutoDeleteBehaviorPtrOutput() VolumeSnapshotAutoDeleteBehaviorPtrOutput {
+	return pulumi.ToOutput(in).(VolumeSnapshotAutoDeleteBehaviorPtrOutput)
+}
+
+func (in *volumeSnapshotAutoDeleteBehaviorPtr) ToVolumeSnapshotAutoDeleteBehaviorPtrOutputWithContext(ctx context.Context) VolumeSnapshotAutoDeleteBehaviorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VolumeSnapshotAutoDeleteBehaviorPtrOutput)
+}
+
+// The state of this storage volume.
+type VolumeState string
+
+const (
+	// The storage volume is in an unknown state.
+	VolumeStateStateUnspecified = VolumeState("STATE_UNSPECIFIED")
+	// The storage volume is being created.
+	VolumeStateCreating = VolumeState("CREATING")
+	// The storage volume is ready for use.
+	VolumeStateReady = VolumeState("READY")
+	// The storage volume has been requested to be deleted.
+	VolumeStateDeleting = VolumeState("DELETING")
+)
+
+func (VolumeState) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeState)(nil)).Elem()
+}
+
+func (e VolumeState) ToVolumeStateOutput() VolumeStateOutput {
+	return pulumi.ToOutput(e).(VolumeStateOutput)
+}
+
+func (e VolumeState) ToVolumeStateOutputWithContext(ctx context.Context) VolumeStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VolumeStateOutput)
+}
+
+func (e VolumeState) ToVolumeStatePtrOutput() VolumeStatePtrOutput {
+	return e.ToVolumeStatePtrOutputWithContext(context.Background())
+}
+
+func (e VolumeState) ToVolumeStatePtrOutputWithContext(ctx context.Context) VolumeStatePtrOutput {
+	return VolumeState(e).ToVolumeStateOutputWithContext(ctx).ToVolumeStatePtrOutputWithContext(ctx)
+}
+
+func (e VolumeState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VolumeState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VolumeState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VolumeState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VolumeStateOutput struct{ *pulumi.OutputState }
+
+func (VolumeStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeState)(nil)).Elem()
+}
+
+func (o VolumeStateOutput) ToVolumeStateOutput() VolumeStateOutput {
+	return o
+}
+
+func (o VolumeStateOutput) ToVolumeStateOutputWithContext(ctx context.Context) VolumeStateOutput {
+	return o
+}
+
+func (o VolumeStateOutput) ToVolumeStatePtrOutput() VolumeStatePtrOutput {
+	return o.ToVolumeStatePtrOutputWithContext(context.Background())
+}
+
+func (o VolumeStateOutput) ToVolumeStatePtrOutputWithContext(ctx context.Context) VolumeStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeState) *VolumeState {
+		return &v
+	}).(VolumeStatePtrOutput)
+}
+
+func (o VolumeStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VolumeStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VolumeState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VolumeStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VolumeState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VolumeStatePtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeState)(nil)).Elem()
+}
+
+func (o VolumeStatePtrOutput) ToVolumeStatePtrOutput() VolumeStatePtrOutput {
+	return o
+}
+
+func (o VolumeStatePtrOutput) ToVolumeStatePtrOutputWithContext(ctx context.Context) VolumeStatePtrOutput {
+	return o
+}
+
+func (o VolumeStatePtrOutput) Elem() VolumeStateOutput {
+	return o.ApplyT(func(v *VolumeState) VolumeState {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeState
+		return ret
+	}).(VolumeStateOutput)
+}
+
+func (o VolumeStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VolumeState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VolumeStateInput is an input type that accepts VolumeStateArgs and VolumeStateOutput values.
+// You can construct a concrete instance of `VolumeStateInput` via:
+//
+//          VolumeStateArgs{...}
+type VolumeStateInput interface {
+	pulumi.Input
+
+	ToVolumeStateOutput() VolumeStateOutput
+	ToVolumeStateOutputWithContext(context.Context) VolumeStateOutput
+}
+
+var volumeStatePtrType = reflect.TypeOf((**VolumeState)(nil)).Elem()
+
+type VolumeStatePtrInput interface {
+	pulumi.Input
+
+	ToVolumeStatePtrOutput() VolumeStatePtrOutput
+	ToVolumeStatePtrOutputWithContext(context.Context) VolumeStatePtrOutput
+}
+
+type volumeStatePtr string
+
+func VolumeStatePtr(v string) VolumeStatePtrInput {
+	return (*volumeStatePtr)(&v)
+}
+
+func (*volumeStatePtr) ElementType() reflect.Type {
+	return volumeStatePtrType
+}
+
+func (in *volumeStatePtr) ToVolumeStatePtrOutput() VolumeStatePtrOutput {
+	return pulumi.ToOutput(in).(VolumeStatePtrOutput)
+}
+
+func (in *volumeStatePtr) ToVolumeStatePtrOutputWithContext(ctx context.Context) VolumeStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VolumeStatePtrOutput)
+}
+
+// The storage type for this volume.
+type VolumeStorageType string
+
+const (
+	// The storage type for this volume is unknown.
+	VolumeStorageTypeStorageTypeUnspecified = VolumeStorageType("STORAGE_TYPE_UNSPECIFIED")
+	// The storage type for this volume is SSD.
+	VolumeStorageTypeSsd = VolumeStorageType("SSD")
+	// This storage type for this volume is HDD.
+	VolumeStorageTypeHdd = VolumeStorageType("HDD")
+)
+
+func (VolumeStorageType) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeStorageType)(nil)).Elem()
+}
+
+func (e VolumeStorageType) ToVolumeStorageTypeOutput() VolumeStorageTypeOutput {
+	return pulumi.ToOutput(e).(VolumeStorageTypeOutput)
+}
+
+func (e VolumeStorageType) ToVolumeStorageTypeOutputWithContext(ctx context.Context) VolumeStorageTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VolumeStorageTypeOutput)
+}
+
+func (e VolumeStorageType) ToVolumeStorageTypePtrOutput() VolumeStorageTypePtrOutput {
+	return e.ToVolumeStorageTypePtrOutputWithContext(context.Background())
+}
+
+func (e VolumeStorageType) ToVolumeStorageTypePtrOutputWithContext(ctx context.Context) VolumeStorageTypePtrOutput {
+	return VolumeStorageType(e).ToVolumeStorageTypeOutputWithContext(ctx).ToVolumeStorageTypePtrOutputWithContext(ctx)
+}
+
+func (e VolumeStorageType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VolumeStorageType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VolumeStorageType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VolumeStorageType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VolumeStorageTypeOutput struct{ *pulumi.OutputState }
+
+func (VolumeStorageTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeStorageType)(nil)).Elem()
+}
+
+func (o VolumeStorageTypeOutput) ToVolumeStorageTypeOutput() VolumeStorageTypeOutput {
+	return o
+}
+
+func (o VolumeStorageTypeOutput) ToVolumeStorageTypeOutputWithContext(ctx context.Context) VolumeStorageTypeOutput {
+	return o
+}
+
+func (o VolumeStorageTypeOutput) ToVolumeStorageTypePtrOutput() VolumeStorageTypePtrOutput {
+	return o.ToVolumeStorageTypePtrOutputWithContext(context.Background())
+}
+
+func (o VolumeStorageTypeOutput) ToVolumeStorageTypePtrOutputWithContext(ctx context.Context) VolumeStorageTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeStorageType) *VolumeStorageType {
+		return &v
+	}).(VolumeStorageTypePtrOutput)
+}
+
+func (o VolumeStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VolumeStorageTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VolumeStorageType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VolumeStorageTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeStorageTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VolumeStorageType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VolumeStorageTypePtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeStorageTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeStorageType)(nil)).Elem()
+}
+
+func (o VolumeStorageTypePtrOutput) ToVolumeStorageTypePtrOutput() VolumeStorageTypePtrOutput {
+	return o
+}
+
+func (o VolumeStorageTypePtrOutput) ToVolumeStorageTypePtrOutputWithContext(ctx context.Context) VolumeStorageTypePtrOutput {
+	return o
+}
+
+func (o VolumeStorageTypePtrOutput) Elem() VolumeStorageTypeOutput {
+	return o.ApplyT(func(v *VolumeStorageType) VolumeStorageType {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeStorageType
+		return ret
+	}).(VolumeStorageTypeOutput)
+}
+
+func (o VolumeStorageTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeStorageTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VolumeStorageType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VolumeStorageTypeInput is an input type that accepts VolumeStorageTypeArgs and VolumeStorageTypeOutput values.
+// You can construct a concrete instance of `VolumeStorageTypeInput` via:
+//
+//          VolumeStorageTypeArgs{...}
+type VolumeStorageTypeInput interface {
+	pulumi.Input
+
+	ToVolumeStorageTypeOutput() VolumeStorageTypeOutput
+	ToVolumeStorageTypeOutputWithContext(context.Context) VolumeStorageTypeOutput
+}
+
+var volumeStorageTypePtrType = reflect.TypeOf((**VolumeStorageType)(nil)).Elem()
+
+type VolumeStorageTypePtrInput interface {
+	pulumi.Input
+
+	ToVolumeStorageTypePtrOutput() VolumeStorageTypePtrOutput
+	ToVolumeStorageTypePtrOutputWithContext(context.Context) VolumeStorageTypePtrOutput
+}
+
+type volumeStorageTypePtr string
+
+func VolumeStorageTypePtr(v string) VolumeStorageTypePtrInput {
+	return (*volumeStorageTypePtr)(&v)
+}
+
+func (*volumeStorageTypePtr) ElementType() reflect.Type {
+	return volumeStorageTypePtrType
+}
+
+func (in *volumeStorageTypePtr) ToVolumeStorageTypePtrOutput() VolumeStorageTypePtrOutput {
+	return pulumi.ToOutput(in).(VolumeStorageTypePtrOutput)
+}
+
+func (in *volumeStorageTypePtr) ToVolumeStorageTypePtrOutputWithContext(ctx context.Context) VolumeStorageTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VolumeStorageTypePtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigNetworkConfigInput)(nil)).Elem(), InstanceConfigNetworkConfig("NETWORKCONFIG_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigNetworkConfigPtrInput)(nil)).Elem(), InstanceConfigNetworkConfig("NETWORKCONFIG_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LogicalNetworkInterfaceNetworkTypeInput)(nil)).Elem(), LogicalNetworkInterfaceNetworkType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LogicalNetworkInterfaceNetworkTypePtrInput)(nil)).Elem(), LogicalNetworkInterfaceNetworkType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LunMultiprotocolTypeInput)(nil)).Elem(), LunMultiprotocolType("MULTIPROTOCOL_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LunMultiprotocolTypePtrInput)(nil)).Elem(), LunMultiprotocolType("MULTIPROTOCOL_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LunStateInput)(nil)).Elem(), LunState("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LunStatePtrInput)(nil)).Elem(), LunState("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LunStorageTypeInput)(nil)).Elem(), LunStorageType("STORAGE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LunStorageTypePtrInput)(nil)).Elem(), LunStorageType("STORAGE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigBandwidthInput)(nil)).Elem(), NetworkConfigBandwidth("BANDWIDTH_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigBandwidthPtrInput)(nil)).Elem(), NetworkConfigBandwidth("BANDWIDTH_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigServiceCidrInput)(nil)).Elem(), NetworkConfigServiceCidr("SERVICE_CIDR_UNSPECIFIED"))
@@ -1387,10 +2413,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigProtocolPtrInput)(nil)).Elem(), VolumeConfigProtocol("PROTOCOL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigTypeInput)(nil)).Elem(), VolumeConfigType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigTypePtrInput)(nil)).Elem(), VolumeConfigType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotAutoDeleteBehaviorInput)(nil)).Elem(), VolumeSnapshotAutoDeleteBehavior("SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotAutoDeleteBehaviorPtrInput)(nil)).Elem(), VolumeSnapshotAutoDeleteBehavior("SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeStateInput)(nil)).Elem(), VolumeState("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeStatePtrInput)(nil)).Elem(), VolumeState("STATE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeStorageTypeInput)(nil)).Elem(), VolumeStorageType("STORAGE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeStorageTypePtrInput)(nil)).Elem(), VolumeStorageType("STORAGE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterOutputType(InstanceConfigNetworkConfigOutput{})
 	pulumi.RegisterOutputType(InstanceConfigNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkInterfaceNetworkTypeOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkInterfaceNetworkTypePtrOutput{})
+	pulumi.RegisterOutputType(LunMultiprotocolTypeOutput{})
+	pulumi.RegisterOutputType(LunMultiprotocolTypePtrOutput{})
+	pulumi.RegisterOutputType(LunStateOutput{})
+	pulumi.RegisterOutputType(LunStatePtrOutput{})
+	pulumi.RegisterOutputType(LunStorageTypeOutput{})
+	pulumi.RegisterOutputType(LunStorageTypePtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigBandwidthOutput{})
 	pulumi.RegisterOutputType(NetworkConfigBandwidthPtrOutput{})
 	pulumi.RegisterOutputType(NetworkConfigServiceCidrOutput{})
@@ -1403,4 +2441,10 @@ func init() {
 	pulumi.RegisterOutputType(VolumeConfigProtocolPtrOutput{})
 	pulumi.RegisterOutputType(VolumeConfigTypeOutput{})
 	pulumi.RegisterOutputType(VolumeConfigTypePtrOutput{})
+	pulumi.RegisterOutputType(VolumeSnapshotAutoDeleteBehaviorOutput{})
+	pulumi.RegisterOutputType(VolumeSnapshotAutoDeleteBehaviorPtrOutput{})
+	pulumi.RegisterOutputType(VolumeStateOutput{})
+	pulumi.RegisterOutputType(VolumeStatePtrOutput{})
+	pulumi.RegisterOutputType(VolumeStorageTypeOutput{})
+	pulumi.RegisterOutputType(VolumeStorageTypePtrOutput{})
 }

@@ -6,10 +6,13 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./getGlossary";
+export * from "./getGlossaryEntry";
 export * from "./glossary";
+export * from "./glossaryEntry";
 
 // Import resources to register:
 import { Glossary } from "./glossary";
+import { GlossaryEntry } from "./glossaryEntry";
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,6 +20,8 @@ const _module = {
         switch (type) {
             case "google-native:translate/v3:Glossary":
                 return new Glossary(name, <any>undefined, { urn })
+            case "google-native:translate/v3:GlossaryEntry":
+                return new GlossaryEntry(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }

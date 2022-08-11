@@ -33,6 +33,9 @@ __all__ = [
     'PolicyNetworkResponse',
     'RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse',
     'RRSetRoutingPolicyGeoPolicyResponse',
+    'RRSetRoutingPolicyHealthCheckTargetsResponse',
+    'RRSetRoutingPolicyLoadBalancerTargetResponse',
+    'RRSetRoutingPolicyPrimaryBackupPolicyResponse',
     'RRSetRoutingPolicyResponse',
     'RRSetRoutingPolicyWrrPolicyResponse',
     'RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse',
@@ -280,7 +283,7 @@ class GoogleIamV1BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
@@ -299,7 +302,7 @@ class GoogleIamV1BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -928,7 +931,9 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "signatureRrdatas":
+        if key == "healthCheckedTargets":
+            suggest = "health_checked_targets"
+        elif key == "signatureRrdatas":
             suggest = "signature_rrdatas"
 
         if suggest:
@@ -943,19 +948,30 @@ class RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 health_checked_targets: 'outputs.RRSetRoutingPolicyHealthCheckTargetsResponse',
                  kind: str,
                  location: str,
                  rrdatas: Sequence[str],
                  signature_rrdatas: Sequence[str]):
         """
         ResourceRecordSet data for one geo location.
+        :param 'RRSetRoutingPolicyHealthCheckTargetsResponse' health_checked_targets: For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with rrdata within this item.
         :param str location: The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
         :param Sequence[str] signature_rrdatas: DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
         """
+        pulumi.set(__self__, "health_checked_targets", health_checked_targets)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "rrdatas", rrdatas)
         pulumi.set(__self__, "signature_rrdatas", signature_rrdatas)
+
+    @property
+    @pulumi.getter(name="healthCheckedTargets")
+    def health_checked_targets(self) -> 'outputs.RRSetRoutingPolicyHealthCheckTargetsResponse':
+        """
+        For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with rrdata within this item.
+        """
+        return pulumi.get(self, "health_checked_targets")
 
     @property
     @pulumi.getter
@@ -989,15 +1005,43 @@ class RRSetRoutingPolicyGeoPolicyResponse(dict):
     """
     Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableFencing":
+            suggest = "enable_fencing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RRSetRoutingPolicyGeoPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RRSetRoutingPolicyGeoPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RRSetRoutingPolicyGeoPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 enable_fencing: bool,
                  items: Sequence['outputs.RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse'],
                  kind: str):
         """
         Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
+        :param bool enable_fencing: Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
         :param Sequence['RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse'] items: The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
         """
+        pulumi.set(__self__, "enable_fencing", enable_fencing)
         pulumi.set(__self__, "items", items)
         pulumi.set(__self__, "kind", kind)
+
+    @property
+    @pulumi.getter(name="enableFencing")
+    def enable_fencing(self) -> bool:
+        """
+        Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+        """
+        return pulumi.get(self, "enable_fencing")
 
     @property
     @pulumi.getter
@@ -1014,19 +1058,247 @@ class RRSetRoutingPolicyGeoPolicyResponse(dict):
 
 
 @pulumi.output_type
+class RRSetRoutingPolicyHealthCheckTargetsResponse(dict):
+    """
+    HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the healthy endpoints will be included in the response.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "internalLoadBalancers":
+            suggest = "internal_load_balancers"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RRSetRoutingPolicyHealthCheckTargetsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RRSetRoutingPolicyHealthCheckTargetsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RRSetRoutingPolicyHealthCheckTargetsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 internal_load_balancers: Sequence['outputs.RRSetRoutingPolicyLoadBalancerTargetResponse']):
+        """
+        HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the healthy endpoints will be included in the response.
+        """
+        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+
+    @property
+    @pulumi.getter(name="internalLoadBalancers")
+    def internal_load_balancers(self) -> Sequence['outputs.RRSetRoutingPolicyLoadBalancerTargetResponse']:
+        return pulumi.get(self, "internal_load_balancers")
+
+
+@pulumi.output_type
+class RRSetRoutingPolicyLoadBalancerTargetResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "ipProtocol":
+            suggest = "ip_protocol"
+        elif key == "loadBalancerType":
+            suggest = "load_balancer_type"
+        elif key == "networkUrl":
+            suggest = "network_url"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RRSetRoutingPolicyLoadBalancerTargetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RRSetRoutingPolicyLoadBalancerTargetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RRSetRoutingPolicyLoadBalancerTargetResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ip_address: str,
+                 ip_protocol: str,
+                 kind: str,
+                 load_balancer_type: str,
+                 network_url: str,
+                 port: str,
+                 project: str,
+                 region: str):
+        """
+        :param str ip_address: The frontend IP address of the
+        :param str network_url: The fully qualified url of the network on which the ILB is
+        :param str port: Load Balancer to health check. The configured port of the Load Balancer.
+        :param str project: present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+        :param str region: The region for regional ILBs.
+        """
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "ip_protocol", ip_protocol)
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "load_balancer_type", load_balancer_type)
+        pulumi.set(__self__, "network_url", network_url)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "region", region)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        The frontend IP address of the
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="ipProtocol")
+    def ip_protocol(self) -> str:
+        return pulumi.get(self, "ip_protocol")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="loadBalancerType")
+    def load_balancer_type(self) -> str:
+        return pulumi.get(self, "load_balancer_type")
+
+    @property
+    @pulumi.getter(name="networkUrl")
+    def network_url(self) -> str:
+        """
+        The fully qualified url of the network on which the ILB is
+        """
+        return pulumi.get(self, "network_url")
+
+    @property
+    @pulumi.getter
+    def port(self) -> str:
+        """
+        Load Balancer to health check. The configured port of the Load Balancer.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        """
+        present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+        """
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The region for regional ILBs.
+        """
+        return pulumi.get(self, "region")
+
+
+@pulumi.output_type
+class RRSetRoutingPolicyPrimaryBackupPolicyResponse(dict):
+    """
+    Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are healthy. And if all of them are unhealthy, then we fallback to a geo localized policy.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupGeoTargets":
+            suggest = "backup_geo_targets"
+        elif key == "primaryTargets":
+            suggest = "primary_targets"
+        elif key == "trickleTraffic":
+            suggest = "trickle_traffic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RRSetRoutingPolicyPrimaryBackupPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RRSetRoutingPolicyPrimaryBackupPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RRSetRoutingPolicyPrimaryBackupPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backup_geo_targets: 'outputs.RRSetRoutingPolicyGeoPolicyResponse',
+                 kind: str,
+                 primary_targets: 'outputs.RRSetRoutingPolicyHealthCheckTargetsResponse',
+                 trickle_traffic: float):
+        """
+        Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are healthy. And if all of them are unhealthy, then we fallback to a geo localized policy.
+        :param 'RRSetRoutingPolicyGeoPolicyResponse' backup_geo_targets: Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to BACKUP, this policy essentially becomes a geo routing policy.
+        :param float trickle_traffic: When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.
+        """
+        pulumi.set(__self__, "backup_geo_targets", backup_geo_targets)
+        pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "primary_targets", primary_targets)
+        pulumi.set(__self__, "trickle_traffic", trickle_traffic)
+
+    @property
+    @pulumi.getter(name="backupGeoTargets")
+    def backup_geo_targets(self) -> 'outputs.RRSetRoutingPolicyGeoPolicyResponse':
+        """
+        Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to BACKUP, this policy essentially becomes a geo routing policy.
+        """
+        return pulumi.get(self, "backup_geo_targets")
+
+    @property
+    @pulumi.getter
+    def kind(self) -> str:
+        return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="primaryTargets")
+    def primary_targets(self) -> 'outputs.RRSetRoutingPolicyHealthCheckTargetsResponse':
+        return pulumi.get(self, "primary_targets")
+
+    @property
+    @pulumi.getter(name="trickleTraffic")
+    def trickle_traffic(self) -> float:
+        """
+        When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.
+        """
+        return pulumi.get(self, "trickle_traffic")
+
+
+@pulumi.output_type
 class RRSetRoutingPolicyResponse(dict):
     """
     A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primaryBackup":
+            suggest = "primary_backup"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RRSetRoutingPolicyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RRSetRoutingPolicyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RRSetRoutingPolicyResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  geo: 'outputs.RRSetRoutingPolicyGeoPolicyResponse',
                  kind: str,
+                 primary_backup: 'outputs.RRSetRoutingPolicyPrimaryBackupPolicyResponse',
                  wrr: 'outputs.RRSetRoutingPolicyWrrPolicyResponse'):
         """
         A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
         """
         pulumi.set(__self__, "geo", geo)
         pulumi.set(__self__, "kind", kind)
+        pulumi.set(__self__, "primary_backup", primary_backup)
         pulumi.set(__self__, "wrr", wrr)
 
     @property
@@ -1038,6 +1310,11 @@ class RRSetRoutingPolicyResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         return pulumi.get(self, "kind")
+
+    @property
+    @pulumi.getter(name="primaryBackup")
+    def primary_backup(self) -> 'outputs.RRSetRoutingPolicyPrimaryBackupPolicyResponse':
+        return pulumi.get(self, "primary_backup")
 
     @property
     @pulumi.getter
@@ -1078,7 +1355,9 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "signatureRrdatas":
+        if key == "healthCheckedTargets":
+            suggest = "health_checked_targets"
+        elif key == "signatureRrdatas":
             suggest = "signature_rrdatas"
 
         if suggest:
@@ -1093,19 +1372,30 @@ class RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 health_checked_targets: 'outputs.RRSetRoutingPolicyHealthCheckTargetsResponse',
                  kind: str,
                  rrdatas: Sequence[str],
                  signature_rrdatas: Sequence[str],
                  weight: float):
         """
         A routing block which contains the routing information for one WRR item.
+        :param 'RRSetRoutingPolicyHealthCheckTargetsResponse' health_checked_targets: endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
         :param Sequence[str] signature_rrdatas: DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
         :param float weight: The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
         """
+        pulumi.set(__self__, "health_checked_targets", health_checked_targets)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "rrdatas", rrdatas)
         pulumi.set(__self__, "signature_rrdatas", signature_rrdatas)
         pulumi.set(__self__, "weight", weight)
+
+    @property
+    @pulumi.getter(name="healthCheckedTargets")
+    def health_checked_targets(self) -> 'outputs.RRSetRoutingPolicyHealthCheckTargetsResponse':
+        """
+        endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+        """
+        return pulumi.get(self, "health_checked_targets")
 
     @property
     @pulumi.getter

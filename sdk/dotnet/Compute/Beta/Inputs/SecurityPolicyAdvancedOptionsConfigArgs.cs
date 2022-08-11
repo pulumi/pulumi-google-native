@@ -12,6 +12,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
 
     public sealed class SecurityPolicyAdvancedOptionsConfigArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+        /// </summary>
+        [Input("jsonCustomConfig")]
+        public Input<Inputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs>? JsonCustomConfig { get; set; }
+
         [Input("jsonParsing")]
         public Input<Pulumi.GoogleNative.Compute.Beta.SecurityPolicyAdvancedOptionsConfigJsonParsing>? JsonParsing { get; set; }
 

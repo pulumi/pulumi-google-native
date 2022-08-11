@@ -16,19 +16,19 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
     public sealed class RemoteFunctionOptionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+        /// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. Format: ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"```
         /// </summary>
         [Input("connection")]
         public Input<string>? Connection { get; set; }
 
         /// <summary>
-        /// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+        /// Endpoint of the user-provided remote service, e.g. ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
 
         /// <summary>
-        /// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+        /// Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides the number of rows in a batch.
         /// </summary>
         [Input("maxBatchingRows")]
         public Input<string>? MaxBatchingRows { get; set; }

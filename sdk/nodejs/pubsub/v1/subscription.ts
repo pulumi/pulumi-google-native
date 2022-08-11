@@ -40,7 +40,7 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly ackDeadlineSeconds!: pulumi.Output<number>;
     /**
-     * If delivery to BigQuery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
+     * If delivery to BigQuery is used with this subscription, this field is used to configure it.
      */
     public readonly bigqueryConfig!: pulumi.Output<outputs.pubsub.v1.BigQueryConfigResponse>;
     /**
@@ -81,7 +81,7 @@ export class Subscription extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * If push delivery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
+     * If push delivery is used with this subscription, this field is used to configure it.
      */
     public readonly pushConfig!: pulumi.Output<outputs.pubsub.v1.PushConfigResponse>;
     /**
@@ -179,7 +179,7 @@ export interface SubscriptionArgs {
      */
     ackDeadlineSeconds?: pulumi.Input<number>;
     /**
-     * If delivery to BigQuery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
+     * If delivery to BigQuery is used with this subscription, this field is used to configure it.
      */
     bigqueryConfig?: pulumi.Input<inputs.pubsub.v1.BigQueryConfigArgs>;
     /**
@@ -220,7 +220,7 @@ export interface SubscriptionArgs {
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * If push delivery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
+     * If push delivery is used with this subscription, this field is used to configure it.
      */
     pushConfig?: pulumi.Input<inputs.pubsub.v1.PushConfigArgs>;
     /**

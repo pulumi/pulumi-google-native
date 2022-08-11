@@ -64,6 +64,7 @@ __all__ = [
     'ForwardingRuleLoadBalancingScheme',
     'ForwardingRuleNetworkTier',
     'ForwardingRulePscConnectionStatus',
+    'FutureReservationPlanningStatus',
     'GRPCHealthCheckPortSpecification',
     'GlobalAddressAddressType',
     'GlobalAddressIpVersion',
@@ -1307,6 +1308,21 @@ class ForwardingRulePscConnectionStatus(str, Enum):
     The connection has been rejected by the producer.
     """
     STATUS_UNSPECIFIED = "STATUS_UNSPECIFIED"
+
+
+class FutureReservationPlanningStatus(str, Enum):
+    """
+    Planning state before being submitted for evaluation
+    """
+    DRAFT = "DRAFT"
+    """
+    Future Reservation is being drafted.
+    """
+    PLANNING_STATUS_UNSPECIFIED = "PLANNING_STATUS_UNSPECIFIED"
+    SUBMITTED = "SUBMITTED"
+    """
+    Future Reservation has been submitted for evaluation by GCP.
+    """
 
 
 class GRPCHealthCheckPortSpecification(str, Enum):

@@ -42,6 +42,70 @@ export const LogicalNetworkInterfaceNetworkType = {
  */
 export type LogicalNetworkInterfaceNetworkType = (typeof LogicalNetworkInterfaceNetworkType)[keyof typeof LogicalNetworkInterfaceNetworkType];
 
+export const LunMultiprotocolType = {
+    /**
+     * Server has no OS specified.
+     */
+    MultiprotocolTypeUnspecified: "MULTIPROTOCOL_TYPE_UNSPECIFIED",
+    /**
+     * Server with Linux OS.
+     */
+    Linux: "LINUX",
+} as const;
+
+/**
+ * The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
+ */
+export type LunMultiprotocolType = (typeof LunMultiprotocolType)[keyof typeof LunMultiprotocolType];
+
+export const LunState = {
+    /**
+     * The LUN is in an unknown state.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * The LUN is being created.
+     */
+    Creating: "CREATING",
+    /**
+     * The LUN is being updated.
+     */
+    Updating: "UPDATING",
+    /**
+     * The LUN is ready for use.
+     */
+    Ready: "READY",
+    /**
+     * The LUN has been requested to be deleted.
+     */
+    Deleting: "DELETING",
+} as const;
+
+/**
+ * The state of this storage volume.
+ */
+export type LunState = (typeof LunState)[keyof typeof LunState];
+
+export const LunStorageType = {
+    /**
+     * The storage type for this LUN is unknown.
+     */
+    StorageTypeUnspecified: "STORAGE_TYPE_UNSPECIFIED",
+    /**
+     * This storage type for this LUN is SSD.
+     */
+    Ssd: "SSD",
+    /**
+     * This storage type for this LUN is HDD.
+     */
+    Hdd: "HDD",
+} as const;
+
+/**
+ * The storage type for this LUN.
+ */
+export type LunStorageType = (typeof LunStorageType)[keyof typeof LunStorageType];
+
 export const NetworkConfigBandwidth = {
     /**
      * Unspecified value.
@@ -177,3 +241,71 @@ export const VolumeConfigType = {
  * The type of this Volume.
  */
 export type VolumeConfigType = (typeof VolumeConfigType)[keyof typeof VolumeConfigType];
+
+export const VolumeSnapshotAutoDeleteBehavior = {
+    /**
+     * The unspecified behavior.
+     */
+    SnapshotAutoDeleteBehaviorUnspecified: "SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED",
+    /**
+     * Don't delete any snapshots. This disables new snapshot creation, as long as the snapshot reserved space is full.
+     */
+    Disabled: "DISABLED",
+    /**
+     * Delete the oldest snapshots first.
+     */
+    OldestFirst: "OLDEST_FIRST",
+    /**
+     * Delete the newest snapshots first.
+     */
+    NewestFirst: "NEWEST_FIRST",
+} as const;
+
+/**
+ * The behavior to use when snapshot reserved space is full.
+ */
+export type VolumeSnapshotAutoDeleteBehavior = (typeof VolumeSnapshotAutoDeleteBehavior)[keyof typeof VolumeSnapshotAutoDeleteBehavior];
+
+export const VolumeState = {
+    /**
+     * The storage volume is in an unknown state.
+     */
+    StateUnspecified: "STATE_UNSPECIFIED",
+    /**
+     * The storage volume is being created.
+     */
+    Creating: "CREATING",
+    /**
+     * The storage volume is ready for use.
+     */
+    Ready: "READY",
+    /**
+     * The storage volume has been requested to be deleted.
+     */
+    Deleting: "DELETING",
+} as const;
+
+/**
+ * The state of this storage volume.
+ */
+export type VolumeState = (typeof VolumeState)[keyof typeof VolumeState];
+
+export const VolumeStorageType = {
+    /**
+     * The storage type for this volume is unknown.
+     */
+    StorageTypeUnspecified: "STORAGE_TYPE_UNSPECIFIED",
+    /**
+     * The storage type for this volume is SSD.
+     */
+    Ssd: "SSD",
+    /**
+     * This storage type for this volume is HDD.
+     */
+    Hdd: "HDD",
+} as const;
+
+/**
+ * The storage type for this volume.
+ */
+export type VolumeStorageType = (typeof VolumeStorageType)[keyof typeof VolumeStorageType];

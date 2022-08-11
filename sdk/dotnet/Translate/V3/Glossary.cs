@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Translate.V3
     public partial class Glossary : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. The display name of the glossary.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string> DisplayName { get; private set; } = null!;
+
+        /// <summary>
         /// When the glossary creation was finished.
         /// </summary>
         [Output("endTime")]
@@ -113,6 +119,12 @@ namespace Pulumi.GoogleNative.Translate.V3
 
     public sealed class GlossaryArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Optional. The display name of the glossary.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
         /// <summary>
         /// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
         /// </summary>

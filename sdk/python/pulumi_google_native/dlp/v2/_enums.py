@@ -13,6 +13,7 @@ __all__ = [
     'GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabet',
     'GooglePrivacyDlpV2CustomInfoTypeExclusionType',
     'GooglePrivacyDlpV2CustomInfoTypeLikelihood',
+    'GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem',
     'GooglePrivacyDlpV2ExclusionRuleMatchingType',
     'GooglePrivacyDlpV2ExpressionsLogicalOperator',
     'GooglePrivacyDlpV2InspectConfigContentOptionsItem',
@@ -229,6 +230,53 @@ class GooglePrivacyDlpV2CustomInfoTypeLikelihood(str, Enum):
     """
 
 
+class GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem(str, Enum):
+    FILE_TYPE_UNSPECIFIED = "FILE_TYPE_UNSPECIFIED"
+    """
+    Includes all files.
+    """
+    BINARY_FILE = "BINARY_FILE"
+    """
+    Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.
+    """
+    TEXT_FILE = "TEXT_FILE"
+    """
+    Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
+    """
+    IMAGE = "IMAGE"
+    """
+    Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
+    """
+    WORD = "WORD"
+    """
+    Word files >30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm
+    """
+    PDF = "PDF"
+    """
+    PDF files >30 MB will be scanned as binary files. Included file extensions: pdf
+    """
+    AVRO = "AVRO"
+    """
+    Included file extensions: avro
+    """
+    CSV = "CSV"
+    """
+    Included file extensions: csv
+    """
+    TSV = "TSV"
+    """
+    Included file extensions: tsv
+    """
+    POWERPOINT = "POWERPOINT"
+    """
+    Powerpoint files >30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+    """
+    EXCEL = "EXCEL"
+    """
+    Excel files >30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+    """
+
+
 class GooglePrivacyDlpV2ExclusionRuleMatchingType(str, Enum):
     """
     How the rule is applied, see MatchingType documentation for details.
@@ -342,7 +390,7 @@ class GooglePrivacyDlpV2OutputStorageConfigOutputSchema(str, Enum):
     """
     GCS_COLUMNS = "GCS_COLUMNS"
     """
-    Schema tailored to findings from scanning Google Cloud Storage.
+    Schema tailored to findings from scanning Cloud Storage.
     """
     DATASTORE_COLUMNS = "DATASTORE_COLUMNS"
     """

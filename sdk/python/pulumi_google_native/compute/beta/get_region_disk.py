@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionDiskResult:
-    def __init__(__self__, architecture=None, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, physical_block_size_bytes=None, provisioned_iops=None, region=None, replica_zones=None, resource_policies=None, satisfies_pzs=None, self_link=None, size_gb=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, storage_type=None, type=None, user_licenses=None, users=None, zone=None):
+    def __init__(__self__, architecture=None, creation_timestamp=None, description=None, disk_encryption_key=None, erase_windows_vss_signature=None, guest_os_features=None, interface=None, kind=None, label_fingerprint=None, labels=None, last_attach_timestamp=None, last_detach_timestamp=None, license_codes=None, licenses=None, location_hint=None, locked=None, multi_writer=None, name=None, options=None, params=None, physical_block_size_bytes=None, provisioned_iops=None, region=None, replica_zones=None, resource_policies=None, satisfies_pzs=None, self_link=None, size_gb=None, source_disk=None, source_disk_id=None, source_image=None, source_image_encryption_key=None, source_image_id=None, source_snapshot=None, source_snapshot_encryption_key=None, source_snapshot_id=None, source_storage_object=None, status=None, storage_type=None, type=None, user_licenses=None, users=None, zone=None):
         if architecture and not isinstance(architecture, str):
             raise TypeError("Expected argument 'architecture' to be a str")
         pulumi.set(__self__, "architecture", architecture)
@@ -81,6 +81,9 @@ class GetRegionDiskResult:
         if options and not isinstance(options, str):
             raise TypeError("Expected argument 'options' to be a str")
         pulumi.set(__self__, "options", options)
+        if params and not isinstance(params, dict):
+            raise TypeError("Expected argument 'params' to be a dict")
+        pulumi.set(__self__, "params", params)
         if physical_block_size_bytes and not isinstance(physical_block_size_bytes, str):
             raise TypeError("Expected argument 'physical_block_size_bytes' to be a str")
         pulumi.set(__self__, "physical_block_size_bytes", physical_block_size_bytes)
@@ -308,6 +311,14 @@ class GetRegionDiskResult:
         return pulumi.get(self, "options")
 
     @property
+    @pulumi.getter
+    def params(self) -> 'outputs.DiskParamsResponse':
+        """
+        Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        """
+        return pulumi.get(self, "params")
+
+    @property
     @pulumi.getter(name="physicalBlockSizeBytes")
     def physical_block_size_bytes(self) -> str:
         """
@@ -517,6 +528,7 @@ class AwaitableGetRegionDiskResult(GetRegionDiskResult):
             multi_writer=self.multi_writer,
             name=self.name,
             options=self.options,
+            params=self.params,
             physical_block_size_bytes=self.physical_block_size_bytes,
             provisioned_iops=self.provisioned_iops,
             region=self.region,
@@ -576,6 +588,7 @@ def get_region_disk(disk: Optional[str] = None,
         multi_writer=__ret__.multi_writer,
         name=__ret__.name,
         options=__ret__.options,
+        params=__ret__.params,
         physical_block_size_bytes=__ret__.physical_block_size_bytes,
         provisioned_iops=__ret__.provisioned_iops,
         region=__ret__.region,

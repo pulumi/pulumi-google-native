@@ -121,6 +121,21 @@ export const PolicyAlternativeNameServerConfigTargetNameServerForwardingPath = {
  */
 export type PolicyAlternativeNameServerConfigTargetNameServerForwardingPath = (typeof PolicyAlternativeNameServerConfigTargetNameServerForwardingPath)[keyof typeof PolicyAlternativeNameServerConfigTargetNameServerForwardingPath];
 
+export const RRSetRoutingPolicyLoadBalancerTargetIpProtocol = {
+    Undefined: "undefined",
+    Tcp: "tcp",
+    Udp: "udp",
+} as const;
+
+export type RRSetRoutingPolicyLoadBalancerTargetIpProtocol = (typeof RRSetRoutingPolicyLoadBalancerTargetIpProtocol)[keyof typeof RRSetRoutingPolicyLoadBalancerTargetIpProtocol];
+
+export const RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType = {
+    None: "none",
+    RegionalL4ilb: "regionalL4ilb",
+} as const;
+
+export type RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType = (typeof RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType)[keyof typeof RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType];
+
 export const ResponsePolicyRuleBehavior = {
     BehaviorUnspecified: "behaviorUnspecified",
     /**

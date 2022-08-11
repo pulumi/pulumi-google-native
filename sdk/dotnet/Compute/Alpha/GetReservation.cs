@@ -88,6 +88,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly ImmutableDictionary<string, string> ResourcePolicies;
         /// <summary>
+        /// Status information for Reservation resource.
+        /// </summary>
+        public readonly Outputs.AllocationResourceStatusResponse ResourceStatus;
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
@@ -134,6 +138,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             ImmutableDictionary<string, string> resourcePolicies,
 
+            Outputs.AllocationResourceStatusResponse resourceStatus,
+
             bool satisfiesPzs,
 
             string selfLink,
@@ -156,6 +162,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Kind = kind;
             Name = name;
             ResourcePolicies = resourcePolicies;
+            ResourceStatus = resourceStatus;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;

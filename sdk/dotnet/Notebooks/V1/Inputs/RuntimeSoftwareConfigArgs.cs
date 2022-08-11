@@ -22,6 +22,12 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Inputs
         public Input<string>? CustomGpuDriverPath { get; set; }
 
         /// <summary>
+        /// Bool indicating whether JupyterLab terminal will be available or not. Default: False
+        /// </summary>
+        [Input("disableTerminal")]
+        public Input<bool>? DisableTerminal { get; set; }
+
+        /// <summary>
         /// Verifies core internal services are running. Default: True
         /// </summary>
         [Input("enableHealthMonitoring")]

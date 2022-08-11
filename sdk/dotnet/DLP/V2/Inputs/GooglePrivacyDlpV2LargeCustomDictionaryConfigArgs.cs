@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
 {
 
     /// <summary>
-    /// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
+    /// Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
     /// </summary>
     public sealed class GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs : global::Pulumi.ResourceArgs
     {
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2CloudStorageFileSetArgs>? CloudStorageFileSet { get; set; }
 
         /// <summary>
-        /// Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
+        /// Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
         /// </summary>
         [Input("outputPath")]
         public Input<Inputs.GooglePrivacyDlpV2CloudStoragePathArgs>? OutputPath { get; set; }

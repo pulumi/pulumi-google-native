@@ -29,6 +29,10 @@ export interface GetGlossaryArgs {
 
 export interface GetGlossaryResult {
     /**
+     * Optional. The display name of the glossary.
+     */
+    readonly displayName: string;
+    /**
      * When the glossary creation was finished.
      */
     readonly endTime: string;

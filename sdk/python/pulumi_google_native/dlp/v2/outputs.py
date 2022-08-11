@@ -39,6 +39,7 @@ __all__ = [
     'GooglePrivacyDlpV2DatastoreOptionsResponse',
     'GooglePrivacyDlpV2DateShiftConfigResponse',
     'GooglePrivacyDlpV2DeidentifyConfigResponse',
+    'GooglePrivacyDlpV2DeidentifyResponse',
     'GooglePrivacyDlpV2DeltaPresenceEstimationConfigResponse',
     'GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucketResponse',
     'GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValuesResponse',
@@ -129,6 +130,8 @@ __all__ = [
     'GooglePrivacyDlpV2ThrowErrorResponse',
     'GooglePrivacyDlpV2TimePartConfigResponse',
     'GooglePrivacyDlpV2TimespanConfigResponse',
+    'GooglePrivacyDlpV2TransformationConfigResponse',
+    'GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse',
     'GooglePrivacyDlpV2TransformationErrorHandlingResponse',
     'GooglePrivacyDlpV2TransientCryptoKeyResponse',
     'GooglePrivacyDlpV2TriggerResponse',
@@ -175,6 +178,7 @@ class GooglePrivacyDlpV2ActionResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 deidentify: 'outputs.GooglePrivacyDlpV2DeidentifyResponse',
                  job_notification_emails: 'outputs.GooglePrivacyDlpV2JobNotificationEmailsResponse',
                  pub_sub: 'outputs.GooglePrivacyDlpV2PublishToPubSubResponse',
                  publish_findings_to_cloud_data_catalog: 'outputs.GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse',
@@ -183,6 +187,7 @@ class GooglePrivacyDlpV2ActionResponse(dict):
                  save_findings: 'outputs.GooglePrivacyDlpV2SaveFindingsResponse'):
         """
         A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
+        :param 'GooglePrivacyDlpV2DeidentifyResponse' deidentify: Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
         :param 'GooglePrivacyDlpV2JobNotificationEmailsResponse' job_notification_emails: Enable email notification for project owners and editors on job's completion/failure.
         :param 'GooglePrivacyDlpV2PublishToPubSubResponse' pub_sub: Publish a notification to a pubsub topic.
         :param 'GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse' publish_findings_to_cloud_data_catalog: Publish findings to Cloud Datahub.
@@ -190,12 +195,21 @@ class GooglePrivacyDlpV2ActionResponse(dict):
         :param 'GooglePrivacyDlpV2PublishToStackdriverResponse' publish_to_stackdriver: Enable Stackdriver metric dlp.googleapis.com/finding_count.
         :param 'GooglePrivacyDlpV2SaveFindingsResponse' save_findings: Save resulting findings in a provided location.
         """
+        pulumi.set(__self__, "deidentify", deidentify)
         pulumi.set(__self__, "job_notification_emails", job_notification_emails)
         pulumi.set(__self__, "pub_sub", pub_sub)
         pulumi.set(__self__, "publish_findings_to_cloud_data_catalog", publish_findings_to_cloud_data_catalog)
         pulumi.set(__self__, "publish_summary_to_cscc", publish_summary_to_cscc)
         pulumi.set(__self__, "publish_to_stackdriver", publish_to_stackdriver)
         pulumi.set(__self__, "save_findings", save_findings)
+
+    @property
+    @pulumi.getter
+    def deidentify(self) -> 'outputs.GooglePrivacyDlpV2DeidentifyResponse':
+        """
+        Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+        """
+        return pulumi.get(self, "deidentify")
 
     @property
     @pulumi.getter(name="jobNotificationEmails")
@@ -1051,7 +1065,7 @@ class GooglePrivacyDlpV2CloudStorageFileSetResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2CloudStorageOptionsResponse(dict):
     """
-    Options defining a file or a set of files within a Google Cloud Storage bucket.
+    Options defining a file or a set of files within a Cloud Storage bucket.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1088,7 +1102,7 @@ class GooglePrivacyDlpV2CloudStorageOptionsResponse(dict):
                  files_limit_percent: int,
                  sample_method: str):
         """
-        Options defining a file or a set of files within a Google Cloud Storage bucket.
+        Options defining a file or a set of files within a Cloud Storage bucket.
         :param str bytes_limit_per_file: Max number of bytes to scan from a file. If a scanned file's size is bigger than this value then the rest of the bytes are omitted. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
         :param int bytes_limit_per_file_percent: Max percentage of bytes to scan from a file. The rest are omitted. The number of bytes scanned is rounded down. Must be between 0 and 100, inclusively. Both 0 and 100 means no limit. Defaults to 0. Only one of bytes_limit_per_file and bytes_limit_per_file_percent can be specified. Cannot be set if de-identification is requested.
         :param 'GooglePrivacyDlpV2FileSetResponse' file_set: The set of one or more files to scan.
@@ -1331,7 +1345,7 @@ class GooglePrivacyDlpV2CryptoDeterministicConfigResponse(dict):
                  surrogate_info_type: 'outputs.GooglePrivacyDlpV2InfoTypeResponse'):
         """
         Pseudonymization method that generates deterministic encryption for the given input. Outputs a base64 encoded representation of the encrypted output. Uses AES-SIV based on the RFC https://tools.ietf.org/html/rfc5297.
-        :param 'GooglePrivacyDlpV2FieldIdResponse' context: A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
+        :param 'GooglePrivacyDlpV2FieldIdResponse' context: A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s.
         :param 'GooglePrivacyDlpV2CryptoKeyResponse' crypto_key: The key used by the encryption function. For deterministic encryption using AES-SIV, the provided key is internally expanded to 64 bytes prior to use.
         :param 'GooglePrivacyDlpV2InfoTypeResponse' surrogate_info_type: The custom info type to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom info type followed by the number of characters comprising the surrogate. The following scheme defines the format: {info type name}({surrogate character count}):{surrogate} For example, if the name of custom info type is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom info type 'Surrogate'. This facilitates reversal of the surrogate when it occurs in free text. Note: For record transformations where the entire cell in a table is being transformed, surrogates are not mandatory. Surrogates are used to denote the location of the token and are necessary for re-identification in free form text. In order for inspection to work properly, the name of this info type must not occur naturally anywhere in your data; otherwise, inspection may either - reverse a surrogate that does not correspond to an actual identifier - be unable to parse the surrogate and result in an error Therefore, choose your custom info type name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE.
         """
@@ -1343,7 +1357,7 @@ class GooglePrivacyDlpV2CryptoDeterministicConfigResponse(dict):
     @pulumi.getter
     def context(self) -> 'outputs.GooglePrivacyDlpV2FieldIdResponse':
         """
-        A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s.
+        A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s.
         """
         return pulumi.get(self, "context")
 
@@ -1502,7 +1516,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse(dict):
         """
         Replaces an identifier with a surrogate using Format Preserving Encryption (FPE) with the FFX mode of operation; however when used in the `ReidentifyContent` API method, it serves the opposite function by reversing the surrogate back into the original identifier. The identifier must be encoded as ASCII. For a given crypto key and context, the same identifier will be replaced with the same surrogate. Identifiers must be at least two characters long. In the case that the identifier is the empty string, it will be skipped. See https://cloud.google.com/dlp/docs/pseudonymization to learn more. Note: We recommend using CryptoDeterministicConfig for all use cases which do not require preserving the input alphabet space and size, plus warrant referential integrity.
         :param str common_alphabet: Common alphabets.
-        :param 'GooglePrivacyDlpV2FieldIdResponse' context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
+        :param 'GooglePrivacyDlpV2FieldIdResponse' context: The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
         :param 'GooglePrivacyDlpV2CryptoKeyResponse' crypto_key: The key used by the encryption algorithm.
         :param str custom_alphabet: This is supported by mapping these to the alphanumeric characters that the FFX mode natively supports. This happens before/after encryption/decryption. Each character listed must appear only once. Number of characters must be in the range [2, 95]. This must be encoded as ASCII. The order of characters does not matter. The full list of allowed characters is: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ~`!@#$%^&*()_-+={[}]|\\:;"'<,>.?/
         :param int radix: The native way to select the alphabet. Must be in the range [2, 95].
@@ -1527,7 +1541,7 @@ class GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigResponse(dict):
     @pulumi.getter
     def context(self) -> 'outputs.GooglePrivacyDlpV2FieldIdResponse':
         """
-        The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and non-structured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
+        The 'tweak', a context may be used for higher security since the same identifier in two different contexts won't be given the same surrogate. If the context is not set, a default tweak will be used. If the context is set but: 1. there is no record present when transforming a given value or 1. the field is not present when transforming a given value, a default tweak will be used. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s. Currently, the referenced field may be of value type integer or string. The tweak is constructed as a sequence of bytes in big endian byte order such that: - a 64 bit integer is encoded followed by a single byte of value 1 - a string is encoded in UTF-8 format followed by a single byte of value 2
         """
         return pulumi.get(self, "context")
 
@@ -1877,6 +1891,84 @@ class GooglePrivacyDlpV2DeidentifyConfigResponse(dict):
         Mode for handling transformation errors. If left unspecified, the default mode is `TransformationErrorHandling.ThrowError`.
         """
         return pulumi.get(self, "transformation_error_handling")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2DeidentifyResponse(dict):
+    """
+    Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cloudStorageOutput":
+            suggest = "cloud_storage_output"
+        elif key == "fileTypesToTransform":
+            suggest = "file_types_to_transform"
+        elif key == "transformationConfig":
+            suggest = "transformation_config"
+        elif key == "transformationDetailsStorageConfig":
+            suggest = "transformation_details_storage_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2DeidentifyResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2DeidentifyResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2DeidentifyResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cloud_storage_output: str,
+                 file_types_to_transform: Sequence[str],
+                 transformation_config: 'outputs.GooglePrivacyDlpV2TransformationConfigResponse',
+                 transformation_details_storage_config: 'outputs.GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse'):
+        """
+        Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+        :param str cloud_storage_output: User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+        :param Sequence[str] file_types_to_transform: List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
+        :param 'GooglePrivacyDlpV2TransformationConfigResponse' transformation_config: User specified deidentify templates and configs for structured, unstructured, and image files.
+        :param 'GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse' transformation_details_storage_config: Config for storing transformation details. This is separate from the de-identified content, and contains metadata about the successful transformations and/or failures that occurred while de-identifying. This needs to be set in order for users to access information about the status of each transformation (see TransformationDetails message for more information about what is noted).
+        """
+        pulumi.set(__self__, "cloud_storage_output", cloud_storage_output)
+        pulumi.set(__self__, "file_types_to_transform", file_types_to_transform)
+        pulumi.set(__self__, "transformation_config", transformation_config)
+        pulumi.set(__self__, "transformation_details_storage_config", transformation_details_storage_config)
+
+    @property
+    @pulumi.getter(name="cloudStorageOutput")
+    def cloud_storage_output(self) -> str:
+        """
+        User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+        """
+        return pulumi.get(self, "cloud_storage_output")
+
+    @property
+    @pulumi.getter(name="fileTypesToTransform")
+    def file_types_to_transform(self) -> Sequence[str]:
+        """
+        List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
+        """
+        return pulumi.get(self, "file_types_to_transform")
+
+    @property
+    @pulumi.getter(name="transformationConfig")
+    def transformation_config(self) -> 'outputs.GooglePrivacyDlpV2TransformationConfigResponse':
+        """
+        User specified deidentify templates and configs for structured, unstructured, and image files.
+        """
+        return pulumi.get(self, "transformation_config")
+
+    @property
+    @pulumi.getter(name="transformationDetailsStorageConfig")
+    def transformation_details_storage_config(self) -> 'outputs.GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse':
+        """
+        Config for storing transformation details. This is separate from the de-identified content, and contains metadata about the successful transformations and/or failures that occurred while de-identifying. This needs to be set in order for users to access information about the status of each transformation (see TransformationDetails message for more information about what is noted).
+        """
+        return pulumi.get(self, "transformation_details_storage_config")
 
 
 @pulumi.output_type
@@ -2275,7 +2367,7 @@ class GooglePrivacyDlpV2ErrorResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2ExcludeInfoTypesResponse(dict):
     """
-    List of exclude infoTypes.
+    List of excluded infoTypes.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2297,7 +2389,7 @@ class GooglePrivacyDlpV2ExcludeInfoTypesResponse(dict):
     def __init__(__self__, *,
                  info_types: Sequence['outputs.GooglePrivacyDlpV2InfoTypeResponse']):
         """
-        List of exclude infoTypes.
+        List of excluded infoTypes.
         :param Sequence['GooglePrivacyDlpV2InfoTypeResponse'] info_types: InfoType list in ExclusionRule rule drops a finding when it overlaps or contained within with a finding of an infoType from this list. For example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"` and `exclusion_rule` containing `exclude_info_types.info_types` with "EMAIL_ADDRESS" the phone number findings are dropped if they overlap with EMAIL_ADDRESS finding. That leads to "555-222-2222@example.org" to generate only a single finding, namely email address.
         """
         pulumi.set(__self__, "info_types", info_types)
@@ -2388,7 +2480,7 @@ class GooglePrivacyDlpV2ExclusionRuleResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2ExpressionsResponse(dict):
     """
-    An expression, consisting or an operator and conditions.
+    An expression, consisting of an operator and conditions.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2411,7 +2503,7 @@ class GooglePrivacyDlpV2ExpressionsResponse(dict):
                  conditions: 'outputs.GooglePrivacyDlpV2ConditionsResponse',
                  logical_operator: str):
         """
-        An expression, consisting or an operator and conditions.
+        An expression, consisting of an operator and conditions.
         :param 'GooglePrivacyDlpV2ConditionsResponse' conditions: Conditions to apply to the expression.
         :param str logical_operator: The operator to apply to the result of conditions. Default and currently only supported value is `AND`.
         """
@@ -2584,7 +2676,7 @@ class GooglePrivacyDlpV2FileSetResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2FindingLimitsResponse(dict):
     """
-    Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
+    Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2612,7 +2704,7 @@ class GooglePrivacyDlpV2FindingLimitsResponse(dict):
                  max_findings_per_item: int,
                  max_findings_per_request: int):
         """
-        Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling.
+        Configuration to control the number of findings returned for inspection. This is not used for de-identification or data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
         :param Sequence['GooglePrivacyDlpV2InfoTypeLimitResponse'] max_findings_per_info_type: Configuration of findings limit given for specified infoTypes.
         :param int max_findings_per_item: Max number of findings that will be returned for each item scanned. When set within `InspectJobConfig`, the maximum returned is 2000 regardless if this is set higher. When set within `InspectContentRequest`, this field is ignored.
         :param int max_findings_per_request: Max number of findings that will be returned per request/job. When set within `InspectContentRequest`, the maximum returned is 2000 regardless if this is set higher.
@@ -3172,7 +3264,7 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
         :param bool exclude_info_types: When true, excludes type information of the findings. This is not used for data profiling.
         :param bool include_quote: When true, a contextual quote from the data that triggered a finding is included in the response; see Finding.quote. This is not used for data profiling.
         :param Sequence['GooglePrivacyDlpV2InfoTypeResponse'] info_types: Restricts what info_types to look for. The values must correspond to InfoType values returned by ListInfoTypes or listed at https://cloud.google.com/dlp/docs/infotypes-reference. When no InfoTypes or CustomInfoTypes are specified in a request, the system may automatically choose what detectors to run. By default this may be all types, but may change over time as detectors are updated. If you need precise control and predictability as to what detectors are run you should specify specific InfoTypes listed in the reference, otherwise a default list will be used, which may change over time.
-        :param 'GooglePrivacyDlpV2FindingLimitsResponse' limits: Configuration to control the number of findings returned. This is not used for data profiling.
+        :param 'GooglePrivacyDlpV2FindingLimitsResponse' limits: Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
         :param str min_likelihood: Only returns findings equal or above this threshold. The default is POSSIBLE. See https://cloud.google.com/dlp/docs/likelihood to learn more.
         :param Sequence['GooglePrivacyDlpV2InspectionRuleSetResponse'] rule_set: Set of rules to apply to the findings for this InspectConfig. Exclusion rules, contained in the set are executed in the end, other rules are executed in the order they are specified for each info type.
         """
@@ -3229,7 +3321,7 @@ class GooglePrivacyDlpV2InspectConfigResponse(dict):
     @pulumi.getter
     def limits(self) -> 'outputs.GooglePrivacyDlpV2FindingLimitsResponse':
         """
-        Configuration to control the number of findings returned. This is not used for data profiling.
+        Configuration to control the number of findings returned. This is not used for data profiling. When redacting sensitive data from images, finding limits don't apply. They can cause unexpected or inconsistent results, where only some data is redacted. Don't include finding limits in RedactImage requests. Otherwise, Cloud DLP returns an error.
         """
         return pulumi.get(self, "limits")
 
@@ -4408,7 +4500,7 @@ class GooglePrivacyDlpV2LDiversityResultResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse(dict):
     """
-    Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
+    Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -4436,10 +4528,10 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse(dict):
                  cloud_storage_file_set: 'outputs.GooglePrivacyDlpV2CloudStorageFileSetResponse',
                  output_path: 'outputs.GooglePrivacyDlpV2CloudStoragePathResponse'):
         """
-        Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Google Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
+        Configuration for a custom dictionary created from a data source of any size up to the maximum size defined in the [limits](https://cloud.google.com/dlp/limits) page. The artifacts of dictionary creation are stored in the specified Cloud Storage location. Consider using `CustomInfoType.Dictionary` for smaller dictionaries that satisfy the size requirements.
         :param 'GooglePrivacyDlpV2BigQueryFieldResponse' big_query_field: Field in a BigQuery table where each cell represents a dictionary phrase.
         :param 'GooglePrivacyDlpV2CloudStorageFileSetResponse' cloud_storage_file_set: Set of files containing newline-delimited lists of dictionary phrases.
-        :param 'GooglePrivacyDlpV2CloudStoragePathResponse' output_path: Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
+        :param 'GooglePrivacyDlpV2CloudStoragePathResponse' output_path: Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
         """
         pulumi.set(__self__, "big_query_field", big_query_field)
         pulumi.set(__self__, "cloud_storage_file_set", cloud_storage_file_set)
@@ -4465,7 +4557,7 @@ class GooglePrivacyDlpV2LargeCustomDictionaryConfigResponse(dict):
     @pulumi.getter(name="outputPath")
     def output_path(self) -> 'outputs.GooglePrivacyDlpV2CloudStoragePathResponse':
         """
-        Location to store dictionary artifacts in Google Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
+        Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used.
         """
         return pulumi.get(self, "output_path")
 
@@ -4700,7 +4792,7 @@ class GooglePrivacyDlpV2OutputStorageConfigResponse(dict):
         """
         Cloud repository for storing output.
         :param str output_schema: Schema used for writing the findings for Inspect jobs. This field is only used for Inspect and must be unspecified for Risk jobs. Columns are derived from the `Finding` object. If appending to an existing table, any columns from the predefined schema that are missing will be added. No columns in the existing table will be deleted. If unspecified, then all available columns will be used for a new table or an (existing) table with no schema, and no changes will be made to an existing table that has a schema. Only for use with external storage.
-        :param 'GooglePrivacyDlpV2BigQueryTableResponse' table: Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
+        :param 'GooglePrivacyDlpV2BigQueryTableResponse' table: Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
         """
         pulumi.set(__self__, "output_schema", output_schema)
         pulumi.set(__self__, "table", table)
@@ -4717,7 +4809,7 @@ class GooglePrivacyDlpV2OutputStorageConfigResponse(dict):
     @pulumi.getter
     def table(self) -> 'outputs.GooglePrivacyDlpV2BigQueryTableResponse':
         """
-        Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific timezone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
+        Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table.
         """
         return pulumi.get(self, "table")
 
@@ -5113,11 +5205,11 @@ class GooglePrivacyDlpV2ProximityResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse(dict):
     """
-    Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+    Publish findings of a DlpJob to Data Catalog. In Data Catalog, tag templates are applied to the resource that Cloud DLP scanned. Data Catalog tag templates are stored in the same project and region where the BigQuery table exists. For Cloud DLP to create and apply the tag template, the Cloud DLP service agent must have the `roles/datacatalog.tagTemplateOwner` permission on the project. The tag template contains fields summarizing the results of the DlpJob. Any field values previously written by another DlpJob are deleted. InfoType naming patterns are strictly enforced when using this feature. Findings are persisted in Data Catalog storage and are governed by service-specific policies for Data Catalog. For more information, see [Service Specific Terms](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. This action is allowed only if all resources being scanned are BigQuery tables. Compatible with: Inspect
     """
     def __init__(__self__):
         """
-        Publish findings of a DlpJob to Data Catalog. Labels summarizing the results of the DlpJob will be applied to the entry for the resource scanned in Data Catalog. Any labels previously written by another DlpJob will be deleted. InfoType naming patterns are strictly enforced when using this feature. Note that the findings will be persisted in Data Catalog storage and are governed by Data Catalog service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified and only allowed if all resources being scanned are BigQuery tables. Compatible with: Inspect
+        Publish findings of a DlpJob to Data Catalog. In Data Catalog, tag templates are applied to the resource that Cloud DLP scanned. Data Catalog tag templates are stored in the same project and region where the BigQuery table exists. For Cloud DLP to create and apply the tag template, the Cloud DLP service agent must have the `roles/datacatalog.tagTemplateOwner` permission on the project. The tag template contains fields summarizing the results of the DlpJob. Any field values previously written by another DlpJob are deleted. InfoType naming patterns are strictly enforced when using this feature. Findings are persisted in Data Catalog storage and are governed by service-specific policies for Data Catalog. For more information, see [Service Specific Terms](https://cloud.google.com/terms/service-terms). Only a single instance of this action can be specified. This action is allowed only if all resources being scanned are BigQuery tables. Compatible with: Inspect
         """
         pass
 
@@ -5125,11 +5217,11 @@ class GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2PublishSummaryToCsccResponse(dict):
     """
-    Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
+    Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish the count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
     """
     def __init__(__self__):
         """
-        Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
+        Publish the result summary of a DlpJob to the Cloud Security Command Center (CSCC Alpha). This action is only available for projects which are parts of an organization and whitelisted for the alpha Cloud Security Command Center. The action will publish the count of finding instances and their info types. The summary of findings will be persisted in CSCC and are governed by CSCC service-specific policy, see https://cloud.google.com/terms/service-terms Only a single instance of this action can be specified. Compatible with: Inspect
         """
         pass
 
@@ -5137,12 +5229,12 @@ class GooglePrivacyDlpV2PublishSummaryToCsccResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2PublishToPubSubResponse(dict):
     """
-    Publish a message into given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+    Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
     """
     def __init__(__self__, *,
                  topic: str):
         """
-        Publish a message into given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
+        Publish a message into a given Pub/Sub topic when DlpJob has completed. The message contains a single field, `DlpJobName`, which is equal to the finished job's [`DlpJob.name`](https://cloud.google.com/dlp/docs/reference/rest/v2/projects.dlpJobs#DlpJob). Compatible with: Inspect, Risk
         :param str topic: Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to the DLP API service account executing the long running DlpJob sending the notifications. Format is projects/{project}/topics/{topic}.
         """
         pulumi.set(__self__, "topic", topic)
@@ -5887,7 +5979,7 @@ class GooglePrivacyDlpV2ScheduleResponse(dict):
                  recurrence_period_duration: str):
         """
         Schedule for inspect job triggers.
-        :param str recurrence_period_duration: With this option a job is started a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
+        :param str recurrence_period_duration: With this option a job is started on a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
         """
         pulumi.set(__self__, "recurrence_period_duration", recurrence_period_duration)
 
@@ -5895,7 +5987,7 @@ class GooglePrivacyDlpV2ScheduleResponse(dict):
     @pulumi.getter(name="recurrencePeriodDuration")
     def recurrence_period_duration(self) -> str:
         """
-        With this option a job is started a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
+        With this option a job is started on a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
         """
         return pulumi.get(self, "recurrence_period_duration")
 
@@ -6002,7 +6094,7 @@ class GooglePrivacyDlpV2StorageConfigResponse(dict):
         """
         Shared message indicating Cloud storage type.
         :param 'GooglePrivacyDlpV2BigQueryOptionsResponse' big_query_options: BigQuery options.
-        :param 'GooglePrivacyDlpV2CloudStorageOptionsResponse' cloud_storage_options: Google Cloud Storage options.
+        :param 'GooglePrivacyDlpV2CloudStorageOptionsResponse' cloud_storage_options: Cloud Storage options.
         :param 'GooglePrivacyDlpV2DatastoreOptionsResponse' datastore_options: Google Cloud Datastore options.
         :param 'GooglePrivacyDlpV2HybridOptionsResponse' hybrid_options: Hybrid inspection options.
         """
@@ -6024,7 +6116,7 @@ class GooglePrivacyDlpV2StorageConfigResponse(dict):
     @pulumi.getter(name="cloudStorageOptions")
     def cloud_storage_options(self) -> 'outputs.GooglePrivacyDlpV2CloudStorageOptionsResponse':
         """
-        Google Cloud Storage options.
+        Cloud Storage options.
         """
         return pulumi.get(self, "cloud_storage_options")
 
@@ -6206,7 +6298,7 @@ class GooglePrivacyDlpV2StoredInfoTypeVersionResponse(dict):
         Version of a StoredInfoType, including the configuration used to build it, create timestamp, and current state.
         :param 'GooglePrivacyDlpV2StoredInfoTypeConfigResponse' config: StoredInfoType configuration.
         :param str create_time: Create timestamp of the version. Read-only, determined by the system when the version is created.
-        :param Sequence['GooglePrivacyDlpV2ErrorResponse'] errors: Errors that occurred when creating this storedInfoType version, or anomalies detected in the storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the most recent error appearing first. For example, some of the data for stored custom dictionaries is put in the user's Google Cloud Storage bucket, and if this data is modified or deleted by the user or another system, the dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue using it, reusing the same `config` if it was not the source of the error.
+        :param Sequence['GooglePrivacyDlpV2ErrorResponse'] errors: Errors that occurred when creating this storedInfoType version, or anomalies detected in the storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the most recent error appearing first. For example, some of the data for stored custom dictionaries is put in the user's Cloud Storage bucket, and if this data is modified or deleted by the user or another system, the dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue using it, reusing the same `config` if it was not the source of the error.
         :param str state: Stored info type version state. Read-only, updated by the system during dictionary creation.
         :param 'GooglePrivacyDlpV2StoredInfoTypeStatsResponse' stats: Statistics about this storedInfoType version.
         """
@@ -6236,7 +6328,7 @@ class GooglePrivacyDlpV2StoredInfoTypeVersionResponse(dict):
     @pulumi.getter
     def errors(self) -> Sequence['outputs.GooglePrivacyDlpV2ErrorResponse']:
         """
-        Errors that occurred when creating this storedInfoType version, or anomalies detected in the storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the most recent error appearing first. For example, some of the data for stored custom dictionaries is put in the user's Google Cloud Storage bucket, and if this data is modified or deleted by the user or another system, the dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue using it, reusing the same `config` if it was not the source of the error.
+        Errors that occurred when creating this storedInfoType version, or anomalies detected in the storedInfoType data that render it unusable. Only the five most recent errors will be displayed, with the most recent error appearing first. For example, some of the data for stored custom dictionaries is put in the user's Cloud Storage bucket, and if this data is modified or deleted by the user or another system, the dictionary becomes invalid. If any errors occur, fix the problem indicated by the error message and use the UpdateStoredInfoType API method to create another version of the storedInfoType to continue using it, reusing the same `config` if it was not the source of the error.
         """
         return pulumi.get(self, "errors")
 
@@ -6486,7 +6578,7 @@ class GooglePrivacyDlpV2TimePartConfigResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2TimespanConfigResponse(dict):
     """
-    Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Google Cloud Storage and BigQuery.
+    Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Cloud Storage and BigQuery.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -6517,11 +6609,11 @@ class GooglePrivacyDlpV2TimespanConfigResponse(dict):
                  start_time: str,
                  timestamp_field: 'outputs.GooglePrivacyDlpV2FieldIdResponse'):
         """
-        Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Google Cloud Storage and BigQuery.
+        Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Cloud Storage and BigQuery.
         :param bool enable_auto_population_of_timespan_config: When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
         :param str end_time: Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
         :param str start_time: Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
-        :param 'GooglePrivacyDlpV2FieldIdResponse' timestamp_field: Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. For BigQuery: If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. For Datastore: If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`.
+        :param 'GooglePrivacyDlpV2FieldIdResponse' timestamp_field: Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
         """
         pulumi.set(__self__, "enable_auto_population_of_timespan_config", enable_auto_population_of_timespan_config)
         pulumi.set(__self__, "end_time", end_time)
@@ -6556,9 +6648,96 @@ class GooglePrivacyDlpV2TimespanConfigResponse(dict):
     @pulumi.getter(name="timestampField")
     def timestamp_field(self) -> 'outputs.GooglePrivacyDlpV2FieldIdResponse':
         """
-        Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. For BigQuery: If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. For Datastore: If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`.
+        Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
         """
         return pulumi.get(self, "timestamp_field")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2TransformationConfigResponse(dict):
+    """
+    User specified templates and configs for how to deidentify structured, unstructures, and image files. User must provide either a unstructured deidentify template or at least one redact image config.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deidentifyTemplate":
+            suggest = "deidentify_template"
+        elif key == "imageRedactTemplate":
+            suggest = "image_redact_template"
+        elif key == "structuredDeidentifyTemplate":
+            suggest = "structured_deidentify_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2TransformationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2TransformationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2TransformationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deidentify_template: str,
+                 image_redact_template: str,
+                 structured_deidentify_template: str):
+        """
+        User specified templates and configs for how to deidentify structured, unstructures, and image files. User must provide either a unstructured deidentify template or at least one redact image config.
+        :param str deidentify_template: De-identify template. If this template is specified, it will serve as the default de-identify template. This template cannot contain `record_transformations` since it can be used for unstructured content such as free-form text files. If this template is not set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify unstructured content.
+        :param str image_redact_template: Image redact template. If this template is specified, it will serve as the de-identify template for images. If this template is not set, all findings in the image will be redacted with a black box.
+        :param str structured_deidentify_template: Structured de-identify template. If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables. If this template is not set but the `deidentify_template` is set, then `deidentify_template` will also apply to the structured content. If neither template is set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify structured content.
+        """
+        pulumi.set(__self__, "deidentify_template", deidentify_template)
+        pulumi.set(__self__, "image_redact_template", image_redact_template)
+        pulumi.set(__self__, "structured_deidentify_template", structured_deidentify_template)
+
+    @property
+    @pulumi.getter(name="deidentifyTemplate")
+    def deidentify_template(self) -> str:
+        """
+        De-identify template. If this template is specified, it will serve as the default de-identify template. This template cannot contain `record_transformations` since it can be used for unstructured content such as free-form text files. If this template is not set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify unstructured content.
+        """
+        return pulumi.get(self, "deidentify_template")
+
+    @property
+    @pulumi.getter(name="imageRedactTemplate")
+    def image_redact_template(self) -> str:
+        """
+        Image redact template. If this template is specified, it will serve as the de-identify template for images. If this template is not set, all findings in the image will be redacted with a black box.
+        """
+        return pulumi.get(self, "image_redact_template")
+
+    @property
+    @pulumi.getter(name="structuredDeidentifyTemplate")
+    def structured_deidentify_template(self) -> str:
+        """
+        Structured de-identify template. If this template is specified, it will serve as the de-identify template for structured content such as delimited files and tables. If this template is not set but the `deidentify_template` is set, then `deidentify_template` will also apply to the structured content. If neither template is set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify structured content.
+        """
+        return pulumi.get(self, "structured_deidentify_template")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse(dict):
+    """
+    Config for storing transformation details.
+    """
+    def __init__(__self__, *,
+                 table: 'outputs.GooglePrivacyDlpV2BigQueryTableResponse'):
+        """
+        Config for storing transformation details.
+        :param 'GooglePrivacyDlpV2BigQueryTableResponse' table: The BigQuery table in which to store the output. This may be an existing table or in a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_transformation_details_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details.
+        """
+        pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter
+    def table(self) -> 'outputs.GooglePrivacyDlpV2BigQueryTableResponse':
+        """
+        The BigQuery table in which to store the output. This may be an existing table or in a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_transformation_details_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details.
+        """
+        return pulumi.get(self, "table")
 
 
 @pulumi.output_type

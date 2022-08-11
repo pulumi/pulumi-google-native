@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetMetricResult:
-    def __init__(__self__, bucket_options=None, create_time=None, description=None, disabled=None, filter=None, label_extractors=None, metric_descriptor=None, name=None, update_time=None, value_extractor=None, version=None):
+    def __init__(__self__, bucket_name=None, bucket_options=None, create_time=None, description=None, disabled=None, filter=None, label_extractors=None, metric_descriptor=None, name=None, update_time=None, value_extractor=None, version=None):
+        if bucket_name and not isinstance(bucket_name, str):
+            raise TypeError("Expected argument 'bucket_name' to be a str")
+        pulumi.set(__self__, "bucket_name", bucket_name)
         if bucket_options and not isinstance(bucket_options, dict):
             raise TypeError("Expected argument 'bucket_options' to be a dict")
         pulumi.set(__self__, "bucket_options", bucket_options)
@@ -57,6 +60,14 @@ class GetMetricResult:
             pulumi.log.warn("""version is deprecated: Deprecated. The API version that created or updated this metric. The v2 format is used by default and cannot be changed.""")
 
         pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> str:
+        """
+        Optional. The resource name of the Log Bucket that owns the Log Metric. Only Log Buckets in projects are supported. The bucket has to be in the same project as the metric.For example:projects/my-project/locations/global/buckets/my-bucketIf empty, then the Log Metric is considered a non-Bucket Log Metric.
+        """
+        return pulumi.get(self, "bucket_name")
 
     @property
     @pulumi.getter(name="bucketOptions")
@@ -102,7 +113,7 @@ class GetMetricResult:
     @pulumi.getter(name="labelExtractors")
     def label_extractors(self) -> Mapping[str, str]:
         """
-        Optional. A map from a label key string to an extractor expression which is used to extract data from a log entry field and assign as the label value. Each label key specified in the LabelDescriptor must have an associated extractor expression in this map. The syntax of the extractor expression is the same as for the value_extractor field.The extracted value is converted to the type defined in the label descriptor. If the either the extraction or the type conversion fails, the label will have a default value. The default value for a string label is an empty string, for an integer label its 0, and for a boolean label its false.Note that there are upper bounds on the maximum number of labels and the number of active time series that are allowed in a project.
+        Optional. A map from a label key string to an extractor expression which is used to extract data from a log entry field and assign as the label value. Each label key specified in the LabelDescriptor must have an associated extractor expression in this map. The syntax of the extractor expression is the same as for the value_extractor field.The extracted value is converted to the type defined in the label descriptor. If either the extraction or the type conversion fails, the label will have a default value. The default value for a string label is an empty string, for an integer label its 0, and for a boolean label its false.Note that there are upper bounds on the maximum number of labels and the number of active time series that are allowed in a project.
         """
         return pulumi.get(self, "label_extractors")
 
@@ -153,6 +164,7 @@ class AwaitableGetMetricResult(GetMetricResult):
         if False:
             yield self
         return GetMetricResult(
+            bucket_name=self.bucket_name,
             bucket_options=self.bucket_options,
             create_time=self.create_time,
             description=self.description,
@@ -179,6 +191,7 @@ def get_metric(metric_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:logging/v2:getMetric', __args__, opts=opts, typ=GetMetricResult).value
 
     return AwaitableGetMetricResult(
+        bucket_name=__ret__.bucket_name,
         bucket_options=__ret__.bucket_options,
         create_time=__ret__.create_time,
         description=__ret__.description,

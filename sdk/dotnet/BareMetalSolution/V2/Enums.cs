@@ -90,6 +90,133 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
     }
 
     /// <summary>
+    /// The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
+    /// </summary>
+    [EnumType]
+    public readonly struct LunMultiprotocolType : IEquatable<LunMultiprotocolType>
+    {
+        private readonly string _value;
+
+        private LunMultiprotocolType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Server has no OS specified.
+        /// </summary>
+        public static LunMultiprotocolType MultiprotocolTypeUnspecified { get; } = new LunMultiprotocolType("MULTIPROTOCOL_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Server with Linux OS.
+        /// </summary>
+        public static LunMultiprotocolType Linux { get; } = new LunMultiprotocolType("LINUX");
+
+        public static bool operator ==(LunMultiprotocolType left, LunMultiprotocolType right) => left.Equals(right);
+        public static bool operator !=(LunMultiprotocolType left, LunMultiprotocolType right) => !left.Equals(right);
+
+        public static explicit operator string(LunMultiprotocolType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LunMultiprotocolType other && Equals(other);
+        public bool Equals(LunMultiprotocolType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The state of this storage volume.
+    /// </summary>
+    [EnumType]
+    public readonly struct LunState : IEquatable<LunState>
+    {
+        private readonly string _value;
+
+        private LunState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The LUN is in an unknown state.
+        /// </summary>
+        public static LunState StateUnspecified { get; } = new LunState("STATE_UNSPECIFIED");
+        /// <summary>
+        /// The LUN is being created.
+        /// </summary>
+        public static LunState Creating { get; } = new LunState("CREATING");
+        /// <summary>
+        /// The LUN is being updated.
+        /// </summary>
+        public static LunState Updating { get; } = new LunState("UPDATING");
+        /// <summary>
+        /// The LUN is ready for use.
+        /// </summary>
+        public static LunState Ready { get; } = new LunState("READY");
+        /// <summary>
+        /// The LUN has been requested to be deleted.
+        /// </summary>
+        public static LunState Deleting { get; } = new LunState("DELETING");
+
+        public static bool operator ==(LunState left, LunState right) => left.Equals(right);
+        public static bool operator !=(LunState left, LunState right) => !left.Equals(right);
+
+        public static explicit operator string(LunState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LunState other && Equals(other);
+        public bool Equals(LunState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The storage type for this LUN.
+    /// </summary>
+    [EnumType]
+    public readonly struct LunStorageType : IEquatable<LunStorageType>
+    {
+        private readonly string _value;
+
+        private LunStorageType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The storage type for this LUN is unknown.
+        /// </summary>
+        public static LunStorageType StorageTypeUnspecified { get; } = new LunStorageType("STORAGE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// This storage type for this LUN is SSD.
+        /// </summary>
+        public static LunStorageType Ssd { get; } = new LunStorageType("SSD");
+        /// <summary>
+        /// This storage type for this LUN is HDD.
+        /// </summary>
+        public static LunStorageType Hdd { get; } = new LunStorageType("HDD");
+
+        public static bool operator ==(LunStorageType left, LunStorageType right) => left.Equals(right);
+        public static bool operator !=(LunStorageType left, LunStorageType right) => !left.Equals(right);
+
+        public static explicit operator string(LunStorageType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LunStorageType other && Equals(other);
+        public bool Equals(LunStorageType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Interconnect bandwidth. Set only when type is CLIENT.
     /// </summary>
     [EnumType]
@@ -344,6 +471,137 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is VolumeConfigType other && Equals(other);
         public bool Equals(VolumeConfigType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The behavior to use when snapshot reserved space is full.
+    /// </summary>
+    [EnumType]
+    public readonly struct VolumeSnapshotAutoDeleteBehavior : IEquatable<VolumeSnapshotAutoDeleteBehavior>
+    {
+        private readonly string _value;
+
+        private VolumeSnapshotAutoDeleteBehavior(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The unspecified behavior.
+        /// </summary>
+        public static VolumeSnapshotAutoDeleteBehavior SnapshotAutoDeleteBehaviorUnspecified { get; } = new VolumeSnapshotAutoDeleteBehavior("SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED");
+        /// <summary>
+        /// Don't delete any snapshots. This disables new snapshot creation, as long as the snapshot reserved space is full.
+        /// </summary>
+        public static VolumeSnapshotAutoDeleteBehavior Disabled { get; } = new VolumeSnapshotAutoDeleteBehavior("DISABLED");
+        /// <summary>
+        /// Delete the oldest snapshots first.
+        /// </summary>
+        public static VolumeSnapshotAutoDeleteBehavior OldestFirst { get; } = new VolumeSnapshotAutoDeleteBehavior("OLDEST_FIRST");
+        /// <summary>
+        /// Delete the newest snapshots first.
+        /// </summary>
+        public static VolumeSnapshotAutoDeleteBehavior NewestFirst { get; } = new VolumeSnapshotAutoDeleteBehavior("NEWEST_FIRST");
+
+        public static bool operator ==(VolumeSnapshotAutoDeleteBehavior left, VolumeSnapshotAutoDeleteBehavior right) => left.Equals(right);
+        public static bool operator !=(VolumeSnapshotAutoDeleteBehavior left, VolumeSnapshotAutoDeleteBehavior right) => !left.Equals(right);
+
+        public static explicit operator string(VolumeSnapshotAutoDeleteBehavior value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VolumeSnapshotAutoDeleteBehavior other && Equals(other);
+        public bool Equals(VolumeSnapshotAutoDeleteBehavior other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The state of this storage volume.
+    /// </summary>
+    [EnumType]
+    public readonly struct VolumeState : IEquatable<VolumeState>
+    {
+        private readonly string _value;
+
+        private VolumeState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The storage volume is in an unknown state.
+        /// </summary>
+        public static VolumeState StateUnspecified { get; } = new VolumeState("STATE_UNSPECIFIED");
+        /// <summary>
+        /// The storage volume is being created.
+        /// </summary>
+        public static VolumeState Creating { get; } = new VolumeState("CREATING");
+        /// <summary>
+        /// The storage volume is ready for use.
+        /// </summary>
+        public static VolumeState Ready { get; } = new VolumeState("READY");
+        /// <summary>
+        /// The storage volume has been requested to be deleted.
+        /// </summary>
+        public static VolumeState Deleting { get; } = new VolumeState("DELETING");
+
+        public static bool operator ==(VolumeState left, VolumeState right) => left.Equals(right);
+        public static bool operator !=(VolumeState left, VolumeState right) => !left.Equals(right);
+
+        public static explicit operator string(VolumeState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VolumeState other && Equals(other);
+        public bool Equals(VolumeState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The storage type for this volume.
+    /// </summary>
+    [EnumType]
+    public readonly struct VolumeStorageType : IEquatable<VolumeStorageType>
+    {
+        private readonly string _value;
+
+        private VolumeStorageType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The storage type for this volume is unknown.
+        /// </summary>
+        public static VolumeStorageType StorageTypeUnspecified { get; } = new VolumeStorageType("STORAGE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// The storage type for this volume is SSD.
+        /// </summary>
+        public static VolumeStorageType Ssd { get; } = new VolumeStorageType("SSD");
+        /// <summary>
+        /// This storage type for this volume is HDD.
+        /// </summary>
+        public static VolumeStorageType Hdd { get; } = new VolumeStorageType("HDD");
+
+        public static bool operator ==(VolumeStorageType left, VolumeStorageType right) => left.Equals(right);
+        public static bool operator !=(VolumeStorageType left, VolumeStorageType right) => !left.Equals(right);
+
+        public static explicit operator string(VolumeStorageType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VolumeStorageType other && Equals(other);
+        public bool Equals(VolumeStorageType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

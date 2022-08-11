@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
 {
 
     /// <summary>
-    /// Options defining a file or a set of files within a Google Cloud Storage bucket.
+    /// Options defining a file or a set of files within a Cloud Storage bucket.
     /// </summary>
     public sealed class GooglePrivacyDlpV2CloudStorageOptionsArgs : global::Pulumi.ResourceArgs
     {

@@ -89,6 +89,10 @@ export interface GetDiskResult {
      */
     readonly options: string;
     /**
+     * Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+     */
+    readonly params: outputs.compute.v1.DiskParamsResponse;
+    /**
      * Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
      */
     readonly physicalBlockSizeBytes: string;

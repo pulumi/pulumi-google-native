@@ -1401,6 +1401,8 @@ class RuntimeSoftwareConfigResponse(dict):
         suggest = None
         if key == "customGpuDriverPath":
             suggest = "custom_gpu_driver_path"
+        elif key == "disableTerminal":
+            suggest = "disable_terminal"
         elif key == "enableHealthMonitoring":
             suggest = "enable_health_monitoring"
         elif key == "idleShutdown":
@@ -1429,6 +1431,7 @@ class RuntimeSoftwareConfigResponse(dict):
 
     def __init__(__self__, *,
                  custom_gpu_driver_path: str,
+                 disable_terminal: bool,
                  enable_health_monitoring: bool,
                  idle_shutdown: bool,
                  idle_shutdown_timeout: int,
@@ -1441,6 +1444,7 @@ class RuntimeSoftwareConfigResponse(dict):
         """
         Specifies the selection and configuration of software inside the runtime. The properties to set on runtime. Properties keys are specified in `key:value` format, for example: * `idle_shutdown: true` * `idle_shutdown_timeout: 180` * `enable_health_monitoring: true`
         :param str custom_gpu_driver_path: Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
+        :param bool disable_terminal: Bool indicating whether JupyterLab terminal will be available or not. Default: False
         :param bool enable_health_monitoring: Verifies core internal services are running. Default: True
         :param bool idle_shutdown: Runtime will automatically shutdown after idle_shutdown_time. Default: True
         :param int idle_shutdown_timeout: Time in minutes to wait before shutting down runtime. Default: 180 minutes
@@ -1452,6 +1456,7 @@ class RuntimeSoftwareConfigResponse(dict):
         :param bool upgradeable: Bool indicating whether an newer image is available in an image family.
         """
         pulumi.set(__self__, "custom_gpu_driver_path", custom_gpu_driver_path)
+        pulumi.set(__self__, "disable_terminal", disable_terminal)
         pulumi.set(__self__, "enable_health_monitoring", enable_health_monitoring)
         pulumi.set(__self__, "idle_shutdown", idle_shutdown)
         pulumi.set(__self__, "idle_shutdown_timeout", idle_shutdown_timeout)
@@ -1469,6 +1474,14 @@ class RuntimeSoftwareConfigResponse(dict):
         Specify a custom Cloud Storage path where the GPU driver is stored. If not specified, we'll automatically choose from official GPU drivers.
         """
         return pulumi.get(self, "custom_gpu_driver_path")
+
+    @property
+    @pulumi.getter(name="disableTerminal")
+    def disable_terminal(self) -> bool:
+        """
+        Bool indicating whether JupyterLab terminal will be available or not. Default: False
+        """
+        return pulumi.get(self, "disable_terminal")
 
     @property
     @pulumi.getter(name="enableHealthMonitoring")
@@ -1909,7 +1922,7 @@ class VirtualMachineConfigResponse(dict):
         :param Mapping[str, str] labels: Optional. The labels to associate with this runtime. Label **keys** must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be empty, but, if present, must contain 1 to 63 characters, and must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No more than 32 labels can be associated with a cluster.
         :param str machine_type: The Compute Engine machine type used for runtimes. Short name is valid. Examples: * `n1-standard-2` * `e2-standard-8`
         :param Mapping[str, str] metadata: Optional. The Compute Engine metadata entries to add to virtual machine. (see [Project and instance metadata](https://cloud.google.com/compute/docs/storing-retrieving-metadata#project_and_instance_metadata)).
-        :param str network: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
+        :param str network: Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default` * `projects/[project_id]/global/networks/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
         :param str nic_type: Optional. The type of vNIC to be used on this interface. This may be gVNIC or VirtioNet.
         :param str reserved_ip_range: Optional. Reserved IP Range name is used for VPC Peering. The subnetwork allocation will use the range *name* if it's assigned. Example: managed-notebooks-range-c PEERING_RANGE_NAME_3=managed-notebooks-range-c gcloud compute addresses create $PEERING_RANGE_NAME_3 \\ --global \\ --prefix-length=24 \\ --description="Google Cloud Managed Notebooks Range 24 c" \\ --network=$NETWORK \\ --addresses=192.168.0.0 \\ --purpose=VPC_PEERING Field value will be: `managed-notebooks-range-c`
         :param 'RuntimeShieldedInstanceConfigResponse' shielded_instance_config: Optional. Shielded VM Instance configuration settings.
@@ -2019,7 +2032,7 @@ class VirtualMachineConfigResponse(dict):
     @pulumi.getter
     def network(self) -> str:
         """
-        Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/regions/global/default` * `projects/[project_id]/regions/global/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
+        Optional. The Compute Engine network to be used for machine communications. Cannot be specified with subnetwork. If neither `network` nor `subnet` is specified, the "default" network of the project is used, if it exists. A full URL or partial URI. Examples: * `https://www.googleapis.com/compute/v1/projects/[project_id]/global/networks/default` * `projects/[project_id]/global/networks/default` Runtimes are managed resources inside Google Infrastructure. Runtimes support the following network configurations: * Google Managed Network (Network & subnet are empty) * Consumer Project VPC (network & subnet are required). Requires configuring Private Service Access. * Shared VPC (network & subnet are required). Requires configuring Private Service Access.
         """
         return pulumi.get(self, "network")
 

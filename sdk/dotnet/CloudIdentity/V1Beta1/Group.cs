@@ -17,12 +17,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
     public partial class Group : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Additional entity key aliases for a Group.
-        /// </summary>
-        [Output("additionalGroupKeys")]
-        public Output<ImmutableArray<Outputs.EntityKeyResponse>> AdditionalGroupKeys { get; private set; } = null!;
-
-        /// <summary>
         /// The time when the `Group` was created.
         /// </summary>
         [Output("createTime")]
@@ -137,18 +131,6 @@ namespace Pulumi.GoogleNative.CloudIdentity.V1Beta1
 
     public sealed class GroupArgs : global::Pulumi.ResourceArgs
     {
-        [Input("additionalGroupKeys")]
-        private InputList<Inputs.EntityKeyArgs>? _additionalGroupKeys;
-
-        /// <summary>
-        /// Additional entity key aliases for a Group.
-        /// </summary>
-        public InputList<Inputs.EntityKeyArgs> AdditionalGroupKeys
-        {
-            get => _additionalGroupKeys ?? (_additionalGroupKeys = new InputList<Inputs.EntityKeyArgs>());
-            set => _additionalGroupKeys = value;
-        }
-
         /// <summary>
         /// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
         /// </summary>

@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetGlossaryResult:
-    def __init__(__self__, end_time=None, entry_count=None, input_config=None, language_codes_set=None, language_pair=None, name=None, submit_time=None):
+    def __init__(__self__, display_name=None, end_time=None, entry_count=None, input_config=None, language_codes_set=None, language_pair=None, name=None, submit_time=None):
+        if display_name and not isinstance(display_name, str):
+            raise TypeError("Expected argument 'display_name' to be a str")
+        pulumi.set(__self__, "display_name", display_name)
         if end_time and not isinstance(end_time, str):
             raise TypeError("Expected argument 'end_time' to be a str")
         pulumi.set(__self__, "end_time", end_time)
@@ -41,6 +44,14 @@ class GetGlossaryResult:
         if submit_time and not isinstance(submit_time, str):
             raise TypeError("Expected argument 'submit_time' to be a str")
         pulumi.set(__self__, "submit_time", submit_time)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Optional. The display name of the glossary.
+        """
+        return pulumi.get(self, "display_name")
 
     @property
     @pulumi.getter(name="endTime")
@@ -105,6 +116,7 @@ class AwaitableGetGlossaryResult(GetGlossaryResult):
         if False:
             yield self
         return GetGlossaryResult(
+            display_name=self.display_name,
             end_time=self.end_time,
             entry_count=self.entry_count,
             input_config=self.input_config,
@@ -129,6 +141,7 @@ def get_glossary(glossary_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:translate/v3:getGlossary', __args__, opts=opts, typ=GetGlossaryResult).value
 
     return AwaitableGetGlossaryResult(
+        display_name=__ret__.display_name,
         end_time=__ret__.end_time,
         entry_count=__ret__.entry_count,
         input_config=__ret__.input_config,

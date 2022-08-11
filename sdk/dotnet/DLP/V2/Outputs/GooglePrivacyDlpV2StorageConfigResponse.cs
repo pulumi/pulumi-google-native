@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2BigQueryOptionsResponse BigQueryOptions;
         /// <summary>
-        /// Google Cloud Storage options.
+        /// Cloud Storage options.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2CloudStorageOptionsResponse CloudStorageOptions;
         /// <summary>

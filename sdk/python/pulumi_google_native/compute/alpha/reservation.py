@@ -245,6 +245,7 @@ class Reservation(pulumi.CustomResource):
             __props__.__dict__["commitment"] = None
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["resource_status"] = None
             __props__.__dict__["satisfies_pzs"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["self_link_with_id"] = None
@@ -281,6 +282,7 @@ class Reservation(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["resource_policies"] = None
+        __props__.__dict__["resource_status"] = None
         __props__.__dict__["satisfies_pzs"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["self_link_with_id"] = None
@@ -351,6 +353,14 @@ class Reservation(pulumi.CustomResource):
         Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
         """
         return pulumi.get(self, "resource_policies")
+
+    @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> pulumi.Output['outputs.AllocationResourceStatusResponse']:
+        """
+        Status information for Reservation resource.
+        """
+        return pulumi.get(self, "resource_status")
 
     @property
     @pulumi.getter(name="satisfiesPzs")

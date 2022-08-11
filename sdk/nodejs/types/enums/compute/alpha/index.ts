@@ -1192,6 +1192,23 @@ export const ForwardingRulePscConnectionStatus = {
 
 export type ForwardingRulePscConnectionStatus = (typeof ForwardingRulePscConnectionStatus)[keyof typeof ForwardingRulePscConnectionStatus];
 
+export const FutureReservationPlanningStatus = {
+    /**
+     * Future Reservation is being drafted.
+     */
+    Draft: "DRAFT",
+    PlanningStatusUnspecified: "PLANNING_STATUS_UNSPECIFIED",
+    /**
+     * Future Reservation has been submitted for evaluation by GCP.
+     */
+    Submitted: "SUBMITTED",
+} as const;
+
+/**
+ * Planning state before being submitted for evaluation
+ */
+export type FutureReservationPlanningStatus = (typeof FutureReservationPlanningStatus)[keyof typeof FutureReservationPlanningStatus];
+
 export const GRPCHealthCheckPortSpecification = {
     /**
      * The port number in port is used for health checking.

@@ -140,6 +140,10 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Options;
         /// <summary>
+        /// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        public readonly Outputs.DiskParamsResponse Params;
+        /// <summary>
         /// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
         /// </summary>
         public readonly string PhysicalBlockSizeBytes;
@@ -272,6 +276,8 @@ namespace Pulumi.GoogleNative.Compute.Beta
 
             string options,
 
+            Outputs.DiskParamsResponse @params,
+
             string physicalBlockSizeBytes,
 
             string provisionedIops,
@@ -337,6 +343,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
             MultiWriter = multiWriter;
             Name = name;
             Options = options;
+            Params = @params;
             PhysicalBlockSizeBytes = physicalBlockSizeBytes;
             ProvisionedIops = provisionedIops;
             Region = region;

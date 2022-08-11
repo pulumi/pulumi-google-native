@@ -57,6 +57,8 @@ type LookupRegionDiskResult struct {
 	Name string `pulumi:"name"`
 	// Internal use only.
 	Options string `pulumi:"options"`
+	// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+	Params DiskParamsResponse `pulumi:"params"`
 	// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
 	PhysicalBlockSizeBytes string `pulumi:"physicalBlockSizeBytes"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
@@ -211,6 +213,11 @@ func (o LookupRegionDiskResultOutput) Name() pulumi.StringOutput {
 // Internal use only.
 func (o LookupRegionDiskResultOutput) Options() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionDiskResult) string { return v.Options }).(pulumi.StringOutput)
+}
+
+// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+func (o LookupRegionDiskResultOutput) Params() DiskParamsResponseOutput {
+	return o.ApplyT(func(v LookupRegionDiskResult) DiskParamsResponse { return v.Params }).(DiskParamsResponseOutput)
 }
 
 // Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.

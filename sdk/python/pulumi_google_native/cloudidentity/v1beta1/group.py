@@ -21,7 +21,6 @@ class GroupArgs:
                  initial_group_config: pulumi.Input[str],
                  labels: pulumi.Input[Mapping[str, pulumi.Input[str]]],
                  parent: pulumi.Input[str],
-                 additional_group_keys: Optional[pulumi.Input[Sequence[pulumi.Input['EntityKeyArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dynamic_group_metadata: Optional[pulumi.Input['DynamicGroupMetadataArgs']] = None,
@@ -32,7 +31,6 @@ class GroupArgs:
         :param pulumi.Input[str] initial_group_config: Required. The initial configuration option for the `Group`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: One or more label entries that apply to the Group. Currently supported labels contain a key with an empty value. Google Groups are the default type of group and have a label with a key of `cloudidentity.googleapis.com/groups.discussion_forum` and an empty value. Existing Google Groups can have an additional label with a key of `cloudidentity.googleapis.com/groups.security` and an empty value added to them. **This is an immutable change and the security label cannot be removed once added.** Dynamic groups have a label with a key of `cloudidentity.googleapis.com/groups.dynamic`. Identity-mapped groups for Cloud Search have a label with a key of `system/groups/external` and an empty value.
         :param pulumi.Input[str] parent: Immutable. The resource name of the entity under which this `Group` resides in the Cloud Identity resource hierarchy. Must be of the form `identitysources/{identity_source_id}` for external- identity-mapped groups or `customers/{customer_id}` for Google Groups. The `customer_id` must begin with "C" (for example, 'C046psxkn').
-        :param pulumi.Input[Sequence[pulumi.Input['EntityKeyArgs']]] additional_group_keys: Additional entity key aliases for a Group.
         :param pulumi.Input[str] description: An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
         :param pulumi.Input[str] display_name: The display name of the `Group`.
         :param pulumi.Input['DynamicGroupMetadataArgs'] dynamic_group_metadata: Optional. Dynamic group metadata like queries and status.
@@ -42,8 +40,6 @@ class GroupArgs:
         pulumi.set(__self__, "initial_group_config", initial_group_config)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "parent", parent)
-        if additional_group_keys is not None:
-            pulumi.set(__self__, "additional_group_keys", additional_group_keys)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if display_name is not None:
@@ -102,18 +98,6 @@ class GroupArgs:
         pulumi.set(self, "parent", value)
 
     @property
-    @pulumi.getter(name="additionalGroupKeys")
-    def additional_group_keys(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EntityKeyArgs']]]]:
-        """
-        Additional entity key aliases for a Group.
-        """
-        return pulumi.get(self, "additional_group_keys")
-
-    @additional_group_keys.setter
-    def additional_group_keys(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EntityKeyArgs']]]]):
-        pulumi.set(self, "additional_group_keys", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -167,7 +151,6 @@ class Group(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_group_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityKeyArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dynamic_group_metadata: Optional[pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']]] = None,
@@ -183,7 +166,6 @@ class Group(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityKeyArgs']]]] additional_group_keys: Additional entity key aliases for a Group.
         :param pulumi.Input[str] description: An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
         :param pulumi.Input[str] display_name: The display name of the `Group`.
         :param pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']] dynamic_group_metadata: Optional. Dynamic group metadata like queries and status.
@@ -218,7 +200,6 @@ class Group(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 additional_group_keys: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['EntityKeyArgs']]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  dynamic_group_metadata: Optional[pulumi.Input[pulumi.InputType['DynamicGroupMetadataArgs']]] = None,
@@ -236,7 +217,6 @@ class Group(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = GroupArgs.__new__(GroupArgs)
 
-            __props__.__dict__["additional_group_keys"] = additional_group_keys
             __props__.__dict__["description"] = description
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["dynamic_group_metadata"] = dynamic_group_metadata
@@ -280,7 +260,6 @@ class Group(pulumi.CustomResource):
 
         __props__ = GroupArgs.__new__(GroupArgs)
 
-        __props__.__dict__["additional_group_keys"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
         __props__.__dict__["display_name"] = None
@@ -293,14 +272,6 @@ class Group(pulumi.CustomResource):
         __props__.__dict__["posix_groups"] = None
         __props__.__dict__["update_time"] = None
         return Group(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter(name="additionalGroupKeys")
-    def additional_group_keys(self) -> pulumi.Output[Sequence['outputs.EntityKeyResponse']]:
-        """
-        Additional entity key aliases for a Group.
-        """
-        return pulumi.get(self, "additional_group_keys")
 
     @property
     @pulumi.getter(name="createTime")

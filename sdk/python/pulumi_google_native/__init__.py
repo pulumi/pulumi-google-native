@@ -593,6 +593,7 @@ _utilities.register(
   "mod": "baremetalsolution/v2",
   "fqn": "pulumi_google_native.baremetalsolution.v2",
   "classes": {
+   "google-native:baremetalsolution/v2:Instance": "Instance",
    "google-native:baremetalsolution/v2:ProvisioningConfig": "ProvisioningConfig"
   }
  },
@@ -1971,11 +1972,7 @@ _utilities.register(
   "mod": "gameservices/v1",
   "fqn": "pulumi_google_native.gameservices.v1",
   "classes": {
-   "google-native:gameservices/v1:Config": "Config",
-   "google-native:gameservices/v1:GameServerCluster": "GameServerCluster",
-   "google-native:gameservices/v1:GameServerDeployment": "GameServerDeployment",
-   "google-native:gameservices/v1:GameServerDeploymentIamPolicy": "GameServerDeploymentIamPolicy",
-   "google-native:gameservices/v1:Realm": "Realm"
+   "google-native:gameservices/v1:GameServerDeploymentIamPolicy": "GameServerDeploymentIamPolicy"
   }
  },
  {
@@ -1983,11 +1980,7 @@ _utilities.register(
   "mod": "gameservices/v1beta",
   "fqn": "pulumi_google_native.gameservices.v1beta",
   "classes": {
-   "google-native:gameservices/v1beta:Config": "Config",
-   "google-native:gameservices/v1beta:GameServerCluster": "GameServerCluster",
-   "google-native:gameservices/v1beta:GameServerDeployment": "GameServerDeployment",
-   "google-native:gameservices/v1beta:GameServerDeploymentIamPolicy": "GameServerDeploymentIamPolicy",
-   "google-native:gameservices/v1beta:Realm": "Realm"
+   "google-native:gameservices/v1beta:GameServerDeploymentIamPolicy": "GameServerDeploymentIamPolicy"
   }
  },
  {
@@ -2918,7 +2911,8 @@ _utilities.register(
   "mod": "translate/v3",
   "fqn": "pulumi_google_native.translate.v3",
   "classes": {
-   "google-native:translate/v3:Glossary": "Glossary"
+   "google-native:translate/v3:Glossary": "Glossary",
+   "google-native:translate/v3:GlossaryEntry": "GlossaryEntry"
   }
  },
  {

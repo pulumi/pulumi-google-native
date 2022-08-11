@@ -213,6 +213,7 @@ __all__ = [
     'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigArgs',
+    'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs',
     'SecurityPolicyAdvancedOptionsConfigArgs',
     'SecurityPolicyAssociationArgs',
     'SecurityPolicyCloudArmorConfigArgs',
@@ -745,16 +746,20 @@ class AllocationSpecificSKUAllocationReservedInstancePropertiesArgs:
 class AllocationSpecificSKUReservationArgs:
     def __init__(__self__, *,
                  count: Optional[pulumi.Input[str]] = None,
-                 instance_properties: Optional[pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesArgs']] = None):
+                 instance_properties: Optional[pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesArgs']] = None,
+                 source_instance_template: Optional[pulumi.Input[str]] = None):
         """
         This reservation type allows to pre allocate specific instance configuration. Next ID: 6
         :param pulumi.Input[str] count: Specifies the number of resources that are allocated.
         :param pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesArgs'] instance_properties: The instance properties for the reservation.
+        :param pulumi.Input[str] source_instance_template: Specific URL of the instance template used in the reservation
         """
         if count is not None:
             pulumi.set(__self__, "count", count)
         if instance_properties is not None:
             pulumi.set(__self__, "instance_properties", instance_properties)
+        if source_instance_template is not None:
+            pulumi.set(__self__, "source_instance_template", source_instance_template)
 
     @property
     @pulumi.getter
@@ -779,6 +784,18 @@ class AllocationSpecificSKUReservationArgs:
     @instance_properties.setter
     def instance_properties(self, value: Optional[pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesArgs']]):
         pulumi.set(self, "instance_properties", value)
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specific URL of the instance template used in the reservation
+        """
+        return pulumi.get(self, "source_instance_template")
+
+    @source_instance_template.setter
+    def source_instance_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instance_template", value)
 
 
 @pulumi.input_type
@@ -5193,7 +5210,7 @@ class FirewallPolicyRuleArgs:
         :param pulumi.Input['FirewallPolicyRuleMatcherArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param pulumi.Input[str] rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
-        :param pulumi.Input[str] security_profile_group: A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+        :param pulumi.Input[str] security_profile_group: A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param pulumi.Input[Sequence[pulumi.Input['FirewallPolicyRuleSecureTagArgs']]] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
@@ -5323,7 +5340,7 @@ class FirewallPolicyRuleArgs:
     @pulumi.getter(name="securityProfileGroup")
     def security_profile_group(self) -> Optional[pulumi.Input[str]]:
         """
-        A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+        A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
         """
         return pulumi.get(self, "security_profile_group")
 
@@ -5468,13 +5485,17 @@ class ForwardingRuleServiceDirectoryRegistrationArgs:
 class FutureReservationSpecificSKUPropertiesArgs:
     def __init__(__self__, *,
                  instance_properties: Optional[pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesArgs']] = None,
+                 source_instance_template: Optional[pulumi.Input[str]] = None,
                  total_count: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesArgs'] instance_properties: Properties of the SKU instances being reserved.
+        :param pulumi.Input[str] source_instance_template: The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
         :param pulumi.Input[str] total_count: Total number of instances for which capacity assurance is requested at a future time period.
         """
         if instance_properties is not None:
             pulumi.set(__self__, "instance_properties", instance_properties)
+        if source_instance_template is not None:
+            pulumi.set(__self__, "source_instance_template", source_instance_template)
         if total_count is not None:
             pulumi.set(__self__, "total_count", total_count)
 
@@ -5489,6 +5510,18 @@ class FutureReservationSpecificSKUPropertiesArgs:
     @instance_properties.setter
     def instance_properties(self, value: Optional[pulumi.Input['AllocationSpecificSKUAllocationReservedInstancePropertiesArgs']]):
         pulumi.set(self, "instance_properties", value)
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> Optional[pulumi.Input[str]]:
+        """
+        The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+        """
+        return pulumi.get(self, "source_instance_template")
+
+    @source_instance_template.setter
+    def source_instance_template(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_instance_template", value)
 
     @property
     @pulumi.getter(name="totalCount")
@@ -14326,7 +14359,7 @@ class SchedulingArgs:
                  provisioning_model: Optional[pulumi.Input['SchedulingProvisioningModel']] = None,
                  termination_time: Optional[pulumi.Input[str]] = None):
         """
-        Sets the scheduling options for an Instance. NextID: 21
+        Sets the scheduling options for an Instance.
         :param pulumi.Input[bool] automatic_restart: Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
         :param pulumi.Input[int] availability_domain: Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
         :param pulumi.Input[int] current_cpus: Current number of vCPUs available for VM. 0 or unset means default vCPUs of the current machine type.
@@ -14742,14 +14775,55 @@ class SecurityPolicyAdaptiveProtectionConfigArgs:
 
 
 @pulumi.input_type
+class SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs:
+    def __init__(__self__, *,
+                 content_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] content_types: A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+        """
+        if content_types is not None:
+            pulumi.set(__self__, "content_types", content_types)
+
+    @property
+    @pulumi.getter(name="contentTypes")
+    def content_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+        """
+        return pulumi.get(self, "content_types")
+
+    @content_types.setter
+    def content_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "content_types", value)
+
+
+@pulumi.input_type
 class SecurityPolicyAdvancedOptionsConfigArgs:
     def __init__(__self__, *,
+                 json_custom_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs']] = None,
                  json_parsing: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonParsing']] = None,
                  log_level: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigLogLevel']] = None):
+        """
+        :param pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs'] json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+        """
+        if json_custom_config is not None:
+            pulumi.set(__self__, "json_custom_config", json_custom_config)
         if json_parsing is not None:
             pulumi.set(__self__, "json_parsing", json_parsing)
         if log_level is not None:
             pulumi.set(__self__, "log_level", log_level)
+
+    @property
+    @pulumi.getter(name="jsonCustomConfig")
+    def json_custom_config(self) -> Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs']]:
+        """
+        Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+        """
+        return pulumi.get(self, "json_custom_config")
+
+    @json_custom_config.setter
+    def json_custom_config(self, value: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs']]):
+        pulumi.set(self, "json_custom_config", value)
 
     @property
     @pulumi.getter(name="jsonParsing")

@@ -32,7 +32,7 @@ export interface GetKeystoreResult {
      */
     readonly aliases: string[];
     /**
-     * Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+     * Resource ID for this keystore. Values must match the regular expression `[\w[:space:].-]{1,255}`.
      */
     readonly name: string;
 }

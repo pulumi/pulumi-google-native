@@ -394,6 +394,76 @@ namespace Pulumi.GoogleNative.DLP.V2
         public override string ToString() => _value;
     }
 
+    [EnumType]
+    public readonly struct GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem : IEquatable<GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem>
+    {
+        private readonly string _value;
+
+        private GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Includes all files.
+        /// </summary>
+        public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem FileTypeUnspecified { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("FILE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.
+        /// </summary>
+        public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem BinaryFile { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("BINARY_FILE");
+        /// <summary>
+        /// Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
+        /// </summary>
+        public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem TextFile { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("TEXT_FILE");
+        /// <summary>
+        /// Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
+        /// </summary>
+        public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem Image { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("IMAGE");
+        /// <summary>
+        /// Word files &gt;30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm
+        /// </summary>
+        public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem Word { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("WORD");
+        /// <summary>
+        /// PDF files &gt;30 MB will be scanned as binary files. Included file extensions: pdf
+        /// </summary>
+        public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem Pdf { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("PDF");
+        /// <summary>
+        /// Included file extensions: avro
+        /// </summary>
+        public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem Avro { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("AVRO");
+        /// <summary>
+        /// Included file extensions: csv
+        /// </summary>
+        public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem Csv { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("CSV");
+        /// <summary>
+        /// Included file extensions: tsv
+        /// </summary>
+        public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem Tsv { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("TSV");
+        /// <summary>
+        /// Powerpoint files &gt;30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+        /// </summary>
+        public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem Powerpoint { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("POWERPOINT");
+        /// <summary>
+        /// Excel files &gt;30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+        /// </summary>
+        public static GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem Excel { get; } = new GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem("EXCEL");
+
+        public static bool operator ==(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem left, GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem right) => left.Equals(right);
+        public static bool operator !=(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem left, GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem right) => !left.Equals(right);
+
+        public static explicit operator string(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem other && Equals(other);
+        public bool Equals(GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
     /// How the rule is applied, see MatchingType documentation for details.
     /// </summary>
@@ -630,7 +700,7 @@ namespace Pulumi.GoogleNative.DLP.V2
         /// </summary>
         public static GooglePrivacyDlpV2OutputStorageConfigOutputSchema BasicColumns { get; } = new GooglePrivacyDlpV2OutputStorageConfigOutputSchema("BASIC_COLUMNS");
         /// <summary>
-        /// Schema tailored to findings from scanning Google Cloud Storage.
+        /// Schema tailored to findings from scanning Cloud Storage.
         /// </summary>
         public static GooglePrivacyDlpV2OutputStorageConfigOutputSchema GcsColumns { get; } = new GooglePrivacyDlpV2OutputStorageConfigOutputSchema("GCS_COLUMNS");
         /// <summary>

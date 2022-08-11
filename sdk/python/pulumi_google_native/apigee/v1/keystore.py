@@ -19,7 +19,7 @@ class KeystoreArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Keystore resource.
-        :param pulumi.Input[str] name: Resource ID for this keystore. Values must match the regular expression `[\\w[:space:]-.]{1,255}`.
+        :param pulumi.Input[str] name: Resource ID for this keystore. Values must match the regular expression `[\\w[:space:].-]{1,255}`.
         """
         pulumi.set(__self__, "environment_id", environment_id)
         pulumi.set(__self__, "organization_id", organization_id)
@@ -48,7 +48,7 @@ class KeystoreArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource ID for this keystore. Values must match the regular expression `[\\w[:space:]-.]{1,255}`.
+        Resource ID for this keystore. Values must match the regular expression `[\\w[:space:].-]{1,255}`.
         """
         return pulumi.get(self, "name")
 
@@ -71,7 +71,7 @@ class Keystore(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: Resource ID for this keystore. Values must match the regular expression `[\\w[:space:]-.]{1,255}`.
+        :param pulumi.Input[str] name: Resource ID for this keystore. Values must match the regular expression `[\\w[:space:].-]{1,255}`.
         """
         ...
     @overload

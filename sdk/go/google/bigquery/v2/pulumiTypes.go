@@ -12056,11 +12056,11 @@ func (o RangePartitioningResponseOutput) Range() RangePartitioningRangeResponseO
 
 // Options for a remote user-defined function.
 type RemoteFunctionOptions struct {
-	// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+	// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. Format: ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"```
 	Connection *string `pulumi:"connection"`
-	// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+	// Endpoint of the user-provided remote service, e.g. ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
 	Endpoint *string `pulumi:"endpoint"`
-	// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+	// Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides the number of rows in a batch.
 	MaxBatchingRows *string `pulumi:"maxBatchingRows"`
 	// User-defined context as a set of key/value pairs, which will be sent as function invocation context together with batched arguments in the requests to the remote service. The total number of bytes of keys and values must be less than 8KB.
 	UserDefinedContext map[string]string `pulumi:"userDefinedContext"`
@@ -12079,11 +12079,11 @@ type RemoteFunctionOptionsInput interface {
 
 // Options for a remote user-defined function.
 type RemoteFunctionOptionsArgs struct {
-	// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+	// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. Format: ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"```
 	Connection pulumi.StringPtrInput `pulumi:"connection"`
-	// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+	// Endpoint of the user-provided remote service, e.g. ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
 	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
-	// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+	// Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides the number of rows in a batch.
 	MaxBatchingRows pulumi.StringPtrInput `pulumi:"maxBatchingRows"`
 	// User-defined context as a set of key/value pairs, which will be sent as function invocation context together with batched arguments in the requests to the remote service. The total number of bytes of keys and values must be less than 8KB.
 	UserDefinedContext pulumi.StringMapInput `pulumi:"userDefinedContext"`
@@ -12167,17 +12167,17 @@ func (o RemoteFunctionOptionsOutput) ToRemoteFunctionOptionsPtrOutputWithContext
 	}).(RemoteFunctionOptionsPtrOutput)
 }
 
-// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. Format: ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"```
 func (o RemoteFunctionOptionsOutput) Connection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RemoteFunctionOptions) *string { return v.Connection }).(pulumi.StringPtrOutput)
 }
 
-// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+// Endpoint of the user-provided remote service, e.g. ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
 func (o RemoteFunctionOptionsOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RemoteFunctionOptions) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
 }
 
-// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+// Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides the number of rows in a batch.
 func (o RemoteFunctionOptionsOutput) MaxBatchingRows() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RemoteFunctionOptions) *string { return v.MaxBatchingRows }).(pulumi.StringPtrOutput)
 }
@@ -12211,7 +12211,7 @@ func (o RemoteFunctionOptionsPtrOutput) Elem() RemoteFunctionOptionsOutput {
 	}).(RemoteFunctionOptionsOutput)
 }
 
-// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. Format: ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"```
 func (o RemoteFunctionOptionsPtrOutput) Connection() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RemoteFunctionOptions) *string {
 		if v == nil {
@@ -12221,7 +12221,7 @@ func (o RemoteFunctionOptionsPtrOutput) Connection() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+// Endpoint of the user-provided remote service, e.g. ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
 func (o RemoteFunctionOptionsPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RemoteFunctionOptions) *string {
 		if v == nil {
@@ -12231,7 +12231,7 @@ func (o RemoteFunctionOptionsPtrOutput) Endpoint() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+// Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides the number of rows in a batch.
 func (o RemoteFunctionOptionsPtrOutput) MaxBatchingRows() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RemoteFunctionOptions) *string {
 		if v == nil {
@@ -12253,11 +12253,11 @@ func (o RemoteFunctionOptionsPtrOutput) UserDefinedContext() pulumi.StringMapOut
 
 // Options for a remote user-defined function.
 type RemoteFunctionOptionsResponse struct {
-	// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+	// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. Format: ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"```
 	Connection string `pulumi:"connection"`
-	// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+	// Endpoint of the user-provided remote service, e.g. ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
 	Endpoint string `pulumi:"endpoint"`
-	// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+	// Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides the number of rows in a batch.
 	MaxBatchingRows string `pulumi:"maxBatchingRows"`
 	// User-defined context as a set of key/value pairs, which will be sent as function invocation context together with batched arguments in the requests to the remote service. The total number of bytes of keys and values must be less than 8KB.
 	UserDefinedContext map[string]string `pulumi:"userDefinedContext"`
@@ -12278,17 +12278,17 @@ func (o RemoteFunctionOptionsResponseOutput) ToRemoteFunctionOptionsResponseOutp
 	return o
 }
 
-// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+// Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. Format: ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"```
 func (o RemoteFunctionOptionsResponseOutput) Connection() pulumi.StringOutput {
 	return o.ApplyT(func(v RemoteFunctionOptionsResponse) string { return v.Connection }).(pulumi.StringOutput)
 }
 
-// Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+// Endpoint of the user-provided remote service, e.g. ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
 func (o RemoteFunctionOptionsResponseOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v RemoteFunctionOptionsResponse) string { return v.Endpoint }).(pulumi.StringOutput)
 }
 
-// Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+// Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides the number of rows in a batch.
 func (o RemoteFunctionOptionsResponseOutput) MaxBatchingRows() pulumi.StringOutput {
 	return o.ApplyT(func(v RemoteFunctionOptionsResponse) string { return v.MaxBatchingRows }).(pulumi.StringOutput)
 }

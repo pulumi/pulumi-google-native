@@ -32,6 +32,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// The instance properties for the reservation.
         /// </summary>
         public readonly Outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse InstanceProperties;
+        /// <summary>
+        /// Specific URL of the instance template used in the reservation
+        /// </summary>
+        public readonly string SourceInstanceTemplate;
 
         [OutputConstructor]
         private AllocationSpecificSKUReservationResponse(
@@ -41,12 +45,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string inUseCount,
 
-            Outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse instanceProperties)
+            Outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse instanceProperties,
+
+            string sourceInstanceTemplate)
         {
             AssuredCount = assuredCount;
             Count = count;
             InUseCount = inUseCount;
             InstanceProperties = instanceProperties;
+            SourceInstanceTemplate = sourceInstanceTemplate;
         }
     }
 }

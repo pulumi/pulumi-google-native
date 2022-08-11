@@ -37,10 +37,6 @@ export class Group extends pulumi.CustomResource {
     }
 
     /**
-     * Additional entity key aliases for a Group.
-     */
-    public readonly additionalGroupKeys!: pulumi.Output<outputs.cloudidentity.v1beta1.EntityKeyResponse[]>;
-    /**
      * The time when the `Group` was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -108,7 +104,6 @@ export class Group extends pulumi.CustomResource {
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
-            resourceInputs["additionalGroupKeys"] = args ? args.additionalGroupKeys : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["dynamicGroupMetadata"] = args ? args.dynamicGroupMetadata : undefined;
@@ -121,7 +116,6 @@ export class Group extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
-            resourceInputs["additionalGroupKeys"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
@@ -145,10 +139,6 @@ export class Group extends pulumi.CustomResource {
  * The set of arguments for constructing a Group resource.
  */
 export interface GroupArgs {
-    /**
-     * Additional entity key aliases for a Group.
-     */
-    additionalGroupKeys?: pulumi.Input<pulumi.Input<inputs.cloudidentity.v1beta1.EntityKeyArgs>[]>;
     /**
      * An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
      */

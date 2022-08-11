@@ -87,6 +87,12 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Inputs
             set => _restrictedValues = value;
         }
 
+        /// <summary>
+        /// Returns the min and max value for each numerical facet intervals. Ignored for textual facets.
+        /// </summary>
+        [Input("returnMinMax")]
+        public Input<bool>? ReturnMinMax { get; set; }
+
         public GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs()
         {
         }

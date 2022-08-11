@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
     public static class GetTagValue
     {
         /// <summary>
-        /// Retrieves TagValue. If the TagValue or namespaced name does not exist, or if the user does not have permission to view it, this method will return `PERMISSION_DENIED`.
+        /// Retrieves a TagValue. This method will return `PERMISSION_DENIED` if the value does not exist or the user does not have permission to view it.
         /// </summary>
         public static Task<GetTagValueResult> InvokeAsync(GetTagValueArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetTagValueResult>("google-native:cloudresourcemanager/v3:getTagValue", args ?? new GetTagValueArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Retrieves TagValue. If the TagValue or namespaced name does not exist, or if the user does not have permission to view it, this method will return `PERMISSION_DENIED`.
+        /// Retrieves a TagValue. This method will return `PERMISSION_DENIED` if the value does not exist or the user does not have permission to view it.
         /// </summary>
         public static Output<GetTagValueResult> Invoke(GetTagValueInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetTagValueResult>("google-native:cloudresourcemanager/v3:getTagValue", args ?? new GetTagValueInvokeArgs(), options.WithDefaults());
@@ -68,7 +68,7 @@ namespace Pulumi.GoogleNative.CloudResourceManager.V3
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// Namespaced name of the TagValue. Must be in the format `{organization_id}/{tag_key_short_name}/{short_name}`.
+        /// Namespaced name of the TagValue. Now only supported in the format `{organization_id}/{tag_key_short_name}/{short_name}`. Other formats will be supported when we add non-org parented tags.
         /// </summary>
         public readonly string NamespacedName;
         /// <summary>

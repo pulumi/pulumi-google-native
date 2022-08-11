@@ -32,6 +32,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// Current state of this Future Reservation
         /// </summary>
         public readonly string ProcurementStatus;
+        public readonly Outputs.FutureReservationStatusSpecificSKUPropertiesResponse SpecificSkuProperties;
 
         [OutputConstructor]
         private FutureReservationStatusResponse(
@@ -41,12 +42,15 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             string lockTime,
 
-            string procurementStatus)
+            string procurementStatus,
+
+            Outputs.FutureReservationStatusSpecificSKUPropertiesResponse specificSkuProperties)
         {
             AutoCreatedReservations = autoCreatedReservations;
             FulfilledCount = fulfilledCount;
             LockTime = lockTime;
             ProcurementStatus = procurementStatus;
+            SpecificSkuProperties = specificSkuProperties;
         }
     }
 }

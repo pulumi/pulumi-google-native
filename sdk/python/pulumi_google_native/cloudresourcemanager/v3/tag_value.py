@@ -257,7 +257,7 @@ class TagValue(pulumi.CustomResource):
     @pulumi.getter(name="namespacedName")
     def namespaced_name(self) -> pulumi.Output[str]:
         """
-        Namespaced name of the TagValue. Must be in the format `{organization_id}/{tag_key_short_name}/{short_name}`.
+        Namespaced name of the TagValue. Now only supported in the format `{organization_id}/{tag_key_short_name}/{short_name}`. Other formats will be supported when we add non-org parented tags.
         """
         return pulumi.get(self, "namespaced_name")
 

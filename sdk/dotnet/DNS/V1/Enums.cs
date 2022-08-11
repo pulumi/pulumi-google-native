@@ -294,6 +294,63 @@ namespace Pulumi.GoogleNative.DNS.V1
         public override string ToString() => _value;
     }
 
+    [EnumType]
+    public readonly struct RRSetRoutingPolicyLoadBalancerTargetIpProtocol : IEquatable<RRSetRoutingPolicyLoadBalancerTargetIpProtocol>
+    {
+        private readonly string _value;
+
+        private RRSetRoutingPolicyLoadBalancerTargetIpProtocol(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static RRSetRoutingPolicyLoadBalancerTargetIpProtocol Undefined { get; } = new RRSetRoutingPolicyLoadBalancerTargetIpProtocol("undefined");
+        public static RRSetRoutingPolicyLoadBalancerTargetIpProtocol Tcp { get; } = new RRSetRoutingPolicyLoadBalancerTargetIpProtocol("tcp");
+        public static RRSetRoutingPolicyLoadBalancerTargetIpProtocol Udp { get; } = new RRSetRoutingPolicyLoadBalancerTargetIpProtocol("udp");
+
+        public static bool operator ==(RRSetRoutingPolicyLoadBalancerTargetIpProtocol left, RRSetRoutingPolicyLoadBalancerTargetIpProtocol right) => left.Equals(right);
+        public static bool operator !=(RRSetRoutingPolicyLoadBalancerTargetIpProtocol left, RRSetRoutingPolicyLoadBalancerTargetIpProtocol right) => !left.Equals(right);
+
+        public static explicit operator string(RRSetRoutingPolicyLoadBalancerTargetIpProtocol value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RRSetRoutingPolicyLoadBalancerTargetIpProtocol other && Equals(other);
+        public bool Equals(RRSetRoutingPolicyLoadBalancerTargetIpProtocol other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
+    public readonly struct RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType : IEquatable<RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType>
+    {
+        private readonly string _value;
+
+        private RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType None { get; } = new RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType("none");
+        public static RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType RegionalL4ilb { get; } = new RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType("regionalL4ilb");
+
+        public static bool operator ==(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType left, RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType right) => left.Equals(right);
+        public static bool operator !=(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType left, RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType right) => !left.Equals(right);
+
+        public static explicit operator string(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType other && Equals(other);
+        public bool Equals(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
     /// <summary>
     /// Answer this query with a behavior rather than DNS data.
     /// </summary>

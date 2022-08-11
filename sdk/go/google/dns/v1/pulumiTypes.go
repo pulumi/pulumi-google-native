@@ -771,7 +771,7 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) G
 type GoogleIamV1Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -792,7 +792,7 @@ type GoogleIamV1BindingInput interface {
 type GoogleIamV1BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -855,7 +855,7 @@ func (o GoogleIamV1BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o GoogleIamV1BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -889,7 +889,7 @@ func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1Bindi
 type GoogleIamV1BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -915,7 +915,7 @@ func (o GoogleIamV1BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o GoogleIamV1BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -3507,9 +3507,10 @@ func (o PolicyNetworkResponseArrayOutput) Index(i pulumi.IntInput) PolicyNetwork
 
 // A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
 type RRSetRoutingPolicy struct {
-	Geo  *RRSetRoutingPolicyGeoPolicy `pulumi:"geo"`
-	Kind *string                      `pulumi:"kind"`
-	Wrr  *RRSetRoutingPolicyWrrPolicy `pulumi:"wrr"`
+	Geo           *RRSetRoutingPolicyGeoPolicy           `pulumi:"geo"`
+	Kind          *string                                `pulumi:"kind"`
+	PrimaryBackup *RRSetRoutingPolicyPrimaryBackupPolicy `pulumi:"primaryBackup"`
+	Wrr           *RRSetRoutingPolicyWrrPolicy           `pulumi:"wrr"`
 }
 
 // RRSetRoutingPolicyInput is an input type that accepts RRSetRoutingPolicyArgs and RRSetRoutingPolicyOutput values.
@@ -3525,9 +3526,10 @@ type RRSetRoutingPolicyInput interface {
 
 // A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
 type RRSetRoutingPolicyArgs struct {
-	Geo  RRSetRoutingPolicyGeoPolicyPtrInput `pulumi:"geo"`
-	Kind pulumi.StringPtrInput               `pulumi:"kind"`
-	Wrr  RRSetRoutingPolicyWrrPolicyPtrInput `pulumi:"wrr"`
+	Geo           RRSetRoutingPolicyGeoPolicyPtrInput           `pulumi:"geo"`
+	Kind          pulumi.StringPtrInput                         `pulumi:"kind"`
+	PrimaryBackup RRSetRoutingPolicyPrimaryBackupPolicyPtrInput `pulumi:"primaryBackup"`
+	Wrr           RRSetRoutingPolicyWrrPolicyPtrInput           `pulumi:"wrr"`
 }
 
 func (RRSetRoutingPolicyArgs) ElementType() reflect.Type {
@@ -3616,6 +3618,10 @@ func (o RRSetRoutingPolicyOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicy) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
 
+func (o RRSetRoutingPolicyOutput) PrimaryBackup() RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicy) *RRSetRoutingPolicyPrimaryBackupPolicy { return v.PrimaryBackup }).(RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput)
+}
+
 func (o RRSetRoutingPolicyOutput) Wrr() RRSetRoutingPolicyWrrPolicyPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicy) *RRSetRoutingPolicyWrrPolicy { return v.Wrr }).(RRSetRoutingPolicyWrrPolicyPtrOutput)
 }
@@ -3662,6 +3668,15 @@ func (o RRSetRoutingPolicyPtrOutput) Kind() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+func (o RRSetRoutingPolicyPtrOutput) PrimaryBackup() RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput {
+	return o.ApplyT(func(v *RRSetRoutingPolicy) *RRSetRoutingPolicyPrimaryBackupPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryBackup
+	}).(RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput)
+}
+
 func (o RRSetRoutingPolicyPtrOutput) Wrr() RRSetRoutingPolicyWrrPolicyPtrOutput {
 	return o.ApplyT(func(v *RRSetRoutingPolicy) *RRSetRoutingPolicyWrrPolicy {
 		if v == nil {
@@ -3673,6 +3688,8 @@ func (o RRSetRoutingPolicyPtrOutput) Wrr() RRSetRoutingPolicyWrrPolicyPtrOutput 
 
 // Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
 type RRSetRoutingPolicyGeoPolicy struct {
+	// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+	EnableFencing *bool `pulumi:"enableFencing"`
 	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 	Items []RRSetRoutingPolicyGeoPolicyGeoPolicyItem `pulumi:"items"`
 	Kind  *string                                    `pulumi:"kind"`
@@ -3691,6 +3708,8 @@ type RRSetRoutingPolicyGeoPolicyInput interface {
 
 // Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
 type RRSetRoutingPolicyGeoPolicyArgs struct {
+	// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+	EnableFencing pulumi.BoolPtrInput `pulumi:"enableFencing"`
 	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 	Items RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayInput `pulumi:"items"`
 	Kind  pulumi.StringPtrInput                              `pulumi:"kind"`
@@ -3774,6 +3793,11 @@ func (o RRSetRoutingPolicyGeoPolicyOutput) ToRRSetRoutingPolicyGeoPolicyPtrOutpu
 	}).(RRSetRoutingPolicyGeoPolicyPtrOutput)
 }
 
+// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+func (o RRSetRoutingPolicyGeoPolicyOutput) EnableFencing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicy) *bool { return v.EnableFencing }).(pulumi.BoolPtrOutput)
+}
+
 // The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 func (o RRSetRoutingPolicyGeoPolicyOutput) Items() RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicy) []RRSetRoutingPolicyGeoPolicyGeoPolicyItem { return v.Items }).(RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput)
@@ -3807,6 +3831,16 @@ func (o RRSetRoutingPolicyGeoPolicyPtrOutput) Elem() RRSetRoutingPolicyGeoPolicy
 	}).(RRSetRoutingPolicyGeoPolicyOutput)
 }
 
+// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+func (o RRSetRoutingPolicyGeoPolicyPtrOutput) EnableFencing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RRSetRoutingPolicyGeoPolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableFencing
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 func (o RRSetRoutingPolicyGeoPolicyPtrOutput) Items() RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput {
 	return o.ApplyT(func(v *RRSetRoutingPolicyGeoPolicy) []RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
@@ -3828,7 +3862,9 @@ func (o RRSetRoutingPolicyGeoPolicyPtrOutput) Kind() pulumi.StringPtrOutput {
 
 // ResourceRecordSet data for one geo location.
 type RRSetRoutingPolicyGeoPolicyGeoPolicyItem struct {
-	Kind *string `pulumi:"kind"`
+	// For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with rrdata within this item.
+	HealthCheckedTargets *RRSetRoutingPolicyHealthCheckTargets `pulumi:"healthCheckedTargets"`
+	Kind                 *string                               `pulumi:"kind"`
 	// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
 	Location *string  `pulumi:"location"`
 	Rrdatas  []string `pulumi:"rrdatas"`
@@ -3849,7 +3885,9 @@ type RRSetRoutingPolicyGeoPolicyGeoPolicyItemInput interface {
 
 // ResourceRecordSet data for one geo location.
 type RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs struct {
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with rrdata within this item.
+	HealthCheckedTargets RRSetRoutingPolicyHealthCheckTargetsPtrInput `pulumi:"healthCheckedTargets"`
+	Kind                 pulumi.StringPtrInput                        `pulumi:"kind"`
 	// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
 	Location pulumi.StringPtrInput   `pulumi:"location"`
 	Rrdatas  pulumi.StringArrayInput `pulumi:"rrdatas"`
@@ -3909,6 +3947,13 @@ func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) ToRRSetRoutingPolicyGeoP
 	return o
 }
 
+// For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with rrdata within this item.
+func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) HealthCheckedTargets() RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItem) *RRSetRoutingPolicyHealthCheckTargets {
+		return v.HealthCheckedTargets
+	}).(RRSetRoutingPolicyHealthCheckTargetsPtrOutput)
+}
+
 func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItem) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -3949,7 +3994,9 @@ func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayOutput) Index(i pulumi.IntI
 
 // ResourceRecordSet data for one geo location.
 type RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse struct {
-	Kind string `pulumi:"kind"`
+	// For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with rrdata within this item.
+	HealthCheckedTargets RRSetRoutingPolicyHealthCheckTargetsResponse `pulumi:"healthCheckedTargets"`
+	Kind                 string                                       `pulumi:"kind"`
 	// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
 	Location string   `pulumi:"location"`
 	Rrdatas  []string `pulumi:"rrdatas"`
@@ -3970,6 +4017,13 @@ func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseOutput) ToRRSetRoutingPo
 
 func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseOutput) ToRRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseOutputWithContext(ctx context.Context) RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseOutput {
 	return o
+}
+
+// For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with rrdata within this item.
+func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseOutput) HealthCheckedTargets() RRSetRoutingPolicyHealthCheckTargetsResponseOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse) RRSetRoutingPolicyHealthCheckTargetsResponse {
+		return v.HealthCheckedTargets
+	}).(RRSetRoutingPolicyHealthCheckTargetsResponseOutput)
 }
 
 func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseOutput) Kind() pulumi.StringOutput {
@@ -4012,6 +4066,8 @@ func (o RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseArrayOutput) Index(i pul
 
 // Configures a RRSetRoutingPolicy that routes based on the geo location of the querying user.
 type RRSetRoutingPolicyGeoPolicyResponse struct {
+	// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+	EnableFencing bool `pulumi:"enableFencing"`
 	// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 	Items []RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse `pulumi:"items"`
 	Kind  string                                             `pulumi:"kind"`
@@ -4032,6 +4088,11 @@ func (o RRSetRoutingPolicyGeoPolicyResponseOutput) ToRRSetRoutingPolicyGeoPolicy
 	return o
 }
 
+// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+func (o RRSetRoutingPolicyGeoPolicyResponseOutput) EnableFencing() pulumi.BoolOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyResponse) bool { return v.EnableFencing }).(pulumi.BoolOutput)
+}
+
 // The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
 func (o RRSetRoutingPolicyGeoPolicyResponseOutput) Items() RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseArrayOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyResponse) []RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse {
@@ -4043,11 +4104,656 @@ func (o RRSetRoutingPolicyGeoPolicyResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyGeoPolicyResponse) string { return v.Kind }).(pulumi.StringOutput)
 }
 
+// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the healthy endpoints will be included in the response.
+type RRSetRoutingPolicyHealthCheckTargets struct {
+	InternalLoadBalancers []RRSetRoutingPolicyLoadBalancerTarget `pulumi:"internalLoadBalancers"`
+}
+
+// RRSetRoutingPolicyHealthCheckTargetsInput is an input type that accepts RRSetRoutingPolicyHealthCheckTargetsArgs and RRSetRoutingPolicyHealthCheckTargetsOutput values.
+// You can construct a concrete instance of `RRSetRoutingPolicyHealthCheckTargetsInput` via:
+//
+//          RRSetRoutingPolicyHealthCheckTargetsArgs{...}
+type RRSetRoutingPolicyHealthCheckTargetsInput interface {
+	pulumi.Input
+
+	ToRRSetRoutingPolicyHealthCheckTargetsOutput() RRSetRoutingPolicyHealthCheckTargetsOutput
+	ToRRSetRoutingPolicyHealthCheckTargetsOutputWithContext(context.Context) RRSetRoutingPolicyHealthCheckTargetsOutput
+}
+
+// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the healthy endpoints will be included in the response.
+type RRSetRoutingPolicyHealthCheckTargetsArgs struct {
+	InternalLoadBalancers RRSetRoutingPolicyLoadBalancerTargetArrayInput `pulumi:"internalLoadBalancers"`
+}
+
+func (RRSetRoutingPolicyHealthCheckTargetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RRSetRoutingPolicyHealthCheckTargets)(nil)).Elem()
+}
+
+func (i RRSetRoutingPolicyHealthCheckTargetsArgs) ToRRSetRoutingPolicyHealthCheckTargetsOutput() RRSetRoutingPolicyHealthCheckTargetsOutput {
+	return i.ToRRSetRoutingPolicyHealthCheckTargetsOutputWithContext(context.Background())
+}
+
+func (i RRSetRoutingPolicyHealthCheckTargetsArgs) ToRRSetRoutingPolicyHealthCheckTargetsOutputWithContext(ctx context.Context) RRSetRoutingPolicyHealthCheckTargetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyHealthCheckTargetsOutput)
+}
+
+func (i RRSetRoutingPolicyHealthCheckTargetsArgs) ToRRSetRoutingPolicyHealthCheckTargetsPtrOutput() RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
+	return i.ToRRSetRoutingPolicyHealthCheckTargetsPtrOutputWithContext(context.Background())
+}
+
+func (i RRSetRoutingPolicyHealthCheckTargetsArgs) ToRRSetRoutingPolicyHealthCheckTargetsPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyHealthCheckTargetsOutput).ToRRSetRoutingPolicyHealthCheckTargetsPtrOutputWithContext(ctx)
+}
+
+// RRSetRoutingPolicyHealthCheckTargetsPtrInput is an input type that accepts RRSetRoutingPolicyHealthCheckTargetsArgs, RRSetRoutingPolicyHealthCheckTargetsPtr and RRSetRoutingPolicyHealthCheckTargetsPtrOutput values.
+// You can construct a concrete instance of `RRSetRoutingPolicyHealthCheckTargetsPtrInput` via:
+//
+//          RRSetRoutingPolicyHealthCheckTargetsArgs{...}
+//
+//  or:
+//
+//          nil
+type RRSetRoutingPolicyHealthCheckTargetsPtrInput interface {
+	pulumi.Input
+
+	ToRRSetRoutingPolicyHealthCheckTargetsPtrOutput() RRSetRoutingPolicyHealthCheckTargetsPtrOutput
+	ToRRSetRoutingPolicyHealthCheckTargetsPtrOutputWithContext(context.Context) RRSetRoutingPolicyHealthCheckTargetsPtrOutput
+}
+
+type rrsetRoutingPolicyHealthCheckTargetsPtrType RRSetRoutingPolicyHealthCheckTargetsArgs
+
+func RRSetRoutingPolicyHealthCheckTargetsPtr(v *RRSetRoutingPolicyHealthCheckTargetsArgs) RRSetRoutingPolicyHealthCheckTargetsPtrInput {
+	return (*rrsetRoutingPolicyHealthCheckTargetsPtrType)(v)
+}
+
+func (*rrsetRoutingPolicyHealthCheckTargetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RRSetRoutingPolicyHealthCheckTargets)(nil)).Elem()
+}
+
+func (i *rrsetRoutingPolicyHealthCheckTargetsPtrType) ToRRSetRoutingPolicyHealthCheckTargetsPtrOutput() RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
+	return i.ToRRSetRoutingPolicyHealthCheckTargetsPtrOutputWithContext(context.Background())
+}
+
+func (i *rrsetRoutingPolicyHealthCheckTargetsPtrType) ToRRSetRoutingPolicyHealthCheckTargetsPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyHealthCheckTargetsPtrOutput)
+}
+
+// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the healthy endpoints will be included in the response.
+type RRSetRoutingPolicyHealthCheckTargetsOutput struct{ *pulumi.OutputState }
+
+func (RRSetRoutingPolicyHealthCheckTargetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RRSetRoutingPolicyHealthCheckTargets)(nil)).Elem()
+}
+
+func (o RRSetRoutingPolicyHealthCheckTargetsOutput) ToRRSetRoutingPolicyHealthCheckTargetsOutput() RRSetRoutingPolicyHealthCheckTargetsOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyHealthCheckTargetsOutput) ToRRSetRoutingPolicyHealthCheckTargetsOutputWithContext(ctx context.Context) RRSetRoutingPolicyHealthCheckTargetsOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyHealthCheckTargetsOutput) ToRRSetRoutingPolicyHealthCheckTargetsPtrOutput() RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
+	return o.ToRRSetRoutingPolicyHealthCheckTargetsPtrOutputWithContext(context.Background())
+}
+
+func (o RRSetRoutingPolicyHealthCheckTargetsOutput) ToRRSetRoutingPolicyHealthCheckTargetsPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RRSetRoutingPolicyHealthCheckTargets) *RRSetRoutingPolicyHealthCheckTargets {
+		return &v
+	}).(RRSetRoutingPolicyHealthCheckTargetsPtrOutput)
+}
+
+func (o RRSetRoutingPolicyHealthCheckTargetsOutput) InternalLoadBalancers() RRSetRoutingPolicyLoadBalancerTargetArrayOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyHealthCheckTargets) []RRSetRoutingPolicyLoadBalancerTarget {
+		return v.InternalLoadBalancers
+	}).(RRSetRoutingPolicyLoadBalancerTargetArrayOutput)
+}
+
+type RRSetRoutingPolicyHealthCheckTargetsPtrOutput struct{ *pulumi.OutputState }
+
+func (RRSetRoutingPolicyHealthCheckTargetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RRSetRoutingPolicyHealthCheckTargets)(nil)).Elem()
+}
+
+func (o RRSetRoutingPolicyHealthCheckTargetsPtrOutput) ToRRSetRoutingPolicyHealthCheckTargetsPtrOutput() RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyHealthCheckTargetsPtrOutput) ToRRSetRoutingPolicyHealthCheckTargetsPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyHealthCheckTargetsPtrOutput) Elem() RRSetRoutingPolicyHealthCheckTargetsOutput {
+	return o.ApplyT(func(v *RRSetRoutingPolicyHealthCheckTargets) RRSetRoutingPolicyHealthCheckTargets {
+		if v != nil {
+			return *v
+		}
+		var ret RRSetRoutingPolicyHealthCheckTargets
+		return ret
+	}).(RRSetRoutingPolicyHealthCheckTargetsOutput)
+}
+
+func (o RRSetRoutingPolicyHealthCheckTargetsPtrOutput) InternalLoadBalancers() RRSetRoutingPolicyLoadBalancerTargetArrayOutput {
+	return o.ApplyT(func(v *RRSetRoutingPolicyHealthCheckTargets) []RRSetRoutingPolicyLoadBalancerTarget {
+		if v == nil {
+			return nil
+		}
+		return v.InternalLoadBalancers
+	}).(RRSetRoutingPolicyLoadBalancerTargetArrayOutput)
+}
+
+// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the healthy endpoints will be included in the response.
+type RRSetRoutingPolicyHealthCheckTargetsResponse struct {
+	InternalLoadBalancers []RRSetRoutingPolicyLoadBalancerTargetResponse `pulumi:"internalLoadBalancers"`
+}
+
+// HealthCheckTargets describes endpoints to health-check when responding to Routing Policy queries. Only the healthy endpoints will be included in the response.
+type RRSetRoutingPolicyHealthCheckTargetsResponseOutput struct{ *pulumi.OutputState }
+
+func (RRSetRoutingPolicyHealthCheckTargetsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RRSetRoutingPolicyHealthCheckTargetsResponse)(nil)).Elem()
+}
+
+func (o RRSetRoutingPolicyHealthCheckTargetsResponseOutput) ToRRSetRoutingPolicyHealthCheckTargetsResponseOutput() RRSetRoutingPolicyHealthCheckTargetsResponseOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyHealthCheckTargetsResponseOutput) ToRRSetRoutingPolicyHealthCheckTargetsResponseOutputWithContext(ctx context.Context) RRSetRoutingPolicyHealthCheckTargetsResponseOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyHealthCheckTargetsResponseOutput) InternalLoadBalancers() RRSetRoutingPolicyLoadBalancerTargetResponseArrayOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyHealthCheckTargetsResponse) []RRSetRoutingPolicyLoadBalancerTargetResponse {
+		return v.InternalLoadBalancers
+	}).(RRSetRoutingPolicyLoadBalancerTargetResponseArrayOutput)
+}
+
+type RRSetRoutingPolicyLoadBalancerTarget struct {
+	// The frontend IP address of the
+	IpAddress        *string                                               `pulumi:"ipAddress"`
+	IpProtocol       *RRSetRoutingPolicyLoadBalancerTargetIpProtocol       `pulumi:"ipProtocol"`
+	Kind             *string                                               `pulumi:"kind"`
+	LoadBalancerType *RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType `pulumi:"loadBalancerType"`
+	// The fully qualified url of the network on which the ILB is
+	NetworkUrl *string `pulumi:"networkUrl"`
+	// Load Balancer to health check. The configured port of the Load Balancer.
+	Port *string `pulumi:"port"`
+	// present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+	Project *string `pulumi:"project"`
+	// The region for regional ILBs.
+	Region *string `pulumi:"region"`
+}
+
+// RRSetRoutingPolicyLoadBalancerTargetInput is an input type that accepts RRSetRoutingPolicyLoadBalancerTargetArgs and RRSetRoutingPolicyLoadBalancerTargetOutput values.
+// You can construct a concrete instance of `RRSetRoutingPolicyLoadBalancerTargetInput` via:
+//
+//          RRSetRoutingPolicyLoadBalancerTargetArgs{...}
+type RRSetRoutingPolicyLoadBalancerTargetInput interface {
+	pulumi.Input
+
+	ToRRSetRoutingPolicyLoadBalancerTargetOutput() RRSetRoutingPolicyLoadBalancerTargetOutput
+	ToRRSetRoutingPolicyLoadBalancerTargetOutputWithContext(context.Context) RRSetRoutingPolicyLoadBalancerTargetOutput
+}
+
+type RRSetRoutingPolicyLoadBalancerTargetArgs struct {
+	// The frontend IP address of the
+	IpAddress        pulumi.StringPtrInput                                        `pulumi:"ipAddress"`
+	IpProtocol       RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrInput       `pulumi:"ipProtocol"`
+	Kind             pulumi.StringPtrInput                                        `pulumi:"kind"`
+	LoadBalancerType RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrInput `pulumi:"loadBalancerType"`
+	// The fully qualified url of the network on which the ILB is
+	NetworkUrl pulumi.StringPtrInput `pulumi:"networkUrl"`
+	// Load Balancer to health check. The configured port of the Load Balancer.
+	Port pulumi.StringPtrInput `pulumi:"port"`
+	// present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+	Project pulumi.StringPtrInput `pulumi:"project"`
+	// The region for regional ILBs.
+	Region pulumi.StringPtrInput `pulumi:"region"`
+}
+
+func (RRSetRoutingPolicyLoadBalancerTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RRSetRoutingPolicyLoadBalancerTarget)(nil)).Elem()
+}
+
+func (i RRSetRoutingPolicyLoadBalancerTargetArgs) ToRRSetRoutingPolicyLoadBalancerTargetOutput() RRSetRoutingPolicyLoadBalancerTargetOutput {
+	return i.ToRRSetRoutingPolicyLoadBalancerTargetOutputWithContext(context.Background())
+}
+
+func (i RRSetRoutingPolicyLoadBalancerTargetArgs) ToRRSetRoutingPolicyLoadBalancerTargetOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyLoadBalancerTargetOutput)
+}
+
+// RRSetRoutingPolicyLoadBalancerTargetArrayInput is an input type that accepts RRSetRoutingPolicyLoadBalancerTargetArray and RRSetRoutingPolicyLoadBalancerTargetArrayOutput values.
+// You can construct a concrete instance of `RRSetRoutingPolicyLoadBalancerTargetArrayInput` via:
+//
+//          RRSetRoutingPolicyLoadBalancerTargetArray{ RRSetRoutingPolicyLoadBalancerTargetArgs{...} }
+type RRSetRoutingPolicyLoadBalancerTargetArrayInput interface {
+	pulumi.Input
+
+	ToRRSetRoutingPolicyLoadBalancerTargetArrayOutput() RRSetRoutingPolicyLoadBalancerTargetArrayOutput
+	ToRRSetRoutingPolicyLoadBalancerTargetArrayOutputWithContext(context.Context) RRSetRoutingPolicyLoadBalancerTargetArrayOutput
+}
+
+type RRSetRoutingPolicyLoadBalancerTargetArray []RRSetRoutingPolicyLoadBalancerTargetInput
+
+func (RRSetRoutingPolicyLoadBalancerTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RRSetRoutingPolicyLoadBalancerTarget)(nil)).Elem()
+}
+
+func (i RRSetRoutingPolicyLoadBalancerTargetArray) ToRRSetRoutingPolicyLoadBalancerTargetArrayOutput() RRSetRoutingPolicyLoadBalancerTargetArrayOutput {
+	return i.ToRRSetRoutingPolicyLoadBalancerTargetArrayOutputWithContext(context.Background())
+}
+
+func (i RRSetRoutingPolicyLoadBalancerTargetArray) ToRRSetRoutingPolicyLoadBalancerTargetArrayOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyLoadBalancerTargetArrayOutput)
+}
+
+type RRSetRoutingPolicyLoadBalancerTargetOutput struct{ *pulumi.OutputState }
+
+func (RRSetRoutingPolicyLoadBalancerTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RRSetRoutingPolicyLoadBalancerTarget)(nil)).Elem()
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetOutput) ToRRSetRoutingPolicyLoadBalancerTargetOutput() RRSetRoutingPolicyLoadBalancerTargetOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetOutput) ToRRSetRoutingPolicyLoadBalancerTargetOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetOutput {
+	return o
+}
+
+// The frontend IP address of the
+func (o RRSetRoutingPolicyLoadBalancerTargetOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetOutput) IpProtocol() RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *RRSetRoutingPolicyLoadBalancerTargetIpProtocol {
+		return v.IpProtocol
+	}).(RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput)
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetOutput) LoadBalancerType() RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType {
+		return v.LoadBalancerType
+	}).(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput)
+}
+
+// The fully qualified url of the network on which the ILB is
+func (o RRSetRoutingPolicyLoadBalancerTargetOutput) NetworkUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.NetworkUrl }).(pulumi.StringPtrOutput)
+}
+
+// Load Balancer to health check. The configured port of the Load Balancer.
+func (o RRSetRoutingPolicyLoadBalancerTargetOutput) Port() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.Port }).(pulumi.StringPtrOutput)
+}
+
+// present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+func (o RRSetRoutingPolicyLoadBalancerTargetOutput) Project() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+// The region for regional ILBs.
+func (o RRSetRoutingPolicyLoadBalancerTargetOutput) Region() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTarget) *string { return v.Region }).(pulumi.StringPtrOutput)
+}
+
+type RRSetRoutingPolicyLoadBalancerTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (RRSetRoutingPolicyLoadBalancerTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RRSetRoutingPolicyLoadBalancerTarget)(nil)).Elem()
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetArrayOutput) ToRRSetRoutingPolicyLoadBalancerTargetArrayOutput() RRSetRoutingPolicyLoadBalancerTargetArrayOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetArrayOutput) ToRRSetRoutingPolicyLoadBalancerTargetArrayOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetArrayOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetArrayOutput) Index(i pulumi.IntInput) RRSetRoutingPolicyLoadBalancerTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RRSetRoutingPolicyLoadBalancerTarget {
+		return vs[0].([]RRSetRoutingPolicyLoadBalancerTarget)[vs[1].(int)]
+	}).(RRSetRoutingPolicyLoadBalancerTargetOutput)
+}
+
+type RRSetRoutingPolicyLoadBalancerTargetResponse struct {
+	// The frontend IP address of the
+	IpAddress        string `pulumi:"ipAddress"`
+	IpProtocol       string `pulumi:"ipProtocol"`
+	Kind             string `pulumi:"kind"`
+	LoadBalancerType string `pulumi:"loadBalancerType"`
+	// The fully qualified url of the network on which the ILB is
+	NetworkUrl string `pulumi:"networkUrl"`
+	// Load Balancer to health check. The configured port of the Load Balancer.
+	Port string `pulumi:"port"`
+	// present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+	Project string `pulumi:"project"`
+	// The region for regional ILBs.
+	Region string `pulumi:"region"`
+}
+
+type RRSetRoutingPolicyLoadBalancerTargetResponseOutput struct{ *pulumi.OutputState }
+
+func (RRSetRoutingPolicyLoadBalancerTargetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RRSetRoutingPolicyLoadBalancerTargetResponse)(nil)).Elem()
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) ToRRSetRoutingPolicyLoadBalancerTargetResponseOutput() RRSetRoutingPolicyLoadBalancerTargetResponseOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) ToRRSetRoutingPolicyLoadBalancerTargetResponseOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetResponseOutput {
+	return o
+}
+
+// The frontend IP address of the
+func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) IpProtocol() pulumi.StringOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.IpProtocol }).(pulumi.StringOutput)
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) LoadBalancerType() pulumi.StringOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.LoadBalancerType }).(pulumi.StringOutput)
+}
+
+// The fully qualified url of the network on which the ILB is
+func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) NetworkUrl() pulumi.StringOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.NetworkUrl }).(pulumi.StringOutput)
+}
+
+// Load Balancer to health check. The configured port of the Load Balancer.
+func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) Port() pulumi.StringOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.Port }).(pulumi.StringOutput)
+}
+
+// present. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network} The project ID in which the ILB exists.
+func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The region for regional ILBs.
+func (o RRSetRoutingPolicyLoadBalancerTargetResponseOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyLoadBalancerTargetResponse) string { return v.Region }).(pulumi.StringOutput)
+}
+
+type RRSetRoutingPolicyLoadBalancerTargetResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (RRSetRoutingPolicyLoadBalancerTargetResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RRSetRoutingPolicyLoadBalancerTargetResponse)(nil)).Elem()
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetResponseArrayOutput) ToRRSetRoutingPolicyLoadBalancerTargetResponseArrayOutput() RRSetRoutingPolicyLoadBalancerTargetResponseArrayOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetResponseArrayOutput) ToRRSetRoutingPolicyLoadBalancerTargetResponseArrayOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetResponseArrayOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetResponseArrayOutput) Index(i pulumi.IntInput) RRSetRoutingPolicyLoadBalancerTargetResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RRSetRoutingPolicyLoadBalancerTargetResponse {
+		return vs[0].([]RRSetRoutingPolicyLoadBalancerTargetResponse)[vs[1].(int)]
+	}).(RRSetRoutingPolicyLoadBalancerTargetResponseOutput)
+}
+
+// Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are healthy. And if all of them are unhealthy, then we fallback to a geo localized policy.
+type RRSetRoutingPolicyPrimaryBackupPolicy struct {
+	// Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to BACKUP, this policy essentially becomes a geo routing policy.
+	BackupGeoTargets *RRSetRoutingPolicyGeoPolicy          `pulumi:"backupGeoTargets"`
+	Kind             *string                               `pulumi:"kind"`
+	PrimaryTargets   *RRSetRoutingPolicyHealthCheckTargets `pulumi:"primaryTargets"`
+	// When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.
+	TrickleTraffic *float64 `pulumi:"trickleTraffic"`
+}
+
+// RRSetRoutingPolicyPrimaryBackupPolicyInput is an input type that accepts RRSetRoutingPolicyPrimaryBackupPolicyArgs and RRSetRoutingPolicyPrimaryBackupPolicyOutput values.
+// You can construct a concrete instance of `RRSetRoutingPolicyPrimaryBackupPolicyInput` via:
+//
+//          RRSetRoutingPolicyPrimaryBackupPolicyArgs{...}
+type RRSetRoutingPolicyPrimaryBackupPolicyInput interface {
+	pulumi.Input
+
+	ToRRSetRoutingPolicyPrimaryBackupPolicyOutput() RRSetRoutingPolicyPrimaryBackupPolicyOutput
+	ToRRSetRoutingPolicyPrimaryBackupPolicyOutputWithContext(context.Context) RRSetRoutingPolicyPrimaryBackupPolicyOutput
+}
+
+// Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are healthy. And if all of them are unhealthy, then we fallback to a geo localized policy.
+type RRSetRoutingPolicyPrimaryBackupPolicyArgs struct {
+	// Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to BACKUP, this policy essentially becomes a geo routing policy.
+	BackupGeoTargets RRSetRoutingPolicyGeoPolicyPtrInput          `pulumi:"backupGeoTargets"`
+	Kind             pulumi.StringPtrInput                        `pulumi:"kind"`
+	PrimaryTargets   RRSetRoutingPolicyHealthCheckTargetsPtrInput `pulumi:"primaryTargets"`
+	// When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.
+	TrickleTraffic pulumi.Float64PtrInput `pulumi:"trickleTraffic"`
+}
+
+func (RRSetRoutingPolicyPrimaryBackupPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RRSetRoutingPolicyPrimaryBackupPolicy)(nil)).Elem()
+}
+
+func (i RRSetRoutingPolicyPrimaryBackupPolicyArgs) ToRRSetRoutingPolicyPrimaryBackupPolicyOutput() RRSetRoutingPolicyPrimaryBackupPolicyOutput {
+	return i.ToRRSetRoutingPolicyPrimaryBackupPolicyOutputWithContext(context.Background())
+}
+
+func (i RRSetRoutingPolicyPrimaryBackupPolicyArgs) ToRRSetRoutingPolicyPrimaryBackupPolicyOutputWithContext(ctx context.Context) RRSetRoutingPolicyPrimaryBackupPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyPrimaryBackupPolicyOutput)
+}
+
+func (i RRSetRoutingPolicyPrimaryBackupPolicyArgs) ToRRSetRoutingPolicyPrimaryBackupPolicyPtrOutput() RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput {
+	return i.ToRRSetRoutingPolicyPrimaryBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i RRSetRoutingPolicyPrimaryBackupPolicyArgs) ToRRSetRoutingPolicyPrimaryBackupPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyPrimaryBackupPolicyOutput).ToRRSetRoutingPolicyPrimaryBackupPolicyPtrOutputWithContext(ctx)
+}
+
+// RRSetRoutingPolicyPrimaryBackupPolicyPtrInput is an input type that accepts RRSetRoutingPolicyPrimaryBackupPolicyArgs, RRSetRoutingPolicyPrimaryBackupPolicyPtr and RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput values.
+// You can construct a concrete instance of `RRSetRoutingPolicyPrimaryBackupPolicyPtrInput` via:
+//
+//          RRSetRoutingPolicyPrimaryBackupPolicyArgs{...}
+//
+//  or:
+//
+//          nil
+type RRSetRoutingPolicyPrimaryBackupPolicyPtrInput interface {
+	pulumi.Input
+
+	ToRRSetRoutingPolicyPrimaryBackupPolicyPtrOutput() RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput
+	ToRRSetRoutingPolicyPrimaryBackupPolicyPtrOutputWithContext(context.Context) RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput
+}
+
+type rrsetRoutingPolicyPrimaryBackupPolicyPtrType RRSetRoutingPolicyPrimaryBackupPolicyArgs
+
+func RRSetRoutingPolicyPrimaryBackupPolicyPtr(v *RRSetRoutingPolicyPrimaryBackupPolicyArgs) RRSetRoutingPolicyPrimaryBackupPolicyPtrInput {
+	return (*rrsetRoutingPolicyPrimaryBackupPolicyPtrType)(v)
+}
+
+func (*rrsetRoutingPolicyPrimaryBackupPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RRSetRoutingPolicyPrimaryBackupPolicy)(nil)).Elem()
+}
+
+func (i *rrsetRoutingPolicyPrimaryBackupPolicyPtrType) ToRRSetRoutingPolicyPrimaryBackupPolicyPtrOutput() RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput {
+	return i.ToRRSetRoutingPolicyPrimaryBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *rrsetRoutingPolicyPrimaryBackupPolicyPtrType) ToRRSetRoutingPolicyPrimaryBackupPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput)
+}
+
+// Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are healthy. And if all of them are unhealthy, then we fallback to a geo localized policy.
+type RRSetRoutingPolicyPrimaryBackupPolicyOutput struct{ *pulumi.OutputState }
+
+func (RRSetRoutingPolicyPrimaryBackupPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RRSetRoutingPolicyPrimaryBackupPolicy)(nil)).Elem()
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyOutput) ToRRSetRoutingPolicyPrimaryBackupPolicyOutput() RRSetRoutingPolicyPrimaryBackupPolicyOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyOutput) ToRRSetRoutingPolicyPrimaryBackupPolicyOutputWithContext(ctx context.Context) RRSetRoutingPolicyPrimaryBackupPolicyOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyOutput) ToRRSetRoutingPolicyPrimaryBackupPolicyPtrOutput() RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput {
+	return o.ToRRSetRoutingPolicyPrimaryBackupPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyOutput) ToRRSetRoutingPolicyPrimaryBackupPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RRSetRoutingPolicyPrimaryBackupPolicy) *RRSetRoutingPolicyPrimaryBackupPolicy {
+		return &v
+	}).(RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput)
+}
+
+// Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to BACKUP, this policy essentially becomes a geo routing policy.
+func (o RRSetRoutingPolicyPrimaryBackupPolicyOutput) BackupGeoTargets() RRSetRoutingPolicyGeoPolicyPtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyPrimaryBackupPolicy) *RRSetRoutingPolicyGeoPolicy { return v.BackupGeoTargets }).(RRSetRoutingPolicyGeoPolicyPtrOutput)
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyPrimaryBackupPolicy) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyOutput) PrimaryTargets() RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyPrimaryBackupPolicy) *RRSetRoutingPolicyHealthCheckTargets {
+		return v.PrimaryTargets
+	}).(RRSetRoutingPolicyHealthCheckTargetsPtrOutput)
+}
+
+// When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.
+func (o RRSetRoutingPolicyPrimaryBackupPolicyOutput) TrickleTraffic() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyPrimaryBackupPolicy) *float64 { return v.TrickleTraffic }).(pulumi.Float64PtrOutput)
+}
+
+type RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RRSetRoutingPolicyPrimaryBackupPolicy)(nil)).Elem()
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput) ToRRSetRoutingPolicyPrimaryBackupPolicyPtrOutput() RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput) ToRRSetRoutingPolicyPrimaryBackupPolicyPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput) Elem() RRSetRoutingPolicyPrimaryBackupPolicyOutput {
+	return o.ApplyT(func(v *RRSetRoutingPolicyPrimaryBackupPolicy) RRSetRoutingPolicyPrimaryBackupPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret RRSetRoutingPolicyPrimaryBackupPolicy
+		return ret
+	}).(RRSetRoutingPolicyPrimaryBackupPolicyOutput)
+}
+
+// Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to BACKUP, this policy essentially becomes a geo routing policy.
+func (o RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput) BackupGeoTargets() RRSetRoutingPolicyGeoPolicyPtrOutput {
+	return o.ApplyT(func(v *RRSetRoutingPolicyPrimaryBackupPolicy) *RRSetRoutingPolicyGeoPolicy {
+		if v == nil {
+			return nil
+		}
+		return v.BackupGeoTargets
+	}).(RRSetRoutingPolicyGeoPolicyPtrOutput)
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RRSetRoutingPolicyPrimaryBackupPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Kind
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput) PrimaryTargets() RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
+	return o.ApplyT(func(v *RRSetRoutingPolicyPrimaryBackupPolicy) *RRSetRoutingPolicyHealthCheckTargets {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryTargets
+	}).(RRSetRoutingPolicyHealthCheckTargetsPtrOutput)
+}
+
+// When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.
+func (o RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput) TrickleTraffic() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *RRSetRoutingPolicyPrimaryBackupPolicy) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.TrickleTraffic
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are healthy. And if all of them are unhealthy, then we fallback to a geo localized policy.
+type RRSetRoutingPolicyPrimaryBackupPolicyResponse struct {
+	// Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to BACKUP, this policy essentially becomes a geo routing policy.
+	BackupGeoTargets RRSetRoutingPolicyGeoPolicyResponse          `pulumi:"backupGeoTargets"`
+	Kind             string                                       `pulumi:"kind"`
+	PrimaryTargets   RRSetRoutingPolicyHealthCheckTargetsResponse `pulumi:"primaryTargets"`
+	// When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.
+	TrickleTraffic float64 `pulumi:"trickleTraffic"`
+}
+
+// Configures a RRSetRoutingPolicy such that all queries are responded with the primary_targets if they are healthy. And if all of them are unhealthy, then we fallback to a geo localized policy.
+type RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput struct{ *pulumi.OutputState }
+
+func (RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RRSetRoutingPolicyPrimaryBackupPolicyResponse)(nil)).Elem()
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput) ToRRSetRoutingPolicyPrimaryBackupPolicyResponseOutput() RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput) ToRRSetRoutingPolicyPrimaryBackupPolicyResponseOutputWithContext(ctx context.Context) RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput {
+	return o
+}
+
+// Backup targets provide a regional failover policy for the otherwise global primary targets. If serving state is set to BACKUP, this policy essentially becomes a geo routing policy.
+func (o RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput) BackupGeoTargets() RRSetRoutingPolicyGeoPolicyResponseOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyPrimaryBackupPolicyResponse) RRSetRoutingPolicyGeoPolicyResponse {
+		return v.BackupGeoTargets
+	}).(RRSetRoutingPolicyGeoPolicyResponseOutput)
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyPrimaryBackupPolicyResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+func (o RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput) PrimaryTargets() RRSetRoutingPolicyHealthCheckTargetsResponseOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyPrimaryBackupPolicyResponse) RRSetRoutingPolicyHealthCheckTargetsResponse {
+		return v.PrimaryTargets
+	}).(RRSetRoutingPolicyHealthCheckTargetsResponseOutput)
+}
+
+// When serving state is PRIMARY, this field provides the option of sending a small percentage of the traffic to the backup targets.
+func (o RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput) TrickleTraffic() pulumi.Float64Output {
+	return o.ApplyT(func(v RRSetRoutingPolicyPrimaryBackupPolicyResponse) float64 { return v.TrickleTraffic }).(pulumi.Float64Output)
+}
+
 // A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
 type RRSetRoutingPolicyResponse struct {
-	Geo  RRSetRoutingPolicyGeoPolicyResponse `pulumi:"geo"`
-	Kind string                              `pulumi:"kind"`
-	Wrr  RRSetRoutingPolicyWrrPolicyResponse `pulumi:"wrr"`
+	Geo           RRSetRoutingPolicyGeoPolicyResponse           `pulumi:"geo"`
+	Kind          string                                        `pulumi:"kind"`
+	PrimaryBackup RRSetRoutingPolicyPrimaryBackupPolicyResponse `pulumi:"primaryBackup"`
+	Wrr           RRSetRoutingPolicyWrrPolicyResponse           `pulumi:"wrr"`
 }
 
 // A RRSetRoutingPolicy represents ResourceRecordSet data that is returned dynamically with the response varying based on configured properties such as geolocation or by weighted random selection.
@@ -4071,6 +4777,12 @@ func (o RRSetRoutingPolicyResponseOutput) Geo() RRSetRoutingPolicyGeoPolicyRespo
 
 func (o RRSetRoutingPolicyResponseOutput) Kind() pulumi.StringOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+func (o RRSetRoutingPolicyResponseOutput) PrimaryBackup() RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyResponse) RRSetRoutingPolicyPrimaryBackupPolicyResponse {
+		return v.PrimaryBackup
+	}).(RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput)
 }
 
 func (o RRSetRoutingPolicyResponseOutput) Wrr() RRSetRoutingPolicyWrrPolicyResponseOutput {
@@ -4261,8 +4973,10 @@ func (o RRSetRoutingPolicyWrrPolicyResponseOutput) Kind() pulumi.StringOutput {
 
 // A routing block which contains the routing information for one WRR item.
 type RRSetRoutingPolicyWrrPolicyWrrPolicyItem struct {
-	Kind    *string  `pulumi:"kind"`
-	Rrdatas []string `pulumi:"rrdatas"`
+	// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+	HealthCheckedTargets *RRSetRoutingPolicyHealthCheckTargets `pulumi:"healthCheckedTargets"`
+	Kind                 *string                               `pulumi:"kind"`
+	Rrdatas              []string                              `pulumi:"rrdatas"`
 	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
 	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
 	// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
@@ -4282,8 +4996,10 @@ type RRSetRoutingPolicyWrrPolicyWrrPolicyItemInput interface {
 
 // A routing block which contains the routing information for one WRR item.
 type RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs struct {
-	Kind    pulumi.StringPtrInput   `pulumi:"kind"`
-	Rrdatas pulumi.StringArrayInput `pulumi:"rrdatas"`
+	// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+	HealthCheckedTargets RRSetRoutingPolicyHealthCheckTargetsPtrInput `pulumi:"healthCheckedTargets"`
+	Kind                 pulumi.StringPtrInput                        `pulumi:"kind"`
+	Rrdatas              pulumi.StringArrayInput                      `pulumi:"rrdatas"`
 	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
 	SignatureRrdatas pulumi.StringArrayInput `pulumi:"signatureRrdatas"`
 	// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
@@ -4342,6 +5058,13 @@ func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) ToRRSetRoutingPolicyWrrP
 	return o
 }
 
+// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) HealthCheckedTargets() RRSetRoutingPolicyHealthCheckTargetsPtrOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItem) *RRSetRoutingPolicyHealthCheckTargets {
+		return v.HealthCheckedTargets
+	}).(RRSetRoutingPolicyHealthCheckTargetsPtrOutput)
+}
+
 func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItem) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -4382,8 +5105,10 @@ func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemArrayOutput) Index(i pulumi.IntI
 
 // A routing block which contains the routing information for one WRR item.
 type RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse struct {
-	Kind    string   `pulumi:"kind"`
-	Rrdatas []string `pulumi:"rrdatas"`
+	// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+	HealthCheckedTargets RRSetRoutingPolicyHealthCheckTargetsResponse `pulumi:"healthCheckedTargets"`
+	Kind                 string                                       `pulumi:"kind"`
+	Rrdatas              []string                                     `pulumi:"rrdatas"`
 	// DNSSEC generated signatures for all the rrdata within this item. Note that if health checked targets are provided for DNSSEC enabled zones, there's a restriction of 1 ip per item. .
 	SignatureRrdatas []string `pulumi:"signatureRrdatas"`
 	// The weight corresponding to this subset of rrdata. When multiple WeightedRoundRobinPolicyItems are configured, the probability of returning an rrset is proportional to its weight relative to the sum of weights configured for all items. This weight should be non-negative.
@@ -4403,6 +5128,13 @@ func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutput) ToRRSetRoutingPo
 
 func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutput) ToRRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutputWithContext(ctx context.Context) RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutput {
 	return o
+}
+
+// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutput) HealthCheckedTargets() RRSetRoutingPolicyHealthCheckTargetsResponseOutput {
+	return o.ApplyT(func(v RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse) RRSetRoutingPolicyHealthCheckTargetsResponse {
+		return v.HealthCheckedTargets
+	}).(RRSetRoutingPolicyHealthCheckTargetsResponseOutput)
 }
 
 func (o RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponseOutput) Kind() pulumi.StringOutput {
@@ -4809,6 +5541,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyGeoPolicyPtrInput)(nil)).Elem(), RRSetRoutingPolicyGeoPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyGeoPolicyGeoPolicyItemInput)(nil)).Elem(), RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyGeoPolicyGeoPolicyItemArrayInput)(nil)).Elem(), RRSetRoutingPolicyGeoPolicyGeoPolicyItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyHealthCheckTargetsInput)(nil)).Elem(), RRSetRoutingPolicyHealthCheckTargetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyHealthCheckTargetsPtrInput)(nil)).Elem(), RRSetRoutingPolicyHealthCheckTargetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyLoadBalancerTargetInput)(nil)).Elem(), RRSetRoutingPolicyLoadBalancerTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyLoadBalancerTargetArrayInput)(nil)).Elem(), RRSetRoutingPolicyLoadBalancerTargetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyPrimaryBackupPolicyInput)(nil)).Elem(), RRSetRoutingPolicyPrimaryBackupPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyPrimaryBackupPolicyPtrInput)(nil)).Elem(), RRSetRoutingPolicyPrimaryBackupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyWrrPolicyInput)(nil)).Elem(), RRSetRoutingPolicyWrrPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyWrrPolicyPtrInput)(nil)).Elem(), RRSetRoutingPolicyWrrPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyWrrPolicyWrrPolicyItemInput)(nil)).Elem(), RRSetRoutingPolicyWrrPolicyWrrPolicyItemArgs{})
@@ -4889,6 +5627,16 @@ func init() {
 	pulumi.RegisterOutputType(RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseOutput{})
 	pulumi.RegisterOutputType(RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponseArrayOutput{})
 	pulumi.RegisterOutputType(RRSetRoutingPolicyGeoPolicyResponseOutput{})
+	pulumi.RegisterOutputType(RRSetRoutingPolicyHealthCheckTargetsOutput{})
+	pulumi.RegisterOutputType(RRSetRoutingPolicyHealthCheckTargetsPtrOutput{})
+	pulumi.RegisterOutputType(RRSetRoutingPolicyHealthCheckTargetsResponseOutput{})
+	pulumi.RegisterOutputType(RRSetRoutingPolicyLoadBalancerTargetOutput{})
+	pulumi.RegisterOutputType(RRSetRoutingPolicyLoadBalancerTargetArrayOutput{})
+	pulumi.RegisterOutputType(RRSetRoutingPolicyLoadBalancerTargetResponseOutput{})
+	pulumi.RegisterOutputType(RRSetRoutingPolicyLoadBalancerTargetResponseArrayOutput{})
+	pulumi.RegisterOutputType(RRSetRoutingPolicyPrimaryBackupPolicyOutput{})
+	pulumi.RegisterOutputType(RRSetRoutingPolicyPrimaryBackupPolicyPtrOutput{})
+	pulumi.RegisterOutputType(RRSetRoutingPolicyPrimaryBackupPolicyResponseOutput{})
 	pulumi.RegisterOutputType(RRSetRoutingPolicyResponseOutput{})
 	pulumi.RegisterOutputType(RRSetRoutingPolicyWrrPolicyOutput{})
 	pulumi.RegisterOutputType(RRSetRoutingPolicyWrrPolicyPtrOutput{})

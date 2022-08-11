@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Retrieves TagValue. If the TagValue or namespaced name does not exist, or if the user does not have permission to view it, this method will return `PERMISSION_DENIED`.
+// Retrieves a TagValue. This method will return `PERMISSION_DENIED` if the value does not exist or the user does not have permission to view it.
 func LookupTagValue(ctx *pulumi.Context, args *LookupTagValueArgs, opts ...pulumi.InvokeOption) (*LookupTagValueResult, error) {
 	var rv LookupTagValueResult
 	err := ctx.Invoke("google-native:cloudresourcemanager/v3:getTagValue", args, &rv, opts...)
@@ -33,7 +33,7 @@ type LookupTagValueResult struct {
 	Etag string `pulumi:"etag"`
 	// Immutable. Resource name for TagValue in the format `tagValues/456`.
 	Name string `pulumi:"name"`
-	// Namespaced name of the TagValue. Must be in the format `{organization_id}/{tag_key_short_name}/{short_name}`.
+	// Namespaced name of the TagValue. Now only supported in the format `{organization_id}/{tag_key_short_name}/{short_name}`. Other formats will be supported when we add non-org parented tags.
 	NamespacedName string `pulumi:"namespacedName"`
 	// Immutable. The resource name of the new TagValue's parent TagKey. Must be of the form `tagKeys/{tag_key_id}`.
 	Parent string `pulumi:"parent"`
@@ -98,7 +98,7 @@ func (o LookupTagValueResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagValueResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Namespaced name of the TagValue. Must be in the format `{organization_id}/{tag_key_short_name}/{short_name}`.
+// Namespaced name of the TagValue. Now only supported in the format `{organization_id}/{tag_key_short_name}/{short_name}`. Other formats will be supported when we add non-org parented tags.
 func (o LookupTagValueResultOutput) NamespacedName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupTagValueResult) string { return v.NamespacedName }).(pulumi.StringOutput)
 }

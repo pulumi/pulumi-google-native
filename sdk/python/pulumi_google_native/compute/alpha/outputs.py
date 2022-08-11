@@ -16,6 +16,8 @@ __all__ = [
     'AccessConfigResponse',
     'AdvancedMachineFeaturesResponse',
     'AliasIpRangeResponse',
+    'AllocationResourceStatusResponse',
+    'AllocationResourceStatusSpecificSKUAllocationResponse',
     'AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse',
     'AllocationSpecificSKUAllocationReservedInstancePropertiesResponse',
     'AllocationSpecificSKUReservationResponse',
@@ -91,6 +93,7 @@ __all__ = [
     'ForwardingRuleServiceDirectoryRegistrationResponse',
     'FutureReservationSpecificSKUPropertiesResponse',
     'FutureReservationStatusResponse',
+    'FutureReservationStatusSpecificSKUPropertiesResponse',
     'FutureReservationTimeWindowResponse',
     'GRPCHealthCheckResponse',
     'GrpcServiceConfigResponse',
@@ -254,6 +257,7 @@ __all__ = [
     'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigResponse',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigResponse',
     'SecurityPolicyAdaptiveProtectionConfigResponse',
+    'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse',
     'SecurityPolicyAdvancedOptionsConfigResponse',
     'SecurityPolicyAssociationResponse',
     'SecurityPolicyCloudArmorConfigResponse',
@@ -669,6 +673,84 @@ class AliasIpRangeResponse(dict):
 
 
 @pulumi.output_type
+class AllocationResourceStatusResponse(dict):
+    """
+    [Output Only] Contains output only fields.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "specificSkuAllocation":
+            suggest = "specific_sku_allocation"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AllocationResourceStatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AllocationResourceStatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AllocationResourceStatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 specific_sku_allocation: 'outputs.AllocationResourceStatusSpecificSKUAllocationResponse'):
+        """
+        [Output Only] Contains output only fields.
+        :param 'AllocationResourceStatusSpecificSKUAllocationResponse' specific_sku_allocation: Allocation Properties of this reservation.
+        """
+        pulumi.set(__self__, "specific_sku_allocation", specific_sku_allocation)
+
+    @property
+    @pulumi.getter(name="specificSkuAllocation")
+    def specific_sku_allocation(self) -> 'outputs.AllocationResourceStatusSpecificSKUAllocationResponse':
+        """
+        Allocation Properties of this reservation.
+        """
+        return pulumi.get(self, "specific_sku_allocation")
+
+
+@pulumi.output_type
+class AllocationResourceStatusSpecificSKUAllocationResponse(dict):
+    """
+    Contains Properties set for the reservation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceInstanceTemplateId":
+            suggest = "source_instance_template_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AllocationResourceStatusSpecificSKUAllocationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AllocationResourceStatusSpecificSKUAllocationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AllocationResourceStatusSpecificSKUAllocationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_instance_template_id: str):
+        """
+        Contains Properties set for the reservation.
+        :param str source_instance_template_id: ID of the instance template used to populate reservation properties.
+        """
+        pulumi.set(__self__, "source_instance_template_id", source_instance_template_id)
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplateId")
+    def source_instance_template_id(self) -> str:
+        """
+        ID of the instance template used to populate reservation properties.
+        """
+        return pulumi.get(self, "source_instance_template_id")
+
+
+@pulumi.output_type
 class AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -845,6 +927,8 @@ class AllocationSpecificSKUReservationResponse(dict):
             suggest = "in_use_count"
         elif key == "instanceProperties":
             suggest = "instance_properties"
+        elif key == "sourceInstanceTemplate":
+            suggest = "source_instance_template"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in AllocationSpecificSKUReservationResponse. Access the value via the '{suggest}' property getter instead.")
@@ -861,18 +945,21 @@ class AllocationSpecificSKUReservationResponse(dict):
                  assured_count: str,
                  count: str,
                  in_use_count: str,
-                 instance_properties: 'outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse'):
+                 instance_properties: 'outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse',
+                 source_instance_template: str):
         """
         This reservation type allows to pre allocate specific instance configuration. Next ID: 6
         :param str assured_count: Indicates how many instances are actually usable currently.
         :param str count: Specifies the number of resources that are allocated.
         :param str in_use_count: Indicates how many instances are in use.
         :param 'AllocationSpecificSKUAllocationReservedInstancePropertiesResponse' instance_properties: The instance properties for the reservation.
+        :param str source_instance_template: Specific URL of the instance template used in the reservation
         """
         pulumi.set(__self__, "assured_count", assured_count)
         pulumi.set(__self__, "count", count)
         pulumi.set(__self__, "in_use_count", in_use_count)
         pulumi.set(__self__, "instance_properties", instance_properties)
+        pulumi.set(__self__, "source_instance_template", source_instance_template)
 
     @property
     @pulumi.getter(name="assuredCount")
@@ -905,6 +992,14 @@ class AllocationSpecificSKUReservationResponse(dict):
         The instance properties for the reservation.
         """
         return pulumi.get(self, "instance_properties")
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> str:
+        """
+        Specific URL of the instance template used in the reservation
+        """
+        return pulumi.get(self, "source_instance_template")
 
 
 @pulumi.output_type
@@ -5679,7 +5774,7 @@ class FirewallPolicyRuleResponse(dict):
         :param int priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
         :param str rule_name: An optional name for the rule. This field is not a unique identifier and can be updated.
         :param int rule_tuple_count: Calculation of the complexity of a single firewall policy rule.
-        :param str security_profile_group: A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+        :param str security_profile_group: A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
         :param Sequence[str] target_resources: A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
         :param Sequence['FirewallPolicyRuleSecureTagResponse'] target_secure_tags: A list of secure tags that controls which instances the firewall rule applies to. If targetSecureTag are specified, then the firewall rule applies only to instances in the VPC network that have one of those EFFECTIVE secure tags, if all the target_secure_tag are in INEFFECTIVE state, then this rule will be ignored. targetSecureTag may not be set at the same time as targetServiceAccounts. If neither targetServiceAccounts nor targetSecureTag are specified, the firewall rule applies to all instances on the specified network. Maximum number of target label tags allowed is 256.
         :param Sequence[str] target_service_accounts: A list of service accounts indicating the sets of instances that are applied with this rule.
@@ -5783,7 +5878,7 @@ class FirewallPolicyRuleResponse(dict):
     @pulumi.getter(name="securityProfileGroup")
     def security_profile_group(self) -> str:
         """
-        A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+        A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
         """
         return pulumi.get(self, "security_profile_group")
 
@@ -5953,6 +6048,8 @@ class FutureReservationSpecificSKUPropertiesResponse(dict):
         suggest = None
         if key == "instanceProperties":
             suggest = "instance_properties"
+        elif key == "sourceInstanceTemplate":
+            suggest = "source_instance_template"
         elif key == "totalCount":
             suggest = "total_count"
 
@@ -5969,12 +6066,15 @@ class FutureReservationSpecificSKUPropertiesResponse(dict):
 
     def __init__(__self__, *,
                  instance_properties: 'outputs.AllocationSpecificSKUAllocationReservedInstancePropertiesResponse',
+                 source_instance_template: str,
                  total_count: str):
         """
         :param 'AllocationSpecificSKUAllocationReservedInstancePropertiesResponse' instance_properties: Properties of the SKU instances being reserved.
+        :param str source_instance_template: The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
         :param str total_count: Total number of instances for which capacity assurance is requested at a future time period.
         """
         pulumi.set(__self__, "instance_properties", instance_properties)
+        pulumi.set(__self__, "source_instance_template", source_instance_template)
         pulumi.set(__self__, "total_count", total_count)
 
     @property
@@ -5984,6 +6084,14 @@ class FutureReservationSpecificSKUPropertiesResponse(dict):
         Properties of the SKU instances being reserved.
         """
         return pulumi.get(self, "instance_properties")
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplate")
+    def source_instance_template(self) -> str:
+        """
+        The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+        """
+        return pulumi.get(self, "source_instance_template")
 
     @property
     @pulumi.getter(name="totalCount")
@@ -6010,6 +6118,8 @@ class FutureReservationStatusResponse(dict):
             suggest = "lock_time"
         elif key == "procurementStatus":
             suggest = "procurement_status"
+        elif key == "specificSkuProperties":
+            suggest = "specific_sku_properties"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in FutureReservationStatusResponse. Access the value via the '{suggest}' property getter instead.")
@@ -6026,7 +6136,8 @@ class FutureReservationStatusResponse(dict):
                  auto_created_reservations: Sequence[str],
                  fulfilled_count: str,
                  lock_time: str,
-                 procurement_status: str):
+                 procurement_status: str,
+                 specific_sku_properties: 'outputs.FutureReservationStatusSpecificSKUPropertiesResponse'):
         """
         [Output only] Represents status related to the future reservation.
         :param Sequence[str] auto_created_reservations: Fully qualified urls of the automatically created reservations at start_time.
@@ -6038,6 +6149,7 @@ class FutureReservationStatusResponse(dict):
         pulumi.set(__self__, "fulfilled_count", fulfilled_count)
         pulumi.set(__self__, "lock_time", lock_time)
         pulumi.set(__self__, "procurement_status", procurement_status)
+        pulumi.set(__self__, "specific_sku_properties", specific_sku_properties)
 
     @property
     @pulumi.getter(name="autoCreatedReservations")
@@ -6070,6 +6182,50 @@ class FutureReservationStatusResponse(dict):
         Current state of this Future Reservation
         """
         return pulumi.get(self, "procurement_status")
+
+    @property
+    @pulumi.getter(name="specificSkuProperties")
+    def specific_sku_properties(self) -> 'outputs.FutureReservationStatusSpecificSKUPropertiesResponse':
+        return pulumi.get(self, "specific_sku_properties")
+
+
+@pulumi.output_type
+class FutureReservationStatusSpecificSKUPropertiesResponse(dict):
+    """
+    Properties to be set for the Future Reservation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceInstanceTemplateId":
+            suggest = "source_instance_template_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FutureReservationStatusSpecificSKUPropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FutureReservationStatusSpecificSKUPropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FutureReservationStatusSpecificSKUPropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_instance_template_id: str):
+        """
+        Properties to be set for the Future Reservation.
+        :param str source_instance_template_id: ID of the instance template used to populate the Future Reservation properties.
+        """
+        pulumi.set(__self__, "source_instance_template_id", source_instance_template_id)
+
+    @property
+    @pulumi.getter(name="sourceInstanceTemplateId")
+    def source_instance_template_id(self) -> str:
+        """
+        ID of the instance template used to populate the Future Reservation properties.
+        """
+        return pulumi.get(self, "source_instance_template_id")
 
 
 @pulumi.output_type
@@ -14342,6 +14498,8 @@ class ReservationResponse(dict):
             suggest = "creation_timestamp"
         elif key == "resourcePolicies":
             suggest = "resource_policies"
+        elif key == "resourceStatus":
+            suggest = "resource_status"
         elif key == "satisfiesPzs":
             suggest = "satisfies_pzs"
         elif key == "selfLink":
@@ -14373,6 +14531,7 @@ class ReservationResponse(dict):
                  kind: str,
                  name: str,
                  resource_policies: Mapping[str, str],
+                 resource_status: 'outputs.AllocationResourceStatusResponse',
                  satisfies_pzs: bool,
                  self_link: str,
                  self_link_with_id: str,
@@ -14389,6 +14548,7 @@ class ReservationResponse(dict):
         :param str kind: Type of the resource. Always compute#reservations for reservations.
         :param str name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param Mapping[str, str] resource_policies: Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+        :param 'AllocationResourceStatusResponse' resource_status: Status information for Reservation resource.
         :param bool satisfies_pzs: Reserved for future use.
         :param str self_link: Server-defined fully-qualified URL for this resource.
         :param str self_link_with_id: Server-defined URL for this resource with the resource id.
@@ -14404,6 +14564,7 @@ class ReservationResponse(dict):
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "resource_policies", resource_policies)
+        pulumi.set(__self__, "resource_status", resource_status)
         pulumi.set(__self__, "satisfies_pzs", satisfies_pzs)
         pulumi.set(__self__, "self_link", self_link)
         pulumi.set(__self__, "self_link_with_id", self_link_with_id)
@@ -14460,6 +14621,14 @@ class ReservationResponse(dict):
         Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
         """
         return pulumi.get(self, "resource_policies")
+
+    @property
+    @pulumi.getter(name="resourceStatus")
+    def resource_status(self) -> 'outputs.AllocationResourceStatusResponse':
+        """
+        Status information for Reservation resource.
+        """
+        return pulumi.get(self, "resource_status")
 
     @property
     @pulumi.getter(name="satisfiesPzs")
@@ -17458,7 +17627,7 @@ class SchedulingNodeAffinityResponse(dict):
 @pulumi.output_type
 class SchedulingResponse(dict):
     """
-    Sets the scheduling options for an Instance. NextID: 21
+    Sets the scheduling options for an Instance.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -17526,7 +17695,7 @@ class SchedulingResponse(dict):
                  provisioning_model: str,
                  termination_time: str):
         """
-        Sets the scheduling options for an Instance. NextID: 21
+        Sets the scheduling options for an Instance.
         :param bool automatic_restart: Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
         :param int availability_domain: Specifies the availability domain (AD), which this instance should be scheduled on. The AD belongs to the spread GroupPlacementPolicy resource policy that has been assigned to the instance. Specify a value between 1-max count of availability domains in your GroupPlacementPolicy. See go/placement-policy-extension for more details.
         :param int current_cpus: Current number of vCPUs available for VM. 0 or unset means default vCPUs of the current machine type.
@@ -17900,11 +18069,48 @@ class SecurityPolicyAdaptiveProtectionConfigResponse(dict):
 
 
 @pulumi.output_type
+class SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "contentTypes":
+            suggest = "content_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 content_types: Sequence[str]):
+        """
+        :param Sequence[str] content_types: A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+        """
+        pulumi.set(__self__, "content_types", content_types)
+
+    @property
+    @pulumi.getter(name="contentTypes")
+    def content_types(self) -> Sequence[str]:
+        """
+        A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+        """
+        return pulumi.get(self, "content_types")
+
+
+@pulumi.output_type
 class SecurityPolicyAdvancedOptionsConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "jsonParsing":
+        if key == "jsonCustomConfig":
+            suggest = "json_custom_config"
+        elif key == "jsonParsing":
             suggest = "json_parsing"
         elif key == "logLevel":
             suggest = "log_level"
@@ -17921,10 +18127,23 @@ class SecurityPolicyAdvancedOptionsConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 json_custom_config: 'outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse',
                  json_parsing: str,
                  log_level: str):
+        """
+        :param 'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse' json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+        """
+        pulumi.set(__self__, "json_custom_config", json_custom_config)
         pulumi.set(__self__, "json_parsing", json_parsing)
         pulumi.set(__self__, "log_level", log_level)
+
+    @property
+    @pulumi.getter(name="jsonCustomConfig")
+    def json_custom_config(self) -> 'outputs.SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse':
+        """
+        Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+        """
+        return pulumi.get(self, "json_custom_config")
 
     @property
     @pulumi.getter(name="jsonParsing")

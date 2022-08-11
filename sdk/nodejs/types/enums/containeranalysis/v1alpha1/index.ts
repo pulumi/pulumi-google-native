@@ -328,6 +328,10 @@ export const DiscoveredAnalysisStatus = {
      */
     Scanning: "SCANNING",
     /**
+     * Analysis has completed
+     */
+    Complete: "COMPLETE",
+    /**
      * Analysis has finished successfully.
      */
     FinishedSuccess: "FINISHED_SUCCESS",

@@ -27,6 +27,8 @@ type LookupGlossaryArgs struct {
 }
 
 type LookupGlossaryResult struct {
+	// Optional. The display name of the glossary.
+	DisplayName string `pulumi:"displayName"`
 	// When the glossary creation was finished.
 	EndTime string `pulumi:"endTime"`
 	// The number of entries defined in the glossary.
@@ -78,6 +80,11 @@ func (o LookupGlossaryResultOutput) ToLookupGlossaryResultOutput() LookupGlossar
 
 func (o LookupGlossaryResultOutput) ToLookupGlossaryResultOutputWithContext(ctx context.Context) LookupGlossaryResultOutput {
 	return o
+}
+
+// Optional. The display name of the glossary.
+func (o LookupGlossaryResultOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupGlossaryResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // When the glossary creation was finished.

@@ -24,7 +24,9 @@ type FutureReservation struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 	NamePrefix pulumi.StringOutput `pulumi:"namePrefix"`
-	Project    pulumi.StringOutput `pulumi:"project"`
+	// Planning state before being submitted for evaluation
+	PlanningStatus pulumi.StringOutput `pulumi:"planningStatus"`
+	Project        pulumi.StringOutput `pulumi:"project"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined fully-qualified URL for this resource.
@@ -92,7 +94,9 @@ type futureReservationArgs struct {
 	Name *string `pulumi:"name"`
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 	NamePrefix *string `pulumi:"namePrefix"`
-	Project    *string `pulumi:"project"`
+	// Planning state before being submitted for evaluation
+	PlanningStatus *FutureReservationPlanningStatus `pulumi:"planningStatus"`
+	Project        *string                          `pulumi:"project"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
 	// List of Projects/Folders to share with.
@@ -112,7 +116,9 @@ type FutureReservationArgs struct {
 	Name pulumi.StringPtrInput
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 	NamePrefix pulumi.StringPtrInput
-	Project    pulumi.StringPtrInput
+	// Planning state before being submitted for evaluation
+	PlanningStatus FutureReservationPlanningStatusPtrInput
+	Project        pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
 	// List of Projects/Folders to share with.
@@ -184,6 +190,11 @@ func (o FutureReservationOutput) Name() pulumi.StringOutput {
 // Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 func (o FutureReservationOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.NamePrefix }).(pulumi.StringOutput)
+}
+
+// Planning state before being submitted for evaluation
+func (o FutureReservationOutput) PlanningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v *FutureReservation) pulumi.StringOutput { return v.PlanningStatus }).(pulumi.StringOutput)
 }
 
 func (o FutureReservationOutput) Project() pulumi.StringOutput {

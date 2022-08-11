@@ -16,6 +16,10 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
     [OutputType]
     public sealed class RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse
     {
+        /// <summary>
+        /// endpoints that need to be health checked before making the routing decision. The unhealthy endpoints will be omitted from the result. If all endpoints within a buckete are unhealthy, we'll choose a different bucket (sampled w.r.t. its weight) for responding. Note that if DNSSEC is enabled for this zone, only one of rrdata or health_checked_targets can be set.
+        /// </summary>
+        public readonly Outputs.RRSetRoutingPolicyHealthCheckTargetsResponse HealthCheckedTargets;
         public readonly string Kind;
         public readonly ImmutableArray<string> Rrdatas;
         /// <summary>
@@ -29,6 +33,8 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
 
         [OutputConstructor]
         private RRSetRoutingPolicyWrrPolicyWrrPolicyItemResponse(
+            Outputs.RRSetRoutingPolicyHealthCheckTargetsResponse healthCheckedTargets,
+
             string kind,
 
             ImmutableArray<string> rrdatas,
@@ -37,6 +43,7 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
 
             double weight)
         {
+            HealthCheckedTargets = healthCheckedTargets;
             Kind = kind;
             Rrdatas = rrdatas;
             SignatureRrdatas = signatureRrdatas;

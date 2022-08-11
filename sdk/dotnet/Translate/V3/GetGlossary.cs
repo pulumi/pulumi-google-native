@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Translate.V3
     public sealed class GetGlossaryResult
     {
         /// <summary>
+        /// Optional. The display name of the glossary.
+        /// </summary>
+        public readonly string DisplayName;
+        /// <summary>
         /// When the glossary creation was finished.
         /// </summary>
         public readonly string EndTime;
@@ -94,6 +98,8 @@ namespace Pulumi.GoogleNative.Translate.V3
 
         [OutputConstructor]
         private GetGlossaryResult(
+            string displayName,
+
             string endTime,
 
             int entryCount,
@@ -108,6 +114,7 @@ namespace Pulumi.GoogleNative.Translate.V3
 
             string submitTime)
         {
+            DisplayName = displayName;
             EndTime = endTime;
             EntryCount = entryCount;
             InputConfig = inputConfig;

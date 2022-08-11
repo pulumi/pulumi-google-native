@@ -106,6 +106,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<string> Options { get; private set; } = null!;
 
         /// <summary>
+        /// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        [Output("params")]
+        public Output<Outputs.DiskParamsResponse> Params { get; private set; } = null!;
+
+        /// <summary>
         /// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
         /// </summary>
         [Output("physicalBlockSizeBytes")]
@@ -370,6 +376,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("options")]
         public Input<string>? Options { get; set; }
+
+        /// <summary>
+        /// Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        /// </summary>
+        [Input("params")]
+        public Input<Inputs.DiskParamsArgs>? Params { get; set; }
 
         /// <summary>
         /// Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.

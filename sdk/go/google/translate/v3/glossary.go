@@ -15,6 +15,8 @@ import (
 type Glossary struct {
 	pulumi.CustomResourceState
 
+	// Optional. The display name of the glossary.
+	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// When the glossary creation was finished.
 	EndTime pulumi.StringOutput `pulumi:"endTime"`
 	// The number of entries defined in the glossary.
@@ -80,6 +82,8 @@ func (GlossaryState) ElementType() reflect.Type {
 }
 
 type glossaryArgs struct {
+	// Optional. The display name of the glossary.
+	DisplayName *string `pulumi:"displayName"`
 	// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
 	InputConfig GlossaryInputConfig `pulumi:"inputConfig"`
 	// Used with equivalent term set glossaries.
@@ -94,6 +98,8 @@ type glossaryArgs struct {
 
 // The set of arguments for constructing a Glossary resource.
 type GlossaryArgs struct {
+	// Optional. The display name of the glossary.
+	DisplayName pulumi.StringPtrInput
 	// Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
 	InputConfig GlossaryInputConfigInput
 	// Used with equivalent term set glossaries.
@@ -141,6 +147,11 @@ func (o GlossaryOutput) ToGlossaryOutput() GlossaryOutput {
 
 func (o GlossaryOutput) ToGlossaryOutputWithContext(ctx context.Context) GlossaryOutput {
 	return o
+}
+
+// Optional. The display name of the glossary.
+func (o GlossaryOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v *Glossary) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
 // When the glossary creation was finished.

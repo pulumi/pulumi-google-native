@@ -15,6 +15,12 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
     /// </summary>
     public sealed class RRSetRoutingPolicyGeoPolicyGeoPolicyItemArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with rrdata within this item.
+        /// </summary>
+        [Input("healthCheckedTargets")]
+        public Input<Inputs.RRSetRoutingPolicyHealthCheckTargetsArgs>? HealthCheckedTargets { get; set; }
+
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 

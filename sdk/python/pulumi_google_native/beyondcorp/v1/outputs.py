@@ -265,17 +265,20 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse(dict):
     def __init__(__self__, *,
                  app_gateway: str,
                  ingress_port: int,
+                 l7psc: str,
                  type: str,
                  uri: str):
         """
         Gateway represents a user facing component that serves as an entrance to enable connectivity.
         :param str app_gateway: AppGateway name in following format: `projects/{project_id}/locations/{location_id}/appgateways/{gateway_id}`
         :param int ingress_port: Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
+        :param str l7psc: L7 private service connection for this resource.
         :param str type: The type of hosting used by the gateway.
         :param str uri: Server-defined URI for this resource.
         """
         pulumi.set(__self__, "app_gateway", app_gateway)
         pulumi.set(__self__, "ingress_port", ingress_port)
+        pulumi.set(__self__, "l7psc", l7psc)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "uri", uri)
 
@@ -294,6 +297,14 @@ class GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGatewayResponse(dict):
         Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
         """
         return pulumi.get(self, "ingress_port")
+
+    @property
+    @pulumi.getter
+    def l7psc(self) -> str:
+        """
+        L7 private service connection for this resource.
+        """
+        return pulumi.get(self, "l7psc")
 
     @property
     @pulumi.getter

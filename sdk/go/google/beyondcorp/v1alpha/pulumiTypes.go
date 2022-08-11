@@ -1045,6 +1045,8 @@ type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse stru
 	AppGateway string `pulumi:"appGateway"`
 	// Ingress port reserved on the gateways for this AppConnection, if not specified or zero, the default port is 19443.
 	IngressPort int `pulumi:"ingressPort"`
+	// L7 private service connection for this resource.
+	L7psc string `pulumi:"l7psc"`
 	// The type of hosting used by the gateway.
 	Type string `pulumi:"type"`
 	// Server-defined URI for this resource.
@@ -1078,6 +1080,11 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponseOu
 	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse) int {
 		return v.IngressPort
 	}).(pulumi.IntOutput)
+}
+
+// L7 private service connection for this resource.
+func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponseOutput) L7psc() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayResponse) string { return v.L7psc }).(pulumi.StringOutput)
 }
 
 // The type of hosting used by the gateway.

@@ -56,6 +56,7 @@ __all__ = [
     'CustomerEncryptionKeyArgs',
     'DeprecationStatusArgs',
     'DiskInstantiationConfigArgs',
+    'DiskParamsArgs',
     'DisplayDeviceArgs',
     'DistributionPolicyZoneConfigurationArgs',
     'DistributionPolicyArgs',
@@ -174,6 +175,7 @@ __all__ = [
     'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigArgs',
+    'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs',
     'SecurityPolicyAdvancedOptionsConfigArgs',
     'SecurityPolicyAssociationArgs',
     'SecurityPolicyDdosProtectionConfigArgs',
@@ -715,6 +717,7 @@ class AttachedDiskInitializeParamsArgs:
                  multi_writer: Optional[pulumi.Input[bool]] = None,
                  on_update_action: Optional[pulumi.Input['AttachedDiskInitializeParamsOnUpdateAction']] = None,
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_policies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
                  source_image_encryption_key: Optional[pulumi.Input['CustomerEncryptionKeyArgs']] = None,
@@ -733,6 +736,7 @@ class AttachedDiskInitializeParamsArgs:
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input['AttachedDiskInitializeParamsOnUpdateAction'] on_update_action: Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         :param pulumi.Input[str] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] resource_policies: Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
         :param pulumi.Input[str] source_image: The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
         :param pulumi.Input['CustomerEncryptionKeyArgs'] source_image_encryption_key: The customer-supplied encryption key of the source image. Required if the source image is protected by a customer-supplied encryption key. Instance templates do not store customer-supplied encryption keys, so you cannot create disks for instances in a managed instance group if the source images are encrypted with your own keys.
@@ -761,6 +765,8 @@ class AttachedDiskInitializeParamsArgs:
             pulumi.set(__self__, "on_update_action", on_update_action)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if source_image is not None:
@@ -903,6 +909,18 @@ class AttachedDiskInitializeParamsArgs:
     @provisioned_iops.setter
     def provisioned_iops(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "provisioned_iops", value)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -3658,6 +3676,30 @@ class DiskInstantiationConfigArgs:
     @instantiate_from.setter
     def instantiate_from(self, value: Optional[pulumi.Input['DiskInstantiationConfigInstantiateFrom']]):
         pulumi.set(self, "instantiate_from", value)
+
+
+@pulumi.input_type
+class DiskParamsArgs:
+    def __init__(__self__, *,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        Additional disk params.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
 
 @pulumi.input_type
@@ -11341,7 +11383,7 @@ class SchedulingArgs:
                  preemptible: Optional[pulumi.Input[bool]] = None,
                  provisioning_model: Optional[pulumi.Input['SchedulingProvisioningModel']] = None):
         """
-        Sets the scheduling options for an Instance. NextID: 21
+        Sets the scheduling options for an Instance.
         :param pulumi.Input[bool] automatic_restart: Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
         :param pulumi.Input[int] host_error_timeout_seconds: Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param pulumi.Input['SchedulingInstanceTerminationAction'] instance_termination_action: Specifies the termination action for the instance.
@@ -11643,14 +11685,55 @@ class SecurityPolicyAdaptiveProtectionConfigArgs:
 
 
 @pulumi.input_type
+class SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs:
+    def __init__(__self__, *,
+                 content_types: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] content_types: A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+        """
+        if content_types is not None:
+            pulumi.set(__self__, "content_types", content_types)
+
+    @property
+    @pulumi.getter(name="contentTypes")
+    def content_types(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+        """
+        return pulumi.get(self, "content_types")
+
+    @content_types.setter
+    def content_types(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "content_types", value)
+
+
+@pulumi.input_type
 class SecurityPolicyAdvancedOptionsConfigArgs:
     def __init__(__self__, *,
+                 json_custom_config: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs']] = None,
                  json_parsing: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonParsing']] = None,
                  log_level: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigLogLevel']] = None):
+        """
+        :param pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs'] json_custom_config: Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+        """
+        if json_custom_config is not None:
+            pulumi.set(__self__, "json_custom_config", json_custom_config)
         if json_parsing is not None:
             pulumi.set(__self__, "json_parsing", json_parsing)
         if log_level is not None:
             pulumi.set(__self__, "log_level", log_level)
+
+    @property
+    @pulumi.getter(name="jsonCustomConfig")
+    def json_custom_config(self) -> Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs']]:
+        """
+        Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+        """
+        return pulumi.get(self, "json_custom_config")
+
+    @json_custom_config.setter
+    def json_custom_config(self, value: Optional[pulumi.Input['SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs']]):
+        pulumi.set(self, "json_custom_config", value)
 
     @property
     @pulumi.getter(name="jsonParsing")

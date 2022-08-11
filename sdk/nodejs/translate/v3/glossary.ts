@@ -36,6 +36,10 @@ export class Glossary extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. The display name of the glossary.
+     */
+    public readonly displayName!: pulumi.Output<string>;
+    /**
      * When the glossary creation was finished.
      */
     public /*out*/ readonly endTime!: pulumi.Output<string>;
@@ -80,6 +84,7 @@ export class Glossary extends pulumi.CustomResource {
             if ((!args || args.inputConfig === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'inputConfig'");
             }
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["inputConfig"] = args ? args.inputConfig : undefined;
             resourceInputs["languageCodesSet"] = args ? args.languageCodesSet : undefined;
             resourceInputs["languagePair"] = args ? args.languagePair : undefined;
@@ -90,6 +95,7 @@ export class Glossary extends pulumi.CustomResource {
             resourceInputs["entryCount"] = undefined /*out*/;
             resourceInputs["submitTime"] = undefined /*out*/;
         } else {
+            resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["endTime"] = undefined /*out*/;
             resourceInputs["entryCount"] = undefined /*out*/;
             resourceInputs["inputConfig"] = undefined /*out*/;
@@ -111,6 +117,10 @@ export class Glossary extends pulumi.CustomResource {
  * The set of arguments for constructing a Glossary resource.
  */
 export interface GlossaryArgs {
+    /**
+     * Optional. The display name of the glossary.
+     */
+    displayName?: pulumi.Input<string>;
     /**
      * Provides examples to build the glossary from. Total glossary must not exceed 10M Unicode codepoints.
      */

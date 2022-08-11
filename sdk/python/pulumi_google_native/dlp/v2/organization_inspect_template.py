@@ -129,7 +129,7 @@ class OrganizationInspectTemplate(pulumi.CustomResource):
                  template_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -147,7 +147,7 @@ class OrganizationInspectTemplate(pulumi.CustomResource):
                  args: OrganizationInspectTemplateArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates an InspectTemplate for re-using frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
+        Creates an InspectTemplate for reusing frequently used configuration for inspecting content, images, and storage. See https://cloud.google.com/dlp/docs/creating-templates to learn more.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.

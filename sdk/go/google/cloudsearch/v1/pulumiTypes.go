@@ -577,12 +577,6 @@ func (o DateResponseOutput) Year() pulumi.IntOutput {
 	return o.ApplyT(func(v DateResponse) int { return v.Year }).(pulumi.IntOutput)
 }
 
-// Shared request debug options for all cloudsearch RPC methods.
-type DebugOptions struct {
-	// If you are asked by Google to help with debugging, set this field. Otherwise, ignore this field.
-	EnableDebugging *bool `pulumi:"enableDebugging"`
-}
-
 // Specifies operators to return facet results for. There will be one FacetResult for every source_name/object_type/operator_name combination.
 type FacetOptions struct {
 	// Maximum number of facet buckets that should be returned for this facet. Defaults to 10. Maximum value is 100.

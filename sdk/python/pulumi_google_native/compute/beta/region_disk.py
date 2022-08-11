@@ -31,6 +31,7 @@ class RegionDiskArgs:
                  multi_writer: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
+                 params: Optional[pulumi.Input['DiskParamsArgs']] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
@@ -62,6 +63,7 @@ class RegionDiskArgs:
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] options: Internal use only.
+        :param pulumi.Input['DiskParamsArgs'] params: Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
         :param pulumi.Input[str] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
         :param pulumi.Input[str] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
@@ -108,6 +110,8 @@ class RegionDiskArgs:
             pulumi.set(__self__, "name", name)
         if options is not None:
             pulumi.set(__self__, "options", options)
+        if params is not None:
+            pulumi.set(__self__, "params", params)
         if physical_block_size_bytes is not None:
             pulumi.set(__self__, "physical_block_size_bytes", physical_block_size_bytes)
         if project is not None:
@@ -308,6 +312,18 @@ class RegionDiskArgs:
     @options.setter
     def options(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "options", value)
+
+    @property
+    @pulumi.getter
+    def params(self) -> Optional[pulumi.Input['DiskParamsArgs']]:
+        """
+        Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        """
+        return pulumi.get(self, "params")
+
+    @params.setter
+    def params(self, value: Optional[pulumi.Input['DiskParamsArgs']]):
+        pulumi.set(self, "params", value)
 
     @property
     @pulumi.getter(name="physicalBlockSizeBytes")
@@ -517,6 +533,7 @@ class RegionDisk(pulumi.CustomResource):
                  multi_writer: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
+                 params: Optional[pulumi.Input[pulumi.InputType['DiskParamsArgs']]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
@@ -553,6 +570,7 @@ class RegionDisk(pulumi.CustomResource):
         :param pulumi.Input[bool] multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] options: Internal use only.
+        :param pulumi.Input[pulumi.InputType['DiskParamsArgs']] params: Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
         :param pulumi.Input[str] physical_block_size_bytes: Physical block size of the persistent disk, in bytes. If not present in a request, a default value is used. The currently supported size is 4096, other sizes may be added in the future. If an unsupported value is requested, the error message will list the supported values for the caller's project.
         :param pulumi.Input[str] provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_zones: URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
@@ -606,6 +624,7 @@ class RegionDisk(pulumi.CustomResource):
                  multi_writer: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  options: Optional[pulumi.Input[str]] = None,
+                 params: Optional[pulumi.Input[pulumi.InputType['DiskParamsArgs']]] = None,
                  physical_block_size_bytes: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[str]] = None,
@@ -648,6 +667,7 @@ class RegionDisk(pulumi.CustomResource):
             __props__.__dict__["multi_writer"] = multi_writer
             __props__.__dict__["name"] = name
             __props__.__dict__["options"] = options
+            __props__.__dict__["params"] = params
             __props__.__dict__["physical_block_size_bytes"] = physical_block_size_bytes
             __props__.__dict__["project"] = project
             __props__.__dict__["provisioned_iops"] = provisioned_iops
@@ -727,6 +747,7 @@ class RegionDisk(pulumi.CustomResource):
         __props__.__dict__["multi_writer"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["options"] = None
+        __props__.__dict__["params"] = None
         __props__.__dict__["physical_block_size_bytes"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["provisioned_iops"] = None
@@ -905,6 +926,14 @@ class RegionDisk(pulumi.CustomResource):
         Internal use only.
         """
         return pulumi.get(self, "options")
+
+    @property
+    @pulumi.getter
+    def params(self) -> pulumi.Output['outputs.DiskParamsResponse']:
+        """
+        Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+        """
+        return pulumi.get(self, "params")
 
     @property
     @pulumi.getter(name="physicalBlockSizeBytes")

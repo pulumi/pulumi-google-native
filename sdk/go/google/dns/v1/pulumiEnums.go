@@ -1347,6 +1347,335 @@ func (in *policyAlternativeNameServerConfigTargetNameServerForwardingPathPtr) To
 	return pulumi.ToOutputWithContext(ctx, in).(PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput)
 }
 
+type RRSetRoutingPolicyLoadBalancerTargetIpProtocol string
+
+const (
+	RRSetRoutingPolicyLoadBalancerTargetIpProtocolUndefined = RRSetRoutingPolicyLoadBalancerTargetIpProtocol("undefined")
+	RRSetRoutingPolicyLoadBalancerTargetIpProtocolTcp       = RRSetRoutingPolicyLoadBalancerTargetIpProtocol("tcp")
+	RRSetRoutingPolicyLoadBalancerTargetIpProtocolUdp       = RRSetRoutingPolicyLoadBalancerTargetIpProtocol("udp")
+)
+
+func (RRSetRoutingPolicyLoadBalancerTargetIpProtocol) ElementType() reflect.Type {
+	return reflect.TypeOf((*RRSetRoutingPolicyLoadBalancerTargetIpProtocol)(nil)).Elem()
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetIpProtocol) ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput() RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput {
+	return pulumi.ToOutput(e).(RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput)
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetIpProtocol) ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput)
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetIpProtocol) ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput() RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput {
+	return e.ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutputWithContext(context.Background())
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetIpProtocol) ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput {
+	return RRSetRoutingPolicyLoadBalancerTargetIpProtocol(e).ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolOutputWithContext(ctx).ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutputWithContext(ctx)
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetIpProtocol) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetIpProtocol) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetIpProtocol) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetIpProtocol) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput struct{ *pulumi.OutputState }
+
+func (RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RRSetRoutingPolicyLoadBalancerTargetIpProtocol)(nil)).Elem()
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput) ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput() RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput) ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput) ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput() RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput {
+	return o.ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutputWithContext(context.Background())
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput) ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RRSetRoutingPolicyLoadBalancerTargetIpProtocol) *RRSetRoutingPolicyLoadBalancerTargetIpProtocol {
+		return &v
+	}).(RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput)
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RRSetRoutingPolicyLoadBalancerTargetIpProtocol) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RRSetRoutingPolicyLoadBalancerTargetIpProtocol) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput struct{ *pulumi.OutputState }
+
+func (RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RRSetRoutingPolicyLoadBalancerTargetIpProtocol)(nil)).Elem()
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput) ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput() RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput) ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput) Elem() RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput {
+	return o.ApplyT(func(v *RRSetRoutingPolicyLoadBalancerTargetIpProtocol) RRSetRoutingPolicyLoadBalancerTargetIpProtocol {
+		if v != nil {
+			return *v
+		}
+		var ret RRSetRoutingPolicyLoadBalancerTargetIpProtocol
+		return ret
+	}).(RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput)
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RRSetRoutingPolicyLoadBalancerTargetIpProtocol) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RRSetRoutingPolicyLoadBalancerTargetIpProtocolInput is an input type that accepts RRSetRoutingPolicyLoadBalancerTargetIpProtocolArgs and RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput values.
+// You can construct a concrete instance of `RRSetRoutingPolicyLoadBalancerTargetIpProtocolInput` via:
+//
+//          RRSetRoutingPolicyLoadBalancerTargetIpProtocolArgs{...}
+type RRSetRoutingPolicyLoadBalancerTargetIpProtocolInput interface {
+	pulumi.Input
+
+	ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput() RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput
+	ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolOutputWithContext(context.Context) RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput
+}
+
+var rrsetRoutingPolicyLoadBalancerTargetIpProtocolPtrType = reflect.TypeOf((**RRSetRoutingPolicyLoadBalancerTargetIpProtocol)(nil)).Elem()
+
+type RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrInput interface {
+	pulumi.Input
+
+	ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput() RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput
+	ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutputWithContext(context.Context) RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput
+}
+
+type rrsetRoutingPolicyLoadBalancerTargetIpProtocolPtr string
+
+func RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtr(v string) RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrInput {
+	return (*rrsetRoutingPolicyLoadBalancerTargetIpProtocolPtr)(&v)
+}
+
+func (*rrsetRoutingPolicyLoadBalancerTargetIpProtocolPtr) ElementType() reflect.Type {
+	return rrsetRoutingPolicyLoadBalancerTargetIpProtocolPtrType
+}
+
+func (in *rrsetRoutingPolicyLoadBalancerTargetIpProtocolPtr) ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput() RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput {
+	return pulumi.ToOutput(in).(RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput)
+}
+
+func (in *rrsetRoutingPolicyLoadBalancerTargetIpProtocolPtr) ToRRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput)
+}
+
+type RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType string
+
+const (
+	RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeNone          = RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType("none")
+	RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeRegionalL4ilb = RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType("regionalL4ilb")
+)
+
+func (RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) ElementType() reflect.Type {
+	return reflect.TypeOf((*RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType)(nil)).Elem()
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput() RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput {
+	return pulumi.ToOutput(e).(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput)
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput)
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput() RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput {
+	return e.ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutputWithContext(context.Background())
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput {
+	return RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType(e).ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutputWithContext(ctx).ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutputWithContext(ctx)
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput struct{ *pulumi.OutputState }
+
+func (RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType)(nil)).Elem()
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput) ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput() RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput) ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput) ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput() RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput {
+	return o.ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutputWithContext(context.Background())
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput) ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) *RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType {
+		return &v
+	}).(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput)
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput struct{ *pulumi.OutputState }
+
+func (RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType)(nil)).Elem()
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput) ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput() RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput) ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput {
+	return o
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput) Elem() RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput {
+	return o.ApplyT(func(v *RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType {
+		if v != nil {
+			return *v
+		}
+		var ret RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType
+		return ret
+	}).(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput)
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeInput is an input type that accepts RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeArgs and RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput values.
+// You can construct a concrete instance of `RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeInput` via:
+//
+//          RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeArgs{...}
+type RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeInput interface {
+	pulumi.Input
+
+	ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput() RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput
+	ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutputWithContext(context.Context) RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput
+}
+
+var rrsetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrType = reflect.TypeOf((**RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType)(nil)).Elem()
+
+type RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrInput interface {
+	pulumi.Input
+
+	ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput() RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput
+	ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutputWithContext(context.Context) RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput
+}
+
+type rrsetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtr string
+
+func RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtr(v string) RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrInput {
+	return (*rrsetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtr)(&v)
+}
+
+func (*rrsetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtr) ElementType() reflect.Type {
+	return rrsetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrType
+}
+
+func (in *rrsetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtr) ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput() RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput {
+	return pulumi.ToOutput(in).(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput)
+}
+
+func (in *rrsetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtr) ToRRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutputWithContext(ctx context.Context) RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput)
+}
+
 // Answer this query with a behavior rather than DNS data.
 type ResponsePolicyRuleBehavior string
 
@@ -1373,6 +1702,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneVisibilityPtrInput)(nil)).Elem(), ManagedZoneVisibility("public"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAlternativeNameServerConfigTargetNameServerForwardingPathInput)(nil)).Elem(), PolicyAlternativeNameServerConfigTargetNameServerForwardingPath("default"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrInput)(nil)).Elem(), PolicyAlternativeNameServerConfigTargetNameServerForwardingPath("default"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyLoadBalancerTargetIpProtocolInput)(nil)).Elem(), RRSetRoutingPolicyLoadBalancerTargetIpProtocol("undefined"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrInput)(nil)).Elem(), RRSetRoutingPolicyLoadBalancerTargetIpProtocol("undefined"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeInput)(nil)).Elem(), RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType("none"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrInput)(nil)).Elem(), RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType("none"))
 	pulumi.RegisterOutputType(DnsKeySpecAlgorithmOutput{})
 	pulumi.RegisterOutputType(DnsKeySpecAlgorithmPtrOutput{})
 	pulumi.RegisterOutputType(DnsKeySpecKeyTypeOutput{})
@@ -1389,4 +1722,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagedZoneVisibilityPtrOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerForwardingPathOutput{})
 	pulumi.RegisterOutputType(PolicyAlternativeNameServerConfigTargetNameServerForwardingPathPtrOutput{})
+	pulumi.RegisterOutputType(RRSetRoutingPolicyLoadBalancerTargetIpProtocolOutput{})
+	pulumi.RegisterOutputType(RRSetRoutingPolicyLoadBalancerTargetIpProtocolPtrOutput{})
+	pulumi.RegisterOutputType(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypeOutput{})
+	pulumi.RegisterOutputType(RRSetRoutingPolicyLoadBalancerTargetLoadBalancerTypePtrOutput{})
 }

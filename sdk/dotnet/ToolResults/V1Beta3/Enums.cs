@@ -626,6 +626,10 @@ namespace Pulumi.GoogleNative.ToolResults.V1Beta3
         /// Problems detected while collecting logcat
         /// </summary>
         public static TestIssueType LogcatCollectionError { get; } = new TestIssueType("logcatCollectionError");
+        /// <summary>
+        /// Robo detected a splash screen provided by app (vs. Android OS splash screen).
+        /// </summary>
+        public static TestIssueType DetectedAppSplashScreen { get; } = new TestIssueType("detectedAppSplashScreen");
 
         public static bool operator ==(TestIssueType left, TestIssueType right) => left.Equals(right);
         public static bool operator !=(TestIssueType left, TestIssueType right) => !left.Equals(right);

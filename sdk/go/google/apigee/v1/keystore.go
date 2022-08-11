@@ -74,7 +74,7 @@ func (KeystoreState) ElementType() reflect.Type {
 
 type keystoreArgs struct {
 	EnvironmentId string `pulumi:"environmentId"`
-	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:].-]{1,255}`.
 	Name           *string `pulumi:"name"`
 	OrganizationId string  `pulumi:"organizationId"`
 }
@@ -82,7 +82,7 @@ type keystoreArgs struct {
 // The set of arguments for constructing a Keystore resource.
 type KeystoreArgs struct {
 	EnvironmentId pulumi.StringInput
-	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:]-.]{1,255}`.
+	// Resource ID for this keystore. Values must match the regular expression `[\w[:space:].-]{1,255}`.
 	Name           pulumi.StringPtrInput
 	OrganizationId pulumi.StringInput
 }

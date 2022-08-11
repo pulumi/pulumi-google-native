@@ -2437,6 +2437,44 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Planning state before being submitted for evaluation
+    /// </summary>
+    [EnumType]
+    public readonly struct FutureReservationPlanningStatus : IEquatable<FutureReservationPlanningStatus>
+    {
+        private readonly string _value;
+
+        private FutureReservationPlanningStatus(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Future Reservation is being drafted.
+        /// </summary>
+        public static FutureReservationPlanningStatus Draft { get; } = new FutureReservationPlanningStatus("DRAFT");
+        public static FutureReservationPlanningStatus PlanningStatusUnspecified { get; } = new FutureReservationPlanningStatus("PLANNING_STATUS_UNSPECIFIED");
+        /// <summary>
+        /// Future Reservation has been submitted for evaluation by GCP.
+        /// </summary>
+        public static FutureReservationPlanningStatus Submitted { get; } = new FutureReservationPlanningStatus("SUBMITTED");
+
+        public static bool operator ==(FutureReservationPlanningStatus left, FutureReservationPlanningStatus right) => left.Equals(right);
+        public static bool operator !=(FutureReservationPlanningStatus left, FutureReservationPlanningStatus right) => !left.Equals(right);
+
+        public static explicit operator string(FutureReservationPlanningStatus value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is FutureReservationPlanningStatus other && Equals(other);
+        public bool Equals(FutureReservationPlanningStatus other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies how port is selected for health checking, can be one of following values: USE_FIXED_PORT: The port number in port is used for health checking. USE_NAMED_PORT: The portName is used for health checking. USE_SERVING_PORT: For NetworkEndpointGroup, the port specified for each network endpoint is used for health checking. For other backends, the port or named port specified in the Backend Service is used for health checking. If not specified, gRPC health check follows behavior specified in port and portName fields.
     /// </summary>
     [EnumType]

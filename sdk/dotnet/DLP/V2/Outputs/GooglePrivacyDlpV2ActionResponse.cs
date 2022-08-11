@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
     public sealed class GooglePrivacyDlpV2ActionResponse
     {
         /// <summary>
+        /// Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+        /// </summary>
+        public readonly Outputs.GooglePrivacyDlpV2DeidentifyResponse Deidentify;
+        /// <summary>
         /// Enable email notification for project owners and editors on job's completion/failure.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2JobNotificationEmailsResponse JobNotificationEmails;
@@ -43,6 +47,8 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 
         [OutputConstructor]
         private GooglePrivacyDlpV2ActionResponse(
+            Outputs.GooglePrivacyDlpV2DeidentifyResponse deidentify,
+
             Outputs.GooglePrivacyDlpV2JobNotificationEmailsResponse jobNotificationEmails,
 
             Outputs.GooglePrivacyDlpV2PublishToPubSubResponse pubSub,
@@ -55,6 +61,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 
             Outputs.GooglePrivacyDlpV2SaveFindingsResponse saveFindings)
         {
+            Deidentify = deidentify;
             JobNotificationEmails = jobNotificationEmails;
             PubSub = pubSub;
             PublishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;

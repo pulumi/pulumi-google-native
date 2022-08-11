@@ -53,6 +53,10 @@ export interface GetReservationResult {
      */
     readonly resourcePolicies: {[key: string]: string};
     /**
+     * Status information for Reservation resource.
+     */
+    readonly resourceStatus: outputs.compute.alpha.AllocationResourceStatusResponse;
+    /**
      * Reserved for future use.
      */
     readonly satisfiesPzs: boolean;

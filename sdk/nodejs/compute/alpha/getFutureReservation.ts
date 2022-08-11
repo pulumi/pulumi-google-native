@@ -49,6 +49,10 @@ export interface GetFutureReservationResult {
      */
     readonly namePrefix: string;
     /**
+     * Planning state before being submitted for evaluation
+     */
+    readonly planningStatus: string;
+    /**
      * Server-defined fully-qualified URL for this resource.
      */
     readonly selfLink: string;

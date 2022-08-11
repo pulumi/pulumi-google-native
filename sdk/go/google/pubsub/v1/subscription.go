@@ -17,7 +17,7 @@ type Subscription struct {
 
 	// The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be *outstanding*. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
 	AckDeadlineSeconds pulumi.IntOutput `pulumi:"ackDeadlineSeconds"`
-	// If delivery to BigQuery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
+	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
 	BigqueryConfig BigQueryConfigResponseOutput `pulumi:"bigqueryConfig"`
 	// A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
 	DeadLetterPolicy DeadLetterPolicyResponseOutput `pulumi:"deadLetterPolicy"`
@@ -38,7 +38,7 @@ type Subscription struct {
 	// The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// If push delivery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
+	// If push delivery is used with this subscription, this field is used to configure it.
 	PushConfig PushConfigResponseOutput `pulumi:"pushConfig"`
 	// Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
 	RetainAckedMessages pulumi.BoolOutput `pulumi:"retainAckedMessages"`
@@ -105,7 +105,7 @@ func (SubscriptionState) ElementType() reflect.Type {
 type subscriptionArgs struct {
 	// The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be *outstanding*. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
 	AckDeadlineSeconds *int `pulumi:"ackDeadlineSeconds"`
-	// If delivery to BigQuery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
+	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
 	BigqueryConfig *BigQueryConfig `pulumi:"bigqueryConfig"`
 	// A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
 	DeadLetterPolicy *DeadLetterPolicy `pulumi:"deadLetterPolicy"`
@@ -126,7 +126,7 @@ type subscriptionArgs struct {
 	// The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// If push delivery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
+	// If push delivery is used with this subscription, this field is used to configure it.
 	PushConfig *PushConfig `pulumi:"pushConfig"`
 	// Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
 	RetainAckedMessages *bool `pulumi:"retainAckedMessages"`
@@ -141,7 +141,7 @@ type subscriptionArgs struct {
 type SubscriptionArgs struct {
 	// The approximate amount of time (on a best-effort basis) Pub/Sub waits for the subscriber to acknowledge receipt before resending the message. In the interval after the message is delivered and before it is acknowledged, it is considered to be *outstanding*. During that time period, the message will not be redelivered (on a best-effort basis). For pull subscriptions, this value is used as the initial value for the ack deadline. To override this value for a given message, call `ModifyAckDeadline` with the corresponding `ack_id` if using non-streaming pull or send the `ack_id` in a `StreamingModifyAckDeadlineRequest` if using streaming pull. The minimum custom deadline you can specify is 10 seconds. The maximum custom deadline you can specify is 600 seconds (10 minutes). If this parameter is 0, a default value of 10 seconds is used. For push delivery, this value is also used to set the request timeout for the call to the push endpoint. If the subscriber never acknowledges the message, the Pub/Sub system will eventually redeliver the message.
 	AckDeadlineSeconds pulumi.IntPtrInput
-	// If delivery to BigQuery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
+	// If delivery to BigQuery is used with this subscription, this field is used to configure it.
 	BigqueryConfig BigQueryConfigPtrInput
 	// A policy that specifies the conditions for dead lettering messages in this subscription. If dead_letter_policy is not set, dead lettering is disabled. The Cloud Pub/Sub service account associated with this subscriptions's parent project (i.e., service-{project_number}@gcp-sa-pubsub.iam.gserviceaccount.com) must have permission to Acknowledge() messages on this subscription.
 	DeadLetterPolicy DeadLetterPolicyPtrInput
@@ -162,7 +162,7 @@ type SubscriptionArgs struct {
 	// The name of the subscription. It must have the format `"projects/{project}/subscriptions/{subscription}"`. `{subscription}` must start with a letter, and contain only letters (`[A-Za-z]`), numbers (`[0-9]`), dashes (`-`), underscores (`_`), periods (`.`), tildes (`~`), plus (`+`) or percent signs (`%`). It must be between 3 and 255 characters in length, and it must not start with `"goog"`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// If push delivery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
+	// If push delivery is used with this subscription, this field is used to configure it.
 	PushConfig PushConfigPtrInput
 	// Indicates whether to retain acknowledged messages. If true, then messages are not expunged from the subscription's backlog, even if they are acknowledged, until they fall out of the `message_retention_duration` window. This must be true if you would like to [`Seek` to a timestamp] (https://cloud.google.com/pubsub/docs/replay-overview#seek_to_a_time) in the past to replay previously-acknowledged messages.
 	RetainAckedMessages pulumi.BoolPtrInput
@@ -215,7 +215,7 @@ func (o SubscriptionOutput) AckDeadlineSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.IntOutput { return v.AckDeadlineSeconds }).(pulumi.IntOutput)
 }
 
-// If delivery to BigQuery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
+// If delivery to BigQuery is used with this subscription, this field is used to configure it.
 func (o SubscriptionOutput) BigqueryConfig() BigQueryConfigResponseOutput {
 	return o.ApplyT(func(v *Subscription) BigQueryConfigResponseOutput { return v.BigqueryConfig }).(BigQueryConfigResponseOutput)
 }
@@ -269,7 +269,7 @@ func (o SubscriptionOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subscription) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// If push delivery is used with this subscription, this field is used to configure it. Either `pushConfig` or `bigQueryConfig` can be set, but not both. If both are empty, then the subscriber will pull and ack messages using API methods.
+// If push delivery is used with this subscription, this field is used to configure it.
 func (o SubscriptionOutput) PushConfig() PushConfigResponseOutput {
 	return o.ApplyT(func(v *Subscription) PushConfigResponseOutput { return v.PushConfig }).(PushConfigResponseOutput)
 }

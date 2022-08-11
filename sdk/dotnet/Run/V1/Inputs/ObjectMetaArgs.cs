@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         }
 
         /// <summary>
-        /// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names +optional
+        /// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a namespaces.services.create request, name must contain fewer than 50 characters. +optional
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

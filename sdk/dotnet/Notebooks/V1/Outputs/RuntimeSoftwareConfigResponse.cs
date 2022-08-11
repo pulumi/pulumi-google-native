@@ -21,6 +21,10 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         /// </summary>
         public readonly string CustomGpuDriverPath;
         /// <summary>
+        /// Bool indicating whether JupyterLab terminal will be available or not. Default: False
+        /// </summary>
+        public readonly bool DisableTerminal;
+        /// <summary>
         /// Verifies core internal services are running. Default: True
         /// </summary>
         public readonly bool EnableHealthMonitoring;
@@ -61,6 +65,8 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
         private RuntimeSoftwareConfigResponse(
             string customGpuDriverPath,
 
+            bool disableTerminal,
+
             bool enableHealthMonitoring,
 
             bool idleShutdown,
@@ -80,6 +86,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1.Outputs
             bool upgradeable)
         {
             CustomGpuDriverPath = customGpuDriverPath;
+            DisableTerminal = disableTerminal;
             EnableHealthMonitoring = enableHealthMonitoring;
             IdleShutdown = idleShutdown;
             IdleShutdownTimeout = idleShutdownTimeout;

@@ -10,6 +10,172 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource.
+type AnalysisCompleted struct {
+	// type of analysis that were completed on a resource.
+	AnalysisType []string `pulumi:"analysisType"`
+}
+
+// AnalysisCompletedInput is an input type that accepts AnalysisCompletedArgs and AnalysisCompletedOutput values.
+// You can construct a concrete instance of `AnalysisCompletedInput` via:
+//
+//          AnalysisCompletedArgs{...}
+type AnalysisCompletedInput interface {
+	pulumi.Input
+
+	ToAnalysisCompletedOutput() AnalysisCompletedOutput
+	ToAnalysisCompletedOutputWithContext(context.Context) AnalysisCompletedOutput
+}
+
+// Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource.
+type AnalysisCompletedArgs struct {
+	// type of analysis that were completed on a resource.
+	AnalysisType pulumi.StringArrayInput `pulumi:"analysisType"`
+}
+
+func (AnalysisCompletedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalysisCompleted)(nil)).Elem()
+}
+
+func (i AnalysisCompletedArgs) ToAnalysisCompletedOutput() AnalysisCompletedOutput {
+	return i.ToAnalysisCompletedOutputWithContext(context.Background())
+}
+
+func (i AnalysisCompletedArgs) ToAnalysisCompletedOutputWithContext(ctx context.Context) AnalysisCompletedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalysisCompletedOutput)
+}
+
+func (i AnalysisCompletedArgs) ToAnalysisCompletedPtrOutput() AnalysisCompletedPtrOutput {
+	return i.ToAnalysisCompletedPtrOutputWithContext(context.Background())
+}
+
+func (i AnalysisCompletedArgs) ToAnalysisCompletedPtrOutputWithContext(ctx context.Context) AnalysisCompletedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalysisCompletedOutput).ToAnalysisCompletedPtrOutputWithContext(ctx)
+}
+
+// AnalysisCompletedPtrInput is an input type that accepts AnalysisCompletedArgs, AnalysisCompletedPtr and AnalysisCompletedPtrOutput values.
+// You can construct a concrete instance of `AnalysisCompletedPtrInput` via:
+//
+//          AnalysisCompletedArgs{...}
+//
+//  or:
+//
+//          nil
+type AnalysisCompletedPtrInput interface {
+	pulumi.Input
+
+	ToAnalysisCompletedPtrOutput() AnalysisCompletedPtrOutput
+	ToAnalysisCompletedPtrOutputWithContext(context.Context) AnalysisCompletedPtrOutput
+}
+
+type analysisCompletedPtrType AnalysisCompletedArgs
+
+func AnalysisCompletedPtr(v *AnalysisCompletedArgs) AnalysisCompletedPtrInput {
+	return (*analysisCompletedPtrType)(v)
+}
+
+func (*analysisCompletedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalysisCompleted)(nil)).Elem()
+}
+
+func (i *analysisCompletedPtrType) ToAnalysisCompletedPtrOutput() AnalysisCompletedPtrOutput {
+	return i.ToAnalysisCompletedPtrOutputWithContext(context.Background())
+}
+
+func (i *analysisCompletedPtrType) ToAnalysisCompletedPtrOutputWithContext(ctx context.Context) AnalysisCompletedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AnalysisCompletedPtrOutput)
+}
+
+// Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource.
+type AnalysisCompletedOutput struct{ *pulumi.OutputState }
+
+func (AnalysisCompletedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalysisCompleted)(nil)).Elem()
+}
+
+func (o AnalysisCompletedOutput) ToAnalysisCompletedOutput() AnalysisCompletedOutput {
+	return o
+}
+
+func (o AnalysisCompletedOutput) ToAnalysisCompletedOutputWithContext(ctx context.Context) AnalysisCompletedOutput {
+	return o
+}
+
+func (o AnalysisCompletedOutput) ToAnalysisCompletedPtrOutput() AnalysisCompletedPtrOutput {
+	return o.ToAnalysisCompletedPtrOutputWithContext(context.Background())
+}
+
+func (o AnalysisCompletedOutput) ToAnalysisCompletedPtrOutputWithContext(ctx context.Context) AnalysisCompletedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AnalysisCompleted) *AnalysisCompleted {
+		return &v
+	}).(AnalysisCompletedPtrOutput)
+}
+
+// type of analysis that were completed on a resource.
+func (o AnalysisCompletedOutput) AnalysisType() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AnalysisCompleted) []string { return v.AnalysisType }).(pulumi.StringArrayOutput)
+}
+
+type AnalysisCompletedPtrOutput struct{ *pulumi.OutputState }
+
+func (AnalysisCompletedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AnalysisCompleted)(nil)).Elem()
+}
+
+func (o AnalysisCompletedPtrOutput) ToAnalysisCompletedPtrOutput() AnalysisCompletedPtrOutput {
+	return o
+}
+
+func (o AnalysisCompletedPtrOutput) ToAnalysisCompletedPtrOutputWithContext(ctx context.Context) AnalysisCompletedPtrOutput {
+	return o
+}
+
+func (o AnalysisCompletedPtrOutput) Elem() AnalysisCompletedOutput {
+	return o.ApplyT(func(v *AnalysisCompleted) AnalysisCompleted {
+		if v != nil {
+			return *v
+		}
+		var ret AnalysisCompleted
+		return ret
+	}).(AnalysisCompletedOutput)
+}
+
+// type of analysis that were completed on a resource.
+func (o AnalysisCompletedPtrOutput) AnalysisType() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AnalysisCompleted) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AnalysisType
+	}).(pulumi.StringArrayOutput)
+}
+
+// Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource.
+type AnalysisCompletedResponse struct {
+	// type of analysis that were completed on a resource.
+	AnalysisType []string `pulumi:"analysisType"`
+}
+
+// Indicates which analysis completed successfully. Multiple types of analysis can be performed on a single resource.
+type AnalysisCompletedResponseOutput struct{ *pulumi.OutputState }
+
+func (AnalysisCompletedResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AnalysisCompletedResponse)(nil)).Elem()
+}
+
+func (o AnalysisCompletedResponseOutput) ToAnalysisCompletedResponseOutput() AnalysisCompletedResponseOutput {
+	return o
+}
+
+func (o AnalysisCompletedResponseOutput) ToAnalysisCompletedResponseOutputWithContext(ctx context.Context) AnalysisCompletedResponseOutput {
+	return o
+}
+
+// type of analysis that were completed on a resource.
+func (o AnalysisCompletedResponseOutput) AnalysisType() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AnalysisCompletedResponse) []string { return v.AnalysisType }).(pulumi.StringArrayOutput)
+}
+
 // Artifact describes a build product.
 type Artifact struct {
 	// Hash or checksum value of a binary, or Docker Registry 2.0 digest of a container.
@@ -889,7 +1055,7 @@ func (o BasisResponseOutput) ResourceUrl() pulumi.StringOutput {
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -910,7 +1076,7 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -973,7 +1139,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -1007,7 +1173,7 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -1033,7 +1199,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -5800,6 +5966,10 @@ func (o DigestResponseArrayOutput) Index(i pulumi.IntInput) DigestResponseOutput
 
 // Provides information about the scan status of a discovered resource.
 type Discovered struct {
+	// The list of analysis that were completed for a resource.
+	AnalysisCompleted *AnalysisCompleted `pulumi:"analysisCompleted"`
+	// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+	AnalysisError []Status `pulumi:"analysisError"`
 	// The status of discovery for the resource.
 	AnalysisStatus *DiscoveredAnalysisStatus `pulumi:"analysisStatus"`
 	// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
@@ -5827,6 +5997,10 @@ type DiscoveredInput interface {
 
 // Provides information about the scan status of a discovered resource.
 type DiscoveredArgs struct {
+	// The list of analysis that were completed for a resource.
+	AnalysisCompleted AnalysisCompletedPtrInput `pulumi:"analysisCompleted"`
+	// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+	AnalysisError StatusArrayInput `pulumi:"analysisError"`
 	// The status of discovery for the resource.
 	AnalysisStatus DiscoveredAnalysisStatusPtrInput `pulumi:"analysisStatus"`
 	// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
@@ -5919,6 +6093,16 @@ func (o DiscoveredOutput) ToDiscoveredPtrOutputWithContext(ctx context.Context) 
 	}).(DiscoveredPtrOutput)
 }
 
+// The list of analysis that were completed for a resource.
+func (o DiscoveredOutput) AnalysisCompleted() AnalysisCompletedPtrOutput {
+	return o.ApplyT(func(v Discovered) *AnalysisCompleted { return v.AnalysisCompleted }).(AnalysisCompletedPtrOutput)
+}
+
+// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+func (o DiscoveredOutput) AnalysisError() StatusArrayOutput {
+	return o.ApplyT(func(v Discovered) []Status { return v.AnalysisError }).(StatusArrayOutput)
+}
+
 // The status of discovery for the resource.
 func (o DiscoveredOutput) AnalysisStatus() DiscoveredAnalysisStatusPtrOutput {
 	return o.ApplyT(func(v Discovered) *DiscoveredAnalysisStatus { return v.AnalysisStatus }).(DiscoveredAnalysisStatusPtrOutput)
@@ -5971,6 +6155,26 @@ func (o DiscoveredPtrOutput) Elem() DiscoveredOutput {
 		var ret Discovered
 		return ret
 	}).(DiscoveredOutput)
+}
+
+// The list of analysis that were completed for a resource.
+func (o DiscoveredPtrOutput) AnalysisCompleted() AnalysisCompletedPtrOutput {
+	return o.ApplyT(func(v *Discovered) *AnalysisCompleted {
+		if v == nil {
+			return nil
+		}
+		return v.AnalysisCompleted
+	}).(AnalysisCompletedPtrOutput)
+}
+
+// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+func (o DiscoveredPtrOutput) AnalysisError() StatusArrayOutput {
+	return o.ApplyT(func(v *Discovered) []Status {
+		if v == nil {
+			return nil
+		}
+		return v.AnalysisError
+	}).(StatusArrayOutput)
 }
 
 // The status of discovery for the resource.
@@ -6035,6 +6239,10 @@ func (o DiscoveredPtrOutput) LastScanTime() pulumi.StringPtrOutput {
 
 // Provides information about the scan status of a discovered resource.
 type DiscoveredResponse struct {
+	// The list of analysis that were completed for a resource.
+	AnalysisCompleted AnalysisCompletedResponse `pulumi:"analysisCompleted"`
+	// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+	AnalysisError []StatusResponse `pulumi:"analysisError"`
 	// The status of discovery for the resource.
 	AnalysisStatus string `pulumi:"analysisStatus"`
 	// When an error is encountered this will contain a LocalizedMessage under details to show to the user. The LocalizedMessage output only and populated by the API.
@@ -6066,6 +6274,16 @@ func (o DiscoveredResponseOutput) ToDiscoveredResponseOutput() DiscoveredRespons
 
 func (o DiscoveredResponseOutput) ToDiscoveredResponseOutputWithContext(ctx context.Context) DiscoveredResponseOutput {
 	return o
+}
+
+// The list of analysis that were completed for a resource.
+func (o DiscoveredResponseOutput) AnalysisCompleted() AnalysisCompletedResponseOutput {
+	return o.ApplyT(func(v DiscoveredResponse) AnalysisCompletedResponse { return v.AnalysisCompleted }).(AnalysisCompletedResponseOutput)
+}
+
+// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+func (o DiscoveredResponseOutput) AnalysisError() StatusResponseArrayOutput {
+	return o.ApplyT(func(v DiscoveredResponse) []StatusResponse { return v.AnalysisError }).(StatusResponseArrayOutput)
 }
 
 // The status of discovery for the resource.
@@ -18710,6 +18928,31 @@ func (i *statusPtrType) ToStatusPtrOutputWithContext(ctx context.Context) Status
 	return pulumi.ToOutputWithContext(ctx, i).(StatusPtrOutput)
 }
 
+// StatusArrayInput is an input type that accepts StatusArray and StatusArrayOutput values.
+// You can construct a concrete instance of `StatusArrayInput` via:
+//
+//          StatusArray{ StatusArgs{...} }
+type StatusArrayInput interface {
+	pulumi.Input
+
+	ToStatusArrayOutput() StatusArrayOutput
+	ToStatusArrayOutputWithContext(context.Context) StatusArrayOutput
+}
+
+type StatusArray []StatusInput
+
+func (StatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Status)(nil)).Elem()
+}
+
+func (i StatusArray) ToStatusArrayOutput() StatusArrayOutput {
+	return i.ToStatusArrayOutputWithContext(context.Background())
+}
+
+func (i StatusArray) ToStatusArrayOutputWithContext(ctx context.Context) StatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StatusArrayOutput)
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusOutput struct{ *pulumi.OutputState }
 
@@ -18804,6 +19047,26 @@ func (o StatusPtrOutput) Message() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type StatusArrayOutput struct{ *pulumi.OutputState }
+
+func (StatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Status)(nil)).Elem()
+}
+
+func (o StatusArrayOutput) ToStatusArrayOutput() StatusArrayOutput {
+	return o
+}
+
+func (o StatusArrayOutput) ToStatusArrayOutputWithContext(ctx context.Context) StatusArrayOutput {
+	return o
+}
+
+func (o StatusArrayOutput) Index(i pulumi.IntInput) StatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Status {
+		return vs[0].([]Status)[vs[1].(int)]
+	}).(StatusOutput)
+}
+
 // The `Status` type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by [gRPC](https://github.com/grpc). Each `Status` message contains three pieces of data: error code, error message, and error details. You can find out more about this error model and how to work with it in the [API Design Guide](https://cloud.google.com/apis/design/errors).
 type StatusResponse struct {
 	// The status code, which should be an enum value of google.rpc.Code.
@@ -18842,6 +19105,26 @@ func (o StatusResponseOutput) Details() pulumi.StringMapArrayOutput {
 // A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
 func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type StatusResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (StatusResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]StatusResponse)(nil)).Elem()
+}
+
+func (o StatusResponseArrayOutput) ToStatusResponseArrayOutput() StatusResponseArrayOutput {
+	return o
+}
+
+func (o StatusResponseArrayOutput) ToStatusResponseArrayOutputWithContext(ctx context.Context) StatusResponseArrayOutput {
+	return o
+}
+
+func (o StatusResponseArrayOutput) Index(i pulumi.IntInput) StatusResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StatusResponse {
+		return vs[0].([]StatusResponse)[vs[1].(int)]
+	}).(StatusResponseOutput)
 }
 
 // StorageSource describes the location of the source in an archive file in Google Cloud Storage.
@@ -21012,6 +21295,8 @@ func (o VulnerabilityTypeResponseOutput) Severity() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AnalysisCompletedInput)(nil)).Elem(), AnalysisCompletedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AnalysisCompletedPtrInput)(nil)).Elem(), AnalysisCompletedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactInput)(nil)).Elem(), ArtifactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ArtifactArrayInput)(nil)).Elem(), ArtifactArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AttestationInput)(nil)).Elem(), AttestationArgs{})
@@ -21175,6 +21460,7 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SourcePtrInput)(nil)).Elem(), SourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusInput)(nil)).Elem(), StatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StatusPtrInput)(nil)).Elem(), StatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StatusArrayInput)(nil)).Elem(), StatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourceInput)(nil)).Elem(), StorageSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StorageSourcePtrInput)(nil)).Elem(), StorageSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SubjectInput)(nil)).Elem(), SubjectArgs{})
@@ -21194,6 +21480,9 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityLocationPtrInput)(nil)).Elem(), VulnerabilityLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityTypeInput)(nil)).Elem(), VulnerabilityTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VulnerabilityTypePtrInput)(nil)).Elem(), VulnerabilityTypeArgs{})
+	pulumi.RegisterOutputType(AnalysisCompletedOutput{})
+	pulumi.RegisterOutputType(AnalysisCompletedPtrOutput{})
+	pulumi.RegisterOutputType(AnalysisCompletedResponseOutput{})
 	pulumi.RegisterOutputType(ArtifactOutput{})
 	pulumi.RegisterOutputType(ArtifactArrayOutput{})
 	pulumi.RegisterOutputType(ArtifactResponseOutput{})
@@ -21456,7 +21745,9 @@ func init() {
 	pulumi.RegisterOutputType(SourceResponseOutput{})
 	pulumi.RegisterOutputType(StatusOutput{})
 	pulumi.RegisterOutputType(StatusPtrOutput{})
+	pulumi.RegisterOutputType(StatusArrayOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(StatusResponseArrayOutput{})
 	pulumi.RegisterOutputType(StorageSourceOutput{})
 	pulumi.RegisterOutputType(StorageSourcePtrOutput{})
 	pulumi.RegisterOutputType(StorageSourceResponseOutput{})

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:baremetalsolution/v2:Instance":
+		r = &Instance{}
 	case "google-native:baremetalsolution/v2:ProvisioningConfig":
 		r = &ProvisioningConfig{}
 	default:

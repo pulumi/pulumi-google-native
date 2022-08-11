@@ -84,6 +84,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string NamePrefix;
         /// <summary>
+        /// Planning state before being submitted for evaluation
+        /// </summary>
+        public readonly string PlanningStatus;
+        /// <summary>
         /// Server-defined fully-qualified URL for this resource.
         /// </summary>
         public readonly string SelfLink;
@@ -124,6 +128,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string namePrefix,
 
+            string planningStatus,
+
             string selfLink,
 
             string selfLinkWithId,
@@ -143,6 +149,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Kind = kind;
             Name = name;
             NamePrefix = namePrefix;
+            PlanningStatus = planningStatus;
             SelfLink = selfLink;
             SelfLinkWithId = selfLinkWithId;
             ShareSettings = shareSettings;

@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
     public sealed class RRSetRoutingPolicyGeoPolicyResponse
     {
         /// <summary>
+        /// Without fencing, if health check fails for all configured items in the current geo bucket, we'll failover to the next nearest geo bucket. With fencing, if health check is enabled, as long as some targets in the current geo bucket are healthy, we'll return only the healthy targets. However, if they're all unhealthy, we won't failover to the next nearest bucket, we'll simply return all the items in the current bucket even though they're unhealthy.
+        /// </summary>
+        public readonly bool EnableFencing;
+        /// <summary>
         /// The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead.
         /// </summary>
         public readonly ImmutableArray<Outputs.RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse> Items;
@@ -24,10 +28,13 @@ namespace Pulumi.GoogleNative.DNS.V1Beta2.Outputs
 
         [OutputConstructor]
         private RRSetRoutingPolicyGeoPolicyResponse(
+            bool enableFencing,
+
             ImmutableArray<Outputs.RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse> items,
 
             string kind)
         {
+            EnableFencing = enableFencing;
             Items = items;
             Kind = kind;
         }

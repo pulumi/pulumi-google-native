@@ -602,7 +602,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
         :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced') If unspecified, the default disk type is 'pd-standard'
         :param str image_type: The image type to use for NAP created node.
         :param 'NodeManagementResponse' management: NodeManagement configuration for this NodePool.
-        :param str min_cpu_platform: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+        :param str min_cpu_platform: Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
         :param Sequence[str] oauth_scopes: The set of Google API scopes to be made available on all of the node VMs under the "default" service account. The following scopes are recommended, but not required, and by default are not included: * `https://www.googleapis.com/auth/compute` is required for mounting persistent storage on your nodes. * `https://www.googleapis.com/auth/devstorage.read_only` is required for communicating with **gcr.io** (the [Google Container Registry](https://cloud.google.com/container-registry/)). If unspecified, no scopes are added, unless Cloud Logging or Cloud Monitoring are enabled, in which case their required scopes will be added.
         :param str service_account: The Google Cloud Platform Service Account to be used by the node VMs. Specify the email address of the Service Account; otherwise, if no Service Account is specified, the "default" service account is used.
         :param 'ShieldedInstanceConfigResponse' shielded_instance_config: Shielded Instance options.
@@ -663,7 +663,7 @@ class AutoprovisioningNodePoolDefaultsResponse(dict):
     @pulumi.getter(name="minCpuPlatform")
     def min_cpu_platform(self) -> str:
         """
-        Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
+        Deprecated. Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as minCpuPlatform: Intel Haswell or minCpuPlatform: Intel Sandy Bridge. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform) This field is deprecated, min_cpu_platform should be specified using https://cloud.google.com/requested-min-cpu-platform label selector on the pod. To unset the min cpu platform field pass "automatic" as field value.
         """
         return pulumi.get(self, "min_cpu_platform")
 
@@ -766,7 +766,7 @@ class BinaryAuthorizationResponse(dict):
                  evaluation_mode: str):
         """
         Configuration for Binary Authorization.
-        :param bool enabled: Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
+        :param bool enabled: This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
         :param str evaluation_mode: Mode of operation for binauthz policy evaluation. Currently the only options are equivalent to enable/disable. If unspecified, defaults to DISABLED.
         """
         pulumi.set(__self__, "enabled", enabled)
@@ -776,7 +776,7 @@ class BinaryAuthorizationResponse(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         """
-        Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
+        This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
         """
         return pulumi.get(self, "enabled")
 
@@ -3032,7 +3032,7 @@ class NodeConfigDefaultsResponse(dict):
                  gcfs_config: 'outputs.GcfsConfigResponse'):
         """
         Subset of NodeConfig message that has defaults.
-        :param 'GcfsConfigResponse' gcfs_config: GCFS (Google Container File System, a.k.a. Riptide) options.
+        :param 'GcfsConfigResponse' gcfs_config: GCFS (Google Container File System, also known as Riptide) options.
         """
         pulumi.set(__self__, "gcfs_config", gcfs_config)
 
@@ -3040,7 +3040,7 @@ class NodeConfigDefaultsResponse(dict):
     @pulumi.getter(name="gcfsConfig")
     def gcfs_config(self) -> 'outputs.GcfsConfigResponse':
         """
-        GCFS (Google Container File System, a.k.a. Riptide) options.
+        GCFS (Google Container File System, also known as Riptide) options.
         """
         return pulumi.get(self, "gcfs_config")
 

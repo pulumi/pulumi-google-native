@@ -19,6 +19,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         public Input<Inputs.AllocationSpecificSKUAllocationReservedInstancePropertiesArgs>? InstanceProperties { get; set; }
 
         /// <summary>
+        /// The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+        /// </summary>
+        [Input("sourceInstanceTemplate")]
+        public Input<string>? SourceInstanceTemplate { get; set; }
+
+        /// <summary>
         /// Total number of instances for which capacity assurance is requested at a future time period.
         /// </summary>
         [Input("totalCount")]

@@ -7,12 +7,18 @@ from enum import Enum
 __all__ = [
     'InstanceConfigNetworkConfig',
     'LogicalNetworkInterfaceNetworkType',
+    'LunMultiprotocolType',
+    'LunState',
+    'LunStorageType',
     'NetworkConfigBandwidth',
     'NetworkConfigServiceCidr',
     'NetworkConfigType',
     'NfsExportPermissions',
     'VolumeConfigProtocol',
     'VolumeConfigType',
+    'VolumeSnapshotAutoDeleteBehavior',
+    'VolumeState',
+    'VolumeStorageType',
 ]
 
 
@@ -49,6 +55,64 @@ class LogicalNetworkInterfaceNetworkType(str, Enum):
     PRIVATE = "PRIVATE"
     """
     Private network, a network local to the Bare Metal Solution environment.
+    """
+
+
+class LunMultiprotocolType(str, Enum):
+    """
+    The LUN multiprotocol type ensures the characteristics of the LUN are optimized for each operating system.
+    """
+    MULTIPROTOCOL_TYPE_UNSPECIFIED = "MULTIPROTOCOL_TYPE_UNSPECIFIED"
+    """
+    Server has no OS specified.
+    """
+    LINUX = "LINUX"
+    """
+    Server with Linux OS.
+    """
+
+
+class LunState(str, Enum):
+    """
+    The state of this storage volume.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    The LUN is in an unknown state.
+    """
+    CREATING = "CREATING"
+    """
+    The LUN is being created.
+    """
+    UPDATING = "UPDATING"
+    """
+    The LUN is being updated.
+    """
+    READY = "READY"
+    """
+    The LUN is ready for use.
+    """
+    DELETING = "DELETING"
+    """
+    The LUN has been requested to be deleted.
+    """
+
+
+class LunStorageType(str, Enum):
+    """
+    The storage type for this LUN.
+    """
+    STORAGE_TYPE_UNSPECIFIED = "STORAGE_TYPE_UNSPECIFIED"
+    """
+    The storage type for this LUN is unknown.
+    """
+    SSD = "SSD"
+    """
+    This storage type for this LUN is SSD.
+    """
+    HDD = "HDD"
+    """
+    This storage type for this LUN is HDD.
     """
 
 
@@ -173,4 +237,66 @@ class VolumeConfigType(str, Enum):
     DISK = "DISK"
     """
     This Volume is on disk.
+    """
+
+
+class VolumeSnapshotAutoDeleteBehavior(str, Enum):
+    """
+    The behavior to use when snapshot reserved space is full.
+    """
+    SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED = "SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED"
+    """
+    The unspecified behavior.
+    """
+    DISABLED = "DISABLED"
+    """
+    Don't delete any snapshots. This disables new snapshot creation, as long as the snapshot reserved space is full.
+    """
+    OLDEST_FIRST = "OLDEST_FIRST"
+    """
+    Delete the oldest snapshots first.
+    """
+    NEWEST_FIRST = "NEWEST_FIRST"
+    """
+    Delete the newest snapshots first.
+    """
+
+
+class VolumeState(str, Enum):
+    """
+    The state of this storage volume.
+    """
+    STATE_UNSPECIFIED = "STATE_UNSPECIFIED"
+    """
+    The storage volume is in an unknown state.
+    """
+    CREATING = "CREATING"
+    """
+    The storage volume is being created.
+    """
+    READY = "READY"
+    """
+    The storage volume is ready for use.
+    """
+    DELETING = "DELETING"
+    """
+    The storage volume has been requested to be deleted.
+    """
+
+
+class VolumeStorageType(str, Enum):
+    """
+    The storage type for this volume.
+    """
+    STORAGE_TYPE_UNSPECIFIED = "STORAGE_TYPE_UNSPECIFIED"
+    """
+    The storage type for this volume is unknown.
+    """
+    SSD = "SSD"
+    """
+    The storage type for this volume is SSD.
+    """
+    HDD = "HDD"
+    """
+    This storage type for this volume is HDD.
     """

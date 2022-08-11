@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1.Inputs
     public sealed class BinaryAuthorizationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
+        /// This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
         /// </summary>
         [Input("enabled")]
         public Input<bool>? Enabled { get; set; }

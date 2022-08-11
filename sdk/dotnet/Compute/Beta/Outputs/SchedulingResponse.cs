@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 {
 
     /// <summary>
-    /// Sets the scheduling options for an Instance. NextID: 21
+    /// Sets the scheduling options for an Instance.
     /// </summary>
     [OutputType]
     public sealed class SchedulingResponse

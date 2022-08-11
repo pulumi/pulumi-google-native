@@ -1684,6 +1684,8 @@ type AttachedDiskInitializeParams struct {
 	OnUpdateAction *AttachedDiskInitializeParamsOnUpdateAction `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops *string `pulumi:"provisionedIops"`
+	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
@@ -1727,6 +1729,8 @@ type AttachedDiskInitializeParamsArgs struct {
 	OnUpdateAction AttachedDiskInitializeParamsOnUpdateActionPtrInput `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops pulumi.StringPtrInput `pulumi:"provisionedIops"`
+	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
@@ -1862,6 +1866,11 @@ func (o AttachedDiskInitializeParamsOutput) OnUpdateAction() AttachedDiskInitial
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 func (o AttachedDiskInitializeParamsOutput) ProvisionedIops() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParams) *string { return v.ProvisionedIops }).(pulumi.StringPtrOutput)
+}
+
+// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o AttachedDiskInitializeParamsOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParams) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
 // Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -2003,6 +2012,16 @@ func (o AttachedDiskInitializeParamsPtrOutput) ProvisionedIops() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o AttachedDiskInitializeParamsPtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AttachedDiskInitializeParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.StringMapOutput)
+}
+
 // Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
 func (o AttachedDiskInitializeParamsPtrOutput) ResourcePolicies() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AttachedDiskInitializeParams) []string {
@@ -2073,6 +2092,8 @@ type AttachedDiskInitializeParamsResponse struct {
 	OnUpdateAction string `pulumi:"onUpdateAction"`
 	// Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 	ProvisionedIops string `pulumi:"provisionedIops"`
+	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The source image to create this disk. When creating a new instance, one of initializeParams.sourceImage or initializeParams.sourceSnapshot or disks.source is required except for local SSD. To create a disk with one of the public operating system images, specify the image by its family name. For example, specify family/debian-9 to use the latest Debian 9 image: projects/debian-cloud/global/images/family/debian-9 Alternatively, use a specific version of a public operating system image: projects/debian-cloud/global/images/debian-9-stretch-vYYYYMMDD To create a disk with a custom image that you created, specify the image name in the following format: global/images/my-custom-image You can also specify a custom image by its image family, which returns the latest version of the image in that family. Replace the image name with family/family-name: global/images/family/my-image-family If the source image is deleted later, this field will not be set.
@@ -2143,6 +2164,11 @@ func (o AttachedDiskInitializeParamsResponseOutput) OnUpdateAction() pulumi.Stri
 // Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
 func (o AttachedDiskInitializeParamsResponseOutput) ProvisionedIops() pulumi.StringOutput {
 	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) string { return v.ProvisionedIops }).(pulumi.StringOutput)
+}
+
+// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o AttachedDiskInitializeParamsResponseOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AttachedDiskInitializeParamsResponse) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
 // Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -10283,6 +10309,172 @@ func (o DiskInstantiationConfigResponseArrayOutput) Index(i pulumi.IntInput) Dis
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DiskInstantiationConfigResponse {
 		return vs[0].([]DiskInstantiationConfigResponse)[vs[1].(int)]
 	}).(DiskInstantiationConfigResponseOutput)
+}
+
+// Additional disk params.
+type DiskParams struct {
+	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// DiskParamsInput is an input type that accepts DiskParamsArgs and DiskParamsOutput values.
+// You can construct a concrete instance of `DiskParamsInput` via:
+//
+//          DiskParamsArgs{...}
+type DiskParamsInput interface {
+	pulumi.Input
+
+	ToDiskParamsOutput() DiskParamsOutput
+	ToDiskParamsOutputWithContext(context.Context) DiskParamsOutput
+}
+
+// Additional disk params.
+type DiskParamsArgs struct {
+	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
+}
+
+func (DiskParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskParams)(nil)).Elem()
+}
+
+func (i DiskParamsArgs) ToDiskParamsOutput() DiskParamsOutput {
+	return i.ToDiskParamsOutputWithContext(context.Background())
+}
+
+func (i DiskParamsArgs) ToDiskParamsOutputWithContext(ctx context.Context) DiskParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskParamsOutput)
+}
+
+func (i DiskParamsArgs) ToDiskParamsPtrOutput() DiskParamsPtrOutput {
+	return i.ToDiskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i DiskParamsArgs) ToDiskParamsPtrOutputWithContext(ctx context.Context) DiskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskParamsOutput).ToDiskParamsPtrOutputWithContext(ctx)
+}
+
+// DiskParamsPtrInput is an input type that accepts DiskParamsArgs, DiskParamsPtr and DiskParamsPtrOutput values.
+// You can construct a concrete instance of `DiskParamsPtrInput` via:
+//
+//          DiskParamsArgs{...}
+//
+//  or:
+//
+//          nil
+type DiskParamsPtrInput interface {
+	pulumi.Input
+
+	ToDiskParamsPtrOutput() DiskParamsPtrOutput
+	ToDiskParamsPtrOutputWithContext(context.Context) DiskParamsPtrOutput
+}
+
+type diskParamsPtrType DiskParamsArgs
+
+func DiskParamsPtr(v *DiskParamsArgs) DiskParamsPtrInput {
+	return (*diskParamsPtrType)(v)
+}
+
+func (*diskParamsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskParams)(nil)).Elem()
+}
+
+func (i *diskParamsPtrType) ToDiskParamsPtrOutput() DiskParamsPtrOutput {
+	return i.ToDiskParamsPtrOutputWithContext(context.Background())
+}
+
+func (i *diskParamsPtrType) ToDiskParamsPtrOutputWithContext(ctx context.Context) DiskParamsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DiskParamsPtrOutput)
+}
+
+// Additional disk params.
+type DiskParamsOutput struct{ *pulumi.OutputState }
+
+func (DiskParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskParams)(nil)).Elem()
+}
+
+func (o DiskParamsOutput) ToDiskParamsOutput() DiskParamsOutput {
+	return o
+}
+
+func (o DiskParamsOutput) ToDiskParamsOutputWithContext(ctx context.Context) DiskParamsOutput {
+	return o
+}
+
+func (o DiskParamsOutput) ToDiskParamsPtrOutput() DiskParamsPtrOutput {
+	return o.ToDiskParamsPtrOutputWithContext(context.Background())
+}
+
+func (o DiskParamsOutput) ToDiskParamsPtrOutputWithContext(ctx context.Context) DiskParamsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DiskParams) *DiskParams {
+		return &v
+	}).(DiskParamsPtrOutput)
+}
+
+// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o DiskParamsOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DiskParams) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
+}
+
+type DiskParamsPtrOutput struct{ *pulumi.OutputState }
+
+func (DiskParamsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DiskParams)(nil)).Elem()
+}
+
+func (o DiskParamsPtrOutput) ToDiskParamsPtrOutput() DiskParamsPtrOutput {
+	return o
+}
+
+func (o DiskParamsPtrOutput) ToDiskParamsPtrOutputWithContext(ctx context.Context) DiskParamsPtrOutput {
+	return o
+}
+
+func (o DiskParamsPtrOutput) Elem() DiskParamsOutput {
+	return o.ApplyT(func(v *DiskParams) DiskParams {
+		if v != nil {
+			return *v
+		}
+		var ret DiskParams
+		return ret
+	}).(DiskParamsOutput)
+}
+
+// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o DiskParamsPtrOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *DiskParams) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceManagerTags
+	}).(pulumi.StringMapOutput)
+}
+
+// Additional disk params.
+type DiskParamsResponse struct {
+	// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
+}
+
+// Additional disk params.
+type DiskParamsResponseOutput struct{ *pulumi.OutputState }
+
+func (DiskParamsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DiskParamsResponse)(nil)).Elem()
+}
+
+func (o DiskParamsResponseOutput) ToDiskParamsResponseOutput() DiskParamsResponseOutput {
+	return o
+}
+
+func (o DiskParamsResponseOutput) ToDiskParamsResponseOutputWithContext(ctx context.Context) DiskParamsResponseOutput {
+	return o
+}
+
+// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
+func (o DiskParamsResponseOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v DiskParamsResponse) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
 // A set of Display Device options
@@ -34301,7 +34493,7 @@ func (o SavedDiskResponseArrayOutput) Index(i pulumi.IntInput) SavedDiskResponse
 	}).(SavedDiskResponseOutput)
 }
 
-// Sets the scheduling options for an Instance. NextID: 21
+// Sets the scheduling options for an Instance.
 type Scheduling struct {
 	// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
 	AutomaticRestart *bool `pulumi:"automaticRestart"`
@@ -34332,7 +34524,7 @@ type SchedulingInput interface {
 	ToSchedulingOutputWithContext(context.Context) SchedulingOutput
 }
 
-// Sets the scheduling options for an Instance. NextID: 21
+// Sets the scheduling options for an Instance.
 type SchedulingArgs struct {
 	// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
 	AutomaticRestart pulumi.BoolPtrInput `pulumi:"automaticRestart"`
@@ -34405,7 +34597,7 @@ func (i *schedulingPtrType) ToSchedulingPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulingPtrOutput)
 }
 
-// Sets the scheduling options for an Instance. NextID: 21
+// Sets the scheduling options for an Instance.
 type SchedulingOutput struct{ *pulumi.OutputState }
 
 func (SchedulingOutput) ElementType() reflect.Type {
@@ -34752,7 +34944,7 @@ func (o SchedulingNodeAffinityResponseArrayOutput) Index(i pulumi.IntInput) Sche
 	}).(SchedulingNodeAffinityResponseOutput)
 }
 
-// Sets the scheduling options for an Instance. NextID: 21
+// Sets the scheduling options for an Instance.
 type SchedulingResponse struct {
 	// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
 	AutomaticRestart bool `pulumi:"automaticRestart"`
@@ -34772,7 +34964,7 @@ type SchedulingResponse struct {
 	ProvisioningModel string `pulumi:"provisioningModel"`
 }
 
-// Sets the scheduling options for an Instance. NextID: 21
+// Sets the scheduling options for an Instance.
 type SchedulingResponseOutput struct{ *pulumi.OutputState }
 
 func (SchedulingResponseOutput) ElementType() reflect.Type {
@@ -35194,8 +35386,10 @@ func (o SecurityPolicyAdaptiveProtectionConfigResponseOutput) Layer7DdosDefenseC
 }
 
 type SecurityPolicyAdvancedOptionsConfig struct {
-	JsonParsing *SecurityPolicyAdvancedOptionsConfigJsonParsing `pulumi:"jsonParsing"`
-	LogLevel    *SecurityPolicyAdvancedOptionsConfigLogLevel    `pulumi:"logLevel"`
+	// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+	JsonCustomConfig *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig `pulumi:"jsonCustomConfig"`
+	JsonParsing      *SecurityPolicyAdvancedOptionsConfigJsonParsing      `pulumi:"jsonParsing"`
+	LogLevel         *SecurityPolicyAdvancedOptionsConfigLogLevel         `pulumi:"logLevel"`
 }
 
 // SecurityPolicyAdvancedOptionsConfigInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigArgs and SecurityPolicyAdvancedOptionsConfigOutput values.
@@ -35210,8 +35404,10 @@ type SecurityPolicyAdvancedOptionsConfigInput interface {
 }
 
 type SecurityPolicyAdvancedOptionsConfigArgs struct {
-	JsonParsing SecurityPolicyAdvancedOptionsConfigJsonParsingPtrInput `pulumi:"jsonParsing"`
-	LogLevel    SecurityPolicyAdvancedOptionsConfigLogLevelPtrInput    `pulumi:"logLevel"`
+	// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+	JsonCustomConfig SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput `pulumi:"jsonCustomConfig"`
+	JsonParsing      SecurityPolicyAdvancedOptionsConfigJsonParsingPtrInput      `pulumi:"jsonParsing"`
+	LogLevel         SecurityPolicyAdvancedOptionsConfigLogLevelPtrInput         `pulumi:"logLevel"`
 }
 
 func (SecurityPolicyAdvancedOptionsConfigArgs) ElementType() reflect.Type {
@@ -35291,6 +35487,13 @@ func (o SecurityPolicyAdvancedOptionsConfigOutput) ToSecurityPolicyAdvancedOptio
 	}).(SecurityPolicyAdvancedOptionsConfigPtrOutput)
 }
 
+// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+func (o SecurityPolicyAdvancedOptionsConfigOutput) JsonCustomConfig() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfig) *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		return v.JsonCustomConfig
+	}).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput)
+}
+
 func (o SecurityPolicyAdvancedOptionsConfigOutput) JsonParsing() SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfig) *SecurityPolicyAdvancedOptionsConfigJsonParsing {
 		return v.JsonParsing
@@ -35327,6 +35530,16 @@ func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) Elem() SecurityPolicyAdvan
 	}).(SecurityPolicyAdvancedOptionsConfigOutput)
 }
 
+// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) JsonCustomConfig() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfig) *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		if v == nil {
+			return nil
+		}
+		return v.JsonCustomConfig
+	}).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput)
+}
+
 func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) JsonParsing() SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfig) *SecurityPolicyAdvancedOptionsConfigJsonParsing {
 		if v == nil {
@@ -35345,9 +35558,172 @@ func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) LogLevel() SecurityPolicyA
 	}).(SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput)
 }
 
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfig struct {
+	// A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+	ContentTypes []string `pulumi:"contentTypes"`
+}
+
+// SecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs and SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput` via:
+//
+//          SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{...}
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput
+	ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput
+}
+
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs struct {
+	// A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+	ContentTypes pulumi.StringArrayInput `pulumi:"contentTypes"`
+}
+
+func (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return i.ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput)
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return i.ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput).ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs, SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtr and SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput` via:
+//
+//          SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput
+	ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput
+}
+
+type securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs
+
+func SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtr(v *SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput {
+	return (*securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType)(v)
+}
+
+func (*securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return i.ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput)
+}
+
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o.ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyAdvancedOptionsConfigJsonCustomConfig) *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		return &v
+	}).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput)
+}
+
+// A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfigJsonCustomConfig) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) Elem() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig) SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyAdvancedOptionsConfigJsonCustomConfig
+		return ret
+	}).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput)
+}
+
+// A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse struct {
+	// A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+	ContentTypes []string `pulumi:"contentTypes"`
+}
+
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput {
+	return o
+}
+
+// A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
+}
+
 type SecurityPolicyAdvancedOptionsConfigResponse struct {
-	JsonParsing string `pulumi:"jsonParsing"`
-	LogLevel    string `pulumi:"logLevel"`
+	// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+	JsonCustomConfig SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse `pulumi:"jsonCustomConfig"`
+	JsonParsing      string                                                      `pulumi:"jsonParsing"`
+	LogLevel         string                                                      `pulumi:"logLevel"`
 }
 
 type SecurityPolicyAdvancedOptionsConfigResponseOutput struct{ *pulumi.OutputState }
@@ -35362,6 +35738,13 @@ func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) ToSecurityPolicyAdvan
 
 func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) ToSecurityPolicyAdvancedOptionsConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigResponseOutput {
 	return o
+}
+
+// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) JsonCustomConfig() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfigResponse) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse {
+		return v.JsonCustomConfig
+	}).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput)
 }
 
 func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) JsonParsing() pulumi.StringOutput {
@@ -42058,6 +42441,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeprecationStatusPtrInput)(nil)).Elem(), DeprecationStatusArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigInput)(nil)).Elem(), DiskInstantiationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DiskInstantiationConfigArrayInput)(nil)).Elem(), DiskInstantiationConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskParamsInput)(nil)).Elem(), DiskParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DiskParamsPtrInput)(nil)).Elem(), DiskParamsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDeviceInput)(nil)).Elem(), DisplayDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DisplayDevicePtrInput)(nil)).Elem(), DisplayDeviceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DistributionPolicyInput)(nil)).Elem(), DistributionPolicyArgs{})
@@ -42281,6 +42666,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigPtrInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyDdosProtectionConfigInput)(nil)).Elem(), SecurityPolicyDdosProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyDdosProtectionConfigPtrInput)(nil)).Elem(), SecurityPolicyDdosProtectionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigInput)(nil)).Elem(), SecurityPolicyRecaptchaOptionsConfigArgs{})
@@ -42498,6 +42885,9 @@ func init() {
 	pulumi.RegisterOutputType(DiskInstantiationConfigArrayOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigResponseOutput{})
 	pulumi.RegisterOutputType(DiskInstantiationConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(DiskParamsOutput{})
+	pulumi.RegisterOutputType(DiskParamsPtrOutput{})
+	pulumi.RegisterOutputType(DiskParamsResponseOutput{})
 	pulumi.RegisterOutputType(DisplayDeviceOutput{})
 	pulumi.RegisterOutputType(DisplayDevicePtrOutput{})
 	pulumi.RegisterOutputType(DisplayDeviceResponseOutput{})
@@ -42899,6 +43289,9 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyDdosProtectionConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyDdosProtectionConfigPtrOutput{})

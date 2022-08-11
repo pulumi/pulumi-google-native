@@ -221,6 +221,55 @@ export const GooglePrivacyDlpV2CustomInfoTypeLikelihood = {
  */
 export type GooglePrivacyDlpV2CustomInfoTypeLikelihood = (typeof GooglePrivacyDlpV2CustomInfoTypeLikelihood)[keyof typeof GooglePrivacyDlpV2CustomInfoTypeLikelihood];
 
+export const GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem = {
+    /**
+     * Includes all files.
+     */
+    FileTypeUnspecified: "FILE_TYPE_UNSPECIFIED",
+    /**
+     * Includes all file extensions not covered by another entry. Binary scanning attempts to convert the content of the file to utf_8 to scan the file. If you wish to avoid this fall back, specify one or more of the other FileType's in your storage scan.
+     */
+    BinaryFile: "BINARY_FILE",
+    /**
+     * Included file extensions: asc,asp, aspx, brf, c, cc,cfm, cgi, cpp, csv, cxx, c++, cs, css, dart, dat, dot, eml,, epbub, ged, go, h, hh, hpp, hxx, h++, hs, html, htm, mkd, markdown, m, ml, mli, perl, pl, plist, pm, php, phtml, pht, properties, py, pyw, rb, rbw, rs, rss, rc, scala, sh, sql, swift, tex, shtml, shtm, xhtml, lhs, ics, ini, java, js, json, kix, kml, ocaml, md, txt, text, tsv, vb, vcard, vcs, wml, xcodeproj, xml, xsl, xsd, yml, yaml.
+     */
+    TextFile: "TEXT_FILE",
+    /**
+     * Included file extensions: bmp, gif, jpg, jpeg, jpe, png. bytes_limit_per_file has no effect on image files. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'.
+     */
+    Image: "IMAGE",
+    /**
+     * Word files >30 MB will be scanned as binary files. Included file extensions: docx, dotx, docm, dotm
+     */
+    Word: "WORD",
+    /**
+     * PDF files >30 MB will be scanned as binary files. Included file extensions: pdf
+     */
+    Pdf: "PDF",
+    /**
+     * Included file extensions: avro
+     */
+    Avro: "AVRO",
+    /**
+     * Included file extensions: csv
+     */
+    Csv: "CSV",
+    /**
+     * Included file extensions: tsv
+     */
+    Tsv: "TSV",
+    /**
+     * Powerpoint files >30 MB will be scanned as binary files. Included file extensions: pptx, pptm, potx, potm, pot
+     */
+    Powerpoint: "POWERPOINT",
+    /**
+     * Excel files >30 MB will be scanned as binary files. Included file extensions: xlsx, xlsm, xltx, xltm
+     */
+    Excel: "EXCEL",
+} as const;
+
+export type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem = (typeof GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem)[keyof typeof GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem];
+
 export const GooglePrivacyDlpV2ExclusionRuleMatchingType = {
     /**
      * Invalid.
@@ -340,7 +389,7 @@ export const GooglePrivacyDlpV2OutputStorageConfigOutputSchema = {
      */
     BasicColumns: "BASIC_COLUMNS",
     /**
-     * Schema tailored to findings from scanning Google Cloud Storage.
+     * Schema tailored to findings from scanning Cloud Storage.
      */
     GcsColumns: "GCS_COLUMNS",
     /**

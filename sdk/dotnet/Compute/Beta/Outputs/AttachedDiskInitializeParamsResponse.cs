@@ -61,6 +61,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string ProvisionedIops;
         /// <summary>
+        /// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ResourceManagerTags;
+        /// <summary>
         /// Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
         /// </summary>
         public readonly ImmutableArray<string> ResourcePolicies;
@@ -105,6 +109,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string provisionedIops,
 
+            ImmutableDictionary<string, string> resourceManagerTags,
+
             ImmutableArray<string> resourcePolicies,
 
             string sourceImage,
@@ -126,6 +132,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             MultiWriter = multiWriter;
             OnUpdateAction = onUpdateAction;
             ProvisionedIops = provisionedIops;
+            ResourceManagerTags = resourceManagerTags;
             ResourcePolicies = resourcePolicies;
             SourceImage = sourceImage;
             SourceImageEncryptionKey = sourceImageEncryptionKey;

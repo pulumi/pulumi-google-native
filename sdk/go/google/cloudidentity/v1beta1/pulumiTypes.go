@@ -663,31 +663,6 @@ func (i *entityKeyPtrType) ToEntityKeyPtrOutputWithContext(ctx context.Context) 
 	return pulumi.ToOutputWithContext(ctx, i).(EntityKeyPtrOutput)
 }
 
-// EntityKeyArrayInput is an input type that accepts EntityKeyArray and EntityKeyArrayOutput values.
-// You can construct a concrete instance of `EntityKeyArrayInput` via:
-//
-//          EntityKeyArray{ EntityKeyArgs{...} }
-type EntityKeyArrayInput interface {
-	pulumi.Input
-
-	ToEntityKeyArrayOutput() EntityKeyArrayOutput
-	ToEntityKeyArrayOutputWithContext(context.Context) EntityKeyArrayOutput
-}
-
-type EntityKeyArray []EntityKeyInput
-
-func (EntityKeyArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EntityKey)(nil)).Elem()
-}
-
-func (i EntityKeyArray) ToEntityKeyArrayOutput() EntityKeyArrayOutput {
-	return i.ToEntityKeyArrayOutputWithContext(context.Background())
-}
-
-func (i EntityKeyArray) ToEntityKeyArrayOutputWithContext(ctx context.Context) EntityKeyArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(EntityKeyArrayOutput)
-}
-
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKeyOutput struct{ *pulumi.OutputState }
 
@@ -767,26 +742,6 @@ func (o EntityKeyPtrOutput) Namespace() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-type EntityKeyArrayOutput struct{ *pulumi.OutputState }
-
-func (EntityKeyArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EntityKey)(nil)).Elem()
-}
-
-func (o EntityKeyArrayOutput) ToEntityKeyArrayOutput() EntityKeyArrayOutput {
-	return o
-}
-
-func (o EntityKeyArrayOutput) ToEntityKeyArrayOutputWithContext(ctx context.Context) EntityKeyArrayOutput {
-	return o
-}
-
-func (o EntityKeyArrayOutput) Index(i pulumi.IntInput) EntityKeyOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntityKey {
-		return vs[0].([]EntityKey)[vs[1].(int)]
-	}).(EntityKeyOutput)
-}
-
 // A unique identifier for an entity in the Cloud Identity Groups API. An entity can represent either a group with an optional `namespace` or a user without a `namespace`. The combination of `id` and `namespace` must be unique; however, the same `id` can be used with different `namespace`s.
 type EntityKeyResponse struct {
 	// The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
@@ -811,26 +766,6 @@ func (o EntityKeyResponseOutput) ToEntityKeyResponseOutputWithContext(ctx contex
 // The namespace in which the entity exists. If not specified, the `EntityKey` represents a Google-managed entity such as a Google user or a Google Group. If specified, the `EntityKey` represents an external-identity-mapped group. The namespace must correspond to an identity source created in Admin Console and must be in the form of `identitysources/{identity_source_id}`.
 func (o EntityKeyResponseOutput) Namespace() pulumi.StringOutput {
 	return o.ApplyT(func(v EntityKeyResponse) string { return v.Namespace }).(pulumi.StringOutput)
-}
-
-type EntityKeyResponseArrayOutput struct{ *pulumi.OutputState }
-
-func (EntityKeyResponseArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]EntityKeyResponse)(nil)).Elem()
-}
-
-func (o EntityKeyResponseArrayOutput) ToEntityKeyResponseArrayOutput() EntityKeyResponseArrayOutput {
-	return o
-}
-
-func (o EntityKeyResponseArrayOutput) ToEntityKeyResponseArrayOutputWithContext(ctx context.Context) EntityKeyResponseArrayOutput {
-	return o
-}
-
-func (o EntityKeyResponseArrayOutput) Index(i pulumi.IntInput) EntityKeyResponseOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EntityKeyResponse {
-		return vs[0].([]EntityKeyResponse)[vs[1].(int)]
-	}).(EntityKeyResponseOutput)
 }
 
 // The `MembershipRole` expiry details.
@@ -1679,7 +1614,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DynamicGroupQueryArrayInput)(nil)).Elem(), DynamicGroupQueryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyInput)(nil)).Elem(), EntityKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyPtrInput)(nil)).Elem(), EntityKeyArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*EntityKeyArrayInput)(nil)).Elem(), EntityKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExpiryDetailInput)(nil)).Elem(), ExpiryDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExpiryDetailPtrInput)(nil)).Elem(), ExpiryDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MembershipRoleInput)(nil)).Elem(), MembershipRoleArgs{})
@@ -1705,9 +1639,7 @@ func init() {
 	pulumi.RegisterOutputType(EndpointVerificationSpecificAttributesResponseOutput{})
 	pulumi.RegisterOutputType(EntityKeyOutput{})
 	pulumi.RegisterOutputType(EntityKeyPtrOutput{})
-	pulumi.RegisterOutputType(EntityKeyArrayOutput{})
 	pulumi.RegisterOutputType(EntityKeyResponseOutput{})
-	pulumi.RegisterOutputType(EntityKeyResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExpiryDetailOutput{})
 	pulumi.RegisterOutputType(ExpiryDetailPtrOutput{})
 	pulumi.RegisterOutputType(ExpiryDetailResponseOutput{})

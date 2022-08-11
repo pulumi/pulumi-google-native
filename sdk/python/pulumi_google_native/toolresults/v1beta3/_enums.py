@@ -377,3 +377,7 @@ class TestIssueType(str, Enum):
     """
     Problems detected while collecting logcat
     """
+    DETECTED_APP_SPLASH_SCREEN = "detectedAppSplashScreen"
+    """
+    Robo detected a splash screen provided by app (vs. Android OS splash screen).
+    """

@@ -4804,7 +4804,7 @@ func (o LauncherActivityIntentResponseOutput) ToLauncherActivityIntentResponseOu
 
 // Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
 type ManualSharding struct {
-	// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+	// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
 	TestTargetsForShard []TestTargetsForShard `pulumi:"testTargetsForShard"`
 }
 
@@ -4821,7 +4821,7 @@ type ManualShardingInput interface {
 
 // Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
 type ManualShardingArgs struct {
-	// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+	// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
 	TestTargetsForShard TestTargetsForShardArrayInput `pulumi:"testTargetsForShard"`
 }
 
@@ -4903,7 +4903,7 @@ func (o ManualShardingOutput) ToManualShardingPtrOutputWithContext(ctx context.C
 	}).(ManualShardingPtrOutput)
 }
 
-// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
 func (o ManualShardingOutput) TestTargetsForShard() TestTargetsForShardArrayOutput {
 	return o.ApplyT(func(v ManualSharding) []TestTargetsForShard { return v.TestTargetsForShard }).(TestTargetsForShardArrayOutput)
 }
@@ -4932,7 +4932,7 @@ func (o ManualShardingPtrOutput) Elem() ManualShardingOutput {
 	}).(ManualShardingOutput)
 }
 
-// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
 func (o ManualShardingPtrOutput) TestTargetsForShard() TestTargetsForShardArrayOutput {
 	return o.ApplyT(func(v *ManualSharding) []TestTargetsForShard {
 		if v == nil {
@@ -4944,7 +4944,7 @@ func (o ManualShardingPtrOutput) TestTargetsForShard() TestTargetsForShardArrayO
 
 // Shards test cases into the specified groups of packages, classes, and/or methods. With manual sharding enabled, specifying test targets via environment_variables or in InstrumentationTest is invalid.
 type ManualShardingResponse struct {
-	// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+	// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
 	TestTargetsForShard []TestTargetsForShardResponse `pulumi:"testTargetsForShard"`
 }
 
@@ -4963,7 +4963,7 @@ func (o ManualShardingResponseOutput) ToManualShardingResponseOutputWithContext(
 	return o
 }
 
-// Group of packages, classes, and/or test methods to be run for each shard. When any physical devices are selected, the number of test_targets_for_shard must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+// Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
 func (o ManualShardingResponseOutput) TestTargetsForShard() TestTargetsForShardResponseArrayOutput {
 	return o.ApplyT(func(v ManualShardingResponse) []TestTargetsForShardResponse { return v.TestTargetsForShard }).(TestTargetsForShardResponseArrayOutput)
 }
@@ -7577,9 +7577,9 @@ func (o ToolResultsStepResponseOutput) StepId() pulumi.StringOutput {
 	return o.ApplyT(func(v ToolResultsStepResponse) string { return v.StepId }).(pulumi.StringOutput)
 }
 
-// Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
+// Uniformly shards test cases given a total number of shards. For instrumentation tests, it will be translated to "-e numShard" and "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying either of these sharding arguments via `environment_variables` is invalid. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards.
 type UniformSharding struct {
-	// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+	// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
 	NumShards int `pulumi:"numShards"`
 }
 
@@ -7594,9 +7594,9 @@ type UniformShardingInput interface {
 	ToUniformShardingOutputWithContext(context.Context) UniformShardingOutput
 }
 
-// Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
+// Uniformly shards test cases given a total number of shards. For instrumentation tests, it will be translated to "-e numShard" and "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying either of these sharding arguments via `environment_variables` is invalid. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards.
 type UniformShardingArgs struct {
-	// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+	// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
 	NumShards pulumi.IntInput `pulumi:"numShards"`
 }
 
@@ -7653,7 +7653,7 @@ func (i *uniformShardingPtrType) ToUniformShardingPtrOutputWithContext(ctx conte
 	return pulumi.ToOutputWithContext(ctx, i).(UniformShardingPtrOutput)
 }
 
-// Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
+// Uniformly shards test cases given a total number of shards. For instrumentation tests, it will be translated to "-e numShard" and "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying either of these sharding arguments via `environment_variables` is invalid. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards.
 type UniformShardingOutput struct{ *pulumi.OutputState }
 
 func (UniformShardingOutput) ElementType() reflect.Type {
@@ -7678,7 +7678,7 @@ func (o UniformShardingOutput) ToUniformShardingPtrOutputWithContext(ctx context
 	}).(UniformShardingPtrOutput)
 }
 
-// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
 func (o UniformShardingOutput) NumShards() pulumi.IntOutput {
 	return o.ApplyT(func(v UniformSharding) int { return v.NumShards }).(pulumi.IntOutput)
 }
@@ -7707,7 +7707,7 @@ func (o UniformShardingPtrOutput) Elem() UniformShardingOutput {
 	}).(UniformShardingOutput)
 }
 
-// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
 func (o UniformShardingPtrOutput) NumShards() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *UniformSharding) *int {
 		if v == nil {
@@ -7717,13 +7717,13 @@ func (o UniformShardingPtrOutput) NumShards() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
+// Uniformly shards test cases given a total number of shards. For instrumentation tests, it will be translated to "-e numShard" and "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying either of these sharding arguments via `environment_variables` is invalid. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards.
 type UniformShardingResponse struct {
-	// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+	// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
 	NumShards int `pulumi:"numShards"`
 }
 
-// Uniformly shards test cases given a total number of shards. For Instrumentation test, it will be translated to "-e numShard" "-e shardIndex" AndroidJUnitRunner arguments. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards. With uniform sharding enabled, specifying these sharding arguments via environment_variables is invalid.
+// Uniformly shards test cases given a total number of shards. For instrumentation tests, it will be translated to "-e numShard" and "-e shardIndex" AndroidJUnitRunner arguments. With uniform sharding enabled, specifying either of these sharding arguments via `environment_variables` is invalid. Based on the sharding mechanism AndroidJUnitRunner uses, there is no guarantee that test cases will be distributed uniformly across all shards.
 type UniformShardingResponseOutput struct{ *pulumi.OutputState }
 
 func (UniformShardingResponseOutput) ElementType() reflect.Type {
@@ -7738,7 +7738,7 @@ func (o UniformShardingResponseOutput) ToUniformShardingResponseOutputWithContex
 	return o
 }
 
-// Total number of shards. When any physical devices are selected, the number must be >= 1 and <= 50. When no physical devices are selected, the number must be >= 1 and <= 500.
+// The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 50. When you select only x86 virtual devices, it must be <= 500.
 func (o UniformShardingResponseOutput) NumShards() pulumi.IntOutput {
 	return o.ApplyT(func(v UniformShardingResponse) int { return v.NumShards }).(pulumi.IntOutput)
 }

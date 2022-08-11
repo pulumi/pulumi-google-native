@@ -81,6 +81,18 @@ namespace Pulumi.GoogleNative.Compute.V1.Inputs
         [Input("provisionedIops")]
         public Input<string>? ProvisionedIops { get; set; }
 
+        [Input("resourceManagerTags")]
+        private InputMap<string>? _resourceManagerTags;
+
+        /// <summary>
+        /// Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
+        public InputMap<string> ResourceManagerTags
+        {
+            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<string>());
+            set => _resourceManagerTags = value;
+        }
+
         [Input("resourcePolicies")]
         private InputList<string>? _resourcePolicies;
 

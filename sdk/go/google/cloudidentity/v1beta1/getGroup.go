@@ -25,8 +25,6 @@ type LookupGroupArgs struct {
 }
 
 type LookupGroupResult struct {
-	// Additional entity key aliases for a Group.
-	AdditionalGroupKeys []EntityKeyResponse `pulumi:"additionalGroupKeys"`
 	// The time when the `Group` was created.
 	CreateTime string `pulumi:"createTime"`
 	// An extended description to help users determine the purpose of a `Group`. Must not be longer than 4,096 characters.
@@ -82,11 +80,6 @@ func (o LookupGroupResultOutput) ToLookupGroupResultOutput() LookupGroupResultOu
 
 func (o LookupGroupResultOutput) ToLookupGroupResultOutputWithContext(ctx context.Context) LookupGroupResultOutput {
 	return o
-}
-
-// Additional entity key aliases for a Group.
-func (o LookupGroupResultOutput) AdditionalGroupKeys() EntityKeyResponseArrayOutput {
-	return o.ApplyT(func(v LookupGroupResult) []EntityKeyResponse { return v.AdditionalGroupKeys }).(EntityKeyResponseArrayOutput)
 }
 
 // The time when the `Group` was created.

@@ -13,6 +13,9 @@ from . import outputs
 __all__ = [
     'GcsSourceResponse',
     'GlossaryInputConfigResponse',
+    'GlossaryTermResponse',
+    'GlossaryTermsPairResponse',
+    'GlossaryTermsSetResponse',
     'LanguageCodePairResponse',
     'LanguageCodesSetResponse',
 ]
@@ -93,6 +96,130 @@ class GlossaryInputConfigResponse(dict):
         Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): 2 column file, tab- or comma-separated. The first column is source text. The second column is target text. The file must not contain headers. That is, the first row is data, not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary).
         """
         return pulumi.get(self, "gcs_source")
+
+
+@pulumi.output_type
+class GlossaryTermResponse(dict):
+    """
+    Represents a single glossary term
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "languageCode":
+            suggest = "language_code"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GlossaryTermResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GlossaryTermResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GlossaryTermResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 language_code: str,
+                 text: str):
+        """
+        Represents a single glossary term
+        :param str language_code: The language for this glossary term.
+        :param str text: The text for the glossary term.
+        """
+        pulumi.set(__self__, "language_code", language_code)
+        pulumi.set(__self__, "text", text)
+
+    @property
+    @pulumi.getter(name="languageCode")
+    def language_code(self) -> str:
+        """
+        The language for this glossary term.
+        """
+        return pulumi.get(self, "language_code")
+
+    @property
+    @pulumi.getter
+    def text(self) -> str:
+        """
+        The text for the glossary term.
+        """
+        return pulumi.get(self, "text")
+
+
+@pulumi.output_type
+class GlossaryTermsPairResponse(dict):
+    """
+    Represents a single entry for an unidirectional glossary.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceTerm":
+            suggest = "source_term"
+        elif key == "targetTerm":
+            suggest = "target_term"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GlossaryTermsPairResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GlossaryTermsPairResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GlossaryTermsPairResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_term: 'outputs.GlossaryTermResponse',
+                 target_term: 'outputs.GlossaryTermResponse'):
+        """
+        Represents a single entry for an unidirectional glossary.
+        :param 'GlossaryTermResponse' source_term: The source term is the term that will get match in the text,
+        :param 'GlossaryTermResponse' target_term: The term that will replace the match source term.
+        """
+        pulumi.set(__self__, "source_term", source_term)
+        pulumi.set(__self__, "target_term", target_term)
+
+    @property
+    @pulumi.getter(name="sourceTerm")
+    def source_term(self) -> 'outputs.GlossaryTermResponse':
+        """
+        The source term is the term that will get match in the text,
+        """
+        return pulumi.get(self, "source_term")
+
+    @property
+    @pulumi.getter(name="targetTerm")
+    def target_term(self) -> 'outputs.GlossaryTermResponse':
+        """
+        The term that will replace the match source term.
+        """
+        return pulumi.get(self, "target_term")
+
+
+@pulumi.output_type
+class GlossaryTermsSetResponse(dict):
+    """
+    Represents a single entry for an equivalent term set glossary. This is used for equivalent term sets where each term can be replaced by the other terms in the set.
+    """
+    def __init__(__self__, *,
+                 terms: Sequence['outputs.GlossaryTermResponse']):
+        """
+        Represents a single entry for an equivalent term set glossary. This is used for equivalent term sets where each term can be replaced by the other terms in the set.
+        :param Sequence['GlossaryTermResponse'] terms: Each term in the set represents a term that can be replaced by the other terms.
+        """
+        pulumi.set(__self__, "terms", terms)
+
+    @property
+    @pulumi.getter
+    def terms(self) -> Sequence['outputs.GlossaryTermResponse']:
+        """
+        Each term in the set represents a term that can be replaced by the other terms.
+        """
+        return pulumi.get(self, "terms")
 
 
 @pulumi.output_type

@@ -16,6 +16,10 @@ namespace Pulumi.GoogleNative.DNS.V1.Outputs
     [OutputType]
     public sealed class RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse
     {
+        /// <summary>
+        /// For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with rrdata within this item.
+        /// </summary>
+        public readonly Outputs.RRSetRoutingPolicyHealthCheckTargetsResponse HealthCheckedTargets;
         public readonly string Kind;
         /// <summary>
         /// The geo-location granularity is a GCP region. This location string should correspond to a GCP region. e.g. "us-east1", "southamerica-east1", "asia-east1", etc.
@@ -29,6 +33,8 @@ namespace Pulumi.GoogleNative.DNS.V1.Outputs
 
         [OutputConstructor]
         private RRSetRoutingPolicyGeoPolicyGeoPolicyItemResponse(
+            Outputs.RRSetRoutingPolicyHealthCheckTargetsResponse healthCheckedTargets,
+
             string kind,
 
             string location,
@@ -37,6 +43,7 @@ namespace Pulumi.GoogleNative.DNS.V1.Outputs
 
             ImmutableArray<string> signatureRrdatas)
         {
+            HealthCheckedTargets = healthCheckedTargets;
             Kind = kind;
             Location = location;
             Rrdatas = rrdatas;

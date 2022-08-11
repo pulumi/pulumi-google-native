@@ -27,6 +27,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("instanceProperties")]
         public Input<Inputs.AllocationSpecificSKUAllocationReservedInstancePropertiesArgs>? InstanceProperties { get; set; }
 
+        /// <summary>
+        /// Specific URL of the instance template used in the reservation
+        /// </summary>
+        [Input("sourceInstanceTemplate")]
+        public Input<string>? SourceInstanceTemplate { get; set; }
+
         public AllocationSpecificSKUReservationArgs()
         {
         }

@@ -1076,7 +1076,8 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs:
                  order_by: Optional[pulumi.Input[str]] = None,
                  prefixes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  query: Optional[pulumi.Input[str]] = None,
-                 restricted_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 restricted_values: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 return_min_max: Optional[pulumi.Input[bool]] = None):
         """
         Specifies how a facet is computed.
         :param pulumi.Input[str] key: Supported textual and numerical facet keys in Product object, over which the facet values are computed. Facet key is case-sensitive. Allowed facet keys when FacetKey.query is not specified: * textual_field = * "brands" * "categories" * "genders" * "ageGroups" * "availability" * "colorFamilies" * "colors" * "sizes" * "materials" * "patterns" * "conditions" * "attributes.key" * "pickupInStore" * "shipToStore" * "sameDayDelivery" * "nextDayDelivery" * "customFulfillment1" * "customFulfillment2" * "customFulfillment3" * "customFulfillment4" * "customFulfillment5" * "inventory(place_id,attributes.key)" * numerical_field = * "price" * "discount" * "rating" * "ratingCount" * "attributes.key" * "inventory(place_id,price)" * "inventory(place_id,original_price)" * "inventory(place_id,attributes.key)"
@@ -1087,6 +1088,7 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] prefixes: Only get facet values that start with the given string prefix. For example, suppose "categories" has three values "Women > Shoe", "Women > Dress" and "Men > Shoe". If set "prefixes" to "Women", the "categories" facet will give only "Women > Shoe" and "Women > Dress". Only supported on textual fields. Maximum is 10.
         :param pulumi.Input[str] query: The query that is used to compute facet for the given facet key. When provided, it will override the default behavior of facet computation. The query syntax is the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Notice that there is no limitation on FacetKey.key when query is specified. In the response, SearchResponse.Facet.values.value will be always "1" and SearchResponse.Facet.values.count will be the number of results that match the query. For example, you can set a customized facet for "shipToStore", where FacetKey.key is "customizedShipToStore", and FacetKey.query is "availability: ANY(\\"IN_STOCK\\") AND shipToStore: ANY(\\"123\\")". Then the facet will count the products that are both in stock and ship to store "123".
         :param pulumi.Input[Sequence[pulumi.Input[str]]] restricted_values: Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
+        :param pulumi.Input[bool] return_min_max: Returns the min and max value for each numerical facet intervals. Ignored for textual facets.
         """
         pulumi.set(__self__, "key", key)
         if case_insensitive is not None:
@@ -1103,6 +1105,8 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs:
             pulumi.set(__self__, "query", query)
         if restricted_values is not None:
             pulumi.set(__self__, "restricted_values", restricted_values)
+        if return_min_max is not None:
+            pulumi.set(__self__, "return_min_max", return_min_max)
 
     @property
     @pulumi.getter
@@ -1199,6 +1203,18 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs:
     @restricted_values.setter
     def restricted_values(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "restricted_values", value)
+
+    @property
+    @pulumi.getter(name="returnMinMax")
+    def return_min_max(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Returns the min and max value for each numerical facet intervals. Ignored for textual facets.
+        """
+        return pulumi.get(self, "return_min_max")
+
+    @return_min_max.setter
+    def return_min_max(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "return_min_max", value)
 
 
 @pulumi.input_type

@@ -48,6 +48,10 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Outputs
         /// Only get facet for the given restricted values. For example, when using "pickupInStore" as key and set restricted values to ["store123", "store456"], only facets for "store123" and "store456" are returned. Only supported on predefined textual fields, custom textual attributes and fulfillments. Maximum is 20. Must be set for the fulfillment facet keys: * pickupInStore * shipToStore * sameDayDelivery * nextDayDelivery * customFulfillment1 * customFulfillment2 * customFulfillment3 * customFulfillment4 * customFulfillment5
         /// </summary>
         public readonly ImmutableArray<string> RestrictedValues;
+        /// <summary>
+        /// Returns the min and max value for each numerical facet intervals. Ignored for textual facets.
+        /// </summary>
+        public readonly bool ReturnMinMax;
 
         [OutputConstructor]
         private GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse(
@@ -65,7 +69,9 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Outputs
 
             string query,
 
-            ImmutableArray<string> restrictedValues)
+            ImmutableArray<string> restrictedValues,
+
+            bool returnMinMax)
         {
             CaseInsensitive = caseInsensitive;
             Contains = contains;
@@ -75,6 +81,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta.Outputs
             Prefixes = prefixes;
             Query = query;
             RestrictedValues = restrictedValues;
+            ReturnMinMax = returnMinMax;
         }
     }
 }

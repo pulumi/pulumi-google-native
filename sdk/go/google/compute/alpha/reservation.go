@@ -29,6 +29,8 @@ type Reservation struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
 	ResourcePolicies pulumi.StringMapOutput `pulumi:"resourcePolicies"`
+	// Status information for Reservation resource.
+	ResourceStatus AllocationResourceStatusResponseOutput `pulumi:"resourceStatus"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
@@ -204,6 +206,11 @@ func (o ReservationOutput) RequestId() pulumi.StringPtrOutput {
 // Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
 func (o ReservationOutput) ResourcePolicies() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Reservation) pulumi.StringMapOutput { return v.ResourcePolicies }).(pulumi.StringMapOutput)
+}
+
+// Status information for Reservation resource.
+func (o ReservationOutput) ResourceStatus() AllocationResourceStatusResponseOutput {
+	return o.ApplyT(func(v *Reservation) AllocationResourceStatusResponseOutput { return v.ResourceStatus }).(AllocationResourceStatusResponseOutput)
 }
 
 // Reserved for future use.

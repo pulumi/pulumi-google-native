@@ -45,6 +45,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("namePrefix")]
         public Output<string> NamePrefix { get; private set; } = null!;
 
+        /// <summary>
+        /// Planning state before being submitted for evaluation
+        /// </summary>
+        [Output("planningStatus")]
+        public Output<string> PlanningStatus { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -160,6 +166,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("namePrefix")]
         public Input<string>? NamePrefix { get; set; }
+
+        /// <summary>
+        /// Planning state before being submitted for evaluation
+        /// </summary>
+        [Input("planningStatus")]
+        public Input<Pulumi.GoogleNative.Compute.Alpha.FutureReservationPlanningStatus>? PlanningStatus { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

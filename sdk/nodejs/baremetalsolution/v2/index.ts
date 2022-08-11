@@ -5,19 +5,24 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./getInstance";
 export * from "./getProvisioningConfig";
+export * from "./instance";
 export * from "./provisioningConfig";
 
 // Export enums:
 export * from "../../types/enums/baremetalsolution/v2";
 
 // Import resources to register:
+import { Instance } from "./instance";
 import { ProvisioningConfig } from "./provisioningConfig";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:baremetalsolution/v2:Instance":
+                return new Instance(name, <any>undefined, { urn })
             case "google-native:baremetalsolution/v2:ProvisioningConfig":
                 return new ProvisioningConfig(name, <any>undefined, { urn })
             default:

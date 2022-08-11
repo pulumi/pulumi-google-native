@@ -37,6 +37,8 @@ type LookupFutureReservationResult struct {
 	Name string `pulumi:"name"`
 	// Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 	NamePrefix string `pulumi:"namePrefix"`
+	// Planning state before being submitted for evaluation
+	PlanningStatus string `pulumi:"planningStatus"`
 	// Server-defined fully-qualified URL for this resource.
 	SelfLink string `pulumi:"selfLink"`
 	// Server-defined URL for this resource with the resource id.
@@ -113,6 +115,11 @@ func (o LookupFutureReservationResultOutput) Name() pulumi.StringOutput {
 // Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
 func (o LookupFutureReservationResultOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFutureReservationResult) string { return v.NamePrefix }).(pulumi.StringOutput)
+}
+
+// Planning state before being submitted for evaluation
+func (o LookupFutureReservationResultOutput) PlanningStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFutureReservationResult) string { return v.PlanningStatus }).(pulumi.StringOutput)
 }
 
 // Server-defined fully-qualified URL for this resource.

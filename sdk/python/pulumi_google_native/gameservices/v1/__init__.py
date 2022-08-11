@@ -6,15 +6,7 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from ._enums import *
-from .config import *
-from .game_server_cluster import *
-from .game_server_deployment import *
 from .game_server_deployment_iam_policy import *
-from .get_config import *
-from .get_game_server_cluster import *
-from .get_game_server_deployment import *
 from .get_game_server_deployment_iam_policy import *
-from .get_realm import *
-from .realm import *
 from ._inputs import *
 from . import outputs

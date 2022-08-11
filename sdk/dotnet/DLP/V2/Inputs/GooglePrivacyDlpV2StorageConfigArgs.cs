@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2BigQueryOptionsArgs>? BigQueryOptions { get; set; }
 
         /// <summary>
-        /// Google Cloud Storage options.
+        /// Cloud Storage options.
         /// </summary>
         [Input("cloudStorageOptions")]
         public Input<Inputs.GooglePrivacyDlpV2CloudStorageOptionsArgs>? CloudStorageOptions { get; set; }

@@ -892,6 +892,62 @@ func (o AliasIpRangeResponseArrayOutput) Index(i pulumi.IntInput) AliasIpRangeRe
 	}).(AliasIpRangeResponseOutput)
 }
 
+// [Output Only] Contains output only fields.
+type AllocationResourceStatusResponse struct {
+	// Allocation Properties of this reservation.
+	SpecificSkuAllocation AllocationResourceStatusSpecificSKUAllocationResponse `pulumi:"specificSkuAllocation"`
+}
+
+// [Output Only] Contains output only fields.
+type AllocationResourceStatusResponseOutput struct{ *pulumi.OutputState }
+
+func (AllocationResourceStatusResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllocationResourceStatusResponse)(nil)).Elem()
+}
+
+func (o AllocationResourceStatusResponseOutput) ToAllocationResourceStatusResponseOutput() AllocationResourceStatusResponseOutput {
+	return o
+}
+
+func (o AllocationResourceStatusResponseOutput) ToAllocationResourceStatusResponseOutputWithContext(ctx context.Context) AllocationResourceStatusResponseOutput {
+	return o
+}
+
+// Allocation Properties of this reservation.
+func (o AllocationResourceStatusResponseOutput) SpecificSkuAllocation() AllocationResourceStatusSpecificSKUAllocationResponseOutput {
+	return o.ApplyT(func(v AllocationResourceStatusResponse) AllocationResourceStatusSpecificSKUAllocationResponse {
+		return v.SpecificSkuAllocation
+	}).(AllocationResourceStatusSpecificSKUAllocationResponseOutput)
+}
+
+// Contains Properties set for the reservation.
+type AllocationResourceStatusSpecificSKUAllocationResponse struct {
+	// ID of the instance template used to populate reservation properties.
+	SourceInstanceTemplateId string `pulumi:"sourceInstanceTemplateId"`
+}
+
+// Contains Properties set for the reservation.
+type AllocationResourceStatusSpecificSKUAllocationResponseOutput struct{ *pulumi.OutputState }
+
+func (AllocationResourceStatusSpecificSKUAllocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllocationResourceStatusSpecificSKUAllocationResponse)(nil)).Elem()
+}
+
+func (o AllocationResourceStatusSpecificSKUAllocationResponseOutput) ToAllocationResourceStatusSpecificSKUAllocationResponseOutput() AllocationResourceStatusSpecificSKUAllocationResponseOutput {
+	return o
+}
+
+func (o AllocationResourceStatusSpecificSKUAllocationResponseOutput) ToAllocationResourceStatusSpecificSKUAllocationResponseOutputWithContext(ctx context.Context) AllocationResourceStatusSpecificSKUAllocationResponseOutput {
+	return o
+}
+
+// ID of the instance template used to populate reservation properties.
+func (o AllocationResourceStatusSpecificSKUAllocationResponseOutput) SourceInstanceTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v AllocationResourceStatusSpecificSKUAllocationResponse) string {
+		return v.SourceInstanceTemplateId
+	}).(pulumi.StringOutput)
+}
+
 type AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDisk struct {
 	// Specifies the size of the disk in base-2 GB.
 	DiskSizeGb *string `pulumi:"diskSizeGb"`
@@ -1405,6 +1461,8 @@ type AllocationSpecificSKUReservation struct {
 	Count *string `pulumi:"count"`
 	// The instance properties for the reservation.
 	InstanceProperties *AllocationSpecificSKUAllocationReservedInstanceProperties `pulumi:"instanceProperties"`
+	// Specific URL of the instance template used in the reservation
+	SourceInstanceTemplate *string `pulumi:"sourceInstanceTemplate"`
 }
 
 // AllocationSpecificSKUReservationInput is an input type that accepts AllocationSpecificSKUReservationArgs and AllocationSpecificSKUReservationOutput values.
@@ -1424,6 +1482,8 @@ type AllocationSpecificSKUReservationArgs struct {
 	Count pulumi.StringPtrInput `pulumi:"count"`
 	// The instance properties for the reservation.
 	InstanceProperties AllocationSpecificSKUAllocationReservedInstancePropertiesPtrInput `pulumi:"instanceProperties"`
+	// Specific URL of the instance template used in the reservation
+	SourceInstanceTemplate pulumi.StringPtrInput `pulumi:"sourceInstanceTemplate"`
 }
 
 func (AllocationSpecificSKUReservationArgs) ElementType() reflect.Type {
@@ -1516,6 +1576,11 @@ func (o AllocationSpecificSKUReservationOutput) InstanceProperties() AllocationS
 	}).(AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput)
 }
 
+// Specific URL of the instance template used in the reservation
+func (o AllocationSpecificSKUReservationOutput) SourceInstanceTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AllocationSpecificSKUReservation) *string { return v.SourceInstanceTemplate }).(pulumi.StringPtrOutput)
+}
+
 type AllocationSpecificSKUReservationPtrOutput struct{ *pulumi.OutputState }
 
 func (AllocationSpecificSKUReservationPtrOutput) ElementType() reflect.Type {
@@ -1560,6 +1625,16 @@ func (o AllocationSpecificSKUReservationPtrOutput) InstanceProperties() Allocati
 	}).(AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput)
 }
 
+// Specific URL of the instance template used in the reservation
+func (o AllocationSpecificSKUReservationPtrOutput) SourceInstanceTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AllocationSpecificSKUReservation) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceInstanceTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
 // This reservation type allows to pre allocate specific instance configuration. Next ID: 6
 type AllocationSpecificSKUReservationResponse struct {
 	// Indicates how many instances are actually usable currently.
@@ -1570,6 +1645,8 @@ type AllocationSpecificSKUReservationResponse struct {
 	InUseCount string `pulumi:"inUseCount"`
 	// The instance properties for the reservation.
 	InstanceProperties AllocationSpecificSKUAllocationReservedInstancePropertiesResponse `pulumi:"instanceProperties"`
+	// Specific URL of the instance template used in the reservation
+	SourceInstanceTemplate string `pulumi:"sourceInstanceTemplate"`
 }
 
 // This reservation type allows to pre allocate specific instance configuration. Next ID: 6
@@ -1607,6 +1684,11 @@ func (o AllocationSpecificSKUReservationResponseOutput) InstanceProperties() All
 	return o.ApplyT(func(v AllocationSpecificSKUReservationResponse) AllocationSpecificSKUAllocationReservedInstancePropertiesResponse {
 		return v.InstanceProperties
 	}).(AllocationSpecificSKUAllocationReservedInstancePropertiesResponseOutput)
+}
+
+// Specific URL of the instance template used in the reservation
+func (o AllocationSpecificSKUReservationResponseOutput) SourceInstanceTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v AllocationSpecificSKUReservationResponse) string { return v.SourceInstanceTemplate }).(pulumi.StringOutput)
 }
 
 // An instance-attached disk resource.
@@ -15431,7 +15513,7 @@ type FirewallPolicyRule struct {
 	Priority *int `pulumi:"priority"`
 	// An optional name for the rule. This field is not a unique identifier and can be updated.
 	RuleName *string `pulumi:"ruleName"`
-	// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+	// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 	SecurityProfileGroup *string `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
@@ -15470,7 +15552,7 @@ type FirewallPolicyRuleArgs struct {
 	Priority pulumi.IntPtrInput `pulumi:"priority"`
 	// An optional name for the rule. This field is not a unique identifier and can be updated.
 	RuleName pulumi.StringPtrInput `pulumi:"ruleName"`
-	// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+	// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 	SecurityProfileGroup pulumi.StringPtrInput `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput `pulumi:"targetResources"`
@@ -15572,7 +15654,7 @@ func (o FirewallPolicyRuleOutput) RuleName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyRule) *string { return v.RuleName }).(pulumi.StringPtrOutput)
 }
 
-// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 func (o FirewallPolicyRuleOutput) SecurityProfileGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FirewallPolicyRule) *string { return v.SecurityProfileGroup }).(pulumi.StringPtrOutput)
 }
@@ -16247,7 +16329,7 @@ type FirewallPolicyRuleResponse struct {
 	RuleName string `pulumi:"ruleName"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount int `pulumi:"ruleTupleCount"`
-	// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+	// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 	SecurityProfileGroup string `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
@@ -16322,7 +16404,7 @@ func (o FirewallPolicyRuleResponseOutput) RuleTupleCount() pulumi.IntOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleResponse) int { return v.RuleTupleCount }).(pulumi.IntOutput)
 }
 
-// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_profile_group' and cannot be specified for other actions.
+// A fully-qualified URL of a SecurityProfile resource instance. Example: https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 func (o FirewallPolicyRuleResponseOutput) SecurityProfileGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v FirewallPolicyRuleResponse) string { return v.SecurityProfileGroup }).(pulumi.StringOutput)
 }
@@ -16890,6 +16972,8 @@ func (o ForwardingRuleServiceDirectoryRegistrationResponseArrayOutput) Index(i p
 type FutureReservationSpecificSKUProperties struct {
 	// Properties of the SKU instances being reserved.
 	InstanceProperties *AllocationSpecificSKUAllocationReservedInstanceProperties `pulumi:"instanceProperties"`
+	// The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+	SourceInstanceTemplate *string `pulumi:"sourceInstanceTemplate"`
 	// Total number of instances for which capacity assurance is requested at a future time period.
 	TotalCount *string `pulumi:"totalCount"`
 }
@@ -16908,6 +16992,8 @@ type FutureReservationSpecificSKUPropertiesInput interface {
 type FutureReservationSpecificSKUPropertiesArgs struct {
 	// Properties of the SKU instances being reserved.
 	InstanceProperties AllocationSpecificSKUAllocationReservedInstancePropertiesPtrInput `pulumi:"instanceProperties"`
+	// The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+	SourceInstanceTemplate pulumi.StringPtrInput `pulumi:"sourceInstanceTemplate"`
 	// Total number of instances for which capacity assurance is requested at a future time period.
 	TotalCount pulumi.StringPtrInput `pulumi:"totalCount"`
 }
@@ -16996,6 +17082,11 @@ func (o FutureReservationSpecificSKUPropertiesOutput) InstanceProperties() Alloc
 	}).(AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput)
 }
 
+// The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+func (o FutureReservationSpecificSKUPropertiesOutput) SourceInstanceTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FutureReservationSpecificSKUProperties) *string { return v.SourceInstanceTemplate }).(pulumi.StringPtrOutput)
+}
+
 // Total number of instances for which capacity assurance is requested at a future time period.
 func (o FutureReservationSpecificSKUPropertiesOutput) TotalCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FutureReservationSpecificSKUProperties) *string { return v.TotalCount }).(pulumi.StringPtrOutput)
@@ -17035,6 +17126,16 @@ func (o FutureReservationSpecificSKUPropertiesPtrOutput) InstanceProperties() Al
 	}).(AllocationSpecificSKUAllocationReservedInstancePropertiesPtrOutput)
 }
 
+// The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+func (o FutureReservationSpecificSKUPropertiesPtrOutput) SourceInstanceTemplate() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FutureReservationSpecificSKUProperties) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceInstanceTemplate
+	}).(pulumi.StringPtrOutput)
+}
+
 // Total number of instances for which capacity assurance is requested at a future time period.
 func (o FutureReservationSpecificSKUPropertiesPtrOutput) TotalCount() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FutureReservationSpecificSKUProperties) *string {
@@ -17048,6 +17149,8 @@ func (o FutureReservationSpecificSKUPropertiesPtrOutput) TotalCount() pulumi.Str
 type FutureReservationSpecificSKUPropertiesResponse struct {
 	// Properties of the SKU instances being reserved.
 	InstanceProperties AllocationSpecificSKUAllocationReservedInstancePropertiesResponse `pulumi:"instanceProperties"`
+	// The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+	SourceInstanceTemplate string `pulumi:"sourceInstanceTemplate"`
 	// Total number of instances for which capacity assurance is requested at a future time period.
 	TotalCount string `pulumi:"totalCount"`
 }
@@ -17073,6 +17176,11 @@ func (o FutureReservationSpecificSKUPropertiesResponseOutput) InstanceProperties
 	}).(AllocationSpecificSKUAllocationReservedInstancePropertiesResponseOutput)
 }
 
+// The instance template that will be used to populate the ReservedInstanceProperties of the future reservation
+func (o FutureReservationSpecificSKUPropertiesResponseOutput) SourceInstanceTemplate() pulumi.StringOutput {
+	return o.ApplyT(func(v FutureReservationSpecificSKUPropertiesResponse) string { return v.SourceInstanceTemplate }).(pulumi.StringOutput)
+}
+
 // Total number of instances for which capacity assurance is requested at a future time period.
 func (o FutureReservationSpecificSKUPropertiesResponseOutput) TotalCount() pulumi.StringOutput {
 	return o.ApplyT(func(v FutureReservationSpecificSKUPropertiesResponse) string { return v.TotalCount }).(pulumi.StringOutput)
@@ -17087,7 +17195,8 @@ type FutureReservationStatusResponse struct {
 	// Time when Future Reservation would become LOCKED, after which no modifications to Future Reservation will be allowed. Applicable only after the Future Reservation is in the APPROVED state. The lock_time is an RFC3339 string. The procurement_status will transition to PROCURING state at this time.
 	LockTime string `pulumi:"lockTime"`
 	// Current state of this Future Reservation
-	ProcurementStatus string `pulumi:"procurementStatus"`
+	ProcurementStatus     string                                               `pulumi:"procurementStatus"`
+	SpecificSkuProperties FutureReservationStatusSpecificSKUPropertiesResponse `pulumi:"specificSkuProperties"`
 }
 
 // [Output only] Represents status related to the future reservation.
@@ -17123,6 +17232,38 @@ func (o FutureReservationStatusResponseOutput) LockTime() pulumi.StringOutput {
 // Current state of this Future Reservation
 func (o FutureReservationStatusResponseOutput) ProcurementStatus() pulumi.StringOutput {
 	return o.ApplyT(func(v FutureReservationStatusResponse) string { return v.ProcurementStatus }).(pulumi.StringOutput)
+}
+
+func (o FutureReservationStatusResponseOutput) SpecificSkuProperties() FutureReservationStatusSpecificSKUPropertiesResponseOutput {
+	return o.ApplyT(func(v FutureReservationStatusResponse) FutureReservationStatusSpecificSKUPropertiesResponse {
+		return v.SpecificSkuProperties
+	}).(FutureReservationStatusSpecificSKUPropertiesResponseOutput)
+}
+
+// Properties to be set for the Future Reservation.
+type FutureReservationStatusSpecificSKUPropertiesResponse struct {
+	// ID of the instance template used to populate the Future Reservation properties.
+	SourceInstanceTemplateId string `pulumi:"sourceInstanceTemplateId"`
+}
+
+// Properties to be set for the Future Reservation.
+type FutureReservationStatusSpecificSKUPropertiesResponseOutput struct{ *pulumi.OutputState }
+
+func (FutureReservationStatusSpecificSKUPropertiesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FutureReservationStatusSpecificSKUPropertiesResponse)(nil)).Elem()
+}
+
+func (o FutureReservationStatusSpecificSKUPropertiesResponseOutput) ToFutureReservationStatusSpecificSKUPropertiesResponseOutput() FutureReservationStatusSpecificSKUPropertiesResponseOutput {
+	return o
+}
+
+func (o FutureReservationStatusSpecificSKUPropertiesResponseOutput) ToFutureReservationStatusSpecificSKUPropertiesResponseOutputWithContext(ctx context.Context) FutureReservationStatusSpecificSKUPropertiesResponseOutput {
+	return o
+}
+
+// ID of the instance template used to populate the Future Reservation properties.
+func (o FutureReservationStatusSpecificSKUPropertiesResponseOutput) SourceInstanceTemplateId() pulumi.StringOutput {
+	return o.ApplyT(func(v FutureReservationStatusSpecificSKUPropertiesResponse) string { return v.SourceInstanceTemplateId }).(pulumi.StringOutput)
 }
 
 type FutureReservationTimeWindow struct {
@@ -39073,6 +39214,8 @@ type ReservationResponse struct {
 	Name string `pulumi:"name"`
 	// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
 	ResourcePolicies map[string]string `pulumi:"resourcePolicies"`
+	// Status information for Reservation resource.
+	ResourceStatus AllocationResourceStatusResponse `pulumi:"resourceStatus"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
@@ -39134,6 +39277,11 @@ func (o ReservationResponseOutput) Name() pulumi.StringOutput {
 // Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
 func (o ReservationResponseOutput) ResourcePolicies() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ReservationResponse) map[string]string { return v.ResourcePolicies }).(pulumi.StringMapOutput)
+}
+
+// Status information for Reservation resource.
+func (o ReservationResponseOutput) ResourceStatus() AllocationResourceStatusResponseOutput {
+	return o.ApplyT(func(v ReservationResponse) AllocationResourceStatusResponse { return v.ResourceStatus }).(AllocationResourceStatusResponseOutput)
 }
 
 // Reserved for future use.
@@ -46535,7 +46683,7 @@ func (o SavedDiskResponseArrayOutput) Index(i pulumi.IntInput) SavedDiskResponse
 	}).(SavedDiskResponseOutput)
 }
 
-// Sets the scheduling options for an Instance. NextID: 21
+// Sets the scheduling options for an Instance.
 type Scheduling struct {
 	// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
 	AutomaticRestart *bool `pulumi:"automaticRestart"`
@@ -46584,7 +46732,7 @@ type SchedulingInput interface {
 	ToSchedulingOutputWithContext(context.Context) SchedulingOutput
 }
 
-// Sets the scheduling options for an Instance. NextID: 21
+// Sets the scheduling options for an Instance.
 type SchedulingArgs struct {
 	// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
 	AutomaticRestart pulumi.BoolPtrInput `pulumi:"automaticRestart"`
@@ -46675,7 +46823,7 @@ func (i *schedulingPtrType) ToSchedulingPtrOutputWithContext(ctx context.Context
 	return pulumi.ToOutputWithContext(ctx, i).(SchedulingPtrOutput)
 }
 
-// Sets the scheduling options for an Instance. NextID: 21
+// Sets the scheduling options for an Instance.
 type SchedulingOutput struct{ *pulumi.OutputState }
 
 func (SchedulingOutput) ElementType() reflect.Type {
@@ -47157,7 +47305,7 @@ func (o SchedulingNodeAffinityResponseArrayOutput) Index(i pulumi.IntInput) Sche
 	}).(SchedulingNodeAffinityResponseOutput)
 }
 
-// Sets the scheduling options for an Instance. NextID: 21
+// Sets the scheduling options for an Instance.
 type SchedulingResponse struct {
 	// Specifies whether the instance should be automatically restarted if it is terminated by Compute Engine (not terminated by a user). You can only set the automatic restart option for standard instances. Preemptible instances cannot be automatically restarted. By default, this is set to true so an instance is automatically restarted if it is terminated by Compute Engine.
 	AutomaticRestart bool `pulumi:"automaticRestart"`
@@ -47195,7 +47343,7 @@ type SchedulingResponse struct {
 	TerminationTime string `pulumi:"terminationTime"`
 }
 
-// Sets the scheduling options for an Instance. NextID: 21
+// Sets the scheduling options for an Instance.
 type SchedulingResponseOutput struct{ *pulumi.OutputState }
 
 func (SchedulingResponseOutput) ElementType() reflect.Type {
@@ -48078,8 +48226,10 @@ func (o SecurityPolicyAdaptiveProtectionConfigResponseOutput) Layer7DdosDefenseC
 }
 
 type SecurityPolicyAdvancedOptionsConfig struct {
-	JsonParsing *SecurityPolicyAdvancedOptionsConfigJsonParsing `pulumi:"jsonParsing"`
-	LogLevel    *SecurityPolicyAdvancedOptionsConfigLogLevel    `pulumi:"logLevel"`
+	// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+	JsonCustomConfig *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig `pulumi:"jsonCustomConfig"`
+	JsonParsing      *SecurityPolicyAdvancedOptionsConfigJsonParsing      `pulumi:"jsonParsing"`
+	LogLevel         *SecurityPolicyAdvancedOptionsConfigLogLevel         `pulumi:"logLevel"`
 }
 
 // SecurityPolicyAdvancedOptionsConfigInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigArgs and SecurityPolicyAdvancedOptionsConfigOutput values.
@@ -48094,8 +48244,10 @@ type SecurityPolicyAdvancedOptionsConfigInput interface {
 }
 
 type SecurityPolicyAdvancedOptionsConfigArgs struct {
-	JsonParsing SecurityPolicyAdvancedOptionsConfigJsonParsingPtrInput `pulumi:"jsonParsing"`
-	LogLevel    SecurityPolicyAdvancedOptionsConfigLogLevelPtrInput    `pulumi:"logLevel"`
+	// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+	JsonCustomConfig SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput `pulumi:"jsonCustomConfig"`
+	JsonParsing      SecurityPolicyAdvancedOptionsConfigJsonParsingPtrInput      `pulumi:"jsonParsing"`
+	LogLevel         SecurityPolicyAdvancedOptionsConfigLogLevelPtrInput         `pulumi:"logLevel"`
 }
 
 func (SecurityPolicyAdvancedOptionsConfigArgs) ElementType() reflect.Type {
@@ -48175,6 +48327,13 @@ func (o SecurityPolicyAdvancedOptionsConfigOutput) ToSecurityPolicyAdvancedOptio
 	}).(SecurityPolicyAdvancedOptionsConfigPtrOutput)
 }
 
+// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+func (o SecurityPolicyAdvancedOptionsConfigOutput) JsonCustomConfig() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfig) *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		return v.JsonCustomConfig
+	}).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput)
+}
+
 func (o SecurityPolicyAdvancedOptionsConfigOutput) JsonParsing() SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfig) *SecurityPolicyAdvancedOptionsConfigJsonParsing {
 		return v.JsonParsing
@@ -48211,6 +48370,16 @@ func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) Elem() SecurityPolicyAdvan
 	}).(SecurityPolicyAdvancedOptionsConfigOutput)
 }
 
+// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) JsonCustomConfig() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfig) *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		if v == nil {
+			return nil
+		}
+		return v.JsonCustomConfig
+	}).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput)
+}
+
 func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) JsonParsing() SecurityPolicyAdvancedOptionsConfigJsonParsingPtrOutput {
 	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfig) *SecurityPolicyAdvancedOptionsConfigJsonParsing {
 		if v == nil {
@@ -48229,9 +48398,172 @@ func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) LogLevel() SecurityPolicyA
 	}).(SecurityPolicyAdvancedOptionsConfigLogLevelPtrOutput)
 }
 
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfig struct {
+	// A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+	ContentTypes []string `pulumi:"contentTypes"`
+}
+
+// SecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs and SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput` via:
+//
+//          SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{...}
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput
+	ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput
+}
+
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs struct {
+	// A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+	ContentTypes pulumi.StringArrayInput `pulumi:"contentTypes"`
+}
+
+func (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return i.ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput)
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return i.ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput).ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs, SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtr and SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput` via:
+//
+//          SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{...}
+//
+//  or:
+//
+//          nil
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput
+	ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput
+}
+
+type securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs
+
+func SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtr(v *SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput {
+	return (*securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType)(v)
+}
+
+func (*securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return i.ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput)
+}
+
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o.ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyAdvancedOptionsConfigJsonCustomConfig) *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		return &v
+	}).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput)
+}
+
+// A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfigJsonCustomConfig) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) Elem() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig) SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyAdvancedOptionsConfigJsonCustomConfig
+		return ret
+	}).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput)
+}
+
+// A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentTypes
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse struct {
+	// A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+	ContentTypes []string `pulumi:"contentTypes"`
+}
+
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput {
+	return o
+}
+
+// A list of custom Content-Type header values to apply the JSON parsing. As per RFC 1341, a Content-Type header value has the following format: Content-Type := type "/" subtype *[";" parameter] When configuring a custom Content-Type header value, only the type/subtype needs to be specified, and the parameters should be excluded.
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
+}
+
 type SecurityPolicyAdvancedOptionsConfigResponse struct {
-	JsonParsing string `pulumi:"jsonParsing"`
-	LogLevel    string `pulumi:"logLevel"`
+	// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+	JsonCustomConfig SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse `pulumi:"jsonCustomConfig"`
+	JsonParsing      string                                                      `pulumi:"jsonParsing"`
+	LogLevel         string                                                      `pulumi:"logLevel"`
 }
 
 type SecurityPolicyAdvancedOptionsConfigResponseOutput struct{ *pulumi.OutputState }
@@ -48246,6 +48578,13 @@ func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) ToSecurityPolicyAdvan
 
 func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) ToSecurityPolicyAdvancedOptionsConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigResponseOutput {
 	return o
+}
+
+// Custom configuration to apply the JSON parsing. Only applicable when json_parsing is set to STANDARD.
+func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) JsonCustomConfig() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfigResponse) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponse {
+		return v.JsonCustomConfig
+	}).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput)
 }
 
 func (o SecurityPolicyAdvancedOptionsConfigResponseOutput) JsonParsing() pulumi.StringOutput {
@@ -58429,6 +58768,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigPtrInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAssociationInput)(nil)).Elem(), SecurityPolicyAssociationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAssociationArrayInput)(nil)).Elem(), SecurityPolicyAssociationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyCloudArmorConfigInput)(nil)).Elem(), SecurityPolicyCloudArmorConfigArgs{})
@@ -58536,6 +58877,8 @@ func init() {
 	pulumi.RegisterOutputType(AliasIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(AliasIpRangeResponseOutput{})
 	pulumi.RegisterOutputType(AliasIpRangeResponseArrayOutput{})
+	pulumi.RegisterOutputType(AllocationResourceStatusResponseOutput{})
+	pulumi.RegisterOutputType(AllocationResourceStatusSpecificSKUAllocationResponseOutput{})
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskOutput{})
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskArrayOutput{})
 	pulumi.RegisterOutputType(AllocationSpecificSKUAllocationAllocatedInstancePropertiesReservedDiskResponseOutput{})
@@ -58778,6 +59121,7 @@ func init() {
 	pulumi.RegisterOutputType(FutureReservationSpecificSKUPropertiesPtrOutput{})
 	pulumi.RegisterOutputType(FutureReservationSpecificSKUPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(FutureReservationStatusResponseOutput{})
+	pulumi.RegisterOutputType(FutureReservationStatusSpecificSKUPropertiesResponseOutput{})
 	pulumi.RegisterOutputType(FutureReservationTimeWindowOutput{})
 	pulumi.RegisterOutputType(FutureReservationTimeWindowPtrOutput{})
 	pulumi.RegisterOutputType(FutureReservationTimeWindowResponseOutput{})
@@ -59258,6 +59602,9 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAssociationOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAssociationArrayOutput{})

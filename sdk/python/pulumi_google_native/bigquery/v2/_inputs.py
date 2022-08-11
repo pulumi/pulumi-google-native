@@ -3749,9 +3749,9 @@ class RemoteFunctionOptionsArgs:
                  user_defined_context: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Options for a remote user-defined function.
-        :param pulumi.Input[str] connection: Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
-        :param pulumi.Input[str] endpoint: Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
-        :param pulumi.Input[str] max_batching_rows: Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+        :param pulumi.Input[str] connection: Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. Format: ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"```
+        :param pulumi.Input[str] endpoint: Endpoint of the user-provided remote service, e.g. ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
+        :param pulumi.Input[str] max_batching_rows: Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides the number of rows in a batch.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_defined_context: User-defined context as a set of key/value pairs, which will be sent as function invocation context together with batched arguments in the requests to the remote service. The total number of bytes of keys and values must be less than 8KB.
         """
         if connection is not None:
@@ -3767,7 +3767,7 @@ class RemoteFunctionOptionsArgs:
     @pulumi.getter
     def connection(self) -> Optional[pulumi.Input[str]]:
         """
-        Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. projects/{project_id}/locations/{location_id}/connections/{connection_id}
+        Fully qualified name of the user-provided connection object which holds the authentication information to send requests to the remote service. Format: ```"projects/{projectId}/locations/{locationId}/connections/{connectionId}"```
         """
         return pulumi.get(self, "connection")
 
@@ -3779,7 +3779,7 @@ class RemoteFunctionOptionsArgs:
     @pulumi.getter
     def endpoint(self) -> Optional[pulumi.Input[str]]:
         """
-        Endpoint of the user-provided remote service (e.g. a function url in Google Cloud Functions).
+        Endpoint of the user-provided remote service, e.g. ```https://us-east1-my_gcf_project.cloudfunctions.net/remote_add```
         """
         return pulumi.get(self, "endpoint")
 
@@ -3791,7 +3791,7 @@ class RemoteFunctionOptionsArgs:
     @pulumi.getter(name="maxBatchingRows")
     def max_batching_rows(self) -> Optional[pulumi.Input[str]]:
         """
-        Max number of rows in each batch sent to the remote service. If absent or if 0, it means no limit.
+        Max number of rows in each batch sent to the remote service. If absent or if 0, BigQuery dynamically decides the number of rows in a batch.
         """
         return pulumi.get(self, "max_batching_rows")
 

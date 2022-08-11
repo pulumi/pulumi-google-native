@@ -13,6 +13,8 @@ __all__ = [
     'ManagedZoneForwardingConfigNameServerTargetForwardingPath',
     'ManagedZoneVisibility',
     'PolicyAlternativeNameServerConfigTargetNameServerForwardingPath',
+    'RRSetRoutingPolicyLoadBalancerTargetIpProtocol',
+    'RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType',
     'ResponsePolicyRuleBehavior',
 ]
 
@@ -118,6 +120,17 @@ class PolicyAlternativeNameServerConfigTargetNameServerForwardingPath(str, Enum)
     """
     Cloud DNS always forwards to this target through the VPC.
     """
+
+
+class RRSetRoutingPolicyLoadBalancerTargetIpProtocol(str, Enum):
+    UNDEFINED = "undefined"
+    TCP = "tcp"
+    UDP = "udp"
+
+
+class RRSetRoutingPolicyLoadBalancerTargetLoadBalancerType(str, Enum):
+    NONE = "none"
+    REGIONAL_L4ILB = "regionalL4ilb"
 
 
 class ResponsePolicyRuleBehavior(str, Enum):

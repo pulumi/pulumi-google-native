@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetFutureReservationResult:
-    def __init__(__self__, creation_timestamp=None, description=None, kind=None, name=None, name_prefix=None, self_link=None, self_link_with_id=None, share_settings=None, specific_sku_properties=None, status=None, time_window=None, zone=None):
+    def __init__(__self__, creation_timestamp=None, description=None, kind=None, name=None, name_prefix=None, planning_status=None, self_link=None, self_link_with_id=None, share_settings=None, specific_sku_properties=None, status=None, time_window=None, zone=None):
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -35,6 +35,9 @@ class GetFutureReservationResult:
         if name_prefix and not isinstance(name_prefix, str):
             raise TypeError("Expected argument 'name_prefix' to be a str")
         pulumi.set(__self__, "name_prefix", name_prefix)
+        if planning_status and not isinstance(planning_status, str):
+            raise TypeError("Expected argument 'planning_status' to be a str")
+        pulumi.set(__self__, "planning_status", planning_status)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -96,6 +99,14 @@ class GetFutureReservationResult:
         Name prefix for the reservations to be created at the time of delivery. The name prefix must comply with RFC1035. Maximum allowed length for name prefix is 20. Automatically created reservations name format will be -date-####.
         """
         return pulumi.get(self, "name_prefix")
+
+    @property
+    @pulumi.getter(name="planningStatus")
+    def planning_status(self) -> str:
+        """
+        Planning state before being submitted for evaluation
+        """
+        return pulumi.get(self, "planning_status")
 
     @property
     @pulumi.getter(name="selfLink")
@@ -165,6 +176,7 @@ class AwaitableGetFutureReservationResult(GetFutureReservationResult):
             kind=self.kind,
             name=self.name,
             name_prefix=self.name_prefix,
+            planning_status=self.planning_status,
             self_link=self.self_link,
             self_link_with_id=self.self_link_with_id,
             share_settings=self.share_settings,
@@ -194,6 +206,7 @@ def get_future_reservation(future_reservation: Optional[str] = None,
         kind=__ret__.kind,
         name=__ret__.name,
         name_prefix=__ret__.name_prefix,
+        planning_status=__ret__.planning_status,
         self_link=__ret__.self_link,
         self_link_with_id=__ret__.self_link_with_id,
         share_settings=__ret__.share_settings,

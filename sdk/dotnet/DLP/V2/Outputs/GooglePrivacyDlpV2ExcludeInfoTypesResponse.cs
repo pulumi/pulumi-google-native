@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
     /// <summary>
-    /// List of exclude infoTypes.
+    /// List of excluded infoTypes.
     /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2ExcludeInfoTypesResponse

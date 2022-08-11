@@ -4400,7 +4400,7 @@ type ObjectMeta struct {
 	Generation *int `pulumi:"generation"`
 	// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
 	Labels map[string]string `pulumi:"labels"`
-	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names +optional
+	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a namespaces.services.create request, name must contain fewer than 50 characters. +optional
 	Name *string `pulumi:"name"`
 	// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
 	Namespace *string `pulumi:"namespace"`
@@ -4445,7 +4445,7 @@ type ObjectMetaArgs struct {
 	Generation pulumi.IntPtrInput `pulumi:"generation"`
 	// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
 	Labels pulumi.StringMapInput `pulumi:"labels"`
-	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names +optional
+	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a namespaces.services.create request, name must contain fewer than 50 characters. +optional
 	Name pulumi.StringPtrInput `pulumi:"name"`
 	// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
 	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
@@ -4582,7 +4582,7 @@ func (o ObjectMetaOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMeta) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names +optional
+// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a namespaces.services.create request, name must contain fewer than 50 characters. +optional
 func (o ObjectMetaOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ObjectMeta) *string { return v.Name }).(pulumi.StringPtrOutput)
 }
@@ -4726,7 +4726,7 @@ func (o ObjectMetaPtrOutput) Labels() pulumi.StringMapOutput {
 	}).(pulumi.StringMapOutput)
 }
 
-// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names +optional
+// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a namespaces.services.create request, name must contain fewer than 50 characters. +optional
 func (o ObjectMetaPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ObjectMeta) *string {
 		if v == nil {
@@ -4806,7 +4806,7 @@ type ObjectMetaResponse struct {
 	Generation int `pulumi:"generation"`
 	// (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
 	Labels map[string]string `pulumi:"labels"`
-	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names +optional
+	// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a namespaces.services.create request, name must contain fewer than 50 characters. +optional
 	Name string `pulumi:"name"`
 	// Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
 	Namespace string `pulumi:"namespace"`
@@ -4880,7 +4880,7 @@ func (o ObjectMetaResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names +optional
+// Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a namespaces.services.create request, name must contain fewer than 50 characters. +optional
 func (o ObjectMetaResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ObjectMetaResponse) string { return v.Name }).(pulumi.StringOutput)
 }

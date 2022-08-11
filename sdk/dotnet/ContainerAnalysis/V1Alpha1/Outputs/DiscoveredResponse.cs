@@ -17,6 +17,14 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
     public sealed class DiscoveredResponse
     {
         /// <summary>
+        /// The list of analysis that were completed for a resource.
+        /// </summary>
+        public readonly Outputs.AnalysisCompletedResponse AnalysisCompleted;
+        /// <summary>
+        /// Indicates any errors encountered during analysis of a resource. There could be 0 or more of these errors.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.StatusResponse> AnalysisError;
+        /// <summary>
         /// The status of discovery for the resource.
         /// </summary>
         public readonly string AnalysisStatus;
@@ -47,6 +55,10 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
         [OutputConstructor]
         private DiscoveredResponse(
+            Outputs.AnalysisCompletedResponse analysisCompleted,
+
+            ImmutableArray<Outputs.StatusResponse> analysisError,
+
             string analysisStatus,
 
             Outputs.StatusResponse analysisStatusError,
@@ -61,6 +73,8 @@ namespace Pulumi.GoogleNative.ContainerAnalysis.V1Alpha1.Outputs
 
             Outputs.OperationResponse operation)
         {
+            AnalysisCompleted = analysisCompleted;
+            AnalysisError = analysisError;
             AnalysisStatus = analysisStatus;
             AnalysisStatusError = analysisStatusError;
             ArchiveTime = archiveTime;

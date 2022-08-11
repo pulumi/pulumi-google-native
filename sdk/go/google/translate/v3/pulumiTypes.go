@@ -172,6 +172,621 @@ func (o GlossaryInputConfigResponseOutput) GcsSource() GcsSourceResponseOutput {
 	return o.ApplyT(func(v GlossaryInputConfigResponse) GcsSourceResponse { return v.GcsSource }).(GcsSourceResponseOutput)
 }
 
+// Represents a single glossary term
+type GlossaryTerm struct {
+	// The language for this glossary term.
+	LanguageCode *string `pulumi:"languageCode"`
+	// The text for the glossary term.
+	Text *string `pulumi:"text"`
+}
+
+// GlossaryTermInput is an input type that accepts GlossaryTermArgs and GlossaryTermOutput values.
+// You can construct a concrete instance of `GlossaryTermInput` via:
+//
+//          GlossaryTermArgs{...}
+type GlossaryTermInput interface {
+	pulumi.Input
+
+	ToGlossaryTermOutput() GlossaryTermOutput
+	ToGlossaryTermOutputWithContext(context.Context) GlossaryTermOutput
+}
+
+// Represents a single glossary term
+type GlossaryTermArgs struct {
+	// The language for this glossary term.
+	LanguageCode pulumi.StringPtrInput `pulumi:"languageCode"`
+	// The text for the glossary term.
+	Text pulumi.StringPtrInput `pulumi:"text"`
+}
+
+func (GlossaryTermArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlossaryTerm)(nil)).Elem()
+}
+
+func (i GlossaryTermArgs) ToGlossaryTermOutput() GlossaryTermOutput {
+	return i.ToGlossaryTermOutputWithContext(context.Background())
+}
+
+func (i GlossaryTermArgs) ToGlossaryTermOutputWithContext(ctx context.Context) GlossaryTermOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermOutput)
+}
+
+func (i GlossaryTermArgs) ToGlossaryTermPtrOutput() GlossaryTermPtrOutput {
+	return i.ToGlossaryTermPtrOutputWithContext(context.Background())
+}
+
+func (i GlossaryTermArgs) ToGlossaryTermPtrOutputWithContext(ctx context.Context) GlossaryTermPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermOutput).ToGlossaryTermPtrOutputWithContext(ctx)
+}
+
+// GlossaryTermPtrInput is an input type that accepts GlossaryTermArgs, GlossaryTermPtr and GlossaryTermPtrOutput values.
+// You can construct a concrete instance of `GlossaryTermPtrInput` via:
+//
+//          GlossaryTermArgs{...}
+//
+//  or:
+//
+//          nil
+type GlossaryTermPtrInput interface {
+	pulumi.Input
+
+	ToGlossaryTermPtrOutput() GlossaryTermPtrOutput
+	ToGlossaryTermPtrOutputWithContext(context.Context) GlossaryTermPtrOutput
+}
+
+type glossaryTermPtrType GlossaryTermArgs
+
+func GlossaryTermPtr(v *GlossaryTermArgs) GlossaryTermPtrInput {
+	return (*glossaryTermPtrType)(v)
+}
+
+func (*glossaryTermPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlossaryTerm)(nil)).Elem()
+}
+
+func (i *glossaryTermPtrType) ToGlossaryTermPtrOutput() GlossaryTermPtrOutput {
+	return i.ToGlossaryTermPtrOutputWithContext(context.Background())
+}
+
+func (i *glossaryTermPtrType) ToGlossaryTermPtrOutputWithContext(ctx context.Context) GlossaryTermPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermPtrOutput)
+}
+
+// GlossaryTermArrayInput is an input type that accepts GlossaryTermArray and GlossaryTermArrayOutput values.
+// You can construct a concrete instance of `GlossaryTermArrayInput` via:
+//
+//          GlossaryTermArray{ GlossaryTermArgs{...} }
+type GlossaryTermArrayInput interface {
+	pulumi.Input
+
+	ToGlossaryTermArrayOutput() GlossaryTermArrayOutput
+	ToGlossaryTermArrayOutputWithContext(context.Context) GlossaryTermArrayOutput
+}
+
+type GlossaryTermArray []GlossaryTermInput
+
+func (GlossaryTermArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlossaryTerm)(nil)).Elem()
+}
+
+func (i GlossaryTermArray) ToGlossaryTermArrayOutput() GlossaryTermArrayOutput {
+	return i.ToGlossaryTermArrayOutputWithContext(context.Background())
+}
+
+func (i GlossaryTermArray) ToGlossaryTermArrayOutputWithContext(ctx context.Context) GlossaryTermArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermArrayOutput)
+}
+
+// Represents a single glossary term
+type GlossaryTermOutput struct{ *pulumi.OutputState }
+
+func (GlossaryTermOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlossaryTerm)(nil)).Elem()
+}
+
+func (o GlossaryTermOutput) ToGlossaryTermOutput() GlossaryTermOutput {
+	return o
+}
+
+func (o GlossaryTermOutput) ToGlossaryTermOutputWithContext(ctx context.Context) GlossaryTermOutput {
+	return o
+}
+
+func (o GlossaryTermOutput) ToGlossaryTermPtrOutput() GlossaryTermPtrOutput {
+	return o.ToGlossaryTermPtrOutputWithContext(context.Background())
+}
+
+func (o GlossaryTermOutput) ToGlossaryTermPtrOutputWithContext(ctx context.Context) GlossaryTermPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlossaryTerm) *GlossaryTerm {
+		return &v
+	}).(GlossaryTermPtrOutput)
+}
+
+// The language for this glossary term.
+func (o GlossaryTermOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GlossaryTerm) *string { return v.LanguageCode }).(pulumi.StringPtrOutput)
+}
+
+// The text for the glossary term.
+func (o GlossaryTermOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GlossaryTerm) *string { return v.Text }).(pulumi.StringPtrOutput)
+}
+
+type GlossaryTermPtrOutput struct{ *pulumi.OutputState }
+
+func (GlossaryTermPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlossaryTerm)(nil)).Elem()
+}
+
+func (o GlossaryTermPtrOutput) ToGlossaryTermPtrOutput() GlossaryTermPtrOutput {
+	return o
+}
+
+func (o GlossaryTermPtrOutput) ToGlossaryTermPtrOutputWithContext(ctx context.Context) GlossaryTermPtrOutput {
+	return o
+}
+
+func (o GlossaryTermPtrOutput) Elem() GlossaryTermOutput {
+	return o.ApplyT(func(v *GlossaryTerm) GlossaryTerm {
+		if v != nil {
+			return *v
+		}
+		var ret GlossaryTerm
+		return ret
+	}).(GlossaryTermOutput)
+}
+
+// The language for this glossary term.
+func (o GlossaryTermPtrOutput) LanguageCode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlossaryTerm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LanguageCode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The text for the glossary term.
+func (o GlossaryTermPtrOutput) Text() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GlossaryTerm) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Text
+	}).(pulumi.StringPtrOutput)
+}
+
+type GlossaryTermArrayOutput struct{ *pulumi.OutputState }
+
+func (GlossaryTermArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlossaryTerm)(nil)).Elem()
+}
+
+func (o GlossaryTermArrayOutput) ToGlossaryTermArrayOutput() GlossaryTermArrayOutput {
+	return o
+}
+
+func (o GlossaryTermArrayOutput) ToGlossaryTermArrayOutputWithContext(ctx context.Context) GlossaryTermArrayOutput {
+	return o
+}
+
+func (o GlossaryTermArrayOutput) Index(i pulumi.IntInput) GlossaryTermOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlossaryTerm {
+		return vs[0].([]GlossaryTerm)[vs[1].(int)]
+	}).(GlossaryTermOutput)
+}
+
+// Represents a single glossary term
+type GlossaryTermResponse struct {
+	// The language for this glossary term.
+	LanguageCode string `pulumi:"languageCode"`
+	// The text for the glossary term.
+	Text string `pulumi:"text"`
+}
+
+// Represents a single glossary term
+type GlossaryTermResponseOutput struct{ *pulumi.OutputState }
+
+func (GlossaryTermResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlossaryTermResponse)(nil)).Elem()
+}
+
+func (o GlossaryTermResponseOutput) ToGlossaryTermResponseOutput() GlossaryTermResponseOutput {
+	return o
+}
+
+func (o GlossaryTermResponseOutput) ToGlossaryTermResponseOutputWithContext(ctx context.Context) GlossaryTermResponseOutput {
+	return o
+}
+
+// The language for this glossary term.
+func (o GlossaryTermResponseOutput) LanguageCode() pulumi.StringOutput {
+	return o.ApplyT(func(v GlossaryTermResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// The text for the glossary term.
+func (o GlossaryTermResponseOutput) Text() pulumi.StringOutput {
+	return o.ApplyT(func(v GlossaryTermResponse) string { return v.Text }).(pulumi.StringOutput)
+}
+
+type GlossaryTermResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GlossaryTermResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GlossaryTermResponse)(nil)).Elem()
+}
+
+func (o GlossaryTermResponseArrayOutput) ToGlossaryTermResponseArrayOutput() GlossaryTermResponseArrayOutput {
+	return o
+}
+
+func (o GlossaryTermResponseArrayOutput) ToGlossaryTermResponseArrayOutputWithContext(ctx context.Context) GlossaryTermResponseArrayOutput {
+	return o
+}
+
+func (o GlossaryTermResponseArrayOutput) Index(i pulumi.IntInput) GlossaryTermResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GlossaryTermResponse {
+		return vs[0].([]GlossaryTermResponse)[vs[1].(int)]
+	}).(GlossaryTermResponseOutput)
+}
+
+// Represents a single entry for an unidirectional glossary.
+type GlossaryTermsPair struct {
+	// The source term is the term that will get match in the text,
+	SourceTerm *GlossaryTerm `pulumi:"sourceTerm"`
+	// The term that will replace the match source term.
+	TargetTerm *GlossaryTerm `pulumi:"targetTerm"`
+}
+
+// GlossaryTermsPairInput is an input type that accepts GlossaryTermsPairArgs and GlossaryTermsPairOutput values.
+// You can construct a concrete instance of `GlossaryTermsPairInput` via:
+//
+//          GlossaryTermsPairArgs{...}
+type GlossaryTermsPairInput interface {
+	pulumi.Input
+
+	ToGlossaryTermsPairOutput() GlossaryTermsPairOutput
+	ToGlossaryTermsPairOutputWithContext(context.Context) GlossaryTermsPairOutput
+}
+
+// Represents a single entry for an unidirectional glossary.
+type GlossaryTermsPairArgs struct {
+	// The source term is the term that will get match in the text,
+	SourceTerm GlossaryTermPtrInput `pulumi:"sourceTerm"`
+	// The term that will replace the match source term.
+	TargetTerm GlossaryTermPtrInput `pulumi:"targetTerm"`
+}
+
+func (GlossaryTermsPairArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlossaryTermsPair)(nil)).Elem()
+}
+
+func (i GlossaryTermsPairArgs) ToGlossaryTermsPairOutput() GlossaryTermsPairOutput {
+	return i.ToGlossaryTermsPairOutputWithContext(context.Background())
+}
+
+func (i GlossaryTermsPairArgs) ToGlossaryTermsPairOutputWithContext(ctx context.Context) GlossaryTermsPairOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermsPairOutput)
+}
+
+func (i GlossaryTermsPairArgs) ToGlossaryTermsPairPtrOutput() GlossaryTermsPairPtrOutput {
+	return i.ToGlossaryTermsPairPtrOutputWithContext(context.Background())
+}
+
+func (i GlossaryTermsPairArgs) ToGlossaryTermsPairPtrOutputWithContext(ctx context.Context) GlossaryTermsPairPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermsPairOutput).ToGlossaryTermsPairPtrOutputWithContext(ctx)
+}
+
+// GlossaryTermsPairPtrInput is an input type that accepts GlossaryTermsPairArgs, GlossaryTermsPairPtr and GlossaryTermsPairPtrOutput values.
+// You can construct a concrete instance of `GlossaryTermsPairPtrInput` via:
+//
+//          GlossaryTermsPairArgs{...}
+//
+//  or:
+//
+//          nil
+type GlossaryTermsPairPtrInput interface {
+	pulumi.Input
+
+	ToGlossaryTermsPairPtrOutput() GlossaryTermsPairPtrOutput
+	ToGlossaryTermsPairPtrOutputWithContext(context.Context) GlossaryTermsPairPtrOutput
+}
+
+type glossaryTermsPairPtrType GlossaryTermsPairArgs
+
+func GlossaryTermsPairPtr(v *GlossaryTermsPairArgs) GlossaryTermsPairPtrInput {
+	return (*glossaryTermsPairPtrType)(v)
+}
+
+func (*glossaryTermsPairPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlossaryTermsPair)(nil)).Elem()
+}
+
+func (i *glossaryTermsPairPtrType) ToGlossaryTermsPairPtrOutput() GlossaryTermsPairPtrOutput {
+	return i.ToGlossaryTermsPairPtrOutputWithContext(context.Background())
+}
+
+func (i *glossaryTermsPairPtrType) ToGlossaryTermsPairPtrOutputWithContext(ctx context.Context) GlossaryTermsPairPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermsPairPtrOutput)
+}
+
+// Represents a single entry for an unidirectional glossary.
+type GlossaryTermsPairOutput struct{ *pulumi.OutputState }
+
+func (GlossaryTermsPairOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlossaryTermsPair)(nil)).Elem()
+}
+
+func (o GlossaryTermsPairOutput) ToGlossaryTermsPairOutput() GlossaryTermsPairOutput {
+	return o
+}
+
+func (o GlossaryTermsPairOutput) ToGlossaryTermsPairOutputWithContext(ctx context.Context) GlossaryTermsPairOutput {
+	return o
+}
+
+func (o GlossaryTermsPairOutput) ToGlossaryTermsPairPtrOutput() GlossaryTermsPairPtrOutput {
+	return o.ToGlossaryTermsPairPtrOutputWithContext(context.Background())
+}
+
+func (o GlossaryTermsPairOutput) ToGlossaryTermsPairPtrOutputWithContext(ctx context.Context) GlossaryTermsPairPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlossaryTermsPair) *GlossaryTermsPair {
+		return &v
+	}).(GlossaryTermsPairPtrOutput)
+}
+
+// The source term is the term that will get match in the text,
+func (o GlossaryTermsPairOutput) SourceTerm() GlossaryTermPtrOutput {
+	return o.ApplyT(func(v GlossaryTermsPair) *GlossaryTerm { return v.SourceTerm }).(GlossaryTermPtrOutput)
+}
+
+// The term that will replace the match source term.
+func (o GlossaryTermsPairOutput) TargetTerm() GlossaryTermPtrOutput {
+	return o.ApplyT(func(v GlossaryTermsPair) *GlossaryTerm { return v.TargetTerm }).(GlossaryTermPtrOutput)
+}
+
+type GlossaryTermsPairPtrOutput struct{ *pulumi.OutputState }
+
+func (GlossaryTermsPairPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlossaryTermsPair)(nil)).Elem()
+}
+
+func (o GlossaryTermsPairPtrOutput) ToGlossaryTermsPairPtrOutput() GlossaryTermsPairPtrOutput {
+	return o
+}
+
+func (o GlossaryTermsPairPtrOutput) ToGlossaryTermsPairPtrOutputWithContext(ctx context.Context) GlossaryTermsPairPtrOutput {
+	return o
+}
+
+func (o GlossaryTermsPairPtrOutput) Elem() GlossaryTermsPairOutput {
+	return o.ApplyT(func(v *GlossaryTermsPair) GlossaryTermsPair {
+		if v != nil {
+			return *v
+		}
+		var ret GlossaryTermsPair
+		return ret
+	}).(GlossaryTermsPairOutput)
+}
+
+// The source term is the term that will get match in the text,
+func (o GlossaryTermsPairPtrOutput) SourceTerm() GlossaryTermPtrOutput {
+	return o.ApplyT(func(v *GlossaryTermsPair) *GlossaryTerm {
+		if v == nil {
+			return nil
+		}
+		return v.SourceTerm
+	}).(GlossaryTermPtrOutput)
+}
+
+// The term that will replace the match source term.
+func (o GlossaryTermsPairPtrOutput) TargetTerm() GlossaryTermPtrOutput {
+	return o.ApplyT(func(v *GlossaryTermsPair) *GlossaryTerm {
+		if v == nil {
+			return nil
+		}
+		return v.TargetTerm
+	}).(GlossaryTermPtrOutput)
+}
+
+// Represents a single entry for an unidirectional glossary.
+type GlossaryTermsPairResponse struct {
+	// The source term is the term that will get match in the text,
+	SourceTerm GlossaryTermResponse `pulumi:"sourceTerm"`
+	// The term that will replace the match source term.
+	TargetTerm GlossaryTermResponse `pulumi:"targetTerm"`
+}
+
+// Represents a single entry for an unidirectional glossary.
+type GlossaryTermsPairResponseOutput struct{ *pulumi.OutputState }
+
+func (GlossaryTermsPairResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlossaryTermsPairResponse)(nil)).Elem()
+}
+
+func (o GlossaryTermsPairResponseOutput) ToGlossaryTermsPairResponseOutput() GlossaryTermsPairResponseOutput {
+	return o
+}
+
+func (o GlossaryTermsPairResponseOutput) ToGlossaryTermsPairResponseOutputWithContext(ctx context.Context) GlossaryTermsPairResponseOutput {
+	return o
+}
+
+// The source term is the term that will get match in the text,
+func (o GlossaryTermsPairResponseOutput) SourceTerm() GlossaryTermResponseOutput {
+	return o.ApplyT(func(v GlossaryTermsPairResponse) GlossaryTermResponse { return v.SourceTerm }).(GlossaryTermResponseOutput)
+}
+
+// The term that will replace the match source term.
+func (o GlossaryTermsPairResponseOutput) TargetTerm() GlossaryTermResponseOutput {
+	return o.ApplyT(func(v GlossaryTermsPairResponse) GlossaryTermResponse { return v.TargetTerm }).(GlossaryTermResponseOutput)
+}
+
+// Represents a single entry for an equivalent term set glossary. This is used for equivalent term sets where each term can be replaced by the other terms in the set.
+type GlossaryTermsSet struct {
+	// Each term in the set represents a term that can be replaced by the other terms.
+	Terms []GlossaryTerm `pulumi:"terms"`
+}
+
+// GlossaryTermsSetInput is an input type that accepts GlossaryTermsSetArgs and GlossaryTermsSetOutput values.
+// You can construct a concrete instance of `GlossaryTermsSetInput` via:
+//
+//          GlossaryTermsSetArgs{...}
+type GlossaryTermsSetInput interface {
+	pulumi.Input
+
+	ToGlossaryTermsSetOutput() GlossaryTermsSetOutput
+	ToGlossaryTermsSetOutputWithContext(context.Context) GlossaryTermsSetOutput
+}
+
+// Represents a single entry for an equivalent term set glossary. This is used for equivalent term sets where each term can be replaced by the other terms in the set.
+type GlossaryTermsSetArgs struct {
+	// Each term in the set represents a term that can be replaced by the other terms.
+	Terms GlossaryTermArrayInput `pulumi:"terms"`
+}
+
+func (GlossaryTermsSetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlossaryTermsSet)(nil)).Elem()
+}
+
+func (i GlossaryTermsSetArgs) ToGlossaryTermsSetOutput() GlossaryTermsSetOutput {
+	return i.ToGlossaryTermsSetOutputWithContext(context.Background())
+}
+
+func (i GlossaryTermsSetArgs) ToGlossaryTermsSetOutputWithContext(ctx context.Context) GlossaryTermsSetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermsSetOutput)
+}
+
+func (i GlossaryTermsSetArgs) ToGlossaryTermsSetPtrOutput() GlossaryTermsSetPtrOutput {
+	return i.ToGlossaryTermsSetPtrOutputWithContext(context.Background())
+}
+
+func (i GlossaryTermsSetArgs) ToGlossaryTermsSetPtrOutputWithContext(ctx context.Context) GlossaryTermsSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermsSetOutput).ToGlossaryTermsSetPtrOutputWithContext(ctx)
+}
+
+// GlossaryTermsSetPtrInput is an input type that accepts GlossaryTermsSetArgs, GlossaryTermsSetPtr and GlossaryTermsSetPtrOutput values.
+// You can construct a concrete instance of `GlossaryTermsSetPtrInput` via:
+//
+//          GlossaryTermsSetArgs{...}
+//
+//  or:
+//
+//          nil
+type GlossaryTermsSetPtrInput interface {
+	pulumi.Input
+
+	ToGlossaryTermsSetPtrOutput() GlossaryTermsSetPtrOutput
+	ToGlossaryTermsSetPtrOutputWithContext(context.Context) GlossaryTermsSetPtrOutput
+}
+
+type glossaryTermsSetPtrType GlossaryTermsSetArgs
+
+func GlossaryTermsSetPtr(v *GlossaryTermsSetArgs) GlossaryTermsSetPtrInput {
+	return (*glossaryTermsSetPtrType)(v)
+}
+
+func (*glossaryTermsSetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlossaryTermsSet)(nil)).Elem()
+}
+
+func (i *glossaryTermsSetPtrType) ToGlossaryTermsSetPtrOutput() GlossaryTermsSetPtrOutput {
+	return i.ToGlossaryTermsSetPtrOutputWithContext(context.Background())
+}
+
+func (i *glossaryTermsSetPtrType) ToGlossaryTermsSetPtrOutputWithContext(ctx context.Context) GlossaryTermsSetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GlossaryTermsSetPtrOutput)
+}
+
+// Represents a single entry for an equivalent term set glossary. This is used for equivalent term sets where each term can be replaced by the other terms in the set.
+type GlossaryTermsSetOutput struct{ *pulumi.OutputState }
+
+func (GlossaryTermsSetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlossaryTermsSet)(nil)).Elem()
+}
+
+func (o GlossaryTermsSetOutput) ToGlossaryTermsSetOutput() GlossaryTermsSetOutput {
+	return o
+}
+
+func (o GlossaryTermsSetOutput) ToGlossaryTermsSetOutputWithContext(ctx context.Context) GlossaryTermsSetOutput {
+	return o
+}
+
+func (o GlossaryTermsSetOutput) ToGlossaryTermsSetPtrOutput() GlossaryTermsSetPtrOutput {
+	return o.ToGlossaryTermsSetPtrOutputWithContext(context.Background())
+}
+
+func (o GlossaryTermsSetOutput) ToGlossaryTermsSetPtrOutputWithContext(ctx context.Context) GlossaryTermsSetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GlossaryTermsSet) *GlossaryTermsSet {
+		return &v
+	}).(GlossaryTermsSetPtrOutput)
+}
+
+// Each term in the set represents a term that can be replaced by the other terms.
+func (o GlossaryTermsSetOutput) Terms() GlossaryTermArrayOutput {
+	return o.ApplyT(func(v GlossaryTermsSet) []GlossaryTerm { return v.Terms }).(GlossaryTermArrayOutput)
+}
+
+type GlossaryTermsSetPtrOutput struct{ *pulumi.OutputState }
+
+func (GlossaryTermsSetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GlossaryTermsSet)(nil)).Elem()
+}
+
+func (o GlossaryTermsSetPtrOutput) ToGlossaryTermsSetPtrOutput() GlossaryTermsSetPtrOutput {
+	return o
+}
+
+func (o GlossaryTermsSetPtrOutput) ToGlossaryTermsSetPtrOutputWithContext(ctx context.Context) GlossaryTermsSetPtrOutput {
+	return o
+}
+
+func (o GlossaryTermsSetPtrOutput) Elem() GlossaryTermsSetOutput {
+	return o.ApplyT(func(v *GlossaryTermsSet) GlossaryTermsSet {
+		if v != nil {
+			return *v
+		}
+		var ret GlossaryTermsSet
+		return ret
+	}).(GlossaryTermsSetOutput)
+}
+
+// Each term in the set represents a term that can be replaced by the other terms.
+func (o GlossaryTermsSetPtrOutput) Terms() GlossaryTermArrayOutput {
+	return o.ApplyT(func(v *GlossaryTermsSet) []GlossaryTerm {
+		if v == nil {
+			return nil
+		}
+		return v.Terms
+	}).(GlossaryTermArrayOutput)
+}
+
+// Represents a single entry for an equivalent term set glossary. This is used for equivalent term sets where each term can be replaced by the other terms in the set.
+type GlossaryTermsSetResponse struct {
+	// Each term in the set represents a term that can be replaced by the other terms.
+	Terms []GlossaryTermResponse `pulumi:"terms"`
+}
+
+// Represents a single entry for an equivalent term set glossary. This is used for equivalent term sets where each term can be replaced by the other terms in the set.
+type GlossaryTermsSetResponseOutput struct{ *pulumi.OutputState }
+
+func (GlossaryTermsSetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GlossaryTermsSetResponse)(nil)).Elem()
+}
+
+func (o GlossaryTermsSetResponseOutput) ToGlossaryTermsSetResponseOutput() GlossaryTermsSetResponseOutput {
+	return o
+}
+
+func (o GlossaryTermsSetResponseOutput) ToGlossaryTermsSetResponseOutputWithContext(ctx context.Context) GlossaryTermsSetResponseOutput {
+	return o
+}
+
+// Each term in the set represents a term that can be replaced by the other terms.
+func (o GlossaryTermsSetResponseOutput) Terms() GlossaryTermResponseArrayOutput {
+	return o.ApplyT(func(v GlossaryTermsSetResponse) []GlossaryTermResponse { return v.Terms }).(GlossaryTermResponseArrayOutput)
+}
+
 // Used with unidirectional glossaries.
 type LanguageCodePair struct {
 	// The BCP-47 language code of the input text, for example, "en-US". Expected to be an exact match for GlossaryTerm.language_code.
@@ -533,6 +1148,13 @@ func (o LanguageCodesSetResponseOutput) LanguageCodes() pulumi.StringArrayOutput
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GcsSourceInput)(nil)).Elem(), GcsSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryInputConfigInput)(nil)).Elem(), GlossaryInputConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryTermInput)(nil)).Elem(), GlossaryTermArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryTermPtrInput)(nil)).Elem(), GlossaryTermArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryTermArrayInput)(nil)).Elem(), GlossaryTermArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryTermsPairInput)(nil)).Elem(), GlossaryTermsPairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryTermsPairPtrInput)(nil)).Elem(), GlossaryTermsPairArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryTermsSetInput)(nil)).Elem(), GlossaryTermsSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GlossaryTermsSetPtrInput)(nil)).Elem(), GlossaryTermsSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LanguageCodePairInput)(nil)).Elem(), LanguageCodePairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LanguageCodePairPtrInput)(nil)).Elem(), LanguageCodePairArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LanguageCodesSetInput)(nil)).Elem(), LanguageCodesSetArgs{})
@@ -541,6 +1163,17 @@ func init() {
 	pulumi.RegisterOutputType(GcsSourceResponseOutput{})
 	pulumi.RegisterOutputType(GlossaryInputConfigOutput{})
 	pulumi.RegisterOutputType(GlossaryInputConfigResponseOutput{})
+	pulumi.RegisterOutputType(GlossaryTermOutput{})
+	pulumi.RegisterOutputType(GlossaryTermPtrOutput{})
+	pulumi.RegisterOutputType(GlossaryTermArrayOutput{})
+	pulumi.RegisterOutputType(GlossaryTermResponseOutput{})
+	pulumi.RegisterOutputType(GlossaryTermResponseArrayOutput{})
+	pulumi.RegisterOutputType(GlossaryTermsPairOutput{})
+	pulumi.RegisterOutputType(GlossaryTermsPairPtrOutput{})
+	pulumi.RegisterOutputType(GlossaryTermsPairResponseOutput{})
+	pulumi.RegisterOutputType(GlossaryTermsSetOutput{})
+	pulumi.RegisterOutputType(GlossaryTermsSetPtrOutput{})
+	pulumi.RegisterOutputType(GlossaryTermsSetResponseOutput{})
 	pulumi.RegisterOutputType(LanguageCodePairOutput{})
 	pulumi.RegisterOutputType(LanguageCodePairPtrOutput{})
 	pulumi.RegisterOutputType(LanguageCodePairResponseOutput{})

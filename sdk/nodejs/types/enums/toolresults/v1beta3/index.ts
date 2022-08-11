@@ -378,6 +378,10 @@ export const TestIssueType = {
      * Problems detected while collecting logcat
      */
     LogcatCollectionError: "logcatCollectionError",
+    /**
+     * Robo detected a splash screen provided by app (vs. Android OS splash screen).
+     */
+    DetectedAppSplashScreen: "detectedAppSplashScreen",
 } as const;
 
 /**
