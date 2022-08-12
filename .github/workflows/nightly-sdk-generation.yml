@@ -57,8 +57,6 @@ jobs:
         make discovery
         echo "before update-index"
         git update-index -q --refresh
-        echo "before git diff-files"
-        if ! git diff-files --quiet; then echo ::set-output name=changes::1 fi
     - name: Build codegen binaries
       run: make codegen
     - name: Build Schema + SDKs
