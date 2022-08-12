@@ -1981,7 +1981,7 @@
       }
     }
   },
-  "revision": "20220720",
+  "revision": "20220809",
   "rootUrl": "https://securitycenter.googleapis.com/",
   "schemas": {
     "Access": {
@@ -2001,7 +2001,22 @@
           "type": "string"
         },
         "principalEmail": {
-          "description": "Associated email, such as \"foo@google.com\".",
+          "description": "Associated email, such as \"foo@google.com\". The email address of the authenticated user (or service account on behalf of third party principal) making the request. For third party identity callers, the `principal_subject` field is populated instead of this field. For privacy reasons, the principal email address is sometimes redacted. For more information, see [Caller identities in audit logs](https://cloud.google.com/logging/docs/audit#user-id).",
+          "type": "string"
+        },
+        "principalSubject": {
+          "description": "A string representing the principal_subject associated with the identity. As compared to `principal_email`, supports principals that aren't associated with email addresses, such as third party principals. For most identities, the format will be `principal://iam.googleapis.com/{identity pool name}/subject/{subject)` except for some GKE identities (GKE_WORKLOAD, FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy format `serviceAccount:{identity pool name}[{subject}]`",
+          "type": "string"
+        },
+        "serviceAccountDelegationInfo": {
+          "description": "Identity delegation history of an authenticated service account that makes the request. It contains information on the real authorities that try to access GCP resources by delegating on a service account. When multiple authorities are present, they are guaranteed to be sorted based on the original ordering of the identity delegation events.",
+          "items": {
+            "$ref": "ServiceAccountDelegationInfo"
+          },
+          "type": "array"
+        },
+        "serviceAccountKeyName": {
+          "description": "The name of the service account key used to create or exchange credentials for authenticating the service account making the request. This is a scheme-less URI full resource name. For example: \"//iam.googleapis.com/projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{key}\" ",
           "type": "string"
         },
         "serviceName": {
@@ -2406,6 +2421,36 @@
       },
       "type": "object"
     },
+    "Database": {
+      "description": "Represents database access information, such as queries. A database may be a sub-resource of an instance (as in the case of CloudSQL instances or Cloud Spanner instances), or the database instance itself. Some database resources may not have the full resource name populated because these resource types are not yet supported by Cloud Asset Inventory (e.g. CloudSQL databases). In these cases only the display name will be provided.",
+      "id": "Database",
+      "properties": {
+        "displayName": {
+          "description": "The human readable name of the database the user connected to.",
+          "type": "string"
+        },
+        "grantees": {
+          "description": "The target usernames/roles/groups of a SQL privilege grant (not an IAM policy change).",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "name": {
+          "description": "The full resource name of the database the user connected to, if it is supported by CAI. (https://google.aip.dev/122#full-resource-names)",
+          "type": "string"
+        },
+        "query": {
+          "description": "The SQL statement associated with the relevant access.",
+          "type": "string"
+        },
+        "userName": {
+          "description": "The username used to connect to the DB. This may not necessarily be an IAM principal, and has no required format.",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "Details": {
       "description": "Details of a subscription.",
       "id": "Details",
@@ -2633,6 +2678,10 @@
           "description": "The time at which the finding was created in Security Command Center.",
           "format": "google-datetime",
           "type": "string"
+        },
+        "database": {
+          "$ref": "Database",
+          "description": "Database associated with the finding."
         },
         "description": {
           "description": "Contains more detail about the finding.",
@@ -3521,7 +3570,8 @@
               "DATA_DESTRUCTION",
               "DOMAIN_POLICY_MODIFICATION",
               "IMPAIR_DEFENSES",
-              "NETWORK_SERVICE_DISCOVERY"
+              "NETWORK_SERVICE_DISCOVERY",
+              "ACCESS_TOKEN_MANIPULATION"
             ],
             "enumDescriptions": [
               "Unspecified value.",
@@ -3556,7 +3606,8 @@
               "T1485",
               "T1484",
               "T1562",
-              "T1046"
+              "T1046",
+              "T1134"
             ],
             "type": "string"
           },
@@ -3636,7 +3687,8 @@
               "DATA_DESTRUCTION",
               "DOMAIN_POLICY_MODIFICATION",
               "IMPAIR_DEFENSES",
-              "NETWORK_SERVICE_DISCOVERY"
+              "NETWORK_SERVICE_DISCOVERY",
+              "ACCESS_TOKEN_MANIPULATION"
             ],
             "enumDescriptions": [
               "Unspecified value.",
@@ -3671,7 +3723,8 @@
               "T1485",
               "T1484",
               "T1562",
-              "T1046"
+              "T1046",
+              "T1134"
             ],
             "type": "string"
           },
@@ -4012,6 +4065,21 @@
         },
         "name": {
           "description": "The relative resource name of the SecurityMarks. See: https://cloud.google.com/apis/design/resource_names#relative_resource_name Examples: \"organizations/{organization_id}/assets/{asset_id}/securityMarks\" \"organizations/{organization_id}/sources/{source_id}/findings/{finding_id}/securityMarks\".",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "ServiceAccountDelegationInfo": {
+      "description": "Identity delegation history of an authenticated service account.",
+      "id": "ServiceAccountDelegationInfo",
+      "properties": {
+        "principalEmail": {
+          "description": "The email address of a Google account. .",
+          "type": "string"
+        },
+        "principalSubject": {
+          "description": "A string representing the principal_subject associated with the identity. As compared to `principal_email`, supports principals that aren't associated with email addresses, such as third party principals. For most identities, the format will be `principal://iam.googleapis.com/{identity pool name}/subject/{subject)` except for some GKE identities (GKE_WORKLOAD, FREEFORM, GKE_HUB_WORKLOAD) that are still in the legacy format `serviceAccount:{identity pool name}[{subject}]`",
           "type": "string"
         }
       },
