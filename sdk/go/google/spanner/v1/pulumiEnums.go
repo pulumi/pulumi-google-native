@@ -144,7 +144,7 @@ func (o DatabaseDatabaseDialectPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // DatabaseDatabaseDialectInput is an input type that accepts DatabaseDatabaseDialectArgs and DatabaseDatabaseDialectOutput values.
 // You can construct a concrete instance of `DatabaseDatabaseDialectInput` via:
 //
-//          DatabaseDatabaseDialectArgs{...}
+//	DatabaseDatabaseDialectArgs{...}
 type DatabaseDatabaseDialectInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o FreeInstanceMetadataExpireBehaviorPtrOutput) ToStringPtrOutputWithContex
 // FreeInstanceMetadataExpireBehaviorInput is an input type that accepts FreeInstanceMetadataExpireBehaviorArgs and FreeInstanceMetadataExpireBehaviorOutput values.
 // You can construct a concrete instance of `FreeInstanceMetadataExpireBehaviorInput` via:
 //
-//          FreeInstanceMetadataExpireBehaviorArgs{...}
+//	FreeInstanceMetadataExpireBehaviorArgs{...}
 type FreeInstanceMetadataExpireBehaviorInput interface {
 	pulumi.Input
 
@@ -482,7 +482,7 @@ func (o InstanceInstanceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // InstanceInstanceTypeInput is an input type that accepts InstanceInstanceTypeArgs and InstanceInstanceTypeOutput values.
 // You can construct a concrete instance of `InstanceInstanceTypeInput` via:
 //
-//          InstanceInstanceTypeArgs{...}
+//	InstanceInstanceTypeArgs{...}
 type InstanceInstanceTypeInput interface {
 	pulumi.Input
 

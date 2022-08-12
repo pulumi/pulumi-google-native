@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o RestoreConfigClusterResourceConflictPolicyPtrOutput) ToStringPtrOutputWi
 // RestoreConfigClusterResourceConflictPolicyInput is an input type that accepts RestoreConfigClusterResourceConflictPolicyArgs and RestoreConfigClusterResourceConflictPolicyOutput values.
 // You can construct a concrete instance of `RestoreConfigClusterResourceConflictPolicyInput` via:
 //
-//          RestoreConfigClusterResourceConflictPolicyArgs{...}
+//	RestoreConfigClusterResourceConflictPolicyArgs{...}
 type RestoreConfigClusterResourceConflictPolicyInput interface {
 	pulumi.Input
 
@@ -484,7 +484,7 @@ func (o RestoreConfigNamespacedResourceRestoreModePtrOutput) ToStringPtrOutputWi
 // RestoreConfigNamespacedResourceRestoreModeInput is an input type that accepts RestoreConfigNamespacedResourceRestoreModeArgs and RestoreConfigNamespacedResourceRestoreModeOutput values.
 // You can construct a concrete instance of `RestoreConfigNamespacedResourceRestoreModeInput` via:
 //
-//          RestoreConfigNamespacedResourceRestoreModeArgs{...}
+//	RestoreConfigNamespacedResourceRestoreModeArgs{...}
 type RestoreConfigNamespacedResourceRestoreModeInput interface {
 	pulumi.Input
 
@@ -655,7 +655,7 @@ func (o RestoreConfigVolumeDataRestorePolicyPtrOutput) ToStringPtrOutputWithCont
 // RestoreConfigVolumeDataRestorePolicyInput is an input type that accepts RestoreConfigVolumeDataRestorePolicyArgs and RestoreConfigVolumeDataRestorePolicyOutput values.
 // You can construct a concrete instance of `RestoreConfigVolumeDataRestorePolicyInput` via:
 //
-//          RestoreConfigVolumeDataRestorePolicyArgs{...}
+//	RestoreConfigVolumeDataRestorePolicyArgs{...}
 type RestoreConfigVolumeDataRestorePolicyInput interface {
 	pulumi.Input
 

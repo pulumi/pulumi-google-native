@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o CloudSqlPropertiesTypePtrOutput) ToStringPtrOutputWithContext(ctx contex
 // CloudSqlPropertiesTypeInput is an input type that accepts CloudSqlPropertiesTypeArgs and CloudSqlPropertiesTypeOutput values.
 // You can construct a concrete instance of `CloudSqlPropertiesTypeInput` via:
 //
-//          CloudSqlPropertiesTypeArgs{...}
+//	CloudSqlPropertiesTypeArgs{...}
 type CloudSqlPropertiesTypeInput interface {
 	pulumi.Input
 

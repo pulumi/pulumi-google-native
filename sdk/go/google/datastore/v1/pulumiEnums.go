@@ -144,7 +144,7 @@ func (o GoogleDatastoreAdminV1IndexedPropertyDirectionPtrOutput) ToStringPtrOutp
 // GoogleDatastoreAdminV1IndexedPropertyDirectionInput is an input type that accepts GoogleDatastoreAdminV1IndexedPropertyDirectionArgs and GoogleDatastoreAdminV1IndexedPropertyDirectionOutput values.
 // You can construct a concrete instance of `GoogleDatastoreAdminV1IndexedPropertyDirectionInput` via:
 //
-//          GoogleDatastoreAdminV1IndexedPropertyDirectionArgs{...}
+//	GoogleDatastoreAdminV1IndexedPropertyDirectionArgs{...}
 type GoogleDatastoreAdminV1IndexedPropertyDirectionInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o IndexAncestorPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 // IndexAncestorInput is an input type that accepts IndexAncestorArgs and IndexAncestorOutput values.
 // You can construct a concrete instance of `IndexAncestorInput` via:
 //
-//          IndexAncestorArgs{...}
+//	IndexAncestorArgs{...}
 type IndexAncestorInput interface {
 	pulumi.Input
 

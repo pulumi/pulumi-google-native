@@ -21,7 +21,7 @@ type MaintenancePolicy struct {
 // MaintenancePolicyInput is an input type that accepts MaintenancePolicyArgs and MaintenancePolicyOutput values.
 // You can construct a concrete instance of `MaintenancePolicyInput` via:
 //
-//          MaintenancePolicyArgs{...}
+//	MaintenancePolicyArgs{...}
 type MaintenancePolicyInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i MaintenancePolicyArgs) ToMaintenancePolicyPtrOutputWithContext(ctx conte
 // MaintenancePolicyPtrInput is an input type that accepts MaintenancePolicyArgs, MaintenancePolicyPtr and MaintenancePolicyPtrOutput values.
 // You can construct a concrete instance of `MaintenancePolicyPtrInput` via:
 //
-//          MaintenancePolicyArgs{...}
+//	        MaintenancePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MaintenancePolicyPtrInput interface {
 	pulumi.Input
 
@@ -322,7 +322,7 @@ type PersistenceConfig struct {
 // PersistenceConfigInput is an input type that accepts PersistenceConfigArgs and PersistenceConfigOutput values.
 // You can construct a concrete instance of `PersistenceConfigInput` via:
 //
-//          PersistenceConfigArgs{...}
+//	PersistenceConfigArgs{...}
 type PersistenceConfigInput interface {
 	pulumi.Input
 
@@ -363,11 +363,11 @@ func (i PersistenceConfigArgs) ToPersistenceConfigPtrOutputWithContext(ctx conte
 // PersistenceConfigPtrInput is an input type that accepts PersistenceConfigArgs, PersistenceConfigPtr and PersistenceConfigPtrOutput values.
 // You can construct a concrete instance of `PersistenceConfigPtrInput` via:
 //
-//          PersistenceConfigArgs{...}
+//	        PersistenceConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PersistenceConfigPtrInput interface {
 	pulumi.Input
 
@@ -549,7 +549,7 @@ type TimeOfDay struct {
 // TimeOfDayInput is an input type that accepts TimeOfDayArgs and TimeOfDayOutput values.
 // You can construct a concrete instance of `TimeOfDayInput` via:
 //
-//          TimeOfDayArgs{...}
+//	TimeOfDayArgs{...}
 type TimeOfDayInput interface {
 	pulumi.Input
 
@@ -748,7 +748,7 @@ type WeeklyMaintenanceWindow struct {
 // WeeklyMaintenanceWindowInput is an input type that accepts WeeklyMaintenanceWindowArgs and WeeklyMaintenanceWindowOutput values.
 // You can construct a concrete instance of `WeeklyMaintenanceWindowInput` via:
 //
-//          WeeklyMaintenanceWindowArgs{...}
+//	WeeklyMaintenanceWindowArgs{...}
 type WeeklyMaintenanceWindowInput interface {
 	pulumi.Input
 
@@ -779,7 +779,7 @@ func (i WeeklyMaintenanceWindowArgs) ToWeeklyMaintenanceWindowOutputWithContext(
 // WeeklyMaintenanceWindowArrayInput is an input type that accepts WeeklyMaintenanceWindowArray and WeeklyMaintenanceWindowArrayOutput values.
 // You can construct a concrete instance of `WeeklyMaintenanceWindowArrayInput` via:
 //
-//          WeeklyMaintenanceWindowArray{ WeeklyMaintenanceWindowArgs{...} }
+//	WeeklyMaintenanceWindowArray{ WeeklyMaintenanceWindowArgs{...} }
 type WeeklyMaintenanceWindowArrayInput interface {
 	pulumi.Input
 

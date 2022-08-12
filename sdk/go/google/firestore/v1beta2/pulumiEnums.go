@@ -142,7 +142,7 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldArrayConfigPtrOutput) ToStringPtrOu
 // GoogleFirestoreAdminV1beta2IndexFieldArrayConfigInput is an input type that accepts GoogleFirestoreAdminV1beta2IndexFieldArrayConfigArgs and GoogleFirestoreAdminV1beta2IndexFieldArrayConfigOutput values.
 // You can construct a concrete instance of `GoogleFirestoreAdminV1beta2IndexFieldArrayConfigInput` via:
 //
-//          GoogleFirestoreAdminV1beta2IndexFieldArrayConfigArgs{...}
+//	GoogleFirestoreAdminV1beta2IndexFieldArrayConfigArgs{...}
 type GoogleFirestoreAdminV1beta2IndexFieldArrayConfigInput interface {
 	pulumi.Input
 
@@ -311,7 +311,7 @@ func (o GoogleFirestoreAdminV1beta2IndexFieldOrderPtrOutput) ToStringPtrOutputWi
 // GoogleFirestoreAdminV1beta2IndexFieldOrderInput is an input type that accepts GoogleFirestoreAdminV1beta2IndexFieldOrderArgs and GoogleFirestoreAdminV1beta2IndexFieldOrderOutput values.
 // You can construct a concrete instance of `GoogleFirestoreAdminV1beta2IndexFieldOrderInput` via:
 //
-//          GoogleFirestoreAdminV1beta2IndexFieldOrderArgs{...}
+//	GoogleFirestoreAdminV1beta2IndexFieldOrderArgs{...}
 type GoogleFirestoreAdminV1beta2IndexFieldOrderInput interface {
 	pulumi.Input
 
@@ -480,7 +480,7 @@ func (o IndexQueryScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // IndexQueryScopeInput is an input type that accepts IndexQueryScopeArgs and IndexQueryScopeOutput values.
 // You can construct a concrete instance of `IndexQueryScopeInput` via:
 //
-//          IndexQueryScopeArgs{...}
+//	IndexQueryScopeArgs{...}
 type IndexQueryScopeInput interface {
 	pulumi.Input
 

@@ -142,7 +142,7 @@ func (o GoogleCloudPolicysimulatorV1ReplayConfigLogSourcePtrOutput) ToStringPtrO
 // GoogleCloudPolicysimulatorV1ReplayConfigLogSourceInput is an input type that accepts GoogleCloudPolicysimulatorV1ReplayConfigLogSourceArgs and GoogleCloudPolicysimulatorV1ReplayConfigLogSourceOutput values.
 // You can construct a concrete instance of `GoogleCloudPolicysimulatorV1ReplayConfigLogSourceInput` via:
 //
-//          GoogleCloudPolicysimulatorV1ReplayConfigLogSourceArgs{...}
+//	GoogleCloudPolicysimulatorV1ReplayConfigLogSourceArgs{...}
 type GoogleCloudPolicysimulatorV1ReplayConfigLogSourceInput interface {
 	pulumi.Input
 

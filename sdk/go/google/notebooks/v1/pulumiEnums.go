@@ -162,7 +162,7 @@ func (o AcceleratorConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AcceleratorConfigTypeInput is an input type that accepts AcceleratorConfigTypeArgs and AcceleratorConfigTypeOutput values.
 // You can construct a concrete instance of `AcceleratorConfigTypeInput` via:
 //
-//          AcceleratorConfigTypeArgs{...}
+//	AcceleratorConfigTypeArgs{...}
 type AcceleratorConfigTypeInput interface {
 	pulumi.Input
 
@@ -331,7 +331,7 @@ func (o ExecutionTemplateJobTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // ExecutionTemplateJobTypeInput is an input type that accepts ExecutionTemplateJobTypeArgs and ExecutionTemplateJobTypeOutput values.
 // You can construct a concrete instance of `ExecutionTemplateJobTypeInput` via:
 //
-//          ExecutionTemplateJobTypeArgs{...}
+//	ExecutionTemplateJobTypeArgs{...}
 type ExecutionTemplateJobTypeInput interface {
 	pulumi.Input
 
@@ -508,7 +508,7 @@ func (o ExecutionTemplateScaleTierPtrOutput) ToStringPtrOutputWithContext(ctx co
 // ExecutionTemplateScaleTierInput is an input type that accepts ExecutionTemplateScaleTierArgs and ExecutionTemplateScaleTierOutput values.
 // You can construct a concrete instance of `ExecutionTemplateScaleTierInput` via:
 //
-//          ExecutionTemplateScaleTierArgs{...}
+//	ExecutionTemplateScaleTierArgs{...}
 type ExecutionTemplateScaleTierInput interface {
 	pulumi.Input
 
@@ -681,7 +681,7 @@ func (o InstanceBootDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // InstanceBootDiskTypeInput is an input type that accepts InstanceBootDiskTypeArgs and InstanceBootDiskTypeOutput values.
 // You can construct a concrete instance of `InstanceBootDiskTypeInput` via:
 //
-//          InstanceBootDiskTypeArgs{...}
+//	InstanceBootDiskTypeArgs{...}
 type InstanceBootDiskTypeInput interface {
 	pulumi.Input
 
@@ -854,7 +854,7 @@ func (o InstanceDataDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // InstanceDataDiskTypeInput is an input type that accepts InstanceDataDiskTypeArgs and InstanceDataDiskTypeOutput values.
 // You can construct a concrete instance of `InstanceDataDiskTypeInput` via:
 //
-//          InstanceDataDiskTypeArgs{...}
+//	InstanceDataDiskTypeArgs{...}
 type InstanceDataDiskTypeInput interface {
 	pulumi.Input
 
@@ -1023,7 +1023,7 @@ func (o InstanceDiskEncryptionPtrOutput) ToStringPtrOutputWithContext(ctx contex
 // InstanceDiskEncryptionInput is an input type that accepts InstanceDiskEncryptionArgs and InstanceDiskEncryptionOutput values.
 // You can construct a concrete instance of `InstanceDiskEncryptionInput` via:
 //
-//          InstanceDiskEncryptionArgs{...}
+//	InstanceDiskEncryptionArgs{...}
 type InstanceDiskEncryptionInput interface {
 	pulumi.Input
 
@@ -1192,7 +1192,7 @@ func (o InstanceNicTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // InstanceNicTypeInput is an input type that accepts InstanceNicTypeArgs and InstanceNicTypeOutput values.
 // You can construct a concrete instance of `InstanceNicTypeInput` via:
 //
-//          InstanceNicTypeArgs{...}
+//	InstanceNicTypeArgs{...}
 type InstanceNicTypeInput interface {
 	pulumi.Input
 
@@ -1365,7 +1365,7 @@ func (o LocalDiskInitializeParamsDiskTypePtrOutput) ToStringPtrOutputWithContext
 // LocalDiskInitializeParamsDiskTypeInput is an input type that accepts LocalDiskInitializeParamsDiskTypeArgs and LocalDiskInitializeParamsDiskTypeOutput values.
 // You can construct a concrete instance of `LocalDiskInitializeParamsDiskTypeInput` via:
 //
-//          LocalDiskInitializeParamsDiskTypeArgs{...}
+//	LocalDiskInitializeParamsDiskTypeArgs{...}
 type LocalDiskInitializeParamsDiskTypeInput interface {
 	pulumi.Input
 
@@ -1536,7 +1536,7 @@ func (o ReservationAffinityConsumeReservationTypePtrOutput) ToStringPtrOutputWit
 // ReservationAffinityConsumeReservationTypeInput is an input type that accepts ReservationAffinityConsumeReservationTypeArgs and ReservationAffinityConsumeReservationTypeOutput values.
 // You can construct a concrete instance of `ReservationAffinityConsumeReservationTypeInput` via:
 //
-//          ReservationAffinityConsumeReservationTypeArgs{...}
+//	ReservationAffinityConsumeReservationTypeArgs{...}
 type ReservationAffinityConsumeReservationTypeInput interface {
 	pulumi.Input
 
@@ -1723,7 +1723,7 @@ func (o RuntimeAcceleratorConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 // RuntimeAcceleratorConfigTypeInput is an input type that accepts RuntimeAcceleratorConfigTypeArgs and RuntimeAcceleratorConfigTypeOutput values.
 // You can construct a concrete instance of `RuntimeAcceleratorConfigTypeInput` via:
 //
-//          RuntimeAcceleratorConfigTypeArgs{...}
+//	RuntimeAcceleratorConfigTypeArgs{...}
 type RuntimeAcceleratorConfigTypeInput interface {
 	pulumi.Input
 
@@ -1892,7 +1892,7 @@ func (o RuntimeAccessConfigAccessTypePtrOutput) ToStringPtrOutputWithContext(ctx
 // RuntimeAccessConfigAccessTypeInput is an input type that accepts RuntimeAccessConfigAccessTypeArgs and RuntimeAccessConfigAccessTypeOutput values.
 // You can construct a concrete instance of `RuntimeAccessConfigAccessTypeInput` via:
 //
-//          RuntimeAccessConfigAccessTypeArgs{...}
+//	RuntimeAccessConfigAccessTypeArgs{...}
 type RuntimeAccessConfigAccessTypeInput interface {
 	pulumi.Input
 
@@ -2061,7 +2061,7 @@ func (o RuntimeSoftwareConfigPostStartupScriptBehaviorPtrOutput) ToStringPtrOutp
 // RuntimeSoftwareConfigPostStartupScriptBehaviorInput is an input type that accepts RuntimeSoftwareConfigPostStartupScriptBehaviorArgs and RuntimeSoftwareConfigPostStartupScriptBehaviorOutput values.
 // You can construct a concrete instance of `RuntimeSoftwareConfigPostStartupScriptBehaviorInput` via:
 //
-//          RuntimeSoftwareConfigPostStartupScriptBehaviorArgs{...}
+//	RuntimeSoftwareConfigPostStartupScriptBehaviorArgs{...}
 type RuntimeSoftwareConfigPostStartupScriptBehaviorInput interface {
 	pulumi.Input
 
@@ -2237,7 +2237,7 @@ func (o ScheduleStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // ScheduleStateEnumInput is an input type that accepts ScheduleStateEnumArgs and ScheduleStateEnumOutput values.
 // You can construct a concrete instance of `ScheduleStateEnumInput` via:
 //
-//          ScheduleStateEnumArgs{...}
+//	ScheduleStateEnumArgs{...}
 type ScheduleStateEnumInput interface {
 	pulumi.Input
 
@@ -2418,7 +2418,7 @@ func (o SchedulerAcceleratorConfigTypePtrOutput) ToStringPtrOutputWithContext(ct
 // SchedulerAcceleratorConfigTypeInput is an input type that accepts SchedulerAcceleratorConfigTypeArgs and SchedulerAcceleratorConfigTypeOutput values.
 // You can construct a concrete instance of `SchedulerAcceleratorConfigTypeInput` via:
 //
-//          SchedulerAcceleratorConfigTypeArgs{...}
+//	SchedulerAcceleratorConfigTypeArgs{...}
 type SchedulerAcceleratorConfigTypeInput interface {
 	pulumi.Input
 
@@ -2587,7 +2587,7 @@ func (o UpgradeHistoryEntryActionPtrOutput) ToStringPtrOutputWithContext(ctx con
 // UpgradeHistoryEntryActionInput is an input type that accepts UpgradeHistoryEntryActionArgs and UpgradeHistoryEntryActionOutput values.
 // You can construct a concrete instance of `UpgradeHistoryEntryActionInput` via:
 //
-//          UpgradeHistoryEntryActionArgs{...}
+//	UpgradeHistoryEntryActionArgs{...}
 type UpgradeHistoryEntryActionInput interface {
 	pulumi.Input
 
@@ -2758,7 +2758,7 @@ func (o UpgradeHistoryEntryStatePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // UpgradeHistoryEntryStateInput is an input type that accepts UpgradeHistoryEntryStateArgs and UpgradeHistoryEntryStateOutput values.
 // You can construct a concrete instance of `UpgradeHistoryEntryStateInput` via:
 //
-//          UpgradeHistoryEntryStateArgs{...}
+//	UpgradeHistoryEntryStateArgs{...}
 type UpgradeHistoryEntryStateInput interface {
 	pulumi.Input
 
@@ -2927,7 +2927,7 @@ func (o VirtualMachineConfigNicTypePtrOutput) ToStringPtrOutputWithContext(ctx c
 // VirtualMachineConfigNicTypeInput is an input type that accepts VirtualMachineConfigNicTypeArgs and VirtualMachineConfigNicTypeOutput values.
 // You can construct a concrete instance of `VirtualMachineConfigNicTypeInput` via:
 //
-//          VirtualMachineConfigNicTypeArgs{...}
+//	VirtualMachineConfigNicTypeArgs{...}
 type VirtualMachineConfigNicTypeInput interface {
 	pulumi.Input
 

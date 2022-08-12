@@ -162,7 +162,7 @@ func (o EntryTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 // EntryTypeInput is an input type that accepts EntryTypeArgs and EntryTypeOutput values.
 // You can construct a concrete instance of `EntryTypeInput` via:
 //
-//          EntryTypeArgs{...}
+//	EntryTypeArgs{...}
 type EntryTypeInput interface {
 	pulumi.Input
 
@@ -329,7 +329,7 @@ func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput) T
 // GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeArgs and GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeInput` via:
 //
-//          GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeArgs{...}
+//	GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeArgs{...}
 type GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypeInput interface {
 	pulumi.Input
 
@@ -498,7 +498,7 @@ func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput) ToS
 // GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeInput is an input type that accepts GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeArgs and GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeInput` via:
 //
-//          GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeArgs{...}
+//	GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeArgs{...}
 type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypeInput interface {
 	pulumi.Input
 
@@ -673,7 +673,7 @@ func (o GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypePtrOutput) ToStr
 // GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeInput is an input type that accepts GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeArgs and GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeInput` via:
 //
-//          GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeArgs{...}
+//	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeArgs{...}
 type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecTypeInput interface {
 	pulumi.Input
 
@@ -842,7 +842,7 @@ func (o GoogleCloudDatacatalogV1DatabaseTableSpecTypePtrOutput) ToStringPtrOutpu
 // GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput is an input type that accepts GoogleCloudDatacatalogV1DatabaseTableSpecTypeArgs and GoogleCloudDatacatalogV1DatabaseTableSpecTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput` via:
 //
-//          GoogleCloudDatacatalogV1DatabaseTableSpecTypeArgs{...}
+//	GoogleCloudDatacatalogV1DatabaseTableSpecTypeArgs{...}
 type GoogleCloudDatacatalogV1DatabaseTableSpecTypeInput interface {
 	pulumi.Input
 
@@ -1013,7 +1013,7 @@ func (o GoogleCloudDatacatalogV1RoutineSpecArgumentModePtrOutput) ToStringPtrOut
 // GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecArgumentModeArgs and GoogleCloudDatacatalogV1RoutineSpecArgumentModeOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput` via:
 //
-//          GoogleCloudDatacatalogV1RoutineSpecArgumentModeArgs{...}
+//	GoogleCloudDatacatalogV1RoutineSpecArgumentModeArgs{...}
 type GoogleCloudDatacatalogV1RoutineSpecArgumentModeInput interface {
 	pulumi.Input
 
@@ -1182,7 +1182,7 @@ func (o GoogleCloudDatacatalogV1RoutineSpecRoutineTypePtrOutput) ToStringPtrOutp
 // GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecRoutineTypeArgs and GoogleCloudDatacatalogV1RoutineSpecRoutineTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput` via:
 //
-//          GoogleCloudDatacatalogV1RoutineSpecRoutineTypeArgs{...}
+//	GoogleCloudDatacatalogV1RoutineSpecRoutineTypeArgs{...}
 type GoogleCloudDatacatalogV1RoutineSpecRoutineTypeInput interface {
 	pulumi.Input
 
@@ -1348,7 +1348,7 @@ func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToStringPtrOutputWithContext(
 // TaxonomyActivatedPolicyTypesItemInput is an input type that accepts TaxonomyActivatedPolicyTypesItemArgs and TaxonomyActivatedPolicyTypesItemOutput values.
 // You can construct a concrete instance of `TaxonomyActivatedPolicyTypesItemInput` via:
 //
-//          TaxonomyActivatedPolicyTypesItemArgs{...}
+//	TaxonomyActivatedPolicyTypesItemArgs{...}
 type TaxonomyActivatedPolicyTypesItemInput interface {
 	pulumi.Input
 
@@ -1386,7 +1386,7 @@ func (in *taxonomyActivatedPolicyTypesItemPtr) ToTaxonomyActivatedPolicyTypesIte
 // TaxonomyActivatedPolicyTypesItemArrayInput is an input type that accepts TaxonomyActivatedPolicyTypesItemArray and TaxonomyActivatedPolicyTypesItemArrayOutput values.
 // You can construct a concrete instance of `TaxonomyActivatedPolicyTypesItemArrayInput` via:
 //
-//          TaxonomyActivatedPolicyTypesItemArray{ TaxonomyActivatedPolicyTypesItemArgs{...} }
+//	TaxonomyActivatedPolicyTypesItemArray{ TaxonomyActivatedPolicyTypesItemArgs{...} }
 type TaxonomyActivatedPolicyTypesItemArrayInput interface {
 	pulumi.Input
 

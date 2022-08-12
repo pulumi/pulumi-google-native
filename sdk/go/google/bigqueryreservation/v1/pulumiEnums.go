@@ -148,7 +148,7 @@ func (o CapacityCommitmentPlanPtrOutput) ToStringPtrOutputWithContext(ctx contex
 // CapacityCommitmentPlanInput is an input type that accepts CapacityCommitmentPlanArgs and CapacityCommitmentPlanOutput values.
 // You can construct a concrete instance of `CapacityCommitmentPlanInput` via:
 //
-//          CapacityCommitmentPlanArgs{...}
+//	CapacityCommitmentPlanArgs{...}
 type CapacityCommitmentPlanInput interface {
 	pulumi.Input
 
@@ -321,7 +321,7 @@ func (o CapacityCommitmentRenewalPlanPtrOutput) ToStringPtrOutputWithContext(ctx
 // CapacityCommitmentRenewalPlanInput is an input type that accepts CapacityCommitmentRenewalPlanArgs and CapacityCommitmentRenewalPlanOutput values.
 // You can construct a concrete instance of `CapacityCommitmentRenewalPlanInput` via:
 //
-//          CapacityCommitmentRenewalPlanArgs{...}
+//	CapacityCommitmentRenewalPlanArgs{...}
 type CapacityCommitmentRenewalPlanInput interface {
 	pulumi.Input
 

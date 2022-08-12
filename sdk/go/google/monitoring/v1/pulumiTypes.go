@@ -25,7 +25,7 @@ type Aggregation struct {
 // AggregationInput is an input type that accepts AggregationArgs and AggregationOutput values.
 // You can construct a concrete instance of `AggregationInput` via:
 //
-//          AggregationArgs{...}
+//	AggregationArgs{...}
 type AggregationInput interface {
 	pulumi.Input
 
@@ -68,11 +68,11 @@ func (i AggregationArgs) ToAggregationPtrOutputWithContext(ctx context.Context) 
 // AggregationPtrInput is an input type that accepts AggregationArgs, AggregationPtr and AggregationPtrOutput values.
 // You can construct a concrete instance of `AggregationPtrInput` via:
 //
-//          AggregationArgs{...}
+//	        AggregationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AggregationPtrInput interface {
 	pulumi.Input
 
@@ -263,7 +263,7 @@ type AlertChart struct {
 // AlertChartInput is an input type that accepts AlertChartArgs and AlertChartOutput values.
 // You can construct a concrete instance of `AlertChartInput` via:
 //
-//          AlertChartArgs{...}
+//	AlertChartArgs{...}
 type AlertChartInput interface {
 	pulumi.Input
 
@@ -300,11 +300,11 @@ func (i AlertChartArgs) ToAlertChartPtrOutputWithContext(ctx context.Context) Al
 // AlertChartPtrInput is an input type that accepts AlertChartArgs, AlertChartPtr and AlertChartPtrOutput values.
 // You can construct a concrete instance of `AlertChartPtrInput` via:
 //
-//          AlertChartArgs{...}
+//	        AlertChartArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AlertChartPtrInput interface {
 	pulumi.Input
 
@@ -431,7 +431,7 @@ type Axis struct {
 // AxisInput is an input type that accepts AxisArgs and AxisOutput values.
 // You can construct a concrete instance of `AxisInput` via:
 //
-//          AxisArgs{...}
+//	AxisArgs{...}
 type AxisInput interface {
 	pulumi.Input
 
@@ -470,11 +470,11 @@ func (i AxisArgs) ToAxisPtrOutputWithContext(ctx context.Context) AxisPtrOutput 
 // AxisPtrInput is an input type that accepts AxisArgs, AxisPtr and AxisPtrOutput values.
 // You can construct a concrete instance of `AxisPtrInput` via:
 //
-//          AxisArgs{...}
+//	        AxisArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AxisPtrInput interface {
 	pulumi.Input
 
@@ -621,7 +621,7 @@ type ChartOptions struct {
 // ChartOptionsInput is an input type that accepts ChartOptionsArgs and ChartOptionsOutput values.
 // You can construct a concrete instance of `ChartOptionsInput` via:
 //
-//          ChartOptionsArgs{...}
+//	ChartOptionsArgs{...}
 type ChartOptionsInput interface {
 	pulumi.Input
 
@@ -658,11 +658,11 @@ func (i ChartOptionsArgs) ToChartOptionsPtrOutputWithContext(ctx context.Context
 // ChartOptionsPtrInput is an input type that accepts ChartOptionsArgs, ChartOptionsPtr and ChartOptionsPtrOutput values.
 // You can construct a concrete instance of `ChartOptionsPtrInput` via:
 //
-//          ChartOptionsArgs{...}
+//	        ChartOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ChartOptionsPtrInput interface {
 	pulumi.Input
 
@@ -787,7 +787,7 @@ type CollapsibleGroup struct {
 // CollapsibleGroupInput is an input type that accepts CollapsibleGroupArgs and CollapsibleGroupOutput values.
 // You can construct a concrete instance of `CollapsibleGroupInput` via:
 //
-//          CollapsibleGroupArgs{...}
+//	CollapsibleGroupArgs{...}
 type CollapsibleGroupInput interface {
 	pulumi.Input
 
@@ -824,11 +824,11 @@ func (i CollapsibleGroupArgs) ToCollapsibleGroupPtrOutputWithContext(ctx context
 // CollapsibleGroupPtrInput is an input type that accepts CollapsibleGroupArgs, CollapsibleGroupPtr and CollapsibleGroupPtrOutput values.
 // You can construct a concrete instance of `CollapsibleGroupPtrInput` via:
 //
-//          CollapsibleGroupArgs{...}
+//	        CollapsibleGroupArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CollapsibleGroupPtrInput interface {
 	pulumi.Input
 
@@ -955,7 +955,7 @@ type Column struct {
 // ColumnInput is an input type that accepts ColumnArgs and ColumnOutput values.
 // You can construct a concrete instance of `ColumnInput` via:
 //
-//          ColumnArgs{...}
+//	ColumnArgs{...}
 type ColumnInput interface {
 	pulumi.Input
 
@@ -986,7 +986,7 @@ func (i ColumnArgs) ToColumnOutputWithContext(ctx context.Context) ColumnOutput 
 // ColumnArrayInput is an input type that accepts ColumnArray and ColumnArrayOutput values.
 // You can construct a concrete instance of `ColumnArrayInput` via:
 //
-//          ColumnArray{ ColumnArgs{...} }
+//	ColumnArray{ ColumnArgs{...} }
 type ColumnArrayInput interface {
 	pulumi.Input
 
@@ -1062,7 +1062,7 @@ type ColumnLayout struct {
 // ColumnLayoutInput is an input type that accepts ColumnLayoutArgs and ColumnLayoutOutput values.
 // You can construct a concrete instance of `ColumnLayoutInput` via:
 //
-//          ColumnLayoutArgs{...}
+//	ColumnLayoutArgs{...}
 type ColumnLayoutInput interface {
 	pulumi.Input
 
@@ -1099,11 +1099,11 @@ func (i ColumnLayoutArgs) ToColumnLayoutPtrOutputWithContext(ctx context.Context
 // ColumnLayoutPtrInput is an input type that accepts ColumnLayoutArgs, ColumnLayoutPtr and ColumnLayoutPtrOutput values.
 // You can construct a concrete instance of `ColumnLayoutPtrInput` via:
 //
-//          ColumnLayoutArgs{...}
+//	        ColumnLayoutArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ColumnLayoutPtrInput interface {
 	pulumi.Input
 
@@ -1287,7 +1287,7 @@ type DashboardFilter struct {
 // DashboardFilterInput is an input type that accepts DashboardFilterArgs and DashboardFilterOutput values.
 // You can construct a concrete instance of `DashboardFilterInput` via:
 //
-//          DashboardFilterArgs{...}
+//	DashboardFilterArgs{...}
 type DashboardFilterInput interface {
 	pulumi.Input
 
@@ -1322,7 +1322,7 @@ func (i DashboardFilterArgs) ToDashboardFilterOutputWithContext(ctx context.Cont
 // DashboardFilterArrayInput is an input type that accepts DashboardFilterArray and DashboardFilterArrayOutput values.
 // You can construct a concrete instance of `DashboardFilterArrayInput` via:
 //
-//          DashboardFilterArray{ DashboardFilterArgs{...} }
+//	DashboardFilterArray{ DashboardFilterArgs{...} }
 type DashboardFilterArrayInput interface {
 	pulumi.Input
 
@@ -1483,7 +1483,7 @@ type DataSet struct {
 // DataSetInput is an input type that accepts DataSetArgs and DataSetOutput values.
 // You can construct a concrete instance of `DataSetInput` via:
 //
-//          DataSetArgs{...}
+//	DataSetArgs{...}
 type DataSetInput interface {
 	pulumi.Input
 
@@ -1520,7 +1520,7 @@ func (i DataSetArgs) ToDataSetOutputWithContext(ctx context.Context) DataSetOutp
 // DataSetArrayInput is an input type that accepts DataSetArray and DataSetArrayOutput values.
 // You can construct a concrete instance of `DataSetArrayInput` via:
 //
-//          DataSetArray{ DataSetArgs{...} }
+//	DataSetArray{ DataSetArgs{...} }
 type DataSetArrayInput interface {
 	pulumi.Input
 
@@ -1683,7 +1683,7 @@ type Empty struct {
 // EmptyInput is an input type that accepts EmptyArgs and EmptyOutput values.
 // You can construct a concrete instance of `EmptyInput` via:
 //
-//          EmptyArgs{...}
+//	EmptyArgs{...}
 type EmptyInput interface {
 	pulumi.Input
 
@@ -1718,11 +1718,11 @@ func (i EmptyArgs) ToEmptyPtrOutputWithContext(ctx context.Context) EmptyPtrOutp
 // EmptyPtrInput is an input type that accepts EmptyArgs, EmptyPtr and EmptyPtrOutput values.
 // You can construct a concrete instance of `EmptyPtrInput` via:
 //
-//          EmptyArgs{...}
+//	        EmptyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EmptyPtrInput interface {
 	pulumi.Input
 
@@ -1827,7 +1827,7 @@ type GaugeView struct {
 // GaugeViewInput is an input type that accepts GaugeViewArgs and GaugeViewOutput values.
 // You can construct a concrete instance of `GaugeViewInput` via:
 //
-//          GaugeViewArgs{...}
+//	GaugeViewArgs{...}
 type GaugeViewInput interface {
 	pulumi.Input
 
@@ -1866,11 +1866,11 @@ func (i GaugeViewArgs) ToGaugeViewPtrOutputWithContext(ctx context.Context) Gaug
 // GaugeViewPtrInput is an input type that accepts GaugeViewArgs, GaugeViewPtr and GaugeViewPtrOutput values.
 // You can construct a concrete instance of `GaugeViewPtrInput` via:
 //
-//          GaugeViewArgs{...}
+//	        GaugeViewArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GaugeViewPtrInput interface {
 	pulumi.Input
 
@@ -2019,7 +2019,7 @@ type GridLayout struct {
 // GridLayoutInput is an input type that accepts GridLayoutArgs and GridLayoutOutput values.
 // You can construct a concrete instance of `GridLayoutInput` via:
 //
-//          GridLayoutArgs{...}
+//	GridLayoutArgs{...}
 type GridLayoutInput interface {
 	pulumi.Input
 
@@ -2058,11 +2058,11 @@ func (i GridLayoutArgs) ToGridLayoutPtrOutputWithContext(ctx context.Context) Gr
 // GridLayoutPtrInput is an input type that accepts GridLayoutArgs, GridLayoutPtr and GridLayoutPtrOutput values.
 // You can construct a concrete instance of `GridLayoutPtrInput` via:
 //
-//          GridLayoutArgs{...}
+//	        GridLayoutArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GridLayoutPtrInput interface {
 	pulumi.Input
 
@@ -2211,7 +2211,7 @@ type LogsPanel struct {
 // LogsPanelInput is an input type that accepts LogsPanelArgs and LogsPanelOutput values.
 // You can construct a concrete instance of `LogsPanelInput` via:
 //
-//          LogsPanelArgs{...}
+//	LogsPanelArgs{...}
 type LogsPanelInput interface {
 	pulumi.Input
 
@@ -2250,11 +2250,11 @@ func (i LogsPanelArgs) ToLogsPanelPtrOutputWithContext(ctx context.Context) Logs
 // LogsPanelPtrInput is an input type that accepts LogsPanelArgs, LogsPanelPtr and LogsPanelPtrOutput values.
 // You can construct a concrete instance of `LogsPanelPtrInput` via:
 //
-//          LogsPanelArgs{...}
+//	        LogsPanelArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LogsPanelPtrInput interface {
 	pulumi.Input
 
@@ -2403,7 +2403,7 @@ type MosaicLayout struct {
 // MosaicLayoutInput is an input type that accepts MosaicLayoutArgs and MosaicLayoutOutput values.
 // You can construct a concrete instance of `MosaicLayoutInput` via:
 //
-//          MosaicLayoutArgs{...}
+//	MosaicLayoutArgs{...}
 type MosaicLayoutInput interface {
 	pulumi.Input
 
@@ -2442,11 +2442,11 @@ func (i MosaicLayoutArgs) ToMosaicLayoutPtrOutputWithContext(ctx context.Context
 // MosaicLayoutPtrInput is an input type that accepts MosaicLayoutArgs, MosaicLayoutPtr and MosaicLayoutPtrOutput values.
 // You can construct a concrete instance of `MosaicLayoutPtrInput` via:
 //
-//          MosaicLayoutArgs{...}
+//	        MosaicLayoutArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MosaicLayoutPtrInput interface {
 	pulumi.Input
 
@@ -2597,7 +2597,7 @@ type PickTimeSeriesFilter struct {
 // PickTimeSeriesFilterInput is an input type that accepts PickTimeSeriesFilterArgs and PickTimeSeriesFilterOutput values.
 // You can construct a concrete instance of `PickTimeSeriesFilterInput` via:
 //
-//          PickTimeSeriesFilterArgs{...}
+//	PickTimeSeriesFilterArgs{...}
 type PickTimeSeriesFilterInput interface {
 	pulumi.Input
 
@@ -2638,11 +2638,11 @@ func (i PickTimeSeriesFilterArgs) ToPickTimeSeriesFilterPtrOutputWithContext(ctx
 // PickTimeSeriesFilterPtrInput is an input type that accepts PickTimeSeriesFilterArgs, PickTimeSeriesFilterPtr and PickTimeSeriesFilterPtrOutput values.
 // You can construct a concrete instance of `PickTimeSeriesFilterPtrInput` via:
 //
-//          PickTimeSeriesFilterArgs{...}
+//	        PickTimeSeriesFilterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PickTimeSeriesFilterPtrInput interface {
 	pulumi.Input
 
@@ -2813,7 +2813,7 @@ type RatioPart struct {
 // RatioPartInput is an input type that accepts RatioPartArgs and RatioPartOutput values.
 // You can construct a concrete instance of `RatioPartInput` via:
 //
-//          RatioPartArgs{...}
+//	RatioPartArgs{...}
 type RatioPartInput interface {
 	pulumi.Input
 
@@ -2852,11 +2852,11 @@ func (i RatioPartArgs) ToRatioPartPtrOutputWithContext(ctx context.Context) Rati
 // RatioPartPtrInput is an input type that accepts RatioPartArgs, RatioPartPtr and RatioPartPtrOutput values.
 // You can construct a concrete instance of `RatioPartPtrInput` via:
 //
-//          RatioPartArgs{...}
+//	        RatioPartArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RatioPartPtrInput interface {
 	pulumi.Input
 
@@ -3005,7 +3005,7 @@ type Row struct {
 // RowInput is an input type that accepts RowArgs and RowOutput values.
 // You can construct a concrete instance of `RowInput` via:
 //
-//          RowArgs{...}
+//	RowArgs{...}
 type RowInput interface {
 	pulumi.Input
 
@@ -3036,7 +3036,7 @@ func (i RowArgs) ToRowOutputWithContext(ctx context.Context) RowOutput {
 // RowArrayInput is an input type that accepts RowArray and RowArrayOutput values.
 // You can construct a concrete instance of `RowArrayInput` via:
 //
-//          RowArray{ RowArgs{...} }
+//	RowArray{ RowArgs{...} }
 type RowArrayInput interface {
 	pulumi.Input
 
@@ -3112,7 +3112,7 @@ type RowLayout struct {
 // RowLayoutInput is an input type that accepts RowLayoutArgs and RowLayoutOutput values.
 // You can construct a concrete instance of `RowLayoutInput` via:
 //
-//          RowLayoutArgs{...}
+//	RowLayoutArgs{...}
 type RowLayoutInput interface {
 	pulumi.Input
 
@@ -3149,11 +3149,11 @@ func (i RowLayoutArgs) ToRowLayoutPtrOutputWithContext(ctx context.Context) RowL
 // RowLayoutPtrInput is an input type that accepts RowLayoutArgs, RowLayoutPtr and RowLayoutPtrOutput values.
 // You can construct a concrete instance of `RowLayoutPtrInput` via:
 //
-//          RowLayoutArgs{...}
+//	        RowLayoutArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RowLayoutPtrInput interface {
 	pulumi.Input
 
@@ -3337,7 +3337,7 @@ type Scorecard struct {
 // ScorecardInput is an input type that accepts ScorecardArgs and ScorecardOutput values.
 // You can construct a concrete instance of `ScorecardInput` via:
 //
-//          ScorecardArgs{...}
+//	ScorecardArgs{...}
 type ScorecardInput interface {
 	pulumi.Input
 
@@ -3380,11 +3380,11 @@ func (i ScorecardArgs) ToScorecardPtrOutputWithContext(ctx context.Context) Scor
 // ScorecardPtrInput is an input type that accepts ScorecardArgs, ScorecardPtr and ScorecardPtrOutput values.
 // You can construct a concrete instance of `ScorecardPtrInput` via:
 //
-//          ScorecardArgs{...}
+//	        ScorecardArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ScorecardPtrInput interface {
 	pulumi.Input
 
@@ -3577,7 +3577,7 @@ type SparkChartView struct {
 // SparkChartViewInput is an input type that accepts SparkChartViewArgs and SparkChartViewOutput values.
 // You can construct a concrete instance of `SparkChartViewInput` via:
 //
-//          SparkChartViewArgs{...}
+//	SparkChartViewArgs{...}
 type SparkChartViewInput interface {
 	pulumi.Input
 
@@ -3616,11 +3616,11 @@ func (i SparkChartViewArgs) ToSparkChartViewPtrOutputWithContext(ctx context.Con
 // SparkChartViewPtrInput is an input type that accepts SparkChartViewArgs, SparkChartViewPtr and SparkChartViewPtrOutput values.
 // You can construct a concrete instance of `SparkChartViewPtrInput` via:
 //
-//          SparkChartViewArgs{...}
+//	        SparkChartViewArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SparkChartViewPtrInput interface {
 	pulumi.Input
 
@@ -3769,7 +3769,7 @@ type StatisticalTimeSeriesFilter struct {
 // StatisticalTimeSeriesFilterInput is an input type that accepts StatisticalTimeSeriesFilterArgs and StatisticalTimeSeriesFilterOutput values.
 // You can construct a concrete instance of `StatisticalTimeSeriesFilterInput` via:
 //
-//          StatisticalTimeSeriesFilterArgs{...}
+//	StatisticalTimeSeriesFilterArgs{...}
 type StatisticalTimeSeriesFilterInput interface {
 	pulumi.Input
 
@@ -3808,11 +3808,11 @@ func (i StatisticalTimeSeriesFilterArgs) ToStatisticalTimeSeriesFilterPtrOutputW
 // StatisticalTimeSeriesFilterPtrInput is an input type that accepts StatisticalTimeSeriesFilterArgs, StatisticalTimeSeriesFilterPtr and StatisticalTimeSeriesFilterPtrOutput values.
 // You can construct a concrete instance of `StatisticalTimeSeriesFilterPtrInput` via:
 //
-//          StatisticalTimeSeriesFilterArgs{...}
+//	        StatisticalTimeSeriesFilterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StatisticalTimeSeriesFilterPtrInput interface {
 	pulumi.Input
 
@@ -3965,7 +3965,7 @@ type TableDataSet struct {
 // TableDataSetInput is an input type that accepts TableDataSetArgs and TableDataSetOutput values.
 // You can construct a concrete instance of `TableDataSetInput` via:
 //
-//          TableDataSetArgs{...}
+//	TableDataSetArgs{...}
 type TableDataSetInput interface {
 	pulumi.Input
 
@@ -4000,7 +4000,7 @@ func (i TableDataSetArgs) ToTableDataSetOutputWithContext(ctx context.Context) T
 // TableDataSetArrayInput is an input type that accepts TableDataSetArray and TableDataSetArrayOutput values.
 // You can construct a concrete instance of `TableDataSetArrayInput` via:
 //
-//          TableDataSetArray{ TableDataSetArgs{...} }
+//	TableDataSetArray{ TableDataSetArgs{...} }
 type TableDataSetArrayInput interface {
 	pulumi.Input
 
@@ -4153,7 +4153,7 @@ type TableDisplayOptions struct {
 // TableDisplayOptionsInput is an input type that accepts TableDisplayOptionsArgs and TableDisplayOptionsOutput values.
 // You can construct a concrete instance of `TableDisplayOptionsInput` via:
 //
-//          TableDisplayOptionsArgs{...}
+//	TableDisplayOptionsArgs{...}
 type TableDisplayOptionsInput interface {
 	pulumi.Input
 
@@ -4190,11 +4190,11 @@ func (i TableDisplayOptionsArgs) ToTableDisplayOptionsPtrOutputWithContext(ctx c
 // TableDisplayOptionsPtrInput is an input type that accepts TableDisplayOptionsArgs, TableDisplayOptionsPtr and TableDisplayOptionsPtrOutput values.
 // You can construct a concrete instance of `TableDisplayOptionsPtrInput` via:
 //
-//          TableDisplayOptionsArgs{...}
+//	        TableDisplayOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TableDisplayOptionsPtrInput interface {
 	pulumi.Input
 
@@ -4321,7 +4321,7 @@ type Text struct {
 // TextInput is an input type that accepts TextArgs and TextOutput values.
 // You can construct a concrete instance of `TextInput` via:
 //
-//          TextArgs{...}
+//	TextArgs{...}
 type TextInput interface {
 	pulumi.Input
 
@@ -4360,11 +4360,11 @@ func (i TextArgs) ToTextPtrOutputWithContext(ctx context.Context) TextPtrOutput 
 // TextPtrInput is an input type that accepts TextArgs, TextPtr and TextPtrOutput values.
 // You can construct a concrete instance of `TextPtrInput` via:
 //
-//          TextArgs{...}
+//	        TextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TextPtrInput interface {
 	pulumi.Input
 
@@ -4519,7 +4519,7 @@ type Threshold struct {
 // ThresholdInput is an input type that accepts ThresholdArgs and ThresholdOutput values.
 // You can construct a concrete instance of `ThresholdInput` via:
 //
-//          ThresholdArgs{...}
+//	ThresholdArgs{...}
 type ThresholdInput interface {
 	pulumi.Input
 
@@ -4556,7 +4556,7 @@ func (i ThresholdArgs) ToThresholdOutputWithContext(ctx context.Context) Thresho
 // ThresholdArrayInput is an input type that accepts ThresholdArray and ThresholdArrayOutput values.
 // You can construct a concrete instance of `ThresholdArrayInput` via:
 //
-//          ThresholdArray{ ThresholdArgs{...} }
+//	ThresholdArray{ ThresholdArgs{...} }
 type ThresholdArrayInput interface {
 	pulumi.Input
 
@@ -4729,7 +4729,7 @@ type Tile struct {
 // TileInput is an input type that accepts TileArgs and TileOutput values.
 // You can construct a concrete instance of `TileInput` via:
 //
-//          TileArgs{...}
+//	TileArgs{...}
 type TileInput interface {
 	pulumi.Input
 
@@ -4766,7 +4766,7 @@ func (i TileArgs) ToTileOutputWithContext(ctx context.Context) TileOutput {
 // TileArrayInput is an input type that accepts TileArray and TileArrayOutput values.
 // You can construct a concrete instance of `TileArrayInput` via:
 //
-//          TileArray{ TileArgs{...} }
+//	TileArray{ TileArgs{...} }
 type TileArrayInput interface {
 	pulumi.Input
 
@@ -4941,7 +4941,7 @@ type TimeSeriesFilter struct {
 // TimeSeriesFilterInput is an input type that accepts TimeSeriesFilterArgs and TimeSeriesFilterOutput values.
 // You can construct a concrete instance of `TimeSeriesFilterInput` via:
 //
-//          TimeSeriesFilterArgs{...}
+//	TimeSeriesFilterArgs{...}
 type TimeSeriesFilterInput interface {
 	pulumi.Input
 
@@ -4988,11 +4988,11 @@ func (i TimeSeriesFilterArgs) ToTimeSeriesFilterPtrOutputWithContext(ctx context
 // TimeSeriesFilterPtrInput is an input type that accepts TimeSeriesFilterArgs, TimeSeriesFilterPtr and TimeSeriesFilterPtrOutput values.
 // You can construct a concrete instance of `TimeSeriesFilterPtrInput` via:
 //
-//          TimeSeriesFilterArgs{...}
+//	        TimeSeriesFilterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TimeSeriesFilterPtrInput interface {
 	pulumi.Input
 
@@ -5165,7 +5165,7 @@ type TimeSeriesFilterRatio struct {
 // TimeSeriesFilterRatioInput is an input type that accepts TimeSeriesFilterRatioArgs and TimeSeriesFilterRatioOutput values.
 // You can construct a concrete instance of `TimeSeriesFilterRatioInput` via:
 //
-//          TimeSeriesFilterRatioArgs{...}
+//	TimeSeriesFilterRatioArgs{...}
 type TimeSeriesFilterRatioInput interface {
 	pulumi.Input
 
@@ -5212,11 +5212,11 @@ func (i TimeSeriesFilterRatioArgs) ToTimeSeriesFilterRatioPtrOutputWithContext(c
 // TimeSeriesFilterRatioPtrInput is an input type that accepts TimeSeriesFilterRatioArgs, TimeSeriesFilterRatioPtr and TimeSeriesFilterRatioPtrOutput values.
 // You can construct a concrete instance of `TimeSeriesFilterRatioPtrInput` via:
 //
-//          TimeSeriesFilterRatioArgs{...}
+//	        TimeSeriesFilterRatioArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TimeSeriesFilterRatioPtrInput interface {
 	pulumi.Input
 
@@ -5505,7 +5505,7 @@ type TimeSeriesQuery struct {
 // TimeSeriesQueryInput is an input type that accepts TimeSeriesQueryArgs and TimeSeriesQueryOutput values.
 // You can construct a concrete instance of `TimeSeriesQueryInput` via:
 //
-//          TimeSeriesQueryArgs{...}
+//	TimeSeriesQueryArgs{...}
 type TimeSeriesQueryInput interface {
 	pulumi.Input
 
@@ -5548,11 +5548,11 @@ func (i TimeSeriesQueryArgs) ToTimeSeriesQueryPtrOutputWithContext(ctx context.C
 // TimeSeriesQueryPtrInput is an input type that accepts TimeSeriesQueryArgs, TimeSeriesQueryPtr and TimeSeriesQueryPtrOutput values.
 // You can construct a concrete instance of `TimeSeriesQueryPtrInput` via:
 //
-//          TimeSeriesQueryArgs{...}
+//	        TimeSeriesQueryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TimeSeriesQueryPtrInput interface {
 	pulumi.Input
 
@@ -5745,7 +5745,7 @@ type TimeSeriesTable struct {
 // TimeSeriesTableInput is an input type that accepts TimeSeriesTableArgs and TimeSeriesTableOutput values.
 // You can construct a concrete instance of `TimeSeriesTableInput` via:
 //
-//          TimeSeriesTableArgs{...}
+//	TimeSeriesTableArgs{...}
 type TimeSeriesTableInput interface {
 	pulumi.Input
 
@@ -5784,11 +5784,11 @@ func (i TimeSeriesTableArgs) ToTimeSeriesTablePtrOutputWithContext(ctx context.C
 // TimeSeriesTablePtrInput is an input type that accepts TimeSeriesTableArgs, TimeSeriesTablePtr and TimeSeriesTablePtrOutput values.
 // You can construct a concrete instance of `TimeSeriesTablePtrInput` via:
 //
-//          TimeSeriesTableArgs{...}
+//	        TimeSeriesTableArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TimeSeriesTablePtrInput interface {
 	pulumi.Input
 
@@ -5951,7 +5951,7 @@ type Widget struct {
 // WidgetInput is an input type that accepts WidgetArgs and WidgetOutput values.
 // You can construct a concrete instance of `WidgetInput` via:
 //
-//          WidgetArgs{...}
+//	WidgetArgs{...}
 type WidgetInput interface {
 	pulumi.Input
 
@@ -6004,11 +6004,11 @@ func (i WidgetArgs) ToWidgetPtrOutputWithContext(ctx context.Context) WidgetPtrO
 // WidgetPtrInput is an input type that accepts WidgetArgs, WidgetPtr and WidgetPtrOutput values.
 // You can construct a concrete instance of `WidgetPtrInput` via:
 //
-//          WidgetArgs{...}
+//	        WidgetArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type WidgetPtrInput interface {
 	pulumi.Input
 
@@ -6037,7 +6037,7 @@ func (i *widgetPtrType) ToWidgetPtrOutputWithContext(ctx context.Context) Widget
 // WidgetArrayInput is an input type that accepts WidgetArray and WidgetArrayOutput values.
 // You can construct a concrete instance of `WidgetArrayInput` via:
 //
-//          WidgetArray{ WidgetArgs{...} }
+//	WidgetArray{ WidgetArgs{...} }
 type WidgetArrayInput interface {
 	pulumi.Input
 
@@ -6386,7 +6386,7 @@ type XyChart struct {
 // XyChartInput is an input type that accepts XyChartArgs and XyChartOutput values.
 // You can construct a concrete instance of `XyChartInput` via:
 //
-//          XyChartArgs{...}
+//	XyChartArgs{...}
 type XyChartInput interface {
 	pulumi.Input
 
@@ -6435,11 +6435,11 @@ func (i XyChartArgs) ToXyChartPtrOutputWithContext(ctx context.Context) XyChartP
 // XyChartPtrInput is an input type that accepts XyChartArgs, XyChartPtr and XyChartPtrOutput values.
 // You can construct a concrete instance of `XyChartPtrInput` via:
 //
-//          XyChartArgs{...}
+//	        XyChartArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type XyChartPtrInput interface {
 	pulumi.Input
 

@@ -23,7 +23,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -56,7 +56,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -197,7 +197,7 @@ type DeviceConfig struct {
 // DeviceConfigInput is an input type that accepts DeviceConfigArgs and DeviceConfigOutput values.
 // You can construct a concrete instance of `DeviceConfigInput` via:
 //
-//          DeviceConfigArgs{...}
+//	DeviceConfigArgs{...}
 type DeviceConfigInput interface {
 	pulumi.Input
 
@@ -234,11 +234,11 @@ func (i DeviceConfigArgs) ToDeviceConfigPtrOutputWithContext(ctx context.Context
 // DeviceConfigPtrInput is an input type that accepts DeviceConfigArgs, DeviceConfigPtr and DeviceConfigPtrOutput values.
 // You can construct a concrete instance of `DeviceConfigPtrInput` via:
 //
-//          DeviceConfigArgs{...}
+//	        DeviceConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DeviceConfigPtrInput interface {
 	pulumi.Input
 
@@ -386,7 +386,7 @@ type DeviceCredential struct {
 // DeviceCredentialInput is an input type that accepts DeviceCredentialArgs and DeviceCredentialOutput values.
 // You can construct a concrete instance of `DeviceCredentialInput` via:
 //
-//          DeviceCredentialArgs{...}
+//	DeviceCredentialArgs{...}
 type DeviceCredentialInput interface {
 	pulumi.Input
 
@@ -417,7 +417,7 @@ func (i DeviceCredentialArgs) ToDeviceCredentialOutputWithContext(ctx context.Co
 // DeviceCredentialArrayInput is an input type that accepts DeviceCredentialArray and DeviceCredentialArrayOutput values.
 // You can construct a concrete instance of `DeviceCredentialArrayInput` via:
 //
-//          DeviceCredentialArray{ DeviceCredentialArgs{...} }
+//	DeviceCredentialArray{ DeviceCredentialArgs{...} }
 type DeviceCredentialArrayInput interface {
 	pulumi.Input
 
@@ -581,7 +581,7 @@ type EventNotificationConfig struct {
 // EventNotificationConfigInput is an input type that accepts EventNotificationConfigArgs and EventNotificationConfigOutput values.
 // You can construct a concrete instance of `EventNotificationConfigInput` via:
 //
-//          EventNotificationConfigArgs{...}
+//	EventNotificationConfigArgs{...}
 type EventNotificationConfigInput interface {
 	pulumi.Input
 
@@ -612,7 +612,7 @@ func (i EventNotificationConfigArgs) ToEventNotificationConfigOutputWithContext(
 // EventNotificationConfigArrayInput is an input type that accepts EventNotificationConfigArray and EventNotificationConfigArrayOutput values.
 // You can construct a concrete instance of `EventNotificationConfigArrayInput` via:
 //
-//          EventNotificationConfigArray{ EventNotificationConfigArgs{...} }
+//	EventNotificationConfigArray{ EventNotificationConfigArgs{...} }
 type EventNotificationConfigArrayInput interface {
 	pulumi.Input
 
@@ -747,7 +747,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -790,11 +790,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -987,7 +987,7 @@ type GatewayConfig struct {
 // GatewayConfigInput is an input type that accepts GatewayConfigArgs and GatewayConfigOutput values.
 // You can construct a concrete instance of `GatewayConfigInput` via:
 //
-//          GatewayConfigArgs{...}
+//	GatewayConfigArgs{...}
 type GatewayConfigInput interface {
 	pulumi.Input
 
@@ -1026,11 +1026,11 @@ func (i GatewayConfigArgs) ToGatewayConfigPtrOutputWithContext(ctx context.Conte
 // GatewayConfigPtrInput is an input type that accepts GatewayConfigArgs, GatewayConfigPtr and GatewayConfigPtrOutput values.
 // You can construct a concrete instance of `GatewayConfigPtrInput` via:
 //
-//          GatewayConfigArgs{...}
+//	        GatewayConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GatewayConfigPtrInput interface {
 	pulumi.Input
 
@@ -1191,7 +1191,7 @@ type HttpConfig struct {
 // HttpConfigInput is an input type that accepts HttpConfigArgs and HttpConfigOutput values.
 // You can construct a concrete instance of `HttpConfigInput` via:
 //
-//          HttpConfigArgs{...}
+//	HttpConfigArgs{...}
 type HttpConfigInput interface {
 	pulumi.Input
 
@@ -1228,11 +1228,11 @@ func (i HttpConfigArgs) ToHttpConfigPtrOutputWithContext(ctx context.Context) Ht
 // HttpConfigPtrInput is an input type that accepts HttpConfigArgs, HttpConfigPtr and HttpConfigPtrOutput values.
 // You can construct a concrete instance of `HttpConfigPtrInput` via:
 //
-//          HttpConfigArgs{...}
+//	        HttpConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpConfigPtrInput interface {
 	pulumi.Input
 
@@ -1357,7 +1357,7 @@ type MqttConfig struct {
 // MqttConfigInput is an input type that accepts MqttConfigArgs and MqttConfigOutput values.
 // You can construct a concrete instance of `MqttConfigInput` via:
 //
-//          MqttConfigArgs{...}
+//	MqttConfigArgs{...}
 type MqttConfigInput interface {
 	pulumi.Input
 
@@ -1394,11 +1394,11 @@ func (i MqttConfigArgs) ToMqttConfigPtrOutputWithContext(ctx context.Context) Mq
 // MqttConfigPtrInput is an input type that accepts MqttConfigArgs, MqttConfigPtr and MqttConfigPtrOutput values.
 // You can construct a concrete instance of `MqttConfigPtrInput` via:
 //
-//          MqttConfigArgs{...}
+//	        MqttConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MqttConfigPtrInput interface {
 	pulumi.Input
 
@@ -1525,7 +1525,7 @@ type PublicKeyCertificate struct {
 // PublicKeyCertificateInput is an input type that accepts PublicKeyCertificateArgs and PublicKeyCertificateOutput values.
 // You can construct a concrete instance of `PublicKeyCertificateInput` via:
 //
-//          PublicKeyCertificateArgs{...}
+//	PublicKeyCertificateArgs{...}
 type PublicKeyCertificateInput interface {
 	pulumi.Input
 
@@ -1564,11 +1564,11 @@ func (i PublicKeyCertificateArgs) ToPublicKeyCertificatePtrOutputWithContext(ctx
 // PublicKeyCertificatePtrInput is an input type that accepts PublicKeyCertificateArgs, PublicKeyCertificatePtr and PublicKeyCertificatePtrOutput values.
 // You can construct a concrete instance of `PublicKeyCertificatePtrInput` via:
 //
-//          PublicKeyCertificateArgs{...}
+//	        PublicKeyCertificateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PublicKeyCertificatePtrInput interface {
 	pulumi.Input
 
@@ -1724,7 +1724,7 @@ type PublicKeyCredential struct {
 // PublicKeyCredentialInput is an input type that accepts PublicKeyCredentialArgs and PublicKeyCredentialOutput values.
 // You can construct a concrete instance of `PublicKeyCredentialInput` via:
 //
-//          PublicKeyCredentialArgs{...}
+//	PublicKeyCredentialArgs{...}
 type PublicKeyCredentialInput interface {
 	pulumi.Input
 
@@ -1763,11 +1763,11 @@ func (i PublicKeyCredentialArgs) ToPublicKeyCredentialPtrOutputWithContext(ctx c
 // PublicKeyCredentialPtrInput is an input type that accepts PublicKeyCredentialArgs, PublicKeyCredentialPtr and PublicKeyCredentialPtrOutput values.
 // You can construct a concrete instance of `PublicKeyCredentialPtrInput` via:
 //
-//          PublicKeyCredentialArgs{...}
+//	        PublicKeyCredentialArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PublicKeyCredentialPtrInput interface {
 	pulumi.Input
 
@@ -1914,7 +1914,7 @@ type RegistryCredential struct {
 // RegistryCredentialInput is an input type that accepts RegistryCredentialArgs and RegistryCredentialOutput values.
 // You can construct a concrete instance of `RegistryCredentialInput` via:
 //
-//          RegistryCredentialArgs{...}
+//	RegistryCredentialArgs{...}
 type RegistryCredentialInput interface {
 	pulumi.Input
 
@@ -1943,7 +1943,7 @@ func (i RegistryCredentialArgs) ToRegistryCredentialOutputWithContext(ctx contex
 // RegistryCredentialArrayInput is an input type that accepts RegistryCredentialArray and RegistryCredentialArrayOutput values.
 // You can construct a concrete instance of `RegistryCredentialArrayInput` via:
 //
-//          RegistryCredentialArray{ RegistryCredentialArgs{...} }
+//	RegistryCredentialArray{ RegistryCredentialArgs{...} }
 type RegistryCredentialArrayInput interface {
 	pulumi.Input
 
@@ -2060,7 +2060,7 @@ type StateNotificationConfig struct {
 // StateNotificationConfigInput is an input type that accepts StateNotificationConfigArgs and StateNotificationConfigOutput values.
 // You can construct a concrete instance of `StateNotificationConfigInput` via:
 //
-//          StateNotificationConfigArgs{...}
+//	StateNotificationConfigArgs{...}
 type StateNotificationConfigInput interface {
 	pulumi.Input
 
@@ -2097,11 +2097,11 @@ func (i StateNotificationConfigArgs) ToStateNotificationConfigPtrOutputWithConte
 // StateNotificationConfigPtrInput is an input type that accepts StateNotificationConfigArgs, StateNotificationConfigPtr and StateNotificationConfigPtrOutput values.
 // You can construct a concrete instance of `StateNotificationConfigPtrInput` via:
 //
-//          StateNotificationConfigArgs{...}
+//	        StateNotificationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StateNotificationConfigPtrInput interface {
 	pulumi.Input
 

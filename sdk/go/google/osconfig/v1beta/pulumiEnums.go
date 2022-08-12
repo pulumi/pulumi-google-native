@@ -144,7 +144,7 @@ func (o AptRepositoryArchiveTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // AptRepositoryArchiveTypeInput is an input type that accepts AptRepositoryArchiveTypeArgs and AptRepositoryArchiveTypeOutput values.
 // You can construct a concrete instance of `AptRepositoryArchiveTypeInput` via:
 //
-//          AptRepositoryArchiveTypeArgs{...}
+//	AptRepositoryArchiveTypeArgs{...}
 type AptRepositoryArchiveTypeInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o AptSettingsTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // AptSettingsTypeInput is an input type that accepts AptSettingsTypeArgs and AptSettingsTypeOutput values.
 // You can construct a concrete instance of `AptSettingsTypeInput` via:
 //
-//          AptSettingsTypeArgs{...}
+//	AptSettingsTypeArgs{...}
 type AptSettingsTypeInput interface {
 	pulumi.Input
 
@@ -484,7 +484,7 @@ func (o ExecStepConfigInterpreterPtrOutput) ToStringPtrOutputWithContext(ctx con
 // ExecStepConfigInterpreterInput is an input type that accepts ExecStepConfigInterpreterArgs and ExecStepConfigInterpreterOutput values.
 // You can construct a concrete instance of `ExecStepConfigInterpreterInput` via:
 //
-//          ExecStepConfigInterpreterArgs{...}
+//	ExecStepConfigInterpreterArgs{...}
 type ExecStepConfigInterpreterInput interface {
 	pulumi.Input
 
@@ -655,7 +655,7 @@ func (o PackageDesiredStatePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // PackageDesiredStateInput is an input type that accepts PackageDesiredStateArgs and PackageDesiredStateOutput values.
 // You can construct a concrete instance of `PackageDesiredStateInput` via:
 //
-//          PackageDesiredStateArgs{...}
+//	PackageDesiredStateArgs{...}
 type PackageDesiredStateInput interface {
 	pulumi.Input
 
@@ -830,7 +830,7 @@ func (o PackageManagerPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // PackageManagerInput is an input type that accepts PackageManagerArgs and PackageManagerOutput values.
 // You can construct a concrete instance of `PackageManagerInput` via:
 //
-//          PackageManagerArgs{...}
+//	PackageManagerArgs{...}
 type PackageManagerInput interface {
 	pulumi.Input
 
@@ -1001,7 +1001,7 @@ func (o PatchConfigRebootConfigPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // PatchConfigRebootConfigInput is an input type that accepts PatchConfigRebootConfigArgs and PatchConfigRebootConfigOutput values.
 // You can construct a concrete instance of `PatchConfigRebootConfigInput` via:
 //
-//          PatchConfigRebootConfigArgs{...}
+//	PatchConfigRebootConfigArgs{...}
 type PatchConfigRebootConfigInput interface {
 	pulumi.Input
 
@@ -1170,7 +1170,7 @@ func (o PatchRolloutModePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // PatchRolloutModeInput is an input type that accepts PatchRolloutModeArgs and PatchRolloutModeOutput values.
 // You can construct a concrete instance of `PatchRolloutModeInput` via:
 //
-//          PatchRolloutModeArgs{...}
+//	PatchRolloutModeArgs{...}
 type PatchRolloutModeInput interface {
 	pulumi.Input
 
@@ -1341,7 +1341,7 @@ func (o RecurringScheduleFrequencyPtrOutput) ToStringPtrOutputWithContext(ctx co
 // RecurringScheduleFrequencyInput is an input type that accepts RecurringScheduleFrequencyArgs and RecurringScheduleFrequencyOutput values.
 // You can construct a concrete instance of `RecurringScheduleFrequencyInput` via:
 //
-//          RecurringScheduleFrequencyArgs{...}
+//	RecurringScheduleFrequencyArgs{...}
 type RecurringScheduleFrequencyInput interface {
 	pulumi.Input
 
@@ -1512,7 +1512,7 @@ func (o SoftwareRecipeDesiredStatePtrOutput) ToStringPtrOutputWithContext(ctx co
 // SoftwareRecipeDesiredStateInput is an input type that accepts SoftwareRecipeDesiredStateArgs and SoftwareRecipeDesiredStateOutput values.
 // You can construct a concrete instance of `SoftwareRecipeDesiredStateInput` via:
 //
-//          SoftwareRecipeDesiredStateArgs{...}
+//	SoftwareRecipeDesiredStateArgs{...}
 type SoftwareRecipeDesiredStateInput interface {
 	pulumi.Input
 
@@ -1689,7 +1689,7 @@ func (o SoftwareRecipeStepExtractArchiveTypePtrOutput) ToStringPtrOutputWithCont
 // SoftwareRecipeStepExtractArchiveTypeInput is an input type that accepts SoftwareRecipeStepExtractArchiveTypeArgs and SoftwareRecipeStepExtractArchiveTypeOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepExtractArchiveTypeInput` via:
 //
-//          SoftwareRecipeStepExtractArchiveTypeArgs{...}
+//	SoftwareRecipeStepExtractArchiveTypeArgs{...}
 type SoftwareRecipeStepExtractArchiveTypeInput interface {
 	pulumi.Input
 
@@ -1858,7 +1858,7 @@ func (o SoftwareRecipeStepRunScriptInterpreterPtrOutput) ToStringPtrOutputWithCo
 // SoftwareRecipeStepRunScriptInterpreterInput is an input type that accepts SoftwareRecipeStepRunScriptInterpreterArgs and SoftwareRecipeStepRunScriptInterpreterOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepRunScriptInterpreterInput` via:
 //
-//          SoftwareRecipeStepRunScriptInterpreterArgs{...}
+//	SoftwareRecipeStepRunScriptInterpreterArgs{...}
 type SoftwareRecipeStepRunScriptInterpreterInput interface {
 	pulumi.Input
 
@@ -2037,7 +2037,7 @@ func (o WeekDayOfMonthDayOfWeekPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // WeekDayOfMonthDayOfWeekInput is an input type that accepts WeekDayOfMonthDayOfWeekArgs and WeekDayOfMonthDayOfWeekOutput values.
 // You can construct a concrete instance of `WeekDayOfMonthDayOfWeekInput` via:
 //
-//          WeekDayOfMonthDayOfWeekArgs{...}
+//	WeekDayOfMonthDayOfWeekArgs{...}
 type WeekDayOfMonthDayOfWeekInput interface {
 	pulumi.Input
 
@@ -2216,7 +2216,7 @@ func (o WeeklyScheduleDayOfWeekPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // WeeklyScheduleDayOfWeekInput is an input type that accepts WeeklyScheduleDayOfWeekArgs and WeeklyScheduleDayOfWeekOutput values.
 // You can construct a concrete instance of `WeeklyScheduleDayOfWeekInput` via:
 //
-//          WeeklyScheduleDayOfWeekArgs{...}
+//	WeeklyScheduleDayOfWeekArgs{...}
 type WeeklyScheduleDayOfWeekInput interface {
 	pulumi.Input
 
@@ -2398,7 +2398,7 @@ func (o WindowsUpdateSettingsClassificationsItemPtrOutput) ToStringPtrOutputWith
 // WindowsUpdateSettingsClassificationsItemInput is an input type that accepts WindowsUpdateSettingsClassificationsItemArgs and WindowsUpdateSettingsClassificationsItemOutput values.
 // You can construct a concrete instance of `WindowsUpdateSettingsClassificationsItemInput` via:
 //
-//          WindowsUpdateSettingsClassificationsItemArgs{...}
+//	WindowsUpdateSettingsClassificationsItemArgs{...}
 type WindowsUpdateSettingsClassificationsItemInput interface {
 	pulumi.Input
 
@@ -2436,7 +2436,7 @@ func (in *windowsUpdateSettingsClassificationsItemPtr) ToWindowsUpdateSettingsCl
 // WindowsUpdateSettingsClassificationsItemArrayInput is an input type that accepts WindowsUpdateSettingsClassificationsItemArray and WindowsUpdateSettingsClassificationsItemArrayOutput values.
 // You can construct a concrete instance of `WindowsUpdateSettingsClassificationsItemArrayInput` via:
 //
-//          WindowsUpdateSettingsClassificationsItemArray{ WindowsUpdateSettingsClassificationsItemArgs{...} }
+//	WindowsUpdateSettingsClassificationsItemArray{ WindowsUpdateSettingsClassificationsItemArgs{...} }
 type WindowsUpdateSettingsClassificationsItemArrayInput interface {
 	pulumi.Input
 

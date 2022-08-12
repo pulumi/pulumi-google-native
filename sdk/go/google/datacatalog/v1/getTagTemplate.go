@@ -84,7 +84,7 @@ func (o LookupTagTemplateResultOutput) Fields() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupTagTemplateResult) map[string]string { return v.Fields }).(pulumi.StringMapOutput)
 }
 
-// Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a ``tag:`` predicate.
+// Indicates whether tags created with this template are public. Public tags do not require tag template access to appear in ListTags API response. Additionally, you can search for a public tag by value with a simple search query in addition to using a “tag:“ predicate.
 func (o LookupTagTemplateResultOutput) IsPubliclyReadable() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTagTemplateResult) bool { return v.IsPubliclyReadable }).(pulumi.BoolOutput)
 }

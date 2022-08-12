@@ -21,7 +21,7 @@ type GoogleDatastoreAdminV1IndexedProperty struct {
 // GoogleDatastoreAdminV1IndexedPropertyInput is an input type that accepts GoogleDatastoreAdminV1IndexedPropertyArgs and GoogleDatastoreAdminV1IndexedPropertyOutput values.
 // You can construct a concrete instance of `GoogleDatastoreAdminV1IndexedPropertyInput` via:
 //
-//          GoogleDatastoreAdminV1IndexedPropertyArgs{...}
+//	GoogleDatastoreAdminV1IndexedPropertyArgs{...}
 type GoogleDatastoreAdminV1IndexedPropertyInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i GoogleDatastoreAdminV1IndexedPropertyArgs) ToGoogleDatastoreAdminV1Index
 // GoogleDatastoreAdminV1IndexedPropertyArrayInput is an input type that accepts GoogleDatastoreAdminV1IndexedPropertyArray and GoogleDatastoreAdminV1IndexedPropertyArrayOutput values.
 // You can construct a concrete instance of `GoogleDatastoreAdminV1IndexedPropertyArrayInput` via:
 //
-//          GoogleDatastoreAdminV1IndexedPropertyArray{ GoogleDatastoreAdminV1IndexedPropertyArgs{...} }
+//	GoogleDatastoreAdminV1IndexedPropertyArray{ GoogleDatastoreAdminV1IndexedPropertyArgs{...} }
 type GoogleDatastoreAdminV1IndexedPropertyArrayInput interface {
 	pulumi.Input
 

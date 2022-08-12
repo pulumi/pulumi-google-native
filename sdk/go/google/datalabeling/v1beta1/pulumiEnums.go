@@ -145,7 +145,7 @@ func (o GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregation
 // GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeInput is an input type that accepts GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeArgs and GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeArgs{...}
+//	GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeArgs{...}
 type GoogleCloudDatalabelingV1beta1ImageClassificationConfigAnswerAggregationTypeInput interface {
 	pulumi.Input
 
@@ -335,7 +335,7 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypePtrOutput) ToStri
 // GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeInput is an input type that accepts GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeArgs and GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeArgs{...}
+//	GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeArgs{...}
 type GoogleCloudDatalabelingV1beta1InputConfigAnnotationTypeInput interface {
 	pulumi.Input
 
@@ -508,7 +508,7 @@ func (o GoogleCloudDatalabelingV1beta1InputConfigDataTypePtrOutput) ToStringPtrO
 // GoogleCloudDatalabelingV1beta1InputConfigDataTypeInput is an input type that accepts GoogleCloudDatalabelingV1beta1InputConfigDataTypeArgs and GoogleCloudDatalabelingV1beta1InputConfigDataTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDatalabelingV1beta1InputConfigDataTypeInput` via:
 //
-//          GoogleCloudDatalabelingV1beta1InputConfigDataTypeArgs{...}
+//	GoogleCloudDatalabelingV1beta1InputConfigDataTypeArgs{...}
 type GoogleCloudDatalabelingV1beta1InputConfigDataTypeInput interface {
 	pulumi.Input
 
@@ -681,7 +681,7 @@ func (o InstructionDataTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // InstructionDataTypeInput is an input type that accepts InstructionDataTypeArgs and InstructionDataTypeOutput values.
 // You can construct a concrete instance of `InstructionDataTypeInput` via:
 //
-//          InstructionDataTypeArgs{...}
+//	InstructionDataTypeArgs{...}
 type InstructionDataTypeInput interface {
 	pulumi.Input
 

@@ -27,7 +27,7 @@ type AppEngineHttpRequest struct {
 // AppEngineHttpRequestInput is an input type that accepts AppEngineHttpRequestArgs and AppEngineHttpRequestOutput values.
 // You can construct a concrete instance of `AppEngineHttpRequestInput` via:
 //
-//          AppEngineHttpRequestArgs{...}
+//	AppEngineHttpRequestArgs{...}
 type AppEngineHttpRequestInput interface {
 	pulumi.Input
 
@@ -72,11 +72,11 @@ func (i AppEngineHttpRequestArgs) ToAppEngineHttpRequestPtrOutputWithContext(ctx
 // AppEngineHttpRequestPtrInput is an input type that accepts AppEngineHttpRequestArgs, AppEngineHttpRequestPtr and AppEngineHttpRequestPtrOutput values.
 // You can construct a concrete instance of `AppEngineHttpRequestPtrInput` via:
 //
-//          AppEngineHttpRequestArgs{...}
+//	        AppEngineHttpRequestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppEngineHttpRequestPtrInput interface {
 	pulumi.Input
 
@@ -293,7 +293,7 @@ type AppEngineRouting struct {
 // AppEngineRoutingInput is an input type that accepts AppEngineRoutingArgs and AppEngineRoutingOutput values.
 // You can construct a concrete instance of `AppEngineRoutingInput` via:
 //
-//          AppEngineRoutingArgs{...}
+//	AppEngineRoutingArgs{...}
 type AppEngineRoutingInput interface {
 	pulumi.Input
 
@@ -334,11 +334,11 @@ func (i AppEngineRoutingArgs) ToAppEngineRoutingPtrOutputWithContext(ctx context
 // AppEngineRoutingPtrInput is an input type that accepts AppEngineRoutingArgs, AppEngineRoutingPtr and AppEngineRoutingPtrOutput values.
 // You can construct a concrete instance of `AppEngineRoutingPtrInput` via:
 //
-//          AppEngineRoutingArgs{...}
+//	        AppEngineRoutingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppEngineRoutingPtrInput interface {
 	pulumi.Input
 
@@ -565,7 +565,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -598,7 +598,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -745,7 +745,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -788,11 +788,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -993,7 +993,7 @@ type HttpRequest struct {
 // HttpRequestInput is an input type that accepts HttpRequestArgs and HttpRequestOutput values.
 // You can construct a concrete instance of `HttpRequestInput` via:
 //
-//          HttpRequestArgs{...}
+//	HttpRequestArgs{...}
 type HttpRequestInput interface {
 	pulumi.Input
 
@@ -1040,11 +1040,11 @@ func (i HttpRequestArgs) ToHttpRequestPtrOutputWithContext(ctx context.Context) 
 // HttpRequestPtrInput is an input type that accepts HttpRequestArgs, HttpRequestPtr and HttpRequestPtrOutput values.
 // You can construct a concrete instance of `HttpRequestPtrInput` via:
 //
-//          HttpRequestArgs{...}
+//	        HttpRequestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpRequestPtrInput interface {
 	pulumi.Input
 
@@ -1281,7 +1281,7 @@ type OAuthToken struct {
 // OAuthTokenInput is an input type that accepts OAuthTokenArgs and OAuthTokenOutput values.
 // You can construct a concrete instance of `OAuthTokenInput` via:
 //
-//          OAuthTokenArgs{...}
+//	OAuthTokenArgs{...}
 type OAuthTokenInput interface {
 	pulumi.Input
 
@@ -1320,11 +1320,11 @@ func (i OAuthTokenArgs) ToOAuthTokenPtrOutputWithContext(ctx context.Context) OA
 // OAuthTokenPtrInput is an input type that accepts OAuthTokenArgs, OAuthTokenPtr and OAuthTokenPtrOutput values.
 // You can construct a concrete instance of `OAuthTokenPtrInput` via:
 //
-//          OAuthTokenArgs{...}
+//	        OAuthTokenArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OAuthTokenPtrInput interface {
 	pulumi.Input
 
@@ -1473,7 +1473,7 @@ type OidcToken struct {
 // OidcTokenInput is an input type that accepts OidcTokenArgs and OidcTokenOutput values.
 // You can construct a concrete instance of `OidcTokenInput` via:
 //
-//          OidcTokenArgs{...}
+//	OidcTokenArgs{...}
 type OidcTokenInput interface {
 	pulumi.Input
 
@@ -1512,11 +1512,11 @@ func (i OidcTokenArgs) ToOidcTokenPtrOutputWithContext(ctx context.Context) Oidc
 // OidcTokenPtrInput is an input type that accepts OidcTokenArgs, OidcTokenPtr and OidcTokenPtrOutput values.
 // You can construct a concrete instance of `OidcTokenPtrInput` via:
 //
-//          OidcTokenArgs{...}
+//	        OidcTokenArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OidcTokenPtrInput interface {
 	pulumi.Input
 
@@ -1665,7 +1665,7 @@ type RateLimits struct {
 // RateLimitsInput is an input type that accepts RateLimitsArgs and RateLimitsOutput values.
 // You can construct a concrete instance of `RateLimitsInput` via:
 //
-//          RateLimitsArgs{...}
+//	RateLimitsArgs{...}
 type RateLimitsInput interface {
 	pulumi.Input
 
@@ -1704,11 +1704,11 @@ func (i RateLimitsArgs) ToRateLimitsPtrOutputWithContext(ctx context.Context) Ra
 // RateLimitsPtrInput is an input type that accepts RateLimitsArgs, RateLimitsPtr and RateLimitsPtrOutput values.
 // You can construct a concrete instance of `RateLimitsPtrInput` via:
 //
-//          RateLimitsArgs{...}
+//	        RateLimitsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RateLimitsPtrInput interface {
 	pulumi.Input
 
@@ -1870,7 +1870,7 @@ type RetryConfig struct {
 // RetryConfigInput is an input type that accepts RetryConfigArgs and RetryConfigOutput values.
 // You can construct a concrete instance of `RetryConfigInput` via:
 //
-//          RetryConfigArgs{...}
+//	RetryConfigArgs{...}
 type RetryConfigInput interface {
 	pulumi.Input
 
@@ -1915,11 +1915,11 @@ func (i RetryConfigArgs) ToRetryConfigPtrOutputWithContext(ctx context.Context) 
 // RetryConfigPtrInput is an input type that accepts RetryConfigArgs, RetryConfigPtr and RetryConfigPtrOutput values.
 // You can construct a concrete instance of `RetryConfigPtrInput` via:
 //
-//          RetryConfigArgs{...}
+//	        RetryConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RetryConfigPtrInput interface {
 	pulumi.Input
 
@@ -2132,7 +2132,7 @@ type StackdriverLoggingConfig struct {
 // StackdriverLoggingConfigInput is an input type that accepts StackdriverLoggingConfigArgs and StackdriverLoggingConfigOutput values.
 // You can construct a concrete instance of `StackdriverLoggingConfigInput` via:
 //
-//          StackdriverLoggingConfigArgs{...}
+//	StackdriverLoggingConfigArgs{...}
 type StackdriverLoggingConfigInput interface {
 	pulumi.Input
 
@@ -2169,11 +2169,11 @@ func (i StackdriverLoggingConfigArgs) ToStackdriverLoggingConfigPtrOutputWithCon
 // StackdriverLoggingConfigPtrInput is an input type that accepts StackdriverLoggingConfigArgs, StackdriverLoggingConfigPtr and StackdriverLoggingConfigPtrOutput values.
 // You can construct a concrete instance of `StackdriverLoggingConfigPtrInput` via:
 //
-//          StackdriverLoggingConfigArgs{...}
+//	        StackdriverLoggingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StackdriverLoggingConfigPtrInput interface {
 	pulumi.Input
 

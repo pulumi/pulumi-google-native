@@ -144,7 +144,7 @@ func (o AutoscalingSettingsAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx 
 // AutoscalingSettingsAlgorithmInput is an input type that accepts AutoscalingSettingsAlgorithmArgs and AutoscalingSettingsAlgorithmOutput values.
 // You can construct a concrete instance of `AutoscalingSettingsAlgorithmInput` via:
 //
-//          AutoscalingSettingsAlgorithmArgs{...}
+//	AutoscalingSettingsAlgorithmArgs{...}
 type AutoscalingSettingsAlgorithmInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o EnvironmentFlexResourceSchedulingGoalPtrOutput) ToStringPtrOutputWithCon
 // EnvironmentFlexResourceSchedulingGoalInput is an input type that accepts EnvironmentFlexResourceSchedulingGoalArgs and EnvironmentFlexResourceSchedulingGoalOutput values.
 // You can construct a concrete instance of `EnvironmentFlexResourceSchedulingGoalInput` via:
 //
-//          EnvironmentFlexResourceSchedulingGoalArgs{...}
+//	EnvironmentFlexResourceSchedulingGoalArgs{...}
 type EnvironmentFlexResourceSchedulingGoalInput interface {
 	pulumi.Input
 
@@ -502,7 +502,7 @@ func (o ExecutionStageStateExecutionStageStatePtrOutput) ToStringPtrOutputWithCo
 // ExecutionStageStateExecutionStageStateInput is an input type that accepts ExecutionStageStateExecutionStageStateArgs and ExecutionStageStateExecutionStageStateOutput values.
 // You can construct a concrete instance of `ExecutionStageStateExecutionStageStateInput` via:
 //
-//          ExecutionStageStateExecutionStageStateArgs{...}
+//	ExecutionStageStateExecutionStageStateArgs{...}
 type ExecutionStageStateExecutionStageStateInput interface {
 	pulumi.Input
 
@@ -683,7 +683,7 @@ func (o ExecutionStageSummaryKindPtrOutput) ToStringPtrOutputWithContext(ctx con
 // ExecutionStageSummaryKindInput is an input type that accepts ExecutionStageSummaryKindArgs and ExecutionStageSummaryKindOutput values.
 // You can construct a concrete instance of `ExecutionStageSummaryKindInput` via:
 //
-//          ExecutionStageSummaryKindArgs{...}
+//	ExecutionStageSummaryKindArgs{...}
 type ExecutionStageSummaryKindInput interface {
 	pulumi.Input
 
@@ -872,7 +872,7 @@ func (o JobCurrentStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // JobCurrentStateInput is an input type that accepts JobCurrentStateArgs and JobCurrentStateOutput values.
 // You can construct a concrete instance of `JobCurrentStateInput` via:
 //
-//          JobCurrentStateArgs{...}
+//	JobCurrentStateArgs{...}
 type JobCurrentStateInput interface {
 	pulumi.Input
 
@@ -1061,7 +1061,7 @@ func (o JobRequestedStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // JobRequestedStateInput is an input type that accepts JobRequestedStateArgs and JobRequestedStateOutput values.
 // You can construct a concrete instance of `JobRequestedStateInput` via:
 //
-//          JobRequestedStateArgs{...}
+//	JobRequestedStateArgs{...}
 type JobRequestedStateInput interface {
 	pulumi.Input
 
@@ -1230,7 +1230,7 @@ func (o JobTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulu
 // JobTypeInput is an input type that accepts JobTypeArgs and JobTypeOutput values.
 // You can construct a concrete instance of `JobTypeInput` via:
 //
-//          JobTypeArgs{...}
+//	JobTypeArgs{...}
 type JobTypeInput interface {
 	pulumi.Input
 
@@ -1399,7 +1399,7 @@ func (o RuntimeEnvironmentIpConfigurationPtrOutput) ToStringPtrOutputWithContext
 // RuntimeEnvironmentIpConfigurationInput is an input type that accepts RuntimeEnvironmentIpConfigurationArgs and RuntimeEnvironmentIpConfigurationOutput values.
 // You can construct a concrete instance of `RuntimeEnvironmentIpConfigurationInput` via:
 //
-//          RuntimeEnvironmentIpConfigurationArgs{...}
+//	RuntimeEnvironmentIpConfigurationArgs{...}
 type RuntimeEnvironmentIpConfigurationInput interface {
 	pulumi.Input
 
@@ -1572,7 +1572,7 @@ func (o SdkVersionSdkSupportStatusPtrOutput) ToStringPtrOutputWithContext(ctx co
 // SdkVersionSdkSupportStatusInput is an input type that accepts SdkVersionSdkSupportStatusArgs and SdkVersionSdkSupportStatusOutput values.
 // You can construct a concrete instance of `SdkVersionSdkSupportStatusInput` via:
 //
-//          SdkVersionSdkSupportStatusArgs{...}
+//	SdkVersionSdkSupportStatusArgs{...}
 type SdkVersionSdkSupportStatusInput interface {
 	pulumi.Input
 
@@ -1753,7 +1753,7 @@ func (o TransformSummaryKindPtrOutput) ToStringPtrOutputWithContext(ctx context.
 // TransformSummaryKindInput is an input type that accepts TransformSummaryKindArgs and TransformSummaryKindOutput values.
 // You can construct a concrete instance of `TransformSummaryKindInput` via:
 //
-//          TransformSummaryKindArgs{...}
+//	TransformSummaryKindArgs{...}
 type TransformSummaryKindInput interface {
 	pulumi.Input
 
@@ -1924,7 +1924,7 @@ func (o WorkerPoolDefaultPackageSetPtrOutput) ToStringPtrOutputWithContext(ctx c
 // WorkerPoolDefaultPackageSetInput is an input type that accepts WorkerPoolDefaultPackageSetArgs and WorkerPoolDefaultPackageSetOutput values.
 // You can construct a concrete instance of `WorkerPoolDefaultPackageSetInput` via:
 //
-//          WorkerPoolDefaultPackageSetArgs{...}
+//	WorkerPoolDefaultPackageSetArgs{...}
 type WorkerPoolDefaultPackageSetInput interface {
 	pulumi.Input
 
@@ -2093,7 +2093,7 @@ func (o WorkerPoolIpConfigurationPtrOutput) ToStringPtrOutputWithContext(ctx con
 // WorkerPoolIpConfigurationInput is an input type that accepts WorkerPoolIpConfigurationArgs and WorkerPoolIpConfigurationOutput values.
 // You can construct a concrete instance of `WorkerPoolIpConfigurationInput` via:
 //
-//          WorkerPoolIpConfigurationArgs{...}
+//	WorkerPoolIpConfigurationArgs{...}
 type WorkerPoolIpConfigurationInput interface {
 	pulumi.Input
 
@@ -2264,7 +2264,7 @@ func (o WorkerPoolTeardownPolicyPtrOutput) ToStringPtrOutputWithContext(ctx cont
 // WorkerPoolTeardownPolicyInput is an input type that accepts WorkerPoolTeardownPolicyArgs and WorkerPoolTeardownPolicyOutput values.
 // You can construct a concrete instance of `WorkerPoolTeardownPolicyInput` via:
 //
-//          WorkerPoolTeardownPolicyArgs{...}
+//	WorkerPoolTeardownPolicyArgs{...}
 type WorkerPoolTeardownPolicyInput interface {
 	pulumi.Input
 

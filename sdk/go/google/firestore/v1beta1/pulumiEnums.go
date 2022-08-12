@@ -146,7 +146,7 @@ func (o GoogleFirestoreAdminV1beta1IndexFieldModePtrOutput) ToStringPtrOutputWit
 // GoogleFirestoreAdminV1beta1IndexFieldModeInput is an input type that accepts GoogleFirestoreAdminV1beta1IndexFieldModeArgs and GoogleFirestoreAdminV1beta1IndexFieldModeOutput values.
 // You can construct a concrete instance of `GoogleFirestoreAdminV1beta1IndexFieldModeInput` via:
 //
-//          GoogleFirestoreAdminV1beta1IndexFieldModeArgs{...}
+//	GoogleFirestoreAdminV1beta1IndexFieldModeArgs{...}
 type GoogleFirestoreAdminV1beta1IndexFieldModeInput interface {
 	pulumi.Input
 
@@ -317,7 +317,7 @@ func (o IndexStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // IndexStateEnumInput is an input type that accepts IndexStateEnumArgs and IndexStateEnumOutput values.
 // You can construct a concrete instance of `IndexStateEnumInput` via:
 //
-//          IndexStateEnumArgs{...}
+//	IndexStateEnumArgs{...}
 type IndexStateEnumInput interface {
 	pulumi.Input
 

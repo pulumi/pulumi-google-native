@@ -152,7 +152,7 @@ func (o FeedContentTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // FeedContentTypeInput is an input type that accepts FeedContentTypeArgs and FeedContentTypeOutput values.
 // You can construct a concrete instance of `FeedContentTypeInput` via:
 //
-//          FeedContentTypeArgs{...}
+//	FeedContentTypeArgs{...}
 type FeedContentTypeInput interface {
 	pulumi.Input
 

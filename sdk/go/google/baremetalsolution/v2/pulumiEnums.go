@@ -144,7 +144,7 @@ func (o InstanceConfigNetworkConfigPtrOutput) ToStringPtrOutputWithContext(ctx c
 // InstanceConfigNetworkConfigInput is an input type that accepts InstanceConfigNetworkConfigArgs and InstanceConfigNetworkConfigOutput values.
 // You can construct a concrete instance of `InstanceConfigNetworkConfigInput` via:
 //
-//          InstanceConfigNetworkConfigArgs{...}
+//	InstanceConfigNetworkConfigArgs{...}
 type InstanceConfigNetworkConfigInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o LogicalNetworkInterfaceNetworkTypePtrOutput) ToStringPtrOutputWithContex
 // LogicalNetworkInterfaceNetworkTypeInput is an input type that accepts LogicalNetworkInterfaceNetworkTypeArgs and LogicalNetworkInterfaceNetworkTypeOutput values.
 // You can construct a concrete instance of `LogicalNetworkInterfaceNetworkTypeInput` via:
 //
-//          LogicalNetworkInterfaceNetworkTypeArgs{...}
+//	LogicalNetworkInterfaceNetworkTypeArgs{...}
 type LogicalNetworkInterfaceNetworkTypeInput interface {
 	pulumi.Input
 
@@ -480,7 +480,7 @@ func (o LunMultiprotocolTypePtrOutput) ToStringPtrOutputWithContext(ctx context.
 // LunMultiprotocolTypeInput is an input type that accepts LunMultiprotocolTypeArgs and LunMultiprotocolTypeOutput values.
 // You can construct a concrete instance of `LunMultiprotocolTypeInput` via:
 //
-//          LunMultiprotocolTypeArgs{...}
+//	LunMultiprotocolTypeArgs{...}
 type LunMultiprotocolTypeInput interface {
 	pulumi.Input
 
@@ -653,7 +653,7 @@ func (o LunStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 // LunStateInput is an input type that accepts LunStateArgs and LunStateOutput values.
 // You can construct a concrete instance of `LunStateInput` via:
 //
-//          LunStateArgs{...}
+//	LunStateArgs{...}
 type LunStateInput interface {
 	pulumi.Input
 
@@ -822,7 +822,7 @@ func (o LunStorageTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // LunStorageTypeInput is an input type that accepts LunStorageTypeArgs and LunStorageTypeOutput values.
 // You can construct a concrete instance of `LunStorageTypeInput` via:
 //
-//          LunStorageTypeArgs{...}
+//	LunStorageTypeArgs{...}
 type LunStorageTypeInput interface {
 	pulumi.Input
 
@@ -995,7 +995,7 @@ func (o NetworkConfigBandwidthPtrOutput) ToStringPtrOutputWithContext(ctx contex
 // NetworkConfigBandwidthInput is an input type that accepts NetworkConfigBandwidthArgs and NetworkConfigBandwidthOutput values.
 // You can construct a concrete instance of `NetworkConfigBandwidthInput` via:
 //
-//          NetworkConfigBandwidthArgs{...}
+//	NetworkConfigBandwidthArgs{...}
 type NetworkConfigBandwidthInput interface {
 	pulumi.Input
 
@@ -1168,7 +1168,7 @@ func (o NetworkConfigServiceCidrPtrOutput) ToStringPtrOutputWithContext(ctx cont
 // NetworkConfigServiceCidrInput is an input type that accepts NetworkConfigServiceCidrArgs and NetworkConfigServiceCidrOutput values.
 // You can construct a concrete instance of `NetworkConfigServiceCidrInput` via:
 //
-//          NetworkConfigServiceCidrArgs{...}
+//	NetworkConfigServiceCidrArgs{...}
 type NetworkConfigServiceCidrInput interface {
 	pulumi.Input
 
@@ -1337,7 +1337,7 @@ func (o NetworkConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // NetworkConfigTypeInput is an input type that accepts NetworkConfigTypeArgs and NetworkConfigTypeOutput values.
 // You can construct a concrete instance of `NetworkConfigTypeInput` via:
 //
-//          NetworkConfigTypeArgs{...}
+//	NetworkConfigTypeArgs{...}
 type NetworkConfigTypeInput interface {
 	pulumi.Input
 
@@ -1506,7 +1506,7 @@ func (o NfsExportPermissionsPtrOutput) ToStringPtrOutputWithContext(ctx context.
 // NfsExportPermissionsInput is an input type that accepts NfsExportPermissionsArgs and NfsExportPermissionsOutput values.
 // You can construct a concrete instance of `NfsExportPermissionsInput` via:
 //
-//          NfsExportPermissionsArgs{...}
+//	NfsExportPermissionsArgs{...}
 type NfsExportPermissionsInput interface {
 	pulumi.Input
 
@@ -1675,7 +1675,7 @@ func (o VolumeConfigProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.
 // VolumeConfigProtocolInput is an input type that accepts VolumeConfigProtocolArgs and VolumeConfigProtocolOutput values.
 // You can construct a concrete instance of `VolumeConfigProtocolInput` via:
 //
-//          VolumeConfigProtocolArgs{...}
+//	VolumeConfigProtocolArgs{...}
 type VolumeConfigProtocolInput interface {
 	pulumi.Input
 
@@ -1844,7 +1844,7 @@ func (o VolumeConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // VolumeConfigTypeInput is an input type that accepts VolumeConfigTypeArgs and VolumeConfigTypeOutput values.
 // You can construct a concrete instance of `VolumeConfigTypeInput` via:
 //
-//          VolumeConfigTypeArgs{...}
+//	VolumeConfigTypeArgs{...}
 type VolumeConfigTypeInput interface {
 	pulumi.Input
 
@@ -2015,7 +2015,7 @@ func (o VolumeSnapshotAutoDeleteBehaviorPtrOutput) ToStringPtrOutputWithContext(
 // VolumeSnapshotAutoDeleteBehaviorInput is an input type that accepts VolumeSnapshotAutoDeleteBehaviorArgs and VolumeSnapshotAutoDeleteBehaviorOutput values.
 // You can construct a concrete instance of `VolumeSnapshotAutoDeleteBehaviorInput` via:
 //
-//          VolumeSnapshotAutoDeleteBehaviorArgs{...}
+//	VolumeSnapshotAutoDeleteBehaviorArgs{...}
 type VolumeSnapshotAutoDeleteBehaviorInput interface {
 	pulumi.Input
 
@@ -2186,7 +2186,7 @@ func (o VolumeStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // VolumeStateInput is an input type that accepts VolumeStateArgs and VolumeStateOutput values.
 // You can construct a concrete instance of `VolumeStateInput` via:
 //
-//          VolumeStateArgs{...}
+//	VolumeStateArgs{...}
 type VolumeStateInput interface {
 	pulumi.Input
 
@@ -2355,7 +2355,7 @@ func (o VolumeStorageTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // VolumeStorageTypeInput is an input type that accepts VolumeStorageTypeArgs and VolumeStorageTypeOutput values.
 // You can construct a concrete instance of `VolumeStorageTypeInput` via:
 //
-//          VolumeStorageTypeArgs{...}
+//	VolumeStorageTypeArgs{...}
 type VolumeStorageTypeInput interface {
 	pulumi.Input
 

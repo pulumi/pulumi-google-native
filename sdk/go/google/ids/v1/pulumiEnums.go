@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -321,7 +321,7 @@ func (o EndpointSeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // EndpointSeverityInput is an input type that accepts EndpointSeverityArgs and EndpointSeverityOutput values.
 // You can construct a concrete instance of `EndpointSeverityInput` via:
 //
-//          EndpointSeverityArgs{...}
+//	EndpointSeverityArgs{...}
 type EndpointSeverityInput interface {
 	pulumi.Input
 

@@ -142,7 +142,7 @@ func (o AppConnectionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // AppConnectionTypeInput is an input type that accepts AppConnectionTypeArgs and AppConnectionTypeOutput values.
 // You can construct a concrete instance of `AppConnectionTypeInput` via:
 //
-//          AppConnectionTypeArgs{...}
+//	AppConnectionTypeArgs{...}
 type AppConnectionTypeInput interface {
 	pulumi.Input
 
@@ -309,7 +309,7 @@ func (o AppGatewayHostTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // AppGatewayHostTypeInput is an input type that accepts AppGatewayHostTypeArgs and AppGatewayHostTypeOutput values.
 // You can construct a concrete instance of `AppGatewayHostTypeInput` via:
 //
-//          AppGatewayHostTypeArgs{...}
+//	AppGatewayHostTypeArgs{...}
 type AppGatewayHostTypeInput interface {
 	pulumi.Input
 
@@ -476,7 +476,7 @@ func (o AppGatewayTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // AppGatewayTypeInput is an input type that accepts AppGatewayTypeArgs and AppGatewayTypeOutput values.
 // You can construct a concrete instance of `AppGatewayTypeInput` via:
 //
-//          AppGatewayTypeArgs{...}
+//	AppGatewayTypeArgs{...}
 type AppGatewayTypeInput interface {
 	pulumi.Input
 
@@ -643,7 +643,7 @@ func (o ConfigTransportProtocolPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // ConfigTransportProtocolInput is an input type that accepts ConfigTransportProtocolArgs and ConfigTransportProtocolOutput values.
 // You can construct a concrete instance of `ConfigTransportProtocolInput` via:
 //
-//          ConfigTransportProtocolArgs{...}
+//	ConfigTransportProtocolArgs{...}
 type ConfigTransportProtocolInput interface {
 	pulumi.Input
 
@@ -810,7 +810,7 @@ func (o ConnectionTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // ConnectionTypeInput is an input type that accepts ConnectionTypeArgs and ConnectionTypeOutput values.
 // You can construct a concrete instance of `ConnectionTypeInput` via:
 //
-//          ConnectionTypeArgs{...}
+//	ConnectionTypeArgs{...}
 type ConnectionTypeInput interface {
 	pulumi.Input
 
@@ -977,7 +977,7 @@ func (o GatewayTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // GatewayTypeInput is an input type that accepts GatewayTypeArgs and GatewayTypeOutput values.
 // You can construct a concrete instance of `GatewayTypeInput` via:
 //
-//          GatewayTypeArgs{...}
+//	GatewayTypeArgs{...}
 type GatewayTypeInput interface {
 	pulumi.Input
 
@@ -1144,7 +1144,7 @@ func (o GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypePtrOut
 // GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeInput is an input type that accepts GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeArgs and GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeInput` via:
 //
-//          GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeArgs{...}
+//	GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeArgs{...}
 type GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionGatewayTypeInput interface {
 	pulumi.Input
 
@@ -1317,7 +1317,7 @@ func (o GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusPtrOutput) To
 // GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusInput is an input type that accepts GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusArgs and GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusOutput values.
 // You can construct a concrete instance of `GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusInput` via:
 //
-//          GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusArgs{...}
+//	GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusArgs{...}
 type GoogleCloudBeyondcorpAppconnectorsV1alphaResourceInfoStatusInput interface {
 	pulumi.Input
 
@@ -1488,7 +1488,7 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(
 // GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` via:
 //
-//          GoogleIamV1AuditLogConfigLogTypeArgs{...}
+//	GoogleIamV1AuditLogConfigLogTypeArgs{...}
 type GoogleIamV1AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -1661,7 +1661,7 @@ func (o ResourceInfoStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // ResourceInfoStatusInput is an input type that accepts ResourceInfoStatusArgs and ResourceInfoStatusOutput values.
 // You can construct a concrete instance of `ResourceInfoStatusInput` via:
 //
-//          ResourceInfoStatusArgs{...}
+//	ResourceInfoStatusArgs{...}
 type ResourceInfoStatusInput interface {
 	pulumi.Input
 

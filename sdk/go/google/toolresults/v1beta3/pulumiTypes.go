@@ -25,7 +25,7 @@ type AndroidAppInfo struct {
 // AndroidAppInfoInput is an input type that accepts AndroidAppInfoArgs and AndroidAppInfoOutput values.
 // You can construct a concrete instance of `AndroidAppInfoInput` via:
 //
-//          AndroidAppInfoArgs{...}
+//	AndroidAppInfoArgs{...}
 type AndroidAppInfoInput interface {
 	pulumi.Input
 
@@ -68,11 +68,11 @@ func (i AndroidAppInfoArgs) ToAndroidAppInfoPtrOutputWithContext(ctx context.Con
 // AndroidAppInfoPtrInput is an input type that accepts AndroidAppInfoArgs, AndroidAppInfoPtr and AndroidAppInfoPtrOutput values.
 // You can construct a concrete instance of `AndroidAppInfoPtrInput` via:
 //
-//          AndroidAppInfoArgs{...}
+//	        AndroidAppInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AndroidAppInfoPtrInput interface {
 	pulumi.Input
 
@@ -269,7 +269,7 @@ type AndroidInstrumentationTest struct {
 // AndroidInstrumentationTestInput is an input type that accepts AndroidInstrumentationTestArgs and AndroidInstrumentationTestOutput values.
 // You can construct a concrete instance of `AndroidInstrumentationTestInput` via:
 //
-//          AndroidInstrumentationTestArgs{...}
+//	AndroidInstrumentationTestArgs{...}
 type AndroidInstrumentationTestInput interface {
 	pulumi.Input
 
@@ -312,11 +312,11 @@ func (i AndroidInstrumentationTestArgs) ToAndroidInstrumentationTestPtrOutputWit
 // AndroidInstrumentationTestPtrInput is an input type that accepts AndroidInstrumentationTestArgs, AndroidInstrumentationTestPtr and AndroidInstrumentationTestPtrOutput values.
 // You can construct a concrete instance of `AndroidInstrumentationTestPtrInput` via:
 //
-//          AndroidInstrumentationTestArgs{...}
+//	        AndroidInstrumentationTestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AndroidInstrumentationTestPtrInput interface {
 	pulumi.Input
 
@@ -515,7 +515,7 @@ type AndroidRoboTest struct {
 // AndroidRoboTestInput is an input type that accepts AndroidRoboTestArgs and AndroidRoboTestOutput values.
 // You can construct a concrete instance of `AndroidRoboTestInput` via:
 //
-//          AndroidRoboTestArgs{...}
+//	AndroidRoboTestArgs{...}
 type AndroidRoboTestInput interface {
 	pulumi.Input
 
@@ -560,11 +560,11 @@ func (i AndroidRoboTestArgs) ToAndroidRoboTestPtrOutputWithContext(ctx context.C
 // AndroidRoboTestPtrInput is an input type that accepts AndroidRoboTestArgs, AndroidRoboTestPtr and AndroidRoboTestPtrOutput values.
 // You can construct a concrete instance of `AndroidRoboTestPtrInput` via:
 //
-//          AndroidRoboTestArgs{...}
+//	        AndroidRoboTestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AndroidRoboTestPtrInput interface {
 	pulumi.Input
 
@@ -785,7 +785,7 @@ type AndroidTest struct {
 // AndroidTestInput is an input type that accepts AndroidTestArgs and AndroidTestOutput values.
 // You can construct a concrete instance of `AndroidTestInput` via:
 //
-//          AndroidTestArgs{...}
+//	AndroidTestArgs{...}
 type AndroidTestInput interface {
 	pulumi.Input
 
@@ -830,11 +830,11 @@ func (i AndroidTestArgs) ToAndroidTestPtrOutputWithContext(ctx context.Context) 
 // AndroidTestPtrInput is an input type that accepts AndroidTestArgs, AndroidTestPtr and AndroidTestPtrOutput values.
 // You can construct a concrete instance of `AndroidTestPtrInput` via:
 //
-//          AndroidTestArgs{...}
+//	        AndroidTestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AndroidTestPtrInput interface {
 	pulumi.Input
 
@@ -991,7 +991,7 @@ type AndroidTestLoop struct {
 // AndroidTestLoopInput is an input type that accepts AndroidTestLoopArgs and AndroidTestLoopOutput values.
 // You can construct a concrete instance of `AndroidTestLoopInput` via:
 //
-//          AndroidTestLoopArgs{...}
+//	AndroidTestLoopArgs{...}
 type AndroidTestLoopInput interface {
 	pulumi.Input
 
@@ -1026,11 +1026,11 @@ func (i AndroidTestLoopArgs) ToAndroidTestLoopPtrOutputWithContext(ctx context.C
 // AndroidTestLoopPtrInput is an input type that accepts AndroidTestLoopArgs, AndroidTestLoopPtr and AndroidTestLoopPtrOutput values.
 // You can construct a concrete instance of `AndroidTestLoopPtrInput` via:
 //
-//          AndroidTestLoopArgs{...}
+//	        AndroidTestLoopArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AndroidTestLoopPtrInput interface {
 	pulumi.Input
 
@@ -1178,7 +1178,7 @@ func (o AndroidTestResponseOutput) TestTimeout() DurationResponseOutput {
 	return o.ApplyT(func(v AndroidTestResponse) DurationResponse { return v.TestTimeout }).(DurationResponseOutput)
 }
 
-//  `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
+// `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
 type Any struct {
 	// A URL/resource name that uniquely identifies the type of the serialized protocol buffer message. This string must contain at least one "/" character. The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading "." is not accepted). In practice, teams usually precompile into the binary all types that they expect it to use in the context of Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type server that maps type URLs to message definitions as follows: * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a google.protobuf.Type value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.) Note: this functionality is not currently available in the official protobuf release, and it is not used for type URLs beginning with type.googleapis.com. Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific semantics.
 	TypeUrl *string `pulumi:"typeUrl"`
@@ -1189,7 +1189,7 @@ type Any struct {
 // AnyInput is an input type that accepts AnyArgs and AnyOutput values.
 // You can construct a concrete instance of `AnyInput` via:
 //
-//          AnyArgs{...}
+//	AnyArgs{...}
 type AnyInput interface {
 	pulumi.Input
 
@@ -1197,7 +1197,7 @@ type AnyInput interface {
 	ToAnyOutputWithContext(context.Context) AnyOutput
 }
 
-//  `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
+// `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
 type AnyArgs struct {
 	// A URL/resource name that uniquely identifies the type of the serialized protocol buffer message. This string must contain at least one "/" character. The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading "." is not accepted). In practice, teams usually precompile into the binary all types that they expect it to use in the context of Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type server that maps type URLs to message definitions as follows: * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a google.protobuf.Type value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.) Note: this functionality is not currently available in the official protobuf release, and it is not used for type URLs beginning with type.googleapis.com. Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific semantics.
 	TypeUrl pulumi.StringPtrInput `pulumi:"typeUrl"`
@@ -1228,11 +1228,11 @@ func (i AnyArgs) ToAnyPtrOutputWithContext(ctx context.Context) AnyPtrOutput {
 // AnyPtrInput is an input type that accepts AnyArgs, AnyPtr and AnyPtrOutput values.
 // You can construct a concrete instance of `AnyPtrInput` via:
 //
-//          AnyArgs{...}
+//	        AnyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AnyPtrInput interface {
 	pulumi.Input
 
@@ -1258,7 +1258,7 @@ func (i *anyPtrType) ToAnyPtrOutputWithContext(ctx context.Context) AnyPtrOutput
 	return pulumi.ToOutputWithContext(ctx, i).(AnyPtrOutput)
 }
 
-//  `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
+// `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
 type AnyOutput struct{ *pulumi.OutputState }
 
 func (AnyOutput) ElementType() reflect.Type {
@@ -1337,7 +1337,7 @@ func (o AnyPtrOutput) Value() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-//  `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
+// `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
 type AnyResponse struct {
 	// A URL/resource name that uniquely identifies the type of the serialized protocol buffer message. This string must contain at least one "/" character. The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading "." is not accepted). In practice, teams usually precompile into the binary all types that they expect it to use in the context of Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type server that maps type URLs to message definitions as follows: * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a google.protobuf.Type value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.) Note: this functionality is not currently available in the official protobuf release, and it is not used for type URLs beginning with type.googleapis.com. Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific semantics.
 	TypeUrl string `pulumi:"typeUrl"`
@@ -1345,7 +1345,7 @@ type AnyResponse struct {
 	Value string `pulumi:"value"`
 }
 
-//  `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
+// `Any` contains an arbitrary serialized protocol buffer message along with a URL that describes the type of the serialized message. Protobuf library provides support to pack/unpack Any values in the form of utility functions or additional generated methods of the Any type. Example 1: Pack and unpack a message in C++. Foo foo = ...; Any any; any.PackFrom(foo); ... if (any.UnpackTo(&foo)) { ... } Example 2: Pack and unpack a message in Java. Foo foo = ...; Any any = Any.pack(foo); ... if (any.is(Foo.class)) { foo = any.unpack(Foo.class); } Example 3: Pack and unpack a message in Python. foo = Foo(...) any = Any() any.Pack(foo) ... if any.Is(Foo.DESCRIPTOR): any.Unpack(foo) ... Example 4: Pack and unpack a message in Go foo := &pb.Foo{...} any, err := ptypes.MarshalAny(foo) ... foo := &pb.Foo{} if err := ptypes.UnmarshalAny(any, foo); err != nil { ... } The pack methods provided by protobuf library will by default use 'type.googleapis.com/full.type.name' as the type URL and the unpack methods only use the fully qualified type name after the last '/' in the type URL, for example "foo.bar.com/x/y.z" will yield type name "y.z". # JSON The JSON representation of an `Any` value uses the regular representation of the deserialized, embedded message, with an additional field `@type` which contains the type URL. Example: package google.profile; message Person { string first_name = 1; string last_name = 2; } { "@type": "type.googleapis.com/google.profile.Person", "firstName": , "lastName": } If the embedded message type is well-known and has a custom JSON representation, that representation will be embedded adding a field `value` which holds the custom JSON in addition to the `@type` field. Example (for message google.protobuf.Duration): { "@type": "type.googleapis.com/google.protobuf.Duration", "value": "1.212s" }
 type AnyResponseOutput struct{ *pulumi.OutputState }
 
 func (AnyResponseOutput) ElementType() reflect.Type {
@@ -1380,7 +1380,7 @@ type BasicPerfSampleSeries struct {
 // BasicPerfSampleSeriesInput is an input type that accepts BasicPerfSampleSeriesArgs and BasicPerfSampleSeriesOutput values.
 // You can construct a concrete instance of `BasicPerfSampleSeriesInput` via:
 //
-//          BasicPerfSampleSeriesArgs{...}
+//	BasicPerfSampleSeriesArgs{...}
 type BasicPerfSampleSeriesInput interface {
 	pulumi.Input
 
@@ -1418,11 +1418,11 @@ func (i BasicPerfSampleSeriesArgs) ToBasicPerfSampleSeriesPtrOutputWithContext(c
 // BasicPerfSampleSeriesPtrInput is an input type that accepts BasicPerfSampleSeriesArgs, BasicPerfSampleSeriesPtr and BasicPerfSampleSeriesPtrOutput values.
 // You can construct a concrete instance of `BasicPerfSampleSeriesPtrInput` via:
 //
-//          BasicPerfSampleSeriesArgs{...}
+//	        BasicPerfSampleSeriesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type BasicPerfSampleSeriesPtrInput interface {
 	pulumi.Input
 
@@ -1570,7 +1570,7 @@ func (o BasicPerfSampleSeriesResponseOutput) SampleSeriesLabel() pulumi.StringOu
 	return o.ApplyT(func(v BasicPerfSampleSeriesResponse) string { return v.SampleSeriesLabel }).(pulumi.StringOutput)
 }
 
-//  A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
+// A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
 type Duration struct {
 	// Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one second are represented with a 0 `seconds` field and a positive or negative `nanos` field. For durations of one second or more, a non-zero value for the `nanos` field must be of the same sign as the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive.
 	Nanos *int `pulumi:"nanos"`
@@ -1581,7 +1581,7 @@ type Duration struct {
 // DurationInput is an input type that accepts DurationArgs and DurationOutput values.
 // You can construct a concrete instance of `DurationInput` via:
 //
-//          DurationArgs{...}
+//	DurationArgs{...}
 type DurationInput interface {
 	pulumi.Input
 
@@ -1589,7 +1589,7 @@ type DurationInput interface {
 	ToDurationOutputWithContext(context.Context) DurationOutput
 }
 
-//  A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
+// A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
 type DurationArgs struct {
 	// Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one second are represented with a 0 `seconds` field and a positive or negative `nanos` field. For durations of one second or more, a non-zero value for the `nanos` field must be of the same sign as the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive.
 	Nanos pulumi.IntPtrInput `pulumi:"nanos"`
@@ -1620,11 +1620,11 @@ func (i DurationArgs) ToDurationPtrOutputWithContext(ctx context.Context) Durati
 // DurationPtrInput is an input type that accepts DurationArgs, DurationPtr and DurationPtrOutput values.
 // You can construct a concrete instance of `DurationPtrInput` via:
 //
-//          DurationArgs{...}
+//	        DurationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DurationPtrInput interface {
 	pulumi.Input
 
@@ -1650,7 +1650,7 @@ func (i *durationPtrType) ToDurationPtrOutputWithContext(ctx context.Context) Du
 	return pulumi.ToOutputWithContext(ctx, i).(DurationPtrOutput)
 }
 
-//  A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
+// A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
 type DurationOutput struct{ *pulumi.OutputState }
 
 func (DurationOutput) ElementType() reflect.Type {
@@ -1729,7 +1729,7 @@ func (o DurationPtrOutput) Seconds() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-//  A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
+// A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
 type DurationResponse struct {
 	// Signed fractions of a second at nanosecond resolution of the span of time. Durations less than one second are represented with a 0 `seconds` field and a positive or negative `nanos` field. For durations of one second or more, a non-zero value for the `nanos` field must be of the same sign as the `seconds` field. Must be from -999,999,999 to +999,999,999 inclusive.
 	Nanos int `pulumi:"nanos"`
@@ -1737,7 +1737,7 @@ type DurationResponse struct {
 	Seconds string `pulumi:"seconds"`
 }
 
-//  A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
+// A Duration represents a signed, fixed-length span of time represented as a count of seconds and fractions of seconds at nanosecond resolution. It is independent of any calendar and concepts like "day" or "month". It is related to Timestamp in that the difference between two Timestamp values is a Duration and it can be added or subtracted from a Timestamp. Range is approximately +-10,000 years.
 type DurationResponseOutput struct{ *pulumi.OutputState }
 
 func (DurationResponseOutput) ElementType() reflect.Type {
@@ -1783,7 +1783,7 @@ type FailureDetail struct {
 // FailureDetailInput is an input type that accepts FailureDetailArgs and FailureDetailOutput values.
 // You can construct a concrete instance of `FailureDetailInput` via:
 //
-//          FailureDetailArgs{...}
+//	FailureDetailArgs{...}
 type FailureDetailInput interface {
 	pulumi.Input
 
@@ -1832,11 +1832,11 @@ func (i FailureDetailArgs) ToFailureDetailPtrOutputWithContext(ctx context.Conte
 // FailureDetailPtrInput is an input type that accepts FailureDetailArgs, FailureDetailPtr and FailureDetailPtrOutput values.
 // You can construct a concrete instance of `FailureDetailPtrInput` via:
 //
-//          FailureDetailArgs{...}
+//	        FailureDetailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FailureDetailPtrInput interface {
 	pulumi.Input
 
@@ -2093,7 +2093,7 @@ type FileReference struct {
 // FileReferenceInput is an input type that accepts FileReferenceArgs and FileReferenceOutput values.
 // You can construct a concrete instance of `FileReferenceInput` via:
 //
-//          FileReferenceArgs{...}
+//	FileReferenceArgs{...}
 type FileReferenceInput interface {
 	pulumi.Input
 
@@ -2130,11 +2130,11 @@ func (i FileReferenceArgs) ToFileReferencePtrOutputWithContext(ctx context.Conte
 // FileReferencePtrInput is an input type that accepts FileReferenceArgs, FileReferencePtr and FileReferencePtrOutput values.
 // You can construct a concrete instance of `FileReferencePtrInput` via:
 //
-//          FileReferenceArgs{...}
+//	        FileReferenceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FileReferencePtrInput interface {
 	pulumi.Input
 
@@ -2163,7 +2163,7 @@ func (i *fileReferencePtrType) ToFileReferencePtrOutputWithContext(ctx context.C
 // FileReferenceArrayInput is an input type that accepts FileReferenceArray and FileReferenceArrayOutput values.
 // You can construct a concrete instance of `FileReferenceArrayInput` via:
 //
-//          FileReferenceArray{ FileReferenceArgs{...} }
+//	FileReferenceArray{ FileReferenceArgs{...} }
 type FileReferenceArrayInput interface {
 	pulumi.Input
 
@@ -2328,7 +2328,7 @@ type InconclusiveDetail struct {
 // InconclusiveDetailInput is an input type that accepts InconclusiveDetailArgs and InconclusiveDetailOutput values.
 // You can construct a concrete instance of `InconclusiveDetailInput` via:
 //
-//          InconclusiveDetailArgs{...}
+//	InconclusiveDetailArgs{...}
 type InconclusiveDetailInput interface {
 	pulumi.Input
 
@@ -2369,11 +2369,11 @@ func (i InconclusiveDetailArgs) ToInconclusiveDetailPtrOutputWithContext(ctx con
 // InconclusiveDetailPtrInput is an input type that accepts InconclusiveDetailArgs, InconclusiveDetailPtr and InconclusiveDetailPtrOutput values.
 // You can construct a concrete instance of `InconclusiveDetailPtrInput` via:
 //
-//          InconclusiveDetailArgs{...}
+//	        InconclusiveDetailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type InconclusiveDetailPtrInput interface {
 	pulumi.Input
 
@@ -2546,7 +2546,7 @@ type IndividualOutcome struct {
 // IndividualOutcomeInput is an input type that accepts IndividualOutcomeArgs and IndividualOutcomeOutput values.
 // You can construct a concrete instance of `IndividualOutcomeInput` via:
 //
-//          IndividualOutcomeArgs{...}
+//	IndividualOutcomeArgs{...}
 type IndividualOutcomeInput interface {
 	pulumi.Input
 
@@ -2579,7 +2579,7 @@ func (i IndividualOutcomeArgs) ToIndividualOutcomeOutputWithContext(ctx context.
 // IndividualOutcomeArrayInput is an input type that accepts IndividualOutcomeArray and IndividualOutcomeArrayOutput values.
 // You can construct a concrete instance of `IndividualOutcomeArrayInput` via:
 //
-//          IndividualOutcomeArray{ IndividualOutcomeArgs{...} }
+//	IndividualOutcomeArray{ IndividualOutcomeArgs{...} }
 type IndividualOutcomeArrayInput interface {
 	pulumi.Input
 
@@ -2726,7 +2726,7 @@ type IosAppInfo struct {
 // IosAppInfoInput is an input type that accepts IosAppInfoArgs and IosAppInfoOutput values.
 // You can construct a concrete instance of `IosAppInfoInput` via:
 //
-//          IosAppInfoArgs{...}
+//	IosAppInfoArgs{...}
 type IosAppInfoInput interface {
 	pulumi.Input
 
@@ -2763,11 +2763,11 @@ func (i IosAppInfoArgs) ToIosAppInfoPtrOutputWithContext(ctx context.Context) Io
 // IosAppInfoPtrInput is an input type that accepts IosAppInfoArgs, IosAppInfoPtr and IosAppInfoPtrOutput values.
 // You can construct a concrete instance of `IosAppInfoPtrInput` via:
 //
-//          IosAppInfoArgs{...}
+//	        IosAppInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IosAppInfoPtrInput interface {
 	pulumi.Input
 
@@ -2890,7 +2890,7 @@ type IosRoboTest struct {
 // IosRoboTestInput is an input type that accepts IosRoboTestArgs and IosRoboTestOutput values.
 // You can construct a concrete instance of `IosRoboTestInput` via:
 //
-//          IosRoboTestArgs{...}
+//	IosRoboTestArgs{...}
 type IosRoboTestInput interface {
 	pulumi.Input
 
@@ -2925,11 +2925,11 @@ func (i IosRoboTestArgs) ToIosRoboTestPtrOutputWithContext(ctx context.Context) 
 // IosRoboTestPtrInput is an input type that accepts IosRoboTestArgs, IosRoboTestPtr and IosRoboTestPtrOutput values.
 // You can construct a concrete instance of `IosRoboTestPtrInput` via:
 //
-//          IosRoboTestArgs{...}
+//	        IosRoboTestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IosRoboTestPtrInput interface {
 	pulumi.Input
 
@@ -3040,7 +3040,7 @@ type IosTest struct {
 // IosTestInput is an input type that accepts IosTestArgs and IosTestOutput values.
 // You can construct a concrete instance of `IosTestInput` via:
 //
-//          IosTestArgs{...}
+//	IosTestArgs{...}
 type IosTestInput interface {
 	pulumi.Input
 
@@ -3085,11 +3085,11 @@ func (i IosTestArgs) ToIosTestPtrOutputWithContext(ctx context.Context) IosTestP
 // IosTestPtrInput is an input type that accepts IosTestArgs, IosTestPtr and IosTestPtrOutput values.
 // You can construct a concrete instance of `IosTestPtrInput` via:
 //
-//          IosTestArgs{...}
+//	        IosTestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IosTestPtrInput interface {
 	pulumi.Input
 
@@ -3248,7 +3248,7 @@ type IosTestLoop struct {
 // IosTestLoopInput is an input type that accepts IosTestLoopArgs and IosTestLoopOutput values.
 // You can construct a concrete instance of `IosTestLoopInput` via:
 //
-//          IosTestLoopArgs{...}
+//	IosTestLoopArgs{...}
 type IosTestLoopInput interface {
 	pulumi.Input
 
@@ -3285,11 +3285,11 @@ func (i IosTestLoopArgs) ToIosTestLoopPtrOutputWithContext(ctx context.Context) 
 // IosTestLoopPtrInput is an input type that accepts IosTestLoopArgs, IosTestLoopPtr and IosTestLoopPtrOutput values.
 // You can construct a concrete instance of `IosTestLoopPtrInput` via:
 //
-//          IosTestLoopArgs{...}
+//	        IosTestLoopArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IosTestLoopPtrInput interface {
 	pulumi.Input
 
@@ -3470,7 +3470,7 @@ type IosXcTest struct {
 // IosXcTestInput is an input type that accepts IosXcTestArgs and IosXcTestOutput values.
 // You can construct a concrete instance of `IosXcTestInput` via:
 //
-//          IosXcTestArgs{...}
+//	IosXcTestArgs{...}
 type IosXcTestInput interface {
 	pulumi.Input
 
@@ -3509,11 +3509,11 @@ func (i IosXcTestArgs) ToIosXcTestPtrOutputWithContext(ctx context.Context) IosX
 // IosXcTestPtrInput is an input type that accepts IosXcTestArgs, IosXcTestPtr and IosXcTestPtrOutput values.
 // You can construct a concrete instance of `IosXcTestPtrInput` via:
 //
-//          IosXcTestArgs{...}
+//	        IosXcTestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IosXcTestPtrInput interface {
 	pulumi.Input
 
@@ -3658,7 +3658,7 @@ type MatrixDimensionDefinition struct {
 // MatrixDimensionDefinitionInput is an input type that accepts MatrixDimensionDefinitionArgs and MatrixDimensionDefinitionOutput values.
 // You can construct a concrete instance of `MatrixDimensionDefinitionInput` via:
 //
-//          MatrixDimensionDefinitionArgs{...}
+//	MatrixDimensionDefinitionArgs{...}
 type MatrixDimensionDefinitionInput interface {
 	pulumi.Input
 
@@ -3685,7 +3685,7 @@ func (i MatrixDimensionDefinitionArgs) ToMatrixDimensionDefinitionOutputWithCont
 // MatrixDimensionDefinitionArrayInput is an input type that accepts MatrixDimensionDefinitionArray and MatrixDimensionDefinitionArrayOutput values.
 // You can construct a concrete instance of `MatrixDimensionDefinitionArrayInput` via:
 //
-//          MatrixDimensionDefinitionArray{ MatrixDimensionDefinitionArgs{...} }
+//	MatrixDimensionDefinitionArray{ MatrixDimensionDefinitionArgs{...} }
 type MatrixDimensionDefinitionArrayInput interface {
 	pulumi.Input
 
@@ -3794,7 +3794,7 @@ type MultiStep struct {
 // MultiStepInput is an input type that accepts MultiStepArgs and MultiStepOutput values.
 // You can construct a concrete instance of `MultiStepInput` via:
 //
-//          MultiStepArgs{...}
+//	MultiStepArgs{...}
 type MultiStepInput interface {
 	pulumi.Input
 
@@ -3835,11 +3835,11 @@ func (i MultiStepArgs) ToMultiStepPtrOutputWithContext(ctx context.Context) Mult
 // MultiStepPtrInput is an input type that accepts MultiStepArgs, MultiStepPtr and MultiStepPtrOutput values.
 // You can construct a concrete instance of `MultiStepPtrInput` via:
 //
-//          MultiStepArgs{...}
+//	        MultiStepArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MultiStepPtrInput interface {
 	pulumi.Input
 
@@ -4016,7 +4016,7 @@ type Outcome struct {
 // OutcomeInput is an input type that accepts OutcomeArgs and OutcomeOutput values.
 // You can construct a concrete instance of `OutcomeInput` via:
 //
-//          OutcomeArgs{...}
+//	OutcomeArgs{...}
 type OutcomeInput interface {
 	pulumi.Input
 
@@ -4061,11 +4061,11 @@ func (i OutcomeArgs) ToOutcomePtrOutputWithContext(ctx context.Context) OutcomeP
 // OutcomePtrInput is an input type that accepts OutcomeArgs, OutcomePtr and OutcomePtrOutput values.
 // You can construct a concrete instance of `OutcomePtrInput` via:
 //
-//          OutcomeArgs{...}
+//	        OutcomeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OutcomePtrInput interface {
 	pulumi.Input
 
@@ -4280,7 +4280,7 @@ type PrimaryStep struct {
 // PrimaryStepInput is an input type that accepts PrimaryStepArgs and PrimaryStepOutput values.
 // You can construct a concrete instance of `PrimaryStepInput` via:
 //
-//          PrimaryStepArgs{...}
+//	PrimaryStepArgs{...}
 type PrimaryStepInput interface {
 	pulumi.Input
 
@@ -4319,11 +4319,11 @@ func (i PrimaryStepArgs) ToPrimaryStepPtrOutputWithContext(ctx context.Context) 
 // PrimaryStepPtrInput is an input type that accepts PrimaryStepArgs, PrimaryStepPtr and PrimaryStepPtrOutput values.
 // You can construct a concrete instance of `PrimaryStepPtrInput` via:
 //
-//          PrimaryStepArgs{...}
+//	        PrimaryStepArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PrimaryStepPtrInput interface {
 	pulumi.Input
 
@@ -4474,7 +4474,7 @@ type SkippedDetail struct {
 // SkippedDetailInput is an input type that accepts SkippedDetailArgs and SkippedDetailOutput values.
 // You can construct a concrete instance of `SkippedDetailInput` via:
 //
-//          SkippedDetailArgs{...}
+//	SkippedDetailArgs{...}
 type SkippedDetailInput interface {
 	pulumi.Input
 
@@ -4515,11 +4515,11 @@ func (i SkippedDetailArgs) ToSkippedDetailPtrOutputWithContext(ctx context.Conte
 // SkippedDetailPtrInput is an input type that accepts SkippedDetailArgs, SkippedDetailPtr and SkippedDetailPtrOutput values.
 // You can construct a concrete instance of `SkippedDetailPtrInput` via:
 //
-//          SkippedDetailArgs{...}
+//	        SkippedDetailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SkippedDetailPtrInput interface {
 	pulumi.Input
 
@@ -4690,7 +4690,7 @@ type Specification struct {
 // SpecificationInput is an input type that accepts SpecificationArgs and SpecificationOutput values.
 // You can construct a concrete instance of `SpecificationInput` via:
 //
-//          SpecificationArgs{...}
+//	SpecificationArgs{...}
 type SpecificationInput interface {
 	pulumi.Input
 
@@ -4729,11 +4729,11 @@ func (i SpecificationArgs) ToSpecificationPtrOutputWithContext(ctx context.Conte
 // SpecificationPtrInput is an input type that accepts SpecificationArgs, SpecificationPtr and SpecificationPtrOutput values.
 // You can construct a concrete instance of `SpecificationPtrInput` via:
 //
-//          SpecificationArgs{...}
+//	        SpecificationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SpecificationPtrInput interface {
 	pulumi.Input
 
@@ -4880,7 +4880,7 @@ type StackTrace struct {
 // StackTraceInput is an input type that accepts StackTraceArgs and StackTraceOutput values.
 // You can construct a concrete instance of `StackTraceInput` via:
 //
-//          StackTraceArgs{...}
+//	StackTraceArgs{...}
 type StackTraceInput interface {
 	pulumi.Input
 
@@ -4917,11 +4917,11 @@ func (i StackTraceArgs) ToStackTracePtrOutputWithContext(ctx context.Context) St
 // StackTracePtrInput is an input type that accepts StackTraceArgs, StackTracePtr and StackTracePtrOutput values.
 // You can construct a concrete instance of `StackTracePtrInput` via:
 //
-//          StackTraceArgs{...}
+//	        StackTraceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StackTracePtrInput interface {
 	pulumi.Input
 
@@ -5045,7 +5045,7 @@ type StepDimensionValueEntry struct {
 // StepDimensionValueEntryInput is an input type that accepts StepDimensionValueEntryArgs and StepDimensionValueEntryOutput values.
 // You can construct a concrete instance of `StepDimensionValueEntryInput` via:
 //
-//          StepDimensionValueEntryArgs{...}
+//	StepDimensionValueEntryArgs{...}
 type StepDimensionValueEntryInput interface {
 	pulumi.Input
 
@@ -5073,7 +5073,7 @@ func (i StepDimensionValueEntryArgs) ToStepDimensionValueEntryOutputWithContext(
 // StepDimensionValueEntryArrayInput is an input type that accepts StepDimensionValueEntryArray and StepDimensionValueEntryArrayOutput values.
 // You can construct a concrete instance of `StepDimensionValueEntryArrayInput` via:
 //
-//          StepDimensionValueEntryArray{ StepDimensionValueEntryArgs{...} }
+//	StepDimensionValueEntryArray{ StepDimensionValueEntryArgs{...} }
 type StepDimensionValueEntryArrayInput interface {
 	pulumi.Input
 
@@ -5192,7 +5192,7 @@ type StepLabelsEntry struct {
 // StepLabelsEntryInput is an input type that accepts StepLabelsEntryArgs and StepLabelsEntryOutput values.
 // You can construct a concrete instance of `StepLabelsEntryInput` via:
 //
-//          StepLabelsEntryArgs{...}
+//	StepLabelsEntryArgs{...}
 type StepLabelsEntryInput interface {
 	pulumi.Input
 
@@ -5220,7 +5220,7 @@ func (i StepLabelsEntryArgs) ToStepLabelsEntryOutputWithContext(ctx context.Cont
 // StepLabelsEntryArrayInput is an input type that accepts StepLabelsEntryArray and StepLabelsEntryArrayOutput values.
 // You can construct a concrete instance of `StepLabelsEntryArrayInput` via:
 //
-//          StepLabelsEntryArray{ StepLabelsEntryArgs{...} }
+//	StepLabelsEntryArray{ StepLabelsEntryArgs{...} }
 type StepLabelsEntryArrayInput interface {
 	pulumi.Input
 
@@ -5340,7 +5340,7 @@ type SuccessDetail struct {
 // SuccessDetailInput is an input type that accepts SuccessDetailArgs and SuccessDetailOutput values.
 // You can construct a concrete instance of `SuccessDetailInput` via:
 //
-//          SuccessDetailArgs{...}
+//	SuccessDetailArgs{...}
 type SuccessDetailInput interface {
 	pulumi.Input
 
@@ -5377,11 +5377,11 @@ func (i SuccessDetailArgs) ToSuccessDetailPtrOutputWithContext(ctx context.Conte
 // SuccessDetailPtrInput is an input type that accepts SuccessDetailArgs, SuccessDetailPtr and SuccessDetailPtrOutput values.
 // You can construct a concrete instance of `SuccessDetailPtrInput` via:
 //
-//          SuccessDetailArgs{...}
+//	        SuccessDetailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SuccessDetailPtrInput interface {
 	pulumi.Input
 
@@ -5510,7 +5510,7 @@ type TestCaseReference struct {
 // TestCaseReferenceInput is an input type that accepts TestCaseReferenceArgs and TestCaseReferenceOutput values.
 // You can construct a concrete instance of `TestCaseReferenceInput` via:
 //
-//          TestCaseReferenceArgs{...}
+//	TestCaseReferenceArgs{...}
 type TestCaseReferenceInput interface {
 	pulumi.Input
 
@@ -5551,11 +5551,11 @@ func (i TestCaseReferenceArgs) ToTestCaseReferencePtrOutputWithContext(ctx conte
 // TestCaseReferencePtrInput is an input type that accepts TestCaseReferenceArgs, TestCaseReferencePtr and TestCaseReferencePtrOutput values.
 // You can construct a concrete instance of `TestCaseReferencePtrInput` via:
 //
-//          TestCaseReferenceArgs{...}
+//	        TestCaseReferenceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TestCaseReferencePtrInput interface {
 	pulumi.Input
 
@@ -5730,7 +5730,7 @@ type TestExecutionStep struct {
 // TestExecutionStepInput is an input type that accepts TestExecutionStepArgs and TestExecutionStepOutput values.
 // You can construct a concrete instance of `TestExecutionStepInput` via:
 //
-//          TestExecutionStepArgs{...}
+//	TestExecutionStepArgs{...}
 type TestExecutionStepInput interface {
 	pulumi.Input
 
@@ -5773,11 +5773,11 @@ func (i TestExecutionStepArgs) ToTestExecutionStepPtrOutputWithContext(ctx conte
 // TestExecutionStepPtrInput is an input type that accepts TestExecutionStepArgs, TestExecutionStepPtr and TestExecutionStepPtrOutput values.
 // You can construct a concrete instance of `TestExecutionStepPtrInput` via:
 //
-//          TestExecutionStepArgs{...}
+//	        TestExecutionStepArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TestExecutionStepPtrInput interface {
 	pulumi.Input
 
@@ -5980,7 +5980,7 @@ type TestIssue struct {
 // TestIssueInput is an input type that accepts TestIssueArgs and TestIssueOutput values.
 // You can construct a concrete instance of `TestIssueInput` via:
 //
-//          TestIssueArgs{...}
+//	TestIssueArgs{...}
 type TestIssueInput interface {
 	pulumi.Input
 
@@ -6021,7 +6021,7 @@ func (i TestIssueArgs) ToTestIssueOutputWithContext(ctx context.Context) TestIss
 // TestIssueArrayInput is an input type that accepts TestIssueArray and TestIssueArrayOutput values.
 // You can construct a concrete instance of `TestIssueArrayInput` via:
 //
-//          TestIssueArray{ TestIssueArgs{...} }
+//	TestIssueArray{ TestIssueArgs{...} }
 type TestIssueArrayInput interface {
 	pulumi.Input
 
@@ -6218,7 +6218,7 @@ type TestSuiteOverview struct {
 // TestSuiteOverviewInput is an input type that accepts TestSuiteOverviewArgs and TestSuiteOverviewOutput values.
 // You can construct a concrete instance of `TestSuiteOverviewInput` via:
 //
-//          TestSuiteOverviewArgs{...}
+//	TestSuiteOverviewArgs{...}
 type TestSuiteOverviewInput interface {
 	pulumi.Input
 
@@ -6261,7 +6261,7 @@ func (i TestSuiteOverviewArgs) ToTestSuiteOverviewOutputWithContext(ctx context.
 // TestSuiteOverviewArrayInput is an input type that accepts TestSuiteOverviewArray and TestSuiteOverviewArrayOutput values.
 // You can construct a concrete instance of `TestSuiteOverviewArrayInput` via:
 //
-//          TestSuiteOverviewArray{ TestSuiteOverviewArgs{...} }
+//	TestSuiteOverviewArray{ TestSuiteOverviewArgs{...} }
 type TestSuiteOverviewArrayInput interface {
 	pulumi.Input
 
@@ -6462,7 +6462,7 @@ type TestTiming struct {
 // TestTimingInput is an input type that accepts TestTimingArgs and TestTimingOutput values.
 // You can construct a concrete instance of `TestTimingInput` via:
 //
-//          TestTimingArgs{...}
+//	TestTimingArgs{...}
 type TestTimingInput interface {
 	pulumi.Input
 
@@ -6499,11 +6499,11 @@ func (i TestTimingArgs) ToTestTimingPtrOutputWithContext(ctx context.Context) Te
 // TestTimingPtrInput is an input type that accepts TestTimingArgs, TestTimingPtr and TestTimingPtrOutput values.
 // You can construct a concrete instance of `TestTimingPtrInput` via:
 //
-//          TestTimingArgs{...}
+//	        TestTimingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TestTimingPtrInput interface {
 	pulumi.Input
 
@@ -6630,7 +6630,7 @@ type Timestamp struct {
 // TimestampInput is an input type that accepts TimestampArgs and TimestampOutput values.
 // You can construct a concrete instance of `TimestampInput` via:
 //
-//          TimestampArgs{...}
+//	TimestampArgs{...}
 type TimestampInput interface {
 	pulumi.Input
 
@@ -6669,11 +6669,11 @@ func (i TimestampArgs) ToTimestampPtrOutputWithContext(ctx context.Context) Time
 // TimestampPtrInput is an input type that accepts TimestampArgs, TimestampPtr and TimestampPtrOutput values.
 // You can construct a concrete instance of `TimestampPtrInput` via:
 //
-//          TimestampArgs{...}
+//	        TimestampArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TimestampPtrInput interface {
 	pulumi.Input
 
@@ -6826,7 +6826,7 @@ type ToolExecution struct {
 // ToolExecutionInput is an input type that accepts ToolExecutionArgs and ToolExecutionOutput values.
 // You can construct a concrete instance of `ToolExecutionInput` via:
 //
-//          ToolExecutionArgs{...}
+//	ToolExecutionArgs{...}
 type ToolExecutionInput interface {
 	pulumi.Input
 
@@ -6869,11 +6869,11 @@ func (i ToolExecutionArgs) ToToolExecutionPtrOutputWithContext(ctx context.Conte
 // ToolExecutionPtrInput is an input type that accepts ToolExecutionArgs, ToolExecutionPtr and ToolExecutionPtrOutput values.
 // You can construct a concrete instance of `ToolExecutionPtrInput` via:
 //
-//          ToolExecutionArgs{...}
+//	        ToolExecutionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ToolExecutionPtrInput interface {
 	pulumi.Input
 
@@ -7064,7 +7064,7 @@ type ToolExecutionStep struct {
 // ToolExecutionStepInput is an input type that accepts ToolExecutionStepArgs and ToolExecutionStepOutput values.
 // You can construct a concrete instance of `ToolExecutionStepInput` via:
 //
-//          ToolExecutionStepArgs{...}
+//	ToolExecutionStepArgs{...}
 type ToolExecutionStepInput interface {
 	pulumi.Input
 
@@ -7101,11 +7101,11 @@ func (i ToolExecutionStepArgs) ToToolExecutionStepPtrOutputWithContext(ctx conte
 // ToolExecutionStepPtrInput is an input type that accepts ToolExecutionStepArgs, ToolExecutionStepPtr and ToolExecutionStepPtrOutput values.
 // You can construct a concrete instance of `ToolExecutionStepPtrInput` via:
 //
-//          ToolExecutionStepArgs{...}
+//	        ToolExecutionStepArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ToolExecutionStepPtrInput interface {
 	pulumi.Input
 
@@ -7230,7 +7230,7 @@ type ToolExitCode struct {
 // ToolExitCodeInput is an input type that accepts ToolExitCodeArgs and ToolExitCodeOutput values.
 // You can construct a concrete instance of `ToolExitCodeInput` via:
 //
-//          ToolExitCodeArgs{...}
+//	ToolExitCodeArgs{...}
 type ToolExitCodeInput interface {
 	pulumi.Input
 
@@ -7267,11 +7267,11 @@ func (i ToolExitCodeArgs) ToToolExitCodePtrOutputWithContext(ctx context.Context
 // ToolExitCodePtrInput is an input type that accepts ToolExitCodeArgs, ToolExitCodePtr and ToolExitCodePtrOutput values.
 // You can construct a concrete instance of `ToolExitCodePtrInput` via:
 //
-//          ToolExitCodeArgs{...}
+//	        ToolExitCodeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ToolExitCodePtrInput interface {
 	pulumi.Input
 
@@ -7400,7 +7400,7 @@ type ToolOutputReference struct {
 // ToolOutputReferenceInput is an input type that accepts ToolOutputReferenceArgs and ToolOutputReferenceOutput values.
 // You can construct a concrete instance of `ToolOutputReferenceInput` via:
 //
-//          ToolOutputReferenceArgs{...}
+//	ToolOutputReferenceArgs{...}
 type ToolOutputReferenceInput interface {
 	pulumi.Input
 
@@ -7433,7 +7433,7 @@ func (i ToolOutputReferenceArgs) ToToolOutputReferenceOutputWithContext(ctx cont
 // ToolOutputReferenceArrayInput is an input type that accepts ToolOutputReferenceArray and ToolOutputReferenceArrayOutput values.
 // You can construct a concrete instance of `ToolOutputReferenceArrayInput` via:
 //
-//          ToolOutputReferenceArray{ ToolOutputReferenceArgs{...} }
+//	ToolOutputReferenceArray{ ToolOutputReferenceArgs{...} }
 type ToolOutputReferenceArrayInput interface {
 	pulumi.Input
 

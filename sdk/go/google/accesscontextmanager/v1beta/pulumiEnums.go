@@ -142,7 +142,7 @@ func (o BasicLevelCombiningFunctionPtrOutput) ToStringPtrOutputWithContext(ctx c
 // BasicLevelCombiningFunctionInput is an input type that accepts BasicLevelCombiningFunctionArgs and BasicLevelCombiningFunctionOutput values.
 // You can construct a concrete instance of `BasicLevelCombiningFunctionInput` via:
 //
-//          BasicLevelCombiningFunctionArgs{...}
+//	BasicLevelCombiningFunctionArgs{...}
 type BasicLevelCombiningFunctionInput interface {
 	pulumi.Input
 
@@ -312,7 +312,7 @@ func (o DevicePolicyAllowedDeviceManagementLevelsItemPtrOutput) ToStringPtrOutpu
 // DevicePolicyAllowedDeviceManagementLevelsItemInput is an input type that accepts DevicePolicyAllowedDeviceManagementLevelsItemArgs and DevicePolicyAllowedDeviceManagementLevelsItemOutput values.
 // You can construct a concrete instance of `DevicePolicyAllowedDeviceManagementLevelsItemInput` via:
 //
-//          DevicePolicyAllowedDeviceManagementLevelsItemArgs{...}
+//	DevicePolicyAllowedDeviceManagementLevelsItemArgs{...}
 type DevicePolicyAllowedDeviceManagementLevelsItemInput interface {
 	pulumi.Input
 
@@ -350,7 +350,7 @@ func (in *devicePolicyAllowedDeviceManagementLevelsItemPtr) ToDevicePolicyAllowe
 // DevicePolicyAllowedDeviceManagementLevelsItemArrayInput is an input type that accepts DevicePolicyAllowedDeviceManagementLevelsItemArray and DevicePolicyAllowedDeviceManagementLevelsItemArrayOutput values.
 // You can construct a concrete instance of `DevicePolicyAllowedDeviceManagementLevelsItemArrayInput` via:
 //
-//          DevicePolicyAllowedDeviceManagementLevelsItemArray{ DevicePolicyAllowedDeviceManagementLevelsItemArgs{...} }
+//	DevicePolicyAllowedDeviceManagementLevelsItemArray{ DevicePolicyAllowedDeviceManagementLevelsItemArgs{...} }
 type DevicePolicyAllowedDeviceManagementLevelsItemArrayInput interface {
 	pulumi.Input
 
@@ -527,7 +527,7 @@ func (o DevicePolicyAllowedEncryptionStatusesItemPtrOutput) ToStringPtrOutputWit
 // DevicePolicyAllowedEncryptionStatusesItemInput is an input type that accepts DevicePolicyAllowedEncryptionStatusesItemArgs and DevicePolicyAllowedEncryptionStatusesItemOutput values.
 // You can construct a concrete instance of `DevicePolicyAllowedEncryptionStatusesItemInput` via:
 //
-//          DevicePolicyAllowedEncryptionStatusesItemArgs{...}
+//	DevicePolicyAllowedEncryptionStatusesItemArgs{...}
 type DevicePolicyAllowedEncryptionStatusesItemInput interface {
 	pulumi.Input
 
@@ -565,7 +565,7 @@ func (in *devicePolicyAllowedEncryptionStatusesItemPtr) ToDevicePolicyAllowedEnc
 // DevicePolicyAllowedEncryptionStatusesItemArrayInput is an input type that accepts DevicePolicyAllowedEncryptionStatusesItemArray and DevicePolicyAllowedEncryptionStatusesItemArrayOutput values.
 // You can construct a concrete instance of `DevicePolicyAllowedEncryptionStatusesItemArrayInput` via:
 //
-//          DevicePolicyAllowedEncryptionStatusesItemArray{ DevicePolicyAllowedEncryptionStatusesItemArgs{...} }
+//	DevicePolicyAllowedEncryptionStatusesItemArray{ DevicePolicyAllowedEncryptionStatusesItemArgs{...} }
 type DevicePolicyAllowedEncryptionStatusesItemArrayInput interface {
 	pulumi.Input
 
@@ -749,7 +749,7 @@ func (o OsConstraintOsTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // OsConstraintOsTypeInput is an input type that accepts OsConstraintOsTypeArgs and OsConstraintOsTypeOutput values.
 // You can construct a concrete instance of `OsConstraintOsTypeInput` via:
 //
-//          OsConstraintOsTypeArgs{...}
+//	OsConstraintOsTypeArgs{...}
 type OsConstraintOsTypeInput interface {
 	pulumi.Input
 
@@ -916,7 +916,7 @@ func (o ServicePerimeterPerimeterTypePtrOutput) ToStringPtrOutputWithContext(ctx
 // ServicePerimeterPerimeterTypeInput is an input type that accepts ServicePerimeterPerimeterTypeArgs and ServicePerimeterPerimeterTypeOutput values.
 // You can construct a concrete instance of `ServicePerimeterPerimeterTypeInput` via:
 //
-//          ServicePerimeterPerimeterTypeArgs{...}
+//	ServicePerimeterPerimeterTypeArgs{...}
 type ServicePerimeterPerimeterTypeInput interface {
 	pulumi.Input
 

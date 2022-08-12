@@ -19,7 +19,7 @@ type GcsSource struct {
 // GcsSourceInput is an input type that accepts GcsSourceArgs and GcsSourceOutput values.
 // You can construct a concrete instance of `GcsSourceInput` via:
 //
-//          GcsSourceArgs{...}
+//	GcsSourceArgs{...}
 type GcsSourceInput interface {
 	pulumi.Input
 
@@ -100,7 +100,7 @@ type GlossaryInputConfig struct {
 // GlossaryInputConfigInput is an input type that accepts GlossaryInputConfigArgs and GlossaryInputConfigOutput values.
 // You can construct a concrete instance of `GlossaryInputConfigInput` via:
 //
-//          GlossaryInputConfigArgs{...}
+//	GlossaryInputConfigArgs{...}
 type GlossaryInputConfigInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type GlossaryTerm struct {
 // GlossaryTermInput is an input type that accepts GlossaryTermArgs and GlossaryTermOutput values.
 // You can construct a concrete instance of `GlossaryTermInput` via:
 //
-//          GlossaryTermArgs{...}
+//	GlossaryTermArgs{...}
 type GlossaryTermInput interface {
 	pulumi.Input
 
@@ -222,11 +222,11 @@ func (i GlossaryTermArgs) ToGlossaryTermPtrOutputWithContext(ctx context.Context
 // GlossaryTermPtrInput is an input type that accepts GlossaryTermArgs, GlossaryTermPtr and GlossaryTermPtrOutput values.
 // You can construct a concrete instance of `GlossaryTermPtrInput` via:
 //
-//          GlossaryTermArgs{...}
+//	        GlossaryTermArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GlossaryTermPtrInput interface {
 	pulumi.Input
 
@@ -255,7 +255,7 @@ func (i *glossaryTermPtrType) ToGlossaryTermPtrOutputWithContext(ctx context.Con
 // GlossaryTermArrayInput is an input type that accepts GlossaryTermArray and GlossaryTermArrayOutput values.
 // You can construct a concrete instance of `GlossaryTermArrayInput` via:
 //
-//          GlossaryTermArray{ GlossaryTermArgs{...} }
+//	GlossaryTermArray{ GlossaryTermArgs{...} }
 type GlossaryTermArrayInput interface {
 	pulumi.Input
 
@@ -440,7 +440,7 @@ type GlossaryTermsPair struct {
 // GlossaryTermsPairInput is an input type that accepts GlossaryTermsPairArgs and GlossaryTermsPairOutput values.
 // You can construct a concrete instance of `GlossaryTermsPairInput` via:
 //
-//          GlossaryTermsPairArgs{...}
+//	GlossaryTermsPairArgs{...}
 type GlossaryTermsPairInput interface {
 	pulumi.Input
 
@@ -479,11 +479,11 @@ func (i GlossaryTermsPairArgs) ToGlossaryTermsPairPtrOutputWithContext(ctx conte
 // GlossaryTermsPairPtrInput is an input type that accepts GlossaryTermsPairArgs, GlossaryTermsPairPtr and GlossaryTermsPairPtrOutput values.
 // You can construct a concrete instance of `GlossaryTermsPairPtrInput` via:
 //
-//          GlossaryTermsPairArgs{...}
+//	        GlossaryTermsPairArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GlossaryTermsPairPtrInput interface {
 	pulumi.Input
 
@@ -630,7 +630,7 @@ type GlossaryTermsSet struct {
 // GlossaryTermsSetInput is an input type that accepts GlossaryTermsSetArgs and GlossaryTermsSetOutput values.
 // You can construct a concrete instance of `GlossaryTermsSetInput` via:
 //
-//          GlossaryTermsSetArgs{...}
+//	GlossaryTermsSetArgs{...}
 type GlossaryTermsSetInput interface {
 	pulumi.Input
 
@@ -667,11 +667,11 @@ func (i GlossaryTermsSetArgs) ToGlossaryTermsSetPtrOutputWithContext(ctx context
 // GlossaryTermsSetPtrInput is an input type that accepts GlossaryTermsSetArgs, GlossaryTermsSetPtr and GlossaryTermsSetPtrOutput values.
 // You can construct a concrete instance of `GlossaryTermsSetPtrInput` via:
 //
-//          GlossaryTermsSetArgs{...}
+//	        GlossaryTermsSetArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GlossaryTermsSetPtrInput interface {
 	pulumi.Input
 
@@ -798,7 +798,7 @@ type LanguageCodePair struct {
 // LanguageCodePairInput is an input type that accepts LanguageCodePairArgs and LanguageCodePairOutput values.
 // You can construct a concrete instance of `LanguageCodePairInput` via:
 //
-//          LanguageCodePairArgs{...}
+//	LanguageCodePairArgs{...}
 type LanguageCodePairInput interface {
 	pulumi.Input
 
@@ -837,11 +837,11 @@ func (i LanguageCodePairArgs) ToLanguageCodePairPtrOutputWithContext(ctx context
 // LanguageCodePairPtrInput is an input type that accepts LanguageCodePairArgs, LanguageCodePairPtr and LanguageCodePairPtrOutput values.
 // You can construct a concrete instance of `LanguageCodePairPtrInput` via:
 //
-//          LanguageCodePairArgs{...}
+//	        LanguageCodePairArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LanguageCodePairPtrInput interface {
 	pulumi.Input
 
@@ -988,7 +988,7 @@ type LanguageCodesSet struct {
 // LanguageCodesSetInput is an input type that accepts LanguageCodesSetArgs and LanguageCodesSetOutput values.
 // You can construct a concrete instance of `LanguageCodesSetInput` via:
 //
-//          LanguageCodesSetArgs{...}
+//	LanguageCodesSetArgs{...}
 type LanguageCodesSetInput interface {
 	pulumi.Input
 
@@ -1025,11 +1025,11 @@ func (i LanguageCodesSetArgs) ToLanguageCodesSetPtrOutputWithContext(ctx context
 // LanguageCodesSetPtrInput is an input type that accepts LanguageCodesSetArgs, LanguageCodesSetPtr and LanguageCodesSetPtrOutput values.
 // You can construct a concrete instance of `LanguageCodesSetPtrInput` via:
 //
-//          LanguageCodesSetArgs{...}
+//	        LanguageCodesSetArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LanguageCodesSetPtrInput interface {
 	pulumi.Input
 

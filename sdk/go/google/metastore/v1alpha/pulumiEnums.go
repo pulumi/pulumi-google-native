@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o DatabaseDumpDatabaseTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // DatabaseDumpDatabaseTypeInput is an input type that accepts DatabaseDumpDatabaseTypeArgs and DatabaseDumpDatabaseTypeOutput values.
 // You can construct a concrete instance of `DatabaseDumpDatabaseTypeInput` via:
 //
-//          DatabaseDumpDatabaseTypeArgs{...}
+//	DatabaseDumpDatabaseTypeArgs{...}
 type DatabaseDumpDatabaseTypeInput interface {
 	pulumi.Input
 
@@ -482,7 +482,7 @@ func (o DatabaseDumpTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // DatabaseDumpTypeInput is an input type that accepts DatabaseDumpTypeArgs and DatabaseDumpTypeOutput values.
 // You can construct a concrete instance of `DatabaseDumpTypeInput` via:
 //
-//          DatabaseDumpTypeArgs{...}
+//	DatabaseDumpTypeArgs{...}
 type DatabaseDumpTypeInput interface {
 	pulumi.Input
 
@@ -651,7 +651,7 @@ func (o HiveMetastoreConfigEndpointProtocolPtrOutput) ToStringPtrOutputWithConte
 // HiveMetastoreConfigEndpointProtocolInput is an input type that accepts HiveMetastoreConfigEndpointProtocolArgs and HiveMetastoreConfigEndpointProtocolOutput values.
 // You can construct a concrete instance of `HiveMetastoreConfigEndpointProtocolInput` via:
 //
-//          HiveMetastoreConfigEndpointProtocolArgs{...}
+//	HiveMetastoreConfigEndpointProtocolArgs{...}
 type HiveMetastoreConfigEndpointProtocolInput interface {
 	pulumi.Input
 
@@ -830,7 +830,7 @@ func (o MaintenanceWindowDayOfWeekPtrOutput) ToStringPtrOutputWithContext(ctx co
 // MaintenanceWindowDayOfWeekInput is an input type that accepts MaintenanceWindowDayOfWeekArgs and MaintenanceWindowDayOfWeekOutput values.
 // You can construct a concrete instance of `MaintenanceWindowDayOfWeekInput` via:
 //
-//          MaintenanceWindowDayOfWeekArgs{...}
+//	MaintenanceWindowDayOfWeekArgs{...}
 type MaintenanceWindowDayOfWeekInput interface {
 	pulumi.Input
 
@@ -999,7 +999,7 @@ func (o ServiceDatabaseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // ServiceDatabaseTypeInput is an input type that accepts ServiceDatabaseTypeArgs and ServiceDatabaseTypeOutput values.
 // You can construct a concrete instance of `ServiceDatabaseTypeInput` via:
 //
-//          ServiceDatabaseTypeArgs{...}
+//	ServiceDatabaseTypeArgs{...}
 type ServiceDatabaseTypeInput interface {
 	pulumi.Input
 
@@ -1168,7 +1168,7 @@ func (o ServiceReleaseChannelPtrOutput) ToStringPtrOutputWithContext(ctx context
 // ServiceReleaseChannelInput is an input type that accepts ServiceReleaseChannelArgs and ServiceReleaseChannelOutput values.
 // You can construct a concrete instance of `ServiceReleaseChannelInput` via:
 //
-//          ServiceReleaseChannelArgs{...}
+//	ServiceReleaseChannelArgs{...}
 type ServiceReleaseChannelInput interface {
 	pulumi.Input
 
@@ -1337,7 +1337,7 @@ func (o ServiceTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // ServiceTierInput is an input type that accepts ServiceTierArgs and ServiceTierOutput values.
 // You can construct a concrete instance of `ServiceTierInput` via:
 //
-//          ServiceTierArgs{...}
+//	ServiceTierArgs{...}
 type ServiceTierInput interface {
 	pulumi.Input
 

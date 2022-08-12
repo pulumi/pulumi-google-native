@@ -144,7 +144,7 @@ func (o BillingAccountSinkOutputVersionFormatPtrOutput) ToStringPtrOutputWithCon
 // BillingAccountSinkOutputVersionFormatInput is an input type that accepts BillingAccountSinkOutputVersionFormatArgs and BillingAccountSinkOutputVersionFormatOutput values.
 // You can construct a concrete instance of `BillingAccountSinkOutputVersionFormatInput` via:
 //
-//          BillingAccountSinkOutputVersionFormatArgs{...}
+//	BillingAccountSinkOutputVersionFormatArgs{...}
 type BillingAccountSinkOutputVersionFormatInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o FolderSinkOutputVersionFormatPtrOutput) ToStringPtrOutputWithContext(ctx
 // FolderSinkOutputVersionFormatInput is an input type that accepts FolderSinkOutputVersionFormatArgs and FolderSinkOutputVersionFormatOutput values.
 // You can construct a concrete instance of `FolderSinkOutputVersionFormatInput` via:
 //
-//          FolderSinkOutputVersionFormatArgs{...}
+//	FolderSinkOutputVersionFormatArgs{...}
 type FolderSinkOutputVersionFormatInput interface {
 	pulumi.Input
 
@@ -482,7 +482,7 @@ func (o IndexConfigTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // IndexConfigTypeInput is an input type that accepts IndexConfigTypeArgs and IndexConfigTypeOutput values.
 // You can construct a concrete instance of `IndexConfigTypeInput` via:
 //
-//          IndexConfigTypeArgs{...}
+//	IndexConfigTypeArgs{...}
 type IndexConfigTypeInput interface {
 	pulumi.Input
 
@@ -651,7 +651,7 @@ func (o LabelDescriptorValueTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // LabelDescriptorValueTypeInput is an input type that accepts LabelDescriptorValueTypeArgs and LabelDescriptorValueTypeOutput values.
 // You can construct a concrete instance of `LabelDescriptorValueTypeInput` via:
 //
-//          LabelDescriptorValueTypeArgs{...}
+//	LabelDescriptorValueTypeArgs{...}
 type LabelDescriptorValueTypeInput interface {
 	pulumi.Input
 
@@ -830,7 +830,7 @@ func (o MetricDescriptorLaunchStagePtrOutput) ToStringPtrOutputWithContext(ctx c
 // MetricDescriptorLaunchStageInput is an input type that accepts MetricDescriptorLaunchStageArgs and MetricDescriptorLaunchStageOutput values.
 // You can construct a concrete instance of `MetricDescriptorLaunchStageInput` via:
 //
-//          MetricDescriptorLaunchStageArgs{...}
+//	MetricDescriptorLaunchStageArgs{...}
 type MetricDescriptorLaunchStageInput interface {
 	pulumi.Input
 
@@ -1009,7 +1009,7 @@ func (o MetricDescriptorMetadataLaunchStagePtrOutput) ToStringPtrOutputWithConte
 // MetricDescriptorMetadataLaunchStageInput is an input type that accepts MetricDescriptorMetadataLaunchStageArgs and MetricDescriptorMetadataLaunchStageOutput values.
 // You can construct a concrete instance of `MetricDescriptorMetadataLaunchStageInput` via:
 //
-//          MetricDescriptorMetadataLaunchStageArgs{...}
+//	MetricDescriptorMetadataLaunchStageArgs{...}
 type MetricDescriptorMetadataLaunchStageInput interface {
 	pulumi.Input
 
@@ -1180,7 +1180,7 @@ func (o MetricDescriptorMetricKindPtrOutput) ToStringPtrOutputWithContext(ctx co
 // MetricDescriptorMetricKindInput is an input type that accepts MetricDescriptorMetricKindArgs and MetricDescriptorMetricKindOutput values.
 // You can construct a concrete instance of `MetricDescriptorMetricKindInput` via:
 //
-//          MetricDescriptorMetricKindArgs{...}
+//	MetricDescriptorMetricKindArgs{...}
 type MetricDescriptorMetricKindInput interface {
 	pulumi.Input
 
@@ -1357,7 +1357,7 @@ func (o MetricDescriptorValueTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 // MetricDescriptorValueTypeInput is an input type that accepts MetricDescriptorValueTypeArgs and MetricDescriptorValueTypeOutput values.
 // You can construct a concrete instance of `MetricDescriptorValueTypeInput` via:
 //
-//          MetricDescriptorValueTypeArgs{...}
+//	MetricDescriptorValueTypeArgs{...}
 type MetricDescriptorValueTypeInput interface {
 	pulumi.Input
 
@@ -1524,7 +1524,7 @@ func (o MetricVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 // MetricVersionInput is an input type that accepts MetricVersionArgs and MetricVersionOutput values.
 // You can construct a concrete instance of `MetricVersionInput` via:
 //
-//          MetricVersionArgs{...}
+//	MetricVersionArgs{...}
 type MetricVersionInput interface {
 	pulumi.Input
 
@@ -1693,7 +1693,7 @@ func (o OrganizationSinkOutputVersionFormatPtrOutput) ToStringPtrOutputWithConte
 // OrganizationSinkOutputVersionFormatInput is an input type that accepts OrganizationSinkOutputVersionFormatArgs and OrganizationSinkOutputVersionFormatOutput values.
 // You can construct a concrete instance of `OrganizationSinkOutputVersionFormatInput` via:
 //
-//          OrganizationSinkOutputVersionFormatArgs{...}
+//	OrganizationSinkOutputVersionFormatArgs{...}
 type OrganizationSinkOutputVersionFormatInput interface {
 	pulumi.Input
 
@@ -1862,7 +1862,7 @@ func (o SinkOutputVersionFormatPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // SinkOutputVersionFormatInput is an input type that accepts SinkOutputVersionFormatArgs and SinkOutputVersionFormatOutput values.
 // You can construct a concrete instance of `SinkOutputVersionFormatInput` via:
 //
-//          SinkOutputVersionFormatArgs{...}
+//	SinkOutputVersionFormatArgs{...}
 type SinkOutputVersionFormatInput interface {
 	pulumi.Input
 

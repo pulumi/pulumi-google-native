@@ -144,7 +144,7 @@ func (o DeliveryConfigDeliveryRequirementPtrOutput) ToStringPtrOutputWithContext
 // DeliveryConfigDeliveryRequirementInput is an input type that accepts DeliveryConfigDeliveryRequirementArgs and DeliveryConfigDeliveryRequirementOutput values.
 // You can construct a concrete instance of `DeliveryConfigDeliveryRequirementInput` via:
 //
-//          DeliveryConfigDeliveryRequirementArgs{...}
+//	DeliveryConfigDeliveryRequirementArgs{...}
 type DeliveryConfigDeliveryRequirementInput interface {
 	pulumi.Input
 

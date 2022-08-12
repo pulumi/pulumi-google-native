@@ -21,7 +21,7 @@ type Capacity struct {
 // CapacityInput is an input type that accepts CapacityArgs and CapacityOutput values.
 // You can construct a concrete instance of `CapacityInput` via:
 //
-//          CapacityArgs{...}
+//	CapacityArgs{...}
 type CapacityInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i CapacityArgs) ToCapacityPtrOutputWithContext(ctx context.Context) Capaci
 // CapacityPtrInput is an input type that accepts CapacityArgs, CapacityPtr and CapacityPtrOutput values.
 // You can construct a concrete instance of `CapacityPtrInput` via:
 //
-//          CapacityArgs{...}
+//	        CapacityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CapacityPtrInput interface {
 	pulumi.Input
 
@@ -211,7 +211,7 @@ type DeliveryConfig struct {
 // DeliveryConfigInput is an input type that accepts DeliveryConfigArgs and DeliveryConfigOutput values.
 // You can construct a concrete instance of `DeliveryConfigInput` via:
 //
-//          DeliveryConfigArgs{...}
+//	DeliveryConfigArgs{...}
 type DeliveryConfigInput interface {
 	pulumi.Input
 
@@ -248,11 +248,11 @@ func (i DeliveryConfigArgs) ToDeliveryConfigPtrOutputWithContext(ctx context.Con
 // DeliveryConfigPtrInput is an input type that accepts DeliveryConfigArgs, DeliveryConfigPtr and DeliveryConfigPtrOutput values.
 // You can construct a concrete instance of `DeliveryConfigPtrInput` via:
 //
-//          DeliveryConfigArgs{...}
+//	        DeliveryConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DeliveryConfigPtrInput interface {
 	pulumi.Input
 
@@ -383,7 +383,7 @@ type PartitionConfig struct {
 // PartitionConfigInput is an input type that accepts PartitionConfigArgs and PartitionConfigOutput values.
 // You can construct a concrete instance of `PartitionConfigInput` via:
 //
-//          PartitionConfigArgs{...}
+//	PartitionConfigArgs{...}
 type PartitionConfigInput interface {
 	pulumi.Input
 
@@ -426,11 +426,11 @@ func (i PartitionConfigArgs) ToPartitionConfigPtrOutputWithContext(ctx context.C
 // PartitionConfigPtrInput is an input type that accepts PartitionConfigArgs, PartitionConfigPtr and PartitionConfigPtrOutput values.
 // You can construct a concrete instance of `PartitionConfigPtrInput` via:
 //
-//          PartitionConfigArgs{...}
+//	        PartitionConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PartitionConfigPtrInput interface {
 	pulumi.Input
 
@@ -607,7 +607,7 @@ type ReservationConfig struct {
 // ReservationConfigInput is an input type that accepts ReservationConfigArgs and ReservationConfigOutput values.
 // You can construct a concrete instance of `ReservationConfigInput` via:
 //
-//          ReservationConfigArgs{...}
+//	ReservationConfigArgs{...}
 type ReservationConfigInput interface {
 	pulumi.Input
 
@@ -644,11 +644,11 @@ func (i ReservationConfigArgs) ToReservationConfigPtrOutputWithContext(ctx conte
 // ReservationConfigPtrInput is an input type that accepts ReservationConfigArgs, ReservationConfigPtr and ReservationConfigPtrOutput values.
 // You can construct a concrete instance of `ReservationConfigPtrInput` via:
 //
-//          ReservationConfigArgs{...}
+//	        ReservationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ReservationConfigPtrInput interface {
 	pulumi.Input
 
@@ -775,7 +775,7 @@ type RetentionConfig struct {
 // RetentionConfigInput is an input type that accepts RetentionConfigArgs and RetentionConfigOutput values.
 // You can construct a concrete instance of `RetentionConfigInput` via:
 //
-//          RetentionConfigArgs{...}
+//	RetentionConfigArgs{...}
 type RetentionConfigInput interface {
 	pulumi.Input
 
@@ -814,11 +814,11 @@ func (i RetentionConfigArgs) ToRetentionConfigPtrOutputWithContext(ctx context.C
 // RetentionConfigPtrInput is an input type that accepts RetentionConfigArgs, RetentionConfigPtr and RetentionConfigPtrOutput values.
 // You can construct a concrete instance of `RetentionConfigPtrInput` via:
 //
-//          RetentionConfigArgs{...}
+//	        RetentionConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RetentionConfigPtrInput interface {
 	pulumi.Input
 

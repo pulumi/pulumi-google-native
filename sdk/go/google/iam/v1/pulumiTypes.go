@@ -21,7 +21,7 @@ type AuditConfig struct {
 // AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
 // You can construct a concrete instance of `AuditConfigInput` via:
 //
-//          AuditConfigArgs{...}
+//	AuditConfigArgs{...}
 type AuditConfigInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
-//          AuditConfigArray{ AuditConfigArgs{...} }
+//	AuditConfigArray{ AuditConfigArgs{...} }
 type AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type AuditLogConfig struct {
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
 // You can construct a concrete instance of `AuditLogConfigInput` via:
 //
-//          AuditLogConfigArgs{...}
+//	AuditLogConfigArgs{...}
 type AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -343,7 +343,7 @@ type Aws struct {
 // AwsInput is an input type that accepts AwsArgs and AwsOutput values.
 // You can construct a concrete instance of `AwsInput` via:
 //
-//          AwsArgs{...}
+//	AwsArgs{...}
 type AwsInput interface {
 	pulumi.Input
 
@@ -380,11 +380,11 @@ func (i AwsArgs) ToAwsPtrOutputWithContext(ctx context.Context) AwsPtrOutput {
 // AwsPtrInput is an input type that accepts AwsArgs, AwsPtr and AwsPtrOutput values.
 // You can construct a concrete instance of `AwsPtrInput` via:
 //
-//          AwsArgs{...}
+//	        AwsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AwsPtrInput interface {
 	pulumi.Input
 
@@ -513,7 +513,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -546,7 +546,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -693,7 +693,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -736,11 +736,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -933,7 +933,7 @@ type Oidc struct {
 // OidcInput is an input type that accepts OidcArgs and OidcOutput values.
 // You can construct a concrete instance of `OidcInput` via:
 //
-//          OidcArgs{...}
+//	OidcArgs{...}
 type OidcInput interface {
 	pulumi.Input
 
@@ -972,11 +972,11 @@ func (i OidcArgs) ToOidcPtrOutputWithContext(ctx context.Context) OidcPtrOutput 
 // OidcPtrInput is an input type that accepts OidcArgs, OidcPtr and OidcPtrOutput values.
 // You can construct a concrete instance of `OidcPtrInput` via:
 //
-//          OidcArgs{...}
+//	        OidcArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OidcPtrInput interface {
 	pulumi.Input
 
@@ -1123,7 +1123,7 @@ type Saml struct {
 // SamlInput is an input type that accepts SamlArgs and SamlOutput values.
 // You can construct a concrete instance of `SamlInput` via:
 //
-//          SamlArgs{...}
+//	SamlArgs{...}
 type SamlInput interface {
 	pulumi.Input
 
@@ -1160,11 +1160,11 @@ func (i SamlArgs) ToSamlPtrOutputWithContext(ctx context.Context) SamlPtrOutput 
 // SamlPtrInput is an input type that accepts SamlArgs, SamlPtr and SamlPtrOutput values.
 // You can construct a concrete instance of `SamlPtrInput` via:
 //
-//          SamlArgs{...}
+//	        SamlArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SamlPtrInput interface {
 	pulumi.Input
 

@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o CaPoolTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 // CaPoolTierInput is an input type that accepts CaPoolTierArgs and CaPoolTierOutput values.
 // You can construct a concrete instance of `CaPoolTierInput` via:
 //
-//          CaPoolTierArgs{...}
+//	CaPoolTierArgs{...}
 type CaPoolTierInput interface {
 	pulumi.Input
 
@@ -484,7 +484,7 @@ func (o CertificateAuthorityTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // CertificateAuthorityTypeInput is an input type that accepts CertificateAuthorityTypeArgs and CertificateAuthorityTypeOutput values.
 // You can construct a concrete instance of `CertificateAuthorityTypeInput` via:
 //
-//          CertificateAuthorityTypeArgs{...}
+//	CertificateAuthorityTypeArgs{...}
 type CertificateAuthorityTypeInput interface {
 	pulumi.Input
 
@@ -658,7 +658,7 @@ func (o CertificateExtensionConstraintsKnownExtensionsItemPtrOutput) ToStringPtr
 // CertificateExtensionConstraintsKnownExtensionsItemInput is an input type that accepts CertificateExtensionConstraintsKnownExtensionsItemArgs and CertificateExtensionConstraintsKnownExtensionsItemOutput values.
 // You can construct a concrete instance of `CertificateExtensionConstraintsKnownExtensionsItemInput` via:
 //
-//          CertificateExtensionConstraintsKnownExtensionsItemArgs{...}
+//	CertificateExtensionConstraintsKnownExtensionsItemArgs{...}
 type CertificateExtensionConstraintsKnownExtensionsItemInput interface {
 	pulumi.Input
 
@@ -696,7 +696,7 @@ func (in *certificateExtensionConstraintsKnownExtensionsItemPtr) ToCertificateEx
 // CertificateExtensionConstraintsKnownExtensionsItemArrayInput is an input type that accepts CertificateExtensionConstraintsKnownExtensionsItemArray and CertificateExtensionConstraintsKnownExtensionsItemArrayOutput values.
 // You can construct a concrete instance of `CertificateExtensionConstraintsKnownExtensionsItemArrayInput` via:
 //
-//          CertificateExtensionConstraintsKnownExtensionsItemArray{ CertificateExtensionConstraintsKnownExtensionsItemArgs{...} }
+//	CertificateExtensionConstraintsKnownExtensionsItemArray{ CertificateExtensionConstraintsKnownExtensionsItemArgs{...} }
 type CertificateExtensionConstraintsKnownExtensionsItemArrayInput interface {
 	pulumi.Input
 
@@ -872,7 +872,7 @@ func (o CertificateSubjectModePtrOutput) ToStringPtrOutputWithContext(ctx contex
 // CertificateSubjectModeInput is an input type that accepts CertificateSubjectModeArgs and CertificateSubjectModeOutput values.
 // You can construct a concrete instance of `CertificateSubjectModeInput` via:
 //
-//          CertificateSubjectModeArgs{...}
+//	CertificateSubjectModeArgs{...}
 type CertificateSubjectModeInput interface {
 	pulumi.Input
 
@@ -1043,7 +1043,7 @@ func (o EcKeyTypeSignatureAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx c
 // EcKeyTypeSignatureAlgorithmInput is an input type that accepts EcKeyTypeSignatureAlgorithmArgs and EcKeyTypeSignatureAlgorithmOutput values.
 // You can construct a concrete instance of `EcKeyTypeSignatureAlgorithmInput` via:
 //
-//          EcKeyTypeSignatureAlgorithmArgs{...}
+//	EcKeyTypeSignatureAlgorithmArgs{...}
 type EcKeyTypeSignatureAlgorithmInput interface {
 	pulumi.Input
 
@@ -1224,7 +1224,7 @@ func (o KeyVersionSpecAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // KeyVersionSpecAlgorithmInput is an input type that accepts KeyVersionSpecAlgorithmArgs and KeyVersionSpecAlgorithmOutput values.
 // You can construct a concrete instance of `KeyVersionSpecAlgorithmInput` via:
 //
-//          KeyVersionSpecAlgorithmArgs{...}
+//	KeyVersionSpecAlgorithmArgs{...}
 type KeyVersionSpecAlgorithmInput interface {
 	pulumi.Input
 
@@ -1391,7 +1391,7 @@ func (o PublicKeyFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // PublicKeyFormatInput is an input type that accepts PublicKeyFormatArgs and PublicKeyFormatOutput values.
 // You can construct a concrete instance of `PublicKeyFormatInput` via:
 //
-//          PublicKeyFormatArgs{...}
+//	PublicKeyFormatArgs{...}
 type PublicKeyFormatInput interface {
 	pulumi.Input
 

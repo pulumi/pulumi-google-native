@@ -148,7 +148,7 @@ func (o ProductAvailabilityPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // ProductAvailabilityInput is an input type that accepts ProductAvailabilityArgs and ProductAvailabilityOutput values.
 // You can construct a concrete instance of `ProductAvailabilityInput` via:
 //
-//          ProductAvailabilityArgs{...}
+//	ProductAvailabilityArgs{...}
 type ProductAvailabilityInput interface {
 	pulumi.Input
 
@@ -319,7 +319,7 @@ func (o ProductTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // ProductTypeInput is an input type that accepts ProductTypeArgs and ProductTypeOutput values.
 // You can construct a concrete instance of `ProductTypeInput` via:
 //
-//          ProductTypeArgs{...}
+//	ProductTypeArgs{...}
 type ProductTypeInput interface {
 	pulumi.Input
 

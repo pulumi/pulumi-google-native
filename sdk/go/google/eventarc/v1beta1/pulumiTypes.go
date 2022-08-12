@@ -21,7 +21,7 @@ type AuditConfig struct {
 // AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
 // You can construct a concrete instance of `AuditConfigInput` via:
 //
-//          AuditConfigArgs{...}
+//	AuditConfigArgs{...}
 type AuditConfigInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
-//          AuditConfigArray{ AuditConfigArgs{...} }
+//	AuditConfigArray{ AuditConfigArgs{...} }
 type AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type AuditLogConfig struct {
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
 // You can construct a concrete instance of `AuditLogConfigInput` via:
 //
-//          AuditLogConfigArgs{...}
+//	AuditLogConfigArgs{...}
 type AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -347,7 +347,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -380,7 +380,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -525,7 +525,7 @@ type CloudRunService struct {
 // CloudRunServiceInput is an input type that accepts CloudRunServiceArgs and CloudRunServiceOutput values.
 // You can construct a concrete instance of `CloudRunServiceInput` via:
 //
-//          CloudRunServiceArgs{...}
+//	CloudRunServiceArgs{...}
 type CloudRunServiceInput interface {
 	pulumi.Input
 
@@ -566,11 +566,11 @@ func (i CloudRunServiceArgs) ToCloudRunServicePtrOutputWithContext(ctx context.C
 // CloudRunServicePtrInput is an input type that accepts CloudRunServiceArgs, CloudRunServicePtr and CloudRunServicePtrOutput values.
 // You can construct a concrete instance of `CloudRunServicePtrInput` via:
 //
-//          CloudRunServiceArgs{...}
+//	        CloudRunServiceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CloudRunServicePtrInput interface {
 	pulumi.Input
 
@@ -739,7 +739,7 @@ type Destination struct {
 // DestinationInput is an input type that accepts DestinationArgs and DestinationOutput values.
 // You can construct a concrete instance of `DestinationInput` via:
 //
-//          DestinationArgs{...}
+//	DestinationArgs{...}
 type DestinationInput interface {
 	pulumi.Input
 
@@ -826,7 +826,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -869,11 +869,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -1066,7 +1066,7 @@ type MatchingCriteria struct {
 // MatchingCriteriaInput is an input type that accepts MatchingCriteriaArgs and MatchingCriteriaOutput values.
 // You can construct a concrete instance of `MatchingCriteriaInput` via:
 //
-//          MatchingCriteriaArgs{...}
+//	MatchingCriteriaArgs{...}
 type MatchingCriteriaInput interface {
 	pulumi.Input
 
@@ -1097,7 +1097,7 @@ func (i MatchingCriteriaArgs) ToMatchingCriteriaOutputWithContext(ctx context.Co
 // MatchingCriteriaArrayInput is an input type that accepts MatchingCriteriaArray and MatchingCriteriaArrayOutput values.
 // You can construct a concrete instance of `MatchingCriteriaArrayInput` via:
 //
-//          MatchingCriteriaArray{ MatchingCriteriaArgs{...} }
+//	MatchingCriteriaArray{ MatchingCriteriaArgs{...} }
 type MatchingCriteriaArrayInput interface {
 	pulumi.Input
 

@@ -19,7 +19,7 @@ type AnthosObservabilityFeatureSpec struct {
 // AnthosObservabilityFeatureSpecInput is an input type that accepts AnthosObservabilityFeatureSpecArgs and AnthosObservabilityFeatureSpecOutput values.
 // You can construct a concrete instance of `AnthosObservabilityFeatureSpecInput` via:
 //
-//          AnthosObservabilityFeatureSpecArgs{...}
+//	AnthosObservabilityFeatureSpecArgs{...}
 type AnthosObservabilityFeatureSpecInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i AnthosObservabilityFeatureSpecArgs) ToAnthosObservabilityFeatureSpecPtrO
 // AnthosObservabilityFeatureSpecPtrInput is an input type that accepts AnthosObservabilityFeatureSpecArgs, AnthosObservabilityFeatureSpecPtr and AnthosObservabilityFeatureSpecPtrOutput values.
 // You can construct a concrete instance of `AnthosObservabilityFeatureSpecPtrInput` via:
 //
-//          AnthosObservabilityFeatureSpecArgs{...}
+//	        AnthosObservabilityFeatureSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AnthosObservabilityFeatureSpecPtrInput interface {
 	pulumi.Input
 
@@ -193,7 +193,7 @@ type AnthosObservabilityMembershipSpec struct {
 // AnthosObservabilityMembershipSpecInput is an input type that accepts AnthosObservabilityMembershipSpecArgs and AnthosObservabilityMembershipSpecOutput values.
 // You can construct a concrete instance of `AnthosObservabilityMembershipSpecInput` via:
 //
-//          AnthosObservabilityMembershipSpecArgs{...}
+//	AnthosObservabilityMembershipSpecArgs{...}
 type AnthosObservabilityMembershipSpecInput interface {
 	pulumi.Input
 
@@ -234,11 +234,11 @@ func (i AnthosObservabilityMembershipSpecArgs) ToAnthosObservabilityMembershipSp
 // AnthosObservabilityMembershipSpecPtrInput is an input type that accepts AnthosObservabilityMembershipSpecArgs, AnthosObservabilityMembershipSpecPtr and AnthosObservabilityMembershipSpecPtrOutput values.
 // You can construct a concrete instance of `AnthosObservabilityMembershipSpecPtrInput` via:
 //
-//          AnthosObservabilityMembershipSpecArgs{...}
+//	        AnthosObservabilityMembershipSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AnthosObservabilityMembershipSpecPtrInput interface {
 	pulumi.Input
 
@@ -405,7 +405,7 @@ type AppDevExperienceFeatureSpec struct {
 // AppDevExperienceFeatureSpecInput is an input type that accepts AppDevExperienceFeatureSpecArgs and AppDevExperienceFeatureSpecOutput values.
 // You can construct a concrete instance of `AppDevExperienceFeatureSpecInput` via:
 //
-//          AppDevExperienceFeatureSpecArgs{...}
+//	AppDevExperienceFeatureSpecArgs{...}
 type AppDevExperienceFeatureSpecInput interface {
 	pulumi.Input
 
@@ -440,11 +440,11 @@ func (i AppDevExperienceFeatureSpecArgs) ToAppDevExperienceFeatureSpecPtrOutputW
 // AppDevExperienceFeatureSpecPtrInput is an input type that accepts AppDevExperienceFeatureSpecArgs, AppDevExperienceFeatureSpecPtr and AppDevExperienceFeatureSpecPtrOutput values.
 // You can construct a concrete instance of `AppDevExperienceFeatureSpecPtrInput` via:
 //
-//          AppDevExperienceFeatureSpecArgs{...}
+//	        AppDevExperienceFeatureSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppDevExperienceFeatureSpecPtrInput interface {
 	pulumi.Input
 
@@ -575,7 +575,7 @@ type AuditConfig struct {
 // AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
 // You can construct a concrete instance of `AuditConfigInput` via:
 //
-//          AuditConfigArgs{...}
+//	AuditConfigArgs{...}
 type AuditConfigInput interface {
 	pulumi.Input
 
@@ -606,7 +606,7 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
-//          AuditConfigArray{ AuditConfigArgs{...} }
+//	AuditConfigArray{ AuditConfigArgs{...} }
 type AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -737,7 +737,7 @@ type AuditLogConfig struct {
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
 // You can construct a concrete instance of `AuditLogConfigInput` via:
 //
-//          AuditLogConfigArgs{...}
+//	AuditLogConfigArgs{...}
 type AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -768,7 +768,7 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -901,7 +901,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -934,7 +934,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -1079,7 +1079,7 @@ type CommonFeatureSpec struct {
 // CommonFeatureSpecInput is an input type that accepts CommonFeatureSpecArgs and CommonFeatureSpecOutput values.
 // You can construct a concrete instance of `CommonFeatureSpecInput` via:
 //
-//          CommonFeatureSpecArgs{...}
+//	CommonFeatureSpecArgs{...}
 type CommonFeatureSpecInput interface {
 	pulumi.Input
 
@@ -1120,11 +1120,11 @@ func (i CommonFeatureSpecArgs) ToCommonFeatureSpecPtrOutputWithContext(ctx conte
 // CommonFeatureSpecPtrInput is an input type that accepts CommonFeatureSpecArgs, CommonFeatureSpecPtr and CommonFeatureSpecPtrOutput values.
 // You can construct a concrete instance of `CommonFeatureSpecPtrInput` via:
 //
-//          CommonFeatureSpecArgs{...}
+//	        CommonFeatureSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CommonFeatureSpecPtrInput interface {
 	pulumi.Input
 
@@ -1332,7 +1332,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -1375,11 +1375,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -1640,7 +1640,7 @@ type MultiClusterIngressFeatureSpec struct {
 // MultiClusterIngressFeatureSpecInput is an input type that accepts MultiClusterIngressFeatureSpecArgs and MultiClusterIngressFeatureSpecOutput values.
 // You can construct a concrete instance of `MultiClusterIngressFeatureSpecInput` via:
 //
-//          MultiClusterIngressFeatureSpecArgs{...}
+//	MultiClusterIngressFeatureSpecArgs{...}
 type MultiClusterIngressFeatureSpecInput interface {
 	pulumi.Input
 
@@ -1681,11 +1681,11 @@ func (i MultiClusterIngressFeatureSpecArgs) ToMultiClusterIngressFeatureSpecPtrO
 // MultiClusterIngressFeatureSpecPtrInput is an input type that accepts MultiClusterIngressFeatureSpecArgs, MultiClusterIngressFeatureSpecPtr and MultiClusterIngressFeatureSpecPtrOutput values.
 // You can construct a concrete instance of `MultiClusterIngressFeatureSpecPtrInput` via:
 //
-//          MultiClusterIngressFeatureSpecArgs{...}
+//	        MultiClusterIngressFeatureSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MultiClusterIngressFeatureSpecPtrInput interface {
 	pulumi.Input
 

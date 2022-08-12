@@ -21,7 +21,7 @@ type GoogleCloudOrgpolicyV2AlternatePolicySpec struct {
 // GoogleCloudOrgpolicyV2AlternatePolicySpecInput is an input type that accepts GoogleCloudOrgpolicyV2AlternatePolicySpecArgs and GoogleCloudOrgpolicyV2AlternatePolicySpecOutput values.
 // You can construct a concrete instance of `GoogleCloudOrgpolicyV2AlternatePolicySpecInput` via:
 //
-//          GoogleCloudOrgpolicyV2AlternatePolicySpecArgs{...}
+//	GoogleCloudOrgpolicyV2AlternatePolicySpecArgs{...}
 type GoogleCloudOrgpolicyV2AlternatePolicySpecInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i GoogleCloudOrgpolicyV2AlternatePolicySpecArgs) ToGoogleCloudOrgpolicyV2A
 // GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput is an input type that accepts GoogleCloudOrgpolicyV2AlternatePolicySpecArgs, GoogleCloudOrgpolicyV2AlternatePolicySpecPtr and GoogleCloudOrgpolicyV2AlternatePolicySpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput` via:
 //
-//          GoogleCloudOrgpolicyV2AlternatePolicySpecArgs{...}
+//	        GoogleCloudOrgpolicyV2AlternatePolicySpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudOrgpolicyV2AlternatePolicySpecPtrInput interface {
 	pulumi.Input
 
@@ -219,7 +219,7 @@ type GoogleCloudOrgpolicyV2PolicySpec struct {
 // GoogleCloudOrgpolicyV2PolicySpecInput is an input type that accepts GoogleCloudOrgpolicyV2PolicySpecArgs and GoogleCloudOrgpolicyV2PolicySpecOutput values.
 // You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicySpecInput` via:
 //
-//          GoogleCloudOrgpolicyV2PolicySpecArgs{...}
+//	GoogleCloudOrgpolicyV2PolicySpecArgs{...}
 type GoogleCloudOrgpolicyV2PolicySpecInput interface {
 	pulumi.Input
 
@@ -262,11 +262,11 @@ func (i GoogleCloudOrgpolicyV2PolicySpecArgs) ToGoogleCloudOrgpolicyV2PolicySpec
 // GoogleCloudOrgpolicyV2PolicySpecPtrInput is an input type that accepts GoogleCloudOrgpolicyV2PolicySpecArgs, GoogleCloudOrgpolicyV2PolicySpecPtr and GoogleCloudOrgpolicyV2PolicySpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicySpecPtrInput` via:
 //
-//          GoogleCloudOrgpolicyV2PolicySpecArgs{...}
+//	        GoogleCloudOrgpolicyV2PolicySpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudOrgpolicyV2PolicySpecPtrInput interface {
 	pulumi.Input
 
@@ -418,7 +418,7 @@ type GoogleCloudOrgpolicyV2PolicySpecPolicyRule struct {
 // GoogleCloudOrgpolicyV2PolicySpecPolicyRuleInput is an input type that accepts GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs and GoogleCloudOrgpolicyV2PolicySpecPolicyRuleOutput values.
 // You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicySpecPolicyRuleInput` via:
 //
-//          GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs{...}
+//	GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs{...}
 type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleInput interface {
 	pulumi.Input
 
@@ -455,7 +455,7 @@ func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs) ToGoogleCloudOrgpolicyV2
 // GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayInput is an input type that accepts GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArray and GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayInput` via:
 //
-//          GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArray{ GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs{...} }
+//	GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArray{ GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArgs{...} }
 type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleArrayInput interface {
 	pulumi.Input
 
@@ -626,7 +626,7 @@ type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues struct {
 // GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesInput is an input type that accepts GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs and GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesOutput values.
 // You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesInput` via:
 //
-//          GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs{...}
+//	GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs{...}
 type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesInput interface {
 	pulumi.Input
 
@@ -665,11 +665,11 @@ func (i GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs) ToGoogleClou
 // GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrInput is an input type that accepts GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs, GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtr and GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrInput` via:
 //
-//          GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs{...}
+//	        GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValuesPtrInput interface {
 	pulumi.Input
 
@@ -880,7 +880,7 @@ type GoogleTypeExpr struct {
 // GoogleTypeExprInput is an input type that accepts GoogleTypeExprArgs and GoogleTypeExprOutput values.
 // You can construct a concrete instance of `GoogleTypeExprInput` via:
 //
-//          GoogleTypeExprArgs{...}
+//	GoogleTypeExprArgs{...}
 type GoogleTypeExprInput interface {
 	pulumi.Input
 
@@ -923,11 +923,11 @@ func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutputWithContext(ctx context.Con
 // GoogleTypeExprPtrInput is an input type that accepts GoogleTypeExprArgs, GoogleTypeExprPtr and GoogleTypeExprPtrOutput values.
 // You can construct a concrete instance of `GoogleTypeExprPtrInput` via:
 //
-//          GoogleTypeExprArgs{...}
+//	        GoogleTypeExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleTypeExprPtrInput interface {
 	pulumi.Input
 

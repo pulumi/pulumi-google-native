@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -325,7 +325,7 @@ func (o DiagnosticLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // DiagnosticLevelInput is an input type that accepts DiagnosticLevelArgs and DiagnosticLevelOutput values.
 // You can construct a concrete instance of `DiagnosticLevelInput` via:
 //
-//          DiagnosticLevelArgs{...}
+//	DiagnosticLevelArgs{...}
 type DiagnosticLevelInput interface {
 	pulumi.Input
 
@@ -493,7 +493,7 @@ func (o InputMappingLocationPtrOutput) ToStringPtrOutputWithContext(ctx context.
 // InputMappingLocationInput is an input type that accepts InputMappingLocationArgs and InputMappingLocationOutput values.
 // You can construct a concrete instance of `InputMappingLocationInput` via:
 //
-//          InputMappingLocationArgs{...}
+//	InputMappingLocationArgs{...}
 type InputMappingLocationInput interface {
 	pulumi.Input
 
@@ -659,7 +659,7 @@ func (o TemplateContentsInterpreterPtrOutput) ToStringPtrOutputWithContext(ctx c
 // TemplateContentsInterpreterInput is an input type that accepts TemplateContentsInterpreterArgs and TemplateContentsInterpreterOutput values.
 // You can construct a concrete instance of `TemplateContentsInterpreterInput` via:
 //
-//          TemplateContentsInterpreterArgs{...}
+//	TemplateContentsInterpreterArgs{...}
 type TemplateContentsInterpreterInput interface {
 	pulumi.Input
 
@@ -829,7 +829,7 @@ func (o ValidationOptionsSchemaValidationPtrOutput) ToStringPtrOutputWithContext
 // ValidationOptionsSchemaValidationInput is an input type that accepts ValidationOptionsSchemaValidationArgs and ValidationOptionsSchemaValidationOutput values.
 // You can construct a concrete instance of `ValidationOptionsSchemaValidationInput` via:
 //
-//          ValidationOptionsSchemaValidationArgs{...}
+//	ValidationOptionsSchemaValidationArgs{...}
 type ValidationOptionsSchemaValidationInput interface {
 	pulumi.Input
 
@@ -1003,7 +1003,7 @@ func (o ValidationOptionsUndeclaredPropertiesPtrOutput) ToStringPtrOutputWithCon
 // ValidationOptionsUndeclaredPropertiesInput is an input type that accepts ValidationOptionsUndeclaredPropertiesArgs and ValidationOptionsUndeclaredPropertiesOutput values.
 // You can construct a concrete instance of `ValidationOptionsUndeclaredPropertiesInput` via:
 //
-//          ValidationOptionsUndeclaredPropertiesArgs{...}
+//	ValidationOptionsUndeclaredPropertiesArgs{...}
 type ValidationOptionsUndeclaredPropertiesInput interface {
 	pulumi.Input
 

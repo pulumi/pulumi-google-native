@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,7 +319,7 @@ func (o AuthorizationLoggingOptionsPermissionTypePtrOutput) ToStringPtrOutputWit
 // AuthorizationLoggingOptionsPermissionTypeInput is an input type that accepts AuthorizationLoggingOptionsPermissionTypeArgs and AuthorizationLoggingOptionsPermissionTypeOutput values.
 // You can construct a concrete instance of `AuthorizationLoggingOptionsPermissionTypeInput` via:
 //
-//          AuthorizationLoggingOptionsPermissionTypeArgs{...}
+//	AuthorizationLoggingOptionsPermissionTypeArgs{...}
 type AuthorizationLoggingOptionsPermissionTypeInput interface {
 	pulumi.Input
 
@@ -488,7 +488,7 @@ func (o CloudAuditOptionsLogNamePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // CloudAuditOptionsLogNameInput is an input type that accepts CloudAuditOptionsLogNameArgs and CloudAuditOptionsLogNameOutput values.
 // You can construct a concrete instance of `CloudAuditOptionsLogNameInput` via:
 //
-//          CloudAuditOptionsLogNameArgs{...}
+//	CloudAuditOptionsLogNameArgs{...}
 type CloudAuditOptionsLogNameInput interface {
 	pulumi.Input
 
@@ -667,7 +667,7 @@ func (o ConditionIamPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // ConditionIamInput is an input type that accepts ConditionIamArgs and ConditionIamOutput values.
 // You can construct a concrete instance of `ConditionIamInput` via:
 //
-//          ConditionIamArgs{...}
+//	ConditionIamArgs{...}
 type ConditionIamInput interface {
 	pulumi.Input
 
@@ -842,7 +842,7 @@ func (o ConditionOpPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // ConditionOpInput is an input type that accepts ConditionOpArgs and ConditionOpOutput values.
 // You can construct a concrete instance of `ConditionOpInput` via:
 //
-//          ConditionOpArgs{...}
+//	ConditionOpArgs{...}
 type ConditionOpInput interface {
 	pulumi.Input
 
@@ -1015,7 +1015,7 @@ func (o ConditionSysPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // ConditionSysInput is an input type that accepts ConditionSysArgs and ConditionSysOutput values.
 // You can construct a concrete instance of `ConditionSysInput` via:
 //
-//          ConditionSysArgs{...}
+//	ConditionSysArgs{...}
 type ConditionSysInput interface {
 	pulumi.Input
 
@@ -1181,7 +1181,7 @@ func (o DataAccessOptionsLogModePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // DataAccessOptionsLogModeInput is an input type that accepts DataAccessOptionsLogModeArgs and DataAccessOptionsLogModeOutput values.
 // You can construct a concrete instance of `DataAccessOptionsLogModeInput` via:
 //
-//          DataAccessOptionsLogModeArgs{...}
+//	DataAccessOptionsLogModeArgs{...}
 type DataAccessOptionsLogModeInput interface {
 	pulumi.Input
 
@@ -1356,7 +1356,7 @@ func (o RuleActionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 // RuleActionInput is an input type that accepts RuleActionArgs and RuleActionOutput values.
 // You can construct a concrete instance of `RuleActionInput` via:
 //
-//          RuleActionArgs{...}
+//	RuleActionArgs{...}
 type RuleActionInput interface {
 	pulumi.Input
 

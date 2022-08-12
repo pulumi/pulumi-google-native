@@ -21,7 +21,7 @@ type GoogleCloudRecaptchaenterpriseV1AndroidKeySettings struct {
 // GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs and GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs{...}
+//	GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs{...}
 type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs) ToGoogleCloudRec
 // GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs, GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtr and GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs{...}
+//	        GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRecaptchaenterpriseV1AndroidKeySettingsPtrInput interface {
 	pulumi.Input
 
@@ -215,7 +215,7 @@ type GoogleCloudRecaptchaenterpriseV1IOSKeySettings struct {
 // GoogleCloudRecaptchaenterpriseV1IOSKeySettingsInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs and GoogleCloudRecaptchaenterpriseV1IOSKeySettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1IOSKeySettingsInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs{...}
+//	GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs{...}
 type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsInput interface {
 	pulumi.Input
 
@@ -254,11 +254,11 @@ func (i GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs) ToGoogleCloudRecaptc
 // GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs, GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtr and GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs{...}
+//	        GoogleCloudRecaptchaenterpriseV1IOSKeySettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRecaptchaenterpriseV1IOSKeySettingsPtrInput interface {
 	pulumi.Input
 
@@ -407,7 +407,7 @@ type GoogleCloudRecaptchaenterpriseV1TestingOptions struct {
 // GoogleCloudRecaptchaenterpriseV1TestingOptionsInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs and GoogleCloudRecaptchaenterpriseV1TestingOptionsOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1TestingOptionsInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs{...}
+//	GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs{...}
 type GoogleCloudRecaptchaenterpriseV1TestingOptionsInput interface {
 	pulumi.Input
 
@@ -446,11 +446,11 @@ func (i GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs) ToGoogleCloudRecaptc
 // GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs, GoogleCloudRecaptchaenterpriseV1TestingOptionsPtr and GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs{...}
+//	        GoogleCloudRecaptchaenterpriseV1TestingOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRecaptchaenterpriseV1TestingOptionsPtrInput interface {
 	pulumi.Input
 
@@ -601,7 +601,7 @@ type GoogleCloudRecaptchaenterpriseV1WafSettings struct {
 // GoogleCloudRecaptchaenterpriseV1WafSettingsInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WafSettingsArgs and GoogleCloudRecaptchaenterpriseV1WafSettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1WafSettingsInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1WafSettingsArgs{...}
+//	GoogleCloudRecaptchaenterpriseV1WafSettingsArgs{...}
 type GoogleCloudRecaptchaenterpriseV1WafSettingsInput interface {
 	pulumi.Input
 
@@ -640,11 +640,11 @@ func (i GoogleCloudRecaptchaenterpriseV1WafSettingsArgs) ToGoogleCloudRecaptchae
 // GoogleCloudRecaptchaenterpriseV1WafSettingsPtrInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WafSettingsArgs, GoogleCloudRecaptchaenterpriseV1WafSettingsPtr and GoogleCloudRecaptchaenterpriseV1WafSettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1WafSettingsPtrInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1WafSettingsArgs{...}
+//	        GoogleCloudRecaptchaenterpriseV1WafSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRecaptchaenterpriseV1WafSettingsPtrInput interface {
 	pulumi.Input
 
@@ -803,7 +803,7 @@ type GoogleCloudRecaptchaenterpriseV1WebKeySettings struct {
 // GoogleCloudRecaptchaenterpriseV1WebKeySettingsInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs and GoogleCloudRecaptchaenterpriseV1WebKeySettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1WebKeySettingsInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs{...}
+//	GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs{...}
 type GoogleCloudRecaptchaenterpriseV1WebKeySettingsInput interface {
 	pulumi.Input
 
@@ -848,11 +848,11 @@ func (i GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs) ToGoogleCloudRecaptc
 // GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs, GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtr and GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs{...}
+//	        GoogleCloudRecaptchaenterpriseV1WebKeySettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRecaptchaenterpriseV1WebKeySettingsPtrInput interface {
 	pulumi.Input
 

@@ -18,7 +18,7 @@ type GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfig s
 // GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigInput is an input type that accepts GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs and GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigInput` via:
 //
-//          GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs{...}
+//	GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs{...}
 type GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigInput interface {
 	pulumi.Input
 
@@ -54,11 +54,11 @@ func (i GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfi
 // GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrInput is an input type that accepts GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs, GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtr and GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrInput` via:
 //
-//          GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs{...}
+//	        GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1_AutomatedStoppingConfig_DecayCurveAutomatedStoppingConfigPtrInput interface {
 	pulumi.Input
 
@@ -184,7 +184,7 @@ type GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfig struc
 // GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigInput is an input type that accepts GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigArgs and GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigInput` via:
 //
-//          GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigArgs{...}
+//	GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigArgs{...}
 type GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigInput interface {
 	pulumi.Input
 
@@ -221,11 +221,11 @@ func (i GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigArg
 // GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrInput is an input type that accepts GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigArgs, GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtr and GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrInput` via:
 //
-//          GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigArgs{...}
+//	        GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1_AutomatedStoppingConfig_MedianAutomatedStoppingConfigPtrInput interface {
 	pulumi.Input
 
@@ -356,7 +356,7 @@ type GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetric struct {
 // GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricInput is an input type that accepts GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs and GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricInput` via:
 //
-//          GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs{...}
+//	GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs{...}
 type GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricInput interface {
 	pulumi.Input
 
@@ -395,11 +395,11 @@ func (i GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs) ToGoogleC
 // GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrInput is an input type that accepts GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs, GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtr and GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrInput` via:
 //
-//          GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs{...}
+//	        GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrInput interface {
 	pulumi.Input
 
@@ -428,7 +428,7 @@ func (i *googleCloudMlV1_HyperparameterOutput_HyperparameterMetricPtrType) ToGoo
 // GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayInput is an input type that accepts GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArray and GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayInput` via:
 //
-//          GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArray{ GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs{...} }
+//	GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArray{ GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArgs{...} }
 type GoogleCloudMlV1_HyperparameterOutput_HyperparameterMetricArrayInput interface {
 	pulumi.Input
 
@@ -617,7 +617,7 @@ type GoogleCloudMlV1_Measurement_Metric struct {
 // GoogleCloudMlV1_Measurement_MetricInput is an input type that accepts GoogleCloudMlV1_Measurement_MetricArgs and GoogleCloudMlV1_Measurement_MetricOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_Measurement_MetricInput` via:
 //
-//          GoogleCloudMlV1_Measurement_MetricArgs{...}
+//	GoogleCloudMlV1_Measurement_MetricArgs{...}
 type GoogleCloudMlV1_Measurement_MetricInput interface {
 	pulumi.Input
 
@@ -648,7 +648,7 @@ func (i GoogleCloudMlV1_Measurement_MetricArgs) ToGoogleCloudMlV1_Measurement_Me
 // GoogleCloudMlV1_Measurement_MetricArrayInput is an input type that accepts GoogleCloudMlV1_Measurement_MetricArray and GoogleCloudMlV1_Measurement_MetricArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_Measurement_MetricArrayInput` via:
 //
-//          GoogleCloudMlV1_Measurement_MetricArray{ GoogleCloudMlV1_Measurement_MetricArgs{...} }
+//	GoogleCloudMlV1_Measurement_MetricArray{ GoogleCloudMlV1_Measurement_MetricArgs{...} }
 type GoogleCloudMlV1_Measurement_MetricArrayInput interface {
 	pulumi.Input
 
@@ -776,7 +776,7 @@ type GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpec struct {
 // GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecInput is an input type that accepts GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs and GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecInput` via:
 //
-//          GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs{...}
+//	GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs{...}
 type GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecInput interface {
 	pulumi.Input
 
@@ -812,11 +812,11 @@ func (i GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs) ToGoo
 // GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrInput is an input type that accepts GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs, GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtr and GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrInput` via:
 //
-//          GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs{...}
+//	        GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1_StudyConfigParameterSpec_CategoricalValueSpecPtrInput interface {
 	pulumi.Input
 
@@ -939,7 +939,7 @@ type GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpec struct {
 // GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecInput is an input type that accepts GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecArgs and GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecInput` via:
 //
-//          GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecArgs{...}
+//	GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecArgs{...}
 type GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecInput interface {
 	pulumi.Input
 
@@ -975,11 +975,11 @@ func (i GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecArgs) ToGoogle
 // GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrInput is an input type that accepts GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecArgs, GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtr and GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrInput` via:
 //
-//          GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecArgs{...}
+//	        GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1_StudyConfigParameterSpec_DiscreteValueSpecPtrInput interface {
 	pulumi.Input
 
@@ -1102,7 +1102,7 @@ type GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpec struct {
 // GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecInput is an input type that accepts GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs and GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecInput` via:
 //
-//          GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs{...}
+//	GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs{...}
 type GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecInput interface {
 	pulumi.Input
 
@@ -1140,11 +1140,11 @@ func (i GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs) ToGoogleCl
 // GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrInput is an input type that accepts GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs, GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtr and GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrInput` via:
 //
-//          GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs{...}
+//	        GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1_StudyConfigParameterSpec_DoubleValueSpecPtrInput interface {
 	pulumi.Input
 
@@ -1289,7 +1289,7 @@ type GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpec struct {
 // GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecInput is an input type that accepts GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs and GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecInput` via:
 //
-//          GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs{...}
+//	GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs{...}
 type GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecInput interface {
 	pulumi.Input
 
@@ -1327,11 +1327,11 @@ func (i GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs) ToGoogleC
 // GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrInput is an input type that accepts GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs, GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtr and GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrInput` via:
 //
-//          GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs{...}
+//	        GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1_StudyConfigParameterSpec_IntegerValueSpecPtrInput interface {
 	pulumi.Input
 
@@ -1475,7 +1475,7 @@ type GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpec
 // GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecInput is an input type that accepts GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs and GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecInput` via:
 //
-//          GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs{...}
+//	GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs{...}
 type GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecInput interface {
 	pulumi.Input
 
@@ -1512,11 +1512,11 @@ func (i GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueS
 // GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrInput is an input type that accepts GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs, GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtr and GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrInput` via:
 //
-//          GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs{...}
+//	        GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentCategoricalValueSpecPtrInput interface {
 	pulumi.Input
 
@@ -1645,7 +1645,7 @@ type GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec st
 // GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecInput is an input type that accepts GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs and GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecInput` via:
 //
-//          GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs{...}
+//	GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs{...}
 type GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecInput interface {
 	pulumi.Input
 
@@ -1682,11 +1682,11 @@ func (i GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpec
 // GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrInput is an input type that accepts GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs, GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtr and GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrInput` via:
 //
-//          GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs{...}
+//	        GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentDiscreteValueSpecPtrInput interface {
 	pulumi.Input
 
@@ -1815,7 +1815,7 @@ type GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpec struct 
 // GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecInput is an input type that accepts GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs and GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecInput` via:
 //
-//          GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs{...}
+//	GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs{...}
 type GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecInput interface {
 	pulumi.Input
 
@@ -1852,11 +1852,11 @@ func (i GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs)
 // GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrInput is an input type that accepts GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs, GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtr and GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrInput` via:
 //
-//          GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs{...}
+//	        GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1_StudyConfigParameterSpec_MatchingParentIntValueSpecPtrInput interface {
 	pulumi.Input
 
@@ -1985,7 +1985,7 @@ type GoogleCloudMlV1_StudyConfig_MetricSpec struct {
 // GoogleCloudMlV1_StudyConfig_MetricSpecInput is an input type that accepts GoogleCloudMlV1_StudyConfig_MetricSpecArgs and GoogleCloudMlV1_StudyConfig_MetricSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfig_MetricSpecInput` via:
 //
-//          GoogleCloudMlV1_StudyConfig_MetricSpecArgs{...}
+//	GoogleCloudMlV1_StudyConfig_MetricSpecArgs{...}
 type GoogleCloudMlV1_StudyConfig_MetricSpecInput interface {
 	pulumi.Input
 
@@ -2016,7 +2016,7 @@ func (i GoogleCloudMlV1_StudyConfig_MetricSpecArgs) ToGoogleCloudMlV1_StudyConfi
 // GoogleCloudMlV1_StudyConfig_MetricSpecArrayInput is an input type that accepts GoogleCloudMlV1_StudyConfig_MetricSpecArray and GoogleCloudMlV1_StudyConfig_MetricSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfig_MetricSpecArrayInput` via:
 //
-//          GoogleCloudMlV1_StudyConfig_MetricSpecArray{ GoogleCloudMlV1_StudyConfig_MetricSpecArgs{...} }
+//	GoogleCloudMlV1_StudyConfig_MetricSpecArray{ GoogleCloudMlV1_StudyConfig_MetricSpecArgs{...} }
 type GoogleCloudMlV1_StudyConfig_MetricSpecArrayInput interface {
 	pulumi.Input
 
@@ -2164,7 +2164,7 @@ type GoogleCloudMlV1_StudyConfig_ParameterSpec struct {
 // GoogleCloudMlV1_StudyConfig_ParameterSpecInput is an input type that accepts GoogleCloudMlV1_StudyConfig_ParameterSpecArgs and GoogleCloudMlV1_StudyConfig_ParameterSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfig_ParameterSpecInput` via:
 //
-//          GoogleCloudMlV1_StudyConfig_ParameterSpecArgs{...}
+//	GoogleCloudMlV1_StudyConfig_ParameterSpecArgs{...}
 type GoogleCloudMlV1_StudyConfig_ParameterSpecInput interface {
 	pulumi.Input
 
@@ -2210,7 +2210,7 @@ func (i GoogleCloudMlV1_StudyConfig_ParameterSpecArgs) ToGoogleCloudMlV1_StudyCo
 // GoogleCloudMlV1_StudyConfig_ParameterSpecArrayInput is an input type that accepts GoogleCloudMlV1_StudyConfig_ParameterSpecArray and GoogleCloudMlV1_StudyConfig_ParameterSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_StudyConfig_ParameterSpecArrayInput` via:
 //
-//          GoogleCloudMlV1_StudyConfig_ParameterSpecArray{ GoogleCloudMlV1_StudyConfig_ParameterSpecArgs{...} }
+//	GoogleCloudMlV1_StudyConfig_ParameterSpecArray{ GoogleCloudMlV1_StudyConfig_ParameterSpecArgs{...} }
 type GoogleCloudMlV1_StudyConfig_ParameterSpecArrayInput interface {
 	pulumi.Input
 
@@ -2480,7 +2480,7 @@ type GoogleCloudMlV1_Trial_Parameter struct {
 // GoogleCloudMlV1_Trial_ParameterInput is an input type that accepts GoogleCloudMlV1_Trial_ParameterArgs and GoogleCloudMlV1_Trial_ParameterOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_Trial_ParameterInput` via:
 //
-//          GoogleCloudMlV1_Trial_ParameterArgs{...}
+//	GoogleCloudMlV1_Trial_ParameterArgs{...}
 type GoogleCloudMlV1_Trial_ParameterInput interface {
 	pulumi.Input
 
@@ -2515,7 +2515,7 @@ func (i GoogleCloudMlV1_Trial_ParameterArgs) ToGoogleCloudMlV1_Trial_ParameterOu
 // GoogleCloudMlV1_Trial_ParameterArrayInput is an input type that accepts GoogleCloudMlV1_Trial_ParameterArray and GoogleCloudMlV1_Trial_ParameterArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1_Trial_ParameterArrayInput` via:
 //
-//          GoogleCloudMlV1_Trial_ParameterArray{ GoogleCloudMlV1_Trial_ParameterArgs{...} }
+//	GoogleCloudMlV1_Trial_ParameterArray{ GoogleCloudMlV1_Trial_ParameterArgs{...} }
 type GoogleCloudMlV1_Trial_ParameterArrayInput interface {
 	pulumi.Input
 
@@ -2670,7 +2670,7 @@ type GoogleCloudMlV1__AcceleratorConfig struct {
 // GoogleCloudMlV1__AcceleratorConfigInput is an input type that accepts GoogleCloudMlV1__AcceleratorConfigArgs and GoogleCloudMlV1__AcceleratorConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__AcceleratorConfigInput` via:
 //
-//          GoogleCloudMlV1__AcceleratorConfigArgs{...}
+//	GoogleCloudMlV1__AcceleratorConfigArgs{...}
 type GoogleCloudMlV1__AcceleratorConfigInput interface {
 	pulumi.Input
 
@@ -2709,11 +2709,11 @@ func (i GoogleCloudMlV1__AcceleratorConfigArgs) ToGoogleCloudMlV1__AcceleratorCo
 // GoogleCloudMlV1__AcceleratorConfigPtrInput is an input type that accepts GoogleCloudMlV1__AcceleratorConfigArgs, GoogleCloudMlV1__AcceleratorConfigPtr and GoogleCloudMlV1__AcceleratorConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__AcceleratorConfigPtrInput` via:
 //
-//          GoogleCloudMlV1__AcceleratorConfigArgs{...}
+//	        GoogleCloudMlV1__AcceleratorConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__AcceleratorConfigPtrInput interface {
 	pulumi.Input
 
@@ -2864,7 +2864,7 @@ type GoogleCloudMlV1__AutoScaling struct {
 // GoogleCloudMlV1__AutoScalingInput is an input type that accepts GoogleCloudMlV1__AutoScalingArgs and GoogleCloudMlV1__AutoScalingOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__AutoScalingInput` via:
 //
-//          GoogleCloudMlV1__AutoScalingArgs{...}
+//	GoogleCloudMlV1__AutoScalingArgs{...}
 type GoogleCloudMlV1__AutoScalingInput interface {
 	pulumi.Input
 
@@ -2905,11 +2905,11 @@ func (i GoogleCloudMlV1__AutoScalingArgs) ToGoogleCloudMlV1__AutoScalingPtrOutpu
 // GoogleCloudMlV1__AutoScalingPtrInput is an input type that accepts GoogleCloudMlV1__AutoScalingArgs, GoogleCloudMlV1__AutoScalingPtr and GoogleCloudMlV1__AutoScalingPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__AutoScalingPtrInput` via:
 //
-//          GoogleCloudMlV1__AutoScalingArgs{...}
+//	        GoogleCloudMlV1__AutoScalingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__AutoScalingPtrInput interface {
 	pulumi.Input
 
@@ -3078,7 +3078,7 @@ type GoogleCloudMlV1__AutomatedStoppingConfig struct {
 // GoogleCloudMlV1__AutomatedStoppingConfigInput is an input type that accepts GoogleCloudMlV1__AutomatedStoppingConfigArgs and GoogleCloudMlV1__AutomatedStoppingConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__AutomatedStoppingConfigInput` via:
 //
-//          GoogleCloudMlV1__AutomatedStoppingConfigArgs{...}
+//	GoogleCloudMlV1__AutomatedStoppingConfigArgs{...}
 type GoogleCloudMlV1__AutomatedStoppingConfigInput interface {
 	pulumi.Input
 
@@ -3115,11 +3115,11 @@ func (i GoogleCloudMlV1__AutomatedStoppingConfigArgs) ToGoogleCloudMlV1__Automat
 // GoogleCloudMlV1__AutomatedStoppingConfigPtrInput is an input type that accepts GoogleCloudMlV1__AutomatedStoppingConfigArgs, GoogleCloudMlV1__AutomatedStoppingConfigPtr and GoogleCloudMlV1__AutomatedStoppingConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__AutomatedStoppingConfigPtrInput` via:
 //
-//          GoogleCloudMlV1__AutomatedStoppingConfigArgs{...}
+//	        GoogleCloudMlV1__AutomatedStoppingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__AutomatedStoppingConfigPtrInput interface {
 	pulumi.Input
 
@@ -3272,7 +3272,7 @@ type GoogleCloudMlV1__BuiltInAlgorithmOutput struct {
 // GoogleCloudMlV1__BuiltInAlgorithmOutputInput is an input type that accepts GoogleCloudMlV1__BuiltInAlgorithmOutputArgs and GoogleCloudMlV1__BuiltInAlgorithmOutputOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__BuiltInAlgorithmOutputInput` via:
 //
-//          GoogleCloudMlV1__BuiltInAlgorithmOutputArgs{...}
+//	GoogleCloudMlV1__BuiltInAlgorithmOutputArgs{...}
 type GoogleCloudMlV1__BuiltInAlgorithmOutputInput interface {
 	pulumi.Input
 
@@ -3315,11 +3315,11 @@ func (i GoogleCloudMlV1__BuiltInAlgorithmOutputArgs) ToGoogleCloudMlV1__BuiltInA
 // GoogleCloudMlV1__BuiltInAlgorithmOutputPtrInput is an input type that accepts GoogleCloudMlV1__BuiltInAlgorithmOutputArgs, GoogleCloudMlV1__BuiltInAlgorithmOutputPtr and GoogleCloudMlV1__BuiltInAlgorithmOutputPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__BuiltInAlgorithmOutputPtrInput` via:
 //
-//          GoogleCloudMlV1__BuiltInAlgorithmOutputArgs{...}
+//	        GoogleCloudMlV1__BuiltInAlgorithmOutputArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__BuiltInAlgorithmOutputPtrInput interface {
 	pulumi.Input
 
@@ -3510,7 +3510,7 @@ type GoogleCloudMlV1__ContainerPort struct {
 // GoogleCloudMlV1__ContainerPortInput is an input type that accepts GoogleCloudMlV1__ContainerPortArgs and GoogleCloudMlV1__ContainerPortOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__ContainerPortInput` via:
 //
-//          GoogleCloudMlV1__ContainerPortArgs{...}
+//	GoogleCloudMlV1__ContainerPortArgs{...}
 type GoogleCloudMlV1__ContainerPortInput interface {
 	pulumi.Input
 
@@ -3539,7 +3539,7 @@ func (i GoogleCloudMlV1__ContainerPortArgs) ToGoogleCloudMlV1__ContainerPortOutp
 // GoogleCloudMlV1__ContainerPortArrayInput is an input type that accepts GoogleCloudMlV1__ContainerPortArray and GoogleCloudMlV1__ContainerPortArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__ContainerPortArrayInput` via:
 //
-//          GoogleCloudMlV1__ContainerPortArray{ GoogleCloudMlV1__ContainerPortArgs{...} }
+//	GoogleCloudMlV1__ContainerPortArray{ GoogleCloudMlV1__ContainerPortArgs{...} }
 type GoogleCloudMlV1__ContainerPortArrayInput interface {
 	pulumi.Input
 
@@ -3664,7 +3664,7 @@ type GoogleCloudMlV1__ContainerSpec struct {
 // GoogleCloudMlV1__ContainerSpecInput is an input type that accepts GoogleCloudMlV1__ContainerSpecArgs and GoogleCloudMlV1__ContainerSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__ContainerSpecInput` via:
 //
-//          GoogleCloudMlV1__ContainerSpecArgs{...}
+//	GoogleCloudMlV1__ContainerSpecArgs{...}
 type GoogleCloudMlV1__ContainerSpecInput interface {
 	pulumi.Input
 
@@ -3709,11 +3709,11 @@ func (i GoogleCloudMlV1__ContainerSpecArgs) ToGoogleCloudMlV1__ContainerSpecPtrO
 // GoogleCloudMlV1__ContainerSpecPtrInput is an input type that accepts GoogleCloudMlV1__ContainerSpecArgs, GoogleCloudMlV1__ContainerSpecPtr and GoogleCloudMlV1__ContainerSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__ContainerSpecPtrInput` via:
 //
-//          GoogleCloudMlV1__ContainerSpecArgs{...}
+//	        GoogleCloudMlV1__ContainerSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__ContainerSpecPtrInput interface {
 	pulumi.Input
 
@@ -3930,7 +3930,7 @@ type GoogleCloudMlV1__DiskConfig struct {
 // GoogleCloudMlV1__DiskConfigInput is an input type that accepts GoogleCloudMlV1__DiskConfigArgs and GoogleCloudMlV1__DiskConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__DiskConfigInput` via:
 //
-//          GoogleCloudMlV1__DiskConfigArgs{...}
+//	GoogleCloudMlV1__DiskConfigArgs{...}
 type GoogleCloudMlV1__DiskConfigInput interface {
 	pulumi.Input
 
@@ -3969,11 +3969,11 @@ func (i GoogleCloudMlV1__DiskConfigArgs) ToGoogleCloudMlV1__DiskConfigPtrOutputW
 // GoogleCloudMlV1__DiskConfigPtrInput is an input type that accepts GoogleCloudMlV1__DiskConfigArgs, GoogleCloudMlV1__DiskConfigPtr and GoogleCloudMlV1__DiskConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__DiskConfigPtrInput` via:
 //
-//          GoogleCloudMlV1__DiskConfigArgs{...}
+//	        GoogleCloudMlV1__DiskConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__DiskConfigPtrInput interface {
 	pulumi.Input
 
@@ -4120,7 +4120,7 @@ type GoogleCloudMlV1__EncryptionConfig struct {
 // GoogleCloudMlV1__EncryptionConfigInput is an input type that accepts GoogleCloudMlV1__EncryptionConfigArgs and GoogleCloudMlV1__EncryptionConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__EncryptionConfigInput` via:
 //
-//          GoogleCloudMlV1__EncryptionConfigArgs{...}
+//	GoogleCloudMlV1__EncryptionConfigArgs{...}
 type GoogleCloudMlV1__EncryptionConfigInput interface {
 	pulumi.Input
 
@@ -4157,11 +4157,11 @@ func (i GoogleCloudMlV1__EncryptionConfigArgs) ToGoogleCloudMlV1__EncryptionConf
 // GoogleCloudMlV1__EncryptionConfigPtrInput is an input type that accepts GoogleCloudMlV1__EncryptionConfigArgs, GoogleCloudMlV1__EncryptionConfigPtr and GoogleCloudMlV1__EncryptionConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__EncryptionConfigPtrInput` via:
 //
-//          GoogleCloudMlV1__EncryptionConfigArgs{...}
+//	        GoogleCloudMlV1__EncryptionConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__EncryptionConfigPtrInput interface {
 	pulumi.Input
 
@@ -4288,7 +4288,7 @@ type GoogleCloudMlV1__EnvVar struct {
 // GoogleCloudMlV1__EnvVarInput is an input type that accepts GoogleCloudMlV1__EnvVarArgs and GoogleCloudMlV1__EnvVarOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__EnvVarInput` via:
 //
-//          GoogleCloudMlV1__EnvVarArgs{...}
+//	GoogleCloudMlV1__EnvVarArgs{...}
 type GoogleCloudMlV1__EnvVarInput interface {
 	pulumi.Input
 
@@ -4319,7 +4319,7 @@ func (i GoogleCloudMlV1__EnvVarArgs) ToGoogleCloudMlV1__EnvVarOutputWithContext(
 // GoogleCloudMlV1__EnvVarArrayInput is an input type that accepts GoogleCloudMlV1__EnvVarArray and GoogleCloudMlV1__EnvVarArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__EnvVarArrayInput` via:
 //
-//          GoogleCloudMlV1__EnvVarArray{ GoogleCloudMlV1__EnvVarArgs{...} }
+//	GoogleCloudMlV1__EnvVarArray{ GoogleCloudMlV1__EnvVarArgs{...} }
 type GoogleCloudMlV1__EnvVarArrayInput interface {
 	pulumi.Input
 
@@ -4452,7 +4452,7 @@ type GoogleCloudMlV1__ExplanationConfig struct {
 // GoogleCloudMlV1__ExplanationConfigInput is an input type that accepts GoogleCloudMlV1__ExplanationConfigArgs and GoogleCloudMlV1__ExplanationConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__ExplanationConfigInput` via:
 //
-//          GoogleCloudMlV1__ExplanationConfigArgs{...}
+//	GoogleCloudMlV1__ExplanationConfigArgs{...}
 type GoogleCloudMlV1__ExplanationConfigInput interface {
 	pulumi.Input
 
@@ -4493,11 +4493,11 @@ func (i GoogleCloudMlV1__ExplanationConfigArgs) ToGoogleCloudMlV1__ExplanationCo
 // GoogleCloudMlV1__ExplanationConfigPtrInput is an input type that accepts GoogleCloudMlV1__ExplanationConfigArgs, GoogleCloudMlV1__ExplanationConfigPtr and GoogleCloudMlV1__ExplanationConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__ExplanationConfigPtrInput` via:
 //
-//          GoogleCloudMlV1__ExplanationConfigArgs{...}
+//	        GoogleCloudMlV1__ExplanationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__ExplanationConfigPtrInput interface {
 	pulumi.Input
 
@@ -4688,7 +4688,7 @@ type GoogleCloudMlV1__HyperparameterOutput struct {
 // GoogleCloudMlV1__HyperparameterOutputInput is an input type that accepts GoogleCloudMlV1__HyperparameterOutputArgs and GoogleCloudMlV1__HyperparameterOutputOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__HyperparameterOutputInput` via:
 //
-//          GoogleCloudMlV1__HyperparameterOutputArgs{...}
+//	GoogleCloudMlV1__HyperparameterOutputArgs{...}
 type GoogleCloudMlV1__HyperparameterOutputInput interface {
 	pulumi.Input
 
@@ -4729,7 +4729,7 @@ func (i GoogleCloudMlV1__HyperparameterOutputArgs) ToGoogleCloudMlV1__Hyperparam
 // GoogleCloudMlV1__HyperparameterOutputArrayInput is an input type that accepts GoogleCloudMlV1__HyperparameterOutputArray and GoogleCloudMlV1__HyperparameterOutputArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__HyperparameterOutputArrayInput` via:
 //
-//          GoogleCloudMlV1__HyperparameterOutputArray{ GoogleCloudMlV1__HyperparameterOutputArgs{...} }
+//	GoogleCloudMlV1__HyperparameterOutputArray{ GoogleCloudMlV1__HyperparameterOutputArgs{...} }
 type GoogleCloudMlV1__HyperparameterOutputArrayInput interface {
 	pulumi.Input
 
@@ -4967,7 +4967,7 @@ type GoogleCloudMlV1__HyperparameterSpec struct {
 // GoogleCloudMlV1__HyperparameterSpecInput is an input type that accepts GoogleCloudMlV1__HyperparameterSpecArgs and GoogleCloudMlV1__HyperparameterSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__HyperparameterSpecInput` via:
 //
-//          GoogleCloudMlV1__HyperparameterSpecArgs{...}
+//	GoogleCloudMlV1__HyperparameterSpecArgs{...}
 type GoogleCloudMlV1__HyperparameterSpecInput interface {
 	pulumi.Input
 
@@ -5020,11 +5020,11 @@ func (i GoogleCloudMlV1__HyperparameterSpecArgs) ToGoogleCloudMlV1__Hyperparamet
 // GoogleCloudMlV1__HyperparameterSpecPtrInput is an input type that accepts GoogleCloudMlV1__HyperparameterSpecArgs, GoogleCloudMlV1__HyperparameterSpecPtr and GoogleCloudMlV1__HyperparameterSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__HyperparameterSpecPtrInput` via:
 //
-//          GoogleCloudMlV1__HyperparameterSpecArgs{...}
+//	        GoogleCloudMlV1__HyperparameterSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__HyperparameterSpecPtrInput interface {
 	pulumi.Input
 
@@ -5329,7 +5329,7 @@ type GoogleCloudMlV1__IntegratedGradientsAttribution struct {
 // GoogleCloudMlV1__IntegratedGradientsAttributionInput is an input type that accepts GoogleCloudMlV1__IntegratedGradientsAttributionArgs and GoogleCloudMlV1__IntegratedGradientsAttributionOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__IntegratedGradientsAttributionInput` via:
 //
-//          GoogleCloudMlV1__IntegratedGradientsAttributionArgs{...}
+//	GoogleCloudMlV1__IntegratedGradientsAttributionArgs{...}
 type GoogleCloudMlV1__IntegratedGradientsAttributionInput interface {
 	pulumi.Input
 
@@ -5366,11 +5366,11 @@ func (i GoogleCloudMlV1__IntegratedGradientsAttributionArgs) ToGoogleCloudMlV1__
 // GoogleCloudMlV1__IntegratedGradientsAttributionPtrInput is an input type that accepts GoogleCloudMlV1__IntegratedGradientsAttributionArgs, GoogleCloudMlV1__IntegratedGradientsAttributionPtr and GoogleCloudMlV1__IntegratedGradientsAttributionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__IntegratedGradientsAttributionPtrInput` via:
 //
-//          GoogleCloudMlV1__IntegratedGradientsAttributionArgs{...}
+//	        GoogleCloudMlV1__IntegratedGradientsAttributionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__IntegratedGradientsAttributionPtrInput interface {
 	pulumi.Input
 
@@ -5495,7 +5495,7 @@ type GoogleCloudMlV1__ManualScaling struct {
 // GoogleCloudMlV1__ManualScalingInput is an input type that accepts GoogleCloudMlV1__ManualScalingArgs and GoogleCloudMlV1__ManualScalingOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__ManualScalingInput` via:
 //
-//          GoogleCloudMlV1__ManualScalingArgs{...}
+//	GoogleCloudMlV1__ManualScalingArgs{...}
 type GoogleCloudMlV1__ManualScalingInput interface {
 	pulumi.Input
 
@@ -5532,11 +5532,11 @@ func (i GoogleCloudMlV1__ManualScalingArgs) ToGoogleCloudMlV1__ManualScalingPtrO
 // GoogleCloudMlV1__ManualScalingPtrInput is an input type that accepts GoogleCloudMlV1__ManualScalingArgs, GoogleCloudMlV1__ManualScalingPtr and GoogleCloudMlV1__ManualScalingPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__ManualScalingPtrInput` via:
 //
-//          GoogleCloudMlV1__ManualScalingArgs{...}
+//	        GoogleCloudMlV1__ManualScalingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__ManualScalingPtrInput interface {
 	pulumi.Input
 
@@ -5663,7 +5663,7 @@ type GoogleCloudMlV1__Measurement struct {
 // GoogleCloudMlV1__MeasurementInput is an input type that accepts GoogleCloudMlV1__MeasurementArgs and GoogleCloudMlV1__MeasurementOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__MeasurementInput` via:
 //
-//          GoogleCloudMlV1__MeasurementArgs{...}
+//	GoogleCloudMlV1__MeasurementArgs{...}
 type GoogleCloudMlV1__MeasurementInput interface {
 	pulumi.Input
 
@@ -5702,11 +5702,11 @@ func (i GoogleCloudMlV1__MeasurementArgs) ToGoogleCloudMlV1__MeasurementPtrOutpu
 // GoogleCloudMlV1__MeasurementPtrInput is an input type that accepts GoogleCloudMlV1__MeasurementArgs, GoogleCloudMlV1__MeasurementPtr and GoogleCloudMlV1__MeasurementPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__MeasurementPtrInput` via:
 //
-//          GoogleCloudMlV1__MeasurementArgs{...}
+//	        GoogleCloudMlV1__MeasurementArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__MeasurementPtrInput interface {
 	pulumi.Input
 
@@ -5735,7 +5735,7 @@ func (i *googleCloudMlV1__MeasurementPtrType) ToGoogleCloudMlV1__MeasurementPtrO
 // GoogleCloudMlV1__MeasurementArrayInput is an input type that accepts GoogleCloudMlV1__MeasurementArray and GoogleCloudMlV1__MeasurementArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__MeasurementArrayInput` via:
 //
-//          GoogleCloudMlV1__MeasurementArray{ GoogleCloudMlV1__MeasurementArgs{...} }
+//	GoogleCloudMlV1__MeasurementArray{ GoogleCloudMlV1__MeasurementArgs{...} }
 type GoogleCloudMlV1__MeasurementArrayInput interface {
 	pulumi.Input
 
@@ -5929,7 +5929,7 @@ type GoogleCloudMlV1__MetricSpec struct {
 // GoogleCloudMlV1__MetricSpecInput is an input type that accepts GoogleCloudMlV1__MetricSpecArgs and GoogleCloudMlV1__MetricSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__MetricSpecInput` via:
 //
-//          GoogleCloudMlV1__MetricSpecArgs{...}
+//	GoogleCloudMlV1__MetricSpecArgs{...}
 type GoogleCloudMlV1__MetricSpecInput interface {
 	pulumi.Input
 
@@ -5960,7 +5960,7 @@ func (i GoogleCloudMlV1__MetricSpecArgs) ToGoogleCloudMlV1__MetricSpecOutputWith
 // GoogleCloudMlV1__MetricSpecArrayInput is an input type that accepts GoogleCloudMlV1__MetricSpecArray and GoogleCloudMlV1__MetricSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__MetricSpecArrayInput` via:
 //
-//          GoogleCloudMlV1__MetricSpecArray{ GoogleCloudMlV1__MetricSpecArgs{...} }
+//	GoogleCloudMlV1__MetricSpecArray{ GoogleCloudMlV1__MetricSpecArgs{...} }
 type GoogleCloudMlV1__MetricSpecArrayInput interface {
 	pulumi.Input
 
@@ -6101,7 +6101,7 @@ type GoogleCloudMlV1__ParameterSpec struct {
 // GoogleCloudMlV1__ParameterSpecInput is an input type that accepts GoogleCloudMlV1__ParameterSpecArgs and GoogleCloudMlV1__ParameterSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__ParameterSpecInput` via:
 //
-//          GoogleCloudMlV1__ParameterSpecArgs{...}
+//	GoogleCloudMlV1__ParameterSpecArgs{...}
 type GoogleCloudMlV1__ParameterSpecInput interface {
 	pulumi.Input
 
@@ -6142,7 +6142,7 @@ func (i GoogleCloudMlV1__ParameterSpecArgs) ToGoogleCloudMlV1__ParameterSpecOutp
 // GoogleCloudMlV1__ParameterSpecArrayInput is an input type that accepts GoogleCloudMlV1__ParameterSpecArray and GoogleCloudMlV1__ParameterSpecArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__ParameterSpecArrayInput` via:
 //
-//          GoogleCloudMlV1__ParameterSpecArray{ GoogleCloudMlV1__ParameterSpecArgs{...} }
+//	GoogleCloudMlV1__ParameterSpecArray{ GoogleCloudMlV1__ParameterSpecArgs{...} }
 type GoogleCloudMlV1__ParameterSpecArrayInput interface {
 	pulumi.Input
 
@@ -6353,7 +6353,7 @@ type GoogleCloudMlV1__PredictionInput struct {
 // GoogleCloudMlV1__PredictionInputInput is an input type that accepts GoogleCloudMlV1__PredictionInputArgs and GoogleCloudMlV1__PredictionInputOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__PredictionInputInput` via:
 //
-//          GoogleCloudMlV1__PredictionInputArgs{...}
+//	GoogleCloudMlV1__PredictionInputArgs{...}
 type GoogleCloudMlV1__PredictionInputInput interface {
 	pulumi.Input
 
@@ -6412,11 +6412,11 @@ func (i GoogleCloudMlV1__PredictionInputArgs) ToGoogleCloudMlV1__PredictionInput
 // GoogleCloudMlV1__PredictionInputPtrInput is an input type that accepts GoogleCloudMlV1__PredictionInputArgs, GoogleCloudMlV1__PredictionInputPtr and GoogleCloudMlV1__PredictionInputPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__PredictionInputPtrInput` via:
 //
-//          GoogleCloudMlV1__PredictionInputArgs{...}
+//	        GoogleCloudMlV1__PredictionInputArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__PredictionInputPtrInput interface {
 	pulumi.Input
 
@@ -6793,7 +6793,7 @@ type GoogleCloudMlV1__PredictionOutput struct {
 // GoogleCloudMlV1__PredictionOutputInput is an input type that accepts GoogleCloudMlV1__PredictionOutputArgs and GoogleCloudMlV1__PredictionOutputOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__PredictionOutputInput` via:
 //
-//          GoogleCloudMlV1__PredictionOutputArgs{...}
+//	GoogleCloudMlV1__PredictionOutputArgs{...}
 type GoogleCloudMlV1__PredictionOutputInput interface {
 	pulumi.Input
 
@@ -6836,11 +6836,11 @@ func (i GoogleCloudMlV1__PredictionOutputArgs) ToGoogleCloudMlV1__PredictionOutp
 // GoogleCloudMlV1__PredictionOutputPtrInput is an input type that accepts GoogleCloudMlV1__PredictionOutputArgs, GoogleCloudMlV1__PredictionOutputPtr and GoogleCloudMlV1__PredictionOutputPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__PredictionOutputPtrInput` via:
 //
-//          GoogleCloudMlV1__PredictionOutputArgs{...}
+//	        GoogleCloudMlV1__PredictionOutputArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__PredictionOutputPtrInput interface {
 	pulumi.Input
 
@@ -7041,7 +7041,7 @@ type GoogleCloudMlV1__ReplicaConfig struct {
 // GoogleCloudMlV1__ReplicaConfigInput is an input type that accepts GoogleCloudMlV1__ReplicaConfigArgs and GoogleCloudMlV1__ReplicaConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__ReplicaConfigInput` via:
 //
-//          GoogleCloudMlV1__ReplicaConfigArgs{...}
+//	GoogleCloudMlV1__ReplicaConfigArgs{...}
 type GoogleCloudMlV1__ReplicaConfigInput interface {
 	pulumi.Input
 
@@ -7088,11 +7088,11 @@ func (i GoogleCloudMlV1__ReplicaConfigArgs) ToGoogleCloudMlV1__ReplicaConfigPtrO
 // GoogleCloudMlV1__ReplicaConfigPtrInput is an input type that accepts GoogleCloudMlV1__ReplicaConfigArgs, GoogleCloudMlV1__ReplicaConfigPtr and GoogleCloudMlV1__ReplicaConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__ReplicaConfigPtrInput` via:
 //
-//          GoogleCloudMlV1__ReplicaConfigArgs{...}
+//	        GoogleCloudMlV1__ReplicaConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__ReplicaConfigPtrInput interface {
 	pulumi.Input
 
@@ -7333,7 +7333,7 @@ type GoogleCloudMlV1__RequestLoggingConfig struct {
 // GoogleCloudMlV1__RequestLoggingConfigInput is an input type that accepts GoogleCloudMlV1__RequestLoggingConfigArgs and GoogleCloudMlV1__RequestLoggingConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__RequestLoggingConfigInput` via:
 //
-//          GoogleCloudMlV1__RequestLoggingConfigArgs{...}
+//	GoogleCloudMlV1__RequestLoggingConfigArgs{...}
 type GoogleCloudMlV1__RequestLoggingConfigInput interface {
 	pulumi.Input
 
@@ -7372,11 +7372,11 @@ func (i GoogleCloudMlV1__RequestLoggingConfigArgs) ToGoogleCloudMlV1__RequestLog
 // GoogleCloudMlV1__RequestLoggingConfigPtrInput is an input type that accepts GoogleCloudMlV1__RequestLoggingConfigArgs, GoogleCloudMlV1__RequestLoggingConfigPtr and GoogleCloudMlV1__RequestLoggingConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__RequestLoggingConfigPtrInput` via:
 //
-//          GoogleCloudMlV1__RequestLoggingConfigArgs{...}
+//	        GoogleCloudMlV1__RequestLoggingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__RequestLoggingConfigPtrInput interface {
 	pulumi.Input
 
@@ -7525,7 +7525,7 @@ type GoogleCloudMlV1__RouteMap struct {
 // GoogleCloudMlV1__RouteMapInput is an input type that accepts GoogleCloudMlV1__RouteMap and GoogleCloudMlV1__RouteMapOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__RouteMapInput` via:
 //
-//          GoogleCloudMlV1__RouteMap{ "key": GoogleCloudMlV1__RouteArgs{...} }
+//	GoogleCloudMlV1__RouteMap{ "key": GoogleCloudMlV1__RouteArgs{...} }
 type GoogleCloudMlV1__RouteMapInput interface {
 	pulumi.Input
 
@@ -7564,11 +7564,11 @@ func (i GoogleCloudMlV1__RouteMapArgs) ToGoogleCloudMlV1__RouteMapPtrOutputWithC
 // GoogleCloudMlV1__RouteMapPtrInput is an input type that accepts GoogleCloudMlV1__RouteMapArgs, GoogleCloudMlV1__RouteMapPtr and GoogleCloudMlV1__RouteMapPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__RouteMapPtrInput` via:
 //
-//          GoogleCloudMlV1__RouteMapArgs{...}
+//	        GoogleCloudMlV1__RouteMapArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__RouteMapPtrInput interface {
 	pulumi.Input
 
@@ -7715,7 +7715,7 @@ type GoogleCloudMlV1__SampledShapleyAttribution struct {
 // GoogleCloudMlV1__SampledShapleyAttributionInput is an input type that accepts GoogleCloudMlV1__SampledShapleyAttributionArgs and GoogleCloudMlV1__SampledShapleyAttributionOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__SampledShapleyAttributionInput` via:
 //
-//          GoogleCloudMlV1__SampledShapleyAttributionArgs{...}
+//	GoogleCloudMlV1__SampledShapleyAttributionArgs{...}
 type GoogleCloudMlV1__SampledShapleyAttributionInput interface {
 	pulumi.Input
 
@@ -7752,11 +7752,11 @@ func (i GoogleCloudMlV1__SampledShapleyAttributionArgs) ToGoogleCloudMlV1__Sampl
 // GoogleCloudMlV1__SampledShapleyAttributionPtrInput is an input type that accepts GoogleCloudMlV1__SampledShapleyAttributionArgs, GoogleCloudMlV1__SampledShapleyAttributionPtr and GoogleCloudMlV1__SampledShapleyAttributionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__SampledShapleyAttributionPtrInput` via:
 //
-//          GoogleCloudMlV1__SampledShapleyAttributionArgs{...}
+//	        GoogleCloudMlV1__SampledShapleyAttributionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__SampledShapleyAttributionPtrInput interface {
 	pulumi.Input
 
@@ -7885,7 +7885,7 @@ type GoogleCloudMlV1__Scheduling struct {
 // GoogleCloudMlV1__SchedulingInput is an input type that accepts GoogleCloudMlV1__SchedulingArgs and GoogleCloudMlV1__SchedulingOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__SchedulingInput` via:
 //
-//          GoogleCloudMlV1__SchedulingArgs{...}
+//	GoogleCloudMlV1__SchedulingArgs{...}
 type GoogleCloudMlV1__SchedulingInput interface {
 	pulumi.Input
 
@@ -7926,11 +7926,11 @@ func (i GoogleCloudMlV1__SchedulingArgs) ToGoogleCloudMlV1__SchedulingPtrOutputW
 // GoogleCloudMlV1__SchedulingPtrInput is an input type that accepts GoogleCloudMlV1__SchedulingArgs, GoogleCloudMlV1__SchedulingPtr and GoogleCloudMlV1__SchedulingPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__SchedulingPtrInput` via:
 //
-//          GoogleCloudMlV1__SchedulingArgs{...}
+//	        GoogleCloudMlV1__SchedulingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__SchedulingPtrInput interface {
 	pulumi.Input
 
@@ -8105,7 +8105,7 @@ type GoogleCloudMlV1__StudyConfig struct {
 // GoogleCloudMlV1__StudyConfigInput is an input type that accepts GoogleCloudMlV1__StudyConfigArgs and GoogleCloudMlV1__StudyConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__StudyConfigInput` via:
 //
-//          GoogleCloudMlV1__StudyConfigArgs{...}
+//	GoogleCloudMlV1__StudyConfigArgs{...}
 type GoogleCloudMlV1__StudyConfigInput interface {
 	pulumi.Input
 
@@ -8286,7 +8286,7 @@ type GoogleCloudMlV1__TrainingInput struct {
 // GoogleCloudMlV1__TrainingInputInput is an input type that accepts GoogleCloudMlV1__TrainingInputArgs and GoogleCloudMlV1__TrainingInputOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__TrainingInputInput` via:
 //
-//          GoogleCloudMlV1__TrainingInputArgs{...}
+//	GoogleCloudMlV1__TrainingInputArgs{...}
 type GoogleCloudMlV1__TrainingInputInput interface {
 	pulumi.Input
 
@@ -8373,11 +8373,11 @@ func (i GoogleCloudMlV1__TrainingInputArgs) ToGoogleCloudMlV1__TrainingInputPtrO
 // GoogleCloudMlV1__TrainingInputPtrInput is an input type that accepts GoogleCloudMlV1__TrainingInputArgs, GoogleCloudMlV1__TrainingInputPtr and GoogleCloudMlV1__TrainingInputPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__TrainingInputPtrInput` via:
 //
-//          GoogleCloudMlV1__TrainingInputArgs{...}
+//	        GoogleCloudMlV1__TrainingInputArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__TrainingInputPtrInput interface {
 	pulumi.Input
 
@@ -9078,7 +9078,7 @@ type GoogleCloudMlV1__TrainingOutput struct {
 // GoogleCloudMlV1__TrainingOutputInput is an input type that accepts GoogleCloudMlV1__TrainingOutputArgs and GoogleCloudMlV1__TrainingOutputOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__TrainingOutputInput` via:
 //
-//          GoogleCloudMlV1__TrainingOutputArgs{...}
+//	GoogleCloudMlV1__TrainingOutputArgs{...}
 type GoogleCloudMlV1__TrainingOutputInput interface {
 	pulumi.Input
 
@@ -9127,11 +9127,11 @@ func (i GoogleCloudMlV1__TrainingOutputArgs) ToGoogleCloudMlV1__TrainingOutputPt
 // GoogleCloudMlV1__TrainingOutputPtrInput is an input type that accepts GoogleCloudMlV1__TrainingOutputArgs, GoogleCloudMlV1__TrainingOutputPtr and GoogleCloudMlV1__TrainingOutputPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__TrainingOutputPtrInput` via:
 //
-//          GoogleCloudMlV1__TrainingOutputArgs{...}
+//	        GoogleCloudMlV1__TrainingOutputArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__TrainingOutputPtrInput interface {
 	pulumi.Input
 
@@ -9610,7 +9610,7 @@ type GoogleCloudMlV1__XraiAttribution struct {
 // GoogleCloudMlV1__XraiAttributionInput is an input type that accepts GoogleCloudMlV1__XraiAttributionArgs and GoogleCloudMlV1__XraiAttributionOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__XraiAttributionInput` via:
 //
-//          GoogleCloudMlV1__XraiAttributionArgs{...}
+//	GoogleCloudMlV1__XraiAttributionArgs{...}
 type GoogleCloudMlV1__XraiAttributionInput interface {
 	pulumi.Input
 
@@ -9647,11 +9647,11 @@ func (i GoogleCloudMlV1__XraiAttributionArgs) ToGoogleCloudMlV1__XraiAttribution
 // GoogleCloudMlV1__XraiAttributionPtrInput is an input type that accepts GoogleCloudMlV1__XraiAttributionArgs, GoogleCloudMlV1__XraiAttributionPtr and GoogleCloudMlV1__XraiAttributionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudMlV1__XraiAttributionPtrInput` via:
 //
-//          GoogleCloudMlV1__XraiAttributionArgs{...}
+//	        GoogleCloudMlV1__XraiAttributionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudMlV1__XraiAttributionPtrInput interface {
 	pulumi.Input
 
@@ -9778,7 +9778,7 @@ type GoogleIamV1__AuditConfig struct {
 // GoogleIamV1__AuditConfigInput is an input type that accepts GoogleIamV1__AuditConfigArgs and GoogleIamV1__AuditConfigOutput values.
 // You can construct a concrete instance of `GoogleIamV1__AuditConfigInput` via:
 //
-//          GoogleIamV1__AuditConfigArgs{...}
+//	GoogleIamV1__AuditConfigArgs{...}
 type GoogleIamV1__AuditConfigInput interface {
 	pulumi.Input
 
@@ -9809,7 +9809,7 @@ func (i GoogleIamV1__AuditConfigArgs) ToGoogleIamV1__AuditConfigOutputWithContex
 // GoogleIamV1__AuditConfigArrayInput is an input type that accepts GoogleIamV1__AuditConfigArray and GoogleIamV1__AuditConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1__AuditConfigArrayInput` via:
 //
-//          GoogleIamV1__AuditConfigArray{ GoogleIamV1__AuditConfigArgs{...} }
+//	GoogleIamV1__AuditConfigArray{ GoogleIamV1__AuditConfigArgs{...} }
 type GoogleIamV1__AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -9942,7 +9942,7 @@ type GoogleIamV1__AuditLogConfig struct {
 // GoogleIamV1__AuditLogConfigInput is an input type that accepts GoogleIamV1__AuditLogConfigArgs and GoogleIamV1__AuditLogConfigOutput values.
 // You can construct a concrete instance of `GoogleIamV1__AuditLogConfigInput` via:
 //
-//          GoogleIamV1__AuditLogConfigArgs{...}
+//	GoogleIamV1__AuditLogConfigArgs{...}
 type GoogleIamV1__AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -9973,7 +9973,7 @@ func (i GoogleIamV1__AuditLogConfigArgs) ToGoogleIamV1__AuditLogConfigOutputWith
 // GoogleIamV1__AuditLogConfigArrayInput is an input type that accepts GoogleIamV1__AuditLogConfigArray and GoogleIamV1__AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1__AuditLogConfigArrayInput` via:
 //
-//          GoogleIamV1__AuditLogConfigArray{ GoogleIamV1__AuditLogConfigArgs{...} }
+//	GoogleIamV1__AuditLogConfigArray{ GoogleIamV1__AuditLogConfigArgs{...} }
 type GoogleIamV1__AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -10106,7 +10106,7 @@ type GoogleIamV1__Binding struct {
 // GoogleIamV1__BindingInput is an input type that accepts GoogleIamV1__BindingArgs and GoogleIamV1__BindingOutput values.
 // You can construct a concrete instance of `GoogleIamV1__BindingInput` via:
 //
-//          GoogleIamV1__BindingArgs{...}
+//	GoogleIamV1__BindingArgs{...}
 type GoogleIamV1__BindingInput interface {
 	pulumi.Input
 
@@ -10139,7 +10139,7 @@ func (i GoogleIamV1__BindingArgs) ToGoogleIamV1__BindingOutputWithContext(ctx co
 // GoogleIamV1__BindingArrayInput is an input type that accepts GoogleIamV1__BindingArray and GoogleIamV1__BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1__BindingArrayInput` via:
 //
-//          GoogleIamV1__BindingArray{ GoogleIamV1__BindingArgs{...} }
+//	GoogleIamV1__BindingArray{ GoogleIamV1__BindingArgs{...} }
 type GoogleIamV1__BindingArrayInput interface {
 	pulumi.Input
 
@@ -10286,7 +10286,7 @@ type GoogleType__Expr struct {
 // GoogleType__ExprInput is an input type that accepts GoogleType__ExprArgs and GoogleType__ExprOutput values.
 // You can construct a concrete instance of `GoogleType__ExprInput` via:
 //
-//          GoogleType__ExprArgs{...}
+//	GoogleType__ExprArgs{...}
 type GoogleType__ExprInput interface {
 	pulumi.Input
 
@@ -10329,11 +10329,11 @@ func (i GoogleType__ExprArgs) ToGoogleType__ExprPtrOutputWithContext(ctx context
 // GoogleType__ExprPtrInput is an input type that accepts GoogleType__ExprArgs, GoogleType__ExprPtr and GoogleType__ExprPtrOutput values.
 // You can construct a concrete instance of `GoogleType__ExprPtrInput` via:
 //
-//          GoogleType__ExprArgs{...}
+//	        GoogleType__ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleType__ExprPtrInput interface {
 	pulumi.Input
 

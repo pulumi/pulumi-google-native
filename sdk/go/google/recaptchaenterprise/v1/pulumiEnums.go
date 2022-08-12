@@ -144,7 +144,7 @@ func (o GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengePtrOutput)
 // GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeArgs and GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeArgs{...}
+//	GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeArgs{...}
 type GoogleCloudRecaptchaenterpriseV1TestingOptionsTestingChallengeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeaturePtrOutput) ToString
 // GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureArgs and GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureArgs{...}
+//	GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureArgs{...}
 type GoogleCloudRecaptchaenterpriseV1WafSettingsWafFeatureInput interface {
 	pulumi.Input
 
@@ -482,7 +482,7 @@ func (o GoogleCloudRecaptchaenterpriseV1WafSettingsWafServicePtrOutput) ToString
 // GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceArgs and GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceArgs{...}
+//	GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceArgs{...}
 type GoogleCloudRecaptchaenterpriseV1WafSettingsWafServiceInput interface {
 	pulumi.Input
 
@@ -653,7 +653,7 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenc
 // GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceArgs and GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceArgs{...}
+//	GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceArgs{...}
 type GoogleCloudRecaptchaenterpriseV1WebKeySettingsChallengeSecurityPreferenceInput interface {
 	pulumi.Input
 
@@ -824,7 +824,7 @@ func (o GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypePtrOutput) 
 // GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeInput is an input type that accepts GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeArgs and GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeInput` via:
 //
-//          GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeArgs{...}
+//	GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeArgs{...}
 type GoogleCloudRecaptchaenterpriseV1WebKeySettingsIntegrationTypeInput interface {
 	pulumi.Input
 

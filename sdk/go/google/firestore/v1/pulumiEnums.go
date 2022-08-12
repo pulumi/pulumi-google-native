@@ -144,7 +144,7 @@ func (o DatabaseAppEngineIntegrationModePtrOutput) ToStringPtrOutputWithContext(
 // DatabaseAppEngineIntegrationModeInput is an input type that accepts DatabaseAppEngineIntegrationModeArgs and DatabaseAppEngineIntegrationModeOutput values.
 // You can construct a concrete instance of `DatabaseAppEngineIntegrationModeInput` via:
 //
-//          DatabaseAppEngineIntegrationModeArgs{...}
+//	DatabaseAppEngineIntegrationModeArgs{...}
 type DatabaseAppEngineIntegrationModeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o DatabaseConcurrencyModePtrOutput) ToStringPtrOutputWithContext(ctx conte
 // DatabaseConcurrencyModeInput is an input type that accepts DatabaseConcurrencyModeArgs and DatabaseConcurrencyModeOutput values.
 // You can construct a concrete instance of `DatabaseConcurrencyModeInput` via:
 //
-//          DatabaseConcurrencyModeArgs{...}
+//	DatabaseConcurrencyModeArgs{...}
 type DatabaseConcurrencyModeInput interface {
 	pulumi.Input
 
@@ -484,7 +484,7 @@ func (o DatabaseTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // DatabaseTypeInput is an input type that accepts DatabaseTypeArgs and DatabaseTypeOutput values.
 // You can construct a concrete instance of `DatabaseTypeInput` via:
 //
-//          DatabaseTypeArgs{...}
+//	DatabaseTypeArgs{...}
 type DatabaseTypeInput interface {
 	pulumi.Input
 
@@ -651,7 +651,7 @@ func (o GoogleFirestoreAdminV1IndexFieldArrayConfigPtrOutput) ToStringPtrOutputW
 // GoogleFirestoreAdminV1IndexFieldArrayConfigInput is an input type that accepts GoogleFirestoreAdminV1IndexFieldArrayConfigArgs and GoogleFirestoreAdminV1IndexFieldArrayConfigOutput values.
 // You can construct a concrete instance of `GoogleFirestoreAdminV1IndexFieldArrayConfigInput` via:
 //
-//          GoogleFirestoreAdminV1IndexFieldArrayConfigArgs{...}
+//	GoogleFirestoreAdminV1IndexFieldArrayConfigArgs{...}
 type GoogleFirestoreAdminV1IndexFieldArrayConfigInput interface {
 	pulumi.Input
 
@@ -820,7 +820,7 @@ func (o GoogleFirestoreAdminV1IndexFieldOrderPtrOutput) ToStringPtrOutputWithCon
 // GoogleFirestoreAdminV1IndexFieldOrderInput is an input type that accepts GoogleFirestoreAdminV1IndexFieldOrderArgs and GoogleFirestoreAdminV1IndexFieldOrderOutput values.
 // You can construct a concrete instance of `GoogleFirestoreAdminV1IndexFieldOrderInput` via:
 //
-//          GoogleFirestoreAdminV1IndexFieldOrderArgs{...}
+//	GoogleFirestoreAdminV1IndexFieldOrderArgs{...}
 type GoogleFirestoreAdminV1IndexFieldOrderInput interface {
 	pulumi.Input
 
@@ -989,7 +989,7 @@ func (o IndexQueryScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // IndexQueryScopeInput is an input type that accepts IndexQueryScopeArgs and IndexQueryScopeOutput values.
 // You can construct a concrete instance of `IndexQueryScopeInput` via:
 //
-//          IndexQueryScopeArgs{...}
+//	IndexQueryScopeArgs{...}
 type IndexQueryScopeInput interface {
 	pulumi.Input
 

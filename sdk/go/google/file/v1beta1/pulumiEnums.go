@@ -152,7 +152,7 @@ func (o InstanceTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // InstanceTierInput is an input type that accepts InstanceTierArgs and InstanceTierOutput values.
 // You can construct a concrete instance of `InstanceTierInput` via:
 //
-//          InstanceTierArgs{...}
+//	InstanceTierArgs{...}
 type InstanceTierInput interface {
 	pulumi.Input
 
@@ -321,7 +321,7 @@ func (o NetworkConfigConnectModePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // NetworkConfigConnectModeInput is an input type that accepts NetworkConfigConnectModeArgs and NetworkConfigConnectModeOutput values.
 // You can construct a concrete instance of `NetworkConfigConnectModeInput` via:
 //
-//          NetworkConfigConnectModeArgs{...}
+//	NetworkConfigConnectModeArgs{...}
 type NetworkConfigConnectModeInput interface {
 	pulumi.Input
 
@@ -487,7 +487,7 @@ func (o NetworkConfigModesItemPtrOutput) ToStringPtrOutputWithContext(ctx contex
 // NetworkConfigModesItemInput is an input type that accepts NetworkConfigModesItemArgs and NetworkConfigModesItemOutput values.
 // You can construct a concrete instance of `NetworkConfigModesItemInput` via:
 //
-//          NetworkConfigModesItemArgs{...}
+//	NetworkConfigModesItemArgs{...}
 type NetworkConfigModesItemInput interface {
 	pulumi.Input
 
@@ -525,7 +525,7 @@ func (in *networkConfigModesItemPtr) ToNetworkConfigModesItemPtrOutputWithContex
 // NetworkConfigModesItemArrayInput is an input type that accepts NetworkConfigModesItemArray and NetworkConfigModesItemArrayOutput values.
 // You can construct a concrete instance of `NetworkConfigModesItemArrayInput` via:
 //
-//          NetworkConfigModesItemArray{ NetworkConfigModesItemArgs{...} }
+//	NetworkConfigModesItemArray{ NetworkConfigModesItemArgs{...} }
 type NetworkConfigModesItemArrayInput interface {
 	pulumi.Input
 
@@ -701,7 +701,7 @@ func (o NfsExportOptionsAccessModePtrOutput) ToStringPtrOutputWithContext(ctx co
 // NfsExportOptionsAccessModeInput is an input type that accepts NfsExportOptionsAccessModeArgs and NfsExportOptionsAccessModeOutput values.
 // You can construct a concrete instance of `NfsExportOptionsAccessModeInput` via:
 //
-//          NfsExportOptionsAccessModeArgs{...}
+//	NfsExportOptionsAccessModeArgs{...}
 type NfsExportOptionsAccessModeInput interface {
 	pulumi.Input
 
@@ -870,7 +870,7 @@ func (o NfsExportOptionsSquashModePtrOutput) ToStringPtrOutputWithContext(ctx co
 // NfsExportOptionsSquashModeInput is an input type that accepts NfsExportOptionsSquashModeArgs and NfsExportOptionsSquashModeOutput values.
 // You can construct a concrete instance of `NfsExportOptionsSquashModeInput` via:
 //
-//          NfsExportOptionsSquashModeArgs{...}
+//	NfsExportOptionsSquashModeArgs{...}
 type NfsExportOptionsSquashModeInput interface {
 	pulumi.Input
 

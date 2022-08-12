@@ -154,7 +154,7 @@ func (o AppEngineHttpTargetHttpMethodPtrOutput) ToStringPtrOutputWithContext(ctx
 // AppEngineHttpTargetHttpMethodInput is an input type that accepts AppEngineHttpTargetHttpMethodArgs and AppEngineHttpTargetHttpMethodOutput values.
 // You can construct a concrete instance of `AppEngineHttpTargetHttpMethodInput` via:
 //
-//          AppEngineHttpTargetHttpMethodArgs{...}
+//	AppEngineHttpTargetHttpMethodArgs{...}
 type AppEngineHttpTargetHttpMethodInput interface {
 	pulumi.Input
 
@@ -333,7 +333,7 @@ func (o HttpTargetHttpMethodPtrOutput) ToStringPtrOutputWithContext(ctx context.
 // HttpTargetHttpMethodInput is an input type that accepts HttpTargetHttpMethodArgs and HttpTargetHttpMethodOutput values.
 // You can construct a concrete instance of `HttpTargetHttpMethodInput` via:
 //
-//          HttpTargetHttpMethodArgs{...}
+//	HttpTargetHttpMethodArgs{...}
 type HttpTargetHttpMethodInput interface {
 	pulumi.Input
 

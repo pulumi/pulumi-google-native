@@ -47,7 +47,7 @@ type AttachedDisk struct {
 // AttachedDiskInput is an input type that accepts AttachedDiskArgs and AttachedDiskOutput values.
 // You can construct a concrete instance of `AttachedDiskInput` via:
 //
-//          AttachedDiskArgs{...}
+//	AttachedDiskArgs{...}
 type AttachedDiskInput interface {
 	pulumi.Input
 
@@ -78,7 +78,7 @@ func (i AttachedDiskArgs) ToAttachedDiskOutputWithContext(ctx context.Context) A
 // AttachedDiskArrayInput is an input type that accepts AttachedDiskArray and AttachedDiskArrayOutput values.
 // You can construct a concrete instance of `AttachedDiskArrayInput` via:
 //
-//          AttachedDiskArray{ AttachedDiskArgs{...} }
+//	AttachedDiskArray{ AttachedDiskArgs{...} }
 type AttachedDiskArrayInput interface {
 	pulumi.Input
 
@@ -213,7 +213,7 @@ type NetworkConfig struct {
 // NetworkConfigInput is an input type that accepts NetworkConfigArgs and NetworkConfigOutput values.
 // You can construct a concrete instance of `NetworkConfigInput` via:
 //
-//          NetworkConfigArgs{...}
+//	NetworkConfigArgs{...}
 type NetworkConfigInput interface {
 	pulumi.Input
 
@@ -256,11 +256,11 @@ func (i NetworkConfigArgs) ToNetworkConfigPtrOutputWithContext(ctx context.Conte
 // NetworkConfigPtrInput is an input type that accepts NetworkConfigArgs, NetworkConfigPtr and NetworkConfigPtrOutput values.
 // You can construct a concrete instance of `NetworkConfigPtrInput` via:
 //
-//          NetworkConfigArgs{...}
+//	        NetworkConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NetworkConfigPtrInput interface {
 	pulumi.Input
 
@@ -513,7 +513,7 @@ type SchedulingConfig struct {
 // SchedulingConfigInput is an input type that accepts SchedulingConfigArgs and SchedulingConfigOutput values.
 // You can construct a concrete instance of `SchedulingConfigInput` via:
 //
-//          SchedulingConfigArgs{...}
+//	SchedulingConfigArgs{...}
 type SchedulingConfigInput interface {
 	pulumi.Input
 
@@ -552,11 +552,11 @@ func (i SchedulingConfigArgs) ToSchedulingConfigPtrOutputWithContext(ctx context
 // SchedulingConfigPtrInput is an input type that accepts SchedulingConfigArgs, SchedulingConfigPtr and SchedulingConfigPtrOutput values.
 // You can construct a concrete instance of `SchedulingConfigPtrInput` via:
 //
-//          SchedulingConfigArgs{...}
+//	        SchedulingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SchedulingConfigPtrInput interface {
 	pulumi.Input
 
@@ -705,7 +705,7 @@ type ServiceAccount struct {
 // ServiceAccountInput is an input type that accepts ServiceAccountArgs and ServiceAccountOutput values.
 // You can construct a concrete instance of `ServiceAccountInput` via:
 //
-//          ServiceAccountArgs{...}
+//	ServiceAccountArgs{...}
 type ServiceAccountInput interface {
 	pulumi.Input
 
@@ -744,11 +744,11 @@ func (i ServiceAccountArgs) ToServiceAccountPtrOutputWithContext(ctx context.Con
 // ServiceAccountPtrInput is an input type that accepts ServiceAccountArgs, ServiceAccountPtr and ServiceAccountPtrOutput values.
 // You can construct a concrete instance of `ServiceAccountPtrInput` via:
 //
-//          ServiceAccountArgs{...}
+//	        ServiceAccountArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ServiceAccountPtrInput interface {
 	pulumi.Input
 

@@ -150,7 +150,7 @@ func (o DataCollectorTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // DataCollectorTypeInput is an input type that accepts DataCollectorTypeArgs and DataCollectorTypeOutput values.
 // You can construct a concrete instance of `DataCollectorTypeInput` via:
 //
-//          DataCollectorTypeArgs{...}
+//	DataCollectorTypeArgs{...}
 type DataCollectorTypeInput interface {
 	pulumi.Input
 
@@ -319,7 +319,7 @@ func (o EnvironmentApiProxyTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 // EnvironmentApiProxyTypeInput is an input type that accepts EnvironmentApiProxyTypeArgs and EnvironmentApiProxyTypeOutput values.
 // You can construct a concrete instance of `EnvironmentApiProxyTypeInput` via:
 //
-//          EnvironmentApiProxyTypeArgs{...}
+//	EnvironmentApiProxyTypeArgs{...}
 type EnvironmentApiProxyTypeInput interface {
 	pulumi.Input
 
@@ -488,7 +488,7 @@ func (o EnvironmentDeploymentTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 // EnvironmentDeploymentTypeInput is an input type that accepts EnvironmentDeploymentTypeArgs and EnvironmentDeploymentTypeOutput values.
 // You can construct a concrete instance of `EnvironmentDeploymentTypeInput` via:
 //
-//          EnvironmentDeploymentTypeArgs{...}
+//	EnvironmentDeploymentTypeArgs{...}
 type EnvironmentDeploymentTypeInput interface {
 	pulumi.Input
 
@@ -657,7 +657,7 @@ func (o GoogleCloudApigeeV1TraceSamplingConfigSamplerPtrOutput) ToStringPtrOutpu
 // GoogleCloudApigeeV1TraceSamplingConfigSamplerInput is an input type that accepts GoogleCloudApigeeV1TraceSamplingConfigSamplerArgs and GoogleCloudApigeeV1TraceSamplingConfigSamplerOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1TraceSamplingConfigSamplerInput` via:
 //
-//          GoogleCloudApigeeV1TraceSamplingConfigSamplerArgs{...}
+//	GoogleCloudApigeeV1TraceSamplingConfigSamplerArgs{...}
 type GoogleCloudApigeeV1TraceSamplingConfigSamplerInput interface {
 	pulumi.Input
 
@@ -828,7 +828,7 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(
 // GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` via:
 //
-//          GoogleIamV1AuditLogConfigLogTypeArgs{...}
+//	GoogleIamV1AuditLogConfigLogTypeArgs{...}
 type GoogleIamV1AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -1007,7 +1007,7 @@ func (o InstancePeeringCidrRangePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // InstancePeeringCidrRangeInput is an input type that accepts InstancePeeringCidrRangeArgs and InstancePeeringCidrRangeOutput values.
 // You can construct a concrete instance of `InstancePeeringCidrRangeInput` via:
 //
-//          InstancePeeringCidrRangeArgs{...}
+//	InstancePeeringCidrRangeArgs{...}
 type InstancePeeringCidrRangeInput interface {
 	pulumi.Input
 
@@ -1176,7 +1176,7 @@ func (o OrganizationBillingTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 // OrganizationBillingTypeInput is an input type that accepts OrganizationBillingTypeArgs and OrganizationBillingTypeOutput values.
 // You can construct a concrete instance of `OrganizationBillingTypeInput` via:
 //
-//          OrganizationBillingTypeArgs{...}
+//	OrganizationBillingTypeArgs{...}
 type OrganizationBillingTypeInput interface {
 	pulumi.Input
 
@@ -1345,7 +1345,7 @@ func (o OrganizationRuntimeTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 // OrganizationRuntimeTypeInput is an input type that accepts OrganizationRuntimeTypeArgs and OrganizationRuntimeTypeOutput values.
 // You can construct a concrete instance of `OrganizationRuntimeTypeInput` via:
 //
-//          OrganizationRuntimeTypeArgs{...}
+//	OrganizationRuntimeTypeArgs{...}
 type OrganizationRuntimeTypeInput interface {
 	pulumi.Input
 
@@ -1516,7 +1516,7 @@ func (o OrganizationTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // OrganizationTypeInput is an input type that accepts OrganizationTypeArgs and OrganizationTypeOutput values.
 // You can construct a concrete instance of `OrganizationTypeInput` via:
 //
-//          OrganizationTypeArgs{...}
+//	OrganizationTypeArgs{...}
 type OrganizationTypeInput interface {
 	pulumi.Input
 
@@ -1685,7 +1685,7 @@ func (o RatePlanBillingPeriodPtrOutput) ToStringPtrOutputWithContext(ctx context
 // RatePlanBillingPeriodInput is an input type that accepts RatePlanBillingPeriodArgs and RatePlanBillingPeriodOutput values.
 // You can construct a concrete instance of `RatePlanBillingPeriodInput` via:
 //
-//          RatePlanBillingPeriodArgs{...}
+//	RatePlanBillingPeriodArgs{...}
 type RatePlanBillingPeriodInput interface {
 	pulumi.Input
 
@@ -1858,7 +1858,7 @@ func (o RatePlanConsumptionPricingTypePtrOutput) ToStringPtrOutputWithContext(ct
 // RatePlanConsumptionPricingTypeInput is an input type that accepts RatePlanConsumptionPricingTypeArgs and RatePlanConsumptionPricingTypeOutput values.
 // You can construct a concrete instance of `RatePlanConsumptionPricingTypeInput` via:
 //
-//          RatePlanConsumptionPricingTypeArgs{...}
+//	RatePlanConsumptionPricingTypeArgs{...}
 type RatePlanConsumptionPricingTypeInput interface {
 	pulumi.Input
 
@@ -2027,7 +2027,7 @@ func (o RatePlanPaymentFundingModelPtrOutput) ToStringPtrOutputWithContext(ctx c
 // RatePlanPaymentFundingModelInput is an input type that accepts RatePlanPaymentFundingModelArgs and RatePlanPaymentFundingModelOutput values.
 // You can construct a concrete instance of `RatePlanPaymentFundingModelInput` via:
 //
-//          RatePlanPaymentFundingModelArgs{...}
+//	RatePlanPaymentFundingModelArgs{...}
 type RatePlanPaymentFundingModelInput interface {
 	pulumi.Input
 
@@ -2196,7 +2196,7 @@ func (o RatePlanRevenueShareTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // RatePlanRevenueShareTypeInput is an input type that accepts RatePlanRevenueShareTypeArgs and RatePlanRevenueShareTypeOutput values.
 // You can construct a concrete instance of `RatePlanRevenueShareTypeInput` via:
 //
-//          RatePlanRevenueShareTypeArgs{...}
+//	RatePlanRevenueShareTypeArgs{...}
 type RatePlanRevenueShareTypeInput interface {
 	pulumi.Input
 
@@ -2365,7 +2365,7 @@ func (o RatePlanStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // RatePlanStateEnumInput is an input type that accepts RatePlanStateEnumArgs and RatePlanStateEnumOutput values.
 // You can construct a concrete instance of `RatePlanStateEnumInput` via:
 //
-//          RatePlanStateEnumArgs{...}
+//	RatePlanStateEnumArgs{...}
 type RatePlanStateEnumInput interface {
 	pulumi.Input
 
@@ -2534,7 +2534,7 @@ func (o TargetServerProtocolPtrOutput) ToStringPtrOutputWithContext(ctx context.
 // TargetServerProtocolInput is an input type that accepts TargetServerProtocolArgs and TargetServerProtocolOutput values.
 // You can construct a concrete instance of `TargetServerProtocolInput` via:
 //
-//          TargetServerProtocolArgs{...}
+//	TargetServerProtocolArgs{...}
 type TargetServerProtocolInput interface {
 	pulumi.Input
 

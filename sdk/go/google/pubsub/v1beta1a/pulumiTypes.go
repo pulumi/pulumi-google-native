@@ -19,7 +19,7 @@ type PushConfig struct {
 // PushConfigInput is an input type that accepts PushConfigArgs and PushConfigOutput values.
 // You can construct a concrete instance of `PushConfigInput` via:
 //
-//          PushConfigArgs{...}
+//	PushConfigArgs{...}
 type PushConfigInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i PushConfigArgs) ToPushConfigPtrOutputWithContext(ctx context.Context) Pu
 // PushConfigPtrInput is an input type that accepts PushConfigArgs, PushConfigPtr and PushConfigPtrOutput values.
 // You can construct a concrete instance of `PushConfigPtrInput` via:
 //
-//          PushConfigArgs{...}
+//	        PushConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PushConfigPtrInput interface {
 	pulumi.Input
 

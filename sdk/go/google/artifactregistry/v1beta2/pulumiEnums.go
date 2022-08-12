@@ -144,7 +144,7 @@ func (o MavenRepositoryConfigVersionPolicyPtrOutput) ToStringPtrOutputWithContex
 // MavenRepositoryConfigVersionPolicyInput is an input type that accepts MavenRepositoryConfigVersionPolicyArgs and MavenRepositoryConfigVersionPolicyOutput values.
 // You can construct a concrete instance of `MavenRepositoryConfigVersionPolicyInput` via:
 //
-//          MavenRepositoryConfigVersionPolicyArgs{...}
+//	MavenRepositoryConfigVersionPolicyArgs{...}
 type MavenRepositoryConfigVersionPolicyInput interface {
 	pulumi.Input
 
@@ -321,7 +321,7 @@ func (o RepositoryFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // RepositoryFormatInput is an input type that accepts RepositoryFormatArgs and RepositoryFormatOutput values.
 // You can construct a concrete instance of `RepositoryFormatInput` via:
 //
-//          RepositoryFormatArgs{...}
+//	RepositoryFormatArgs{...}
 type RepositoryFormatInput interface {
 	pulumi.Input
 

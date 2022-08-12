@@ -17,7 +17,7 @@ type AvroFileFormat struct {
 // AvroFileFormatInput is an input type that accepts AvroFileFormatArgs and AvroFileFormatOutput values.
 // You can construct a concrete instance of `AvroFileFormatInput` via:
 //
-//          AvroFileFormatArgs{...}
+//	AvroFileFormatArgs{...}
 type AvroFileFormatInput interface {
 	pulumi.Input
 
@@ -52,11 +52,11 @@ func (i AvroFileFormatArgs) ToAvroFileFormatPtrOutputWithContext(ctx context.Con
 // AvroFileFormatPtrInput is an input type that accepts AvroFileFormatArgs, AvroFileFormatPtr and AvroFileFormatPtrOutput values.
 // You can construct a concrete instance of `AvroFileFormatPtrInput` via:
 //
-//          AvroFileFormatArgs{...}
+//	        AvroFileFormatArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AvroFileFormatPtrInput interface {
 	pulumi.Input
 
@@ -161,7 +161,7 @@ type BackfillAllStrategy struct {
 // BackfillAllStrategyInput is an input type that accepts BackfillAllStrategyArgs and BackfillAllStrategyOutput values.
 // You can construct a concrete instance of `BackfillAllStrategyInput` via:
 //
-//          BackfillAllStrategyArgs{...}
+//	BackfillAllStrategyArgs{...}
 type BackfillAllStrategyInput interface {
 	pulumi.Input
 
@@ -200,11 +200,11 @@ func (i BackfillAllStrategyArgs) ToBackfillAllStrategyPtrOutputWithContext(ctx c
 // BackfillAllStrategyPtrInput is an input type that accepts BackfillAllStrategyArgs, BackfillAllStrategyPtr and BackfillAllStrategyPtrOutput values.
 // You can construct a concrete instance of `BackfillAllStrategyPtrInput` via:
 //
-//          BackfillAllStrategyArgs{...}
+//	        BackfillAllStrategyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type BackfillAllStrategyPtrInput interface {
 	pulumi.Input
 
@@ -349,7 +349,7 @@ type BackfillNoneStrategy struct {
 // BackfillNoneStrategyInput is an input type that accepts BackfillNoneStrategyArgs and BackfillNoneStrategyOutput values.
 // You can construct a concrete instance of `BackfillNoneStrategyInput` via:
 //
-//          BackfillNoneStrategyArgs{...}
+//	BackfillNoneStrategyArgs{...}
 type BackfillNoneStrategyInput interface {
 	pulumi.Input
 
@@ -384,11 +384,11 @@ func (i BackfillNoneStrategyArgs) ToBackfillNoneStrategyPtrOutputWithContext(ctx
 // BackfillNoneStrategyPtrInput is an input type that accepts BackfillNoneStrategyArgs, BackfillNoneStrategyPtr and BackfillNoneStrategyPtrOutput values.
 // You can construct a concrete instance of `BackfillNoneStrategyPtrInput` via:
 //
-//          BackfillNoneStrategyArgs{...}
+//	        BackfillNoneStrategyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type BackfillNoneStrategyPtrInput interface {
 	pulumi.Input
 
@@ -493,7 +493,7 @@ type DestinationConfig struct {
 // DestinationConfigInput is an input type that accepts DestinationConfigArgs and DestinationConfigOutput values.
 // You can construct a concrete instance of `DestinationConfigInput` via:
 //
-//          DestinationConfigArgs{...}
+//	DestinationConfigArgs{...}
 type DestinationConfigInput interface {
 	pulumi.Input
 
@@ -586,7 +586,7 @@ type DropLargeObjects struct {
 // DropLargeObjectsInput is an input type that accepts DropLargeObjectsArgs and DropLargeObjectsOutput values.
 // You can construct a concrete instance of `DropLargeObjectsInput` via:
 //
-//          DropLargeObjectsArgs{...}
+//	DropLargeObjectsArgs{...}
 type DropLargeObjectsInput interface {
 	pulumi.Input
 
@@ -621,11 +621,11 @@ func (i DropLargeObjectsArgs) ToDropLargeObjectsPtrOutputWithContext(ctx context
 // DropLargeObjectsPtrInput is an input type that accepts DropLargeObjectsArgs, DropLargeObjectsPtr and DropLargeObjectsPtrOutput values.
 // You can construct a concrete instance of `DropLargeObjectsPtrInput` via:
 //
-//          DropLargeObjectsArgs{...}
+//	        DropLargeObjectsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DropLargeObjectsPtrInput interface {
 	pulumi.Input
 
@@ -810,7 +810,7 @@ type ForwardSshTunnelConnectivity struct {
 // ForwardSshTunnelConnectivityInput is an input type that accepts ForwardSshTunnelConnectivityArgs and ForwardSshTunnelConnectivityOutput values.
 // You can construct a concrete instance of `ForwardSshTunnelConnectivityInput` via:
 //
-//          ForwardSshTunnelConnectivityArgs{...}
+//	ForwardSshTunnelConnectivityArgs{...}
 type ForwardSshTunnelConnectivityInput interface {
 	pulumi.Input
 
@@ -855,11 +855,11 @@ func (i ForwardSshTunnelConnectivityArgs) ToForwardSshTunnelConnectivityPtrOutpu
 // ForwardSshTunnelConnectivityPtrInput is an input type that accepts ForwardSshTunnelConnectivityArgs, ForwardSshTunnelConnectivityPtr and ForwardSshTunnelConnectivityPtrOutput values.
 // You can construct a concrete instance of `ForwardSshTunnelConnectivityPtrInput` via:
 //
-//          ForwardSshTunnelConnectivityArgs{...}
+//	        ForwardSshTunnelConnectivityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ForwardSshTunnelConnectivityPtrInput interface {
 	pulumi.Input
 
@@ -1080,7 +1080,7 @@ type GcsDestinationConfig struct {
 // GcsDestinationConfigInput is an input type that accepts GcsDestinationConfigArgs and GcsDestinationConfigOutput values.
 // You can construct a concrete instance of `GcsDestinationConfigInput` via:
 //
-//          GcsDestinationConfigArgs{...}
+//	GcsDestinationConfigArgs{...}
 type GcsDestinationConfigInput interface {
 	pulumi.Input
 
@@ -1125,11 +1125,11 @@ func (i GcsDestinationConfigArgs) ToGcsDestinationConfigPtrOutputWithContext(ctx
 // GcsDestinationConfigPtrInput is an input type that accepts GcsDestinationConfigArgs, GcsDestinationConfigPtr and GcsDestinationConfigPtrOutput values.
 // You can construct a concrete instance of `GcsDestinationConfigPtrInput` via:
 //
-//          GcsDestinationConfigArgs{...}
+//	        GcsDestinationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GcsDestinationConfigPtrInput interface {
 	pulumi.Input
 
@@ -1344,7 +1344,7 @@ type GcsProfile struct {
 // GcsProfileInput is an input type that accepts GcsProfileArgs and GcsProfileOutput values.
 // You can construct a concrete instance of `GcsProfileInput` via:
 //
-//          GcsProfileArgs{...}
+//	GcsProfileArgs{...}
 type GcsProfileInput interface {
 	pulumi.Input
 
@@ -1383,11 +1383,11 @@ func (i GcsProfileArgs) ToGcsProfilePtrOutputWithContext(ctx context.Context) Gc
 // GcsProfilePtrInput is an input type that accepts GcsProfileArgs, GcsProfilePtr and GcsProfilePtrOutput values.
 // You can construct a concrete instance of `GcsProfilePtrInput` via:
 //
-//          GcsProfileArgs{...}
+//	        GcsProfileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GcsProfilePtrInput interface {
 	pulumi.Input
 
@@ -1536,7 +1536,7 @@ type JsonFileFormat struct {
 // JsonFileFormatInput is an input type that accepts JsonFileFormatArgs and JsonFileFormatOutput values.
 // You can construct a concrete instance of `JsonFileFormatInput` via:
 //
-//          JsonFileFormatArgs{...}
+//	JsonFileFormatArgs{...}
 type JsonFileFormatInput interface {
 	pulumi.Input
 
@@ -1575,11 +1575,11 @@ func (i JsonFileFormatArgs) ToJsonFileFormatPtrOutputWithContext(ctx context.Con
 // JsonFileFormatPtrInput is an input type that accepts JsonFileFormatArgs, JsonFileFormatPtr and JsonFileFormatPtrOutput values.
 // You can construct a concrete instance of `JsonFileFormatPtrInput` via:
 //
-//          JsonFileFormatArgs{...}
+//	        JsonFileFormatArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JsonFileFormatPtrInput interface {
 	pulumi.Input
 
@@ -1738,7 +1738,7 @@ type MysqlColumn struct {
 // MysqlColumnInput is an input type that accepts MysqlColumnArgs and MysqlColumnOutput values.
 // You can construct a concrete instance of `MysqlColumnInput` via:
 //
-//          MysqlColumnArgs{...}
+//	MysqlColumnArgs{...}
 type MysqlColumnInput interface {
 	pulumi.Input
 
@@ -1779,7 +1779,7 @@ func (i MysqlColumnArgs) ToMysqlColumnOutputWithContext(ctx context.Context) Mys
 // MysqlColumnArrayInput is an input type that accepts MysqlColumnArray and MysqlColumnArrayOutput values.
 // You can construct a concrete instance of `MysqlColumnArrayInput` via:
 //
-//          MysqlColumnArray{ MysqlColumnArgs{...} }
+//	MysqlColumnArray{ MysqlColumnArgs{...} }
 type MysqlColumnArrayInput interface {
 	pulumi.Input
 
@@ -1970,7 +1970,7 @@ type MysqlDatabase struct {
 // MysqlDatabaseInput is an input type that accepts MysqlDatabaseArgs and MysqlDatabaseOutput values.
 // You can construct a concrete instance of `MysqlDatabaseInput` via:
 //
-//          MysqlDatabaseArgs{...}
+//	MysqlDatabaseArgs{...}
 type MysqlDatabaseInput interface {
 	pulumi.Input
 
@@ -2001,7 +2001,7 @@ func (i MysqlDatabaseArgs) ToMysqlDatabaseOutputWithContext(ctx context.Context)
 // MysqlDatabaseArrayInput is an input type that accepts MysqlDatabaseArray and MysqlDatabaseArrayOutput values.
 // You can construct a concrete instance of `MysqlDatabaseArrayInput` via:
 //
-//          MysqlDatabaseArray{ MysqlDatabaseArgs{...} }
+//	MysqlDatabaseArray{ MysqlDatabaseArgs{...} }
 type MysqlDatabaseArrayInput interface {
 	pulumi.Input
 
@@ -2138,7 +2138,7 @@ type MysqlProfile struct {
 // MysqlProfileInput is an input type that accepts MysqlProfileArgs and MysqlProfileOutput values.
 // You can construct a concrete instance of `MysqlProfileInput` via:
 //
-//          MysqlProfileArgs{...}
+//	MysqlProfileArgs{...}
 type MysqlProfileInput interface {
 	pulumi.Input
 
@@ -2183,11 +2183,11 @@ func (i MysqlProfileArgs) ToMysqlProfilePtrOutputWithContext(ctx context.Context
 // MysqlProfilePtrInput is an input type that accepts MysqlProfileArgs, MysqlProfilePtr and MysqlProfilePtrOutput values.
 // You can construct a concrete instance of `MysqlProfilePtrInput` via:
 //
-//          MysqlProfileArgs{...}
+//	        MysqlProfileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MysqlProfilePtrInput interface {
 	pulumi.Input
 
@@ -2400,7 +2400,7 @@ type MysqlRdbms struct {
 // MysqlRdbmsInput is an input type that accepts MysqlRdbmsArgs and MysqlRdbmsOutput values.
 // You can construct a concrete instance of `MysqlRdbmsInput` via:
 //
-//          MysqlRdbmsArgs{...}
+//	MysqlRdbmsArgs{...}
 type MysqlRdbmsInput interface {
 	pulumi.Input
 
@@ -2437,11 +2437,11 @@ func (i MysqlRdbmsArgs) ToMysqlRdbmsPtrOutputWithContext(ctx context.Context) My
 // MysqlRdbmsPtrInput is an input type that accepts MysqlRdbmsArgs, MysqlRdbmsPtr and MysqlRdbmsPtrOutput values.
 // You can construct a concrete instance of `MysqlRdbmsPtrInput` via:
 //
-//          MysqlRdbmsArgs{...}
+//	        MysqlRdbmsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MysqlRdbmsPtrInput interface {
 	pulumi.Input
 
@@ -2570,7 +2570,7 @@ type MysqlSourceConfig struct {
 // MysqlSourceConfigInput is an input type that accepts MysqlSourceConfigArgs and MysqlSourceConfigOutput values.
 // You can construct a concrete instance of `MysqlSourceConfigInput` via:
 //
-//          MysqlSourceConfigArgs{...}
+//	MysqlSourceConfigArgs{...}
 type MysqlSourceConfigInput interface {
 	pulumi.Input
 
@@ -2611,11 +2611,11 @@ func (i MysqlSourceConfigArgs) ToMysqlSourceConfigPtrOutputWithContext(ctx conte
 // MysqlSourceConfigPtrInput is an input type that accepts MysqlSourceConfigArgs, MysqlSourceConfigPtr and MysqlSourceConfigPtrOutput values.
 // You can construct a concrete instance of `MysqlSourceConfigPtrInput` via:
 //
-//          MysqlSourceConfigArgs{...}
+//	        MysqlSourceConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MysqlSourceConfigPtrInput interface {
 	pulumi.Input
 
@@ -2788,7 +2788,7 @@ type MysqlSslConfig struct {
 // MysqlSslConfigInput is an input type that accepts MysqlSslConfigArgs and MysqlSslConfigOutput values.
 // You can construct a concrete instance of `MysqlSslConfigInput` via:
 //
-//          MysqlSslConfigArgs{...}
+//	MysqlSslConfigArgs{...}
 type MysqlSslConfigInput interface {
 	pulumi.Input
 
@@ -2829,11 +2829,11 @@ func (i MysqlSslConfigArgs) ToMysqlSslConfigPtrOutputWithContext(ctx context.Con
 // MysqlSslConfigPtrInput is an input type that accepts MysqlSslConfigArgs, MysqlSslConfigPtr and MysqlSslConfigPtrOutput values.
 // You can construct a concrete instance of `MysqlSslConfigPtrInput` via:
 //
-//          MysqlSslConfigArgs{...}
+//	        MysqlSslConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MysqlSslConfigPtrInput interface {
 	pulumi.Input
 
@@ -3025,7 +3025,7 @@ type MysqlTable struct {
 // MysqlTableInput is an input type that accepts MysqlTableArgs and MysqlTableOutput values.
 // You can construct a concrete instance of `MysqlTableInput` via:
 //
-//          MysqlTableArgs{...}
+//	MysqlTableArgs{...}
 type MysqlTableInput interface {
 	pulumi.Input
 
@@ -3056,7 +3056,7 @@ func (i MysqlTableArgs) ToMysqlTableOutputWithContext(ctx context.Context) Mysql
 // MysqlTableArrayInput is an input type that accepts MysqlTableArray and MysqlTableArrayOutput values.
 // You can construct a concrete instance of `MysqlTableArrayInput` via:
 //
-//          MysqlTableArray{ MysqlTableArgs{...} }
+//	MysqlTableArray{ MysqlTableArgs{...} }
 type MysqlTableArrayInput interface {
 	pulumi.Input
 
@@ -3201,7 +3201,7 @@ type OracleColumn struct {
 // OracleColumnInput is an input type that accepts OracleColumnArgs and OracleColumnOutput values.
 // You can construct a concrete instance of `OracleColumnInput` via:
 //
-//          OracleColumnArgs{...}
+//	OracleColumnArgs{...}
 type OracleColumnInput interface {
 	pulumi.Input
 
@@ -3246,7 +3246,7 @@ func (i OracleColumnArgs) ToOracleColumnOutputWithContext(ctx context.Context) O
 // OracleColumnArrayInput is an input type that accepts OracleColumnArray and OracleColumnArrayOutput values.
 // You can construct a concrete instance of `OracleColumnArrayInput` via:
 //
-//          OracleColumnArray{ OracleColumnArgs{...} }
+//	OracleColumnArray{ OracleColumnArgs{...} }
 type OracleColumnArrayInput interface {
 	pulumi.Input
 
@@ -3469,7 +3469,7 @@ type OracleProfile struct {
 // OracleProfileInput is an input type that accepts OracleProfileArgs and OracleProfileOutput values.
 // You can construct a concrete instance of `OracleProfileInput` via:
 //
-//          OracleProfileArgs{...}
+//	OracleProfileArgs{...}
 type OracleProfileInput interface {
 	pulumi.Input
 
@@ -3516,11 +3516,11 @@ func (i OracleProfileArgs) ToOracleProfilePtrOutputWithContext(ctx context.Conte
 // OracleProfilePtrInput is an input type that accepts OracleProfileArgs, OracleProfilePtr and OracleProfilePtrOutput values.
 // You can construct a concrete instance of `OracleProfilePtrInput` via:
 //
-//          OracleProfileArgs{...}
+//	        OracleProfileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OracleProfilePtrInput interface {
 	pulumi.Input
 
@@ -3755,7 +3755,7 @@ type OracleRdbms struct {
 // OracleRdbmsInput is an input type that accepts OracleRdbmsArgs and OracleRdbmsOutput values.
 // You can construct a concrete instance of `OracleRdbmsInput` via:
 //
-//          OracleRdbmsArgs{...}
+//	OracleRdbmsArgs{...}
 type OracleRdbmsInput interface {
 	pulumi.Input
 
@@ -3792,11 +3792,11 @@ func (i OracleRdbmsArgs) ToOracleRdbmsPtrOutputWithContext(ctx context.Context) 
 // OracleRdbmsPtrInput is an input type that accepts OracleRdbmsArgs, OracleRdbmsPtr and OracleRdbmsPtrOutput values.
 // You can construct a concrete instance of `OracleRdbmsPtrInput` via:
 //
-//          OracleRdbmsArgs{...}
+//	        OracleRdbmsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OracleRdbmsPtrInput interface {
 	pulumi.Input
 
@@ -3923,7 +3923,7 @@ type OracleSchema struct {
 // OracleSchemaInput is an input type that accepts OracleSchemaArgs and OracleSchemaOutput values.
 // You can construct a concrete instance of `OracleSchemaInput` via:
 //
-//          OracleSchemaArgs{...}
+//	OracleSchemaArgs{...}
 type OracleSchemaInput interface {
 	pulumi.Input
 
@@ -3954,7 +3954,7 @@ func (i OracleSchemaArgs) ToOracleSchemaOutputWithContext(ctx context.Context) O
 // OracleSchemaArrayInput is an input type that accepts OracleSchemaArray and OracleSchemaArrayOutput values.
 // You can construct a concrete instance of `OracleSchemaArrayInput` via:
 //
-//          OracleSchemaArray{ OracleSchemaArgs{...} }
+//	OracleSchemaArray{ OracleSchemaArgs{...} }
 type OracleSchemaArrayInput interface {
 	pulumi.Input
 
@@ -4091,7 +4091,7 @@ type OracleSourceConfig struct {
 // OracleSourceConfigInput is an input type that accepts OracleSourceConfigArgs and OracleSourceConfigOutput values.
 // You can construct a concrete instance of `OracleSourceConfigInput` via:
 //
-//          OracleSourceConfigArgs{...}
+//	OracleSourceConfigArgs{...}
 type OracleSourceConfigInput interface {
 	pulumi.Input
 
@@ -4136,11 +4136,11 @@ func (i OracleSourceConfigArgs) ToOracleSourceConfigPtrOutputWithContext(ctx con
 // OracleSourceConfigPtrInput is an input type that accepts OracleSourceConfigArgs, OracleSourceConfigPtr and OracleSourceConfigPtrOutput values.
 // You can construct a concrete instance of `OracleSourceConfigPtrInput` via:
 //
-//          OracleSourceConfigArgs{...}
+//	        OracleSourceConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OracleSourceConfigPtrInput interface {
 	pulumi.Input
 
@@ -4355,7 +4355,7 @@ type OracleTable struct {
 // OracleTableInput is an input type that accepts OracleTableArgs and OracleTableOutput values.
 // You can construct a concrete instance of `OracleTableInput` via:
 //
-//          OracleTableArgs{...}
+//	OracleTableArgs{...}
 type OracleTableInput interface {
 	pulumi.Input
 
@@ -4386,7 +4386,7 @@ func (i OracleTableArgs) ToOracleTableOutputWithContext(ctx context.Context) Ora
 // OracleTableArrayInput is an input type that accepts OracleTableArray and OracleTableArrayOutput values.
 // You can construct a concrete instance of `OracleTableArrayInput` via:
 //
-//          OracleTableArray{ OracleTableArgs{...} }
+//	OracleTableArray{ OracleTableArgs{...} }
 type OracleTableArrayInput interface {
 	pulumi.Input
 
@@ -4515,7 +4515,7 @@ type PrivateConnectivity struct {
 // PrivateConnectivityInput is an input type that accepts PrivateConnectivityArgs and PrivateConnectivityOutput values.
 // You can construct a concrete instance of `PrivateConnectivityInput` via:
 //
-//          PrivateConnectivityArgs{...}
+//	PrivateConnectivityArgs{...}
 type PrivateConnectivityInput interface {
 	pulumi.Input
 
@@ -4552,11 +4552,11 @@ func (i PrivateConnectivityArgs) ToPrivateConnectivityPtrOutputWithContext(ctx c
 // PrivateConnectivityPtrInput is an input type that accepts PrivateConnectivityArgs, PrivateConnectivityPtr and PrivateConnectivityPtrOutput values.
 // You can construct a concrete instance of `PrivateConnectivityPtrInput` via:
 //
-//          PrivateConnectivityArgs{...}
+//	        PrivateConnectivityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PrivateConnectivityPtrInput interface {
 	pulumi.Input
 
@@ -4685,7 +4685,7 @@ type SourceConfig struct {
 // SourceConfigInput is an input type that accepts SourceConfigArgs and SourceConfigOutput values.
 // You can construct a concrete instance of `SourceConfigInput` via:
 //
-//          SourceConfigArgs{...}
+//	SourceConfigArgs{...}
 type SourceConfigInput interface {
 	pulumi.Input
 
@@ -4792,7 +4792,7 @@ type StaticServiceIpConnectivity struct {
 // StaticServiceIpConnectivityInput is an input type that accepts StaticServiceIpConnectivityArgs and StaticServiceIpConnectivityOutput values.
 // You can construct a concrete instance of `StaticServiceIpConnectivityInput` via:
 //
-//          StaticServiceIpConnectivityArgs{...}
+//	StaticServiceIpConnectivityArgs{...}
 type StaticServiceIpConnectivityInput interface {
 	pulumi.Input
 
@@ -4827,11 +4827,11 @@ func (i StaticServiceIpConnectivityArgs) ToStaticServiceIpConnectivityPtrOutputW
 // StaticServiceIpConnectivityPtrInput is an input type that accepts StaticServiceIpConnectivityArgs, StaticServiceIpConnectivityPtr and StaticServiceIpConnectivityPtrOutput values.
 // You can construct a concrete instance of `StaticServiceIpConnectivityPtrInput` via:
 //
-//          StaticServiceIpConnectivityArgs{...}
+//	        StaticServiceIpConnectivityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StaticServiceIpConnectivityPtrInput interface {
 	pulumi.Input
 
@@ -4932,7 +4932,7 @@ type StreamLargeObjects struct {
 // StreamLargeObjectsInput is an input type that accepts StreamLargeObjectsArgs and StreamLargeObjectsOutput values.
 // You can construct a concrete instance of `StreamLargeObjectsInput` via:
 //
-//          StreamLargeObjectsArgs{...}
+//	StreamLargeObjectsArgs{...}
 type StreamLargeObjectsInput interface {
 	pulumi.Input
 
@@ -4967,11 +4967,11 @@ func (i StreamLargeObjectsArgs) ToStreamLargeObjectsPtrOutputWithContext(ctx con
 // StreamLargeObjectsPtrInput is an input type that accepts StreamLargeObjectsArgs, StreamLargeObjectsPtr and StreamLargeObjectsPtrOutput values.
 // You can construct a concrete instance of `StreamLargeObjectsPtrInput` via:
 //
-//          StreamLargeObjectsArgs{...}
+//	        StreamLargeObjectsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StreamLargeObjectsPtrInput interface {
 	pulumi.Input
 
@@ -5076,7 +5076,7 @@ type VpcPeeringConfig struct {
 // VpcPeeringConfigInput is an input type that accepts VpcPeeringConfigArgs and VpcPeeringConfigOutput values.
 // You can construct a concrete instance of `VpcPeeringConfigInput` via:
 //
-//          VpcPeeringConfigArgs{...}
+//	VpcPeeringConfigArgs{...}
 type VpcPeeringConfigInput interface {
 	pulumi.Input
 
@@ -5115,11 +5115,11 @@ func (i VpcPeeringConfigArgs) ToVpcPeeringConfigPtrOutputWithContext(ctx context
 // VpcPeeringConfigPtrInput is an input type that accepts VpcPeeringConfigArgs, VpcPeeringConfigPtr and VpcPeeringConfigPtrOutput values.
 // You can construct a concrete instance of `VpcPeeringConfigPtrInput` via:
 //
-//          VpcPeeringConfigArgs{...}
+//	        VpcPeeringConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VpcPeeringConfigPtrInput interface {
 	pulumi.Input
 

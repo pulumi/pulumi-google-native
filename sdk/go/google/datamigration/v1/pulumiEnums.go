@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o CloudSqlSettingsActivationPolicyPtrOutput) ToStringPtrOutputWithContext(
 // CloudSqlSettingsActivationPolicyInput is an input type that accepts CloudSqlSettingsActivationPolicyArgs and CloudSqlSettingsActivationPolicyOutput values.
 // You can construct a concrete instance of `CloudSqlSettingsActivationPolicyInput` via:
 //
-//          CloudSqlSettingsActivationPolicyArgs{...}
+//	CloudSqlSettingsActivationPolicyArgs{...}
 type CloudSqlSettingsActivationPolicyInput interface {
 	pulumi.Input
 
@@ -484,7 +484,7 @@ func (o CloudSqlSettingsDataDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 // CloudSqlSettingsDataDiskTypeInput is an input type that accepts CloudSqlSettingsDataDiskTypeArgs and CloudSqlSettingsDataDiskTypeOutput values.
 // You can construct a concrete instance of `CloudSqlSettingsDataDiskTypeInput` via:
 //
-//          CloudSqlSettingsDataDiskTypeArgs{...}
+//	CloudSqlSettingsDataDiskTypeArgs{...}
 type CloudSqlSettingsDataDiskTypeInput interface {
 	pulumi.Input
 
@@ -667,7 +667,7 @@ func (o CloudSqlSettingsDatabaseVersionPtrOutput) ToStringPtrOutputWithContext(c
 // CloudSqlSettingsDatabaseVersionInput is an input type that accepts CloudSqlSettingsDatabaseVersionArgs and CloudSqlSettingsDatabaseVersionOutput values.
 // You can construct a concrete instance of `CloudSqlSettingsDatabaseVersionInput` via:
 //
-//          CloudSqlSettingsDatabaseVersionArgs{...}
+//	CloudSqlSettingsDatabaseVersionArgs{...}
 type CloudSqlSettingsDatabaseVersionInput interface {
 	pulumi.Input
 
@@ -838,7 +838,7 @@ func (o ConnectionProfileProviderPtrOutput) ToStringPtrOutputWithContext(ctx con
 // ConnectionProfileProviderInput is an input type that accepts ConnectionProfileProviderArgs and ConnectionProfileProviderOutput values.
 // You can construct a concrete instance of `ConnectionProfileProviderInput` via:
 //
-//          ConnectionProfileProviderArgs{...}
+//	ConnectionProfileProviderArgs{...}
 type ConnectionProfileProviderInput interface {
 	pulumi.Input
 
@@ -1017,7 +1017,7 @@ func (o ConnectionProfileStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx co
 // ConnectionProfileStateEnumInput is an input type that accepts ConnectionProfileStateEnumArgs and ConnectionProfileStateEnumOutput values.
 // You can construct a concrete instance of `ConnectionProfileStateEnumInput` via:
 //
-//          ConnectionProfileStateEnumArgs{...}
+//	ConnectionProfileStateEnumArgs{...}
 type ConnectionProfileStateEnumInput interface {
 	pulumi.Input
 
@@ -1186,7 +1186,7 @@ func (o DatabaseTypeEnginePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // DatabaseTypeEngineInput is an input type that accepts DatabaseTypeEngineArgs and DatabaseTypeEngineOutput values.
 // You can construct a concrete instance of `DatabaseTypeEngineInput` via:
 //
-//          DatabaseTypeEngineArgs{...}
+//	DatabaseTypeEngineArgs{...}
 type DatabaseTypeEngineInput interface {
 	pulumi.Input
 
@@ -1357,7 +1357,7 @@ func (o DatabaseTypeProviderPtrOutput) ToStringPtrOutputWithContext(ctx context.
 // DatabaseTypeProviderInput is an input type that accepts DatabaseTypeProviderArgs and DatabaseTypeProviderOutput values.
 // You can construct a concrete instance of `DatabaseTypeProviderInput` via:
 //
-//          DatabaseTypeProviderArgs{...}
+//	DatabaseTypeProviderArgs{...}
 type DatabaseTypeProviderInput interface {
 	pulumi.Input
 
@@ -1552,7 +1552,7 @@ func (o MigrationJobStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context
 // MigrationJobStateEnumInput is an input type that accepts MigrationJobStateEnumArgs and MigrationJobStateEnumOutput values.
 // You can construct a concrete instance of `MigrationJobStateEnumInput` via:
 //
-//          MigrationJobStateEnumArgs{...}
+//	MigrationJobStateEnumArgs{...}
 type MigrationJobStateEnumInput interface {
 	pulumi.Input
 
@@ -1721,7 +1721,7 @@ func (o MigrationJobTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // MigrationJobTypeInput is an input type that accepts MigrationJobTypeArgs and MigrationJobTypeOutput values.
 // You can construct a concrete instance of `MigrationJobTypeInput` via:
 //
-//          MigrationJobTypeArgs{...}
+//	MigrationJobTypeArgs{...}
 type MigrationJobTypeInput interface {
 	pulumi.Input
 

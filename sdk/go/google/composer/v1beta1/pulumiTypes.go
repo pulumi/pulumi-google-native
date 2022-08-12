@@ -21,7 +21,7 @@ type AllowedIpRange struct {
 // AllowedIpRangeInput is an input type that accepts AllowedIpRangeArgs and AllowedIpRangeOutput values.
 // You can construct a concrete instance of `AllowedIpRangeInput` via:
 //
-//          AllowedIpRangeArgs{...}
+//	AllowedIpRangeArgs{...}
 type AllowedIpRangeInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i AllowedIpRangeArgs) ToAllowedIpRangeOutputWithContext(ctx context.Contex
 // AllowedIpRangeArrayInput is an input type that accepts AllowedIpRangeArray and AllowedIpRangeArrayOutput values.
 // You can construct a concrete instance of `AllowedIpRangeArrayInput` via:
 //
-//          AllowedIpRangeArray{ AllowedIpRangeArgs{...} }
+//	AllowedIpRangeArray{ AllowedIpRangeArgs{...} }
 type AllowedIpRangeArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type CidrBlock struct {
 // CidrBlockInput is an input type that accepts CidrBlockArgs and CidrBlockOutput values.
 // You can construct a concrete instance of `CidrBlockInput` via:
 //
-//          CidrBlockArgs{...}
+//	CidrBlockArgs{...}
 type CidrBlockInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ func (i CidrBlockArgs) ToCidrBlockOutputWithContext(ctx context.Context) CidrBlo
 // CidrBlockArrayInput is an input type that accepts CidrBlockArray and CidrBlockArrayOutput values.
 // You can construct a concrete instance of `CidrBlockArrayInput` via:
 //
-//          CidrBlockArray{ CidrBlockArgs{...} }
+//	CidrBlockArray{ CidrBlockArgs{...} }
 type CidrBlockArrayInput interface {
 	pulumi.Input
 
@@ -343,7 +343,7 @@ type DatabaseConfig struct {
 // DatabaseConfigInput is an input type that accepts DatabaseConfigArgs and DatabaseConfigOutput values.
 // You can construct a concrete instance of `DatabaseConfigInput` via:
 //
-//          DatabaseConfigArgs{...}
+//	DatabaseConfigArgs{...}
 type DatabaseConfigInput interface {
 	pulumi.Input
 
@@ -380,11 +380,11 @@ func (i DatabaseConfigArgs) ToDatabaseConfigPtrOutputWithContext(ctx context.Con
 // DatabaseConfigPtrInput is an input type that accepts DatabaseConfigArgs, DatabaseConfigPtr and DatabaseConfigPtrOutput values.
 // You can construct a concrete instance of `DatabaseConfigPtrInput` via:
 //
-//          DatabaseConfigArgs{...}
+//	        DatabaseConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatabaseConfigPtrInput interface {
 	pulumi.Input
 
@@ -509,7 +509,7 @@ type EncryptionConfig struct {
 // EncryptionConfigInput is an input type that accepts EncryptionConfigArgs and EncryptionConfigOutput values.
 // You can construct a concrete instance of `EncryptionConfigInput` via:
 //
-//          EncryptionConfigArgs{...}
+//	EncryptionConfigArgs{...}
 type EncryptionConfigInput interface {
 	pulumi.Input
 
@@ -546,11 +546,11 @@ func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutputWithContext(ctx context
 // EncryptionConfigPtrInput is an input type that accepts EncryptionConfigArgs, EncryptionConfigPtr and EncryptionConfigPtrOutput values.
 // You can construct a concrete instance of `EncryptionConfigPtrInput` via:
 //
-//          EncryptionConfigArgs{...}
+//	        EncryptionConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EncryptionConfigPtrInput interface {
 	pulumi.Input
 
@@ -697,7 +697,7 @@ type EnvironmentConfig struct {
 // EnvironmentConfigInput is an input type that accepts EnvironmentConfigArgs and EnvironmentConfigOutput values.
 // You can construct a concrete instance of `EnvironmentConfigInput` via:
 //
-//          EnvironmentConfigArgs{...}
+//	EnvironmentConfigArgs{...}
 type EnvironmentConfigInput interface {
 	pulumi.Input
 
@@ -756,11 +756,11 @@ func (i EnvironmentConfigArgs) ToEnvironmentConfigPtrOutputWithContext(ctx conte
 // EnvironmentConfigPtrInput is an input type that accepts EnvironmentConfigArgs, EnvironmentConfigPtr and EnvironmentConfigPtrOutput values.
 // You can construct a concrete instance of `EnvironmentConfigPtrInput` via:
 //
-//          EnvironmentConfigArgs{...}
+//	        EnvironmentConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EnvironmentConfigPtrInput interface {
 	pulumi.Input
 
@@ -1160,7 +1160,7 @@ type IPAllocationPolicy struct {
 // IPAllocationPolicyInput is an input type that accepts IPAllocationPolicyArgs and IPAllocationPolicyOutput values.
 // You can construct a concrete instance of `IPAllocationPolicyInput` via:
 //
-//          IPAllocationPolicyArgs{...}
+//	IPAllocationPolicyArgs{...}
 type IPAllocationPolicyInput interface {
 	pulumi.Input
 
@@ -1205,11 +1205,11 @@ func (i IPAllocationPolicyArgs) ToIPAllocationPolicyPtrOutputWithContext(ctx con
 // IPAllocationPolicyPtrInput is an input type that accepts IPAllocationPolicyArgs, IPAllocationPolicyPtr and IPAllocationPolicyPtrOutput values.
 // You can construct a concrete instance of `IPAllocationPolicyPtrInput` via:
 //
-//          IPAllocationPolicyArgs{...}
+//	        IPAllocationPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type IPAllocationPolicyPtrInput interface {
 	pulumi.Input
 
@@ -1426,7 +1426,7 @@ type MaintenanceWindow struct {
 // MaintenanceWindowInput is an input type that accepts MaintenanceWindowArgs and MaintenanceWindowOutput values.
 // You can construct a concrete instance of `MaintenanceWindowInput` via:
 //
-//          MaintenanceWindowArgs{...}
+//	MaintenanceWindowArgs{...}
 type MaintenanceWindowInput interface {
 	pulumi.Input
 
@@ -1467,11 +1467,11 @@ func (i MaintenanceWindowArgs) ToMaintenanceWindowPtrOutputWithContext(ctx conte
 // MaintenanceWindowPtrInput is an input type that accepts MaintenanceWindowArgs, MaintenanceWindowPtr and MaintenanceWindowPtrOutput values.
 // You can construct a concrete instance of `MaintenanceWindowPtrInput` via:
 //
-//          MaintenanceWindowArgs{...}
+//	        MaintenanceWindowArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MaintenanceWindowPtrInput interface {
 	pulumi.Input
 
@@ -1642,7 +1642,7 @@ type MasterAuthorizedNetworksConfig struct {
 // MasterAuthorizedNetworksConfigInput is an input type that accepts MasterAuthorizedNetworksConfigArgs and MasterAuthorizedNetworksConfigOutput values.
 // You can construct a concrete instance of `MasterAuthorizedNetworksConfigInput` via:
 //
-//          MasterAuthorizedNetworksConfigArgs{...}
+//	MasterAuthorizedNetworksConfigArgs{...}
 type MasterAuthorizedNetworksConfigInput interface {
 	pulumi.Input
 
@@ -1681,11 +1681,11 @@ func (i MasterAuthorizedNetworksConfigArgs) ToMasterAuthorizedNetworksConfigPtrO
 // MasterAuthorizedNetworksConfigPtrInput is an input type that accepts MasterAuthorizedNetworksConfigArgs, MasterAuthorizedNetworksConfigPtr and MasterAuthorizedNetworksConfigPtrOutput values.
 // You can construct a concrete instance of `MasterAuthorizedNetworksConfigPtrInput` via:
 //
-//          MasterAuthorizedNetworksConfigArgs{...}
+//	        MasterAuthorizedNetworksConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MasterAuthorizedNetworksConfigPtrInput interface {
 	pulumi.Input
 
@@ -1852,7 +1852,7 @@ type NodeConfig struct {
 // NodeConfigInput is an input type that accepts NodeConfigArgs and NodeConfigOutput values.
 // You can construct a concrete instance of `NodeConfigInput` via:
 //
-//          NodeConfigArgs{...}
+//	NodeConfigArgs{...}
 type NodeConfigInput interface {
 	pulumi.Input
 
@@ -1909,11 +1909,11 @@ func (i NodeConfigArgs) ToNodeConfigPtrOutputWithContext(ctx context.Context) No
 // NodeConfigPtrInput is an input type that accepts NodeConfigArgs, NodeConfigPtr and NodeConfigPtrOutput values.
 // You can construct a concrete instance of `NodeConfigPtrInput` via:
 //
-//          NodeConfigArgs{...}
+//	        NodeConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NodeConfigPtrInput interface {
 	pulumi.Input
 
@@ -2260,7 +2260,7 @@ type PrivateClusterConfig struct {
 // PrivateClusterConfigInput is an input type that accepts PrivateClusterConfigArgs and PrivateClusterConfigOutput values.
 // You can construct a concrete instance of `PrivateClusterConfigInput` via:
 //
-//          PrivateClusterConfigArgs{...}
+//	PrivateClusterConfigArgs{...}
 type PrivateClusterConfigInput interface {
 	pulumi.Input
 
@@ -2299,11 +2299,11 @@ func (i PrivateClusterConfigArgs) ToPrivateClusterConfigPtrOutputWithContext(ctx
 // PrivateClusterConfigPtrInput is an input type that accepts PrivateClusterConfigArgs, PrivateClusterConfigPtr and PrivateClusterConfigPtrOutput values.
 // You can construct a concrete instance of `PrivateClusterConfigPtrInput` via:
 //
-//          PrivateClusterConfigArgs{...}
+//	        PrivateClusterConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PrivateClusterConfigPtrInput interface {
 	pulumi.Input
 
@@ -2469,7 +2469,7 @@ type PrivateEnvironmentConfig struct {
 // PrivateEnvironmentConfigInput is an input type that accepts PrivateEnvironmentConfigArgs and PrivateEnvironmentConfigOutput values.
 // You can construct a concrete instance of `PrivateEnvironmentConfigInput` via:
 //
-//          PrivateEnvironmentConfigArgs{...}
+//	PrivateEnvironmentConfigArgs{...}
 type PrivateEnvironmentConfigInput interface {
 	pulumi.Input
 
@@ -2518,11 +2518,11 @@ func (i PrivateEnvironmentConfigArgs) ToPrivateEnvironmentConfigPtrOutputWithCon
 // PrivateEnvironmentConfigPtrInput is an input type that accepts PrivateEnvironmentConfigArgs, PrivateEnvironmentConfigPtr and PrivateEnvironmentConfigPtrOutput values.
 // You can construct a concrete instance of `PrivateEnvironmentConfigPtrInput` via:
 //
-//          PrivateEnvironmentConfigArgs{...}
+//	        PrivateEnvironmentConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PrivateEnvironmentConfigPtrInput interface {
 	pulumi.Input
 
@@ -2799,7 +2799,7 @@ type SchedulerResource struct {
 // SchedulerResourceInput is an input type that accepts SchedulerResourceArgs and SchedulerResourceOutput values.
 // You can construct a concrete instance of `SchedulerResourceInput` via:
 //
-//          SchedulerResourceArgs{...}
+//	SchedulerResourceArgs{...}
 type SchedulerResourceInput interface {
 	pulumi.Input
 
@@ -2842,11 +2842,11 @@ func (i SchedulerResourceArgs) ToSchedulerResourcePtrOutputWithContext(ctx conte
 // SchedulerResourcePtrInput is an input type that accepts SchedulerResourceArgs, SchedulerResourcePtr and SchedulerResourcePtrOutput values.
 // You can construct a concrete instance of `SchedulerResourcePtrInput` via:
 //
-//          SchedulerResourceArgs{...}
+//	        SchedulerResourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SchedulerResourcePtrInput interface {
 	pulumi.Input
 
@@ -3047,7 +3047,7 @@ type SoftwareConfig struct {
 // SoftwareConfigInput is an input type that accepts SoftwareConfigArgs and SoftwareConfigOutput values.
 // You can construct a concrete instance of `SoftwareConfigInput` via:
 //
-//          SoftwareConfigArgs{...}
+//	SoftwareConfigArgs{...}
 type SoftwareConfigInput interface {
 	pulumi.Input
 
@@ -3094,11 +3094,11 @@ func (i SoftwareConfigArgs) ToSoftwareConfigPtrOutputWithContext(ctx context.Con
 // SoftwareConfigPtrInput is an input type that accepts SoftwareConfigArgs, SoftwareConfigPtr and SoftwareConfigPtrOutput values.
 // You can construct a concrete instance of `SoftwareConfigPtrInput` via:
 //
-//          SoftwareConfigArgs{...}
+//	        SoftwareConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SoftwareConfigPtrInput interface {
 	pulumi.Input
 
@@ -3333,7 +3333,7 @@ type WebServerConfig struct {
 // WebServerConfigInput is an input type that accepts WebServerConfigArgs and WebServerConfigOutput values.
 // You can construct a concrete instance of `WebServerConfigInput` via:
 //
-//          WebServerConfigArgs{...}
+//	WebServerConfigArgs{...}
 type WebServerConfigInput interface {
 	pulumi.Input
 
@@ -3370,11 +3370,11 @@ func (i WebServerConfigArgs) ToWebServerConfigPtrOutputWithContext(ctx context.C
 // WebServerConfigPtrInput is an input type that accepts WebServerConfigArgs, WebServerConfigPtr and WebServerConfigPtrOutput values.
 // You can construct a concrete instance of `WebServerConfigPtrInput` via:
 //
-//          WebServerConfigArgs{...}
+//	        WebServerConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type WebServerConfigPtrInput interface {
 	pulumi.Input
 
@@ -3499,7 +3499,7 @@ type WebServerNetworkAccessControl struct {
 // WebServerNetworkAccessControlInput is an input type that accepts WebServerNetworkAccessControlArgs and WebServerNetworkAccessControlOutput values.
 // You can construct a concrete instance of `WebServerNetworkAccessControlInput` via:
 //
-//          WebServerNetworkAccessControlArgs{...}
+//	WebServerNetworkAccessControlArgs{...}
 type WebServerNetworkAccessControlInput interface {
 	pulumi.Input
 
@@ -3536,11 +3536,11 @@ func (i WebServerNetworkAccessControlArgs) ToWebServerNetworkAccessControlPtrOut
 // WebServerNetworkAccessControlPtrInput is an input type that accepts WebServerNetworkAccessControlArgs, WebServerNetworkAccessControlPtr and WebServerNetworkAccessControlPtrOutput values.
 // You can construct a concrete instance of `WebServerNetworkAccessControlPtrInput` via:
 //
-//          WebServerNetworkAccessControlArgs{...}
+//	        WebServerNetworkAccessControlArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type WebServerNetworkAccessControlPtrInput interface {
 	pulumi.Input
 
@@ -3669,7 +3669,7 @@ type WebServerResource struct {
 // WebServerResourceInput is an input type that accepts WebServerResourceArgs and WebServerResourceOutput values.
 // You can construct a concrete instance of `WebServerResourceInput` via:
 //
-//          WebServerResourceArgs{...}
+//	WebServerResourceArgs{...}
 type WebServerResourceInput interface {
 	pulumi.Input
 
@@ -3710,11 +3710,11 @@ func (i WebServerResourceArgs) ToWebServerResourcePtrOutputWithContext(ctx conte
 // WebServerResourcePtrInput is an input type that accepts WebServerResourceArgs, WebServerResourcePtr and WebServerResourcePtrOutput values.
 // You can construct a concrete instance of `WebServerResourcePtrInput` via:
 //
-//          WebServerResourceArgs{...}
+//	        WebServerResourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type WebServerResourcePtrInput interface {
 	pulumi.Input
 
@@ -3891,7 +3891,7 @@ type WorkerResource struct {
 // WorkerResourceInput is an input type that accepts WorkerResourceArgs and WorkerResourceOutput values.
 // You can construct a concrete instance of `WorkerResourceInput` via:
 //
-//          WorkerResourceArgs{...}
+//	WorkerResourceArgs{...}
 type WorkerResourceInput interface {
 	pulumi.Input
 
@@ -3936,11 +3936,11 @@ func (i WorkerResourceArgs) ToWorkerResourcePtrOutputWithContext(ctx context.Con
 // WorkerResourcePtrInput is an input type that accepts WorkerResourceArgs, WorkerResourcePtr and WorkerResourcePtrOutput values.
 // You can construct a concrete instance of `WorkerResourcePtrInput` via:
 //
-//          WorkerResourceArgs{...}
+//	        WorkerResourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type WorkerResourcePtrInput interface {
 	pulumi.Input
 
@@ -4157,7 +4157,7 @@ type WorkloadsConfig struct {
 // WorkloadsConfigInput is an input type that accepts WorkloadsConfigArgs and WorkloadsConfigOutput values.
 // You can construct a concrete instance of `WorkloadsConfigInput` via:
 //
-//          WorkloadsConfigArgs{...}
+//	WorkloadsConfigArgs{...}
 type WorkloadsConfigInput interface {
 	pulumi.Input
 
@@ -4198,11 +4198,11 @@ func (i WorkloadsConfigArgs) ToWorkloadsConfigPtrOutputWithContext(ctx context.C
 // WorkloadsConfigPtrInput is an input type that accepts WorkloadsConfigArgs, WorkloadsConfigPtr and WorkloadsConfigPtrOutput values.
 // You can construct a concrete instance of `WorkloadsConfigPtrInput` via:
 //
-//          WorkloadsConfigArgs{...}
+//	        WorkloadsConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type WorkloadsConfigPtrInput interface {
 	pulumi.Input
 

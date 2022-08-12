@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o MembershipInfrastructureTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 // MembershipInfrastructureTypeInput is an input type that accepts MembershipInfrastructureTypeArgs and MembershipInfrastructureTypeOutput values.
 // You can construct a concrete instance of `MembershipInfrastructureTypeInput` via:
 //
-//          MembershipInfrastructureTypeArgs{...}
+//	MembershipInfrastructureTypeArgs{...}
 type MembershipInfrastructureTypeInput interface {
 	pulumi.Input
 
@@ -488,7 +488,7 @@ func (o OnPremClusterClusterTypePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // OnPremClusterClusterTypeInput is an input type that accepts OnPremClusterClusterTypeArgs and OnPremClusterClusterTypeOutput values.
 // You can construct a concrete instance of `OnPremClusterClusterTypeInput` via:
 //
-//          OnPremClusterClusterTypeArgs{...}
+//	OnPremClusterClusterTypeArgs{...}
 type OnPremClusterClusterTypeInput interface {
 	pulumi.Input
 

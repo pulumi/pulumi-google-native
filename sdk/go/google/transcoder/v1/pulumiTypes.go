@@ -19,7 +19,7 @@ type AdBreak struct {
 // AdBreakInput is an input type that accepts AdBreakArgs and AdBreakOutput values.
 // You can construct a concrete instance of `AdBreakInput` via:
 //
-//          AdBreakArgs{...}
+//	AdBreakArgs{...}
 type AdBreakInput interface {
 	pulumi.Input
 
@@ -48,7 +48,7 @@ func (i AdBreakArgs) ToAdBreakOutputWithContext(ctx context.Context) AdBreakOutp
 // AdBreakArrayInput is an input type that accepts AdBreakArray and AdBreakArrayOutput values.
 // You can construct a concrete instance of `AdBreakArrayInput` via:
 //
-//          AdBreakArray{ AdBreakArgs{...} }
+//	AdBreakArray{ AdBreakArgs{...} }
 type AdBreakArrayInput interface {
 	pulumi.Input
 
@@ -169,7 +169,7 @@ type Animation struct {
 // AnimationInput is an input type that accepts AnimationArgs and AnimationOutput values.
 // You can construct a concrete instance of `AnimationInput` via:
 //
-//          AnimationArgs{...}
+//	AnimationArgs{...}
 type AnimationInput interface {
 	pulumi.Input
 
@@ -202,7 +202,7 @@ func (i AnimationArgs) ToAnimationOutputWithContext(ctx context.Context) Animati
 // AnimationArrayInput is an input type that accepts AnimationArray and AnimationArrayOutput values.
 // You can construct a concrete instance of `AnimationArrayInput` via:
 //
-//          AnimationArray{ AnimationArgs{...} }
+//	AnimationArray{ AnimationArgs{...} }
 type AnimationArrayInput interface {
 	pulumi.Input
 
@@ -283,7 +283,7 @@ type AnimationEnd struct {
 // AnimationEndInput is an input type that accepts AnimationEndArgs and AnimationEndOutput values.
 // You can construct a concrete instance of `AnimationEndInput` via:
 //
-//          AnimationEndArgs{...}
+//	AnimationEndArgs{...}
 type AnimationEndInput interface {
 	pulumi.Input
 
@@ -320,11 +320,11 @@ func (i AnimationEndArgs) ToAnimationEndPtrOutputWithContext(ctx context.Context
 // AnimationEndPtrInput is an input type that accepts AnimationEndArgs, AnimationEndPtr and AnimationEndPtrOutput values.
 // You can construct a concrete instance of `AnimationEndPtrInput` via:
 //
-//          AnimationEndArgs{...}
+//	        AnimationEndArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AnimationEndPtrInput interface {
 	pulumi.Input
 
@@ -455,7 +455,7 @@ type AnimationFade struct {
 // AnimationFadeInput is an input type that accepts AnimationFadeArgs and AnimationFadeOutput values.
 // You can construct a concrete instance of `AnimationFadeInput` via:
 //
-//          AnimationFadeArgs{...}
+//	AnimationFadeArgs{...}
 type AnimationFadeInput interface {
 	pulumi.Input
 
@@ -498,11 +498,11 @@ func (i AnimationFadeArgs) ToAnimationFadePtrOutputWithContext(ctx context.Conte
 // AnimationFadePtrInput is an input type that accepts AnimationFadeArgs, AnimationFadePtr and AnimationFadePtrOutput values.
 // You can construct a concrete instance of `AnimationFadePtrInput` via:
 //
-//          AnimationFadeArgs{...}
+//	        AnimationFadeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AnimationFadePtrInput interface {
 	pulumi.Input
 
@@ -755,7 +755,7 @@ type AnimationStatic struct {
 // AnimationStaticInput is an input type that accepts AnimationStaticArgs and AnimationStaticOutput values.
 // You can construct a concrete instance of `AnimationStaticInput` via:
 //
-//          AnimationStaticArgs{...}
+//	AnimationStaticArgs{...}
 type AnimationStaticInput interface {
 	pulumi.Input
 
@@ -794,11 +794,11 @@ func (i AnimationStaticArgs) ToAnimationStaticPtrOutputWithContext(ctx context.C
 // AnimationStaticPtrInput is an input type that accepts AnimationStaticArgs, AnimationStaticPtr and AnimationStaticPtrOutput values.
 // You can construct a concrete instance of `AnimationStaticPtrInput` via:
 //
-//          AnimationStaticArgs{...}
+//	        AnimationStaticArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AnimationStaticPtrInput interface {
 	pulumi.Input
 
@@ -949,7 +949,7 @@ type Audio struct {
 // AudioInput is an input type that accepts AudioArgs and AudioOutput values.
 // You can construct a concrete instance of `AudioInput` via:
 //
-//          AudioArgs{...}
+//	AudioArgs{...}
 type AudioInput interface {
 	pulumi.Input
 
@@ -990,11 +990,11 @@ func (i AudioArgs) ToAudioPtrOutputWithContext(ctx context.Context) AudioPtrOutp
 // AudioPtrInput is an input type that accepts AudioArgs, AudioPtr and AudioPtrOutput values.
 // You can construct a concrete instance of `AudioPtrInput` via:
 //
-//          AudioArgs{...}
+//	        AudioArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AudioPtrInput interface {
 	pulumi.Input
 
@@ -1133,7 +1133,7 @@ type AudioMapping struct {
 // AudioMappingInput is an input type that accepts AudioMappingArgs and AudioMappingOutput values.
 // You can construct a concrete instance of `AudioMappingInput` via:
 //
-//          AudioMappingArgs{...}
+//	AudioMappingArgs{...}
 type AudioMappingInput interface {
 	pulumi.Input
 
@@ -1172,7 +1172,7 @@ func (i AudioMappingArgs) ToAudioMappingOutputWithContext(ctx context.Context) A
 // AudioMappingArrayInput is an input type that accepts AudioMappingArray and AudioMappingArrayOutput values.
 // You can construct a concrete instance of `AudioMappingArrayInput` via:
 //
-//          AudioMappingArray{ AudioMappingArgs{...} }
+//	AudioMappingArray{ AudioMappingArgs{...} }
 type AudioMappingArrayInput interface {
 	pulumi.Input
 
@@ -1399,7 +1399,7 @@ type AudioStream struct {
 // AudioStreamInput is an input type that accepts AudioStreamArgs and AudioStreamOutput values.
 // You can construct a concrete instance of `AudioStreamInput` via:
 //
-//          AudioStreamArgs{...}
+//	AudioStreamArgs{...}
 type AudioStreamInput interface {
 	pulumi.Input
 
@@ -1446,11 +1446,11 @@ func (i AudioStreamArgs) ToAudioStreamPtrOutputWithContext(ctx context.Context) 
 // AudioStreamPtrInput is an input type that accepts AudioStreamArgs, AudioStreamPtr and AudioStreamPtrOutput values.
 // You can construct a concrete instance of `AudioStreamPtrInput` via:
 //
-//          AudioStreamArgs{...}
+//	        AudioStreamArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AudioStreamPtrInput interface {
 	pulumi.Input
 
@@ -1689,7 +1689,7 @@ type Color struct {
 // ColorInput is an input type that accepts ColorArgs and ColorOutput values.
 // You can construct a concrete instance of `ColorInput` via:
 //
-//          ColorArgs{...}
+//	ColorArgs{...}
 type ColorInput interface {
 	pulumi.Input
 
@@ -1730,11 +1730,11 @@ func (i ColorArgs) ToColorPtrOutputWithContext(ctx context.Context) ColorPtrOutp
 // ColorPtrInput is an input type that accepts ColorArgs, ColorPtr and ColorPtrOutput values.
 // You can construct a concrete instance of `ColorPtrInput` via:
 //
-//          ColorArgs{...}
+//	        ColorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ColorPtrInput interface {
 	pulumi.Input
 
@@ -1909,7 +1909,7 @@ type Crop struct {
 // CropInput is an input type that accepts CropArgs and CropOutput values.
 // You can construct a concrete instance of `CropInput` via:
 //
-//          CropArgs{...}
+//	CropArgs{...}
 type CropInput interface {
 	pulumi.Input
 
@@ -1952,11 +1952,11 @@ func (i CropArgs) ToCropPtrOutputWithContext(ctx context.Context) CropPtrOutput 
 // CropPtrInput is an input type that accepts CropArgs, CropPtr and CropPtrOutput values.
 // You can construct a concrete instance of `CropPtrInput` via:
 //
-//          CropArgs{...}
+//	        CropArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CropPtrInput interface {
 	pulumi.Input
 
@@ -2149,7 +2149,7 @@ type Deblock struct {
 // DeblockInput is an input type that accepts DeblockArgs and DeblockOutput values.
 // You can construct a concrete instance of `DeblockInput` via:
 //
-//          DeblockArgs{...}
+//	DeblockArgs{...}
 type DeblockInput interface {
 	pulumi.Input
 
@@ -2188,11 +2188,11 @@ func (i DeblockArgs) ToDeblockPtrOutputWithContext(ctx context.Context) DeblockP
 // DeblockPtrInput is an input type that accepts DeblockArgs, DeblockPtr and DeblockPtrOutput values.
 // You can construct a concrete instance of `DeblockPtrInput` via:
 //
-//          DeblockArgs{...}
+//	        DeblockArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DeblockPtrInput interface {
 	pulumi.Input
 
@@ -2341,7 +2341,7 @@ type Denoise struct {
 // DenoiseInput is an input type that accepts DenoiseArgs and DenoiseOutput values.
 // You can construct a concrete instance of `DenoiseInput` via:
 //
-//          DenoiseArgs{...}
+//	DenoiseArgs{...}
 type DenoiseInput interface {
 	pulumi.Input
 
@@ -2380,11 +2380,11 @@ func (i DenoiseArgs) ToDenoisePtrOutputWithContext(ctx context.Context) DenoiseP
 // DenoisePtrInput is an input type that accepts DenoiseArgs, DenoisePtr and DenoisePtrOutput values.
 // You can construct a concrete instance of `DenoisePtrInput` via:
 //
-//          DenoiseArgs{...}
+//	        DenoiseArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DenoisePtrInput interface {
 	pulumi.Input
 
@@ -2537,7 +2537,7 @@ type EditAtom struct {
 // EditAtomInput is an input type that accepts EditAtomArgs and EditAtomOutput values.
 // You can construct a concrete instance of `EditAtomInput` via:
 //
-//          EditAtomArgs{...}
+//	EditAtomArgs{...}
 type EditAtomInput interface {
 	pulumi.Input
 
@@ -2572,7 +2572,7 @@ func (i EditAtomArgs) ToEditAtomOutputWithContext(ctx context.Context) EditAtomO
 // EditAtomArrayInput is an input type that accepts EditAtomArray and EditAtomArrayOutput values.
 // You can construct a concrete instance of `EditAtomArrayInput` via:
 //
-//          EditAtomArray{ EditAtomArgs{...} }
+//	EditAtomArray{ EditAtomArgs{...} }
 type EditAtomArrayInput interface {
 	pulumi.Input
 
@@ -2731,7 +2731,7 @@ type ElementaryStream struct {
 // ElementaryStreamInput is an input type that accepts ElementaryStreamArgs and ElementaryStreamOutput values.
 // You can construct a concrete instance of `ElementaryStreamInput` via:
 //
-//          ElementaryStreamArgs{...}
+//	ElementaryStreamArgs{...}
 type ElementaryStreamInput interface {
 	pulumi.Input
 
@@ -2766,7 +2766,7 @@ func (i ElementaryStreamArgs) ToElementaryStreamOutputWithContext(ctx context.Co
 // ElementaryStreamArrayInput is an input type that accepts ElementaryStreamArray and ElementaryStreamArrayOutput values.
 // You can construct a concrete instance of `ElementaryStreamArrayInput` via:
 //
-//          ElementaryStreamArray{ ElementaryStreamArgs{...} }
+//	ElementaryStreamArray{ ElementaryStreamArgs{...} }
 type ElementaryStreamArrayInput interface {
 	pulumi.Input
 
@@ -2957,7 +2957,7 @@ type H264CodecSettings struct {
 // H264CodecSettingsInput is an input type that accepts H264CodecSettingsArgs and H264CodecSettingsOutput values.
 // You can construct a concrete instance of `H264CodecSettingsInput` via:
 //
-//          H264CodecSettingsArgs{...}
+//	H264CodecSettingsArgs{...}
 type H264CodecSettingsInput interface {
 	pulumi.Input
 
@@ -3032,11 +3032,11 @@ func (i H264CodecSettingsArgs) ToH264CodecSettingsPtrOutputWithContext(ctx conte
 // H264CodecSettingsPtrInput is an input type that accepts H264CodecSettingsArgs, H264CodecSettingsPtr and H264CodecSettingsPtrOutput values.
 // You can construct a concrete instance of `H264CodecSettingsPtrInput` via:
 //
-//          H264CodecSettingsArgs{...}
+//	        H264CodecSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type H264CodecSettingsPtrInput interface {
 	pulumi.Input
 
@@ -3615,7 +3615,7 @@ type H265CodecSettings struct {
 // H265CodecSettingsInput is an input type that accepts H265CodecSettingsArgs and H265CodecSettingsOutput values.
 // You can construct a concrete instance of `H265CodecSettingsInput` via:
 //
-//          H265CodecSettingsArgs{...}
+//	H265CodecSettingsArgs{...}
 type H265CodecSettingsInput interface {
 	pulumi.Input
 
@@ -3688,11 +3688,11 @@ func (i H265CodecSettingsArgs) ToH265CodecSettingsPtrOutputWithContext(ctx conte
 // H265CodecSettingsPtrInput is an input type that accepts H265CodecSettingsArgs, H265CodecSettingsPtr and H265CodecSettingsPtrOutput values.
 // You can construct a concrete instance of `H265CodecSettingsPtrInput` via:
 //
-//          H265CodecSettingsArgs{...}
+//	        H265CodecSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type H265CodecSettingsPtrInput interface {
 	pulumi.Input
 
@@ -4217,7 +4217,7 @@ type Image struct {
 // ImageInput is an input type that accepts ImageArgs and ImageOutput values.
 // You can construct a concrete instance of `ImageInput` via:
 //
-//          ImageArgs{...}
+//	ImageArgs{...}
 type ImageInput interface {
 	pulumi.Input
 
@@ -4258,11 +4258,11 @@ func (i ImageArgs) ToImagePtrOutputWithContext(ctx context.Context) ImagePtrOutp
 // ImagePtrInput is an input type that accepts ImageArgs, ImagePtr and ImagePtrOutput values.
 // You can construct a concrete instance of `ImagePtrInput` via:
 //
-//          ImageArgs{...}
+//	        ImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ImagePtrInput interface {
 	pulumi.Input
 
@@ -4435,7 +4435,7 @@ type Input struct {
 // InputInput is an input type that accepts InputArgs and InputOutput values.
 // You can construct a concrete instance of `InputInput` via:
 //
-//          InputArgs{...}
+//	InputArgs{...}
 type InputInput interface {
 	pulumi.Input
 
@@ -4468,7 +4468,7 @@ func (i InputArgs) ToInputOutputWithContext(ctx context.Context) InputOutput {
 // InputArrayInput is an input type that accepts InputArray and InputArrayOutput values.
 // You can construct a concrete instance of `InputArrayInput` via:
 //
-//          InputArray{ InputArgs{...} }
+//	InputArray{ InputArgs{...} }
 type InputArrayInput interface {
 	pulumi.Input
 
@@ -4627,7 +4627,7 @@ type JobConfig struct {
 // JobConfigInput is an input type that accepts JobConfigArgs and JobConfigOutput values.
 // You can construct a concrete instance of `JobConfigInput` via:
 //
-//          JobConfigArgs{...}
+//	JobConfigArgs{...}
 type JobConfigInput interface {
 	pulumi.Input
 
@@ -4682,11 +4682,11 @@ func (i JobConfigArgs) ToJobConfigPtrOutputWithContext(ctx context.Context) JobC
 // JobConfigPtrInput is an input type that accepts JobConfigArgs, JobConfigPtr and JobConfigPtrOutput values.
 // You can construct a concrete instance of `JobConfigPtrInput` via:
 //
-//          JobConfigArgs{...}
+//	        JobConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type JobConfigPtrInput interface {
 	pulumi.Input
 
@@ -5013,7 +5013,7 @@ type Manifest struct {
 // ManifestInput is an input type that accepts ManifestArgs and ManifestOutput values.
 // You can construct a concrete instance of `ManifestInput` via:
 //
-//          ManifestArgs{...}
+//	ManifestArgs{...}
 type ManifestInput interface {
 	pulumi.Input
 
@@ -5046,7 +5046,7 @@ func (i ManifestArgs) ToManifestOutputWithContext(ctx context.Context) ManifestO
 // ManifestArrayInput is an input type that accepts ManifestArray and ManifestArrayOutput values.
 // You can construct a concrete instance of `ManifestArrayInput` via:
 //
-//          ManifestArray{ ManifestArgs{...} }
+//	ManifestArray{ ManifestArgs{...} }
 type ManifestArrayInput interface {
 	pulumi.Input
 
@@ -5195,7 +5195,7 @@ type MuxStream struct {
 // MuxStreamInput is an input type that accepts MuxStreamArgs and MuxStreamOutput values.
 // You can construct a concrete instance of `MuxStreamInput` via:
 //
-//          MuxStreamArgs{...}
+//	MuxStreamArgs{...}
 type MuxStreamInput interface {
 	pulumi.Input
 
@@ -5232,7 +5232,7 @@ func (i MuxStreamArgs) ToMuxStreamOutputWithContext(ctx context.Context) MuxStre
 // MuxStreamArrayInput is an input type that accepts MuxStreamArray and MuxStreamArrayOutput values.
 // You can construct a concrete instance of `MuxStreamArrayInput` via:
 //
-//          MuxStreamArray{ MuxStreamArgs{...} }
+//	MuxStreamArray{ MuxStreamArgs{...} }
 type MuxStreamArrayInput interface {
 	pulumi.Input
 
@@ -5399,7 +5399,7 @@ type NormalizedCoordinate struct {
 // NormalizedCoordinateInput is an input type that accepts NormalizedCoordinateArgs and NormalizedCoordinateOutput values.
 // You can construct a concrete instance of `NormalizedCoordinateInput` via:
 //
-//          NormalizedCoordinateArgs{...}
+//	NormalizedCoordinateArgs{...}
 type NormalizedCoordinateInput interface {
 	pulumi.Input
 
@@ -5438,11 +5438,11 @@ func (i NormalizedCoordinateArgs) ToNormalizedCoordinatePtrOutputWithContext(ctx
 // NormalizedCoordinatePtrInput is an input type that accepts NormalizedCoordinateArgs, NormalizedCoordinatePtr and NormalizedCoordinatePtrOutput values.
 // You can construct a concrete instance of `NormalizedCoordinatePtrInput` via:
 //
-//          NormalizedCoordinateArgs{...}
+//	        NormalizedCoordinateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NormalizedCoordinatePtrInput interface {
 	pulumi.Input
 
@@ -5589,7 +5589,7 @@ type Output struct {
 // OutputInput is an input type that accepts OutputArgs and OutputOutput values.
 // You can construct a concrete instance of `OutputInput` via:
 //
-//          OutputArgs{...}
+//	OutputArgs{...}
 type OutputInput interface {
 	pulumi.Input
 
@@ -5626,11 +5626,11 @@ func (i OutputArgs) ToOutputPtrOutputWithContext(ctx context.Context) OutputPtrO
 // OutputPtrInput is an input type that accepts OutputArgs, OutputPtr and OutputPtrOutput values.
 // You can construct a concrete instance of `OutputPtrInput` via:
 //
-//          OutputArgs{...}
+//	        OutputArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OutputPtrInput interface {
 	pulumi.Input
 
@@ -5757,7 +5757,7 @@ type Overlay struct {
 // OverlayInput is an input type that accepts OverlayArgs and OverlayOutput values.
 // You can construct a concrete instance of `OverlayInput` via:
 //
-//          OverlayArgs{...}
+//	OverlayArgs{...}
 type OverlayInput interface {
 	pulumi.Input
 
@@ -5788,7 +5788,7 @@ func (i OverlayArgs) ToOverlayOutputWithContext(ctx context.Context) OverlayOutp
 // OverlayArrayInput is an input type that accepts OverlayArray and OverlayArrayOutput values.
 // You can construct a concrete instance of `OverlayArrayInput` via:
 //
-//          OverlayArray{ OverlayArgs{...} }
+//	OverlayArray{ OverlayArgs{...} }
 type OverlayArrayInput interface {
 	pulumi.Input
 
@@ -5923,7 +5923,7 @@ type Pad struct {
 // PadInput is an input type that accepts PadArgs and PadOutput values.
 // You can construct a concrete instance of `PadInput` via:
 //
-//          PadArgs{...}
+//	PadArgs{...}
 type PadInput interface {
 	pulumi.Input
 
@@ -5966,11 +5966,11 @@ func (i PadArgs) ToPadPtrOutputWithContext(ctx context.Context) PadPtrOutput {
 // PadPtrInput is an input type that accepts PadArgs, PadPtr and PadPtrOutput values.
 // You can construct a concrete instance of `PadPtrInput` via:
 //
-//          PadArgs{...}
+//	        PadArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PadPtrInput interface {
 	pulumi.Input
 
@@ -6171,7 +6171,7 @@ type PreprocessingConfig struct {
 // PreprocessingConfigInput is an input type that accepts PreprocessingConfigArgs and PreprocessingConfigOutput values.
 // You can construct a concrete instance of `PreprocessingConfigInput` via:
 //
-//          PreprocessingConfigArgs{...}
+//	PreprocessingConfigArgs{...}
 type PreprocessingConfigInput interface {
 	pulumi.Input
 
@@ -6218,11 +6218,11 @@ func (i PreprocessingConfigArgs) ToPreprocessingConfigPtrOutputWithContext(ctx c
 // PreprocessingConfigPtrInput is an input type that accepts PreprocessingConfigArgs, PreprocessingConfigPtr and PreprocessingConfigPtrOutput values.
 // You can construct a concrete instance of `PreprocessingConfigPtrInput` via:
 //
-//          PreprocessingConfigArgs{...}
+//	        PreprocessingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PreprocessingConfigPtrInput interface {
 	pulumi.Input
 
@@ -6457,7 +6457,7 @@ type PubsubDestination struct {
 // PubsubDestinationInput is an input type that accepts PubsubDestinationArgs and PubsubDestinationOutput values.
 // You can construct a concrete instance of `PubsubDestinationInput` via:
 //
-//          PubsubDestinationArgs{...}
+//	PubsubDestinationArgs{...}
 type PubsubDestinationInput interface {
 	pulumi.Input
 
@@ -6494,11 +6494,11 @@ func (i PubsubDestinationArgs) ToPubsubDestinationPtrOutputWithContext(ctx conte
 // PubsubDestinationPtrInput is an input type that accepts PubsubDestinationArgs, PubsubDestinationPtr and PubsubDestinationPtrOutput values.
 // You can construct a concrete instance of `PubsubDestinationPtrInput` via:
 //
-//          PubsubDestinationArgs{...}
+//	        PubsubDestinationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PubsubDestinationPtrInput interface {
 	pulumi.Input
 
@@ -6625,7 +6625,7 @@ type SegmentSettings struct {
 // SegmentSettingsInput is an input type that accepts SegmentSettingsArgs and SegmentSettingsOutput values.
 // You can construct a concrete instance of `SegmentSettingsInput` via:
 //
-//          SegmentSettingsArgs{...}
+//	SegmentSettingsArgs{...}
 type SegmentSettingsInput interface {
 	pulumi.Input
 
@@ -6664,11 +6664,11 @@ func (i SegmentSettingsArgs) ToSegmentSettingsPtrOutputWithContext(ctx context.C
 // SegmentSettingsPtrInput is an input type that accepts SegmentSettingsArgs, SegmentSettingsPtr and SegmentSettingsPtrOutput values.
 // You can construct a concrete instance of `SegmentSettingsPtrInput` via:
 //
-//          SegmentSettingsArgs{...}
+//	        SegmentSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SegmentSettingsPtrInput interface {
 	pulumi.Input
 
@@ -6835,7 +6835,7 @@ type SpriteSheet struct {
 // SpriteSheetInput is an input type that accepts SpriteSheetArgs and SpriteSheetOutput values.
 // You can construct a concrete instance of `SpriteSheetInput` via:
 //
-//          SpriteSheetArgs{...}
+//	SpriteSheetArgs{...}
 type SpriteSheetInput interface {
 	pulumi.Input
 
@@ -6884,7 +6884,7 @@ func (i SpriteSheetArgs) ToSpriteSheetOutputWithContext(ctx context.Context) Spr
 // SpriteSheetArrayInput is an input type that accepts SpriteSheetArray and SpriteSheetArrayOutput values.
 // You can construct a concrete instance of `SpriteSheetArrayInput` via:
 //
-//          SpriteSheetArray{ SpriteSheetArgs{...} }
+//	SpriteSheetArray{ SpriteSheetArgs{...} }
 type SpriteSheetArrayInput interface {
 	pulumi.Input
 
@@ -7165,7 +7165,7 @@ type TextMapping struct {
 // TextMappingInput is an input type that accepts TextMappingArgs and TextMappingOutput values.
 // You can construct a concrete instance of `TextMappingInput` via:
 //
-//          TextMappingArgs{...}
+//	TextMappingArgs{...}
 type TextMappingInput interface {
 	pulumi.Input
 
@@ -7198,7 +7198,7 @@ func (i TextMappingArgs) ToTextMappingOutputWithContext(ctx context.Context) Tex
 // TextMappingArrayInput is an input type that accepts TextMappingArray and TextMappingArrayOutput values.
 // You can construct a concrete instance of `TextMappingArrayInput` via:
 //
-//          TextMappingArray{ TextMappingArgs{...} }
+//	TextMappingArray{ TextMappingArgs{...} }
 type TextMappingArrayInput interface {
 	pulumi.Input
 
@@ -7341,7 +7341,7 @@ type TextStream struct {
 // TextStreamInput is an input type that accepts TextStreamArgs and TextStreamOutput values.
 // You can construct a concrete instance of `TextStreamInput` via:
 //
-//          TextStreamArgs{...}
+//	TextStreamArgs{...}
 type TextStreamInput interface {
 	pulumi.Input
 
@@ -7380,11 +7380,11 @@ func (i TextStreamArgs) ToTextStreamPtrOutputWithContext(ctx context.Context) Te
 // TextStreamPtrInput is an input type that accepts TextStreamArgs, TextStreamPtr and TextStreamPtrOutput values.
 // You can construct a concrete instance of `TextStreamPtrInput` via:
 //
-//          TextStreamArgs{...}
+//	        TextStreamArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TextStreamPtrInput interface {
 	pulumi.Input
 
@@ -7535,7 +7535,7 @@ type VideoStream struct {
 // VideoStreamInput is an input type that accepts VideoStreamArgs and VideoStreamOutput values.
 // You can construct a concrete instance of `VideoStreamInput` via:
 //
-//          VideoStreamArgs{...}
+//	VideoStreamArgs{...}
 type VideoStreamInput interface {
 	pulumi.Input
 
@@ -7576,11 +7576,11 @@ func (i VideoStreamArgs) ToVideoStreamPtrOutputWithContext(ctx context.Context) 
 // VideoStreamPtrInput is an input type that accepts VideoStreamArgs, VideoStreamPtr and VideoStreamPtrOutput values.
 // You can construct a concrete instance of `VideoStreamPtrInput` via:
 //
-//          VideoStreamArgs{...}
+//	        VideoStreamArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VideoStreamPtrInput interface {
 	pulumi.Input
 
@@ -7767,7 +7767,7 @@ type Vp9CodecSettings struct {
 // Vp9CodecSettingsInput is an input type that accepts Vp9CodecSettingsArgs and Vp9CodecSettingsOutput values.
 // You can construct a concrete instance of `Vp9CodecSettingsInput` via:
 //
-//          Vp9CodecSettingsArgs{...}
+//	Vp9CodecSettingsArgs{...}
 type Vp9CodecSettingsInput interface {
 	pulumi.Input
 
@@ -7822,11 +7822,11 @@ func (i Vp9CodecSettingsArgs) ToVp9CodecSettingsPtrOutputWithContext(ctx context
 // Vp9CodecSettingsPtrInput is an input type that accepts Vp9CodecSettingsArgs, Vp9CodecSettingsPtr and Vp9CodecSettingsPtrOutput values.
 // You can construct a concrete instance of `Vp9CodecSettingsPtrInput` via:
 //
-//          Vp9CodecSettingsArgs{...}
+//	        Vp9CodecSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type Vp9CodecSettingsPtrInput interface {
 	pulumi.Input
 

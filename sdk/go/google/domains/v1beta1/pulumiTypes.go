@@ -21,7 +21,7 @@ type AuditConfig struct {
 // AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
 // You can construct a concrete instance of `AuditConfigInput` via:
 //
-//          AuditConfigArgs{...}
+//	AuditConfigArgs{...}
 type AuditConfigInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
-//          AuditConfigArray{ AuditConfigArgs{...} }
+//	AuditConfigArray{ AuditConfigArgs{...} }
 type AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type AuditLogConfig struct {
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
 // You can construct a concrete instance of `AuditLogConfigInput` via:
 //
-//          AuditLogConfigArgs{...}
+//	AuditLogConfigArgs{...}
 type AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -347,7 +347,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -380,7 +380,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -527,7 +527,7 @@ type Contact struct {
 // ContactInput is an input type that accepts ContactArgs and ContactOutput values.
 // You can construct a concrete instance of `ContactInput` via:
 //
-//          ContactArgs{...}
+//	ContactArgs{...}
 type ContactInput interface {
 	pulumi.Input
 
@@ -656,7 +656,7 @@ type ContactSettings struct {
 // ContactSettingsInput is an input type that accepts ContactSettingsArgs and ContactSettingsOutput values.
 // You can construct a concrete instance of `ContactSettingsInput` via:
 //
-//          ContactSettingsArgs{...}
+//	ContactSettingsArgs{...}
 type ContactSettingsInput interface {
 	pulumi.Input
 
@@ -781,7 +781,7 @@ type CustomDns struct {
 // CustomDnsInput is an input type that accepts CustomDnsArgs and CustomDnsOutput values.
 // You can construct a concrete instance of `CustomDnsInput` via:
 //
-//          CustomDnsArgs{...}
+//	CustomDnsArgs{...}
 type CustomDnsInput interface {
 	pulumi.Input
 
@@ -820,11 +820,11 @@ func (i CustomDnsArgs) ToCustomDnsPtrOutputWithContext(ctx context.Context) Cust
 // CustomDnsPtrInput is an input type that accepts CustomDnsArgs, CustomDnsPtr and CustomDnsPtrOutput values.
 // You can construct a concrete instance of `CustomDnsPtrInput` via:
 //
-//          CustomDnsArgs{...}
+//	        CustomDnsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CustomDnsPtrInput interface {
 	pulumi.Input
 
@@ -975,7 +975,7 @@ type DnsSettings struct {
 // DnsSettingsInput is an input type that accepts DnsSettingsArgs and DnsSettingsOutput values.
 // You can construct a concrete instance of `DnsSettingsInput` via:
 //
-//          DnsSettingsArgs{...}
+//	DnsSettingsArgs{...}
 type DnsSettingsInput interface {
 	pulumi.Input
 
@@ -1016,11 +1016,11 @@ func (i DnsSettingsArgs) ToDnsSettingsPtrOutputWithContext(ctx context.Context) 
 // DnsSettingsPtrInput is an input type that accepts DnsSettingsArgs, DnsSettingsPtr and DnsSettingsPtrOutput values.
 // You can construct a concrete instance of `DnsSettingsPtrInput` via:
 //
-//          DnsSettingsArgs{...}
+//	        DnsSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DnsSettingsPtrInput interface {
 	pulumi.Input
 
@@ -1195,7 +1195,7 @@ type DsRecord struct {
 // DsRecordInput is an input type that accepts DsRecordArgs and DsRecordOutput values.
 // You can construct a concrete instance of `DsRecordInput` via:
 //
-//          DsRecordArgs{...}
+//	DsRecordArgs{...}
 type DsRecordInput interface {
 	pulumi.Input
 
@@ -1230,7 +1230,7 @@ func (i DsRecordArgs) ToDsRecordOutputWithContext(ctx context.Context) DsRecordO
 // DsRecordArrayInput is an input type that accepts DsRecordArray and DsRecordArrayOutput values.
 // You can construct a concrete instance of `DsRecordArrayInput` via:
 //
-//          DsRecordArray{ DsRecordArgs{...} }
+//	DsRecordArray{ DsRecordArgs{...} }
 type DsRecordArrayInput interface {
 	pulumi.Input
 
@@ -1389,7 +1389,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -1432,11 +1432,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -1631,7 +1631,7 @@ type GlueRecord struct {
 // GlueRecordInput is an input type that accepts GlueRecordArgs and GlueRecordOutput values.
 // You can construct a concrete instance of `GlueRecordInput` via:
 //
-//          GlueRecordArgs{...}
+//	GlueRecordArgs{...}
 type GlueRecordInput interface {
 	pulumi.Input
 
@@ -1664,7 +1664,7 @@ func (i GlueRecordArgs) ToGlueRecordOutputWithContext(ctx context.Context) GlueR
 // GlueRecordArrayInput is an input type that accepts GlueRecordArray and GlueRecordArrayOutput values.
 // You can construct a concrete instance of `GlueRecordArrayInput` via:
 //
-//          GlueRecordArray{ GlueRecordArgs{...} }
+//	GlueRecordArray{ GlueRecordArgs{...} }
 type GlueRecordArrayInput interface {
 	pulumi.Input
 
@@ -1805,7 +1805,7 @@ type GoogleDomainsDns struct {
 // GoogleDomainsDnsInput is an input type that accepts GoogleDomainsDnsArgs and GoogleDomainsDnsOutput values.
 // You can construct a concrete instance of `GoogleDomainsDnsInput` via:
 //
-//          GoogleDomainsDnsArgs{...}
+//	GoogleDomainsDnsArgs{...}
 type GoogleDomainsDnsInput interface {
 	pulumi.Input
 
@@ -1842,11 +1842,11 @@ func (i GoogleDomainsDnsArgs) ToGoogleDomainsDnsPtrOutputWithContext(ctx context
 // GoogleDomainsDnsPtrInput is an input type that accepts GoogleDomainsDnsArgs, GoogleDomainsDnsPtr and GoogleDomainsDnsPtrOutput values.
 // You can construct a concrete instance of `GoogleDomainsDnsPtrInput` via:
 //
-//          GoogleDomainsDnsArgs{...}
+//	        GoogleDomainsDnsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleDomainsDnsPtrInput interface {
 	pulumi.Input
 
@@ -1985,7 +1985,7 @@ type ManagementSettings struct {
 // ManagementSettingsInput is an input type that accepts ManagementSettingsArgs and ManagementSettingsOutput values.
 // You can construct a concrete instance of `ManagementSettingsInput` via:
 //
-//          ManagementSettingsArgs{...}
+//	ManagementSettingsArgs{...}
 type ManagementSettingsInput interface {
 	pulumi.Input
 
@@ -2022,11 +2022,11 @@ func (i ManagementSettingsArgs) ToManagementSettingsPtrOutputWithContext(ctx con
 // ManagementSettingsPtrInput is an input type that accepts ManagementSettingsArgs, ManagementSettingsPtr and ManagementSettingsPtrOutput values.
 // You can construct a concrete instance of `ManagementSettingsPtrInput` via:
 //
-//          ManagementSettingsArgs{...}
+//	        ManagementSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ManagementSettingsPtrInput interface {
 	pulumi.Input
 
@@ -2162,7 +2162,7 @@ type Money struct {
 // MoneyInput is an input type that accepts MoneyArgs and MoneyOutput values.
 // You can construct a concrete instance of `MoneyInput` via:
 //
-//          MoneyArgs{...}
+//	MoneyArgs{...}
 type MoneyInput interface {
 	pulumi.Input
 
@@ -2251,7 +2251,7 @@ type PostalAddress struct {
 // PostalAddressInput is an input type that accepts PostalAddressArgs and PostalAddressOutput values.
 // You can construct a concrete instance of `PostalAddressInput` via:
 //
-//          PostalAddressArgs{...}
+//	PostalAddressArgs{...}
 type PostalAddressInput interface {
 	pulumi.Input
 

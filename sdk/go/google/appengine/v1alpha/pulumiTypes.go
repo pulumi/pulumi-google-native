@@ -21,7 +21,7 @@ type CertificateRawData struct {
 // CertificateRawDataInput is an input type that accepts CertificateRawDataArgs and CertificateRawDataOutput values.
 // You can construct a concrete instance of `CertificateRawDataInput` via:
 //
-//          CertificateRawDataArgs{...}
+//	CertificateRawDataArgs{...}
 type CertificateRawDataInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i CertificateRawDataArgs) ToCertificateRawDataPtrOutputWithContext(ctx con
 // CertificateRawDataPtrInput is an input type that accepts CertificateRawDataArgs, CertificateRawDataPtr and CertificateRawDataPtrOutput values.
 // You can construct a concrete instance of `CertificateRawDataPtrInput` via:
 //
-//          CertificateRawDataArgs{...}
+//	        CertificateRawDataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateRawDataPtrInput interface {
 	pulumi.Input
 
@@ -304,7 +304,7 @@ type SslSettings struct {
 // SslSettingsInput is an input type that accepts SslSettingsArgs and SslSettingsOutput values.
 // You can construct a concrete instance of `SslSettingsInput` via:
 //
-//          SslSettingsArgs{...}
+//	SslSettingsArgs{...}
 type SslSettingsInput interface {
 	pulumi.Input
 
@@ -341,11 +341,11 @@ func (i SslSettingsArgs) ToSslSettingsPtrOutputWithContext(ctx context.Context) 
 // SslSettingsPtrInput is an input type that accepts SslSettingsArgs, SslSettingsPtr and SslSettingsPtrOutput values.
 // You can construct a concrete instance of `SslSettingsPtrInput` via:
 //
-//          SslSettingsArgs{...}
+//	        SslSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SslSettingsPtrInput interface {
 	pulumi.Input
 

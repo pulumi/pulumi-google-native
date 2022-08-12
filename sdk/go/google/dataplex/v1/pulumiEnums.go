@@ -144,7 +144,7 @@ func (o EntitySystemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // EntitySystemInput is an input type that accepts EntitySystemArgs and EntitySystemOutput values.
 // You can construct a concrete instance of `EntitySystemInput` via:
 //
-//          EntitySystemArgs{...}
+//	EntitySystemArgs{...}
 type EntitySystemInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o EntityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 // EntityTypeInput is an input type that accepts EntityTypeArgs and EntityTypeOutput values.
 // You can construct a concrete instance of `EntityTypeInput` via:
 //
-//          EntityTypeArgs{...}
+//	EntityTypeArgs{...}
 type EntityTypeInput interface {
 	pulumi.Input
 
@@ -482,7 +482,7 @@ func (o GoogleCloudDataplexV1AssetResourceSpecTypePtrOutput) ToStringPtrOutputWi
 // GoogleCloudDataplexV1AssetResourceSpecTypeInput is an input type that accepts GoogleCloudDataplexV1AssetResourceSpecTypeArgs and GoogleCloudDataplexV1AssetResourceSpecTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1AssetResourceSpecTypeInput` via:
 //
-//          GoogleCloudDataplexV1AssetResourceSpecTypeArgs{...}
+//	GoogleCloudDataplexV1AssetResourceSpecTypeArgs{...}
 type GoogleCloudDataplexV1AssetResourceSpecTypeInput interface {
 	pulumi.Input
 
@@ -649,7 +649,7 @@ func (o GoogleCloudDataplexV1ContentNotebookKernelTypePtrOutput) ToStringPtrOutp
 // GoogleCloudDataplexV1ContentNotebookKernelTypeInput is an input type that accepts GoogleCloudDataplexV1ContentNotebookKernelTypeArgs and GoogleCloudDataplexV1ContentNotebookKernelTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1ContentNotebookKernelTypeInput` via:
 //
-//          GoogleCloudDataplexV1ContentNotebookKernelTypeArgs{...}
+//	GoogleCloudDataplexV1ContentNotebookKernelTypeArgs{...}
 type GoogleCloudDataplexV1ContentNotebookKernelTypeInput interface {
 	pulumi.Input
 
@@ -816,7 +816,7 @@ func (o GoogleCloudDataplexV1ContentSqlScriptEnginePtrOutput) ToStringPtrOutputW
 // GoogleCloudDataplexV1ContentSqlScriptEngineInput is an input type that accepts GoogleCloudDataplexV1ContentSqlScriptEngineArgs and GoogleCloudDataplexV1ContentSqlScriptEngineOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1ContentSqlScriptEngineInput` via:
 //
-//          GoogleCloudDataplexV1ContentSqlScriptEngineArgs{...}
+//	GoogleCloudDataplexV1ContentSqlScriptEngineArgs{...}
 type GoogleCloudDataplexV1ContentSqlScriptEngineInput interface {
 	pulumi.Input
 
@@ -1011,7 +1011,7 @@ func (o GoogleCloudDataplexV1SchemaPartitionFieldTypePtrOutput) ToStringPtrOutpu
 // GoogleCloudDataplexV1SchemaPartitionFieldTypeInput is an input type that accepts GoogleCloudDataplexV1SchemaPartitionFieldTypeArgs and GoogleCloudDataplexV1SchemaPartitionFieldTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1SchemaPartitionFieldTypeInput` via:
 //
-//          GoogleCloudDataplexV1SchemaPartitionFieldTypeArgs{...}
+//	GoogleCloudDataplexV1SchemaPartitionFieldTypeArgs{...}
 type GoogleCloudDataplexV1SchemaPartitionFieldTypeInput interface {
 	pulumi.Input
 
@@ -1178,7 +1178,7 @@ func (o GoogleCloudDataplexV1SchemaPartitionStylePtrOutput) ToStringPtrOutputWit
 // GoogleCloudDataplexV1SchemaPartitionStyleInput is an input type that accepts GoogleCloudDataplexV1SchemaPartitionStyleArgs and GoogleCloudDataplexV1SchemaPartitionStyleOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1SchemaPartitionStyleInput` via:
 //
-//          GoogleCloudDataplexV1SchemaPartitionStyleArgs{...}
+//	GoogleCloudDataplexV1SchemaPartitionStyleArgs{...}
 type GoogleCloudDataplexV1SchemaPartitionStyleInput interface {
 	pulumi.Input
 
@@ -1349,7 +1349,7 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldModePtrOutput) ToStringPtrOutputWi
 // GoogleCloudDataplexV1SchemaSchemaFieldModeInput is an input type that accepts GoogleCloudDataplexV1SchemaSchemaFieldModeArgs and GoogleCloudDataplexV1SchemaSchemaFieldModeOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1SchemaSchemaFieldModeInput` via:
 //
-//          GoogleCloudDataplexV1SchemaSchemaFieldModeArgs{...}
+//	GoogleCloudDataplexV1SchemaSchemaFieldModeArgs{...}
 type GoogleCloudDataplexV1SchemaSchemaFieldModeInput interface {
 	pulumi.Input
 
@@ -1544,7 +1544,7 @@ func (o GoogleCloudDataplexV1SchemaSchemaFieldTypePtrOutput) ToStringPtrOutputWi
 // GoogleCloudDataplexV1SchemaSchemaFieldTypeInput is an input type that accepts GoogleCloudDataplexV1SchemaSchemaFieldTypeArgs and GoogleCloudDataplexV1SchemaSchemaFieldTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1SchemaSchemaFieldTypeInput` via:
 //
-//          GoogleCloudDataplexV1SchemaSchemaFieldTypeArgs{...}
+//	GoogleCloudDataplexV1SchemaSchemaFieldTypeArgs{...}
 type GoogleCloudDataplexV1SchemaSchemaFieldTypeInput interface {
 	pulumi.Input
 
@@ -1713,7 +1713,7 @@ func (o GoogleCloudDataplexV1StorageFormatCompressionFormatPtrOutput) ToStringPt
 // GoogleCloudDataplexV1StorageFormatCompressionFormatInput is an input type that accepts GoogleCloudDataplexV1StorageFormatCompressionFormatArgs and GoogleCloudDataplexV1StorageFormatCompressionFormatOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1StorageFormatCompressionFormatInput` via:
 //
-//          GoogleCloudDataplexV1StorageFormatCompressionFormatArgs{...}
+//	GoogleCloudDataplexV1StorageFormatCompressionFormatArgs{...}
 type GoogleCloudDataplexV1StorageFormatCompressionFormatInput interface {
 	pulumi.Input
 
@@ -1882,7 +1882,7 @@ func (o GoogleCloudDataplexV1TaskTriggerSpecTypePtrOutput) ToStringPtrOutputWith
 // GoogleCloudDataplexV1TaskTriggerSpecTypeInput is an input type that accepts GoogleCloudDataplexV1TaskTriggerSpecTypeArgs and GoogleCloudDataplexV1TaskTriggerSpecTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1TaskTriggerSpecTypeInput` via:
 //
-//          GoogleCloudDataplexV1TaskTriggerSpecTypeArgs{...}
+//	GoogleCloudDataplexV1TaskTriggerSpecTypeArgs{...}
 type GoogleCloudDataplexV1TaskTriggerSpecTypeInput interface {
 	pulumi.Input
 
@@ -2051,7 +2051,7 @@ func (o GoogleCloudDataplexV1ZoneResourceSpecLocationTypePtrOutput) ToStringPtrO
 // GoogleCloudDataplexV1ZoneResourceSpecLocationTypeInput is an input type that accepts GoogleCloudDataplexV1ZoneResourceSpecLocationTypeArgs and GoogleCloudDataplexV1ZoneResourceSpecLocationTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudDataplexV1ZoneResourceSpecLocationTypeInput` via:
 //
-//          GoogleCloudDataplexV1ZoneResourceSpecLocationTypeArgs{...}
+//	GoogleCloudDataplexV1ZoneResourceSpecLocationTypeArgs{...}
 type GoogleCloudDataplexV1ZoneResourceSpecLocationTypeInput interface {
 	pulumi.Input
 
@@ -2222,7 +2222,7 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(
 // GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` via:
 //
-//          GoogleIamV1AuditLogConfigLogTypeArgs{...}
+//	GoogleIamV1AuditLogConfigLogTypeArgs{...}
 type GoogleIamV1AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -2391,7 +2391,7 @@ func (o ZoneTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 // ZoneTypeInput is an input type that accepts ZoneTypeArgs and ZoneTypeOutput values.
 // You can construct a concrete instance of `ZoneTypeInput` via:
 //
-//          ZoneTypeArgs{...}
+//	ZoneTypeArgs{...}
 type ZoneTypeInput interface {
 	pulumi.Input
 

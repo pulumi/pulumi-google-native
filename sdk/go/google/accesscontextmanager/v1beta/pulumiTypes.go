@@ -21,7 +21,7 @@ type BasicLevel struct {
 // BasicLevelInput is an input type that accepts BasicLevelArgs and BasicLevelOutput values.
 // You can construct a concrete instance of `BasicLevelInput` via:
 //
-//          BasicLevelArgs{...}
+//	BasicLevelArgs{...}
 type BasicLevelInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i BasicLevelArgs) ToBasicLevelPtrOutputWithContext(ctx context.Context) Ba
 // BasicLevelPtrInput is an input type that accepts BasicLevelArgs, BasicLevelPtr and BasicLevelPtrOutput values.
 // You can construct a concrete instance of `BasicLevelPtrInput` via:
 //
-//          BasicLevelArgs{...}
+//	        BasicLevelArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type BasicLevelPtrInput interface {
 	pulumi.Input
 
@@ -221,7 +221,7 @@ type Condition struct {
 // ConditionInput is an input type that accepts ConditionArgs and ConditionOutput values.
 // You can construct a concrete instance of `ConditionInput` via:
 //
-//          ConditionArgs{...}
+//	ConditionArgs{...}
 type ConditionInput interface {
 	pulumi.Input
 
@@ -260,7 +260,7 @@ func (i ConditionArgs) ToConditionOutputWithContext(ctx context.Context) Conditi
 // ConditionArrayInput is an input type that accepts ConditionArray and ConditionArrayOutput values.
 // You can construct a concrete instance of `ConditionArrayInput` via:
 //
-//          ConditionArray{ ConditionArgs{...} }
+//	ConditionArray{ ConditionArgs{...} }
 type ConditionArrayInput interface {
 	pulumi.Input
 
@@ -437,7 +437,7 @@ type CustomLevel struct {
 // CustomLevelInput is an input type that accepts CustomLevelArgs and CustomLevelOutput values.
 // You can construct a concrete instance of `CustomLevelInput` via:
 //
-//          CustomLevelArgs{...}
+//	CustomLevelArgs{...}
 type CustomLevelInput interface {
 	pulumi.Input
 
@@ -474,11 +474,11 @@ func (i CustomLevelArgs) ToCustomLevelPtrOutputWithContext(ctx context.Context) 
 // CustomLevelPtrInput is an input type that accepts CustomLevelArgs, CustomLevelPtr and CustomLevelPtrOutput values.
 // You can construct a concrete instance of `CustomLevelPtrInput` via:
 //
-//          CustomLevelArgs{...}
+//	        CustomLevelArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CustomLevelPtrInput interface {
 	pulumi.Input
 
@@ -613,7 +613,7 @@ type DevicePolicy struct {
 // DevicePolicyInput is an input type that accepts DevicePolicyArgs and DevicePolicyOutput values.
 // You can construct a concrete instance of `DevicePolicyInput` via:
 //
-//          DevicePolicyArgs{...}
+//	DevicePolicyArgs{...}
 type DevicePolicyInput interface {
 	pulumi.Input
 
@@ -660,11 +660,11 @@ func (i DevicePolicyArgs) ToDevicePolicyPtrOutputWithContext(ctx context.Context
 // DevicePolicyPtrInput is an input type that accepts DevicePolicyArgs, DevicePolicyPtr and DevicePolicyPtrOutput values.
 // You can construct a concrete instance of `DevicePolicyPtrInput` via:
 //
-//          DevicePolicyArgs{...}
+//	        DevicePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DevicePolicyPtrInput interface {
 	pulumi.Input
 
@@ -907,7 +907,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -950,11 +950,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -1149,7 +1149,7 @@ type OsConstraint struct {
 // OsConstraintInput is an input type that accepts OsConstraintArgs and OsConstraintOutput values.
 // You can construct a concrete instance of `OsConstraintInput` via:
 //
-//          OsConstraintArgs{...}
+//	OsConstraintArgs{...}
 type OsConstraintInput interface {
 	pulumi.Input
 
@@ -1182,7 +1182,7 @@ func (i OsConstraintArgs) ToOsConstraintOutputWithContext(ctx context.Context) O
 // OsConstraintArrayInput is an input type that accepts OsConstraintArray and OsConstraintArrayOutput values.
 // You can construct a concrete instance of `OsConstraintArrayInput` via:
 //
-//          OsConstraintArray{ OsConstraintArgs{...} }
+//	OsConstraintArray{ OsConstraintArgs{...} }
 type OsConstraintArrayInput interface {
 	pulumi.Input
 

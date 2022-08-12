@@ -21,7 +21,7 @@ type AuditConfig struct {
 // AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
 // You can construct a concrete instance of `AuditConfigInput` via:
 //
-//          AuditConfigArgs{...}
+//	AuditConfigArgs{...}
 type AuditConfigInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
-//          AuditConfigArray{ AuditConfigArgs{...} }
+//	AuditConfigArray{ AuditConfigArgs{...} }
 type AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type AuditLogConfig struct {
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
 // You can construct a concrete instance of `AuditLogConfigInput` via:
 //
-//          AuditLogConfigArgs{...}
+//	AuditLogConfigArgs{...}
 type AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -353,7 +353,7 @@ type BackupConfig struct {
 // BackupConfigInput is an input type that accepts BackupConfigArgs and BackupConfigOutput values.
 // You can construct a concrete instance of `BackupConfigInput` via:
 //
-//          BackupConfigArgs{...}
+//	BackupConfigArgs{...}
 type BackupConfigInput interface {
 	pulumi.Input
 
@@ -400,11 +400,11 @@ func (i BackupConfigArgs) ToBackupConfigPtrOutputWithContext(ctx context.Context
 // BackupConfigPtrInput is an input type that accepts BackupConfigArgs, BackupConfigPtr and BackupConfigPtrOutput values.
 // You can construct a concrete instance of `BackupConfigPtrInput` via:
 //
-//          BackupConfigArgs{...}
+//	        BackupConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type BackupConfigPtrInput interface {
 	pulumi.Input
 
@@ -643,7 +643,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -676,7 +676,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -871,7 +871,7 @@ type ClusterResourceRestoreScope struct {
 // ClusterResourceRestoreScopeInput is an input type that accepts ClusterResourceRestoreScopeArgs and ClusterResourceRestoreScopeOutput values.
 // You can construct a concrete instance of `ClusterResourceRestoreScopeInput` via:
 //
-//          ClusterResourceRestoreScopeArgs{...}
+//	ClusterResourceRestoreScopeArgs{...}
 type ClusterResourceRestoreScopeInput interface {
 	pulumi.Input
 
@@ -908,11 +908,11 @@ func (i ClusterResourceRestoreScopeArgs) ToClusterResourceRestoreScopePtrOutputW
 // ClusterResourceRestoreScopePtrInput is an input type that accepts ClusterResourceRestoreScopeArgs, ClusterResourceRestoreScopePtr and ClusterResourceRestoreScopePtrOutput values.
 // You can construct a concrete instance of `ClusterResourceRestoreScopePtrInput` via:
 //
-//          ClusterResourceRestoreScopeArgs{...}
+//	        ClusterResourceRestoreScopeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterResourceRestoreScopePtrInput interface {
 	pulumi.Input
 
@@ -1037,7 +1037,7 @@ type EncryptionKey struct {
 // EncryptionKeyInput is an input type that accepts EncryptionKeyArgs and EncryptionKeyOutput values.
 // You can construct a concrete instance of `EncryptionKeyInput` via:
 //
-//          EncryptionKeyArgs{...}
+//	EncryptionKeyArgs{...}
 type EncryptionKeyInput interface {
 	pulumi.Input
 
@@ -1074,11 +1074,11 @@ func (i EncryptionKeyArgs) ToEncryptionKeyPtrOutputWithContext(ctx context.Conte
 // EncryptionKeyPtrInput is an input type that accepts EncryptionKeyArgs, EncryptionKeyPtr and EncryptionKeyPtrOutput values.
 // You can construct a concrete instance of `EncryptionKeyPtrInput` via:
 //
-//          EncryptionKeyArgs{...}
+//	        EncryptionKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EncryptionKeyPtrInput interface {
 	pulumi.Input
 
@@ -1209,7 +1209,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -1252,11 +1252,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -1449,7 +1449,7 @@ type GroupKind struct {
 // GroupKindInput is an input type that accepts GroupKindArgs and GroupKindOutput values.
 // You can construct a concrete instance of `GroupKindInput` via:
 //
-//          GroupKindArgs{...}
+//	GroupKindArgs{...}
 type GroupKindInput interface {
 	pulumi.Input
 
@@ -1480,7 +1480,7 @@ func (i GroupKindArgs) ToGroupKindOutputWithContext(ctx context.Context) GroupKi
 // GroupKindArrayInput is an input type that accepts GroupKindArray and GroupKindArrayOutput values.
 // You can construct a concrete instance of `GroupKindArrayInput` via:
 //
-//          GroupKindArray{ GroupKindArgs{...} }
+//	GroupKindArray{ GroupKindArgs{...} }
 type GroupKindArrayInput interface {
 	pulumi.Input
 
@@ -1611,7 +1611,7 @@ type NamespacedName struct {
 // NamespacedNameInput is an input type that accepts NamespacedNameArgs and NamespacedNameOutput values.
 // You can construct a concrete instance of `NamespacedNameInput` via:
 //
-//          NamespacedNameArgs{...}
+//	NamespacedNameArgs{...}
 type NamespacedNameInput interface {
 	pulumi.Input
 
@@ -1642,7 +1642,7 @@ func (i NamespacedNameArgs) ToNamespacedNameOutputWithContext(ctx context.Contex
 // NamespacedNameArrayInput is an input type that accepts NamespacedNameArray and NamespacedNameArrayOutput values.
 // You can construct a concrete instance of `NamespacedNameArrayInput` via:
 //
-//          NamespacedNameArray{ NamespacedNameArgs{...} }
+//	NamespacedNameArray{ NamespacedNameArgs{...} }
 type NamespacedNameArrayInput interface {
 	pulumi.Input
 
@@ -1771,7 +1771,7 @@ type NamespacedNames struct {
 // NamespacedNamesInput is an input type that accepts NamespacedNamesArgs and NamespacedNamesOutput values.
 // You can construct a concrete instance of `NamespacedNamesInput` via:
 //
-//          NamespacedNamesArgs{...}
+//	NamespacedNamesArgs{...}
 type NamespacedNamesInput interface {
 	pulumi.Input
 
@@ -1808,11 +1808,11 @@ func (i NamespacedNamesArgs) ToNamespacedNamesPtrOutputWithContext(ctx context.C
 // NamespacedNamesPtrInput is an input type that accepts NamespacedNamesArgs, NamespacedNamesPtr and NamespacedNamesPtrOutput values.
 // You can construct a concrete instance of `NamespacedNamesPtrInput` via:
 //
-//          NamespacedNamesArgs{...}
+//	        NamespacedNamesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NamespacedNamesPtrInput interface {
 	pulumi.Input
 
@@ -1937,7 +1937,7 @@ type Namespaces struct {
 // NamespacesInput is an input type that accepts NamespacesArgs and NamespacesOutput values.
 // You can construct a concrete instance of `NamespacesInput` via:
 //
-//          NamespacesArgs{...}
+//	NamespacesArgs{...}
 type NamespacesInput interface {
 	pulumi.Input
 
@@ -1974,11 +1974,11 @@ func (i NamespacesArgs) ToNamespacesPtrOutputWithContext(ctx context.Context) Na
 // NamespacesPtrInput is an input type that accepts NamespacesArgs, NamespacesPtr and NamespacesPtrOutput values.
 // You can construct a concrete instance of `NamespacesPtrInput` via:
 //
-//          NamespacesArgs{...}
+//	        NamespacesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NamespacesPtrInput interface {
 	pulumi.Input
 
@@ -2117,7 +2117,7 @@ type RestoreConfig struct {
 // RestoreConfigInput is an input type that accepts RestoreConfigArgs and RestoreConfigOutput values.
 // You can construct a concrete instance of `RestoreConfigInput` via:
 //
-//          RestoreConfigArgs{...}
+//	RestoreConfigArgs{...}
 type RestoreConfigInput interface {
 	pulumi.Input
 
@@ -2306,7 +2306,7 @@ type RetentionPolicy struct {
 // RetentionPolicyInput is an input type that accepts RetentionPolicyArgs and RetentionPolicyOutput values.
 // You can construct a concrete instance of `RetentionPolicyInput` via:
 //
-//          RetentionPolicyArgs{...}
+//	RetentionPolicyArgs{...}
 type RetentionPolicyInput interface {
 	pulumi.Input
 
@@ -2347,11 +2347,11 @@ func (i RetentionPolicyArgs) ToRetentionPolicyPtrOutputWithContext(ctx context.C
 // RetentionPolicyPtrInput is an input type that accepts RetentionPolicyArgs, RetentionPolicyPtr and RetentionPolicyPtrOutput values.
 // You can construct a concrete instance of `RetentionPolicyPtrInput` via:
 //
-//          RetentionPolicyArgs{...}
+//	        RetentionPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RetentionPolicyPtrInput interface {
 	pulumi.Input
 
@@ -2522,7 +2522,7 @@ type Schedule struct {
 // ScheduleInput is an input type that accepts ScheduleArgs and ScheduleOutput values.
 // You can construct a concrete instance of `ScheduleInput` via:
 //
-//          ScheduleArgs{...}
+//	ScheduleArgs{...}
 type ScheduleInput interface {
 	pulumi.Input
 
@@ -2561,11 +2561,11 @@ func (i ScheduleArgs) ToSchedulePtrOutputWithContext(ctx context.Context) Schedu
 // SchedulePtrInput is an input type that accepts ScheduleArgs, SchedulePtr and SchedulePtrOutput values.
 // You can construct a concrete instance of `SchedulePtrInput` via:
 //
-//          ScheduleArgs{...}
+//	        ScheduleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SchedulePtrInput interface {
 	pulumi.Input
 
@@ -2720,7 +2720,7 @@ type SubstitutionRule struct {
 // SubstitutionRuleInput is an input type that accepts SubstitutionRuleArgs and SubstitutionRuleOutput values.
 // You can construct a concrete instance of `SubstitutionRuleInput` via:
 //
-//          SubstitutionRuleArgs{...}
+//	SubstitutionRuleArgs{...}
 type SubstitutionRuleInput interface {
 	pulumi.Input
 
@@ -2757,7 +2757,7 @@ func (i SubstitutionRuleArgs) ToSubstitutionRuleOutputWithContext(ctx context.Co
 // SubstitutionRuleArrayInput is an input type that accepts SubstitutionRuleArray and SubstitutionRuleArrayOutput values.
 // You can construct a concrete instance of `SubstitutionRuleArrayInput` via:
 //
-//          SubstitutionRuleArray{ SubstitutionRuleArgs{...} }
+//	SubstitutionRuleArray{ SubstitutionRuleArgs{...} }
 type SubstitutionRuleArrayInput interface {
 	pulumi.Input
 

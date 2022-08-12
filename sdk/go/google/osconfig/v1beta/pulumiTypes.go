@@ -27,7 +27,7 @@ type AptRepository struct {
 // AptRepositoryInput is an input type that accepts AptRepositoryArgs and AptRepositoryOutput values.
 // You can construct a concrete instance of `AptRepositoryInput` via:
 //
-//          AptRepositoryArgs{...}
+//	AptRepositoryArgs{...}
 type AptRepositoryInput interface {
 	pulumi.Input
 
@@ -72,11 +72,11 @@ func (i AptRepositoryArgs) ToAptRepositoryPtrOutputWithContext(ctx context.Conte
 // AptRepositoryPtrInput is an input type that accepts AptRepositoryArgs, AptRepositoryPtr and AptRepositoryPtrOutput values.
 // You can construct a concrete instance of `AptRepositoryPtrInput` via:
 //
-//          AptRepositoryArgs{...}
+//	        AptRepositoryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AptRepositoryPtrInput interface {
 	pulumi.Input
 
@@ -293,7 +293,7 @@ type AptSettings struct {
 // AptSettingsInput is an input type that accepts AptSettingsArgs and AptSettingsOutput values.
 // You can construct a concrete instance of `AptSettingsInput` via:
 //
-//          AptSettingsArgs{...}
+//	AptSettingsArgs{...}
 type AptSettingsInput interface {
 	pulumi.Input
 
@@ -334,11 +334,11 @@ func (i AptSettingsArgs) ToAptSettingsPtrOutputWithContext(ctx context.Context) 
 // AptSettingsPtrInput is an input type that accepts AptSettingsArgs, AptSettingsPtr and AptSettingsPtrOutput values.
 // You can construct a concrete instance of `AptSettingsPtrInput` via:
 //
-//          AptSettingsArgs{...}
+//	        AptSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AptSettingsPtrInput interface {
 	pulumi.Input
 
@@ -515,7 +515,7 @@ type Assignment struct {
 // AssignmentInput is an input type that accepts AssignmentArgs and AssignmentOutput values.
 // You can construct a concrete instance of `AssignmentInput` via:
 //
-//          AssignmentArgs{...}
+//	AssignmentArgs{...}
 type AssignmentInput interface {
 	pulumi.Input
 
@@ -598,7 +598,7 @@ type AssignmentGroupLabel struct {
 // AssignmentGroupLabelInput is an input type that accepts AssignmentGroupLabelArgs and AssignmentGroupLabelOutput values.
 // You can construct a concrete instance of `AssignmentGroupLabelInput` via:
 //
-//          AssignmentGroupLabelArgs{...}
+//	AssignmentGroupLabelArgs{...}
 type AssignmentGroupLabelInput interface {
 	pulumi.Input
 
@@ -627,7 +627,7 @@ func (i AssignmentGroupLabelArgs) ToAssignmentGroupLabelOutputWithContext(ctx co
 // AssignmentGroupLabelArrayInput is an input type that accepts AssignmentGroupLabelArray and AssignmentGroupLabelArrayOutput values.
 // You can construct a concrete instance of `AssignmentGroupLabelArrayInput` via:
 //
-//          AssignmentGroupLabelArray{ AssignmentGroupLabelArgs{...} }
+//	AssignmentGroupLabelArray{ AssignmentGroupLabelArgs{...} }
 type AssignmentGroupLabelArrayInput interface {
 	pulumi.Input
 
@@ -748,7 +748,7 @@ type AssignmentOsType struct {
 // AssignmentOsTypeInput is an input type that accepts AssignmentOsTypeArgs and AssignmentOsTypeOutput values.
 // You can construct a concrete instance of `AssignmentOsTypeInput` via:
 //
-//          AssignmentOsTypeArgs{...}
+//	AssignmentOsTypeArgs{...}
 type AssignmentOsTypeInput interface {
 	pulumi.Input
 
@@ -781,7 +781,7 @@ func (i AssignmentOsTypeArgs) ToAssignmentOsTypeOutputWithContext(ctx context.Co
 // AssignmentOsTypeArrayInput is an input type that accepts AssignmentOsTypeArray and AssignmentOsTypeArrayOutput values.
 // You can construct a concrete instance of `AssignmentOsTypeArrayInput` via:
 //
-//          AssignmentOsTypeArray{ AssignmentOsTypeArgs{...} }
+//	AssignmentOsTypeArray{ AssignmentOsTypeArgs{...} }
 type AssignmentOsTypeArrayInput interface {
 	pulumi.Input
 
@@ -978,7 +978,7 @@ type ExecStep struct {
 // ExecStepInput is an input type that accepts ExecStepArgs and ExecStepOutput values.
 // You can construct a concrete instance of `ExecStepInput` via:
 //
-//          ExecStepArgs{...}
+//	ExecStepArgs{...}
 type ExecStepInput interface {
 	pulumi.Input
 
@@ -1017,11 +1017,11 @@ func (i ExecStepArgs) ToExecStepPtrOutputWithContext(ctx context.Context) ExecSt
 // ExecStepPtrInput is an input type that accepts ExecStepArgs, ExecStepPtr and ExecStepPtrOutput values.
 // You can construct a concrete instance of `ExecStepPtrInput` via:
 //
-//          ExecStepArgs{...}
+//	        ExecStepArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExecStepPtrInput interface {
 	pulumi.Input
 
@@ -1141,7 +1141,7 @@ type ExecStepConfig struct {
 // ExecStepConfigInput is an input type that accepts ExecStepConfigArgs and ExecStepConfigOutput values.
 // You can construct a concrete instance of `ExecStepConfigInput` via:
 //
-//          ExecStepConfigArgs{...}
+//	ExecStepConfigArgs{...}
 type ExecStepConfigInput interface {
 	pulumi.Input
 
@@ -1184,11 +1184,11 @@ func (i ExecStepConfigArgs) ToExecStepConfigPtrOutputWithContext(ctx context.Con
 // ExecStepConfigPtrInput is an input type that accepts ExecStepConfigArgs, ExecStepConfigPtr and ExecStepConfigPtrOutput values.
 // You can construct a concrete instance of `ExecStepConfigPtrInput` via:
 //
-//          ExecStepConfigArgs{...}
+//	        ExecStepConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExecStepConfigPtrInput interface {
 	pulumi.Input
 
@@ -1414,7 +1414,7 @@ type FixedOrPercent struct {
 // FixedOrPercentInput is an input type that accepts FixedOrPercentArgs and FixedOrPercentOutput values.
 // You can construct a concrete instance of `FixedOrPercentInput` via:
 //
-//          FixedOrPercentArgs{...}
+//	FixedOrPercentArgs{...}
 type FixedOrPercentInput interface {
 	pulumi.Input
 
@@ -1453,11 +1453,11 @@ func (i FixedOrPercentArgs) ToFixedOrPercentPtrOutputWithContext(ctx context.Con
 // FixedOrPercentPtrInput is an input type that accepts FixedOrPercentArgs, FixedOrPercentPtr and FixedOrPercentPtrOutput values.
 // You can construct a concrete instance of `FixedOrPercentPtrInput` via:
 //
-//          FixedOrPercentArgs{...}
+//	        FixedOrPercentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type FixedOrPercentPtrInput interface {
 	pulumi.Input
 
@@ -1608,7 +1608,7 @@ type GcsObject struct {
 // GcsObjectInput is an input type that accepts GcsObjectArgs and GcsObjectOutput values.
 // You can construct a concrete instance of `GcsObjectInput` via:
 //
-//          GcsObjectArgs{...}
+//	GcsObjectArgs{...}
 type GcsObjectInput interface {
 	pulumi.Input
 
@@ -1649,11 +1649,11 @@ func (i GcsObjectArgs) ToGcsObjectPtrOutputWithContext(ctx context.Context) GcsO
 // GcsObjectPtrInput is an input type that accepts GcsObjectArgs, GcsObjectPtr and GcsObjectPtrOutput values.
 // You can construct a concrete instance of `GcsObjectPtrInput` via:
 //
-//          GcsObjectArgs{...}
+//	        GcsObjectArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GcsObjectPtrInput interface {
 	pulumi.Input
 
@@ -1824,7 +1824,7 @@ type GooRepository struct {
 // GooRepositoryInput is an input type that accepts GooRepositoryArgs and GooRepositoryOutput values.
 // You can construct a concrete instance of `GooRepositoryInput` via:
 //
-//          GooRepositoryArgs{...}
+//	GooRepositoryArgs{...}
 type GooRepositoryInput interface {
 	pulumi.Input
 
@@ -1863,11 +1863,11 @@ func (i GooRepositoryArgs) ToGooRepositoryPtrOutputWithContext(ctx context.Conte
 // GooRepositoryPtrInput is an input type that accepts GooRepositoryArgs, GooRepositoryPtr and GooRepositoryPtrOutput values.
 // You can construct a concrete instance of `GooRepositoryPtrInput` via:
 //
-//          GooRepositoryArgs{...}
+//	        GooRepositoryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooRepositoryPtrInput interface {
 	pulumi.Input
 
@@ -2012,7 +2012,7 @@ type GooSettings struct {
 // GooSettingsInput is an input type that accepts GooSettingsArgs and GooSettingsOutput values.
 // You can construct a concrete instance of `GooSettingsInput` via:
 //
-//          GooSettingsArgs{...}
+//	GooSettingsArgs{...}
 type GooSettingsInput interface {
 	pulumi.Input
 
@@ -2047,11 +2047,11 @@ func (i GooSettingsArgs) ToGooSettingsPtrOutputWithContext(ctx context.Context) 
 // GooSettingsPtrInput is an input type that accepts GooSettingsArgs, GooSettingsPtr and GooSettingsPtrOutput values.
 // You can construct a concrete instance of `GooSettingsPtrInput` via:
 //
-//          GooSettingsArgs{...}
+//	        GooSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooSettingsPtrInput interface {
 	pulumi.Input
 
@@ -2156,7 +2156,7 @@ type MonthlySchedule struct {
 // MonthlyScheduleInput is an input type that accepts MonthlyScheduleArgs and MonthlyScheduleOutput values.
 // You can construct a concrete instance of `MonthlyScheduleInput` via:
 //
-//          MonthlyScheduleArgs{...}
+//	MonthlyScheduleArgs{...}
 type MonthlyScheduleInput interface {
 	pulumi.Input
 
@@ -2251,7 +2251,7 @@ type OneTimeSchedule struct {
 // OneTimeScheduleInput is an input type that accepts OneTimeScheduleArgs and OneTimeScheduleOutput values.
 // You can construct a concrete instance of `OneTimeScheduleInput` via:
 //
-//          OneTimeScheduleArgs{...}
+//	OneTimeScheduleArgs{...}
 type OneTimeScheduleInput interface {
 	pulumi.Input
 
@@ -2336,7 +2336,7 @@ type Package struct {
 // PackageInput is an input type that accepts PackageArgs and PackageOutput values.
 // You can construct a concrete instance of `PackageInput` via:
 //
-//          PackageArgs{...}
+//	PackageArgs{...}
 type PackageInput interface {
 	pulumi.Input
 
@@ -2369,7 +2369,7 @@ func (i PackageArgs) ToPackageOutputWithContext(ctx context.Context) PackageOutp
 // PackageArrayInput is an input type that accepts PackageArray and PackageArrayOutput values.
 // You can construct a concrete instance of `PackageArrayInput` via:
 //
-//          PackageArray{ PackageArgs{...} }
+//	PackageArray{ PackageArgs{...} }
 type PackageArrayInput interface {
 	pulumi.Input
 
@@ -2456,7 +2456,7 @@ type PackageRepository struct {
 // PackageRepositoryInput is an input type that accepts PackageRepositoryArgs and PackageRepositoryOutput values.
 // You can construct a concrete instance of `PackageRepositoryInput` via:
 //
-//          PackageRepositoryArgs{...}
+//	PackageRepositoryArgs{...}
 type PackageRepositoryInput interface {
 	pulumi.Input
 
@@ -2491,7 +2491,7 @@ func (i PackageRepositoryArgs) ToPackageRepositoryOutputWithContext(ctx context.
 // PackageRepositoryArrayInput is an input type that accepts PackageRepositoryArray and PackageRepositoryArrayOutput values.
 // You can construct a concrete instance of `PackageRepositoryArrayInput` via:
 //
-//          PackageRepositoryArray{ PackageRepositoryArgs{...} }
+//	PackageRepositoryArray{ PackageRepositoryArgs{...} }
 type PackageRepositoryArrayInput interface {
 	pulumi.Input
 
@@ -2720,7 +2720,7 @@ type PatchConfig struct {
 // PatchConfigInput is an input type that accepts PatchConfigArgs and PatchConfigOutput values.
 // You can construct a concrete instance of `PatchConfigInput` via:
 //
-//          PatchConfigArgs{...}
+//	PatchConfigArgs{...}
 type PatchConfigInput interface {
 	pulumi.Input
 
@@ -2773,11 +2773,11 @@ func (i PatchConfigArgs) ToPatchConfigPtrOutputWithContext(ctx context.Context) 
 // PatchConfigPtrInput is an input type that accepts PatchConfigArgs, PatchConfigPtr and PatchConfigPtrOutput values.
 // You can construct a concrete instance of `PatchConfigPtrInput` via:
 //
-//          PatchConfigArgs{...}
+//	        PatchConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PatchConfigPtrInput interface {
 	pulumi.Input
 
@@ -3086,7 +3086,7 @@ type PatchInstanceFilter struct {
 // PatchInstanceFilterInput is an input type that accepts PatchInstanceFilterArgs and PatchInstanceFilterOutput values.
 // You can construct a concrete instance of `PatchInstanceFilterInput` via:
 //
-//          PatchInstanceFilterArgs{...}
+//	PatchInstanceFilterArgs{...}
 type PatchInstanceFilterInput interface {
 	pulumi.Input
 
@@ -3169,7 +3169,7 @@ type PatchInstanceFilterGroupLabel struct {
 // PatchInstanceFilterGroupLabelInput is an input type that accepts PatchInstanceFilterGroupLabelArgs and PatchInstanceFilterGroupLabelOutput values.
 // You can construct a concrete instance of `PatchInstanceFilterGroupLabelInput` via:
 //
-//          PatchInstanceFilterGroupLabelArgs{...}
+//	PatchInstanceFilterGroupLabelArgs{...}
 type PatchInstanceFilterGroupLabelInput interface {
 	pulumi.Input
 
@@ -3198,7 +3198,7 @@ func (i PatchInstanceFilterGroupLabelArgs) ToPatchInstanceFilterGroupLabelOutput
 // PatchInstanceFilterGroupLabelArrayInput is an input type that accepts PatchInstanceFilterGroupLabelArray and PatchInstanceFilterGroupLabelArrayOutput values.
 // You can construct a concrete instance of `PatchInstanceFilterGroupLabelArrayInput` via:
 //
-//          PatchInstanceFilterGroupLabelArray{ PatchInstanceFilterGroupLabelArgs{...} }
+//	PatchInstanceFilterGroupLabelArray{ PatchInstanceFilterGroupLabelArgs{...} }
 type PatchInstanceFilterGroupLabelArrayInput interface {
 	pulumi.Input
 
@@ -3371,7 +3371,7 @@ type PatchRollout struct {
 // PatchRolloutInput is an input type that accepts PatchRolloutArgs and PatchRolloutOutput values.
 // You can construct a concrete instance of `PatchRolloutInput` via:
 //
-//          PatchRolloutArgs{...}
+//	PatchRolloutArgs{...}
 type PatchRolloutInput interface {
 	pulumi.Input
 
@@ -3410,11 +3410,11 @@ func (i PatchRolloutArgs) ToPatchRolloutPtrOutputWithContext(ctx context.Context
 // PatchRolloutPtrInput is an input type that accepts PatchRolloutArgs, PatchRolloutPtr and PatchRolloutPtrOutput values.
 // You can construct a concrete instance of `PatchRolloutPtrInput` via:
 //
-//          PatchRolloutArgs{...}
+//	        PatchRolloutArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PatchRolloutPtrInput interface {
 	pulumi.Input
 
@@ -3573,7 +3573,7 @@ type RecurringSchedule struct {
 // RecurringScheduleInput is an input type that accepts RecurringScheduleArgs and RecurringScheduleOutput values.
 // You can construct a concrete instance of `RecurringScheduleInput` via:
 //
-//          RecurringScheduleArgs{...}
+//	RecurringScheduleArgs{...}
 type RecurringScheduleInput interface {
 	pulumi.Input
 
@@ -3762,7 +3762,7 @@ type SoftwareRecipe struct {
 // SoftwareRecipeInput is an input type that accepts SoftwareRecipeArgs and SoftwareRecipeOutput values.
 // You can construct a concrete instance of `SoftwareRecipeInput` via:
 //
-//          SoftwareRecipeArgs{...}
+//	SoftwareRecipeArgs{...}
 type SoftwareRecipeInput interface {
 	pulumi.Input
 
@@ -3801,7 +3801,7 @@ func (i SoftwareRecipeArgs) ToSoftwareRecipeOutputWithContext(ctx context.Contex
 // SoftwareRecipeArrayInput is an input type that accepts SoftwareRecipeArray and SoftwareRecipeArrayOutput values.
 // You can construct a concrete instance of `SoftwareRecipeArrayInput` via:
 //
-//          SoftwareRecipeArray{ SoftwareRecipeArgs{...} }
+//	SoftwareRecipeArray{ SoftwareRecipeArgs{...} }
 type SoftwareRecipeArrayInput interface {
 	pulumi.Input
 
@@ -3903,7 +3903,7 @@ type SoftwareRecipeArtifact struct {
 // SoftwareRecipeArtifactInput is an input type that accepts SoftwareRecipeArtifactArgs and SoftwareRecipeArtifactOutput values.
 // You can construct a concrete instance of `SoftwareRecipeArtifactInput` via:
 //
-//          SoftwareRecipeArtifactArgs{...}
+//	SoftwareRecipeArtifactArgs{...}
 type SoftwareRecipeArtifactInput interface {
 	pulumi.Input
 
@@ -3938,7 +3938,7 @@ func (i SoftwareRecipeArtifactArgs) ToSoftwareRecipeArtifactOutputWithContext(ct
 // SoftwareRecipeArtifactArrayInput is an input type that accepts SoftwareRecipeArtifactArray and SoftwareRecipeArtifactArrayOutput values.
 // You can construct a concrete instance of `SoftwareRecipeArtifactArrayInput` via:
 //
-//          SoftwareRecipeArtifactArray{ SoftwareRecipeArtifactArgs{...} }
+//	SoftwareRecipeArtifactArray{ SoftwareRecipeArtifactArgs{...} }
 type SoftwareRecipeArtifactArrayInput interface {
 	pulumi.Input
 
@@ -4028,7 +4028,7 @@ type SoftwareRecipeArtifactGcs struct {
 // SoftwareRecipeArtifactGcsInput is an input type that accepts SoftwareRecipeArtifactGcsArgs and SoftwareRecipeArtifactGcsOutput values.
 // You can construct a concrete instance of `SoftwareRecipeArtifactGcsInput` via:
 //
-//          SoftwareRecipeArtifactGcsArgs{...}
+//	SoftwareRecipeArtifactGcsArgs{...}
 type SoftwareRecipeArtifactGcsInput interface {
 	pulumi.Input
 
@@ -4069,11 +4069,11 @@ func (i SoftwareRecipeArtifactGcsArgs) ToSoftwareRecipeArtifactGcsPtrOutputWithC
 // SoftwareRecipeArtifactGcsPtrInput is an input type that accepts SoftwareRecipeArtifactGcsArgs, SoftwareRecipeArtifactGcsPtr and SoftwareRecipeArtifactGcsPtrOutput values.
 // You can construct a concrete instance of `SoftwareRecipeArtifactGcsPtrInput` via:
 //
-//          SoftwareRecipeArtifactGcsArgs{...}
+//	        SoftwareRecipeArtifactGcsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SoftwareRecipeArtifactGcsPtrInput interface {
 	pulumi.Input
 
@@ -4244,7 +4244,7 @@ type SoftwareRecipeArtifactRemote struct {
 // SoftwareRecipeArtifactRemoteInput is an input type that accepts SoftwareRecipeArtifactRemoteArgs and SoftwareRecipeArtifactRemoteOutput values.
 // You can construct a concrete instance of `SoftwareRecipeArtifactRemoteInput` via:
 //
-//          SoftwareRecipeArtifactRemoteArgs{...}
+//	SoftwareRecipeArtifactRemoteArgs{...}
 type SoftwareRecipeArtifactRemoteInput interface {
 	pulumi.Input
 
@@ -4283,11 +4283,11 @@ func (i SoftwareRecipeArtifactRemoteArgs) ToSoftwareRecipeArtifactRemotePtrOutpu
 // SoftwareRecipeArtifactRemotePtrInput is an input type that accepts SoftwareRecipeArtifactRemoteArgs, SoftwareRecipeArtifactRemotePtr and SoftwareRecipeArtifactRemotePtrOutput values.
 // You can construct a concrete instance of `SoftwareRecipeArtifactRemotePtrInput` via:
 //
-//          SoftwareRecipeArtifactRemoteArgs{...}
+//	        SoftwareRecipeArtifactRemoteArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SoftwareRecipeArtifactRemotePtrInput interface {
 	pulumi.Input
 
@@ -4587,7 +4587,7 @@ type SoftwareRecipeStep struct {
 // SoftwareRecipeStepInput is an input type that accepts SoftwareRecipeStepArgs and SoftwareRecipeStepOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepInput` via:
 //
-//          SoftwareRecipeStepArgs{...}
+//	SoftwareRecipeStepArgs{...}
 type SoftwareRecipeStepInput interface {
 	pulumi.Input
 
@@ -4628,7 +4628,7 @@ func (i SoftwareRecipeStepArgs) ToSoftwareRecipeStepOutputWithContext(ctx contex
 // SoftwareRecipeStepArrayInput is an input type that accepts SoftwareRecipeStepArray and SoftwareRecipeStepArrayOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepArrayInput` via:
 //
-//          SoftwareRecipeStepArray{ SoftwareRecipeStepArgs{...} }
+//	SoftwareRecipeStepArray{ SoftwareRecipeStepArgs{...} }
 type SoftwareRecipeStepArrayInput interface {
 	pulumi.Input
 
@@ -4735,7 +4735,7 @@ type SoftwareRecipeStepCopyFile struct {
 // SoftwareRecipeStepCopyFileInput is an input type that accepts SoftwareRecipeStepCopyFileArgs and SoftwareRecipeStepCopyFileOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepCopyFileInput` via:
 //
-//          SoftwareRecipeStepCopyFileArgs{...}
+//	SoftwareRecipeStepCopyFileArgs{...}
 type SoftwareRecipeStepCopyFileInput interface {
 	pulumi.Input
 
@@ -4778,11 +4778,11 @@ func (i SoftwareRecipeStepCopyFileArgs) ToSoftwareRecipeStepCopyFilePtrOutputWit
 // SoftwareRecipeStepCopyFilePtrInput is an input type that accepts SoftwareRecipeStepCopyFileArgs, SoftwareRecipeStepCopyFilePtr and SoftwareRecipeStepCopyFilePtrOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepCopyFilePtrInput` via:
 //
-//          SoftwareRecipeStepCopyFileArgs{...}
+//	        SoftwareRecipeStepCopyFileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SoftwareRecipeStepCopyFilePtrInput interface {
 	pulumi.Input
 
@@ -4979,7 +4979,7 @@ type SoftwareRecipeStepExecFile struct {
 // SoftwareRecipeStepExecFileInput is an input type that accepts SoftwareRecipeStepExecFileArgs and SoftwareRecipeStepExecFileOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepExecFileInput` via:
 //
-//          SoftwareRecipeStepExecFileArgs{...}
+//	SoftwareRecipeStepExecFileArgs{...}
 type SoftwareRecipeStepExecFileInput interface {
 	pulumi.Input
 
@@ -5022,11 +5022,11 @@ func (i SoftwareRecipeStepExecFileArgs) ToSoftwareRecipeStepExecFilePtrOutputWit
 // SoftwareRecipeStepExecFilePtrInput is an input type that accepts SoftwareRecipeStepExecFileArgs, SoftwareRecipeStepExecFilePtr and SoftwareRecipeStepExecFilePtrOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepExecFilePtrInput` via:
 //
-//          SoftwareRecipeStepExecFileArgs{...}
+//	        SoftwareRecipeStepExecFileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SoftwareRecipeStepExecFilePtrInput interface {
 	pulumi.Input
 
@@ -5221,7 +5221,7 @@ type SoftwareRecipeStepExtractArchive struct {
 // SoftwareRecipeStepExtractArchiveInput is an input type that accepts SoftwareRecipeStepExtractArchiveArgs and SoftwareRecipeStepExtractArchiveOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepExtractArchiveInput` via:
 //
-//          SoftwareRecipeStepExtractArchiveArgs{...}
+//	SoftwareRecipeStepExtractArchiveArgs{...}
 type SoftwareRecipeStepExtractArchiveInput interface {
 	pulumi.Input
 
@@ -5262,11 +5262,11 @@ func (i SoftwareRecipeStepExtractArchiveArgs) ToSoftwareRecipeStepExtractArchive
 // SoftwareRecipeStepExtractArchivePtrInput is an input type that accepts SoftwareRecipeStepExtractArchiveArgs, SoftwareRecipeStepExtractArchivePtr and SoftwareRecipeStepExtractArchivePtrOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepExtractArchivePtrInput` via:
 //
-//          SoftwareRecipeStepExtractArchiveArgs{...}
+//	        SoftwareRecipeStepExtractArchiveArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SoftwareRecipeStepExtractArchivePtrInput interface {
 	pulumi.Input
 
@@ -5435,7 +5435,7 @@ type SoftwareRecipeStepInstallDpkg struct {
 // SoftwareRecipeStepInstallDpkgInput is an input type that accepts SoftwareRecipeStepInstallDpkgArgs and SoftwareRecipeStepInstallDpkgOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepInstallDpkgInput` via:
 //
-//          SoftwareRecipeStepInstallDpkgArgs{...}
+//	SoftwareRecipeStepInstallDpkgArgs{...}
 type SoftwareRecipeStepInstallDpkgInput interface {
 	pulumi.Input
 
@@ -5472,11 +5472,11 @@ func (i SoftwareRecipeStepInstallDpkgArgs) ToSoftwareRecipeStepInstallDpkgPtrOut
 // SoftwareRecipeStepInstallDpkgPtrInput is an input type that accepts SoftwareRecipeStepInstallDpkgArgs, SoftwareRecipeStepInstallDpkgPtr and SoftwareRecipeStepInstallDpkgPtrOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepInstallDpkgPtrInput` via:
 //
-//          SoftwareRecipeStepInstallDpkgArgs{...}
+//	        SoftwareRecipeStepInstallDpkgArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SoftwareRecipeStepInstallDpkgPtrInput interface {
 	pulumi.Input
 
@@ -5605,7 +5605,7 @@ type SoftwareRecipeStepInstallMsi struct {
 // SoftwareRecipeStepInstallMsiInput is an input type that accepts SoftwareRecipeStepInstallMsiArgs and SoftwareRecipeStepInstallMsiOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepInstallMsiInput` via:
 //
-//          SoftwareRecipeStepInstallMsiArgs{...}
+//	SoftwareRecipeStepInstallMsiArgs{...}
 type SoftwareRecipeStepInstallMsiInput interface {
 	pulumi.Input
 
@@ -5646,11 +5646,11 @@ func (i SoftwareRecipeStepInstallMsiArgs) ToSoftwareRecipeStepInstallMsiPtrOutpu
 // SoftwareRecipeStepInstallMsiPtrInput is an input type that accepts SoftwareRecipeStepInstallMsiArgs, SoftwareRecipeStepInstallMsiPtr and SoftwareRecipeStepInstallMsiPtrOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepInstallMsiPtrInput` via:
 //
-//          SoftwareRecipeStepInstallMsiArgs{...}
+//	        SoftwareRecipeStepInstallMsiArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SoftwareRecipeStepInstallMsiPtrInput interface {
 	pulumi.Input
 
@@ -5819,7 +5819,7 @@ type SoftwareRecipeStepInstallRpm struct {
 // SoftwareRecipeStepInstallRpmInput is an input type that accepts SoftwareRecipeStepInstallRpmArgs and SoftwareRecipeStepInstallRpmOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepInstallRpmInput` via:
 //
-//          SoftwareRecipeStepInstallRpmArgs{...}
+//	SoftwareRecipeStepInstallRpmArgs{...}
 type SoftwareRecipeStepInstallRpmInput interface {
 	pulumi.Input
 
@@ -5856,11 +5856,11 @@ func (i SoftwareRecipeStepInstallRpmArgs) ToSoftwareRecipeStepInstallRpmPtrOutpu
 // SoftwareRecipeStepInstallRpmPtrInput is an input type that accepts SoftwareRecipeStepInstallRpmArgs, SoftwareRecipeStepInstallRpmPtr and SoftwareRecipeStepInstallRpmPtrOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepInstallRpmPtrInput` via:
 //
-//          SoftwareRecipeStepInstallRpmArgs{...}
+//	        SoftwareRecipeStepInstallRpmArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SoftwareRecipeStepInstallRpmPtrInput interface {
 	pulumi.Input
 
@@ -6079,7 +6079,7 @@ type SoftwareRecipeStepRunScript struct {
 // SoftwareRecipeStepRunScriptInput is an input type that accepts SoftwareRecipeStepRunScriptArgs and SoftwareRecipeStepRunScriptOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepRunScriptInput` via:
 //
-//          SoftwareRecipeStepRunScriptArgs{...}
+//	SoftwareRecipeStepRunScriptArgs{...}
 type SoftwareRecipeStepRunScriptInput interface {
 	pulumi.Input
 
@@ -6120,11 +6120,11 @@ func (i SoftwareRecipeStepRunScriptArgs) ToSoftwareRecipeStepRunScriptPtrOutputW
 // SoftwareRecipeStepRunScriptPtrInput is an input type that accepts SoftwareRecipeStepRunScriptArgs, SoftwareRecipeStepRunScriptPtr and SoftwareRecipeStepRunScriptPtrOutput values.
 // You can construct a concrete instance of `SoftwareRecipeStepRunScriptPtrInput` via:
 //
-//          SoftwareRecipeStepRunScriptArgs{...}
+//	        SoftwareRecipeStepRunScriptArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SoftwareRecipeStepRunScriptPtrInput interface {
 	pulumi.Input
 
@@ -6299,7 +6299,7 @@ type TimeOfDay struct {
 // TimeOfDayInput is an input type that accepts TimeOfDayArgs and TimeOfDayOutput values.
 // You can construct a concrete instance of `TimeOfDayInput` via:
 //
-//          TimeOfDayArgs{...}
+//	TimeOfDayArgs{...}
 type TimeOfDayInput interface {
 	pulumi.Input
 
@@ -6424,7 +6424,7 @@ type TimeZone struct {
 // TimeZoneInput is an input type that accepts TimeZoneArgs and TimeZoneOutput values.
 // You can construct a concrete instance of `TimeZoneInput` via:
 //
-//          TimeZoneArgs{...}
+//	TimeZoneArgs{...}
 type TimeZoneInput interface {
 	pulumi.Input
 
@@ -6516,7 +6516,7 @@ type WeekDayOfMonth struct {
 // WeekDayOfMonthInput is an input type that accepts WeekDayOfMonthArgs and WeekDayOfMonthOutput values.
 // You can construct a concrete instance of `WeekDayOfMonthInput` via:
 //
-//          WeekDayOfMonthArgs{...}
+//	WeekDayOfMonthArgs{...}
 type WeekDayOfMonthInput interface {
 	pulumi.Input
 
@@ -6625,7 +6625,7 @@ type WeeklySchedule struct {
 // WeeklyScheduleInput is an input type that accepts WeeklyScheduleArgs and WeeklyScheduleOutput values.
 // You can construct a concrete instance of `WeeklyScheduleInput` via:
 //
-//          WeeklyScheduleArgs{...}
+//	WeeklyScheduleArgs{...}
 type WeeklyScheduleInput interface {
 	pulumi.Input
 
@@ -6710,7 +6710,7 @@ type WindowsUpdateSettings struct {
 // WindowsUpdateSettingsInput is an input type that accepts WindowsUpdateSettingsArgs and WindowsUpdateSettingsOutput values.
 // You can construct a concrete instance of `WindowsUpdateSettingsInput` via:
 //
-//          WindowsUpdateSettingsArgs{...}
+//	WindowsUpdateSettingsArgs{...}
 type WindowsUpdateSettingsInput interface {
 	pulumi.Input
 
@@ -6751,11 +6751,11 @@ func (i WindowsUpdateSettingsArgs) ToWindowsUpdateSettingsPtrOutputWithContext(c
 // WindowsUpdateSettingsPtrInput is an input type that accepts WindowsUpdateSettingsArgs, WindowsUpdateSettingsPtr and WindowsUpdateSettingsPtrOutput values.
 // You can construct a concrete instance of `WindowsUpdateSettingsPtrInput` via:
 //
-//          WindowsUpdateSettingsArgs{...}
+//	        WindowsUpdateSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type WindowsUpdateSettingsPtrInput interface {
 	pulumi.Input
 
@@ -6930,7 +6930,7 @@ type YumRepository struct {
 // YumRepositoryInput is an input type that accepts YumRepositoryArgs and YumRepositoryOutput values.
 // You can construct a concrete instance of `YumRepositoryInput` via:
 //
-//          YumRepositoryArgs{...}
+//	YumRepositoryArgs{...}
 type YumRepositoryInput interface {
 	pulumi.Input
 
@@ -6973,11 +6973,11 @@ func (i YumRepositoryArgs) ToYumRepositoryPtrOutputWithContext(ctx context.Conte
 // YumRepositoryPtrInput is an input type that accepts YumRepositoryArgs, YumRepositoryPtr and YumRepositoryPtrOutput values.
 // You can construct a concrete instance of `YumRepositoryPtrInput` via:
 //
-//          YumRepositoryArgs{...}
+//	        YumRepositoryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type YumRepositoryPtrInput interface {
 	pulumi.Input
 
@@ -7167,7 +7167,7 @@ type YumSettings struct {
 // YumSettingsInput is an input type that accepts YumSettingsArgs and YumSettingsOutput values.
 // You can construct a concrete instance of `YumSettingsInput` via:
 //
-//          YumSettingsArgs{...}
+//	YumSettingsArgs{...}
 type YumSettingsInput interface {
 	pulumi.Input
 
@@ -7210,11 +7210,11 @@ func (i YumSettingsArgs) ToYumSettingsPtrOutputWithContext(ctx context.Context) 
 // YumSettingsPtrInput is an input type that accepts YumSettingsArgs, YumSettingsPtr and YumSettingsPtrOutput values.
 // You can construct a concrete instance of `YumSettingsPtrInput` via:
 //
-//          YumSettingsArgs{...}
+//	        YumSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type YumSettingsPtrInput interface {
 	pulumi.Input
 
@@ -7411,7 +7411,7 @@ type ZypperRepository struct {
 // ZypperRepositoryInput is an input type that accepts ZypperRepositoryArgs and ZypperRepositoryOutput values.
 // You can construct a concrete instance of `ZypperRepositoryInput` via:
 //
-//          ZypperRepositoryArgs{...}
+//	ZypperRepositoryArgs{...}
 type ZypperRepositoryInput interface {
 	pulumi.Input
 
@@ -7454,11 +7454,11 @@ func (i ZypperRepositoryArgs) ToZypperRepositoryPtrOutputWithContext(ctx context
 // ZypperRepositoryPtrInput is an input type that accepts ZypperRepositoryArgs, ZypperRepositoryPtr and ZypperRepositoryPtrOutput values.
 // You can construct a concrete instance of `ZypperRepositoryPtrInput` via:
 //
-//          ZypperRepositoryArgs{...}
+//	        ZypperRepositoryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ZypperRepositoryPtrInput interface {
 	pulumi.Input
 
@@ -7652,7 +7652,7 @@ type ZypperSettings struct {
 // ZypperSettingsInput is an input type that accepts ZypperSettingsArgs and ZypperSettingsOutput values.
 // You can construct a concrete instance of `ZypperSettingsInput` via:
 //
-//          ZypperSettingsArgs{...}
+//	ZypperSettingsArgs{...}
 type ZypperSettingsInput interface {
 	pulumi.Input
 
@@ -7699,11 +7699,11 @@ func (i ZypperSettingsArgs) ToZypperSettingsPtrOutputWithContext(ctx context.Con
 // ZypperSettingsPtrInput is an input type that accepts ZypperSettingsArgs, ZypperSettingsPtr and ZypperSettingsPtrOutput values.
 // You can construct a concrete instance of `ZypperSettingsPtrInput` via:
 //
-//          ZypperSettingsArgs{...}
+//	        ZypperSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ZypperSettingsPtrInput interface {
 	pulumi.Input
 

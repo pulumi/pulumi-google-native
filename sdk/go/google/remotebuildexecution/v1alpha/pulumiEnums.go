@@ -146,7 +146,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicy
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyOutput values.
 // You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyInput` via:
 //
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyArgs{...}
+//	GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyArgs{...}
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyFeaturePolicyInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolatio
 // GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationInput is an input type that accepts GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationArgs and GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationOutput values.
 // You can construct a concrete instance of `GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationInput` via:
 //
-//          GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationArgs{...}
+//	GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationArgs{...}
 type GoogleDevtoolsRemotebuildexecutionAdminV1alphaFeaturePolicyLinuxIsolationInput interface {
 	pulumi.Input
 

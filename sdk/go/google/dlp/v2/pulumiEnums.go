@@ -142,7 +142,7 @@ func (o GooglePrivacyDlpV2BigQueryOptionsSampleMethodPtrOutput) ToStringPtrOutpu
 // GooglePrivacyDlpV2BigQueryOptionsSampleMethodInput is an input type that accepts GooglePrivacyDlpV2BigQueryOptionsSampleMethodArgs and GooglePrivacyDlpV2BigQueryOptionsSampleMethodOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryOptionsSampleMethodInput` via:
 //
-//          GooglePrivacyDlpV2BigQueryOptionsSampleMethodArgs{...}
+//	GooglePrivacyDlpV2BigQueryOptionsSampleMethodArgs{...}
 type GooglePrivacyDlpV2BigQueryOptionsSampleMethodInput interface {
 	pulumi.Input
 
@@ -317,7 +317,7 @@ func (o GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnorePtrOutput) ToStri
 // GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreInput is an input type that accepts GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreArgs and GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreInput` via:
 //
-//          GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreArgs{...}
+//	GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreArgs{...}
 type GooglePrivacyDlpV2CharsToIgnoreCommonCharactersToIgnoreInput interface {
 	pulumi.Input
 
@@ -501,7 +501,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemPtrOutput) ToStringPtr
 // GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemInput is an input type that accepts GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArgs and GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemInput` via:
 //
-//          GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArgs{...}
+//	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArgs{...}
 type GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemInput interface {
 	pulumi.Input
 
@@ -539,7 +539,7 @@ func (in *googlePrivacyDlpV2CloudStorageOptionsFileTypesItemPtr) ToGooglePrivacy
 // GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayInput is an input type that accepts GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArray and GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayInput` via:
 //
-//          GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArray{ GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArgs{...} }
+//	GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArray{ GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArgs{...} }
 type GooglePrivacyDlpV2CloudStorageOptionsFileTypesItemArrayInput interface {
 	pulumi.Input
 
@@ -713,7 +713,7 @@ func (o GooglePrivacyDlpV2CloudStorageOptionsSampleMethodPtrOutput) ToStringPtrO
 // GooglePrivacyDlpV2CloudStorageOptionsSampleMethodInput is an input type that accepts GooglePrivacyDlpV2CloudStorageOptionsSampleMethodArgs and GooglePrivacyDlpV2CloudStorageOptionsSampleMethodOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageOptionsSampleMethodInput` via:
 //
-//          GooglePrivacyDlpV2CloudStorageOptionsSampleMethodArgs{...}
+//	GooglePrivacyDlpV2CloudStorageOptionsSampleMethodArgs{...}
 type GooglePrivacyDlpV2CloudStorageOptionsSampleMethodInput interface {
 	pulumi.Input
 
@@ -892,7 +892,7 @@ func (o GooglePrivacyDlpV2ConditionOperatorPtrOutput) ToStringPtrOutputWithConte
 // GooglePrivacyDlpV2ConditionOperatorInput is an input type that accepts GooglePrivacyDlpV2ConditionOperatorArgs and GooglePrivacyDlpV2ConditionOperatorOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ConditionOperatorInput` via:
 //
-//          GooglePrivacyDlpV2ConditionOperatorArgs{...}
+//	GooglePrivacyDlpV2ConditionOperatorArgs{...}
 type GooglePrivacyDlpV2ConditionOperatorInput interface {
 	pulumi.Input
 
@@ -1065,7 +1065,7 @@ func (o GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetPtrOutput) ToSt
 // GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetInput is an input type that accepts GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetArgs and GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetInput` via:
 //
-//          GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetArgs{...}
+//	GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetArgs{...}
 type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigCommonAlphabetInput interface {
 	pulumi.Input
 
@@ -1232,7 +1232,7 @@ func (o GooglePrivacyDlpV2CustomInfoTypeExclusionTypePtrOutput) ToStringPtrOutpu
 // GooglePrivacyDlpV2CustomInfoTypeExclusionTypeInput is an input type that accepts GooglePrivacyDlpV2CustomInfoTypeExclusionTypeArgs and GooglePrivacyDlpV2CustomInfoTypeExclusionTypeOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CustomInfoTypeExclusionTypeInput` via:
 //
-//          GooglePrivacyDlpV2CustomInfoTypeExclusionTypeArgs{...}
+//	GooglePrivacyDlpV2CustomInfoTypeExclusionTypeArgs{...}
 type GooglePrivacyDlpV2CustomInfoTypeExclusionTypeInput interface {
 	pulumi.Input
 
@@ -1405,7 +1405,7 @@ func (o GooglePrivacyDlpV2CustomInfoTypeLikelihoodPtrOutput) ToStringPtrOutputWi
 // GooglePrivacyDlpV2CustomInfoTypeLikelihoodInput is an input type that accepts GooglePrivacyDlpV2CustomInfoTypeLikelihoodArgs and GooglePrivacyDlpV2CustomInfoTypeLikelihoodOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CustomInfoTypeLikelihoodInput` via:
 //
-//          GooglePrivacyDlpV2CustomInfoTypeLikelihoodArgs{...}
+//	GooglePrivacyDlpV2CustomInfoTypeLikelihoodArgs{...}
 type GooglePrivacyDlpV2CustomInfoTypeLikelihoodInput interface {
 	pulumi.Input
 
@@ -1589,7 +1589,7 @@ func (o GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemPtrOutput) ToStringP
 // GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemInput is an input type that accepts GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArgs and GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemInput` via:
 //
-//          GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArgs{...}
+//	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArgs{...}
 type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemInput interface {
 	pulumi.Input
 
@@ -1627,7 +1627,7 @@ func (in *googlePrivacyDlpV2DeidentifyFileTypesToTransformItemPtr) ToGooglePriva
 // GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayInput is an input type that accepts GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArray and GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayInput` via:
 //
-//          GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArray{ GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArgs{...} }
+//	GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArray{ GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArgs{...} }
 type GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayInput interface {
 	pulumi.Input
 
@@ -1805,7 +1805,7 @@ func (o GooglePrivacyDlpV2ExclusionRuleMatchingTypePtrOutput) ToStringPtrOutputW
 // GooglePrivacyDlpV2ExclusionRuleMatchingTypeInput is an input type that accepts GooglePrivacyDlpV2ExclusionRuleMatchingTypeArgs and GooglePrivacyDlpV2ExclusionRuleMatchingTypeOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ExclusionRuleMatchingTypeInput` via:
 //
-//          GooglePrivacyDlpV2ExclusionRuleMatchingTypeArgs{...}
+//	GooglePrivacyDlpV2ExclusionRuleMatchingTypeArgs{...}
 type GooglePrivacyDlpV2ExclusionRuleMatchingTypeInput interface {
 	pulumi.Input
 
@@ -1972,7 +1972,7 @@ func (o GooglePrivacyDlpV2ExpressionsLogicalOperatorPtrOutput) ToStringPtrOutput
 // GooglePrivacyDlpV2ExpressionsLogicalOperatorInput is an input type that accepts GooglePrivacyDlpV2ExpressionsLogicalOperatorArgs and GooglePrivacyDlpV2ExpressionsLogicalOperatorOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ExpressionsLogicalOperatorInput` via:
 //
-//          GooglePrivacyDlpV2ExpressionsLogicalOperatorArgs{...}
+//	GooglePrivacyDlpV2ExpressionsLogicalOperatorArgs{...}
 type GooglePrivacyDlpV2ExpressionsLogicalOperatorInput interface {
 	pulumi.Input
 
@@ -2140,7 +2140,7 @@ func (o GooglePrivacyDlpV2InspectConfigContentOptionsItemPtrOutput) ToStringPtrO
 // GooglePrivacyDlpV2InspectConfigContentOptionsItemInput is an input type that accepts GooglePrivacyDlpV2InspectConfigContentOptionsItemArgs and GooglePrivacyDlpV2InspectConfigContentOptionsItemOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InspectConfigContentOptionsItemInput` via:
 //
-//          GooglePrivacyDlpV2InspectConfigContentOptionsItemArgs{...}
+//	GooglePrivacyDlpV2InspectConfigContentOptionsItemArgs{...}
 type GooglePrivacyDlpV2InspectConfigContentOptionsItemInput interface {
 	pulumi.Input
 
@@ -2178,7 +2178,7 @@ func (in *googlePrivacyDlpV2InspectConfigContentOptionsItemPtr) ToGooglePrivacyD
 // GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayInput is an input type that accepts GooglePrivacyDlpV2InspectConfigContentOptionsItemArray and GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayInput` via:
 //
-//          GooglePrivacyDlpV2InspectConfigContentOptionsItemArray{ GooglePrivacyDlpV2InspectConfigContentOptionsItemArgs{...} }
+//	GooglePrivacyDlpV2InspectConfigContentOptionsItemArray{ GooglePrivacyDlpV2InspectConfigContentOptionsItemArgs{...} }
 type GooglePrivacyDlpV2InspectConfigContentOptionsItemArrayInput interface {
 	pulumi.Input
 
@@ -2358,7 +2358,7 @@ func (o GooglePrivacyDlpV2InspectConfigMinLikelihoodPtrOutput) ToStringPtrOutput
 // GooglePrivacyDlpV2InspectConfigMinLikelihoodInput is an input type that accepts GooglePrivacyDlpV2InspectConfigMinLikelihoodArgs and GooglePrivacyDlpV2InspectConfigMinLikelihoodOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InspectConfigMinLikelihoodInput` via:
 //
-//          GooglePrivacyDlpV2InspectConfigMinLikelihoodArgs{...}
+//	GooglePrivacyDlpV2InspectConfigMinLikelihoodArgs{...}
 type GooglePrivacyDlpV2InspectConfigMinLikelihoodInput interface {
 	pulumi.Input
 
@@ -2531,7 +2531,7 @@ func (o GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodPtrOutput) ToString
 // GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodInput is an input type that accepts GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodArgs and GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodInput` via:
 //
-//          GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodArgs{...}
+//	GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodArgs{...}
 type GooglePrivacyDlpV2LikelihoodAdjustmentFixedLikelihoodInput interface {
 	pulumi.Input
 
@@ -2706,7 +2706,7 @@ func (o GooglePrivacyDlpV2OutputStorageConfigOutputSchemaPtrOutput) ToStringPtrO
 // GooglePrivacyDlpV2OutputStorageConfigOutputSchemaInput is an input type that accepts GooglePrivacyDlpV2OutputStorageConfigOutputSchemaArgs and GooglePrivacyDlpV2OutputStorageConfigOutputSchemaOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2OutputStorageConfigOutputSchemaInput` via:
 //
-//          GooglePrivacyDlpV2OutputStorageConfigOutputSchemaArgs{...}
+//	GooglePrivacyDlpV2OutputStorageConfigOutputSchemaArgs{...}
 type GooglePrivacyDlpV2OutputStorageConfigOutputSchemaInput interface {
 	pulumi.Input
 
@@ -2883,7 +2883,7 @@ func (o GooglePrivacyDlpV2TimePartConfigPartToExtractPtrOutput) ToStringPtrOutpu
 // GooglePrivacyDlpV2TimePartConfigPartToExtractInput is an input type that accepts GooglePrivacyDlpV2TimePartConfigPartToExtractArgs and GooglePrivacyDlpV2TimePartConfigPartToExtractOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TimePartConfigPartToExtractInput` via:
 //
-//          GooglePrivacyDlpV2TimePartConfigPartToExtractArgs{...}
+//	GooglePrivacyDlpV2TimePartConfigPartToExtractArgs{...}
 type GooglePrivacyDlpV2TimePartConfigPartToExtractInput interface {
 	pulumi.Input
 
@@ -3062,7 +3062,7 @@ func (o GooglePrivacyDlpV2ValueDayOfWeekValuePtrOutput) ToStringPtrOutputWithCon
 // GooglePrivacyDlpV2ValueDayOfWeekValueInput is an input type that accepts GooglePrivacyDlpV2ValueDayOfWeekValueArgs and GooglePrivacyDlpV2ValueDayOfWeekValueOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ValueDayOfWeekValueInput` via:
 //
-//          GooglePrivacyDlpV2ValueDayOfWeekValueArgs{...}
+//	GooglePrivacyDlpV2ValueDayOfWeekValueArgs{...}
 type GooglePrivacyDlpV2ValueDayOfWeekValueInput interface {
 	pulumi.Input
 
@@ -3233,7 +3233,7 @@ func (o JobTriggerStatusPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // JobTriggerStatusInput is an input type that accepts JobTriggerStatusArgs and JobTriggerStatusOutput values.
 // You can construct a concrete instance of `JobTriggerStatusInput` via:
 //
-//          JobTriggerStatusArgs{...}
+//	JobTriggerStatusArgs{...}
 type JobTriggerStatusInput interface {
 	pulumi.Input
 
@@ -3404,7 +3404,7 @@ func (o OrganizationJobTriggerStatusPtrOutput) ToStringPtrOutputWithContext(ctx 
 // OrganizationJobTriggerStatusInput is an input type that accepts OrganizationJobTriggerStatusArgs and OrganizationJobTriggerStatusOutput values.
 // You can construct a concrete instance of `OrganizationJobTriggerStatusInput` via:
 //
-//          OrganizationJobTriggerStatusArgs{...}
+//	OrganizationJobTriggerStatusArgs{...}
 type OrganizationJobTriggerStatusInput interface {
 	pulumi.Input
 

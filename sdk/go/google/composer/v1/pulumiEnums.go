@@ -146,7 +146,7 @@ func (o EnvironmentConfigEnvironmentSizePtrOutput) ToStringPtrOutputWithContext(
 // EnvironmentConfigEnvironmentSizeInput is an input type that accepts EnvironmentConfigEnvironmentSizeArgs and EnvironmentConfigEnvironmentSizeOutput values.
 // You can construct a concrete instance of `EnvironmentConfigEnvironmentSizeInput` via:
 //
-//          EnvironmentConfigEnvironmentSizeArgs{...}
+//	EnvironmentConfigEnvironmentSizeArgs{...}
 type EnvironmentConfigEnvironmentSizeInput interface {
 	pulumi.Input
 
@@ -321,7 +321,7 @@ func (o EnvironmentStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.
 // EnvironmentStateEnumInput is an input type that accepts EnvironmentStateEnumArgs and EnvironmentStateEnumOutput values.
 // You can construct a concrete instance of `EnvironmentStateEnumInput` via:
 //
-//          EnvironmentStateEnumArgs{...}
+//	EnvironmentStateEnumArgs{...}
 type EnvironmentStateEnumInput interface {
 	pulumi.Input
 

@@ -21,7 +21,7 @@ type AuditConfig struct {
 // AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
 // You can construct a concrete instance of `AuditConfigInput` via:
 //
-//          AuditConfigArgs{...}
+//	AuditConfigArgs{...}
 type AuditConfigInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
-//          AuditConfigArray{ AuditConfigArgs{...} }
+//	AuditConfigArray{ AuditConfigArgs{...} }
 type AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type AuditLogConfig struct {
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
 // You can construct a concrete instance of `AuditLogConfigInput` via:
 //
-//          AuditLogConfigArgs{...}
+//	AuditLogConfigArgs{...}
 type AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -345,7 +345,7 @@ type AutoscalingLimits struct {
 // AutoscalingLimitsInput is an input type that accepts AutoscalingLimitsArgs and AutoscalingLimitsOutput values.
 // You can construct a concrete instance of `AutoscalingLimitsInput` via:
 //
-//          AutoscalingLimitsArgs{...}
+//	AutoscalingLimitsArgs{...}
 type AutoscalingLimitsInput interface {
 	pulumi.Input
 
@@ -384,11 +384,11 @@ func (i AutoscalingLimitsArgs) ToAutoscalingLimitsPtrOutputWithContext(ctx conte
 // AutoscalingLimitsPtrInput is an input type that accepts AutoscalingLimitsArgs, AutoscalingLimitsPtr and AutoscalingLimitsPtrOutput values.
 // You can construct a concrete instance of `AutoscalingLimitsPtrInput` via:
 //
-//          AutoscalingLimitsArgs{...}
+//	        AutoscalingLimitsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AutoscalingLimitsPtrInput interface {
 	pulumi.Input
 
@@ -537,7 +537,7 @@ type AutoscalingTargets struct {
 // AutoscalingTargetsInput is an input type that accepts AutoscalingTargetsArgs and AutoscalingTargetsOutput values.
 // You can construct a concrete instance of `AutoscalingTargetsInput` via:
 //
-//          AutoscalingTargetsArgs{...}
+//	AutoscalingTargetsArgs{...}
 type AutoscalingTargetsInput interface {
 	pulumi.Input
 
@@ -576,11 +576,11 @@ func (i AutoscalingTargetsArgs) ToAutoscalingTargetsPtrOutputWithContext(ctx con
 // AutoscalingTargetsPtrInput is an input type that accepts AutoscalingTargetsArgs, AutoscalingTargetsPtr and AutoscalingTargetsPtrOutput values.
 // You can construct a concrete instance of `AutoscalingTargetsPtrInput` via:
 //
-//          AutoscalingTargetsArgs{...}
+//	        AutoscalingTargetsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AutoscalingTargetsPtrInput interface {
 	pulumi.Input
 
@@ -778,7 +778,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -811,7 +811,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -954,7 +954,7 @@ type ClusterAutoscalingConfig struct {
 // ClusterAutoscalingConfigInput is an input type that accepts ClusterAutoscalingConfigArgs and ClusterAutoscalingConfigOutput values.
 // You can construct a concrete instance of `ClusterAutoscalingConfigInput` via:
 //
-//          ClusterAutoscalingConfigArgs{...}
+//	ClusterAutoscalingConfigArgs{...}
 type ClusterAutoscalingConfigInput interface {
 	pulumi.Input
 
@@ -993,11 +993,11 @@ func (i ClusterAutoscalingConfigArgs) ToClusterAutoscalingConfigPtrOutputWithCon
 // ClusterAutoscalingConfigPtrInput is an input type that accepts ClusterAutoscalingConfigArgs, ClusterAutoscalingConfigPtr and ClusterAutoscalingConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterAutoscalingConfigPtrInput` via:
 //
-//          ClusterAutoscalingConfigArgs{...}
+//	        ClusterAutoscalingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterAutoscalingConfigPtrInput interface {
 	pulumi.Input
 
@@ -1144,7 +1144,7 @@ type ClusterConfig struct {
 // ClusterConfigInput is an input type that accepts ClusterConfigArgs and ClusterConfigOutput values.
 // You can construct a concrete instance of `ClusterConfigInput` via:
 //
-//          ClusterConfigArgs{...}
+//	ClusterConfigArgs{...}
 type ClusterConfigInput interface {
 	pulumi.Input
 
@@ -1181,11 +1181,11 @@ func (i ClusterConfigArgs) ToClusterConfigPtrOutputWithContext(ctx context.Conte
 // ClusterConfigPtrInput is an input type that accepts ClusterConfigArgs, ClusterConfigPtr and ClusterConfigPtrOutput values.
 // You can construct a concrete instance of `ClusterConfigPtrInput` via:
 //
-//          ClusterConfigArgs{...}
+//	        ClusterConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ClusterConfigPtrInput interface {
 	pulumi.Input
 
@@ -1310,7 +1310,7 @@ type EncryptionConfig struct {
 // EncryptionConfigInput is an input type that accepts EncryptionConfigArgs and EncryptionConfigOutput values.
 // You can construct a concrete instance of `EncryptionConfigInput` via:
 //
-//          EncryptionConfigArgs{...}
+//	EncryptionConfigArgs{...}
 type EncryptionConfigInput interface {
 	pulumi.Input
 
@@ -1347,11 +1347,11 @@ func (i EncryptionConfigArgs) ToEncryptionConfigPtrOutputWithContext(ctx context
 // EncryptionConfigPtrInput is an input type that accepts EncryptionConfigArgs, EncryptionConfigPtr and EncryptionConfigPtrOutput values.
 // You can construct a concrete instance of `EncryptionConfigPtrInput` via:
 //
-//          EncryptionConfigArgs{...}
+//	        EncryptionConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type EncryptionConfigPtrInput interface {
 	pulumi.Input
 
@@ -1522,7 +1522,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -1565,11 +1565,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -1760,7 +1760,7 @@ type MultiClusterRoutingUseAny struct {
 // MultiClusterRoutingUseAnyInput is an input type that accepts MultiClusterRoutingUseAnyArgs and MultiClusterRoutingUseAnyOutput values.
 // You can construct a concrete instance of `MultiClusterRoutingUseAnyInput` via:
 //
-//          MultiClusterRoutingUseAnyArgs{...}
+//	MultiClusterRoutingUseAnyArgs{...}
 type MultiClusterRoutingUseAnyInput interface {
 	pulumi.Input
 
@@ -1797,11 +1797,11 @@ func (i MultiClusterRoutingUseAnyArgs) ToMultiClusterRoutingUseAnyPtrOutputWithC
 // MultiClusterRoutingUseAnyPtrInput is an input type that accepts MultiClusterRoutingUseAnyArgs, MultiClusterRoutingUseAnyPtr and MultiClusterRoutingUseAnyPtrOutput values.
 // You can construct a concrete instance of `MultiClusterRoutingUseAnyPtrInput` via:
 //
-//          MultiClusterRoutingUseAnyArgs{...}
+//	        MultiClusterRoutingUseAnyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MultiClusterRoutingUseAnyPtrInput interface {
 	pulumi.Input
 
@@ -1961,7 +1961,7 @@ type SingleClusterRouting struct {
 // SingleClusterRoutingInput is an input type that accepts SingleClusterRoutingArgs and SingleClusterRoutingOutput values.
 // You can construct a concrete instance of `SingleClusterRoutingInput` via:
 //
-//          SingleClusterRoutingArgs{...}
+//	SingleClusterRoutingArgs{...}
 type SingleClusterRoutingInput interface {
 	pulumi.Input
 
@@ -2000,11 +2000,11 @@ func (i SingleClusterRoutingArgs) ToSingleClusterRoutingPtrOutputWithContext(ctx
 // SingleClusterRoutingPtrInput is an input type that accepts SingleClusterRoutingArgs, SingleClusterRoutingPtr and SingleClusterRoutingPtrOutput values.
 // You can construct a concrete instance of `SingleClusterRoutingPtrInput` via:
 //
-//          SingleClusterRoutingArgs{...}
+//	        SingleClusterRoutingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SingleClusterRoutingPtrInput interface {
 	pulumi.Input
 
@@ -2151,7 +2151,7 @@ type Split struct {
 // SplitInput is an input type that accepts SplitArgs and SplitOutput values.
 // You can construct a concrete instance of `SplitInput` via:
 //
-//          SplitArgs{...}
+//	SplitArgs{...}
 type SplitInput interface {
 	pulumi.Input
 
@@ -2180,7 +2180,7 @@ func (i SplitArgs) ToSplitOutputWithContext(ctx context.Context) SplitOutput {
 // SplitArrayInput is an input type that accepts SplitArray and SplitArrayOutput values.
 // You can construct a concrete instance of `SplitArrayInput` via:
 //
-//          SplitArray{ SplitArgs{...} }
+//	SplitArray{ SplitArgs{...} }
 type SplitArrayInput interface {
 	pulumi.Input
 

@@ -146,7 +146,7 @@ func (o DiskTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pul
 // DiskTypeInput is an input type that accepts DiskTypeArgs and DiskTypeOutput values.
 // You can construct a concrete instance of `DiskTypeInput` via:
 //
-//          DiskTypeArgs{...}
+//	DiskTypeArgs{...}
 type DiskTypeInput interface {
 	pulumi.Input
 

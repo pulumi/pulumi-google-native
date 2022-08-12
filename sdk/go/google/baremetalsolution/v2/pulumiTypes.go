@@ -25,7 +25,7 @@ type GoogleCloudBaremetalsolutionV2LogicalInterface struct {
 // GoogleCloudBaremetalsolutionV2LogicalInterfaceInput is an input type that accepts GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs and GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput values.
 // You can construct a concrete instance of `GoogleCloudBaremetalsolutionV2LogicalInterfaceInput` via:
 //
-//          GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs{...}
+//	GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs{...}
 type GoogleCloudBaremetalsolutionV2LogicalInterfaceInput interface {
 	pulumi.Input
 
@@ -60,7 +60,7 @@ func (i GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs) ToGoogleCloudBaremet
 // GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayInput is an input type that accepts GoogleCloudBaremetalsolutionV2LogicalInterfaceArray and GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayInput` via:
 //
-//          GoogleCloudBaremetalsolutionV2LogicalInterfaceArray{ GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs{...} }
+//	GoogleCloudBaremetalsolutionV2LogicalInterfaceArray{ GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs{...} }
 type GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -231,7 +231,7 @@ type InstanceConfig struct {
 // InstanceConfigInput is an input type that accepts InstanceConfigArgs and InstanceConfigOutput values.
 // You can construct a concrete instance of `InstanceConfigInput` via:
 //
-//          InstanceConfigArgs{...}
+//	InstanceConfigArgs{...}
 type InstanceConfigInput interface {
 	pulumi.Input
 
@@ -280,7 +280,7 @@ func (i InstanceConfigArgs) ToInstanceConfigOutputWithContext(ctx context.Contex
 // InstanceConfigArrayInput is an input type that accepts InstanceConfigArray and InstanceConfigArrayOutput values.
 // You can construct a concrete instance of `InstanceConfigArrayInput` via:
 //
-//          InstanceConfigArray{ InstanceConfigArgs{...} }
+//	InstanceConfigArray{ InstanceConfigArgs{...} }
 type InstanceConfigArrayInput interface {
 	pulumi.Input
 
@@ -521,7 +521,7 @@ type IntakeVlanAttachment struct {
 // IntakeVlanAttachmentInput is an input type that accepts IntakeVlanAttachmentArgs and IntakeVlanAttachmentOutput values.
 // You can construct a concrete instance of `IntakeVlanAttachmentInput` via:
 //
-//          IntakeVlanAttachmentArgs{...}
+//	IntakeVlanAttachmentArgs{...}
 type IntakeVlanAttachmentInput interface {
 	pulumi.Input
 
@@ -552,7 +552,7 @@ func (i IntakeVlanAttachmentArgs) ToIntakeVlanAttachmentOutputWithContext(ctx co
 // IntakeVlanAttachmentArrayInput is an input type that accepts IntakeVlanAttachmentArray and IntakeVlanAttachmentArrayOutput values.
 // You can construct a concrete instance of `IntakeVlanAttachmentArrayInput` via:
 //
-//          IntakeVlanAttachmentArray{ IntakeVlanAttachmentArgs{...} }
+//	IntakeVlanAttachmentArray{ IntakeVlanAttachmentArgs{...} }
 type IntakeVlanAttachmentArrayInput interface {
 	pulumi.Input
 
@@ -682,7 +682,7 @@ type LogicalNetworkInterface struct {
 // LogicalNetworkInterfaceInput is an input type that accepts LogicalNetworkInterfaceArgs and LogicalNetworkInterfaceOutput values.
 // You can construct a concrete instance of `LogicalNetworkInterfaceInput` via:
 //
-//          LogicalNetworkInterfaceArgs{...}
+//	LogicalNetworkInterfaceArgs{...}
 type LogicalNetworkInterfaceInput interface {
 	pulumi.Input
 
@@ -719,7 +719,7 @@ func (i LogicalNetworkInterfaceArgs) ToLogicalNetworkInterfaceOutputWithContext(
 // LogicalNetworkInterfaceArrayInput is an input type that accepts LogicalNetworkInterfaceArray and LogicalNetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `LogicalNetworkInterfaceArrayInput` via:
 //
-//          LogicalNetworkInterfaceArray{ LogicalNetworkInterfaceArgs{...} }
+//	LogicalNetworkInterfaceArray{ LogicalNetworkInterfaceArgs{...} }
 type LogicalNetworkInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -893,7 +893,7 @@ type Lun struct {
 // LunInput is an input type that accepts LunArgs and LunOutput values.
 // You can construct a concrete instance of `LunInput` via:
 //
-//          LunArgs{...}
+//	LunArgs{...}
 type LunInput interface {
 	pulumi.Input
 
@@ -938,7 +938,7 @@ func (i LunArgs) ToLunOutputWithContext(ctx context.Context) LunOutput {
 // LunArrayInput is an input type that accepts LunArray and LunArrayOutput values.
 // You can construct a concrete instance of `LunArrayInput` via:
 //
-//          LunArray{ LunArgs{...} }
+//	LunArray{ LunArgs{...} }
 type LunArrayInput interface {
 	pulumi.Input
 
@@ -1051,7 +1051,7 @@ type LunRange struct {
 // LunRangeInput is an input type that accepts LunRangeArgs and LunRangeOutput values.
 // You can construct a concrete instance of `LunRangeInput` via:
 //
-//          LunRangeArgs{...}
+//	LunRangeArgs{...}
 type LunRangeInput interface {
 	pulumi.Input
 
@@ -1082,7 +1082,7 @@ func (i LunRangeArgs) ToLunRangeOutputWithContext(ctx context.Context) LunRangeO
 // LunRangeArrayInput is an input type that accepts LunRangeArray and LunRangeArrayOutput values.
 // You can construct a concrete instance of `LunRangeArrayInput` via:
 //
-//          LunRangeArray{ LunRangeArgs{...} }
+//	LunRangeArray{ LunRangeArgs{...} }
 type LunRangeArrayInput interface {
 	pulumi.Input
 
@@ -1317,7 +1317,7 @@ type NetworkAddress struct {
 // NetworkAddressInput is an input type that accepts NetworkAddressArgs and NetworkAddressOutput values.
 // You can construct a concrete instance of `NetworkAddressInput` via:
 //
-//          NetworkAddressArgs{...}
+//	NetworkAddressArgs{...}
 type NetworkAddressInput interface {
 	pulumi.Input
 
@@ -1358,11 +1358,11 @@ func (i NetworkAddressArgs) ToNetworkAddressPtrOutputWithContext(ctx context.Con
 // NetworkAddressPtrInput is an input type that accepts NetworkAddressArgs, NetworkAddressPtr and NetworkAddressPtrOutput values.
 // You can construct a concrete instance of `NetworkAddressPtrInput` via:
 //
-//          NetworkAddressArgs{...}
+//	        NetworkAddressArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NetworkAddressPtrInput interface {
 	pulumi.Input
 
@@ -1609,7 +1609,7 @@ type NetworkConfig struct {
 // NetworkConfigInput is an input type that accepts NetworkConfigArgs and NetworkConfigOutput values.
 // You can construct a concrete instance of `NetworkConfigInput` via:
 //
-//          NetworkConfigArgs{...}
+//	NetworkConfigArgs{...}
 type NetworkConfigInput interface {
 	pulumi.Input
 
@@ -1656,7 +1656,7 @@ func (i NetworkConfigArgs) ToNetworkConfigOutputWithContext(ctx context.Context)
 // NetworkConfigArrayInput is an input type that accepts NetworkConfigArray and NetworkConfigArrayOutput values.
 // You can construct a concrete instance of `NetworkConfigArrayInput` via:
 //
-//          NetworkConfigArray{ NetworkConfigArgs{...} }
+//	NetworkConfigArray{ NetworkConfigArgs{...} }
 type NetworkConfigArrayInput interface {
 	pulumi.Input
 
@@ -2009,7 +2009,7 @@ type NfsExport struct {
 // NfsExportInput is an input type that accepts NfsExportArgs and NfsExportOutput values.
 // You can construct a concrete instance of `NfsExportInput` via:
 //
-//          NfsExportArgs{...}
+//	NfsExportArgs{...}
 type NfsExportInput interface {
 	pulumi.Input
 
@@ -2050,7 +2050,7 @@ func (i NfsExportArgs) ToNfsExportOutputWithContext(ctx context.Context) NfsExpo
 // NfsExportArrayInput is an input type that accepts NfsExportArray and NfsExportArrayOutput values.
 // You can construct a concrete instance of `NfsExportArrayInput` via:
 //
-//          NfsExportArray{ NfsExportArgs{...} }
+//	NfsExportArray{ NfsExportArgs{...} }
 type NfsExportArrayInput interface {
 	pulumi.Input
 
@@ -2271,7 +2271,7 @@ type SnapshotReservationDetail struct {
 // SnapshotReservationDetailInput is an input type that accepts SnapshotReservationDetailArgs and SnapshotReservationDetailOutput values.
 // You can construct a concrete instance of `SnapshotReservationDetailInput` via:
 //
-//          SnapshotReservationDetailArgs{...}
+//	SnapshotReservationDetailArgs{...}
 type SnapshotReservationDetailInput interface {
 	pulumi.Input
 
@@ -2314,11 +2314,11 @@ func (i SnapshotReservationDetailArgs) ToSnapshotReservationDetailPtrOutputWithC
 // SnapshotReservationDetailPtrInput is an input type that accepts SnapshotReservationDetailArgs, SnapshotReservationDetailPtr and SnapshotReservationDetailPtrOutput values.
 // You can construct a concrete instance of `SnapshotReservationDetailPtrInput` via:
 //
-//          SnapshotReservationDetailArgs{...}
+//	        SnapshotReservationDetailArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SnapshotReservationDetailPtrInput interface {
 	pulumi.Input
 
@@ -2646,7 +2646,7 @@ type Volume struct {
 // VolumeInput is an input type that accepts VolumeArgs and VolumeOutput values.
 // You can construct a concrete instance of `VolumeInput` via:
 //
-//          VolumeArgs{...}
+//	VolumeArgs{...}
 type VolumeInput interface {
 	pulumi.Input
 
@@ -2705,7 +2705,7 @@ func (i VolumeArgs) ToVolumeOutputWithContext(ctx context.Context) VolumeOutput 
 // VolumeArrayInput is an input type that accepts VolumeArray and VolumeArrayOutput values.
 // You can construct a concrete instance of `VolumeArrayInput` via:
 //
-//          VolumeArray{ VolumeArgs{...} }
+//	VolumeArray{ VolumeArgs{...} }
 type VolumeArrayInput interface {
 	pulumi.Input
 
@@ -2869,7 +2869,7 @@ type VolumeConfig struct {
 // VolumeConfigInput is an input type that accepts VolumeConfigArgs and VolumeConfigOutput values.
 // You can construct a concrete instance of `VolumeConfigInput` via:
 //
-//          VolumeConfigArgs{...}
+//	VolumeConfigArgs{...}
 type VolumeConfigInput interface {
 	pulumi.Input
 
@@ -2916,7 +2916,7 @@ func (i VolumeConfigArgs) ToVolumeConfigOutputWithContext(ctx context.Context) V
 // VolumeConfigArrayInput is an input type that accepts VolumeConfigArray and VolumeConfigArrayOutput values.
 // You can construct a concrete instance of `VolumeConfigArrayInput` via:
 //
-//          VolumeConfigArray{ VolumeConfigArgs{...} }
+//	VolumeConfigArray{ VolumeConfigArgs{...} }
 type VolumeConfigArrayInput interface {
 	pulumi.Input
 

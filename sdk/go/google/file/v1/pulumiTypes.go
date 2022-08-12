@@ -25,7 +25,7 @@ type FileShareConfig struct {
 // FileShareConfigInput is an input type that accepts FileShareConfigArgs and FileShareConfigOutput values.
 // You can construct a concrete instance of `FileShareConfigInput` via:
 //
-//          FileShareConfigArgs{...}
+//	FileShareConfigArgs{...}
 type FileShareConfigInput interface {
 	pulumi.Input
 
@@ -60,7 +60,7 @@ func (i FileShareConfigArgs) ToFileShareConfigOutputWithContext(ctx context.Cont
 // FileShareConfigArrayInput is an input type that accepts FileShareConfigArray and FileShareConfigArrayOutput values.
 // You can construct a concrete instance of `FileShareConfigArrayInput` via:
 //
-//          FileShareConfigArray{ FileShareConfigArgs{...} }
+//	FileShareConfigArray{ FileShareConfigArgs{...} }
 type FileShareConfigArrayInput interface {
 	pulumi.Input
 
@@ -219,7 +219,7 @@ type NetworkConfig struct {
 // NetworkConfigInput is an input type that accepts NetworkConfigArgs and NetworkConfigOutput values.
 // You can construct a concrete instance of `NetworkConfigInput` via:
 //
-//          NetworkConfigArgs{...}
+//	NetworkConfigArgs{...}
 type NetworkConfigInput interface {
 	pulumi.Input
 
@@ -254,7 +254,7 @@ func (i NetworkConfigArgs) ToNetworkConfigOutputWithContext(ctx context.Context)
 // NetworkConfigArrayInput is an input type that accepts NetworkConfigArray and NetworkConfigArrayOutput values.
 // You can construct a concrete instance of `NetworkConfigArrayInput` via:
 //
-//          NetworkConfigArray{ NetworkConfigArgs{...} }
+//	NetworkConfigArray{ NetworkConfigArgs{...} }
 type NetworkConfigArrayInput interface {
 	pulumi.Input
 
@@ -422,7 +422,7 @@ type NfsExportOptions struct {
 // NfsExportOptionsInput is an input type that accepts NfsExportOptionsArgs and NfsExportOptionsOutput values.
 // You can construct a concrete instance of `NfsExportOptionsInput` via:
 //
-//          NfsExportOptionsArgs{...}
+//	NfsExportOptionsArgs{...}
 type NfsExportOptionsInput interface {
 	pulumi.Input
 
@@ -459,7 +459,7 @@ func (i NfsExportOptionsArgs) ToNfsExportOptionsOutputWithContext(ctx context.Co
 // NfsExportOptionsArrayInput is an input type that accepts NfsExportOptionsArray and NfsExportOptionsArrayOutput values.
 // You can construct a concrete instance of `NfsExportOptionsArrayInput` via:
 //
-//          NfsExportOptionsArray{ NfsExportOptionsArgs{...} }
+//	NfsExportOptionsArray{ NfsExportOptionsArgs{...} }
 type NfsExportOptionsArrayInput interface {
 	pulumi.Input
 

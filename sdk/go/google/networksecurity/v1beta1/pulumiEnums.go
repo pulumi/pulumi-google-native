@@ -144,7 +144,7 @@ func (o AuthorizationPolicyActionPtrOutput) ToStringPtrOutputWithContext(ctx con
 // AuthorizationPolicyActionInput is an input type that accepts AuthorizationPolicyActionArgs and AuthorizationPolicyActionOutput values.
 // You can construct a concrete instance of `AuthorizationPolicyActionInput` via:
 //
-//          AuthorizationPolicyActionArgs{...}
+//	AuthorizationPolicyActionArgs{...}
 type AuthorizationPolicyActionInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(
 // GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` via:
 //
-//          GoogleIamV1AuditLogConfigLogTypeArgs{...}
+//	GoogleIamV1AuditLogConfigLogTypeArgs{...}
 type GoogleIamV1AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 

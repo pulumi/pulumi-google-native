@@ -27,7 +27,7 @@ type AppEngineHttpRequest struct {
 // AppEngineHttpRequestInput is an input type that accepts AppEngineHttpRequestArgs and AppEngineHttpRequestOutput values.
 // You can construct a concrete instance of `AppEngineHttpRequestInput` via:
 //
-//          AppEngineHttpRequestArgs{...}
+//	AppEngineHttpRequestArgs{...}
 type AppEngineHttpRequestInput interface {
 	pulumi.Input
 
@@ -72,11 +72,11 @@ func (i AppEngineHttpRequestArgs) ToAppEngineHttpRequestPtrOutputWithContext(ctx
 // AppEngineHttpRequestPtrInput is an input type that accepts AppEngineHttpRequestArgs, AppEngineHttpRequestPtr and AppEngineHttpRequestPtrOutput values.
 // You can construct a concrete instance of `AppEngineHttpRequestPtrInput` via:
 //
-//          AppEngineHttpRequestArgs{...}
+//	        AppEngineHttpRequestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppEngineHttpRequestPtrInput interface {
 	pulumi.Input
 
@@ -289,7 +289,7 @@ type AppEngineHttpTarget struct {
 // AppEngineHttpTargetInput is an input type that accepts AppEngineHttpTargetArgs and AppEngineHttpTargetOutput values.
 // You can construct a concrete instance of `AppEngineHttpTargetInput` via:
 //
-//          AppEngineHttpTargetArgs{...}
+//	AppEngineHttpTargetArgs{...}
 type AppEngineHttpTargetInput interface {
 	pulumi.Input
 
@@ -326,11 +326,11 @@ func (i AppEngineHttpTargetArgs) ToAppEngineHttpTargetPtrOutputWithContext(ctx c
 // AppEngineHttpTargetPtrInput is an input type that accepts AppEngineHttpTargetArgs, AppEngineHttpTargetPtr and AppEngineHttpTargetPtrOutput values.
 // You can construct a concrete instance of `AppEngineHttpTargetPtrInput` via:
 //
-//          AppEngineHttpTargetArgs{...}
+//	        AppEngineHttpTargetArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppEngineHttpTargetPtrInput interface {
 	pulumi.Input
 
@@ -459,7 +459,7 @@ type AppEngineRouting struct {
 // AppEngineRoutingInput is an input type that accepts AppEngineRoutingArgs and AppEngineRoutingOutput values.
 // You can construct a concrete instance of `AppEngineRoutingInput` via:
 //
-//          AppEngineRoutingArgs{...}
+//	AppEngineRoutingArgs{...}
 type AppEngineRoutingInput interface {
 	pulumi.Input
 
@@ -500,11 +500,11 @@ func (i AppEngineRoutingArgs) ToAppEngineRoutingPtrOutputWithContext(ctx context
 // AppEngineRoutingPtrInput is an input type that accepts AppEngineRoutingArgs, AppEngineRoutingPtr and AppEngineRoutingPtrOutput values.
 // You can construct a concrete instance of `AppEngineRoutingPtrInput` via:
 //
-//          AppEngineRoutingArgs{...}
+//	        AppEngineRoutingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AppEngineRoutingPtrInput interface {
 	pulumi.Input
 
@@ -731,7 +731,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -764,7 +764,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -911,7 +911,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -954,11 +954,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -1149,7 +1149,7 @@ type Header struct {
 // HeaderInput is an input type that accepts HeaderArgs and HeaderOutput values.
 // You can construct a concrete instance of `HeaderInput` via:
 //
-//          HeaderArgs{...}
+//	HeaderArgs{...}
 type HeaderInput interface {
 	pulumi.Input
 
@@ -1186,11 +1186,11 @@ func (i HeaderArgs) ToHeaderPtrOutputWithContext(ctx context.Context) HeaderPtrO
 // HeaderPtrInput is an input type that accepts HeaderArgs, HeaderPtr and HeaderPtrOutput values.
 // You can construct a concrete instance of `HeaderPtrInput` via:
 //
-//          HeaderArgs{...}
+//	        HeaderArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HeaderPtrInput interface {
 	pulumi.Input
 
@@ -1300,7 +1300,7 @@ type HeaderOverride struct {
 // HeaderOverrideInput is an input type that accepts HeaderOverrideArgs and HeaderOverrideOutput values.
 // You can construct a concrete instance of `HeaderOverrideInput` via:
 //
-//          HeaderOverrideArgs{...}
+//	HeaderOverrideArgs{...}
 type HeaderOverrideInput interface {
 	pulumi.Input
 
@@ -1329,7 +1329,7 @@ func (i HeaderOverrideArgs) ToHeaderOverrideOutputWithContext(ctx context.Contex
 // HeaderOverrideArrayInput is an input type that accepts HeaderOverrideArray and HeaderOverrideArrayOutput values.
 // You can construct a concrete instance of `HeaderOverrideArrayInput` via:
 //
-//          HeaderOverrideArray{ HeaderOverrideArgs{...} }
+//	HeaderOverrideArray{ HeaderOverrideArgs{...} }
 type HeaderOverrideArrayInput interface {
 	pulumi.Input
 
@@ -1485,7 +1485,7 @@ type HttpRequest struct {
 // HttpRequestInput is an input type that accepts HttpRequestArgs and HttpRequestOutput values.
 // You can construct a concrete instance of `HttpRequestInput` via:
 //
-//          HttpRequestArgs{...}
+//	HttpRequestArgs{...}
 type HttpRequestInput interface {
 	pulumi.Input
 
@@ -1532,11 +1532,11 @@ func (i HttpRequestArgs) ToHttpRequestPtrOutputWithContext(ctx context.Context) 
 // HttpRequestPtrInput is an input type that accepts HttpRequestArgs, HttpRequestPtr and HttpRequestPtrOutput values.
 // You can construct a concrete instance of `HttpRequestPtrInput` via:
 //
-//          HttpRequestArgs{...}
+//	        HttpRequestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpRequestPtrInput interface {
 	pulumi.Input
 
@@ -1779,7 +1779,7 @@ type HttpTarget struct {
 // HttpTargetInput is an input type that accepts HttpTargetArgs and HttpTargetOutput values.
 // You can construct a concrete instance of `HttpTargetInput` via:
 //
-//          HttpTargetArgs{...}
+//	HttpTargetArgs{...}
 type HttpTargetInput interface {
 	pulumi.Input
 
@@ -1824,11 +1824,11 @@ func (i HttpTargetArgs) ToHttpTargetPtrOutputWithContext(ctx context.Context) Ht
 // HttpTargetPtrInput is an input type that accepts HttpTargetArgs, HttpTargetPtr and HttpTargetPtrOutput values.
 // You can construct a concrete instance of `HttpTargetPtrInput` via:
 //
-//          HttpTargetArgs{...}
+//	        HttpTargetArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpTargetPtrInput interface {
 	pulumi.Input
 
@@ -2043,7 +2043,7 @@ type OAuthToken struct {
 // OAuthTokenInput is an input type that accepts OAuthTokenArgs and OAuthTokenOutput values.
 // You can construct a concrete instance of `OAuthTokenInput` via:
 //
-//          OAuthTokenArgs{...}
+//	OAuthTokenArgs{...}
 type OAuthTokenInput interface {
 	pulumi.Input
 
@@ -2082,11 +2082,11 @@ func (i OAuthTokenArgs) ToOAuthTokenPtrOutputWithContext(ctx context.Context) OA
 // OAuthTokenPtrInput is an input type that accepts OAuthTokenArgs, OAuthTokenPtr and OAuthTokenPtrOutput values.
 // You can construct a concrete instance of `OAuthTokenPtrInput` via:
 //
-//          OAuthTokenArgs{...}
+//	        OAuthTokenArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OAuthTokenPtrInput interface {
 	pulumi.Input
 
@@ -2235,7 +2235,7 @@ type OidcToken struct {
 // OidcTokenInput is an input type that accepts OidcTokenArgs and OidcTokenOutput values.
 // You can construct a concrete instance of `OidcTokenInput` via:
 //
-//          OidcTokenArgs{...}
+//	OidcTokenArgs{...}
 type OidcTokenInput interface {
 	pulumi.Input
 
@@ -2274,11 +2274,11 @@ func (i OidcTokenArgs) ToOidcTokenPtrOutputWithContext(ctx context.Context) Oidc
 // OidcTokenPtrInput is an input type that accepts OidcTokenArgs, OidcTokenPtr and OidcTokenPtrOutput values.
 // You can construct a concrete instance of `OidcTokenPtrInput` via:
 //
-//          OidcTokenArgs{...}
+//	        OidcTokenArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OidcTokenPtrInput interface {
 	pulumi.Input
 
@@ -2427,7 +2427,7 @@ type PullMessage struct {
 // PullMessageInput is an input type that accepts PullMessageArgs and PullMessageOutput values.
 // You can construct a concrete instance of `PullMessageInput` via:
 //
-//          PullMessageArgs{...}
+//	PullMessageArgs{...}
 type PullMessageInput interface {
 	pulumi.Input
 
@@ -2466,11 +2466,11 @@ func (i PullMessageArgs) ToPullMessagePtrOutputWithContext(ctx context.Context) 
 // PullMessagePtrInput is an input type that accepts PullMessageArgs, PullMessagePtr and PullMessagePtrOutput values.
 // You can construct a concrete instance of `PullMessagePtrInput` via:
 //
-//          PullMessageArgs{...}
+//	        PullMessageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PullMessagePtrInput interface {
 	pulumi.Input
 
@@ -2615,7 +2615,7 @@ type PullTarget struct {
 // PullTargetInput is an input type that accepts PullTargetArgs and PullTargetOutput values.
 // You can construct a concrete instance of `PullTargetInput` via:
 //
-//          PullTargetArgs{...}
+//	PullTargetArgs{...}
 type PullTargetInput interface {
 	pulumi.Input
 
@@ -2650,11 +2650,11 @@ func (i PullTargetArgs) ToPullTargetPtrOutputWithContext(ctx context.Context) Pu
 // PullTargetPtrInput is an input type that accepts PullTargetArgs, PullTargetPtr and PullTargetPtrOutput values.
 // You can construct a concrete instance of `PullTargetPtrInput` via:
 //
-//          PullTargetArgs{...}
+//	        PullTargetArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PullTargetPtrInput interface {
 	pulumi.Input
 
@@ -2815,7 +2815,7 @@ type RateLimits struct {
 // RateLimitsInput is an input type that accepts RateLimitsArgs and RateLimitsOutput values.
 // You can construct a concrete instance of `RateLimitsInput` via:
 //
-//          RateLimitsArgs{...}
+//	RateLimitsArgs{...}
 type RateLimitsInput interface {
 	pulumi.Input
 
@@ -2856,11 +2856,11 @@ func (i RateLimitsArgs) ToRateLimitsPtrOutputWithContext(ctx context.Context) Ra
 // RateLimitsPtrInput is an input type that accepts RateLimitsArgs, RateLimitsPtr and RateLimitsPtrOutput values.
 // You can construct a concrete instance of `RateLimitsPtrInput` via:
 //
-//          RateLimitsArgs{...}
+//	        RateLimitsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RateLimitsPtrInput interface {
 	pulumi.Input
 
@@ -3039,7 +3039,7 @@ type RetryConfig struct {
 // RetryConfigInput is an input type that accepts RetryConfigArgs and RetryConfigOutput values.
 // You can construct a concrete instance of `RetryConfigInput` via:
 //
-//          RetryConfigArgs{...}
+//	RetryConfigArgs{...}
 type RetryConfigInput interface {
 	pulumi.Input
 
@@ -3086,11 +3086,11 @@ func (i RetryConfigArgs) ToRetryConfigPtrOutputWithContext(ctx context.Context) 
 // RetryConfigPtrInput is an input type that accepts RetryConfigArgs, RetryConfigPtr and RetryConfigPtrOutput values.
 // You can construct a concrete instance of `RetryConfigPtrInput` via:
 //
-//          RetryConfigArgs{...}
+//	        RetryConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type RetryConfigPtrInput interface {
 	pulumi.Input
 
@@ -3420,7 +3420,7 @@ type UriOverride struct {
 // UriOverrideInput is an input type that accepts UriOverrideArgs and UriOverrideOutput values.
 // You can construct a concrete instance of `UriOverrideInput` via:
 //
-//          UriOverrideArgs{...}
+//	UriOverrideArgs{...}
 type UriOverrideInput interface {
 	pulumi.Input
 
@@ -3465,11 +3465,11 @@ func (i UriOverrideArgs) ToUriOverridePtrOutputWithContext(ctx context.Context) 
 // UriOverridePtrInput is an input type that accepts UriOverrideArgs, UriOverridePtr and UriOverridePtrOutput values.
 // You can construct a concrete instance of `UriOverridePtrInput` via:
 //
-//          UriOverrideArgs{...}
+//	        UriOverrideArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type UriOverridePtrInput interface {
 	pulumi.Input
 
