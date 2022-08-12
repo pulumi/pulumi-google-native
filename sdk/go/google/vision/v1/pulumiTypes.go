@@ -21,7 +21,7 @@ type BoundingPoly struct {
 // BoundingPolyInput is an input type that accepts BoundingPolyArgs and BoundingPolyOutput values.
 // You can construct a concrete instance of `BoundingPolyInput` via:
 //
-//          BoundingPolyArgs{...}
+//	BoundingPolyArgs{...}
 type BoundingPolyInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i BoundingPolyArgs) ToBoundingPolyOutputWithContext(ctx context.Context) B
 // BoundingPolyArrayInput is an input type that accepts BoundingPolyArray and BoundingPolyArrayOutput values.
 // You can construct a concrete instance of `BoundingPolyArrayInput` via:
 //
-//          BoundingPolyArray{ BoundingPolyArgs{...} }
+//	BoundingPolyArray{ BoundingPolyArgs{...} }
 type BoundingPolyArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type KeyValue struct {
 // KeyValueInput is an input type that accepts KeyValueArgs and KeyValueOutput values.
 // You can construct a concrete instance of `KeyValueInput` via:
 //
-//          KeyValueArgs{...}
+//	KeyValueArgs{...}
 type KeyValueInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ func (i KeyValueArgs) ToKeyValueOutputWithContext(ctx context.Context) KeyValueO
 // KeyValueArrayInput is an input type that accepts KeyValueArray and KeyValueArrayOutput values.
 // You can construct a concrete instance of `KeyValueArrayInput` via:
 //
-//          KeyValueArray{ KeyValueArgs{...} }
+//	KeyValueArray{ KeyValueArgs{...} }
 type KeyValueArrayInput interface {
 	pulumi.Input
 
@@ -345,7 +345,7 @@ type NormalizedVertex struct {
 // NormalizedVertexInput is an input type that accepts NormalizedVertexArgs and NormalizedVertexOutput values.
 // You can construct a concrete instance of `NormalizedVertexInput` via:
 //
-//          NormalizedVertexArgs{...}
+//	NormalizedVertexArgs{...}
 type NormalizedVertexInput interface {
 	pulumi.Input
 
@@ -376,7 +376,7 @@ func (i NormalizedVertexArgs) ToNormalizedVertexOutputWithContext(ctx context.Co
 // NormalizedVertexArrayInput is an input type that accepts NormalizedVertexArray and NormalizedVertexArrayOutput values.
 // You can construct a concrete instance of `NormalizedVertexArrayInput` via:
 //
-//          NormalizedVertexArray{ NormalizedVertexArgs{...} }
+//	NormalizedVertexArray{ NormalizedVertexArgs{...} }
 type NormalizedVertexArrayInput interface {
 	pulumi.Input
 
@@ -547,7 +547,7 @@ type Vertex struct {
 // VertexInput is an input type that accepts VertexArgs and VertexOutput values.
 // You can construct a concrete instance of `VertexInput` via:
 //
-//          VertexArgs{...}
+//	VertexArgs{...}
 type VertexInput interface {
 	pulumi.Input
 
@@ -578,7 +578,7 @@ func (i VertexArgs) ToVertexOutputWithContext(ctx context.Context) VertexOutput 
 // VertexArrayInput is an input type that accepts VertexArray and VertexArrayOutput values.
 // You can construct a concrete instance of `VertexArrayInput` via:
 //
-//          VertexArray{ VertexArgs{...} }
+//	VertexArray{ VertexArgs{...} }
 type VertexArrayInput interface {
 	pulumi.Input
 

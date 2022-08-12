@@ -31,7 +31,7 @@ type GooglePrivacyDlpV2Action struct {
 // GooglePrivacyDlpV2ActionInput is an input type that accepts GooglePrivacyDlpV2ActionArgs and GooglePrivacyDlpV2ActionOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ActionInput` via:
 //
-//          GooglePrivacyDlpV2ActionArgs{...}
+//	GooglePrivacyDlpV2ActionArgs{...}
 type GooglePrivacyDlpV2ActionInput interface {
 	pulumi.Input
 
@@ -72,7 +72,7 @@ func (i GooglePrivacyDlpV2ActionArgs) ToGooglePrivacyDlpV2ActionOutputWithContex
 // GooglePrivacyDlpV2ActionArrayInput is an input type that accepts GooglePrivacyDlpV2ActionArray and GooglePrivacyDlpV2ActionArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ActionArrayInput` via:
 //
-//          GooglePrivacyDlpV2ActionArray{ GooglePrivacyDlpV2ActionArgs{...} }
+//	GooglePrivacyDlpV2ActionArray{ GooglePrivacyDlpV2ActionArgs{...} }
 type GooglePrivacyDlpV2ActionArrayInput interface {
 	pulumi.Input
 
@@ -381,7 +381,7 @@ type GooglePrivacyDlpV2AuxiliaryTable struct {
 // GooglePrivacyDlpV2AuxiliaryTableInput is an input type that accepts GooglePrivacyDlpV2AuxiliaryTableArgs and GooglePrivacyDlpV2AuxiliaryTableOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2AuxiliaryTableInput` via:
 //
-//          GooglePrivacyDlpV2AuxiliaryTableArgs{...}
+//	GooglePrivacyDlpV2AuxiliaryTableArgs{...}
 type GooglePrivacyDlpV2AuxiliaryTableInput interface {
 	pulumi.Input
 
@@ -414,7 +414,7 @@ func (i GooglePrivacyDlpV2AuxiliaryTableArgs) ToGooglePrivacyDlpV2AuxiliaryTable
 // GooglePrivacyDlpV2AuxiliaryTableArrayInput is an input type that accepts GooglePrivacyDlpV2AuxiliaryTableArray and GooglePrivacyDlpV2AuxiliaryTableArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2AuxiliaryTableArrayInput` via:
 //
-//          GooglePrivacyDlpV2AuxiliaryTableArray{ GooglePrivacyDlpV2AuxiliaryTableArgs{...} }
+//	GooglePrivacyDlpV2AuxiliaryTableArray{ GooglePrivacyDlpV2AuxiliaryTableArgs{...} }
 type GooglePrivacyDlpV2AuxiliaryTableArrayInput interface {
 	pulumi.Input
 
@@ -563,7 +563,7 @@ type GooglePrivacyDlpV2BigQueryField struct {
 // GooglePrivacyDlpV2BigQueryFieldInput is an input type that accepts GooglePrivacyDlpV2BigQueryFieldArgs and GooglePrivacyDlpV2BigQueryFieldOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryFieldInput` via:
 //
-//          GooglePrivacyDlpV2BigQueryFieldArgs{...}
+//	GooglePrivacyDlpV2BigQueryFieldArgs{...}
 type GooglePrivacyDlpV2BigQueryFieldInput interface {
 	pulumi.Input
 
@@ -602,11 +602,11 @@ func (i GooglePrivacyDlpV2BigQueryFieldArgs) ToGooglePrivacyDlpV2BigQueryFieldPt
 // GooglePrivacyDlpV2BigQueryFieldPtrInput is an input type that accepts GooglePrivacyDlpV2BigQueryFieldArgs, GooglePrivacyDlpV2BigQueryFieldPtr and GooglePrivacyDlpV2BigQueryFieldPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryFieldPtrInput` via:
 //
-//          GooglePrivacyDlpV2BigQueryFieldArgs{...}
+//	        GooglePrivacyDlpV2BigQueryFieldArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2BigQueryFieldPtrInput interface {
 	pulumi.Input
 
@@ -766,7 +766,7 @@ type GooglePrivacyDlpV2BigQueryOptions struct {
 // GooglePrivacyDlpV2BigQueryOptionsInput is an input type that accepts GooglePrivacyDlpV2BigQueryOptionsArgs and GooglePrivacyDlpV2BigQueryOptionsOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryOptionsInput` via:
 //
-//          GooglePrivacyDlpV2BigQueryOptionsArgs{...}
+//	GooglePrivacyDlpV2BigQueryOptionsArgs{...}
 type GooglePrivacyDlpV2BigQueryOptionsInput interface {
 	pulumi.Input
 
@@ -814,11 +814,11 @@ func (i GooglePrivacyDlpV2BigQueryOptionsArgs) ToGooglePrivacyDlpV2BigQueryOptio
 // GooglePrivacyDlpV2BigQueryOptionsPtrInput is an input type that accepts GooglePrivacyDlpV2BigQueryOptionsArgs, GooglePrivacyDlpV2BigQueryOptionsPtr and GooglePrivacyDlpV2BigQueryOptionsPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryOptionsPtrInput` via:
 //
-//          GooglePrivacyDlpV2BigQueryOptionsArgs{...}
+//	        GooglePrivacyDlpV2BigQueryOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2BigQueryOptionsPtrInput interface {
 	pulumi.Input
 
@@ -1085,7 +1085,7 @@ type GooglePrivacyDlpV2BigQueryTable struct {
 // GooglePrivacyDlpV2BigQueryTableInput is an input type that accepts GooglePrivacyDlpV2BigQueryTableArgs and GooglePrivacyDlpV2BigQueryTableOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryTableInput` via:
 //
-//          GooglePrivacyDlpV2BigQueryTableArgs{...}
+//	GooglePrivacyDlpV2BigQueryTableArgs{...}
 type GooglePrivacyDlpV2BigQueryTableInput interface {
 	pulumi.Input
 
@@ -1126,11 +1126,11 @@ func (i GooglePrivacyDlpV2BigQueryTableArgs) ToGooglePrivacyDlpV2BigQueryTablePt
 // GooglePrivacyDlpV2BigQueryTablePtrInput is an input type that accepts GooglePrivacyDlpV2BigQueryTableArgs, GooglePrivacyDlpV2BigQueryTablePtr and GooglePrivacyDlpV2BigQueryTablePtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2BigQueryTablePtrInput` via:
 //
-//          GooglePrivacyDlpV2BigQueryTableArgs{...}
+//	        GooglePrivacyDlpV2BigQueryTableArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2BigQueryTablePtrInput interface {
 	pulumi.Input
 
@@ -1303,7 +1303,7 @@ type GooglePrivacyDlpV2Bucket struct {
 // GooglePrivacyDlpV2BucketInput is an input type that accepts GooglePrivacyDlpV2BucketArgs and GooglePrivacyDlpV2BucketOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2BucketInput` via:
 //
-//          GooglePrivacyDlpV2BucketArgs{...}
+//	GooglePrivacyDlpV2BucketArgs{...}
 type GooglePrivacyDlpV2BucketInput interface {
 	pulumi.Input
 
@@ -1336,7 +1336,7 @@ func (i GooglePrivacyDlpV2BucketArgs) ToGooglePrivacyDlpV2BucketOutputWithContex
 // GooglePrivacyDlpV2BucketArrayInput is an input type that accepts GooglePrivacyDlpV2BucketArray and GooglePrivacyDlpV2BucketArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2BucketArrayInput` via:
 //
-//          GooglePrivacyDlpV2BucketArray{ GooglePrivacyDlpV2BucketArgs{...} }
+//	GooglePrivacyDlpV2BucketArray{ GooglePrivacyDlpV2BucketArgs{...} }
 type GooglePrivacyDlpV2BucketArrayInput interface {
 	pulumi.Input
 
@@ -1477,7 +1477,7 @@ type GooglePrivacyDlpV2BucketingConfig struct {
 // GooglePrivacyDlpV2BucketingConfigInput is an input type that accepts GooglePrivacyDlpV2BucketingConfigArgs and GooglePrivacyDlpV2BucketingConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2BucketingConfigInput` via:
 //
-//          GooglePrivacyDlpV2BucketingConfigArgs{...}
+//	GooglePrivacyDlpV2BucketingConfigArgs{...}
 type GooglePrivacyDlpV2BucketingConfigInput interface {
 	pulumi.Input
 
@@ -1514,11 +1514,11 @@ func (i GooglePrivacyDlpV2BucketingConfigArgs) ToGooglePrivacyDlpV2BucketingConf
 // GooglePrivacyDlpV2BucketingConfigPtrInput is an input type that accepts GooglePrivacyDlpV2BucketingConfigArgs, GooglePrivacyDlpV2BucketingConfigPtr and GooglePrivacyDlpV2BucketingConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2BucketingConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2BucketingConfigArgs{...}
+//	        GooglePrivacyDlpV2BucketingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2BucketingConfigPtrInput interface {
 	pulumi.Input
 
@@ -1643,7 +1643,7 @@ type GooglePrivacyDlpV2CategoricalStatsConfig struct {
 // GooglePrivacyDlpV2CategoricalStatsConfigInput is an input type that accepts GooglePrivacyDlpV2CategoricalStatsConfigArgs and GooglePrivacyDlpV2CategoricalStatsConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CategoricalStatsConfigInput` via:
 //
-//          GooglePrivacyDlpV2CategoricalStatsConfigArgs{...}
+//	GooglePrivacyDlpV2CategoricalStatsConfigArgs{...}
 type GooglePrivacyDlpV2CategoricalStatsConfigInput interface {
 	pulumi.Input
 
@@ -1680,11 +1680,11 @@ func (i GooglePrivacyDlpV2CategoricalStatsConfigArgs) ToGooglePrivacyDlpV2Catego
 // GooglePrivacyDlpV2CategoricalStatsConfigPtrInput is an input type that accepts GooglePrivacyDlpV2CategoricalStatsConfigArgs, GooglePrivacyDlpV2CategoricalStatsConfigPtr and GooglePrivacyDlpV2CategoricalStatsConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CategoricalStatsConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2CategoricalStatsConfigArgs{...}
+//	        GooglePrivacyDlpV2CategoricalStatsConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2CategoricalStatsConfigPtrInput interface {
 	pulumi.Input
 
@@ -1925,7 +1925,7 @@ type GooglePrivacyDlpV2CharacterMaskConfig struct {
 // GooglePrivacyDlpV2CharacterMaskConfigInput is an input type that accepts GooglePrivacyDlpV2CharacterMaskConfigArgs and GooglePrivacyDlpV2CharacterMaskConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CharacterMaskConfigInput` via:
 //
-//          GooglePrivacyDlpV2CharacterMaskConfigArgs{...}
+//	GooglePrivacyDlpV2CharacterMaskConfigArgs{...}
 type GooglePrivacyDlpV2CharacterMaskConfigInput interface {
 	pulumi.Input
 
@@ -1968,11 +1968,11 @@ func (i GooglePrivacyDlpV2CharacterMaskConfigArgs) ToGooglePrivacyDlpV2Character
 // GooglePrivacyDlpV2CharacterMaskConfigPtrInput is an input type that accepts GooglePrivacyDlpV2CharacterMaskConfigArgs, GooglePrivacyDlpV2CharacterMaskConfigPtr and GooglePrivacyDlpV2CharacterMaskConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CharacterMaskConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2CharacterMaskConfigArgs{...}
+//	        GooglePrivacyDlpV2CharacterMaskConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2CharacterMaskConfigPtrInput interface {
 	pulumi.Input
 
@@ -2169,7 +2169,7 @@ type GooglePrivacyDlpV2CharsToIgnore struct {
 // GooglePrivacyDlpV2CharsToIgnoreInput is an input type that accepts GooglePrivacyDlpV2CharsToIgnoreArgs and GooglePrivacyDlpV2CharsToIgnoreOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CharsToIgnoreInput` via:
 //
-//          GooglePrivacyDlpV2CharsToIgnoreArgs{...}
+//	GooglePrivacyDlpV2CharsToIgnoreArgs{...}
 type GooglePrivacyDlpV2CharsToIgnoreInput interface {
 	pulumi.Input
 
@@ -2200,7 +2200,7 @@ func (i GooglePrivacyDlpV2CharsToIgnoreArgs) ToGooglePrivacyDlpV2CharsToIgnoreOu
 // GooglePrivacyDlpV2CharsToIgnoreArrayInput is an input type that accepts GooglePrivacyDlpV2CharsToIgnoreArray and GooglePrivacyDlpV2CharsToIgnoreArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CharsToIgnoreArrayInput` via:
 //
-//          GooglePrivacyDlpV2CharsToIgnoreArray{ GooglePrivacyDlpV2CharsToIgnoreArgs{...} }
+//	GooglePrivacyDlpV2CharsToIgnoreArray{ GooglePrivacyDlpV2CharsToIgnoreArgs{...} }
 type GooglePrivacyDlpV2CharsToIgnoreArrayInput interface {
 	pulumi.Input
 
@@ -2331,7 +2331,7 @@ type GooglePrivacyDlpV2CloudStorageFileSet struct {
 // GooglePrivacyDlpV2CloudStorageFileSetInput is an input type that accepts GooglePrivacyDlpV2CloudStorageFileSetArgs and GooglePrivacyDlpV2CloudStorageFileSetOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageFileSetInput` via:
 //
-//          GooglePrivacyDlpV2CloudStorageFileSetArgs{...}
+//	GooglePrivacyDlpV2CloudStorageFileSetArgs{...}
 type GooglePrivacyDlpV2CloudStorageFileSetInput interface {
 	pulumi.Input
 
@@ -2368,11 +2368,11 @@ func (i GooglePrivacyDlpV2CloudStorageFileSetArgs) ToGooglePrivacyDlpV2CloudStor
 // GooglePrivacyDlpV2CloudStorageFileSetPtrInput is an input type that accepts GooglePrivacyDlpV2CloudStorageFileSetArgs, GooglePrivacyDlpV2CloudStorageFileSetPtr and GooglePrivacyDlpV2CloudStorageFileSetPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageFileSetPtrInput` via:
 //
-//          GooglePrivacyDlpV2CloudStorageFileSetArgs{...}
+//	        GooglePrivacyDlpV2CloudStorageFileSetArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2CloudStorageFileSetPtrInput interface {
 	pulumi.Input
 
@@ -2506,7 +2506,7 @@ type GooglePrivacyDlpV2CloudStorageOptions struct {
 // GooglePrivacyDlpV2CloudStorageOptionsInput is an input type that accepts GooglePrivacyDlpV2CloudStorageOptionsArgs and GooglePrivacyDlpV2CloudStorageOptionsOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageOptionsInput` via:
 //
-//          GooglePrivacyDlpV2CloudStorageOptionsArgs{...}
+//	GooglePrivacyDlpV2CloudStorageOptionsArgs{...}
 type GooglePrivacyDlpV2CloudStorageOptionsInput interface {
 	pulumi.Input
 
@@ -2552,11 +2552,11 @@ func (i GooglePrivacyDlpV2CloudStorageOptionsArgs) ToGooglePrivacyDlpV2CloudStor
 // GooglePrivacyDlpV2CloudStorageOptionsPtrInput is an input type that accepts GooglePrivacyDlpV2CloudStorageOptionsArgs, GooglePrivacyDlpV2CloudStorageOptionsPtr and GooglePrivacyDlpV2CloudStorageOptionsPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageOptionsPtrInput` via:
 //
-//          GooglePrivacyDlpV2CloudStorageOptionsArgs{...}
+//	        GooglePrivacyDlpV2CloudStorageOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2CloudStorageOptionsPtrInput interface {
 	pulumi.Input
 
@@ -2793,7 +2793,7 @@ type GooglePrivacyDlpV2CloudStoragePath struct {
 // GooglePrivacyDlpV2CloudStoragePathInput is an input type that accepts GooglePrivacyDlpV2CloudStoragePathArgs and GooglePrivacyDlpV2CloudStoragePathOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CloudStoragePathInput` via:
 //
-//          GooglePrivacyDlpV2CloudStoragePathArgs{...}
+//	GooglePrivacyDlpV2CloudStoragePathArgs{...}
 type GooglePrivacyDlpV2CloudStoragePathInput interface {
 	pulumi.Input
 
@@ -2830,11 +2830,11 @@ func (i GooglePrivacyDlpV2CloudStoragePathArgs) ToGooglePrivacyDlpV2CloudStorage
 // GooglePrivacyDlpV2CloudStoragePathPtrInput is an input type that accepts GooglePrivacyDlpV2CloudStoragePathArgs, GooglePrivacyDlpV2CloudStoragePathPtr and GooglePrivacyDlpV2CloudStoragePathPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CloudStoragePathPtrInput` via:
 //
-//          GooglePrivacyDlpV2CloudStoragePathArgs{...}
+//	        GooglePrivacyDlpV2CloudStoragePathArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2CloudStoragePathPtrInput interface {
 	pulumi.Input
 
@@ -2963,7 +2963,7 @@ type GooglePrivacyDlpV2CloudStorageRegexFileSet struct {
 // GooglePrivacyDlpV2CloudStorageRegexFileSetInput is an input type that accepts GooglePrivacyDlpV2CloudStorageRegexFileSetArgs and GooglePrivacyDlpV2CloudStorageRegexFileSetOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageRegexFileSetInput` via:
 //
-//          GooglePrivacyDlpV2CloudStorageRegexFileSetArgs{...}
+//	GooglePrivacyDlpV2CloudStorageRegexFileSetArgs{...}
 type GooglePrivacyDlpV2CloudStorageRegexFileSetInput interface {
 	pulumi.Input
 
@@ -3004,11 +3004,11 @@ func (i GooglePrivacyDlpV2CloudStorageRegexFileSetArgs) ToGooglePrivacyDlpV2Clou
 // GooglePrivacyDlpV2CloudStorageRegexFileSetPtrInput is an input type that accepts GooglePrivacyDlpV2CloudStorageRegexFileSetArgs, GooglePrivacyDlpV2CloudStorageRegexFileSetPtr and GooglePrivacyDlpV2CloudStorageRegexFileSetPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CloudStorageRegexFileSetPtrInput` via:
 //
-//          GooglePrivacyDlpV2CloudStorageRegexFileSetArgs{...}
+//	        GooglePrivacyDlpV2CloudStorageRegexFileSetArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2CloudStorageRegexFileSetPtrInput interface {
 	pulumi.Input
 
@@ -3181,7 +3181,7 @@ type GooglePrivacyDlpV2Condition struct {
 // GooglePrivacyDlpV2ConditionInput is an input type that accepts GooglePrivacyDlpV2ConditionArgs and GooglePrivacyDlpV2ConditionOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ConditionInput` via:
 //
-//          GooglePrivacyDlpV2ConditionArgs{...}
+//	GooglePrivacyDlpV2ConditionArgs{...}
 type GooglePrivacyDlpV2ConditionInput interface {
 	pulumi.Input
 
@@ -3214,7 +3214,7 @@ func (i GooglePrivacyDlpV2ConditionArgs) ToGooglePrivacyDlpV2ConditionOutputWith
 // GooglePrivacyDlpV2ConditionArrayInput is an input type that accepts GooglePrivacyDlpV2ConditionArray and GooglePrivacyDlpV2ConditionArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ConditionArrayInput` via:
 //
-//          GooglePrivacyDlpV2ConditionArray{ GooglePrivacyDlpV2ConditionArgs{...} }
+//	GooglePrivacyDlpV2ConditionArray{ GooglePrivacyDlpV2ConditionArgs{...} }
 type GooglePrivacyDlpV2ConditionArrayInput interface {
 	pulumi.Input
 
@@ -3355,7 +3355,7 @@ type GooglePrivacyDlpV2Conditions struct {
 // GooglePrivacyDlpV2ConditionsInput is an input type that accepts GooglePrivacyDlpV2ConditionsArgs and GooglePrivacyDlpV2ConditionsOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ConditionsInput` via:
 //
-//          GooglePrivacyDlpV2ConditionsArgs{...}
+//	GooglePrivacyDlpV2ConditionsArgs{...}
 type GooglePrivacyDlpV2ConditionsInput interface {
 	pulumi.Input
 
@@ -3392,11 +3392,11 @@ func (i GooglePrivacyDlpV2ConditionsArgs) ToGooglePrivacyDlpV2ConditionsPtrOutpu
 // GooglePrivacyDlpV2ConditionsPtrInput is an input type that accepts GooglePrivacyDlpV2ConditionsArgs, GooglePrivacyDlpV2ConditionsPtr and GooglePrivacyDlpV2ConditionsPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ConditionsPtrInput` via:
 //
-//          GooglePrivacyDlpV2ConditionsArgs{...}
+//	        GooglePrivacyDlpV2ConditionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2ConditionsPtrInput interface {
 	pulumi.Input
 
@@ -3527,7 +3527,7 @@ type GooglePrivacyDlpV2CryptoDeterministicConfig struct {
 // GooglePrivacyDlpV2CryptoDeterministicConfigInput is an input type that accepts GooglePrivacyDlpV2CryptoDeterministicConfigArgs and GooglePrivacyDlpV2CryptoDeterministicConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CryptoDeterministicConfigInput` via:
 //
-//          GooglePrivacyDlpV2CryptoDeterministicConfigArgs{...}
+//	GooglePrivacyDlpV2CryptoDeterministicConfigArgs{...}
 type GooglePrivacyDlpV2CryptoDeterministicConfigInput interface {
 	pulumi.Input
 
@@ -3568,11 +3568,11 @@ func (i GooglePrivacyDlpV2CryptoDeterministicConfigArgs) ToGooglePrivacyDlpV2Cry
 // GooglePrivacyDlpV2CryptoDeterministicConfigPtrInput is an input type that accepts GooglePrivacyDlpV2CryptoDeterministicConfigArgs, GooglePrivacyDlpV2CryptoDeterministicConfigPtr and GooglePrivacyDlpV2CryptoDeterministicConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CryptoDeterministicConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2CryptoDeterministicConfigArgs{...}
+//	        GooglePrivacyDlpV2CryptoDeterministicConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2CryptoDeterministicConfigPtrInput interface {
 	pulumi.Input
 
@@ -3749,7 +3749,7 @@ type GooglePrivacyDlpV2CryptoHashConfig struct {
 // GooglePrivacyDlpV2CryptoHashConfigInput is an input type that accepts GooglePrivacyDlpV2CryptoHashConfigArgs and GooglePrivacyDlpV2CryptoHashConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CryptoHashConfigInput` via:
 //
-//          GooglePrivacyDlpV2CryptoHashConfigArgs{...}
+//	GooglePrivacyDlpV2CryptoHashConfigArgs{...}
 type GooglePrivacyDlpV2CryptoHashConfigInput interface {
 	pulumi.Input
 
@@ -3786,11 +3786,11 @@ func (i GooglePrivacyDlpV2CryptoHashConfigArgs) ToGooglePrivacyDlpV2CryptoHashCo
 // GooglePrivacyDlpV2CryptoHashConfigPtrInput is an input type that accepts GooglePrivacyDlpV2CryptoHashConfigArgs, GooglePrivacyDlpV2CryptoHashConfigPtr and GooglePrivacyDlpV2CryptoHashConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CryptoHashConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2CryptoHashConfigArgs{...}
+//	        GooglePrivacyDlpV2CryptoHashConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2CryptoHashConfigPtrInput interface {
 	pulumi.Input
 
@@ -3921,7 +3921,7 @@ type GooglePrivacyDlpV2CryptoKey struct {
 // GooglePrivacyDlpV2CryptoKeyInput is an input type that accepts GooglePrivacyDlpV2CryptoKeyArgs and GooglePrivacyDlpV2CryptoKeyOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CryptoKeyInput` via:
 //
-//          GooglePrivacyDlpV2CryptoKeyArgs{...}
+//	GooglePrivacyDlpV2CryptoKeyArgs{...}
 type GooglePrivacyDlpV2CryptoKeyInput interface {
 	pulumi.Input
 
@@ -3962,11 +3962,11 @@ func (i GooglePrivacyDlpV2CryptoKeyArgs) ToGooglePrivacyDlpV2CryptoKeyPtrOutputW
 // GooglePrivacyDlpV2CryptoKeyPtrInput is an input type that accepts GooglePrivacyDlpV2CryptoKeyArgs, GooglePrivacyDlpV2CryptoKeyPtr and GooglePrivacyDlpV2CryptoKeyPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CryptoKeyPtrInput` via:
 //
-//          GooglePrivacyDlpV2CryptoKeyArgs{...}
+//	        GooglePrivacyDlpV2CryptoKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2CryptoKeyPtrInput interface {
 	pulumi.Input
 
@@ -4151,7 +4151,7 @@ type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig struct {
 // GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigInput is an input type that accepts GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs and GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigInput` via:
 //
-//          GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs{...}
+//	GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs{...}
 type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigInput interface {
 	pulumi.Input
 
@@ -4198,11 +4198,11 @@ func (i GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs) ToGooglePrivacyDlpV2Cry
 // GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrInput is an input type that accepts GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs, GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtr and GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs{...}
+//	        GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2CryptoReplaceFfxFpeConfigPtrInput interface {
 	pulumi.Input
 
@@ -4461,7 +4461,7 @@ type GooglePrivacyDlpV2CustomInfoType struct {
 // GooglePrivacyDlpV2CustomInfoTypeInput is an input type that accepts GooglePrivacyDlpV2CustomInfoTypeArgs and GooglePrivacyDlpV2CustomInfoTypeOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CustomInfoTypeInput` via:
 //
-//          GooglePrivacyDlpV2CustomInfoTypeArgs{...}
+//	GooglePrivacyDlpV2CustomInfoTypeArgs{...}
 type GooglePrivacyDlpV2CustomInfoTypeInput interface {
 	pulumi.Input
 
@@ -4504,7 +4504,7 @@ func (i GooglePrivacyDlpV2CustomInfoTypeArgs) ToGooglePrivacyDlpV2CustomInfoType
 // GooglePrivacyDlpV2CustomInfoTypeArrayInput is an input type that accepts GooglePrivacyDlpV2CustomInfoTypeArray and GooglePrivacyDlpV2CustomInfoTypeArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2CustomInfoTypeArrayInput` via:
 //
-//          GooglePrivacyDlpV2CustomInfoTypeArray{ GooglePrivacyDlpV2CustomInfoTypeArgs{...} }
+//	GooglePrivacyDlpV2CustomInfoTypeArray{ GooglePrivacyDlpV2CustomInfoTypeArgs{...} }
 type GooglePrivacyDlpV2CustomInfoTypeArrayInput interface {
 	pulumi.Input
 
@@ -4719,7 +4719,7 @@ type GooglePrivacyDlpV2DatastoreOptions struct {
 // GooglePrivacyDlpV2DatastoreOptionsInput is an input type that accepts GooglePrivacyDlpV2DatastoreOptionsArgs and GooglePrivacyDlpV2DatastoreOptionsOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DatastoreOptionsInput` via:
 //
-//          GooglePrivacyDlpV2DatastoreOptionsArgs{...}
+//	GooglePrivacyDlpV2DatastoreOptionsArgs{...}
 type GooglePrivacyDlpV2DatastoreOptionsInput interface {
 	pulumi.Input
 
@@ -4758,11 +4758,11 @@ func (i GooglePrivacyDlpV2DatastoreOptionsArgs) ToGooglePrivacyDlpV2DatastoreOpt
 // GooglePrivacyDlpV2DatastoreOptionsPtrInput is an input type that accepts GooglePrivacyDlpV2DatastoreOptionsArgs, GooglePrivacyDlpV2DatastoreOptionsPtr and GooglePrivacyDlpV2DatastoreOptionsPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DatastoreOptionsPtrInput` via:
 //
-//          GooglePrivacyDlpV2DatastoreOptionsArgs{...}
+//	        GooglePrivacyDlpV2DatastoreOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2DatastoreOptionsPtrInput interface {
 	pulumi.Input
 
@@ -4919,7 +4919,7 @@ type GooglePrivacyDlpV2DateShiftConfig struct {
 // GooglePrivacyDlpV2DateShiftConfigInput is an input type that accepts GooglePrivacyDlpV2DateShiftConfigArgs and GooglePrivacyDlpV2DateShiftConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DateShiftConfigInput` via:
 //
-//          GooglePrivacyDlpV2DateShiftConfigArgs{...}
+//	GooglePrivacyDlpV2DateShiftConfigArgs{...}
 type GooglePrivacyDlpV2DateShiftConfigInput interface {
 	pulumi.Input
 
@@ -4962,11 +4962,11 @@ func (i GooglePrivacyDlpV2DateShiftConfigArgs) ToGooglePrivacyDlpV2DateShiftConf
 // GooglePrivacyDlpV2DateShiftConfigPtrInput is an input type that accepts GooglePrivacyDlpV2DateShiftConfigArgs, GooglePrivacyDlpV2DateShiftConfigPtr and GooglePrivacyDlpV2DateShiftConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DateShiftConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2DateShiftConfigArgs{...}
+//	        GooglePrivacyDlpV2DateShiftConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2DateShiftConfigPtrInput interface {
 	pulumi.Input
 
@@ -5165,7 +5165,7 @@ type GooglePrivacyDlpV2Deidentify struct {
 // GooglePrivacyDlpV2DeidentifyInput is an input type that accepts GooglePrivacyDlpV2DeidentifyArgs and GooglePrivacyDlpV2DeidentifyOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyInput` via:
 //
-//          GooglePrivacyDlpV2DeidentifyArgs{...}
+//	GooglePrivacyDlpV2DeidentifyArgs{...}
 type GooglePrivacyDlpV2DeidentifyInput interface {
 	pulumi.Input
 
@@ -5208,11 +5208,11 @@ func (i GooglePrivacyDlpV2DeidentifyArgs) ToGooglePrivacyDlpV2DeidentifyPtrOutpu
 // GooglePrivacyDlpV2DeidentifyPtrInput is an input type that accepts GooglePrivacyDlpV2DeidentifyArgs, GooglePrivacyDlpV2DeidentifyPtr and GooglePrivacyDlpV2DeidentifyPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyPtrInput` via:
 //
-//          GooglePrivacyDlpV2DeidentifyArgs{...}
+//	        GooglePrivacyDlpV2DeidentifyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2DeidentifyPtrInput interface {
 	pulumi.Input
 
@@ -5366,7 +5366,7 @@ type GooglePrivacyDlpV2DeidentifyConfig struct {
 // GooglePrivacyDlpV2DeidentifyConfigInput is an input type that accepts GooglePrivacyDlpV2DeidentifyConfigArgs and GooglePrivacyDlpV2DeidentifyConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyConfigInput` via:
 //
-//          GooglePrivacyDlpV2DeidentifyConfigArgs{...}
+//	GooglePrivacyDlpV2DeidentifyConfigArgs{...}
 type GooglePrivacyDlpV2DeidentifyConfigInput interface {
 	pulumi.Input
 
@@ -5407,11 +5407,11 @@ func (i GooglePrivacyDlpV2DeidentifyConfigArgs) ToGooglePrivacyDlpV2DeidentifyCo
 // GooglePrivacyDlpV2DeidentifyConfigPtrInput is an input type that accepts GooglePrivacyDlpV2DeidentifyConfigArgs, GooglePrivacyDlpV2DeidentifyConfigPtr and GooglePrivacyDlpV2DeidentifyConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DeidentifyConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2DeidentifyConfigArgs{...}
+//	        GooglePrivacyDlpV2DeidentifyConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2DeidentifyConfigPtrInput interface {
 	pulumi.Input
 
@@ -5647,7 +5647,7 @@ type GooglePrivacyDlpV2DeltaPresenceEstimationConfig struct {
 // GooglePrivacyDlpV2DeltaPresenceEstimationConfigInput is an input type that accepts GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs and GooglePrivacyDlpV2DeltaPresenceEstimationConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DeltaPresenceEstimationConfigInput` via:
 //
-//          GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs{...}
+//	GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs{...}
 type GooglePrivacyDlpV2DeltaPresenceEstimationConfigInput interface {
 	pulumi.Input
 
@@ -5688,11 +5688,11 @@ func (i GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs) ToGooglePrivacyDlpV
 // GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrInput is an input type that accepts GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs, GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtr and GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs{...}
+//	        GooglePrivacyDlpV2DeltaPresenceEstimationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2DeltaPresenceEstimationConfigPtrInput interface {
 	pulumi.Input
 
@@ -6034,7 +6034,7 @@ type GooglePrivacyDlpV2DetectionRule struct {
 // GooglePrivacyDlpV2DetectionRuleInput is an input type that accepts GooglePrivacyDlpV2DetectionRuleArgs and GooglePrivacyDlpV2DetectionRuleOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DetectionRuleInput` via:
 //
-//          GooglePrivacyDlpV2DetectionRuleArgs{...}
+//	GooglePrivacyDlpV2DetectionRuleArgs{...}
 type GooglePrivacyDlpV2DetectionRuleInput interface {
 	pulumi.Input
 
@@ -6063,7 +6063,7 @@ func (i GooglePrivacyDlpV2DetectionRuleArgs) ToGooglePrivacyDlpV2DetectionRuleOu
 // GooglePrivacyDlpV2DetectionRuleArrayInput is an input type that accepts GooglePrivacyDlpV2DetectionRuleArray and GooglePrivacyDlpV2DetectionRuleArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DetectionRuleArrayInput` via:
 //
-//          GooglePrivacyDlpV2DetectionRuleArray{ GooglePrivacyDlpV2DetectionRuleArgs{...} }
+//	GooglePrivacyDlpV2DetectionRuleArray{ GooglePrivacyDlpV2DetectionRuleArgs{...} }
 type GooglePrivacyDlpV2DetectionRuleArrayInput interface {
 	pulumi.Input
 
@@ -6184,7 +6184,7 @@ type GooglePrivacyDlpV2Dictionary struct {
 // GooglePrivacyDlpV2DictionaryInput is an input type that accepts GooglePrivacyDlpV2DictionaryArgs and GooglePrivacyDlpV2DictionaryOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DictionaryInput` via:
 //
-//          GooglePrivacyDlpV2DictionaryArgs{...}
+//	GooglePrivacyDlpV2DictionaryArgs{...}
 type GooglePrivacyDlpV2DictionaryInput interface {
 	pulumi.Input
 
@@ -6223,11 +6223,11 @@ func (i GooglePrivacyDlpV2DictionaryArgs) ToGooglePrivacyDlpV2DictionaryPtrOutpu
 // GooglePrivacyDlpV2DictionaryPtrInput is an input type that accepts GooglePrivacyDlpV2DictionaryArgs, GooglePrivacyDlpV2DictionaryPtr and GooglePrivacyDlpV2DictionaryPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2DictionaryPtrInput` via:
 //
-//          GooglePrivacyDlpV2DictionaryArgs{...}
+//	        GooglePrivacyDlpV2DictionaryArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2DictionaryPtrInput interface {
 	pulumi.Input
 
@@ -6376,7 +6376,7 @@ type GooglePrivacyDlpV2EntityId struct {
 // GooglePrivacyDlpV2EntityIdInput is an input type that accepts GooglePrivacyDlpV2EntityIdArgs and GooglePrivacyDlpV2EntityIdOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2EntityIdInput` via:
 //
-//          GooglePrivacyDlpV2EntityIdArgs{...}
+//	GooglePrivacyDlpV2EntityIdArgs{...}
 type GooglePrivacyDlpV2EntityIdInput interface {
 	pulumi.Input
 
@@ -6413,11 +6413,11 @@ func (i GooglePrivacyDlpV2EntityIdArgs) ToGooglePrivacyDlpV2EntityIdPtrOutputWit
 // GooglePrivacyDlpV2EntityIdPtrInput is an input type that accepts GooglePrivacyDlpV2EntityIdArgs, GooglePrivacyDlpV2EntityIdPtr and GooglePrivacyDlpV2EntityIdPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2EntityIdPtrInput` via:
 //
-//          GooglePrivacyDlpV2EntityIdArgs{...}
+//	        GooglePrivacyDlpV2EntityIdArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2EntityIdPtrInput interface {
 	pulumi.Input
 
@@ -6595,7 +6595,7 @@ type GooglePrivacyDlpV2ExcludeInfoTypes struct {
 // GooglePrivacyDlpV2ExcludeInfoTypesInput is an input type that accepts GooglePrivacyDlpV2ExcludeInfoTypesArgs and GooglePrivacyDlpV2ExcludeInfoTypesOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ExcludeInfoTypesInput` via:
 //
-//          GooglePrivacyDlpV2ExcludeInfoTypesArgs{...}
+//	GooglePrivacyDlpV2ExcludeInfoTypesArgs{...}
 type GooglePrivacyDlpV2ExcludeInfoTypesInput interface {
 	pulumi.Input
 
@@ -6632,11 +6632,11 @@ func (i GooglePrivacyDlpV2ExcludeInfoTypesArgs) ToGooglePrivacyDlpV2ExcludeInfoT
 // GooglePrivacyDlpV2ExcludeInfoTypesPtrInput is an input type that accepts GooglePrivacyDlpV2ExcludeInfoTypesArgs, GooglePrivacyDlpV2ExcludeInfoTypesPtr and GooglePrivacyDlpV2ExcludeInfoTypesPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ExcludeInfoTypesPtrInput` via:
 //
-//          GooglePrivacyDlpV2ExcludeInfoTypesArgs{...}
+//	        GooglePrivacyDlpV2ExcludeInfoTypesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2ExcludeInfoTypesPtrInput interface {
 	pulumi.Input
 
@@ -6769,7 +6769,7 @@ type GooglePrivacyDlpV2ExclusionRule struct {
 // GooglePrivacyDlpV2ExclusionRuleInput is an input type that accepts GooglePrivacyDlpV2ExclusionRuleArgs and GooglePrivacyDlpV2ExclusionRuleOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ExclusionRuleInput` via:
 //
-//          GooglePrivacyDlpV2ExclusionRuleArgs{...}
+//	GooglePrivacyDlpV2ExclusionRuleArgs{...}
 type GooglePrivacyDlpV2ExclusionRuleInput interface {
 	pulumi.Input
 
@@ -6812,11 +6812,11 @@ func (i GooglePrivacyDlpV2ExclusionRuleArgs) ToGooglePrivacyDlpV2ExclusionRulePt
 // GooglePrivacyDlpV2ExclusionRulePtrInput is an input type that accepts GooglePrivacyDlpV2ExclusionRuleArgs, GooglePrivacyDlpV2ExclusionRulePtr and GooglePrivacyDlpV2ExclusionRulePtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ExclusionRulePtrInput` via:
 //
-//          GooglePrivacyDlpV2ExclusionRuleArgs{...}
+//	        GooglePrivacyDlpV2ExclusionRuleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2ExclusionRulePtrInput interface {
 	pulumi.Input
 
@@ -7015,7 +7015,7 @@ type GooglePrivacyDlpV2Expressions struct {
 // GooglePrivacyDlpV2ExpressionsInput is an input type that accepts GooglePrivacyDlpV2ExpressionsArgs and GooglePrivacyDlpV2ExpressionsOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ExpressionsInput` via:
 //
-//          GooglePrivacyDlpV2ExpressionsArgs{...}
+//	GooglePrivacyDlpV2ExpressionsArgs{...}
 type GooglePrivacyDlpV2ExpressionsInput interface {
 	pulumi.Input
 
@@ -7054,11 +7054,11 @@ func (i GooglePrivacyDlpV2ExpressionsArgs) ToGooglePrivacyDlpV2ExpressionsPtrOut
 // GooglePrivacyDlpV2ExpressionsPtrInput is an input type that accepts GooglePrivacyDlpV2ExpressionsArgs, GooglePrivacyDlpV2ExpressionsPtr and GooglePrivacyDlpV2ExpressionsPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ExpressionsPtrInput` via:
 //
-//          GooglePrivacyDlpV2ExpressionsArgs{...}
+//	        GooglePrivacyDlpV2ExpressionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2ExpressionsPtrInput interface {
 	pulumi.Input
 
@@ -7209,7 +7209,7 @@ type GooglePrivacyDlpV2FieldId struct {
 // GooglePrivacyDlpV2FieldIdInput is an input type that accepts GooglePrivacyDlpV2FieldIdArgs and GooglePrivacyDlpV2FieldIdOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2FieldIdInput` via:
 //
-//          GooglePrivacyDlpV2FieldIdArgs{...}
+//	GooglePrivacyDlpV2FieldIdArgs{...}
 type GooglePrivacyDlpV2FieldIdInput interface {
 	pulumi.Input
 
@@ -7246,11 +7246,11 @@ func (i GooglePrivacyDlpV2FieldIdArgs) ToGooglePrivacyDlpV2FieldIdPtrOutputWithC
 // GooglePrivacyDlpV2FieldIdPtrInput is an input type that accepts GooglePrivacyDlpV2FieldIdArgs, GooglePrivacyDlpV2FieldIdPtr and GooglePrivacyDlpV2FieldIdPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2FieldIdPtrInput` via:
 //
-//          GooglePrivacyDlpV2FieldIdArgs{...}
+//	        GooglePrivacyDlpV2FieldIdArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2FieldIdPtrInput interface {
 	pulumi.Input
 
@@ -7279,7 +7279,7 @@ func (i *googlePrivacyDlpV2FieldIdPtrType) ToGooglePrivacyDlpV2FieldIdPtrOutputW
 // GooglePrivacyDlpV2FieldIdArrayInput is an input type that accepts GooglePrivacyDlpV2FieldIdArray and GooglePrivacyDlpV2FieldIdArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2FieldIdArrayInput` via:
 //
-//          GooglePrivacyDlpV2FieldIdArray{ GooglePrivacyDlpV2FieldIdArgs{...} }
+//	GooglePrivacyDlpV2FieldIdArray{ GooglePrivacyDlpV2FieldIdArgs{...} }
 type GooglePrivacyDlpV2FieldIdArrayInput interface {
 	pulumi.Input
 
@@ -7446,7 +7446,7 @@ type GooglePrivacyDlpV2FieldTransformation struct {
 // GooglePrivacyDlpV2FieldTransformationInput is an input type that accepts GooglePrivacyDlpV2FieldTransformationArgs and GooglePrivacyDlpV2FieldTransformationOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2FieldTransformationInput` via:
 //
-//          GooglePrivacyDlpV2FieldTransformationArgs{...}
+//	GooglePrivacyDlpV2FieldTransformationArgs{...}
 type GooglePrivacyDlpV2FieldTransformationInput interface {
 	pulumi.Input
 
@@ -7481,7 +7481,7 @@ func (i GooglePrivacyDlpV2FieldTransformationArgs) ToGooglePrivacyDlpV2FieldTran
 // GooglePrivacyDlpV2FieldTransformationArrayInput is an input type that accepts GooglePrivacyDlpV2FieldTransformationArray and GooglePrivacyDlpV2FieldTransformationArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2FieldTransformationArrayInput` via:
 //
-//          GooglePrivacyDlpV2FieldTransformationArray{ GooglePrivacyDlpV2FieldTransformationArgs{...} }
+//	GooglePrivacyDlpV2FieldTransformationArray{ GooglePrivacyDlpV2FieldTransformationArgs{...} }
 type GooglePrivacyDlpV2FieldTransformationArrayInput interface {
 	pulumi.Input
 
@@ -7648,7 +7648,7 @@ type GooglePrivacyDlpV2FileSet struct {
 // GooglePrivacyDlpV2FileSetInput is an input type that accepts GooglePrivacyDlpV2FileSetArgs and GooglePrivacyDlpV2FileSetOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2FileSetInput` via:
 //
-//          GooglePrivacyDlpV2FileSetArgs{...}
+//	GooglePrivacyDlpV2FileSetArgs{...}
 type GooglePrivacyDlpV2FileSetInput interface {
 	pulumi.Input
 
@@ -7687,11 +7687,11 @@ func (i GooglePrivacyDlpV2FileSetArgs) ToGooglePrivacyDlpV2FileSetPtrOutputWithC
 // GooglePrivacyDlpV2FileSetPtrInput is an input type that accepts GooglePrivacyDlpV2FileSetArgs, GooglePrivacyDlpV2FileSetPtr and GooglePrivacyDlpV2FileSetPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2FileSetPtrInput` via:
 //
-//          GooglePrivacyDlpV2FileSetArgs{...}
+//	        GooglePrivacyDlpV2FileSetArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2FileSetPtrInput interface {
 	pulumi.Input
 
@@ -7844,7 +7844,7 @@ type GooglePrivacyDlpV2FindingLimits struct {
 // GooglePrivacyDlpV2FindingLimitsInput is an input type that accepts GooglePrivacyDlpV2FindingLimitsArgs and GooglePrivacyDlpV2FindingLimitsOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2FindingLimitsInput` via:
 //
-//          GooglePrivacyDlpV2FindingLimitsArgs{...}
+//	GooglePrivacyDlpV2FindingLimitsArgs{...}
 type GooglePrivacyDlpV2FindingLimitsInput interface {
 	pulumi.Input
 
@@ -7885,11 +7885,11 @@ func (i GooglePrivacyDlpV2FindingLimitsArgs) ToGooglePrivacyDlpV2FindingLimitsPt
 // GooglePrivacyDlpV2FindingLimitsPtrInput is an input type that accepts GooglePrivacyDlpV2FindingLimitsArgs, GooglePrivacyDlpV2FindingLimitsPtr and GooglePrivacyDlpV2FindingLimitsPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2FindingLimitsPtrInput` via:
 //
-//          GooglePrivacyDlpV2FindingLimitsArgs{...}
+//	        GooglePrivacyDlpV2FindingLimitsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2FindingLimitsPtrInput interface {
 	pulumi.Input
 
@@ -8066,7 +8066,7 @@ type GooglePrivacyDlpV2FixedSizeBucketingConfig struct {
 // GooglePrivacyDlpV2FixedSizeBucketingConfigInput is an input type that accepts GooglePrivacyDlpV2FixedSizeBucketingConfigArgs and GooglePrivacyDlpV2FixedSizeBucketingConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2FixedSizeBucketingConfigInput` via:
 //
-//          GooglePrivacyDlpV2FixedSizeBucketingConfigArgs{...}
+//	GooglePrivacyDlpV2FixedSizeBucketingConfigArgs{...}
 type GooglePrivacyDlpV2FixedSizeBucketingConfigInput interface {
 	pulumi.Input
 
@@ -8107,11 +8107,11 @@ func (i GooglePrivacyDlpV2FixedSizeBucketingConfigArgs) ToGooglePrivacyDlpV2Fixe
 // GooglePrivacyDlpV2FixedSizeBucketingConfigPtrInput is an input type that accepts GooglePrivacyDlpV2FixedSizeBucketingConfigArgs, GooglePrivacyDlpV2FixedSizeBucketingConfigPtr and GooglePrivacyDlpV2FixedSizeBucketingConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2FixedSizeBucketingConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2FixedSizeBucketingConfigArgs{...}
+//	        GooglePrivacyDlpV2FixedSizeBucketingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2FixedSizeBucketingConfigPtrInput interface {
 	pulumi.Input
 
@@ -8288,7 +8288,7 @@ type GooglePrivacyDlpV2HotwordRule struct {
 // GooglePrivacyDlpV2HotwordRuleInput is an input type that accepts GooglePrivacyDlpV2HotwordRuleArgs and GooglePrivacyDlpV2HotwordRuleOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2HotwordRuleInput` via:
 //
-//          GooglePrivacyDlpV2HotwordRuleArgs{...}
+//	GooglePrivacyDlpV2HotwordRuleArgs{...}
 type GooglePrivacyDlpV2HotwordRuleInput interface {
 	pulumi.Input
 
@@ -8329,11 +8329,11 @@ func (i GooglePrivacyDlpV2HotwordRuleArgs) ToGooglePrivacyDlpV2HotwordRulePtrOut
 // GooglePrivacyDlpV2HotwordRulePtrInput is an input type that accepts GooglePrivacyDlpV2HotwordRuleArgs, GooglePrivacyDlpV2HotwordRulePtr and GooglePrivacyDlpV2HotwordRulePtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2HotwordRulePtrInput` via:
 //
-//          GooglePrivacyDlpV2HotwordRuleArgs{...}
+//	        GooglePrivacyDlpV2HotwordRuleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2HotwordRulePtrInput interface {
 	pulumi.Input
 
@@ -8552,7 +8552,7 @@ type GooglePrivacyDlpV2HybridOptions struct {
 // GooglePrivacyDlpV2HybridOptionsInput is an input type that accepts GooglePrivacyDlpV2HybridOptionsArgs and GooglePrivacyDlpV2HybridOptionsOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2HybridOptionsInput` via:
 //
-//          GooglePrivacyDlpV2HybridOptionsArgs{...}
+//	GooglePrivacyDlpV2HybridOptionsArgs{...}
 type GooglePrivacyDlpV2HybridOptionsInput interface {
 	pulumi.Input
 
@@ -8595,11 +8595,11 @@ func (i GooglePrivacyDlpV2HybridOptionsArgs) ToGooglePrivacyDlpV2HybridOptionsPt
 // GooglePrivacyDlpV2HybridOptionsPtrInput is an input type that accepts GooglePrivacyDlpV2HybridOptionsArgs, GooglePrivacyDlpV2HybridOptionsPtr and GooglePrivacyDlpV2HybridOptionsPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2HybridOptionsPtrInput` via:
 //
-//          GooglePrivacyDlpV2HybridOptionsArgs{...}
+//	        GooglePrivacyDlpV2HybridOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2HybridOptionsPtrInput interface {
 	pulumi.Input
 
@@ -8794,7 +8794,7 @@ type GooglePrivacyDlpV2InfoType struct {
 // GooglePrivacyDlpV2InfoTypeInput is an input type that accepts GooglePrivacyDlpV2InfoTypeArgs and GooglePrivacyDlpV2InfoTypeOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeInput` via:
 //
-//          GooglePrivacyDlpV2InfoTypeArgs{...}
+//	GooglePrivacyDlpV2InfoTypeArgs{...}
 type GooglePrivacyDlpV2InfoTypeInput interface {
 	pulumi.Input
 
@@ -8833,11 +8833,11 @@ func (i GooglePrivacyDlpV2InfoTypeArgs) ToGooglePrivacyDlpV2InfoTypePtrOutputWit
 // GooglePrivacyDlpV2InfoTypePtrInput is an input type that accepts GooglePrivacyDlpV2InfoTypeArgs, GooglePrivacyDlpV2InfoTypePtr and GooglePrivacyDlpV2InfoTypePtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypePtrInput` via:
 //
-//          GooglePrivacyDlpV2InfoTypeArgs{...}
+//	        GooglePrivacyDlpV2InfoTypeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2InfoTypePtrInput interface {
 	pulumi.Input
 
@@ -8866,7 +8866,7 @@ func (i *googlePrivacyDlpV2InfoTypePtrType) ToGooglePrivacyDlpV2InfoTypePtrOutpu
 // GooglePrivacyDlpV2InfoTypeArrayInput is an input type that accepts GooglePrivacyDlpV2InfoTypeArray and GooglePrivacyDlpV2InfoTypeArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeArrayInput` via:
 //
-//          GooglePrivacyDlpV2InfoTypeArray{ GooglePrivacyDlpV2InfoTypeArgs{...} }
+//	GooglePrivacyDlpV2InfoTypeArray{ GooglePrivacyDlpV2InfoTypeArgs{...} }
 type GooglePrivacyDlpV2InfoTypeArrayInput interface {
 	pulumi.Input
 
@@ -8998,7 +8998,7 @@ type GooglePrivacyDlpV2InfoTypeLimit struct {
 // GooglePrivacyDlpV2InfoTypeLimitInput is an input type that accepts GooglePrivacyDlpV2InfoTypeLimitArgs and GooglePrivacyDlpV2InfoTypeLimitOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeLimitInput` via:
 //
-//          GooglePrivacyDlpV2InfoTypeLimitArgs{...}
+//	GooglePrivacyDlpV2InfoTypeLimitArgs{...}
 type GooglePrivacyDlpV2InfoTypeLimitInput interface {
 	pulumi.Input
 
@@ -9029,7 +9029,7 @@ func (i GooglePrivacyDlpV2InfoTypeLimitArgs) ToGooglePrivacyDlpV2InfoTypeLimitOu
 // GooglePrivacyDlpV2InfoTypeLimitArrayInput is an input type that accepts GooglePrivacyDlpV2InfoTypeLimitArray and GooglePrivacyDlpV2InfoTypeLimitArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeLimitArrayInput` via:
 //
-//          GooglePrivacyDlpV2InfoTypeLimitArray{ GooglePrivacyDlpV2InfoTypeLimitArgs{...} }
+//	GooglePrivacyDlpV2InfoTypeLimitArray{ GooglePrivacyDlpV2InfoTypeLimitArgs{...} }
 type GooglePrivacyDlpV2InfoTypeLimitArrayInput interface {
 	pulumi.Input
 
@@ -9266,7 +9266,7 @@ type GooglePrivacyDlpV2InfoTypeTransformation struct {
 // GooglePrivacyDlpV2InfoTypeTransformationInput is an input type that accepts GooglePrivacyDlpV2InfoTypeTransformationArgs and GooglePrivacyDlpV2InfoTypeTransformationOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeTransformationInput` via:
 //
-//          GooglePrivacyDlpV2InfoTypeTransformationArgs{...}
+//	GooglePrivacyDlpV2InfoTypeTransformationArgs{...}
 type GooglePrivacyDlpV2InfoTypeTransformationInput interface {
 	pulumi.Input
 
@@ -9297,7 +9297,7 @@ func (i GooglePrivacyDlpV2InfoTypeTransformationArgs) ToGooglePrivacyDlpV2InfoTy
 // GooglePrivacyDlpV2InfoTypeTransformationArrayInput is an input type that accepts GooglePrivacyDlpV2InfoTypeTransformationArray and GooglePrivacyDlpV2InfoTypeTransformationArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeTransformationArrayInput` via:
 //
-//          GooglePrivacyDlpV2InfoTypeTransformationArray{ GooglePrivacyDlpV2InfoTypeTransformationArgs{...} }
+//	GooglePrivacyDlpV2InfoTypeTransformationArray{ GooglePrivacyDlpV2InfoTypeTransformationArgs{...} }
 type GooglePrivacyDlpV2InfoTypeTransformationArrayInput interface {
 	pulumi.Input
 
@@ -9432,7 +9432,7 @@ type GooglePrivacyDlpV2InfoTypeTransformations struct {
 // GooglePrivacyDlpV2InfoTypeTransformationsInput is an input type that accepts GooglePrivacyDlpV2InfoTypeTransformationsArgs and GooglePrivacyDlpV2InfoTypeTransformationsOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeTransformationsInput` via:
 //
-//          GooglePrivacyDlpV2InfoTypeTransformationsArgs{...}
+//	GooglePrivacyDlpV2InfoTypeTransformationsArgs{...}
 type GooglePrivacyDlpV2InfoTypeTransformationsInput interface {
 	pulumi.Input
 
@@ -9469,11 +9469,11 @@ func (i GooglePrivacyDlpV2InfoTypeTransformationsArgs) ToGooglePrivacyDlpV2InfoT
 // GooglePrivacyDlpV2InfoTypeTransformationsPtrInput is an input type that accepts GooglePrivacyDlpV2InfoTypeTransformationsArgs, GooglePrivacyDlpV2InfoTypeTransformationsPtr and GooglePrivacyDlpV2InfoTypeTransformationsPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InfoTypeTransformationsPtrInput` via:
 //
-//          GooglePrivacyDlpV2InfoTypeTransformationsArgs{...}
+//	        GooglePrivacyDlpV2InfoTypeTransformationsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2InfoTypeTransformationsPtrInput interface {
 	pulumi.Input
 
@@ -9618,7 +9618,7 @@ type GooglePrivacyDlpV2InspectConfig struct {
 // GooglePrivacyDlpV2InspectConfigInput is an input type that accepts GooglePrivacyDlpV2InspectConfigArgs and GooglePrivacyDlpV2InspectConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InspectConfigInput` via:
 //
-//          GooglePrivacyDlpV2InspectConfigArgs{...}
+//	GooglePrivacyDlpV2InspectConfigArgs{...}
 type GooglePrivacyDlpV2InspectConfigInput interface {
 	pulumi.Input
 
@@ -9671,11 +9671,11 @@ func (i GooglePrivacyDlpV2InspectConfigArgs) ToGooglePrivacyDlpV2InspectConfigPt
 // GooglePrivacyDlpV2InspectConfigPtrInput is an input type that accepts GooglePrivacyDlpV2InspectConfigArgs, GooglePrivacyDlpV2InspectConfigPtr and GooglePrivacyDlpV2InspectConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InspectConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2InspectConfigArgs{...}
+//	        GooglePrivacyDlpV2InspectConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2InspectConfigPtrInput interface {
 	pulumi.Input
 
@@ -10017,7 +10017,7 @@ type GooglePrivacyDlpV2InspectJobConfig struct {
 // GooglePrivacyDlpV2InspectJobConfigInput is an input type that accepts GooglePrivacyDlpV2InspectJobConfigArgs and GooglePrivacyDlpV2InspectJobConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InspectJobConfigInput` via:
 //
-//          GooglePrivacyDlpV2InspectJobConfigArgs{...}
+//	GooglePrivacyDlpV2InspectJobConfigArgs{...}
 type GooglePrivacyDlpV2InspectJobConfigInput interface {
 	pulumi.Input
 
@@ -10060,11 +10060,11 @@ func (i GooglePrivacyDlpV2InspectJobConfigArgs) ToGooglePrivacyDlpV2InspectJobCo
 // GooglePrivacyDlpV2InspectJobConfigPtrInput is an input type that accepts GooglePrivacyDlpV2InspectJobConfigArgs, GooglePrivacyDlpV2InspectJobConfigPtr and GooglePrivacyDlpV2InspectJobConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InspectJobConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2InspectJobConfigArgs{...}
+//	        GooglePrivacyDlpV2InspectJobConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2InspectJobConfigPtrInput interface {
 	pulumi.Input
 
@@ -10326,7 +10326,7 @@ type GooglePrivacyDlpV2InspectionRule struct {
 // GooglePrivacyDlpV2InspectionRuleInput is an input type that accepts GooglePrivacyDlpV2InspectionRuleArgs and GooglePrivacyDlpV2InspectionRuleOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InspectionRuleInput` via:
 //
-//          GooglePrivacyDlpV2InspectionRuleArgs{...}
+//	GooglePrivacyDlpV2InspectionRuleArgs{...}
 type GooglePrivacyDlpV2InspectionRuleInput interface {
 	pulumi.Input
 
@@ -10357,7 +10357,7 @@ func (i GooglePrivacyDlpV2InspectionRuleArgs) ToGooglePrivacyDlpV2InspectionRule
 // GooglePrivacyDlpV2InspectionRuleArrayInput is an input type that accepts GooglePrivacyDlpV2InspectionRuleArray and GooglePrivacyDlpV2InspectionRuleArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InspectionRuleArrayInput` via:
 //
-//          GooglePrivacyDlpV2InspectionRuleArray{ GooglePrivacyDlpV2InspectionRuleArgs{...} }
+//	GooglePrivacyDlpV2InspectionRuleArray{ GooglePrivacyDlpV2InspectionRuleArgs{...} }
 type GooglePrivacyDlpV2InspectionRuleArrayInput interface {
 	pulumi.Input
 
@@ -10492,7 +10492,7 @@ type GooglePrivacyDlpV2InspectionRuleSet struct {
 // GooglePrivacyDlpV2InspectionRuleSetInput is an input type that accepts GooglePrivacyDlpV2InspectionRuleSetArgs and GooglePrivacyDlpV2InspectionRuleSetOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InspectionRuleSetInput` via:
 //
-//          GooglePrivacyDlpV2InspectionRuleSetArgs{...}
+//	GooglePrivacyDlpV2InspectionRuleSetArgs{...}
 type GooglePrivacyDlpV2InspectionRuleSetInput interface {
 	pulumi.Input
 
@@ -10523,7 +10523,7 @@ func (i GooglePrivacyDlpV2InspectionRuleSetArgs) ToGooglePrivacyDlpV2InspectionR
 // GooglePrivacyDlpV2InspectionRuleSetArrayInput is an input type that accepts GooglePrivacyDlpV2InspectionRuleSetArray and GooglePrivacyDlpV2InspectionRuleSetArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2InspectionRuleSetArrayInput` via:
 //
-//          GooglePrivacyDlpV2InspectionRuleSetArray{ GooglePrivacyDlpV2InspectionRuleSetArgs{...} }
+//	GooglePrivacyDlpV2InspectionRuleSetArray{ GooglePrivacyDlpV2InspectionRuleSetArgs{...} }
 type GooglePrivacyDlpV2InspectionRuleSetArrayInput interface {
 	pulumi.Input
 
@@ -10654,7 +10654,7 @@ type GooglePrivacyDlpV2JobNotificationEmails struct {
 // GooglePrivacyDlpV2JobNotificationEmailsInput is an input type that accepts GooglePrivacyDlpV2JobNotificationEmailsArgs and GooglePrivacyDlpV2JobNotificationEmailsOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2JobNotificationEmailsInput` via:
 //
-//          GooglePrivacyDlpV2JobNotificationEmailsArgs{...}
+//	GooglePrivacyDlpV2JobNotificationEmailsArgs{...}
 type GooglePrivacyDlpV2JobNotificationEmailsInput interface {
 	pulumi.Input
 
@@ -10689,11 +10689,11 @@ func (i GooglePrivacyDlpV2JobNotificationEmailsArgs) ToGooglePrivacyDlpV2JobNoti
 // GooglePrivacyDlpV2JobNotificationEmailsPtrInput is an input type that accepts GooglePrivacyDlpV2JobNotificationEmailsArgs, GooglePrivacyDlpV2JobNotificationEmailsPtr and GooglePrivacyDlpV2JobNotificationEmailsPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2JobNotificationEmailsPtrInput` via:
 //
-//          GooglePrivacyDlpV2JobNotificationEmailsArgs{...}
+//	        GooglePrivacyDlpV2JobNotificationEmailsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2JobNotificationEmailsPtrInput interface {
 	pulumi.Input
 
@@ -10798,7 +10798,7 @@ type GooglePrivacyDlpV2KAnonymityConfig struct {
 // GooglePrivacyDlpV2KAnonymityConfigInput is an input type that accepts GooglePrivacyDlpV2KAnonymityConfigArgs and GooglePrivacyDlpV2KAnonymityConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2KAnonymityConfigInput` via:
 //
-//          GooglePrivacyDlpV2KAnonymityConfigArgs{...}
+//	GooglePrivacyDlpV2KAnonymityConfigArgs{...}
 type GooglePrivacyDlpV2KAnonymityConfigInput interface {
 	pulumi.Input
 
@@ -10837,11 +10837,11 @@ func (i GooglePrivacyDlpV2KAnonymityConfigArgs) ToGooglePrivacyDlpV2KAnonymityCo
 // GooglePrivacyDlpV2KAnonymityConfigPtrInput is an input type that accepts GooglePrivacyDlpV2KAnonymityConfigArgs, GooglePrivacyDlpV2KAnonymityConfigPtr and GooglePrivacyDlpV2KAnonymityConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2KAnonymityConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2KAnonymityConfigArgs{...}
+//	        GooglePrivacyDlpV2KAnonymityConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2KAnonymityConfigPtrInput interface {
 	pulumi.Input
 
@@ -11159,7 +11159,7 @@ type GooglePrivacyDlpV2KMapEstimationConfig struct {
 // GooglePrivacyDlpV2KMapEstimationConfigInput is an input type that accepts GooglePrivacyDlpV2KMapEstimationConfigArgs and GooglePrivacyDlpV2KMapEstimationConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2KMapEstimationConfigInput` via:
 //
-//          GooglePrivacyDlpV2KMapEstimationConfigArgs{...}
+//	GooglePrivacyDlpV2KMapEstimationConfigArgs{...}
 type GooglePrivacyDlpV2KMapEstimationConfigInput interface {
 	pulumi.Input
 
@@ -11200,11 +11200,11 @@ func (i GooglePrivacyDlpV2KMapEstimationConfigArgs) ToGooglePrivacyDlpV2KMapEsti
 // GooglePrivacyDlpV2KMapEstimationConfigPtrInput is an input type that accepts GooglePrivacyDlpV2KMapEstimationConfigArgs, GooglePrivacyDlpV2KMapEstimationConfigPtr and GooglePrivacyDlpV2KMapEstimationConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2KMapEstimationConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2KMapEstimationConfigArgs{...}
+//	        GooglePrivacyDlpV2KMapEstimationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2KMapEstimationConfigPtrInput interface {
 	pulumi.Input
 
@@ -11538,7 +11538,7 @@ type GooglePrivacyDlpV2KindExpression struct {
 // GooglePrivacyDlpV2KindExpressionInput is an input type that accepts GooglePrivacyDlpV2KindExpressionArgs and GooglePrivacyDlpV2KindExpressionOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2KindExpressionInput` via:
 //
-//          GooglePrivacyDlpV2KindExpressionArgs{...}
+//	GooglePrivacyDlpV2KindExpressionArgs{...}
 type GooglePrivacyDlpV2KindExpressionInput interface {
 	pulumi.Input
 
@@ -11575,11 +11575,11 @@ func (i GooglePrivacyDlpV2KindExpressionArgs) ToGooglePrivacyDlpV2KindExpression
 // GooglePrivacyDlpV2KindExpressionPtrInput is an input type that accepts GooglePrivacyDlpV2KindExpressionArgs, GooglePrivacyDlpV2KindExpressionPtr and GooglePrivacyDlpV2KindExpressionPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2KindExpressionPtrInput` via:
 //
-//          GooglePrivacyDlpV2KindExpressionArgs{...}
+//	        GooglePrivacyDlpV2KindExpressionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2KindExpressionPtrInput interface {
 	pulumi.Input
 
@@ -11706,7 +11706,7 @@ type GooglePrivacyDlpV2KmsWrappedCryptoKey struct {
 // GooglePrivacyDlpV2KmsWrappedCryptoKeyInput is an input type that accepts GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs and GooglePrivacyDlpV2KmsWrappedCryptoKeyOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2KmsWrappedCryptoKeyInput` via:
 //
-//          GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs{...}
+//	GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs{...}
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyInput interface {
 	pulumi.Input
 
@@ -11745,11 +11745,11 @@ func (i GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs) ToGooglePrivacyDlpV2KmsWrappe
 // GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrInput is an input type that accepts GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs, GooglePrivacyDlpV2KmsWrappedCryptoKeyPtr and GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrInput` via:
 //
-//          GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs{...}
+//	        GooglePrivacyDlpV2KmsWrappedCryptoKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2KmsWrappedCryptoKeyPtrInput interface {
 	pulumi.Input
 
@@ -11898,7 +11898,7 @@ type GooglePrivacyDlpV2LDiversityConfig struct {
 // GooglePrivacyDlpV2LDiversityConfigInput is an input type that accepts GooglePrivacyDlpV2LDiversityConfigArgs and GooglePrivacyDlpV2LDiversityConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2LDiversityConfigInput` via:
 //
-//          GooglePrivacyDlpV2LDiversityConfigArgs{...}
+//	GooglePrivacyDlpV2LDiversityConfigArgs{...}
 type GooglePrivacyDlpV2LDiversityConfigInput interface {
 	pulumi.Input
 
@@ -11937,11 +11937,11 @@ func (i GooglePrivacyDlpV2LDiversityConfigArgs) ToGooglePrivacyDlpV2LDiversityCo
 // GooglePrivacyDlpV2LDiversityConfigPtrInput is an input type that accepts GooglePrivacyDlpV2LDiversityConfigArgs, GooglePrivacyDlpV2LDiversityConfigPtr and GooglePrivacyDlpV2LDiversityConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2LDiversityConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2LDiversityConfigArgs{...}
+//	        GooglePrivacyDlpV2LDiversityConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2LDiversityConfigPtrInput interface {
 	pulumi.Input
 
@@ -12277,7 +12277,7 @@ type GooglePrivacyDlpV2LargeCustomDictionaryConfig struct {
 // GooglePrivacyDlpV2LargeCustomDictionaryConfigInput is an input type that accepts GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs and GooglePrivacyDlpV2LargeCustomDictionaryConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2LargeCustomDictionaryConfigInput` via:
 //
-//          GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs{...}
+//	GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs{...}
 type GooglePrivacyDlpV2LargeCustomDictionaryConfigInput interface {
 	pulumi.Input
 
@@ -12318,11 +12318,11 @@ func (i GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs) ToGooglePrivacyDlpV2L
 // GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrInput is an input type that accepts GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs, GooglePrivacyDlpV2LargeCustomDictionaryConfigPtr and GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs{...}
+//	        GooglePrivacyDlpV2LargeCustomDictionaryConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2LargeCustomDictionaryConfigPtrInput interface {
 	pulumi.Input
 
@@ -12527,7 +12527,7 @@ type GooglePrivacyDlpV2LeaveUntransformed struct {
 // GooglePrivacyDlpV2LeaveUntransformedInput is an input type that accepts GooglePrivacyDlpV2LeaveUntransformedArgs and GooglePrivacyDlpV2LeaveUntransformedOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2LeaveUntransformedInput` via:
 //
-//          GooglePrivacyDlpV2LeaveUntransformedArgs{...}
+//	GooglePrivacyDlpV2LeaveUntransformedArgs{...}
 type GooglePrivacyDlpV2LeaveUntransformedInput interface {
 	pulumi.Input
 
@@ -12562,11 +12562,11 @@ func (i GooglePrivacyDlpV2LeaveUntransformedArgs) ToGooglePrivacyDlpV2LeaveUntra
 // GooglePrivacyDlpV2LeaveUntransformedPtrInput is an input type that accepts GooglePrivacyDlpV2LeaveUntransformedArgs, GooglePrivacyDlpV2LeaveUntransformedPtr and GooglePrivacyDlpV2LeaveUntransformedPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2LeaveUntransformedPtrInput` via:
 //
-//          GooglePrivacyDlpV2LeaveUntransformedArgs{...}
+//	        GooglePrivacyDlpV2LeaveUntransformedArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2LeaveUntransformedPtrInput interface {
 	pulumi.Input
 
@@ -12671,7 +12671,7 @@ type GooglePrivacyDlpV2LikelihoodAdjustment struct {
 // GooglePrivacyDlpV2LikelihoodAdjustmentInput is an input type that accepts GooglePrivacyDlpV2LikelihoodAdjustmentArgs and GooglePrivacyDlpV2LikelihoodAdjustmentOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2LikelihoodAdjustmentInput` via:
 //
-//          GooglePrivacyDlpV2LikelihoodAdjustmentArgs{...}
+//	GooglePrivacyDlpV2LikelihoodAdjustmentArgs{...}
 type GooglePrivacyDlpV2LikelihoodAdjustmentInput interface {
 	pulumi.Input
 
@@ -12710,11 +12710,11 @@ func (i GooglePrivacyDlpV2LikelihoodAdjustmentArgs) ToGooglePrivacyDlpV2Likeliho
 // GooglePrivacyDlpV2LikelihoodAdjustmentPtrInput is an input type that accepts GooglePrivacyDlpV2LikelihoodAdjustmentArgs, GooglePrivacyDlpV2LikelihoodAdjustmentPtr and GooglePrivacyDlpV2LikelihoodAdjustmentPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2LikelihoodAdjustmentPtrInput` via:
 //
-//          GooglePrivacyDlpV2LikelihoodAdjustmentArgs{...}
+//	        GooglePrivacyDlpV2LikelihoodAdjustmentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2LikelihoodAdjustmentPtrInput interface {
 	pulumi.Input
 
@@ -12861,7 +12861,7 @@ type GooglePrivacyDlpV2Manual struct {
 // GooglePrivacyDlpV2ManualInput is an input type that accepts GooglePrivacyDlpV2ManualArgs and GooglePrivacyDlpV2ManualOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ManualInput` via:
 //
-//          GooglePrivacyDlpV2ManualArgs{...}
+//	GooglePrivacyDlpV2ManualArgs{...}
 type GooglePrivacyDlpV2ManualInput interface {
 	pulumi.Input
 
@@ -12896,11 +12896,11 @@ func (i GooglePrivacyDlpV2ManualArgs) ToGooglePrivacyDlpV2ManualPtrOutputWithCon
 // GooglePrivacyDlpV2ManualPtrInput is an input type that accepts GooglePrivacyDlpV2ManualArgs, GooglePrivacyDlpV2ManualPtr and GooglePrivacyDlpV2ManualPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ManualPtrInput` via:
 //
-//          GooglePrivacyDlpV2ManualArgs{...}
+//	        GooglePrivacyDlpV2ManualArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2ManualPtrInput interface {
 	pulumi.Input
 
@@ -13003,7 +13003,7 @@ type GooglePrivacyDlpV2NumericalStatsConfig struct {
 // GooglePrivacyDlpV2NumericalStatsConfigInput is an input type that accepts GooglePrivacyDlpV2NumericalStatsConfigArgs and GooglePrivacyDlpV2NumericalStatsConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2NumericalStatsConfigInput` via:
 //
-//          GooglePrivacyDlpV2NumericalStatsConfigArgs{...}
+//	GooglePrivacyDlpV2NumericalStatsConfigArgs{...}
 type GooglePrivacyDlpV2NumericalStatsConfigInput interface {
 	pulumi.Input
 
@@ -13040,11 +13040,11 @@ func (i GooglePrivacyDlpV2NumericalStatsConfigArgs) ToGooglePrivacyDlpV2Numerica
 // GooglePrivacyDlpV2NumericalStatsConfigPtrInput is an input type that accepts GooglePrivacyDlpV2NumericalStatsConfigArgs, GooglePrivacyDlpV2NumericalStatsConfigPtr and GooglePrivacyDlpV2NumericalStatsConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2NumericalStatsConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2NumericalStatsConfigArgs{...}
+//	        GooglePrivacyDlpV2NumericalStatsConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2NumericalStatsConfigPtrInput interface {
 	pulumi.Input
 
@@ -13219,7 +13219,7 @@ type GooglePrivacyDlpV2OutputStorageConfig struct {
 // GooglePrivacyDlpV2OutputStorageConfigInput is an input type that accepts GooglePrivacyDlpV2OutputStorageConfigArgs and GooglePrivacyDlpV2OutputStorageConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2OutputStorageConfigInput` via:
 //
-//          GooglePrivacyDlpV2OutputStorageConfigArgs{...}
+//	GooglePrivacyDlpV2OutputStorageConfigArgs{...}
 type GooglePrivacyDlpV2OutputStorageConfigInput interface {
 	pulumi.Input
 
@@ -13258,11 +13258,11 @@ func (i GooglePrivacyDlpV2OutputStorageConfigArgs) ToGooglePrivacyDlpV2OutputSto
 // GooglePrivacyDlpV2OutputStorageConfigPtrInput is an input type that accepts GooglePrivacyDlpV2OutputStorageConfigArgs, GooglePrivacyDlpV2OutputStorageConfigPtr and GooglePrivacyDlpV2OutputStorageConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2OutputStorageConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2OutputStorageConfigArgs{...}
+//	        GooglePrivacyDlpV2OutputStorageConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2OutputStorageConfigPtrInput interface {
 	pulumi.Input
 
@@ -13415,7 +13415,7 @@ type GooglePrivacyDlpV2PartitionId struct {
 // GooglePrivacyDlpV2PartitionIdInput is an input type that accepts GooglePrivacyDlpV2PartitionIdArgs and GooglePrivacyDlpV2PartitionIdOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2PartitionIdInput` via:
 //
-//          GooglePrivacyDlpV2PartitionIdArgs{...}
+//	GooglePrivacyDlpV2PartitionIdArgs{...}
 type GooglePrivacyDlpV2PartitionIdInput interface {
 	pulumi.Input
 
@@ -13454,11 +13454,11 @@ func (i GooglePrivacyDlpV2PartitionIdArgs) ToGooglePrivacyDlpV2PartitionIdPtrOut
 // GooglePrivacyDlpV2PartitionIdPtrInput is an input type that accepts GooglePrivacyDlpV2PartitionIdArgs, GooglePrivacyDlpV2PartitionIdPtr and GooglePrivacyDlpV2PartitionIdPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2PartitionIdPtrInput` via:
 //
-//          GooglePrivacyDlpV2PartitionIdArgs{...}
+//	        GooglePrivacyDlpV2PartitionIdArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2PartitionIdPtrInput interface {
 	pulumi.Input
 
@@ -13627,7 +13627,7 @@ type GooglePrivacyDlpV2PrimitiveTransformation struct {
 // GooglePrivacyDlpV2PrimitiveTransformationInput is an input type that accepts GooglePrivacyDlpV2PrimitiveTransformationArgs and GooglePrivacyDlpV2PrimitiveTransformationOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2PrimitiveTransformationInput` via:
 //
-//          GooglePrivacyDlpV2PrimitiveTransformationArgs{...}
+//	GooglePrivacyDlpV2PrimitiveTransformationArgs{...}
 type GooglePrivacyDlpV2PrimitiveTransformationInput interface {
 	pulumi.Input
 
@@ -13686,11 +13686,11 @@ func (i GooglePrivacyDlpV2PrimitiveTransformationArgs) ToGooglePrivacyDlpV2Primi
 // GooglePrivacyDlpV2PrimitiveTransformationPtrInput is an input type that accepts GooglePrivacyDlpV2PrimitiveTransformationArgs, GooglePrivacyDlpV2PrimitiveTransformationPtr and GooglePrivacyDlpV2PrimitiveTransformationPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2PrimitiveTransformationPtrInput` via:
 //
-//          GooglePrivacyDlpV2PrimitiveTransformationArgs{...}
+//	        GooglePrivacyDlpV2PrimitiveTransformationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2PrimitiveTransformationPtrInput interface {
 	pulumi.Input
 
@@ -14115,7 +14115,7 @@ type GooglePrivacyDlpV2PrivacyMetric struct {
 // GooglePrivacyDlpV2PrivacyMetricInput is an input type that accepts GooglePrivacyDlpV2PrivacyMetricArgs and GooglePrivacyDlpV2PrivacyMetricOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2PrivacyMetricInput` via:
 //
-//          GooglePrivacyDlpV2PrivacyMetricArgs{...}
+//	GooglePrivacyDlpV2PrivacyMetricArgs{...}
 type GooglePrivacyDlpV2PrivacyMetricInput interface {
 	pulumi.Input
 
@@ -14162,11 +14162,11 @@ func (i GooglePrivacyDlpV2PrivacyMetricArgs) ToGooglePrivacyDlpV2PrivacyMetricPt
 // GooglePrivacyDlpV2PrivacyMetricPtrInput is an input type that accepts GooglePrivacyDlpV2PrivacyMetricArgs, GooglePrivacyDlpV2PrivacyMetricPtr and GooglePrivacyDlpV2PrivacyMetricPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2PrivacyMetricPtrInput` via:
 //
-//          GooglePrivacyDlpV2PrivacyMetricArgs{...}
+//	        GooglePrivacyDlpV2PrivacyMetricArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2PrivacyMetricPtrInput interface {
 	pulumi.Input
 
@@ -14423,7 +14423,7 @@ type GooglePrivacyDlpV2Proximity struct {
 // GooglePrivacyDlpV2ProximityInput is an input type that accepts GooglePrivacyDlpV2ProximityArgs and GooglePrivacyDlpV2ProximityOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ProximityInput` via:
 //
-//          GooglePrivacyDlpV2ProximityArgs{...}
+//	GooglePrivacyDlpV2ProximityArgs{...}
 type GooglePrivacyDlpV2ProximityInput interface {
 	pulumi.Input
 
@@ -14462,11 +14462,11 @@ func (i GooglePrivacyDlpV2ProximityArgs) ToGooglePrivacyDlpV2ProximityPtrOutputW
 // GooglePrivacyDlpV2ProximityPtrInput is an input type that accepts GooglePrivacyDlpV2ProximityArgs, GooglePrivacyDlpV2ProximityPtr and GooglePrivacyDlpV2ProximityPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ProximityPtrInput` via:
 //
-//          GooglePrivacyDlpV2ProximityArgs{...}
+//	        GooglePrivacyDlpV2ProximityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2ProximityPtrInput interface {
 	pulumi.Input
 
@@ -14611,7 +14611,7 @@ type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog struct {
 // GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogInput is an input type that accepts GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs and GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogInput` via:
 //
-//          GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs{...}
+//	GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs{...}
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogInput interface {
 	pulumi.Input
 
@@ -14646,11 +14646,11 @@ func (i GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs) ToGooglePrivacy
 // GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrInput is an input type that accepts GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs, GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtr and GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrInput` via:
 //
-//          GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs{...}
+//	        GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrInput interface {
 	pulumi.Input
 
@@ -14751,7 +14751,7 @@ type GooglePrivacyDlpV2PublishSummaryToCscc struct {
 // GooglePrivacyDlpV2PublishSummaryToCsccInput is an input type that accepts GooglePrivacyDlpV2PublishSummaryToCsccArgs and GooglePrivacyDlpV2PublishSummaryToCsccOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2PublishSummaryToCsccInput` via:
 //
-//          GooglePrivacyDlpV2PublishSummaryToCsccArgs{...}
+//	GooglePrivacyDlpV2PublishSummaryToCsccArgs{...}
 type GooglePrivacyDlpV2PublishSummaryToCsccInput interface {
 	pulumi.Input
 
@@ -14786,11 +14786,11 @@ func (i GooglePrivacyDlpV2PublishSummaryToCsccArgs) ToGooglePrivacyDlpV2PublishS
 // GooglePrivacyDlpV2PublishSummaryToCsccPtrInput is an input type that accepts GooglePrivacyDlpV2PublishSummaryToCsccArgs, GooglePrivacyDlpV2PublishSummaryToCsccPtr and GooglePrivacyDlpV2PublishSummaryToCsccPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2PublishSummaryToCsccPtrInput` via:
 //
-//          GooglePrivacyDlpV2PublishSummaryToCsccArgs{...}
+//	        GooglePrivacyDlpV2PublishSummaryToCsccArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2PublishSummaryToCsccPtrInput interface {
 	pulumi.Input
 
@@ -14893,7 +14893,7 @@ type GooglePrivacyDlpV2PublishToPubSub struct {
 // GooglePrivacyDlpV2PublishToPubSubInput is an input type that accepts GooglePrivacyDlpV2PublishToPubSubArgs and GooglePrivacyDlpV2PublishToPubSubOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2PublishToPubSubInput` via:
 //
-//          GooglePrivacyDlpV2PublishToPubSubArgs{...}
+//	GooglePrivacyDlpV2PublishToPubSubArgs{...}
 type GooglePrivacyDlpV2PublishToPubSubInput interface {
 	pulumi.Input
 
@@ -14930,11 +14930,11 @@ func (i GooglePrivacyDlpV2PublishToPubSubArgs) ToGooglePrivacyDlpV2PublishToPubS
 // GooglePrivacyDlpV2PublishToPubSubPtrInput is an input type that accepts GooglePrivacyDlpV2PublishToPubSubArgs, GooglePrivacyDlpV2PublishToPubSubPtr and GooglePrivacyDlpV2PublishToPubSubPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2PublishToPubSubPtrInput` via:
 //
-//          GooglePrivacyDlpV2PublishToPubSubArgs{...}
+//	        GooglePrivacyDlpV2PublishToPubSubArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2PublishToPubSubPtrInput interface {
 	pulumi.Input
 
@@ -15057,7 +15057,7 @@ type GooglePrivacyDlpV2PublishToStackdriver struct {
 // GooglePrivacyDlpV2PublishToStackdriverInput is an input type that accepts GooglePrivacyDlpV2PublishToStackdriverArgs and GooglePrivacyDlpV2PublishToStackdriverOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2PublishToStackdriverInput` via:
 //
-//          GooglePrivacyDlpV2PublishToStackdriverArgs{...}
+//	GooglePrivacyDlpV2PublishToStackdriverArgs{...}
 type GooglePrivacyDlpV2PublishToStackdriverInput interface {
 	pulumi.Input
 
@@ -15092,11 +15092,11 @@ func (i GooglePrivacyDlpV2PublishToStackdriverArgs) ToGooglePrivacyDlpV2PublishT
 // GooglePrivacyDlpV2PublishToStackdriverPtrInput is an input type that accepts GooglePrivacyDlpV2PublishToStackdriverArgs, GooglePrivacyDlpV2PublishToStackdriverPtr and GooglePrivacyDlpV2PublishToStackdriverPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2PublishToStackdriverPtrInput` via:
 //
-//          GooglePrivacyDlpV2PublishToStackdriverArgs{...}
+//	        GooglePrivacyDlpV2PublishToStackdriverArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2PublishToStackdriverPtrInput interface {
 	pulumi.Input
 
@@ -15205,7 +15205,7 @@ type GooglePrivacyDlpV2QuasiId struct {
 // GooglePrivacyDlpV2QuasiIdInput is an input type that accepts GooglePrivacyDlpV2QuasiIdArgs and GooglePrivacyDlpV2QuasiIdOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2QuasiIdInput` via:
 //
-//          GooglePrivacyDlpV2QuasiIdArgs{...}
+//	GooglePrivacyDlpV2QuasiIdArgs{...}
 type GooglePrivacyDlpV2QuasiIdInput interface {
 	pulumi.Input
 
@@ -15240,7 +15240,7 @@ func (i GooglePrivacyDlpV2QuasiIdArgs) ToGooglePrivacyDlpV2QuasiIdOutputWithCont
 // GooglePrivacyDlpV2QuasiIdArrayInput is an input type that accepts GooglePrivacyDlpV2QuasiIdArray and GooglePrivacyDlpV2QuasiIdArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2QuasiIdArrayInput` via:
 //
-//          GooglePrivacyDlpV2QuasiIdArray{ GooglePrivacyDlpV2QuasiIdArgs{...} }
+//	GooglePrivacyDlpV2QuasiIdArray{ GooglePrivacyDlpV2QuasiIdArgs{...} }
 type GooglePrivacyDlpV2QuasiIdArrayInput interface {
 	pulumi.Input
 
@@ -15328,7 +15328,7 @@ type GooglePrivacyDlpV2QuasiIdField struct {
 // GooglePrivacyDlpV2QuasiIdFieldInput is an input type that accepts GooglePrivacyDlpV2QuasiIdFieldArgs and GooglePrivacyDlpV2QuasiIdFieldOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2QuasiIdFieldInput` via:
 //
-//          GooglePrivacyDlpV2QuasiIdFieldArgs{...}
+//	GooglePrivacyDlpV2QuasiIdFieldArgs{...}
 type GooglePrivacyDlpV2QuasiIdFieldInput interface {
 	pulumi.Input
 
@@ -15359,7 +15359,7 @@ func (i GooglePrivacyDlpV2QuasiIdFieldArgs) ToGooglePrivacyDlpV2QuasiIdFieldOutp
 // GooglePrivacyDlpV2QuasiIdFieldArrayInput is an input type that accepts GooglePrivacyDlpV2QuasiIdFieldArray and GooglePrivacyDlpV2QuasiIdFieldArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2QuasiIdFieldArrayInput` via:
 //
-//          GooglePrivacyDlpV2QuasiIdFieldArray{ GooglePrivacyDlpV2QuasiIdFieldArgs{...} }
+//	GooglePrivacyDlpV2QuasiIdFieldArray{ GooglePrivacyDlpV2QuasiIdFieldArgs{...} }
 type GooglePrivacyDlpV2QuasiIdFieldArrayInput interface {
 	pulumi.Input
 
@@ -15557,7 +15557,7 @@ type GooglePrivacyDlpV2QuasiIdentifierField struct {
 // GooglePrivacyDlpV2QuasiIdentifierFieldInput is an input type that accepts GooglePrivacyDlpV2QuasiIdentifierFieldArgs and GooglePrivacyDlpV2QuasiIdentifierFieldOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2QuasiIdentifierFieldInput` via:
 //
-//          GooglePrivacyDlpV2QuasiIdentifierFieldArgs{...}
+//	GooglePrivacyDlpV2QuasiIdentifierFieldArgs{...}
 type GooglePrivacyDlpV2QuasiIdentifierFieldInput interface {
 	pulumi.Input
 
@@ -15588,7 +15588,7 @@ func (i GooglePrivacyDlpV2QuasiIdentifierFieldArgs) ToGooglePrivacyDlpV2QuasiIde
 // GooglePrivacyDlpV2QuasiIdentifierFieldArrayInput is an input type that accepts GooglePrivacyDlpV2QuasiIdentifierFieldArray and GooglePrivacyDlpV2QuasiIdentifierFieldArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2QuasiIdentifierFieldArrayInput` via:
 //
-//          GooglePrivacyDlpV2QuasiIdentifierFieldArray{ GooglePrivacyDlpV2QuasiIdentifierFieldArgs{...} }
+//	GooglePrivacyDlpV2QuasiIdentifierFieldArray{ GooglePrivacyDlpV2QuasiIdentifierFieldArgs{...} }
 type GooglePrivacyDlpV2QuasiIdentifierFieldArrayInput interface {
 	pulumi.Input
 
@@ -15719,7 +15719,7 @@ type GooglePrivacyDlpV2RecordCondition struct {
 // GooglePrivacyDlpV2RecordConditionInput is an input type that accepts GooglePrivacyDlpV2RecordConditionArgs and GooglePrivacyDlpV2RecordConditionOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2RecordConditionInput` via:
 //
-//          GooglePrivacyDlpV2RecordConditionArgs{...}
+//	GooglePrivacyDlpV2RecordConditionArgs{...}
 type GooglePrivacyDlpV2RecordConditionInput interface {
 	pulumi.Input
 
@@ -15756,11 +15756,11 @@ func (i GooglePrivacyDlpV2RecordConditionArgs) ToGooglePrivacyDlpV2RecordConditi
 // GooglePrivacyDlpV2RecordConditionPtrInput is an input type that accepts GooglePrivacyDlpV2RecordConditionArgs, GooglePrivacyDlpV2RecordConditionPtr and GooglePrivacyDlpV2RecordConditionPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2RecordConditionPtrInput` via:
 //
-//          GooglePrivacyDlpV2RecordConditionArgs{...}
+//	        GooglePrivacyDlpV2RecordConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2RecordConditionPtrInput interface {
 	pulumi.Input
 
@@ -15887,7 +15887,7 @@ type GooglePrivacyDlpV2RecordSuppression struct {
 // GooglePrivacyDlpV2RecordSuppressionInput is an input type that accepts GooglePrivacyDlpV2RecordSuppressionArgs and GooglePrivacyDlpV2RecordSuppressionOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2RecordSuppressionInput` via:
 //
-//          GooglePrivacyDlpV2RecordSuppressionArgs{...}
+//	GooglePrivacyDlpV2RecordSuppressionArgs{...}
 type GooglePrivacyDlpV2RecordSuppressionInput interface {
 	pulumi.Input
 
@@ -15916,7 +15916,7 @@ func (i GooglePrivacyDlpV2RecordSuppressionArgs) ToGooglePrivacyDlpV2RecordSuppr
 // GooglePrivacyDlpV2RecordSuppressionArrayInput is an input type that accepts GooglePrivacyDlpV2RecordSuppressionArray and GooglePrivacyDlpV2RecordSuppressionArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2RecordSuppressionArrayInput` via:
 //
-//          GooglePrivacyDlpV2RecordSuppressionArray{ GooglePrivacyDlpV2RecordSuppressionArgs{...} }
+//	GooglePrivacyDlpV2RecordSuppressionArray{ GooglePrivacyDlpV2RecordSuppressionArgs{...} }
 type GooglePrivacyDlpV2RecordSuppressionArrayInput interface {
 	pulumi.Input
 
@@ -16037,7 +16037,7 @@ type GooglePrivacyDlpV2RecordTransformations struct {
 // GooglePrivacyDlpV2RecordTransformationsInput is an input type that accepts GooglePrivacyDlpV2RecordTransformationsArgs and GooglePrivacyDlpV2RecordTransformationsOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2RecordTransformationsInput` via:
 //
-//          GooglePrivacyDlpV2RecordTransformationsArgs{...}
+//	GooglePrivacyDlpV2RecordTransformationsArgs{...}
 type GooglePrivacyDlpV2RecordTransformationsInput interface {
 	pulumi.Input
 
@@ -16076,11 +16076,11 @@ func (i GooglePrivacyDlpV2RecordTransformationsArgs) ToGooglePrivacyDlpV2RecordT
 // GooglePrivacyDlpV2RecordTransformationsPtrInput is an input type that accepts GooglePrivacyDlpV2RecordTransformationsArgs, GooglePrivacyDlpV2RecordTransformationsPtr and GooglePrivacyDlpV2RecordTransformationsPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2RecordTransformationsPtrInput` via:
 //
-//          GooglePrivacyDlpV2RecordTransformationsArgs{...}
+//	        GooglePrivacyDlpV2RecordTransformationsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2RecordTransformationsPtrInput interface {
 	pulumi.Input
 
@@ -16233,7 +16233,7 @@ type GooglePrivacyDlpV2RedactConfig struct {
 // GooglePrivacyDlpV2RedactConfigInput is an input type that accepts GooglePrivacyDlpV2RedactConfigArgs and GooglePrivacyDlpV2RedactConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2RedactConfigInput` via:
 //
-//          GooglePrivacyDlpV2RedactConfigArgs{...}
+//	GooglePrivacyDlpV2RedactConfigArgs{...}
 type GooglePrivacyDlpV2RedactConfigInput interface {
 	pulumi.Input
 
@@ -16268,11 +16268,11 @@ func (i GooglePrivacyDlpV2RedactConfigArgs) ToGooglePrivacyDlpV2RedactConfigPtrO
 // GooglePrivacyDlpV2RedactConfigPtrInput is an input type that accepts GooglePrivacyDlpV2RedactConfigArgs, GooglePrivacyDlpV2RedactConfigPtr and GooglePrivacyDlpV2RedactConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2RedactConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2RedactConfigArgs{...}
+//	        GooglePrivacyDlpV2RedactConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2RedactConfigPtrInput interface {
 	pulumi.Input
 
@@ -16377,7 +16377,7 @@ type GooglePrivacyDlpV2Regex struct {
 // GooglePrivacyDlpV2RegexInput is an input type that accepts GooglePrivacyDlpV2RegexArgs and GooglePrivacyDlpV2RegexOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2RegexInput` via:
 //
-//          GooglePrivacyDlpV2RegexArgs{...}
+//	GooglePrivacyDlpV2RegexArgs{...}
 type GooglePrivacyDlpV2RegexInput interface {
 	pulumi.Input
 
@@ -16416,11 +16416,11 @@ func (i GooglePrivacyDlpV2RegexArgs) ToGooglePrivacyDlpV2RegexPtrOutputWithConte
 // GooglePrivacyDlpV2RegexPtrInput is an input type that accepts GooglePrivacyDlpV2RegexArgs, GooglePrivacyDlpV2RegexPtr and GooglePrivacyDlpV2RegexPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2RegexPtrInput` via:
 //
-//          GooglePrivacyDlpV2RegexArgs{...}
+//	        GooglePrivacyDlpV2RegexArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2RegexPtrInput interface {
 	pulumi.Input
 
@@ -16567,7 +16567,7 @@ type GooglePrivacyDlpV2ReplaceDictionaryConfig struct {
 // GooglePrivacyDlpV2ReplaceDictionaryConfigInput is an input type that accepts GooglePrivacyDlpV2ReplaceDictionaryConfigArgs and GooglePrivacyDlpV2ReplaceDictionaryConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ReplaceDictionaryConfigInput` via:
 //
-//          GooglePrivacyDlpV2ReplaceDictionaryConfigArgs{...}
+//	GooglePrivacyDlpV2ReplaceDictionaryConfigArgs{...}
 type GooglePrivacyDlpV2ReplaceDictionaryConfigInput interface {
 	pulumi.Input
 
@@ -16604,11 +16604,11 @@ func (i GooglePrivacyDlpV2ReplaceDictionaryConfigArgs) ToGooglePrivacyDlpV2Repla
 // GooglePrivacyDlpV2ReplaceDictionaryConfigPtrInput is an input type that accepts GooglePrivacyDlpV2ReplaceDictionaryConfigArgs, GooglePrivacyDlpV2ReplaceDictionaryConfigPtr and GooglePrivacyDlpV2ReplaceDictionaryConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ReplaceDictionaryConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2ReplaceDictionaryConfigArgs{...}
+//	        GooglePrivacyDlpV2ReplaceDictionaryConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2ReplaceDictionaryConfigPtrInput interface {
 	pulumi.Input
 
@@ -16735,7 +16735,7 @@ type GooglePrivacyDlpV2ReplaceValueConfig struct {
 // GooglePrivacyDlpV2ReplaceValueConfigInput is an input type that accepts GooglePrivacyDlpV2ReplaceValueConfigArgs and GooglePrivacyDlpV2ReplaceValueConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ReplaceValueConfigInput` via:
 //
-//          GooglePrivacyDlpV2ReplaceValueConfigArgs{...}
+//	GooglePrivacyDlpV2ReplaceValueConfigArgs{...}
 type GooglePrivacyDlpV2ReplaceValueConfigInput interface {
 	pulumi.Input
 
@@ -16772,11 +16772,11 @@ func (i GooglePrivacyDlpV2ReplaceValueConfigArgs) ToGooglePrivacyDlpV2ReplaceVal
 // GooglePrivacyDlpV2ReplaceValueConfigPtrInput is an input type that accepts GooglePrivacyDlpV2ReplaceValueConfigArgs, GooglePrivacyDlpV2ReplaceValueConfigPtr and GooglePrivacyDlpV2ReplaceValueConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ReplaceValueConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2ReplaceValueConfigArgs{...}
+//	        GooglePrivacyDlpV2ReplaceValueConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2ReplaceValueConfigPtrInput interface {
 	pulumi.Input
 
@@ -16901,7 +16901,7 @@ type GooglePrivacyDlpV2ReplaceWithInfoTypeConfig struct {
 // GooglePrivacyDlpV2ReplaceWithInfoTypeConfigInput is an input type that accepts GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs and GooglePrivacyDlpV2ReplaceWithInfoTypeConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ReplaceWithInfoTypeConfigInput` via:
 //
-//          GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs{...}
+//	GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs{...}
 type GooglePrivacyDlpV2ReplaceWithInfoTypeConfigInput interface {
 	pulumi.Input
 
@@ -16936,11 +16936,11 @@ func (i GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs) ToGooglePrivacyDlpV2Rep
 // GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrInput is an input type that accepts GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs, GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtr and GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs{...}
+//	        GooglePrivacyDlpV2ReplaceWithInfoTypeConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2ReplaceWithInfoTypeConfigPtrInput interface {
 	pulumi.Input
 
@@ -17163,7 +17163,7 @@ type GooglePrivacyDlpV2RiskAnalysisJobConfig struct {
 // GooglePrivacyDlpV2RiskAnalysisJobConfigInput is an input type that accepts GooglePrivacyDlpV2RiskAnalysisJobConfigArgs and GooglePrivacyDlpV2RiskAnalysisJobConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2RiskAnalysisJobConfigInput` via:
 //
-//          GooglePrivacyDlpV2RiskAnalysisJobConfigArgs{...}
+//	GooglePrivacyDlpV2RiskAnalysisJobConfigArgs{...}
 type GooglePrivacyDlpV2RiskAnalysisJobConfigInput interface {
 	pulumi.Input
 
@@ -17204,11 +17204,11 @@ func (i GooglePrivacyDlpV2RiskAnalysisJobConfigArgs) ToGooglePrivacyDlpV2RiskAna
 // GooglePrivacyDlpV2RiskAnalysisJobConfigPtrInput is an input type that accepts GooglePrivacyDlpV2RiskAnalysisJobConfigArgs, GooglePrivacyDlpV2RiskAnalysisJobConfigPtr and GooglePrivacyDlpV2RiskAnalysisJobConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2RiskAnalysisJobConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2RiskAnalysisJobConfigArgs{...}
+//	        GooglePrivacyDlpV2RiskAnalysisJobConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2RiskAnalysisJobConfigPtrInput interface {
 	pulumi.Input
 
@@ -17385,7 +17385,7 @@ type GooglePrivacyDlpV2SaveFindings struct {
 // GooglePrivacyDlpV2SaveFindingsInput is an input type that accepts GooglePrivacyDlpV2SaveFindingsArgs and GooglePrivacyDlpV2SaveFindingsOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2SaveFindingsInput` via:
 //
-//          GooglePrivacyDlpV2SaveFindingsArgs{...}
+//	GooglePrivacyDlpV2SaveFindingsArgs{...}
 type GooglePrivacyDlpV2SaveFindingsInput interface {
 	pulumi.Input
 
@@ -17422,11 +17422,11 @@ func (i GooglePrivacyDlpV2SaveFindingsArgs) ToGooglePrivacyDlpV2SaveFindingsPtrO
 // GooglePrivacyDlpV2SaveFindingsPtrInput is an input type that accepts GooglePrivacyDlpV2SaveFindingsArgs, GooglePrivacyDlpV2SaveFindingsPtr and GooglePrivacyDlpV2SaveFindingsPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2SaveFindingsPtrInput` via:
 //
-//          GooglePrivacyDlpV2SaveFindingsArgs{...}
+//	        GooglePrivacyDlpV2SaveFindingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2SaveFindingsPtrInput interface {
 	pulumi.Input
 
@@ -17553,7 +17553,7 @@ type GooglePrivacyDlpV2Schedule struct {
 // GooglePrivacyDlpV2ScheduleInput is an input type that accepts GooglePrivacyDlpV2ScheduleArgs and GooglePrivacyDlpV2ScheduleOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ScheduleInput` via:
 //
-//          GooglePrivacyDlpV2ScheduleArgs{...}
+//	GooglePrivacyDlpV2ScheduleArgs{...}
 type GooglePrivacyDlpV2ScheduleInput interface {
 	pulumi.Input
 
@@ -17590,11 +17590,11 @@ func (i GooglePrivacyDlpV2ScheduleArgs) ToGooglePrivacyDlpV2SchedulePtrOutputWit
 // GooglePrivacyDlpV2SchedulePtrInput is an input type that accepts GooglePrivacyDlpV2ScheduleArgs, GooglePrivacyDlpV2SchedulePtr and GooglePrivacyDlpV2SchedulePtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2SchedulePtrInput` via:
 //
-//          GooglePrivacyDlpV2ScheduleArgs{...}
+//	        GooglePrivacyDlpV2ScheduleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2SchedulePtrInput interface {
 	pulumi.Input
 
@@ -17723,7 +17723,7 @@ type GooglePrivacyDlpV2StatisticalTable struct {
 // GooglePrivacyDlpV2StatisticalTableInput is an input type that accepts GooglePrivacyDlpV2StatisticalTableArgs and GooglePrivacyDlpV2StatisticalTableOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2StatisticalTableInput` via:
 //
-//          GooglePrivacyDlpV2StatisticalTableArgs{...}
+//	GooglePrivacyDlpV2StatisticalTableArgs{...}
 type GooglePrivacyDlpV2StatisticalTableInput interface {
 	pulumi.Input
 
@@ -17756,7 +17756,7 @@ func (i GooglePrivacyDlpV2StatisticalTableArgs) ToGooglePrivacyDlpV2StatisticalT
 // GooglePrivacyDlpV2StatisticalTableArrayInput is an input type that accepts GooglePrivacyDlpV2StatisticalTableArray and GooglePrivacyDlpV2StatisticalTableArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2StatisticalTableArrayInput` via:
 //
-//          GooglePrivacyDlpV2StatisticalTableArray{ GooglePrivacyDlpV2StatisticalTableArgs{...} }
+//	GooglePrivacyDlpV2StatisticalTableArray{ GooglePrivacyDlpV2StatisticalTableArgs{...} }
 type GooglePrivacyDlpV2StatisticalTableArrayInput interface {
 	pulumi.Input
 
@@ -17910,7 +17910,7 @@ type GooglePrivacyDlpV2StorageConfig struct {
 // GooglePrivacyDlpV2StorageConfigInput is an input type that accepts GooglePrivacyDlpV2StorageConfigArgs and GooglePrivacyDlpV2StorageConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2StorageConfigInput` via:
 //
-//          GooglePrivacyDlpV2StorageConfigArgs{...}
+//	GooglePrivacyDlpV2StorageConfigArgs{...}
 type GooglePrivacyDlpV2StorageConfigInput interface {
 	pulumi.Input
 
@@ -17954,11 +17954,11 @@ func (i GooglePrivacyDlpV2StorageConfigArgs) ToGooglePrivacyDlpV2StorageConfigPt
 // GooglePrivacyDlpV2StorageConfigPtrInput is an input type that accepts GooglePrivacyDlpV2StorageConfigArgs, GooglePrivacyDlpV2StorageConfigPtr and GooglePrivacyDlpV2StorageConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2StorageConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2StorageConfigArgs{...}
+//	        GooglePrivacyDlpV2StorageConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2StorageConfigPtrInput interface {
 	pulumi.Input
 
@@ -18187,7 +18187,7 @@ type GooglePrivacyDlpV2StoredInfoTypeConfig struct {
 // GooglePrivacyDlpV2StoredInfoTypeConfigInput is an input type that accepts GooglePrivacyDlpV2StoredInfoTypeConfigArgs and GooglePrivacyDlpV2StoredInfoTypeConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2StoredInfoTypeConfigInput` via:
 //
-//          GooglePrivacyDlpV2StoredInfoTypeConfigArgs{...}
+//	GooglePrivacyDlpV2StoredInfoTypeConfigArgs{...}
 type GooglePrivacyDlpV2StoredInfoTypeConfigInput interface {
 	pulumi.Input
 
@@ -18440,7 +18440,7 @@ type GooglePrivacyDlpV2StoredType struct {
 // GooglePrivacyDlpV2StoredTypeInput is an input type that accepts GooglePrivacyDlpV2StoredTypeArgs and GooglePrivacyDlpV2StoredTypeOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2StoredTypeInput` via:
 //
-//          GooglePrivacyDlpV2StoredTypeArgs{...}
+//	GooglePrivacyDlpV2StoredTypeArgs{...}
 type GooglePrivacyDlpV2StoredTypeInput interface {
 	pulumi.Input
 
@@ -18479,11 +18479,11 @@ func (i GooglePrivacyDlpV2StoredTypeArgs) ToGooglePrivacyDlpV2StoredTypePtrOutpu
 // GooglePrivacyDlpV2StoredTypePtrInput is an input type that accepts GooglePrivacyDlpV2StoredTypeArgs, GooglePrivacyDlpV2StoredTypePtr and GooglePrivacyDlpV2StoredTypePtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2StoredTypePtrInput` via:
 //
-//          GooglePrivacyDlpV2StoredTypeArgs{...}
+//	        GooglePrivacyDlpV2StoredTypeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2StoredTypePtrInput interface {
 	pulumi.Input
 
@@ -18628,7 +18628,7 @@ type GooglePrivacyDlpV2SurrogateType struct {
 // GooglePrivacyDlpV2SurrogateTypeInput is an input type that accepts GooglePrivacyDlpV2SurrogateTypeArgs and GooglePrivacyDlpV2SurrogateTypeOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2SurrogateTypeInput` via:
 //
-//          GooglePrivacyDlpV2SurrogateTypeArgs{...}
+//	GooglePrivacyDlpV2SurrogateTypeArgs{...}
 type GooglePrivacyDlpV2SurrogateTypeInput interface {
 	pulumi.Input
 
@@ -18663,11 +18663,11 @@ func (i GooglePrivacyDlpV2SurrogateTypeArgs) ToGooglePrivacyDlpV2SurrogateTypePt
 // GooglePrivacyDlpV2SurrogateTypePtrInput is an input type that accepts GooglePrivacyDlpV2SurrogateTypeArgs, GooglePrivacyDlpV2SurrogateTypePtr and GooglePrivacyDlpV2SurrogateTypePtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2SurrogateTypePtrInput` via:
 //
-//          GooglePrivacyDlpV2SurrogateTypeArgs{...}
+//	        GooglePrivacyDlpV2SurrogateTypeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2SurrogateTypePtrInput interface {
 	pulumi.Input
 
@@ -18770,7 +18770,7 @@ type GooglePrivacyDlpV2TableOptions struct {
 // GooglePrivacyDlpV2TableOptionsInput is an input type that accepts GooglePrivacyDlpV2TableOptionsArgs and GooglePrivacyDlpV2TableOptionsOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TableOptionsInput` via:
 //
-//          GooglePrivacyDlpV2TableOptionsArgs{...}
+//	GooglePrivacyDlpV2TableOptionsArgs{...}
 type GooglePrivacyDlpV2TableOptionsInput interface {
 	pulumi.Input
 
@@ -18807,11 +18807,11 @@ func (i GooglePrivacyDlpV2TableOptionsArgs) ToGooglePrivacyDlpV2TableOptionsPtrO
 // GooglePrivacyDlpV2TableOptionsPtrInput is an input type that accepts GooglePrivacyDlpV2TableOptionsArgs, GooglePrivacyDlpV2TableOptionsPtr and GooglePrivacyDlpV2TableOptionsPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TableOptionsPtrInput` via:
 //
-//          GooglePrivacyDlpV2TableOptionsArgs{...}
+//	        GooglePrivacyDlpV2TableOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2TableOptionsPtrInput interface {
 	pulumi.Input
 
@@ -18944,7 +18944,7 @@ type GooglePrivacyDlpV2TaggedField struct {
 // GooglePrivacyDlpV2TaggedFieldInput is an input type that accepts GooglePrivacyDlpV2TaggedFieldArgs and GooglePrivacyDlpV2TaggedFieldOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TaggedFieldInput` via:
 //
-//          GooglePrivacyDlpV2TaggedFieldArgs{...}
+//	GooglePrivacyDlpV2TaggedFieldArgs{...}
 type GooglePrivacyDlpV2TaggedFieldInput interface {
 	pulumi.Input
 
@@ -18979,7 +18979,7 @@ func (i GooglePrivacyDlpV2TaggedFieldArgs) ToGooglePrivacyDlpV2TaggedFieldOutput
 // GooglePrivacyDlpV2TaggedFieldArrayInput is an input type that accepts GooglePrivacyDlpV2TaggedFieldArray and GooglePrivacyDlpV2TaggedFieldArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TaggedFieldArrayInput` via:
 //
-//          GooglePrivacyDlpV2TaggedFieldArray{ GooglePrivacyDlpV2TaggedFieldArgs{...} }
+//	GooglePrivacyDlpV2TaggedFieldArray{ GooglePrivacyDlpV2TaggedFieldArgs{...} }
 type GooglePrivacyDlpV2TaggedFieldArrayInput interface {
 	pulumi.Input
 
@@ -19130,7 +19130,7 @@ type GooglePrivacyDlpV2ThrowError struct {
 // GooglePrivacyDlpV2ThrowErrorInput is an input type that accepts GooglePrivacyDlpV2ThrowErrorArgs and GooglePrivacyDlpV2ThrowErrorOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ThrowErrorInput` via:
 //
-//          GooglePrivacyDlpV2ThrowErrorArgs{...}
+//	GooglePrivacyDlpV2ThrowErrorArgs{...}
 type GooglePrivacyDlpV2ThrowErrorInput interface {
 	pulumi.Input
 
@@ -19165,11 +19165,11 @@ func (i GooglePrivacyDlpV2ThrowErrorArgs) ToGooglePrivacyDlpV2ThrowErrorPtrOutpu
 // GooglePrivacyDlpV2ThrowErrorPtrInput is an input type that accepts GooglePrivacyDlpV2ThrowErrorArgs, GooglePrivacyDlpV2ThrowErrorPtr and GooglePrivacyDlpV2ThrowErrorPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ThrowErrorPtrInput` via:
 //
-//          GooglePrivacyDlpV2ThrowErrorArgs{...}
+//	        GooglePrivacyDlpV2ThrowErrorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2ThrowErrorPtrInput interface {
 	pulumi.Input
 
@@ -19272,7 +19272,7 @@ type GooglePrivacyDlpV2TimePartConfig struct {
 // GooglePrivacyDlpV2TimePartConfigInput is an input type that accepts GooglePrivacyDlpV2TimePartConfigArgs and GooglePrivacyDlpV2TimePartConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TimePartConfigInput` via:
 //
-//          GooglePrivacyDlpV2TimePartConfigArgs{...}
+//	GooglePrivacyDlpV2TimePartConfigArgs{...}
 type GooglePrivacyDlpV2TimePartConfigInput interface {
 	pulumi.Input
 
@@ -19309,11 +19309,11 @@ func (i GooglePrivacyDlpV2TimePartConfigArgs) ToGooglePrivacyDlpV2TimePartConfig
 // GooglePrivacyDlpV2TimePartConfigPtrInput is an input type that accepts GooglePrivacyDlpV2TimePartConfigArgs, GooglePrivacyDlpV2TimePartConfigPtr and GooglePrivacyDlpV2TimePartConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TimePartConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2TimePartConfigArgs{...}
+//	        GooglePrivacyDlpV2TimePartConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2TimePartConfigPtrInput interface {
 	pulumi.Input
 
@@ -19446,7 +19446,7 @@ type GooglePrivacyDlpV2TimespanConfig struct {
 // GooglePrivacyDlpV2TimespanConfigInput is an input type that accepts GooglePrivacyDlpV2TimespanConfigArgs and GooglePrivacyDlpV2TimespanConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TimespanConfigInput` via:
 //
-//          GooglePrivacyDlpV2TimespanConfigArgs{...}
+//	GooglePrivacyDlpV2TimespanConfigArgs{...}
 type GooglePrivacyDlpV2TimespanConfigInput interface {
 	pulumi.Input
 
@@ -19489,11 +19489,11 @@ func (i GooglePrivacyDlpV2TimespanConfigArgs) ToGooglePrivacyDlpV2TimespanConfig
 // GooglePrivacyDlpV2TimespanConfigPtrInput is an input type that accepts GooglePrivacyDlpV2TimespanConfigArgs, GooglePrivacyDlpV2TimespanConfigPtr and GooglePrivacyDlpV2TimespanConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TimespanConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2TimespanConfigArgs{...}
+//	        GooglePrivacyDlpV2TimespanConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2TimespanConfigPtrInput interface {
 	pulumi.Input
 
@@ -19690,7 +19690,7 @@ type GooglePrivacyDlpV2TransformationConfig struct {
 // GooglePrivacyDlpV2TransformationConfigInput is an input type that accepts GooglePrivacyDlpV2TransformationConfigArgs and GooglePrivacyDlpV2TransformationConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TransformationConfigInput` via:
 //
-//          GooglePrivacyDlpV2TransformationConfigArgs{...}
+//	GooglePrivacyDlpV2TransformationConfigArgs{...}
 type GooglePrivacyDlpV2TransformationConfigInput interface {
 	pulumi.Input
 
@@ -19731,11 +19731,11 @@ func (i GooglePrivacyDlpV2TransformationConfigArgs) ToGooglePrivacyDlpV2Transfor
 // GooglePrivacyDlpV2TransformationConfigPtrInput is an input type that accepts GooglePrivacyDlpV2TransformationConfigArgs, GooglePrivacyDlpV2TransformationConfigPtr and GooglePrivacyDlpV2TransformationConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TransformationConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2TransformationConfigArgs{...}
+//	        GooglePrivacyDlpV2TransformationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2TransformationConfigPtrInput interface {
 	pulumi.Input
 
@@ -19904,7 +19904,7 @@ type GooglePrivacyDlpV2TransformationDetailsStorageConfig struct {
 // GooglePrivacyDlpV2TransformationDetailsStorageConfigInput is an input type that accepts GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs and GooglePrivacyDlpV2TransformationDetailsStorageConfigOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TransformationDetailsStorageConfigInput` via:
 //
-//          GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs{...}
+//	GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs{...}
 type GooglePrivacyDlpV2TransformationDetailsStorageConfigInput interface {
 	pulumi.Input
 
@@ -19941,11 +19941,11 @@ func (i GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs) ToGooglePrivac
 // GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrInput is an input type that accepts GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs, GooglePrivacyDlpV2TransformationDetailsStorageConfigPtr and GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrInput` via:
 //
-//          GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs{...}
+//	        GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2TransformationDetailsStorageConfigPtrInput interface {
 	pulumi.Input
 
@@ -20076,7 +20076,7 @@ type GooglePrivacyDlpV2TransformationErrorHandling struct {
 // GooglePrivacyDlpV2TransformationErrorHandlingInput is an input type that accepts GooglePrivacyDlpV2TransformationErrorHandlingArgs and GooglePrivacyDlpV2TransformationErrorHandlingOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TransformationErrorHandlingInput` via:
 //
-//          GooglePrivacyDlpV2TransformationErrorHandlingArgs{...}
+//	GooglePrivacyDlpV2TransformationErrorHandlingArgs{...}
 type GooglePrivacyDlpV2TransformationErrorHandlingInput interface {
 	pulumi.Input
 
@@ -20115,11 +20115,11 @@ func (i GooglePrivacyDlpV2TransformationErrorHandlingArgs) ToGooglePrivacyDlpV2T
 // GooglePrivacyDlpV2TransformationErrorHandlingPtrInput is an input type that accepts GooglePrivacyDlpV2TransformationErrorHandlingArgs, GooglePrivacyDlpV2TransformationErrorHandlingPtr and GooglePrivacyDlpV2TransformationErrorHandlingPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TransformationErrorHandlingPtrInput` via:
 //
-//          GooglePrivacyDlpV2TransformationErrorHandlingArgs{...}
+//	        GooglePrivacyDlpV2TransformationErrorHandlingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2TransformationErrorHandlingPtrInput interface {
 	pulumi.Input
 
@@ -20274,7 +20274,7 @@ type GooglePrivacyDlpV2TransientCryptoKey struct {
 // GooglePrivacyDlpV2TransientCryptoKeyInput is an input type that accepts GooglePrivacyDlpV2TransientCryptoKeyArgs and GooglePrivacyDlpV2TransientCryptoKeyOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TransientCryptoKeyInput` via:
 //
-//          GooglePrivacyDlpV2TransientCryptoKeyArgs{...}
+//	GooglePrivacyDlpV2TransientCryptoKeyArgs{...}
 type GooglePrivacyDlpV2TransientCryptoKeyInput interface {
 	pulumi.Input
 
@@ -20311,11 +20311,11 @@ func (i GooglePrivacyDlpV2TransientCryptoKeyArgs) ToGooglePrivacyDlpV2TransientC
 // GooglePrivacyDlpV2TransientCryptoKeyPtrInput is an input type that accepts GooglePrivacyDlpV2TransientCryptoKeyArgs, GooglePrivacyDlpV2TransientCryptoKeyPtr and GooglePrivacyDlpV2TransientCryptoKeyPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TransientCryptoKeyPtrInput` via:
 //
-//          GooglePrivacyDlpV2TransientCryptoKeyArgs{...}
+//	        GooglePrivacyDlpV2TransientCryptoKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2TransientCryptoKeyPtrInput interface {
 	pulumi.Input
 
@@ -20442,7 +20442,7 @@ type GooglePrivacyDlpV2Trigger struct {
 // GooglePrivacyDlpV2TriggerInput is an input type that accepts GooglePrivacyDlpV2TriggerArgs and GooglePrivacyDlpV2TriggerOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TriggerInput` via:
 //
-//          GooglePrivacyDlpV2TriggerArgs{...}
+//	GooglePrivacyDlpV2TriggerArgs{...}
 type GooglePrivacyDlpV2TriggerInput interface {
 	pulumi.Input
 
@@ -20473,7 +20473,7 @@ func (i GooglePrivacyDlpV2TriggerArgs) ToGooglePrivacyDlpV2TriggerOutputWithCont
 // GooglePrivacyDlpV2TriggerArrayInput is an input type that accepts GooglePrivacyDlpV2TriggerArray and GooglePrivacyDlpV2TriggerArrayOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2TriggerArrayInput` via:
 //
-//          GooglePrivacyDlpV2TriggerArray{ GooglePrivacyDlpV2TriggerArgs{...} }
+//	GooglePrivacyDlpV2TriggerArray{ GooglePrivacyDlpV2TriggerArgs{...} }
 type GooglePrivacyDlpV2TriggerArrayInput interface {
 	pulumi.Input
 
@@ -20602,7 +20602,7 @@ type GooglePrivacyDlpV2UnwrappedCryptoKey struct {
 // GooglePrivacyDlpV2UnwrappedCryptoKeyInput is an input type that accepts GooglePrivacyDlpV2UnwrappedCryptoKeyArgs and GooglePrivacyDlpV2UnwrappedCryptoKeyOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2UnwrappedCryptoKeyInput` via:
 //
-//          GooglePrivacyDlpV2UnwrappedCryptoKeyArgs{...}
+//	GooglePrivacyDlpV2UnwrappedCryptoKeyArgs{...}
 type GooglePrivacyDlpV2UnwrappedCryptoKeyInput interface {
 	pulumi.Input
 
@@ -20639,11 +20639,11 @@ func (i GooglePrivacyDlpV2UnwrappedCryptoKeyArgs) ToGooglePrivacyDlpV2UnwrappedC
 // GooglePrivacyDlpV2UnwrappedCryptoKeyPtrInput is an input type that accepts GooglePrivacyDlpV2UnwrappedCryptoKeyArgs, GooglePrivacyDlpV2UnwrappedCryptoKeyPtr and GooglePrivacyDlpV2UnwrappedCryptoKeyPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2UnwrappedCryptoKeyPtrInput` via:
 //
-//          GooglePrivacyDlpV2UnwrappedCryptoKeyArgs{...}
+//	        GooglePrivacyDlpV2UnwrappedCryptoKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2UnwrappedCryptoKeyPtrInput interface {
 	pulumi.Input
 
@@ -20782,7 +20782,7 @@ type GooglePrivacyDlpV2Value struct {
 // GooglePrivacyDlpV2ValueInput is an input type that accepts GooglePrivacyDlpV2ValueArgs and GooglePrivacyDlpV2ValueOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ValueInput` via:
 //
-//          GooglePrivacyDlpV2ValueArgs{...}
+//	GooglePrivacyDlpV2ValueArgs{...}
 type GooglePrivacyDlpV2ValueInput interface {
 	pulumi.Input
 
@@ -20833,11 +20833,11 @@ func (i GooglePrivacyDlpV2ValueArgs) ToGooglePrivacyDlpV2ValuePtrOutputWithConte
 // GooglePrivacyDlpV2ValuePtrInput is an input type that accepts GooglePrivacyDlpV2ValueArgs, GooglePrivacyDlpV2ValuePtr and GooglePrivacyDlpV2ValuePtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2ValuePtrInput` via:
 //
-//          GooglePrivacyDlpV2ValueArgs{...}
+//	        GooglePrivacyDlpV2ValueArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2ValuePtrInput interface {
 	pulumi.Input
 
@@ -21189,7 +21189,7 @@ type GooglePrivacyDlpV2WordList struct {
 // GooglePrivacyDlpV2WordListInput is an input type that accepts GooglePrivacyDlpV2WordListArgs and GooglePrivacyDlpV2WordListOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2WordListInput` via:
 //
-//          GooglePrivacyDlpV2WordListArgs{...}
+//	GooglePrivacyDlpV2WordListArgs{...}
 type GooglePrivacyDlpV2WordListInput interface {
 	pulumi.Input
 
@@ -21226,11 +21226,11 @@ func (i GooglePrivacyDlpV2WordListArgs) ToGooglePrivacyDlpV2WordListPtrOutputWit
 // GooglePrivacyDlpV2WordListPtrInput is an input type that accepts GooglePrivacyDlpV2WordListArgs, GooglePrivacyDlpV2WordListPtr and GooglePrivacyDlpV2WordListPtrOutput values.
 // You can construct a concrete instance of `GooglePrivacyDlpV2WordListPtrInput` via:
 //
-//          GooglePrivacyDlpV2WordListArgs{...}
+//	        GooglePrivacyDlpV2WordListArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GooglePrivacyDlpV2WordListPtrInput interface {
 	pulumi.Input
 
@@ -21353,7 +21353,7 @@ type GoogleProtobufEmpty struct {
 // GoogleProtobufEmptyInput is an input type that accepts GoogleProtobufEmptyArgs and GoogleProtobufEmptyOutput values.
 // You can construct a concrete instance of `GoogleProtobufEmptyInput` via:
 //
-//          GoogleProtobufEmptyArgs{...}
+//	GoogleProtobufEmptyArgs{...}
 type GoogleProtobufEmptyInput interface {
 	pulumi.Input
 
@@ -21388,11 +21388,11 @@ func (i GoogleProtobufEmptyArgs) ToGoogleProtobufEmptyPtrOutputWithContext(ctx c
 // GoogleProtobufEmptyPtrInput is an input type that accepts GoogleProtobufEmptyArgs, GoogleProtobufEmptyPtr and GoogleProtobufEmptyPtrOutput values.
 // You can construct a concrete instance of `GoogleProtobufEmptyPtrInput` via:
 //
-//          GoogleProtobufEmptyArgs{...}
+//	        GoogleProtobufEmptyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleProtobufEmptyPtrInput interface {
 	pulumi.Input
 
@@ -21539,7 +21539,7 @@ type GoogleTypeDate struct {
 // GoogleTypeDateInput is an input type that accepts GoogleTypeDateArgs and GoogleTypeDateOutput values.
 // You can construct a concrete instance of `GoogleTypeDateInput` via:
 //
-//          GoogleTypeDateArgs{...}
+//	GoogleTypeDateArgs{...}
 type GoogleTypeDateInput interface {
 	pulumi.Input
 
@@ -21580,11 +21580,11 @@ func (i GoogleTypeDateArgs) ToGoogleTypeDatePtrOutputWithContext(ctx context.Con
 // GoogleTypeDatePtrInput is an input type that accepts GoogleTypeDateArgs, GoogleTypeDatePtr and GoogleTypeDatePtrOutput values.
 // You can construct a concrete instance of `GoogleTypeDatePtrInput` via:
 //
-//          GoogleTypeDateArgs{...}
+//	        GoogleTypeDateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleTypeDatePtrInput interface {
 	pulumi.Input
 
@@ -21759,7 +21759,7 @@ type GoogleTypeTimeOfDay struct {
 // GoogleTypeTimeOfDayInput is an input type that accepts GoogleTypeTimeOfDayArgs and GoogleTypeTimeOfDayOutput values.
 // You can construct a concrete instance of `GoogleTypeTimeOfDayInput` via:
 //
-//          GoogleTypeTimeOfDayArgs{...}
+//	GoogleTypeTimeOfDayArgs{...}
 type GoogleTypeTimeOfDayInput interface {
 	pulumi.Input
 
@@ -21802,11 +21802,11 @@ func (i GoogleTypeTimeOfDayArgs) ToGoogleTypeTimeOfDayPtrOutputWithContext(ctx c
 // GoogleTypeTimeOfDayPtrInput is an input type that accepts GoogleTypeTimeOfDayArgs, GoogleTypeTimeOfDayPtr and GoogleTypeTimeOfDayPtrOutput values.
 // You can construct a concrete instance of `GoogleTypeTimeOfDayPtrInput` via:
 //
-//          GoogleTypeTimeOfDayArgs{...}
+//	        GoogleTypeTimeOfDayArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleTypeTimeOfDayPtrInput interface {
 	pulumi.Input
 

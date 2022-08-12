@@ -19,7 +19,7 @@ type ClassItem struct {
 // ClassItemInput is an input type that accepts ClassItemArgs and ClassItemOutput values.
 // You can construct a concrete instance of `ClassItemInput` via:
 //
-//          ClassItemArgs{...}
+//	ClassItemArgs{...}
 type ClassItemInput interface {
 	pulumi.Input
 
@@ -48,7 +48,7 @@ func (i ClassItemArgs) ToClassItemOutputWithContext(ctx context.Context) ClassIt
 // ClassItemArrayInput is an input type that accepts ClassItemArray and ClassItemArrayOutput values.
 // You can construct a concrete instance of `ClassItemArrayInput` via:
 //
-//          ClassItemArray{ ClassItemArgs{...} }
+//	ClassItemArray{ ClassItemArgs{...} }
 type ClassItemArrayInput interface {
 	pulumi.Input
 
@@ -167,7 +167,7 @@ type Phrase struct {
 // PhraseInput is an input type that accepts PhraseArgs and PhraseOutput values.
 // You can construct a concrete instance of `PhraseInput` via:
 //
-//          PhraseArgs{...}
+//	PhraseArgs{...}
 type PhraseInput interface {
 	pulumi.Input
 
@@ -198,7 +198,7 @@ func (i PhraseArgs) ToPhraseOutputWithContext(ctx context.Context) PhraseOutput 
 // PhraseArrayInput is an input type that accepts PhraseArray and PhraseArrayOutput values.
 // You can construct a concrete instance of `PhraseArrayInput` via:
 //
-//          PhraseArray{ PhraseArgs{...} }
+//	PhraseArray{ PhraseArgs{...} }
 type PhraseArrayInput interface {
 	pulumi.Input
 

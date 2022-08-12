@@ -27,7 +27,7 @@ type GoogleCloudApigeeV1AddonsConfig struct {
 // GoogleCloudApigeeV1AddonsConfigInput is an input type that accepts GoogleCloudApigeeV1AddonsConfigArgs and GoogleCloudApigeeV1AddonsConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1AddonsConfigInput` via:
 //
-//          GoogleCloudApigeeV1AddonsConfigArgs{...}
+//	GoogleCloudApigeeV1AddonsConfigArgs{...}
 type GoogleCloudApigeeV1AddonsConfigInput interface {
 	pulumi.Input
 
@@ -72,11 +72,11 @@ func (i GoogleCloudApigeeV1AddonsConfigArgs) ToGoogleCloudApigeeV1AddonsConfigPt
 // GoogleCloudApigeeV1AddonsConfigPtrInput is an input type that accepts GoogleCloudApigeeV1AddonsConfigArgs, GoogleCloudApigeeV1AddonsConfigPtr and GoogleCloudApigeeV1AddonsConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1AddonsConfigPtrInput` via:
 //
-//          GoogleCloudApigeeV1AddonsConfigArgs{...}
+//	        GoogleCloudApigeeV1AddonsConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudApigeeV1AddonsConfigPtrInput interface {
 	pulumi.Input
 
@@ -309,7 +309,7 @@ type GoogleCloudApigeeV1AdvancedApiOpsConfig struct {
 // GoogleCloudApigeeV1AdvancedApiOpsConfigInput is an input type that accepts GoogleCloudApigeeV1AdvancedApiOpsConfigArgs and GoogleCloudApigeeV1AdvancedApiOpsConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1AdvancedApiOpsConfigInput` via:
 //
-//          GoogleCloudApigeeV1AdvancedApiOpsConfigArgs{...}
+//	GoogleCloudApigeeV1AdvancedApiOpsConfigArgs{...}
 type GoogleCloudApigeeV1AdvancedApiOpsConfigInput interface {
 	pulumi.Input
 
@@ -346,11 +346,11 @@ func (i GoogleCloudApigeeV1AdvancedApiOpsConfigArgs) ToGoogleCloudApigeeV1Advanc
 // GoogleCloudApigeeV1AdvancedApiOpsConfigPtrInput is an input type that accepts GoogleCloudApigeeV1AdvancedApiOpsConfigArgs, GoogleCloudApigeeV1AdvancedApiOpsConfigPtr and GoogleCloudApigeeV1AdvancedApiOpsConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1AdvancedApiOpsConfigPtrInput` via:
 //
-//          GoogleCloudApigeeV1AdvancedApiOpsConfigArgs{...}
+//	        GoogleCloudApigeeV1AdvancedApiOpsConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudApigeeV1AdvancedApiOpsConfigPtrInput interface {
 	pulumi.Input
 
@@ -566,7 +566,7 @@ type GoogleCloudApigeeV1ApiSecurityConfig struct {
 // GoogleCloudApigeeV1ApiSecurityConfigInput is an input type that accepts GoogleCloudApigeeV1ApiSecurityConfigArgs and GoogleCloudApigeeV1ApiSecurityConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1ApiSecurityConfigInput` via:
 //
-//          GoogleCloudApigeeV1ApiSecurityConfigArgs{...}
+//	GoogleCloudApigeeV1ApiSecurityConfigArgs{...}
 type GoogleCloudApigeeV1ApiSecurityConfigInput interface {
 	pulumi.Input
 
@@ -603,11 +603,11 @@ func (i GoogleCloudApigeeV1ApiSecurityConfigArgs) ToGoogleCloudApigeeV1ApiSecuri
 // GoogleCloudApigeeV1ApiSecurityConfigPtrInput is an input type that accepts GoogleCloudApigeeV1ApiSecurityConfigArgs, GoogleCloudApigeeV1ApiSecurityConfigPtr and GoogleCloudApigeeV1ApiSecurityConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1ApiSecurityConfigPtrInput` via:
 //
-//          GoogleCloudApigeeV1ApiSecurityConfigArgs{...}
+//	        GoogleCloudApigeeV1ApiSecurityConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudApigeeV1ApiSecurityConfigPtrInput interface {
 	pulumi.Input
 
@@ -772,7 +772,7 @@ type GoogleCloudApigeeV1Attribute struct {
 // GoogleCloudApigeeV1AttributeInput is an input type that accepts GoogleCloudApigeeV1AttributeArgs and GoogleCloudApigeeV1AttributeOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1AttributeInput` via:
 //
-//          GoogleCloudApigeeV1AttributeArgs{...}
+//	GoogleCloudApigeeV1AttributeArgs{...}
 type GoogleCloudApigeeV1AttributeInput interface {
 	pulumi.Input
 
@@ -803,7 +803,7 @@ func (i GoogleCloudApigeeV1AttributeArgs) ToGoogleCloudApigeeV1AttributeOutputWi
 // GoogleCloudApigeeV1AttributeArrayInput is an input type that accepts GoogleCloudApigeeV1AttributeArray and GoogleCloudApigeeV1AttributeArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1AttributeArrayInput` via:
 //
-//          GoogleCloudApigeeV1AttributeArray{ GoogleCloudApigeeV1AttributeArgs{...} }
+//	GoogleCloudApigeeV1AttributeArray{ GoogleCloudApigeeV1AttributeArgs{...} }
 type GoogleCloudApigeeV1AttributeArrayInput interface {
 	pulumi.Input
 
@@ -936,7 +936,7 @@ type GoogleCloudApigeeV1CanaryEvaluationMetricLabels struct {
 // GoogleCloudApigeeV1CanaryEvaluationMetricLabelsInput is an input type that accepts GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs and GoogleCloudApigeeV1CanaryEvaluationMetricLabelsOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1CanaryEvaluationMetricLabelsInput` via:
 //
-//          GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs{...}
+//	GoogleCloudApigeeV1CanaryEvaluationMetricLabelsArgs{...}
 type GoogleCloudApigeeV1CanaryEvaluationMetricLabelsInput interface {
 	pulumi.Input
 
@@ -1187,7 +1187,7 @@ type GoogleCloudApigeeV1ConnectorsPlatformConfig struct {
 // GoogleCloudApigeeV1ConnectorsPlatformConfigInput is an input type that accepts GoogleCloudApigeeV1ConnectorsPlatformConfigArgs and GoogleCloudApigeeV1ConnectorsPlatformConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1ConnectorsPlatformConfigInput` via:
 //
-//          GoogleCloudApigeeV1ConnectorsPlatformConfigArgs{...}
+//	GoogleCloudApigeeV1ConnectorsPlatformConfigArgs{...}
 type GoogleCloudApigeeV1ConnectorsPlatformConfigInput interface {
 	pulumi.Input
 
@@ -1224,11 +1224,11 @@ func (i GoogleCloudApigeeV1ConnectorsPlatformConfigArgs) ToGoogleCloudApigeeV1Co
 // GoogleCloudApigeeV1ConnectorsPlatformConfigPtrInput is an input type that accepts GoogleCloudApigeeV1ConnectorsPlatformConfigArgs, GoogleCloudApigeeV1ConnectorsPlatformConfigPtr and GoogleCloudApigeeV1ConnectorsPlatformConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1ConnectorsPlatformConfigPtrInput` via:
 //
-//          GoogleCloudApigeeV1ConnectorsPlatformConfigArgs{...}
+//	        GoogleCloudApigeeV1ConnectorsPlatformConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudApigeeV1ConnectorsPlatformConfigPtrInput interface {
 	pulumi.Input
 
@@ -1459,7 +1459,7 @@ type GoogleCloudApigeeV1CustomReportMetric struct {
 // GoogleCloudApigeeV1CustomReportMetricInput is an input type that accepts GoogleCloudApigeeV1CustomReportMetricArgs and GoogleCloudApigeeV1CustomReportMetricOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1CustomReportMetricInput` via:
 //
-//          GoogleCloudApigeeV1CustomReportMetricArgs{...}
+//	GoogleCloudApigeeV1CustomReportMetricArgs{...}
 type GoogleCloudApigeeV1CustomReportMetricInput interface {
 	pulumi.Input
 
@@ -1490,7 +1490,7 @@ func (i GoogleCloudApigeeV1CustomReportMetricArgs) ToGoogleCloudApigeeV1CustomRe
 // GoogleCloudApigeeV1CustomReportMetricArrayInput is an input type that accepts GoogleCloudApigeeV1CustomReportMetricArray and GoogleCloudApigeeV1CustomReportMetricArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1CustomReportMetricArrayInput` via:
 //
-//          GoogleCloudApigeeV1CustomReportMetricArray{ GoogleCloudApigeeV1CustomReportMetricArgs{...} }
+//	GoogleCloudApigeeV1CustomReportMetricArray{ GoogleCloudApigeeV1CustomReportMetricArgs{...} }
 type GoogleCloudApigeeV1CustomReportMetricArrayInput interface {
 	pulumi.Input
 
@@ -1627,7 +1627,7 @@ type GoogleCloudApigeeV1DatastoreConfig struct {
 // GoogleCloudApigeeV1DatastoreConfigInput is an input type that accepts GoogleCloudApigeeV1DatastoreConfigArgs and GoogleCloudApigeeV1DatastoreConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1DatastoreConfigInput` via:
 //
-//          GoogleCloudApigeeV1DatastoreConfigArgs{...}
+//	GoogleCloudApigeeV1DatastoreConfigArgs{...}
 type GoogleCloudApigeeV1DatastoreConfigInput interface {
 	pulumi.Input
 
@@ -1672,11 +1672,11 @@ func (i GoogleCloudApigeeV1DatastoreConfigArgs) ToGoogleCloudApigeeV1DatastoreCo
 // GoogleCloudApigeeV1DatastoreConfigPtrInput is an input type that accepts GoogleCloudApigeeV1DatastoreConfigArgs, GoogleCloudApigeeV1DatastoreConfigPtr and GoogleCloudApigeeV1DatastoreConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1DatastoreConfigPtrInput` via:
 //
-//          GoogleCloudApigeeV1DatastoreConfigArgs{...}
+//	        GoogleCloudApigeeV1DatastoreConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudApigeeV1DatastoreConfigPtrInput interface {
 	pulumi.Input
 
@@ -1891,7 +1891,7 @@ type GoogleCloudApigeeV1DateRange struct {
 // GoogleCloudApigeeV1DateRangeInput is an input type that accepts GoogleCloudApigeeV1DateRangeArgs and GoogleCloudApigeeV1DateRangeOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1DateRangeInput` via:
 //
-//          GoogleCloudApigeeV1DateRangeArgs{...}
+//	GoogleCloudApigeeV1DateRangeArgs{...}
 type GoogleCloudApigeeV1DateRangeInput interface {
 	pulumi.Input
 
@@ -1995,7 +1995,7 @@ type GoogleCloudApigeeV1GraphQLOperation struct {
 // GoogleCloudApigeeV1GraphQLOperationInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationArgs and GoogleCloudApigeeV1GraphQLOperationOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationInput` via:
 //
-//          GoogleCloudApigeeV1GraphQLOperationArgs{...}
+//	GoogleCloudApigeeV1GraphQLOperationArgs{...}
 type GoogleCloudApigeeV1GraphQLOperationInput interface {
 	pulumi.Input
 
@@ -2026,7 +2026,7 @@ func (i GoogleCloudApigeeV1GraphQLOperationArgs) ToGoogleCloudApigeeV1GraphQLOpe
 // GoogleCloudApigeeV1GraphQLOperationArrayInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationArray and GoogleCloudApigeeV1GraphQLOperationArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationArrayInput` via:
 //
-//          GoogleCloudApigeeV1GraphQLOperationArray{ GoogleCloudApigeeV1GraphQLOperationArgs{...} }
+//	GoogleCloudApigeeV1GraphQLOperationArray{ GoogleCloudApigeeV1GraphQLOperationArgs{...} }
 type GoogleCloudApigeeV1GraphQLOperationArrayInput interface {
 	pulumi.Input
 
@@ -2108,7 +2108,7 @@ type GoogleCloudApigeeV1GraphQLOperationConfig struct {
 // GoogleCloudApigeeV1GraphQLOperationConfigInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationConfigArgs and GoogleCloudApigeeV1GraphQLOperationConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationConfigInput` via:
 //
-//          GoogleCloudApigeeV1GraphQLOperationConfigArgs{...}
+//	GoogleCloudApigeeV1GraphQLOperationConfigArgs{...}
 type GoogleCloudApigeeV1GraphQLOperationConfigInput interface {
 	pulumi.Input
 
@@ -2143,7 +2143,7 @@ func (i GoogleCloudApigeeV1GraphQLOperationConfigArgs) ToGoogleCloudApigeeV1Grap
 // GoogleCloudApigeeV1GraphQLOperationConfigArrayInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationConfigArray and GoogleCloudApigeeV1GraphQLOperationConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationConfigArrayInput` via:
 //
-//          GoogleCloudApigeeV1GraphQLOperationConfigArray{ GoogleCloudApigeeV1GraphQLOperationConfigArgs{...} }
+//	GoogleCloudApigeeV1GraphQLOperationConfigArray{ GoogleCloudApigeeV1GraphQLOperationConfigArgs{...} }
 type GoogleCloudApigeeV1GraphQLOperationConfigArrayInput interface {
 	pulumi.Input
 
@@ -2306,7 +2306,7 @@ type GoogleCloudApigeeV1GraphQLOperationGroup struct {
 // GoogleCloudApigeeV1GraphQLOperationGroupInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationGroupArgs and GoogleCloudApigeeV1GraphQLOperationGroupOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationGroupInput` via:
 //
-//          GoogleCloudApigeeV1GraphQLOperationGroupArgs{...}
+//	GoogleCloudApigeeV1GraphQLOperationGroupArgs{...}
 type GoogleCloudApigeeV1GraphQLOperationGroupInput interface {
 	pulumi.Input
 
@@ -2345,11 +2345,11 @@ func (i GoogleCloudApigeeV1GraphQLOperationGroupArgs) ToGoogleCloudApigeeV1Graph
 // GoogleCloudApigeeV1GraphQLOperationGroupPtrInput is an input type that accepts GoogleCloudApigeeV1GraphQLOperationGroupArgs, GoogleCloudApigeeV1GraphQLOperationGroupPtr and GoogleCloudApigeeV1GraphQLOperationGroupPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1GraphQLOperationGroupPtrInput` via:
 //
-//          GoogleCloudApigeeV1GraphQLOperationGroupArgs{...}
+//	        GoogleCloudApigeeV1GraphQLOperationGroupArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudApigeeV1GraphQLOperationGroupPtrInput interface {
 	pulumi.Input
 
@@ -2553,7 +2553,7 @@ type GoogleCloudApigeeV1IntegrationConfig struct {
 // GoogleCloudApigeeV1IntegrationConfigInput is an input type that accepts GoogleCloudApigeeV1IntegrationConfigArgs and GoogleCloudApigeeV1IntegrationConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1IntegrationConfigInput` via:
 //
-//          GoogleCloudApigeeV1IntegrationConfigArgs{...}
+//	GoogleCloudApigeeV1IntegrationConfigArgs{...}
 type GoogleCloudApigeeV1IntegrationConfigInput interface {
 	pulumi.Input
 
@@ -2590,11 +2590,11 @@ func (i GoogleCloudApigeeV1IntegrationConfigArgs) ToGoogleCloudApigeeV1Integrati
 // GoogleCloudApigeeV1IntegrationConfigPtrInput is an input type that accepts GoogleCloudApigeeV1IntegrationConfigArgs, GoogleCloudApigeeV1IntegrationConfigPtr and GoogleCloudApigeeV1IntegrationConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1IntegrationConfigPtrInput` via:
 //
-//          GoogleCloudApigeeV1IntegrationConfigArgs{...}
+//	        GoogleCloudApigeeV1IntegrationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudApigeeV1IntegrationConfigPtrInput interface {
 	pulumi.Input
 
@@ -2719,7 +2719,7 @@ type GoogleCloudApigeeV1MonetizationConfig struct {
 // GoogleCloudApigeeV1MonetizationConfigInput is an input type that accepts GoogleCloudApigeeV1MonetizationConfigArgs and GoogleCloudApigeeV1MonetizationConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1MonetizationConfigInput` via:
 //
-//          GoogleCloudApigeeV1MonetizationConfigArgs{...}
+//	GoogleCloudApigeeV1MonetizationConfigArgs{...}
 type GoogleCloudApigeeV1MonetizationConfigInput interface {
 	pulumi.Input
 
@@ -2756,11 +2756,11 @@ func (i GoogleCloudApigeeV1MonetizationConfigArgs) ToGoogleCloudApigeeV1Monetiza
 // GoogleCloudApigeeV1MonetizationConfigPtrInput is an input type that accepts GoogleCloudApigeeV1MonetizationConfigArgs, GoogleCloudApigeeV1MonetizationConfigPtr and GoogleCloudApigeeV1MonetizationConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1MonetizationConfigPtrInput` via:
 //
-//          GoogleCloudApigeeV1MonetizationConfigArgs{...}
+//	        GoogleCloudApigeeV1MonetizationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudApigeeV1MonetizationConfigPtrInput interface {
 	pulumi.Input
 
@@ -2887,7 +2887,7 @@ type GoogleCloudApigeeV1Operation struct {
 // GoogleCloudApigeeV1OperationInput is an input type that accepts GoogleCloudApigeeV1OperationArgs and GoogleCloudApigeeV1OperationOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1OperationInput` via:
 //
-//          GoogleCloudApigeeV1OperationArgs{...}
+//	GoogleCloudApigeeV1OperationArgs{...}
 type GoogleCloudApigeeV1OperationInput interface {
 	pulumi.Input
 
@@ -2918,7 +2918,7 @@ func (i GoogleCloudApigeeV1OperationArgs) ToGoogleCloudApigeeV1OperationOutputWi
 // GoogleCloudApigeeV1OperationArrayInput is an input type that accepts GoogleCloudApigeeV1OperationArray and GoogleCloudApigeeV1OperationArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1OperationArrayInput` via:
 //
-//          GoogleCloudApigeeV1OperationArray{ GoogleCloudApigeeV1OperationArgs{...} }
+//	GoogleCloudApigeeV1OperationArray{ GoogleCloudApigeeV1OperationArgs{...} }
 type GoogleCloudApigeeV1OperationArrayInput interface {
 	pulumi.Input
 
@@ -3000,7 +3000,7 @@ type GoogleCloudApigeeV1OperationConfig struct {
 // GoogleCloudApigeeV1OperationConfigInput is an input type that accepts GoogleCloudApigeeV1OperationConfigArgs and GoogleCloudApigeeV1OperationConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1OperationConfigInput` via:
 //
-//          GoogleCloudApigeeV1OperationConfigArgs{...}
+//	GoogleCloudApigeeV1OperationConfigArgs{...}
 type GoogleCloudApigeeV1OperationConfigInput interface {
 	pulumi.Input
 
@@ -3035,7 +3035,7 @@ func (i GoogleCloudApigeeV1OperationConfigArgs) ToGoogleCloudApigeeV1OperationCo
 // GoogleCloudApigeeV1OperationConfigArrayInput is an input type that accepts GoogleCloudApigeeV1OperationConfigArray and GoogleCloudApigeeV1OperationConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1OperationConfigArrayInput` via:
 //
-//          GoogleCloudApigeeV1OperationConfigArray{ GoogleCloudApigeeV1OperationConfigArgs{...} }
+//	GoogleCloudApigeeV1OperationConfigArray{ GoogleCloudApigeeV1OperationConfigArgs{...} }
 type GoogleCloudApigeeV1OperationConfigArrayInput interface {
 	pulumi.Input
 
@@ -3194,7 +3194,7 @@ type GoogleCloudApigeeV1OperationGroup struct {
 // GoogleCloudApigeeV1OperationGroupInput is an input type that accepts GoogleCloudApigeeV1OperationGroupArgs and GoogleCloudApigeeV1OperationGroupOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1OperationGroupInput` via:
 //
-//          GoogleCloudApigeeV1OperationGroupArgs{...}
+//	GoogleCloudApigeeV1OperationGroupArgs{...}
 type GoogleCloudApigeeV1OperationGroupInput interface {
 	pulumi.Input
 
@@ -3233,11 +3233,11 @@ func (i GoogleCloudApigeeV1OperationGroupArgs) ToGoogleCloudApigeeV1OperationGro
 // GoogleCloudApigeeV1OperationGroupPtrInput is an input type that accepts GoogleCloudApigeeV1OperationGroupArgs, GoogleCloudApigeeV1OperationGroupPtr and GoogleCloudApigeeV1OperationGroupPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1OperationGroupPtrInput` via:
 //
-//          GoogleCloudApigeeV1OperationGroupArgs{...}
+//	        GoogleCloudApigeeV1OperationGroupArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudApigeeV1OperationGroupPtrInput interface {
 	pulumi.Input
 
@@ -3441,7 +3441,7 @@ type GoogleCloudApigeeV1Properties struct {
 // GoogleCloudApigeeV1PropertiesInput is an input type that accepts GoogleCloudApigeeV1PropertiesArgs and GoogleCloudApigeeV1PropertiesOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1PropertiesInput` via:
 //
-//          GoogleCloudApigeeV1PropertiesArgs{...}
+//	GoogleCloudApigeeV1PropertiesArgs{...}
 type GoogleCloudApigeeV1PropertiesInput interface {
 	pulumi.Input
 
@@ -3478,11 +3478,11 @@ func (i GoogleCloudApigeeV1PropertiesArgs) ToGoogleCloudApigeeV1PropertiesPtrOut
 // GoogleCloudApigeeV1PropertiesPtrInput is an input type that accepts GoogleCloudApigeeV1PropertiesArgs, GoogleCloudApigeeV1PropertiesPtr and GoogleCloudApigeeV1PropertiesPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1PropertiesPtrInput` via:
 //
-//          GoogleCloudApigeeV1PropertiesArgs{...}
+//	        GoogleCloudApigeeV1PropertiesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudApigeeV1PropertiesPtrInput interface {
 	pulumi.Input
 
@@ -3609,7 +3609,7 @@ type GoogleCloudApigeeV1Property struct {
 // GoogleCloudApigeeV1PropertyInput is an input type that accepts GoogleCloudApigeeV1PropertyArgs and GoogleCloudApigeeV1PropertyOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1PropertyInput` via:
 //
-//          GoogleCloudApigeeV1PropertyArgs{...}
+//	GoogleCloudApigeeV1PropertyArgs{...}
 type GoogleCloudApigeeV1PropertyInput interface {
 	pulumi.Input
 
@@ -3640,7 +3640,7 @@ func (i GoogleCloudApigeeV1PropertyArgs) ToGoogleCloudApigeeV1PropertyOutputWith
 // GoogleCloudApigeeV1PropertyArrayInput is an input type that accepts GoogleCloudApigeeV1PropertyArray and GoogleCloudApigeeV1PropertyArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1PropertyArrayInput` via:
 //
-//          GoogleCloudApigeeV1PropertyArray{ GoogleCloudApigeeV1PropertyArgs{...} }
+//	GoogleCloudApigeeV1PropertyArray{ GoogleCloudApigeeV1PropertyArgs{...} }
 type GoogleCloudApigeeV1PropertyArrayInput interface {
 	pulumi.Input
 
@@ -3836,7 +3836,7 @@ type GoogleCloudApigeeV1QueryMetric struct {
 // GoogleCloudApigeeV1QueryMetricInput is an input type that accepts GoogleCloudApigeeV1QueryMetricArgs and GoogleCloudApigeeV1QueryMetricOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1QueryMetricInput` via:
 //
-//          GoogleCloudApigeeV1QueryMetricArgs{...}
+//	GoogleCloudApigeeV1QueryMetricArgs{...}
 type GoogleCloudApigeeV1QueryMetricInput interface {
 	pulumi.Input
 
@@ -3873,7 +3873,7 @@ func (i GoogleCloudApigeeV1QueryMetricArgs) ToGoogleCloudApigeeV1QueryMetricOutp
 // GoogleCloudApigeeV1QueryMetricArrayInput is an input type that accepts GoogleCloudApigeeV1QueryMetricArray and GoogleCloudApigeeV1QueryMetricArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1QueryMetricArrayInput` via:
 //
-//          GoogleCloudApigeeV1QueryMetricArray{ GoogleCloudApigeeV1QueryMetricArgs{...} }
+//	GoogleCloudApigeeV1QueryMetricArray{ GoogleCloudApigeeV1QueryMetricArgs{...} }
 type GoogleCloudApigeeV1QueryMetricArrayInput interface {
 	pulumi.Input
 
@@ -3968,7 +3968,7 @@ type GoogleCloudApigeeV1Quota struct {
 // GoogleCloudApigeeV1QuotaInput is an input type that accepts GoogleCloudApigeeV1QuotaArgs and GoogleCloudApigeeV1QuotaOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1QuotaInput` via:
 //
-//          GoogleCloudApigeeV1QuotaArgs{...}
+//	GoogleCloudApigeeV1QuotaArgs{...}
 type GoogleCloudApigeeV1QuotaInput interface {
 	pulumi.Input
 
@@ -4009,11 +4009,11 @@ func (i GoogleCloudApigeeV1QuotaArgs) ToGoogleCloudApigeeV1QuotaPtrOutputWithCon
 // GoogleCloudApigeeV1QuotaPtrInput is an input type that accepts GoogleCloudApigeeV1QuotaArgs, GoogleCloudApigeeV1QuotaPtr and GoogleCloudApigeeV1QuotaPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1QuotaPtrInput` via:
 //
-//          GoogleCloudApigeeV1QuotaArgs{...}
+//	        GoogleCloudApigeeV1QuotaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudApigeeV1QuotaPtrInput interface {
 	pulumi.Input
 
@@ -4186,7 +4186,7 @@ type GoogleCloudApigeeV1RateRange struct {
 // GoogleCloudApigeeV1RateRangeInput is an input type that accepts GoogleCloudApigeeV1RateRangeArgs and GoogleCloudApigeeV1RateRangeOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1RateRangeInput` via:
 //
-//          GoogleCloudApigeeV1RateRangeArgs{...}
+//	GoogleCloudApigeeV1RateRangeArgs{...}
 type GoogleCloudApigeeV1RateRangeInput interface {
 	pulumi.Input
 
@@ -4219,7 +4219,7 @@ func (i GoogleCloudApigeeV1RateRangeArgs) ToGoogleCloudApigeeV1RateRangeOutputWi
 // GoogleCloudApigeeV1RateRangeArrayInput is an input type that accepts GoogleCloudApigeeV1RateRangeArray and GoogleCloudApigeeV1RateRangeArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1RateRangeArrayInput` via:
 //
-//          GoogleCloudApigeeV1RateRangeArray{ GoogleCloudApigeeV1RateRangeArgs{...} }
+//	GoogleCloudApigeeV1RateRangeArray{ GoogleCloudApigeeV1RateRangeArgs{...} }
 type GoogleCloudApigeeV1RateRangeArrayInput interface {
 	pulumi.Input
 
@@ -4361,7 +4361,7 @@ type GoogleCloudApigeeV1ReportProperty struct {
 // GoogleCloudApigeeV1ReportPropertyInput is an input type that accepts GoogleCloudApigeeV1ReportPropertyArgs and GoogleCloudApigeeV1ReportPropertyOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1ReportPropertyInput` via:
 //
-//          GoogleCloudApigeeV1ReportPropertyArgs{...}
+//	GoogleCloudApigeeV1ReportPropertyArgs{...}
 type GoogleCloudApigeeV1ReportPropertyInput interface {
 	pulumi.Input
 
@@ -4391,7 +4391,7 @@ func (i GoogleCloudApigeeV1ReportPropertyArgs) ToGoogleCloudApigeeV1ReportProper
 // GoogleCloudApigeeV1ReportPropertyArrayInput is an input type that accepts GoogleCloudApigeeV1ReportPropertyArray and GoogleCloudApigeeV1ReportPropertyArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1ReportPropertyArrayInput` via:
 //
-//          GoogleCloudApigeeV1ReportPropertyArray{ GoogleCloudApigeeV1ReportPropertyArgs{...} }
+//	GoogleCloudApigeeV1ReportPropertyArray{ GoogleCloudApigeeV1ReportPropertyArgs{...} }
 type GoogleCloudApigeeV1ReportPropertyArrayInput interface {
 	pulumi.Input
 
@@ -4523,7 +4523,7 @@ type GoogleCloudApigeeV1RevenueShareRange struct {
 // GoogleCloudApigeeV1RevenueShareRangeInput is an input type that accepts GoogleCloudApigeeV1RevenueShareRangeArgs and GoogleCloudApigeeV1RevenueShareRangeOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1RevenueShareRangeInput` via:
 //
-//          GoogleCloudApigeeV1RevenueShareRangeArgs{...}
+//	GoogleCloudApigeeV1RevenueShareRangeArgs{...}
 type GoogleCloudApigeeV1RevenueShareRangeInput interface {
 	pulumi.Input
 
@@ -4556,7 +4556,7 @@ func (i GoogleCloudApigeeV1RevenueShareRangeArgs) ToGoogleCloudApigeeV1RevenueSh
 // GoogleCloudApigeeV1RevenueShareRangeArrayInput is an input type that accepts GoogleCloudApigeeV1RevenueShareRangeArray and GoogleCloudApigeeV1RevenueShareRangeArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1RevenueShareRangeArrayInput` via:
 //
-//          GoogleCloudApigeeV1RevenueShareRangeArray{ GoogleCloudApigeeV1RevenueShareRangeArgs{...} }
+//	GoogleCloudApigeeV1RevenueShareRangeArray{ GoogleCloudApigeeV1RevenueShareRangeArgs{...} }
 type GoogleCloudApigeeV1RevenueShareRangeArrayInput interface {
 	pulumi.Input
 
@@ -4766,7 +4766,7 @@ type GoogleCloudApigeeV1SecurityReportQueryMetric struct {
 // GoogleCloudApigeeV1SecurityReportQueryMetricInput is an input type that accepts GoogleCloudApigeeV1SecurityReportQueryMetricArgs and GoogleCloudApigeeV1SecurityReportQueryMetricOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1SecurityReportQueryMetricInput` via:
 //
-//          GoogleCloudApigeeV1SecurityReportQueryMetricArgs{...}
+//	GoogleCloudApigeeV1SecurityReportQueryMetricArgs{...}
 type GoogleCloudApigeeV1SecurityReportQueryMetricInput interface {
 	pulumi.Input
 
@@ -4803,7 +4803,7 @@ func (i GoogleCloudApigeeV1SecurityReportQueryMetricArgs) ToGoogleCloudApigeeV1S
 // GoogleCloudApigeeV1SecurityReportQueryMetricArrayInput is an input type that accepts GoogleCloudApigeeV1SecurityReportQueryMetricArray and GoogleCloudApigeeV1SecurityReportQueryMetricArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1SecurityReportQueryMetricArrayInput` via:
 //
-//          GoogleCloudApigeeV1SecurityReportQueryMetricArray{ GoogleCloudApigeeV1SecurityReportQueryMetricArgs{...} }
+//	GoogleCloudApigeeV1SecurityReportQueryMetricArray{ GoogleCloudApigeeV1SecurityReportQueryMetricArgs{...} }
 type GoogleCloudApigeeV1SecurityReportQueryMetricArrayInput interface {
 	pulumi.Input
 
@@ -4943,7 +4943,7 @@ type GoogleCloudApigeeV1TlsInfo struct {
 // GoogleCloudApigeeV1TlsInfoInput is an input type that accepts GoogleCloudApigeeV1TlsInfoArgs and GoogleCloudApigeeV1TlsInfoOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1TlsInfoInput` via:
 //
-//          GoogleCloudApigeeV1TlsInfoArgs{...}
+//	GoogleCloudApigeeV1TlsInfoArgs{...}
 type GoogleCloudApigeeV1TlsInfoInput interface {
 	pulumi.Input
 
@@ -4996,11 +4996,11 @@ func (i GoogleCloudApigeeV1TlsInfoArgs) ToGoogleCloudApigeeV1TlsInfoPtrOutputWit
 // GoogleCloudApigeeV1TlsInfoPtrInput is an input type that accepts GoogleCloudApigeeV1TlsInfoArgs, GoogleCloudApigeeV1TlsInfoPtr and GoogleCloudApigeeV1TlsInfoPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1TlsInfoPtrInput` via:
 //
-//          GoogleCloudApigeeV1TlsInfoArgs{...}
+//	        GoogleCloudApigeeV1TlsInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudApigeeV1TlsInfoPtrInput interface {
 	pulumi.Input
 
@@ -5220,7 +5220,7 @@ type GoogleCloudApigeeV1TlsInfoCommonName struct {
 // GoogleCloudApigeeV1TlsInfoCommonNameInput is an input type that accepts GoogleCloudApigeeV1TlsInfoCommonNameArgs and GoogleCloudApigeeV1TlsInfoCommonNameOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1TlsInfoCommonNameInput` via:
 //
-//          GoogleCloudApigeeV1TlsInfoCommonNameArgs{...}
+//	GoogleCloudApigeeV1TlsInfoCommonNameArgs{...}
 type GoogleCloudApigeeV1TlsInfoCommonNameInput interface {
 	pulumi.Input
 
@@ -5258,11 +5258,11 @@ func (i GoogleCloudApigeeV1TlsInfoCommonNameArgs) ToGoogleCloudApigeeV1TlsInfoCo
 // GoogleCloudApigeeV1TlsInfoCommonNamePtrInput is an input type that accepts GoogleCloudApigeeV1TlsInfoCommonNameArgs, GoogleCloudApigeeV1TlsInfoCommonNamePtr and GoogleCloudApigeeV1TlsInfoCommonNamePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1TlsInfoCommonNamePtrInput` via:
 //
-//          GoogleCloudApigeeV1TlsInfoCommonNameArgs{...}
+//	        GoogleCloudApigeeV1TlsInfoCommonNameArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudApigeeV1TlsInfoCommonNamePtrInput interface {
 	pulumi.Input
 
@@ -5492,7 +5492,7 @@ type GoogleCloudApigeeV1TraceSamplingConfig struct {
 // GoogleCloudApigeeV1TraceSamplingConfigInput is an input type that accepts GoogleCloudApigeeV1TraceSamplingConfigArgs and GoogleCloudApigeeV1TraceSamplingConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1TraceSamplingConfigInput` via:
 //
-//          GoogleCloudApigeeV1TraceSamplingConfigArgs{...}
+//	GoogleCloudApigeeV1TraceSamplingConfigArgs{...}
 type GoogleCloudApigeeV1TraceSamplingConfigInput interface {
 	pulumi.Input
 
@@ -5531,11 +5531,11 @@ func (i GoogleCloudApigeeV1TraceSamplingConfigArgs) ToGoogleCloudApigeeV1TraceSa
 // GoogleCloudApigeeV1TraceSamplingConfigPtrInput is an input type that accepts GoogleCloudApigeeV1TraceSamplingConfigArgs, GoogleCloudApigeeV1TraceSamplingConfigPtr and GoogleCloudApigeeV1TraceSamplingConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudApigeeV1TraceSamplingConfigPtrInput` via:
 //
-//          GoogleCloudApigeeV1TraceSamplingConfigArgs{...}
+//	        GoogleCloudApigeeV1TraceSamplingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudApigeeV1TraceSamplingConfigPtrInput interface {
 	pulumi.Input
 
@@ -5686,7 +5686,7 @@ type GoogleIamV1AuditConfig struct {
 // GoogleIamV1AuditConfigInput is an input type that accepts GoogleIamV1AuditConfigArgs and GoogleIamV1AuditConfigOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigInput` via:
 //
-//          GoogleIamV1AuditConfigArgs{...}
+//	GoogleIamV1AuditConfigArgs{...}
 type GoogleIamV1AuditConfigInput interface {
 	pulumi.Input
 
@@ -5717,7 +5717,7 @@ func (i GoogleIamV1AuditConfigArgs) ToGoogleIamV1AuditConfigOutputWithContext(ct
 // GoogleIamV1AuditConfigArrayInput is an input type that accepts GoogleIamV1AuditConfigArray and GoogleIamV1AuditConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigArrayInput` via:
 //
-//          GoogleIamV1AuditConfigArray{ GoogleIamV1AuditConfigArgs{...} }
+//	GoogleIamV1AuditConfigArray{ GoogleIamV1AuditConfigArgs{...} }
 type GoogleIamV1AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -5848,7 +5848,7 @@ type GoogleIamV1AuditLogConfig struct {
 // GoogleIamV1AuditLogConfigInput is an input type that accepts GoogleIamV1AuditLogConfigArgs and GoogleIamV1AuditLogConfigOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigInput` via:
 //
-//          GoogleIamV1AuditLogConfigArgs{...}
+//	GoogleIamV1AuditLogConfigArgs{...}
 type GoogleIamV1AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -5879,7 +5879,7 @@ func (i GoogleIamV1AuditLogConfigArgs) ToGoogleIamV1AuditLogConfigOutputWithCont
 // GoogleIamV1AuditLogConfigArrayInput is an input type that accepts GoogleIamV1AuditLogConfigArray and GoogleIamV1AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigArrayInput` via:
 //
-//          GoogleIamV1AuditLogConfigArray{ GoogleIamV1AuditLogConfigArgs{...} }
+//	GoogleIamV1AuditLogConfigArray{ GoogleIamV1AuditLogConfigArgs{...} }
 type GoogleIamV1AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -6012,7 +6012,7 @@ type GoogleIamV1Binding struct {
 // GoogleIamV1BindingInput is an input type that accepts GoogleIamV1BindingArgs and GoogleIamV1BindingOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingInput` via:
 //
-//          GoogleIamV1BindingArgs{...}
+//	GoogleIamV1BindingArgs{...}
 type GoogleIamV1BindingInput interface {
 	pulumi.Input
 
@@ -6045,7 +6045,7 @@ func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutputWithContext(ctx contex
 // GoogleIamV1BindingArrayInput is an input type that accepts GoogleIamV1BindingArray and GoogleIamV1BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingArrayInput` via:
 //
-//          GoogleIamV1BindingArray{ GoogleIamV1BindingArgs{...} }
+//	GoogleIamV1BindingArray{ GoogleIamV1BindingArgs{...} }
 type GoogleIamV1BindingArrayInput interface {
 	pulumi.Input
 
@@ -6192,7 +6192,7 @@ type GoogleTypeExpr struct {
 // GoogleTypeExprInput is an input type that accepts GoogleTypeExprArgs and GoogleTypeExprOutput values.
 // You can construct a concrete instance of `GoogleTypeExprInput` via:
 //
-//          GoogleTypeExprArgs{...}
+//	GoogleTypeExprArgs{...}
 type GoogleTypeExprInput interface {
 	pulumi.Input
 
@@ -6235,11 +6235,11 @@ func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutputWithContext(ctx context.Con
 // GoogleTypeExprPtrInput is an input type that accepts GoogleTypeExprArgs, GoogleTypeExprPtr and GoogleTypeExprPtrOutput values.
 // You can construct a concrete instance of `GoogleTypeExprPtrInput` via:
 //
-//          GoogleTypeExprArgs{...}
+//	        GoogleTypeExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleTypeExprPtrInput interface {
 	pulumi.Input
 
@@ -6434,7 +6434,7 @@ type GoogleTypeMoney struct {
 // GoogleTypeMoneyInput is an input type that accepts GoogleTypeMoneyArgs and GoogleTypeMoneyOutput values.
 // You can construct a concrete instance of `GoogleTypeMoneyInput` via:
 //
-//          GoogleTypeMoneyArgs{...}
+//	GoogleTypeMoneyArgs{...}
 type GoogleTypeMoneyInput interface {
 	pulumi.Input
 
@@ -6475,11 +6475,11 @@ func (i GoogleTypeMoneyArgs) ToGoogleTypeMoneyPtrOutputWithContext(ctx context.C
 // GoogleTypeMoneyPtrInput is an input type that accepts GoogleTypeMoneyArgs, GoogleTypeMoneyPtr and GoogleTypeMoneyPtrOutput values.
 // You can construct a concrete instance of `GoogleTypeMoneyPtrInput` via:
 //
-//          GoogleTypeMoneyArgs{...}
+//	        GoogleTypeMoneyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleTypeMoneyPtrInput interface {
 	pulumi.Input
 

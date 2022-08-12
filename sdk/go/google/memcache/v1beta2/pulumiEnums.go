@@ -141,7 +141,7 @@ func (o InstanceMemcacheVersionPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // InstanceMemcacheVersionInput is an input type that accepts InstanceMemcacheVersionArgs and InstanceMemcacheVersionOutput values.
 // You can construct a concrete instance of `InstanceMemcacheVersionInput` via:
 //
-//          InstanceMemcacheVersionArgs{...}
+//	InstanceMemcacheVersionArgs{...}
 type InstanceMemcacheVersionInput interface {
 	pulumi.Input
 
@@ -308,7 +308,7 @@ func (o InstanceMessageCodePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // InstanceMessageCodeInput is an input type that accepts InstanceMessageCodeArgs and InstanceMessageCodeOutput values.
 // You can construct a concrete instance of `InstanceMessageCodeInput` via:
 //
-//          InstanceMessageCodeArgs{...}
+//	InstanceMessageCodeArgs{...}
 type InstanceMessageCodeInput interface {
 	pulumi.Input
 
@@ -487,7 +487,7 @@ func (o WeeklyMaintenanceWindowDayPtrOutput) ToStringPtrOutputWithContext(ctx co
 // WeeklyMaintenanceWindowDayInput is an input type that accepts WeeklyMaintenanceWindowDayArgs and WeeklyMaintenanceWindowDayOutput values.
 // You can construct a concrete instance of `WeeklyMaintenanceWindowDayInput` via:
 //
-//          WeeklyMaintenanceWindowDayArgs{...}
+//	WeeklyMaintenanceWindowDayArgs{...}
 type WeeklyMaintenanceWindowDayInput interface {
 	pulumi.Input
 

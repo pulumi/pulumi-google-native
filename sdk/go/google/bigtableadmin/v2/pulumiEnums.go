@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o ClusterDefaultStorageTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 // ClusterDefaultStorageTypeInput is an input type that accepts ClusterDefaultStorageTypeArgs and ClusterDefaultStorageTypeOutput values.
 // You can construct a concrete instance of `ClusterDefaultStorageTypeInput` via:
 //
-//          ClusterDefaultStorageTypeArgs{...}
+//	ClusterDefaultStorageTypeArgs{...}
 type ClusterDefaultStorageTypeInput interface {
 	pulumi.Input
 
@@ -484,7 +484,7 @@ func (o InstanceTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // InstanceTypeInput is an input type that accepts InstanceTypeArgs and InstanceTypeOutput values.
 // You can construct a concrete instance of `InstanceTypeInput` via:
 //
-//          InstanceTypeArgs{...}
+//	InstanceTypeArgs{...}
 type InstanceTypeInput interface {
 	pulumi.Input
 
@@ -651,7 +651,7 @@ func (o TableGranularityPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // TableGranularityInput is an input type that accepts TableGranularityArgs and TableGranularityOutput values.
 // You can construct a concrete instance of `TableGranularityInput` via:
 //
-//          TableGranularityArgs{...}
+//	TableGranularityArgs{...}
 type TableGranularityInput interface {
 	pulumi.Input
 

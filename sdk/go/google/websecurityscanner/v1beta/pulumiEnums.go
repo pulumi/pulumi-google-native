@@ -222,7 +222,7 @@ func (o ScanConfigErrorCodePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // ScanConfigErrorCodeInput is an input type that accepts ScanConfigErrorCodeArgs and ScanConfigErrorCodeOutput values.
 // You can construct a concrete instance of `ScanConfigErrorCodeInput` via:
 //
-//          ScanConfigErrorCodeArgs{...}
+//	ScanConfigErrorCodeArgs{...}
 type ScanConfigErrorCodeInput interface {
 	pulumi.Input
 
@@ -391,7 +391,7 @@ func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToStringPtrOutputWithC
 // ScanConfigExportToSecurityCommandCenterInput is an input type that accepts ScanConfigExportToSecurityCommandCenterArgs and ScanConfigExportToSecurityCommandCenterOutput values.
 // You can construct a concrete instance of `ScanConfigExportToSecurityCommandCenterInput` via:
 //
-//          ScanConfigExportToSecurityCommandCenterArgs{...}
+//	ScanConfigExportToSecurityCommandCenterArgs{...}
 type ScanConfigExportToSecurityCommandCenterInput interface {
 	pulumi.Input
 
@@ -560,7 +560,7 @@ func (o ScanConfigRiskLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // ScanConfigRiskLevelInput is an input type that accepts ScanConfigRiskLevelArgs and ScanConfigRiskLevelOutput values.
 // You can construct a concrete instance of `ScanConfigRiskLevelInput` via:
 //
-//          ScanConfigRiskLevelArgs{...}
+//	ScanConfigRiskLevelArgs{...}
 type ScanConfigRiskLevelInput interface {
 	pulumi.Input
 
@@ -732,7 +732,7 @@ func (o ScanConfigTargetPlatformsItemPtrOutput) ToStringPtrOutputWithContext(ctx
 // ScanConfigTargetPlatformsItemInput is an input type that accepts ScanConfigTargetPlatformsItemArgs and ScanConfigTargetPlatformsItemOutput values.
 // You can construct a concrete instance of `ScanConfigTargetPlatformsItemInput` via:
 //
-//          ScanConfigTargetPlatformsItemArgs{...}
+//	ScanConfigTargetPlatformsItemArgs{...}
 type ScanConfigTargetPlatformsItemInput interface {
 	pulumi.Input
 
@@ -770,7 +770,7 @@ func (in *scanConfigTargetPlatformsItemPtr) ToScanConfigTargetPlatformsItemPtrOu
 // ScanConfigTargetPlatformsItemArrayInput is an input type that accepts ScanConfigTargetPlatformsItemArray and ScanConfigTargetPlatformsItemArrayOutput values.
 // You can construct a concrete instance of `ScanConfigTargetPlatformsItemArrayInput` via:
 //
-//          ScanConfigTargetPlatformsItemArray{ ScanConfigTargetPlatformsItemArgs{...} }
+//	ScanConfigTargetPlatformsItemArray{ ScanConfigTargetPlatformsItemArgs{...} }
 type ScanConfigTargetPlatformsItemArrayInput interface {
 	pulumi.Input
 
@@ -948,7 +948,7 @@ func (o ScanConfigUserAgentPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // ScanConfigUserAgentInput is an input type that accepts ScanConfigUserAgentArgs and ScanConfigUserAgentOutput values.
 // You can construct a concrete instance of `ScanConfigUserAgentInput` via:
 //
-//          ScanConfigUserAgentArgs{...}
+//	ScanConfigUserAgentArgs{...}
 type ScanConfigUserAgentInput interface {
 	pulumi.Input
 
@@ -1125,7 +1125,7 @@ func (o ScanRunErrorTraceCodePtrOutput) ToStringPtrOutputWithContext(ctx context
 // ScanRunErrorTraceCodeInput is an input type that accepts ScanRunErrorTraceCodeArgs and ScanRunErrorTraceCodeOutput values.
 // You can construct a concrete instance of `ScanRunErrorTraceCodeInput` via:
 //
-//          ScanRunErrorTraceCodeArgs{...}
+//	ScanRunErrorTraceCodeArgs{...}
 type ScanRunErrorTraceCodeInput interface {
 	pulumi.Input
 
@@ -1296,7 +1296,7 @@ func (o ScanRunExecutionStatePtrOutput) ToStringPtrOutputWithContext(ctx context
 // ScanRunExecutionStateInput is an input type that accepts ScanRunExecutionStateArgs and ScanRunExecutionStateOutput values.
 // You can construct a concrete instance of `ScanRunExecutionStateInput` via:
 //
-//          ScanRunExecutionStateArgs{...}
+//	ScanRunExecutionStateArgs{...}
 type ScanRunExecutionStateInput interface {
 	pulumi.Input
 
@@ -1467,7 +1467,7 @@ func (o ScanRunResultStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // ScanRunResultStateInput is an input type that accepts ScanRunResultStateArgs and ScanRunResultStateOutput values.
 // You can construct a concrete instance of `ScanRunResultStateInput` via:
 //
-//          ScanRunResultStateArgs{...}
+//	ScanRunResultStateArgs{...}
 type ScanRunResultStateInput interface {
 	pulumi.Input
 
@@ -1642,7 +1642,7 @@ func (o ScanRunWarningTraceCodePtrOutput) ToStringPtrOutputWithContext(ctx conte
 // ScanRunWarningTraceCodeInput is an input type that accepts ScanRunWarningTraceCodeArgs and ScanRunWarningTraceCodeOutput values.
 // You can construct a concrete instance of `ScanRunWarningTraceCodeInput` via:
 //
-//          ScanRunWarningTraceCodeArgs{...}
+//	ScanRunWarningTraceCodeArgs{...}
 type ScanRunWarningTraceCodeInput interface {
 	pulumi.Input
 

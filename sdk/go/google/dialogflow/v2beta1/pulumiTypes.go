@@ -19,7 +19,7 @@ type GoogleCloudDialogflowV2beta1AutomatedAgentConfig struct {
 // GoogleCloudDialogflowV2beta1AutomatedAgentConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs and GoogleCloudDialogflowV2beta1AutomatedAgentConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1AutomatedAgentConfigInput` via:
 //
-//          GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs{...}
+//	GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs{...}
 type GoogleCloudDialogflowV2beta1AutomatedAgentConfigInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs) ToGoogleCloudDialo
 // GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs, GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtr and GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs{...}
+//	        GoogleCloudDialogflowV2beta1AutomatedAgentConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1AutomatedAgentConfigPtrInput interface {
 	pulumi.Input
 
@@ -189,7 +189,7 @@ type GoogleCloudDialogflowV2beta1Context struct {
 // GoogleCloudDialogflowV2beta1ContextInput is an input type that accepts GoogleCloudDialogflowV2beta1ContextArgs and GoogleCloudDialogflowV2beta1ContextOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1ContextInput` via:
 //
-//          GoogleCloudDialogflowV2beta1ContextArgs{...}
+//	GoogleCloudDialogflowV2beta1ContextArgs{...}
 type GoogleCloudDialogflowV2beta1ContextInput interface {
 	pulumi.Input
 
@@ -222,7 +222,7 @@ func (i GoogleCloudDialogflowV2beta1ContextArgs) ToGoogleCloudDialogflowV2beta1C
 // GoogleCloudDialogflowV2beta1ContextArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1ContextArray and GoogleCloudDialogflowV2beta1ContextArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1ContextArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1ContextArray{ GoogleCloudDialogflowV2beta1ContextArgs{...} }
+//	GoogleCloudDialogflowV2beta1ContextArray{ GoogleCloudDialogflowV2beta1ContextArgs{...} }
 type GoogleCloudDialogflowV2beta1ContextArrayInput interface {
 	pulumi.Input
 
@@ -426,7 +426,7 @@ type GoogleCloudDialogflowV2beta1EntityTypeEntity struct {
 // GoogleCloudDialogflowV2beta1EntityTypeEntityInput is an input type that accepts GoogleCloudDialogflowV2beta1EntityTypeEntityArgs and GoogleCloudDialogflowV2beta1EntityTypeEntityOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1EntityTypeEntityInput` via:
 //
-//          GoogleCloudDialogflowV2beta1EntityTypeEntityArgs{...}
+//	GoogleCloudDialogflowV2beta1EntityTypeEntityArgs{...}
 type GoogleCloudDialogflowV2beta1EntityTypeEntityInput interface {
 	pulumi.Input
 
@@ -457,7 +457,7 @@ func (i GoogleCloudDialogflowV2beta1EntityTypeEntityArgs) ToGoogleCloudDialogflo
 // GoogleCloudDialogflowV2beta1EntityTypeEntityArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1EntityTypeEntityArray and GoogleCloudDialogflowV2beta1EntityTypeEntityArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1EntityTypeEntityArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1EntityTypeEntityArray{ GoogleCloudDialogflowV2beta1EntityTypeEntityArgs{...} }
+//	GoogleCloudDialogflowV2beta1EntityTypeEntityArray{ GoogleCloudDialogflowV2beta1EntityTypeEntityArgs{...} }
 type GoogleCloudDialogflowV2beta1EntityTypeEntityArrayInput interface {
 	pulumi.Input
 
@@ -594,7 +594,7 @@ type GoogleCloudDialogflowV2beta1Fulfillment struct {
 // GoogleCloudDialogflowV2beta1FulfillmentInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentArgs and GoogleCloudDialogflowV2beta1FulfillmentOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentInput` via:
 //
-//          GoogleCloudDialogflowV2beta1FulfillmentArgs{...}
+//	GoogleCloudDialogflowV2beta1FulfillmentArgs{...}
 type GoogleCloudDialogflowV2beta1FulfillmentInput interface {
 	pulumi.Input
 
@@ -639,11 +639,11 @@ func (i GoogleCloudDialogflowV2beta1FulfillmentArgs) ToGoogleCloudDialogflowV2be
 // GoogleCloudDialogflowV2beta1FulfillmentPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentArgs, GoogleCloudDialogflowV2beta1FulfillmentPtr and GoogleCloudDialogflowV2beta1FulfillmentPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1FulfillmentArgs{...}
+//	        GoogleCloudDialogflowV2beta1FulfillmentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1FulfillmentPtrInput interface {
 	pulumi.Input
 
@@ -806,7 +806,7 @@ type GoogleCloudDialogflowV2beta1FulfillmentFeature struct {
 // GoogleCloudDialogflowV2beta1FulfillmentFeatureInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs and GoogleCloudDialogflowV2beta1FulfillmentFeatureOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentFeatureInput` via:
 //
-//          GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs{...}
+//	GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs{...}
 type GoogleCloudDialogflowV2beta1FulfillmentFeatureInput interface {
 	pulumi.Input
 
@@ -835,7 +835,7 @@ func (i GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs) ToGoogleCloudDialogf
 // GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentFeatureArray and GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1FulfillmentFeatureArray{ GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs{...} }
+//	GoogleCloudDialogflowV2beta1FulfillmentFeatureArray{ GoogleCloudDialogflowV2beta1FulfillmentFeatureArgs{...} }
 type GoogleCloudDialogflowV2beta1FulfillmentFeatureArrayInput interface {
 	pulumi.Input
 
@@ -962,7 +962,7 @@ type GoogleCloudDialogflowV2beta1FulfillmentGenericWebService struct {
 // GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs and GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceInput` via:
 //
-//          GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs{...}
+//	GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs{...}
 type GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceInput interface {
 	pulumi.Input
 
@@ -1007,11 +1007,11 @@ func (i GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs) ToGoogleCl
 // GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrInput is an input type that accepts GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs, GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtr and GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs{...}
+//	        GoogleCloudDialogflowV2beta1FulfillmentGenericWebServiceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1FulfillmentGenericWebServicePtrInput interface {
 	pulumi.Input
 
@@ -1294,7 +1294,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfig struct {
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigInput interface {
 	pulumi.Input
 
@@ -1337,11 +1337,11 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs) ToGoogleCloud
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs{...}
+//	        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigPtrInput interface {
 	pulumi.Input
 
@@ -1493,7 +1493,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfi
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigInput interface {
 	pulumi.Input
 
@@ -1530,11 +1530,11 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelCo
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs{...}
+//	        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationModelConfigPtrInput interface {
 	pulumi.Input
 
@@ -1663,7 +1663,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessCon
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigInput interface {
 	pulumi.Input
 
@@ -1700,11 +1700,11 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcess
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigArgs{...}
+//	        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigConversationProcessConfigPtrInput interface {
 	pulumi.Input
 
@@ -1835,7 +1835,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfig 
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigInput interface {
 	pulumi.Input
 
@@ -1874,11 +1874,11 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConf
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs{...}
+//	        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigMessageAnalysisConfigPtrInput interface {
 	pulumi.Input
 
@@ -2090,7 +2090,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfig struc
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigInput interface {
 	pulumi.Input
 
@@ -2129,11 +2129,11 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArg
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs{...}
+//	        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionConfigPtrInput interface {
 	pulumi.Input
 
@@ -2298,7 +2298,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfi
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigInput interface {
 	pulumi.Input
 
@@ -2337,7 +2337,7 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureCo
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArray and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArray{ GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs{...} }
+//	GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArray{ GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArgs{...} }
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionFeatureConfigArrayInput interface {
 	pulumi.Input
 
@@ -2548,7 +2548,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfig 
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigInput interface {
 	pulumi.Input
 
@@ -2595,11 +2595,11 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConf
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs{...}
+//	        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigPtrInput interface {
 	pulumi.Input
 
@@ -2789,7 +2789,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigC
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsInput interface {
 	pulumi.Input
 
@@ -2830,11 +2830,11 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConf
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs{...}
+//	        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigContextFilterSettingsPtrInput interface {
 	pulumi.Input
 
@@ -3015,7 +3015,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigD
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceInput interface {
 	pulumi.Input
 
@@ -3052,11 +3052,11 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConf
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs{...}
+//	        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDialogflowQuerySourcePtrInput interface {
 	pulumi.Input
 
@@ -3185,7 +3185,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigD
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceInput interface {
 	pulumi.Input
 
@@ -3222,11 +3222,11 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConf
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs{...}
+//	        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigDocumentQuerySourcePtrInput interface {
 	pulumi.Input
 
@@ -3355,7 +3355,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigK
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceInput interface {
 	pulumi.Input
 
@@ -3392,11 +3392,11 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConf
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs{...}
+//	        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionQueryConfigKnowledgeBaseQuerySourcePtrInput interface {
 	pulumi.Input
 
@@ -3600,7 +3600,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSetti
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsInput interface {
 	pulumi.Input
 
@@ -3639,11 +3639,11 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSe
 // GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs, GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtr and GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs{...}
+//	        GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1HumanAgentAssistantConfigSuggestionTriggerSettingsPtrInput interface {
 	pulumi.Input
 
@@ -3800,7 +3800,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentHandoffConfig struct {
 // GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigInput interface {
 	pulumi.Input
 
@@ -3839,11 +3839,11 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs) ToGoogleCloudDi
 // GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs, GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigPtr and GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs{...}
+//	        GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigPtrInput interface {
 	pulumi.Input
 
@@ -3961,7 +3961,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfig struct 
 // GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigInput interface {
 	pulumi.Input
 
@@ -3998,11 +3998,11 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs)
 // GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs, GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigPtr and GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs{...}
+//	        GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigLivePersonConfigPtrInput interface {
 	pulumi.Input
 
@@ -4174,7 +4174,7 @@ type GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfi
 // GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs and GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs{...}
+//	GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs{...}
 type GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigInput interface {
 	pulumi.Input
 
@@ -4217,11 +4217,11 @@ func (i GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentCo
 // GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs, GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigPtr and GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs{...}
+//	        GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1HumanAgentHandoffConfigSalesforceLiveAgentConfigPtrInput interface {
 	pulumi.Input
 
@@ -4525,7 +4525,7 @@ type GoogleCloudDialogflowV2beta1IntentMessage struct {
 // GoogleCloudDialogflowV2beta1IntentMessageInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageArgs and GoogleCloudDialogflowV2beta1IntentMessageOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageInput interface {
 	pulumi.Input
 
@@ -4594,7 +4594,7 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageArgs) ToGoogleCloudDialogflowV2
 // GoogleCloudDialogflowV2beta1IntentMessageArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageArray and GoogleCloudDialogflowV2beta1IntentMessageArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageArray{ GoogleCloudDialogflowV2beta1IntentMessageArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentMessageArray{ GoogleCloudDialogflowV2beta1IntentMessageArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentMessageArrayInput interface {
 	pulumi.Input
 
@@ -4813,7 +4813,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageBasicCard struct {
 // GoogleCloudDialogflowV2beta1IntentMessageBasicCardInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageBasicCardArgs and GoogleCloudDialogflowV2beta1IntentMessageBasicCardOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageBasicCardInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageBasicCardArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageBasicCardArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageBasicCardInput interface {
 	pulumi.Input
 
@@ -4858,11 +4858,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageBasicCardArgs) ToGoogleCloudDia
 // GoogleCloudDialogflowV2beta1IntentMessageBasicCardPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageBasicCardArgs, GoogleCloudDialogflowV2beta1IntentMessageBasicCardPtr and GoogleCloudDialogflowV2beta1IntentMessageBasicCardPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageBasicCardPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageBasicCardArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageBasicCardArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageBasicCardPtrInput interface {
 	pulumi.Input
 
@@ -5027,7 +5027,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageBasicCardButton struct {
 // GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonArgs and GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonInput interface {
 	pulumi.Input
 
@@ -5058,7 +5058,7 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonArgs) ToGoogleCl
 // GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonArray and GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonArray{ GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonArray{ GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonArrayInput interface {
 	pulumi.Input
 
@@ -5136,7 +5136,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriAction struc
 // GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionArgs and GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageBasicCardButtonOpenUriActionInput interface {
 	pulumi.Input
 
@@ -5334,7 +5334,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCard struct {
 // GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardArgs and GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardInput interface {
 	pulumi.Input
 
@@ -5373,11 +5373,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardArgs) ToGoogl
 // GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardArgs, GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardPtr and GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardPtrInput interface {
 	pulumi.Input
 
@@ -5503,7 +5503,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCa
 // GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs and GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemInput interface {
 	pulumi.Input
 
@@ -5540,7 +5540,7 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouse
 // GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArray and GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArray{ GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArray{ GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemArrayInput interface {
 	pulumi.Input
 
@@ -5643,7 +5643,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCa
 // GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs and GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageBrowseCarouselCardBrowseCarouselCardItemOpenUrlActionInput interface {
 	pulumi.Input
 
@@ -5873,7 +5873,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageCard struct {
 // GoogleCloudDialogflowV2beta1IntentMessageCardInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageCardArgs and GoogleCloudDialogflowV2beta1IntentMessageCardOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageCardInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageCardArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageCardArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageCardInput interface {
 	pulumi.Input
 
@@ -5916,11 +5916,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageCardArgs) ToGoogleCloudDialogfl
 // GoogleCloudDialogflowV2beta1IntentMessageCardPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageCardArgs, GoogleCloudDialogflowV2beta1IntentMessageCardPtr and GoogleCloudDialogflowV2beta1IntentMessageCardPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageCardPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageCardArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageCardArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageCardPtrInput interface {
 	pulumi.Input
 
@@ -6068,7 +6068,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageCardButton struct {
 // GoogleCloudDialogflowV2beta1IntentMessageCardButtonInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageCardButtonArgs and GoogleCloudDialogflowV2beta1IntentMessageCardButtonOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageCardButtonInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageCardButtonArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageCardButtonArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageCardButtonInput interface {
 	pulumi.Input
 
@@ -6099,7 +6099,7 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageCardButtonArgs) ToGoogleCloudDi
 // GoogleCloudDialogflowV2beta1IntentMessageCardButtonArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageCardButtonArray and GoogleCloudDialogflowV2beta1IntentMessageCardButtonArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageCardButtonArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageCardButtonArray{ GoogleCloudDialogflowV2beta1IntentMessageCardButtonArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentMessageCardButtonArray{ GoogleCloudDialogflowV2beta1IntentMessageCardButtonArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentMessageCardButtonArrayInput interface {
 	pulumi.Input
 
@@ -6277,7 +6277,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageCarouselSelect struct {
 // GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectArgs and GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectInput interface {
 	pulumi.Input
 
@@ -6314,11 +6314,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectArgs) ToGoogleClo
 // GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectArgs, GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectPtr and GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectPtrInput interface {
 	pulumi.Input
 
@@ -6425,7 +6425,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItem struct {
 // GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArgs and GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemInput interface {
 	pulumi.Input
 
@@ -6460,7 +6460,7 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArgs) ToGoogl
 // GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArray and GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArray{ GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArray{ GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentMessageCarouselSelectItemArrayInput interface {
 	pulumi.Input
 
@@ -6653,7 +6653,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageColumnProperties struct {
 // GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs and GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesInput interface {
 	pulumi.Input
 
@@ -6684,7 +6684,7 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs) ToGoogleC
 // GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArray and GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArray{ GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArray{ GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentMessageColumnPropertiesArrayInput interface {
 	pulumi.Input
 
@@ -6819,7 +6819,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageImage struct {
 // GoogleCloudDialogflowV2beta1IntentMessageImageInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageImageArgs and GoogleCloudDialogflowV2beta1IntentMessageImageOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageImageInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageImageArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageImageArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageImageInput interface {
 	pulumi.Input
 
@@ -6858,11 +6858,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageImageArgs) ToGoogleCloudDialogf
 // GoogleCloudDialogflowV2beta1IntentMessageImagePtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageImageArgs, GoogleCloudDialogflowV2beta1IntentMessageImagePtr and GoogleCloudDialogflowV2beta1IntentMessageImagePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageImagePtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageImageArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageImageArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageImagePtrInput interface {
 	pulumi.Input
 
@@ -7011,7 +7011,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestion struct {
 // GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionArgs and GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionInput interface {
 	pulumi.Input
 
@@ -7050,11 +7050,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionArgs) ToGoogle
 // GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionArgs, GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionPtr and GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageLinkOutSuggestionPtrInput interface {
 	pulumi.Input
 
@@ -7207,7 +7207,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageListSelect struct {
 // GoogleCloudDialogflowV2beta1IntentMessageListSelectInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs and GoogleCloudDialogflowV2beta1IntentMessageListSelectOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageListSelectInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageListSelectInput interface {
 	pulumi.Input
 
@@ -7248,11 +7248,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs) ToGoogleCloudDi
 // GoogleCloudDialogflowV2beta1IntentMessageListSelectPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs, GoogleCloudDialogflowV2beta1IntentMessageListSelectPtr and GoogleCloudDialogflowV2beta1IntentMessageListSelectPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageListSelectPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageListSelectArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageListSelectPtrInput interface {
 	pulumi.Input
 
@@ -7389,7 +7389,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageListSelectItem struct {
 // GoogleCloudDialogflowV2beta1IntentMessageListSelectItemInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArgs and GoogleCloudDialogflowV2beta1IntentMessageListSelectItemOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageListSelectItemInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageListSelectItemInput interface {
 	pulumi.Input
 
@@ -7424,7 +7424,7 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArgs) ToGoogleClo
 // GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArray and GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArray{ GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArray{ GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentMessageListSelectItemArrayInput interface {
 	pulumi.Input
 
@@ -7629,7 +7629,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageMediaContent struct {
 // GoogleCloudDialogflowV2beta1IntentMessageMediaContentInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs and GoogleCloudDialogflowV2beta1IntentMessageMediaContentOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageMediaContentInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageMediaContentInput interface {
 	pulumi.Input
 
@@ -7668,11 +7668,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs) ToGoogleCloud
 // GoogleCloudDialogflowV2beta1IntentMessageMediaContentPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs, GoogleCloudDialogflowV2beta1IntentMessageMediaContentPtr and GoogleCloudDialogflowV2beta1IntentMessageMediaContentPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageMediaContentPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageMediaContentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageMediaContentPtrInput interface {
 	pulumi.Input
 
@@ -7833,7 +7833,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject st
 // GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs and GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectInput interface {
 	pulumi.Input
 
@@ -7870,7 +7870,7 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObject
 // GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArray and GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArray{ GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArray{ GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentMessageMediaContentResponseMediaObjectArrayInput interface {
 	pulumi.Input
 
@@ -8055,7 +8055,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageQuickReplies struct {
 // GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesArgs and GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesInput interface {
 	pulumi.Input
 
@@ -8094,11 +8094,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesArgs) ToGoogleCloud
 // GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesArgs, GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesPtr and GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageQuickRepliesPtrInput interface {
 	pulumi.Input
 
@@ -8251,7 +8251,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageRbmCardContent struct {
 // GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentInput interface {
 	pulumi.Input
 
@@ -8294,11 +8294,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs) ToGoogleClo
 // GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs, GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentPtr and GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentPtrInput interface {
 	pulumi.Input
 
@@ -8327,7 +8327,7 @@ func (i *googleCloudDialogflowV2beta1IntentMessageRbmCardContentPtrType) ToGoogl
 // GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArray and GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArray{ GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArray{ GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentArrayInput interface {
 	pulumi.Input
 
@@ -8495,7 +8495,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMedia struct {
 // GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaInput interface {
 	pulumi.Input
 
@@ -8536,11 +8536,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs) ToG
 // GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs, GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaPtr and GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageRbmCardContentRbmMediaPtrInput interface {
 	pulumi.Input
 
@@ -8790,7 +8790,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCard struct {
 // GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardInput interface {
 	pulumi.Input
 
@@ -8829,11 +8829,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs) ToGoogleCl
 // GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs, GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardPtr and GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageRbmCarouselCardPtrInput interface {
 	pulumi.Input
 
@@ -8990,7 +8990,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCard struct {
 // GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardInput interface {
 	pulumi.Input
 
@@ -9031,11 +9031,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs) ToGoogle
 // GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs, GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardPtr and GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageRbmStandaloneCardPtrInput interface {
 	pulumi.Input
 
@@ -9224,7 +9224,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedAction struct {
 // GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionInput interface {
 	pulumi.Input
 
@@ -9269,11 +9269,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionArgs) ToGoogl
 // GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionArgs, GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionPtr and GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionPtrInput interface {
 	pulumi.Input
 
@@ -9438,7 +9438,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActi
 // GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialInput interface {
 	pulumi.Input
 
@@ -9475,11 +9475,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedA
 // GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialArgs, GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialPtr and GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionDialPtrInput interface {
 	pulumi.Input
 
@@ -9608,7 +9608,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActi
 // GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriInput interface {
 	pulumi.Input
 
@@ -9645,11 +9645,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedA
 // GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriArgs, GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriPtr and GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionOpenUriPtrInput interface {
 	pulumi.Input
 
@@ -9776,7 +9776,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActi
 // GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationInput interface {
 	pulumi.Input
 
@@ -9811,11 +9811,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedA
 // GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationArgs, GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationPtr and GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedActionRbmSuggestedActionShareLocationPtrInput interface {
 	pulumi.Input
 
@@ -9982,7 +9982,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReply struct {
 // GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyInput interface {
 	pulumi.Input
 
@@ -10021,11 +10021,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyArgs) ToGoogle
 // GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyArgs, GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyPtr and GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestedReplyPtrInput interface {
 	pulumi.Input
 
@@ -10176,7 +10176,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestion struct {
 // GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionInput interface {
 	pulumi.Input
 
@@ -10207,7 +10207,7 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArgs) ToGoogleClou
 // GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArray and GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArray{ GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArray{ GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentMessageRbmSuggestionArrayInput interface {
 	pulumi.Input
 
@@ -10346,7 +10346,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageRbmText struct {
 // GoogleCloudDialogflowV2beta1IntentMessageRbmTextInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmTextArgs and GoogleCloudDialogflowV2beta1IntentMessageRbmTextOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmTextInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmTextArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageRbmTextArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageRbmTextInput interface {
 	pulumi.Input
 
@@ -10385,11 +10385,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageRbmTextArgs) ToGoogleCloudDialo
 // GoogleCloudDialogflowV2beta1IntentMessageRbmTextPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageRbmTextArgs, GoogleCloudDialogflowV2beta1IntentMessageRbmTextPtr and GoogleCloudDialogflowV2beta1IntentMessageRbmTextPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageRbmTextPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageRbmTextArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageRbmTextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageRbmTextPtrInput interface {
 	pulumi.Input
 
@@ -10766,7 +10766,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfo struct {
 // GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs and GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageSelectItemInfoInput interface {
 	pulumi.Input
 
@@ -10865,7 +10865,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageSimpleResponse struct {
 // GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArgs and GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseInput interface {
 	pulumi.Input
 
@@ -10898,7 +10898,7 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArgs) ToGoogleClo
 // GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArray and GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArray{ GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArray{ GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentMessageSimpleResponseArrayInput interface {
 	pulumi.Input
 
@@ -11039,7 +11039,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageSimpleResponses struct {
 // GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesArgs and GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesInput interface {
 	pulumi.Input
 
@@ -11076,11 +11076,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesArgs) ToGoogleCl
 // GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesArgs, GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesPtr and GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageSimpleResponsesPtrInput interface {
 	pulumi.Input
 
@@ -11209,7 +11209,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageSuggestion struct {
 // GoogleCloudDialogflowV2beta1IntentMessageSuggestionInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs and GoogleCloudDialogflowV2beta1IntentMessageSuggestionOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageSuggestionInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageSuggestionInput interface {
 	pulumi.Input
 
@@ -11238,7 +11238,7 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs) ToGoogleCloudDi
 // GoogleCloudDialogflowV2beta1IntentMessageSuggestionArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageSuggestionArray and GoogleCloudDialogflowV2beta1IntentMessageSuggestionArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageSuggestionArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageSuggestionArray{ GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentMessageSuggestionArray{ GoogleCloudDialogflowV2beta1IntentMessageSuggestionArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentMessageSuggestionArrayInput interface {
 	pulumi.Input
 
@@ -11355,7 +11355,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageSuggestions struct {
 // GoogleCloudDialogflowV2beta1IntentMessageSuggestionsInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageSuggestionsArgs and GoogleCloudDialogflowV2beta1IntentMessageSuggestionsOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageSuggestionsInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageSuggestionsArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageSuggestionsArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageSuggestionsInput interface {
 	pulumi.Input
 
@@ -11392,11 +11392,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageSuggestionsArgs) ToGoogleCloudD
 // GoogleCloudDialogflowV2beta1IntentMessageSuggestionsPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageSuggestionsArgs, GoogleCloudDialogflowV2beta1IntentMessageSuggestionsPtr and GoogleCloudDialogflowV2beta1IntentMessageSuggestionsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageSuggestionsPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageSuggestionsArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageSuggestionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageSuggestionsPtrInput interface {
 	pulumi.Input
 
@@ -11535,7 +11535,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageTableCard struct {
 // GoogleCloudDialogflowV2beta1IntentMessageTableCardInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageTableCardArgs and GoogleCloudDialogflowV2beta1IntentMessageTableCardOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageTableCardInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageTableCardArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageTableCardArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageTableCardInput interface {
 	pulumi.Input
 
@@ -11582,11 +11582,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageTableCardArgs) ToGoogleCloudDia
 // GoogleCloudDialogflowV2beta1IntentMessageTableCardPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageTableCardArgs, GoogleCloudDialogflowV2beta1IntentMessageTableCardPtr and GoogleCloudDialogflowV2beta1IntentMessageTableCardPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageTableCardPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageTableCardArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageTableCardArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageTableCardPtrInput interface {
 	pulumi.Input
 
@@ -11768,7 +11768,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageTableCardCell struct {
 // GoogleCloudDialogflowV2beta1IntentMessageTableCardCellInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArgs and GoogleCloudDialogflowV2beta1IntentMessageTableCardCellOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageTableCardCellInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageTableCardCellInput interface {
 	pulumi.Input
 
@@ -11797,7 +11797,7 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArgs) ToGoogleClou
 // GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArray and GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArray{ GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArray{ GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentMessageTableCardCellArrayInput interface {
 	pulumi.Input
 
@@ -11985,7 +11985,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageTableCardRow struct {
 // GoogleCloudDialogflowV2beta1IntentMessageTableCardRowInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageTableCardRowArgs and GoogleCloudDialogflowV2beta1IntentMessageTableCardRowOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageTableCardRowInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageTableCardRowArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageTableCardRowArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageTableCardRowInput interface {
 	pulumi.Input
 
@@ -12016,7 +12016,7 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageTableCardRowArgs) ToGoogleCloud
 // GoogleCloudDialogflowV2beta1IntentMessageTableCardRowArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageTableCardRowArray and GoogleCloudDialogflowV2beta1IntentMessageTableCardRowArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageTableCardRowArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageTableCardRowArray{ GoogleCloudDialogflowV2beta1IntentMessageTableCardRowArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentMessageTableCardRowArray{ GoogleCloudDialogflowV2beta1IntentMessageTableCardRowArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentMessageTableCardRowArrayInput interface {
 	pulumi.Input
 
@@ -12149,7 +12149,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudio struct {
 // GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioArgs and GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioInput interface {
 	pulumi.Input
 
@@ -12186,11 +12186,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioArgs) ToGoogl
 // GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioArgs, GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioPtr and GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageTelephonyPlayAudioPtrInput interface {
 	pulumi.Input
 
@@ -12317,7 +12317,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeech struct {
 // GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechArgs and GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechInput interface {
 	pulumi.Input
 
@@ -12356,11 +12356,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechArgs) 
 // GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechArgs, GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechPtr and GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageTelephonySynthesizeSpeechPtrInput interface {
 	pulumi.Input
 
@@ -12511,7 +12511,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCall struct {
 // GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs and GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallInput interface {
 	pulumi.Input
 
@@ -12548,11 +12548,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs) ToGo
 // GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs, GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallPtr and GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageTelephonyTransferCallPtrInput interface {
 	pulumi.Input
 
@@ -12679,7 +12679,7 @@ type GoogleCloudDialogflowV2beta1IntentMessageText struct {
 // GoogleCloudDialogflowV2beta1IntentMessageTextInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageTextArgs and GoogleCloudDialogflowV2beta1IntentMessageTextOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageTextInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageTextArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentMessageTextArgs{...}
 type GoogleCloudDialogflowV2beta1IntentMessageTextInput interface {
 	pulumi.Input
 
@@ -12716,11 +12716,11 @@ func (i GoogleCloudDialogflowV2beta1IntentMessageTextArgs) ToGoogleCloudDialogfl
 // GoogleCloudDialogflowV2beta1IntentMessageTextPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentMessageTextArgs, GoogleCloudDialogflowV2beta1IntentMessageTextPtr and GoogleCloudDialogflowV2beta1IntentMessageTextPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentMessageTextPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentMessageTextArgs{...}
+//	        GoogleCloudDialogflowV2beta1IntentMessageTextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1IntentMessageTextPtrInput interface {
 	pulumi.Input
 
@@ -12859,7 +12859,7 @@ type GoogleCloudDialogflowV2beta1IntentParameter struct {
 // GoogleCloudDialogflowV2beta1IntentParameterInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentParameterArgs and GoogleCloudDialogflowV2beta1IntentParameterOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentParameterInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentParameterArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentParameterArgs{...}
 type GoogleCloudDialogflowV2beta1IntentParameterInput interface {
 	pulumi.Input
 
@@ -12902,7 +12902,7 @@ func (i GoogleCloudDialogflowV2beta1IntentParameterArgs) ToGoogleCloudDialogflow
 // GoogleCloudDialogflowV2beta1IntentParameterArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentParameterArray and GoogleCloudDialogflowV2beta1IntentParameterArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentParameterArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentParameterArray{ GoogleCloudDialogflowV2beta1IntentParameterArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentParameterArray{ GoogleCloudDialogflowV2beta1IntentParameterArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentParameterArrayInput interface {
 	pulumi.Input
 
@@ -13107,7 +13107,7 @@ type GoogleCloudDialogflowV2beta1IntentTrainingPhrase struct {
 // GoogleCloudDialogflowV2beta1IntentTrainingPhraseInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs and GoogleCloudDialogflowV2beta1IntentTrainingPhraseOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentTrainingPhraseInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs{...}
 type GoogleCloudDialogflowV2beta1IntentTrainingPhraseInput interface {
 	pulumi.Input
 
@@ -13140,7 +13140,7 @@ func (i GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs) ToGoogleCloudDialo
 // GoogleCloudDialogflowV2beta1IntentTrainingPhraseArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentTrainingPhraseArray and GoogleCloudDialogflowV2beta1IntentTrainingPhraseArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentTrainingPhraseArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentTrainingPhraseArray{ GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentTrainingPhraseArray{ GoogleCloudDialogflowV2beta1IntentTrainingPhraseArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentTrainingPhraseArrayInput interface {
 	pulumi.Input
 
@@ -13231,7 +13231,7 @@ type GoogleCloudDialogflowV2beta1IntentTrainingPhrasePart struct {
 // GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs and GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs{...}
+//	GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs{...}
 type GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartInput interface {
 	pulumi.Input
 
@@ -13266,7 +13266,7 @@ func (i GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs) ToGoogleCloudD
 // GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArrayInput is an input type that accepts GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArray and GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArrayInput` via:
 //
-//          GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArray{ GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs{...} }
+//	GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArray{ GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArgs{...} }
 type GoogleCloudDialogflowV2beta1IntentTrainingPhrasePartArrayInput interface {
 	pulumi.Input
 
@@ -13488,7 +13488,7 @@ type GoogleCloudDialogflowV2beta1LoggingConfig struct {
 // GoogleCloudDialogflowV2beta1LoggingConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1LoggingConfigArgs and GoogleCloudDialogflowV2beta1LoggingConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1LoggingConfigInput` via:
 //
-//          GoogleCloudDialogflowV2beta1LoggingConfigArgs{...}
+//	GoogleCloudDialogflowV2beta1LoggingConfigArgs{...}
 type GoogleCloudDialogflowV2beta1LoggingConfigInput interface {
 	pulumi.Input
 
@@ -13525,11 +13525,11 @@ func (i GoogleCloudDialogflowV2beta1LoggingConfigArgs) ToGoogleCloudDialogflowV2
 // GoogleCloudDialogflowV2beta1LoggingConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1LoggingConfigArgs, GoogleCloudDialogflowV2beta1LoggingConfigPtr and GoogleCloudDialogflowV2beta1LoggingConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1LoggingConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1LoggingConfigArgs{...}
+//	        GoogleCloudDialogflowV2beta1LoggingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1LoggingConfigPtrInput interface {
 	pulumi.Input
 
@@ -13656,7 +13656,7 @@ type GoogleCloudDialogflowV2beta1NotificationConfig struct {
 // GoogleCloudDialogflowV2beta1NotificationConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1NotificationConfigArgs and GoogleCloudDialogflowV2beta1NotificationConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1NotificationConfigInput` via:
 //
-//          GoogleCloudDialogflowV2beta1NotificationConfigArgs{...}
+//	GoogleCloudDialogflowV2beta1NotificationConfigArgs{...}
 type GoogleCloudDialogflowV2beta1NotificationConfigInput interface {
 	pulumi.Input
 
@@ -13695,11 +13695,11 @@ func (i GoogleCloudDialogflowV2beta1NotificationConfigArgs) ToGoogleCloudDialogf
 // GoogleCloudDialogflowV2beta1NotificationConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1NotificationConfigArgs, GoogleCloudDialogflowV2beta1NotificationConfigPtr and GoogleCloudDialogflowV2beta1NotificationConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1NotificationConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1NotificationConfigArgs{...}
+//	        GoogleCloudDialogflowV2beta1NotificationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1NotificationConfigPtrInput interface {
 	pulumi.Input
 
@@ -13848,7 +13848,7 @@ type GoogleCloudDialogflowV2beta1SpeechToTextConfig struct {
 // GoogleCloudDialogflowV2beta1SpeechToTextConfigInput is an input type that accepts GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs and GoogleCloudDialogflowV2beta1SpeechToTextConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1SpeechToTextConfigInput` via:
 //
-//          GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs{...}
+//	GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs{...}
 type GoogleCloudDialogflowV2beta1SpeechToTextConfigInput interface {
 	pulumi.Input
 
@@ -13885,11 +13885,11 @@ func (i GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs) ToGoogleCloudDialogf
 // GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs, GoogleCloudDialogflowV2beta1SpeechToTextConfigPtr and GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs{...}
+//	        GoogleCloudDialogflowV2beta1SpeechToTextConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1SpeechToTextConfigPtrInput interface {
 	pulumi.Input
 
@@ -14016,7 +14016,7 @@ type GoogleCloudDialogflowV2beta1SuggestionFeature struct {
 // GoogleCloudDialogflowV2beta1SuggestionFeatureInput is an input type that accepts GoogleCloudDialogflowV2beta1SuggestionFeatureArgs and GoogleCloudDialogflowV2beta1SuggestionFeatureOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1SuggestionFeatureInput` via:
 //
-//          GoogleCloudDialogflowV2beta1SuggestionFeatureArgs{...}
+//	GoogleCloudDialogflowV2beta1SuggestionFeatureArgs{...}
 type GoogleCloudDialogflowV2beta1SuggestionFeatureInput interface {
 	pulumi.Input
 
@@ -14053,11 +14053,11 @@ func (i GoogleCloudDialogflowV2beta1SuggestionFeatureArgs) ToGoogleCloudDialogfl
 // GoogleCloudDialogflowV2beta1SuggestionFeaturePtrInput is an input type that accepts GoogleCloudDialogflowV2beta1SuggestionFeatureArgs, GoogleCloudDialogflowV2beta1SuggestionFeaturePtr and GoogleCloudDialogflowV2beta1SuggestionFeaturePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1SuggestionFeaturePtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1SuggestionFeatureArgs{...}
+//	        GoogleCloudDialogflowV2beta1SuggestionFeatureArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1SuggestionFeaturePtrInput interface {
 	pulumi.Input
 
@@ -14190,7 +14190,7 @@ type GoogleCloudDialogflowV2beta1TextToSpeechSettings struct {
 // GoogleCloudDialogflowV2beta1TextToSpeechSettingsInput is an input type that accepts GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs and GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1TextToSpeechSettingsInput` via:
 //
-//          GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs{...}
+//	GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs{...}
 type GoogleCloudDialogflowV2beta1TextToSpeechSettingsInput interface {
 	pulumi.Input
 
@@ -14233,11 +14233,11 @@ func (i GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs) ToGoogleCloudDialo
 // GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrInput is an input type that accepts GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs, GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtr and GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrInput` via:
 //
-//          GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs{...}
+//	        GoogleCloudDialogflowV2beta1TextToSpeechSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDialogflowV2beta1TextToSpeechSettingsPtrInput interface {
 	pulumi.Input
 

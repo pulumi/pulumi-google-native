@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o EventTriggerRetryPolicyPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // EventTriggerRetryPolicyInput is an input type that accepts EventTriggerRetryPolicyArgs and EventTriggerRetryPolicyOutput values.
 // You can construct a concrete instance of `EventTriggerRetryPolicyInput` via:
 //
-//          EventTriggerRetryPolicyArgs{...}
+//	EventTriggerRetryPolicyArgs{...}
 type EventTriggerRetryPolicyInput interface {
 	pulumi.Input
 
@@ -484,7 +484,7 @@ func (o FunctionEnvironmentPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // FunctionEnvironmentInput is an input type that accepts FunctionEnvironmentArgs and FunctionEnvironmentOutput values.
 // You can construct a concrete instance of `FunctionEnvironmentInput` via:
 //
-//          FunctionEnvironmentArgs{...}
+//	FunctionEnvironmentArgs{...}
 type FunctionEnvironmentInput interface {
 	pulumi.Input
 
@@ -655,7 +655,7 @@ func (o ServiceConfigIngressSettingsPtrOutput) ToStringPtrOutputWithContext(ctx 
 // ServiceConfigIngressSettingsInput is an input type that accepts ServiceConfigIngressSettingsArgs and ServiceConfigIngressSettingsOutput values.
 // You can construct a concrete instance of `ServiceConfigIngressSettingsInput` via:
 //
-//          ServiceConfigIngressSettingsArgs{...}
+//	ServiceConfigIngressSettingsArgs{...}
 type ServiceConfigIngressSettingsInput interface {
 	pulumi.Input
 
@@ -824,7 +824,7 @@ func (o ServiceConfigVpcConnectorEgressSettingsPtrOutput) ToStringPtrOutputWithC
 // ServiceConfigVpcConnectorEgressSettingsInput is an input type that accepts ServiceConfigVpcConnectorEgressSettingsArgs and ServiceConfigVpcConnectorEgressSettingsOutput values.
 // You can construct a concrete instance of `ServiceConfigVpcConnectorEgressSettingsInput` via:
 //
-//          ServiceConfigVpcConnectorEgressSettingsArgs{...}
+//	ServiceConfigVpcConnectorEgressSettingsArgs{...}
 type ServiceConfigVpcConnectorEgressSettingsInput interface {
 	pulumi.Input
 

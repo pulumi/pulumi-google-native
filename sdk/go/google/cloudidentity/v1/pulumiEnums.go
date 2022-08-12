@@ -142,7 +142,7 @@ func (o DynamicGroupQueryResourceTypePtrOutput) ToStringPtrOutputWithContext(ctx
 // DynamicGroupQueryResourceTypeInput is an input type that accepts DynamicGroupQueryResourceTypeArgs and DynamicGroupQueryResourceTypeOutput values.
 // You can construct a concrete instance of `DynamicGroupQueryResourceTypeInput` via:
 //
-//          DynamicGroupQueryResourceTypeArgs{...}
+//	DynamicGroupQueryResourceTypeArgs{...}
 type DynamicGroupQueryResourceTypeInput interface {
 	pulumi.Input
 

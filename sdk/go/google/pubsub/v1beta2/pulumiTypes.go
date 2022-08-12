@@ -23,7 +23,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -56,7 +56,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -203,7 +203,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -246,11 +246,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -443,7 +443,7 @@ type OidcToken struct {
 // OidcTokenInput is an input type that accepts OidcTokenArgs and OidcTokenOutput values.
 // You can construct a concrete instance of `OidcTokenInput` via:
 //
-//          OidcTokenArgs{...}
+//	OidcTokenArgs{...}
 type OidcTokenInput interface {
 	pulumi.Input
 
@@ -482,11 +482,11 @@ func (i OidcTokenArgs) ToOidcTokenPtrOutputWithContext(ctx context.Context) Oidc
 // OidcTokenPtrInput is an input type that accepts OidcTokenArgs, OidcTokenPtr and OidcTokenPtrOutput values.
 // You can construct a concrete instance of `OidcTokenPtrInput` via:
 //
-//          OidcTokenArgs{...}
+//	        OidcTokenArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type OidcTokenPtrInput interface {
 	pulumi.Input
 
@@ -637,7 +637,7 @@ type PushConfig struct {
 // PushConfigInput is an input type that accepts PushConfigArgs and PushConfigOutput values.
 // You can construct a concrete instance of `PushConfigInput` via:
 //
-//          PushConfigArgs{...}
+//	PushConfigArgs{...}
 type PushConfigInput interface {
 	pulumi.Input
 
@@ -678,11 +678,11 @@ func (i PushConfigArgs) ToPushConfigPtrOutputWithContext(ctx context.Context) Pu
 // PushConfigPtrInput is an input type that accepts PushConfigArgs, PushConfigPtr and PushConfigPtrOutput values.
 // You can construct a concrete instance of `PushConfigPtrInput` via:
 //
-//          PushConfigArgs{...}
+//	        PushConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PushConfigPtrInput interface {
 	pulumi.Input
 

@@ -21,7 +21,7 @@ type AwsAccessKey struct {
 // AwsAccessKeyInput is an input type that accepts AwsAccessKeyArgs and AwsAccessKeyOutput values.
 // You can construct a concrete instance of `AwsAccessKeyInput` via:
 //
-//          AwsAccessKeyArgs{...}
+//	AwsAccessKeyArgs{...}
 type AwsAccessKeyInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i AwsAccessKeyArgs) ToAwsAccessKeyPtrOutputWithContext(ctx context.Context
 // AwsAccessKeyPtrInput is an input type that accepts AwsAccessKeyArgs, AwsAccessKeyPtr and AwsAccessKeyPtrOutput values.
 // You can construct a concrete instance of `AwsAccessKeyPtrInput` via:
 //
-//          AwsAccessKeyArgs{...}
+//	        AwsAccessKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AwsAccessKeyPtrInput interface {
 	pulumi.Input
 
@@ -219,7 +219,7 @@ type AwsS3CompatibleData struct {
 // AwsS3CompatibleDataInput is an input type that accepts AwsS3CompatibleDataArgs and AwsS3CompatibleDataOutput values.
 // You can construct a concrete instance of `AwsS3CompatibleDataInput` via:
 //
-//          AwsS3CompatibleDataArgs{...}
+//	AwsS3CompatibleDataArgs{...}
 type AwsS3CompatibleDataInput interface {
 	pulumi.Input
 
@@ -264,11 +264,11 @@ func (i AwsS3CompatibleDataArgs) ToAwsS3CompatibleDataPtrOutputWithContext(ctx c
 // AwsS3CompatibleDataPtrInput is an input type that accepts AwsS3CompatibleDataArgs, AwsS3CompatibleDataPtr and AwsS3CompatibleDataPtrOutput values.
 // You can construct a concrete instance of `AwsS3CompatibleDataPtrInput` via:
 //
-//          AwsS3CompatibleDataArgs{...}
+//	        AwsS3CompatibleDataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AwsS3CompatibleDataPtrInput interface {
 	pulumi.Input
 
@@ -487,7 +487,7 @@ type AwsS3Data struct {
 // AwsS3DataInput is an input type that accepts AwsS3DataArgs and AwsS3DataOutput values.
 // You can construct a concrete instance of `AwsS3DataInput` via:
 //
-//          AwsS3DataArgs{...}
+//	AwsS3DataArgs{...}
 type AwsS3DataInput interface {
 	pulumi.Input
 
@@ -530,11 +530,11 @@ func (i AwsS3DataArgs) ToAwsS3DataPtrOutputWithContext(ctx context.Context) AwsS
 // AwsS3DataPtrInput is an input type that accepts AwsS3DataArgs, AwsS3DataPtr and AwsS3DataPtrOutput values.
 // You can construct a concrete instance of `AwsS3DataPtrInput` via:
 //
-//          AwsS3DataArgs{...}
+//	        AwsS3DataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AwsS3DataPtrInput interface {
 	pulumi.Input
 
@@ -731,7 +731,7 @@ type AzureBlobStorageData struct {
 // AzureBlobStorageDataInput is an input type that accepts AzureBlobStorageDataArgs and AzureBlobStorageDataOutput values.
 // You can construct a concrete instance of `AzureBlobStorageDataInput` via:
 //
-//          AzureBlobStorageDataArgs{...}
+//	AzureBlobStorageDataArgs{...}
 type AzureBlobStorageDataInput interface {
 	pulumi.Input
 
@@ -774,11 +774,11 @@ func (i AzureBlobStorageDataArgs) ToAzureBlobStorageDataPtrOutputWithContext(ctx
 // AzureBlobStorageDataPtrInput is an input type that accepts AzureBlobStorageDataArgs, AzureBlobStorageDataPtr and AzureBlobStorageDataPtrOutput values.
 // You can construct a concrete instance of `AzureBlobStorageDataPtrInput` via:
 //
-//          AzureBlobStorageDataArgs{...}
+//	        AzureBlobStorageDataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AzureBlobStorageDataPtrInput interface {
 	pulumi.Input
 
@@ -969,7 +969,7 @@ type AzureCredentials struct {
 // AzureCredentialsInput is an input type that accepts AzureCredentialsArgs and AzureCredentialsOutput values.
 // You can construct a concrete instance of `AzureCredentialsInput` via:
 //
-//          AzureCredentialsArgs{...}
+//	AzureCredentialsArgs{...}
 type AzureCredentialsInput interface {
 	pulumi.Input
 
@@ -1006,11 +1006,11 @@ func (i AzureCredentialsArgs) ToAzureCredentialsPtrOutputWithContext(ctx context
 // AzureCredentialsPtrInput is an input type that accepts AzureCredentialsArgs, AzureCredentialsPtr and AzureCredentialsPtrOutput values.
 // You can construct a concrete instance of `AzureCredentialsPtrInput` via:
 //
-//          AzureCredentialsArgs{...}
+//	        AzureCredentialsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type AzureCredentialsPtrInput interface {
 	pulumi.Input
 
@@ -1135,7 +1135,7 @@ type BandwidthLimit struct {
 // BandwidthLimitInput is an input type that accepts BandwidthLimitArgs and BandwidthLimitOutput values.
 // You can construct a concrete instance of `BandwidthLimitInput` via:
 //
-//          BandwidthLimitArgs{...}
+//	BandwidthLimitArgs{...}
 type BandwidthLimitInput interface {
 	pulumi.Input
 
@@ -1172,11 +1172,11 @@ func (i BandwidthLimitArgs) ToBandwidthLimitPtrOutputWithContext(ctx context.Con
 // BandwidthLimitPtrInput is an input type that accepts BandwidthLimitArgs, BandwidthLimitPtr and BandwidthLimitPtrOutput values.
 // You can construct a concrete instance of `BandwidthLimitPtrInput` via:
 //
-//          BandwidthLimitArgs{...}
+//	        BandwidthLimitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type BandwidthLimitPtrInput interface {
 	pulumi.Input
 
@@ -1305,7 +1305,7 @@ type Date struct {
 // DateInput is an input type that accepts DateArgs and DateOutput values.
 // You can construct a concrete instance of `DateInput` via:
 //
-//          DateArgs{...}
+//	DateArgs{...}
 type DateInput interface {
 	pulumi.Input
 
@@ -1346,11 +1346,11 @@ func (i DateArgs) ToDatePtrOutputWithContext(ctx context.Context) DatePtrOutput 
 // DatePtrInput is an input type that accepts DateArgs, DatePtr and DatePtrOutput values.
 // You can construct a concrete instance of `DatePtrInput` via:
 //
-//          DateArgs{...}
+//	        DateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatePtrInput interface {
 	pulumi.Input
 
@@ -1521,7 +1521,7 @@ type GcsData struct {
 // GcsDataInput is an input type that accepts GcsDataArgs and GcsDataOutput values.
 // You can construct a concrete instance of `GcsDataInput` via:
 //
-//          GcsDataArgs{...}
+//	GcsDataArgs{...}
 type GcsDataInput interface {
 	pulumi.Input
 
@@ -1560,11 +1560,11 @@ func (i GcsDataArgs) ToGcsDataPtrOutputWithContext(ctx context.Context) GcsDataP
 // GcsDataPtrInput is an input type that accepts GcsDataArgs, GcsDataPtr and GcsDataPtrOutput values.
 // You can construct a concrete instance of `GcsDataPtrInput` via:
 //
-//          GcsDataArgs{...}
+//	        GcsDataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GcsDataPtrInput interface {
 	pulumi.Input
 
@@ -1711,7 +1711,7 @@ type HttpData struct {
 // HttpDataInput is an input type that accepts HttpDataArgs and HttpDataOutput values.
 // You can construct a concrete instance of `HttpDataInput` via:
 //
-//          HttpDataArgs{...}
+//	HttpDataArgs{...}
 type HttpDataInput interface {
 	pulumi.Input
 
@@ -1748,11 +1748,11 @@ func (i HttpDataArgs) ToHttpDataPtrOutputWithContext(ctx context.Context) HttpDa
 // HttpDataPtrInput is an input type that accepts HttpDataArgs, HttpDataPtr and HttpDataPtrOutput values.
 // You can construct a concrete instance of `HttpDataPtrInput` via:
 //
-//          HttpDataArgs{...}
+//	        HttpDataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpDataPtrInput interface {
 	pulumi.Input
 
@@ -1881,7 +1881,7 @@ type LoggingConfig struct {
 // LoggingConfigInput is an input type that accepts LoggingConfigArgs and LoggingConfigOutput values.
 // You can construct a concrete instance of `LoggingConfigInput` via:
 //
-//          LoggingConfigArgs{...}
+//	LoggingConfigArgs{...}
 type LoggingConfigInput interface {
 	pulumi.Input
 
@@ -1922,11 +1922,11 @@ func (i LoggingConfigArgs) ToLoggingConfigPtrOutputWithContext(ctx context.Conte
 // LoggingConfigPtrInput is an input type that accepts LoggingConfigArgs, LoggingConfigPtr and LoggingConfigPtrOutput values.
 // You can construct a concrete instance of `LoggingConfigPtrInput` via:
 //
-//          LoggingConfigArgs{...}
+//	        LoggingConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LoggingConfigPtrInput interface {
 	pulumi.Input
 
@@ -2111,7 +2111,7 @@ type MetadataOptions struct {
 // MetadataOptionsInput is an input type that accepts MetadataOptionsArgs and MetadataOptionsOutput values.
 // You can construct a concrete instance of `MetadataOptionsInput` via:
 //
-//          MetadataOptionsArgs{...}
+//	MetadataOptionsArgs{...}
 type MetadataOptionsInput interface {
 	pulumi.Input
 
@@ -2164,11 +2164,11 @@ func (i MetadataOptionsArgs) ToMetadataOptionsPtrOutputWithContext(ctx context.C
 // MetadataOptionsPtrInput is an input type that accepts MetadataOptionsArgs, MetadataOptionsPtr and MetadataOptionsPtrOutput values.
 // You can construct a concrete instance of `MetadataOptionsPtrInput` via:
 //
-//          MetadataOptionsArgs{...}
+//	        MetadataOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetadataOptionsPtrInput interface {
 	pulumi.Input
 
@@ -2473,7 +2473,7 @@ type NotificationConfig struct {
 // NotificationConfigInput is an input type that accepts NotificationConfigArgs and NotificationConfigOutput values.
 // You can construct a concrete instance of `NotificationConfigInput` via:
 //
-//          NotificationConfigArgs{...}
+//	NotificationConfigArgs{...}
 type NotificationConfigInput interface {
 	pulumi.Input
 
@@ -2514,11 +2514,11 @@ func (i NotificationConfigArgs) ToNotificationConfigPtrOutputWithContext(ctx con
 // NotificationConfigPtrInput is an input type that accepts NotificationConfigArgs, NotificationConfigPtr and NotificationConfigPtrOutput values.
 // You can construct a concrete instance of `NotificationConfigPtrInput` via:
 //
-//          NotificationConfigArgs{...}
+//	        NotificationConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type NotificationConfigPtrInput interface {
 	pulumi.Input
 
@@ -2697,7 +2697,7 @@ type ObjectConditions struct {
 // ObjectConditionsInput is an input type that accepts ObjectConditionsArgs and ObjectConditionsOutput values.
 // You can construct a concrete instance of `ObjectConditionsInput` via:
 //
-//          ObjectConditionsArgs{...}
+//	ObjectConditionsArgs{...}
 type ObjectConditionsInput interface {
 	pulumi.Input
 
@@ -2744,11 +2744,11 @@ func (i ObjectConditionsArgs) ToObjectConditionsPtrOutputWithContext(ctx context
 // ObjectConditionsPtrInput is an input type that accepts ObjectConditionsArgs, ObjectConditionsPtr and ObjectConditionsPtrOutput values.
 // You can construct a concrete instance of `ObjectConditionsPtrInput` via:
 //
-//          ObjectConditionsArgs{...}
+//	        ObjectConditionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ObjectConditionsPtrInput interface {
 	pulumi.Input
 
@@ -2983,7 +2983,7 @@ type PosixFilesystem struct {
 // PosixFilesystemInput is an input type that accepts PosixFilesystemArgs and PosixFilesystemOutput values.
 // You can construct a concrete instance of `PosixFilesystemInput` via:
 //
-//          PosixFilesystemArgs{...}
+//	PosixFilesystemArgs{...}
 type PosixFilesystemInput interface {
 	pulumi.Input
 
@@ -3020,11 +3020,11 @@ func (i PosixFilesystemArgs) ToPosixFilesystemPtrOutputWithContext(ctx context.C
 // PosixFilesystemPtrInput is an input type that accepts PosixFilesystemArgs, PosixFilesystemPtr and PosixFilesystemPtrOutput values.
 // You can construct a concrete instance of `PosixFilesystemPtrInput` via:
 //
-//          PosixFilesystemArgs{...}
+//	        PosixFilesystemArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PosixFilesystemPtrInput interface {
 	pulumi.Input
 
@@ -3155,7 +3155,7 @@ type S3CompatibleMetadata struct {
 // S3CompatibleMetadataInput is an input type that accepts S3CompatibleMetadataArgs and S3CompatibleMetadataOutput values.
 // You can construct a concrete instance of `S3CompatibleMetadataInput` via:
 //
-//          S3CompatibleMetadataArgs{...}
+//	S3CompatibleMetadataArgs{...}
 type S3CompatibleMetadataInput interface {
 	pulumi.Input
 
@@ -3198,11 +3198,11 @@ func (i S3CompatibleMetadataArgs) ToS3CompatibleMetadataPtrOutputWithContext(ctx
 // S3CompatibleMetadataPtrInput is an input type that accepts S3CompatibleMetadataArgs, S3CompatibleMetadataPtr and S3CompatibleMetadataPtrOutput values.
 // You can construct a concrete instance of `S3CompatibleMetadataPtrInput` via:
 //
-//          S3CompatibleMetadataArgs{...}
+//	        S3CompatibleMetadataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type S3CompatibleMetadataPtrInput interface {
 	pulumi.Input
 
@@ -3401,7 +3401,7 @@ type Schedule struct {
 // ScheduleInput is an input type that accepts ScheduleArgs and ScheduleOutput values.
 // You can construct a concrete instance of `ScheduleInput` via:
 //
-//          ScheduleArgs{...}
+//	ScheduleArgs{...}
 type ScheduleInput interface {
 	pulumi.Input
 
@@ -3446,11 +3446,11 @@ func (i ScheduleArgs) ToSchedulePtrOutputWithContext(ctx context.Context) Schedu
 // SchedulePtrInput is an input type that accepts ScheduleArgs, SchedulePtr and SchedulePtrOutput values.
 // You can construct a concrete instance of `SchedulePtrInput` via:
 //
-//          ScheduleArgs{...}
+//	        ScheduleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SchedulePtrInput interface {
 	pulumi.Input
 
@@ -3669,7 +3669,7 @@ type TimeOfDay struct {
 // TimeOfDayInput is an input type that accepts TimeOfDayArgs and TimeOfDayOutput values.
 // You can construct a concrete instance of `TimeOfDayInput` via:
 //
-//          TimeOfDayArgs{...}
+//	TimeOfDayArgs{...}
 type TimeOfDayInput interface {
 	pulumi.Input
 
@@ -3712,11 +3712,11 @@ func (i TimeOfDayArgs) ToTimeOfDayPtrOutputWithContext(ctx context.Context) Time
 // TimeOfDayPtrInput is an input type that accepts TimeOfDayArgs, TimeOfDayPtr and TimeOfDayPtrOutput values.
 // You can construct a concrete instance of `TimeOfDayPtrInput` via:
 //
-//          TimeOfDayArgs{...}
+//	        TimeOfDayArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TimeOfDayPtrInput interface {
 	pulumi.Input
 
@@ -3907,7 +3907,7 @@ type TransferManifest struct {
 // TransferManifestInput is an input type that accepts TransferManifestArgs and TransferManifestOutput values.
 // You can construct a concrete instance of `TransferManifestInput` via:
 //
-//          TransferManifestArgs{...}
+//	TransferManifestArgs{...}
 type TransferManifestInput interface {
 	pulumi.Input
 
@@ -3944,11 +3944,11 @@ func (i TransferManifestArgs) ToTransferManifestPtrOutputWithContext(ctx context
 // TransferManifestPtrInput is an input type that accepts TransferManifestArgs, TransferManifestPtr and TransferManifestPtrOutput values.
 // You can construct a concrete instance of `TransferManifestPtrInput` via:
 //
-//          TransferManifestArgs{...}
+//	        TransferManifestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TransferManifestPtrInput interface {
 	pulumi.Input
 
@@ -4081,7 +4081,7 @@ type TransferOptions struct {
 // TransferOptionsInput is an input type that accepts TransferOptionsArgs and TransferOptionsOutput values.
 // You can construct a concrete instance of `TransferOptionsInput` via:
 //
-//          TransferOptionsArgs{...}
+//	TransferOptionsArgs{...}
 type TransferOptionsInput interface {
 	pulumi.Input
 
@@ -4126,11 +4126,11 @@ func (i TransferOptionsArgs) ToTransferOptionsPtrOutputWithContext(ctx context.C
 // TransferOptionsPtrInput is an input type that accepts TransferOptionsArgs, TransferOptionsPtr and TransferOptionsPtrOutput values.
 // You can construct a concrete instance of `TransferOptionsPtrInput` via:
 //
-//          TransferOptionsArgs{...}
+//	        TransferOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TransferOptionsPtrInput interface {
 	pulumi.Input
 
@@ -4369,7 +4369,7 @@ type TransferSpec struct {
 // TransferSpecInput is an input type that accepts TransferSpecArgs and TransferSpecOutput values.
 // You can construct a concrete instance of `TransferSpecInput` via:
 //
-//          TransferSpecArgs{...}
+//	TransferSpecArgs{...}
 type TransferSpecInput interface {
 	pulumi.Input
 
@@ -4432,11 +4432,11 @@ func (i TransferSpecArgs) ToTransferSpecPtrOutputWithContext(ctx context.Context
 // TransferSpecPtrInput is an input type that accepts TransferSpecArgs, TransferSpecPtr and TransferSpecPtrOutput values.
 // You can construct a concrete instance of `TransferSpecPtrInput` via:
 //
-//          TransferSpecArgs{...}
+//	        TransferSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TransferSpecPtrInput interface {
 	pulumi.Input
 

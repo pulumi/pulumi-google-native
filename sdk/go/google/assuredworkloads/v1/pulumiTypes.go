@@ -21,7 +21,7 @@ type GoogleCloudAssuredworkloadsV1WorkloadKMSSettings struct {
 // GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs and GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsInput` via:
 //
-//          GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{...}
+//	GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{...}
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs) ToGoogleCloudAssur
 // GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs, GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtr and GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput` via:
 //
-//          GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{...}
+//	        GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudAssuredworkloadsV1WorkloadKMSSettingsPtrInput interface {
 	pulumi.Input
 
@@ -268,7 +268,7 @@ type GoogleCloudAssuredworkloadsV1WorkloadResourceSettings struct {
 // GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs and GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsOutput values.
 // You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsInput` via:
 //
-//          GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs{...}
+//	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs{...}
 type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsInput interface {
 	pulumi.Input
 
@@ -301,7 +301,7 @@ func (i GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs) ToGoogleCloud
 // GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray and GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput` via:
 //
-//          GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray{ GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs{...} }
+//	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArray{ GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArgs{...} }
 type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsArrayInput interface {
 	pulumi.Input
 

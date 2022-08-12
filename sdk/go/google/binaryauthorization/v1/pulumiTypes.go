@@ -25,7 +25,7 @@ type AttestorPublicKey struct {
 // AttestorPublicKeyInput is an input type that accepts AttestorPublicKeyArgs and AttestorPublicKeyOutput values.
 // You can construct a concrete instance of `AttestorPublicKeyInput` via:
 //
-//          AttestorPublicKeyArgs{...}
+//	AttestorPublicKeyArgs{...}
 type AttestorPublicKeyInput interface {
 	pulumi.Input
 
@@ -60,7 +60,7 @@ func (i AttestorPublicKeyArgs) ToAttestorPublicKeyOutputWithContext(ctx context.
 // AttestorPublicKeyArrayInput is an input type that accepts AttestorPublicKeyArray and AttestorPublicKeyArrayOutput values.
 // You can construct a concrete instance of `AttestorPublicKeyArrayInput` via:
 //
-//          AttestorPublicKeyArray{ AttestorPublicKeyArgs{...} }
+//	AttestorPublicKeyArray{ AttestorPublicKeyArgs{...} }
 type AttestorPublicKeyArrayInput interface {
 	pulumi.Input
 
@@ -210,7 +210,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -243,7 +243,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -390,7 +390,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -433,11 +433,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -630,7 +630,7 @@ type PkixPublicKey struct {
 // PkixPublicKeyInput is an input type that accepts PkixPublicKeyArgs and PkixPublicKeyOutput values.
 // You can construct a concrete instance of `PkixPublicKeyInput` via:
 //
-//          PkixPublicKeyArgs{...}
+//	PkixPublicKeyArgs{...}
 type PkixPublicKeyInput interface {
 	pulumi.Input
 
@@ -669,11 +669,11 @@ func (i PkixPublicKeyArgs) ToPkixPublicKeyPtrOutputWithContext(ctx context.Conte
 // PkixPublicKeyPtrInput is an input type that accepts PkixPublicKeyArgs, PkixPublicKeyPtr and PkixPublicKeyPtrOutput values.
 // You can construct a concrete instance of `PkixPublicKeyPtrInput` via:
 //
-//          PkixPublicKeyArgs{...}
+//	        PkixPublicKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PkixPublicKeyPtrInput interface {
 	pulumi.Input
 
@@ -822,7 +822,7 @@ type UserOwnedGrafeasNote struct {
 // UserOwnedGrafeasNoteInput is an input type that accepts UserOwnedGrafeasNoteArgs and UserOwnedGrafeasNoteOutput values.
 // You can construct a concrete instance of `UserOwnedGrafeasNoteInput` via:
 //
-//          UserOwnedGrafeasNoteArgs{...}
+//	UserOwnedGrafeasNoteArgs{...}
 type UserOwnedGrafeasNoteInput interface {
 	pulumi.Input
 
@@ -861,11 +861,11 @@ func (i UserOwnedGrafeasNoteArgs) ToUserOwnedGrafeasNotePtrOutputWithContext(ctx
 // UserOwnedGrafeasNotePtrInput is an input type that accepts UserOwnedGrafeasNoteArgs, UserOwnedGrafeasNotePtr and UserOwnedGrafeasNotePtrOutput values.
 // You can construct a concrete instance of `UserOwnedGrafeasNotePtrInput` via:
 //
-//          UserOwnedGrafeasNoteArgs{...}
+//	        UserOwnedGrafeasNoteArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type UserOwnedGrafeasNotePtrInput interface {
 	pulumi.Input
 

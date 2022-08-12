@@ -21,7 +21,7 @@ type AuditConfig struct {
 // AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
 // You can construct a concrete instance of `AuditConfigInput` via:
 //
-//          AuditConfigArgs{...}
+//	AuditConfigArgs{...}
 type AuditConfigInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
-//          AuditConfigArray{ AuditConfigArgs{...} }
+//	AuditConfigArray{ AuditConfigArgs{...} }
 type AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type AuditLogConfig struct {
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
 // You can construct a concrete instance of `AuditLogConfigInput` via:
 //
-//          AuditLogConfigArgs{...}
+//	AuditLogConfigArgs{...}
 type AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -347,7 +347,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -380,7 +380,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -527,7 +527,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -570,11 +570,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -767,7 +767,7 @@ type LinkedInterconnectAttachments struct {
 // LinkedInterconnectAttachmentsInput is an input type that accepts LinkedInterconnectAttachmentsArgs and LinkedInterconnectAttachmentsOutput values.
 // You can construct a concrete instance of `LinkedInterconnectAttachmentsInput` via:
 //
-//          LinkedInterconnectAttachmentsArgs{...}
+//	LinkedInterconnectAttachmentsArgs{...}
 type LinkedInterconnectAttachmentsInput interface {
 	pulumi.Input
 
@@ -806,11 +806,11 @@ func (i LinkedInterconnectAttachmentsArgs) ToLinkedInterconnectAttachmentsPtrOut
 // LinkedInterconnectAttachmentsPtrInput is an input type that accepts LinkedInterconnectAttachmentsArgs, LinkedInterconnectAttachmentsPtr and LinkedInterconnectAttachmentsPtrOutput values.
 // You can construct a concrete instance of `LinkedInterconnectAttachmentsPtrInput` via:
 //
-//          LinkedInterconnectAttachmentsArgs{...}
+//	        LinkedInterconnectAttachmentsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LinkedInterconnectAttachmentsPtrInput interface {
 	pulumi.Input
 
@@ -959,7 +959,7 @@ type LinkedRouterApplianceInstances struct {
 // LinkedRouterApplianceInstancesInput is an input type that accepts LinkedRouterApplianceInstancesArgs and LinkedRouterApplianceInstancesOutput values.
 // You can construct a concrete instance of `LinkedRouterApplianceInstancesInput` via:
 //
-//          LinkedRouterApplianceInstancesArgs{...}
+//	LinkedRouterApplianceInstancesArgs{...}
 type LinkedRouterApplianceInstancesInput interface {
 	pulumi.Input
 
@@ -998,11 +998,11 @@ func (i LinkedRouterApplianceInstancesArgs) ToLinkedRouterApplianceInstancesPtrO
 // LinkedRouterApplianceInstancesPtrInput is an input type that accepts LinkedRouterApplianceInstancesArgs, LinkedRouterApplianceInstancesPtr and LinkedRouterApplianceInstancesPtrOutput values.
 // You can construct a concrete instance of `LinkedRouterApplianceInstancesPtrInput` via:
 //
-//          LinkedRouterApplianceInstancesArgs{...}
+//	        LinkedRouterApplianceInstancesArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LinkedRouterApplianceInstancesPtrInput interface {
 	pulumi.Input
 
@@ -1151,7 +1151,7 @@ type LinkedVpnTunnels struct {
 // LinkedVpnTunnelsInput is an input type that accepts LinkedVpnTunnelsArgs and LinkedVpnTunnelsOutput values.
 // You can construct a concrete instance of `LinkedVpnTunnelsInput` via:
 //
-//          LinkedVpnTunnelsArgs{...}
+//	LinkedVpnTunnelsArgs{...}
 type LinkedVpnTunnelsInput interface {
 	pulumi.Input
 
@@ -1190,11 +1190,11 @@ func (i LinkedVpnTunnelsArgs) ToLinkedVpnTunnelsPtrOutputWithContext(ctx context
 // LinkedVpnTunnelsPtrInput is an input type that accepts LinkedVpnTunnelsArgs, LinkedVpnTunnelsPtr and LinkedVpnTunnelsPtrOutput values.
 // You can construct a concrete instance of `LinkedVpnTunnelsPtrInput` via:
 //
-//          LinkedVpnTunnelsArgs{...}
+//	        LinkedVpnTunnelsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LinkedVpnTunnelsPtrInput interface {
 	pulumi.Input
 
@@ -1343,7 +1343,7 @@ type RouterApplianceInstance struct {
 // RouterApplianceInstanceInput is an input type that accepts RouterApplianceInstanceArgs and RouterApplianceInstanceOutput values.
 // You can construct a concrete instance of `RouterApplianceInstanceInput` via:
 //
-//          RouterApplianceInstanceArgs{...}
+//	RouterApplianceInstanceArgs{...}
 type RouterApplianceInstanceInput interface {
 	pulumi.Input
 
@@ -1374,7 +1374,7 @@ func (i RouterApplianceInstanceArgs) ToRouterApplianceInstanceOutputWithContext(
 // RouterApplianceInstanceArrayInput is an input type that accepts RouterApplianceInstanceArray and RouterApplianceInstanceArrayOutput values.
 // You can construct a concrete instance of `RouterApplianceInstanceArrayInput` via:
 //
-//          RouterApplianceInstanceArray{ RouterApplianceInstanceArgs{...} }
+//	RouterApplianceInstanceArray{ RouterApplianceInstanceArgs{...} }
 type RouterApplianceInstanceArrayInput interface {
 	pulumi.Input
 
@@ -1503,7 +1503,7 @@ type RoutingVPC struct {
 // RoutingVPCInput is an input type that accepts RoutingVPCArgs and RoutingVPCOutput values.
 // You can construct a concrete instance of `RoutingVPCInput` via:
 //
-//          RoutingVPCArgs{...}
+//	RoutingVPCArgs{...}
 type RoutingVPCInput interface {
 	pulumi.Input
 
@@ -1532,7 +1532,7 @@ func (i RoutingVPCArgs) ToRoutingVPCOutputWithContext(ctx context.Context) Routi
 // RoutingVPCArrayInput is an input type that accepts RoutingVPCArray and RoutingVPCArrayOutput values.
 // You can construct a concrete instance of `RoutingVPCArrayInput` via:
 //
-//          RoutingVPCArray{ RoutingVPCArgs{...} }
+//	RoutingVPCArray{ RoutingVPCArgs{...} }
 type RoutingVPCArrayInput interface {
 	pulumi.Input
 

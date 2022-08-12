@@ -146,7 +146,7 @@ func (o ApigatewayAuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(c
 // ApigatewayAuditLogConfigLogTypeInput is an input type that accepts ApigatewayAuditLogConfigLogTypeArgs and ApigatewayAuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `ApigatewayAuditLogConfigLogTypeInput` via:
 //
-//          ApigatewayAuditLogConfigLogTypeArgs{...}
+//	ApigatewayAuditLogConfigLogTypeArgs{...}
 type ApigatewayAuditLogConfigLogTypeInput interface {
 	pulumi.Input
 

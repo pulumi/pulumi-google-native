@@ -21,7 +21,7 @@ type AuditConfig struct {
 // AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
 // You can construct a concrete instance of `AuditConfigInput` via:
 //
-//          AuditConfigArgs{...}
+//	AuditConfigArgs{...}
 type AuditConfigInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
-//          AuditConfigArray{ AuditConfigArgs{...} }
+//	AuditConfigArray{ AuditConfigArgs{...} }
 type AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type AuditLogConfig struct {
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
 // You can construct a concrete instance of `AuditLogConfigInput` via:
 //
-//          AuditLogConfigArgs{...}
+//	AuditLogConfigArgs{...}
 type AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -347,7 +347,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -380,7 +380,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -521,7 +521,7 @@ type CloudSqlConnectionProfile struct {
 // CloudSqlConnectionProfileInput is an input type that accepts CloudSqlConnectionProfileArgs and CloudSqlConnectionProfileOutput values.
 // You can construct a concrete instance of `CloudSqlConnectionProfileInput` via:
 //
-//          CloudSqlConnectionProfileArgs{...}
+//	CloudSqlConnectionProfileArgs{...}
 type CloudSqlConnectionProfileInput interface {
 	pulumi.Input
 
@@ -558,11 +558,11 @@ func (i CloudSqlConnectionProfileArgs) ToCloudSqlConnectionProfilePtrOutputWithC
 // CloudSqlConnectionProfilePtrInput is an input type that accepts CloudSqlConnectionProfileArgs, CloudSqlConnectionProfilePtr and CloudSqlConnectionProfilePtrOutput values.
 // You can construct a concrete instance of `CloudSqlConnectionProfilePtrInput` via:
 //
-//          CloudSqlConnectionProfileArgs{...}
+//	        CloudSqlConnectionProfileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CloudSqlConnectionProfilePtrInput interface {
 	pulumi.Input
 
@@ -736,7 +736,7 @@ type CloudSqlSettings struct {
 // CloudSqlSettingsInput is an input type that accepts CloudSqlSettingsArgs and CloudSqlSettingsOutput values.
 // You can construct a concrete instance of `CloudSqlSettingsInput` via:
 //
-//          CloudSqlSettingsArgs{...}
+//	CloudSqlSettingsArgs{...}
 type CloudSqlSettingsInput interface {
 	pulumi.Input
 
@@ -801,11 +801,11 @@ func (i CloudSqlSettingsArgs) ToCloudSqlSettingsPtrOutputWithContext(ctx context
 // CloudSqlSettingsPtrInput is an input type that accepts CloudSqlSettingsArgs, CloudSqlSettingsPtr and CloudSqlSettingsPtrOutput values.
 // You can construct a concrete instance of `CloudSqlSettingsPtrInput` via:
 //
-//          CloudSqlSettingsArgs{...}
+//	        CloudSqlSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CloudSqlSettingsPtrInput interface {
 	pulumi.Input
 
@@ -1247,7 +1247,7 @@ type DatabaseType struct {
 // DatabaseTypeInput is an input type that accepts DatabaseTypeArgs and DatabaseTypeOutput values.
 // You can construct a concrete instance of `DatabaseTypeInput` via:
 //
-//          DatabaseTypeArgs{...}
+//	DatabaseTypeArgs{...}
 type DatabaseTypeInput interface {
 	pulumi.Input
 
@@ -1286,11 +1286,11 @@ func (i DatabaseTypeArgs) ToDatabaseTypePtrOutputWithContext(ctx context.Context
 // DatabaseTypePtrInput is an input type that accepts DatabaseTypeArgs, DatabaseTypePtr and DatabaseTypePtrOutput values.
 // You can construct a concrete instance of `DatabaseTypePtrInput` via:
 //
-//          DatabaseTypeArgs{...}
+//	        DatabaseTypeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DatabaseTypePtrInput interface {
 	pulumi.Input
 
@@ -1439,7 +1439,7 @@ type DumpFlag struct {
 // DumpFlagInput is an input type that accepts DumpFlagArgs and DumpFlagOutput values.
 // You can construct a concrete instance of `DumpFlagInput` via:
 //
-//          DumpFlagArgs{...}
+//	DumpFlagArgs{...}
 type DumpFlagInput interface {
 	pulumi.Input
 
@@ -1470,7 +1470,7 @@ func (i DumpFlagArgs) ToDumpFlagOutputWithContext(ctx context.Context) DumpFlagO
 // DumpFlagArrayInput is an input type that accepts DumpFlagArray and DumpFlagArrayOutput values.
 // You can construct a concrete instance of `DumpFlagArrayInput` via:
 //
-//          DumpFlagArray{ DumpFlagArgs{...} }
+//	DumpFlagArray{ DumpFlagArgs{...} }
 type DumpFlagArrayInput interface {
 	pulumi.Input
 
@@ -1599,7 +1599,7 @@ type DumpFlags struct {
 // DumpFlagsInput is an input type that accepts DumpFlagsArgs and DumpFlagsOutput values.
 // You can construct a concrete instance of `DumpFlagsInput` via:
 //
-//          DumpFlagsArgs{...}
+//	DumpFlagsArgs{...}
 type DumpFlagsInput interface {
 	pulumi.Input
 
@@ -1636,11 +1636,11 @@ func (i DumpFlagsArgs) ToDumpFlagsPtrOutputWithContext(ctx context.Context) Dump
 // DumpFlagsPtrInput is an input type that accepts DumpFlagsArgs, DumpFlagsPtr and DumpFlagsPtrOutput values.
 // You can construct a concrete instance of `DumpFlagsPtrInput` via:
 //
-//          DumpFlagsArgs{...}
+//	        DumpFlagsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type DumpFlagsPtrInput interface {
 	pulumi.Input
 
@@ -1771,7 +1771,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -1814,11 +1814,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -2019,7 +2019,7 @@ type MySqlConnectionProfile struct {
 // MySqlConnectionProfileInput is an input type that accepts MySqlConnectionProfileArgs and MySqlConnectionProfileOutput values.
 // You can construct a concrete instance of `MySqlConnectionProfileInput` via:
 //
-//          MySqlConnectionProfileArgs{...}
+//	MySqlConnectionProfileArgs{...}
 type MySqlConnectionProfileInput interface {
 	pulumi.Input
 
@@ -2066,11 +2066,11 @@ func (i MySqlConnectionProfileArgs) ToMySqlConnectionProfilePtrOutputWithContext
 // MySqlConnectionProfilePtrInput is an input type that accepts MySqlConnectionProfileArgs, MySqlConnectionProfilePtr and MySqlConnectionProfilePtrOutput values.
 // You can construct a concrete instance of `MySqlConnectionProfilePtrInput` via:
 //
-//          MySqlConnectionProfileArgs{...}
+//	        MySqlConnectionProfileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MySqlConnectionProfilePtrInput interface {
 	pulumi.Input
 
@@ -2322,7 +2322,7 @@ type PostgreSqlConnectionProfile struct {
 // PostgreSqlConnectionProfileInput is an input type that accepts PostgreSqlConnectionProfileArgs and PostgreSqlConnectionProfileOutput values.
 // You can construct a concrete instance of `PostgreSqlConnectionProfileInput` via:
 //
-//          PostgreSqlConnectionProfileArgs{...}
+//	PostgreSqlConnectionProfileArgs{...}
 type PostgreSqlConnectionProfileInput interface {
 	pulumi.Input
 
@@ -2369,11 +2369,11 @@ func (i PostgreSqlConnectionProfileArgs) ToPostgreSqlConnectionProfilePtrOutputW
 // PostgreSqlConnectionProfilePtrInput is an input type that accepts PostgreSqlConnectionProfileArgs, PostgreSqlConnectionProfilePtr and PostgreSqlConnectionProfilePtrOutput values.
 // You can construct a concrete instance of `PostgreSqlConnectionProfilePtrInput` via:
 //
-//          PostgreSqlConnectionProfileArgs{...}
+//	        PostgreSqlConnectionProfileArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type PostgreSqlConnectionProfilePtrInput interface {
 	pulumi.Input
 
@@ -2621,7 +2621,7 @@ type ReverseSshConnectivity struct {
 // ReverseSshConnectivityInput is an input type that accepts ReverseSshConnectivityArgs and ReverseSshConnectivityOutput values.
 // You can construct a concrete instance of `ReverseSshConnectivityInput` via:
 //
-//          ReverseSshConnectivityArgs{...}
+//	ReverseSshConnectivityArgs{...}
 type ReverseSshConnectivityInput interface {
 	pulumi.Input
 
@@ -2664,11 +2664,11 @@ func (i ReverseSshConnectivityArgs) ToReverseSshConnectivityPtrOutputWithContext
 // ReverseSshConnectivityPtrInput is an input type that accepts ReverseSshConnectivityArgs, ReverseSshConnectivityPtr and ReverseSshConnectivityPtrOutput values.
 // You can construct a concrete instance of `ReverseSshConnectivityPtrInput` via:
 //
-//          ReverseSshConnectivityArgs{...}
+//	        ReverseSshConnectivityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ReverseSshConnectivityPtrInput interface {
 	pulumi.Input
 
@@ -2865,7 +2865,7 @@ type SqlAclEntry struct {
 // SqlAclEntryInput is an input type that accepts SqlAclEntryArgs and SqlAclEntryOutput values.
 // You can construct a concrete instance of `SqlAclEntryInput` via:
 //
-//          SqlAclEntryArgs{...}
+//	SqlAclEntryArgs{...}
 type SqlAclEntryInput interface {
 	pulumi.Input
 
@@ -2900,7 +2900,7 @@ func (i SqlAclEntryArgs) ToSqlAclEntryOutputWithContext(ctx context.Context) Sql
 // SqlAclEntryArrayInput is an input type that accepts SqlAclEntryArray and SqlAclEntryArrayOutput values.
 // You can construct a concrete instance of `SqlAclEntryArrayInput` via:
 //
-//          SqlAclEntryArray{ SqlAclEntryArgs{...} }
+//	SqlAclEntryArray{ SqlAclEntryArgs{...} }
 type SqlAclEntryArrayInput interface {
 	pulumi.Input
 
@@ -3059,7 +3059,7 @@ type SqlIpConfig struct {
 // SqlIpConfigInput is an input type that accepts SqlIpConfigArgs and SqlIpConfigOutput values.
 // You can construct a concrete instance of `SqlIpConfigInput` via:
 //
-//          SqlIpConfigArgs{...}
+//	SqlIpConfigArgs{...}
 type SqlIpConfigInput interface {
 	pulumi.Input
 
@@ -3102,11 +3102,11 @@ func (i SqlIpConfigArgs) ToSqlIpConfigPtrOutputWithContext(ctx context.Context) 
 // SqlIpConfigPtrInput is an input type that accepts SqlIpConfigArgs, SqlIpConfigPtr and SqlIpConfigPtrOutput values.
 // You can construct a concrete instance of `SqlIpConfigPtrInput` via:
 //
-//          SqlIpConfigArgs{...}
+//	        SqlIpConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SqlIpConfigPtrInput interface {
 	pulumi.Input
 
@@ -3301,7 +3301,7 @@ type SslConfig struct {
 // SslConfigInput is an input type that accepts SslConfigArgs and SslConfigOutput values.
 // You can construct a concrete instance of `SslConfigInput` via:
 //
-//          SslConfigArgs{...}
+//	SslConfigArgs{...}
 type SslConfigInput interface {
 	pulumi.Input
 
@@ -3342,11 +3342,11 @@ func (i SslConfigArgs) ToSslConfigPtrOutputWithContext(ctx context.Context) SslC
 // SslConfigPtrInput is an input type that accepts SslConfigArgs, SslConfigPtr and SslConfigPtrOutput values.
 // You can construct a concrete instance of `SslConfigPtrInput` via:
 //
-//          SslConfigArgs{...}
+//	        SslConfigArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SslConfigPtrInput interface {
 	pulumi.Input
 
@@ -3520,7 +3520,7 @@ type StaticIpConnectivity struct {
 // StaticIpConnectivityInput is an input type that accepts StaticIpConnectivityArgs and StaticIpConnectivityOutput values.
 // You can construct a concrete instance of `StaticIpConnectivityInput` via:
 //
-//          StaticIpConnectivityArgs{...}
+//	StaticIpConnectivityArgs{...}
 type StaticIpConnectivityInput interface {
 	pulumi.Input
 
@@ -3555,11 +3555,11 @@ func (i StaticIpConnectivityArgs) ToStaticIpConnectivityPtrOutputWithContext(ctx
 // StaticIpConnectivityPtrInput is an input type that accepts StaticIpConnectivityArgs, StaticIpConnectivityPtr and StaticIpConnectivityPtrOutput values.
 // You can construct a concrete instance of `StaticIpConnectivityPtrInput` via:
 //
-//          StaticIpConnectivityArgs{...}
+//	        StaticIpConnectivityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type StaticIpConnectivityPtrInput interface {
 	pulumi.Input
 
@@ -3702,7 +3702,7 @@ type VpcPeeringConnectivity struct {
 // VpcPeeringConnectivityInput is an input type that accepts VpcPeeringConnectivityArgs and VpcPeeringConnectivityOutput values.
 // You can construct a concrete instance of `VpcPeeringConnectivityInput` via:
 //
-//          VpcPeeringConnectivityArgs{...}
+//	VpcPeeringConnectivityArgs{...}
 type VpcPeeringConnectivityInput interface {
 	pulumi.Input
 
@@ -3739,11 +3739,11 @@ func (i VpcPeeringConnectivityArgs) ToVpcPeeringConnectivityPtrOutputWithContext
 // VpcPeeringConnectivityPtrInput is an input type that accepts VpcPeeringConnectivityArgs, VpcPeeringConnectivityPtr and VpcPeeringConnectivityPtrOutput values.
 // You can construct a concrete instance of `VpcPeeringConnectivityPtrInput` via:
 //
-//          VpcPeeringConnectivityArgs{...}
+//	        VpcPeeringConnectivityArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VpcPeeringConnectivityPtrInput interface {
 	pulumi.Input
 

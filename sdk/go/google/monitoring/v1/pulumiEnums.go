@@ -166,7 +166,7 @@ func (o AggregationCrossSeriesReducerPtrOutput) ToStringPtrOutputWithContext(ctx
 // AggregationCrossSeriesReducerInput is an input type that accepts AggregationCrossSeriesReducerArgs and AggregationCrossSeriesReducerOutput values.
 // You can construct a concrete instance of `AggregationCrossSeriesReducerInput` via:
 //
-//          AggregationCrossSeriesReducerArgs{...}
+//	AggregationCrossSeriesReducerArgs{...}
 type AggregationCrossSeriesReducerInput interface {
 	pulumi.Input
 
@@ -367,7 +367,7 @@ func (o AggregationPerSeriesAlignerPtrOutput) ToStringPtrOutputWithContext(ctx c
 // AggregationPerSeriesAlignerInput is an input type that accepts AggregationPerSeriesAlignerArgs and AggregationPerSeriesAlignerOutput values.
 // You can construct a concrete instance of `AggregationPerSeriesAlignerInput` via:
 //
-//          AggregationPerSeriesAlignerArgs{...}
+//	AggregationPerSeriesAlignerArgs{...}
 type AggregationPerSeriesAlignerInput interface {
 	pulumi.Input
 
@@ -536,7 +536,7 @@ func (o AxisScalePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 // AxisScaleInput is an input type that accepts AxisScaleArgs and AxisScaleOutput values.
 // You can construct a concrete instance of `AxisScaleInput` via:
 //
-//          AxisScaleArgs{...}
+//	AxisScaleArgs{...}
 type AxisScaleInput interface {
 	pulumi.Input
 
@@ -707,7 +707,7 @@ func (o ChartOptionsModePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // ChartOptionsModeInput is an input type that accepts ChartOptionsModeArgs and ChartOptionsModeOutput values.
 // You can construct a concrete instance of `ChartOptionsModeInput` via:
 //
-//          ChartOptionsModeArgs{...}
+//	ChartOptionsModeArgs{...}
 type ChartOptionsModeInput interface {
 	pulumi.Input
 
@@ -882,7 +882,7 @@ func (o DashboardFilterFilterTypePtrOutput) ToStringPtrOutputWithContext(ctx con
 // DashboardFilterFilterTypeInput is an input type that accepts DashboardFilterFilterTypeArgs and DashboardFilterFilterTypeOutput values.
 // You can construct a concrete instance of `DashboardFilterFilterTypeInput` via:
 //
-//          DashboardFilterFilterTypeArgs{...}
+//	DashboardFilterFilterTypeArgs{...}
 type DashboardFilterFilterTypeInput interface {
 	pulumi.Input
 
@@ -1055,7 +1055,7 @@ func (o DataSetPlotTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // DataSetPlotTypeInput is an input type that accepts DataSetPlotTypeArgs and DataSetPlotTypeOutput values.
 // You can construct a concrete instance of `DataSetPlotTypeInput` via:
 //
-//          DataSetPlotTypeArgs{...}
+//	DataSetPlotTypeArgs{...}
 type DataSetPlotTypeInput interface {
 	pulumi.Input
 
@@ -1224,7 +1224,7 @@ func (o DataSetTargetAxisPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // DataSetTargetAxisInput is an input type that accepts DataSetTargetAxisArgs and DataSetTargetAxisOutput values.
 // You can construct a concrete instance of `DataSetTargetAxisInput` via:
 //
-//          DataSetTargetAxisArgs{...}
+//	DataSetTargetAxisArgs{...}
 type DataSetTargetAxisInput interface {
 	pulumi.Input
 
@@ -1393,7 +1393,7 @@ func (o PickTimeSeriesFilterDirectionPtrOutput) ToStringPtrOutputWithContext(ctx
 // PickTimeSeriesFilterDirectionInput is an input type that accepts PickTimeSeriesFilterDirectionArgs and PickTimeSeriesFilterDirectionOutput values.
 // You can construct a concrete instance of `PickTimeSeriesFilterDirectionInput` via:
 //
-//          PickTimeSeriesFilterDirectionArgs{...}
+//	PickTimeSeriesFilterDirectionArgs{...}
 type PickTimeSeriesFilterDirectionInput interface {
 	pulumi.Input
 
@@ -1568,7 +1568,7 @@ func (o PickTimeSeriesFilterRankingMethodPtrOutput) ToStringPtrOutputWithContext
 // PickTimeSeriesFilterRankingMethodInput is an input type that accepts PickTimeSeriesFilterRankingMethodArgs and PickTimeSeriesFilterRankingMethodOutput values.
 // You can construct a concrete instance of `PickTimeSeriesFilterRankingMethodInput` via:
 //
-//          PickTimeSeriesFilterRankingMethodArgs{...}
+//	PickTimeSeriesFilterRankingMethodArgs{...}
 type PickTimeSeriesFilterRankingMethodInput interface {
 	pulumi.Input
 
@@ -1737,7 +1737,7 @@ func (o SparkChartViewSparkChartTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 // SparkChartViewSparkChartTypeInput is an input type that accepts SparkChartViewSparkChartTypeArgs and SparkChartViewSparkChartTypeOutput values.
 // You can construct a concrete instance of `SparkChartViewSparkChartTypeInput` via:
 //
-//          SparkChartViewSparkChartTypeArgs{...}
+//	SparkChartViewSparkChartTypeArgs{...}
 type SparkChartViewSparkChartTypeInput interface {
 	pulumi.Input
 
@@ -1904,7 +1904,7 @@ func (o StatisticalTimeSeriesFilterRankingMethodPtrOutput) ToStringPtrOutputWith
 // StatisticalTimeSeriesFilterRankingMethodInput is an input type that accepts StatisticalTimeSeriesFilterRankingMethodArgs and StatisticalTimeSeriesFilterRankingMethodOutput values.
 // You can construct a concrete instance of `StatisticalTimeSeriesFilterRankingMethodInput` via:
 //
-//          StatisticalTimeSeriesFilterRankingMethodArgs{...}
+//	StatisticalTimeSeriesFilterRankingMethodArgs{...}
 type StatisticalTimeSeriesFilterRankingMethodInput interface {
 	pulumi.Input
 
@@ -2073,7 +2073,7 @@ func (o TextFormatPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 // TextFormatInput is an input type that accepts TextFormatArgs and TextFormatOutput values.
 // You can construct a concrete instance of `TextFormatInput` via:
 //
-//          TextFormatArgs{...}
+//	TextFormatArgs{...}
 type TextFormatInput interface {
 	pulumi.Input
 
@@ -2242,7 +2242,7 @@ func (o ThresholdColorPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // ThresholdColorInput is an input type that accepts ThresholdColorArgs and ThresholdColorOutput values.
 // You can construct a concrete instance of `ThresholdColorInput` via:
 //
-//          ThresholdColorArgs{...}
+//	ThresholdColorArgs{...}
 type ThresholdColorInput interface {
 	pulumi.Input
 
@@ -2411,7 +2411,7 @@ func (o ThresholdDirectionPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // ThresholdDirectionInput is an input type that accepts ThresholdDirectionArgs and ThresholdDirectionOutput values.
 // You can construct a concrete instance of `ThresholdDirectionInput` via:
 //
-//          ThresholdDirectionArgs{...}
+//	ThresholdDirectionArgs{...}
 type ThresholdDirectionInput interface {
 	pulumi.Input
 
@@ -2580,7 +2580,7 @@ func (o ThresholdTargetAxisPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // ThresholdTargetAxisInput is an input type that accepts ThresholdTargetAxisArgs and ThresholdTargetAxisOutput values.
 // You can construct a concrete instance of `ThresholdTargetAxisInput` via:
 //
-//          ThresholdTargetAxisArgs{...}
+//	ThresholdTargetAxisArgs{...}
 type ThresholdTargetAxisInput interface {
 	pulumi.Input
 
@@ -2749,7 +2749,7 @@ func (o TimeSeriesTableMetricVisualizationPtrOutput) ToStringPtrOutputWithContex
 // TimeSeriesTableMetricVisualizationInput is an input type that accepts TimeSeriesTableMetricVisualizationArgs and TimeSeriesTableMetricVisualizationOutput values.
 // You can construct a concrete instance of `TimeSeriesTableMetricVisualizationInput` via:
 //
-//          TimeSeriesTableMetricVisualizationArgs{...}
+//	TimeSeriesTableMetricVisualizationArgs{...}
 type TimeSeriesTableMetricVisualizationInput interface {
 	pulumi.Input
 

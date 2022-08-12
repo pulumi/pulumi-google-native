@@ -49,7 +49,7 @@ type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironment struct {
 // GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentInput is an input type that accepts GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs and GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentInput` via:
 //
-//          GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs{...}
+//	GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs{...}
 type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentInput interface {
 	pulumi.Input
 
@@ -116,11 +116,11 @@ func (i GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs) ToGoogleCl
 // GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrInput is an input type that accepts GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs, GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtr and GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrInput` via:
 //
-//          GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs{...}
+//	        GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatapipelinesV1FlexTemplateRuntimeEnvironmentPtrInput interface {
 	pulumi.Input
 
@@ -605,7 +605,7 @@ type GoogleCloudDatapipelinesV1LaunchFlexTemplateParameter struct {
 // GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs and GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterInput` via:
 //
-//          GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs{...}
+//	GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs{...}
 type GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterInput interface {
 	pulumi.Input
 
@@ -654,11 +654,11 @@ func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs) ToGoogleCloud
 // GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs, GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtr and GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrInput` via:
 //
-//          GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs{...}
+//	        GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatapipelinesV1LaunchFlexTemplateParameterPtrInput interface {
 	pulumi.Input
 
@@ -937,7 +937,7 @@ type GoogleCloudDatapipelinesV1LaunchFlexTemplateRequest struct {
 // GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs and GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestInput` via:
 //
-//          GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs{...}
+//	GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs{...}
 type GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestInput interface {
 	pulumi.Input
 
@@ -980,11 +980,11 @@ func (i GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs) ToGoogleCloudDa
 // GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs, GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtr and GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrInput` via:
 //
-//          GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs{...}
+//	        GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatapipelinesV1LaunchFlexTemplateRequestPtrInput interface {
 	pulumi.Input
 
@@ -1187,7 +1187,7 @@ type GoogleCloudDatapipelinesV1LaunchTemplateParameters struct {
 // GoogleCloudDatapipelinesV1LaunchTemplateParametersInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs and GoogleCloudDatapipelinesV1LaunchTemplateParametersOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchTemplateParametersInput` via:
 //
-//          GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs{...}
+//	GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs{...}
 type GoogleCloudDatapipelinesV1LaunchTemplateParametersInput interface {
 	pulumi.Input
 
@@ -1232,11 +1232,11 @@ func (i GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs) ToGoogleCloudDat
 // GoogleCloudDatapipelinesV1LaunchTemplateParametersPtrInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs, GoogleCloudDatapipelinesV1LaunchTemplateParametersPtr and GoogleCloudDatapipelinesV1LaunchTemplateParametersPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchTemplateParametersPtrInput` via:
 //
-//          GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs{...}
+//	        GoogleCloudDatapipelinesV1LaunchTemplateParametersArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatapipelinesV1LaunchTemplateParametersPtrInput interface {
 	pulumi.Input
 
@@ -1467,7 +1467,7 @@ type GoogleCloudDatapipelinesV1LaunchTemplateRequest struct {
 // GoogleCloudDatapipelinesV1LaunchTemplateRequestInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs and GoogleCloudDatapipelinesV1LaunchTemplateRequestOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchTemplateRequestInput` via:
 //
-//          GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs{...}
+//	GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs{...}
 type GoogleCloudDatapipelinesV1LaunchTemplateRequestInput interface {
 	pulumi.Input
 
@@ -1512,11 +1512,11 @@ func (i GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs) ToGoogleCloudDatapi
 // GoogleCloudDatapipelinesV1LaunchTemplateRequestPtrInput is an input type that accepts GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs, GoogleCloudDatapipelinesV1LaunchTemplateRequestPtr and GoogleCloudDatapipelinesV1LaunchTemplateRequestPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1LaunchTemplateRequestPtrInput` via:
 //
-//          GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs{...}
+//	        GoogleCloudDatapipelinesV1LaunchTemplateRequestArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatapipelinesV1LaunchTemplateRequestPtrInput interface {
 	pulumi.Input
 
@@ -1763,7 +1763,7 @@ type GoogleCloudDatapipelinesV1RuntimeEnvironment struct {
 // GoogleCloudDatapipelinesV1RuntimeEnvironmentInput is an input type that accepts GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs and GoogleCloudDatapipelinesV1RuntimeEnvironmentOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1RuntimeEnvironmentInput` via:
 //
-//          GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs{...}
+//	GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs{...}
 type GoogleCloudDatapipelinesV1RuntimeEnvironmentInput interface {
 	pulumi.Input
 
@@ -1830,11 +1830,11 @@ func (i GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs) ToGoogleCloudDatapipel
 // GoogleCloudDatapipelinesV1RuntimeEnvironmentPtrInput is an input type that accepts GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs, GoogleCloudDatapipelinesV1RuntimeEnvironmentPtr and GoogleCloudDatapipelinesV1RuntimeEnvironmentPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1RuntimeEnvironmentPtrInput` via:
 //
-//          GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs{...}
+//	        GoogleCloudDatapipelinesV1RuntimeEnvironmentArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatapipelinesV1RuntimeEnvironmentPtrInput interface {
 	pulumi.Input
 
@@ -2295,7 +2295,7 @@ type GoogleCloudDatapipelinesV1ScheduleSpec struct {
 // GoogleCloudDatapipelinesV1ScheduleSpecInput is an input type that accepts GoogleCloudDatapipelinesV1ScheduleSpecArgs and GoogleCloudDatapipelinesV1ScheduleSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1ScheduleSpecInput` via:
 //
-//          GoogleCloudDatapipelinesV1ScheduleSpecArgs{...}
+//	GoogleCloudDatapipelinesV1ScheduleSpecArgs{...}
 type GoogleCloudDatapipelinesV1ScheduleSpecInput interface {
 	pulumi.Input
 
@@ -2334,11 +2334,11 @@ func (i GoogleCloudDatapipelinesV1ScheduleSpecArgs) ToGoogleCloudDatapipelinesV1
 // GoogleCloudDatapipelinesV1ScheduleSpecPtrInput is an input type that accepts GoogleCloudDatapipelinesV1ScheduleSpecArgs, GoogleCloudDatapipelinesV1ScheduleSpecPtr and GoogleCloudDatapipelinesV1ScheduleSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1ScheduleSpecPtrInput` via:
 //
-//          GoogleCloudDatapipelinesV1ScheduleSpecArgs{...}
+//	        GoogleCloudDatapipelinesV1ScheduleSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatapipelinesV1ScheduleSpecPtrInput interface {
 	pulumi.Input
 
@@ -2494,7 +2494,7 @@ type GoogleCloudDatapipelinesV1Workload struct {
 // GoogleCloudDatapipelinesV1WorkloadInput is an input type that accepts GoogleCloudDatapipelinesV1WorkloadArgs and GoogleCloudDatapipelinesV1WorkloadOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1WorkloadInput` via:
 //
-//          GoogleCloudDatapipelinesV1WorkloadArgs{...}
+//	GoogleCloudDatapipelinesV1WorkloadArgs{...}
 type GoogleCloudDatapipelinesV1WorkloadInput interface {
 	pulumi.Input
 
@@ -2533,11 +2533,11 @@ func (i GoogleCloudDatapipelinesV1WorkloadArgs) ToGoogleCloudDatapipelinesV1Work
 // GoogleCloudDatapipelinesV1WorkloadPtrInput is an input type that accepts GoogleCloudDatapipelinesV1WorkloadArgs, GoogleCloudDatapipelinesV1WorkloadPtr and GoogleCloudDatapipelinesV1WorkloadPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatapipelinesV1WorkloadPtrInput` via:
 //
-//          GoogleCloudDatapipelinesV1WorkloadArgs{...}
+//	        GoogleCloudDatapipelinesV1WorkloadArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatapipelinesV1WorkloadPtrInput interface {
 	pulumi.Input
 

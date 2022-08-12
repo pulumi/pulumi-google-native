@@ -144,7 +144,7 @@ func (o ExecutionCallLogLevelPtrOutput) ToStringPtrOutputWithContext(ctx context
 // ExecutionCallLogLevelInput is an input type that accepts ExecutionCallLogLevelArgs and ExecutionCallLogLevelOutput values.
 // You can construct a concrete instance of `ExecutionCallLogLevelInput` via:
 //
-//          ExecutionCallLogLevelArgs{...}
+//	ExecutionCallLogLevelArgs{...}
 type ExecutionCallLogLevelInput interface {
 	pulumi.Input
 

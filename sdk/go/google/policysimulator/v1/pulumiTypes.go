@@ -21,7 +21,7 @@ type GoogleCloudPolicysimulatorV1ReplayConfig struct {
 // GoogleCloudPolicysimulatorV1ReplayConfigInput is an input type that accepts GoogleCloudPolicysimulatorV1ReplayConfigArgs and GoogleCloudPolicysimulatorV1ReplayConfigOutput values.
 // You can construct a concrete instance of `GoogleCloudPolicysimulatorV1ReplayConfigInput` via:
 //
-//          GoogleCloudPolicysimulatorV1ReplayConfigArgs{...}
+//	GoogleCloudPolicysimulatorV1ReplayConfigArgs{...}
 type GoogleCloudPolicysimulatorV1ReplayConfigInput interface {
 	pulumi.Input
 

@@ -21,7 +21,7 @@ type AuditConfig struct {
 // AuditConfigInput is an input type that accepts AuditConfigArgs and AuditConfigOutput values.
 // You can construct a concrete instance of `AuditConfigInput` via:
 //
-//          AuditConfigArgs{...}
+//	AuditConfigArgs{...}
 type AuditConfigInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i AuditConfigArgs) ToAuditConfigOutputWithContext(ctx context.Context) Aud
 // AuditConfigArrayInput is an input type that accepts AuditConfigArray and AuditConfigArrayOutput values.
 // You can construct a concrete instance of `AuditConfigArrayInput` via:
 //
-//          AuditConfigArray{ AuditConfigArgs{...} }
+//	AuditConfigArray{ AuditConfigArgs{...} }
 type AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -183,7 +183,7 @@ type AuditLogConfig struct {
 // AuditLogConfigInput is an input type that accepts AuditLogConfigArgs and AuditLogConfigOutput values.
 // You can construct a concrete instance of `AuditLogConfigInput` via:
 //
-//          AuditLogConfigArgs{...}
+//	AuditLogConfigArgs{...}
 type AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -214,7 +214,7 @@ func (i AuditLogConfigArgs) ToAuditLogConfigOutputWithContext(ctx context.Contex
 // AuditLogConfigArrayInput is an input type that accepts AuditLogConfigArray and AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `AuditLogConfigArrayInput` via:
 //
-//          AuditLogConfigArray{ AuditLogConfigArgs{...} }
+//	AuditLogConfigArray{ AuditLogConfigArgs{...} }
 type AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -347,7 +347,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -380,7 +380,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -521,7 +521,7 @@ type EndpointMatcher struct {
 // EndpointMatcherInput is an input type that accepts EndpointMatcherArgs and EndpointMatcherOutput values.
 // You can construct a concrete instance of `EndpointMatcherInput` via:
 //
-//          EndpointMatcherArgs{...}
+//	EndpointMatcherArgs{...}
 type EndpointMatcherInput interface {
 	pulumi.Input
 
@@ -608,7 +608,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -651,11 +651,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -848,7 +848,7 @@ type GrpcRouteDestination struct {
 // GrpcRouteDestinationInput is an input type that accepts GrpcRouteDestinationArgs and GrpcRouteDestinationOutput values.
 // You can construct a concrete instance of `GrpcRouteDestinationInput` via:
 //
-//          GrpcRouteDestinationArgs{...}
+//	GrpcRouteDestinationArgs{...}
 type GrpcRouteDestinationInput interface {
 	pulumi.Input
 
@@ -879,7 +879,7 @@ func (i GrpcRouteDestinationArgs) ToGrpcRouteDestinationOutputWithContext(ctx co
 // GrpcRouteDestinationArrayInput is an input type that accepts GrpcRouteDestinationArray and GrpcRouteDestinationArrayOutput values.
 // You can construct a concrete instance of `GrpcRouteDestinationArrayInput` via:
 //
-//          GrpcRouteDestinationArray{ GrpcRouteDestinationArgs{...} }
+//	GrpcRouteDestinationArray{ GrpcRouteDestinationArgs{...} }
 type GrpcRouteDestinationArrayInput interface {
 	pulumi.Input
 
@@ -1010,7 +1010,7 @@ type GrpcRouteFaultInjectionPolicy struct {
 // GrpcRouteFaultInjectionPolicyInput is an input type that accepts GrpcRouteFaultInjectionPolicyArgs and GrpcRouteFaultInjectionPolicyOutput values.
 // You can construct a concrete instance of `GrpcRouteFaultInjectionPolicyInput` via:
 //
-//          GrpcRouteFaultInjectionPolicyArgs{...}
+//	GrpcRouteFaultInjectionPolicyArgs{...}
 type GrpcRouteFaultInjectionPolicyInput interface {
 	pulumi.Input
 
@@ -1049,11 +1049,11 @@ func (i GrpcRouteFaultInjectionPolicyArgs) ToGrpcRouteFaultInjectionPolicyPtrOut
 // GrpcRouteFaultInjectionPolicyPtrInput is an input type that accepts GrpcRouteFaultInjectionPolicyArgs, GrpcRouteFaultInjectionPolicyPtr and GrpcRouteFaultInjectionPolicyPtrOutput values.
 // You can construct a concrete instance of `GrpcRouteFaultInjectionPolicyPtrInput` via:
 //
-//          GrpcRouteFaultInjectionPolicyArgs{...}
+//	        GrpcRouteFaultInjectionPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrpcRouteFaultInjectionPolicyPtrInput interface {
 	pulumi.Input
 
@@ -1169,7 +1169,7 @@ type GrpcRouteFaultInjectionPolicyAbort struct {
 // GrpcRouteFaultInjectionPolicyAbortInput is an input type that accepts GrpcRouteFaultInjectionPolicyAbortArgs and GrpcRouteFaultInjectionPolicyAbortOutput values.
 // You can construct a concrete instance of `GrpcRouteFaultInjectionPolicyAbortInput` via:
 //
-//          GrpcRouteFaultInjectionPolicyAbortArgs{...}
+//	GrpcRouteFaultInjectionPolicyAbortArgs{...}
 type GrpcRouteFaultInjectionPolicyAbortInput interface {
 	pulumi.Input
 
@@ -1208,11 +1208,11 @@ func (i GrpcRouteFaultInjectionPolicyAbortArgs) ToGrpcRouteFaultInjectionPolicyA
 // GrpcRouteFaultInjectionPolicyAbortPtrInput is an input type that accepts GrpcRouteFaultInjectionPolicyAbortArgs, GrpcRouteFaultInjectionPolicyAbortPtr and GrpcRouteFaultInjectionPolicyAbortPtrOutput values.
 // You can construct a concrete instance of `GrpcRouteFaultInjectionPolicyAbortPtrInput` via:
 //
-//          GrpcRouteFaultInjectionPolicyAbortArgs{...}
+//	        GrpcRouteFaultInjectionPolicyAbortArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrpcRouteFaultInjectionPolicyAbortPtrInput interface {
 	pulumi.Input
 
@@ -1361,7 +1361,7 @@ type GrpcRouteFaultInjectionPolicyDelay struct {
 // GrpcRouteFaultInjectionPolicyDelayInput is an input type that accepts GrpcRouteFaultInjectionPolicyDelayArgs and GrpcRouteFaultInjectionPolicyDelayOutput values.
 // You can construct a concrete instance of `GrpcRouteFaultInjectionPolicyDelayInput` via:
 //
-//          GrpcRouteFaultInjectionPolicyDelayArgs{...}
+//	GrpcRouteFaultInjectionPolicyDelayArgs{...}
 type GrpcRouteFaultInjectionPolicyDelayInput interface {
 	pulumi.Input
 
@@ -1400,11 +1400,11 @@ func (i GrpcRouteFaultInjectionPolicyDelayArgs) ToGrpcRouteFaultInjectionPolicyD
 // GrpcRouteFaultInjectionPolicyDelayPtrInput is an input type that accepts GrpcRouteFaultInjectionPolicyDelayArgs, GrpcRouteFaultInjectionPolicyDelayPtr and GrpcRouteFaultInjectionPolicyDelayPtrOutput values.
 // You can construct a concrete instance of `GrpcRouteFaultInjectionPolicyDelayPtrInput` via:
 //
-//          GrpcRouteFaultInjectionPolicyDelayArgs{...}
+//	        GrpcRouteFaultInjectionPolicyDelayArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrpcRouteFaultInjectionPolicyDelayPtrInput interface {
 	pulumi.Input
 
@@ -1592,7 +1592,7 @@ type GrpcRouteHeaderMatch struct {
 // GrpcRouteHeaderMatchInput is an input type that accepts GrpcRouteHeaderMatchArgs and GrpcRouteHeaderMatchOutput values.
 // You can construct a concrete instance of `GrpcRouteHeaderMatchInput` via:
 //
-//          GrpcRouteHeaderMatchArgs{...}
+//	GrpcRouteHeaderMatchArgs{...}
 type GrpcRouteHeaderMatchInput interface {
 	pulumi.Input
 
@@ -1625,7 +1625,7 @@ func (i GrpcRouteHeaderMatchArgs) ToGrpcRouteHeaderMatchOutputWithContext(ctx co
 // GrpcRouteHeaderMatchArrayInput is an input type that accepts GrpcRouteHeaderMatchArray and GrpcRouteHeaderMatchArrayOutput values.
 // You can construct a concrete instance of `GrpcRouteHeaderMatchArrayInput` via:
 //
-//          GrpcRouteHeaderMatchArray{ GrpcRouteHeaderMatchArgs{...} }
+//	GrpcRouteHeaderMatchArray{ GrpcRouteHeaderMatchArgs{...} }
 type GrpcRouteHeaderMatchArrayInput interface {
 	pulumi.Input
 
@@ -1772,7 +1772,7 @@ type GrpcRouteMethodMatch struct {
 // GrpcRouteMethodMatchInput is an input type that accepts GrpcRouteMethodMatchArgs and GrpcRouteMethodMatchOutput values.
 // You can construct a concrete instance of `GrpcRouteMethodMatchInput` via:
 //
-//          GrpcRouteMethodMatchArgs{...}
+//	GrpcRouteMethodMatchArgs{...}
 type GrpcRouteMethodMatchInput interface {
 	pulumi.Input
 
@@ -1815,11 +1815,11 @@ func (i GrpcRouteMethodMatchArgs) ToGrpcRouteMethodMatchPtrOutputWithContext(ctx
 // GrpcRouteMethodMatchPtrInput is an input type that accepts GrpcRouteMethodMatchArgs, GrpcRouteMethodMatchPtr and GrpcRouteMethodMatchPtrOutput values.
 // You can construct a concrete instance of `GrpcRouteMethodMatchPtrInput` via:
 //
-//          GrpcRouteMethodMatchArgs{...}
+//	        GrpcRouteMethodMatchArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrpcRouteMethodMatchPtrInput interface {
 	pulumi.Input
 
@@ -2012,7 +2012,7 @@ type GrpcRouteRetryPolicy struct {
 // GrpcRouteRetryPolicyInput is an input type that accepts GrpcRouteRetryPolicyArgs and GrpcRouteRetryPolicyOutput values.
 // You can construct a concrete instance of `GrpcRouteRetryPolicyInput` via:
 //
-//          GrpcRouteRetryPolicyArgs{...}
+//	GrpcRouteRetryPolicyArgs{...}
 type GrpcRouteRetryPolicyInput interface {
 	pulumi.Input
 
@@ -2051,11 +2051,11 @@ func (i GrpcRouteRetryPolicyArgs) ToGrpcRouteRetryPolicyPtrOutputWithContext(ctx
 // GrpcRouteRetryPolicyPtrInput is an input type that accepts GrpcRouteRetryPolicyArgs, GrpcRouteRetryPolicyPtr and GrpcRouteRetryPolicyPtrOutput values.
 // You can construct a concrete instance of `GrpcRouteRetryPolicyPtrInput` via:
 //
-//          GrpcRouteRetryPolicyArgs{...}
+//	        GrpcRouteRetryPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GrpcRouteRetryPolicyPtrInput interface {
 	pulumi.Input
 
@@ -2208,7 +2208,7 @@ type GrpcRouteRouteAction struct {
 // GrpcRouteRouteActionInput is an input type that accepts GrpcRouteRouteActionArgs and GrpcRouteRouteActionOutput values.
 // You can construct a concrete instance of `GrpcRouteRouteActionInput` via:
 //
-//          GrpcRouteRouteActionArgs{...}
+//	GrpcRouteRouteActionArgs{...}
 type GrpcRouteRouteActionInput interface {
 	pulumi.Input
 
@@ -2335,7 +2335,7 @@ type GrpcRouteRouteMatch struct {
 // GrpcRouteRouteMatchInput is an input type that accepts GrpcRouteRouteMatchArgs and GrpcRouteRouteMatchOutput values.
 // You can construct a concrete instance of `GrpcRouteRouteMatchInput` via:
 //
-//          GrpcRouteRouteMatchArgs{...}
+//	GrpcRouteRouteMatchArgs{...}
 type GrpcRouteRouteMatchInput interface {
 	pulumi.Input
 
@@ -2366,7 +2366,7 @@ func (i GrpcRouteRouteMatchArgs) ToGrpcRouteRouteMatchOutputWithContext(ctx cont
 // GrpcRouteRouteMatchArrayInput is an input type that accepts GrpcRouteRouteMatchArray and GrpcRouteRouteMatchArrayOutput values.
 // You can construct a concrete instance of `GrpcRouteRouteMatchArrayInput` via:
 //
-//          GrpcRouteRouteMatchArray{ GrpcRouteRouteMatchArgs{...} }
+//	GrpcRouteRouteMatchArray{ GrpcRouteRouteMatchArgs{...} }
 type GrpcRouteRouteMatchArrayInput interface {
 	pulumi.Input
 
@@ -2497,7 +2497,7 @@ type GrpcRouteRouteRule struct {
 // GrpcRouteRouteRuleInput is an input type that accepts GrpcRouteRouteRuleArgs and GrpcRouteRouteRuleOutput values.
 // You can construct a concrete instance of `GrpcRouteRouteRuleInput` via:
 //
-//          GrpcRouteRouteRuleArgs{...}
+//	GrpcRouteRouteRuleArgs{...}
 type GrpcRouteRouteRuleInput interface {
 	pulumi.Input
 
@@ -2528,7 +2528,7 @@ func (i GrpcRouteRouteRuleArgs) ToGrpcRouteRouteRuleOutputWithContext(ctx contex
 // GrpcRouteRouteRuleArrayInput is an input type that accepts GrpcRouteRouteRuleArray and GrpcRouteRouteRuleArrayOutput values.
 // You can construct a concrete instance of `GrpcRouteRouteRuleArrayInput` via:
 //
-//          GrpcRouteRouteRuleArray{ GrpcRouteRouteRuleArgs{...} }
+//	GrpcRouteRouteRuleArray{ GrpcRouteRouteRuleArgs{...} }
 type GrpcRouteRouteRuleArrayInput interface {
 	pulumi.Input
 
@@ -2671,7 +2671,7 @@ type HttpRouteCorsPolicy struct {
 // HttpRouteCorsPolicyInput is an input type that accepts HttpRouteCorsPolicyArgs and HttpRouteCorsPolicyOutput values.
 // You can construct a concrete instance of `HttpRouteCorsPolicyInput` via:
 //
-//          HttpRouteCorsPolicyArgs{...}
+//	HttpRouteCorsPolicyArgs{...}
 type HttpRouteCorsPolicyInput interface {
 	pulumi.Input
 
@@ -2722,11 +2722,11 @@ func (i HttpRouteCorsPolicyArgs) ToHttpRouteCorsPolicyPtrOutputWithContext(ctx c
 // HttpRouteCorsPolicyPtrInput is an input type that accepts HttpRouteCorsPolicyArgs, HttpRouteCorsPolicyPtr and HttpRouteCorsPolicyPtrOutput values.
 // You can construct a concrete instance of `HttpRouteCorsPolicyPtrInput` via:
 //
-//          HttpRouteCorsPolicyArgs{...}
+//	        HttpRouteCorsPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpRouteCorsPolicyPtrInput interface {
 	pulumi.Input
 
@@ -3007,7 +3007,7 @@ type HttpRouteDestination struct {
 // HttpRouteDestinationInput is an input type that accepts HttpRouteDestinationArgs and HttpRouteDestinationOutput values.
 // You can construct a concrete instance of `HttpRouteDestinationInput` via:
 //
-//          HttpRouteDestinationArgs{...}
+//	HttpRouteDestinationArgs{...}
 type HttpRouteDestinationInput interface {
 	pulumi.Input
 
@@ -3046,11 +3046,11 @@ func (i HttpRouteDestinationArgs) ToHttpRouteDestinationPtrOutputWithContext(ctx
 // HttpRouteDestinationPtrInput is an input type that accepts HttpRouteDestinationArgs, HttpRouteDestinationPtr and HttpRouteDestinationPtrOutput values.
 // You can construct a concrete instance of `HttpRouteDestinationPtrInput` via:
 //
-//          HttpRouteDestinationArgs{...}
+//	        HttpRouteDestinationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpRouteDestinationPtrInput interface {
 	pulumi.Input
 
@@ -3079,7 +3079,7 @@ func (i *httpRouteDestinationPtrType) ToHttpRouteDestinationPtrOutputWithContext
 // HttpRouteDestinationArrayInput is an input type that accepts HttpRouteDestinationArray and HttpRouteDestinationArrayOutput values.
 // You can construct a concrete instance of `HttpRouteDestinationArrayInput` via:
 //
-//          HttpRouteDestinationArray{ HttpRouteDestinationArgs{...} }
+//	HttpRouteDestinationArray{ HttpRouteDestinationArgs{...} }
 type HttpRouteDestinationArrayInput interface {
 	pulumi.Input
 
@@ -3264,7 +3264,7 @@ type HttpRouteFaultInjectionPolicy struct {
 // HttpRouteFaultInjectionPolicyInput is an input type that accepts HttpRouteFaultInjectionPolicyArgs and HttpRouteFaultInjectionPolicyOutput values.
 // You can construct a concrete instance of `HttpRouteFaultInjectionPolicyInput` via:
 //
-//          HttpRouteFaultInjectionPolicyArgs{...}
+//	HttpRouteFaultInjectionPolicyArgs{...}
 type HttpRouteFaultInjectionPolicyInput interface {
 	pulumi.Input
 
@@ -3303,11 +3303,11 @@ func (i HttpRouteFaultInjectionPolicyArgs) ToHttpRouteFaultInjectionPolicyPtrOut
 // HttpRouteFaultInjectionPolicyPtrInput is an input type that accepts HttpRouteFaultInjectionPolicyArgs, HttpRouteFaultInjectionPolicyPtr and HttpRouteFaultInjectionPolicyPtrOutput values.
 // You can construct a concrete instance of `HttpRouteFaultInjectionPolicyPtrInput` via:
 //
-//          HttpRouteFaultInjectionPolicyArgs{...}
+//	        HttpRouteFaultInjectionPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpRouteFaultInjectionPolicyPtrInput interface {
 	pulumi.Input
 
@@ -3423,7 +3423,7 @@ type HttpRouteFaultInjectionPolicyAbort struct {
 // HttpRouteFaultInjectionPolicyAbortInput is an input type that accepts HttpRouteFaultInjectionPolicyAbortArgs and HttpRouteFaultInjectionPolicyAbortOutput values.
 // You can construct a concrete instance of `HttpRouteFaultInjectionPolicyAbortInput` via:
 //
-//          HttpRouteFaultInjectionPolicyAbortArgs{...}
+//	HttpRouteFaultInjectionPolicyAbortArgs{...}
 type HttpRouteFaultInjectionPolicyAbortInput interface {
 	pulumi.Input
 
@@ -3462,11 +3462,11 @@ func (i HttpRouteFaultInjectionPolicyAbortArgs) ToHttpRouteFaultInjectionPolicyA
 // HttpRouteFaultInjectionPolicyAbortPtrInput is an input type that accepts HttpRouteFaultInjectionPolicyAbortArgs, HttpRouteFaultInjectionPolicyAbortPtr and HttpRouteFaultInjectionPolicyAbortPtrOutput values.
 // You can construct a concrete instance of `HttpRouteFaultInjectionPolicyAbortPtrInput` via:
 //
-//          HttpRouteFaultInjectionPolicyAbortArgs{...}
+//	        HttpRouteFaultInjectionPolicyAbortArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpRouteFaultInjectionPolicyAbortPtrInput interface {
 	pulumi.Input
 
@@ -3615,7 +3615,7 @@ type HttpRouteFaultInjectionPolicyDelay struct {
 // HttpRouteFaultInjectionPolicyDelayInput is an input type that accepts HttpRouteFaultInjectionPolicyDelayArgs and HttpRouteFaultInjectionPolicyDelayOutput values.
 // You can construct a concrete instance of `HttpRouteFaultInjectionPolicyDelayInput` via:
 //
-//          HttpRouteFaultInjectionPolicyDelayArgs{...}
+//	HttpRouteFaultInjectionPolicyDelayArgs{...}
 type HttpRouteFaultInjectionPolicyDelayInput interface {
 	pulumi.Input
 
@@ -3654,11 +3654,11 @@ func (i HttpRouteFaultInjectionPolicyDelayArgs) ToHttpRouteFaultInjectionPolicyD
 // HttpRouteFaultInjectionPolicyDelayPtrInput is an input type that accepts HttpRouteFaultInjectionPolicyDelayArgs, HttpRouteFaultInjectionPolicyDelayPtr and HttpRouteFaultInjectionPolicyDelayPtrOutput values.
 // You can construct a concrete instance of `HttpRouteFaultInjectionPolicyDelayPtrInput` via:
 //
-//          HttpRouteFaultInjectionPolicyDelayArgs{...}
+//	        HttpRouteFaultInjectionPolicyDelayArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpRouteFaultInjectionPolicyDelayPtrInput interface {
 	pulumi.Input
 
@@ -3856,7 +3856,7 @@ type HttpRouteHeaderMatch struct {
 // HttpRouteHeaderMatchInput is an input type that accepts HttpRouteHeaderMatchArgs and HttpRouteHeaderMatchOutput values.
 // You can construct a concrete instance of `HttpRouteHeaderMatchInput` via:
 //
-//          HttpRouteHeaderMatchArgs{...}
+//	HttpRouteHeaderMatchArgs{...}
 type HttpRouteHeaderMatchInput interface {
 	pulumi.Input
 
@@ -3899,7 +3899,7 @@ func (i HttpRouteHeaderMatchArgs) ToHttpRouteHeaderMatchOutputWithContext(ctx co
 // HttpRouteHeaderMatchArrayInput is an input type that accepts HttpRouteHeaderMatchArray and HttpRouteHeaderMatchArrayOutput values.
 // You can construct a concrete instance of `HttpRouteHeaderMatchArrayInput` via:
 //
-//          HttpRouteHeaderMatchArray{ HttpRouteHeaderMatchArgs{...} }
+//	HttpRouteHeaderMatchArray{ HttpRouteHeaderMatchArgs{...} }
 type HttpRouteHeaderMatchArrayInput interface {
 	pulumi.Input
 
@@ -4007,7 +4007,7 @@ type HttpRouteHeaderMatchIntegerRange struct {
 // HttpRouteHeaderMatchIntegerRangeInput is an input type that accepts HttpRouteHeaderMatchIntegerRangeArgs and HttpRouteHeaderMatchIntegerRangeOutput values.
 // You can construct a concrete instance of `HttpRouteHeaderMatchIntegerRangeInput` via:
 //
-//          HttpRouteHeaderMatchIntegerRangeArgs{...}
+//	HttpRouteHeaderMatchIntegerRangeArgs{...}
 type HttpRouteHeaderMatchIntegerRangeInput interface {
 	pulumi.Input
 
@@ -4046,11 +4046,11 @@ func (i HttpRouteHeaderMatchIntegerRangeArgs) ToHttpRouteHeaderMatchIntegerRange
 // HttpRouteHeaderMatchIntegerRangePtrInput is an input type that accepts HttpRouteHeaderMatchIntegerRangeArgs, HttpRouteHeaderMatchIntegerRangePtr and HttpRouteHeaderMatchIntegerRangePtrOutput values.
 // You can construct a concrete instance of `HttpRouteHeaderMatchIntegerRangePtrInput` via:
 //
-//          HttpRouteHeaderMatchIntegerRangeArgs{...}
+//	        HttpRouteHeaderMatchIntegerRangeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpRouteHeaderMatchIntegerRangePtrInput interface {
 	pulumi.Input
 
@@ -4296,7 +4296,7 @@ type HttpRouteHeaderModifier struct {
 // HttpRouteHeaderModifierInput is an input type that accepts HttpRouteHeaderModifierArgs and HttpRouteHeaderModifierOutput values.
 // You can construct a concrete instance of `HttpRouteHeaderModifierInput` via:
 //
-//          HttpRouteHeaderModifierArgs{...}
+//	HttpRouteHeaderModifierArgs{...}
 type HttpRouteHeaderModifierInput interface {
 	pulumi.Input
 
@@ -4337,11 +4337,11 @@ func (i HttpRouteHeaderModifierArgs) ToHttpRouteHeaderModifierPtrOutputWithConte
 // HttpRouteHeaderModifierPtrInput is an input type that accepts HttpRouteHeaderModifierArgs, HttpRouteHeaderModifierPtr and HttpRouteHeaderModifierPtrOutput values.
 // You can construct a concrete instance of `HttpRouteHeaderModifierPtrInput` via:
 //
-//          HttpRouteHeaderModifierArgs{...}
+//	        HttpRouteHeaderModifierArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpRouteHeaderModifierPtrInput interface {
 	pulumi.Input
 
@@ -4516,7 +4516,7 @@ type HttpRouteQueryParameterMatch struct {
 // HttpRouteQueryParameterMatchInput is an input type that accepts HttpRouteQueryParameterMatchArgs and HttpRouteQueryParameterMatchOutput values.
 // You can construct a concrete instance of `HttpRouteQueryParameterMatchInput` via:
 //
-//          HttpRouteQueryParameterMatchArgs{...}
+//	HttpRouteQueryParameterMatchArgs{...}
 type HttpRouteQueryParameterMatchInput interface {
 	pulumi.Input
 
@@ -4551,7 +4551,7 @@ func (i HttpRouteQueryParameterMatchArgs) ToHttpRouteQueryParameterMatchOutputWi
 // HttpRouteQueryParameterMatchArrayInput is an input type that accepts HttpRouteQueryParameterMatchArray and HttpRouteQueryParameterMatchArrayOutput values.
 // You can construct a concrete instance of `HttpRouteQueryParameterMatchArrayInput` via:
 //
-//          HttpRouteQueryParameterMatchArray{ HttpRouteQueryParameterMatchArgs{...} }
+//	HttpRouteQueryParameterMatchArray{ HttpRouteQueryParameterMatchArgs{...} }
 type HttpRouteQueryParameterMatchArrayInput interface {
 	pulumi.Input
 
@@ -4716,7 +4716,7 @@ type HttpRouteRedirect struct {
 // HttpRouteRedirectInput is an input type that accepts HttpRouteRedirectArgs and HttpRouteRedirectOutput values.
 // You can construct a concrete instance of `HttpRouteRedirectInput` via:
 //
-//          HttpRouteRedirectArgs{...}
+//	HttpRouteRedirectArgs{...}
 type HttpRouteRedirectInput interface {
 	pulumi.Input
 
@@ -4765,11 +4765,11 @@ func (i HttpRouteRedirectArgs) ToHttpRouteRedirectPtrOutputWithContext(ctx conte
 // HttpRouteRedirectPtrInput is an input type that accepts HttpRouteRedirectArgs, HttpRouteRedirectPtr and HttpRouteRedirectPtrOutput values.
 // You can construct a concrete instance of `HttpRouteRedirectPtrInput` via:
 //
-//          HttpRouteRedirectArgs{...}
+//	        HttpRouteRedirectArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpRouteRedirectPtrInput interface {
 	pulumi.Input
 
@@ -5026,7 +5026,7 @@ type HttpRouteRequestMirrorPolicy struct {
 // HttpRouteRequestMirrorPolicyInput is an input type that accepts HttpRouteRequestMirrorPolicyArgs and HttpRouteRequestMirrorPolicyOutput values.
 // You can construct a concrete instance of `HttpRouteRequestMirrorPolicyInput` via:
 //
-//          HttpRouteRequestMirrorPolicyArgs{...}
+//	HttpRouteRequestMirrorPolicyArgs{...}
 type HttpRouteRequestMirrorPolicyInput interface {
 	pulumi.Input
 
@@ -5063,11 +5063,11 @@ func (i HttpRouteRequestMirrorPolicyArgs) ToHttpRouteRequestMirrorPolicyPtrOutpu
 // HttpRouteRequestMirrorPolicyPtrInput is an input type that accepts HttpRouteRequestMirrorPolicyArgs, HttpRouteRequestMirrorPolicyPtr and HttpRouteRequestMirrorPolicyPtrOutput values.
 // You can construct a concrete instance of `HttpRouteRequestMirrorPolicyPtrInput` via:
 //
-//          HttpRouteRequestMirrorPolicyArgs{...}
+//	        HttpRouteRequestMirrorPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpRouteRequestMirrorPolicyPtrInput interface {
 	pulumi.Input
 
@@ -5196,7 +5196,7 @@ type HttpRouteRetryPolicy struct {
 // HttpRouteRetryPolicyInput is an input type that accepts HttpRouteRetryPolicyArgs and HttpRouteRetryPolicyOutput values.
 // You can construct a concrete instance of `HttpRouteRetryPolicyInput` via:
 //
-//          HttpRouteRetryPolicyArgs{...}
+//	HttpRouteRetryPolicyArgs{...}
 type HttpRouteRetryPolicyInput interface {
 	pulumi.Input
 
@@ -5237,11 +5237,11 @@ func (i HttpRouteRetryPolicyArgs) ToHttpRouteRetryPolicyPtrOutputWithContext(ctx
 // HttpRouteRetryPolicyPtrInput is an input type that accepts HttpRouteRetryPolicyArgs, HttpRouteRetryPolicyPtr and HttpRouteRetryPolicyPtrOutput values.
 // You can construct a concrete instance of `HttpRouteRetryPolicyPtrInput` via:
 //
-//          HttpRouteRetryPolicyArgs{...}
+//	        HttpRouteRetryPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpRouteRetryPolicyPtrInput interface {
 	pulumi.Input
 
@@ -5428,7 +5428,7 @@ type HttpRouteRouteAction struct {
 // HttpRouteRouteActionInput is an input type that accepts HttpRouteRouteActionArgs and HttpRouteRouteActionOutput values.
 // You can construct a concrete instance of `HttpRouteRouteActionInput` via:
 //
-//          HttpRouteRouteActionArgs{...}
+//	HttpRouteRouteActionArgs{...}
 type HttpRouteRouteActionInput interface {
 	pulumi.Input
 
@@ -5483,11 +5483,11 @@ func (i HttpRouteRouteActionArgs) ToHttpRouteRouteActionPtrOutputWithContext(ctx
 // HttpRouteRouteActionPtrInput is an input type that accepts HttpRouteRouteActionArgs, HttpRouteRouteActionPtr and HttpRouteRouteActionPtrOutput values.
 // You can construct a concrete instance of `HttpRouteRouteActionPtrInput` via:
 //
-//          HttpRouteRouteActionArgs{...}
+//	        HttpRouteRouteActionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpRouteRouteActionPtrInput interface {
 	pulumi.Input
 
@@ -5824,7 +5824,7 @@ type HttpRouteRouteMatch struct {
 // HttpRouteRouteMatchInput is an input type that accepts HttpRouteRouteMatchArgs and HttpRouteRouteMatchOutput values.
 // You can construct a concrete instance of `HttpRouteRouteMatchInput` via:
 //
-//          HttpRouteRouteMatchArgs{...}
+//	HttpRouteRouteMatchArgs{...}
 type HttpRouteRouteMatchInput interface {
 	pulumi.Input
 
@@ -5863,7 +5863,7 @@ func (i HttpRouteRouteMatchArgs) ToHttpRouteRouteMatchOutputWithContext(ctx cont
 // HttpRouteRouteMatchArrayInput is an input type that accepts HttpRouteRouteMatchArray and HttpRouteRouteMatchArrayOutput values.
 // You can construct a concrete instance of `HttpRouteRouteMatchArrayInput` via:
 //
-//          HttpRouteRouteMatchArray{ HttpRouteRouteMatchArgs{...} }
+//	HttpRouteRouteMatchArray{ HttpRouteRouteMatchArgs{...} }
 type HttpRouteRouteMatchArrayInput interface {
 	pulumi.Input
 
@@ -6042,7 +6042,7 @@ type HttpRouteRouteRule struct {
 // HttpRouteRouteRuleInput is an input type that accepts HttpRouteRouteRuleArgs and HttpRouteRouteRuleOutput values.
 // You can construct a concrete instance of `HttpRouteRouteRuleInput` via:
 //
-//          HttpRouteRouteRuleArgs{...}
+//	HttpRouteRouteRuleArgs{...}
 type HttpRouteRouteRuleInput interface {
 	pulumi.Input
 
@@ -6073,7 +6073,7 @@ func (i HttpRouteRouteRuleArgs) ToHttpRouteRouteRuleOutputWithContext(ctx contex
 // HttpRouteRouteRuleArrayInput is an input type that accepts HttpRouteRouteRuleArray and HttpRouteRouteRuleArrayOutput values.
 // You can construct a concrete instance of `HttpRouteRouteRuleArrayInput` via:
 //
-//          HttpRouteRouteRuleArray{ HttpRouteRouteRuleArgs{...} }
+//	HttpRouteRouteRuleArray{ HttpRouteRouteRuleArgs{...} }
 type HttpRouteRouteRuleArrayInput interface {
 	pulumi.Input
 
@@ -6204,7 +6204,7 @@ type HttpRouteURLRewrite struct {
 // HttpRouteURLRewriteInput is an input type that accepts HttpRouteURLRewriteArgs and HttpRouteURLRewriteOutput values.
 // You can construct a concrete instance of `HttpRouteURLRewriteInput` via:
 //
-//          HttpRouteURLRewriteArgs{...}
+//	HttpRouteURLRewriteArgs{...}
 type HttpRouteURLRewriteInput interface {
 	pulumi.Input
 
@@ -6243,11 +6243,11 @@ func (i HttpRouteURLRewriteArgs) ToHttpRouteURLRewritePtrOutputWithContext(ctx c
 // HttpRouteURLRewritePtrInput is an input type that accepts HttpRouteURLRewriteArgs, HttpRouteURLRewritePtr and HttpRouteURLRewritePtrOutput values.
 // You can construct a concrete instance of `HttpRouteURLRewritePtrInput` via:
 //
-//          HttpRouteURLRewriteArgs{...}
+//	        HttpRouteURLRewriteArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpRouteURLRewritePtrInput interface {
 	pulumi.Input
 
@@ -6396,7 +6396,7 @@ type MetadataLabelMatcher struct {
 // MetadataLabelMatcherInput is an input type that accepts MetadataLabelMatcherArgs and MetadataLabelMatcherOutput values.
 // You can construct a concrete instance of `MetadataLabelMatcherInput` via:
 //
-//          MetadataLabelMatcherArgs{...}
+//	MetadataLabelMatcherArgs{...}
 type MetadataLabelMatcherInput interface {
 	pulumi.Input
 
@@ -6435,11 +6435,11 @@ func (i MetadataLabelMatcherArgs) ToMetadataLabelMatcherPtrOutputWithContext(ctx
 // MetadataLabelMatcherPtrInput is an input type that accepts MetadataLabelMatcherArgs, MetadataLabelMatcherPtr and MetadataLabelMatcherPtrOutput values.
 // You can construct a concrete instance of `MetadataLabelMatcherPtrInput` via:
 //
-//          MetadataLabelMatcherArgs{...}
+//	        MetadataLabelMatcherArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetadataLabelMatcherPtrInput interface {
 	pulumi.Input
 
@@ -6590,7 +6590,7 @@ type MetadataLabels struct {
 // MetadataLabelsInput is an input type that accepts MetadataLabelsArgs and MetadataLabelsOutput values.
 // You can construct a concrete instance of `MetadataLabelsInput` via:
 //
-//          MetadataLabelsArgs{...}
+//	MetadataLabelsArgs{...}
 type MetadataLabelsInput interface {
 	pulumi.Input
 
@@ -6621,7 +6621,7 @@ func (i MetadataLabelsArgs) ToMetadataLabelsOutputWithContext(ctx context.Contex
 // MetadataLabelsArrayInput is an input type that accepts MetadataLabelsArray and MetadataLabelsArrayOutput values.
 // You can construct a concrete instance of `MetadataLabelsArrayInput` via:
 //
-//          MetadataLabelsArray{ MetadataLabelsArgs{...} }
+//	MetadataLabelsArray{ MetadataLabelsArgs{...} }
 type MetadataLabelsArrayInput interface {
 	pulumi.Input
 
@@ -6752,7 +6752,7 @@ type TcpRouteRouteAction struct {
 // TcpRouteRouteActionInput is an input type that accepts TcpRouteRouteActionArgs and TcpRouteRouteActionOutput values.
 // You can construct a concrete instance of `TcpRouteRouteActionInput` via:
 //
-//          TcpRouteRouteActionArgs{...}
+//	TcpRouteRouteActionArgs{...}
 type TcpRouteRouteActionInput interface {
 	pulumi.Input
 
@@ -6849,7 +6849,7 @@ type TcpRouteRouteDestination struct {
 // TcpRouteRouteDestinationInput is an input type that accepts TcpRouteRouteDestinationArgs and TcpRouteRouteDestinationOutput values.
 // You can construct a concrete instance of `TcpRouteRouteDestinationInput` via:
 //
-//          TcpRouteRouteDestinationArgs{...}
+//	TcpRouteRouteDestinationArgs{...}
 type TcpRouteRouteDestinationInput interface {
 	pulumi.Input
 
@@ -6880,7 +6880,7 @@ func (i TcpRouteRouteDestinationArgs) ToTcpRouteRouteDestinationOutputWithContex
 // TcpRouteRouteDestinationArrayInput is an input type that accepts TcpRouteRouteDestinationArray and TcpRouteRouteDestinationArrayOutput values.
 // You can construct a concrete instance of `TcpRouteRouteDestinationArrayInput` via:
 //
-//          TcpRouteRouteDestinationArray{ TcpRouteRouteDestinationArgs{...} }
+//	TcpRouteRouteDestinationArray{ TcpRouteRouteDestinationArgs{...} }
 type TcpRouteRouteDestinationArrayInput interface {
 	pulumi.Input
 
@@ -7011,7 +7011,7 @@ type TcpRouteRouteMatch struct {
 // TcpRouteRouteMatchInput is an input type that accepts TcpRouteRouteMatchArgs and TcpRouteRouteMatchOutput values.
 // You can construct a concrete instance of `TcpRouteRouteMatchInput` via:
 //
-//          TcpRouteRouteMatchArgs{...}
+//	TcpRouteRouteMatchArgs{...}
 type TcpRouteRouteMatchInput interface {
 	pulumi.Input
 
@@ -7042,7 +7042,7 @@ func (i TcpRouteRouteMatchArgs) ToTcpRouteRouteMatchOutputWithContext(ctx contex
 // TcpRouteRouteMatchArrayInput is an input type that accepts TcpRouteRouteMatchArray and TcpRouteRouteMatchArrayOutput values.
 // You can construct a concrete instance of `TcpRouteRouteMatchArrayInput` via:
 //
-//          TcpRouteRouteMatchArray{ TcpRouteRouteMatchArgs{...} }
+//	TcpRouteRouteMatchArray{ TcpRouteRouteMatchArgs{...} }
 type TcpRouteRouteMatchArrayInput interface {
 	pulumi.Input
 
@@ -7173,7 +7173,7 @@ type TcpRouteRouteRule struct {
 // TcpRouteRouteRuleInput is an input type that accepts TcpRouteRouteRuleArgs and TcpRouteRouteRuleOutput values.
 // You can construct a concrete instance of `TcpRouteRouteRuleInput` via:
 //
-//          TcpRouteRouteRuleArgs{...}
+//	TcpRouteRouteRuleArgs{...}
 type TcpRouteRouteRuleInput interface {
 	pulumi.Input
 
@@ -7204,7 +7204,7 @@ func (i TcpRouteRouteRuleArgs) ToTcpRouteRouteRuleOutputWithContext(ctx context.
 // TcpRouteRouteRuleArrayInput is an input type that accepts TcpRouteRouteRuleArray and TcpRouteRouteRuleArrayOutput values.
 // You can construct a concrete instance of `TcpRouteRouteRuleArrayInput` via:
 //
-//          TcpRouteRouteRuleArray{ TcpRouteRouteRuleArgs{...} }
+//	TcpRouteRouteRuleArray{ TcpRouteRouteRuleArgs{...} }
 type TcpRouteRouteRuleArrayInput interface {
 	pulumi.Input
 
@@ -7333,7 +7333,7 @@ type TlsRouteRouteAction struct {
 // TlsRouteRouteActionInput is an input type that accepts TlsRouteRouteActionArgs and TlsRouteRouteActionOutput values.
 // You can construct a concrete instance of `TlsRouteRouteActionInput` via:
 //
-//          TlsRouteRouteActionArgs{...}
+//	TlsRouteRouteActionArgs{...}
 type TlsRouteRouteActionInput interface {
 	pulumi.Input
 
@@ -7416,7 +7416,7 @@ type TlsRouteRouteDestination struct {
 // TlsRouteRouteDestinationInput is an input type that accepts TlsRouteRouteDestinationArgs and TlsRouteRouteDestinationOutput values.
 // You can construct a concrete instance of `TlsRouteRouteDestinationInput` via:
 //
-//          TlsRouteRouteDestinationArgs{...}
+//	TlsRouteRouteDestinationArgs{...}
 type TlsRouteRouteDestinationInput interface {
 	pulumi.Input
 
@@ -7447,7 +7447,7 @@ func (i TlsRouteRouteDestinationArgs) ToTlsRouteRouteDestinationOutputWithContex
 // TlsRouteRouteDestinationArrayInput is an input type that accepts TlsRouteRouteDestinationArray and TlsRouteRouteDestinationArrayOutput values.
 // You can construct a concrete instance of `TlsRouteRouteDestinationArrayInput` via:
 //
-//          TlsRouteRouteDestinationArray{ TlsRouteRouteDestinationArgs{...} }
+//	TlsRouteRouteDestinationArray{ TlsRouteRouteDestinationArgs{...} }
 type TlsRouteRouteDestinationArrayInput interface {
 	pulumi.Input
 
@@ -7578,7 +7578,7 @@ type TlsRouteRouteMatch struct {
 // TlsRouteRouteMatchInput is an input type that accepts TlsRouteRouteMatchArgs and TlsRouteRouteMatchOutput values.
 // You can construct a concrete instance of `TlsRouteRouteMatchInput` via:
 //
-//          TlsRouteRouteMatchArgs{...}
+//	TlsRouteRouteMatchArgs{...}
 type TlsRouteRouteMatchInput interface {
 	pulumi.Input
 
@@ -7609,7 +7609,7 @@ func (i TlsRouteRouteMatchArgs) ToTlsRouteRouteMatchOutputWithContext(ctx contex
 // TlsRouteRouteMatchArrayInput is an input type that accepts TlsRouteRouteMatchArray and TlsRouteRouteMatchArrayOutput values.
 // You can construct a concrete instance of `TlsRouteRouteMatchArrayInput` via:
 //
-//          TlsRouteRouteMatchArray{ TlsRouteRouteMatchArgs{...} }
+//	TlsRouteRouteMatchArray{ TlsRouteRouteMatchArgs{...} }
 type TlsRouteRouteMatchArrayInput interface {
 	pulumi.Input
 
@@ -7740,7 +7740,7 @@ type TlsRouteRouteRule struct {
 // TlsRouteRouteRuleInput is an input type that accepts TlsRouteRouteRuleArgs and TlsRouteRouteRuleOutput values.
 // You can construct a concrete instance of `TlsRouteRouteRuleInput` via:
 //
-//          TlsRouteRouteRuleArgs{...}
+//	TlsRouteRouteRuleArgs{...}
 type TlsRouteRouteRuleInput interface {
 	pulumi.Input
 
@@ -7771,7 +7771,7 @@ func (i TlsRouteRouteRuleArgs) ToTlsRouteRouteRuleOutputWithContext(ctx context.
 // TlsRouteRouteRuleArrayInput is an input type that accepts TlsRouteRouteRuleArray and TlsRouteRouteRuleArrayOutput values.
 // You can construct a concrete instance of `TlsRouteRouteRuleArrayInput` via:
 //
-//          TlsRouteRouteRuleArray{ TlsRouteRouteRuleArgs{...} }
+//	TlsRouteRouteRuleArray{ TlsRouteRouteRuleArgs{...} }
 type TlsRouteRouteRuleArrayInput interface {
 	pulumi.Input
 
@@ -7900,7 +7900,7 @@ type TrafficPortSelector struct {
 // TrafficPortSelectorInput is an input type that accepts TrafficPortSelectorArgs and TrafficPortSelectorOutput values.
 // You can construct a concrete instance of `TrafficPortSelectorInput` via:
 //
-//          TrafficPortSelectorArgs{...}
+//	TrafficPortSelectorArgs{...}
 type TrafficPortSelectorInput interface {
 	pulumi.Input
 
@@ -7937,11 +7937,11 @@ func (i TrafficPortSelectorArgs) ToTrafficPortSelectorPtrOutputWithContext(ctx c
 // TrafficPortSelectorPtrInput is an input type that accepts TrafficPortSelectorArgs, TrafficPortSelectorPtr and TrafficPortSelectorPtrOutput values.
 // You can construct a concrete instance of `TrafficPortSelectorPtrInput` via:
 //
-//          TrafficPortSelectorArgs{...}
+//	        TrafficPortSelectorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TrafficPortSelectorPtrInput interface {
 	pulumi.Input
 

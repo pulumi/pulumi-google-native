@@ -155,7 +155,7 @@ func (o ContactNotificationCategorySubscriptionsItemPtrOutput) ToStringPtrOutput
 // ContactNotificationCategorySubscriptionsItemInput is an input type that accepts ContactNotificationCategorySubscriptionsItemArgs and ContactNotificationCategorySubscriptionsItemOutput values.
 // You can construct a concrete instance of `ContactNotificationCategorySubscriptionsItemInput` via:
 //
-//          ContactNotificationCategorySubscriptionsItemArgs{...}
+//	ContactNotificationCategorySubscriptionsItemArgs{...}
 type ContactNotificationCategorySubscriptionsItemInput interface {
 	pulumi.Input
 
@@ -193,7 +193,7 @@ func (in *contactNotificationCategorySubscriptionsItemPtr) ToContactNotification
 // ContactNotificationCategorySubscriptionsItemArrayInput is an input type that accepts ContactNotificationCategorySubscriptionsItemArray and ContactNotificationCategorySubscriptionsItemArrayOutput values.
 // You can construct a concrete instance of `ContactNotificationCategorySubscriptionsItemArrayInput` via:
 //
-//          ContactNotificationCategorySubscriptionsItemArray{ ContactNotificationCategorySubscriptionsItemArgs{...} }
+//	ContactNotificationCategorySubscriptionsItemArray{ ContactNotificationCategorySubscriptionsItemArgs{...} }
 type ContactNotificationCategorySubscriptionsItemArrayInput interface {
 	pulumi.Input
 
@@ -369,7 +369,7 @@ func (o ContactValidationStatePtrOutput) ToStringPtrOutputWithContext(ctx contex
 // ContactValidationStateInput is an input type that accepts ContactValidationStateArgs and ContactValidationStateOutput values.
 // You can construct a concrete instance of `ContactValidationStateInput` via:
 //
-//          ContactValidationStateArgs{...}
+//	ContactValidationStateArgs{...}
 type ContactValidationStateInput interface {
 	pulumi.Input
 
@@ -549,7 +549,7 @@ func (o FolderContactNotificationCategorySubscriptionsItemPtrOutput) ToStringPtr
 // FolderContactNotificationCategorySubscriptionsItemInput is an input type that accepts FolderContactNotificationCategorySubscriptionsItemArgs and FolderContactNotificationCategorySubscriptionsItemOutput values.
 // You can construct a concrete instance of `FolderContactNotificationCategorySubscriptionsItemInput` via:
 //
-//          FolderContactNotificationCategorySubscriptionsItemArgs{...}
+//	FolderContactNotificationCategorySubscriptionsItemArgs{...}
 type FolderContactNotificationCategorySubscriptionsItemInput interface {
 	pulumi.Input
 
@@ -587,7 +587,7 @@ func (in *folderContactNotificationCategorySubscriptionsItemPtr) ToFolderContact
 // FolderContactNotificationCategorySubscriptionsItemArrayInput is an input type that accepts FolderContactNotificationCategorySubscriptionsItemArray and FolderContactNotificationCategorySubscriptionsItemArrayOutput values.
 // You can construct a concrete instance of `FolderContactNotificationCategorySubscriptionsItemArrayInput` via:
 //
-//          FolderContactNotificationCategorySubscriptionsItemArray{ FolderContactNotificationCategorySubscriptionsItemArgs{...} }
+//	FolderContactNotificationCategorySubscriptionsItemArray{ FolderContactNotificationCategorySubscriptionsItemArgs{...} }
 type FolderContactNotificationCategorySubscriptionsItemArrayInput interface {
 	pulumi.Input
 
@@ -763,7 +763,7 @@ func (o FolderContactValidationStatePtrOutput) ToStringPtrOutputWithContext(ctx 
 // FolderContactValidationStateInput is an input type that accepts FolderContactValidationStateArgs and FolderContactValidationStateOutput values.
 // You can construct a concrete instance of `FolderContactValidationStateInput` via:
 //
-//          FolderContactValidationStateArgs{...}
+//	FolderContactValidationStateArgs{...}
 type FolderContactValidationStateInput interface {
 	pulumi.Input
 
@@ -943,7 +943,7 @@ func (o OrganizationContactNotificationCategorySubscriptionsItemPtrOutput) ToStr
 // OrganizationContactNotificationCategorySubscriptionsItemInput is an input type that accepts OrganizationContactNotificationCategorySubscriptionsItemArgs and OrganizationContactNotificationCategorySubscriptionsItemOutput values.
 // You can construct a concrete instance of `OrganizationContactNotificationCategorySubscriptionsItemInput` via:
 //
-//          OrganizationContactNotificationCategorySubscriptionsItemArgs{...}
+//	OrganizationContactNotificationCategorySubscriptionsItemArgs{...}
 type OrganizationContactNotificationCategorySubscriptionsItemInput interface {
 	pulumi.Input
 
@@ -981,7 +981,7 @@ func (in *organizationContactNotificationCategorySubscriptionsItemPtr) ToOrganiz
 // OrganizationContactNotificationCategorySubscriptionsItemArrayInput is an input type that accepts OrganizationContactNotificationCategorySubscriptionsItemArray and OrganizationContactNotificationCategorySubscriptionsItemArrayOutput values.
 // You can construct a concrete instance of `OrganizationContactNotificationCategorySubscriptionsItemArrayInput` via:
 //
-//          OrganizationContactNotificationCategorySubscriptionsItemArray{ OrganizationContactNotificationCategorySubscriptionsItemArgs{...} }
+//	OrganizationContactNotificationCategorySubscriptionsItemArray{ OrganizationContactNotificationCategorySubscriptionsItemArgs{...} }
 type OrganizationContactNotificationCategorySubscriptionsItemArrayInput interface {
 	pulumi.Input
 
@@ -1157,7 +1157,7 @@ func (o OrganizationContactValidationStatePtrOutput) ToStringPtrOutputWithContex
 // OrganizationContactValidationStateInput is an input type that accepts OrganizationContactValidationStateArgs and OrganizationContactValidationStateOutput values.
 // You can construct a concrete instance of `OrganizationContactValidationStateInput` via:
 //
-//          OrganizationContactValidationStateArgs{...}
+//	OrganizationContactValidationStateArgs{...}
 type OrganizationContactValidationStateInput interface {
 	pulumi.Input
 

@@ -116,7 +116,7 @@ func (o LookupDatabaseResultOutput) EncryptionInfo() EncryptionInfoResponseArray
 	return o.ApplyT(func(v LookupDatabaseResult) []EncryptionInfoResponse { return v.EncryptionInfo }).(EncryptionInfoResponseArrayOutput)
 }
 
-// The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
+// The name of the database. Values are of the form `projects//instances//databases/`, where “ is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
 func (o LookupDatabaseResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) string { return v.Name }).(pulumi.StringOutput)
 }

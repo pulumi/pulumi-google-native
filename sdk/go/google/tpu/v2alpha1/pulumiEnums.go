@@ -144,7 +144,7 @@ func (o AttachedDiskModePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // AttachedDiskModeInput is an input type that accepts AttachedDiskModeArgs and AttachedDiskModeOutput values.
 // You can construct a concrete instance of `AttachedDiskModeInput` via:
 //
-//          AttachedDiskModeArgs{...}
+//	AttachedDiskModeArgs{...}
 type AttachedDiskModeInput interface {
 	pulumi.Input
 
@@ -317,7 +317,7 @@ func (o NodeHealthPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) p
 // NodeHealthInput is an input type that accepts NodeHealthArgs and NodeHealthOutput values.
 // You can construct a concrete instance of `NodeHealthInput` via:
 //
-//          NodeHealthArgs{...}
+//	NodeHealthArgs{...}
 type NodeHealthInput interface {
 	pulumi.Input
 

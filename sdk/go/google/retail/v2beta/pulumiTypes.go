@@ -21,7 +21,7 @@ type GoogleCloudRetailV2betaAudience struct {
 // GoogleCloudRetailV2betaAudienceInput is an input type that accepts GoogleCloudRetailV2betaAudienceArgs and GoogleCloudRetailV2betaAudienceOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaAudienceInput` via:
 //
-//          GoogleCloudRetailV2betaAudienceArgs{...}
+//	GoogleCloudRetailV2betaAudienceArgs{...}
 type GoogleCloudRetailV2betaAudienceInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i GoogleCloudRetailV2betaAudienceArgs) ToGoogleCloudRetailV2betaAudiencePt
 // GoogleCloudRetailV2betaAudiencePtrInput is an input type that accepts GoogleCloudRetailV2betaAudienceArgs, GoogleCloudRetailV2betaAudiencePtr and GoogleCloudRetailV2betaAudiencePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaAudiencePtrInput` via:
 //
-//          GoogleCloudRetailV2betaAudienceArgs{...}
+//	        GoogleCloudRetailV2betaAudienceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaAudiencePtrInput interface {
 	pulumi.Input
 
@@ -213,7 +213,7 @@ type GoogleCloudRetailV2betaColorInfo struct {
 // GoogleCloudRetailV2betaColorInfoInput is an input type that accepts GoogleCloudRetailV2betaColorInfoArgs and GoogleCloudRetailV2betaColorInfoOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaColorInfoInput` via:
 //
-//          GoogleCloudRetailV2betaColorInfoArgs{...}
+//	GoogleCloudRetailV2betaColorInfoArgs{...}
 type GoogleCloudRetailV2betaColorInfoInput interface {
 	pulumi.Input
 
@@ -252,11 +252,11 @@ func (i GoogleCloudRetailV2betaColorInfoArgs) ToGoogleCloudRetailV2betaColorInfo
 // GoogleCloudRetailV2betaColorInfoPtrInput is an input type that accepts GoogleCloudRetailV2betaColorInfoArgs, GoogleCloudRetailV2betaColorInfoPtr and GoogleCloudRetailV2betaColorInfoPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaColorInfoPtrInput` via:
 //
-//          GoogleCloudRetailV2betaColorInfoArgs{...}
+//	        GoogleCloudRetailV2betaColorInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaColorInfoPtrInput interface {
 	pulumi.Input
 
@@ -405,7 +405,7 @@ type GoogleCloudRetailV2betaCondition struct {
 // GoogleCloudRetailV2betaConditionInput is an input type that accepts GoogleCloudRetailV2betaConditionArgs and GoogleCloudRetailV2betaConditionOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaConditionInput` via:
 //
-//          GoogleCloudRetailV2betaConditionArgs{...}
+//	GoogleCloudRetailV2betaConditionArgs{...}
 type GoogleCloudRetailV2betaConditionInput interface {
 	pulumi.Input
 
@@ -444,11 +444,11 @@ func (i GoogleCloudRetailV2betaConditionArgs) ToGoogleCloudRetailV2betaCondition
 // GoogleCloudRetailV2betaConditionPtrInput is an input type that accepts GoogleCloudRetailV2betaConditionArgs, GoogleCloudRetailV2betaConditionPtr and GoogleCloudRetailV2betaConditionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaConditionPtrInput` via:
 //
-//          GoogleCloudRetailV2betaConditionArgs{...}
+//	        GoogleCloudRetailV2betaConditionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaConditionPtrInput interface {
 	pulumi.Input
 
@@ -568,7 +568,7 @@ type GoogleCloudRetailV2betaConditionQueryTerm struct {
 // GoogleCloudRetailV2betaConditionQueryTermInput is an input type that accepts GoogleCloudRetailV2betaConditionQueryTermArgs and GoogleCloudRetailV2betaConditionQueryTermOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaConditionQueryTermInput` via:
 //
-//          GoogleCloudRetailV2betaConditionQueryTermArgs{...}
+//	GoogleCloudRetailV2betaConditionQueryTermArgs{...}
 type GoogleCloudRetailV2betaConditionQueryTermInput interface {
 	pulumi.Input
 
@@ -599,7 +599,7 @@ func (i GoogleCloudRetailV2betaConditionQueryTermArgs) ToGoogleCloudRetailV2beta
 // GoogleCloudRetailV2betaConditionQueryTermArrayInput is an input type that accepts GoogleCloudRetailV2betaConditionQueryTermArray and GoogleCloudRetailV2betaConditionQueryTermArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaConditionQueryTermArrayInput` via:
 //
-//          GoogleCloudRetailV2betaConditionQueryTermArray{ GoogleCloudRetailV2betaConditionQueryTermArgs{...} }
+//	GoogleCloudRetailV2betaConditionQueryTermArray{ GoogleCloudRetailV2betaConditionQueryTermArgs{...} }
 type GoogleCloudRetailV2betaConditionQueryTermArrayInput interface {
 	pulumi.Input
 
@@ -767,7 +767,7 @@ type GoogleCloudRetailV2betaConditionTimeRange struct {
 // GoogleCloudRetailV2betaConditionTimeRangeInput is an input type that accepts GoogleCloudRetailV2betaConditionTimeRangeArgs and GoogleCloudRetailV2betaConditionTimeRangeOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaConditionTimeRangeInput` via:
 //
-//          GoogleCloudRetailV2betaConditionTimeRangeArgs{...}
+//	GoogleCloudRetailV2betaConditionTimeRangeArgs{...}
 type GoogleCloudRetailV2betaConditionTimeRangeInput interface {
 	pulumi.Input
 
@@ -798,7 +798,7 @@ func (i GoogleCloudRetailV2betaConditionTimeRangeArgs) ToGoogleCloudRetailV2beta
 // GoogleCloudRetailV2betaConditionTimeRangeArrayInput is an input type that accepts GoogleCloudRetailV2betaConditionTimeRangeArray and GoogleCloudRetailV2betaConditionTimeRangeArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaConditionTimeRangeArrayInput` via:
 //
-//          GoogleCloudRetailV2betaConditionTimeRangeArray{ GoogleCloudRetailV2betaConditionTimeRangeArgs{...} }
+//	GoogleCloudRetailV2betaConditionTimeRangeArray{ GoogleCloudRetailV2betaConditionTimeRangeArgs{...} }
 type GoogleCloudRetailV2betaConditionTimeRangeArrayInput interface {
 	pulumi.Input
 
@@ -929,7 +929,7 @@ type GoogleCloudRetailV2betaFulfillmentInfo struct {
 // GoogleCloudRetailV2betaFulfillmentInfoInput is an input type that accepts GoogleCloudRetailV2betaFulfillmentInfoArgs and GoogleCloudRetailV2betaFulfillmentInfoOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaFulfillmentInfoInput` via:
 //
-//          GoogleCloudRetailV2betaFulfillmentInfoArgs{...}
+//	GoogleCloudRetailV2betaFulfillmentInfoArgs{...}
 type GoogleCloudRetailV2betaFulfillmentInfoInput interface {
 	pulumi.Input
 
@@ -960,7 +960,7 @@ func (i GoogleCloudRetailV2betaFulfillmentInfoArgs) ToGoogleCloudRetailV2betaFul
 // GoogleCloudRetailV2betaFulfillmentInfoArrayInput is an input type that accepts GoogleCloudRetailV2betaFulfillmentInfoArray and GoogleCloudRetailV2betaFulfillmentInfoArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaFulfillmentInfoArrayInput` via:
 //
-//          GoogleCloudRetailV2betaFulfillmentInfoArray{ GoogleCloudRetailV2betaFulfillmentInfoArgs{...} }
+//	GoogleCloudRetailV2betaFulfillmentInfoArray{ GoogleCloudRetailV2betaFulfillmentInfoArgs{...} }
 type GoogleCloudRetailV2betaFulfillmentInfoArrayInput interface {
 	pulumi.Input
 
@@ -1093,7 +1093,7 @@ type GoogleCloudRetailV2betaImage struct {
 // GoogleCloudRetailV2betaImageInput is an input type that accepts GoogleCloudRetailV2betaImageArgs and GoogleCloudRetailV2betaImageOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaImageInput` via:
 //
-//          GoogleCloudRetailV2betaImageArgs{...}
+//	GoogleCloudRetailV2betaImageArgs{...}
 type GoogleCloudRetailV2betaImageInput interface {
 	pulumi.Input
 
@@ -1126,7 +1126,7 @@ func (i GoogleCloudRetailV2betaImageArgs) ToGoogleCloudRetailV2betaImageOutputWi
 // GoogleCloudRetailV2betaImageArrayInput is an input type that accepts GoogleCloudRetailV2betaImageArray and GoogleCloudRetailV2betaImageArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaImageArrayInput` via:
 //
-//          GoogleCloudRetailV2betaImageArray{ GoogleCloudRetailV2betaImageArgs{...} }
+//	GoogleCloudRetailV2betaImageArray{ GoogleCloudRetailV2betaImageArgs{...} }
 type GoogleCloudRetailV2betaImageArrayInput interface {
 	pulumi.Input
 
@@ -1273,7 +1273,7 @@ type GoogleCloudRetailV2betaInterval struct {
 // GoogleCloudRetailV2betaIntervalInput is an input type that accepts GoogleCloudRetailV2betaIntervalArgs and GoogleCloudRetailV2betaIntervalOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaIntervalInput` via:
 //
-//          GoogleCloudRetailV2betaIntervalArgs{...}
+//	GoogleCloudRetailV2betaIntervalArgs{...}
 type GoogleCloudRetailV2betaIntervalInput interface {
 	pulumi.Input
 
@@ -1308,7 +1308,7 @@ func (i GoogleCloudRetailV2betaIntervalArgs) ToGoogleCloudRetailV2betaIntervalOu
 // GoogleCloudRetailV2betaIntervalArrayInput is an input type that accepts GoogleCloudRetailV2betaIntervalArray and GoogleCloudRetailV2betaIntervalArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaIntervalArrayInput` via:
 //
-//          GoogleCloudRetailV2betaIntervalArray{ GoogleCloudRetailV2betaIntervalArgs{...} }
+//	GoogleCloudRetailV2betaIntervalArray{ GoogleCloudRetailV2betaIntervalArgs{...} }
 type GoogleCloudRetailV2betaIntervalArrayInput interface {
 	pulumi.Input
 
@@ -1471,7 +1471,7 @@ type GoogleCloudRetailV2betaPriceInfo struct {
 // GoogleCloudRetailV2betaPriceInfoInput is an input type that accepts GoogleCloudRetailV2betaPriceInfoArgs and GoogleCloudRetailV2betaPriceInfoOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaPriceInfoInput` via:
 //
-//          GoogleCloudRetailV2betaPriceInfoArgs{...}
+//	GoogleCloudRetailV2betaPriceInfoArgs{...}
 type GoogleCloudRetailV2betaPriceInfoInput interface {
 	pulumi.Input
 
@@ -1518,11 +1518,11 @@ func (i GoogleCloudRetailV2betaPriceInfoArgs) ToGoogleCloudRetailV2betaPriceInfo
 // GoogleCloudRetailV2betaPriceInfoPtrInput is an input type that accepts GoogleCloudRetailV2betaPriceInfoArgs, GoogleCloudRetailV2betaPriceInfoPtr and GoogleCloudRetailV2betaPriceInfoPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaPriceInfoPtrInput` via:
 //
-//          GoogleCloudRetailV2betaPriceInfoArgs{...}
+//	        GoogleCloudRetailV2betaPriceInfoArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaPriceInfoPtrInput interface {
 	pulumi.Input
 
@@ -2078,7 +2078,7 @@ type GoogleCloudRetailV2betaPromotion struct {
 // GoogleCloudRetailV2betaPromotionInput is an input type that accepts GoogleCloudRetailV2betaPromotionArgs and GoogleCloudRetailV2betaPromotionOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaPromotionInput` via:
 //
-//          GoogleCloudRetailV2betaPromotionArgs{...}
+//	GoogleCloudRetailV2betaPromotionArgs{...}
 type GoogleCloudRetailV2betaPromotionInput interface {
 	pulumi.Input
 
@@ -2107,7 +2107,7 @@ func (i GoogleCloudRetailV2betaPromotionArgs) ToGoogleCloudRetailV2betaPromotion
 // GoogleCloudRetailV2betaPromotionArrayInput is an input type that accepts GoogleCloudRetailV2betaPromotionArray and GoogleCloudRetailV2betaPromotionArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaPromotionArrayInput` via:
 //
-//          GoogleCloudRetailV2betaPromotionArray{ GoogleCloudRetailV2betaPromotionArgs{...} }
+//	GoogleCloudRetailV2betaPromotionArray{ GoogleCloudRetailV2betaPromotionArgs{...} }
 type GoogleCloudRetailV2betaPromotionArrayInput interface {
 	pulumi.Input
 
@@ -2228,7 +2228,7 @@ type GoogleCloudRetailV2betaRating struct {
 // GoogleCloudRetailV2betaRatingInput is an input type that accepts GoogleCloudRetailV2betaRatingArgs and GoogleCloudRetailV2betaRatingOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRatingInput` via:
 //
-//          GoogleCloudRetailV2betaRatingArgs{...}
+//	GoogleCloudRetailV2betaRatingArgs{...}
 type GoogleCloudRetailV2betaRatingInput interface {
 	pulumi.Input
 
@@ -2269,11 +2269,11 @@ func (i GoogleCloudRetailV2betaRatingArgs) ToGoogleCloudRetailV2betaRatingPtrOut
 // GoogleCloudRetailV2betaRatingPtrInput is an input type that accepts GoogleCloudRetailV2betaRatingArgs, GoogleCloudRetailV2betaRatingPtr and GoogleCloudRetailV2betaRatingPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRatingPtrInput` via:
 //
-//          GoogleCloudRetailV2betaRatingArgs{...}
+//	        GoogleCloudRetailV2betaRatingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaRatingPtrInput interface {
 	pulumi.Input
 
@@ -2458,7 +2458,7 @@ type GoogleCloudRetailV2betaRule struct {
 // GoogleCloudRetailV2betaRuleInput is an input type that accepts GoogleCloudRetailV2betaRuleArgs and GoogleCloudRetailV2betaRuleOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleInput` via:
 //
-//          GoogleCloudRetailV2betaRuleArgs{...}
+//	GoogleCloudRetailV2betaRuleArgs{...}
 type GoogleCloudRetailV2betaRuleInput interface {
 	pulumi.Input
 
@@ -2511,11 +2511,11 @@ func (i GoogleCloudRetailV2betaRuleArgs) ToGoogleCloudRetailV2betaRulePtrOutputW
 // GoogleCloudRetailV2betaRulePtrInput is an input type that accepts GoogleCloudRetailV2betaRuleArgs, GoogleCloudRetailV2betaRulePtr and GoogleCloudRetailV2betaRulePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRulePtrInput` via:
 //
-//          GoogleCloudRetailV2betaRuleArgs{...}
+//	        GoogleCloudRetailV2betaRuleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaRulePtrInput interface {
 	pulumi.Input
 
@@ -2746,7 +2746,7 @@ type GoogleCloudRetailV2betaRuleBoostAction struct {
 // GoogleCloudRetailV2betaRuleBoostActionInput is an input type that accepts GoogleCloudRetailV2betaRuleBoostActionArgs and GoogleCloudRetailV2betaRuleBoostActionOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleBoostActionInput` via:
 //
-//          GoogleCloudRetailV2betaRuleBoostActionArgs{...}
+//	GoogleCloudRetailV2betaRuleBoostActionArgs{...}
 type GoogleCloudRetailV2betaRuleBoostActionInput interface {
 	pulumi.Input
 
@@ -2785,11 +2785,11 @@ func (i GoogleCloudRetailV2betaRuleBoostActionArgs) ToGoogleCloudRetailV2betaRul
 // GoogleCloudRetailV2betaRuleBoostActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleBoostActionArgs, GoogleCloudRetailV2betaRuleBoostActionPtr and GoogleCloudRetailV2betaRuleBoostActionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleBoostActionPtrInput` via:
 //
-//          GoogleCloudRetailV2betaRuleBoostActionArgs{...}
+//	        GoogleCloudRetailV2betaRuleBoostActionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaRuleBoostActionPtrInput interface {
 	pulumi.Input
 
@@ -2940,7 +2940,7 @@ type GoogleCloudRetailV2betaRuleDoNotAssociateAction struct {
 // GoogleCloudRetailV2betaRuleDoNotAssociateActionInput is an input type that accepts GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs and GoogleCloudRetailV2betaRuleDoNotAssociateActionOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleDoNotAssociateActionInput` via:
 //
-//          GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs{...}
+//	GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs{...}
 type GoogleCloudRetailV2betaRuleDoNotAssociateActionInput interface {
 	pulumi.Input
 
@@ -2981,11 +2981,11 @@ func (i GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs) ToGoogleCloudRetail
 // GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs, GoogleCloudRetailV2betaRuleDoNotAssociateActionPtr and GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrInput` via:
 //
-//          GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs{...}
+//	        GoogleCloudRetailV2betaRuleDoNotAssociateActionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaRuleDoNotAssociateActionPtrInput interface {
 	pulumi.Input
 
@@ -3154,7 +3154,7 @@ type GoogleCloudRetailV2betaRuleFilterAction struct {
 // GoogleCloudRetailV2betaRuleFilterActionInput is an input type that accepts GoogleCloudRetailV2betaRuleFilterActionArgs and GoogleCloudRetailV2betaRuleFilterActionOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleFilterActionInput` via:
 //
-//          GoogleCloudRetailV2betaRuleFilterActionArgs{...}
+//	GoogleCloudRetailV2betaRuleFilterActionArgs{...}
 type GoogleCloudRetailV2betaRuleFilterActionInput interface {
 	pulumi.Input
 
@@ -3191,11 +3191,11 @@ func (i GoogleCloudRetailV2betaRuleFilterActionArgs) ToGoogleCloudRetailV2betaRu
 // GoogleCloudRetailV2betaRuleFilterActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleFilterActionArgs, GoogleCloudRetailV2betaRuleFilterActionPtr and GoogleCloudRetailV2betaRuleFilterActionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleFilterActionPtrInput` via:
 //
-//          GoogleCloudRetailV2betaRuleFilterActionArgs{...}
+//	        GoogleCloudRetailV2betaRuleFilterActionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaRuleFilterActionPtrInput interface {
 	pulumi.Input
 
@@ -3320,7 +3320,7 @@ type GoogleCloudRetailV2betaRuleIgnoreAction struct {
 // GoogleCloudRetailV2betaRuleIgnoreActionInput is an input type that accepts GoogleCloudRetailV2betaRuleIgnoreActionArgs and GoogleCloudRetailV2betaRuleIgnoreActionOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleIgnoreActionInput` via:
 //
-//          GoogleCloudRetailV2betaRuleIgnoreActionArgs{...}
+//	GoogleCloudRetailV2betaRuleIgnoreActionArgs{...}
 type GoogleCloudRetailV2betaRuleIgnoreActionInput interface {
 	pulumi.Input
 
@@ -3357,11 +3357,11 @@ func (i GoogleCloudRetailV2betaRuleIgnoreActionArgs) ToGoogleCloudRetailV2betaRu
 // GoogleCloudRetailV2betaRuleIgnoreActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleIgnoreActionArgs, GoogleCloudRetailV2betaRuleIgnoreActionPtr and GoogleCloudRetailV2betaRuleIgnoreActionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleIgnoreActionPtrInput` via:
 //
-//          GoogleCloudRetailV2betaRuleIgnoreActionArgs{...}
+//	        GoogleCloudRetailV2betaRuleIgnoreActionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaRuleIgnoreActionPtrInput interface {
 	pulumi.Input
 
@@ -3490,7 +3490,7 @@ type GoogleCloudRetailV2betaRuleOnewaySynonymsAction struct {
 // GoogleCloudRetailV2betaRuleOnewaySynonymsActionInput is an input type that accepts GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs and GoogleCloudRetailV2betaRuleOnewaySynonymsActionOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleOnewaySynonymsActionInput` via:
 //
-//          GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs{...}
+//	GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs{...}
 type GoogleCloudRetailV2betaRuleOnewaySynonymsActionInput interface {
 	pulumi.Input
 
@@ -3531,11 +3531,11 @@ func (i GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs) ToGoogleCloudRetail
 // GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs, GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtr and GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrInput` via:
 //
-//          GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs{...}
+//	        GoogleCloudRetailV2betaRuleOnewaySynonymsActionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaRuleOnewaySynonymsActionPtrInput interface {
 	pulumi.Input
 
@@ -3704,7 +3704,7 @@ type GoogleCloudRetailV2betaRuleRedirectAction struct {
 // GoogleCloudRetailV2betaRuleRedirectActionInput is an input type that accepts GoogleCloudRetailV2betaRuleRedirectActionArgs and GoogleCloudRetailV2betaRuleRedirectActionOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleRedirectActionInput` via:
 //
-//          GoogleCloudRetailV2betaRuleRedirectActionArgs{...}
+//	GoogleCloudRetailV2betaRuleRedirectActionArgs{...}
 type GoogleCloudRetailV2betaRuleRedirectActionInput interface {
 	pulumi.Input
 
@@ -3741,11 +3741,11 @@ func (i GoogleCloudRetailV2betaRuleRedirectActionArgs) ToGoogleCloudRetailV2beta
 // GoogleCloudRetailV2betaRuleRedirectActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleRedirectActionArgs, GoogleCloudRetailV2betaRuleRedirectActionPtr and GoogleCloudRetailV2betaRuleRedirectActionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleRedirectActionPtrInput` via:
 //
-//          GoogleCloudRetailV2betaRuleRedirectActionArgs{...}
+//	        GoogleCloudRetailV2betaRuleRedirectActionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaRuleRedirectActionPtrInput interface {
 	pulumi.Input
 
@@ -3874,7 +3874,7 @@ type GoogleCloudRetailV2betaRuleReplacementAction struct {
 // GoogleCloudRetailV2betaRuleReplacementActionInput is an input type that accepts GoogleCloudRetailV2betaRuleReplacementActionArgs and GoogleCloudRetailV2betaRuleReplacementActionOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleReplacementActionInput` via:
 //
-//          GoogleCloudRetailV2betaRuleReplacementActionArgs{...}
+//	GoogleCloudRetailV2betaRuleReplacementActionArgs{...}
 type GoogleCloudRetailV2betaRuleReplacementActionInput interface {
 	pulumi.Input
 
@@ -3915,11 +3915,11 @@ func (i GoogleCloudRetailV2betaRuleReplacementActionArgs) ToGoogleCloudRetailV2b
 // GoogleCloudRetailV2betaRuleReplacementActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleReplacementActionArgs, GoogleCloudRetailV2betaRuleReplacementActionPtr and GoogleCloudRetailV2betaRuleReplacementActionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleReplacementActionPtrInput` via:
 //
-//          GoogleCloudRetailV2betaRuleReplacementActionArgs{...}
+//	        GoogleCloudRetailV2betaRuleReplacementActionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaRuleReplacementActionPtrInput interface {
 	pulumi.Input
 
@@ -4188,7 +4188,7 @@ type GoogleCloudRetailV2betaRuleTwowaySynonymsAction struct {
 // GoogleCloudRetailV2betaRuleTwowaySynonymsActionInput is an input type that accepts GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs and GoogleCloudRetailV2betaRuleTwowaySynonymsActionOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleTwowaySynonymsActionInput` via:
 //
-//          GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs{...}
+//	GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs{...}
 type GoogleCloudRetailV2betaRuleTwowaySynonymsActionInput interface {
 	pulumi.Input
 
@@ -4225,11 +4225,11 @@ func (i GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs) ToGoogleCloudRetail
 // GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrInput is an input type that accepts GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs, GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtr and GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrInput` via:
 //
-//          GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs{...}
+//	        GoogleCloudRetailV2betaRuleTwowaySynonymsActionArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaRuleTwowaySynonymsActionPtrInput interface {
 	pulumi.Input
 
@@ -4354,7 +4354,7 @@ type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpec struct {
 // GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs and GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecInput` via:
 //
-//          GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs{...}
+//	GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs{...}
 type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecInput interface {
 	pulumi.Input
 
@@ -4391,11 +4391,11 @@ func (i GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs) ToGoogleCloudR
 // GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs, GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtr and GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrInput` via:
 //
-//          GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs{...}
+//	        GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecPtrInput interface {
 	pulumi.Input
 
@@ -4528,7 +4528,7 @@ type GoogleCloudRetailV2betaSearchRequestFacetSpec struct {
 // GoogleCloudRetailV2betaSearchRequestFacetSpecInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestFacetSpecArgs and GoogleCloudRetailV2betaSearchRequestFacetSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestFacetSpecInput` via:
 //
-//          GoogleCloudRetailV2betaSearchRequestFacetSpecArgs{...}
+//	GoogleCloudRetailV2betaSearchRequestFacetSpecArgs{...}
 type GoogleCloudRetailV2betaSearchRequestFacetSpecInput interface {
 	pulumi.Input
 
@@ -4571,11 +4571,11 @@ func (i GoogleCloudRetailV2betaSearchRequestFacetSpecArgs) ToGoogleCloudRetailV2
 // GoogleCloudRetailV2betaSearchRequestFacetSpecPtrInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestFacetSpecArgs, GoogleCloudRetailV2betaSearchRequestFacetSpecPtr and GoogleCloudRetailV2betaSearchRequestFacetSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestFacetSpecPtrInput` via:
 //
-//          GoogleCloudRetailV2betaSearchRequestFacetSpecArgs{...}
+//	        GoogleCloudRetailV2betaSearchRequestFacetSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaSearchRequestFacetSpecPtrInput interface {
 	pulumi.Input
 
@@ -4737,7 +4737,7 @@ type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKey struct {
 // GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs and GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyInput` via:
 //
-//          GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs{...}
+//	GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs{...}
 type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyInput interface {
 	pulumi.Input
 
@@ -4790,11 +4790,11 @@ func (i GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs) ToGoogleCloud
 // GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs, GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtr and GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrInput` via:
 //
-//          GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs{...}
+//	        GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrInput interface {
 	pulumi.Input
 

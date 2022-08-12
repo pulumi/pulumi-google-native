@@ -146,7 +146,7 @@ func (o GoogleCloudBillingBudgetsV1FilterCalendarPeriodPtrOutput) ToStringPtrOut
 // GoogleCloudBillingBudgetsV1FilterCalendarPeriodInput is an input type that accepts GoogleCloudBillingBudgetsV1FilterCalendarPeriodArgs and GoogleCloudBillingBudgetsV1FilterCalendarPeriodOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1FilterCalendarPeriodInput` via:
 //
-//          GoogleCloudBillingBudgetsV1FilterCalendarPeriodArgs{...}
+//	GoogleCloudBillingBudgetsV1FilterCalendarPeriodArgs{...}
 type GoogleCloudBillingBudgetsV1FilterCalendarPeriodInput interface {
 	pulumi.Input
 
@@ -316,7 +316,7 @@ func (o GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentPtrOutput) ToString
 // GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentInput is an input type that accepts GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentArgs and GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentInput` via:
 //
-//          GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentArgs{...}
+//	GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentArgs{...}
 type GoogleCloudBillingBudgetsV1FilterCreditTypesTreatmentInput interface {
 	pulumi.Input
 
@@ -485,7 +485,7 @@ func (o GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasisPtrOutput) ToStringPtr
 // GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasisInput is an input type that accepts GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasisArgs and GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasisOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasisInput` via:
 //
-//          GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasisArgs{...}
+//	GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasisArgs{...}
 type GoogleCloudBillingBudgetsV1ThresholdRuleSpendBasisInput interface {
 	pulumi.Input
 

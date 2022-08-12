@@ -21,7 +21,7 @@ type Subnet struct {
 // SubnetInput is an input type that accepts SubnetArgs and SubnetOutput values.
 // You can construct a concrete instance of `SubnetInput` via:
 //
-//          SubnetArgs{...}
+//	SubnetArgs{...}
 type SubnetInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i SubnetArgs) ToSubnetPtrOutputWithContext(ctx context.Context) SubnetPtrO
 // SubnetPtrInput is an input type that accepts SubnetArgs, SubnetPtr and SubnetPtrOutput values.
 // You can construct a concrete instance of `SubnetPtrInput` via:
 //
-//          SubnetArgs{...}
+//	        SubnetArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SubnetPtrInput interface {
 	pulumi.Input
 

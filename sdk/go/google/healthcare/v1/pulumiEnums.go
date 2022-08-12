@@ -144,7 +144,7 @@ func (o AttributeDefinitionCategoryPtrOutput) ToStringPtrOutputWithContext(ctx c
 // AttributeDefinitionCategoryInput is an input type that accepts AttributeDefinitionCategoryArgs and AttributeDefinitionCategoryOutput values.
 // You can construct a concrete instance of `AttributeDefinitionCategoryInput` via:
 //
-//          AttributeDefinitionCategoryArgs{...}
+//	AttributeDefinitionCategoryArgs{...}
 type AttributeDefinitionCategoryInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -490,7 +490,7 @@ func (o ConsentStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // ConsentStateEnumInput is an input type that accepts ConsentStateEnumArgs and ConsentStateEnumOutput values.
 // You can construct a concrete instance of `ConsentStateEnumInput` via:
 //
-//          ConsentStateEnumArgs{...}
+//	ConsentStateEnumArgs{...}
 type ConsentStateEnumInput interface {
 	pulumi.Input
 
@@ -659,7 +659,7 @@ func (o FhirStoreComplexDataTypeReferenceParsingPtrOutput) ToStringPtrOutputWith
 // FhirStoreComplexDataTypeReferenceParsingInput is an input type that accepts FhirStoreComplexDataTypeReferenceParsingArgs and FhirStoreComplexDataTypeReferenceParsingOutput values.
 // You can construct a concrete instance of `FhirStoreComplexDataTypeReferenceParsingInput` via:
 //
-//          FhirStoreComplexDataTypeReferenceParsingArgs{...}
+//	FhirStoreComplexDataTypeReferenceParsingArgs{...}
 type FhirStoreComplexDataTypeReferenceParsingInput interface {
 	pulumi.Input
 
@@ -830,7 +830,7 @@ func (o FhirStoreVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // FhirStoreVersionInput is an input type that accepts FhirStoreVersionArgs and FhirStoreVersionOutput values.
 // You can construct a concrete instance of `FhirStoreVersionInput` via:
 //
-//          FhirStoreVersionArgs{...}
+//	FhirStoreVersionArgs{...}
 type FhirStoreVersionInput interface {
 	pulumi.Input
 
@@ -1001,7 +1001,7 @@ func (o GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionPtrOutput)
 // GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionInput is an input type that accepts GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionArgs and GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionOutput values.
 // You can construct a concrete instance of `GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionInput` via:
 //
-//          GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionArgs{...}
+//	GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionArgs{...}
 type GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionInput interface {
 	pulumi.Input
 
@@ -1170,7 +1170,7 @@ func (o ParserConfigVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // ParserConfigVersionInput is an input type that accepts ParserConfigVersionArgs and ParserConfigVersionOutput values.
 // You can construct a concrete instance of `ParserConfigVersionInput` via:
 //
-//          ParserConfigVersionArgs{...}
+//	ParserConfigVersionArgs{...}
 type ParserConfigVersionInput interface {
 	pulumi.Input
 
@@ -1339,7 +1339,7 @@ func (o SchemaConfigSchemaTypePtrOutput) ToStringPtrOutputWithContext(ctx contex
 // SchemaConfigSchemaTypeInput is an input type that accepts SchemaConfigSchemaTypeArgs and SchemaConfigSchemaTypeOutput values.
 // You can construct a concrete instance of `SchemaConfigSchemaTypeInput` via:
 //
-//          SchemaConfigSchemaTypeArgs{...}
+//	SchemaConfigSchemaTypeArgs{...}
 type SchemaConfigSchemaTypeInput interface {
 	pulumi.Input
 
@@ -1508,7 +1508,7 @@ func (o SchemaPackageSchematizedParsingTypePtrOutput) ToStringPtrOutputWithConte
 // SchemaPackageSchematizedParsingTypeInput is an input type that accepts SchemaPackageSchematizedParsingTypeArgs and SchemaPackageSchematizedParsingTypeOutput values.
 // You can construct a concrete instance of `SchemaPackageSchematizedParsingTypeInput` via:
 //
-//          SchemaPackageSchematizedParsingTypeArgs{...}
+//	SchemaPackageSchematizedParsingTypeArgs{...}
 type SchemaPackageSchematizedParsingTypeInput interface {
 	pulumi.Input
 
@@ -1679,7 +1679,7 @@ func (o SchemaPackageUnexpectedSegmentHandlingPtrOutput) ToStringPtrOutputWithCo
 // SchemaPackageUnexpectedSegmentHandlingInput is an input type that accepts SchemaPackageUnexpectedSegmentHandlingArgs and SchemaPackageUnexpectedSegmentHandlingOutput values.
 // You can construct a concrete instance of `SchemaPackageUnexpectedSegmentHandlingInput` via:
 //
-//          SchemaPackageUnexpectedSegmentHandlingArgs{...}
+//	SchemaPackageUnexpectedSegmentHandlingArgs{...}
 type SchemaPackageUnexpectedSegmentHandlingInput interface {
 	pulumi.Input
 
@@ -1850,7 +1850,7 @@ func (o TypePrimitivePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 // TypePrimitiveInput is an input type that accepts TypePrimitiveArgs and TypePrimitiveOutput values.
 // You can construct a concrete instance of `TypePrimitiveInput` via:
 //
-//          TypePrimitiveArgs{...}
+//	TypePrimitiveArgs{...}
 type TypePrimitiveInput interface {
 	pulumi.Input
 

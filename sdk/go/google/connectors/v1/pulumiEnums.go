@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -319,7 +319,7 @@ func (o AuthConfigAuthTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // AuthConfigAuthTypeInput is an input type that accepts AuthConfigAuthTypeArgs and AuthConfigAuthTypeOutput values.
 // You can construct a concrete instance of `AuthConfigAuthTypeInput` via:
 //
-//          AuthConfigAuthTypeArgs{...}
+//	AuthConfigAuthTypeArgs{...}
 type AuthConfigAuthTypeInput interface {
 	pulumi.Input
 

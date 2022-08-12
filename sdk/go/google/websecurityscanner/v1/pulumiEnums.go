@@ -144,7 +144,7 @@ func (o ScanConfigExportToSecurityCommandCenterPtrOutput) ToStringPtrOutputWithC
 // ScanConfigExportToSecurityCommandCenterInput is an input type that accepts ScanConfigExportToSecurityCommandCenterArgs and ScanConfigExportToSecurityCommandCenterOutput values.
 // You can construct a concrete instance of `ScanConfigExportToSecurityCommandCenterInput` via:
 //
-//          ScanConfigExportToSecurityCommandCenterArgs{...}
+//	ScanConfigExportToSecurityCommandCenterArgs{...}
 type ScanConfigExportToSecurityCommandCenterInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o ScanConfigRiskLevelPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // ScanConfigRiskLevelInput is an input type that accepts ScanConfigRiskLevelArgs and ScanConfigRiskLevelOutput values.
 // You can construct a concrete instance of `ScanConfigRiskLevelInput` via:
 //
-//          ScanConfigRiskLevelArgs{...}
+//	ScanConfigRiskLevelArgs{...}
 type ScanConfigRiskLevelInput interface {
 	pulumi.Input
 
@@ -484,7 +484,7 @@ func (o ScanConfigUserAgentPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // ScanConfigUserAgentInput is an input type that accepts ScanConfigUserAgentArgs and ScanConfigUserAgentOutput values.
 // You can construct a concrete instance of `ScanConfigUserAgentInput` via:
 //
-//          ScanConfigUserAgentArgs{...}
+//	ScanConfigUserAgentArgs{...}
 type ScanConfigUserAgentInput interface {
 	pulumi.Input
 

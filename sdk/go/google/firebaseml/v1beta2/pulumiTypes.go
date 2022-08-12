@@ -19,7 +19,7 @@ type ModelStateType struct {
 // ModelStateTypeInput is an input type that accepts ModelStateTypeArgs and ModelStateTypeOutput values.
 // You can construct a concrete instance of `ModelStateTypeInput` via:
 //
-//          ModelStateTypeArgs{...}
+//	ModelStateTypeArgs{...}
 type ModelStateTypeInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i ModelStateTypeArgs) ToModelStateTypePtrOutputWithContext(ctx context.Con
 // ModelStateTypePtrInput is an input type that accepts ModelStateTypeArgs, ModelStateTypePtr and ModelStateTypePtrOutput values.
 // You can construct a concrete instance of `ModelStateTypePtrInput` via:
 //
-//          ModelStateTypeArgs{...}
+//	        ModelStateTypeArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ModelStateTypePtrInput interface {
 	pulumi.Input
 
@@ -308,7 +308,7 @@ type TfLiteModel struct {
 // TfLiteModelInput is an input type that accepts TfLiteModelArgs and TfLiteModelOutput values.
 // You can construct a concrete instance of `TfLiteModelInput` via:
 //
-//          TfLiteModelArgs{...}
+//	TfLiteModelArgs{...}
 type TfLiteModelInput interface {
 	pulumi.Input
 
@@ -347,11 +347,11 @@ func (i TfLiteModelArgs) ToTfLiteModelPtrOutputWithContext(ctx context.Context) 
 // TfLiteModelPtrInput is an input type that accepts TfLiteModelArgs, TfLiteModelPtr and TfLiteModelPtrOutput values.
 // You can construct a concrete instance of `TfLiteModelPtrInput` via:
 //
-//          TfLiteModelArgs{...}
+//	        TfLiteModelArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type TfLiteModelPtrInput interface {
 	pulumi.Input
 

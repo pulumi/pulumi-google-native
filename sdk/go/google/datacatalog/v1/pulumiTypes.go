@@ -23,7 +23,7 @@ type Binding struct {
 // BindingInput is an input type that accepts BindingArgs and BindingOutput values.
 // You can construct a concrete instance of `BindingInput` via:
 //
-//          BindingArgs{...}
+//	BindingArgs{...}
 type BindingInput interface {
 	pulumi.Input
 
@@ -56,7 +56,7 @@ func (i BindingArgs) ToBindingOutputWithContext(ctx context.Context) BindingOutp
 // BindingArrayInput is an input type that accepts BindingArray and BindingArrayOutput values.
 // You can construct a concrete instance of `BindingArrayInput` via:
 //
-//          BindingArray{ BindingArgs{...} }
+//	BindingArray{ BindingArgs{...} }
 type BindingArrayInput interface {
 	pulumi.Input
 
@@ -203,7 +203,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -246,11 +246,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -445,7 +445,7 @@ type GoogleCloudDatacatalogV1BigQueryConnectionSpec struct {
 // GoogleCloudDatacatalogV1BigQueryConnectionSpecInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs and GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryConnectionSpecInput` via:
 //
-//          GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs{...}
+//	GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs{...}
 type GoogleCloudDatacatalogV1BigQueryConnectionSpecInput interface {
 	pulumi.Input
 
@@ -486,11 +486,11 @@ func (i GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs) ToGoogleCloudDatacat
 // GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs, GoogleCloudDatacatalogV1BigQueryConnectionSpecPtr and GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs{...}
+//	        GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrInput interface {
 	pulumi.Input
 
@@ -712,7 +712,7 @@ type GoogleCloudDatacatalogV1BigQueryRoutineSpec struct {
 // GoogleCloudDatacatalogV1BigQueryRoutineSpecInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs and GoogleCloudDatacatalogV1BigQueryRoutineSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryRoutineSpecInput` via:
 //
-//          GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs{...}
+//	GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs{...}
 type GoogleCloudDatacatalogV1BigQueryRoutineSpecInput interface {
 	pulumi.Input
 
@@ -749,11 +749,11 @@ func (i GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs) ToGoogleCloudDatacatalo
 // GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs, GoogleCloudDatacatalogV1BigQueryRoutineSpecPtr and GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs{...}
+//	        GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrInput interface {
 	pulumi.Input
 
@@ -924,7 +924,7 @@ type GoogleCloudDatacatalogV1BusinessContext struct {
 // GoogleCloudDatacatalogV1BusinessContextInput is an input type that accepts GoogleCloudDatacatalogV1BusinessContextArgs and GoogleCloudDatacatalogV1BusinessContextOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1BusinessContextInput` via:
 //
-//          GoogleCloudDatacatalogV1BusinessContextArgs{...}
+//	GoogleCloudDatacatalogV1BusinessContextArgs{...}
 type GoogleCloudDatacatalogV1BusinessContextInput interface {
 	pulumi.Input
 
@@ -963,11 +963,11 @@ func (i GoogleCloudDatacatalogV1BusinessContextArgs) ToGoogleCloudDatacatalogV1B
 // GoogleCloudDatacatalogV1BusinessContextPtrInput is an input type that accepts GoogleCloudDatacatalogV1BusinessContextArgs, GoogleCloudDatacatalogV1BusinessContextPtr and GoogleCloudDatacatalogV1BusinessContextPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1BusinessContextPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1BusinessContextArgs{...}
+//	        GoogleCloudDatacatalogV1BusinessContextArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1BusinessContextPtrInput interface {
 	pulumi.Input
 
@@ -1124,7 +1124,7 @@ type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec struct {
 // GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecInput is an input type that accepts GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs and GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecInput` via:
 //
-//          GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs{...}
+//	GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs{...}
 type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecInput interface {
 	pulumi.Input
 
@@ -1165,11 +1165,11 @@ func (i GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs) ToGoogleClou
 // GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs, GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtr and GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs{...}
+//	        GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrInput interface {
 	pulumi.Input
 
@@ -1350,7 +1350,7 @@ type GoogleCloudDatacatalogV1ColumnSchema struct {
 // GoogleCloudDatacatalogV1ColumnSchemaInput is an input type that accepts GoogleCloudDatacatalogV1ColumnSchemaArgs and GoogleCloudDatacatalogV1ColumnSchemaOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaInput` via:
 //
-//          GoogleCloudDatacatalogV1ColumnSchemaArgs{...}
+//	GoogleCloudDatacatalogV1ColumnSchemaArgs{...}
 type GoogleCloudDatacatalogV1ColumnSchemaInput interface {
 	pulumi.Input
 
@@ -1389,7 +1389,7 @@ func (i GoogleCloudDatacatalogV1ColumnSchemaArgs) ToGoogleCloudDatacatalogV1Colu
 // GoogleCloudDatacatalogV1ColumnSchemaArrayInput is an input type that accepts GoogleCloudDatacatalogV1ColumnSchemaArray and GoogleCloudDatacatalogV1ColumnSchemaArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaArrayInput` via:
 //
-//          GoogleCloudDatacatalogV1ColumnSchemaArray{ GoogleCloudDatacatalogV1ColumnSchemaArgs{...} }
+//	GoogleCloudDatacatalogV1ColumnSchemaArray{ GoogleCloudDatacatalogV1ColumnSchemaArgs{...} }
 type GoogleCloudDatacatalogV1ColumnSchemaArrayInput interface {
 	pulumi.Input
 
@@ -1489,7 +1489,7 @@ type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec struct {
 // GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecInput is an input type that accepts GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs and GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecInput` via:
 //
-//          GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs{...}
+//	GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs{...}
 type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecInput interface {
 	pulumi.Input
 
@@ -1526,11 +1526,11 @@ func (i GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs) ToGoogleCloudD
 // GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs, GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtr and GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs{...}
+//	        GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecPtrInput interface {
 	pulumi.Input
 
@@ -1742,7 +1742,7 @@ type GoogleCloudDatacatalogV1Contacts struct {
 // GoogleCloudDatacatalogV1ContactsInput is an input type that accepts GoogleCloudDatacatalogV1ContactsArgs and GoogleCloudDatacatalogV1ContactsOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1ContactsInput` via:
 //
-//          GoogleCloudDatacatalogV1ContactsArgs{...}
+//	GoogleCloudDatacatalogV1ContactsArgs{...}
 type GoogleCloudDatacatalogV1ContactsInput interface {
 	pulumi.Input
 
@@ -1779,11 +1779,11 @@ func (i GoogleCloudDatacatalogV1ContactsArgs) ToGoogleCloudDatacatalogV1Contacts
 // GoogleCloudDatacatalogV1ContactsPtrInput is an input type that accepts GoogleCloudDatacatalogV1ContactsArgs, GoogleCloudDatacatalogV1ContactsPtr and GoogleCloudDatacatalogV1ContactsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1ContactsPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1ContactsArgs{...}
+//	        GoogleCloudDatacatalogV1ContactsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1ContactsPtrInput interface {
 	pulumi.Input
 
@@ -1884,7 +1884,7 @@ type GoogleCloudDatacatalogV1ContactsPerson struct {
 // GoogleCloudDatacatalogV1ContactsPersonInput is an input type that accepts GoogleCloudDatacatalogV1ContactsPersonArgs and GoogleCloudDatacatalogV1ContactsPersonOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1ContactsPersonInput` via:
 //
-//          GoogleCloudDatacatalogV1ContactsPersonArgs{...}
+//	GoogleCloudDatacatalogV1ContactsPersonArgs{...}
 type GoogleCloudDatacatalogV1ContactsPersonInput interface {
 	pulumi.Input
 
@@ -1915,7 +1915,7 @@ func (i GoogleCloudDatacatalogV1ContactsPersonArgs) ToGoogleCloudDatacatalogV1Co
 // GoogleCloudDatacatalogV1ContactsPersonArrayInput is an input type that accepts GoogleCloudDatacatalogV1ContactsPersonArray and GoogleCloudDatacatalogV1ContactsPersonArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1ContactsPersonArrayInput` via:
 //
-//          GoogleCloudDatacatalogV1ContactsPersonArray{ GoogleCloudDatacatalogV1ContactsPersonArgs{...} }
+//	GoogleCloudDatacatalogV1ContactsPersonArray{ GoogleCloudDatacatalogV1ContactsPersonArgs{...} }
 type GoogleCloudDatacatalogV1ContactsPersonArrayInput interface {
 	pulumi.Input
 
@@ -1957,7 +1957,7 @@ func (o GoogleCloudDatacatalogV1ContactsPersonOutput) Designation() pulumi.Strin
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1ContactsPerson) *string { return v.Designation }).(pulumi.StringPtrOutput)
 }
 
-// Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+// Email of the person in the format of `john.doe@xyz`, “, or `John Doe`.
 func (o GoogleCloudDatacatalogV1ContactsPersonOutput) Email() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1ContactsPerson) *string { return v.Email }).(pulumi.StringPtrOutput)
 }
@@ -2010,7 +2010,7 @@ func (o GoogleCloudDatacatalogV1ContactsPersonResponseOutput) Designation() pulu
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1ContactsPersonResponse) string { return v.Designation }).(pulumi.StringOutput)
 }
 
-// Email of the person in the format of `john.doe@xyz`, ``, or `John Doe`.
+// Email of the person in the format of `john.doe@xyz`, “, or `John Doe`.
 func (o GoogleCloudDatacatalogV1ContactsPersonResponseOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1ContactsPersonResponse) string { return v.Email }).(pulumi.StringOutput)
 }
@@ -2072,7 +2072,7 @@ type GoogleCloudDatacatalogV1DataSourceConnectionSpec struct {
 // GoogleCloudDatacatalogV1DataSourceConnectionSpecInput is an input type that accepts GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs and GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1DataSourceConnectionSpecInput` via:
 //
-//          GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs{...}
+//	GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs{...}
 type GoogleCloudDatacatalogV1DataSourceConnectionSpecInput interface {
 	pulumi.Input
 
@@ -2109,11 +2109,11 @@ func (i GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs) ToGoogleCloudDatac
 // GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs, GoogleCloudDatacatalogV1DataSourceConnectionSpecPtr and GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs{...}
+//	        GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrInput interface {
 	pulumi.Input
 
@@ -2291,7 +2291,7 @@ type GoogleCloudDatacatalogV1DatabaseTableSpec struct {
 // GoogleCloudDatacatalogV1DatabaseTableSpecInput is an input type that accepts GoogleCloudDatacatalogV1DatabaseTableSpecArgs and GoogleCloudDatacatalogV1DatabaseTableSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1DatabaseTableSpecInput` via:
 //
-//          GoogleCloudDatacatalogV1DatabaseTableSpecArgs{...}
+//	GoogleCloudDatacatalogV1DatabaseTableSpecArgs{...}
 type GoogleCloudDatacatalogV1DatabaseTableSpecInput interface {
 	pulumi.Input
 
@@ -2328,11 +2328,11 @@ func (i GoogleCloudDatacatalogV1DatabaseTableSpecArgs) ToGoogleCloudDatacatalogV
 // GoogleCloudDatacatalogV1DatabaseTableSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1DatabaseTableSpecArgs, GoogleCloudDatacatalogV1DatabaseTableSpecPtr and GoogleCloudDatacatalogV1DatabaseTableSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1DatabaseTableSpecPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1DatabaseTableSpecArgs{...}
+//	        GoogleCloudDatacatalogV1DatabaseTableSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1DatabaseTableSpecPtrInput interface {
 	pulumi.Input
 
@@ -2535,7 +2535,7 @@ type GoogleCloudDatacatalogV1DataplexFilesetSpec struct {
 // GoogleCloudDatacatalogV1DataplexFilesetSpecInput is an input type that accepts GoogleCloudDatacatalogV1DataplexFilesetSpecArgs and GoogleCloudDatacatalogV1DataplexFilesetSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexFilesetSpecInput` via:
 //
-//          GoogleCloudDatacatalogV1DataplexFilesetSpecArgs{...}
+//	GoogleCloudDatacatalogV1DataplexFilesetSpecArgs{...}
 type GoogleCloudDatacatalogV1DataplexFilesetSpecInput interface {
 	pulumi.Input
 
@@ -2572,11 +2572,11 @@ func (i GoogleCloudDatacatalogV1DataplexFilesetSpecArgs) ToGoogleCloudDatacatalo
 // GoogleCloudDatacatalogV1DataplexFilesetSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1DataplexFilesetSpecArgs, GoogleCloudDatacatalogV1DataplexFilesetSpecPtr and GoogleCloudDatacatalogV1DataplexFilesetSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexFilesetSpecPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1DataplexFilesetSpecArgs{...}
+//	        GoogleCloudDatacatalogV1DataplexFilesetSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1DataplexFilesetSpecPtrInput interface {
 	pulumi.Input
 
@@ -2711,7 +2711,7 @@ type GoogleCloudDatacatalogV1DataplexSpec struct {
 // GoogleCloudDatacatalogV1DataplexSpecInput is an input type that accepts GoogleCloudDatacatalogV1DataplexSpecArgs and GoogleCloudDatacatalogV1DataplexSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexSpecInput` via:
 //
-//          GoogleCloudDatacatalogV1DataplexSpecArgs{...}
+//	GoogleCloudDatacatalogV1DataplexSpecArgs{...}
 type GoogleCloudDatacatalogV1DataplexSpecInput interface {
 	pulumi.Input
 
@@ -2754,11 +2754,11 @@ func (i GoogleCloudDatacatalogV1DataplexSpecArgs) ToGoogleCloudDatacatalogV1Data
 // GoogleCloudDatacatalogV1DataplexSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1DataplexSpecArgs, GoogleCloudDatacatalogV1DataplexSpecPtr and GoogleCloudDatacatalogV1DataplexSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1DataplexSpecPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1DataplexSpecArgs{...}
+//	        GoogleCloudDatacatalogV1DataplexSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1DataplexSpecPtrInput interface {
 	pulumi.Input
 
@@ -2997,7 +2997,7 @@ type GoogleCloudDatacatalogV1EntryOverview struct {
 // GoogleCloudDatacatalogV1EntryOverviewInput is an input type that accepts GoogleCloudDatacatalogV1EntryOverviewArgs and GoogleCloudDatacatalogV1EntryOverviewOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1EntryOverviewInput` via:
 //
-//          GoogleCloudDatacatalogV1EntryOverviewArgs{...}
+//	GoogleCloudDatacatalogV1EntryOverviewArgs{...}
 type GoogleCloudDatacatalogV1EntryOverviewInput interface {
 	pulumi.Input
 
@@ -3034,11 +3034,11 @@ func (i GoogleCloudDatacatalogV1EntryOverviewArgs) ToGoogleCloudDatacatalogV1Ent
 // GoogleCloudDatacatalogV1EntryOverviewPtrInput is an input type that accepts GoogleCloudDatacatalogV1EntryOverviewArgs, GoogleCloudDatacatalogV1EntryOverviewPtr and GoogleCloudDatacatalogV1EntryOverviewPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1EntryOverviewPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1EntryOverviewArgs{...}
+//	        GoogleCloudDatacatalogV1EntryOverviewArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1EntryOverviewPtrInput interface {
 	pulumi.Input
 
@@ -3163,7 +3163,7 @@ type GoogleCloudDatacatalogV1FilesetSpec struct {
 // GoogleCloudDatacatalogV1FilesetSpecInput is an input type that accepts GoogleCloudDatacatalogV1FilesetSpecArgs and GoogleCloudDatacatalogV1FilesetSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1FilesetSpecInput` via:
 //
-//          GoogleCloudDatacatalogV1FilesetSpecArgs{...}
+//	GoogleCloudDatacatalogV1FilesetSpecArgs{...}
 type GoogleCloudDatacatalogV1FilesetSpecInput interface {
 	pulumi.Input
 
@@ -3200,11 +3200,11 @@ func (i GoogleCloudDatacatalogV1FilesetSpecArgs) ToGoogleCloudDatacatalogV1Files
 // GoogleCloudDatacatalogV1FilesetSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1FilesetSpecArgs, GoogleCloudDatacatalogV1FilesetSpecPtr and GoogleCloudDatacatalogV1FilesetSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1FilesetSpecPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1FilesetSpecArgs{...}
+//	        GoogleCloudDatacatalogV1FilesetSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1FilesetSpecPtrInput interface {
 	pulumi.Input
 
@@ -3395,7 +3395,7 @@ type GoogleCloudDatacatalogV1GcsFilesetSpec struct {
 // GoogleCloudDatacatalogV1GcsFilesetSpecInput is an input type that accepts GoogleCloudDatacatalogV1GcsFilesetSpecArgs and GoogleCloudDatacatalogV1GcsFilesetSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1GcsFilesetSpecInput` via:
 //
-//          GoogleCloudDatacatalogV1GcsFilesetSpecArgs{...}
+//	GoogleCloudDatacatalogV1GcsFilesetSpecArgs{...}
 type GoogleCloudDatacatalogV1GcsFilesetSpecInput interface {
 	pulumi.Input
 
@@ -3432,11 +3432,11 @@ func (i GoogleCloudDatacatalogV1GcsFilesetSpecArgs) ToGoogleCloudDatacatalogV1Gc
 // GoogleCloudDatacatalogV1GcsFilesetSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1GcsFilesetSpecArgs, GoogleCloudDatacatalogV1GcsFilesetSpecPtr and GoogleCloudDatacatalogV1GcsFilesetSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1GcsFilesetSpecPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1GcsFilesetSpecArgs{...}
+//	        GoogleCloudDatacatalogV1GcsFilesetSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1GcsFilesetSpecPtrInput interface {
 	pulumi.Input
 
@@ -3613,7 +3613,7 @@ type GoogleCloudDatacatalogV1PhysicalSchema struct {
 // GoogleCloudDatacatalogV1PhysicalSchemaInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaArgs and GoogleCloudDatacatalogV1PhysicalSchemaOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaInput` via:
 //
-//          GoogleCloudDatacatalogV1PhysicalSchemaArgs{...}
+//	GoogleCloudDatacatalogV1PhysicalSchemaArgs{...}
 type GoogleCloudDatacatalogV1PhysicalSchemaInput interface {
 	pulumi.Input
 
@@ -3660,11 +3660,11 @@ func (i GoogleCloudDatacatalogV1PhysicalSchemaArgs) ToGoogleCloudDatacatalogV1Ph
 // GoogleCloudDatacatalogV1PhysicalSchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaArgs, GoogleCloudDatacatalogV1PhysicalSchemaPtr and GoogleCloudDatacatalogV1PhysicalSchemaPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1PhysicalSchemaArgs{...}
+//	        GoogleCloudDatacatalogV1PhysicalSchemaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1PhysicalSchemaPtrInput interface {
 	pulumi.Input
 
@@ -3850,7 +3850,7 @@ type GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema struct {
 // GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs and GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaInput` via:
 //
-//          GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs{...}
+//	GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs{...}
 type GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaInput interface {
 	pulumi.Input
 
@@ -3887,11 +3887,11 @@ func (i GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs) ToGoogleCloudDatac
 // GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs, GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtr and GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs{...}
+//	        GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1PhysicalSchemaAvroSchemaPtrInput interface {
 	pulumi.Input
 
@@ -4014,7 +4014,7 @@ type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema struct {
 // GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs and GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaInput` via:
 //
-//          GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs{...}
+//	GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs{...}
 type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaInput interface {
 	pulumi.Input
 
@@ -4049,11 +4049,11 @@ func (i GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs) ToGoogleCloudDataca
 // GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs, GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtr and GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs{...}
+//	        GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1PhysicalSchemaCsvSchemaPtrInput interface {
 	pulumi.Input
 
@@ -4154,7 +4154,7 @@ type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema struct {
 // GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs and GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaInput` via:
 //
-//          GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs{...}
+//	GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs{...}
 type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaInput interface {
 	pulumi.Input
 
@@ -4189,11 +4189,11 @@ func (i GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs) ToGoogleCloudDataca
 // GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs, GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtr and GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs{...}
+//	        GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1PhysicalSchemaOrcSchemaPtrInput interface {
 	pulumi.Input
 
@@ -4294,7 +4294,7 @@ type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema struct {
 // GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs and GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaInput` via:
 //
-//          GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs{...}
+//	GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs{...}
 type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaInput interface {
 	pulumi.Input
 
@@ -4329,11 +4329,11 @@ func (i GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs) ToGoogleCloudDa
 // GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs, GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtr and GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs{...}
+//	        GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1PhysicalSchemaParquetSchemaPtrInput interface {
 	pulumi.Input
 
@@ -4436,7 +4436,7 @@ type GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema struct {
 // GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs and GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaInput` via:
 //
-//          GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs{...}
+//	GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs{...}
 type GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaInput interface {
 	pulumi.Input
 
@@ -4473,11 +4473,11 @@ func (i GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs) ToGoogleCloudD
 // GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs, GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtr and GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs{...}
+//	        GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchemaPtrInput interface {
 	pulumi.Input
 
@@ -4675,7 +4675,7 @@ type GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema struct {
 // GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs and GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaInput` via:
 //
-//          GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs{...}
+//	GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs{...}
 type GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaInput interface {
 	pulumi.Input
 
@@ -4712,11 +4712,11 @@ func (i GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs) ToGoogleCloudDat
 // GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs, GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtr and GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs{...}
+//	        GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1PhysicalSchemaThriftSchemaPtrInput interface {
 	pulumi.Input
 
@@ -4851,7 +4851,7 @@ type GoogleCloudDatacatalogV1RoutineSpec struct {
 // GoogleCloudDatacatalogV1RoutineSpecInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecArgs and GoogleCloudDatacatalogV1RoutineSpecOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecInput` via:
 //
-//          GoogleCloudDatacatalogV1RoutineSpecArgs{...}
+//	GoogleCloudDatacatalogV1RoutineSpecArgs{...}
 type GoogleCloudDatacatalogV1RoutineSpecInput interface {
 	pulumi.Input
 
@@ -4898,11 +4898,11 @@ func (i GoogleCloudDatacatalogV1RoutineSpecArgs) ToGoogleCloudDatacatalogV1Routi
 // GoogleCloudDatacatalogV1RoutineSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecArgs, GoogleCloudDatacatalogV1RoutineSpecPtr and GoogleCloudDatacatalogV1RoutineSpecPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1RoutineSpecArgs{...}
+//	        GoogleCloudDatacatalogV1RoutineSpecArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1RoutineSpecPtrInput interface {
 	pulumi.Input
 
@@ -5086,7 +5086,7 @@ type GoogleCloudDatacatalogV1RoutineSpecArgument struct {
 // GoogleCloudDatacatalogV1RoutineSpecArgumentInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecArgumentArgs and GoogleCloudDatacatalogV1RoutineSpecArgumentOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecArgumentInput` via:
 //
-//          GoogleCloudDatacatalogV1RoutineSpecArgumentArgs{...}
+//	GoogleCloudDatacatalogV1RoutineSpecArgumentArgs{...}
 type GoogleCloudDatacatalogV1RoutineSpecArgumentInput interface {
 	pulumi.Input
 
@@ -5119,7 +5119,7 @@ func (i GoogleCloudDatacatalogV1RoutineSpecArgumentArgs) ToGoogleCloudDatacatalo
 // GoogleCloudDatacatalogV1RoutineSpecArgumentArrayInput is an input type that accepts GoogleCloudDatacatalogV1RoutineSpecArgumentArray and GoogleCloudDatacatalogV1RoutineSpecArgumentArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1RoutineSpecArgumentArrayInput` via:
 //
-//          GoogleCloudDatacatalogV1RoutineSpecArgumentArray{ GoogleCloudDatacatalogV1RoutineSpecArgumentArgs{...} }
+//	GoogleCloudDatacatalogV1RoutineSpecArgumentArray{ GoogleCloudDatacatalogV1RoutineSpecArgumentArgs{...} }
 type GoogleCloudDatacatalogV1RoutineSpecArgumentArrayInput interface {
 	pulumi.Input
 
@@ -5327,7 +5327,7 @@ type GoogleCloudDatacatalogV1Schema struct {
 // GoogleCloudDatacatalogV1SchemaInput is an input type that accepts GoogleCloudDatacatalogV1SchemaArgs and GoogleCloudDatacatalogV1SchemaOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1SchemaInput` via:
 //
-//          GoogleCloudDatacatalogV1SchemaArgs{...}
+//	GoogleCloudDatacatalogV1SchemaArgs{...}
 type GoogleCloudDatacatalogV1SchemaInput interface {
 	pulumi.Input
 
@@ -5364,11 +5364,11 @@ func (i GoogleCloudDatacatalogV1SchemaArgs) ToGoogleCloudDatacatalogV1SchemaPtrO
 // GoogleCloudDatacatalogV1SchemaPtrInput is an input type that accepts GoogleCloudDatacatalogV1SchemaArgs, GoogleCloudDatacatalogV1SchemaPtr and GoogleCloudDatacatalogV1SchemaPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1SchemaPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1SchemaArgs{...}
+//	        GoogleCloudDatacatalogV1SchemaArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1SchemaPtrInput interface {
 	pulumi.Input
 
@@ -5530,7 +5530,7 @@ type GoogleCloudDatacatalogV1SystemTimestamps struct {
 // GoogleCloudDatacatalogV1SystemTimestampsInput is an input type that accepts GoogleCloudDatacatalogV1SystemTimestampsArgs and GoogleCloudDatacatalogV1SystemTimestampsOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1SystemTimestampsInput` via:
 //
-//          GoogleCloudDatacatalogV1SystemTimestampsArgs{...}
+//	GoogleCloudDatacatalogV1SystemTimestampsArgs{...}
 type GoogleCloudDatacatalogV1SystemTimestampsInput interface {
 	pulumi.Input
 
@@ -5569,11 +5569,11 @@ func (i GoogleCloudDatacatalogV1SystemTimestampsArgs) ToGoogleCloudDatacatalogV1
 // GoogleCloudDatacatalogV1SystemTimestampsPtrInput is an input type that accepts GoogleCloudDatacatalogV1SystemTimestampsArgs, GoogleCloudDatacatalogV1SystemTimestampsPtr and GoogleCloudDatacatalogV1SystemTimestampsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudDatacatalogV1SystemTimestampsPtrInput` via:
 //
-//          GoogleCloudDatacatalogV1SystemTimestampsArgs{...}
+//	        GoogleCloudDatacatalogV1SystemTimestampsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudDatacatalogV1SystemTimestampsPtrInput interface {
 	pulumi.Input
 

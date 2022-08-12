@@ -21,7 +21,7 @@ type GoogleCloudRunV2BinaryAuthorization struct {
 // GoogleCloudRunV2BinaryAuthorizationInput is an input type that accepts GoogleCloudRunV2BinaryAuthorizationArgs and GoogleCloudRunV2BinaryAuthorizationOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2BinaryAuthorizationInput` via:
 //
-//          GoogleCloudRunV2BinaryAuthorizationArgs{...}
+//	GoogleCloudRunV2BinaryAuthorizationArgs{...}
 type GoogleCloudRunV2BinaryAuthorizationInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i GoogleCloudRunV2BinaryAuthorizationArgs) ToGoogleCloudRunV2BinaryAuthori
 // GoogleCloudRunV2BinaryAuthorizationPtrInput is an input type that accepts GoogleCloudRunV2BinaryAuthorizationArgs, GoogleCloudRunV2BinaryAuthorizationPtr and GoogleCloudRunV2BinaryAuthorizationPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2BinaryAuthorizationPtrInput` via:
 //
-//          GoogleCloudRunV2BinaryAuthorizationArgs{...}
+//	        GoogleCloudRunV2BinaryAuthorizationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRunV2BinaryAuthorizationPtrInput interface {
 	pulumi.Input
 
@@ -211,7 +211,7 @@ type GoogleCloudRunV2CloudSqlInstance struct {
 // GoogleCloudRunV2CloudSqlInstanceInput is an input type that accepts GoogleCloudRunV2CloudSqlInstanceArgs and GoogleCloudRunV2CloudSqlInstanceOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2CloudSqlInstanceInput` via:
 //
-//          GoogleCloudRunV2CloudSqlInstanceArgs{...}
+//	GoogleCloudRunV2CloudSqlInstanceArgs{...}
 type GoogleCloudRunV2CloudSqlInstanceInput interface {
 	pulumi.Input
 
@@ -248,11 +248,11 @@ func (i GoogleCloudRunV2CloudSqlInstanceArgs) ToGoogleCloudRunV2CloudSqlInstance
 // GoogleCloudRunV2CloudSqlInstancePtrInput is an input type that accepts GoogleCloudRunV2CloudSqlInstanceArgs, GoogleCloudRunV2CloudSqlInstancePtr and GoogleCloudRunV2CloudSqlInstancePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2CloudSqlInstancePtrInput` via:
 //
-//          GoogleCloudRunV2CloudSqlInstanceArgs{...}
+//	        GoogleCloudRunV2CloudSqlInstanceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRunV2CloudSqlInstancePtrInput interface {
 	pulumi.Input
 
@@ -488,7 +488,7 @@ type GoogleCloudRunV2Container struct {
 // GoogleCloudRunV2ContainerInput is an input type that accepts GoogleCloudRunV2ContainerArgs and GoogleCloudRunV2ContainerOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2ContainerInput` via:
 //
-//          GoogleCloudRunV2ContainerArgs{...}
+//	GoogleCloudRunV2ContainerArgs{...}
 type GoogleCloudRunV2ContainerInput interface {
 	pulumi.Input
 
@@ -533,7 +533,7 @@ func (i GoogleCloudRunV2ContainerArgs) ToGoogleCloudRunV2ContainerOutputWithCont
 // GoogleCloudRunV2ContainerArrayInput is an input type that accepts GoogleCloudRunV2ContainerArray and GoogleCloudRunV2ContainerArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2ContainerArrayInput` via:
 //
-//          GoogleCloudRunV2ContainerArray{ GoogleCloudRunV2ContainerArgs{...} }
+//	GoogleCloudRunV2ContainerArray{ GoogleCloudRunV2ContainerArgs{...} }
 type GoogleCloudRunV2ContainerArrayInput interface {
 	pulumi.Input
 
@@ -646,7 +646,7 @@ type GoogleCloudRunV2ContainerPort struct {
 // GoogleCloudRunV2ContainerPortInput is an input type that accepts GoogleCloudRunV2ContainerPortArgs and GoogleCloudRunV2ContainerPortOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2ContainerPortInput` via:
 //
-//          GoogleCloudRunV2ContainerPortArgs{...}
+//	GoogleCloudRunV2ContainerPortArgs{...}
 type GoogleCloudRunV2ContainerPortInput interface {
 	pulumi.Input
 
@@ -677,7 +677,7 @@ func (i GoogleCloudRunV2ContainerPortArgs) ToGoogleCloudRunV2ContainerPortOutput
 // GoogleCloudRunV2ContainerPortArrayInput is an input type that accepts GoogleCloudRunV2ContainerPortArray and GoogleCloudRunV2ContainerPortArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2ContainerPortArrayInput` via:
 //
-//          GoogleCloudRunV2ContainerPortArray{ GoogleCloudRunV2ContainerPortArgs{...} }
+//	GoogleCloudRunV2ContainerPortArray{ GoogleCloudRunV2ContainerPortArgs{...} }
 type GoogleCloudRunV2ContainerPortArrayInput interface {
 	pulumi.Input
 
@@ -914,7 +914,7 @@ type GoogleCloudRunV2EnvVar struct {
 // GoogleCloudRunV2EnvVarInput is an input type that accepts GoogleCloudRunV2EnvVarArgs and GoogleCloudRunV2EnvVarOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2EnvVarInput` via:
 //
-//          GoogleCloudRunV2EnvVarArgs{...}
+//	GoogleCloudRunV2EnvVarArgs{...}
 type GoogleCloudRunV2EnvVarInput interface {
 	pulumi.Input
 
@@ -947,7 +947,7 @@ func (i GoogleCloudRunV2EnvVarArgs) ToGoogleCloudRunV2EnvVarOutputWithContext(ct
 // GoogleCloudRunV2EnvVarArrayInput is an input type that accepts GoogleCloudRunV2EnvVarArray and GoogleCloudRunV2EnvVarArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2EnvVarArrayInput` via:
 //
-//          GoogleCloudRunV2EnvVarArray{ GoogleCloudRunV2EnvVarArgs{...} }
+//	GoogleCloudRunV2EnvVarArray{ GoogleCloudRunV2EnvVarArgs{...} }
 type GoogleCloudRunV2EnvVarArrayInput interface {
 	pulumi.Input
 
@@ -1088,7 +1088,7 @@ type GoogleCloudRunV2EnvVarSource struct {
 // GoogleCloudRunV2EnvVarSourceInput is an input type that accepts GoogleCloudRunV2EnvVarSourceArgs and GoogleCloudRunV2EnvVarSourceOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2EnvVarSourceInput` via:
 //
-//          GoogleCloudRunV2EnvVarSourceArgs{...}
+//	GoogleCloudRunV2EnvVarSourceArgs{...}
 type GoogleCloudRunV2EnvVarSourceInput interface {
 	pulumi.Input
 
@@ -1125,11 +1125,11 @@ func (i GoogleCloudRunV2EnvVarSourceArgs) ToGoogleCloudRunV2EnvVarSourcePtrOutpu
 // GoogleCloudRunV2EnvVarSourcePtrInput is an input type that accepts GoogleCloudRunV2EnvVarSourceArgs, GoogleCloudRunV2EnvVarSourcePtr and GoogleCloudRunV2EnvVarSourcePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2EnvVarSourcePtrInput` via:
 //
-//          GoogleCloudRunV2EnvVarSourceArgs{...}
+//	        GoogleCloudRunV2EnvVarSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRunV2EnvVarSourcePtrInput interface {
 	pulumi.Input
 
@@ -1304,7 +1304,7 @@ type GoogleCloudRunV2ExecutionTemplate struct {
 // GoogleCloudRunV2ExecutionTemplateInput is an input type that accepts GoogleCloudRunV2ExecutionTemplateArgs and GoogleCloudRunV2ExecutionTemplateOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2ExecutionTemplateInput` via:
 //
-//          GoogleCloudRunV2ExecutionTemplateArgs{...}
+//	GoogleCloudRunV2ExecutionTemplateArgs{...}
 type GoogleCloudRunV2ExecutionTemplateInput interface {
 	pulumi.Input
 
@@ -1445,7 +1445,7 @@ type GoogleCloudRunV2ResourceRequirements struct {
 // GoogleCloudRunV2ResourceRequirementsInput is an input type that accepts GoogleCloudRunV2ResourceRequirementsArgs and GoogleCloudRunV2ResourceRequirementsOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2ResourceRequirementsInput` via:
 //
-//          GoogleCloudRunV2ResourceRequirementsArgs{...}
+//	GoogleCloudRunV2ResourceRequirementsArgs{...}
 type GoogleCloudRunV2ResourceRequirementsInput interface {
 	pulumi.Input
 
@@ -1484,11 +1484,11 @@ func (i GoogleCloudRunV2ResourceRequirementsArgs) ToGoogleCloudRunV2ResourceRequ
 // GoogleCloudRunV2ResourceRequirementsPtrInput is an input type that accepts GoogleCloudRunV2ResourceRequirementsArgs, GoogleCloudRunV2ResourceRequirementsPtr and GoogleCloudRunV2ResourceRequirementsPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2ResourceRequirementsPtrInput` via:
 //
-//          GoogleCloudRunV2ResourceRequirementsArgs{...}
+//	        GoogleCloudRunV2ResourceRequirementsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRunV2ResourceRequirementsPtrInput interface {
 	pulumi.Input
 
@@ -1637,7 +1637,7 @@ type GoogleCloudRunV2RevisionScaling struct {
 // GoogleCloudRunV2RevisionScalingInput is an input type that accepts GoogleCloudRunV2RevisionScalingArgs and GoogleCloudRunV2RevisionScalingOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2RevisionScalingInput` via:
 //
-//          GoogleCloudRunV2RevisionScalingArgs{...}
+//	GoogleCloudRunV2RevisionScalingArgs{...}
 type GoogleCloudRunV2RevisionScalingInput interface {
 	pulumi.Input
 
@@ -1676,11 +1676,11 @@ func (i GoogleCloudRunV2RevisionScalingArgs) ToGoogleCloudRunV2RevisionScalingPt
 // GoogleCloudRunV2RevisionScalingPtrInput is an input type that accepts GoogleCloudRunV2RevisionScalingArgs, GoogleCloudRunV2RevisionScalingPtr and GoogleCloudRunV2RevisionScalingPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2RevisionScalingPtrInput` via:
 //
-//          GoogleCloudRunV2RevisionScalingArgs{...}
+//	        GoogleCloudRunV2RevisionScalingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRunV2RevisionScalingPtrInput interface {
 	pulumi.Input
 
@@ -1849,7 +1849,7 @@ type GoogleCloudRunV2RevisionTemplate struct {
 // GoogleCloudRunV2RevisionTemplateInput is an input type that accepts GoogleCloudRunV2RevisionTemplateArgs and GoogleCloudRunV2RevisionTemplateOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2RevisionTemplateInput` via:
 //
-//          GoogleCloudRunV2RevisionTemplateArgs{...}
+//	GoogleCloudRunV2RevisionTemplateArgs{...}
 type GoogleCloudRunV2RevisionTemplateInput interface {
 	pulumi.Input
 
@@ -2092,7 +2092,7 @@ type GoogleCloudRunV2SecretKeySelector struct {
 // GoogleCloudRunV2SecretKeySelectorInput is an input type that accepts GoogleCloudRunV2SecretKeySelectorArgs and GoogleCloudRunV2SecretKeySelectorOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2SecretKeySelectorInput` via:
 //
-//          GoogleCloudRunV2SecretKeySelectorArgs{...}
+//	GoogleCloudRunV2SecretKeySelectorArgs{...}
 type GoogleCloudRunV2SecretKeySelectorInput interface {
 	pulumi.Input
 
@@ -2131,11 +2131,11 @@ func (i GoogleCloudRunV2SecretKeySelectorArgs) ToGoogleCloudRunV2SecretKeySelect
 // GoogleCloudRunV2SecretKeySelectorPtrInput is an input type that accepts GoogleCloudRunV2SecretKeySelectorArgs, GoogleCloudRunV2SecretKeySelectorPtr and GoogleCloudRunV2SecretKeySelectorPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2SecretKeySelectorPtrInput` via:
 //
-//          GoogleCloudRunV2SecretKeySelectorArgs{...}
+//	        GoogleCloudRunV2SecretKeySelectorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRunV2SecretKeySelectorPtrInput interface {
 	pulumi.Input
 
@@ -2286,7 +2286,7 @@ type GoogleCloudRunV2SecretVolumeSource struct {
 // GoogleCloudRunV2SecretVolumeSourceInput is an input type that accepts GoogleCloudRunV2SecretVolumeSourceArgs and GoogleCloudRunV2SecretVolumeSourceOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2SecretVolumeSourceInput` via:
 //
-//          GoogleCloudRunV2SecretVolumeSourceArgs{...}
+//	GoogleCloudRunV2SecretVolumeSourceArgs{...}
 type GoogleCloudRunV2SecretVolumeSourceInput interface {
 	pulumi.Input
 
@@ -2327,11 +2327,11 @@ func (i GoogleCloudRunV2SecretVolumeSourceArgs) ToGoogleCloudRunV2SecretVolumeSo
 // GoogleCloudRunV2SecretVolumeSourcePtrInput is an input type that accepts GoogleCloudRunV2SecretVolumeSourceArgs, GoogleCloudRunV2SecretVolumeSourcePtr and GoogleCloudRunV2SecretVolumeSourcePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2SecretVolumeSourcePtrInput` via:
 //
-//          GoogleCloudRunV2SecretVolumeSourceArgs{...}
+//	        GoogleCloudRunV2SecretVolumeSourceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRunV2SecretVolumeSourcePtrInput interface {
 	pulumi.Input
 
@@ -2516,7 +2516,7 @@ type GoogleCloudRunV2TaskTemplate struct {
 // GoogleCloudRunV2TaskTemplateInput is an input type that accepts GoogleCloudRunV2TaskTemplateArgs and GoogleCloudRunV2TaskTemplateOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2TaskTemplateInput` via:
 //
-//          GoogleCloudRunV2TaskTemplateArgs{...}
+//	GoogleCloudRunV2TaskTemplateArgs{...}
 type GoogleCloudRunV2TaskTemplateInput interface {
 	pulumi.Input
 
@@ -2703,7 +2703,7 @@ type GoogleCloudRunV2TrafficTarget struct {
 // GoogleCloudRunV2TrafficTargetInput is an input type that accepts GoogleCloudRunV2TrafficTargetArgs and GoogleCloudRunV2TrafficTargetOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2TrafficTargetInput` via:
 //
-//          GoogleCloudRunV2TrafficTargetArgs{...}
+//	GoogleCloudRunV2TrafficTargetArgs{...}
 type GoogleCloudRunV2TrafficTargetInput interface {
 	pulumi.Input
 
@@ -2738,7 +2738,7 @@ func (i GoogleCloudRunV2TrafficTargetArgs) ToGoogleCloudRunV2TrafficTargetOutput
 // GoogleCloudRunV2TrafficTargetArrayInput is an input type that accepts GoogleCloudRunV2TrafficTargetArray and GoogleCloudRunV2TrafficTargetArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2TrafficTargetArrayInput` via:
 //
-//          GoogleCloudRunV2TrafficTargetArray{ GoogleCloudRunV2TrafficTargetArgs{...} }
+//	GoogleCloudRunV2TrafficTargetArray{ GoogleCloudRunV2TrafficTargetArgs{...} }
 type GoogleCloudRunV2TrafficTargetArrayInput interface {
 	pulumi.Input
 
@@ -2969,7 +2969,7 @@ type GoogleCloudRunV2VersionToPath struct {
 // GoogleCloudRunV2VersionToPathInput is an input type that accepts GoogleCloudRunV2VersionToPathArgs and GoogleCloudRunV2VersionToPathOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2VersionToPathInput` via:
 //
-//          GoogleCloudRunV2VersionToPathArgs{...}
+//	GoogleCloudRunV2VersionToPathArgs{...}
 type GoogleCloudRunV2VersionToPathInput interface {
 	pulumi.Input
 
@@ -3002,7 +3002,7 @@ func (i GoogleCloudRunV2VersionToPathArgs) ToGoogleCloudRunV2VersionToPathOutput
 // GoogleCloudRunV2VersionToPathArrayInput is an input type that accepts GoogleCloudRunV2VersionToPathArray and GoogleCloudRunV2VersionToPathArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2VersionToPathArrayInput` via:
 //
-//          GoogleCloudRunV2VersionToPathArray{ GoogleCloudRunV2VersionToPathArgs{...} }
+//	GoogleCloudRunV2VersionToPathArray{ GoogleCloudRunV2VersionToPathArgs{...} }
 type GoogleCloudRunV2VersionToPathArrayInput interface {
 	pulumi.Input
 
@@ -3147,7 +3147,7 @@ type GoogleCloudRunV2Volume struct {
 // GoogleCloudRunV2VolumeInput is an input type that accepts GoogleCloudRunV2VolumeArgs and GoogleCloudRunV2VolumeOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2VolumeInput` via:
 //
-//          GoogleCloudRunV2VolumeArgs{...}
+//	GoogleCloudRunV2VolumeArgs{...}
 type GoogleCloudRunV2VolumeInput interface {
 	pulumi.Input
 
@@ -3180,7 +3180,7 @@ func (i GoogleCloudRunV2VolumeArgs) ToGoogleCloudRunV2VolumeOutputWithContext(ct
 // GoogleCloudRunV2VolumeArrayInput is an input type that accepts GoogleCloudRunV2VolumeArray and GoogleCloudRunV2VolumeArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2VolumeArrayInput` via:
 //
-//          GoogleCloudRunV2VolumeArray{ GoogleCloudRunV2VolumeArgs{...} }
+//	GoogleCloudRunV2VolumeArray{ GoogleCloudRunV2VolumeArgs{...} }
 type GoogleCloudRunV2VolumeArrayInput interface {
 	pulumi.Input
 
@@ -3263,7 +3263,7 @@ type GoogleCloudRunV2VolumeMount struct {
 // GoogleCloudRunV2VolumeMountInput is an input type that accepts GoogleCloudRunV2VolumeMountArgs and GoogleCloudRunV2VolumeMountOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2VolumeMountInput` via:
 //
-//          GoogleCloudRunV2VolumeMountArgs{...}
+//	GoogleCloudRunV2VolumeMountArgs{...}
 type GoogleCloudRunV2VolumeMountInput interface {
 	pulumi.Input
 
@@ -3294,7 +3294,7 @@ func (i GoogleCloudRunV2VolumeMountArgs) ToGoogleCloudRunV2VolumeMountOutputWith
 // GoogleCloudRunV2VolumeMountArrayInput is an input type that accepts GoogleCloudRunV2VolumeMountArray and GoogleCloudRunV2VolumeMountArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2VolumeMountArrayInput` via:
 //
-//          GoogleCloudRunV2VolumeMountArray{ GoogleCloudRunV2VolumeMountArgs{...} }
+//	GoogleCloudRunV2VolumeMountArray{ GoogleCloudRunV2VolumeMountArgs{...} }
 type GoogleCloudRunV2VolumeMountArrayInput interface {
 	pulumi.Input
 
@@ -3487,7 +3487,7 @@ type GoogleCloudRunV2VpcAccess struct {
 // GoogleCloudRunV2VpcAccessInput is an input type that accepts GoogleCloudRunV2VpcAccessArgs and GoogleCloudRunV2VpcAccessOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2VpcAccessInput` via:
 //
-//          GoogleCloudRunV2VpcAccessArgs{...}
+//	GoogleCloudRunV2VpcAccessArgs{...}
 type GoogleCloudRunV2VpcAccessInput interface {
 	pulumi.Input
 
@@ -3526,11 +3526,11 @@ func (i GoogleCloudRunV2VpcAccessArgs) ToGoogleCloudRunV2VpcAccessPtrOutputWithC
 // GoogleCloudRunV2VpcAccessPtrInput is an input type that accepts GoogleCloudRunV2VpcAccessArgs, GoogleCloudRunV2VpcAccessPtr and GoogleCloudRunV2VpcAccessPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2VpcAccessPtrInput` via:
 //
-//          GoogleCloudRunV2VpcAccessArgs{...}
+//	        GoogleCloudRunV2VpcAccessArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudRunV2VpcAccessPtrInput interface {
 	pulumi.Input
 
@@ -3679,7 +3679,7 @@ type GoogleIamV1AuditConfig struct {
 // GoogleIamV1AuditConfigInput is an input type that accepts GoogleIamV1AuditConfigArgs and GoogleIamV1AuditConfigOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigInput` via:
 //
-//          GoogleIamV1AuditConfigArgs{...}
+//	GoogleIamV1AuditConfigArgs{...}
 type GoogleIamV1AuditConfigInput interface {
 	pulumi.Input
 
@@ -3710,7 +3710,7 @@ func (i GoogleIamV1AuditConfigArgs) ToGoogleIamV1AuditConfigOutputWithContext(ct
 // GoogleIamV1AuditConfigArrayInput is an input type that accepts GoogleIamV1AuditConfigArray and GoogleIamV1AuditConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigArrayInput` via:
 //
-//          GoogleIamV1AuditConfigArray{ GoogleIamV1AuditConfigArgs{...} }
+//	GoogleIamV1AuditConfigArray{ GoogleIamV1AuditConfigArgs{...} }
 type GoogleIamV1AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -3841,7 +3841,7 @@ type GoogleIamV1AuditLogConfig struct {
 // GoogleIamV1AuditLogConfigInput is an input type that accepts GoogleIamV1AuditLogConfigArgs and GoogleIamV1AuditLogConfigOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigInput` via:
 //
-//          GoogleIamV1AuditLogConfigArgs{...}
+//	GoogleIamV1AuditLogConfigArgs{...}
 type GoogleIamV1AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -3872,7 +3872,7 @@ func (i GoogleIamV1AuditLogConfigArgs) ToGoogleIamV1AuditLogConfigOutputWithCont
 // GoogleIamV1AuditLogConfigArrayInput is an input type that accepts GoogleIamV1AuditLogConfigArray and GoogleIamV1AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigArrayInput` via:
 //
-//          GoogleIamV1AuditLogConfigArray{ GoogleIamV1AuditLogConfigArgs{...} }
+//	GoogleIamV1AuditLogConfigArray{ GoogleIamV1AuditLogConfigArgs{...} }
 type GoogleIamV1AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -4005,7 +4005,7 @@ type GoogleIamV1Binding struct {
 // GoogleIamV1BindingInput is an input type that accepts GoogleIamV1BindingArgs and GoogleIamV1BindingOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingInput` via:
 //
-//          GoogleIamV1BindingArgs{...}
+//	GoogleIamV1BindingArgs{...}
 type GoogleIamV1BindingInput interface {
 	pulumi.Input
 
@@ -4038,7 +4038,7 @@ func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutputWithContext(ctx contex
 // GoogleIamV1BindingArrayInput is an input type that accepts GoogleIamV1BindingArray and GoogleIamV1BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingArrayInput` via:
 //
-//          GoogleIamV1BindingArray{ GoogleIamV1BindingArgs{...} }
+//	GoogleIamV1BindingArray{ GoogleIamV1BindingArgs{...} }
 type GoogleIamV1BindingArrayInput interface {
 	pulumi.Input
 
@@ -4185,7 +4185,7 @@ type GoogleTypeExpr struct {
 // GoogleTypeExprInput is an input type that accepts GoogleTypeExprArgs and GoogleTypeExprOutput values.
 // You can construct a concrete instance of `GoogleTypeExprInput` via:
 //
-//          GoogleTypeExprArgs{...}
+//	GoogleTypeExprArgs{...}
 type GoogleTypeExprInput interface {
 	pulumi.Input
 
@@ -4228,11 +4228,11 @@ func (i GoogleTypeExprArgs) ToGoogleTypeExprPtrOutputWithContext(ctx context.Con
 // GoogleTypeExprPtrInput is an input type that accepts GoogleTypeExprArgs, GoogleTypeExprPtr and GoogleTypeExprPtrOutput values.
 // You can construct a concrete instance of `GoogleTypeExprPtrInput` via:
 //
-//          GoogleTypeExprArgs{...}
+//	        GoogleTypeExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleTypeExprPtrInput interface {
 	pulumi.Input
 

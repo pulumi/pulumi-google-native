@@ -21,7 +21,7 @@ type Actor struct {
 // ActorInput is an input type that accepts ActorArgs and ActorOutput values.
 // You can construct a concrete instance of `ActorInput` via:
 //
-//          ActorArgs{...}
+//	ActorArgs{...}
 type ActorInput interface {
 	pulumi.Input
 
@@ -60,11 +60,11 @@ func (i ActorArgs) ToActorPtrOutputWithContext(ctx context.Context) ActorPtrOutp
 // ActorPtrInput is an input type that accepts ActorArgs, ActorPtr and ActorPtrOutput values.
 // You can construct a concrete instance of `ActorPtrInput` via:
 //
-//          ActorArgs{...}
+//	        ActorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ActorPtrInput interface {
 	pulumi.Input
 
@@ -220,7 +220,7 @@ type CaseClassification struct {
 // CaseClassificationInput is an input type that accepts CaseClassificationArgs and CaseClassificationOutput values.
 // You can construct a concrete instance of `CaseClassificationInput` via:
 //
-//          CaseClassificationArgs{...}
+//	CaseClassificationArgs{...}
 type CaseClassificationInput interface {
 	pulumi.Input
 
@@ -259,11 +259,11 @@ func (i CaseClassificationArgs) ToCaseClassificationPtrOutputWithContext(ctx con
 // CaseClassificationPtrInput is an input type that accepts CaseClassificationArgs, CaseClassificationPtr and CaseClassificationPtrOutput values.
 // You can construct a concrete instance of `CaseClassificationPtrInput` via:
 //
-//          CaseClassificationArgs{...}
+//	        CaseClassificationArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CaseClassificationPtrInput interface {
 	pulumi.Input
 

@@ -250,7 +250,7 @@ type ComputeEngineTargetDefaults struct {
 // ComputeEngineTargetDefaultsInput is an input type that accepts ComputeEngineTargetDefaultsArgs and ComputeEngineTargetDefaultsOutput values.
 // You can construct a concrete instance of `ComputeEngineTargetDefaultsInput` via:
 //
-//          ComputeEngineTargetDefaultsArgs{...}
+//	ComputeEngineTargetDefaultsArgs{...}
 type ComputeEngineTargetDefaultsInput interface {
 	pulumi.Input
 
@@ -317,11 +317,11 @@ func (i ComputeEngineTargetDefaultsArgs) ToComputeEngineTargetDefaultsPtrOutputW
 // ComputeEngineTargetDefaultsPtrInput is an input type that accepts ComputeEngineTargetDefaultsArgs, ComputeEngineTargetDefaultsPtr and ComputeEngineTargetDefaultsPtrOutput values.
 // You can construct a concrete instance of `ComputeEngineTargetDefaultsPtrInput` via:
 //
-//          ComputeEngineTargetDefaultsArgs{...}
+//	        ComputeEngineTargetDefaultsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ComputeEngineTargetDefaultsPtrInput interface {
 	pulumi.Input
 
@@ -941,7 +941,7 @@ type ComputeScheduling struct {
 // ComputeSchedulingInput is an input type that accepts ComputeSchedulingArgs and ComputeSchedulingOutput values.
 // You can construct a concrete instance of `ComputeSchedulingInput` via:
 //
-//          ComputeSchedulingArgs{...}
+//	ComputeSchedulingArgs{...}
 type ComputeSchedulingInput interface {
 	pulumi.Input
 
@@ -984,11 +984,11 @@ func (i ComputeSchedulingArgs) ToComputeSchedulingPtrOutputWithContext(ctx conte
 // ComputeSchedulingPtrInput is an input type that accepts ComputeSchedulingArgs, ComputeSchedulingPtr and ComputeSchedulingPtrOutput values.
 // You can construct a concrete instance of `ComputeSchedulingPtrInput` via:
 //
-//          ComputeSchedulingArgs{...}
+//	        ComputeSchedulingArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ComputeSchedulingPtrInput interface {
 	pulumi.Input
 
@@ -1287,7 +1287,7 @@ type NetworkInterface struct {
 // NetworkInterfaceInput is an input type that accepts NetworkInterfaceArgs and NetworkInterfaceOutput values.
 // You can construct a concrete instance of `NetworkInterfaceInput` via:
 //
-//          NetworkInterfaceArgs{...}
+//	NetworkInterfaceArgs{...}
 type NetworkInterfaceInput interface {
 	pulumi.Input
 
@@ -1322,7 +1322,7 @@ func (i NetworkInterfaceArgs) ToNetworkInterfaceOutputWithContext(ctx context.Co
 // NetworkInterfaceArrayInput is an input type that accepts NetworkInterfaceArray and NetworkInterfaceArrayOutput values.
 // You can construct a concrete instance of `NetworkInterfaceArrayInput` via:
 //
-//          NetworkInterfaceArray{ NetworkInterfaceArgs{...} }
+//	NetworkInterfaceArray{ NetworkInterfaceArgs{...} }
 type NetworkInterfaceArrayInput interface {
 	pulumi.Input
 
@@ -1536,7 +1536,7 @@ type SchedulePolicy struct {
 // SchedulePolicyInput is an input type that accepts SchedulePolicyArgs and SchedulePolicyOutput values.
 // You can construct a concrete instance of `SchedulePolicyInput` via:
 //
-//          SchedulePolicyArgs{...}
+//	SchedulePolicyArgs{...}
 type SchedulePolicyInput interface {
 	pulumi.Input
 
@@ -1575,11 +1575,11 @@ func (i SchedulePolicyArgs) ToSchedulePolicyPtrOutputWithContext(ctx context.Con
 // SchedulePolicyPtrInput is an input type that accepts SchedulePolicyArgs, SchedulePolicyPtr and SchedulePolicyPtrOutput values.
 // You can construct a concrete instance of `SchedulePolicyPtrInput` via:
 //
-//          SchedulePolicyArgs{...}
+//	        SchedulePolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type SchedulePolicyPtrInput interface {
 	pulumi.Input
 
@@ -1730,7 +1730,7 @@ type SchedulingNodeAffinity struct {
 // SchedulingNodeAffinityInput is an input type that accepts SchedulingNodeAffinityArgs and SchedulingNodeAffinityOutput values.
 // You can construct a concrete instance of `SchedulingNodeAffinityInput` via:
 //
-//          SchedulingNodeAffinityArgs{...}
+//	SchedulingNodeAffinityArgs{...}
 type SchedulingNodeAffinityInput interface {
 	pulumi.Input
 
@@ -1763,7 +1763,7 @@ func (i SchedulingNodeAffinityArgs) ToSchedulingNodeAffinityOutputWithContext(ct
 // SchedulingNodeAffinityArrayInput is an input type that accepts SchedulingNodeAffinityArray and SchedulingNodeAffinityArrayOutput values.
 // You can construct a concrete instance of `SchedulingNodeAffinityArrayInput` via:
 //
-//          SchedulingNodeAffinityArray{ SchedulingNodeAffinityArgs{...} }
+//	SchedulingNodeAffinityArray{ SchedulingNodeAffinityArgs{...} }
 type SchedulingNodeAffinityArrayInput interface {
 	pulumi.Input
 
@@ -2002,7 +2002,7 @@ type VmUtilizationInfo struct {
 // VmUtilizationInfoInput is an input type that accepts VmUtilizationInfoArgs and VmUtilizationInfoOutput values.
 // You can construct a concrete instance of `VmUtilizationInfoInput` via:
 //
-//          VmUtilizationInfoArgs{...}
+//	VmUtilizationInfoArgs{...}
 type VmUtilizationInfoInput interface {
 	pulumi.Input
 
@@ -2035,7 +2035,7 @@ func (i VmUtilizationInfoArgs) ToVmUtilizationInfoOutputWithContext(ctx context.
 // VmUtilizationInfoArrayInput is an input type that accepts VmUtilizationInfoArray and VmUtilizationInfoArrayOutput values.
 // You can construct a concrete instance of `VmUtilizationInfoArrayInput` via:
 //
-//          VmUtilizationInfoArray{ VmUtilizationInfoArgs{...} }
+//	VmUtilizationInfoArray{ VmUtilizationInfoArgs{...} }
 type VmUtilizationInfoArrayInput interface {
 	pulumi.Input
 
@@ -2190,7 +2190,7 @@ type VmUtilizationMetrics struct {
 // VmUtilizationMetricsInput is an input type that accepts VmUtilizationMetricsArgs and VmUtilizationMetricsOutput values.
 // You can construct a concrete instance of `VmUtilizationMetricsInput` via:
 //
-//          VmUtilizationMetricsArgs{...}
+//	VmUtilizationMetricsArgs{...}
 type VmUtilizationMetricsInput interface {
 	pulumi.Input
 
@@ -2241,11 +2241,11 @@ func (i VmUtilizationMetricsArgs) ToVmUtilizationMetricsPtrOutputWithContext(ctx
 // VmUtilizationMetricsPtrInput is an input type that accepts VmUtilizationMetricsArgs, VmUtilizationMetricsPtr and VmUtilizationMetricsPtrOutput values.
 // You can construct a concrete instance of `VmUtilizationMetricsPtrInput` via:
 //
-//          VmUtilizationMetricsArgs{...}
+//	        VmUtilizationMetricsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VmUtilizationMetricsPtrInput interface {
 	pulumi.Input
 
@@ -2530,7 +2530,7 @@ type VmwareSourceDetails struct {
 // VmwareSourceDetailsInput is an input type that accepts VmwareSourceDetailsArgs and VmwareSourceDetailsOutput values.
 // You can construct a concrete instance of `VmwareSourceDetailsInput` via:
 //
-//          VmwareSourceDetailsArgs{...}
+//	VmwareSourceDetailsArgs{...}
 type VmwareSourceDetailsInput interface {
 	pulumi.Input
 
@@ -2573,11 +2573,11 @@ func (i VmwareSourceDetailsArgs) ToVmwareSourceDetailsPtrOutputWithContext(ctx c
 // VmwareSourceDetailsPtrInput is an input type that accepts VmwareSourceDetailsArgs, VmwareSourceDetailsPtr and VmwareSourceDetailsPtrOutput values.
 // You can construct a concrete instance of `VmwareSourceDetailsPtrInput` via:
 //
-//          VmwareSourceDetailsArgs{...}
+//	        VmwareSourceDetailsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VmwareSourceDetailsPtrInput interface {
 	pulumi.Input
 
@@ -2788,7 +2788,7 @@ type VmwareVmDetails struct {
 // VmwareVmDetailsInput is an input type that accepts VmwareVmDetailsArgs and VmwareVmDetailsOutput values.
 // You can construct a concrete instance of `VmwareVmDetailsInput` via:
 //
-//          VmwareVmDetailsArgs{...}
+//	VmwareVmDetailsArgs{...}
 type VmwareVmDetailsInput interface {
 	pulumi.Input
 
@@ -2845,11 +2845,11 @@ func (i VmwareVmDetailsArgs) ToVmwareVmDetailsPtrOutputWithContext(ctx context.C
 // VmwareVmDetailsPtrInput is an input type that accepts VmwareVmDetailsArgs, VmwareVmDetailsPtr and VmwareVmDetailsPtrOutput values.
 // You can construct a concrete instance of `VmwareVmDetailsPtrInput` via:
 //
-//          VmwareVmDetailsArgs{...}
+//	        VmwareVmDetailsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type VmwareVmDetailsPtrInput interface {
 	pulumi.Input
 

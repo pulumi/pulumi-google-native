@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o FunctionDockerRegistryPtrOutput) ToStringPtrOutputWithContext(ctx contex
 // FunctionDockerRegistryInput is an input type that accepts FunctionDockerRegistryArgs and FunctionDockerRegistryOutput values.
 // You can construct a concrete instance of `FunctionDockerRegistryInput` via:
 //
-//          FunctionDockerRegistryArgs{...}
+//	FunctionDockerRegistryArgs{...}
 type FunctionDockerRegistryInput interface {
 	pulumi.Input
 
@@ -486,7 +486,7 @@ func (o FunctionIngressSettingsPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // FunctionIngressSettingsInput is an input type that accepts FunctionIngressSettingsArgs and FunctionIngressSettingsOutput values.
 // You can construct a concrete instance of `FunctionIngressSettingsInput` via:
 //
-//          FunctionIngressSettingsArgs{...}
+//	FunctionIngressSettingsArgs{...}
 type FunctionIngressSettingsInput interface {
 	pulumi.Input
 
@@ -655,7 +655,7 @@ func (o FunctionVpcConnectorEgressSettingsPtrOutput) ToStringPtrOutputWithContex
 // FunctionVpcConnectorEgressSettingsInput is an input type that accepts FunctionVpcConnectorEgressSettingsArgs and FunctionVpcConnectorEgressSettingsOutput values.
 // You can construct a concrete instance of `FunctionVpcConnectorEgressSettingsInput` via:
 //
-//          FunctionVpcConnectorEgressSettingsArgs{...}
+//	FunctionVpcConnectorEgressSettingsArgs{...}
 type FunctionVpcConnectorEgressSettingsInput interface {
 	pulumi.Input
 
@@ -824,7 +824,7 @@ func (o HttpsTriggerSecurityLevelPtrOutput) ToStringPtrOutputWithContext(ctx con
 // HttpsTriggerSecurityLevelInput is an input type that accepts HttpsTriggerSecurityLevelArgs and HttpsTriggerSecurityLevelOutput values.
 // You can construct a concrete instance of `HttpsTriggerSecurityLevelInput` via:
 //
-//          HttpsTriggerSecurityLevelArgs{...}
+//	HttpsTriggerSecurityLevelArgs{...}
 type HttpsTriggerSecurityLevelInput interface {
 	pulumi.Input
 

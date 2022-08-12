@@ -144,7 +144,7 @@ func (o ConversationMediumPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // ConversationMediumInput is an input type that accepts ConversationMediumArgs and ConversationMediumOutput values.
 // You can construct a concrete instance of `ConversationMediumInput` via:
 //
-//          ConversationMediumArgs{...}
+//	ConversationMediumArgs{...}
 type ConversationMediumInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumPtrOutp
 // GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumInput is an input type that accepts GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumArgs and GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumOutput values.
 // You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumInput` via:
 //
-//          GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumArgs{...}
+//	GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumArgs{...}
 type GoogleCloudContactcenterinsightsV1IssueModelInputDataConfigMediumInput interface {
 	pulumi.Input
 
@@ -482,7 +482,7 @@ func (o GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypePtrOutput) ToS
 // GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeInput is an input type that accepts GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeArgs and GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeInput` via:
 //
-//          GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeArgs{...}
+//	GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeArgs{...}
 type GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroupTypeInput interface {
 	pulumi.Input
 
@@ -655,7 +655,7 @@ func (o PhraseMatcherRoleMatchPtrOutput) ToStringPtrOutputWithContext(ctx contex
 // PhraseMatcherRoleMatchInput is an input type that accepts PhraseMatcherRoleMatchArgs and PhraseMatcherRoleMatchOutput values.
 // You can construct a concrete instance of `PhraseMatcherRoleMatchInput` via:
 //
-//          PhraseMatcherRoleMatchArgs{...}
+//	PhraseMatcherRoleMatchArgs{...}
 type PhraseMatcherRoleMatchInput interface {
 	pulumi.Input
 
@@ -824,7 +824,7 @@ func (o PhraseMatcherTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // PhraseMatcherTypeInput is an input type that accepts PhraseMatcherTypeArgs and PhraseMatcherTypeOutput values.
 // You can construct a concrete instance of `PhraseMatcherTypeInput` via:
 //
-//          PhraseMatcherTypeArgs{...}
+//	PhraseMatcherTypeArgs{...}
 type PhraseMatcherTypeInput interface {
 	pulumi.Input
 

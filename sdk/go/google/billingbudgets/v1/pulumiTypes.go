@@ -21,7 +21,7 @@ type GoogleCloudBillingBudgetsV1BudgetAmount struct {
 // GoogleCloudBillingBudgetsV1BudgetAmountInput is an input type that accepts GoogleCloudBillingBudgetsV1BudgetAmountArgs and GoogleCloudBillingBudgetsV1BudgetAmountOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1BudgetAmountInput` via:
 //
-//          GoogleCloudBillingBudgetsV1BudgetAmountArgs{...}
+//	GoogleCloudBillingBudgetsV1BudgetAmountArgs{...}
 type GoogleCloudBillingBudgetsV1BudgetAmountInput interface {
 	pulumi.Input
 
@@ -124,7 +124,7 @@ type GoogleCloudBillingBudgetsV1CustomPeriod struct {
 // GoogleCloudBillingBudgetsV1CustomPeriodInput is an input type that accepts GoogleCloudBillingBudgetsV1CustomPeriodArgs and GoogleCloudBillingBudgetsV1CustomPeriodOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1CustomPeriodInput` via:
 //
-//          GoogleCloudBillingBudgetsV1CustomPeriodArgs{...}
+//	GoogleCloudBillingBudgetsV1CustomPeriodArgs{...}
 type GoogleCloudBillingBudgetsV1CustomPeriodInput interface {
 	pulumi.Input
 
@@ -163,11 +163,11 @@ func (i GoogleCloudBillingBudgetsV1CustomPeriodArgs) ToGoogleCloudBillingBudgets
 // GoogleCloudBillingBudgetsV1CustomPeriodPtrInput is an input type that accepts GoogleCloudBillingBudgetsV1CustomPeriodArgs, GoogleCloudBillingBudgetsV1CustomPeriodPtr and GoogleCloudBillingBudgetsV1CustomPeriodPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1CustomPeriodPtrInput` via:
 //
-//          GoogleCloudBillingBudgetsV1CustomPeriodArgs{...}
+//	        GoogleCloudBillingBudgetsV1CustomPeriodArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudBillingBudgetsV1CustomPeriodPtrInput interface {
 	pulumi.Input
 
@@ -328,7 +328,7 @@ type GoogleCloudBillingBudgetsV1Filter struct {
 // GoogleCloudBillingBudgetsV1FilterInput is an input type that accepts GoogleCloudBillingBudgetsV1FilterArgs and GoogleCloudBillingBudgetsV1FilterOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1FilterInput` via:
 //
-//          GoogleCloudBillingBudgetsV1FilterArgs{...}
+//	GoogleCloudBillingBudgetsV1FilterArgs{...}
 type GoogleCloudBillingBudgetsV1FilterInput interface {
 	pulumi.Input
 
@@ -379,11 +379,11 @@ func (i GoogleCloudBillingBudgetsV1FilterArgs) ToGoogleCloudBillingBudgetsV1Filt
 // GoogleCloudBillingBudgetsV1FilterPtrInput is an input type that accepts GoogleCloudBillingBudgetsV1FilterArgs, GoogleCloudBillingBudgetsV1FilterPtr and GoogleCloudBillingBudgetsV1FilterPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1FilterPtrInput` via:
 //
-//          GoogleCloudBillingBudgetsV1FilterArgs{...}
+//	        GoogleCloudBillingBudgetsV1FilterArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudBillingBudgetsV1FilterPtrInput interface {
 	pulumi.Input
 
@@ -668,7 +668,7 @@ type GoogleCloudBillingBudgetsV1LastPeriodAmount struct {
 // GoogleCloudBillingBudgetsV1LastPeriodAmountInput is an input type that accepts GoogleCloudBillingBudgetsV1LastPeriodAmountArgs and GoogleCloudBillingBudgetsV1LastPeriodAmountOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1LastPeriodAmountInput` via:
 //
-//          GoogleCloudBillingBudgetsV1LastPeriodAmountArgs{...}
+//	GoogleCloudBillingBudgetsV1LastPeriodAmountArgs{...}
 type GoogleCloudBillingBudgetsV1LastPeriodAmountInput interface {
 	pulumi.Input
 
@@ -703,11 +703,11 @@ func (i GoogleCloudBillingBudgetsV1LastPeriodAmountArgs) ToGoogleCloudBillingBud
 // GoogleCloudBillingBudgetsV1LastPeriodAmountPtrInput is an input type that accepts GoogleCloudBillingBudgetsV1LastPeriodAmountArgs, GoogleCloudBillingBudgetsV1LastPeriodAmountPtr and GoogleCloudBillingBudgetsV1LastPeriodAmountPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1LastPeriodAmountPtrInput` via:
 //
-//          GoogleCloudBillingBudgetsV1LastPeriodAmountArgs{...}
+//	        GoogleCloudBillingBudgetsV1LastPeriodAmountArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudBillingBudgetsV1LastPeriodAmountPtrInput interface {
 	pulumi.Input
 
@@ -816,7 +816,7 @@ type GoogleCloudBillingBudgetsV1NotificationsRule struct {
 // GoogleCloudBillingBudgetsV1NotificationsRuleInput is an input type that accepts GoogleCloudBillingBudgetsV1NotificationsRuleArgs and GoogleCloudBillingBudgetsV1NotificationsRuleOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1NotificationsRuleInput` via:
 //
-//          GoogleCloudBillingBudgetsV1NotificationsRuleArgs{...}
+//	GoogleCloudBillingBudgetsV1NotificationsRuleArgs{...}
 type GoogleCloudBillingBudgetsV1NotificationsRuleInput interface {
 	pulumi.Input
 
@@ -859,11 +859,11 @@ func (i GoogleCloudBillingBudgetsV1NotificationsRuleArgs) ToGoogleCloudBillingBu
 // GoogleCloudBillingBudgetsV1NotificationsRulePtrInput is an input type that accepts GoogleCloudBillingBudgetsV1NotificationsRuleArgs, GoogleCloudBillingBudgetsV1NotificationsRulePtr and GoogleCloudBillingBudgetsV1NotificationsRulePtrOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1NotificationsRulePtrInput` via:
 //
-//          GoogleCloudBillingBudgetsV1NotificationsRuleArgs{...}
+//	        GoogleCloudBillingBudgetsV1NotificationsRuleArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudBillingBudgetsV1NotificationsRulePtrInput interface {
 	pulumi.Input
 
@@ -1060,7 +1060,7 @@ type GoogleCloudBillingBudgetsV1ThresholdRule struct {
 // GoogleCloudBillingBudgetsV1ThresholdRuleInput is an input type that accepts GoogleCloudBillingBudgetsV1ThresholdRuleArgs and GoogleCloudBillingBudgetsV1ThresholdRuleOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1ThresholdRuleInput` via:
 //
-//          GoogleCloudBillingBudgetsV1ThresholdRuleArgs{...}
+//	GoogleCloudBillingBudgetsV1ThresholdRuleArgs{...}
 type GoogleCloudBillingBudgetsV1ThresholdRuleInput interface {
 	pulumi.Input
 
@@ -1091,7 +1091,7 @@ func (i GoogleCloudBillingBudgetsV1ThresholdRuleArgs) ToGoogleCloudBillingBudget
 // GoogleCloudBillingBudgetsV1ThresholdRuleArrayInput is an input type that accepts GoogleCloudBillingBudgetsV1ThresholdRuleArray and GoogleCloudBillingBudgetsV1ThresholdRuleArrayOutput values.
 // You can construct a concrete instance of `GoogleCloudBillingBudgetsV1ThresholdRuleArrayInput` via:
 //
-//          GoogleCloudBillingBudgetsV1ThresholdRuleArray{ GoogleCloudBillingBudgetsV1ThresholdRuleArgs{...} }
+//	GoogleCloudBillingBudgetsV1ThresholdRuleArray{ GoogleCloudBillingBudgetsV1ThresholdRuleArgs{...} }
 type GoogleCloudBillingBudgetsV1ThresholdRuleArrayInput interface {
 	pulumi.Input
 
@@ -1226,7 +1226,7 @@ type GoogleTypeDate struct {
 // GoogleTypeDateInput is an input type that accepts GoogleTypeDateArgs and GoogleTypeDateOutput values.
 // You can construct a concrete instance of `GoogleTypeDateInput` via:
 //
-//          GoogleTypeDateArgs{...}
+//	GoogleTypeDateArgs{...}
 type GoogleTypeDateInput interface {
 	pulumi.Input
 
@@ -1267,11 +1267,11 @@ func (i GoogleTypeDateArgs) ToGoogleTypeDatePtrOutputWithContext(ctx context.Con
 // GoogleTypeDatePtrInput is an input type that accepts GoogleTypeDateArgs, GoogleTypeDatePtr and GoogleTypeDatePtrOutput values.
 // You can construct a concrete instance of `GoogleTypeDatePtrInput` via:
 //
-//          GoogleTypeDateArgs{...}
+//	        GoogleTypeDateArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleTypeDatePtrInput interface {
 	pulumi.Input
 
@@ -1444,7 +1444,7 @@ type GoogleTypeMoney struct {
 // GoogleTypeMoneyInput is an input type that accepts GoogleTypeMoneyArgs and GoogleTypeMoneyOutput values.
 // You can construct a concrete instance of `GoogleTypeMoneyInput` via:
 //
-//          GoogleTypeMoneyArgs{...}
+//	GoogleTypeMoneyArgs{...}
 type GoogleTypeMoneyInput interface {
 	pulumi.Input
 
@@ -1485,11 +1485,11 @@ func (i GoogleTypeMoneyArgs) ToGoogleTypeMoneyPtrOutputWithContext(ctx context.C
 // GoogleTypeMoneyPtrInput is an input type that accepts GoogleTypeMoneyArgs, GoogleTypeMoneyPtr and GoogleTypeMoneyPtrOutput values.
 // You can construct a concrete instance of `GoogleTypeMoneyPtrInput` via:
 //
-//          GoogleTypeMoneyArgs{...}
+//	        GoogleTypeMoneyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleTypeMoneyPtrInput interface {
 	pulumi.Input
 

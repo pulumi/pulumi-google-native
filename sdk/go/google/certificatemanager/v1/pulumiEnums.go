@@ -142,7 +142,7 @@ func (o CertificateMapEntryMatcherPtrOutput) ToStringPtrOutputWithContext(ctx co
 // CertificateMapEntryMatcherInput is an input type that accepts CertificateMapEntryMatcherArgs and CertificateMapEntryMatcherOutput values.
 // You can construct a concrete instance of `CertificateMapEntryMatcherInput` via:
 //
-//          CertificateMapEntryMatcherArgs{...}
+//	CertificateMapEntryMatcherArgs{...}
 type CertificateMapEntryMatcherInput interface {
 	pulumi.Input
 
@@ -309,7 +309,7 @@ func (o CertificateScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Cont
 // CertificateScopeInput is an input type that accepts CertificateScopeArgs and CertificateScopeOutput values.
 // You can construct a concrete instance of `CertificateScopeInput` via:
 //
-//          CertificateScopeArgs{...}
+//	CertificateScopeArgs{...}
 type CertificateScopeInput interface {
 	pulumi.Input
 
@@ -477,7 +477,7 @@ func (o ProvisioningIssueReasonPtrOutput) ToStringPtrOutputWithContext(ctx conte
 // ProvisioningIssueReasonInput is an input type that accepts ProvisioningIssueReasonArgs and ProvisioningIssueReasonOutput values.
 // You can construct a concrete instance of `ProvisioningIssueReasonInput` via:
 //
-//          ProvisioningIssueReasonArgs{...}
+//	ProvisioningIssueReasonArgs{...}
 type ProvisioningIssueReasonInput interface {
 	pulumi.Input
 

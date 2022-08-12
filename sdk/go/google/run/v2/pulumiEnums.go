@@ -144,7 +144,7 @@ func (o GoogleCloudRunV2RevisionTemplateExecutionEnvironmentPtrOutput) ToStringP
 // GoogleCloudRunV2RevisionTemplateExecutionEnvironmentInput is an input type that accepts GoogleCloudRunV2RevisionTemplateExecutionEnvironmentArgs and GoogleCloudRunV2RevisionTemplateExecutionEnvironmentOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2RevisionTemplateExecutionEnvironmentInput` via:
 //
-//          GoogleCloudRunV2RevisionTemplateExecutionEnvironmentArgs{...}
+//	GoogleCloudRunV2RevisionTemplateExecutionEnvironmentArgs{...}
 type GoogleCloudRunV2RevisionTemplateExecutionEnvironmentInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o GoogleCloudRunV2TaskTemplateExecutionEnvironmentPtrOutput) ToStringPtrOu
 // GoogleCloudRunV2TaskTemplateExecutionEnvironmentInput is an input type that accepts GoogleCloudRunV2TaskTemplateExecutionEnvironmentArgs and GoogleCloudRunV2TaskTemplateExecutionEnvironmentOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2TaskTemplateExecutionEnvironmentInput` via:
 //
-//          GoogleCloudRunV2TaskTemplateExecutionEnvironmentArgs{...}
+//	GoogleCloudRunV2TaskTemplateExecutionEnvironmentArgs{...}
 type GoogleCloudRunV2TaskTemplateExecutionEnvironmentInput interface {
 	pulumi.Input
 
@@ -482,7 +482,7 @@ func (o GoogleCloudRunV2TrafficTargetTypePtrOutput) ToStringPtrOutputWithContext
 // GoogleCloudRunV2TrafficTargetTypeInput is an input type that accepts GoogleCloudRunV2TrafficTargetTypeArgs and GoogleCloudRunV2TrafficTargetTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2TrafficTargetTypeInput` via:
 //
-//          GoogleCloudRunV2TrafficTargetTypeArgs{...}
+//	GoogleCloudRunV2TrafficTargetTypeArgs{...}
 type GoogleCloudRunV2TrafficTargetTypeInput interface {
 	pulumi.Input
 
@@ -651,7 +651,7 @@ func (o GoogleCloudRunV2VpcAccessEgressPtrOutput) ToStringPtrOutputWithContext(c
 // GoogleCloudRunV2VpcAccessEgressInput is an input type that accepts GoogleCloudRunV2VpcAccessEgressArgs and GoogleCloudRunV2VpcAccessEgressOutput values.
 // You can construct a concrete instance of `GoogleCloudRunV2VpcAccessEgressInput` via:
 //
-//          GoogleCloudRunV2VpcAccessEgressArgs{...}
+//	GoogleCloudRunV2VpcAccessEgressArgs{...}
 type GoogleCloudRunV2VpcAccessEgressInput interface {
 	pulumi.Input
 
@@ -822,7 +822,7 @@ func (o GoogleIamV1AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(
 // GoogleIamV1AuditLogConfigLogTypeInput is an input type that accepts GoogleIamV1AuditLogConfigLogTypeArgs and GoogleIamV1AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigLogTypeInput` via:
 //
-//          GoogleIamV1AuditLogConfigLogTypeArgs{...}
+//	GoogleIamV1AuditLogConfigLogTypeArgs{...}
 type GoogleIamV1AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -1001,7 +1001,7 @@ func (o JobLaunchStagePtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // JobLaunchStageInput is an input type that accepts JobLaunchStageArgs and JobLaunchStageOutput values.
 // You can construct a concrete instance of `JobLaunchStageInput` via:
 //
-//          JobLaunchStageArgs{...}
+//	JobLaunchStageArgs{...}
 type JobLaunchStageInput interface {
 	pulumi.Input
 
@@ -1172,7 +1172,7 @@ func (o ServiceIngressPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // ServiceIngressInput is an input type that accepts ServiceIngressArgs and ServiceIngressOutput values.
 // You can construct a concrete instance of `ServiceIngressInput` via:
 //
-//          ServiceIngressArgs{...}
+//	ServiceIngressArgs{...}
 type ServiceIngressInput interface {
 	pulumi.Input
 
@@ -1351,7 +1351,7 @@ func (o ServiceLaunchStagePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // ServiceLaunchStageInput is an input type that accepts ServiceLaunchStageArgs and ServiceLaunchStageOutput values.
 // You can construct a concrete instance of `ServiceLaunchStageInput` via:
 //
-//          ServiceLaunchStageArgs{...}
+//	ServiceLaunchStageArgs{...}
 type ServiceLaunchStageInput interface {
 	pulumi.Input
 

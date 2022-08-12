@@ -19,7 +19,7 @@ type CertificateProviderInstance struct {
 // CertificateProviderInstanceInput is an input type that accepts CertificateProviderInstanceArgs and CertificateProviderInstanceOutput values.
 // You can construct a concrete instance of `CertificateProviderInstanceInput` via:
 //
-//          CertificateProviderInstanceArgs{...}
+//	CertificateProviderInstanceArgs{...}
 type CertificateProviderInstanceInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i CertificateProviderInstanceArgs) ToCertificateProviderInstancePtrOutputW
 // CertificateProviderInstancePtrInput is an input type that accepts CertificateProviderInstanceArgs, CertificateProviderInstancePtr and CertificateProviderInstancePtrOutput values.
 // You can construct a concrete instance of `CertificateProviderInstancePtrInput` via:
 //
-//          CertificateProviderInstanceArgs{...}
+//	        CertificateProviderInstanceArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CertificateProviderInstancePtrInput interface {
 	pulumi.Input
 
@@ -191,7 +191,7 @@ type Destination struct {
 // DestinationInput is an input type that accepts DestinationArgs and DestinationOutput values.
 // You can construct a concrete instance of `DestinationInput` via:
 //
-//          DestinationArgs{...}
+//	DestinationArgs{...}
 type DestinationInput interface {
 	pulumi.Input
 
@@ -226,7 +226,7 @@ func (i DestinationArgs) ToDestinationOutputWithContext(ctx context.Context) Des
 // DestinationArrayInput is an input type that accepts DestinationArray and DestinationArrayOutput values.
 // You can construct a concrete instance of `DestinationArrayInput` via:
 //
-//          DestinationArray{ DestinationArgs{...} }
+//	DestinationArray{ DestinationArgs{...} }
 type DestinationArrayInput interface {
 	pulumi.Input
 
@@ -385,7 +385,7 @@ type Expr struct {
 // ExprInput is an input type that accepts ExprArgs and ExprOutput values.
 // You can construct a concrete instance of `ExprInput` via:
 //
-//          ExprArgs{...}
+//	ExprArgs{...}
 type ExprInput interface {
 	pulumi.Input
 
@@ -428,11 +428,11 @@ func (i ExprArgs) ToExprPtrOutputWithContext(ctx context.Context) ExprPtrOutput 
 // ExprPtrInput is an input type that accepts ExprArgs, ExprPtr and ExprPtrOutput values.
 // You can construct a concrete instance of `ExprPtrInput` via:
 //
-//          ExprArgs{...}
+//	        ExprArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExprPtrInput interface {
 	pulumi.Input
 
@@ -625,7 +625,7 @@ type GoogleCloudNetworksecurityV1CertificateProvider struct {
 // GoogleCloudNetworksecurityV1CertificateProviderInput is an input type that accepts GoogleCloudNetworksecurityV1CertificateProviderArgs and GoogleCloudNetworksecurityV1CertificateProviderOutput values.
 // You can construct a concrete instance of `GoogleCloudNetworksecurityV1CertificateProviderInput` via:
 //
-//          GoogleCloudNetworksecurityV1CertificateProviderArgs{...}
+//	GoogleCloudNetworksecurityV1CertificateProviderArgs{...}
 type GoogleCloudNetworksecurityV1CertificateProviderInput interface {
 	pulumi.Input
 
@@ -664,11 +664,11 @@ func (i GoogleCloudNetworksecurityV1CertificateProviderArgs) ToGoogleCloudNetwor
 // GoogleCloudNetworksecurityV1CertificateProviderPtrInput is an input type that accepts GoogleCloudNetworksecurityV1CertificateProviderArgs, GoogleCloudNetworksecurityV1CertificateProviderPtr and GoogleCloudNetworksecurityV1CertificateProviderPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudNetworksecurityV1CertificateProviderPtrInput` via:
 //
-//          GoogleCloudNetworksecurityV1CertificateProviderArgs{...}
+//	        GoogleCloudNetworksecurityV1CertificateProviderArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudNetworksecurityV1CertificateProviderPtrInput interface {
 	pulumi.Input
 
@@ -823,7 +823,7 @@ type GoogleCloudNetworksecurityV1GrpcEndpoint struct {
 // GoogleCloudNetworksecurityV1GrpcEndpointInput is an input type that accepts GoogleCloudNetworksecurityV1GrpcEndpointArgs and GoogleCloudNetworksecurityV1GrpcEndpointOutput values.
 // You can construct a concrete instance of `GoogleCloudNetworksecurityV1GrpcEndpointInput` via:
 //
-//          GoogleCloudNetworksecurityV1GrpcEndpointArgs{...}
+//	GoogleCloudNetworksecurityV1GrpcEndpointArgs{...}
 type GoogleCloudNetworksecurityV1GrpcEndpointInput interface {
 	pulumi.Input
 
@@ -860,11 +860,11 @@ func (i GoogleCloudNetworksecurityV1GrpcEndpointArgs) ToGoogleCloudNetworksecuri
 // GoogleCloudNetworksecurityV1GrpcEndpointPtrInput is an input type that accepts GoogleCloudNetworksecurityV1GrpcEndpointArgs, GoogleCloudNetworksecurityV1GrpcEndpointPtr and GoogleCloudNetworksecurityV1GrpcEndpointPtrOutput values.
 // You can construct a concrete instance of `GoogleCloudNetworksecurityV1GrpcEndpointPtrInput` via:
 //
-//          GoogleCloudNetworksecurityV1GrpcEndpointArgs{...}
+//	        GoogleCloudNetworksecurityV1GrpcEndpointArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type GoogleCloudNetworksecurityV1GrpcEndpointPtrInput interface {
 	pulumi.Input
 
@@ -991,7 +991,7 @@ type GoogleIamV1AuditConfig struct {
 // GoogleIamV1AuditConfigInput is an input type that accepts GoogleIamV1AuditConfigArgs and GoogleIamV1AuditConfigOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigInput` via:
 //
-//          GoogleIamV1AuditConfigArgs{...}
+//	GoogleIamV1AuditConfigArgs{...}
 type GoogleIamV1AuditConfigInput interface {
 	pulumi.Input
 
@@ -1022,7 +1022,7 @@ func (i GoogleIamV1AuditConfigArgs) ToGoogleIamV1AuditConfigOutputWithContext(ct
 // GoogleIamV1AuditConfigArrayInput is an input type that accepts GoogleIamV1AuditConfigArray and GoogleIamV1AuditConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditConfigArrayInput` via:
 //
-//          GoogleIamV1AuditConfigArray{ GoogleIamV1AuditConfigArgs{...} }
+//	GoogleIamV1AuditConfigArray{ GoogleIamV1AuditConfigArgs{...} }
 type GoogleIamV1AuditConfigArrayInput interface {
 	pulumi.Input
 
@@ -1153,7 +1153,7 @@ type GoogleIamV1AuditLogConfig struct {
 // GoogleIamV1AuditLogConfigInput is an input type that accepts GoogleIamV1AuditLogConfigArgs and GoogleIamV1AuditLogConfigOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigInput` via:
 //
-//          GoogleIamV1AuditLogConfigArgs{...}
+//	GoogleIamV1AuditLogConfigArgs{...}
 type GoogleIamV1AuditLogConfigInput interface {
 	pulumi.Input
 
@@ -1184,7 +1184,7 @@ func (i GoogleIamV1AuditLogConfigArgs) ToGoogleIamV1AuditLogConfigOutputWithCont
 // GoogleIamV1AuditLogConfigArrayInput is an input type that accepts GoogleIamV1AuditLogConfigArray and GoogleIamV1AuditLogConfigArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1AuditLogConfigArrayInput` via:
 //
-//          GoogleIamV1AuditLogConfigArray{ GoogleIamV1AuditLogConfigArgs{...} }
+//	GoogleIamV1AuditLogConfigArray{ GoogleIamV1AuditLogConfigArgs{...} }
 type GoogleIamV1AuditLogConfigArrayInput interface {
 	pulumi.Input
 
@@ -1317,7 +1317,7 @@ type GoogleIamV1Binding struct {
 // GoogleIamV1BindingInput is an input type that accepts GoogleIamV1BindingArgs and GoogleIamV1BindingOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingInput` via:
 //
-//          GoogleIamV1BindingArgs{...}
+//	GoogleIamV1BindingArgs{...}
 type GoogleIamV1BindingInput interface {
 	pulumi.Input
 
@@ -1350,7 +1350,7 @@ func (i GoogleIamV1BindingArgs) ToGoogleIamV1BindingOutputWithContext(ctx contex
 // GoogleIamV1BindingArrayInput is an input type that accepts GoogleIamV1BindingArray and GoogleIamV1BindingArrayOutput values.
 // You can construct a concrete instance of `GoogleIamV1BindingArrayInput` via:
 //
-//          GoogleIamV1BindingArray{ GoogleIamV1BindingArgs{...} }
+//	GoogleIamV1BindingArray{ GoogleIamV1BindingArgs{...} }
 type GoogleIamV1BindingArrayInput interface {
 	pulumi.Input
 
@@ -1493,7 +1493,7 @@ type HttpHeaderMatch struct {
 // HttpHeaderMatchInput is an input type that accepts HttpHeaderMatchArgs and HttpHeaderMatchOutput values.
 // You can construct a concrete instance of `HttpHeaderMatchInput` via:
 //
-//          HttpHeaderMatchArgs{...}
+//	HttpHeaderMatchArgs{...}
 type HttpHeaderMatchInput interface {
 	pulumi.Input
 
@@ -1532,11 +1532,11 @@ func (i HttpHeaderMatchArgs) ToHttpHeaderMatchPtrOutputWithContext(ctx context.C
 // HttpHeaderMatchPtrInput is an input type that accepts HttpHeaderMatchArgs, HttpHeaderMatchPtr and HttpHeaderMatchPtrOutput values.
 // You can construct a concrete instance of `HttpHeaderMatchPtrInput` via:
 //
-//          HttpHeaderMatchArgs{...}
+//	        HttpHeaderMatchArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type HttpHeaderMatchPtrInput interface {
 	pulumi.Input
 
@@ -1683,7 +1683,7 @@ type MTLSPolicy struct {
 // MTLSPolicyInput is an input type that accepts MTLSPolicyArgs and MTLSPolicyOutput values.
 // You can construct a concrete instance of `MTLSPolicyInput` via:
 //
-//          MTLSPolicyArgs{...}
+//	MTLSPolicyArgs{...}
 type MTLSPolicyInput interface {
 	pulumi.Input
 
@@ -1720,11 +1720,11 @@ func (i MTLSPolicyArgs) ToMTLSPolicyPtrOutputWithContext(ctx context.Context) MT
 // MTLSPolicyPtrInput is an input type that accepts MTLSPolicyArgs, MTLSPolicyPtr and MTLSPolicyPtrOutput values.
 // You can construct a concrete instance of `MTLSPolicyPtrInput` via:
 //
-//          MTLSPolicyArgs{...}
+//	        MTLSPolicyArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MTLSPolicyPtrInput interface {
 	pulumi.Input
 
@@ -1775,7 +1775,7 @@ func (o MTLSPolicyOutput) ToMTLSPolicyPtrOutputWithContext(ctx context.Context) 
 	}).(MTLSPolicyPtrOutput)
 }
 
-//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyOutput) ClientValidationCa() ValidationCAArrayOutput {
 	return o.ApplyT(func(v MTLSPolicy) []ValidationCA { return v.ClientValidationCa }).(ValidationCAArrayOutput)
 }
@@ -1804,7 +1804,7 @@ func (o MTLSPolicyPtrOutput) Elem() MTLSPolicyOutput {
 	}).(MTLSPolicyOutput)
 }
 
-//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyPtrOutput) ClientValidationCa() ValidationCAArrayOutput {
 	return o.ApplyT(func(v *MTLSPolicy) []ValidationCA {
 		if v == nil {
@@ -1835,7 +1835,7 @@ func (o MTLSPolicyResponseOutput) ToMTLSPolicyResponseOutputWithContext(ctx cont
 	return o
 }
 
-//  Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
+// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
 func (o MTLSPolicyResponseOutput) ClientValidationCa() ValidationCAResponseArrayOutput {
 	return o.ApplyT(func(v MTLSPolicyResponse) []ValidationCAResponse { return v.ClientValidationCa }).(ValidationCAResponseArrayOutput)
 }
@@ -1851,7 +1851,7 @@ type Rule struct {
 // RuleInput is an input type that accepts RuleArgs and RuleOutput values.
 // You can construct a concrete instance of `RuleInput` via:
 //
-//          RuleArgs{...}
+//	RuleArgs{...}
 type RuleInput interface {
 	pulumi.Input
 
@@ -1882,7 +1882,7 @@ func (i RuleArgs) ToRuleOutputWithContext(ctx context.Context) RuleOutput {
 // RuleArrayInput is an input type that accepts RuleArray and RuleArrayOutput values.
 // You can construct a concrete instance of `RuleArrayInput` via:
 //
-//          RuleArray{ RuleArgs{...} }
+//	RuleArray{ RuleArgs{...} }
 type RuleArrayInput interface {
 	pulumi.Input
 
@@ -2013,7 +2013,7 @@ type Source struct {
 // SourceInput is an input type that accepts SourceArgs and SourceOutput values.
 // You can construct a concrete instance of `SourceInput` via:
 //
-//          SourceArgs{...}
+//	SourceArgs{...}
 type SourceInput interface {
 	pulumi.Input
 
@@ -2044,7 +2044,7 @@ func (i SourceArgs) ToSourceOutputWithContext(ctx context.Context) SourceOutput 
 // SourceArrayInput is an input type that accepts SourceArray and SourceArrayOutput values.
 // You can construct a concrete instance of `SourceArrayInput` via:
 //
-//          SourceArray{ SourceArgs{...} }
+//	SourceArray{ SourceArgs{...} }
 type SourceArrayInput interface {
 	pulumi.Input
 
@@ -2175,7 +2175,7 @@ type ValidationCA struct {
 // ValidationCAInput is an input type that accepts ValidationCAArgs and ValidationCAOutput values.
 // You can construct a concrete instance of `ValidationCAInput` via:
 //
-//          ValidationCAArgs{...}
+//	ValidationCAArgs{...}
 type ValidationCAInput interface {
 	pulumi.Input
 
@@ -2206,7 +2206,7 @@ func (i ValidationCAArgs) ToValidationCAOutputWithContext(ctx context.Context) V
 // ValidationCAArrayInput is an input type that accepts ValidationCAArray and ValidationCAArrayOutput values.
 // You can construct a concrete instance of `ValidationCAArrayInput` via:
 //
-//          ValidationCAArray{ ValidationCAArgs{...} }
+//	ValidationCAArray{ ValidationCAArgs{...} }
 type ValidationCAArrayInput interface {
 	pulumi.Input
 

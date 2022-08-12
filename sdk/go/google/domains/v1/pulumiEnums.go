@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -317,7 +317,7 @@ func (o ContactSettingsPrivacyPtrOutput) ToStringPtrOutputWithContext(ctx contex
 // ContactSettingsPrivacyInput is an input type that accepts ContactSettingsPrivacyArgs and ContactSettingsPrivacyOutput values.
 // You can construct a concrete instance of `ContactSettingsPrivacyInput` via:
 //
-//          ContactSettingsPrivacyArgs{...}
+//	ContactSettingsPrivacyArgs{...}
 type ContactSettingsPrivacyInput interface {
 	pulumi.Input
 
@@ -516,7 +516,7 @@ func (o DsRecordAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // DsRecordAlgorithmInput is an input type that accepts DsRecordAlgorithmArgs and DsRecordAlgorithmOutput values.
 // You can construct a concrete instance of `DsRecordAlgorithmInput` via:
 //
-//          DsRecordAlgorithmArgs{...}
+//	DsRecordAlgorithmArgs{...}
 type DsRecordAlgorithmInput interface {
 	pulumi.Input
 
@@ -689,7 +689,7 @@ func (o DsRecordDigestTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // DsRecordDigestTypeInput is an input type that accepts DsRecordDigestTypeArgs and DsRecordDigestTypeOutput values.
 // You can construct a concrete instance of `DsRecordDigestTypeInput` via:
 //
-//          DsRecordDigestTypeArgs{...}
+//	DsRecordDigestTypeArgs{...}
 type DsRecordDigestTypeInput interface {
 	pulumi.Input
 
@@ -858,7 +858,7 @@ func (o GoogleDomainsDnsDsStatePtrOutput) ToStringPtrOutputWithContext(ctx conte
 // GoogleDomainsDnsDsStateInput is an input type that accepts GoogleDomainsDnsDsStateArgs and GoogleDomainsDnsDsStateOutput values.
 // You can construct a concrete instance of `GoogleDomainsDnsDsStateInput` via:
 //
-//          GoogleDomainsDnsDsStateArgs{...}
+//	GoogleDomainsDnsDsStateArgs{...}
 type GoogleDomainsDnsDsStateInput interface {
 	pulumi.Input
 
@@ -1027,7 +1027,7 @@ func (o ManagementSettingsTransferLockStatePtrOutput) ToStringPtrOutputWithConte
 // ManagementSettingsTransferLockStateInput is an input type that accepts ManagementSettingsTransferLockStateArgs and ManagementSettingsTransferLockStateOutput values.
 // You can construct a concrete instance of `ManagementSettingsTransferLockStateInput` via:
 //
-//          ManagementSettingsTransferLockStateArgs{...}
+//	ManagementSettingsTransferLockStateArgs{...}
 type ManagementSettingsTransferLockStateInput interface {
 	pulumi.Input
 
@@ -1193,7 +1193,7 @@ func (o RegistrationContactNoticesItemPtrOutput) ToStringPtrOutputWithContext(ct
 // RegistrationContactNoticesItemInput is an input type that accepts RegistrationContactNoticesItemArgs and RegistrationContactNoticesItemOutput values.
 // You can construct a concrete instance of `RegistrationContactNoticesItemInput` via:
 //
-//          RegistrationContactNoticesItemArgs{...}
+//	RegistrationContactNoticesItemArgs{...}
 type RegistrationContactNoticesItemInput interface {
 	pulumi.Input
 
@@ -1231,7 +1231,7 @@ func (in *registrationContactNoticesItemPtr) ToRegistrationContactNoticesItemPtr
 // RegistrationContactNoticesItemArrayInput is an input type that accepts RegistrationContactNoticesItemArray and RegistrationContactNoticesItemArrayOutput values.
 // You can construct a concrete instance of `RegistrationContactNoticesItemArrayInput` via:
 //
-//          RegistrationContactNoticesItemArray{ RegistrationContactNoticesItemArgs{...} }
+//	RegistrationContactNoticesItemArray{ RegistrationContactNoticesItemArgs{...} }
 type RegistrationContactNoticesItemArrayInput interface {
 	pulumi.Input
 
@@ -1404,7 +1404,7 @@ func (o RegistrationDomainNoticesItemPtrOutput) ToStringPtrOutputWithContext(ctx
 // RegistrationDomainNoticesItemInput is an input type that accepts RegistrationDomainNoticesItemArgs and RegistrationDomainNoticesItemOutput values.
 // You can construct a concrete instance of `RegistrationDomainNoticesItemInput` via:
 //
-//          RegistrationDomainNoticesItemArgs{...}
+//	RegistrationDomainNoticesItemArgs{...}
 type RegistrationDomainNoticesItemInput interface {
 	pulumi.Input
 
@@ -1442,7 +1442,7 @@ func (in *registrationDomainNoticesItemPtr) ToRegistrationDomainNoticesItemPtrOu
 // RegistrationDomainNoticesItemArrayInput is an input type that accepts RegistrationDomainNoticesItemArray and RegistrationDomainNoticesItemArrayOutput values.
 // You can construct a concrete instance of `RegistrationDomainNoticesItemArrayInput` via:
 //
-//          RegistrationDomainNoticesItemArray{ RegistrationDomainNoticesItemArgs{...} }
+//	RegistrationDomainNoticesItemArray{ RegistrationDomainNoticesItemArgs{...} }
 type RegistrationDomainNoticesItemArrayInput interface {
 	pulumi.Input
 

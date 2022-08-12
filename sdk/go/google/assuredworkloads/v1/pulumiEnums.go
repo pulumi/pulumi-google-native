@@ -148,7 +148,7 @@ func (o GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypePtrOutp
 // GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeInput is an input type that accepts GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeArgs and GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeOutput values.
 // You can construct a concrete instance of `GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeInput` via:
 //
-//          GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeArgs{...}
+//	GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeArgs{...}
 type GoogleCloudAssuredworkloadsV1WorkloadResourceSettingsResourceTypeInput interface {
 	pulumi.Input
 
@@ -335,7 +335,7 @@ func (o WorkloadComplianceRegimePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // WorkloadComplianceRegimeInput is an input type that accepts WorkloadComplianceRegimeArgs and WorkloadComplianceRegimeOutput values.
 // You can construct a concrete instance of `WorkloadComplianceRegimeInput` via:
 //
-//          WorkloadComplianceRegimeArgs{...}
+//	WorkloadComplianceRegimeArgs{...}
 type WorkloadComplianceRegimeInput interface {
 	pulumi.Input
 

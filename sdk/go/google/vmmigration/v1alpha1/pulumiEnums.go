@@ -146,7 +146,7 @@ func (o ComputeEngineTargetDefaultsDiskTypePtrOutput) ToStringPtrOutputWithConte
 // ComputeEngineTargetDefaultsDiskTypeInput is an input type that accepts ComputeEngineTargetDefaultsDiskTypeArgs and ComputeEngineTargetDefaultsDiskTypeOutput values.
 // You can construct a concrete instance of `ComputeEngineTargetDefaultsDiskTypeInput` via:
 //
-//          ComputeEngineTargetDefaultsDiskTypeArgs{...}
+//	ComputeEngineTargetDefaultsDiskTypeArgs{...}
 type ComputeEngineTargetDefaultsDiskTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o ComputeEngineTargetDefaultsLicenseTypePtrOutput) ToStringPtrOutputWithCo
 // ComputeEngineTargetDefaultsLicenseTypeInput is an input type that accepts ComputeEngineTargetDefaultsLicenseTypeArgs and ComputeEngineTargetDefaultsLicenseTypeOutput values.
 // You can construct a concrete instance of `ComputeEngineTargetDefaultsLicenseTypeInput` via:
 //
-//          ComputeEngineTargetDefaultsLicenseTypeArgs{...}
+//	ComputeEngineTargetDefaultsLicenseTypeArgs{...}
 type ComputeEngineTargetDefaultsLicenseTypeInput interface {
 	pulumi.Input
 
@@ -484,7 +484,7 @@ func (o ComputeSchedulingOnHostMaintenancePtrOutput) ToStringPtrOutputWithContex
 // ComputeSchedulingOnHostMaintenanceInput is an input type that accepts ComputeSchedulingOnHostMaintenanceArgs and ComputeSchedulingOnHostMaintenanceOutput values.
 // You can construct a concrete instance of `ComputeSchedulingOnHostMaintenanceInput` via:
 //
-//          ComputeSchedulingOnHostMaintenanceArgs{...}
+//	ComputeSchedulingOnHostMaintenanceArgs{...}
 type ComputeSchedulingOnHostMaintenanceInput interface {
 	pulumi.Input
 
@@ -653,7 +653,7 @@ func (o ComputeSchedulingRestartTypePtrOutput) ToStringPtrOutputWithContext(ctx 
 // ComputeSchedulingRestartTypeInput is an input type that accepts ComputeSchedulingRestartTypeArgs and ComputeSchedulingRestartTypeOutput values.
 // You can construct a concrete instance of `ComputeSchedulingRestartTypeInput` via:
 //
-//          ComputeSchedulingRestartTypeArgs{...}
+//	ComputeSchedulingRestartTypeArgs{...}
 type ComputeSchedulingRestartTypeInput interface {
 	pulumi.Input
 
@@ -822,7 +822,7 @@ func (o SchedulingNodeAffinityOperatorPtrOutput) ToStringPtrOutputWithContext(ct
 // SchedulingNodeAffinityOperatorInput is an input type that accepts SchedulingNodeAffinityOperatorArgs and SchedulingNodeAffinityOperatorOutput values.
 // You can construct a concrete instance of `SchedulingNodeAffinityOperatorInput` via:
 //
-//          SchedulingNodeAffinityOperatorArgs{...}
+//	SchedulingNodeAffinityOperatorArgs{...}
 type SchedulingNodeAffinityOperatorInput interface {
 	pulumi.Input
 
@@ -993,7 +993,7 @@ func (o TargetVMDetailsDiskTypePtrOutput) ToStringPtrOutputWithContext(ctx conte
 // TargetVMDetailsDiskTypeInput is an input type that accepts TargetVMDetailsDiskTypeArgs and TargetVMDetailsDiskTypeOutput values.
 // You can construct a concrete instance of `TargetVMDetailsDiskTypeInput` via:
 //
-//          TargetVMDetailsDiskTypeArgs{...}
+//	TargetVMDetailsDiskTypeArgs{...}
 type TargetVMDetailsDiskTypeInput interface {
 	pulumi.Input
 
@@ -1162,7 +1162,7 @@ func (o TargetVMDetailsLicenseTypePtrOutput) ToStringPtrOutputWithContext(ctx co
 // TargetVMDetailsLicenseTypeInput is an input type that accepts TargetVMDetailsLicenseTypeArgs and TargetVMDetailsLicenseTypeOutput values.
 // You can construct a concrete instance of `TargetVMDetailsLicenseTypeInput` via:
 //
-//          TargetVMDetailsLicenseTypeArgs{...}
+//	TargetVMDetailsLicenseTypeArgs{...}
 type TargetVMDetailsLicenseTypeInput interface {
 	pulumi.Input
 
@@ -1333,7 +1333,7 @@ func (o UtilizationReportTimeFramePtrOutput) ToStringPtrOutputWithContext(ctx co
 // UtilizationReportTimeFrameInput is an input type that accepts UtilizationReportTimeFrameArgs and UtilizationReportTimeFrameOutput values.
 // You can construct a concrete instance of `UtilizationReportTimeFrameInput` via:
 //
-//          UtilizationReportTimeFrameArgs{...}
+//	UtilizationReportTimeFrameArgs{...}
 type UtilizationReportTimeFrameInput interface {
 	pulumi.Input
 
@@ -1504,7 +1504,7 @@ func (o VmwareVmDetailsPowerStatePtrOutput) ToStringPtrOutputWithContext(ctx con
 // VmwareVmDetailsPowerStateInput is an input type that accepts VmwareVmDetailsPowerStateArgs and VmwareVmDetailsPowerStateOutput values.
 // You can construct a concrete instance of `VmwareVmDetailsPowerStateInput` via:
 //
-//          VmwareVmDetailsPowerStateArgs{...}
+//	VmwareVmDetailsPowerStateArgs{...}
 type VmwareVmDetailsPowerStateInput interface {
 	pulumi.Input
 

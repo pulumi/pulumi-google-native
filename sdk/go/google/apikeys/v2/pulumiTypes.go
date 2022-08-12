@@ -21,7 +21,7 @@ type V2AndroidApplication struct {
 // V2AndroidApplicationInput is an input type that accepts V2AndroidApplicationArgs and V2AndroidApplicationOutput values.
 // You can construct a concrete instance of `V2AndroidApplicationInput` via:
 //
-//          V2AndroidApplicationArgs{...}
+//	V2AndroidApplicationArgs{...}
 type V2AndroidApplicationInput interface {
 	pulumi.Input
 
@@ -52,7 +52,7 @@ func (i V2AndroidApplicationArgs) ToV2AndroidApplicationOutputWithContext(ctx co
 // V2AndroidApplicationArrayInput is an input type that accepts V2AndroidApplicationArray and V2AndroidApplicationArrayOutput values.
 // You can construct a concrete instance of `V2AndroidApplicationArrayInput` via:
 //
-//          V2AndroidApplicationArray{ V2AndroidApplicationArgs{...} }
+//	V2AndroidApplicationArray{ V2AndroidApplicationArgs{...} }
 type V2AndroidApplicationArrayInput interface {
 	pulumi.Input
 
@@ -181,7 +181,7 @@ type V2AndroidKeyRestrictions struct {
 // V2AndroidKeyRestrictionsInput is an input type that accepts V2AndroidKeyRestrictionsArgs and V2AndroidKeyRestrictionsOutput values.
 // You can construct a concrete instance of `V2AndroidKeyRestrictionsInput` via:
 //
-//          V2AndroidKeyRestrictionsArgs{...}
+//	V2AndroidKeyRestrictionsArgs{...}
 type V2AndroidKeyRestrictionsInput interface {
 	pulumi.Input
 
@@ -218,11 +218,11 @@ func (i V2AndroidKeyRestrictionsArgs) ToV2AndroidKeyRestrictionsPtrOutputWithCon
 // V2AndroidKeyRestrictionsPtrInput is an input type that accepts V2AndroidKeyRestrictionsArgs, V2AndroidKeyRestrictionsPtr and V2AndroidKeyRestrictionsPtrOutput values.
 // You can construct a concrete instance of `V2AndroidKeyRestrictionsPtrInput` via:
 //
-//          V2AndroidKeyRestrictionsArgs{...}
+//	        V2AndroidKeyRestrictionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type V2AndroidKeyRestrictionsPtrInput interface {
 	pulumi.Input
 
@@ -349,7 +349,7 @@ type V2ApiTarget struct {
 // V2ApiTargetInput is an input type that accepts V2ApiTargetArgs and V2ApiTargetOutput values.
 // You can construct a concrete instance of `V2ApiTargetInput` via:
 //
-//          V2ApiTargetArgs{...}
+//	V2ApiTargetArgs{...}
 type V2ApiTargetInput interface {
 	pulumi.Input
 
@@ -380,7 +380,7 @@ func (i V2ApiTargetArgs) ToV2ApiTargetOutputWithContext(ctx context.Context) V2A
 // V2ApiTargetArrayInput is an input type that accepts V2ApiTargetArray and V2ApiTargetArrayOutput values.
 // You can construct a concrete instance of `V2ApiTargetArrayInput` via:
 //
-//          V2ApiTargetArray{ V2ApiTargetArgs{...} }
+//	V2ApiTargetArray{ V2ApiTargetArgs{...} }
 type V2ApiTargetArrayInput interface {
 	pulumi.Input
 
@@ -509,7 +509,7 @@ type V2BrowserKeyRestrictions struct {
 // V2BrowserKeyRestrictionsInput is an input type that accepts V2BrowserKeyRestrictionsArgs and V2BrowserKeyRestrictionsOutput values.
 // You can construct a concrete instance of `V2BrowserKeyRestrictionsInput` via:
 //
-//          V2BrowserKeyRestrictionsArgs{...}
+//	V2BrowserKeyRestrictionsArgs{...}
 type V2BrowserKeyRestrictionsInput interface {
 	pulumi.Input
 
@@ -546,11 +546,11 @@ func (i V2BrowserKeyRestrictionsArgs) ToV2BrowserKeyRestrictionsPtrOutputWithCon
 // V2BrowserKeyRestrictionsPtrInput is an input type that accepts V2BrowserKeyRestrictionsArgs, V2BrowserKeyRestrictionsPtr and V2BrowserKeyRestrictionsPtrOutput values.
 // You can construct a concrete instance of `V2BrowserKeyRestrictionsPtrInput` via:
 //
-//          V2BrowserKeyRestrictionsArgs{...}
+//	        V2BrowserKeyRestrictionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type V2BrowserKeyRestrictionsPtrInput interface {
 	pulumi.Input
 
@@ -675,7 +675,7 @@ type V2IosKeyRestrictions struct {
 // V2IosKeyRestrictionsInput is an input type that accepts V2IosKeyRestrictionsArgs and V2IosKeyRestrictionsOutput values.
 // You can construct a concrete instance of `V2IosKeyRestrictionsInput` via:
 //
-//          V2IosKeyRestrictionsArgs{...}
+//	V2IosKeyRestrictionsArgs{...}
 type V2IosKeyRestrictionsInput interface {
 	pulumi.Input
 
@@ -712,11 +712,11 @@ func (i V2IosKeyRestrictionsArgs) ToV2IosKeyRestrictionsPtrOutputWithContext(ctx
 // V2IosKeyRestrictionsPtrInput is an input type that accepts V2IosKeyRestrictionsArgs, V2IosKeyRestrictionsPtr and V2IosKeyRestrictionsPtrOutput values.
 // You can construct a concrete instance of `V2IosKeyRestrictionsPtrInput` via:
 //
-//          V2IosKeyRestrictionsArgs{...}
+//	        V2IosKeyRestrictionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type V2IosKeyRestrictionsPtrInput interface {
 	pulumi.Input
 
@@ -849,7 +849,7 @@ type V2Restrictions struct {
 // V2RestrictionsInput is an input type that accepts V2RestrictionsArgs and V2RestrictionsOutput values.
 // You can construct a concrete instance of `V2RestrictionsInput` via:
 //
-//          V2RestrictionsArgs{...}
+//	V2RestrictionsArgs{...}
 type V2RestrictionsInput interface {
 	pulumi.Input
 
@@ -894,11 +894,11 @@ func (i V2RestrictionsArgs) ToV2RestrictionsPtrOutputWithContext(ctx context.Con
 // V2RestrictionsPtrInput is an input type that accepts V2RestrictionsArgs, V2RestrictionsPtr and V2RestrictionsPtrOutput values.
 // You can construct a concrete instance of `V2RestrictionsPtrInput` via:
 //
-//          V2RestrictionsArgs{...}
+//	        V2RestrictionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type V2RestrictionsPtrInput interface {
 	pulumi.Input
 
@@ -1111,7 +1111,7 @@ type V2ServerKeyRestrictions struct {
 // V2ServerKeyRestrictionsInput is an input type that accepts V2ServerKeyRestrictionsArgs and V2ServerKeyRestrictionsOutput values.
 // You can construct a concrete instance of `V2ServerKeyRestrictionsInput` via:
 //
-//          V2ServerKeyRestrictionsArgs{...}
+//	V2ServerKeyRestrictionsArgs{...}
 type V2ServerKeyRestrictionsInput interface {
 	pulumi.Input
 
@@ -1148,11 +1148,11 @@ func (i V2ServerKeyRestrictionsArgs) ToV2ServerKeyRestrictionsPtrOutputWithConte
 // V2ServerKeyRestrictionsPtrInput is an input type that accepts V2ServerKeyRestrictionsArgs, V2ServerKeyRestrictionsPtr and V2ServerKeyRestrictionsPtrOutput values.
 // You can construct a concrete instance of `V2ServerKeyRestrictionsPtrInput` via:
 //
-//          V2ServerKeyRestrictionsArgs{...}
+//	        V2ServerKeyRestrictionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type V2ServerKeyRestrictionsPtrInput interface {
 	pulumi.Input
 

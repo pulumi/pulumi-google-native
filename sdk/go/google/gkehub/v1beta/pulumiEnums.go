@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o MultiClusterIngressFeatureSpecBillingPtrOutput) ToStringPtrOutputWithCon
 // MultiClusterIngressFeatureSpecBillingInput is an input type that accepts MultiClusterIngressFeatureSpecBillingArgs and MultiClusterIngressFeatureSpecBillingOutput values.
 // You can construct a concrete instance of `MultiClusterIngressFeatureSpecBillingInput` via:
 //
-//          MultiClusterIngressFeatureSpecBillingArgs{...}
+//	MultiClusterIngressFeatureSpecBillingArgs{...}
 type MultiClusterIngressFeatureSpecBillingInput interface {
 	pulumi.Input
 

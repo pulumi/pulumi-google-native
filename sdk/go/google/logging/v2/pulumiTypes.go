@@ -19,7 +19,7 @@ type BigQueryOptions struct {
 // BigQueryOptionsInput is an input type that accepts BigQueryOptionsArgs and BigQueryOptionsOutput values.
 // You can construct a concrete instance of `BigQueryOptionsInput` via:
 //
-//          BigQueryOptionsArgs{...}
+//	BigQueryOptionsArgs{...}
 type BigQueryOptionsInput interface {
 	pulumi.Input
 
@@ -56,11 +56,11 @@ func (i BigQueryOptionsArgs) ToBigQueryOptionsPtrOutputWithContext(ctx context.C
 // BigQueryOptionsPtrInput is an input type that accepts BigQueryOptionsArgs, BigQueryOptionsPtr and BigQueryOptionsPtrOutput values.
 // You can construct a concrete instance of `BigQueryOptionsPtrInput` via:
 //
-//          BigQueryOptionsArgs{...}
+//	        BigQueryOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type BigQueryOptionsPtrInput interface {
 	pulumi.Input
 
@@ -196,7 +196,7 @@ type BucketOptions struct {
 // BucketOptionsInput is an input type that accepts BucketOptionsArgs and BucketOptionsOutput values.
 // You can construct a concrete instance of `BucketOptionsInput` via:
 //
-//          BucketOptionsArgs{...}
+//	BucketOptionsArgs{...}
 type BucketOptionsInput interface {
 	pulumi.Input
 
@@ -237,11 +237,11 @@ func (i BucketOptionsArgs) ToBucketOptionsPtrOutputWithContext(ctx context.Conte
 // BucketOptionsPtrInput is an input type that accepts BucketOptionsArgs, BucketOptionsPtr and BucketOptionsPtrOutput values.
 // You can construct a concrete instance of `BucketOptionsPtrInput` via:
 //
-//          BucketOptionsArgs{...}
+//	        BucketOptionsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type BucketOptionsPtrInput interface {
 	pulumi.Input
 
@@ -412,7 +412,7 @@ type CmekSettings struct {
 // CmekSettingsInput is an input type that accepts CmekSettingsArgs and CmekSettingsOutput values.
 // You can construct a concrete instance of `CmekSettingsInput` via:
 //
-//          CmekSettingsArgs{...}
+//	CmekSettingsArgs{...}
 type CmekSettingsInput interface {
 	pulumi.Input
 
@@ -451,11 +451,11 @@ func (i CmekSettingsArgs) ToCmekSettingsPtrOutputWithContext(ctx context.Context
 // CmekSettingsPtrInput is an input type that accepts CmekSettingsArgs, CmekSettingsPtr and CmekSettingsPtrOutput values.
 // You can construct a concrete instance of `CmekSettingsPtrInput` via:
 //
-//          CmekSettingsArgs{...}
+//	        CmekSettingsArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type CmekSettingsPtrInput interface {
 	pulumi.Input
 
@@ -616,7 +616,7 @@ type Explicit struct {
 // ExplicitInput is an input type that accepts ExplicitArgs and ExplicitOutput values.
 // You can construct a concrete instance of `ExplicitInput` via:
 //
-//          ExplicitArgs{...}
+//	ExplicitArgs{...}
 type ExplicitInput interface {
 	pulumi.Input
 
@@ -653,11 +653,11 @@ func (i ExplicitArgs) ToExplicitPtrOutputWithContext(ctx context.Context) Explic
 // ExplicitPtrInput is an input type that accepts ExplicitArgs, ExplicitPtr and ExplicitPtrOutput values.
 // You can construct a concrete instance of `ExplicitPtrInput` via:
 //
-//          ExplicitArgs{...}
+//	        ExplicitArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExplicitPtrInput interface {
 	pulumi.Input
 
@@ -786,7 +786,7 @@ type Exponential struct {
 // ExponentialInput is an input type that accepts ExponentialArgs and ExponentialOutput values.
 // You can construct a concrete instance of `ExponentialInput` via:
 //
-//          ExponentialArgs{...}
+//	ExponentialArgs{...}
 type ExponentialInput interface {
 	pulumi.Input
 
@@ -827,11 +827,11 @@ func (i ExponentialArgs) ToExponentialPtrOutputWithContext(ctx context.Context) 
 // ExponentialPtrInput is an input type that accepts ExponentialArgs, ExponentialPtr and ExponentialPtrOutput values.
 // You can construct a concrete instance of `ExponentialPtrInput` via:
 //
-//          ExponentialArgs{...}
+//	        ExponentialArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type ExponentialPtrInput interface {
 	pulumi.Input
 
@@ -1002,7 +1002,7 @@ type IndexConfig struct {
 // IndexConfigInput is an input type that accepts IndexConfigArgs and IndexConfigOutput values.
 // You can construct a concrete instance of `IndexConfigInput` via:
 //
-//          IndexConfigArgs{...}
+//	IndexConfigArgs{...}
 type IndexConfigInput interface {
 	pulumi.Input
 
@@ -1033,7 +1033,7 @@ func (i IndexConfigArgs) ToIndexConfigOutputWithContext(ctx context.Context) Ind
 // IndexConfigArrayInput is an input type that accepts IndexConfigArray and IndexConfigArrayOutput values.
 // You can construct a concrete instance of `IndexConfigArrayInput` via:
 //
-//          IndexConfigArray{ IndexConfigArgs{...} }
+//	IndexConfigArray{ IndexConfigArgs{...} }
 type IndexConfigArrayInput interface {
 	pulumi.Input
 
@@ -1173,7 +1173,7 @@ type LabelDescriptor struct {
 // LabelDescriptorInput is an input type that accepts LabelDescriptorArgs and LabelDescriptorOutput values.
 // You can construct a concrete instance of `LabelDescriptorInput` via:
 //
-//          LabelDescriptorArgs{...}
+//	LabelDescriptorArgs{...}
 type LabelDescriptorInput interface {
 	pulumi.Input
 
@@ -1206,7 +1206,7 @@ func (i LabelDescriptorArgs) ToLabelDescriptorOutputWithContext(ctx context.Cont
 // LabelDescriptorArrayInput is an input type that accepts LabelDescriptorArray and LabelDescriptorArrayOutput values.
 // You can construct a concrete instance of `LabelDescriptorArrayInput` via:
 //
-//          LabelDescriptorArray{ LabelDescriptorArgs{...} }
+//	LabelDescriptorArray{ LabelDescriptorArgs{...} }
 type LabelDescriptorArrayInput interface {
 	pulumi.Input
 
@@ -1351,7 +1351,7 @@ type Linear struct {
 // LinearInput is an input type that accepts LinearArgs and LinearOutput values.
 // You can construct a concrete instance of `LinearInput` via:
 //
-//          LinearArgs{...}
+//	LinearArgs{...}
 type LinearInput interface {
 	pulumi.Input
 
@@ -1392,11 +1392,11 @@ func (i LinearArgs) ToLinearPtrOutputWithContext(ctx context.Context) LinearPtrO
 // LinearPtrInput is an input type that accepts LinearArgs, LinearPtr and LinearPtrOutput values.
 // You can construct a concrete instance of `LinearPtrInput` via:
 //
-//          LinearArgs{...}
+//	        LinearArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type LinearPtrInput interface {
 	pulumi.Input
 
@@ -1571,7 +1571,7 @@ type LogExclusion struct {
 // LogExclusionInput is an input type that accepts LogExclusionArgs and LogExclusionOutput values.
 // You can construct a concrete instance of `LogExclusionInput` via:
 //
-//          LogExclusionArgs{...}
+//	LogExclusionArgs{...}
 type LogExclusionInput interface {
 	pulumi.Input
 
@@ -1606,7 +1606,7 @@ func (i LogExclusionArgs) ToLogExclusionOutputWithContext(ctx context.Context) L
 // LogExclusionArrayInput is an input type that accepts LogExclusionArray and LogExclusionArrayOutput values.
 // You can construct a concrete instance of `LogExclusionArrayInput` via:
 //
-//          LogExclusionArray{ LogExclusionArgs{...} }
+//	LogExclusionArray{ LogExclusionArgs{...} }
 type LogExclusionArrayInput interface {
 	pulumi.Input
 
@@ -1793,7 +1793,7 @@ type MetricDescriptor struct {
 // MetricDescriptorInput is an input type that accepts MetricDescriptorArgs and MetricDescriptorOutput values.
 // You can construct a concrete instance of `MetricDescriptorInput` via:
 //
-//          MetricDescriptorArgs{...}
+//	MetricDescriptorArgs{...}
 type MetricDescriptorInput interface {
 	pulumi.Input
 
@@ -1850,11 +1850,11 @@ func (i MetricDescriptorArgs) ToMetricDescriptorPtrOutputWithContext(ctx context
 // MetricDescriptorPtrInput is an input type that accepts MetricDescriptorArgs, MetricDescriptorPtr and MetricDescriptorPtrOutput values.
 // You can construct a concrete instance of `MetricDescriptorPtrInput` via:
 //
-//          MetricDescriptorArgs{...}
+//	        MetricDescriptorArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetricDescriptorPtrInput interface {
 	pulumi.Input
 
@@ -2109,7 +2109,7 @@ type MetricDescriptorMetadata struct {
 // MetricDescriptorMetadataInput is an input type that accepts MetricDescriptorMetadataArgs and MetricDescriptorMetadataOutput values.
 // You can construct a concrete instance of `MetricDescriptorMetadataInput` via:
 //
-//          MetricDescriptorMetadataArgs{...}
+//	MetricDescriptorMetadataArgs{...}
 type MetricDescriptorMetadataInput interface {
 	pulumi.Input
 
@@ -2152,11 +2152,11 @@ func (i MetricDescriptorMetadataArgs) ToMetricDescriptorMetadataPtrOutputWithCon
 // MetricDescriptorMetadataPtrInput is an input type that accepts MetricDescriptorMetadataArgs, MetricDescriptorMetadataPtr and MetricDescriptorMetadataPtrOutput values.
 // You can construct a concrete instance of `MetricDescriptorMetadataPtrInput` via:
 //
-//          MetricDescriptorMetadataArgs{...}
+//	        MetricDescriptorMetadataArgs{...}
 //
-//  or:
+//	or:
 //
-//          nil
+//	        nil
 type MetricDescriptorMetadataPtrInput interface {
 	pulumi.Input
 

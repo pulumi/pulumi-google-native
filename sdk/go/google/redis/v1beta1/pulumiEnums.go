@@ -144,7 +144,7 @@ func (o InstanceConnectModePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // InstanceConnectModeInput is an input type that accepts InstanceConnectModeArgs and InstanceConnectModeOutput values.
 // You can construct a concrete instance of `InstanceConnectModeInput` via:
 //
-//          InstanceConnectModeArgs{...}
+//	InstanceConnectModeArgs{...}
 type InstanceConnectModeInput interface {
 	pulumi.Input
 
@@ -313,7 +313,7 @@ func (o InstanceReadReplicasModePtrOutput) ToStringPtrOutputWithContext(ctx cont
 // InstanceReadReplicasModeInput is an input type that accepts InstanceReadReplicasModeArgs and InstanceReadReplicasModeOutput values.
 // You can construct a concrete instance of `InstanceReadReplicasModeInput` via:
 //
-//          InstanceReadReplicasModeArgs{...}
+//	InstanceReadReplicasModeArgs{...}
 type InstanceReadReplicasModeInput interface {
 	pulumi.Input
 
@@ -479,7 +479,7 @@ func (o InstanceSuspensionReasonsItemPtrOutput) ToStringPtrOutputWithContext(ctx
 // InstanceSuspensionReasonsItemInput is an input type that accepts InstanceSuspensionReasonsItemArgs and InstanceSuspensionReasonsItemOutput values.
 // You can construct a concrete instance of `InstanceSuspensionReasonsItemInput` via:
 //
-//          InstanceSuspensionReasonsItemArgs{...}
+//	InstanceSuspensionReasonsItemArgs{...}
 type InstanceSuspensionReasonsItemInput interface {
 	pulumi.Input
 
@@ -517,7 +517,7 @@ func (in *instanceSuspensionReasonsItemPtr) ToInstanceSuspensionReasonsItemPtrOu
 // InstanceSuspensionReasonsItemArrayInput is an input type that accepts InstanceSuspensionReasonsItemArray and InstanceSuspensionReasonsItemArrayOutput values.
 // You can construct a concrete instance of `InstanceSuspensionReasonsItemArrayInput` via:
 //
-//          InstanceSuspensionReasonsItemArray{ InstanceSuspensionReasonsItemArgs{...} }
+//	InstanceSuspensionReasonsItemArray{ InstanceSuspensionReasonsItemArgs{...} }
 type InstanceSuspensionReasonsItemArrayInput interface {
 	pulumi.Input
 
@@ -693,7 +693,7 @@ func (o InstanceTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context)
 // InstanceTierInput is an input type that accepts InstanceTierArgs and InstanceTierOutput values.
 // You can construct a concrete instance of `InstanceTierInput` via:
 //
-//          InstanceTierArgs{...}
+//	InstanceTierArgs{...}
 type InstanceTierInput interface {
 	pulumi.Input
 
@@ -862,7 +862,7 @@ func (o InstanceTransitEncryptionModePtrOutput) ToStringPtrOutputWithContext(ctx
 // InstanceTransitEncryptionModeInput is an input type that accepts InstanceTransitEncryptionModeArgs and InstanceTransitEncryptionModeOutput values.
 // You can construct a concrete instance of `InstanceTransitEncryptionModeInput` via:
 //
-//          InstanceTransitEncryptionModeArgs{...}
+//	InstanceTransitEncryptionModeArgs{...}
 type InstanceTransitEncryptionModeInput interface {
 	pulumi.Input
 
@@ -1031,7 +1031,7 @@ func (o PersistenceConfigPersistenceModePtrOutput) ToStringPtrOutputWithContext(
 // PersistenceConfigPersistenceModeInput is an input type that accepts PersistenceConfigPersistenceModeArgs and PersistenceConfigPersistenceModeOutput values.
 // You can construct a concrete instance of `PersistenceConfigPersistenceModeInput` via:
 //
-//          PersistenceConfigPersistenceModeArgs{...}
+//	PersistenceConfigPersistenceModeArgs{...}
 type PersistenceConfigPersistenceModeInput interface {
 	pulumi.Input
 
@@ -1204,7 +1204,7 @@ func (o PersistenceConfigRdbSnapshotPeriodPtrOutput) ToStringPtrOutputWithContex
 // PersistenceConfigRdbSnapshotPeriodInput is an input type that accepts PersistenceConfigRdbSnapshotPeriodArgs and PersistenceConfigRdbSnapshotPeriodOutput values.
 // You can construct a concrete instance of `PersistenceConfigRdbSnapshotPeriodInput` via:
 //
-//          PersistenceConfigRdbSnapshotPeriodArgs{...}
+//	PersistenceConfigRdbSnapshotPeriodArgs{...}
 type PersistenceConfigRdbSnapshotPeriodInput interface {
 	pulumi.Input
 
@@ -1383,7 +1383,7 @@ func (o WeeklyMaintenanceWindowDayPtrOutput) ToStringPtrOutputWithContext(ctx co
 // WeeklyMaintenanceWindowDayInput is an input type that accepts WeeklyMaintenanceWindowDayArgs and WeeklyMaintenanceWindowDayOutput values.
 // You can construct a concrete instance of `WeeklyMaintenanceWindowDayInput` via:
 //
-//          WeeklyMaintenanceWindowDayArgs{...}
+//	WeeklyMaintenanceWindowDayArgs{...}
 type WeeklyMaintenanceWindowDayInput interface {
 	pulumi.Input
 

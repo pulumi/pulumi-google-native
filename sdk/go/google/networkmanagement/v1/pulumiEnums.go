@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o EndpointNetworkTypePtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // EndpointNetworkTypeInput is an input type that accepts EndpointNetworkTypeArgs and EndpointNetworkTypeOutput values.
 // You can construct a concrete instance of `EndpointNetworkTypeInput` via:
 //
-//          EndpointNetworkTypeArgs{...}
+//	EndpointNetworkTypeArgs{...}
 type EndpointNetworkTypeInput interface {
 	pulumi.Input
 

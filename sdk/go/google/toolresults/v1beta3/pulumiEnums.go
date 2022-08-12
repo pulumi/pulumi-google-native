@@ -142,7 +142,7 @@ func (o BasicPerfSampleSeriesPerfMetricTypePtrOutput) ToStringPtrOutputWithConte
 // BasicPerfSampleSeriesPerfMetricTypeInput is an input type that accepts BasicPerfSampleSeriesPerfMetricTypeArgs and BasicPerfSampleSeriesPerfMetricTypeOutput values.
 // You can construct a concrete instance of `BasicPerfSampleSeriesPerfMetricTypeInput` via:
 //
-//          BasicPerfSampleSeriesPerfMetricTypeArgs{...}
+//	BasicPerfSampleSeriesPerfMetricTypeArgs{...}
 type BasicPerfSampleSeriesPerfMetricTypeInput interface {
 	pulumi.Input
 
@@ -310,7 +310,7 @@ func (o BasicPerfSampleSeriesPerfUnitPtrOutput) ToStringPtrOutputWithContext(ctx
 // BasicPerfSampleSeriesPerfUnitInput is an input type that accepts BasicPerfSampleSeriesPerfUnitArgs and BasicPerfSampleSeriesPerfUnitOutput values.
 // You can construct a concrete instance of `BasicPerfSampleSeriesPerfUnitInput` via:
 //
-//          BasicPerfSampleSeriesPerfUnitArgs{...}
+//	BasicPerfSampleSeriesPerfUnitArgs{...}
 type BasicPerfSampleSeriesPerfUnitInput interface {
 	pulumi.Input
 
@@ -489,7 +489,7 @@ func (o BasicPerfSampleSeriesSampleSeriesLabelPtrOutput) ToStringPtrOutputWithCo
 // BasicPerfSampleSeriesSampleSeriesLabelInput is an input type that accepts BasicPerfSampleSeriesSampleSeriesLabelArgs and BasicPerfSampleSeriesSampleSeriesLabelOutput values.
 // You can construct a concrete instance of `BasicPerfSampleSeriesSampleSeriesLabelInput` via:
 //
-//          BasicPerfSampleSeriesSampleSeriesLabelArgs{...}
+//	BasicPerfSampleSeriesSampleSeriesLabelArgs{...}
 type BasicPerfSampleSeriesSampleSeriesLabelInput interface {
 	pulumi.Input
 
@@ -660,7 +660,7 @@ func (o ExecutionStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Co
 // ExecutionStateEnumInput is an input type that accepts ExecutionStateEnumArgs and ExecutionStateEnumOutput values.
 // You can construct a concrete instance of `ExecutionStateEnumInput` via:
 //
-//          ExecutionStateEnumArgs{...}
+//	ExecutionStateEnumArgs{...}
 type ExecutionStateEnumInput interface {
 	pulumi.Input
 
@@ -826,7 +826,7 @@ func (o HistoryTestPlatformPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // HistoryTestPlatformInput is an input type that accepts HistoryTestPlatformArgs and HistoryTestPlatformOutput values.
 // You can construct a concrete instance of `HistoryTestPlatformInput` via:
 //
-//          HistoryTestPlatformArgs{...}
+//	HistoryTestPlatformArgs{...}
 type HistoryTestPlatformInput interface {
 	pulumi.Input
 
@@ -1000,7 +1000,7 @@ func (o IndividualOutcomeOutcomeSummaryPtrOutput) ToStringPtrOutputWithContext(c
 // IndividualOutcomeOutcomeSummaryInput is an input type that accepts IndividualOutcomeOutcomeSummaryArgs and IndividualOutcomeOutcomeSummaryOutput values.
 // You can construct a concrete instance of `IndividualOutcomeOutcomeSummaryInput` via:
 //
-//          IndividualOutcomeOutcomeSummaryArgs{...}
+//	IndividualOutcomeOutcomeSummaryArgs{...}
 type IndividualOutcomeOutcomeSummaryInput interface {
 	pulumi.Input
 
@@ -1175,7 +1175,7 @@ func (o OutcomeSummaryPtrOutput) ToStringPtrOutputWithContext(ctx context.Contex
 // OutcomeSummaryInput is an input type that accepts OutcomeSummaryArgs and OutcomeSummaryOutput values.
 // You can construct a concrete instance of `OutcomeSummaryInput` via:
 //
-//          OutcomeSummaryArgs{...}
+//	OutcomeSummaryArgs{...}
 type OutcomeSummaryInput interface {
 	pulumi.Input
 
@@ -1350,7 +1350,7 @@ func (o PrimaryStepRollUpPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // PrimaryStepRollUpInput is an input type that accepts PrimaryStepRollUpArgs and PrimaryStepRollUpOutput values.
 // You can construct a concrete instance of `PrimaryStepRollUpInput` via:
 //
-//          PrimaryStepRollUpArgs{...}
+//	PrimaryStepRollUpArgs{...}
 type PrimaryStepRollUpInput interface {
 	pulumi.Input
 
@@ -1521,7 +1521,7 @@ func (o StepStateEnumPtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 // StepStateEnumInput is an input type that accepts StepStateEnumArgs and StepStateEnumOutput values.
 // You can construct a concrete instance of `StepStateEnumInput` via:
 //
-//          StepStateEnumArgs{...}
+//	StepStateEnumArgs{...}
 type StepStateEnumInput interface {
 	pulumi.Input
 
@@ -1690,7 +1690,7 @@ func (o TestIssueCategoryPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // TestIssueCategoryInput is an input type that accepts TestIssueCategoryArgs and TestIssueCategoryOutput values.
 // You can construct a concrete instance of `TestIssueCategoryInput` via:
 //
-//          TestIssueCategoryArgs{...}
+//	TestIssueCategoryArgs{...}
 type TestIssueCategoryInput interface {
 	pulumi.Input
 
@@ -1863,7 +1863,7 @@ func (o TestIssueSeverityPtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // TestIssueSeverityInput is an input type that accepts TestIssueSeverityArgs and TestIssueSeverityOutput values.
 // You can construct a concrete instance of `TestIssueSeverityInput` via:
 //
-//          TestIssueSeverityArgs{...}
+//	TestIssueSeverityArgs{...}
 type TestIssueSeverityInput interface {
 	pulumi.Input
 
@@ -2090,7 +2090,7 @@ func (o TestIssueTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context
 // TestIssueTypeInput is an input type that accepts TestIssueTypeArgs and TestIssueTypeOutput values.
 // You can construct a concrete instance of `TestIssueTypeInput` via:
 //
-//          TestIssueTypeArgs{...}
+//	TestIssueTypeArgs{...}
 type TestIssueTypeInput interface {
 	pulumi.Input
 

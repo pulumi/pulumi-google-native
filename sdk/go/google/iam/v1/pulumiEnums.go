@@ -146,7 +146,7 @@ func (o AuditLogConfigLogTypePtrOutput) ToStringPtrOutputWithContext(ctx context
 // AuditLogConfigLogTypeInput is an input type that accepts AuditLogConfigLogTypeArgs and AuditLogConfigLogTypeOutput values.
 // You can construct a concrete instance of `AuditLogConfigLogTypeInput` via:
 //
-//          AuditLogConfigLogTypeArgs{...}
+//	AuditLogConfigLogTypeArgs{...}
 type AuditLogConfigLogTypeInput interface {
 	pulumi.Input
 
@@ -315,7 +315,7 @@ func (o KeyKeyAlgorithmPtrOutput) ToStringPtrOutputWithContext(ctx context.Conte
 // KeyKeyAlgorithmInput is an input type that accepts KeyKeyAlgorithmArgs and KeyKeyAlgorithmOutput values.
 // You can construct a concrete instance of `KeyKeyAlgorithmInput` via:
 //
-//          KeyKeyAlgorithmArgs{...}
+//	KeyKeyAlgorithmArgs{...}
 type KeyKeyAlgorithmInput interface {
 	pulumi.Input
 
@@ -484,7 +484,7 @@ func (o KeyPrivateKeyTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Con
 // KeyPrivateKeyTypeInput is an input type that accepts KeyPrivateKeyTypeArgs and KeyPrivateKeyTypeOutput values.
 // You can construct a concrete instance of `KeyPrivateKeyTypeInput` via:
 //
-//          KeyPrivateKeyTypeArgs{...}
+//	KeyPrivateKeyTypeArgs{...}
 type KeyPrivateKeyTypeInput interface {
 	pulumi.Input
 
@@ -659,7 +659,7 @@ func (o OrganizationRoleStagePtrOutput) ToStringPtrOutputWithContext(ctx context
 // OrganizationRoleStageInput is an input type that accepts OrganizationRoleStageArgs and OrganizationRoleStageOutput values.
 // You can construct a concrete instance of `OrganizationRoleStageInput` via:
 //
-//          OrganizationRoleStageArgs{...}
+//	OrganizationRoleStageArgs{...}
 type OrganizationRoleStageInput interface {
 	pulumi.Input
 
@@ -834,7 +834,7 @@ func (o RoleStagePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 // RoleStageInput is an input type that accepts RoleStageArgs and RoleStageOutput values.
 // You can construct a concrete instance of `RoleStageInput` via:
 //
-//          RoleStageArgs{...}
+//	RoleStageArgs{...}
 type RoleStageInput interface {
 	pulumi.Input
 

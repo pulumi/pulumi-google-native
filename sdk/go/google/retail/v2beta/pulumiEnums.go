@@ -143,7 +143,7 @@ func (o ControlSolutionTypesItemPtrOutput) ToStringPtrOutputWithContext(ctx cont
 // ControlSolutionTypesItemInput is an input type that accepts ControlSolutionTypesItemArgs and ControlSolutionTypesItemOutput values.
 // You can construct a concrete instance of `ControlSolutionTypesItemInput` via:
 //
-//          ControlSolutionTypesItemArgs{...}
+//	ControlSolutionTypesItemArgs{...}
 type ControlSolutionTypesItemInput interface {
 	pulumi.Input
 
@@ -181,7 +181,7 @@ func (in *controlSolutionTypesItemPtr) ToControlSolutionTypesItemPtrOutputWithCo
 // ControlSolutionTypesItemArrayInput is an input type that accepts ControlSolutionTypesItemArray and ControlSolutionTypesItemArrayOutput values.
 // You can construct a concrete instance of `ControlSolutionTypesItemArrayInput` via:
 //
-//          ControlSolutionTypesItemArray{ ControlSolutionTypesItemArgs{...} }
+//	ControlSolutionTypesItemArray{ ControlSolutionTypesItemArgs{...} }
 type ControlSolutionTypesItemArrayInput interface {
 	pulumi.Input
 
@@ -357,7 +357,7 @@ func (o GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModePtrOutput) ToStr
 // GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeArgs and GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeOutput values.
 // You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeInput` via:
 //
-//          GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeArgs{...}
+//	GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeArgs{...}
 type GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecModeInput interface {
 	pulumi.Input
 
@@ -530,7 +530,7 @@ func (o ProductAvailabilityPtrOutput) ToStringPtrOutputWithContext(ctx context.C
 // ProductAvailabilityInput is an input type that accepts ProductAvailabilityArgs and ProductAvailabilityOutput values.
 // You can construct a concrete instance of `ProductAvailabilityInput` via:
 //
-//          ProductAvailabilityArgs{...}
+//	ProductAvailabilityArgs{...}
 type ProductAvailabilityInput interface {
 	pulumi.Input
 
@@ -701,7 +701,7 @@ func (o ProductTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) 
 // ProductTypeInput is an input type that accepts ProductTypeArgs and ProductTypeOutput values.
 // You can construct a concrete instance of `ProductTypeInput` via:
 //
-//          ProductTypeArgs{...}
+//	ProductTypeArgs{...}
 type ProductTypeInput interface {
 	pulumi.Input
 
@@ -869,7 +869,7 @@ func (o ServingConfigSolutionTypesItemPtrOutput) ToStringPtrOutputWithContext(ct
 // ServingConfigSolutionTypesItemInput is an input type that accepts ServingConfigSolutionTypesItemArgs and ServingConfigSolutionTypesItemOutput values.
 // You can construct a concrete instance of `ServingConfigSolutionTypesItemInput` via:
 //
-//          ServingConfigSolutionTypesItemArgs{...}
+//	ServingConfigSolutionTypesItemArgs{...}
 type ServingConfigSolutionTypesItemInput interface {
 	pulumi.Input
 
@@ -907,7 +907,7 @@ func (in *servingConfigSolutionTypesItemPtr) ToServingConfigSolutionTypesItemPtr
 // ServingConfigSolutionTypesItemArrayInput is an input type that accepts ServingConfigSolutionTypesItemArray and ServingConfigSolutionTypesItemArrayOutput values.
 // You can construct a concrete instance of `ServingConfigSolutionTypesItemArrayInput` via:
 //
-//          ServingConfigSolutionTypesItemArray{ ServingConfigSolutionTypesItemArgs{...} }
+//	ServingConfigSolutionTypesItemArray{ ServingConfigSolutionTypesItemArgs{...} }
 type ServingConfigSolutionTypesItemArrayInput interface {
 	pulumi.Input
 

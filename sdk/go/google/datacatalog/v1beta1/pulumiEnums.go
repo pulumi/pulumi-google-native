@@ -148,7 +148,7 @@ func (o EntryTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pu
 // EntryTypeInput is an input type that accepts EntryTypeArgs and EntryTypeOutput values.
 // You can construct a concrete instance of `EntryTypeInput` via:
 //
-//          EntryTypeArgs{...}
+//	EntryTypeArgs{...}
 type EntryTypeInput interface {
 	pulumi.Input
 
@@ -314,7 +314,7 @@ func (o TaxonomyActivatedPolicyTypesItemPtrOutput) ToStringPtrOutputWithContext(
 // TaxonomyActivatedPolicyTypesItemInput is an input type that accepts TaxonomyActivatedPolicyTypesItemArgs and TaxonomyActivatedPolicyTypesItemOutput values.
 // You can construct a concrete instance of `TaxonomyActivatedPolicyTypesItemInput` via:
 //
-//          TaxonomyActivatedPolicyTypesItemArgs{...}
+//	TaxonomyActivatedPolicyTypesItemArgs{...}
 type TaxonomyActivatedPolicyTypesItemInput interface {
 	pulumi.Input
 
@@ -352,7 +352,7 @@ func (in *taxonomyActivatedPolicyTypesItemPtr) ToTaxonomyActivatedPolicyTypesIte
 // TaxonomyActivatedPolicyTypesItemArrayInput is an input type that accepts TaxonomyActivatedPolicyTypesItemArray and TaxonomyActivatedPolicyTypesItemArrayOutput values.
 // You can construct a concrete instance of `TaxonomyActivatedPolicyTypesItemArrayInput` via:
 //
-//          TaxonomyActivatedPolicyTypesItemArray{ TaxonomyActivatedPolicyTypesItemArgs{...} }
+//	TaxonomyActivatedPolicyTypesItemArray{ TaxonomyActivatedPolicyTypesItemArgs{...} }
 type TaxonomyActivatedPolicyTypesItemArrayInput interface {
 	pulumi.Input
 
