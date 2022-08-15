@@ -265,6 +265,34 @@ var metadataOverrides = map[string]resources.CloudAPIResource{
 			CloudAPIOperation: resources.CloudAPIOperation{
 				Polling: &resources.Polling{Strategy: resources.ClusterAwaitRestingStatePoll},
 			},
+			RecordDefaults: map[string]resources.CloudAPIProperty{
+				"loggingService":                        {},
+				"monitoringService":                     {},
+				"initialClusterVersion":                 {},
+				"locations":                             {},
+				"networkConfig.privateIpv6GoogleAccess": {},
+				"nodeConfig.imageType":                  {},
+			},
+		},
+		Update: resources.UpdateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Polling: &resources.Polling{Strategy: resources.ClusterAwaitRestingStatePoll},
+			},
+		},
+	},
+	"google-native:container/v1beta1:Cluster": {
+		Create: resources.CreateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Polling: &resources.Polling{Strategy: resources.ClusterAwaitRestingStatePoll},
+			},
+			RecordDefaults: map[string]resources.CloudAPIProperty{
+				"loggingService":                        {},
+				"monitoringService":                     {},
+				"initialClusterVersion":                 {},
+				"locations":                             {},
+				"networkConfig.privateIpv6GoogleAccess": {},
+				"nodeConfig.imageType":                  {},
+			},
 		},
 		Update: resources.UpdateAPIOperation{
 			CloudAPIOperation: resources.CloudAPIOperation{
@@ -280,6 +308,24 @@ var metadataOverrides = map[string]resources.CloudAPIResource{
 			RecordDefaults: map[string]resources.CloudAPIProperty{
 				"version":          {},
 				"config.imageType": {},
+				"locations":        {},
+			},
+		},
+		Update: resources.UpdateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Polling: &resources.Polling{Strategy: resources.NodepoolAwaitRestingStatePoll},
+			},
+		},
+	},
+	"google-native:container/v1beta1:NodePool": {
+		Create: resources.CreateAPIOperation{
+			CloudAPIOperation: resources.CloudAPIOperation{
+				Polling: &resources.Polling{Strategy: resources.NodepoolAwaitRestingStatePoll},
+			},
+			RecordDefaults: map[string]resources.CloudAPIProperty{
+				"version":          {},
+				"config.imageType": {},
+				"locations":        {},
 			},
 		},
 		Update: resources.UpdateAPIOperation{
