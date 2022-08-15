@@ -2059,7 +2059,7 @@
       }
     }
   },
-  "revision": "20220801",
+  "revision": "20220725",
   "rootUrl": "https://cloudsearch.googleapis.com/",
   "schemas": {
     "AbuseReportingConfig": {
