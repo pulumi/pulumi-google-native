@@ -49,8 +49,6 @@ func (c clusterMutations) update(
 	inputs resource.PropertyMap,
 	oldState resource.PropertyMap,
 ) (appliedInputs resource.PropertyMap, resp map[string]interface{}, err error) {
-	// TODO wait for the cluster to be in resting state
-
 	// Extract old inputs from the `__inputs` field of the old state.
 	oldInputs := parseCheckpointObject(oldState)
 	// Delete the auto-injected __autonamed tag in old and new inputs to avoid spurious diffs.
@@ -99,8 +97,8 @@ func (c clusterMutations) update(
 						fmt.Sprintf("Performing update for field: %q", key))
 					logging.V(9).Infof("[%s] processing diff for %q with handler for %q",
 						label, diffPropPath.String(), propPath.String())
-					logging.V(9).Infof("[%s] waiting for nodepool to reach resting state", label)
-					_, err = waitForNodepoolRestingState(providerInstance, urn, res, inputs, oldState)
+					logging.V(9).Infof("[%s] waiting for cluster to reach resting state", label)
+					_, err = waitForClusterRestingState(providerInstance, urn, res, inputs, oldState)
 					if err != nil {
 						break
 					}
@@ -128,10 +126,10 @@ func (c clusterMutations) update(
 	if readErr != nil {
 		return nil, nil, readErr
 	}
-	resp, err2 := readNodepoolStatus(providerInstance, uri)
+	resp, err2 := readContainerResourceStatus(providerInstance, uri)
 	if err2 != nil {
-		logging.V(9).Infof("[%s] Failed to read nodepool status: %v", label, err2)
-		return nil, nil, fmt.Errorf("failed to retrieve nodepool status: %v. Previous error: %w", err2, err)
+		logging.V(9).Infof("[%s] Failed to read cluster status: %v", label, err2)
+		return nil, nil, fmt.Errorf("failed to retrieve cluster status: %v. Previous error: %w", err2, err)
 	}
 
 	return appliedInputs, resp, err
@@ -158,7 +156,7 @@ func updateClusterMapping(
 				`projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}%s`, version, operationSuffix),
 			Values: append(res.Create.Endpoint.Values,
 				resources.CloudAPIResourceParam{
-					Name:    "clusterId",
+					Name:    "clustersId",
 					SdkName: "name",
 					Kind:    "path",
 				}),
@@ -208,7 +206,7 @@ func updateClusterNestedField(diffPropPath, targetPropPath resource.PropertyPath
 				`projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}%s`, version, operationSuffix),
 			Values: append(res.Create.Endpoint.Values,
 				resources.CloudAPIResourceParam{
-					Name:    "clusterId",
+					Name:    "clustersId",
 					SdkName: "name",
 					Kind:    "path",
 				}),
@@ -296,7 +294,58 @@ var clusterUpdateOrder = []string{
 	"networkConfig.serviceExternalIpsConfig", //
 }
 
-// Container Nodepool support
+func waitForClusterRestingState(
+	p *googleCloudProvider,
+	urn resource.URN,
+	res *resources.CloudAPIResource,
+	inputs,
+	oldState resource.PropertyMap,
+) (map[string]interface{}, error) {
+	ctx, cancelFunc := context.WithTimeout(context.Background(), 15*time.Minute)
+	defer cancelFunc()
+	retryPolicy := backoff.Backoff{
+		Min:    1 * time.Second,
+		Max:    15 * time.Second,
+		Factor: 1.5,
+		Jitter: true,
+	}
+
+	uri, err := res.Read.Endpoint.URI(inputs.Mappable(), oldState.Mappable())
+	if err != nil {
+		return nil, err
+	}
+
+	for {
+		resp, err := readContainerResourceStatus(p, uri)
+		if err != nil {
+			return nil, err
+		}
+
+		status, hasStatus := resp["status"].(string)
+		if hasStatus && isClusterInRestingStatus(status) {
+			return resp, nil
+		} else {
+			_ = p.host.LogStatus(context.Background(), diag.Info, urn,
+				fmt.Sprintf("Waiting for cluster to reach resting state. "+
+					"Current status: %q", status))
+		}
+		select {
+		case <-time.After(retryPolicy.Duration()):
+		case <-ctx.Done():
+			return nil, fmt.Errorf("timeout polling for nodepool resting state: %q", uri)
+		}
+	}
+}
+
+func isClusterInRestingStatus(status string) bool {
+	switch status {
+	case "RUNNING", "DEGRADED", "ERROR":
+		return true
+	}
+	return false
+}
+
+// == Container Nodepool support ==
 
 // nodepoolMutations models the custom mutations supported for Nodepool resource.
 type nodepoolMutations struct {
@@ -394,7 +443,7 @@ func (n nodepoolMutations) update(
 	if readErr != nil {
 		return nil, nil, readErr
 	}
-	resp, err2 := readNodepoolStatus(providerInstance, uri)
+	resp, err2 := readContainerResourceStatus(providerInstance, uri)
 	if err2 != nil {
 		logging.V(9).Infof("[%s] Failed to read nodepool status: %v", label, err2)
 		return nil, nil, fmt.Errorf("failed to retrieve nodepool status: %v. Previous error: %w", err2, err)
@@ -460,7 +509,7 @@ func mustParsePropertyPath(pattern string) resource.PropertyPath {
 	return pp
 }
 
-func readNodepoolStatus(
+func readContainerResourceStatus(
 	p *googleCloudProvider,
 	uri string,
 ) (map[string]interface{}, error) {
@@ -494,7 +543,7 @@ func waitForNodepoolRestingState(
 	}
 
 	for {
-		resp, err := readNodepoolStatus(p, uri)
+		resp, err := readContainerResourceStatus(p, uri)
 		if err != nil {
 			return nil, err
 		}
