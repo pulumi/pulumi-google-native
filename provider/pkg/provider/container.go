@@ -255,6 +255,9 @@ func updateClusterNestedField(diffPropPath, targetPropPath resource.PropertyPath
 	}
 }
 
+// The ordering here loosely follows what is in the terraform provider which is itself somewhat arbitrary.
+// There is some underlying value since there are a lot overlapping dependencies on mutations (e.g. setting
+// network policies require the network policy add on etc.). This may need to change over time.
 var clusterUpdateOrder = []string{
 	"masterAuthorizedNetworksConfig",          //
 	"addonsConfig",                            //
@@ -273,17 +276,21 @@ var clusterUpdateOrder = []string{
 	"loggingService",                          //
 	"networkPolicy",                           //
 	//"nodePools",                               // TODO: Don't believe we can allow this to be changed?
-	"initialClusterVersion", // maybe initialClusterVersion //
+	"initialClusterVersion", //
 	// nodeVersion, // nodePools[*].version
-	"nodeConfig.imageType",      //
-	"notificationConfig",        //
-	"verticalPodAutoscaling",    //
-	"meshCertificates",          //
-	"databaseEncryption",        //
-	"workloadIdentifyConfig",    //
-	"identityServiceConfig",     //
-	"loggingConfig",             //
-	"monitoringConfig",          //
+	"nodeConfig.imageType",   //
+	"notificationConfig",     //
+	"verticalPodAutoscaling", //
+	"meshCertificates",       //
+	"databaseEncryption",     //
+	"workloadIdentifyConfig", //
+	"identityServiceConfig",  //
+	// masterAuth has a pretty imperative API for mutations.
+	// Its mostly deprecated anyway so lets mark it replace-on-change.
+	// "masterAuth",
+	// TODO: Enable these later. See note in overrides.go.
+	//"loggingConfig",             //
+	//"monitoringConfig",          //
 	"resourceLabels",            //
 	"resourceUsageExportConfig", //
 	// Only beta
