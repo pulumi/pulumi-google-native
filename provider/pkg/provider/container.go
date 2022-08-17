@@ -17,9 +17,10 @@ package provider
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/imdario/mergo"
 
 	"github.com/pulumi/pulumi/pkg/v3/codegen"
 
@@ -141,6 +142,7 @@ func updateClusterMapping(
 	defaultIfMissing propValueIfMissingFunc,
 	operationSuffix string,
 	httpMethod string,
+	additionalMetadata map[string]resources.CloudAPIProperty,
 ) containerCustomUpdateHandlerFunc {
 	return func(p *googleCloudProvider,
 		urn resource.URN,
@@ -149,10 +151,9 @@ func updateClusterMapping(
 		newInputs,
 		oldState resource.PropertyMap) error {
 		tok := urn.Type()
-		moduleMember := tokens.ModuleMember(tok)
-		version := moduleMember.Name().String()
+		version := strings.Split(tok.Module().String(), "/")[1]
 		endpoint := resources.CloudAPIEndpoint{
-			Template: fmt.Sprintf(`https://container.googleapis.com/%s`+
+			Template: fmt.Sprintf(`https://container.googleapis.com/%s/`+
 				`projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}%s`, version, operationSuffix),
 			Values: append(res.Create.Endpoint.Values,
 				resources.CloudAPIResourceParam{
@@ -173,9 +174,13 @@ func updateClusterMapping(
 			newInputs = updated.ObjectValue()
 		}
 
-		body := p.prepareAPIInputs(newInputs, oldState, map[string]resources.CloudAPIProperty{
-			apiFieldName: {SdkName: diffPropPath.String()},
-		})
+		properties := map[string]resources.CloudAPIProperty{}
+		err = mergo.Merge(&properties, additionalMetadata)
+		if err != nil {
+			return fmt.Errorf("failed to initialize metadata: %w", err)
+		}
+		properties[apiFieldName] = resources.CloudAPIProperty{SdkName: diffPropPath.String()}
+		body := p.prepareAPIInputs(newInputs, oldState, properties)
 		op, err := retryRequest(p.client, httpMethod, uri, "", body)
 		if err != nil {
 			return fmt.Errorf("error sending request: %s: %q %+v", err, uri, body)
@@ -197,10 +202,10 @@ func updateClusterNestedField(diffPropPath, targetPropPath resource.PropertyPath
 		res *resources.CloudAPIResource,
 		newInputs,
 		oldState resource.PropertyMap) error {
-		logging.V(9).Infof("[%s] updateNodePoolConfig called for property path: %q", label, diffPropPath.String())
+		logging.V(9).Infof("[%s] updateClusterNestedField called for property path: %q with input: %+v", label,
+			diffPropPath.String(), newInputs)
 		tok := urn.Type()
-		moduleMember := tokens.ModuleMember(tok)
-		version := moduleMember.Name().String()
+		version := strings.Split(tok.Module().String(), "/")[1]
 		endpoint := resources.CloudAPIEndpoint{
 			Template: fmt.Sprintf(`https://container.googleapis.com/%s/`+
 				`projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}%s`, version, operationSuffix),
@@ -234,7 +239,7 @@ func updateClusterNestedField(diffPropPath, targetPropPath resource.PropertyPath
 		}
 		logging.V(9).Infof("[%s] staged property value: %+v", label, updatedConfigField.ObjectValue().Mappable())
 		body := p.prepareAPIInputs(updatedConfigField.ObjectValue(), oldState, map[string]resources.CloudAPIProperty{
-			"config": {Flatten: true},
+			"update": {},
 		})
 		logging.V(9).Infof("[%s] cluster update request body: %v", label, body)
 		op, err := retryRequest(p.client, "PUT", uri, "", body)
@@ -587,8 +592,7 @@ func updateNodePoolMapping(
 		newInputs,
 		oldState resource.PropertyMap) error {
 		tok := urn.Type()
-		moduleMember := tokens.ModuleMember(tok)
-		version := moduleMember.Name().String()
+		version := strings.Split(tok.Module().String(), "/")[1]
 		endpoint := resources.CloudAPIEndpoint{
 			Template: fmt.Sprintf(`https://container.googleapis.com/%s/`+
 				`projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools/{nodePoolsId}%s`,
@@ -638,8 +642,7 @@ func updateNodePoolConfig(diffPropPath, targetPropPath resource.PropertyPath,
 		oldState resource.PropertyMap) error {
 		logging.V(9).Infof("[%s] updateNodePoolConfig called for property path: %q", label, diffPropPath.String())
 		tok := urn.Type()
-		moduleMember := tokens.ModuleMember(tok)
-		version := moduleMember.Name().String()
+		version := strings.Split(tok.Module().String(), "/")[1]
 		endpoint := resources.CloudAPIEndpoint{
 			Template: fmt.Sprintf(`https://container.googleapis.com/%s/`+
 				`projects/{projectsId}/locations/{locationsId}/clusters/{clustersId}/nodePools/{nodePoolsId}`, version),

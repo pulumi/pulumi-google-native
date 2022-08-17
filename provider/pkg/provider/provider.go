@@ -466,15 +466,19 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	if customMutation, hasCustomMutation := customMutations[resourceKey]; hasCustomMutation {
 		mutablePropertyPaths = customMutation.mutablePropertyPaths()
 	}
+	logging.V(9).Infof("[%s] DetailedDiff: %+v", label, detailedDiff)
+	changedKeys, err := diffWithFlattenedKeys(oldInputs, newInputs, detailedDiff)
+	if err != nil {
+		return nil, errors.Wrapf(err, "failed to flatten keys for detailed diff")
+	}
 	// Based on the detailed diff above, calculate the list of changes and replacements.
 	var changes []string
 	replaces := codegen.NewStringSet()
-	for k, v := range detailedDiff {
+	for k, kind := range changedKeys {
 		parts := strings.Split(k, ".")
 		changes = append(changes, parts[0])
-		v.InputDiff = true
 
-		switch v.Kind {
+		switch kind {
 		case rpc.PropertyDiff_ADD_REPLACE, rpc.PropertyDiff_DELETE_REPLACE, rpc.PropertyDiff_UPDATE_REPLACE:
 			replaces.Add(k)
 			continue

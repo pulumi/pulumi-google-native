@@ -181,6 +181,55 @@ func (d *differ) calculateValueDiff(v *resource.ValueDiff, diffBase, replaceBase
 	return detailedDiff
 }
 
+func diffWithFlattenedKeys(olds, news resource.PropertyMap, detailedDiff map[string]*rpc.PropertyDiff) (map[string]rpc.PropertyDiff_Kind,
+	error) {
+	expandedKeys := map[string]rpc.PropertyDiff_Kind{}
+	for k, diff := range detailedDiff {
+		propPath, err := resource.ParsePropertyPath(k)
+		if err != nil {
+			return nil, err
+		}
+		switch diff.Kind {
+		case rpc.PropertyDiff_ADD, rpc.PropertyDiff_ADD_REPLACE:
+			val, ok := propPath.Get(resource.NewObjectProperty(news))
+			if !ok {
+				return nil, fmt.Errorf("failed to lookup value at path %q on new inputs", k)
+			}
+			addNestedKeys(val, k, diff.Kind, expandedKeys)
+		case rpc.PropertyDiff_DELETE, rpc.PropertyDiff_DELETE_REPLACE:
+			val, ok := propPath.Get(resource.NewObjectProperty(olds))
+			if !ok {
+				return nil, fmt.Errorf("failed to lookup value at path %q on old inputs", k)
+			}
+			addNestedKeys(val, k, diff.Kind, expandedKeys)
+		case rpc.PropertyDiff_UPDATE, rpc.PropertyDiff_UPDATE_REPLACE:
+			expandedKeys[k] = diff.Kind
+		}
+	}
+	return expandedKeys, nil
+}
+
+func addNestedKeys(val resource.PropertyValue, currPath string, kind rpc.PropertyDiff_Kind,
+	expandedKeys map[string]rpc.PropertyDiff_Kind) {
+	if val.IsNull() {
+		return
+	} else if val.IsBool() || val.IsNumber() || val.IsString() || val.IsAsset() || val.IsArchive() {
+		expandedKeys[currPath] = kind
+		return
+	} else if val.IsArray() {
+		for i, e := range val.ArrayValue() {
+			addNestedKeys(e, fmt.Sprintf("%s[%d]", currPath, i), kind, expandedKeys)
+		}
+		return
+	} else if val.IsObject() {
+		propMap := val.ObjectValue()
+		for k, v := range propMap {
+			addNestedKeys(v, fmt.Sprintf("%s.%s", currPath, k), kind, expandedKeys)
+		}
+		return
+	}
+}
+
 // applyDiff produces a new map as a merge of a calculated diff into an existing map of values.
 func applyDiff(values resource.PropertyMap, diff *resource.ObjectDiff) resource.PropertyMap {
 	if diff == nil {

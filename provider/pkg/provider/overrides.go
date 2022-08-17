@@ -47,7 +47,8 @@ var clusterMutationHandlers = clusterMutations{
 			"addonsConfig",
 			defaultValue(emptyObjVal),
 			":setAddons",
-			"POST"),
+			"POST",
+			nil),
 		"legacyAbac.enabled": updateClusterNestedField(
 			mustParsePropertyPath("legacyAbac.enabled"),
 			mustParsePropertyPath("enabled"),
@@ -59,19 +60,15 @@ var clusterMutationHandlers = clusterMutations{
 			"locations",
 			defaultValue(resource.NewArrayProperty([]resource.PropertyValue{})),
 			":setLocations",
-			"POST"),
-		"loggingService": updateClusterMapping(
-			mustParsePropertyPath("loggingService"),
-			"loggingService",
-			extractFromDefaults(resource.NewStringProperty("")),
-			":setLogging",
-			"POST"),
+			"POST",
+			nil),
 		"maintenancePolicy": updateClusterMapping(
 			mustParsePropertyPath("maintenancePolicy"),
 			"maintenancePolicy",
 			defaultValue(emptyObjVal),
 			":setMaintenancePolicy",
-			"POST"),
+			"POST",
+			nil),
 		// How to set `action` field?
 		//"masterAuth.password": updateClusterNestedField(
 		//	mustParsePropertyPath("masterAuth.password"),
@@ -79,30 +76,43 @@ var clusterMutationHandlers = clusterMutations{
 		//	defaultValue(emptyObjVal),
 		//	":setMasterAuth",
 		//	"POST"),
-		"monitoringService": updateClusterMapping(
-			mustParsePropertyPath("monitoringService"),
-			"monitoringService",
-			extractFromDefaults(resource.NewStringProperty("")),
-			":setMonitoring",
-			"POST"),
+		// The following endpoints don't actually work. The API requires both monitoring and logging service
+		// to be modified simultaneously which is possible only through the main update API.
+		//"monitoringService": updateClusterMapping(
+		//	mustParsePropertyPath("monitoringService"),
+		//	"monitoringService",
+		//	extractFromDefaults(resource.NewStringProperty("")),
+		//	":setMonitoring",
+		//	"POST",
+		//	nil),
+		//"loggingService": updateClusterMapping(
+		//	mustParsePropertyPath("loggingService"),
+		//	"loggingService",
+		//	extractFromDefaults(resource.NewStringProperty("")),
+		//	":setLogging",
+		//	"POST",
+		//	nil),
 		"networkPolicy": updateClusterMapping(
 			mustParsePropertyPath("networkPolicy"),
 			"networkPolicy",
 			defaultValue(emptyObjVal),
 			":setNetworkPolicy",
-			"POST"),
+			"POST",
+			nil),
 		"resourceLabels": updateClusterMapping(
 			mustParsePropertyPath("resourceLabels"),
 			"resourceLabels",
 			defaultValue(emptyObjVal),
 			":setResourceLabels",
-			"POST"),
+			"POST",
+			map[string]resources.CloudAPIProperty{"labelFingerprint": {CopyFromOutputs: true}}),
 		"initialClusterVersion": updateClusterMapping(
 			mustParsePropertyPath("initialClusterVersion"),
-			"initialClusterVersion",
+			"masterVersion",
 			extractFromDefaults(resource.NewStringProperty("")),
 			":updateMaster",
-			"POST"),
+			"POST",
+			nil),
 		"authenticatorGroupsConfig": updateClusterNestedField(
 			mustParsePropertyPath("authenticatorGroupsConfig"),
 			mustParsePropertyPath("update.desiredAuthenticatorGroupsConfig"),
@@ -147,8 +157,8 @@ var clusterMutationHandlers = clusterMutations{
 			"PUT"),
 		"networkConfig.enableIntraNodeVisibility": updateClusterNestedField(
 			mustParsePropertyPath("networkConfig.enableIntraNodeVisibility"),
-			mustParsePropertyPath("update.desiredIntraNodeVisibilityConfig"),
-			defaultValue(emptyObjVal),
+			mustParsePropertyPath("update.desiredIntraNodeVisibilityConfig.enabled"),
+			defaultValue(resource.NewBoolProperty(false)),
 			"",
 			"PUT"),
 		"networkConfig.privateIpv6GoogleAccess": updateClusterNestedField(
