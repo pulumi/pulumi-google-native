@@ -799,10 +799,15 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 				return resp, nil
 			}
 		default:
-			// Otherwise there are two styles of operations: one returns a 'done' boolean flag,
-			// another one returns status='DONE'.
-			done, hasDone := resp["done"].(bool)
-			status, hasStatus := resp["status"].(string)
+			// Otherwise there are three styles of operations: one returns a 'done' boolean flag,
+			// another one returns status='DONE' and the last one adds the above fields nested under
+			// an `operation` field.
+			op := resp
+			if nestedOp, ok := resp["operation"].(map[string]interface{}); ok {
+				op = nestedOp
+			}
+			done, hasDone := op["done"].(bool)
+			status, hasStatus := op["status"].(string)
 			if completed := (hasDone && done) || (hasStatus && status == "DONE"); completed {
 				// Extract an error message from the response, if any.
 				var err error
@@ -813,17 +818,17 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 				}
 				// Extract the resource response, if any.
 				// A partial error could happen, so both response and error could be available.
-				if response, has := resp["response"].(map[string]interface{}); has {
+				if response, has := op["response"].(map[string]interface{}); has {
 					return response, err
 				}
-				if operationType, has := resp["operationType"].(string); has &&
+				if operationType, has := op["operationType"].(string); has &&
 					strings.Contains(strings.ToLower(operationType), "delete") {
 					return resp, err
 				}
 
-				targetLink, hasTargetLink := getTargetLink(resp)
+				targetLink, hasTargetLink := getTargetLink(op)
 				if !hasTargetLink {
-					targetLink, hasTargetLink = getSelfLink(resp)
+					targetLink, hasTargetLink = getSelfLink(op)
 				}
 
 				continuePollingForRestingState := false
@@ -864,7 +869,7 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 				}
 			}
 
-			selfLink, has := getSelfLink(resp)
+			selfLink, has := getSelfLink(op)
 			if has && hasStatus {
 				pollURI = selfLink
 			} else if operation.Operations != nil && operation.Operations.OperationsBaseURL != "" {
@@ -876,6 +881,9 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 				if err != nil {
 					return resp, err
 				}
+			} else {
+				logging.V(9).Infof("waiting for completion: operation: %#v resp: %#v, pollURI: %q", operation, resp,
+					pollURI)
 			}
 		}
 
@@ -887,12 +895,12 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 		time.Sleep(retryPolicy.Duration())
 
 		logging.V(9).Infof("Polling URL: %q", pollURI)
-		op, err := p.client.RequestWithTimeout("GET", pollURI, "", nil, 0)
+		poll, err := p.client.RequestWithTimeout("GET", pollURI, "", nil, 0)
 		if err != nil {
 			return resp, errors.Wrapf(err, "polling operation status")
 		}
 
-		resp = op
+		resp = poll
 	}
 }
 
