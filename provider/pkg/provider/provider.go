@@ -113,10 +113,29 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 		p.config[strings.TrimPrefix(key, "google-native:config:")] = val
 	}
 
+	// The project is read in the order of:
+	// * provider config
+	// * GOOGLE_PROJECT Env Var
+	// * GOOGLE_CLOUD_PROJECT Env Var
+	// * GCLOUD_PROJECT Env Var
+	// * CLOUDSDK_CORE_PROJECT Env Var
+	// This aligns with our provider documentation
+	project := p.getConfig("project", []string{
+		"GOOGLE_PROJECT",
+		"GOOGLE_CLOUD_PROJECT",
+		"GCLOUD_PROJECT",
+		"CLOUDSDK_CORE_PROJECT",
+	})
+	if project == "" {
+		return nil, fmt.Errorf("unable to find a valid Project. Set the Project by using: \n\n" +
+			" \t • `pulumi config set google-native:project my-project` or \n" +
+			" \t • Environment variables: `GOOGLE_PROJECT`, `GOOGLE_CLOUD_PROJECT`, `GCLOUD_PROJECT` or `CLOUDSDK_CORE_PROJECT` \n\n")
+	}
+
 	p.setLoggingContext(ctx)
 
 	impersonateServiceAccountDelegatesString := p.getConfig(
-		"impersonateServiceAccountDelegates", "")
+		"impersonateServiceAccountDelegates", []string{""})
 	var impersonateServiceAccountDelegates []string
 	if impersonateServiceAccountDelegatesString != "" {
 		err := json.Unmarshal([]byte(impersonateServiceAccountDelegatesString), &impersonateServiceAccountDelegates)
@@ -127,7 +146,7 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 		}
 	}
 
-	scopesString := p.getConfig("scopes", "")
+	scopesString := p.getConfig("scopes", []string{""})
 	var scopes []string
 	if scopesString != "" {
 		err := json.Unmarshal([]byte(scopesString), &scopes)
@@ -136,12 +155,12 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 		}
 	}
 
-	appendUserAgent := p.getConfig("appendUserAgent", "GOOGLE_APPEND_USER_AGENT")
-	impersonateServiceAccount := p.getConfig("impersonateServiceAccount", "GOOGLE_IMPERSONATE_SERVICE_ACCOUNT")
+	appendUserAgent := p.getConfig("appendUserAgent", []string{"GOOGLE_APPEND_USER_AGENT"})
+	impersonateServiceAccount := p.getConfig("impersonateServiceAccount", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"})
 
 	config := googleclient.Config{
-		Credentials:                        p.getConfig("credentials", "GOOGLE_CREDENTIALS"),
-		AccessToken:                        p.getConfig("accessToken", "GOOGLE_OAUTH_ACCESS_TOKEN"),
+		Credentials:                        p.getConfig("credentials", []string{"GOOGLE_CREDENTIALS"}),
+		AccessToken:                        p.getConfig("accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
 		ImpersonateServiceAccount:          impersonateServiceAccount,
 		ImpersonateServiceAccountDelegates: impersonateServiceAccountDelegates,
 		Scopes:                             scopes,
@@ -1268,20 +1287,27 @@ func (p *googleCloudProvider) setLoggingContext(ctx context.Context) {
 	})
 }
 
-func (p *googleCloudProvider) getConfig(configName, envName string) string {
+func (p *googleCloudProvider) getConfig(configName string, envs []string) string {
 	if val, ok := p.config[configName]; ok {
 		return val
 	}
 
-	return os.Getenv(envName)
+	for _, env := range envs {
+		val, ok := os.LookupEnv(env)
+		if ok {
+			return val
+		}
+	}
+
+	return ""
 }
 
 func (p *googleCloudProvider) getPartnerName() string {
-	result := p.getConfig("partnerName", "GOOGLE_PARTNER_NAME")
+	result := p.getConfig("partnerName", []string{"GOOGLE_PARTNER_NAME"})
 	if result != "" {
 		return result
 	}
-	disablePartner := p.getConfig("disablePartnerName", "GOOGLE_DISABLE_PARTNER_NAME")
+	disablePartner := p.getConfig("disablePartnerName", []string{"GOOGLE_DISABLE_PARTNER_NAME"})
 	if disablePartner == "true" {
 		return ""
 	}
