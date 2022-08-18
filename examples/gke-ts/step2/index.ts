@@ -40,6 +40,8 @@ const cluster = new google.container.v1.Cluster("cluster", {
         },
         name: "initial",
     }],
+    // Change
+    resourceLabels: {"test": "true"},
 });
 
 const nodepool = new google.container.v1.NodePool("nodepool", {

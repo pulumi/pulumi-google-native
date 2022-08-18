@@ -21,11 +21,15 @@ import (
 	"path/filepath"
 	"testing"
 
+	"github.com/pulumi/pulumi/pkg/v3/codegen"
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
+	"github.com/pulumi/pulumi/sdk/v3/go/common/apitype"
 	"github.com/stretchr/testify/assert"
 )
 
 func TestGKE(t *testing.T) {
+	clusterDiffs := codegen.NewStringSet("resourceLabels")
+	nodepoolDiffs := codegen.NewStringSet("config")
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir:           filepath.Join(getCwd(t), "gke-ts", "step1"),
@@ -36,12 +40,28 @@ func TestGKE(t *testing.T) {
 					Dir:      filepath.Join(getCwd(t), "gke-ts", "step2"),
 					Additive: true,
 					ExtraRuntimeValidation: func(t *testing.T, stack integration.RuntimeValidationStackInfo) {
+						foundClusterUpdate, foundNodepoolUpdate := false, false
+						for _, event := range stack.Events {
+							if res := event.ResOutputsEvent; res != nil && res.Metadata.Op == apitype.OpUpdate {
+								if res.Metadata.Type == "google-native:container/v1:Cluster" {
+									for _, field := range res.Metadata.Diffs {
+										if clusterDiffs.Has(field) {
+											foundClusterUpdate = true
+										}
+									}
+								}
+								if res.Metadata.Type == "google-native:container/v1:NodePool" {
+									for _, field := range res.Metadata.Diffs {
+										if nodepoolDiffs.Has(field) {
+											foundNodepoolUpdate = true
+										}
+									}
+								}
+							}
+						}
+						assert.True(t, foundClusterUpdate, "should have seen a cluster update")
+						assert.True(t, foundNodepoolUpdate, "should have seen a nodepool update")
 						t.Logf("outputs: %+v", stack.Outputs)
-						nodepoolTag, ok := stack.Outputs["nodepoolTag"]
-						assert.True(t, ok)
-						assert.Equal(t, "nodepool", nodepoolTag)
-						taintsKey, ok := stack.Outputs["taintsKey"]
-						assert.Equal(t, "important", taintsKey)
 					},
 				},
 			},

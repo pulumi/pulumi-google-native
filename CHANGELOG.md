@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-(None)
+- Custom mutations for v1/v1beta1 cluster and nodepool [#632](https://github.com/pulumi/pulumi-google-native/pull/632)
 
 ## 0.23.0 (2022-07-29)
 - Ensure inputs in partial error checkpoints for nodepools are correctly resumable [#602](https://github.com/pulumi/pulumi-google-native/pull/602)

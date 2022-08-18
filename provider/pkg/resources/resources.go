@@ -174,7 +174,10 @@ type Operations struct {
 // CreateAPIOperation is a Create resource operation in the Google Cloud REST API.
 type CreateAPIOperation struct {
 	CloudAPIOperation
-	Autoname       ResourceAutoname            `json:"autoname,omitempty"`
+	Autoname ResourceAutoname `json:"autoname,omitempty"`
+	// RecordDefaults should be set for properties which have implicit default values which can only
+	// be determined by examining the response of the resource creation. The corresponding default values
+	// are recorded in the __defaults custom input field as part of the resource checkpoint.
 	RecordDefaults map[string]CloudAPIProperty `json:"recordDefaults,omitempty"`
 }
 
