@@ -20,3 +20,10 @@ provider/cmd/**/schema.go
 **/dist
 
 ci-scripts/
+
+sdk/java/build
+sdk/java/src
+sdk/java/.gradle
+sdk/java/gradle
+sdk/java/gradlew
+sdk/java/gradlew.bat
