@@ -591,7 +591,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 			return nil, errors.Wrapf(err, "failed to extract defaults from response: %s", defErr)
 		}
 		checkpoint, cpErr := plugin.MarshalProperties(
-			checkpointObject(inputs, defaults, readResp),
+			checkpointObject(inputs, defaults, resp),
 			plugin.MarshalOptions{Label: fmt.Sprintf("%s.partialCheckpoint", label), KeepSecrets: true, SkipNulls: true},
 		)
 		if cpErr != nil {
@@ -600,11 +600,22 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		return nil, partialError(id, err, checkpoint, req.GetProperties())
 	}
 
+	// There are several APIs where the response from the create/operation is non-standard or contains
+	// stale data. When it comes to checkpointing, we want to store information that strictly matches what we
+	// get from a subsequent read. As a result, we do an additional read call here and use that to checkppint state.
+	// This is likely superfluous/duplicative in many cases but erring on the side of correctness here instead.
+	id, err := calculateResourceID(res, inputsMap, resp)
+	if err != nil {
+		return nil, fmt.Errorf("object retrieval failure after successful create / calculate ID %w", err)
+	}
+	resp, err = p.client.RequestWithTimeout("GET", resources.AssembleURL(res.RootURL, id), "", nil, 0)
+	if err != nil {
+		return nil, fmt.Errorf("object retrieval failure after successful create / read state: %w", err)
+	}
 	defaults, err := extractDefaultsFromResponse(res, inputs, resp)
 	if err != nil {
-		return nil, err
+		return nil, fmt.Errorf("failed to extract defaults from response: %w", err)
 	}
-
 	// Checkpoint defaults, outputs and inputs into the state.
 	checkpoint, err := plugin.MarshalProperties(
 		checkpointObject(inputs, defaults, resp),
@@ -612,11 +623,6 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	)
 	if err != nil {
 		return nil, fmt.Errorf("failed to marshal checkpoint: %w", err)
-	}
-
-	id, err := calculateResourceID(res, inputsMap, resp)
-	if err != nil {
-		return nil, errors.Wrapf(err, "calculating resource ID")
 	}
 
 	return &rpc.CreateResponse{
@@ -801,11 +807,14 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 		default:
 			// Otherwise there are three styles of operations: one returns a 'done' boolean flag,
 			// another one returns status='DONE' and the last one adds the above fields nested under
-			// an `operation` field.
+			// a nested field (rare).
 			op := resp
-			if nestedOp, ok := resp["operation"].(map[string]interface{}); ok {
-				op = nestedOp
+			if operation.Operations != nil && operation.Operations.EmbeddedOperationField != "" {
+				if nestedOp, ok := resp[operation.Operations.EmbeddedOperationField].(map[string]interface{}); ok {
+					op = nestedOp
+				}
 			}
+
 			done, hasDone := op["done"].(bool)
 			status, hasStatus := op["status"].(string)
 			if completed := (hasDone && done) || (hasStatus && status == "DONE"); completed {
@@ -818,14 +827,19 @@ func (p *googleCloudProvider) waitForResourceOpCompletion(
 				}
 				// Extract the resource response, if any.
 				// A partial error could happen, so both response and error could be available.
-				if response, has := op["response"].(map[string]interface{}); has {
+				// We choose to not trust the response here unless we hit an error during the invocation,
+				// in which case we use the partial response to checkpoint state.
+				if response, has := op["response"].(map[string]interface{}); has && err != nil {
 					return response, err
 				}
+
+				// We don't need the most up-to-date state on deletions so use the response.
 				if operationType, has := op["operationType"].(string); has &&
 					strings.Contains(strings.ToLower(operationType), "delete") {
 					return resp, err
 				}
 
+				// Try to retrieve the targetLink first. If not try to retrieve using the selfLink.
 				targetLink, hasTargetLink := getTargetLink(op)
 				if !hasTargetLink {
 					targetLink, hasTargetLink = getSelfLink(op)

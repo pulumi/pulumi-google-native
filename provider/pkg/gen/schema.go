@@ -582,7 +582,15 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		resourceMeta.Create.SDKProperties = bodyBag.properties
 
 		if op, ok := ops[dd.createMethod.Response.Ref]; ok {
-			setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Create.CloudAPIOperation, op)
+			setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Create.CloudAPIOperation, "", op)
+		} else {
+			response := g.rest.Schemas[dd.createMethod.Response.Ref]
+			for propName, prop := range response.Properties {
+				if op, ok := ops[prop.Ref]; ok {
+					setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Create.CloudAPIOperation, propName, op)
+					break
+				}
+			}
 		}
 
 		if dd.updateMethod != nil {
@@ -723,7 +731,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 		if dd.updateMethod.Response != nil && dd.updateMethod.Response.Ref != "" {
 			if op, ok := ops[dd.updateMethod.Response.Ref]; ok {
-				setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Update.CloudAPIOperation, op)
+				setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Update.CloudAPIOperation, "", op)
 			}
 		}
 	}
@@ -737,7 +745,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 		if dd.deleteMethod.Response != nil && dd.deleteMethod.Response.Ref != "" {
 			if op, ok := ops[dd.deleteMethod.Response.Ref]; ok {
-				setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Delete, op)
+				setOperationsBaseURL(resourceMeta.RootURL, &resourceMeta.Delete, "", op)
 			}
 		}
 	}
@@ -819,7 +827,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	return nil
 }
 
-func setOperationsBaseURL(baseURL string, cloudOp *resources.CloudAPIOperation,
+func setOperationsBaseURL(baseURL string, cloudOp *resources.CloudAPIOperation, embeddedOperationFieldName string,
 	op *operation) {
 	if cloudOp.Operations == nil {
 		cloudOp.Operations = &resources.Operations{}
@@ -829,6 +837,7 @@ func setOperationsBaseURL(baseURL string, cloudOp *resources.CloudAPIOperation,
 	} else {
 		cloudOp.Operations.OperationsBaseURL = resources.AssembleURL(baseURL, op.restMethod.Path)
 	}
+	cloudOp.Operations.EmbeddedOperationField = embeddedOperationFieldName
 }
 
 func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentResource) error {
