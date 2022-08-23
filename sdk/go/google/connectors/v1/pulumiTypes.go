@@ -634,7 +634,7 @@ func (o AuthConfigResponseOutput) UserPassword() UserPasswordResponseOutput {
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -655,7 +655,7 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -718,7 +718,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -752,7 +752,7 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -778,7 +778,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -1056,6 +1056,341 @@ func (o ConnectionStatusResponseOutput) State() pulumi.StringOutput {
 // Status provides detailed information for the state.
 func (o ConnectionStatusResponseOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionStatusResponse) string { return v.Status }).(pulumi.StringOutput)
+}
+
+type Destination struct {
+	// For publicly routable host.
+	Host *string `pulumi:"host"`
+	// The port is the target port number that is accepted by the destination.
+	Port *int `pulumi:"port"`
+	// PSC service attachments. Format: projects/*/regions/*/serviceAttachments/*
+	ServiceAttachment *string `pulumi:"serviceAttachment"`
+}
+
+// DestinationInput is an input type that accepts DestinationArgs and DestinationOutput values.
+// You can construct a concrete instance of `DestinationInput` via:
+//
+//	DestinationArgs{...}
+type DestinationInput interface {
+	pulumi.Input
+
+	ToDestinationOutput() DestinationOutput
+	ToDestinationOutputWithContext(context.Context) DestinationOutput
+}
+
+type DestinationArgs struct {
+	// For publicly routable host.
+	Host pulumi.StringPtrInput `pulumi:"host"`
+	// The port is the target port number that is accepted by the destination.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// PSC service attachments. Format: projects/*/regions/*/serviceAttachments/*
+	ServiceAttachment pulumi.StringPtrInput `pulumi:"serviceAttachment"`
+}
+
+func (DestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Destination)(nil)).Elem()
+}
+
+func (i DestinationArgs) ToDestinationOutput() DestinationOutput {
+	return i.ToDestinationOutputWithContext(context.Background())
+}
+
+func (i DestinationArgs) ToDestinationOutputWithContext(ctx context.Context) DestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationOutput)
+}
+
+// DestinationArrayInput is an input type that accepts DestinationArray and DestinationArrayOutput values.
+// You can construct a concrete instance of `DestinationArrayInput` via:
+//
+//	DestinationArray{ DestinationArgs{...} }
+type DestinationArrayInput interface {
+	pulumi.Input
+
+	ToDestinationArrayOutput() DestinationArrayOutput
+	ToDestinationArrayOutputWithContext(context.Context) DestinationArrayOutput
+}
+
+type DestinationArray []DestinationInput
+
+func (DestinationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Destination)(nil)).Elem()
+}
+
+func (i DestinationArray) ToDestinationArrayOutput() DestinationArrayOutput {
+	return i.ToDestinationArrayOutputWithContext(context.Background())
+}
+
+func (i DestinationArray) ToDestinationArrayOutputWithContext(ctx context.Context) DestinationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationArrayOutput)
+}
+
+type DestinationOutput struct{ *pulumi.OutputState }
+
+func (DestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Destination)(nil)).Elem()
+}
+
+func (o DestinationOutput) ToDestinationOutput() DestinationOutput {
+	return o
+}
+
+func (o DestinationOutput) ToDestinationOutputWithContext(ctx context.Context) DestinationOutput {
+	return o
+}
+
+// For publicly routable host.
+func (o DestinationOutput) Host() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Destination) *string { return v.Host }).(pulumi.StringPtrOutput)
+}
+
+// The port is the target port number that is accepted by the destination.
+func (o DestinationOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v Destination) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// PSC service attachments. Format: projects/*/regions/*/serviceAttachments/*
+func (o DestinationOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Destination) *string { return v.ServiceAttachment }).(pulumi.StringPtrOutput)
+}
+
+type DestinationArrayOutput struct{ *pulumi.OutputState }
+
+func (DestinationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]Destination)(nil)).Elem()
+}
+
+func (o DestinationArrayOutput) ToDestinationArrayOutput() DestinationArrayOutput {
+	return o
+}
+
+func (o DestinationArrayOutput) ToDestinationArrayOutputWithContext(ctx context.Context) DestinationArrayOutput {
+	return o
+}
+
+func (o DestinationArrayOutput) Index(i pulumi.IntInput) DestinationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) Destination {
+		return vs[0].([]Destination)[vs[1].(int)]
+	}).(DestinationOutput)
+}
+
+// Define the Connectors target endpoint.
+type DestinationConfig struct {
+	// The destinations for the key.
+	Destinations []Destination `pulumi:"destinations"`
+	// The key is the destination identifier that is supported by the Connector.
+	Key *string `pulumi:"key"`
+}
+
+// DestinationConfigInput is an input type that accepts DestinationConfigArgs and DestinationConfigOutput values.
+// You can construct a concrete instance of `DestinationConfigInput` via:
+//
+//	DestinationConfigArgs{...}
+type DestinationConfigInput interface {
+	pulumi.Input
+
+	ToDestinationConfigOutput() DestinationConfigOutput
+	ToDestinationConfigOutputWithContext(context.Context) DestinationConfigOutput
+}
+
+// Define the Connectors target endpoint.
+type DestinationConfigArgs struct {
+	// The destinations for the key.
+	Destinations DestinationArrayInput `pulumi:"destinations"`
+	// The key is the destination identifier that is supported by the Connector.
+	Key pulumi.StringPtrInput `pulumi:"key"`
+}
+
+func (DestinationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationConfig)(nil)).Elem()
+}
+
+func (i DestinationConfigArgs) ToDestinationConfigOutput() DestinationConfigOutput {
+	return i.ToDestinationConfigOutputWithContext(context.Background())
+}
+
+func (i DestinationConfigArgs) ToDestinationConfigOutputWithContext(ctx context.Context) DestinationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigOutput)
+}
+
+// DestinationConfigArrayInput is an input type that accepts DestinationConfigArray and DestinationConfigArrayOutput values.
+// You can construct a concrete instance of `DestinationConfigArrayInput` via:
+//
+//	DestinationConfigArray{ DestinationConfigArgs{...} }
+type DestinationConfigArrayInput interface {
+	pulumi.Input
+
+	ToDestinationConfigArrayOutput() DestinationConfigArrayOutput
+	ToDestinationConfigArrayOutputWithContext(context.Context) DestinationConfigArrayOutput
+}
+
+type DestinationConfigArray []DestinationConfigInput
+
+func (DestinationConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DestinationConfig)(nil)).Elem()
+}
+
+func (i DestinationConfigArray) ToDestinationConfigArrayOutput() DestinationConfigArrayOutput {
+	return i.ToDestinationConfigArrayOutputWithContext(context.Background())
+}
+
+func (i DestinationConfigArray) ToDestinationConfigArrayOutputWithContext(ctx context.Context) DestinationConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DestinationConfigArrayOutput)
+}
+
+// Define the Connectors target endpoint.
+type DestinationConfigOutput struct{ *pulumi.OutputState }
+
+func (DestinationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationConfig)(nil)).Elem()
+}
+
+func (o DestinationConfigOutput) ToDestinationConfigOutput() DestinationConfigOutput {
+	return o
+}
+
+func (o DestinationConfigOutput) ToDestinationConfigOutputWithContext(ctx context.Context) DestinationConfigOutput {
+	return o
+}
+
+// The destinations for the key.
+func (o DestinationConfigOutput) Destinations() DestinationArrayOutput {
+	return o.ApplyT(func(v DestinationConfig) []Destination { return v.Destinations }).(DestinationArrayOutput)
+}
+
+// The key is the destination identifier that is supported by the Connector.
+func (o DestinationConfigOutput) Key() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *string { return v.Key }).(pulumi.StringPtrOutput)
+}
+
+type DestinationConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (DestinationConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DestinationConfig)(nil)).Elem()
+}
+
+func (o DestinationConfigArrayOutput) ToDestinationConfigArrayOutput() DestinationConfigArrayOutput {
+	return o
+}
+
+func (o DestinationConfigArrayOutput) ToDestinationConfigArrayOutputWithContext(ctx context.Context) DestinationConfigArrayOutput {
+	return o
+}
+
+func (o DestinationConfigArrayOutput) Index(i pulumi.IntInput) DestinationConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DestinationConfig {
+		return vs[0].([]DestinationConfig)[vs[1].(int)]
+	}).(DestinationConfigOutput)
+}
+
+// Define the Connectors target endpoint.
+type DestinationConfigResponse struct {
+	// The destinations for the key.
+	Destinations []DestinationResponse `pulumi:"destinations"`
+	// The key is the destination identifier that is supported by the Connector.
+	Key string `pulumi:"key"`
+}
+
+// Define the Connectors target endpoint.
+type DestinationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (DestinationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationConfigResponse)(nil)).Elem()
+}
+
+func (o DestinationConfigResponseOutput) ToDestinationConfigResponseOutput() DestinationConfigResponseOutput {
+	return o
+}
+
+func (o DestinationConfigResponseOutput) ToDestinationConfigResponseOutputWithContext(ctx context.Context) DestinationConfigResponseOutput {
+	return o
+}
+
+// The destinations for the key.
+func (o DestinationConfigResponseOutput) Destinations() DestinationResponseArrayOutput {
+	return o.ApplyT(func(v DestinationConfigResponse) []DestinationResponse { return v.Destinations }).(DestinationResponseArrayOutput)
+}
+
+// The key is the destination identifier that is supported by the Connector.
+func (o DestinationConfigResponseOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v DestinationConfigResponse) string { return v.Key }).(pulumi.StringOutput)
+}
+
+type DestinationConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DestinationConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DestinationConfigResponse)(nil)).Elem()
+}
+
+func (o DestinationConfigResponseArrayOutput) ToDestinationConfigResponseArrayOutput() DestinationConfigResponseArrayOutput {
+	return o
+}
+
+func (o DestinationConfigResponseArrayOutput) ToDestinationConfigResponseArrayOutputWithContext(ctx context.Context) DestinationConfigResponseArrayOutput {
+	return o
+}
+
+func (o DestinationConfigResponseArrayOutput) Index(i pulumi.IntInput) DestinationConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DestinationConfigResponse {
+		return vs[0].([]DestinationConfigResponse)[vs[1].(int)]
+	}).(DestinationConfigResponseOutput)
+}
+
+type DestinationResponse struct {
+	// For publicly routable host.
+	Host string `pulumi:"host"`
+	// The port is the target port number that is accepted by the destination.
+	Port int `pulumi:"port"`
+	// PSC service attachments. Format: projects/*/regions/*/serviceAttachments/*
+	ServiceAttachment string `pulumi:"serviceAttachment"`
+}
+
+type DestinationResponseOutput struct{ *pulumi.OutputState }
+
+func (DestinationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DestinationResponse)(nil)).Elem()
+}
+
+func (o DestinationResponseOutput) ToDestinationResponseOutput() DestinationResponseOutput {
+	return o
+}
+
+func (o DestinationResponseOutput) ToDestinationResponseOutputWithContext(ctx context.Context) DestinationResponseOutput {
+	return o
+}
+
+// For publicly routable host.
+func (o DestinationResponseOutput) Host() pulumi.StringOutput {
+	return o.ApplyT(func(v DestinationResponse) string { return v.Host }).(pulumi.StringOutput)
+}
+
+// The port is the target port number that is accepted by the destination.
+func (o DestinationResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v DestinationResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// PSC service attachments. Format: projects/*/regions/*/serviceAttachments/*
+func (o DestinationResponseOutput) ServiceAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v DestinationResponse) string { return v.ServiceAttachment }).(pulumi.StringOutput)
+}
+
+type DestinationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (DestinationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DestinationResponse)(nil)).Elem()
+}
+
+func (o DestinationResponseArrayOutput) ToDestinationResponseArrayOutput() DestinationResponseArrayOutput {
+	return o
+}
+
+func (o DestinationResponseArrayOutput) ToDestinationResponseArrayOutputWithContext(ctx context.Context) DestinationResponseArrayOutput {
+	return o
+}
+
+func (o DestinationResponseArrayOutput) Index(i pulumi.IntInput) DestinationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DestinationResponse {
+		return vs[0].([]DestinationResponse)[vs[1].(int)]
+	}).(DestinationResponseOutput)
 }
 
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
@@ -1710,6 +2045,198 @@ func (o LockConfigResponseOutput) Locked() pulumi.BoolOutput {
 // Describes why a connection is locked.
 func (o LockConfigResponseOutput) Reason() pulumi.StringOutput {
 	return o.ApplyT(func(v LockConfigResponse) string { return v.Reason }).(pulumi.StringOutput)
+}
+
+// Configuration for the connection.
+type NodeConfig struct {
+	// Maximum number of nodes in the runtime nodes.
+	MaxNodeCount *int `pulumi:"maxNodeCount"`
+	// Minimum number of nodes in the runtime nodes.
+	MinNodeCount *int `pulumi:"minNodeCount"`
+}
+
+// NodeConfigInput is an input type that accepts NodeConfigArgs and NodeConfigOutput values.
+// You can construct a concrete instance of `NodeConfigInput` via:
+//
+//	NodeConfigArgs{...}
+type NodeConfigInput interface {
+	pulumi.Input
+
+	ToNodeConfigOutput() NodeConfigOutput
+	ToNodeConfigOutputWithContext(context.Context) NodeConfigOutput
+}
+
+// Configuration for the connection.
+type NodeConfigArgs struct {
+	// Maximum number of nodes in the runtime nodes.
+	MaxNodeCount pulumi.IntPtrInput `pulumi:"maxNodeCount"`
+	// Minimum number of nodes in the runtime nodes.
+	MinNodeCount pulumi.IntPtrInput `pulumi:"minNodeCount"`
+}
+
+func (NodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeConfig)(nil)).Elem()
+}
+
+func (i NodeConfigArgs) ToNodeConfigOutput() NodeConfigOutput {
+	return i.ToNodeConfigOutputWithContext(context.Background())
+}
+
+func (i NodeConfigArgs) ToNodeConfigOutputWithContext(ctx context.Context) NodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigOutput)
+}
+
+func (i NodeConfigArgs) ToNodeConfigPtrOutput() NodeConfigPtrOutput {
+	return i.ToNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodeConfigArgs) ToNodeConfigPtrOutputWithContext(ctx context.Context) NodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigOutput).ToNodeConfigPtrOutputWithContext(ctx)
+}
+
+// NodeConfigPtrInput is an input type that accepts NodeConfigArgs, NodeConfigPtr and NodeConfigPtrOutput values.
+// You can construct a concrete instance of `NodeConfigPtrInput` via:
+//
+//	        NodeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodeConfigPtrOutput() NodeConfigPtrOutput
+	ToNodeConfigPtrOutputWithContext(context.Context) NodeConfigPtrOutput
+}
+
+type nodeConfigPtrType NodeConfigArgs
+
+func NodeConfigPtr(v *NodeConfigArgs) NodeConfigPtrInput {
+	return (*nodeConfigPtrType)(v)
+}
+
+func (*nodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeConfig)(nil)).Elem()
+}
+
+func (i *nodeConfigPtrType) ToNodeConfigPtrOutput() NodeConfigPtrOutput {
+	return i.ToNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodeConfigPtrType) ToNodeConfigPtrOutputWithContext(ctx context.Context) NodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodeConfigPtrOutput)
+}
+
+// Configuration for the connection.
+type NodeConfigOutput struct{ *pulumi.OutputState }
+
+func (NodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeConfig)(nil)).Elem()
+}
+
+func (o NodeConfigOutput) ToNodeConfigOutput() NodeConfigOutput {
+	return o
+}
+
+func (o NodeConfigOutput) ToNodeConfigOutputWithContext(ctx context.Context) NodeConfigOutput {
+	return o
+}
+
+func (o NodeConfigOutput) ToNodeConfigPtrOutput() NodeConfigPtrOutput {
+	return o.ToNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodeConfigOutput) ToNodeConfigPtrOutputWithContext(ctx context.Context) NodeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodeConfig) *NodeConfig {
+		return &v
+	}).(NodeConfigPtrOutput)
+}
+
+// Maximum number of nodes in the runtime nodes.
+func (o NodeConfigOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *int { return v.MaxNodeCount }).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of nodes in the runtime nodes.
+func (o NodeConfigOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *int { return v.MinNodeCount }).(pulumi.IntPtrOutput)
+}
+
+type NodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodeConfig)(nil)).Elem()
+}
+
+func (o NodeConfigPtrOutput) ToNodeConfigPtrOutput() NodeConfigPtrOutput {
+	return o
+}
+
+func (o NodeConfigPtrOutput) ToNodeConfigPtrOutputWithContext(ctx context.Context) NodeConfigPtrOutput {
+	return o
+}
+
+func (o NodeConfigPtrOutput) Elem() NodeConfigOutput {
+	return o.ApplyT(func(v *NodeConfig) NodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodeConfig
+		return ret
+	}).(NodeConfigOutput)
+}
+
+// Maximum number of nodes in the runtime nodes.
+func (o NodeConfigPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Minimum number of nodes in the runtime nodes.
+func (o NodeConfigPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Configuration for the connection.
+type NodeConfigResponse struct {
+	// Maximum number of nodes in the runtime nodes.
+	MaxNodeCount int `pulumi:"maxNodeCount"`
+	// Minimum number of nodes in the runtime nodes.
+	MinNodeCount int `pulumi:"minNodeCount"`
+}
+
+// Configuration for the connection.
+type NodeConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (NodeConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodeConfigResponse)(nil)).Elem()
+}
+
+func (o NodeConfigResponseOutput) ToNodeConfigResponseOutput() NodeConfigResponseOutput {
+	return o
+}
+
+func (o NodeConfigResponseOutput) ToNodeConfigResponseOutputWithContext(ctx context.Context) NodeConfigResponseOutput {
+	return o
+}
+
+// Maximum number of nodes in the runtime nodes.
+func (o NodeConfigResponseOutput) MaxNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeConfigResponse) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+}
+
+// Minimum number of nodes in the runtime nodes.
+func (o NodeConfigResponseOutput) MinNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v NodeConfigResponse) int { return v.MinNodeCount }).(pulumi.IntOutput)
 }
 
 // Parameters to support Oauth 2.0 Client Credentials Grant Authentication. See https://tools.ietf.org/html/rfc6749#section-1.3.4 for more details.
@@ -2735,12 +3262,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableInput)(nil)).Elem(), ConfigVariableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ConfigVariableArrayInput)(nil)).Elem(), ConfigVariableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationInput)(nil)).Elem(), DestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationArrayInput)(nil)).Elem(), DestinationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigInput)(nil)).Elem(), DestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigArrayInput)(nil)).Elem(), DestinationConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JwtClaimsInput)(nil)).Elem(), JwtClaimsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JwtClaimsPtrInput)(nil)).Elem(), JwtClaimsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LockConfigInput)(nil)).Elem(), LockConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LockConfigPtrInput)(nil)).Elem(), LockConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigInput)(nil)).Elem(), NodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodeConfigPtrInput)(nil)).Elem(), NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2ClientCredentialsInput)(nil)).Elem(), Oauth2ClientCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2ClientCredentialsPtrInput)(nil)).Elem(), Oauth2ClientCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Oauth2JwtBearerInput)(nil)).Elem(), Oauth2JwtBearerArgs{})
@@ -2771,6 +3304,14 @@ func init() {
 	pulumi.RegisterOutputType(ConfigVariableResponseOutput{})
 	pulumi.RegisterOutputType(ConfigVariableResponseArrayOutput{})
 	pulumi.RegisterOutputType(ConnectionStatusResponseOutput{})
+	pulumi.RegisterOutputType(DestinationOutput{})
+	pulumi.RegisterOutputType(DestinationArrayOutput{})
+	pulumi.RegisterOutputType(DestinationConfigOutput{})
+	pulumi.RegisterOutputType(DestinationConfigArrayOutput{})
+	pulumi.RegisterOutputType(DestinationConfigResponseOutput{})
+	pulumi.RegisterOutputType(DestinationConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(DestinationResponseOutput{})
+	pulumi.RegisterOutputType(DestinationResponseArrayOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
@@ -2780,6 +3321,9 @@ func init() {
 	pulumi.RegisterOutputType(LockConfigOutput{})
 	pulumi.RegisterOutputType(LockConfigPtrOutput{})
 	pulumi.RegisterOutputType(LockConfigResponseOutput{})
+	pulumi.RegisterOutputType(NodeConfigOutput{})
+	pulumi.RegisterOutputType(NodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodeConfigResponseOutput{})
 	pulumi.RegisterOutputType(Oauth2ClientCredentialsOutput{})
 	pulumi.RegisterOutputType(Oauth2ClientCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(Oauth2ClientCredentialsResponseOutput{})

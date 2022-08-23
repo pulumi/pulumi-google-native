@@ -22,12 +22,14 @@ type Connection struct {
 	ConfigVariables ConfigVariableResponseArrayOutput `pulumi:"configVariables"`
 	// Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
 	ConnectionId pulumi.StringOutput `pulumi:"connectionId"`
-	// Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+	// Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
 	ConnectorVersion pulumi.StringOutput `pulumi:"connectorVersion"`
 	// Created time.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Description of the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
+	// Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+	DestinationConfigs DestinationConfigResponseArrayOutput `pulumi:"destinationConfigs"`
 	// GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
 	EnvoyImageLocation pulumi.StringOutput `pulumi:"envoyImageLocation"`
 	// GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
@@ -38,8 +40,10 @@ type Connection struct {
 	// Optional. Configuration that indicates whether or not the Connection can be edited.
 	LockConfig LockConfigResponseOutput `pulumi:"lockConfig"`
 	// Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
-	Name    pulumi.StringOutput `pulumi:"name"`
-	Project pulumi.StringOutput `pulumi:"project"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. Configuration for the connection.
+	NodeConfig NodeConfigResponseOutput `pulumi:"nodeConfig"`
+	Project    pulumi.StringOutput      `pulumi:"project"`
 	// Optional. Service account needed for runtime plane to access GCP resources.
 	ServiceAccount pulumi.StringOutput `pulumi:"serviceAccount"`
 	// The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address. e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
@@ -109,15 +113,19 @@ type connectionArgs struct {
 	ConfigVariables []ConfigVariable `pulumi:"configVariables"`
 	// Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
 	ConnectionId string `pulumi:"connectionId"`
-	// Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+	// Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
 	ConnectorVersion string `pulumi:"connectorVersion"`
 	// Optional. Description of the resource.
 	Description *string `pulumi:"description"`
+	// Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+	DestinationConfigs []DestinationConfig `pulumi:"destinationConfigs"`
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// Optional. Configuration that indicates whether or not the Connection can be edited.
 	LockConfig *LockConfig `pulumi:"lockConfig"`
+	// Optional. Configuration for the connection.
+	NodeConfig *NodeConfig `pulumi:"nodeConfig"`
 	Project    *string     `pulumi:"project"`
 	// Optional. Service account needed for runtime plane to access GCP resources.
 	ServiceAccount *string `pulumi:"serviceAccount"`
@@ -133,15 +141,19 @@ type ConnectionArgs struct {
 	ConfigVariables ConfigVariableArrayInput
 	// Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
 	ConnectionId pulumi.StringInput
-	// Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+	// Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
 	ConnectorVersion pulumi.StringInput
 	// Optional. Description of the resource.
 	Description pulumi.StringPtrInput
+	// Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+	DestinationConfigs DestinationConfigArrayInput
 	// Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// Optional. Configuration that indicates whether or not the Connection can be edited.
 	LockConfig LockConfigPtrInput
+	// Optional. Configuration for the connection.
+	NodeConfig NodeConfigPtrInput
 	Project    pulumi.StringPtrInput
 	// Optional. Service account needed for runtime plane to access GCP resources.
 	ServiceAccount pulumi.StringPtrInput
@@ -201,7 +213,7 @@ func (o ConnectionOutput) ConnectionId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectionId }).(pulumi.StringOutput)
 }
 
-// Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+// Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
 func (o ConnectionOutput) ConnectorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.ConnectorVersion }).(pulumi.StringOutput)
 }
@@ -214,6 +226,11 @@ func (o ConnectionOutput) CreateTime() pulumi.StringOutput {
 // Optional. Description of the resource.
 func (o ConnectionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+func (o ConnectionOutput) DestinationConfigs() DestinationConfigResponseArrayOutput {
+	return o.ApplyT(func(v *Connection) DestinationConfigResponseArrayOutput { return v.DestinationConfigs }).(DestinationConfigResponseArrayOutput)
 }
 
 // GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
@@ -243,6 +260,11 @@ func (o ConnectionOutput) LockConfig() LockConfigResponseOutput {
 // Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
 func (o ConnectionOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Configuration for the connection.
+func (o ConnectionOutput) NodeConfig() NodeConfigResponseOutput {
+	return o.ApplyT(func(v *Connection) NodeConfigResponseOutput { return v.NodeConfig }).(NodeConfigResponseOutput)
 }
 
 func (o ConnectionOutput) Project() pulumi.StringOutput {

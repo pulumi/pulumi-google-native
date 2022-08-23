@@ -89,6 +89,10 @@ export class ApiProduct extends pulumi.CustomResource {
      */
     public readonly quota!: pulumi.Output<string>;
     /**
+     * Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
+     */
+    public readonly quotaCounterScope!: pulumi.Output<string>;
+    /**
      * Time interval over which the number of request messages is calculated.
      */
     public readonly quotaInterval!: pulumi.Output<string>;
@@ -129,6 +133,7 @@ export class ApiProduct extends pulumi.CustomResource {
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["proxies"] = args ? args.proxies : undefined;
             resourceInputs["quota"] = args ? args.quota : undefined;
+            resourceInputs["quotaCounterScope"] = args ? args.quotaCounterScope : undefined;
             resourceInputs["quotaInterval"] = args ? args.quotaInterval : undefined;
             resourceInputs["quotaTimeUnit"] = args ? args.quotaTimeUnit : undefined;
             resourceInputs["scopes"] = args ? args.scopes : undefined;
@@ -147,6 +152,7 @@ export class ApiProduct extends pulumi.CustomResource {
             resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["proxies"] = undefined /*out*/;
             resourceInputs["quota"] = undefined /*out*/;
+            resourceInputs["quotaCounterScope"] = undefined /*out*/;
             resourceInputs["quotaInterval"] = undefined /*out*/;
             resourceInputs["quotaTimeUnit"] = undefined /*out*/;
             resourceInputs["scopes"] = undefined /*out*/;
@@ -215,6 +221,10 @@ export interface ApiProductArgs {
      * Number of request messages permitted per app by this API product for the specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota` of 50, for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50 requests are allowed every 12 hours.
      */
     quota?: pulumi.Input<string>;
+    /**
+     * Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
+     */
+    quotaCounterScope?: pulumi.Input<enums.apigee.v1.ApiProductQuotaCounterScope>;
     /**
      * Time interval over which the number of request messages is calculated.
      */

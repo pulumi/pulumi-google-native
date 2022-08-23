@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
+    /// HTTPGetAction describes an action based on HTTP Get requests.
     /// </summary>
     public sealed class HTTPGetActionArgs : global::Pulumi.ResourceArgs
     {

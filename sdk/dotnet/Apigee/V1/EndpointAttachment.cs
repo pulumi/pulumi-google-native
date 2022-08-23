@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public partial class EndpointAttachment : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// State of the endpoint attachment connection to the service attachment.
+        /// </summary>
+        [Output("connectionState")]
+        public Output<string> ConnectionState { get; private set; } = null!;
+
+        /// <summary>
         /// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
         /// </summary>
         [Output("endpointAttachmentId")]

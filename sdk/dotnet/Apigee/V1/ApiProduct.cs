@@ -97,6 +97,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         public Output<string> Quota { get; private set; } = null!;
 
         /// <summary>
+        /// Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
+        /// </summary>
+        [Output("quotaCounterScope")]
+        public Output<string> QuotaCounterScope { get; private set; } = null!;
+
+        /// <summary>
         /// Time interval over which the number of request messages is calculated.
         /// </summary>
         [Output("quotaInterval")]
@@ -267,6 +273,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Input("quota")]
         public Input<string>? Quota { get; set; }
+
+        /// <summary>
+        /// Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
+        /// </summary>
+        [Input("quotaCounterScope")]
+        public Input<Pulumi.GoogleNative.Apigee.V1.ApiProductQuotaCounterScope>? QuotaCounterScope { get; set; }
 
         /// <summary>
         /// Time interval over which the number of request messages is calculated.

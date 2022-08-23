@@ -2876,6 +2876,205 @@ func (o GoogleCloudApigeeV1MonetizationConfigResponseOutput) Enabled() pulumi.Bo
 	return o.ApplyT(func(v GoogleCloudApigeeV1MonetizationConfigResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
+// NodeConfig for setting the min/max number of nodes associated with the environment.
+type GoogleCloudApigeeV1NodeConfig struct {
+	// Optional. The maximum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended maximum number of nodes for that gateway.
+	MaxNodeCount *string `pulumi:"maxNodeCount"`
+	// Optional. The minimum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended minimum number of nodes for that gateway.
+	MinNodeCount *string `pulumi:"minNodeCount"`
+}
+
+// GoogleCloudApigeeV1NodeConfigInput is an input type that accepts GoogleCloudApigeeV1NodeConfigArgs and GoogleCloudApigeeV1NodeConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1NodeConfigInput` via:
+//
+//	GoogleCloudApigeeV1NodeConfigArgs{...}
+type GoogleCloudApigeeV1NodeConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1NodeConfigOutput() GoogleCloudApigeeV1NodeConfigOutput
+	ToGoogleCloudApigeeV1NodeConfigOutputWithContext(context.Context) GoogleCloudApigeeV1NodeConfigOutput
+}
+
+// NodeConfig for setting the min/max number of nodes associated with the environment.
+type GoogleCloudApigeeV1NodeConfigArgs struct {
+	// Optional. The maximum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended maximum number of nodes for that gateway.
+	MaxNodeCount pulumi.StringPtrInput `pulumi:"maxNodeCount"`
+	// Optional. The minimum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended minimum number of nodes for that gateway.
+	MinNodeCount pulumi.StringPtrInput `pulumi:"minNodeCount"`
+}
+
+func (GoogleCloudApigeeV1NodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1NodeConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudApigeeV1NodeConfigArgs) ToGoogleCloudApigeeV1NodeConfigOutput() GoogleCloudApigeeV1NodeConfigOutput {
+	return i.ToGoogleCloudApigeeV1NodeConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1NodeConfigArgs) ToGoogleCloudApigeeV1NodeConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1NodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1NodeConfigOutput)
+}
+
+func (i GoogleCloudApigeeV1NodeConfigArgs) ToGoogleCloudApigeeV1NodeConfigPtrOutput() GoogleCloudApigeeV1NodeConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1NodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudApigeeV1NodeConfigArgs) ToGoogleCloudApigeeV1NodeConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1NodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1NodeConfigOutput).ToGoogleCloudApigeeV1NodeConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudApigeeV1NodeConfigPtrInput is an input type that accepts GoogleCloudApigeeV1NodeConfigArgs, GoogleCloudApigeeV1NodeConfigPtr and GoogleCloudApigeeV1NodeConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudApigeeV1NodeConfigPtrInput` via:
+//
+//	        GoogleCloudApigeeV1NodeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudApigeeV1NodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudApigeeV1NodeConfigPtrOutput() GoogleCloudApigeeV1NodeConfigPtrOutput
+	ToGoogleCloudApigeeV1NodeConfigPtrOutputWithContext(context.Context) GoogleCloudApigeeV1NodeConfigPtrOutput
+}
+
+type googleCloudApigeeV1NodeConfigPtrType GoogleCloudApigeeV1NodeConfigArgs
+
+func GoogleCloudApigeeV1NodeConfigPtr(v *GoogleCloudApigeeV1NodeConfigArgs) GoogleCloudApigeeV1NodeConfigPtrInput {
+	return (*googleCloudApigeeV1NodeConfigPtrType)(v)
+}
+
+func (*googleCloudApigeeV1NodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1NodeConfig)(nil)).Elem()
+}
+
+func (i *googleCloudApigeeV1NodeConfigPtrType) ToGoogleCloudApigeeV1NodeConfigPtrOutput() GoogleCloudApigeeV1NodeConfigPtrOutput {
+	return i.ToGoogleCloudApigeeV1NodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudApigeeV1NodeConfigPtrType) ToGoogleCloudApigeeV1NodeConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1NodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudApigeeV1NodeConfigPtrOutput)
+}
+
+// NodeConfig for setting the min/max number of nodes associated with the environment.
+type GoogleCloudApigeeV1NodeConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1NodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1NodeConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1NodeConfigOutput) ToGoogleCloudApigeeV1NodeConfigOutput() GoogleCloudApigeeV1NodeConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1NodeConfigOutput) ToGoogleCloudApigeeV1NodeConfigOutputWithContext(ctx context.Context) GoogleCloudApigeeV1NodeConfigOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1NodeConfigOutput) ToGoogleCloudApigeeV1NodeConfigPtrOutput() GoogleCloudApigeeV1NodeConfigPtrOutput {
+	return o.ToGoogleCloudApigeeV1NodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudApigeeV1NodeConfigOutput) ToGoogleCloudApigeeV1NodeConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1NodeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudApigeeV1NodeConfig) *GoogleCloudApigeeV1NodeConfig {
+		return &v
+	}).(GoogleCloudApigeeV1NodeConfigPtrOutput)
+}
+
+// Optional. The maximum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended maximum number of nodes for that gateway.
+func (o GoogleCloudApigeeV1NodeConfigOutput) MaxNodeCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1NodeConfig) *string { return v.MaxNodeCount }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The minimum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended minimum number of nodes for that gateway.
+func (o GoogleCloudApigeeV1NodeConfigOutput) MinNodeCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1NodeConfig) *string { return v.MinNodeCount }).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudApigeeV1NodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1NodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudApigeeV1NodeConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1NodeConfigPtrOutput) ToGoogleCloudApigeeV1NodeConfigPtrOutput() GoogleCloudApigeeV1NodeConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1NodeConfigPtrOutput) ToGoogleCloudApigeeV1NodeConfigPtrOutputWithContext(ctx context.Context) GoogleCloudApigeeV1NodeConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1NodeConfigPtrOutput) Elem() GoogleCloudApigeeV1NodeConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1NodeConfig) GoogleCloudApigeeV1NodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudApigeeV1NodeConfig
+		return ret
+	}).(GoogleCloudApigeeV1NodeConfigOutput)
+}
+
+// Optional. The maximum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended maximum number of nodes for that gateway.
+func (o GoogleCloudApigeeV1NodeConfigPtrOutput) MaxNodeCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1NodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxNodeCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The minimum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended minimum number of nodes for that gateway.
+func (o GoogleCloudApigeeV1NodeConfigPtrOutput) MinNodeCount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudApigeeV1NodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinNodeCount
+	}).(pulumi.StringPtrOutput)
+}
+
+// NodeConfig for setting the min/max number of nodes associated with the environment.
+type GoogleCloudApigeeV1NodeConfigResponse struct {
+	// The current total number of gateway nodes that each environment currently has across all instances.
+	CurrentAggregateNodeCount string `pulumi:"currentAggregateNodeCount"`
+	// Optional. The maximum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended maximum number of nodes for that gateway.
+	MaxNodeCount string `pulumi:"maxNodeCount"`
+	// Optional. The minimum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended minimum number of nodes for that gateway.
+	MinNodeCount string `pulumi:"minNodeCount"`
+}
+
+// NodeConfig for setting the min/max number of nodes associated with the environment.
+type GoogleCloudApigeeV1NodeConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudApigeeV1NodeConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudApigeeV1NodeConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudApigeeV1NodeConfigResponseOutput) ToGoogleCloudApigeeV1NodeConfigResponseOutput() GoogleCloudApigeeV1NodeConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudApigeeV1NodeConfigResponseOutput) ToGoogleCloudApigeeV1NodeConfigResponseOutputWithContext(ctx context.Context) GoogleCloudApigeeV1NodeConfigResponseOutput {
+	return o
+}
+
+// The current total number of gateway nodes that each environment currently has across all instances.
+func (o GoogleCloudApigeeV1NodeConfigResponseOutput) CurrentAggregateNodeCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1NodeConfigResponse) string { return v.CurrentAggregateNodeCount }).(pulumi.StringOutput)
+}
+
+// Optional. The maximum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended maximum number of nodes for that gateway.
+func (o GoogleCloudApigeeV1NodeConfigResponseOutput) MaxNodeCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1NodeConfigResponse) string { return v.MaxNodeCount }).(pulumi.StringOutput)
+}
+
+// Optional. The minimum total number of gateway nodes that the is reserved for all instances that has the specified environment. If not specified, the default is determined by the recommended minimum number of nodes for that gateway.
+func (o GoogleCloudApigeeV1NodeConfigResponseOutput) MinNodeCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudApigeeV1NodeConfigResponse) string { return v.MinNodeCount }).(pulumi.StringOutput)
+}
+
 // Represents the pairing of REST resource path and the actions (verbs) allowed on the resource path.
 type GoogleCloudApigeeV1Operation struct {
 	// methods refers to the REST verbs as in https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html. When none specified, all verb types are allowed.
@@ -6003,7 +6202,7 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) G
 type GoogleIamV1Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *GoogleTypeExpr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -6024,7 +6223,7 @@ type GoogleIamV1BindingInput interface {
 type GoogleIamV1BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -6087,7 +6286,7 @@ func (o GoogleIamV1BindingOutput) Condition() GoogleTypeExprPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *GoogleTypeExpr { return v.Condition }).(GoogleTypeExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o GoogleIamV1BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -6121,7 +6320,7 @@ func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1Bindi
 type GoogleIamV1BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition GoogleTypeExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -6147,7 +6346,7 @@ func (o GoogleIamV1BindingResponseOutput) Condition() GoogleTypeExprResponseOutp
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) GoogleTypeExprResponse { return v.Condition }).(GoogleTypeExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o GoogleIamV1BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -6666,6 +6865,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1IntegrationConfigPtrInput)(nil)).Elem(), GoogleCloudApigeeV1IntegrationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1MonetizationConfigInput)(nil)).Elem(), GoogleCloudApigeeV1MonetizationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1MonetizationConfigPtrInput)(nil)).Elem(), GoogleCloudApigeeV1MonetizationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1NodeConfigInput)(nil)).Elem(), GoogleCloudApigeeV1NodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1NodeConfigPtrInput)(nil)).Elem(), GoogleCloudApigeeV1NodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1OperationInput)(nil)).Elem(), GoogleCloudApigeeV1OperationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1OperationArrayInput)(nil)).Elem(), GoogleCloudApigeeV1OperationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudApigeeV1OperationConfigInput)(nil)).Elem(), GoogleCloudApigeeV1OperationConfigArgs{})
@@ -6757,6 +6958,9 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1MonetizationConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1MonetizationConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1MonetizationConfigResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1NodeConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1NodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudApigeeV1NodeConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudApigeeV1OperationConfigOutput{})

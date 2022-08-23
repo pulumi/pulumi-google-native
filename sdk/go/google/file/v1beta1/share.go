@@ -16,7 +16,7 @@ import (
 type Share struct {
 	pulumi.CustomResourceState
 
-	// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+	// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
 	CapacityGb pulumi.StringOutput `pulumi:"capacityGb"`
 	// The time when the share was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -91,7 +91,7 @@ func (ShareState) ElementType() reflect.Type {
 }
 
 type shareArgs struct {
-	// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+	// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
 	CapacityGb *string `pulumi:"capacityGb"`
 	// A description of the share with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description *string `pulumi:"description"`
@@ -110,7 +110,7 @@ type shareArgs struct {
 
 // The set of arguments for constructing a Share resource.
 type ShareArgs struct {
-	// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+	// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
 	CapacityGb pulumi.StringPtrInput
 	// A description of the share with 2048 characters or less. Requests with longer descriptions will be rejected.
 	Description pulumi.StringPtrInput
@@ -164,7 +164,7 @@ func (o ShareOutput) ToShareOutputWithContext(ctx context.Context) ShareOutput {
 	return o
 }
 
-// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
 func (o ShareOutput) CapacityGb() pulumi.StringOutput {
 	return o.ApplyT(func(v *Share) pulumi.StringOutput { return v.CapacityGb }).(pulumi.StringOutput)
 }

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
     public sealed class BinaryAuthorizationResponse
     {
         /// <summary>
-        /// Enable Binary Authorization for this cluster. If enabled, all container images will be validated by Binary Authorization.
+        /// This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored.
         /// </summary>
         public readonly bool Enabled;
         /// <summary>

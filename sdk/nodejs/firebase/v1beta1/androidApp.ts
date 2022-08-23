@@ -58,14 +58,6 @@ export class AndroidApp extends pulumi.CustomResource {
     public readonly packageName!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * The SHA1 certificate hashes for the AndroidApp.
-     */
-    public readonly sha1Hashes!: pulumi.Output<string[]>;
-    /**
-     * The SHA256 certificate hashes for the AndroidApp.
-     */
-    public readonly sha256Hashes!: pulumi.Output<string[]>;
-    /**
      * The lifecycle state of the App.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -86,8 +78,6 @@ export class AndroidApp extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["packageName"] = args ? args.packageName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
-            resourceInputs["sha1Hashes"] = args ? args.sha1Hashes : undefined;
-            resourceInputs["sha256Hashes"] = args ? args.sha256Hashes : undefined;
             resourceInputs["appId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
@@ -97,8 +87,6 @@ export class AndroidApp extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["packageName"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
-            resourceInputs["sha1Hashes"] = undefined /*out*/;
-            resourceInputs["sha256Hashes"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -129,12 +117,4 @@ export interface AndroidAppArgs {
      */
     packageName?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
-    /**
-     * The SHA1 certificate hashes for the AndroidApp.
-     */
-    sha1Hashes?: pulumi.Input<pulumi.Input<string>[]>;
-    /**
-     * The SHA256 certificate hashes for the AndroidApp.
-     */
-    sha256Hashes?: pulumi.Input<pulumi.Input<string>[]>;
 }

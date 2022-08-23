@@ -9,6 +9,7 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
 from . import outputs
+from ._enums import *
 from ._inputs import *
 
 __all__ = ['ApiProductArgs', 'ApiProduct']
@@ -30,6 +31,7 @@ class ApiProductArgs:
                  operation_group: Optional[pulumi.Input['GoogleCloudApigeeV1OperationGroupArgs']] = None,
                  proxies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  quota: Optional[pulumi.Input[str]] = None,
+                 quota_counter_scope: Optional[pulumi.Input['ApiProductQuotaCounterScope']] = None,
                  quota_interval: Optional[pulumi.Input[str]] = None,
                  quota_time_unit: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -48,6 +50,7 @@ class ApiProductArgs:
         :param pulumi.Input['GoogleCloudApigeeV1OperationGroupArgs'] operation_group: Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] proxies: Comma-separated list of API proxy names to which this API product is bound. By specifying API proxies, you can associate resources in the API product with specific API proxies, preventing developers from accessing those resources through other API proxies. Apigee rejects requests to API proxies that are not listed. **Note:** The API proxy names must already exist in the specified environment as they will be validated upon creation.
         :param pulumi.Input[str] quota: Number of request messages permitted per app by this API product for the specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota` of 50, for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50 requests are allowed every 12 hours.
+        :param pulumi.Input['ApiProductQuotaCounterScope'] quota_counter_scope: Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
         :param pulumi.Input[str] quota_interval: Time interval over which the number of request messages is calculated.
         :param pulumi.Input[str] quota_time_unit: Time unit defined for the `quotaInterval`. Valid values include `minute`, `hour`, `day`, or `month`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Comma-separated list of OAuth scopes that are validated at runtime. Apigee validates that the scopes in any access token presented match the scopes defined in the OAuth policy associated with the API product.
@@ -79,6 +82,8 @@ class ApiProductArgs:
             pulumi.set(__self__, "proxies", proxies)
         if quota is not None:
             pulumi.set(__self__, "quota", quota)
+        if quota_counter_scope is not None:
+            pulumi.set(__self__, "quota_counter_scope", quota_counter_scope)
         if quota_interval is not None:
             pulumi.set(__self__, "quota_interval", quota_interval)
         if quota_time_unit is not None:
@@ -252,6 +257,18 @@ class ApiProductArgs:
         pulumi.set(self, "quota", value)
 
     @property
+    @pulumi.getter(name="quotaCounterScope")
+    def quota_counter_scope(self) -> Optional[pulumi.Input['ApiProductQuotaCounterScope']]:
+        """
+        Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
+        """
+        return pulumi.get(self, "quota_counter_scope")
+
+    @quota_counter_scope.setter
+    def quota_counter_scope(self, value: Optional[pulumi.Input['ApiProductQuotaCounterScope']]):
+        pulumi.set(self, "quota_counter_scope", value)
+
+    @property
     @pulumi.getter(name="quotaInterval")
     def quota_interval(self) -> Optional[pulumi.Input[str]]:
         """
@@ -307,6 +324,7 @@ class ApiProduct(pulumi.CustomResource):
                  organization_id: Optional[pulumi.Input[str]] = None,
                  proxies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  quota: Optional[pulumi.Input[str]] = None,
+                 quota_counter_scope: Optional[pulumi.Input['ApiProductQuotaCounterScope']] = None,
                  quota_interval: Optional[pulumi.Input[str]] = None,
                  quota_time_unit: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -329,6 +347,7 @@ class ApiProduct(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1OperationGroupArgs']] operation_group: Configuration used to group Apigee proxies or remote services with resources, method types, and quotas. The resource refers to the resource URI (excluding the base path). With this grouping, the API product creator is able to fine-tune and give precise control over which REST methods have access to specific resources and how many calls can be made (using the `quota` setting). **Note:** The `api_resources` setting cannot be specified for both the API product and operation group; otherwise the call will fail.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] proxies: Comma-separated list of API proxy names to which this API product is bound. By specifying API proxies, you can associate resources in the API product with specific API proxies, preventing developers from accessing those resources through other API proxies. Apigee rejects requests to API proxies that are not listed. **Note:** The API proxy names must already exist in the specified environment as they will be validated upon creation.
         :param pulumi.Input[str] quota: Number of request messages permitted per app by this API product for the specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota` of 50, for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50 requests are allowed every 12 hours.
+        :param pulumi.Input['ApiProductQuotaCounterScope'] quota_counter_scope: Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
         :param pulumi.Input[str] quota_interval: Time interval over which the number of request messages is calculated.
         :param pulumi.Input[str] quota_time_unit: Time unit defined for the `quotaInterval`. Valid values include `minute`, `hour`, `day`, or `month`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] scopes: Comma-separated list of OAuth scopes that are validated at runtime. Apigee validates that the scopes in any access token presented match the scopes defined in the OAuth policy associated with the API product.
@@ -371,6 +390,7 @@ class ApiProduct(pulumi.CustomResource):
                  organization_id: Optional[pulumi.Input[str]] = None,
                  proxies: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  quota: Optional[pulumi.Input[str]] = None,
+                 quota_counter_scope: Optional[pulumi.Input['ApiProductQuotaCounterScope']] = None,
                  quota_interval: Optional[pulumi.Input[str]] = None,
                  quota_time_unit: Optional[pulumi.Input[str]] = None,
                  scopes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -399,6 +419,7 @@ class ApiProduct(pulumi.CustomResource):
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["proxies"] = proxies
             __props__.__dict__["quota"] = quota
+            __props__.__dict__["quota_counter_scope"] = quota_counter_scope
             __props__.__dict__["quota_interval"] = quota_interval
             __props__.__dict__["quota_time_unit"] = quota_time_unit
             __props__.__dict__["scopes"] = scopes
@@ -440,6 +461,7 @@ class ApiProduct(pulumi.CustomResource):
         __props__.__dict__["organization_id"] = None
         __props__.__dict__["proxies"] = None
         __props__.__dict__["quota"] = None
+        __props__.__dict__["quota_counter_scope"] = None
         __props__.__dict__["quota_interval"] = None
         __props__.__dict__["quota_time_unit"] = None
         __props__.__dict__["scopes"] = None
@@ -553,6 +575,14 @@ class ApiProduct(pulumi.CustomResource):
         Number of request messages permitted per app by this API product for the specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota` of 50, for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50 requests are allowed every 12 hours.
         """
         return pulumi.get(self, "quota")
+
+    @property
+    @pulumi.getter(name="quotaCounterScope")
+    def quota_counter_scope(self) -> pulumi.Output[str]:
+        """
+        Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
+        """
+        return pulumi.get(self, "quota_counter_scope")
 
     @property
     @pulumi.getter(name="quotaInterval")

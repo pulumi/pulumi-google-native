@@ -41,11 +41,11 @@ type LookupBackupResult struct {
 	Name string `pulumi:"name"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
-	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+	// Name of the file share in the source Filestore instance that the backup is created from.
 	SourceFileShare string `pulumi:"sourceFileShare"`
-	// The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+	// The resource name of the source Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
 	SourceInstance string `pulumi:"sourceInstance"`
-	// The service tier of the source Cloud Filestore instance that this backup is created from.
+	// The service tier of the source Filestore instance that this backup is created from.
 	SourceInstanceTier string `pulumi:"sourceInstanceTier"`
 	// The backup state.
 	State string `pulumi:"state"`
@@ -125,17 +125,17 @@ func (o LookupBackupResultOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupBackupResult) bool { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
-// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+// Name of the file share in the source Filestore instance that the backup is created from.
 func (o LookupBackupResultOutput) SourceFileShare() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.SourceFileShare }).(pulumi.StringOutput)
 }
 
-// The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+// The resource name of the source Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
 func (o LookupBackupResultOutput) SourceInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.SourceInstance }).(pulumi.StringOutput)
 }
 
-// The service tier of the source Cloud Filestore instance that this backup is created from.
+// The service tier of the source Filestore instance that this backup is created from.
 func (o LookupBackupResultOutput) SourceInstanceTier() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupResult) string { return v.SourceInstanceTier }).(pulumi.StringOutput)
 }

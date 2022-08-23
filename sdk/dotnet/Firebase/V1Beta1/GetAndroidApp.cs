@@ -82,14 +82,6 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         /// </summary>
         public readonly string Project;
         /// <summary>
-        /// The SHA1 certificate hashes for the AndroidApp.
-        /// </summary>
-        public readonly ImmutableArray<string> Sha1Hashes;
-        /// <summary>
-        /// The SHA256 certificate hashes for the AndroidApp.
-        /// </summary>
-        public readonly ImmutableArray<string> Sha256Hashes;
-        /// <summary>
         /// The lifecycle state of the App.
         /// </summary>
         public readonly string State;
@@ -108,10 +100,6 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
 
             string project,
 
-            ImmutableArray<string> sha1Hashes,
-
-            ImmutableArray<string> sha256Hashes,
-
             string state)
         {
             ApiKeyId = apiKeyId;
@@ -120,8 +108,6 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
             Name = name;
             PackageName = packageName;
             Project = project;
-            Sha1Hashes = sha1Hashes;
-            Sha256Hashes = sha256Hashes;
             State = state;
         }
     }

@@ -6,8 +6,6 @@ from enum import Enum
 
 __all__ = [
     'EntryType',
-    'GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType',
-    'GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType',
     'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType',
     'GoogleCloudDatacatalogV1DatabaseTableSpecType',
     'GoogleCloudDatacatalogV1RoutineSpecArgumentMode',
@@ -67,38 +65,6 @@ class EntryType(str, Enum):
     SERVICE = "SERVICE"
     """
     A service, for example, a Dataproc Metastore service.
-    """
-
-
-class GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType(str, Enum):
-    """
-    The type of the BigQuery connection.
-    """
-    CONNECTION_TYPE_UNSPECIFIED = "CONNECTION_TYPE_UNSPECIFIED"
-    """
-    Unspecified type.
-    """
-    CLOUD_SQL = "CLOUD_SQL"
-    """
-    Cloud SQL connection.
-    """
-
-
-class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType(str, Enum):
-    """
-    Type of the Cloud SQL database.
-    """
-    DATABASE_TYPE_UNSPECIFIED = "DATABASE_TYPE_UNSPECIFIED"
-    """
-    Unspecified database type.
-    """
-    POSTGRES = "POSTGRES"
-    """
-    Cloud SQL for PostgreSQL.
-    """
-    MYSQL = "MYSQL"
-    """
-    Cloud SQL for MySQL.
     """
 
 

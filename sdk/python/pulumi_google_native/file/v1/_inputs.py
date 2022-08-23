@@ -25,7 +25,7 @@ class FileShareConfigArgs:
                  source_backup: Optional[pulumi.Input[str]] = None):
         """
         File share configuration for the instance.
-        :param pulumi.Input[str] capacity_gb: File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes.
+        :param pulumi.Input[str] capacity_gb: File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
         :param pulumi.Input[str] name: The name of the file share (must be 16 characters or less).
         :param pulumi.Input[Sequence[pulumi.Input['NfsExportOptionsArgs']]] nfs_export_options: Nfs Export Options. There is a limit of 10 export options per file share.
         :param pulumi.Input[str] source_backup: The resource name of the backup, in the format `projects/{project_number}/locations/{location_id}/backups/{backup_id}`, that this file share has been restored from.
@@ -43,7 +43,7 @@ class FileShareConfigArgs:
     @pulumi.getter(name="capacityGb")
     def capacity_gb(self) -> Optional[pulumi.Input[str]]:
         """
-        File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes.
+        File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
         """
         return pulumi.get(self, "capacity_gb")
 
@@ -100,7 +100,7 @@ class NetworkConfigArgs:
         :param pulumi.Input['NetworkConfigConnectMode'] connect_mode: The network connect mode of the Filestore instance. If not provided, the connect mode defaults to DIRECT_PEERING.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkConfigModesItem']]] modes: Internet protocol versions for which the instance has IP addresses assigned. For this version, only MODE_IPV4 is supported.
         :param pulumi.Input[str] network: The name of the Google Compute Engine [VPC network](https://cloud.google.com/vpc/docs/vpc) to which the instance is connected.
-        :param pulumi.Input[str] reserved_ip_range: Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier, a /24 CIDR block for High Scale tier, or a /26 CIDR block for Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29, 192.168.0.0/24 or 192.168.0.0/26, respectively. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+        :param pulumi.Input[str] reserved_ip_range: Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier, a /24 CIDR block for High Scale tier, or a /26 CIDR block for Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29, 192.168.0.0/24 or 192.168.0.0/26, respectively. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Filestore instances in the selected VPC network.
         """
         if connect_mode is not None:
             pulumi.set(__self__, "connect_mode", connect_mode)
@@ -151,7 +151,7 @@ class NetworkConfigArgs:
     @pulumi.getter(name="reservedIpRange")
     def reserved_ip_range(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier, a /24 CIDR block for High Scale tier, or a /26 CIDR block for Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29, 192.168.0.0/24 or 192.168.0.0/26, respectively. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Cloud Filestore instances in the selected VPC network.
+        Optional, reserved_ip_range can have one of the following two types of values. * CIDR range value when using DIRECT_PEERING connect mode. * [Allocated IP address range](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address) when using PRIVATE_SERVICE_ACCESS connect mode. When the name of an allocated IP address range is specified, it must be one of the ranges associated with the private service access connection. When specified as a direct CIDR value, it must be a /29 CIDR block for Basic tier, a /24 CIDR block for High Scale tier, or a /26 CIDR block for Enterprise tier in one of the [internal IP address ranges](https://www.arin.net/reference/research/statistics/address_filters/) that identifies the range of IP addresses reserved for this instance. For example, 10.0.0.0/29, 192.168.0.0/24 or 192.168.0.0/26, respectively. The range you specify can't overlap with either existing subnets or assigned IP address ranges for other Filestore instances in the selected VPC network.
         """
         return pulumi.get(self, "reserved_ip_range")
 

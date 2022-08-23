@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
+    /// TCPSocketAction describes an action based on opening a socket
     /// </summary>
     public sealed class TCPSocketActionArgs : global::Pulumi.ResourceArgs
     {

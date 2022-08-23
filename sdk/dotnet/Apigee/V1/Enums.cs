@@ -8,6 +8,47 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Apigee.V1
 {
     /// <summary>
+    /// Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
+    /// </summary>
+    [EnumType]
+    public readonly struct ApiProductQuotaCounterScope : IEquatable<ApiProductQuotaCounterScope>
+    {
+        private readonly string _value;
+
+        private ApiProductQuotaCounterScope(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// When quota is not explicitly defined for each operation(REST/GraphQL), the limits set at product level will be used as a local counter for quota evaluation by all the operations, independent of proxy association.
+        /// </summary>
+        public static ApiProductQuotaCounterScope QuotaCounterScopeUnspecified { get; } = new ApiProductQuotaCounterScope("QUOTA_COUNTER_SCOPE_UNSPECIFIED");
+        /// <summary>
+        /// When quota is not explicitly defined for each operation(REST/GraphQL), set at product level will be used as a global counter for quota evaluation by all the operations associated with a particular proxy.
+        /// </summary>
+        public static ApiProductQuotaCounterScope Proxy { get; } = new ApiProductQuotaCounterScope("PROXY");
+        /// <summary>
+        /// When quota is not explicitly defined for each operation(REST/GraphQL), the limits set at product level will be used as a local counter for quota evaluation by all the operations, independent of proxy association. This behavior mimics the same as QUOTA_COUNTER_SCOPE_UNSPECIFIED.
+        /// </summary>
+        public static ApiProductQuotaCounterScope Operation { get; } = new ApiProductQuotaCounterScope("OPERATION");
+
+        public static bool operator ==(ApiProductQuotaCounterScope left, ApiProductQuotaCounterScope right) => left.Equals(right);
+        public static bool operator !=(ApiProductQuotaCounterScope left, ApiProductQuotaCounterScope right) => !left.Equals(right);
+
+        public static explicit operator string(ApiProductQuotaCounterScope value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ApiProductQuotaCounterScope other && Equals(other);
+        public bool Equals(ApiProductQuotaCounterScope other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Immutable. The type of data this data collector will collect.
     /// </summary>
     [EnumType]
@@ -314,6 +355,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// Free and limited access to Apigee for evaluation purposes only. only.
         /// </summary>
         public static OrganizationBillingType Evaluation { get; } = new OrganizationBillingType("EVALUATION");
+        /// <summary>
+        /// Access to Apigee using a Pay-As-You-Go plan.
+        /// </summary>
+        public static OrganizationBillingType Payg { get; } = new OrganizationBillingType("PAYG");
 
         public static bool operator ==(OrganizationBillingType left, OrganizationBillingType right) => left.Equals(right);
         public static bool operator !=(OrganizationBillingType left, OrganizationBillingType right) => !left.Equals(right);

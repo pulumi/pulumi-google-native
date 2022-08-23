@@ -33,20 +33,3 @@ export const CertificateScope = {
  * Immutable. The scope of the certificate.
  */
 export type CertificateScope = (typeof CertificateScope)[keyof typeof CertificateScope];
-
-export const ProvisioningIssueReason = {
-    ReasonUnspecified: "REASON_UNSPECIFIED",
-    /**
-     * Certificate provisioning failed due to an issue with one or more of the domains on the certificate. For details of which domains failed, consult the `authorization_attempt_info` field.
-     */
-    AuthorizationIssue: "AUTHORIZATION_ISSUE",
-    /**
-     * Exceeded Certificate Authority quotas or internal rate limits of the system. Provisioning may take longer to complete.
-     */
-    RateLimited: "RATE_LIMITED",
-} as const;
-
-/**
- * Reason for provisioning failures.
- */
-export type ProvisioningIssueReason = (typeof ProvisioningIssueReason)[keyof typeof ProvisioningIssueReason];

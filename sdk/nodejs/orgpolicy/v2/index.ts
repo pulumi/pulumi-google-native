@@ -5,14 +5,20 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export * from "./customConstraint";
 export * from "./folderPolicy";
+export * from "./getCustomConstraint";
 export * from "./getFolderPolicy";
 export * from "./getOrganizationPolicy";
 export * from "./getPolicy";
 export * from "./organizationPolicy";
 export * from "./policy";
 
+// Export enums:
+export * from "../../types/enums/orgpolicy/v2";
+
 // Import resources to register:
+import { CustomConstraint } from "./customConstraint";
 import { FolderPolicy } from "./folderPolicy";
 import { OrganizationPolicy } from "./organizationPolicy";
 import { Policy } from "./policy";
@@ -21,6 +27,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:orgpolicy/v2:CustomConstraint":
+                return new CustomConstraint(name, <any>undefined, { urn })
             case "google-native:orgpolicy/v2:FolderPolicy":
                 return new FolderPolicy(name, <any>undefined, { urn })
             case "google-native:orgpolicy/v2:OrganizationPolicy":

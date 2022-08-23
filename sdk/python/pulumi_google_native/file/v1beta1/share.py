@@ -29,7 +29,7 @@ class ShareArgs:
         """
         The set of arguments for constructing a Share resource.
         :param pulumi.Input[str] share_id: Required. The ID to use for the share. The ID must be unique within the specified instance. This value must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens, and cannot end with a hyphen.
-        :param pulumi.Input[str] capacity_gb: File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+        :param pulumi.Input[str] capacity_gb: File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
         :param pulumi.Input[str] description: A description of the share with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] mount_name: The mount name of the share. Must be 63 characters or less and consist of uppercase or lowercase letters, numbers, and underscores.
@@ -77,7 +77,7 @@ class ShareArgs:
     @pulumi.getter(name="capacityGb")
     def capacity_gb(self) -> Optional[pulumi.Input[str]]:
         """
-        File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+        File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
         """
         return pulumi.get(self, "capacity_gb")
 
@@ -173,7 +173,7 @@ class Share(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] capacity_gb: File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+        :param pulumi.Input[str] capacity_gb: File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
         :param pulumi.Input[str] description: A description of the share with 2048 characters or less. Requests with longer descriptions will be rejected.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user provided metadata.
         :param pulumi.Input[str] mount_name: The mount name of the share. Must be 63 characters or less and consist of uppercase or lowercase letters, numbers, and underscores.
@@ -281,7 +281,7 @@ class Share(pulumi.CustomResource):
     @pulumi.getter(name="capacityGb")
     def capacity_gb(self) -> pulumi.Output[str]:
         """
-        File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+        File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
         """
         return pulumi.get(self, "capacity_gb")
 

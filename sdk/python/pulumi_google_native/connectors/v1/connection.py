@@ -22,21 +22,25 @@ class ConnectionArgs:
                  auth_config: Optional[pulumi.Input['AuthConfigArgs']] = None,
                  config_variables: Optional[pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationConfigArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  lock_config: Optional[pulumi.Input['LockConfigArgs']] = None,
+                 node_config: Optional[pulumi.Input['NodeConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] connection_id: Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
-        :param pulumi.Input[str] connector_version: Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+        :param pulumi.Input[str] connector_version: Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
         :param pulumi.Input['AuthConfigArgs'] auth_config: Optional. Configuration for establishing the connection's authentication with an external system.
         :param pulumi.Input[Sequence[pulumi.Input['ConfigVariableArgs']]] config_variables: Optional. Configuration for configuring the connection with an external system.
         :param pulumi.Input[str] description: Optional. Description of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['DestinationConfigArgs']]] destination_configs: Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input['LockConfigArgs'] lock_config: Optional. Configuration that indicates whether or not the Connection can be edited.
+        :param pulumi.Input['NodeConfigArgs'] node_config: Optional. Configuration for the connection.
         :param pulumi.Input[str] service_account: Optional. Service account needed for runtime plane to access GCP resources.
         :param pulumi.Input[bool] suspended: Optional. Suspended indicates if a user has suspended a connection or not.
         """
@@ -48,12 +52,16 @@ class ConnectionArgs:
             pulumi.set(__self__, "config_variables", config_variables)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if destination_configs is not None:
+            pulumi.set(__self__, "destination_configs", destination_configs)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if lock_config is not None:
             pulumi.set(__self__, "lock_config", lock_config)
+        if node_config is not None:
+            pulumi.set(__self__, "node_config", node_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if service_account is not None:
@@ -77,7 +85,7 @@ class ConnectionArgs:
     @pulumi.getter(name="connectorVersion")
     def connector_version(self) -> pulumi.Input[str]:
         """
-        Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+        Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
         """
         return pulumi.get(self, "connector_version")
 
@@ -122,6 +130,18 @@ class ConnectionArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="destinationConfigs")
+    def destination_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DestinationConfigArgs']]]]:
+        """
+        Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+        """
+        return pulumi.get(self, "destination_configs")
+
+    @destination_configs.setter
+    def destination_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DestinationConfigArgs']]]]):
+        pulumi.set(self, "destination_configs", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -153,6 +173,18 @@ class ConnectionArgs:
     @lock_config.setter
     def lock_config(self, value: Optional[pulumi.Input['LockConfigArgs']]):
         pulumi.set(self, "lock_config", value)
+
+    @property
+    @pulumi.getter(name="nodeConfig")
+    def node_config(self) -> Optional[pulumi.Input['NodeConfigArgs']]:
+        """
+        Optional. Configuration for the connection.
+        """
+        return pulumi.get(self, "node_config")
+
+    @node_config.setter
+    def node_config(self, value: Optional[pulumi.Input['NodeConfigArgs']]):
+        pulumi.set(self, "node_config", value)
 
     @property
     @pulumi.getter
@@ -198,9 +230,11 @@ class Connection(pulumi.CustomResource):
                  connection_id: Optional[pulumi.Input[str]] = None,
                  connector_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  lock_config: Optional[pulumi.Input[pulumi.InputType['LockConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
@@ -214,10 +248,12 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['AuthConfigArgs']] auth_config: Optional. Configuration for establishing the connection's authentication with an external system.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ConfigVariableArgs']]]] config_variables: Optional. Configuration for configuring the connection with an external system.
         :param pulumi.Input[str] connection_id: Required. Identifier to assign to the Connection. Must be unique within scope of the parent resource.
-        :param pulumi.Input[str] connector_version: Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+        :param pulumi.Input[str] connector_version: Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
         :param pulumi.Input[str] description: Optional. Description of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]]] destination_configs: Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
         :param pulumi.Input[pulumi.InputType['LockConfigArgs']] lock_config: Optional. Configuration that indicates whether or not the Connection can be edited.
+        :param pulumi.Input[pulumi.InputType['NodeConfigArgs']] node_config: Optional. Configuration for the connection.
         :param pulumi.Input[str] service_account: Optional. Service account needed for runtime plane to access GCP resources.
         :param pulumi.Input[bool] suspended: Optional. Suspended indicates if a user has suspended a connection or not.
         """
@@ -251,9 +287,11 @@ class Connection(pulumi.CustomResource):
                  connection_id: Optional[pulumi.Input[str]] = None,
                  connector_version: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 destination_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DestinationConfigArgs']]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  lock_config: Optional[pulumi.Input[pulumi.InputType['LockConfigArgs']]] = None,
+                 node_config: Optional[pulumi.Input[pulumi.InputType['NodeConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  service_account: Optional[pulumi.Input[str]] = None,
                  suspended: Optional[pulumi.Input[bool]] = None,
@@ -275,9 +313,11 @@ class Connection(pulumi.CustomResource):
                 raise TypeError("Missing required property 'connector_version'")
             __props__.__dict__["connector_version"] = connector_version
             __props__.__dict__["description"] = description
+            __props__.__dict__["destination_configs"] = destination_configs
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
             __props__.__dict__["lock_config"] = lock_config
+            __props__.__dict__["node_config"] = node_config
             __props__.__dict__["project"] = project
             __props__.__dict__["service_account"] = service_account
             __props__.__dict__["suspended"] = suspended
@@ -318,12 +358,14 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["connector_version"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["description"] = None
+        __props__.__dict__["destination_configs"] = None
         __props__.__dict__["envoy_image_location"] = None
         __props__.__dict__["image_location"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
         __props__.__dict__["lock_config"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["node_config"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["service_account"] = None
         __props__.__dict__["service_directory"] = None
@@ -360,7 +402,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="connectorVersion")
     def connector_version(self) -> pulumi.Output[str]:
         """
-        Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+        Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
         """
         return pulumi.get(self, "connector_version")
 
@@ -379,6 +421,14 @@ class Connection(pulumi.CustomResource):
         Optional. Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="destinationConfigs")
+    def destination_configs(self) -> pulumi.Output[Sequence['outputs.DestinationConfigResponse']]:
+        """
+        Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+        """
+        return pulumi.get(self, "destination_configs")
 
     @property
     @pulumi.getter(name="envoyImageLocation")
@@ -424,6 +474,14 @@ class Connection(pulumi.CustomResource):
         Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeConfig")
+    def node_config(self) -> pulumi.Output['outputs.NodeConfigResponse']:
+        """
+        Optional. Configuration for the connection.
+        """
+        return pulumi.get(self, "node_config")
 
     @property
     @pulumi.getter

@@ -59,6 +59,10 @@ export interface GetEnvironmentResult {
      */
     readonly name: string;
     /**
+     * Optional. NodeConfig of the environment.
+     */
+    readonly nodeConfig: outputs.apigee.v1.GoogleCloudApigeeV1NodeConfigResponse;
+    /**
      * Optional. Key-value pairs that may be used for customizing the environment.
      */
     readonly properties: outputs.apigee.v1.GoogleCloudApigeeV1PropertiesResponse;

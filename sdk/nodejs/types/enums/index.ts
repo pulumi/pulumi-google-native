@@ -65,6 +65,7 @@ import * as gkebackup from "./gkebackup";
 import * as gkehub from "./gkehub";
 import * as healthcare from "./healthcare";
 import * as iam from "./iam";
+import * as identitytoolkit from "./identitytoolkit";
 import * as ids from "./ids";
 import * as jobs from "./jobs";
 import * as logging from "./logging";
@@ -77,6 +78,7 @@ import * as networkmanagement from "./networkmanagement";
 import * as networksecurity from "./networksecurity";
 import * as networkservices from "./networkservices";
 import * as notebooks from "./notebooks";
+import * as orgpolicy from "./orgpolicy";
 import * as osconfig from "./osconfig";
 import * as policysimulator from "./policysimulator";
 import * as privateca from "./privateca";
@@ -167,6 +169,7 @@ export {
     gkehub,
     healthcare,
     iam,
+    identitytoolkit,
     ids,
     jobs,
     logging,
@@ -179,6 +182,7 @@ export {
     networksecurity,
     networkservices,
     notebooks,
+    orgpolicy,
     osconfig,
     policysimulator,
     privateca,

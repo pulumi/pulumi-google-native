@@ -162,6 +162,7 @@ class EndpointAttachment(pulumi.CustomResource):
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
             __props__.__dict__["service_attachment"] = service_attachment
+            __props__.__dict__["connection_state"] = None
             __props__.__dict__["host"] = None
             __props__.__dict__["state"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["organization_id"])
@@ -188,6 +189,7 @@ class EndpointAttachment(pulumi.CustomResource):
 
         __props__ = EndpointAttachmentArgs.__new__(EndpointAttachmentArgs)
 
+        __props__.__dict__["connection_state"] = None
         __props__.__dict__["endpoint_attachment_id"] = None
         __props__.__dict__["host"] = None
         __props__.__dict__["location"] = None
@@ -196,6 +198,14 @@ class EndpointAttachment(pulumi.CustomResource):
         __props__.__dict__["service_attachment"] = None
         __props__.__dict__["state"] = None
         return EndpointAttachment(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="connectionState")
+    def connection_state(self) -> pulumi.Output[str]:
+        """
+        State of the endpoint attachment connection to the service attachment.
+        """
+        return pulumi.get(self, "connection_state")
 
     @property
     @pulumi.getter(name="endpointAttachmentId")

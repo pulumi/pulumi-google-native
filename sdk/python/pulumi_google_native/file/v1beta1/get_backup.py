@@ -127,7 +127,7 @@ class GetBackupResult:
     @pulumi.getter(name="sourceFileShare")
     def source_file_share(self) -> str:
         """
-        Name of the file share in the source Cloud Filestore instance that the backup is created from.
+        Name of the file share in the source Filestore instance that the backup is created from.
         """
         return pulumi.get(self, "source_file_share")
 
@@ -135,7 +135,7 @@ class GetBackupResult:
     @pulumi.getter(name="sourceInstance")
     def source_instance(self) -> str:
         """
-        The resource name of the source Cloud Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+        The resource name of the source Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
         """
         return pulumi.get(self, "source_instance")
 
@@ -143,7 +143,7 @@ class GetBackupResult:
     @pulumi.getter(name="sourceInstanceTier")
     def source_instance_tier(self) -> str:
         """
-        The service tier of the source Cloud Filestore instance that this backup is created from.
+        The service tier of the source Filestore instance that this backup is created from.
         """
         return pulumi.get(self, "source_instance_tier")
 

@@ -63,6 +63,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Optional. NodeConfig of the environment.
+        /// </summary>
+        [Output("nodeConfig")]
+        public Output<Outputs.GoogleCloudApigeeV1NodeConfigResponse> NodeConfig { get; private set; } = null!;
+
         [Output("organizationId")]
         public Output<string> OrganizationId { get; private set; } = null!;
 
@@ -162,6 +168,12 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Optional. NodeConfig of the environment.
+        /// </summary>
+        [Input("nodeConfig")]
+        public Input<Inputs.GoogleCloudApigeeV1NodeConfigArgs>? NodeConfig { get; set; }
 
         [Input("organizationId", required: true)]
         public Input<string> OrganizationId { get; set; } = null!;

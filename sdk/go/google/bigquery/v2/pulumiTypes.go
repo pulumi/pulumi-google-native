@@ -1440,7 +1440,7 @@ func (o BigtableOptionsResponseOutput) ReadRowkeyAsString() pulumi.BoolOutput {
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -1461,7 +1461,7 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -1524,7 +1524,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -1558,7 +1558,7 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -1584,7 +1584,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -12796,6 +12796,380 @@ func (o SnapshotDefinitionResponseOutput) SnapshotTime() pulumi.StringOutput {
 	return o.ApplyT(func(v SnapshotDefinitionResponse) string { return v.SnapshotTime }).(pulumi.StringOutput)
 }
 
+// Options for a user-defined Spark routine.
+type SparkOptions struct {
+	// Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Fully qualified name of the user-provided Spark connection object. Format: ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"```
+	Connection *string `pulumi:"connection"`
+	// Custom container image for the runtime environment.
+	ContainerImage *string `pulumi:"containerImage"`
+	// Files to be placed in the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	FileUris []string `pulumi:"fileUris"`
+	// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	JarUris []string `pulumi:"jarUris"`
+	// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+	MainFileUri *string `pulumi:"mainFileUri"`
+	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	Properties map[string]string `pulumi:"properties"`
+	// Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	PyFileUris []string `pulumi:"pyFileUris"`
+	// Runtime version. If not specified, the default runtime version is used.
+	RuntimeVersion *string `pulumi:"runtimeVersion"`
+}
+
+// SparkOptionsInput is an input type that accepts SparkOptionsArgs and SparkOptionsOutput values.
+// You can construct a concrete instance of `SparkOptionsInput` via:
+//
+//	SparkOptionsArgs{...}
+type SparkOptionsInput interface {
+	pulumi.Input
+
+	ToSparkOptionsOutput() SparkOptionsOutput
+	ToSparkOptionsOutputWithContext(context.Context) SparkOptionsOutput
+}
+
+// Options for a user-defined Spark routine.
+type SparkOptionsArgs struct {
+	// Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Fully qualified name of the user-provided Spark connection object. Format: ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"```
+	Connection pulumi.StringPtrInput `pulumi:"connection"`
+	// Custom container image for the runtime environment.
+	ContainerImage pulumi.StringPtrInput `pulumi:"containerImage"`
+	// Files to be placed in the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	JarUris pulumi.StringArrayInput `pulumi:"jarUris"`
+	// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+	MainFileUri pulumi.StringPtrInput `pulumi:"mainFileUri"`
+	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	PyFileUris pulumi.StringArrayInput `pulumi:"pyFileUris"`
+	// Runtime version. If not specified, the default runtime version is used.
+	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
+}
+
+func (SparkOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkOptions)(nil)).Elem()
+}
+
+func (i SparkOptionsArgs) ToSparkOptionsOutput() SparkOptionsOutput {
+	return i.ToSparkOptionsOutputWithContext(context.Background())
+}
+
+func (i SparkOptionsArgs) ToSparkOptionsOutputWithContext(ctx context.Context) SparkOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkOptionsOutput)
+}
+
+func (i SparkOptionsArgs) ToSparkOptionsPtrOutput() SparkOptionsPtrOutput {
+	return i.ToSparkOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i SparkOptionsArgs) ToSparkOptionsPtrOutputWithContext(ctx context.Context) SparkOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkOptionsOutput).ToSparkOptionsPtrOutputWithContext(ctx)
+}
+
+// SparkOptionsPtrInput is an input type that accepts SparkOptionsArgs, SparkOptionsPtr and SparkOptionsPtrOutput values.
+// You can construct a concrete instance of `SparkOptionsPtrInput` via:
+//
+//	        SparkOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SparkOptionsPtrInput interface {
+	pulumi.Input
+
+	ToSparkOptionsPtrOutput() SparkOptionsPtrOutput
+	ToSparkOptionsPtrOutputWithContext(context.Context) SparkOptionsPtrOutput
+}
+
+type sparkOptionsPtrType SparkOptionsArgs
+
+func SparkOptionsPtr(v *SparkOptionsArgs) SparkOptionsPtrInput {
+	return (*sparkOptionsPtrType)(v)
+}
+
+func (*sparkOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkOptions)(nil)).Elem()
+}
+
+func (i *sparkOptionsPtrType) ToSparkOptionsPtrOutput() SparkOptionsPtrOutput {
+	return i.ToSparkOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *sparkOptionsPtrType) ToSparkOptionsPtrOutputWithContext(ctx context.Context) SparkOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SparkOptionsPtrOutput)
+}
+
+// Options for a user-defined Spark routine.
+type SparkOptionsOutput struct{ *pulumi.OutputState }
+
+func (SparkOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkOptions)(nil)).Elem()
+}
+
+func (o SparkOptionsOutput) ToSparkOptionsOutput() SparkOptionsOutput {
+	return o
+}
+
+func (o SparkOptionsOutput) ToSparkOptionsOutputWithContext(ctx context.Context) SparkOptionsOutput {
+	return o
+}
+
+func (o SparkOptionsOutput) ToSparkOptionsPtrOutput() SparkOptionsPtrOutput {
+	return o.ToSparkOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o SparkOptionsOutput) ToSparkOptionsPtrOutputWithContext(ctx context.Context) SparkOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SparkOptions) *SparkOptions {
+		return &v
+	}).(SparkOptionsPtrOutput)
+}
+
+// Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkOptions) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Fully qualified name of the user-provided Spark connection object. Format: ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"```
+func (o SparkOptionsOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkOptions) *string { return v.Connection }).(pulumi.StringPtrOutput)
+}
+
+// Custom container image for the runtime environment.
+func (o SparkOptionsOutput) ContainerImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkOptions) *string { return v.ContainerImage }).(pulumi.StringPtrOutput)
+}
+
+// Files to be placed in the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkOptions) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsOutput) JarUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkOptions) []string { return v.JarUris }).(pulumi.StringArrayOutput)
+}
+
+// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+func (o SparkOptionsOutput) MainFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkOptions) *string { return v.MainFileUri }).(pulumi.StringPtrOutput)
+}
+
+// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkOptions) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsOutput) PyFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkOptions) []string { return v.PyFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Runtime version. If not specified, the default runtime version is used.
+func (o SparkOptionsOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SparkOptions) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+type SparkOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (SparkOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SparkOptions)(nil)).Elem()
+}
+
+func (o SparkOptionsPtrOutput) ToSparkOptionsPtrOutput() SparkOptionsPtrOutput {
+	return o
+}
+
+func (o SparkOptionsPtrOutput) ToSparkOptionsPtrOutputWithContext(ctx context.Context) SparkOptionsPtrOutput {
+	return o
+}
+
+func (o SparkOptionsPtrOutput) Elem() SparkOptionsOutput {
+	return o.ApplyT(func(v *SparkOptions) SparkOptions {
+		if v != nil {
+			return *v
+		}
+		var ret SparkOptions
+		return ret
+	}).(SparkOptionsOutput)
+}
+
+// Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Fully qualified name of the user-provided Spark connection object. Format: ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"```
+func (o SparkOptionsPtrOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Connection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom container image for the runtime environment.
+func (o SparkOptionsPtrOutput) ContainerImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerImage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Files to be placed in the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsPtrOutput) JarUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+func (o SparkOptionsPtrOutput) MainFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *SparkOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsPtrOutput) PyFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SparkOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PyFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Runtime version. If not specified, the default runtime version is used.
+func (o SparkOptionsPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SparkOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// Options for a user-defined Spark routine.
+type SparkOptionsResponse struct {
+	// Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Fully qualified name of the user-provided Spark connection object. Format: ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"```
+	Connection string `pulumi:"connection"`
+	// Custom container image for the runtime environment.
+	ContainerImage string `pulumi:"containerImage"`
+	// Files to be placed in the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	FileUris []string `pulumi:"fileUris"`
+	// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	JarUris []string `pulumi:"jarUris"`
+	// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+	MainFileUri string `pulumi:"mainFileUri"`
+	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	Properties map[string]string `pulumi:"properties"`
+	// Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+	PyFileUris []string `pulumi:"pyFileUris"`
+	// Runtime version. If not specified, the default runtime version is used.
+	RuntimeVersion string `pulumi:"runtimeVersion"`
+}
+
+// Options for a user-defined Spark routine.
+type SparkOptionsResponseOutput struct{ *pulumi.OutputState }
+
+func (SparkOptionsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SparkOptionsResponse)(nil)).Elem()
+}
+
+func (o SparkOptionsResponseOutput) ToSparkOptionsResponseOutput() SparkOptionsResponseOutput {
+	return o
+}
+
+func (o SparkOptionsResponseOutput) ToSparkOptionsResponseOutputWithContext(ctx context.Context) SparkOptionsResponseOutput {
+	return o
+}
+
+// Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsResponseOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkOptionsResponse) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Fully qualified name of the user-provided Spark connection object. Format: ```"projects/{project_id}/locations/{location_id}/connections/{connection_id}"```
+func (o SparkOptionsResponseOutput) Connection() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkOptionsResponse) string { return v.Connection }).(pulumi.StringOutput)
+}
+
+// Custom container image for the runtime environment.
+func (o SparkOptionsResponseOutput) ContainerImage() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkOptionsResponse) string { return v.ContainerImage }).(pulumi.StringOutput)
+}
+
+// Files to be placed in the working directory of each executor. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsResponseOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkOptionsResponse) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsResponseOutput) JarUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkOptionsResponse) []string { return v.JarUris }).(pulumi.StringArrayOutput)
+}
+
+// The main file URI of the Spark application. Exactly one of the definition_body field and the main_file_uri field must be set.
+func (o SparkOptionsResponseOutput) MainFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkOptionsResponse) string { return v.MainFileUri }).(pulumi.StringOutput)
+}
+
+// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application. For more information, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v SparkOptionsResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: `.py`, `.egg`, and `.zip`. For more information about Apache Spark, see [Apache Spark](https://spark.apache.org/docs/latest/index.html).
+func (o SparkOptionsResponseOutput) PyFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SparkOptionsResponse) []string { return v.PyFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Runtime version. If not specified, the default runtime version is used.
+func (o SparkOptionsResponseOutput) RuntimeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v SparkOptionsResponse) string { return v.RuntimeVersion }).(pulumi.StringOutput)
+}
+
 // The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
 type StandardSqlDataType struct {
 	// The type of the array's elements, if type_kind = "ARRAY".
@@ -15448,6 +15822,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RemoteFunctionOptionsPtrInput)(nil)).Elem(), RemoteFunctionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineReferenceInput)(nil)).Elem(), RoutineReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineReferencePtrInput)(nil)).Elem(), RoutineReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkOptionsInput)(nil)).Elem(), SparkOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SparkOptionsPtrInput)(nil)).Elem(), SparkOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypeInput)(nil)).Elem(), StandardSqlDataTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlDataTypePtrInput)(nil)).Elem(), StandardSqlDataTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StandardSqlFieldInput)(nil)).Elem(), StandardSqlFieldArgs{})
@@ -15656,6 +16032,9 @@ func init() {
 	pulumi.RegisterOutputType(SearchStatisticsResponseOutput{})
 	pulumi.RegisterOutputType(SessionInfoResponseOutput{})
 	pulumi.RegisterOutputType(SnapshotDefinitionResponseOutput{})
+	pulumi.RegisterOutputType(SparkOptionsOutput{})
+	pulumi.RegisterOutputType(SparkOptionsPtrOutput{})
+	pulumi.RegisterOutputType(SparkOptionsResponseOutput{})
 	pulumi.RegisterOutputType(StandardSqlDataTypeOutput{})
 	pulumi.RegisterOutputType(StandardSqlDataTypePtrOutput{})
 	pulumi.RegisterOutputType(StandardSqlDataTypeResponseOutput{})

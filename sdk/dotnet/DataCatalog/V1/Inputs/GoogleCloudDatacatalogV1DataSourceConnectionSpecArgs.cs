@@ -11,16 +11,10 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Inputs
 {
 
     /// <summary>
-    /// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
+    /// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type. Only one of internal specs can be set at the time, and cannot be changed later.
     /// </summary>
     public sealed class GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// Fields specific to BigQuery connections.
-        /// </summary>
-        [Input("bigqueryConnectionSpec")]
-        public Input<Inputs.GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs>? BigqueryConnectionSpec { get; set; }
-
         public GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs()
         {
         }

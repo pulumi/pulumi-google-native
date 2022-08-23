@@ -90,6 +90,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Optional. NodeConfig of the environment.
+        /// </summary>
+        public readonly Outputs.GoogleCloudApigeeV1NodeConfigResponse NodeConfig;
+        /// <summary>
         /// Optional. Key-value pairs that may be used for customizing the environment.
         /// </summary>
         public readonly Outputs.GoogleCloudApigeeV1PropertiesResponse Properties;
@@ -116,6 +120,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string name,
 
+            Outputs.GoogleCloudApigeeV1NodeConfigResponse nodeConfig,
+
             Outputs.GoogleCloudApigeeV1PropertiesResponse properties,
 
             string state)
@@ -128,6 +134,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
             ForwardProxyUri = forwardProxyUri;
             LastModifiedAt = lastModifiedAt;
             Name = name;
+            NodeConfig = nodeConfig;
             Properties = properties;
             State = state;
         }

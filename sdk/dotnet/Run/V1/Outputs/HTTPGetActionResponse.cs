@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
+    /// HTTPGetAction describes an action based on HTTP Get requests.
     /// </summary>
     [OutputType]
     public sealed class HTTPGetActionResponse

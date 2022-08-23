@@ -3145,7 +3145,7 @@ func (o GoogleCloudRetailV2betaRuleDoNotAssociateActionResponseOutput) Terms() p
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse) []string { return v.Terms }).(pulumi.StringArrayOutput)
 }
 
-// * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided is combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+// * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
 type GoogleCloudRetailV2betaRuleFilterAction struct {
 	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 	Filter *string `pulumi:"filter"`
@@ -3162,7 +3162,7 @@ type GoogleCloudRetailV2betaRuleFilterActionInput interface {
 	ToGoogleCloudRetailV2betaRuleFilterActionOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleFilterActionOutput
 }
 
-// * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided is combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+// * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
 type GoogleCloudRetailV2betaRuleFilterActionArgs struct {
 	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 	Filter pulumi.StringPtrInput `pulumi:"filter"`
@@ -3221,7 +3221,7 @@ func (i *googleCloudRetailV2betaRuleFilterActionPtrType) ToGoogleCloudRetailV2be
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRuleFilterActionPtrOutput)
 }
 
-// * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided is combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+// * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
 type GoogleCloudRetailV2betaRuleFilterActionOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRetailV2betaRuleFilterActionOutput) ElementType() reflect.Type {
@@ -3285,13 +3285,13 @@ func (o GoogleCloudRetailV2betaRuleFilterActionPtrOutput) Filter() pulumi.String
 	}).(pulumi.StringPtrOutput)
 }
 
-// * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided is combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+// * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
 type GoogleCloudRetailV2betaRuleFilterActionResponse struct {
 	// A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
 	Filter string `pulumi:"filter"`
 }
 
-// * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided is combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+// * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
 type GoogleCloudRetailV2betaRuleFilterActionResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRetailV2betaRuleFilterActionResponseOutput) ElementType() reflect.Type {

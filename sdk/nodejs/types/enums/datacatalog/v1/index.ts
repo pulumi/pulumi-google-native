@@ -58,42 +58,6 @@ export const EntryType = {
  */
 export type EntryType = (typeof EntryType)[keyof typeof EntryType];
 
-export const GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType = {
-    /**
-     * Unspecified type.
-     */
-    ConnectionTypeUnspecified: "CONNECTION_TYPE_UNSPECIFIED",
-    /**
-     * Cloud SQL connection.
-     */
-    CloudSql: "CLOUD_SQL",
-} as const;
-
-/**
- * The type of the BigQuery connection.
- */
-export type GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType = (typeof GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType)[keyof typeof GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType];
-
-export const GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType = {
-    /**
-     * Unspecified database type.
-     */
-    DatabaseTypeUnspecified: "DATABASE_TYPE_UNSPECIFIED",
-    /**
-     * Cloud SQL for PostgreSQL.
-     */
-    Postgres: "POSTGRES",
-    /**
-     * Cloud SQL for MySQL.
-     */
-    Mysql: "MYSQL",
-} as const;
-
-/**
- * Type of the Cloud SQL database.
- */
-export type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType = (typeof GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType)[keyof typeof GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType];
-
 export const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecType = {
     /**
      * Unspecified.

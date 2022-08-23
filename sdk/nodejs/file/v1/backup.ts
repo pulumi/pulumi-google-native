@@ -70,15 +70,15 @@ export class Backup extends pulumi.CustomResource {
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
     /**
-     * Name of the file share in the source Cloud Filestore instance that the backup is created from.
+     * Name of the file share in the source Filestore instance that the backup is created from.
      */
     public readonly sourceFileShare!: pulumi.Output<string>;
     /**
-     * The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+     * The resource name of the source Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
      */
     public readonly sourceInstance!: pulumi.Output<string>;
     /**
-     * The service tier of the source Cloud Filestore instance that this backup is created from.
+     * The service tier of the source Filestore instance that this backup is created from.
      */
     public /*out*/ readonly sourceInstanceTier!: pulumi.Output<string>;
     /**
@@ -162,11 +162,11 @@ export interface BackupArgs {
     location?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Name of the file share in the source Cloud Filestore instance that the backup is created from.
+     * Name of the file share in the source Filestore instance that the backup is created from.
      */
     sourceFileShare?: pulumi.Input<string>;
     /**
-     * The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+     * The resource name of the source Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
      */
     sourceInstance?: pulumi.Input<string>;
 }

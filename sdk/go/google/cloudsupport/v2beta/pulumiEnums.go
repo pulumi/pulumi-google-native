@@ -14,7 +14,7 @@ import (
 type CasePriority string
 
 const (
-	// Severity is undefined or has not been set yet.
+	// Priority is undefined or has not been set yet.
 	CasePriorityPriorityUnspecified = CasePriority("PRIORITY_UNSPECIFIED")
 	// Extreme impact on a production service. Service is hard down.
 	CasePriorityP0 = CasePriority("P0")

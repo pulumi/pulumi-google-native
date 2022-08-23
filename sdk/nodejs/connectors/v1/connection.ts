@@ -49,7 +49,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public readonly connectionId!: pulumi.Output<string>;
     /**
-     * Connector version on which the connection is created. The format is: projects/*&#47;locations/global/providers/*&#47;connectors/*&#47;versions/*
+     * Connector version on which the connection is created. The format is: projects/*&#47;locations/*&#47;providers/*&#47;connectors/*&#47;versions/* Only global location is supported for ConnectorVersion resource.
      */
     public readonly connectorVersion!: pulumi.Output<string>;
     /**
@@ -60,6 +60,10 @@ export class Connection extends pulumi.CustomResource {
      * Optional. Description of the resource.
      */
     public readonly description!: pulumi.Output<string>;
+    /**
+     * Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+     */
+    public readonly destinationConfigs!: pulumi.Output<outputs.connectors.v1.DestinationConfigResponse[]>;
     /**
      * GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
      */
@@ -81,6 +85,10 @@ export class Connection extends pulumi.CustomResource {
      * Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. Configuration for the connection.
+     */
+    public readonly nodeConfig!: pulumi.Output<outputs.connectors.v1.NodeConfigResponse>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Optional. Service account needed for runtime plane to access GCP resources.
@@ -125,9 +133,11 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["connectionId"] = args ? args.connectionId : undefined;
             resourceInputs["connectorVersion"] = args ? args.connectorVersion : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["destinationConfigs"] = args ? args.destinationConfigs : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["lockConfig"] = args ? args.lockConfig : undefined;
+            resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["suspended"] = args ? args.suspended : undefined;
@@ -145,12 +155,14 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["connectorVersion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
+            resourceInputs["destinationConfigs"] = undefined /*out*/;
             resourceInputs["envoyImageLocation"] = undefined /*out*/;
             resourceInputs["imageLocation"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
             resourceInputs["lockConfig"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nodeConfig"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
             resourceInputs["serviceDirectory"] = undefined /*out*/;
@@ -182,13 +194,17 @@ export interface ConnectionArgs {
      */
     connectionId: pulumi.Input<string>;
     /**
-     * Connector version on which the connection is created. The format is: projects/*&#47;locations/global/providers/*&#47;connectors/*&#47;versions/*
+     * Connector version on which the connection is created. The format is: projects/*&#47;locations/*&#47;providers/*&#47;connectors/*&#47;versions/* Only global location is supported for ConnectorVersion resource.
      */
     connectorVersion: pulumi.Input<string>;
     /**
      * Optional. Description of the resource.
      */
     description?: pulumi.Input<string>;
+    /**
+     * Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+     */
+    destinationConfigs?: pulumi.Input<pulumi.Input<inputs.connectors.v1.DestinationConfigArgs>[]>;
     /**
      * Optional. Resource labels to represent user-provided metadata. Refer to cloud documentation on labels for more details. https://cloud.google.com/compute/docs/labeling-resources
      */
@@ -198,6 +214,10 @@ export interface ConnectionArgs {
      * Optional. Configuration that indicates whether or not the Connection can be edited.
      */
     lockConfig?: pulumi.Input<inputs.connectors.v1.LockConfigArgs>;
+    /**
+     * Optional. Configuration for the connection.
+     */
+    nodeConfig?: pulumi.Input<inputs.connectors.v1.NodeConfigArgs>;
     project?: pulumi.Input<string>;
     /**
      * Optional. Service account needed for runtime plane to access GCP resources.

@@ -16,7 +16,7 @@ class CasePriority(str, Enum):
     """
     PRIORITY_UNSPECIFIED = "PRIORITY_UNSPECIFIED"
     """
-    Severity is undefined or has not been set yet.
+    Priority is undefined or has not been set yet.
     """
     P0 = "P0"
     """

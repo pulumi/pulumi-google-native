@@ -12,7 +12,7 @@ import (
 
 // State of the latest attempt to authorize a domain for certificate issuance.
 type AuthorizationAttemptInfoResponse struct {
-	// Human readable explanation for reaching the state. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use Reason enum.
+	// Human readable explanation for reaching the state. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use FailureReason enum.
 	Details string `pulumi:"details"`
 	// Domain name of the authorization attempt.
 	Domain string `pulumi:"domain"`
@@ -37,7 +37,7 @@ func (o AuthorizationAttemptInfoResponseOutput) ToAuthorizationAttemptInfoRespon
 	return o
 }
 
-// Human readable explanation for reaching the state. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use Reason enum.
+// Human readable explanation for reaching the state. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use FailureReason enum.
 func (o AuthorizationAttemptInfoResponseOutput) Details() pulumi.StringOutput {
 	return o.ApplyT(func(v AuthorizationAttemptInfoResponse) string { return v.Details }).(pulumi.StringOutput)
 }
@@ -236,8 +236,6 @@ type ManagedCertificate struct {
 	DnsAuthorizations []string `pulumi:"dnsAuthorizations"`
 	// Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution.
 	Domains []string `pulumi:"domains"`
-	// Information about issues with provisioning a Managed Certificate.
-	ProvisioningIssue *ProvisioningIssue `pulumi:"provisioningIssue"`
 }
 
 // ManagedCertificateInput is an input type that accepts ManagedCertificateArgs and ManagedCertificateOutput values.
@@ -257,8 +255,6 @@ type ManagedCertificateArgs struct {
 	DnsAuthorizations pulumi.StringArrayInput `pulumi:"dnsAuthorizations"`
 	// Immutable. The domains for which a managed SSL certificate will be generated. Wildcard domains are only supported with DNS challenge resolution.
 	Domains pulumi.StringArrayInput `pulumi:"domains"`
-	// Information about issues with provisioning a Managed Certificate.
-	ProvisioningIssue ProvisioningIssuePtrInput `pulumi:"provisioningIssue"`
 }
 
 func (ManagedCertificateArgs) ElementType() reflect.Type {
@@ -349,11 +345,6 @@ func (o ManagedCertificateOutput) Domains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ManagedCertificate) []string { return v.Domains }).(pulumi.StringArrayOutput)
 }
 
-// Information about issues with provisioning a Managed Certificate.
-func (o ManagedCertificateOutput) ProvisioningIssue() ProvisioningIssuePtrOutput {
-	return o.ApplyT(func(v ManagedCertificate) *ProvisioningIssue { return v.ProvisioningIssue }).(ProvisioningIssuePtrOutput)
-}
-
 type ManagedCertificatePtrOutput struct{ *pulumi.OutputState }
 
 func (ManagedCertificatePtrOutput) ElementType() reflect.Type {
@@ -396,16 +387,6 @@ func (o ManagedCertificatePtrOutput) Domains() pulumi.StringArrayOutput {
 		}
 		return v.Domains
 	}).(pulumi.StringArrayOutput)
-}
-
-// Information about issues with provisioning a Managed Certificate.
-func (o ManagedCertificatePtrOutput) ProvisioningIssue() ProvisioningIssuePtrOutput {
-	return o.ApplyT(func(v *ManagedCertificate) *ProvisioningIssue {
-		if v == nil {
-			return nil
-		}
-		return v.ProvisioningIssue
-	}).(ProvisioningIssuePtrOutput)
 }
 
 // Configuration and state of a Managed Certificate. Certificate Manager provisions and renews Managed Certificates automatically, for as long as it's authorized to do so.
@@ -462,165 +443,6 @@ func (o ManagedCertificateResponseOutput) ProvisioningIssue() ProvisioningIssueR
 // State of the managed certificate resource.
 func (o ManagedCertificateResponseOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v ManagedCertificateResponse) string { return v.State }).(pulumi.StringOutput)
-}
-
-// Information about issues with provisioning a Managed Certificate.
-type ProvisioningIssue struct {
-	// Human readable explanation about the issue. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use Reason enum.
-	Details *string `pulumi:"details"`
-	// Reason for provisioning failures.
-	Reason *ProvisioningIssueReason `pulumi:"reason"`
-}
-
-// ProvisioningIssueInput is an input type that accepts ProvisioningIssueArgs and ProvisioningIssueOutput values.
-// You can construct a concrete instance of `ProvisioningIssueInput` via:
-//
-//	ProvisioningIssueArgs{...}
-type ProvisioningIssueInput interface {
-	pulumi.Input
-
-	ToProvisioningIssueOutput() ProvisioningIssueOutput
-	ToProvisioningIssueOutputWithContext(context.Context) ProvisioningIssueOutput
-}
-
-// Information about issues with provisioning a Managed Certificate.
-type ProvisioningIssueArgs struct {
-	// Human readable explanation about the issue. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use Reason enum.
-	Details pulumi.StringPtrInput `pulumi:"details"`
-	// Reason for provisioning failures.
-	Reason ProvisioningIssueReasonPtrInput `pulumi:"reason"`
-}
-
-func (ProvisioningIssueArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProvisioningIssue)(nil)).Elem()
-}
-
-func (i ProvisioningIssueArgs) ToProvisioningIssueOutput() ProvisioningIssueOutput {
-	return i.ToProvisioningIssueOutputWithContext(context.Background())
-}
-
-func (i ProvisioningIssueArgs) ToProvisioningIssueOutputWithContext(ctx context.Context) ProvisioningIssueOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProvisioningIssueOutput)
-}
-
-func (i ProvisioningIssueArgs) ToProvisioningIssuePtrOutput() ProvisioningIssuePtrOutput {
-	return i.ToProvisioningIssuePtrOutputWithContext(context.Background())
-}
-
-func (i ProvisioningIssueArgs) ToProvisioningIssuePtrOutputWithContext(ctx context.Context) ProvisioningIssuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProvisioningIssueOutput).ToProvisioningIssuePtrOutputWithContext(ctx)
-}
-
-// ProvisioningIssuePtrInput is an input type that accepts ProvisioningIssueArgs, ProvisioningIssuePtr and ProvisioningIssuePtrOutput values.
-// You can construct a concrete instance of `ProvisioningIssuePtrInput` via:
-//
-//	        ProvisioningIssueArgs{...}
-//
-//	or:
-//
-//	        nil
-type ProvisioningIssuePtrInput interface {
-	pulumi.Input
-
-	ToProvisioningIssuePtrOutput() ProvisioningIssuePtrOutput
-	ToProvisioningIssuePtrOutputWithContext(context.Context) ProvisioningIssuePtrOutput
-}
-
-type provisioningIssuePtrType ProvisioningIssueArgs
-
-func ProvisioningIssuePtr(v *ProvisioningIssueArgs) ProvisioningIssuePtrInput {
-	return (*provisioningIssuePtrType)(v)
-}
-
-func (*provisioningIssuePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProvisioningIssue)(nil)).Elem()
-}
-
-func (i *provisioningIssuePtrType) ToProvisioningIssuePtrOutput() ProvisioningIssuePtrOutput {
-	return i.ToProvisioningIssuePtrOutputWithContext(context.Background())
-}
-
-func (i *provisioningIssuePtrType) ToProvisioningIssuePtrOutputWithContext(ctx context.Context) ProvisioningIssuePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(ProvisioningIssuePtrOutput)
-}
-
-// Information about issues with provisioning a Managed Certificate.
-type ProvisioningIssueOutput struct{ *pulumi.OutputState }
-
-func (ProvisioningIssueOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ProvisioningIssue)(nil)).Elem()
-}
-
-func (o ProvisioningIssueOutput) ToProvisioningIssueOutput() ProvisioningIssueOutput {
-	return o
-}
-
-func (o ProvisioningIssueOutput) ToProvisioningIssueOutputWithContext(ctx context.Context) ProvisioningIssueOutput {
-	return o
-}
-
-func (o ProvisioningIssueOutput) ToProvisioningIssuePtrOutput() ProvisioningIssuePtrOutput {
-	return o.ToProvisioningIssuePtrOutputWithContext(context.Background())
-}
-
-func (o ProvisioningIssueOutput) ToProvisioningIssuePtrOutputWithContext(ctx context.Context) ProvisioningIssuePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v ProvisioningIssue) *ProvisioningIssue {
-		return &v
-	}).(ProvisioningIssuePtrOutput)
-}
-
-// Human readable explanation about the issue. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use Reason enum.
-func (o ProvisioningIssueOutput) Details() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ProvisioningIssue) *string { return v.Details }).(pulumi.StringPtrOutput)
-}
-
-// Reason for provisioning failures.
-func (o ProvisioningIssueOutput) Reason() ProvisioningIssueReasonPtrOutput {
-	return o.ApplyT(func(v ProvisioningIssue) *ProvisioningIssueReason { return v.Reason }).(ProvisioningIssueReasonPtrOutput)
-}
-
-type ProvisioningIssuePtrOutput struct{ *pulumi.OutputState }
-
-func (ProvisioningIssuePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**ProvisioningIssue)(nil)).Elem()
-}
-
-func (o ProvisioningIssuePtrOutput) ToProvisioningIssuePtrOutput() ProvisioningIssuePtrOutput {
-	return o
-}
-
-func (o ProvisioningIssuePtrOutput) ToProvisioningIssuePtrOutputWithContext(ctx context.Context) ProvisioningIssuePtrOutput {
-	return o
-}
-
-func (o ProvisioningIssuePtrOutput) Elem() ProvisioningIssueOutput {
-	return o.ApplyT(func(v *ProvisioningIssue) ProvisioningIssue {
-		if v != nil {
-			return *v
-		}
-		var ret ProvisioningIssue
-		return ret
-	}).(ProvisioningIssueOutput)
-}
-
-// Human readable explanation about the issue. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use Reason enum.
-func (o ProvisioningIssuePtrOutput) Details() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ProvisioningIssue) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Details
-	}).(pulumi.StringPtrOutput)
-}
-
-// Reason for provisioning failures.
-func (o ProvisioningIssuePtrOutput) Reason() ProvisioningIssueReasonPtrOutput {
-	return o.ApplyT(func(v *ProvisioningIssue) *ProvisioningIssueReason {
-		if v == nil {
-			return nil
-		}
-		return v.Reason
-	}).(ProvisioningIssueReasonPtrOutput)
 }
 
 // Information about issues with provisioning a Managed Certificate.
@@ -851,8 +673,6 @@ func (o SelfManagedCertificateResponseOutput) PemPrivateKey() pulumi.StringOutpu
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedCertificateInput)(nil)).Elem(), ManagedCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedCertificatePtrInput)(nil)).Elem(), ManagedCertificateArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProvisioningIssueInput)(nil)).Elem(), ProvisioningIssueArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*ProvisioningIssuePtrInput)(nil)).Elem(), ProvisioningIssueArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfManagedCertificateInput)(nil)).Elem(), SelfManagedCertificateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SelfManagedCertificatePtrInput)(nil)).Elem(), SelfManagedCertificateArgs{})
 	pulumi.RegisterOutputType(AuthorizationAttemptInfoResponseOutput{})
@@ -865,8 +685,6 @@ func init() {
 	pulumi.RegisterOutputType(ManagedCertificateOutput{})
 	pulumi.RegisterOutputType(ManagedCertificatePtrOutput{})
 	pulumi.RegisterOutputType(ManagedCertificateResponseOutput{})
-	pulumi.RegisterOutputType(ProvisioningIssueOutput{})
-	pulumi.RegisterOutputType(ProvisioningIssuePtrOutput{})
 	pulumi.RegisterOutputType(ProvisioningIssueResponseOutput{})
 	pulumi.RegisterOutputType(SelfManagedCertificateOutput{})
 	pulumi.RegisterOutputType(SelfManagedCertificatePtrOutput{})

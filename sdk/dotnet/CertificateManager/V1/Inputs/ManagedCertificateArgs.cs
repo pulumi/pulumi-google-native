@@ -39,12 +39,6 @@ namespace Pulumi.GoogleNative.CertificateManager.V1.Inputs
             set => _domains = value;
         }
 
-        /// <summary>
-        /// Information about issues with provisioning a Managed Certificate.
-        /// </summary>
-        [Input("provisioningIssue")]
-        public Input<Inputs.ProvisioningIssueArgs>? ProvisioningIssue { get; set; }
-
         public ManagedCertificateArgs()
         {
         }

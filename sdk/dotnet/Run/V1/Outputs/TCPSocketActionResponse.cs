@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
+    /// TCPSocketAction describes an action based on opening a socket
     /// </summary>
     [OutputType]
     public sealed class TCPSocketActionResponse

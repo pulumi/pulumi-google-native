@@ -42,6 +42,8 @@ type LookupEnvironmentResult struct {
 	LastModifiedAt string `pulumi:"lastModifiedAt"`
 	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 	Name string `pulumi:"name"`
+	// Optional. NodeConfig of the environment.
+	NodeConfig GoogleCloudApigeeV1NodeConfigResponse `pulumi:"nodeConfig"`
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties GoogleCloudApigeeV1PropertiesResponse `pulumi:"properties"`
 	// State of the environment. Values other than ACTIVE means the resource is not ready to use.
@@ -122,6 +124,11 @@ func (o LookupEnvironmentResultOutput) LastModifiedAt() pulumi.StringOutput {
 // Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
 func (o LookupEnvironmentResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupEnvironmentResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. NodeConfig of the environment.
+func (o LookupEnvironmentResultOutput) NodeConfig() GoogleCloudApigeeV1NodeConfigResponseOutput {
+	return o.ApplyT(func(v LookupEnvironmentResult) GoogleCloudApigeeV1NodeConfigResponse { return v.NodeConfig }).(GoogleCloudApigeeV1NodeConfigResponseOutput)
 }
 
 // Optional. Key-value pairs that may be used for customizing the environment.

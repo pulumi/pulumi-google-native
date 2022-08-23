@@ -36,6 +36,10 @@ export class EndpointAttachment extends pulumi.CustomResource {
     }
 
     /**
+     * State of the endpoint attachment connection to the service attachment.
+     */
+    public /*out*/ readonly connectionState!: pulumi.Output<string>;
+    /**
      * ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
      */
     public readonly endpointAttachmentId!: pulumi.Output<string | undefined>;
@@ -80,9 +84,11 @@ export class EndpointAttachment extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["serviceAttachment"] = args ? args.serviceAttachment : undefined;
+            resourceInputs["connectionState"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         } else {
+            resourceInputs["connectionState"] = undefined /*out*/;
             resourceInputs["endpointAttachmentId"] = undefined /*out*/;
             resourceInputs["host"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;

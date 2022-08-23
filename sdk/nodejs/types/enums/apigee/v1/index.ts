@@ -2,6 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const ApiProductQuotaCounterScope = {
+    /**
+     * When quota is not explicitly defined for each operation(REST/GraphQL), the limits set at product level will be used as a local counter for quota evaluation by all the operations, independent of proxy association.
+     */
+    QuotaCounterScopeUnspecified: "QUOTA_COUNTER_SCOPE_UNSPECIFIED",
+    /**
+     * When quota is not explicitly defined for each operation(REST/GraphQL), set at product level will be used as a global counter for quota evaluation by all the operations associated with a particular proxy.
+     */
+    Proxy: "PROXY",
+    /**
+     * When quota is not explicitly defined for each operation(REST/GraphQL), the limits set at product level will be used as a local counter for quota evaluation by all the operations, independent of proxy association. This behavior mimics the same as QUOTA_COUNTER_SCOPE_UNSPECIFIED.
+     */
+    Operation: "OPERATION",
+} as const;
+
+/**
+ * Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
+ */
+export type ApiProductQuotaCounterScope = (typeof ApiProductQuotaCounterScope)[keyof typeof ApiProductQuotaCounterScope];
+
 export const DataCollectorType = {
     /**
      * For future compatibility.
@@ -171,6 +191,10 @@ export const OrganizationBillingType = {
      * Free and limited access to Apigee for evaluation purposes only. only.
      */
     Evaluation: "EVALUATION",
+    /**
+     * Access to Apigee using a Pay-As-You-Go plan.
+     */
+    Payg: "PAYG",
 } as const;
 
 /**

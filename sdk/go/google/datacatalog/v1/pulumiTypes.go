@@ -14,7 +14,7 @@ import (
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -35,7 +35,7 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -98,7 +98,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -132,7 +132,7 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -158,7 +158,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -430,188 +430,6 @@ func (o ExprResponseOutput) Location() pulumi.StringOutput {
 // Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
 func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
-}
-
-// Specification for the BigQuery connection.
-type GoogleCloudDatacatalogV1BigQueryConnectionSpec struct {
-	// Specification for the BigQuery connection to a Cloud SQL instance.
-	CloudSql *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec `pulumi:"cloudSql"`
-	// The type of the BigQuery connection.
-	ConnectionType *GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType `pulumi:"connectionType"`
-	// True if there are credentials attached to the BigQuery connection; false otherwise.
-	HasCredential *bool `pulumi:"hasCredential"`
-}
-
-// GoogleCloudDatacatalogV1BigQueryConnectionSpecInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs and GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryConnectionSpecInput` via:
-//
-//	GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs{...}
-type GoogleCloudDatacatalogV1BigQueryConnectionSpecInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1BigQueryConnectionSpecOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput
-	ToGoogleCloudDatacatalogV1BigQueryConnectionSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput
-}
-
-// Specification for the BigQuery connection.
-type GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs struct {
-	// Specification for the BigQuery connection to a Cloud SQL instance.
-	CloudSql GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrInput `pulumi:"cloudSql"`
-	// The type of the BigQuery connection.
-	ConnectionType GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrInput `pulumi:"connectionType"`
-	// True if there are credentials attached to the BigQuery connection; false otherwise.
-	HasCredential pulumi.BoolPtrInput `pulumi:"hasCredential"`
-}
-
-func (GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpec)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryConnectionSpecOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput)
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput).ToGoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs, GoogleCloudDatacatalogV1BigQueryConnectionSpecPtr and GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrInput` via:
-//
-//	        GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs{...}
-//
-//	or:
-//
-//	        nil
-type GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput
-	ToGoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput
-}
-
-type googleCloudDatacatalogV1BigQueryConnectionSpecPtrType GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs
-
-func GoogleCloudDatacatalogV1BigQueryConnectionSpecPtr(v *GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs) GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrInput {
-	return (*googleCloudDatacatalogV1BigQueryConnectionSpecPtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1BigQueryConnectionSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryConnectionSpec)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1BigQueryConnectionSpecPtrType) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1BigQueryConnectionSpecPtrType) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput)
-}
-
-// Specification for the BigQuery connection.
-type GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput {
-	return o.ToGoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1BigQueryConnectionSpec) *GoogleCloudDatacatalogV1BigQueryConnectionSpec {
-		return &v
-	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput)
-}
-
-// Specification for the BigQuery connection to a Cloud SQL instance.
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput) CloudSql() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryConnectionSpec) *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec {
-		return v.CloudSql
-	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput)
-}
-
-// The type of the BigQuery connection.
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput) ConnectionType() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryConnectionSpec) *GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType {
-		return v.ConnectionType
-	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput)
-}
-
-// True if there are credentials attached to the BigQuery connection; false otherwise.
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput) HasCredential() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1BigQueryConnectionSpec) *bool { return v.HasCredential }).(pulumi.BoolPtrOutput)
-}
-
-type GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1BigQueryConnectionSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput() GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput) ToGoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput) Elem() GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryConnectionSpec) GoogleCloudDatacatalogV1BigQueryConnectionSpec {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1BigQueryConnectionSpec
-		return ret
-	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput)
-}
-
-// Specification for the BigQuery connection to a Cloud SQL instance.
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput) CloudSql() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryConnectionSpec) *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec {
-		if v == nil {
-			return nil
-		}
-		return v.CloudSql
-	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput)
-}
-
-// The type of the BigQuery connection.
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput) ConnectionType() GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryConnectionSpec) *GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType {
-		if v == nil {
-			return nil
-		}
-		return v.ConnectionType
-	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionTypePtrOutput)
-}
-
-// True if there are credentials attached to the BigQuery connection; false otherwise.
-func (o GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput) HasCredential() pulumi.BoolPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1BigQueryConnectionSpec) *bool {
-		if v == nil {
-			return nil
-		}
-		return v.HasCredential
-	}).(pulumi.BoolPtrOutput)
 }
 
 // Specification for the BigQuery connection.
@@ -1109,186 +927,6 @@ func (o GoogleCloudDatacatalogV1BusinessContextResponseOutput) EntryOverview() G
 	return o.ApplyT(func(v GoogleCloudDatacatalogV1BusinessContextResponse) GoogleCloudDatacatalogV1EntryOverviewResponse {
 		return v.EntryOverview
 	}).(GoogleCloudDatacatalogV1EntryOverviewResponseOutput)
-}
-
-// Specification for the BigQuery connection to a Cloud SQL instance.
-type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec struct {
-	// Database name.
-	Database *string `pulumi:"database"`
-	// Cloud SQL instance ID in the format of `project:location:instance`.
-	InstanceId *string `pulumi:"instanceId"`
-	// Type of the Cloud SQL database.
-	Type *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType `pulumi:"type"`
-}
-
-// GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecInput is an input type that accepts GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs and GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecInput` via:
-//
-//	GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs{...}
-type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput
-	ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput
-}
-
-// Specification for the BigQuery connection to a Cloud SQL instance.
-type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs struct {
-	// Database name.
-	Database pulumi.StringPtrInput `pulumi:"database"`
-	// Cloud SQL instance ID in the format of `project:location:instance`.
-	InstanceId pulumi.StringPtrInput `pulumi:"instanceId"`
-	// Type of the Cloud SQL database.
-	Type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrInput `pulumi:"type"`
-}
-
-func (GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec)(nil)).Elem()
-}
-
-func (i GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput {
-	return i.ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput)
-}
-
-func (i GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutputWithContext(context.Background())
-}
-
-func (i GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput).ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutputWithContext(ctx)
-}
-
-// GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrInput is an input type that accepts GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs, GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtr and GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput values.
-// You can construct a concrete instance of `GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrInput` via:
-//
-//	        GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs{...}
-//
-//	or:
-//
-//	        nil
-type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrInput interface {
-	pulumi.Input
-
-	ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput
-	ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutputWithContext(context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput
-}
-
-type googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrType GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs
-
-func GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtr(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrInput {
-	return (*googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrType)(v)
-}
-
-func (*googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec)(nil)).Elem()
-}
-
-func (i *googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrType) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput {
-	return i.ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutputWithContext(context.Background())
-}
-
-func (i *googleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrType) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput)
-}
-
-// Specification for the BigQuery connection to a Cloud SQL instance.
-type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput {
-	return o.ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutputWithContext(context.Background())
-}
-
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec) *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec {
-		return &v
-	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput)
-}
-
-// Database name.
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput) Database() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec) *string { return v.Database }).(pulumi.StringPtrOutput)
-}
-
-// Cloud SQL instance ID in the format of `project:location:instance`.
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput) InstanceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec) *string { return v.InstanceId }).(pulumi.StringPtrOutput)
-}
-
-// Type of the Cloud SQL database.
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput) Type() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec) *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType {
-		return v.Type
-	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput)
-}
-
-type GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput struct{ *pulumi.OutputState }
-
-func (GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec)(nil)).Elem()
-}
-
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput) ToGoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutputWithContext(ctx context.Context) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput {
-	return o
-}
-
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput) Elem() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec) GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec {
-		if v != nil {
-			return *v
-		}
-		var ret GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec
-		return ret
-	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput)
-}
-
-// Database name.
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput) Database() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.Database
-	}).(pulumi.StringPtrOutput)
-}
-
-// Cloud SQL instance ID in the format of `project:location:instance`.
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput) InstanceId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec) *string {
-		if v == nil {
-			return nil
-		}
-		return v.InstanceId
-	}).(pulumi.StringPtrOutput)
-}
-
-// Type of the Cloud SQL database.
-func (o GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput) Type() GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec) *GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType {
-		if v == nil {
-			return nil
-		}
-		return v.Type
-	}).(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecTypePtrOutput)
 }
 
 // Specification for the BigQuery connection to a Cloud SQL instance.
@@ -2063,10 +1701,8 @@ func (o GoogleCloudDatacatalogV1ContactsResponseOutput) People() GoogleCloudData
 	}).(GoogleCloudDatacatalogV1ContactsPersonResponseArrayOutput)
 }
 
-// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
+// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type. Only one of internal specs can be set at the time, and cannot be changed later.
 type GoogleCloudDatacatalogV1DataSourceConnectionSpec struct {
-	// Fields specific to BigQuery connections.
-	BigqueryConnectionSpec *GoogleCloudDatacatalogV1BigQueryConnectionSpec `pulumi:"bigqueryConnectionSpec"`
 }
 
 // GoogleCloudDatacatalogV1DataSourceConnectionSpecInput is an input type that accepts GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs and GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput values.
@@ -2080,10 +1716,8 @@ type GoogleCloudDatacatalogV1DataSourceConnectionSpecInput interface {
 	ToGoogleCloudDatacatalogV1DataSourceConnectionSpecOutputWithContext(context.Context) GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput
 }
 
-// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
+// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type. Only one of internal specs can be set at the time, and cannot be changed later.
 type GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs struct {
-	// Fields specific to BigQuery connections.
-	BigqueryConnectionSpec GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrInput `pulumi:"bigqueryConnectionSpec"`
 }
 
 func (GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs) ElementType() reflect.Type {
@@ -2139,7 +1773,7 @@ func (i *googleCloudDatacatalogV1DataSourceConnectionSpecPtrType) ToGoogleCloudD
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput)
 }
 
-// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
+// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type. Only one of internal specs can be set at the time, and cannot be changed later.
 type GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput) ElementType() reflect.Type {
@@ -2162,13 +1796,6 @@ func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput) ToGoogleCloudDat
 	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudDatacatalogV1DataSourceConnectionSpec) *GoogleCloudDatacatalogV1DataSourceConnectionSpec {
 		return &v
 	}).(GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput)
-}
-
-// Fields specific to BigQuery connections.
-func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput) BigqueryConnectionSpec() GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput {
-	return o.ApplyT(func(v GoogleCloudDatacatalogV1DataSourceConnectionSpec) *GoogleCloudDatacatalogV1BigQueryConnectionSpec {
-		return v.BigqueryConnectionSpec
-	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput)
 }
 
 type GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput struct{ *pulumi.OutputState }
@@ -2195,23 +1822,13 @@ func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput) Elem() Google
 	}).(GoogleCloudDatacatalogV1DataSourceConnectionSpecOutput)
 }
 
-// Fields specific to BigQuery connections.
-func (o GoogleCloudDatacatalogV1DataSourceConnectionSpecPtrOutput) BigqueryConnectionSpec() GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput {
-	return o.ApplyT(func(v *GoogleCloudDatacatalogV1DataSourceConnectionSpec) *GoogleCloudDatacatalogV1BigQueryConnectionSpec {
-		if v == nil {
-			return nil
-		}
-		return v.BigqueryConnectionSpec
-	}).(GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput)
-}
-
-// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
+// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type. Only one of internal specs can be set at the time, and cannot be changed later.
 type GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse struct {
 	// Fields specific to BigQuery connections.
 	BigqueryConnectionSpec GoogleCloudDatacatalogV1BigQueryConnectionSpecResponse `pulumi:"bigqueryConnectionSpec"`
 }
 
-// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
+// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type. Only one of internal specs can be set at the time, and cannot be changed later.
 type GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudDatacatalogV1DataSourceConnectionSpecResponseOutput) ElementType() reflect.Type {
@@ -5808,14 +5425,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryRoutineSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BigQueryRoutineSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContextInput)(nil)).Elem(), GoogleCloudDatacatalogV1BusinessContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1BusinessContextPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1BusinessContextArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrInput)(nil)).Elem(), GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaArrayInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecInput)(nil)).Elem(), GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs{})
@@ -5867,8 +5480,6 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryConnectionSpecOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryConnectionSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryConnectionSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryDateShardedSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BigQueryRoutineSpecOutput{})
@@ -5878,8 +5489,6 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BusinessContextOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BusinessContextPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1BusinessContextResponseOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecOutput{})
-	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaOutput{})
 	pulumi.RegisterOutputType(GoogleCloudDatacatalogV1ColumnSchemaArrayOutput{})

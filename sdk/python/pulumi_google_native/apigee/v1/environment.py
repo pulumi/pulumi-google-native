@@ -24,6 +24,7 @@ class EnvironmentArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  forward_proxy_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 node_config: Optional[pulumi.Input['GoogleCloudApigeeV1NodeConfigArgs']] = None,
                  properties: Optional[pulumi.Input['GoogleCloudApigeeV1PropertiesArgs']] = None):
         """
         The set of arguments for constructing a Environment resource.
@@ -33,6 +34,7 @@ class EnvironmentArgs:
         :param pulumi.Input[str] display_name: Optional. Display name for this environment.
         :param pulumi.Input[str] forward_proxy_uri: Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
         :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\\\p{Alnum}-_]{1,255}$`
+        :param pulumi.Input['GoogleCloudApigeeV1NodeConfigArgs'] node_config: Optional. NodeConfig of the environment.
         :param pulumi.Input['GoogleCloudApigeeV1PropertiesArgs'] properties: Optional. Key-value pairs that may be used for customizing the environment.
         """
         pulumi.set(__self__, "organization_id", organization_id)
@@ -48,6 +50,8 @@ class EnvironmentArgs:
             pulumi.set(__self__, "forward_proxy_uri", forward_proxy_uri)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if node_config is not None:
+            pulumi.set(__self__, "node_config", node_config)
         if properties is not None:
             pulumi.set(__self__, "properties", properties)
 
@@ -133,6 +137,18 @@ class EnvironmentArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="nodeConfig")
+    def node_config(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1NodeConfigArgs']]:
+        """
+        Optional. NodeConfig of the environment.
+        """
+        return pulumi.get(self, "node_config")
+
+    @node_config.setter
+    def node_config(self, value: Optional[pulumi.Input['GoogleCloudApigeeV1NodeConfigArgs']]):
+        pulumi.set(self, "node_config", value)
+
+    @property
     @pulumi.getter
     def properties(self) -> Optional[pulumi.Input['GoogleCloudApigeeV1PropertiesArgs']]:
         """
@@ -156,6 +172,7 @@ class Environment(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  forward_proxy_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 node_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1NodeConfigArgs']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
                  __props__=None):
@@ -170,6 +187,7 @@ class Environment(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: Optional. Display name for this environment.
         :param pulumi.Input[str] forward_proxy_uri: Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
         :param pulumi.Input[str] name: Name of the environment. Values must match the regular expression `^[.\\\\p{Alnum}-_]{1,255}$`
+        :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1NodeConfigArgs']] node_config: Optional. NodeConfig of the environment.
         :param pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']] properties: Optional. Key-value pairs that may be used for customizing the environment.
         """
         ...
@@ -202,6 +220,7 @@ class Environment(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  forward_proxy_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 node_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1NodeConfigArgs']]] = None,
                  organization_id: Optional[pulumi.Input[str]] = None,
                  properties: Optional[pulumi.Input[pulumi.InputType['GoogleCloudApigeeV1PropertiesArgs']]] = None,
                  __props__=None):
@@ -219,6 +238,7 @@ class Environment(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["forward_proxy_uri"] = forward_proxy_uri
             __props__.__dict__["name"] = name
+            __props__.__dict__["node_config"] = node_config
             if organization_id is None and not opts.urn:
                 raise TypeError("Missing required property 'organization_id'")
             __props__.__dict__["organization_id"] = organization_id
@@ -258,6 +278,7 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["forward_proxy_uri"] = None
         __props__.__dict__["last_modified_at"] = None
         __props__.__dict__["name"] = None
+        __props__.__dict__["node_config"] = None
         __props__.__dict__["organization_id"] = None
         __props__.__dict__["properties"] = None
         __props__.__dict__["state"] = None
@@ -326,6 +347,14 @@ class Environment(pulumi.CustomResource):
         Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeConfig")
+    def node_config(self) -> pulumi.Output['outputs.GoogleCloudApigeeV1NodeConfigResponse']:
+        """
+        Optional. NodeConfig of the environment.
+        """
+        return pulumi.get(self, "node_config")
 
     @property
     @pulumi.getter(name="organizationId")
