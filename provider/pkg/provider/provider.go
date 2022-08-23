@@ -610,7 +610,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	}
 	url := id
 	if !strings.HasPrefix(url, "http") {
-		resources.AssembleURL(res.RootURL, url)
+		url = resources.AssembleURL(res.RootURL, url)
 	}
 	resp, err = p.client.RequestWithTimeout("GET", url, "", nil, 0)
 	if err != nil {
