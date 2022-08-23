@@ -608,7 +608,11 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	if err != nil {
 		return nil, fmt.Errorf("object retrieval failure after successful create / calculate ID %w", err)
 	}
-	resp, err = p.client.RequestWithTimeout("GET", resources.AssembleURL(res.RootURL, id), "", nil, 0)
+	url := id
+	if !strings.HasPrefix(url, "http") {
+		resources.AssembleURL(res.RootURL, url)
+	}
+	resp, err = p.client.RequestWithTimeout("GET", url, "", nil, 0)
 	if err != nil {
 		return nil, fmt.Errorf("object retrieval failure after successful create / read state: %w", err)
 	}
