@@ -167,8 +167,9 @@ type Polling struct {
 // Operations provides details about operations resources referenced by Google APIs for long running operations.
 // Some operations have fully qualified self-links while others require substituting a name in a provided URL template.
 type Operations struct {
-	HasSelfLink       bool   `json:"hasSelfLink,omitempty"`
-	OperationsBaseURL string `json:"operationsBaseURL,omitempty"`
+	EmbeddedOperationField string `json:"embeddedOperationField,omitempty"`
+	HasSelfLink            bool   `json:"hasSelfLink,omitempty"`
+	OperationsBaseURL      string `json:"operationsBaseURL,omitempty"`
 }
 
 // CreateAPIOperation is a Create resource operation in the Google Cloud REST API.
