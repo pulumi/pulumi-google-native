@@ -15,9 +15,16 @@
  */
 
 import * as google from "@pulumi/google-native";
+import * as pulumi from "@pulumi/pulumi";
 
-// TODO: Determine this dynamically once https://github.com/pulumi/pulumi-google-native/issues/166 is done.
-const engineVersion = "1.22";
+const config = new pulumi.Config("google-native");
+const region = config.require("region");
+
+const serverConfig = google.container.v1.getServerConfigOutput({
+    location: region,
+});
+
+const engineVersion = serverConfig.apply(conf => conf.validMasterVersions[0]);
 
 const nodeConfig: google.types.input.container.v1.NodeConfigArgs = {
     machineType: "n1-standard-2",
