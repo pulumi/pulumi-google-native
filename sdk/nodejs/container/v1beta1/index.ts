@@ -8,6 +8,7 @@ import * as utilities from "../../utilities";
 export * from "./cluster";
 export * from "./getCluster";
 export * from "./getNodePool";
+export * from "./getServerConfig";
 export * from "./nodePool";
 
 // Export enums:

@@ -9,6 +9,7 @@ from ._enums import *
 from .cluster import *
 from .get_cluster import *
 from .get_node_pool import *
+from .get_server_config import *
 from .node_pool import *
 from ._inputs import *
 from . import outputs

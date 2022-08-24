@@ -14219,6 +14219,66 @@ func (o ReleaseChannelPtrOutput) Channel() ReleaseChannelChannelPtrOutput {
 	}).(ReleaseChannelChannelPtrOutput)
 }
 
+// ReleaseChannelConfig exposes configuration for a release channel.
+type ReleaseChannelConfigResponse struct {
+	// The release channel this configuration applies to.
+	Channel string `pulumi:"channel"`
+	// The default version for newly created clusters on the channel.
+	DefaultVersion string `pulumi:"defaultVersion"`
+	// List of valid versions for the channel.
+	ValidVersions []string `pulumi:"validVersions"`
+}
+
+// ReleaseChannelConfig exposes configuration for a release channel.
+type ReleaseChannelConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReleaseChannelConfigResponse)(nil)).Elem()
+}
+
+func (o ReleaseChannelConfigResponseOutput) ToReleaseChannelConfigResponseOutput() ReleaseChannelConfigResponseOutput {
+	return o
+}
+
+func (o ReleaseChannelConfigResponseOutput) ToReleaseChannelConfigResponseOutputWithContext(ctx context.Context) ReleaseChannelConfigResponseOutput {
+	return o
+}
+
+// The release channel this configuration applies to.
+func (o ReleaseChannelConfigResponseOutput) Channel() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelConfigResponse) string { return v.Channel }).(pulumi.StringOutput)
+}
+
+// The default version for newly created clusters on the channel.
+func (o ReleaseChannelConfigResponseOutput) DefaultVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v ReleaseChannelConfigResponse) string { return v.DefaultVersion }).(pulumi.StringOutput)
+}
+
+// List of valid versions for the channel.
+func (o ReleaseChannelConfigResponseOutput) ValidVersions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReleaseChannelConfigResponse) []string { return v.ValidVersions }).(pulumi.StringArrayOutput)
+}
+
+type ReleaseChannelConfigResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ReleaseChannelConfigResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReleaseChannelConfigResponse)(nil)).Elem()
+}
+
+func (o ReleaseChannelConfigResponseArrayOutput) ToReleaseChannelConfigResponseArrayOutput() ReleaseChannelConfigResponseArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelConfigResponseArrayOutput) ToReleaseChannelConfigResponseArrayOutputWithContext(ctx context.Context) ReleaseChannelConfigResponseArrayOutput {
+	return o
+}
+
+func (o ReleaseChannelConfigResponseArrayOutput) Index(i pulumi.IntInput) ReleaseChannelConfigResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReleaseChannelConfigResponse {
+		return vs[0].([]ReleaseChannelConfigResponse)[vs[1].(int)]
+	}).(ReleaseChannelConfigResponseOutput)
+}
+
 // ReleaseChannel indicates which release channel a cluster is subscribed to. Release channels are arranged in order of risk. When a cluster is subscribed to a release channel, Google maintains both the master version and the node version. Node auto-upgrade defaults to true and cannot be disabled.
 type ReleaseChannelResponse struct {
 	// channel specifies which release channel the cluster is subscribed to.
@@ -17481,6 +17541,8 @@ func init() {
 	pulumi.RegisterOutputType(RecurringTimeWindowResponseOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelPtrOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConfigResponseOutput{})
+	pulumi.RegisterOutputType(ReleaseChannelConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(ReleaseChannelResponseOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityPtrOutput{})
