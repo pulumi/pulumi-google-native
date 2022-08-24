@@ -232,7 +232,14 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 				return nil, nil, err
 			}
 			// Generate a getXyz function for each Xyz resource.
-			err = gen.genFunction(typeName, res[typeName])
+			err = gen.genFunction(typeName, res[typeName].getMethod)
+			if err != nil {
+				return nil, nil, err
+			}
+		}
+
+		for _, additionalGetMethods := range findAdditionalGetFunctions(fileName, document) {
+			err = gen.genFunction(additionalGetMethods.ReturnTypeName, additionalGetMethods.Method)
 			if err != nil {
 				return nil, nil, err
 			}
@@ -840,18 +847,18 @@ func setOperationsBaseURL(baseURL string, cloudOp *resources.CloudAPIOperation, 
 	cloudOp.Operations.EmbeddedOperationField = embeddedOperationFieldName
 }
 
-func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentResource) error {
+func (g *packageGenerator) genFunction(typeName string, getMethod *discovery.RestMethod) error {
 	resourceTok := g.genToken("get" + typeName)
 
 	inputProperties := map[string]schema.PropertySpec{}
 	requiredInputProperties := codegen.NewStringSet()
 
-	getPath := dd.getMethod.Path
-	if dd.getMethod.FlatPath != "" {
-		getPath = dd.getMethod.FlatPath
+	getPath := getMethod.Path
+	if getMethod.FlatPath != "" {
+		getPath = getMethod.FlatPath
 	}
 
-	httpMethod := dd.getMethod.HttpMethod
+	httpMethod := getMethod.HttpMethod
 	if httpMethod == "" {
 		httpMethod = "GET"
 	}
@@ -862,8 +869,8 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 		Verb: httpMethod,
 	}
 
-	for _, name := range codegen.SortedKeys(dd.getMethod.Parameters) {
-		param := dd.getMethod.Parameters[name]
+	for _, name := range codegen.SortedKeys(getMethod.Parameters) {
+		param := getMethod.Parameters[name]
 		if param.Location != "query" {
 			continue
 		}
@@ -913,8 +920,8 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 
 	properties := map[string]schema.PropertySpec{}
 	requiredProperties := codegen.NewStringSet()
-	if dd.getMethod.Response != nil {
-		response := g.rest.Schemas[dd.getMethod.Response.Ref]
+	if getMethod.Response != nil {
+		response := g.rest.Schemas[getMethod.Response.Ref]
 		responseBag, err := g.genProperties(typeName, &response, "", true, nil)
 		if err != nil {
 			return err
@@ -927,7 +934,7 @@ func (g *packageGenerator) genFunction(typeName string, dd discoveryDocumentReso
 	requiredInputProperties.Delete("project")
 
 	functionSpec := schema.FunctionSpec{
-		Description: dd.getMethod.Description,
+		Description: getMethod.Description,
 		Inputs: &schema.ObjectTypeSpec{
 			Type:       "object",
 			Properties: inputProperties,

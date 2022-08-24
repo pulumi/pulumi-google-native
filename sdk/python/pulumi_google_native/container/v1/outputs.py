@@ -79,6 +79,7 @@ __all__ = [
     'PrivateClusterMasterGlobalAccessConfigResponse',
     'PubSubResponse',
     'RecurringTimeWindowResponse',
+    'ReleaseChannelConfigResponse',
     'ReleaseChannelResponse',
     'ReservationAffinityResponse',
     'ResourceLimitResponse',
@@ -3989,6 +3990,50 @@ class RecurringTimeWindowResponse(dict):
         The window of the first recurrence.
         """
         return pulumi.get(self, "window")
+
+
+@pulumi.output_type
+class ReleaseChannelConfigResponse(dict):
+    """
+    ReleaseChannelConfig exposes configuration for a release channel.
+    """
+    def __init__(__self__, *,
+                 channel: str,
+                 default_version: str,
+                 valid_versions: Sequence[str]):
+        """
+        ReleaseChannelConfig exposes configuration for a release channel.
+        :param str channel: The release channel this configuration applies to.
+        :param str default_version: The default version for newly created clusters on the channel.
+        :param Sequence[str] valid_versions: List of valid versions for the channel.
+        """
+        pulumi.set(__self__, "channel", channel)
+        pulumi.set(__self__, "default_version", default_version)
+        pulumi.set(__self__, "valid_versions", valid_versions)
+
+    @property
+    @pulumi.getter
+    def channel(self) -> str:
+        """
+        The release channel this configuration applies to.
+        """
+        return pulumi.get(self, "channel")
+
+    @property
+    @pulumi.getter(name="defaultVersion")
+    def default_version(self) -> str:
+        """
+        The default version for newly created clusters on the channel.
+        """
+        return pulumi.get(self, "default_version")
+
+    @property
+    @pulumi.getter(name="validVersions")
+    def valid_versions(self) -> Sequence[str]:
+        """
+        List of valid versions for the channel.
+        """
+        return pulumi.get(self, "valid_versions")
 
 
 @pulumi.output_type
