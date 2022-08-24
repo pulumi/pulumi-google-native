@@ -240,6 +240,25 @@ func findResourcesImpl(docName, parentName string, rest map[string]discovery.Res
 	return nil
 }
 
+type GetFunction struct {
+	ReturnTypeName string
+	Method         *discovery.RestMethod
+}
+
+func findAdditionalGetFunctions(docName string, document *discovery.RestDescription) []GetFunction {
+	switch docName {
+	case "discovery/container_v1.json", "discovery/container_v1beta1.json":
+		getServerConfigMethod := document.Resources["projects"].Resources["locations"].Methods["getServerConfig"]
+		return []GetFunction{
+			{
+				ReturnTypeName: "ServerConfig",
+				Method:         &getServerConfigMethod,
+			},
+		}
+	}
+	return nil
+}
+
 func addFoundOperation(operationsMap map[string]*operation, typeName string,
 	dd discoveryDocumentResource, jsonSchema map[string]discovery.JsonSchema) error {
 
