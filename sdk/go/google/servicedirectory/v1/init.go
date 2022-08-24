@@ -25,8 +25,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Endpoint{}
 	case "google-native:servicedirectory/v1:Namespace":
 		r = &Namespace{}
+	case "google-native:servicedirectory/v1:NamespaceIamBinding":
+		r = &NamespaceIamBinding{}
+	case "google-native:servicedirectory/v1:NamespaceIamMember":
+		r = &NamespaceIamMember{}
 	case "google-native:servicedirectory/v1:NamespaceIamPolicy":
 		r = &NamespaceIamPolicy{}
+	case "google-native:servicedirectory/v1:NamespaceServiceIamBinding":
+		r = &NamespaceServiceIamBinding{}
+	case "google-native:servicedirectory/v1:NamespaceServiceIamMember":
+		r = &NamespaceServiceIamMember{}
 	case "google-native:servicedirectory/v1:NamespaceServiceIamPolicy":
 		r = &NamespaceServiceIamPolicy{}
 	case "google-native:servicedirectory/v1:Service":

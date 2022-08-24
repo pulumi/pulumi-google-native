@@ -5,13 +5,37 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { EdgeCacheKeysetIamBindingArgs } from "./edgeCacheKeysetIamBinding";
+export type EdgeCacheKeysetIamBinding = import("./edgeCacheKeysetIamBinding").EdgeCacheKeysetIamBinding;
+export const EdgeCacheKeysetIamBinding: typeof import("./edgeCacheKeysetIamBinding").EdgeCacheKeysetIamBinding = null as any;
+
+export { EdgeCacheKeysetIamMemberArgs } from "./edgeCacheKeysetIamMember";
+export type EdgeCacheKeysetIamMember = import("./edgeCacheKeysetIamMember").EdgeCacheKeysetIamMember;
+export const EdgeCacheKeysetIamMember: typeof import("./edgeCacheKeysetIamMember").EdgeCacheKeysetIamMember = null as any;
+
 export { EdgeCacheKeysetIamPolicyArgs } from "./edgeCacheKeysetIamPolicy";
 export type EdgeCacheKeysetIamPolicy = import("./edgeCacheKeysetIamPolicy").EdgeCacheKeysetIamPolicy;
 export const EdgeCacheKeysetIamPolicy: typeof import("./edgeCacheKeysetIamPolicy").EdgeCacheKeysetIamPolicy = null as any;
 
+export { EdgeCacheOriginIamBindingArgs } from "./edgeCacheOriginIamBinding";
+export type EdgeCacheOriginIamBinding = import("./edgeCacheOriginIamBinding").EdgeCacheOriginIamBinding;
+export const EdgeCacheOriginIamBinding: typeof import("./edgeCacheOriginIamBinding").EdgeCacheOriginIamBinding = null as any;
+
+export { EdgeCacheOriginIamMemberArgs } from "./edgeCacheOriginIamMember";
+export type EdgeCacheOriginIamMember = import("./edgeCacheOriginIamMember").EdgeCacheOriginIamMember;
+export const EdgeCacheOriginIamMember: typeof import("./edgeCacheOriginIamMember").EdgeCacheOriginIamMember = null as any;
+
 export { EdgeCacheOriginIamPolicyArgs } from "./edgeCacheOriginIamPolicy";
 export type EdgeCacheOriginIamPolicy = import("./edgeCacheOriginIamPolicy").EdgeCacheOriginIamPolicy;
 export const EdgeCacheOriginIamPolicy: typeof import("./edgeCacheOriginIamPolicy").EdgeCacheOriginIamPolicy = null as any;
+
+export { EdgeCacheServiceIamBindingArgs } from "./edgeCacheServiceIamBinding";
+export type EdgeCacheServiceIamBinding = import("./edgeCacheServiceIamBinding").EdgeCacheServiceIamBinding;
+export const EdgeCacheServiceIamBinding: typeof import("./edgeCacheServiceIamBinding").EdgeCacheServiceIamBinding = null as any;
+
+export { EdgeCacheServiceIamMemberArgs } from "./edgeCacheServiceIamMember";
+export type EdgeCacheServiceIamMember = import("./edgeCacheServiceIamMember").EdgeCacheServiceIamMember;
+export const EdgeCacheServiceIamMember: typeof import("./edgeCacheServiceIamMember").EdgeCacheServiceIamMember = null as any;
 
 export { EdgeCacheServiceIamPolicyArgs } from "./edgeCacheServiceIamPolicy";
 export type EdgeCacheServiceIamPolicy = import("./edgeCacheServiceIamPolicy").EdgeCacheServiceIamPolicy;
@@ -21,6 +45,14 @@ export { EndpointPolicyArgs } from "./endpointPolicy";
 export type EndpointPolicy = import("./endpointPolicy").EndpointPolicy;
 export const EndpointPolicy: typeof import("./endpointPolicy").EndpointPolicy = null as any;
 
+export { EndpointPolicyIamBindingArgs } from "./endpointPolicyIamBinding";
+export type EndpointPolicyIamBinding = import("./endpointPolicyIamBinding").EndpointPolicyIamBinding;
+export const EndpointPolicyIamBinding: typeof import("./endpointPolicyIamBinding").EndpointPolicyIamBinding = null as any;
+
+export { EndpointPolicyIamMemberArgs } from "./endpointPolicyIamMember";
+export type EndpointPolicyIamMember = import("./endpointPolicyIamMember").EndpointPolicyIamMember;
+export const EndpointPolicyIamMember: typeof import("./endpointPolicyIamMember").EndpointPolicyIamMember = null as any;
+
 export { EndpointPolicyIamPolicyArgs } from "./endpointPolicyIamPolicy";
 export type EndpointPolicyIamPolicy = import("./endpointPolicyIamPolicy").EndpointPolicyIamPolicy;
 export const EndpointPolicyIamPolicy: typeof import("./endpointPolicyIamPolicy").EndpointPolicyIamPolicy = null as any;
@@ -28,6 +60,14 @@ export const EndpointPolicyIamPolicy: typeof import("./endpointPolicyIamPolicy")
 export { GatewayArgs } from "./gateway";
 export type Gateway = import("./gateway").Gateway;
 export const Gateway: typeof import("./gateway").Gateway = null as any;
+
+export { GatewayIamBindingArgs } from "./gatewayIamBinding";
+export type GatewayIamBinding = import("./gatewayIamBinding").GatewayIamBinding;
+export const GatewayIamBinding: typeof import("./gatewayIamBinding").GatewayIamBinding = null as any;
+
+export { GatewayIamMemberArgs } from "./gatewayIamMember";
+export type GatewayIamMember = import("./gatewayIamMember").GatewayIamMember;
+export const GatewayIamMember: typeof import("./gatewayIamMember").GatewayIamMember = null as any;
 
 export { GatewayIamPolicyArgs } from "./gatewayIamPolicy";
 export type GatewayIamPolicy = import("./gatewayIamPolicy").GatewayIamPolicy;
@@ -105,6 +145,14 @@ export { MeshArgs } from "./mesh";
 export type Mesh = import("./mesh").Mesh;
 export const Mesh: typeof import("./mesh").Mesh = null as any;
 
+export { MeshIamBindingArgs } from "./meshIamBinding";
+export type MeshIamBinding = import("./meshIamBinding").MeshIamBinding;
+export const MeshIamBinding: typeof import("./meshIamBinding").MeshIamBinding = null as any;
+
+export { MeshIamMemberArgs } from "./meshIamMember";
+export type MeshIamMember = import("./meshIamMember").MeshIamMember;
+export const MeshIamMember: typeof import("./meshIamMember").MeshIamMember = null as any;
+
 export { MeshIamPolicyArgs } from "./meshIamPolicy";
 export type MeshIamPolicy = import("./meshIamPolicy").MeshIamPolicy;
 export const MeshIamPolicy: typeof import("./meshIamPolicy").MeshIamPolicy = null as any;
@@ -112,6 +160,14 @@ export const MeshIamPolicy: typeof import("./meshIamPolicy").MeshIamPolicy = nul
 export { ServiceBindingArgs } from "./serviceBinding";
 export type ServiceBinding = import("./serviceBinding").ServiceBinding;
 export const ServiceBinding: typeof import("./serviceBinding").ServiceBinding = null as any;
+
+export { ServiceBindingIamBindingArgs } from "./serviceBindingIamBinding";
+export type ServiceBindingIamBinding = import("./serviceBindingIamBinding").ServiceBindingIamBinding;
+export const ServiceBindingIamBinding: typeof import("./serviceBindingIamBinding").ServiceBindingIamBinding = null as any;
+
+export { ServiceBindingIamMemberArgs } from "./serviceBindingIamMember";
+export type ServiceBindingIamMember = import("./serviceBindingIamMember").ServiceBindingIamMember;
+export const ServiceBindingIamMember: typeof import("./serviceBindingIamMember").ServiceBindingIamMember = null as any;
 
 export { ServiceBindingIamPolicyArgs } from "./serviceBindingIamPolicy";
 export type ServiceBindingIamPolicy = import("./serviceBindingIamPolicy").ServiceBindingIamPolicy;
@@ -125,12 +181,22 @@ export { TlsRouteArgs } from "./tlsRoute";
 export type TlsRoute = import("./tlsRoute").TlsRoute;
 export const TlsRoute: typeof import("./tlsRoute").TlsRoute = null as any;
 
+utilities.lazyLoad(exports, ["EdgeCacheKeysetIamBinding"], () => require("./edgeCacheKeysetIamBinding"));
+utilities.lazyLoad(exports, ["EdgeCacheKeysetIamMember"], () => require("./edgeCacheKeysetIamMember"));
 utilities.lazyLoad(exports, ["EdgeCacheKeysetIamPolicy"], () => require("./edgeCacheKeysetIamPolicy"));
+utilities.lazyLoad(exports, ["EdgeCacheOriginIamBinding"], () => require("./edgeCacheOriginIamBinding"));
+utilities.lazyLoad(exports, ["EdgeCacheOriginIamMember"], () => require("./edgeCacheOriginIamMember"));
 utilities.lazyLoad(exports, ["EdgeCacheOriginIamPolicy"], () => require("./edgeCacheOriginIamPolicy"));
+utilities.lazyLoad(exports, ["EdgeCacheServiceIamBinding"], () => require("./edgeCacheServiceIamBinding"));
+utilities.lazyLoad(exports, ["EdgeCacheServiceIamMember"], () => require("./edgeCacheServiceIamMember"));
 utilities.lazyLoad(exports, ["EdgeCacheServiceIamPolicy"], () => require("./edgeCacheServiceIamPolicy"));
 utilities.lazyLoad(exports, ["EndpointPolicy"], () => require("./endpointPolicy"));
+utilities.lazyLoad(exports, ["EndpointPolicyIamBinding"], () => require("./endpointPolicyIamBinding"));
+utilities.lazyLoad(exports, ["EndpointPolicyIamMember"], () => require("./endpointPolicyIamMember"));
 utilities.lazyLoad(exports, ["EndpointPolicyIamPolicy"], () => require("./endpointPolicyIamPolicy"));
 utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
+utilities.lazyLoad(exports, ["GatewayIamBinding"], () => require("./gatewayIamBinding"));
+utilities.lazyLoad(exports, ["GatewayIamMember"], () => require("./gatewayIamMember"));
 utilities.lazyLoad(exports, ["GatewayIamPolicy"], () => require("./gatewayIamPolicy"));
 utilities.lazyLoad(exports, ["getEdgeCacheKeysetIamPolicy","getEdgeCacheKeysetIamPolicyOutput"], () => require("./getEdgeCacheKeysetIamPolicy"));
 utilities.lazyLoad(exports, ["getEdgeCacheOriginIamPolicy","getEdgeCacheOriginIamPolicyOutput"], () => require("./getEdgeCacheOriginIamPolicy"));
@@ -150,8 +216,12 @@ utilities.lazyLoad(exports, ["getTlsRoute","getTlsRouteOutput"], () => require("
 utilities.lazyLoad(exports, ["GrpcRoute"], () => require("./grpcRoute"));
 utilities.lazyLoad(exports, ["HttpRoute"], () => require("./httpRoute"));
 utilities.lazyLoad(exports, ["Mesh"], () => require("./mesh"));
+utilities.lazyLoad(exports, ["MeshIamBinding"], () => require("./meshIamBinding"));
+utilities.lazyLoad(exports, ["MeshIamMember"], () => require("./meshIamMember"));
 utilities.lazyLoad(exports, ["MeshIamPolicy"], () => require("./meshIamPolicy"));
 utilities.lazyLoad(exports, ["ServiceBinding"], () => require("./serviceBinding"));
+utilities.lazyLoad(exports, ["ServiceBindingIamBinding"], () => require("./serviceBindingIamBinding"));
+utilities.lazyLoad(exports, ["ServiceBindingIamMember"], () => require("./serviceBindingIamMember"));
 utilities.lazyLoad(exports, ["ServiceBindingIamPolicy"], () => require("./serviceBindingIamPolicy"));
 utilities.lazyLoad(exports, ["TcpRoute"], () => require("./tcpRoute"));
 utilities.lazyLoad(exports, ["TlsRoute"], () => require("./tlsRoute"));
@@ -163,18 +233,38 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:networkservices/v1:EdgeCacheKeysetIamBinding":
+                return new EdgeCacheKeysetIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:EdgeCacheKeysetIamMember":
+                return new EdgeCacheKeysetIamMember(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:EdgeCacheKeysetIamPolicy":
                 return new EdgeCacheKeysetIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:EdgeCacheOriginIamBinding":
+                return new EdgeCacheOriginIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:EdgeCacheOriginIamMember":
+                return new EdgeCacheOriginIamMember(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:EdgeCacheOriginIamPolicy":
                 return new EdgeCacheOriginIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:EdgeCacheServiceIamBinding":
+                return new EdgeCacheServiceIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:EdgeCacheServiceIamMember":
+                return new EdgeCacheServiceIamMember(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:EdgeCacheServiceIamPolicy":
                 return new EdgeCacheServiceIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:EndpointPolicy":
                 return new EndpointPolicy(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:EndpointPolicyIamBinding":
+                return new EndpointPolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:EndpointPolicyIamMember":
+                return new EndpointPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:EndpointPolicyIamPolicy":
                 return new EndpointPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:Gateway":
                 return new Gateway(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:GatewayIamBinding":
+                return new GatewayIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:GatewayIamMember":
+                return new GatewayIamMember(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:GatewayIamPolicy":
                 return new GatewayIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:GrpcRoute":
@@ -183,10 +273,18 @@ const _module = {
                 return new HttpRoute(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:Mesh":
                 return new Mesh(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MeshIamBinding":
+                return new MeshIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:MeshIamMember":
+                return new MeshIamMember(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:MeshIamPolicy":
                 return new MeshIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:ServiceBinding":
                 return new ServiceBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:ServiceBindingIamBinding":
+                return new ServiceBindingIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkservices/v1:ServiceBindingIamMember":
+                return new ServiceBindingIamMember(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:ServiceBindingIamPolicy":
                 return new ServiceBindingIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkservices/v1:TcpRoute":

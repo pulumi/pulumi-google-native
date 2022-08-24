@@ -12,6 +12,8 @@ from .get_dest_group import *
 from .get_identity_aware_proxy_client import *
 from .get_v1_iam_policy import *
 from .identity_aware_proxy_client import *
+from .v1_iam_binding import *
+from .v1_iam_member import *
 from .v1_iam_policy import *
 from ._inputs import *
 from . import outputs

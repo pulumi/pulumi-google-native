@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:secretmanager/v1beta1:Secret":
 		r = &Secret{}
+	case "google-native:secretmanager/v1beta1:SecretIamBinding":
+		r = &SecretIamBinding{}
+	case "google-native:secretmanager/v1beta1:SecretIamMember":
+		r = &SecretIamMember{}
 	case "google-native:secretmanager/v1beta1:SecretIamPolicy":
 		r = &SecretIamPolicy{}
 	default:

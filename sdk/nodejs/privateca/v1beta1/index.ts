@@ -13,9 +13,25 @@ export { CertificateAuthorityArgs } from "./certificateAuthority";
 export type CertificateAuthority = import("./certificateAuthority").CertificateAuthority;
 export const CertificateAuthority: typeof import("./certificateAuthority").CertificateAuthority = null as any;
 
+export { CertificateAuthorityCertificateRevocationListIamBindingArgs } from "./certificateAuthorityCertificateRevocationListIamBinding";
+export type CertificateAuthorityCertificateRevocationListIamBinding = import("./certificateAuthorityCertificateRevocationListIamBinding").CertificateAuthorityCertificateRevocationListIamBinding;
+export const CertificateAuthorityCertificateRevocationListIamBinding: typeof import("./certificateAuthorityCertificateRevocationListIamBinding").CertificateAuthorityCertificateRevocationListIamBinding = null as any;
+
+export { CertificateAuthorityCertificateRevocationListIamMemberArgs } from "./certificateAuthorityCertificateRevocationListIamMember";
+export type CertificateAuthorityCertificateRevocationListIamMember = import("./certificateAuthorityCertificateRevocationListIamMember").CertificateAuthorityCertificateRevocationListIamMember;
+export const CertificateAuthorityCertificateRevocationListIamMember: typeof import("./certificateAuthorityCertificateRevocationListIamMember").CertificateAuthorityCertificateRevocationListIamMember = null as any;
+
 export { CertificateAuthorityCertificateRevocationListIamPolicyArgs } from "./certificateAuthorityCertificateRevocationListIamPolicy";
 export type CertificateAuthorityCertificateRevocationListIamPolicy = import("./certificateAuthorityCertificateRevocationListIamPolicy").CertificateAuthorityCertificateRevocationListIamPolicy;
 export const CertificateAuthorityCertificateRevocationListIamPolicy: typeof import("./certificateAuthorityCertificateRevocationListIamPolicy").CertificateAuthorityCertificateRevocationListIamPolicy = null as any;
+
+export { CertificateAuthorityIamBindingArgs } from "./certificateAuthorityIamBinding";
+export type CertificateAuthorityIamBinding = import("./certificateAuthorityIamBinding").CertificateAuthorityIamBinding;
+export const CertificateAuthorityIamBinding: typeof import("./certificateAuthorityIamBinding").CertificateAuthorityIamBinding = null as any;
+
+export { CertificateAuthorityIamMemberArgs } from "./certificateAuthorityIamMember";
+export type CertificateAuthorityIamMember = import("./certificateAuthorityIamMember").CertificateAuthorityIamMember;
+export const CertificateAuthorityIamMember: typeof import("./certificateAuthorityIamMember").CertificateAuthorityIamMember = null as any;
 
 export { CertificateAuthorityIamPolicyArgs } from "./certificateAuthorityIamPolicy";
 export type CertificateAuthorityIamPolicy = import("./certificateAuthorityIamPolicy").CertificateAuthorityIamPolicy;
@@ -41,19 +57,33 @@ export { GetReusableConfigIamPolicyArgs, GetReusableConfigIamPolicyResult, GetRe
 export const getReusableConfigIamPolicy: typeof import("./getReusableConfigIamPolicy").getReusableConfigIamPolicy = null as any;
 export const getReusableConfigIamPolicyOutput: typeof import("./getReusableConfigIamPolicy").getReusableConfigIamPolicyOutput = null as any;
 
+export { ReusableConfigIamBindingArgs } from "./reusableConfigIamBinding";
+export type ReusableConfigIamBinding = import("./reusableConfigIamBinding").ReusableConfigIamBinding;
+export const ReusableConfigIamBinding: typeof import("./reusableConfigIamBinding").ReusableConfigIamBinding = null as any;
+
+export { ReusableConfigIamMemberArgs } from "./reusableConfigIamMember";
+export type ReusableConfigIamMember = import("./reusableConfigIamMember").ReusableConfigIamMember;
+export const ReusableConfigIamMember: typeof import("./reusableConfigIamMember").ReusableConfigIamMember = null as any;
+
 export { ReusableConfigIamPolicyArgs } from "./reusableConfigIamPolicy";
 export type ReusableConfigIamPolicy = import("./reusableConfigIamPolicy").ReusableConfigIamPolicy;
 export const ReusableConfigIamPolicy: typeof import("./reusableConfigIamPolicy").ReusableConfigIamPolicy = null as any;
 
 utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
 utilities.lazyLoad(exports, ["CertificateAuthority"], () => require("./certificateAuthority"));
+utilities.lazyLoad(exports, ["CertificateAuthorityCertificateRevocationListIamBinding"], () => require("./certificateAuthorityCertificateRevocationListIamBinding"));
+utilities.lazyLoad(exports, ["CertificateAuthorityCertificateRevocationListIamMember"], () => require("./certificateAuthorityCertificateRevocationListIamMember"));
 utilities.lazyLoad(exports, ["CertificateAuthorityCertificateRevocationListIamPolicy"], () => require("./certificateAuthorityCertificateRevocationListIamPolicy"));
+utilities.lazyLoad(exports, ["CertificateAuthorityIamBinding"], () => require("./certificateAuthorityIamBinding"));
+utilities.lazyLoad(exports, ["CertificateAuthorityIamMember"], () => require("./certificateAuthorityIamMember"));
 utilities.lazyLoad(exports, ["CertificateAuthorityIamPolicy"], () => require("./certificateAuthorityIamPolicy"));
 utilities.lazyLoad(exports, ["getCertificate","getCertificateOutput"], () => require("./getCertificate"));
 utilities.lazyLoad(exports, ["getCertificateAuthority","getCertificateAuthorityOutput"], () => require("./getCertificateAuthority"));
 utilities.lazyLoad(exports, ["getCertificateAuthorityCertificateRevocationListIamPolicy","getCertificateAuthorityCertificateRevocationListIamPolicyOutput"], () => require("./getCertificateAuthorityCertificateRevocationListIamPolicy"));
 utilities.lazyLoad(exports, ["getCertificateAuthorityIamPolicy","getCertificateAuthorityIamPolicyOutput"], () => require("./getCertificateAuthorityIamPolicy"));
 utilities.lazyLoad(exports, ["getReusableConfigIamPolicy","getReusableConfigIamPolicyOutput"], () => require("./getReusableConfigIamPolicy"));
+utilities.lazyLoad(exports, ["ReusableConfigIamBinding"], () => require("./reusableConfigIamBinding"));
+utilities.lazyLoad(exports, ["ReusableConfigIamMember"], () => require("./reusableConfigIamMember"));
 utilities.lazyLoad(exports, ["ReusableConfigIamPolicy"], () => require("./reusableConfigIamPolicy"));
 
 // Export enums:
@@ -67,10 +97,22 @@ const _module = {
                 return new Certificate(name, <any>undefined, { urn })
             case "google-native:privateca/v1beta1:CertificateAuthority":
                 return new CertificateAuthority(name, <any>undefined, { urn })
+            case "google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamBinding":
+                return new CertificateAuthorityCertificateRevocationListIamBinding(name, <any>undefined, { urn })
+            case "google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamMember":
+                return new CertificateAuthorityCertificateRevocationListIamMember(name, <any>undefined, { urn })
             case "google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamPolicy":
                 return new CertificateAuthorityCertificateRevocationListIamPolicy(name, <any>undefined, { urn })
+            case "google-native:privateca/v1beta1:CertificateAuthorityIamBinding":
+                return new CertificateAuthorityIamBinding(name, <any>undefined, { urn })
+            case "google-native:privateca/v1beta1:CertificateAuthorityIamMember":
+                return new CertificateAuthorityIamMember(name, <any>undefined, { urn })
             case "google-native:privateca/v1beta1:CertificateAuthorityIamPolicy":
                 return new CertificateAuthorityIamPolicy(name, <any>undefined, { urn })
+            case "google-native:privateca/v1beta1:ReusableConfigIamBinding":
+                return new ReusableConfigIamBinding(name, <any>undefined, { urn })
+            case "google-native:privateca/v1beta1:ReusableConfigIamMember":
+                return new ReusableConfigIamMember(name, <any>undefined, { urn })
             case "google-native:privateca/v1beta1:ReusableConfigIamPolicy":
                 return new ReusableConfigIamPolicy(name, <any>undefined, { urn })
             default:

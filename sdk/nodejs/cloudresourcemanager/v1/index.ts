@@ -25,6 +25,14 @@ export { LienArgs } from "./lien";
 export type Lien = import("./lien").Lien;
 export const Lien: typeof import("./lien").Lien = null as any;
 
+export { OrganizationIamBindingArgs } from "./organizationIamBinding";
+export type OrganizationIamBinding = import("./organizationIamBinding").OrganizationIamBinding;
+export const OrganizationIamBinding: typeof import("./organizationIamBinding").OrganizationIamBinding = null as any;
+
+export { OrganizationIamMemberArgs } from "./organizationIamMember";
+export type OrganizationIamMember = import("./organizationIamMember").OrganizationIamMember;
+export const OrganizationIamMember: typeof import("./organizationIamMember").OrganizationIamMember = null as any;
+
 export { OrganizationIamPolicyArgs } from "./organizationIamPolicy";
 export type OrganizationIamPolicy = import("./organizationIamPolicy").OrganizationIamPolicy;
 export const OrganizationIamPolicy: typeof import("./organizationIamPolicy").OrganizationIamPolicy = null as any;
@@ -32,6 +40,14 @@ export const OrganizationIamPolicy: typeof import("./organizationIamPolicy").Org
 export { ProjectArgs } from "./project";
 export type Project = import("./project").Project;
 export const Project: typeof import("./project").Project = null as any;
+
+export { ProjectIamBindingArgs } from "./projectIamBinding";
+export type ProjectIamBinding = import("./projectIamBinding").ProjectIamBinding;
+export const ProjectIamBinding: typeof import("./projectIamBinding").ProjectIamBinding = null as any;
+
+export { ProjectIamMemberArgs } from "./projectIamMember";
+export type ProjectIamMember = import("./projectIamMember").ProjectIamMember;
+export const ProjectIamMember: typeof import("./projectIamMember").ProjectIamMember = null as any;
 
 export { ProjectIamPolicyArgs } from "./projectIamPolicy";
 export type ProjectIamPolicy = import("./projectIamPolicy").ProjectIamPolicy;
@@ -42,8 +58,12 @@ utilities.lazyLoad(exports, ["getOrganizationIamPolicy","getOrganizationIamPolic
 utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
 utilities.lazyLoad(exports, ["getProjectIamPolicy","getProjectIamPolicyOutput"], () => require("./getProjectIamPolicy"));
 utilities.lazyLoad(exports, ["Lien"], () => require("./lien"));
+utilities.lazyLoad(exports, ["OrganizationIamBinding"], () => require("./organizationIamBinding"));
+utilities.lazyLoad(exports, ["OrganizationIamMember"], () => require("./organizationIamMember"));
 utilities.lazyLoad(exports, ["OrganizationIamPolicy"], () => require("./organizationIamPolicy"));
 utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+utilities.lazyLoad(exports, ["ProjectIamBinding"], () => require("./projectIamBinding"));
+utilities.lazyLoad(exports, ["ProjectIamMember"], () => require("./projectIamMember"));
 utilities.lazyLoad(exports, ["ProjectIamPolicy"], () => require("./projectIamPolicy"));
 
 // Export enums:
@@ -55,10 +75,18 @@ const _module = {
         switch (type) {
             case "google-native:cloudresourcemanager/v1:Lien":
                 return new Lien(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v1:OrganizationIamBinding":
+                return new OrganizationIamBinding(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v1:OrganizationIamMember":
+                return new OrganizationIamMember(name, <any>undefined, { urn })
             case "google-native:cloudresourcemanager/v1:OrganizationIamPolicy":
                 return new OrganizationIamPolicy(name, <any>undefined, { urn })
             case "google-native:cloudresourcemanager/v1:Project":
                 return new Project(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v1:ProjectIamBinding":
+                return new ProjectIamBinding(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v1:ProjectIamMember":
+                return new ProjectIamMember(name, <any>undefined, { urn })
             case "google-native:cloudresourcemanager/v1:ProjectIamPolicy":
                 return new ProjectIamPolicy(name, <any>undefined, { urn })
             default:

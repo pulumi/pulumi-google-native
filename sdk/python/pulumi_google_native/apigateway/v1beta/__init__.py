@@ -7,10 +7,16 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .api import *
+from .api_config_iam_binding import *
+from .api_config_iam_member import *
 from .api_config_iam_policy import *
+from .api_iam_binding import *
+from .api_iam_member import *
 from .api_iam_policy import *
 from .config import *
 from .gateway import *
+from .gateway_iam_binding import *
+from .gateway_iam_member import *
 from .gateway_iam_policy import *
 from .get_api import *
 from .get_api_config_iam_policy import *

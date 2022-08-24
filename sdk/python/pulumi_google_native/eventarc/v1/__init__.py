@@ -8,7 +8,11 @@ import typing
 from ._enums import *
 from .channel import *
 from .channel_connection import *
+from .channel_connection_iam_binding import *
+from .channel_connection_iam_member import *
 from .channel_connection_iam_policy import *
+from .channel_iam_binding import *
+from .channel_iam_member import *
 from .channel_iam_policy import *
 from .get_channel import *
 from .get_channel_connection import *
@@ -17,6 +21,8 @@ from .get_channel_iam_policy import *
 from .get_trigger import *
 from .get_trigger_iam_policy import *
 from .trigger import *
+from .trigger_iam_binding import *
+from .trigger_iam_member import *
 from .trigger_iam_policy import *
 from ._inputs import *
 from . import outputs

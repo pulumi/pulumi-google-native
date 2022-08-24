@@ -27,6 +27,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DestGroup{}
 	case "google-native:iap/v1:IdentityAwareProxyClient":
 		r = &IdentityAwareProxyClient{}
+	case "google-native:iap/v1:V1IamBinding":
+		r = &V1IamBinding{}
+	case "google-native:iap/v1:V1IamMember":
+		r = &V1IamMember{}
 	case "google-native:iap/v1:V1IamPolicy":
 		r = &V1IamPolicy{}
 	default:

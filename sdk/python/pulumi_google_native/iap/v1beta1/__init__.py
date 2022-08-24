@@ -6,6 +6,8 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .get_v1beta1_iam_policy import *
+from .v1beta1_iam_binding import *
+from .v1beta1_iam_member import *
 from .v1beta1_iam_policy import *
 from ._inputs import *
 from . import outputs

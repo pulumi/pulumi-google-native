@@ -31,6 +31,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Role{}
 	case "google-native:iam/v1:ServiceAccount":
 		r = &ServiceAccount{}
+	case "google-native:iam/v1:ServiceAccountIamBinding":
+		r = &ServiceAccountIamBinding{}
+	case "google-native:iam/v1:ServiceAccountIamMember":
+		r = &ServiceAccountIamMember{}
 	case "google-native:iam/v1:ServiceAccountIamPolicy":
 		r = &ServiceAccountIamPolicy{}
 	case "google-native:iam/v1:WorkloadIdentityPool":

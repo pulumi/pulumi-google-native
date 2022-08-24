@@ -7,6 +7,8 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .endpoint import *
+from .endpoint_iam_binding import *
+from .endpoint_iam_member import *
 from .endpoint_iam_policy import *
 from .get_endpoint import *
 from .get_endpoint_iam_policy import *

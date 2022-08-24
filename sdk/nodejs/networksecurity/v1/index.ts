@@ -9,6 +9,14 @@ export { AuthorizationPolicyArgs } from "./authorizationPolicy";
 export type AuthorizationPolicy = import("./authorizationPolicy").AuthorizationPolicy;
 export const AuthorizationPolicy: typeof import("./authorizationPolicy").AuthorizationPolicy = null as any;
 
+export { AuthorizationPolicyIamBindingArgs } from "./authorizationPolicyIamBinding";
+export type AuthorizationPolicyIamBinding = import("./authorizationPolicyIamBinding").AuthorizationPolicyIamBinding;
+export const AuthorizationPolicyIamBinding: typeof import("./authorizationPolicyIamBinding").AuthorizationPolicyIamBinding = null as any;
+
+export { AuthorizationPolicyIamMemberArgs } from "./authorizationPolicyIamMember";
+export type AuthorizationPolicyIamMember = import("./authorizationPolicyIamMember").AuthorizationPolicyIamMember;
+export const AuthorizationPolicyIamMember: typeof import("./authorizationPolicyIamMember").AuthorizationPolicyIamMember = null as any;
+
 export { AuthorizationPolicyIamPolicyArgs } from "./authorizationPolicyIamPolicy";
 export type AuthorizationPolicyIamPolicy = import("./authorizationPolicyIamPolicy").AuthorizationPolicyIamPolicy;
 export const AuthorizationPolicyIamPolicy: typeof import("./authorizationPolicyIamPolicy").AuthorizationPolicyIamPolicy = null as any;
@@ -16,6 +24,14 @@ export const AuthorizationPolicyIamPolicy: typeof import("./authorizationPolicyI
 export { ClientTlsPolicyArgs } from "./clientTlsPolicy";
 export type ClientTlsPolicy = import("./clientTlsPolicy").ClientTlsPolicy;
 export const ClientTlsPolicy: typeof import("./clientTlsPolicy").ClientTlsPolicy = null as any;
+
+export { ClientTlsPolicyIamBindingArgs } from "./clientTlsPolicyIamBinding";
+export type ClientTlsPolicyIamBinding = import("./clientTlsPolicyIamBinding").ClientTlsPolicyIamBinding;
+export const ClientTlsPolicyIamBinding: typeof import("./clientTlsPolicyIamBinding").ClientTlsPolicyIamBinding = null as any;
+
+export { ClientTlsPolicyIamMemberArgs } from "./clientTlsPolicyIamMember";
+export type ClientTlsPolicyIamMember = import("./clientTlsPolicyIamMember").ClientTlsPolicyIamMember;
+export const ClientTlsPolicyIamMember: typeof import("./clientTlsPolicyIamMember").ClientTlsPolicyIamMember = null as any;
 
 export { ClientTlsPolicyIamPolicyArgs } from "./clientTlsPolicyIamPolicy";
 export type ClientTlsPolicyIamPolicy = import("./clientTlsPolicyIamPolicy").ClientTlsPolicyIamPolicy;
@@ -49,13 +65,25 @@ export { ServerTlsPolicyArgs } from "./serverTlsPolicy";
 export type ServerTlsPolicy = import("./serverTlsPolicy").ServerTlsPolicy;
 export const ServerTlsPolicy: typeof import("./serverTlsPolicy").ServerTlsPolicy = null as any;
 
+export { ServerTlsPolicyIamBindingArgs } from "./serverTlsPolicyIamBinding";
+export type ServerTlsPolicyIamBinding = import("./serverTlsPolicyIamBinding").ServerTlsPolicyIamBinding;
+export const ServerTlsPolicyIamBinding: typeof import("./serverTlsPolicyIamBinding").ServerTlsPolicyIamBinding = null as any;
+
+export { ServerTlsPolicyIamMemberArgs } from "./serverTlsPolicyIamMember";
+export type ServerTlsPolicyIamMember = import("./serverTlsPolicyIamMember").ServerTlsPolicyIamMember;
+export const ServerTlsPolicyIamMember: typeof import("./serverTlsPolicyIamMember").ServerTlsPolicyIamMember = null as any;
+
 export { ServerTlsPolicyIamPolicyArgs } from "./serverTlsPolicyIamPolicy";
 export type ServerTlsPolicyIamPolicy = import("./serverTlsPolicyIamPolicy").ServerTlsPolicyIamPolicy;
 export const ServerTlsPolicyIamPolicy: typeof import("./serverTlsPolicyIamPolicy").ServerTlsPolicyIamPolicy = null as any;
 
 utilities.lazyLoad(exports, ["AuthorizationPolicy"], () => require("./authorizationPolicy"));
+utilities.lazyLoad(exports, ["AuthorizationPolicyIamBinding"], () => require("./authorizationPolicyIamBinding"));
+utilities.lazyLoad(exports, ["AuthorizationPolicyIamMember"], () => require("./authorizationPolicyIamMember"));
 utilities.lazyLoad(exports, ["AuthorizationPolicyIamPolicy"], () => require("./authorizationPolicyIamPolicy"));
 utilities.lazyLoad(exports, ["ClientTlsPolicy"], () => require("./clientTlsPolicy"));
+utilities.lazyLoad(exports, ["ClientTlsPolicyIamBinding"], () => require("./clientTlsPolicyIamBinding"));
+utilities.lazyLoad(exports, ["ClientTlsPolicyIamMember"], () => require("./clientTlsPolicyIamMember"));
 utilities.lazyLoad(exports, ["ClientTlsPolicyIamPolicy"], () => require("./clientTlsPolicyIamPolicy"));
 utilities.lazyLoad(exports, ["getAuthorizationPolicy","getAuthorizationPolicyOutput"], () => require("./getAuthorizationPolicy"));
 utilities.lazyLoad(exports, ["getAuthorizationPolicyIamPolicy","getAuthorizationPolicyIamPolicyOutput"], () => require("./getAuthorizationPolicyIamPolicy"));
@@ -64,6 +92,8 @@ utilities.lazyLoad(exports, ["getClientTlsPolicyIamPolicy","getClientTlsPolicyIa
 utilities.lazyLoad(exports, ["getServerTlsPolicy","getServerTlsPolicyOutput"], () => require("./getServerTlsPolicy"));
 utilities.lazyLoad(exports, ["getServerTlsPolicyIamPolicy","getServerTlsPolicyIamPolicyOutput"], () => require("./getServerTlsPolicyIamPolicy"));
 utilities.lazyLoad(exports, ["ServerTlsPolicy"], () => require("./serverTlsPolicy"));
+utilities.lazyLoad(exports, ["ServerTlsPolicyIamBinding"], () => require("./serverTlsPolicyIamBinding"));
+utilities.lazyLoad(exports, ["ServerTlsPolicyIamMember"], () => require("./serverTlsPolicyIamMember"));
 utilities.lazyLoad(exports, ["ServerTlsPolicyIamPolicy"], () => require("./serverTlsPolicyIamPolicy"));
 
 // Export enums:
@@ -75,14 +105,26 @@ const _module = {
         switch (type) {
             case "google-native:networksecurity/v1:AuthorizationPolicy":
                 return new AuthorizationPolicy(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1:AuthorizationPolicyIamBinding":
+                return new AuthorizationPolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1:AuthorizationPolicyIamMember":
+                return new AuthorizationPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1:AuthorizationPolicyIamPolicy":
                 return new AuthorizationPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1:ClientTlsPolicy":
                 return new ClientTlsPolicy(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1:ClientTlsPolicyIamBinding":
+                return new ClientTlsPolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1:ClientTlsPolicyIamMember":
+                return new ClientTlsPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1:ClientTlsPolicyIamPolicy":
                 return new ClientTlsPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1:ServerTlsPolicy":
                 return new ServerTlsPolicy(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1:ServerTlsPolicyIamBinding":
+                return new ServerTlsPolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:networksecurity/v1:ServerTlsPolicyIamMember":
+                return new ServerTlsPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:networksecurity/v1:ServerTlsPolicyIamPolicy":
                 return new ServerTlsPolicyIamPolicy(name, <any>undefined, { urn })
             default:

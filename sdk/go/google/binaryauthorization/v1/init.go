@@ -23,8 +23,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:binaryauthorization/v1:Attestor":
 		r = &Attestor{}
+	case "google-native:binaryauthorization/v1:AttestorIamBinding":
+		r = &AttestorIamBinding{}
+	case "google-native:binaryauthorization/v1:AttestorIamMember":
+		r = &AttestorIamMember{}
 	case "google-native:binaryauthorization/v1:AttestorIamPolicy":
 		r = &AttestorIamPolicy{}
+	case "google-native:binaryauthorization/v1:PolicyIamBinding":
+		r = &PolicyIamBinding{}
+	case "google-native:binaryauthorization/v1:PolicyIamMember":
+		r = &PolicyIamMember{}
 	case "google-native:binaryauthorization/v1:PolicyIamPolicy":
 		r = &PolicyIamPolicy{}
 	default:

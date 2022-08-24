@@ -29,6 +29,14 @@ export { DiskArgs } from "./disk";
 export type Disk = import("./disk").Disk;
 export const Disk: typeof import("./disk").Disk = null as any;
 
+export { DiskIamBindingArgs } from "./diskIamBinding";
+export type DiskIamBinding = import("./diskIamBinding").DiskIamBinding;
+export const DiskIamBinding: typeof import("./diskIamBinding").DiskIamBinding = null as any;
+
+export { DiskIamMemberArgs } from "./diskIamMember";
+export type DiskIamMember = import("./diskIamMember").DiskIamMember;
+export const DiskIamMember: typeof import("./diskIamMember").DiskIamMember = null as any;
+
 export { DiskIamPolicyArgs } from "./diskIamPolicy";
 export type DiskIamPolicy = import("./diskIamPolicy").DiskIamPolicy;
 export const DiskIamPolicy: typeof import("./diskIamPolicy").DiskIamPolicy = null as any;
@@ -44,6 +52,14 @@ export const Firewall: typeof import("./firewall").Firewall = null as any;
 export { FirewallPolicyArgs } from "./firewallPolicy";
 export type FirewallPolicy = import("./firewallPolicy").FirewallPolicy;
 export const FirewallPolicy: typeof import("./firewallPolicy").FirewallPolicy = null as any;
+
+export { FirewallPolicyIamBindingArgs } from "./firewallPolicyIamBinding";
+export type FirewallPolicyIamBinding = import("./firewallPolicyIamBinding").FirewallPolicyIamBinding;
+export const FirewallPolicyIamBinding: typeof import("./firewallPolicyIamBinding").FirewallPolicyIamBinding = null as any;
+
+export { FirewallPolicyIamMemberArgs } from "./firewallPolicyIamMember";
+export type FirewallPolicyIamMember = import("./firewallPolicyIamMember").FirewallPolicyIamMember;
+export const FirewallPolicyIamMember: typeof import("./firewallPolicyIamMember").FirewallPolicyIamMember = null as any;
 
 export { FirewallPolicyIamPolicyArgs } from "./firewallPolicyIamPolicy";
 export type FirewallPolicyIamPolicy = import("./firewallPolicyIamPolicy").FirewallPolicyIamPolicy;
@@ -449,6 +465,14 @@ export { ImageArgs } from "./image";
 export type Image = import("./image").Image;
 export const Image: typeof import("./image").Image = null as any;
 
+export { ImageIamBindingArgs } from "./imageIamBinding";
+export type ImageIamBinding = import("./imageIamBinding").ImageIamBinding;
+export const ImageIamBinding: typeof import("./imageIamBinding").ImageIamBinding = null as any;
+
+export { ImageIamMemberArgs } from "./imageIamMember";
+export type ImageIamMember = import("./imageIamMember").ImageIamMember;
+export const ImageIamMember: typeof import("./imageIamMember").ImageIamMember = null as any;
+
 export { ImageIamPolicyArgs } from "./imageIamPolicy";
 export type ImageIamPolicy = import("./imageIamPolicy").ImageIamPolicy;
 export const ImageIamPolicy: typeof import("./imageIamPolicy").ImageIamPolicy = null as any;
@@ -465,6 +489,14 @@ export { InstanceGroupManagerArgs } from "./instanceGroupManager";
 export type InstanceGroupManager = import("./instanceGroupManager").InstanceGroupManager;
 export const InstanceGroupManager: typeof import("./instanceGroupManager").InstanceGroupManager = null as any;
 
+export { InstanceIamBindingArgs } from "./instanceIamBinding";
+export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
+export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
+
+export { InstanceIamMemberArgs } from "./instanceIamMember";
+export type InstanceIamMember = import("./instanceIamMember").InstanceIamMember;
+export const InstanceIamMember: typeof import("./instanceIamMember").InstanceIamMember = null as any;
+
 export { InstanceIamPolicyArgs } from "./instanceIamPolicy";
 export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
@@ -472,6 +504,14 @@ export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIam
 export { InstanceTemplateArgs } from "./instanceTemplate";
 export type InstanceTemplate = import("./instanceTemplate").InstanceTemplate;
 export const InstanceTemplate: typeof import("./instanceTemplate").InstanceTemplate = null as any;
+
+export { InstanceTemplateIamBindingArgs } from "./instanceTemplateIamBinding";
+export type InstanceTemplateIamBinding = import("./instanceTemplateIamBinding").InstanceTemplateIamBinding;
+export const InstanceTemplateIamBinding: typeof import("./instanceTemplateIamBinding").InstanceTemplateIamBinding = null as any;
+
+export { InstanceTemplateIamMemberArgs } from "./instanceTemplateIamMember";
+export type InstanceTemplateIamMember = import("./instanceTemplateIamMember").InstanceTemplateIamMember;
+export const InstanceTemplateIamMember: typeof import("./instanceTemplateIamMember").InstanceTemplateIamMember = null as any;
 
 export { InstanceTemplateIamPolicyArgs } from "./instanceTemplateIamPolicy";
 export type InstanceTemplateIamPolicy = import("./instanceTemplateIamPolicy").InstanceTemplateIamPolicy;
@@ -489,6 +529,14 @@ export { LicenseArgs } from "./license";
 export type License = import("./license").License;
 export const License: typeof import("./license").License = null as any;
 
+export { LicenseIamBindingArgs } from "./licenseIamBinding";
+export type LicenseIamBinding = import("./licenseIamBinding").LicenseIamBinding;
+export const LicenseIamBinding: typeof import("./licenseIamBinding").LicenseIamBinding = null as any;
+
+export { LicenseIamMemberArgs } from "./licenseIamMember";
+export type LicenseIamMember = import("./licenseIamMember").LicenseIamMember;
+export const LicenseIamMember: typeof import("./licenseIamMember").LicenseIamMember = null as any;
+
 export { LicenseIamPolicyArgs } from "./licenseIamPolicy";
 export type LicenseIamPolicy = import("./licenseIamPolicy").LicenseIamPolicy;
 export const LicenseIamPolicy: typeof import("./licenseIamPolicy").LicenseIamPolicy = null as any;
@@ -496,6 +544,14 @@ export const LicenseIamPolicy: typeof import("./licenseIamPolicy").LicenseIamPol
 export { MachineImageArgs } from "./machineImage";
 export type MachineImage = import("./machineImage").MachineImage;
 export const MachineImage: typeof import("./machineImage").MachineImage = null as any;
+
+export { MachineImageIamBindingArgs } from "./machineImageIamBinding";
+export type MachineImageIamBinding = import("./machineImageIamBinding").MachineImageIamBinding;
+export const MachineImageIamBinding: typeof import("./machineImageIamBinding").MachineImageIamBinding = null as any;
+
+export { MachineImageIamMemberArgs } from "./machineImageIamMember";
+export type MachineImageIamMember = import("./machineImageIamMember").MachineImageIamMember;
+export const MachineImageIamMember: typeof import("./machineImageIamMember").MachineImageIamMember = null as any;
 
 export { MachineImageIamPolicyArgs } from "./machineImageIamPolicy";
 export type MachineImageIamPolicy = import("./machineImageIamPolicy").MachineImageIamPolicy;
@@ -517,6 +573,14 @@ export { NetworkFirewallPolicyArgs } from "./networkFirewallPolicy";
 export type NetworkFirewallPolicy = import("./networkFirewallPolicy").NetworkFirewallPolicy;
 export const NetworkFirewallPolicy: typeof import("./networkFirewallPolicy").NetworkFirewallPolicy = null as any;
 
+export { NetworkFirewallPolicyIamBindingArgs } from "./networkFirewallPolicyIamBinding";
+export type NetworkFirewallPolicyIamBinding = import("./networkFirewallPolicyIamBinding").NetworkFirewallPolicyIamBinding;
+export const NetworkFirewallPolicyIamBinding: typeof import("./networkFirewallPolicyIamBinding").NetworkFirewallPolicyIamBinding = null as any;
+
+export { NetworkFirewallPolicyIamMemberArgs } from "./networkFirewallPolicyIamMember";
+export type NetworkFirewallPolicyIamMember = import("./networkFirewallPolicyIamMember").NetworkFirewallPolicyIamMember;
+export const NetworkFirewallPolicyIamMember: typeof import("./networkFirewallPolicyIamMember").NetworkFirewallPolicyIamMember = null as any;
+
 export { NetworkFirewallPolicyIamPolicyArgs } from "./networkFirewallPolicyIamPolicy";
 export type NetworkFirewallPolicyIamPolicy = import("./networkFirewallPolicyIamPolicy").NetworkFirewallPolicyIamPolicy;
 export const NetworkFirewallPolicyIamPolicy: typeof import("./networkFirewallPolicyIamPolicy").NetworkFirewallPolicyIamPolicy = null as any;
@@ -525,6 +589,14 @@ export { NodeGroupArgs } from "./nodeGroup";
 export type NodeGroup = import("./nodeGroup").NodeGroup;
 export const NodeGroup: typeof import("./nodeGroup").NodeGroup = null as any;
 
+export { NodeGroupIamBindingArgs } from "./nodeGroupIamBinding";
+export type NodeGroupIamBinding = import("./nodeGroupIamBinding").NodeGroupIamBinding;
+export const NodeGroupIamBinding: typeof import("./nodeGroupIamBinding").NodeGroupIamBinding = null as any;
+
+export { NodeGroupIamMemberArgs } from "./nodeGroupIamMember";
+export type NodeGroupIamMember = import("./nodeGroupIamMember").NodeGroupIamMember;
+export const NodeGroupIamMember: typeof import("./nodeGroupIamMember").NodeGroupIamMember = null as any;
+
 export { NodeGroupIamPolicyArgs } from "./nodeGroupIamPolicy";
 export type NodeGroupIamPolicy = import("./nodeGroupIamPolicy").NodeGroupIamPolicy;
 export const NodeGroupIamPolicy: typeof import("./nodeGroupIamPolicy").NodeGroupIamPolicy = null as any;
@@ -532,6 +604,14 @@ export const NodeGroupIamPolicy: typeof import("./nodeGroupIamPolicy").NodeGroup
 export { NodeTemplateArgs } from "./nodeTemplate";
 export type NodeTemplate = import("./nodeTemplate").NodeTemplate;
 export const NodeTemplate: typeof import("./nodeTemplate").NodeTemplate = null as any;
+
+export { NodeTemplateIamBindingArgs } from "./nodeTemplateIamBinding";
+export type NodeTemplateIamBinding = import("./nodeTemplateIamBinding").NodeTemplateIamBinding;
+export const NodeTemplateIamBinding: typeof import("./nodeTemplateIamBinding").NodeTemplateIamBinding = null as any;
+
+export { NodeTemplateIamMemberArgs } from "./nodeTemplateIamMember";
+export type NodeTemplateIamMember = import("./nodeTemplateIamMember").NodeTemplateIamMember;
+export const NodeTemplateIamMember: typeof import("./nodeTemplateIamMember").NodeTemplateIamMember = null as any;
 
 export { NodeTemplateIamPolicyArgs } from "./nodeTemplateIamPolicy";
 export type NodeTemplateIamPolicy = import("./nodeTemplateIamPolicy").NodeTemplateIamPolicy;
@@ -569,6 +649,14 @@ export { RegionDiskArgs } from "./regionDisk";
 export type RegionDisk = import("./regionDisk").RegionDisk;
 export const RegionDisk: typeof import("./regionDisk").RegionDisk = null as any;
 
+export { RegionDiskIamBindingArgs } from "./regionDiskIamBinding";
+export type RegionDiskIamBinding = import("./regionDiskIamBinding").RegionDiskIamBinding;
+export const RegionDiskIamBinding: typeof import("./regionDiskIamBinding").RegionDiskIamBinding = null as any;
+
+export { RegionDiskIamMemberArgs } from "./regionDiskIamMember";
+export type RegionDiskIamMember = import("./regionDiskIamMember").RegionDiskIamMember;
+export const RegionDiskIamMember: typeof import("./regionDiskIamMember").RegionDiskIamMember = null as any;
+
 export { RegionDiskIamPolicyArgs } from "./regionDiskIamPolicy";
 export type RegionDiskIamPolicy = import("./regionDiskIamPolicy").RegionDiskIamPolicy;
 export const RegionDiskIamPolicy: typeof import("./regionDiskIamPolicy").RegionDiskIamPolicy = null as any;
@@ -592,6 +680,14 @@ export const RegionNetworkEndpointGroup: typeof import("./regionNetworkEndpointG
 export { RegionNetworkFirewallPolicyArgs } from "./regionNetworkFirewallPolicy";
 export type RegionNetworkFirewallPolicy = import("./regionNetworkFirewallPolicy").RegionNetworkFirewallPolicy;
 export const RegionNetworkFirewallPolicy: typeof import("./regionNetworkFirewallPolicy").RegionNetworkFirewallPolicy = null as any;
+
+export { RegionNetworkFirewallPolicyIamBindingArgs } from "./regionNetworkFirewallPolicyIamBinding";
+export type RegionNetworkFirewallPolicyIamBinding = import("./regionNetworkFirewallPolicyIamBinding").RegionNetworkFirewallPolicyIamBinding;
+export const RegionNetworkFirewallPolicyIamBinding: typeof import("./regionNetworkFirewallPolicyIamBinding").RegionNetworkFirewallPolicyIamBinding = null as any;
+
+export { RegionNetworkFirewallPolicyIamMemberArgs } from "./regionNetworkFirewallPolicyIamMember";
+export type RegionNetworkFirewallPolicyIamMember = import("./regionNetworkFirewallPolicyIamMember").RegionNetworkFirewallPolicyIamMember;
+export const RegionNetworkFirewallPolicyIamMember: typeof import("./regionNetworkFirewallPolicyIamMember").RegionNetworkFirewallPolicyIamMember = null as any;
 
 export { RegionNetworkFirewallPolicyIamPolicyArgs } from "./regionNetworkFirewallPolicyIamPolicy";
 export type RegionNetworkFirewallPolicyIamPolicy = import("./regionNetworkFirewallPolicyIamPolicy").RegionNetworkFirewallPolicyIamPolicy;
@@ -633,6 +729,14 @@ export { ReservationArgs } from "./reservation";
 export type Reservation = import("./reservation").Reservation;
 export const Reservation: typeof import("./reservation").Reservation = null as any;
 
+export { ReservationIamBindingArgs } from "./reservationIamBinding";
+export type ReservationIamBinding = import("./reservationIamBinding").ReservationIamBinding;
+export const ReservationIamBinding: typeof import("./reservationIamBinding").ReservationIamBinding = null as any;
+
+export { ReservationIamMemberArgs } from "./reservationIamMember";
+export type ReservationIamMember = import("./reservationIamMember").ReservationIamMember;
+export const ReservationIamMember: typeof import("./reservationIamMember").ReservationIamMember = null as any;
+
 export { ReservationIamPolicyArgs } from "./reservationIamPolicy";
 export type ReservationIamPolicy = import("./reservationIamPolicy").ReservationIamPolicy;
 export const ReservationIamPolicy: typeof import("./reservationIamPolicy").ReservationIamPolicy = null as any;
@@ -640,6 +744,14 @@ export const ReservationIamPolicy: typeof import("./reservationIamPolicy").Reser
 export { ResourcePolicyArgs } from "./resourcePolicy";
 export type ResourcePolicy = import("./resourcePolicy").ResourcePolicy;
 export const ResourcePolicy: typeof import("./resourcePolicy").ResourcePolicy = null as any;
+
+export { ResourcePolicyIamBindingArgs } from "./resourcePolicyIamBinding";
+export type ResourcePolicyIamBinding = import("./resourcePolicyIamBinding").ResourcePolicyIamBinding;
+export const ResourcePolicyIamBinding: typeof import("./resourcePolicyIamBinding").ResourcePolicyIamBinding = null as any;
+
+export { ResourcePolicyIamMemberArgs } from "./resourcePolicyIamMember";
+export type ResourcePolicyIamMember = import("./resourcePolicyIamMember").ResourcePolicyIamMember;
+export const ResourcePolicyIamMember: typeof import("./resourcePolicyIamMember").ResourcePolicyIamMember = null as any;
 
 export { ResourcePolicyIamPolicyArgs } from "./resourcePolicyIamPolicy";
 export type ResourcePolicyIamPolicy = import("./resourcePolicyIamPolicy").ResourcePolicyIamPolicy;
@@ -661,6 +773,14 @@ export { ServiceAttachmentArgs } from "./serviceAttachment";
 export type ServiceAttachment = import("./serviceAttachment").ServiceAttachment;
 export const ServiceAttachment: typeof import("./serviceAttachment").ServiceAttachment = null as any;
 
+export { ServiceAttachmentIamBindingArgs } from "./serviceAttachmentIamBinding";
+export type ServiceAttachmentIamBinding = import("./serviceAttachmentIamBinding").ServiceAttachmentIamBinding;
+export const ServiceAttachmentIamBinding: typeof import("./serviceAttachmentIamBinding").ServiceAttachmentIamBinding = null as any;
+
+export { ServiceAttachmentIamMemberArgs } from "./serviceAttachmentIamMember";
+export type ServiceAttachmentIamMember = import("./serviceAttachmentIamMember").ServiceAttachmentIamMember;
+export const ServiceAttachmentIamMember: typeof import("./serviceAttachmentIamMember").ServiceAttachmentIamMember = null as any;
+
 export { ServiceAttachmentIamPolicyArgs } from "./serviceAttachmentIamPolicy";
 export type ServiceAttachmentIamPolicy = import("./serviceAttachmentIamPolicy").ServiceAttachmentIamPolicy;
 export const ServiceAttachmentIamPolicy: typeof import("./serviceAttachmentIamPolicy").ServiceAttachmentIamPolicy = null as any;
@@ -668,6 +788,14 @@ export const ServiceAttachmentIamPolicy: typeof import("./serviceAttachmentIamPo
 export { SnapshotArgs } from "./snapshot";
 export type Snapshot = import("./snapshot").Snapshot;
 export const Snapshot: typeof import("./snapshot").Snapshot = null as any;
+
+export { SnapshotIamBindingArgs } from "./snapshotIamBinding";
+export type SnapshotIamBinding = import("./snapshotIamBinding").SnapshotIamBinding;
+export const SnapshotIamBinding: typeof import("./snapshotIamBinding").SnapshotIamBinding = null as any;
+
+export { SnapshotIamMemberArgs } from "./snapshotIamMember";
+export type SnapshotIamMember = import("./snapshotIamMember").SnapshotIamMember;
+export const SnapshotIamMember: typeof import("./snapshotIamMember").SnapshotIamMember = null as any;
 
 export { SnapshotIamPolicyArgs } from "./snapshotIamPolicy";
 export type SnapshotIamPolicy = import("./snapshotIamPolicy").SnapshotIamPolicy;
@@ -684,6 +812,14 @@ export const SslPolicy: typeof import("./sslPolicy").SslPolicy = null as any;
 export { SubnetworkArgs } from "./subnetwork";
 export type Subnetwork = import("./subnetwork").Subnetwork;
 export const Subnetwork: typeof import("./subnetwork").Subnetwork = null as any;
+
+export { SubnetworkIamBindingArgs } from "./subnetworkIamBinding";
+export type SubnetworkIamBinding = import("./subnetworkIamBinding").SubnetworkIamBinding;
+export const SubnetworkIamBinding: typeof import("./subnetworkIamBinding").SubnetworkIamBinding = null as any;
+
+export { SubnetworkIamMemberArgs } from "./subnetworkIamMember";
+export type SubnetworkIamMember = import("./subnetworkIamMember").SubnetworkIamMember;
+export const SubnetworkIamMember: typeof import("./subnetworkIamMember").SubnetworkIamMember = null as any;
 
 export { SubnetworkIamPolicyArgs } from "./subnetworkIamPolicy";
 export type SubnetworkIamPolicy = import("./subnetworkIamPolicy").SubnetworkIamPolicy;
@@ -739,10 +875,14 @@ utilities.lazyLoad(exports, ["BackendBucket"], () => require("./backendBucket"))
 utilities.lazyLoad(exports, ["BackendService"], () => require("./backendService"));
 utilities.lazyLoad(exports, ["BackendServiceIamPolicy"], () => require("./backendServiceIamPolicy"));
 utilities.lazyLoad(exports, ["Disk"], () => require("./disk"));
+utilities.lazyLoad(exports, ["DiskIamBinding"], () => require("./diskIamBinding"));
+utilities.lazyLoad(exports, ["DiskIamMember"], () => require("./diskIamMember"));
 utilities.lazyLoad(exports, ["DiskIamPolicy"], () => require("./diskIamPolicy"));
 utilities.lazyLoad(exports, ["ExternalVpnGateway"], () => require("./externalVpnGateway"));
 utilities.lazyLoad(exports, ["Firewall"], () => require("./firewall"));
 utilities.lazyLoad(exports, ["FirewallPolicy"], () => require("./firewallPolicy"));
+utilities.lazyLoad(exports, ["FirewallPolicyIamBinding"], () => require("./firewallPolicyIamBinding"));
+utilities.lazyLoad(exports, ["FirewallPolicyIamMember"], () => require("./firewallPolicyIamMember"));
 utilities.lazyLoad(exports, ["FirewallPolicyIamPolicy"], () => require("./firewallPolicyIamPolicy"));
 utilities.lazyLoad(exports, ["ForwardingRule"], () => require("./forwardingRule"));
 utilities.lazyLoad(exports, ["getAddress","getAddressOutput"], () => require("./getAddress"));
@@ -844,27 +984,43 @@ utilities.lazyLoad(exports, ["HealthCheck"], () => require("./healthCheck"));
 utilities.lazyLoad(exports, ["HttpHealthCheck"], () => require("./httpHealthCheck"));
 utilities.lazyLoad(exports, ["HttpsHealthCheck"], () => require("./httpsHealthCheck"));
 utilities.lazyLoad(exports, ["Image"], () => require("./image"));
+utilities.lazyLoad(exports, ["ImageIamBinding"], () => require("./imageIamBinding"));
+utilities.lazyLoad(exports, ["ImageIamMember"], () => require("./imageIamMember"));
 utilities.lazyLoad(exports, ["ImageIamPolicy"], () => require("./imageIamPolicy"));
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
 utilities.lazyLoad(exports, ["InstanceGroup"], () => require("./instanceGroup"));
 utilities.lazyLoad(exports, ["InstanceGroupManager"], () => require("./instanceGroupManager"));
+utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
+utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 utilities.lazyLoad(exports, ["InstanceTemplate"], () => require("./instanceTemplate"));
+utilities.lazyLoad(exports, ["InstanceTemplateIamBinding"], () => require("./instanceTemplateIamBinding"));
+utilities.lazyLoad(exports, ["InstanceTemplateIamMember"], () => require("./instanceTemplateIamMember"));
 utilities.lazyLoad(exports, ["InstanceTemplateIamPolicy"], () => require("./instanceTemplateIamPolicy"));
 utilities.lazyLoad(exports, ["Interconnect"], () => require("./interconnect"));
 utilities.lazyLoad(exports, ["InterconnectAttachment"], () => require("./interconnectAttachment"));
 utilities.lazyLoad(exports, ["License"], () => require("./license"));
+utilities.lazyLoad(exports, ["LicenseIamBinding"], () => require("./licenseIamBinding"));
+utilities.lazyLoad(exports, ["LicenseIamMember"], () => require("./licenseIamMember"));
 utilities.lazyLoad(exports, ["LicenseIamPolicy"], () => require("./licenseIamPolicy"));
 utilities.lazyLoad(exports, ["MachineImage"], () => require("./machineImage"));
+utilities.lazyLoad(exports, ["MachineImageIamBinding"], () => require("./machineImageIamBinding"));
+utilities.lazyLoad(exports, ["MachineImageIamMember"], () => require("./machineImageIamMember"));
 utilities.lazyLoad(exports, ["MachineImageIamPolicy"], () => require("./machineImageIamPolicy"));
 utilities.lazyLoad(exports, ["Network"], () => require("./network"));
 utilities.lazyLoad(exports, ["NetworkEdgeSecurityService"], () => require("./networkEdgeSecurityService"));
 utilities.lazyLoad(exports, ["NetworkEndpointGroup"], () => require("./networkEndpointGroup"));
 utilities.lazyLoad(exports, ["NetworkFirewallPolicy"], () => require("./networkFirewallPolicy"));
+utilities.lazyLoad(exports, ["NetworkFirewallPolicyIamBinding"], () => require("./networkFirewallPolicyIamBinding"));
+utilities.lazyLoad(exports, ["NetworkFirewallPolicyIamMember"], () => require("./networkFirewallPolicyIamMember"));
 utilities.lazyLoad(exports, ["NetworkFirewallPolicyIamPolicy"], () => require("./networkFirewallPolicyIamPolicy"));
 utilities.lazyLoad(exports, ["NodeGroup"], () => require("./nodeGroup"));
+utilities.lazyLoad(exports, ["NodeGroupIamBinding"], () => require("./nodeGroupIamBinding"));
+utilities.lazyLoad(exports, ["NodeGroupIamMember"], () => require("./nodeGroupIamMember"));
 utilities.lazyLoad(exports, ["NodeGroupIamPolicy"], () => require("./nodeGroupIamPolicy"));
 utilities.lazyLoad(exports, ["NodeTemplate"], () => require("./nodeTemplate"));
+utilities.lazyLoad(exports, ["NodeTemplateIamBinding"], () => require("./nodeTemplateIamBinding"));
+utilities.lazyLoad(exports, ["NodeTemplateIamMember"], () => require("./nodeTemplateIamMember"));
 utilities.lazyLoad(exports, ["NodeTemplateIamPolicy"], () => require("./nodeTemplateIamPolicy"));
 utilities.lazyLoad(exports, ["PacketMirroring"], () => require("./packetMirroring"));
 utilities.lazyLoad(exports, ["PublicAdvertisedPrefix"], () => require("./publicAdvertisedPrefix"));
@@ -874,12 +1030,16 @@ utilities.lazyLoad(exports, ["RegionBackendService"], () => require("./regionBac
 utilities.lazyLoad(exports, ["RegionBackendServiceIamPolicy"], () => require("./regionBackendServiceIamPolicy"));
 utilities.lazyLoad(exports, ["RegionCommitment"], () => require("./regionCommitment"));
 utilities.lazyLoad(exports, ["RegionDisk"], () => require("./regionDisk"));
+utilities.lazyLoad(exports, ["RegionDiskIamBinding"], () => require("./regionDiskIamBinding"));
+utilities.lazyLoad(exports, ["RegionDiskIamMember"], () => require("./regionDiskIamMember"));
 utilities.lazyLoad(exports, ["RegionDiskIamPolicy"], () => require("./regionDiskIamPolicy"));
 utilities.lazyLoad(exports, ["RegionHealthCheck"], () => require("./regionHealthCheck"));
 utilities.lazyLoad(exports, ["RegionHealthCheckService"], () => require("./regionHealthCheckService"));
 utilities.lazyLoad(exports, ["RegionInstanceGroupManager"], () => require("./regionInstanceGroupManager"));
 utilities.lazyLoad(exports, ["RegionNetworkEndpointGroup"], () => require("./regionNetworkEndpointGroup"));
 utilities.lazyLoad(exports, ["RegionNetworkFirewallPolicy"], () => require("./regionNetworkFirewallPolicy"));
+utilities.lazyLoad(exports, ["RegionNetworkFirewallPolicyIamBinding"], () => require("./regionNetworkFirewallPolicyIamBinding"));
+utilities.lazyLoad(exports, ["RegionNetworkFirewallPolicyIamMember"], () => require("./regionNetworkFirewallPolicyIamMember"));
 utilities.lazyLoad(exports, ["RegionNetworkFirewallPolicyIamPolicy"], () => require("./regionNetworkFirewallPolicyIamPolicy"));
 utilities.lazyLoad(exports, ["RegionNotificationEndpoint"], () => require("./regionNotificationEndpoint"));
 utilities.lazyLoad(exports, ["RegionSecurityPolicy"], () => require("./regionSecurityPolicy"));
@@ -890,19 +1050,29 @@ utilities.lazyLoad(exports, ["RegionTargetHttpsProxy"], () => require("./regionT
 utilities.lazyLoad(exports, ["RegionTargetTcpProxy"], () => require("./regionTargetTcpProxy"));
 utilities.lazyLoad(exports, ["RegionUrlMap"], () => require("./regionUrlMap"));
 utilities.lazyLoad(exports, ["Reservation"], () => require("./reservation"));
+utilities.lazyLoad(exports, ["ReservationIamBinding"], () => require("./reservationIamBinding"));
+utilities.lazyLoad(exports, ["ReservationIamMember"], () => require("./reservationIamMember"));
 utilities.lazyLoad(exports, ["ReservationIamPolicy"], () => require("./reservationIamPolicy"));
 utilities.lazyLoad(exports, ["ResourcePolicy"], () => require("./resourcePolicy"));
+utilities.lazyLoad(exports, ["ResourcePolicyIamBinding"], () => require("./resourcePolicyIamBinding"));
+utilities.lazyLoad(exports, ["ResourcePolicyIamMember"], () => require("./resourcePolicyIamMember"));
 utilities.lazyLoad(exports, ["ResourcePolicyIamPolicy"], () => require("./resourcePolicyIamPolicy"));
 utilities.lazyLoad(exports, ["Route"], () => require("./route"));
 utilities.lazyLoad(exports, ["Router"], () => require("./router"));
 utilities.lazyLoad(exports, ["SecurityPolicy"], () => require("./securityPolicy"));
 utilities.lazyLoad(exports, ["ServiceAttachment"], () => require("./serviceAttachment"));
+utilities.lazyLoad(exports, ["ServiceAttachmentIamBinding"], () => require("./serviceAttachmentIamBinding"));
+utilities.lazyLoad(exports, ["ServiceAttachmentIamMember"], () => require("./serviceAttachmentIamMember"));
 utilities.lazyLoad(exports, ["ServiceAttachmentIamPolicy"], () => require("./serviceAttachmentIamPolicy"));
 utilities.lazyLoad(exports, ["Snapshot"], () => require("./snapshot"));
+utilities.lazyLoad(exports, ["SnapshotIamBinding"], () => require("./snapshotIamBinding"));
+utilities.lazyLoad(exports, ["SnapshotIamMember"], () => require("./snapshotIamMember"));
 utilities.lazyLoad(exports, ["SnapshotIamPolicy"], () => require("./snapshotIamPolicy"));
 utilities.lazyLoad(exports, ["SslCertificate"], () => require("./sslCertificate"));
 utilities.lazyLoad(exports, ["SslPolicy"], () => require("./sslPolicy"));
 utilities.lazyLoad(exports, ["Subnetwork"], () => require("./subnetwork"));
+utilities.lazyLoad(exports, ["SubnetworkIamBinding"], () => require("./subnetworkIamBinding"));
+utilities.lazyLoad(exports, ["SubnetworkIamMember"], () => require("./subnetworkIamMember"));
 utilities.lazyLoad(exports, ["SubnetworkIamPolicy"], () => require("./subnetworkIamPolicy"));
 utilities.lazyLoad(exports, ["TargetGrpcProxy"], () => require("./targetGrpcProxy"));
 utilities.lazyLoad(exports, ["TargetHttpProxy"], () => require("./targetHttpProxy"));
@@ -935,6 +1105,10 @@ const _module = {
                 return new BackendServiceIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:Disk":
                 return new Disk(name, <any>undefined, { urn })
+            case "google-native:compute/v1:DiskIamBinding":
+                return new DiskIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:DiskIamMember":
+                return new DiskIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:DiskIamPolicy":
                 return new DiskIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:ExternalVpnGateway":
@@ -943,6 +1117,10 @@ const _module = {
                 return new Firewall(name, <any>undefined, { urn })
             case "google-native:compute/v1:FirewallPolicy":
                 return new FirewallPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/v1:FirewallPolicyIamBinding":
+                return new FirewallPolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:FirewallPolicyIamMember":
+                return new FirewallPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:FirewallPolicyIamPolicy":
                 return new FirewallPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:ForwardingRule":
@@ -963,6 +1141,10 @@ const _module = {
                 return new HttpsHealthCheck(name, <any>undefined, { urn })
             case "google-native:compute/v1:Image":
                 return new Image(name, <any>undefined, { urn })
+            case "google-native:compute/v1:ImageIamBinding":
+                return new ImageIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:ImageIamMember":
+                return new ImageIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:ImageIamPolicy":
                 return new ImageIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:Instance":
@@ -971,10 +1153,18 @@ const _module = {
                 return new InstanceGroup(name, <any>undefined, { urn })
             case "google-native:compute/v1:InstanceGroupManager":
                 return new InstanceGroupManager(name, <any>undefined, { urn })
+            case "google-native:compute/v1:InstanceIamBinding":
+                return new InstanceIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:InstanceIamMember":
+                return new InstanceIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:InstanceTemplate":
                 return new InstanceTemplate(name, <any>undefined, { urn })
+            case "google-native:compute/v1:InstanceTemplateIamBinding":
+                return new InstanceTemplateIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:InstanceTemplateIamMember":
+                return new InstanceTemplateIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:InstanceTemplateIamPolicy":
                 return new InstanceTemplateIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:Interconnect":
@@ -983,10 +1173,18 @@ const _module = {
                 return new InterconnectAttachment(name, <any>undefined, { urn })
             case "google-native:compute/v1:License":
                 return new License(name, <any>undefined, { urn })
+            case "google-native:compute/v1:LicenseIamBinding":
+                return new LicenseIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:LicenseIamMember":
+                return new LicenseIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:LicenseIamPolicy":
                 return new LicenseIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:MachineImage":
                 return new MachineImage(name, <any>undefined, { urn })
+            case "google-native:compute/v1:MachineImageIamBinding":
+                return new MachineImageIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:MachineImageIamMember":
+                return new MachineImageIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:MachineImageIamPolicy":
                 return new MachineImageIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:Network":
@@ -997,14 +1195,26 @@ const _module = {
                 return new NetworkEndpointGroup(name, <any>undefined, { urn })
             case "google-native:compute/v1:NetworkFirewallPolicy":
                 return new NetworkFirewallPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/v1:NetworkFirewallPolicyIamBinding":
+                return new NetworkFirewallPolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:NetworkFirewallPolicyIamMember":
+                return new NetworkFirewallPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:NetworkFirewallPolicyIamPolicy":
                 return new NetworkFirewallPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:NodeGroup":
                 return new NodeGroup(name, <any>undefined, { urn })
+            case "google-native:compute/v1:NodeGroupIamBinding":
+                return new NodeGroupIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:NodeGroupIamMember":
+                return new NodeGroupIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:NodeGroupIamPolicy":
                 return new NodeGroupIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:NodeTemplate":
                 return new NodeTemplate(name, <any>undefined, { urn })
+            case "google-native:compute/v1:NodeTemplateIamBinding":
+                return new NodeTemplateIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:NodeTemplateIamMember":
+                return new NodeTemplateIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:NodeTemplateIamPolicy":
                 return new NodeTemplateIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:PacketMirroring":
@@ -1023,6 +1233,10 @@ const _module = {
                 return new RegionCommitment(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionDisk":
                 return new RegionDisk(name, <any>undefined, { urn })
+            case "google-native:compute/v1:RegionDiskIamBinding":
+                return new RegionDiskIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:RegionDiskIamMember":
+                return new RegionDiskIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionDiskIamPolicy":
                 return new RegionDiskIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionHealthCheck":
@@ -1035,6 +1249,10 @@ const _module = {
                 return new RegionNetworkEndpointGroup(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionNetworkFirewallPolicy":
                 return new RegionNetworkFirewallPolicy(name, <any>undefined, { urn })
+            case "google-native:compute/v1:RegionNetworkFirewallPolicyIamBinding":
+                return new RegionNetworkFirewallPolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:RegionNetworkFirewallPolicyIamMember":
+                return new RegionNetworkFirewallPolicyIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionNetworkFirewallPolicyIamPolicy":
                 return new RegionNetworkFirewallPolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionNotificationEndpoint":
@@ -1055,10 +1273,18 @@ const _module = {
                 return new RegionUrlMap(name, <any>undefined, { urn })
             case "google-native:compute/v1:Reservation":
                 return new Reservation(name, <any>undefined, { urn })
+            case "google-native:compute/v1:ReservationIamBinding":
+                return new ReservationIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:ReservationIamMember":
+                return new ReservationIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:ReservationIamPolicy":
                 return new ReservationIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:ResourcePolicy":
                 return new ResourcePolicy(name, <any>undefined, { urn })
+            case "google-native:compute/v1:ResourcePolicyIamBinding":
+                return new ResourcePolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:ResourcePolicyIamMember":
+                return new ResourcePolicyIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:ResourcePolicyIamPolicy":
                 return new ResourcePolicyIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:Route":
@@ -1069,10 +1295,18 @@ const _module = {
                 return new SecurityPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:ServiceAttachment":
                 return new ServiceAttachment(name, <any>undefined, { urn })
+            case "google-native:compute/v1:ServiceAttachmentIamBinding":
+                return new ServiceAttachmentIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:ServiceAttachmentIamMember":
+                return new ServiceAttachmentIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:ServiceAttachmentIamPolicy":
                 return new ServiceAttachmentIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:Snapshot":
                 return new Snapshot(name, <any>undefined, { urn })
+            case "google-native:compute/v1:SnapshotIamBinding":
+                return new SnapshotIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:SnapshotIamMember":
+                return new SnapshotIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:SnapshotIamPolicy":
                 return new SnapshotIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:SslCertificate":
@@ -1081,6 +1315,10 @@ const _module = {
                 return new SslPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:Subnetwork":
                 return new Subnetwork(name, <any>undefined, { urn })
+            case "google-native:compute/v1:SubnetworkIamBinding":
+                return new SubnetworkIamBinding(name, <any>undefined, { urn })
+            case "google-native:compute/v1:SubnetworkIamMember":
+                return new SubnetworkIamMember(name, <any>undefined, { urn })
             case "google-native:compute/v1:SubnetworkIamPolicy":
                 return new SubnetworkIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:TargetGrpcProxy":

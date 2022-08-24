@@ -7,6 +7,8 @@ import typing
 # Export this package's modules as members:
 from .bucket import *
 from .bucket_access_control import *
+from .bucket_iam_binding import *
+from .bucket_iam_member import *
 from .bucket_iam_policy import *
 from .bucket_object import *
 from .default_object_access_control import *
@@ -22,6 +24,8 @@ from .get_object_iam_policy import *
 from .hmac_key import *
 from .notification import *
 from .object_access_control import *
+from .object_iam_binding import *
+from .object_iam_member import *
 from .object_iam_policy import *
 from ._inputs import *
 from . import outputs

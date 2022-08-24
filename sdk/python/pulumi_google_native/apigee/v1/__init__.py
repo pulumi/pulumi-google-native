@@ -67,6 +67,8 @@ from .instance_attachment import *
 from .keystore import *
 from .nat_address import *
 from .organization import *
+from .organization_environment_iam_binding import *
+from .organization_environment_iam_member import *
 from .organization_environment_iam_policy import *
 from .override import *
 from .query import *

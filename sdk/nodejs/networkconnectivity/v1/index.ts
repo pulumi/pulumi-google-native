@@ -29,9 +29,25 @@ export { HubArgs } from "./hub";
 export type Hub = import("./hub").Hub;
 export const Hub: typeof import("./hub").Hub = null as any;
 
+export { HubIamBindingArgs } from "./hubIamBinding";
+export type HubIamBinding = import("./hubIamBinding").HubIamBinding;
+export const HubIamBinding: typeof import("./hubIamBinding").HubIamBinding = null as any;
+
+export { HubIamMemberArgs } from "./hubIamMember";
+export type HubIamMember = import("./hubIamMember").HubIamMember;
+export const HubIamMember: typeof import("./hubIamMember").HubIamMember = null as any;
+
 export { HubIamPolicyArgs } from "./hubIamPolicy";
 export type HubIamPolicy = import("./hubIamPolicy").HubIamPolicy;
 export const HubIamPolicy: typeof import("./hubIamPolicy").HubIamPolicy = null as any;
+
+export { PolicyBasedRouteIamBindingArgs } from "./policyBasedRouteIamBinding";
+export type PolicyBasedRouteIamBinding = import("./policyBasedRouteIamBinding").PolicyBasedRouteIamBinding;
+export const PolicyBasedRouteIamBinding: typeof import("./policyBasedRouteIamBinding").PolicyBasedRouteIamBinding = null as any;
+
+export { PolicyBasedRouteIamMemberArgs } from "./policyBasedRouteIamMember";
+export type PolicyBasedRouteIamMember = import("./policyBasedRouteIamMember").PolicyBasedRouteIamMember;
+export const PolicyBasedRouteIamMember: typeof import("./policyBasedRouteIamMember").PolicyBasedRouteIamMember = null as any;
 
 export { PolicyBasedRouteIamPolicyArgs } from "./policyBasedRouteIamPolicy";
 export type PolicyBasedRouteIamPolicy = import("./policyBasedRouteIamPolicy").PolicyBasedRouteIamPolicy;
@@ -40,6 +56,14 @@ export const PolicyBasedRouteIamPolicy: typeof import("./policyBasedRouteIamPoli
 export { SpokeArgs } from "./spoke";
 export type Spoke = import("./spoke").Spoke;
 export const Spoke: typeof import("./spoke").Spoke = null as any;
+
+export { SpokeIamBindingArgs } from "./spokeIamBinding";
+export type SpokeIamBinding = import("./spokeIamBinding").SpokeIamBinding;
+export const SpokeIamBinding: typeof import("./spokeIamBinding").SpokeIamBinding = null as any;
+
+export { SpokeIamMemberArgs } from "./spokeIamMember";
+export type SpokeIamMember = import("./spokeIamMember").SpokeIamMember;
+export const SpokeIamMember: typeof import("./spokeIamMember").SpokeIamMember = null as any;
 
 export { SpokeIamPolicyArgs } from "./spokeIamPolicy";
 export type SpokeIamPolicy = import("./spokeIamPolicy").SpokeIamPolicy;
@@ -51,9 +75,15 @@ utilities.lazyLoad(exports, ["getPolicyBasedRouteIamPolicy","getPolicyBasedRoute
 utilities.lazyLoad(exports, ["getSpoke","getSpokeOutput"], () => require("./getSpoke"));
 utilities.lazyLoad(exports, ["getSpokeIamPolicy","getSpokeIamPolicyOutput"], () => require("./getSpokeIamPolicy"));
 utilities.lazyLoad(exports, ["Hub"], () => require("./hub"));
+utilities.lazyLoad(exports, ["HubIamBinding"], () => require("./hubIamBinding"));
+utilities.lazyLoad(exports, ["HubIamMember"], () => require("./hubIamMember"));
 utilities.lazyLoad(exports, ["HubIamPolicy"], () => require("./hubIamPolicy"));
+utilities.lazyLoad(exports, ["PolicyBasedRouteIamBinding"], () => require("./policyBasedRouteIamBinding"));
+utilities.lazyLoad(exports, ["PolicyBasedRouteIamMember"], () => require("./policyBasedRouteIamMember"));
 utilities.lazyLoad(exports, ["PolicyBasedRouteIamPolicy"], () => require("./policyBasedRouteIamPolicy"));
 utilities.lazyLoad(exports, ["Spoke"], () => require("./spoke"));
+utilities.lazyLoad(exports, ["SpokeIamBinding"], () => require("./spokeIamBinding"));
+utilities.lazyLoad(exports, ["SpokeIamMember"], () => require("./spokeIamMember"));
 utilities.lazyLoad(exports, ["SpokeIamPolicy"], () => require("./spokeIamPolicy"));
 
 // Export enums:
@@ -65,12 +95,24 @@ const _module = {
         switch (type) {
             case "google-native:networkconnectivity/v1:Hub":
                 return new Hub(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:HubIamBinding":
+                return new HubIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:HubIamMember":
+                return new HubIamMember(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1:HubIamPolicy":
                 return new HubIamPolicy(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:PolicyBasedRouteIamBinding":
+                return new PolicyBasedRouteIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:PolicyBasedRouteIamMember":
+                return new PolicyBasedRouteIamMember(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1:PolicyBasedRouteIamPolicy":
                 return new PolicyBasedRouteIamPolicy(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1:Spoke":
                 return new Spoke(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:SpokeIamBinding":
+                return new SpokeIamBinding(name, <any>undefined, { urn })
+            case "google-native:networkconnectivity/v1:SpokeIamMember":
+                return new SpokeIamMember(name, <any>undefined, { urn })
             case "google-native:networkconnectivity/v1:SpokeIamPolicy":
                 return new SpokeIamPolicy(name, <any>undefined, { urn })
             default:

@@ -9,6 +9,14 @@ export { FolderArgs } from "./folder";
 export type Folder = import("./folder").Folder;
 export const Folder: typeof import("./folder").Folder = null as any;
 
+export { FolderIamBindingArgs } from "./folderIamBinding";
+export type FolderIamBinding = import("./folderIamBinding").FolderIamBinding;
+export const FolderIamBinding: typeof import("./folderIamBinding").FolderIamBinding = null as any;
+
+export { FolderIamMemberArgs } from "./folderIamMember";
+export type FolderIamMember = import("./folderIamMember").FolderIamMember;
+export const FolderIamMember: typeof import("./folderIamMember").FolderIamMember = null as any;
+
 export { FolderIamPolicyArgs } from "./folderIamPolicy";
 export type FolderIamPolicy = import("./folderIamPolicy").FolderIamPolicy;
 export const FolderIamPolicy: typeof import("./folderIamPolicy").FolderIamPolicy = null as any;
@@ -22,6 +30,8 @@ export const getFolderIamPolicy: typeof import("./getFolderIamPolicy").getFolder
 export const getFolderIamPolicyOutput: typeof import("./getFolderIamPolicy").getFolderIamPolicyOutput = null as any;
 
 utilities.lazyLoad(exports, ["Folder"], () => require("./folder"));
+utilities.lazyLoad(exports, ["FolderIamBinding"], () => require("./folderIamBinding"));
+utilities.lazyLoad(exports, ["FolderIamMember"], () => require("./folderIamMember"));
 utilities.lazyLoad(exports, ["FolderIamPolicy"], () => require("./folderIamPolicy"));
 utilities.lazyLoad(exports, ["getFolder","getFolderOutput"], () => require("./getFolder"));
 utilities.lazyLoad(exports, ["getFolderIamPolicy","getFolderIamPolicyOutput"], () => require("./getFolderIamPolicy"));
@@ -35,6 +45,10 @@ const _module = {
         switch (type) {
             case "google-native:cloudresourcemanager/v2:Folder":
                 return new Folder(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v2:FolderIamBinding":
+                return new FolderIamBinding(name, <any>undefined, { urn })
+            case "google-native:cloudresourcemanager/v2:FolderIamMember":
+                return new FolderIamMember(name, <any>undefined, { urn })
             case "google-native:cloudresourcemanager/v2:FolderIamPolicy":
                 return new FolderIamPolicy(name, <any>undefined, { urn })
             default:

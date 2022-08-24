@@ -9,9 +9,25 @@ export { DataExchangeArgs } from "./dataExchange";
 export type DataExchange = import("./dataExchange").DataExchange;
 export const DataExchange: typeof import("./dataExchange").DataExchange = null as any;
 
+export { DataExchangeIamBindingArgs } from "./dataExchangeIamBinding";
+export type DataExchangeIamBinding = import("./dataExchangeIamBinding").DataExchangeIamBinding;
+export const DataExchangeIamBinding: typeof import("./dataExchangeIamBinding").DataExchangeIamBinding = null as any;
+
+export { DataExchangeIamMemberArgs } from "./dataExchangeIamMember";
+export type DataExchangeIamMember = import("./dataExchangeIamMember").DataExchangeIamMember;
+export const DataExchangeIamMember: typeof import("./dataExchangeIamMember").DataExchangeIamMember = null as any;
+
 export { DataExchangeIamPolicyArgs } from "./dataExchangeIamPolicy";
 export type DataExchangeIamPolicy = import("./dataExchangeIamPolicy").DataExchangeIamPolicy;
 export const DataExchangeIamPolicy: typeof import("./dataExchangeIamPolicy").DataExchangeIamPolicy = null as any;
+
+export { DataExchangeListingIamBindingArgs } from "./dataExchangeListingIamBinding";
+export type DataExchangeListingIamBinding = import("./dataExchangeListingIamBinding").DataExchangeListingIamBinding;
+export const DataExchangeListingIamBinding: typeof import("./dataExchangeListingIamBinding").DataExchangeListingIamBinding = null as any;
+
+export { DataExchangeListingIamMemberArgs } from "./dataExchangeListingIamMember";
+export type DataExchangeListingIamMember = import("./dataExchangeListingIamMember").DataExchangeListingIamMember;
+export const DataExchangeListingIamMember: typeof import("./dataExchangeListingIamMember").DataExchangeListingIamMember = null as any;
 
 export { DataExchangeListingIamPolicyArgs } from "./dataExchangeListingIamPolicy";
 export type DataExchangeListingIamPolicy = import("./dataExchangeListingIamPolicy").DataExchangeListingIamPolicy;
@@ -38,7 +54,11 @@ export type Listing = import("./listing").Listing;
 export const Listing: typeof import("./listing").Listing = null as any;
 
 utilities.lazyLoad(exports, ["DataExchange"], () => require("./dataExchange"));
+utilities.lazyLoad(exports, ["DataExchangeIamBinding"], () => require("./dataExchangeIamBinding"));
+utilities.lazyLoad(exports, ["DataExchangeIamMember"], () => require("./dataExchangeIamMember"));
 utilities.lazyLoad(exports, ["DataExchangeIamPolicy"], () => require("./dataExchangeIamPolicy"));
+utilities.lazyLoad(exports, ["DataExchangeListingIamBinding"], () => require("./dataExchangeListingIamBinding"));
+utilities.lazyLoad(exports, ["DataExchangeListingIamMember"], () => require("./dataExchangeListingIamMember"));
 utilities.lazyLoad(exports, ["DataExchangeListingIamPolicy"], () => require("./dataExchangeListingIamPolicy"));
 utilities.lazyLoad(exports, ["getDataExchange","getDataExchangeOutput"], () => require("./getDataExchange"));
 utilities.lazyLoad(exports, ["getDataExchangeIamPolicy","getDataExchangeIamPolicyOutput"], () => require("./getDataExchangeIamPolicy"));
@@ -55,8 +75,16 @@ const _module = {
         switch (type) {
             case "google-native:analyticshub/v1beta1:DataExchange":
                 return new DataExchange(name, <any>undefined, { urn })
+            case "google-native:analyticshub/v1beta1:DataExchangeIamBinding":
+                return new DataExchangeIamBinding(name, <any>undefined, { urn })
+            case "google-native:analyticshub/v1beta1:DataExchangeIamMember":
+                return new DataExchangeIamMember(name, <any>undefined, { urn })
             case "google-native:analyticshub/v1beta1:DataExchangeIamPolicy":
                 return new DataExchangeIamPolicy(name, <any>undefined, { urn })
+            case "google-native:analyticshub/v1beta1:DataExchangeListingIamBinding":
+                return new DataExchangeListingIamBinding(name, <any>undefined, { urn })
+            case "google-native:analyticshub/v1beta1:DataExchangeListingIamMember":
+                return new DataExchangeListingIamMember(name, <any>undefined, { urn })
             case "google-native:analyticshub/v1beta1:DataExchangeListingIamPolicy":
                 return new DataExchangeListingIamPolicy(name, <any>undefined, { urn })
             case "google-native:analyticshub/v1beta1:Listing":

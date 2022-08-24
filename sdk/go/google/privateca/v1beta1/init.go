@@ -25,10 +25,22 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Certificate{}
 	case "google-native:privateca/v1beta1:CertificateAuthority":
 		r = &CertificateAuthority{}
+	case "google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamBinding":
+		r = &CertificateAuthorityCertificateRevocationListIamBinding{}
+	case "google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamMember":
+		r = &CertificateAuthorityCertificateRevocationListIamMember{}
 	case "google-native:privateca/v1beta1:CertificateAuthorityCertificateRevocationListIamPolicy":
 		r = &CertificateAuthorityCertificateRevocationListIamPolicy{}
+	case "google-native:privateca/v1beta1:CertificateAuthorityIamBinding":
+		r = &CertificateAuthorityIamBinding{}
+	case "google-native:privateca/v1beta1:CertificateAuthorityIamMember":
+		r = &CertificateAuthorityIamMember{}
 	case "google-native:privateca/v1beta1:CertificateAuthorityIamPolicy":
 		r = &CertificateAuthorityIamPolicy{}
+	case "google-native:privateca/v1beta1:ReusableConfigIamBinding":
+		r = &ReusableConfigIamBinding{}
+	case "google-native:privateca/v1beta1:ReusableConfigIamMember":
+		r = &ReusableConfigIamMember{}
 	case "google-native:privateca/v1beta1:ReusableConfigIamPolicy":
 		r = &ReusableConfigIamPolicy{}
 	default:

@@ -23,8 +23,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:privateca/v1:CaPool":
 		r = &CaPool{}
+	case "google-native:privateca/v1:CaPoolCertificateAuthorityCertificateRevocationListIamBinding":
+		r = &CaPoolCertificateAuthorityCertificateRevocationListIamBinding{}
+	case "google-native:privateca/v1:CaPoolCertificateAuthorityCertificateRevocationListIamMember":
+		r = &CaPoolCertificateAuthorityCertificateRevocationListIamMember{}
 	case "google-native:privateca/v1:CaPoolCertificateAuthorityCertificateRevocationListIamPolicy":
 		r = &CaPoolCertificateAuthorityCertificateRevocationListIamPolicy{}
+	case "google-native:privateca/v1:CaPoolIamBinding":
+		r = &CaPoolIamBinding{}
+	case "google-native:privateca/v1:CaPoolIamMember":
+		r = &CaPoolIamMember{}
 	case "google-native:privateca/v1:CaPoolIamPolicy":
 		r = &CaPoolIamPolicy{}
 	case "google-native:privateca/v1:Certificate":
@@ -33,6 +41,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &CertificateAuthority{}
 	case "google-native:privateca/v1:CertificateTemplate":
 		r = &CertificateTemplate{}
+	case "google-native:privateca/v1:CertificateTemplateIamBinding":
+		r = &CertificateTemplateIamBinding{}
+	case "google-native:privateca/v1:CertificateTemplateIamMember":
+		r = &CertificateTemplateIamMember{}
 	case "google-native:privateca/v1:CertificateTemplateIamPolicy":
 		r = &CertificateTemplateIamPolicy{}
 	default:

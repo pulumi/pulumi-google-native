@@ -23,22 +23,54 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:apigeeregistry/v1:Api":
 		r = &Api{}
+	case "google-native:apigeeregistry/v1:ApiArtifactIamBinding":
+		r = &ApiArtifactIamBinding{}
+	case "google-native:apigeeregistry/v1:ApiArtifactIamMember":
+		r = &ApiArtifactIamMember{}
 	case "google-native:apigeeregistry/v1:ApiArtifactIamPolicy":
 		r = &ApiArtifactIamPolicy{}
+	case "google-native:apigeeregistry/v1:ApiDeploymentIamBinding":
+		r = &ApiDeploymentIamBinding{}
+	case "google-native:apigeeregistry/v1:ApiDeploymentIamMember":
+		r = &ApiDeploymentIamMember{}
 	case "google-native:apigeeregistry/v1:ApiDeploymentIamPolicy":
 		r = &ApiDeploymentIamPolicy{}
+	case "google-native:apigeeregistry/v1:ApiIamBinding":
+		r = &ApiIamBinding{}
+	case "google-native:apigeeregistry/v1:ApiIamMember":
+		r = &ApiIamMember{}
 	case "google-native:apigeeregistry/v1:ApiIamPolicy":
 		r = &ApiIamPolicy{}
+	case "google-native:apigeeregistry/v1:ApiVersionArtifactIamBinding":
+		r = &ApiVersionArtifactIamBinding{}
+	case "google-native:apigeeregistry/v1:ApiVersionArtifactIamMember":
+		r = &ApiVersionArtifactIamMember{}
 	case "google-native:apigeeregistry/v1:ApiVersionArtifactIamPolicy":
 		r = &ApiVersionArtifactIamPolicy{}
+	case "google-native:apigeeregistry/v1:ApiVersionIamBinding":
+		r = &ApiVersionIamBinding{}
+	case "google-native:apigeeregistry/v1:ApiVersionIamMember":
+		r = &ApiVersionIamMember{}
 	case "google-native:apigeeregistry/v1:ApiVersionIamPolicy":
 		r = &ApiVersionIamPolicy{}
+	case "google-native:apigeeregistry/v1:ApiVersionSpecArtifactIamBinding":
+		r = &ApiVersionSpecArtifactIamBinding{}
+	case "google-native:apigeeregistry/v1:ApiVersionSpecArtifactIamMember":
+		r = &ApiVersionSpecArtifactIamMember{}
 	case "google-native:apigeeregistry/v1:ApiVersionSpecArtifactIamPolicy":
 		r = &ApiVersionSpecArtifactIamPolicy{}
+	case "google-native:apigeeregistry/v1:ApiVersionSpecIamBinding":
+		r = &ApiVersionSpecIamBinding{}
+	case "google-native:apigeeregistry/v1:ApiVersionSpecIamMember":
+		r = &ApiVersionSpecIamMember{}
 	case "google-native:apigeeregistry/v1:ApiVersionSpecIamPolicy":
 		r = &ApiVersionSpecIamPolicy{}
 	case "google-native:apigeeregistry/v1:Artifact":
 		r = &Artifact{}
+	case "google-native:apigeeregistry/v1:ArtifactIamBinding":
+		r = &ArtifactIamBinding{}
+	case "google-native:apigeeregistry/v1:ArtifactIamMember":
+		r = &ArtifactIamMember{}
 	case "google-native:apigeeregistry/v1:ArtifactIamPolicy":
 		r = &ArtifactIamPolicy{}
 	case "google-native:apigeeregistry/v1:Deployment":
@@ -47,8 +79,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DeploymentArtifact{}
 	case "google-native:apigeeregistry/v1:Instance":
 		r = &Instance{}
+	case "google-native:apigeeregistry/v1:InstanceIamBinding":
+		r = &InstanceIamBinding{}
+	case "google-native:apigeeregistry/v1:InstanceIamMember":
+		r = &InstanceIamMember{}
 	case "google-native:apigeeregistry/v1:InstanceIamPolicy":
 		r = &InstanceIamPolicy{}
+	case "google-native:apigeeregistry/v1:RuntimeIamBinding":
+		r = &RuntimeIamBinding{}
+	case "google-native:apigeeregistry/v1:RuntimeIamMember":
+		r = &RuntimeIamMember{}
 	case "google-native:apigeeregistry/v1:RuntimeIamPolicy":
 		r = &RuntimeIamPolicy{}
 	case "google-native:apigeeregistry/v1:Spec":

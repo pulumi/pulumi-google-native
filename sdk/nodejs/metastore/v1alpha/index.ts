@@ -13,6 +13,14 @@ export { FederationArgs } from "./federation";
 export type Federation = import("./federation").Federation;
 export const Federation: typeof import("./federation").Federation = null as any;
 
+export { FederationIamBindingArgs } from "./federationIamBinding";
+export type FederationIamBinding = import("./federationIamBinding").FederationIamBinding;
+export const FederationIamBinding: typeof import("./federationIamBinding").FederationIamBinding = null as any;
+
+export { FederationIamMemberArgs } from "./federationIamMember";
+export type FederationIamMember = import("./federationIamMember").FederationIamMember;
+export const FederationIamMember: typeof import("./federationIamMember").FederationIamMember = null as any;
+
 export { FederationIamPolicyArgs } from "./federationIamPolicy";
 export type FederationIamPolicy = import("./federationIamPolicy").FederationIamPolicy;
 export const FederationIamPolicy: typeof import("./federationIamPolicy").FederationIamPolicy = null as any;
@@ -61,17 +69,49 @@ export { ServiceArgs } from "./service";
 export type Service = import("./service").Service;
 export const Service: typeof import("./service").Service = null as any;
 
+export { ServiceBackupIamBindingArgs } from "./serviceBackupIamBinding";
+export type ServiceBackupIamBinding = import("./serviceBackupIamBinding").ServiceBackupIamBinding;
+export const ServiceBackupIamBinding: typeof import("./serviceBackupIamBinding").ServiceBackupIamBinding = null as any;
+
+export { ServiceBackupIamMemberArgs } from "./serviceBackupIamMember";
+export type ServiceBackupIamMember = import("./serviceBackupIamMember").ServiceBackupIamMember;
+export const ServiceBackupIamMember: typeof import("./serviceBackupIamMember").ServiceBackupIamMember = null as any;
+
 export { ServiceBackupIamPolicyArgs } from "./serviceBackupIamPolicy";
 export type ServiceBackupIamPolicy = import("./serviceBackupIamPolicy").ServiceBackupIamPolicy;
 export const ServiceBackupIamPolicy: typeof import("./serviceBackupIamPolicy").ServiceBackupIamPolicy = null as any;
+
+export { ServiceDatabaseIamBindingArgs } from "./serviceDatabaseIamBinding";
+export type ServiceDatabaseIamBinding = import("./serviceDatabaseIamBinding").ServiceDatabaseIamBinding;
+export const ServiceDatabaseIamBinding: typeof import("./serviceDatabaseIamBinding").ServiceDatabaseIamBinding = null as any;
+
+export { ServiceDatabaseIamMemberArgs } from "./serviceDatabaseIamMember";
+export type ServiceDatabaseIamMember = import("./serviceDatabaseIamMember").ServiceDatabaseIamMember;
+export const ServiceDatabaseIamMember: typeof import("./serviceDatabaseIamMember").ServiceDatabaseIamMember = null as any;
 
 export { ServiceDatabaseIamPolicyArgs } from "./serviceDatabaseIamPolicy";
 export type ServiceDatabaseIamPolicy = import("./serviceDatabaseIamPolicy").ServiceDatabaseIamPolicy;
 export const ServiceDatabaseIamPolicy: typeof import("./serviceDatabaseIamPolicy").ServiceDatabaseIamPolicy = null as any;
 
+export { ServiceDatabaseTableIamBindingArgs } from "./serviceDatabaseTableIamBinding";
+export type ServiceDatabaseTableIamBinding = import("./serviceDatabaseTableIamBinding").ServiceDatabaseTableIamBinding;
+export const ServiceDatabaseTableIamBinding: typeof import("./serviceDatabaseTableIamBinding").ServiceDatabaseTableIamBinding = null as any;
+
+export { ServiceDatabaseTableIamMemberArgs } from "./serviceDatabaseTableIamMember";
+export type ServiceDatabaseTableIamMember = import("./serviceDatabaseTableIamMember").ServiceDatabaseTableIamMember;
+export const ServiceDatabaseTableIamMember: typeof import("./serviceDatabaseTableIamMember").ServiceDatabaseTableIamMember = null as any;
+
 export { ServiceDatabaseTableIamPolicyArgs } from "./serviceDatabaseTableIamPolicy";
 export type ServiceDatabaseTableIamPolicy = import("./serviceDatabaseTableIamPolicy").ServiceDatabaseTableIamPolicy;
 export const ServiceDatabaseTableIamPolicy: typeof import("./serviceDatabaseTableIamPolicy").ServiceDatabaseTableIamPolicy = null as any;
+
+export { ServiceIamBindingArgs } from "./serviceIamBinding";
+export type ServiceIamBinding = import("./serviceIamBinding").ServiceIamBinding;
+export const ServiceIamBinding: typeof import("./serviceIamBinding").ServiceIamBinding = null as any;
+
+export { ServiceIamMemberArgs } from "./serviceIamMember";
+export type ServiceIamMember = import("./serviceIamMember").ServiceIamMember;
+export const ServiceIamMember: typeof import("./serviceIamMember").ServiceIamMember = null as any;
 
 export { ServiceIamPolicyArgs } from "./serviceIamPolicy";
 export type ServiceIamPolicy = import("./serviceIamPolicy").ServiceIamPolicy;
@@ -79,6 +119,8 @@ export const ServiceIamPolicy: typeof import("./serviceIamPolicy").ServiceIamPol
 
 utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
 utilities.lazyLoad(exports, ["Federation"], () => require("./federation"));
+utilities.lazyLoad(exports, ["FederationIamBinding"], () => require("./federationIamBinding"));
+utilities.lazyLoad(exports, ["FederationIamMember"], () => require("./federationIamMember"));
 utilities.lazyLoad(exports, ["FederationIamPolicy"], () => require("./federationIamPolicy"));
 utilities.lazyLoad(exports, ["getBackup","getBackupOutput"], () => require("./getBackup"));
 utilities.lazyLoad(exports, ["getFederation","getFederationOutput"], () => require("./getFederation"));
@@ -91,9 +133,17 @@ utilities.lazyLoad(exports, ["getServiceDatabaseTableIamPolicy","getServiceDatab
 utilities.lazyLoad(exports, ["getServiceIamPolicy","getServiceIamPolicyOutput"], () => require("./getServiceIamPolicy"));
 utilities.lazyLoad(exports, ["MetadataImport"], () => require("./metadataImport"));
 utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+utilities.lazyLoad(exports, ["ServiceBackupIamBinding"], () => require("./serviceBackupIamBinding"));
+utilities.lazyLoad(exports, ["ServiceBackupIamMember"], () => require("./serviceBackupIamMember"));
 utilities.lazyLoad(exports, ["ServiceBackupIamPolicy"], () => require("./serviceBackupIamPolicy"));
+utilities.lazyLoad(exports, ["ServiceDatabaseIamBinding"], () => require("./serviceDatabaseIamBinding"));
+utilities.lazyLoad(exports, ["ServiceDatabaseIamMember"], () => require("./serviceDatabaseIamMember"));
 utilities.lazyLoad(exports, ["ServiceDatabaseIamPolicy"], () => require("./serviceDatabaseIamPolicy"));
+utilities.lazyLoad(exports, ["ServiceDatabaseTableIamBinding"], () => require("./serviceDatabaseTableIamBinding"));
+utilities.lazyLoad(exports, ["ServiceDatabaseTableIamMember"], () => require("./serviceDatabaseTableIamMember"));
 utilities.lazyLoad(exports, ["ServiceDatabaseTableIamPolicy"], () => require("./serviceDatabaseTableIamPolicy"));
+utilities.lazyLoad(exports, ["ServiceIamBinding"], () => require("./serviceIamBinding"));
+utilities.lazyLoad(exports, ["ServiceIamMember"], () => require("./serviceIamMember"));
 utilities.lazyLoad(exports, ["ServiceIamPolicy"], () => require("./serviceIamPolicy"));
 
 // Export enums:
@@ -107,18 +157,38 @@ const _module = {
                 return new Backup(name, <any>undefined, { urn })
             case "google-native:metastore/v1alpha:Federation":
                 return new Federation(name, <any>undefined, { urn })
+            case "google-native:metastore/v1alpha:FederationIamBinding":
+                return new FederationIamBinding(name, <any>undefined, { urn })
+            case "google-native:metastore/v1alpha:FederationIamMember":
+                return new FederationIamMember(name, <any>undefined, { urn })
             case "google-native:metastore/v1alpha:FederationIamPolicy":
                 return new FederationIamPolicy(name, <any>undefined, { urn })
             case "google-native:metastore/v1alpha:MetadataImport":
                 return new MetadataImport(name, <any>undefined, { urn })
             case "google-native:metastore/v1alpha:Service":
                 return new Service(name, <any>undefined, { urn })
+            case "google-native:metastore/v1alpha:ServiceBackupIamBinding":
+                return new ServiceBackupIamBinding(name, <any>undefined, { urn })
+            case "google-native:metastore/v1alpha:ServiceBackupIamMember":
+                return new ServiceBackupIamMember(name, <any>undefined, { urn })
             case "google-native:metastore/v1alpha:ServiceBackupIamPolicy":
                 return new ServiceBackupIamPolicy(name, <any>undefined, { urn })
+            case "google-native:metastore/v1alpha:ServiceDatabaseIamBinding":
+                return new ServiceDatabaseIamBinding(name, <any>undefined, { urn })
+            case "google-native:metastore/v1alpha:ServiceDatabaseIamMember":
+                return new ServiceDatabaseIamMember(name, <any>undefined, { urn })
             case "google-native:metastore/v1alpha:ServiceDatabaseIamPolicy":
                 return new ServiceDatabaseIamPolicy(name, <any>undefined, { urn })
+            case "google-native:metastore/v1alpha:ServiceDatabaseTableIamBinding":
+                return new ServiceDatabaseTableIamBinding(name, <any>undefined, { urn })
+            case "google-native:metastore/v1alpha:ServiceDatabaseTableIamMember":
+                return new ServiceDatabaseTableIamMember(name, <any>undefined, { urn })
             case "google-native:metastore/v1alpha:ServiceDatabaseTableIamPolicy":
                 return new ServiceDatabaseTableIamPolicy(name, <any>undefined, { urn })
+            case "google-native:metastore/v1alpha:ServiceIamBinding":
+                return new ServiceIamBinding(name, <any>undefined, { urn })
+            case "google-native:metastore/v1alpha:ServiceIamMember":
+                return new ServiceIamMember(name, <any>undefined, { urn })
             case "google-native:metastore/v1alpha:ServiceIamPolicy":
                 return new ServiceIamPolicy(name, <any>undefined, { urn })
             default:

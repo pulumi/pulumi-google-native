@@ -18,8 +18,14 @@ from .get_instance_iam_policy import *
 from .get_instance_table_iam_policy import *
 from .get_table import *
 from .instance import *
+from .instance_cluster_backup_iam_binding import *
+from .instance_cluster_backup_iam_member import *
 from .instance_cluster_backup_iam_policy import *
+from .instance_iam_binding import *
+from .instance_iam_member import *
 from .instance_iam_policy import *
+from .instance_table_iam_binding import *
+from .instance_table_iam_member import *
 from .instance_table_iam_policy import *
 from .table import *
 from ._inputs import *

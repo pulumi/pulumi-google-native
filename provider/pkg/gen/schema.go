@@ -449,6 +449,37 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	ops map[string]*operation) error {
 	resourceTok := g.genToken(typeName)
 
+	g.pkg.Types["google-native:iam/v1:Condition"] = schema.ComplexTypeSpec{
+		ObjectTypeSpec: schema.ObjectTypeSpec{
+			Description: "An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.",
+			Type:        "object",
+			Properties: map[string]schema.PropertySpec{
+				"description": {
+					Description: "An optional description of the expression. This is a longer text which describes the expression, e.g., when hovering over it in a UI.",
+					TypeSpec: schema.TypeSpec{
+						Type: "string",
+					},
+				},
+				"expression": {
+					Description: "Textual representation of an expression in Common Expression Language syntax.",
+					TypeSpec: schema.TypeSpec{
+						Type: "string",
+					},
+				},
+				"title": {
+					Description: "A title for the expression, i.e. a short string describing its purpose.",
+					TypeSpec: schema.TypeSpec{
+						Type: "string",
+					},
+				},
+			},
+			Required: []string{
+				"expression",
+				"title",
+			},
+		},
+	}
+
 	properties := map[string]schema.PropertySpec{}
 	requiredProperties := codegen.NewStringSet()
 	inputProperties := map[string]schema.PropertySpec{}
@@ -524,6 +555,15 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		Update: resources.UpdateAPIOperation{
 			CloudAPIOperation: resources.CloudAPIOperation{},
 		},
+	}
+
+	if strings.HasSuffix(typeName, "IamPolicy") {
+		switch g.mod {
+		case "storage/v1":
+			resourceMeta.IamResourceName = "bucket"
+		default:
+			resourceMeta.IamResourceName = "resource"
+		}
 	}
 
 	patternParams := codegen.NewStringSet()
@@ -877,6 +917,18 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 
 	g.pkg.Resources[resourceTok] = resourceSpec
 	g.metadata.Resources[resourceTok] = resourceMeta
+
+	// For resources with a `setIamPolicy` method defined, also generate Binding and Member resources to provide
+	// more granular alternatives to overwriting the entire policy.
+	if dd.hasIAMOverlays {
+		iamBindingToken := strings.TrimSuffix(resourceTok, "Policy") + "Binding"
+		g.pkg.Resources[iamBindingToken] = iamBindingSpec
+		g.metadata.Resources[iamBindingToken] = resourceMeta
+		iamMemberToken := strings.TrimSuffix(resourceTok, "Policy") + "Member"
+		g.pkg.Resources[iamMemberToken] = iamMemberSpec
+		g.metadata.Resources[iamMemberToken] = resourceMeta
+	}
+
 	return nil
 }
 

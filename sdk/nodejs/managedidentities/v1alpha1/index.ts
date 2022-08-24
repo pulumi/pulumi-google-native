@@ -13,9 +13,25 @@ export { DomainArgs } from "./domain";
 export type Domain = import("./domain").Domain;
 export const Domain: typeof import("./domain").Domain = null as any;
 
+export { DomainBackupIamBindingArgs } from "./domainBackupIamBinding";
+export type DomainBackupIamBinding = import("./domainBackupIamBinding").DomainBackupIamBinding;
+export const DomainBackupIamBinding: typeof import("./domainBackupIamBinding").DomainBackupIamBinding = null as any;
+
+export { DomainBackupIamMemberArgs } from "./domainBackupIamMember";
+export type DomainBackupIamMember = import("./domainBackupIamMember").DomainBackupIamMember;
+export const DomainBackupIamMember: typeof import("./domainBackupIamMember").DomainBackupIamMember = null as any;
+
 export { DomainBackupIamPolicyArgs } from "./domainBackupIamPolicy";
 export type DomainBackupIamPolicy = import("./domainBackupIamPolicy").DomainBackupIamPolicy;
 export const DomainBackupIamPolicy: typeof import("./domainBackupIamPolicy").DomainBackupIamPolicy = null as any;
+
+export { DomainIamBindingArgs } from "./domainIamBinding";
+export type DomainIamBinding = import("./domainIamBinding").DomainIamBinding;
+export const DomainIamBinding: typeof import("./domainIamBinding").DomainIamBinding = null as any;
+
+export { DomainIamMemberArgs } from "./domainIamMember";
+export type DomainIamMember = import("./domainIamMember").DomainIamMember;
+export const DomainIamMember: typeof import("./domainIamMember").DomainIamMember = null as any;
 
 export { DomainIamPolicyArgs } from "./domainIamPolicy";
 export type DomainIamPolicy = import("./domainIamPolicy").DomainIamPolicy;
@@ -49,13 +65,25 @@ export { PeeringArgs } from "./peering";
 export type Peering = import("./peering").Peering;
 export const Peering: typeof import("./peering").Peering = null as any;
 
+export { PeeringIamBindingArgs } from "./peeringIamBinding";
+export type PeeringIamBinding = import("./peeringIamBinding").PeeringIamBinding;
+export const PeeringIamBinding: typeof import("./peeringIamBinding").PeeringIamBinding = null as any;
+
+export { PeeringIamMemberArgs } from "./peeringIamMember";
+export type PeeringIamMember = import("./peeringIamMember").PeeringIamMember;
+export const PeeringIamMember: typeof import("./peeringIamMember").PeeringIamMember = null as any;
+
 export { PeeringIamPolicyArgs } from "./peeringIamPolicy";
 export type PeeringIamPolicy = import("./peeringIamPolicy").PeeringIamPolicy;
 export const PeeringIamPolicy: typeof import("./peeringIamPolicy").PeeringIamPolicy = null as any;
 
 utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
 utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+utilities.lazyLoad(exports, ["DomainBackupIamBinding"], () => require("./domainBackupIamBinding"));
+utilities.lazyLoad(exports, ["DomainBackupIamMember"], () => require("./domainBackupIamMember"));
 utilities.lazyLoad(exports, ["DomainBackupIamPolicy"], () => require("./domainBackupIamPolicy"));
+utilities.lazyLoad(exports, ["DomainIamBinding"], () => require("./domainIamBinding"));
+utilities.lazyLoad(exports, ["DomainIamMember"], () => require("./domainIamMember"));
 utilities.lazyLoad(exports, ["DomainIamPolicy"], () => require("./domainIamPolicy"));
 utilities.lazyLoad(exports, ["getBackup","getBackupOutput"], () => require("./getBackup"));
 utilities.lazyLoad(exports, ["getDomain","getDomainOutput"], () => require("./getDomain"));
@@ -64,6 +92,8 @@ utilities.lazyLoad(exports, ["getDomainIamPolicy","getDomainIamPolicyOutput"], (
 utilities.lazyLoad(exports, ["getPeering","getPeeringOutput"], () => require("./getPeering"));
 utilities.lazyLoad(exports, ["getPeeringIamPolicy","getPeeringIamPolicyOutput"], () => require("./getPeeringIamPolicy"));
 utilities.lazyLoad(exports, ["Peering"], () => require("./peering"));
+utilities.lazyLoad(exports, ["PeeringIamBinding"], () => require("./peeringIamBinding"));
+utilities.lazyLoad(exports, ["PeeringIamMember"], () => require("./peeringIamMember"));
 utilities.lazyLoad(exports, ["PeeringIamPolicy"], () => require("./peeringIamPolicy"));
 
 const _module = {
@@ -74,12 +104,24 @@ const _module = {
                 return new Backup(name, <any>undefined, { urn })
             case "google-native:managedidentities/v1alpha1:Domain":
                 return new Domain(name, <any>undefined, { urn })
+            case "google-native:managedidentities/v1alpha1:DomainBackupIamBinding":
+                return new DomainBackupIamBinding(name, <any>undefined, { urn })
+            case "google-native:managedidentities/v1alpha1:DomainBackupIamMember":
+                return new DomainBackupIamMember(name, <any>undefined, { urn })
             case "google-native:managedidentities/v1alpha1:DomainBackupIamPolicy":
                 return new DomainBackupIamPolicy(name, <any>undefined, { urn })
+            case "google-native:managedidentities/v1alpha1:DomainIamBinding":
+                return new DomainIamBinding(name, <any>undefined, { urn })
+            case "google-native:managedidentities/v1alpha1:DomainIamMember":
+                return new DomainIamMember(name, <any>undefined, { urn })
             case "google-native:managedidentities/v1alpha1:DomainIamPolicy":
                 return new DomainIamPolicy(name, <any>undefined, { urn })
             case "google-native:managedidentities/v1alpha1:Peering":
                 return new Peering(name, <any>undefined, { urn })
+            case "google-native:managedidentities/v1alpha1:PeeringIamBinding":
+                return new PeeringIamBinding(name, <any>undefined, { urn })
+            case "google-native:managedidentities/v1alpha1:PeeringIamMember":
+                return new PeeringIamMember(name, <any>undefined, { urn })
             case "google-native:managedidentities/v1alpha1:PeeringIamPolicy":
                 return new PeeringIamPolicy(name, <any>undefined, { urn })
             default:

@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:eventarc/v1beta1:Trigger":
 		r = &Trigger{}
+	case "google-native:eventarc/v1beta1:TriggerIamBinding":
+		r = &TriggerIamBinding{}
+	case "google-native:eventarc/v1beta1:TriggerIamMember":
+		r = &TriggerIamMember{}
 	case "google-native:eventarc/v1beta1:TriggerIamPolicy":
 		r = &TriggerIamPolicy{}
 	default:

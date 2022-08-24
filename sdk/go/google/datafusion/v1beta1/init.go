@@ -23,8 +23,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:datafusion/v1beta1:Instance":
 		r = &Instance{}
+	case "google-native:datafusion/v1beta1:InstanceIamBinding":
+		r = &InstanceIamBinding{}
+	case "google-native:datafusion/v1beta1:InstanceIamMember":
+		r = &InstanceIamMember{}
 	case "google-native:datafusion/v1beta1:InstanceIamPolicy":
 		r = &InstanceIamPolicy{}
+	case "google-native:datafusion/v1beta1:InstanceNamespaceIamBinding":
+		r = &InstanceNamespaceIamBinding{}
+	case "google-native:datafusion/v1beta1:InstanceNamespaceIamMember":
+		r = &InstanceNamespaceIamMember{}
 	case "google-native:datafusion/v1beta1:InstanceNamespaceIamPolicy":
 		r = &InstanceNamespaceIamPolicy{}
 	default:

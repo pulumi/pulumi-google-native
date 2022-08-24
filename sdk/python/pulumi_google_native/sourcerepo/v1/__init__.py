@@ -9,6 +9,8 @@ from ._enums import *
 from .get_repo import *
 from .get_repo_iam_policy import *
 from .repo import *
+from .repo_iam_binding import *
+from .repo_iam_member import *
 from .repo_iam_policy import *
 from ._inputs import *
 from . import outputs

@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
+export { GameServerDeploymentIamBindingArgs } from "./gameServerDeploymentIamBinding";
+export type GameServerDeploymentIamBinding = import("./gameServerDeploymentIamBinding").GameServerDeploymentIamBinding;
+export const GameServerDeploymentIamBinding: typeof import("./gameServerDeploymentIamBinding").GameServerDeploymentIamBinding = null as any;
+
+export { GameServerDeploymentIamMemberArgs } from "./gameServerDeploymentIamMember";
+export type GameServerDeploymentIamMember = import("./gameServerDeploymentIamMember").GameServerDeploymentIamMember;
+export const GameServerDeploymentIamMember: typeof import("./gameServerDeploymentIamMember").GameServerDeploymentIamMember = null as any;
+
 export { GameServerDeploymentIamPolicyArgs } from "./gameServerDeploymentIamPolicy";
 export type GameServerDeploymentIamPolicy = import("./gameServerDeploymentIamPolicy").GameServerDeploymentIamPolicy;
 export const GameServerDeploymentIamPolicy: typeof import("./gameServerDeploymentIamPolicy").GameServerDeploymentIamPolicy = null as any;
@@ -13,6 +21,8 @@ export { GetGameServerDeploymentIamPolicyArgs, GetGameServerDeploymentIamPolicyR
 export const getGameServerDeploymentIamPolicy: typeof import("./getGameServerDeploymentIamPolicy").getGameServerDeploymentIamPolicy = null as any;
 export const getGameServerDeploymentIamPolicyOutput: typeof import("./getGameServerDeploymentIamPolicy").getGameServerDeploymentIamPolicyOutput = null as any;
 
+utilities.lazyLoad(exports, ["GameServerDeploymentIamBinding"], () => require("./gameServerDeploymentIamBinding"));
+utilities.lazyLoad(exports, ["GameServerDeploymentIamMember"], () => require("./gameServerDeploymentIamMember"));
 utilities.lazyLoad(exports, ["GameServerDeploymentIamPolicy"], () => require("./gameServerDeploymentIamPolicy"));
 utilities.lazyLoad(exports, ["getGameServerDeploymentIamPolicy","getGameServerDeploymentIamPolicyOutput"], () => require("./getGameServerDeploymentIamPolicy"));
 
@@ -23,6 +33,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:gameservices/v1beta:GameServerDeploymentIamBinding":
+                return new GameServerDeploymentIamBinding(name, <any>undefined, { urn })
+            case "google-native:gameservices/v1beta:GameServerDeploymentIamMember":
+                return new GameServerDeploymentIamMember(name, <any>undefined, { urn })
             case "google-native:gameservices/v1beta:GameServerDeploymentIamPolicy":
                 return new GameServerDeploymentIamPolicy(name, <any>undefined, { urn })
             default:

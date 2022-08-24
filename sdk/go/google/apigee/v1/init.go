@@ -69,6 +69,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NatAddress{}
 	case "google-native:apigee/v1:Organization":
 		r = &Organization{}
+	case "google-native:apigee/v1:OrganizationEnvironmentIamBinding":
+		r = &OrganizationEnvironmentIamBinding{}
+	case "google-native:apigee/v1:OrganizationEnvironmentIamMember":
+		r = &OrganizationEnvironmentIamMember{}
 	case "google-native:apigee/v1:OrganizationEnvironmentIamPolicy":
 		r = &OrganizationEnvironmentIamPolicy{}
 	case "google-native:apigee/v1:Override":

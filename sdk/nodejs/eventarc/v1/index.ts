@@ -13,9 +13,25 @@ export { ChannelConnectionArgs } from "./channelConnection";
 export type ChannelConnection = import("./channelConnection").ChannelConnection;
 export const ChannelConnection: typeof import("./channelConnection").ChannelConnection = null as any;
 
+export { ChannelConnectionIamBindingArgs } from "./channelConnectionIamBinding";
+export type ChannelConnectionIamBinding = import("./channelConnectionIamBinding").ChannelConnectionIamBinding;
+export const ChannelConnectionIamBinding: typeof import("./channelConnectionIamBinding").ChannelConnectionIamBinding = null as any;
+
+export { ChannelConnectionIamMemberArgs } from "./channelConnectionIamMember";
+export type ChannelConnectionIamMember = import("./channelConnectionIamMember").ChannelConnectionIamMember;
+export const ChannelConnectionIamMember: typeof import("./channelConnectionIamMember").ChannelConnectionIamMember = null as any;
+
 export { ChannelConnectionIamPolicyArgs } from "./channelConnectionIamPolicy";
 export type ChannelConnectionIamPolicy = import("./channelConnectionIamPolicy").ChannelConnectionIamPolicy;
 export const ChannelConnectionIamPolicy: typeof import("./channelConnectionIamPolicy").ChannelConnectionIamPolicy = null as any;
+
+export { ChannelIamBindingArgs } from "./channelIamBinding";
+export type ChannelIamBinding = import("./channelIamBinding").ChannelIamBinding;
+export const ChannelIamBinding: typeof import("./channelIamBinding").ChannelIamBinding = null as any;
+
+export { ChannelIamMemberArgs } from "./channelIamMember";
+export type ChannelIamMember = import("./channelIamMember").ChannelIamMember;
+export const ChannelIamMember: typeof import("./channelIamMember").ChannelIamMember = null as any;
 
 export { ChannelIamPolicyArgs } from "./channelIamPolicy";
 export type ChannelIamPolicy = import("./channelIamPolicy").ChannelIamPolicy;
@@ -49,13 +65,25 @@ export { TriggerArgs } from "./trigger";
 export type Trigger = import("./trigger").Trigger;
 export const Trigger: typeof import("./trigger").Trigger = null as any;
 
+export { TriggerIamBindingArgs } from "./triggerIamBinding";
+export type TriggerIamBinding = import("./triggerIamBinding").TriggerIamBinding;
+export const TriggerIamBinding: typeof import("./triggerIamBinding").TriggerIamBinding = null as any;
+
+export { TriggerIamMemberArgs } from "./triggerIamMember";
+export type TriggerIamMember = import("./triggerIamMember").TriggerIamMember;
+export const TriggerIamMember: typeof import("./triggerIamMember").TriggerIamMember = null as any;
+
 export { TriggerIamPolicyArgs } from "./triggerIamPolicy";
 export type TriggerIamPolicy = import("./triggerIamPolicy").TriggerIamPolicy;
 export const TriggerIamPolicy: typeof import("./triggerIamPolicy").TriggerIamPolicy = null as any;
 
 utilities.lazyLoad(exports, ["Channel"], () => require("./channel"));
 utilities.lazyLoad(exports, ["ChannelConnection"], () => require("./channelConnection"));
+utilities.lazyLoad(exports, ["ChannelConnectionIamBinding"], () => require("./channelConnectionIamBinding"));
+utilities.lazyLoad(exports, ["ChannelConnectionIamMember"], () => require("./channelConnectionIamMember"));
 utilities.lazyLoad(exports, ["ChannelConnectionIamPolicy"], () => require("./channelConnectionIamPolicy"));
+utilities.lazyLoad(exports, ["ChannelIamBinding"], () => require("./channelIamBinding"));
+utilities.lazyLoad(exports, ["ChannelIamMember"], () => require("./channelIamMember"));
 utilities.lazyLoad(exports, ["ChannelIamPolicy"], () => require("./channelIamPolicy"));
 utilities.lazyLoad(exports, ["getChannel","getChannelOutput"], () => require("./getChannel"));
 utilities.lazyLoad(exports, ["getChannelConnection","getChannelConnectionOutput"], () => require("./getChannelConnection"));
@@ -64,6 +92,8 @@ utilities.lazyLoad(exports, ["getChannelIamPolicy","getChannelIamPolicyOutput"],
 utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
 utilities.lazyLoad(exports, ["getTriggerIamPolicy","getTriggerIamPolicyOutput"], () => require("./getTriggerIamPolicy"));
 utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
+utilities.lazyLoad(exports, ["TriggerIamBinding"], () => require("./triggerIamBinding"));
+utilities.lazyLoad(exports, ["TriggerIamMember"], () => require("./triggerIamMember"));
 utilities.lazyLoad(exports, ["TriggerIamPolicy"], () => require("./triggerIamPolicy"));
 
 // Export enums:
@@ -77,12 +107,24 @@ const _module = {
                 return new Channel(name, <any>undefined, { urn })
             case "google-native:eventarc/v1:ChannelConnection":
                 return new ChannelConnection(name, <any>undefined, { urn })
+            case "google-native:eventarc/v1:ChannelConnectionIamBinding":
+                return new ChannelConnectionIamBinding(name, <any>undefined, { urn })
+            case "google-native:eventarc/v1:ChannelConnectionIamMember":
+                return new ChannelConnectionIamMember(name, <any>undefined, { urn })
             case "google-native:eventarc/v1:ChannelConnectionIamPolicy":
                 return new ChannelConnectionIamPolicy(name, <any>undefined, { urn })
+            case "google-native:eventarc/v1:ChannelIamBinding":
+                return new ChannelIamBinding(name, <any>undefined, { urn })
+            case "google-native:eventarc/v1:ChannelIamMember":
+                return new ChannelIamMember(name, <any>undefined, { urn })
             case "google-native:eventarc/v1:ChannelIamPolicy":
                 return new ChannelIamPolicy(name, <any>undefined, { urn })
             case "google-native:eventarc/v1:Trigger":
                 return new Trigger(name, <any>undefined, { urn })
+            case "google-native:eventarc/v1:TriggerIamBinding":
+                return new TriggerIamBinding(name, <any>undefined, { urn })
+            case "google-native:eventarc/v1:TriggerIamMember":
+                return new TriggerIamMember(name, <any>undefined, { urn })
             case "google-native:eventarc/v1:TriggerIamPolicy":
                 return new TriggerIamPolicy(name, <any>undefined, { urn })
             default:

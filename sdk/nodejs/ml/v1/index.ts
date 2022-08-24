@@ -37,6 +37,14 @@ export { JobArgs } from "./job";
 export type Job = import("./job").Job;
 export const Job: typeof import("./job").Job = null as any;
 
+export { JobIamBindingArgs } from "./jobIamBinding";
+export type JobIamBinding = import("./jobIamBinding").JobIamBinding;
+export const JobIamBinding: typeof import("./jobIamBinding").JobIamBinding = null as any;
+
+export { JobIamMemberArgs } from "./jobIamMember";
+export type JobIamMember = import("./jobIamMember").JobIamMember;
+export const JobIamMember: typeof import("./jobIamMember").JobIamMember = null as any;
+
 export { JobIamPolicyArgs } from "./jobIamPolicy";
 export type JobIamPolicy = import("./jobIamPolicy").JobIamPolicy;
 export const JobIamPolicy: typeof import("./jobIamPolicy").JobIamPolicy = null as any;
@@ -44,6 +52,14 @@ export const JobIamPolicy: typeof import("./jobIamPolicy").JobIamPolicy = null a
 export { ModelArgs } from "./model";
 export type Model = import("./model").Model;
 export const Model: typeof import("./model").Model = null as any;
+
+export { ModelIamBindingArgs } from "./modelIamBinding";
+export type ModelIamBinding = import("./modelIamBinding").ModelIamBinding;
+export const ModelIamBinding: typeof import("./modelIamBinding").ModelIamBinding = null as any;
+
+export { ModelIamMemberArgs } from "./modelIamMember";
+export type ModelIamMember = import("./modelIamMember").ModelIamMember;
+export const ModelIamMember: typeof import("./modelIamMember").ModelIamMember = null as any;
 
 export { ModelIamPolicyArgs } from "./modelIamPolicy";
 export type ModelIamPolicy = import("./modelIamPolicy").ModelIamPolicy;
@@ -69,8 +85,12 @@ utilities.lazyLoad(exports, ["getStudy","getStudyOutput"], () => require("./getS
 utilities.lazyLoad(exports, ["getTrial","getTrialOutput"], () => require("./getTrial"));
 utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
 utilities.lazyLoad(exports, ["Job"], () => require("./job"));
+utilities.lazyLoad(exports, ["JobIamBinding"], () => require("./jobIamBinding"));
+utilities.lazyLoad(exports, ["JobIamMember"], () => require("./jobIamMember"));
 utilities.lazyLoad(exports, ["JobIamPolicy"], () => require("./jobIamPolicy"));
 utilities.lazyLoad(exports, ["Model"], () => require("./model"));
+utilities.lazyLoad(exports, ["ModelIamBinding"], () => require("./modelIamBinding"));
+utilities.lazyLoad(exports, ["ModelIamMember"], () => require("./modelIamMember"));
 utilities.lazyLoad(exports, ["ModelIamPolicy"], () => require("./modelIamPolicy"));
 utilities.lazyLoad(exports, ["Study"], () => require("./study"));
 utilities.lazyLoad(exports, ["Trial"], () => require("./trial"));
@@ -85,10 +105,18 @@ const _module = {
         switch (type) {
             case "google-native:ml/v1:Job":
                 return new Job(name, <any>undefined, { urn })
+            case "google-native:ml/v1:JobIamBinding":
+                return new JobIamBinding(name, <any>undefined, { urn })
+            case "google-native:ml/v1:JobIamMember":
+                return new JobIamMember(name, <any>undefined, { urn })
             case "google-native:ml/v1:JobIamPolicy":
                 return new JobIamPolicy(name, <any>undefined, { urn })
             case "google-native:ml/v1:Model":
                 return new Model(name, <any>undefined, { urn })
+            case "google-native:ml/v1:ModelIamBinding":
+                return new ModelIamBinding(name, <any>undefined, { urn })
+            case "google-native:ml/v1:ModelIamMember":
+                return new ModelIamMember(name, <any>undefined, { urn })
             case "google-native:ml/v1:ModelIamPolicy":
                 return new ModelIamPolicy(name, <any>undefined, { urn })
             case "google-native:ml/v1:Study":

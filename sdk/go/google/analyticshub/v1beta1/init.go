@@ -23,8 +23,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:analyticshub/v1beta1:DataExchange":
 		r = &DataExchange{}
+	case "google-native:analyticshub/v1beta1:DataExchangeIamBinding":
+		r = &DataExchangeIamBinding{}
+	case "google-native:analyticshub/v1beta1:DataExchangeIamMember":
+		r = &DataExchangeIamMember{}
 	case "google-native:analyticshub/v1beta1:DataExchangeIamPolicy":
 		r = &DataExchangeIamPolicy{}
+	case "google-native:analyticshub/v1beta1:DataExchangeListingIamBinding":
+		r = &DataExchangeListingIamBinding{}
+	case "google-native:analyticshub/v1beta1:DataExchangeListingIamMember":
+		r = &DataExchangeListingIamMember{}
 	case "google-native:analyticshub/v1beta1:DataExchangeListingIamPolicy":
 		r = &DataExchangeListingIamPolicy{}
 	case "google-native:analyticshub/v1beta1:Listing":

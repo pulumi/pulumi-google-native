@@ -6,14 +6,30 @@ from ... import _utilities
 import typing
 # Export this package's modules as members:
 from .api import *
+from .api_artifact_iam_binding import *
+from .api_artifact_iam_member import *
 from .api_artifact_iam_policy import *
+from .api_deployment_iam_binding import *
+from .api_deployment_iam_member import *
 from .api_deployment_iam_policy import *
+from .api_iam_binding import *
+from .api_iam_member import *
 from .api_iam_policy import *
+from .api_version_artifact_iam_binding import *
+from .api_version_artifact_iam_member import *
 from .api_version_artifact_iam_policy import *
+from .api_version_iam_binding import *
+from .api_version_iam_member import *
 from .api_version_iam_policy import *
+from .api_version_spec_artifact_iam_binding import *
+from .api_version_spec_artifact_iam_member import *
 from .api_version_spec_artifact_iam_policy import *
+from .api_version_spec_iam_binding import *
+from .api_version_spec_iam_member import *
 from .api_version_spec_iam_policy import *
 from .artifact import *
+from .artifact_iam_binding import *
+from .artifact_iam_member import *
 from .artifact_iam_policy import *
 from .deployment import *
 from .deployment_artifact import *
@@ -36,7 +52,11 @@ from .get_spec import *
 from .get_version import *
 from .get_version_artifact import *
 from .instance import *
+from .instance_iam_binding import *
+from .instance_iam_member import *
 from .instance_iam_policy import *
+from .runtime_iam_binding import *
+from .runtime_iam_member import *
 from .runtime_iam_policy import *
 from .spec import *
 from .version import *

@@ -23,10 +23,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:containeranalysis/v1beta1:Note":
 		r = &Note{}
+	case "google-native:containeranalysis/v1beta1:NoteIamBinding":
+		r = &NoteIamBinding{}
+	case "google-native:containeranalysis/v1beta1:NoteIamMember":
+		r = &NoteIamMember{}
 	case "google-native:containeranalysis/v1beta1:NoteIamPolicy":
 		r = &NoteIamPolicy{}
 	case "google-native:containeranalysis/v1beta1:Occurrence":
 		r = &Occurrence{}
+	case "google-native:containeranalysis/v1beta1:OccurrenceIamBinding":
+		r = &OccurrenceIamBinding{}
+	case "google-native:containeranalysis/v1beta1:OccurrenceIamMember":
+		r = &OccurrenceIamMember{}
 	case "google-native:containeranalysis/v1beta1:OccurrenceIamPolicy":
 		r = &OccurrenceIamPolicy{}
 	default:

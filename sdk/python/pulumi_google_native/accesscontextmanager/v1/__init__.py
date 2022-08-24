@@ -8,6 +8,8 @@ import typing
 from ._enums import *
 from .access_level import *
 from .access_policy import *
+from .access_policy_iam_binding import *
+from .access_policy_iam_member import *
 from .access_policy_iam_policy import *
 from .gcp_user_access_binding import *
 from .get_access_level import *

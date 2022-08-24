@@ -25,6 +25,14 @@ export { SubscriptionArgs } from "./subscription";
 export type Subscription = import("./subscription").Subscription;
 export const Subscription: typeof import("./subscription").Subscription = null as any;
 
+export { SubscriptionIamBindingArgs } from "./subscriptionIamBinding";
+export type SubscriptionIamBinding = import("./subscriptionIamBinding").SubscriptionIamBinding;
+export const SubscriptionIamBinding: typeof import("./subscriptionIamBinding").SubscriptionIamBinding = null as any;
+
+export { SubscriptionIamMemberArgs } from "./subscriptionIamMember";
+export type SubscriptionIamMember = import("./subscriptionIamMember").SubscriptionIamMember;
+export const SubscriptionIamMember: typeof import("./subscriptionIamMember").SubscriptionIamMember = null as any;
+
 export { SubscriptionIamPolicyArgs } from "./subscriptionIamPolicy";
 export type SubscriptionIamPolicy = import("./subscriptionIamPolicy").SubscriptionIamPolicy;
 export const SubscriptionIamPolicy: typeof import("./subscriptionIamPolicy").SubscriptionIamPolicy = null as any;
@@ -32,6 +40,14 @@ export const SubscriptionIamPolicy: typeof import("./subscriptionIamPolicy").Sub
 export { TopicArgs } from "./topic";
 export type Topic = import("./topic").Topic;
 export const Topic: typeof import("./topic").Topic = null as any;
+
+export { TopicIamBindingArgs } from "./topicIamBinding";
+export type TopicIamBinding = import("./topicIamBinding").TopicIamBinding;
+export const TopicIamBinding: typeof import("./topicIamBinding").TopicIamBinding = null as any;
+
+export { TopicIamMemberArgs } from "./topicIamMember";
+export type TopicIamMember = import("./topicIamMember").TopicIamMember;
+export const TopicIamMember: typeof import("./topicIamMember").TopicIamMember = null as any;
 
 export { TopicIamPolicyArgs } from "./topicIamPolicy";
 export type TopicIamPolicy = import("./topicIamPolicy").TopicIamPolicy;
@@ -42,8 +58,12 @@ utilities.lazyLoad(exports, ["getSubscriptionIamPolicy","getSubscriptionIamPolic
 utilities.lazyLoad(exports, ["getTopic","getTopicOutput"], () => require("./getTopic"));
 utilities.lazyLoad(exports, ["getTopicIamPolicy","getTopicIamPolicyOutput"], () => require("./getTopicIamPolicy"));
 utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
+utilities.lazyLoad(exports, ["SubscriptionIamBinding"], () => require("./subscriptionIamBinding"));
+utilities.lazyLoad(exports, ["SubscriptionIamMember"], () => require("./subscriptionIamMember"));
 utilities.lazyLoad(exports, ["SubscriptionIamPolicy"], () => require("./subscriptionIamPolicy"));
 utilities.lazyLoad(exports, ["Topic"], () => require("./topic"));
+utilities.lazyLoad(exports, ["TopicIamBinding"], () => require("./topicIamBinding"));
+utilities.lazyLoad(exports, ["TopicIamMember"], () => require("./topicIamMember"));
 utilities.lazyLoad(exports, ["TopicIamPolicy"], () => require("./topicIamPolicy"));
 
 const _module = {
@@ -52,10 +72,18 @@ const _module = {
         switch (type) {
             case "google-native:pubsub/v1beta2:Subscription":
                 return new Subscription(name, <any>undefined, { urn })
+            case "google-native:pubsub/v1beta2:SubscriptionIamBinding":
+                return new SubscriptionIamBinding(name, <any>undefined, { urn })
+            case "google-native:pubsub/v1beta2:SubscriptionIamMember":
+                return new SubscriptionIamMember(name, <any>undefined, { urn })
             case "google-native:pubsub/v1beta2:SubscriptionIamPolicy":
                 return new SubscriptionIamPolicy(name, <any>undefined, { urn })
             case "google-native:pubsub/v1beta2:Topic":
                 return new Topic(name, <any>undefined, { urn })
+            case "google-native:pubsub/v1beta2:TopicIamBinding":
+                return new TopicIamBinding(name, <any>undefined, { urn })
+            case "google-native:pubsub/v1beta2:TopicIamMember":
+                return new TopicIamMember(name, <any>undefined, { urn })
             case "google-native:pubsub/v1beta2:TopicIamPolicy":
                 return new TopicIamPolicy(name, <any>undefined, { urn })
             default:

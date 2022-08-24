@@ -14,7 +14,11 @@ from .get_service_consumer_iam_policy import *
 from .get_service_iam_policy import *
 from .rollout import *
 from .service import *
+from .service_consumer_iam_binding import *
+from .service_consumer_iam_member import *
 from .service_consumer_iam_policy import *
+from .service_iam_binding import *
+from .service_iam_member import *
 from .service_iam_policy import *
 from ._inputs import *
 from . import outputs

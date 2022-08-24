@@ -23,10 +23,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:pubsub/v1beta2:Subscription":
 		r = &Subscription{}
+	case "google-native:pubsub/v1beta2:SubscriptionIamBinding":
+		r = &SubscriptionIamBinding{}
+	case "google-native:pubsub/v1beta2:SubscriptionIamMember":
+		r = &SubscriptionIamMember{}
 	case "google-native:pubsub/v1beta2:SubscriptionIamPolicy":
 		r = &SubscriptionIamPolicy{}
 	case "google-native:pubsub/v1beta2:Topic":
 		r = &Topic{}
+	case "google-native:pubsub/v1beta2:TopicIamBinding":
+		r = &TopicIamBinding{}
+	case "google-native:pubsub/v1beta2:TopicIamMember":
+		r = &TopicIamMember{}
 	case "google-native:pubsub/v1beta2:TopicIamPolicy":
 		r = &TopicIamPolicy{}
 	default:

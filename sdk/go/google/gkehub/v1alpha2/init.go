@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:gkehub/v1alpha2:Membership":
 		r = &Membership{}
+	case "google-native:gkehub/v1alpha2:MembershipIamBinding":
+		r = &MembershipIamBinding{}
+	case "google-native:gkehub/v1alpha2:MembershipIamMember":
+		r = &MembershipIamMember{}
 	case "google-native:gkehub/v1alpha2:MembershipIamPolicy":
 		r = &MembershipIamPolicy{}
 	default:

@@ -14,8 +14,12 @@ from .get_study import *
 from .get_trial import *
 from .get_version import *
 from .job import *
+from .job_iam_binding import *
+from .job_iam_member import *
 from .job_iam_policy import *
 from .model import *
+from .model_iam_binding import *
+from .model_iam_member import *
 from .model_iam_policy import *
 from .study import *
 from .trial import *

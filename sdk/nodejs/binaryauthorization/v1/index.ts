@@ -9,6 +9,14 @@ export { AttestorArgs } from "./attestor";
 export type Attestor = import("./attestor").Attestor;
 export const Attestor: typeof import("./attestor").Attestor = null as any;
 
+export { AttestorIamBindingArgs } from "./attestorIamBinding";
+export type AttestorIamBinding = import("./attestorIamBinding").AttestorIamBinding;
+export const AttestorIamBinding: typeof import("./attestorIamBinding").AttestorIamBinding = null as any;
+
+export { AttestorIamMemberArgs } from "./attestorIamMember";
+export type AttestorIamMember = import("./attestorIamMember").AttestorIamMember;
+export const AttestorIamMember: typeof import("./attestorIamMember").AttestorIamMember = null as any;
+
 export { AttestorIamPolicyArgs } from "./attestorIamPolicy";
 export type AttestorIamPolicy = import("./attestorIamPolicy").AttestorIamPolicy;
 export const AttestorIamPolicy: typeof import("./attestorIamPolicy").AttestorIamPolicy = null as any;
@@ -25,15 +33,27 @@ export { GetPolicyIamPolicyArgs, GetPolicyIamPolicyResult, GetPolicyIamPolicyOut
 export const getPolicyIamPolicy: typeof import("./getPolicyIamPolicy").getPolicyIamPolicy = null as any;
 export const getPolicyIamPolicyOutput: typeof import("./getPolicyIamPolicy").getPolicyIamPolicyOutput = null as any;
 
+export { PolicyIamBindingArgs } from "./policyIamBinding";
+export type PolicyIamBinding = import("./policyIamBinding").PolicyIamBinding;
+export const PolicyIamBinding: typeof import("./policyIamBinding").PolicyIamBinding = null as any;
+
+export { PolicyIamMemberArgs } from "./policyIamMember";
+export type PolicyIamMember = import("./policyIamMember").PolicyIamMember;
+export const PolicyIamMember: typeof import("./policyIamMember").PolicyIamMember = null as any;
+
 export { PolicyIamPolicyArgs } from "./policyIamPolicy";
 export type PolicyIamPolicy = import("./policyIamPolicy").PolicyIamPolicy;
 export const PolicyIamPolicy: typeof import("./policyIamPolicy").PolicyIamPolicy = null as any;
 
 utilities.lazyLoad(exports, ["Attestor"], () => require("./attestor"));
+utilities.lazyLoad(exports, ["AttestorIamBinding"], () => require("./attestorIamBinding"));
+utilities.lazyLoad(exports, ["AttestorIamMember"], () => require("./attestorIamMember"));
 utilities.lazyLoad(exports, ["AttestorIamPolicy"], () => require("./attestorIamPolicy"));
 utilities.lazyLoad(exports, ["getAttestor","getAttestorOutput"], () => require("./getAttestor"));
 utilities.lazyLoad(exports, ["getAttestorIamPolicy","getAttestorIamPolicyOutput"], () => require("./getAttestorIamPolicy"));
 utilities.lazyLoad(exports, ["getPolicyIamPolicy","getPolicyIamPolicyOutput"], () => require("./getPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["PolicyIamBinding"], () => require("./policyIamBinding"));
+utilities.lazyLoad(exports, ["PolicyIamMember"], () => require("./policyIamMember"));
 utilities.lazyLoad(exports, ["PolicyIamPolicy"], () => require("./policyIamPolicy"));
 
 // Export enums:
@@ -45,8 +65,16 @@ const _module = {
         switch (type) {
             case "google-native:binaryauthorization/v1:Attestor":
                 return new Attestor(name, <any>undefined, { urn })
+            case "google-native:binaryauthorization/v1:AttestorIamBinding":
+                return new AttestorIamBinding(name, <any>undefined, { urn })
+            case "google-native:binaryauthorization/v1:AttestorIamMember":
+                return new AttestorIamMember(name, <any>undefined, { urn })
             case "google-native:binaryauthorization/v1:AttestorIamPolicy":
                 return new AttestorIamPolicy(name, <any>undefined, { urn })
+            case "google-native:binaryauthorization/v1:PolicyIamBinding":
+                return new PolicyIamBinding(name, <any>undefined, { urn })
+            case "google-native:binaryauthorization/v1:PolicyIamMember":
+                return new PolicyIamMember(name, <any>undefined, { urn })
             case "google-native:binaryauthorization/v1:PolicyIamPolicy":
                 return new PolicyIamPolicy(name, <any>undefined, { urn })
             default:

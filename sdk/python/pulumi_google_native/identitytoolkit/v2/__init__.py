@@ -15,6 +15,8 @@ from .get_tenant_iam_policy import *
 from .inbound_saml_config import *
 from .oauth_idp_config import *
 from .tenant import *
+from .tenant_iam_binding import *
+from .tenant_iam_member import *
 from .tenant_iam_policy import *
 from ._inputs import *
 from . import outputs

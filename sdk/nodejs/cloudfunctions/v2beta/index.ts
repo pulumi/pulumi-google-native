@@ -9,6 +9,14 @@ export { FunctionArgs } from "./function";
 export type Function = import("./function").Function;
 export const Function: typeof import("./function").Function = null as any;
 
+export { FunctionIamBindingArgs } from "./functionIamBinding";
+export type FunctionIamBinding = import("./functionIamBinding").FunctionIamBinding;
+export const FunctionIamBinding: typeof import("./functionIamBinding").FunctionIamBinding = null as any;
+
+export { FunctionIamMemberArgs } from "./functionIamMember";
+export type FunctionIamMember = import("./functionIamMember").FunctionIamMember;
+export const FunctionIamMember: typeof import("./functionIamMember").FunctionIamMember = null as any;
+
 export { FunctionIamPolicyArgs } from "./functionIamPolicy";
 export type FunctionIamPolicy = import("./functionIamPolicy").FunctionIamPolicy;
 export const FunctionIamPolicy: typeof import("./functionIamPolicy").FunctionIamPolicy = null as any;
@@ -22,6 +30,8 @@ export const getFunctionIamPolicy: typeof import("./getFunctionIamPolicy").getFu
 export const getFunctionIamPolicyOutput: typeof import("./getFunctionIamPolicy").getFunctionIamPolicyOutput = null as any;
 
 utilities.lazyLoad(exports, ["Function"], () => require("./function"));
+utilities.lazyLoad(exports, ["FunctionIamBinding"], () => require("./functionIamBinding"));
+utilities.lazyLoad(exports, ["FunctionIamMember"], () => require("./functionIamMember"));
 utilities.lazyLoad(exports, ["FunctionIamPolicy"], () => require("./functionIamPolicy"));
 utilities.lazyLoad(exports, ["getFunction","getFunctionOutput"], () => require("./getFunction"));
 utilities.lazyLoad(exports, ["getFunctionIamPolicy","getFunctionIamPolicyOutput"], () => require("./getFunctionIamPolicy"));
@@ -35,6 +45,10 @@ const _module = {
         switch (type) {
             case "google-native:cloudfunctions/v2beta:Function":
                 return new Function(name, <any>undefined, { urn })
+            case "google-native:cloudfunctions/v2beta:FunctionIamBinding":
+                return new FunctionIamBinding(name, <any>undefined, { urn })
+            case "google-native:cloudfunctions/v2beta:FunctionIamMember":
+                return new FunctionIamMember(name, <any>undefined, { urn })
             case "google-native:cloudfunctions/v2beta:FunctionIamPolicy":
                 return new FunctionIamPolicy(name, <any>undefined, { urn })
             default:

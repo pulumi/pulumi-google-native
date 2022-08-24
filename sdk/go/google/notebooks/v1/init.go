@@ -27,10 +27,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Execution{}
 	case "google-native:notebooks/v1:Instance":
 		r = &Instance{}
+	case "google-native:notebooks/v1:InstanceIamBinding":
+		r = &InstanceIamBinding{}
+	case "google-native:notebooks/v1:InstanceIamMember":
+		r = &InstanceIamMember{}
 	case "google-native:notebooks/v1:InstanceIamPolicy":
 		r = &InstanceIamPolicy{}
 	case "google-native:notebooks/v1:Runtime":
 		r = &Runtime{}
+	case "google-native:notebooks/v1:RuntimeIamBinding":
+		r = &RuntimeIamBinding{}
+	case "google-native:notebooks/v1:RuntimeIamMember":
+		r = &RuntimeIamMember{}
 	case "google-native:notebooks/v1:RuntimeIamPolicy":
 		r = &RuntimeIamPolicy{}
 	case "google-native:notebooks/v1:Schedule":

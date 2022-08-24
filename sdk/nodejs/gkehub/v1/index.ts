@@ -9,6 +9,14 @@ export { FeatureArgs } from "./feature";
 export type Feature = import("./feature").Feature;
 export const Feature: typeof import("./feature").Feature = null as any;
 
+export { FeatureIamBindingArgs } from "./featureIamBinding";
+export type FeatureIamBinding = import("./featureIamBinding").FeatureIamBinding;
+export const FeatureIamBinding: typeof import("./featureIamBinding").FeatureIamBinding = null as any;
+
+export { FeatureIamMemberArgs } from "./featureIamMember";
+export type FeatureIamMember = import("./featureIamMember").FeatureIamMember;
+export const FeatureIamMember: typeof import("./featureIamMember").FeatureIamMember = null as any;
+
 export { FeatureIamPolicyArgs } from "./featureIamPolicy";
 export type FeatureIamPolicy = import("./featureIamPolicy").FeatureIamPolicy;
 export const FeatureIamPolicy: typeof import("./featureIamPolicy").FeatureIamPolicy = null as any;
@@ -33,17 +41,29 @@ export { MembershipArgs } from "./membership";
 export type Membership = import("./membership").Membership;
 export const Membership: typeof import("./membership").Membership = null as any;
 
+export { MembershipIamBindingArgs } from "./membershipIamBinding";
+export type MembershipIamBinding = import("./membershipIamBinding").MembershipIamBinding;
+export const MembershipIamBinding: typeof import("./membershipIamBinding").MembershipIamBinding = null as any;
+
+export { MembershipIamMemberArgs } from "./membershipIamMember";
+export type MembershipIamMember = import("./membershipIamMember").MembershipIamMember;
+export const MembershipIamMember: typeof import("./membershipIamMember").MembershipIamMember = null as any;
+
 export { MembershipIamPolicyArgs } from "./membershipIamPolicy";
 export type MembershipIamPolicy = import("./membershipIamPolicy").MembershipIamPolicy;
 export const MembershipIamPolicy: typeof import("./membershipIamPolicy").MembershipIamPolicy = null as any;
 
 utilities.lazyLoad(exports, ["Feature"], () => require("./feature"));
+utilities.lazyLoad(exports, ["FeatureIamBinding"], () => require("./featureIamBinding"));
+utilities.lazyLoad(exports, ["FeatureIamMember"], () => require("./featureIamMember"));
 utilities.lazyLoad(exports, ["FeatureIamPolicy"], () => require("./featureIamPolicy"));
 utilities.lazyLoad(exports, ["getFeature","getFeatureOutput"], () => require("./getFeature"));
 utilities.lazyLoad(exports, ["getFeatureIamPolicy","getFeatureIamPolicyOutput"], () => require("./getFeatureIamPolicy"));
 utilities.lazyLoad(exports, ["getMembership","getMembershipOutput"], () => require("./getMembership"));
 utilities.lazyLoad(exports, ["getMembershipIamPolicy","getMembershipIamPolicyOutput"], () => require("./getMembershipIamPolicy"));
 utilities.lazyLoad(exports, ["Membership"], () => require("./membership"));
+utilities.lazyLoad(exports, ["MembershipIamBinding"], () => require("./membershipIamBinding"));
+utilities.lazyLoad(exports, ["MembershipIamMember"], () => require("./membershipIamMember"));
 utilities.lazyLoad(exports, ["MembershipIamPolicy"], () => require("./membershipIamPolicy"));
 
 // Export enums:
@@ -55,10 +75,18 @@ const _module = {
         switch (type) {
             case "google-native:gkehub/v1:Feature":
                 return new Feature(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1:FeatureIamBinding":
+                return new FeatureIamBinding(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1:FeatureIamMember":
+                return new FeatureIamMember(name, <any>undefined, { urn })
             case "google-native:gkehub/v1:FeatureIamPolicy":
                 return new FeatureIamPolicy(name, <any>undefined, { urn })
             case "google-native:gkehub/v1:Membership":
                 return new Membership(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1:MembershipIamBinding":
+                return new MembershipIamBinding(name, <any>undefined, { urn })
+            case "google-native:gkehub/v1:MembershipIamMember":
+                return new MembershipIamMember(name, <any>undefined, { urn })
             case "google-native:gkehub/v1:MembershipIamPolicy":
                 return new MembershipIamPolicy(name, <any>undefined, { urn })
             default:

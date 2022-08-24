@@ -10,6 +10,8 @@ from .get_repository import *
 from .get_repository_iam_policy import *
 from .get_tag import *
 from .repository import *
+from .repository_iam_binding import *
+from .repository_iam_member import *
 from .repository_iam_policy import *
 from .tag import *
 from ._inputs import *

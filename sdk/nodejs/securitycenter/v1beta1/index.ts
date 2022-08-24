@@ -13,6 +13,14 @@ export { GetSourceArgs, GetSourceResult, GetSourceOutputArgs } from "./getSource
 export const getSource: typeof import("./getSource").getSource = null as any;
 export const getSourceOutput: typeof import("./getSource").getSourceOutput = null as any;
 
+export { OrganizationSourceIamBindingArgs } from "./organizationSourceIamBinding";
+export type OrganizationSourceIamBinding = import("./organizationSourceIamBinding").OrganizationSourceIamBinding;
+export const OrganizationSourceIamBinding: typeof import("./organizationSourceIamBinding").OrganizationSourceIamBinding = null as any;
+
+export { OrganizationSourceIamMemberArgs } from "./organizationSourceIamMember";
+export type OrganizationSourceIamMember = import("./organizationSourceIamMember").OrganizationSourceIamMember;
+export const OrganizationSourceIamMember: typeof import("./organizationSourceIamMember").OrganizationSourceIamMember = null as any;
+
 export { OrganizationSourceIamPolicyArgs } from "./organizationSourceIamPolicy";
 export type OrganizationSourceIamPolicy = import("./organizationSourceIamPolicy").OrganizationSourceIamPolicy;
 export const OrganizationSourceIamPolicy: typeof import("./organizationSourceIamPolicy").OrganizationSourceIamPolicy = null as any;
@@ -23,6 +31,8 @@ export const Source: typeof import("./source").Source = null as any;
 
 utilities.lazyLoad(exports, ["getOrganizationSourceIamPolicy","getOrganizationSourceIamPolicyOutput"], () => require("./getOrganizationSourceIamPolicy"));
 utilities.lazyLoad(exports, ["getSource","getSourceOutput"], () => require("./getSource"));
+utilities.lazyLoad(exports, ["OrganizationSourceIamBinding"], () => require("./organizationSourceIamBinding"));
+utilities.lazyLoad(exports, ["OrganizationSourceIamMember"], () => require("./organizationSourceIamMember"));
 utilities.lazyLoad(exports, ["OrganizationSourceIamPolicy"], () => require("./organizationSourceIamPolicy"));
 utilities.lazyLoad(exports, ["Source"], () => require("./source"));
 
@@ -33,6 +43,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "google-native:securitycenter/v1beta1:OrganizationSourceIamBinding":
+                return new OrganizationSourceIamBinding(name, <any>undefined, { urn })
+            case "google-native:securitycenter/v1beta1:OrganizationSourceIamMember":
+                return new OrganizationSourceIamMember(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1beta1:OrganizationSourceIamPolicy":
                 return new OrganizationSourceIamPolicy(name, <any>undefined, { urn })
             case "google-native:securitycenter/v1beta1:Source":

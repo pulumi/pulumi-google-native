@@ -27,14 +27,26 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Autoscaler{}
 	case "google-native:compute/alpha:BackendBucket":
 		r = &BackendBucket{}
+	case "google-native:compute/alpha:BackendBucketIamBinding":
+		r = &BackendBucketIamBinding{}
+	case "google-native:compute/alpha:BackendBucketIamMember":
+		r = &BackendBucketIamMember{}
 	case "google-native:compute/alpha:BackendBucketIamPolicy":
 		r = &BackendBucketIamPolicy{}
 	case "google-native:compute/alpha:BackendService":
 		r = &BackendService{}
+	case "google-native:compute/alpha:BackendServiceIamBinding":
+		r = &BackendServiceIamBinding{}
+	case "google-native:compute/alpha:BackendServiceIamMember":
+		r = &BackendServiceIamMember{}
 	case "google-native:compute/alpha:BackendServiceIamPolicy":
 		r = &BackendServiceIamPolicy{}
 	case "google-native:compute/alpha:Disk":
 		r = &Disk{}
+	case "google-native:compute/alpha:DiskIamBinding":
+		r = &DiskIamBinding{}
+	case "google-native:compute/alpha:DiskIamMember":
+		r = &DiskIamMember{}
 	case "google-native:compute/alpha:DiskIamPolicy":
 		r = &DiskIamPolicy{}
 	case "google-native:compute/alpha:ExternalVpnGateway":
@@ -43,6 +55,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Firewall{}
 	case "google-native:compute/alpha:FirewallPolicy":
 		r = &FirewallPolicy{}
+	case "google-native:compute/alpha:FirewallPolicyIamBinding":
+		r = &FirewallPolicyIamBinding{}
+	case "google-native:compute/alpha:FirewallPolicyIamMember":
+		r = &FirewallPolicyIamMember{}
 	case "google-native:compute/alpha:FirewallPolicyIamPolicy":
 		r = &FirewallPolicyIamPolicy{}
 	case "google-native:compute/alpha:ForwardingRule":
@@ -65,6 +81,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &HttpsHealthCheck{}
 	case "google-native:compute/alpha:Image":
 		r = &Image{}
+	case "google-native:compute/alpha:ImageIamBinding":
+		r = &ImageIamBinding{}
+	case "google-native:compute/alpha:ImageIamMember":
+		r = &ImageIamMember{}
 	case "google-native:compute/alpha:ImageIamPolicy":
 		r = &ImageIamPolicy{}
 	case "google-native:compute/alpha:Instance":
@@ -75,32 +95,64 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InstanceGroupManager{}
 	case "google-native:compute/alpha:InstanceGroupManagerResizeRequest":
 		r = &InstanceGroupManagerResizeRequest{}
+	case "google-native:compute/alpha:InstanceIamBinding":
+		r = &InstanceIamBinding{}
+	case "google-native:compute/alpha:InstanceIamMember":
+		r = &InstanceIamMember{}
 	case "google-native:compute/alpha:InstanceIamPolicy":
 		r = &InstanceIamPolicy{}
 	case "google-native:compute/alpha:InstanceTemplate":
 		r = &InstanceTemplate{}
+	case "google-native:compute/alpha:InstanceTemplateIamBinding":
+		r = &InstanceTemplateIamBinding{}
+	case "google-native:compute/alpha:InstanceTemplateIamMember":
+		r = &InstanceTemplateIamMember{}
 	case "google-native:compute/alpha:InstanceTemplateIamPolicy":
 		r = &InstanceTemplateIamPolicy{}
 	case "google-native:compute/alpha:InstantSnapshot":
 		r = &InstantSnapshot{}
+	case "google-native:compute/alpha:InstantSnapshotIamBinding":
+		r = &InstantSnapshotIamBinding{}
+	case "google-native:compute/alpha:InstantSnapshotIamMember":
+		r = &InstantSnapshotIamMember{}
 	case "google-native:compute/alpha:InstantSnapshotIamPolicy":
 		r = &InstantSnapshotIamPolicy{}
 	case "google-native:compute/alpha:Interconnect":
 		r = &Interconnect{}
 	case "google-native:compute/alpha:InterconnectAttachment":
 		r = &InterconnectAttachment{}
+	case "google-native:compute/alpha:InterconnectAttachmentIamBinding":
+		r = &InterconnectAttachmentIamBinding{}
+	case "google-native:compute/alpha:InterconnectAttachmentIamMember":
+		r = &InterconnectAttachmentIamMember{}
 	case "google-native:compute/alpha:InterconnectAttachmentIamPolicy":
 		r = &InterconnectAttachmentIamPolicy{}
+	case "google-native:compute/alpha:InterconnectIamBinding":
+		r = &InterconnectIamBinding{}
+	case "google-native:compute/alpha:InterconnectIamMember":
+		r = &InterconnectIamMember{}
 	case "google-native:compute/alpha:InterconnectIamPolicy":
 		r = &InterconnectIamPolicy{}
 	case "google-native:compute/alpha:License":
 		r = &License{}
+	case "google-native:compute/alpha:LicenseCodeIamBinding":
+		r = &LicenseCodeIamBinding{}
+	case "google-native:compute/alpha:LicenseCodeIamMember":
+		r = &LicenseCodeIamMember{}
 	case "google-native:compute/alpha:LicenseCodeIamPolicy":
 		r = &LicenseCodeIamPolicy{}
+	case "google-native:compute/alpha:LicenseIamBinding":
+		r = &LicenseIamBinding{}
+	case "google-native:compute/alpha:LicenseIamMember":
+		r = &LicenseIamMember{}
 	case "google-native:compute/alpha:LicenseIamPolicy":
 		r = &LicenseIamPolicy{}
 	case "google-native:compute/alpha:MachineImage":
 		r = &MachineImage{}
+	case "google-native:compute/alpha:MachineImageIamBinding":
+		r = &MachineImageIamBinding{}
+	case "google-native:compute/alpha:MachineImageIamMember":
+		r = &MachineImageIamMember{}
 	case "google-native:compute/alpha:MachineImageIamPolicy":
 		r = &MachineImageIamPolicy{}
 	case "google-native:compute/alpha:Network":
@@ -115,14 +167,26 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkEndpointGroup{}
 	case "google-native:compute/alpha:NetworkFirewallPolicy":
 		r = &NetworkFirewallPolicy{}
+	case "google-native:compute/alpha:NetworkFirewallPolicyIamBinding":
+		r = &NetworkFirewallPolicyIamBinding{}
+	case "google-native:compute/alpha:NetworkFirewallPolicyIamMember":
+		r = &NetworkFirewallPolicyIamMember{}
 	case "google-native:compute/alpha:NetworkFirewallPolicyIamPolicy":
 		r = &NetworkFirewallPolicyIamPolicy{}
 	case "google-native:compute/alpha:NodeGroup":
 		r = &NodeGroup{}
+	case "google-native:compute/alpha:NodeGroupIamBinding":
+		r = &NodeGroupIamBinding{}
+	case "google-native:compute/alpha:NodeGroupIamMember":
+		r = &NodeGroupIamMember{}
 	case "google-native:compute/alpha:NodeGroupIamPolicy":
 		r = &NodeGroupIamPolicy{}
 	case "google-native:compute/alpha:NodeTemplate":
 		r = &NodeTemplate{}
+	case "google-native:compute/alpha:NodeTemplateIamBinding":
+		r = &NodeTemplateIamBinding{}
+	case "google-native:compute/alpha:NodeTemplateIamMember":
+		r = &NodeTemplateIamMember{}
 	case "google-native:compute/alpha:NodeTemplateIamPolicy":
 		r = &NodeTemplateIamPolicy{}
 	case "google-native:compute/alpha:OrganizationSecurityPolicy":
@@ -137,12 +201,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionAutoscaler{}
 	case "google-native:compute/alpha:RegionBackendService":
 		r = &RegionBackendService{}
+	case "google-native:compute/alpha:RegionBackendServiceIamBinding":
+		r = &RegionBackendServiceIamBinding{}
+	case "google-native:compute/alpha:RegionBackendServiceIamMember":
+		r = &RegionBackendServiceIamMember{}
 	case "google-native:compute/alpha:RegionBackendServiceIamPolicy":
 		r = &RegionBackendServiceIamPolicy{}
 	case "google-native:compute/alpha:RegionCommitment":
 		r = &RegionCommitment{}
 	case "google-native:compute/alpha:RegionDisk":
 		r = &RegionDisk{}
+	case "google-native:compute/alpha:RegionDiskIamBinding":
+		r = &RegionDiskIamBinding{}
+	case "google-native:compute/alpha:RegionDiskIamMember":
+		r = &RegionDiskIamMember{}
 	case "google-native:compute/alpha:RegionDiskIamPolicy":
 		r = &RegionDiskIamPolicy{}
 	case "google-native:compute/alpha:RegionHealthCheck":
@@ -155,12 +227,20 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionInstanceTemplate{}
 	case "google-native:compute/alpha:RegionInstantSnapshot":
 		r = &RegionInstantSnapshot{}
+	case "google-native:compute/alpha:RegionInstantSnapshotIamBinding":
+		r = &RegionInstantSnapshotIamBinding{}
+	case "google-native:compute/alpha:RegionInstantSnapshotIamMember":
+		r = &RegionInstantSnapshotIamMember{}
 	case "google-native:compute/alpha:RegionInstantSnapshotIamPolicy":
 		r = &RegionInstantSnapshotIamPolicy{}
 	case "google-native:compute/alpha:RegionNetworkEndpointGroup":
 		r = &RegionNetworkEndpointGroup{}
 	case "google-native:compute/alpha:RegionNetworkFirewallPolicy":
 		r = &RegionNetworkFirewallPolicy{}
+	case "google-native:compute/alpha:RegionNetworkFirewallPolicyIamBinding":
+		r = &RegionNetworkFirewallPolicyIamBinding{}
+	case "google-native:compute/alpha:RegionNetworkFirewallPolicyIamMember":
+		r = &RegionNetworkFirewallPolicyIamMember{}
 	case "google-native:compute/alpha:RegionNetworkFirewallPolicyIamPolicy":
 		r = &RegionNetworkFirewallPolicyIamPolicy{}
 	case "google-native:compute/alpha:RegionNotificationEndpoint":
@@ -181,10 +261,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionUrlMap{}
 	case "google-native:compute/alpha:Reservation":
 		r = &Reservation{}
+	case "google-native:compute/alpha:ReservationIamBinding":
+		r = &ReservationIamBinding{}
+	case "google-native:compute/alpha:ReservationIamMember":
+		r = &ReservationIamMember{}
 	case "google-native:compute/alpha:ReservationIamPolicy":
 		r = &ReservationIamPolicy{}
 	case "google-native:compute/alpha:ResourcePolicy":
 		r = &ResourcePolicy{}
+	case "google-native:compute/alpha:ResourcePolicyIamBinding":
+		r = &ResourcePolicyIamBinding{}
+	case "google-native:compute/alpha:ResourcePolicyIamMember":
+		r = &ResourcePolicyIamMember{}
 	case "google-native:compute/alpha:ResourcePolicyIamPolicy":
 		r = &ResourcePolicyIamPolicy{}
 	case "google-native:compute/alpha:Route":
@@ -195,10 +283,18 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SecurityPolicy{}
 	case "google-native:compute/alpha:ServiceAttachment":
 		r = &ServiceAttachment{}
+	case "google-native:compute/alpha:ServiceAttachmentIamBinding":
+		r = &ServiceAttachmentIamBinding{}
+	case "google-native:compute/alpha:ServiceAttachmentIamMember":
+		r = &ServiceAttachmentIamMember{}
 	case "google-native:compute/alpha:ServiceAttachmentIamPolicy":
 		r = &ServiceAttachmentIamPolicy{}
 	case "google-native:compute/alpha:Snapshot":
 		r = &Snapshot{}
+	case "google-native:compute/alpha:SnapshotIamBinding":
+		r = &SnapshotIamBinding{}
+	case "google-native:compute/alpha:SnapshotIamMember":
+		r = &SnapshotIamMember{}
 	case "google-native:compute/alpha:SnapshotIamPolicy":
 		r = &SnapshotIamPolicy{}
 	case "google-native:compute/alpha:SslCertificate":
@@ -207,6 +303,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &SslPolicy{}
 	case "google-native:compute/alpha:Subnetwork":
 		r = &Subnetwork{}
+	case "google-native:compute/alpha:SubnetworkIamBinding":
+		r = &SubnetworkIamBinding{}
+	case "google-native:compute/alpha:SubnetworkIamMember":
+		r = &SubnetworkIamMember{}
 	case "google-native:compute/alpha:SubnetworkIamPolicy":
 		r = &SubnetworkIamPolicy{}
 	case "google-native:compute/alpha:TargetGrpcProxy":

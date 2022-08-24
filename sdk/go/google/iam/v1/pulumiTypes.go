@@ -678,6 +678,184 @@ func (o BindingResponseArrayOutput) Index(i pulumi.IntInput) BindingResponseOutp
 	}).(BindingResponseOutput)
 }
 
+// An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.
+type Condition struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g., when hovering over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title string `pulumi:"title"`
+}
+
+// ConditionInput is an input type that accepts ConditionArgs and ConditionOutput values.
+// You can construct a concrete instance of `ConditionInput` via:
+//
+//	ConditionArgs{...}
+type ConditionInput interface {
+	pulumi.Input
+
+	ToConditionOutput() ConditionOutput
+	ToConditionOutputWithContext(context.Context) ConditionOutput
+}
+
+// An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.
+type ConditionArgs struct {
+	// An optional description of the expression. This is a longer text which describes the expression, e.g., when hovering over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// A title for the expression, i.e. a short string describing its purpose.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (ConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Condition)(nil)).Elem()
+}
+
+func (i ConditionArgs) ToConditionOutput() ConditionOutput {
+	return i.ToConditionOutputWithContext(context.Background())
+}
+
+func (i ConditionArgs) ToConditionOutputWithContext(ctx context.Context) ConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionOutput)
+}
+
+func (i ConditionArgs) ToConditionPtrOutput() ConditionPtrOutput {
+	return i.ToConditionPtrOutputWithContext(context.Background())
+}
+
+func (i ConditionArgs) ToConditionPtrOutputWithContext(ctx context.Context) ConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionOutput).ToConditionPtrOutputWithContext(ctx)
+}
+
+// ConditionPtrInput is an input type that accepts ConditionArgs, ConditionPtr and ConditionPtrOutput values.
+// You can construct a concrete instance of `ConditionPtrInput` via:
+//
+//	        ConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ConditionPtrInput interface {
+	pulumi.Input
+
+	ToConditionPtrOutput() ConditionPtrOutput
+	ToConditionPtrOutputWithContext(context.Context) ConditionPtrOutput
+}
+
+type conditionPtrType ConditionArgs
+
+func ConditionPtr(v *ConditionArgs) ConditionPtrInput {
+	return (*conditionPtrType)(v)
+}
+
+func (*conditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Condition)(nil)).Elem()
+}
+
+func (i *conditionPtrType) ToConditionPtrOutput() ConditionPtrOutput {
+	return i.ToConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *conditionPtrType) ToConditionPtrOutputWithContext(ctx context.Context) ConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ConditionPtrOutput)
+}
+
+// An IAM Condition for a given binding. See https://cloud.google.com/iam/docs/conditions-overview for additional details.
+type ConditionOutput struct{ *pulumi.OutputState }
+
+func (ConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Condition)(nil)).Elem()
+}
+
+func (o ConditionOutput) ToConditionOutput() ConditionOutput {
+	return o
+}
+
+func (o ConditionOutput) ToConditionOutputWithContext(ctx context.Context) ConditionOutput {
+	return o
+}
+
+func (o ConditionOutput) ToConditionPtrOutput() ConditionPtrOutput {
+	return o.ToConditionPtrOutputWithContext(context.Background())
+}
+
+func (o ConditionOutput) ToConditionPtrOutputWithContext(ctx context.Context) ConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Condition) *Condition {
+		return &v
+	}).(ConditionPtrOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g., when hovering over it in a UI.
+func (o ConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Condition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v Condition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o ConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v Condition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type ConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (ConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Condition)(nil)).Elem()
+}
+
+func (o ConditionPtrOutput) ToConditionPtrOutput() ConditionPtrOutput {
+	return o
+}
+
+func (o ConditionPtrOutput) ToConditionPtrOutputWithContext(ctx context.Context) ConditionPtrOutput {
+	return o
+}
+
+func (o ConditionPtrOutput) Elem() ConditionOutput {
+	return o.ApplyT(func(v *Condition) Condition {
+		if v != nil {
+			return *v
+		}
+		var ret Condition
+		return ret
+	}).(ConditionOutput)
+}
+
+// An optional description of the expression. This is a longer text which describes the expression, e.g., when hovering over it in a UI.
+func (o ConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Condition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o ConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Condition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// A title for the expression, i.e. a short string describing its purpose.
+func (o ConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Condition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 // Represents a textual expression in the Common Expression Language (CEL) syntax. CEL is a C-like expression language. The syntax and semantics of CEL are documented at https://github.com/google/cel-spec. Example (Comparison): title: "Summary size limit" description: "Determines if a summary is less than 100 chars" expression: "document.summary.size() < 100" Example (Equality): title: "Requestor is owner" description: "Determines if requestor is the document owner" expression: "document.owner == request.auth.claims.email" Example (Logic): title: "Public documents" description: "Determine whether the document should be publicly visible" expression: "document.type != 'private' && document.type != 'internal'" Example (Data Manipulation): title: "Notification string" description: "Create a notification string with a timestamp." expression: "'New message received at ' + string(document.create_time)" The exact variables and functions that may be referenced within an expression are determined by the service that evaluates it. See the service documentation for additional information.
 type Expr struct {
 	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
@@ -1289,6 +1467,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AwsPtrInput)(nil)).Elem(), AwsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingInput)(nil)).Elem(), BindingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionInput)(nil)).Elem(), ConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ConditionPtrInput)(nil)).Elem(), ConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OidcInput)(nil)).Elem(), OidcArgs{})
@@ -1310,6 +1490,8 @@ func init() {
 	pulumi.RegisterOutputType(BindingArrayOutput{})
 	pulumi.RegisterOutputType(BindingResponseOutput{})
 	pulumi.RegisterOutputType(BindingResponseArrayOutput{})
+	pulumi.RegisterOutputType(ConditionOutput{})
+	pulumi.RegisterOutputType(ConditionPtrOutput{})
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})

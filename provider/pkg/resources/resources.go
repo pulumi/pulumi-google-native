@@ -214,8 +214,9 @@ type CloudAPIResource struct {
 	// IDPath is the template for building resource ID with ID parameter values. It should only
 	// be defined if IDProperty is missing.
 	// Example: `projects/{project}/global/backendBuckets/{resource}/getIamPolicy`
-	IDPath   string            `json:"idPath,omitempty"`
-	IDParams map[string]string `json:"idParams,omitempty"`
+	IDPath          string            `json:"idPath,omitempty"`
+	IDParams        map[string]string `json:"idParams,omitempty"`
+	IamResourceName string            `json:"iamResourceName,omitempty"`
 }
 
 type FormDataUpload struct {
@@ -236,8 +237,10 @@ type CloudAPIResourceParam struct {
 	// SdkName is the value of the parameter in the Pulumi SDK.
 	// Example: `project`
 	SdkName string `json:"sdkName,omitempty"`
-	// Kind is the kind of parameter, either "path" or "query"
+	// Kind is the kind of parameter, either "path" or "query".
 	Kind string `json:"kind"`
+	// Optional is true if the parameter is optional.
+	Optional bool `json:"optional,omitempty"`
 }
 
 // ResourceURL returns the resource API URL by joining the base URL with the resource path.

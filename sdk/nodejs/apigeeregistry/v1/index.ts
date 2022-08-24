@@ -9,29 +9,85 @@ export { ApiArgs } from "./api";
 export type Api = import("./api").Api;
 export const Api: typeof import("./api").Api = null as any;
 
+export { ApiArtifactIamBindingArgs } from "./apiArtifactIamBinding";
+export type ApiArtifactIamBinding = import("./apiArtifactIamBinding").ApiArtifactIamBinding;
+export const ApiArtifactIamBinding: typeof import("./apiArtifactIamBinding").ApiArtifactIamBinding = null as any;
+
+export { ApiArtifactIamMemberArgs } from "./apiArtifactIamMember";
+export type ApiArtifactIamMember = import("./apiArtifactIamMember").ApiArtifactIamMember;
+export const ApiArtifactIamMember: typeof import("./apiArtifactIamMember").ApiArtifactIamMember = null as any;
+
 export { ApiArtifactIamPolicyArgs } from "./apiArtifactIamPolicy";
 export type ApiArtifactIamPolicy = import("./apiArtifactIamPolicy").ApiArtifactIamPolicy;
 export const ApiArtifactIamPolicy: typeof import("./apiArtifactIamPolicy").ApiArtifactIamPolicy = null as any;
+
+export { ApiDeploymentIamBindingArgs } from "./apiDeploymentIamBinding";
+export type ApiDeploymentIamBinding = import("./apiDeploymentIamBinding").ApiDeploymentIamBinding;
+export const ApiDeploymentIamBinding: typeof import("./apiDeploymentIamBinding").ApiDeploymentIamBinding = null as any;
+
+export { ApiDeploymentIamMemberArgs } from "./apiDeploymentIamMember";
+export type ApiDeploymentIamMember = import("./apiDeploymentIamMember").ApiDeploymentIamMember;
+export const ApiDeploymentIamMember: typeof import("./apiDeploymentIamMember").ApiDeploymentIamMember = null as any;
 
 export { ApiDeploymentIamPolicyArgs } from "./apiDeploymentIamPolicy";
 export type ApiDeploymentIamPolicy = import("./apiDeploymentIamPolicy").ApiDeploymentIamPolicy;
 export const ApiDeploymentIamPolicy: typeof import("./apiDeploymentIamPolicy").ApiDeploymentIamPolicy = null as any;
 
+export { ApiIamBindingArgs } from "./apiIamBinding";
+export type ApiIamBinding = import("./apiIamBinding").ApiIamBinding;
+export const ApiIamBinding: typeof import("./apiIamBinding").ApiIamBinding = null as any;
+
+export { ApiIamMemberArgs } from "./apiIamMember";
+export type ApiIamMember = import("./apiIamMember").ApiIamMember;
+export const ApiIamMember: typeof import("./apiIamMember").ApiIamMember = null as any;
+
 export { ApiIamPolicyArgs } from "./apiIamPolicy";
 export type ApiIamPolicy = import("./apiIamPolicy").ApiIamPolicy;
 export const ApiIamPolicy: typeof import("./apiIamPolicy").ApiIamPolicy = null as any;
+
+export { ApiVersionArtifactIamBindingArgs } from "./apiVersionArtifactIamBinding";
+export type ApiVersionArtifactIamBinding = import("./apiVersionArtifactIamBinding").ApiVersionArtifactIamBinding;
+export const ApiVersionArtifactIamBinding: typeof import("./apiVersionArtifactIamBinding").ApiVersionArtifactIamBinding = null as any;
+
+export { ApiVersionArtifactIamMemberArgs } from "./apiVersionArtifactIamMember";
+export type ApiVersionArtifactIamMember = import("./apiVersionArtifactIamMember").ApiVersionArtifactIamMember;
+export const ApiVersionArtifactIamMember: typeof import("./apiVersionArtifactIamMember").ApiVersionArtifactIamMember = null as any;
 
 export { ApiVersionArtifactIamPolicyArgs } from "./apiVersionArtifactIamPolicy";
 export type ApiVersionArtifactIamPolicy = import("./apiVersionArtifactIamPolicy").ApiVersionArtifactIamPolicy;
 export const ApiVersionArtifactIamPolicy: typeof import("./apiVersionArtifactIamPolicy").ApiVersionArtifactIamPolicy = null as any;
 
+export { ApiVersionIamBindingArgs } from "./apiVersionIamBinding";
+export type ApiVersionIamBinding = import("./apiVersionIamBinding").ApiVersionIamBinding;
+export const ApiVersionIamBinding: typeof import("./apiVersionIamBinding").ApiVersionIamBinding = null as any;
+
+export { ApiVersionIamMemberArgs } from "./apiVersionIamMember";
+export type ApiVersionIamMember = import("./apiVersionIamMember").ApiVersionIamMember;
+export const ApiVersionIamMember: typeof import("./apiVersionIamMember").ApiVersionIamMember = null as any;
+
 export { ApiVersionIamPolicyArgs } from "./apiVersionIamPolicy";
 export type ApiVersionIamPolicy = import("./apiVersionIamPolicy").ApiVersionIamPolicy;
 export const ApiVersionIamPolicy: typeof import("./apiVersionIamPolicy").ApiVersionIamPolicy = null as any;
 
+export { ApiVersionSpecArtifactIamBindingArgs } from "./apiVersionSpecArtifactIamBinding";
+export type ApiVersionSpecArtifactIamBinding = import("./apiVersionSpecArtifactIamBinding").ApiVersionSpecArtifactIamBinding;
+export const ApiVersionSpecArtifactIamBinding: typeof import("./apiVersionSpecArtifactIamBinding").ApiVersionSpecArtifactIamBinding = null as any;
+
+export { ApiVersionSpecArtifactIamMemberArgs } from "./apiVersionSpecArtifactIamMember";
+export type ApiVersionSpecArtifactIamMember = import("./apiVersionSpecArtifactIamMember").ApiVersionSpecArtifactIamMember;
+export const ApiVersionSpecArtifactIamMember: typeof import("./apiVersionSpecArtifactIamMember").ApiVersionSpecArtifactIamMember = null as any;
+
 export { ApiVersionSpecArtifactIamPolicyArgs } from "./apiVersionSpecArtifactIamPolicy";
 export type ApiVersionSpecArtifactIamPolicy = import("./apiVersionSpecArtifactIamPolicy").ApiVersionSpecArtifactIamPolicy;
 export const ApiVersionSpecArtifactIamPolicy: typeof import("./apiVersionSpecArtifactIamPolicy").ApiVersionSpecArtifactIamPolicy = null as any;
+
+export { ApiVersionSpecIamBindingArgs } from "./apiVersionSpecIamBinding";
+export type ApiVersionSpecIamBinding = import("./apiVersionSpecIamBinding").ApiVersionSpecIamBinding;
+export const ApiVersionSpecIamBinding: typeof import("./apiVersionSpecIamBinding").ApiVersionSpecIamBinding = null as any;
+
+export { ApiVersionSpecIamMemberArgs } from "./apiVersionSpecIamMember";
+export type ApiVersionSpecIamMember = import("./apiVersionSpecIamMember").ApiVersionSpecIamMember;
+export const ApiVersionSpecIamMember: typeof import("./apiVersionSpecIamMember").ApiVersionSpecIamMember = null as any;
 
 export { ApiVersionSpecIamPolicyArgs } from "./apiVersionSpecIamPolicy";
 export type ApiVersionSpecIamPolicy = import("./apiVersionSpecIamPolicy").ApiVersionSpecIamPolicy;
@@ -40,6 +96,14 @@ export const ApiVersionSpecIamPolicy: typeof import("./apiVersionSpecIamPolicy")
 export { ArtifactArgs } from "./artifact";
 export type Artifact = import("./artifact").Artifact;
 export const Artifact: typeof import("./artifact").Artifact = null as any;
+
+export { ArtifactIamBindingArgs } from "./artifactIamBinding";
+export type ArtifactIamBinding = import("./artifactIamBinding").ArtifactIamBinding;
+export const ArtifactIamBinding: typeof import("./artifactIamBinding").ArtifactIamBinding = null as any;
+
+export { ArtifactIamMemberArgs } from "./artifactIamMember";
+export type ArtifactIamMember = import("./artifactIamMember").ArtifactIamMember;
+export const ArtifactIamMember: typeof import("./artifactIamMember").ArtifactIamMember = null as any;
 
 export { ArtifactIamPolicyArgs } from "./artifactIamPolicy";
 export type ArtifactIamPolicy = import("./artifactIamPolicy").ArtifactIamPolicy;
@@ -129,9 +193,25 @@ export { InstanceArgs } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 
+export { InstanceIamBindingArgs } from "./instanceIamBinding";
+export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
+export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
+
+export { InstanceIamMemberArgs } from "./instanceIamMember";
+export type InstanceIamMember = import("./instanceIamMember").InstanceIamMember;
+export const InstanceIamMember: typeof import("./instanceIamMember").InstanceIamMember = null as any;
+
 export { InstanceIamPolicyArgs } from "./instanceIamPolicy";
 export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
+
+export { RuntimeIamBindingArgs } from "./runtimeIamBinding";
+export type RuntimeIamBinding = import("./runtimeIamBinding").RuntimeIamBinding;
+export const RuntimeIamBinding: typeof import("./runtimeIamBinding").RuntimeIamBinding = null as any;
+
+export { RuntimeIamMemberArgs } from "./runtimeIamMember";
+export type RuntimeIamMember = import("./runtimeIamMember").RuntimeIamMember;
+export const RuntimeIamMember: typeof import("./runtimeIamMember").RuntimeIamMember = null as any;
 
 export { RuntimeIamPolicyArgs } from "./runtimeIamPolicy";
 export type RuntimeIamPolicy = import("./runtimeIamPolicy").RuntimeIamPolicy;
@@ -150,14 +230,30 @@ export type VersionArtifact = import("./versionArtifact").VersionArtifact;
 export const VersionArtifact: typeof import("./versionArtifact").VersionArtifact = null as any;
 
 utilities.lazyLoad(exports, ["Api"], () => require("./api"));
+utilities.lazyLoad(exports, ["ApiArtifactIamBinding"], () => require("./apiArtifactIamBinding"));
+utilities.lazyLoad(exports, ["ApiArtifactIamMember"], () => require("./apiArtifactIamMember"));
 utilities.lazyLoad(exports, ["ApiArtifactIamPolicy"], () => require("./apiArtifactIamPolicy"));
+utilities.lazyLoad(exports, ["ApiDeploymentIamBinding"], () => require("./apiDeploymentIamBinding"));
+utilities.lazyLoad(exports, ["ApiDeploymentIamMember"], () => require("./apiDeploymentIamMember"));
 utilities.lazyLoad(exports, ["ApiDeploymentIamPolicy"], () => require("./apiDeploymentIamPolicy"));
+utilities.lazyLoad(exports, ["ApiIamBinding"], () => require("./apiIamBinding"));
+utilities.lazyLoad(exports, ["ApiIamMember"], () => require("./apiIamMember"));
 utilities.lazyLoad(exports, ["ApiIamPolicy"], () => require("./apiIamPolicy"));
+utilities.lazyLoad(exports, ["ApiVersionArtifactIamBinding"], () => require("./apiVersionArtifactIamBinding"));
+utilities.lazyLoad(exports, ["ApiVersionArtifactIamMember"], () => require("./apiVersionArtifactIamMember"));
 utilities.lazyLoad(exports, ["ApiVersionArtifactIamPolicy"], () => require("./apiVersionArtifactIamPolicy"));
+utilities.lazyLoad(exports, ["ApiVersionIamBinding"], () => require("./apiVersionIamBinding"));
+utilities.lazyLoad(exports, ["ApiVersionIamMember"], () => require("./apiVersionIamMember"));
 utilities.lazyLoad(exports, ["ApiVersionIamPolicy"], () => require("./apiVersionIamPolicy"));
+utilities.lazyLoad(exports, ["ApiVersionSpecArtifactIamBinding"], () => require("./apiVersionSpecArtifactIamBinding"));
+utilities.lazyLoad(exports, ["ApiVersionSpecArtifactIamMember"], () => require("./apiVersionSpecArtifactIamMember"));
 utilities.lazyLoad(exports, ["ApiVersionSpecArtifactIamPolicy"], () => require("./apiVersionSpecArtifactIamPolicy"));
+utilities.lazyLoad(exports, ["ApiVersionSpecIamBinding"], () => require("./apiVersionSpecIamBinding"));
+utilities.lazyLoad(exports, ["ApiVersionSpecIamMember"], () => require("./apiVersionSpecIamMember"));
 utilities.lazyLoad(exports, ["ApiVersionSpecIamPolicy"], () => require("./apiVersionSpecIamPolicy"));
 utilities.lazyLoad(exports, ["Artifact"], () => require("./artifact"));
+utilities.lazyLoad(exports, ["ArtifactIamBinding"], () => require("./artifactIamBinding"));
+utilities.lazyLoad(exports, ["ArtifactIamMember"], () => require("./artifactIamMember"));
 utilities.lazyLoad(exports, ["ArtifactIamPolicy"], () => require("./artifactIamPolicy"));
 utilities.lazyLoad(exports, ["Deployment"], () => require("./deployment"));
 utilities.lazyLoad(exports, ["DeploymentArtifact"], () => require("./deploymentArtifact"));
@@ -180,7 +276,11 @@ utilities.lazyLoad(exports, ["getSpec","getSpecOutput"], () => require("./getSpe
 utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
 utilities.lazyLoad(exports, ["getVersionArtifact","getVersionArtifactOutput"], () => require("./getVersionArtifact"));
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
+utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
+utilities.lazyLoad(exports, ["RuntimeIamBinding"], () => require("./runtimeIamBinding"));
+utilities.lazyLoad(exports, ["RuntimeIamMember"], () => require("./runtimeIamMember"));
 utilities.lazyLoad(exports, ["RuntimeIamPolicy"], () => require("./runtimeIamPolicy"));
 utilities.lazyLoad(exports, ["Spec"], () => require("./spec"));
 utilities.lazyLoad(exports, ["Version"], () => require("./version"));
@@ -192,22 +292,54 @@ const _module = {
         switch (type) {
             case "google-native:apigeeregistry/v1:Api":
                 return new Api(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ApiArtifactIamBinding":
+                return new ApiArtifactIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ApiArtifactIamMember":
+                return new ApiArtifactIamMember(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:ApiArtifactIamPolicy":
                 return new ApiArtifactIamPolicy(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ApiDeploymentIamBinding":
+                return new ApiDeploymentIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ApiDeploymentIamMember":
+                return new ApiDeploymentIamMember(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:ApiDeploymentIamPolicy":
                 return new ApiDeploymentIamPolicy(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ApiIamBinding":
+                return new ApiIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ApiIamMember":
+                return new ApiIamMember(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:ApiIamPolicy":
                 return new ApiIamPolicy(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ApiVersionArtifactIamBinding":
+                return new ApiVersionArtifactIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ApiVersionArtifactIamMember":
+                return new ApiVersionArtifactIamMember(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:ApiVersionArtifactIamPolicy":
                 return new ApiVersionArtifactIamPolicy(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ApiVersionIamBinding":
+                return new ApiVersionIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ApiVersionIamMember":
+                return new ApiVersionIamMember(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:ApiVersionIamPolicy":
                 return new ApiVersionIamPolicy(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ApiVersionSpecArtifactIamBinding":
+                return new ApiVersionSpecArtifactIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ApiVersionSpecArtifactIamMember":
+                return new ApiVersionSpecArtifactIamMember(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:ApiVersionSpecArtifactIamPolicy":
                 return new ApiVersionSpecArtifactIamPolicy(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ApiVersionSpecIamBinding":
+                return new ApiVersionSpecIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ApiVersionSpecIamMember":
+                return new ApiVersionSpecIamMember(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:ApiVersionSpecIamPolicy":
                 return new ApiVersionSpecIamPolicy(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:Artifact":
                 return new Artifact(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ArtifactIamBinding":
+                return new ArtifactIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:ArtifactIamMember":
+                return new ArtifactIamMember(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:ArtifactIamPolicy":
                 return new ArtifactIamPolicy(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:Deployment":
@@ -216,8 +348,16 @@ const _module = {
                 return new DeploymentArtifact(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:InstanceIamBinding":
+                return new InstanceIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:InstanceIamMember":
+                return new InstanceIamMember(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:RuntimeIamBinding":
+                return new RuntimeIamBinding(name, <any>undefined, { urn })
+            case "google-native:apigeeregistry/v1:RuntimeIamMember":
+                return new RuntimeIamMember(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:RuntimeIamPolicy":
                 return new RuntimeIamPolicy(name, <any>undefined, { urn })
             case "google-native:apigeeregistry/v1:Spec":

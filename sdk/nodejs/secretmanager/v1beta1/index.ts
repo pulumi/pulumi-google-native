@@ -17,6 +17,14 @@ export { SecretArgs } from "./secret";
 export type Secret = import("./secret").Secret;
 export const Secret: typeof import("./secret").Secret = null as any;
 
+export { SecretIamBindingArgs } from "./secretIamBinding";
+export type SecretIamBinding = import("./secretIamBinding").SecretIamBinding;
+export const SecretIamBinding: typeof import("./secretIamBinding").SecretIamBinding = null as any;
+
+export { SecretIamMemberArgs } from "./secretIamMember";
+export type SecretIamMember = import("./secretIamMember").SecretIamMember;
+export const SecretIamMember: typeof import("./secretIamMember").SecretIamMember = null as any;
+
 export { SecretIamPolicyArgs } from "./secretIamPolicy";
 export type SecretIamPolicy = import("./secretIamPolicy").SecretIamPolicy;
 export const SecretIamPolicy: typeof import("./secretIamPolicy").SecretIamPolicy = null as any;
@@ -24,6 +32,8 @@ export const SecretIamPolicy: typeof import("./secretIamPolicy").SecretIamPolicy
 utilities.lazyLoad(exports, ["getSecret","getSecretOutput"], () => require("./getSecret"));
 utilities.lazyLoad(exports, ["getSecretIamPolicy","getSecretIamPolicyOutput"], () => require("./getSecretIamPolicy"));
 utilities.lazyLoad(exports, ["Secret"], () => require("./secret"));
+utilities.lazyLoad(exports, ["SecretIamBinding"], () => require("./secretIamBinding"));
+utilities.lazyLoad(exports, ["SecretIamMember"], () => require("./secretIamMember"));
 utilities.lazyLoad(exports, ["SecretIamPolicy"], () => require("./secretIamPolicy"));
 
 // Export enums:
@@ -35,6 +45,10 @@ const _module = {
         switch (type) {
             case "google-native:secretmanager/v1beta1:Secret":
                 return new Secret(name, <any>undefined, { urn })
+            case "google-native:secretmanager/v1beta1:SecretIamBinding":
+                return new SecretIamBinding(name, <any>undefined, { urn })
+            case "google-native:secretmanager/v1beta1:SecretIamMember":
+                return new SecretIamMember(name, <any>undefined, { urn })
             case "google-native:secretmanager/v1beta1:SecretIamPolicy":
                 return new SecretIamPolicy(name, <any>undefined, { urn })
             default:

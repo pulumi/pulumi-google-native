@@ -41,6 +41,14 @@ export { ManagedZoneArgs } from "./managedZone";
 export type ManagedZone = import("./managedZone").ManagedZone;
 export const ManagedZone: typeof import("./managedZone").ManagedZone = null as any;
 
+export { ManagedZoneIamBindingArgs } from "./managedZoneIamBinding";
+export type ManagedZoneIamBinding = import("./managedZoneIamBinding").ManagedZoneIamBinding;
+export const ManagedZoneIamBinding: typeof import("./managedZoneIamBinding").ManagedZoneIamBinding = null as any;
+
+export { ManagedZoneIamMemberArgs } from "./managedZoneIamMember";
+export type ManagedZoneIamMember = import("./managedZoneIamMember").ManagedZoneIamMember;
+export const ManagedZoneIamMember: typeof import("./managedZoneIamMember").ManagedZoneIamMember = null as any;
+
 export { ManagedZoneIamPolicyArgs } from "./managedZoneIamPolicy";
 export type ManagedZoneIamPolicy = import("./managedZoneIamPolicy").ManagedZoneIamPolicy;
 export const ManagedZoneIamPolicy: typeof import("./managedZoneIamPolicy").ManagedZoneIamPolicy = null as any;
@@ -70,6 +78,8 @@ utilities.lazyLoad(exports, ["getResourceRecordSet","getResourceRecordSetOutput"
 utilities.lazyLoad(exports, ["getResponsePolicy","getResponsePolicyOutput"], () => require("./getResponsePolicy"));
 utilities.lazyLoad(exports, ["getResponsePolicyRule","getResponsePolicyRuleOutput"], () => require("./getResponsePolicyRule"));
 utilities.lazyLoad(exports, ["ManagedZone"], () => require("./managedZone"));
+utilities.lazyLoad(exports, ["ManagedZoneIamBinding"], () => require("./managedZoneIamBinding"));
+utilities.lazyLoad(exports, ["ManagedZoneIamMember"], () => require("./managedZoneIamMember"));
 utilities.lazyLoad(exports, ["ManagedZoneIamPolicy"], () => require("./managedZoneIamPolicy"));
 utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
 utilities.lazyLoad(exports, ["ResourceRecordSet"], () => require("./resourceRecordSet"));
@@ -87,6 +97,10 @@ const _module = {
                 return new Change(name, <any>undefined, { urn })
             case "google-native:dns/v1beta2:ManagedZone":
                 return new ManagedZone(name, <any>undefined, { urn })
+            case "google-native:dns/v1beta2:ManagedZoneIamBinding":
+                return new ManagedZoneIamBinding(name, <any>undefined, { urn })
+            case "google-native:dns/v1beta2:ManagedZoneIamMember":
+                return new ManagedZoneIamMember(name, <any>undefined, { urn })
             case "google-native:dns/v1beta2:ManagedZoneIamPolicy":
                 return new ManagedZoneIamPolicy(name, <any>undefined, { urn })
             case "google-native:dns/v1beta2:Policy":

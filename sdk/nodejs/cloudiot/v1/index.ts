@@ -29,9 +29,25 @@ export { RegistryArgs } from "./registry";
 export type Registry = import("./registry").Registry;
 export const Registry: typeof import("./registry").Registry = null as any;
 
+export { RegistryGroupIamBindingArgs } from "./registryGroupIamBinding";
+export type RegistryGroupIamBinding = import("./registryGroupIamBinding").RegistryGroupIamBinding;
+export const RegistryGroupIamBinding: typeof import("./registryGroupIamBinding").RegistryGroupIamBinding = null as any;
+
+export { RegistryGroupIamMemberArgs } from "./registryGroupIamMember";
+export type RegistryGroupIamMember = import("./registryGroupIamMember").RegistryGroupIamMember;
+export const RegistryGroupIamMember: typeof import("./registryGroupIamMember").RegistryGroupIamMember = null as any;
+
 export { RegistryGroupIamPolicyArgs } from "./registryGroupIamPolicy";
 export type RegistryGroupIamPolicy = import("./registryGroupIamPolicy").RegistryGroupIamPolicy;
 export const RegistryGroupIamPolicy: typeof import("./registryGroupIamPolicy").RegistryGroupIamPolicy = null as any;
+
+export { RegistryIamBindingArgs } from "./registryIamBinding";
+export type RegistryIamBinding = import("./registryIamBinding").RegistryIamBinding;
+export const RegistryIamBinding: typeof import("./registryIamBinding").RegistryIamBinding = null as any;
+
+export { RegistryIamMemberArgs } from "./registryIamMember";
+export type RegistryIamMember = import("./registryIamMember").RegistryIamMember;
+export const RegistryIamMember: typeof import("./registryIamMember").RegistryIamMember = null as any;
 
 export { RegistryIamPolicyArgs } from "./registryIamPolicy";
 export type RegistryIamPolicy = import("./registryIamPolicy").RegistryIamPolicy;
@@ -43,7 +59,11 @@ utilities.lazyLoad(exports, ["getRegistry","getRegistryOutput"], () => require("
 utilities.lazyLoad(exports, ["getRegistryGroupIamPolicy","getRegistryGroupIamPolicyOutput"], () => require("./getRegistryGroupIamPolicy"));
 utilities.lazyLoad(exports, ["getRegistryIamPolicy","getRegistryIamPolicyOutput"], () => require("./getRegistryIamPolicy"));
 utilities.lazyLoad(exports, ["Registry"], () => require("./registry"));
+utilities.lazyLoad(exports, ["RegistryGroupIamBinding"], () => require("./registryGroupIamBinding"));
+utilities.lazyLoad(exports, ["RegistryGroupIamMember"], () => require("./registryGroupIamMember"));
 utilities.lazyLoad(exports, ["RegistryGroupIamPolicy"], () => require("./registryGroupIamPolicy"));
+utilities.lazyLoad(exports, ["RegistryIamBinding"], () => require("./registryIamBinding"));
+utilities.lazyLoad(exports, ["RegistryIamMember"], () => require("./registryIamMember"));
 utilities.lazyLoad(exports, ["RegistryIamPolicy"], () => require("./registryIamPolicy"));
 
 // Export enums:
@@ -57,8 +77,16 @@ const _module = {
                 return new Device(name, <any>undefined, { urn })
             case "google-native:cloudiot/v1:Registry":
                 return new Registry(name, <any>undefined, { urn })
+            case "google-native:cloudiot/v1:RegistryGroupIamBinding":
+                return new RegistryGroupIamBinding(name, <any>undefined, { urn })
+            case "google-native:cloudiot/v1:RegistryGroupIamMember":
+                return new RegistryGroupIamMember(name, <any>undefined, { urn })
             case "google-native:cloudiot/v1:RegistryGroupIamPolicy":
                 return new RegistryGroupIamPolicy(name, <any>undefined, { urn })
+            case "google-native:cloudiot/v1:RegistryIamBinding":
+                return new RegistryIamBinding(name, <any>undefined, { urn })
+            case "google-native:cloudiot/v1:RegistryIamMember":
+                return new RegistryIamMember(name, <any>undefined, { urn })
             case "google-native:cloudiot/v1:RegistryIamPolicy":
                 return new RegistryIamPolicy(name, <any>undefined, { urn })
             default:

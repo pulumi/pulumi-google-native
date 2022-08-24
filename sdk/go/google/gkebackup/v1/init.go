@@ -25,20 +25,44 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Backup{}
 	case "google-native:gkebackup/v1:BackupPlan":
 		r = &BackupPlan{}
+	case "google-native:gkebackup/v1:BackupPlanBackupIamBinding":
+		r = &BackupPlanBackupIamBinding{}
+	case "google-native:gkebackup/v1:BackupPlanBackupIamMember":
+		r = &BackupPlanBackupIamMember{}
 	case "google-native:gkebackup/v1:BackupPlanBackupIamPolicy":
 		r = &BackupPlanBackupIamPolicy{}
+	case "google-native:gkebackup/v1:BackupPlanBackupVolumeBackupIamBinding":
+		r = &BackupPlanBackupVolumeBackupIamBinding{}
+	case "google-native:gkebackup/v1:BackupPlanBackupVolumeBackupIamMember":
+		r = &BackupPlanBackupVolumeBackupIamMember{}
 	case "google-native:gkebackup/v1:BackupPlanBackupVolumeBackupIamPolicy":
 		r = &BackupPlanBackupVolumeBackupIamPolicy{}
+	case "google-native:gkebackup/v1:BackupPlanIamBinding":
+		r = &BackupPlanIamBinding{}
+	case "google-native:gkebackup/v1:BackupPlanIamMember":
+		r = &BackupPlanIamMember{}
 	case "google-native:gkebackup/v1:BackupPlanIamPolicy":
 		r = &BackupPlanIamPolicy{}
 	case "google-native:gkebackup/v1:Restore":
 		r = &Restore{}
 	case "google-native:gkebackup/v1:RestorePlan":
 		r = &RestorePlan{}
+	case "google-native:gkebackup/v1:RestorePlanIamBinding":
+		r = &RestorePlanIamBinding{}
+	case "google-native:gkebackup/v1:RestorePlanIamMember":
+		r = &RestorePlanIamMember{}
 	case "google-native:gkebackup/v1:RestorePlanIamPolicy":
 		r = &RestorePlanIamPolicy{}
+	case "google-native:gkebackup/v1:RestorePlanRestoreIamBinding":
+		r = &RestorePlanRestoreIamBinding{}
+	case "google-native:gkebackup/v1:RestorePlanRestoreIamMember":
+		r = &RestorePlanRestoreIamMember{}
 	case "google-native:gkebackup/v1:RestorePlanRestoreIamPolicy":
 		r = &RestorePlanRestoreIamPolicy{}
+	case "google-native:gkebackup/v1:RestorePlanRestoreVolumeRestoreIamBinding":
+		r = &RestorePlanRestoreVolumeRestoreIamBinding{}
+	case "google-native:gkebackup/v1:RestorePlanRestoreVolumeRestoreIamMember":
+		r = &RestorePlanRestoreVolumeRestoreIamMember{}
 	case "google-native:gkebackup/v1:RestorePlanRestoreVolumeRestoreIamPolicy":
 		r = &RestorePlanRestoreVolumeRestoreIamPolicy{}
 	default:

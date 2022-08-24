@@ -16,8 +16,12 @@ from .get_runtime import *
 from .get_runtime_iam_policy import *
 from .get_schedule import *
 from .instance import *
+from .instance_iam_binding import *
+from .instance_iam_member import *
 from .instance_iam_policy import *
 from .runtime import *
+from .runtime_iam_binding import *
+from .runtime_iam_member import *
 from .runtime_iam_policy import *
 from .schedule import *
 from ._inputs import *

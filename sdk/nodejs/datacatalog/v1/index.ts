@@ -13,6 +13,14 @@ export { EntryGroupArgs } from "./entryGroup";
 export type EntryGroup = import("./entryGroup").EntryGroup;
 export const EntryGroup: typeof import("./entryGroup").EntryGroup = null as any;
 
+export { EntryGroupIamBindingArgs } from "./entryGroupIamBinding";
+export type EntryGroupIamBinding = import("./entryGroupIamBinding").EntryGroupIamBinding;
+export const EntryGroupIamBinding: typeof import("./entryGroupIamBinding").EntryGroupIamBinding = null as any;
+
+export { EntryGroupIamMemberArgs } from "./entryGroupIamMember";
+export type EntryGroupIamMember = import("./entryGroupIamMember").EntryGroupIamMember;
+export const EntryGroupIamMember: typeof import("./entryGroupIamMember").EntryGroupIamMember = null as any;
+
 export { EntryGroupIamPolicyArgs } from "./entryGroupIamPolicy";
 export type EntryGroupIamPolicy = import("./entryGroupIamPolicy").EntryGroupIamPolicy;
 export const EntryGroupIamPolicy: typeof import("./entryGroupIamPolicy").EntryGroupIamPolicy = null as any;
@@ -61,6 +69,14 @@ export { TagTemplateArgs } from "./tagTemplate";
 export type TagTemplate = import("./tagTemplate").TagTemplate;
 export const TagTemplate: typeof import("./tagTemplate").TagTemplate = null as any;
 
+export { TagTemplateIamBindingArgs } from "./tagTemplateIamBinding";
+export type TagTemplateIamBinding = import("./tagTemplateIamBinding").TagTemplateIamBinding;
+export const TagTemplateIamBinding: typeof import("./tagTemplateIamBinding").TagTemplateIamBinding = null as any;
+
+export { TagTemplateIamMemberArgs } from "./tagTemplateIamMember";
+export type TagTemplateIamMember = import("./tagTemplateIamMember").TagTemplateIamMember;
+export const TagTemplateIamMember: typeof import("./tagTemplateIamMember").TagTemplateIamMember = null as any;
+
 export { TagTemplateIamPolicyArgs } from "./tagTemplateIamPolicy";
 export type TagTemplateIamPolicy = import("./tagTemplateIamPolicy").TagTemplateIamPolicy;
 export const TagTemplateIamPolicy: typeof import("./tagTemplateIamPolicy").TagTemplateIamPolicy = null as any;
@@ -69,9 +85,25 @@ export { TaxonomyArgs } from "./taxonomy";
 export type Taxonomy = import("./taxonomy").Taxonomy;
 export const Taxonomy: typeof import("./taxonomy").Taxonomy = null as any;
 
+export { TaxonomyIamBindingArgs } from "./taxonomyIamBinding";
+export type TaxonomyIamBinding = import("./taxonomyIamBinding").TaxonomyIamBinding;
+export const TaxonomyIamBinding: typeof import("./taxonomyIamBinding").TaxonomyIamBinding = null as any;
+
+export { TaxonomyIamMemberArgs } from "./taxonomyIamMember";
+export type TaxonomyIamMember = import("./taxonomyIamMember").TaxonomyIamMember;
+export const TaxonomyIamMember: typeof import("./taxonomyIamMember").TaxonomyIamMember = null as any;
+
 export { TaxonomyIamPolicyArgs } from "./taxonomyIamPolicy";
 export type TaxonomyIamPolicy = import("./taxonomyIamPolicy").TaxonomyIamPolicy;
 export const TaxonomyIamPolicy: typeof import("./taxonomyIamPolicy").TaxonomyIamPolicy = null as any;
+
+export { TaxonomyPolicyTagIamBindingArgs } from "./taxonomyPolicyTagIamBinding";
+export type TaxonomyPolicyTagIamBinding = import("./taxonomyPolicyTagIamBinding").TaxonomyPolicyTagIamBinding;
+export const TaxonomyPolicyTagIamBinding: typeof import("./taxonomyPolicyTagIamBinding").TaxonomyPolicyTagIamBinding = null as any;
+
+export { TaxonomyPolicyTagIamMemberArgs } from "./taxonomyPolicyTagIamMember";
+export type TaxonomyPolicyTagIamMember = import("./taxonomyPolicyTagIamMember").TaxonomyPolicyTagIamMember;
+export const TaxonomyPolicyTagIamMember: typeof import("./taxonomyPolicyTagIamMember").TaxonomyPolicyTagIamMember = null as any;
 
 export { TaxonomyPolicyTagIamPolicyArgs } from "./taxonomyPolicyTagIamPolicy";
 export type TaxonomyPolicyTagIamPolicy = import("./taxonomyPolicyTagIamPolicy").TaxonomyPolicyTagIamPolicy;
@@ -79,6 +111,8 @@ export const TaxonomyPolicyTagIamPolicy: typeof import("./taxonomyPolicyTagIamPo
 
 utilities.lazyLoad(exports, ["Entry"], () => require("./entry"));
 utilities.lazyLoad(exports, ["EntryGroup"], () => require("./entryGroup"));
+utilities.lazyLoad(exports, ["EntryGroupIamBinding"], () => require("./entryGroupIamBinding"));
+utilities.lazyLoad(exports, ["EntryGroupIamMember"], () => require("./entryGroupIamMember"));
 utilities.lazyLoad(exports, ["EntryGroupIamPolicy"], () => require("./entryGroupIamPolicy"));
 utilities.lazyLoad(exports, ["getEntry","getEntryOutput"], () => require("./getEntry"));
 utilities.lazyLoad(exports, ["getEntryGroup","getEntryGroupOutput"], () => require("./getEntryGroup"));
@@ -91,9 +125,15 @@ utilities.lazyLoad(exports, ["getTaxonomyIamPolicy","getTaxonomyIamPolicyOutput"
 utilities.lazyLoad(exports, ["getTaxonomyPolicyTagIamPolicy","getTaxonomyPolicyTagIamPolicyOutput"], () => require("./getTaxonomyPolicyTagIamPolicy"));
 utilities.lazyLoad(exports, ["PolicyTag"], () => require("./policyTag"));
 utilities.lazyLoad(exports, ["TagTemplate"], () => require("./tagTemplate"));
+utilities.lazyLoad(exports, ["TagTemplateIamBinding"], () => require("./tagTemplateIamBinding"));
+utilities.lazyLoad(exports, ["TagTemplateIamMember"], () => require("./tagTemplateIamMember"));
 utilities.lazyLoad(exports, ["TagTemplateIamPolicy"], () => require("./tagTemplateIamPolicy"));
 utilities.lazyLoad(exports, ["Taxonomy"], () => require("./taxonomy"));
+utilities.lazyLoad(exports, ["TaxonomyIamBinding"], () => require("./taxonomyIamBinding"));
+utilities.lazyLoad(exports, ["TaxonomyIamMember"], () => require("./taxonomyIamMember"));
 utilities.lazyLoad(exports, ["TaxonomyIamPolicy"], () => require("./taxonomyIamPolicy"));
+utilities.lazyLoad(exports, ["TaxonomyPolicyTagIamBinding"], () => require("./taxonomyPolicyTagIamBinding"));
+utilities.lazyLoad(exports, ["TaxonomyPolicyTagIamMember"], () => require("./taxonomyPolicyTagIamMember"));
 utilities.lazyLoad(exports, ["TaxonomyPolicyTagIamPolicy"], () => require("./taxonomyPolicyTagIamPolicy"));
 
 // Export enums:
@@ -107,18 +147,34 @@ const _module = {
                 return new Entry(name, <any>undefined, { urn })
             case "google-native:datacatalog/v1:EntryGroup":
                 return new EntryGroup(name, <any>undefined, { urn })
+            case "google-native:datacatalog/v1:EntryGroupIamBinding":
+                return new EntryGroupIamBinding(name, <any>undefined, { urn })
+            case "google-native:datacatalog/v1:EntryGroupIamMember":
+                return new EntryGroupIamMember(name, <any>undefined, { urn })
             case "google-native:datacatalog/v1:EntryGroupIamPolicy":
                 return new EntryGroupIamPolicy(name, <any>undefined, { urn })
             case "google-native:datacatalog/v1:PolicyTag":
                 return new PolicyTag(name, <any>undefined, { urn })
             case "google-native:datacatalog/v1:TagTemplate":
                 return new TagTemplate(name, <any>undefined, { urn })
+            case "google-native:datacatalog/v1:TagTemplateIamBinding":
+                return new TagTemplateIamBinding(name, <any>undefined, { urn })
+            case "google-native:datacatalog/v1:TagTemplateIamMember":
+                return new TagTemplateIamMember(name, <any>undefined, { urn })
             case "google-native:datacatalog/v1:TagTemplateIamPolicy":
                 return new TagTemplateIamPolicy(name, <any>undefined, { urn })
             case "google-native:datacatalog/v1:Taxonomy":
                 return new Taxonomy(name, <any>undefined, { urn })
+            case "google-native:datacatalog/v1:TaxonomyIamBinding":
+                return new TaxonomyIamBinding(name, <any>undefined, { urn })
+            case "google-native:datacatalog/v1:TaxonomyIamMember":
+                return new TaxonomyIamMember(name, <any>undefined, { urn })
             case "google-native:datacatalog/v1:TaxonomyIamPolicy":
                 return new TaxonomyIamPolicy(name, <any>undefined, { urn })
+            case "google-native:datacatalog/v1:TaxonomyPolicyTagIamBinding":
+                return new TaxonomyPolicyTagIamBinding(name, <any>undefined, { urn })
+            case "google-native:datacatalog/v1:TaxonomyPolicyTagIamMember":
+                return new TaxonomyPolicyTagIamMember(name, <any>undefined, { urn })
             case "google-native:datacatalog/v1:TaxonomyPolicyTagIamPolicy":
                 return new TaxonomyPolicyTagIamPolicy(name, <any>undefined, { urn })
             default:

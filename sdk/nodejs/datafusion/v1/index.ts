@@ -17,6 +17,14 @@ export { InstanceArgs } from "./instance";
 export type Instance = import("./instance").Instance;
 export const Instance: typeof import("./instance").Instance = null as any;
 
+export { InstanceIamBindingArgs } from "./instanceIamBinding";
+export type InstanceIamBinding = import("./instanceIamBinding").InstanceIamBinding;
+export const InstanceIamBinding: typeof import("./instanceIamBinding").InstanceIamBinding = null as any;
+
+export { InstanceIamMemberArgs } from "./instanceIamMember";
+export type InstanceIamMember = import("./instanceIamMember").InstanceIamMember;
+export const InstanceIamMember: typeof import("./instanceIamMember").InstanceIamMember = null as any;
+
 export { InstanceIamPolicyArgs } from "./instanceIamPolicy";
 export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
 export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
@@ -24,6 +32,8 @@ export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIam
 utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
 utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
 utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["InstanceIamBinding"], () => require("./instanceIamBinding"));
+utilities.lazyLoad(exports, ["InstanceIamMember"], () => require("./instanceIamMember"));
 utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
 // Export enums:
@@ -35,6 +45,10 @@ const _module = {
         switch (type) {
             case "google-native:datafusion/v1:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "google-native:datafusion/v1:InstanceIamBinding":
+                return new InstanceIamBinding(name, <any>undefined, { urn })
+            case "google-native:datafusion/v1:InstanceIamMember":
+                return new InstanceIamMember(name, <any>undefined, { urn })
             case "google-native:datafusion/v1:InstanceIamPolicy":
                 return new InstanceIamPolicy(name, <any>undefined, { urn })
             default:

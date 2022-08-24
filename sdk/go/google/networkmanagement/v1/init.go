@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:networkmanagement/v1:ConnectivityTest":
 		r = &ConnectivityTest{}
+	case "google-native:networkmanagement/v1:ConnectivityTestIamBinding":
+		r = &ConnectivityTestIamBinding{}
+	case "google-native:networkmanagement/v1:ConnectivityTestIamMember":
+		r = &ConnectivityTestIamMember{}
 	case "google-native:networkmanagement/v1:ConnectivityTestIamPolicy":
 		r = &ConnectivityTestIamPolicy{}
 	default:

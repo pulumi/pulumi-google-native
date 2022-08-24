@@ -18,6 +18,8 @@ from .organization_role import *
 from .provider import *
 from .role import *
 from .service_account import *
+from .service_account_iam_binding import *
+from .service_account_iam_member import *
 from .service_account_iam_policy import *
 from .workload_identity_pool import *
 from ._inputs import *

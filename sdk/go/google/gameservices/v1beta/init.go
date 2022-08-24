@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "google-native:gameservices/v1beta:GameServerDeploymentIamBinding":
+		r = &GameServerDeploymentIamBinding{}
+	case "google-native:gameservices/v1beta:GameServerDeploymentIamMember":
+		r = &GameServerDeploymentIamMember{}
 	case "google-native:gameservices/v1beta:GameServerDeploymentIamPolicy":
 		r = &GameServerDeploymentIamPolicy{}
 	default:

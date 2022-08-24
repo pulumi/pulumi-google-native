@@ -9,6 +9,8 @@ from ._enums import *
 from .crypto_key import *
 from .crypto_key_version import *
 from .ekm_connection import *
+from .ekm_connection_iam_binding import *
+from .ekm_connection_iam_member import *
 from .ekm_connection_iam_policy import *
 from .get_crypto_key import *
 from .get_crypto_key_version import *
@@ -21,8 +23,14 @@ from .get_key_ring_iam_policy import *
 from .get_key_ring_import_job_iam_policy import *
 from .import_job import *
 from .key_ring import *
+from .key_ring_crypto_key_iam_binding import *
+from .key_ring_crypto_key_iam_member import *
 from .key_ring_crypto_key_iam_policy import *
+from .key_ring_iam_binding import *
+from .key_ring_iam_member import *
 from .key_ring_iam_policy import *
+from .key_ring_import_job_iam_binding import *
+from .key_ring_import_job_iam_member import *
 from .key_ring_import_job_iam_policy import *
 from ._inputs import *
 from . import outputs

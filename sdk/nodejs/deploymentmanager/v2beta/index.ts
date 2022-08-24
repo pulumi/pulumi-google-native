@@ -13,6 +13,14 @@ export { DeploymentArgs } from "./deployment";
 export type Deployment = import("./deployment").Deployment;
 export const Deployment: typeof import("./deployment").Deployment = null as any;
 
+export { DeploymentIamBindingArgs } from "./deploymentIamBinding";
+export type DeploymentIamBinding = import("./deploymentIamBinding").DeploymentIamBinding;
+export const DeploymentIamBinding: typeof import("./deploymentIamBinding").DeploymentIamBinding = null as any;
+
+export { DeploymentIamMemberArgs } from "./deploymentIamMember";
+export type DeploymentIamMember = import("./deploymentIamMember").DeploymentIamMember;
+export const DeploymentIamMember: typeof import("./deploymentIamMember").DeploymentIamMember = null as any;
+
 export { DeploymentIamPolicyArgs } from "./deploymentIamPolicy";
 export type DeploymentIamPolicy = import("./deploymentIamPolicy").DeploymentIamPolicy;
 export const DeploymentIamPolicy: typeof import("./deploymentIamPolicy").DeploymentIamPolicy = null as any;
@@ -39,6 +47,8 @@ export const TypeProvider: typeof import("./typeProvider").TypeProvider = null a
 
 utilities.lazyLoad(exports, ["CompositeType"], () => require("./compositeType"));
 utilities.lazyLoad(exports, ["Deployment"], () => require("./deployment"));
+utilities.lazyLoad(exports, ["DeploymentIamBinding"], () => require("./deploymentIamBinding"));
+utilities.lazyLoad(exports, ["DeploymentIamMember"], () => require("./deploymentIamMember"));
 utilities.lazyLoad(exports, ["DeploymentIamPolicy"], () => require("./deploymentIamPolicy"));
 utilities.lazyLoad(exports, ["getCompositeType","getCompositeTypeOutput"], () => require("./getCompositeType"));
 utilities.lazyLoad(exports, ["getDeployment","getDeploymentOutput"], () => require("./getDeployment"));
@@ -57,6 +67,10 @@ const _module = {
                 return new CompositeType(name, <any>undefined, { urn })
             case "google-native:deploymentmanager/v2beta:Deployment":
                 return new Deployment(name, <any>undefined, { urn })
+            case "google-native:deploymentmanager/v2beta:DeploymentIamBinding":
+                return new DeploymentIamBinding(name, <any>undefined, { urn })
+            case "google-native:deploymentmanager/v2beta:DeploymentIamMember":
+                return new DeploymentIamMember(name, <any>undefined, { urn })
             case "google-native:deploymentmanager/v2beta:DeploymentIamPolicy":
                 return new DeploymentIamPolicy(name, <any>undefined, { urn })
             case "google-native:deploymentmanager/v2beta:TypeProvider":

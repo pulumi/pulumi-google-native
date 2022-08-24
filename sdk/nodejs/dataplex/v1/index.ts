@@ -93,29 +93,85 @@ export { LakeArgs } from "./lake";
 export type Lake = import("./lake").Lake;
 export const Lake: typeof import("./lake").Lake = null as any;
 
+export { LakeAssetIamBindingArgs } from "./lakeAssetIamBinding";
+export type LakeAssetIamBinding = import("./lakeAssetIamBinding").LakeAssetIamBinding;
+export const LakeAssetIamBinding: typeof import("./lakeAssetIamBinding").LakeAssetIamBinding = null as any;
+
+export { LakeAssetIamMemberArgs } from "./lakeAssetIamMember";
+export type LakeAssetIamMember = import("./lakeAssetIamMember").LakeAssetIamMember;
+export const LakeAssetIamMember: typeof import("./lakeAssetIamMember").LakeAssetIamMember = null as any;
+
 export { LakeAssetIamPolicyArgs } from "./lakeAssetIamPolicy";
 export type LakeAssetIamPolicy = import("./lakeAssetIamPolicy").LakeAssetIamPolicy;
 export const LakeAssetIamPolicy: typeof import("./lakeAssetIamPolicy").LakeAssetIamPolicy = null as any;
+
+export { LakeContentIamBindingArgs } from "./lakeContentIamBinding";
+export type LakeContentIamBinding = import("./lakeContentIamBinding").LakeContentIamBinding;
+export const LakeContentIamBinding: typeof import("./lakeContentIamBinding").LakeContentIamBinding = null as any;
+
+export { LakeContentIamMemberArgs } from "./lakeContentIamMember";
+export type LakeContentIamMember = import("./lakeContentIamMember").LakeContentIamMember;
+export const LakeContentIamMember: typeof import("./lakeContentIamMember").LakeContentIamMember = null as any;
 
 export { LakeContentIamPolicyArgs } from "./lakeContentIamPolicy";
 export type LakeContentIamPolicy = import("./lakeContentIamPolicy").LakeContentIamPolicy;
 export const LakeContentIamPolicy: typeof import("./lakeContentIamPolicy").LakeContentIamPolicy = null as any;
 
+export { LakeContentitemIamBindingArgs } from "./lakeContentitemIamBinding";
+export type LakeContentitemIamBinding = import("./lakeContentitemIamBinding").LakeContentitemIamBinding;
+export const LakeContentitemIamBinding: typeof import("./lakeContentitemIamBinding").LakeContentitemIamBinding = null as any;
+
+export { LakeContentitemIamMemberArgs } from "./lakeContentitemIamMember";
+export type LakeContentitemIamMember = import("./lakeContentitemIamMember").LakeContentitemIamMember;
+export const LakeContentitemIamMember: typeof import("./lakeContentitemIamMember").LakeContentitemIamMember = null as any;
+
 export { LakeContentitemIamPolicyArgs } from "./lakeContentitemIamPolicy";
 export type LakeContentitemIamPolicy = import("./lakeContentitemIamPolicy").LakeContentitemIamPolicy;
 export const LakeContentitemIamPolicy: typeof import("./lakeContentitemIamPolicy").LakeContentitemIamPolicy = null as any;
+
+export { LakeEnvironmentIamBindingArgs } from "./lakeEnvironmentIamBinding";
+export type LakeEnvironmentIamBinding = import("./lakeEnvironmentIamBinding").LakeEnvironmentIamBinding;
+export const LakeEnvironmentIamBinding: typeof import("./lakeEnvironmentIamBinding").LakeEnvironmentIamBinding = null as any;
+
+export { LakeEnvironmentIamMemberArgs } from "./lakeEnvironmentIamMember";
+export type LakeEnvironmentIamMember = import("./lakeEnvironmentIamMember").LakeEnvironmentIamMember;
+export const LakeEnvironmentIamMember: typeof import("./lakeEnvironmentIamMember").LakeEnvironmentIamMember = null as any;
 
 export { LakeEnvironmentIamPolicyArgs } from "./lakeEnvironmentIamPolicy";
 export type LakeEnvironmentIamPolicy = import("./lakeEnvironmentIamPolicy").LakeEnvironmentIamPolicy;
 export const LakeEnvironmentIamPolicy: typeof import("./lakeEnvironmentIamPolicy").LakeEnvironmentIamPolicy = null as any;
 
+export { LakeIamBindingArgs } from "./lakeIamBinding";
+export type LakeIamBinding = import("./lakeIamBinding").LakeIamBinding;
+export const LakeIamBinding: typeof import("./lakeIamBinding").LakeIamBinding = null as any;
+
+export { LakeIamMemberArgs } from "./lakeIamMember";
+export type LakeIamMember = import("./lakeIamMember").LakeIamMember;
+export const LakeIamMember: typeof import("./lakeIamMember").LakeIamMember = null as any;
+
 export { LakeIamPolicyArgs } from "./lakeIamPolicy";
 export type LakeIamPolicy = import("./lakeIamPolicy").LakeIamPolicy;
 export const LakeIamPolicy: typeof import("./lakeIamPolicy").LakeIamPolicy = null as any;
 
+export { LakeTaskIamBindingArgs } from "./lakeTaskIamBinding";
+export type LakeTaskIamBinding = import("./lakeTaskIamBinding").LakeTaskIamBinding;
+export const LakeTaskIamBinding: typeof import("./lakeTaskIamBinding").LakeTaskIamBinding = null as any;
+
+export { LakeTaskIamMemberArgs } from "./lakeTaskIamMember";
+export type LakeTaskIamMember = import("./lakeTaskIamMember").LakeTaskIamMember;
+export const LakeTaskIamMember: typeof import("./lakeTaskIamMember").LakeTaskIamMember = null as any;
+
 export { LakeTaskIamPolicyArgs } from "./lakeTaskIamPolicy";
 export type LakeTaskIamPolicy = import("./lakeTaskIamPolicy").LakeTaskIamPolicy;
 export const LakeTaskIamPolicy: typeof import("./lakeTaskIamPolicy").LakeTaskIamPolicy = null as any;
+
+export { LakeZoneIamBindingArgs } from "./lakeZoneIamBinding";
+export type LakeZoneIamBinding = import("./lakeZoneIamBinding").LakeZoneIamBinding;
+export const LakeZoneIamBinding: typeof import("./lakeZoneIamBinding").LakeZoneIamBinding = null as any;
+
+export { LakeZoneIamMemberArgs } from "./lakeZoneIamMember";
+export type LakeZoneIamMember = import("./lakeZoneIamMember").LakeZoneIamMember;
+export const LakeZoneIamMember: typeof import("./lakeZoneIamMember").LakeZoneIamMember = null as any;
 
 export { LakeZoneIamPolicyArgs } from "./lakeZoneIamPolicy";
 export type LakeZoneIamPolicy = import("./lakeZoneIamPolicy").LakeZoneIamPolicy;
@@ -155,12 +211,26 @@ utilities.lazyLoad(exports, ["getPartition","getPartitionOutput"], () => require
 utilities.lazyLoad(exports, ["getTask","getTaskOutput"], () => require("./getTask"));
 utilities.lazyLoad(exports, ["getZone","getZoneOutput"], () => require("./getZone"));
 utilities.lazyLoad(exports, ["Lake"], () => require("./lake"));
+utilities.lazyLoad(exports, ["LakeAssetIamBinding"], () => require("./lakeAssetIamBinding"));
+utilities.lazyLoad(exports, ["LakeAssetIamMember"], () => require("./lakeAssetIamMember"));
 utilities.lazyLoad(exports, ["LakeAssetIamPolicy"], () => require("./lakeAssetIamPolicy"));
+utilities.lazyLoad(exports, ["LakeContentIamBinding"], () => require("./lakeContentIamBinding"));
+utilities.lazyLoad(exports, ["LakeContentIamMember"], () => require("./lakeContentIamMember"));
 utilities.lazyLoad(exports, ["LakeContentIamPolicy"], () => require("./lakeContentIamPolicy"));
+utilities.lazyLoad(exports, ["LakeContentitemIamBinding"], () => require("./lakeContentitemIamBinding"));
+utilities.lazyLoad(exports, ["LakeContentitemIamMember"], () => require("./lakeContentitemIamMember"));
 utilities.lazyLoad(exports, ["LakeContentitemIamPolicy"], () => require("./lakeContentitemIamPolicy"));
+utilities.lazyLoad(exports, ["LakeEnvironmentIamBinding"], () => require("./lakeEnvironmentIamBinding"));
+utilities.lazyLoad(exports, ["LakeEnvironmentIamMember"], () => require("./lakeEnvironmentIamMember"));
 utilities.lazyLoad(exports, ["LakeEnvironmentIamPolicy"], () => require("./lakeEnvironmentIamPolicy"));
+utilities.lazyLoad(exports, ["LakeIamBinding"], () => require("./lakeIamBinding"));
+utilities.lazyLoad(exports, ["LakeIamMember"], () => require("./lakeIamMember"));
 utilities.lazyLoad(exports, ["LakeIamPolicy"], () => require("./lakeIamPolicy"));
+utilities.lazyLoad(exports, ["LakeTaskIamBinding"], () => require("./lakeTaskIamBinding"));
+utilities.lazyLoad(exports, ["LakeTaskIamMember"], () => require("./lakeTaskIamMember"));
 utilities.lazyLoad(exports, ["LakeTaskIamPolicy"], () => require("./lakeTaskIamPolicy"));
+utilities.lazyLoad(exports, ["LakeZoneIamBinding"], () => require("./lakeZoneIamBinding"));
+utilities.lazyLoad(exports, ["LakeZoneIamMember"], () => require("./lakeZoneIamMember"));
 utilities.lazyLoad(exports, ["LakeZoneIamPolicy"], () => require("./lakeZoneIamPolicy"));
 utilities.lazyLoad(exports, ["Partition"], () => require("./partition"));
 utilities.lazyLoad(exports, ["Task"], () => require("./task"));
@@ -185,18 +255,46 @@ const _module = {
                 return new Environment(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:Lake":
                 return new Lake(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeAssetIamBinding":
+                return new LakeAssetIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeAssetIamMember":
+                return new LakeAssetIamMember(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:LakeAssetIamPolicy":
                 return new LakeAssetIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeContentIamBinding":
+                return new LakeContentIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeContentIamMember":
+                return new LakeContentIamMember(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:LakeContentIamPolicy":
                 return new LakeContentIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeContentitemIamBinding":
+                return new LakeContentitemIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeContentitemIamMember":
+                return new LakeContentitemIamMember(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:LakeContentitemIamPolicy":
                 return new LakeContentitemIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeEnvironmentIamBinding":
+                return new LakeEnvironmentIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeEnvironmentIamMember":
+                return new LakeEnvironmentIamMember(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:LakeEnvironmentIamPolicy":
                 return new LakeEnvironmentIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeIamBinding":
+                return new LakeIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeIamMember":
+                return new LakeIamMember(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:LakeIamPolicy":
                 return new LakeIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeTaskIamBinding":
+                return new LakeTaskIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeTaskIamMember":
+                return new LakeTaskIamMember(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:LakeTaskIamPolicy":
                 return new LakeTaskIamPolicy(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeZoneIamBinding":
+                return new LakeZoneIamBinding(name, <any>undefined, { urn })
+            case "google-native:dataplex/v1:LakeZoneIamMember":
+                return new LakeZoneIamMember(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:LakeZoneIamPolicy":
                 return new LakeZoneIamPolicy(name, <any>undefined, { urn })
             case "google-native:dataplex/v1:Partition":

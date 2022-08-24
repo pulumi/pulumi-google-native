@@ -10,6 +10,8 @@ from .get_queue import *
 from .get_queue_iam_policy import *
 from .get_task import *
 from .queue import *
+from .queue_iam_binding import *
+from .queue_iam_member import *
 from .queue_iam_policy import *
 from .task import *
 from ._inputs import *

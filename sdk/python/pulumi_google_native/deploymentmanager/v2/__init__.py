@@ -7,6 +7,8 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .deployment import *
+from .deployment_iam_binding import *
+from .deployment_iam_member import *
 from .deployment_iam_policy import *
 from .get_deployment import *
 from .get_deployment_iam_policy import *

@@ -11,8 +11,12 @@ from .get_note_iam_policy import *
 from .get_occurrence import *
 from .get_occurrence_iam_policy import *
 from .note import *
+from .note_iam_binding import *
+from .note_iam_member import *
 from .note_iam_policy import *
 from .occurrence import *
+from .occurrence_iam_binding import *
+from .occurrence_iam_member import *
 from .occurrence_iam_policy import *
 from ._inputs import *
 from . import outputs

@@ -9,6 +9,14 @@ export { DeliveryPipelineArgs } from "./deliveryPipeline";
 export type DeliveryPipeline = import("./deliveryPipeline").DeliveryPipeline;
 export const DeliveryPipeline: typeof import("./deliveryPipeline").DeliveryPipeline = null as any;
 
+export { DeliveryPipelineIamBindingArgs } from "./deliveryPipelineIamBinding";
+export type DeliveryPipelineIamBinding = import("./deliveryPipelineIamBinding").DeliveryPipelineIamBinding;
+export const DeliveryPipelineIamBinding: typeof import("./deliveryPipelineIamBinding").DeliveryPipelineIamBinding = null as any;
+
+export { DeliveryPipelineIamMemberArgs } from "./deliveryPipelineIamMember";
+export type DeliveryPipelineIamMember = import("./deliveryPipelineIamMember").DeliveryPipelineIamMember;
+export const DeliveryPipelineIamMember: typeof import("./deliveryPipelineIamMember").DeliveryPipelineIamMember = null as any;
+
 export { DeliveryPipelineIamPolicyArgs } from "./deliveryPipelineIamPolicy";
 export type DeliveryPipelineIamPolicy = import("./deliveryPipelineIamPolicy").DeliveryPipelineIamPolicy;
 export const DeliveryPipelineIamPolicy: typeof import("./deliveryPipelineIamPolicy").DeliveryPipelineIamPolicy = null as any;
@@ -49,11 +57,21 @@ export { TargetArgs } from "./target";
 export type Target = import("./target").Target;
 export const Target: typeof import("./target").Target = null as any;
 
+export { TargetIamBindingArgs } from "./targetIamBinding";
+export type TargetIamBinding = import("./targetIamBinding").TargetIamBinding;
+export const TargetIamBinding: typeof import("./targetIamBinding").TargetIamBinding = null as any;
+
+export { TargetIamMemberArgs } from "./targetIamMember";
+export type TargetIamMember = import("./targetIamMember").TargetIamMember;
+export const TargetIamMember: typeof import("./targetIamMember").TargetIamMember = null as any;
+
 export { TargetIamPolicyArgs } from "./targetIamPolicy";
 export type TargetIamPolicy = import("./targetIamPolicy").TargetIamPolicy;
 export const TargetIamPolicy: typeof import("./targetIamPolicy").TargetIamPolicy = null as any;
 
 utilities.lazyLoad(exports, ["DeliveryPipeline"], () => require("./deliveryPipeline"));
+utilities.lazyLoad(exports, ["DeliveryPipelineIamBinding"], () => require("./deliveryPipelineIamBinding"));
+utilities.lazyLoad(exports, ["DeliveryPipelineIamMember"], () => require("./deliveryPipelineIamMember"));
 utilities.lazyLoad(exports, ["DeliveryPipelineIamPolicy"], () => require("./deliveryPipelineIamPolicy"));
 utilities.lazyLoad(exports, ["getDeliveryPipeline","getDeliveryPipelineOutput"], () => require("./getDeliveryPipeline"));
 utilities.lazyLoad(exports, ["getDeliveryPipelineIamPolicy","getDeliveryPipelineIamPolicyOutput"], () => require("./getDeliveryPipelineIamPolicy"));
@@ -64,6 +82,8 @@ utilities.lazyLoad(exports, ["getTargetIamPolicy","getTargetIamPolicyOutput"], (
 utilities.lazyLoad(exports, ["Release"], () => require("./release"));
 utilities.lazyLoad(exports, ["Rollout"], () => require("./rollout"));
 utilities.lazyLoad(exports, ["Target"], () => require("./target"));
+utilities.lazyLoad(exports, ["TargetIamBinding"], () => require("./targetIamBinding"));
+utilities.lazyLoad(exports, ["TargetIamMember"], () => require("./targetIamMember"));
 utilities.lazyLoad(exports, ["TargetIamPolicy"], () => require("./targetIamPolicy"));
 
 // Export enums:
@@ -75,6 +95,10 @@ const _module = {
         switch (type) {
             case "google-native:clouddeploy/v1:DeliveryPipeline":
                 return new DeliveryPipeline(name, <any>undefined, { urn })
+            case "google-native:clouddeploy/v1:DeliveryPipelineIamBinding":
+                return new DeliveryPipelineIamBinding(name, <any>undefined, { urn })
+            case "google-native:clouddeploy/v1:DeliveryPipelineIamMember":
+                return new DeliveryPipelineIamMember(name, <any>undefined, { urn })
             case "google-native:clouddeploy/v1:DeliveryPipelineIamPolicy":
                 return new DeliveryPipelineIamPolicy(name, <any>undefined, { urn })
             case "google-native:clouddeploy/v1:Release":
@@ -83,6 +107,10 @@ const _module = {
                 return new Rollout(name, <any>undefined, { urn })
             case "google-native:clouddeploy/v1:Target":
                 return new Target(name, <any>undefined, { urn })
+            case "google-native:clouddeploy/v1:TargetIamBinding":
+                return new TargetIamBinding(name, <any>undefined, { urn })
+            case "google-native:clouddeploy/v1:TargetIamMember":
+                return new TargetIamMember(name, <any>undefined, { urn })
             case "google-native:clouddeploy/v1:TargetIamPolicy":
                 return new TargetIamPolicy(name, <any>undefined, { urn })
             default:

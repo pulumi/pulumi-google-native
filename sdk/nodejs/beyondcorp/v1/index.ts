@@ -9,6 +9,14 @@ export { AppConnectionArgs } from "./appConnection";
 export type AppConnection = import("./appConnection").AppConnection;
 export const AppConnection: typeof import("./appConnection").AppConnection = null as any;
 
+export { AppConnectionIamBindingArgs } from "./appConnectionIamBinding";
+export type AppConnectionIamBinding = import("./appConnectionIamBinding").AppConnectionIamBinding;
+export const AppConnectionIamBinding: typeof import("./appConnectionIamBinding").AppConnectionIamBinding = null as any;
+
+export { AppConnectionIamMemberArgs } from "./appConnectionIamMember";
+export type AppConnectionIamMember = import("./appConnectionIamMember").AppConnectionIamMember;
+export const AppConnectionIamMember: typeof import("./appConnectionIamMember").AppConnectionIamMember = null as any;
+
 export { AppConnectionIamPolicyArgs } from "./appConnectionIamPolicy";
 export type AppConnectionIamPolicy = import("./appConnectionIamPolicy").AppConnectionIamPolicy;
 export const AppConnectionIamPolicy: typeof import("./appConnectionIamPolicy").AppConnectionIamPolicy = null as any;
@@ -16,6 +24,14 @@ export const AppConnectionIamPolicy: typeof import("./appConnectionIamPolicy").A
 export { AppConnectorArgs } from "./appConnector";
 export type AppConnector = import("./appConnector").AppConnector;
 export const AppConnector: typeof import("./appConnector").AppConnector = null as any;
+
+export { AppConnectorIamBindingArgs } from "./appConnectorIamBinding";
+export type AppConnectorIamBinding = import("./appConnectorIamBinding").AppConnectorIamBinding;
+export const AppConnectorIamBinding: typeof import("./appConnectorIamBinding").AppConnectorIamBinding = null as any;
+
+export { AppConnectorIamMemberArgs } from "./appConnectorIamMember";
+export type AppConnectorIamMember = import("./appConnectorIamMember").AppConnectorIamMember;
+export const AppConnectorIamMember: typeof import("./appConnectorIamMember").AppConnectorIamMember = null as any;
 
 export { AppConnectorIamPolicyArgs } from "./appConnectorIamPolicy";
 export type AppConnectorIamPolicy = import("./appConnectorIamPolicy").AppConnectorIamPolicy;
@@ -25,6 +41,14 @@ export { AppGatewayArgs } from "./appGateway";
 export type AppGateway = import("./appGateway").AppGateway;
 export const AppGateway: typeof import("./appGateway").AppGateway = null as any;
 
+export { AppGatewayIamBindingArgs } from "./appGatewayIamBinding";
+export type AppGatewayIamBinding = import("./appGatewayIamBinding").AppGatewayIamBinding;
+export const AppGatewayIamBinding: typeof import("./appGatewayIamBinding").AppGatewayIamBinding = null as any;
+
+export { AppGatewayIamMemberArgs } from "./appGatewayIamMember";
+export type AppGatewayIamMember = import("./appGatewayIamMember").AppGatewayIamMember;
+export const AppGatewayIamMember: typeof import("./appGatewayIamMember").AppGatewayIamMember = null as any;
+
 export { AppGatewayIamPolicyArgs } from "./appGatewayIamPolicy";
 export type AppGatewayIamPolicy = import("./appGatewayIamPolicy").AppGatewayIamPolicy;
 export const AppGatewayIamPolicy: typeof import("./appGatewayIamPolicy").AppGatewayIamPolicy = null as any;
@@ -33,6 +57,14 @@ export { ClientConnectorServiceArgs } from "./clientConnectorService";
 export type ClientConnectorService = import("./clientConnectorService").ClientConnectorService;
 export const ClientConnectorService: typeof import("./clientConnectorService").ClientConnectorService = null as any;
 
+export { ClientConnectorServiceIamBindingArgs } from "./clientConnectorServiceIamBinding";
+export type ClientConnectorServiceIamBinding = import("./clientConnectorServiceIamBinding").ClientConnectorServiceIamBinding;
+export const ClientConnectorServiceIamBinding: typeof import("./clientConnectorServiceIamBinding").ClientConnectorServiceIamBinding = null as any;
+
+export { ClientConnectorServiceIamMemberArgs } from "./clientConnectorServiceIamMember";
+export type ClientConnectorServiceIamMember = import("./clientConnectorServiceIamMember").ClientConnectorServiceIamMember;
+export const ClientConnectorServiceIamMember: typeof import("./clientConnectorServiceIamMember").ClientConnectorServiceIamMember = null as any;
+
 export { ClientConnectorServiceIamPolicyArgs } from "./clientConnectorServiceIamPolicy";
 export type ClientConnectorServiceIamPolicy = import("./clientConnectorServiceIamPolicy").ClientConnectorServiceIamPolicy;
 export const ClientConnectorServiceIamPolicy: typeof import("./clientConnectorServiceIamPolicy").ClientConnectorServiceIamPolicy = null as any;
@@ -40,6 +72,14 @@ export const ClientConnectorServiceIamPolicy: typeof import("./clientConnectorSe
 export { ClientGatewayArgs } from "./clientGateway";
 export type ClientGateway = import("./clientGateway").ClientGateway;
 export const ClientGateway: typeof import("./clientGateway").ClientGateway = null as any;
+
+export { ClientGatewayIamBindingArgs } from "./clientGatewayIamBinding";
+export type ClientGatewayIamBinding = import("./clientGatewayIamBinding").ClientGatewayIamBinding;
+export const ClientGatewayIamBinding: typeof import("./clientGatewayIamBinding").ClientGatewayIamBinding = null as any;
+
+export { ClientGatewayIamMemberArgs } from "./clientGatewayIamMember";
+export type ClientGatewayIamMember = import("./clientGatewayIamMember").ClientGatewayIamMember;
+export const ClientGatewayIamMember: typeof import("./clientGatewayIamMember").ClientGatewayIamMember = null as any;
 
 export { ClientGatewayIamPolicyArgs } from "./clientGatewayIamPolicy";
 export type ClientGatewayIamPolicy = import("./clientGatewayIamPolicy").ClientGatewayIamPolicy;
@@ -86,14 +126,24 @@ export const getClientGatewayIamPolicy: typeof import("./getClientGatewayIamPoli
 export const getClientGatewayIamPolicyOutput: typeof import("./getClientGatewayIamPolicy").getClientGatewayIamPolicyOutput = null as any;
 
 utilities.lazyLoad(exports, ["AppConnection"], () => require("./appConnection"));
+utilities.lazyLoad(exports, ["AppConnectionIamBinding"], () => require("./appConnectionIamBinding"));
+utilities.lazyLoad(exports, ["AppConnectionIamMember"], () => require("./appConnectionIamMember"));
 utilities.lazyLoad(exports, ["AppConnectionIamPolicy"], () => require("./appConnectionIamPolicy"));
 utilities.lazyLoad(exports, ["AppConnector"], () => require("./appConnector"));
+utilities.lazyLoad(exports, ["AppConnectorIamBinding"], () => require("./appConnectorIamBinding"));
+utilities.lazyLoad(exports, ["AppConnectorIamMember"], () => require("./appConnectorIamMember"));
 utilities.lazyLoad(exports, ["AppConnectorIamPolicy"], () => require("./appConnectorIamPolicy"));
 utilities.lazyLoad(exports, ["AppGateway"], () => require("./appGateway"));
+utilities.lazyLoad(exports, ["AppGatewayIamBinding"], () => require("./appGatewayIamBinding"));
+utilities.lazyLoad(exports, ["AppGatewayIamMember"], () => require("./appGatewayIamMember"));
 utilities.lazyLoad(exports, ["AppGatewayIamPolicy"], () => require("./appGatewayIamPolicy"));
 utilities.lazyLoad(exports, ["ClientConnectorService"], () => require("./clientConnectorService"));
+utilities.lazyLoad(exports, ["ClientConnectorServiceIamBinding"], () => require("./clientConnectorServiceIamBinding"));
+utilities.lazyLoad(exports, ["ClientConnectorServiceIamMember"], () => require("./clientConnectorServiceIamMember"));
 utilities.lazyLoad(exports, ["ClientConnectorServiceIamPolicy"], () => require("./clientConnectorServiceIamPolicy"));
 utilities.lazyLoad(exports, ["ClientGateway"], () => require("./clientGateway"));
+utilities.lazyLoad(exports, ["ClientGatewayIamBinding"], () => require("./clientGatewayIamBinding"));
+utilities.lazyLoad(exports, ["ClientGatewayIamMember"], () => require("./clientGatewayIamMember"));
 utilities.lazyLoad(exports, ["ClientGatewayIamPolicy"], () => require("./clientGatewayIamPolicy"));
 utilities.lazyLoad(exports, ["getAppConnection","getAppConnectionOutput"], () => require("./getAppConnection"));
 utilities.lazyLoad(exports, ["getAppConnectionIamPolicy","getAppConnectionIamPolicyOutput"], () => require("./getAppConnectionIamPolicy"));
@@ -115,22 +165,42 @@ const _module = {
         switch (type) {
             case "google-native:beyondcorp/v1:AppConnection":
                 return new AppConnection(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1:AppConnectionIamBinding":
+                return new AppConnectionIamBinding(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1:AppConnectionIamMember":
+                return new AppConnectionIamMember(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1:AppConnectionIamPolicy":
                 return new AppConnectionIamPolicy(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1:AppConnector":
                 return new AppConnector(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1:AppConnectorIamBinding":
+                return new AppConnectorIamBinding(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1:AppConnectorIamMember":
+                return new AppConnectorIamMember(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1:AppConnectorIamPolicy":
                 return new AppConnectorIamPolicy(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1:AppGateway":
                 return new AppGateway(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1:AppGatewayIamBinding":
+                return new AppGatewayIamBinding(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1:AppGatewayIamMember":
+                return new AppGatewayIamMember(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1:AppGatewayIamPolicy":
                 return new AppGatewayIamPolicy(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1:ClientConnectorService":
                 return new ClientConnectorService(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1:ClientConnectorServiceIamBinding":
+                return new ClientConnectorServiceIamBinding(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1:ClientConnectorServiceIamMember":
+                return new ClientConnectorServiceIamMember(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1:ClientConnectorServiceIamPolicy":
                 return new ClientConnectorServiceIamPolicy(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1:ClientGateway":
                 return new ClientGateway(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1:ClientGatewayIamBinding":
+                return new ClientGatewayIamBinding(name, <any>undefined, { urn })
+            case "google-native:beyondcorp/v1:ClientGatewayIamMember":
+                return new ClientGatewayIamMember(name, <any>undefined, { urn })
             case "google-native:beyondcorp/v1:ClientGatewayIamPolicy":
                 return new ClientGatewayIamPolicy(name, <any>undefined, { urn })
             default:

@@ -8,6 +8,8 @@ import typing
 from ._enums import *
 from .composite_type import *
 from .deployment import *
+from .deployment_iam_binding import *
+from .deployment_iam_member import *
 from .deployment_iam_policy import *
 from .get_composite_type import *
 from .get_deployment import *

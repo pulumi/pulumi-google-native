@@ -23,6 +23,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "google-native:domains/v1beta1:Registration":
 		r = &Registration{}
+	case "google-native:domains/v1beta1:RegistrationIamBinding":
+		r = &RegistrationIamBinding{}
+	case "google-native:domains/v1beta1:RegistrationIamMember":
+		r = &RegistrationIamMember{}
 	case "google-native:domains/v1beta1:RegistrationIamPolicy":
 		r = &RegistrationIamPolicy{}
 	default:

@@ -25,18 +25,34 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Entry{}
 	case "google-native:datacatalog/v1:EntryGroup":
 		r = &EntryGroup{}
+	case "google-native:datacatalog/v1:EntryGroupIamBinding":
+		r = &EntryGroupIamBinding{}
+	case "google-native:datacatalog/v1:EntryGroupIamMember":
+		r = &EntryGroupIamMember{}
 	case "google-native:datacatalog/v1:EntryGroupIamPolicy":
 		r = &EntryGroupIamPolicy{}
 	case "google-native:datacatalog/v1:PolicyTag":
 		r = &PolicyTag{}
 	case "google-native:datacatalog/v1:TagTemplate":
 		r = &TagTemplate{}
+	case "google-native:datacatalog/v1:TagTemplateIamBinding":
+		r = &TagTemplateIamBinding{}
+	case "google-native:datacatalog/v1:TagTemplateIamMember":
+		r = &TagTemplateIamMember{}
 	case "google-native:datacatalog/v1:TagTemplateIamPolicy":
 		r = &TagTemplateIamPolicy{}
 	case "google-native:datacatalog/v1:Taxonomy":
 		r = &Taxonomy{}
+	case "google-native:datacatalog/v1:TaxonomyIamBinding":
+		r = &TaxonomyIamBinding{}
+	case "google-native:datacatalog/v1:TaxonomyIamMember":
+		r = &TaxonomyIamMember{}
 	case "google-native:datacatalog/v1:TaxonomyIamPolicy":
 		r = &TaxonomyIamPolicy{}
+	case "google-native:datacatalog/v1:TaxonomyPolicyTagIamBinding":
+		r = &TaxonomyPolicyTagIamBinding{}
+	case "google-native:datacatalog/v1:TaxonomyPolicyTagIamMember":
+		r = &TaxonomyPolicyTagIamMember{}
 	case "google-native:datacatalog/v1:TaxonomyPolicyTagIamPolicy":
 		r = &TaxonomyPolicyTagIamPolicy{}
 	default:

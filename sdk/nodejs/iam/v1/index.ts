@@ -53,6 +53,14 @@ export { ServiceAccountArgs } from "./serviceAccount";
 export type ServiceAccount = import("./serviceAccount").ServiceAccount;
 export const ServiceAccount: typeof import("./serviceAccount").ServiceAccount = null as any;
 
+export { ServiceAccountIamBindingArgs } from "./serviceAccountIamBinding";
+export type ServiceAccountIamBinding = import("./serviceAccountIamBinding").ServiceAccountIamBinding;
+export const ServiceAccountIamBinding: typeof import("./serviceAccountIamBinding").ServiceAccountIamBinding = null as any;
+
+export { ServiceAccountIamMemberArgs } from "./serviceAccountIamMember";
+export type ServiceAccountIamMember = import("./serviceAccountIamMember").ServiceAccountIamMember;
+export const ServiceAccountIamMember: typeof import("./serviceAccountIamMember").ServiceAccountIamMember = null as any;
+
 export { ServiceAccountIamPolicyArgs } from "./serviceAccountIamPolicy";
 export type ServiceAccountIamPolicy = import("./serviceAccountIamPolicy").ServiceAccountIamPolicy;
 export const ServiceAccountIamPolicy: typeof import("./serviceAccountIamPolicy").ServiceAccountIamPolicy = null as any;
@@ -73,6 +81,8 @@ utilities.lazyLoad(exports, ["OrganizationRole"], () => require("./organizationR
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 utilities.lazyLoad(exports, ["Role"], () => require("./role"));
 utilities.lazyLoad(exports, ["ServiceAccount"], () => require("./serviceAccount"));
+utilities.lazyLoad(exports, ["ServiceAccountIamBinding"], () => require("./serviceAccountIamBinding"));
+utilities.lazyLoad(exports, ["ServiceAccountIamMember"], () => require("./serviceAccountIamMember"));
 utilities.lazyLoad(exports, ["ServiceAccountIamPolicy"], () => require("./serviceAccountIamPolicy"));
 utilities.lazyLoad(exports, ["WorkloadIdentityPool"], () => require("./workloadIdentityPool"));
 
@@ -93,6 +103,10 @@ const _module = {
                 return new Role(name, <any>undefined, { urn })
             case "google-native:iam/v1:ServiceAccount":
                 return new ServiceAccount(name, <any>undefined, { urn })
+            case "google-native:iam/v1:ServiceAccountIamBinding":
+                return new ServiceAccountIamBinding(name, <any>undefined, { urn })
+            case "google-native:iam/v1:ServiceAccountIamMember":
+                return new ServiceAccountIamMember(name, <any>undefined, { urn })
             case "google-native:iam/v1:ServiceAccountIamPolicy":
                 return new ServiceAccountIamPolicy(name, <any>undefined, { urn })
             case "google-native:iam/v1:WorkloadIdentityPool":
