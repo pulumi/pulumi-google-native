@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 - Custom mutations for v1/v1beta1 cluster and nodepool [#632](https://github.com/pulumi/pulumi-google-native/pull/632)
+- Disable autonaming for `google-native:iam:v1/Role` [#646](https://github.com/pulumi/pulumi-google-native/pull/646)
 
 ## 0.23.0 (2022-07-29)
 - Ensure inputs in partial error checkpoints for nodepools are correctly resumable [#602](https://github.com/pulumi/pulumi-google-native/pull/602)
