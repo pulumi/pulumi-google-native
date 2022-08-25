@@ -2,6 +2,32 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
+(None)
+
+## 0.24.0 (2022-08-25)
+### BREAKING CHANGE
+Upstream API changes affected the following:
+- Resource "google-native:compute/alpha:RegionNetwork" removed
+- Resource "google-native:compute/alpha:RegionNetworkIamPolicy" removed
+- Function "google-native:compute/alpha:getRegionNetworkIamPolicy" removed
+- Function "google-native:compute/alpha:getRegionNetwork" removed
+- Resource "google-native:firebase/v1beta1:AndroidApp" removed input "sha256Hashes"
+- Resource "google-native:firebase/v1beta1:AndroidApp" removed input "sha1Hashes"
+- Resource "google-native:firebase/v1beta1:AndroidApp" removed output "sha1Hashes"
+- Resource "google-native:firebase/v1beta1:AndroidApp" removed output "sha256Hashes"
+- Type "google-native:datacatalog/v1:GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType" removed
+- Type "google-native:networkmanagement/v1beta1:AppEngineVersionInfoResponse" removed
+- Type "google-native:datacatalog/v1:GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType" removed
+- Type "google-native:certificatemanager/v1:ProvisioningIssue" removed
+- Type "google-native:datacatalog/v1:GoogleCloudDatacatalogV1DataSourceConnectionSpec" removed property "bigqueryConnectionSpec"
+- Type "google-native:compute/alpha:RegionNetworkNetworkFirewallPolicyEnforcementOrder" removed
+- Type "google-native:certificatemanager/v1:ManagedCertificate" removed property "provisioningIssue"
+- Type "google-native:datacatalog/v1:GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec" removed
+- Type "google-native:certificatemanager/v1:ProvisioningIssueReason" removed
+- Type "google-native:datacatalog/v1:GoogleCloudDatacatalogV1BigQueryConnectionSpec" removed
+- Type "google-native:networkmanagement/v1beta1:StepResponse" removed property "appEngineVersion"
+
+### BUG FIXES/ENHANCEMENTS
 - Custom mutations for v1/v1beta1 cluster and nodepool [#632](https://github.com/pulumi/pulumi-google-native/pull/632)
 - Disable autonaming for `google-native:iam:v1/Role` [#646](https://github.com/pulumi/pulumi-google-native/pull/646)
 - Add support for container service getServerConfig [#648](https://github.com/pulumi/pulumi-google-native/pull/648)
