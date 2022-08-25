@@ -463,7 +463,8 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 	detailedDiff := calculateDetailedDiff(&res, p.resourceMap.Types, diff)
 
 	var mutablePropertyPaths []string
-	if customMutation, hasCustomMutation := customMutations[resourceKey]; hasCustomMutation {
+	customMutation, hasCustomMutation := customMutations[resourceKey]
+	if hasCustomMutation {
 		mutablePropertyPaths = customMutation.mutablePropertyPaths()
 	}
 	logging.V(9).Infof("[%s] DetailedDiff: %+v", label, detailedDiff)
@@ -488,19 +489,22 @@ func (p *googleCloudProvider) Diff(_ context.Context, req *rpc.DiffRequest) (*rp
 		if err != nil {
 			return nil, fmt.Errorf("failed to parse property path: %q: %w", k, err)
 		}
-		found := false
-		for _, p := range mutablePropertyPaths {
-			propPath, err := resource.ParsePropertyPath(p)
-			if err != nil {
-				return nil, fmt.Errorf("failed to parse property path: %q: %w", p, err)
+
+		if hasCustomMutation {
+			found := false
+			for _, p := range mutablePropertyPaths {
+				propPath, err := resource.ParsePropertyPath(p)
+				if err != nil {
+					return nil, fmt.Errorf("failed to parse property path: %q: %w", p, err)
+				}
+				if propPath.Contains(changedPropPath) {
+					found = true
+					break
+				}
 			}
-			if propPath.Contains(changedPropPath) {
-				found = true
-				break
+			if !found {
+				replaces.Add(k)
 			}
-		}
-		if !found {
-			replaces.Add(k)
 		}
 	}
 
