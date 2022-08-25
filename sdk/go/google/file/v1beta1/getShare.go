@@ -28,7 +28,7 @@ type LookupShareArgs struct {
 }
 
 type LookupShareResult struct {
-	// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+	// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
 	CapacityGb string `pulumi:"capacityGb"`
 	// The time when the share was created.
 	CreateTime string `pulumi:"createTime"`
@@ -84,7 +84,7 @@ func (o LookupShareResultOutput) ToLookupShareResultOutputWithContext(ctx contex
 	return o
 }
 
-// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
 func (o LookupShareResultOutput) CapacityGb() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupShareResult) string { return v.CapacityGb }).(pulumi.StringOutput)
 }

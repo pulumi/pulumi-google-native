@@ -95,6 +95,10 @@ export class Routine extends pulumi.CustomResource {
      */
     public readonly routineType!: pulumi.Output<string>;
     /**
+     * Optional. Spark specific options.
+     */
+    public readonly sparkOptions!: pulumi.Output<outputs.bigquery.v2.SparkOptionsResponse>;
+    /**
      * Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
      */
     public readonly strictMode!: pulumi.Output<boolean>;
@@ -135,6 +139,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["returnType"] = args ? args.returnType : undefined;
             resourceInputs["routineReference"] = args ? args.routineReference : undefined;
             resourceInputs["routineType"] = args ? args.routineType : undefined;
+            resourceInputs["sparkOptions"] = args ? args.sparkOptions : undefined;
             resourceInputs["strictMode"] = args ? args.strictMode : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
@@ -156,6 +161,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["returnType"] = undefined /*out*/;
             resourceInputs["routineReference"] = undefined /*out*/;
             resourceInputs["routineType"] = undefined /*out*/;
+            resourceInputs["sparkOptions"] = undefined /*out*/;
             resourceInputs["strictMode"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -215,6 +221,10 @@ export interface RoutineArgs {
      * The type of routine.
      */
     routineType: pulumi.Input<enums.bigquery.v2.RoutineRoutineType>;
+    /**
+     * Optional. Spark specific options.
+     */
+    sparkOptions?: pulumi.Input<inputs.bigquery.v2.SparkOptionsArgs>;
     /**
      * Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
      */

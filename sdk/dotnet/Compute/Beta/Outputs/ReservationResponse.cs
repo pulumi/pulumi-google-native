@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> ResourcePolicies;
+        /// <summary>
         /// Reserved for future use.
         /// </summary>
         public readonly bool SatisfiesPzs;
@@ -77,6 +81,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string name,
 
+            ImmutableDictionary<string, string> resourcePolicies,
+
             bool satisfiesPzs,
 
             string selfLink,
@@ -96,6 +102,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             Description = description;
             Kind = kind;
             Name = name;
+            ResourcePolicies = resourcePolicies;
             SatisfiesPzs = satisfiesPzs;
             SelfLink = selfLink;
             ShareSettings = shareSettings;

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.CertificateManager.V1.Outputs
     public sealed class AuthorizationAttemptInfoResponse
     {
         /// <summary>
-        /// Human readable explanation for reaching the state. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use Reason enum.
+        /// Human readable explanation for reaching the state. Provided to help address the configuration issues. Not guaranteed to be stable. For programmatic access use FailureReason enum.
         /// </summary>
         public readonly string Details;
         /// <summary>

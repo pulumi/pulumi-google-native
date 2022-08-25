@@ -52,7 +52,7 @@ __all__ = [
 @pulumi.output_type
 class ApiConfigHandlerResponse(dict):
     """
-    Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+    Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API handlers.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -80,7 +80,7 @@ class ApiConfigHandlerResponse(dict):
                  security_level: str,
                  url: str):
         """
-        Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+        Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API handlers.
         :param str auth_fail_action: Action to take when users access resources that require authentication. Defaults to redirect.
         :param str login: Level of login required to access this resource. Defaults to optional.
         :param str script: Path to the script from the application root directory.

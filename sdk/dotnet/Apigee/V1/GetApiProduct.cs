@@ -110,6 +110,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
         /// </summary>
         public readonly string Quota;
         /// <summary>
+        /// Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
+        /// </summary>
+        public readonly string QuotaCounterScope;
+        /// <summary>
         /// Time interval over which the number of request messages is calculated.
         /// </summary>
         public readonly string QuotaInterval;
@@ -150,6 +154,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string quota,
 
+            string quotaCounterScope,
+
             string quotaInterval,
 
             string quotaTimeUnit,
@@ -169,6 +175,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
             OperationGroup = operationGroup;
             Proxies = proxies;
             Quota = quota;
+            QuotaCounterScope = quotaCounterScope;
             QuotaInterval = quotaInterval;
             QuotaTimeUnit = quotaTimeUnit;
             Scopes = scopes;

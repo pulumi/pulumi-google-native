@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class EnvVarSourceResponse
     {
         /// <summary>
-        /// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
+        /// Not supported by Cloud Run. Selects a key of a ConfigMap.
         /// </summary>
         public readonly Outputs.ConfigMapKeySelectorResponse ConfigMapKeyRef;
         /// <summary>
-        /// (Optional) Selects a key (version) of a secret in Secret Manager.
+        /// Selects a key (version) of a secret in Secret Manager.
         /// </summary>
         public readonly Outputs.SecretKeySelectorResponse SecretKeyRef;
 

@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
     public sealed class TcpCheckArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Contains information needed to add pings to a TCP check.
+        /// </summary>
+        [Input("pingConfig")]
+        public Input<Inputs.PingConfigArgs>? PingConfig { get; set; }
+
+        /// <summary>
         /// The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
         /// </summary>
         [Input("port")]

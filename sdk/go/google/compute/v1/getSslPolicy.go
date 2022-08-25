@@ -44,6 +44,8 @@ type LookupSslPolicyResult struct {
 	Name string `pulumi:"name"`
 	// Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
 	Profile string `pulumi:"profile"`
+	// URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies.
+	Region string `pulumi:"region"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// If potential misconfigurations are detected for this SSL policy, this field will be populated with warning messages.
@@ -129,6 +131,11 @@ func (o LookupSslPolicyResultOutput) Name() pulumi.StringOutput {
 // Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
 func (o LookupSslPolicyResultOutput) Profile() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSslPolicyResult) string { return v.Profile }).(pulumi.StringOutput)
+}
+
+// URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies.
+func (o LookupSslPolicyResultOutput) Region() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupSslPolicyResult) string { return v.Region }).(pulumi.StringOutput)
 }
 
 // Server-defined URL for the resource.

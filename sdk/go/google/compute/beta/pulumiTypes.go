@@ -7857,7 +7857,7 @@ type Binding struct {
 	BindingId *string `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -7880,7 +7880,7 @@ type BindingArgs struct {
 	BindingId pulumi.StringPtrInput `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -7948,7 +7948,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -7984,7 +7984,7 @@ type BindingResponse struct {
 	BindingId string `pulumi:"bindingId"`
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -8015,7 +8015,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -25545,6 +25545,167 @@ func (o NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput) Zone() pulumi.
 	return o.ApplyT(func(v NetworkEndpointGroupLbNetworkEndpointGroupResponse) string { return v.Zone }).(pulumi.StringOutput)
 }
 
+// All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT.
+type NetworkEndpointGroupPscData struct {
+}
+
+// NetworkEndpointGroupPscDataInput is an input type that accepts NetworkEndpointGroupPscDataArgs and NetworkEndpointGroupPscDataOutput values.
+// You can construct a concrete instance of `NetworkEndpointGroupPscDataInput` via:
+//
+//	NetworkEndpointGroupPscDataArgs{...}
+type NetworkEndpointGroupPscDataInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupPscDataOutput() NetworkEndpointGroupPscDataOutput
+	ToNetworkEndpointGroupPscDataOutputWithContext(context.Context) NetworkEndpointGroupPscDataOutput
+}
+
+// All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT.
+type NetworkEndpointGroupPscDataArgs struct {
+}
+
+func (NetworkEndpointGroupPscDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (i NetworkEndpointGroupPscDataArgs) ToNetworkEndpointGroupPscDataOutput() NetworkEndpointGroupPscDataOutput {
+	return i.ToNetworkEndpointGroupPscDataOutputWithContext(context.Background())
+}
+
+func (i NetworkEndpointGroupPscDataArgs) ToNetworkEndpointGroupPscDataOutputWithContext(ctx context.Context) NetworkEndpointGroupPscDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupPscDataOutput)
+}
+
+func (i NetworkEndpointGroupPscDataArgs) ToNetworkEndpointGroupPscDataPtrOutput() NetworkEndpointGroupPscDataPtrOutput {
+	return i.ToNetworkEndpointGroupPscDataPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkEndpointGroupPscDataArgs) ToNetworkEndpointGroupPscDataPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupPscDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupPscDataOutput).ToNetworkEndpointGroupPscDataPtrOutputWithContext(ctx)
+}
+
+// NetworkEndpointGroupPscDataPtrInput is an input type that accepts NetworkEndpointGroupPscDataArgs, NetworkEndpointGroupPscDataPtr and NetworkEndpointGroupPscDataPtrOutput values.
+// You can construct a concrete instance of `NetworkEndpointGroupPscDataPtrInput` via:
+//
+//	        NetworkEndpointGroupPscDataArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkEndpointGroupPscDataPtrInput interface {
+	pulumi.Input
+
+	ToNetworkEndpointGroupPscDataPtrOutput() NetworkEndpointGroupPscDataPtrOutput
+	ToNetworkEndpointGroupPscDataPtrOutputWithContext(context.Context) NetworkEndpointGroupPscDataPtrOutput
+}
+
+type networkEndpointGroupPscDataPtrType NetworkEndpointGroupPscDataArgs
+
+func NetworkEndpointGroupPscDataPtr(v *NetworkEndpointGroupPscDataArgs) NetworkEndpointGroupPscDataPtrInput {
+	return (*networkEndpointGroupPscDataPtrType)(v)
+}
+
+func (*networkEndpointGroupPscDataPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (i *networkEndpointGroupPscDataPtrType) ToNetworkEndpointGroupPscDataPtrOutput() NetworkEndpointGroupPscDataPtrOutput {
+	return i.ToNetworkEndpointGroupPscDataPtrOutputWithContext(context.Background())
+}
+
+func (i *networkEndpointGroupPscDataPtrType) ToNetworkEndpointGroupPscDataPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupPscDataPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkEndpointGroupPscDataPtrOutput)
+}
+
+// All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT.
+type NetworkEndpointGroupPscDataOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupPscDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupPscDataOutput) ToNetworkEndpointGroupPscDataOutput() NetworkEndpointGroupPscDataOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupPscDataOutput) ToNetworkEndpointGroupPscDataOutputWithContext(ctx context.Context) NetworkEndpointGroupPscDataOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupPscDataOutput) ToNetworkEndpointGroupPscDataPtrOutput() NetworkEndpointGroupPscDataPtrOutput {
+	return o.ToNetworkEndpointGroupPscDataPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkEndpointGroupPscDataOutput) ToNetworkEndpointGroupPscDataPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupPscDataPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkEndpointGroupPscData) *NetworkEndpointGroupPscData {
+		return &v
+	}).(NetworkEndpointGroupPscDataPtrOutput)
+}
+
+type NetworkEndpointGroupPscDataPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupPscDataPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupPscDataPtrOutput) ToNetworkEndpointGroupPscDataPtrOutput() NetworkEndpointGroupPscDataPtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupPscDataPtrOutput) ToNetworkEndpointGroupPscDataPtrOutputWithContext(ctx context.Context) NetworkEndpointGroupPscDataPtrOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupPscDataPtrOutput) Elem() NetworkEndpointGroupPscDataOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroupPscData) NetworkEndpointGroupPscData {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkEndpointGroupPscData
+		return ret
+	}).(NetworkEndpointGroupPscDataOutput)
+}
+
+// All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT.
+type NetworkEndpointGroupPscDataResponse struct {
+	// Address allocated from given subnetwork for PSC. This IP address acts as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+	ConsumerPscAddress string `pulumi:"consumerPscAddress"`
+	// The PSC connection id of the PSC Network Endpoint Group Consumer.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+	// The connection status of the PSC Forwarding Rule.
+	PscConnectionStatus string `pulumi:"pscConnectionStatus"`
+}
+
+// All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT.
+type NetworkEndpointGroupPscDataResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkEndpointGroupPscDataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkEndpointGroupPscDataResponse)(nil)).Elem()
+}
+
+func (o NetworkEndpointGroupPscDataResponseOutput) ToNetworkEndpointGroupPscDataResponseOutput() NetworkEndpointGroupPscDataResponseOutput {
+	return o
+}
+
+func (o NetworkEndpointGroupPscDataResponseOutput) ToNetworkEndpointGroupPscDataResponseOutputWithContext(ctx context.Context) NetworkEndpointGroupPscDataResponseOutput {
+	return o
+}
+
+// Address allocated from given subnetwork for PSC. This IP address acts as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+func (o NetworkEndpointGroupPscDataResponseOutput) ConsumerPscAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupPscDataResponse) string { return v.ConsumerPscAddress }).(pulumi.StringOutput)
+}
+
+// The PSC connection id of the PSC Network Endpoint Group Consumer.
+func (o NetworkEndpointGroupPscDataResponseOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupPscDataResponse) string { return v.PscConnectionId }).(pulumi.StringOutput)
+}
+
+// The connection status of the PSC Forwarding Rule.
+func (o NetworkEndpointGroupPscDataResponseOutput) PscConnectionStatus() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkEndpointGroupPscDataResponse) string { return v.PscConnectionStatus }).(pulumi.StringOutput)
+}
+
 // Configuration for a serverless network endpoint group (NEG). The platform must be provided. Note: The target backend service must be in the same project and located in the same region as the Serverless NEG.
 type NetworkEndpointGroupServerlessDeployment struct {
 	// The platform of the backend target(s) of this NEG. The only supported value is API Gateway: apigateway.googleapis.com.
@@ -29945,6 +30106,8 @@ type ReservationType struct {
 	Description *string `pulumi:"description"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+	ResourcePolicies map[string]string `pulumi:"resourcePolicies"`
 	// Share-settings for shared-reservation
 	ShareSettings *ShareSettings `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
@@ -29972,6 +30135,8 @@ type ReservationTypeArgs struct {
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+	ResourcePolicies pulumi.StringMapInput `pulumi:"resourcePolicies"`
 	// Share-settings for shared-reservation
 	ShareSettings ShareSettingsPtrInput `pulumi:"shareSettings"`
 	// Reservation for instances with specific machine shapes.
@@ -30042,6 +30207,11 @@ func (o ReservationTypeOutput) Description() pulumi.StringPtrOutput {
 // The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o ReservationTypeOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ReservationType) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+func (o ReservationTypeOutput) ResourcePolicies() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ReservationType) map[string]string { return v.ResourcePolicies }).(pulumi.StringMapOutput)
 }
 
 // Share-settings for shared-reservation
@@ -30316,6 +30486,8 @@ type ReservationResponse struct {
 	Kind string `pulumi:"kind"`
 	// The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 	Name string `pulumi:"name"`
+	// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+	ResourcePolicies map[string]string `pulumi:"resourcePolicies"`
 	// Reserved for future use.
 	SatisfiesPzs bool `pulumi:"satisfiesPzs"`
 	// Server-defined fully-qualified URL for this resource.
@@ -30370,6 +30542,11 @@ func (o ReservationResponseOutput) Kind() pulumi.StringOutput {
 // The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 func (o ReservationResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ReservationResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+func (o ReservationResponseOutput) ResourcePolicies() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ReservationResponse) map[string]string { return v.ResourcePolicies }).(pulumi.StringMapOutput)
 }
 
 // Reserved for future use.
@@ -38867,6 +39044,8 @@ type SecurityPolicyRule struct {
 	HeaderAction *SecurityPolicyRuleHttpHeaderAction `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match *SecurityPolicyRuleMatcher `pulumi:"match"`
+	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	PreconfiguredWafConfig *SecurityPolicyRulePreconfiguredWafConfig `pulumi:"preconfiguredWafConfig"`
 	// If set to true, the specified action is not enforced.
 	Preview *bool `pulumi:"preview"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
@@ -38908,6 +39087,8 @@ type SecurityPolicyRuleArgs struct {
 	HeaderAction SecurityPolicyRuleHttpHeaderActionPtrInput `pulumi:"headerAction"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match SecurityPolicyRuleMatcherPtrInput `pulumi:"match"`
+	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	PreconfiguredWafConfig SecurityPolicyRulePreconfiguredWafConfigPtrInput `pulumi:"preconfiguredWafConfig"`
 	// If set to true, the specified action is not enforced.
 	Preview pulumi.BoolPtrInput `pulumi:"preview"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
@@ -39004,6 +39185,11 @@ func (o SecurityPolicyRuleOutput) HeaderAction() SecurityPolicyRuleHttpHeaderAct
 // A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 func (o SecurityPolicyRuleOutput) Match() SecurityPolicyRuleMatcherPtrOutput {
 	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRuleMatcher { return v.Match }).(SecurityPolicyRuleMatcherPtrOutput)
+}
+
+// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+func (o SecurityPolicyRuleOutput) PreconfiguredWafConfig() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRule) *SecurityPolicyRulePreconfiguredWafConfig { return v.PreconfiguredWafConfig }).(SecurityPolicyRulePreconfiguredWafConfigPtrOutput)
 }
 
 // If set to true, the specified action is not enforced.
@@ -39975,6 +40161,567 @@ func (o SecurityPolicyRuleMatcherResponseOutput) VersionedExpr() pulumi.StringOu
 	return o.ApplyT(func(v SecurityPolicyRuleMatcherResponse) string { return v.VersionedExpr }).(pulumi.StringOutput)
 }
 
+type SecurityPolicyRulePreconfiguredWafConfig struct {
+	// A list of exclusions to apply during preconfigured WAF evaluation.
+	Exclusions []SecurityPolicyRulePreconfiguredWafConfigExclusion `pulumi:"exclusions"`
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigArgs and SecurityPolicyRulePreconfiguredWafConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigInput` via:
+//
+//	SecurityPolicyRulePreconfiguredWafConfigArgs{...}
+type SecurityPolicyRulePreconfiguredWafConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigOutput() SecurityPolicyRulePreconfiguredWafConfigOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigOutput
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigArgs struct {
+	// A list of exclusions to apply during preconfigured WAF evaluation.
+	Exclusions SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput `pulumi:"exclusions"`
+}
+
+func (SecurityPolicyRulePreconfiguredWafConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigArgs) ToSecurityPolicyRulePreconfiguredWafConfigOutput() SecurityPolicyRulePreconfiguredWafConfigOutput {
+	return i.ToSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigArgs) ToSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigOutput)
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigArgs) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return i.ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigArgs) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigOutput).ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigPtrInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigArgs, SecurityPolicyRulePreconfiguredWafConfigPtr and SecurityPolicyRulePreconfiguredWafConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigPtrInput` via:
+//
+//	        SecurityPolicyRulePreconfiguredWafConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyRulePreconfiguredWafConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput
+}
+
+type securityPolicyRulePreconfiguredWafConfigPtrType SecurityPolicyRulePreconfiguredWafConfigArgs
+
+func SecurityPolicyRulePreconfiguredWafConfigPtr(v *SecurityPolicyRulePreconfiguredWafConfigArgs) SecurityPolicyRulePreconfiguredWafConfigPtrInput {
+	return (*securityPolicyRulePreconfiguredWafConfigPtrType)(v)
+}
+
+func (*securityPolicyRulePreconfiguredWafConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyRulePreconfiguredWafConfigPtrType) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return i.ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyRulePreconfiguredWafConfigPtrType) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigPtrOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigOutput) ToSecurityPolicyRulePreconfiguredWafConfigOutput() SecurityPolicyRulePreconfiguredWafConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigOutput) ToSecurityPolicyRulePreconfiguredWafConfigOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigOutput) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return o.ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigOutput) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRulePreconfiguredWafConfig) *SecurityPolicyRulePreconfiguredWafConfig {
+		return &v
+	}).(SecurityPolicyRulePreconfiguredWafConfigPtrOutput)
+}
+
+// A list of exclusions to apply during preconfigured WAF evaluation.
+func (o SecurityPolicyRulePreconfiguredWafConfigOutput) Exclusions() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfig) []SecurityPolicyRulePreconfiguredWafConfigExclusion {
+		return v.Exclusions
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRulePreconfiguredWafConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutput() SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) ToSecurityPolicyRulePreconfiguredWafConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) Elem() SecurityPolicyRulePreconfiguredWafConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyRulePreconfiguredWafConfig) SecurityPolicyRulePreconfiguredWafConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRulePreconfiguredWafConfig
+		return ret
+	}).(SecurityPolicyRulePreconfiguredWafConfigOutput)
+}
+
+// A list of exclusions to apply during preconfigured WAF evaluation.
+func (o SecurityPolicyRulePreconfiguredWafConfigPtrOutput) Exclusions() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyRulePreconfiguredWafConfig) []SecurityPolicyRulePreconfiguredWafConfigExclusion {
+		if v == nil {
+			return nil
+		}
+		return v.Exclusions
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusion struct {
+	// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestCookiesToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams `pulumi:"requestCookiesToExclude"`
+	// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestHeadersToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams `pulumi:"requestHeadersToExclude"`
+	// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+	RequestQueryParamsToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams `pulumi:"requestQueryParamsToExclude"`
+	// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+	RequestUrisToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams `pulumi:"requestUrisToExclude"`
+	// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+	TargetRuleIds []string `pulumi:"targetRuleIds"`
+	// Target WAF rule set to apply the preconfigured WAF exclusion.
+	TargetRuleSet *string `pulumi:"targetRuleSet"`
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigExclusionInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionArgs and SecurityPolicyRulePreconfiguredWafConfigExclusionOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionInput` via:
+//
+//	SecurityPolicyRulePreconfiguredWafConfigExclusionArgs{...}
+type SecurityPolicyRulePreconfiguredWafConfigExclusionInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionOutput
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionArgs struct {
+	// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestCookiesToExclude SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput `pulumi:"requestCookiesToExclude"`
+	// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestHeadersToExclude SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput `pulumi:"requestHeadersToExclude"`
+	// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+	RequestQueryParamsToExclude SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput `pulumi:"requestQueryParamsToExclude"`
+	// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+	RequestUrisToExclude SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput `pulumi:"requestUrisToExclude"`
+	// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+	TargetRuleIds pulumi.StringArrayInput `pulumi:"targetRuleIds"`
+	// Target WAF rule set to apply the preconfigured WAF exclusion.
+	TargetRuleSet pulumi.StringPtrInput `pulumi:"targetRuleSet"`
+}
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArgs) ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigExclusionOutput)
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionArray and SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput` via:
+//
+//	SecurityPolicyRulePreconfiguredWafConfigExclusionArray{ SecurityPolicyRulePreconfiguredWafConfigExclusionArgs{...} }
+type SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionArray []SecurityPolicyRulePreconfiguredWafConfigExclusionInput
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArray) ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionArray) ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return o
+}
+
+// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestCookiesToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
+		return v.RequestCookiesToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
+}
+
+// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestHeadersToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
+		return v.RequestHeadersToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
+}
+
+// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestQueryParamsToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
+		return v.RequestQueryParamsToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
+}
+
+// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) RequestUrisToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
+		return v.RequestUrisToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
+}
+
+// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) TargetRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) []string { return v.TargetRuleIds }).(pulumi.StringArrayOutput)
+}
+
+// Target WAF rule set to apply the preconfigured WAF exclusion.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionOutput) TargetRuleSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusion) *string { return v.TargetRuleSet }).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusion)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRulePreconfiguredWafConfigExclusionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRulePreconfiguredWafConfigExclusion {
+		return vs[0].([]SecurityPolicyRulePreconfiguredWafConfigExclusion)[vs[1].(int)]
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams struct {
+	// The match operator for the field.
+	Op *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp `pulumi:"op"`
+	// The value of the field.
+	Val *string `pulumi:"val"`
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs and SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput` via:
+//
+//	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs{...}
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs struct {
+	// The match operator for the field.
+	Op SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrInput `pulumi:"op"`
+	// The value of the field.
+	Val pulumi.StringPtrInput `pulumi:"val"`
+}
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)(nil)).Elem()
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
+	return i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput)
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray and SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput` via:
+//
+//	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray{ SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs{...} }
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)(nil)).Elem()
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return i.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
+	return o
+}
+
+// The match operator for the field.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) Op() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams) *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp {
+		return v.Op
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
+}
+
+// The value of the field.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput) Val() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams) *string { return v.Val }).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams {
+		return vs[0].([]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParams)[vs[1].(int)]
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse struct {
+	// The match operator for the field.
+	Op string `pulumi:"op"`
+	// The value of the field.
+	Val string `pulumi:"val"`
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput {
+	return o
+}
+
+// The match operator for the field.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) Op() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse) string { return v.Op }).(pulumi.StringOutput)
+}
+
+// The value of the field.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput) Val() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse) string { return v.Val }).(pulumi.StringOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
+		return vs[0].([]SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse)[vs[1].(int)]
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionResponse struct {
+	// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestCookiesToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse `pulumi:"requestCookiesToExclude"`
+	// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+	RequestHeadersToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse `pulumi:"requestHeadersToExclude"`
+	// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+	RequestQueryParamsToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse `pulumi:"requestQueryParamsToExclude"`
+	// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+	RequestUrisToExclude []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse `pulumi:"requestUrisToExclude"`
+	// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+	TargetRuleIds []string `pulumi:"targetRuleIds"`
+	// Target WAF rule set to apply the preconfigured WAF exclusion.
+	TargetRuleSet string `pulumi:"targetRuleSet"`
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput {
+	return o
+}
+
+// A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) RequestCookiesToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
+		return v.RequestCookiesToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput)
+}
+
+// A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) RequestHeadersToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
+		return v.RequestHeadersToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput)
+}
+
+// A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) RequestQueryParamsToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
+		return v.RequestQueryParamsToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput)
+}
+
+// A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) RequestUrisToExclude() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse {
+		return v.RequestUrisToExclude
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput)
+}
+
+// A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) TargetRuleIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) []string { return v.TargetRuleIds }).(pulumi.StringArrayOutput)
+}
+
+// Target WAF rule set to apply the preconfigured WAF exclusion.
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput) TargetRuleSet() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigExclusionResponse) string { return v.TargetRuleSet }).(pulumi.StringOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyRulePreconfiguredWafConfigExclusionResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput) Index(i pulumi.IntInput) SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyRulePreconfiguredWafConfigExclusionResponse {
+		return vs[0].([]SecurityPolicyRulePreconfiguredWafConfigExclusionResponse)[vs[1].(int)]
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigResponse struct {
+	// A list of exclusions to apply during preconfigured WAF evaluation.
+	Exclusions []SecurityPolicyRulePreconfiguredWafConfigExclusionResponse `pulumi:"exclusions"`
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigResponse)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigResponseOutput() SecurityPolicyRulePreconfiguredWafConfigResponseOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigResponseOutput) ToSecurityPolicyRulePreconfiguredWafConfigResponseOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigResponseOutput {
+	return o
+}
+
+// A list of exclusions to apply during preconfigured WAF evaluation.
+func (o SecurityPolicyRulePreconfiguredWafConfigResponseOutput) Exclusions() SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyRulePreconfiguredWafConfigResponse) []SecurityPolicyRulePreconfiguredWafConfigExclusionResponse {
+		return v.Exclusions
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput)
+}
+
 type SecurityPolicyRuleRateLimitOptions struct {
 	// Can only be specified if the action for the rule is "rate_based_ban". If specified, determines the time (in seconds) the traffic will continue to be banned by the rate limit after the rate falls below the threshold.
 	BanDurationSec *int `pulumi:"banDurationSec"`
@@ -40722,6 +41469,8 @@ type SecurityPolicyRuleResponse struct {
 	Kind string `pulumi:"kind"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 	Match SecurityPolicyRuleMatcherResponse `pulumi:"match"`
+	// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+	PreconfiguredWafConfig SecurityPolicyRulePreconfiguredWafConfigResponse `pulumi:"preconfiguredWafConfig"`
 	// If set to true, the specified action is not enforced.
 	Preview bool `pulumi:"preview"`
 	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
@@ -40788,6 +41537,13 @@ func (o SecurityPolicyRuleResponseOutput) Kind() pulumi.StringOutput {
 // A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
 func (o SecurityPolicyRuleResponseOutput) Match() SecurityPolicyRuleMatcherResponseOutput {
 	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRuleMatcherResponse { return v.Match }).(SecurityPolicyRuleMatcherResponseOutput)
+}
+
+// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+func (o SecurityPolicyRuleResponseOutput) PreconfiguredWafConfig() SecurityPolicyRulePreconfiguredWafConfigResponseOutput {
+	return o.ApplyT(func(v SecurityPolicyRuleResponse) SecurityPolicyRulePreconfiguredWafConfigResponse {
+		return v.PreconfiguredWafConfig
+	}).(SecurityPolicyRulePreconfiguredWafConfigResponseOutput)
 }
 
 // If set to true, the specified action is not enforced.
@@ -46189,6 +46945,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupCloudRunPtrInput)(nil)).Elem(), NetworkEndpointGroupCloudRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupLbNetworkEndpointGroupInput)(nil)).Elem(), NetworkEndpointGroupLbNetworkEndpointGroupArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupLbNetworkEndpointGroupPtrInput)(nil)).Elem(), NetworkEndpointGroupLbNetworkEndpointGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupPscDataInput)(nil)).Elem(), NetworkEndpointGroupPscDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupPscDataPtrInput)(nil)).Elem(), NetworkEndpointGroupPscDataArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupServerlessDeploymentInput)(nil)).Elem(), NetworkEndpointGroupServerlessDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupServerlessDeploymentPtrInput)(nil)).Elem(), NetworkEndpointGroupServerlessDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkInterfaceInput)(nil)).Elem(), NetworkInterfaceArgs{})
@@ -46317,6 +47075,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigLayer4ConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherConfigLayer4ConfigArrayInput)(nil)).Elem(), SecurityPolicyRuleMatcherConfigLayer4ConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigPtrInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionArrayInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsThresholdInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsThresholdArgs{})
@@ -46764,6 +47528,9 @@ func init() {
 	pulumi.RegisterOutputType(NetworkEndpointGroupLbNetworkEndpointGroupOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupLbNetworkEndpointGroupPtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupLbNetworkEndpointGroupResponseOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupPscDataOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupPscDataPtrOutput{})
+	pulumi.RegisterOutputType(NetworkEndpointGroupPscDataResponseOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupServerlessDeploymentOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupServerlessDeploymentPtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupServerlessDeploymentResponseOutput{})
@@ -46995,6 +47762,17 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigLayer4ConfigResponseArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionResponseOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionResponseArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigResponseOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsResponseOutput{})

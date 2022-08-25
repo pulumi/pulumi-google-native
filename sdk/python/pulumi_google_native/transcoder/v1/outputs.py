@@ -20,9 +20,11 @@ __all__ = [
     'AudioMappingResponse',
     'AudioResponse',
     'AudioStreamResponse',
+    'BwdifConfigResponse',
     'ColorResponse',
     'CropResponse',
     'DeblockResponse',
+    'DeinterlaceResponse',
     'DenoiseResponse',
     'EditAtomResponse',
     'ElementaryStreamResponse',
@@ -46,6 +48,7 @@ __all__ = [
     'TextStreamResponse',
     'VideoStreamResponse',
     'Vp9CodecSettingsResponse',
+    'YadifConfigResponse',
 ]
 
 @pulumi.output_type
@@ -585,6 +588,67 @@ class AudioStreamResponse(dict):
 
 
 @pulumi.output_type
+class BwdifConfigResponse(dict):
+    """
+    Bob Weaver Deinterlacing Filter Configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deinterlaceAllFrames":
+            suggest = "deinterlace_all_frames"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BwdifConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BwdifConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BwdifConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deinterlace_all_frames: bool,
+                 mode: str,
+                 parity: str):
+        """
+        Bob Weaver Deinterlacing Filter Configuration.
+        :param bool deinterlace_all_frames: Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+        :param str mode: Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+        :param str parity: The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+        """
+        pulumi.set(__self__, "deinterlace_all_frames", deinterlace_all_frames)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "parity", parity)
+
+    @property
+    @pulumi.getter(name="deinterlaceAllFrames")
+    def deinterlace_all_frames(self) -> bool:
+        """
+        Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+        """
+        return pulumi.get(self, "deinterlace_all_frames")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def parity(self) -> str:
+        """
+        The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+        """
+        return pulumi.get(self, "parity")
+
+
+@pulumi.output_type
 class ColorResponse(dict):
     """
     Color preprocessing configuration. **Note:** This configuration is not supported.
@@ -737,6 +801,39 @@ class DeblockResponse(dict):
         Set strength of the deblocker. Enter a value between 0 and 1. The higher the value, the stronger the block removal. 0 is no deblocking. The default is 0.
         """
         return pulumi.get(self, "strength")
+
+
+@pulumi.output_type
+class DeinterlaceResponse(dict):
+    """
+    Deinterlace configuration for input video.
+    """
+    def __init__(__self__, *,
+                 bwdif: 'outputs.BwdifConfigResponse',
+                 yadif: 'outputs.YadifConfigResponse'):
+        """
+        Deinterlace configuration for input video.
+        :param 'BwdifConfigResponse' bwdif: Specifies the Bob Weaver Deinterlacing Filter Configuration.
+        :param 'YadifConfigResponse' yadif: Specifies the Yet Another Deinterlacing Filter Configuration.
+        """
+        pulumi.set(__self__, "bwdif", bwdif)
+        pulumi.set(__self__, "yadif", yadif)
+
+    @property
+    @pulumi.getter
+    def bwdif(self) -> 'outputs.BwdifConfigResponse':
+        """
+        Specifies the Bob Weaver Deinterlacing Filter Configuration.
+        """
+        return pulumi.get(self, "bwdif")
+
+    @property
+    @pulumi.getter
+    def yadif(self) -> 'outputs.YadifConfigResponse':
+        """
+        Specifies the Yet Another Deinterlacing Filter Configuration.
+        """
+        return pulumi.get(self, "yadif")
 
 
 @pulumi.output_type
@@ -2048,6 +2145,7 @@ class PreprocessingConfigResponse(dict):
                  color: 'outputs.ColorResponse',
                  crop: 'outputs.CropResponse',
                  deblock: 'outputs.DeblockResponse',
+                 deinterlace: 'outputs.DeinterlaceResponse',
                  denoise: 'outputs.DenoiseResponse',
                  pad: 'outputs.PadResponse'):
         """
@@ -2056,6 +2154,7 @@ class PreprocessingConfigResponse(dict):
         :param 'ColorResponse' color: Color preprocessing configuration.
         :param 'CropResponse' crop: Specify the video cropping configuration.
         :param 'DeblockResponse' deblock: Deblock preprocessing configuration.
+        :param 'DeinterlaceResponse' deinterlace: Specify the video deinterlace configuration.
         :param 'DenoiseResponse' denoise: Denoise preprocessing configuration.
         :param 'PadResponse' pad: Specify the video pad filter configuration.
         """
@@ -2063,6 +2162,7 @@ class PreprocessingConfigResponse(dict):
         pulumi.set(__self__, "color", color)
         pulumi.set(__self__, "crop", crop)
         pulumi.set(__self__, "deblock", deblock)
+        pulumi.set(__self__, "deinterlace", deinterlace)
         pulumi.set(__self__, "denoise", denoise)
         pulumi.set(__self__, "pad", pad)
 
@@ -2097,6 +2197,14 @@ class PreprocessingConfigResponse(dict):
         Deblock preprocessing configuration.
         """
         return pulumi.get(self, "deblock")
+
+    @property
+    @pulumi.getter
+    def deinterlace(self) -> 'outputs.DeinterlaceResponse':
+        """
+        Specify the video deinterlace configuration.
+        """
+        return pulumi.get(self, "deinterlace")
 
     @property
     @pulumi.getter
@@ -2690,5 +2798,79 @@ class Vp9CodecSettingsResponse(dict):
         The width of the video in pixels. Must be an even integer. When not specified, the width is adjusted to match the specified height and input aspect ratio. If both are omitted, the input width is used.
         """
         return pulumi.get(self, "width_pixels")
+
+
+@pulumi.output_type
+class YadifConfigResponse(dict):
+    """
+    Yet Another Deinterlacing Filter Configuration.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deinterlaceAllFrames":
+            suggest = "deinterlace_all_frames"
+        elif key == "disableSpatialInterlacing":
+            suggest = "disable_spatial_interlacing"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in YadifConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        YadifConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        YadifConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 deinterlace_all_frames: bool,
+                 disable_spatial_interlacing: bool,
+                 mode: str,
+                 parity: str):
+        """
+        Yet Another Deinterlacing Filter Configuration.
+        :param bool deinterlace_all_frames: Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+        :param bool disable_spatial_interlacing: Disable spacial interlacing. The default is `false`.
+        :param str mode: Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+        :param str parity: The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+        """
+        pulumi.set(__self__, "deinterlace_all_frames", deinterlace_all_frames)
+        pulumi.set(__self__, "disable_spatial_interlacing", disable_spatial_interlacing)
+        pulumi.set(__self__, "mode", mode)
+        pulumi.set(__self__, "parity", parity)
+
+    @property
+    @pulumi.getter(name="deinterlaceAllFrames")
+    def deinterlace_all_frames(self) -> bool:
+        """
+        Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+        """
+        return pulumi.get(self, "deinterlace_all_frames")
+
+    @property
+    @pulumi.getter(name="disableSpatialInterlacing")
+    def disable_spatial_interlacing(self) -> bool:
+        """
+        Disable spacial interlacing. The default is `false`.
+        """
+        return pulumi.get(self, "disable_spatial_interlacing")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter
+    def parity(self) -> str:
+        """
+        The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+        """
+        return pulumi.get(self, "parity")
 
 

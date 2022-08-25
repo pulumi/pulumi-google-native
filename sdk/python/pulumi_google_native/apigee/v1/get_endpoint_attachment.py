@@ -18,7 +18,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetEndpointAttachmentResult:
-    def __init__(__self__, host=None, location=None, name=None, service_attachment=None, state=None):
+    def __init__(__self__, connection_state=None, host=None, location=None, name=None, service_attachment=None, state=None):
+        if connection_state and not isinstance(connection_state, str):
+            raise TypeError("Expected argument 'connection_state' to be a str")
+        pulumi.set(__self__, "connection_state", connection_state)
         if host and not isinstance(host, str):
             raise TypeError("Expected argument 'host' to be a str")
         pulumi.set(__self__, "host", host)
@@ -34,6 +37,14 @@ class GetEndpointAttachmentResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="connectionState")
+    def connection_state(self) -> str:
+        """
+        State of the endpoint attachment connection to the service attachment.
+        """
+        return pulumi.get(self, "connection_state")
 
     @property
     @pulumi.getter
@@ -82,6 +93,7 @@ class AwaitableGetEndpointAttachmentResult(GetEndpointAttachmentResult):
         if False:
             yield self
         return GetEndpointAttachmentResult(
+            connection_state=self.connection_state,
             host=self.host,
             location=self.location,
             name=self.name,
@@ -102,6 +114,7 @@ def get_endpoint_attachment(endpoint_attachment_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:apigee/v1:getEndpointAttachment', __args__, opts=opts, typ=GetEndpointAttachmentResult).value
 
     return AwaitableGetEndpointAttachmentResult(
+        connection_state=__ret__.connection_state,
         host=__ret__.host,
         location=__ret__.location,
         name=__ret__.name,

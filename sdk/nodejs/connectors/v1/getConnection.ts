@@ -39,7 +39,7 @@ export interface GetConnectionResult {
      */
     readonly configVariables: outputs.connectors.v1.ConfigVariableResponse[];
     /**
-     * Connector version on which the connection is created. The format is: projects/*&#47;locations/global/providers/*&#47;connectors/*&#47;versions/*
+     * Connector version on which the connection is created. The format is: projects/*&#47;locations/*&#47;providers/*&#47;connectors/*&#47;versions/* Only global location is supported for ConnectorVersion resource.
      */
     readonly connectorVersion: string;
     /**
@@ -50,6 +50,10 @@ export interface GetConnectionResult {
      * Optional. Description of the resource.
      */
     readonly description: string;
+    /**
+     * Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+     */
+    readonly destinationConfigs: outputs.connectors.v1.DestinationConfigResponse[];
     /**
      * GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
      */
@@ -70,6 +74,10 @@ export interface GetConnectionResult {
      * Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
      */
     readonly name: string;
+    /**
+     * Optional. Configuration for the connection.
+     */
+    readonly nodeConfig: outputs.connectors.v1.NodeConfigResponse;
     /**
      * Optional. Service account needed for runtime plane to access GCP resources.
      */

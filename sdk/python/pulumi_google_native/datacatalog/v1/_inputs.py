@@ -13,10 +13,8 @@ from ._enums import *
 __all__ = [
     'BindingArgs',
     'ExprArgs',
-    'GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs',
     'GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs',
     'GoogleCloudDatacatalogV1BusinessContextArgs',
-    'GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs',
     'GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpecArgs',
     'GoogleCloudDatacatalogV1ColumnSchemaArgs',
     'GoogleCloudDatacatalogV1ContactsPersonArgs',
@@ -50,7 +48,7 @@ class BindingArgs:
         """
         Associates `members`, or principals, with a `role`.
         :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         if condition is not None:
@@ -76,7 +74,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -170,62 +168,6 @@ class ExprArgs:
 
 
 @pulumi.input_type
-class GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs:
-    def __init__(__self__, *,
-                 cloud_sql: Optional[pulumi.Input['GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs']] = None,
-                 connection_type: Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType']] = None,
-                 has_credential: Optional[pulumi.Input[bool]] = None):
-        """
-        Specification for the BigQuery connection.
-        :param pulumi.Input['GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs'] cloud_sql: Specification for the BigQuery connection to a Cloud SQL instance.
-        :param pulumi.Input['GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType'] connection_type: The type of the BigQuery connection.
-        :param pulumi.Input[bool] has_credential: True if there are credentials attached to the BigQuery connection; false otherwise.
-        """
-        if cloud_sql is not None:
-            pulumi.set(__self__, "cloud_sql", cloud_sql)
-        if connection_type is not None:
-            pulumi.set(__self__, "connection_type", connection_type)
-        if has_credential is not None:
-            pulumi.set(__self__, "has_credential", has_credential)
-
-    @property
-    @pulumi.getter(name="cloudSql")
-    def cloud_sql(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs']]:
-        """
-        Specification for the BigQuery connection to a Cloud SQL instance.
-        """
-        return pulumi.get(self, "cloud_sql")
-
-    @cloud_sql.setter
-    def cloud_sql(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs']]):
-        pulumi.set(self, "cloud_sql", value)
-
-    @property
-    @pulumi.getter(name="connectionType")
-    def connection_type(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType']]:
-        """
-        The type of the BigQuery connection.
-        """
-        return pulumi.get(self, "connection_type")
-
-    @connection_type.setter
-    def connection_type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryConnectionSpecConnectionType']]):
-        pulumi.set(self, "connection_type", value)
-
-    @property
-    @pulumi.getter(name="hasCredential")
-    def has_credential(self) -> Optional[pulumi.Input[bool]]:
-        """
-        True if there are credentials attached to the BigQuery connection; false otherwise.
-        """
-        return pulumi.get(self, "has_credential")
-
-    @has_credential.setter
-    def has_credential(self, value: Optional[pulumi.Input[bool]]):
-        pulumi.set(self, "has_credential", value)
-
-
-@pulumi.input_type
 class GoogleCloudDatacatalogV1BigQueryRoutineSpecArgs:
     def __init__(__self__, *,
                  imported_libraries: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -287,62 +229,6 @@ class GoogleCloudDatacatalogV1BusinessContextArgs:
     @entry_overview.setter
     def entry_overview(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1EntryOverviewArgs']]):
         pulumi.set(self, "entry_overview", value)
-
-
-@pulumi.input_type
-class GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecArgs:
-    def __init__(__self__, *,
-                 database: Optional[pulumi.Input[str]] = None,
-                 instance_id: Optional[pulumi.Input[str]] = None,
-                 type: Optional[pulumi.Input['GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType']] = None):
-        """
-        Specification for the BigQuery connection to a Cloud SQL instance.
-        :param pulumi.Input[str] database: Database name.
-        :param pulumi.Input[str] instance_id: Cloud SQL instance ID in the format of `project:location:instance`.
-        :param pulumi.Input['GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType'] type: Type of the Cloud SQL database.
-        """
-        if database is not None:
-            pulumi.set(__self__, "database", database)
-        if instance_id is not None:
-            pulumi.set(__self__, "instance_id", instance_id)
-        if type is not None:
-            pulumi.set(__self__, "type", type)
-
-    @property
-    @pulumi.getter
-    def database(self) -> Optional[pulumi.Input[str]]:
-        """
-        Database name.
-        """
-        return pulumi.get(self, "database")
-
-    @database.setter
-    def database(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "database", value)
-
-    @property
-    @pulumi.getter(name="instanceId")
-    def instance_id(self) -> Optional[pulumi.Input[str]]:
-        """
-        Cloud SQL instance ID in the format of `project:location:instance`.
-        """
-        return pulumi.get(self, "instance_id")
-
-    @instance_id.setter
-    def instance_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "instance_id", value)
-
-    @property
-    @pulumi.getter
-    def type(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType']]:
-        """
-        Type of the Cloud SQL database.
-        """
-        return pulumi.get(self, "type")
-
-    @type.setter
-    def type(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpecType']]):
-        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type
@@ -537,26 +423,11 @@ class GoogleCloudDatacatalogV1ContactsArgs:
 
 @pulumi.input_type
 class GoogleCloudDatacatalogV1DataSourceConnectionSpecArgs:
-    def __init__(__self__, *,
-                 bigquery_connection_spec: Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs']] = None):
+    def __init__(__self__):
         """
-        Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
-        :param pulumi.Input['GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs'] bigquery_connection_spec: Fields specific to BigQuery connections.
+        Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type. Only one of internal specs can be set at the time, and cannot be changed later.
         """
-        if bigquery_connection_spec is not None:
-            pulumi.set(__self__, "bigquery_connection_spec", bigquery_connection_spec)
-
-    @property
-    @pulumi.getter(name="bigqueryConnectionSpec")
-    def bigquery_connection_spec(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs']]:
-        """
-        Fields specific to BigQuery connections.
-        """
-        return pulumi.get(self, "bigquery_connection_spec")
-
-    @bigquery_connection_spec.setter
-    def bigquery_connection_spec(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1BigQueryConnectionSpecArgs']]):
-        pulumi.set(self, "bigquery_connection_spec", value)
+        pass
 
 
 @pulumi.input_type

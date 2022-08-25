@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 {
 
     /// <summary>
-    /// Enable email notification to project owners and editors on jobs's completion/failure.
+    /// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
     /// </summary>
     [OutputType]
     public sealed class GooglePrivacyDlpV2JobNotificationEmailsResponse

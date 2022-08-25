@@ -67,6 +67,10 @@ export interface GetNodeGroupResult {
      */
     readonly selfLink: string;
     /**
+     * Share-settings for the node group
+     */
+    readonly shareSettings: outputs.compute.v1.ShareSettingsResponse;
+    /**
      * The total number of nodes in the node group.
      */
     readonly size: number;

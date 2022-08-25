@@ -172,6 +172,7 @@ __all__ = [
     'NetworkEndpointGroupCloudFunctionResponse',
     'NetworkEndpointGroupCloudRunResponse',
     'NetworkEndpointGroupLbNetworkEndpointGroupResponse',
+    'NetworkEndpointGroupPscDataResponse',
     'NetworkEndpointGroupServerlessDeploymentResponse',
     'NetworkInterfaceResponse',
     'NetworkInterfaceSubInterfaceResponse',
@@ -251,6 +252,7 @@ __all__ = [
     'SSLHealthCheckResponse',
     'SavedAttachedDiskResponse',
     'SavedDiskResponse',
+    'SchedulingDynamicResizePropertiesResponse',
     'SchedulingNodeAffinityResponse',
     'SchedulingResponse',
     'SdsConfigResponse',
@@ -269,6 +271,9 @@ __all__ = [
     'SecurityPolicyRuleMatcherConfigLayer4ConfigResponse',
     'SecurityPolicyRuleMatcherConfigResponse',
     'SecurityPolicyRuleMatcherResponse',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionResponse',
+    'SecurityPolicyRulePreconfiguredWafConfigResponse',
     'SecurityPolicyRuleRateLimitOptionsResponse',
     'SecurityPolicyRuleRateLimitOptionsRpcStatusResponse',
     'SecurityPolicyRuleRateLimitOptionsThresholdResponse',
@@ -1026,6 +1031,8 @@ class AttachedDiskInitializeParamsResponse(dict):
             suggest = "on_update_action"
         elif key == "provisionedIops":
             suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
         elif key == "replicaZones":
             suggest = "replica_zones"
         elif key == "resourceManagerTags":
@@ -1068,6 +1075,7 @@ class AttachedDiskInitializeParamsResponse(dict):
                  multi_writer: bool,
                  on_update_action: str,
                  provisioned_iops: str,
+                 provisioned_throughput: str,
                  replica_zones: Sequence[str],
                  resource_manager_tags: Mapping[str, str],
                  resource_policies: Sequence[str],
@@ -1091,6 +1099,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         :param bool multi_writer: Indicates whether or not the disk can be read/write attached to more than one instance.
         :param str on_update_action: Specifies which action to take on instance update with this disk. Default is to use the existing disk.
         :param str provisioned_iops: Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
+        :param str provisioned_throughput: Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
         :param Sequence[str] replica_zones: URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
         :param Mapping[str, str] resource_manager_tags: Resource manager tags to be bound to the disk. Tag keys and values have the same definition as resource manager tags. Keys must be in the format `tagKeys/{tag_key_id}`, and values are in the format `tagValues/456`. The field is ignored (both PUT & PATCH) when empty.
         :param Sequence[str] resource_policies: Resource policies applied to this disk for automatic snapshot creations. Specified using the full or partial URL. For instance template, specify only the resource policy name.
@@ -1113,6 +1122,7 @@ class AttachedDiskInitializeParamsResponse(dict):
         pulumi.set(__self__, "multi_writer", multi_writer)
         pulumi.set(__self__, "on_update_action", on_update_action)
         pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         pulumi.set(__self__, "replica_zones", replica_zones)
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "resource_policies", resource_policies)
@@ -1225,6 +1235,14 @@ class AttachedDiskInitializeParamsResponse(dict):
         Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
         """
         return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> str:
+        """
+        Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
     @property
     @pulumi.getter(name="replicaZones")
@@ -3484,7 +3502,7 @@ class BindingResponse(dict):
         Associates `members`, or principals, with a `role`.
         :param str binding_id: This is deprecated and has no effect. Do not use.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "binding_id", binding_id)
@@ -3512,7 +3530,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -8524,7 +8542,7 @@ class InstanceGroupManagerInstanceLifecyclePolicyResponse(dict):
                  force_update_on_repair: str,
                  metadata_based_readiness_signal: 'outputs.InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalResponse'):
         """
-        :param str force_update_on_repair: A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. However, if you've set up a proactive type of update policy, then configuration updates are applied as usual. - YES: If configuration updates are available, they are applied during repair. 
+        :param str force_update_on_repair: A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
         :param 'InstanceGroupManagerInstanceLifecyclePolicyMetadataBasedReadinessSignalResponse' metadata_based_readiness_signal: The configuration for metadata based readiness signal sent by the instance during initialization when stopping / suspending an instance. The Instance Group Manager will wait for a signal that indicates successful initialization before stopping / suspending an instance. If a successful readiness signal is not sent before timeout, the corresponding instance will not be stopped / suspended. Instead, an error will be visible in the lastAttempt.errors field of the managed instance in the listmanagedinstances method. If metadataBasedReadinessSignal.timeoutSec is unset, the Instance Group Manager will directly proceed to suspend / stop instances, skipping initialization on them.
         """
         pulumi.set(__self__, "force_update_on_repair", force_update_on_repair)
@@ -8534,7 +8552,7 @@ class InstanceGroupManagerInstanceLifecyclePolicyResponse(dict):
     @pulumi.getter(name="forceUpdateOnRepair")
     def force_update_on_repair(self) -> str:
         """
-        A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. However, if you've set up a proactive type of update policy, then configuration updates are applied as usual. - YES: If configuration updates are available, they are applied during repair. 
+        A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
         """
         return pulumi.get(self, "force_update_on_repair")
 
@@ -11822,6 +11840,71 @@ class NetworkEndpointGroupLbNetworkEndpointGroupResponse(dict):
         The URL of the zone where the network endpoint group is located. [Deprecated] This field is deprecated.
         """
         return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class NetworkEndpointGroupPscDataResponse(dict):
+    """
+    All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "consumerPscAddress":
+            suggest = "consumer_psc_address"
+        elif key == "pscConnectionId":
+            suggest = "psc_connection_id"
+        elif key == "pscConnectionStatus":
+            suggest = "psc_connection_status"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkEndpointGroupPscDataResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkEndpointGroupPscDataResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkEndpointGroupPscDataResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 consumer_psc_address: str,
+                 psc_connection_id: str,
+                 psc_connection_status: str):
+        """
+        All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT.
+        :param str consumer_psc_address: Address allocated from given subnetwork for PSC. This IP address acts as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+        :param str psc_connection_id: The PSC connection id of the PSC Network Endpoint Group Consumer.
+        :param str psc_connection_status: The connection status of the PSC Forwarding Rule.
+        """
+        pulumi.set(__self__, "consumer_psc_address", consumer_psc_address)
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        pulumi.set(__self__, "psc_connection_status", psc_connection_status)
+
+    @property
+    @pulumi.getter(name="consumerPscAddress")
+    def consumer_psc_address(self) -> str:
+        """
+        Address allocated from given subnetwork for PSC. This IP address acts as a VIP for a PSC NEG, allowing it to act as an endpoint in L7 PSC-XLB.
+        """
+        return pulumi.get(self, "consumer_psc_address")
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> str:
+        """
+        The PSC connection id of the PSC Network Endpoint Group Consumer.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @property
+    @pulumi.getter(name="pscConnectionStatus")
+    def psc_connection_status(self) -> str:
+        """
+        The connection status of the PSC Forwarding Rule.
+        """
+        return pulumi.get(self, "psc_connection_status")
 
 
 @pulumi.output_type
@@ -17581,6 +17664,58 @@ class SavedDiskResponse(dict):
 
 
 @pulumi.output_type
+class SchedulingDynamicResizePropertiesResponse(dict):
+    """
+    Configuration for properties related to dynamic assignment of computing resources to VM (CPU and RAM).
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableHotStandby":
+            suggest = "enable_hot_standby"
+        elif key == "hotStandbyState":
+            suggest = "hot_standby_state"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SchedulingDynamicResizePropertiesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SchedulingDynamicResizePropertiesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SchedulingDynamicResizePropertiesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_hot_standby: bool,
+                 hot_standby_state: str):
+        """
+        Configuration for properties related to dynamic assignment of computing resources to VM (CPU and RAM).
+        :param bool enable_hot_standby: Set to true if this VM is supporting HotStandby modes (b/235044648).
+        :param str hot_standby_state: Current Hot Standby state of VM.
+        """
+        pulumi.set(__self__, "enable_hot_standby", enable_hot_standby)
+        pulumi.set(__self__, "hot_standby_state", hot_standby_state)
+
+    @property
+    @pulumi.getter(name="enableHotStandby")
+    def enable_hot_standby(self) -> bool:
+        """
+        Set to true if this VM is supporting HotStandby modes (b/235044648).
+        """
+        return pulumi.get(self, "enable_hot_standby")
+
+    @property
+    @pulumi.getter(name="hotStandbyState")
+    def hot_standby_state(self) -> str:
+        """
+        Current Hot Standby state of VM.
+        """
+        return pulumi.get(self, "hot_standby_state")
+
+
+@pulumi.output_type
 class SchedulingNodeAffinityResponse(dict):
     """
     Node Affinity: the configuration of desired nodes onto which this Instance could be scheduled.
@@ -17640,6 +17775,8 @@ class SchedulingResponse(dict):
             suggest = "current_cpus"
         elif key == "currentMemoryMb":
             suggest = "current_memory_mb"
+        elif key == "dynamicResizeProperties":
+            suggest = "dynamic_resize_properties"
         elif key == "hostErrorTimeoutSeconds":
             suggest = "host_error_timeout_seconds"
         elif key == "instanceTerminationAction":
@@ -17681,6 +17818,7 @@ class SchedulingResponse(dict):
                  availability_domain: int,
                  current_cpus: int,
                  current_memory_mb: str,
+                 dynamic_resize_properties: 'outputs.SchedulingDynamicResizePropertiesResponse',
                  host_error_timeout_seconds: int,
                  instance_termination_action: str,
                  latency_tolerant: bool,
@@ -17718,6 +17856,7 @@ class SchedulingResponse(dict):
         pulumi.set(__self__, "availability_domain", availability_domain)
         pulumi.set(__self__, "current_cpus", current_cpus)
         pulumi.set(__self__, "current_memory_mb", current_memory_mb)
+        pulumi.set(__self__, "dynamic_resize_properties", dynamic_resize_properties)
         pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         pulumi.set(__self__, "latency_tolerant", latency_tolerant)
@@ -17763,6 +17902,11 @@ class SchedulingResponse(dict):
         Current amount of memory (in MB) available for VM. 0 or unset means default amount of memory of the current machine type.
         """
         return pulumi.get(self, "current_memory_mb")
+
+    @property
+    @pulumi.getter(name="dynamicResizeProperties")
+    def dynamic_resize_properties(self) -> 'outputs.SchedulingDynamicResizePropertiesResponse':
+        return pulumi.get(self, "dynamic_resize_properties")
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
@@ -18642,6 +18786,153 @@ class SecurityPolicyRuleMatcherResponse(dict):
 
 
 @pulumi.output_type
+class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse(dict):
+    def __init__(__self__, *,
+                 op: str,
+                 val: str):
+        """
+        :param str op: The match operator for the field.
+        :param str val: The value of the field.
+        """
+        pulumi.set(__self__, "op", op)
+        pulumi.set(__self__, "val", val)
+
+    @property
+    @pulumi.getter
+    def op(self) -> str:
+        """
+        The match operator for the field.
+        """
+        return pulumi.get(self, "op")
+
+    @property
+    @pulumi.getter
+    def val(self) -> str:
+        """
+        The value of the field.
+        """
+        return pulumi.get(self, "val")
+
+
+@pulumi.output_type
+class SecurityPolicyRulePreconfiguredWafConfigExclusionResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestCookiesToExclude":
+            suggest = "request_cookies_to_exclude"
+        elif key == "requestHeadersToExclude":
+            suggest = "request_headers_to_exclude"
+        elif key == "requestQueryParamsToExclude":
+            suggest = "request_query_params_to_exclude"
+        elif key == "requestUrisToExclude":
+            suggest = "request_uris_to_exclude"
+        elif key == "targetRuleIds":
+            suggest = "target_rule_ids"
+        elif key == "targetRuleSet":
+            suggest = "target_rule_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityPolicyRulePreconfiguredWafConfigExclusionResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityPolicyRulePreconfiguredWafConfigExclusionResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityPolicyRulePreconfiguredWafConfigExclusionResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 request_cookies_to_exclude: Sequence['outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse'],
+                 request_headers_to_exclude: Sequence['outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse'],
+                 request_query_params_to_exclude: Sequence['outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse'],
+                 request_uris_to_exclude: Sequence['outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse'],
+                 target_rule_ids: Sequence[str],
+                 target_rule_set: str):
+        """
+        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse'] request_cookies_to_exclude: A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse'] request_headers_to_exclude: A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse'] request_query_params_to_exclude: A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse'] request_uris_to_exclude: A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+        :param Sequence[str] target_rule_ids: A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+        :param str target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
+        """
+        pulumi.set(__self__, "request_cookies_to_exclude", request_cookies_to_exclude)
+        pulumi.set(__self__, "request_headers_to_exclude", request_headers_to_exclude)
+        pulumi.set(__self__, "request_query_params_to_exclude", request_query_params_to_exclude)
+        pulumi.set(__self__, "request_uris_to_exclude", request_uris_to_exclude)
+        pulumi.set(__self__, "target_rule_ids", target_rule_ids)
+        pulumi.set(__self__, "target_rule_set", target_rule_set)
+
+    @property
+    @pulumi.getter(name="requestCookiesToExclude")
+    def request_cookies_to_exclude(self) -> Sequence['outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse']:
+        """
+        A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "request_cookies_to_exclude")
+
+    @property
+    @pulumi.getter(name="requestHeadersToExclude")
+    def request_headers_to_exclude(self) -> Sequence['outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse']:
+        """
+        A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "request_headers_to_exclude")
+
+    @property
+    @pulumi.getter(name="requestQueryParamsToExclude")
+    def request_query_params_to_exclude(self) -> Sequence['outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse']:
+        """
+        A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+        """
+        return pulumi.get(self, "request_query_params_to_exclude")
+
+    @property
+    @pulumi.getter(name="requestUrisToExclude")
+    def request_uris_to_exclude(self) -> Sequence['outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsResponse']:
+        """
+        A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+        """
+        return pulumi.get(self, "request_uris_to_exclude")
+
+    @property
+    @pulumi.getter(name="targetRuleIds")
+    def target_rule_ids(self) -> Sequence[str]:
+        """
+        A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+        """
+        return pulumi.get(self, "target_rule_ids")
+
+    @property
+    @pulumi.getter(name="targetRuleSet")
+    def target_rule_set(self) -> str:
+        """
+        Target WAF rule set to apply the preconfigured WAF exclusion.
+        """
+        return pulumi.get(self, "target_rule_set")
+
+
+@pulumi.output_type
+class SecurityPolicyRulePreconfiguredWafConfigResponse(dict):
+    def __init__(__self__, *,
+                 exclusions: Sequence['outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionResponse']):
+        """
+        :param Sequence['SecurityPolicyRulePreconfiguredWafConfigExclusionResponse'] exclusions: A list of exclusions to apply during preconfigured WAF evaluation.
+        """
+        pulumi.set(__self__, "exclusions", exclusions)
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Sequence['outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionResponse']:
+        """
+        A list of exclusions to apply during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "exclusions")
+
+
+@pulumi.output_type
 class SecurityPolicyRuleRateLimitOptionsResponse(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -18900,6 +19191,8 @@ class SecurityPolicyRuleResponse(dict):
             suggest = "enable_logging"
         elif key == "headerAction":
             suggest = "header_action"
+        elif key == "preconfiguredWafConfig":
+            suggest = "preconfigured_waf_config"
         elif key == "rateLimitOptions":
             suggest = "rate_limit_options"
         elif key == "redirectOptions":
@@ -18936,6 +19229,7 @@ class SecurityPolicyRuleResponse(dict):
                  header_action: 'outputs.SecurityPolicyRuleHttpHeaderActionResponse',
                  kind: str,
                  match: 'outputs.SecurityPolicyRuleMatcherResponse',
+                 preconfigured_waf_config: 'outputs.SecurityPolicyRulePreconfiguredWafConfigResponse',
                  preview: bool,
                  priority: int,
                  rate_limit_options: 'outputs.SecurityPolicyRuleRateLimitOptionsResponse',
@@ -18955,6 +19249,7 @@ class SecurityPolicyRuleResponse(dict):
         :param 'SecurityPolicyRuleHttpHeaderActionResponse' header_action: Optional, additional actions that are performed on headers.
         :param str kind: [Output only] Type of the resource. Always compute#securityPolicyRule for security policy rules
         :param 'SecurityPolicyRuleMatcherResponse' match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param 'SecurityPolicyRulePreconfiguredWafConfigResponse' preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
         :param bool preview: If set to true, the specified action is not enforced.
         :param int priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param 'SecurityPolicyRuleRateLimitOptionsResponse' rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
@@ -18973,6 +19268,7 @@ class SecurityPolicyRuleResponse(dict):
         pulumi.set(__self__, "header_action", header_action)
         pulumi.set(__self__, "kind", kind)
         pulumi.set(__self__, "match", match)
+        pulumi.set(__self__, "preconfigured_waf_config", preconfigured_waf_config)
         pulumi.set(__self__, "preview", preview)
         pulumi.set(__self__, "priority", priority)
         pulumi.set(__self__, "rate_limit_options", rate_limit_options)
@@ -19039,6 +19335,14 @@ class SecurityPolicyRuleResponse(dict):
         A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
         """
         return pulumi.get(self, "match")
+
+    @property
+    @pulumi.getter(name="preconfiguredWafConfig")
+    def preconfigured_waf_config(self) -> 'outputs.SecurityPolicyRulePreconfiguredWafConfigResponse':
+        """
+        Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        """
+        return pulumi.get(self, "preconfigured_waf_config")
 
     @property
     @pulumi.getter

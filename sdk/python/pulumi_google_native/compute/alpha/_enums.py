@@ -159,7 +159,6 @@ __all__ = [
     'RegionNetworkEndpointGroupNetworkEndpointType',
     'RegionNetworkEndpointGroupType',
     'RegionNetworkFirewallPolicyVpcNetworkScope',
-    'RegionNetworkNetworkFirewallPolicyEnforcementOrder',
     'RegionSecurityPolicyType',
     'RegionSslCertificateType',
     'RegionSslPolicyMinTlsVersion',
@@ -193,6 +192,7 @@ __all__ = [
     'RuleAction',
     'SSLHealthCheckPortSpecification',
     'SSLHealthCheckProxyHeader',
+    'SchedulingDynamicResizePropertiesHotStandbyState',
     'SchedulingInstanceTerminationAction',
     'SchedulingMaintenanceInterval',
     'SchedulingNodeAffinityOperator',
@@ -204,6 +204,7 @@ __all__ = [
     'SecurityPolicyDdosProtectionConfigDdosProtection',
     'SecurityPolicyRuleDirection',
     'SecurityPolicyRuleMatcherVersionedExpr',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp',
     'SecurityPolicyRuleRateLimitOptionsEnforceOnKey',
     'SecurityPolicyRuleRedirectOptionsType',
     'SecurityPolicyType',
@@ -1823,7 +1824,7 @@ class InstanceGroupManagerFailoverAction(str, Enum):
 
 class InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair(str, Enum):
     """
-    A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. However, if you've set up a proactive type of update policy, then configuration updates are applied as usual. - YES: If configuration updates are available, they are applied during repair. 
+    A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
     """
     NO = "NO"
     YES = "YES"
@@ -2904,14 +2905,6 @@ class RegionNetworkFirewallPolicyVpcNetworkScope(str, Enum):
     """
 
 
-class RegionNetworkNetworkFirewallPolicyEnforcementOrder(str, Enum):
-    """
-    The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
-    """
-    AFTER_CLASSIC_FIREWALL = "AFTER_CLASSIC_FIREWALL"
-    BEFORE_CLASSIC_FIREWALL = "BEFORE_CLASSIC_FIREWALL"
-
-
 class RegionSecurityPolicyType(str, Enum):
     """
     The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
@@ -3357,6 +3350,15 @@ class SSLHealthCheckProxyHeader(str, Enum):
     PROXY_V1 = "PROXY_V1"
 
 
+class SchedulingDynamicResizePropertiesHotStandbyState(str, Enum):
+    """
+    Current Hot Standby state of VM.
+    """
+    ACTIVE = "ACTIVE"
+    HOTSTANDBY_STATE_UNSPECIFIED = "HOTSTANDBY_STATE_UNSPECIFIED"
+    STANDBY = "STANDBY"
+
+
 class SchedulingInstanceTerminationAction(str, Enum):
     """
     Specifies the termination action for the instance.
@@ -3467,6 +3469,32 @@ class SecurityPolicyRuleMatcherVersionedExpr(str, Enum):
     SRC_IPS_V1 = "SRC_IPS_V1"
     """
     Matches the source IP address of a request to the IP ranges supplied in config.
+    """
+
+
+class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(str, Enum):
+    """
+    The match operator for the field.
+    """
+    CONTAINS = "CONTAINS"
+    """
+    The operator matches if the field value contains the specified value.
+    """
+    ENDS_WITH = "ENDS_WITH"
+    """
+    The operator matches if the field value ends with the specified value.
+    """
+    EQUALS = "EQUALS"
+    """
+    The operator matches if the field value equals the specified value.
+    """
+    EQUALS_ANY = "EQUALS_ANY"
+    """
+    The operator matches if the field value is any value.
+    """
+    STARTS_WITH = "STARTS_WITH"
+    """
+    The operator matches if the field value starts with the specified value.
     """
 
 

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run Selects a key from a ConfigMap.
+    /// Not supported by Cloud Run. Selects a key from a ConfigMap.
     /// </summary>
     [OutputType]
     public sealed class ConfigMapKeySelectorResponse
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (Optional) Specify whether the ConfigMap or its key must be defined
+        /// Specify whether the ConfigMap or its key must be defined
         /// </summary>
         public readonly bool Optional;
 

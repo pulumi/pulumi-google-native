@@ -60,15 +60,15 @@ export interface GetBackupResult {
      */
     readonly satisfiesPzs: boolean;
     /**
-     * Name of the file share in the source Cloud Filestore instance that the backup is created from.
+     * Name of the file share in the source Filestore instance that the backup is created from.
      */
     readonly sourceFileShare: string;
     /**
-     * The resource name of the source Cloud Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+     * The resource name of the source Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
      */
     readonly sourceInstance: string;
     /**
-     * The service tier of the source Cloud Filestore instance that this backup is created from.
+     * The service tier of the source Filestore instance that this backup is created from.
      */
     readonly sourceInstanceTier: string;
     /**

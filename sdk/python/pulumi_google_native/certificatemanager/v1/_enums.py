@@ -7,7 +7,6 @@ from enum import Enum
 __all__ = [
     'CertificateMapEntryMatcher',
     'CertificateScope',
-    'ProvisioningIssueReason',
 ]
 
 
@@ -36,19 +35,4 @@ class CertificateScope(str, Enum):
     EDGE_CACHE = "EDGE_CACHE"
     """
     Certificates with scope EDGE_CACHE are special-purposed certificates, served from non-core Google data centers.
-    """
-
-
-class ProvisioningIssueReason(str, Enum):
-    """
-    Reason for provisioning failures.
-    """
-    REASON_UNSPECIFIED = "REASON_UNSPECIFIED"
-    AUTHORIZATION_ISSUE = "AUTHORIZATION_ISSUE"
-    """
-    Certificate provisioning failed due to an issue with one or more of the domains on the certificate. For details of which domains failed, consult the `authorization_attempt_info` field.
-    """
-    RATE_LIMITED = "RATE_LIMITED"
-    """
-    Exceeded Certificate Authority quotas or internal rate limits of the system. Provisioning may take longer to complete.
     """

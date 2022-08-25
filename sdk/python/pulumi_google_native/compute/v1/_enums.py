@@ -117,6 +117,8 @@ __all__ = [
     'RegionNetworkEndpointGroupNetworkEndpointType',
     'RegionSecurityPolicyType',
     'RegionSslCertificateType',
+    'RegionSslPolicyMinTlsVersion',
+    'RegionSslPolicyProfile',
     'RegionTargetHttpsProxyQuicOverride',
     'ReservationAffinityConsumeReservationType',
     'ResourceCommitmentType',
@@ -2204,6 +2206,46 @@ class RegionSslCertificateType(str, Enum):
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
 
 
+class RegionSslPolicyMinTlsVersion(str, Enum):
+    """
+    The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
+    """
+    TLS10 = "TLS_1_0"
+    """
+    TLS 1.0
+    """
+    TLS11 = "TLS_1_1"
+    """
+    TLS 1.1
+    """
+    TLS12 = "TLS_1_2"
+    """
+    TLS 1.2
+    """
+
+
+class RegionSslPolicyProfile(str, Enum):
+    """
+    Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
+    """
+    COMPATIBLE = "COMPATIBLE"
+    """
+    Compatible profile. Allows the broadset set of clients, even those which support only out-of-date SSL features to negotiate with the load balancer.
+    """
+    CUSTOM = "CUSTOM"
+    """
+    Custom profile. Allow only the set of allowed SSL features specified in the customFeatures field.
+    """
+    MODERN = "MODERN"
+    """
+    Modern profile. Supports a wide set of SSL features, allowing modern clients to negotiate SSL with the load balancer.
+    """
+    RESTRICTED = "RESTRICTED"
+    """
+    Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements.
+    """
+
+
 class RegionTargetHttpsProxyQuicOverride(str, Enum):
     """
     Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied. 
@@ -2612,6 +2654,10 @@ class ShareSettingsShareType(str, Enum):
     LOCAL = "LOCAL"
     """
     Default value.
+    """
+    ORGANIZATION = "ORGANIZATION"
+    """
+    Shared-reservation is open to entire Organization
     """
     SHARE_TYPE_UNSPECIFIED = "SHARE_TYPE_UNSPECIFIED"
     """

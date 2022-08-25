@@ -55,7 +55,7 @@ class ApiConfigHandlerArgs:
                  security_level: Optional[pulumi.Input['ApiConfigHandlerSecurityLevel']] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+        Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API handlers.
         :param pulumi.Input['ApiConfigHandlerAuthFailAction'] auth_fail_action: Action to take when users access resources that require authentication. Defaults to redirect.
         :param pulumi.Input['ApiConfigHandlerLogin'] login: Level of login required to access this resource. Defaults to optional.
         :param pulumi.Input[str] script: Path to the script from the application root directory.

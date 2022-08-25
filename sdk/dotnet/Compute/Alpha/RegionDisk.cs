@@ -162,6 +162,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [Output("provisionedIops")]
         public Output<string> ProvisionedIops { get; private set; } = null!;
 
+        /// <summary>
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// </summary>
+        [Output("provisionedThroughput")]
+        public Output<string> ProvisionedThroughput { get; private set; } = null!;
+
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
 
@@ -505,6 +511,12 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         [Input("provisionedIops")]
         public Input<string>? ProvisionedIops { get; set; }
+
+        /// <summary>
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// </summary>
+        [Input("provisionedThroughput")]
+        public Input<string>? ProvisionedThroughput { get; set; }
 
         [Input("region", required: true)]
         public Input<string> Region { get; set; } = null!;

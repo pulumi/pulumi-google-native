@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.BigQueryConnection.V1Beta1.Outputs
         /// </summary>
         public readonly string InstanceId;
         /// <summary>
-        /// The account ID of the service used for the purpose of this connection. When the connection is used in the context of an operation in BigQuery, this service account will serve as identity being used for connecting to the CloudSQL instance specified in this connection.
+        /// The account ID of the service used for the purpose of this connection. When the connection is used in the context of an operation in BigQuery, this service account will serve as the identity being used for connecting to the CloudSQL instance specified in this connection.
         /// </summary>
         public readonly string ServiceAccountId;
         /// <summary>

@@ -25,15 +25,15 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly int MaxRetries;
         /// <summary>
-        /// Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account. +optional
+        /// Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
         /// </summary>
         public readonly string ServiceAccountName;
         /// <summary>
-        /// Optional. Optional duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. +optional
+        /// Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
         /// </summary>
         public readonly string TimeoutSeconds;
         /// <summary>
-        /// Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+        /// Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes
         /// </summary>
         public readonly ImmutableArray<Outputs.VolumeResponse> Volumes;
 

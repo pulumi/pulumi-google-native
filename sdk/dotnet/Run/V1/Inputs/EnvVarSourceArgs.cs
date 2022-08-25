@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     public sealed class EnvVarSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
+        /// Not supported by Cloud Run. Selects a key of a ConfigMap.
         /// </summary>
         [Input("configMapKeyRef")]
         public Input<Inputs.ConfigMapKeySelectorArgs>? ConfigMapKeyRef { get; set; }
 
         /// <summary>
-        /// (Optional) Selects a key (version) of a secret in Secret Manager.
+        /// Selects a key (version) of a secret in Secret Manager.
         /// </summary>
         [Input("secretKeyRef")]
         public Input<Inputs.SecretKeySelectorArgs>? SecretKeyRef { get; set; }

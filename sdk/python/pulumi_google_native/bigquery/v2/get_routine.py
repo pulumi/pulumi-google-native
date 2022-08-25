@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRoutineResult:
-    def __init__(__self__, arguments=None, creation_time=None, definition_body=None, description=None, determinism_level=None, etag=None, imported_libraries=None, language=None, last_modified_time=None, remote_function_options=None, return_table_type=None, return_type=None, routine_reference=None, routine_type=None, strict_mode=None):
+    def __init__(__self__, arguments=None, creation_time=None, definition_body=None, description=None, determinism_level=None, etag=None, imported_libraries=None, language=None, last_modified_time=None, remote_function_options=None, return_table_type=None, return_type=None, routine_reference=None, routine_type=None, spark_options=None, strict_mode=None):
         if arguments and not isinstance(arguments, list):
             raise TypeError("Expected argument 'arguments' to be a list")
         pulumi.set(__self__, "arguments", arguments)
@@ -62,6 +62,9 @@ class GetRoutineResult:
         if routine_type and not isinstance(routine_type, str):
             raise TypeError("Expected argument 'routine_type' to be a str")
         pulumi.set(__self__, "routine_type", routine_type)
+        if spark_options and not isinstance(spark_options, dict):
+            raise TypeError("Expected argument 'spark_options' to be a dict")
+        pulumi.set(__self__, "spark_options", spark_options)
         if strict_mode and not isinstance(strict_mode, bool):
             raise TypeError("Expected argument 'strict_mode' to be a bool")
         pulumi.set(__self__, "strict_mode", strict_mode)
@@ -179,6 +182,14 @@ class GetRoutineResult:
         return pulumi.get(self, "routine_type")
 
     @property
+    @pulumi.getter(name="sparkOptions")
+    def spark_options(self) -> 'outputs.SparkOptionsResponse':
+        """
+        Optional. Spark specific options.
+        """
+        return pulumi.get(self, "spark_options")
+
+    @property
     @pulumi.getter(name="strictMode")
     def strict_mode(self) -> bool:
         """
@@ -207,6 +218,7 @@ class AwaitableGetRoutineResult(GetRoutineResult):
             return_type=self.return_type,
             routine_reference=self.routine_reference,
             routine_type=self.routine_type,
+            spark_options=self.spark_options,
             strict_mode=self.strict_mode)
 
 
@@ -241,6 +253,7 @@ def get_routine(dataset_id: Optional[str] = None,
         return_type=__ret__.return_type,
         routine_reference=__ret__.routine_reference,
         routine_type=__ret__.routine_type,
+        spark_options=__ret__.spark_options,
         strict_mode=__ret__.strict_mode)
 
 

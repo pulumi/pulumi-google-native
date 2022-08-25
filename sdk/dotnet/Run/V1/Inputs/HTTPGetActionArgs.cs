@@ -11,12 +11,12 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
+    /// HTTPGetAction describes an action based on HTTP Get requests.
     /// </summary>
     public sealed class HTTPGetActionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        /// Not supported by Cloud Run.
         /// </summary>
         [Input("host")]
         public Input<string>? Host { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         private InputList<Inputs.HTTPHeaderArgs>? _httpHeaders;
 
         /// <summary>
-        /// (Optional) Custom headers to set in the request. HTTP allows repeated headers.
+        /// Custom headers to set in the request. HTTP allows repeated headers.
         /// </summary>
         public InputList<Inputs.HTTPHeaderArgs> HttpHeaders
         {
@@ -34,13 +34,13 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         }
 
         /// <summary>
-        /// (Optional) Path to access on the HTTP server.
+        /// Path to access on the HTTP server.
         /// </summary>
         [Input("path")]
         public Input<string>? Path { get; set; }
 
         /// <summary>
-        /// (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
+        /// Not supported by Cloud Run.
         /// </summary>
         [Input("scheme")]
         public Input<string>? Scheme { get; set; }

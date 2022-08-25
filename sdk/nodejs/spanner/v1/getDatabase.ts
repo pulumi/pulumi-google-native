@@ -49,7 +49,7 @@ export interface GetDatabaseResult {
      */
     readonly encryptionConfig: outputs.spanner.v1.EncryptionConfigResponse;
     /**
-     * For databases that are using customer managed encryption, this field contains the encryption information for the database, such as encryption state and the Cloud KMS key versions that are in use. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
+     * For databases that are using customer managed encryption, this field contains the encryption information for the database, such as all Cloud KMS key versions that are in use. The `encryption_status' field inside of each `EncryptionInfo` is not populated. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
      */
     readonly encryptionInfo: outputs.spanner.v1.EncryptionInfoResponse[];
     /**

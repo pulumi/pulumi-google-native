@@ -96,7 +96,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly string DeployEndTime;
         /// <summary>
-        /// The reason this deploy failed. This will always be unspecified while the deploy in progress.
+        /// The reason this rollout failed. This will always be unspecified while the rollout is in progress.
         /// </summary>
         public readonly string DeployFailureCause;
         /// <summary>
@@ -120,7 +120,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly string Etag;
         /// <summary>
-        /// Reason the build failed. Empty if the build succeeded.
+        /// Additional information about the rollout failure, if available.
         /// </summary>
         public readonly string FailureReason;
         /// <summary>

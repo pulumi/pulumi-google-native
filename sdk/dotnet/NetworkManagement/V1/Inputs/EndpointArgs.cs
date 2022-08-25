@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Inputs
     public sealed class EndpointArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// A [Cloud function](https://cloud.google.com/functions).
+        /// </summary>
+        [Input("cloudFunction")]
+        public Input<Inputs.CloudFunctionEndpointArgs>? CloudFunction { get; set; }
+
+        /// <summary>
         /// A [Cloud SQL](https://cloud.google.com/sql) instance URI.
         /// </summary>
         [Input("cloudSqlInstance")]

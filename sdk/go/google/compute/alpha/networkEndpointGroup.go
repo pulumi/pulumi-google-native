@@ -39,8 +39,9 @@ type NetworkEndpointGroup struct {
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
-	NetworkEndpointType pulumi.StringOutput `pulumi:"networkEndpointType"`
-	Project             pulumi.StringOutput `pulumi:"project"`
+	NetworkEndpointType pulumi.StringOutput                       `pulumi:"networkEndpointType"`
+	Project             pulumi.StringOutput                       `pulumi:"project"`
+	PscData             NetworkEndpointGroupPscDataResponseOutput `pulumi:"pscData"`
 	// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
 	PscTargetService pulumi.StringOutput `pulumi:"pscTargetService"`
 	// The URL of the region where the network endpoint group is located.
@@ -129,6 +130,7 @@ type networkEndpointGroupArgs struct {
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType *NetworkEndpointGroupNetworkEndpointType `pulumi:"networkEndpointType"`
 	Project             *string                                  `pulumi:"project"`
+	PscData             *NetworkEndpointGroupPscData             `pulumi:"pscData"`
 	// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
 	PscTargetService *string `pulumi:"pscTargetService"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -167,6 +169,7 @@ type NetworkEndpointGroupArgs struct {
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType NetworkEndpointGroupNetworkEndpointTypePtrInput
 	Project             pulumi.StringPtrInput
+	PscData             NetworkEndpointGroupPscDataPtrInput
 	// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
 	PscTargetService pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
@@ -283,6 +286,10 @@ func (o NetworkEndpointGroupOutput) NetworkEndpointType() pulumi.StringOutput {
 
 func (o NetworkEndpointGroupOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkEndpointGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o NetworkEndpointGroupOutput) PscData() NetworkEndpointGroupPscDataResponseOutput {
+	return o.ApplyT(func(v *NetworkEndpointGroup) NetworkEndpointGroupPscDataResponseOutput { return v.PscData }).(NetworkEndpointGroupPscDataResponseOutput)
 }
 
 // The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"

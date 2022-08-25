@@ -30,8 +30,10 @@ type Environment struct {
 	// Last modification time of this environment as milliseconds since epoch.
 	LastModifiedAt pulumi.StringOutput `pulumi:"lastModifiedAt"`
 	// Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
-	Name           pulumi.StringOutput `pulumi:"name"`
-	OrganizationId pulumi.StringOutput `pulumi:"organizationId"`
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. NodeConfig of the environment.
+	NodeConfig     GoogleCloudApigeeV1NodeConfigResponseOutput `pulumi:"nodeConfig"`
+	OrganizationId pulumi.StringOutput                         `pulumi:"organizationId"`
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties GoogleCloudApigeeV1PropertiesResponseOutput `pulumi:"properties"`
 	// State of the environment. Values other than ACTIVE means the resource is not ready to use.
@@ -95,8 +97,10 @@ type environmentArgs struct {
 	// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
 	ForwardProxyUri *string `pulumi:"forwardProxyUri"`
 	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
-	Name           *string `pulumi:"name"`
-	OrganizationId string  `pulumi:"organizationId"`
+	Name *string `pulumi:"name"`
+	// Optional. NodeConfig of the environment.
+	NodeConfig     *GoogleCloudApigeeV1NodeConfig `pulumi:"nodeConfig"`
+	OrganizationId string                         `pulumi:"organizationId"`
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties *GoogleCloudApigeeV1Properties `pulumi:"properties"`
 }
@@ -114,7 +118,9 @@ type EnvironmentArgs struct {
 	// Optional. Url of the forward proxy to be applied to the runtime instances in this environment. Must be in the format of {scheme}://{hostname}:{port}. Note that scheme must be one of "http" or "https", and port must be supplied.
 	ForwardProxyUri pulumi.StringPtrInput
 	// Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
-	Name           pulumi.StringPtrInput
+	Name pulumi.StringPtrInput
+	// Optional. NodeConfig of the environment.
+	NodeConfig     GoogleCloudApigeeV1NodeConfigPtrInput
 	OrganizationId pulumi.StringInput
 	// Optional. Key-value pairs that may be used for customizing the environment.
 	Properties GoogleCloudApigeeV1PropertiesPtrInput
@@ -195,6 +201,11 @@ func (o EnvironmentOutput) LastModifiedAt() pulumi.StringOutput {
 // Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
 func (o EnvironmentOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. NodeConfig of the environment.
+func (o EnvironmentOutput) NodeConfig() GoogleCloudApigeeV1NodeConfigResponseOutput {
+	return o.ApplyT(func(v *Environment) GoogleCloudApigeeV1NodeConfigResponseOutput { return v.NodeConfig }).(GoogleCloudApigeeV1NodeConfigResponseOutput)
 }
 
 func (o EnvironmentOutput) OrganizationId() pulumi.StringOutput {

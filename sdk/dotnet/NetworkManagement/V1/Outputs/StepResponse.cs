@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// </summary>
         public readonly bool CausesDrop;
         /// <summary>
+        /// Display information of a Cloud function.
+        /// </summary>
+        public readonly Outputs.CloudFunctionInfoResponse CloudFunction;
+        /// <summary>
         /// Display information of a Cloud SQL instance.
         /// </summary>
         public readonly Outputs.CloudSQLInstanceInfoResponse CloudSqlInstance;
@@ -85,6 +89,10 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// Display information of a VPC connector.
+        /// </summary>
+        public readonly Outputs.VpcConnectorInfoResponse VpcConnector;
+        /// <summary>
         /// Display information of a Compute Engine VPN gateway.
         /// </summary>
         public readonly Outputs.VpnGatewayInfoResponse VpnGateway;
@@ -98,6 +106,8 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
             Outputs.AbortInfoResponse abort,
 
             bool causesDrop,
+
+            Outputs.CloudFunctionInfoResponse cloudFunction,
 
             Outputs.CloudSQLInstanceInfoResponse cloudSqlInstance,
 
@@ -129,12 +139,15 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
 
             string state,
 
+            Outputs.VpcConnectorInfoResponse vpcConnector,
+
             Outputs.VpnGatewayInfoResponse vpnGateway,
 
             Outputs.VpnTunnelInfoResponse vpnTunnel)
         {
             Abort = abort;
             CausesDrop = causesDrop;
+            CloudFunction = cloudFunction;
             CloudSqlInstance = cloudSqlInstance;
             Deliver = deliver;
             Description = description;
@@ -150,6 +163,7 @@ namespace Pulumi.GoogleNative.NetworkManagement.V1.Outputs
             Project = project;
             Route = route;
             State = state;
+            VpcConnector = vpcConnector;
             VpnGateway = vpnGateway;
             VpnTunnel = vpnTunnel;
         }

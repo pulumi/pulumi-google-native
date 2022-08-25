@@ -1676,6 +1676,224 @@ func (o AudioStreamResponseOutput) SampleRateHertz() pulumi.IntOutput {
 	return o.ApplyT(func(v AudioStreamResponse) int { return v.SampleRateHertz }).(pulumi.IntOutput)
 }
 
+// Bob Weaver Deinterlacing Filter Configuration.
+type BwdifConfig struct {
+	// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+	DeinterlaceAllFrames *bool `pulumi:"deinterlaceAllFrames"`
+	// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+	Mode *string `pulumi:"mode"`
+	// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+	Parity *string `pulumi:"parity"`
+}
+
+// BwdifConfigInput is an input type that accepts BwdifConfigArgs and BwdifConfigOutput values.
+// You can construct a concrete instance of `BwdifConfigInput` via:
+//
+//	BwdifConfigArgs{...}
+type BwdifConfigInput interface {
+	pulumi.Input
+
+	ToBwdifConfigOutput() BwdifConfigOutput
+	ToBwdifConfigOutputWithContext(context.Context) BwdifConfigOutput
+}
+
+// Bob Weaver Deinterlacing Filter Configuration.
+type BwdifConfigArgs struct {
+	// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+	DeinterlaceAllFrames pulumi.BoolPtrInput `pulumi:"deinterlaceAllFrames"`
+	// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+	Parity pulumi.StringPtrInput `pulumi:"parity"`
+}
+
+func (BwdifConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BwdifConfig)(nil)).Elem()
+}
+
+func (i BwdifConfigArgs) ToBwdifConfigOutput() BwdifConfigOutput {
+	return i.ToBwdifConfigOutputWithContext(context.Background())
+}
+
+func (i BwdifConfigArgs) ToBwdifConfigOutputWithContext(ctx context.Context) BwdifConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BwdifConfigOutput)
+}
+
+func (i BwdifConfigArgs) ToBwdifConfigPtrOutput() BwdifConfigPtrOutput {
+	return i.ToBwdifConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BwdifConfigArgs) ToBwdifConfigPtrOutputWithContext(ctx context.Context) BwdifConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BwdifConfigOutput).ToBwdifConfigPtrOutputWithContext(ctx)
+}
+
+// BwdifConfigPtrInput is an input type that accepts BwdifConfigArgs, BwdifConfigPtr and BwdifConfigPtrOutput values.
+// You can construct a concrete instance of `BwdifConfigPtrInput` via:
+//
+//	        BwdifConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BwdifConfigPtrInput interface {
+	pulumi.Input
+
+	ToBwdifConfigPtrOutput() BwdifConfigPtrOutput
+	ToBwdifConfigPtrOutputWithContext(context.Context) BwdifConfigPtrOutput
+}
+
+type bwdifConfigPtrType BwdifConfigArgs
+
+func BwdifConfigPtr(v *BwdifConfigArgs) BwdifConfigPtrInput {
+	return (*bwdifConfigPtrType)(v)
+}
+
+func (*bwdifConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BwdifConfig)(nil)).Elem()
+}
+
+func (i *bwdifConfigPtrType) ToBwdifConfigPtrOutput() BwdifConfigPtrOutput {
+	return i.ToBwdifConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bwdifConfigPtrType) ToBwdifConfigPtrOutputWithContext(ctx context.Context) BwdifConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BwdifConfigPtrOutput)
+}
+
+// Bob Weaver Deinterlacing Filter Configuration.
+type BwdifConfigOutput struct{ *pulumi.OutputState }
+
+func (BwdifConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BwdifConfig)(nil)).Elem()
+}
+
+func (o BwdifConfigOutput) ToBwdifConfigOutput() BwdifConfigOutput {
+	return o
+}
+
+func (o BwdifConfigOutput) ToBwdifConfigOutputWithContext(ctx context.Context) BwdifConfigOutput {
+	return o
+}
+
+func (o BwdifConfigOutput) ToBwdifConfigPtrOutput() BwdifConfigPtrOutput {
+	return o.ToBwdifConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BwdifConfigOutput) ToBwdifConfigPtrOutputWithContext(ctx context.Context) BwdifConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BwdifConfig) *BwdifConfig {
+		return &v
+	}).(BwdifConfigPtrOutput)
+}
+
+// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+func (o BwdifConfigOutput) DeinterlaceAllFrames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BwdifConfig) *bool { return v.DeinterlaceAllFrames }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+func (o BwdifConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BwdifConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+func (o BwdifConfigOutput) Parity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BwdifConfig) *string { return v.Parity }).(pulumi.StringPtrOutput)
+}
+
+type BwdifConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BwdifConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BwdifConfig)(nil)).Elem()
+}
+
+func (o BwdifConfigPtrOutput) ToBwdifConfigPtrOutput() BwdifConfigPtrOutput {
+	return o
+}
+
+func (o BwdifConfigPtrOutput) ToBwdifConfigPtrOutputWithContext(ctx context.Context) BwdifConfigPtrOutput {
+	return o
+}
+
+func (o BwdifConfigPtrOutput) Elem() BwdifConfigOutput {
+	return o.ApplyT(func(v *BwdifConfig) BwdifConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BwdifConfig
+		return ret
+	}).(BwdifConfigOutput)
+}
+
+// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+func (o BwdifConfigPtrOutput) DeinterlaceAllFrames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *BwdifConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeinterlaceAllFrames
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+func (o BwdifConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BwdifConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+func (o BwdifConfigPtrOutput) Parity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BwdifConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Parity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Bob Weaver Deinterlacing Filter Configuration.
+type BwdifConfigResponse struct {
+	// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+	DeinterlaceAllFrames bool `pulumi:"deinterlaceAllFrames"`
+	// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+	Mode string `pulumi:"mode"`
+	// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+	Parity string `pulumi:"parity"`
+}
+
+// Bob Weaver Deinterlacing Filter Configuration.
+type BwdifConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (BwdifConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BwdifConfigResponse)(nil)).Elem()
+}
+
+func (o BwdifConfigResponseOutput) ToBwdifConfigResponseOutput() BwdifConfigResponseOutput {
+	return o
+}
+
+func (o BwdifConfigResponseOutput) ToBwdifConfigResponseOutputWithContext(ctx context.Context) BwdifConfigResponseOutput {
+	return o
+}
+
+// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+func (o BwdifConfigResponseOutput) DeinterlaceAllFrames() pulumi.BoolOutput {
+	return o.ApplyT(func(v BwdifConfigResponse) bool { return v.DeinterlaceAllFrames }).(pulumi.BoolOutput)
+}
+
+// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+func (o BwdifConfigResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v BwdifConfigResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+func (o BwdifConfigResponseOutput) Parity() pulumi.StringOutput {
+	return o.ApplyT(func(v BwdifConfigResponse) string { return v.Parity }).(pulumi.StringOutput)
+}
+
 // Color preprocessing configuration. **Note:** This configuration is not supported.
 type Color struct {
 	// Control brightness of the video. Enter a value between -1 and 1, where -1 is minimum brightness and 1 is maximum brightness. 0 is no change. The default is 0.
@@ -2328,6 +2546,198 @@ func (o DeblockResponseOutput) Enabled() pulumi.BoolOutput {
 // Set strength of the deblocker. Enter a value between 0 and 1. The higher the value, the stronger the block removal. 0 is no deblocking. The default is 0.
 func (o DeblockResponseOutput) Strength() pulumi.Float64Output {
 	return o.ApplyT(func(v DeblockResponse) float64 { return v.Strength }).(pulumi.Float64Output)
+}
+
+// Deinterlace configuration for input video.
+type Deinterlace struct {
+	// Specifies the Bob Weaver Deinterlacing Filter Configuration.
+	Bwdif *BwdifConfig `pulumi:"bwdif"`
+	// Specifies the Yet Another Deinterlacing Filter Configuration.
+	Yadif *YadifConfig `pulumi:"yadif"`
+}
+
+// DeinterlaceInput is an input type that accepts DeinterlaceArgs and DeinterlaceOutput values.
+// You can construct a concrete instance of `DeinterlaceInput` via:
+//
+//	DeinterlaceArgs{...}
+type DeinterlaceInput interface {
+	pulumi.Input
+
+	ToDeinterlaceOutput() DeinterlaceOutput
+	ToDeinterlaceOutputWithContext(context.Context) DeinterlaceOutput
+}
+
+// Deinterlace configuration for input video.
+type DeinterlaceArgs struct {
+	// Specifies the Bob Weaver Deinterlacing Filter Configuration.
+	Bwdif BwdifConfigPtrInput `pulumi:"bwdif"`
+	// Specifies the Yet Another Deinterlacing Filter Configuration.
+	Yadif YadifConfigPtrInput `pulumi:"yadif"`
+}
+
+func (DeinterlaceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*Deinterlace)(nil)).Elem()
+}
+
+func (i DeinterlaceArgs) ToDeinterlaceOutput() DeinterlaceOutput {
+	return i.ToDeinterlaceOutputWithContext(context.Background())
+}
+
+func (i DeinterlaceArgs) ToDeinterlaceOutputWithContext(ctx context.Context) DeinterlaceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeinterlaceOutput)
+}
+
+func (i DeinterlaceArgs) ToDeinterlacePtrOutput() DeinterlacePtrOutput {
+	return i.ToDeinterlacePtrOutputWithContext(context.Background())
+}
+
+func (i DeinterlaceArgs) ToDeinterlacePtrOutputWithContext(ctx context.Context) DeinterlacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeinterlaceOutput).ToDeinterlacePtrOutputWithContext(ctx)
+}
+
+// DeinterlacePtrInput is an input type that accepts DeinterlaceArgs, DeinterlacePtr and DeinterlacePtrOutput values.
+// You can construct a concrete instance of `DeinterlacePtrInput` via:
+//
+//	        DeinterlaceArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeinterlacePtrInput interface {
+	pulumi.Input
+
+	ToDeinterlacePtrOutput() DeinterlacePtrOutput
+	ToDeinterlacePtrOutputWithContext(context.Context) DeinterlacePtrOutput
+}
+
+type deinterlacePtrType DeinterlaceArgs
+
+func DeinterlacePtr(v *DeinterlaceArgs) DeinterlacePtrInput {
+	return (*deinterlacePtrType)(v)
+}
+
+func (*deinterlacePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**Deinterlace)(nil)).Elem()
+}
+
+func (i *deinterlacePtrType) ToDeinterlacePtrOutput() DeinterlacePtrOutput {
+	return i.ToDeinterlacePtrOutputWithContext(context.Background())
+}
+
+func (i *deinterlacePtrType) ToDeinterlacePtrOutputWithContext(ctx context.Context) DeinterlacePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeinterlacePtrOutput)
+}
+
+// Deinterlace configuration for input video.
+type DeinterlaceOutput struct{ *pulumi.OutputState }
+
+func (DeinterlaceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*Deinterlace)(nil)).Elem()
+}
+
+func (o DeinterlaceOutput) ToDeinterlaceOutput() DeinterlaceOutput {
+	return o
+}
+
+func (o DeinterlaceOutput) ToDeinterlaceOutputWithContext(ctx context.Context) DeinterlaceOutput {
+	return o
+}
+
+func (o DeinterlaceOutput) ToDeinterlacePtrOutput() DeinterlacePtrOutput {
+	return o.ToDeinterlacePtrOutputWithContext(context.Background())
+}
+
+func (o DeinterlaceOutput) ToDeinterlacePtrOutputWithContext(ctx context.Context) DeinterlacePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v Deinterlace) *Deinterlace {
+		return &v
+	}).(DeinterlacePtrOutput)
+}
+
+// Specifies the Bob Weaver Deinterlacing Filter Configuration.
+func (o DeinterlaceOutput) Bwdif() BwdifConfigPtrOutput {
+	return o.ApplyT(func(v Deinterlace) *BwdifConfig { return v.Bwdif }).(BwdifConfigPtrOutput)
+}
+
+// Specifies the Yet Another Deinterlacing Filter Configuration.
+func (o DeinterlaceOutput) Yadif() YadifConfigPtrOutput {
+	return o.ApplyT(func(v Deinterlace) *YadifConfig { return v.Yadif }).(YadifConfigPtrOutput)
+}
+
+type DeinterlacePtrOutput struct{ *pulumi.OutputState }
+
+func (DeinterlacePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**Deinterlace)(nil)).Elem()
+}
+
+func (o DeinterlacePtrOutput) ToDeinterlacePtrOutput() DeinterlacePtrOutput {
+	return o
+}
+
+func (o DeinterlacePtrOutput) ToDeinterlacePtrOutputWithContext(ctx context.Context) DeinterlacePtrOutput {
+	return o
+}
+
+func (o DeinterlacePtrOutput) Elem() DeinterlaceOutput {
+	return o.ApplyT(func(v *Deinterlace) Deinterlace {
+		if v != nil {
+			return *v
+		}
+		var ret Deinterlace
+		return ret
+	}).(DeinterlaceOutput)
+}
+
+// Specifies the Bob Weaver Deinterlacing Filter Configuration.
+func (o DeinterlacePtrOutput) Bwdif() BwdifConfigPtrOutput {
+	return o.ApplyT(func(v *Deinterlace) *BwdifConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Bwdif
+	}).(BwdifConfigPtrOutput)
+}
+
+// Specifies the Yet Another Deinterlacing Filter Configuration.
+func (o DeinterlacePtrOutput) Yadif() YadifConfigPtrOutput {
+	return o.ApplyT(func(v *Deinterlace) *YadifConfig {
+		if v == nil {
+			return nil
+		}
+		return v.Yadif
+	}).(YadifConfigPtrOutput)
+}
+
+// Deinterlace configuration for input video.
+type DeinterlaceResponse struct {
+	// Specifies the Bob Weaver Deinterlacing Filter Configuration.
+	Bwdif BwdifConfigResponse `pulumi:"bwdif"`
+	// Specifies the Yet Another Deinterlacing Filter Configuration.
+	Yadif YadifConfigResponse `pulumi:"yadif"`
+}
+
+// Deinterlace configuration for input video.
+type DeinterlaceResponseOutput struct{ *pulumi.OutputState }
+
+func (DeinterlaceResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeinterlaceResponse)(nil)).Elem()
+}
+
+func (o DeinterlaceResponseOutput) ToDeinterlaceResponseOutput() DeinterlaceResponseOutput {
+	return o
+}
+
+func (o DeinterlaceResponseOutput) ToDeinterlaceResponseOutputWithContext(ctx context.Context) DeinterlaceResponseOutput {
+	return o
+}
+
+// Specifies the Bob Weaver Deinterlacing Filter Configuration.
+func (o DeinterlaceResponseOutput) Bwdif() BwdifConfigResponseOutput {
+	return o.ApplyT(func(v DeinterlaceResponse) BwdifConfigResponse { return v.Bwdif }).(BwdifConfigResponseOutput)
+}
+
+// Specifies the Yet Another Deinterlacing Filter Configuration.
+func (o DeinterlaceResponseOutput) Yadif() YadifConfigResponseOutput {
+	return o.ApplyT(func(v DeinterlaceResponse) YadifConfigResponse { return v.Yadif }).(YadifConfigResponseOutput)
 }
 
 // Denoise preprocessing configuration. **Note:** This configuration is not supported.
@@ -6162,6 +6572,8 @@ type PreprocessingConfig struct {
 	Crop *Crop `pulumi:"crop"`
 	// Deblock preprocessing configuration.
 	Deblock *Deblock `pulumi:"deblock"`
+	// Specify the video deinterlace configuration.
+	Deinterlace *Deinterlace `pulumi:"deinterlace"`
 	// Denoise preprocessing configuration.
 	Denoise *Denoise `pulumi:"denoise"`
 	// Specify the video pad filter configuration.
@@ -6189,6 +6601,8 @@ type PreprocessingConfigArgs struct {
 	Crop CropPtrInput `pulumi:"crop"`
 	// Deblock preprocessing configuration.
 	Deblock DeblockPtrInput `pulumi:"deblock"`
+	// Specify the video deinterlace configuration.
+	Deinterlace DeinterlacePtrInput `pulumi:"deinterlace"`
 	// Denoise preprocessing configuration.
 	Denoise DenoisePtrInput `pulumi:"denoise"`
 	// Specify the video pad filter configuration.
@@ -6293,6 +6707,11 @@ func (o PreprocessingConfigOutput) Deblock() DeblockPtrOutput {
 	return o.ApplyT(func(v PreprocessingConfig) *Deblock { return v.Deblock }).(DeblockPtrOutput)
 }
 
+// Specify the video deinterlace configuration.
+func (o PreprocessingConfigOutput) Deinterlace() DeinterlacePtrOutput {
+	return o.ApplyT(func(v PreprocessingConfig) *Deinterlace { return v.Deinterlace }).(DeinterlacePtrOutput)
+}
+
 // Denoise preprocessing configuration.
 func (o PreprocessingConfigOutput) Denoise() DenoisePtrOutput {
 	return o.ApplyT(func(v PreprocessingConfig) *Denoise { return v.Denoise }).(DenoisePtrOutput)
@@ -6367,6 +6786,16 @@ func (o PreprocessingConfigPtrOutput) Deblock() DeblockPtrOutput {
 	}).(DeblockPtrOutput)
 }
 
+// Specify the video deinterlace configuration.
+func (o PreprocessingConfigPtrOutput) Deinterlace() DeinterlacePtrOutput {
+	return o.ApplyT(func(v *PreprocessingConfig) *Deinterlace {
+		if v == nil {
+			return nil
+		}
+		return v.Deinterlace
+	}).(DeinterlacePtrOutput)
+}
+
 // Denoise preprocessing configuration.
 func (o PreprocessingConfigPtrOutput) Denoise() DenoisePtrOutput {
 	return o.ApplyT(func(v *PreprocessingConfig) *Denoise {
@@ -6397,6 +6826,8 @@ type PreprocessingConfigResponse struct {
 	Crop CropResponse `pulumi:"crop"`
 	// Deblock preprocessing configuration.
 	Deblock DeblockResponse `pulumi:"deblock"`
+	// Specify the video deinterlace configuration.
+	Deinterlace DeinterlaceResponse `pulumi:"deinterlace"`
 	// Denoise preprocessing configuration.
 	Denoise DenoiseResponse `pulumi:"denoise"`
 	// Specify the video pad filter configuration.
@@ -6436,6 +6867,11 @@ func (o PreprocessingConfigResponseOutput) Crop() CropResponseOutput {
 // Deblock preprocessing configuration.
 func (o PreprocessingConfigResponseOutput) Deblock() DeblockResponseOutput {
 	return o.ApplyT(func(v PreprocessingConfigResponse) DeblockResponse { return v.Deblock }).(DeblockResponseOutput)
+}
+
+// Specify the video deinterlace configuration.
+func (o PreprocessingConfigResponseOutput) Deinterlace() DeinterlaceResponseOutput {
+	return o.ApplyT(func(v PreprocessingConfigResponse) DeinterlaceResponse { return v.Deinterlace }).(DeinterlaceResponseOutput)
 }
 
 // Denoise preprocessing configuration.
@@ -8140,6 +8576,250 @@ func (o Vp9CodecSettingsResponseOutput) WidthPixels() pulumi.IntOutput {
 	return o.ApplyT(func(v Vp9CodecSettingsResponse) int { return v.WidthPixels }).(pulumi.IntOutput)
 }
 
+// Yet Another Deinterlacing Filter Configuration.
+type YadifConfig struct {
+	// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+	DeinterlaceAllFrames *bool `pulumi:"deinterlaceAllFrames"`
+	// Disable spacial interlacing. The default is `false`.
+	DisableSpatialInterlacing *bool `pulumi:"disableSpatialInterlacing"`
+	// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+	Mode *string `pulumi:"mode"`
+	// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+	Parity *string `pulumi:"parity"`
+}
+
+// YadifConfigInput is an input type that accepts YadifConfigArgs and YadifConfigOutput values.
+// You can construct a concrete instance of `YadifConfigInput` via:
+//
+//	YadifConfigArgs{...}
+type YadifConfigInput interface {
+	pulumi.Input
+
+	ToYadifConfigOutput() YadifConfigOutput
+	ToYadifConfigOutputWithContext(context.Context) YadifConfigOutput
+}
+
+// Yet Another Deinterlacing Filter Configuration.
+type YadifConfigArgs struct {
+	// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+	DeinterlaceAllFrames pulumi.BoolPtrInput `pulumi:"deinterlaceAllFrames"`
+	// Disable spacial interlacing. The default is `false`.
+	DisableSpatialInterlacing pulumi.BoolPtrInput `pulumi:"disableSpatialInterlacing"`
+	// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+	Parity pulumi.StringPtrInput `pulumi:"parity"`
+}
+
+func (YadifConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*YadifConfig)(nil)).Elem()
+}
+
+func (i YadifConfigArgs) ToYadifConfigOutput() YadifConfigOutput {
+	return i.ToYadifConfigOutputWithContext(context.Background())
+}
+
+func (i YadifConfigArgs) ToYadifConfigOutputWithContext(ctx context.Context) YadifConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(YadifConfigOutput)
+}
+
+func (i YadifConfigArgs) ToYadifConfigPtrOutput() YadifConfigPtrOutput {
+	return i.ToYadifConfigPtrOutputWithContext(context.Background())
+}
+
+func (i YadifConfigArgs) ToYadifConfigPtrOutputWithContext(ctx context.Context) YadifConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(YadifConfigOutput).ToYadifConfigPtrOutputWithContext(ctx)
+}
+
+// YadifConfigPtrInput is an input type that accepts YadifConfigArgs, YadifConfigPtr and YadifConfigPtrOutput values.
+// You can construct a concrete instance of `YadifConfigPtrInput` via:
+//
+//	        YadifConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type YadifConfigPtrInput interface {
+	pulumi.Input
+
+	ToYadifConfigPtrOutput() YadifConfigPtrOutput
+	ToYadifConfigPtrOutputWithContext(context.Context) YadifConfigPtrOutput
+}
+
+type yadifConfigPtrType YadifConfigArgs
+
+func YadifConfigPtr(v *YadifConfigArgs) YadifConfigPtrInput {
+	return (*yadifConfigPtrType)(v)
+}
+
+func (*yadifConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**YadifConfig)(nil)).Elem()
+}
+
+func (i *yadifConfigPtrType) ToYadifConfigPtrOutput() YadifConfigPtrOutput {
+	return i.ToYadifConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *yadifConfigPtrType) ToYadifConfigPtrOutputWithContext(ctx context.Context) YadifConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(YadifConfigPtrOutput)
+}
+
+// Yet Another Deinterlacing Filter Configuration.
+type YadifConfigOutput struct{ *pulumi.OutputState }
+
+func (YadifConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*YadifConfig)(nil)).Elem()
+}
+
+func (o YadifConfigOutput) ToYadifConfigOutput() YadifConfigOutput {
+	return o
+}
+
+func (o YadifConfigOutput) ToYadifConfigOutputWithContext(ctx context.Context) YadifConfigOutput {
+	return o
+}
+
+func (o YadifConfigOutput) ToYadifConfigPtrOutput() YadifConfigPtrOutput {
+	return o.ToYadifConfigPtrOutputWithContext(context.Background())
+}
+
+func (o YadifConfigOutput) ToYadifConfigPtrOutputWithContext(ctx context.Context) YadifConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v YadifConfig) *YadifConfig {
+		return &v
+	}).(YadifConfigPtrOutput)
+}
+
+// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+func (o YadifConfigOutput) DeinterlaceAllFrames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v YadifConfig) *bool { return v.DeinterlaceAllFrames }).(pulumi.BoolPtrOutput)
+}
+
+// Disable spacial interlacing. The default is `false`.
+func (o YadifConfigOutput) DisableSpatialInterlacing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v YadifConfig) *bool { return v.DisableSpatialInterlacing }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+func (o YadifConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v YadifConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+func (o YadifConfigOutput) Parity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v YadifConfig) *string { return v.Parity }).(pulumi.StringPtrOutput)
+}
+
+type YadifConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (YadifConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**YadifConfig)(nil)).Elem()
+}
+
+func (o YadifConfigPtrOutput) ToYadifConfigPtrOutput() YadifConfigPtrOutput {
+	return o
+}
+
+func (o YadifConfigPtrOutput) ToYadifConfigPtrOutputWithContext(ctx context.Context) YadifConfigPtrOutput {
+	return o
+}
+
+func (o YadifConfigPtrOutput) Elem() YadifConfigOutput {
+	return o.ApplyT(func(v *YadifConfig) YadifConfig {
+		if v != nil {
+			return *v
+		}
+		var ret YadifConfig
+		return ret
+	}).(YadifConfigOutput)
+}
+
+// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+func (o YadifConfigPtrOutput) DeinterlaceAllFrames() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *YadifConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeinterlaceAllFrames
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Disable spacial interlacing. The default is `false`.
+func (o YadifConfigPtrOutput) DisableSpatialInterlacing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *YadifConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableSpatialInterlacing
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+func (o YadifConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *YadifConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+func (o YadifConfigPtrOutput) Parity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *YadifConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Parity
+	}).(pulumi.StringPtrOutput)
+}
+
+// Yet Another Deinterlacing Filter Configuration.
+type YadifConfigResponse struct {
+	// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+	DeinterlaceAllFrames bool `pulumi:"deinterlaceAllFrames"`
+	// Disable spacial interlacing. The default is `false`.
+	DisableSpatialInterlacing bool `pulumi:"disableSpatialInterlacing"`
+	// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+	Mode string `pulumi:"mode"`
+	// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+	Parity string `pulumi:"parity"`
+}
+
+// Yet Another Deinterlacing Filter Configuration.
+type YadifConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (YadifConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*YadifConfigResponse)(nil)).Elem()
+}
+
+func (o YadifConfigResponseOutput) ToYadifConfigResponseOutput() YadifConfigResponseOutput {
+	return o
+}
+
+func (o YadifConfigResponseOutput) ToYadifConfigResponseOutputWithContext(ctx context.Context) YadifConfigResponseOutput {
+	return o
+}
+
+// Deinterlace all frames rather than just the frames identified as interlaced. The default is `false`.
+func (o YadifConfigResponseOutput) DeinterlaceAllFrames() pulumi.BoolOutput {
+	return o.ApplyT(func(v YadifConfigResponse) bool { return v.DeinterlaceAllFrames }).(pulumi.BoolOutput)
+}
+
+// Disable spacial interlacing. The default is `false`.
+func (o YadifConfigResponseOutput) DisableSpatialInterlacing() pulumi.BoolOutput {
+	return o.ApplyT(func(v YadifConfigResponse) bool { return v.DisableSpatialInterlacing }).(pulumi.BoolOutput)
+}
+
+// Specifies the deinterlacing mode to adopt. The default is `send_frame`. Supported values: - `send_frame`: Output one frame for each frame - `send_field`: Output one frame for each field
+func (o YadifConfigResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v YadifConfigResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+// The picture field parity assumed for the input interlaced video. The default is `auto`. Supported values: - `tff`: Assume the top field is first - `bff`: Assume the bottom field is first - `auto`: Enable automatic detection of field parity
+func (o YadifConfigResponseOutput) Parity() pulumi.StringOutput {
+	return o.ApplyT(func(v YadifConfigResponse) string { return v.Parity }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AdBreakInput)(nil)).Elem(), AdBreakArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AdBreakArrayInput)(nil)).Elem(), AdBreakArray{})
@@ -8157,12 +8837,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AudioMappingArrayInput)(nil)).Elem(), AudioMappingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AudioStreamInput)(nil)).Elem(), AudioStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AudioStreamPtrInput)(nil)).Elem(), AudioStreamArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BwdifConfigInput)(nil)).Elem(), BwdifConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BwdifConfigPtrInput)(nil)).Elem(), BwdifConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ColorInput)(nil)).Elem(), ColorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ColorPtrInput)(nil)).Elem(), ColorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CropInput)(nil)).Elem(), CropArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CropPtrInput)(nil)).Elem(), CropArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeblockInput)(nil)).Elem(), DeblockArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeblockPtrInput)(nil)).Elem(), DeblockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeinterlaceInput)(nil)).Elem(), DeinterlaceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeinterlacePtrInput)(nil)).Elem(), DeinterlaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenoiseInput)(nil)).Elem(), DenoiseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenoisePtrInput)(nil)).Elem(), DenoiseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EditAtomInput)(nil)).Elem(), EditAtomArgs{})
@@ -8207,6 +8891,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VideoStreamPtrInput)(nil)).Elem(), VideoStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vp9CodecSettingsInput)(nil)).Elem(), Vp9CodecSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*Vp9CodecSettingsPtrInput)(nil)).Elem(), Vp9CodecSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YadifConfigInput)(nil)).Elem(), YadifConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*YadifConfigPtrInput)(nil)).Elem(), YadifConfigArgs{})
 	pulumi.RegisterOutputType(AdBreakOutput{})
 	pulumi.RegisterOutputType(AdBreakArrayOutput{})
 	pulumi.RegisterOutputType(AdBreakResponseOutput{})
@@ -8234,6 +8920,9 @@ func init() {
 	pulumi.RegisterOutputType(AudioStreamOutput{})
 	pulumi.RegisterOutputType(AudioStreamPtrOutput{})
 	pulumi.RegisterOutputType(AudioStreamResponseOutput{})
+	pulumi.RegisterOutputType(BwdifConfigOutput{})
+	pulumi.RegisterOutputType(BwdifConfigPtrOutput{})
+	pulumi.RegisterOutputType(BwdifConfigResponseOutput{})
 	pulumi.RegisterOutputType(ColorOutput{})
 	pulumi.RegisterOutputType(ColorPtrOutput{})
 	pulumi.RegisterOutputType(ColorResponseOutput{})
@@ -8243,6 +8932,9 @@ func init() {
 	pulumi.RegisterOutputType(DeblockOutput{})
 	pulumi.RegisterOutputType(DeblockPtrOutput{})
 	pulumi.RegisterOutputType(DeblockResponseOutput{})
+	pulumi.RegisterOutputType(DeinterlaceOutput{})
+	pulumi.RegisterOutputType(DeinterlacePtrOutput{})
+	pulumi.RegisterOutputType(DeinterlaceResponseOutput{})
 	pulumi.RegisterOutputType(DenoiseOutput{})
 	pulumi.RegisterOutputType(DenoisePtrOutput{})
 	pulumi.RegisterOutputType(DenoiseResponseOutput{})
@@ -8318,4 +9010,7 @@ func init() {
 	pulumi.RegisterOutputType(Vp9CodecSettingsOutput{})
 	pulumi.RegisterOutputType(Vp9CodecSettingsPtrOutput{})
 	pulumi.RegisterOutputType(Vp9CodecSettingsResponseOutput{})
+	pulumi.RegisterOutputType(YadifConfigOutput{})
+	pulumi.RegisterOutputType(YadifConfigPtrOutput{})
+	pulumi.RegisterOutputType(YadifConfigResponseOutput{})
 }

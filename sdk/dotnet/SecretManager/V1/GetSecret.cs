@@ -58,6 +58,10 @@ namespace Pulumi.GoogleNative.SecretManager.V1
     public sealed class GetSecretResult
     {
         /// <summary>
+        /// Optional. Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of annotation keys and values must be less than 16KiB.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string> Annotations;
+        /// <summary>
         /// The time at which the Secret was created.
         /// </summary>
         public readonly string CreateTime;
@@ -100,6 +104,8 @@ namespace Pulumi.GoogleNative.SecretManager.V1
 
         [OutputConstructor]
         private GetSecretResult(
+            ImmutableDictionary<string, string> annotations,
+
             string createTime,
 
             string etag,
@@ -120,6 +126,7 @@ namespace Pulumi.GoogleNative.SecretManager.V1
 
             ImmutableDictionary<string, string> versionAliases)
         {
+            Annotations = annotations;
             CreateTime = createTime;
             Etag = etag;
             ExpireTime = expireTime;

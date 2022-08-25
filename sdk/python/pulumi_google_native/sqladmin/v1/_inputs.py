@@ -1514,6 +1514,7 @@ class SettingsArgs:
                  availability_type: Optional[pulumi.Input['SettingsAvailabilityType']] = None,
                  backup_configuration: Optional[pulumi.Input['BackupConfigurationArgs']] = None,
                  collation: Optional[pulumi.Input[str]] = None,
+                 connector_enforcement: Optional[pulumi.Input['SettingsConnectorEnforcement']] = None,
                  crash_safe_replication_enabled: Optional[pulumi.Input[bool]] = None,
                  data_disk_size_gb: Optional[pulumi.Input[str]] = None,
                  data_disk_type: Optional[pulumi.Input['SettingsDataDiskType']] = None,
@@ -1543,6 +1544,7 @@ class SettingsArgs:
         :param pulumi.Input['SettingsAvailabilityType'] availability_type: Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         :param pulumi.Input['BackupConfigurationArgs'] backup_configuration: The daily backup configuration for the instance.
         :param pulumi.Input[str] collation: The name of server Instance collation.
+        :param pulumi.Input['SettingsConnectorEnforcement'] connector_enforcement: Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
         :param pulumi.Input[bool] crash_safe_replication_enabled: Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
         :param pulumi.Input[str] data_disk_size_gb: The size of data disk, in GB. The data disk size minimum is 10GB.
         :param pulumi.Input['SettingsDataDiskType'] data_disk_type: The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
@@ -1580,6 +1582,8 @@ class SettingsArgs:
             pulumi.set(__self__, "backup_configuration", backup_configuration)
         if collation is not None:
             pulumi.set(__self__, "collation", collation)
+        if connector_enforcement is not None:
+            pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         if crash_safe_replication_enabled is not None:
             pulumi.set(__self__, "crash_safe_replication_enabled", crash_safe_replication_enabled)
         if data_disk_size_gb is not None:
@@ -1697,6 +1701,18 @@ class SettingsArgs:
     @collation.setter
     def collation(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "collation", value)
+
+    @property
+    @pulumi.getter(name="connectorEnforcement")
+    def connector_enforcement(self) -> Optional[pulumi.Input['SettingsConnectorEnforcement']]:
+        """
+        Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+        """
+        return pulumi.get(self, "connector_enforcement")
+
+    @connector_enforcement.setter
+    def connector_enforcement(self, value: Optional[pulumi.Input['SettingsConnectorEnforcement']]):
+        pulumi.set(self, "connector_enforcement", value)
 
     @property
     @pulumi.getter(name="crashSafeReplicationEnabled")

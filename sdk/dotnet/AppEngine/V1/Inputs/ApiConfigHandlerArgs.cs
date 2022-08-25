@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Inputs
 {
 
     /// <summary>
-    /// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+    /// Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API handlers.
     /// </summary>
     public sealed class ApiConfigHandlerArgs : global::Pulumi.ResourceArgs
     {

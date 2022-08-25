@@ -47,6 +47,8 @@ type LookupNodeGroupResult struct {
 	NodeTemplate string `pulumi:"nodeTemplate"`
 	// Server-defined URL for the resource.
 	SelfLink string `pulumi:"selfLink"`
+	// Share-settings for the node group
+	ShareSettings ShareSettingsResponse `pulumi:"shareSettings"`
 	// The total number of nodes in the node group.
 	Size   int    `pulumi:"size"`
 	Status string `pulumi:"status"`
@@ -142,6 +144,11 @@ func (o LookupNodeGroupResultOutput) NodeTemplate() pulumi.StringOutput {
 // Server-defined URL for the resource.
 func (o LookupNodeGroupResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNodeGroupResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Share-settings for the node group
+func (o LookupNodeGroupResultOutput) ShareSettings() ShareSettingsResponseOutput {
+	return o.ApplyT(func(v LookupNodeGroupResult) ShareSettingsResponse { return v.ShareSettings }).(ShareSettingsResponseOutput)
 }
 
 // The total number of nodes in the node group.

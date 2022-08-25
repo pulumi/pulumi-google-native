@@ -47,6 +47,7 @@ __all__ = [
     'MutationRecordResponse',
     'NotificationRateLimitResponse',
     'PerformanceThresholdResponse',
+    'PingConfigResponse',
     'RequestBasedSliResponse',
     'ResourceGroupResponse',
     'ResponseStatusCodeResponse',
@@ -1072,6 +1073,8 @@ class HttpCheckResponse(dict):
             suggest = "content_type"
         elif key == "maskHeaders":
             suggest = "mask_headers"
+        elif key == "pingConfig":
+            suggest = "ping_config"
         elif key == "requestMethod":
             suggest = "request_method"
         elif key == "useSsl":
@@ -1098,6 +1101,7 @@ class HttpCheckResponse(dict):
                  headers: Mapping[str, str],
                  mask_headers: bool,
                  path: str,
+                 ping_config: 'outputs.PingConfigResponse',
                  port: int,
                  request_method: str,
                  use_ssl: bool,
@@ -1111,6 +1115,7 @@ class HttpCheckResponse(dict):
         :param Mapping[str, str] headers: The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         :param bool mask_headers: Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******.
         :param str path: Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically.
+        :param 'PingConfigResponse' ping_config: Contains information needed to add pings to an HTTP check.
         :param int port: Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
         :param str request_method: The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
         :param bool use_ssl: If true, use HTTPS instead of HTTP to run the check.
@@ -1123,6 +1128,7 @@ class HttpCheckResponse(dict):
         pulumi.set(__self__, "headers", headers)
         pulumi.set(__self__, "mask_headers", mask_headers)
         pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "ping_config", ping_config)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "request_method", request_method)
         pulumi.set(__self__, "use_ssl", use_ssl)
@@ -1183,6 +1189,14 @@ class HttpCheckResponse(dict):
         Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically.
         """
         return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="pingConfig")
+    def ping_config(self) -> 'outputs.PingConfigResponse':
+        """
+        Contains information needed to add pings to an HTTP check.
+        """
+        return pulumi.get(self, "ping_config")
 
     @property
     @pulumi.getter
@@ -2174,6 +2188,45 @@ class PerformanceThresholdResponse(dict):
 
 
 @pulumi.output_type
+class PingConfigResponse(dict):
+    """
+    Information involved in sending ICMP pings alongside public HTTP/TCP checks. For HTTP, the pings are performed for each part of the redirect chain.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pingsCount":
+            suggest = "pings_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PingConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PingConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PingConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 pings_count: int):
+        """
+        Information involved in sending ICMP pings alongside public HTTP/TCP checks. For HTTP, the pings are performed for each part of the redirect chain.
+        :param int pings_count: Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+        """
+        pulumi.set(__self__, "pings_count", pings_count)
+
+    @property
+    @pulumi.getter(name="pingsCount")
+    def pings_count(self) -> int:
+        """
+        Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+        """
+        return pulumi.get(self, "pings_count")
+
+
+@pulumi.output_type
 class RequestBasedSliResponse(dict):
     """
     Service Level Indicators for which atomic units of service are counted directly.
@@ -2443,13 +2496,41 @@ class TcpCheckResponse(dict):
     """
     Information required for a TCP Uptime check request.
     """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "pingConfig":
+            suggest = "ping_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TcpCheckResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TcpCheckResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TcpCheckResponse.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
+                 ping_config: 'outputs.PingConfigResponse',
                  port: int):
         """
         Information required for a TCP Uptime check request.
+        :param 'PingConfigResponse' ping_config: Contains information needed to add pings to a TCP check.
         :param int port: The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
         """
+        pulumi.set(__self__, "ping_config", ping_config)
         pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter(name="pingConfig")
+    def ping_config(self) -> 'outputs.PingConfigResponse':
+        """
+        Contains information needed to add pings to a TCP check.
+        """
+        return pulumi.get(self, "ping_config")
 
     @property
     @pulumi.getter

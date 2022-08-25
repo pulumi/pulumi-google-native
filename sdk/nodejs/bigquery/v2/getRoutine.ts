@@ -87,6 +87,10 @@ export interface GetRoutineResult {
      */
     readonly routineType: string;
     /**
+     * Optional. Spark specific options.
+     */
+    readonly sparkOptions: outputs.bigquery.v2.SparkOptionsResponse;
+    /**
      * Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
      */
     readonly strictMode: boolean;

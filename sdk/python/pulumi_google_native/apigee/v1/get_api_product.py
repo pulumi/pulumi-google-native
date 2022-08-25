@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetApiProductResult:
-    def __init__(__self__, api_resources=None, approval_type=None, attributes=None, created_at=None, description=None, display_name=None, environments=None, graphql_operation_group=None, last_modified_at=None, name=None, operation_group=None, proxies=None, quota=None, quota_interval=None, quota_time_unit=None, scopes=None):
+    def __init__(__self__, api_resources=None, approval_type=None, attributes=None, created_at=None, description=None, display_name=None, environments=None, graphql_operation_group=None, last_modified_at=None, name=None, operation_group=None, proxies=None, quota=None, quota_counter_scope=None, quota_interval=None, quota_time_unit=None, scopes=None):
         if api_resources and not isinstance(api_resources, list):
             raise TypeError("Expected argument 'api_resources' to be a list")
         pulumi.set(__self__, "api_resources", api_resources)
@@ -59,6 +59,9 @@ class GetApiProductResult:
         if quota and not isinstance(quota, str):
             raise TypeError("Expected argument 'quota' to be a str")
         pulumi.set(__self__, "quota", quota)
+        if quota_counter_scope and not isinstance(quota_counter_scope, str):
+            raise TypeError("Expected argument 'quota_counter_scope' to be a str")
+        pulumi.set(__self__, "quota_counter_scope", quota_counter_scope)
         if quota_interval and not isinstance(quota_interval, str):
             raise TypeError("Expected argument 'quota_interval' to be a str")
         pulumi.set(__self__, "quota_interval", quota_interval)
@@ -174,6 +177,14 @@ class GetApiProductResult:
         return pulumi.get(self, "quota")
 
     @property
+    @pulumi.getter(name="quotaCounterScope")
+    def quota_counter_scope(self) -> str:
+        """
+        Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
+        """
+        return pulumi.get(self, "quota_counter_scope")
+
+    @property
     @pulumi.getter(name="quotaInterval")
     def quota_interval(self) -> str:
         """
@@ -217,6 +228,7 @@ class AwaitableGetApiProductResult(GetApiProductResult):
             operation_group=self.operation_group,
             proxies=self.proxies,
             quota=self.quota,
+            quota_counter_scope=self.quota_counter_scope,
             quota_interval=self.quota_interval,
             quota_time_unit=self.quota_time_unit,
             scopes=self.scopes)
@@ -248,6 +260,7 @@ def get_api_product(apiproduct_id: Optional[str] = None,
         operation_group=__ret__.operation_group,
         proxies=__ret__.proxies,
         quota=__ret__.quota,
+        quota_counter_scope=__ret__.quota_counter_scope,
         quota_interval=__ret__.quota_interval,
         quota_time_unit=__ret__.quota_time_unit,
         scopes=__ret__.scopes)

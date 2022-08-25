@@ -71,7 +71,7 @@ namespace Pulumi.GoogleNative.Run.V1
         /// </summary>
         public static DomainMappingSpecCertificateMode None { get; } = new DomainMappingSpecCertificateMode("NONE");
         /// <summary>
-        /// Automatically provisions an HTTPS certificate via GoogleCA or LetsEncrypt.
+        /// Automatically provisions an HTTPS certificate via GoogleCA.
         /// </summary>
         public static DomainMappingSpecCertificateMode Automatic { get; } = new DomainMappingSpecCertificateMode("AUTOMATIC");
 

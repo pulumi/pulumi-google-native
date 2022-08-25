@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.File.V1.Inputs
     public sealed class FileShareConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes.
+        /// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes.
         /// </summary>
         [Input("capacityGb")]
         public Input<string>? CapacityGb { get; set; }

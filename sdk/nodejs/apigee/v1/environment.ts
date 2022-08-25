@@ -67,6 +67,10 @@ export class Environment extends pulumi.CustomResource {
      * Optional. Name of the environment. Alternatively, the name may be specified in the request body in the name field.
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Optional. NodeConfig of the environment.
+     */
+    public readonly nodeConfig!: pulumi.Output<outputs.apigee.v1.GoogleCloudApigeeV1NodeConfigResponse>;
     public readonly organizationId!: pulumi.Output<string>;
     /**
      * Optional. Key-value pairs that may be used for customizing the environment.
@@ -97,6 +101,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["forwardProxyUri"] = args ? args.forwardProxyUri : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             resourceInputs["organizationId"] = args ? args.organizationId : undefined;
             resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["createdAt"] = undefined /*out*/;
@@ -111,6 +116,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["forwardProxyUri"] = undefined /*out*/;
             resourceInputs["lastModifiedAt"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
+            resourceInputs["nodeConfig"] = undefined /*out*/;
             resourceInputs["organizationId"] = undefined /*out*/;
             resourceInputs["properties"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -150,6 +156,10 @@ export interface EnvironmentArgs {
      * Name of the environment. Values must match the regular expression `^[.\\p{Alnum}-_]{1,255}$`
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional. NodeConfig of the environment.
+     */
+    nodeConfig?: pulumi.Input<inputs.apigee.v1.GoogleCloudApigeeV1NodeConfigArgs>;
     organizationId: pulumi.Input<string>;
     /**
      * Optional. Key-value pairs that may be used for customizing the environment.

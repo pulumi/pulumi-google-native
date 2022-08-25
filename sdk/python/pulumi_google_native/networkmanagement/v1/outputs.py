@@ -16,6 +16,8 @@ __all__ = [
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
+    'CloudFunctionEndpointResponse',
+    'CloudFunctionInfoResponse',
     'CloudSQLInstanceInfoResponse',
     'DeliverInfoResponse',
     'DropInfoResponse',
@@ -35,6 +37,7 @@ __all__ = [
     'StatusResponse',
     'StepResponse',
     'TraceResponse',
+    'VpcConnectorInfoResponse',
     'VpnGatewayInfoResponse',
     'VpnTunnelInfoResponse',
 ]
@@ -47,7 +50,9 @@ class AbortInfoResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "resourceUri":
+        if key == "projectsMissingPermission":
+            suggest = "projects_missing_permission"
+        elif key == "resourceUri":
             suggest = "resource_uri"
 
         if suggest:
@@ -63,13 +68,16 @@ class AbortInfoResponse(dict):
 
     def __init__(__self__, *,
                  cause: str,
+                 projects_missing_permission: Sequence[str],
                  resource_uri: str):
         """
         Details of the final state "abort" and associated resource.
         :param str cause: Causes that the analysis is aborted.
+        :param Sequence[str] projects_missing_permission: List of project IDs that the user has specified in the request but does not have permission to access network configs. Analysis is aborted in this case with the PERMISSION_DENIED cause.
         :param str resource_uri: URI of the resource that caused the abort.
         """
         pulumi.set(__self__, "cause", cause)
+        pulumi.set(__self__, "projects_missing_permission", projects_missing_permission)
         pulumi.set(__self__, "resource_uri", resource_uri)
 
     @property
@@ -79,6 +87,14 @@ class AbortInfoResponse(dict):
         Causes that the analysis is aborted.
         """
         return pulumi.get(self, "cause")
+
+    @property
+    @pulumi.getter(name="projectsMissingPermission")
+    def projects_missing_permission(self) -> Sequence[str]:
+        """
+        List of project IDs that the user has specified in the request but does not have permission to access network configs. Analysis is aborted in this case with the PERMISSION_DENIED cause.
+        """
+        return pulumi.get(self, "projects_missing_permission")
 
     @property
     @pulumi.getter(name="resourceUri")
@@ -203,7 +219,7 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
@@ -222,7 +238,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -233,6 +249,102 @@ class BindingResponse(dict):
         Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         return pulumi.get(self, "role")
+
+
+@pulumi.output_type
+class CloudFunctionEndpointResponse(dict):
+    """
+    Wrapper for cloud function attributes.
+    """
+    def __init__(__self__, *,
+                 uri: str):
+        """
+        Wrapper for cloud function attributes.
+        :param str uri: A [Cloud function](https://cloud.google.com/functions) name.
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        A [Cloud function](https://cloud.google.com/functions) name.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class CloudFunctionInfoResponse(dict):
+    """
+    For display only. Metadata associated with a Cloud function.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+        elif key == "versionId":
+            suggest = "version_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in CloudFunctionInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        CloudFunctionInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        CloudFunctionInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 location: str,
+                 uri: str,
+                 version_id: str):
+        """
+        For display only. Metadata associated with a Cloud function.
+        :param str display_name: Name of a Cloud function.
+        :param str location: Location in which the Cloud function is deployed.
+        :param str uri: URI of a Cloud function.
+        :param str version_id: Latest successfully deployed version id of the Cloud function.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "uri", uri)
+        pulumi.set(__self__, "version_id", version_id)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Name of a Cloud function.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Location in which the Cloud function is deployed.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        URI of a Cloud function.
+        """
+        return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter(name="versionId")
+    def version_id(self) -> str:
+        """
+        Latest successfully deployed version id of the Cloud function.
+        """
+        return pulumi.get(self, "version_id")
 
 
 @pulumi.output_type
@@ -558,7 +670,9 @@ class EndpointResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "cloudSqlInstance":
+        if key == "cloudFunction":
+            suggest = "cloud_function"
+        elif key == "cloudSqlInstance":
             suggest = "cloud_sql_instance"
         elif key == "gkeMasterCluster":
             suggest = "gke_master_cluster"
@@ -579,6 +693,7 @@ class EndpointResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 cloud_function: 'outputs.CloudFunctionEndpointResponse',
                  cloud_sql_instance: str,
                  gke_master_cluster: str,
                  instance: str,
@@ -589,6 +704,7 @@ class EndpointResponse(dict):
                  project: str):
         """
         Source or destination of the Connectivity Test.
+        :param 'CloudFunctionEndpointResponse' cloud_function: A [Cloud function](https://cloud.google.com/functions).
         :param str cloud_sql_instance: A [Cloud SQL](https://cloud.google.com/sql) instance URI.
         :param str gke_master_cluster: A cluster URI for [Google Kubernetes Engine master](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-architecture).
         :param str instance: A Compute Engine instance URI.
@@ -598,6 +714,7 @@ class EndpointResponse(dict):
         :param int port: The IP protocol port of the endpoint. Only applicable when protocol is TCP or UDP.
         :param str project: Project ID where the endpoint is located. The Project ID can be derived from the URI if you provide a VM instance or network URI. The following are two cases where you must provide the project ID: 1. Only the IP address is specified, and the IP address is within a GCP project. 2. When you are using Shared VPC and the IP address that you provide is from the service project. In this case, the network that the IP address resides in is defined in the host project.
         """
+        pulumi.set(__self__, "cloud_function", cloud_function)
         pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         pulumi.set(__self__, "gke_master_cluster", gke_master_cluster)
         pulumi.set(__self__, "instance", instance)
@@ -606,6 +723,14 @@ class EndpointResponse(dict):
         pulumi.set(__self__, "network_type", network_type)
         pulumi.set(__self__, "port", port)
         pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="cloudFunction")
+    def cloud_function(self) -> 'outputs.CloudFunctionEndpointResponse':
+        """
+        A [Cloud function](https://cloud.google.com/functions).
+        """
+        return pulumi.get(self, "cloud_function")
 
     @property
     @pulumi.getter(name="cloudSqlInstance")
@@ -1744,6 +1869,8 @@ class StepResponse(dict):
         suggest = None
         if key == "causesDrop":
             suggest = "causes_drop"
+        elif key == "cloudFunction":
+            suggest = "cloud_function"
         elif key == "cloudSqlInstance":
             suggest = "cloud_sql_instance"
         elif key == "forwardingRule":
@@ -1752,6 +1879,8 @@ class StepResponse(dict):
             suggest = "gke_master"
         elif key == "loadBalancer":
             suggest = "load_balancer"
+        elif key == "vpcConnector":
+            suggest = "vpc_connector"
         elif key == "vpnGateway":
             suggest = "vpn_gateway"
         elif key == "vpnTunnel":
@@ -1771,6 +1900,7 @@ class StepResponse(dict):
     def __init__(__self__, *,
                  abort: 'outputs.AbortInfoResponse',
                  causes_drop: bool,
+                 cloud_function: 'outputs.CloudFunctionInfoResponse',
                  cloud_sql_instance: 'outputs.CloudSQLInstanceInfoResponse',
                  deliver: 'outputs.DeliverInfoResponse',
                  description: str,
@@ -1786,12 +1916,14 @@ class StepResponse(dict):
                  project: str,
                  route: 'outputs.RouteInfoResponse',
                  state: str,
+                 vpc_connector: 'outputs.VpcConnectorInfoResponse',
                  vpn_gateway: 'outputs.VpnGatewayInfoResponse',
                  vpn_tunnel: 'outputs.VpnTunnelInfoResponse'):
         """
         A simulated forwarding path is composed of multiple steps. Each step has a well-defined state and an associated configuration.
         :param 'AbortInfoResponse' abort: Display information of the final state "abort" and reason.
         :param bool causes_drop: This is a step that leads to the final state Drop.
+        :param 'CloudFunctionInfoResponse' cloud_function: Display information of a Cloud function.
         :param 'CloudSQLInstanceInfoResponse' cloud_sql_instance: Display information of a Cloud SQL instance.
         :param 'DeliverInfoResponse' deliver: Display information of the final state "deliver" and reason.
         :param str description: A description of the step. Usually this is a summary of the state.
@@ -1807,11 +1939,13 @@ class StepResponse(dict):
         :param str project: Project ID that contains the configuration this step is validating.
         :param 'RouteInfoResponse' route: Display information of a Compute Engine route.
         :param str state: Each step is in one of the pre-defined states.
+        :param 'VpcConnectorInfoResponse' vpc_connector: Display information of a VPC connector.
         :param 'VpnGatewayInfoResponse' vpn_gateway: Display information of a Compute Engine VPN gateway.
         :param 'VpnTunnelInfoResponse' vpn_tunnel: Display information of a Compute Engine VPN tunnel.
         """
         pulumi.set(__self__, "abort", abort)
         pulumi.set(__self__, "causes_drop", causes_drop)
+        pulumi.set(__self__, "cloud_function", cloud_function)
         pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         pulumi.set(__self__, "deliver", deliver)
         pulumi.set(__self__, "description", description)
@@ -1827,6 +1961,7 @@ class StepResponse(dict):
         pulumi.set(__self__, "project", project)
         pulumi.set(__self__, "route", route)
         pulumi.set(__self__, "state", state)
+        pulumi.set(__self__, "vpc_connector", vpc_connector)
         pulumi.set(__self__, "vpn_gateway", vpn_gateway)
         pulumi.set(__self__, "vpn_tunnel", vpn_tunnel)
 
@@ -1845,6 +1980,14 @@ class StepResponse(dict):
         This is a step that leads to the final state Drop.
         """
         return pulumi.get(self, "causes_drop")
+
+    @property
+    @pulumi.getter(name="cloudFunction")
+    def cloud_function(self) -> 'outputs.CloudFunctionInfoResponse':
+        """
+        Display information of a Cloud function.
+        """
+        return pulumi.get(self, "cloud_function")
 
     @property
     @pulumi.getter(name="cloudSqlInstance")
@@ -1967,6 +2110,14 @@ class StepResponse(dict):
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter(name="vpcConnector")
+    def vpc_connector(self) -> 'outputs.VpcConnectorInfoResponse':
+        """
+        Display information of a VPC connector.
+        """
+        return pulumi.get(self, "vpc_connector")
+
+    @property
     @pulumi.getter(name="vpnGateway")
     def vpn_gateway(self) -> 'outputs.VpnGatewayInfoResponse':
         """
@@ -2031,6 +2182,67 @@ class TraceResponse(dict):
         A trace of a test contains multiple steps from the initial state to the final state (delivered, dropped, forwarded, or aborted). The steps are ordered by the processing sequence within the simulated network state machine. It is critical to preserve the order of the steps and avoid reordering or sorting them.
         """
         return pulumi.get(self, "steps")
+
+
+@pulumi.output_type
+class VpcConnectorInfoResponse(dict):
+    """
+    For display only. Metadata associated with a VPC connector.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VpcConnectorInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VpcConnectorInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VpcConnectorInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: str,
+                 location: str,
+                 uri: str):
+        """
+        For display only. Metadata associated with a VPC connector.
+        :param str display_name: Name of a VPC connector.
+        :param str location: Location in which the VPC connector is deployed.
+        :param str uri: URI of a VPC connector.
+        """
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        Name of a VPC connector.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Location in which the VPC connector is deployed.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        URI of a VPC connector.
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type

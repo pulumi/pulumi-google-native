@@ -33,7 +33,7 @@ export const DomainMappingSpecCertificateMode = {
      */
     None: "NONE",
     /**
-     * Automatically provisions an HTTPS certificate via GoogleCA or LetsEncrypt.
+     * Automatically provisions an HTTPS certificate via GoogleCA.
      */
     Automatic: "AUTOMATIC",
 } as const;

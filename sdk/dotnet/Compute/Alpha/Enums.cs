@@ -3661,7 +3661,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. However, if you've set up a proactive type of update policy, then configuration updates are applied as usual. - YES: If configuration updates are available, they are applied during repair. 
+    /// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
     /// </summary>
     [EnumType]
     public readonly struct InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair : IEquatable<InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair>
@@ -6216,37 +6216,6 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
-    /// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
-    /// </summary>
-    [EnumType]
-    public readonly struct RegionNetworkNetworkFirewallPolicyEnforcementOrder : IEquatable<RegionNetworkNetworkFirewallPolicyEnforcementOrder>
-    {
-        private readonly string _value;
-
-        private RegionNetworkNetworkFirewallPolicyEnforcementOrder(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static RegionNetworkNetworkFirewallPolicyEnforcementOrder AfterClassicFirewall { get; } = new RegionNetworkNetworkFirewallPolicyEnforcementOrder("AFTER_CLASSIC_FIREWALL");
-        public static RegionNetworkNetworkFirewallPolicyEnforcementOrder BeforeClassicFirewall { get; } = new RegionNetworkNetworkFirewallPolicyEnforcementOrder("BEFORE_CLASSIC_FIREWALL");
-
-        public static bool operator ==(RegionNetworkNetworkFirewallPolicyEnforcementOrder left, RegionNetworkNetworkFirewallPolicyEnforcementOrder right) => left.Equals(right);
-        public static bool operator !=(RegionNetworkNetworkFirewallPolicyEnforcementOrder left, RegionNetworkNetworkFirewallPolicyEnforcementOrder right) => !left.Equals(right);
-
-        public static explicit operator string(RegionNetworkNetworkFirewallPolicyEnforcementOrder value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is RegionNetworkNetworkFirewallPolicyEnforcementOrder other && Equals(other);
-        public bool Equals(RegionNetworkNetworkFirewallPolicyEnforcementOrder other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
-
-    /// <summary>
     /// The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
     /// </summary>
     [EnumType]
@@ -7451,6 +7420,38 @@ namespace Pulumi.GoogleNative.Compute.Alpha
     }
 
     /// <summary>
+    /// Current Hot Standby state of VM.
+    /// </summary>
+    [EnumType]
+    public readonly struct SchedulingDynamicResizePropertiesHotStandbyState : IEquatable<SchedulingDynamicResizePropertiesHotStandbyState>
+    {
+        private readonly string _value;
+
+        private SchedulingDynamicResizePropertiesHotStandbyState(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        public static SchedulingDynamicResizePropertiesHotStandbyState Active { get; } = new SchedulingDynamicResizePropertiesHotStandbyState("ACTIVE");
+        public static SchedulingDynamicResizePropertiesHotStandbyState HotstandbyStateUnspecified { get; } = new SchedulingDynamicResizePropertiesHotStandbyState("HOTSTANDBY_STATE_UNSPECIFIED");
+        public static SchedulingDynamicResizePropertiesHotStandbyState Standby { get; } = new SchedulingDynamicResizePropertiesHotStandbyState("STANDBY");
+
+        public static bool operator ==(SchedulingDynamicResizePropertiesHotStandbyState left, SchedulingDynamicResizePropertiesHotStandbyState right) => left.Equals(right);
+        public static bool operator !=(SchedulingDynamicResizePropertiesHotStandbyState left, SchedulingDynamicResizePropertiesHotStandbyState right) => !left.Equals(right);
+
+        public static explicit operator string(SchedulingDynamicResizePropertiesHotStandbyState value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SchedulingDynamicResizePropertiesHotStandbyState other && Equals(other);
+        public bool Equals(SchedulingDynamicResizePropertiesHotStandbyState other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Specifies the termination action for the instance.
     /// </summary>
     [EnumType]
@@ -7809,6 +7810,55 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is SecurityPolicyRuleMatcherVersionedExpr other && Equals(other);
         public bool Equals(SecurityPolicyRuleMatcherVersionedExpr other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// The match operator for the field.
+    /// </summary>
+    [EnumType]
+    public readonly struct SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp : IEquatable<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp>
+    {
+        private readonly string _value;
+
+        private SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The operator matches if the field value contains the specified value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp Contains { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("CONTAINS");
+        /// <summary>
+        /// The operator matches if the field value ends with the specified value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp EndsWith { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("ENDS_WITH");
+        /// <summary>
+        /// The operator matches if the field value equals the specified value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp EqualsValue { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("EQUALS");
+        /// <summary>
+        /// The operator matches if the field value is any value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp EqualsAny { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("EQUALS_ANY");
+        /// <summary>
+        /// The operator matches if the field value starts with the specified value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp StartsWith { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("STARTS_WITH");
+
+        public static bool operator ==(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp left, SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp right) => left.Equals(right);
+        public static bool operator !=(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp left, SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp other && Equals(other);
+        public bool Equals(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

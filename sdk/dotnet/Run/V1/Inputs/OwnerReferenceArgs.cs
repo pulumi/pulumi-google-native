@@ -11,42 +11,42 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.
+    /// This is not supported or used by Cloud Run.
     /// </summary>
     public sealed class OwnerReferenceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// API version of the referent.
+        /// This is not supported or used by Cloud Run.
         /// </summary>
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
 
         /// <summary>
-        /// If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned. +optional
+        /// This is not supported or used by Cloud Run.
         /// </summary>
         [Input("blockOwnerDeletion")]
         public Input<bool>? BlockOwnerDeletion { get; set; }
 
         /// <summary>
-        /// If true, this reference points to the managing controller. +optional
+        /// This is not supported or used by Cloud Run.
         /// </summary>
         [Input("controller")]
         public Input<bool>? Controller { get; set; }
 
         /// <summary>
-        /// Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        /// This is not supported or used by Cloud Run.
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 
         /// <summary>
-        /// Name of the referent. More info: https://kubernetes.io/docs/user-guide/identifiers#names
+        /// This is not supported or used by Cloud Run.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// UID of the referent. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
+        /// This is not supported or used by Cloud Run.
         /// </summary>
         [Input("uid")]
         public Input<string>? Uid { get; set; }

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetEnvironmentResult:
-    def __init__(__self__, api_proxy_type=None, created_at=None, deployment_type=None, description=None, display_name=None, forward_proxy_uri=None, last_modified_at=None, name=None, properties=None, state=None):
+    def __init__(__self__, api_proxy_type=None, created_at=None, deployment_type=None, description=None, display_name=None, forward_proxy_uri=None, last_modified_at=None, name=None, node_config=None, properties=None, state=None):
         if api_proxy_type and not isinstance(api_proxy_type, str):
             raise TypeError("Expected argument 'api_proxy_type' to be a str")
         pulumi.set(__self__, "api_proxy_type", api_proxy_type)
@@ -44,6 +44,9 @@ class GetEnvironmentResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if node_config and not isinstance(node_config, dict):
+            raise TypeError("Expected argument 'node_config' to be a dict")
+        pulumi.set(__self__, "node_config", node_config)
         if properties and not isinstance(properties, dict):
             raise TypeError("Expected argument 'properties' to be a dict")
         pulumi.set(__self__, "properties", properties)
@@ -116,6 +119,14 @@ class GetEnvironmentResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="nodeConfig")
+    def node_config(self) -> 'outputs.GoogleCloudApigeeV1NodeConfigResponse':
+        """
+        Optional. NodeConfig of the environment.
+        """
+        return pulumi.get(self, "node_config")
+
+    @property
     @pulumi.getter
     def properties(self) -> 'outputs.GoogleCloudApigeeV1PropertiesResponse':
         """
@@ -146,6 +157,7 @@ class AwaitableGetEnvironmentResult(GetEnvironmentResult):
             forward_proxy_uri=self.forward_proxy_uri,
             last_modified_at=self.last_modified_at,
             name=self.name,
+            node_config=self.node_config,
             properties=self.properties,
             state=self.state)
 
@@ -171,6 +183,7 @@ def get_environment(environment_id: Optional[str] = None,
         forward_proxy_uri=__ret__.forward_proxy_uri,
         last_modified_at=__ret__.last_modified_at,
         name=__ret__.name,
+        node_config=__ret__.node_config,
         properties=__ret__.properties,
         state=__ret__.state)
 

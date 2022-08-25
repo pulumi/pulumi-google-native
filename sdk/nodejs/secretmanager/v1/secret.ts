@@ -37,6 +37,10 @@ export class Secret extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of annotation keys and values must be less than 16KiB.
+     */
+    public readonly annotations!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The time at which the Secret was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -99,6 +103,7 @@ export class Secret extends pulumi.CustomResource {
             if ((!args || args.secretId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'secretId'");
             }
+            resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["etag"] = args ? args.etag : undefined;
             resourceInputs["expireTime"] = args ? args.expireTime : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -112,6 +117,7 @@ export class Secret extends pulumi.CustomResource {
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         } else {
+            resourceInputs["annotations"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["expireTime"] = undefined /*out*/;
@@ -136,6 +142,10 @@ export class Secret extends pulumi.CustomResource {
  * The set of arguments for constructing a Secret resource.
  */
 export interface SecretArgs {
+    /**
+     * Optional. Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of annotation keys and values must be less than 16KiB.
+     */
+    annotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Optional. Etag of the currently stored Secret.
      */

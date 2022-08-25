@@ -159,6 +159,8 @@ if typing.TYPE_CHECKING:
     iam = __iam
     import pulumi_google_native.iap as __iap
     iap = __iap
+    import pulumi_google_native.identitytoolkit as __identitytoolkit
+    identitytoolkit = __identitytoolkit
     import pulumi_google_native.ids as __ids
     ids = __ids
     import pulumi_google_native.jobs as __jobs
@@ -331,6 +333,7 @@ else:
     healthcare = _utilities.lazy_import('pulumi_google_native.healthcare')
     iam = _utilities.lazy_import('pulumi_google_native.iam')
     iap = _utilities.lazy_import('pulumi_google_native.iap')
+    identitytoolkit = _utilities.lazy_import('pulumi_google_native.identitytoolkit')
     ids = _utilities.lazy_import('pulumi_google_native.ids')
     jobs = _utilities.lazy_import('pulumi_google_native.jobs')
     logging = _utilities.lazy_import('pulumi_google_native.logging')
@@ -1122,11 +1125,9 @@ _utilities.register(
    "google-native:compute/alpha:RegionInstanceTemplate": "RegionInstanceTemplate",
    "google-native:compute/alpha:RegionInstantSnapshot": "RegionInstantSnapshot",
    "google-native:compute/alpha:RegionInstantSnapshotIamPolicy": "RegionInstantSnapshotIamPolicy",
-   "google-native:compute/alpha:RegionNetwork": "RegionNetwork",
    "google-native:compute/alpha:RegionNetworkEndpointGroup": "RegionNetworkEndpointGroup",
    "google-native:compute/alpha:RegionNetworkFirewallPolicy": "RegionNetworkFirewallPolicy",
    "google-native:compute/alpha:RegionNetworkFirewallPolicyIamPolicy": "RegionNetworkFirewallPolicyIamPolicy",
-   "google-native:compute/alpha:RegionNetworkIamPolicy": "RegionNetworkIamPolicy",
    "google-native:compute/alpha:RegionNotificationEndpoint": "RegionNotificationEndpoint",
    "google-native:compute/alpha:RegionSecurityPolicy": "RegionSecurityPolicy",
    "google-native:compute/alpha:RegionSslCertificate": "RegionSslCertificate",
@@ -1327,6 +1328,7 @@ _utilities.register(
    "google-native:compute/v1:RegionNotificationEndpoint": "RegionNotificationEndpoint",
    "google-native:compute/v1:RegionSecurityPolicy": "RegionSecurityPolicy",
    "google-native:compute/v1:RegionSslCertificate": "RegionSslCertificate",
+   "google-native:compute/v1:RegionSslPolicy": "RegionSslPolicy",
    "google-native:compute/v1:RegionTargetHttpProxy": "RegionTargetHttpProxy",
    "google-native:compute/v1:RegionTargetHttpsProxy": "RegionTargetHttpsProxy",
    "google-native:compute/v1:RegionUrlMap": "RegionUrlMap",
@@ -1366,6 +1368,14 @@ _utilities.register(
    "google-native:connectors/v1:Connection": "Connection",
    "google-native:connectors/v1:ConnectionIamPolicy": "ConnectionIamPolicy",
    "google-native:connectors/v1:ProviderIamPolicy": "ProviderIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
+  "mod": "connectors/v2",
+  "fqn": "pulumi_google_native.connectors.v2",
+  "classes": {
+   "google-native:connectors/v2:Entity": "Entity"
   }
  },
  {
@@ -2141,6 +2151,18 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
+  "mod": "identitytoolkit/v2",
+  "fqn": "pulumi_google_native.identitytoolkit.v2",
+  "classes": {
+   "google-native:identitytoolkit/v2:DefaultSupportedIdpConfig": "DefaultSupportedIdpConfig",
+   "google-native:identitytoolkit/v2:InboundSamlConfig": "InboundSamlConfig",
+   "google-native:identitytoolkit/v2:OauthIdpConfig": "OauthIdpConfig",
+   "google-native:identitytoolkit/v2:Tenant": "Tenant",
+   "google-native:identitytoolkit/v2:TenantIamPolicy": "TenantIamPolicy"
+  }
+ },
+ {
+  "pkg": "google-native",
   "mod": "ids/v1",
   "fqn": "pulumi_google_native.ids.v1",
   "classes": {
@@ -2445,6 +2467,7 @@ _utilities.register(
   "mod": "orgpolicy/v2",
   "fqn": "pulumi_google_native.orgpolicy.v2",
   "classes": {
+   "google-native:orgpolicy/v2:CustomConstraint": "CustomConstraint",
    "google-native:orgpolicy/v2:FolderPolicy": "FolderPolicy",
    "google-native:orgpolicy/v2:OrganizationPolicy": "OrganizationPolicy",
    "google-native:orgpolicy/v2:Policy": "Policy"

@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
     public sealed class GooglePrivacyDlpV2DeidentifyConfigResponse
     {
         /// <summary>
+        /// Treat the dataset as an image and redact.
+        /// </summary>
+        public readonly Outputs.GooglePrivacyDlpV2ImageTransformationsResponse ImageTransformations;
+        /// <summary>
         /// Treat the dataset as free-form text and apply the same free text transformation everywhere.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2InfoTypeTransformationsResponse InfoTypeTransformations;
@@ -31,12 +35,15 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
 
         [OutputConstructor]
         private GooglePrivacyDlpV2DeidentifyConfigResponse(
+            Outputs.GooglePrivacyDlpV2ImageTransformationsResponse imageTransformations,
+
             Outputs.GooglePrivacyDlpV2InfoTypeTransformationsResponse infoTypeTransformations,
 
             Outputs.GooglePrivacyDlpV2RecordTransformationsResponse recordTransformations,
 
             Outputs.GooglePrivacyDlpV2TransformationErrorHandlingResponse transformationErrorHandling)
         {
+            ImageTransformations = imageTransformations;
             InfoTypeTransformations = infoTypeTransformations;
             RecordTransformations = recordTransformations;
             TransformationErrorHandling = transformationErrorHandling;

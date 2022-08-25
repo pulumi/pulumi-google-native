@@ -70,6 +70,12 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Inputs
         public Input<string>? Path { get; set; }
 
         /// <summary>
+        /// Contains information needed to add pings to an HTTP check.
+        /// </summary>
+        [Input("pingConfig")]
+        public Input<Inputs.PingConfigArgs>? PingConfig { get; set; }
+
+        /// <summary>
         /// Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
         /// </summary>
         [Input("port")]

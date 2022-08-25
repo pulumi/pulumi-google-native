@@ -1771,7 +1771,7 @@ export const InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair = {
 } as const;
 
 /**
- * A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. However, if you've set up a proactive type of update policy, then configuration updates are applied as usual. - YES: If configuration updates are available, they are applied during repair. 
+ * A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair. 
  */
 export type InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair = (typeof InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair)[keyof typeof InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair];
 
@@ -2976,16 +2976,6 @@ export const RegionNetworkFirewallPolicyVpcNetworkScope = {
  */
 export type RegionNetworkFirewallPolicyVpcNetworkScope = (typeof RegionNetworkFirewallPolicyVpcNetworkScope)[keyof typeof RegionNetworkFirewallPolicyVpcNetworkScope];
 
-export const RegionNetworkNetworkFirewallPolicyEnforcementOrder = {
-    AfterClassicFirewall: "AFTER_CLASSIC_FIREWALL",
-    BeforeClassicFirewall: "BEFORE_CLASSIC_FIREWALL",
-} as const;
-
-/**
- * The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
- */
-export type RegionNetworkNetworkFirewallPolicyEnforcementOrder = (typeof RegionNetworkNetworkFirewallPolicyEnforcementOrder)[keyof typeof RegionNetworkNetworkFirewallPolicyEnforcementOrder];
-
 export const RegionSecurityPolicyType = {
     CloudArmor: "CLOUD_ARMOR",
     CloudArmorEdge: "CLOUD_ARMOR_EDGE",
@@ -3497,6 +3487,17 @@ export const SSLHealthCheckProxyHeader = {
  */
 export type SSLHealthCheckProxyHeader = (typeof SSLHealthCheckProxyHeader)[keyof typeof SSLHealthCheckProxyHeader];
 
+export const SchedulingDynamicResizePropertiesHotStandbyState = {
+    Active: "ACTIVE",
+    HotstandbyStateUnspecified: "HOTSTANDBY_STATE_UNSPECIFIED",
+    Standby: "STANDBY",
+} as const;
+
+/**
+ * Current Hot Standby state of VM.
+ */
+export type SchedulingDynamicResizePropertiesHotStandbyState = (typeof SchedulingDynamicResizePropertiesHotStandbyState)[keyof typeof SchedulingDynamicResizePropertiesHotStandbyState];
+
 export const SchedulingInstanceTerminationAction = {
     /**
      * Delete the VM.
@@ -3631,6 +3632,34 @@ export const SecurityPolicyRuleMatcherVersionedExpr = {
  * Preconfigured versioned expression. If this field is specified, config must also be specified. Available preconfigured expressions along with their requirements are: SRC_IPS_V1 - must specify the corresponding src_ip_range field in config.
  */
 export type SecurityPolicyRuleMatcherVersionedExpr = (typeof SecurityPolicyRuleMatcherVersionedExpr)[keyof typeof SecurityPolicyRuleMatcherVersionedExpr];
+
+export const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp = {
+    /**
+     * The operator matches if the field value contains the specified value.
+     */
+    Contains: "CONTAINS",
+    /**
+     * The operator matches if the field value ends with the specified value.
+     */
+    EndsWith: "ENDS_WITH",
+    /**
+     * The operator matches if the field value equals the specified value.
+     */
+    Equals: "EQUALS",
+    /**
+     * The operator matches if the field value is any value.
+     */
+    EqualsAny: "EQUALS_ANY",
+    /**
+     * The operator matches if the field value starts with the specified value.
+     */
+    StartsWith: "STARTS_WITH",
+} as const;
+
+/**
+ * The match operator for the field.
+ */
+export type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp = (typeof SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp)[keyof typeof SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp];
 
 export const SecurityPolicyRuleRateLimitOptionsEnforceOnKey = {
     All: "ALL",

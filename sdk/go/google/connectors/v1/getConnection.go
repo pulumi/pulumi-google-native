@@ -32,12 +32,14 @@ type LookupConnectionResult struct {
 	AuthConfig AuthConfigResponse `pulumi:"authConfig"`
 	// Optional. Configuration for configuring the connection with an external system.
 	ConfigVariables []ConfigVariableResponse `pulumi:"configVariables"`
-	// Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+	// Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
 	ConnectorVersion string `pulumi:"connectorVersion"`
 	// Created time.
 	CreateTime string `pulumi:"createTime"`
 	// Optional. Description of the resource.
 	Description string `pulumi:"description"`
+	// Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+	DestinationConfigs []DestinationConfigResponse `pulumi:"destinationConfigs"`
 	// GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
 	EnvoyImageLocation string `pulumi:"envoyImageLocation"`
 	// GCR location where the runtime image is stored. formatted like: gcr.io/{bucketName}/{imageName}
@@ -48,6 +50,8 @@ type LookupConnectionResult struct {
 	LockConfig LockConfigResponse `pulumi:"lockConfig"`
 	// Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
 	Name string `pulumi:"name"`
+	// Optional. Configuration for the connection.
+	NodeConfig NodeConfigResponse `pulumi:"nodeConfig"`
 	// Optional. Service account needed for runtime plane to access GCP resources.
 	ServiceAccount string `pulumi:"serviceAccount"`
 	// The name of the Service Directory service name. Used for Private Harpoon to resolve the ILB address. e.g. "projects/cloud-connectors-e2e-testing/locations/us-central1/namespaces/istio-system/services/istio-ingressgateway-connectors"
@@ -108,7 +112,7 @@ func (o LookupConnectionResultOutput) ConfigVariables() ConfigVariableResponseAr
 	return o.ApplyT(func(v LookupConnectionResult) []ConfigVariableResponse { return v.ConfigVariables }).(ConfigVariableResponseArrayOutput)
 }
 
-// Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+// Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
 func (o LookupConnectionResultOutput) ConnectorVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.ConnectorVersion }).(pulumi.StringOutput)
 }
@@ -121,6 +125,11 @@ func (o LookupConnectionResultOutput) CreateTime() pulumi.StringOutput {
 // Optional. Description of the resource.
 func (o LookupConnectionResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+func (o LookupConnectionResultOutput) DestinationConfigs() DestinationConfigResponseArrayOutput {
+	return o.ApplyT(func(v LookupConnectionResult) []DestinationConfigResponse { return v.DestinationConfigs }).(DestinationConfigResponseArrayOutput)
 }
 
 // GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
@@ -146,6 +155,11 @@ func (o LookupConnectionResultOutput) LockConfig() LockConfigResponseOutput {
 // Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
 func (o LookupConnectionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. Configuration for the connection.
+func (o LookupConnectionResultOutput) NodeConfig() NodeConfigResponseOutput {
+	return o.ApplyT(func(v LookupConnectionResult) NodeConfigResponse { return v.NodeConfig }).(NodeConfigResponseOutput)
 }
 
 // Optional. Service account needed for runtime plane to access GCP resources.

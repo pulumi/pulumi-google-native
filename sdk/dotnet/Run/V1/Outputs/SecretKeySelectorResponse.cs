@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (Optional) Specify whether the Secret or its key must be defined
+        /// Specify whether the Secret or its key must be defined.
         /// </summary>
         public readonly bool Optional;
 

@@ -61,6 +61,10 @@ export class Reservation extends pulumi.CustomResource {
      */
     public readonly requestId!: pulumi.Output<string | undefined>;
     /**
+     * Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+     */
+    public readonly resourcePolicies!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Reserved for future use.
      */
     public /*out*/ readonly satisfiesPzs!: pulumi.Output<boolean>;
@@ -101,6 +105,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
             resourceInputs["specificReservation"] = args ? args.specificReservation : undefined;
             resourceInputs["specificReservationRequired"] = args ? args.specificReservationRequired : undefined;
@@ -119,6 +124,7 @@ export class Reservation extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
+            resourceInputs["resourcePolicies"] = undefined /*out*/;
             resourceInputs["satisfiesPzs"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["shareSettings"] = undefined /*out*/;
@@ -151,6 +157,10 @@ export interface ReservationArgs {
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
      */
     requestId?: pulumi.Input<string>;
+    /**
+     * Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+     */
+    resourcePolicies?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Share-settings for shared-reservation
      */

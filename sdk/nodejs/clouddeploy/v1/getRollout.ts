@@ -52,7 +52,7 @@ export interface GetRolloutResult {
      */
     readonly deployEndTime: string;
     /**
-     * The reason this deploy failed. This will always be unspecified while the deploy in progress.
+     * The reason this rollout failed. This will always be unspecified while the rollout is in progress.
      */
     readonly deployFailureCause: string;
     /**
@@ -76,7 +76,7 @@ export interface GetRolloutResult {
      */
     readonly etag: string;
     /**
-     * Reason the build failed. Empty if the build succeeded.
+     * Additional information about the rollout failure, if available.
      */
     readonly failureReason: string;
     /**

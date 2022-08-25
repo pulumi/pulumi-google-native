@@ -27393,6 +27393,179 @@ func (in *securityPolicyRuleMatcherVersionedExprPtr) ToSecurityPolicyRuleMatcher
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
 }
 
+// The match operator for the field.
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp string
+
+const (
+	// The operator matches if the field value contains the specified value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpContains = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("CONTAINS")
+	// The operator matches if the field value ends with the specified value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpEndsWith = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("ENDS_WITH")
+	// The operator matches if the field value equals the specified value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpEquals = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("EQUALS")
+	// The operator matches if the field value is any value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpEqualsAny = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("EQUALS_ANY")
+	// The operator matches if the field value starts with the specified value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpStartsWith = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("STARTS_WITH")
+)
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp)(nil)).Elem()
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return pulumi.ToOutput(e).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return e.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(e).ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutputWithContext(ctx).ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return o.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp {
+		return &v
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) Elem() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return o.ApplyT(func(v *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp
+		return ret
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput)
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpArgs and SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpInput` via:
+//
+//	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpArgs{...}
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput
+}
+
+var securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrType = reflect.TypeOf((**SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp)(nil)).Elem()
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput
+}
+
+type securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr string
+
+func SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr(v string) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrInput {
+	return (*securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr)(&v)
+}
+
+func (*securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ElementType() reflect.Type {
+	return securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrType
+}
+
+func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return pulumi.ToOutput(in).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
+}
+
+func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
+}
+
 // Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
 type SecurityPolicyRuleRateLimitOptionsEnforceOnKey string
 
@@ -32086,6 +32259,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleDirectionPtrInput)(nil)).Elem(), SecurityPolicyRuleDirection("EGRESS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherVersionedExprInput)(nil)).Elem(), SecurityPolicyRuleMatcherVersionedExpr("FIREWALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherVersionedExprPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherVersionedExpr("FIREWALL"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("CONTAINS"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("CONTAINS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRedirectOptionsTypeInput)(nil)).Elem(), SecurityPolicyRuleRedirectOptionsType("EXTERNAL_302"))
@@ -32464,6 +32639,8 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleDirectionPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherVersionedExprOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherVersionedExprPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRedirectOptionsTypeOutput{})

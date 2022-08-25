@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetGlobalNetworkEndpointGroupResult:
-    def __init__(__self__, annotations=None, app_engine=None, cloud_function=None, cloud_run=None, creation_timestamp=None, default_port=None, description=None, kind=None, load_balancer=None, name=None, network=None, network_endpoint_type=None, psc_target_service=None, region=None, self_link=None, serverless_deployment=None, size=None, subnetwork=None, zone=None):
+    def __init__(__self__, annotations=None, app_engine=None, cloud_function=None, cloud_run=None, creation_timestamp=None, default_port=None, description=None, kind=None, load_balancer=None, name=None, network=None, network_endpoint_type=None, psc_data=None, psc_target_service=None, region=None, self_link=None, serverless_deployment=None, size=None, subnetwork=None, zone=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -60,6 +60,9 @@ class GetGlobalNetworkEndpointGroupResult:
         if network_endpoint_type and not isinstance(network_endpoint_type, str):
             raise TypeError("Expected argument 'network_endpoint_type' to be a str")
         pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
+        if psc_data and not isinstance(psc_data, dict):
+            raise TypeError("Expected argument 'psc_data' to be a dict")
+        pulumi.set(__self__, "psc_data", psc_data)
         if psc_target_service and not isinstance(psc_target_service, str):
             raise TypeError("Expected argument 'psc_target_service' to be a str")
         pulumi.set(__self__, "psc_target_service", psc_target_service)
@@ -179,6 +182,11 @@ class GetGlobalNetworkEndpointGroupResult:
         return pulumi.get(self, "network_endpoint_type")
 
     @property
+    @pulumi.getter(name="pscData")
+    def psc_data(self) -> 'outputs.NetworkEndpointGroupPscDataResponse':
+        return pulumi.get(self, "psc_data")
+
+    @property
     @pulumi.getter(name="pscTargetService")
     def psc_target_service(self) -> str:
         """
@@ -253,6 +261,7 @@ class AwaitableGetGlobalNetworkEndpointGroupResult(GetGlobalNetworkEndpointGroup
             name=self.name,
             network=self.network,
             network_endpoint_type=self.network_endpoint_type,
+            psc_data=self.psc_data,
             psc_target_service=self.psc_target_service,
             region=self.region,
             self_link=self.self_link,
@@ -287,6 +296,7 @@ def get_global_network_endpoint_group(network_endpoint_group: Optional[str] = No
         name=__ret__.name,
         network=__ret__.network,
         network_endpoint_type=__ret__.network_endpoint_type,
+        psc_data=__ret__.psc_data,
         psc_target_service=__ret__.psc_target_service,
         region=__ret__.region,
         self_link=__ret__.self_link,

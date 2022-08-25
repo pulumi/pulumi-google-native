@@ -10,14 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.Run.V1
 {
     /// <summary>
-    /// Create a service.
+    /// Creates a new Service. Service creation will trigger a new deployment. Use GetService, and check service.status to determine if the Service is ready.
     /// Auto-naming is currently not supported for this resource.
     /// </summary>
     [GoogleNativeResourceType("google-native:run/v1:Service")]
     public partial class Service : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The API version for this call such as "serving.knative.dev/v1".
+        /// The API version for this call. It must be "serving.knative.dev/v1".
         /// </summary>
         [Output("apiVersion")]
         public Output<string> ApiVersion { get; private set; } = null!;
@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Run.V1
         public Output<string?> DryRun { get; private set; } = null!;
 
         /// <summary>
-        /// The kind of resource, in this case "Service".
+        /// The kind of resource. It must be "Service".
         /// </summary>
         [Output("kind")]
         public Output<string> Kind { get; private set; } = null!;
@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.Run.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
+        /// Metadata associated with this Service, including name, namespace, labels, and annotations. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. The following Cloud Run-specific annotations are accepted in Service.metadata.annotations. * `run.googleapis.com/binary-authorization-breakglass` * `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` * `run.googleapis.com/description` * `run.googleapis.com/gc-traffic-tags` * `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
         /// </summary>
         [Output("metadata")]
         public Output<Outputs.ObjectMetaResponse> Metadata { get; private set; } = null!;
@@ -47,13 +47,13 @@ namespace Pulumi.GoogleNative.Run.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// Spec holds the desired state of the Service (from the client).
+        /// Holds the desired state of the Service (from the client).
         /// </summary>
         [Output("spec")]
         public Output<Outputs.ServiceSpecResponse> Spec { get; private set; } = null!;
 
         /// <summary>
-        /// Status communicates the observed state of the Service (from the controller).
+        /// Communicates the system-controlled state of the Service.
         /// </summary>
         [Output("status")]
         public Output<Outputs.ServiceStatusResponse> Status { get; private set; } = null!;
@@ -109,7 +109,7 @@ namespace Pulumi.GoogleNative.Run.V1
     public sealed class ServiceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The API version for this call such as "serving.knative.dev/v1".
+        /// The API version for this call. It must be "serving.knative.dev/v1".
         /// </summary>
         [Input("apiVersion")]
         public Input<string>? ApiVersion { get; set; }
@@ -121,7 +121,7 @@ namespace Pulumi.GoogleNative.Run.V1
         public Input<string>? DryRun { get; set; }
 
         /// <summary>
-        /// The kind of resource, in this case "Service".
+        /// The kind of resource. It must be "Service".
         /// </summary>
         [Input("kind")]
         public Input<string>? Kind { get; set; }
@@ -130,7 +130,7 @@ namespace Pulumi.GoogleNative.Run.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
+        /// Metadata associated with this Service, including name, namespace, labels, and annotations. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. The following Cloud Run-specific annotations are accepted in Service.metadata.annotations. * `run.googleapis.com/binary-authorization-breakglass` * `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` * `run.googleapis.com/description` * `run.googleapis.com/gc-traffic-tags` * `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
         /// </summary>
         [Input("metadata")]
         public Input<Inputs.ObjectMetaArgs>? Metadata { get; set; }
@@ -139,7 +139,7 @@ namespace Pulumi.GoogleNative.Run.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Spec holds the desired state of the Service (from the client).
+        /// Holds the desired state of the Service (from the client).
         /// </summary>
         [Input("spec")]
         public Input<Inputs.ServiceSpecArgs>? Spec { get; set; }

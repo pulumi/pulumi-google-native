@@ -33,6 +33,10 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
         /// </summary>
         public readonly Outputs.DeblockResponse Deblock;
         /// <summary>
+        /// Specify the video deinterlace configuration.
+        /// </summary>
+        public readonly Outputs.DeinterlaceResponse Deinterlace;
+        /// <summary>
         /// Denoise preprocessing configuration.
         /// </summary>
         public readonly Outputs.DenoiseResponse Denoise;
@@ -51,6 +55,8 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
 
             Outputs.DeblockResponse deblock,
 
+            Outputs.DeinterlaceResponse deinterlace,
+
             Outputs.DenoiseResponse denoise,
 
             Outputs.PadResponse pad)
@@ -59,6 +65,7 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Outputs
             Color = color;
             Crop = crop;
             Deblock = deblock;
+            Deinterlace = deinterlace;
             Denoise = denoise;
             Pad = pad;
         }

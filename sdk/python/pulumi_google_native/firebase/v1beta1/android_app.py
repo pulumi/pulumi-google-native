@@ -18,17 +18,13 @@ class AndroidAppArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  package_name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None,
-                 sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+                 project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AndroidApp resource.
         :param pulumi.Input[str] api_key_id: The globally unique, Google-assigned identifier (UID) for the Firebase API key associated with the `AndroidApp`. Be aware that this value is the UID of the API key, _not_ the [`keyString`](https://cloud.google.com/api-keys/docs/reference/rest/v2/projects.locations.keys#Key.FIELDS.key_string) of the API key. The `keyString` is the value that can be found in the App's [configuration artifact](../../rest/v1beta1/projects.androidApps/getConfig). If `api_key_id` is not set in requests to [`androidApps.Create`](../../rest/v1beta1/projects.androidApps/create), then Firebase automatically associates an `api_key_id` with the `AndroidApp`. This auto-associated key may be an existing valid key or, if no valid key exists, a new one will be provisioned. In patch requests, `api_key_id` cannot be set to an empty value, and the new UID must have no restrictions or only have restrictions that are valid for the associated `AndroidApp`. We recommend using the [Google Cloud Console](https://console.cloud.google.com/apis/credentials) to manage API keys.
         :param pulumi.Input[str] display_name: The user-assigned display name for the `AndroidApp`.
         :param pulumi.Input[str] name: The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
         :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sha256_hashes: The SHA256 certificate hashes for the AndroidApp.
         """
         if api_key_id is not None:
             pulumi.set(__self__, "api_key_id", api_key_id)
@@ -40,10 +36,6 @@ class AndroidAppArgs:
             pulumi.set(__self__, "package_name", package_name)
         if project is not None:
             pulumi.set(__self__, "project", project)
-        if sha1_hashes is not None:
-            pulumi.set(__self__, "sha1_hashes", sha1_hashes)
-        if sha256_hashes is not None:
-            pulumi.set(__self__, "sha256_hashes", sha256_hashes)
 
     @property
     @pulumi.getter(name="apiKeyId")
@@ -102,30 +94,6 @@ class AndroidAppArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
-    @property
-    @pulumi.getter(name="sha1Hashes")
-    def sha1_hashes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The SHA1 certificate hashes for the AndroidApp.
-        """
-        return pulumi.get(self, "sha1_hashes")
-
-    @sha1_hashes.setter
-    def sha1_hashes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "sha1_hashes", value)
-
-    @property
-    @pulumi.getter(name="sha256Hashes")
-    def sha256_hashes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
-        """
-        The SHA256 certificate hashes for the AndroidApp.
-        """
-        return pulumi.get(self, "sha256_hashes")
-
-    @sha256_hashes.setter
-    def sha256_hashes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
-        pulumi.set(self, "sha256_hashes", value)
-
 
 class AndroidApp(pulumi.CustomResource):
     @overload
@@ -137,8 +105,6 @@ class AndroidApp(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  package_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         Requests the creation of a new AndroidApp in the specified FirebaseProject. The result of this call is an `Operation` which can be used to track the provisioning process. The `Operation` is automatically deleted after completion, so there is no need to call `DeleteOperation`.
@@ -151,8 +117,6 @@ class AndroidApp(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The user-assigned display name for the `AndroidApp`.
         :param pulumi.Input[str] name: The resource name of the AndroidApp, in the format: projects/ PROJECT_IDENTIFIER/androidApps/APP_ID * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)).
         :param pulumi.Input[str] package_name: Immutable. The canonical package name of the Android app as would appear in the Google Play Developer Console.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sha1_hashes: The SHA1 certificate hashes for the AndroidApp.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] sha256_hashes: The SHA256 certificate hashes for the AndroidApp.
         """
         ...
     @overload
@@ -185,8 +149,6 @@ class AndroidApp(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  package_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 sha1_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
-                 sha256_hashes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -201,8 +163,6 @@ class AndroidApp(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["package_name"] = package_name
             __props__.__dict__["project"] = project
-            __props__.__dict__["sha1_hashes"] = sha1_hashes
-            __props__.__dict__["sha256_hashes"] = sha256_hashes
             __props__.__dict__["app_id"] = None
             __props__.__dict__["state"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
@@ -235,8 +195,6 @@ class AndroidApp(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["package_name"] = None
         __props__.__dict__["project"] = None
-        __props__.__dict__["sha1_hashes"] = None
-        __props__.__dict__["sha256_hashes"] = None
         __props__.__dict__["state"] = None
         return AndroidApp(resource_name, opts=opts, __props__=__props__)
 
@@ -284,22 +242,6 @@ class AndroidApp(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
-
-    @property
-    @pulumi.getter(name="sha1Hashes")
-    def sha1_hashes(self) -> pulumi.Output[Sequence[str]]:
-        """
-        The SHA1 certificate hashes for the AndroidApp.
-        """
-        return pulumi.get(self, "sha1_hashes")
-
-    @property
-    @pulumi.getter(name="sha256Hashes")
-    def sha256_hashes(self) -> pulumi.Output[Sequence[str]]:
-        """
-        The SHA256 certificate hashes for the AndroidApp.
-        """
-        return pulumi.get(self, "sha256_hashes")
 
     @property
     @pulumi.getter

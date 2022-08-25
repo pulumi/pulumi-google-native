@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
     public sealed class GooglePrivacyDlpV2DeidentifyConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Treat the dataset as an image and redact.
+        /// </summary>
+        [Input("imageTransformations")]
+        public Input<Inputs.GooglePrivacyDlpV2ImageTransformationsArgs>? ImageTransformations { get; set; }
+
+        /// <summary>
         /// Treat the dataset as free-form text and apply the same free text transformation everywhere.
         /// </summary>
         [Input("infoTypeTransformations")]

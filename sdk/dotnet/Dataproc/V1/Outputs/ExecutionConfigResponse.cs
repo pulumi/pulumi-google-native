@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class ExecutionConfigResponse
     {
         /// <summary>
+        /// Optional. The duration to keep the underlying cluster alive while idling Passing this threshold will cause the cluster to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        /// </summary>
+        public readonly string IdleTtl;
+        /// <summary>
         /// Optional. The Cloud KMS key to use for encryption.
         /// </summary>
         public readonly string KmsKey;
@@ -39,6 +43,8 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 
         [OutputConstructor]
         private ExecutionConfigResponse(
+            string idleTtl,
+
             string kmsKey,
 
             ImmutableArray<string> networkTags,
@@ -49,6 +55,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 
             string subnetworkUri)
         {
+            IdleTtl = idleTtl;
             KmsKey = kmsKey;
             NetworkTags = networkTags;
             NetworkUri = networkUri;

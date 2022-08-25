@@ -16,19 +16,19 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     public sealed class ContainerPortArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
+        /// Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
         /// </summary>
         [Input("containerPort")]
         public Input<int>? ContainerPort { get; set; }
 
         /// <summary>
-        /// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+        /// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
+        /// Protocol for port. Must be "TCP". Defaults to "TCP".
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }

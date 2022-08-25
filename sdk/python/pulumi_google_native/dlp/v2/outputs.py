@@ -13,6 +13,8 @@ from ._enums import *
 
 __all__ = [
     'GooglePrivacyDlpV2ActionResponse',
+    'GooglePrivacyDlpV2AllInfoTypesResponse',
+    'GooglePrivacyDlpV2AllTextResponse',
     'GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponse',
     'GooglePrivacyDlpV2AuxiliaryTableResponse',
     'GooglePrivacyDlpV2BigQueryFieldResponse',
@@ -29,6 +31,7 @@ __all__ = [
     'GooglePrivacyDlpV2CloudStorageOptionsResponse',
     'GooglePrivacyDlpV2CloudStoragePathResponse',
     'GooglePrivacyDlpV2CloudStorageRegexFileSetResponse',
+    'GooglePrivacyDlpV2ColorResponse',
     'GooglePrivacyDlpV2ConditionResponse',
     'GooglePrivacyDlpV2ConditionsResponse',
     'GooglePrivacyDlpV2CryptoDeterministicConfigResponse',
@@ -59,6 +62,8 @@ __all__ = [
     'GooglePrivacyDlpV2HotwordRuleResponse',
     'GooglePrivacyDlpV2HybridInspectStatisticsResponse',
     'GooglePrivacyDlpV2HybridOptionsResponse',
+    'GooglePrivacyDlpV2ImageTransformationResponse',
+    'GooglePrivacyDlpV2ImageTransformationsResponse',
     'GooglePrivacyDlpV2InfoTypeLimitResponse',
     'GooglePrivacyDlpV2InfoTypeResponse',
     'GooglePrivacyDlpV2InfoTypeStatsResponse',
@@ -118,6 +123,7 @@ __all__ = [
     'GooglePrivacyDlpV2RiskAnalysisJobConfigResponse',
     'GooglePrivacyDlpV2SaveFindingsResponse',
     'GooglePrivacyDlpV2ScheduleResponse',
+    'GooglePrivacyDlpV2SelectedInfoTypesResponse',
     'GooglePrivacyDlpV2StatisticalTableResponse',
     'GooglePrivacyDlpV2StorageConfigResponse',
     'GooglePrivacyDlpV2StoredInfoTypeConfigResponse',
@@ -187,7 +193,7 @@ class GooglePrivacyDlpV2ActionResponse(dict):
                  save_findings: 'outputs.GooglePrivacyDlpV2SaveFindingsResponse'):
         """
         A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
-        :param 'GooglePrivacyDlpV2DeidentifyResponse' deidentify: Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+        :param 'GooglePrivacyDlpV2DeidentifyResponse' deidentify: Create a de-identified copy of the input data.
         :param 'GooglePrivacyDlpV2JobNotificationEmailsResponse' job_notification_emails: Enable email notification for project owners and editors on job's completion/failure.
         :param 'GooglePrivacyDlpV2PublishToPubSubResponse' pub_sub: Publish a notification to a pubsub topic.
         :param 'GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse' publish_findings_to_cloud_data_catalog: Publish findings to Cloud Datahub.
@@ -207,7 +213,7 @@ class GooglePrivacyDlpV2ActionResponse(dict):
     @pulumi.getter
     def deidentify(self) -> 'outputs.GooglePrivacyDlpV2DeidentifyResponse':
         """
-        Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+        Create a de-identified copy of the input data.
         """
         return pulumi.get(self, "deidentify")
 
@@ -258,6 +264,30 @@ class GooglePrivacyDlpV2ActionResponse(dict):
         Save resulting findings in a provided location.
         """
         return pulumi.get(self, "save_findings")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2AllInfoTypesResponse(dict):
+    """
+    Apply transformation to all findings.
+    """
+    def __init__(__self__):
+        """
+        Apply transformation to all findings.
+        """
+        pass
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2AllTextResponse(dict):
+    """
+    Apply to all text.
+    """
+    def __init__(__self__):
+        """
+        Apply to all text.
+        """
+        pass
 
 
 @pulumi.output_type
@@ -1250,6 +1280,50 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSetResponse(dict):
 
 
 @pulumi.output_type
+class GooglePrivacyDlpV2ColorResponse(dict):
+    """
+    Represents a color in the RGB color space.
+    """
+    def __init__(__self__, *,
+                 blue: float,
+                 green: float,
+                 red: float):
+        """
+        Represents a color in the RGB color space.
+        :param float blue: The amount of blue in the color as a value in the interval [0, 1].
+        :param float green: The amount of green in the color as a value in the interval [0, 1].
+        :param float red: The amount of red in the color as a value in the interval [0, 1].
+        """
+        pulumi.set(__self__, "blue", blue)
+        pulumi.set(__self__, "green", green)
+        pulumi.set(__self__, "red", red)
+
+    @property
+    @pulumi.getter
+    def blue(self) -> float:
+        """
+        The amount of blue in the color as a value in the interval [0, 1].
+        """
+        return pulumi.get(self, "blue")
+
+    @property
+    @pulumi.getter
+    def green(self) -> float:
+        """
+        The amount of green in the color as a value in the interval [0, 1].
+        """
+        return pulumi.get(self, "green")
+
+    @property
+    @pulumi.getter
+    def red(self) -> float:
+        """
+        The amount of red in the color as a value in the interval [0, 1].
+        """
+        return pulumi.get(self, "red")
+
+
+@pulumi.output_type
 class GooglePrivacyDlpV2ConditionResponse(dict):
     """
     The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false.
@@ -1836,7 +1910,9 @@ class GooglePrivacyDlpV2DeidentifyConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "infoTypeTransformations":
+        if key == "imageTransformations":
+            suggest = "image_transformations"
+        elif key == "infoTypeTransformations":
             suggest = "info_type_transformations"
         elif key == "recordTransformations":
             suggest = "record_transformations"
@@ -1855,18 +1931,29 @@ class GooglePrivacyDlpV2DeidentifyConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 image_transformations: 'outputs.GooglePrivacyDlpV2ImageTransformationsResponse',
                  info_type_transformations: 'outputs.GooglePrivacyDlpV2InfoTypeTransformationsResponse',
                  record_transformations: 'outputs.GooglePrivacyDlpV2RecordTransformationsResponse',
                  transformation_error_handling: 'outputs.GooglePrivacyDlpV2TransformationErrorHandlingResponse'):
         """
         The configuration that controls how the data will change.
+        :param 'GooglePrivacyDlpV2ImageTransformationsResponse' image_transformations: Treat the dataset as an image and redact.
         :param 'GooglePrivacyDlpV2InfoTypeTransformationsResponse' info_type_transformations: Treat the dataset as free-form text and apply the same free text transformation everywhere.
         :param 'GooglePrivacyDlpV2RecordTransformationsResponse' record_transformations: Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
         :param 'GooglePrivacyDlpV2TransformationErrorHandlingResponse' transformation_error_handling: Mode for handling transformation errors. If left unspecified, the default mode is `TransformationErrorHandling.ThrowError`.
         """
+        pulumi.set(__self__, "image_transformations", image_transformations)
         pulumi.set(__self__, "info_type_transformations", info_type_transformations)
         pulumi.set(__self__, "record_transformations", record_transformations)
         pulumi.set(__self__, "transformation_error_handling", transformation_error_handling)
+
+    @property
+    @pulumi.getter(name="imageTransformations")
+    def image_transformations(self) -> 'outputs.GooglePrivacyDlpV2ImageTransformationsResponse':
+        """
+        Treat the dataset as an image and redact.
+        """
+        return pulumi.get(self, "image_transformations")
 
     @property
     @pulumi.getter(name="infoTypeTransformations")
@@ -1896,7 +1983,7 @@ class GooglePrivacyDlpV2DeidentifyConfigResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2DeidentifyResponse(dict):
     """
-    Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+    Create a de-identified copy of the requested table or files. A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1927,8 +2014,8 @@ class GooglePrivacyDlpV2DeidentifyResponse(dict):
                  transformation_config: 'outputs.GooglePrivacyDlpV2TransformationConfigResponse',
                  transformation_details_storage_config: 'outputs.GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse'):
         """
-        Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
-        :param str cloud_storage_output: User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+        Create a de-identified copy of the requested table or files. A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+        :param str cloud_storage_output: User settable Cloud Storage bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
         :param Sequence[str] file_types_to_transform: List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
         :param 'GooglePrivacyDlpV2TransformationConfigResponse' transformation_config: User specified deidentify templates and configs for structured, unstructured, and image files.
         :param 'GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse' transformation_details_storage_config: Config for storing transformation details. This is separate from the de-identified content, and contains metadata about the successful transformations and/or failures that occurred while de-identifying. This needs to be set in order for users to access information about the status of each transformation (see TransformationDetails message for more information about what is noted).
@@ -1942,7 +2029,7 @@ class GooglePrivacyDlpV2DeidentifyResponse(dict):
     @pulumi.getter(name="cloudStorageOutput")
     def cloud_storage_output(self) -> str:
         """
-        User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+        User settable Cloud Storage bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
         """
         return pulumi.get(self, "cloud_storage_output")
 
@@ -3006,6 +3093,102 @@ class GooglePrivacyDlpV2HybridOptionsResponse(dict):
 
 
 @pulumi.output_type
+class GooglePrivacyDlpV2ImageTransformationResponse(dict):
+    """
+    Configuration for determining how redaction of images should occur.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allInfoTypes":
+            suggest = "all_info_types"
+        elif key == "allText":
+            suggest = "all_text"
+        elif key == "redactionColor":
+            suggest = "redaction_color"
+        elif key == "selectedInfoTypes":
+            suggest = "selected_info_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2ImageTransformationResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2ImageTransformationResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2ImageTransformationResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 all_info_types: 'outputs.GooglePrivacyDlpV2AllInfoTypesResponse',
+                 all_text: 'outputs.GooglePrivacyDlpV2AllTextResponse',
+                 redaction_color: 'outputs.GooglePrivacyDlpV2ColorResponse',
+                 selected_info_types: 'outputs.GooglePrivacyDlpV2SelectedInfoTypesResponse'):
+        """
+        Configuration for determining how redaction of images should occur.
+        :param 'GooglePrivacyDlpV2AllInfoTypesResponse' all_info_types: Apply transformation to all findings not specified in other ImageTransformation's selected_info_types. Only one instance is allowed within the ImageTransformations message.
+        :param 'GooglePrivacyDlpV2AllTextResponse' all_text: Apply transformation to all text that doesn't match an infoType. Only one instance is allowed within the ImageTransformations message.
+        :param 'GooglePrivacyDlpV2ColorResponse' redaction_color: The color to use when redacting content from an image. If not specified, the default is black.
+        :param 'GooglePrivacyDlpV2SelectedInfoTypesResponse' selected_info_types: Apply transformation to the selected info_types.
+        """
+        pulumi.set(__self__, "all_info_types", all_info_types)
+        pulumi.set(__self__, "all_text", all_text)
+        pulumi.set(__self__, "redaction_color", redaction_color)
+        pulumi.set(__self__, "selected_info_types", selected_info_types)
+
+    @property
+    @pulumi.getter(name="allInfoTypes")
+    def all_info_types(self) -> 'outputs.GooglePrivacyDlpV2AllInfoTypesResponse':
+        """
+        Apply transformation to all findings not specified in other ImageTransformation's selected_info_types. Only one instance is allowed within the ImageTransformations message.
+        """
+        return pulumi.get(self, "all_info_types")
+
+    @property
+    @pulumi.getter(name="allText")
+    def all_text(self) -> 'outputs.GooglePrivacyDlpV2AllTextResponse':
+        """
+        Apply transformation to all text that doesn't match an infoType. Only one instance is allowed within the ImageTransformations message.
+        """
+        return pulumi.get(self, "all_text")
+
+    @property
+    @pulumi.getter(name="redactionColor")
+    def redaction_color(self) -> 'outputs.GooglePrivacyDlpV2ColorResponse':
+        """
+        The color to use when redacting content from an image. If not specified, the default is black.
+        """
+        return pulumi.get(self, "redaction_color")
+
+    @property
+    @pulumi.getter(name="selectedInfoTypes")
+    def selected_info_types(self) -> 'outputs.GooglePrivacyDlpV2SelectedInfoTypesResponse':
+        """
+        Apply transformation to the selected info_types.
+        """
+        return pulumi.get(self, "selected_info_types")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2ImageTransformationsResponse(dict):
+    """
+    A type of transformation that is applied over images.
+    """
+    def __init__(__self__, *,
+                 transforms: Sequence['outputs.GooglePrivacyDlpV2ImageTransformationResponse']):
+        """
+        A type of transformation that is applied over images.
+        """
+        pulumi.set(__self__, "transforms", transforms)
+
+    @property
+    @pulumi.getter
+    def transforms(self) -> Sequence['outputs.GooglePrivacyDlpV2ImageTransformationResponse']:
+        return pulumi.get(self, "transforms")
+
+
+@pulumi.output_type
 class GooglePrivacyDlpV2InfoTypeLimitResponse(dict):
     """
     Max findings configuration per infoType, per content item or long running DlpJob.
@@ -3673,11 +3856,11 @@ class GooglePrivacyDlpV2InspectionRuleSetResponse(dict):
 @pulumi.output_type
 class GooglePrivacyDlpV2JobNotificationEmailsResponse(dict):
     """
-    Enable email notification to project owners and editors on jobs's completion/failure.
+    Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
     """
     def __init__(__self__):
         """
-        Enable email notification to project owners and editors on jobs's completion/failure.
+        Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
         """
         pass
 
@@ -5990,6 +6173,45 @@ class GooglePrivacyDlpV2ScheduleResponse(dict):
         With this option a job is started on a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days.
         """
         return pulumi.get(self, "recurrence_period_duration")
+
+
+@pulumi.output_type
+class GooglePrivacyDlpV2SelectedInfoTypesResponse(dict):
+    """
+    Apply transformation to the selected info_types.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "infoTypes":
+            suggest = "info_types"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GooglePrivacyDlpV2SelectedInfoTypesResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GooglePrivacyDlpV2SelectedInfoTypesResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GooglePrivacyDlpV2SelectedInfoTypesResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 info_types: Sequence['outputs.GooglePrivacyDlpV2InfoTypeResponse']):
+        """
+        Apply transformation to the selected info_types.
+        :param Sequence['GooglePrivacyDlpV2InfoTypeResponse'] info_types: InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message.
+        """
+        pulumi.set(__self__, "info_types", info_types)
+
+    @property
+    @pulumi.getter(name="infoTypes")
+    def info_types(self) -> Sequence['outputs.GooglePrivacyDlpV2InfoTypeResponse']:
+        """
+        InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message.
+        """
+        return pulumi.get(self, "info_types")
 
 
 @pulumi.output_type

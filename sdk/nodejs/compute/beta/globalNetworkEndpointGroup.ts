@@ -86,6 +86,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly networkEndpointType!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
+    public readonly pscData!: pulumi.Output<outputs.compute.beta.NetworkEndpointGroupPscDataResponse>;
     /**
      * The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
      */
@@ -141,6 +142,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pscData"] = args ? args.pscData : undefined;
             resourceInputs["pscTargetService"] = args ? args.pscTargetService : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["serverlessDeployment"] = args ? args.serverlessDeployment : undefined;
@@ -165,6 +167,7 @@ export class GlobalNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["network"] = undefined /*out*/;
             resourceInputs["networkEndpointType"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
+            resourceInputs["pscData"] = undefined /*out*/;
             resourceInputs["pscTargetService"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -228,6 +231,7 @@ export interface GlobalNetworkEndpointGroupArgs {
      */
     networkEndpointType?: pulumi.Input<enums.compute.beta.GlobalNetworkEndpointGroupNetworkEndpointType>;
     project?: pulumi.Input<string>;
+    pscData?: pulumi.Input<inputs.compute.beta.NetworkEndpointGroupPscDataArgs>;
     /**
      * The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
      */

@@ -83,6 +83,10 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * Share-settings for the node group
+     */
+    public readonly shareSettings!: pulumi.Output<outputs.compute.v1.ShareSettingsResponse>;
+    /**
      * The total number of nodes in the node group.
      */
     public /*out*/ readonly size!: pulumi.Output<number>;
@@ -113,6 +117,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["nodeTemplate"] = args ? args.nodeTemplate : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
+            resourceInputs["shareSettings"] = args ? args.shareSettings : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
@@ -135,6 +140,7 @@ export class NodeGroup extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["shareSettings"] = undefined /*out*/;
             resourceInputs["size"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["zone"] = undefined /*out*/;
@@ -184,5 +190,9 @@ export interface NodeGroupArgs {
      * An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
      */
     requestId?: pulumi.Input<string>;
+    /**
+     * Share-settings for the node group
+     */
+    shareSettings?: pulumi.Input<inputs.compute.v1.ShareSettingsArgs>;
     zone?: pulumi.Input<string>;
 }

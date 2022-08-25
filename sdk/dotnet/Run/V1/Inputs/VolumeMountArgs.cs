@@ -18,23 +18,23 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         /// <summary>
         /// Path within the container at which the volume should be mounted. Must not contain ':'.
         /// </summary>
-        [Input("mountPath")]
-        public Input<string>? MountPath { get; set; }
+        [Input("mountPath", required: true)]
+        public Input<string> MountPath { get; set; } = null!;
 
         /// <summary>
         /// The name of the volume. There must be a corresponding Volume with the same name.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// (Optional) Only true is accepted. Defaults to true.
+        /// Only true is accepted for Secret Volumes. Defaults to true for Secrets Volumes.
         /// </summary>
         [Input("readOnly")]
         public Input<bool>? ReadOnly { get; set; }
 
         /// <summary>
-        /// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         /// </summary>
         [Input("subPath")]
         public Input<string>? SubPath { get; set; }

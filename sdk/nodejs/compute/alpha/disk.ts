@@ -135,6 +135,10 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly provisionedIops!: pulumi.Output<string>;
     /**
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     */
+    public readonly provisionedThroughput!: pulumi.Output<string>;
+    /**
      * URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     public /*out*/ readonly region!: pulumi.Output<string>;
@@ -275,6 +279,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["physicalBlockSizeBytes"] = args ? args.physicalBlockSizeBytes : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["provisionedIops"] = args ? args.provisionedIops : undefined;
+            resourceInputs["provisionedThroughput"] = args ? args.provisionedThroughput : undefined;
             resourceInputs["replicaZones"] = args ? args.replicaZones : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
@@ -336,6 +341,7 @@ export class Disk extends pulumi.CustomResource {
             resourceInputs["physicalBlockSizeBytes"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["provisionedIops"] = undefined /*out*/;
+            resourceInputs["provisionedThroughput"] = undefined /*out*/;
             resourceInputs["region"] = undefined /*out*/;
             resourceInputs["replicaZones"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -447,6 +453,10 @@ export interface DiskArgs {
      * Indicates how many IOPS to provision for the disk. This sets the number of I/O operations per second that the disk can handle. Values must be between 10,000 and 120,000. For more details, see the Extreme persistent disk documentation.
      */
     provisionedIops?: pulumi.Input<string>;
+    /**
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     */
+    provisionedThroughput?: pulumi.Input<string>;
     /**
      * URLs of the zones where the disk should be replicated to. Only applicable for regional resources.
      */

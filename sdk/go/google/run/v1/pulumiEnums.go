@@ -188,7 +188,7 @@ const (
 	DomainMappingSpecCertificateModeCertificateModeUnspecified = DomainMappingSpecCertificateMode("CERTIFICATE_MODE_UNSPECIFIED")
 	// Do not provision an HTTPS certificate.
 	DomainMappingSpecCertificateModeNone = DomainMappingSpecCertificateMode("NONE")
-	// Automatically provisions an HTTPS certificate via GoogleCA or LetsEncrypt.
+	// Automatically provisions an HTTPS certificate via GoogleCA.
 	DomainMappingSpecCertificateModeAutomatic = DomainMappingSpecCertificateMode("AUTOMATIC")
 )
 

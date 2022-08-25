@@ -56,6 +56,8 @@ type LookupRoutineResult struct {
 	RoutineReference RoutineReferenceResponse `pulumi:"routineReference"`
 	// The type of routine.
 	RoutineType string `pulumi:"routineType"`
+	// Optional. Spark specific options.
+	SparkOptions SparkOptionsResponse `pulumi:"sparkOptions"`
 	// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
 	StrictMode bool `pulumi:"strictMode"`
 }
@@ -166,6 +168,11 @@ func (o LookupRoutineResultOutput) RoutineReference() RoutineReferenceResponseOu
 // The type of routine.
 func (o LookupRoutineResultOutput) RoutineType() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRoutineResult) string { return v.RoutineType }).(pulumi.StringOutput)
+}
+
+// Optional. Spark specific options.
+func (o LookupRoutineResultOutput) SparkOptions() SparkOptionsResponseOutput {
+	return o.ApplyT(func(v LookupRoutineResult) SparkOptionsResponse { return v.SparkOptions }).(SparkOptionsResponseOutput)
 }
 
 // Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.

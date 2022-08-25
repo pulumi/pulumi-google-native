@@ -17,13 +17,21 @@ namespace Pulumi.GoogleNative.Monitoring.V3.Outputs
     public sealed class TcpCheckResponse
     {
         /// <summary>
+        /// Contains information needed to add pings to a TCP check.
+        /// </summary>
+        public readonly Outputs.PingConfigResponse PingConfig;
+        /// <summary>
         /// The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
         /// </summary>
         public readonly int Port;
 
         [OutputConstructor]
-        private TcpCheckResponse(int port)
+        private TcpCheckResponse(
+            Outputs.PingConfigResponse pingConfig,
+
+            int port)
         {
+            PingConfig = pingConfig;
             Port = port;
         }
     }

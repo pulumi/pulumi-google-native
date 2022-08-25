@@ -6390,6 +6390,55 @@ namespace Pulumi.GoogleNative.Compute.Beta
     }
 
     /// <summary>
+    /// The match operator for the field.
+    /// </summary>
+    [EnumType]
+    public readonly struct SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp : IEquatable<SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp>
+    {
+        private readonly string _value;
+
+        private SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The operator matches if the field value contains the specified value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp Contains { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("CONTAINS");
+        /// <summary>
+        /// The operator matches if the field value ends with the specified value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp EndsWith { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("ENDS_WITH");
+        /// <summary>
+        /// The operator matches if the field value equals the specified value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp EqualsValue { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("EQUALS");
+        /// <summary>
+        /// The operator matches if the field value is any value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp EqualsAny { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("EQUALS_ANY");
+        /// <summary>
+        /// The operator matches if the field value starts with the specified value.
+        /// </summary>
+        public static SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp StartsWith { get; } = new SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("STARTS_WITH");
+
+        public static bool operator ==(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp left, SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp right) => left.Equals(right);
+        public static bool operator !=(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp left, SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp right) => !left.Equals(right);
+
+        public static explicit operator string(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp other && Equals(other);
+        public bool Equals(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL. 
     /// </summary>
     [EnumType]

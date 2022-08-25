@@ -105,6 +105,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
         /// </summary>
         public readonly string NetworkEndpointType;
+        public readonly Outputs.NetworkEndpointGroupPscDataResponse PscData;
         /// <summary>
         /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
         /// </summary>
@@ -168,6 +169,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string networkEndpointType,
 
+            Outputs.NetworkEndpointGroupPscDataResponse pscData,
+
             string pscTargetService,
 
             string region,
@@ -198,6 +201,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Name = name;
             Network = network;
             NetworkEndpointType = networkEndpointType;
+            PscData = pscData;
             PscTargetService = pscTargetService;
             Region = region;
             SelfLink = selfLink;

@@ -37,7 +37,7 @@ export class Share extends pulumi.CustomResource {
     }
 
     /**
-     * File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+     * File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
      */
     public readonly capacityGb!: pulumi.Output<string>;
     /**
@@ -131,7 +131,7 @@ export class Share extends pulumi.CustomResource {
  */
 export interface ShareArgs {
     /**
-     * File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+     * File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
      */
     capacityGb?: pulumi.Input<string>;
     /**

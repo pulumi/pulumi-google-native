@@ -29,6 +29,7 @@ class RegionNetworkEndpointGroupArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input['RegionNetworkEndpointGroupNetworkEndpointType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_data: Optional[pulumi.Input['NetworkEndpointGroupPscDataArgs']] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  serverless_deployment: Optional[pulumi.Input['NetworkEndpointGroupServerlessDeploymentArgs']] = None,
@@ -78,6 +79,8 @@ class RegionNetworkEndpointGroupArgs:
             pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_data is not None:
+            pulumi.set(__self__, "psc_data", psc_data)
         if psc_target_service is not None:
             pulumi.set(__self__, "psc_target_service", psc_target_service)
         if request_id is not None:
@@ -228,6 +231,15 @@ class RegionNetworkEndpointGroupArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pscData")
+    def psc_data(self) -> Optional[pulumi.Input['NetworkEndpointGroupPscDataArgs']]:
+        return pulumi.get(self, "psc_data")
+
+    @psc_data.setter
+    def psc_data(self, value: Optional[pulumi.Input['NetworkEndpointGroupPscDataArgs']]):
+        pulumi.set(self, "psc_data", value)
+
+    @property
     @pulumi.getter(name="pscTargetService")
     def psc_target_service(self) -> Optional[pulumi.Input[str]]:
         """
@@ -304,6 +316,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input['RegionNetworkEndpointGroupNetworkEndpointType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_data: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupPscDataArgs']]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -367,6 +380,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input['RegionNetworkEndpointGroupNetworkEndpointType']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_data: Optional[pulumi.Input[pulumi.InputType['NetworkEndpointGroupPscDataArgs']]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -396,6 +410,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["network_endpoint_type"] = network_endpoint_type
             __props__.__dict__["project"] = project
+            __props__.__dict__["psc_data"] = psc_data
             __props__.__dict__["psc_target_service"] = psc_target_service
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
@@ -447,6 +462,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         __props__.__dict__["network"] = None
         __props__.__dict__["network_endpoint_type"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["psc_data"] = None
         __props__.__dict__["psc_target_service"] = None
         __props__.__dict__["region"] = None
         __props__.__dict__["request_id"] = None
@@ -559,6 +575,11 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pscData")
+    def psc_data(self) -> pulumi.Output['outputs.NetworkEndpointGroupPscDataResponse']:
+        return pulumi.get(self, "psc_data")
 
     @property
     @pulumi.getter(name="pscTargetService")

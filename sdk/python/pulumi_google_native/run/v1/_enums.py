@@ -44,7 +44,7 @@ class DomainMappingSpecCertificateMode(str, Enum):
     """
     AUTOMATIC = "AUTOMATIC"
     """
-    Automatically provisions an HTTPS certificate via GoogleCA or LetsEncrypt.
+    Automatically provisions an HTTPS certificate via GoogleCA.
     """
 
 

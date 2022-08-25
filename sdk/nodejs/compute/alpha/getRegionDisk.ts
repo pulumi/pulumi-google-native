@@ -127,6 +127,10 @@ export interface GetRegionDiskResult {
      */
     readonly provisionedIops: string;
     /**
+     * Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+     */
+    readonly provisionedThroughput: string;
+    /**
      * URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
      */
     readonly region: string;

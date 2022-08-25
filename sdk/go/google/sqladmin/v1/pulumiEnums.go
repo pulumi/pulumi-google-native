@@ -2341,6 +2341,175 @@ func (in *settingsAvailabilityTypePtr) ToSettingsAvailabilityTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(SettingsAvailabilityTypePtrOutput)
 }
 
+// Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+type SettingsConnectorEnforcement string
+
+const (
+	// The requirement for Cloud SQL connectors is unknown.
+	SettingsConnectorEnforcementConnectorEnforcementUnspecified = SettingsConnectorEnforcement("CONNECTOR_ENFORCEMENT_UNSPECIFIED")
+	// Do not require Cloud SQL connectors.
+	SettingsConnectorEnforcementNotRequired = SettingsConnectorEnforcement("NOT_REQUIRED")
+	// Require all connections to use Cloud SQL connectors, including the Cloud SQL Auth Proxy and Cloud SQL Java, Python, and Go connectors. Note: This disables all existing authorized networks.
+	SettingsConnectorEnforcementRequired = SettingsConnectorEnforcement("REQUIRED")
+)
+
+func (SettingsConnectorEnforcement) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsConnectorEnforcement)(nil)).Elem()
+}
+
+func (e SettingsConnectorEnforcement) ToSettingsConnectorEnforcementOutput() SettingsConnectorEnforcementOutput {
+	return pulumi.ToOutput(e).(SettingsConnectorEnforcementOutput)
+}
+
+func (e SettingsConnectorEnforcement) ToSettingsConnectorEnforcementOutputWithContext(ctx context.Context) SettingsConnectorEnforcementOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SettingsConnectorEnforcementOutput)
+}
+
+func (e SettingsConnectorEnforcement) ToSettingsConnectorEnforcementPtrOutput() SettingsConnectorEnforcementPtrOutput {
+	return e.ToSettingsConnectorEnforcementPtrOutputWithContext(context.Background())
+}
+
+func (e SettingsConnectorEnforcement) ToSettingsConnectorEnforcementPtrOutputWithContext(ctx context.Context) SettingsConnectorEnforcementPtrOutput {
+	return SettingsConnectorEnforcement(e).ToSettingsConnectorEnforcementOutputWithContext(ctx).ToSettingsConnectorEnforcementPtrOutputWithContext(ctx)
+}
+
+func (e SettingsConnectorEnforcement) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SettingsConnectorEnforcement) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SettingsConnectorEnforcement) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SettingsConnectorEnforcement) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SettingsConnectorEnforcementOutput struct{ *pulumi.OutputState }
+
+func (SettingsConnectorEnforcementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SettingsConnectorEnforcement)(nil)).Elem()
+}
+
+func (o SettingsConnectorEnforcementOutput) ToSettingsConnectorEnforcementOutput() SettingsConnectorEnforcementOutput {
+	return o
+}
+
+func (o SettingsConnectorEnforcementOutput) ToSettingsConnectorEnforcementOutputWithContext(ctx context.Context) SettingsConnectorEnforcementOutput {
+	return o
+}
+
+func (o SettingsConnectorEnforcementOutput) ToSettingsConnectorEnforcementPtrOutput() SettingsConnectorEnforcementPtrOutput {
+	return o.ToSettingsConnectorEnforcementPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsConnectorEnforcementOutput) ToSettingsConnectorEnforcementPtrOutputWithContext(ctx context.Context) SettingsConnectorEnforcementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SettingsConnectorEnforcement) *SettingsConnectorEnforcement {
+		return &v
+	}).(SettingsConnectorEnforcementPtrOutput)
+}
+
+func (o SettingsConnectorEnforcementOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SettingsConnectorEnforcementOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SettingsConnectorEnforcement) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SettingsConnectorEnforcementOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsConnectorEnforcementOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SettingsConnectorEnforcement) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SettingsConnectorEnforcementPtrOutput struct{ *pulumi.OutputState }
+
+func (SettingsConnectorEnforcementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SettingsConnectorEnforcement)(nil)).Elem()
+}
+
+func (o SettingsConnectorEnforcementPtrOutput) ToSettingsConnectorEnforcementPtrOutput() SettingsConnectorEnforcementPtrOutput {
+	return o
+}
+
+func (o SettingsConnectorEnforcementPtrOutput) ToSettingsConnectorEnforcementPtrOutputWithContext(ctx context.Context) SettingsConnectorEnforcementPtrOutput {
+	return o
+}
+
+func (o SettingsConnectorEnforcementPtrOutput) Elem() SettingsConnectorEnforcementOutput {
+	return o.ApplyT(func(v *SettingsConnectorEnforcement) SettingsConnectorEnforcement {
+		if v != nil {
+			return *v
+		}
+		var ret SettingsConnectorEnforcement
+		return ret
+	}).(SettingsConnectorEnforcementOutput)
+}
+
+func (o SettingsConnectorEnforcementPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SettingsConnectorEnforcementPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SettingsConnectorEnforcement) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SettingsConnectorEnforcementInput is an input type that accepts SettingsConnectorEnforcementArgs and SettingsConnectorEnforcementOutput values.
+// You can construct a concrete instance of `SettingsConnectorEnforcementInput` via:
+//
+//	SettingsConnectorEnforcementArgs{...}
+type SettingsConnectorEnforcementInput interface {
+	pulumi.Input
+
+	ToSettingsConnectorEnforcementOutput() SettingsConnectorEnforcementOutput
+	ToSettingsConnectorEnforcementOutputWithContext(context.Context) SettingsConnectorEnforcementOutput
+}
+
+var settingsConnectorEnforcementPtrType = reflect.TypeOf((**SettingsConnectorEnforcement)(nil)).Elem()
+
+type SettingsConnectorEnforcementPtrInput interface {
+	pulumi.Input
+
+	ToSettingsConnectorEnforcementPtrOutput() SettingsConnectorEnforcementPtrOutput
+	ToSettingsConnectorEnforcementPtrOutputWithContext(context.Context) SettingsConnectorEnforcementPtrOutput
+}
+
+type settingsConnectorEnforcementPtr string
+
+func SettingsConnectorEnforcementPtr(v string) SettingsConnectorEnforcementPtrInput {
+	return (*settingsConnectorEnforcementPtr)(&v)
+}
+
+func (*settingsConnectorEnforcementPtr) ElementType() reflect.Type {
+	return settingsConnectorEnforcementPtrType
+}
+
+func (in *settingsConnectorEnforcementPtr) ToSettingsConnectorEnforcementPtrOutput() SettingsConnectorEnforcementPtrOutput {
+	return pulumi.ToOutput(in).(SettingsConnectorEnforcementPtrOutput)
+}
+
+func (in *settingsConnectorEnforcementPtr) ToSettingsConnectorEnforcementPtrOutputWithContext(ctx context.Context) SettingsConnectorEnforcementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SettingsConnectorEnforcementPtrOutput)
+}
+
 // The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
 type SettingsDataDiskType string
 
@@ -3387,6 +3556,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsActivationPolicyPtrInput)(nil)).Elem(), SettingsActivationPolicy("SQL_ACTIVATION_POLICY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAvailabilityTypeInput)(nil)).Elem(), SettingsAvailabilityType("SQL_AVAILABILITY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsAvailabilityTypePtrInput)(nil)).Elem(), SettingsAvailabilityType("SQL_AVAILABILITY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsConnectorEnforcementInput)(nil)).Elem(), SettingsConnectorEnforcement("CONNECTOR_ENFORCEMENT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SettingsConnectorEnforcementPtrInput)(nil)).Elem(), SettingsConnectorEnforcement("CONNECTOR_ENFORCEMENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsDataDiskTypeInput)(nil)).Elem(), SettingsDataDiskType("SQL_DATA_DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsDataDiskTypePtrInput)(nil)).Elem(), SettingsDataDiskType("SQL_DATA_DISK_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SettingsPricingPlanInput)(nil)).Elem(), SettingsPricingPlan("SQL_PRICING_PLAN_UNSPECIFIED"))
@@ -3426,6 +3597,8 @@ func init() {
 	pulumi.RegisterOutputType(SettingsActivationPolicyPtrOutput{})
 	pulumi.RegisterOutputType(SettingsAvailabilityTypeOutput{})
 	pulumi.RegisterOutputType(SettingsAvailabilityTypePtrOutput{})
+	pulumi.RegisterOutputType(SettingsConnectorEnforcementOutput{})
+	pulumi.RegisterOutputType(SettingsConnectorEnforcementPtrOutput{})
 	pulumi.RegisterOutputType(SettingsDataDiskTypeOutput{})
 	pulumi.RegisterOutputType(SettingsDataDiskTypePtrOutput{})
 	pulumi.RegisterOutputType(SettingsPricingPlanOutput{})

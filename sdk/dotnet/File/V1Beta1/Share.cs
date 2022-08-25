@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
     public partial class Share : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+        /// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
         /// </summary>
         [Output("capacityGb")]
         public Output<string> CapacityGb { get; private set; } = null!;
@@ -132,7 +132,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
     public sealed class ShareArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+        /// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
         /// </summary>
         [Input("capacityGb")]
         public Input<string>? CapacityGb { get; set; }

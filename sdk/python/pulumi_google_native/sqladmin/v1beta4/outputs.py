@@ -1545,6 +1545,8 @@ class SettingsResponse(dict):
             suggest = "availability_type"
         elif key == "backupConfiguration":
             suggest = "backup_configuration"
+        elif key == "connectorEnforcement":
+            suggest = "connector_enforcement"
         elif key == "crashSafeReplicationEnabled":
             suggest = "crash_safe_replication_enabled"
         elif key == "dataDiskSizeGb":
@@ -1602,6 +1604,7 @@ class SettingsResponse(dict):
                  availability_type: str,
                  backup_configuration: 'outputs.BackupConfigurationResponse',
                  collation: str,
+                 connector_enforcement: str,
                  crash_safe_replication_enabled: bool,
                  data_disk_size_gb: str,
                  data_disk_type: str,
@@ -1631,6 +1634,7 @@ class SettingsResponse(dict):
         :param str availability_type: Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         :param 'BackupConfigurationResponse' backup_configuration: The daily backup configuration for the instance.
         :param str collation: The name of server Instance collation.
+        :param str connector_enforcement: Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
         :param bool crash_safe_replication_enabled: Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
         :param str data_disk_size_gb: The size of data disk, in GB. The data disk size minimum is 10GB.
         :param str data_disk_type: The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
@@ -1659,6 +1663,7 @@ class SettingsResponse(dict):
         pulumi.set(__self__, "availability_type", availability_type)
         pulumi.set(__self__, "backup_configuration", backup_configuration)
         pulumi.set(__self__, "collation", collation)
+        pulumi.set(__self__, "connector_enforcement", connector_enforcement)
         pulumi.set(__self__, "crash_safe_replication_enabled", crash_safe_replication_enabled)
         pulumi.set(__self__, "data_disk_size_gb", data_disk_size_gb)
         pulumi.set(__self__, "data_disk_type", data_disk_type)
@@ -1728,6 +1733,14 @@ class SettingsResponse(dict):
         The name of server Instance collation.
         """
         return pulumi.get(self, "collation")
+
+    @property
+    @pulumi.getter(name="connectorEnforcement")
+    def connector_enforcement(self) -> str:
+        """
+        Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+        """
+        return pulumi.get(self, "connector_enforcement")
 
     @property
     @pulumi.getter(name="crashSafeReplicationEnabled")

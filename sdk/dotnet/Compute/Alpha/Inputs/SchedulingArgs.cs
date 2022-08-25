@@ -39,6 +39,9 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Inputs
         [Input("currentMemoryMb")]
         public Input<string>? CurrentMemoryMb { get; set; }
 
+        [Input("dynamicResizeProperties")]
+        public Input<Inputs.SchedulingDynamicResizePropertiesArgs>? DynamicResizeProperties { get; set; }
+
         /// <summary>
         /// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         /// </summary>

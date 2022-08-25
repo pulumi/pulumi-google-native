@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.CloudSupport.V2Beta
         }
 
         /// <summary>
-        /// Severity is undefined or has not been set yet.
+        /// Priority is undefined or has not been set yet.
         /// </summary>
         public static CasePriority PriorityUnspecified { get; } = new CasePriority("PRIORITY_UNSPECIFIED");
         /// <summary>

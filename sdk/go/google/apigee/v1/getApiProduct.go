@@ -52,6 +52,8 @@ type LookupApiProductResult struct {
 	Proxies []string `pulumi:"proxies"`
 	// Number of request messages permitted per app by this API product for the specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota` of 50, for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50 requests are allowed every 12 hours.
 	Quota string `pulumi:"quota"`
+	// Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
+	QuotaCounterScope string `pulumi:"quotaCounterScope"`
 	// Time interval over which the number of request messages is calculated.
 	QuotaInterval string `pulumi:"quotaInterval"`
 	// Time unit defined for the `quotaInterval`. Valid values include `minute`, `hour`, `day`, or `month`.
@@ -161,6 +163,11 @@ func (o LookupApiProductResultOutput) Proxies() pulumi.StringArrayOutput {
 // Number of request messages permitted per app by this API product for the specified `quotaInterval` and `quotaTimeUnit`. For example, a `quota` of 50, for a `quotaInterval` of 12 and a `quotaTimeUnit` of hours means 50 requests are allowed every 12 hours.
 func (o LookupApiProductResultOutput) Quota() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiProductResult) string { return v.Quota }).(pulumi.StringOutput)
+}
+
+// Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
+func (o LookupApiProductResultOutput) QuotaCounterScope() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupApiProductResult) string { return v.QuotaCounterScope }).(pulumi.StringOutput)
 }
 
 // Time interval over which the number of request messages is calculated.

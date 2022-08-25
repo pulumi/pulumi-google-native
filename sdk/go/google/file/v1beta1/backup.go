@@ -36,11 +36,11 @@ type Backup struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Reserved for future use.
 	SatisfiesPzs pulumi.BoolOutput `pulumi:"satisfiesPzs"`
-	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+	// Name of the file share in the source Filestore instance that the backup is created from.
 	SourceFileShare pulumi.StringOutput `pulumi:"sourceFileShare"`
-	// The resource name of the source Cloud Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+	// The resource name of the source Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
 	SourceInstance pulumi.StringOutput `pulumi:"sourceInstance"`
-	// The service tier of the source Cloud Filestore instance that this backup is created from.
+	// The service tier of the source Filestore instance that this backup is created from.
 	SourceInstanceTier pulumi.StringOutput `pulumi:"sourceInstanceTier"`
 	// The backup state.
 	State pulumi.StringOutput `pulumi:"state"`
@@ -106,9 +106,9 @@ type backupArgs struct {
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	Project  *string           `pulumi:"project"`
-	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+	// Name of the file share in the source Filestore instance that the backup is created from.
 	SourceFileShare *string `pulumi:"sourceFileShare"`
-	// The resource name of the source Cloud Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+	// The resource name of the source Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
 	SourceInstance *string `pulumi:"sourceInstance"`
 }
 
@@ -124,9 +124,9 @@ type BackupArgs struct {
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	Project  pulumi.StringPtrInput
-	// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+	// Name of the file share in the source Filestore instance that the backup is created from.
 	SourceFileShare pulumi.StringPtrInput
-	// The resource name of the source Cloud Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+	// The resource name of the source Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
 	SourceInstance pulumi.StringPtrInput
 }
 
@@ -220,17 +220,17 @@ func (o BackupOutput) SatisfiesPzs() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Backup) pulumi.BoolOutput { return v.SatisfiesPzs }).(pulumi.BoolOutput)
 }
 
-// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+// Name of the file share in the source Filestore instance that the backup is created from.
 func (o BackupOutput) SourceFileShare() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.SourceFileShare }).(pulumi.StringOutput)
 }
 
-// The resource name of the source Cloud Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+// The resource name of the source Filestore instance, in the format `projects/{project_id}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
 func (o BackupOutput) SourceInstance() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.SourceInstance }).(pulumi.StringOutput)
 }
 
-// The service tier of the source Cloud Filestore instance that this backup is created from.
+// The service tier of the source Filestore instance that this backup is created from.
 func (o BackupOutput) SourceInstanceTier() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.SourceInstanceTier }).(pulumi.StringOutput)
 }

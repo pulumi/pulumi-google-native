@@ -11,24 +11,24 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
+    /// Not supported by Cloud Run. EnvFromSource represents the source of a set of ConfigMaps
     /// </summary>
     public sealed class EnvFromSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional) The ConfigMap to select from
+        /// The ConfigMap to select from
         /// </summary>
         [Input("configMapRef")]
         public Input<Inputs.ConfigMapEnvSourceArgs>? ConfigMapRef { get; set; }
 
         /// <summary>
-        /// (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        /// An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
         /// </summary>
         [Input("prefix")]
         public Input<string>? Prefix { get; set; }
 
         /// <summary>
-        /// (Optional) The Secret to select from
+        /// The Secret to select from
         /// </summary>
         [Input("secretRef")]
         public Input<Inputs.SecretEnvSourceArgs>? SecretRef { get; set; }

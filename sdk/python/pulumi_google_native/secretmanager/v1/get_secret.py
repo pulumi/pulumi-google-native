@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetSecretResult:
-    def __init__(__self__, create_time=None, etag=None, expire_time=None, labels=None, name=None, replication=None, rotation=None, topics=None, ttl=None, version_aliases=None):
+    def __init__(__self__, annotations=None, create_time=None, etag=None, expire_time=None, labels=None, name=None, replication=None, rotation=None, topics=None, ttl=None, version_aliases=None):
+        if annotations and not isinstance(annotations, dict):
+            raise TypeError("Expected argument 'annotations' to be a dict")
+        pulumi.set(__self__, "annotations", annotations)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -50,6 +53,14 @@ class GetSecretResult:
         if version_aliases and not isinstance(version_aliases, dict):
             raise TypeError("Expected argument 'version_aliases' to be a dict")
         pulumi.set(__self__, "version_aliases", version_aliases)
+
+    @property
+    @pulumi.getter
+    def annotations(self) -> Mapping[str, str]:
+        """
+        Optional. Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of annotation keys and values must be less than 16KiB.
+        """
+        return pulumi.get(self, "annotations")
 
     @property
     @pulumi.getter(name="createTime")
@@ -138,6 +149,7 @@ class AwaitableGetSecretResult(GetSecretResult):
         if False:
             yield self
         return GetSecretResult(
+            annotations=self.annotations,
             create_time=self.create_time,
             etag=self.etag,
             expire_time=self.expire_time,
@@ -163,6 +175,7 @@ def get_secret(project: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:secretmanager/v1:getSecret', __args__, opts=opts, typ=GetSecretResult).value
 
     return AwaitableGetSecretResult(
+        annotations=__ret__.annotations,
         create_time=__ret__.create_time,
         etag=__ret__.etag,
         expire_time=__ret__.expire_time,

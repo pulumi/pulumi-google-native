@@ -40,6 +40,8 @@ type NodeGroup struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Server-defined URL for the resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// Share-settings for the node group
+	ShareSettings ShareSettingsResponseOutput `pulumi:"shareSettings"`
 	// The total number of nodes in the node group.
 	Size   pulumi.IntOutput    `pulumi:"size"`
 	Status pulumi.StringOutput `pulumi:"status"`
@@ -112,7 +114,9 @@ type nodeGroupArgs struct {
 	Project      *string `pulumi:"project"`
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId *string `pulumi:"requestId"`
-	Zone      *string `pulumi:"zone"`
+	// Share-settings for the node group
+	ShareSettings *ShareSettings `pulumi:"shareSettings"`
+	Zone          *string        `pulumi:"zone"`
 }
 
 // The set of arguments for constructing a NodeGroup resource.
@@ -135,7 +139,9 @@ type NodeGroupArgs struct {
 	Project      pulumi.StringPtrInput
 	// An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
 	RequestId pulumi.StringPtrInput
-	Zone      pulumi.StringPtrInput
+	// Share-settings for the node group
+	ShareSettings ShareSettingsPtrInput
+	Zone          pulumi.StringPtrInput
 }
 
 func (NodeGroupArgs) ElementType() reflect.Type {
@@ -240,6 +246,11 @@ func (o NodeGroupOutput) RequestId() pulumi.StringPtrOutput {
 // Server-defined URL for the resource.
 func (o NodeGroupOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *NodeGroup) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// Share-settings for the node group
+func (o NodeGroupOutput) ShareSettings() ShareSettingsResponseOutput {
+	return o.ApplyT(func(v *NodeGroup) ShareSettingsResponseOutput { return v.ShareSettings }).(ShareSettingsResponseOutput)
 }
 
 // The total number of nodes in the node group.

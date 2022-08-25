@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<string> DeployEndTime { get; private set; } = null!;
 
         /// <summary>
-        /// The reason this deploy failed. This will always be unspecified while the deploy in progress.
+        /// The reason this rollout failed. This will always be unspecified while the rollout is in progress.
         /// </summary>
         [Output("deployFailureCause")]
         public Output<string> DeployFailureCause { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// Reason the build failed. Empty if the build succeeded.
+        /// Additional information about the rollout failure, if available.
         /// </summary>
         [Output("failureReason")]
         public Output<string> FailureReason { get; private set; } = null!;

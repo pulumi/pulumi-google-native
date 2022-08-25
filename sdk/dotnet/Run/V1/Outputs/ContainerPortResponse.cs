@@ -17,15 +17,15 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class ContainerPortResponse
     {
         /// <summary>
-        /// (Optional) Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
+        /// Port number the container listens on. This must be a valid port number, 0 &lt; x &lt; 65536.
         /// </summary>
         public readonly int ContainerPort;
         /// <summary>
-        /// (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+        /// If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
+        /// Protocol for port. Must be "TCP". Defaults to "TCP".
         /// </summary>
         public readonly string Protocol;
 

@@ -50,14 +50,6 @@ export interface GetAndroidAppResult {
      */
     readonly project: string;
     /**
-     * The SHA1 certificate hashes for the AndroidApp.
-     */
-    readonly sha1Hashes: string[];
-    /**
-     * The SHA256 certificate hashes for the AndroidApp.
-     */
-    readonly sha256Hashes: string[];
-    /**
      * The lifecycle state of the App.
      */
     readonly state: string;

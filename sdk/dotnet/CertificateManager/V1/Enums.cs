@@ -80,42 +80,4 @@ namespace Pulumi.GoogleNative.CertificateManager.V1
 
         public override string ToString() => _value;
     }
-
-    /// <summary>
-    /// Reason for provisioning failures.
-    /// </summary>
-    [EnumType]
-    public readonly struct ProvisioningIssueReason : IEquatable<ProvisioningIssueReason>
-    {
-        private readonly string _value;
-
-        private ProvisioningIssueReason(string value)
-        {
-            _value = value ?? throw new ArgumentNullException(nameof(value));
-        }
-
-        public static ProvisioningIssueReason ReasonUnspecified { get; } = new ProvisioningIssueReason("REASON_UNSPECIFIED");
-        /// <summary>
-        /// Certificate provisioning failed due to an issue with one or more of the domains on the certificate. For details of which domains failed, consult the `authorization_attempt_info` field.
-        /// </summary>
-        public static ProvisioningIssueReason AuthorizationIssue { get; } = new ProvisioningIssueReason("AUTHORIZATION_ISSUE");
-        /// <summary>
-        /// Exceeded Certificate Authority quotas or internal rate limits of the system. Provisioning may take longer to complete.
-        /// </summary>
-        public static ProvisioningIssueReason RateLimited { get; } = new ProvisioningIssueReason("RATE_LIMITED");
-
-        public static bool operator ==(ProvisioningIssueReason left, ProvisioningIssueReason right) => left.Equals(right);
-        public static bool operator !=(ProvisioningIssueReason left, ProvisioningIssueReason right) => !left.Equals(right);
-
-        public static explicit operator string(ProvisioningIssueReason value) => value._value;
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override bool Equals(object? obj) => obj is ProvisioningIssueReason other && Equals(other);
-        public bool Equals(ProvisioningIssueReason other) => string.Equals(_value, other._value, StringComparison.Ordinal);
-
-        [EditorBrowsable(EditorBrowsableState.Never)]
-        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
-
-        public override string ToString() => _value;
-    }
 }

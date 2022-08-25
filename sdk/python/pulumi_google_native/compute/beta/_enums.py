@@ -167,6 +167,7 @@ __all__ = [
     'SecurityPolicyDdosProtectionConfigDdosProtection',
     'SecurityPolicyRuleDirection',
     'SecurityPolicyRuleMatcherVersionedExpr',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp',
     'SecurityPolicyRuleRateLimitOptionsEnforceOnKey',
     'SecurityPolicyRuleRedirectOptionsType',
     'SecurityPolicyType',
@@ -2849,6 +2850,32 @@ class SecurityPolicyRuleMatcherVersionedExpr(str, Enum):
     SRC_IPS_V1 = "SRC_IPS_V1"
     """
     Matches the source IP address of a request to the IP ranges supplied in config.
+    """
+
+
+class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(str, Enum):
+    """
+    The match operator for the field.
+    """
+    CONTAINS = "CONTAINS"
+    """
+    The operator matches if the field value contains the specified value.
+    """
+    ENDS_WITH = "ENDS_WITH"
+    """
+    The operator matches if the field value ends with the specified value.
+    """
+    EQUALS = "EQUALS"
+    """
+    The operator matches if the field value equals the specified value.
+    """
+    EQUALS_ANY = "EQUALS_ANY"
+    """
+    The operator matches if the field value is any value.
+    """
+    STARTS_WITH = "STARTS_WITH"
+    """
+    The operator matches if the field value starts with the specified value.
     """
 
 

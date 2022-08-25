@@ -2982,6 +2982,34 @@ export const SecurityPolicyRuleMatcherVersionedExpr = {
  */
 export type SecurityPolicyRuleMatcherVersionedExpr = (typeof SecurityPolicyRuleMatcherVersionedExpr)[keyof typeof SecurityPolicyRuleMatcherVersionedExpr];
 
+export const SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp = {
+    /**
+     * The operator matches if the field value contains the specified value.
+     */
+    Contains: "CONTAINS",
+    /**
+     * The operator matches if the field value ends with the specified value.
+     */
+    EndsWith: "ENDS_WITH",
+    /**
+     * The operator matches if the field value equals the specified value.
+     */
+    Equals: "EQUALS",
+    /**
+     * The operator matches if the field value is any value.
+     */
+    EqualsAny: "EQUALS_ANY",
+    /**
+     * The operator matches if the field value starts with the specified value.
+     */
+    StartsWith: "STARTS_WITH",
+} as const;
+
+/**
+ * The match operator for the field.
+ */
+export type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp = (typeof SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp)[keyof typeof SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp];
+
 export const SecurityPolicyRuleRateLimitOptionsEnforceOnKey = {
     All: "ALL",
     AllIps: "ALL_IPS",

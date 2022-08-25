@@ -4693,6 +4693,8 @@ type Settings struct {
 	BackupConfiguration *BackupConfiguration `pulumi:"backupConfiguration"`
 	// The name of server Instance collation.
 	Collation *string `pulumi:"collation"`
+	// Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+	ConnectorEnforcement *SettingsConnectorEnforcement `pulumi:"connectorEnforcement"`
 	// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
 	CrashSafeReplicationEnabled *bool `pulumi:"crashSafeReplicationEnabled"`
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
@@ -4766,6 +4768,8 @@ type SettingsArgs struct {
 	BackupConfiguration BackupConfigurationPtrInput `pulumi:"backupConfiguration"`
 	// The name of server Instance collation.
 	Collation pulumi.StringPtrInput `pulumi:"collation"`
+	// Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+	ConnectorEnforcement SettingsConnectorEnforcementPtrInput `pulumi:"connectorEnforcement"`
 	// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
 	CrashSafeReplicationEnabled pulumi.BoolPtrInput `pulumi:"crashSafeReplicationEnabled"`
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
@@ -4920,6 +4924,11 @@ func (o SettingsOutput) BackupConfiguration() BackupConfigurationPtrOutput {
 // The name of server Instance collation.
 func (o SettingsOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.Collation }).(pulumi.StringPtrOutput)
+}
+
+// Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+func (o SettingsOutput) ConnectorEnforcement() SettingsConnectorEnforcementPtrOutput {
+	return o.ApplyT(func(v Settings) *SettingsConnectorEnforcement { return v.ConnectorEnforcement }).(SettingsConnectorEnforcementPtrOutput)
 }
 
 // Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
@@ -5113,6 +5122,16 @@ func (o SettingsPtrOutput) Collation() pulumi.StringPtrOutput {
 		}
 		return v.Collation
 	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+func (o SettingsPtrOutput) ConnectorEnforcement() SettingsConnectorEnforcementPtrOutput {
+	return o.ApplyT(func(v *Settings) *SettingsConnectorEnforcement {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectorEnforcement
+	}).(SettingsConnectorEnforcementPtrOutput)
 }
 
 // Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
@@ -5343,6 +5362,8 @@ type SettingsResponse struct {
 	BackupConfiguration BackupConfigurationResponse `pulumi:"backupConfiguration"`
 	// The name of server Instance collation.
 	Collation string `pulumi:"collation"`
+	// Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+	ConnectorEnforcement string `pulumi:"connectorEnforcement"`
 	// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
 	CrashSafeReplicationEnabled bool `pulumi:"crashSafeReplicationEnabled"`
 	// The size of data disk, in GB. The data disk size minimum is 10GB.
@@ -5434,6 +5455,11 @@ func (o SettingsResponseOutput) BackupConfiguration() BackupConfigurationRespons
 // The name of server Instance collation.
 func (o SettingsResponseOutput) Collation() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.Collation }).(pulumi.StringOutput)
+}
+
+// Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+func (o SettingsResponseOutput) ConnectorEnforcement() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.ConnectorEnforcement }).(pulumi.StringOutput)
 }
 
 // Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.

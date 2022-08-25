@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.DataCatalog.V1.Outputs
 {
 
     /// <summary>
-    /// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type.
+    /// Specification that applies to a data source connection. Valid only for entries with the `DATA_SOURCE_CONNECTION` type. Only one of internal specs can be set at the time, and cannot be changed later.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudDatacatalogV1DataSourceConnectionSpecResponse

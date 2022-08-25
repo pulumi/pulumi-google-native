@@ -25,11 +25,11 @@ class ServiceArgs:
                  spec: Optional[pulumi.Input['ServiceSpecArgs']] = None):
         """
         The set of arguments for constructing a Service resource.
-        :param pulumi.Input[str] api_version: The API version for this call such as "serving.knative.dev/v1".
+        :param pulumi.Input[str] api_version: The API version for this call. It must be "serving.knative.dev/v1".
         :param pulumi.Input[str] dry_run: Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
-        :param pulumi.Input[str] kind: The kind of resource, in this case "Service".
-        :param pulumi.Input['ObjectMetaArgs'] metadata: Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
-        :param pulumi.Input['ServiceSpecArgs'] spec: Spec holds the desired state of the Service (from the client).
+        :param pulumi.Input[str] kind: The kind of resource. It must be "Service".
+        :param pulumi.Input['ObjectMetaArgs'] metadata: Metadata associated with this Service, including name, namespace, labels, and annotations. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. The following Cloud Run-specific annotations are accepted in Service.metadata.annotations. * `run.googleapis.com/binary-authorization-breakglass` * `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` * `run.googleapis.com/description` * `run.googleapis.com/gc-traffic-tags` * `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
+        :param pulumi.Input['ServiceSpecArgs'] spec: Holds the desired state of the Service (from the client).
         """
         if api_version is not None:
             pulumi.set(__self__, "api_version", api_version)
@@ -50,7 +50,7 @@ class ServiceArgs:
     @pulumi.getter(name="apiVersion")
     def api_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The API version for this call such as "serving.knative.dev/v1".
+        The API version for this call. It must be "serving.knative.dev/v1".
         """
         return pulumi.get(self, "api_version")
 
@@ -74,7 +74,7 @@ class ServiceArgs:
     @pulumi.getter
     def kind(self) -> Optional[pulumi.Input[str]]:
         """
-        The kind of resource, in this case "Service".
+        The kind of resource. It must be "Service".
         """
         return pulumi.get(self, "kind")
 
@@ -95,7 +95,7 @@ class ServiceArgs:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input['ObjectMetaArgs']]:
         """
-        Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
+        Metadata associated with this Service, including name, namespace, labels, and annotations. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. The following Cloud Run-specific annotations are accepted in Service.metadata.annotations. * `run.googleapis.com/binary-authorization-breakglass` * `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` * `run.googleapis.com/description` * `run.googleapis.com/gc-traffic-tags` * `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
         """
         return pulumi.get(self, "metadata")
 
@@ -116,7 +116,7 @@ class ServiceArgs:
     @pulumi.getter
     def spec(self) -> Optional[pulumi.Input['ServiceSpecArgs']]:
         """
-        Spec holds the desired state of the Service (from the client).
+        Holds the desired state of the Service (from the client).
         """
         return pulumi.get(self, "spec")
 
@@ -139,16 +139,16 @@ class Service(pulumi.CustomResource):
                  spec: Optional[pulumi.Input[pulumi.InputType['ServiceSpecArgs']]] = None,
                  __props__=None):
         """
-        Create a service.
+        Creates a new Service. Service creation will trigger a new deployment. Use GetService, and check service.status to determine if the Service is ready.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_version: The API version for this call such as "serving.knative.dev/v1".
+        :param pulumi.Input[str] api_version: The API version for this call. It must be "serving.knative.dev/v1".
         :param pulumi.Input[str] dry_run: Indicates that the server should validate the request and populate default values without persisting the request. Supported values: `all`
-        :param pulumi.Input[str] kind: The kind of resource, in this case "Service".
-        :param pulumi.Input[pulumi.InputType['ObjectMetaArgs']] metadata: Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
-        :param pulumi.Input[pulumi.InputType['ServiceSpecArgs']] spec: Spec holds the desired state of the Service (from the client).
+        :param pulumi.Input[str] kind: The kind of resource. It must be "Service".
+        :param pulumi.Input[pulumi.InputType['ObjectMetaArgs']] metadata: Metadata associated with this Service, including name, namespace, labels, and annotations. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. The following Cloud Run-specific annotations are accepted in Service.metadata.annotations. * `run.googleapis.com/binary-authorization-breakglass` * `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` * `run.googleapis.com/description` * `run.googleapis.com/gc-traffic-tags` * `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
+        :param pulumi.Input[pulumi.InputType['ServiceSpecArgs']] spec: Holds the desired state of the Service (from the client).
         """
         ...
     @overload
@@ -157,7 +157,7 @@ class Service(pulumi.CustomResource):
                  args: Optional[ServiceArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a service.
+        Creates a new Service. Service creation will trigger a new deployment. Use GetService, and check service.status to determine if the Service is ready.
         Auto-naming is currently not supported for this resource.
 
         :param str resource_name: The name of the resource.
@@ -237,7 +237,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="apiVersion")
     def api_version(self) -> pulumi.Output[str]:
         """
-        The API version for this call such as "serving.knative.dev/v1".
+        The API version for this call. It must be "serving.knative.dev/v1".
         """
         return pulumi.get(self, "api_version")
 
@@ -253,7 +253,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def kind(self) -> pulumi.Output[str]:
         """
-        The kind of resource, in this case "Service".
+        The kind of resource. It must be "Service".
         """
         return pulumi.get(self, "kind")
 
@@ -266,7 +266,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def metadata(self) -> pulumi.Output['outputs.ObjectMetaResponse']:
         """
-        Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
+        Metadata associated with this Service, including name, namespace, labels, and annotations. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. The following Cloud Run-specific annotations are accepted in Service.metadata.annotations. * `run.googleapis.com/binary-authorization-breakglass` * `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` * `run.googleapis.com/description` * `run.googleapis.com/gc-traffic-tags` * `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
         """
         return pulumi.get(self, "metadata")
 
@@ -279,7 +279,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def spec(self) -> pulumi.Output['outputs.ServiceSpecResponse']:
         """
-        Spec holds the desired state of the Service (from the client).
+        Holds the desired state of the Service (from the client).
         """
         return pulumi.get(self, "spec")
 
@@ -287,7 +287,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter
     def status(self) -> pulumi.Output['outputs.ServiceStatusResponse']:
         """
-        Status communicates the observed state of the Service (from the controller).
+        Communicates the system-controlled state of the Service.
         """
         return pulumi.get(self, "status")
 

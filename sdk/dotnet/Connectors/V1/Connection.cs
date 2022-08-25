@@ -35,7 +35,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Output<string> ConnectionId { get; private set; } = null!;
 
         /// <summary>
-        /// Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+        /// Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
         /// </summary>
         [Output("connectorVersion")]
         public Output<string> ConnectorVersion { get; private set; } = null!;
@@ -51,6 +51,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         [Output("description")]
         public Output<string> Description { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+        /// </summary>
+        [Output("destinationConfigs")]
+        public Output<ImmutableArray<Outputs.DestinationConfigResponse>> DestinationConfigs { get; private set; } = null!;
 
         /// <summary>
         /// GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
@@ -84,6 +90,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Configuration for the connection.
+        /// </summary>
+        [Output("nodeConfig")]
+        public Output<Outputs.NodeConfigResponse> NodeConfig { get; private set; } = null!;
 
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -194,7 +206,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
         public Input<string> ConnectionId { get; set; } = null!;
 
         /// <summary>
-        /// Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+        /// Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
         /// </summary>
         [Input("connectorVersion", required: true)]
         public Input<string> ConnectorVersion { get; set; } = null!;
@@ -204,6 +216,18 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
+
+        [Input("destinationConfigs")]
+        private InputList<Inputs.DestinationConfigArgs>? _destinationConfigs;
+
+        /// <summary>
+        /// Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+        /// </summary>
+        public InputList<Inputs.DestinationConfigArgs> DestinationConfigs
+        {
+            get => _destinationConfigs ?? (_destinationConfigs = new InputList<Inputs.DestinationConfigArgs>());
+            set => _destinationConfigs = value;
+        }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -225,6 +249,12 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         [Input("lockConfig")]
         public Input<Inputs.LockConfigArgs>? LockConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Configuration for the connection.
+        /// </summary>
+        [Input("nodeConfig")]
+        public Input<Inputs.NodeConfigArgs>? NodeConfig { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

@@ -16,6 +16,8 @@ import (
 type EndpointAttachment struct {
 	pulumi.CustomResourceState
 
+	// State of the endpoint attachment connection to the service attachment.
+	ConnectionState pulumi.StringOutput `pulumi:"connectionState"`
 	// ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.
 	EndpointAttachmentId pulumi.StringPtrOutput `pulumi:"endpointAttachmentId"`
 	// Host that can be used in either the HTTP target endpoint directly or as the host in target server.
@@ -136,6 +138,11 @@ func (o EndpointAttachmentOutput) ToEndpointAttachmentOutput() EndpointAttachmen
 
 func (o EndpointAttachmentOutput) ToEndpointAttachmentOutputWithContext(ctx context.Context) EndpointAttachmentOutput {
 	return o
+}
+
+// State of the endpoint attachment connection to the service attachment.
+func (o EndpointAttachmentOutput) ConnectionState() pulumi.StringOutput {
+	return o.ApplyT(func(v *EndpointAttachment) pulumi.StringOutput { return v.ConnectionState }).(pulumi.StringOutput)
 }
 
 // ID to use for the endpoint attachment. The ID can contain lowercase letters and numbers, must start with a letter, and must be 1-20 characters in length.

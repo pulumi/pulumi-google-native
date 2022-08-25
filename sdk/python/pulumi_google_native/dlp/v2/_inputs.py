@@ -12,6 +12,8 @@ from ._enums import *
 
 __all__ = [
     'GooglePrivacyDlpV2ActionArgs',
+    'GooglePrivacyDlpV2AllInfoTypesArgs',
+    'GooglePrivacyDlpV2AllTextArgs',
     'GooglePrivacyDlpV2AuxiliaryTableArgs',
     'GooglePrivacyDlpV2BigQueryFieldArgs',
     'GooglePrivacyDlpV2BigQueryOptionsArgs',
@@ -25,6 +27,7 @@ __all__ = [
     'GooglePrivacyDlpV2CloudStorageOptionsArgs',
     'GooglePrivacyDlpV2CloudStoragePathArgs',
     'GooglePrivacyDlpV2CloudStorageRegexFileSetArgs',
+    'GooglePrivacyDlpV2ColorArgs',
     'GooglePrivacyDlpV2ConditionsArgs',
     'GooglePrivacyDlpV2ConditionArgs',
     'GooglePrivacyDlpV2CryptoDeterministicConfigArgs',
@@ -50,6 +53,8 @@ __all__ = [
     'GooglePrivacyDlpV2FixedSizeBucketingConfigArgs',
     'GooglePrivacyDlpV2HotwordRuleArgs',
     'GooglePrivacyDlpV2HybridOptionsArgs',
+    'GooglePrivacyDlpV2ImageTransformationsArgs',
+    'GooglePrivacyDlpV2ImageTransformationArgs',
     'GooglePrivacyDlpV2InfoTypeLimitArgs',
     'GooglePrivacyDlpV2InfoTypeTransformationsArgs',
     'GooglePrivacyDlpV2InfoTypeTransformationArgs',
@@ -92,6 +97,7 @@ __all__ = [
     'GooglePrivacyDlpV2RiskAnalysisJobConfigArgs',
     'GooglePrivacyDlpV2SaveFindingsArgs',
     'GooglePrivacyDlpV2ScheduleArgs',
+    'GooglePrivacyDlpV2SelectedInfoTypesArgs',
     'GooglePrivacyDlpV2StatisticalTableArgs',
     'GooglePrivacyDlpV2StorageConfigArgs',
     'GooglePrivacyDlpV2StoredInfoTypeConfigArgs',
@@ -127,7 +133,7 @@ class GooglePrivacyDlpV2ActionArgs:
                  save_findings: Optional[pulumi.Input['GooglePrivacyDlpV2SaveFindingsArgs']] = None):
         """
         A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
-        :param pulumi.Input['GooglePrivacyDlpV2DeidentifyArgs'] deidentify: Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+        :param pulumi.Input['GooglePrivacyDlpV2DeidentifyArgs'] deidentify: Create a de-identified copy of the input data.
         :param pulumi.Input['GooglePrivacyDlpV2JobNotificationEmailsArgs'] job_notification_emails: Enable email notification for project owners and editors on job's completion/failure.
         :param pulumi.Input['GooglePrivacyDlpV2PublishToPubSubArgs'] pub_sub: Publish a notification to a pubsub topic.
         :param pulumi.Input['GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs'] publish_findings_to_cloud_data_catalog: Publish findings to Cloud Datahub.
@@ -154,7 +160,7 @@ class GooglePrivacyDlpV2ActionArgs:
     @pulumi.getter
     def deidentify(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2DeidentifyArgs']]:
         """
-        Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+        Create a de-identified copy of the input data.
         """
         return pulumi.get(self, "deidentify")
 
@@ -233,6 +239,24 @@ class GooglePrivacyDlpV2ActionArgs:
     @save_findings.setter
     def save_findings(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2SaveFindingsArgs']]):
         pulumi.set(self, "save_findings", value)
+
+
+@pulumi.input_type
+class GooglePrivacyDlpV2AllInfoTypesArgs:
+    def __init__(__self__):
+        """
+        Apply transformation to all findings.
+        """
+        pass
+
+
+@pulumi.input_type
+class GooglePrivacyDlpV2AllTextArgs:
+    def __init__(__self__):
+        """
+        Apply to all text.
+        """
+        pass
 
 
 @pulumi.input_type
@@ -920,6 +944,62 @@ class GooglePrivacyDlpV2CloudStorageRegexFileSetArgs:
 
 
 @pulumi.input_type
+class GooglePrivacyDlpV2ColorArgs:
+    def __init__(__self__, *,
+                 blue: Optional[pulumi.Input[float]] = None,
+                 green: Optional[pulumi.Input[float]] = None,
+                 red: Optional[pulumi.Input[float]] = None):
+        """
+        Represents a color in the RGB color space.
+        :param pulumi.Input[float] blue: The amount of blue in the color as a value in the interval [0, 1].
+        :param pulumi.Input[float] green: The amount of green in the color as a value in the interval [0, 1].
+        :param pulumi.Input[float] red: The amount of red in the color as a value in the interval [0, 1].
+        """
+        if blue is not None:
+            pulumi.set(__self__, "blue", blue)
+        if green is not None:
+            pulumi.set(__self__, "green", green)
+        if red is not None:
+            pulumi.set(__self__, "red", red)
+
+    @property
+    @pulumi.getter
+    def blue(self) -> Optional[pulumi.Input[float]]:
+        """
+        The amount of blue in the color as a value in the interval [0, 1].
+        """
+        return pulumi.get(self, "blue")
+
+    @blue.setter
+    def blue(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "blue", value)
+
+    @property
+    @pulumi.getter
+    def green(self) -> Optional[pulumi.Input[float]]:
+        """
+        The amount of green in the color as a value in the interval [0, 1].
+        """
+        return pulumi.get(self, "green")
+
+    @green.setter
+    def green(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "green", value)
+
+    @property
+    @pulumi.getter
+    def red(self) -> Optional[pulumi.Input[float]]:
+        """
+        The amount of red in the color as a value in the interval [0, 1].
+        """
+        return pulumi.get(self, "red")
+
+    @red.setter
+    def red(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "red", value)
+
+
+@pulumi.input_type
 class GooglePrivacyDlpV2ConditionsArgs:
     def __init__(__self__, *,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ConditionArgs']]]] = None):
@@ -1485,21 +1565,37 @@ class GooglePrivacyDlpV2DateShiftConfigArgs:
 @pulumi.input_type
 class GooglePrivacyDlpV2DeidentifyConfigArgs:
     def __init__(__self__, *,
+                 image_transformations: Optional[pulumi.Input['GooglePrivacyDlpV2ImageTransformationsArgs']] = None,
                  info_type_transformations: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationsArgs']] = None,
                  record_transformations: Optional[pulumi.Input['GooglePrivacyDlpV2RecordTransformationsArgs']] = None,
                  transformation_error_handling: Optional[pulumi.Input['GooglePrivacyDlpV2TransformationErrorHandlingArgs']] = None):
         """
         The configuration that controls how the data will change.
+        :param pulumi.Input['GooglePrivacyDlpV2ImageTransformationsArgs'] image_transformations: Treat the dataset as an image and redact.
         :param pulumi.Input['GooglePrivacyDlpV2InfoTypeTransformationsArgs'] info_type_transformations: Treat the dataset as free-form text and apply the same free text transformation everywhere.
         :param pulumi.Input['GooglePrivacyDlpV2RecordTransformationsArgs'] record_transformations: Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
         :param pulumi.Input['GooglePrivacyDlpV2TransformationErrorHandlingArgs'] transformation_error_handling: Mode for handling transformation errors. If left unspecified, the default mode is `TransformationErrorHandling.ThrowError`.
         """
+        if image_transformations is not None:
+            pulumi.set(__self__, "image_transformations", image_transformations)
         if info_type_transformations is not None:
             pulumi.set(__self__, "info_type_transformations", info_type_transformations)
         if record_transformations is not None:
             pulumi.set(__self__, "record_transformations", record_transformations)
         if transformation_error_handling is not None:
             pulumi.set(__self__, "transformation_error_handling", transformation_error_handling)
+
+    @property
+    @pulumi.getter(name="imageTransformations")
+    def image_transformations(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ImageTransformationsArgs']]:
+        """
+        Treat the dataset as an image and redact.
+        """
+        return pulumi.get(self, "image_transformations")
+
+    @image_transformations.setter
+    def image_transformations(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ImageTransformationsArgs']]):
+        pulumi.set(self, "image_transformations", value)
 
     @property
     @pulumi.getter(name="infoTypeTransformations")
@@ -1546,8 +1642,8 @@ class GooglePrivacyDlpV2DeidentifyArgs:
                  transformation_config: Optional[pulumi.Input['GooglePrivacyDlpV2TransformationConfigArgs']] = None,
                  transformation_details_storage_config: Optional[pulumi.Input['GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs']] = None):
         """
-        Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
-        :param pulumi.Input[str] cloud_storage_output: User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+        Create a de-identified copy of the requested table or files. A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+        :param pulumi.Input[str] cloud_storage_output: User settable Cloud Storage bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
         :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem']]] file_types_to_transform: List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
         :param pulumi.Input['GooglePrivacyDlpV2TransformationConfigArgs'] transformation_config: User specified deidentify templates and configs for structured, unstructured, and image files.
         :param pulumi.Input['GooglePrivacyDlpV2TransformationDetailsStorageConfigArgs'] transformation_details_storage_config: Config for storing transformation details. This is separate from the de-identified content, and contains metadata about the successful transformations and/or failures that occurred while de-identifying. This needs to be set in order for users to access information about the status of each transformation (see TransformationDetails message for more information about what is noted).
@@ -1564,7 +1660,7 @@ class GooglePrivacyDlpV2DeidentifyArgs:
     @pulumi.getter(name="cloudStorageOutput")
     def cloud_storage_output(self) -> pulumi.Input[str]:
         """
-        User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+        User settable Cloud Storage bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
         """
         return pulumi.get(self, "cloud_storage_output")
 
@@ -2261,6 +2357,98 @@ class GooglePrivacyDlpV2HybridOptionsArgs:
 
 
 @pulumi.input_type
+class GooglePrivacyDlpV2ImageTransformationsArgs:
+    def __init__(__self__, *,
+                 transforms: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ImageTransformationArgs']]]] = None):
+        """
+        A type of transformation that is applied over images.
+        """
+        if transforms is not None:
+            pulumi.set(__self__, "transforms", transforms)
+
+    @property
+    @pulumi.getter
+    def transforms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ImageTransformationArgs']]]]:
+        return pulumi.get(self, "transforms")
+
+    @transforms.setter
+    def transforms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2ImageTransformationArgs']]]]):
+        pulumi.set(self, "transforms", value)
+
+
+@pulumi.input_type
+class GooglePrivacyDlpV2ImageTransformationArgs:
+    def __init__(__self__, *,
+                 all_info_types: Optional[pulumi.Input['GooglePrivacyDlpV2AllInfoTypesArgs']] = None,
+                 all_text: Optional[pulumi.Input['GooglePrivacyDlpV2AllTextArgs']] = None,
+                 redaction_color: Optional[pulumi.Input['GooglePrivacyDlpV2ColorArgs']] = None,
+                 selected_info_types: Optional[pulumi.Input['GooglePrivacyDlpV2SelectedInfoTypesArgs']] = None):
+        """
+        Configuration for determining how redaction of images should occur.
+        :param pulumi.Input['GooglePrivacyDlpV2AllInfoTypesArgs'] all_info_types: Apply transformation to all findings not specified in other ImageTransformation's selected_info_types. Only one instance is allowed within the ImageTransformations message.
+        :param pulumi.Input['GooglePrivacyDlpV2AllTextArgs'] all_text: Apply transformation to all text that doesn't match an infoType. Only one instance is allowed within the ImageTransformations message.
+        :param pulumi.Input['GooglePrivacyDlpV2ColorArgs'] redaction_color: The color to use when redacting content from an image. If not specified, the default is black.
+        :param pulumi.Input['GooglePrivacyDlpV2SelectedInfoTypesArgs'] selected_info_types: Apply transformation to the selected info_types.
+        """
+        if all_info_types is not None:
+            pulumi.set(__self__, "all_info_types", all_info_types)
+        if all_text is not None:
+            pulumi.set(__self__, "all_text", all_text)
+        if redaction_color is not None:
+            pulumi.set(__self__, "redaction_color", redaction_color)
+        if selected_info_types is not None:
+            pulumi.set(__self__, "selected_info_types", selected_info_types)
+
+    @property
+    @pulumi.getter(name="allInfoTypes")
+    def all_info_types(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2AllInfoTypesArgs']]:
+        """
+        Apply transformation to all findings not specified in other ImageTransformation's selected_info_types. Only one instance is allowed within the ImageTransformations message.
+        """
+        return pulumi.get(self, "all_info_types")
+
+    @all_info_types.setter
+    def all_info_types(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2AllInfoTypesArgs']]):
+        pulumi.set(self, "all_info_types", value)
+
+    @property
+    @pulumi.getter(name="allText")
+    def all_text(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2AllTextArgs']]:
+        """
+        Apply transformation to all text that doesn't match an infoType. Only one instance is allowed within the ImageTransformations message.
+        """
+        return pulumi.get(self, "all_text")
+
+    @all_text.setter
+    def all_text(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2AllTextArgs']]):
+        pulumi.set(self, "all_text", value)
+
+    @property
+    @pulumi.getter(name="redactionColor")
+    def redaction_color(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2ColorArgs']]:
+        """
+        The color to use when redacting content from an image. If not specified, the default is black.
+        """
+        return pulumi.get(self, "redaction_color")
+
+    @redaction_color.setter
+    def redaction_color(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2ColorArgs']]):
+        pulumi.set(self, "redaction_color", value)
+
+    @property
+    @pulumi.getter(name="selectedInfoTypes")
+    def selected_info_types(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2SelectedInfoTypesArgs']]:
+        """
+        Apply transformation to the selected info_types.
+        """
+        return pulumi.get(self, "selected_info_types")
+
+    @selected_info_types.setter
+    def selected_info_types(self, value: Optional[pulumi.Input['GooglePrivacyDlpV2SelectedInfoTypesArgs']]):
+        pulumi.set(self, "selected_info_types", value)
+
+
+@pulumi.input_type
 class GooglePrivacyDlpV2InfoTypeLimitArgs:
     def __init__(__self__, *,
                  info_type: Optional[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']] = None,
@@ -2697,7 +2885,7 @@ class GooglePrivacyDlpV2InspectionRuleArgs:
 class GooglePrivacyDlpV2JobNotificationEmailsArgs:
     def __init__(__self__):
         """
-        Enable email notification to project owners and editors on jobs's completion/failure.
+        Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
         """
         pass
 
@@ -3959,6 +4147,29 @@ class GooglePrivacyDlpV2ScheduleArgs:
     @recurrence_period_duration.setter
     def recurrence_period_duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "recurrence_period_duration", value)
+
+
+@pulumi.input_type
+class GooglePrivacyDlpV2SelectedInfoTypesArgs:
+    def __init__(__self__, *,
+                 info_types: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]]):
+        """
+        Apply transformation to the selected info_types.
+        :param pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]] info_types: InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message.
+        """
+        pulumi.set(__self__, "info_types", info_types)
+
+    @property
+    @pulumi.getter(name="infoTypes")
+    def info_types(self) -> pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]]:
+        """
+        InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message.
+        """
+        return pulumi.get(self, "info_types")
+
+    @info_types.setter
+    def info_types(self, value: pulumi.Input[Sequence[pulumi.Input['GooglePrivacyDlpV2InfoTypeArgs']]]):
+        pulumi.set(self, "info_types", value)
 
 
 @pulumi.input_type

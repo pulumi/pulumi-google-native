@@ -137,6 +137,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionSecurityPolicy{}
 	case "google-native:compute/v1:RegionSslCertificate":
 		r = &RegionSslCertificate{}
+	case "google-native:compute/v1:RegionSslPolicy":
+		r = &RegionSslPolicy{}
 	case "google-native:compute/v1:RegionTargetHttpProxy":
 		r = &RegionTargetHttpProxy{}
 	case "google-native:compute/v1:RegionTargetHttpsProxy":

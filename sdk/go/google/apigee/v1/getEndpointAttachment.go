@@ -26,6 +26,8 @@ type LookupEndpointAttachmentArgs struct {
 }
 
 type LookupEndpointAttachmentResult struct {
+	// State of the endpoint attachment connection to the service attachment.
+	ConnectionState string `pulumi:"connectionState"`
 	// Host that can be used in either the HTTP target endpoint directly or as the host in target server.
 	Host string `pulumi:"host"`
 	// Location of the endpoint attachment.
@@ -72,6 +74,11 @@ func (o LookupEndpointAttachmentResultOutput) ToLookupEndpointAttachmentResultOu
 
 func (o LookupEndpointAttachmentResultOutput) ToLookupEndpointAttachmentResultOutputWithContext(ctx context.Context) LookupEndpointAttachmentResultOutput {
 	return o
+}
+
+// State of the endpoint attachment connection to the service attachment.
+func (o LookupEndpointAttachmentResultOutput) ConnectionState() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupEndpointAttachmentResult) string { return v.ConnectionState }).(pulumi.StringOutput)
 }
 
 // Host that can be used in either the HTTP target endpoint directly or as the host in target server.

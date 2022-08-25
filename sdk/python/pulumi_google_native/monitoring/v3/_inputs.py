@@ -46,6 +46,7 @@ __all__ = [
     'MutationRecordArgs',
     'NotificationRateLimitArgs',
     'PerformanceThresholdArgs',
+    'PingConfigArgs',
     'RequestBasedSliArgs',
     'ResourceGroupArgs',
     'ResponseStatusCodeArgs',
@@ -982,6 +983,7 @@ class HttpCheckArgs:
                  headers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mask_headers: Optional[pulumi.Input[bool]] = None,
                  path: Optional[pulumi.Input[str]] = None,
+                 ping_config: Optional[pulumi.Input['PingConfigArgs']] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  request_method: Optional[pulumi.Input['HttpCheckRequestMethod']] = None,
                  use_ssl: Optional[pulumi.Input[bool]] = None,
@@ -995,6 +997,7 @@ class HttpCheckArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The list of headers to send as part of the Uptime check request. If two headers have the same key and different values, they should be entered as a single header, with the value being a comma-separated list of all the desired values as described at https://www.w3.org/Protocols/rfc2616/rfc2616.txt (page 31). Entering two separate headers with the same key in a Create call will cause the first to be overwritten by the second. The maximum number of headers allowed is 100.
         :param pulumi.Input[bool] mask_headers: Boolean specifying whether to encrypt the header information. Encryption should be specified for any headers related to authentication that you do not wish to be seen when retrieving the configuration. The server will be responsible for encrypting the headers. On Get/List calls, if mask_headers is set to true then the headers will be obscured with ******.
         :param pulumi.Input[str] path: Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically.
+        :param pulumi.Input['PingConfigArgs'] ping_config: Contains information needed to add pings to an HTTP check.
         :param pulumi.Input[int] port: Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
         :param pulumi.Input['HttpCheckRequestMethod'] request_method: The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
         :param pulumi.Input[bool] use_ssl: If true, use HTTPS instead of HTTP to run the check.
@@ -1014,6 +1017,8 @@ class HttpCheckArgs:
             pulumi.set(__self__, "mask_headers", mask_headers)
         if path is not None:
             pulumi.set(__self__, "path", path)
+        if ping_config is not None:
+            pulumi.set(__self__, "ping_config", ping_config)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if request_method is not None:
@@ -1106,6 +1111,18 @@ class HttpCheckArgs:
     @path.setter
     def path(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter(name="pingConfig")
+    def ping_config(self) -> Optional[pulumi.Input['PingConfigArgs']]:
+        """
+        Contains information needed to add pings to an HTTP check.
+        """
+        return pulumi.get(self, "ping_config")
+
+    @ping_config.setter
+    def ping_config(self, value: Optional[pulumi.Input['PingConfigArgs']]):
+        pulumi.set(self, "ping_config", value)
 
     @property
     @pulumi.getter
@@ -2083,6 +2100,30 @@ class PerformanceThresholdArgs:
 
 
 @pulumi.input_type
+class PingConfigArgs:
+    def __init__(__self__, *,
+                 pings_count: Optional[pulumi.Input[int]] = None):
+        """
+        Information involved in sending ICMP pings alongside public HTTP/TCP checks. For HTTP, the pings are performed for each part of the redirect chain.
+        :param pulumi.Input[int] pings_count: Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+        """
+        if pings_count is not None:
+            pulumi.set(__self__, "pings_count", pings_count)
+
+    @property
+    @pulumi.getter(name="pingsCount")
+    def pings_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+        """
+        return pulumi.get(self, "pings_count")
+
+    @pings_count.setter
+    def pings_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "pings_count", value)
+
+
+@pulumi.input_type
 class RequestBasedSliArgs:
     def __init__(__self__, *,
                  distribution_cut: Optional[pulumi.Input['DistributionCutArgs']] = None,
@@ -2317,13 +2358,29 @@ class StatusArgs:
 @pulumi.input_type
 class TcpCheckArgs:
     def __init__(__self__, *,
+                 ping_config: Optional[pulumi.Input['PingConfigArgs']] = None,
                  port: Optional[pulumi.Input[int]] = None):
         """
         Information required for a TCP Uptime check request.
+        :param pulumi.Input['PingConfigArgs'] ping_config: Contains information needed to add pings to a TCP check.
         :param pulumi.Input[int] port: The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
         """
+        if ping_config is not None:
+            pulumi.set(__self__, "ping_config", ping_config)
         if port is not None:
             pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter(name="pingConfig")
+    def ping_config(self) -> Optional[pulumi.Input['PingConfigArgs']]:
+        """
+        Contains information needed to add pings to a TCP check.
+        """
+        return pulumi.get(self, "ping_config")
+
+    @ping_config.setter
+    def ping_config(self, value: Optional[pulumi.Input['PingConfigArgs']]):
+        pulumi.set(self, "ping_config", value)
 
     @property
     @pulumi.getter

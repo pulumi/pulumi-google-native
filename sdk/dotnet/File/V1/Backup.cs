@@ -71,19 +71,19 @@ namespace Pulumi.GoogleNative.File.V1
         public Output<bool> SatisfiesPzs { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+        /// Name of the file share in the source Filestore instance that the backup is created from.
         /// </summary>
         [Output("sourceFileShare")]
         public Output<string> SourceFileShare { get; private set; } = null!;
 
         /// <summary>
-        /// The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+        /// The resource name of the source Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
         /// </summary>
         [Output("sourceInstance")]
         public Output<string> SourceInstance { get; private set; } = null!;
 
         /// <summary>
-        /// The service tier of the source Cloud Filestore instance that this backup is created from.
+        /// The service tier of the source Filestore instance that this backup is created from.
         /// </summary>
         [Output("sourceInstanceTier")]
         public Output<string> SourceInstanceTier { get; private set; } = null!;
@@ -182,13 +182,13 @@ namespace Pulumi.GoogleNative.File.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+        /// Name of the file share in the source Filestore instance that the backup is created from.
         /// </summary>
         [Input("sourceFileShare")]
         public Input<string>? SourceFileShare { get; set; }
 
         /// <summary>
-        /// The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+        /// The resource name of the source Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
         /// </summary>
         [Input("sourceInstance")]
         public Input<string>? SourceInstance { get; set; }

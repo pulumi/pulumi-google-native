@@ -18,8 +18,8 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         /// <summary>
         /// A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
         /// <summary>
         /// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
@@ -34,7 +34,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional) Specify whether the Secret or its key must be defined
+        /// Specify whether the Secret or its key must be defined.
         /// </summary>
         [Input("optional")]
         public Input<bool>? Optional { get; set; }

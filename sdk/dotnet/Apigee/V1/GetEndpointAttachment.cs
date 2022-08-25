@@ -58,6 +58,10 @@ namespace Pulumi.GoogleNative.Apigee.V1
     public sealed class GetEndpointAttachmentResult
     {
         /// <summary>
+        /// State of the endpoint attachment connection to the service attachment.
+        /// </summary>
+        public readonly string ConnectionState;
+        /// <summary>
         /// Host that can be used in either the HTTP target endpoint directly or as the host in target server.
         /// </summary>
         public readonly string Host;
@@ -80,6 +84,8 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
         [OutputConstructor]
         private GetEndpointAttachmentResult(
+            string connectionState,
+
             string host,
 
             string location,
@@ -90,6 +96,7 @@ namespace Pulumi.GoogleNative.Apigee.V1
 
             string state)
         {
+            ConnectionState = connectionState;
             Host = host;
             Location = location;
             Name = name;

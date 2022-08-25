@@ -160,6 +160,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha
         /// </summary>
         public readonly string ProvisionedIops;
         /// <summary>
+        /// Indicates how much throughput to provision for the disk. This sets the number of throughput mb per second that the disk can handle. Values must be between 1 and 7,124.
+        /// </summary>
+        public readonly string ProvisionedThroughput;
+        /// <summary>
         /// URL of the region where the disk resides. Only applicable for regional resources. You must specify this field as part of the HTTP request URL. It is not settable as a field in the request body.
         /// </summary>
         public readonly string Region;
@@ -318,6 +322,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha
 
             string provisionedIops,
 
+            string provisionedThroughput,
+
             string region,
 
             ImmutableArray<string> replicaZones,
@@ -396,6 +402,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha
             Params = @params;
             PhysicalBlockSizeBytes = physicalBlockSizeBytes;
             ProvisionedIops = provisionedIops;
+            ProvisionedThroughput = provisionedThroughput;
             Region = region;
             ReplicaZones = replicaZones;
             ResourcePolicies = resourcePolicies;

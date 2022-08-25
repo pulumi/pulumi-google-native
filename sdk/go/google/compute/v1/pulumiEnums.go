@@ -18864,6 +18864,346 @@ func (in *regionSslCertificateTypePtr) ToRegionSslCertificateTypePtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(RegionSslCertificateTypePtrOutput)
 }
 
+// The minimum version of SSL protocol that can be used by the clients to establish a connection with the load balancer. This can be one of TLS_1_0, TLS_1_1, TLS_1_2.
+type RegionSslPolicyMinTlsVersion string
+
+const (
+	// TLS 1.0
+	RegionSslPolicyMinTlsVersionTls10 = RegionSslPolicyMinTlsVersion("TLS_1_0")
+	// TLS 1.1
+	RegionSslPolicyMinTlsVersionTls11 = RegionSslPolicyMinTlsVersion("TLS_1_1")
+	// TLS 1.2
+	RegionSslPolicyMinTlsVersionTls12 = RegionSslPolicyMinTlsVersion("TLS_1_2")
+)
+
+func (RegionSslPolicyMinTlsVersion) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSslPolicyMinTlsVersion)(nil)).Elem()
+}
+
+func (e RegionSslPolicyMinTlsVersion) ToRegionSslPolicyMinTlsVersionOutput() RegionSslPolicyMinTlsVersionOutput {
+	return pulumi.ToOutput(e).(RegionSslPolicyMinTlsVersionOutput)
+}
+
+func (e RegionSslPolicyMinTlsVersion) ToRegionSslPolicyMinTlsVersionOutputWithContext(ctx context.Context) RegionSslPolicyMinTlsVersionOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionSslPolicyMinTlsVersionOutput)
+}
+
+func (e RegionSslPolicyMinTlsVersion) ToRegionSslPolicyMinTlsVersionPtrOutput() RegionSslPolicyMinTlsVersionPtrOutput {
+	return e.ToRegionSslPolicyMinTlsVersionPtrOutputWithContext(context.Background())
+}
+
+func (e RegionSslPolicyMinTlsVersion) ToRegionSslPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) RegionSslPolicyMinTlsVersionPtrOutput {
+	return RegionSslPolicyMinTlsVersion(e).ToRegionSslPolicyMinTlsVersionOutputWithContext(ctx).ToRegionSslPolicyMinTlsVersionPtrOutputWithContext(ctx)
+}
+
+func (e RegionSslPolicyMinTlsVersion) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionSslPolicyMinTlsVersion) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionSslPolicyMinTlsVersion) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionSslPolicyMinTlsVersion) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionSslPolicyMinTlsVersionOutput struct{ *pulumi.OutputState }
+
+func (RegionSslPolicyMinTlsVersionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSslPolicyMinTlsVersion)(nil)).Elem()
+}
+
+func (o RegionSslPolicyMinTlsVersionOutput) ToRegionSslPolicyMinTlsVersionOutput() RegionSslPolicyMinTlsVersionOutput {
+	return o
+}
+
+func (o RegionSslPolicyMinTlsVersionOutput) ToRegionSslPolicyMinTlsVersionOutputWithContext(ctx context.Context) RegionSslPolicyMinTlsVersionOutput {
+	return o
+}
+
+func (o RegionSslPolicyMinTlsVersionOutput) ToRegionSslPolicyMinTlsVersionPtrOutput() RegionSslPolicyMinTlsVersionPtrOutput {
+	return o.ToRegionSslPolicyMinTlsVersionPtrOutputWithContext(context.Background())
+}
+
+func (o RegionSslPolicyMinTlsVersionOutput) ToRegionSslPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) RegionSslPolicyMinTlsVersionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionSslPolicyMinTlsVersion) *RegionSslPolicyMinTlsVersion {
+		return &v
+	}).(RegionSslPolicyMinTlsVersionPtrOutput)
+}
+
+func (o RegionSslPolicyMinTlsVersionOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionSslPolicyMinTlsVersionOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionSslPolicyMinTlsVersion) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionSslPolicyMinTlsVersionOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionSslPolicyMinTlsVersionOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionSslPolicyMinTlsVersion) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionSslPolicyMinTlsVersionPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionSslPolicyMinTlsVersionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionSslPolicyMinTlsVersion)(nil)).Elem()
+}
+
+func (o RegionSslPolicyMinTlsVersionPtrOutput) ToRegionSslPolicyMinTlsVersionPtrOutput() RegionSslPolicyMinTlsVersionPtrOutput {
+	return o
+}
+
+func (o RegionSslPolicyMinTlsVersionPtrOutput) ToRegionSslPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) RegionSslPolicyMinTlsVersionPtrOutput {
+	return o
+}
+
+func (o RegionSslPolicyMinTlsVersionPtrOutput) Elem() RegionSslPolicyMinTlsVersionOutput {
+	return o.ApplyT(func(v *RegionSslPolicyMinTlsVersion) RegionSslPolicyMinTlsVersion {
+		if v != nil {
+			return *v
+		}
+		var ret RegionSslPolicyMinTlsVersion
+		return ret
+	}).(RegionSslPolicyMinTlsVersionOutput)
+}
+
+func (o RegionSslPolicyMinTlsVersionPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionSslPolicyMinTlsVersionPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionSslPolicyMinTlsVersion) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionSslPolicyMinTlsVersionInput is an input type that accepts RegionSslPolicyMinTlsVersionArgs and RegionSslPolicyMinTlsVersionOutput values.
+// You can construct a concrete instance of `RegionSslPolicyMinTlsVersionInput` via:
+//
+//	RegionSslPolicyMinTlsVersionArgs{...}
+type RegionSslPolicyMinTlsVersionInput interface {
+	pulumi.Input
+
+	ToRegionSslPolicyMinTlsVersionOutput() RegionSslPolicyMinTlsVersionOutput
+	ToRegionSslPolicyMinTlsVersionOutputWithContext(context.Context) RegionSslPolicyMinTlsVersionOutput
+}
+
+var regionSslPolicyMinTlsVersionPtrType = reflect.TypeOf((**RegionSslPolicyMinTlsVersion)(nil)).Elem()
+
+type RegionSslPolicyMinTlsVersionPtrInput interface {
+	pulumi.Input
+
+	ToRegionSslPolicyMinTlsVersionPtrOutput() RegionSslPolicyMinTlsVersionPtrOutput
+	ToRegionSslPolicyMinTlsVersionPtrOutputWithContext(context.Context) RegionSslPolicyMinTlsVersionPtrOutput
+}
+
+type regionSslPolicyMinTlsVersionPtr string
+
+func RegionSslPolicyMinTlsVersionPtr(v string) RegionSslPolicyMinTlsVersionPtrInput {
+	return (*regionSslPolicyMinTlsVersionPtr)(&v)
+}
+
+func (*regionSslPolicyMinTlsVersionPtr) ElementType() reflect.Type {
+	return regionSslPolicyMinTlsVersionPtrType
+}
+
+func (in *regionSslPolicyMinTlsVersionPtr) ToRegionSslPolicyMinTlsVersionPtrOutput() RegionSslPolicyMinTlsVersionPtrOutput {
+	return pulumi.ToOutput(in).(RegionSslPolicyMinTlsVersionPtrOutput)
+}
+
+func (in *regionSslPolicyMinTlsVersionPtr) ToRegionSslPolicyMinTlsVersionPtrOutputWithContext(ctx context.Context) RegionSslPolicyMinTlsVersionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionSslPolicyMinTlsVersionPtrOutput)
+}
+
+// Profile specifies the set of SSL features that can be used by the load balancer when negotiating SSL with clients. This can be one of COMPATIBLE, MODERN, RESTRICTED, or CUSTOM. If using CUSTOM, the set of SSL features to enable must be specified in the customFeatures field.
+type RegionSslPolicyProfile string
+
+const (
+	// Compatible profile. Allows the broadset set of clients, even those which support only out-of-date SSL features to negotiate with the load balancer.
+	RegionSslPolicyProfileCompatible = RegionSslPolicyProfile("COMPATIBLE")
+	// Custom profile. Allow only the set of allowed SSL features specified in the customFeatures field.
+	RegionSslPolicyProfileCustom = RegionSslPolicyProfile("CUSTOM")
+	// Modern profile. Supports a wide set of SSL features, allowing modern clients to negotiate SSL with the load balancer.
+	RegionSslPolicyProfileModern = RegionSslPolicyProfile("MODERN")
+	// Restricted profile. Supports a reduced set of SSL features, intended to meet stricter compliance requirements.
+	RegionSslPolicyProfileRestricted = RegionSslPolicyProfile("RESTRICTED")
+)
+
+func (RegionSslPolicyProfile) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSslPolicyProfile)(nil)).Elem()
+}
+
+func (e RegionSslPolicyProfile) ToRegionSslPolicyProfileOutput() RegionSslPolicyProfileOutput {
+	return pulumi.ToOutput(e).(RegionSslPolicyProfileOutput)
+}
+
+func (e RegionSslPolicyProfile) ToRegionSslPolicyProfileOutputWithContext(ctx context.Context) RegionSslPolicyProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionSslPolicyProfileOutput)
+}
+
+func (e RegionSslPolicyProfile) ToRegionSslPolicyProfilePtrOutput() RegionSslPolicyProfilePtrOutput {
+	return e.ToRegionSslPolicyProfilePtrOutputWithContext(context.Background())
+}
+
+func (e RegionSslPolicyProfile) ToRegionSslPolicyProfilePtrOutputWithContext(ctx context.Context) RegionSslPolicyProfilePtrOutput {
+	return RegionSslPolicyProfile(e).ToRegionSslPolicyProfileOutputWithContext(ctx).ToRegionSslPolicyProfilePtrOutputWithContext(ctx)
+}
+
+func (e RegionSslPolicyProfile) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionSslPolicyProfile) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionSslPolicyProfile) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionSslPolicyProfile) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionSslPolicyProfileOutput struct{ *pulumi.OutputState }
+
+func (RegionSslPolicyProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionSslPolicyProfile)(nil)).Elem()
+}
+
+func (o RegionSslPolicyProfileOutput) ToRegionSslPolicyProfileOutput() RegionSslPolicyProfileOutput {
+	return o
+}
+
+func (o RegionSslPolicyProfileOutput) ToRegionSslPolicyProfileOutputWithContext(ctx context.Context) RegionSslPolicyProfileOutput {
+	return o
+}
+
+func (o RegionSslPolicyProfileOutput) ToRegionSslPolicyProfilePtrOutput() RegionSslPolicyProfilePtrOutput {
+	return o.ToRegionSslPolicyProfilePtrOutputWithContext(context.Background())
+}
+
+func (o RegionSslPolicyProfileOutput) ToRegionSslPolicyProfilePtrOutputWithContext(ctx context.Context) RegionSslPolicyProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionSslPolicyProfile) *RegionSslPolicyProfile {
+		return &v
+	}).(RegionSslPolicyProfilePtrOutput)
+}
+
+func (o RegionSslPolicyProfileOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionSslPolicyProfileOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionSslPolicyProfile) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionSslPolicyProfileOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionSslPolicyProfileOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionSslPolicyProfile) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionSslPolicyProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionSslPolicyProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionSslPolicyProfile)(nil)).Elem()
+}
+
+func (o RegionSslPolicyProfilePtrOutput) ToRegionSslPolicyProfilePtrOutput() RegionSslPolicyProfilePtrOutput {
+	return o
+}
+
+func (o RegionSslPolicyProfilePtrOutput) ToRegionSslPolicyProfilePtrOutputWithContext(ctx context.Context) RegionSslPolicyProfilePtrOutput {
+	return o
+}
+
+func (o RegionSslPolicyProfilePtrOutput) Elem() RegionSslPolicyProfileOutput {
+	return o.ApplyT(func(v *RegionSslPolicyProfile) RegionSslPolicyProfile {
+		if v != nil {
+			return *v
+		}
+		var ret RegionSslPolicyProfile
+		return ret
+	}).(RegionSslPolicyProfileOutput)
+}
+
+func (o RegionSslPolicyProfilePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionSslPolicyProfilePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionSslPolicyProfile) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionSslPolicyProfileInput is an input type that accepts RegionSslPolicyProfileArgs and RegionSslPolicyProfileOutput values.
+// You can construct a concrete instance of `RegionSslPolicyProfileInput` via:
+//
+//	RegionSslPolicyProfileArgs{...}
+type RegionSslPolicyProfileInput interface {
+	pulumi.Input
+
+	ToRegionSslPolicyProfileOutput() RegionSslPolicyProfileOutput
+	ToRegionSslPolicyProfileOutputWithContext(context.Context) RegionSslPolicyProfileOutput
+}
+
+var regionSslPolicyProfilePtrType = reflect.TypeOf((**RegionSslPolicyProfile)(nil)).Elem()
+
+type RegionSslPolicyProfilePtrInput interface {
+	pulumi.Input
+
+	ToRegionSslPolicyProfilePtrOutput() RegionSslPolicyProfilePtrOutput
+	ToRegionSslPolicyProfilePtrOutputWithContext(context.Context) RegionSslPolicyProfilePtrOutput
+}
+
+type regionSslPolicyProfilePtr string
+
+func RegionSslPolicyProfilePtr(v string) RegionSslPolicyProfilePtrInput {
+	return (*regionSslPolicyProfilePtr)(&v)
+}
+
+func (*regionSslPolicyProfilePtr) ElementType() reflect.Type {
+	return regionSslPolicyProfilePtrType
+}
+
+func (in *regionSslPolicyProfilePtr) ToRegionSslPolicyProfilePtrOutput() RegionSslPolicyProfilePtrOutput {
+	return pulumi.ToOutput(in).(RegionSslPolicyProfilePtrOutput)
+}
+
+func (in *regionSslPolicyProfilePtr) ToRegionSslPolicyProfilePtrOutputWithContext(ctx context.Context) RegionSslPolicyProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionSslPolicyProfilePtrOutput)
+}
+
 // Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied.
 type RegionTargetHttpsProxyQuicOverride string
 
@@ -24721,6 +25061,8 @@ type ShareSettingsShareType string
 const (
 	// Default value.
 	ShareSettingsShareTypeLocal = ShareSettingsShareType("LOCAL")
+	// Shared-reservation is open to entire Organization
+	ShareSettingsShareTypeOrganization = ShareSettingsShareType("ORGANIZATION")
 	// Default value. This value is unused.
 	ShareSettingsShareTypeShareTypeUnspecified = ShareSettingsShareType("SHARE_TYPE_UNSPECIFIED")
 	// Shared-reservation is open to specific projects
@@ -28468,6 +28810,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyTypePtrInput)(nil)).Elem(), RegionSecurityPolicyType("CLOUD_ARMOR"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslCertificateTypeInput)(nil)).Elem(), RegionSslCertificateType("MANAGED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslCertificateTypePtrInput)(nil)).Elem(), RegionSslCertificateType("MANAGED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslPolicyMinTlsVersionInput)(nil)).Elem(), RegionSslPolicyMinTlsVersion("TLS_1_0"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslPolicyMinTlsVersionPtrInput)(nil)).Elem(), RegionSslPolicyMinTlsVersion("TLS_1_0"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslPolicyProfileInput)(nil)).Elem(), RegionSslPolicyProfile("COMPATIBLE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslPolicyProfilePtrInput)(nil)).Elem(), RegionSslPolicyProfile("COMPATIBLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetHttpsProxyQuicOverrideInput)(nil)).Elem(), RegionTargetHttpsProxyQuicOverride("DISABLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetHttpsProxyQuicOverridePtrInput)(nil)).Elem(), RegionTargetHttpsProxyQuicOverride("DISABLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypeInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("ANY_RESERVATION"))
@@ -28804,6 +29150,10 @@ func init() {
 	pulumi.RegisterOutputType(RegionSecurityPolicyTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionSslCertificateTypeOutput{})
 	pulumi.RegisterOutputType(RegionSslCertificateTypePtrOutput{})
+	pulumi.RegisterOutputType(RegionSslPolicyMinTlsVersionOutput{})
+	pulumi.RegisterOutputType(RegionSslPolicyMinTlsVersionPtrOutput{})
+	pulumi.RegisterOutputType(RegionSslPolicyProfileOutput{})
+	pulumi.RegisterOutputType(RegionSslPolicyProfilePtrOutput{})
 	pulumi.RegisterOutputType(RegionTargetHttpsProxyQuicOverrideOutput{})
 	pulumi.RegisterOutputType(RegionTargetHttpsProxyQuicOverridePtrOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypeOutput{})

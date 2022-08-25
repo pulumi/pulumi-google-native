@@ -6,7 +6,7 @@ import { input as inputs, output as outputs, enums } from "../../types";
 import * as utilities from "../../utilities";
 
 /**
- * Get the IAM Access Control policy currently in effect for the given Cloud Run service. This result does not include any inherited policies.
+ * Gets the IAM Access Control policy currently in effect for the given Cloud Run service. This result does not include any inherited policies.
  */
 export function getServiceIamPolicy(args: GetServiceIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetServiceIamPolicyResult> {
     if (!opts) {

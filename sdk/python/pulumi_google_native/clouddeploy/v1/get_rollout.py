@@ -115,7 +115,7 @@ class GetRolloutResult:
     @pulumi.getter(name="deployFailureCause")
     def deploy_failure_cause(self) -> str:
         """
-        The reason this deploy failed. This will always be unspecified while the deploy in progress.
+        The reason this rollout failed. This will always be unspecified while the rollout is in progress.
         """
         return pulumi.get(self, "deploy_failure_cause")
 
@@ -163,7 +163,7 @@ class GetRolloutResult:
     @pulumi.getter(name="failureReason")
     def failure_reason(self) -> str:
         """
-        Reason the build failed. Empty if the build succeeded.
+        Additional information about the rollout failure, if available.
         """
         return pulumi.get(self, "failure_reason")
 

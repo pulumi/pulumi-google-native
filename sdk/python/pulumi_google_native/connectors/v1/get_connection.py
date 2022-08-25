@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectionResult:
-    def __init__(__self__, auth_config=None, config_variables=None, connector_version=None, create_time=None, description=None, envoy_image_location=None, image_location=None, labels=None, lock_config=None, name=None, service_account=None, service_directory=None, status=None, suspended=None, update_time=None):
+    def __init__(__self__, auth_config=None, config_variables=None, connector_version=None, create_time=None, description=None, destination_configs=None, envoy_image_location=None, image_location=None, labels=None, lock_config=None, name=None, node_config=None, service_account=None, service_directory=None, status=None, suspended=None, update_time=None):
         if auth_config and not isinstance(auth_config, dict):
             raise TypeError("Expected argument 'auth_config' to be a dict")
         pulumi.set(__self__, "auth_config", auth_config)
@@ -35,6 +35,9 @@ class GetConnectionResult:
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
+        if destination_configs and not isinstance(destination_configs, list):
+            raise TypeError("Expected argument 'destination_configs' to be a list")
+        pulumi.set(__self__, "destination_configs", destination_configs)
         if envoy_image_location and not isinstance(envoy_image_location, str):
             raise TypeError("Expected argument 'envoy_image_location' to be a str")
         pulumi.set(__self__, "envoy_image_location", envoy_image_location)
@@ -50,6 +53,9 @@ class GetConnectionResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if node_config and not isinstance(node_config, dict):
+            raise TypeError("Expected argument 'node_config' to be a dict")
+        pulumi.set(__self__, "node_config", node_config)
         if service_account and not isinstance(service_account, str):
             raise TypeError("Expected argument 'service_account' to be a str")
         pulumi.set(__self__, "service_account", service_account)
@@ -86,7 +92,7 @@ class GetConnectionResult:
     @pulumi.getter(name="connectorVersion")
     def connector_version(self) -> str:
         """
-        Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+        Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
         """
         return pulumi.get(self, "connector_version")
 
@@ -105,6 +111,14 @@ class GetConnectionResult:
         Optional. Description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="destinationConfigs")
+    def destination_configs(self) -> Sequence['outputs.DestinationConfigResponse']:
+        """
+        Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+        """
+        return pulumi.get(self, "destination_configs")
 
     @property
     @pulumi.getter(name="envoyImageLocation")
@@ -145,6 +159,14 @@ class GetConnectionResult:
         Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nodeConfig")
+    def node_config(self) -> 'outputs.NodeConfigResponse':
+        """
+        Optional. Configuration for the connection.
+        """
+        return pulumi.get(self, "node_config")
 
     @property
     @pulumi.getter(name="serviceAccount")
@@ -198,11 +220,13 @@ class AwaitableGetConnectionResult(GetConnectionResult):
             connector_version=self.connector_version,
             create_time=self.create_time,
             description=self.description,
+            destination_configs=self.destination_configs,
             envoy_image_location=self.envoy_image_location,
             image_location=self.image_location,
             labels=self.labels,
             lock_config=self.lock_config,
             name=self.name,
+            node_config=self.node_config,
             service_account=self.service_account,
             service_directory=self.service_directory,
             status=self.status,
@@ -232,11 +256,13 @@ def get_connection(connection_id: Optional[str] = None,
         connector_version=__ret__.connector_version,
         create_time=__ret__.create_time,
         description=__ret__.description,
+        destination_configs=__ret__.destination_configs,
         envoy_image_location=__ret__.envoy_image_location,
         image_location=__ret__.image_location,
         labels=__ret__.labels,
         lock_config=__ret__.lock_config,
         name=__ret__.name,
+        node_config=__ret__.node_config,
         service_account=__ret__.service_account,
         service_directory=__ret__.service_directory,
         status=__ret__.status,

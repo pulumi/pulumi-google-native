@@ -25,11 +25,11 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// (Optional) Only true is accepted. Defaults to true.
+        /// Only true is accepted for Secret Volumes. Defaults to true for Secrets Volumes.
         /// </summary>
         public readonly bool ReadOnly;
         /// <summary>
-        /// (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        /// Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         /// </summary>
         public readonly string SubPath;
 

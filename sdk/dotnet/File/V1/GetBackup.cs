@@ -92,15 +92,15 @@ namespace Pulumi.GoogleNative.File.V1
         /// </summary>
         public readonly bool SatisfiesPzs;
         /// <summary>
-        /// Name of the file share in the source Cloud Filestore instance that the backup is created from.
+        /// Name of the file share in the source Filestore instance that the backup is created from.
         /// </summary>
         public readonly string SourceFileShare;
         /// <summary>
-        /// The resource name of the source Cloud Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
+        /// The resource name of the source Filestore instance, in the format `projects/{project_number}/locations/{location_id}/instances/{instance_id}`, used to create this backup.
         /// </summary>
         public readonly string SourceInstance;
         /// <summary>
-        /// The service tier of the source Cloud Filestore instance that this backup is created from.
+        /// The service tier of the source Filestore instance that this backup is created from.
         /// </summary>
         public readonly string SourceInstanceTier;
         /// <summary>

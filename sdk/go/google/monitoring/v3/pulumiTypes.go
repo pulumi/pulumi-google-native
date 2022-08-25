@@ -3657,6 +3657,8 @@ type HttpCheck struct {
 	MaskHeaders *bool `pulumi:"maskHeaders"`
 	// Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically.
 	Path *string `pulumi:"path"`
+	// Contains information needed to add pings to an HTTP check.
+	PingConfig *PingConfig `pulumi:"pingConfig"`
 	// Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
 	Port *int `pulumi:"port"`
 	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
@@ -3694,6 +3696,8 @@ type HttpCheckArgs struct {
 	MaskHeaders pulumi.BoolPtrInput `pulumi:"maskHeaders"`
 	// Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically.
 	Path pulumi.StringPtrInput `pulumi:"path"`
+	// Contains information needed to add pings to an HTTP check.
+	PingConfig PingConfigPtrInput `pulumi:"pingConfig"`
 	// Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
@@ -3817,6 +3821,11 @@ func (o HttpCheckOutput) Path() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v HttpCheck) *string { return v.Path }).(pulumi.StringPtrOutput)
 }
 
+// Contains information needed to add pings to an HTTP check.
+func (o HttpCheckOutput) PingConfig() PingConfigPtrOutput {
+	return o.ApplyT(func(v HttpCheck) *PingConfig { return v.PingConfig }).(PingConfigPtrOutput)
+}
+
 // Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
 func (o HttpCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v HttpCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
@@ -3931,6 +3940,16 @@ func (o HttpCheckPtrOutput) Path() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Contains information needed to add pings to an HTTP check.
+func (o HttpCheckPtrOutput) PingConfig() PingConfigPtrOutput {
+	return o.ApplyT(func(v *HttpCheck) *PingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PingConfig
+	}).(PingConfigPtrOutput)
+}
+
 // Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
 func (o HttpCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HttpCheck) *int {
@@ -3987,6 +4006,8 @@ type HttpCheckResponse struct {
 	MaskHeaders bool `pulumi:"maskHeaders"`
 	// Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically.
 	Path string `pulumi:"path"`
+	// Contains information needed to add pings to an HTTP check.
+	PingConfig PingConfigResponse `pulumi:"pingConfig"`
 	// Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
 	Port int `pulumi:"port"`
 	// The HTTP request method to use for the check. If set to METHOD_UNSPECIFIED then request_method defaults to GET.
@@ -4045,6 +4066,11 @@ func (o HttpCheckResponseOutput) MaskHeaders() pulumi.BoolOutput {
 // Optional (defaults to "/"). The path to the page against which to run the check. Will be combined with the host (specified within the monitored_resource) and port to construct the full URL. If the provided path does not begin with "/", a "/" will be prepended automatically.
 func (o HttpCheckResponseOutput) Path() pulumi.StringOutput {
 	return o.ApplyT(func(v HttpCheckResponse) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// Contains information needed to add pings to an HTTP check.
+func (o HttpCheckResponseOutput) PingConfig() PingConfigResponseOutput {
+	return o.ApplyT(func(v HttpCheckResponse) PingConfigResponse { return v.PingConfig }).(PingConfigResponseOutput)
 }
 
 // Optional (defaults to 80 when use_ssl is false, and 443 when use_ssl is true). The TCP port on the HTTP server against which to run the check. Will be combined with host (specified within the monitored_resource) and path to construct the full URL.
@@ -7576,6 +7602,172 @@ func (o PerformanceThresholdResponseOutput) Threshold() pulumi.Float64Output {
 	return o.ApplyT(func(v PerformanceThresholdResponse) float64 { return v.Threshold }).(pulumi.Float64Output)
 }
 
+// Information involved in sending ICMP pings alongside public HTTP/TCP checks. For HTTP, the pings are performed for each part of the redirect chain.
+type PingConfig struct {
+	// Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+	PingsCount *int `pulumi:"pingsCount"`
+}
+
+// PingConfigInput is an input type that accepts PingConfigArgs and PingConfigOutput values.
+// You can construct a concrete instance of `PingConfigInput` via:
+//
+//	PingConfigArgs{...}
+type PingConfigInput interface {
+	pulumi.Input
+
+	ToPingConfigOutput() PingConfigOutput
+	ToPingConfigOutputWithContext(context.Context) PingConfigOutput
+}
+
+// Information involved in sending ICMP pings alongside public HTTP/TCP checks. For HTTP, the pings are performed for each part of the redirect chain.
+type PingConfigArgs struct {
+	// Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+	PingsCount pulumi.IntPtrInput `pulumi:"pingsCount"`
+}
+
+func (PingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PingConfig)(nil)).Elem()
+}
+
+func (i PingConfigArgs) ToPingConfigOutput() PingConfigOutput {
+	return i.ToPingConfigOutputWithContext(context.Background())
+}
+
+func (i PingConfigArgs) ToPingConfigOutputWithContext(ctx context.Context) PingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PingConfigOutput)
+}
+
+func (i PingConfigArgs) ToPingConfigPtrOutput() PingConfigPtrOutput {
+	return i.ToPingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PingConfigArgs) ToPingConfigPtrOutputWithContext(ctx context.Context) PingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PingConfigOutput).ToPingConfigPtrOutputWithContext(ctx)
+}
+
+// PingConfigPtrInput is an input type that accepts PingConfigArgs, PingConfigPtr and PingConfigPtrOutput values.
+// You can construct a concrete instance of `PingConfigPtrInput` via:
+//
+//	        PingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PingConfigPtrInput interface {
+	pulumi.Input
+
+	ToPingConfigPtrOutput() PingConfigPtrOutput
+	ToPingConfigPtrOutputWithContext(context.Context) PingConfigPtrOutput
+}
+
+type pingConfigPtrType PingConfigArgs
+
+func PingConfigPtr(v *PingConfigArgs) PingConfigPtrInput {
+	return (*pingConfigPtrType)(v)
+}
+
+func (*pingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PingConfig)(nil)).Elem()
+}
+
+func (i *pingConfigPtrType) ToPingConfigPtrOutput() PingConfigPtrOutput {
+	return i.ToPingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *pingConfigPtrType) ToPingConfigPtrOutputWithContext(ctx context.Context) PingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PingConfigPtrOutput)
+}
+
+// Information involved in sending ICMP pings alongside public HTTP/TCP checks. For HTTP, the pings are performed for each part of the redirect chain.
+type PingConfigOutput struct{ *pulumi.OutputState }
+
+func (PingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PingConfig)(nil)).Elem()
+}
+
+func (o PingConfigOutput) ToPingConfigOutput() PingConfigOutput {
+	return o
+}
+
+func (o PingConfigOutput) ToPingConfigOutputWithContext(ctx context.Context) PingConfigOutput {
+	return o
+}
+
+func (o PingConfigOutput) ToPingConfigPtrOutput() PingConfigPtrOutput {
+	return o.ToPingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PingConfigOutput) ToPingConfigPtrOutputWithContext(ctx context.Context) PingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PingConfig) *PingConfig {
+		return &v
+	}).(PingConfigPtrOutput)
+}
+
+// Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+func (o PingConfigOutput) PingsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PingConfig) *int { return v.PingsCount }).(pulumi.IntPtrOutput)
+}
+
+type PingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PingConfig)(nil)).Elem()
+}
+
+func (o PingConfigPtrOutput) ToPingConfigPtrOutput() PingConfigPtrOutput {
+	return o
+}
+
+func (o PingConfigPtrOutput) ToPingConfigPtrOutputWithContext(ctx context.Context) PingConfigPtrOutput {
+	return o
+}
+
+func (o PingConfigPtrOutput) Elem() PingConfigOutput {
+	return o.ApplyT(func(v *PingConfig) PingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PingConfig
+		return ret
+	}).(PingConfigOutput)
+}
+
+// Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+func (o PingConfigPtrOutput) PingsCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PingConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.PingsCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// Information involved in sending ICMP pings alongside public HTTP/TCP checks. For HTTP, the pings are performed for each part of the redirect chain.
+type PingConfigResponse struct {
+	// Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+	PingsCount int `pulumi:"pingsCount"`
+}
+
+// Information involved in sending ICMP pings alongside public HTTP/TCP checks. For HTTP, the pings are performed for each part of the redirect chain.
+type PingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PingConfigResponse)(nil)).Elem()
+}
+
+func (o PingConfigResponseOutput) ToPingConfigResponseOutput() PingConfigResponseOutput {
+	return o
+}
+
+func (o PingConfigResponseOutput) ToPingConfigResponseOutputWithContext(ctx context.Context) PingConfigResponseOutput {
+	return o
+}
+
+// Number of ICMP pings. A maximum of 3 ICMP pings is currently supported.
+func (o PingConfigResponseOutput) PingsCount() pulumi.IntOutput {
+	return o.ApplyT(func(v PingConfigResponse) int { return v.PingsCount }).(pulumi.IntOutput)
+}
+
 // Service Level Indicators for which atomic units of service are counted directly.
 type RequestBasedSli struct {
 	// distribution_cut is used when good_service is a count of values aggregated in a Distribution that fall into a good range. The total_service is the total count of all values aggregated in the Distribution.
@@ -8560,6 +8752,8 @@ func (o StatusResponseOutput) Message() pulumi.StringOutput {
 
 // Information required for a TCP Uptime check request.
 type TcpCheck struct {
+	// Contains information needed to add pings to a TCP check.
+	PingConfig *PingConfig `pulumi:"pingConfig"`
 	// The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
 	Port *int `pulumi:"port"`
 }
@@ -8577,6 +8771,8 @@ type TcpCheckInput interface {
 
 // Information required for a TCP Uptime check request.
 type TcpCheckArgs struct {
+	// Contains information needed to add pings to a TCP check.
+	PingConfig PingConfigPtrInput `pulumi:"pingConfig"`
 	// The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
 	Port pulumi.IntPtrInput `pulumi:"port"`
 }
@@ -8659,6 +8855,11 @@ func (o TcpCheckOutput) ToTcpCheckPtrOutputWithContext(ctx context.Context) TcpC
 	}).(TcpCheckPtrOutput)
 }
 
+// Contains information needed to add pings to a TCP check.
+func (o TcpCheckOutput) PingConfig() PingConfigPtrOutput {
+	return o.ApplyT(func(v TcpCheck) *PingConfig { return v.PingConfig }).(PingConfigPtrOutput)
+}
+
 // The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
 func (o TcpCheckOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v TcpCheck) *int { return v.Port }).(pulumi.IntPtrOutput)
@@ -8688,6 +8889,16 @@ func (o TcpCheckPtrOutput) Elem() TcpCheckOutput {
 	}).(TcpCheckOutput)
 }
 
+// Contains information needed to add pings to a TCP check.
+func (o TcpCheckPtrOutput) PingConfig() PingConfigPtrOutput {
+	return o.ApplyT(func(v *TcpCheck) *PingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PingConfig
+	}).(PingConfigPtrOutput)
+}
+
 // The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
 func (o TcpCheckPtrOutput) Port() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *TcpCheck) *int {
@@ -8700,6 +8911,8 @@ func (o TcpCheckPtrOutput) Port() pulumi.IntPtrOutput {
 
 // Information required for a TCP Uptime check request.
 type TcpCheckResponse struct {
+	// Contains information needed to add pings to a TCP check.
+	PingConfig PingConfigResponse `pulumi:"pingConfig"`
 	// The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
 	Port int `pulumi:"port"`
 }
@@ -8717,6 +8930,11 @@ func (o TcpCheckResponseOutput) ToTcpCheckResponseOutput() TcpCheckResponseOutpu
 
 func (o TcpCheckResponseOutput) ToTcpCheckResponseOutputWithContext(ctx context.Context) TcpCheckResponseOutput {
 	return o
+}
+
+// Contains information needed to add pings to a TCP check.
+func (o TcpCheckResponseOutput) PingConfig() PingConfigResponseOutput {
+	return o.ApplyT(func(v TcpCheckResponse) PingConfigResponse { return v.PingConfig }).(PingConfigResponseOutput)
 }
 
 // The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required.
@@ -9642,6 +9860,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationRateLimitPtrInput)(nil)).Elem(), NotificationRateLimitArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PerformanceThresholdInput)(nil)).Elem(), PerformanceThresholdArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PerformanceThresholdPtrInput)(nil)).Elem(), PerformanceThresholdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PingConfigInput)(nil)).Elem(), PingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PingConfigPtrInput)(nil)).Elem(), PingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RequestBasedSliInput)(nil)).Elem(), RequestBasedSliArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RequestBasedSliPtrInput)(nil)).Elem(), RequestBasedSliArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceGroupInput)(nil)).Elem(), ResourceGroupArgs{})
@@ -9774,6 +9994,9 @@ func init() {
 	pulumi.RegisterOutputType(PerformanceThresholdOutput{})
 	pulumi.RegisterOutputType(PerformanceThresholdPtrOutput{})
 	pulumi.RegisterOutputType(PerformanceThresholdResponseOutput{})
+	pulumi.RegisterOutputType(PingConfigOutput{})
+	pulumi.RegisterOutputType(PingConfigPtrOutput{})
+	pulumi.RegisterOutputType(PingConfigResponseOutput{})
 	pulumi.RegisterOutputType(RequestBasedSliOutput{})
 	pulumi.RegisterOutputType(RequestBasedSliPtrOutput{})
 	pulumi.RegisterOutputType(RequestBasedSliResponseOutput{})

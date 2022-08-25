@@ -19,6 +19,7 @@ __all__ = [
     'PasswordValidationPolicyComplexity',
     'SettingsActivationPolicy',
     'SettingsAvailabilityType',
+    'SettingsConnectorEnforcement',
     'SettingsDataDiskType',
     'SettingsPricingPlan',
     'SettingsReplicationType',
@@ -430,6 +431,24 @@ class SettingsAvailabilityType(str, Enum):
     REGIONAL = "REGIONAL"
     """
     Regional available instance.
+    """
+
+
+class SettingsConnectorEnforcement(str, Enum):
+    """
+    Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+    """
+    CONNECTOR_ENFORCEMENT_UNSPECIFIED = "CONNECTOR_ENFORCEMENT_UNSPECIFIED"
+    """
+    The requirement for Cloud SQL connectors is unknown.
+    """
+    NOT_REQUIRED = "NOT_REQUIRED"
+    """
+    Do not require Cloud SQL connectors.
+    """
+    REQUIRED = "REQUIRED"
+    """
+    Require all connections to use Cloud SQL connectors, including the Cloud SQL Auth Proxy and Cloud SQL Java, Python, and Go connectors. Note: This disables all existing authorized networks.
     """
 
 

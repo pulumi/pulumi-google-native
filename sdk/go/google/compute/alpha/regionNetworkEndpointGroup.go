@@ -40,8 +40,9 @@ type RegionNetworkEndpointGroup struct {
 	// The URL of the network to which all network endpoints in the NEG belong. Uses "default" project network if unspecified.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
-	NetworkEndpointType pulumi.StringOutput `pulumi:"networkEndpointType"`
-	Project             pulumi.StringOutput `pulumi:"project"`
+	NetworkEndpointType pulumi.StringOutput                       `pulumi:"networkEndpointType"`
+	Project             pulumi.StringOutput                       `pulumi:"project"`
+	PscData             NetworkEndpointGroupPscDataResponseOutput `pulumi:"pscData"`
 	// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
 	PscTargetService pulumi.StringOutput `pulumi:"pscTargetService"`
 	Region           pulumi.StringOutput `pulumi:"region"`
@@ -133,6 +134,7 @@ type regionNetworkEndpointGroupArgs struct {
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType *RegionNetworkEndpointGroupNetworkEndpointType `pulumi:"networkEndpointType"`
 	Project             *string                                        `pulumi:"project"`
+	PscData             *NetworkEndpointGroupPscData                   `pulumi:"pscData"`
 	// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
 	PscTargetService *string `pulumi:"pscTargetService"`
 	Region           string  `pulumi:"region"`
@@ -171,6 +173,7 @@ type RegionNetworkEndpointGroupArgs struct {
 	// Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
 	NetworkEndpointType RegionNetworkEndpointGroupNetworkEndpointTypePtrInput
 	Project             pulumi.StringPtrInput
+	PscData             NetworkEndpointGroupPscDataPtrInput
 	// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"
 	PscTargetService pulumi.StringPtrInput
 	Region           pulumi.StringInput
@@ -289,6 +292,10 @@ func (o RegionNetworkEndpointGroupOutput) NetworkEndpointType() pulumi.StringOut
 
 func (o RegionNetworkEndpointGroupOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o RegionNetworkEndpointGroupOutput) PscData() NetworkEndpointGroupPscDataResponseOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroup) NetworkEndpointGroupPscDataResponseOutput { return v.PscData }).(NetworkEndpointGroupPscDataResponseOutput)
 }
 
 // The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment. An example value is: "asia-northeast3-cloudkms.googleapis.com"

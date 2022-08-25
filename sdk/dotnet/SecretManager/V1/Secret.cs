@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.SecretManager.V1
     public partial class Secret : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of annotation keys and values must be less than 16KiB.
+        /// </summary>
+        [Output("annotations")]
+        public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
+
+        /// <summary>
         /// The time at which the Secret was created.
         /// </summary>
         [Output("createTime")]
@@ -135,6 +141,18 @@ namespace Pulumi.GoogleNative.SecretManager.V1
 
     public sealed class SecretArgs : global::Pulumi.ResourceArgs
     {
+        [Input("annotations")]
+        private InputMap<string>? _annotations;
+
+        /// <summary>
+        /// Optional. Custom metadata about the secret. Annotations are distinct from various forms of labels. Annotations exist to allow client tools to store their own state information without requiring a database. Annotation keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, begin and end with an alphanumeric character ([a-z0-9A-Z]), and may have dashes (-), underscores (_), dots (.), and alphanumerics in between these symbols. The total size of annotation keys and values must be less than 16KiB.
+        /// </summary>
+        public InputMap<string> Annotations
+        {
+            get => _annotations ?? (_annotations = new InputMap<string>());
+            set => _annotations = value;
+        }
+
         /// <summary>
         /// Optional. Etag of the currently stored Secret.
         /// </summary>

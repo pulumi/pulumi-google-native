@@ -48,14 +48,8 @@ func NewInstance(ctx *pulumi.Context,
 	if args.InstanceId == nil {
 		return nil, errors.New("invalid value for required argument 'InstanceId'")
 	}
-	if args.Labels == nil {
-		return nil, errors.New("invalid value for required argument 'Labels'")
-	}
 	if args.Parent == nil {
 		return nil, errors.New("invalid value for required argument 'Parent'")
-	}
-	if args.Type == nil {
-		return nil, errors.New("invalid value for required argument 'Type'")
 	}
 	replaceOnChanges := pulumi.ReplaceOnChanges([]string{
 		"project",
@@ -107,7 +101,7 @@ type instanceArgs struct {
 	Parent  string  `pulumi:"parent"`
 	Project *string `pulumi:"project"`
 	// The type of the instance. Defaults to `PRODUCTION`.
-	Type InstanceType `pulumi:"type"`
+	Type *InstanceType `pulumi:"type"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -126,7 +120,7 @@ type InstanceArgs struct {
 	Parent  pulumi.StringInput
 	Project pulumi.StringPtrInput
 	// The type of the instance. Defaults to `PRODUCTION`.
-	Type InstanceTypeInput
+	Type InstanceTypePtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {

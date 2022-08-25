@@ -17,11 +17,11 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class ServiceSpecResponse
     {
         /// <summary>
-        /// Template holds the latest specification for the Revision to be stamped out.
+        /// Holds the latest specification for the Revision to be stamped out.
         /// </summary>
         public readonly Outputs.RevisionTemplateResponse Template;
         /// <summary>
-        /// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations.
+        /// Specifies how to distribute traffic over a collection of Knative Revisions and Configurations to the Service's main URL.
         /// </summary>
         public readonly ImmutableArray<Outputs.TrafficTargetResponse> Traffic;
 

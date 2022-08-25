@@ -15,6 +15,9 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     /// </summary>
     public sealed class VolumeArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+        /// </summary>
         [Input("configMap")]
         public Input<Inputs.ConfigMapVolumeSourceArgs>? ConfigMap { get; set; }
 
@@ -24,6 +27,9 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
+        /// </summary>
         [Input("secret")]
         public Input<Inputs.SecretVolumeSourceArgs>? Secret { get; set; }
 

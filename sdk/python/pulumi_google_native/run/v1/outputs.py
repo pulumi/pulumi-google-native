@@ -192,7 +192,7 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
@@ -211,7 +211,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -227,7 +227,7 @@ class BindingResponse(dict):
 @pulumi.output_type
 class ConfigMapEnvSourceResponse(dict):
     """
-    Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+    Not supported by Cloud Run. ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -251,10 +251,10 @@ class ConfigMapEnvSourceResponse(dict):
                  name: str,
                  optional: bool):
         """
-        Not supported by Cloud Run ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
+        Not supported by Cloud Run. ConfigMapEnvSource selects a ConfigMap to populate the environment variables with. The contents of the target ConfigMap's Data field will represent the key-value pairs as environment variables.
         :param 'LocalObjectReferenceResponse' local_object_reference: This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
         :param str name: The ConfigMap to select from.
-        :param bool optional: (Optional) Specify whether the ConfigMap must be defined
+        :param bool optional: Specify whether the ConfigMap must be defined.
         """
         pulumi.set(__self__, "local_object_reference", local_object_reference)
         pulumi.set(__self__, "name", name)
@@ -280,7 +280,7 @@ class ConfigMapEnvSourceResponse(dict):
     @pulumi.getter
     def optional(self) -> bool:
         """
-        (Optional) Specify whether the ConfigMap must be defined
+        Specify whether the ConfigMap must be defined.
         """
         return pulumi.get(self, "optional")
 
@@ -288,7 +288,7 @@ class ConfigMapEnvSourceResponse(dict):
 @pulumi.output_type
 class ConfigMapKeySelectorResponse(dict):
     """
-    Not supported by Cloud Run Selects a key from a ConfigMap.
+    Not supported by Cloud Run. Selects a key from a ConfigMap.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -313,11 +313,11 @@ class ConfigMapKeySelectorResponse(dict):
                  name: str,
                  optional: bool):
         """
-        Not supported by Cloud Run Selects a key from a ConfigMap.
+        Not supported by Cloud Run. Selects a key from a ConfigMap.
         :param str key: The key to select.
         :param 'LocalObjectReferenceResponse' local_object_reference: This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
         :param str name: The ConfigMap to select from.
-        :param bool optional: (Optional) Specify whether the ConfigMap or its key must be defined
+        :param bool optional: Specify whether the ConfigMap or its key must be defined
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "local_object_reference", local_object_reference)
@@ -352,7 +352,7 @@ class ConfigMapKeySelectorResponse(dict):
     @pulumi.getter
     def optional(self) -> bool:
         """
-        (Optional) Specify whether the ConfigMap or its key must be defined
+        Specify whether the ConfigMap or its key must be defined
         """
         return pulumi.get(self, "optional")
 
@@ -360,7 +360,7 @@ class ConfigMapKeySelectorResponse(dict):
 @pulumi.output_type
 class ConfigMapVolumeSourceResponse(dict):
     """
-    Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+    Not supported by Cloud Run. Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -385,7 +385,7 @@ class ConfigMapVolumeSourceResponse(dict):
                  name: str,
                  optional: bool):
         """
-        Not supported by Cloud Run Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+        Not supported by Cloud Run. Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
         :param int default_mode: (Optional) Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0644. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
         :param Sequence['KeyToPathResponse'] items: (Optional) If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
         :param str name: Name of the config.
@@ -457,9 +457,9 @@ class ContainerPortResponse(dict):
                  protocol: str):
         """
         ContainerPort represents a network port in a single container.
-        :param int container_port: (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
-        :param str name: (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
-        :param str protocol: (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
+        :param int container_port: Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        :param str name: If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+        :param str protocol: Protocol for port. Must be "TCP". Defaults to "TCP".
         """
         pulumi.set(__self__, "container_port", container_port)
         pulumi.set(__self__, "name", name)
@@ -469,7 +469,7 @@ class ContainerPortResponse(dict):
     @pulumi.getter(name="containerPort")
     def container_port(self) -> int:
         """
-        (Optional) Port number the container listens on. This must be a valid port number, 0 < x < 65536.
+        Port number the container listens on. This must be a valid port number, 0 < x < 65536.
         """
         return pulumi.get(self, "container_port")
 
@@ -477,7 +477,7 @@ class ContainerPortResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        (Optional) If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
+        If specified, used to specify which protocol to use. Allowed values are "http1" and "h2c".
         """
         return pulumi.get(self, "name")
 
@@ -485,7 +485,7 @@ class ContainerPortResponse(dict):
     @pulumi.getter
     def protocol(self) -> str:
         """
-        (Optional) Protocol for port. Must be "TCP". Defaults to "TCP".
+        Protocol for port. Must be "TCP". Defaults to "TCP".
         """
         return pulumi.get(self, "protocol")
 
@@ -550,22 +550,23 @@ class ContainerResponse(dict):
                  working_dir: str):
         """
         A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
-        :param Sequence[str] args: (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        :param Sequence['EnvVarResponse'] env: (Optional) List of environment variables to set in the container.
-        :param Sequence['EnvFromSourceResponse'] env_from: (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
-        :param str image: Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
-        :param str image_pull_policy: (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
-        :param 'ProbeResponse' liveness_probe: (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        :param str name: (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
-        :param Sequence['ContainerPortResponse'] ports: (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
-        :param 'ProbeResponse' readiness_probe: (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        :param 'ResourceRequirementsResponse' resources: (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
-        :param 'SecurityContextResponse' security_context: (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
-        :param 'ProbeResponse' startup_probe: (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        :param str termination_message_path: (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
-        :param str termination_message_policy: (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
-        :param Sequence['VolumeMountResponse'] volume_mounts: (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
-        :param str working_dir: (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence[str] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence['EnvVarResponse'] env: List of environment variables to set in the container.
+        :param Sequence['EnvFromSourceResponse'] env_from: Not supported by Cloud Run.
+        :param str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
+        :param str image_pull_policy: Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+        :param 'ProbeResponse' liveness_probe: Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param str name: Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+        :param Sequence['ContainerPortResponse'] ports: List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
+        :param 'ProbeResponse' readiness_probe: Not supported by Cloud Run.
+        :param 'ResourceRequirementsResponse' resources: Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        :param 'SecurityContextResponse' security_context: Not supported by Cloud Run.
+        :param 'ProbeResponse' startup_probe: Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param str termination_message_path: Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
+        :param str termination_message_policy: Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+        :param Sequence['VolumeMountResponse'] volume_mounts: Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
+        :param str working_dir: Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "command", command)
@@ -589,20 +590,23 @@ class ContainerResponse(dict):
     @pulumi.getter
     def args(self) -> Sequence[str]:
         """
-        (Optional) Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
         """
         return pulumi.get(self, "args")
 
     @property
     @pulumi.getter
     def command(self) -> Sequence[str]:
+        """
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        """
         return pulumi.get(self, "command")
 
     @property
     @pulumi.getter
     def env(self) -> Sequence['outputs.EnvVarResponse']:
         """
-        (Optional) List of environment variables to set in the container.
+        List of environment variables to set in the container.
         """
         return pulumi.get(self, "env")
 
@@ -610,7 +614,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="envFrom")
     def env_from(self) -> Sequence['outputs.EnvFromSourceResponse']:
         """
-        (Optional) List of sources to populate environment variables in the container. The keys defined within a source must be a C_IDENTIFIER. All invalid keys will be reported as an event when the container is starting. When a key exists in multiple sources, the value associated with the last source will take precedence. Values defined by an Env with a duplicate key will take precedence. Cannot be updated.
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "env_from")
 
@@ -618,7 +622,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def image(self) -> str:
         """
-        Only supports containers from Google Container Registry or Artifact Registry URL of the Container image. More info: https://kubernetes.io/docs/concepts/containers/images
+        URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
         """
         return pulumi.get(self, "image")
 
@@ -626,7 +630,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="imagePullPolicy")
     def image_pull_policy(self) -> str:
         """
-        (Optional) Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
+        Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
         """
         return pulumi.get(self, "image_pull_policy")
 
@@ -634,7 +638,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="livenessProbe")
     def liveness_probe(self) -> 'outputs.ProbeResponse':
         """
-        (Optional) Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Periodic probe of container liveness. Container will be restarted if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "liveness_probe")
 
@@ -642,7 +646,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        (Optional) Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
+        Name of the container specified as a DNS_LABEL. Currently unused in Cloud Run. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-label-names
         """
         return pulumi.get(self, "name")
 
@@ -650,7 +654,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def ports(self) -> Sequence['outputs.ContainerPortResponse']:
         """
-        (Optional) List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
+        List of ports to expose from the container. Only a single port can be specified. The specified ports must be listening on all interfaces (0.0.0.0) within the container to be accessible. If omitted, a port number will be chosen and passed to the container through the PORT environment variable for the container to listen on.
         """
         return pulumi.get(self, "ports")
 
@@ -658,7 +662,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="readinessProbe")
     def readiness_probe(self) -> 'outputs.ProbeResponse':
         """
-        (Optional) Periodic probe of container service readiness. Container will be removed from service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "readiness_probe")
 
@@ -666,7 +670,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def resources(self) -> 'outputs.ResourceRequirementsResponse':
         """
-        (Optional) Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
+        Compute Resources required by this container. More info: https://kubernetes.io/docs/concepts/storage/persistent-volumes#resources
         """
         return pulumi.get(self, "resources")
 
@@ -674,7 +678,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="securityContext")
     def security_context(self) -> 'outputs.SecurityContextResponse':
         """
-        (Optional) Security options the pod should run with. More info: https://kubernetes.io/docs/concepts/policy/security-context/ More info: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "security_context")
 
@@ -682,7 +686,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="startupProbe")
     def startup_probe(self) -> 'outputs.ProbeResponse':
         """
-        (Optional) Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not be added to service endpoints if the probe fails. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Startup probe of application within the container. All other probes are disabled if a startup probe is provided, until it succeeds. Container will not receive traffic if the probe fails. If not provided, a default startup probe with TCP socket action is used. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "startup_probe")
 
@@ -690,7 +694,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="terminationMessagePath")
     def termination_message_path(self) -> str:
         """
-        (Optional) Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
+        Path at which the file to which the container's termination message will be written is mounted into the container's filesystem. Message written is intended to be brief final status, such as an assertion failure message. Will be truncated by the node if greater than 4096 bytes. The total message length across all containers will be limited to 12kb. Defaults to /dev/termination-log.
         """
         return pulumi.get(self, "termination_message_path")
 
@@ -698,7 +702,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="terminationMessagePolicy")
     def termination_message_policy(self) -> str:
         """
-        (Optional) Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
+        Indicate how the termination message should be populated. File will use the contents of terminationMessagePath to populate the container status message on both success and failure. FallbackToLogsOnError will use the last chunk of container log output if the termination message file is empty and the container exited with an error. The log output is limited to 2048 bytes or 80 lines, whichever is smaller. Defaults to File. Cannot be updated.
         """
         return pulumi.get(self, "termination_message_policy")
 
@@ -706,7 +710,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="volumeMounts")
     def volume_mounts(self) -> Sequence['outputs.VolumeMountResponse']:
         """
-        (Optional) Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
+        Volume to mount into the container's filesystem. Only supports SecretVolumeSources. Pod volumes to mount into the container's filesystem.
         """
         return pulumi.get(self, "volume_mounts")
 
@@ -714,7 +718,7 @@ class ContainerResponse(dict):
     @pulumi.getter(name="workingDir")
     def working_dir(self) -> str:
         """
-        (Optional) Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
+        Container's working directory. If not specified, the container runtime's default will be used, which might be configured in the container image.
         """
         return pulumi.get(self, "working_dir")
 
@@ -822,7 +826,7 @@ class DomainMappingStatusResponse(dict):
         :param str mapped_route_name: The name of the route that the mapping currently points to.
         :param int observed_generation: ObservedGeneration is the 'Generation' of the DomainMapping that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
         :param Sequence['ResourceRecordResponse'] resource_records: The resource records required to configure this domain mapping. These records must be added to the domain's DNS configuration in order to serve the application via this domain mapping.
-        :param str url: Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
+        :param str url: Optional. Not supported by Cloud Run.
         """
         pulumi.set(__self__, "conditions", conditions)
         pulumi.set(__self__, "mapped_route_name", mapped_route_name)
@@ -866,7 +870,7 @@ class DomainMappingStatusResponse(dict):
     @pulumi.getter
     def url(self) -> str:
         """
-        Optional. Cloud Run fully managed: not supported Cloud Run on GKE: supported Holds the URL that will serve the traffic of the DomainMapping.
+        Optional. Not supported by Cloud Run.
         """
         return pulumi.get(self, "url")
 
@@ -874,7 +878,7 @@ class DomainMappingStatusResponse(dict):
 @pulumi.output_type
 class EnvFromSourceResponse(dict):
     """
-    Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
+    Not supported by Cloud Run. EnvFromSource represents the source of a set of ConfigMaps
     """
     @staticmethod
     def __key_warning(key: str):
@@ -900,10 +904,10 @@ class EnvFromSourceResponse(dict):
                  prefix: str,
                  secret_ref: 'outputs.SecretEnvSourceResponse'):
         """
-        Not supported by Cloud Run EnvFromSource represents the source of a set of ConfigMaps
-        :param 'ConfigMapEnvSourceResponse' config_map_ref: (Optional) The ConfigMap to select from
-        :param str prefix: (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
-        :param 'SecretEnvSourceResponse' secret_ref: (Optional) The Secret to select from
+        Not supported by Cloud Run. EnvFromSource represents the source of a set of ConfigMaps
+        :param 'ConfigMapEnvSourceResponse' config_map_ref: The ConfigMap to select from
+        :param str prefix: An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        :param 'SecretEnvSourceResponse' secret_ref: The Secret to select from
         """
         pulumi.set(__self__, "config_map_ref", config_map_ref)
         pulumi.set(__self__, "prefix", prefix)
@@ -913,7 +917,7 @@ class EnvFromSourceResponse(dict):
     @pulumi.getter(name="configMapRef")
     def config_map_ref(self) -> 'outputs.ConfigMapEnvSourceResponse':
         """
-        (Optional) The ConfigMap to select from
+        The ConfigMap to select from
         """
         return pulumi.get(self, "config_map_ref")
 
@@ -921,7 +925,7 @@ class EnvFromSourceResponse(dict):
     @pulumi.getter
     def prefix(self) -> str:
         """
-        (Optional) An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
+        An optional identifier to prepend to each key in the ConfigMap. Must be a C_IDENTIFIER.
         """
         return pulumi.get(self, "prefix")
 
@@ -929,7 +933,7 @@ class EnvFromSourceResponse(dict):
     @pulumi.getter(name="secretRef")
     def secret_ref(self) -> 'outputs.SecretEnvSourceResponse':
         """
-        (Optional) The Secret to select from
+        The Secret to select from
         """
         return pulumi.get(self, "secret_ref")
 
@@ -963,8 +967,8 @@ class EnvVarResponse(dict):
         """
         EnvVar represents an environment variable present in a Container.
         :param str name: Name of the environment variable. Must be a C_IDENTIFIER.
-        :param str value: (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
-        :param 'EnvVarSourceResponse' value_from: (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
+        :param str value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        :param 'EnvVarSourceResponse' value_from: Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "value", value)
@@ -982,7 +986,7 @@ class EnvVarResponse(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        (Optional) Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
         """
         return pulumi.get(self, "value")
 
@@ -990,7 +994,7 @@ class EnvVarResponse(dict):
     @pulumi.getter(name="valueFrom")
     def value_from(self) -> 'outputs.EnvVarSourceResponse':
         """
-        (Optional) Source for the environment variable's value. Only supports secret_key_ref. Source for the environment variable's value. Cannot be used if value is not empty.
+        Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty.
         """
         return pulumi.get(self, "value_from")
 
@@ -1024,8 +1028,8 @@ class EnvVarSourceResponse(dict):
                  secret_key_ref: 'outputs.SecretKeySelectorResponse'):
         """
         EnvVarSource represents a source for the value of an EnvVar.
-        :param 'ConfigMapKeySelectorResponse' config_map_key_ref: (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
-        :param 'SecretKeySelectorResponse' secret_key_ref: (Optional) Selects a key (version) of a secret in Secret Manager.
+        :param 'ConfigMapKeySelectorResponse' config_map_key_ref: Not supported by Cloud Run. Selects a key of a ConfigMap.
+        :param 'SecretKeySelectorResponse' secret_key_ref: Selects a key (version) of a secret in Secret Manager.
         """
         pulumi.set(__self__, "config_map_key_ref", config_map_key_ref)
         pulumi.set(__self__, "secret_key_ref", secret_key_ref)
@@ -1034,7 +1038,7 @@ class EnvVarSourceResponse(dict):
     @pulumi.getter(name="configMapKeyRef")
     def config_map_key_ref(self) -> 'outputs.ConfigMapKeySelectorResponse':
         """
-        (Optional) Not supported by Cloud Run Selects a key of a ConfigMap.
+        Not supported by Cloud Run. Selects a key of a ConfigMap.
         """
         return pulumi.get(self, "config_map_key_ref")
 
@@ -1042,7 +1046,7 @@ class EnvVarSourceResponse(dict):
     @pulumi.getter(name="secretKeyRef")
     def secret_key_ref(self) -> 'outputs.SecretKeySelectorResponse':
         """
-        (Optional) Selects a key (version) of a secret in Secret Manager.
+        Selects a key (version) of a secret in Secret Manager.
         """
         return pulumi.get(self, "secret_key_ref")
 
@@ -1050,13 +1054,13 @@ class EnvVarSourceResponse(dict):
 @pulumi.output_type
 class ExecActionResponse(dict):
     """
-    Not supported by Cloud Run ExecAction describes a "run in container" action.
+    Not supported by Cloud Run. ExecAction describes a "run in container" action.
     """
     def __init__(__self__, *,
                  command: Sequence[str]):
         """
-        Not supported by Cloud Run ExecAction describes a "run in container" action.
-        :param Sequence[str] command: (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        Not supported by Cloud Run. ExecAction describes a "run in container" action.
+        :param Sequence[str] command: Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
         """
         pulumi.set(__self__, "command", command)
 
@@ -1064,7 +1068,7 @@ class ExecActionResponse(dict):
     @pulumi.getter
     def command(self) -> Sequence[str]:
         """
-        (Optional) Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
+        Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy.
         """
         return pulumi.get(self, "command")
 
@@ -1124,8 +1128,8 @@ class ExecutionSpecResponse(dict):
                  template: 'outputs.TaskTemplateSpecResponse'):
         """
         ExecutionSpec describes how the execution will look.
-        :param int parallelism: Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism. +optional
-        :param int task_count: Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+        :param int parallelism: Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed, i.e. when the work left to do is less than max parallelism.
+        :param int task_count: Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution.
         :param 'TaskTemplateSpecResponse' template: Optional. Describes the task(s) that will be created when executing an execution.
         """
         pulumi.set(__self__, "parallelism", parallelism)
@@ -1136,7 +1140,7 @@ class ExecutionSpecResponse(dict):
     @pulumi.getter
     def parallelism(self) -> int:
         """
-        Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed remaining, i.e. when the work left to do is less than max parallelism. +optional
+        Optional. Specifies the maximum desired number of tasks the execution should run at given time. Must be <= task_count. When the job is run, if this field is 0 or unset, the maximum possible value will be used for that execution. The actual number of tasks running in steady state will be less than this number when there are fewer tasks waiting to be completed, i.e. when the work left to do is less than max parallelism.
         """
         return pulumi.get(self, "parallelism")
 
@@ -1144,7 +1148,7 @@ class ExecutionSpecResponse(dict):
     @pulumi.getter(name="taskCount")
     def task_count(self) -> int:
         """
-        Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/ +optional
+        Optional. Specifies the desired number of tasks the execution should run. Setting to 1 means that parallelism is limited to 1 and the success of that task signals the success of the execution.
         """
         return pulumi.get(self, "task_count")
 
@@ -1248,13 +1252,13 @@ class ExprResponse(dict):
 @pulumi.output_type
 class GRPCActionResponse(dict):
     """
-    Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.
+    GRPCAction describes an action involving a GRPC port.
     """
     def __init__(__self__, *,
                  port: int,
                  service: str):
         """
-        Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.
+        GRPCAction describes an action involving a GRPC port.
         :param int port: Port number of the gRPC service. Number must be in the range 1 to 65535.
         :param str service: Service is the name of the service to place in the gRPC HealthCheckRequest (see https://github.com/grpc/grpc/blob/master/doc/health-checking.md). If this is not specified, the default behavior is defined by gRPC.
         """
@@ -1281,7 +1285,7 @@ class GRPCActionResponse(dict):
 @pulumi.output_type
 class GoogleCloudRunV1ConditionResponse(dict):
     """
-    Condition defines a generic condition for a Resource.
+    Conditions show the status of reconciliation progress on a given resource. Most resource use a top-level condition type "Ready" or "Completed" to show overall status with other conditions to checkpoint each stage of reconciliation. Note that if metadata.Generation does not equal status.ObservedGeneration, the conditions shown may not be relevant for the current spec.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1308,13 +1312,13 @@ class GoogleCloudRunV1ConditionResponse(dict):
                  status: str,
                  type: str):
         """
-        Condition defines a generic condition for a Resource.
+        Conditions show the status of reconciliation progress on a given resource. Most resource use a top-level condition type "Ready" or "Completed" to show overall status with other conditions to checkpoint each stage of reconciliation. Note that if metadata.Generation does not equal status.ObservedGeneration, the conditions shown may not be relevant for the current spec.
         :param str last_transition_time: Optional. Last time the condition transitioned from one status to another.
         :param str message: Optional. Human readable message indicating details about the current status.
-        :param str reason: Optional. One-word CamelCase reason for the condition's last transition.
-        :param str severity: Optional. How to interpret failures of this condition, one of Error, Warning, Info
+        :param str reason: Optional. One-word CamelCase reason for the condition's last transition. These are intended to be stable, unique values which the client may use to trigger error handling logic, whereas messages which may be changed later by the server.
+        :param str severity: Optional. How to interpret this condition. One of Error, Warning, or Info. Conditions of severity Info do not contribute to resource readiness.
         :param str status: Status of the condition, one of True, False, Unknown.
-        :param str type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        :param str type: type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
         """
         pulumi.set(__self__, "last_transition_time", last_transition_time)
         pulumi.set(__self__, "message", message)
@@ -1343,7 +1347,7 @@ class GoogleCloudRunV1ConditionResponse(dict):
     @pulumi.getter
     def reason(self) -> str:
         """
-        Optional. One-word CamelCase reason for the condition's last transition.
+        Optional. One-word CamelCase reason for the condition's last transition. These are intended to be stable, unique values which the client may use to trigger error handling logic, whereas messages which may be changed later by the server.
         """
         return pulumi.get(self, "reason")
 
@@ -1351,7 +1355,7 @@ class GoogleCloudRunV1ConditionResponse(dict):
     @pulumi.getter
     def severity(self) -> str:
         """
-        Optional. How to interpret failures of this condition, one of Error, Warning, Info
+        Optional. How to interpret this condition. One of Error, Warning, or Info. Conditions of severity Info do not contribute to resource readiness.
         """
         return pulumi.get(self, "severity")
 
@@ -1367,7 +1371,7 @@ class GoogleCloudRunV1ConditionResponse(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
         """
         return pulumi.get(self, "type")
 
@@ -1375,7 +1379,7 @@ class GoogleCloudRunV1ConditionResponse(dict):
 @pulumi.output_type
 class HTTPGetActionResponse(dict):
     """
-    Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
+    HTTPGetAction describes an action based on HTTP Get requests.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1400,11 +1404,11 @@ class HTTPGetActionResponse(dict):
                  path: str,
                  scheme: str):
         """
-        Not supported by Cloud Run HTTPGetAction describes an action based on HTTP Get requests.
-        :param str host: (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
-        :param Sequence['HTTPHeaderResponse'] http_headers: (Optional) Custom headers to set in the request. HTTP allows repeated headers.
-        :param str path: (Optional) Path to access on the HTTP server.
-        :param str scheme: (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
+        HTTPGetAction describes an action based on HTTP Get requests.
+        :param str host: Not supported by Cloud Run.
+        :param Sequence['HTTPHeaderResponse'] http_headers: Custom headers to set in the request. HTTP allows repeated headers.
+        :param str path: Path to access on the HTTP server.
+        :param str scheme: Not supported by Cloud Run.
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "http_headers", http_headers)
@@ -1415,7 +1419,7 @@ class HTTPGetActionResponse(dict):
     @pulumi.getter
     def host(self) -> str:
         """
-        (Optional) Host name to connect to, defaults to the pod IP. You probably want to set "Host" in httpHeaders instead.
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "host")
 
@@ -1423,7 +1427,7 @@ class HTTPGetActionResponse(dict):
     @pulumi.getter(name="httpHeaders")
     def http_headers(self) -> Sequence['outputs.HTTPHeaderResponse']:
         """
-        (Optional) Custom headers to set in the request. HTTP allows repeated headers.
+        Custom headers to set in the request. HTTP allows repeated headers.
         """
         return pulumi.get(self, "http_headers")
 
@@ -1431,7 +1435,7 @@ class HTTPGetActionResponse(dict):
     @pulumi.getter
     def path(self) -> str:
         """
-        (Optional) Path to access on the HTTP server.
+        Path to access on the HTTP server.
         """
         return pulumi.get(self, "path")
 
@@ -1439,7 +1443,7 @@ class HTTPGetActionResponse(dict):
     @pulumi.getter
     def scheme(self) -> str:
         """
-        (Optional) Scheme to use for connecting to the host. Defaults to HTTP.
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "scheme")
 
@@ -1447,13 +1451,13 @@ class HTTPGetActionResponse(dict):
 @pulumi.output_type
 class HTTPHeaderResponse(dict):
     """
-    Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
+    HTTPHeader describes a custom header to be used in HTTP probes
     """
     def __init__(__self__, *,
                  name: str,
                  value: str):
         """
-        Not supported by Cloud Run HTTPHeader describes a custom header to be used in HTTP probes
+        HTTPHeader describes a custom header to be used in HTTP probes
         :param str name: The header field name
         :param str value: The header field value
         """
@@ -1511,7 +1515,7 @@ class JobStatusResponse(dict):
                  observed_generation: int):
         """
         JobStatus represents the current state of a Job.
-        :param Sequence['GoogleCloudRunV1ConditionResponse'] conditions: The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        :param Sequence['GoogleCloudRunV1ConditionResponse'] conditions: The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/
         :param int execution_count: Number of executions created for this job.
         :param 'ExecutionReferenceResponse' latest_created_execution: A pointer to the most recently created execution for this job. This is set regardless of the eventual state of the execution.
         :param int observed_generation: The 'generation' of the job that was last processed by the controller.
@@ -1525,7 +1529,7 @@ class JobStatusResponse(dict):
     @pulumi.getter
     def conditions(self) -> Sequence['outputs.GoogleCloudRunV1ConditionResponse']:
         """
-        The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/
         """
         return pulumi.get(self, "conditions")
 
@@ -1601,13 +1605,13 @@ class KeyToPathResponse(dict):
 @pulumi.output_type
 class LocalObjectReferenceResponse(dict):
     """
-    Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+    Not supported by Cloud Run. LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
     """
     def __init__(__self__, *,
                  name: str):
         """
-        Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
-        :param str name: (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Not supported by Cloud Run. LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+        :param str name: Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         pulumi.set(__self__, "name", name)
 
@@ -1615,7 +1619,7 @@ class LocalObjectReferenceResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         """
         return pulumi.get(self, "name")
 
@@ -1674,21 +1678,21 @@ class ObjectMetaResponse(dict):
                  uid: str):
         """
         k8s.io.apimachinery.pkg.apis.meta.v1.ObjectMeta is metadata that all persisted resources must have, which includes all objects users must create.
-        :param Mapping[str, str] annotations: (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations
-        :param str cluster_name: (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
-        :param str creation_timestamp: (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
-        :param int deletion_grace_period_seconds: (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
-        :param str deletion_timestamp: (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
-        :param Sequence[str] finalizers: (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
-        :param str generate_name: (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
-        :param int generation: (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
-        :param Mapping[str, str] labels: (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
-        :param str name: Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a namespaces.services.create request, name must contain fewer than 50 characters. +optional
-        :param str namespace: Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
-        :param Sequence['OwnerReferenceResponse'] owner_references: (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
-        :param str resource_version: Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
-        :param str self_link: (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
-        :param str uid: (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
+        :param Mapping[str, str] annotations: Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution. Execution. More info: https://kubernetes.io/docs/user-guide/annotations
+        :param str cluster_name: Not supported by Cloud Run
+        :param str creation_timestamp: UTC timestamp representing the server time when this object was created. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        :param int deletion_grace_period_seconds: Not supported by Cloud Run
+        :param str deletion_timestamp: The read-only soft deletion timestamp for this resource. In Cloud Run, users are not able to set this field. Instead, they must call the corresponding Delete API.
+        :param Sequence[str] finalizers: Not supported by Cloud Run
+        :param str generate_name: Not supported by Cloud Run
+        :param int generation: A system-provided sequence number representing a specific generation of the desired state.
+        :param Mapping[str, str] labels: Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
+        :param str name: The immutable name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), and must be unique within a Cloud Run project/region. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a CreateServiceRequest, name must contain fewer than 50 characters. Otherwise,
+        :param str namespace: Defines the space within each name must be unique within a Cloud Run region. In Cloud Run, it must be project ID or number.
+        :param Sequence['OwnerReferenceResponse'] owner_references: Not supported by Cloud Run
+        :param str resource_version: Optional. Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        :param str self_link: URL representing this object.
+        :param str uid: Unique, system-generated identifier for this resource. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
         """
         pulumi.set(__self__, "annotations", annotations)
         pulumi.set(__self__, "cluster_name", cluster_name)
@@ -1710,7 +1714,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def annotations(self) -> Mapping[str, str]:
         """
-        (Optional) Annotations is an unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. More info: https://kubernetes.io/docs/user-guide/annotations
+        Unstructured key value map stored with a resource that may be set by external tools to store and retrieve arbitrary metadata. They are not queryable and should be preserved when modifying objects. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. * `autoscaling.knative.dev/maxScale`: Revision. * `autoscaling.knative.dev/minScale`: Revision. * `run.googleapis.com/binary-authorization-breakglass`: Service, Job, * `run.googleapis.com/binary-authorization`: Service, Job, Execution. * `run.googleapis.com/client-name`: All resources. * `run.googleapis.com/cloudsql-instances`: Revision, Execution. * `run.googleapis.com/cpu-throttling`: Revision. * `run.googleapis.com/custom-audiences`: Service. * `run.googleapis.com/description`: Service. * `run.googleapis.com/encryption-key-shutdown-hours`: Revision * `run.googleapis.com/encryption-key`: Revision, Execution. * `run.googleapis.com/execution-environment`: Revision, Execution. * `run.googleapis.com/gc-traffic-tags`: Service. * `run.googleapis.com/ingress`: Service. * `run.googleapis.com/network-interfaces`: Revision, Execution. * `run.googleapis.com/post-key-revocation-action-type`: Revision. * `run.googleapis.com/secrets`: Revision, Execution. * `run.googleapis.com/secure-session-agent`: Revision. * `run.googleapis.com/sessionAffinity`: Revision. * `run.googleapis.com/startup-cpu-boost`: Revision. * `run.googleapis.com/vpc-access-connector`: Revision, Execution. * `run.googleapis.com/vpc-access-egress`: Revision, Execution. Execution. More info: https://kubernetes.io/docs/user-guide/annotations
         """
         return pulumi.get(self, "annotations")
 
@@ -1718,7 +1722,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="clusterName")
     def cluster_name(self) -> str:
         """
-        (Optional) Not supported by Cloud Run The name of the cluster which the object belongs to. This is used to distinguish resources with same name and namespace in different clusters. This field is not set anywhere right now and apiserver is going to ignore it if set in create or update request.
+        Not supported by Cloud Run
         """
         return pulumi.get(self, "cluster_name")
 
@@ -1726,7 +1730,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="creationTimestamp")
     def creation_timestamp(self) -> str:
         """
-        (Optional) CreationTimestamp is a timestamp representing the server time when this object was created. It is not guaranteed to be set in happens-before order across separate operations. Clients may not set this value. It is represented in RFC3339 form and is in UTC. Populated by the system. Read-only. Null for lists. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        UTC timestamp representing the server time when this object was created. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
         """
         return pulumi.get(self, "creation_timestamp")
 
@@ -1734,7 +1738,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="deletionGracePeriodSeconds")
     def deletion_grace_period_seconds(self) -> int:
         """
-        (Optional) Not supported by Cloud Run Number of seconds allowed for this object to gracefully terminate before it will be removed from the system. Only set when deletionTimestamp is also set. May only be shortened. Read-only.
+        Not supported by Cloud Run
         """
         return pulumi.get(self, "deletion_grace_period_seconds")
 
@@ -1742,7 +1746,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="deletionTimestamp")
     def deletion_timestamp(self) -> str:
         """
-        (Optional) Not supported by Cloud Run DeletionTimestamp is RFC 3339 date and time at which this resource will be deleted. This field is set by the server when a graceful deletion is requested by the user, and is not directly settable by a client. The resource is expected to be deleted (no longer visible from resource lists, and not reachable by name) after the time in this field, once the finalizers list is empty. As long as the finalizers list contains items, deletion is blocked. Once the deletionTimestamp is set, this value may not be unset or be set further into the future, although it may be shortened or the resource may be deleted prior to this time. For example, a user may request that a pod is deleted in 30 seconds. The Kubelet will react by sending a graceful termination signal to the containers in the pod. After that 30 seconds, the Kubelet will send a hard termination signal (SIGKILL) to the container and after cleanup, remove the pod from the API. In the presence of network partitions, this object may still exist after this timestamp, until an administrator or automated process can determine the resource is fully terminated. If not set, graceful deletion of the object has not been requested. Populated by the system when a graceful deletion is requested. Read-only. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#metadata
+        The read-only soft deletion timestamp for this resource. In Cloud Run, users are not able to set this field. Instead, they must call the corresponding Delete API.
         """
         return pulumi.get(self, "deletion_timestamp")
 
@@ -1750,7 +1754,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def finalizers(self) -> Sequence[str]:
         """
-        (Optional) Not supported by Cloud Run Must be empty before the object is deleted from the registry. Each entry is an identifier for the responsible component that will remove the entry from the list. If the deletionTimestamp of the object is non-nil, entries in this list can only be removed. +patchStrategy=merge
+        Not supported by Cloud Run
         """
         return pulumi.get(self, "finalizers")
 
@@ -1758,7 +1762,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="generateName")
     def generate_name(self) -> str:
         """
-        (Optional) Not supported by Cloud Run GenerateName is an optional prefix, used by the server, to generate a unique name ONLY IF the Name field has not been provided. If this field is used, the name returned to the client will be different than the name passed. This value will also be combined with a unique suffix. The provided value has the same validation rules as the Name field, and may be truncated by the length of the suffix required to make the value unique on the server. If this field is specified and the generated name exists, the server will NOT return a 409 - instead, it will either return 201 Created or 500 with Reason ServerTimeout indicating a unique name could not be found in the time allotted, and the client should retry (optionally after the time indicated in the Retry-After header). Applied only if Name is not specified. More info: https://git.k8s.io/community/contributors/devel/api-conventions.md#idempotency string generateName = 2;
+        Not supported by Cloud Run
         """
         return pulumi.get(self, "generate_name")
 
@@ -1766,7 +1770,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def generation(self) -> int:
         """
-        (Optional) A sequence number representing a specific generation of the desired state. Populated by the system. Read-only.
+        A system-provided sequence number representing a specific generation of the desired state.
         """
         return pulumi.get(self, "generation")
 
@@ -1774,7 +1778,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        (Optional) Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
+        Map of string keys and values that can be used to organize and categorize (scope and select) objects. May match selectors of replication controllers and routes. More info: https://kubernetes.io/docs/user-guide/labels
         """
         return pulumi.get(self, "labels")
 
@@ -1782,7 +1786,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name must be unique within a namespace, within a Cloud Run region. Is required when creating resources, although some resources may allow a client to request the generation of an appropriate name automatically. Name is primarily intended for creation idempotence and configuration definition. Cannot be updated. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a namespaces.services.create request, name must contain fewer than 50 characters. +optional
+        The immutable name of the resource. In Cloud Run, name is required when creating top-level resources (Service, Job), and must be unique within a Cloud Run project/region. More info: https://kubernetes.io/docs/user-guide/identifiers#names If ObjectMeta is part of a CreateServiceRequest, name must contain fewer than 50 characters. Otherwise,
         """
         return pulumi.get(self, "name")
 
@@ -1790,7 +1794,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def namespace(self) -> str:
         """
-        Namespace defines the space within each name must be unique, within a Cloud Run region. In Cloud Run the namespace must be equal to either the project ID or project number.
+        Defines the space within each name must be unique within a Cloud Run region. In Cloud Run, it must be project ID or number.
         """
         return pulumi.get(self, "namespace")
 
@@ -1798,7 +1802,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="ownerReferences")
     def owner_references(self) -> Sequence['outputs.OwnerReferenceResponse']:
         """
-        (Optional) Not supported by Cloud Run List of objects that own this object. If ALL objects in the list have been deleted, this object will be garbage collected.
+        Not supported by Cloud Run
         """
         return pulumi.get(self, "owner_references")
 
@@ -1806,7 +1810,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="resourceVersion")
     def resource_version(self) -> str:
         """
-        Optional. An opaque value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. They may only be valid for a particular resource or set of resources. Populated by the system. Read-only. Value must be treated as opaque by clients or omitted. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+        Optional. Opaque, system-generated value that represents the internal version of this object that can be used by clients to determine when objects have changed. May be used for optimistic concurrency, change detection, and the watch operation on a resource or set of resources. Clients must treat these values as opaque and passed unmodified back to the server or omit the value to disable conflict-detection. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
         """
         return pulumi.get(self, "resource_version")
 
@@ -1814,7 +1818,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         """
-        (Optional) SelfLink is a URL representing this object. Populated by the system. Read-only. string selfLink = 4;
+        URL representing this object.
         """
         return pulumi.get(self, "self_link")
 
@@ -1822,7 +1826,7 @@ class ObjectMetaResponse(dict):
     @pulumi.getter
     def uid(self) -> str:
         """
-        (Optional) UID is the unique in time and space value for this object. It is typically generated by the server on successful creation of a resource and is not allowed to change on PUT operations. Populated by the system. Read-only. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
+        Unique, system-generated identifier for this resource. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
         """
         return pulumi.get(self, "uid")
 
@@ -1830,7 +1834,7 @@ class ObjectMetaResponse(dict):
 @pulumi.output_type
 class OwnerReferenceResponse(dict):
     """
-    OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.
+    This is not supported or used by Cloud Run.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1859,13 +1863,13 @@ class OwnerReferenceResponse(dict):
                  name: str,
                  uid: str):
         """
-        OwnerReference contains enough information to let you identify an owning object. Currently, an owning object must be in the same namespace, so there is no namespace field.
-        :param str api_version: API version of the referent.
-        :param bool block_owner_deletion: If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned. +optional
-        :param bool controller: If true, this reference points to the managing controller. +optional
-        :param str kind: Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
-        :param str name: Name of the referent. More info: https://kubernetes.io/docs/user-guide/identifiers#names
-        :param str uid: UID of the referent. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
+        This is not supported or used by Cloud Run.
+        :param str api_version: This is not supported or used by Cloud Run.
+        :param bool block_owner_deletion: This is not supported or used by Cloud Run.
+        :param bool controller: This is not supported or used by Cloud Run.
+        :param str kind: This is not supported or used by Cloud Run.
+        :param str name: This is not supported or used by Cloud Run.
+        :param str uid: This is not supported or used by Cloud Run.
         """
         pulumi.set(__self__, "api_version", api_version)
         pulumi.set(__self__, "block_owner_deletion", block_owner_deletion)
@@ -1878,7 +1882,7 @@ class OwnerReferenceResponse(dict):
     @pulumi.getter(name="apiVersion")
     def api_version(self) -> str:
         """
-        API version of the referent.
+        This is not supported or used by Cloud Run.
         """
         return pulumi.get(self, "api_version")
 
@@ -1886,7 +1890,7 @@ class OwnerReferenceResponse(dict):
     @pulumi.getter(name="blockOwnerDeletion")
     def block_owner_deletion(self) -> bool:
         """
-        If true, AND if the owner has the "foregroundDeletion" finalizer, then the owner cannot be deleted from the key-value store until this reference is removed. Defaults to false. To set this field, a user needs "delete" permission of the owner, otherwise 422 (Unprocessable Entity) will be returned. +optional
+        This is not supported or used by Cloud Run.
         """
         return pulumi.get(self, "block_owner_deletion")
 
@@ -1894,7 +1898,7 @@ class OwnerReferenceResponse(dict):
     @pulumi.getter
     def controller(self) -> bool:
         """
-        If true, this reference points to the managing controller. +optional
+        This is not supported or used by Cloud Run.
         """
         return pulumi.get(self, "controller")
 
@@ -1902,7 +1906,7 @@ class OwnerReferenceResponse(dict):
     @pulumi.getter
     def kind(self) -> str:
         """
-        Kind of the referent. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+        This is not supported or used by Cloud Run.
         """
         return pulumi.get(self, "kind")
 
@@ -1910,7 +1914,7 @@ class OwnerReferenceResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the referent. More info: https://kubernetes.io/docs/user-guide/identifiers#names
+        This is not supported or used by Cloud Run.
         """
         return pulumi.get(self, "name")
 
@@ -1918,7 +1922,7 @@ class OwnerReferenceResponse(dict):
     @pulumi.getter
     def uid(self) -> str:
         """
-        UID of the referent. More info: https://kubernetes.io/docs/user-guide/identifiers#uids
+        This is not supported or used by Cloud Run.
         """
         return pulumi.get(self, "uid")
 
@@ -1926,7 +1930,7 @@ class OwnerReferenceResponse(dict):
 @pulumi.output_type
 class ProbeResponse(dict):
     """
-    Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+    Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1970,16 +1974,16 @@ class ProbeResponse(dict):
                  tcp_socket: 'outputs.TCPSocketActionResponse',
                  timeout_seconds: int):
         """
-        Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
-        :param 'ExecActionResponse' exec_: (Optional) Not supported by Cloud Run One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
-        :param int failure_threshold: (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
-        :param 'GRPCActionResponse' grpc: (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
-        :param 'HTTPGetActionResponse' http_get: (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
-        :param int initial_delay_seconds: (Optional) Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-        :param int period_seconds: (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
-        :param int success_threshold: (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 if set.
-        :param 'TCPSocketActionResponse' tcp_socket: (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
-        :param int timeout_seconds: (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+        :param 'ExecActionResponse' exec_: Not supported by Cloud Run.
+        :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        :param 'GRPCActionResponse' grpc: GRPCAction specifies an action involving a GRPC port.
+        :param 'HTTPGetActionResponse' http_get: HTTPGet specifies the http request to perform.
+        :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+        :param int success_threshold: Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 if set.
+        :param 'TCPSocketActionResponse' tcp_socket: TCPSocket specifies an action involving a TCP port.
+        :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         pulumi.set(__self__, "exec_", exec_)
         pulumi.set(__self__, "failure_threshold", failure_threshold)
@@ -1995,7 +1999,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="exec")
     def exec_(self) -> 'outputs.ExecActionResponse':
         """
-        (Optional) Not supported by Cloud Run One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "exec_")
 
@@ -2003,7 +2007,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="failureThreshold")
     def failure_threshold(self) -> int:
         """
-        (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         """
         return pulumi.get(self, "failure_threshold")
 
@@ -2011,7 +2015,7 @@ class ProbeResponse(dict):
     @pulumi.getter
     def grpc(self) -> 'outputs.GRPCActionResponse':
         """
-        (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+        GRPCAction specifies an action involving a GRPC port.
         """
         return pulumi.get(self, "grpc")
 
@@ -2019,7 +2023,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="httpGet")
     def http_get(self) -> 'outputs.HTTPGetActionResponse':
         """
-        (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+        HTTPGet specifies the http request to perform.
         """
         return pulumi.get(self, "http_get")
 
@@ -2027,7 +2031,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="initialDelaySeconds")
     def initial_delay_seconds(self) -> int:
         """
-        (Optional) Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "initial_delay_seconds")
 
@@ -2035,7 +2039,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="periodSeconds")
     def period_seconds(self) -> int:
         """
-        (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+        How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
         """
         return pulumi.get(self, "period_seconds")
 
@@ -2043,7 +2047,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="successThreshold")
     def success_threshold(self) -> int:
         """
-        (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 if set.
+        Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 if set.
         """
         return pulumi.get(self, "success_threshold")
 
@@ -2051,7 +2055,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="tcpSocket")
     def tcp_socket(self) -> 'outputs.TCPSocketActionResponse':
         """
-        (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+        TCPSocket specifies an action involving a TCP port.
         """
         return pulumi.get(self, "tcp_socket")
 
@@ -2059,7 +2063,7 @@ class ProbeResponse(dict):
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> int:
         """
-        (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         return pulumi.get(self, "timeout_seconds")
 
@@ -2118,8 +2122,8 @@ class ResourceRequirementsResponse(dict):
                  requests: Mapping[str, str]):
         """
         ResourceRequirements describes the compute resource requirements.
-        :param Mapping[str, str] limits: (Optional) Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
-        :param Mapping[str, str] requests: (Optional) Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param Mapping[str, str] limits: Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        :param Mapping[str, str] requests: Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         pulumi.set(__self__, "limits", limits)
         pulumi.set(__self__, "requests", requests)
@@ -2128,7 +2132,7 @@ class ResourceRequirementsResponse(dict):
     @pulumi.getter
     def limits(self) -> Mapping[str, str]:
         """
-        (Optional) Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory and CPU are supported. Limits describes the maximum amount of compute resources allowed. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "limits")
 
@@ -2136,7 +2140,7 @@ class ResourceRequirementsResponse(dict):
     @pulumi.getter
     def requests(self) -> Mapping[str, str]:
         """
-        (Optional) Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+        Only memory and CPU are supported. Requests describes the minimum amount of compute resources required. If Requests is omitted for a container, it defaults to Limits if that is explicitly specified, otherwise to an implementation-defined value. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
         """
         return pulumi.get(self, "requests")
 
@@ -2181,12 +2185,12 @@ class RevisionSpecResponse(dict):
                  volumes: Sequence['outputs.VolumeResponse']):
         """
         RevisionSpec holds the desired state of the Revision (from the client).
-        :param int container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
-        :param Sequence['ContainerResponse'] containers: Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
-        :param bool enable_service_links: Indicates whether information about services should be injected into pod's environment variables, matching the syntax of Docker links. Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported, defaults to true.
-        :param Sequence['LocalObjectReferenceResponse'] image_pull_secrets: ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
+        :param int container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run: supported, defaults to 80
+        :param Sequence['ContainerResponse'] containers: Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
+        :param bool enable_service_links: Not supported by Cloud Run.
+        :param Sequence['LocalObjectReferenceResponse'] image_pull_secrets: Not supported by Cloud Run.
         :param str service_account_name: Email address of the IAM service account associated with the revision of the service. The service account represents the identity of the running revision, and determines what permissions the revision has. If not provided, the revision will use the project's default service account.
-        :param int timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
+        :param int timeout_seconds: TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour).
         """
         pulumi.set(__self__, "container_concurrency", container_concurrency)
         pulumi.set(__self__, "containers", containers)
@@ -2200,7 +2204,7 @@ class RevisionSpecResponse(dict):
     @pulumi.getter(name="containerConcurrency")
     def container_concurrency(self) -> int:
         """
-        ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run fully managed: supported, defaults to 80 Cloud Run for Anthos: supported, defaults to 0, which means concurrency to the application is not limited, and the system decides the target concurrency for the autoscaler.
+        ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run: supported, defaults to 80
         """
         return pulumi.get(self, "container_concurrency")
 
@@ -2208,7 +2212,7 @@ class RevisionSpecResponse(dict):
     @pulumi.getter
     def containers(self) -> Sequence['outputs.ContainerResponse']:
         """
-        Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/serving/blob/main/docs/runtime-contract.md
+        Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
         """
         return pulumi.get(self, "containers")
 
@@ -2216,7 +2220,7 @@ class RevisionSpecResponse(dict):
     @pulumi.getter(name="enableServiceLinks")
     def enable_service_links(self) -> bool:
         """
-        Indicates whether information about services should be injected into pod's environment variables, matching the syntax of Docker links. Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported, defaults to true.
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "enable_service_links")
 
@@ -2224,7 +2228,7 @@ class RevisionSpecResponse(dict):
     @pulumi.getter(name="imagePullSecrets")
     def image_pull_secrets(self) -> Sequence['outputs.LocalObjectReferenceResponse']:
         """
-        ImagePullSecrets is a list of references to secrets in the same namespace to use for pulling any images in pods that reference this ServiceAccount. ImagePullSecrets are distinct from Secrets because Secrets can be mounted in the pod, but ImagePullSecrets are only accessed by the kubelet. More info: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod Cloud Run fully managed: Not supported. Cloud Run for Anthos: supported.
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "image_pull_secrets")
 
@@ -2240,7 +2244,7 @@ class RevisionSpecResponse(dict):
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> int:
         """
-        TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run fully managed: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour). Cloud Run for Anthos: defaults to 300 seconds (5 minutes). Maximum allowed value is configurable by the cluster operator.
+        TimeoutSeconds holds the max duration the instance is allowed for responding to a request. Cloud Run: defaults to 300 seconds (5 minutes). Maximum allowed value is 3600 seconds (1 hour).
         """
         return pulumi.get(self, "timeout_seconds")
 
@@ -2286,7 +2290,7 @@ class RevisionTemplateResponse(dict):
 @pulumi.output_type
 class SecretEnvSourceResponse(dict):
     """
-    Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+    Not supported by Cloud Run. SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2310,10 +2314,10 @@ class SecretEnvSourceResponse(dict):
                  name: str,
                  optional: bool):
         """
-        Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+        Not supported by Cloud Run. SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
         :param 'LocalObjectReferenceResponse' local_object_reference: This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
         :param str name: The Secret to select from.
-        :param bool optional: (Optional) Specify whether the Secret must be defined
+        :param bool optional: Specify whether the Secret must be defined
         """
         pulumi.set(__self__, "local_object_reference", local_object_reference)
         pulumi.set(__self__, "name", name)
@@ -2339,7 +2343,7 @@ class SecretEnvSourceResponse(dict):
     @pulumi.getter
     def optional(self) -> bool:
         """
-        (Optional) Specify whether the Secret must be defined
+        Specify whether the Secret must be defined
         """
         return pulumi.get(self, "optional")
 
@@ -2376,7 +2380,7 @@ class SecretKeySelectorResponse(dict):
         :param str key: A Cloud Secret Manager secret version. Must be 'latest' for the latest version or an integer for a specific version. The key of the secret to select from. Must be a valid secret key.
         :param 'LocalObjectReferenceResponse' local_object_reference: This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
         :param str name: The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. The name of the secret in the pod's namespace to select from.
-        :param bool optional: (Optional) Specify whether the Secret or its key must be defined
+        :param bool optional: Specify whether the Secret or its key must be defined.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "local_object_reference", local_object_reference)
@@ -2411,7 +2415,7 @@ class SecretKeySelectorResponse(dict):
     @pulumi.getter
     def optional(self) -> bool:
         """
-        (Optional) Specify whether the Secret or its key must be defined
+        Specify whether the Secret or its key must be defined.
         """
         return pulumi.get(self, "optional")
 
@@ -2419,7 +2423,7 @@ class SecretKeySelectorResponse(dict):
 @pulumi.output_type
 class SecretVolumeSourceResponse(dict):
     """
-    The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+    A volume representing a secret stored in Google Secret Manager. The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2446,10 +2450,10 @@ class SecretVolumeSourceResponse(dict):
                  optional: bool,
                  secret_name: str):
         """
-        The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+        A volume representing a secret stored in Google Secret Manager. The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
         :param int default_mode: Integer representation of mode bits to use on created files by default. Must be a value between 01 and 0777 (octal). If 0 or not set, it will default to 0444. Directories within the path are not affected by this setting. Notes * Internally, a umask of 0222 will be applied to any non-zero value. * This is an integer representation of the mode bits. So, the octal integer value should look exactly as the chmod numeric notation with a leading zero. Some examples: for chmod 777 (a=rwx), set to 0777 (octal) or 511 (base-10). For chmod 640 (u=rw,g=r), set to 0640 (octal) or 416 (base-10). For chmod 755 (u=rwx,g=rx,o=rx), set to 0755 (octal) or 493 (base-10). * This might be in conflict with other options that affect the file mode, like fsGroup, and the result can be other mode bits set.
-        :param Sequence['KeyToPathResponse'] items: (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
-        :param bool optional: (Optional) Specify whether the Secret or its keys must be defined.
+        :param Sequence['KeyToPathResponse'] items: A list of secret versions to mount in the volume. If no items are specified, the volume will expose a file with the same name as the secret name. The contents of the file will be the data in the latest version of the secret. If items are specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify both a key and a path.
+        :param bool optional: Not supported by Cloud Run.
         :param str secret_name: The name of the secret in Cloud Secret Manager. By default, the secret is assumed to be in the same project. If the secret is in another project, you must define an alias. An alias definition has the form: :projects//secrets/. If multiple alias definitions are needed, they must be separated by commas. The alias definitions must be set on the run.googleapis.com/secrets annotation. Name of the secret in the container's namespace to use.
         """
         pulumi.set(__self__, "default_mode", default_mode)
@@ -2469,7 +2473,7 @@ class SecretVolumeSourceResponse(dict):
     @pulumi.getter
     def items(self) -> Sequence['outputs.KeyToPathResponse']:
         """
-        (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
+        A list of secret versions to mount in the volume. If no items are specified, the volume will expose a file with the same name as the secret name. The contents of the file will be the data in the latest version of the secret. If items are specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify both a key and a path.
         """
         return pulumi.get(self, "items")
 
@@ -2477,7 +2481,7 @@ class SecretVolumeSourceResponse(dict):
     @pulumi.getter
     def optional(self) -> bool:
         """
-        (Optional) Specify whether the Secret or its keys must be defined.
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "optional")
 
@@ -2493,7 +2497,7 @@ class SecretVolumeSourceResponse(dict):
 @pulumi.output_type
 class SecurityContextResponse(dict):
     """
-    Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+    Not supported by Cloud Run. SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -2515,8 +2519,8 @@ class SecurityContextResponse(dict):
     def __init__(__self__, *,
                  run_as_user: int):
         """
-        Not supported by Cloud Run SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
-        :param int run_as_user: (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        Not supported by Cloud Run. SecurityContext holds security configuration that will be applied to a container. Some fields are present in both SecurityContext and PodSecurityContext. When both are set, the values in SecurityContext take precedence.
+        :param int run_as_user: The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
         """
         pulumi.set(__self__, "run_as_user", run_as_user)
 
@@ -2524,7 +2528,7 @@ class SecurityContextResponse(dict):
     @pulumi.getter(name="runAsUser")
     def run_as_user(self) -> int:
         """
-        (Optional) The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
+        The UID to run the entrypoint of the container process. Defaults to user specified in image metadata if unspecified. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence.
         """
         return pulumi.get(self, "run_as_user")
 
@@ -2539,8 +2543,8 @@ class ServiceSpecResponse(dict):
                  traffic: Sequence['outputs.TrafficTargetResponse']):
         """
         ServiceSpec holds the desired state of the Route (from the client), which is used to manipulate the underlying Route and Configuration(s).
-        :param 'RevisionTemplateResponse' template: Template holds the latest specification for the Revision to be stamped out.
-        :param Sequence['TrafficTargetResponse'] traffic: Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations.
+        :param 'RevisionTemplateResponse' template: Holds the latest specification for the Revision to be stamped out.
+        :param Sequence['TrafficTargetResponse'] traffic: Specifies how to distribute traffic over a collection of Knative Revisions and Configurations to the Service's main URL.
         """
         pulumi.set(__self__, "template", template)
         pulumi.set(__self__, "traffic", traffic)
@@ -2549,7 +2553,7 @@ class ServiceSpecResponse(dict):
     @pulumi.getter
     def template(self) -> 'outputs.RevisionTemplateResponse':
         """
-        Template holds the latest specification for the Revision to be stamped out.
+        Holds the latest specification for the Revision to be stamped out.
         """
         return pulumi.get(self, "template")
 
@@ -2557,7 +2561,7 @@ class ServiceSpecResponse(dict):
     @pulumi.getter
     def traffic(self) -> Sequence['outputs.TrafficTargetResponse']:
         """
-        Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations.
+        Specifies how to distribute traffic over a collection of Knative Revisions and Configurations to the Service's main URL.
         """
         return pulumi.get(self, "traffic")
 
@@ -2598,13 +2602,13 @@ class ServiceStatusResponse(dict):
                  url: str):
         """
         The current state of the Service. Output only.
-        :param 'AddressableResponse' address: From RouteStatus. Similar to url, information on where the service is available on HTTP.
-        :param Sequence['GoogleCloudRunV1ConditionResponse'] conditions: Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Service-specific conditions include: * "ConfigurationsReady": true when the underlying Configuration is ready. * "RoutesReady": true when the underlying Route is ready. * "Ready": true when both the underlying Route and Configuration are ready.
-        :param str latest_created_revision_name: From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
-        :param str latest_ready_revision_name: From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision stamped out from this Service's Configuration that has had its "Ready" condition become "True".
-        :param int observed_generation: ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
-        :param Sequence['TrafficTargetResponse'] traffic: From RouteStatus. Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
-        :param str url: From RouteStatus. URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
+        :param 'AddressableResponse' address: Similar to url, information on where the service is available on HTTP.
+        :param Sequence['GoogleCloudRunV1ConditionResponse'] conditions: Communicates information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready.
+        :param str latest_created_revision_name: Name of the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
+        :param str latest_ready_revision_name: Name of the latest Revision from this Service's Configuration that has had its `Ready` condition become `True`.
+        :param int observed_generation: Returns the generation last fully processed by the system. This will only match metadata.generation when reconciliation is complete. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
+        :param Sequence['TrafficTargetResponse'] traffic: Holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
+        :param str url: URL that will distribute traffic over the provided traffic targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
         """
         pulumi.set(__self__, "address", address)
         pulumi.set(__self__, "conditions", conditions)
@@ -2618,7 +2622,7 @@ class ServiceStatusResponse(dict):
     @pulumi.getter
     def address(self) -> 'outputs.AddressableResponse':
         """
-        From RouteStatus. Similar to url, information on where the service is available on HTTP.
+        Similar to url, information on where the service is available on HTTP.
         """
         return pulumi.get(self, "address")
 
@@ -2626,7 +2630,7 @@ class ServiceStatusResponse(dict):
     @pulumi.getter
     def conditions(self) -> Sequence['outputs.GoogleCloudRunV1ConditionResponse']:
         """
-        Conditions communicates information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Service-specific conditions include: * "ConfigurationsReady": true when the underlying Configuration is ready. * "RoutesReady": true when the underlying Route is ready. * "Ready": true when both the underlying Route and Configuration are ready.
+        Communicates information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready.
         """
         return pulumi.get(self, "conditions")
 
@@ -2634,7 +2638,7 @@ class ServiceStatusResponse(dict):
     @pulumi.getter(name="latestCreatedRevisionName")
     def latest_created_revision_name(self) -> str:
         """
-        From ConfigurationStatus. LatestCreatedRevisionName is the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
+        Name of the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
         """
         return pulumi.get(self, "latest_created_revision_name")
 
@@ -2642,7 +2646,7 @@ class ServiceStatusResponse(dict):
     @pulumi.getter(name="latestReadyRevisionName")
     def latest_ready_revision_name(self) -> str:
         """
-        From ConfigurationStatus. LatestReadyRevisionName holds the name of the latest Revision stamped out from this Service's Configuration that has had its "Ready" condition become "True".
+        Name of the latest Revision from this Service's Configuration that has had its `Ready` condition become `True`.
         """
         return pulumi.get(self, "latest_ready_revision_name")
 
@@ -2650,7 +2654,7 @@ class ServiceStatusResponse(dict):
     @pulumi.getter(name="observedGeneration")
     def observed_generation(self) -> int:
         """
-        ObservedGeneration is the 'Generation' of the Route that was last processed by the controller. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
+        Returns the generation last fully processed by the system. This will only match metadata.generation when reconciliation is complete. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
         """
         return pulumi.get(self, "observed_generation")
 
@@ -2658,7 +2662,7 @@ class ServiceStatusResponse(dict):
     @pulumi.getter
     def traffic(self) -> Sequence['outputs.TrafficTargetResponse']:
         """
-        From RouteStatus. Traffic holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
+        Holds the configured traffic distribution. These entries will always contain RevisionName references. When ConfigurationName appears in the spec, this will hold the LatestReadyRevisionName that we last observed.
         """
         return pulumi.get(self, "traffic")
 
@@ -2666,7 +2670,7 @@ class ServiceStatusResponse(dict):
     @pulumi.getter
     def url(self) -> str:
         """
-        From RouteStatus. URL holds the url that will distribute traffic over the provided traffic targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
+        URL that will distribute traffic over the provided traffic targets. It generally has the form https://{route-hash}-{project-hash}-{cluster-level-suffix}.a.run.app
         """
         return pulumi.get(self, "url")
 
@@ -2674,15 +2678,15 @@ class ServiceStatusResponse(dict):
 @pulumi.output_type
 class TCPSocketActionResponse(dict):
     """
-    Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
+    TCPSocketAction describes an action based on opening a socket
     """
     def __init__(__self__, *,
                  host: str,
                  port: int):
         """
-        Not supported by Cloud Run TCPSocketAction describes an action based on opening a socket
-        :param str host: (Optional) Optional: Host name to connect to, defaults to the pod IP.
-        :param int port: Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+        TCPSocketAction describes an action based on opening a socket
+        :param str host: Not supported by Cloud Run.
+        :param int port: Port number to access on the container. Number must be in the range 1 to 65535.
         """
         pulumi.set(__self__, "host", host)
         pulumi.set(__self__, "port", port)
@@ -2691,7 +2695,7 @@ class TCPSocketActionResponse(dict):
     @pulumi.getter
     def host(self) -> str:
         """
-        (Optional) Optional: Host name to connect to, defaults to the pod IP.
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "host")
 
@@ -2699,7 +2703,7 @@ class TCPSocketActionResponse(dict):
     @pulumi.getter
     def port(self) -> int:
         """
-        Number or name of the port to access on the container. Number must be in the range 1 to 65535. Name must be an IANA_SVC_NAME. This field is currently limited to integer types only because of proto's inability to properly support the IntOrString golang type.
+        Port number to access on the container. Number must be in the range 1 to 65535.
         """
         return pulumi.get(self, "port")
 
@@ -2719,9 +2723,9 @@ class TaskSpecResponse(dict):
         TaskSpec is a description of a task.
         :param Sequence['ContainerResponse'] containers: Optional. List of containers belonging to the task. We disallow a number of fields on this Container. Only a single container may be provided.
         :param int max_retries: Optional. Number of retries allowed per task, before marking this job failed.
-        :param str service_account_name: Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account. +optional
-        :param str timeout_seconds: Optional. Optional duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. +optional
-        :param Sequence['VolumeResponse'] volumes: Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+        :param str service_account_name: Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
+        :param str timeout_seconds: Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
+        :param Sequence['VolumeResponse'] volumes: Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes
         """
         pulumi.set(__self__, "containers", containers)
         pulumi.set(__self__, "max_retries", max_retries)
@@ -2749,7 +2753,7 @@ class TaskSpecResponse(dict):
     @pulumi.getter(name="serviceAccountName")
     def service_account_name(self) -> str:
         """
-        Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account. +optional
+        Optional. Email address of the IAM service account associated with the task of a job execution. The service account represents the identity of the running task, and determines what permissions the task has. If not provided, the task will use the project's default service account.
         """
         return pulumi.get(self, "service_account_name")
 
@@ -2757,7 +2761,7 @@ class TaskSpecResponse(dict):
     @pulumi.getter(name="timeoutSeconds")
     def timeout_seconds(self) -> str:
         """
-        Optional. Optional duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout. +optional
+        Optional. Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. This applies per attempt of a task, meaning each retry can run for the full timeout.
         """
         return pulumi.get(self, "timeout_seconds")
 
@@ -2765,7 +2769,7 @@ class TaskSpecResponse(dict):
     @pulumi.getter
     def volumes(self) -> Sequence['outputs.VolumeResponse']:
         """
-        Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes +optional
+        Optional. List of volumes that can be mounted by containers belonging to the task. More info: https://kubernetes.io/docs/concepts/storage/volumes
         """
         return pulumi.get(self, "volumes")
 
@@ -2779,7 +2783,7 @@ class TaskTemplateSpecResponse(dict):
                  spec: 'outputs.TaskSpecResponse'):
         """
         TaskTemplateSpec describes the data a task should have when created from a template.
-        :param 'TaskSpecResponse' spec: Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
+        :param 'TaskSpecResponse' spec: Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         """
         pulumi.set(__self__, "spec", spec)
 
@@ -2787,7 +2791,7 @@ class TaskTemplateSpecResponse(dict):
     @pulumi.getter
     def spec(self) -> 'outputs.TaskSpecResponse':
         """
-        Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status +optional
+        Optional. Specification of the desired behavior of the task. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#spec-and-status
         """
         return pulumi.get(self, "spec")
 
@@ -2827,7 +2831,7 @@ class TrafficTargetResponse(dict):
                  url: str):
         """
         TrafficTarget holds a single entry of the routing table for a Route.
-        :param str configuration_name: ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
+        :param str configuration_name: ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
         :param bool latest_revision: Optional. LatestRevision may be provided to indicate that the latest ready Revision of the Configuration should be used for this traffic target. When provided LatestRevision must be true if RevisionName is empty; it must be false when RevisionName is non-empty.
         :param int percent: Percent specifies percent of the traffic to this Revision or Configuration. This defaults to zero if unspecified.
         :param str revision_name: RevisionName of a specific revision to which to send this portion of traffic. This is mutually exclusive with ConfigurationName.
@@ -2845,7 +2849,7 @@ class TrafficTargetResponse(dict):
     @pulumi.getter(name="configurationName")
     def configuration_name(self) -> str:
         """
-        ConfigurationName of a configuration to whose latest revision we will send this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, we will automatically migrate traffic from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
+        ConfigurationName of a configuration to whose latest revision which will be sent this portion of traffic. When the "status.latestReadyRevisionName" of the referenced configuration changes, traffic will automatically migrate from the prior "latest ready" revision to the new one. This field is never set in Route's status, only its spec. This is mutually exclusive with RevisionName. Cloud Run currently supports a single ConfigurationName.
         """
         return pulumi.get(self, "configuration_name")
 
@@ -2925,8 +2929,8 @@ class VolumeMountResponse(dict):
         VolumeMount describes a mounting of a Volume within a container.
         :param str mount_path: Path within the container at which the volume should be mounted. Must not contain ':'.
         :param str name: The name of the volume. There must be a corresponding Volume with the same name.
-        :param bool read_only: (Optional) Only true is accepted. Defaults to true.
-        :param str sub_path: (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        :param bool read_only: Only true is accepted for Secret Volumes. Defaults to true for Secrets Volumes.
+        :param str sub_path: Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         """
         pulumi.set(__self__, "mount_path", mount_path)
         pulumi.set(__self__, "name", name)
@@ -2953,7 +2957,7 @@ class VolumeMountResponse(dict):
     @pulumi.getter(name="readOnly")
     def read_only(self) -> bool:
         """
-        (Optional) Only true is accepted. Defaults to true.
+        Only true is accepted for Secret Volumes. Defaults to true for Secrets Volumes.
         """
         return pulumi.get(self, "read_only")
 
@@ -2961,7 +2965,7 @@ class VolumeMountResponse(dict):
     @pulumi.getter(name="subPath")
     def sub_path(self) -> str:
         """
-        (Optional) Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
+        Path within the volume from which the container's volume should be mounted. Defaults to "" (volume's root).
         """
         return pulumi.get(self, "sub_path")
 
@@ -2994,7 +2998,9 @@ class VolumeResponse(dict):
                  secret: 'outputs.SecretVolumeSourceResponse'):
         """
         Volume represents a named volume in a container.
+        :param 'ConfigMapVolumeSourceResponse' config_map: Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
         :param str name: Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
+        :param 'SecretVolumeSourceResponse' secret: The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
         """
         pulumi.set(__self__, "config_map", config_map)
         pulumi.set(__self__, "name", name)
@@ -3003,6 +3009,9 @@ class VolumeResponse(dict):
     @property
     @pulumi.getter(name="configMap")
     def config_map(self) -> 'outputs.ConfigMapVolumeSourceResponse':
+        """
+        Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+        """
         return pulumi.get(self, "config_map")
 
     @property
@@ -3016,6 +3025,9 @@ class VolumeResponse(dict):
     @property
     @pulumi.getter
     def secret(self) -> 'outputs.SecretVolumeSourceResponse':
+        """
+        The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
+        """
         return pulumi.get(self, "secret")
 
 

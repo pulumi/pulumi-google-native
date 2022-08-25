@@ -45,6 +45,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly Outputs.SecurityPolicyRuleMatcherResponse Match;
         /// <summary>
+        /// Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        /// </summary>
+        public readonly Outputs.SecurityPolicyRulePreconfiguredWafConfigResponse PreconfiguredWafConfig;
+        /// <summary>
         /// If set to true, the specified action is not enforced.
         /// </summary>
         public readonly bool Preview;
@@ -101,6 +105,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             Outputs.SecurityPolicyRuleMatcherResponse match,
 
+            Outputs.SecurityPolicyRulePreconfiguredWafConfigResponse preconfiguredWafConfig,
+
             bool preview,
 
             int priority,
@@ -128,6 +134,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             HeaderAction = headerAction;
             Kind = kind;
             Match = match;
+            PreconfiguredWafConfig = preconfiguredWafConfig;
             Preview = preview;
             Priority = priority;
             RateLimitOptions = rateLimitOptions;

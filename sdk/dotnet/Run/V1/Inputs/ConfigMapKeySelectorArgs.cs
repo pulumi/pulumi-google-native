@@ -11,15 +11,15 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run Selects a key from a ConfigMap.
+    /// Not supported by Cloud Run. Selects a key from a ConfigMap.
     /// </summary>
     public sealed class ConfigMapKeySelectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The key to select.
         /// </summary>
-        [Input("key")]
-        public Input<string>? Key { get; set; }
+        [Input("key", required: true)]
+        public Input<string> Key { get; set; } = null!;
 
         /// <summary>
         /// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
@@ -30,11 +30,11 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         /// <summary>
         /// The ConfigMap to select from.
         /// </summary>
-        [Input("name")]
-        public Input<string>? Name { get; set; }
+        [Input("name", required: true)]
+        public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// (Optional) Specify whether the ConfigMap or its key must be defined
+        /// Specify whether the ConfigMap or its key must be defined
         /// </summary>
         [Input("optional")]
         public Input<bool>? Optional { get; set; }

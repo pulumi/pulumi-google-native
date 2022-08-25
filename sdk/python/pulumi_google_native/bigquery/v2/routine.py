@@ -30,6 +30,7 @@ class RoutineArgs:
                  remote_function_options: Optional[pulumi.Input['RemoteFunctionOptionsArgs']] = None,
                  return_table_type: Optional[pulumi.Input['StandardSqlTableTypeArgs']] = None,
                  return_type: Optional[pulumi.Input['StandardSqlDataTypeArgs']] = None,
+                 spark_options: Optional[pulumi.Input['SparkOptionsArgs']] = None,
                  strict_mode: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Routine resource.
@@ -44,6 +45,7 @@ class RoutineArgs:
         :param pulumi.Input['RemoteFunctionOptionsArgs'] remote_function_options: Optional. Remote function specific options.
         :param pulumi.Input['StandardSqlTableTypeArgs'] return_table_type: Optional. Can be set only if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return table type is inferred from definition_body at query time in each query that references this routine. If present, then the columns in the evaluated table result will be cast to match the column types specificed in return table type, at query time.
         :param pulumi.Input['StandardSqlDataTypeArgs'] return_type: Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
+        :param pulumi.Input['SparkOptionsArgs'] spark_options: Optional. Spark specific options.
         :param pulumi.Input[bool] strict_mode: Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
@@ -68,6 +70,8 @@ class RoutineArgs:
             pulumi.set(__self__, "return_table_type", return_table_type)
         if return_type is not None:
             pulumi.set(__self__, "return_type", return_type)
+        if spark_options is not None:
+            pulumi.set(__self__, "spark_options", spark_options)
         if strict_mode is not None:
             pulumi.set(__self__, "strict_mode", strict_mode)
 
@@ -222,6 +226,18 @@ class RoutineArgs:
         pulumi.set(self, "return_type", value)
 
     @property
+    @pulumi.getter(name="sparkOptions")
+    def spark_options(self) -> Optional[pulumi.Input['SparkOptionsArgs']]:
+        """
+        Optional. Spark specific options.
+        """
+        return pulumi.get(self, "spark_options")
+
+    @spark_options.setter
+    def spark_options(self, value: Optional[pulumi.Input['SparkOptionsArgs']]):
+        pulumi.set(self, "spark_options", value)
+
+    @property
     @pulumi.getter(name="strictMode")
     def strict_mode(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -252,6 +268,7 @@ class Routine(pulumi.CustomResource):
                  return_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']]] = None,
                  routine_reference: Optional[pulumi.Input[pulumi.InputType['RoutineReferenceArgs']]] = None,
                  routine_type: Optional[pulumi.Input['RoutineRoutineType']] = None,
+                 spark_options: Optional[pulumi.Input[pulumi.InputType['SparkOptionsArgs']]] = None,
                  strict_mode: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -271,6 +288,7 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']] return_type: Optional if language = "SQL"; required otherwise. Cannot be set if routine_type = "TABLE_VALUED_FUNCTION". If absent, the return type is inferred from definition_body at query time in each query that references this routine. If present, then the evaluated result will be cast to the specified returned type at query time. For example, for the functions created with the following statements: * `CREATE FUNCTION Add(x FLOAT64, y FLOAT64) RETURNS FLOAT64 AS (x + y);` * `CREATE FUNCTION Increment(x FLOAT64) AS (Add(x, 1));` * `CREATE FUNCTION Decrement(x FLOAT64) RETURNS FLOAT64 AS (Add(x, -1));` The return_type is `{type_kind: "FLOAT64"}` for `Add` and `Decrement`, and is absent for `Increment` (inferred as FLOAT64 at query time). Suppose the function `Add` is replaced by `CREATE OR REPLACE FUNCTION Add(x INT64, y INT64) AS (x + y);` Then the inferred return type of `Increment` is automatically changed to INT64 at query time, while the return type of `Decrement` remains FLOAT64.
         :param pulumi.Input[pulumi.InputType['RoutineReferenceArgs']] routine_reference: Reference describing the ID of this routine.
         :param pulumi.Input['RoutineRoutineType'] routine_type: The type of routine.
+        :param pulumi.Input[pulumi.InputType['SparkOptionsArgs']] spark_options: Optional. Spark specific options.
         :param pulumi.Input[bool] strict_mode: Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
         """
         ...
@@ -311,6 +329,7 @@ class Routine(pulumi.CustomResource):
                  return_type: Optional[pulumi.Input[pulumi.InputType['StandardSqlDataTypeArgs']]] = None,
                  routine_reference: Optional[pulumi.Input[pulumi.InputType['RoutineReferenceArgs']]] = None,
                  routine_type: Optional[pulumi.Input['RoutineRoutineType']] = None,
+                 spark_options: Optional[pulumi.Input[pulumi.InputType['SparkOptionsArgs']]] = None,
                  strict_mode: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -342,6 +361,7 @@ class Routine(pulumi.CustomResource):
             if routine_type is None and not opts.urn:
                 raise TypeError("Missing required property 'routine_type'")
             __props__.__dict__["routine_type"] = routine_type
+            __props__.__dict__["spark_options"] = spark_options
             __props__.__dict__["strict_mode"] = strict_mode
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["etag"] = None
@@ -386,6 +406,7 @@ class Routine(pulumi.CustomResource):
         __props__.__dict__["return_type"] = None
         __props__.__dict__["routine_reference"] = None
         __props__.__dict__["routine_type"] = None
+        __props__.__dict__["spark_options"] = None
         __props__.__dict__["strict_mode"] = None
         return Routine(resource_name, opts=opts, __props__=__props__)
 
@@ -510,6 +531,14 @@ class Routine(pulumi.CustomResource):
         The type of routine.
         """
         return pulumi.get(self, "routine_type")
+
+    @property
+    @pulumi.getter(name="sparkOptions")
+    def spark_options(self) -> pulumi.Output['outputs.SparkOptionsResponse']:
+        """
+        Optional. Spark specific options.
+        """
+        return pulumi.get(self, "spark_options")
 
     @property
     @pulumi.getter(name="strictMode")

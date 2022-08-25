@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
     /// <summary>
-    /// The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
+    /// A volume representing a secret stored in Google Secret Manager. The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secret_name. The contents of the target Secret's Data field will be presented in a volume as files using the keys in the Data field as the file names.
     /// </summary>
     [OutputType]
     public sealed class SecretVolumeSourceResponse
@@ -21,11 +21,11 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly int DefaultMode;
         /// <summary>
-        /// (Optional) If unspecified, the volume will expose a file whose name is the secret_name. If specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify a key and a path. If unspecified, each key-value pair in the Data field of the referenced Secret will be projected into the volume as a file whose name is the key and content is the value. If specified, the listed keys will be projected into the specified paths, and unlisted keys will not be present. If a key is specified that is not present in the Secret, the volume setup will error unless it is marked optional.
+        /// A list of secret versions to mount in the volume. If no items are specified, the volume will expose a file with the same name as the secret name. The contents of the file will be the data in the latest version of the secret. If items are specified, the key will be used as the version to fetch from Cloud Secret Manager and the path will be the name of the file exposed in the volume. When items are defined, they must specify both a key and a path.
         /// </summary>
         public readonly ImmutableArray<Outputs.KeyToPathResponse> Items;
         /// <summary>
-        /// (Optional) Specify whether the Secret or its keys must be defined.
+        /// Not supported by Cloud Run.
         /// </summary>
         public readonly bool Optional;
         /// <summary>

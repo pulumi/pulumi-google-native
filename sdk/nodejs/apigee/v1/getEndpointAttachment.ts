@@ -26,6 +26,10 @@ export interface GetEndpointAttachmentArgs {
 
 export interface GetEndpointAttachmentResult {
     /**
+     * State of the endpoint attachment connection to the service attachment.
+     */
+    readonly connectionState: string;
+    /**
      * Host that can be used in either the HTTP target endpoint directly or as the host in target server.
      */
     readonly host: string;

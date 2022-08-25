@@ -37,7 +37,7 @@ type LookupDatabaseResult struct {
 	EarliestVersionTime string `pulumi:"earliestVersionTime"`
 	// For databases that are using customer managed encryption, this field contains the encryption configuration for the database. For databases that are using Google default or other types of encryption, this field is empty.
 	EncryptionConfig EncryptionConfigResponse `pulumi:"encryptionConfig"`
-	// For databases that are using customer managed encryption, this field contains the encryption information for the database, such as encryption state and the Cloud KMS key versions that are in use. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
+	// For databases that are using customer managed encryption, this field contains the encryption information for the database, such as all Cloud KMS key versions that are in use. The ` encryption_status' field inside of each  `EncryptionInfo` is not populated. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
 	EncryptionInfo []EncryptionInfoResponse `pulumi:"encryptionInfo"`
 	// The name of the database. Values are of the form `projects//instances//databases/`, where `` is as specified in the `CREATE DATABASE` statement. This name can be passed to other API methods to identify the database.
 	Name string `pulumi:"name"`
@@ -111,7 +111,7 @@ func (o LookupDatabaseResultOutput) EncryptionConfig() EncryptionConfigResponseO
 	return o.ApplyT(func(v LookupDatabaseResult) EncryptionConfigResponse { return v.EncryptionConfig }).(EncryptionConfigResponseOutput)
 }
 
-// For databases that are using customer managed encryption, this field contains the encryption information for the database, such as encryption state and the Cloud KMS key versions that are in use. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
+// For databases that are using customer managed encryption, this field contains the encryption information for the database, such as all Cloud KMS key versions that are in use. The ` encryption_status' field inside of each  `EncryptionInfo` is not populated. For databases that are using Google default or other types of encryption, this field is empty. This field is propagated lazily from the backend. There might be a delay from when a key version is being used and when it appears in this field.
 func (o LookupDatabaseResultOutput) EncryptionInfo() EncryptionInfoResponseArrayOutput {
 	return o.ApplyT(func(v LookupDatabaseResult) []EncryptionInfoResponse { return v.EncryptionInfo }).(EncryptionInfoResponseArrayOutput)
 }

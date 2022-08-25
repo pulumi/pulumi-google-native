@@ -4,7 +4,7 @@
 
 export const CasePriority = {
     /**
-     * Severity is undefined or has not been set yet.
+     * Priority is undefined or has not been set yet.
      */
     PriorityUnspecified: "PRIORITY_UNSPECIFIED",
     /**

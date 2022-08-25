@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+// Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API handlers.
 type ApiConfigHandler struct {
 	// Action to take when users access resources that require authentication. Defaults to redirect.
 	AuthFailAction *ApiConfigHandlerAuthFailAction `pulumi:"authFailAction"`
@@ -35,7 +35,7 @@ type ApiConfigHandlerInput interface {
 	ToApiConfigHandlerOutputWithContext(context.Context) ApiConfigHandlerOutput
 }
 
-// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+// Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API handlers.
 type ApiConfigHandlerArgs struct {
 	// Action to take when users access resources that require authentication. Defaults to redirect.
 	AuthFailAction ApiConfigHandlerAuthFailActionPtrInput `pulumi:"authFailAction"`
@@ -102,7 +102,7 @@ func (i *apiConfigHandlerPtrType) ToApiConfigHandlerPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigHandlerPtrOutput)
 }
 
-// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+// Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API handlers.
 type ApiConfigHandlerOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigHandlerOutput) ElementType() reflect.Type {
@@ -226,7 +226,7 @@ func (o ApiConfigHandlerPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+// Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API handlers.
 type ApiConfigHandlerResponse struct {
 	// Action to take when users access resources that require authentication. Defaults to redirect.
 	AuthFailAction string `pulumi:"authFailAction"`
@@ -240,7 +240,7 @@ type ApiConfigHandlerResponse struct {
 	Url string `pulumi:"url"`
 }
 
-// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+// Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API handlers.
 type ApiConfigHandlerResponseOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigHandlerResponseOutput) ElementType() reflect.Type {

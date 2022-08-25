@@ -11,13 +11,13 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
+    /// Not supported by Cloud Run. LocalObjectReference contains enough information to let you locate the referenced object inside the same namespace.
     /// </summary>
     [OutputType]
     public sealed class LocalObjectReferenceResponse
     {
         /// <summary>
-        /// (Optional) Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
+        /// Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names
         /// </summary>
         public readonly string Name;
 

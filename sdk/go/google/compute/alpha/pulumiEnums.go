@@ -15263,7 +15263,7 @@ func (in *instanceGroupManagerFailoverActionPtr) ToInstanceGroupManagerFailoverA
 	return pulumi.ToOutputWithContext(ctx, in).(InstanceGroupManagerFailoverActionPtrOutput)
 }
 
-// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. However, if you've set up a proactive type of update policy, then configuration updates are applied as usual. - YES: If configuration updates are available, they are applied during repair.
+// A bit indicating whether to forcefully apply the group's latest configuration when repairing a VM. Valid options are: - NO (default): If configuration updates are available, they are not forcefully applied during repair. Instead, configuration updates are applied according to the group's update policy. - YES: If configuration updates are available, they are applied during repair.
 type InstanceGroupManagerInstanceLifecyclePolicyForceUpdateOnRepair string
 
 const (
@@ -25923,171 +25923,6 @@ func (in *regionNetworkFirewallPolicyVpcNetworkScopePtr) ToRegionNetworkFirewall
 	return pulumi.ToOutputWithContext(ctx, in).(RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput)
 }
 
-// The network firewall policy enforcement order. Can be either AFTER_CLASSIC_FIREWALL or BEFORE_CLASSIC_FIREWALL. Defaults to AFTER_CLASSIC_FIREWALL if the field is not specified.
-type RegionNetworkNetworkFirewallPolicyEnforcementOrder string
-
-const (
-	RegionNetworkNetworkFirewallPolicyEnforcementOrderAfterClassicFirewall  = RegionNetworkNetworkFirewallPolicyEnforcementOrder("AFTER_CLASSIC_FIREWALL")
-	RegionNetworkNetworkFirewallPolicyEnforcementOrderBeforeClassicFirewall = RegionNetworkNetworkFirewallPolicyEnforcementOrder("BEFORE_CLASSIC_FIREWALL")
-)
-
-func (RegionNetworkNetworkFirewallPolicyEnforcementOrder) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionNetworkNetworkFirewallPolicyEnforcementOrder)(nil)).Elem()
-}
-
-func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput {
-	return pulumi.ToOutput(e).(RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput)
-}
-
-func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderOutputWithContext(ctx context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput {
-	return pulumi.ToOutputWithContext(ctx, e).(RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput)
-}
-
-func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
-	return e.ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(context.Background())
-}
-
-func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
-	return RegionNetworkNetworkFirewallPolicyEnforcementOrder(e).ToRegionNetworkNetworkFirewallPolicyEnforcementOrderOutputWithContext(ctx).ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx)
-}
-
-func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToStringOutput() pulumi.StringOutput {
-	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
-}
-
-func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
-}
-
-func (e RegionNetworkNetworkFirewallPolicyEnforcementOrder) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
-}
-
-type RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput struct{ *pulumi.OutputState }
-
-func (RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RegionNetworkNetworkFirewallPolicyEnforcementOrder)(nil)).Elem()
-}
-
-func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput {
-	return o
-}
-
-func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderOutputWithContext(ctx context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput {
-	return o
-}
-
-func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
-	return o.ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(context.Background())
-}
-
-func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionNetworkNetworkFirewallPolicyEnforcementOrder) *RegionNetworkNetworkFirewallPolicyEnforcementOrder {
-		return &v
-	}).(RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput)
-}
-
-func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToStringOutput() pulumi.StringOutput {
-	return o.ToStringOutputWithContext(context.Background())
-}
-
-func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionNetworkNetworkFirewallPolicyEnforcementOrder) string {
-		return string(e)
-	}).(pulumi.StringOutput)
-}
-
-func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionNetworkNetworkFirewallPolicyEnforcementOrder) *string {
-		v := string(e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-type RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput struct{ *pulumi.OutputState }
-
-func (RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**RegionNetworkNetworkFirewallPolicyEnforcementOrder)(nil)).Elem()
-}
-
-func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
-	return o
-}
-
-func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
-	return o
-}
-
-func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) Elem() RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput {
-	return o.ApplyT(func(v *RegionNetworkNetworkFirewallPolicyEnforcementOrder) RegionNetworkNetworkFirewallPolicyEnforcementOrder {
-		if v != nil {
-			return *v
-		}
-		var ret RegionNetworkNetworkFirewallPolicyEnforcementOrder
-		return ret
-	}).(RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput)
-}
-
-func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
-	return o.ToStringPtrOutputWithContext(context.Background())
-}
-
-func (o RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionNetworkNetworkFirewallPolicyEnforcementOrder) *string {
-		if e == nil {
-			return nil
-		}
-		v := string(*e)
-		return &v
-	}).(pulumi.StringPtrOutput)
-}
-
-// RegionNetworkNetworkFirewallPolicyEnforcementOrderInput is an input type that accepts RegionNetworkNetworkFirewallPolicyEnforcementOrderArgs and RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput values.
-// You can construct a concrete instance of `RegionNetworkNetworkFirewallPolicyEnforcementOrderInput` via:
-//
-//	RegionNetworkNetworkFirewallPolicyEnforcementOrderArgs{...}
-type RegionNetworkNetworkFirewallPolicyEnforcementOrderInput interface {
-	pulumi.Input
-
-	ToRegionNetworkNetworkFirewallPolicyEnforcementOrderOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput
-	ToRegionNetworkNetworkFirewallPolicyEnforcementOrderOutputWithContext(context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput
-}
-
-var regionNetworkNetworkFirewallPolicyEnforcementOrderPtrType = reflect.TypeOf((**RegionNetworkNetworkFirewallPolicyEnforcementOrder)(nil)).Elem()
-
-type RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrInput interface {
-	pulumi.Input
-
-	ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput
-	ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput
-}
-
-type regionNetworkNetworkFirewallPolicyEnforcementOrderPtr string
-
-func RegionNetworkNetworkFirewallPolicyEnforcementOrderPtr(v string) RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrInput {
-	return (*regionNetworkNetworkFirewallPolicyEnforcementOrderPtr)(&v)
-}
-
-func (*regionNetworkNetworkFirewallPolicyEnforcementOrderPtr) ElementType() reflect.Type {
-	return regionNetworkNetworkFirewallPolicyEnforcementOrderPtrType
-}
-
-func (in *regionNetworkNetworkFirewallPolicyEnforcementOrderPtr) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput() RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
-	return pulumi.ToOutput(in).(RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput)
-}
-
-func (in *regionNetworkNetworkFirewallPolicyEnforcementOrderPtr) ToRegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutputWithContext(ctx context.Context) RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput {
-	return pulumi.ToOutputWithContext(ctx, in).(RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput)
-}
-
 // The type indicates the intended use of the security policy. - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers. - CLOUD_ARMOR_EDGE: Cloud Armor edge security policies can be configured to filter incoming HTTP requests targeting backend services (including Cloud CDN-enabled) as well as backend buckets (Cloud Storage). They filter requests before the request is served from Google's cache. - CLOUD_ARMOR_INTERNAL_SERVICE: Cloud Armor internal service policies can be configured to filter HTTP requests targeting services managed by Traffic Director in a service mesh. They filter requests before the request is served from the application. This field can be set only at resource creation time.
 type RegionSecurityPolicyType string
 
@@ -31798,6 +31633,172 @@ func (in *sslhealthCheckProxyHeaderPtr) ToSSLHealthCheckProxyHeaderPtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(SSLHealthCheckProxyHeaderPtrOutput)
 }
 
+// Current Hot Standby state of VM.
+type SchedulingDynamicResizePropertiesHotStandbyState string
+
+const (
+	SchedulingDynamicResizePropertiesHotStandbyStateActive                     = SchedulingDynamicResizePropertiesHotStandbyState("ACTIVE")
+	SchedulingDynamicResizePropertiesHotStandbyStateHotstandbyStateUnspecified = SchedulingDynamicResizePropertiesHotStandbyState("HOTSTANDBY_STATE_UNSPECIFIED")
+	SchedulingDynamicResizePropertiesHotStandbyStateStandby                    = SchedulingDynamicResizePropertiesHotStandbyState("STANDBY")
+)
+
+func (SchedulingDynamicResizePropertiesHotStandbyState) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingDynamicResizePropertiesHotStandbyState)(nil)).Elem()
+}
+
+func (e SchedulingDynamicResizePropertiesHotStandbyState) ToSchedulingDynamicResizePropertiesHotStandbyStateOutput() SchedulingDynamicResizePropertiesHotStandbyStateOutput {
+	return pulumi.ToOutput(e).(SchedulingDynamicResizePropertiesHotStandbyStateOutput)
+}
+
+func (e SchedulingDynamicResizePropertiesHotStandbyState) ToSchedulingDynamicResizePropertiesHotStandbyStateOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesHotStandbyStateOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SchedulingDynamicResizePropertiesHotStandbyStateOutput)
+}
+
+func (e SchedulingDynamicResizePropertiesHotStandbyState) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutput() SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
+	return e.ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(context.Background())
+}
+
+func (e SchedulingDynamicResizePropertiesHotStandbyState) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
+	return SchedulingDynamicResizePropertiesHotStandbyState(e).ToSchedulingDynamicResizePropertiesHotStandbyStateOutputWithContext(ctx).ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(ctx)
+}
+
+func (e SchedulingDynamicResizePropertiesHotStandbyState) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SchedulingDynamicResizePropertiesHotStandbyState) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SchedulingDynamicResizePropertiesHotStandbyState) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SchedulingDynamicResizePropertiesHotStandbyState) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SchedulingDynamicResizePropertiesHotStandbyStateOutput struct{ *pulumi.OutputState }
+
+func (SchedulingDynamicResizePropertiesHotStandbyStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SchedulingDynamicResizePropertiesHotStandbyState)(nil)).Elem()
+}
+
+func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToSchedulingDynamicResizePropertiesHotStandbyStateOutput() SchedulingDynamicResizePropertiesHotStandbyStateOutput {
+	return o
+}
+
+func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToSchedulingDynamicResizePropertiesHotStandbyStateOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesHotStandbyStateOutput {
+	return o
+}
+
+func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutput() SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
+	return o.ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(context.Background())
+}
+
+func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SchedulingDynamicResizePropertiesHotStandbyState) *SchedulingDynamicResizePropertiesHotStandbyState {
+		return &v
+	}).(SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput)
+}
+
+func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchedulingDynamicResizePropertiesHotStandbyState) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchedulingDynamicResizePropertiesHotStandbyStateOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SchedulingDynamicResizePropertiesHotStandbyState) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput struct{ *pulumi.OutputState }
+
+func (SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SchedulingDynamicResizePropertiesHotStandbyState)(nil)).Elem()
+}
+
+func (o SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutput() SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
+	return o
+}
+
+func (o SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
+	return o
+}
+
+func (o SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput) Elem() SchedulingDynamicResizePropertiesHotStandbyStateOutput {
+	return o.ApplyT(func(v *SchedulingDynamicResizePropertiesHotStandbyState) SchedulingDynamicResizePropertiesHotStandbyState {
+		if v != nil {
+			return *v
+		}
+		var ret SchedulingDynamicResizePropertiesHotStandbyState
+		return ret
+	}).(SchedulingDynamicResizePropertiesHotStandbyStateOutput)
+}
+
+func (o SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SchedulingDynamicResizePropertiesHotStandbyState) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SchedulingDynamicResizePropertiesHotStandbyStateInput is an input type that accepts SchedulingDynamicResizePropertiesHotStandbyStateArgs and SchedulingDynamicResizePropertiesHotStandbyStateOutput values.
+// You can construct a concrete instance of `SchedulingDynamicResizePropertiesHotStandbyStateInput` via:
+//
+//	SchedulingDynamicResizePropertiesHotStandbyStateArgs{...}
+type SchedulingDynamicResizePropertiesHotStandbyStateInput interface {
+	pulumi.Input
+
+	ToSchedulingDynamicResizePropertiesHotStandbyStateOutput() SchedulingDynamicResizePropertiesHotStandbyStateOutput
+	ToSchedulingDynamicResizePropertiesHotStandbyStateOutputWithContext(context.Context) SchedulingDynamicResizePropertiesHotStandbyStateOutput
+}
+
+var schedulingDynamicResizePropertiesHotStandbyStatePtrType = reflect.TypeOf((**SchedulingDynamicResizePropertiesHotStandbyState)(nil)).Elem()
+
+type SchedulingDynamicResizePropertiesHotStandbyStatePtrInput interface {
+	pulumi.Input
+
+	ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutput() SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput
+	ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(context.Context) SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput
+}
+
+type schedulingDynamicResizePropertiesHotStandbyStatePtr string
+
+func SchedulingDynamicResizePropertiesHotStandbyStatePtr(v string) SchedulingDynamicResizePropertiesHotStandbyStatePtrInput {
+	return (*schedulingDynamicResizePropertiesHotStandbyStatePtr)(&v)
+}
+
+func (*schedulingDynamicResizePropertiesHotStandbyStatePtr) ElementType() reflect.Type {
+	return schedulingDynamicResizePropertiesHotStandbyStatePtrType
+}
+
+func (in *schedulingDynamicResizePropertiesHotStandbyStatePtr) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutput() SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
+	return pulumi.ToOutput(in).(SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput)
+}
+
+func (in *schedulingDynamicResizePropertiesHotStandbyStatePtr) ToSchedulingDynamicResizePropertiesHotStandbyStatePtrOutputWithContext(ctx context.Context) SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput)
+}
+
 // Specifies the termination action for the instance.
 type SchedulingInstanceTerminationAction string
 
@@ -33620,6 +33621,179 @@ func (in *securityPolicyRuleMatcherVersionedExprPtr) ToSecurityPolicyRuleMatcher
 
 func (in *securityPolicyRuleMatcherVersionedExprPtr) ToSecurityPolicyRuleMatcherVersionedExprPtrOutputWithContext(ctx context.Context) SecurityPolicyRuleMatcherVersionedExprPtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRuleMatcherVersionedExprPtrOutput)
+}
+
+// The match operator for the field.
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp string
+
+const (
+	// The operator matches if the field value contains the specified value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpContains = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("CONTAINS")
+	// The operator matches if the field value ends with the specified value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpEndsWith = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("ENDS_WITH")
+	// The operator matches if the field value equals the specified value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpEquals = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("EQUALS")
+	// The operator matches if the field value is any value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpEqualsAny = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("EQUALS_ANY")
+	// The operator matches if the field value starts with the specified value.
+	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpStartsWith = SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("STARTS_WITH")
+)
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp)(nil)).Elem()
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return pulumi.ToOutput(e).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return e.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp(e).ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutputWithContext(ctx).ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return o.ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp {
+		return &v
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp)(nil)).Elem()
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) Elem() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput {
+	return o.ApplyT(func(v *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp
+		return ret
+	}).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput)
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpInput is an input type that accepts SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpArgs and SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput values.
+// You can construct a concrete instance of `SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpInput` via:
+//
+//	SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpArgs{...}
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput
+}
+
+var securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrType = reflect.TypeOf((**SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp)(nil)).Elem()
+
+type SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput
+	ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput
+}
+
+type securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr string
+
+func SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr(v string) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrInput {
+	return (*securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr)(&v)
+}
+
+func (*securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ElementType() reflect.Type {
+	return securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrType
+}
+
+func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput() SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return pulumi.ToOutput(in).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
+}
+
+func (in *securityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtr) ToSecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutputWithContext(ctx context.Context) SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput)
 }
 
 // Determines the key to enforce the rate_limit_threshold on. Possible values are: - ALL: A single rate limit threshold is applied to all the requests matching this rule. This is the default value if this field 'enforce_on_key' is not configured. - IP: The source IP address of the request is the key. Each IP has this limit enforced separately. - HTTP_HEADER: The value of the HTTP header whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the header value. If no such header is present in the request, the key type defaults to ALL. - XFF_IP: The first IP address (i.e. the originating client IP address) specified in the list of IPs under X-Forwarded-For HTTP header. If no such header is present or the value is not a valid IP, the key defaults to the source IP address of the request i.e. key type IP. - HTTP_COOKIE: The value of the HTTP cookie whose name is configured under "enforce_on_key_name". The key value is truncated to the first 128 bytes of the cookie value. If no such cookie is present in the request, the key type defaults to ALL.
@@ -39144,8 +39318,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkEndpointGroupTypePtrInput)(nil)).Elem(), RegionNetworkEndpointGroupType("LOAD_BALANCING"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkFirewallPolicyVpcNetworkScopeInput)(nil)).Elem(), RegionNetworkFirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkFirewallPolicyVpcNetworkScopePtrInput)(nil)).Elem(), RegionNetworkFirewallPolicyVpcNetworkScope("GLOBAL_VPC_NETWORK"))
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkNetworkFirewallPolicyEnforcementOrderInput)(nil)).Elem(), RegionNetworkNetworkFirewallPolicyEnforcementOrder("AFTER_CLASSIC_FIREWALL"))
-	pulumi.RegisterInputType(reflect.TypeOf((*RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrInput)(nil)).Elem(), RegionNetworkNetworkFirewallPolicyEnforcementOrder("AFTER_CLASSIC_FIREWALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyTypeInput)(nil)).Elem(), RegionSecurityPolicyType("CLOUD_ARMOR"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSecurityPolicyTypePtrInput)(nil)).Elem(), RegionSecurityPolicyType("CLOUD_ARMOR"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslCertificateTypeInput)(nil)).Elem(), RegionSslCertificateType("MANAGED"))
@@ -39216,6 +39388,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SSLHealthCheckPortSpecificationPtrInput)(nil)).Elem(), SSLHealthCheckPortSpecification("USE_FIXED_PORT"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SSLHealthCheckProxyHeaderInput)(nil)).Elem(), SSLHealthCheckProxyHeader("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SSLHealthCheckProxyHeaderPtrInput)(nil)).Elem(), SSLHealthCheckProxyHeader("NONE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingDynamicResizePropertiesHotStandbyStateInput)(nil)).Elem(), SchedulingDynamicResizePropertiesHotStandbyState("ACTIVE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingDynamicResizePropertiesHotStandbyStatePtrInput)(nil)).Elem(), SchedulingDynamicResizePropertiesHotStandbyState("ACTIVE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingInstanceTerminationActionInput)(nil)).Elem(), SchedulingInstanceTerminationAction("DELETE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingInstanceTerminationActionPtrInput)(nil)).Elem(), SchedulingInstanceTerminationAction("DELETE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingMaintenanceIntervalInput)(nil)).Elem(), SchedulingMaintenanceInterval("PERIODIC"))
@@ -39238,6 +39412,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleDirectionPtrInput)(nil)).Elem(), SecurityPolicyRuleDirection("EGRESS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherVersionedExprInput)(nil)).Elem(), SecurityPolicyRuleMatcherVersionedExpr("FIREWALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleMatcherVersionedExprPtrInput)(nil)).Elem(), SecurityPolicyRuleMatcherVersionedExpr("FIREWALL"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("CONTAINS"))
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrInput)(nil)).Elem(), SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp("CONTAINS"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrInput)(nil)).Elem(), SecurityPolicyRuleRateLimitOptionsEnforceOnKey("ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleRedirectOptionsTypeInput)(nil)).Elem(), SecurityPolicyRuleRedirectOptionsType("EXTERNAL_302"))
@@ -39606,8 +39782,6 @@ func init() {
 	pulumi.RegisterOutputType(RegionNetworkEndpointGroupTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionNetworkFirewallPolicyVpcNetworkScopeOutput{})
 	pulumi.RegisterOutputType(RegionNetworkFirewallPolicyVpcNetworkScopePtrOutput{})
-	pulumi.RegisterOutputType(RegionNetworkNetworkFirewallPolicyEnforcementOrderOutput{})
-	pulumi.RegisterOutputType(RegionNetworkNetworkFirewallPolicyEnforcementOrderPtrOutput{})
 	pulumi.RegisterOutputType(RegionSecurityPolicyTypeOutput{})
 	pulumi.RegisterOutputType(RegionSecurityPolicyTypePtrOutput{})
 	pulumi.RegisterOutputType(RegionSslCertificateTypeOutput{})
@@ -39678,6 +39852,8 @@ func init() {
 	pulumi.RegisterOutputType(SSLHealthCheckPortSpecificationPtrOutput{})
 	pulumi.RegisterOutputType(SSLHealthCheckProxyHeaderOutput{})
 	pulumi.RegisterOutputType(SSLHealthCheckProxyHeaderPtrOutput{})
+	pulumi.RegisterOutputType(SchedulingDynamicResizePropertiesHotStandbyStateOutput{})
+	pulumi.RegisterOutputType(SchedulingDynamicResizePropertiesHotStandbyStatePtrOutput{})
 	pulumi.RegisterOutputType(SchedulingInstanceTerminationActionOutput{})
 	pulumi.RegisterOutputType(SchedulingInstanceTerminationActionPtrOutput{})
 	pulumi.RegisterOutputType(SchedulingMaintenanceIntervalOutput{})
@@ -39700,6 +39876,8 @@ func init() {
 	pulumi.RegisterOutputType(SecurityPolicyRuleDirectionPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherVersionedExprOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleMatcherVersionedExprPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOpPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRateLimitOptionsEnforceOnKeyPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleRedirectOptionsTypeOutput{})

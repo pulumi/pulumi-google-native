@@ -49,7 +49,7 @@ class GetShareResult:
     @pulumi.getter(name="capacityGb")
     def capacity_gb(self) -> str:
         """
-        File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+        File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
         """
         return pulumi.get(self, "capacity_gb")
 

@@ -27,6 +27,7 @@ class NodeGroupArgs:
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input['ShareSettingsArgs']] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a NodeGroup resource.
@@ -38,6 +39,7 @@ class NodeGroupArgs:
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] node_template: URL of the node template to create the node group from.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input['ShareSettingsArgs'] share_settings: Share-settings for the node group
         """
         pulumi.set(__self__, "initial_node_count", initial_node_count)
         if autoscaling_policy is not None:
@@ -58,6 +60,8 @@ class NodeGroupArgs:
             pulumi.set(__self__, "project", project)
         if request_id is not None:
             pulumi.set(__self__, "request_id", request_id)
+        if share_settings is not None:
+            pulumi.set(__self__, "share_settings", share_settings)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
 
@@ -176,6 +180,18 @@ class NodeGroupArgs:
         pulumi.set(self, "request_id", value)
 
     @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> Optional[pulumi.Input['ShareSettingsArgs']]:
+        """
+        Share-settings for the node group
+        """
+        return pulumi.get(self, "share_settings")
+
+    @share_settings.setter
+    def share_settings(self, value: Optional[pulumi.Input['ShareSettingsArgs']]):
+        pulumi.set(self, "share_settings", value)
+
+    @property
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "zone")
@@ -200,6 +216,7 @@ class NodeGroup(pulumi.CustomResource):
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -215,6 +232,7 @@ class NodeGroup(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         :param pulumi.Input[str] node_template: URL of the node template to create the node group from.
         :param pulumi.Input[str] request_id: An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+        :param pulumi.Input[pulumi.InputType['ShareSettingsArgs']] share_settings: Share-settings for the node group
         """
         ...
     @overload
@@ -250,6 +268,7 @@ class NodeGroup(pulumi.CustomResource):
                  node_template: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
+                 share_settings: Optional[pulumi.Input[pulumi.InputType['ShareSettingsArgs']]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -272,6 +291,7 @@ class NodeGroup(pulumi.CustomResource):
             __props__.__dict__["node_template"] = node_template
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
+            __props__.__dict__["share_settings"] = share_settings
             __props__.__dict__["zone"] = zone
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
@@ -317,6 +337,7 @@ class NodeGroup(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
+        __props__.__dict__["share_settings"] = None
         __props__.__dict__["size"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["zone"] = None
@@ -424,6 +445,14 @@ class NodeGroup(pulumi.CustomResource):
         Server-defined URL for the resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="shareSettings")
+    def share_settings(self) -> pulumi.Output['outputs.ShareSettingsResponse']:
+        """
+        Share-settings for the node group
+        """
+        return pulumi.get(self, "share_settings")
 
     @property
     @pulumi.getter

@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
     /// <summary>
-    /// Condition defines a generic condition for a Resource.
+    /// Conditions show the status of reconciliation progress on a given resource. Most resource use a top-level condition type "Ready" or "Completed" to show overall status with other conditions to checkpoint each stage of reconciliation. Note that if metadata.Generation does not equal status.ObservedGeneration, the conditions shown may not be relevant for the current spec.
     /// </summary>
     [OutputType]
     public sealed class GoogleCloudRunV1ConditionResponse
@@ -25,11 +25,11 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string Message;
         /// <summary>
-        /// Optional. One-word CamelCase reason for the condition's last transition.
+        /// Optional. One-word CamelCase reason for the condition's last transition. These are intended to be stable, unique values which the client may use to trigger error handling logic, whereas messages which may be changed later by the server.
         /// </summary>
         public readonly string Reason;
         /// <summary>
-        /// Optional. How to interpret failures of this condition, one of Error, Warning, Info
+        /// Optional. How to interpret this condition. One of Error, Warning, or Info. Conditions of severity Info do not contribute to resource readiness.
         /// </summary>
         public readonly string Severity;
         /// <summary>
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
         /// </summary>
         public readonly string Status;
         /// <summary>
-        /// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready": True when the Resource is ready.
+        /// type is used to communicate the status of the reconciliation process. See also: https://github.com/knative/serving/blob/main/docs/spec/errors.md#error-conditions-and-reporting Types common to all resources include: * "Ready" or "Completed": True when the Resource is ready.
         /// </summary>
         public readonly string Type;
 

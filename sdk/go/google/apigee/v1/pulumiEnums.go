@@ -10,6 +10,175 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Scope of the quota decides how the quota counter gets applied and evaluate for quota violation. If the Scope is set as PROXY, then all the operations defined for the APIproduct that are associated with the same proxy will share the same quota counter set at the APIproduct level, making it a global counter at a proxy level. If the Scope is set as OPERATION, then each operations get the counter set at the API product dedicated, making it a local counter. Note that, the QuotaCounterScope applies only when an operation does not have dedicated quota set for itself.
+type ApiProductQuotaCounterScope string
+
+const (
+	// When quota is not explicitly defined for each operation(REST/GraphQL), the limits set at product level will be used as a local counter for quota evaluation by all the operations, independent of proxy association.
+	ApiProductQuotaCounterScopeQuotaCounterScopeUnspecified = ApiProductQuotaCounterScope("QUOTA_COUNTER_SCOPE_UNSPECIFIED")
+	// When quota is not explicitly defined for each operation(REST/GraphQL), set at product level will be used as a global counter for quota evaluation by all the operations associated with a particular proxy.
+	ApiProductQuotaCounterScopeProxy = ApiProductQuotaCounterScope("PROXY")
+	// When quota is not explicitly defined for each operation(REST/GraphQL), the limits set at product level will be used as a local counter for quota evaluation by all the operations, independent of proxy association. This behavior mimics the same as QUOTA_COUNTER_SCOPE_UNSPECIFIED.
+	ApiProductQuotaCounterScopeOperation = ApiProductQuotaCounterScope("OPERATION")
+)
+
+func (ApiProductQuotaCounterScope) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductQuotaCounterScope)(nil)).Elem()
+}
+
+func (e ApiProductQuotaCounterScope) ToApiProductQuotaCounterScopeOutput() ApiProductQuotaCounterScopeOutput {
+	return pulumi.ToOutput(e).(ApiProductQuotaCounterScopeOutput)
+}
+
+func (e ApiProductQuotaCounterScope) ToApiProductQuotaCounterScopeOutputWithContext(ctx context.Context) ApiProductQuotaCounterScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ApiProductQuotaCounterScopeOutput)
+}
+
+func (e ApiProductQuotaCounterScope) ToApiProductQuotaCounterScopePtrOutput() ApiProductQuotaCounterScopePtrOutput {
+	return e.ToApiProductQuotaCounterScopePtrOutputWithContext(context.Background())
+}
+
+func (e ApiProductQuotaCounterScope) ToApiProductQuotaCounterScopePtrOutputWithContext(ctx context.Context) ApiProductQuotaCounterScopePtrOutput {
+	return ApiProductQuotaCounterScope(e).ToApiProductQuotaCounterScopeOutputWithContext(ctx).ToApiProductQuotaCounterScopePtrOutputWithContext(ctx)
+}
+
+func (e ApiProductQuotaCounterScope) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ApiProductQuotaCounterScope) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ApiProductQuotaCounterScope) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ApiProductQuotaCounterScope) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ApiProductQuotaCounterScopeOutput struct{ *pulumi.OutputState }
+
+func (ApiProductQuotaCounterScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ApiProductQuotaCounterScope)(nil)).Elem()
+}
+
+func (o ApiProductQuotaCounterScopeOutput) ToApiProductQuotaCounterScopeOutput() ApiProductQuotaCounterScopeOutput {
+	return o
+}
+
+func (o ApiProductQuotaCounterScopeOutput) ToApiProductQuotaCounterScopeOutputWithContext(ctx context.Context) ApiProductQuotaCounterScopeOutput {
+	return o
+}
+
+func (o ApiProductQuotaCounterScopeOutput) ToApiProductQuotaCounterScopePtrOutput() ApiProductQuotaCounterScopePtrOutput {
+	return o.ToApiProductQuotaCounterScopePtrOutputWithContext(context.Background())
+}
+
+func (o ApiProductQuotaCounterScopeOutput) ToApiProductQuotaCounterScopePtrOutputWithContext(ctx context.Context) ApiProductQuotaCounterScopePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ApiProductQuotaCounterScope) *ApiProductQuotaCounterScope {
+		return &v
+	}).(ApiProductQuotaCounterScopePtrOutput)
+}
+
+func (o ApiProductQuotaCounterScopeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ApiProductQuotaCounterScopeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ApiProductQuotaCounterScope) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ApiProductQuotaCounterScopeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ApiProductQuotaCounterScopeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ApiProductQuotaCounterScope) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ApiProductQuotaCounterScopePtrOutput struct{ *pulumi.OutputState }
+
+func (ApiProductQuotaCounterScopePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ApiProductQuotaCounterScope)(nil)).Elem()
+}
+
+func (o ApiProductQuotaCounterScopePtrOutput) ToApiProductQuotaCounterScopePtrOutput() ApiProductQuotaCounterScopePtrOutput {
+	return o
+}
+
+func (o ApiProductQuotaCounterScopePtrOutput) ToApiProductQuotaCounterScopePtrOutputWithContext(ctx context.Context) ApiProductQuotaCounterScopePtrOutput {
+	return o
+}
+
+func (o ApiProductQuotaCounterScopePtrOutput) Elem() ApiProductQuotaCounterScopeOutput {
+	return o.ApplyT(func(v *ApiProductQuotaCounterScope) ApiProductQuotaCounterScope {
+		if v != nil {
+			return *v
+		}
+		var ret ApiProductQuotaCounterScope
+		return ret
+	}).(ApiProductQuotaCounterScopeOutput)
+}
+
+func (o ApiProductQuotaCounterScopePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ApiProductQuotaCounterScopePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ApiProductQuotaCounterScope) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ApiProductQuotaCounterScopeInput is an input type that accepts ApiProductQuotaCounterScopeArgs and ApiProductQuotaCounterScopeOutput values.
+// You can construct a concrete instance of `ApiProductQuotaCounterScopeInput` via:
+//
+//	ApiProductQuotaCounterScopeArgs{...}
+type ApiProductQuotaCounterScopeInput interface {
+	pulumi.Input
+
+	ToApiProductQuotaCounterScopeOutput() ApiProductQuotaCounterScopeOutput
+	ToApiProductQuotaCounterScopeOutputWithContext(context.Context) ApiProductQuotaCounterScopeOutput
+}
+
+var apiProductQuotaCounterScopePtrType = reflect.TypeOf((**ApiProductQuotaCounterScope)(nil)).Elem()
+
+type ApiProductQuotaCounterScopePtrInput interface {
+	pulumi.Input
+
+	ToApiProductQuotaCounterScopePtrOutput() ApiProductQuotaCounterScopePtrOutput
+	ToApiProductQuotaCounterScopePtrOutputWithContext(context.Context) ApiProductQuotaCounterScopePtrOutput
+}
+
+type apiProductQuotaCounterScopePtr string
+
+func ApiProductQuotaCounterScopePtr(v string) ApiProductQuotaCounterScopePtrInput {
+	return (*apiProductQuotaCounterScopePtr)(&v)
+}
+
+func (*apiProductQuotaCounterScopePtr) ElementType() reflect.Type {
+	return apiProductQuotaCounterScopePtrType
+}
+
+func (in *apiProductQuotaCounterScopePtr) ToApiProductQuotaCounterScopePtrOutput() ApiProductQuotaCounterScopePtrOutput {
+	return pulumi.ToOutput(in).(ApiProductQuotaCounterScopePtrOutput)
+}
+
+func (in *apiProductQuotaCounterScopePtr) ToApiProductQuotaCounterScopePtrOutputWithContext(ctx context.Context) ApiProductQuotaCounterScopePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ApiProductQuotaCounterScopePtrOutput)
+}
+
 // Immutable. The type of data this data collector will collect.
 type DataCollectorType string
 
@@ -1052,6 +1221,8 @@ const (
 	OrganizationBillingTypeSubscription = OrganizationBillingType("SUBSCRIPTION")
 	// Free and limited access to Apigee for evaluation purposes only. only.
 	OrganizationBillingTypeEvaluation = OrganizationBillingType("EVALUATION")
+	// Access to Apigee using a Pay-As-You-Go plan.
+	OrganizationBillingTypePayg = OrganizationBillingType("PAYG")
 )
 
 func (OrganizationBillingType) ElementType() reflect.Type {
@@ -2570,6 +2741,8 @@ func (in *targetServerProtocolPtr) ToTargetServerProtocolPtrOutputWithContext(ct
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductQuotaCounterScopeInput)(nil)).Elem(), ApiProductQuotaCounterScope("QUOTA_COUNTER_SCOPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ApiProductQuotaCounterScopePtrInput)(nil)).Elem(), ApiProductQuotaCounterScope("QUOTA_COUNTER_SCOPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataCollectorTypeInput)(nil)).Elem(), DataCollectorType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*DataCollectorTypePtrInput)(nil)).Elem(), DataCollectorType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentApiProxyTypeInput)(nil)).Elem(), EnvironmentApiProxyType("API_PROXY_TYPE_UNSPECIFIED"))
@@ -2600,6 +2773,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RatePlanStateEnumPtrInput)(nil)).Elem(), RatePlanStateEnum("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetServerProtocolInput)(nil)).Elem(), TargetServerProtocol("PROTOCOL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetServerProtocolPtrInput)(nil)).Elem(), TargetServerProtocol("PROTOCOL_UNSPECIFIED"))
+	pulumi.RegisterOutputType(ApiProductQuotaCounterScopeOutput{})
+	pulumi.RegisterOutputType(ApiProductQuotaCounterScopePtrOutput{})
 	pulumi.RegisterOutputType(DataCollectorTypeOutput{})
 	pulumi.RegisterOutputType(DataCollectorTypePtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentApiProxyTypeOutput{})

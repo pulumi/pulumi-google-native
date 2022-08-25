@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// </summary>
         public readonly ImmutableArray<Outputs.ConfigVariableResponse> ConfigVariables;
         /// <summary>
-        /// Connector version on which the connection is created. The format is: projects/*/locations/global/providers/*/connectors/*/versions/*
+        /// Connector version on which the connection is created. The format is: projects/*/locations/*/providers/*/connectors/*/versions/* Only global location is supported for ConnectorVersion resource.
         /// </summary>
         public readonly string ConnectorVersion;
         /// <summary>
@@ -89,6 +89,10 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// Optional. Description of the resource.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// Optional. Configuration of the Connector's destination. Only accepted for Connectors that accepts user defined destination(s).
+        /// </summary>
+        public readonly ImmutableArray<Outputs.DestinationConfigResponse> DestinationConfigs;
         /// <summary>
         /// GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName}
         /// </summary>
@@ -109,6 +113,10 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// Resource name of the Connection. Format: projects/{project}/locations/{location}/connections/{connection}
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Optional. Configuration for the connection.
+        /// </summary>
+        public readonly Outputs.NodeConfigResponse NodeConfig;
         /// <summary>
         /// Optional. Service account needed for runtime plane to access GCP resources.
         /// </summary>
@@ -142,6 +150,8 @@ namespace Pulumi.GoogleNative.Connectors.V1
 
             string description,
 
+            ImmutableArray<Outputs.DestinationConfigResponse> destinationConfigs,
+
             string envoyImageLocation,
 
             string imageLocation,
@@ -151,6 +161,8 @@ namespace Pulumi.GoogleNative.Connectors.V1
             Outputs.LockConfigResponse lockConfig,
 
             string name,
+
+            Outputs.NodeConfigResponse nodeConfig,
 
             string serviceAccount,
 
@@ -167,11 +179,13 @@ namespace Pulumi.GoogleNative.Connectors.V1
             ConnectorVersion = connectorVersion;
             CreateTime = createTime;
             Description = description;
+            DestinationConfigs = destinationConfigs;
             EnvoyImageLocation = envoyImageLocation;
             ImageLocation = imageLocation;
             Labels = labels;
             LockConfig = lockConfig;
             Name = name;
+            NodeConfig = nodeConfig;
             ServiceAccount = serviceAccount;
             ServiceDirectory = serviceDirectory;
             Status = status;

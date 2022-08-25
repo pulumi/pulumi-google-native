@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.Run.V1
     public static class GetService
     {
         /// <summary>
-        /// Get information about a service.
+        /// Gets information about a service.
         /// </summary>
         public static Task<GetServiceResult> InvokeAsync(GetServiceArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetServiceResult>("google-native:run/v1:getService", args ?? new GetServiceArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Get information about a service.
+        /// Gets information about a service.
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetServiceResult>("google-native:run/v1:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
@@ -64,23 +64,23 @@ namespace Pulumi.GoogleNative.Run.V1
     public sealed class GetServiceResult
     {
         /// <summary>
-        /// The API version for this call such as "serving.knative.dev/v1".
+        /// The API version for this call. It must be "serving.knative.dev/v1".
         /// </summary>
         public readonly string ApiVersion;
         /// <summary>
-        /// The kind of resource, in this case "Service".
+        /// The kind of resource. It must be "Service".
         /// </summary>
         public readonly string Kind;
         /// <summary>
-        /// Metadata associated with this Service, including name, namespace, labels, and annotations. Cloud Run (fully managed) uses the following annotation keys to configure features on a Service: * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
+        /// Metadata associated with this Service, including name, namespace, labels, and annotations. In Cloud Run, annotations with 'run.googleapis.com/' and 'autoscaling.knative.dev' are restricted, and the accepted annotations will be different depending on the resource type. The following Cloud Run-specific annotations are accepted in Service.metadata.annotations. * `run.googleapis.com/binary-authorization-breakglass` * `run.googleapis.com/binary-authorization` * `run.googleapis.com/client-name` * `run.googleapis.com/custom-audiences` * `run.googleapis.com/description` * `run.googleapis.com/gc-traffic-tags` * `run.googleapis.com/ingress` * `run.googleapis.com/ingress` sets the ingress settings for the Service. See [the ingress settings documentation](/run/docs/securing/ingress) for details on configuring ingress settings. * `run.googleapis.com/ingress-status` is output-only and contains the currently active ingress settings for the Service. `run.googleapis.com/ingress-status` may differ from `run.googleapis.com/ingress` while the system is processing a change to `run.googleapis.com/ingress` or if the system failed to process a change to `run.googleapis.com/ingress`. When the system has processed all changes successfully `run.googleapis.com/ingress-status` and `run.googleapis.com/ingress` are equal.
         /// </summary>
         public readonly Outputs.ObjectMetaResponse Metadata;
         /// <summary>
-        /// Spec holds the desired state of the Service (from the client).
+        /// Holds the desired state of the Service (from the client).
         /// </summary>
         public readonly Outputs.ServiceSpecResponse Spec;
         /// <summary>
-        /// Status communicates the observed state of the Service (from the controller).
+        /// Communicates the system-controlled state of the Service.
         /// </summary>
         public readonly Outputs.ServiceStatusResponse Status;
 

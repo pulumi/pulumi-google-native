@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
     public partial class Version : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
+        /// Serving configuration for Cloud Endpoints (https://cloud.google.com/endpoints/).Only returned in GET requests if view=FULL is set.
         /// </summary>
         [Output("apiConfig")]
         public Output<Outputs.ApiConfigHandlerResponse> ApiConfig { get; private set; } = null!;
@@ -307,7 +307,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
     public sealed class VersionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
+        /// Serving configuration for Cloud Endpoints (https://cloud.google.com/endpoints/).Only returned in GET requests if view=FULL is set.
         /// </summary>
         [Input("apiConfig")]
         public Input<Inputs.ApiConfigHandlerArgs>? ApiConfig { get; set; }

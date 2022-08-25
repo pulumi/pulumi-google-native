@@ -18,7 +18,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetAndroidAppResult:
-    def __init__(__self__, api_key_id=None, app_id=None, display_name=None, name=None, package_name=None, project=None, sha1_hashes=None, sha256_hashes=None, state=None):
+    def __init__(__self__, api_key_id=None, app_id=None, display_name=None, name=None, package_name=None, project=None, state=None):
         if api_key_id and not isinstance(api_key_id, str):
             raise TypeError("Expected argument 'api_key_id' to be a str")
         pulumi.set(__self__, "api_key_id", api_key_id)
@@ -37,12 +37,6 @@ class GetAndroidAppResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
-        if sha1_hashes and not isinstance(sha1_hashes, list):
-            raise TypeError("Expected argument 'sha1_hashes' to be a list")
-        pulumi.set(__self__, "sha1_hashes", sha1_hashes)
-        if sha256_hashes and not isinstance(sha256_hashes, list):
-            raise TypeError("Expected argument 'sha256_hashes' to be a list")
-        pulumi.set(__self__, "sha256_hashes", sha256_hashes)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -96,22 +90,6 @@ class GetAndroidAppResult:
         return pulumi.get(self, "project")
 
     @property
-    @pulumi.getter(name="sha1Hashes")
-    def sha1_hashes(self) -> Sequence[str]:
-        """
-        The SHA1 certificate hashes for the AndroidApp.
-        """
-        return pulumi.get(self, "sha1_hashes")
-
-    @property
-    @pulumi.getter(name="sha256Hashes")
-    def sha256_hashes(self) -> Sequence[str]:
-        """
-        The SHA256 certificate hashes for the AndroidApp.
-        """
-        return pulumi.get(self, "sha256_hashes")
-
-    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -132,8 +110,6 @@ class AwaitableGetAndroidAppResult(GetAndroidAppResult):
             name=self.name,
             package_name=self.package_name,
             project=self.project,
-            sha1_hashes=self.sha1_hashes,
-            sha256_hashes=self.sha256_hashes,
             state=self.state)
 
 
@@ -156,8 +132,6 @@ def get_android_app(android_app_id: Optional[str] = None,
         name=__ret__.name,
         package_name=__ret__.package_name,
         project=__ret__.project,
-        sha1_hashes=__ret__.sha1_hashes,
-        sha256_hashes=__ret__.sha256_hashes,
         state=__ret__.state)
 
 

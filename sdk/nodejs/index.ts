@@ -83,6 +83,7 @@ import * as gkehub from "./gkehub";
 import * as healthcare from "./healthcare";
 import * as iam from "./iam";
 import * as iap from "./iap";
+import * as identitytoolkit from "./identitytoolkit";
 import * as ids from "./ids";
 import * as jobs from "./jobs";
 import * as logging from "./logging";
@@ -209,6 +210,7 @@ export {
     healthcare,
     iam,
     iap,
+    identitytoolkit,
     ids,
     jobs,
     logging,

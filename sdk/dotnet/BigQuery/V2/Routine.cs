@@ -107,6 +107,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         public Output<string> RoutineType { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Spark specific options.
+        /// </summary>
+        [Output("sparkOptions")]
+        public Output<Outputs.SparkOptionsResponse> SparkOptions { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
         /// </summary>
         [Output("strictMode")]
@@ -245,6 +251,12 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// </summary>
         [Input("routineType", required: true)]
         public Input<Pulumi.GoogleNative.BigQuery.V2.RoutineRoutineType> RoutineType { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. Spark specific options.
+        /// </summary>
+        [Input("sparkOptions")]
+        public Input<Inputs.SparkOptionsArgs>? SparkOptions { get; set; }
 
         /// <summary>
         /// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.

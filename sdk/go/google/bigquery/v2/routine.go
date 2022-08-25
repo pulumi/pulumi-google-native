@@ -46,6 +46,8 @@ type Routine struct {
 	RoutineReference RoutineReferenceResponseOutput `pulumi:"routineReference"`
 	// The type of routine.
 	RoutineType pulumi.StringOutput `pulumi:"routineType"`
+	// Optional. Spark specific options.
+	SparkOptions SparkOptionsResponseOutput `pulumi:"sparkOptions"`
 	// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
 	StrictMode pulumi.BoolOutput `pulumi:"strictMode"`
 }
@@ -130,6 +132,8 @@ type routineArgs struct {
 	RoutineReference RoutineReference `pulumi:"routineReference"`
 	// The type of routine.
 	RoutineType RoutineRoutineType `pulumi:"routineType"`
+	// Optional. Spark specific options.
+	SparkOptions *SparkOptions `pulumi:"sparkOptions"`
 	// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
 	StrictMode *bool `pulumi:"strictMode"`
 }
@@ -160,6 +164,8 @@ type RoutineArgs struct {
 	RoutineReference RoutineReferenceInput
 	// The type of routine.
 	RoutineType RoutineRoutineTypeInput
+	// Optional. Spark specific options.
+	SparkOptions SparkOptionsPtrInput
 	// Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.
 	StrictMode pulumi.BoolPtrInput
 }
@@ -277,6 +283,11 @@ func (o RoutineOutput) RoutineReference() RoutineReferenceResponseOutput {
 // The type of routine.
 func (o RoutineOutput) RoutineType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Routine) pulumi.StringOutput { return v.RoutineType }).(pulumi.StringOutput)
+}
+
+// Optional. Spark specific options.
+func (o RoutineOutput) SparkOptions() SparkOptionsResponseOutput {
+	return o.ApplyT(func(v *Routine) SparkOptionsResponseOutput { return v.SparkOptions }).(SparkOptionsResponseOutput)
 }
 
 // Optional. Can be set for procedures only. If true (default), the definition body will be validated in the creation and the updates of the procedure. For procedures with an argument of ANY TYPE, the definition body validtion is not supported at creation/update time, and thus this field must be set to false explicitly.

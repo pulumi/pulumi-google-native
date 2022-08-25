@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     public sealed class ServiceSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Template holds the latest specification for the Revision to be stamped out.
+        /// Holds the latest specification for the Revision to be stamped out.
         /// </summary>
         [Input("template")]
         public Input<Inputs.RevisionTemplateArgs>? Template { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         private InputList<Inputs.TrafficTargetArgs>? _traffic;
 
         /// <summary>
-        /// Traffic specifies how to distribute traffic over a collection of Knative Revisions and Configurations.
+        /// Specifies how to distribute traffic over a collection of Knative Revisions and Configurations to the Service's main URL.
         /// </summary>
         public InputList<Inputs.TrafficTargetArgs> Traffic
         {

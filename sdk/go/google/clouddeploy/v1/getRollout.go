@@ -39,7 +39,7 @@ type LookupRolloutResult struct {
 	CreateTime string `pulumi:"createTime"`
 	// Time at which the `Rollout` finished deploying.
 	DeployEndTime string `pulumi:"deployEndTime"`
-	// The reason this deploy failed. This will always be unspecified while the deploy in progress.
+	// The reason this rollout failed. This will always be unspecified while the rollout is in progress.
 	DeployFailureCause string `pulumi:"deployFailureCause"`
 	// Time at which the `Rollout` started deploying.
 	DeployStartTime string `pulumi:"deployStartTime"`
@@ -51,7 +51,7 @@ type LookupRolloutResult struct {
 	EnqueueTime string `pulumi:"enqueueTime"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag string `pulumi:"etag"`
-	// Reason the build failed. Empty if the build succeeded.
+	// Additional information about the rollout failure, if available.
 	FailureReason string `pulumi:"failureReason"`
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
@@ -129,7 +129,7 @@ func (o LookupRolloutResultOutput) DeployEndTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRolloutResult) string { return v.DeployEndTime }).(pulumi.StringOutput)
 }
 
-// The reason this deploy failed. This will always be unspecified while the deploy in progress.
+// The reason this rollout failed. This will always be unspecified while the rollout is in progress.
 func (o LookupRolloutResultOutput) DeployFailureCause() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRolloutResult) string { return v.DeployFailureCause }).(pulumi.StringOutput)
 }
@@ -159,7 +159,7 @@ func (o LookupRolloutResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRolloutResult) string { return v.Etag }).(pulumi.StringOutput)
 }
 
-// Reason the build failed. Empty if the build succeeded.
+// Additional information about the rollout failure, if available.
 func (o LookupRolloutResultOutput) FailureReason() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRolloutResult) string { return v.FailureReason }).(pulumi.StringOutput)
 }

@@ -122,6 +122,7 @@ __all__ = [
     'NetworkEndpointGroupCloudFunctionArgs',
     'NetworkEndpointGroupCloudRunArgs',
     'NetworkEndpointGroupLbNetworkEndpointGroupArgs',
+    'NetworkEndpointGroupPscDataArgs',
     'NetworkEndpointGroupServerlessDeploymentArgs',
     'NetworkInterfaceArgs',
     'NetworkPerformanceConfigArgs',
@@ -185,6 +186,9 @@ __all__ = [
     'SecurityPolicyRuleMatcherConfigLayer4ConfigArgs',
     'SecurityPolicyRuleMatcherConfigArgs',
     'SecurityPolicyRuleMatcherArgs',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs',
+    'SecurityPolicyRulePreconfiguredWafConfigExclusionArgs',
+    'SecurityPolicyRulePreconfiguredWafConfigArgs',
     'SecurityPolicyRuleRateLimitOptionsThresholdArgs',
     'SecurityPolicyRuleRateLimitOptionsArgs',
     'SecurityPolicyRuleRedirectOptionsArgs',
@@ -2762,7 +2766,7 @@ class BindingArgs:
         Associates `members`, or principals, with a `role`.
         :param pulumi.Input[str] binding_id: This is deprecated and has no effect. Do not use.
         :param pulumi.Input['ExprArgs'] condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param pulumi.Input[str] role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         if binding_id is not None:
@@ -2802,7 +2806,7 @@ class BindingArgs:
     @pulumi.getter
     def members(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -7959,6 +7963,15 @@ class NetworkEndpointGroupLbNetworkEndpointGroupArgs:
 
 
 @pulumi.input_type
+class NetworkEndpointGroupPscDataArgs:
+    def __init__(__self__):
+        """
+        All data that is specifically relevant to only network endpoint groups of type PRIVATE_SERVICE_CONNECT.
+        """
+        pass
+
+
+@pulumi.input_type
 class NetworkEndpointGroupServerlessDeploymentArgs:
     def __init__(__self__, *,
                  platform: Optional[pulumi.Input[str]] = None,
@@ -9230,6 +9243,7 @@ class ReservationArgs:
     def __init__(__self__, *,
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 resource_policies: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  share_settings: Optional[pulumi.Input['ShareSettingsArgs']] = None,
                  specific_reservation: Optional[pulumi.Input['AllocationSpecificSKUReservationArgs']] = None,
                  specific_reservation_required: Optional[pulumi.Input[bool]] = None,
@@ -9238,6 +9252,7 @@ class ReservationArgs:
         Represents a reservation resource. A reservation ensures that capacity is held in a specific zone even if the reserved VMs are not running. For more information, read Reserving zonal resources.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when you create the resource.
         :param pulumi.Input[str] name: The name of the resource, provided by the client when initially creating the resource. The resource name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_policies: Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
         :param pulumi.Input['ShareSettingsArgs'] share_settings: Share-settings for shared-reservation
         :param pulumi.Input['AllocationSpecificSKUReservationArgs'] specific_reservation: Reservation for instances with specific machine shapes.
         :param pulumi.Input[bool] specific_reservation_required: Indicates whether the reservation can be consumed by VMs with affinity for "any" reservation. If the field is set, then only VMs that target the reservation by name can consume from this reservation.
@@ -9247,6 +9262,8 @@ class ReservationArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if resource_policies is not None:
+            pulumi.set(__self__, "resource_policies", resource_policies)
         if share_settings is not None:
             pulumi.set(__self__, "share_settings", share_settings)
         if specific_reservation is not None:
@@ -9279,6 +9296,18 @@ class ReservationArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="resourcePolicies")
+    def resource_policies(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Resource policies to be added to this reservation. The key is defined by user, and the value is resource policy url. This is to define placement policy with reservation.
+        """
+        return pulumi.get(self, "resource_policies")
+
+    @resource_policies.setter
+    def resource_policies(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_policies", value)
 
     @property
     @pulumi.getter(name="shareSettings")
@@ -12046,6 +12075,171 @@ class SecurityPolicyRuleMatcherArgs:
 
 
 @pulumi.input_type
+class SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs:
+    def __init__(__self__, *,
+                 op: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp']] = None,
+                 val: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp'] op: The match operator for the field.
+        :param pulumi.Input[str] val: The value of the field.
+        """
+        if op is not None:
+            pulumi.set(__self__, "op", op)
+        if val is not None:
+            pulumi.set(__self__, "val", val)
+
+    @property
+    @pulumi.getter
+    def op(self) -> Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp']]:
+        """
+        The match operator for the field.
+        """
+        return pulumi.get(self, "op")
+
+    @op.setter
+    def op(self, value: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsOp']]):
+        pulumi.set(self, "op", value)
+
+    @property
+    @pulumi.getter
+    def val(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the field.
+        """
+        return pulumi.get(self, "val")
+
+    @val.setter
+    def val(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "val", value)
+
+
+@pulumi.input_type
+class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs:
+    def __init__(__self__, *,
+                 request_cookies_to_exclude: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]] = None,
+                 request_headers_to_exclude: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]] = None,
+                 request_query_params_to_exclude: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]] = None,
+                 request_uris_to_exclude: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]] = None,
+                 target_rule_ids: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 target_rule_set: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]] request_cookies_to_exclude: A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]] request_headers_to_exclude: A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]] request_query_params_to_exclude: A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]] request_uris_to_exclude: A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] target_rule_ids: A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+        :param pulumi.Input[str] target_rule_set: Target WAF rule set to apply the preconfigured WAF exclusion.
+        """
+        if request_cookies_to_exclude is not None:
+            pulumi.set(__self__, "request_cookies_to_exclude", request_cookies_to_exclude)
+        if request_headers_to_exclude is not None:
+            pulumi.set(__self__, "request_headers_to_exclude", request_headers_to_exclude)
+        if request_query_params_to_exclude is not None:
+            pulumi.set(__self__, "request_query_params_to_exclude", request_query_params_to_exclude)
+        if request_uris_to_exclude is not None:
+            pulumi.set(__self__, "request_uris_to_exclude", request_uris_to_exclude)
+        if target_rule_ids is not None:
+            pulumi.set(__self__, "target_rule_ids", target_rule_ids)
+        if target_rule_set is not None:
+            pulumi.set(__self__, "target_rule_set", target_rule_set)
+
+    @property
+    @pulumi.getter(name="requestCookiesToExclude")
+    def request_cookies_to_exclude(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]:
+        """
+        A list of request cookie names whose value will be excluded from inspection during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "request_cookies_to_exclude")
+
+    @request_cookies_to_exclude.setter
+    def request_cookies_to_exclude(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]):
+        pulumi.set(self, "request_cookies_to_exclude", value)
+
+    @property
+    @pulumi.getter(name="requestHeadersToExclude")
+    def request_headers_to_exclude(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]:
+        """
+        A list of request header names whose value will be excluded from inspection during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "request_headers_to_exclude")
+
+    @request_headers_to_exclude.setter
+    def request_headers_to_exclude(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]):
+        pulumi.set(self, "request_headers_to_exclude", value)
+
+    @property
+    @pulumi.getter(name="requestQueryParamsToExclude")
+    def request_query_params_to_exclude(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]:
+        """
+        A list of request query parameter names whose value will be excluded from inspection during preconfigured WAF evaluation. Note that the parameter can be in the query string or in the POST body.
+        """
+        return pulumi.get(self, "request_query_params_to_exclude")
+
+    @request_query_params_to_exclude.setter
+    def request_query_params_to_exclude(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]):
+        pulumi.set(self, "request_query_params_to_exclude", value)
+
+    @property
+    @pulumi.getter(name="requestUrisToExclude")
+    def request_uris_to_exclude(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]:
+        """
+        A list of request URIs from the request line to be excluded from inspection during preconfigured WAF evaluation. When specifying this field, the query or fragment part should be excluded.
+        """
+        return pulumi.get(self, "request_uris_to_exclude")
+
+    @request_uris_to_exclude.setter
+    def request_uris_to_exclude(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionFieldParamsArgs']]]]):
+        pulumi.set(self, "request_uris_to_exclude", value)
+
+    @property
+    @pulumi.getter(name="targetRuleIds")
+    def target_rule_ids(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of target rule IDs under the WAF rule set to apply the preconfigured WAF exclusion. If omitted, it refers to all the rule IDs under the WAF rule set.
+        """
+        return pulumi.get(self, "target_rule_ids")
+
+    @target_rule_ids.setter
+    def target_rule_ids(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "target_rule_ids", value)
+
+    @property
+    @pulumi.getter(name="targetRuleSet")
+    def target_rule_set(self) -> Optional[pulumi.Input[str]]:
+        """
+        Target WAF rule set to apply the preconfigured WAF exclusion.
+        """
+        return pulumi.get(self, "target_rule_set")
+
+    @target_rule_set.setter
+    def target_rule_set(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "target_rule_set", value)
+
+
+@pulumi.input_type
+class SecurityPolicyRulePreconfiguredWafConfigArgs:
+    def __init__(__self__, *,
+                 exclusions: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]] exclusions: A list of exclusions to apply during preconfigured WAF evaluation.
+        """
+        if exclusions is not None:
+            pulumi.set(__self__, "exclusions", exclusions)
+
+    @property
+    @pulumi.getter
+    def exclusions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]]]:
+        """
+        A list of exclusions to apply during preconfigured WAF evaluation.
+        """
+        return pulumi.get(self, "exclusions")
+
+    @exclusions.setter
+    def exclusions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigExclusionArgs']]]]):
+        pulumi.set(self, "exclusions", value)
+
+
+@pulumi.input_type
 class SecurityPolicyRuleRateLimitOptionsThresholdArgs:
     def __init__(__self__, *,
                  count: Optional[pulumi.Input[int]] = None,
@@ -12267,6 +12461,7 @@ class SecurityPolicyRuleArgs:
                  enable_logging: Optional[pulumi.Input[bool]] = None,
                  header_action: Optional[pulumi.Input['SecurityPolicyRuleHttpHeaderActionArgs']] = None,
                  match: Optional[pulumi.Input['SecurityPolicyRuleMatcherArgs']] = None,
+                 preconfigured_waf_config: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']] = None,
                  preview: Optional[pulumi.Input[bool]] = None,
                  priority: Optional[pulumi.Input[int]] = None,
                  rate_limit_options: Optional[pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs']] = None,
@@ -12282,6 +12477,7 @@ class SecurityPolicyRuleArgs:
         :param pulumi.Input[bool] enable_logging: Denotes whether to enable logging for a particular rule. If logging is enabled, logs will be exported to the configured export destination in Stackdriver. Logs may be exported to BigQuery or Pub/Sub. Note: you cannot enable logging on "goto_next" rules. This field may only be specified when the versioned_expr is set to FIREWALL.
         :param pulumi.Input['SecurityPolicyRuleHttpHeaderActionArgs'] header_action: Optional, additional actions that are performed on headers.
         :param pulumi.Input['SecurityPolicyRuleMatcherArgs'] match: A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+        :param pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
         :param pulumi.Input[bool] preview: If set to true, the specified action is not enforced.
         :param pulumi.Input[int] priority: An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the action is "rate_based_ban" or "throttle". Cannot be specified for any other actions.
@@ -12302,6 +12498,8 @@ class SecurityPolicyRuleArgs:
             pulumi.set(__self__, "header_action", header_action)
         if match is not None:
             pulumi.set(__self__, "match", match)
+        if preconfigured_waf_config is not None:
+            pulumi.set(__self__, "preconfigured_waf_config", preconfigured_waf_config)
         if preview is not None:
             pulumi.set(__self__, "preview", preview)
         if priority is not None:
@@ -12388,6 +12586,18 @@ class SecurityPolicyRuleArgs:
     @match.setter
     def match(self, value: Optional[pulumi.Input['SecurityPolicyRuleMatcherArgs']]):
         pulumi.set(self, "match", value)
+
+    @property
+    @pulumi.getter(name="preconfiguredWafConfig")
+    def preconfigured_waf_config(self) -> Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']]:
+        """
+        Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+        """
+        return pulumi.get(self, "preconfigured_waf_config")
+
+    @preconfigured_waf_config.setter
+    def preconfigured_waf_config(self, value: Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']]):
+        pulumi.set(self, "preconfigured_waf_config", value)
 
     @property
     @pulumi.getter

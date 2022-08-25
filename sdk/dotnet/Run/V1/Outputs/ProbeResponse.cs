@@ -11,45 +11,45 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
+    /// Probe describes a health check to be performed against a container to determine whether it is alive or ready to receive traffic.
     /// </summary>
     [OutputType]
     public sealed class ProbeResponse
     {
         /// <summary>
-        /// (Optional) Not supported by Cloud Run One and only one of the following should be specified. Exec specifies the action to take. A field inlined from the Handler message.
+        /// Not supported by Cloud Run.
         /// </summary>
         public readonly Outputs.ExecActionResponse Exec;
         /// <summary>
-        /// (Optional) Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
+        /// Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
         /// </summary>
         public readonly int FailureThreshold;
         /// <summary>
-        /// (Optional) GRPCAction specifies an action involving a GRPC port. A field inlined from the Handler message.
+        /// GRPCAction specifies an action involving a GRPC port.
         /// </summary>
         public readonly Outputs.GRPCActionResponse Grpc;
         /// <summary>
-        /// (Optional) HTTPGet specifies the http request to perform. A field inlined from the Handler message.
+        /// HTTPGet specifies the http request to perform.
         /// </summary>
         public readonly Outputs.HTTPGetActionResponse HttpGet;
         /// <summary>
-        /// (Optional) Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
         public readonly int InitialDelaySeconds;
         /// <summary>
-        /// (Optional) How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
+        /// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeout_seconds.
         /// </summary>
         public readonly int PeriodSeconds;
         /// <summary>
-        /// (Optional) Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 if set.
+        /// Minimum consecutive successes for the probe to be considered successful after having failed. Must be 1 if set.
         /// </summary>
         public readonly int SuccessThreshold;
         /// <summary>
-        /// (Optional) TCPSocket specifies an action involving a TCP port. TCP hooks not yet supported A field inlined from the Handler message.
+        /// TCPSocket specifies an action involving a TCP port.
         /// </summary>
         public readonly Outputs.TCPSocketActionResponse TcpSocket;
         /// <summary>
-        /// (Optional) Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
+        /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than period_seconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
         public readonly int TimeoutSeconds;
 

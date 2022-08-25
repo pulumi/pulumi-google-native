@@ -205,6 +205,7 @@ class SslPolicy(pulumi.CustomResource):
             __props__.__dict__["enabled_features"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["warnings"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
@@ -241,6 +242,7 @@ class SslPolicy(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["profile"] = None
         __props__.__dict__["project"] = None
+        __props__.__dict__["region"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["warnings"] = None
@@ -322,6 +324,14 @@ class SslPolicy(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        URL of the region where the regional SSL policy resides. This field is not applicable to global SSL policies.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="requestId")

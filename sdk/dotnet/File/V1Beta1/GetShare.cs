@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.File.V1Beta1
     public sealed class GetShareResult
     {
         /// <summary>
-        /// File share capacity in gigabytes (GB). Cloud Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
+        /// File share capacity in gigabytes (GB). Filestore defines 1 GB as 1024^3 bytes. Must be greater than 0.
         /// </summary>
         public readonly string CapacityGb;
         /// <summary>

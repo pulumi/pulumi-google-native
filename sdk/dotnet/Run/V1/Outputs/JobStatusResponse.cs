@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class JobStatusResponse
     {
         /// <summary>
-        /// The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/
+        /// The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRunV1ConditionResponse> Conditions;
         /// <summary>

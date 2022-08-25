@@ -12,7 +12,7 @@ import (
 
 // A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
 type GooglePrivacyDlpV2Action struct {
-	// Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+	// Create a de-identified copy of the input data.
 	Deidentify *GooglePrivacyDlpV2Deidentify `pulumi:"deidentify"`
 	// Enable email notification for project owners and editors on job's completion/failure.
 	JobNotificationEmails *GooglePrivacyDlpV2JobNotificationEmails `pulumi:"jobNotificationEmails"`
@@ -41,7 +41,7 @@ type GooglePrivacyDlpV2ActionInput interface {
 
 // A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
 type GooglePrivacyDlpV2ActionArgs struct {
-	// Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+	// Create a de-identified copy of the input data.
 	Deidentify GooglePrivacyDlpV2DeidentifyPtrInput `pulumi:"deidentify"`
 	// Enable email notification for project owners and editors on job's completion/failure.
 	JobNotificationEmails GooglePrivacyDlpV2JobNotificationEmailsPtrInput `pulumi:"jobNotificationEmails"`
@@ -109,7 +109,7 @@ func (o GooglePrivacyDlpV2ActionOutput) ToGooglePrivacyDlpV2ActionOutputWithCont
 	return o
 }
 
-// Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+// Create a de-identified copy of the input data.
 func (o GooglePrivacyDlpV2ActionOutput) Deidentify() GooglePrivacyDlpV2DeidentifyPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2Action) *GooglePrivacyDlpV2Deidentify { return v.Deidentify }).(GooglePrivacyDlpV2DeidentifyPtrOutput)
 }
@@ -174,7 +174,7 @@ func (o GooglePrivacyDlpV2ActionArrayOutput) Index(i pulumi.IntInput) GooglePriv
 
 // A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
 type GooglePrivacyDlpV2ActionResponse struct {
-	// Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+	// Create a de-identified copy of the input data.
 	Deidentify GooglePrivacyDlpV2DeidentifyResponse `pulumi:"deidentify"`
 	// Enable email notification for project owners and editors on job's completion/failure.
 	JobNotificationEmails GooglePrivacyDlpV2JobNotificationEmailsResponse `pulumi:"jobNotificationEmails"`
@@ -205,7 +205,7 @@ func (o GooglePrivacyDlpV2ActionResponseOutput) ToGooglePrivacyDlpV2ActionRespon
 	return o
 }
 
-// Create a de-identified copy of the input data. Applicable for non-image data only. The de-identified copy is in the same location as the original data.
+// Create a de-identified copy of the input data.
 func (o GooglePrivacyDlpV2ActionResponseOutput) Deidentify() GooglePrivacyDlpV2DeidentifyResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ActionResponse) GooglePrivacyDlpV2DeidentifyResponse { return v.Deidentify }).(GooglePrivacyDlpV2DeidentifyResponseOutput)
 }
@@ -266,6 +266,286 @@ func (o GooglePrivacyDlpV2ActionResponseArrayOutput) Index(i pulumi.IntInput) Go
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2ActionResponse {
 		return vs[0].([]GooglePrivacyDlpV2ActionResponse)[vs[1].(int)]
 	}).(GooglePrivacyDlpV2ActionResponseOutput)
+}
+
+// Apply transformation to all findings.
+type GooglePrivacyDlpV2AllInfoTypes struct {
+}
+
+// GooglePrivacyDlpV2AllInfoTypesInput is an input type that accepts GooglePrivacyDlpV2AllInfoTypesArgs and GooglePrivacyDlpV2AllInfoTypesOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2AllInfoTypesInput` via:
+//
+//	GooglePrivacyDlpV2AllInfoTypesArgs{...}
+type GooglePrivacyDlpV2AllInfoTypesInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2AllInfoTypesOutput() GooglePrivacyDlpV2AllInfoTypesOutput
+	ToGooglePrivacyDlpV2AllInfoTypesOutputWithContext(context.Context) GooglePrivacyDlpV2AllInfoTypesOutput
+}
+
+// Apply transformation to all findings.
+type GooglePrivacyDlpV2AllInfoTypesArgs struct {
+}
+
+func (GooglePrivacyDlpV2AllInfoTypesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2AllInfoTypes)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2AllInfoTypesArgs) ToGooglePrivacyDlpV2AllInfoTypesOutput() GooglePrivacyDlpV2AllInfoTypesOutput {
+	return i.ToGooglePrivacyDlpV2AllInfoTypesOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2AllInfoTypesArgs) ToGooglePrivacyDlpV2AllInfoTypesOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllInfoTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2AllInfoTypesOutput)
+}
+
+func (i GooglePrivacyDlpV2AllInfoTypesArgs) ToGooglePrivacyDlpV2AllInfoTypesPtrOutput() GooglePrivacyDlpV2AllInfoTypesPtrOutput {
+	return i.ToGooglePrivacyDlpV2AllInfoTypesPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2AllInfoTypesArgs) ToGooglePrivacyDlpV2AllInfoTypesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllInfoTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2AllInfoTypesOutput).ToGooglePrivacyDlpV2AllInfoTypesPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2AllInfoTypesPtrInput is an input type that accepts GooglePrivacyDlpV2AllInfoTypesArgs, GooglePrivacyDlpV2AllInfoTypesPtr and GooglePrivacyDlpV2AllInfoTypesPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2AllInfoTypesPtrInput` via:
+//
+//	        GooglePrivacyDlpV2AllInfoTypesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2AllInfoTypesPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2AllInfoTypesPtrOutput() GooglePrivacyDlpV2AllInfoTypesPtrOutput
+	ToGooglePrivacyDlpV2AllInfoTypesPtrOutputWithContext(context.Context) GooglePrivacyDlpV2AllInfoTypesPtrOutput
+}
+
+type googlePrivacyDlpV2AllInfoTypesPtrType GooglePrivacyDlpV2AllInfoTypesArgs
+
+func GooglePrivacyDlpV2AllInfoTypesPtr(v *GooglePrivacyDlpV2AllInfoTypesArgs) GooglePrivacyDlpV2AllInfoTypesPtrInput {
+	return (*googlePrivacyDlpV2AllInfoTypesPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2AllInfoTypesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2AllInfoTypes)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2AllInfoTypesPtrType) ToGooglePrivacyDlpV2AllInfoTypesPtrOutput() GooglePrivacyDlpV2AllInfoTypesPtrOutput {
+	return i.ToGooglePrivacyDlpV2AllInfoTypesPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2AllInfoTypesPtrType) ToGooglePrivacyDlpV2AllInfoTypesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllInfoTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2AllInfoTypesPtrOutput)
+}
+
+// Apply transformation to all findings.
+type GooglePrivacyDlpV2AllInfoTypesOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2AllInfoTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2AllInfoTypes)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2AllInfoTypesOutput) ToGooglePrivacyDlpV2AllInfoTypesOutput() GooglePrivacyDlpV2AllInfoTypesOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllInfoTypesOutput) ToGooglePrivacyDlpV2AllInfoTypesOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllInfoTypesOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllInfoTypesOutput) ToGooglePrivacyDlpV2AllInfoTypesPtrOutput() GooglePrivacyDlpV2AllInfoTypesPtrOutput {
+	return o.ToGooglePrivacyDlpV2AllInfoTypesPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2AllInfoTypesOutput) ToGooglePrivacyDlpV2AllInfoTypesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllInfoTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2AllInfoTypes) *GooglePrivacyDlpV2AllInfoTypes {
+		return &v
+	}).(GooglePrivacyDlpV2AllInfoTypesPtrOutput)
+}
+
+type GooglePrivacyDlpV2AllInfoTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2AllInfoTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2AllInfoTypes)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2AllInfoTypesPtrOutput) ToGooglePrivacyDlpV2AllInfoTypesPtrOutput() GooglePrivacyDlpV2AllInfoTypesPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllInfoTypesPtrOutput) ToGooglePrivacyDlpV2AllInfoTypesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllInfoTypesPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllInfoTypesPtrOutput) Elem() GooglePrivacyDlpV2AllInfoTypesOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2AllInfoTypes) GooglePrivacyDlpV2AllInfoTypes {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2AllInfoTypes
+		return ret
+	}).(GooglePrivacyDlpV2AllInfoTypesOutput)
+}
+
+// Apply transformation to all findings.
+type GooglePrivacyDlpV2AllInfoTypesResponse struct {
+}
+
+// Apply transformation to all findings.
+type GooglePrivacyDlpV2AllInfoTypesResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2AllInfoTypesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2AllInfoTypesResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2AllInfoTypesResponseOutput) ToGooglePrivacyDlpV2AllInfoTypesResponseOutput() GooglePrivacyDlpV2AllInfoTypesResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllInfoTypesResponseOutput) ToGooglePrivacyDlpV2AllInfoTypesResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllInfoTypesResponseOutput {
+	return o
+}
+
+// Apply to all text.
+type GooglePrivacyDlpV2AllText struct {
+}
+
+// GooglePrivacyDlpV2AllTextInput is an input type that accepts GooglePrivacyDlpV2AllTextArgs and GooglePrivacyDlpV2AllTextOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2AllTextInput` via:
+//
+//	GooglePrivacyDlpV2AllTextArgs{...}
+type GooglePrivacyDlpV2AllTextInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2AllTextOutput() GooglePrivacyDlpV2AllTextOutput
+	ToGooglePrivacyDlpV2AllTextOutputWithContext(context.Context) GooglePrivacyDlpV2AllTextOutput
+}
+
+// Apply to all text.
+type GooglePrivacyDlpV2AllTextArgs struct {
+}
+
+func (GooglePrivacyDlpV2AllTextArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2AllText)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2AllTextArgs) ToGooglePrivacyDlpV2AllTextOutput() GooglePrivacyDlpV2AllTextOutput {
+	return i.ToGooglePrivacyDlpV2AllTextOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2AllTextArgs) ToGooglePrivacyDlpV2AllTextOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllTextOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2AllTextOutput)
+}
+
+func (i GooglePrivacyDlpV2AllTextArgs) ToGooglePrivacyDlpV2AllTextPtrOutput() GooglePrivacyDlpV2AllTextPtrOutput {
+	return i.ToGooglePrivacyDlpV2AllTextPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2AllTextArgs) ToGooglePrivacyDlpV2AllTextPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2AllTextOutput).ToGooglePrivacyDlpV2AllTextPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2AllTextPtrInput is an input type that accepts GooglePrivacyDlpV2AllTextArgs, GooglePrivacyDlpV2AllTextPtr and GooglePrivacyDlpV2AllTextPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2AllTextPtrInput` via:
+//
+//	        GooglePrivacyDlpV2AllTextArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2AllTextPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2AllTextPtrOutput() GooglePrivacyDlpV2AllTextPtrOutput
+	ToGooglePrivacyDlpV2AllTextPtrOutputWithContext(context.Context) GooglePrivacyDlpV2AllTextPtrOutput
+}
+
+type googlePrivacyDlpV2AllTextPtrType GooglePrivacyDlpV2AllTextArgs
+
+func GooglePrivacyDlpV2AllTextPtr(v *GooglePrivacyDlpV2AllTextArgs) GooglePrivacyDlpV2AllTextPtrInput {
+	return (*googlePrivacyDlpV2AllTextPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2AllTextPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2AllText)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2AllTextPtrType) ToGooglePrivacyDlpV2AllTextPtrOutput() GooglePrivacyDlpV2AllTextPtrOutput {
+	return i.ToGooglePrivacyDlpV2AllTextPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2AllTextPtrType) ToGooglePrivacyDlpV2AllTextPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllTextPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2AllTextPtrOutput)
+}
+
+// Apply to all text.
+type GooglePrivacyDlpV2AllTextOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2AllTextOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2AllText)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2AllTextOutput) ToGooglePrivacyDlpV2AllTextOutput() GooglePrivacyDlpV2AllTextOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllTextOutput) ToGooglePrivacyDlpV2AllTextOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllTextOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllTextOutput) ToGooglePrivacyDlpV2AllTextPtrOutput() GooglePrivacyDlpV2AllTextPtrOutput {
+	return o.ToGooglePrivacyDlpV2AllTextPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2AllTextOutput) ToGooglePrivacyDlpV2AllTextPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllTextPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2AllText) *GooglePrivacyDlpV2AllText {
+		return &v
+	}).(GooglePrivacyDlpV2AllTextPtrOutput)
+}
+
+type GooglePrivacyDlpV2AllTextPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2AllTextPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2AllText)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2AllTextPtrOutput) ToGooglePrivacyDlpV2AllTextPtrOutput() GooglePrivacyDlpV2AllTextPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllTextPtrOutput) ToGooglePrivacyDlpV2AllTextPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllTextPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllTextPtrOutput) Elem() GooglePrivacyDlpV2AllTextOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2AllText) GooglePrivacyDlpV2AllText {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2AllText
+		return ret
+	}).(GooglePrivacyDlpV2AllTextOutput)
+}
+
+// Apply to all text.
+type GooglePrivacyDlpV2AllTextResponse struct {
+}
+
+// Apply to all text.
+type GooglePrivacyDlpV2AllTextResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2AllTextResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2AllTextResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2AllTextResponseOutput) ToGooglePrivacyDlpV2AllTextResponseOutput() GooglePrivacyDlpV2AllTextResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2AllTextResponseOutput) ToGooglePrivacyDlpV2AllTextResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2AllTextResponseOutput {
+	return o
 }
 
 // Result of a risk analysis operation request.
@@ -3168,6 +3448,224 @@ func (o GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput) IncludeRegex()
 	return o.ApplyT(func(v GooglePrivacyDlpV2CloudStorageRegexFileSetResponse) []string { return v.IncludeRegex }).(pulumi.StringArrayOutput)
 }
 
+// Represents a color in the RGB color space.
+type GooglePrivacyDlpV2Color struct {
+	// The amount of blue in the color as a value in the interval [0, 1].
+	Blue *float64 `pulumi:"blue"`
+	// The amount of green in the color as a value in the interval [0, 1].
+	Green *float64 `pulumi:"green"`
+	// The amount of red in the color as a value in the interval [0, 1].
+	Red *float64 `pulumi:"red"`
+}
+
+// GooglePrivacyDlpV2ColorInput is an input type that accepts GooglePrivacyDlpV2ColorArgs and GooglePrivacyDlpV2ColorOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2ColorInput` via:
+//
+//	GooglePrivacyDlpV2ColorArgs{...}
+type GooglePrivacyDlpV2ColorInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2ColorOutput() GooglePrivacyDlpV2ColorOutput
+	ToGooglePrivacyDlpV2ColorOutputWithContext(context.Context) GooglePrivacyDlpV2ColorOutput
+}
+
+// Represents a color in the RGB color space.
+type GooglePrivacyDlpV2ColorArgs struct {
+	// The amount of blue in the color as a value in the interval [0, 1].
+	Blue pulumi.Float64PtrInput `pulumi:"blue"`
+	// The amount of green in the color as a value in the interval [0, 1].
+	Green pulumi.Float64PtrInput `pulumi:"green"`
+	// The amount of red in the color as a value in the interval [0, 1].
+	Red pulumi.Float64PtrInput `pulumi:"red"`
+}
+
+func (GooglePrivacyDlpV2ColorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2Color)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2ColorArgs) ToGooglePrivacyDlpV2ColorOutput() GooglePrivacyDlpV2ColorOutput {
+	return i.ToGooglePrivacyDlpV2ColorOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2ColorArgs) ToGooglePrivacyDlpV2ColorOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ColorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ColorOutput)
+}
+
+func (i GooglePrivacyDlpV2ColorArgs) ToGooglePrivacyDlpV2ColorPtrOutput() GooglePrivacyDlpV2ColorPtrOutput {
+	return i.ToGooglePrivacyDlpV2ColorPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2ColorArgs) ToGooglePrivacyDlpV2ColorPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ColorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ColorOutput).ToGooglePrivacyDlpV2ColorPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2ColorPtrInput is an input type that accepts GooglePrivacyDlpV2ColorArgs, GooglePrivacyDlpV2ColorPtr and GooglePrivacyDlpV2ColorPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2ColorPtrInput` via:
+//
+//	        GooglePrivacyDlpV2ColorArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2ColorPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2ColorPtrOutput() GooglePrivacyDlpV2ColorPtrOutput
+	ToGooglePrivacyDlpV2ColorPtrOutputWithContext(context.Context) GooglePrivacyDlpV2ColorPtrOutput
+}
+
+type googlePrivacyDlpV2ColorPtrType GooglePrivacyDlpV2ColorArgs
+
+func GooglePrivacyDlpV2ColorPtr(v *GooglePrivacyDlpV2ColorArgs) GooglePrivacyDlpV2ColorPtrInput {
+	return (*googlePrivacyDlpV2ColorPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2ColorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2Color)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2ColorPtrType) ToGooglePrivacyDlpV2ColorPtrOutput() GooglePrivacyDlpV2ColorPtrOutput {
+	return i.ToGooglePrivacyDlpV2ColorPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2ColorPtrType) ToGooglePrivacyDlpV2ColorPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ColorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ColorPtrOutput)
+}
+
+// Represents a color in the RGB color space.
+type GooglePrivacyDlpV2ColorOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ColorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2Color)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ColorOutput) ToGooglePrivacyDlpV2ColorOutput() GooglePrivacyDlpV2ColorOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ColorOutput) ToGooglePrivacyDlpV2ColorOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ColorOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ColorOutput) ToGooglePrivacyDlpV2ColorPtrOutput() GooglePrivacyDlpV2ColorPtrOutput {
+	return o.ToGooglePrivacyDlpV2ColorPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2ColorOutput) ToGooglePrivacyDlpV2ColorPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ColorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2Color) *GooglePrivacyDlpV2Color {
+		return &v
+	}).(GooglePrivacyDlpV2ColorPtrOutput)
+}
+
+// The amount of blue in the color as a value in the interval [0, 1].
+func (o GooglePrivacyDlpV2ColorOutput) Blue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2Color) *float64 { return v.Blue }).(pulumi.Float64PtrOutput)
+}
+
+// The amount of green in the color as a value in the interval [0, 1].
+func (o GooglePrivacyDlpV2ColorOutput) Green() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2Color) *float64 { return v.Green }).(pulumi.Float64PtrOutput)
+}
+
+// The amount of red in the color as a value in the interval [0, 1].
+func (o GooglePrivacyDlpV2ColorOutput) Red() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2Color) *float64 { return v.Red }).(pulumi.Float64PtrOutput)
+}
+
+type GooglePrivacyDlpV2ColorPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ColorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2Color)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ColorPtrOutput) ToGooglePrivacyDlpV2ColorPtrOutput() GooglePrivacyDlpV2ColorPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ColorPtrOutput) ToGooglePrivacyDlpV2ColorPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ColorPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ColorPtrOutput) Elem() GooglePrivacyDlpV2ColorOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Color) GooglePrivacyDlpV2Color {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2Color
+		return ret
+	}).(GooglePrivacyDlpV2ColorOutput)
+}
+
+// The amount of blue in the color as a value in the interval [0, 1].
+func (o GooglePrivacyDlpV2ColorPtrOutput) Blue() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Color) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Blue
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The amount of green in the color as a value in the interval [0, 1].
+func (o GooglePrivacyDlpV2ColorPtrOutput) Green() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Color) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Green
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The amount of red in the color as a value in the interval [0, 1].
+func (o GooglePrivacyDlpV2ColorPtrOutput) Red() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2Color) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Red
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Represents a color in the RGB color space.
+type GooglePrivacyDlpV2ColorResponse struct {
+	// The amount of blue in the color as a value in the interval [0, 1].
+	Blue float64 `pulumi:"blue"`
+	// The amount of green in the color as a value in the interval [0, 1].
+	Green float64 `pulumi:"green"`
+	// The amount of red in the color as a value in the interval [0, 1].
+	Red float64 `pulumi:"red"`
+}
+
+// Represents a color in the RGB color space.
+type GooglePrivacyDlpV2ColorResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ColorResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ColorResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ColorResponseOutput) ToGooglePrivacyDlpV2ColorResponseOutput() GooglePrivacyDlpV2ColorResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ColorResponseOutput) ToGooglePrivacyDlpV2ColorResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ColorResponseOutput {
+	return o
+}
+
+// The amount of blue in the color as a value in the interval [0, 1].
+func (o GooglePrivacyDlpV2ColorResponseOutput) Blue() pulumi.Float64Output {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ColorResponse) float64 { return v.Blue }).(pulumi.Float64Output)
+}
+
+// The amount of green in the color as a value in the interval [0, 1].
+func (o GooglePrivacyDlpV2ColorResponseOutput) Green() pulumi.Float64Output {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ColorResponse) float64 { return v.Green }).(pulumi.Float64Output)
+}
+
+// The amount of red in the color as a value in the interval [0, 1].
+func (o GooglePrivacyDlpV2ColorResponseOutput) Red() pulumi.Float64Output {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ColorResponse) float64 { return v.Red }).(pulumi.Float64Output)
+}
+
 // The field type of `value` and `field` do not need to match to be considered equal, but not all comparisons are possible. EQUAL_TO and NOT_EQUAL_TO attempt to compare even with incompatible types, but all other comparisons are invalid with incompatible types. A `value` of type: - `string` can be compared against all other types - `boolean` can only be compared against other booleans - `integer` can be compared against doubles or a string if the string value can be parsed as an integer. - `double` can be compared against integers or a string if the string can be parsed as a double. - `Timestamp` can be compared against strings in RFC 3339 date string format. - `TimeOfDay` can be compared against timestamps and strings in the format of 'HH:mm:ss'. If we fail to compare do to type mismatch, a warning will be given and the condition will evaluate to false.
 type GooglePrivacyDlpV2Condition struct {
 	// Field within the record this condition is evaluated against.
@@ -5150,9 +5648,9 @@ func (o GooglePrivacyDlpV2DateShiftConfigResponseOutput) UpperBoundDays() pulumi
 	return o.ApplyT(func(v GooglePrivacyDlpV2DateShiftConfigResponse) int { return v.UpperBoundDays }).(pulumi.IntOutput)
 }
 
-// Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+// Create a de-identified copy of the requested table or files. A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
 type GooglePrivacyDlpV2Deidentify struct {
-	// User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+	// User settable Cloud Storage bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
 	CloudStorageOutput string `pulumi:"cloudStorageOutput"`
 	// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
 	FileTypesToTransform []GooglePrivacyDlpV2DeidentifyFileTypesToTransformItem `pulumi:"fileTypesToTransform"`
@@ -5173,9 +5671,9 @@ type GooglePrivacyDlpV2DeidentifyInput interface {
 	ToGooglePrivacyDlpV2DeidentifyOutputWithContext(context.Context) GooglePrivacyDlpV2DeidentifyOutput
 }
 
-// Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+// Create a de-identified copy of the requested table or files. A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
 type GooglePrivacyDlpV2DeidentifyArgs struct {
-	// User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+	// User settable Cloud Storage bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
 	CloudStorageOutput pulumi.StringInput `pulumi:"cloudStorageOutput"`
 	// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
 	FileTypesToTransform GooglePrivacyDlpV2DeidentifyFileTypesToTransformItemArrayInput `pulumi:"fileTypesToTransform"`
@@ -5238,7 +5736,7 @@ func (i *googlePrivacyDlpV2DeidentifyPtrType) ToGooglePrivacyDlpV2DeidentifyPtrO
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2DeidentifyPtrOutput)
 }
 
-// Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+// Create a de-identified copy of the requested table or files. A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
 type GooglePrivacyDlpV2DeidentifyOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2DeidentifyOutput) ElementType() reflect.Type {
@@ -5263,7 +5761,7 @@ func (o GooglePrivacyDlpV2DeidentifyOutput) ToGooglePrivacyDlpV2DeidentifyPtrOut
 	}).(GooglePrivacyDlpV2DeidentifyPtrOutput)
 }
 
-// User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+// User settable Cloud Storage bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
 func (o GooglePrivacyDlpV2DeidentifyOutput) CloudStorageOutput() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2Deidentify) string { return v.CloudStorageOutput }).(pulumi.StringOutput)
 }
@@ -5313,7 +5811,7 @@ func (o GooglePrivacyDlpV2DeidentifyPtrOutput) Elem() GooglePrivacyDlpV2Deidenti
 	}).(GooglePrivacyDlpV2DeidentifyOutput)
 }
 
-// User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+// User settable Cloud Storage bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
 func (o GooglePrivacyDlpV2DeidentifyPtrOutput) CloudStorageOutput() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2Deidentify) *string {
 		if v == nil {
@@ -5355,6 +5853,8 @@ func (o GooglePrivacyDlpV2DeidentifyPtrOutput) TransformationDetailsStorageConfi
 
 // The configuration that controls how the data will change.
 type GooglePrivacyDlpV2DeidentifyConfig struct {
+	// Treat the dataset as an image and redact.
+	ImageTransformations *GooglePrivacyDlpV2ImageTransformations `pulumi:"imageTransformations"`
 	// Treat the dataset as free-form text and apply the same free text transformation everywhere.
 	InfoTypeTransformations *GooglePrivacyDlpV2InfoTypeTransformations `pulumi:"infoTypeTransformations"`
 	// Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
@@ -5376,6 +5876,8 @@ type GooglePrivacyDlpV2DeidentifyConfigInput interface {
 
 // The configuration that controls how the data will change.
 type GooglePrivacyDlpV2DeidentifyConfigArgs struct {
+	// Treat the dataset as an image and redact.
+	ImageTransformations GooglePrivacyDlpV2ImageTransformationsPtrInput `pulumi:"imageTransformations"`
 	// Treat the dataset as free-form text and apply the same free text transformation everywhere.
 	InfoTypeTransformations GooglePrivacyDlpV2InfoTypeTransformationsPtrInput `pulumi:"infoTypeTransformations"`
 	// Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
@@ -5462,6 +5964,13 @@ func (o GooglePrivacyDlpV2DeidentifyConfigOutput) ToGooglePrivacyDlpV2Deidentify
 	}).(GooglePrivacyDlpV2DeidentifyConfigPtrOutput)
 }
 
+// Treat the dataset as an image and redact.
+func (o GooglePrivacyDlpV2DeidentifyConfigOutput) ImageTransformations() GooglePrivacyDlpV2ImageTransformationsPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyConfig) *GooglePrivacyDlpV2ImageTransformations {
+		return v.ImageTransformations
+	}).(GooglePrivacyDlpV2ImageTransformationsPtrOutput)
+}
+
 // Treat the dataset as free-form text and apply the same free text transformation everywhere.
 func (o GooglePrivacyDlpV2DeidentifyConfigOutput) InfoTypeTransformations() GooglePrivacyDlpV2InfoTypeTransformationsPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyConfig) *GooglePrivacyDlpV2InfoTypeTransformations {
@@ -5507,6 +6016,16 @@ func (o GooglePrivacyDlpV2DeidentifyConfigPtrOutput) Elem() GooglePrivacyDlpV2De
 	}).(GooglePrivacyDlpV2DeidentifyConfigOutput)
 }
 
+// Treat the dataset as an image and redact.
+func (o GooglePrivacyDlpV2DeidentifyConfigPtrOutput) ImageTransformations() GooglePrivacyDlpV2ImageTransformationsPtrOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyConfig) *GooglePrivacyDlpV2ImageTransformations {
+		if v == nil {
+			return nil
+		}
+		return v.ImageTransformations
+	}).(GooglePrivacyDlpV2ImageTransformationsPtrOutput)
+}
+
 // Treat the dataset as free-form text and apply the same free text transformation everywhere.
 func (o GooglePrivacyDlpV2DeidentifyConfigPtrOutput) InfoTypeTransformations() GooglePrivacyDlpV2InfoTypeTransformationsPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2DeidentifyConfig) *GooglePrivacyDlpV2InfoTypeTransformations {
@@ -5539,6 +6058,8 @@ func (o GooglePrivacyDlpV2DeidentifyConfigPtrOutput) TransformationErrorHandling
 
 // The configuration that controls how the data will change.
 type GooglePrivacyDlpV2DeidentifyConfigResponse struct {
+	// Treat the dataset as an image and redact.
+	ImageTransformations GooglePrivacyDlpV2ImageTransformationsResponse `pulumi:"imageTransformations"`
 	// Treat the dataset as free-form text and apply the same free text transformation everywhere.
 	InfoTypeTransformations GooglePrivacyDlpV2InfoTypeTransformationsResponse `pulumi:"infoTypeTransformations"`
 	// Treat the dataset as structured. Transformations can be applied to specific locations within structured datasets, such as transforming a column within a table.
@@ -5562,6 +6083,13 @@ func (o GooglePrivacyDlpV2DeidentifyConfigResponseOutput) ToGooglePrivacyDlpV2De
 	return o
 }
 
+// Treat the dataset as an image and redact.
+func (o GooglePrivacyDlpV2DeidentifyConfigResponseOutput) ImageTransformations() GooglePrivacyDlpV2ImageTransformationsResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyConfigResponse) GooglePrivacyDlpV2ImageTransformationsResponse {
+		return v.ImageTransformations
+	}).(GooglePrivacyDlpV2ImageTransformationsResponseOutput)
+}
+
 // Treat the dataset as free-form text and apply the same free text transformation everywhere.
 func (o GooglePrivacyDlpV2DeidentifyConfigResponseOutput) InfoTypeTransformations() GooglePrivacyDlpV2InfoTypeTransformationsResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyConfigResponse) GooglePrivacyDlpV2InfoTypeTransformationsResponse {
@@ -5583,9 +6111,9 @@ func (o GooglePrivacyDlpV2DeidentifyConfigResponseOutput) TransformationErrorHan
 	}).(GooglePrivacyDlpV2TransformationErrorHandlingResponseOutput)
 }
 
-// Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+// Create a de-identified copy of the requested table or files. A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
 type GooglePrivacyDlpV2DeidentifyResponse struct {
-	// User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+	// User settable Cloud Storage bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
 	CloudStorageOutput string `pulumi:"cloudStorageOutput"`
 	// List of user-specified file type groups to transform. If specified, only the files with these filetypes will be transformed. If empty, all supported files will be transformed. Supported types may be automatically added over time. If a file type is set in this field that isn't supported by the Deidentify action then the job will fail and will not be successfully created/started. Currently the only filetypes supported are: IMAGES, TEXT_FILES, CSV, TSV.
 	FileTypesToTransform []string `pulumi:"fileTypesToTransform"`
@@ -5595,7 +6123,7 @@ type GooglePrivacyDlpV2DeidentifyResponse struct {
 	TransformationDetailsStorageConfig GooglePrivacyDlpV2TransformationDetailsStorageConfigResponse `pulumi:"transformationDetailsStorageConfig"`
 }
 
-// Create a de-identified copy of the requested table or files. . A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
+// Create a de-identified copy of the requested table or files. A TransformationDetail will be created for each transformation. If any rows in BigQuery are skipped during de-identification (transformation errors or row size exceeds BigQuery insert API limits) they are placed in the failure output table. If the original row exceeds the BigQuery insert API limit it will be truncated when written to the failure output table. The failure output table can be set in the action.deidentify.output.big_query_output.deidentified_failure_output_table field, if no table is set, a table will be automatically created in the same project and dataset as the original table. Compatible with: Inspect
 type GooglePrivacyDlpV2DeidentifyResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2DeidentifyResponseOutput) ElementType() reflect.Type {
@@ -5610,7 +6138,7 @@ func (o GooglePrivacyDlpV2DeidentifyResponseOutput) ToGooglePrivacyDlpV2Deidenti
 	return o
 }
 
-// User settable GCS bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output GCS bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
+// User settable Cloud Storage bucket and folders to store de-identified files. This field must be set for cloud storage deidentification. The output Cloud Storage bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket
 func (o GooglePrivacyDlpV2DeidentifyResponseOutput) CloudStorageOutput() pulumi.StringOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2DeidentifyResponse) string { return v.CloudStorageOutput }).(pulumi.StringOutput)
 }
@@ -8783,6 +9311,374 @@ func (o GooglePrivacyDlpV2HybridOptionsResponseOutput) TableOptions() GooglePriv
 	}).(GooglePrivacyDlpV2TableOptionsResponseOutput)
 }
 
+// Configuration for determining how redaction of images should occur.
+type GooglePrivacyDlpV2ImageTransformation struct {
+	// Apply transformation to all findings not specified in other ImageTransformation's selected_info_types. Only one instance is allowed within the ImageTransformations message.
+	AllInfoTypes *GooglePrivacyDlpV2AllInfoTypes `pulumi:"allInfoTypes"`
+	// Apply transformation to all text that doesn't match an infoType. Only one instance is allowed within the ImageTransformations message.
+	AllText *GooglePrivacyDlpV2AllText `pulumi:"allText"`
+	// The color to use when redacting content from an image. If not specified, the default is black.
+	RedactionColor *GooglePrivacyDlpV2Color `pulumi:"redactionColor"`
+	// Apply transformation to the selected info_types.
+	SelectedInfoTypes *GooglePrivacyDlpV2SelectedInfoTypes `pulumi:"selectedInfoTypes"`
+}
+
+// GooglePrivacyDlpV2ImageTransformationInput is an input type that accepts GooglePrivacyDlpV2ImageTransformationArgs and GooglePrivacyDlpV2ImageTransformationOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2ImageTransformationInput` via:
+//
+//	GooglePrivacyDlpV2ImageTransformationArgs{...}
+type GooglePrivacyDlpV2ImageTransformationInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2ImageTransformationOutput() GooglePrivacyDlpV2ImageTransformationOutput
+	ToGooglePrivacyDlpV2ImageTransformationOutputWithContext(context.Context) GooglePrivacyDlpV2ImageTransformationOutput
+}
+
+// Configuration for determining how redaction of images should occur.
+type GooglePrivacyDlpV2ImageTransformationArgs struct {
+	// Apply transformation to all findings not specified in other ImageTransformation's selected_info_types. Only one instance is allowed within the ImageTransformations message.
+	AllInfoTypes GooglePrivacyDlpV2AllInfoTypesPtrInput `pulumi:"allInfoTypes"`
+	// Apply transformation to all text that doesn't match an infoType. Only one instance is allowed within the ImageTransformations message.
+	AllText GooglePrivacyDlpV2AllTextPtrInput `pulumi:"allText"`
+	// The color to use when redacting content from an image. If not specified, the default is black.
+	RedactionColor GooglePrivacyDlpV2ColorPtrInput `pulumi:"redactionColor"`
+	// Apply transformation to the selected info_types.
+	SelectedInfoTypes GooglePrivacyDlpV2SelectedInfoTypesPtrInput `pulumi:"selectedInfoTypes"`
+}
+
+func (GooglePrivacyDlpV2ImageTransformationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ImageTransformation)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2ImageTransformationArgs) ToGooglePrivacyDlpV2ImageTransformationOutput() GooglePrivacyDlpV2ImageTransformationOutput {
+	return i.ToGooglePrivacyDlpV2ImageTransformationOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2ImageTransformationArgs) ToGooglePrivacyDlpV2ImageTransformationOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ImageTransformationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ImageTransformationOutput)
+}
+
+// GooglePrivacyDlpV2ImageTransformationArrayInput is an input type that accepts GooglePrivacyDlpV2ImageTransformationArray and GooglePrivacyDlpV2ImageTransformationArrayOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2ImageTransformationArrayInput` via:
+//
+//	GooglePrivacyDlpV2ImageTransformationArray{ GooglePrivacyDlpV2ImageTransformationArgs{...} }
+type GooglePrivacyDlpV2ImageTransformationArrayInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2ImageTransformationArrayOutput() GooglePrivacyDlpV2ImageTransformationArrayOutput
+	ToGooglePrivacyDlpV2ImageTransformationArrayOutputWithContext(context.Context) GooglePrivacyDlpV2ImageTransformationArrayOutput
+}
+
+type GooglePrivacyDlpV2ImageTransformationArray []GooglePrivacyDlpV2ImageTransformationInput
+
+func (GooglePrivacyDlpV2ImageTransformationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2ImageTransformation)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2ImageTransformationArray) ToGooglePrivacyDlpV2ImageTransformationArrayOutput() GooglePrivacyDlpV2ImageTransformationArrayOutput {
+	return i.ToGooglePrivacyDlpV2ImageTransformationArrayOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2ImageTransformationArray) ToGooglePrivacyDlpV2ImageTransformationArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ImageTransformationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ImageTransformationArrayOutput)
+}
+
+// Configuration for determining how redaction of images should occur.
+type GooglePrivacyDlpV2ImageTransformationOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ImageTransformationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ImageTransformation)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationOutput) ToGooglePrivacyDlpV2ImageTransformationOutput() GooglePrivacyDlpV2ImageTransformationOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationOutput) ToGooglePrivacyDlpV2ImageTransformationOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ImageTransformationOutput {
+	return o
+}
+
+// Apply transformation to all findings not specified in other ImageTransformation's selected_info_types. Only one instance is allowed within the ImageTransformations message.
+func (o GooglePrivacyDlpV2ImageTransformationOutput) AllInfoTypes() GooglePrivacyDlpV2AllInfoTypesPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ImageTransformation) *GooglePrivacyDlpV2AllInfoTypes { return v.AllInfoTypes }).(GooglePrivacyDlpV2AllInfoTypesPtrOutput)
+}
+
+// Apply transformation to all text that doesn't match an infoType. Only one instance is allowed within the ImageTransformations message.
+func (o GooglePrivacyDlpV2ImageTransformationOutput) AllText() GooglePrivacyDlpV2AllTextPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ImageTransformation) *GooglePrivacyDlpV2AllText { return v.AllText }).(GooglePrivacyDlpV2AllTextPtrOutput)
+}
+
+// The color to use when redacting content from an image. If not specified, the default is black.
+func (o GooglePrivacyDlpV2ImageTransformationOutput) RedactionColor() GooglePrivacyDlpV2ColorPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ImageTransformation) *GooglePrivacyDlpV2Color { return v.RedactionColor }).(GooglePrivacyDlpV2ColorPtrOutput)
+}
+
+// Apply transformation to the selected info_types.
+func (o GooglePrivacyDlpV2ImageTransformationOutput) SelectedInfoTypes() GooglePrivacyDlpV2SelectedInfoTypesPtrOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ImageTransformation) *GooglePrivacyDlpV2SelectedInfoTypes {
+		return v.SelectedInfoTypes
+	}).(GooglePrivacyDlpV2SelectedInfoTypesPtrOutput)
+}
+
+type GooglePrivacyDlpV2ImageTransformationArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ImageTransformationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2ImageTransformation)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationArrayOutput) ToGooglePrivacyDlpV2ImageTransformationArrayOutput() GooglePrivacyDlpV2ImageTransformationArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationArrayOutput) ToGooglePrivacyDlpV2ImageTransformationArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ImageTransformationArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2ImageTransformationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2ImageTransformation {
+		return vs[0].([]GooglePrivacyDlpV2ImageTransformation)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2ImageTransformationOutput)
+}
+
+// Configuration for determining how redaction of images should occur.
+type GooglePrivacyDlpV2ImageTransformationResponse struct {
+	// Apply transformation to all findings not specified in other ImageTransformation's selected_info_types. Only one instance is allowed within the ImageTransformations message.
+	AllInfoTypes GooglePrivacyDlpV2AllInfoTypesResponse `pulumi:"allInfoTypes"`
+	// Apply transformation to all text that doesn't match an infoType. Only one instance is allowed within the ImageTransformations message.
+	AllText GooglePrivacyDlpV2AllTextResponse `pulumi:"allText"`
+	// The color to use when redacting content from an image. If not specified, the default is black.
+	RedactionColor GooglePrivacyDlpV2ColorResponse `pulumi:"redactionColor"`
+	// Apply transformation to the selected info_types.
+	SelectedInfoTypes GooglePrivacyDlpV2SelectedInfoTypesResponse `pulumi:"selectedInfoTypes"`
+}
+
+// Configuration for determining how redaction of images should occur.
+type GooglePrivacyDlpV2ImageTransformationResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ImageTransformationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ImageTransformationResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationResponseOutput) ToGooglePrivacyDlpV2ImageTransformationResponseOutput() GooglePrivacyDlpV2ImageTransformationResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationResponseOutput) ToGooglePrivacyDlpV2ImageTransformationResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ImageTransformationResponseOutput {
+	return o
+}
+
+// Apply transformation to all findings not specified in other ImageTransformation's selected_info_types. Only one instance is allowed within the ImageTransformations message.
+func (o GooglePrivacyDlpV2ImageTransformationResponseOutput) AllInfoTypes() GooglePrivacyDlpV2AllInfoTypesResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ImageTransformationResponse) GooglePrivacyDlpV2AllInfoTypesResponse {
+		return v.AllInfoTypes
+	}).(GooglePrivacyDlpV2AllInfoTypesResponseOutput)
+}
+
+// Apply transformation to all text that doesn't match an infoType. Only one instance is allowed within the ImageTransformations message.
+func (o GooglePrivacyDlpV2ImageTransformationResponseOutput) AllText() GooglePrivacyDlpV2AllTextResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ImageTransformationResponse) GooglePrivacyDlpV2AllTextResponse {
+		return v.AllText
+	}).(GooglePrivacyDlpV2AllTextResponseOutput)
+}
+
+// The color to use when redacting content from an image. If not specified, the default is black.
+func (o GooglePrivacyDlpV2ImageTransformationResponseOutput) RedactionColor() GooglePrivacyDlpV2ColorResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ImageTransformationResponse) GooglePrivacyDlpV2ColorResponse {
+		return v.RedactionColor
+	}).(GooglePrivacyDlpV2ColorResponseOutput)
+}
+
+// Apply transformation to the selected info_types.
+func (o GooglePrivacyDlpV2ImageTransformationResponseOutput) SelectedInfoTypes() GooglePrivacyDlpV2SelectedInfoTypesResponseOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ImageTransformationResponse) GooglePrivacyDlpV2SelectedInfoTypesResponse {
+		return v.SelectedInfoTypes
+	}).(GooglePrivacyDlpV2SelectedInfoTypesResponseOutput)
+}
+
+type GooglePrivacyDlpV2ImageTransformationResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ImageTransformationResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GooglePrivacyDlpV2ImageTransformationResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationResponseArrayOutput) ToGooglePrivacyDlpV2ImageTransformationResponseArrayOutput() GooglePrivacyDlpV2ImageTransformationResponseArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationResponseArrayOutput) ToGooglePrivacyDlpV2ImageTransformationResponseArrayOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ImageTransformationResponseArrayOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationResponseArrayOutput) Index(i pulumi.IntInput) GooglePrivacyDlpV2ImageTransformationResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GooglePrivacyDlpV2ImageTransformationResponse {
+		return vs[0].([]GooglePrivacyDlpV2ImageTransformationResponse)[vs[1].(int)]
+	}).(GooglePrivacyDlpV2ImageTransformationResponseOutput)
+}
+
+// A type of transformation that is applied over images.
+type GooglePrivacyDlpV2ImageTransformations struct {
+	Transforms []GooglePrivacyDlpV2ImageTransformation `pulumi:"transforms"`
+}
+
+// GooglePrivacyDlpV2ImageTransformationsInput is an input type that accepts GooglePrivacyDlpV2ImageTransformationsArgs and GooglePrivacyDlpV2ImageTransformationsOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2ImageTransformationsInput` via:
+//
+//	GooglePrivacyDlpV2ImageTransformationsArgs{...}
+type GooglePrivacyDlpV2ImageTransformationsInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2ImageTransformationsOutput() GooglePrivacyDlpV2ImageTransformationsOutput
+	ToGooglePrivacyDlpV2ImageTransformationsOutputWithContext(context.Context) GooglePrivacyDlpV2ImageTransformationsOutput
+}
+
+// A type of transformation that is applied over images.
+type GooglePrivacyDlpV2ImageTransformationsArgs struct {
+	Transforms GooglePrivacyDlpV2ImageTransformationArrayInput `pulumi:"transforms"`
+}
+
+func (GooglePrivacyDlpV2ImageTransformationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ImageTransformations)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2ImageTransformationsArgs) ToGooglePrivacyDlpV2ImageTransformationsOutput() GooglePrivacyDlpV2ImageTransformationsOutput {
+	return i.ToGooglePrivacyDlpV2ImageTransformationsOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2ImageTransformationsArgs) ToGooglePrivacyDlpV2ImageTransformationsOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ImageTransformationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ImageTransformationsOutput)
+}
+
+func (i GooglePrivacyDlpV2ImageTransformationsArgs) ToGooglePrivacyDlpV2ImageTransformationsPtrOutput() GooglePrivacyDlpV2ImageTransformationsPtrOutput {
+	return i.ToGooglePrivacyDlpV2ImageTransformationsPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2ImageTransformationsArgs) ToGooglePrivacyDlpV2ImageTransformationsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ImageTransformationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ImageTransformationsOutput).ToGooglePrivacyDlpV2ImageTransformationsPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2ImageTransformationsPtrInput is an input type that accepts GooglePrivacyDlpV2ImageTransformationsArgs, GooglePrivacyDlpV2ImageTransformationsPtr and GooglePrivacyDlpV2ImageTransformationsPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2ImageTransformationsPtrInput` via:
+//
+//	        GooglePrivacyDlpV2ImageTransformationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2ImageTransformationsPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2ImageTransformationsPtrOutput() GooglePrivacyDlpV2ImageTransformationsPtrOutput
+	ToGooglePrivacyDlpV2ImageTransformationsPtrOutputWithContext(context.Context) GooglePrivacyDlpV2ImageTransformationsPtrOutput
+}
+
+type googlePrivacyDlpV2ImageTransformationsPtrType GooglePrivacyDlpV2ImageTransformationsArgs
+
+func GooglePrivacyDlpV2ImageTransformationsPtr(v *GooglePrivacyDlpV2ImageTransformationsArgs) GooglePrivacyDlpV2ImageTransformationsPtrInput {
+	return (*googlePrivacyDlpV2ImageTransformationsPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2ImageTransformationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2ImageTransformations)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2ImageTransformationsPtrType) ToGooglePrivacyDlpV2ImageTransformationsPtrOutput() GooglePrivacyDlpV2ImageTransformationsPtrOutput {
+	return i.ToGooglePrivacyDlpV2ImageTransformationsPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2ImageTransformationsPtrType) ToGooglePrivacyDlpV2ImageTransformationsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ImageTransformationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2ImageTransformationsPtrOutput)
+}
+
+// A type of transformation that is applied over images.
+type GooglePrivacyDlpV2ImageTransformationsOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ImageTransformationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ImageTransformations)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationsOutput) ToGooglePrivacyDlpV2ImageTransformationsOutput() GooglePrivacyDlpV2ImageTransformationsOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationsOutput) ToGooglePrivacyDlpV2ImageTransformationsOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ImageTransformationsOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationsOutput) ToGooglePrivacyDlpV2ImageTransformationsPtrOutput() GooglePrivacyDlpV2ImageTransformationsPtrOutput {
+	return o.ToGooglePrivacyDlpV2ImageTransformationsPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationsOutput) ToGooglePrivacyDlpV2ImageTransformationsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ImageTransformationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2ImageTransformations) *GooglePrivacyDlpV2ImageTransformations {
+		return &v
+	}).(GooglePrivacyDlpV2ImageTransformationsPtrOutput)
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationsOutput) Transforms() GooglePrivacyDlpV2ImageTransformationArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ImageTransformations) []GooglePrivacyDlpV2ImageTransformation {
+		return v.Transforms
+	}).(GooglePrivacyDlpV2ImageTransformationArrayOutput)
+}
+
+type GooglePrivacyDlpV2ImageTransformationsPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ImageTransformationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2ImageTransformations)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationsPtrOutput) ToGooglePrivacyDlpV2ImageTransformationsPtrOutput() GooglePrivacyDlpV2ImageTransformationsPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationsPtrOutput) ToGooglePrivacyDlpV2ImageTransformationsPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ImageTransformationsPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationsPtrOutput) Elem() GooglePrivacyDlpV2ImageTransformationsOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ImageTransformations) GooglePrivacyDlpV2ImageTransformations {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2ImageTransformations
+		return ret
+	}).(GooglePrivacyDlpV2ImageTransformationsOutput)
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationsPtrOutput) Transforms() GooglePrivacyDlpV2ImageTransformationArrayOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2ImageTransformations) []GooglePrivacyDlpV2ImageTransformation {
+		if v == nil {
+			return nil
+		}
+		return v.Transforms
+	}).(GooglePrivacyDlpV2ImageTransformationArrayOutput)
+}
+
+// A type of transformation that is applied over images.
+type GooglePrivacyDlpV2ImageTransformationsResponse struct {
+	Transforms []GooglePrivacyDlpV2ImageTransformationResponse `pulumi:"transforms"`
+}
+
+// A type of transformation that is applied over images.
+type GooglePrivacyDlpV2ImageTransformationsResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2ImageTransformationsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2ImageTransformationsResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationsResponseOutput) ToGooglePrivacyDlpV2ImageTransformationsResponseOutput() GooglePrivacyDlpV2ImageTransformationsResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationsResponseOutput) ToGooglePrivacyDlpV2ImageTransformationsResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2ImageTransformationsResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2ImageTransformationsResponseOutput) Transforms() GooglePrivacyDlpV2ImageTransformationResponseArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2ImageTransformationsResponse) []GooglePrivacyDlpV2ImageTransformationResponse {
+		return v.Transforms
+	}).(GooglePrivacyDlpV2ImageTransformationResponseArrayOutput)
+}
+
 // Type of information detected by the API.
 type GooglePrivacyDlpV2InfoType struct {
 	// Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/dlp/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$-_]{1,64}`.
@@ -10647,7 +11543,7 @@ func (o GooglePrivacyDlpV2InspectionRuleSetResponseArrayOutput) Index(i pulumi.I
 	}).(GooglePrivacyDlpV2InspectionRuleSetResponseOutput)
 }
 
-// Enable email notification to project owners and editors on jobs's completion/failure.
+// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
 type GooglePrivacyDlpV2JobNotificationEmails struct {
 }
 
@@ -10662,7 +11558,7 @@ type GooglePrivacyDlpV2JobNotificationEmailsInput interface {
 	ToGooglePrivacyDlpV2JobNotificationEmailsOutputWithContext(context.Context) GooglePrivacyDlpV2JobNotificationEmailsOutput
 }
 
-// Enable email notification to project owners and editors on jobs's completion/failure.
+// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
 type GooglePrivacyDlpV2JobNotificationEmailsArgs struct {
 }
 
@@ -10719,7 +11615,7 @@ func (i *googlePrivacyDlpV2JobNotificationEmailsPtrType) ToGooglePrivacyDlpV2Job
 	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2JobNotificationEmailsPtrOutput)
 }
 
-// Enable email notification to project owners and editors on jobs's completion/failure.
+// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
 type GooglePrivacyDlpV2JobNotificationEmailsOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2JobNotificationEmailsOutput) ElementType() reflect.Type {
@@ -10768,11 +11664,11 @@ func (o GooglePrivacyDlpV2JobNotificationEmailsPtrOutput) Elem() GooglePrivacyDl
 	}).(GooglePrivacyDlpV2JobNotificationEmailsOutput)
 }
 
-// Enable email notification to project owners and editors on jobs's completion/failure.
+// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
 type GooglePrivacyDlpV2JobNotificationEmailsResponse struct {
 }
 
-// Enable email notification to project owners and editors on jobs's completion/failure.
+// Sends an email when the job completes. The email goes to IAM project owners and technical [Essential Contacts](https://cloud.google.com/resource-manager/docs/managing-notification-contacts).
 type GooglePrivacyDlpV2JobNotificationEmailsResponseOutput struct{ *pulumi.OutputState }
 
 func (GooglePrivacyDlpV2JobNotificationEmailsResponseOutput) ElementType() reflect.Type {
@@ -17710,6 +18606,174 @@ func (o GooglePrivacyDlpV2ScheduleResponseOutput) RecurrencePeriodDuration() pul
 	return o.ApplyT(func(v GooglePrivacyDlpV2ScheduleResponse) string { return v.RecurrencePeriodDuration }).(pulumi.StringOutput)
 }
 
+// Apply transformation to the selected info_types.
+type GooglePrivacyDlpV2SelectedInfoTypes struct {
+	// InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message.
+	InfoTypes []GooglePrivacyDlpV2InfoType `pulumi:"infoTypes"`
+}
+
+// GooglePrivacyDlpV2SelectedInfoTypesInput is an input type that accepts GooglePrivacyDlpV2SelectedInfoTypesArgs and GooglePrivacyDlpV2SelectedInfoTypesOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2SelectedInfoTypesInput` via:
+//
+//	GooglePrivacyDlpV2SelectedInfoTypesArgs{...}
+type GooglePrivacyDlpV2SelectedInfoTypesInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2SelectedInfoTypesOutput() GooglePrivacyDlpV2SelectedInfoTypesOutput
+	ToGooglePrivacyDlpV2SelectedInfoTypesOutputWithContext(context.Context) GooglePrivacyDlpV2SelectedInfoTypesOutput
+}
+
+// Apply transformation to the selected info_types.
+type GooglePrivacyDlpV2SelectedInfoTypesArgs struct {
+	// InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message.
+	InfoTypes GooglePrivacyDlpV2InfoTypeArrayInput `pulumi:"infoTypes"`
+}
+
+func (GooglePrivacyDlpV2SelectedInfoTypesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2SelectedInfoTypes)(nil)).Elem()
+}
+
+func (i GooglePrivacyDlpV2SelectedInfoTypesArgs) ToGooglePrivacyDlpV2SelectedInfoTypesOutput() GooglePrivacyDlpV2SelectedInfoTypesOutput {
+	return i.ToGooglePrivacyDlpV2SelectedInfoTypesOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2SelectedInfoTypesArgs) ToGooglePrivacyDlpV2SelectedInfoTypesOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SelectedInfoTypesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2SelectedInfoTypesOutput)
+}
+
+func (i GooglePrivacyDlpV2SelectedInfoTypesArgs) ToGooglePrivacyDlpV2SelectedInfoTypesPtrOutput() GooglePrivacyDlpV2SelectedInfoTypesPtrOutput {
+	return i.ToGooglePrivacyDlpV2SelectedInfoTypesPtrOutputWithContext(context.Background())
+}
+
+func (i GooglePrivacyDlpV2SelectedInfoTypesArgs) ToGooglePrivacyDlpV2SelectedInfoTypesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SelectedInfoTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2SelectedInfoTypesOutput).ToGooglePrivacyDlpV2SelectedInfoTypesPtrOutputWithContext(ctx)
+}
+
+// GooglePrivacyDlpV2SelectedInfoTypesPtrInput is an input type that accepts GooglePrivacyDlpV2SelectedInfoTypesArgs, GooglePrivacyDlpV2SelectedInfoTypesPtr and GooglePrivacyDlpV2SelectedInfoTypesPtrOutput values.
+// You can construct a concrete instance of `GooglePrivacyDlpV2SelectedInfoTypesPtrInput` via:
+//
+//	        GooglePrivacyDlpV2SelectedInfoTypesArgs{...}
+//
+//	or:
+//
+//	        nil
+type GooglePrivacyDlpV2SelectedInfoTypesPtrInput interface {
+	pulumi.Input
+
+	ToGooglePrivacyDlpV2SelectedInfoTypesPtrOutput() GooglePrivacyDlpV2SelectedInfoTypesPtrOutput
+	ToGooglePrivacyDlpV2SelectedInfoTypesPtrOutputWithContext(context.Context) GooglePrivacyDlpV2SelectedInfoTypesPtrOutput
+}
+
+type googlePrivacyDlpV2SelectedInfoTypesPtrType GooglePrivacyDlpV2SelectedInfoTypesArgs
+
+func GooglePrivacyDlpV2SelectedInfoTypesPtr(v *GooglePrivacyDlpV2SelectedInfoTypesArgs) GooglePrivacyDlpV2SelectedInfoTypesPtrInput {
+	return (*googlePrivacyDlpV2SelectedInfoTypesPtrType)(v)
+}
+
+func (*googlePrivacyDlpV2SelectedInfoTypesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2SelectedInfoTypes)(nil)).Elem()
+}
+
+func (i *googlePrivacyDlpV2SelectedInfoTypesPtrType) ToGooglePrivacyDlpV2SelectedInfoTypesPtrOutput() GooglePrivacyDlpV2SelectedInfoTypesPtrOutput {
+	return i.ToGooglePrivacyDlpV2SelectedInfoTypesPtrOutputWithContext(context.Background())
+}
+
+func (i *googlePrivacyDlpV2SelectedInfoTypesPtrType) ToGooglePrivacyDlpV2SelectedInfoTypesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SelectedInfoTypesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GooglePrivacyDlpV2SelectedInfoTypesPtrOutput)
+}
+
+// Apply transformation to the selected info_types.
+type GooglePrivacyDlpV2SelectedInfoTypesOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2SelectedInfoTypesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2SelectedInfoTypes)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2SelectedInfoTypesOutput) ToGooglePrivacyDlpV2SelectedInfoTypesOutput() GooglePrivacyDlpV2SelectedInfoTypesOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2SelectedInfoTypesOutput) ToGooglePrivacyDlpV2SelectedInfoTypesOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SelectedInfoTypesOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2SelectedInfoTypesOutput) ToGooglePrivacyDlpV2SelectedInfoTypesPtrOutput() GooglePrivacyDlpV2SelectedInfoTypesPtrOutput {
+	return o.ToGooglePrivacyDlpV2SelectedInfoTypesPtrOutputWithContext(context.Background())
+}
+
+func (o GooglePrivacyDlpV2SelectedInfoTypesOutput) ToGooglePrivacyDlpV2SelectedInfoTypesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SelectedInfoTypesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GooglePrivacyDlpV2SelectedInfoTypes) *GooglePrivacyDlpV2SelectedInfoTypes {
+		return &v
+	}).(GooglePrivacyDlpV2SelectedInfoTypesPtrOutput)
+}
+
+// InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message.
+func (o GooglePrivacyDlpV2SelectedInfoTypesOutput) InfoTypes() GooglePrivacyDlpV2InfoTypeArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2SelectedInfoTypes) []GooglePrivacyDlpV2InfoType { return v.InfoTypes }).(GooglePrivacyDlpV2InfoTypeArrayOutput)
+}
+
+type GooglePrivacyDlpV2SelectedInfoTypesPtrOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2SelectedInfoTypesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GooglePrivacyDlpV2SelectedInfoTypes)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2SelectedInfoTypesPtrOutput) ToGooglePrivacyDlpV2SelectedInfoTypesPtrOutput() GooglePrivacyDlpV2SelectedInfoTypesPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2SelectedInfoTypesPtrOutput) ToGooglePrivacyDlpV2SelectedInfoTypesPtrOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SelectedInfoTypesPtrOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2SelectedInfoTypesPtrOutput) Elem() GooglePrivacyDlpV2SelectedInfoTypesOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2SelectedInfoTypes) GooglePrivacyDlpV2SelectedInfoTypes {
+		if v != nil {
+			return *v
+		}
+		var ret GooglePrivacyDlpV2SelectedInfoTypes
+		return ret
+	}).(GooglePrivacyDlpV2SelectedInfoTypesOutput)
+}
+
+// InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message.
+func (o GooglePrivacyDlpV2SelectedInfoTypesPtrOutput) InfoTypes() GooglePrivacyDlpV2InfoTypeArrayOutput {
+	return o.ApplyT(func(v *GooglePrivacyDlpV2SelectedInfoTypes) []GooglePrivacyDlpV2InfoType {
+		if v == nil {
+			return nil
+		}
+		return v.InfoTypes
+	}).(GooglePrivacyDlpV2InfoTypeArrayOutput)
+}
+
+// Apply transformation to the selected info_types.
+type GooglePrivacyDlpV2SelectedInfoTypesResponse struct {
+	// InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message.
+	InfoTypes []GooglePrivacyDlpV2InfoTypeResponse `pulumi:"infoTypes"`
+}
+
+// Apply transformation to the selected info_types.
+type GooglePrivacyDlpV2SelectedInfoTypesResponseOutput struct{ *pulumi.OutputState }
+
+func (GooglePrivacyDlpV2SelectedInfoTypesResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GooglePrivacyDlpV2SelectedInfoTypesResponse)(nil)).Elem()
+}
+
+func (o GooglePrivacyDlpV2SelectedInfoTypesResponseOutput) ToGooglePrivacyDlpV2SelectedInfoTypesResponseOutput() GooglePrivacyDlpV2SelectedInfoTypesResponseOutput {
+	return o
+}
+
+func (o GooglePrivacyDlpV2SelectedInfoTypesResponseOutput) ToGooglePrivacyDlpV2SelectedInfoTypesResponseOutputWithContext(ctx context.Context) GooglePrivacyDlpV2SelectedInfoTypesResponseOutput {
+	return o
+}
+
+// InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message.
+func (o GooglePrivacyDlpV2SelectedInfoTypesResponseOutput) InfoTypes() GooglePrivacyDlpV2InfoTypeResponseArrayOutput {
+	return o.ApplyT(func(v GooglePrivacyDlpV2SelectedInfoTypesResponse) []GooglePrivacyDlpV2InfoTypeResponse {
+		return v.InfoTypes
+	}).(GooglePrivacyDlpV2InfoTypeResponseArrayOutput)
+}
+
 // An auxiliary table containing statistical information on the relative frequency of different quasi-identifiers values. It has one or several quasi-identifiers columns, and one column that indicates the relative frequency of each quasi-identifier tuple. If a tuple is present in the data but not in the auxiliary table, the corresponding relative frequency is assumed to be zero (and thus, the tuple is highly reidentifiable).
 type GooglePrivacyDlpV2StatisticalTable struct {
 	// Quasi-identifier columns.
@@ -21991,6 +23055,10 @@ func (o GoogleTypeTimeOfDayResponseOutput) Seconds() pulumi.IntOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ActionInput)(nil)).Elem(), GooglePrivacyDlpV2ActionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ActionArrayInput)(nil)).Elem(), GooglePrivacyDlpV2ActionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AllInfoTypesInput)(nil)).Elem(), GooglePrivacyDlpV2AllInfoTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AllInfoTypesPtrInput)(nil)).Elem(), GooglePrivacyDlpV2AllInfoTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AllTextInput)(nil)).Elem(), GooglePrivacyDlpV2AllTextArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AllTextPtrInput)(nil)).Elem(), GooglePrivacyDlpV2AllTextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AuxiliaryTableInput)(nil)).Elem(), GooglePrivacyDlpV2AuxiliaryTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2AuxiliaryTableArrayInput)(nil)).Elem(), GooglePrivacyDlpV2AuxiliaryTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2BigQueryFieldInput)(nil)).Elem(), GooglePrivacyDlpV2BigQueryFieldArgs{})
@@ -22017,6 +23085,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStoragePathPtrInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStoragePathArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageRegexFileSetInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageRegexFileSetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2CloudStorageRegexFileSetPtrInput)(nil)).Elem(), GooglePrivacyDlpV2CloudStorageRegexFileSetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ColorInput)(nil)).Elem(), GooglePrivacyDlpV2ColorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ColorPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ColorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ConditionInput)(nil)).Elem(), GooglePrivacyDlpV2ConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ConditionArrayInput)(nil)).Elem(), GooglePrivacyDlpV2ConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ConditionsInput)(nil)).Elem(), GooglePrivacyDlpV2ConditionsArgs{})
@@ -22068,6 +23138,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2HotwordRulePtrInput)(nil)).Elem(), GooglePrivacyDlpV2HotwordRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2HybridOptionsInput)(nil)).Elem(), GooglePrivacyDlpV2HybridOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2HybridOptionsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2HybridOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ImageTransformationInput)(nil)).Elem(), GooglePrivacyDlpV2ImageTransformationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ImageTransformationArrayInput)(nil)).Elem(), GooglePrivacyDlpV2ImageTransformationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ImageTransformationsInput)(nil)).Elem(), GooglePrivacyDlpV2ImageTransformationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ImageTransformationsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2ImageTransformationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypePtrInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2InfoTypeArrayInput)(nil)).Elem(), GooglePrivacyDlpV2InfoTypeArray{})
@@ -22153,6 +23227,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SaveFindingsPtrInput)(nil)).Elem(), GooglePrivacyDlpV2SaveFindingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2ScheduleInput)(nil)).Elem(), GooglePrivacyDlpV2ScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SchedulePtrInput)(nil)).Elem(), GooglePrivacyDlpV2ScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SelectedInfoTypesInput)(nil)).Elem(), GooglePrivacyDlpV2SelectedInfoTypesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2SelectedInfoTypesPtrInput)(nil)).Elem(), GooglePrivacyDlpV2SelectedInfoTypesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StatisticalTableInput)(nil)).Elem(), GooglePrivacyDlpV2StatisticalTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StatisticalTableArrayInput)(nil)).Elem(), GooglePrivacyDlpV2StatisticalTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GooglePrivacyDlpV2StorageConfigInput)(nil)).Elem(), GooglePrivacyDlpV2StorageConfigArgs{})
@@ -22198,6 +23274,12 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ActionArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ActionResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ActionResponseArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllInfoTypesOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllInfoTypesPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllInfoTypesResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllTextOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllTextPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2AllTextResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AnalyzeDataSourceRiskDetailsResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AuxiliaryTableOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2AuxiliaryTableArrayOutput{})
@@ -22244,6 +23326,9 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageRegexFileSetOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageRegexFileSetPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2CloudStorageRegexFileSetResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ColorOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ColorPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ColorResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ConditionOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ConditionArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ConditionResponseOutput{})
@@ -22333,6 +23418,13 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2HybridOptionsOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2HybridOptionsPtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2HybridOptionsResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ImageTransformationOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ImageTransformationArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ImageTransformationResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ImageTransformationResponseArrayOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ImageTransformationsOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ImageTransformationsPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2ImageTransformationsResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2InfoTypeArrayOutput{})
@@ -22493,6 +23585,9 @@ func init() {
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ScheduleOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2SchedulePtrOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2ScheduleResponseOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2SelectedInfoTypesOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2SelectedInfoTypesPtrOutput{})
+	pulumi.RegisterOutputType(GooglePrivacyDlpV2SelectedInfoTypesResponseOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StatisticalTableOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StatisticalTableArrayOutput{})
 	pulumi.RegisterOutputType(GooglePrivacyDlpV2StatisticalTableResponseOutput{})

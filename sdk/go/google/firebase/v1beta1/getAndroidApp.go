@@ -38,10 +38,6 @@ type LookupAndroidAppResult struct {
 	PackageName string `pulumi:"packageName"`
 	// Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
 	Project string `pulumi:"project"`
-	// The SHA1 certificate hashes for the AndroidApp.
-	Sha1Hashes []string `pulumi:"sha1Hashes"`
-	// The SHA256 certificate hashes for the AndroidApp.
-	Sha256Hashes []string `pulumi:"sha256Hashes"`
 	// The lifecycle state of the App.
 	State string `pulumi:"state"`
 }
@@ -110,16 +106,6 @@ func (o LookupAndroidAppResultOutput) PackageName() pulumi.StringOutput {
 // Immutable. A user-assigned unique identifier of the parent FirebaseProject for the `AndroidApp`.
 func (o LookupAndroidAppResultOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAndroidAppResult) string { return v.Project }).(pulumi.StringOutput)
-}
-
-// The SHA1 certificate hashes for the AndroidApp.
-func (o LookupAndroidAppResultOutput) Sha1Hashes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupAndroidAppResult) []string { return v.Sha1Hashes }).(pulumi.StringArrayOutput)
-}
-
-// The SHA256 certificate hashes for the AndroidApp.
-func (o LookupAndroidAppResultOutput) Sha256Hashes() pulumi.StringArrayOutput {
-	return o.ApplyT(func(v LookupAndroidAppResult) []string { return v.Sha256Hashes }).(pulumi.StringArrayOutput)
 }
 
 // The lifecycle state of the App.

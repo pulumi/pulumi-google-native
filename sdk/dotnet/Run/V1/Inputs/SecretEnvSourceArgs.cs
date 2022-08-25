@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
+    /// Not supported by Cloud Run. SecretEnvSource selects a Secret to populate the environment variables with. The contents of the target Secret's Data field will represent the key-value pairs as environment variables.
     /// </summary>
     public sealed class SecretEnvSourceArgs : global::Pulumi.ResourceArgs
     {
@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// (Optional) Specify whether the Secret must be defined
+        /// Specify whether the Secret must be defined
         /// </summary>
         [Input("optional")]
         public Input<bool>? Optional { get; set; }

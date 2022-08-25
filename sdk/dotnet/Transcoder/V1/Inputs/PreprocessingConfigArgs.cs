@@ -40,6 +40,12 @@ namespace Pulumi.GoogleNative.Transcoder.V1.Inputs
         public Input<Inputs.DeblockArgs>? Deblock { get; set; }
 
         /// <summary>
+        /// Specify the video deinterlace configuration.
+        /// </summary>
+        [Input("deinterlace")]
+        public Input<Inputs.DeinterlaceArgs>? Deinterlace { get; set; }
+
+        /// <summary>
         /// Denoise preprocessing configuration.
         /// </summary>
         [Input("denoise")]

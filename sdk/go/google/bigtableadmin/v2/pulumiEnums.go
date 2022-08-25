@@ -350,7 +350,7 @@ func (in *clusterDefaultStorageTypePtr) ToClusterDefaultStorageTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(ClusterDefaultStorageTypePtrOutput)
 }
 
-// Required. The type of the instance. Defaults to `PRODUCTION`.
+// The type of the instance. Defaults to `PRODUCTION`.
 type InstanceType string
 
 const (

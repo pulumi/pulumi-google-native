@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run GRPCAction describes an action involving a GRPC port.
+    /// GRPCAction describes an action involving a GRPC port.
     /// </summary>
     [OutputType]
     public sealed class GRPCActionResponse
