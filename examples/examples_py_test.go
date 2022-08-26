@@ -1,4 +1,5 @@
 // Copyright 2016-2022, Pulumi Corporation.  All rights reserved.
+//go:build python || all
 // +build python all
 
 package examples
@@ -46,6 +47,23 @@ func TestBigTableInstance(t *testing.T) {
 				Additive: true,
 			},
 		},
+	})
+	integration.ProgramTest(t, &options)
+}
+
+func TestGetKubeConfigPy(t *testing.T) {
+	cwd, err := os.Getwd()
+	if !assert.NoError(t, err) {
+		t.FailNow()
+	}
+	options := getPythonBaseOptions(t).With(integration.ProgramTestOptions{
+		Dir:         filepath.Join(cwd, "kubeconfig-py"),
+		SkipRefresh: true,
+		Config: map[string]string{
+			"google-native:project":  os.Getenv("GOOGLE_PROJECT"),
+			"google-native:location": os.Getenv("GOOGLE_ZONE"),
+		},
+		RunUpdateTest: false,
 	})
 	integration.ProgramTest(t, &options)
 }

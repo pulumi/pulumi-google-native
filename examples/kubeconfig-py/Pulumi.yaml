@@ -1,0 +1,6 @@
+name: kubeconfig-py
+runtime:
+  name: python
+  options:
+    virtualenv: venv
+description: Test getKubeconfig method support
