@@ -718,35 +718,6 @@ type callableResource interface {
 	ProviderResource() *pulumi.ProviderResourceState
 }
 
-type providerResourceState struct {
-	pulumi.ProviderResourceState
-	name    string
-	Outputs pulumi.MapOutput `pulumi:""`
-}
-
-// GetOutput returns the named output of the resource.
-func (st *providerResourceState) GetOutput(k string) pulumi.Output {
-	return st.Outputs.ApplyT(func(outputs map[string]interface{}) (interface{}, error) {
-		out, ok := outputs[k]
-		if !ok {
-			return nil, fmt.Errorf("no output '%s' on resource '%s'", k, st.name)
-		}
-		return out, nil
-	})
-}
-
-func (st *providerResourceState) CustomResource() *pulumi.CustomResourceState {
-	return &st.CustomResourceState
-}
-
-func (st *providerResourceState) ProviderResource() *pulumi.ProviderResourceState {
-	return &st.ProviderResourceState
-}
-
-func (*providerResourceState) ElementType() reflect.Type {
-	return reflect.TypeOf((*callableResource)(nil)).Elem()
-}
-
 type customResourceState struct {
 	pulumi.CustomResourceState
 	name    string
@@ -822,15 +793,9 @@ func getKubeConfigCallHandler(label, tok string, callArgs resource.PropertyMap) 
 			return nil, fmt.Errorf("call(%s) __self__ was expected to be a resource reference", tok)
 		}
 		ref := self.ResourceReferenceValue()
-		if strings.HasPrefix(string(ref.URN.Type()), "pulumi:providers:") {
-			r := providerResourceState{name: ""}
-			res = &r
-			state = &r
-		} else {
-			r := customResourceState{name: ""}
-			res = &r
-			state = &r
-		}
+		r := customResourceState{name: ""}
+		res = &r
+		state = &r
 		// This hydrates the resource state from the resource reference.
 		err := ctx.RegisterResource("_", "_", nil, res, pulumi.URN_(string(ref.URN)))
 		if err != nil {
