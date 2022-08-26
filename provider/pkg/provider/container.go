@@ -17,8 +17,12 @@ package provider
 import (
 	"context"
 	"fmt"
+	"reflect"
 	"strings"
 	"time"
+
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	pulumiprov "github.com/pulumi/pulumi/sdk/v3/go/pulumi/provider"
 
 	"github.com/imdario/mergo"
 
@@ -696,5 +700,144 @@ func updateNodePoolConfig(diffPropPath, targetPropPath resource.PropertyPath,
 			return errors.Wrapf(err, "waiting for completion")
 		}
 		return nil
+	}
+}
+
+// Retrieve kubeconfig
+type callableResource interface {
+	GetOutput(k string) pulumi.Output
+	CustomResource() *pulumi.CustomResourceState
+	ProviderResource() *pulumi.ProviderResourceState
+}
+
+type providerResourceState struct {
+	pulumi.ProviderResourceState
+	name    string
+	Outputs pulumi.MapOutput `pulumi:""`
+}
+
+// GetOutput returns the named output of the resource.
+func (st *providerResourceState) GetOutput(k string) pulumi.Output {
+	return st.Outputs.ApplyT(func(outputs map[string]interface{}) (interface{}, error) {
+		out, ok := outputs[k]
+		if !ok {
+			return nil, fmt.Errorf("no output '%s' on resource '%s'", k, st.name)
+		}
+		return out, nil
+	})
+}
+
+func (st *providerResourceState) CustomResource() *pulumi.CustomResourceState {
+	return &st.CustomResourceState
+}
+
+func (st *providerResourceState) ProviderResource() *pulumi.ProviderResourceState {
+	return &st.ProviderResourceState
+}
+
+func (*providerResourceState) ElementType() reflect.Type {
+	return reflect.TypeOf((*callableResource)(nil)).Elem()
+}
+
+type customResourceState struct {
+	pulumi.CustomResourceState
+	name    string
+	Outputs pulumi.MapOutput `pulumi:""`
+}
+
+// GetOutput returns the named output of the resource.
+func (st *customResourceState) GetOutput(k string) pulumi.Output {
+	return st.Outputs.ApplyT(func(outputs map[string]interface{}) (interface{}, error) {
+		out, ok := outputs[k]
+		if !ok {
+			return nil, fmt.Errorf("no output '%s' on resource '%s'", k, st.name)
+		}
+		return out, nil
+	})
+}
+
+func (st *customResourceState) CustomResource() *pulumi.CustomResourceState {
+	return &st.CustomResourceState
+}
+
+func (st *customResourceState) ProviderResource() *pulumi.ProviderResourceState {
+	return nil
+}
+
+func (*customResourceState) ElementType() reflect.Type {
+	return reflect.TypeOf((*callableResource)(nil)).Elem()
+}
+
+type clusterGetKubeconfigResult struct {
+	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
+}
+
+const kubeconfigFmt = `apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: %[3]s
+    server: https://%[2]s
+  name: %[1]s
+contexts:
+- context:
+    cluster: %[1]s
+    user: %[1]s
+  name: %[1]s
+current-context: %[1]s
+kind: Config
+preferences: {}
+users:
+- name: %[1]s
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1beta1
+      command: gke-gcloud-auth-plugin
+      installHint: Install gke-gcloud-auth-plugin for use with kubectl by following
+        https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+      provideClusterInfo: true
+`
+
+func handleGetKubeConfigCall(label, tok string, callArgs resource.PropertyMap) func(*pulumi.Context, string,
+	pulumiprov.CallArgs) (*pulumiprov.CallResult, error) {
+	return func(ctx *pulumi.Context, tok string,
+		args pulumiprov.CallArgs) (*pulumiprov.CallResult, error) {
+		var res pulumi.Resource
+		var state callableResource
+
+		self := callArgs["__self__"]
+		if !self.IsResourceReference() {
+			return nil, fmt.Errorf("call(%s) __self__ was expected to be a resource reference", tok)
+		}
+		ref := self.ResourceReferenceValue()
+		if strings.HasPrefix(string(ref.URN.Type()), "pulumi:providers:") {
+			r := providerResourceState{name: ""}
+			res = &r
+			state = &r
+		} else {
+			r := customResourceState{name: ""}
+			res = &r
+			state = &r
+		}
+		err := ctx.RegisterResource("_", "_", nil, res, pulumi.URN_(string(ref.URN)))
+		if err != nil {
+			return nil, fmt.Errorf("failed to get resource: %q: %w", ref.URN, err)
+		}
+		logging.V(9).Infof("[%s] resource: %#v", label, state)
+
+		kubeconfig := pulumi.Sprintf(
+			kubeconfigFmt,
+			state.GetOutput("name"),
+			state.GetOutput("endpoint"),
+			state.GetOutput("masterAuth").ApplyT(func(ma interface{}) interface{} {
+				return ma.(map[string]interface{})["clusterCaCertificate"]
+			}))
+		result := clusterGetKubeconfigResult{
+			Kubeconfig: kubeconfig,
+		}
+		kubeconfig.ApplyT(func(kc string) int {
+			logging.V(9).Infof("[%s] applied kubeconfig: %q", label, kc)
+			return 0
+		})
+		return pulumiprov.NewCallResult(&result)
 	}
 }

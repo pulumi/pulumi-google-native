@@ -246,6 +246,39 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		}
 	}
 
+	for _, version := range []string{"v1", "v1beta1"} {
+		pkg.Functions[fmt.Sprintf("google-native:container/%s:Cluster/getKubeconfig", version)] = schema.FunctionSpec{
+			Description: "Generate a kubeconfig for cluster authentication." +
+				"\n\nThe kubeconfig generated is automatically stringified for ease of use with the pulumi/kubernetes" +
+				" provider.\nThe kubeconfig uses the new `gke-gcloud-auth-plugin` authentication plugin as" +
+				" recommended by google.\n\n" +
+				"See for more details:\n" +
+				`- https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke`,
+			Inputs: &schema.ObjectTypeSpec{
+				Properties: map[string]schema.PropertySpec{
+					"__self__": {
+						TypeSpec: schema.TypeSpec{
+							Ref: fmt.Sprintf("#/resources/google-native:container/%s:Cluster", version),
+						},
+					},
+				},
+				Required: []string{"__self__"},
+			},
+			Outputs: &schema.ObjectTypeSpec{
+				Properties: map[string]schema.PropertySpec{
+					"kubeconfig": {
+						TypeSpec: schema.TypeSpec{
+							Type: "string",
+						},
+					},
+				},
+				Required: []string{
+					"kubeconfig",
+				},
+			},
+		}
+	}
+
 	pkg.Language["go"] = rawMessage(map[string]interface{}{
 		"importBasePath":       goBasePath,
 		"packageImportAliases": golangImportAliases,
@@ -827,6 +860,16 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		if err := mergo.Merge(&resourceMeta, md, mergo.WithOverride); err != nil {
 			return fmt.Errorf("failed to merge metadata for resource: %q", resourceTok)
 		}
+	}
+
+	if resourceSpec.Methods == nil {
+		resourceSpec.Methods = map[string]string{}
+	}
+	switch resourceTok {
+	case "google-native:container/v1:Cluster":
+		resourceSpec.Methods["getKubeconfig"] = "google-native:container/v1:Cluster/getKubeconfig"
+	case "google-native:container/v1beta1:Cluster":
+		resourceSpec.Methods["getKubeconfig"] = "google-native:container/v1beta1:Cluster/getKubeconfig"
 	}
 
 	g.pkg.Resources[resourceTok] = resourceSpec

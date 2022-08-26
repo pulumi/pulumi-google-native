@@ -427,6 +427,21 @@ export class Cluster extends pulumi.CustomResource {
         opts = pulumi.mergeOptions(opts, replaceOnChanges);
         super(Cluster.__pulumiType, name, resourceInputs, opts);
     }
+
+    /**
+     * Generate a kubeconfig for cluster authentication.
+     *
+     * The kubeconfig generated is automatically stringified for ease of use with the pulumi/kubernetes provider.
+     * The kubeconfig uses the new `gke-gcloud-auth-plugin` authentication plugin as recommended by google.
+     *
+     * See for more details:
+     * - https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+     */
+    getKubeconfig(): pulumi.Output<Cluster.GetKubeconfigResult> {
+        return pulumi.runtime.call("google-native:container/v1:Cluster/getKubeconfig", {
+            "__self__": this,
+        }, this);
+    }
 }
 
 /**
@@ -636,4 +651,14 @@ export interface ClusterArgs {
      * @deprecated Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the parent field.
      */
     zone?: pulumi.Input<string>;
+}
+
+export namespace Cluster {
+    /**
+     * The results of the Cluster.getKubeconfig method.
+     */
+    export interface GetKubeconfigResult {
+        readonly kubeconfig: string;
+    }
+
 }
