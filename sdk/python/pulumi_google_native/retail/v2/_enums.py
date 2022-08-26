@@ -5,9 +5,81 @@
 from enum import Enum
 
 __all__ = [
+    'ControlSearchSolutionUseCaseItem',
+    'ControlSolutionTypesItem',
+    'GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode',
+    'GoogleCloudRetailV2SearchRequestPersonalizationSpecMode',
     'ProductAvailability',
     'ProductType',
+    'ServingConfigDiversityType',
+    'ServingConfigSolutionTypesItem',
 ]
+
+
+class ControlSearchSolutionUseCaseItem(str, Enum):
+    SEARCH_SOLUTION_USE_CASE_UNSPECIFIED = "SEARCH_SOLUTION_USE_CASE_UNSPECIFIED"
+    """
+    The value when it's unspecified. In this case, server behavior defaults to SEARCH_SOLUTION_USE_CASE_SEARCH.
+    """
+    SEARCH_SOLUTION_USE_CASE_SEARCH = "SEARCH_SOLUTION_USE_CASE_SEARCH"
+    """
+    Search use case. Expects the traffic has a non-empty query.
+    """
+    SEARCH_SOLUTION_USE_CASE_BROWSE = "SEARCH_SOLUTION_USE_CASE_BROWSE"
+    """
+    Browse use case. Expects the traffic has an empty query.
+    """
+
+
+class ControlSolutionTypesItem(str, Enum):
+    SOLUTION_TYPE_UNSPECIFIED = "SOLUTION_TYPE_UNSPECIFIED"
+    """
+    Default value.
+    """
+    SOLUTION_TYPE_RECOMMENDATION = "SOLUTION_TYPE_RECOMMENDATION"
+    """
+    Used for Recommendations AI.
+    """
+    SOLUTION_TYPE_SEARCH = "SOLUTION_TYPE_SEARCH"
+    """
+    Used for Retail Search.
+    """
+
+
+class GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode(str, Enum):
+    """
+    Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+    """
+    MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """
+    Default value.
+    """
+    DISABLED = "DISABLED"
+    """
+    Disable Dynamic Facet.
+    """
+    ENABLED = "ENABLED"
+    """
+    Automatic mode built by Google Retail Search.
+    """
+
+
+class GoogleCloudRetailV2SearchRequestPersonalizationSpecMode(str, Enum):
+    """
+    Defaults to Mode.AUTO.
+    """
+    MODE_UNSPECIFIED = "MODE_UNSPECIFIED"
+    """
+    Default value. In this case, server behavior defaults to Mode.AUTO.
+    """
+    AUTO = "AUTO"
+    """
+    Let CRS decide whether to use personalization based on quality of user event data.
+    """
+    DISABLED = "DISABLED"
+    """
+    Disable personalization.
+    """
 
 
 class ProductAvailability(str, Enum):
@@ -55,4 +127,37 @@ class ProductType(str, Enum):
     COLLECTION = "COLLECTION"
     """
     The collection type. Collection products are bundled Type.PRIMARY Products or Type.VARIANT Products that are sold together, such as a jewelry set with necklaces, earrings and rings, etc.
+    """
+
+
+class ServingConfigDiversityType(str, Enum):
+    """
+    What kind of diversity to use - data driven or rule based.
+    """
+    DIVERSITY_TYPE_UNSPECIFIED = "DIVERSITY_TYPE_UNSPECIFIED"
+    """
+    Default value.
+    """
+    RULE_BASED_DIVERSITY = "RULE_BASED_DIVERSITY"
+    """
+    Rule based diversity.
+    """
+    DATA_DRIVEN_DIVERSITY = "DATA_DRIVEN_DIVERSITY"
+    """
+    Data driven diversity.
+    """
+
+
+class ServingConfigSolutionTypesItem(str, Enum):
+    SOLUTION_TYPE_UNSPECIFIED = "SOLUTION_TYPE_UNSPECIFIED"
+    """
+    Default value.
+    """
+    SOLUTION_TYPE_RECOMMENDATION = "SOLUTION_TYPE_RECOMMENDATION"
+    """
+    Used for Recommendations AI.
+    """
+    SOLUTION_TYPE_SEARCH = "SOLUTION_TYPE_SEARCH"
+    """
+    Used for Retail Search.
     """

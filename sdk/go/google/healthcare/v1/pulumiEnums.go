@@ -873,9 +873,9 @@ const (
 	GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionWriteDispositionUnspecified = GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition("WRITE_DISPOSITION_UNSPECIFIED")
 	// Only export data if the destination tables are empty.
 	GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionWriteEmpty = GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition("WRITE_EMPTY")
-	// Erase all existing data in the tables before writing the instances.
+	// Erase all existing data in the destination tables before writing the FHIR resources.
 	GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionWriteTruncate = GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition("WRITE_TRUNCATE")
-	// Append data to the existing tables.
+	// Append data to the destination tables.
 	GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDispositionWriteAppend = GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition("WRITE_APPEND")
 )
 

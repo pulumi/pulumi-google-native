@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 {
 
     /// <summary>
-    /// Upcoming Maintenance notification information. TODO(b/196881882) Deprecate this proto once it's fully migrated to be under proto ResourceStatus.UpcomingMaintenance.
+    /// Upcoming Maintenance notification information. TODO(b/242069500) Deprecate this proto once it's fully migrated to be under proto ResourceStatus.UpcomingMaintenance.
     /// </summary>
     [OutputType]
     public sealed class UpcomingMaintenanceResponse

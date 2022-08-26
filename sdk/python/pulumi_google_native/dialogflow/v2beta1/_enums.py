@@ -400,7 +400,7 @@ class GoogleCloudDialogflowV2beta1SuggestionFeatureType(str, Enum):
     """
     ARTICLE_SUGGESTION = "ARTICLE_SUGGESTION"
     """
-    Run article suggestion model.
+    Run article suggestion model for chat.
     """
     FAQ = "FAQ"
     """
@@ -408,7 +408,7 @@ class GoogleCloudDialogflowV2beta1SuggestionFeatureType(str, Enum):
     """
     SMART_REPLY = "SMART_REPLY"
     """
-    Run smart reply model.
+    Run smart reply model for chat.
     """
 
 

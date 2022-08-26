@@ -775,7 +775,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         public static GoogleCloudDialogflowV2beta1SuggestionFeatureType TypeUnspecified { get; } = new GoogleCloudDialogflowV2beta1SuggestionFeatureType("TYPE_UNSPECIFIED");
         /// <summary>
-        /// Run article suggestion model.
+        /// Run article suggestion model for chat.
         /// </summary>
         public static GoogleCloudDialogflowV2beta1SuggestionFeatureType ArticleSuggestion { get; } = new GoogleCloudDialogflowV2beta1SuggestionFeatureType("ARTICLE_SUGGESTION");
         /// <summary>
@@ -783,7 +783,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V2Beta1
         /// </summary>
         public static GoogleCloudDialogflowV2beta1SuggestionFeatureType Faq { get; } = new GoogleCloudDialogflowV2beta1SuggestionFeatureType("FAQ");
         /// <summary>
-        /// Run smart reply model.
+        /// Run smart reply model for chat.
         /// </summary>
         public static GoogleCloudDialogflowV2beta1SuggestionFeatureType SmartReply { get; } = new GoogleCloudDialogflowV2beta1SuggestionFeatureType("SMART_REPLY");
 

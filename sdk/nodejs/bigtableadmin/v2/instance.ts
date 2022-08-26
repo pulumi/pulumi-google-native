@@ -85,8 +85,14 @@ export class Instance extends pulumi.CustomResource {
             if ((!args || args.instanceId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'instanceId'");
             }
+            if ((!args || args.labels === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'labels'");
+            }
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
+            }
+            if ((!args || args.type === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'type'");
             }
             resourceInputs["clusters"] = args ? args.clusters : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -135,7 +141,7 @@ export interface InstanceArgs {
     /**
      * Labels are a flexible and lightweight mechanism for organizing cloud resources into groups that reflect a customer's organizational needs and deployment strategies. They can be used to filter resources and aggregate metrics. * Label keys must be between 1 and 63 characters long and must conform to the regular expression: `\p{Ll}\p{Lo}{0,62}`. * Label values must be between 0 and 63 characters long and must conform to the regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`. * No more than 64 labels can be associated with a given resource. * Keys and values must both be under 128 bytes.
      */
-    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    labels: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`.
      */
@@ -148,5 +154,5 @@ export interface InstanceArgs {
     /**
      * The type of the instance. Defaults to `PRODUCTION`.
      */
-    type?: pulumi.Input<enums.bigtableadmin.v2.InstanceType>;
+    type: pulumi.Input<enums.bigtableadmin.v2.InstanceType>;
 }

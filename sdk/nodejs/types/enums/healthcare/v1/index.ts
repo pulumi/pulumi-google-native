@@ -132,11 +132,11 @@ export const GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition = {
      */
     WriteEmpty: "WRITE_EMPTY",
     /**
-     * Erase all existing data in the tables before writing the instances.
+     * Erase all existing data in the destination tables before writing the FHIR resources.
      */
     WriteTruncate: "WRITE_TRUNCATE",
     /**
-     * Append data to the existing tables.
+     * Append data to the destination tables.
      */
     WriteAppend: "WRITE_APPEND",
 } as const;

@@ -254,11 +254,11 @@ namespace Pulumi.GoogleNative.Healthcare.V1
         /// </summary>
         public static GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition WriteEmpty { get; } = new GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition("WRITE_EMPTY");
         /// <summary>
-        /// Erase all existing data in the tables before writing the instances.
+        /// Erase all existing data in the destination tables before writing the FHIR resources.
         /// </summary>
         public static GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition WriteTruncate { get; } = new GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition("WRITE_TRUNCATE");
         /// <summary>
-        /// Append data to the existing tables.
+        /// Append data to the destination tables.
         /// </summary>
         public static GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition WriteAppend { get; } = new GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition("WRITE_APPEND");
 

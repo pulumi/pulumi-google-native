@@ -16,14 +16,14 @@ import (
 type Control struct {
 	pulumi.CustomResourceState
 
-	// List of serving configuration ids that that are associated with this control. Note the association is managed via the ServingConfig, this is an output only denormalizeed view. Assumed to be in the same catalog.
+	// List of serving configuration ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.
 	AssociatedServingConfigIds pulumi.StringArrayOutput `pulumi:"associatedServingConfigIds"`
 	CatalogId                  pulumi.StringOutput      `pulumi:"catalogId"`
 	// Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
 	ControlId pulumi.StringOutput `pulumi:"controlId"`
 	// The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
-	// A facet specification to perform faceted search.
+	// A facet specification to perform faceted search. Note that this field is deprecated and will throw NOT_IMPLEMENTED if used for creating a control.
 	FacetSpec GoogleCloudRetailV2alphaSearchRequestFacetSpecResponseOutput `pulumi:"facetSpec"`
 	Location  pulumi.StringOutput                                          `pulumi:"location"`
 	// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
@@ -31,7 +31,9 @@ type Control struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
 	Rule GoogleCloudRetailV2alphaRuleResponseOutput `pulumi:"rule"`
-	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
+	// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
+	SearchSolutionUseCase pulumi.StringArrayOutput `pulumi:"searchSolutionUseCase"`
+	// Immutable. The solution types that the control is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
 	SolutionTypes pulumi.StringArrayOutput `pulumi:"solutionTypes"`
 }
 
@@ -98,7 +100,7 @@ type controlArgs struct {
 	ControlId string `pulumi:"controlId"`
 	// The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
 	DisplayName string `pulumi:"displayName"`
-	// A facet specification to perform faceted search.
+	// A facet specification to perform faceted search. Note that this field is deprecated and will throw NOT_IMPLEMENTED if used for creating a control.
 	FacetSpec *GoogleCloudRetailV2alphaSearchRequestFacetSpec `pulumi:"facetSpec"`
 	Location  *string                                         `pulumi:"location"`
 	// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
@@ -106,7 +108,9 @@ type controlArgs struct {
 	Project *string `pulumi:"project"`
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
 	Rule *GoogleCloudRetailV2alphaRule `pulumi:"rule"`
-	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
+	// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
+	SearchSolutionUseCase []ControlSearchSolutionUseCaseItem `pulumi:"searchSolutionUseCase"`
+	// Immutable. The solution types that the control is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
 	SolutionTypes []ControlSolutionTypesItem `pulumi:"solutionTypes"`
 }
 
@@ -117,7 +121,7 @@ type ControlArgs struct {
 	ControlId pulumi.StringInput
 	// The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
 	DisplayName pulumi.StringInput
-	// A facet specification to perform faceted search.
+	// A facet specification to perform faceted search. Note that this field is deprecated and will throw NOT_IMPLEMENTED if used for creating a control.
 	FacetSpec GoogleCloudRetailV2alphaSearchRequestFacetSpecPtrInput
 	Location  pulumi.StringPtrInput
 	// Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
@@ -125,7 +129,9 @@ type ControlArgs struct {
 	Project pulumi.StringPtrInput
 	// A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
 	Rule GoogleCloudRetailV2alphaRulePtrInput
-	// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
+	// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
+	SearchSolutionUseCase ControlSearchSolutionUseCaseItemArrayInput
+	// Immutable. The solution types that the control is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
 	SolutionTypes ControlSolutionTypesItemArrayInput
 }
 
@@ -166,7 +172,7 @@ func (o ControlOutput) ToControlOutputWithContext(ctx context.Context) ControlOu
 	return o
 }
 
-// List of serving configuration ids that that are associated with this control. Note the association is managed via the ServingConfig, this is an output only denormalizeed view. Assumed to be in the same catalog.
+// List of serving configuration ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.
 func (o ControlOutput) AssociatedServingConfigIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Control) pulumi.StringArrayOutput { return v.AssociatedServingConfigIds }).(pulumi.StringArrayOutput)
 }
@@ -185,7 +191,7 @@ func (o ControlOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Control) pulumi.StringOutput { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// A facet specification to perform faceted search.
+// A facet specification to perform faceted search. Note that this field is deprecated and will throw NOT_IMPLEMENTED if used for creating a control.
 func (o ControlOutput) FacetSpec() GoogleCloudRetailV2alphaSearchRequestFacetSpecResponseOutput {
 	return o.ApplyT(func(v *Control) GoogleCloudRetailV2alphaSearchRequestFacetSpecResponseOutput { return v.FacetSpec }).(GoogleCloudRetailV2alphaSearchRequestFacetSpecResponseOutput)
 }
@@ -208,7 +214,12 @@ func (o ControlOutput) Rule() GoogleCloudRetailV2alphaRuleResponseOutput {
 	return o.ApplyT(func(v *Control) GoogleCloudRetailV2alphaRuleResponseOutput { return v.Rule }).(GoogleCloudRetailV2alphaRuleResponseOutput)
 }
 
-// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
+// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
+func (o ControlOutput) SearchSolutionUseCase() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Control) pulumi.StringArrayOutput { return v.SearchSolutionUseCase }).(pulumi.StringArrayOutput)
+}
+
+// Immutable. The solution types that the control is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
 func (o ControlOutput) SolutionTypes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Control) pulumi.StringArrayOutput { return v.SolutionTypes }).(pulumi.StringArrayOutput)
 }

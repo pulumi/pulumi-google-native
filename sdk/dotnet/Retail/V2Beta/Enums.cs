@@ -8,6 +8,44 @@ using Pulumi;
 namespace Pulumi.GoogleNative.Retail.V2Beta
 {
     [EnumType]
+    public readonly struct ControlSearchSolutionUseCaseItem : IEquatable<ControlSearchSolutionUseCaseItem>
+    {
+        private readonly string _value;
+
+        private ControlSearchSolutionUseCaseItem(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The value when it's unspecified. In this case, server behavior defaults to SEARCH_SOLUTION_USE_CASE_SEARCH.
+        /// </summary>
+        public static ControlSearchSolutionUseCaseItem SearchSolutionUseCaseUnspecified { get; } = new ControlSearchSolutionUseCaseItem("SEARCH_SOLUTION_USE_CASE_UNSPECIFIED");
+        /// <summary>
+        /// Search use case. Expects the traffic has a non-empty query.
+        /// </summary>
+        public static ControlSearchSolutionUseCaseItem SearchSolutionUseCaseSearch { get; } = new ControlSearchSolutionUseCaseItem("SEARCH_SOLUTION_USE_CASE_SEARCH");
+        /// <summary>
+        /// Browse use case. Expects the traffic has an empty query.
+        /// </summary>
+        public static ControlSearchSolutionUseCaseItem SearchSolutionUseCaseBrowse { get; } = new ControlSearchSolutionUseCaseItem("SEARCH_SOLUTION_USE_CASE_BROWSE");
+
+        public static bool operator ==(ControlSearchSolutionUseCaseItem left, ControlSearchSolutionUseCaseItem right) => left.Equals(right);
+        public static bool operator !=(ControlSearchSolutionUseCaseItem left, ControlSearchSolutionUseCaseItem right) => !left.Equals(right);
+
+        public static explicit operator string(ControlSearchSolutionUseCaseItem value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ControlSearchSolutionUseCaseItem other && Equals(other);
+        public bool Equals(ControlSearchSolutionUseCaseItem other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    [EnumType]
     public readonly struct ControlSolutionTypesItem : IEquatable<ControlSolutionTypesItem>
     {
         private readonly string _value;
@@ -79,6 +117,47 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode other && Equals(other);
         public bool Equals(GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Defaults to Mode.AUTO.
+    /// </summary>
+    [EnumType]
+    public readonly struct GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode : IEquatable<GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode>
+    {
+        private readonly string _value;
+
+        private GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. In this case, server behavior defaults to Mode.AUTO.
+        /// </summary>
+        public static GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode ModeUnspecified { get; } = new GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode("MODE_UNSPECIFIED");
+        /// <summary>
+        /// Let CRS decide whether to use personalization based on quality of user event data.
+        /// </summary>
+        public static GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode Auto { get; } = new GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode("AUTO");
+        /// <summary>
+        /// Disable personalization.
+        /// </summary>
+        public static GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode Disabled { get; } = new GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode("DISABLED");
+
+        public static bool operator ==(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode left, GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode right) => left.Equals(right);
+        public static bool operator !=(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode left, GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode right) => !left.Equals(right);
+
+        public static explicit operator string(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode other && Equals(other);
+        public bool Equals(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;
@@ -173,6 +252,47 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is ProductType other && Equals(other);
         public bool Equals(ProductType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// What kind of diversity to use - data driven or rule based.
+    /// </summary>
+    [EnumType]
+    public readonly struct ServingConfigDiversityType : IEquatable<ServingConfigDiversityType>
+    {
+        private readonly string _value;
+
+        private ServingConfigDiversityType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value.
+        /// </summary>
+        public static ServingConfigDiversityType DiversityTypeUnspecified { get; } = new ServingConfigDiversityType("DIVERSITY_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// Rule based diversity.
+        /// </summary>
+        public static ServingConfigDiversityType RuleBasedDiversity { get; } = new ServingConfigDiversityType("RULE_BASED_DIVERSITY");
+        /// <summary>
+        /// Data driven diversity.
+        /// </summary>
+        public static ServingConfigDiversityType DataDrivenDiversity { get; } = new ServingConfigDiversityType("DATA_DRIVEN_DIVERSITY");
+
+        public static bool operator ==(ServingConfigDiversityType left, ServingConfigDiversityType right) => left.Equals(right);
+        public static bool operator !=(ServingConfigDiversityType left, ServingConfigDiversityType right) => !left.Equals(right);
+
+        public static explicit operator string(ServingConfigDiversityType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is ServingConfigDiversityType other && Equals(other);
+        public bool Equals(ServingConfigDiversityType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

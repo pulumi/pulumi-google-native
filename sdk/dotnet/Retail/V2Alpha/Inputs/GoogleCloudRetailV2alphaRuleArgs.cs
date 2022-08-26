@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
 {
 
     /// <summary>
-    /// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+    /// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH.
     /// </summary>
     public sealed class GoogleCloudRetailV2alphaRuleArgs : global::Pulumi.ResourceArgs
     {

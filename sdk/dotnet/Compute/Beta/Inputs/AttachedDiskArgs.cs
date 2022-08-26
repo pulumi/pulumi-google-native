@@ -45,6 +45,12 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         [Input("diskSizeGb")]
         public Input<string>? DiskSizeGb { get; set; }
 
+        /// <summary>
+        /// [Input Only] Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error.
+        /// </summary>
+        [Input("forceAttach")]
+        public Input<bool>? ForceAttach { get; set; }
+
         [Input("guestOsFeatures")]
         private InputList<Inputs.GuestOsFeatureArgs>? _guestOsFeatures;
 

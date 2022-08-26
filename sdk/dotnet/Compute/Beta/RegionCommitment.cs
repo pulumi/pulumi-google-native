@@ -60,6 +60,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<Outputs.LicenseResourceCommitmentResponse> LicenseResource { get; private set; } = null!;
 
         /// <summary>
+        /// List of source commitments to be merged into a new commitment.
+        /// </summary>
+        [Output("mergeSourceCommitments")]
+        public Output<ImmutableArray<string>> MergeSourceCommitments { get; private set; } = null!;
+
+        /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
         [Output("name")]
@@ -100,6 +106,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         [Output("selfLink")]
         public Output<string> SelfLink { get; private set; } = null!;
+
+        /// <summary>
+        /// Source commitment to be splitted into a new commitment.
+        /// </summary>
+        [Output("splitSourceCommitment")]
+        public Output<string> SplitSourceCommitment { get; private set; } = null!;
 
         /// <summary>
         /// Commitment start time in RFC3339 text format.
@@ -199,6 +211,18 @@ namespace Pulumi.GoogleNative.Compute.Beta
         [Input("licenseResource")]
         public Input<Inputs.LicenseResourceCommitmentArgs>? LicenseResource { get; set; }
 
+        [Input("mergeSourceCommitments")]
+        private InputList<string>? _mergeSourceCommitments;
+
+        /// <summary>
+        /// List of source commitments to be merged into a new commitment.
+        /// </summary>
+        public InputList<string> MergeSourceCommitments
+        {
+            get => _mergeSourceCommitments ?? (_mergeSourceCommitments = new InputList<string>());
+            set => _mergeSourceCommitments = value;
+        }
+
         /// <summary>
         /// Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// </summary>
@@ -246,6 +270,12 @@ namespace Pulumi.GoogleNative.Compute.Beta
             get => _resources ?? (_resources = new InputList<Inputs.ResourceCommitmentArgs>());
             set => _resources = value;
         }
+
+        /// <summary>
+        /// Source commitment to be splitted into a new commitment.
+        /// </summary>
+        [Input("splitSourceCommitment")]
+        public Input<string>? SplitSourceCommitment { get; set; }
 
         /// <summary>
         /// The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.

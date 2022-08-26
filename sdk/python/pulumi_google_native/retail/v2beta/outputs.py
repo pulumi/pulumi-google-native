@@ -20,6 +20,7 @@ __all__ = [
     'GoogleCloudRetailV2betaFulfillmentInfoResponse',
     'GoogleCloudRetailV2betaImageResponse',
     'GoogleCloudRetailV2betaIntervalResponse',
+    'GoogleCloudRetailV2betaLocalInventoryResponse',
     'GoogleCloudRetailV2betaPriceInfoPriceRangeResponse',
     'GoogleCloudRetailV2betaPriceInfoResponse',
     'GoogleCloudRetailV2betaProductResponse',
@@ -37,6 +38,7 @@ __all__ = [
     'GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponse',
     'GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponse',
     'GoogleCloudRetailV2betaSearchRequestFacetSpecResponse',
+    'GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponse',
 ]
 
 @pulumi.output_type
@@ -167,7 +169,7 @@ class GoogleCloudRetailV2betaConditionQueryTermResponse(dict):
         """
         Query terms that we want to match on.
         :param bool full_match: Whether this is supposed to be a full or partial match.
-        :param str value: The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+        :param str value: The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match.
         """
         pulumi.set(__self__, "full_match", full_match)
         pulumi.set(__self__, "value", value)
@@ -184,7 +186,7 @@ class GoogleCloudRetailV2betaConditionQueryTermResponse(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+        The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match.
         """
         return pulumi.get(self, "value")
 
@@ -462,6 +464,82 @@ class GoogleCloudRetailV2betaIntervalResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudRetailV2betaLocalInventoryResponse(dict):
+    """
+    The inventory information at a place (e.g. a store) identified by a place ID.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fulfillmentTypes":
+            suggest = "fulfillment_types"
+        elif key == "placeId":
+            suggest = "place_id"
+        elif key == "priceInfo":
+            suggest = "price_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudRetailV2betaLocalInventoryResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudRetailV2betaLocalInventoryResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudRetailV2betaLocalInventoryResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 attributes: Mapping[str, str],
+                 fulfillment_types: Sequence[str],
+                 place_id: str,
+                 price_info: 'outputs.GoogleCloudRetailV2betaPriceInfoResponse'):
+        """
+        The inventory information at a place (e.g. a store) identified by a place ID.
+        :param Mapping[str, str] attributes: Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
+        :param Sequence[str] fulfillment_types: Input only. Supported fulfillment types. Valid fulfillment type values include commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. All the elements must be distinct. Otherwise, an INVALID_ARGUMENT error is returned.
+        :param str place_id: The place ID for the current set of inventory information.
+        :param 'GoogleCloudRetailV2betaPriceInfoResponse' price_info: Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
+        """
+        pulumi.set(__self__, "attributes", attributes)
+        pulumi.set(__self__, "fulfillment_types", fulfillment_types)
+        pulumi.set(__self__, "place_id", place_id)
+        pulumi.set(__self__, "price_info", price_info)
+
+    @property
+    @pulumi.getter
+    def attributes(self) -> Mapping[str, str]:
+        """
+        Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
+        """
+        return pulumi.get(self, "attributes")
+
+    @property
+    @pulumi.getter(name="fulfillmentTypes")
+    def fulfillment_types(self) -> Sequence[str]:
+        """
+        Input only. Supported fulfillment types. Valid fulfillment type values include commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. All the elements must be distinct. Otherwise, an INVALID_ARGUMENT error is returned.
+        """
+        return pulumi.get(self, "fulfillment_types")
+
+    @property
+    @pulumi.getter(name="placeId")
+    def place_id(self) -> str:
+        """
+        The place ID for the current set of inventory information.
+        """
+        return pulumi.get(self, "place_id")
+
+    @property
+    @pulumi.getter(name="priceInfo")
+    def price_info(self) -> 'outputs.GoogleCloudRetailV2betaPriceInfoResponse':
+        """
+        Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
+        """
+        return pulumi.get(self, "price_info")
+
+
+@pulumi.output_type
 class GoogleCloudRetailV2betaPriceInfoPriceRangeResponse(dict):
     """
     The price range of all variant Product having the same Product.primary_product_id.
@@ -646,6 +724,8 @@ class GoogleCloudRetailV2betaProductResponse(dict):
             suggest = "fulfillment_info"
         elif key == "languageCode":
             suggest = "language_code"
+        elif key == "localInventories":
+            suggest = "local_inventories"
         elif key == "priceInfo":
             suggest = "price_info"
         elif key == "primaryProductId":
@@ -683,6 +763,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
                  gtin: str,
                  images: Sequence['outputs.GoogleCloudRetailV2betaImageResponse'],
                  language_code: str,
+                 local_inventories: Sequence['outputs.GoogleCloudRetailV2betaLocalInventoryResponse'],
                  materials: Sequence[str],
                  name: str,
                  patterns: Sequence[str],
@@ -707,7 +788,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
         :param int available_quantity: The available quantity of the item.
         :param str available_time: The timestamp when this Product becomes available for SearchService.Search.
         :param Sequence[str] brands: The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
-        :param Sequence[str] categories: Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
+        :param Sequence[str] categories: Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
         :param Sequence[str] collection_member_ids: The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise an INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
         :param 'GoogleCloudRetailV2betaColorInfoResponse' color_info: The color of the product. Corresponding properties: Google Merchant Center property [color](https://support.google.com/merchants/answer/6324487). Schema.org property [Product.color](https://schema.org/color).
         :param Sequence[str] conditions: The condition of the product. Strongly encouraged to use the standard values: "new", "refurbished", "used". A maximum of 1 value is allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [condition](https://support.google.com/merchants/answer/6324469). Schema.org property [Offer.itemCondition](https://schema.org/itemCondition).
@@ -717,6 +798,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
         :param str gtin: The Global Trade Item Number (GTIN) of the product. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. This field must be a Unigram. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [gtin](https://support.google.com/merchants/answer/6324461). Schema.org property [Product.isbn](https://schema.org/isbn), [Product.gtin8](https://schema.org/gtin8), [Product.gtin12](https://schema.org/gtin12), [Product.gtin13](https://schema.org/gtin13), or [Product.gtin14](https://schema.org/gtin14). If the value is not a valid GTIN, an INVALID_ARGUMENT error is returned.
         :param Sequence['GoogleCloudRetailV2betaImageResponse'] images: Product images for the product. We highly recommend putting the main image first. A maximum of 300 images are allowed. Corresponding properties: Google Merchant Center property [image_link](https://support.google.com/merchants/answer/6324350). Schema.org property [Product.image](https://schema.org/image).
         :param str language_code: Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
+        :param Sequence['GoogleCloudRetailV2betaLocalInventoryResponse'] local_inventories: A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by AddLocalInventories and RemoveLocalInventories APIs.
         :param Sequence[str] materials: The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
         :param str name: Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
         :param Sequence[str] patterns: The pattern or graphic print of the product. For example, "striped", "polka dot", "paisley". A maximum of 20 values are allowed per Product. Each value must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [pattern](https://support.google.com/merchants/answer/6324483). Schema.org property [Product.pattern](https://schema.org/pattern).
@@ -750,6 +832,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
         pulumi.set(__self__, "gtin", gtin)
         pulumi.set(__self__, "images", images)
         pulumi.set(__self__, "language_code", language_code)
+        pulumi.set(__self__, "local_inventories", local_inventories)
         pulumi.set(__self__, "materials", materials)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "patterns", patterns)
@@ -819,7 +902,7 @@ class GoogleCloudRetailV2betaProductResponse(dict):
     @pulumi.getter
     def categories(self) -> Sequence[str]:
         """
-        Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
+        Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
         """
         return pulumi.get(self, "categories")
 
@@ -894,6 +977,14 @@ class GoogleCloudRetailV2betaProductResponse(dict):
         Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
         """
         return pulumi.get(self, "language_code")
+
+    @property
+    @pulumi.getter(name="localInventories")
+    def local_inventories(self) -> Sequence['outputs.GoogleCloudRetailV2betaLocalInventoryResponse']:
+        """
+        A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by AddLocalInventories and RemoveLocalInventories APIs.
+        """
+        return pulumi.get(self, "local_inventories")
 
     @property
     @pulumi.getter
@@ -1470,7 +1561,7 @@ class GoogleCloudRetailV2betaRuleReplacementActionResponse(dict):
 @pulumi.output_type
 class GoogleCloudRetailV2betaRuleResponse(dict):
     """
-    A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+    A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -1514,7 +1605,7 @@ class GoogleCloudRetailV2betaRuleResponse(dict):
                  replacement_action: 'outputs.GoogleCloudRetailV2betaRuleReplacementActionResponse',
                  twoway_synonyms_action: 'outputs.GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse'):
         """
-        A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+        A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH.
         :param 'GoogleCloudRetailV2betaRuleBoostActionResponse' boost_action: A boost action.
         :param 'GoogleCloudRetailV2betaConditionResponse' condition: The condition that triggers the rule. If the condition is empty, the rule will always apply.
         :param 'GoogleCloudRetailV2betaRuleDoNotAssociateActionResponse' do_not_associate_action: Prevents term from being associated with other terms.
@@ -1859,5 +1950,27 @@ class GoogleCloudRetailV2betaSearchRequestFacetSpecResponse(dict):
         Maximum of facet values that should be returned for this facet. If unspecified, defaults to 20. The maximum allowed value is 300. Values above 300 will be coerced to 300. If this field is negative, an INVALID_ARGUMENT is returned.
         """
         return pulumi.get(self, "limit")
+
+
+@pulumi.output_type
+class GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponse(dict):
+    """
+    The specification for personalization.
+    """
+    def __init__(__self__, *,
+                 mode: str):
+        """
+        The specification for personalization.
+        :param str mode: Defaults to Mode.AUTO.
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Defaults to Mode.AUTO.
+        """
+        return pulumi.get(self, "mode")
 
 

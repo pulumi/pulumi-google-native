@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetProductResult:
-    def __init__(__self__, attributes=None, audience=None, availability=None, available_quantity=None, available_time=None, brands=None, categories=None, collection_member_ids=None, color_info=None, conditions=None, description=None, expire_time=None, fulfillment_info=None, gtin=None, images=None, language_code=None, materials=None, name=None, patterns=None, price_info=None, primary_product_id=None, promotions=None, publish_time=None, rating=None, retrievable_fields=None, sizes=None, tags=None, title=None, ttl=None, type=None, uri=None, variants=None):
+    def __init__(__self__, attributes=None, audience=None, availability=None, available_quantity=None, available_time=None, brands=None, categories=None, collection_member_ids=None, color_info=None, conditions=None, description=None, expire_time=None, fulfillment_info=None, gtin=None, images=None, language_code=None, local_inventories=None, materials=None, name=None, patterns=None, price_info=None, primary_product_id=None, promotions=None, publish_time=None, rating=None, retrievable_fields=None, sizes=None, tags=None, title=None, ttl=None, type=None, uri=None, variants=None):
         if attributes and not isinstance(attributes, dict):
             raise TypeError("Expected argument 'attributes' to be a dict")
         pulumi.set(__self__, "attributes", attributes)
@@ -68,6 +68,9 @@ class GetProductResult:
         if language_code and not isinstance(language_code, str):
             raise TypeError("Expected argument 'language_code' to be a str")
         pulumi.set(__self__, "language_code", language_code)
+        if local_inventories and not isinstance(local_inventories, list):
+            raise TypeError("Expected argument 'local_inventories' to be a list")
+        pulumi.set(__self__, "local_inventories", local_inventories)
         if materials and not isinstance(materials, list):
             raise TypeError("Expected argument 'materials' to be a list")
         pulumi.set(__self__, "materials", materials)
@@ -169,7 +172,7 @@ class GetProductResult:
     @pulumi.getter
     def categories(self) -> Sequence[str]:
         """
-        Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
+        Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
         """
         return pulumi.get(self, "categories")
 
@@ -244,6 +247,14 @@ class GetProductResult:
         Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
         """
         return pulumi.get(self, "language_code")
+
+    @property
+    @pulumi.getter(name="localInventories")
+    def local_inventories(self) -> Sequence['outputs.GoogleCloudRetailV2betaLocalInventoryResponse']:
+        """
+        A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by AddLocalInventories and RemoveLocalInventories APIs.
+        """
+        return pulumi.get(self, "local_inventories")
 
     @property
     @pulumi.getter
@@ -396,6 +407,7 @@ class AwaitableGetProductResult(GetProductResult):
             gtin=self.gtin,
             images=self.images,
             language_code=self.language_code,
+            local_inventories=self.local_inventories,
             materials=self.materials,
             name=self.name,
             patterns=self.patterns,
@@ -449,6 +461,7 @@ def get_product(branch_id: Optional[str] = None,
         gtin=__ret__.gtin,
         images=__ret__.images,
         language_code=__ret__.language_code,
+        local_inventories=__ret__.local_inventories,
         materials=__ret__.materials,
         name=__ret__.name,
         patterns=__ret__.patterns,

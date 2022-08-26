@@ -2961,11 +2961,11 @@ type GoogleCloudDialogflowV2beta1SuggestionFeatureType string
 const (
 	// Unspecified feature type.
 	GoogleCloudDialogflowV2beta1SuggestionFeatureTypeTypeUnspecified = GoogleCloudDialogflowV2beta1SuggestionFeatureType("TYPE_UNSPECIFIED")
-	// Run article suggestion model.
+	// Run article suggestion model for chat.
 	GoogleCloudDialogflowV2beta1SuggestionFeatureTypeArticleSuggestion = GoogleCloudDialogflowV2beta1SuggestionFeatureType("ARTICLE_SUGGESTION")
 	// Run FAQ model.
 	GoogleCloudDialogflowV2beta1SuggestionFeatureTypeFaq = GoogleCloudDialogflowV2beta1SuggestionFeatureType("FAQ")
-	// Run smart reply model.
+	// Run smart reply model for chat.
 	GoogleCloudDialogflowV2beta1SuggestionFeatureTypeSmartReply = GoogleCloudDialogflowV2beta1SuggestionFeatureType("SMART_REPLY")
 )
 

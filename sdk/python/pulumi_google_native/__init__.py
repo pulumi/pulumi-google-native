@@ -2660,7 +2660,9 @@ _utilities.register(
   "mod": "retail/v2",
   "fqn": "pulumi_google_native.retail.v2",
   "classes": {
-   "google-native:retail/v2:Product": "Product"
+   "google-native:retail/v2:Control": "Control",
+   "google-native:retail/v2:Product": "Product",
+   "google-native:retail/v2:ServingConfig": "ServingConfig"
   }
  },
  {

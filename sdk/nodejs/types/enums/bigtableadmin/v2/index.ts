@@ -62,7 +62,7 @@ export const InstanceType = {
 } as const;
 
 /**
- * The type of the instance. Defaults to `PRODUCTION`.
+ * Required. The type of the instance. Defaults to `PRODUCTION`.
  */
 export type InstanceType = (typeof InstanceType)[keyof typeof InstanceType];
 

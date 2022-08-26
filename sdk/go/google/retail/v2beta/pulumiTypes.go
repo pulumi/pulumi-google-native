@@ -561,7 +561,7 @@ func (o GoogleCloudRetailV2betaConditionPtrOutput) QueryTerms() GoogleCloudRetai
 type GoogleCloudRetailV2betaConditionQueryTerm struct {
 	// Whether this is supposed to be a full or partial match.
 	FullMatch *bool `pulumi:"fullMatch"`
-	// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+	// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match.
 	Value *string `pulumi:"value"`
 }
 
@@ -580,7 +580,7 @@ type GoogleCloudRetailV2betaConditionQueryTermInput interface {
 type GoogleCloudRetailV2betaConditionQueryTermArgs struct {
 	// Whether this is supposed to be a full or partial match.
 	FullMatch pulumi.BoolPtrInput `pulumi:"fullMatch"`
-	// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+	// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 }
 
@@ -641,7 +641,7 @@ func (o GoogleCloudRetailV2betaConditionQueryTermOutput) FullMatch() pulumi.Bool
 	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionQueryTerm) *bool { return v.FullMatch }).(pulumi.BoolPtrOutput)
 }
 
-// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match.
 func (o GoogleCloudRetailV2betaConditionQueryTermOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionQueryTerm) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -670,7 +670,7 @@ func (o GoogleCloudRetailV2betaConditionQueryTermArrayOutput) Index(i pulumi.Int
 type GoogleCloudRetailV2betaConditionQueryTermResponse struct {
 	// Whether this is supposed to be a full or partial match.
 	FullMatch bool `pulumi:"fullMatch"`
-	// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+	// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match.
 	Value string `pulumi:"value"`
 }
 
@@ -694,7 +694,7 @@ func (o GoogleCloudRetailV2betaConditionQueryTermResponseOutput) FullMatch() pul
 	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionQueryTermResponse) bool { return v.FullMatch }).(pulumi.BoolOutput)
 }
 
-// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match.
 func (o GoogleCloudRetailV2betaConditionQueryTermResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaConditionQueryTermResponse) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -1452,6 +1452,75 @@ func (o GoogleCloudRetailV2betaIntervalResponseArrayOutput) Index(i pulumi.IntIn
 	}).(GoogleCloudRetailV2betaIntervalResponseOutput)
 }
 
+// The inventory information at a place (e.g. a store) identified by a place ID.
+type GoogleCloudRetailV2betaLocalInventoryResponse struct {
+	// Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
+	Attributes map[string]string `pulumi:"attributes"`
+	// Input only. Supported fulfillment types. Valid fulfillment type values include commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. All the elements must be distinct. Otherwise, an INVALID_ARGUMENT error is returned.
+	FulfillmentTypes []string `pulumi:"fulfillmentTypes"`
+	// The place ID for the current set of inventory information.
+	PlaceId string `pulumi:"placeId"`
+	// Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
+	PriceInfo GoogleCloudRetailV2betaPriceInfoResponse `pulumi:"priceInfo"`
+}
+
+// The inventory information at a place (e.g. a store) identified by a place ID.
+type GoogleCloudRetailV2betaLocalInventoryResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaLocalInventoryResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaLocalInventoryResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaLocalInventoryResponseOutput) ToGoogleCloudRetailV2betaLocalInventoryResponseOutput() GoogleCloudRetailV2betaLocalInventoryResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaLocalInventoryResponseOutput) ToGoogleCloudRetailV2betaLocalInventoryResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaLocalInventoryResponseOutput {
+	return o
+}
+
+// Additional local inventory attributes, for example, store name, promotion tags, etc. This field needs to pass all below criteria, otherwise an INVALID_ARGUMENT error is returned: * At most 30 attributes are allowed. * The key must be a UTF-8 encoded string with a length limit of 32 characters. * The key must match the pattern: `a-zA-Z0-9*`. For example, key0LikeThis or KEY_1_LIKE_THIS. * The attribute values must be of the same type (text or number). * Only 1 value is allowed for each attribute. * For text values, the length limit is 256 UTF-8 characters. * The attribute does not support search. The `searchable` field should be unset or set to false. * The max summed total bytes of custom attribute keys and values per product is 5MiB.
+func (o GoogleCloudRetailV2betaLocalInventoryResponseOutput) Attributes() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaLocalInventoryResponse) map[string]string { return v.Attributes }).(pulumi.StringMapOutput)
+}
+
+// Input only. Supported fulfillment types. Valid fulfillment type values include commonly used types (such as pickup in store and same day delivery), and custom types. Customers have to map custom types to their display names before rendering UI. Supported values: * "pickup-in-store" * "ship-to-store" * "same-day-delivery" * "next-day-delivery" * "custom-type-1" * "custom-type-2" * "custom-type-3" * "custom-type-4" * "custom-type-5" If this field is set to an invalid value other than these, an INVALID_ARGUMENT error is returned. All the elements must be distinct. Otherwise, an INVALID_ARGUMENT error is returned.
+func (o GoogleCloudRetailV2betaLocalInventoryResponseOutput) FulfillmentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaLocalInventoryResponse) []string { return v.FulfillmentTypes }).(pulumi.StringArrayOutput)
+}
+
+// The place ID for the current set of inventory information.
+func (o GoogleCloudRetailV2betaLocalInventoryResponseOutput) PlaceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaLocalInventoryResponse) string { return v.PlaceId }).(pulumi.StringOutput)
+}
+
+// Product price and cost information. Google Merchant Center property [price](https://support.google.com/merchants/answer/6324371).
+func (o GoogleCloudRetailV2betaLocalInventoryResponseOutput) PriceInfo() GoogleCloudRetailV2betaPriceInfoResponseOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaLocalInventoryResponse) GoogleCloudRetailV2betaPriceInfoResponse {
+		return v.PriceInfo
+	}).(GoogleCloudRetailV2betaPriceInfoResponseOutput)
+}
+
+type GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GoogleCloudRetailV2betaLocalInventoryResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput) ToGoogleCloudRetailV2betaLocalInventoryResponseArrayOutput() GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput) ToGoogleCloudRetailV2betaLocalInventoryResponseArrayOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput) Index(i pulumi.IntInput) GoogleCloudRetailV2betaLocalInventoryResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GoogleCloudRetailV2betaLocalInventoryResponse {
+		return vs[0].([]GoogleCloudRetailV2betaLocalInventoryResponse)[vs[1].(int)]
+	}).(GoogleCloudRetailV2betaLocalInventoryResponseOutput)
+}
+
 // The price information of a Product.
 type GoogleCloudRetailV2betaPriceInfo struct {
 	// The costs associated with the sale of a particular product. Used for gross profit reporting. * Profit = price - cost Google Merchant Center property [cost_of_goods_sold](https://support.google.com/merchants/answer/9017895).
@@ -1808,7 +1877,7 @@ type GoogleCloudRetailV2betaProductResponse struct {
 	AvailableTime string `pulumi:"availableTime"`
 	// The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
 	Brands []string `pulumi:"brands"`
-	// Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
+	// Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
 	Categories []string `pulumi:"categories"`
 	// The id of the collection members when type is Type.COLLECTION. Non-existent product ids are allowed. The type of the members must be either Type.PRIMARY or Type.VARIANT otherwise an INVALID_ARGUMENT error is thrown. Should not set it for other types. A maximum of 1000 values are allowed. Otherwise, an INVALID_ARGUMENT error is return.
 	CollectionMemberIds []string `pulumi:"collectionMemberIds"`
@@ -1828,6 +1897,8 @@ type GoogleCloudRetailV2betaProductResponse struct {
 	Images []GoogleCloudRetailV2betaImageResponse `pulumi:"images"`
 	// Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
 	LanguageCode string `pulumi:"languageCode"`
+	// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by AddLocalInventories and RemoveLocalInventories APIs.
+	LocalInventories []GoogleCloudRetailV2betaLocalInventoryResponse `pulumi:"localInventories"`
 	// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
 	Materials []string `pulumi:"materials"`
 	// Immutable. Full resource name of the product, such as `projects/*/locations/global/catalogs/default_catalog/branches/default_branch/products/product_id`.
@@ -1909,7 +1980,7 @@ func (o GoogleCloudRetailV2betaProductResponseOutput) Brands() pulumi.StringArra
 	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) []string { return v.Brands }).(pulumi.StringArrayOutput)
 }
 
-// Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, please replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
+// Product categories. This field is repeated for supporting one product belonging to several parallel categories. Strongly recommended using the full path for better search / recommendation quality. To represent full path of category, use '>' sign to separate different hierarchies. If '>' is part of the category name, replace it with other character(s). For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categories": [ "Shoes & Accessories > Shoes", "Sports & Fitness > Athletic Clothing > Shoes" ] Must be set for Type.PRIMARY Product otherwise an INVALID_ARGUMENT error is returned. At most 250 values are allowed per Product. Empty values are not allowed. Each value must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property google_product_category. Schema.org property [Product.category] (https://schema.org/category). [mc_google_product_category]: https://support.google.com/merchants/answer/6324436
 func (o GoogleCloudRetailV2betaProductResponseOutput) Categories() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) []string { return v.Categories }).(pulumi.StringArrayOutput)
 }
@@ -1961,6 +2032,13 @@ func (o GoogleCloudRetailV2betaProductResponseOutput) Images() GoogleCloudRetail
 // Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
 func (o GoogleCloudRetailV2betaProductResponseOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) string { return v.LanguageCode }).(pulumi.StringOutput)
+}
+
+// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by AddLocalInventories and RemoveLocalInventories APIs.
+func (o GoogleCloudRetailV2betaProductResponseOutput) LocalInventories() GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaProductResponse) []GoogleCloudRetailV2betaLocalInventoryResponse {
+		return v.LocalInventories
+	}).(GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput)
 }
 
 // The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
@@ -2433,7 +2511,7 @@ func (o GoogleCloudRetailV2betaRatingResponseOutput) RatingHistogram() pulumi.In
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRatingResponse) []int { return v.RatingHistogram }).(pulumi.IntArrayOutput)
 }
 
-// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH.
 type GoogleCloudRetailV2betaRule struct {
 	// A boost action.
 	BoostAction *GoogleCloudRetailV2betaRuleBoostAction `pulumi:"boostAction"`
@@ -2466,7 +2544,7 @@ type GoogleCloudRetailV2betaRuleInput interface {
 	ToGoogleCloudRetailV2betaRuleOutputWithContext(context.Context) GoogleCloudRetailV2betaRuleOutput
 }
 
-// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH.
 type GoogleCloudRetailV2betaRuleArgs struct {
 	// A boost action.
 	BoostAction GoogleCloudRetailV2betaRuleBoostActionPtrInput `pulumi:"boostAction"`
@@ -2541,7 +2619,7 @@ func (i *googleCloudRetailV2betaRulePtrType) ToGoogleCloudRetailV2betaRulePtrOut
 	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaRulePtrOutput)
 }
 
-// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH.
 type GoogleCloudRetailV2betaRuleOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRetailV2betaRuleOutput) ElementType() reflect.Type {
@@ -4079,7 +4157,7 @@ func (o GoogleCloudRetailV2betaRuleReplacementActionResponseOutput) Term() pulum
 	return o.ApplyT(func(v GoogleCloudRetailV2betaRuleReplacementActionResponse) string { return v.Term }).(pulumi.StringOutput)
 }
 
-// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH.
 type GoogleCloudRetailV2betaRuleResponse struct {
 	// A boost action.
 	BoostAction GoogleCloudRetailV2betaRuleBoostActionResponse `pulumi:"boostAction"`
@@ -4101,7 +4179,7 @@ type GoogleCloudRetailV2betaRuleResponse struct {
 	TwowaySynonymsAction GoogleCloudRetailV2betaRuleTwowaySynonymsActionResponse `pulumi:"twowaySynonymsAction"`
 }
 
-// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+// A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH.
 type GoogleCloudRetailV2betaRuleResponseOutput struct{ *pulumi.OutputState }
 
 func (GoogleCloudRetailV2betaRuleResponseOutput) ElementType() reflect.Type {
@@ -5141,6 +5219,174 @@ func (o GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput) Limit() pul
 	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestFacetSpecResponse) int { return v.Limit }).(pulumi.IntOutput)
 }
 
+// The specification for personalization.
+type GoogleCloudRetailV2betaSearchRequestPersonalizationSpec struct {
+	// Defaults to Mode.AUTO.
+	Mode *GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode `pulumi:"mode"`
+}
+
+// GoogleCloudRetailV2betaSearchRequestPersonalizationSpecInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs and GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestPersonalizationSpecInput` via:
+//
+//	GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs{...}
+type GoogleCloudRetailV2betaSearchRequestPersonalizationSpecInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput
+	ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutputWithContext(context.Context) GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput
+}
+
+// The specification for personalization.
+type GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs struct {
+	// Defaults to Mode.AUTO.
+	Mode GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModePtrInput `pulumi:"mode"`
+}
+
+func (GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestPersonalizationSpec)(nil)).Elem()
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput {
+	return i.ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput)
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput {
+	return i.ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput).ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrInput is an input type that accepts GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs, GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtr and GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrInput` via:
+//
+//	        GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput
+	ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutputWithContext(context.Context) GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput
+}
+
+type googleCloudRetailV2betaSearchRequestPersonalizationSpecPtrType GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs
+
+func GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtr(v *GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs) GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrInput {
+	return (*googleCloudRetailV2betaSearchRequestPersonalizationSpecPtrType)(v)
+}
+
+func (*googleCloudRetailV2betaSearchRequestPersonalizationSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaSearchRequestPersonalizationSpec)(nil)).Elem()
+}
+
+func (i *googleCloudRetailV2betaSearchRequestPersonalizationSpecPtrType) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput {
+	return i.ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudRetailV2betaSearchRequestPersonalizationSpecPtrType) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput)
+}
+
+// The specification for personalization.
+type GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestPersonalizationSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput {
+	return o.ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2betaSearchRequestPersonalizationSpec) *GoogleCloudRetailV2betaSearchRequestPersonalizationSpec {
+		return &v
+	}).(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput)
+}
+
+// Defaults to Mode.AUTO.
+func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput) Mode() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModePtrOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestPersonalizationSpec) *GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode {
+		return v.Mode
+	}).(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModePtrOutput)
+}
+
+type GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2betaSearchRequestPersonalizationSpec)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput) Elem() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestPersonalizationSpec) GoogleCloudRetailV2betaSearchRequestPersonalizationSpec {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2betaSearchRequestPersonalizationSpec
+		return ret
+	}).(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput)
+}
+
+// Defaults to Mode.AUTO.
+func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput) Mode() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModePtrOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2betaSearchRequestPersonalizationSpec) *GoogleCloudRetailV2betaSearchRequestPersonalizationSpecMode {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecModePtrOutput)
+}
+
+// The specification for personalization.
+type GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponse struct {
+	// Defaults to Mode.AUTO.
+	Mode string `pulumi:"mode"`
+}
+
+// The specification for personalization.
+type GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutput) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutput() GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutput) ToGoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutputWithContext(ctx context.Context) GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutput {
+	return o
+}
+
+// Defaults to Mode.AUTO.
+func (o GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponse) string { return v.Mode }).(pulumi.StringOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaAudienceInput)(nil)).Elem(), GoogleCloudRetailV2betaAudienceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaAudiencePtrInput)(nil)).Elem(), GoogleCloudRetailV2betaAudienceArgs{})
@@ -5188,6 +5434,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestFacetSpecPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaSearchRequestFacetSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyInput)(nil)).Elem(), GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestPersonalizationSpecInput)(nil)).Elem(), GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrInput)(nil)).Elem(), GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaAudienceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaAudiencePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaAudienceResponseOutput{})
@@ -5217,6 +5465,8 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaIntervalArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaIntervalResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaIntervalResponseArrayOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaLocalInventoryResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaLocalInventoryResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaPriceInfoPriceRangeResponseOutput{})
@@ -5266,4 +5516,7 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestFacetSpecFacetKeyResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestFacetSpecResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponseOutput{})
 }

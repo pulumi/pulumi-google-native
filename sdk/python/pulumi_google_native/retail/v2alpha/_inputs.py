@@ -34,6 +34,7 @@ __all__ = [
     'GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecArgs',
     'GoogleCloudRetailV2alphaSearchRequestFacetSpecFacetKeyArgs',
     'GoogleCloudRetailV2alphaSearchRequestFacetSpecArgs',
+    'GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecArgs',
 ]
 
 @pulumi.input_type
@@ -124,7 +125,7 @@ class GoogleCloudRetailV2alphaConditionQueryTermArgs:
         """
         Query terms that we want to match on.
         :param pulumi.Input[bool] full_match: Whether this is supposed to be a full or partial match.
-        :param pulumi.Input[str] value: The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+        :param pulumi.Input[str] value: The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match.
         """
         if full_match is not None:
             pulumi.set(__self__, "full_match", full_match)
@@ -147,7 +148,7 @@ class GoogleCloudRetailV2alphaConditionQueryTermArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+        The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match.
         """
         return pulumi.get(self, "value")
 
@@ -904,7 +905,7 @@ class GoogleCloudRetailV2alphaRuleArgs:
                  replacement_action: Optional[pulumi.Input['GoogleCloudRetailV2alphaRuleReplacementActionArgs']] = None,
                  twoway_synonyms_action: Optional[pulumi.Input['GoogleCloudRetailV2alphaRuleTwowaySynonymsActionArgs']] = None):
         """
-        A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently only boost rules are supported. Currently only supported by the search endpoint.
+        A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH.
         :param pulumi.Input['GoogleCloudRetailV2alphaConditionArgs'] condition: The condition that triggers the rule. If the condition is empty, the rule will always apply.
         :param pulumi.Input['GoogleCloudRetailV2alphaRuleBoostActionArgs'] boost_action: A boost action.
         :param pulumi.Input['GoogleCloudRetailV2alphaRuleDoNotAssociateActionArgs'] do_not_associate_action: Prevents term from being associated with other terms.
@@ -1286,5 +1287,29 @@ class GoogleCloudRetailV2alphaSearchRequestFacetSpecArgs:
     @limit.setter
     def limit(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "limit", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input['GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode']] = None):
+        """
+        The specification for personalization.
+        :param pulumi.Input['GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode'] mode: Defaults to Mode.AUTO.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input['GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode']]:
+        """
+        Defaults to Mode.AUTO.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input['GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode']]):
+        pulumi.set(self, "mode", value)
 
 

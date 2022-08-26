@@ -13,11 +13,25 @@ from ._enums import *
 __all__ = [
     'GoogleCloudRetailV2AudienceArgs',
     'GoogleCloudRetailV2ColorInfoArgs',
+    'GoogleCloudRetailV2ConditionQueryTermArgs',
+    'GoogleCloudRetailV2ConditionTimeRangeArgs',
+    'GoogleCloudRetailV2ConditionArgs',
     'GoogleCloudRetailV2FulfillmentInfoArgs',
     'GoogleCloudRetailV2ImageArgs',
     'GoogleCloudRetailV2PriceInfoArgs',
     'GoogleCloudRetailV2PromotionArgs',
     'GoogleCloudRetailV2RatingArgs',
+    'GoogleCloudRetailV2RuleBoostActionArgs',
+    'GoogleCloudRetailV2RuleDoNotAssociateActionArgs',
+    'GoogleCloudRetailV2RuleFilterActionArgs',
+    'GoogleCloudRetailV2RuleIgnoreActionArgs',
+    'GoogleCloudRetailV2RuleOnewaySynonymsActionArgs',
+    'GoogleCloudRetailV2RuleRedirectActionArgs',
+    'GoogleCloudRetailV2RuleReplacementActionArgs',
+    'GoogleCloudRetailV2RuleTwowaySynonymsActionArgs',
+    'GoogleCloudRetailV2RuleArgs',
+    'GoogleCloudRetailV2SearchRequestDynamicFacetSpecArgs',
+    'GoogleCloudRetailV2SearchRequestPersonalizationSpecArgs',
 ]
 
 @pulumi.input_type
@@ -98,6 +112,126 @@ class GoogleCloudRetailV2ColorInfoArgs:
     @colors.setter
     def colors(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "colors", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2ConditionQueryTermArgs:
+    def __init__(__self__, *,
+                 full_match: Optional[pulumi.Input[bool]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Query terms that we want to match on.
+        :param pulumi.Input[bool] full_match: Whether this is supposed to be a full or partial match.
+        :param pulumi.Input[str] value: The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match.
+        """
+        if full_match is not None:
+            pulumi.set(__self__, "full_match", full_match)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter(name="fullMatch")
+    def full_match(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether this is supposed to be a full or partial match.
+        """
+        return pulumi.get(self, "full_match")
+
+    @full_match.setter
+    def full_match(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "full_match", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2ConditionTimeRangeArgs:
+    def __init__(__self__, *,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None):
+        """
+        Used for time-dependent conditions. Example: Want to have rule applied for week long sale.
+        :param pulumi.Input[str] end_time: End of time range. Range is inclusive.
+        :param pulumi.Input[str] start_time: Start of time range. Range is inclusive.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        End of time range. Range is inclusive.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Start of time range. Range is inclusive.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2ConditionArgs:
+    def __init__(__self__, *,
+                 active_time_range: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2ConditionTimeRangeArgs']]]] = None,
+                 query_terms: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2ConditionQueryTermArgs']]]] = None):
+        """
+        Metadata that is used to define a condition that triggers an action. A valid condition must specify at least one of 'query_terms' or 'products_filter'. If multiple fields are specified, the condition is met if all the fields are satisfied e.g. if a set of query terms and product_filter are set, then only items matching the product_filter for requests with a query matching the query terms wil get boosted.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2ConditionTimeRangeArgs']]] active_time_range: Range of time(s) specifying when Condition is active. Condition true if any time range matches.
+        :param pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2ConditionQueryTermArgs']]] query_terms: A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
+        """
+        if active_time_range is not None:
+            pulumi.set(__self__, "active_time_range", active_time_range)
+        if query_terms is not None:
+            pulumi.set(__self__, "query_terms", query_terms)
+
+    @property
+    @pulumi.getter(name="activeTimeRange")
+    def active_time_range(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2ConditionTimeRangeArgs']]]]:
+        """
+        Range of time(s) specifying when Condition is active. Condition true if any time range matches.
+        """
+        return pulumi.get(self, "active_time_range")
+
+    @active_time_range.setter
+    def active_time_range(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2ConditionTimeRangeArgs']]]]):
+        pulumi.set(self, "active_time_range", value)
+
+    @property
+    @pulumi.getter(name="queryTerms")
+    def query_terms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2ConditionQueryTermArgs']]]]:
+        """
+        A list (up to 10 entries) of terms to match the query on. If not specified, match all queries. If many query terms are specified, the condition is matched if any of the terms is a match (i.e. using the OR operator).
+        """
+        return pulumi.get(self, "query_terms")
+
+    @query_terms.setter
+    def query_terms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['GoogleCloudRetailV2ConditionQueryTermArgs']]]]):
+        pulumi.set(self, "query_terms", value)
 
 
 @pulumi.input_type
@@ -377,5 +511,508 @@ class GoogleCloudRetailV2RatingArgs:
     @rating_histogram.setter
     def rating_histogram(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
         pulumi.set(self, "rating_histogram", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2RuleBoostActionArgs:
+    def __init__(__self__, *,
+                 boost: Optional[pulumi.Input[float]] = None,
+                 products_filter: Optional[pulumi.Input[str]] = None):
+        """
+        A boost action to apply to results matching condition specified above.
+        :param pulumi.Input[float] boost: Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
+        :param pulumi.Input[str] products_filter: The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        """
+        if boost is not None:
+            pulumi.set(__self__, "boost", boost)
+        if products_filter is not None:
+            pulumi.set(__self__, "products_filter", products_filter)
+
+    @property
+    @pulumi.getter
+    def boost(self) -> Optional[pulumi.Input[float]]:
+        """
+        Strength of the condition boost, which must be in [-1, 1]. Negative boost means demotion. Default is 0.0. Setting to 1.0 gives the item a big promotion. However, it does not necessarily mean that the boosted item will be the top result at all times, nor that other items will be excluded. Results could still be shown even when none of them matches the condition. And results that are significantly more relevant to the search query can still trump your heavily favored but irrelevant items. Setting to -1.0 gives the item a big demotion. However, results that are deeply relevant might still be shown. The item will have an upstream battle to get a fairly high ranking, but it is not blocked out completely. Setting to 0.0 means no boost applied. The boosting condition is ignored.
+        """
+        return pulumi.get(self, "boost")
+
+    @boost.setter
+    def boost(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "boost", value)
+
+    @property
+    @pulumi.getter(name="productsFilter")
+    def products_filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The filter can have a max size of 5000 characters. An expression which specifies which products to apply an action to. The syntax and supported fields are the same as a filter expression. See SearchRequest.filter for detail syntax and limitations. Examples: * To boost products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        """
+        return pulumi.get(self, "products_filter")
+
+    @products_filter.setter
+    def products_filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "products_filter", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2RuleDoNotAssociateActionArgs:
+    def __init__(__self__, *,
+                 do_not_associate_terms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 query_terms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 terms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Prevents `query_term` from being associated with specified terms during search. Example: Don't associate "gShoe" and "cheap".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] do_not_associate_terms: Cannot contain duplicates or the query term. Can specify up to 100 terms.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] query_terms: Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] terms: Will be [deprecated = true] post migration;
+        """
+        if do_not_associate_terms is not None:
+            pulumi.set(__self__, "do_not_associate_terms", do_not_associate_terms)
+        if query_terms is not None:
+            pulumi.set(__self__, "query_terms", query_terms)
+        if terms is not None:
+            pulumi.set(__self__, "terms", terms)
+
+    @property
+    @pulumi.getter(name="doNotAssociateTerms")
+    def do_not_associate_terms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Cannot contain duplicates or the query term. Can specify up to 100 terms.
+        """
+        return pulumi.get(self, "do_not_associate_terms")
+
+    @do_not_associate_terms.setter
+    def do_not_associate_terms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "do_not_associate_terms", value)
+
+    @property
+    @pulumi.getter(name="queryTerms")
+    def query_terms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Terms from the search query. Will not consider do_not_associate_terms for search if in search query. Can specify up to 100 terms.
+        """
+        return pulumi.get(self, "query_terms")
+
+    @query_terms.setter
+    def query_terms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "query_terms", value)
+
+    @property
+    @pulumi.getter
+    def terms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Will be [deprecated = true] post migration;
+        """
+        return pulumi.get(self, "terms")
+
+    @terms.setter
+    def terms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "terms", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2RuleFilterActionArgs:
+    def __init__(__self__, *,
+                 filter: Optional[pulumi.Input[str]] = None):
+        """
+        * Rule Condition: - No Condition.query_terms provided is a global match. - 1 or more Condition.query_terms provided are combined with OR operator. * Action Input: The request query and filter that are applied to the retrieved products, in addition to any filters already provided with the SearchRequest. The AND operator is used to combine the query's existing filters with the filter rule(s). NOTE: May result in 0 results when filters conflict. * Action Result: Filters the returned objects to be ONLY those that passed the filter.
+        :param pulumi.Input[str] filter: A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        """
+        if filter is not None:
+            pulumi.set(__self__, "filter", filter)
+
+    @property
+    @pulumi.getter
+    def filter(self) -> Optional[pulumi.Input[str]]:
+        """
+        A filter to apply on the matching condition results. Supported features: * filter must be set. * Filter syntax is identical to SearchRequest.filter. See more details at the Retail Search [user guide](/retail/search/docs/filter-and-order#filter). * To filter products with product ID "product_1" or "product_2", and color "Red" or "Blue": *(id: ANY("product_1", "product_2")) * *AND * *(colorFamilies: ANY("Red", "Blue")) *
+        """
+        return pulumi.get(self, "filter")
+
+    @filter.setter
+    def filter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "filter", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2RuleIgnoreActionArgs:
+    def __init__(__self__, *,
+                 ignore_terms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Prevents a term in the query from being used in search. Example: Don't search for "shoddy".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ignore_terms: Terms to ignore in the search query.
+        """
+        if ignore_terms is not None:
+            pulumi.set(__self__, "ignore_terms", ignore_terms)
+
+    @property
+    @pulumi.getter(name="ignoreTerms")
+    def ignore_terms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Terms to ignore in the search query.
+        """
+        return pulumi.get(self, "ignore_terms")
+
+    @ignore_terms.setter
+    def ignore_terms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ignore_terms", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2RuleOnewaySynonymsActionArgs:
+    def __init__(__self__, *,
+                 oneway_terms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 query_terms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 synonyms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Maps a set of terms to a set of synonyms. Set of synonyms will be treated as synonyms of each query term only. `query_terms` will not be treated as synonyms of each other. Example: "sneakers" will use a synonym of "shoes". "shoes" will not use a synonym of "sneakers".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] oneway_terms: Will be [deprecated = true] post migration;
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] query_terms: Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] synonyms: Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.
+        """
+        if oneway_terms is not None:
+            pulumi.set(__self__, "oneway_terms", oneway_terms)
+        if query_terms is not None:
+            pulumi.set(__self__, "query_terms", query_terms)
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @property
+    @pulumi.getter(name="onewayTerms")
+    def oneway_terms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Will be [deprecated = true] post migration;
+        """
+        return pulumi.get(self, "oneway_terms")
+
+    @oneway_terms.setter
+    def oneway_terms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "oneway_terms", value)
+
+    @property
+    @pulumi.getter(name="queryTerms")
+    def query_terms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Terms from the search query. Will treat synonyms as their synonyms. Not themselves synonyms of the synonyms. Can specify up to 100 terms.
+        """
+        return pulumi.get(self, "query_terms")
+
+    @query_terms.setter
+    def query_terms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "query_terms", value)
+
+    @property
+    @pulumi.getter
+    def synonyms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Defines a set of synonyms. Cannot contain duplicates. Can specify up to 100 synonyms.
+        """
+        return pulumi.get(self, "synonyms")
+
+    @synonyms.setter
+    def synonyms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "synonyms", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2RuleRedirectActionArgs:
+    def __init__(__self__, *,
+                 redirect_uri: Optional[pulumi.Input[str]] = None):
+        """
+        Redirects a shopper to a specific page. * Rule Condition: - Must specify Condition.query_terms. * Action Input: Request Query * Action Result: Redirects shopper to provided uri.
+        :param pulumi.Input[str] redirect_uri: URL must have length equal or less than 2000 characters.
+        """
+        if redirect_uri is not None:
+            pulumi.set(__self__, "redirect_uri", redirect_uri)
+
+    @property
+    @pulumi.getter(name="redirectUri")
+    def redirect_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        URL must have length equal or less than 2000 characters.
+        """
+        return pulumi.get(self, "redirect_uri")
+
+    @redirect_uri.setter
+    def redirect_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "redirect_uri", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2RuleReplacementActionArgs:
+    def __init__(__self__, *,
+                 query_terms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 replacement_term: Optional[pulumi.Input[str]] = None,
+                 term: Optional[pulumi.Input[str]] = None):
+        """
+        Replaces a term in the query. Multiple replacement candidates can be specified. All `query_terms` will be replaced with the replacement term. Example: Replace "gShoe" with "google shoe".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] query_terms: Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
+        :param pulumi.Input[str] replacement_term: Term that will be used for replacement.
+        :param pulumi.Input[str] term: Will be [deprecated = true] post migration;
+        """
+        if query_terms is not None:
+            pulumi.set(__self__, "query_terms", query_terms)
+        if replacement_term is not None:
+            pulumi.set(__self__, "replacement_term", replacement_term)
+        if term is not None:
+            pulumi.set(__self__, "term", term)
+
+    @property
+    @pulumi.getter(name="queryTerms")
+    def query_terms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Terms from the search query. Will be replaced by replacement term. Can specify up to 100 terms.
+        """
+        return pulumi.get(self, "query_terms")
+
+    @query_terms.setter
+    def query_terms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "query_terms", value)
+
+    @property
+    @pulumi.getter(name="replacementTerm")
+    def replacement_term(self) -> Optional[pulumi.Input[str]]:
+        """
+        Term that will be used for replacement.
+        """
+        return pulumi.get(self, "replacement_term")
+
+    @replacement_term.setter
+    def replacement_term(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "replacement_term", value)
+
+    @property
+    @pulumi.getter
+    def term(self) -> Optional[pulumi.Input[str]]:
+        """
+        Will be [deprecated = true] post migration;
+        """
+        return pulumi.get(self, "term")
+
+    @term.setter
+    def term(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "term", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2RuleTwowaySynonymsActionArgs:
+    def __init__(__self__, *,
+                 synonyms: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        Creates a set of terms that will be treated as synonyms of each other. Example: synonyms of "sneakers" and "shoes". * "sneakers" will use a synonym of "shoes". * "shoes" will use a synonym of "sneakers".
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] synonyms: Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
+        """
+        if synonyms is not None:
+            pulumi.set(__self__, "synonyms", synonyms)
+
+    @property
+    @pulumi.getter
+    def synonyms(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Defines a set of synonyms. Can specify up to 100 synonyms. Must specify at least 2 synonyms.
+        """
+        return pulumi.get(self, "synonyms")
+
+    @synonyms.setter
+    def synonyms(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "synonyms", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2RuleArgs:
+    def __init__(__self__, *,
+                 condition: pulumi.Input['GoogleCloudRetailV2ConditionArgs'],
+                 boost_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleBoostActionArgs']] = None,
+                 do_not_associate_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleDoNotAssociateActionArgs']] = None,
+                 filter_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleFilterActionArgs']] = None,
+                 ignore_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleIgnoreActionArgs']] = None,
+                 oneway_synonyms_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleOnewaySynonymsActionArgs']] = None,
+                 redirect_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleRedirectActionArgs']] = None,
+                 replacement_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleReplacementActionArgs']] = None,
+                 twoway_synonyms_action: Optional[pulumi.Input['GoogleCloudRetailV2RuleTwowaySynonymsActionArgs']] = None):
+        """
+        A rule is a condition-action pair * A condition defines when a rule is to be triggered. * An action specifies what occurs on that trigger. Currently rules only work for controls with SOLUTION_TYPE_SEARCH.
+        :param pulumi.Input['GoogleCloudRetailV2ConditionArgs'] condition: The condition that triggers the rule. If the condition is empty, the rule will always apply.
+        :param pulumi.Input['GoogleCloudRetailV2RuleBoostActionArgs'] boost_action: A boost action.
+        :param pulumi.Input['GoogleCloudRetailV2RuleDoNotAssociateActionArgs'] do_not_associate_action: Prevents term from being associated with other terms.
+        :param pulumi.Input['GoogleCloudRetailV2RuleFilterActionArgs'] filter_action: Filters results.
+        :param pulumi.Input['GoogleCloudRetailV2RuleIgnoreActionArgs'] ignore_action: Ignores specific terms from query during search.
+        :param pulumi.Input['GoogleCloudRetailV2RuleOnewaySynonymsActionArgs'] oneway_synonyms_action: Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
+        :param pulumi.Input['GoogleCloudRetailV2RuleRedirectActionArgs'] redirect_action: Redirects a shopper to a specific page.
+        :param pulumi.Input['GoogleCloudRetailV2RuleReplacementActionArgs'] replacement_action: Replaces specific terms in the query.
+        :param pulumi.Input['GoogleCloudRetailV2RuleTwowaySynonymsActionArgs'] twoway_synonyms_action: Treats a set of terms as synonyms of one another.
+        """
+        pulumi.set(__self__, "condition", condition)
+        if boost_action is not None:
+            pulumi.set(__self__, "boost_action", boost_action)
+        if do_not_associate_action is not None:
+            pulumi.set(__self__, "do_not_associate_action", do_not_associate_action)
+        if filter_action is not None:
+            pulumi.set(__self__, "filter_action", filter_action)
+        if ignore_action is not None:
+            pulumi.set(__self__, "ignore_action", ignore_action)
+        if oneway_synonyms_action is not None:
+            pulumi.set(__self__, "oneway_synonyms_action", oneway_synonyms_action)
+        if redirect_action is not None:
+            pulumi.set(__self__, "redirect_action", redirect_action)
+        if replacement_action is not None:
+            pulumi.set(__self__, "replacement_action", replacement_action)
+        if twoway_synonyms_action is not None:
+            pulumi.set(__self__, "twoway_synonyms_action", twoway_synonyms_action)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> pulumi.Input['GoogleCloudRetailV2ConditionArgs']:
+        """
+        The condition that triggers the rule. If the condition is empty, the rule will always apply.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: pulumi.Input['GoogleCloudRetailV2ConditionArgs']):
+        pulumi.set(self, "condition", value)
+
+    @property
+    @pulumi.getter(name="boostAction")
+    def boost_action(self) -> Optional[pulumi.Input['GoogleCloudRetailV2RuleBoostActionArgs']]:
+        """
+        A boost action.
+        """
+        return pulumi.get(self, "boost_action")
+
+    @boost_action.setter
+    def boost_action(self, value: Optional[pulumi.Input['GoogleCloudRetailV2RuleBoostActionArgs']]):
+        pulumi.set(self, "boost_action", value)
+
+    @property
+    @pulumi.getter(name="doNotAssociateAction")
+    def do_not_associate_action(self) -> Optional[pulumi.Input['GoogleCloudRetailV2RuleDoNotAssociateActionArgs']]:
+        """
+        Prevents term from being associated with other terms.
+        """
+        return pulumi.get(self, "do_not_associate_action")
+
+    @do_not_associate_action.setter
+    def do_not_associate_action(self, value: Optional[pulumi.Input['GoogleCloudRetailV2RuleDoNotAssociateActionArgs']]):
+        pulumi.set(self, "do_not_associate_action", value)
+
+    @property
+    @pulumi.getter(name="filterAction")
+    def filter_action(self) -> Optional[pulumi.Input['GoogleCloudRetailV2RuleFilterActionArgs']]:
+        """
+        Filters results.
+        """
+        return pulumi.get(self, "filter_action")
+
+    @filter_action.setter
+    def filter_action(self, value: Optional[pulumi.Input['GoogleCloudRetailV2RuleFilterActionArgs']]):
+        pulumi.set(self, "filter_action", value)
+
+    @property
+    @pulumi.getter(name="ignoreAction")
+    def ignore_action(self) -> Optional[pulumi.Input['GoogleCloudRetailV2RuleIgnoreActionArgs']]:
+        """
+        Ignores specific terms from query during search.
+        """
+        return pulumi.get(self, "ignore_action")
+
+    @ignore_action.setter
+    def ignore_action(self, value: Optional[pulumi.Input['GoogleCloudRetailV2RuleIgnoreActionArgs']]):
+        pulumi.set(self, "ignore_action", value)
+
+    @property
+    @pulumi.getter(name="onewaySynonymsAction")
+    def oneway_synonyms_action(self) -> Optional[pulumi.Input['GoogleCloudRetailV2RuleOnewaySynonymsActionArgs']]:
+        """
+        Treats specific term as a synonym with a group of terms. Group of terms will not be treated as synonyms with the specific term.
+        """
+        return pulumi.get(self, "oneway_synonyms_action")
+
+    @oneway_synonyms_action.setter
+    def oneway_synonyms_action(self, value: Optional[pulumi.Input['GoogleCloudRetailV2RuleOnewaySynonymsActionArgs']]):
+        pulumi.set(self, "oneway_synonyms_action", value)
+
+    @property
+    @pulumi.getter(name="redirectAction")
+    def redirect_action(self) -> Optional[pulumi.Input['GoogleCloudRetailV2RuleRedirectActionArgs']]:
+        """
+        Redirects a shopper to a specific page.
+        """
+        return pulumi.get(self, "redirect_action")
+
+    @redirect_action.setter
+    def redirect_action(self, value: Optional[pulumi.Input['GoogleCloudRetailV2RuleRedirectActionArgs']]):
+        pulumi.set(self, "redirect_action", value)
+
+    @property
+    @pulumi.getter(name="replacementAction")
+    def replacement_action(self) -> Optional[pulumi.Input['GoogleCloudRetailV2RuleReplacementActionArgs']]:
+        """
+        Replaces specific terms in the query.
+        """
+        return pulumi.get(self, "replacement_action")
+
+    @replacement_action.setter
+    def replacement_action(self, value: Optional[pulumi.Input['GoogleCloudRetailV2RuleReplacementActionArgs']]):
+        pulumi.set(self, "replacement_action", value)
+
+    @property
+    @pulumi.getter(name="twowaySynonymsAction")
+    def twoway_synonyms_action(self) -> Optional[pulumi.Input['GoogleCloudRetailV2RuleTwowaySynonymsActionArgs']]:
+        """
+        Treats a set of terms as synonyms of one another.
+        """
+        return pulumi.get(self, "twoway_synonyms_action")
+
+    @twoway_synonyms_action.setter
+    def twoway_synonyms_action(self, value: Optional[pulumi.Input['GoogleCloudRetailV2RuleTwowaySynonymsActionArgs']]):
+        pulumi.set(self, "twoway_synonyms_action", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2SearchRequestDynamicFacetSpecArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input['GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode']] = None):
+        """
+        The specifications of dynamically generated facets.
+        :param pulumi.Input['GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode'] mode: Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input['GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode']]:
+        """
+        Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input['GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode']]):
+        pulumi.set(self, "mode", value)
+
+
+@pulumi.input_type
+class GoogleCloudRetailV2SearchRequestPersonalizationSpecArgs:
+    def __init__(__self__, *,
+                 mode: Optional[pulumi.Input['GoogleCloudRetailV2SearchRequestPersonalizationSpecMode']] = None):
+        """
+        The specification for personalization.
+        :param pulumi.Input['GoogleCloudRetailV2SearchRequestPersonalizationSpecMode'] mode: Defaults to Mode.AUTO.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[pulumi.Input['GoogleCloudRetailV2SearchRequestPersonalizationSpecMode']]:
+        """
+        Defaults to Mode.AUTO.
+        """
+        return pulumi.get(self, "mode")
+
+    @mode.setter
+    def mode(self, value: Optional[pulumi.Input['GoogleCloudRetailV2SearchRequestPersonalizationSpecMode']]):
+        pulumi.set(self, "mode", value)
 
 

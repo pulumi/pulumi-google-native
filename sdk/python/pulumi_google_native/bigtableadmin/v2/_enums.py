@@ -54,7 +54,7 @@ class ClusterDefaultStorageType(str, Enum):
 
 class InstanceType(str, Enum):
     """
-    The type of the instance. Defaults to `PRODUCTION`.
+    Required. The type of the instance. Defaults to `PRODUCTION`.
     """
     TYPE_UNSPECIFIED = "TYPE_UNSPECIFIED"
     """

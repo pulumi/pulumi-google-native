@@ -46,9 +46,13 @@ export class ServingConfig extends pulumi.CustomResource {
      */
     public readonly displayName!: pulumi.Output<string>;
     /**
-     * How much diversity to use in recommendation model results e.g. 'medium-diversity' or 'high-diversity'. Currently supported values: * 'no-diversity' * 'low-diversity' * 'medium-diversity' * 'high-diversity' * 'auto-diversity' If not specified, we choose default based on recommendation model type. Default value: 'no-diversity'. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+     * How much diversity to use in recommendation model results e.g. `medium-diversity` or `high-diversity`. Currently supported values: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity` If not specified, we choose default based on recommendation model type. Default value: `no-diversity`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
      */
     public readonly diversityLevel!: pulumi.Output<string>;
+    /**
+     * What kind of diversity to use - data driven or rule based.
+     */
+    public readonly diversityType!: pulumi.Output<string>;
     /**
      * Condition do not associate specifications. If multiple do not associate conditions match, all matching do not associate controls in the list will execute. - Order does not matter. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
      */
@@ -58,7 +62,7 @@ export class ServingConfig extends pulumi.CustomResource {
      */
     public readonly dynamicFacetSpec!: pulumi.Output<outputs.retail.v2beta.GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecResponse>;
     /**
-     * Whether to add additional category filters on the 'similar-items' model. If not specified, we enable it by default. Allowed values are: * 'no-category-match': No additional filtering of original results from the model and the customer's filters. * 'relaxed-category-match': Only keep results with categories that match at least one item categories in the PredictRequests's context item. * If customer also sends filters in the PredictRequest, then the results will satisfy both conditions (user given and category match). Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+     * Whether to add additional category filters on the `similar-items` model. If not specified, we enable it by default. Allowed values are: * `no-category-match`: No additional filtering of original results from the model and the customer's filters. * `relaxed-category-match`: Only keep results with categories that match at least one item categories in the PredictRequests's context item. * If customer also sends filters in the PredictRequest, then the results will satisfy both conditions (user given and category match). Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
      */
     public readonly enableCategoryFilterLevel!: pulumi.Output<string>;
     /**
@@ -75,7 +79,7 @@ export class ServingConfig extends pulumi.CustomResource {
     public readonly ignoreControlIds!: pulumi.Output<string[]>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * The id of the model to use at serving time. Currently only RecommendationModels are supported: https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is SOLUTION_TYPE_RECOMMENDATION.
+     * The id of the model in the same Catalog to use at serving time. Currently only RecommendationModels are supported: https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is SOLUTION_TYPE_RECOMMENDATION.
      */
     public readonly modelId!: pulumi.Output<string>;
     /**
@@ -87,7 +91,11 @@ export class ServingConfig extends pulumi.CustomResource {
      */
     public readonly onewaySynonymsControlIds!: pulumi.Output<string[]>;
     /**
-     * How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * 'no-price-reranking' * 'low-price-raranking' * 'medium-price-reranking' * 'high-price-reranking' If not specified, we choose default based on model type. Default value: 'no-price-reranking'. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+     * The specification for personalization spec. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. Notice that if both ServingConfig.personalization_spec and SearchRequest.personalization_spec are set. SearchRequest.personalization_spec will override ServingConfig.personalization_spec.
+     */
+    public readonly personalizationSpec!: pulumi.Output<outputs.retail.v2beta.GoogleCloudRetailV2betaSearchRequestPersonalizationSpecResponse>;
+    /**
+     * How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-raranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
      */
     public readonly priceRerankingLevel!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -139,6 +147,7 @@ export class ServingConfig extends pulumi.CustomResource {
             resourceInputs["catalogId"] = args ? args.catalogId : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["diversityLevel"] = args ? args.diversityLevel : undefined;
+            resourceInputs["diversityType"] = args ? args.diversityType : undefined;
             resourceInputs["doNotAssociateControlIds"] = args ? args.doNotAssociateControlIds : undefined;
             resourceInputs["dynamicFacetSpec"] = args ? args.dynamicFacetSpec : undefined;
             resourceInputs["enableCategoryFilterLevel"] = args ? args.enableCategoryFilterLevel : undefined;
@@ -149,6 +158,7 @@ export class ServingConfig extends pulumi.CustomResource {
             resourceInputs["modelId"] = args ? args.modelId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["onewaySynonymsControlIds"] = args ? args.onewaySynonymsControlIds : undefined;
+            resourceInputs["personalizationSpec"] = args ? args.personalizationSpec : undefined;
             resourceInputs["priceRerankingLevel"] = args ? args.priceRerankingLevel : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["redirectControlIds"] = args ? args.redirectControlIds : undefined;
@@ -161,6 +171,7 @@ export class ServingConfig extends pulumi.CustomResource {
             resourceInputs["catalogId"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
             resourceInputs["diversityLevel"] = undefined /*out*/;
+            resourceInputs["diversityType"] = undefined /*out*/;
             resourceInputs["doNotAssociateControlIds"] = undefined /*out*/;
             resourceInputs["dynamicFacetSpec"] = undefined /*out*/;
             resourceInputs["enableCategoryFilterLevel"] = undefined /*out*/;
@@ -171,6 +182,7 @@ export class ServingConfig extends pulumi.CustomResource {
             resourceInputs["modelId"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["onewaySynonymsControlIds"] = undefined /*out*/;
+            resourceInputs["personalizationSpec"] = undefined /*out*/;
             resourceInputs["priceRerankingLevel"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["redirectControlIds"] = undefined /*out*/;
@@ -200,9 +212,13 @@ export interface ServingConfigArgs {
      */
     displayName: pulumi.Input<string>;
     /**
-     * How much diversity to use in recommendation model results e.g. 'medium-diversity' or 'high-diversity'. Currently supported values: * 'no-diversity' * 'low-diversity' * 'medium-diversity' * 'high-diversity' * 'auto-diversity' If not specified, we choose default based on recommendation model type. Default value: 'no-diversity'. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+     * How much diversity to use in recommendation model results e.g. `medium-diversity` or `high-diversity`. Currently supported values: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity` If not specified, we choose default based on recommendation model type. Default value: `no-diversity`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
      */
     diversityLevel?: pulumi.Input<string>;
+    /**
+     * What kind of diversity to use - data driven or rule based.
+     */
+    diversityType?: pulumi.Input<enums.retail.v2beta.ServingConfigDiversityType>;
     /**
      * Condition do not associate specifications. If multiple do not associate conditions match, all matching do not associate controls in the list will execute. - Order does not matter. - Maximum number of specifications is 100. Can only be set if solution_types is SOLUTION_TYPE_SEARCH.
      */
@@ -212,7 +228,7 @@ export interface ServingConfigArgs {
      */
     dynamicFacetSpec?: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaSearchRequestDynamicFacetSpecArgs>;
     /**
-     * Whether to add additional category filters on the 'similar-items' model. If not specified, we enable it by default. Allowed values are: * 'no-category-match': No additional filtering of original results from the model and the customer's filters. * 'relaxed-category-match': Only keep results with categories that match at least one item categories in the PredictRequests's context item. * If customer also sends filters in the PredictRequest, then the results will satisfy both conditions (user given and category match). Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+     * Whether to add additional category filters on the `similar-items` model. If not specified, we enable it by default. Allowed values are: * `no-category-match`: No additional filtering of original results from the model and the customer's filters. * `relaxed-category-match`: Only keep results with categories that match at least one item categories in the PredictRequests's context item. * If customer also sends filters in the PredictRequest, then the results will satisfy both conditions (user given and category match). Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
      */
     enableCategoryFilterLevel?: pulumi.Input<string>;
     /**
@@ -229,7 +245,7 @@ export interface ServingConfigArgs {
     ignoreControlIds?: pulumi.Input<pulumi.Input<string>[]>;
     location?: pulumi.Input<string>;
     /**
-     * The id of the model to use at serving time. Currently only RecommendationModels are supported: https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is SOLUTION_TYPE_RECOMMENDATION.
+     * The id of the model in the same Catalog to use at serving time. Currently only RecommendationModels are supported: https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is SOLUTION_TYPE_RECOMMENDATION.
      */
     modelId?: pulumi.Input<string>;
     /**
@@ -241,7 +257,11 @@ export interface ServingConfigArgs {
      */
     onewaySynonymsControlIds?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * 'no-price-reranking' * 'low-price-raranking' * 'medium-price-reranking' * 'high-price-reranking' If not specified, we choose default based on model type. Default value: 'no-price-reranking'. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+     * The specification for personalization spec. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. Notice that if both ServingConfig.personalization_spec and SearchRequest.personalization_spec are set. SearchRequest.personalization_spec will override ServingConfig.personalization_spec.
+     */
+    personalizationSpec?: pulumi.Input<inputs.retail.v2beta.GoogleCloudRetailV2betaSearchRequestPersonalizationSpecArgs>;
+    /**
+     * How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-raranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
      */
     priceRerankingLevel?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

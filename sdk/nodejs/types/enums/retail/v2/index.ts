@@ -2,6 +2,80 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const ControlSearchSolutionUseCaseItem = {
+    /**
+     * The value when it's unspecified. In this case, server behavior defaults to SEARCH_SOLUTION_USE_CASE_SEARCH.
+     */
+    SearchSolutionUseCaseUnspecified: "SEARCH_SOLUTION_USE_CASE_UNSPECIFIED",
+    /**
+     * Search use case. Expects the traffic has a non-empty query.
+     */
+    SearchSolutionUseCaseSearch: "SEARCH_SOLUTION_USE_CASE_SEARCH",
+    /**
+     * Browse use case. Expects the traffic has an empty query.
+     */
+    SearchSolutionUseCaseBrowse: "SEARCH_SOLUTION_USE_CASE_BROWSE",
+} as const;
+
+export type ControlSearchSolutionUseCaseItem = (typeof ControlSearchSolutionUseCaseItem)[keyof typeof ControlSearchSolutionUseCaseItem];
+
+export const ControlSolutionTypesItem = {
+    /**
+     * Default value.
+     */
+    SolutionTypeUnspecified: "SOLUTION_TYPE_UNSPECIFIED",
+    /**
+     * Used for Recommendations AI.
+     */
+    SolutionTypeRecommendation: "SOLUTION_TYPE_RECOMMENDATION",
+    /**
+     * Used for Retail Search.
+     */
+    SolutionTypeSearch: "SOLUTION_TYPE_SEARCH",
+} as const;
+
+export type ControlSolutionTypesItem = (typeof ControlSolutionTypesItem)[keyof typeof ControlSolutionTypesItem];
+
+export const GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode = {
+    /**
+     * Default value.
+     */
+    ModeUnspecified: "MODE_UNSPECIFIED",
+    /**
+     * Disable Dynamic Facet.
+     */
+    Disabled: "DISABLED",
+    /**
+     * Automatic mode built by Google Retail Search.
+     */
+    Enabled: "ENABLED",
+} as const;
+
+/**
+ * Mode of the DynamicFacet feature. Defaults to Mode.DISABLED if it's unset.
+ */
+export type GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode = (typeof GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode)[keyof typeof GoogleCloudRetailV2SearchRequestDynamicFacetSpecMode];
+
+export const GoogleCloudRetailV2SearchRequestPersonalizationSpecMode = {
+    /**
+     * Default value. In this case, server behavior defaults to Mode.AUTO.
+     */
+    ModeUnspecified: "MODE_UNSPECIFIED",
+    /**
+     * Let CRS decide whether to use personalization based on quality of user event data.
+     */
+    Auto: "AUTO",
+    /**
+     * Disable personalization.
+     */
+    Disabled: "DISABLED",
+} as const;
+
+/**
+ * Defaults to Mode.AUTO.
+ */
+export type GoogleCloudRetailV2SearchRequestPersonalizationSpecMode = (typeof GoogleCloudRetailV2SearchRequestPersonalizationSpecMode)[keyof typeof GoogleCloudRetailV2SearchRequestPersonalizationSpecMode];
+
 export const ProductAvailability = {
     /**
      * Default product availability. Default to Availability.IN_STOCK if unset.
@@ -53,3 +127,40 @@ export const ProductType = {
  * Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
  */
 export type ProductType = (typeof ProductType)[keyof typeof ProductType];
+
+export const ServingConfigDiversityType = {
+    /**
+     * Default value.
+     */
+    DiversityTypeUnspecified: "DIVERSITY_TYPE_UNSPECIFIED",
+    /**
+     * Rule based diversity.
+     */
+    RuleBasedDiversity: "RULE_BASED_DIVERSITY",
+    /**
+     * Data driven diversity.
+     */
+    DataDrivenDiversity: "DATA_DRIVEN_DIVERSITY",
+} as const;
+
+/**
+ * What kind of diversity to use - data driven or rule based.
+ */
+export type ServingConfigDiversityType = (typeof ServingConfigDiversityType)[keyof typeof ServingConfigDiversityType];
+
+export const ServingConfigSolutionTypesItem = {
+    /**
+     * Default value.
+     */
+    SolutionTypeUnspecified: "SOLUTION_TYPE_UNSPECIFIED",
+    /**
+     * Used for Recommendations AI.
+     */
+    SolutionTypeRecommendation: "SOLUTION_TYPE_RECOMMENDATION",
+    /**
+     * Used for Retail Search.
+     */
+    SolutionTypeSearch: "SOLUTION_TYPE_SEARCH",
+} as const;
+
+export type ServingConfigSolutionTypesItem = (typeof ServingConfigSolutionTypesItem)[keyof typeof ServingConfigSolutionTypesItem];

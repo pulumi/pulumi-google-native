@@ -1217,9 +1217,9 @@ const (
 	GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionWriteDispositionUnspecified = GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition("WRITE_DISPOSITION_UNSPECIFIED")
 	// Only export data if the destination table is empty.
 	GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionWriteEmpty = GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition("WRITE_EMPTY")
-	// Erase all existing data in a table before writing the instances.
+	// Erase all existing data in the destination table before writing the instances.
 	GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionWriteTruncate = GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition("WRITE_TRUNCATE")
-	// Append data to the existing table.
+	// Append data to the destination table.
 	GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositionWriteAppend = GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition("WRITE_APPEND")
 )
 
@@ -1388,9 +1388,9 @@ const (
 	GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionWriteDispositionUnspecified = GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition("WRITE_DISPOSITION_UNSPECIFIED")
 	// Only export data if the destination tables are empty.
 	GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionWriteEmpty = GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition("WRITE_EMPTY")
-	// Erase all existing data in the tables before writing the instances.
+	// Erase all existing data in the destination tables before writing the FHIR resources.
 	GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionWriteTruncate = GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition("WRITE_TRUNCATE")
-	// Append data to the existing tables.
+	// Append data to the destination tables.
 	GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDispositionWriteAppend = GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition("WRITE_APPEND")
 )
 

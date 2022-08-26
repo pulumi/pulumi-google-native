@@ -184,11 +184,11 @@ export const GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDispositio
      */
     WriteEmpty: "WRITE_EMPTY",
     /**
-     * Erase all existing data in a table before writing the instances.
+     * Erase all existing data in the destination table before writing the instances.
      */
     WriteTruncate: "WRITE_TRUNCATE",
     /**
-     * Append data to the existing table.
+     * Append data to the destination table.
      */
     WriteAppend: "WRITE_APPEND",
 } as const;
@@ -208,11 +208,11 @@ export const GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition
      */
     WriteEmpty: "WRITE_EMPTY",
     /**
-     * Erase all existing data in the tables before writing the instances.
+     * Erase all existing data in the destination tables before writing the FHIR resources.
      */
     WriteTruncate: "WRITE_TRUNCATE",
     /**
-     * Append data to the existing tables.
+     * Append data to the destination tables.
      */
     WriteAppend: "WRITE_APPEND",
 } as const;

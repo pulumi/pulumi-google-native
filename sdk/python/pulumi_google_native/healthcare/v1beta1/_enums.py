@@ -195,11 +195,11 @@ class GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition(str, 
     """
     WRITE_TRUNCATE = "WRITE_TRUNCATE"
     """
-    Erase all existing data in a table before writing the instances.
+    Erase all existing data in the destination table before writing the instances.
     """
     WRITE_APPEND = "WRITE_APPEND"
     """
-    Append data to the existing table.
+    Append data to the destination table.
     """
 
 
@@ -217,11 +217,11 @@ class GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition(str, E
     """
     WRITE_TRUNCATE = "WRITE_TRUNCATE"
     """
-    Erase all existing data in the tables before writing the instances.
+    Erase all existing data in the destination tables before writing the FHIR resources.
     """
     WRITE_APPEND = "WRITE_APPEND"
     """
-    Append data to the existing tables.
+    Append data to the destination tables.
     """
 
 

@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetServingConfigResult:
-    def __init__(__self__, boost_control_ids=None, display_name=None, diversity_level=None, do_not_associate_control_ids=None, dynamic_facet_spec=None, enable_category_filter_level=None, facet_control_ids=None, filter_control_ids=None, ignore_control_ids=None, model_id=None, name=None, oneway_synonyms_control_ids=None, price_reranking_level=None, redirect_control_ids=None, replacement_control_ids=None, solution_types=None, twoway_synonyms_control_ids=None):
+    def __init__(__self__, boost_control_ids=None, display_name=None, diversity_level=None, diversity_type=None, do_not_associate_control_ids=None, dynamic_facet_spec=None, enable_category_filter_level=None, facet_control_ids=None, filter_control_ids=None, ignore_control_ids=None, model_id=None, name=None, oneway_synonyms_control_ids=None, personalization_spec=None, price_reranking_level=None, redirect_control_ids=None, replacement_control_ids=None, solution_types=None, twoway_synonyms_control_ids=None):
         if boost_control_ids and not isinstance(boost_control_ids, list):
             raise TypeError("Expected argument 'boost_control_ids' to be a list")
         pulumi.set(__self__, "boost_control_ids", boost_control_ids)
@@ -29,6 +29,9 @@ class GetServingConfigResult:
         if diversity_level and not isinstance(diversity_level, str):
             raise TypeError("Expected argument 'diversity_level' to be a str")
         pulumi.set(__self__, "diversity_level", diversity_level)
+        if diversity_type and not isinstance(diversity_type, str):
+            raise TypeError("Expected argument 'diversity_type' to be a str")
+        pulumi.set(__self__, "diversity_type", diversity_type)
         if do_not_associate_control_ids and not isinstance(do_not_associate_control_ids, list):
             raise TypeError("Expected argument 'do_not_associate_control_ids' to be a list")
         pulumi.set(__self__, "do_not_associate_control_ids", do_not_associate_control_ids)
@@ -56,6 +59,9 @@ class GetServingConfigResult:
         if oneway_synonyms_control_ids and not isinstance(oneway_synonyms_control_ids, list):
             raise TypeError("Expected argument 'oneway_synonyms_control_ids' to be a list")
         pulumi.set(__self__, "oneway_synonyms_control_ids", oneway_synonyms_control_ids)
+        if personalization_spec and not isinstance(personalization_spec, dict):
+            raise TypeError("Expected argument 'personalization_spec' to be a dict")
+        pulumi.set(__self__, "personalization_spec", personalization_spec)
         if price_reranking_level and not isinstance(price_reranking_level, str):
             raise TypeError("Expected argument 'price_reranking_level' to be a str")
         pulumi.set(__self__, "price_reranking_level", price_reranking_level)
@@ -92,9 +98,17 @@ class GetServingConfigResult:
     @pulumi.getter(name="diversityLevel")
     def diversity_level(self) -> str:
         """
-        How much diversity to use in recommendation model results e.g. 'medium-diversity' or 'high-diversity'. Currently supported values: * 'no-diversity' * 'low-diversity' * 'medium-diversity' * 'high-diversity' * 'auto-diversity' If not specified, we choose default based on recommendation model type. Default value: 'no-diversity'. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+        How much diversity to use in recommendation model results e.g. `medium-diversity` or `high-diversity`. Currently supported values: * `no-diversity` * `low-diversity` * `medium-diversity` * `high-diversity` * `auto-diversity` If not specified, we choose default based on recommendation model type. Default value: `no-diversity`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
         """
         return pulumi.get(self, "diversity_level")
+
+    @property
+    @pulumi.getter(name="diversityType")
+    def diversity_type(self) -> str:
+        """
+        What kind of diversity to use - data driven or rule based.
+        """
+        return pulumi.get(self, "diversity_type")
 
     @property
     @pulumi.getter(name="doNotAssociateControlIds")
@@ -116,7 +130,7 @@ class GetServingConfigResult:
     @pulumi.getter(name="enableCategoryFilterLevel")
     def enable_category_filter_level(self) -> str:
         """
-        Whether to add additional category filters on the 'similar-items' model. If not specified, we enable it by default. Allowed values are: * 'no-category-match': No additional filtering of original results from the model and the customer's filters. * 'relaxed-category-match': Only keep results with categories that match at least one item categories in the PredictRequests's context item. * If customer also sends filters in the PredictRequest, then the results will satisfy both conditions (user given and category match). Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+        Whether to add additional category filters on the `similar-items` model. If not specified, we enable it by default. Allowed values are: * `no-category-match`: No additional filtering of original results from the model and the customer's filters. * `relaxed-category-match`: Only keep results with categories that match at least one item categories in the PredictRequests's context item. * If customer also sends filters in the PredictRequest, then the results will satisfy both conditions (user given and category match). Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
         """
         return pulumi.get(self, "enable_category_filter_level")
 
@@ -148,7 +162,7 @@ class GetServingConfigResult:
     @pulumi.getter(name="modelId")
     def model_id(self) -> str:
         """
-        The id of the model to use at serving time. Currently only RecommendationModels are supported: https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is SOLUTION_TYPE_RECOMMENDATION.
+        The id of the model in the same Catalog to use at serving time. Currently only RecommendationModels are supported: https://cloud.google.com/retail/recommendations-ai/docs/create-models Can be changed but only to a compatible model (e.g. others-you-may-like CTR to others-you-may-like CVR). Required when solution_types is SOLUTION_TYPE_RECOMMENDATION.
         """
         return pulumi.get(self, "model_id")
 
@@ -169,10 +183,18 @@ class GetServingConfigResult:
         return pulumi.get(self, "oneway_synonyms_control_ids")
 
     @property
+    @pulumi.getter(name="personalizationSpec")
+    def personalization_spec(self) -> 'outputs.GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecResponse':
+        """
+        The specification for personalization spec. Can only be set if solution_types is SOLUTION_TYPE_SEARCH. Notice that if both ServingConfig.personalization_spec and SearchRequest.personalization_spec are set. SearchRequest.personalization_spec will override ServingConfig.personalization_spec.
+        """
+        return pulumi.get(self, "personalization_spec")
+
+    @property
     @pulumi.getter(name="priceRerankingLevel")
     def price_reranking_level(self) -> str:
         """
-        How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * 'no-price-reranking' * 'low-price-raranking' * 'medium-price-reranking' * 'high-price-reranking' If not specified, we choose default based on model type. Default value: 'no-price-reranking'. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
+        How much price ranking we want in serving results. Price reranking causes product items with a similar recommendation probability to be ordered by price, with the highest-priced items first. This setting could result in a decrease in click-through and conversion rates. Allowed values are: * `no-price-reranking` * `low-price-raranking` * `medium-price-reranking` * `high-price-reranking` If not specified, we choose default based on model type. Default value: `no-price-reranking`. Can only be set if solution_types is SOLUTION_TYPE_RECOMMENDATION.
         """
         return pulumi.get(self, "price_reranking_level")
 
@@ -218,6 +240,7 @@ class AwaitableGetServingConfigResult(GetServingConfigResult):
             boost_control_ids=self.boost_control_ids,
             display_name=self.display_name,
             diversity_level=self.diversity_level,
+            diversity_type=self.diversity_type,
             do_not_associate_control_ids=self.do_not_associate_control_ids,
             dynamic_facet_spec=self.dynamic_facet_spec,
             enable_category_filter_level=self.enable_category_filter_level,
@@ -227,6 +250,7 @@ class AwaitableGetServingConfigResult(GetServingConfigResult):
             model_id=self.model_id,
             name=self.name,
             oneway_synonyms_control_ids=self.oneway_synonyms_control_ids,
+            personalization_spec=self.personalization_spec,
             price_reranking_level=self.price_reranking_level,
             redirect_control_ids=self.redirect_control_ids,
             replacement_control_ids=self.replacement_control_ids,
@@ -254,6 +278,7 @@ def get_serving_config(catalog_id: Optional[str] = None,
         boost_control_ids=__ret__.boost_control_ids,
         display_name=__ret__.display_name,
         diversity_level=__ret__.diversity_level,
+        diversity_type=__ret__.diversity_type,
         do_not_associate_control_ids=__ret__.do_not_associate_control_ids,
         dynamic_facet_spec=__ret__.dynamic_facet_spec,
         enable_category_filter_level=__ret__.enable_category_filter_level,
@@ -263,6 +288,7 @@ def get_serving_config(catalog_id: Optional[str] = None,
         model_id=__ret__.model_id,
         name=__ret__.name,
         oneway_synonyms_control_ids=__ret__.oneway_synonyms_control_ids,
+        personalization_spec=__ret__.personalization_spec,
         price_reranking_level=__ret__.price_reranking_level,
         redirect_control_ids=__ret__.redirect_control_ids,
         replacement_control_ids=__ret__.replacement_control_ids,

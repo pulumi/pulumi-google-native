@@ -348,11 +348,11 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition WriteEmpty { get; } = new GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition("WRITE_EMPTY");
         /// <summary>
-        /// Erase all existing data in a table before writing the instances.
+        /// Erase all existing data in the destination table before writing the instances.
         /// </summary>
         public static GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition WriteTruncate { get; } = new GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition("WRITE_TRUNCATE");
         /// <summary>
-        /// Append data to the existing table.
+        /// Append data to the destination table.
         /// </summary>
         public static GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition WriteAppend { get; } = new GoogleCloudHealthcareV1beta1DicomBigQueryDestinationWriteDisposition("WRITE_APPEND");
 
@@ -393,11 +393,11 @@ namespace Pulumi.GoogleNative.Healthcare.V1Beta1
         /// </summary>
         public static GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition WriteEmpty { get; } = new GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition("WRITE_EMPTY");
         /// <summary>
-        /// Erase all existing data in the tables before writing the instances.
+        /// Erase all existing data in the destination tables before writing the FHIR resources.
         /// </summary>
         public static GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition WriteTruncate { get; } = new GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition("WRITE_TRUNCATE");
         /// <summary>
-        /// Append data to the existing tables.
+        /// Append data to the destination tables.
         /// </summary>
         public static GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition WriteAppend { get; } = new GoogleCloudHealthcareV1beta1FhirBigQueryDestinationWriteDisposition("WRITE_APPEND");
 

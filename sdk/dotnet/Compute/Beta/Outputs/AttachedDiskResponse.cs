@@ -41,6 +41,10 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
         /// </summary>
         public readonly string DiskSizeGb;
         /// <summary>
+        /// [Input Only] Whether to force attach the regional disk even if it's currently attached to another instance. If you try to force attach a zonal disk to an instance, you will receive an error.
+        /// </summary>
+        public readonly bool ForceAttach;
+        /// <summary>
         /// A list of features to enable on the guest operating system. Applicable only for bootable images. Read Enabling guest operating system features to see a list of available options.
         /// </summary>
         public readonly ImmutableArray<Outputs.GuestOsFeatureResponse> GuestOsFeatures;
@@ -103,6 +107,8 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
 
             string diskSizeGb,
 
+            bool forceAttach,
+
             ImmutableArray<Outputs.GuestOsFeatureResponse> guestOsFeatures,
 
             int index,
@@ -133,6 +139,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Outputs
             DeviceName = deviceName;
             DiskEncryptionKey = diskEncryptionKey;
             DiskSizeGb = diskSizeGb;
+            ForceAttach = forceAttach;
             GuestOsFeatures = guestOsFeatures;
             Index = index;
             InitializeParams = initializeParams;

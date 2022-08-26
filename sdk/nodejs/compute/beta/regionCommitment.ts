@@ -66,6 +66,10 @@ export class RegionCommitment extends pulumi.CustomResource {
      */
     public readonly licenseResource!: pulumi.Output<outputs.compute.beta.LicenseResourceCommitmentResponse>;
     /**
+     * List of source commitments to be merged into a new commitment.
+     */
+    public readonly mergeSourceCommitments!: pulumi.Output<string[]>;
+    /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     public readonly name!: pulumi.Output<string>;
@@ -91,6 +95,10 @@ export class RegionCommitment extends pulumi.CustomResource {
      * Server-defined URL for the resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
+    /**
+     * Source commitment to be splitted into a new commitment.
+     */
+    public readonly splitSourceCommitment!: pulumi.Output<string>;
     /**
      * Commitment start time in RFC3339 text format.
      */
@@ -126,6 +134,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             resourceInputs["category"] = args ? args.category : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["licenseResource"] = args ? args.licenseResource : undefined;
+            resourceInputs["mergeSourceCommitments"] = args ? args.mergeSourceCommitments : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["plan"] = args ? args.plan : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -133,6 +142,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["reservations"] = args ? args.reservations : undefined;
             resourceInputs["resources"] = args ? args.resources : undefined;
+            resourceInputs["splitSourceCommitment"] = args ? args.splitSourceCommitment : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["endTimestamp"] = undefined /*out*/;
@@ -149,6 +159,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             resourceInputs["endTimestamp"] = undefined /*out*/;
             resourceInputs["kind"] = undefined /*out*/;
             resourceInputs["licenseResource"] = undefined /*out*/;
+            resourceInputs["mergeSourceCommitments"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["plan"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
@@ -157,6 +168,7 @@ export class RegionCommitment extends pulumi.CustomResource {
             resourceInputs["reservations"] = undefined /*out*/;
             resourceInputs["resources"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["splitSourceCommitment"] = undefined /*out*/;
             resourceInputs["startTimestamp"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["statusMessage"] = undefined /*out*/;
@@ -190,6 +202,10 @@ export interface RegionCommitmentArgs {
      */
     licenseResource?: pulumi.Input<inputs.compute.beta.LicenseResourceCommitmentArgs>;
     /**
+     * List of source commitments to be merged into a new commitment.
+     */
+    mergeSourceCommitments?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * Name of the resource. Provided by the client when the resource is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])?` which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
@@ -211,6 +227,10 @@ export interface RegionCommitmentArgs {
      * A list of commitment amounts for particular resources. Note that VCPU and MEMORY resource commitments must occur together.
      */
     resources?: pulumi.Input<pulumi.Input<inputs.compute.beta.ResourceCommitmentArgs>[]>;
+    /**
+     * Source commitment to be splitted into a new commitment.
+     */
+    splitSourceCommitment?: pulumi.Input<string>;
     /**
      * The type of commitment, which affects the discount rate and the eligible resources. Type MEMORY_OPTIMIZED specifies a commitment that will only apply to memory optimized machines. Type ACCELERATOR_OPTIMIZED specifies a commitment that will only apply to accelerator optimized machines.
      */

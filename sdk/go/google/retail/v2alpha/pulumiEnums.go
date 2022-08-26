@@ -10,6 +10,219 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+type ControlSearchSolutionUseCaseItem string
+
+const (
+	// The value when it's unspecified. In this case, server behavior defaults to SEARCH_SOLUTION_USE_CASE_SEARCH.
+	ControlSearchSolutionUseCaseItemSearchSolutionUseCaseUnspecified = ControlSearchSolutionUseCaseItem("SEARCH_SOLUTION_USE_CASE_UNSPECIFIED")
+	// Search use case. Expects the traffic has a non-empty query.
+	ControlSearchSolutionUseCaseItemSearchSolutionUseCaseSearch = ControlSearchSolutionUseCaseItem("SEARCH_SOLUTION_USE_CASE_SEARCH")
+	// Browse use case. Expects the traffic has an empty query.
+	ControlSearchSolutionUseCaseItemSearchSolutionUseCaseBrowse = ControlSearchSolutionUseCaseItem("SEARCH_SOLUTION_USE_CASE_BROWSE")
+)
+
+func (ControlSearchSolutionUseCaseItem) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlSearchSolutionUseCaseItem)(nil)).Elem()
+}
+
+func (e ControlSearchSolutionUseCaseItem) ToControlSearchSolutionUseCaseItemOutput() ControlSearchSolutionUseCaseItemOutput {
+	return pulumi.ToOutput(e).(ControlSearchSolutionUseCaseItemOutput)
+}
+
+func (e ControlSearchSolutionUseCaseItem) ToControlSearchSolutionUseCaseItemOutputWithContext(ctx context.Context) ControlSearchSolutionUseCaseItemOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ControlSearchSolutionUseCaseItemOutput)
+}
+
+func (e ControlSearchSolutionUseCaseItem) ToControlSearchSolutionUseCaseItemPtrOutput() ControlSearchSolutionUseCaseItemPtrOutput {
+	return e.ToControlSearchSolutionUseCaseItemPtrOutputWithContext(context.Background())
+}
+
+func (e ControlSearchSolutionUseCaseItem) ToControlSearchSolutionUseCaseItemPtrOutputWithContext(ctx context.Context) ControlSearchSolutionUseCaseItemPtrOutput {
+	return ControlSearchSolutionUseCaseItem(e).ToControlSearchSolutionUseCaseItemOutputWithContext(ctx).ToControlSearchSolutionUseCaseItemPtrOutputWithContext(ctx)
+}
+
+func (e ControlSearchSolutionUseCaseItem) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ControlSearchSolutionUseCaseItem) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ControlSearchSolutionUseCaseItem) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ControlSearchSolutionUseCaseItem) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ControlSearchSolutionUseCaseItemOutput struct{ *pulumi.OutputState }
+
+func (ControlSearchSolutionUseCaseItemOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ControlSearchSolutionUseCaseItem)(nil)).Elem()
+}
+
+func (o ControlSearchSolutionUseCaseItemOutput) ToControlSearchSolutionUseCaseItemOutput() ControlSearchSolutionUseCaseItemOutput {
+	return o
+}
+
+func (o ControlSearchSolutionUseCaseItemOutput) ToControlSearchSolutionUseCaseItemOutputWithContext(ctx context.Context) ControlSearchSolutionUseCaseItemOutput {
+	return o
+}
+
+func (o ControlSearchSolutionUseCaseItemOutput) ToControlSearchSolutionUseCaseItemPtrOutput() ControlSearchSolutionUseCaseItemPtrOutput {
+	return o.ToControlSearchSolutionUseCaseItemPtrOutputWithContext(context.Background())
+}
+
+func (o ControlSearchSolutionUseCaseItemOutput) ToControlSearchSolutionUseCaseItemPtrOutputWithContext(ctx context.Context) ControlSearchSolutionUseCaseItemPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ControlSearchSolutionUseCaseItem) *ControlSearchSolutionUseCaseItem {
+		return &v
+	}).(ControlSearchSolutionUseCaseItemPtrOutput)
+}
+
+func (o ControlSearchSolutionUseCaseItemOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ControlSearchSolutionUseCaseItemOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ControlSearchSolutionUseCaseItem) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ControlSearchSolutionUseCaseItemOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ControlSearchSolutionUseCaseItemOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ControlSearchSolutionUseCaseItem) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ControlSearchSolutionUseCaseItemPtrOutput struct{ *pulumi.OutputState }
+
+func (ControlSearchSolutionUseCaseItemPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ControlSearchSolutionUseCaseItem)(nil)).Elem()
+}
+
+func (o ControlSearchSolutionUseCaseItemPtrOutput) ToControlSearchSolutionUseCaseItemPtrOutput() ControlSearchSolutionUseCaseItemPtrOutput {
+	return o
+}
+
+func (o ControlSearchSolutionUseCaseItemPtrOutput) ToControlSearchSolutionUseCaseItemPtrOutputWithContext(ctx context.Context) ControlSearchSolutionUseCaseItemPtrOutput {
+	return o
+}
+
+func (o ControlSearchSolutionUseCaseItemPtrOutput) Elem() ControlSearchSolutionUseCaseItemOutput {
+	return o.ApplyT(func(v *ControlSearchSolutionUseCaseItem) ControlSearchSolutionUseCaseItem {
+		if v != nil {
+			return *v
+		}
+		var ret ControlSearchSolutionUseCaseItem
+		return ret
+	}).(ControlSearchSolutionUseCaseItemOutput)
+}
+
+func (o ControlSearchSolutionUseCaseItemPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ControlSearchSolutionUseCaseItemPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ControlSearchSolutionUseCaseItem) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ControlSearchSolutionUseCaseItemInput is an input type that accepts ControlSearchSolutionUseCaseItemArgs and ControlSearchSolutionUseCaseItemOutput values.
+// You can construct a concrete instance of `ControlSearchSolutionUseCaseItemInput` via:
+//
+//	ControlSearchSolutionUseCaseItemArgs{...}
+type ControlSearchSolutionUseCaseItemInput interface {
+	pulumi.Input
+
+	ToControlSearchSolutionUseCaseItemOutput() ControlSearchSolutionUseCaseItemOutput
+	ToControlSearchSolutionUseCaseItemOutputWithContext(context.Context) ControlSearchSolutionUseCaseItemOutput
+}
+
+var controlSearchSolutionUseCaseItemPtrType = reflect.TypeOf((**ControlSearchSolutionUseCaseItem)(nil)).Elem()
+
+type ControlSearchSolutionUseCaseItemPtrInput interface {
+	pulumi.Input
+
+	ToControlSearchSolutionUseCaseItemPtrOutput() ControlSearchSolutionUseCaseItemPtrOutput
+	ToControlSearchSolutionUseCaseItemPtrOutputWithContext(context.Context) ControlSearchSolutionUseCaseItemPtrOutput
+}
+
+type controlSearchSolutionUseCaseItemPtr string
+
+func ControlSearchSolutionUseCaseItemPtr(v string) ControlSearchSolutionUseCaseItemPtrInput {
+	return (*controlSearchSolutionUseCaseItemPtr)(&v)
+}
+
+func (*controlSearchSolutionUseCaseItemPtr) ElementType() reflect.Type {
+	return controlSearchSolutionUseCaseItemPtrType
+}
+
+func (in *controlSearchSolutionUseCaseItemPtr) ToControlSearchSolutionUseCaseItemPtrOutput() ControlSearchSolutionUseCaseItemPtrOutput {
+	return pulumi.ToOutput(in).(ControlSearchSolutionUseCaseItemPtrOutput)
+}
+
+func (in *controlSearchSolutionUseCaseItemPtr) ToControlSearchSolutionUseCaseItemPtrOutputWithContext(ctx context.Context) ControlSearchSolutionUseCaseItemPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ControlSearchSolutionUseCaseItemPtrOutput)
+}
+
+// ControlSearchSolutionUseCaseItemArrayInput is an input type that accepts ControlSearchSolutionUseCaseItemArray and ControlSearchSolutionUseCaseItemArrayOutput values.
+// You can construct a concrete instance of `ControlSearchSolutionUseCaseItemArrayInput` via:
+//
+//	ControlSearchSolutionUseCaseItemArray{ ControlSearchSolutionUseCaseItemArgs{...} }
+type ControlSearchSolutionUseCaseItemArrayInput interface {
+	pulumi.Input
+
+	ToControlSearchSolutionUseCaseItemArrayOutput() ControlSearchSolutionUseCaseItemArrayOutput
+	ToControlSearchSolutionUseCaseItemArrayOutputWithContext(context.Context) ControlSearchSolutionUseCaseItemArrayOutput
+}
+
+type ControlSearchSolutionUseCaseItemArray []ControlSearchSolutionUseCaseItem
+
+func (ControlSearchSolutionUseCaseItemArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlSearchSolutionUseCaseItem)(nil)).Elem()
+}
+
+func (i ControlSearchSolutionUseCaseItemArray) ToControlSearchSolutionUseCaseItemArrayOutput() ControlSearchSolutionUseCaseItemArrayOutput {
+	return i.ToControlSearchSolutionUseCaseItemArrayOutputWithContext(context.Background())
+}
+
+func (i ControlSearchSolutionUseCaseItemArray) ToControlSearchSolutionUseCaseItemArrayOutputWithContext(ctx context.Context) ControlSearchSolutionUseCaseItemArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ControlSearchSolutionUseCaseItemArrayOutput)
+}
+
+type ControlSearchSolutionUseCaseItemArrayOutput struct{ *pulumi.OutputState }
+
+func (ControlSearchSolutionUseCaseItemArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ControlSearchSolutionUseCaseItem)(nil)).Elem()
+}
+
+func (o ControlSearchSolutionUseCaseItemArrayOutput) ToControlSearchSolutionUseCaseItemArrayOutput() ControlSearchSolutionUseCaseItemArrayOutput {
+	return o
+}
+
+func (o ControlSearchSolutionUseCaseItemArrayOutput) ToControlSearchSolutionUseCaseItemArrayOutputWithContext(ctx context.Context) ControlSearchSolutionUseCaseItemArrayOutput {
+	return o
+}
+
+func (o ControlSearchSolutionUseCaseItemArrayOutput) Index(i pulumi.IntInput) ControlSearchSolutionUseCaseItemOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ControlSearchSolutionUseCaseItem {
+		return vs[0].([]ControlSearchSolutionUseCaseItem)[vs[1].(int)]
+	}).(ControlSearchSolutionUseCaseItemOutput)
+}
+
 type ControlSolutionTypesItem string
 
 const (
@@ -392,6 +605,175 @@ func (in *googleCloudRetailV2alphaSearchRequestDynamicFacetSpecModePtr) ToGoogle
 	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecModePtrOutput)
 }
 
+// Defaults to Mode.AUTO.
+type GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode string
+
+const (
+	// Default value. In this case, server behavior defaults to Mode.AUTO.
+	GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeModeUnspecified = GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode("MODE_UNSPECIFIED")
+	// Let CRS decide whether to use personalization based on quality of user event data.
+	GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeAuto = GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode("AUTO")
+	// Disable personalization.
+	GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeDisabled = GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode("DISABLED")
+)
+
+func (GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode)(nil)).Elem()
+}
+
+func (e GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode) ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput() GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput {
+	return pulumi.ToOutput(e).(GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput)
+}
+
+func (e GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode) ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput)
+}
+
+func (e GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode) ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput() GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput {
+	return e.ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode) ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput {
+	return GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode(e).ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutputWithContext(ctx).ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutputWithContext(ctx)
+}
+
+func (e GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput) ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput() GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput) ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput) ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput() GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput {
+	return o.ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput) ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode) *GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode {
+		return &v
+	}).(GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput)
+}
+
+func (o GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode)(nil)).Elem()
+}
+
+func (o GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput) ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput() GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput) ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput {
+	return o
+}
+
+func (o GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput) Elem() GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput {
+	return o.ApplyT(func(v *GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode) GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode
+		return ret
+	}).(GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput)
+}
+
+func (o GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeInput is an input type that accepts GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeArgs and GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput values.
+// You can construct a concrete instance of `GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeInput` via:
+//
+//	GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeArgs{...}
+type GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput() GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput
+	ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutputWithContext(context.Context) GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput
+}
+
+var googleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrType = reflect.TypeOf((**GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode)(nil)).Elem()
+
+type GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput() GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput
+	ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutputWithContext(context.Context) GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput
+}
+
+type googleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtr string
+
+func GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtr(v string) GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrInput {
+	return (*googleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtr)(&v)
+}
+
+func (*googleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtr) ElementType() reflect.Type {
+	return googleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrType
+}
+
+func (in *googleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtr) ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput() GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput {
+	return pulumi.ToOutput(in).(GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput)
+}
+
+func (in *googleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtr) ToGoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutputWithContext(ctx context.Context) GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput)
+}
+
 // The online availability of the Product. Default to Availability.IN_STOCK. Corresponding properties: Google Merchant Center property [availability](https://support.google.com/merchants/answer/6324448). Schema.org property [Offer.availability](https://schema.org/availability).
 type ProductAvailability string
 
@@ -736,6 +1118,175 @@ func (in *productTypePtr) ToProductTypePtrOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, in).(ProductTypePtrOutput)
 }
 
+// What kind of diversity to use - data driven or rule based.
+type ServingConfigDiversityType string
+
+const (
+	// Default value.
+	ServingConfigDiversityTypeDiversityTypeUnspecified = ServingConfigDiversityType("DIVERSITY_TYPE_UNSPECIFIED")
+	// Rule based diversity.
+	ServingConfigDiversityTypeRuleBasedDiversity = ServingConfigDiversityType("RULE_BASED_DIVERSITY")
+	// Data driven diversity.
+	ServingConfigDiversityTypeDataDrivenDiversity = ServingConfigDiversityType("DATA_DRIVEN_DIVERSITY")
+)
+
+func (ServingConfigDiversityType) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServingConfigDiversityType)(nil)).Elem()
+}
+
+func (e ServingConfigDiversityType) ToServingConfigDiversityTypeOutput() ServingConfigDiversityTypeOutput {
+	return pulumi.ToOutput(e).(ServingConfigDiversityTypeOutput)
+}
+
+func (e ServingConfigDiversityType) ToServingConfigDiversityTypeOutputWithContext(ctx context.Context) ServingConfigDiversityTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(ServingConfigDiversityTypeOutput)
+}
+
+func (e ServingConfigDiversityType) ToServingConfigDiversityTypePtrOutput() ServingConfigDiversityTypePtrOutput {
+	return e.ToServingConfigDiversityTypePtrOutputWithContext(context.Background())
+}
+
+func (e ServingConfigDiversityType) ToServingConfigDiversityTypePtrOutputWithContext(ctx context.Context) ServingConfigDiversityTypePtrOutput {
+	return ServingConfigDiversityType(e).ToServingConfigDiversityTypeOutputWithContext(ctx).ToServingConfigDiversityTypePtrOutputWithContext(ctx)
+}
+
+func (e ServingConfigDiversityType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServingConfigDiversityType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e ServingConfigDiversityType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e ServingConfigDiversityType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type ServingConfigDiversityTypeOutput struct{ *pulumi.OutputState }
+
+func (ServingConfigDiversityTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServingConfigDiversityType)(nil)).Elem()
+}
+
+func (o ServingConfigDiversityTypeOutput) ToServingConfigDiversityTypeOutput() ServingConfigDiversityTypeOutput {
+	return o
+}
+
+func (o ServingConfigDiversityTypeOutput) ToServingConfigDiversityTypeOutputWithContext(ctx context.Context) ServingConfigDiversityTypeOutput {
+	return o
+}
+
+func (o ServingConfigDiversityTypeOutput) ToServingConfigDiversityTypePtrOutput() ServingConfigDiversityTypePtrOutput {
+	return o.ToServingConfigDiversityTypePtrOutputWithContext(context.Background())
+}
+
+func (o ServingConfigDiversityTypeOutput) ToServingConfigDiversityTypePtrOutputWithContext(ctx context.Context) ServingConfigDiversityTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServingConfigDiversityType) *ServingConfigDiversityType {
+		return &v
+	}).(ServingConfigDiversityTypePtrOutput)
+}
+
+func (o ServingConfigDiversityTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o ServingConfigDiversityTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServingConfigDiversityType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o ServingConfigDiversityTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServingConfigDiversityTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e ServingConfigDiversityType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServingConfigDiversityTypePtrOutput struct{ *pulumi.OutputState }
+
+func (ServingConfigDiversityTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServingConfigDiversityType)(nil)).Elem()
+}
+
+func (o ServingConfigDiversityTypePtrOutput) ToServingConfigDiversityTypePtrOutput() ServingConfigDiversityTypePtrOutput {
+	return o
+}
+
+func (o ServingConfigDiversityTypePtrOutput) ToServingConfigDiversityTypePtrOutputWithContext(ctx context.Context) ServingConfigDiversityTypePtrOutput {
+	return o
+}
+
+func (o ServingConfigDiversityTypePtrOutput) Elem() ServingConfigDiversityTypeOutput {
+	return o.ApplyT(func(v *ServingConfigDiversityType) ServingConfigDiversityType {
+		if v != nil {
+			return *v
+		}
+		var ret ServingConfigDiversityType
+		return ret
+	}).(ServingConfigDiversityTypeOutput)
+}
+
+func (o ServingConfigDiversityTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o ServingConfigDiversityTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *ServingConfigDiversityType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// ServingConfigDiversityTypeInput is an input type that accepts ServingConfigDiversityTypeArgs and ServingConfigDiversityTypeOutput values.
+// You can construct a concrete instance of `ServingConfigDiversityTypeInput` via:
+//
+//	ServingConfigDiversityTypeArgs{...}
+type ServingConfigDiversityTypeInput interface {
+	pulumi.Input
+
+	ToServingConfigDiversityTypeOutput() ServingConfigDiversityTypeOutput
+	ToServingConfigDiversityTypeOutputWithContext(context.Context) ServingConfigDiversityTypeOutput
+}
+
+var servingConfigDiversityTypePtrType = reflect.TypeOf((**ServingConfigDiversityType)(nil)).Elem()
+
+type ServingConfigDiversityTypePtrInput interface {
+	pulumi.Input
+
+	ToServingConfigDiversityTypePtrOutput() ServingConfigDiversityTypePtrOutput
+	ToServingConfigDiversityTypePtrOutputWithContext(context.Context) ServingConfigDiversityTypePtrOutput
+}
+
+type servingConfigDiversityTypePtr string
+
+func ServingConfigDiversityTypePtr(v string) ServingConfigDiversityTypePtrInput {
+	return (*servingConfigDiversityTypePtr)(&v)
+}
+
+func (*servingConfigDiversityTypePtr) ElementType() reflect.Type {
+	return servingConfigDiversityTypePtrType
+}
+
+func (in *servingConfigDiversityTypePtr) ToServingConfigDiversityTypePtrOutput() ServingConfigDiversityTypePtrOutput {
+	return pulumi.ToOutput(in).(ServingConfigDiversityTypePtrOutput)
+}
+
+func (in *servingConfigDiversityTypePtr) ToServingConfigDiversityTypePtrOutputWithContext(ctx context.Context) ServingConfigDiversityTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(ServingConfigDiversityTypePtrOutput)
+}
+
 type ServingConfigSolutionTypesItem string
 
 const (
@@ -950,27 +1501,41 @@ func (o ServingConfigSolutionTypesItemArrayOutput) Index(i pulumi.IntInput) Serv
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlSearchSolutionUseCaseItemInput)(nil)).Elem(), ControlSearchSolutionUseCaseItem("SEARCH_SOLUTION_USE_CASE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlSearchSolutionUseCaseItemPtrInput)(nil)).Elem(), ControlSearchSolutionUseCaseItem("SEARCH_SOLUTION_USE_CASE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ControlSearchSolutionUseCaseItemArrayInput)(nil)).Elem(), ControlSearchSolutionUseCaseItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlSolutionTypesItemInput)(nil)).Elem(), ControlSolutionTypesItem("SOLUTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlSolutionTypesItemPtrInput)(nil)).Elem(), ControlSolutionTypesItem("SOLUTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ControlSolutionTypesItemArrayInput)(nil)).Elem(), ControlSolutionTypesItemArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecModeInput)(nil)).Elem(), GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecModePtrInput)(nil)).Elem(), GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeInput)(nil)).Elem(), GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode("MODE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrInput)(nil)).Elem(), GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecMode("MODE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ProductAvailabilityInput)(nil)).Elem(), ProductAvailability("AVAILABILITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ProductAvailabilityPtrInput)(nil)).Elem(), ProductAvailability("AVAILABILITY_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ProductTypeInput)(nil)).Elem(), ProductType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ProductTypePtrInput)(nil)).Elem(), ProductType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServingConfigDiversityTypeInput)(nil)).Elem(), ServingConfigDiversityType("DIVERSITY_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*ServingConfigDiversityTypePtrInput)(nil)).Elem(), ServingConfigDiversityType("DIVERSITY_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServingConfigSolutionTypesItemInput)(nil)).Elem(), ServingConfigSolutionTypesItem("SOLUTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServingConfigSolutionTypesItemPtrInput)(nil)).Elem(), ServingConfigSolutionTypesItem("SOLUTION_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ServingConfigSolutionTypesItemArrayInput)(nil)).Elem(), ServingConfigSolutionTypesItemArray{})
+	pulumi.RegisterOutputType(ControlSearchSolutionUseCaseItemOutput{})
+	pulumi.RegisterOutputType(ControlSearchSolutionUseCaseItemPtrOutput{})
+	pulumi.RegisterOutputType(ControlSearchSolutionUseCaseItemArrayOutput{})
 	pulumi.RegisterOutputType(ControlSolutionTypesItemOutput{})
 	pulumi.RegisterOutputType(ControlSolutionTypesItemPtrOutput{})
 	pulumi.RegisterOutputType(ControlSolutionTypesItemArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecModeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaSearchRequestDynamicFacetSpecModePtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModeOutput{})
+	pulumi.RegisterOutputType(GoogleCloudRetailV2alphaSearchRequestPersonalizationSpecModePtrOutput{})
 	pulumi.RegisterOutputType(ProductAvailabilityOutput{})
 	pulumi.RegisterOutputType(ProductAvailabilityPtrOutput{})
 	pulumi.RegisterOutputType(ProductTypeOutput{})
 	pulumi.RegisterOutputType(ProductTypePtrOutput{})
+	pulumi.RegisterOutputType(ServingConfigDiversityTypeOutput{})
+	pulumi.RegisterOutputType(ServingConfigDiversityTypePtrOutput{})
 	pulumi.RegisterOutputType(ServingConfigSolutionTypesItemOutput{})
 	pulumi.RegisterOutputType(ServingConfigSolutionTypesItemPtrOutput{})
 	pulumi.RegisterOutputType(ServingConfigSolutionTypesItemArrayOutput{})

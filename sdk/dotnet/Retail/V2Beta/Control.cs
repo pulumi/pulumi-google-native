@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
     public partial class Control : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of serving configuration ids that that are associated with this control. Note the association is managed via the ServingConfig, this is an output only denormalizeed view. Assumed to be in the same catalog.
+        /// List of serving configuration ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.
         /// </summary>
         [Output("associatedServingConfigIds")]
         public Output<ImmutableArray<string>> AssociatedServingConfigIds { get; private set; } = null!;
@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// A facet specification to perform faceted search.
+        /// A facet specification to perform faceted search. Note that this field is deprecated and will throw NOT_IMPLEMENTED if used for creating a control.
         /// </summary>
         [Output("facetSpec")]
         public Output<Outputs.GoogleCloudRetailV2betaSearchRequestFacetSpecResponse> FacetSpec { get; private set; } = null!;
@@ -62,7 +62,13 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         public Output<Outputs.GoogleCloudRetailV2betaRuleResponse> Rule { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
+        /// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
+        /// </summary>
+        [Output("searchSolutionUseCase")]
+        public Output<ImmutableArray<string>> SearchSolutionUseCase { get; private set; } = null!;
+
+        /// <summary>
+        /// Immutable. The solution types that the control is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         /// </summary>
         [Output("solutionTypes")]
         public Output<ImmutableArray<string>> SolutionTypes { get; private set; } = null!;
@@ -135,7 +141,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         public Input<string> DisplayName { get; set; } = null!;
 
         /// <summary>
-        /// A facet specification to perform faceted search.
+        /// A facet specification to perform faceted search. Note that this field is deprecated and will throw NOT_IMPLEMENTED if used for creating a control.
         /// </summary>
         [Input("facetSpec")]
         public Input<Inputs.GoogleCloudRetailV2betaSearchRequestFacetSpecArgs>? FacetSpec { get; set; }
@@ -158,11 +164,23 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         [Input("rule")]
         public Input<Inputs.GoogleCloudRetailV2betaRuleArgs>? Rule { get; set; }
 
+        [Input("searchSolutionUseCase")]
+        private InputList<Pulumi.GoogleNative.Retail.V2Beta.ControlSearchSolutionUseCaseItem>? _searchSolutionUseCase;
+
+        /// <summary>
+        /// Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
+        /// </summary>
+        public InputList<Pulumi.GoogleNative.Retail.V2Beta.ControlSearchSolutionUseCaseItem> SearchSolutionUseCase
+        {
+            get => _searchSolutionUseCase ?? (_searchSolutionUseCase = new InputList<Pulumi.GoogleNative.Retail.V2Beta.ControlSearchSolutionUseCaseItem>());
+            set => _searchSolutionUseCase = value;
+        }
+
         [Input("solutionTypes", required: true)]
         private InputList<Pulumi.GoogleNative.Retail.V2Beta.ControlSolutionTypesItem>? _solutionTypes;
 
         /// <summary>
-        /// Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
+        /// Immutable. The solution types that the control is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         /// </summary>
         public InputList<Pulumi.GoogleNative.Retail.V2Beta.ControlSolutionTypesItem> SolutionTypes
         {

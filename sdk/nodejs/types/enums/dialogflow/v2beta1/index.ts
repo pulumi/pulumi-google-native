@@ -401,7 +401,7 @@ export const GoogleCloudDialogflowV2beta1SuggestionFeatureType = {
      */
     TypeUnspecified: "TYPE_UNSPECIFIED",
     /**
-     * Run article suggestion model.
+     * Run article suggestion model for chat.
      */
     ArticleSuggestion: "ARTICLE_SUGGESTION",
     /**
@@ -409,7 +409,7 @@ export const GoogleCloudDialogflowV2beta1SuggestionFeatureType = {
      */
     Faq: "FAQ",
     /**
-     * Run smart reply model.
+     * Run smart reply model for chat.
      */
     SmartReply: "SMART_REPLY",
 } as const;

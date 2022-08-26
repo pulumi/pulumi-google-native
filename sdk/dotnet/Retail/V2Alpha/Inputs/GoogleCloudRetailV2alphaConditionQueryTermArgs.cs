@@ -22,7 +22,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha.Inputs
         public Input<bool>? FullMatch { get; set; }
 
         /// <summary>
-        /// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. Example) "a b c" is 3 terms and allowed, " a b c d" is 4 terms and not allowed for partial match.
+        /// The value of the term to match on. Value cannot be empty. Value can have at most 3 terms if specified as a partial match. Each space separated string is considered as one term. For example, "a b c" is 3 terms and allowed, but " a b c d" is 4 terms and not allowed for a partial match.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }

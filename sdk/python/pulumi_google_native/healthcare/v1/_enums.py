@@ -143,11 +143,11 @@ class GoogleCloudHealthcareV1FhirBigQueryDestinationWriteDisposition(str, Enum):
     """
     WRITE_TRUNCATE = "WRITE_TRUNCATE"
     """
-    Erase all existing data in the tables before writing the instances.
+    Erase all existing data in the destination tables before writing the FHIR resources.
     """
     WRITE_APPEND = "WRITE_APPEND"
     """
-    Append data to the existing tables.
+    Append data to the destination tables.
     """
 
 

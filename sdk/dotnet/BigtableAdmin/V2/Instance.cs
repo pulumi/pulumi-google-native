@@ -133,7 +133,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
-        [Input("labels")]
+        [Input("labels", required: true)]
         private InputMap<string>? _labels;
 
         /// <summary>
@@ -163,8 +163,8 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
         /// <summary>
         /// The type of the instance. Defaults to `PRODUCTION`.
         /// </summary>
-        [Input("type")]
-        public Input<Pulumi.GoogleNative.BigtableAdmin.V2.InstanceType>? Type { get; set; }
+        [Input("type", required: true)]
+        public Input<Pulumi.GoogleNative.BigtableAdmin.V2.InstanceType> Type { get; set; } = null!;
 
         public InstanceArgs()
         {

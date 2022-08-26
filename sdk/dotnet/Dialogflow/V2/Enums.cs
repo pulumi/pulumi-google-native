@@ -681,15 +681,15 @@ namespace Pulumi.GoogleNative.Dialogflow.V2
         /// </summary>
         public static GoogleCloudDialogflowV2SuggestionFeatureType TypeUnspecified { get; } = new GoogleCloudDialogflowV2SuggestionFeatureType("TYPE_UNSPECIFIED");
         /// <summary>
-        /// Run article suggestion model.
+        /// Run article suggestion model for chat.
         /// </summary>
         public static GoogleCloudDialogflowV2SuggestionFeatureType ArticleSuggestion { get; } = new GoogleCloudDialogflowV2SuggestionFeatureType("ARTICLE_SUGGESTION");
         /// <summary>
-        /// Run FAQ model.
+        /// Run FAQ model for chat.
         /// </summary>
         public static GoogleCloudDialogflowV2SuggestionFeatureType Faq { get; } = new GoogleCloudDialogflowV2SuggestionFeatureType("FAQ");
         /// <summary>
-        /// Run smart reply model.
+        /// Run smart reply model for chat.
         /// </summary>
         public static GoogleCloudDialogflowV2SuggestionFeatureType SmartReply { get; } = new GoogleCloudDialogflowV2SuggestionFeatureType("SMART_REPLY");
 

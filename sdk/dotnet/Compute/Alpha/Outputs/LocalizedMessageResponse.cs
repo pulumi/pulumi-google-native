@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
     public sealed class LocalizedMessageResponse
     {
         /// <summary>
-        /// The locale used following the specification defined at http://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+        /// The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
         /// </summary>
         public readonly string Locale;
         /// <summary>

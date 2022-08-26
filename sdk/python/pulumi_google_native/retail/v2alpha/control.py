@@ -25,15 +25,17 @@ class ControlArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 rule: Optional[pulumi.Input['GoogleCloudRetailV2alphaRuleArgs']] = None):
+                 rule: Optional[pulumi.Input['GoogleCloudRetailV2alphaRuleArgs']] = None,
+                 search_solution_use_case: Optional[pulumi.Input[Sequence[pulumi.Input['ControlSearchSolutionUseCaseItem']]]] = None):
         """
         The set of arguments for constructing a Control resource.
         :param pulumi.Input[str] control_id: Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
         :param pulumi.Input[str] display_name: The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
-        :param pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]] solution_types: Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
-        :param pulumi.Input['GoogleCloudRetailV2alphaSearchRequestFacetSpecArgs'] facet_spec: A facet specification to perform faceted search.
+        :param pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]] solution_types: Immutable. The solution types that the control is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
+        :param pulumi.Input['GoogleCloudRetailV2alphaSearchRequestFacetSpecArgs'] facet_spec: A facet specification to perform faceted search. Note that this field is deprecated and will throw NOT_IMPLEMENTED if used for creating a control.
         :param pulumi.Input[str] name: Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
         :param pulumi.Input['GoogleCloudRetailV2alphaRuleArgs'] rule: A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
+        :param pulumi.Input[Sequence[pulumi.Input['ControlSearchSolutionUseCaseItem']]] search_solution_use_case: Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
         """
         pulumi.set(__self__, "catalog_id", catalog_id)
         pulumi.set(__self__, "control_id", control_id)
@@ -49,6 +51,8 @@ class ControlArgs:
             pulumi.set(__self__, "project", project)
         if rule is not None:
             pulumi.set(__self__, "rule", rule)
+        if search_solution_use_case is not None:
+            pulumi.set(__self__, "search_solution_use_case", search_solution_use_case)
 
     @property
     @pulumi.getter(name="catalogId")
@@ -87,7 +91,7 @@ class ControlArgs:
     @pulumi.getter(name="solutionTypes")
     def solution_types(self) -> pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]]:
         """
-        Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
+        Immutable. The solution types that the control is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         """
         return pulumi.get(self, "solution_types")
 
@@ -99,7 +103,7 @@ class ControlArgs:
     @pulumi.getter(name="facetSpec")
     def facet_spec(self) -> Optional[pulumi.Input['GoogleCloudRetailV2alphaSearchRequestFacetSpecArgs']]:
         """
-        A facet specification to perform faceted search.
+        A facet specification to perform faceted search. Note that this field is deprecated and will throw NOT_IMPLEMENTED if used for creating a control.
         """
         return pulumi.get(self, "facet_spec")
 
@@ -149,6 +153,18 @@ class ControlArgs:
     def rule(self, value: Optional[pulumi.Input['GoogleCloudRetailV2alphaRuleArgs']]):
         pulumi.set(self, "rule", value)
 
+    @property
+    @pulumi.getter(name="searchSolutionUseCase")
+    def search_solution_use_case(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ControlSearchSolutionUseCaseItem']]]]:
+        """
+        Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
+        """
+        return pulumi.get(self, "search_solution_use_case")
+
+    @search_solution_use_case.setter
+    def search_solution_use_case(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ControlSearchSolutionUseCaseItem']]]]):
+        pulumi.set(self, "search_solution_use_case", value)
+
 
 class Control(pulumi.CustomResource):
     @overload
@@ -163,6 +179,7 @@ class Control(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rule: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2alphaRuleArgs']]] = None,
+                 search_solution_use_case: Optional[pulumi.Input[Sequence[pulumi.Input['ControlSearchSolutionUseCaseItem']]]] = None,
                  solution_types: Optional[pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]]] = None,
                  __props__=None):
         """
@@ -173,10 +190,11 @@ class Control(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] control_id: Required. The ID to use for the Control, which will become the final component of the Control's resource name. This value should be 4-63 characters, and valid characters are /a-z-_/.
         :param pulumi.Input[str] display_name: The human readable control display name. Used in Retail UI. This field must be a UTF-8 encoded string with a length limit of 128 characters. Otherwise, an INVALID_ARGUMENT error is thrown.
-        :param pulumi.Input[pulumi.InputType['GoogleCloudRetailV2alphaSearchRequestFacetSpecArgs']] facet_spec: A facet specification to perform faceted search.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudRetailV2alphaSearchRequestFacetSpecArgs']] facet_spec: A facet specification to perform faceted search. Note that this field is deprecated and will throw NOT_IMPLEMENTED if used for creating a control.
         :param pulumi.Input[str] name: Immutable. Fully qualified name `projects/*/locations/global/catalogs/*/controls/*`
         :param pulumi.Input[pulumi.InputType['GoogleCloudRetailV2alphaRuleArgs']] rule: A rule control - a condition-action pair. Enacts a set action when the condition is triggered. For example: Boost "gShoe" when query full matches "Running Shoes".
-        :param pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]] solution_types: Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
+        :param pulumi.Input[Sequence[pulumi.Input['ControlSearchSolutionUseCaseItem']]] search_solution_use_case: Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
+        :param pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]] solution_types: Immutable. The solution types that the control is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         """
         ...
     @overload
@@ -211,6 +229,7 @@ class Control(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  rule: Optional[pulumi.Input[pulumi.InputType['GoogleCloudRetailV2alphaRuleArgs']]] = None,
+                 search_solution_use_case: Optional[pulumi.Input[Sequence[pulumi.Input['ControlSearchSolutionUseCaseItem']]]] = None,
                  solution_types: Optional[pulumi.Input[Sequence[pulumi.Input['ControlSolutionTypesItem']]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -235,6 +254,7 @@ class Control(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["rule"] = rule
+            __props__.__dict__["search_solution_use_case"] = search_solution_use_case
             if solution_types is None and not opts.urn:
                 raise TypeError("Missing required property 'solution_types'")
             __props__.__dict__["solution_types"] = solution_types
@@ -272,6 +292,7 @@ class Control(pulumi.CustomResource):
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["rule"] = None
+        __props__.__dict__["search_solution_use_case"] = None
         __props__.__dict__["solution_types"] = None
         return Control(resource_name, opts=opts, __props__=__props__)
 
@@ -279,7 +300,7 @@ class Control(pulumi.CustomResource):
     @pulumi.getter(name="associatedServingConfigIds")
     def associated_serving_config_ids(self) -> pulumi.Output[Sequence[str]]:
         """
-        List of serving configuration ids that that are associated with this control. Note the association is managed via the ServingConfig, this is an output only denormalizeed view. Assumed to be in the same catalog.
+        List of serving configuration ids that are associated with this control in the same Catalog. Note the association is managed via the ServingConfig, this is an output only denormalized view.
         """
         return pulumi.get(self, "associated_serving_config_ids")
 
@@ -308,7 +329,7 @@ class Control(pulumi.CustomResource):
     @pulumi.getter(name="facetSpec")
     def facet_spec(self) -> pulumi.Output['outputs.GoogleCloudRetailV2alphaSearchRequestFacetSpecResponse']:
         """
-        A facet specification to perform faceted search.
+        A facet specification to perform faceted search. Note that this field is deprecated and will throw NOT_IMPLEMENTED if used for creating a control.
         """
         return pulumi.get(self, "facet_spec")
 
@@ -339,10 +360,18 @@ class Control(pulumi.CustomResource):
         return pulumi.get(self, "rule")
 
     @property
+    @pulumi.getter(name="searchSolutionUseCase")
+    def search_solution_use_case(self) -> pulumi.Output[Sequence[str]]:
+        """
+        Specifies the use case for the control. Affects what condition fields can be set. Only settable by search controls. Will default to SEARCH_SOLUTION_USE_CASE_SEARCH if not specified. Currently only allow one search_solution_use_case per control.
+        """
+        return pulumi.get(self, "search_solution_use_case")
+
+    @property
     @pulumi.getter(name="solutionTypes")
     def solution_types(self) -> pulumi.Output[Sequence[str]]:
         """
-        Immutable. The solution types that the serving config is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
+        Immutable. The solution types that the control is used for. Currently we support setting only one type of solution at creation time. Only `SOLUTION_TYPE_SEARCH` value is supported at the moment. If no solution type is provided at creation time, will default to SOLUTION_TYPE_SEARCH.
         """
         return pulumi.get(self, "solution_types")
 
