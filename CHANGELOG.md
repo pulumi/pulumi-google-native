@@ -3,6 +3,7 @@ CHANGELOG
 
 ## HEAD (Unreleased)
 - Remove DNS v2 API which is not actively advertised by Google (https://github.com/pulumi/pulumi-google-native/pull/662)
+- Add resource method for retrieving kubeconfig from a GKE cluster [#655](https://github.com/pulumi/pulumi-google-native/pull/655)
 
 ## 0.24.0 (2022-08-25)
 ### BREAKING CHANGE
