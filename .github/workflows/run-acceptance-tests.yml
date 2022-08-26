@@ -347,6 +347,7 @@ jobs:
     - name: Configure GCP credentials
       uses: google-github-actions/setup-gcloud@v0
       with:
+        install_components: 'gke-gcloud-auth-plugin'
         project_id: ${{ env.GOOGLE_PROJECT }}
         service_account_email: ${{ secrets.GCP_SA_EMAIL }}
         service_account_key: ${{ secrets.GCP_SA_KEY }}
