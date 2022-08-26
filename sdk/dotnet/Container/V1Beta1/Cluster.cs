@@ -491,8 +491,8 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         /// See for more details:
         /// - https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
         /// </summary>
-        public Pulumi.Output<ClusterGetKubeconfigResult> GetKubeconfig()
-            => Pulumi.Deployment.Instance.Call<ClusterGetKubeconfigResult>("google-native:container/v1beta1:Cluster/getKubeconfig", CallArgs.Empty, this);
+        public Pulumi.Output<string> GetKubeconfig()
+            => Pulumi.Deployment.Instance.Call<ClusterGetKubeconfigResult>("google-native:container/v1beta1:Cluster/getKubeconfig", CallArgs.Empty, this).Apply(v => v.Kubeconfig);
     }
 
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
@@ -889,7 +889,7 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
     /// The results of the <see cref="Cluster.GetKubeconfig"/> method.
     /// </summary>
     [OutputType]
-    public sealed class ClusterGetKubeconfigResult
+    internal sealed class ClusterGetKubeconfigResult
     {
         public readonly string Kubeconfig;
 

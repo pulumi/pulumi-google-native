@@ -1974,7 +1974,7 @@ class Cluster(pulumi.CustomResource):
         def kubeconfig(self) -> str:
             return pulumi.get(self, "kubeconfig")
 
-    def get_kubeconfig(__self__) -> pulumi.Output['Cluster.GetKubeconfigResult']:
+    def get_kubeconfig(__self__) -> pulumi.Output['str']:
         """
         Generate a kubeconfig for cluster authentication.
 
@@ -1986,5 +1986,6 @@ class Cluster(pulumi.CustomResource):
         """
         __args__ = dict()
         __args__['__self__'] = __self__
-        return pulumi.runtime.call('google-native:container/v1beta1:Cluster/getKubeconfig', __args__, res=__self__, typ=Cluster.GetKubeconfigResult)
+        __result__ = pulumi.runtime.call('google-native:container/v1beta1:Cluster/getKubeconfig', __args__, res=__self__, typ=Cluster.GetKubeconfigResult)
+        return __result__.kubeconfig
 

@@ -280,8 +280,9 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 	}
 
 	pkg.Language["go"] = rawMessage(map[string]interface{}{
-		"importBasePath":       goBasePath,
-		"packageImportAliases": golangImportAliases,
+		"importBasePath":               goBasePath,
+		"packageImportAliases":         golangImportAliases,
+		"liftSingleValueMethodReturns": true,
 	})
 	pkg.Language["nodejs"] = rawMessage(map[string]interface{}{
 		"dependencies": map[string]string{
@@ -291,6 +292,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 programs. This provider uses the Google Cloud REST API directly and therefore provides full access to Google Cloud.
 The provider is currently in public preview and is not recommended for production deployments yet. Breaking changes
 will be introduced in minor version releases.`,
+		"liftSingleValueMethodReturns": true,
 	})
 
 	pkg.Language["python"] = rawMessage(map[string]interface{}{
@@ -303,17 +305,20 @@ will be introduced in minor version releases.`,
 programs. This provider uses the Google Cloud REST API directly and therefore provides full access to Google Cloud.
 The provider is currently in public preview and is not recommended for production deployments yet. Breaking changes
 will be introduced in minor version releases.`,
+		"liftSingleValueMethodReturns": true,
 	})
 
 	pkg.Language["csharp"] = rawMessage(map[string]interface{}{
 		"packageReferences": map[string]string{
 			"Pulumi": "3.*",
 		},
-		"namespaces": csharpNamespaces,
+		"namespaces":                   csharpNamespaces,
+		"liftSingleValueMethodReturns": true,
 	})
 
 	pkg.Language["java"] = rawMessage(map[string]interface{}{
-		"packages": javaPackages,
+		"packages":                     javaPackages,
+		"liftSingleValueMethodReturns": true,
 	})
 
 	return &pkg, &metadata, nil

@@ -423,26 +423,26 @@ func (ClusterArgs) ElementType() reflect.Type {
 //
 // See for more details:
 // - https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
-func (r *Cluster) GetKubeconfig(ctx *pulumi.Context) (ClusterGetKubeconfigResultOutput, error) {
-	out, err := ctx.Call("google-native:container/v1:Cluster/getKubeconfig", nil, ClusterGetKubeconfigResultOutput{}, r)
+func (r *Cluster) GetKubeconfig(ctx *pulumi.Context) (pulumi.StringOutput, error) {
+	out, err := ctx.Call("google-native:container/v1:Cluster/getKubeconfig", nil, clusterGetKubeconfigResultOutput{}, r)
 	if err != nil {
-		return ClusterGetKubeconfigResultOutput{}, err
+		return pulumi.StringOutput{}, err
 	}
-	return out.(ClusterGetKubeconfigResultOutput), nil
+	return out.(clusterGetKubeconfigResultOutput).Kubeconfig(), nil
 }
 
-type ClusterGetKubeconfigResult struct {
+type clusterGetKubeconfigResult struct {
 	Kubeconfig string `pulumi:"kubeconfig"`
 }
 
-type ClusterGetKubeconfigResultOutput struct{ *pulumi.OutputState }
+type clusterGetKubeconfigResultOutput struct{ *pulumi.OutputState }
 
-func (ClusterGetKubeconfigResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*ClusterGetKubeconfigResult)(nil)).Elem()
+func (clusterGetKubeconfigResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*clusterGetKubeconfigResult)(nil)).Elem()
 }
 
-func (o ClusterGetKubeconfigResultOutput) Kubeconfig() pulumi.StringOutput {
-	return o.ApplyT(func(v ClusterGetKubeconfigResult) string { return v.Kubeconfig }).(pulumi.StringOutput)
+func (o clusterGetKubeconfigResultOutput) Kubeconfig() pulumi.StringOutput {
+	return o.ApplyT(func(v clusterGetKubeconfigResult) string { return v.Kubeconfig }).(pulumi.StringOutput)
 }
 
 type ClusterInput interface {
@@ -796,5 +796,5 @@ func (o ClusterOutput) Zone() pulumi.StringOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInput)(nil)).Elem(), &Cluster{})
 	pulumi.RegisterOutputType(ClusterOutput{})
-	pulumi.RegisterOutputType(ClusterGetKubeconfigResultOutput{})
+	pulumi.RegisterOutputType(clusterGetKubeconfigResultOutput{})
 }

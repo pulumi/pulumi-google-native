@@ -437,10 +437,11 @@ export class Cluster extends pulumi.CustomResource {
      * See for more details:
      * - https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
      */
-    getKubeconfig(): pulumi.Output<Cluster.GetKubeconfigResult> {
-        return pulumi.runtime.call("google-native:container/v1:Cluster/getKubeconfig", {
+    getKubeconfig(): pulumi.Output<string> {
+        const result: pulumi.Output<Cluster.GetKubeconfigResult> = pulumi.runtime.call("google-native:container/v1:Cluster/getKubeconfig", {
             "__self__": this,
         }, this);
+        return result.kubeconfig;
     }
 }
 

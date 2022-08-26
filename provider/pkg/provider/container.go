@@ -703,7 +703,15 @@ func updateNodePoolConfig(diffPropPath, targetPropPath resource.PropertyPath,
 	}
 }
 
-// Retrieve kubeconfig
+// *** Support for method invocations on container resources ***
+// Most of this was adapted from a pattern established in pulumi-yaml:
+// https://github.com/pulumi/pulumi-yaml/blob/a36000e5bf6b64c050ec8777578aea3630dc1b7f/pkg/pulumiyaml/run.go
+
+// callableResource models the receiver resource for a method call in generic terms.
+// While currently we only have the getKubeconfig method on the cluster resource,
+// this can be reused for others in the future and should move to a separate package/file.
+// This bag-based output shape defined here helps us avoid adding an unholy dependency on the
+// generated Go SDK here (albeit which might have given us strongly typed outputs instead).
 type callableResource interface {
 	GetOutput(k string) pulumi.Output
 	CustomResource() *pulumi.CustomResourceState
@@ -768,6 +776,9 @@ func (*customResourceState) ElementType() reflect.Type {
 	return reflect.TypeOf((*callableResource)(nil)).Elem()
 }
 
+// clusterGetKubeconfigResult is the representation of the result from the getKubeconfig method call.
+// Note the use of `liftSingleValueMethodReturns` in the schema is a codegen construct and applies
+// in the consuming SDK. The schema still only supports object types in the output.
 type clusterGetKubeconfigResult struct {
 	Kubeconfig pulumi.StringOutput `pulumi:"kubeconfig"`
 }
@@ -797,13 +808,15 @@ users:
       provideClusterInfo: true
 `
 
-func handleGetKubeConfigCall(label, tok string, callArgs resource.PropertyMap) func(*pulumi.Context, string,
+// getKubeConfigCallHandler returns a function which converts the getKubeconfig Call GRPC invocation to Pulumi's Go
+// programming model.
+func getKubeConfigCallHandler(label, tok string, callArgs resource.PropertyMap) func(*pulumi.Context, string,
 	pulumiprov.CallArgs) (*pulumiprov.CallResult, error) {
 	return func(ctx *pulumi.Context, tok string,
 		args pulumiprov.CallArgs) (*pulumiprov.CallResult, error) {
 		var res pulumi.Resource
 		var state callableResource
-
+		// If we get here, callArgs will already have a `__self__` and will be known resource reference.
 		self := callArgs["__self__"]
 		if !self.IsResourceReference() {
 			return nil, fmt.Errorf("call(%s) __self__ was expected to be a resource reference", tok)
@@ -818,6 +831,7 @@ func handleGetKubeConfigCall(label, tok string, callArgs resource.PropertyMap) f
 			res = &r
 			state = &r
 		}
+		// This hydrates the resource state from the resource reference.
 		err := ctx.RegisterResource("_", "_", nil, res, pulumi.URN_(string(ref.URN)))
 		if err != nil {
 			return nil, fmt.Errorf("failed to get resource: %q: %w", ref.URN, err)
@@ -834,10 +848,6 @@ func handleGetKubeConfigCall(label, tok string, callArgs resource.PropertyMap) f
 		result := clusterGetKubeconfigResult{
 			Kubeconfig: kubeconfig,
 		}
-		kubeconfig.ApplyT(func(kc string) int {
-			logging.V(9).Infof("[%s] applied kubeconfig: %q", label, kc)
-			return 0
-		})
 		return pulumiprov.NewCallResult(&result)
 	}
 }

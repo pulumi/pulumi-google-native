@@ -1306,7 +1306,7 @@ func (p *googleCloudProvider) Call(ctx context.Context, req *rpc.CallRequest) (*
 
 	switch req.Tok {
 	case "google-native:container/v1:Cluster/getKubeconfig", "google-native:container/v1beta1:Cluster/getKubeconfig":
-		return pulumiprov.Call(ctx, req, p.host.EngineConn(), handleGetKubeConfigCall(label, req.Tok, callArgs))
+		return pulumiprov.Call(ctx, req, p.host.EngineConn(), getKubeConfigCallHandler(label, req.Tok, callArgs))
 	}
 	return nil, status.Error(codes.Unimplemented, "Call is not yet implemented")
 }
