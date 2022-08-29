@@ -2,7 +2,7 @@ CHANGELOG
 =========
 
 ## HEAD (Unreleased)
-(None)
+- Remove DNS v2 API which is not actively advertised by Google (https://github.com/pulumi/pulumi-google-native/pull/662)
 
 ## 0.24.0 (2022-08-25)
 ### BREAKING CHANGE
