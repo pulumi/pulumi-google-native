@@ -416,6 +416,35 @@ func (ClusterArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*clusterArgs)(nil)).Elem()
 }
 
+// Generate a kubeconfig for cluster authentication.
+//
+// The kubeconfig generated is automatically stringified for ease of use with the pulumi/kubernetes provider.
+// The kubeconfig uses the new `gke-gcloud-auth-plugin` authentication plugin as recommended by Google.
+//
+// See for more details:
+// - https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+func (r *Cluster) GetKubeconfig(ctx *pulumi.Context) (pulumi.StringOutput, error) {
+	out, err := ctx.Call("google-native:container/v1:Cluster/getKubeconfig", nil, clusterGetKubeconfigResultOutput{}, r)
+	if err != nil {
+		return pulumi.StringOutput{}, err
+	}
+	return out.(clusterGetKubeconfigResultOutput).Kubeconfig(), nil
+}
+
+type clusterGetKubeconfigResult struct {
+	Kubeconfig string `pulumi:"kubeconfig"`
+}
+
+type clusterGetKubeconfigResultOutput struct{ *pulumi.OutputState }
+
+func (clusterGetKubeconfigResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*clusterGetKubeconfigResult)(nil)).Elem()
+}
+
+func (o clusterGetKubeconfigResultOutput) Kubeconfig() pulumi.StringOutput {
+	return o.ApplyT(func(v clusterGetKubeconfigResult) string { return v.Kubeconfig }).(pulumi.StringOutput)
+}
+
 type ClusterInput interface {
 	pulumi.Input
 
@@ -767,4 +796,5 @@ func (o ClusterOutput) Zone() pulumi.StringOutput {
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterInput)(nil)).Elem(), &Cluster{})
 	pulumi.RegisterOutputType(ClusterOutput{})
+	pulumi.RegisterOutputType(clusterGetKubeconfigResultOutput{})
 }

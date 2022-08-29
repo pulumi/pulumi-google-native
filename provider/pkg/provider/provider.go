@@ -49,6 +49,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource/plugin"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/logging"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/rpcutil/rpcerror"
+	pulumiprov "github.com/pulumi/pulumi/sdk/v3/go/pulumi/provider"
 	rpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 	"google.golang.org/api/googleapi"
 	"google.golang.org/grpc/codes"
@@ -1285,11 +1286,28 @@ func retryRequest(client *googleclient.GoogleClient, method string, rawurl strin
 
 // Construct creates a new component resource.
 func (p *googleCloudProvider) Construct(_ context.Context, _ *rpc.ConstructRequest) (*rpc.ConstructResponse, error) {
+
 	return nil, status.Error(codes.Unimplemented, "Construct is not yet implemented")
 }
 
 // Call dynamically executes a method in the provider associated with a component resource.
-func (p *googleCloudProvider) Call(_ context.Context, _ *rpc.CallRequest) (*rpc.CallResponse, error) {
+func (p *googleCloudProvider) Call(ctx context.Context, req *rpc.CallRequest) (*rpc.CallResponse, error) {
+	label := fmt.Sprintf("%s.Call(%s)", p.name, req.Tok)
+	callArgs, err := plugin.UnmarshalProperties(req.GetArgs(), plugin.MarshalOptions{
+		Label:            fmt.Sprintf("%s.args", label),
+		KeepUnknowns:     req.DryRun,
+		KeepSecrets:      true,
+		KeepResources:    true,
+		KeepOutputValues: true,
+	})
+	if err != nil {
+		return nil, err
+	}
+
+	switch req.Tok {
+	case "google-native:container/v1:Cluster/getKubeconfig", "google-native:container/v1beta1:Cluster/getKubeconfig":
+		return pulumiprov.Call(ctx, req, p.host.EngineConn(), getKubeConfigCallHandler(label, req.Tok, callArgs))
+	}
 	return nil, status.Error(codes.Unimplemented, "Call is not yet implemented")
 }
 

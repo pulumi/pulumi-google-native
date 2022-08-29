@@ -246,9 +246,43 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 		}
 	}
 
+	for _, version := range []string{"v1", "v1beta1"} {
+		pkg.Functions[fmt.Sprintf("google-native:container/%s:Cluster/getKubeconfig", version)] = schema.FunctionSpec{
+			Description: "Generate a kubeconfig for cluster authentication." +
+				"\n\nThe kubeconfig generated is automatically stringified for ease of use with the pulumi/kubernetes" +
+				" provider.\nThe kubeconfig uses the new `gke-gcloud-auth-plugin` authentication plugin as" +
+				" recommended by Google.\n\n" +
+				"See for more details:\n" +
+				`- https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke`,
+			Inputs: &schema.ObjectTypeSpec{
+				Properties: map[string]schema.PropertySpec{
+					"__self__": {
+						TypeSpec: schema.TypeSpec{
+							Ref: fmt.Sprintf("#/resources/google-native:container/%s:Cluster", version),
+						},
+					},
+				},
+				Required: []string{"__self__"},
+			},
+			Outputs: &schema.ObjectTypeSpec{
+				Properties: map[string]schema.PropertySpec{
+					"kubeconfig": {
+						TypeSpec: schema.TypeSpec{
+							Type: "string",
+						},
+					},
+				},
+				Required: []string{
+					"kubeconfig",
+				},
+			},
+		}
+	}
+
 	pkg.Language["go"] = rawMessage(map[string]interface{}{
-		"importBasePath":       goBasePath,
-		"packageImportAliases": golangImportAliases,
+		"importBasePath":               goBasePath,
+		"packageImportAliases":         golangImportAliases,
+		"liftSingleValueMethodReturns": true,
 	})
 	pkg.Language["nodejs"] = rawMessage(map[string]interface{}{
 		"dependencies": map[string]string{
@@ -258,6 +292,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 programs. This provider uses the Google Cloud REST API directly and therefore provides full access to Google Cloud.
 The provider is currently in public preview and is not recommended for production deployments yet. Breaking changes
 will be introduced in minor version releases.`,
+		"liftSingleValueMethodReturns": true,
 	})
 
 	pkg.Language["python"] = rawMessage(map[string]interface{}{
@@ -270,17 +305,20 @@ will be introduced in minor version releases.`,
 programs. This provider uses the Google Cloud REST API directly and therefore provides full access to Google Cloud.
 The provider is currently in public preview and is not recommended for production deployments yet. Breaking changes
 will be introduced in minor version releases.`,
+		"liftSingleValueMethodReturns": true,
 	})
 
 	pkg.Language["csharp"] = rawMessage(map[string]interface{}{
 		"packageReferences": map[string]string{
 			"Pulumi": "3.*",
 		},
-		"namespaces": csharpNamespaces,
+		"namespaces":                   csharpNamespaces,
+		"liftSingleValueMethodReturns": true,
 	})
 
 	pkg.Language["java"] = rawMessage(map[string]interface{}{
-		"packages": javaPackages,
+		"packages":                     javaPackages,
+		"liftSingleValueMethodReturns": true,
 	})
 
 	return &pkg, &metadata, nil
@@ -819,6 +857,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			Properties:  properties,
 			Required:    requiredProperties.SortedValues(),
 		},
+		Methods:         map[string]string{},
 		InputProperties: inputProperties,
 		RequiredInputs:  requiredInputProperties.SortedValues(),
 	}
@@ -827,6 +866,13 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		if err := mergo.Merge(&resourceMeta, md, mergo.WithOverride); err != nil {
 			return fmt.Errorf("failed to merge metadata for resource: %q", resourceTok)
 		}
+	}
+
+	switch resourceTok {
+	case "google-native:container/v1:Cluster":
+		resourceSpec.Methods["getKubeconfig"] = "google-native:container/v1:Cluster/getKubeconfig"
+	case "google-native:container/v1beta1:Cluster":
+		resourceSpec.Methods["getKubeconfig"] = "google-native:container/v1beta1:Cluster/getKubeconfig"
 	}
 
 	g.pkg.Resources[resourceTok] = resourceSpec

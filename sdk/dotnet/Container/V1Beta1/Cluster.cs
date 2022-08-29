@@ -481,6 +481,18 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         {
             return new Cluster(name, id, options);
         }
+
+        /// <summary>
+        /// Generate a kubeconfig for cluster authentication.
+        /// 
+        /// The kubeconfig generated is automatically stringified for ease of use with the pulumi/kubernetes provider.
+        /// The kubeconfig uses the new `gke-gcloud-auth-plugin` authentication plugin as recommended by Google.
+        /// 
+        /// See for more details:
+        /// - https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+        /// </summary>
+        public Pulumi.Output<string> GetKubeconfig()
+            => Pulumi.Deployment.Instance.Call<ClusterGetKubeconfigResult>("google-native:container/v1beta1:Cluster/getKubeconfig", CallArgs.Empty, this).Apply(v => v.Kubeconfig);
     }
 
     public sealed class ClusterArgs : global::Pulumi.ResourceArgs
@@ -871,5 +883,20 @@ namespace Pulumi.GoogleNative.Container.V1Beta1
         {
         }
         public static new ClusterArgs Empty => new ClusterArgs();
+    }
+
+    /// <summary>
+    /// The results of the <see cref="Cluster.GetKubeconfig"/> method.
+    /// </summary>
+    [OutputType]
+    internal sealed class ClusterGetKubeconfigResult
+    {
+        public readonly string Kubeconfig;
+
+        [OutputConstructor]
+        private ClusterGetKubeconfigResult(string kubeconfig)
+        {
+            Kubeconfig = kubeconfig;
+        }
     }
 }
