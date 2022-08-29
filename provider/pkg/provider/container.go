@@ -729,7 +729,7 @@ func (st *customResourceState) GetOutput(k string) pulumi.Output {
 	return st.Outputs.ApplyT(func(outputs map[string]interface{}) (interface{}, error) {
 		out, ok := outputs[k]
 		if !ok {
-			return nil, fmt.Errorf("no output '%s' on resource '%s'", k, st.name)
+			return nil, fmt.Errorf("no output %q on resource %q", k, st.name)
 		}
 		return out, nil
 	})
