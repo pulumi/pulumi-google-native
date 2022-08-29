@@ -251,7 +251,7 @@ func PulumiSchema() (*schema.PackageSpec, *resources.CloudAPIMetadata, error) {
 			Description: "Generate a kubeconfig for cluster authentication." +
 				"\n\nThe kubeconfig generated is automatically stringified for ease of use with the pulumi/kubernetes" +
 				" provider.\nThe kubeconfig uses the new `gke-gcloud-auth-plugin` authentication plugin as" +
-				" recommended by google.\n\n" +
+				" recommended by Google.\n\n" +
 				"See for more details:\n" +
 				`- https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke`,
 			Inputs: &schema.ObjectTypeSpec{
