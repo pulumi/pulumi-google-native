@@ -104,6 +104,9 @@ clean::
 	rm -rf sdk/java && mkdir sdk/java && echo "module fake_java_module // Exclude this directory from Go tools\n\ngo 1.17" > 'sdk/java/go.mod'
 	rm -rf sdk/go/google
 
+install:: install_nodejs_sdk install_dotnet_sdk
+	cp $(WORKING_DIR)/bin/${PROVIDER} ${GOPATH}/bin
+
 install_dotnet_sdk::
 	mkdir -p $(WORKING_DIR)/nuget
 	find . -name '*.nupkg' -print -exec cp -p {} ${WORKING_DIR}/nuget \;
@@ -115,6 +118,7 @@ install_go_sdk::
 install_java_sdk::
 
 install_nodejs_sdk::
+	-yarn unlink --cwd $(WORKING_DIR)/sdk/nodejs/bin
 	yarn link --cwd $(WORKING_DIR)/sdk/nodejs/bin
 
 test::
