@@ -1788,16 +1788,6 @@ _utilities.register(
  },
  {
   "pkg": "google-native",
-  "mod": "dns/v2",
-  "fqn": "pulumi_google_native.dns.v2",
-  "classes": {
-   "google-native:dns/v2:ManagedZone": "ManagedZone",
-   "google-native:dns/v2:Policy": "Policy",
-   "google-native:dns/v2:ResourceRecordSet": "ResourceRecordSet"
-  }
- },
- {
-  "pkg": "google-native",
   "mod": "documentai/v1",
   "fqn": "pulumi_google_native.documentai.v1",
   "classes": {
