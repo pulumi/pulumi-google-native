@@ -156,6 +156,8 @@ type BackfillAllStrategy struct {
 	MysqlExcludedObjects *MysqlRdbms `pulumi:"mysqlExcludedObjects"`
 	// Oracle data source objects to avoid backfilling.
 	OracleExcludedObjects *OracleRdbms `pulumi:"oracleExcludedObjects"`
+	// PostgreSQL data source objects to avoid backfilling.
+	PostgresqlExcludedObjects *PostgresqlRdbms `pulumi:"postgresqlExcludedObjects"`
 }
 
 // BackfillAllStrategyInput is an input type that accepts BackfillAllStrategyArgs and BackfillAllStrategyOutput values.
@@ -175,6 +177,8 @@ type BackfillAllStrategyArgs struct {
 	MysqlExcludedObjects MysqlRdbmsPtrInput `pulumi:"mysqlExcludedObjects"`
 	// Oracle data source objects to avoid backfilling.
 	OracleExcludedObjects OracleRdbmsPtrInput `pulumi:"oracleExcludedObjects"`
+	// PostgreSQL data source objects to avoid backfilling.
+	PostgresqlExcludedObjects PostgresqlRdbmsPtrInput `pulumi:"postgresqlExcludedObjects"`
 }
 
 func (BackfillAllStrategyArgs) ElementType() reflect.Type {
@@ -265,6 +269,11 @@ func (o BackfillAllStrategyOutput) OracleExcludedObjects() OracleRdbmsPtrOutput 
 	return o.ApplyT(func(v BackfillAllStrategy) *OracleRdbms { return v.OracleExcludedObjects }).(OracleRdbmsPtrOutput)
 }
 
+// PostgreSQL data source objects to avoid backfilling.
+func (o BackfillAllStrategyOutput) PostgresqlExcludedObjects() PostgresqlRdbmsPtrOutput {
+	return o.ApplyT(func(v BackfillAllStrategy) *PostgresqlRdbms { return v.PostgresqlExcludedObjects }).(PostgresqlRdbmsPtrOutput)
+}
+
 type BackfillAllStrategyPtrOutput struct{ *pulumi.OutputState }
 
 func (BackfillAllStrategyPtrOutput) ElementType() reflect.Type {
@@ -309,12 +318,24 @@ func (o BackfillAllStrategyPtrOutput) OracleExcludedObjects() OracleRdbmsPtrOutp
 	}).(OracleRdbmsPtrOutput)
 }
 
+// PostgreSQL data source objects to avoid backfilling.
+func (o BackfillAllStrategyPtrOutput) PostgresqlExcludedObjects() PostgresqlRdbmsPtrOutput {
+	return o.ApplyT(func(v *BackfillAllStrategy) *PostgresqlRdbms {
+		if v == nil {
+			return nil
+		}
+		return v.PostgresqlExcludedObjects
+	}).(PostgresqlRdbmsPtrOutput)
+}
+
 // Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
 type BackfillAllStrategyResponse struct {
 	// MySQL data source objects to avoid backfilling.
 	MysqlExcludedObjects MysqlRdbmsResponse `pulumi:"mysqlExcludedObjects"`
 	// Oracle data source objects to avoid backfilling.
 	OracleExcludedObjects OracleRdbmsResponse `pulumi:"oracleExcludedObjects"`
+	// PostgreSQL data source objects to avoid backfilling.
+	PostgresqlExcludedObjects PostgresqlRdbmsResponse `pulumi:"postgresqlExcludedObjects"`
 }
 
 // Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
@@ -340,6 +361,11 @@ func (o BackfillAllStrategyResponseOutput) MysqlExcludedObjects() MysqlRdbmsResp
 // Oracle data source objects to avoid backfilling.
 func (o BackfillAllStrategyResponseOutput) OracleExcludedObjects() OracleRdbmsResponseOutput {
 	return o.ApplyT(func(v BackfillAllStrategyResponse) OracleRdbmsResponse { return v.OracleExcludedObjects }).(OracleRdbmsResponseOutput)
+}
+
+// PostgreSQL data source objects to avoid backfilling.
+func (o BackfillAllStrategyResponseOutput) PostgresqlExcludedObjects() PostgresqlRdbmsResponseOutput {
+	return o.ApplyT(func(v BackfillAllStrategyResponse) PostgresqlRdbmsResponse { return v.PostgresqlExcludedObjects }).(PostgresqlRdbmsResponseOutput)
 }
 
 // Backfill strategy to disable automatic backfill for the Stream's objects.
@@ -482,8 +508,583 @@ func (o BackfillNoneStrategyResponseOutput) ToBackfillNoneStrategyResponseOutput
 	return o
 }
 
+type BigQueryDestinationConfig struct {
+	// The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+	DataFreshness *string `pulumi:"dataFreshness"`
+	// Single destination dataset.
+	SingleTargetDataset *SingleTargetDataset `pulumi:"singleTargetDataset"`
+	// Source hierarchy datasets.
+	SourceHierarchyDatasets *SourceHierarchyDatasets `pulumi:"sourceHierarchyDatasets"`
+}
+
+// BigQueryDestinationConfigInput is an input type that accepts BigQueryDestinationConfigArgs and BigQueryDestinationConfigOutput values.
+// You can construct a concrete instance of `BigQueryDestinationConfigInput` via:
+//
+//	BigQueryDestinationConfigArgs{...}
+type BigQueryDestinationConfigInput interface {
+	pulumi.Input
+
+	ToBigQueryDestinationConfigOutput() BigQueryDestinationConfigOutput
+	ToBigQueryDestinationConfigOutputWithContext(context.Context) BigQueryDestinationConfigOutput
+}
+
+type BigQueryDestinationConfigArgs struct {
+	// The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+	DataFreshness pulumi.StringPtrInput `pulumi:"dataFreshness"`
+	// Single destination dataset.
+	SingleTargetDataset SingleTargetDatasetPtrInput `pulumi:"singleTargetDataset"`
+	// Source hierarchy datasets.
+	SourceHierarchyDatasets SourceHierarchyDatasetsPtrInput `pulumi:"sourceHierarchyDatasets"`
+}
+
+func (BigQueryDestinationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryDestinationConfig)(nil)).Elem()
+}
+
+func (i BigQueryDestinationConfigArgs) ToBigQueryDestinationConfigOutput() BigQueryDestinationConfigOutput {
+	return i.ToBigQueryDestinationConfigOutputWithContext(context.Background())
+}
+
+func (i BigQueryDestinationConfigArgs) ToBigQueryDestinationConfigOutputWithContext(ctx context.Context) BigQueryDestinationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDestinationConfigOutput)
+}
+
+func (i BigQueryDestinationConfigArgs) ToBigQueryDestinationConfigPtrOutput() BigQueryDestinationConfigPtrOutput {
+	return i.ToBigQueryDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BigQueryDestinationConfigArgs) ToBigQueryDestinationConfigPtrOutputWithContext(ctx context.Context) BigQueryDestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDestinationConfigOutput).ToBigQueryDestinationConfigPtrOutputWithContext(ctx)
+}
+
+// BigQueryDestinationConfigPtrInput is an input type that accepts BigQueryDestinationConfigArgs, BigQueryDestinationConfigPtr and BigQueryDestinationConfigPtrOutput values.
+// You can construct a concrete instance of `BigQueryDestinationConfigPtrInput` via:
+//
+//	        BigQueryDestinationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BigQueryDestinationConfigPtrInput interface {
+	pulumi.Input
+
+	ToBigQueryDestinationConfigPtrOutput() BigQueryDestinationConfigPtrOutput
+	ToBigQueryDestinationConfigPtrOutputWithContext(context.Context) BigQueryDestinationConfigPtrOutput
+}
+
+type bigQueryDestinationConfigPtrType BigQueryDestinationConfigArgs
+
+func BigQueryDestinationConfigPtr(v *BigQueryDestinationConfigArgs) BigQueryDestinationConfigPtrInput {
+	return (*bigQueryDestinationConfigPtrType)(v)
+}
+
+func (*bigQueryDestinationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryDestinationConfig)(nil)).Elem()
+}
+
+func (i *bigQueryDestinationConfigPtrType) ToBigQueryDestinationConfigPtrOutput() BigQueryDestinationConfigPtrOutput {
+	return i.ToBigQueryDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *bigQueryDestinationConfigPtrType) ToBigQueryDestinationConfigPtrOutputWithContext(ctx context.Context) BigQueryDestinationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryDestinationConfigPtrOutput)
+}
+
+type BigQueryDestinationConfigOutput struct{ *pulumi.OutputState }
+
+func (BigQueryDestinationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryDestinationConfig)(nil)).Elem()
+}
+
+func (o BigQueryDestinationConfigOutput) ToBigQueryDestinationConfigOutput() BigQueryDestinationConfigOutput {
+	return o
+}
+
+func (o BigQueryDestinationConfigOutput) ToBigQueryDestinationConfigOutputWithContext(ctx context.Context) BigQueryDestinationConfigOutput {
+	return o
+}
+
+func (o BigQueryDestinationConfigOutput) ToBigQueryDestinationConfigPtrOutput() BigQueryDestinationConfigPtrOutput {
+	return o.ToBigQueryDestinationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BigQueryDestinationConfigOutput) ToBigQueryDestinationConfigPtrOutputWithContext(ctx context.Context) BigQueryDestinationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryDestinationConfig) *BigQueryDestinationConfig {
+		return &v
+	}).(BigQueryDestinationConfigPtrOutput)
+}
+
+// The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+func (o BigQueryDestinationConfigOutput) DataFreshness() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BigQueryDestinationConfig) *string { return v.DataFreshness }).(pulumi.StringPtrOutput)
+}
+
+// Single destination dataset.
+func (o BigQueryDestinationConfigOutput) SingleTargetDataset() SingleTargetDatasetPtrOutput {
+	return o.ApplyT(func(v BigQueryDestinationConfig) *SingleTargetDataset { return v.SingleTargetDataset }).(SingleTargetDatasetPtrOutput)
+}
+
+// Source hierarchy datasets.
+func (o BigQueryDestinationConfigOutput) SourceHierarchyDatasets() SourceHierarchyDatasetsPtrOutput {
+	return o.ApplyT(func(v BigQueryDestinationConfig) *SourceHierarchyDatasets { return v.SourceHierarchyDatasets }).(SourceHierarchyDatasetsPtrOutput)
+}
+
+type BigQueryDestinationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BigQueryDestinationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryDestinationConfig)(nil)).Elem()
+}
+
+func (o BigQueryDestinationConfigPtrOutput) ToBigQueryDestinationConfigPtrOutput() BigQueryDestinationConfigPtrOutput {
+	return o
+}
+
+func (o BigQueryDestinationConfigPtrOutput) ToBigQueryDestinationConfigPtrOutputWithContext(ctx context.Context) BigQueryDestinationConfigPtrOutput {
+	return o
+}
+
+func (o BigQueryDestinationConfigPtrOutput) Elem() BigQueryDestinationConfigOutput {
+	return o.ApplyT(func(v *BigQueryDestinationConfig) BigQueryDestinationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryDestinationConfig
+		return ret
+	}).(BigQueryDestinationConfigOutput)
+}
+
+// The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+func (o BigQueryDestinationConfigPtrOutput) DataFreshness() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BigQueryDestinationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataFreshness
+	}).(pulumi.StringPtrOutput)
+}
+
+// Single destination dataset.
+func (o BigQueryDestinationConfigPtrOutput) SingleTargetDataset() SingleTargetDatasetPtrOutput {
+	return o.ApplyT(func(v *BigQueryDestinationConfig) *SingleTargetDataset {
+		if v == nil {
+			return nil
+		}
+		return v.SingleTargetDataset
+	}).(SingleTargetDatasetPtrOutput)
+}
+
+// Source hierarchy datasets.
+func (o BigQueryDestinationConfigPtrOutput) SourceHierarchyDatasets() SourceHierarchyDatasetsPtrOutput {
+	return o.ApplyT(func(v *BigQueryDestinationConfig) *SourceHierarchyDatasets {
+		if v == nil {
+			return nil
+		}
+		return v.SourceHierarchyDatasets
+	}).(SourceHierarchyDatasetsPtrOutput)
+}
+
+type BigQueryDestinationConfigResponse struct {
+	// The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+	DataFreshness string `pulumi:"dataFreshness"`
+	// Single destination dataset.
+	SingleTargetDataset SingleTargetDatasetResponse `pulumi:"singleTargetDataset"`
+	// Source hierarchy datasets.
+	SourceHierarchyDatasets SourceHierarchyDatasetsResponse `pulumi:"sourceHierarchyDatasets"`
+}
+
+type BigQueryDestinationConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (BigQueryDestinationConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryDestinationConfigResponse)(nil)).Elem()
+}
+
+func (o BigQueryDestinationConfigResponseOutput) ToBigQueryDestinationConfigResponseOutput() BigQueryDestinationConfigResponseOutput {
+	return o
+}
+
+func (o BigQueryDestinationConfigResponseOutput) ToBigQueryDestinationConfigResponseOutputWithContext(ctx context.Context) BigQueryDestinationConfigResponseOutput {
+	return o
+}
+
+// The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+func (o BigQueryDestinationConfigResponseOutput) DataFreshness() pulumi.StringOutput {
+	return o.ApplyT(func(v BigQueryDestinationConfigResponse) string { return v.DataFreshness }).(pulumi.StringOutput)
+}
+
+// Single destination dataset.
+func (o BigQueryDestinationConfigResponseOutput) SingleTargetDataset() SingleTargetDatasetResponseOutput {
+	return o.ApplyT(func(v BigQueryDestinationConfigResponse) SingleTargetDatasetResponse { return v.SingleTargetDataset }).(SingleTargetDatasetResponseOutput)
+}
+
+// Source hierarchy datasets.
+func (o BigQueryDestinationConfigResponseOutput) SourceHierarchyDatasets() SourceHierarchyDatasetsResponseOutput {
+	return o.ApplyT(func(v BigQueryDestinationConfigResponse) SourceHierarchyDatasetsResponse {
+		return v.SourceHierarchyDatasets
+	}).(SourceHierarchyDatasetsResponseOutput)
+}
+
+// BigQuery warehouse profile.
+type BigQueryProfile struct {
+}
+
+// BigQueryProfileInput is an input type that accepts BigQueryProfileArgs and BigQueryProfileOutput values.
+// You can construct a concrete instance of `BigQueryProfileInput` via:
+//
+//	BigQueryProfileArgs{...}
+type BigQueryProfileInput interface {
+	pulumi.Input
+
+	ToBigQueryProfileOutput() BigQueryProfileOutput
+	ToBigQueryProfileOutputWithContext(context.Context) BigQueryProfileOutput
+}
+
+// BigQuery warehouse profile.
+type BigQueryProfileArgs struct {
+}
+
+func (BigQueryProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryProfile)(nil)).Elem()
+}
+
+func (i BigQueryProfileArgs) ToBigQueryProfileOutput() BigQueryProfileOutput {
+	return i.ToBigQueryProfileOutputWithContext(context.Background())
+}
+
+func (i BigQueryProfileArgs) ToBigQueryProfileOutputWithContext(ctx context.Context) BigQueryProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryProfileOutput)
+}
+
+func (i BigQueryProfileArgs) ToBigQueryProfilePtrOutput() BigQueryProfilePtrOutput {
+	return i.ToBigQueryProfilePtrOutputWithContext(context.Background())
+}
+
+func (i BigQueryProfileArgs) ToBigQueryProfilePtrOutputWithContext(ctx context.Context) BigQueryProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryProfileOutput).ToBigQueryProfilePtrOutputWithContext(ctx)
+}
+
+// BigQueryProfilePtrInput is an input type that accepts BigQueryProfileArgs, BigQueryProfilePtr and BigQueryProfilePtrOutput values.
+// You can construct a concrete instance of `BigQueryProfilePtrInput` via:
+//
+//	        BigQueryProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type BigQueryProfilePtrInput interface {
+	pulumi.Input
+
+	ToBigQueryProfilePtrOutput() BigQueryProfilePtrOutput
+	ToBigQueryProfilePtrOutputWithContext(context.Context) BigQueryProfilePtrOutput
+}
+
+type bigQueryProfilePtrType BigQueryProfileArgs
+
+func BigQueryProfilePtr(v *BigQueryProfileArgs) BigQueryProfilePtrInput {
+	return (*bigQueryProfilePtrType)(v)
+}
+
+func (*bigQueryProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryProfile)(nil)).Elem()
+}
+
+func (i *bigQueryProfilePtrType) ToBigQueryProfilePtrOutput() BigQueryProfilePtrOutput {
+	return i.ToBigQueryProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *bigQueryProfilePtrType) ToBigQueryProfilePtrOutputWithContext(ctx context.Context) BigQueryProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BigQueryProfilePtrOutput)
+}
+
+// BigQuery warehouse profile.
+type BigQueryProfileOutput struct{ *pulumi.OutputState }
+
+func (BigQueryProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryProfile)(nil)).Elem()
+}
+
+func (o BigQueryProfileOutput) ToBigQueryProfileOutput() BigQueryProfileOutput {
+	return o
+}
+
+func (o BigQueryProfileOutput) ToBigQueryProfileOutputWithContext(ctx context.Context) BigQueryProfileOutput {
+	return o
+}
+
+func (o BigQueryProfileOutput) ToBigQueryProfilePtrOutput() BigQueryProfilePtrOutput {
+	return o.ToBigQueryProfilePtrOutputWithContext(context.Background())
+}
+
+func (o BigQueryProfileOutput) ToBigQueryProfilePtrOutputWithContext(ctx context.Context) BigQueryProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BigQueryProfile) *BigQueryProfile {
+		return &v
+	}).(BigQueryProfilePtrOutput)
+}
+
+type BigQueryProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (BigQueryProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BigQueryProfile)(nil)).Elem()
+}
+
+func (o BigQueryProfilePtrOutput) ToBigQueryProfilePtrOutput() BigQueryProfilePtrOutput {
+	return o
+}
+
+func (o BigQueryProfilePtrOutput) ToBigQueryProfilePtrOutputWithContext(ctx context.Context) BigQueryProfilePtrOutput {
+	return o
+}
+
+func (o BigQueryProfilePtrOutput) Elem() BigQueryProfileOutput {
+	return o.ApplyT(func(v *BigQueryProfile) BigQueryProfile {
+		if v != nil {
+			return *v
+		}
+		var ret BigQueryProfile
+		return ret
+	}).(BigQueryProfileOutput)
+}
+
+// BigQuery warehouse profile.
+type BigQueryProfileResponse struct {
+}
+
+// BigQuery warehouse profile.
+type BigQueryProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (BigQueryProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BigQueryProfileResponse)(nil)).Elem()
+}
+
+func (o BigQueryProfileResponseOutput) ToBigQueryProfileResponseOutput() BigQueryProfileResponseOutput {
+	return o
+}
+
+func (o BigQueryProfileResponseOutput) ToBigQueryProfileResponseOutputWithContext(ctx context.Context) BigQueryProfileResponseOutput {
+	return o
+}
+
+// Dataset template used for dynamic dataset creation.
+type DatasetTemplate struct {
+	// If supplied, every created dataset will have its name prefixed by the provided value. The prefix and name will be separated by an underscore. i.e. _.
+	DatasetIdPrefix *string `pulumi:"datasetIdPrefix"`
+	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}. See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+	KmsKeyName *string `pulumi:"kmsKeyName"`
+	// The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	Location string `pulumi:"location"`
+}
+
+// DatasetTemplateInput is an input type that accepts DatasetTemplateArgs and DatasetTemplateOutput values.
+// You can construct a concrete instance of `DatasetTemplateInput` via:
+//
+//	DatasetTemplateArgs{...}
+type DatasetTemplateInput interface {
+	pulumi.Input
+
+	ToDatasetTemplateOutput() DatasetTemplateOutput
+	ToDatasetTemplateOutputWithContext(context.Context) DatasetTemplateOutput
+}
+
+// Dataset template used for dynamic dataset creation.
+type DatasetTemplateArgs struct {
+	// If supplied, every created dataset will have its name prefixed by the provided value. The prefix and name will be separated by an underscore. i.e. _.
+	DatasetIdPrefix pulumi.StringPtrInput `pulumi:"datasetIdPrefix"`
+	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}. See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+	KmsKeyName pulumi.StringPtrInput `pulumi:"kmsKeyName"`
+	// The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	Location pulumi.StringInput `pulumi:"location"`
+}
+
+func (DatasetTemplateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetTemplate)(nil)).Elem()
+}
+
+func (i DatasetTemplateArgs) ToDatasetTemplateOutput() DatasetTemplateOutput {
+	return i.ToDatasetTemplateOutputWithContext(context.Background())
+}
+
+func (i DatasetTemplateArgs) ToDatasetTemplateOutputWithContext(ctx context.Context) DatasetTemplateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetTemplateOutput)
+}
+
+func (i DatasetTemplateArgs) ToDatasetTemplatePtrOutput() DatasetTemplatePtrOutput {
+	return i.ToDatasetTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i DatasetTemplateArgs) ToDatasetTemplatePtrOutputWithContext(ctx context.Context) DatasetTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetTemplateOutput).ToDatasetTemplatePtrOutputWithContext(ctx)
+}
+
+// DatasetTemplatePtrInput is an input type that accepts DatasetTemplateArgs, DatasetTemplatePtr and DatasetTemplatePtrOutput values.
+// You can construct a concrete instance of `DatasetTemplatePtrInput` via:
+//
+//	        DatasetTemplateArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatasetTemplatePtrInput interface {
+	pulumi.Input
+
+	ToDatasetTemplatePtrOutput() DatasetTemplatePtrOutput
+	ToDatasetTemplatePtrOutputWithContext(context.Context) DatasetTemplatePtrOutput
+}
+
+type datasetTemplatePtrType DatasetTemplateArgs
+
+func DatasetTemplatePtr(v *DatasetTemplateArgs) DatasetTemplatePtrInput {
+	return (*datasetTemplatePtrType)(v)
+}
+
+func (*datasetTemplatePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetTemplate)(nil)).Elem()
+}
+
+func (i *datasetTemplatePtrType) ToDatasetTemplatePtrOutput() DatasetTemplatePtrOutput {
+	return i.ToDatasetTemplatePtrOutputWithContext(context.Background())
+}
+
+func (i *datasetTemplatePtrType) ToDatasetTemplatePtrOutputWithContext(ctx context.Context) DatasetTemplatePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetTemplatePtrOutput)
+}
+
+// Dataset template used for dynamic dataset creation.
+type DatasetTemplateOutput struct{ *pulumi.OutputState }
+
+func (DatasetTemplateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetTemplate)(nil)).Elem()
+}
+
+func (o DatasetTemplateOutput) ToDatasetTemplateOutput() DatasetTemplateOutput {
+	return o
+}
+
+func (o DatasetTemplateOutput) ToDatasetTemplateOutputWithContext(ctx context.Context) DatasetTemplateOutput {
+	return o
+}
+
+func (o DatasetTemplateOutput) ToDatasetTemplatePtrOutput() DatasetTemplatePtrOutput {
+	return o.ToDatasetTemplatePtrOutputWithContext(context.Background())
+}
+
+func (o DatasetTemplateOutput) ToDatasetTemplatePtrOutputWithContext(ctx context.Context) DatasetTemplatePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetTemplate) *DatasetTemplate {
+		return &v
+	}).(DatasetTemplatePtrOutput)
+}
+
+// If supplied, every created dataset will have its name prefixed by the provided value. The prefix and name will be separated by an underscore. i.e. _.
+func (o DatasetTemplateOutput) DatasetIdPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetTemplate) *string { return v.DatasetIdPrefix }).(pulumi.StringPtrOutput)
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}. See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+func (o DatasetTemplateOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetTemplate) *string { return v.KmsKeyName }).(pulumi.StringPtrOutput)
+}
+
+// The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
+func (o DatasetTemplateOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetTemplate) string { return v.Location }).(pulumi.StringOutput)
+}
+
+type DatasetTemplatePtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetTemplatePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetTemplate)(nil)).Elem()
+}
+
+func (o DatasetTemplatePtrOutput) ToDatasetTemplatePtrOutput() DatasetTemplatePtrOutput {
+	return o
+}
+
+func (o DatasetTemplatePtrOutput) ToDatasetTemplatePtrOutputWithContext(ctx context.Context) DatasetTemplatePtrOutput {
+	return o
+}
+
+func (o DatasetTemplatePtrOutput) Elem() DatasetTemplateOutput {
+	return o.ApplyT(func(v *DatasetTemplate) DatasetTemplate {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetTemplate
+		return ret
+	}).(DatasetTemplateOutput)
+}
+
+// If supplied, every created dataset will have its name prefixed by the provided value. The prefix and name will be separated by an underscore. i.e. _.
+func (o DatasetTemplatePtrOutput) DatasetIdPrefix() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatasetIdPrefix
+	}).(pulumi.StringPtrOutput)
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}. See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+func (o DatasetTemplatePtrOutput) KmsKeyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return v.KmsKeyName
+	}).(pulumi.StringPtrOutput)
+}
+
+// The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
+func (o DatasetTemplatePtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetTemplate) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Dataset template used for dynamic dataset creation.
+type DatasetTemplateResponse struct {
+	// If supplied, every created dataset will have its name prefixed by the provided value. The prefix and name will be separated by an underscore. i.e. _.
+	DatasetIdPrefix string `pulumi:"datasetIdPrefix"`
+	// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}. See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	// The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
+	Location string `pulumi:"location"`
+}
+
+// Dataset template used for dynamic dataset creation.
+type DatasetTemplateResponseOutput struct{ *pulumi.OutputState }
+
+func (DatasetTemplateResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetTemplateResponse)(nil)).Elem()
+}
+
+func (o DatasetTemplateResponseOutput) ToDatasetTemplateResponseOutput() DatasetTemplateResponseOutput {
+	return o
+}
+
+func (o DatasetTemplateResponseOutput) ToDatasetTemplateResponseOutputWithContext(ctx context.Context) DatasetTemplateResponseOutput {
+	return o
+}
+
+// If supplied, every created dataset will have its name prefixed by the provided value. The prefix and name will be separated by an underscore. i.e. _.
+func (o DatasetTemplateResponseOutput) DatasetIdPrefix() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetTemplateResponse) string { return v.DatasetIdPrefix }).(pulumi.StringOutput)
+}
+
+// Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}. See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+func (o DatasetTemplateResponseOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetTemplateResponse) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+// The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
+func (o DatasetTemplateResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetTemplateResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
 // The configuration of the stream destination.
 type DestinationConfig struct {
+	// BigQuery destination configuration.
+	BigqueryDestinationConfig *BigQueryDestinationConfig `pulumi:"bigqueryDestinationConfig"`
 	// Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 	DestinationConnectionProfile string `pulumi:"destinationConnectionProfile"`
 	// A configuration for how data should be loaded to Cloud Storage.
@@ -503,6 +1104,8 @@ type DestinationConfigInput interface {
 
 // The configuration of the stream destination.
 type DestinationConfigArgs struct {
+	// BigQuery destination configuration.
+	BigqueryDestinationConfig BigQueryDestinationConfigPtrInput `pulumi:"bigqueryDestinationConfig"`
 	// Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 	DestinationConnectionProfile pulumi.StringInput `pulumi:"destinationConnectionProfile"`
 	// A configuration for how data should be loaded to Cloud Storage.
@@ -536,6 +1139,11 @@ func (o DestinationConfigOutput) ToDestinationConfigOutputWithContext(ctx contex
 	return o
 }
 
+// BigQuery destination configuration.
+func (o DestinationConfigOutput) BigqueryDestinationConfig() BigQueryDestinationConfigPtrOutput {
+	return o.ApplyT(func(v DestinationConfig) *BigQueryDestinationConfig { return v.BigqueryDestinationConfig }).(BigQueryDestinationConfigPtrOutput)
+}
+
 // Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 func (o DestinationConfigOutput) DestinationConnectionProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v DestinationConfig) string { return v.DestinationConnectionProfile }).(pulumi.StringOutput)
@@ -548,6 +1156,8 @@ func (o DestinationConfigOutput) GcsDestinationConfig() GcsDestinationConfigPtrO
 
 // The configuration of the stream destination.
 type DestinationConfigResponse struct {
+	// BigQuery destination configuration.
+	BigqueryDestinationConfig BigQueryDestinationConfigResponse `pulumi:"bigqueryDestinationConfig"`
 	// Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 	DestinationConnectionProfile string `pulumi:"destinationConnectionProfile"`
 	// A configuration for how data should be loaded to Cloud Storage.
@@ -567,6 +1177,13 @@ func (o DestinationConfigResponseOutput) ToDestinationConfigResponseOutput() Des
 
 func (o DestinationConfigResponseOutput) ToDestinationConfigResponseOutputWithContext(ctx context.Context) DestinationConfigResponseOutput {
 	return o
+}
+
+// BigQuery destination configuration.
+func (o DestinationConfigResponseOutput) BigqueryDestinationConfig() BigQueryDestinationConfigResponseOutput {
+	return o.ApplyT(func(v DestinationConfigResponse) BigQueryDestinationConfigResponse {
+		return v.BigqueryDestinationConfig
+	}).(BigQueryDestinationConfigResponseOutput)
 }
 
 // Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
@@ -4506,6 +5123,1268 @@ func (o OracleTableResponseArrayOutput) Index(i pulumi.IntInput) OracleTableResp
 	}).(OracleTableResponseOutput)
 }
 
+// PostgreSQL Column.
+type PostgresqlColumn struct {
+	// Column name.
+	Column *string `pulumi:"column"`
+	// The PostgreSQL data type.
+	DataType *string `pulumi:"dataType"`
+	// Column length.
+	Length *int `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable *bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition *int `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision *int `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey *bool `pulumi:"primaryKey"`
+	// Column scale.
+	Scale *int `pulumi:"scale"`
+}
+
+// PostgresqlColumnInput is an input type that accepts PostgresqlColumnArgs and PostgresqlColumnOutput values.
+// You can construct a concrete instance of `PostgresqlColumnInput` via:
+//
+//	PostgresqlColumnArgs{...}
+type PostgresqlColumnInput interface {
+	pulumi.Input
+
+	ToPostgresqlColumnOutput() PostgresqlColumnOutput
+	ToPostgresqlColumnOutputWithContext(context.Context) PostgresqlColumnOutput
+}
+
+// PostgreSQL Column.
+type PostgresqlColumnArgs struct {
+	// Column name.
+	Column pulumi.StringPtrInput `pulumi:"column"`
+	// The PostgreSQL data type.
+	DataType pulumi.StringPtrInput `pulumi:"dataType"`
+	// Column length.
+	Length pulumi.IntPtrInput `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable pulumi.BoolPtrInput `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition pulumi.IntPtrInput `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision pulumi.IntPtrInput `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey pulumi.BoolPtrInput `pulumi:"primaryKey"`
+	// Column scale.
+	Scale pulumi.IntPtrInput `pulumi:"scale"`
+}
+
+func (PostgresqlColumnArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlColumn)(nil)).Elem()
+}
+
+func (i PostgresqlColumnArgs) ToPostgresqlColumnOutput() PostgresqlColumnOutput {
+	return i.ToPostgresqlColumnOutputWithContext(context.Background())
+}
+
+func (i PostgresqlColumnArgs) ToPostgresqlColumnOutputWithContext(ctx context.Context) PostgresqlColumnOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlColumnOutput)
+}
+
+// PostgresqlColumnArrayInput is an input type that accepts PostgresqlColumnArray and PostgresqlColumnArrayOutput values.
+// You can construct a concrete instance of `PostgresqlColumnArrayInput` via:
+//
+//	PostgresqlColumnArray{ PostgresqlColumnArgs{...} }
+type PostgresqlColumnArrayInput interface {
+	pulumi.Input
+
+	ToPostgresqlColumnArrayOutput() PostgresqlColumnArrayOutput
+	ToPostgresqlColumnArrayOutputWithContext(context.Context) PostgresqlColumnArrayOutput
+}
+
+type PostgresqlColumnArray []PostgresqlColumnInput
+
+func (PostgresqlColumnArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PostgresqlColumn)(nil)).Elem()
+}
+
+func (i PostgresqlColumnArray) ToPostgresqlColumnArrayOutput() PostgresqlColumnArrayOutput {
+	return i.ToPostgresqlColumnArrayOutputWithContext(context.Background())
+}
+
+func (i PostgresqlColumnArray) ToPostgresqlColumnArrayOutputWithContext(ctx context.Context) PostgresqlColumnArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlColumnArrayOutput)
+}
+
+// PostgreSQL Column.
+type PostgresqlColumnOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlColumnOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlColumn)(nil)).Elem()
+}
+
+func (o PostgresqlColumnOutput) ToPostgresqlColumnOutput() PostgresqlColumnOutput {
+	return o
+}
+
+func (o PostgresqlColumnOutput) ToPostgresqlColumnOutputWithContext(ctx context.Context) PostgresqlColumnOutput {
+	return o
+}
+
+// Column name.
+func (o PostgresqlColumnOutput) Column() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgresqlColumn) *string { return v.Column }).(pulumi.StringPtrOutput)
+}
+
+// The PostgreSQL data type.
+func (o PostgresqlColumnOutput) DataType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgresqlColumn) *string { return v.DataType }).(pulumi.StringPtrOutput)
+}
+
+// Column length.
+func (o PostgresqlColumnOutput) Length() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PostgresqlColumn) *int { return v.Length }).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column can accept a null value.
+func (o PostgresqlColumnOutput) Nullable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PostgresqlColumn) *bool { return v.Nullable }).(pulumi.BoolPtrOutput)
+}
+
+// The ordinal position of the column in the table.
+func (o PostgresqlColumnOutput) OrdinalPosition() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PostgresqlColumn) *int { return v.OrdinalPosition }).(pulumi.IntPtrOutput)
+}
+
+// Column precision.
+func (o PostgresqlColumnOutput) Precision() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PostgresqlColumn) *int { return v.Precision }).(pulumi.IntPtrOutput)
+}
+
+// Whether or not the column represents a primary key.
+func (o PostgresqlColumnOutput) PrimaryKey() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PostgresqlColumn) *bool { return v.PrimaryKey }).(pulumi.BoolPtrOutput)
+}
+
+// Column scale.
+func (o PostgresqlColumnOutput) Scale() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PostgresqlColumn) *int { return v.Scale }).(pulumi.IntPtrOutput)
+}
+
+type PostgresqlColumnArrayOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlColumnArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PostgresqlColumn)(nil)).Elem()
+}
+
+func (o PostgresqlColumnArrayOutput) ToPostgresqlColumnArrayOutput() PostgresqlColumnArrayOutput {
+	return o
+}
+
+func (o PostgresqlColumnArrayOutput) ToPostgresqlColumnArrayOutputWithContext(ctx context.Context) PostgresqlColumnArrayOutput {
+	return o
+}
+
+func (o PostgresqlColumnArrayOutput) Index(i pulumi.IntInput) PostgresqlColumnOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PostgresqlColumn {
+		return vs[0].([]PostgresqlColumn)[vs[1].(int)]
+	}).(PostgresqlColumnOutput)
+}
+
+// PostgreSQL Column.
+type PostgresqlColumnResponse struct {
+	// Column name.
+	Column string `pulumi:"column"`
+	// The PostgreSQL data type.
+	DataType string `pulumi:"dataType"`
+	// Column length.
+	Length int `pulumi:"length"`
+	// Whether or not the column can accept a null value.
+	Nullable bool `pulumi:"nullable"`
+	// The ordinal position of the column in the table.
+	OrdinalPosition int `pulumi:"ordinalPosition"`
+	// Column precision.
+	Precision int `pulumi:"precision"`
+	// Whether or not the column represents a primary key.
+	PrimaryKey bool `pulumi:"primaryKey"`
+	// Column scale.
+	Scale int `pulumi:"scale"`
+}
+
+// PostgreSQL Column.
+type PostgresqlColumnResponseOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlColumnResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlColumnResponse)(nil)).Elem()
+}
+
+func (o PostgresqlColumnResponseOutput) ToPostgresqlColumnResponseOutput() PostgresqlColumnResponseOutput {
+	return o
+}
+
+func (o PostgresqlColumnResponseOutput) ToPostgresqlColumnResponseOutputWithContext(ctx context.Context) PostgresqlColumnResponseOutput {
+	return o
+}
+
+// Column name.
+func (o PostgresqlColumnResponseOutput) Column() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlColumnResponse) string { return v.Column }).(pulumi.StringOutput)
+}
+
+// The PostgreSQL data type.
+func (o PostgresqlColumnResponseOutput) DataType() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlColumnResponse) string { return v.DataType }).(pulumi.StringOutput)
+}
+
+// Column length.
+func (o PostgresqlColumnResponseOutput) Length() pulumi.IntOutput {
+	return o.ApplyT(func(v PostgresqlColumnResponse) int { return v.Length }).(pulumi.IntOutput)
+}
+
+// Whether or not the column can accept a null value.
+func (o PostgresqlColumnResponseOutput) Nullable() pulumi.BoolOutput {
+	return o.ApplyT(func(v PostgresqlColumnResponse) bool { return v.Nullable }).(pulumi.BoolOutput)
+}
+
+// The ordinal position of the column in the table.
+func (o PostgresqlColumnResponseOutput) OrdinalPosition() pulumi.IntOutput {
+	return o.ApplyT(func(v PostgresqlColumnResponse) int { return v.OrdinalPosition }).(pulumi.IntOutput)
+}
+
+// Column precision.
+func (o PostgresqlColumnResponseOutput) Precision() pulumi.IntOutput {
+	return o.ApplyT(func(v PostgresqlColumnResponse) int { return v.Precision }).(pulumi.IntOutput)
+}
+
+// Whether or not the column represents a primary key.
+func (o PostgresqlColumnResponseOutput) PrimaryKey() pulumi.BoolOutput {
+	return o.ApplyT(func(v PostgresqlColumnResponse) bool { return v.PrimaryKey }).(pulumi.BoolOutput)
+}
+
+// Column scale.
+func (o PostgresqlColumnResponseOutput) Scale() pulumi.IntOutput {
+	return o.ApplyT(func(v PostgresqlColumnResponse) int { return v.Scale }).(pulumi.IntOutput)
+}
+
+type PostgresqlColumnResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlColumnResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PostgresqlColumnResponse)(nil)).Elem()
+}
+
+func (o PostgresqlColumnResponseArrayOutput) ToPostgresqlColumnResponseArrayOutput() PostgresqlColumnResponseArrayOutput {
+	return o
+}
+
+func (o PostgresqlColumnResponseArrayOutput) ToPostgresqlColumnResponseArrayOutputWithContext(ctx context.Context) PostgresqlColumnResponseArrayOutput {
+	return o
+}
+
+func (o PostgresqlColumnResponseArrayOutput) Index(i pulumi.IntInput) PostgresqlColumnResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PostgresqlColumnResponse {
+		return vs[0].([]PostgresqlColumnResponse)[vs[1].(int)]
+	}).(PostgresqlColumnResponseOutput)
+}
+
+// PostgreSQL database profile.
+type PostgresqlProfile struct {
+	// Database for the PostgreSQL connection.
+	Database string `pulumi:"database"`
+	// Hostname for the PostgreSQL connection.
+	Hostname string `pulumi:"hostname"`
+	// Password for the PostgreSQL connection.
+	Password string `pulumi:"password"`
+	// Port for the PostgreSQL connection, default value is 5432.
+	Port *int `pulumi:"port"`
+	// Username for the PostgreSQL connection.
+	Username string `pulumi:"username"`
+}
+
+// PostgresqlProfileInput is an input type that accepts PostgresqlProfileArgs and PostgresqlProfileOutput values.
+// You can construct a concrete instance of `PostgresqlProfileInput` via:
+//
+//	PostgresqlProfileArgs{...}
+type PostgresqlProfileInput interface {
+	pulumi.Input
+
+	ToPostgresqlProfileOutput() PostgresqlProfileOutput
+	ToPostgresqlProfileOutputWithContext(context.Context) PostgresqlProfileOutput
+}
+
+// PostgreSQL database profile.
+type PostgresqlProfileArgs struct {
+	// Database for the PostgreSQL connection.
+	Database pulumi.StringInput `pulumi:"database"`
+	// Hostname for the PostgreSQL connection.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// Password for the PostgreSQL connection.
+	Password pulumi.StringInput `pulumi:"password"`
+	// Port for the PostgreSQL connection, default value is 5432.
+	Port pulumi.IntPtrInput `pulumi:"port"`
+	// Username for the PostgreSQL connection.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (PostgresqlProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlProfile)(nil)).Elem()
+}
+
+func (i PostgresqlProfileArgs) ToPostgresqlProfileOutput() PostgresqlProfileOutput {
+	return i.ToPostgresqlProfileOutputWithContext(context.Background())
+}
+
+func (i PostgresqlProfileArgs) ToPostgresqlProfileOutputWithContext(ctx context.Context) PostgresqlProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlProfileOutput)
+}
+
+func (i PostgresqlProfileArgs) ToPostgresqlProfilePtrOutput() PostgresqlProfilePtrOutput {
+	return i.ToPostgresqlProfilePtrOutputWithContext(context.Background())
+}
+
+func (i PostgresqlProfileArgs) ToPostgresqlProfilePtrOutputWithContext(ctx context.Context) PostgresqlProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlProfileOutput).ToPostgresqlProfilePtrOutputWithContext(ctx)
+}
+
+// PostgresqlProfilePtrInput is an input type that accepts PostgresqlProfileArgs, PostgresqlProfilePtr and PostgresqlProfilePtrOutput values.
+// You can construct a concrete instance of `PostgresqlProfilePtrInput` via:
+//
+//	        PostgresqlProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type PostgresqlProfilePtrInput interface {
+	pulumi.Input
+
+	ToPostgresqlProfilePtrOutput() PostgresqlProfilePtrOutput
+	ToPostgresqlProfilePtrOutputWithContext(context.Context) PostgresqlProfilePtrOutput
+}
+
+type postgresqlProfilePtrType PostgresqlProfileArgs
+
+func PostgresqlProfilePtr(v *PostgresqlProfileArgs) PostgresqlProfilePtrInput {
+	return (*postgresqlProfilePtrType)(v)
+}
+
+func (*postgresqlProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresqlProfile)(nil)).Elem()
+}
+
+func (i *postgresqlProfilePtrType) ToPostgresqlProfilePtrOutput() PostgresqlProfilePtrOutput {
+	return i.ToPostgresqlProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *postgresqlProfilePtrType) ToPostgresqlProfilePtrOutputWithContext(ctx context.Context) PostgresqlProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlProfilePtrOutput)
+}
+
+// PostgreSQL database profile.
+type PostgresqlProfileOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlProfile)(nil)).Elem()
+}
+
+func (o PostgresqlProfileOutput) ToPostgresqlProfileOutput() PostgresqlProfileOutput {
+	return o
+}
+
+func (o PostgresqlProfileOutput) ToPostgresqlProfileOutputWithContext(ctx context.Context) PostgresqlProfileOutput {
+	return o
+}
+
+func (o PostgresqlProfileOutput) ToPostgresqlProfilePtrOutput() PostgresqlProfilePtrOutput {
+	return o.ToPostgresqlProfilePtrOutputWithContext(context.Background())
+}
+
+func (o PostgresqlProfileOutput) ToPostgresqlProfilePtrOutputWithContext(ctx context.Context) PostgresqlProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostgresqlProfile) *PostgresqlProfile {
+		return &v
+	}).(PostgresqlProfilePtrOutput)
+}
+
+// Database for the PostgreSQL connection.
+func (o PostgresqlProfileOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlProfile) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// Hostname for the PostgreSQL connection.
+func (o PostgresqlProfileOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlProfile) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Password for the PostgreSQL connection.
+func (o PostgresqlProfileOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlProfile) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Port for the PostgreSQL connection, default value is 5432.
+func (o PostgresqlProfileOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v PostgresqlProfile) *int { return v.Port }).(pulumi.IntPtrOutput)
+}
+
+// Username for the PostgreSQL connection.
+func (o PostgresqlProfileOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlProfile) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type PostgresqlProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresqlProfile)(nil)).Elem()
+}
+
+func (o PostgresqlProfilePtrOutput) ToPostgresqlProfilePtrOutput() PostgresqlProfilePtrOutput {
+	return o
+}
+
+func (o PostgresqlProfilePtrOutput) ToPostgresqlProfilePtrOutputWithContext(ctx context.Context) PostgresqlProfilePtrOutput {
+	return o
+}
+
+func (o PostgresqlProfilePtrOutput) Elem() PostgresqlProfileOutput {
+	return o.ApplyT(func(v *PostgresqlProfile) PostgresqlProfile {
+		if v != nil {
+			return *v
+		}
+		var ret PostgresqlProfile
+		return ret
+	}).(PostgresqlProfileOutput)
+}
+
+// Database for the PostgreSQL connection.
+func (o PostgresqlProfilePtrOutput) Database() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresqlProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Database
+	}).(pulumi.StringPtrOutput)
+}
+
+// Hostname for the PostgreSQL connection.
+func (o PostgresqlProfilePtrOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresqlProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// Password for the PostgreSQL connection.
+func (o PostgresqlProfilePtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresqlProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// Port for the PostgreSQL connection, default value is 5432.
+func (o PostgresqlProfilePtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *PostgresqlProfile) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Port
+	}).(pulumi.IntPtrOutput)
+}
+
+// Username for the PostgreSQL connection.
+func (o PostgresqlProfilePtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresqlProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL database profile.
+type PostgresqlProfileResponse struct {
+	// Database for the PostgreSQL connection.
+	Database string `pulumi:"database"`
+	// Hostname for the PostgreSQL connection.
+	Hostname string `pulumi:"hostname"`
+	// Password for the PostgreSQL connection.
+	Password string `pulumi:"password"`
+	// Port for the PostgreSQL connection, default value is 5432.
+	Port int `pulumi:"port"`
+	// Username for the PostgreSQL connection.
+	Username string `pulumi:"username"`
+}
+
+// PostgreSQL database profile.
+type PostgresqlProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlProfileResponse)(nil)).Elem()
+}
+
+func (o PostgresqlProfileResponseOutput) ToPostgresqlProfileResponseOutput() PostgresqlProfileResponseOutput {
+	return o
+}
+
+func (o PostgresqlProfileResponseOutput) ToPostgresqlProfileResponseOutputWithContext(ctx context.Context) PostgresqlProfileResponseOutput {
+	return o
+}
+
+// Database for the PostgreSQL connection.
+func (o PostgresqlProfileResponseOutput) Database() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlProfileResponse) string { return v.Database }).(pulumi.StringOutput)
+}
+
+// Hostname for the PostgreSQL connection.
+func (o PostgresqlProfileResponseOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlProfileResponse) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// Password for the PostgreSQL connection.
+func (o PostgresqlProfileResponseOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlProfileResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Port for the PostgreSQL connection, default value is 5432.
+func (o PostgresqlProfileResponseOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v PostgresqlProfileResponse) int { return v.Port }).(pulumi.IntOutput)
+}
+
+// Username for the PostgreSQL connection.
+func (o PostgresqlProfileResponseOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlProfileResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// PostgreSQL database structure.
+type PostgresqlRdbms struct {
+	// PostgreSQL schemas in the database server.
+	PostgresqlSchemas []PostgresqlSchema `pulumi:"postgresqlSchemas"`
+}
+
+// PostgresqlRdbmsInput is an input type that accepts PostgresqlRdbmsArgs and PostgresqlRdbmsOutput values.
+// You can construct a concrete instance of `PostgresqlRdbmsInput` via:
+//
+//	PostgresqlRdbmsArgs{...}
+type PostgresqlRdbmsInput interface {
+	pulumi.Input
+
+	ToPostgresqlRdbmsOutput() PostgresqlRdbmsOutput
+	ToPostgresqlRdbmsOutputWithContext(context.Context) PostgresqlRdbmsOutput
+}
+
+// PostgreSQL database structure.
+type PostgresqlRdbmsArgs struct {
+	// PostgreSQL schemas in the database server.
+	PostgresqlSchemas PostgresqlSchemaArrayInput `pulumi:"postgresqlSchemas"`
+}
+
+func (PostgresqlRdbmsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlRdbms)(nil)).Elem()
+}
+
+func (i PostgresqlRdbmsArgs) ToPostgresqlRdbmsOutput() PostgresqlRdbmsOutput {
+	return i.ToPostgresqlRdbmsOutputWithContext(context.Background())
+}
+
+func (i PostgresqlRdbmsArgs) ToPostgresqlRdbmsOutputWithContext(ctx context.Context) PostgresqlRdbmsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlRdbmsOutput)
+}
+
+func (i PostgresqlRdbmsArgs) ToPostgresqlRdbmsPtrOutput() PostgresqlRdbmsPtrOutput {
+	return i.ToPostgresqlRdbmsPtrOutputWithContext(context.Background())
+}
+
+func (i PostgresqlRdbmsArgs) ToPostgresqlRdbmsPtrOutputWithContext(ctx context.Context) PostgresqlRdbmsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlRdbmsOutput).ToPostgresqlRdbmsPtrOutputWithContext(ctx)
+}
+
+// PostgresqlRdbmsPtrInput is an input type that accepts PostgresqlRdbmsArgs, PostgresqlRdbmsPtr and PostgresqlRdbmsPtrOutput values.
+// You can construct a concrete instance of `PostgresqlRdbmsPtrInput` via:
+//
+//	        PostgresqlRdbmsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PostgresqlRdbmsPtrInput interface {
+	pulumi.Input
+
+	ToPostgresqlRdbmsPtrOutput() PostgresqlRdbmsPtrOutput
+	ToPostgresqlRdbmsPtrOutputWithContext(context.Context) PostgresqlRdbmsPtrOutput
+}
+
+type postgresqlRdbmsPtrType PostgresqlRdbmsArgs
+
+func PostgresqlRdbmsPtr(v *PostgresqlRdbmsArgs) PostgresqlRdbmsPtrInput {
+	return (*postgresqlRdbmsPtrType)(v)
+}
+
+func (*postgresqlRdbmsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresqlRdbms)(nil)).Elem()
+}
+
+func (i *postgresqlRdbmsPtrType) ToPostgresqlRdbmsPtrOutput() PostgresqlRdbmsPtrOutput {
+	return i.ToPostgresqlRdbmsPtrOutputWithContext(context.Background())
+}
+
+func (i *postgresqlRdbmsPtrType) ToPostgresqlRdbmsPtrOutputWithContext(ctx context.Context) PostgresqlRdbmsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlRdbmsPtrOutput)
+}
+
+// PostgreSQL database structure.
+type PostgresqlRdbmsOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlRdbmsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlRdbms)(nil)).Elem()
+}
+
+func (o PostgresqlRdbmsOutput) ToPostgresqlRdbmsOutput() PostgresqlRdbmsOutput {
+	return o
+}
+
+func (o PostgresqlRdbmsOutput) ToPostgresqlRdbmsOutputWithContext(ctx context.Context) PostgresqlRdbmsOutput {
+	return o
+}
+
+func (o PostgresqlRdbmsOutput) ToPostgresqlRdbmsPtrOutput() PostgresqlRdbmsPtrOutput {
+	return o.ToPostgresqlRdbmsPtrOutputWithContext(context.Background())
+}
+
+func (o PostgresqlRdbmsOutput) ToPostgresqlRdbmsPtrOutputWithContext(ctx context.Context) PostgresqlRdbmsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostgresqlRdbms) *PostgresqlRdbms {
+		return &v
+	}).(PostgresqlRdbmsPtrOutput)
+}
+
+// PostgreSQL schemas in the database server.
+func (o PostgresqlRdbmsOutput) PostgresqlSchemas() PostgresqlSchemaArrayOutput {
+	return o.ApplyT(func(v PostgresqlRdbms) []PostgresqlSchema { return v.PostgresqlSchemas }).(PostgresqlSchemaArrayOutput)
+}
+
+type PostgresqlRdbmsPtrOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlRdbmsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresqlRdbms)(nil)).Elem()
+}
+
+func (o PostgresqlRdbmsPtrOutput) ToPostgresqlRdbmsPtrOutput() PostgresqlRdbmsPtrOutput {
+	return o
+}
+
+func (o PostgresqlRdbmsPtrOutput) ToPostgresqlRdbmsPtrOutputWithContext(ctx context.Context) PostgresqlRdbmsPtrOutput {
+	return o
+}
+
+func (o PostgresqlRdbmsPtrOutput) Elem() PostgresqlRdbmsOutput {
+	return o.ApplyT(func(v *PostgresqlRdbms) PostgresqlRdbms {
+		if v != nil {
+			return *v
+		}
+		var ret PostgresqlRdbms
+		return ret
+	}).(PostgresqlRdbmsOutput)
+}
+
+// PostgreSQL schemas in the database server.
+func (o PostgresqlRdbmsPtrOutput) PostgresqlSchemas() PostgresqlSchemaArrayOutput {
+	return o.ApplyT(func(v *PostgresqlRdbms) []PostgresqlSchema {
+		if v == nil {
+			return nil
+		}
+		return v.PostgresqlSchemas
+	}).(PostgresqlSchemaArrayOutput)
+}
+
+// PostgreSQL database structure.
+type PostgresqlRdbmsResponse struct {
+	// PostgreSQL schemas in the database server.
+	PostgresqlSchemas []PostgresqlSchemaResponse `pulumi:"postgresqlSchemas"`
+}
+
+// PostgreSQL database structure.
+type PostgresqlRdbmsResponseOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlRdbmsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlRdbmsResponse)(nil)).Elem()
+}
+
+func (o PostgresqlRdbmsResponseOutput) ToPostgresqlRdbmsResponseOutput() PostgresqlRdbmsResponseOutput {
+	return o
+}
+
+func (o PostgresqlRdbmsResponseOutput) ToPostgresqlRdbmsResponseOutputWithContext(ctx context.Context) PostgresqlRdbmsResponseOutput {
+	return o
+}
+
+// PostgreSQL schemas in the database server.
+func (o PostgresqlRdbmsResponseOutput) PostgresqlSchemas() PostgresqlSchemaResponseArrayOutput {
+	return o.ApplyT(func(v PostgresqlRdbmsResponse) []PostgresqlSchemaResponse { return v.PostgresqlSchemas }).(PostgresqlSchemaResponseArrayOutput)
+}
+
+// PostgreSQL schema.
+type PostgresqlSchema struct {
+	// Tables in the schema.
+	PostgresqlTables []PostgresqlTable `pulumi:"postgresqlTables"`
+	// Schema name.
+	Schema *string `pulumi:"schema"`
+}
+
+// PostgresqlSchemaInput is an input type that accepts PostgresqlSchemaArgs and PostgresqlSchemaOutput values.
+// You can construct a concrete instance of `PostgresqlSchemaInput` via:
+//
+//	PostgresqlSchemaArgs{...}
+type PostgresqlSchemaInput interface {
+	pulumi.Input
+
+	ToPostgresqlSchemaOutput() PostgresqlSchemaOutput
+	ToPostgresqlSchemaOutputWithContext(context.Context) PostgresqlSchemaOutput
+}
+
+// PostgreSQL schema.
+type PostgresqlSchemaArgs struct {
+	// Tables in the schema.
+	PostgresqlTables PostgresqlTableArrayInput `pulumi:"postgresqlTables"`
+	// Schema name.
+	Schema pulumi.StringPtrInput `pulumi:"schema"`
+}
+
+func (PostgresqlSchemaArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlSchema)(nil)).Elem()
+}
+
+func (i PostgresqlSchemaArgs) ToPostgresqlSchemaOutput() PostgresqlSchemaOutput {
+	return i.ToPostgresqlSchemaOutputWithContext(context.Background())
+}
+
+func (i PostgresqlSchemaArgs) ToPostgresqlSchemaOutputWithContext(ctx context.Context) PostgresqlSchemaOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlSchemaOutput)
+}
+
+// PostgresqlSchemaArrayInput is an input type that accepts PostgresqlSchemaArray and PostgresqlSchemaArrayOutput values.
+// You can construct a concrete instance of `PostgresqlSchemaArrayInput` via:
+//
+//	PostgresqlSchemaArray{ PostgresqlSchemaArgs{...} }
+type PostgresqlSchemaArrayInput interface {
+	pulumi.Input
+
+	ToPostgresqlSchemaArrayOutput() PostgresqlSchemaArrayOutput
+	ToPostgresqlSchemaArrayOutputWithContext(context.Context) PostgresqlSchemaArrayOutput
+}
+
+type PostgresqlSchemaArray []PostgresqlSchemaInput
+
+func (PostgresqlSchemaArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PostgresqlSchema)(nil)).Elem()
+}
+
+func (i PostgresqlSchemaArray) ToPostgresqlSchemaArrayOutput() PostgresqlSchemaArrayOutput {
+	return i.ToPostgresqlSchemaArrayOutputWithContext(context.Background())
+}
+
+func (i PostgresqlSchemaArray) ToPostgresqlSchemaArrayOutputWithContext(ctx context.Context) PostgresqlSchemaArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlSchemaArrayOutput)
+}
+
+// PostgreSQL schema.
+type PostgresqlSchemaOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlSchemaOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlSchema)(nil)).Elem()
+}
+
+func (o PostgresqlSchemaOutput) ToPostgresqlSchemaOutput() PostgresqlSchemaOutput {
+	return o
+}
+
+func (o PostgresqlSchemaOutput) ToPostgresqlSchemaOutputWithContext(ctx context.Context) PostgresqlSchemaOutput {
+	return o
+}
+
+// Tables in the schema.
+func (o PostgresqlSchemaOutput) PostgresqlTables() PostgresqlTableArrayOutput {
+	return o.ApplyT(func(v PostgresqlSchema) []PostgresqlTable { return v.PostgresqlTables }).(PostgresqlTableArrayOutput)
+}
+
+// Schema name.
+func (o PostgresqlSchemaOutput) Schema() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgresqlSchema) *string { return v.Schema }).(pulumi.StringPtrOutput)
+}
+
+type PostgresqlSchemaArrayOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlSchemaArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PostgresqlSchema)(nil)).Elem()
+}
+
+func (o PostgresqlSchemaArrayOutput) ToPostgresqlSchemaArrayOutput() PostgresqlSchemaArrayOutput {
+	return o
+}
+
+func (o PostgresqlSchemaArrayOutput) ToPostgresqlSchemaArrayOutputWithContext(ctx context.Context) PostgresqlSchemaArrayOutput {
+	return o
+}
+
+func (o PostgresqlSchemaArrayOutput) Index(i pulumi.IntInput) PostgresqlSchemaOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PostgresqlSchema {
+		return vs[0].([]PostgresqlSchema)[vs[1].(int)]
+	}).(PostgresqlSchemaOutput)
+}
+
+// PostgreSQL schema.
+type PostgresqlSchemaResponse struct {
+	// Tables in the schema.
+	PostgresqlTables []PostgresqlTableResponse `pulumi:"postgresqlTables"`
+	// Schema name.
+	Schema string `pulumi:"schema"`
+}
+
+// PostgreSQL schema.
+type PostgresqlSchemaResponseOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlSchemaResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlSchemaResponse)(nil)).Elem()
+}
+
+func (o PostgresqlSchemaResponseOutput) ToPostgresqlSchemaResponseOutput() PostgresqlSchemaResponseOutput {
+	return o
+}
+
+func (o PostgresqlSchemaResponseOutput) ToPostgresqlSchemaResponseOutputWithContext(ctx context.Context) PostgresqlSchemaResponseOutput {
+	return o
+}
+
+// Tables in the schema.
+func (o PostgresqlSchemaResponseOutput) PostgresqlTables() PostgresqlTableResponseArrayOutput {
+	return o.ApplyT(func(v PostgresqlSchemaResponse) []PostgresqlTableResponse { return v.PostgresqlTables }).(PostgresqlTableResponseArrayOutput)
+}
+
+// Schema name.
+func (o PostgresqlSchemaResponseOutput) Schema() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlSchemaResponse) string { return v.Schema }).(pulumi.StringOutput)
+}
+
+type PostgresqlSchemaResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlSchemaResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PostgresqlSchemaResponse)(nil)).Elem()
+}
+
+func (o PostgresqlSchemaResponseArrayOutput) ToPostgresqlSchemaResponseArrayOutput() PostgresqlSchemaResponseArrayOutput {
+	return o
+}
+
+func (o PostgresqlSchemaResponseArrayOutput) ToPostgresqlSchemaResponseArrayOutputWithContext(ctx context.Context) PostgresqlSchemaResponseArrayOutput {
+	return o
+}
+
+func (o PostgresqlSchemaResponseArrayOutput) Index(i pulumi.IntInput) PostgresqlSchemaResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PostgresqlSchemaResponse {
+		return vs[0].([]PostgresqlSchemaResponse)[vs[1].(int)]
+	}).(PostgresqlSchemaResponseOutput)
+}
+
+// PostgreSQL data source configuration
+type PostgresqlSourceConfig struct {
+	// PostgreSQL objects to exclude from the stream.
+	ExcludeObjects *PostgresqlRdbms `pulumi:"excludeObjects"`
+	// PostgreSQL objects to include in the stream.
+	IncludeObjects *PostgresqlRdbms `pulumi:"includeObjects"`
+	// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
+	Publication string `pulumi:"publication"`
+	// The name of the logical replication slot that's configured with the pgoutput plugin.
+	ReplicationSlot string `pulumi:"replicationSlot"`
+}
+
+// PostgresqlSourceConfigInput is an input type that accepts PostgresqlSourceConfigArgs and PostgresqlSourceConfigOutput values.
+// You can construct a concrete instance of `PostgresqlSourceConfigInput` via:
+//
+//	PostgresqlSourceConfigArgs{...}
+type PostgresqlSourceConfigInput interface {
+	pulumi.Input
+
+	ToPostgresqlSourceConfigOutput() PostgresqlSourceConfigOutput
+	ToPostgresqlSourceConfigOutputWithContext(context.Context) PostgresqlSourceConfigOutput
+}
+
+// PostgreSQL data source configuration
+type PostgresqlSourceConfigArgs struct {
+	// PostgreSQL objects to exclude from the stream.
+	ExcludeObjects PostgresqlRdbmsPtrInput `pulumi:"excludeObjects"`
+	// PostgreSQL objects to include in the stream.
+	IncludeObjects PostgresqlRdbmsPtrInput `pulumi:"includeObjects"`
+	// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
+	Publication pulumi.StringInput `pulumi:"publication"`
+	// The name of the logical replication slot that's configured with the pgoutput plugin.
+	ReplicationSlot pulumi.StringInput `pulumi:"replicationSlot"`
+}
+
+func (PostgresqlSourceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlSourceConfig)(nil)).Elem()
+}
+
+func (i PostgresqlSourceConfigArgs) ToPostgresqlSourceConfigOutput() PostgresqlSourceConfigOutput {
+	return i.ToPostgresqlSourceConfigOutputWithContext(context.Background())
+}
+
+func (i PostgresqlSourceConfigArgs) ToPostgresqlSourceConfigOutputWithContext(ctx context.Context) PostgresqlSourceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlSourceConfigOutput)
+}
+
+func (i PostgresqlSourceConfigArgs) ToPostgresqlSourceConfigPtrOutput() PostgresqlSourceConfigPtrOutput {
+	return i.ToPostgresqlSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i PostgresqlSourceConfigArgs) ToPostgresqlSourceConfigPtrOutputWithContext(ctx context.Context) PostgresqlSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlSourceConfigOutput).ToPostgresqlSourceConfigPtrOutputWithContext(ctx)
+}
+
+// PostgresqlSourceConfigPtrInput is an input type that accepts PostgresqlSourceConfigArgs, PostgresqlSourceConfigPtr and PostgresqlSourceConfigPtrOutput values.
+// You can construct a concrete instance of `PostgresqlSourceConfigPtrInput` via:
+//
+//	        PostgresqlSourceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type PostgresqlSourceConfigPtrInput interface {
+	pulumi.Input
+
+	ToPostgresqlSourceConfigPtrOutput() PostgresqlSourceConfigPtrOutput
+	ToPostgresqlSourceConfigPtrOutputWithContext(context.Context) PostgresqlSourceConfigPtrOutput
+}
+
+type postgresqlSourceConfigPtrType PostgresqlSourceConfigArgs
+
+func PostgresqlSourceConfigPtr(v *PostgresqlSourceConfigArgs) PostgresqlSourceConfigPtrInput {
+	return (*postgresqlSourceConfigPtrType)(v)
+}
+
+func (*postgresqlSourceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresqlSourceConfig)(nil)).Elem()
+}
+
+func (i *postgresqlSourceConfigPtrType) ToPostgresqlSourceConfigPtrOutput() PostgresqlSourceConfigPtrOutput {
+	return i.ToPostgresqlSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *postgresqlSourceConfigPtrType) ToPostgresqlSourceConfigPtrOutputWithContext(ctx context.Context) PostgresqlSourceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlSourceConfigPtrOutput)
+}
+
+// PostgreSQL data source configuration
+type PostgresqlSourceConfigOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlSourceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlSourceConfig)(nil)).Elem()
+}
+
+func (o PostgresqlSourceConfigOutput) ToPostgresqlSourceConfigOutput() PostgresqlSourceConfigOutput {
+	return o
+}
+
+func (o PostgresqlSourceConfigOutput) ToPostgresqlSourceConfigOutputWithContext(ctx context.Context) PostgresqlSourceConfigOutput {
+	return o
+}
+
+func (o PostgresqlSourceConfigOutput) ToPostgresqlSourceConfigPtrOutput() PostgresqlSourceConfigPtrOutput {
+	return o.ToPostgresqlSourceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o PostgresqlSourceConfigOutput) ToPostgresqlSourceConfigPtrOutputWithContext(ctx context.Context) PostgresqlSourceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PostgresqlSourceConfig) *PostgresqlSourceConfig {
+		return &v
+	}).(PostgresqlSourceConfigPtrOutput)
+}
+
+// PostgreSQL objects to exclude from the stream.
+func (o PostgresqlSourceConfigOutput) ExcludeObjects() PostgresqlRdbmsPtrOutput {
+	return o.ApplyT(func(v PostgresqlSourceConfig) *PostgresqlRdbms { return v.ExcludeObjects }).(PostgresqlRdbmsPtrOutput)
+}
+
+// PostgreSQL objects to include in the stream.
+func (o PostgresqlSourceConfigOutput) IncludeObjects() PostgresqlRdbmsPtrOutput {
+	return o.ApplyT(func(v PostgresqlSourceConfig) *PostgresqlRdbms { return v.IncludeObjects }).(PostgresqlRdbmsPtrOutput)
+}
+
+// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
+func (o PostgresqlSourceConfigOutput) Publication() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlSourceConfig) string { return v.Publication }).(pulumi.StringOutput)
+}
+
+// The name of the logical replication slot that's configured with the pgoutput plugin.
+func (o PostgresqlSourceConfigOutput) ReplicationSlot() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlSourceConfig) string { return v.ReplicationSlot }).(pulumi.StringOutput)
+}
+
+type PostgresqlSourceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlSourceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PostgresqlSourceConfig)(nil)).Elem()
+}
+
+func (o PostgresqlSourceConfigPtrOutput) ToPostgresqlSourceConfigPtrOutput() PostgresqlSourceConfigPtrOutput {
+	return o
+}
+
+func (o PostgresqlSourceConfigPtrOutput) ToPostgresqlSourceConfigPtrOutputWithContext(ctx context.Context) PostgresqlSourceConfigPtrOutput {
+	return o
+}
+
+func (o PostgresqlSourceConfigPtrOutput) Elem() PostgresqlSourceConfigOutput {
+	return o.ApplyT(func(v *PostgresqlSourceConfig) PostgresqlSourceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret PostgresqlSourceConfig
+		return ret
+	}).(PostgresqlSourceConfigOutput)
+}
+
+// PostgreSQL objects to exclude from the stream.
+func (o PostgresqlSourceConfigPtrOutput) ExcludeObjects() PostgresqlRdbmsPtrOutput {
+	return o.ApplyT(func(v *PostgresqlSourceConfig) *PostgresqlRdbms {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludeObjects
+	}).(PostgresqlRdbmsPtrOutput)
+}
+
+// PostgreSQL objects to include in the stream.
+func (o PostgresqlSourceConfigPtrOutput) IncludeObjects() PostgresqlRdbmsPtrOutput {
+	return o.ApplyT(func(v *PostgresqlSourceConfig) *PostgresqlRdbms {
+		if v == nil {
+			return nil
+		}
+		return v.IncludeObjects
+	}).(PostgresqlRdbmsPtrOutput)
+}
+
+// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
+func (o PostgresqlSourceConfigPtrOutput) Publication() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresqlSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Publication
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the logical replication slot that's configured with the pgoutput plugin.
+func (o PostgresqlSourceConfigPtrOutput) ReplicationSlot() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PostgresqlSourceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ReplicationSlot
+	}).(pulumi.StringPtrOutput)
+}
+
+// PostgreSQL data source configuration
+type PostgresqlSourceConfigResponse struct {
+	// PostgreSQL objects to exclude from the stream.
+	ExcludeObjects PostgresqlRdbmsResponse `pulumi:"excludeObjects"`
+	// PostgreSQL objects to include in the stream.
+	IncludeObjects PostgresqlRdbmsResponse `pulumi:"includeObjects"`
+	// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
+	Publication string `pulumi:"publication"`
+	// The name of the logical replication slot that's configured with the pgoutput plugin.
+	ReplicationSlot string `pulumi:"replicationSlot"`
+}
+
+// PostgreSQL data source configuration
+type PostgresqlSourceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlSourceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlSourceConfigResponse)(nil)).Elem()
+}
+
+func (o PostgresqlSourceConfigResponseOutput) ToPostgresqlSourceConfigResponseOutput() PostgresqlSourceConfigResponseOutput {
+	return o
+}
+
+func (o PostgresqlSourceConfigResponseOutput) ToPostgresqlSourceConfigResponseOutputWithContext(ctx context.Context) PostgresqlSourceConfigResponseOutput {
+	return o
+}
+
+// PostgreSQL objects to exclude from the stream.
+func (o PostgresqlSourceConfigResponseOutput) ExcludeObjects() PostgresqlRdbmsResponseOutput {
+	return o.ApplyT(func(v PostgresqlSourceConfigResponse) PostgresqlRdbmsResponse { return v.ExcludeObjects }).(PostgresqlRdbmsResponseOutput)
+}
+
+// PostgreSQL objects to include in the stream.
+func (o PostgresqlSourceConfigResponseOutput) IncludeObjects() PostgresqlRdbmsResponseOutput {
+	return o.ApplyT(func(v PostgresqlSourceConfigResponse) PostgresqlRdbmsResponse { return v.IncludeObjects }).(PostgresqlRdbmsResponseOutput)
+}
+
+// The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
+func (o PostgresqlSourceConfigResponseOutput) Publication() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlSourceConfigResponse) string { return v.Publication }).(pulumi.StringOutput)
+}
+
+// The name of the logical replication slot that's configured with the pgoutput plugin.
+func (o PostgresqlSourceConfigResponseOutput) ReplicationSlot() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlSourceConfigResponse) string { return v.ReplicationSlot }).(pulumi.StringOutput)
+}
+
+// PostgreSQL table.
+type PostgresqlTable struct {
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	PostgresqlColumns []PostgresqlColumn `pulumi:"postgresqlColumns"`
+	// Table name.
+	Table *string `pulumi:"table"`
+}
+
+// PostgresqlTableInput is an input type that accepts PostgresqlTableArgs and PostgresqlTableOutput values.
+// You can construct a concrete instance of `PostgresqlTableInput` via:
+//
+//	PostgresqlTableArgs{...}
+type PostgresqlTableInput interface {
+	pulumi.Input
+
+	ToPostgresqlTableOutput() PostgresqlTableOutput
+	ToPostgresqlTableOutputWithContext(context.Context) PostgresqlTableOutput
+}
+
+// PostgreSQL table.
+type PostgresqlTableArgs struct {
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	PostgresqlColumns PostgresqlColumnArrayInput `pulumi:"postgresqlColumns"`
+	// Table name.
+	Table pulumi.StringPtrInput `pulumi:"table"`
+}
+
+func (PostgresqlTableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlTable)(nil)).Elem()
+}
+
+func (i PostgresqlTableArgs) ToPostgresqlTableOutput() PostgresqlTableOutput {
+	return i.ToPostgresqlTableOutputWithContext(context.Background())
+}
+
+func (i PostgresqlTableArgs) ToPostgresqlTableOutputWithContext(ctx context.Context) PostgresqlTableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlTableOutput)
+}
+
+// PostgresqlTableArrayInput is an input type that accepts PostgresqlTableArray and PostgresqlTableArrayOutput values.
+// You can construct a concrete instance of `PostgresqlTableArrayInput` via:
+//
+//	PostgresqlTableArray{ PostgresqlTableArgs{...} }
+type PostgresqlTableArrayInput interface {
+	pulumi.Input
+
+	ToPostgresqlTableArrayOutput() PostgresqlTableArrayOutput
+	ToPostgresqlTableArrayOutputWithContext(context.Context) PostgresqlTableArrayOutput
+}
+
+type PostgresqlTableArray []PostgresqlTableInput
+
+func (PostgresqlTableArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PostgresqlTable)(nil)).Elem()
+}
+
+func (i PostgresqlTableArray) ToPostgresqlTableArrayOutput() PostgresqlTableArrayOutput {
+	return i.ToPostgresqlTableArrayOutputWithContext(context.Background())
+}
+
+func (i PostgresqlTableArray) ToPostgresqlTableArrayOutputWithContext(ctx context.Context) PostgresqlTableArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PostgresqlTableArrayOutput)
+}
+
+// PostgreSQL table.
+type PostgresqlTableOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlTableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlTable)(nil)).Elem()
+}
+
+func (o PostgresqlTableOutput) ToPostgresqlTableOutput() PostgresqlTableOutput {
+	return o
+}
+
+func (o PostgresqlTableOutput) ToPostgresqlTableOutputWithContext(ctx context.Context) PostgresqlTableOutput {
+	return o
+}
+
+// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+func (o PostgresqlTableOutput) PostgresqlColumns() PostgresqlColumnArrayOutput {
+	return o.ApplyT(func(v PostgresqlTable) []PostgresqlColumn { return v.PostgresqlColumns }).(PostgresqlColumnArrayOutput)
+}
+
+// Table name.
+func (o PostgresqlTableOutput) Table() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PostgresqlTable) *string { return v.Table }).(pulumi.StringPtrOutput)
+}
+
+type PostgresqlTableArrayOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlTableArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PostgresqlTable)(nil)).Elem()
+}
+
+func (o PostgresqlTableArrayOutput) ToPostgresqlTableArrayOutput() PostgresqlTableArrayOutput {
+	return o
+}
+
+func (o PostgresqlTableArrayOutput) ToPostgresqlTableArrayOutputWithContext(ctx context.Context) PostgresqlTableArrayOutput {
+	return o
+}
+
+func (o PostgresqlTableArrayOutput) Index(i pulumi.IntInput) PostgresqlTableOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PostgresqlTable {
+		return vs[0].([]PostgresqlTable)[vs[1].(int)]
+	}).(PostgresqlTableOutput)
+}
+
+// PostgreSQL table.
+type PostgresqlTableResponse struct {
+	// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+	PostgresqlColumns []PostgresqlColumnResponse `pulumi:"postgresqlColumns"`
+	// Table name.
+	Table string `pulumi:"table"`
+}
+
+// PostgreSQL table.
+type PostgresqlTableResponseOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlTableResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PostgresqlTableResponse)(nil)).Elem()
+}
+
+func (o PostgresqlTableResponseOutput) ToPostgresqlTableResponseOutput() PostgresqlTableResponseOutput {
+	return o
+}
+
+func (o PostgresqlTableResponseOutput) ToPostgresqlTableResponseOutputWithContext(ctx context.Context) PostgresqlTableResponseOutput {
+	return o
+}
+
+// PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+func (o PostgresqlTableResponseOutput) PostgresqlColumns() PostgresqlColumnResponseArrayOutput {
+	return o.ApplyT(func(v PostgresqlTableResponse) []PostgresqlColumnResponse { return v.PostgresqlColumns }).(PostgresqlColumnResponseArrayOutput)
+}
+
+// Table name.
+func (o PostgresqlTableResponseOutput) Table() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgresqlTableResponse) string { return v.Table }).(pulumi.StringOutput)
+}
+
+type PostgresqlTableResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (PostgresqlTableResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PostgresqlTableResponse)(nil)).Elem()
+}
+
+func (o PostgresqlTableResponseArrayOutput) ToPostgresqlTableResponseArrayOutput() PostgresqlTableResponseArrayOutput {
+	return o
+}
+
+func (o PostgresqlTableResponseArrayOutput) ToPostgresqlTableResponseArrayOutputWithContext(ctx context.Context) PostgresqlTableResponseArrayOutput {
+	return o
+}
+
+func (o PostgresqlTableResponseArrayOutput) Index(i pulumi.IntInput) PostgresqlTableResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PostgresqlTableResponse {
+		return vs[0].([]PostgresqlTableResponse)[vs[1].(int)]
+	}).(PostgresqlTableResponseOutput)
+}
+
 // Private Connectivity
 type PrivateConnectivity struct {
 	// A reference to a private connection resource. Format: `projects/{project}/locations/{location}/privateConnections/{name}`
@@ -4672,12 +6551,174 @@ func (o PrivateConnectivityResponseOutput) PrivateConnection() pulumi.StringOutp
 	return o.ApplyT(func(v PrivateConnectivityResponse) string { return v.PrivateConnection }).(pulumi.StringOutput)
 }
 
+// A single target dataset to which all data will be streamed.
+type SingleTargetDataset struct {
+	DatasetId *string `pulumi:"datasetId"`
+}
+
+// SingleTargetDatasetInput is an input type that accepts SingleTargetDatasetArgs and SingleTargetDatasetOutput values.
+// You can construct a concrete instance of `SingleTargetDatasetInput` via:
+//
+//	SingleTargetDatasetArgs{...}
+type SingleTargetDatasetInput interface {
+	pulumi.Input
+
+	ToSingleTargetDatasetOutput() SingleTargetDatasetOutput
+	ToSingleTargetDatasetOutputWithContext(context.Context) SingleTargetDatasetOutput
+}
+
+// A single target dataset to which all data will be streamed.
+type SingleTargetDatasetArgs struct {
+	DatasetId pulumi.StringPtrInput `pulumi:"datasetId"`
+}
+
+func (SingleTargetDatasetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleTargetDataset)(nil)).Elem()
+}
+
+func (i SingleTargetDatasetArgs) ToSingleTargetDatasetOutput() SingleTargetDatasetOutput {
+	return i.ToSingleTargetDatasetOutputWithContext(context.Background())
+}
+
+func (i SingleTargetDatasetArgs) ToSingleTargetDatasetOutputWithContext(ctx context.Context) SingleTargetDatasetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleTargetDatasetOutput)
+}
+
+func (i SingleTargetDatasetArgs) ToSingleTargetDatasetPtrOutput() SingleTargetDatasetPtrOutput {
+	return i.ToSingleTargetDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i SingleTargetDatasetArgs) ToSingleTargetDatasetPtrOutputWithContext(ctx context.Context) SingleTargetDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleTargetDatasetOutput).ToSingleTargetDatasetPtrOutputWithContext(ctx)
+}
+
+// SingleTargetDatasetPtrInput is an input type that accepts SingleTargetDatasetArgs, SingleTargetDatasetPtr and SingleTargetDatasetPtrOutput values.
+// You can construct a concrete instance of `SingleTargetDatasetPtrInput` via:
+//
+//	        SingleTargetDatasetArgs{...}
+//
+//	or:
+//
+//	        nil
+type SingleTargetDatasetPtrInput interface {
+	pulumi.Input
+
+	ToSingleTargetDatasetPtrOutput() SingleTargetDatasetPtrOutput
+	ToSingleTargetDatasetPtrOutputWithContext(context.Context) SingleTargetDatasetPtrOutput
+}
+
+type singleTargetDatasetPtrType SingleTargetDatasetArgs
+
+func SingleTargetDatasetPtr(v *SingleTargetDatasetArgs) SingleTargetDatasetPtrInput {
+	return (*singleTargetDatasetPtrType)(v)
+}
+
+func (*singleTargetDatasetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleTargetDataset)(nil)).Elem()
+}
+
+func (i *singleTargetDatasetPtrType) ToSingleTargetDatasetPtrOutput() SingleTargetDatasetPtrOutput {
+	return i.ToSingleTargetDatasetPtrOutputWithContext(context.Background())
+}
+
+func (i *singleTargetDatasetPtrType) ToSingleTargetDatasetPtrOutputWithContext(ctx context.Context) SingleTargetDatasetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SingleTargetDatasetPtrOutput)
+}
+
+// A single target dataset to which all data will be streamed.
+type SingleTargetDatasetOutput struct{ *pulumi.OutputState }
+
+func (SingleTargetDatasetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleTargetDataset)(nil)).Elem()
+}
+
+func (o SingleTargetDatasetOutput) ToSingleTargetDatasetOutput() SingleTargetDatasetOutput {
+	return o
+}
+
+func (o SingleTargetDatasetOutput) ToSingleTargetDatasetOutputWithContext(ctx context.Context) SingleTargetDatasetOutput {
+	return o
+}
+
+func (o SingleTargetDatasetOutput) ToSingleTargetDatasetPtrOutput() SingleTargetDatasetPtrOutput {
+	return o.ToSingleTargetDatasetPtrOutputWithContext(context.Background())
+}
+
+func (o SingleTargetDatasetOutput) ToSingleTargetDatasetPtrOutputWithContext(ctx context.Context) SingleTargetDatasetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SingleTargetDataset) *SingleTargetDataset {
+		return &v
+	}).(SingleTargetDatasetPtrOutput)
+}
+
+func (o SingleTargetDatasetOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SingleTargetDataset) *string { return v.DatasetId }).(pulumi.StringPtrOutput)
+}
+
+type SingleTargetDatasetPtrOutput struct{ *pulumi.OutputState }
+
+func (SingleTargetDatasetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SingleTargetDataset)(nil)).Elem()
+}
+
+func (o SingleTargetDatasetPtrOutput) ToSingleTargetDatasetPtrOutput() SingleTargetDatasetPtrOutput {
+	return o
+}
+
+func (o SingleTargetDatasetPtrOutput) ToSingleTargetDatasetPtrOutputWithContext(ctx context.Context) SingleTargetDatasetPtrOutput {
+	return o
+}
+
+func (o SingleTargetDatasetPtrOutput) Elem() SingleTargetDatasetOutput {
+	return o.ApplyT(func(v *SingleTargetDataset) SingleTargetDataset {
+		if v != nil {
+			return *v
+		}
+		var ret SingleTargetDataset
+		return ret
+	}).(SingleTargetDatasetOutput)
+}
+
+func (o SingleTargetDatasetPtrOutput) DatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SingleTargetDataset) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A single target dataset to which all data will be streamed.
+type SingleTargetDatasetResponse struct {
+	DatasetId string `pulumi:"datasetId"`
+}
+
+// A single target dataset to which all data will be streamed.
+type SingleTargetDatasetResponseOutput struct{ *pulumi.OutputState }
+
+func (SingleTargetDatasetResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SingleTargetDatasetResponse)(nil)).Elem()
+}
+
+func (o SingleTargetDatasetResponseOutput) ToSingleTargetDatasetResponseOutput() SingleTargetDatasetResponseOutput {
+	return o
+}
+
+func (o SingleTargetDatasetResponseOutput) ToSingleTargetDatasetResponseOutputWithContext(ctx context.Context) SingleTargetDatasetResponseOutput {
+	return o
+}
+
+func (o SingleTargetDatasetResponseOutput) DatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v SingleTargetDatasetResponse) string { return v.DatasetId }).(pulumi.StringOutput)
+}
+
 // The configuration of the stream source.
 type SourceConfig struct {
 	// MySQL data source configuration.
 	MysqlSourceConfig *MysqlSourceConfig `pulumi:"mysqlSourceConfig"`
 	// Oracle data source configuration.
 	OracleSourceConfig *OracleSourceConfig `pulumi:"oracleSourceConfig"`
+	// PostgreSQL data source configuration.
+	PostgresqlSourceConfig *PostgresqlSourceConfig `pulumi:"postgresqlSourceConfig"`
 	// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 	SourceConnectionProfile string `pulumi:"sourceConnectionProfile"`
 }
@@ -4699,6 +6740,8 @@ type SourceConfigArgs struct {
 	MysqlSourceConfig MysqlSourceConfigPtrInput `pulumi:"mysqlSourceConfig"`
 	// Oracle data source configuration.
 	OracleSourceConfig OracleSourceConfigPtrInput `pulumi:"oracleSourceConfig"`
+	// PostgreSQL data source configuration.
+	PostgresqlSourceConfig PostgresqlSourceConfigPtrInput `pulumi:"postgresqlSourceConfig"`
 	// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 	SourceConnectionProfile pulumi.StringInput `pulumi:"sourceConnectionProfile"`
 }
@@ -4740,6 +6783,11 @@ func (o SourceConfigOutput) OracleSourceConfig() OracleSourceConfigPtrOutput {
 	return o.ApplyT(func(v SourceConfig) *OracleSourceConfig { return v.OracleSourceConfig }).(OracleSourceConfigPtrOutput)
 }
 
+// PostgreSQL data source configuration.
+func (o SourceConfigOutput) PostgresqlSourceConfig() PostgresqlSourceConfigPtrOutput {
+	return o.ApplyT(func(v SourceConfig) *PostgresqlSourceConfig { return v.PostgresqlSourceConfig }).(PostgresqlSourceConfigPtrOutput)
+}
+
 // Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 func (o SourceConfigOutput) SourceConnectionProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v SourceConfig) string { return v.SourceConnectionProfile }).(pulumi.StringOutput)
@@ -4751,6 +6799,8 @@ type SourceConfigResponse struct {
 	MysqlSourceConfig MysqlSourceConfigResponse `pulumi:"mysqlSourceConfig"`
 	// Oracle data source configuration.
 	OracleSourceConfig OracleSourceConfigResponse `pulumi:"oracleSourceConfig"`
+	// PostgreSQL data source configuration.
+	PostgresqlSourceConfig PostgresqlSourceConfigResponse `pulumi:"postgresqlSourceConfig"`
 	// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 	SourceConnectionProfile string `pulumi:"sourceConnectionProfile"`
 }
@@ -4780,9 +6830,174 @@ func (o SourceConfigResponseOutput) OracleSourceConfig() OracleSourceConfigRespo
 	return o.ApplyT(func(v SourceConfigResponse) OracleSourceConfigResponse { return v.OracleSourceConfig }).(OracleSourceConfigResponseOutput)
 }
 
+// PostgreSQL data source configuration.
+func (o SourceConfigResponseOutput) PostgresqlSourceConfig() PostgresqlSourceConfigResponseOutput {
+	return o.ApplyT(func(v SourceConfigResponse) PostgresqlSourceConfigResponse { return v.PostgresqlSourceConfig }).(PostgresqlSourceConfigResponseOutput)
+}
+
 // Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
 func (o SourceConfigResponseOutput) SourceConnectionProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v SourceConfigResponse) string { return v.SourceConnectionProfile }).(pulumi.StringOutput)
+}
+
+// Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+type SourceHierarchyDatasets struct {
+	DatasetTemplate *DatasetTemplate `pulumi:"datasetTemplate"`
+}
+
+// SourceHierarchyDatasetsInput is an input type that accepts SourceHierarchyDatasetsArgs and SourceHierarchyDatasetsOutput values.
+// You can construct a concrete instance of `SourceHierarchyDatasetsInput` via:
+//
+//	SourceHierarchyDatasetsArgs{...}
+type SourceHierarchyDatasetsInput interface {
+	pulumi.Input
+
+	ToSourceHierarchyDatasetsOutput() SourceHierarchyDatasetsOutput
+	ToSourceHierarchyDatasetsOutputWithContext(context.Context) SourceHierarchyDatasetsOutput
+}
+
+// Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+type SourceHierarchyDatasetsArgs struct {
+	DatasetTemplate DatasetTemplatePtrInput `pulumi:"datasetTemplate"`
+}
+
+func (SourceHierarchyDatasetsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceHierarchyDatasets)(nil)).Elem()
+}
+
+func (i SourceHierarchyDatasetsArgs) ToSourceHierarchyDatasetsOutput() SourceHierarchyDatasetsOutput {
+	return i.ToSourceHierarchyDatasetsOutputWithContext(context.Background())
+}
+
+func (i SourceHierarchyDatasetsArgs) ToSourceHierarchyDatasetsOutputWithContext(ctx context.Context) SourceHierarchyDatasetsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceHierarchyDatasetsOutput)
+}
+
+func (i SourceHierarchyDatasetsArgs) ToSourceHierarchyDatasetsPtrOutput() SourceHierarchyDatasetsPtrOutput {
+	return i.ToSourceHierarchyDatasetsPtrOutputWithContext(context.Background())
+}
+
+func (i SourceHierarchyDatasetsArgs) ToSourceHierarchyDatasetsPtrOutputWithContext(ctx context.Context) SourceHierarchyDatasetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceHierarchyDatasetsOutput).ToSourceHierarchyDatasetsPtrOutputWithContext(ctx)
+}
+
+// SourceHierarchyDatasetsPtrInput is an input type that accepts SourceHierarchyDatasetsArgs, SourceHierarchyDatasetsPtr and SourceHierarchyDatasetsPtrOutput values.
+// You can construct a concrete instance of `SourceHierarchyDatasetsPtrInput` via:
+//
+//	        SourceHierarchyDatasetsArgs{...}
+//
+//	or:
+//
+//	        nil
+type SourceHierarchyDatasetsPtrInput interface {
+	pulumi.Input
+
+	ToSourceHierarchyDatasetsPtrOutput() SourceHierarchyDatasetsPtrOutput
+	ToSourceHierarchyDatasetsPtrOutputWithContext(context.Context) SourceHierarchyDatasetsPtrOutput
+}
+
+type sourceHierarchyDatasetsPtrType SourceHierarchyDatasetsArgs
+
+func SourceHierarchyDatasetsPtr(v *SourceHierarchyDatasetsArgs) SourceHierarchyDatasetsPtrInput {
+	return (*sourceHierarchyDatasetsPtrType)(v)
+}
+
+func (*sourceHierarchyDatasetsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceHierarchyDatasets)(nil)).Elem()
+}
+
+func (i *sourceHierarchyDatasetsPtrType) ToSourceHierarchyDatasetsPtrOutput() SourceHierarchyDatasetsPtrOutput {
+	return i.ToSourceHierarchyDatasetsPtrOutputWithContext(context.Background())
+}
+
+func (i *sourceHierarchyDatasetsPtrType) ToSourceHierarchyDatasetsPtrOutputWithContext(ctx context.Context) SourceHierarchyDatasetsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SourceHierarchyDatasetsPtrOutput)
+}
+
+// Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+type SourceHierarchyDatasetsOutput struct{ *pulumi.OutputState }
+
+func (SourceHierarchyDatasetsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceHierarchyDatasets)(nil)).Elem()
+}
+
+func (o SourceHierarchyDatasetsOutput) ToSourceHierarchyDatasetsOutput() SourceHierarchyDatasetsOutput {
+	return o
+}
+
+func (o SourceHierarchyDatasetsOutput) ToSourceHierarchyDatasetsOutputWithContext(ctx context.Context) SourceHierarchyDatasetsOutput {
+	return o
+}
+
+func (o SourceHierarchyDatasetsOutput) ToSourceHierarchyDatasetsPtrOutput() SourceHierarchyDatasetsPtrOutput {
+	return o.ToSourceHierarchyDatasetsPtrOutputWithContext(context.Background())
+}
+
+func (o SourceHierarchyDatasetsOutput) ToSourceHierarchyDatasetsPtrOutputWithContext(ctx context.Context) SourceHierarchyDatasetsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SourceHierarchyDatasets) *SourceHierarchyDatasets {
+		return &v
+	}).(SourceHierarchyDatasetsPtrOutput)
+}
+
+func (o SourceHierarchyDatasetsOutput) DatasetTemplate() DatasetTemplatePtrOutput {
+	return o.ApplyT(func(v SourceHierarchyDatasets) *DatasetTemplate { return v.DatasetTemplate }).(DatasetTemplatePtrOutput)
+}
+
+type SourceHierarchyDatasetsPtrOutput struct{ *pulumi.OutputState }
+
+func (SourceHierarchyDatasetsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SourceHierarchyDatasets)(nil)).Elem()
+}
+
+func (o SourceHierarchyDatasetsPtrOutput) ToSourceHierarchyDatasetsPtrOutput() SourceHierarchyDatasetsPtrOutput {
+	return o
+}
+
+func (o SourceHierarchyDatasetsPtrOutput) ToSourceHierarchyDatasetsPtrOutputWithContext(ctx context.Context) SourceHierarchyDatasetsPtrOutput {
+	return o
+}
+
+func (o SourceHierarchyDatasetsPtrOutput) Elem() SourceHierarchyDatasetsOutput {
+	return o.ApplyT(func(v *SourceHierarchyDatasets) SourceHierarchyDatasets {
+		if v != nil {
+			return *v
+		}
+		var ret SourceHierarchyDatasets
+		return ret
+	}).(SourceHierarchyDatasetsOutput)
+}
+
+func (o SourceHierarchyDatasetsPtrOutput) DatasetTemplate() DatasetTemplatePtrOutput {
+	return o.ApplyT(func(v *SourceHierarchyDatasets) *DatasetTemplate {
+		if v == nil {
+			return nil
+		}
+		return v.DatasetTemplate
+	}).(DatasetTemplatePtrOutput)
+}
+
+// Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+type SourceHierarchyDatasetsResponse struct {
+	DatasetTemplate DatasetTemplateResponse `pulumi:"datasetTemplate"`
+}
+
+// Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+type SourceHierarchyDatasetsResponseOutput struct{ *pulumi.OutputState }
+
+func (SourceHierarchyDatasetsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SourceHierarchyDatasetsResponse)(nil)).Elem()
+}
+
+func (o SourceHierarchyDatasetsResponseOutput) ToSourceHierarchyDatasetsResponseOutput() SourceHierarchyDatasetsResponseOutput {
+	return o
+}
+
+func (o SourceHierarchyDatasetsResponseOutput) ToSourceHierarchyDatasetsResponseOutputWithContext(ctx context.Context) SourceHierarchyDatasetsResponseOutput {
+	return o
+}
+
+func (o SourceHierarchyDatasetsResponseOutput) DatasetTemplate() DatasetTemplateResponseOutput {
+	return o.ApplyT(func(v SourceHierarchyDatasetsResponse) DatasetTemplateResponse { return v.DatasetTemplate }).(DatasetTemplateResponseOutput)
 }
 
 // Static IP address connectivity.
@@ -5264,6 +7479,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackfillAllStrategyPtrInput)(nil)).Elem(), BackfillAllStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackfillNoneStrategyInput)(nil)).Elem(), BackfillNoneStrategyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BackfillNoneStrategyPtrInput)(nil)).Elem(), BackfillNoneStrategyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryDestinationConfigInput)(nil)).Elem(), BigQueryDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryDestinationConfigPtrInput)(nil)).Elem(), BigQueryDestinationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryProfileInput)(nil)).Elem(), BigQueryProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BigQueryProfilePtrInput)(nil)).Elem(), BigQueryProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetTemplateInput)(nil)).Elem(), DatasetTemplateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetTemplatePtrInput)(nil)).Elem(), DatasetTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DestinationConfigInput)(nil)).Elem(), DestinationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DropLargeObjectsInput)(nil)).Elem(), DropLargeObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DropLargeObjectsPtrInput)(nil)).Elem(), DropLargeObjectsArgs{})
@@ -5301,9 +7522,25 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleSourceConfigPtrInput)(nil)).Elem(), OracleSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleTableInput)(nil)).Elem(), OracleTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*OracleTableArrayInput)(nil)).Elem(), OracleTableArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresqlColumnInput)(nil)).Elem(), PostgresqlColumnArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresqlColumnArrayInput)(nil)).Elem(), PostgresqlColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresqlProfileInput)(nil)).Elem(), PostgresqlProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresqlProfilePtrInput)(nil)).Elem(), PostgresqlProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresqlRdbmsInput)(nil)).Elem(), PostgresqlRdbmsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresqlRdbmsPtrInput)(nil)).Elem(), PostgresqlRdbmsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresqlSchemaInput)(nil)).Elem(), PostgresqlSchemaArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresqlSchemaArrayInput)(nil)).Elem(), PostgresqlSchemaArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresqlSourceConfigInput)(nil)).Elem(), PostgresqlSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresqlSourceConfigPtrInput)(nil)).Elem(), PostgresqlSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresqlTableInput)(nil)).Elem(), PostgresqlTableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PostgresqlTableArrayInput)(nil)).Elem(), PostgresqlTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectivityInput)(nil)).Elem(), PrivateConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateConnectivityPtrInput)(nil)).Elem(), PrivateConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleTargetDatasetInput)(nil)).Elem(), SingleTargetDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SingleTargetDatasetPtrInput)(nil)).Elem(), SingleTargetDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SourceConfigInput)(nil)).Elem(), SourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceHierarchyDatasetsInput)(nil)).Elem(), SourceHierarchyDatasetsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SourceHierarchyDatasetsPtrInput)(nil)).Elem(), SourceHierarchyDatasetsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticServiceIpConnectivityInput)(nil)).Elem(), StaticServiceIpConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticServiceIpConnectivityPtrInput)(nil)).Elem(), StaticServiceIpConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamLargeObjectsInput)(nil)).Elem(), StreamLargeObjectsArgs{})
@@ -5319,6 +7556,15 @@ func init() {
 	pulumi.RegisterOutputType(BackfillNoneStrategyOutput{})
 	pulumi.RegisterOutputType(BackfillNoneStrategyPtrOutput{})
 	pulumi.RegisterOutputType(BackfillNoneStrategyResponseOutput{})
+	pulumi.RegisterOutputType(BigQueryDestinationConfigOutput{})
+	pulumi.RegisterOutputType(BigQueryDestinationConfigPtrOutput{})
+	pulumi.RegisterOutputType(BigQueryDestinationConfigResponseOutput{})
+	pulumi.RegisterOutputType(BigQueryProfileOutput{})
+	pulumi.RegisterOutputType(BigQueryProfilePtrOutput{})
+	pulumi.RegisterOutputType(BigQueryProfileResponseOutput{})
+	pulumi.RegisterOutputType(DatasetTemplateOutput{})
+	pulumi.RegisterOutputType(DatasetTemplatePtrOutput{})
+	pulumi.RegisterOutputType(DatasetTemplateResponseOutput{})
 	pulumi.RegisterOutputType(DestinationConfigOutput{})
 	pulumi.RegisterOutputType(DestinationConfigResponseOutput{})
 	pulumi.RegisterOutputType(DropLargeObjectsOutput{})
@@ -5383,11 +7629,38 @@ func init() {
 	pulumi.RegisterOutputType(OracleTableArrayOutput{})
 	pulumi.RegisterOutputType(OracleTableResponseOutput{})
 	pulumi.RegisterOutputType(OracleTableResponseArrayOutput{})
+	pulumi.RegisterOutputType(PostgresqlColumnOutput{})
+	pulumi.RegisterOutputType(PostgresqlColumnArrayOutput{})
+	pulumi.RegisterOutputType(PostgresqlColumnResponseOutput{})
+	pulumi.RegisterOutputType(PostgresqlColumnResponseArrayOutput{})
+	pulumi.RegisterOutputType(PostgresqlProfileOutput{})
+	pulumi.RegisterOutputType(PostgresqlProfilePtrOutput{})
+	pulumi.RegisterOutputType(PostgresqlProfileResponseOutput{})
+	pulumi.RegisterOutputType(PostgresqlRdbmsOutput{})
+	pulumi.RegisterOutputType(PostgresqlRdbmsPtrOutput{})
+	pulumi.RegisterOutputType(PostgresqlRdbmsResponseOutput{})
+	pulumi.RegisterOutputType(PostgresqlSchemaOutput{})
+	pulumi.RegisterOutputType(PostgresqlSchemaArrayOutput{})
+	pulumi.RegisterOutputType(PostgresqlSchemaResponseOutput{})
+	pulumi.RegisterOutputType(PostgresqlSchemaResponseArrayOutput{})
+	pulumi.RegisterOutputType(PostgresqlSourceConfigOutput{})
+	pulumi.RegisterOutputType(PostgresqlSourceConfigPtrOutput{})
+	pulumi.RegisterOutputType(PostgresqlSourceConfigResponseOutput{})
+	pulumi.RegisterOutputType(PostgresqlTableOutput{})
+	pulumi.RegisterOutputType(PostgresqlTableArrayOutput{})
+	pulumi.RegisterOutputType(PostgresqlTableResponseOutput{})
+	pulumi.RegisterOutputType(PostgresqlTableResponseArrayOutput{})
 	pulumi.RegisterOutputType(PrivateConnectivityOutput{})
 	pulumi.RegisterOutputType(PrivateConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(PrivateConnectivityResponseOutput{})
+	pulumi.RegisterOutputType(SingleTargetDatasetOutput{})
+	pulumi.RegisterOutputType(SingleTargetDatasetPtrOutput{})
+	pulumi.RegisterOutputType(SingleTargetDatasetResponseOutput{})
 	pulumi.RegisterOutputType(SourceConfigOutput{})
 	pulumi.RegisterOutputType(SourceConfigResponseOutput{})
+	pulumi.RegisterOutputType(SourceHierarchyDatasetsOutput{})
+	pulumi.RegisterOutputType(SourceHierarchyDatasetsPtrOutput{})
+	pulumi.RegisterOutputType(SourceHierarchyDatasetsResponseOutput{})
 	pulumi.RegisterOutputType(StaticServiceIpConnectivityOutput{})
 	pulumi.RegisterOutputType(StaticServiceIpConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(StaticServiceIpConnectivityResponseOutput{})

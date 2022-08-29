@@ -11,6 +11,7 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AllowedClientArgs',
     'GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs',
     'InstanceConfigArgs',
     'IntakeVlanAttachmentArgs',
@@ -24,6 +25,110 @@ __all__ = [
     'VolumeConfigArgs',
     'VolumeArgs',
 ]
+
+@pulumi.input_type
+class AllowedClientArgs:
+    def __init__(__self__, *,
+                 allow_dev: Optional[pulumi.Input[bool]] = None,
+                 allow_suid: Optional[pulumi.Input[bool]] = None,
+                 allowed_clients_cidr: Optional[pulumi.Input[str]] = None,
+                 mount_permissions: Optional[pulumi.Input['AllowedClientMountPermissions']] = None,
+                 network: Optional[pulumi.Input[str]] = None,
+                 no_root_squash: Optional[pulumi.Input[bool]] = None):
+        """
+        Represents an 'access point' for the share.
+        :param pulumi.Input[bool] allow_dev: Allow dev flag. Which controls whether to allow creation of devices.
+        :param pulumi.Input[bool] allow_suid: Allow the setuid flag.
+        :param pulumi.Input[str] allowed_clients_cidr: The subnet of IP addresses permitted to access the share.
+        :param pulumi.Input['AllowedClientMountPermissions'] mount_permissions: Mount permissions.
+        :param pulumi.Input[str] network: The network the access point sits on.
+        :param pulumi.Input[bool] no_root_squash: Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
+        """
+        if allow_dev is not None:
+            pulumi.set(__self__, "allow_dev", allow_dev)
+        if allow_suid is not None:
+            pulumi.set(__self__, "allow_suid", allow_suid)
+        if allowed_clients_cidr is not None:
+            pulumi.set(__self__, "allowed_clients_cidr", allowed_clients_cidr)
+        if mount_permissions is not None:
+            pulumi.set(__self__, "mount_permissions", mount_permissions)
+        if network is not None:
+            pulumi.set(__self__, "network", network)
+        if no_root_squash is not None:
+            pulumi.set(__self__, "no_root_squash", no_root_squash)
+
+    @property
+    @pulumi.getter(name="allowDev")
+    def allow_dev(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow dev flag. Which controls whether to allow creation of devices.
+        """
+        return pulumi.get(self, "allow_dev")
+
+    @allow_dev.setter
+    def allow_dev(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_dev", value)
+
+    @property
+    @pulumi.getter(name="allowSuid")
+    def allow_suid(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow the setuid flag.
+        """
+        return pulumi.get(self, "allow_suid")
+
+    @allow_suid.setter
+    def allow_suid(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_suid", value)
+
+    @property
+    @pulumi.getter(name="allowedClientsCidr")
+    def allowed_clients_cidr(self) -> Optional[pulumi.Input[str]]:
+        """
+        The subnet of IP addresses permitted to access the share.
+        """
+        return pulumi.get(self, "allowed_clients_cidr")
+
+    @allowed_clients_cidr.setter
+    def allowed_clients_cidr(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "allowed_clients_cidr", value)
+
+    @property
+    @pulumi.getter(name="mountPermissions")
+    def mount_permissions(self) -> Optional[pulumi.Input['AllowedClientMountPermissions']]:
+        """
+        Mount permissions.
+        """
+        return pulumi.get(self, "mount_permissions")
+
+    @mount_permissions.setter
+    def mount_permissions(self, value: Optional[pulumi.Input['AllowedClientMountPermissions']]):
+        pulumi.set(self, "mount_permissions", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> Optional[pulumi.Input[str]]:
+        """
+        The network the access point sits on.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="noRootSquash")
+    def no_root_squash(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
+        """
+        return pulumi.get(self, "no_root_squash")
+
+    @no_root_squash.setter
+    def no_root_squash(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "no_root_squash", value)
+
 
 @pulumi.input_type
 class GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs:

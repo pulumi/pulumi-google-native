@@ -16,6 +16,8 @@ import (
 type ConnectionProfile struct {
 	pulumi.CustomResourceState
 
+	// BigQuery Connection Profile configuration.
+	BigqueryProfile BigQueryProfileResponseOutput `pulumi:"bigqueryProfile"`
 	// Required. The connection profile identifier.
 	ConnectionProfileId pulumi.StringOutput `pulumi:"connectionProfileId"`
 	// The create time of the resource.
@@ -37,6 +39,8 @@ type ConnectionProfile struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Oracle ConnectionProfile configuration.
 	OracleProfile OracleProfileResponseOutput `pulumi:"oracleProfile"`
+	// PostgreSQL Connection Profile configuration.
+	PostgresqlProfile PostgresqlProfileResponseOutput `pulumi:"postgresqlProfile"`
 	// Private connectivity.
 	PrivateConnectivity PrivateConnectivityResponseOutput `pulumi:"privateConnectivity"`
 	Project             pulumi.StringOutput               `pulumi:"project"`
@@ -101,6 +105,8 @@ func (ConnectionProfileState) ElementType() reflect.Type {
 }
 
 type connectionProfileArgs struct {
+	// BigQuery Connection Profile configuration.
+	BigqueryProfile *BigQueryProfile `pulumi:"bigqueryProfile"`
 	// Required. The connection profile identifier.
 	ConnectionProfileId string `pulumi:"connectionProfileId"`
 	// Display name.
@@ -118,6 +124,8 @@ type connectionProfileArgs struct {
 	MysqlProfile *MysqlProfile `pulumi:"mysqlProfile"`
 	// Oracle ConnectionProfile configuration.
 	OracleProfile *OracleProfile `pulumi:"oracleProfile"`
+	// PostgreSQL Connection Profile configuration.
+	PostgresqlProfile *PostgresqlProfile `pulumi:"postgresqlProfile"`
 	// Private connectivity.
 	PrivateConnectivity *PrivateConnectivity `pulumi:"privateConnectivity"`
 	Project             *string              `pulumi:"project"`
@@ -131,6 +139,8 @@ type connectionProfileArgs struct {
 
 // The set of arguments for constructing a ConnectionProfile resource.
 type ConnectionProfileArgs struct {
+	// BigQuery Connection Profile configuration.
+	BigqueryProfile BigQueryProfilePtrInput
 	// Required. The connection profile identifier.
 	ConnectionProfileId pulumi.StringInput
 	// Display name.
@@ -148,6 +158,8 @@ type ConnectionProfileArgs struct {
 	MysqlProfile MysqlProfilePtrInput
 	// Oracle ConnectionProfile configuration.
 	OracleProfile OracleProfilePtrInput
+	// PostgreSQL Connection Profile configuration.
+	PostgresqlProfile PostgresqlProfilePtrInput
 	// Private connectivity.
 	PrivateConnectivity PrivateConnectivityPtrInput
 	Project             pulumi.StringPtrInput
@@ -194,6 +206,11 @@ func (o ConnectionProfileOutput) ToConnectionProfileOutput() ConnectionProfileOu
 
 func (o ConnectionProfileOutput) ToConnectionProfileOutputWithContext(ctx context.Context) ConnectionProfileOutput {
 	return o
+}
+
+// BigQuery Connection Profile configuration.
+func (o ConnectionProfileOutput) BigqueryProfile() BigQueryProfileResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) BigQueryProfileResponseOutput { return v.BigqueryProfile }).(BigQueryProfileResponseOutput)
 }
 
 // Required. The connection profile identifier.
@@ -248,6 +265,11 @@ func (o ConnectionProfileOutput) Name() pulumi.StringOutput {
 // Oracle ConnectionProfile configuration.
 func (o ConnectionProfileOutput) OracleProfile() OracleProfileResponseOutput {
 	return o.ApplyT(func(v *ConnectionProfile) OracleProfileResponseOutput { return v.OracleProfile }).(OracleProfileResponseOutput)
+}
+
+// PostgreSQL Connection Profile configuration.
+func (o ConnectionProfileOutput) PostgresqlProfile() PostgresqlProfileResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) PostgresqlProfileResponseOutput { return v.PostgresqlProfile }).(PostgresqlProfileResponseOutput)
 }
 
 // Private connectivity.

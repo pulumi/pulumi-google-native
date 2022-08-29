@@ -21,7 +21,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The QOS policy applied to this VRF.
+        /// The QOS policy applied to this VRF. The value is only meaningful when all the vlan attachments have the same QoS. This field should not be used for new integrations, use vlan attachment level qos instead. The field is left for backward-compatibility.
         /// </summary>
         public readonly Outputs.QosPolicyResponse QosPolicy;
         /// <summary>

@@ -27,6 +27,8 @@ type LookupConnectionProfileArgs struct {
 }
 
 type LookupConnectionProfileResult struct {
+	// An AlloyDB cluster connection profile.
+	Alloydb AlloyDbConnectionProfileResponse `pulumi:"alloydb"`
 	// A CloudSQL database connection profile.
 	Cloudsql CloudSqlConnectionProfileResponse `pulumi:"cloudsql"`
 	// The timestamp when the resource was created. A timestamp in RFC3339 UTC "Zulu" format, accurate to nanoseconds. Example: "2014-10-02T15:01:23.045123456Z".
@@ -86,6 +88,11 @@ func (o LookupConnectionProfileResultOutput) ToLookupConnectionProfileResultOutp
 
 func (o LookupConnectionProfileResultOutput) ToLookupConnectionProfileResultOutputWithContext(ctx context.Context) LookupConnectionProfileResultOutput {
 	return o
+}
+
+// An AlloyDB cluster connection profile.
+func (o LookupConnectionProfileResultOutput) Alloydb() AlloyDbConnectionProfileResponseOutput {
+	return o.ApplyT(func(v LookupConnectionProfileResult) AlloyDbConnectionProfileResponse { return v.Alloydb }).(AlloyDbConnectionProfileResponseOutput)
 }
 
 // A CloudSQL database connection profile.

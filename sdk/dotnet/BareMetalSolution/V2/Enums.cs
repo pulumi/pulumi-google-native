@@ -8,6 +8,47 @@ using Pulumi;
 namespace Pulumi.GoogleNative.BareMetalSolution.V2
 {
     /// <summary>
+    /// Mount permissions.
+    /// </summary>
+    [EnumType]
+    public readonly struct AllowedClientMountPermissions : IEquatable<AllowedClientMountPermissions>
+    {
+        private readonly string _value;
+
+        private AllowedClientMountPermissions(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Permissions were not specified.
+        /// </summary>
+        public static AllowedClientMountPermissions MountPermissionsUnspecified { get; } = new AllowedClientMountPermissions("MOUNT_PERMISSIONS_UNSPECIFIED");
+        /// <summary>
+        /// NFS share can be mount with read-only permissions.
+        /// </summary>
+        public static AllowedClientMountPermissions Read { get; } = new AllowedClientMountPermissions("READ");
+        /// <summary>
+        /// NFS share can be mount with read-write permissions.
+        /// </summary>
+        public static AllowedClientMountPermissions ReadWrite { get; } = new AllowedClientMountPermissions("READ_WRITE");
+
+        public static bool operator ==(AllowedClientMountPermissions left, AllowedClientMountPermissions right) => left.Equals(right);
+        public static bool operator !=(AllowedClientMountPermissions left, AllowedClientMountPermissions right) => !left.Equals(right);
+
+        public static explicit operator string(AllowedClientMountPermissions value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is AllowedClientMountPermissions other && Equals(other);
+        public bool Equals(AllowedClientMountPermissions other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// The type of network configuration on the instance.
     /// </summary>
     [EnumType]
@@ -389,6 +430,47 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is NfsExportPermissions other && Equals(other);
         public bool Equals(NfsExportPermissions other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Immutable. The storage type of the underlying volume.
+    /// </summary>
+    [EnumType]
+    public readonly struct NfsShareStorageType : IEquatable<NfsShareStorageType>
+    {
+        private readonly string _value;
+
+        private NfsShareStorageType(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// The storage type for this volume is unknown.
+        /// </summary>
+        public static NfsShareStorageType StorageTypeUnspecified { get; } = new NfsShareStorageType("STORAGE_TYPE_UNSPECIFIED");
+        /// <summary>
+        /// The storage type for this volume is SSD.
+        /// </summary>
+        public static NfsShareStorageType Ssd { get; } = new NfsShareStorageType("SSD");
+        /// <summary>
+        /// This storage type for this volume is HDD.
+        /// </summary>
+        public static NfsShareStorageType Hdd { get; } = new NfsShareStorageType("HDD");
+
+        public static bool operator ==(NfsShareStorageType left, NfsShareStorageType right) => left.Equals(right);
+        public static bool operator !=(NfsShareStorageType left, NfsShareStorageType right) => !left.Equals(right);
+
+        public static explicit operator string(NfsShareStorageType value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is NfsShareStorageType other && Equals(other);
+        public bool Equals(NfsShareStorageType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

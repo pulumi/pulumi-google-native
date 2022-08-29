@@ -131,6 +131,10 @@ export const ConnectionProfileProvider = {
      * Amazon Aurora.
      */
     Aurora: "AURORA",
+    /**
+     * AlloyDB.
+     */
+    Alloydb: "ALLOYDB",
 } as const;
 
 /**
@@ -215,6 +219,10 @@ export const DatabaseTypeProvider = {
      * Amazon Aurora.
      */
     Aurora: "AURORA",
+    /**
+     * AlloyDB.
+     */
+    Alloydb: "ALLOYDB",
 } as const;
 
 /**

@@ -10,6 +10,246 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Represents an 'access point' for the share.
+type AllowedClient struct {
+	// Allow dev flag. Which controls whether to allow creation of devices.
+	AllowDev *bool `pulumi:"allowDev"`
+	// Allow the setuid flag.
+	AllowSuid *bool `pulumi:"allowSuid"`
+	// The subnet of IP addresses permitted to access the share.
+	AllowedClientsCidr *string `pulumi:"allowedClientsCidr"`
+	// Mount permissions.
+	MountPermissions *AllowedClientMountPermissions `pulumi:"mountPermissions"`
+	// The network the access point sits on.
+	Network *string `pulumi:"network"`
+	// Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
+	NoRootSquash *bool `pulumi:"noRootSquash"`
+}
+
+// AllowedClientInput is an input type that accepts AllowedClientArgs and AllowedClientOutput values.
+// You can construct a concrete instance of `AllowedClientInput` via:
+//
+//	AllowedClientArgs{...}
+type AllowedClientInput interface {
+	pulumi.Input
+
+	ToAllowedClientOutput() AllowedClientOutput
+	ToAllowedClientOutputWithContext(context.Context) AllowedClientOutput
+}
+
+// Represents an 'access point' for the share.
+type AllowedClientArgs struct {
+	// Allow dev flag. Which controls whether to allow creation of devices.
+	AllowDev pulumi.BoolPtrInput `pulumi:"allowDev"`
+	// Allow the setuid flag.
+	AllowSuid pulumi.BoolPtrInput `pulumi:"allowSuid"`
+	// The subnet of IP addresses permitted to access the share.
+	AllowedClientsCidr pulumi.StringPtrInput `pulumi:"allowedClientsCidr"`
+	// Mount permissions.
+	MountPermissions AllowedClientMountPermissionsPtrInput `pulumi:"mountPermissions"`
+	// The network the access point sits on.
+	Network pulumi.StringPtrInput `pulumi:"network"`
+	// Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
+	NoRootSquash pulumi.BoolPtrInput `pulumi:"noRootSquash"`
+}
+
+func (AllowedClientArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowedClient)(nil)).Elem()
+}
+
+func (i AllowedClientArgs) ToAllowedClientOutput() AllowedClientOutput {
+	return i.ToAllowedClientOutputWithContext(context.Background())
+}
+
+func (i AllowedClientArgs) ToAllowedClientOutputWithContext(ctx context.Context) AllowedClientOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AllowedClientOutput)
+}
+
+// AllowedClientArrayInput is an input type that accepts AllowedClientArray and AllowedClientArrayOutput values.
+// You can construct a concrete instance of `AllowedClientArrayInput` via:
+//
+//	AllowedClientArray{ AllowedClientArgs{...} }
+type AllowedClientArrayInput interface {
+	pulumi.Input
+
+	ToAllowedClientArrayOutput() AllowedClientArrayOutput
+	ToAllowedClientArrayOutputWithContext(context.Context) AllowedClientArrayOutput
+}
+
+type AllowedClientArray []AllowedClientInput
+
+func (AllowedClientArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AllowedClient)(nil)).Elem()
+}
+
+func (i AllowedClientArray) ToAllowedClientArrayOutput() AllowedClientArrayOutput {
+	return i.ToAllowedClientArrayOutputWithContext(context.Background())
+}
+
+func (i AllowedClientArray) ToAllowedClientArrayOutputWithContext(ctx context.Context) AllowedClientArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AllowedClientArrayOutput)
+}
+
+// Represents an 'access point' for the share.
+type AllowedClientOutput struct{ *pulumi.OutputState }
+
+func (AllowedClientOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowedClient)(nil)).Elem()
+}
+
+func (o AllowedClientOutput) ToAllowedClientOutput() AllowedClientOutput {
+	return o
+}
+
+func (o AllowedClientOutput) ToAllowedClientOutputWithContext(ctx context.Context) AllowedClientOutput {
+	return o
+}
+
+// Allow dev flag. Which controls whether to allow creation of devices.
+func (o AllowedClientOutput) AllowDev() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AllowedClient) *bool { return v.AllowDev }).(pulumi.BoolPtrOutput)
+}
+
+// Allow the setuid flag.
+func (o AllowedClientOutput) AllowSuid() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AllowedClient) *bool { return v.AllowSuid }).(pulumi.BoolPtrOutput)
+}
+
+// The subnet of IP addresses permitted to access the share.
+func (o AllowedClientOutput) AllowedClientsCidr() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AllowedClient) *string { return v.AllowedClientsCidr }).(pulumi.StringPtrOutput)
+}
+
+// Mount permissions.
+func (o AllowedClientOutput) MountPermissions() AllowedClientMountPermissionsPtrOutput {
+	return o.ApplyT(func(v AllowedClient) *AllowedClientMountPermissions { return v.MountPermissions }).(AllowedClientMountPermissionsPtrOutput)
+}
+
+// The network the access point sits on.
+func (o AllowedClientOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AllowedClient) *string { return v.Network }).(pulumi.StringPtrOutput)
+}
+
+// Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
+func (o AllowedClientOutput) NoRootSquash() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AllowedClient) *bool { return v.NoRootSquash }).(pulumi.BoolPtrOutput)
+}
+
+type AllowedClientArrayOutput struct{ *pulumi.OutputState }
+
+func (AllowedClientArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AllowedClient)(nil)).Elem()
+}
+
+func (o AllowedClientArrayOutput) ToAllowedClientArrayOutput() AllowedClientArrayOutput {
+	return o
+}
+
+func (o AllowedClientArrayOutput) ToAllowedClientArrayOutputWithContext(ctx context.Context) AllowedClientArrayOutput {
+	return o
+}
+
+func (o AllowedClientArrayOutput) Index(i pulumi.IntInput) AllowedClientOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AllowedClient {
+		return vs[0].([]AllowedClient)[vs[1].(int)]
+	}).(AllowedClientOutput)
+}
+
+// Represents an 'access point' for the share.
+type AllowedClientResponse struct {
+	// Allow dev flag. Which controls whether to allow creation of devices.
+	AllowDev bool `pulumi:"allowDev"`
+	// Allow the setuid flag.
+	AllowSuid bool `pulumi:"allowSuid"`
+	// The subnet of IP addresses permitted to access the share.
+	AllowedClientsCidr string `pulumi:"allowedClientsCidr"`
+	// Mount permissions.
+	MountPermissions string `pulumi:"mountPermissions"`
+	// The network the access point sits on.
+	Network string `pulumi:"network"`
+	// The path to access NFS, in format shareIP:/InstanceID InstanceID is the generated ID instead of customer provided name. example like "10.0.0.0:/g123456789-nfs001"
+	NfsPath string `pulumi:"nfsPath"`
+	// Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
+	NoRootSquash bool `pulumi:"noRootSquash"`
+	// The IP address of the share on this network. Assigned automatically during provisioning based on the network's services_cidr.
+	ShareIp string `pulumi:"shareIp"`
+}
+
+// Represents an 'access point' for the share.
+type AllowedClientResponseOutput struct{ *pulumi.OutputState }
+
+func (AllowedClientResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowedClientResponse)(nil)).Elem()
+}
+
+func (o AllowedClientResponseOutput) ToAllowedClientResponseOutput() AllowedClientResponseOutput {
+	return o
+}
+
+func (o AllowedClientResponseOutput) ToAllowedClientResponseOutputWithContext(ctx context.Context) AllowedClientResponseOutput {
+	return o
+}
+
+// Allow dev flag. Which controls whether to allow creation of devices.
+func (o AllowedClientResponseOutput) AllowDev() pulumi.BoolOutput {
+	return o.ApplyT(func(v AllowedClientResponse) bool { return v.AllowDev }).(pulumi.BoolOutput)
+}
+
+// Allow the setuid flag.
+func (o AllowedClientResponseOutput) AllowSuid() pulumi.BoolOutput {
+	return o.ApplyT(func(v AllowedClientResponse) bool { return v.AllowSuid }).(pulumi.BoolOutput)
+}
+
+// The subnet of IP addresses permitted to access the share.
+func (o AllowedClientResponseOutput) AllowedClientsCidr() pulumi.StringOutput {
+	return o.ApplyT(func(v AllowedClientResponse) string { return v.AllowedClientsCidr }).(pulumi.StringOutput)
+}
+
+// Mount permissions.
+func (o AllowedClientResponseOutput) MountPermissions() pulumi.StringOutput {
+	return o.ApplyT(func(v AllowedClientResponse) string { return v.MountPermissions }).(pulumi.StringOutput)
+}
+
+// The network the access point sits on.
+func (o AllowedClientResponseOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v AllowedClientResponse) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The path to access NFS, in format shareIP:/InstanceID InstanceID is the generated ID instead of customer provided name. example like "10.0.0.0:/g123456789-nfs001"
+func (o AllowedClientResponseOutput) NfsPath() pulumi.StringOutput {
+	return o.ApplyT(func(v AllowedClientResponse) string { return v.NfsPath }).(pulumi.StringOutput)
+}
+
+// Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
+func (o AllowedClientResponseOutput) NoRootSquash() pulumi.BoolOutput {
+	return o.ApplyT(func(v AllowedClientResponse) bool { return v.NoRootSquash }).(pulumi.BoolOutput)
+}
+
+// The IP address of the share on this network. Assigned automatically during provisioning based on the network's services_cidr.
+func (o AllowedClientResponseOutput) ShareIp() pulumi.StringOutput {
+	return o.ApplyT(func(v AllowedClientResponse) string { return v.ShareIp }).(pulumi.StringOutput)
+}
+
+type AllowedClientResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (AllowedClientResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AllowedClientResponse)(nil)).Elem()
+}
+
+func (o AllowedClientResponseArrayOutput) ToAllowedClientResponseArrayOutput() AllowedClientResponseArrayOutput {
+	return o
+}
+
+func (o AllowedClientResponseArrayOutput) ToAllowedClientResponseArrayOutputWithContext(ctx context.Context) AllowedClientResponseArrayOutput {
+	return o
+}
+
+func (o AllowedClientResponseArrayOutput) Index(i pulumi.IntInput) AllowedClientResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AllowedClientResponse {
+		return vs[0].([]AllowedClientResponse)[vs[1].(int)]
+	}).(AllowedClientResponseOutput)
+}
+
 // Each logical interface represents a logical abstraction of the underlying physical interface (for eg. bond, nic) of the instance. Each logical interface can effectively map to multiple network-IP pairs and still be mapped to one underlying physical interface.
 type GoogleCloudBaremetalsolutionV2LogicalInterface struct {
 	// The index of the logical interface mapping to the index of the hardware bond or nic on the chosen network template. This field is deprecated.
@@ -1872,18 +2112,91 @@ func (o NetworkConfigResponseArrayOutput) Index(i pulumi.IntInput) NetworkConfig
 	}).(NetworkConfigResponseOutput)
 }
 
+// Mount point for a network.
+type NetworkMountPointResponse struct {
+	// Network should be a default gateway.
+	DefaultGateway bool `pulumi:"defaultGateway"`
+	// Instance to attach network to.
+	Instance string `pulumi:"instance"`
+	// Ip address of the server.
+	IpAddress string `pulumi:"ipAddress"`
+	// Logical interface to detach from.
+	LogicalInterface string `pulumi:"logicalInterface"`
+}
+
+// Mount point for a network.
+type NetworkMountPointResponseOutput struct{ *pulumi.OutputState }
+
+func (NetworkMountPointResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkMountPointResponse)(nil)).Elem()
+}
+
+func (o NetworkMountPointResponseOutput) ToNetworkMountPointResponseOutput() NetworkMountPointResponseOutput {
+	return o
+}
+
+func (o NetworkMountPointResponseOutput) ToNetworkMountPointResponseOutputWithContext(ctx context.Context) NetworkMountPointResponseOutput {
+	return o
+}
+
+// Network should be a default gateway.
+func (o NetworkMountPointResponseOutput) DefaultGateway() pulumi.BoolOutput {
+	return o.ApplyT(func(v NetworkMountPointResponse) bool { return v.DefaultGateway }).(pulumi.BoolOutput)
+}
+
+// Instance to attach network to.
+func (o NetworkMountPointResponseOutput) Instance() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkMountPointResponse) string { return v.Instance }).(pulumi.StringOutput)
+}
+
+// Ip address of the server.
+func (o NetworkMountPointResponseOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkMountPointResponse) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+// Logical interface to detach from.
+func (o NetworkMountPointResponseOutput) LogicalInterface() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkMountPointResponse) string { return v.LogicalInterface }).(pulumi.StringOutput)
+}
+
+type NetworkMountPointResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (NetworkMountPointResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]NetworkMountPointResponse)(nil)).Elem()
+}
+
+func (o NetworkMountPointResponseArrayOutput) ToNetworkMountPointResponseArrayOutput() NetworkMountPointResponseArrayOutput {
+	return o
+}
+
+func (o NetworkMountPointResponseArrayOutput) ToNetworkMountPointResponseArrayOutputWithContext(ctx context.Context) NetworkMountPointResponseArrayOutput {
+	return o
+}
+
+func (o NetworkMountPointResponseArrayOutput) Index(i pulumi.IntInput) NetworkMountPointResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NetworkMountPointResponse {
+		return vs[0].([]NetworkMountPointResponse)[vs[1].(int)]
+	}).(NetworkMountPointResponseOutput)
+}
+
 // A Network.
 type NetworkResponse struct {
 	// The cidr of the Network.
 	Cidr string `pulumi:"cidr"`
 	// IP address configured.
 	IpAddress string `pulumi:"ipAddress"`
+	// Whether network uses standard frames or jumbo ones.
+	JumboFramesEnabled bool `pulumi:"jumboFramesEnabled"`
 	// Labels as key value pairs.
 	Labels map[string]string `pulumi:"labels"`
 	// List of physical interfaces.
 	MacAddress []string `pulumi:"macAddress"`
+	// Input only. List of mount points to attach the network to.
+	MountPoints []NetworkMountPointResponse `pulumi:"mountPoints"`
 	// The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}`
 	Name string `pulumi:"name"`
+	// Pod name.
+	Pod string `pulumi:"pod"`
 	// List of IP address reservations in this network. When updating this field, an error will be generated if a reservation conflicts with an IP address already allocated to a physical server.
 	Reservations []NetworkAddressReservationResponse `pulumi:"reservations"`
 	// IP range for reserved for services (e.g. NFS).
@@ -1923,6 +2236,11 @@ func (o NetworkResponseOutput) IpAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkResponse) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
+// Whether network uses standard frames or jumbo ones.
+func (o NetworkResponseOutput) JumboFramesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NetworkResponse) bool { return v.JumboFramesEnabled }).(pulumi.BoolOutput)
+}
+
 // Labels as key value pairs.
 func (o NetworkResponseOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v NetworkResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
@@ -1933,9 +2251,19 @@ func (o NetworkResponseOutput) MacAddress() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v NetworkResponse) []string { return v.MacAddress }).(pulumi.StringArrayOutput)
 }
 
+// Input only. List of mount points to attach the network to.
+func (o NetworkResponseOutput) MountPoints() NetworkMountPointResponseArrayOutput {
+	return o.ApplyT(func(v NetworkResponse) []NetworkMountPointResponse { return v.MountPoints }).(NetworkMountPointResponseArrayOutput)
+}
+
 // The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}`
 func (o NetworkResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v NetworkResponse) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Pod name.
+func (o NetworkResponseOutput) Pod() pulumi.StringOutput {
+	return o.ApplyT(func(v NetworkResponse) string { return v.Pod }).(pulumi.StringOutput)
 }
 
 // List of IP address reservations in this network. When updating this field, an error will be generated if a reservation conflicts with an IP address already allocated to a physical server.
@@ -2504,7 +2832,7 @@ func (o SnapshotReservationDetailResponseOutput) ReservedSpaceUsedPercent() pulu
 type VRFResponse struct {
 	// The name of the VRF.
 	Name string `pulumi:"name"`
-	// The QOS policy applied to this VRF.
+	// The QOS policy applied to this VRF. The value is only meaningful when all the vlan attachments have the same QoS. This field should not be used for new integrations, use vlan attachment level qos instead. The field is left for backward-compatibility.
 	QosPolicy QosPolicyResponse `pulumi:"qosPolicy"`
 	// The possible state of VRF.
 	State string `pulumi:"state"`
@@ -2532,7 +2860,7 @@ func (o VRFResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VRFResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The QOS policy applied to this VRF.
+// The QOS policy applied to this VRF. The value is only meaningful when all the vlan attachments have the same QoS. This field should not be used for new integrations, use vlan attachment level qos instead. The field is left for backward-compatibility.
 func (o VRFResponseOutput) QosPolicy() QosPolicyResponseOutput {
 	return o.ApplyT(func(v VRFResponse) QosPolicyResponse { return v.QosPolicy }).(QosPolicyResponseOutput)
 }
@@ -2549,10 +2877,14 @@ func (o VRFResponseOutput) VlanAttachments() VlanAttachmentResponseArrayOutput {
 
 // VLAN attachment details.
 type VlanAttachmentResponse struct {
+	// Input only. Pairing key.
+	PairingKey string `pulumi:"pairingKey"`
 	// The peer IP of the attachment.
 	PeerIp string `pulumi:"peerIp"`
 	// The peer vlan ID of the attachment.
 	PeerVlanId string `pulumi:"peerVlanId"`
+	// The QOS policy applied to this VLAN attachment. This value should be preferred to using qos at vrf level.
+	QosPolicy QosPolicyResponse `pulumi:"qosPolicy"`
 	// The router IP of the attachment.
 	RouterIp string `pulumi:"routerIp"`
 }
@@ -2572,6 +2904,11 @@ func (o VlanAttachmentResponseOutput) ToVlanAttachmentResponseOutputWithContext(
 	return o
 }
 
+// Input only. Pairing key.
+func (o VlanAttachmentResponseOutput) PairingKey() pulumi.StringOutput {
+	return o.ApplyT(func(v VlanAttachmentResponse) string { return v.PairingKey }).(pulumi.StringOutput)
+}
+
 // The peer IP of the attachment.
 func (o VlanAttachmentResponseOutput) PeerIp() pulumi.StringOutput {
 	return o.ApplyT(func(v VlanAttachmentResponse) string { return v.PeerIp }).(pulumi.StringOutput)
@@ -2580,6 +2917,11 @@ func (o VlanAttachmentResponseOutput) PeerIp() pulumi.StringOutput {
 // The peer vlan ID of the attachment.
 func (o VlanAttachmentResponseOutput) PeerVlanId() pulumi.StringOutput {
 	return o.ApplyT(func(v VlanAttachmentResponse) string { return v.PeerVlanId }).(pulumi.StringOutput)
+}
+
+// The QOS policy applied to this VLAN attachment. This value should be preferred to using qos at vrf level.
+func (o VlanAttachmentResponseOutput) QosPolicy() QosPolicyResponseOutput {
+	return o.ApplyT(func(v VlanAttachmentResponse) QosPolicyResponse { return v.QosPolicy }).(QosPolicyResponseOutput)
 }
 
 // The router IP of the attachment.
@@ -3298,6 +3640,8 @@ func (o VolumeResponseArrayOutput) Index(i pulumi.IntInput) VolumeResponseOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedClientInput)(nil)).Elem(), AllowedClientArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedClientArrayInput)(nil)).Elem(), AllowedClientArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBaremetalsolutionV2LogicalInterfaceInput)(nil)).Elem(), GoogleCloudBaremetalsolutionV2LogicalInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayInput)(nil)).Elem(), GoogleCloudBaremetalsolutionV2LogicalInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigInput)(nil)).Elem(), InstanceConfigArgs{})
@@ -3322,6 +3666,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeArrayInput)(nil)).Elem(), VolumeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigInput)(nil)).Elem(), VolumeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigArrayInput)(nil)).Elem(), VolumeConfigArray{})
+	pulumi.RegisterOutputType(AllowedClientOutput{})
+	pulumi.RegisterOutputType(AllowedClientArrayOutput{})
+	pulumi.RegisterOutputType(AllowedClientResponseOutput{})
+	pulumi.RegisterOutputType(AllowedClientResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBaremetalsolutionV2LogicalInterfaceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBaremetalsolutionV2LogicalInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudBaremetalsolutionV2LogicalInterfaceResponseOutput{})
@@ -3355,6 +3703,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseOutput{})
 	pulumi.RegisterOutputType(NetworkConfigResponseArrayOutput{})
+	pulumi.RegisterOutputType(NetworkMountPointResponseOutput{})
+	pulumi.RegisterOutputType(NetworkMountPointResponseArrayOutput{})
 	pulumi.RegisterOutputType(NetworkResponseOutput{})
 	pulumi.RegisterOutputType(NetworkResponseArrayOutput{})
 	pulumi.RegisterOutputType(NfsExportOutput{})

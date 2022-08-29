@@ -6,8 +6,10 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./getInstance";
+export * from "./getNfsShare";
 export * from "./getProvisioningConfig";
 export * from "./instance";
+export * from "./nfsShare";
 export * from "./provisioningConfig";
 
 // Export enums:
@@ -15,6 +17,7 @@ export * from "../../types/enums/baremetalsolution/v2";
 
 // Import resources to register:
 import { Instance } from "./instance";
+import { NfsShare } from "./nfsShare";
 import { ProvisioningConfig } from "./provisioningConfig";
 
 const _module = {
@@ -23,6 +26,8 @@ const _module = {
         switch (type) {
             case "google-native:baremetalsolution/v2:Instance":
                 return new Instance(name, <any>undefined, { urn })
+            case "google-native:baremetalsolution/v2:NfsShare":
+                return new NfsShare(name, <any>undefined, { urn })
             case "google-native:baremetalsolution/v2:ProvisioningConfig":
                 return new ProvisioningConfig(name, <any>undefined, { urn })
             default:

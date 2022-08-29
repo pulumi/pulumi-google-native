@@ -36,6 +36,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
     }
 
     /**
+     * An AlloyDB cluster connection profile.
+     */
+    public readonly alloydb!: pulumi.Output<outputs.datamigration.v1.AlloyDbConnectionProfileResponse>;
+    /**
      * A CloudSQL database connection profile.
      */
     public readonly cloudsql!: pulumi.Output<outputs.datamigration.v1.CloudSqlConnectionProfileResponse>;
@@ -104,6 +108,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             if ((!args || args.connectionProfileId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'connectionProfileId'");
             }
+            resourceInputs["alloydb"] = args ? args.alloydb : undefined;
             resourceInputs["cloudsql"] = args ? args.cloudsql : undefined;
             resourceInputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -120,6 +125,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["error"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["alloydb"] = undefined /*out*/;
             resourceInputs["cloudsql"] = undefined /*out*/;
             resourceInputs["connectionProfileId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -147,6 +153,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
  * The set of arguments for constructing a ConnectionProfile resource.
  */
 export interface ConnectionProfileArgs {
+    /**
+     * An AlloyDB cluster connection profile.
+     */
+    alloydb?: pulumi.Input<inputs.datamigration.v1.AlloyDbConnectionProfileArgs>;
     /**
      * A CloudSQL database connection profile.
      */

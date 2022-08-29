@@ -12,6 +12,7 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AllowedClientResponse',
     'GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse',
     'InstanceConfigResponse',
     'IntakeVlanAttachmentResponse',
@@ -21,6 +22,7 @@ __all__ = [
     'NetworkAddressReservationResponse',
     'NetworkAddressResponse',
     'NetworkConfigResponse',
+    'NetworkMountPointResponse',
     'NetworkResponse',
     'NfsExportResponse',
     'QosPolicyResponse',
@@ -30,6 +32,134 @@ __all__ = [
     'VolumeConfigResponse',
     'VolumeResponse',
 ]
+
+@pulumi.output_type
+class AllowedClientResponse(dict):
+    """
+    Represents an 'access point' for the share.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "allowDev":
+            suggest = "allow_dev"
+        elif key == "allowSuid":
+            suggest = "allow_suid"
+        elif key == "allowedClientsCidr":
+            suggest = "allowed_clients_cidr"
+        elif key == "mountPermissions":
+            suggest = "mount_permissions"
+        elif key == "nfsPath":
+            suggest = "nfs_path"
+        elif key == "noRootSquash":
+            suggest = "no_root_squash"
+        elif key == "shareIp":
+            suggest = "share_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AllowedClientResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AllowedClientResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AllowedClientResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 allow_dev: bool,
+                 allow_suid: bool,
+                 allowed_clients_cidr: str,
+                 mount_permissions: str,
+                 network: str,
+                 nfs_path: str,
+                 no_root_squash: bool,
+                 share_ip: str):
+        """
+        Represents an 'access point' for the share.
+        :param bool allow_dev: Allow dev flag. Which controls whether to allow creation of devices.
+        :param bool allow_suid: Allow the setuid flag.
+        :param str allowed_clients_cidr: The subnet of IP addresses permitted to access the share.
+        :param str mount_permissions: Mount permissions.
+        :param str network: The network the access point sits on.
+        :param str nfs_path: The path to access NFS, in format shareIP:/InstanceID InstanceID is the generated ID instead of customer provided name. example like "10.0.0.0:/g123456789-nfs001"
+        :param bool no_root_squash: Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
+        :param str share_ip: The IP address of the share on this network. Assigned automatically during provisioning based on the network's services_cidr.
+        """
+        pulumi.set(__self__, "allow_dev", allow_dev)
+        pulumi.set(__self__, "allow_suid", allow_suid)
+        pulumi.set(__self__, "allowed_clients_cidr", allowed_clients_cidr)
+        pulumi.set(__self__, "mount_permissions", mount_permissions)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "nfs_path", nfs_path)
+        pulumi.set(__self__, "no_root_squash", no_root_squash)
+        pulumi.set(__self__, "share_ip", share_ip)
+
+    @property
+    @pulumi.getter(name="allowDev")
+    def allow_dev(self) -> bool:
+        """
+        Allow dev flag. Which controls whether to allow creation of devices.
+        """
+        return pulumi.get(self, "allow_dev")
+
+    @property
+    @pulumi.getter(name="allowSuid")
+    def allow_suid(self) -> bool:
+        """
+        Allow the setuid flag.
+        """
+        return pulumi.get(self, "allow_suid")
+
+    @property
+    @pulumi.getter(name="allowedClientsCidr")
+    def allowed_clients_cidr(self) -> str:
+        """
+        The subnet of IP addresses permitted to access the share.
+        """
+        return pulumi.get(self, "allowed_clients_cidr")
+
+    @property
+    @pulumi.getter(name="mountPermissions")
+    def mount_permissions(self) -> str:
+        """
+        Mount permissions.
+        """
+        return pulumi.get(self, "mount_permissions")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        """
+        The network the access point sits on.
+        """
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="nfsPath")
+    def nfs_path(self) -> str:
+        """
+        The path to access NFS, in format shareIP:/InstanceID InstanceID is the generated ID instead of customer provided name. example like "10.0.0.0:/g123456789-nfs001"
+        """
+        return pulumi.get(self, "nfs_path")
+
+    @property
+    @pulumi.getter(name="noRootSquash")
+    def no_root_squash(self) -> bool:
+        """
+        Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication.
+        """
+        return pulumi.get(self, "no_root_squash")
+
+    @property
+    @pulumi.getter(name="shareIp")
+    def share_ip(self) -> str:
+        """
+        The IP address of the share on this network. Assigned automatically during provisioning based on the network's services_cidr.
+        """
+        return pulumi.get(self, "share_ip")
+
 
 @pulumi.output_type
 class GoogleCloudBaremetalsolutionV2LogicalInterfaceResponse(dict):
@@ -834,6 +964,82 @@ class NetworkConfigResponse(dict):
 
 
 @pulumi.output_type
+class NetworkMountPointResponse(dict):
+    """
+    Mount point for a network.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "defaultGateway":
+            suggest = "default_gateway"
+        elif key == "ipAddress":
+            suggest = "ip_address"
+        elif key == "logicalInterface":
+            suggest = "logical_interface"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NetworkMountPointResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NetworkMountPointResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NetworkMountPointResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 default_gateway: bool,
+                 instance: str,
+                 ip_address: str,
+                 logical_interface: str):
+        """
+        Mount point for a network.
+        :param bool default_gateway: Network should be a default gateway.
+        :param str instance: Instance to attach network to.
+        :param str ip_address: Ip address of the server.
+        :param str logical_interface: Logical interface to detach from.
+        """
+        pulumi.set(__self__, "default_gateway", default_gateway)
+        pulumi.set(__self__, "instance", instance)
+        pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "logical_interface", logical_interface)
+
+    @property
+    @pulumi.getter(name="defaultGateway")
+    def default_gateway(self) -> bool:
+        """
+        Network should be a default gateway.
+        """
+        return pulumi.get(self, "default_gateway")
+
+    @property
+    @pulumi.getter
+    def instance(self) -> str:
+        """
+        Instance to attach network to.
+        """
+        return pulumi.get(self, "instance")
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> str:
+        """
+        Ip address of the server.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="logicalInterface")
+    def logical_interface(self) -> str:
+        """
+        Logical interface to detach from.
+        """
+        return pulumi.get(self, "logical_interface")
+
+
+@pulumi.output_type
 class NetworkResponse(dict):
     """
     A Network.
@@ -843,8 +1049,12 @@ class NetworkResponse(dict):
         suggest = None
         if key == "ipAddress":
             suggest = "ip_address"
+        elif key == "jumboFramesEnabled":
+            suggest = "jumbo_frames_enabled"
         elif key == "macAddress":
             suggest = "mac_address"
+        elif key == "mountPoints":
+            suggest = "mount_points"
         elif key == "servicesCidr":
             suggest = "services_cidr"
         elif key == "vlanId":
@@ -864,9 +1074,12 @@ class NetworkResponse(dict):
     def __init__(__self__, *,
                  cidr: str,
                  ip_address: str,
+                 jumbo_frames_enabled: bool,
                  labels: Mapping[str, str],
                  mac_address: Sequence[str],
+                 mount_points: Sequence['outputs.NetworkMountPointResponse'],
                  name: str,
+                 pod: str,
                  reservations: Sequence['outputs.NetworkAddressReservationResponse'],
                  services_cidr: str,
                  state: str,
@@ -877,9 +1090,12 @@ class NetworkResponse(dict):
         A Network.
         :param str cidr: The cidr of the Network.
         :param str ip_address: IP address configured.
+        :param bool jumbo_frames_enabled: Whether network uses standard frames or jumbo ones.
         :param Mapping[str, str] labels: Labels as key value pairs.
         :param Sequence[str] mac_address: List of physical interfaces.
+        :param Sequence['NetworkMountPointResponse'] mount_points: Input only. List of mount points to attach the network to.
         :param str name: The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}`
+        :param str pod: Pod name.
         :param Sequence['NetworkAddressReservationResponse'] reservations: List of IP address reservations in this network. When updating this field, an error will be generated if a reservation conflicts with an IP address already allocated to a physical server.
         :param str services_cidr: IP range for reserved for services (e.g. NFS).
         :param str state: The Network state.
@@ -889,9 +1105,12 @@ class NetworkResponse(dict):
         """
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "ip_address", ip_address)
+        pulumi.set(__self__, "jumbo_frames_enabled", jumbo_frames_enabled)
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "mac_address", mac_address)
+        pulumi.set(__self__, "mount_points", mount_points)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "pod", pod)
         pulumi.set(__self__, "reservations", reservations)
         pulumi.set(__self__, "services_cidr", services_cidr)
         pulumi.set(__self__, "state", state)
@@ -916,6 +1135,14 @@ class NetworkResponse(dict):
         return pulumi.get(self, "ip_address")
 
     @property
+    @pulumi.getter(name="jumboFramesEnabled")
+    def jumbo_frames_enabled(self) -> bool:
+        """
+        Whether network uses standard frames or jumbo ones.
+        """
+        return pulumi.get(self, "jumbo_frames_enabled")
+
+    @property
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
@@ -932,12 +1159,28 @@ class NetworkResponse(dict):
         return pulumi.get(self, "mac_address")
 
     @property
+    @pulumi.getter(name="mountPoints")
+    def mount_points(self) -> Sequence['outputs.NetworkMountPointResponse']:
+        """
+        Input only. List of mount points to attach the network to.
+        """
+        return pulumi.get(self, "mount_points")
+
+    @property
     @pulumi.getter
     def name(self) -> str:
         """
         The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}`
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def pod(self) -> str:
+        """
+        Pod name.
+        """
+        return pulumi.get(self, "pod")
 
     @property
     @pulumi.getter
@@ -1250,7 +1493,7 @@ class VRFResponse(dict):
         """
         A network VRF.
         :param str name: The name of the VRF.
-        :param 'QosPolicyResponse' qos_policy: The QOS policy applied to this VRF.
+        :param 'QosPolicyResponse' qos_policy: The QOS policy applied to this VRF. The value is only meaningful when all the vlan attachments have the same QoS. This field should not be used for new integrations, use vlan attachment level qos instead. The field is left for backward-compatibility.
         :param str state: The possible state of VRF.
         :param Sequence['VlanAttachmentResponse'] vlan_attachments: The list of VLAN attachments for the VRF.
         """
@@ -1271,7 +1514,7 @@ class VRFResponse(dict):
     @pulumi.getter(name="qosPolicy")
     def qos_policy(self) -> 'outputs.QosPolicyResponse':
         """
-        The QOS policy applied to this VRF.
+        The QOS policy applied to this VRF. The value is only meaningful when all the vlan attachments have the same QoS. This field should not be used for new integrations, use vlan attachment level qos instead. The field is left for backward-compatibility.
         """
         return pulumi.get(self, "qos_policy")
 
@@ -1300,10 +1543,14 @@ class VlanAttachmentResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "peerIp":
+        if key == "pairingKey":
+            suggest = "pairing_key"
+        elif key == "peerIp":
             suggest = "peer_ip"
         elif key == "peerVlanId":
             suggest = "peer_vlan_id"
+        elif key == "qosPolicy":
+            suggest = "qos_policy"
         elif key == "routerIp":
             suggest = "router_ip"
 
@@ -1319,18 +1566,32 @@ class VlanAttachmentResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 pairing_key: str,
                  peer_ip: str,
                  peer_vlan_id: str,
+                 qos_policy: 'outputs.QosPolicyResponse',
                  router_ip: str):
         """
         VLAN attachment details.
+        :param str pairing_key: Input only. Pairing key.
         :param str peer_ip: The peer IP of the attachment.
         :param str peer_vlan_id: The peer vlan ID of the attachment.
+        :param 'QosPolicyResponse' qos_policy: The QOS policy applied to this VLAN attachment. This value should be preferred to using qos at vrf level.
         :param str router_ip: The router IP of the attachment.
         """
+        pulumi.set(__self__, "pairing_key", pairing_key)
         pulumi.set(__self__, "peer_ip", peer_ip)
         pulumi.set(__self__, "peer_vlan_id", peer_vlan_id)
+        pulumi.set(__self__, "qos_policy", qos_policy)
         pulumi.set(__self__, "router_ip", router_ip)
+
+    @property
+    @pulumi.getter(name="pairingKey")
+    def pairing_key(self) -> str:
+        """
+        Input only. Pairing key.
+        """
+        return pulumi.get(self, "pairing_key")
 
     @property
     @pulumi.getter(name="peerIp")
@@ -1347,6 +1608,14 @@ class VlanAttachmentResponse(dict):
         The peer vlan ID of the attachment.
         """
         return pulumi.get(self, "peer_vlan_id")
+
+    @property
+    @pulumi.getter(name="qosPolicy")
+    def qos_policy(self) -> 'outputs.QosPolicyResponse':
+        """
+        The QOS policy applied to this VLAN attachment. This value should be preferred to using qos at vrf level.
+        """
+        return pulumi.get(self, "qos_policy")
 
     @property
     @pulumi.getter(name="routerIp")

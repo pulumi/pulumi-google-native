@@ -8156,6 +8156,8 @@ func (o MonitoringResponseOutput) ProducerDestinations() MonitoringDestinationRe
 
 // OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions.
 type OAuthRequirements struct {
+	// UNIMPLEMENTED: If enabled, ESF will allow OAuth credentials with any scope, more details in http://go/esf-oauth-any-scope. WARNING: Enabling this option will bring security risks. Customers enabling this feature accidentally may have the risk of losing authentication enforcement. Please reach out to api-auth@ and esf-team@ for approval and allowlisting before you enable this option.
+	AllowAnyScope *bool `pulumi:"allowAnyScope"`
 	// The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read
 	CanonicalScopes *string `pulumi:"canonicalScopes"`
 }
@@ -8173,6 +8175,8 @@ type OAuthRequirementsInput interface {
 
 // OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions.
 type OAuthRequirementsArgs struct {
+	// UNIMPLEMENTED: If enabled, ESF will allow OAuth credentials with any scope, more details in http://go/esf-oauth-any-scope. WARNING: Enabling this option will bring security risks. Customers enabling this feature accidentally may have the risk of losing authentication enforcement. Please reach out to api-auth@ and esf-team@ for approval and allowlisting before you enable this option.
+	AllowAnyScope pulumi.BoolPtrInput `pulumi:"allowAnyScope"`
 	// The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read
 	CanonicalScopes pulumi.StringPtrInput `pulumi:"canonicalScopes"`
 }
@@ -8255,6 +8259,11 @@ func (o OAuthRequirementsOutput) ToOAuthRequirementsPtrOutputWithContext(ctx con
 	}).(OAuthRequirementsPtrOutput)
 }
 
+// UNIMPLEMENTED: If enabled, ESF will allow OAuth credentials with any scope, more details in http://go/esf-oauth-any-scope. WARNING: Enabling this option will bring security risks. Customers enabling this feature accidentally may have the risk of losing authentication enforcement. Please reach out to api-auth@ and esf-team@ for approval and allowlisting before you enable this option.
+func (o OAuthRequirementsOutput) AllowAnyScope() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v OAuthRequirements) *bool { return v.AllowAnyScope }).(pulumi.BoolPtrOutput)
+}
+
 // The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read
 func (o OAuthRequirementsOutput) CanonicalScopes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v OAuthRequirements) *string { return v.CanonicalScopes }).(pulumi.StringPtrOutput)
@@ -8284,6 +8293,16 @@ func (o OAuthRequirementsPtrOutput) Elem() OAuthRequirementsOutput {
 	}).(OAuthRequirementsOutput)
 }
 
+// UNIMPLEMENTED: If enabled, ESF will allow OAuth credentials with any scope, more details in http://go/esf-oauth-any-scope. WARNING: Enabling this option will bring security risks. Customers enabling this feature accidentally may have the risk of losing authentication enforcement. Please reach out to api-auth@ and esf-team@ for approval and allowlisting before you enable this option.
+func (o OAuthRequirementsPtrOutput) AllowAnyScope() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *OAuthRequirements) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowAnyScope
+	}).(pulumi.BoolPtrOutput)
+}
+
 // The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read
 func (o OAuthRequirementsPtrOutput) CanonicalScopes() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OAuthRequirements) *string {
@@ -8296,6 +8315,8 @@ func (o OAuthRequirementsPtrOutput) CanonicalScopes() pulumi.StringPtrOutput {
 
 // OAuth scopes are a way to define data and permissions on data. For example, there are scopes defined for "Read-only access to Google Calendar" and "Access to Cloud Platform". Users can consent to a scope for an application, giving it permission to access that data on their behalf. OAuth scope specifications should be fairly coarse grained; a user will need to see and understand the text description of what your scope means. In most cases: use one or at most two OAuth scopes for an entire family of products. If your product has multiple APIs, you should probably be sharing the OAuth scope across all of those APIs. When you need finer grained OAuth consent screens: talk with your product management about how developers will use them in practice. Please note that even though each of the canonical scopes is enough for a request to be accepted and passed to the backend, a request can still fail due to the backend requiring additional scopes or permissions.
 type OAuthRequirementsResponse struct {
+	// UNIMPLEMENTED: If enabled, ESF will allow OAuth credentials with any scope, more details in http://go/esf-oauth-any-scope. WARNING: Enabling this option will bring security risks. Customers enabling this feature accidentally may have the risk of losing authentication enforcement. Please reach out to api-auth@ and esf-team@ for approval and allowlisting before you enable this option.
+	AllowAnyScope bool `pulumi:"allowAnyScope"`
 	// The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read
 	CanonicalScopes string `pulumi:"canonicalScopes"`
 }
@@ -8313,6 +8334,11 @@ func (o OAuthRequirementsResponseOutput) ToOAuthRequirementsResponseOutput() OAu
 
 func (o OAuthRequirementsResponseOutput) ToOAuthRequirementsResponseOutputWithContext(ctx context.Context) OAuthRequirementsResponseOutput {
 	return o
+}
+
+// UNIMPLEMENTED: If enabled, ESF will allow OAuth credentials with any scope, more details in http://go/esf-oauth-any-scope. WARNING: Enabling this option will bring security risks. Customers enabling this feature accidentally may have the risk of losing authentication enforcement. Please reach out to api-auth@ and esf-team@ for approval and allowlisting before you enable this option.
+func (o OAuthRequirementsResponseOutput) AllowAnyScope() pulumi.BoolOutput {
+	return o.ApplyT(func(v OAuthRequirementsResponse) bool { return v.AllowAnyScope }).(pulumi.BoolOutput)
 }
 
 // The list of publicly documented OAuth scopes that are allowed access. An OAuth token containing any of these scopes will be accepted. Example: canonical_scopes: https://www.googleapis.com/auth/calendar, https://www.googleapis.com/auth/calendar.read

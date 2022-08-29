@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly string IpAddress;
         /// <summary>
+        /// Whether network uses standard frames or jumbo ones.
+        /// </summary>
+        public readonly bool JumboFramesEnabled;
+        /// <summary>
         /// Labels as key value pairs.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
@@ -33,9 +37,17 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<string> MacAddress;
         /// <summary>
+        /// Input only. List of mount points to attach the network to.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.NetworkMountPointResponse> MountPoints;
+        /// <summary>
         /// The resource name of this `Network`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/networks/{network}`
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Pod name.
+        /// </summary>
+        public readonly string Pod;
         /// <summary>
         /// List of IP address reservations in this network. When updating this field, an error will be generated if a reservation conflicts with an IP address already allocated to a physical server.
         /// </summary>
@@ -67,11 +79,17 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             string ipAddress,
 
+            bool jumboFramesEnabled,
+
             ImmutableDictionary<string, string> labels,
 
             ImmutableArray<string> macAddress,
 
+            ImmutableArray<Outputs.NetworkMountPointResponse> mountPoints,
+
             string name,
+
+            string pod,
 
             ImmutableArray<Outputs.NetworkAddressReservationResponse> reservations,
 
@@ -87,9 +105,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         {
             Cidr = cidr;
             IpAddress = ipAddress;
+            JumboFramesEnabled = jumboFramesEnabled;
             Labels = labels;
             MacAddress = macAddress;
+            MountPoints = mountPoints;
             Name = name;
+            Pod = pod;
             Reservations = reservations;
             ServicesCidr = servicesCidr;
             State = state;

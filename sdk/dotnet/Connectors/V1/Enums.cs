@@ -85,6 +85,10 @@ namespace Pulumi.GoogleNative.Connectors.V1
         /// SSH Public Key Authentication
         /// </summary>
         public static AuthConfigAuthType SshPublicKey { get; } = new AuthConfigAuthType("SSH_PUBLIC_KEY");
+        /// <summary>
+        /// Oauth 2.0 Authorization Code Flow
+        /// </summary>
+        public static AuthConfigAuthType Oauth2AuthCodeFlow { get; } = new AuthConfigAuthType("OAUTH2_AUTH_CODE_FLOW");
 
         public static bool operator ==(AuthConfigAuthType left, AuthConfigAuthType right) => left.Equals(right);
         public static bool operator !=(AuthConfigAuthType left, AuthConfigAuthType right) => !left.Equals(right);

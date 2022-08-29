@@ -88,5 +88,5 @@ class VersionType(str, Enum):
     """
     TYPE_GENERAL_AVAILABILITY = "TYPE_GENERAL_AVAILABILITY"
     """
-    Version is available for public use
+    Version is available for public use Version is under development and not considered stable
     """

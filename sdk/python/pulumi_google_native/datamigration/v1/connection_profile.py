@@ -18,6 +18,7 @@ __all__ = ['ConnectionProfileArgs', 'ConnectionProfile']
 class ConnectionProfileArgs:
     def __init__(__self__, *,
                  connection_profile_id: pulumi.Input[str],
+                 alloydb: Optional[pulumi.Input['AlloyDbConnectionProfileArgs']] = None,
                  cloudsql: Optional[pulumi.Input['CloudSqlConnectionProfileArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -32,6 +33,7 @@ class ConnectionProfileArgs:
         """
         The set of arguments for constructing a ConnectionProfile resource.
         :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
+        :param pulumi.Input['AlloyDbConnectionProfileArgs'] alloydb: An AlloyDB cluster connection profile.
         :param pulumi.Input['CloudSqlConnectionProfileArgs'] cloudsql: A CloudSQL database connection profile.
         :param pulumi.Input[str] display_name: The connection profile display name.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The resource labels for connection profile to use to annotate any related underlying resources such as Compute Engine VMs. An object containing a list of "key": "value" pairs. Example: `{ "name": "wrench", "mass": "1.3kg", "count": "3" }`.
@@ -43,6 +45,8 @@ class ConnectionProfileArgs:
         :param pulumi.Input['ConnectionProfileState'] state: The current connection profile state (e.g. DRAFT, READY, or FAILED).
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
+        if alloydb is not None:
+            pulumi.set(__self__, "alloydb", alloydb)
         if cloudsql is not None:
             pulumi.set(__self__, "cloudsql", cloudsql)
         if display_name is not None:
@@ -77,6 +81,18 @@ class ConnectionProfileArgs:
     @connection_profile_id.setter
     def connection_profile_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "connection_profile_id", value)
+
+    @property
+    @pulumi.getter
+    def alloydb(self) -> Optional[pulumi.Input['AlloyDbConnectionProfileArgs']]:
+        """
+        An AlloyDB cluster connection profile.
+        """
+        return pulumi.get(self, "alloydb")
+
+    @alloydb.setter
+    def alloydb(self, value: Optional[pulumi.Input['AlloyDbConnectionProfileArgs']]):
+        pulumi.set(self, "alloydb", value)
 
     @property
     @pulumi.getter
@@ -210,6 +226,7 @@ class ConnectionProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 alloydb: Optional[pulumi.Input[pulumi.InputType['AlloyDbConnectionProfileArgs']]] = None,
                  cloudsql: Optional[pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -228,6 +245,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['AlloyDbConnectionProfileArgs']] alloydb: An AlloyDB cluster connection profile.
         :param pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']] cloudsql: A CloudSQL database connection profile.
         :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
         :param pulumi.Input[str] display_name: The connection profile display name.
@@ -263,6 +281,7 @@ class ConnectionProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 alloydb: Optional[pulumi.Input[pulumi.InputType['AlloyDbConnectionProfileArgs']]] = None,
                  cloudsql: Optional[pulumi.Input[pulumi.InputType['CloudSqlConnectionProfileArgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -284,6 +303,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
 
+            __props__.__dict__["alloydb"] = alloydb
             __props__.__dict__["cloudsql"] = cloudsql
             if connection_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_profile_id'")
@@ -325,6 +345,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
         __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
 
+        __props__.__dict__["alloydb"] = None
         __props__.__dict__["cloudsql"] = None
         __props__.__dict__["connection_profile_id"] = None
         __props__.__dict__["create_time"] = None
@@ -341,6 +362,14 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["state"] = None
         __props__.__dict__["update_time"] = None
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter
+    def alloydb(self) -> pulumi.Output['outputs.AlloyDbConnectionProfileResponse']:
+        """
+        An AlloyDB cluster connection profile.
+        """
+        return pulumi.get(self, "alloydb")
 
     @property
     @pulumi.getter

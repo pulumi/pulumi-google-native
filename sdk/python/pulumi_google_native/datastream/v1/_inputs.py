@@ -14,6 +14,9 @@ __all__ = [
     'AvroFileFormatArgs',
     'BackfillAllStrategyArgs',
     'BackfillNoneStrategyArgs',
+    'BigQueryDestinationConfigArgs',
+    'BigQueryProfileArgs',
+    'DatasetTemplateArgs',
     'DestinationConfigArgs',
     'DropLargeObjectsArgs',
     'ForwardSshTunnelConnectivityArgs',
@@ -33,8 +36,16 @@ __all__ = [
     'OracleSchemaArgs',
     'OracleSourceConfigArgs',
     'OracleTableArgs',
+    'PostgresqlColumnArgs',
+    'PostgresqlProfileArgs',
+    'PostgresqlRdbmsArgs',
+    'PostgresqlSchemaArgs',
+    'PostgresqlSourceConfigArgs',
+    'PostgresqlTableArgs',
     'PrivateConnectivityArgs',
+    'SingleTargetDatasetArgs',
     'SourceConfigArgs',
+    'SourceHierarchyDatasetsArgs',
     'StaticServiceIpConnectivityArgs',
     'StreamLargeObjectsArgs',
     'VpcPeeringConfigArgs',
@@ -53,16 +64,20 @@ class AvroFileFormatArgs:
 class BackfillAllStrategyArgs:
     def __init__(__self__, *,
                  mysql_excluded_objects: Optional[pulumi.Input['MysqlRdbmsArgs']] = None,
-                 oracle_excluded_objects: Optional[pulumi.Input['OracleRdbmsArgs']] = None):
+                 oracle_excluded_objects: Optional[pulumi.Input['OracleRdbmsArgs']] = None,
+                 postgresql_excluded_objects: Optional[pulumi.Input['PostgresqlRdbmsArgs']] = None):
         """
         Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
         :param pulumi.Input['MysqlRdbmsArgs'] mysql_excluded_objects: MySQL data source objects to avoid backfilling.
         :param pulumi.Input['OracleRdbmsArgs'] oracle_excluded_objects: Oracle data source objects to avoid backfilling.
+        :param pulumi.Input['PostgresqlRdbmsArgs'] postgresql_excluded_objects: PostgreSQL data source objects to avoid backfilling.
         """
         if mysql_excluded_objects is not None:
             pulumi.set(__self__, "mysql_excluded_objects", mysql_excluded_objects)
         if oracle_excluded_objects is not None:
             pulumi.set(__self__, "oracle_excluded_objects", oracle_excluded_objects)
+        if postgresql_excluded_objects is not None:
+            pulumi.set(__self__, "postgresql_excluded_objects", postgresql_excluded_objects)
 
     @property
     @pulumi.getter(name="mysqlExcludedObjects")
@@ -88,6 +103,18 @@ class BackfillAllStrategyArgs:
     def oracle_excluded_objects(self, value: Optional[pulumi.Input['OracleRdbmsArgs']]):
         pulumi.set(self, "oracle_excluded_objects", value)
 
+    @property
+    @pulumi.getter(name="postgresqlExcludedObjects")
+    def postgresql_excluded_objects(self) -> Optional[pulumi.Input['PostgresqlRdbmsArgs']]:
+        """
+        PostgreSQL data source objects to avoid backfilling.
+        """
+        return pulumi.get(self, "postgresql_excluded_objects")
+
+    @postgresql_excluded_objects.setter
+    def postgresql_excluded_objects(self, value: Optional[pulumi.Input['PostgresqlRdbmsArgs']]):
+        pulumi.set(self, "postgresql_excluded_objects", value)
+
 
 @pulumi.input_type
 class BackfillNoneStrategyArgs:
@@ -99,16 +126,139 @@ class BackfillNoneStrategyArgs:
 
 
 @pulumi.input_type
+class BigQueryDestinationConfigArgs:
+    def __init__(__self__, *,
+                 data_freshness: Optional[pulumi.Input[str]] = None,
+                 single_target_dataset: Optional[pulumi.Input['SingleTargetDatasetArgs']] = None,
+                 source_hierarchy_datasets: Optional[pulumi.Input['SourceHierarchyDatasetsArgs']] = None):
+        """
+        :param pulumi.Input[str] data_freshness: The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+        :param pulumi.Input['SingleTargetDatasetArgs'] single_target_dataset: Single destination dataset.
+        :param pulumi.Input['SourceHierarchyDatasetsArgs'] source_hierarchy_datasets: Source hierarchy datasets.
+        """
+        if data_freshness is not None:
+            pulumi.set(__self__, "data_freshness", data_freshness)
+        if single_target_dataset is not None:
+            pulumi.set(__self__, "single_target_dataset", single_target_dataset)
+        if source_hierarchy_datasets is not None:
+            pulumi.set(__self__, "source_hierarchy_datasets", source_hierarchy_datasets)
+
+    @property
+    @pulumi.getter(name="dataFreshness")
+    def data_freshness(self) -> Optional[pulumi.Input[str]]:
+        """
+        The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+        """
+        return pulumi.get(self, "data_freshness")
+
+    @data_freshness.setter
+    def data_freshness(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_freshness", value)
+
+    @property
+    @pulumi.getter(name="singleTargetDataset")
+    def single_target_dataset(self) -> Optional[pulumi.Input['SingleTargetDatasetArgs']]:
+        """
+        Single destination dataset.
+        """
+        return pulumi.get(self, "single_target_dataset")
+
+    @single_target_dataset.setter
+    def single_target_dataset(self, value: Optional[pulumi.Input['SingleTargetDatasetArgs']]):
+        pulumi.set(self, "single_target_dataset", value)
+
+    @property
+    @pulumi.getter(name="sourceHierarchyDatasets")
+    def source_hierarchy_datasets(self) -> Optional[pulumi.Input['SourceHierarchyDatasetsArgs']]:
+        """
+        Source hierarchy datasets.
+        """
+        return pulumi.get(self, "source_hierarchy_datasets")
+
+    @source_hierarchy_datasets.setter
+    def source_hierarchy_datasets(self, value: Optional[pulumi.Input['SourceHierarchyDatasetsArgs']]):
+        pulumi.set(self, "source_hierarchy_datasets", value)
+
+
+@pulumi.input_type
+class BigQueryProfileArgs:
+    def __init__(__self__):
+        """
+        BigQuery warehouse profile.
+        """
+        pass
+
+
+@pulumi.input_type
+class DatasetTemplateArgs:
+    def __init__(__self__, *,
+                 location: pulumi.Input[str],
+                 dataset_id_prefix: Optional[pulumi.Input[str]] = None,
+                 kms_key_name: Optional[pulumi.Input[str]] = None):
+        """
+        Dataset template used for dynamic dataset creation.
+        :param pulumi.Input[str] location: The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        :param pulumi.Input[str] dataset_id_prefix: If supplied, every created dataset will have its name prefixed by the provided value. The prefix and name will be separated by an underscore. i.e. _.
+        :param pulumi.Input[str] kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}. See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+        """
+        pulumi.set(__self__, "location", location)
+        if dataset_id_prefix is not None:
+            pulumi.set(__self__, "dataset_id_prefix", dataset_id_prefix)
+        if kms_key_name is not None:
+            pulumi.set(__self__, "kms_key_name", kms_key_name)
+
+    @property
+    @pulumi.getter
+    def location(self) -> pulumi.Input[str]:
+        """
+        The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: pulumi.Input[str]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="datasetIdPrefix")
+    def dataset_id_prefix(self) -> Optional[pulumi.Input[str]]:
+        """
+        If supplied, every created dataset will have its name prefixed by the provided value. The prefix and name will be separated by an underscore. i.e. _.
+        """
+        return pulumi.get(self, "dataset_id_prefix")
+
+    @dataset_id_prefix.setter
+    def dataset_id_prefix(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset_id_prefix", value)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}. See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @kms_key_name.setter
+    def kms_key_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
 class DestinationConfigArgs:
     def __init__(__self__, *,
                  destination_connection_profile: pulumi.Input[str],
+                 bigquery_destination_config: Optional[pulumi.Input['BigQueryDestinationConfigArgs']] = None,
                  gcs_destination_config: Optional[pulumi.Input['GcsDestinationConfigArgs']] = None):
         """
         The configuration of the stream destination.
         :param pulumi.Input[str] destination_connection_profile: Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
+        :param pulumi.Input['BigQueryDestinationConfigArgs'] bigquery_destination_config: BigQuery destination configuration.
         :param pulumi.Input['GcsDestinationConfigArgs'] gcs_destination_config: A configuration for how data should be loaded to Cloud Storage.
         """
         pulumi.set(__self__, "destination_connection_profile", destination_connection_profile)
+        if bigquery_destination_config is not None:
+            pulumi.set(__self__, "bigquery_destination_config", bigquery_destination_config)
         if gcs_destination_config is not None:
             pulumi.set(__self__, "gcs_destination_config", gcs_destination_config)
 
@@ -123,6 +273,18 @@ class DestinationConfigArgs:
     @destination_connection_profile.setter
     def destination_connection_profile(self, value: pulumi.Input[str]):
         pulumi.set(self, "destination_connection_profile", value)
+
+    @property
+    @pulumi.getter(name="bigqueryDestinationConfig")
+    def bigquery_destination_config(self) -> Optional[pulumi.Input['BigQueryDestinationConfigArgs']]:
+        """
+        BigQuery destination configuration.
+        """
+        return pulumi.get(self, "bigquery_destination_config")
+
+    @bigquery_destination_config.setter
+    def bigquery_destination_config(self, value: Optional[pulumi.Input['BigQueryDestinationConfigArgs']]):
+        pulumi.set(self, "bigquery_destination_config", value)
 
     @property
     @pulumi.getter(name="gcsDestinationConfig")
@@ -1265,6 +1427,400 @@ class OracleTableArgs:
 
 
 @pulumi.input_type
+class PostgresqlColumnArgs:
+    def __init__(__self__, *,
+                 column: Optional[pulumi.Input[str]] = None,
+                 data_type: Optional[pulumi.Input[str]] = None,
+                 length: Optional[pulumi.Input[int]] = None,
+                 nullable: Optional[pulumi.Input[bool]] = None,
+                 ordinal_position: Optional[pulumi.Input[int]] = None,
+                 precision: Optional[pulumi.Input[int]] = None,
+                 primary_key: Optional[pulumi.Input[bool]] = None,
+                 scale: Optional[pulumi.Input[int]] = None):
+        """
+        PostgreSQL Column.
+        :param pulumi.Input[str] column: Column name.
+        :param pulumi.Input[str] data_type: The PostgreSQL data type.
+        :param pulumi.Input[int] length: Column length.
+        :param pulumi.Input[bool] nullable: Whether or not the column can accept a null value.
+        :param pulumi.Input[int] ordinal_position: The ordinal position of the column in the table.
+        :param pulumi.Input[int] precision: Column precision.
+        :param pulumi.Input[bool] primary_key: Whether or not the column represents a primary key.
+        :param pulumi.Input[int] scale: Column scale.
+        """
+        if column is not None:
+            pulumi.set(__self__, "column", column)
+        if data_type is not None:
+            pulumi.set(__self__, "data_type", data_type)
+        if length is not None:
+            pulumi.set(__self__, "length", length)
+        if nullable is not None:
+            pulumi.set(__self__, "nullable", nullable)
+        if ordinal_position is not None:
+            pulumi.set(__self__, "ordinal_position", ordinal_position)
+        if precision is not None:
+            pulumi.set(__self__, "precision", precision)
+        if primary_key is not None:
+            pulumi.set(__self__, "primary_key", primary_key)
+        if scale is not None:
+            pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> Optional[pulumi.Input[str]]:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @column.setter
+    def column(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "column", value)
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PostgreSQL data type.
+        """
+        return pulumi.get(self, "data_type")
+
+    @data_type.setter
+    def data_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_type", value)
+
+    @property
+    @pulumi.getter
+    def length(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @length.setter
+    def length(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "length", value)
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @nullable.setter
+    def nullable(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "nullable", value)
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @ordinal_position.setter
+    def ordinal_position(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ordinal_position", value)
+
+    @property
+    @pulumi.getter
+    def precision(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @precision.setter
+    def precision(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "precision", value)
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @primary_key.setter
+    def primary_key(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "primary_key", value)
+
+    @property
+    @pulumi.getter
+    def scale(self) -> Optional[pulumi.Input[int]]:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+    @scale.setter
+    def scale(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "scale", value)
+
+
+@pulumi.input_type
+class PostgresqlProfileArgs:
+    def __init__(__self__, *,
+                 database: pulumi.Input[str],
+                 hostname: pulumi.Input[str],
+                 password: pulumi.Input[str],
+                 username: pulumi.Input[str],
+                 port: Optional[pulumi.Input[int]] = None):
+        """
+        PostgreSQL database profile.
+        :param pulumi.Input[str] database: Database for the PostgreSQL connection.
+        :param pulumi.Input[str] hostname: Hostname for the PostgreSQL connection.
+        :param pulumi.Input[str] password: Password for the PostgreSQL connection.
+        :param pulumi.Input[str] username: Username for the PostgreSQL connection.
+        :param pulumi.Input[int] port: Port for the PostgreSQL connection, default value is 5432.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "username", username)
+        if port is not None:
+            pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def database(self) -> pulumi.Input[str]:
+        """
+        Database for the PostgreSQL connection.
+        """
+        return pulumi.get(self, "database")
+
+    @database.setter
+    def database(self, value: pulumi.Input[str]):
+        pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> pulumi.Input[str]:
+        """
+        Hostname for the PostgreSQL connection.
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: pulumi.Input[str]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def password(self) -> pulumi.Input[str]:
+        """
+        Password for the PostgreSQL connection.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: pulumi.Input[str]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[str]:
+        """
+        Username for the PostgreSQL connection.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "username", value)
+
+    @property
+    @pulumi.getter
+    def port(self) -> Optional[pulumi.Input[int]]:
+        """
+        Port for the PostgreSQL connection, default value is 5432.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "port", value)
+
+
+@pulumi.input_type
+class PostgresqlRdbmsArgs:
+    def __init__(__self__, *,
+                 postgresql_schemas: Optional[pulumi.Input[Sequence[pulumi.Input['PostgresqlSchemaArgs']]]] = None):
+        """
+        PostgreSQL database structure.
+        :param pulumi.Input[Sequence[pulumi.Input['PostgresqlSchemaArgs']]] postgresql_schemas: PostgreSQL schemas in the database server.
+        """
+        if postgresql_schemas is not None:
+            pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
+
+    @property
+    @pulumi.getter(name="postgresqlSchemas")
+    def postgresql_schemas(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PostgresqlSchemaArgs']]]]:
+        """
+        PostgreSQL schemas in the database server.
+        """
+        return pulumi.get(self, "postgresql_schemas")
+
+    @postgresql_schemas.setter
+    def postgresql_schemas(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PostgresqlSchemaArgs']]]]):
+        pulumi.set(self, "postgresql_schemas", value)
+
+
+@pulumi.input_type
+class PostgresqlSchemaArgs:
+    def __init__(__self__, *,
+                 postgresql_tables: Optional[pulumi.Input[Sequence[pulumi.Input['PostgresqlTableArgs']]]] = None,
+                 schema: Optional[pulumi.Input[str]] = None):
+        """
+        PostgreSQL schema.
+        :param pulumi.Input[Sequence[pulumi.Input['PostgresqlTableArgs']]] postgresql_tables: Tables in the schema.
+        :param pulumi.Input[str] schema: Schema name.
+        """
+        if postgresql_tables is not None:
+            pulumi.set(__self__, "postgresql_tables", postgresql_tables)
+        if schema is not None:
+            pulumi.set(__self__, "schema", schema)
+
+    @property
+    @pulumi.getter(name="postgresqlTables")
+    def postgresql_tables(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PostgresqlTableArgs']]]]:
+        """
+        Tables in the schema.
+        """
+        return pulumi.get(self, "postgresql_tables")
+
+    @postgresql_tables.setter
+    def postgresql_tables(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PostgresqlTableArgs']]]]):
+        pulumi.set(self, "postgresql_tables", value)
+
+    @property
+    @pulumi.getter
+    def schema(self) -> Optional[pulumi.Input[str]]:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+    @schema.setter
+    def schema(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "schema", value)
+
+
+@pulumi.input_type
+class PostgresqlSourceConfigArgs:
+    def __init__(__self__, *,
+                 publication: pulumi.Input[str],
+                 replication_slot: pulumi.Input[str],
+                 exclude_objects: Optional[pulumi.Input['PostgresqlRdbmsArgs']] = None,
+                 include_objects: Optional[pulumi.Input['PostgresqlRdbmsArgs']] = None):
+        """
+        PostgreSQL data source configuration
+        :param pulumi.Input[str] publication: The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
+        :param pulumi.Input[str] replication_slot: The name of the logical replication slot that's configured with the pgoutput plugin.
+        :param pulumi.Input['PostgresqlRdbmsArgs'] exclude_objects: PostgreSQL objects to exclude from the stream.
+        :param pulumi.Input['PostgresqlRdbmsArgs'] include_objects: PostgreSQL objects to include in the stream.
+        """
+        pulumi.set(__self__, "publication", publication)
+        pulumi.set(__self__, "replication_slot", replication_slot)
+        if exclude_objects is not None:
+            pulumi.set(__self__, "exclude_objects", exclude_objects)
+        if include_objects is not None:
+            pulumi.set(__self__, "include_objects", include_objects)
+
+    @property
+    @pulumi.getter
+    def publication(self) -> pulumi.Input[str]:
+        """
+        The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
+        """
+        return pulumi.get(self, "publication")
+
+    @publication.setter
+    def publication(self, value: pulumi.Input[str]):
+        pulumi.set(self, "publication", value)
+
+    @property
+    @pulumi.getter(name="replicationSlot")
+    def replication_slot(self) -> pulumi.Input[str]:
+        """
+        The name of the logical replication slot that's configured with the pgoutput plugin.
+        """
+        return pulumi.get(self, "replication_slot")
+
+    @replication_slot.setter
+    def replication_slot(self, value: pulumi.Input[str]):
+        pulumi.set(self, "replication_slot", value)
+
+    @property
+    @pulumi.getter(name="excludeObjects")
+    def exclude_objects(self) -> Optional[pulumi.Input['PostgresqlRdbmsArgs']]:
+        """
+        PostgreSQL objects to exclude from the stream.
+        """
+        return pulumi.get(self, "exclude_objects")
+
+    @exclude_objects.setter
+    def exclude_objects(self, value: Optional[pulumi.Input['PostgresqlRdbmsArgs']]):
+        pulumi.set(self, "exclude_objects", value)
+
+    @property
+    @pulumi.getter(name="includeObjects")
+    def include_objects(self) -> Optional[pulumi.Input['PostgresqlRdbmsArgs']]:
+        """
+        PostgreSQL objects to include in the stream.
+        """
+        return pulumi.get(self, "include_objects")
+
+    @include_objects.setter
+    def include_objects(self, value: Optional[pulumi.Input['PostgresqlRdbmsArgs']]):
+        pulumi.set(self, "include_objects", value)
+
+
+@pulumi.input_type
+class PostgresqlTableArgs:
+    def __init__(__self__, *,
+                 postgresql_columns: Optional[pulumi.Input[Sequence[pulumi.Input['PostgresqlColumnArgs']]]] = None,
+                 table: Optional[pulumi.Input[str]] = None):
+        """
+        PostgreSQL table.
+        :param pulumi.Input[Sequence[pulumi.Input['PostgresqlColumnArgs']]] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param pulumi.Input[str] table: Table name.
+        """
+        if postgresql_columns is not None:
+            pulumi.set(__self__, "postgresql_columns", postgresql_columns)
+        if table is not None:
+            pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter(name="postgresqlColumns")
+    def postgresql_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['PostgresqlColumnArgs']]]]:
+        """
+        PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        """
+        return pulumi.get(self, "postgresql_columns")
+
+    @postgresql_columns.setter
+    def postgresql_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['PostgresqlColumnArgs']]]]):
+        pulumi.set(self, "postgresql_columns", value)
+
+    @property
+    @pulumi.getter
+    def table(self) -> Optional[pulumi.Input[str]]:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+    @table.setter
+    def table(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "table", value)
+
+
+@pulumi.input_type
 class PrivateConnectivityArgs:
     def __init__(__self__, *,
                  private_connection: pulumi.Input[str]):
@@ -1288,22 +1844,46 @@ class PrivateConnectivityArgs:
 
 
 @pulumi.input_type
+class SingleTargetDatasetArgs:
+    def __init__(__self__, *,
+                 dataset_id: Optional[pulumi.Input[str]] = None):
+        """
+        A single target dataset to which all data will be streamed.
+        """
+        if dataset_id is not None:
+            pulumi.set(__self__, "dataset_id", dataset_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dataset_id")
+
+    @dataset_id.setter
+    def dataset_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataset_id", value)
+
+
+@pulumi.input_type
 class SourceConfigArgs:
     def __init__(__self__, *,
                  source_connection_profile: pulumi.Input[str],
                  mysql_source_config: Optional[pulumi.Input['MysqlSourceConfigArgs']] = None,
-                 oracle_source_config: Optional[pulumi.Input['OracleSourceConfigArgs']] = None):
+                 oracle_source_config: Optional[pulumi.Input['OracleSourceConfigArgs']] = None,
+                 postgresql_source_config: Optional[pulumi.Input['PostgresqlSourceConfigArgs']] = None):
         """
         The configuration of the stream source.
         :param pulumi.Input[str] source_connection_profile: Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
         :param pulumi.Input['MysqlSourceConfigArgs'] mysql_source_config: MySQL data source configuration.
         :param pulumi.Input['OracleSourceConfigArgs'] oracle_source_config: Oracle data source configuration.
+        :param pulumi.Input['PostgresqlSourceConfigArgs'] postgresql_source_config: PostgreSQL data source configuration.
         """
         pulumi.set(__self__, "source_connection_profile", source_connection_profile)
         if mysql_source_config is not None:
             pulumi.set(__self__, "mysql_source_config", mysql_source_config)
         if oracle_source_config is not None:
             pulumi.set(__self__, "oracle_source_config", oracle_source_config)
+        if postgresql_source_config is not None:
+            pulumi.set(__self__, "postgresql_source_config", postgresql_source_config)
 
     @property
     @pulumi.getter(name="sourceConnectionProfile")
@@ -1340,6 +1920,38 @@ class SourceConfigArgs:
     @oracle_source_config.setter
     def oracle_source_config(self, value: Optional[pulumi.Input['OracleSourceConfigArgs']]):
         pulumi.set(self, "oracle_source_config", value)
+
+    @property
+    @pulumi.getter(name="postgresqlSourceConfig")
+    def postgresql_source_config(self) -> Optional[pulumi.Input['PostgresqlSourceConfigArgs']]:
+        """
+        PostgreSQL data source configuration.
+        """
+        return pulumi.get(self, "postgresql_source_config")
+
+    @postgresql_source_config.setter
+    def postgresql_source_config(self, value: Optional[pulumi.Input['PostgresqlSourceConfigArgs']]):
+        pulumi.set(self, "postgresql_source_config", value)
+
+
+@pulumi.input_type
+class SourceHierarchyDatasetsArgs:
+    def __init__(__self__, *,
+                 dataset_template: Optional[pulumi.Input['DatasetTemplateArgs']] = None):
+        """
+        Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+        """
+        if dataset_template is not None:
+            pulumi.set(__self__, "dataset_template", dataset_template)
+
+    @property
+    @pulumi.getter(name="datasetTemplate")
+    def dataset_template(self) -> Optional[pulumi.Input['DatasetTemplateArgs']]:
+        return pulumi.get(self, "dataset_template")
+
+    @dataset_template.setter
+    def dataset_template(self, value: Optional[pulumi.Input['DatasetTemplateArgs']]):
+        pulumi.set(self, "dataset_template", value)
 
 
 @pulumi.input_type

@@ -15,6 +15,9 @@ __all__ = [
     'AvroFileFormatResponse',
     'BackfillAllStrategyResponse',
     'BackfillNoneStrategyResponse',
+    'BigQueryDestinationConfigResponse',
+    'BigQueryProfileResponse',
+    'DatasetTemplateResponse',
     'DestinationConfigResponse',
     'DropLargeObjectsResponse',
     'ErrorResponse',
@@ -35,8 +38,16 @@ __all__ = [
     'OracleSchemaResponse',
     'OracleSourceConfigResponse',
     'OracleTableResponse',
+    'PostgresqlColumnResponse',
+    'PostgresqlProfileResponse',
+    'PostgresqlRdbmsResponse',
+    'PostgresqlSchemaResponse',
+    'PostgresqlSourceConfigResponse',
+    'PostgresqlTableResponse',
     'PrivateConnectivityResponse',
+    'SingleTargetDatasetResponse',
     'SourceConfigResponse',
+    'SourceHierarchyDatasetsResponse',
     'StaticServiceIpConnectivityResponse',
     'StreamLargeObjectsResponse',
     'VpcPeeringConfigResponse',
@@ -66,6 +77,8 @@ class BackfillAllStrategyResponse(dict):
             suggest = "mysql_excluded_objects"
         elif key == "oracleExcludedObjects":
             suggest = "oracle_excluded_objects"
+        elif key == "postgresqlExcludedObjects":
+            suggest = "postgresql_excluded_objects"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in BackfillAllStrategyResponse. Access the value via the '{suggest}' property getter instead.")
@@ -80,14 +93,17 @@ class BackfillAllStrategyResponse(dict):
 
     def __init__(__self__, *,
                  mysql_excluded_objects: 'outputs.MysqlRdbmsResponse',
-                 oracle_excluded_objects: 'outputs.OracleRdbmsResponse'):
+                 oracle_excluded_objects: 'outputs.OracleRdbmsResponse',
+                 postgresql_excluded_objects: 'outputs.PostgresqlRdbmsResponse'):
         """
         Backfill strategy to automatically backfill the Stream's objects. Specific objects can be excluded.
         :param 'MysqlRdbmsResponse' mysql_excluded_objects: MySQL data source objects to avoid backfilling.
         :param 'OracleRdbmsResponse' oracle_excluded_objects: Oracle data source objects to avoid backfilling.
+        :param 'PostgresqlRdbmsResponse' postgresql_excluded_objects: PostgreSQL data source objects to avoid backfilling.
         """
         pulumi.set(__self__, "mysql_excluded_objects", mysql_excluded_objects)
         pulumi.set(__self__, "oracle_excluded_objects", oracle_excluded_objects)
+        pulumi.set(__self__, "postgresql_excluded_objects", postgresql_excluded_objects)
 
     @property
     @pulumi.getter(name="mysqlExcludedObjects")
@@ -105,6 +121,14 @@ class BackfillAllStrategyResponse(dict):
         """
         return pulumi.get(self, "oracle_excluded_objects")
 
+    @property
+    @pulumi.getter(name="postgresqlExcludedObjects")
+    def postgresql_excluded_objects(self) -> 'outputs.PostgresqlRdbmsResponse':
+        """
+        PostgreSQL data source objects to avoid backfilling.
+        """
+        return pulumi.get(self, "postgresql_excluded_objects")
+
 
 @pulumi.output_type
 class BackfillNoneStrategyResponse(dict):
@@ -119,6 +143,142 @@ class BackfillNoneStrategyResponse(dict):
 
 
 @pulumi.output_type
+class BigQueryDestinationConfigResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataFreshness":
+            suggest = "data_freshness"
+        elif key == "singleTargetDataset":
+            suggest = "single_target_dataset"
+        elif key == "sourceHierarchyDatasets":
+            suggest = "source_hierarchy_datasets"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BigQueryDestinationConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BigQueryDestinationConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BigQueryDestinationConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 data_freshness: str,
+                 single_target_dataset: 'outputs.SingleTargetDatasetResponse',
+                 source_hierarchy_datasets: 'outputs.SourceHierarchyDatasetsResponse'):
+        """
+        :param str data_freshness: The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+        :param 'SingleTargetDatasetResponse' single_target_dataset: Single destination dataset.
+        :param 'SourceHierarchyDatasetsResponse' source_hierarchy_datasets: Source hierarchy datasets.
+        """
+        pulumi.set(__self__, "data_freshness", data_freshness)
+        pulumi.set(__self__, "single_target_dataset", single_target_dataset)
+        pulumi.set(__self__, "source_hierarchy_datasets", source_hierarchy_datasets)
+
+    @property
+    @pulumi.getter(name="dataFreshness")
+    def data_freshness(self) -> str:
+        """
+        The guaranteed data freshness (in seconds) when querying tables created by the stream. Editing this field will only affect new tables created in the future, but existing tables will not be impacted. Lower values mean that queries will return fresher data, but may result in higher cost.
+        """
+        return pulumi.get(self, "data_freshness")
+
+    @property
+    @pulumi.getter(name="singleTargetDataset")
+    def single_target_dataset(self) -> 'outputs.SingleTargetDatasetResponse':
+        """
+        Single destination dataset.
+        """
+        return pulumi.get(self, "single_target_dataset")
+
+    @property
+    @pulumi.getter(name="sourceHierarchyDatasets")
+    def source_hierarchy_datasets(self) -> 'outputs.SourceHierarchyDatasetsResponse':
+        """
+        Source hierarchy datasets.
+        """
+        return pulumi.get(self, "source_hierarchy_datasets")
+
+
+@pulumi.output_type
+class BigQueryProfileResponse(dict):
+    """
+    BigQuery warehouse profile.
+    """
+    def __init__(__self__):
+        """
+        BigQuery warehouse profile.
+        """
+        pass
+
+
+@pulumi.output_type
+class DatasetTemplateResponse(dict):
+    """
+    Dataset template used for dynamic dataset creation.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetIdPrefix":
+            suggest = "dataset_id_prefix"
+        elif key == "kmsKeyName":
+            suggest = "kms_key_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatasetTemplateResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatasetTemplateResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatasetTemplateResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id_prefix: str,
+                 kms_key_name: str,
+                 location: str):
+        """
+        Dataset template used for dynamic dataset creation.
+        :param str dataset_id_prefix: If supplied, every created dataset will have its name prefixed by the provided value. The prefix and name will be separated by an underscore. i.e. _.
+        :param str kms_key_name: Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}. See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+        :param str location: The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        """
+        pulumi.set(__self__, "dataset_id_prefix", dataset_id_prefix)
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        pulumi.set(__self__, "location", location)
+
+    @property
+    @pulumi.getter(name="datasetIdPrefix")
+    def dataset_id_prefix(self) -> str:
+        """
+        If supplied, every created dataset will have its name prefixed by the provided value. The prefix and name will be separated by an underscore. i.e. _.
+        """
+        return pulumi.get(self, "dataset_id_prefix")
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        Describes the Cloud KMS encryption key that will be used to protect destination BigQuery table. The BigQuery Service Account associated with your project requires access to this encryption key. i.e. projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{cryptoKey}. See https://cloud.google.com/bigquery/docs/customer-managed-encryption for more information.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        The geographic location where the dataset should reside. See https://cloud.google.com/bigquery/docs/locations for supported locations.
+        """
+        return pulumi.get(self, "location")
+
+
+@pulumi.output_type
 class DestinationConfigResponse(dict):
     """
     The configuration of the stream destination.
@@ -126,7 +286,9 @@ class DestinationConfigResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "destinationConnectionProfile":
+        if key == "bigqueryDestinationConfig":
+            suggest = "bigquery_destination_config"
+        elif key == "destinationConnectionProfile":
             suggest = "destination_connection_profile"
         elif key == "gcsDestinationConfig":
             suggest = "gcs_destination_config"
@@ -143,15 +305,26 @@ class DestinationConfigResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 bigquery_destination_config: 'outputs.BigQueryDestinationConfigResponse',
                  destination_connection_profile: str,
                  gcs_destination_config: 'outputs.GcsDestinationConfigResponse'):
         """
         The configuration of the stream destination.
+        :param 'BigQueryDestinationConfigResponse' bigquery_destination_config: BigQuery destination configuration.
         :param str destination_connection_profile: Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
         :param 'GcsDestinationConfigResponse' gcs_destination_config: A configuration for how data should be loaded to Cloud Storage.
         """
+        pulumi.set(__self__, "bigquery_destination_config", bigquery_destination_config)
         pulumi.set(__self__, "destination_connection_profile", destination_connection_profile)
         pulumi.set(__self__, "gcs_destination_config", gcs_destination_config)
+
+    @property
+    @pulumi.getter(name="bigqueryDestinationConfig")
+    def bigquery_destination_config(self) -> 'outputs.BigQueryDestinationConfigResponse':
+        """
+        BigQuery destination configuration.
+        """
+        return pulumi.get(self, "bigquery_destination_config")
 
     @property
     @pulumi.getter(name="destinationConnectionProfile")
@@ -1497,6 +1670,407 @@ class OracleTableResponse(dict):
 
 
 @pulumi.output_type
+class PostgresqlColumnResponse(dict):
+    """
+    PostgreSQL Column.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataType":
+            suggest = "data_type"
+        elif key == "ordinalPosition":
+            suggest = "ordinal_position"
+        elif key == "primaryKey":
+            suggest = "primary_key"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PostgresqlColumnResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PostgresqlColumnResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PostgresqlColumnResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 column: str,
+                 data_type: str,
+                 length: int,
+                 nullable: bool,
+                 ordinal_position: int,
+                 precision: int,
+                 primary_key: bool,
+                 scale: int):
+        """
+        PostgreSQL Column.
+        :param str column: Column name.
+        :param str data_type: The PostgreSQL data type.
+        :param int length: Column length.
+        :param bool nullable: Whether or not the column can accept a null value.
+        :param int ordinal_position: The ordinal position of the column in the table.
+        :param int precision: Column precision.
+        :param bool primary_key: Whether or not the column represents a primary key.
+        :param int scale: Column scale.
+        """
+        pulumi.set(__self__, "column", column)
+        pulumi.set(__self__, "data_type", data_type)
+        pulumi.set(__self__, "length", length)
+        pulumi.set(__self__, "nullable", nullable)
+        pulumi.set(__self__, "ordinal_position", ordinal_position)
+        pulumi.set(__self__, "precision", precision)
+        pulumi.set(__self__, "primary_key", primary_key)
+        pulumi.set(__self__, "scale", scale)
+
+    @property
+    @pulumi.getter
+    def column(self) -> str:
+        """
+        Column name.
+        """
+        return pulumi.get(self, "column")
+
+    @property
+    @pulumi.getter(name="dataType")
+    def data_type(self) -> str:
+        """
+        The PostgreSQL data type.
+        """
+        return pulumi.get(self, "data_type")
+
+    @property
+    @pulumi.getter
+    def length(self) -> int:
+        """
+        Column length.
+        """
+        return pulumi.get(self, "length")
+
+    @property
+    @pulumi.getter
+    def nullable(self) -> bool:
+        """
+        Whether or not the column can accept a null value.
+        """
+        return pulumi.get(self, "nullable")
+
+    @property
+    @pulumi.getter(name="ordinalPosition")
+    def ordinal_position(self) -> int:
+        """
+        The ordinal position of the column in the table.
+        """
+        return pulumi.get(self, "ordinal_position")
+
+    @property
+    @pulumi.getter
+    def precision(self) -> int:
+        """
+        Column precision.
+        """
+        return pulumi.get(self, "precision")
+
+    @property
+    @pulumi.getter(name="primaryKey")
+    def primary_key(self) -> bool:
+        """
+        Whether or not the column represents a primary key.
+        """
+        return pulumi.get(self, "primary_key")
+
+    @property
+    @pulumi.getter
+    def scale(self) -> int:
+        """
+        Column scale.
+        """
+        return pulumi.get(self, "scale")
+
+
+@pulumi.output_type
+class PostgresqlProfileResponse(dict):
+    """
+    PostgreSQL database profile.
+    """
+    def __init__(__self__, *,
+                 database: str,
+                 hostname: str,
+                 password: str,
+                 port: int,
+                 username: str):
+        """
+        PostgreSQL database profile.
+        :param str database: Database for the PostgreSQL connection.
+        :param str hostname: Hostname for the PostgreSQL connection.
+        :param str password: Password for the PostgreSQL connection.
+        :param int port: Port for the PostgreSQL connection, default value is 5432.
+        :param str username: Username for the PostgreSQL connection.
+        """
+        pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "port", port)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def database(self) -> str:
+        """
+        Database for the PostgreSQL connection.
+        """
+        return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Hostname for the PostgreSQL connection.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        Password for the PostgreSQL connection.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Port for the PostgreSQL connection, default value is 5432.
+        """
+        return pulumi.get(self, "port")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        """
+        Username for the PostgreSQL connection.
+        """
+        return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class PostgresqlRdbmsResponse(dict):
+    """
+    PostgreSQL database structure.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postgresqlSchemas":
+            suggest = "postgresql_schemas"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PostgresqlRdbmsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PostgresqlRdbmsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PostgresqlRdbmsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 postgresql_schemas: Sequence['outputs.PostgresqlSchemaResponse']):
+        """
+        PostgreSQL database structure.
+        :param Sequence['PostgresqlSchemaResponse'] postgresql_schemas: PostgreSQL schemas in the database server.
+        """
+        pulumi.set(__self__, "postgresql_schemas", postgresql_schemas)
+
+    @property
+    @pulumi.getter(name="postgresqlSchemas")
+    def postgresql_schemas(self) -> Sequence['outputs.PostgresqlSchemaResponse']:
+        """
+        PostgreSQL schemas in the database server.
+        """
+        return pulumi.get(self, "postgresql_schemas")
+
+
+@pulumi.output_type
+class PostgresqlSchemaResponse(dict):
+    """
+    PostgreSQL schema.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postgresqlTables":
+            suggest = "postgresql_tables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PostgresqlSchemaResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PostgresqlSchemaResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PostgresqlSchemaResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 postgresql_tables: Sequence['outputs.PostgresqlTableResponse'],
+                 schema: str):
+        """
+        PostgreSQL schema.
+        :param Sequence['PostgresqlTableResponse'] postgresql_tables: Tables in the schema.
+        :param str schema: Schema name.
+        """
+        pulumi.set(__self__, "postgresql_tables", postgresql_tables)
+        pulumi.set(__self__, "schema", schema)
+
+    @property
+    @pulumi.getter(name="postgresqlTables")
+    def postgresql_tables(self) -> Sequence['outputs.PostgresqlTableResponse']:
+        """
+        Tables in the schema.
+        """
+        return pulumi.get(self, "postgresql_tables")
+
+    @property
+    @pulumi.getter
+    def schema(self) -> str:
+        """
+        Schema name.
+        """
+        return pulumi.get(self, "schema")
+
+
+@pulumi.output_type
+class PostgresqlSourceConfigResponse(dict):
+    """
+    PostgreSQL data source configuration
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludeObjects":
+            suggest = "exclude_objects"
+        elif key == "includeObjects":
+            suggest = "include_objects"
+        elif key == "replicationSlot":
+            suggest = "replication_slot"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PostgresqlSourceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PostgresqlSourceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PostgresqlSourceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exclude_objects: 'outputs.PostgresqlRdbmsResponse',
+                 include_objects: 'outputs.PostgresqlRdbmsResponse',
+                 publication: str,
+                 replication_slot: str):
+        """
+        PostgreSQL data source configuration
+        :param 'PostgresqlRdbmsResponse' exclude_objects: PostgreSQL objects to exclude from the stream.
+        :param 'PostgresqlRdbmsResponse' include_objects: PostgreSQL objects to include in the stream.
+        :param str publication: The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
+        :param str replication_slot: The name of the logical replication slot that's configured with the pgoutput plugin.
+        """
+        pulumi.set(__self__, "exclude_objects", exclude_objects)
+        pulumi.set(__self__, "include_objects", include_objects)
+        pulumi.set(__self__, "publication", publication)
+        pulumi.set(__self__, "replication_slot", replication_slot)
+
+    @property
+    @pulumi.getter(name="excludeObjects")
+    def exclude_objects(self) -> 'outputs.PostgresqlRdbmsResponse':
+        """
+        PostgreSQL objects to exclude from the stream.
+        """
+        return pulumi.get(self, "exclude_objects")
+
+    @property
+    @pulumi.getter(name="includeObjects")
+    def include_objects(self) -> 'outputs.PostgresqlRdbmsResponse':
+        """
+        PostgreSQL objects to include in the stream.
+        """
+        return pulumi.get(self, "include_objects")
+
+    @property
+    @pulumi.getter
+    def publication(self) -> str:
+        """
+        The name of the publication that includes the set of all tables that are defined in the stream's include_objects.
+        """
+        return pulumi.get(self, "publication")
+
+    @property
+    @pulumi.getter(name="replicationSlot")
+    def replication_slot(self) -> str:
+        """
+        The name of the logical replication slot that's configured with the pgoutput plugin.
+        """
+        return pulumi.get(self, "replication_slot")
+
+
+@pulumi.output_type
+class PostgresqlTableResponse(dict):
+    """
+    PostgreSQL table.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postgresqlColumns":
+            suggest = "postgresql_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PostgresqlTableResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PostgresqlTableResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PostgresqlTableResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 postgresql_columns: Sequence['outputs.PostgresqlColumnResponse'],
+                 table: str):
+        """
+        PostgreSQL table.
+        :param Sequence['PostgresqlColumnResponse'] postgresql_columns: PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        :param str table: Table name.
+        """
+        pulumi.set(__self__, "postgresql_columns", postgresql_columns)
+        pulumi.set(__self__, "table", table)
+
+    @property
+    @pulumi.getter(name="postgresqlColumns")
+    def postgresql_columns(self) -> Sequence['outputs.PostgresqlColumnResponse']:
+        """
+        PostgreSQL columns in the schema. When unspecified as part of include/exclude objects, includes/excludes everything.
+        """
+        return pulumi.get(self, "postgresql_columns")
+
+    @property
+    @pulumi.getter
+    def table(self) -> str:
+        """
+        Table name.
+        """
+        return pulumi.get(self, "table")
+
+
+@pulumi.output_type
 class PrivateConnectivityResponse(dict):
     """
     Private Connectivity
@@ -1536,6 +2110,41 @@ class PrivateConnectivityResponse(dict):
 
 
 @pulumi.output_type
+class SingleTargetDatasetResponse(dict):
+    """
+    A single target dataset to which all data will be streamed.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetId":
+            suggest = "dataset_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SingleTargetDatasetResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SingleTargetDatasetResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SingleTargetDatasetResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_id: str):
+        """
+        A single target dataset to which all data will be streamed.
+        """
+        pulumi.set(__self__, "dataset_id", dataset_id)
+
+    @property
+    @pulumi.getter(name="datasetId")
+    def dataset_id(self) -> str:
+        return pulumi.get(self, "dataset_id")
+
+
+@pulumi.output_type
 class SourceConfigResponse(dict):
     """
     The configuration of the stream source.
@@ -1547,6 +2156,8 @@ class SourceConfigResponse(dict):
             suggest = "mysql_source_config"
         elif key == "oracleSourceConfig":
             suggest = "oracle_source_config"
+        elif key == "postgresqlSourceConfig":
+            suggest = "postgresql_source_config"
         elif key == "sourceConnectionProfile":
             suggest = "source_connection_profile"
 
@@ -1564,15 +2175,18 @@ class SourceConfigResponse(dict):
     def __init__(__self__, *,
                  mysql_source_config: 'outputs.MysqlSourceConfigResponse',
                  oracle_source_config: 'outputs.OracleSourceConfigResponse',
+                 postgresql_source_config: 'outputs.PostgresqlSourceConfigResponse',
                  source_connection_profile: str):
         """
         The configuration of the stream source.
         :param 'MysqlSourceConfigResponse' mysql_source_config: MySQL data source configuration.
         :param 'OracleSourceConfigResponse' oracle_source_config: Oracle data source configuration.
+        :param 'PostgresqlSourceConfigResponse' postgresql_source_config: PostgreSQL data source configuration.
         :param str source_connection_profile: Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
         """
         pulumi.set(__self__, "mysql_source_config", mysql_source_config)
         pulumi.set(__self__, "oracle_source_config", oracle_source_config)
+        pulumi.set(__self__, "postgresql_source_config", postgresql_source_config)
         pulumi.set(__self__, "source_connection_profile", source_connection_profile)
 
     @property
@@ -1592,12 +2206,55 @@ class SourceConfigResponse(dict):
         return pulumi.get(self, "oracle_source_config")
 
     @property
+    @pulumi.getter(name="postgresqlSourceConfig")
+    def postgresql_source_config(self) -> 'outputs.PostgresqlSourceConfigResponse':
+        """
+        PostgreSQL data source configuration.
+        """
+        return pulumi.get(self, "postgresql_source_config")
+
+    @property
     @pulumi.getter(name="sourceConnectionProfile")
     def source_connection_profile(self) -> str:
         """
         Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
         """
         return pulumi.get(self, "source_connection_profile")
+
+
+@pulumi.output_type
+class SourceHierarchyDatasetsResponse(dict):
+    """
+    Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "datasetTemplate":
+            suggest = "dataset_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SourceHierarchyDatasetsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SourceHierarchyDatasetsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SourceHierarchyDatasetsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataset_template: 'outputs.DatasetTemplateResponse'):
+        """
+        Destination datasets are created so that hierarchy of the destination data objects matches the source hierarchy.
+        """
+        pulumi.set(__self__, "dataset_template", dataset_template)
+
+    @property
+    @pulumi.getter(name="datasetTemplate")
+    def dataset_template(self) -> 'outputs.DatasetTemplateResponse':
+        return pulumi.get(self, "dataset_template")
 
 
 @pulumi.output_type

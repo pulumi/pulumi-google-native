@@ -29,6 +29,10 @@ export interface GetConnectionProfileArgs {
 
 export interface GetConnectionProfileResult {
     /**
+     * An AlloyDB cluster connection profile.
+     */
+    readonly alloydb: outputs.datamigration.v1.AlloyDbConnectionProfileResponse;
+    /**
      * A CloudSQL database connection profile.
      */
     readonly cloudsql: outputs.datamigration.v1.CloudSqlConnectionProfileResponse;

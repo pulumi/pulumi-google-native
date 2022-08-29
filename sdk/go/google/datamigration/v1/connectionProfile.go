@@ -15,6 +15,8 @@ import (
 type ConnectionProfile struct {
 	pulumi.CustomResourceState
 
+	// An AlloyDB cluster connection profile.
+	Alloydb AlloyDbConnectionProfileResponseOutput `pulumi:"alloydb"`
 	// A CloudSQL database connection profile.
 	Cloudsql CloudSqlConnectionProfileResponseOutput `pulumi:"cloudsql"`
 	// Required. The connection profile identifier.
@@ -93,6 +95,8 @@ func (ConnectionProfileState) ElementType() reflect.Type {
 }
 
 type connectionProfileArgs struct {
+	// An AlloyDB cluster connection profile.
+	Alloydb *AlloyDbConnectionProfile `pulumi:"alloydb"`
 	// A CloudSQL database connection profile.
 	Cloudsql *CloudSqlConnectionProfile `pulumi:"cloudsql"`
 	// Required. The connection profile identifier.
@@ -119,6 +123,8 @@ type connectionProfileArgs struct {
 
 // The set of arguments for constructing a ConnectionProfile resource.
 type ConnectionProfileArgs struct {
+	// An AlloyDB cluster connection profile.
+	Alloydb AlloyDbConnectionProfilePtrInput
 	// A CloudSQL database connection profile.
 	Cloudsql CloudSqlConnectionProfilePtrInput
 	// Required. The connection profile identifier.
@@ -178,6 +184,11 @@ func (o ConnectionProfileOutput) ToConnectionProfileOutput() ConnectionProfileOu
 
 func (o ConnectionProfileOutput) ToConnectionProfileOutputWithContext(ctx context.Context) ConnectionProfileOutput {
 	return o
+}
+
+// An AlloyDB cluster connection profile.
+func (o ConnectionProfileOutput) Alloydb() AlloyDbConnectionProfileResponseOutput {
+	return o.ApplyT(func(v *ConnectionProfile) AlloyDbConnectionProfileResponseOutput { return v.Alloydb }).(AlloyDbConnectionProfileResponseOutput)
 }
 
 // A CloudSQL database connection profile.

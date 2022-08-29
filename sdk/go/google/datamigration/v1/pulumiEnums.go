@@ -714,6 +714,8 @@ const (
 	ConnectionProfileProviderRds = ConnectionProfileProvider("RDS")
 	// Amazon Aurora.
 	ConnectionProfileProviderAurora = ConnectionProfileProvider("AURORA")
+	// AlloyDB.
+	ConnectionProfileProviderAlloydb = ConnectionProfileProvider("ALLOYDB")
 )
 
 func (ConnectionProfileProvider) ElementType() reflect.Type {
@@ -1233,6 +1235,8 @@ const (
 	DatabaseTypeProviderRds = DatabaseTypeProvider("RDS")
 	// Amazon Aurora.
 	DatabaseTypeProviderAurora = DatabaseTypeProvider("AURORA")
+	// AlloyDB.
+	DatabaseTypeProviderAlloydb = DatabaseTypeProvider("ALLOYDB")
 )
 
 func (DatabaseTypeProvider) ElementType() reflect.Type {

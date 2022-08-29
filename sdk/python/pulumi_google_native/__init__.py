@@ -597,6 +597,7 @@ _utilities.register(
   "fqn": "pulumi_google_native.baremetalsolution.v2",
   "classes": {
    "google-native:baremetalsolution/v2:Instance": "Instance",
+   "google-native:baremetalsolution/v2:NfsShare": "NfsShare",
    "google-native:baremetalsolution/v2:ProvisioningConfig": "ProvisioningConfig"
   }
  },

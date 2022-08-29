@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
     public sealed class DestinationConfigResponse
     {
         /// <summary>
+        /// BigQuery destination configuration.
+        /// </summary>
+        public readonly Outputs.BigQueryDestinationConfigResponse BigqueryDestinationConfig;
+        /// <summary>
         /// Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
         /// </summary>
         public readonly string DestinationConnectionProfile;
@@ -27,10 +31,13 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
 
         [OutputConstructor]
         private DestinationConfigResponse(
+            Outputs.BigQueryDestinationConfigResponse bigqueryDestinationConfig,
+
             string destinationConnectionProfile,
 
             Outputs.GcsDestinationConfigResponse gcsDestinationConfig)
         {
+            BigqueryDestinationConfig = bigqueryDestinationConfig;
             DestinationConnectionProfile = destinationConnectionProfile;
             GcsDestinationConfig = gcsDestinationConfig;
         }

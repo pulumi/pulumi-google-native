@@ -56,3 +56,7 @@ class AuthConfigAuthType(str, Enum):
     """
     SSH Public Key Authentication
     """
+    OAUTH2_AUTH_CODE_FLOW = "OAUTH2_AUTH_CODE_FLOW"
+    """
+    Oauth 2.0 Authorization Code Flow
+    """

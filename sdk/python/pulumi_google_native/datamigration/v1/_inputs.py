@@ -11,6 +11,8 @@ from ... import _utilities
 from ._enums import *
 
 __all__ = [
+    'AlloyDbConnectionProfileArgs',
+    'AlloyDbSettingsArgs',
     'AuditConfigArgs',
     'AuditLogConfigArgs',
     'BindingArgs',
@@ -20,15 +22,123 @@ __all__ = [
     'DumpFlagsArgs',
     'DumpFlagArgs',
     'ExprArgs',
+    'MachineConfigArgs',
     'MySqlConnectionProfileArgs',
     'PostgreSqlConnectionProfileArgs',
+    'PrimaryInstanceSettingsArgs',
     'ReverseSshConnectivityArgs',
     'SqlAclEntryArgs',
     'SqlIpConfigArgs',
     'SslConfigArgs',
     'StaticIpConnectivityArgs',
+    'UserPasswordArgs',
     'VpcPeeringConnectivityArgs',
 ]
+
+@pulumi.input_type
+class AlloyDbConnectionProfileArgs:
+    def __init__(__self__, *,
+                 cluster_id: pulumi.Input[str],
+                 settings: Optional[pulumi.Input['AlloyDbSettingsArgs']] = None):
+        """
+        Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+        :param pulumi.Input[str] cluster_id: The AlloyDB cluster ID that this connection profile is associated with.
+        :param pulumi.Input['AlloyDbSettingsArgs'] settings: Immutable. Metadata used to create the destination AlloyDB cluster.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        if settings is not None:
+            pulumi.set(__self__, "settings", settings)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> pulumi.Input[str]:
+        """
+        The AlloyDB cluster ID that this connection profile is associated with.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @cluster_id.setter
+    def cluster_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "cluster_id", value)
+
+    @property
+    @pulumi.getter
+    def settings(self) -> Optional[pulumi.Input['AlloyDbSettingsArgs']]:
+        """
+        Immutable. Metadata used to create the destination AlloyDB cluster.
+        """
+        return pulumi.get(self, "settings")
+
+    @settings.setter
+    def settings(self, value: Optional[pulumi.Input['AlloyDbSettingsArgs']]):
+        pulumi.set(self, "settings", value)
+
+
+@pulumi.input_type
+class AlloyDbSettingsArgs:
+    def __init__(__self__, *,
+                 initial_user: pulumi.Input['UserPasswordArgs'],
+                 vpc_network: pulumi.Input[str],
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 primary_instance_settings: Optional[pulumi.Input['PrimaryInstanceSettingsArgs']] = None):
+        """
+        Settings for creating an AlloyDB cluster.
+        :param pulumi.Input['UserPasswordArgs'] initial_user: Input only. Initial user to setup during cluster creation. Required.
+        :param pulumi.Input[str] vpc_network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
+        """
+        pulumi.set(__self__, "initial_user", initial_user)
+        pulumi.set(__self__, "vpc_network", vpc_network)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if primary_instance_settings is not None:
+            pulumi.set(__self__, "primary_instance_settings", primary_instance_settings)
+
+    @property
+    @pulumi.getter(name="initialUser")
+    def initial_user(self) -> pulumi.Input['UserPasswordArgs']:
+        """
+        Input only. Initial user to setup during cluster creation. Required.
+        """
+        return pulumi.get(self, "initial_user")
+
+    @initial_user.setter
+    def initial_user(self, value: pulumi.Input['UserPasswordArgs']):
+        pulumi.set(self, "initial_user", value)
+
+    @property
+    @pulumi.getter(name="vpcNetwork")
+    def vpc_network(self) -> pulumi.Input[str]:
+        """
+        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        """
+        return pulumi.get(self, "vpc_network")
+
+    @vpc_network.setter
+    def vpc_network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "vpc_network", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="primaryInstanceSettings")
+    def primary_instance_settings(self) -> Optional[pulumi.Input['PrimaryInstanceSettingsArgs']]:
+        return pulumi.get(self, "primary_instance_settings")
+
+    @primary_instance_settings.setter
+    def primary_instance_settings(self, value: Optional[pulumi.Input['PrimaryInstanceSettingsArgs']]):
+        pulumi.set(self, "primary_instance_settings", value)
+
 
 @pulumi.input_type
 class AuditConfigArgs:
@@ -615,6 +725,30 @@ class ExprArgs:
 
 
 @pulumi.input_type
+class MachineConfigArgs:
+    def __init__(__self__, *,
+                 cpu_count: Optional[pulumi.Input[int]] = None):
+        """
+        MachineConfig describes the configuration of a machine.
+        :param pulumi.Input[int] cpu_count: The number of CPU's in the VM instance.
+        """
+        if cpu_count is not None:
+            pulumi.set(__self__, "cpu_count", cpu_count)
+
+    @property
+    @pulumi.getter(name="cpuCount")
+    def cpu_count(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of CPU's in the VM instance.
+        """
+        return pulumi.get(self, "cpu_count")
+
+    @cpu_count.setter
+    def cpu_count(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_count", value)
+
+
+@pulumi.input_type
 class MySqlConnectionProfileArgs:
     def __init__(__self__, *,
                  host: pulumi.Input[str],
@@ -812,6 +946,77 @@ class PostgreSqlConnectionProfileArgs:
     @ssl.setter
     def ssl(self, value: Optional[pulumi.Input['SslConfigArgs']]):
         pulumi.set(self, "ssl", value)
+
+
+@pulumi.input_type
+class PrimaryInstanceSettingsArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 database_flags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 machine_config: Optional[pulumi.Input['MachineConfigArgs']] = None):
+        """
+        Settings for the cluster's primary instance
+        :param pulumi.Input[str] id: The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] database_flags: Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
+        :param pulumi.Input['MachineConfigArgs'] machine_config: Configuration for the machines that host the underlying database engine.
+        """
+        pulumi.set(__self__, "id", id)
+        if database_flags is not None:
+            pulumi.set(__self__, "database_flags", database_flags)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+        if machine_config is not None:
+            pulumi.set(__self__, "machine_config", machine_config)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="databaseFlags")
+    def database_flags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
+        """
+        return pulumi.get(self, "database_flags")
+
+    @database_flags.setter
+    def database_flags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "database_flags", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="machineConfig")
+    def machine_config(self) -> Optional[pulumi.Input['MachineConfigArgs']]:
+        """
+        Configuration for the machines that host the underlying database engine.
+        """
+        return pulumi.get(self, "machine_config")
+
+    @machine_config.setter
+    def machine_config(self, value: Optional[pulumi.Input['MachineConfigArgs']]):
+        pulumi.set(self, "machine_config", value)
 
 
 @pulumi.input_type
@@ -1090,6 +1295,46 @@ class StaticIpConnectivityArgs:
         The source database will allow incoming connections from the destination database's public IP. You can retrieve the Cloud SQL instance's public IP from the Cloud SQL console or using Cloud SQL APIs. No additional configuration is required.
         """
         pass
+
+
+@pulumi.input_type
+class UserPasswordArgs:
+    def __init__(__self__, *,
+                 password: Optional[pulumi.Input[str]] = None,
+                 user: Optional[pulumi.Input[str]] = None):
+        """
+        The username/password for a database user. Used for specifying initial users at cluster creation time.
+        :param pulumi.Input[str] password: The initial password for the user.
+        :param pulumi.Input[str] user: The database username.
+        """
+        if password is not None:
+            pulumi.set(__self__, "password", password)
+        if user is not None:
+            pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> Optional[pulumi.Input[str]]:
+        """
+        The initial password for the user.
+        """
+        return pulumi.get(self, "password")
+
+    @password.setter
+    def password(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password", value)
+
+    @property
+    @pulumi.getter
+    def user(self) -> Optional[pulumi.Input[str]]:
+        """
+        The database username.
+        """
+        return pulumi.get(self, "user")
+
+    @user.setter
+    def user(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "user", value)
 
 
 @pulumi.input_type

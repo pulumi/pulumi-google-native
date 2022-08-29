@@ -10,6 +10,436 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+type AlloyDbConnectionProfile struct {
+	// The AlloyDB cluster ID that this connection profile is associated with.
+	ClusterId string `pulumi:"clusterId"`
+	// Immutable. Metadata used to create the destination AlloyDB cluster.
+	Settings *AlloyDbSettings `pulumi:"settings"`
+}
+
+// AlloyDbConnectionProfileInput is an input type that accepts AlloyDbConnectionProfileArgs and AlloyDbConnectionProfileOutput values.
+// You can construct a concrete instance of `AlloyDbConnectionProfileInput` via:
+//
+//	AlloyDbConnectionProfileArgs{...}
+type AlloyDbConnectionProfileInput interface {
+	pulumi.Input
+
+	ToAlloyDbConnectionProfileOutput() AlloyDbConnectionProfileOutput
+	ToAlloyDbConnectionProfileOutputWithContext(context.Context) AlloyDbConnectionProfileOutput
+}
+
+// Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+type AlloyDbConnectionProfileArgs struct {
+	// The AlloyDB cluster ID that this connection profile is associated with.
+	ClusterId pulumi.StringInput `pulumi:"clusterId"`
+	// Immutable. Metadata used to create the destination AlloyDB cluster.
+	Settings AlloyDbSettingsPtrInput `pulumi:"settings"`
+}
+
+func (AlloyDbConnectionProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlloyDbConnectionProfile)(nil)).Elem()
+}
+
+func (i AlloyDbConnectionProfileArgs) ToAlloyDbConnectionProfileOutput() AlloyDbConnectionProfileOutput {
+	return i.ToAlloyDbConnectionProfileOutputWithContext(context.Background())
+}
+
+func (i AlloyDbConnectionProfileArgs) ToAlloyDbConnectionProfileOutputWithContext(ctx context.Context) AlloyDbConnectionProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlloyDbConnectionProfileOutput)
+}
+
+func (i AlloyDbConnectionProfileArgs) ToAlloyDbConnectionProfilePtrOutput() AlloyDbConnectionProfilePtrOutput {
+	return i.ToAlloyDbConnectionProfilePtrOutputWithContext(context.Background())
+}
+
+func (i AlloyDbConnectionProfileArgs) ToAlloyDbConnectionProfilePtrOutputWithContext(ctx context.Context) AlloyDbConnectionProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlloyDbConnectionProfileOutput).ToAlloyDbConnectionProfilePtrOutputWithContext(ctx)
+}
+
+// AlloyDbConnectionProfilePtrInput is an input type that accepts AlloyDbConnectionProfileArgs, AlloyDbConnectionProfilePtr and AlloyDbConnectionProfilePtrOutput values.
+// You can construct a concrete instance of `AlloyDbConnectionProfilePtrInput` via:
+//
+//	        AlloyDbConnectionProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlloyDbConnectionProfilePtrInput interface {
+	pulumi.Input
+
+	ToAlloyDbConnectionProfilePtrOutput() AlloyDbConnectionProfilePtrOutput
+	ToAlloyDbConnectionProfilePtrOutputWithContext(context.Context) AlloyDbConnectionProfilePtrOutput
+}
+
+type alloyDbConnectionProfilePtrType AlloyDbConnectionProfileArgs
+
+func AlloyDbConnectionProfilePtr(v *AlloyDbConnectionProfileArgs) AlloyDbConnectionProfilePtrInput {
+	return (*alloyDbConnectionProfilePtrType)(v)
+}
+
+func (*alloyDbConnectionProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlloyDbConnectionProfile)(nil)).Elem()
+}
+
+func (i *alloyDbConnectionProfilePtrType) ToAlloyDbConnectionProfilePtrOutput() AlloyDbConnectionProfilePtrOutput {
+	return i.ToAlloyDbConnectionProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *alloyDbConnectionProfilePtrType) ToAlloyDbConnectionProfilePtrOutputWithContext(ctx context.Context) AlloyDbConnectionProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlloyDbConnectionProfilePtrOutput)
+}
+
+// Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+type AlloyDbConnectionProfileOutput struct{ *pulumi.OutputState }
+
+func (AlloyDbConnectionProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlloyDbConnectionProfile)(nil)).Elem()
+}
+
+func (o AlloyDbConnectionProfileOutput) ToAlloyDbConnectionProfileOutput() AlloyDbConnectionProfileOutput {
+	return o
+}
+
+func (o AlloyDbConnectionProfileOutput) ToAlloyDbConnectionProfileOutputWithContext(ctx context.Context) AlloyDbConnectionProfileOutput {
+	return o
+}
+
+func (o AlloyDbConnectionProfileOutput) ToAlloyDbConnectionProfilePtrOutput() AlloyDbConnectionProfilePtrOutput {
+	return o.ToAlloyDbConnectionProfilePtrOutputWithContext(context.Background())
+}
+
+func (o AlloyDbConnectionProfileOutput) ToAlloyDbConnectionProfilePtrOutputWithContext(ctx context.Context) AlloyDbConnectionProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlloyDbConnectionProfile) *AlloyDbConnectionProfile {
+		return &v
+	}).(AlloyDbConnectionProfilePtrOutput)
+}
+
+// The AlloyDB cluster ID that this connection profile is associated with.
+func (o AlloyDbConnectionProfileOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v AlloyDbConnectionProfile) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Immutable. Metadata used to create the destination AlloyDB cluster.
+func (o AlloyDbConnectionProfileOutput) Settings() AlloyDbSettingsPtrOutput {
+	return o.ApplyT(func(v AlloyDbConnectionProfile) *AlloyDbSettings { return v.Settings }).(AlloyDbSettingsPtrOutput)
+}
+
+type AlloyDbConnectionProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (AlloyDbConnectionProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlloyDbConnectionProfile)(nil)).Elem()
+}
+
+func (o AlloyDbConnectionProfilePtrOutput) ToAlloyDbConnectionProfilePtrOutput() AlloyDbConnectionProfilePtrOutput {
+	return o
+}
+
+func (o AlloyDbConnectionProfilePtrOutput) ToAlloyDbConnectionProfilePtrOutputWithContext(ctx context.Context) AlloyDbConnectionProfilePtrOutput {
+	return o
+}
+
+func (o AlloyDbConnectionProfilePtrOutput) Elem() AlloyDbConnectionProfileOutput {
+	return o.ApplyT(func(v *AlloyDbConnectionProfile) AlloyDbConnectionProfile {
+		if v != nil {
+			return *v
+		}
+		var ret AlloyDbConnectionProfile
+		return ret
+	}).(AlloyDbConnectionProfileOutput)
+}
+
+// The AlloyDB cluster ID that this connection profile is associated with.
+func (o AlloyDbConnectionProfilePtrOutput) ClusterId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlloyDbConnectionProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ClusterId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Metadata used to create the destination AlloyDB cluster.
+func (o AlloyDbConnectionProfilePtrOutput) Settings() AlloyDbSettingsPtrOutput {
+	return o.ApplyT(func(v *AlloyDbConnectionProfile) *AlloyDbSettings {
+		if v == nil {
+			return nil
+		}
+		return v.Settings
+	}).(AlloyDbSettingsPtrOutput)
+}
+
+// Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+type AlloyDbConnectionProfileResponse struct {
+	// The AlloyDB cluster ID that this connection profile is associated with.
+	ClusterId string `pulumi:"clusterId"`
+	// Immutable. Metadata used to create the destination AlloyDB cluster.
+	Settings AlloyDbSettingsResponse `pulumi:"settings"`
+}
+
+// Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+type AlloyDbConnectionProfileResponseOutput struct{ *pulumi.OutputState }
+
+func (AlloyDbConnectionProfileResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlloyDbConnectionProfileResponse)(nil)).Elem()
+}
+
+func (o AlloyDbConnectionProfileResponseOutput) ToAlloyDbConnectionProfileResponseOutput() AlloyDbConnectionProfileResponseOutput {
+	return o
+}
+
+func (o AlloyDbConnectionProfileResponseOutput) ToAlloyDbConnectionProfileResponseOutputWithContext(ctx context.Context) AlloyDbConnectionProfileResponseOutput {
+	return o
+}
+
+// The AlloyDB cluster ID that this connection profile is associated with.
+func (o AlloyDbConnectionProfileResponseOutput) ClusterId() pulumi.StringOutput {
+	return o.ApplyT(func(v AlloyDbConnectionProfileResponse) string { return v.ClusterId }).(pulumi.StringOutput)
+}
+
+// Immutable. Metadata used to create the destination AlloyDB cluster.
+func (o AlloyDbConnectionProfileResponseOutput) Settings() AlloyDbSettingsResponseOutput {
+	return o.ApplyT(func(v AlloyDbConnectionProfileResponse) AlloyDbSettingsResponse { return v.Settings }).(AlloyDbSettingsResponseOutput)
+}
+
+// Settings for creating an AlloyDB cluster.
+type AlloyDbSettings struct {
+	// Input only. Initial user to setup during cluster creation. Required.
+	InitialUser UserPassword `pulumi:"initialUser"`
+	// Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
+	Labels                  map[string]string        `pulumi:"labels"`
+	PrimaryInstanceSettings *PrimaryInstanceSettings `pulumi:"primaryInstanceSettings"`
+	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+	VpcNetwork string `pulumi:"vpcNetwork"`
+}
+
+// AlloyDbSettingsInput is an input type that accepts AlloyDbSettingsArgs and AlloyDbSettingsOutput values.
+// You can construct a concrete instance of `AlloyDbSettingsInput` via:
+//
+//	AlloyDbSettingsArgs{...}
+type AlloyDbSettingsInput interface {
+	pulumi.Input
+
+	ToAlloyDbSettingsOutput() AlloyDbSettingsOutput
+	ToAlloyDbSettingsOutputWithContext(context.Context) AlloyDbSettingsOutput
+}
+
+// Settings for creating an AlloyDB cluster.
+type AlloyDbSettingsArgs struct {
+	// Input only. Initial user to setup during cluster creation. Required.
+	InitialUser UserPasswordInput `pulumi:"initialUser"`
+	// Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
+	Labels                  pulumi.StringMapInput           `pulumi:"labels"`
+	PrimaryInstanceSettings PrimaryInstanceSettingsPtrInput `pulumi:"primaryInstanceSettings"`
+	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+	VpcNetwork pulumi.StringInput `pulumi:"vpcNetwork"`
+}
+
+func (AlloyDbSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlloyDbSettings)(nil)).Elem()
+}
+
+func (i AlloyDbSettingsArgs) ToAlloyDbSettingsOutput() AlloyDbSettingsOutput {
+	return i.ToAlloyDbSettingsOutputWithContext(context.Background())
+}
+
+func (i AlloyDbSettingsArgs) ToAlloyDbSettingsOutputWithContext(ctx context.Context) AlloyDbSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlloyDbSettingsOutput)
+}
+
+func (i AlloyDbSettingsArgs) ToAlloyDbSettingsPtrOutput() AlloyDbSettingsPtrOutput {
+	return i.ToAlloyDbSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i AlloyDbSettingsArgs) ToAlloyDbSettingsPtrOutputWithContext(ctx context.Context) AlloyDbSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlloyDbSettingsOutput).ToAlloyDbSettingsPtrOutputWithContext(ctx)
+}
+
+// AlloyDbSettingsPtrInput is an input type that accepts AlloyDbSettingsArgs, AlloyDbSettingsPtr and AlloyDbSettingsPtrOutput values.
+// You can construct a concrete instance of `AlloyDbSettingsPtrInput` via:
+//
+//	        AlloyDbSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type AlloyDbSettingsPtrInput interface {
+	pulumi.Input
+
+	ToAlloyDbSettingsPtrOutput() AlloyDbSettingsPtrOutput
+	ToAlloyDbSettingsPtrOutputWithContext(context.Context) AlloyDbSettingsPtrOutput
+}
+
+type alloyDbSettingsPtrType AlloyDbSettingsArgs
+
+func AlloyDbSettingsPtr(v *AlloyDbSettingsArgs) AlloyDbSettingsPtrInput {
+	return (*alloyDbSettingsPtrType)(v)
+}
+
+func (*alloyDbSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlloyDbSettings)(nil)).Elem()
+}
+
+func (i *alloyDbSettingsPtrType) ToAlloyDbSettingsPtrOutput() AlloyDbSettingsPtrOutput {
+	return i.ToAlloyDbSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *alloyDbSettingsPtrType) ToAlloyDbSettingsPtrOutputWithContext(ctx context.Context) AlloyDbSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AlloyDbSettingsPtrOutput)
+}
+
+// Settings for creating an AlloyDB cluster.
+type AlloyDbSettingsOutput struct{ *pulumi.OutputState }
+
+func (AlloyDbSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlloyDbSettings)(nil)).Elem()
+}
+
+func (o AlloyDbSettingsOutput) ToAlloyDbSettingsOutput() AlloyDbSettingsOutput {
+	return o
+}
+
+func (o AlloyDbSettingsOutput) ToAlloyDbSettingsOutputWithContext(ctx context.Context) AlloyDbSettingsOutput {
+	return o
+}
+
+func (o AlloyDbSettingsOutput) ToAlloyDbSettingsPtrOutput() AlloyDbSettingsPtrOutput {
+	return o.ToAlloyDbSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o AlloyDbSettingsOutput) ToAlloyDbSettingsPtrOutputWithContext(ctx context.Context) AlloyDbSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AlloyDbSettings) *AlloyDbSettings {
+		return &v
+	}).(AlloyDbSettingsPtrOutput)
+}
+
+// Input only. Initial user to setup during cluster creation. Required.
+func (o AlloyDbSettingsOutput) InitialUser() UserPasswordOutput {
+	return o.ApplyT(func(v AlloyDbSettings) UserPassword { return v.InitialUser }).(UserPasswordOutput)
+}
+
+// Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
+func (o AlloyDbSettingsOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AlloyDbSettings) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o AlloyDbSettingsOutput) PrimaryInstanceSettings() PrimaryInstanceSettingsPtrOutput {
+	return o.ApplyT(func(v AlloyDbSettings) *PrimaryInstanceSettings { return v.PrimaryInstanceSettings }).(PrimaryInstanceSettingsPtrOutput)
+}
+
+// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+func (o AlloyDbSettingsOutput) VpcNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v AlloyDbSettings) string { return v.VpcNetwork }).(pulumi.StringOutput)
+}
+
+type AlloyDbSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (AlloyDbSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AlloyDbSettings)(nil)).Elem()
+}
+
+func (o AlloyDbSettingsPtrOutput) ToAlloyDbSettingsPtrOutput() AlloyDbSettingsPtrOutput {
+	return o
+}
+
+func (o AlloyDbSettingsPtrOutput) ToAlloyDbSettingsPtrOutputWithContext(ctx context.Context) AlloyDbSettingsPtrOutput {
+	return o
+}
+
+func (o AlloyDbSettingsPtrOutput) Elem() AlloyDbSettingsOutput {
+	return o.ApplyT(func(v *AlloyDbSettings) AlloyDbSettings {
+		if v != nil {
+			return *v
+		}
+		var ret AlloyDbSettings
+		return ret
+	}).(AlloyDbSettingsOutput)
+}
+
+// Input only. Initial user to setup during cluster creation. Required.
+func (o AlloyDbSettingsPtrOutput) InitialUser() UserPasswordPtrOutput {
+	return o.ApplyT(func(v *AlloyDbSettings) *UserPassword {
+		if v == nil {
+			return nil
+		}
+		return &v.InitialUser
+	}).(UserPasswordPtrOutput)
+}
+
+// Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
+func (o AlloyDbSettingsPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AlloyDbSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+func (o AlloyDbSettingsPtrOutput) PrimaryInstanceSettings() PrimaryInstanceSettingsPtrOutput {
+	return o.ApplyT(func(v *AlloyDbSettings) *PrimaryInstanceSettings {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryInstanceSettings
+	}).(PrimaryInstanceSettingsPtrOutput)
+}
+
+// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+func (o AlloyDbSettingsPtrOutput) VpcNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlloyDbSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.VpcNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+// Settings for creating an AlloyDB cluster.
+type AlloyDbSettingsResponse struct {
+	// Input only. Initial user to setup during cluster creation. Required.
+	InitialUser UserPasswordResponse `pulumi:"initialUser"`
+	// Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
+	Labels                  map[string]string               `pulumi:"labels"`
+	PrimaryInstanceSettings PrimaryInstanceSettingsResponse `pulumi:"primaryInstanceSettings"`
+	// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+	VpcNetwork string `pulumi:"vpcNetwork"`
+}
+
+// Settings for creating an AlloyDB cluster.
+type AlloyDbSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (AlloyDbSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AlloyDbSettingsResponse)(nil)).Elem()
+}
+
+func (o AlloyDbSettingsResponseOutput) ToAlloyDbSettingsResponseOutput() AlloyDbSettingsResponseOutput {
+	return o
+}
+
+func (o AlloyDbSettingsResponseOutput) ToAlloyDbSettingsResponseOutputWithContext(ctx context.Context) AlloyDbSettingsResponseOutput {
+	return o
+}
+
+// Input only. Initial user to setup during cluster creation. Required.
+func (o AlloyDbSettingsResponseOutput) InitialUser() UserPasswordResponseOutput {
+	return o.ApplyT(func(v AlloyDbSettingsResponse) UserPasswordResponse { return v.InitialUser }).(UserPasswordResponseOutput)
+}
+
+// Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
+func (o AlloyDbSettingsResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AlloyDbSettingsResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+func (o AlloyDbSettingsResponseOutput) PrimaryInstanceSettings() PrimaryInstanceSettingsResponseOutput {
+	return o.ApplyT(func(v AlloyDbSettingsResponse) PrimaryInstanceSettingsResponse { return v.PrimaryInstanceSettings }).(PrimaryInstanceSettingsResponseOutput)
+}
+
+// The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+func (o AlloyDbSettingsResponseOutput) VpcNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v AlloyDbSettingsResponse) string { return v.VpcNetwork }).(pulumi.StringOutput)
+}
+
 // Specifies the audit configuration for a service. The configuration determines which permission types are logged, and what identities, if any, are exempted from logging. An AuditConfig must have one or more AuditLogConfigs. If there are AuditConfigs for both `allServices` and a specific service, the union of the two AuditConfigs is used for that service: the log_types specified in each AuditConfig are enabled, and the exempted_members in each AuditLogConfig are exempted. Example Policy with multiple AuditConfigs: { "audit_configs": [ { "service": "allServices", "audit_log_configs": [ { "log_type": "DATA_READ", "exempted_members": [ "user:jose@example.com" ] }, { "log_type": "DATA_WRITE" }, { "log_type": "ADMIN_READ" } ] }, { "service": "sampleservice.googleapis.com", "audit_log_configs": [ { "log_type": "DATA_READ" }, { "log_type": "DATA_WRITE", "exempted_members": [ "user:aliya@example.com" ] } ] } ] } For sampleservice, this policy enables DATA_READ, DATA_WRITE and ADMIN_READ logging. It also exempts `jose@example.com` from DATA_READ logging, and `aliya@example.com` from DATA_WRITE logging.
 type AuditConfig struct {
 	// The configuration for logging of each type of permission.
@@ -2000,6 +2430,172 @@ func (o ExprResponseOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v ExprResponse) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// MachineConfig describes the configuration of a machine.
+type MachineConfig struct {
+	// The number of CPU's in the VM instance.
+	CpuCount *int `pulumi:"cpuCount"`
+}
+
+// MachineConfigInput is an input type that accepts MachineConfigArgs and MachineConfigOutput values.
+// You can construct a concrete instance of `MachineConfigInput` via:
+//
+//	MachineConfigArgs{...}
+type MachineConfigInput interface {
+	pulumi.Input
+
+	ToMachineConfigOutput() MachineConfigOutput
+	ToMachineConfigOutputWithContext(context.Context) MachineConfigOutput
+}
+
+// MachineConfig describes the configuration of a machine.
+type MachineConfigArgs struct {
+	// The number of CPU's in the VM instance.
+	CpuCount pulumi.IntPtrInput `pulumi:"cpuCount"`
+}
+
+func (MachineConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineConfig)(nil)).Elem()
+}
+
+func (i MachineConfigArgs) ToMachineConfigOutput() MachineConfigOutput {
+	return i.ToMachineConfigOutputWithContext(context.Background())
+}
+
+func (i MachineConfigArgs) ToMachineConfigOutputWithContext(ctx context.Context) MachineConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineConfigOutput)
+}
+
+func (i MachineConfigArgs) ToMachineConfigPtrOutput() MachineConfigPtrOutput {
+	return i.ToMachineConfigPtrOutputWithContext(context.Background())
+}
+
+func (i MachineConfigArgs) ToMachineConfigPtrOutputWithContext(ctx context.Context) MachineConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineConfigOutput).ToMachineConfigPtrOutputWithContext(ctx)
+}
+
+// MachineConfigPtrInput is an input type that accepts MachineConfigArgs, MachineConfigPtr and MachineConfigPtrOutput values.
+// You can construct a concrete instance of `MachineConfigPtrInput` via:
+//
+//	        MachineConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type MachineConfigPtrInput interface {
+	pulumi.Input
+
+	ToMachineConfigPtrOutput() MachineConfigPtrOutput
+	ToMachineConfigPtrOutputWithContext(context.Context) MachineConfigPtrOutput
+}
+
+type machineConfigPtrType MachineConfigArgs
+
+func MachineConfigPtr(v *MachineConfigArgs) MachineConfigPtrInput {
+	return (*machineConfigPtrType)(v)
+}
+
+func (*machineConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineConfig)(nil)).Elem()
+}
+
+func (i *machineConfigPtrType) ToMachineConfigPtrOutput() MachineConfigPtrOutput {
+	return i.ToMachineConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *machineConfigPtrType) ToMachineConfigPtrOutputWithContext(ctx context.Context) MachineConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MachineConfigPtrOutput)
+}
+
+// MachineConfig describes the configuration of a machine.
+type MachineConfigOutput struct{ *pulumi.OutputState }
+
+func (MachineConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineConfig)(nil)).Elem()
+}
+
+func (o MachineConfigOutput) ToMachineConfigOutput() MachineConfigOutput {
+	return o
+}
+
+func (o MachineConfigOutput) ToMachineConfigOutputWithContext(ctx context.Context) MachineConfigOutput {
+	return o
+}
+
+func (o MachineConfigOutput) ToMachineConfigPtrOutput() MachineConfigPtrOutput {
+	return o.ToMachineConfigPtrOutputWithContext(context.Background())
+}
+
+func (o MachineConfigOutput) ToMachineConfigPtrOutputWithContext(ctx context.Context) MachineConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v MachineConfig) *MachineConfig {
+		return &v
+	}).(MachineConfigPtrOutput)
+}
+
+// The number of CPU's in the VM instance.
+func (o MachineConfigOutput) CpuCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v MachineConfig) *int { return v.CpuCount }).(pulumi.IntPtrOutput)
+}
+
+type MachineConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (MachineConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**MachineConfig)(nil)).Elem()
+}
+
+func (o MachineConfigPtrOutput) ToMachineConfigPtrOutput() MachineConfigPtrOutput {
+	return o
+}
+
+func (o MachineConfigPtrOutput) ToMachineConfigPtrOutputWithContext(ctx context.Context) MachineConfigPtrOutput {
+	return o
+}
+
+func (o MachineConfigPtrOutput) Elem() MachineConfigOutput {
+	return o.ApplyT(func(v *MachineConfig) MachineConfig {
+		if v != nil {
+			return *v
+		}
+		var ret MachineConfig
+		return ret
+	}).(MachineConfigOutput)
+}
+
+// The number of CPU's in the VM instance.
+func (o MachineConfigPtrOutput) CpuCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *MachineConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// MachineConfig describes the configuration of a machine.
+type MachineConfigResponse struct {
+	// The number of CPU's in the VM instance.
+	CpuCount int `pulumi:"cpuCount"`
+}
+
+// MachineConfig describes the configuration of a machine.
+type MachineConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (MachineConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MachineConfigResponse)(nil)).Elem()
+}
+
+func (o MachineConfigResponseOutput) ToMachineConfigResponseOutput() MachineConfigResponseOutput {
+	return o
+}
+
+func (o MachineConfigResponseOutput) ToMachineConfigResponseOutputWithContext(ctx context.Context) MachineConfigResponseOutput {
+	return o
+}
+
+// The number of CPU's in the VM instance.
+func (o MachineConfigResponseOutput) CpuCount() pulumi.IntOutput {
+	return o.ApplyT(func(v MachineConfigResponse) int { return v.CpuCount }).(pulumi.IntOutput)
+}
+
 // Specifies connection parameters required specifically for MySQL databases.
 type MySqlConnectionProfile struct {
 	// If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
@@ -2544,6 +3140,8 @@ type PostgreSqlConnectionProfileResponse struct {
 	CloudSqlId string `pulumi:"cloudSqlId"`
 	// The IP or hostname of the source PostgreSQL database.
 	Host string `pulumi:"host"`
+	// If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
+	NetworkArchitecture string `pulumi:"networkArchitecture"`
 	// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 	Password string `pulumi:"password"`
 	// Indicates If this connection profile password is stored.
@@ -2581,6 +3179,11 @@ func (o PostgreSqlConnectionProfileResponseOutput) Host() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionProfileResponse) string { return v.Host }).(pulumi.StringOutput)
 }
 
+// If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
+func (o PostgreSqlConnectionProfileResponseOutput) NetworkArchitecture() pulumi.StringOutput {
+	return o.ApplyT(func(v PostgreSqlConnectionProfileResponse) string { return v.NetworkArchitecture }).(pulumi.StringOutput)
+}
+
 // Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
 func (o PostgreSqlConnectionProfileResponseOutput) Password() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionProfileResponse) string { return v.Password }).(pulumi.StringOutput)
@@ -2604,6 +3207,250 @@ func (o PostgreSqlConnectionProfileResponseOutput) Ssl() SslConfigResponseOutput
 // The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
 func (o PostgreSqlConnectionProfileResponseOutput) Username() pulumi.StringOutput {
 	return o.ApplyT(func(v PostgreSqlConnectionProfileResponse) string { return v.Username }).(pulumi.StringOutput)
+}
+
+// Settings for the cluster's primary instance
+type PrimaryInstanceSettings struct {
+	// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
+	DatabaseFlags map[string]string `pulumi:"databaseFlags"`
+	// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+	Id string `pulumi:"id"`
+	// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
+	Labels map[string]string `pulumi:"labels"`
+	// Configuration for the machines that host the underlying database engine.
+	MachineConfig *MachineConfig `pulumi:"machineConfig"`
+}
+
+// PrimaryInstanceSettingsInput is an input type that accepts PrimaryInstanceSettingsArgs and PrimaryInstanceSettingsOutput values.
+// You can construct a concrete instance of `PrimaryInstanceSettingsInput` via:
+//
+//	PrimaryInstanceSettingsArgs{...}
+type PrimaryInstanceSettingsInput interface {
+	pulumi.Input
+
+	ToPrimaryInstanceSettingsOutput() PrimaryInstanceSettingsOutput
+	ToPrimaryInstanceSettingsOutputWithContext(context.Context) PrimaryInstanceSettingsOutput
+}
+
+// Settings for the cluster's primary instance
+type PrimaryInstanceSettingsArgs struct {
+	// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
+	DatabaseFlags pulumi.StringMapInput `pulumi:"databaseFlags"`
+	// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+	Id pulumi.StringInput `pulumi:"id"`
+	// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// Configuration for the machines that host the underlying database engine.
+	MachineConfig MachineConfigPtrInput `pulumi:"machineConfig"`
+}
+
+func (PrimaryInstanceSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrimaryInstanceSettings)(nil)).Elem()
+}
+
+func (i PrimaryInstanceSettingsArgs) ToPrimaryInstanceSettingsOutput() PrimaryInstanceSettingsOutput {
+	return i.ToPrimaryInstanceSettingsOutputWithContext(context.Background())
+}
+
+func (i PrimaryInstanceSettingsArgs) ToPrimaryInstanceSettingsOutputWithContext(ctx context.Context) PrimaryInstanceSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrimaryInstanceSettingsOutput)
+}
+
+func (i PrimaryInstanceSettingsArgs) ToPrimaryInstanceSettingsPtrOutput() PrimaryInstanceSettingsPtrOutput {
+	return i.ToPrimaryInstanceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i PrimaryInstanceSettingsArgs) ToPrimaryInstanceSettingsPtrOutputWithContext(ctx context.Context) PrimaryInstanceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrimaryInstanceSettingsOutput).ToPrimaryInstanceSettingsPtrOutputWithContext(ctx)
+}
+
+// PrimaryInstanceSettingsPtrInput is an input type that accepts PrimaryInstanceSettingsArgs, PrimaryInstanceSettingsPtr and PrimaryInstanceSettingsPtrOutput values.
+// You can construct a concrete instance of `PrimaryInstanceSettingsPtrInput` via:
+//
+//	        PrimaryInstanceSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrimaryInstanceSettingsPtrInput interface {
+	pulumi.Input
+
+	ToPrimaryInstanceSettingsPtrOutput() PrimaryInstanceSettingsPtrOutput
+	ToPrimaryInstanceSettingsPtrOutputWithContext(context.Context) PrimaryInstanceSettingsPtrOutput
+}
+
+type primaryInstanceSettingsPtrType PrimaryInstanceSettingsArgs
+
+func PrimaryInstanceSettingsPtr(v *PrimaryInstanceSettingsArgs) PrimaryInstanceSettingsPtrInput {
+	return (*primaryInstanceSettingsPtrType)(v)
+}
+
+func (*primaryInstanceSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrimaryInstanceSettings)(nil)).Elem()
+}
+
+func (i *primaryInstanceSettingsPtrType) ToPrimaryInstanceSettingsPtrOutput() PrimaryInstanceSettingsPtrOutput {
+	return i.ToPrimaryInstanceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *primaryInstanceSettingsPtrType) ToPrimaryInstanceSettingsPtrOutputWithContext(ctx context.Context) PrimaryInstanceSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrimaryInstanceSettingsPtrOutput)
+}
+
+// Settings for the cluster's primary instance
+type PrimaryInstanceSettingsOutput struct{ *pulumi.OutputState }
+
+func (PrimaryInstanceSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrimaryInstanceSettings)(nil)).Elem()
+}
+
+func (o PrimaryInstanceSettingsOutput) ToPrimaryInstanceSettingsOutput() PrimaryInstanceSettingsOutput {
+	return o
+}
+
+func (o PrimaryInstanceSettingsOutput) ToPrimaryInstanceSettingsOutputWithContext(ctx context.Context) PrimaryInstanceSettingsOutput {
+	return o
+}
+
+func (o PrimaryInstanceSettingsOutput) ToPrimaryInstanceSettingsPtrOutput() PrimaryInstanceSettingsPtrOutput {
+	return o.ToPrimaryInstanceSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o PrimaryInstanceSettingsOutput) ToPrimaryInstanceSettingsPtrOutputWithContext(ctx context.Context) PrimaryInstanceSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrimaryInstanceSettings) *PrimaryInstanceSettings {
+		return &v
+	}).(PrimaryInstanceSettingsPtrOutput)
+}
+
+// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
+func (o PrimaryInstanceSettingsOutput) DatabaseFlags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrimaryInstanceSettings) map[string]string { return v.DatabaseFlags }).(pulumi.StringMapOutput)
+}
+
+// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+func (o PrimaryInstanceSettingsOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v PrimaryInstanceSettings) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
+func (o PrimaryInstanceSettingsOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrimaryInstanceSettings) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Configuration for the machines that host the underlying database engine.
+func (o PrimaryInstanceSettingsOutput) MachineConfig() MachineConfigPtrOutput {
+	return o.ApplyT(func(v PrimaryInstanceSettings) *MachineConfig { return v.MachineConfig }).(MachineConfigPtrOutput)
+}
+
+type PrimaryInstanceSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (PrimaryInstanceSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrimaryInstanceSettings)(nil)).Elem()
+}
+
+func (o PrimaryInstanceSettingsPtrOutput) ToPrimaryInstanceSettingsPtrOutput() PrimaryInstanceSettingsPtrOutput {
+	return o
+}
+
+func (o PrimaryInstanceSettingsPtrOutput) ToPrimaryInstanceSettingsPtrOutputWithContext(ctx context.Context) PrimaryInstanceSettingsPtrOutput {
+	return o
+}
+
+func (o PrimaryInstanceSettingsPtrOutput) Elem() PrimaryInstanceSettingsOutput {
+	return o.ApplyT(func(v *PrimaryInstanceSettings) PrimaryInstanceSettings {
+		if v != nil {
+			return *v
+		}
+		var ret PrimaryInstanceSettings
+		return ret
+	}).(PrimaryInstanceSettingsOutput)
+}
+
+// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
+func (o PrimaryInstanceSettingsPtrOutput) DatabaseFlags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PrimaryInstanceSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.DatabaseFlags
+	}).(pulumi.StringMapOutput)
+}
+
+// The ID of the AlloyDB primary instance. The ID must satisfy the regex expression "[a-z0-9-]+".
+func (o PrimaryInstanceSettingsPtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrimaryInstanceSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
+func (o PrimaryInstanceSettingsPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *PrimaryInstanceSettings) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
+}
+
+// Configuration for the machines that host the underlying database engine.
+func (o PrimaryInstanceSettingsPtrOutput) MachineConfig() MachineConfigPtrOutput {
+	return o.ApplyT(func(v *PrimaryInstanceSettings) *MachineConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MachineConfig
+	}).(MachineConfigPtrOutput)
+}
+
+// Settings for the cluster's primary instance
+type PrimaryInstanceSettingsResponse struct {
+	// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
+	DatabaseFlags map[string]string `pulumi:"databaseFlags"`
+	// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
+	Labels map[string]string `pulumi:"labels"`
+	// Configuration for the machines that host the underlying database engine.
+	MachineConfig MachineConfigResponse `pulumi:"machineConfig"`
+	// The private IP address for the Instance. This is the connection endpoint for an end-user application.
+	PrivateIp string `pulumi:"privateIp"`
+}
+
+// Settings for the cluster's primary instance
+type PrimaryInstanceSettingsResponseOutput struct{ *pulumi.OutputState }
+
+func (PrimaryInstanceSettingsResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrimaryInstanceSettingsResponse)(nil)).Elem()
+}
+
+func (o PrimaryInstanceSettingsResponseOutput) ToPrimaryInstanceSettingsResponseOutput() PrimaryInstanceSettingsResponseOutput {
+	return o
+}
+
+func (o PrimaryInstanceSettingsResponseOutput) ToPrimaryInstanceSettingsResponseOutputWithContext(ctx context.Context) PrimaryInstanceSettingsResponseOutput {
+	return o
+}
+
+// Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
+func (o PrimaryInstanceSettingsResponseOutput) DatabaseFlags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrimaryInstanceSettingsResponse) map[string]string { return v.DatabaseFlags }).(pulumi.StringMapOutput)
+}
+
+// Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
+func (o PrimaryInstanceSettingsResponseOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v PrimaryInstanceSettingsResponse) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Configuration for the machines that host the underlying database engine.
+func (o PrimaryInstanceSettingsResponseOutput) MachineConfig() MachineConfigResponseOutput {
+	return o.ApplyT(func(v PrimaryInstanceSettingsResponse) MachineConfigResponse { return v.MachineConfig }).(MachineConfigResponseOutput)
+}
+
+// The private IP address for the Instance. This is the connection endpoint for an end-user application.
+func (o PrimaryInstanceSettingsResponseOutput) PrivateIp() pulumi.StringOutput {
+	return o.ApplyT(func(v PrimaryInstanceSettingsResponse) string { return v.PrivateIp }).(pulumi.StringOutput)
 }
 
 // The details needed to configure a reverse SSH tunnel between the source and destination databases. These details will be used when calling the generateSshScript method (see https://cloud.google.com/database-migration/docs/reference/rest/v1/projects.locations.migrationJobs/generateSshScript) to produce the script that will help set up the reverse SSH tunnel, and to set up the VPC peering between the Cloud SQL private network and the VPC.
@@ -3693,6 +4540,205 @@ func (o StatusResponseOutput) Message() pulumi.StringOutput {
 	return o.ApplyT(func(v StatusResponse) string { return v.Message }).(pulumi.StringOutput)
 }
 
+// The username/password for a database user. Used for specifying initial users at cluster creation time.
+type UserPassword struct {
+	// The initial password for the user.
+	Password *string `pulumi:"password"`
+	// The database username.
+	User *string `pulumi:"user"`
+}
+
+// UserPasswordInput is an input type that accepts UserPasswordArgs and UserPasswordOutput values.
+// You can construct a concrete instance of `UserPasswordInput` via:
+//
+//	UserPasswordArgs{...}
+type UserPasswordInput interface {
+	pulumi.Input
+
+	ToUserPasswordOutput() UserPasswordOutput
+	ToUserPasswordOutputWithContext(context.Context) UserPasswordOutput
+}
+
+// The username/password for a database user. Used for specifying initial users at cluster creation time.
+type UserPasswordArgs struct {
+	// The initial password for the user.
+	Password pulumi.StringPtrInput `pulumi:"password"`
+	// The database username.
+	User pulumi.StringPtrInput `pulumi:"user"`
+}
+
+func (UserPasswordArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPassword)(nil)).Elem()
+}
+
+func (i UserPasswordArgs) ToUserPasswordOutput() UserPasswordOutput {
+	return i.ToUserPasswordOutputWithContext(context.Background())
+}
+
+func (i UserPasswordArgs) ToUserPasswordOutputWithContext(ctx context.Context) UserPasswordOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordOutput)
+}
+
+func (i UserPasswordArgs) ToUserPasswordPtrOutput() UserPasswordPtrOutput {
+	return i.ToUserPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i UserPasswordArgs) ToUserPasswordPtrOutputWithContext(ctx context.Context) UserPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordOutput).ToUserPasswordPtrOutputWithContext(ctx)
+}
+
+// UserPasswordPtrInput is an input type that accepts UserPasswordArgs, UserPasswordPtr and UserPasswordPtrOutput values.
+// You can construct a concrete instance of `UserPasswordPtrInput` via:
+//
+//	        UserPasswordArgs{...}
+//
+//	or:
+//
+//	        nil
+type UserPasswordPtrInput interface {
+	pulumi.Input
+
+	ToUserPasswordPtrOutput() UserPasswordPtrOutput
+	ToUserPasswordPtrOutputWithContext(context.Context) UserPasswordPtrOutput
+}
+
+type userPasswordPtrType UserPasswordArgs
+
+func UserPasswordPtr(v *UserPasswordArgs) UserPasswordPtrInput {
+	return (*userPasswordPtrType)(v)
+}
+
+func (*userPasswordPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPassword)(nil)).Elem()
+}
+
+func (i *userPasswordPtrType) ToUserPasswordPtrOutput() UserPasswordPtrOutput {
+	return i.ToUserPasswordPtrOutputWithContext(context.Background())
+}
+
+func (i *userPasswordPtrType) ToUserPasswordPtrOutputWithContext(ctx context.Context) UserPasswordPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(UserPasswordPtrOutput)
+}
+
+// The username/password for a database user. Used for specifying initial users at cluster creation time.
+type UserPasswordOutput struct{ *pulumi.OutputState }
+
+func (UserPasswordOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPassword)(nil)).Elem()
+}
+
+func (o UserPasswordOutput) ToUserPasswordOutput() UserPasswordOutput {
+	return o
+}
+
+func (o UserPasswordOutput) ToUserPasswordOutputWithContext(ctx context.Context) UserPasswordOutput {
+	return o
+}
+
+func (o UserPasswordOutput) ToUserPasswordPtrOutput() UserPasswordPtrOutput {
+	return o.ToUserPasswordPtrOutputWithContext(context.Background())
+}
+
+func (o UserPasswordOutput) ToUserPasswordPtrOutputWithContext(ctx context.Context) UserPasswordPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v UserPassword) *UserPassword {
+		return &v
+	}).(UserPasswordPtrOutput)
+}
+
+// The initial password for the user.
+func (o UserPasswordOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPassword) *string { return v.Password }).(pulumi.StringPtrOutput)
+}
+
+// The database username.
+func (o UserPasswordOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v UserPassword) *string { return v.User }).(pulumi.StringPtrOutput)
+}
+
+type UserPasswordPtrOutput struct{ *pulumi.OutputState }
+
+func (UserPasswordPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**UserPassword)(nil)).Elem()
+}
+
+func (o UserPasswordPtrOutput) ToUserPasswordPtrOutput() UserPasswordPtrOutput {
+	return o
+}
+
+func (o UserPasswordPtrOutput) ToUserPasswordPtrOutputWithContext(ctx context.Context) UserPasswordPtrOutput {
+	return o
+}
+
+func (o UserPasswordPtrOutput) Elem() UserPasswordOutput {
+	return o.ApplyT(func(v *UserPassword) UserPassword {
+		if v != nil {
+			return *v
+		}
+		var ret UserPassword
+		return ret
+	}).(UserPasswordOutput)
+}
+
+// The initial password for the user.
+func (o UserPasswordPtrOutput) Password() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Password
+	}).(pulumi.StringPtrOutput)
+}
+
+// The database username.
+func (o UserPasswordPtrOutput) User() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *UserPassword) *string {
+		if v == nil {
+			return nil
+		}
+		return v.User
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username/password for a database user. Used for specifying initial users at cluster creation time.
+type UserPasswordResponse struct {
+	// The initial password for the user.
+	Password string `pulumi:"password"`
+	// Indicates if the initial_user.password field has been set.
+	PasswordSet bool `pulumi:"passwordSet"`
+	// The database username.
+	User string `pulumi:"user"`
+}
+
+// The username/password for a database user. Used for specifying initial users at cluster creation time.
+type UserPasswordResponseOutput struct{ *pulumi.OutputState }
+
+func (UserPasswordResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*UserPasswordResponse)(nil)).Elem()
+}
+
+func (o UserPasswordResponseOutput) ToUserPasswordResponseOutput() UserPasswordResponseOutput {
+	return o
+}
+
+func (o UserPasswordResponseOutput) ToUserPasswordResponseOutputWithContext(ctx context.Context) UserPasswordResponseOutput {
+	return o
+}
+
+// The initial password for the user.
+func (o UserPasswordResponseOutput) Password() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPasswordResponse) string { return v.Password }).(pulumi.StringOutput)
+}
+
+// Indicates if the initial_user.password field has been set.
+func (o UserPasswordResponseOutput) PasswordSet() pulumi.BoolOutput {
+	return o.ApplyT(func(v UserPasswordResponse) bool { return v.PasswordSet }).(pulumi.BoolOutput)
+}
+
+// The database username.
+func (o UserPasswordResponseOutput) User() pulumi.StringOutput {
+	return o.ApplyT(func(v UserPasswordResponse) string { return v.User }).(pulumi.StringOutput)
+}
+
 // The details of the VPC where the source database is located in Google Cloud. We will use this information to set up the VPC peering connection between Cloud SQL and this VPC.
 type VpcPeeringConnectivity struct {
 	// The name of the VPC network to peer with the Cloud SQL private network.
@@ -3860,6 +4906,10 @@ func (o VpcPeeringConnectivityResponseOutput) Vpc() pulumi.StringOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AlloyDbConnectionProfileInput)(nil)).Elem(), AlloyDbConnectionProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlloyDbConnectionProfilePtrInput)(nil)).Elem(), AlloyDbConnectionProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlloyDbSettingsInput)(nil)).Elem(), AlloyDbSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AlloyDbSettingsPtrInput)(nil)).Elem(), AlloyDbSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigInput)(nil)).Elem(), AuditConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditConfigArrayInput)(nil)).Elem(), AuditConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuditLogConfigInput)(nil)).Elem(), AuditLogConfigArgs{})
@@ -3878,10 +4928,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DumpFlagsPtrInput)(nil)).Elem(), DumpFlagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprInput)(nil)).Elem(), ExprArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExprPtrInput)(nil)).Elem(), ExprArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigInput)(nil)).Elem(), MachineConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MachineConfigPtrInput)(nil)).Elem(), MachineConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlConnectionProfileInput)(nil)).Elem(), MySqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MySqlConnectionProfilePtrInput)(nil)).Elem(), MySqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgreSqlConnectionProfileInput)(nil)).Elem(), PostgreSqlConnectionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PostgreSqlConnectionProfilePtrInput)(nil)).Elem(), PostgreSqlConnectionProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrimaryInstanceSettingsInput)(nil)).Elem(), PrimaryInstanceSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrimaryInstanceSettingsPtrInput)(nil)).Elem(), PrimaryInstanceSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReverseSshConnectivityInput)(nil)).Elem(), ReverseSshConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReverseSshConnectivityPtrInput)(nil)).Elem(), ReverseSshConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SqlAclEntryInput)(nil)).Elem(), SqlAclEntryArgs{})
@@ -3892,8 +4946,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SslConfigPtrInput)(nil)).Elem(), SslConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticIpConnectivityInput)(nil)).Elem(), StaticIpConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StaticIpConnectivityPtrInput)(nil)).Elem(), StaticIpConnectivityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordInput)(nil)).Elem(), UserPasswordArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*UserPasswordPtrInput)(nil)).Elem(), UserPasswordArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConnectivityInput)(nil)).Elem(), VpcPeeringConnectivityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VpcPeeringConnectivityPtrInput)(nil)).Elem(), VpcPeeringConnectivityArgs{})
+	pulumi.RegisterOutputType(AlloyDbConnectionProfileOutput{})
+	pulumi.RegisterOutputType(AlloyDbConnectionProfilePtrOutput{})
+	pulumi.RegisterOutputType(AlloyDbConnectionProfileResponseOutput{})
+	pulumi.RegisterOutputType(AlloyDbSettingsOutput{})
+	pulumi.RegisterOutputType(AlloyDbSettingsPtrOutput{})
+	pulumi.RegisterOutputType(AlloyDbSettingsResponseOutput{})
 	pulumi.RegisterOutputType(AuditConfigOutput{})
 	pulumi.RegisterOutputType(AuditConfigArrayOutput{})
 	pulumi.RegisterOutputType(AuditConfigResponseOutput{})
@@ -3925,12 +4987,18 @@ func init() {
 	pulumi.RegisterOutputType(ExprOutput{})
 	pulumi.RegisterOutputType(ExprPtrOutput{})
 	pulumi.RegisterOutputType(ExprResponseOutput{})
+	pulumi.RegisterOutputType(MachineConfigOutput{})
+	pulumi.RegisterOutputType(MachineConfigPtrOutput{})
+	pulumi.RegisterOutputType(MachineConfigResponseOutput{})
 	pulumi.RegisterOutputType(MySqlConnectionProfileOutput{})
 	pulumi.RegisterOutputType(MySqlConnectionProfilePtrOutput{})
 	pulumi.RegisterOutputType(MySqlConnectionProfileResponseOutput{})
 	pulumi.RegisterOutputType(PostgreSqlConnectionProfileOutput{})
 	pulumi.RegisterOutputType(PostgreSqlConnectionProfilePtrOutput{})
 	pulumi.RegisterOutputType(PostgreSqlConnectionProfileResponseOutput{})
+	pulumi.RegisterOutputType(PrimaryInstanceSettingsOutput{})
+	pulumi.RegisterOutputType(PrimaryInstanceSettingsPtrOutput{})
+	pulumi.RegisterOutputType(PrimaryInstanceSettingsResponseOutput{})
 	pulumi.RegisterOutputType(ReverseSshConnectivityOutput{})
 	pulumi.RegisterOutputType(ReverseSshConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(ReverseSshConnectivityResponseOutput{})
@@ -3948,6 +5016,9 @@ func init() {
 	pulumi.RegisterOutputType(StaticIpConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(StaticIpConnectivityResponseOutput{})
 	pulumi.RegisterOutputType(StatusResponseOutput{})
+	pulumi.RegisterOutputType(UserPasswordOutput{})
+	pulumi.RegisterOutputType(UserPasswordPtrOutput{})
+	pulumi.RegisterOutputType(UserPasswordResponseOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConnectivityOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConnectivityPtrOutput{})
 	pulumi.RegisterOutputType(VpcPeeringConnectivityResponseOutput{})

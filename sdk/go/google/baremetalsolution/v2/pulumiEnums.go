@@ -10,6 +10,175 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Mount permissions.
+type AllowedClientMountPermissions string
+
+const (
+	// Permissions were not specified.
+	AllowedClientMountPermissionsMountPermissionsUnspecified = AllowedClientMountPermissions("MOUNT_PERMISSIONS_UNSPECIFIED")
+	// NFS share can be mount with read-only permissions.
+	AllowedClientMountPermissionsRead = AllowedClientMountPermissions("READ")
+	// NFS share can be mount with read-write permissions.
+	AllowedClientMountPermissionsReadWrite = AllowedClientMountPermissions("READ_WRITE")
+)
+
+func (AllowedClientMountPermissions) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowedClientMountPermissions)(nil)).Elem()
+}
+
+func (e AllowedClientMountPermissions) ToAllowedClientMountPermissionsOutput() AllowedClientMountPermissionsOutput {
+	return pulumi.ToOutput(e).(AllowedClientMountPermissionsOutput)
+}
+
+func (e AllowedClientMountPermissions) ToAllowedClientMountPermissionsOutputWithContext(ctx context.Context) AllowedClientMountPermissionsOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(AllowedClientMountPermissionsOutput)
+}
+
+func (e AllowedClientMountPermissions) ToAllowedClientMountPermissionsPtrOutput() AllowedClientMountPermissionsPtrOutput {
+	return e.ToAllowedClientMountPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (e AllowedClientMountPermissions) ToAllowedClientMountPermissionsPtrOutputWithContext(ctx context.Context) AllowedClientMountPermissionsPtrOutput {
+	return AllowedClientMountPermissions(e).ToAllowedClientMountPermissionsOutputWithContext(ctx).ToAllowedClientMountPermissionsPtrOutputWithContext(ctx)
+}
+
+func (e AllowedClientMountPermissions) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AllowedClientMountPermissions) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e AllowedClientMountPermissions) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e AllowedClientMountPermissions) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type AllowedClientMountPermissionsOutput struct{ *pulumi.OutputState }
+
+func (AllowedClientMountPermissionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AllowedClientMountPermissions)(nil)).Elem()
+}
+
+func (o AllowedClientMountPermissionsOutput) ToAllowedClientMountPermissionsOutput() AllowedClientMountPermissionsOutput {
+	return o
+}
+
+func (o AllowedClientMountPermissionsOutput) ToAllowedClientMountPermissionsOutputWithContext(ctx context.Context) AllowedClientMountPermissionsOutput {
+	return o
+}
+
+func (o AllowedClientMountPermissionsOutput) ToAllowedClientMountPermissionsPtrOutput() AllowedClientMountPermissionsPtrOutput {
+	return o.ToAllowedClientMountPermissionsPtrOutputWithContext(context.Background())
+}
+
+func (o AllowedClientMountPermissionsOutput) ToAllowedClientMountPermissionsPtrOutputWithContext(ctx context.Context) AllowedClientMountPermissionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AllowedClientMountPermissions) *AllowedClientMountPermissions {
+		return &v
+	}).(AllowedClientMountPermissionsPtrOutput)
+}
+
+func (o AllowedClientMountPermissionsOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o AllowedClientMountPermissionsOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AllowedClientMountPermissions) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o AllowedClientMountPermissionsOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AllowedClientMountPermissionsOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e AllowedClientMountPermissions) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type AllowedClientMountPermissionsPtrOutput struct{ *pulumi.OutputState }
+
+func (AllowedClientMountPermissionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AllowedClientMountPermissions)(nil)).Elem()
+}
+
+func (o AllowedClientMountPermissionsPtrOutput) ToAllowedClientMountPermissionsPtrOutput() AllowedClientMountPermissionsPtrOutput {
+	return o
+}
+
+func (o AllowedClientMountPermissionsPtrOutput) ToAllowedClientMountPermissionsPtrOutputWithContext(ctx context.Context) AllowedClientMountPermissionsPtrOutput {
+	return o
+}
+
+func (o AllowedClientMountPermissionsPtrOutput) Elem() AllowedClientMountPermissionsOutput {
+	return o.ApplyT(func(v *AllowedClientMountPermissions) AllowedClientMountPermissions {
+		if v != nil {
+			return *v
+		}
+		var ret AllowedClientMountPermissions
+		return ret
+	}).(AllowedClientMountPermissionsOutput)
+}
+
+func (o AllowedClientMountPermissionsPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o AllowedClientMountPermissionsPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *AllowedClientMountPermissions) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// AllowedClientMountPermissionsInput is an input type that accepts AllowedClientMountPermissionsArgs and AllowedClientMountPermissionsOutput values.
+// You can construct a concrete instance of `AllowedClientMountPermissionsInput` via:
+//
+//	AllowedClientMountPermissionsArgs{...}
+type AllowedClientMountPermissionsInput interface {
+	pulumi.Input
+
+	ToAllowedClientMountPermissionsOutput() AllowedClientMountPermissionsOutput
+	ToAllowedClientMountPermissionsOutputWithContext(context.Context) AllowedClientMountPermissionsOutput
+}
+
+var allowedClientMountPermissionsPtrType = reflect.TypeOf((**AllowedClientMountPermissions)(nil)).Elem()
+
+type AllowedClientMountPermissionsPtrInput interface {
+	pulumi.Input
+
+	ToAllowedClientMountPermissionsPtrOutput() AllowedClientMountPermissionsPtrOutput
+	ToAllowedClientMountPermissionsPtrOutputWithContext(context.Context) AllowedClientMountPermissionsPtrOutput
+}
+
+type allowedClientMountPermissionsPtr string
+
+func AllowedClientMountPermissionsPtr(v string) AllowedClientMountPermissionsPtrInput {
+	return (*allowedClientMountPermissionsPtr)(&v)
+}
+
+func (*allowedClientMountPermissionsPtr) ElementType() reflect.Type {
+	return allowedClientMountPermissionsPtrType
+}
+
+func (in *allowedClientMountPermissionsPtr) ToAllowedClientMountPermissionsPtrOutput() AllowedClientMountPermissionsPtrOutput {
+	return pulumi.ToOutput(in).(AllowedClientMountPermissionsPtrOutput)
+}
+
+func (in *allowedClientMountPermissionsPtr) ToAllowedClientMountPermissionsPtrOutputWithContext(ctx context.Context) AllowedClientMountPermissionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(AllowedClientMountPermissionsPtrOutput)
+}
+
 // The type of network configuration on the instance.
 type InstanceConfigNetworkConfig string
 
@@ -1541,6 +1710,175 @@ func (in *nfsExportPermissionsPtr) ToNfsExportPermissionsPtrOutputWithContext(ct
 	return pulumi.ToOutputWithContext(ctx, in).(NfsExportPermissionsPtrOutput)
 }
 
+// Immutable. The storage type of the underlying volume.
+type NfsShareStorageType string
+
+const (
+	// The storage type for this volume is unknown.
+	NfsShareStorageTypeStorageTypeUnspecified = NfsShareStorageType("STORAGE_TYPE_UNSPECIFIED")
+	// The storage type for this volume is SSD.
+	NfsShareStorageTypeSsd = NfsShareStorageType("SSD")
+	// This storage type for this volume is HDD.
+	NfsShareStorageTypeHdd = NfsShareStorageType("HDD")
+)
+
+func (NfsShareStorageType) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsShareStorageType)(nil)).Elem()
+}
+
+func (e NfsShareStorageType) ToNfsShareStorageTypeOutput() NfsShareStorageTypeOutput {
+	return pulumi.ToOutput(e).(NfsShareStorageTypeOutput)
+}
+
+func (e NfsShareStorageType) ToNfsShareStorageTypeOutputWithContext(ctx context.Context) NfsShareStorageTypeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NfsShareStorageTypeOutput)
+}
+
+func (e NfsShareStorageType) ToNfsShareStorageTypePtrOutput() NfsShareStorageTypePtrOutput {
+	return e.ToNfsShareStorageTypePtrOutputWithContext(context.Background())
+}
+
+func (e NfsShareStorageType) ToNfsShareStorageTypePtrOutputWithContext(ctx context.Context) NfsShareStorageTypePtrOutput {
+	return NfsShareStorageType(e).ToNfsShareStorageTypeOutputWithContext(ctx).ToNfsShareStorageTypePtrOutputWithContext(ctx)
+}
+
+func (e NfsShareStorageType) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NfsShareStorageType) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NfsShareStorageType) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NfsShareStorageType) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NfsShareStorageTypeOutput struct{ *pulumi.OutputState }
+
+func (NfsShareStorageTypeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NfsShareStorageType)(nil)).Elem()
+}
+
+func (o NfsShareStorageTypeOutput) ToNfsShareStorageTypeOutput() NfsShareStorageTypeOutput {
+	return o
+}
+
+func (o NfsShareStorageTypeOutput) ToNfsShareStorageTypeOutputWithContext(ctx context.Context) NfsShareStorageTypeOutput {
+	return o
+}
+
+func (o NfsShareStorageTypeOutput) ToNfsShareStorageTypePtrOutput() NfsShareStorageTypePtrOutput {
+	return o.ToNfsShareStorageTypePtrOutputWithContext(context.Background())
+}
+
+func (o NfsShareStorageTypeOutput) ToNfsShareStorageTypePtrOutputWithContext(ctx context.Context) NfsShareStorageTypePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NfsShareStorageType) *NfsShareStorageType {
+		return &v
+	}).(NfsShareStorageTypePtrOutput)
+}
+
+func (o NfsShareStorageTypeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NfsShareStorageTypeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NfsShareStorageType) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NfsShareStorageTypeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NfsShareStorageTypeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NfsShareStorageType) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NfsShareStorageTypePtrOutput struct{ *pulumi.OutputState }
+
+func (NfsShareStorageTypePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NfsShareStorageType)(nil)).Elem()
+}
+
+func (o NfsShareStorageTypePtrOutput) ToNfsShareStorageTypePtrOutput() NfsShareStorageTypePtrOutput {
+	return o
+}
+
+func (o NfsShareStorageTypePtrOutput) ToNfsShareStorageTypePtrOutputWithContext(ctx context.Context) NfsShareStorageTypePtrOutput {
+	return o
+}
+
+func (o NfsShareStorageTypePtrOutput) Elem() NfsShareStorageTypeOutput {
+	return o.ApplyT(func(v *NfsShareStorageType) NfsShareStorageType {
+		if v != nil {
+			return *v
+		}
+		var ret NfsShareStorageType
+		return ret
+	}).(NfsShareStorageTypeOutput)
+}
+
+func (o NfsShareStorageTypePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NfsShareStorageTypePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NfsShareStorageType) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NfsShareStorageTypeInput is an input type that accepts NfsShareStorageTypeArgs and NfsShareStorageTypeOutput values.
+// You can construct a concrete instance of `NfsShareStorageTypeInput` via:
+//
+//	NfsShareStorageTypeArgs{...}
+type NfsShareStorageTypeInput interface {
+	pulumi.Input
+
+	ToNfsShareStorageTypeOutput() NfsShareStorageTypeOutput
+	ToNfsShareStorageTypeOutputWithContext(context.Context) NfsShareStorageTypeOutput
+}
+
+var nfsShareStorageTypePtrType = reflect.TypeOf((**NfsShareStorageType)(nil)).Elem()
+
+type NfsShareStorageTypePtrInput interface {
+	pulumi.Input
+
+	ToNfsShareStorageTypePtrOutput() NfsShareStorageTypePtrOutput
+	ToNfsShareStorageTypePtrOutputWithContext(context.Context) NfsShareStorageTypePtrOutput
+}
+
+type nfsShareStorageTypePtr string
+
+func NfsShareStorageTypePtr(v string) NfsShareStorageTypePtrInput {
+	return (*nfsShareStorageTypePtr)(&v)
+}
+
+func (*nfsShareStorageTypePtr) ElementType() reflect.Type {
+	return nfsShareStorageTypePtrType
+}
+
+func (in *nfsShareStorageTypePtr) ToNfsShareStorageTypePtrOutput() NfsShareStorageTypePtrOutput {
+	return pulumi.ToOutput(in).(NfsShareStorageTypePtrOutput)
+}
+
+func (in *nfsShareStorageTypePtr) ToNfsShareStorageTypePtrOutputWithContext(ctx context.Context) NfsShareStorageTypePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NfsShareStorageTypePtrOutput)
+}
+
 // Volume protocol.
 type VolumeConfigProtocol string
 
@@ -2391,6 +2729,8 @@ func (in *volumeStorageTypePtr) ToVolumeStorageTypePtrOutputWithContext(ctx cont
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedClientMountPermissionsInput)(nil)).Elem(), AllowedClientMountPermissions("MOUNT_PERMISSIONS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*AllowedClientMountPermissionsPtrInput)(nil)).Elem(), AllowedClientMountPermissions("MOUNT_PERMISSIONS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigNetworkConfigInput)(nil)).Elem(), InstanceConfigNetworkConfig("NETWORKCONFIG_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceConfigNetworkConfigPtrInput)(nil)).Elem(), InstanceConfigNetworkConfig("NETWORKCONFIG_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LogicalNetworkInterfaceNetworkTypeInput)(nil)).Elem(), LogicalNetworkInterfaceNetworkType("TYPE_UNSPECIFIED"))
@@ -2409,6 +2749,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkConfigTypePtrInput)(nil)).Elem(), NetworkConfigType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportPermissionsInput)(nil)).Elem(), NfsExportPermissions("PERMISSIONS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportPermissionsPtrInput)(nil)).Elem(), NfsExportPermissions("PERMISSIONS_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsShareStorageTypeInput)(nil)).Elem(), NfsShareStorageType("STORAGE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NfsShareStorageTypePtrInput)(nil)).Elem(), NfsShareStorageType("STORAGE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigProtocolInput)(nil)).Elem(), VolumeConfigProtocol("PROTOCOL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigProtocolPtrInput)(nil)).Elem(), VolumeConfigProtocol("PROTOCOL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigTypeInput)(nil)).Elem(), VolumeConfigType("TYPE_UNSPECIFIED"))
@@ -2419,6 +2761,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeStatePtrInput)(nil)).Elem(), VolumeState("STATE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeStorageTypeInput)(nil)).Elem(), VolumeStorageType("STORAGE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeStorageTypePtrInput)(nil)).Elem(), VolumeStorageType("STORAGE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterOutputType(AllowedClientMountPermissionsOutput{})
+	pulumi.RegisterOutputType(AllowedClientMountPermissionsPtrOutput{})
 	pulumi.RegisterOutputType(InstanceConfigNetworkConfigOutput{})
 	pulumi.RegisterOutputType(InstanceConfigNetworkConfigPtrOutput{})
 	pulumi.RegisterOutputType(LogicalNetworkInterfaceNetworkTypeOutput{})
@@ -2437,6 +2781,8 @@ func init() {
 	pulumi.RegisterOutputType(NetworkConfigTypePtrOutput{})
 	pulumi.RegisterOutputType(NfsExportPermissionsOutput{})
 	pulumi.RegisterOutputType(NfsExportPermissionsPtrOutput{})
+	pulumi.RegisterOutputType(NfsShareStorageTypeOutput{})
+	pulumi.RegisterOutputType(NfsShareStorageTypePtrOutput{})
 	pulumi.RegisterOutputType(VolumeConfigProtocolOutput{})
 	pulumi.RegisterOutputType(VolumeConfigProtocolPtrOutput{})
 	pulumi.RegisterOutputType(VolumeConfigTypeOutput{})

@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectionProfileResult:
-    def __init__(__self__, cloudsql=None, create_time=None, display_name=None, error=None, labels=None, mysql=None, name=None, postgresql=None, provider=None, state=None, update_time=None):
+    def __init__(__self__, alloydb=None, cloudsql=None, create_time=None, display_name=None, error=None, labels=None, mysql=None, name=None, postgresql=None, provider=None, state=None, update_time=None):
+        if alloydb and not isinstance(alloydb, dict):
+            raise TypeError("Expected argument 'alloydb' to be a dict")
+        pulumi.set(__self__, "alloydb", alloydb)
         if cloudsql and not isinstance(cloudsql, dict):
             raise TypeError("Expected argument 'cloudsql' to be a dict")
         pulumi.set(__self__, "cloudsql", cloudsql)
@@ -53,6 +56,14 @@ class GetConnectionProfileResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def alloydb(self) -> 'outputs.AlloyDbConnectionProfileResponse':
+        """
+        An AlloyDB cluster connection profile.
+        """
+        return pulumi.get(self, "alloydb")
 
     @property
     @pulumi.getter
@@ -149,6 +160,7 @@ class AwaitableGetConnectionProfileResult(GetConnectionProfileResult):
         if False:
             yield self
         return GetConnectionProfileResult(
+            alloydb=self.alloydb,
             cloudsql=self.cloudsql,
             create_time=self.create_time,
             display_name=self.display_name,
@@ -177,6 +189,7 @@ def get_connection_profile(connection_profile_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datamigration/v1:getConnectionProfile', __args__, opts=opts, typ=GetConnectionProfileResult).value
 
     return AwaitableGetConnectionProfileResult(
+        alloydb=__ret__.alloydb,
         cloudsql=__ret__.cloudsql,
         create_time=__ret__.create_time,
         display_name=__ret__.display_name,

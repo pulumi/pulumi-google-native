@@ -19,7 +19,10 @@ __all__ = [
 
 @pulumi.output_type
 class GetConnectionProfileResult:
-    def __init__(__self__, create_time=None, display_name=None, forward_ssh_connectivity=None, gcs_profile=None, labels=None, mysql_profile=None, name=None, oracle_profile=None, private_connectivity=None, static_service_ip_connectivity=None, update_time=None):
+    def __init__(__self__, bigquery_profile=None, create_time=None, display_name=None, forward_ssh_connectivity=None, gcs_profile=None, labels=None, mysql_profile=None, name=None, oracle_profile=None, postgresql_profile=None, private_connectivity=None, static_service_ip_connectivity=None, update_time=None):
+        if bigquery_profile and not isinstance(bigquery_profile, dict):
+            raise TypeError("Expected argument 'bigquery_profile' to be a dict")
+        pulumi.set(__self__, "bigquery_profile", bigquery_profile)
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -44,6 +47,9 @@ class GetConnectionProfileResult:
         if oracle_profile and not isinstance(oracle_profile, dict):
             raise TypeError("Expected argument 'oracle_profile' to be a dict")
         pulumi.set(__self__, "oracle_profile", oracle_profile)
+        if postgresql_profile and not isinstance(postgresql_profile, dict):
+            raise TypeError("Expected argument 'postgresql_profile' to be a dict")
+        pulumi.set(__self__, "postgresql_profile", postgresql_profile)
         if private_connectivity and not isinstance(private_connectivity, dict):
             raise TypeError("Expected argument 'private_connectivity' to be a dict")
         pulumi.set(__self__, "private_connectivity", private_connectivity)
@@ -53,6 +59,14 @@ class GetConnectionProfileResult:
         if update_time and not isinstance(update_time, str):
             raise TypeError("Expected argument 'update_time' to be a str")
         pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="bigqueryProfile")
+    def bigquery_profile(self) -> 'outputs.BigQueryProfileResponse':
+        """
+        BigQuery Connection Profile configuration.
+        """
+        return pulumi.get(self, "bigquery_profile")
 
     @property
     @pulumi.getter(name="createTime")
@@ -119,6 +133,14 @@ class GetConnectionProfileResult:
         return pulumi.get(self, "oracle_profile")
 
     @property
+    @pulumi.getter(name="postgresqlProfile")
+    def postgresql_profile(self) -> 'outputs.PostgresqlProfileResponse':
+        """
+        PostgreSQL Connection Profile configuration.
+        """
+        return pulumi.get(self, "postgresql_profile")
+
+    @property
     @pulumi.getter(name="privateConnectivity")
     def private_connectivity(self) -> 'outputs.PrivateConnectivityResponse':
         """
@@ -149,6 +171,7 @@ class AwaitableGetConnectionProfileResult(GetConnectionProfileResult):
         if False:
             yield self
         return GetConnectionProfileResult(
+            bigquery_profile=self.bigquery_profile,
             create_time=self.create_time,
             display_name=self.display_name,
             forward_ssh_connectivity=self.forward_ssh_connectivity,
@@ -157,6 +180,7 @@ class AwaitableGetConnectionProfileResult(GetConnectionProfileResult):
             mysql_profile=self.mysql_profile,
             name=self.name,
             oracle_profile=self.oracle_profile,
+            postgresql_profile=self.postgresql_profile,
             private_connectivity=self.private_connectivity,
             static_service_ip_connectivity=self.static_service_ip_connectivity,
             update_time=self.update_time)
@@ -177,6 +201,7 @@ def get_connection_profile(connection_profile_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('google-native:datastream/v1:getConnectionProfile', __args__, opts=opts, typ=GetConnectionProfileResult).value
 
     return AwaitableGetConnectionProfileResult(
+        bigquery_profile=__ret__.bigquery_profile,
         create_time=__ret__.create_time,
         display_name=__ret__.display_name,
         forward_ssh_connectivity=__ret__.forward_ssh_connectivity,
@@ -185,6 +210,7 @@ def get_connection_profile(connection_profile_id: Optional[str] = None,
         mysql_profile=__ret__.mysql_profile,
         name=__ret__.name,
         oracle_profile=__ret__.oracle_profile,
+        postgresql_profile=__ret__.postgresql_profile,
         private_connectivity=__ret__.private_connectivity,
         static_service_ip_connectivity=__ret__.static_service_ip_connectivity,
         update_time=__ret__.update_time)

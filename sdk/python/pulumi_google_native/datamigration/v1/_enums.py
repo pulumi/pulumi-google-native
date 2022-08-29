@@ -142,6 +142,10 @@ class ConnectionProfileProvider(str, Enum):
     """
     Amazon Aurora.
     """
+    ALLOYDB = "ALLOYDB"
+    """
+    AlloyDB.
+    """
 
 
 class ConnectionProfileState(str, Enum):
@@ -219,6 +223,10 @@ class DatabaseTypeProvider(str, Enum):
     AURORA = "AURORA"
     """
     Amazon Aurora.
+    """
+    ALLOYDB = "ALLOYDB"
+    """
+    AlloyDB.
     """
 
 

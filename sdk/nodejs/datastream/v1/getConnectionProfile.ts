@@ -29,6 +29,10 @@ export interface GetConnectionProfileArgs {
 
 export interface GetConnectionProfileResult {
     /**
+     * BigQuery Connection Profile configuration.
+     */
+    readonly bigqueryProfile: outputs.datastream.v1.BigQueryProfileResponse;
+    /**
      * The create time of the resource.
      */
     readonly createTime: string;
@@ -60,6 +64,10 @@ export interface GetConnectionProfileResult {
      * Oracle ConnectionProfile configuration.
      */
     readonly oracleProfile: outputs.datastream.v1.OracleProfileResponse;
+    /**
+     * PostgreSQL Connection Profile configuration.
+     */
+    readonly postgresqlProfile: outputs.datastream.v1.PostgresqlProfileResponse;
     /**
      * Private connectivity.
      */

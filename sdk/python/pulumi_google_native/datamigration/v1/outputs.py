@@ -12,6 +12,8 @@ from . import outputs
 from ._enums import *
 
 __all__ = [
+    'AlloyDbConnectionProfileResponse',
+    'AlloyDbSettingsResponse',
     'AuditConfigResponse',
     'AuditLogConfigResponse',
     'BindingResponse',
@@ -21,16 +23,141 @@ __all__ = [
     'DumpFlagResponse',
     'DumpFlagsResponse',
     'ExprResponse',
+    'MachineConfigResponse',
     'MySqlConnectionProfileResponse',
     'PostgreSqlConnectionProfileResponse',
+    'PrimaryInstanceSettingsResponse',
     'ReverseSshConnectivityResponse',
     'SqlAclEntryResponse',
     'SqlIpConfigResponse',
     'SslConfigResponse',
     'StaticIpConnectivityResponse',
     'StatusResponse',
+    'UserPasswordResponse',
     'VpcPeeringConnectivityResponse',
 ]
+
+@pulumi.output_type
+class AlloyDbConnectionProfileResponse(dict):
+    """
+    Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterId":
+            suggest = "cluster_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlloyDbConnectionProfileResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlloyDbConnectionProfileResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlloyDbConnectionProfileResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_id: str,
+                 settings: 'outputs.AlloyDbSettingsResponse'):
+        """
+        Specifies required connection parameters, and the parameters required to create an AlloyDB destination cluster.
+        :param str cluster_id: The AlloyDB cluster ID that this connection profile is associated with.
+        :param 'AlloyDbSettingsResponse' settings: Immutable. Metadata used to create the destination AlloyDB cluster.
+        """
+        pulumi.set(__self__, "cluster_id", cluster_id)
+        pulumi.set(__self__, "settings", settings)
+
+    @property
+    @pulumi.getter(name="clusterId")
+    def cluster_id(self) -> str:
+        """
+        The AlloyDB cluster ID that this connection profile is associated with.
+        """
+        return pulumi.get(self, "cluster_id")
+
+    @property
+    @pulumi.getter
+    def settings(self) -> 'outputs.AlloyDbSettingsResponse':
+        """
+        Immutable. Metadata used to create the destination AlloyDB cluster.
+        """
+        return pulumi.get(self, "settings")
+
+
+@pulumi.output_type
+class AlloyDbSettingsResponse(dict):
+    """
+    Settings for creating an AlloyDB cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "initialUser":
+            suggest = "initial_user"
+        elif key == "primaryInstanceSettings":
+            suggest = "primary_instance_settings"
+        elif key == "vpcNetwork":
+            suggest = "vpc_network"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AlloyDbSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AlloyDbSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AlloyDbSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 initial_user: 'outputs.UserPasswordResponse',
+                 labels: Mapping[str, str],
+                 primary_instance_settings: 'outputs.PrimaryInstanceSettingsResponse',
+                 vpc_network: str):
+        """
+        Settings for creating an AlloyDB cluster.
+        :param 'UserPasswordResponse' initial_user: Input only. Initial user to setup during cluster creation. Required.
+        :param Mapping[str, str] labels: Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
+        :param str vpc_network: The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        """
+        pulumi.set(__self__, "initial_user", initial_user)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "primary_instance_settings", primary_instance_settings)
+        pulumi.set(__self__, "vpc_network", vpc_network)
+
+    @property
+    @pulumi.getter(name="initialUser")
+    def initial_user(self) -> 'outputs.UserPasswordResponse':
+        """
+        Input only. Initial user to setup during cluster creation. Required.
+        """
+        return pulumi.get(self, "initial_user")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Labels for the AlloyDB cluster created by DMS. An object containing a list of 'key', 'value' pairs.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="primaryInstanceSettings")
+    def primary_instance_settings(self) -> 'outputs.PrimaryInstanceSettingsResponse':
+        return pulumi.get(self, "primary_instance_settings")
+
+    @property
+    @pulumi.getter(name="vpcNetwork")
+    def vpc_network(self) -> str:
+        """
+        The resource link for the VPC network in which cluster resources are created and from which they are accessible via Private IP. The network must belong to the same project as the cluster. It is specified in the form: "projects/{project_number}/global/networks/{network_id}". This is required to create a cluster.
+        """
+        return pulumi.get(self, "vpc_network")
+
 
 @pulumi.output_type
 class AuditConfigResponse(dict):
@@ -643,6 +770,45 @@ class ExprResponse(dict):
 
 
 @pulumi.output_type
+class MachineConfigResponse(dict):
+    """
+    MachineConfig describes the configuration of a machine.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cpuCount":
+            suggest = "cpu_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in MachineConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        MachineConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        MachineConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu_count: int):
+        """
+        MachineConfig describes the configuration of a machine.
+        :param int cpu_count: The number of CPU's in the VM instance.
+        """
+        pulumi.set(__self__, "cpu_count", cpu_count)
+
+    @property
+    @pulumi.getter(name="cpuCount")
+    def cpu_count(self) -> int:
+        """
+        The number of CPU's in the VM instance.
+        """
+        return pulumi.get(self, "cpu_count")
+
+
+@pulumi.output_type
 class MySqlConnectionProfileResponse(dict):
     """
     Specifies connection parameters required specifically for MySQL databases.
@@ -759,6 +925,8 @@ class PostgreSqlConnectionProfileResponse(dict):
         suggest = None
         if key == "cloudSqlId":
             suggest = "cloud_sql_id"
+        elif key == "networkArchitecture":
+            suggest = "network_architecture"
         elif key == "passwordSet":
             suggest = "password_set"
 
@@ -776,6 +944,7 @@ class PostgreSqlConnectionProfileResponse(dict):
     def __init__(__self__, *,
                  cloud_sql_id: str,
                  host: str,
+                 network_architecture: str,
                  password: str,
                  password_set: bool,
                  port: int,
@@ -785,6 +954,7 @@ class PostgreSqlConnectionProfileResponse(dict):
         Specifies connection parameters required specifically for PostgreSQL databases.
         :param str cloud_sql_id: If the source is a Cloud SQL database, use this field to provide the Cloud SQL instance ID of the source.
         :param str host: The IP or hostname of the source PostgreSQL database.
+        :param str network_architecture: If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
         :param str password: Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
         :param bool password_set: Indicates If this connection profile password is stored.
         :param int port: The network port of the source PostgreSQL database.
@@ -793,6 +963,7 @@ class PostgreSqlConnectionProfileResponse(dict):
         """
         pulumi.set(__self__, "cloud_sql_id", cloud_sql_id)
         pulumi.set(__self__, "host", host)
+        pulumi.set(__self__, "network_architecture", network_architecture)
         pulumi.set(__self__, "password", password)
         pulumi.set(__self__, "password_set", password_set)
         pulumi.set(__self__, "port", port)
@@ -814,6 +985,14 @@ class PostgreSqlConnectionProfileResponse(dict):
         The IP or hostname of the source PostgreSQL database.
         """
         return pulumi.get(self, "host")
+
+    @property
+    @pulumi.getter(name="networkArchitecture")
+    def network_architecture(self) -> str:
+        """
+        If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
+        """
+        return pulumi.get(self, "network_architecture")
 
     @property
     @pulumi.getter
@@ -854,6 +1033,82 @@ class PostgreSqlConnectionProfileResponse(dict):
         The username that Database Migration Service will use to connect to the database. The value is encrypted when stored in Database Migration Service.
         """
         return pulumi.get(self, "username")
+
+
+@pulumi.output_type
+class PrimaryInstanceSettingsResponse(dict):
+    """
+    Settings for the cluster's primary instance
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "databaseFlags":
+            suggest = "database_flags"
+        elif key == "machineConfig":
+            suggest = "machine_config"
+        elif key == "privateIp":
+            suggest = "private_ip"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrimaryInstanceSettingsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrimaryInstanceSettingsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrimaryInstanceSettingsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 database_flags: Mapping[str, str],
+                 labels: Mapping[str, str],
+                 machine_config: 'outputs.MachineConfigResponse',
+                 private_ip: str):
+        """
+        Settings for the cluster's primary instance
+        :param Mapping[str, str] database_flags: Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
+        :param Mapping[str, str] labels: Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
+        :param 'MachineConfigResponse' machine_config: Configuration for the machines that host the underlying database engine.
+        :param str private_ip: The private IP address for the Instance. This is the connection endpoint for an end-user application.
+        """
+        pulumi.set(__self__, "database_flags", database_flags)
+        pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "machine_config", machine_config)
+        pulumi.set(__self__, "private_ip", private_ip)
+
+    @property
+    @pulumi.getter(name="databaseFlags")
+    def database_flags(self) -> Mapping[str, str]:
+        """
+        Database flags to pass to AlloyDB when DMS is creating the AlloyDB cluster and instances. See the AlloyDB documentation for how these can be used.
+        """
+        return pulumi.get(self, "database_flags")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Mapping[str, str]:
+        """
+        Labels for the AlloyDB primary instance created by DMS. An object containing a list of 'key', 'value' pairs.
+        """
+        return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="machineConfig")
+    def machine_config(self) -> 'outputs.MachineConfigResponse':
+        """
+        Configuration for the machines that host the underlying database engine.
+        """
+        return pulumi.get(self, "machine_config")
+
+    @property
+    @pulumi.getter(name="privateIp")
+    def private_ip(self) -> str:
+        """
+        The private IP address for the Instance. This is the connection endpoint for an end-user application.
+        """
+        return pulumi.get(self, "private_ip")
 
 
 @pulumi.output_type
@@ -1210,6 +1465,67 @@ class StatusResponse(dict):
         A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client.
         """
         return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class UserPasswordResponse(dict):
+    """
+    The username/password for a database user. Used for specifying initial users at cluster creation time.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordSet":
+            suggest = "password_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in UserPasswordResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        UserPasswordResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        UserPasswordResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password: str,
+                 password_set: bool,
+                 user: str):
+        """
+        The username/password for a database user. Used for specifying initial users at cluster creation time.
+        :param str password: The initial password for the user.
+        :param bool password_set: Indicates if the initial_user.password field has been set.
+        :param str user: The database username.
+        """
+        pulumi.set(__self__, "password", password)
+        pulumi.set(__self__, "password_set", password_set)
+        pulumi.set(__self__, "user", user)
+
+    @property
+    @pulumi.getter
+    def password(self) -> str:
+        """
+        The initial password for the user.
+        """
+        return pulumi.get(self, "password")
+
+    @property
+    @pulumi.getter(name="passwordSet")
+    def password_set(self) -> bool:
+        """
+        Indicates if the initial_user.password field has been set.
+        """
+        return pulumi.get(self, "password_set")
+
+    @property
+    @pulumi.getter
+    def user(self) -> str:
+        """
+        The database username.
+        """
+        return pulumi.get(self, "user")
 
 
 @pulumi.output_type

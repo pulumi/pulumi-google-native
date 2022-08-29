@@ -2,6 +2,26 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 
+export const AllowedClientMountPermissions = {
+    /**
+     * Permissions were not specified.
+     */
+    MountPermissionsUnspecified: "MOUNT_PERMISSIONS_UNSPECIFIED",
+    /**
+     * NFS share can be mount with read-only permissions.
+     */
+    Read: "READ",
+    /**
+     * NFS share can be mount with read-write permissions.
+     */
+    ReadWrite: "READ_WRITE",
+} as const;
+
+/**
+ * Mount permissions.
+ */
+export type AllowedClientMountPermissions = (typeof AllowedClientMountPermissions)[keyof typeof AllowedClientMountPermissions];
+
 export const InstanceConfigNetworkConfig = {
     /**
      * The unspecified network configuration.
@@ -201,6 +221,26 @@ export const NfsExportPermissions = {
  * Export permissions.
  */
 export type NfsExportPermissions = (typeof NfsExportPermissions)[keyof typeof NfsExportPermissions];
+
+export const NfsShareStorageType = {
+    /**
+     * The storage type for this volume is unknown.
+     */
+    StorageTypeUnspecified: "STORAGE_TYPE_UNSPECIFIED",
+    /**
+     * The storage type for this volume is SSD.
+     */
+    Ssd: "SSD",
+    /**
+     * This storage type for this volume is HDD.
+     */
+    Hdd: "HDD",
+} as const;
+
+/**
+ * Immutable. The storage type of the underlying volume.
+ */
+export type NfsShareStorageType = (typeof NfsShareStorageType)[keyof typeof NfsShareStorageType];
 
 export const VolumeConfigProtocol = {
     /**

@@ -18,6 +18,7 @@ class ConnectionProfileArgs:
     def __init__(__self__, *,
                  connection_profile_id: pulumi.Input[str],
                  display_name: pulumi.Input[str],
+                 bigquery_profile: Optional[pulumi.Input['BigQueryProfileArgs']] = None,
                  force: Optional[pulumi.Input[bool]] = None,
                  forward_ssh_connectivity: Optional[pulumi.Input['ForwardSshTunnelConnectivityArgs']] = None,
                  gcs_profile: Optional[pulumi.Input['GcsProfileArgs']] = None,
@@ -25,6 +26,7 @@ class ConnectionProfileArgs:
                  location: Optional[pulumi.Input[str]] = None,
                  mysql_profile: Optional[pulumi.Input['MysqlProfileArgs']] = None,
                  oracle_profile: Optional[pulumi.Input['OracleProfileArgs']] = None,
+                 postgresql_profile: Optional[pulumi.Input['PostgresqlProfileArgs']] = None,
                  private_connectivity: Optional[pulumi.Input['PrivateConnectivityArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -34,12 +36,14 @@ class ConnectionProfileArgs:
         The set of arguments for constructing a ConnectionProfile resource.
         :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
+        :param pulumi.Input['BigQueryProfileArgs'] bigquery_profile: BigQuery Connection Profile configuration.
         :param pulumi.Input[bool] force: Optional. Create the connection profile without validating it.
         :param pulumi.Input['ForwardSshTunnelConnectivityArgs'] forward_ssh_connectivity: Forward SSH tunnel connectivity.
         :param pulumi.Input['GcsProfileArgs'] gcs_profile: Cloud Storage ConnectionProfile configuration.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
         :param pulumi.Input['MysqlProfileArgs'] mysql_profile: MySQL ConnectionProfile configuration.
         :param pulumi.Input['OracleProfileArgs'] oracle_profile: Oracle ConnectionProfile configuration.
+        :param pulumi.Input['PostgresqlProfileArgs'] postgresql_profile: PostgreSQL Connection Profile configuration.
         :param pulumi.Input['PrivateConnectivityArgs'] private_connectivity: Private connectivity.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input['StaticServiceIpConnectivityArgs'] static_service_ip_connectivity: Static Service IP connectivity.
@@ -47,6 +51,8 @@ class ConnectionProfileArgs:
         """
         pulumi.set(__self__, "connection_profile_id", connection_profile_id)
         pulumi.set(__self__, "display_name", display_name)
+        if bigquery_profile is not None:
+            pulumi.set(__self__, "bigquery_profile", bigquery_profile)
         if force is not None:
             pulumi.set(__self__, "force", force)
         if forward_ssh_connectivity is not None:
@@ -61,6 +67,8 @@ class ConnectionProfileArgs:
             pulumi.set(__self__, "mysql_profile", mysql_profile)
         if oracle_profile is not None:
             pulumi.set(__self__, "oracle_profile", oracle_profile)
+        if postgresql_profile is not None:
+            pulumi.set(__self__, "postgresql_profile", postgresql_profile)
         if private_connectivity is not None:
             pulumi.set(__self__, "private_connectivity", private_connectivity)
         if project is not None:
@@ -95,6 +103,18 @@ class ConnectionProfileArgs:
     @display_name.setter
     def display_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "display_name", value)
+
+    @property
+    @pulumi.getter(name="bigqueryProfile")
+    def bigquery_profile(self) -> Optional[pulumi.Input['BigQueryProfileArgs']]:
+        """
+        BigQuery Connection Profile configuration.
+        """
+        return pulumi.get(self, "bigquery_profile")
+
+    @bigquery_profile.setter
+    def bigquery_profile(self, value: Optional[pulumi.Input['BigQueryProfileArgs']]):
+        pulumi.set(self, "bigquery_profile", value)
 
     @property
     @pulumi.getter
@@ -178,6 +198,18 @@ class ConnectionProfileArgs:
         pulumi.set(self, "oracle_profile", value)
 
     @property
+    @pulumi.getter(name="postgresqlProfile")
+    def postgresql_profile(self) -> Optional[pulumi.Input['PostgresqlProfileArgs']]:
+        """
+        PostgreSQL Connection Profile configuration.
+        """
+        return pulumi.get(self, "postgresql_profile")
+
+    @postgresql_profile.setter
+    def postgresql_profile(self, value: Optional[pulumi.Input['PostgresqlProfileArgs']]):
+        pulumi.set(self, "postgresql_profile", value)
+
+    @property
     @pulumi.getter(name="privateConnectivity")
     def private_connectivity(self) -> Optional[pulumi.Input['PrivateConnectivityArgs']]:
         """
@@ -240,6 +272,7 @@ class ConnectionProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bigquery_profile: Optional[pulumi.Input[pulumi.InputType['BigQueryProfileArgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -249,6 +282,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  mysql_profile: Optional[pulumi.Input[pulumi.InputType['MysqlProfileArgs']]] = None,
                  oracle_profile: Optional[pulumi.Input[pulumi.InputType['OracleProfileArgs']]] = None,
+                 postgresql_profile: Optional[pulumi.Input[pulumi.InputType['PostgresqlProfileArgs']]] = None,
                  private_connectivity: Optional[pulumi.Input[pulumi.InputType['PrivateConnectivityArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -261,6 +295,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['BigQueryProfileArgs']] bigquery_profile: BigQuery Connection Profile configuration.
         :param pulumi.Input[str] connection_profile_id: Required. The connection profile identifier.
         :param pulumi.Input[str] display_name: Display name.
         :param pulumi.Input[bool] force: Optional. Create the connection profile without validating it.
@@ -269,6 +304,7 @@ class ConnectionProfile(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels.
         :param pulumi.Input[pulumi.InputType['MysqlProfileArgs']] mysql_profile: MySQL ConnectionProfile configuration.
         :param pulumi.Input[pulumi.InputType['OracleProfileArgs']] oracle_profile: Oracle ConnectionProfile configuration.
+        :param pulumi.Input[pulumi.InputType['PostgresqlProfileArgs']] postgresql_profile: PostgreSQL Connection Profile configuration.
         :param pulumi.Input[pulumi.InputType['PrivateConnectivityArgs']] private_connectivity: Private connectivity.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[pulumi.InputType['StaticServiceIpConnectivityArgs']] static_service_ip_connectivity: Static Service IP connectivity.
@@ -299,6 +335,7 @@ class ConnectionProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 bigquery_profile: Optional[pulumi.Input[pulumi.InputType['BigQueryProfileArgs']]] = None,
                  connection_profile_id: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  force: Optional[pulumi.Input[bool]] = None,
@@ -308,6 +345,7 @@ class ConnectionProfile(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  mysql_profile: Optional[pulumi.Input[pulumi.InputType['MysqlProfileArgs']]] = None,
                  oracle_profile: Optional[pulumi.Input[pulumi.InputType['OracleProfileArgs']]] = None,
+                 postgresql_profile: Optional[pulumi.Input[pulumi.InputType['PostgresqlProfileArgs']]] = None,
                  private_connectivity: Optional[pulumi.Input[pulumi.InputType['PrivateConnectivityArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
@@ -322,6 +360,7 @@ class ConnectionProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
 
+            __props__.__dict__["bigquery_profile"] = bigquery_profile
             if connection_profile_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_profile_id'")
             __props__.__dict__["connection_profile_id"] = connection_profile_id
@@ -335,6 +374,7 @@ class ConnectionProfile(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["mysql_profile"] = mysql_profile
             __props__.__dict__["oracle_profile"] = oracle_profile
+            __props__.__dict__["postgresql_profile"] = postgresql_profile
             __props__.__dict__["private_connectivity"] = private_connectivity
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
@@ -367,6 +407,7 @@ class ConnectionProfile(pulumi.CustomResource):
 
         __props__ = ConnectionProfileArgs.__new__(ConnectionProfileArgs)
 
+        __props__.__dict__["bigquery_profile"] = None
         __props__.__dict__["connection_profile_id"] = None
         __props__.__dict__["create_time"] = None
         __props__.__dict__["display_name"] = None
@@ -378,6 +419,7 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["mysql_profile"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["oracle_profile"] = None
+        __props__.__dict__["postgresql_profile"] = None
         __props__.__dict__["private_connectivity"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
@@ -385,6 +427,14 @@ class ConnectionProfile(pulumi.CustomResource):
         __props__.__dict__["update_time"] = None
         __props__.__dict__["validate_only"] = None
         return ConnectionProfile(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="bigqueryProfile")
+    def bigquery_profile(self) -> pulumi.Output['outputs.BigQueryProfileResponse']:
+        """
+        BigQuery Connection Profile configuration.
+        """
+        return pulumi.get(self, "bigquery_profile")
 
     @property
     @pulumi.getter(name="connectionProfileId")
@@ -470,6 +520,14 @@ class ConnectionProfile(pulumi.CustomResource):
         Oracle ConnectionProfile configuration.
         """
         return pulumi.get(self, "oracle_profile")
+
+    @property
+    @pulumi.getter(name="postgresqlProfile")
+    def postgresql_profile(self) -> pulumi.Output['outputs.PostgresqlProfileResponse']:
+        """
+        PostgreSQL Connection Profile configuration.
+        """
+        return pulumi.get(self, "postgresql_profile")
 
     @property
     @pulumi.getter(name="privateConnectivity")

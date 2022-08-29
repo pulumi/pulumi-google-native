@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
         public Input<Inputs.OracleSourceConfigArgs>? OracleSourceConfig { get; set; }
 
         /// <summary>
+        /// PostgreSQL data source configuration.
+        /// </summary>
+        [Input("postgresqlSourceConfig")]
+        public Input<Inputs.PostgresqlSourceConfigArgs>? PostgresqlSourceConfig { get; set; }
+
+        /// <summary>
         /// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
         /// </summary>
         [Input("sourceConnectionProfile", required: true)]

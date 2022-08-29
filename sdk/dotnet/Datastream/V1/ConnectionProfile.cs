@@ -17,6 +17,12 @@ namespace Pulumi.GoogleNative.Datastream.V1
     public partial class ConnectionProfile : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// BigQuery Connection Profile configuration.
+        /// </summary>
+        [Output("bigqueryProfile")]
+        public Output<Outputs.BigQueryProfileResponse> BigqueryProfile { get; private set; } = null!;
+
+        /// <summary>
         /// Required. The connection profile identifier.
         /// </summary>
         [Output("connectionProfileId")]
@@ -78,6 +84,12 @@ namespace Pulumi.GoogleNative.Datastream.V1
         /// </summary>
         [Output("oracleProfile")]
         public Output<Outputs.OracleProfileResponse> OracleProfile { get; private set; } = null!;
+
+        /// <summary>
+        /// PostgreSQL Connection Profile configuration.
+        /// </summary>
+        [Output("postgresqlProfile")]
+        public Output<Outputs.PostgresqlProfileResponse> PostgresqlProfile { get; private set; } = null!;
 
         /// <summary>
         /// Private connectivity.
@@ -164,6 +176,12 @@ namespace Pulumi.GoogleNative.Datastream.V1
     public sealed class ConnectionProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// BigQuery Connection Profile configuration.
+        /// </summary>
+        [Input("bigqueryProfile")]
+        public Input<Inputs.BigQueryProfileArgs>? BigqueryProfile { get; set; }
+
+        /// <summary>
         /// Required. The connection profile identifier.
         /// </summary>
         [Input("connectionProfileId", required: true)]
@@ -219,6 +237,12 @@ namespace Pulumi.GoogleNative.Datastream.V1
         /// </summary>
         [Input("oracleProfile")]
         public Input<Inputs.OracleProfileArgs>? OracleProfile { get; set; }
+
+        /// <summary>
+        /// PostgreSQL Connection Profile configuration.
+        /// </summary>
+        [Input("postgresqlProfile")]
+        public Input<Inputs.PostgresqlProfileArgs>? PostgresqlProfile { get; set; }
 
         /// <summary>
         /// Private connectivity.

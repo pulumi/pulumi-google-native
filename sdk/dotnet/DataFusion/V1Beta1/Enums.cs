@@ -160,7 +160,7 @@ namespace Pulumi.GoogleNative.DataFusion.V1Beta1
         /// </summary>
         public static VersionType TypePreview { get; } = new VersionType("TYPE_PREVIEW");
         /// <summary>
-        /// Version is available for public use
+        /// Version is available for public use Version is under development and not considered stable
         /// </summary>
         public static VersionType TypeGeneralAvailability { get; } = new VersionType("TYPE_GENERAL_AVAILABILITY");
 

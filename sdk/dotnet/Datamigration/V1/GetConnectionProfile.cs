@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
     public sealed class GetConnectionProfileResult
     {
         /// <summary>
+        /// An AlloyDB cluster connection profile.
+        /// </summary>
+        public readonly Outputs.AlloyDbConnectionProfileResponse Alloydb;
+        /// <summary>
         /// A CloudSQL database connection profile.
         /// </summary>
         public readonly Outputs.CloudSqlConnectionProfileResponse Cloudsql;
@@ -110,6 +114,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1
 
         [OutputConstructor]
         private GetConnectionProfileResult(
+            Outputs.AlloyDbConnectionProfileResponse alloydb,
+
             Outputs.CloudSqlConnectionProfileResponse cloudsql,
 
             string createTime,
@@ -132,6 +138,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1
 
             string updateTime)
         {
+            Alloydb = alloydb;
             Cloudsql = cloudsql;
             CreateTime = createTime;
             DisplayName = displayName;

@@ -17,6 +17,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
     public sealed class VlanAttachmentResponse
     {
         /// <summary>
+        /// Input only. Pairing key.
+        /// </summary>
+        public readonly string PairingKey;
+        /// <summary>
         /// The peer IP of the attachment.
         /// </summary>
         public readonly string PeerIp;
@@ -25,20 +29,30 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly string PeerVlanId;
         /// <summary>
+        /// The QOS policy applied to this VLAN attachment. This value should be preferred to using qos at vrf level.
+        /// </summary>
+        public readonly Outputs.QosPolicyResponse QosPolicy;
+        /// <summary>
         /// The router IP of the attachment.
         /// </summary>
         public readonly string RouterIp;
 
         [OutputConstructor]
         private VlanAttachmentResponse(
+            string pairingKey,
+
             string peerIp,
 
             string peerVlanId,
 
+            Outputs.QosPolicyResponse qosPolicy,
+
             string routerIp)
         {
+            PairingKey = pairingKey;
             PeerIp = peerIp;
             PeerVlanId = peerVlanId;
+            QosPolicy = qosPolicy;
             RouterIp = routerIp;
         }
     }

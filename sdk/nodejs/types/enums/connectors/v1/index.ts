@@ -47,6 +47,10 @@ export const AuthConfigAuthType = {
      * SSH Public Key Authentication
      */
     SshPublicKey: "SSH_PUBLIC_KEY",
+    /**
+     * Oauth 2.0 Authorization Code Flow
+     */
+    Oauth2AuthCodeFlow: "OAUTH2_AUTH_CODE_FLOW",
 } as const;
 
 /**

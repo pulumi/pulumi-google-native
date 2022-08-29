@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         /// </summary>
         public readonly string Host;
         /// <summary>
+        /// If the source is a Cloud SQL database, this field indicates the network architecture it's associated with.
+        /// </summary>
+        public readonly string NetworkArchitecture;
+        /// <summary>
         /// Input only. The password for the user that Database Migration Service will be using to connect to the database. This field is not returned on request, and the value is encrypted when stored in Database Migration Service.
         /// </summary>
         public readonly string Password;
@@ -51,6 +55,8 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
 
             string host,
 
+            string networkArchitecture,
+
             string password,
 
             bool passwordSet,
@@ -63,6 +69,7 @@ namespace Pulumi.GoogleNative.Datamigration.V1.Outputs
         {
             CloudSqlId = cloudSqlId;
             Host = host;
+            NetworkArchitecture = networkArchitecture;
             Password = password;
             PasswordSet = passwordSet;
             Port = port;

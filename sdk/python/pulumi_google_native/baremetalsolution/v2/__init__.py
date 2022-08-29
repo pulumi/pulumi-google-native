@@ -7,8 +7,10 @@ import typing
 # Export this package's modules as members:
 from ._enums import *
 from .get_instance import *
+from .get_nfs_share import *
 from .get_provisioning_config import *
 from .instance import *
+from .nfs_share import *
 from .provisioning_config import *
 from ._inputs import *
 from . import outputs

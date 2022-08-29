@@ -25,6 +25,10 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
         /// </summary>
         public readonly Outputs.OracleSourceConfigResponse OracleSourceConfig;
         /// <summary>
+        /// PostgreSQL data source configuration.
+        /// </summary>
+        public readonly Outputs.PostgresqlSourceConfigResponse PostgresqlSourceConfig;
+        /// <summary>
         /// Source connection profile resoource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
         /// </summary>
         public readonly string SourceConnectionProfile;
@@ -35,10 +39,13 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
 
             Outputs.OracleSourceConfigResponse oracleSourceConfig,
 
+            Outputs.PostgresqlSourceConfigResponse postgresqlSourceConfig,
+
             string sourceConnectionProfile)
         {
             MysqlSourceConfig = mysqlSourceConfig;
             OracleSourceConfig = oracleSourceConfig;
+            PostgresqlSourceConfig = postgresqlSourceConfig;
             SourceConnectionProfile = sourceConnectionProfile;
         }
     }

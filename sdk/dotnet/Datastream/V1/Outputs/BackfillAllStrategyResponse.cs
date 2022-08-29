@@ -24,15 +24,22 @@ namespace Pulumi.GoogleNative.Datastream.V1.Outputs
         /// Oracle data source objects to avoid backfilling.
         /// </summary>
         public readonly Outputs.OracleRdbmsResponse OracleExcludedObjects;
+        /// <summary>
+        /// PostgreSQL data source objects to avoid backfilling.
+        /// </summary>
+        public readonly Outputs.PostgresqlRdbmsResponse PostgresqlExcludedObjects;
 
         [OutputConstructor]
         private BackfillAllStrategyResponse(
             Outputs.MysqlRdbmsResponse mysqlExcludedObjects,
 
-            Outputs.OracleRdbmsResponse oracleExcludedObjects)
+            Outputs.OracleRdbmsResponse oracleExcludedObjects,
+
+            Outputs.PostgresqlRdbmsResponse postgresqlExcludedObjects)
         {
             MysqlExcludedObjects = mysqlExcludedObjects;
             OracleExcludedObjects = oracleExcludedObjects;
+            PostgresqlExcludedObjects = postgresqlExcludedObjects;
         }
     }
 }

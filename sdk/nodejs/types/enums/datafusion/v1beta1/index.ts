@@ -80,7 +80,7 @@ export const VersionType = {
      */
     TypePreview: "TYPE_PREVIEW",
     /**
-     * Version is available for public use
+     * Version is available for public use Version is under development and not considered stable
      */
     TypeGeneralAvailability: "TYPE_GENERAL_AVAILABILITY",
 } as const;

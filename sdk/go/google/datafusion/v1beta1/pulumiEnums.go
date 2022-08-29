@@ -529,7 +529,7 @@ const (
 	VersionTypeTypeUnspecified = VersionType("TYPE_UNSPECIFIED")
 	// Version is under development and not considered stable
 	VersionTypeTypePreview = VersionType("TYPE_PREVIEW")
-	// Version is available for public use
+	// Version is available for public use Version is under development and not considered stable
 	VersionTypeTypeGeneralAvailability = VersionType("TYPE_GENERAL_AVAILABILITY")
 )
 

@@ -232,6 +232,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// Amazon Aurora.
         /// </summary>
         public static ConnectionProfileProvider Aurora { get; } = new ConnectionProfileProvider("AURORA");
+        /// <summary>
+        /// AlloyDB.
+        /// </summary>
+        public static ConnectionProfileProvider Alloydb { get; } = new ConnectionProfileProvider("ALLOYDB");
 
         public static bool operator ==(ConnectionProfileProvider left, ConnectionProfileProvider right) => left.Equals(right);
         public static bool operator !=(ConnectionProfileProvider left, ConnectionProfileProvider right) => !left.Equals(right);
@@ -379,6 +383,10 @@ namespace Pulumi.GoogleNative.Datamigration.V1
         /// Amazon Aurora.
         /// </summary>
         public static DatabaseTypeProvider Aurora { get; } = new DatabaseTypeProvider("AURORA");
+        /// <summary>
+        /// AlloyDB.
+        /// </summary>
+        public static DatabaseTypeProvider Alloydb { get; } = new DatabaseTypeProvider("ALLOYDB");
 
         public static bool operator ==(DatabaseTypeProvider left, DatabaseTypeProvider right) => left.Equals(right);
         public static bool operator !=(DatabaseTypeProvider left, DatabaseTypeProvider right) => !left.Equals(right);

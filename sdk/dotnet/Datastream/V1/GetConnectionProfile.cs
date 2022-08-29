@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Datastream.V1
     public sealed class GetConnectionProfileResult
     {
         /// <summary>
+        /// BigQuery Connection Profile configuration.
+        /// </summary>
+        public readonly Outputs.BigQueryProfileResponse BigqueryProfile;
+        /// <summary>
         /// The create time of the resource.
         /// </summary>
         public readonly string CreateTime;
@@ -96,6 +100,10 @@ namespace Pulumi.GoogleNative.Datastream.V1
         /// </summary>
         public readonly Outputs.OracleProfileResponse OracleProfile;
         /// <summary>
+        /// PostgreSQL Connection Profile configuration.
+        /// </summary>
+        public readonly Outputs.PostgresqlProfileResponse PostgresqlProfile;
+        /// <summary>
         /// Private connectivity.
         /// </summary>
         public readonly Outputs.PrivateConnectivityResponse PrivateConnectivity;
@@ -110,6 +118,8 @@ namespace Pulumi.GoogleNative.Datastream.V1
 
         [OutputConstructor]
         private GetConnectionProfileResult(
+            Outputs.BigQueryProfileResponse bigqueryProfile,
+
             string createTime,
 
             string displayName,
@@ -126,12 +136,15 @@ namespace Pulumi.GoogleNative.Datastream.V1
 
             Outputs.OracleProfileResponse oracleProfile,
 
+            Outputs.PostgresqlProfileResponse postgresqlProfile,
+
             Outputs.PrivateConnectivityResponse privateConnectivity,
 
             Outputs.StaticServiceIpConnectivityResponse staticServiceIpConnectivity,
 
             string updateTime)
         {
+            BigqueryProfile = bigqueryProfile;
             CreateTime = createTime;
             DisplayName = displayName;
             ForwardSshConnectivity = forwardSshConnectivity;
@@ -140,6 +153,7 @@ namespace Pulumi.GoogleNative.Datastream.V1
             MysqlProfile = mysqlProfile;
             Name = name;
             OracleProfile = oracleProfile;
+            PostgresqlProfile = postgresqlProfile;
             PrivateConnectivity = privateConnectivity;
             StaticServiceIpConnectivity = staticServiceIpConnectivity;
             UpdateTime = updateTime;

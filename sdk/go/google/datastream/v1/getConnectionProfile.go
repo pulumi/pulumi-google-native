@@ -27,6 +27,8 @@ type LookupConnectionProfileArgs struct {
 }
 
 type LookupConnectionProfileResult struct {
+	// BigQuery Connection Profile configuration.
+	BigqueryProfile BigQueryProfileResponse `pulumi:"bigqueryProfile"`
 	// The create time of the resource.
 	CreateTime string `pulumi:"createTime"`
 	// Display name.
@@ -43,6 +45,8 @@ type LookupConnectionProfileResult struct {
 	Name string `pulumi:"name"`
 	// Oracle ConnectionProfile configuration.
 	OracleProfile OracleProfileResponse `pulumi:"oracleProfile"`
+	// PostgreSQL Connection Profile configuration.
+	PostgresqlProfile PostgresqlProfileResponse `pulumi:"postgresqlProfile"`
 	// Private connectivity.
 	PrivateConnectivity PrivateConnectivityResponse `pulumi:"privateConnectivity"`
 	// Static Service IP connectivity.
@@ -88,6 +92,11 @@ func (o LookupConnectionProfileResultOutput) ToLookupConnectionProfileResultOutp
 	return o
 }
 
+// BigQuery Connection Profile configuration.
+func (o LookupConnectionProfileResultOutput) BigqueryProfile() BigQueryProfileResponseOutput {
+	return o.ApplyT(func(v LookupConnectionProfileResult) BigQueryProfileResponse { return v.BigqueryProfile }).(BigQueryProfileResponseOutput)
+}
+
 // The create time of the resource.
 func (o LookupConnectionProfileResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupConnectionProfileResult) string { return v.CreateTime }).(pulumi.StringOutput)
@@ -128,6 +137,11 @@ func (o LookupConnectionProfileResultOutput) Name() pulumi.StringOutput {
 // Oracle ConnectionProfile configuration.
 func (o LookupConnectionProfileResultOutput) OracleProfile() OracleProfileResponseOutput {
 	return o.ApplyT(func(v LookupConnectionProfileResult) OracleProfileResponse { return v.OracleProfile }).(OracleProfileResponseOutput)
+}
+
+// PostgreSQL Connection Profile configuration.
+func (o LookupConnectionProfileResultOutput) PostgresqlProfile() PostgresqlProfileResponseOutput {
+	return o.ApplyT(func(v LookupConnectionProfileResult) PostgresqlProfileResponse { return v.PostgresqlProfile }).(PostgresqlProfileResponseOutput)
 }
 
 // Private connectivity.

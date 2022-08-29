@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
     public partial class ConnectionProfile : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// An AlloyDB cluster connection profile.
+        /// </summary>
+        [Output("alloydb")]
+        public Output<Outputs.AlloyDbConnectionProfileResponse> Alloydb { get; private set; } = null!;
+
+        /// <summary>
         /// A CloudSQL database connection profile.
         /// </summary>
         [Output("cloudsql")]
@@ -150,6 +156,12 @@ namespace Pulumi.GoogleNative.Datamigration.V1
 
     public sealed class ConnectionProfileArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// An AlloyDB cluster connection profile.
+        /// </summary>
+        [Input("alloydb")]
+        public Input<Inputs.AlloyDbConnectionProfileArgs>? Alloydb { get; set; }
+
         /// <summary>
         /// A CloudSQL database connection profile.
         /// </summary>

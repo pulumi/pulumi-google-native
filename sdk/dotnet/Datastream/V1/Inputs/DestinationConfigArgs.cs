@@ -16,6 +16,12 @@ namespace Pulumi.GoogleNative.Datastream.V1.Inputs
     public sealed class DestinationConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// BigQuery destination configuration.
+        /// </summary>
+        [Input("bigqueryDestinationConfig")]
+        public Input<Inputs.BigQueryDestinationConfigArgs>? BigqueryDestinationConfig { get; set; }
+
+        /// <summary>
         /// Destination connection profile resource. Format: `projects/{project}/locations/{location}/connectionProfiles/{name}`
         /// </summary>
         [Input("destinationConnectionProfile", required: true)]

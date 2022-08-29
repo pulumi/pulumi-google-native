@@ -5,6 +5,7 @@
 from enum import Enum
 
 __all__ = [
+    'AllowedClientMountPermissions',
     'InstanceConfigNetworkConfig',
     'LogicalNetworkInterfaceNetworkType',
     'LunMultiprotocolType',
@@ -14,12 +15,31 @@ __all__ = [
     'NetworkConfigServiceCidr',
     'NetworkConfigType',
     'NfsExportPermissions',
+    'NfsShareStorageType',
     'VolumeConfigProtocol',
     'VolumeConfigType',
     'VolumeSnapshotAutoDeleteBehavior',
     'VolumeState',
     'VolumeStorageType',
 ]
+
+
+class AllowedClientMountPermissions(str, Enum):
+    """
+    Mount permissions.
+    """
+    MOUNT_PERMISSIONS_UNSPECIFIED = "MOUNT_PERMISSIONS_UNSPECIFIED"
+    """
+    Permissions were not specified.
+    """
+    READ = "READ"
+    """
+    NFS share can be mount with read-only permissions.
+    """
+    READ_WRITE = "READ_WRITE"
+    """
+    NFS share can be mount with read-write permissions.
+    """
 
 
 class InstanceConfigNetworkConfig(str, Enum):
@@ -201,6 +221,24 @@ class NfsExportPermissions(str, Enum):
     READ_WRITE = "READ_WRITE"
     """
     Read-write permission.
+    """
+
+
+class NfsShareStorageType(str, Enum):
+    """
+    Immutable. The storage type of the underlying volume.
+    """
+    STORAGE_TYPE_UNSPECIFIED = "STORAGE_TYPE_UNSPECIFIED"
+    """
+    The storage type for this volume is unknown.
+    """
+    SSD = "SSD"
+    """
+    The storage type for this volume is SSD.
+    """
+    HDD = "HDD"
+    """
+    This storage type for this volume is HDD.
     """
 
 

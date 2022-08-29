@@ -37,6 +37,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
     }
 
     /**
+     * BigQuery Connection Profile configuration.
+     */
+    public readonly bigqueryProfile!: pulumi.Output<outputs.datastream.v1.BigQueryProfileResponse>;
+    /**
      * Required. The connection profile identifier.
      */
     public readonly connectionProfileId!: pulumi.Output<string>;
@@ -78,6 +82,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
      */
     public readonly oracleProfile!: pulumi.Output<outputs.datastream.v1.OracleProfileResponse>;
     /**
+     * PostgreSQL Connection Profile configuration.
+     */
+    public readonly postgresqlProfile!: pulumi.Output<outputs.datastream.v1.PostgresqlProfileResponse>;
+    /**
      * Private connectivity.
      */
     public readonly privateConnectivity!: pulumi.Output<outputs.datastream.v1.PrivateConnectivityResponse>;
@@ -116,6 +124,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             if ((!args || args.displayName === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'displayName'");
             }
+            resourceInputs["bigqueryProfile"] = args ? args.bigqueryProfile : undefined;
             resourceInputs["connectionProfileId"] = args ? args.connectionProfileId : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["force"] = args ? args.force : undefined;
@@ -125,6 +134,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["mysqlProfile"] = args ? args.mysqlProfile : undefined;
             resourceInputs["oracleProfile"] = args ? args.oracleProfile : undefined;
+            resourceInputs["postgresqlProfile"] = args ? args.postgresqlProfile : undefined;
             resourceInputs["privateConnectivity"] = args ? args.privateConnectivity : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
@@ -134,6 +144,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         } else {
+            resourceInputs["bigqueryProfile"] = undefined /*out*/;
             resourceInputs["connectionProfileId"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["displayName"] = undefined /*out*/;
@@ -145,6 +156,7 @@ export class ConnectionProfile extends pulumi.CustomResource {
             resourceInputs["mysqlProfile"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["oracleProfile"] = undefined /*out*/;
+            resourceInputs["postgresqlProfile"] = undefined /*out*/;
             resourceInputs["privateConnectivity"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
@@ -163,6 +175,10 @@ export class ConnectionProfile extends pulumi.CustomResource {
  * The set of arguments for constructing a ConnectionProfile resource.
  */
 export interface ConnectionProfileArgs {
+    /**
+     * BigQuery Connection Profile configuration.
+     */
+    bigqueryProfile?: pulumi.Input<inputs.datastream.v1.BigQueryProfileArgs>;
     /**
      * Required. The connection profile identifier.
      */
@@ -196,6 +212,10 @@ export interface ConnectionProfileArgs {
      * Oracle ConnectionProfile configuration.
      */
     oracleProfile?: pulumi.Input<inputs.datastream.v1.OracleProfileArgs>;
+    /**
+     * PostgreSQL Connection Profile configuration.
+     */
+    postgresqlProfile?: pulumi.Input<inputs.datastream.v1.PostgresqlProfileArgs>;
     /**
      * Private connectivity.
      */

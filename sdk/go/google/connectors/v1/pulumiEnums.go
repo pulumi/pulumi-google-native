@@ -195,6 +195,8 @@ const (
 	AuthConfigAuthTypeOauth2ClientCredentials = AuthConfigAuthType("OAUTH2_CLIENT_CREDENTIALS")
 	// SSH Public Key Authentication
 	AuthConfigAuthTypeSshPublicKey = AuthConfigAuthType("SSH_PUBLIC_KEY")
+	// Oauth 2.0 Authorization Code Flow
+	AuthConfigAuthTypeOauth2AuthCodeFlow = AuthConfigAuthType("OAUTH2_AUTH_CODE_FLOW")
 )
 
 func (AuthConfigAuthType) ElementType() reflect.Type {
