@@ -172,9 +172,9 @@ func getCredentials(ctx context.Context, c Config) (*google.Credentials, error) 
 
 	defaultTS, err := google.DefaultTokenSource(context.Background(), c.Scopes...)
 	if err != nil {
-		return nil, fmt.Errorf("Attempted to load application default credentials since neither "+
-			"`credentials` nor `access_token` was set in the provider block.  No credentials loaded. To use your "+
-			"gcloud credentials, run 'gcloud auth application-default login'.  Original error: %w", err)
+		return nil, fmt.Errorf("make sure you have:\n\n" +
+		" \t • configured the provider as per: https://www.pulumi.com/registry/packages/google-native/installation-configuration/ \n" +
+		" \t • to use your gcloud credentials: run 'gcloud auth application-default login'\n\n original error: %v", err)
 	}
 	return &google.Credentials{
 		TokenSource: defaultTS,
