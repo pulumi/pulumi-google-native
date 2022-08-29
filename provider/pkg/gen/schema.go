@@ -857,6 +857,7 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 			Properties:  properties,
 			Required:    requiredProperties.SortedValues(),
 		},
+		Methods:         map[string]string{},
 		InputProperties: inputProperties,
 		RequiredInputs:  requiredInputProperties.SortedValues(),
 	}
@@ -867,9 +868,6 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 		}
 	}
 
-	if resourceSpec.Methods == nil {
-		resourceSpec.Methods = map[string]string{}
-	}
 	switch resourceTok {
 	case "google-native:container/v1:Cluster":
 		resourceSpec.Methods["getKubeconfig"] = "google-native:container/v1:Cluster/getKubeconfig"

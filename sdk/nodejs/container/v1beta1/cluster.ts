@@ -498,7 +498,7 @@ export class Cluster extends pulumi.CustomResource {
      * Generate a kubeconfig for cluster authentication.
      *
      * The kubeconfig generated is automatically stringified for ease of use with the pulumi/kubernetes provider.
-     * The kubeconfig uses the new `gke-gcloud-auth-plugin` authentication plugin as recommended by google.
+     * The kubeconfig uses the new `gke-gcloud-auth-plugin` authentication plugin as recommended by Google.
      *
      * See for more details:
      * - https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
