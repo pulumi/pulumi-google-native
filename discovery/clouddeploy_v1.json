@@ -1229,7 +1229,7 @@
       }
     }
   },
-  "revision": "20220811",
+  "revision": "20220818",
   "rootUrl": "https://clouddeploy.googleapis.com/",
   "schemas": {
     "AbandonReleaseRequest": {
