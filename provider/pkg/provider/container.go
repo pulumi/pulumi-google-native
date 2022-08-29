@@ -807,8 +807,8 @@ func getKubeConfigCallHandler(label, tok string, callArgs resource.PropertyMap) 
 			kubeconfigFmt,
 			state.GetOutput("name"),
 			state.GetOutput("endpoint"),
-			state.GetOutput("masterAuth").ApplyT(func(ma interface{}) interface{} {
-				return ma.(map[string]interface{})["clusterCaCertificate"]
+			state.GetOutput("masterAuth").ApplyT(func(ma interface{}) string {
+				return ma.(map[string]interface{})["clusterCaCertificate"].(string)
 			}))
 		result := clusterGetKubeconfigResult{
 			Kubeconfig: kubeconfig,
