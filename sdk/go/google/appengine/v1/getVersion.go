@@ -28,7 +28,7 @@ type LookupVersionArgs struct {
 }
 
 type LookupVersionResult struct {
-	// Serving configuration for Cloud Endpoints (https://cloud.google.com/endpoints/).Only returned in GET requests if view=FULL is set.
+	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
 	ApiConfig ApiConfigHandlerResponse `pulumi:"apiConfig"`
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
 	AppEngineApis bool `pulumi:"appEngineApis"`
@@ -148,7 +148,7 @@ func (o LookupVersionResultOutput) ToLookupVersionResultOutputWithContext(ctx co
 	return o
 }
 
-// Serving configuration for Cloud Endpoints (https://cloud.google.com/endpoints/).Only returned in GET requests if view=FULL is set.
+// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
 func (o LookupVersionResultOutput) ApiConfig() ApiConfigHandlerResponseOutput {
 	return o.ApplyT(func(v LookupVersionResult) ApiConfigHandlerResponse { return v.ApiConfig }).(ApiConfigHandlerResponseOutput)
 }

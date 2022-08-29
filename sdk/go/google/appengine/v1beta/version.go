@@ -16,7 +16,7 @@ import (
 type Version struct {
 	pulumi.CustomResourceState
 
-	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
+	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
 	ApiConfig ApiConfigHandlerResponseOutput `pulumi:"apiConfig"`
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
 	AppEngineApis pulumi.BoolOutput   `pulumi:"appEngineApis"`
@@ -150,7 +150,7 @@ func (VersionState) ElementType() reflect.Type {
 }
 
 type versionArgs struct {
-	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
+	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
 	ApiConfig *ApiConfigHandler `pulumi:"apiConfig"`
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
 	AppEngineApis *bool  `pulumi:"appEngineApis"`
@@ -228,7 +228,7 @@ type versionArgs struct {
 
 // The set of arguments for constructing a Version resource.
 type VersionArgs struct {
-	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
+	// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
 	ApiConfig ApiConfigHandlerPtrInput
 	// Allows App Engine second generation runtimes to access the legacy bundled services.
 	AppEngineApis pulumi.BoolPtrInput
@@ -341,7 +341,7 @@ func (o VersionOutput) ToVersionOutputWithContext(ctx context.Context) VersionOu
 	return o
 }
 
-// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
+// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
 func (o VersionOutput) ApiConfig() ApiConfigHandlerResponseOutput {
 	return o.ApplyT(func(v *Version) ApiConfigHandlerResponseOutput { return v.ApiConfig }).(ApiConfigHandlerResponseOutput)
 }

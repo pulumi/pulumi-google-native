@@ -37,7 +37,7 @@ export class Version extends pulumi.CustomResource {
     }
 
     /**
-     * Serving configuration for Cloud Endpoints (https://cloud.google.com/endpoints/).Only returned in GET requests if view=FULL is set.
+     * Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
      */
     public readonly apiConfig!: pulumi.Output<outputs.appengine.v1.ApiConfigHandlerResponse>;
     /**
@@ -311,7 +311,7 @@ export class Version extends pulumi.CustomResource {
  */
 export interface VersionArgs {
     /**
-     * Serving configuration for Cloud Endpoints (https://cloud.google.com/endpoints/).Only returned in GET requests if view=FULL is set.
+     * Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
      */
     apiConfig?: pulumi.Input<inputs.appengine.v1.ApiConfigHandlerArgs>;
     /**

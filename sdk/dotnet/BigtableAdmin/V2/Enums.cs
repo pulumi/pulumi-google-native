@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.BigtableAdmin.V2
     }
 
     /// <summary>
-    /// Required. The type of the instance. Defaults to `PRODUCTION`.
+    /// The type of the instance. Defaults to `PRODUCTION`.
     /// </summary>
     [EnumType]
     public readonly struct InstanceType : IEquatable<InstanceType>

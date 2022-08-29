@@ -11,7 +11,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1.Outputs
 {
 
     /// <summary>
-    /// Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API handlers.
+    /// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers.
     /// </summary>
     [OutputType]
     public sealed class ApiConfigHandlerResponse

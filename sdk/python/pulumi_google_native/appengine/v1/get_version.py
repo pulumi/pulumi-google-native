@@ -146,7 +146,7 @@ class GetVersionResult:
     @pulumi.getter(name="apiConfig")
     def api_config(self) -> 'outputs.ApiConfigHandlerResponse':
         """
-        Serving configuration for Cloud Endpoints (https://cloud.google.com/endpoints/).Only returned in GET requests if view=FULL is set.
+        Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
         """
         return pulumi.get(self, "api_config")
 

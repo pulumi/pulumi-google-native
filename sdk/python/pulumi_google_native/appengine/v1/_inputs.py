@@ -55,7 +55,7 @@ class ApiConfigHandlerArgs:
                  security_level: Optional[pulumi.Input['ApiConfigHandlerSecurityLevel']] = None,
                  url: Optional[pulumi.Input[str]] = None):
         """
-        Cloud Endpoints (https://cloud.google.com/endpoints/) configuration for API handlers.
+        Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers.
         :param pulumi.Input['ApiConfigHandlerAuthFailAction'] auth_fail_action: Action to take when users access resources that require authentication. Defaults to redirect.
         :param pulumi.Input['ApiConfigHandlerLogin'] login: Level of login required to access this resource. Defaults to optional.
         :param pulumi.Input[str] script: Path to the script from the application root directory.
@@ -710,7 +710,7 @@ class EndpointsApiServiceArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  rollout_strategy: Optional[pulumi.Input['EndpointsApiServiceRolloutStrategy']] = None):
         """
-        Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
+        Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
         :param pulumi.Input[str] config_id: Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".By default, the rollout strategy for Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up with a particular configuration ID. When a new configuration is rolled out, Endpoints must be given the new configuration ID. The config_id field is used to give the configuration ID and is required in this case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED. When using this, Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id must be omitted.
         :param pulumi.Input[bool] disable_trace_sampling: Enable or disable trace sampling. By default, this is set to false for enabled.
         :param pulumi.Input[str] name: Endpoints service name which is the name of the "service" resource in the Service Management API. For example "myapi.endpoints.myproject.cloud.goog"

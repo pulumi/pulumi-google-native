@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers.
 type ApiConfigHandler struct {
 	// Action to take when users access resources that require authentication. Defaults to redirect.
 	AuthFailAction *ApiConfigHandlerAuthFailAction `pulumi:"authFailAction"`
@@ -35,7 +35,7 @@ type ApiConfigHandlerInput interface {
 	ToApiConfigHandlerOutputWithContext(context.Context) ApiConfigHandlerOutput
 }
 
-// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers.
 type ApiConfigHandlerArgs struct {
 	// Action to take when users access resources that require authentication. Defaults to redirect.
 	AuthFailAction ApiConfigHandlerAuthFailActionPtrInput `pulumi:"authFailAction"`
@@ -102,7 +102,7 @@ func (i *apiConfigHandlerPtrType) ToApiConfigHandlerPtrOutputWithContext(ctx con
 	return pulumi.ToOutputWithContext(ctx, i).(ApiConfigHandlerPtrOutput)
 }
 
-// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers.
 type ApiConfigHandlerOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigHandlerOutput) ElementType() reflect.Type {
@@ -226,7 +226,7 @@ func (o ApiConfigHandlerPtrOutput) Url() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers.
 type ApiConfigHandlerResponse struct {
 	// Action to take when users access resources that require authentication. Defaults to redirect.
 	AuthFailAction string `pulumi:"authFailAction"`
@@ -240,7 +240,7 @@ type ApiConfigHandlerResponse struct {
 	Url string `pulumi:"url"`
 }
 
-// Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/) configuration for API handlers.
+// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration for API handlers.
 type ApiConfigHandlerResponseOutput struct{ *pulumi.OutputState }
 
 func (ApiConfigHandlerResponseOutput) ElementType() reflect.Type {
@@ -2774,7 +2774,7 @@ func (o DiskUtilizationResponseOutput) TargetWriteOpsPerSecond() pulumi.IntOutpu
 	return o.ApplyT(func(v DiskUtilizationResponse) int { return v.TargetWriteOpsPerSecond }).(pulumi.IntOutput)
 }
 
-// Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
+// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
 type EndpointsApiService struct {
 	// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".By default, the rollout strategy for Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up with a particular configuration ID. When a new configuration is rolled out, Endpoints must be given the new configuration ID. The config_id field is used to give the configuration ID and is required in this case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED. When using this, Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id must be omitted.
 	ConfigId *string `pulumi:"configId"`
@@ -2797,7 +2797,7 @@ type EndpointsApiServiceInput interface {
 	ToEndpointsApiServiceOutputWithContext(context.Context) EndpointsApiServiceOutput
 }
 
-// Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
+// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
 type EndpointsApiServiceArgs struct {
 	// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".By default, the rollout strategy for Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up with a particular configuration ID. When a new configuration is rolled out, Endpoints must be given the new configuration ID. The config_id field is used to give the configuration ID and is required in this case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED. When using this, Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id must be omitted.
 	ConfigId pulumi.StringPtrInput `pulumi:"configId"`
@@ -2862,7 +2862,7 @@ func (i *endpointsApiServicePtrType) ToEndpointsApiServicePtrOutputWithContext(c
 	return pulumi.ToOutputWithContext(ctx, i).(EndpointsApiServicePtrOutput)
 }
 
-// Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
+// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
 type EndpointsApiServiceOutput struct{ *pulumi.OutputState }
 
 func (EndpointsApiServiceOutput) ElementType() reflect.Type {
@@ -2971,7 +2971,7 @@ func (o EndpointsApiServicePtrOutput) RolloutStrategy() EndpointsApiServiceRollo
 	}).(EndpointsApiServiceRolloutStrategyPtrOutput)
 }
 
-// Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
+// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
 type EndpointsApiServiceResponse struct {
 	// Endpoints service configuration ID as specified by the Service Management API. For example "2016-09-19r1".By default, the rollout strategy for Endpoints is RolloutStrategy.FIXED. This means that Endpoints starts up with a particular configuration ID. When a new configuration is rolled out, Endpoints must be given the new configuration ID. The config_id field is used to give the configuration ID and is required in this case.Endpoints also has a rollout strategy called RolloutStrategy.MANAGED. When using this, Endpoints fetches the latest configuration and does not need the configuration ID. In this case, config_id must be omitted.
 	ConfigId string `pulumi:"configId"`
@@ -2983,7 +2983,7 @@ type EndpointsApiServiceResponse struct {
 	RolloutStrategy string `pulumi:"rolloutStrategy"`
 }
 
-// Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
+// Google Cloud Endpoints (https://cloud.google.com/endpoints) configuration. The Endpoints API Service provides tooling for serving Open API and gRPC endpoints via an NGINX proxy. Only valid for App Engine Flexible environment deployments.The fields here refer to the name and configuration ID of a "service" resource in the Service Management API (https://cloud.google.com/service-management/overview).
 type EndpointsApiServiceResponseOutput struct{ *pulumi.OutputState }
 
 func (EndpointsApiServiceResponseOutput) ElementType() reflect.Type {

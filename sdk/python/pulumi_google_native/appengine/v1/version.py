@@ -56,7 +56,7 @@ class VersionArgs:
                  zones: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Version resource.
-        :param pulumi.Input['ApiConfigHandlerArgs'] api_config: Serving configuration for Cloud Endpoints (https://cloud.google.com/endpoints/).Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input['ApiConfigHandlerArgs'] api_config: Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
         :param pulumi.Input['AutomaticScalingArgs'] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
         :param pulumi.Input['BasicScalingArgs'] basic_scaling: A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -190,7 +190,7 @@ class VersionArgs:
     @pulumi.getter(name="apiConfig")
     def api_config(self) -> Optional[pulumi.Input['ApiConfigHandlerArgs']]:
         """
-        Serving configuration for Cloud Endpoints (https://cloud.google.com/endpoints/).Only returned in GET requests if view=FULL is set.
+        Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
         """
         return pulumi.get(self, "api_config")
 
@@ -656,7 +656,7 @@ class Version(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['ApiConfigHandlerArgs']] api_config: Serving configuration for Cloud Endpoints (https://cloud.google.com/endpoints/).Only returned in GET requests if view=FULL is set.
+        :param pulumi.Input[pulumi.InputType['ApiConfigHandlerArgs']] api_config: Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
         :param pulumi.Input[bool] app_engine_apis: Allows App Engine second generation runtimes to access the legacy bundled services.
         :param pulumi.Input[pulumi.InputType['AutomaticScalingArgs']] automatic_scaling: Automatic scaling is based on request rate, response latencies, and other application metrics. Instances are dynamically created and destroyed as needed in order to handle traffic.
         :param pulumi.Input[pulumi.InputType['BasicScalingArgs']] basic_scaling: A service with basic scaling will create an instance when the application receives a request. The instance will be turned down when the app becomes idle. Basic scaling is ideal for work that is intermittent or driven by user activity.
@@ -883,7 +883,7 @@ class Version(pulumi.CustomResource):
     @pulumi.getter(name="apiConfig")
     def api_config(self) -> pulumi.Output['outputs.ApiConfigHandlerResponse']:
         """
-        Serving configuration for Cloud Endpoints (https://cloud.google.com/endpoints/).Only returned in GET requests if view=FULL is set.
+        Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
         """
         return pulumi.get(self, "api_config")
 

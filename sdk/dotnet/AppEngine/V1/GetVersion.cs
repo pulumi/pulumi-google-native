@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.AppEngine.V1
     public sealed class GetVersionResult
     {
         /// <summary>
-        /// Serving configuration for Cloud Endpoints (https://cloud.google.com/endpoints/).Only returned in GET requests if view=FULL is set.
+        /// Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
         /// </summary>
         public readonly Outputs.ApiConfigHandlerResponse ApiConfig;
         /// <summary>

@@ -31,7 +31,7 @@ export interface GetVersionArgs {
 
 export interface GetVersionResult {
     /**
-     * Serving configuration for Google Cloud Endpoints (https://cloud.google.com/appengine/docs/python/endpoints/).Only returned in GET requests if view=FULL is set.
+     * Serving configuration for Google Cloud Endpoints (https://cloud.google.com/endpoints).Only returned in GET requests if view=FULL is set.
      */
     readonly apiConfig: outputs.appengine.v1beta.ApiConfigHandlerResponse;
     /**
