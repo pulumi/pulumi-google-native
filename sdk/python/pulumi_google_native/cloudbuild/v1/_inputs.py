@@ -504,6 +504,8 @@ class BuildOptionsArgs:
 class BuildStepArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[str],
+                 allow_exit_codes: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]] = None,
+                 allow_failure: Optional[pulumi.Input[bool]] = None,
                  args: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dir: Optional[pulumi.Input[str]] = None,
                  entrypoint: Optional[pulumi.Input[str]] = None,
@@ -517,6 +519,8 @@ class BuildStepArgs:
         """
         A step in the build pipeline.
         :param pulumi.Input[str] name: The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
+        :param pulumi.Input[Sequence[pulumi.Input[int]]] allow_exit_codes: Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
+        :param pulumi.Input[bool] allow_failure: Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] args: A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
         :param pulumi.Input[str] dir: Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
         :param pulumi.Input[str] entrypoint: Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
@@ -529,6 +533,10 @@ class BuildStepArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] wait_for: The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully.
         """
         pulumi.set(__self__, "name", name)
+        if allow_exit_codes is not None:
+            pulumi.set(__self__, "allow_exit_codes", allow_exit_codes)
+        if allow_failure is not None:
+            pulumi.set(__self__, "allow_failure", allow_failure)
         if args is not None:
             pulumi.set(__self__, "args", args)
         if dir is not None:
@@ -561,6 +569,30 @@ class BuildStepArgs:
     @name.setter
     def name(self, value: pulumi.Input[str]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="allowExitCodes")
+    def allow_exit_codes(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]:
+        """
+        Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
+        """
+        return pulumi.get(self, "allow_exit_codes")
+
+    @allow_exit_codes.setter
+    def allow_exit_codes(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[int]]]]):
+        pulumi.set(self, "allow_exit_codes", value)
+
+    @property
+    @pulumi.getter(name="allowFailure")
+    def allow_failure(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field.
+        """
+        return pulumi.get(self, "allow_failure")
+
+    @allow_failure.setter
+    def allow_failure(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "allow_failure", value)
 
     @property
     @pulumi.getter

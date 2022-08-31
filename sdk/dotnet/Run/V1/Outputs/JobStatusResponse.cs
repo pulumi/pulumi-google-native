@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class JobStatusResponse
     {
         /// <summary>
-        /// The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/
+        /// Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Job-specific conditions include: * `Ready`: `True` when the job is ready to be executed.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRunV1ConditionResponse> Conditions;
         /// <summary>

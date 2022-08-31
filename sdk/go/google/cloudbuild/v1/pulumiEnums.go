@@ -531,9 +531,9 @@ func (in *buildOptionsMachineTypePtr) ToBuildOptionsMachineTypePtrOutputWithCont
 type BuildOptionsRequestedVerifyOption string
 
 const (
-	// Not a verifiable build. (default)
+	// Not a verifiable build (the default).
 	BuildOptionsRequestedVerifyOptionNotVerified = BuildOptionsRequestedVerifyOption("NOT_VERIFIED")
-	// Verified build.
+	// Build must be verified.
 	BuildOptionsRequestedVerifyOptionVerified = BuildOptionsRequestedVerifyOption("VERIFIED")
 )
 

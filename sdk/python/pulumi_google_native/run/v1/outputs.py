@@ -288,7 +288,7 @@ class ConfigMapEnvSourceResponse(dict):
 @pulumi.output_type
 class ConfigMapKeySelectorResponse(dict):
     """
-    Not supported by Cloud Run. Selects a key from a ConfigMap.
+    Not supported by Cloud Run.
     """
     @staticmethod
     def __key_warning(key: str):
@@ -313,11 +313,11 @@ class ConfigMapKeySelectorResponse(dict):
                  name: str,
                  optional: bool):
         """
-        Not supported by Cloud Run. Selects a key from a ConfigMap.
-        :param str key: The key to select.
-        :param 'LocalObjectReferenceResponse' local_object_reference: This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
-        :param str name: The ConfigMap to select from.
-        :param bool optional: Specify whether the ConfigMap or its key must be defined
+        Not supported by Cloud Run.
+        :param str key: Not supported by Cloud Run.
+        :param 'LocalObjectReferenceResponse' local_object_reference: Not supported by Cloud Run.
+        :param str name: Not supported by Cloud Run.
+        :param bool optional: Not supported by Cloud Run.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "local_object_reference", local_object_reference)
@@ -328,7 +328,7 @@ class ConfigMapKeySelectorResponse(dict):
     @pulumi.getter
     def key(self) -> str:
         """
-        The key to select.
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "key")
 
@@ -336,7 +336,7 @@ class ConfigMapKeySelectorResponse(dict):
     @pulumi.getter(name="localObjectReference")
     def local_object_reference(self) -> 'outputs.LocalObjectReferenceResponse':
         """
-        This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "local_object_reference")
 
@@ -344,7 +344,7 @@ class ConfigMapKeySelectorResponse(dict):
     @pulumi.getter
     def name(self) -> str:
         """
-        The ConfigMap to select from.
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "name")
 
@@ -352,7 +352,7 @@ class ConfigMapKeySelectorResponse(dict):
     @pulumi.getter
     def optional(self) -> bool:
         """
-        Specify whether the ConfigMap or its key must be defined
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "optional")
 
@@ -550,8 +550,8 @@ class ContainerResponse(dict):
                  working_dir: str):
         """
         A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
-        :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        :param Sequence[str] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param Sequence[str] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
+        :param Sequence[str] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run.
         :param Sequence['EnvVarResponse'] env: List of environment variables to set in the container.
         :param Sequence['EnvFromSourceResponse'] env_from: Not supported by Cloud Run.
         :param str image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
@@ -590,7 +590,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def args(self) -> Sequence[str]:
         """
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "args")
 
@@ -598,7 +598,7 @@ class ContainerResponse(dict):
     @pulumi.getter
     def command(self) -> Sequence[str]:
         """
-        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "command")
 
@@ -967,7 +967,7 @@ class EnvVarResponse(dict):
         """
         EnvVar represents an environment variable present in a Container.
         :param str name: Name of the environment variable. Must be a C_IDENTIFIER.
-        :param str value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        :param str value: Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
         :param 'EnvVarSourceResponse' value_from: Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty.
         """
         pulumi.set(__self__, "name", name)
@@ -986,7 +986,7 @@ class EnvVarResponse(dict):
     @pulumi.getter
     def value(self) -> str:
         """
-        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "value")
 
@@ -1028,7 +1028,7 @@ class EnvVarSourceResponse(dict):
                  secret_key_ref: 'outputs.SecretKeySelectorResponse'):
         """
         EnvVarSource represents a source for the value of an EnvVar.
-        :param 'ConfigMapKeySelectorResponse' config_map_key_ref: Not supported by Cloud Run. Selects a key of a ConfigMap.
+        :param 'ConfigMapKeySelectorResponse' config_map_key_ref: Not supported by Cloud Run. Not supported in Cloud Run.
         :param 'SecretKeySelectorResponse' secret_key_ref: Selects a key (version) of a secret in Secret Manager.
         """
         pulumi.set(__self__, "config_map_key_ref", config_map_key_ref)
@@ -1038,7 +1038,7 @@ class EnvVarSourceResponse(dict):
     @pulumi.getter(name="configMapKeyRef")
     def config_map_key_ref(self) -> 'outputs.ConfigMapKeySelectorResponse':
         """
-        Not supported by Cloud Run. Selects a key of a ConfigMap.
+        Not supported by Cloud Run. Not supported in Cloud Run.
         """
         return pulumi.get(self, "config_map_key_ref")
 
@@ -1515,7 +1515,7 @@ class JobStatusResponse(dict):
                  observed_generation: int):
         """
         JobStatus represents the current state of a Job.
-        :param Sequence['GoogleCloudRunV1ConditionResponse'] conditions: The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/
+        :param Sequence['GoogleCloudRunV1ConditionResponse'] conditions: Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Job-specific conditions include: * `Ready`: `True` when the job is ready to be executed.
         :param int execution_count: Number of executions created for this job.
         :param 'ExecutionReferenceResponse' latest_created_execution: A pointer to the most recently created execution for this job. This is set regardless of the eventual state of the execution.
         :param int observed_generation: The 'generation' of the job that was last processed by the controller.
@@ -1529,7 +1529,7 @@ class JobStatusResponse(dict):
     @pulumi.getter
     def conditions(self) -> Sequence['outputs.GoogleCloudRunV1ConditionResponse']:
         """
-        The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/
+        Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Job-specific conditions include: * `Ready`: `True` when the job is ready to be executed.
         """
         return pulumi.get(self, "conditions")
 
@@ -2185,7 +2185,7 @@ class RevisionSpecResponse(dict):
                  volumes: Sequence['outputs.VolumeResponse']):
         """
         RevisionSpec holds the desired state of the Revision (from the client).
-        :param int container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run: supported, defaults to 80
+        :param int container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
         :param Sequence['ContainerResponse'] containers: Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
         :param bool enable_service_links: Not supported by Cloud Run.
         :param Sequence['LocalObjectReferenceResponse'] image_pull_secrets: Not supported by Cloud Run.
@@ -2204,7 +2204,7 @@ class RevisionSpecResponse(dict):
     @pulumi.getter(name="containerConcurrency")
     def container_concurrency(self) -> int:
         """
-        ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run: supported, defaults to 80
+        ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
         """
         return pulumi.get(self, "container_concurrency")
 
@@ -2603,7 +2603,7 @@ class ServiceStatusResponse(dict):
         """
         The current state of the Service. Output only.
         :param 'AddressableResponse' address: Similar to url, information on where the service is available on HTTP.
-        :param Sequence['GoogleCloudRunV1ConditionResponse'] conditions: Communicates information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready.
+        :param Sequence['GoogleCloudRunV1ConditionResponse'] conditions: Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready.
         :param str latest_created_revision_name: Name of the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
         :param str latest_ready_revision_name: Name of the latest Revision from this Service's Configuration that has had its `Ready` condition become `True`.
         :param int observed_generation: Returns the generation last fully processed by the system. This will only match metadata.generation when reconciliation is complete. Clients polling for completed reconciliation should poll until observedGeneration = metadata.generation and the Ready condition's status is True or False.
@@ -2630,7 +2630,7 @@ class ServiceStatusResponse(dict):
     @pulumi.getter
     def conditions(self) -> Sequence['outputs.GoogleCloudRunV1ConditionResponse']:
         """
-        Communicates information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready.
+        Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready.
         """
         return pulumi.get(self, "conditions")
 
@@ -2998,7 +2998,7 @@ class VolumeResponse(dict):
                  secret: 'outputs.SecretVolumeSourceResponse'):
         """
         Volume represents a named volume in a container.
-        :param 'ConfigMapVolumeSourceResponse' config_map: Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+        :param 'ConfigMapVolumeSourceResponse' config_map: Not supported in Cloud Run.
         :param str name: Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         :param 'SecretVolumeSourceResponse' secret: The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
         """
@@ -3010,7 +3010,7 @@ class VolumeResponse(dict):
     @pulumi.getter(name="configMap")
     def config_map(self) -> 'outputs.ConfigMapVolumeSourceResponse':
         """
-        Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+        Not supported in Cloud Run.
         """
         return pulumi.get(self, "config_map")
 

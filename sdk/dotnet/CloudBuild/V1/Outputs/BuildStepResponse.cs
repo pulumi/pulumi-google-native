@@ -17,6 +17,14 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
     public sealed class BuildStepResponse
     {
         /// <summary>
+        /// Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
+        /// </summary>
+        public readonly ImmutableArray<int> AllowExitCodes;
+        /// <summary>
+        /// Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field.
+        /// </summary>
+        public readonly bool AllowFailure;
+        /// <summary>
         /// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
         /// </summary>
         public readonly ImmutableArray<string> Args;
@@ -32,6 +40,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
         /// A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         /// </summary>
         public readonly ImmutableArray<string> Env;
+        /// <summary>
+        /// Return code from running the step.
+        /// </summary>
+        public readonly int ExitCode;
         /// <summary>
         /// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
         /// </summary>
@@ -71,6 +83,10 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
         [OutputConstructor]
         private BuildStepResponse(
+            ImmutableArray<int> allowExitCodes,
+
+            bool allowFailure,
+
             ImmutableArray<string> args,
 
             string dir,
@@ -78,6 +94,8 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
             string entrypoint,
 
             ImmutableArray<string> env,
+
+            int exitCode,
 
             string name,
 
@@ -97,10 +115,13 @@ namespace Pulumi.GoogleNative.CloudBuild.V1.Outputs
 
             ImmutableArray<string> waitFor)
         {
+            AllowExitCodes = allowExitCodes;
+            AllowFailure = allowFailure;
             Args = args;
             Dir = dir;
             Entrypoint = entrypoint;
             Env = env;
+            ExitCode = exitCode;
             Name = name;
             PullTiming = pullTiming;
             Script = script;

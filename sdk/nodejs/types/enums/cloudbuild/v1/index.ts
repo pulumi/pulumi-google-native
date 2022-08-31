@@ -84,11 +84,11 @@ export type BuildOptionsMachineType = (typeof BuildOptionsMachineType)[keyof typ
 
 export const BuildOptionsRequestedVerifyOption = {
     /**
-     * Not a verifiable build. (default)
+     * Not a verifiable build (the default).
      */
     NotVerified: "NOT_VERIFIED",
     /**
-     * Verified build.
+     * Build must be verified.
      */
     Verified: "VERIFIED",
 } as const;

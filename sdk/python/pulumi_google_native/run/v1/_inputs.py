@@ -247,11 +247,11 @@ class ConfigMapKeySelectorArgs:
                  local_object_reference: Optional[pulumi.Input['LocalObjectReferenceArgs']] = None,
                  optional: Optional[pulumi.Input[bool]] = None):
         """
-        Not supported by Cloud Run. Selects a key from a ConfigMap.
-        :param pulumi.Input[str] key: The key to select.
-        :param pulumi.Input[str] name: The ConfigMap to select from.
-        :param pulumi.Input['LocalObjectReferenceArgs'] local_object_reference: This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
-        :param pulumi.Input[bool] optional: Specify whether the ConfigMap or its key must be defined
+        Not supported by Cloud Run.
+        :param pulumi.Input[str] key: Not supported by Cloud Run.
+        :param pulumi.Input[str] name: Not supported by Cloud Run.
+        :param pulumi.Input['LocalObjectReferenceArgs'] local_object_reference: Not supported by Cloud Run.
+        :param pulumi.Input[bool] optional: Not supported by Cloud Run.
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "name", name)
@@ -264,7 +264,7 @@ class ConfigMapKeySelectorArgs:
     @pulumi.getter
     def key(self) -> pulumi.Input[str]:
         """
-        The key to select.
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "key")
 
@@ -276,7 +276,7 @@ class ConfigMapKeySelectorArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
         """
-        The ConfigMap to select from.
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "name")
 
@@ -288,7 +288,7 @@ class ConfigMapKeySelectorArgs:
     @pulumi.getter(name="localObjectReference")
     def local_object_reference(self) -> Optional[pulumi.Input['LocalObjectReferenceArgs']]:
         """
-        This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "local_object_reference")
 
@@ -300,7 +300,7 @@ class ConfigMapKeySelectorArgs:
     @pulumi.getter
     def optional(self) -> Optional[pulumi.Input[bool]]:
         """
-        Specify whether the ConfigMap or its key must be defined
+        Not supported by Cloud Run.
         """
         return pulumi.get(self, "optional")
 
@@ -460,8 +460,8 @@ class ContainerArgs:
         """
         A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
         :param pulumi.Input[str] image: URL of the Container image in Google Container Registry or Google Artifact Registry. More info: https://kubernetes.io/docs/concepts/containers/images
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] args: Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] command: Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run.
         :param pulumi.Input[Sequence[pulumi.Input['EnvVarArgs']]] env: List of environment variables to set in the container.
         :param pulumi.Input[Sequence[pulumi.Input['EnvFromSourceArgs']]] env_from: Not supported by Cloud Run.
         :param pulumi.Input[str] image_pull_policy: Image pull policy. One of Always, Never, IfNotPresent. Defaults to Always if :latest tag is specified, or IfNotPresent otherwise. More info: https://kubernetes.io/docs/concepts/containers/images#updating-images
@@ -527,7 +527,7 @@ class ContainerArgs:
     @pulumi.getter
     def args(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "args")
 
@@ -539,7 +539,7 @@ class ContainerArgs:
     @pulumi.getter
     def command(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+        Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "command")
 
@@ -835,7 +835,7 @@ class EnvVarSourceArgs:
                  secret_key_ref: Optional[pulumi.Input['SecretKeySelectorArgs']] = None):
         """
         EnvVarSource represents a source for the value of an EnvVar.
-        :param pulumi.Input['ConfigMapKeySelectorArgs'] config_map_key_ref: Not supported by Cloud Run. Selects a key of a ConfigMap.
+        :param pulumi.Input['ConfigMapKeySelectorArgs'] config_map_key_ref: Not supported by Cloud Run. Not supported in Cloud Run.
         :param pulumi.Input['SecretKeySelectorArgs'] secret_key_ref: Selects a key (version) of a secret in Secret Manager.
         """
         if config_map_key_ref is not None:
@@ -847,7 +847,7 @@ class EnvVarSourceArgs:
     @pulumi.getter(name="configMapKeyRef")
     def config_map_key_ref(self) -> Optional[pulumi.Input['ConfigMapKeySelectorArgs']]:
         """
-        Not supported by Cloud Run. Selects a key of a ConfigMap.
+        Not supported by Cloud Run. Not supported in Cloud Run.
         """
         return pulumi.get(self, "config_map_key_ref")
 
@@ -877,7 +877,7 @@ class EnvVarArgs:
         """
         EnvVar represents an environment variable present in a Container.
         :param pulumi.Input[str] name: Name of the environment variable. Must be a C_IDENTIFIER.
-        :param pulumi.Input[str] value: Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        :param pulumi.Input[str] value: Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
         :param pulumi.Input['EnvVarSourceArgs'] value_from: Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty.
         """
         pulumi.set(__self__, "name", name)
@@ -902,7 +902,7 @@ class EnvVarArgs:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
         """
-        Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+        Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
         """
         return pulumi.get(self, "value")
 
@@ -1807,7 +1807,7 @@ class RevisionSpecArgs:
                  volumes: Optional[pulumi.Input[Sequence[pulumi.Input['VolumeArgs']]]] = None):
         """
         RevisionSpec holds the desired state of the Revision (from the client).
-        :param pulumi.Input[int] container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run: supported, defaults to 80
+        :param pulumi.Input[int] container_concurrency: ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
         :param pulumi.Input[Sequence[pulumi.Input['ContainerArgs']]] containers: Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
         :param pulumi.Input[bool] enable_service_links: Not supported by Cloud Run.
         :param pulumi.Input[Sequence[pulumi.Input['LocalObjectReferenceArgs']]] image_pull_secrets: Not supported by Cloud Run.
@@ -1833,7 +1833,7 @@ class RevisionSpecArgs:
     @pulumi.getter(name="containerConcurrency")
     def container_concurrency(self) -> Optional[pulumi.Input[int]]:
         """
-        ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run: supported, defaults to 80
+        ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
         """
         return pulumi.get(self, "container_concurrency")
 
@@ -2420,7 +2420,7 @@ class VolumeArgs:
                  secret: Optional[pulumi.Input['SecretVolumeSourceArgs']] = None):
         """
         Volume represents a named volume in a container.
-        :param pulumi.Input['ConfigMapVolumeSourceArgs'] config_map: Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+        :param pulumi.Input['ConfigMapVolumeSourceArgs'] config_map: Not supported in Cloud Run.
         :param pulumi.Input[str] name: Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
         :param pulumi.Input['SecretVolumeSourceArgs'] secret: The secret's value will be presented as the content of a file whose name is defined in the item path. If no items are defined, the name of the file is the secretName.
         """
@@ -2435,7 +2435,7 @@ class VolumeArgs:
     @pulumi.getter(name="configMap")
     def config_map(self) -> Optional[pulumi.Input['ConfigMapVolumeSourceArgs']]:
         """
-        Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+        Not supported in Cloud Run.
         """
         return pulumi.get(self, "config_map")
 

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     public sealed class RevisionSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run: supported, defaults to 80
+        /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
         /// </summary>
         [Input("containerConcurrency")]
         public Input<int>? ContainerConcurrency { get; set; }

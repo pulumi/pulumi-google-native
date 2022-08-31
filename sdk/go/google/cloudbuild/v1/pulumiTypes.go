@@ -2267,6 +2267,10 @@ func (o BuildResponseOutput) Warnings() WarningResponseArrayOutput {
 
 // A step in the build pipeline.
 type BuildStep struct {
+	// Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
+	AllowExitCodes []int `pulumi:"allowExitCodes"`
+	// Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field.
+	AllowFailure *bool `pulumi:"allowFailure"`
 	// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
 	Args []string `pulumi:"args"`
 	// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
@@ -2304,6 +2308,10 @@ type BuildStepInput interface {
 
 // A step in the build pipeline.
 type BuildStepArgs struct {
+	// Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
+	AllowExitCodes pulumi.IntArrayInput `pulumi:"allowExitCodes"`
+	// Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field.
+	AllowFailure pulumi.BoolPtrInput `pulumi:"allowFailure"`
 	// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
 	Args pulumi.StringArrayInput `pulumi:"args"`
 	// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
@@ -2378,6 +2386,16 @@ func (o BuildStepOutput) ToBuildStepOutput() BuildStepOutput {
 
 func (o BuildStepOutput) ToBuildStepOutputWithContext(ctx context.Context) BuildStepOutput {
 	return o
+}
+
+// Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
+func (o BuildStepOutput) AllowExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v BuildStep) []int { return v.AllowExitCodes }).(pulumi.IntArrayOutput)
+}
+
+// Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field.
+func (o BuildStepOutput) AllowFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BuildStep) *bool { return v.AllowFailure }).(pulumi.BoolPtrOutput)
 }
 
 // A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
@@ -2457,6 +2475,10 @@ func (o BuildStepArrayOutput) Index(i pulumi.IntInput) BuildStepOutput {
 
 // A step in the build pipeline.
 type BuildStepResponse struct {
+	// Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
+	AllowExitCodes []int `pulumi:"allowExitCodes"`
+	// Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field.
+	AllowFailure bool `pulumi:"allowFailure"`
 	// A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
 	Args []string `pulumi:"args"`
 	// Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
@@ -2465,6 +2487,8 @@ type BuildStepResponse struct {
 	Entrypoint string `pulumi:"entrypoint"`
 	// A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 	Env []string `pulumi:"env"`
+	// Return code from running the step.
+	ExitCode int `pulumi:"exitCode"`
 	// The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
 	Name string `pulumi:"name"`
 	// Stores timing information for pulling this build step's builder image only.
@@ -2500,6 +2524,16 @@ func (o BuildStepResponseOutput) ToBuildStepResponseOutputWithContext(ctx contex
 	return o
 }
 
+// Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
+func (o BuildStepResponseOutput) AllowExitCodes() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v BuildStepResponse) []int { return v.AllowExitCodes }).(pulumi.IntArrayOutput)
+}
+
+// Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field.
+func (o BuildStepResponseOutput) AllowFailure() pulumi.BoolOutput {
+	return o.ApplyT(func(v BuildStepResponse) bool { return v.AllowFailure }).(pulumi.BoolOutput)
+}
+
 // A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
 func (o BuildStepResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildStepResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
@@ -2518,6 +2552,11 @@ func (o BuildStepResponseOutput) Entrypoint() pulumi.StringOutput {
 // A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
 func (o BuildStepResponseOutput) Env() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BuildStepResponse) []string { return v.Env }).(pulumi.StringArrayOutput)
+}
+
+// Return code from running the step.
+func (o BuildStepResponseOutput) ExitCode() pulumi.IntOutput {
+	return o.ApplyT(func(v BuildStepResponse) int { return v.ExitCode }).(pulumi.IntOutput)
 }
 
 // The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.

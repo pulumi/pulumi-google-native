@@ -759,15 +759,15 @@ func (o ConfigMapEnvSourceResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConfigMapEnvSourceResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
 
-// Not supported by Cloud Run. Selects a key from a ConfigMap.
+// Not supported by Cloud Run.
 type ConfigMapKeySelector struct {
-	// The key to select.
+	// Not supported by Cloud Run.
 	Key string `pulumi:"key"`
-	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+	// Not supported by Cloud Run.
 	LocalObjectReference *LocalObjectReference `pulumi:"localObjectReference"`
-	// The ConfigMap to select from.
+	// Not supported by Cloud Run.
 	Name string `pulumi:"name"`
-	// Specify whether the ConfigMap or its key must be defined
+	// Not supported by Cloud Run.
 	Optional *bool `pulumi:"optional"`
 }
 
@@ -782,15 +782,15 @@ type ConfigMapKeySelectorInput interface {
 	ToConfigMapKeySelectorOutputWithContext(context.Context) ConfigMapKeySelectorOutput
 }
 
-// Not supported by Cloud Run. Selects a key from a ConfigMap.
+// Not supported by Cloud Run.
 type ConfigMapKeySelectorArgs struct {
-	// The key to select.
+	// Not supported by Cloud Run.
 	Key pulumi.StringInput `pulumi:"key"`
-	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+	// Not supported by Cloud Run.
 	LocalObjectReference LocalObjectReferencePtrInput `pulumi:"localObjectReference"`
-	// The ConfigMap to select from.
+	// Not supported by Cloud Run.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Specify whether the ConfigMap or its key must be defined
+	// Not supported by Cloud Run.
 	Optional pulumi.BoolPtrInput `pulumi:"optional"`
 }
 
@@ -847,7 +847,7 @@ func (i *configMapKeySelectorPtrType) ToConfigMapKeySelectorPtrOutputWithContext
 	return pulumi.ToOutputWithContext(ctx, i).(ConfigMapKeySelectorPtrOutput)
 }
 
-// Not supported by Cloud Run. Selects a key from a ConfigMap.
+// Not supported by Cloud Run.
 type ConfigMapKeySelectorOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapKeySelectorOutput) ElementType() reflect.Type {
@@ -872,22 +872,22 @@ func (o ConfigMapKeySelectorOutput) ToConfigMapKeySelectorPtrOutputWithContext(c
 	}).(ConfigMapKeySelectorPtrOutput)
 }
 
-// The key to select.
+// Not supported by Cloud Run.
 func (o ConfigMapKeySelectorOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigMapKeySelector) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+// Not supported by Cloud Run.
 func (o ConfigMapKeySelectorOutput) LocalObjectReference() LocalObjectReferencePtrOutput {
 	return o.ApplyT(func(v ConfigMapKeySelector) *LocalObjectReference { return v.LocalObjectReference }).(LocalObjectReferencePtrOutput)
 }
 
-// The ConfigMap to select from.
+// Not supported by Cloud Run.
 func (o ConfigMapKeySelectorOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigMapKeySelector) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specify whether the ConfigMap or its key must be defined
+// Not supported by Cloud Run.
 func (o ConfigMapKeySelectorOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConfigMapKeySelector) *bool { return v.Optional }).(pulumi.BoolPtrOutput)
 }
@@ -916,7 +916,7 @@ func (o ConfigMapKeySelectorPtrOutput) Elem() ConfigMapKeySelectorOutput {
 	}).(ConfigMapKeySelectorOutput)
 }
 
-// The key to select.
+// Not supported by Cloud Run.
 func (o ConfigMapKeySelectorPtrOutput) Key() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigMapKeySelector) *string {
 		if v == nil {
@@ -926,7 +926,7 @@ func (o ConfigMapKeySelectorPtrOutput) Key() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+// Not supported by Cloud Run.
 func (o ConfigMapKeySelectorPtrOutput) LocalObjectReference() LocalObjectReferencePtrOutput {
 	return o.ApplyT(func(v *ConfigMapKeySelector) *LocalObjectReference {
 		if v == nil {
@@ -936,7 +936,7 @@ func (o ConfigMapKeySelectorPtrOutput) LocalObjectReference() LocalObjectReferen
 	}).(LocalObjectReferencePtrOutput)
 }
 
-// The ConfigMap to select from.
+// Not supported by Cloud Run.
 func (o ConfigMapKeySelectorPtrOutput) Name() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConfigMapKeySelector) *string {
 		if v == nil {
@@ -946,7 +946,7 @@ func (o ConfigMapKeySelectorPtrOutput) Name() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specify whether the ConfigMap or its key must be defined
+// Not supported by Cloud Run.
 func (o ConfigMapKeySelectorPtrOutput) Optional() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfigMapKeySelector) *bool {
 		if v == nil {
@@ -956,19 +956,19 @@ func (o ConfigMapKeySelectorPtrOutput) Optional() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
-// Not supported by Cloud Run. Selects a key from a ConfigMap.
+// Not supported by Cloud Run.
 type ConfigMapKeySelectorResponse struct {
-	// The key to select.
+	// Not supported by Cloud Run.
 	Key string `pulumi:"key"`
-	// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+	// Not supported by Cloud Run.
 	LocalObjectReference LocalObjectReferenceResponse `pulumi:"localObjectReference"`
-	// The ConfigMap to select from.
+	// Not supported by Cloud Run.
 	Name string `pulumi:"name"`
-	// Specify whether the ConfigMap or its key must be defined
+	// Not supported by Cloud Run.
 	Optional bool `pulumi:"optional"`
 }
 
-// Not supported by Cloud Run. Selects a key from a ConfigMap.
+// Not supported by Cloud Run.
 type ConfigMapKeySelectorResponseOutput struct{ *pulumi.OutputState }
 
 func (ConfigMapKeySelectorResponseOutput) ElementType() reflect.Type {
@@ -983,22 +983,22 @@ func (o ConfigMapKeySelectorResponseOutput) ToConfigMapKeySelectorResponseOutput
 	return o
 }
 
-// The key to select.
+// Not supported by Cloud Run.
 func (o ConfigMapKeySelectorResponseOutput) Key() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigMapKeySelectorResponse) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+// Not supported by Cloud Run.
 func (o ConfigMapKeySelectorResponseOutput) LocalObjectReference() LocalObjectReferenceResponseOutput {
 	return o.ApplyT(func(v ConfigMapKeySelectorResponse) LocalObjectReferenceResponse { return v.LocalObjectReference }).(LocalObjectReferenceResponseOutput)
 }
 
-// The ConfigMap to select from.
+// Not supported by Cloud Run.
 func (o ConfigMapKeySelectorResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ConfigMapKeySelectorResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Specify whether the ConfigMap or its key must be defined
+// Not supported by Cloud Run.
 func (o ConfigMapKeySelectorResponseOutput) Optional() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConfigMapKeySelectorResponse) bool { return v.Optional }).(pulumi.BoolOutput)
 }
@@ -1249,9 +1249,9 @@ func (o ConfigMapVolumeSourceResponseOutput) Optional() pulumi.BoolOutput {
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type Container struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args []string `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run.
 	Command []string `pulumi:"command"`
 	// List of environment variables to set in the container.
 	Env []EnvVar `pulumi:"env"`
@@ -1298,9 +1298,9 @@ type ContainerInput interface {
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type ContainerArgs struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args pulumi.StringArrayInput `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run.
 	Command pulumi.StringArrayInput `pulumi:"command"`
 	// List of environment variables to set in the container.
 	Env EnvVarArrayInput `pulumi:"env"`
@@ -1386,12 +1386,12 @@ func (o ContainerOutput) ToContainerOutputWithContext(ctx context.Context) Conta
 	return o
 }
 
-// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 func (o ContainerOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Container) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run.
 func (o ContainerOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Container) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
@@ -1671,9 +1671,9 @@ func (o ContainerPortResponseArrayOutput) Index(i pulumi.IntInput) ContainerPort
 
 // A single application container. This specifies both the container to run, the command to run in the container and the arguments to supply to it. Note that additional arguments may be supplied by the system to the container at runtime.
 type ContainerResponse struct {
-	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 	Args []string `pulumi:"args"`
-	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+	// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run.
 	Command []string `pulumi:"command"`
 	// List of environment variables to set in the container.
 	Env []EnvVarResponse `pulumi:"env"`
@@ -1722,12 +1722,12 @@ func (o ContainerResponseOutput) ToContainerResponseOutputWithContext(ctx contex
 	return o
 }
 
-// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Arguments to the entrypoint. The docker image's CMD is used if this is not provided. Variable references are not supported in Cloud Run.
 func (o ContainerResponseOutput) Args() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Args }).(pulumi.StringArrayOutput)
 }
 
-// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
+// Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references are not supported in Cloud Run.
 func (o ContainerResponseOutput) Command() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ContainerResponse) []string { return v.Command }).(pulumi.StringArrayOutput)
 }
@@ -2295,7 +2295,7 @@ func (o EnvFromSourceResponseArrayOutput) Index(i pulumi.IntInput) EnvFromSource
 type EnvVar struct {
 	// Name of the environment variable. Must be a C_IDENTIFIER.
 	Name string `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+	// Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
 	Value *string `pulumi:"value"`
 	// Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty.
 	ValueFrom *EnvVarSource `pulumi:"valueFrom"`
@@ -2316,7 +2316,7 @@ type EnvVarInput interface {
 type EnvVarArgs struct {
 	// Name of the environment variable. Must be a C_IDENTIFIER.
 	Name pulumi.StringInput `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+	// Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
 	Value pulumi.StringPtrInput `pulumi:"value"`
 	// Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty.
 	ValueFrom EnvVarSourcePtrInput `pulumi:"valueFrom"`
@@ -2379,7 +2379,7 @@ func (o EnvVarOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvVar) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+// Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
 func (o EnvVarOutput) Value() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v EnvVar) *string { return v.Value }).(pulumi.StringPtrOutput)
 }
@@ -2413,7 +2413,7 @@ func (o EnvVarArrayOutput) Index(i pulumi.IntInput) EnvVarOutput {
 type EnvVarResponse struct {
 	// Name of the environment variable. Must be a C_IDENTIFIER.
 	Name string `pulumi:"name"`
-	// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+	// Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
 	Value string `pulumi:"value"`
 	// Source for the environment variable's value. Only supports secret_key_ref. Cannot be used if value is not empty.
 	ValueFrom EnvVarSourceResponse `pulumi:"valueFrom"`
@@ -2439,7 +2439,7 @@ func (o EnvVarResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvVarResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// Variable references $(VAR_NAME) are expanded using the previous defined environment variables in the container and any route environment variables. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. Defaults to "".
+// Value of the environment variable. Defaults to "". Variable references are not supported in Cloud Run.
 func (o EnvVarResponseOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v EnvVarResponse) string { return v.Value }).(pulumi.StringOutput)
 }
@@ -2471,7 +2471,7 @@ func (o EnvVarResponseArrayOutput) Index(i pulumi.IntInput) EnvVarResponseOutput
 
 // EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSource struct {
-	// Not supported by Cloud Run. Selects a key of a ConfigMap.
+	// Not supported by Cloud Run. Not supported in Cloud Run.
 	ConfigMapKeyRef *ConfigMapKeySelector `pulumi:"configMapKeyRef"`
 	// Selects a key (version) of a secret in Secret Manager.
 	SecretKeyRef *SecretKeySelector `pulumi:"secretKeyRef"`
@@ -2490,7 +2490,7 @@ type EnvVarSourceInput interface {
 
 // EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSourceArgs struct {
-	// Not supported by Cloud Run. Selects a key of a ConfigMap.
+	// Not supported by Cloud Run. Not supported in Cloud Run.
 	ConfigMapKeyRef ConfigMapKeySelectorPtrInput `pulumi:"configMapKeyRef"`
 	// Selects a key (version) of a secret in Secret Manager.
 	SecretKeyRef SecretKeySelectorPtrInput `pulumi:"secretKeyRef"`
@@ -2574,7 +2574,7 @@ func (o EnvVarSourceOutput) ToEnvVarSourcePtrOutputWithContext(ctx context.Conte
 	}).(EnvVarSourcePtrOutput)
 }
 
-// Not supported by Cloud Run. Selects a key of a ConfigMap.
+// Not supported by Cloud Run. Not supported in Cloud Run.
 func (o EnvVarSourceOutput) ConfigMapKeyRef() ConfigMapKeySelectorPtrOutput {
 	return o.ApplyT(func(v EnvVarSource) *ConfigMapKeySelector { return v.ConfigMapKeyRef }).(ConfigMapKeySelectorPtrOutput)
 }
@@ -2608,7 +2608,7 @@ func (o EnvVarSourcePtrOutput) Elem() EnvVarSourceOutput {
 	}).(EnvVarSourceOutput)
 }
 
-// Not supported by Cloud Run. Selects a key of a ConfigMap.
+// Not supported by Cloud Run. Not supported in Cloud Run.
 func (o EnvVarSourcePtrOutput) ConfigMapKeyRef() ConfigMapKeySelectorPtrOutput {
 	return o.ApplyT(func(v *EnvVarSource) *ConfigMapKeySelector {
 		if v == nil {
@@ -2630,7 +2630,7 @@ func (o EnvVarSourcePtrOutput) SecretKeyRef() SecretKeySelectorPtrOutput {
 
 // EnvVarSource represents a source for the value of an EnvVar.
 type EnvVarSourceResponse struct {
-	// Not supported by Cloud Run. Selects a key of a ConfigMap.
+	// Not supported by Cloud Run. Not supported in Cloud Run.
 	ConfigMapKeyRef ConfigMapKeySelectorResponse `pulumi:"configMapKeyRef"`
 	// Selects a key (version) of a secret in Secret Manager.
 	SecretKeyRef SecretKeySelectorResponse `pulumi:"secretKeyRef"`
@@ -2651,7 +2651,7 @@ func (o EnvVarSourceResponseOutput) ToEnvVarSourceResponseOutputWithContext(ctx 
 	return o
 }
 
-// Not supported by Cloud Run. Selects a key of a ConfigMap.
+// Not supported by Cloud Run. Not supported in Cloud Run.
 func (o EnvVarSourceResponseOutput) ConfigMapKeyRef() ConfigMapKeySelectorResponseOutput {
 	return o.ApplyT(func(v EnvVarSourceResponse) ConfigMapKeySelectorResponse { return v.ConfigMapKeyRef }).(ConfigMapKeySelectorResponseOutput)
 }
@@ -3931,7 +3931,7 @@ func (o JobSpecResponseOutput) Template() ExecutionTemplateSpecResponseOutput {
 
 // JobStatus represents the current state of a Job.
 type JobStatusResponse struct {
-	// The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/
+	// Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Job-specific conditions include: * `Ready`: `True` when the job is ready to be executed.
 	Conditions []GoogleCloudRunV1ConditionResponse `pulumi:"conditions"`
 	// Number of executions created for this job.
 	ExecutionCount int `pulumi:"executionCount"`
@@ -3956,7 +3956,7 @@ func (o JobStatusResponseOutput) ToJobStatusResponseOutputWithContext(ctx contex
 	return o
 }
 
-// The latest available observations of a job's current state. More info: https://kubernetes.io/docs/concepts/workloads/controllers/job/
+// Conditions communicate information about ongoing/complete reconciliation processes that bring the "spec" inline with the observed state of the world. Job-specific conditions include: * `Ready`: `True` when the job is ready to be executed.
 func (o JobStatusResponseOutput) Conditions() GoogleCloudRunV1ConditionResponseArrayOutput {
 	return o.ApplyT(func(v JobStatusResponse) []GoogleCloudRunV1ConditionResponse { return v.Conditions }).(GoogleCloudRunV1ConditionResponseArrayOutput)
 }
@@ -5779,7 +5779,7 @@ func (o ResourceRequirementsResponseOutput) Requests() pulumi.StringMapOutput {
 
 // RevisionSpec holds the desired state of the Revision (from the client).
 type RevisionSpec struct {
-	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run: supported, defaults to 80
+	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
 	ContainerConcurrency *int `pulumi:"containerConcurrency"`
 	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
 	Containers []Container `pulumi:"containers"`
@@ -5807,7 +5807,7 @@ type RevisionSpecInput interface {
 
 // RevisionSpec holds the desired state of the Revision (from the client).
 type RevisionSpecArgs struct {
-	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run: supported, defaults to 80
+	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
 	ContainerConcurrency pulumi.IntPtrInput `pulumi:"containerConcurrency"`
 	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
 	Containers ContainerArrayInput `pulumi:"containers"`
@@ -5900,7 +5900,7 @@ func (o RevisionSpecOutput) ToRevisionSpecPtrOutputWithContext(ctx context.Conte
 	}).(RevisionSpecPtrOutput)
 }
 
-// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run: supported, defaults to 80
+// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
 func (o RevisionSpecOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RevisionSpec) *int { return v.ContainerConcurrency }).(pulumi.IntPtrOutput)
 }
@@ -5958,7 +5958,7 @@ func (o RevisionSpecPtrOutput) Elem() RevisionSpecOutput {
 	}).(RevisionSpecOutput)
 }
 
-// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run: supported, defaults to 80
+// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
 func (o RevisionSpecPtrOutput) ContainerConcurrency() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RevisionSpec) *int {
 		if v == nil {
@@ -6029,7 +6029,7 @@ func (o RevisionSpecPtrOutput) Volumes() VolumeArrayOutput {
 
 // RevisionSpec holds the desired state of the Revision (from the client).
 type RevisionSpecResponse struct {
-	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run: supported, defaults to 80
+	// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
 	ContainerConcurrency int `pulumi:"containerConcurrency"`
 	// Containers holds the single container that defines the unit of execution for this Revision. In the context of a Revision, we disallow a number of fields on this Container, including: name and lifecycle. In Cloud Run, only a single container may be provided. The runtime contract is documented here: https://github.com/knative/specs/blob/main/specs/serving/runtime-contract.md
 	Containers []ContainerResponse `pulumi:"containers"`
@@ -6059,7 +6059,7 @@ func (o RevisionSpecResponseOutput) ToRevisionSpecResponseOutputWithContext(ctx 
 	return o
 }
 
-// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run: supported, defaults to 80
+// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
 func (o RevisionSpecResponseOutput) ContainerConcurrency() pulumi.IntOutput {
 	return o.ApplyT(func(v RevisionSpecResponse) int { return v.ContainerConcurrency }).(pulumi.IntOutput)
 }
@@ -7353,7 +7353,7 @@ func (o ServiceSpecResponseOutput) Traffic() TrafficTargetResponseArrayOutput {
 type ServiceStatus struct {
 	// Similar to url, information on where the service is available on HTTP.
 	Address *Addressable `pulumi:"address"`
-	// Communicates information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready.
+	// Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready.
 	Conditions []GoogleCloudRunV1Condition `pulumi:"conditions"`
 	// Name of the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
 	LatestCreatedRevisionName *string `pulumi:"latestCreatedRevisionName"`
@@ -7371,7 +7371,7 @@ type ServiceStatus struct {
 type ServiceStatusResponse struct {
 	// Similar to url, information on where the service is available on HTTP.
 	Address AddressableResponse `pulumi:"address"`
-	// Communicates information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready.
+	// Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready.
 	Conditions []GoogleCloudRunV1ConditionResponse `pulumi:"conditions"`
 	// Name of the last revision that was created from this Service's Configuration. It might not be ready yet, for that use LatestReadyRevisionName.
 	LatestCreatedRevisionName string `pulumi:"latestCreatedRevisionName"`
@@ -7405,7 +7405,7 @@ func (o ServiceStatusResponseOutput) Address() AddressableResponseOutput {
 	return o.ApplyT(func(v ServiceStatusResponse) AddressableResponse { return v.Address }).(AddressableResponseOutput)
 }
 
-// Communicates information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready.
+// Conditions communicate information about ongoing/complete reconciliation processes that bring the `spec` inline with the observed state of the world. Service-specific conditions include: * `ConfigurationsReady`: `True` when the underlying Configuration is ready. * `RoutesReady`: `True` when the underlying Route is ready. * `Ready`: `True` when all underlying resources are ready.
 func (o ServiceStatusResponseOutput) Conditions() GoogleCloudRunV1ConditionResponseArrayOutput {
 	return o.ApplyT(func(v ServiceStatusResponse) []GoogleCloudRunV1ConditionResponse { return v.Conditions }).(GoogleCloudRunV1ConditionResponseArrayOutput)
 }
@@ -7946,7 +7946,7 @@ func (o TrafficTargetResponseArrayOutput) Index(i pulumi.IntInput) TrafficTarget
 
 // Volume represents a named volume in a container.
 type Volume struct {
-	// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+	// Not supported in Cloud Run.
 	ConfigMap *ConfigMapVolumeSource `pulumi:"configMap"`
 	// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
 	Name *string `pulumi:"name"`
@@ -7967,7 +7967,7 @@ type VolumeInput interface {
 
 // Volume represents a named volume in a container.
 type VolumeArgs struct {
-	// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+	// Not supported in Cloud Run.
 	ConfigMap ConfigMapVolumeSourcePtrInput `pulumi:"configMap"`
 	// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
 	Name pulumi.StringPtrInput `pulumi:"name"`
@@ -8027,7 +8027,7 @@ func (o VolumeOutput) ToVolumeOutputWithContext(ctx context.Context) VolumeOutpu
 	return o
 }
 
-// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+// Not supported in Cloud Run.
 func (o VolumeOutput) ConfigMap() ConfigMapVolumeSourcePtrOutput {
 	return o.ApplyT(func(v Volume) *ConfigMapVolumeSource { return v.ConfigMap }).(ConfigMapVolumeSourcePtrOutput)
 }
@@ -8258,7 +8258,7 @@ func (o VolumeMountResponseArrayOutput) Index(i pulumi.IntInput) VolumeMountResp
 
 // Volume represents a named volume in a container.
 type VolumeResponse struct {
-	// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+	// Not supported in Cloud Run.
 	ConfigMap ConfigMapVolumeSourceResponse `pulumi:"configMap"`
 	// Volume's name. In Cloud Run Fully Managed, the name 'cloudsql' is reserved.
 	Name string `pulumi:"name"`
@@ -8281,7 +8281,7 @@ func (o VolumeResponseOutput) ToVolumeResponseOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Adapts a ConfigMap into a volume. The contents of the target ConfigMap's Data field will be presented in a volume as files using the keys in the Data field as the file names, unless the items element is populated with specific mappings of keys to paths.
+// Not supported in Cloud Run.
 func (o VolumeResponseOutput) ConfigMap() ConfigMapVolumeSourceResponseOutput {
 	return o.ApplyT(func(v VolumeResponse) ConfigMapVolumeSourceResponse { return v.ConfigMap }).(ConfigMapVolumeSourceResponseOutput)
 }

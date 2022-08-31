@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
     public sealed class EnvVarSourceArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Not supported by Cloud Run. Selects a key of a ConfigMap.
+        /// Not supported by Cloud Run. Not supported in Cloud Run.
         /// </summary>
         [Input("configMapKeyRef")]
         public Input<Inputs.ConfigMapKeySelectorArgs>? ConfigMapKeyRef { get; set; }

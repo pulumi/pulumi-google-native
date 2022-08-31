@@ -102,11 +102,11 @@ class BuildOptionsRequestedVerifyOption(str, Enum):
     """
     NOT_VERIFIED = "NOT_VERIFIED"
     """
-    Not a verifiable build. (default)
+    Not a verifiable build (the default).
     """
     VERIFIED = "VERIFIED"
     """
-    Verified build.
+    Build must be verified.
     """
 
 

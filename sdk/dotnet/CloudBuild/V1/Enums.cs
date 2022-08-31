@@ -164,11 +164,11 @@ namespace Pulumi.GoogleNative.CloudBuild.V1
         }
 
         /// <summary>
-        /// Not a verifiable build. (default)
+        /// Not a verifiable build (the default).
         /// </summary>
         public static BuildOptionsRequestedVerifyOption NotVerified { get; } = new BuildOptionsRequestedVerifyOption("NOT_VERIFIED");
         /// <summary>
-        /// Verified build.
+        /// Build must be verified.
         /// </summary>
         public static BuildOptionsRequestedVerifyOption Verified { get; } = new BuildOptionsRequestedVerifyOption("VERIFIED");
 

@@ -1233,7 +1233,13 @@ class BuildStepResponse(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "pullTiming":
+        if key == "allowExitCodes":
+            suggest = "allow_exit_codes"
+        elif key == "allowFailure":
+            suggest = "allow_failure"
+        elif key == "exitCode":
+            suggest = "exit_code"
+        elif key == "pullTiming":
             suggest = "pull_timing"
         elif key == "secretEnv":
             suggest = "secret_env"
@@ -1252,10 +1258,13 @@ class BuildStepResponse(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 allow_exit_codes: Sequence[int],
+                 allow_failure: bool,
                  args: Sequence[str],
                  dir: str,
                  entrypoint: str,
                  env: Sequence[str],
+                 exit_code: int,
                  name: str,
                  pull_timing: 'outputs.TimeSpanResponse',
                  script: str,
@@ -1267,10 +1276,13 @@ class BuildStepResponse(dict):
                  wait_for: Sequence[str]):
         """
         A step in the build pipeline.
+        :param Sequence[int] allow_exit_codes: Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
+        :param bool allow_failure: Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field.
         :param Sequence[str] args: A list of arguments that will be presented to the step when it is started. If the image used to run the step's container has an entrypoint, the `args` are used as arguments to that entrypoint. If the image does not define an entrypoint, the first element in args is used as the entrypoint, and the remainder will be used as arguments.
         :param str dir: Working directory to use when running this step's container. If this value is a relative path, it is relative to the build's working directory. If this value is absolute, it may be outside the build's working directory, in which case the contents of the path may not be persisted across build step executions, unless a `volume` for that path is specified. If the build specifies a `RepoSource` with `dir` and a step with a `dir`, which specifies an absolute path, the `RepoSource` `dir` is ignored for the step's execution.
         :param str entrypoint: Entrypoint to be used instead of the build step image's default entrypoint. If unset, the image's default entrypoint is used.
         :param Sequence[str] env: A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
+        :param int exit_code: Return code from running the step.
         :param str name: The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step.
         :param 'TimeSpanResponse' pull_timing: Stores timing information for pulling this build step's builder image only.
         :param str script: A shell script to be executed in the step. When script is provided, the user cannot specify the entrypoint or args.
@@ -1281,10 +1293,13 @@ class BuildStepResponse(dict):
         :param Sequence['VolumeResponse'] volumes: List of volumes to mount into the build step. Each volume is created as an empty volume prior to execution of the build step. Upon completion of the build, volumes and their contents are discarded. Using a named volume in only one step is not valid as it is indicative of a build request with an incorrect configuration.
         :param Sequence[str] wait_for: The ID(s) of the step(s) that this build step depends on. This build step will not start until all the build steps in `wait_for` have completed successfully. If `wait_for` is empty, this build step will start when all previous build steps in the `Build.Steps` list have completed successfully.
         """
+        pulumi.set(__self__, "allow_exit_codes", allow_exit_codes)
+        pulumi.set(__self__, "allow_failure", allow_failure)
         pulumi.set(__self__, "args", args)
         pulumi.set(__self__, "dir", dir)
         pulumi.set(__self__, "entrypoint", entrypoint)
         pulumi.set(__self__, "env", env)
+        pulumi.set(__self__, "exit_code", exit_code)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "pull_timing", pull_timing)
         pulumi.set(__self__, "script", script)
@@ -1294,6 +1309,22 @@ class BuildStepResponse(dict):
         pulumi.set(__self__, "timing", timing)
         pulumi.set(__self__, "volumes", volumes)
         pulumi.set(__self__, "wait_for", wait_for)
+
+    @property
+    @pulumi.getter(name="allowExitCodes")
+    def allow_exit_codes(self) -> Sequence[int]:
+        """
+        Allow this build step to fail without failing the entire build if and only if the exit code is one of the specified codes. If allow_failure is also specified, this field will take precedence.
+        """
+        return pulumi.get(self, "allow_exit_codes")
+
+    @property
+    @pulumi.getter(name="allowFailure")
+    def allow_failure(self) -> bool:
+        """
+        Allow this build step to fail without failing the entire build. If false, the entire build will fail if this step fails. Otherwise, the build will succeed, but this step will still have a failure status. Error information will be reported in the failure_detail field.
+        """
+        return pulumi.get(self, "allow_failure")
 
     @property
     @pulumi.getter
@@ -1326,6 +1357,14 @@ class BuildStepResponse(dict):
         A list of environment variable definitions to be used when running a step. The elements are of the form "KEY=VALUE" for the environment variable "KEY" being given the value "VALUE".
         """
         return pulumi.get(self, "env")
+
+    @property
+    @pulumi.getter(name="exitCode")
+    def exit_code(self) -> int:
+        """
+        Return code from running the step.
+        """
+        return pulumi.get(self, "exit_code")
 
     @property
     @pulumi.getter

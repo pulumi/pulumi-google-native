@@ -11,30 +11,30 @@ namespace Pulumi.GoogleNative.Run.V1.Inputs
 {
 
     /// <summary>
-    /// Not supported by Cloud Run. Selects a key from a ConfigMap.
+    /// Not supported by Cloud Run.
     /// </summary>
     public sealed class ConfigMapKeySelectorArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The key to select.
+        /// Not supported by Cloud Run.
         /// </summary>
         [Input("key", required: true)]
         public Input<string> Key { get; set; } = null!;
 
         /// <summary>
-        /// This field should not be used directly as it is meant to be inlined directly into the message. Use the "name" field instead.
+        /// Not supported by Cloud Run.
         /// </summary>
         [Input("localObjectReference")]
         public Input<Inputs.LocalObjectReferenceArgs>? LocalObjectReference { get; set; }
 
         /// <summary>
-        /// The ConfigMap to select from.
+        /// Not supported by Cloud Run.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// Specify whether the ConfigMap or its key must be defined
+        /// Not supported by Cloud Run.
         /// </summary>
         [Input("optional")]
         public Input<bool>? Optional { get; set; }

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Run.V1.Outputs
     public sealed class RevisionSpecResponse
     {
         /// <summary>
-        /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. Cloud Run: supported, defaults to 80
+        /// ContainerConcurrency specifies the maximum allowed in-flight (concurrent) requests per container instance of the Revision. If not specified, defaults to 80.
         /// </summary>
         public readonly int ContainerConcurrency;
         /// <summary>
