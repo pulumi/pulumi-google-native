@@ -131,7 +131,7 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 	if projectValue != "" {
 		p.config["project"] = projectValue
 	}
-	
+
 	regionValue := p.getConfig("region", []string{
 		"GOOGLE_REGION",
 	})
@@ -147,7 +147,6 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 	if zoneValue != "" {
 		p.config["zone"] = zoneValue
 	}
-	
 
 	p.setLoggingContext(ctx)
 
