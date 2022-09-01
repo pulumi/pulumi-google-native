@@ -121,16 +121,31 @@ func (p *googleCloudProvider) Configure(ctx context.Context,
 	// * GCLOUD_PROJECT Env Var
 	// * CLOUDSDK_CORE_PROJECT Env Var
 	// This aligns with our provider documentation
-	project := p.getConfig("project", []string{
+	projectValue := p.getConfig("project", []string{
 		"GOOGLE_PROJECT",
 		"GOOGLE_CLOUD_PROJECT",
 		"GCLOUD_PROJECT",
 		"CLOUDSDK_CORE_PROJECT",
 	})
-	if project == "" {
-		return nil, fmt.Errorf("unable to find a valid Project. Set the Project by using: \n\n" +
-			" \t • `pulumi config set google-native:project my-project` or \n" +
-			" \t • Environment variables: `GOOGLE_PROJECT`, `GOOGLE_CLOUD_PROJECT`, `GCLOUD_PROJECT` or `CLOUDSDK_CORE_PROJECT` \n\n")
+
+	if projectValue != "" {
+		p.config["project"] = projectValue
+	}
+
+	regionValue := p.getConfig("region", []string{
+		"GOOGLE_REGION",
+	})
+
+	if regionValue != "" {
+		p.config["region"] = regionValue
+	}
+
+	zoneValue := p.getConfig("zone", []string{
+		"GOOGLE_ZONE",
+	})
+
+	if zoneValue != "" {
+		p.config["zone"] = zoneValue
 	}
 
 	p.setLoggingContext(ctx)
