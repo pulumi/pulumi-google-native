@@ -5,29 +5,76 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./endpoint";
-export * from "./getEndpoint";
-export * from "./getNamespace";
-export * from "./getNamespaceIamPolicy";
-export * from "./getNamespaceServiceIamPolicy";
-export * from "./getNamespaceServiceWorkloadIamPolicy";
-export * from "./getRegistrationPolicyIamPolicy";
-export * from "./getService";
-export * from "./namespace";
-export * from "./namespaceIamPolicy";
-export * from "./namespaceServiceIamPolicy";
-export * from "./namespaceServiceWorkloadIamPolicy";
-export * from "./registrationPolicyIamPolicy";
-export * from "./service";
+export { EndpointArgs } from "./endpoint";
+export type Endpoint = import("./endpoint").Endpoint;
+export const Endpoint: typeof import("./endpoint").Endpoint = null as any;
 
-// Import resources to register:
-import { Endpoint } from "./endpoint";
-import { Namespace } from "./namespace";
-import { NamespaceIamPolicy } from "./namespaceIamPolicy";
-import { NamespaceServiceIamPolicy } from "./namespaceServiceIamPolicy";
-import { NamespaceServiceWorkloadIamPolicy } from "./namespaceServiceWorkloadIamPolicy";
-import { RegistrationPolicyIamPolicy } from "./registrationPolicyIamPolicy";
-import { Service } from "./service";
+export { GetEndpointArgs, GetEndpointResult, GetEndpointOutputArgs } from "./getEndpoint";
+export const getEndpoint: typeof import("./getEndpoint").getEndpoint = null as any;
+export const getEndpointOutput: typeof import("./getEndpoint").getEndpointOutput = null as any;
+
+export { GetNamespaceArgs, GetNamespaceResult, GetNamespaceOutputArgs } from "./getNamespace";
+export const getNamespace: typeof import("./getNamespace").getNamespace = null as any;
+export const getNamespaceOutput: typeof import("./getNamespace").getNamespaceOutput = null as any;
+
+export { GetNamespaceIamPolicyArgs, GetNamespaceIamPolicyResult, GetNamespaceIamPolicyOutputArgs } from "./getNamespaceIamPolicy";
+export const getNamespaceIamPolicy: typeof import("./getNamespaceIamPolicy").getNamespaceIamPolicy = null as any;
+export const getNamespaceIamPolicyOutput: typeof import("./getNamespaceIamPolicy").getNamespaceIamPolicyOutput = null as any;
+
+export { GetNamespaceServiceIamPolicyArgs, GetNamespaceServiceIamPolicyResult, GetNamespaceServiceIamPolicyOutputArgs } from "./getNamespaceServiceIamPolicy";
+export const getNamespaceServiceIamPolicy: typeof import("./getNamespaceServiceIamPolicy").getNamespaceServiceIamPolicy = null as any;
+export const getNamespaceServiceIamPolicyOutput: typeof import("./getNamespaceServiceIamPolicy").getNamespaceServiceIamPolicyOutput = null as any;
+
+export { GetNamespaceServiceWorkloadIamPolicyArgs, GetNamespaceServiceWorkloadIamPolicyResult, GetNamespaceServiceWorkloadIamPolicyOutputArgs } from "./getNamespaceServiceWorkloadIamPolicy";
+export const getNamespaceServiceWorkloadIamPolicy: typeof import("./getNamespaceServiceWorkloadIamPolicy").getNamespaceServiceWorkloadIamPolicy = null as any;
+export const getNamespaceServiceWorkloadIamPolicyOutput: typeof import("./getNamespaceServiceWorkloadIamPolicy").getNamespaceServiceWorkloadIamPolicyOutput = null as any;
+
+export { GetRegistrationPolicyIamPolicyArgs, GetRegistrationPolicyIamPolicyResult, GetRegistrationPolicyIamPolicyOutputArgs } from "./getRegistrationPolicyIamPolicy";
+export const getRegistrationPolicyIamPolicy: typeof import("./getRegistrationPolicyIamPolicy").getRegistrationPolicyIamPolicy = null as any;
+export const getRegistrationPolicyIamPolicyOutput: typeof import("./getRegistrationPolicyIamPolicy").getRegistrationPolicyIamPolicyOutput = null as any;
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+
+export { NamespaceArgs } from "./namespace";
+export type Namespace = import("./namespace").Namespace;
+export const Namespace: typeof import("./namespace").Namespace = null as any;
+
+export { NamespaceIamPolicyArgs } from "./namespaceIamPolicy";
+export type NamespaceIamPolicy = import("./namespaceIamPolicy").NamespaceIamPolicy;
+export const NamespaceIamPolicy: typeof import("./namespaceIamPolicy").NamespaceIamPolicy = null as any;
+
+export { NamespaceServiceIamPolicyArgs } from "./namespaceServiceIamPolicy";
+export type NamespaceServiceIamPolicy = import("./namespaceServiceIamPolicy").NamespaceServiceIamPolicy;
+export const NamespaceServiceIamPolicy: typeof import("./namespaceServiceIamPolicy").NamespaceServiceIamPolicy = null as any;
+
+export { NamespaceServiceWorkloadIamPolicyArgs } from "./namespaceServiceWorkloadIamPolicy";
+export type NamespaceServiceWorkloadIamPolicy = import("./namespaceServiceWorkloadIamPolicy").NamespaceServiceWorkloadIamPolicy;
+export const NamespaceServiceWorkloadIamPolicy: typeof import("./namespaceServiceWorkloadIamPolicy").NamespaceServiceWorkloadIamPolicy = null as any;
+
+export { RegistrationPolicyIamPolicyArgs } from "./registrationPolicyIamPolicy";
+export type RegistrationPolicyIamPolicy = import("./registrationPolicyIamPolicy").RegistrationPolicyIamPolicy;
+export const RegistrationPolicyIamPolicy: typeof import("./registrationPolicyIamPolicy").RegistrationPolicyIamPolicy = null as any;
+
+export { ServiceArgs } from "./service";
+export type Service = import("./service").Service;
+export const Service: typeof import("./service").Service = null as any;
+
+utilities.lazyLoad(exports, ["Endpoint"], () => require("./endpoint"));
+utilities.lazyLoad(exports, ["getEndpoint","getEndpointOutput"], () => require("./getEndpoint"));
+utilities.lazyLoad(exports, ["getNamespace","getNamespaceOutput"], () => require("./getNamespace"));
+utilities.lazyLoad(exports, ["getNamespaceIamPolicy","getNamespaceIamPolicyOutput"], () => require("./getNamespaceIamPolicy"));
+utilities.lazyLoad(exports, ["getNamespaceServiceIamPolicy","getNamespaceServiceIamPolicyOutput"], () => require("./getNamespaceServiceIamPolicy"));
+utilities.lazyLoad(exports, ["getNamespaceServiceWorkloadIamPolicy","getNamespaceServiceWorkloadIamPolicyOutput"], () => require("./getNamespaceServiceWorkloadIamPolicy"));
+utilities.lazyLoad(exports, ["getRegistrationPolicyIamPolicy","getRegistrationPolicyIamPolicyOutput"], () => require("./getRegistrationPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+utilities.lazyLoad(exports, ["Namespace"], () => require("./namespace"));
+utilities.lazyLoad(exports, ["NamespaceIamPolicy"], () => require("./namespaceIamPolicy"));
+utilities.lazyLoad(exports, ["NamespaceServiceIamPolicy"], () => require("./namespaceServiceIamPolicy"));
+utilities.lazyLoad(exports, ["NamespaceServiceWorkloadIamPolicy"], () => require("./namespaceServiceWorkloadIamPolicy"));
+utilities.lazyLoad(exports, ["RegistrationPolicyIamPolicy"], () => require("./registrationPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["Service"], () => require("./service"));
 
 const _module = {
     version: utilities.getVersion(),

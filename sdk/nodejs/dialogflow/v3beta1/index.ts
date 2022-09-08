@@ -5,50 +5,139 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./agent";
-export * from "./entityType";
-export * from "./environment";
-export * from "./experiment";
-export * from "./flow";
-export * from "./getAgent";
-export * from "./getEntityType";
-export * from "./getEnvironment";
-export * from "./getExperiment";
-export * from "./getFlow";
-export * from "./getIntent";
-export * from "./getPage";
-export * from "./getSecuritySetting";
-export * from "./getSessionEntityType";
-export * from "./getTestCase";
-export * from "./getTransitionRouteGroup";
-export * from "./getVersion";
-export * from "./getWebhook";
-export * from "./intent";
-export * from "./page";
-export * from "./securitySetting";
-export * from "./sessionEntityType";
-export * from "./testCase";
-export * from "./transitionRouteGroup";
-export * from "./version";
-export * from "./webhook";
+export { AgentArgs } from "./agent";
+export type Agent = import("./agent").Agent;
+export const Agent: typeof import("./agent").Agent = null as any;
+
+export { EntityTypeArgs } from "./entityType";
+export type EntityType = import("./entityType").EntityType;
+export const EntityType: typeof import("./entityType").EntityType = null as any;
+
+export { EnvironmentArgs } from "./environment";
+export type Environment = import("./environment").Environment;
+export const Environment: typeof import("./environment").Environment = null as any;
+
+export { ExperimentArgs } from "./experiment";
+export type Experiment = import("./experiment").Experiment;
+export const Experiment: typeof import("./experiment").Experiment = null as any;
+
+export { FlowArgs } from "./flow";
+export type Flow = import("./flow").Flow;
+export const Flow: typeof import("./flow").Flow = null as any;
+
+export { GetAgentArgs, GetAgentResult, GetAgentOutputArgs } from "./getAgent";
+export const getAgent: typeof import("./getAgent").getAgent = null as any;
+export const getAgentOutput: typeof import("./getAgent").getAgentOutput = null as any;
+
+export { GetEntityTypeArgs, GetEntityTypeResult, GetEntityTypeOutputArgs } from "./getEntityType";
+export const getEntityType: typeof import("./getEntityType").getEntityType = null as any;
+export const getEntityTypeOutput: typeof import("./getEntityType").getEntityTypeOutput = null as any;
+
+export { GetEnvironmentArgs, GetEnvironmentResult, GetEnvironmentOutputArgs } from "./getEnvironment";
+export const getEnvironment: typeof import("./getEnvironment").getEnvironment = null as any;
+export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
+
+export { GetExperimentArgs, GetExperimentResult, GetExperimentOutputArgs } from "./getExperiment";
+export const getExperiment: typeof import("./getExperiment").getExperiment = null as any;
+export const getExperimentOutput: typeof import("./getExperiment").getExperimentOutput = null as any;
+
+export { GetFlowArgs, GetFlowResult, GetFlowOutputArgs } from "./getFlow";
+export const getFlow: typeof import("./getFlow").getFlow = null as any;
+export const getFlowOutput: typeof import("./getFlow").getFlowOutput = null as any;
+
+export { GetIntentArgs, GetIntentResult, GetIntentOutputArgs } from "./getIntent";
+export const getIntent: typeof import("./getIntent").getIntent = null as any;
+export const getIntentOutput: typeof import("./getIntent").getIntentOutput = null as any;
+
+export { GetPageArgs, GetPageResult, GetPageOutputArgs } from "./getPage";
+export const getPage: typeof import("./getPage").getPage = null as any;
+export const getPageOutput: typeof import("./getPage").getPageOutput = null as any;
+
+export { GetSecuritySettingArgs, GetSecuritySettingResult, GetSecuritySettingOutputArgs } from "./getSecuritySetting";
+export const getSecuritySetting: typeof import("./getSecuritySetting").getSecuritySetting = null as any;
+export const getSecuritySettingOutput: typeof import("./getSecuritySetting").getSecuritySettingOutput = null as any;
+
+export { GetSessionEntityTypeArgs, GetSessionEntityTypeResult, GetSessionEntityTypeOutputArgs } from "./getSessionEntityType";
+export const getSessionEntityType: typeof import("./getSessionEntityType").getSessionEntityType = null as any;
+export const getSessionEntityTypeOutput: typeof import("./getSessionEntityType").getSessionEntityTypeOutput = null as any;
+
+export { GetTestCaseArgs, GetTestCaseResult, GetTestCaseOutputArgs } from "./getTestCase";
+export const getTestCase: typeof import("./getTestCase").getTestCase = null as any;
+export const getTestCaseOutput: typeof import("./getTestCase").getTestCaseOutput = null as any;
+
+export { GetTransitionRouteGroupArgs, GetTransitionRouteGroupResult, GetTransitionRouteGroupOutputArgs } from "./getTransitionRouteGroup";
+export const getTransitionRouteGroup: typeof import("./getTransitionRouteGroup").getTransitionRouteGroup = null as any;
+export const getTransitionRouteGroupOutput: typeof import("./getTransitionRouteGroup").getTransitionRouteGroupOutput = null as any;
+
+export { GetVersionArgs, GetVersionResult, GetVersionOutputArgs } from "./getVersion";
+export const getVersion: typeof import("./getVersion").getVersion = null as any;
+export const getVersionOutput: typeof import("./getVersion").getVersionOutput = null as any;
+
+export { GetWebhookArgs, GetWebhookResult, GetWebhookOutputArgs } from "./getWebhook";
+export const getWebhook: typeof import("./getWebhook").getWebhook = null as any;
+export const getWebhookOutput: typeof import("./getWebhook").getWebhookOutput = null as any;
+
+export { IntentArgs } from "./intent";
+export type Intent = import("./intent").Intent;
+export const Intent: typeof import("./intent").Intent = null as any;
+
+export { PageArgs } from "./page";
+export type Page = import("./page").Page;
+export const Page: typeof import("./page").Page = null as any;
+
+export { SecuritySettingArgs } from "./securitySetting";
+export type SecuritySetting = import("./securitySetting").SecuritySetting;
+export const SecuritySetting: typeof import("./securitySetting").SecuritySetting = null as any;
+
+export { SessionEntityTypeArgs } from "./sessionEntityType";
+export type SessionEntityType = import("./sessionEntityType").SessionEntityType;
+export const SessionEntityType: typeof import("./sessionEntityType").SessionEntityType = null as any;
+
+export { TestCaseArgs } from "./testCase";
+export type TestCase = import("./testCase").TestCase;
+export const TestCase: typeof import("./testCase").TestCase = null as any;
+
+export { TransitionRouteGroupArgs } from "./transitionRouteGroup";
+export type TransitionRouteGroup = import("./transitionRouteGroup").TransitionRouteGroup;
+export const TransitionRouteGroup: typeof import("./transitionRouteGroup").TransitionRouteGroup = null as any;
+
+export { VersionArgs } from "./version";
+export type Version = import("./version").Version;
+export const Version: typeof import("./version").Version = null as any;
+
+export { WebhookArgs } from "./webhook";
+export type Webhook = import("./webhook").Webhook;
+export const Webhook: typeof import("./webhook").Webhook = null as any;
+
+utilities.lazyLoad(exports, ["Agent"], () => require("./agent"));
+utilities.lazyLoad(exports, ["EntityType"], () => require("./entityType"));
+utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
+utilities.lazyLoad(exports, ["Experiment"], () => require("./experiment"));
+utilities.lazyLoad(exports, ["Flow"], () => require("./flow"));
+utilities.lazyLoad(exports, ["getAgent","getAgentOutput"], () => require("./getAgent"));
+utilities.lazyLoad(exports, ["getEntityType","getEntityTypeOutput"], () => require("./getEntityType"));
+utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
+utilities.lazyLoad(exports, ["getExperiment","getExperimentOutput"], () => require("./getExperiment"));
+utilities.lazyLoad(exports, ["getFlow","getFlowOutput"], () => require("./getFlow"));
+utilities.lazyLoad(exports, ["getIntent","getIntentOutput"], () => require("./getIntent"));
+utilities.lazyLoad(exports, ["getPage","getPageOutput"], () => require("./getPage"));
+utilities.lazyLoad(exports, ["getSecuritySetting","getSecuritySettingOutput"], () => require("./getSecuritySetting"));
+utilities.lazyLoad(exports, ["getSessionEntityType","getSessionEntityTypeOutput"], () => require("./getSessionEntityType"));
+utilities.lazyLoad(exports, ["getTestCase","getTestCaseOutput"], () => require("./getTestCase"));
+utilities.lazyLoad(exports, ["getTransitionRouteGroup","getTransitionRouteGroupOutput"], () => require("./getTransitionRouteGroup"));
+utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
+utilities.lazyLoad(exports, ["getWebhook","getWebhookOutput"], () => require("./getWebhook"));
+utilities.lazyLoad(exports, ["Intent"], () => require("./intent"));
+utilities.lazyLoad(exports, ["Page"], () => require("./page"));
+utilities.lazyLoad(exports, ["SecuritySetting"], () => require("./securitySetting"));
+utilities.lazyLoad(exports, ["SessionEntityType"], () => require("./sessionEntityType"));
+utilities.lazyLoad(exports, ["TestCase"], () => require("./testCase"));
+utilities.lazyLoad(exports, ["TransitionRouteGroup"], () => require("./transitionRouteGroup"));
+utilities.lazyLoad(exports, ["Version"], () => require("./version"));
+utilities.lazyLoad(exports, ["Webhook"], () => require("./webhook"));
 
 // Export enums:
 export * from "../../types/enums/dialogflow/v3beta1";
-
-// Import resources to register:
-import { Agent } from "./agent";
-import { EntityType } from "./entityType";
-import { Environment } from "./environment";
-import { Experiment } from "./experiment";
-import { Flow } from "./flow";
-import { Intent } from "./intent";
-import { Page } from "./page";
-import { SecuritySetting } from "./securitySetting";
-import { SessionEntityType } from "./sessionEntityType";
-import { TestCase } from "./testCase";
-import { TransitionRouteGroup } from "./transitionRouteGroup";
-import { Version } from "./version";
-import { Webhook } from "./webhook";
 
 const _module = {
     version: utilities.getVersion(),

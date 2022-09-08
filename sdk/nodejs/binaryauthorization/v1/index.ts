@@ -5,20 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./attestor";
-export * from "./attestorIamPolicy";
-export * from "./getAttestor";
-export * from "./getAttestorIamPolicy";
-export * from "./getPolicyIamPolicy";
-export * from "./policyIamPolicy";
+export { AttestorArgs } from "./attestor";
+export type Attestor = import("./attestor").Attestor;
+export const Attestor: typeof import("./attestor").Attestor = null as any;
+
+export { AttestorIamPolicyArgs } from "./attestorIamPolicy";
+export type AttestorIamPolicy = import("./attestorIamPolicy").AttestorIamPolicy;
+export const AttestorIamPolicy: typeof import("./attestorIamPolicy").AttestorIamPolicy = null as any;
+
+export { GetAttestorArgs, GetAttestorResult, GetAttestorOutputArgs } from "./getAttestor";
+export const getAttestor: typeof import("./getAttestor").getAttestor = null as any;
+export const getAttestorOutput: typeof import("./getAttestor").getAttestorOutput = null as any;
+
+export { GetAttestorIamPolicyArgs, GetAttestorIamPolicyResult, GetAttestorIamPolicyOutputArgs } from "./getAttestorIamPolicy";
+export const getAttestorIamPolicy: typeof import("./getAttestorIamPolicy").getAttestorIamPolicy = null as any;
+export const getAttestorIamPolicyOutput: typeof import("./getAttestorIamPolicy").getAttestorIamPolicyOutput = null as any;
+
+export { GetPolicyIamPolicyArgs, GetPolicyIamPolicyResult, GetPolicyIamPolicyOutputArgs } from "./getPolicyIamPolicy";
+export const getPolicyIamPolicy: typeof import("./getPolicyIamPolicy").getPolicyIamPolicy = null as any;
+export const getPolicyIamPolicyOutput: typeof import("./getPolicyIamPolicy").getPolicyIamPolicyOutput = null as any;
+
+export { PolicyIamPolicyArgs } from "./policyIamPolicy";
+export type PolicyIamPolicy = import("./policyIamPolicy").PolicyIamPolicy;
+export const PolicyIamPolicy: typeof import("./policyIamPolicy").PolicyIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["Attestor"], () => require("./attestor"));
+utilities.lazyLoad(exports, ["AttestorIamPolicy"], () => require("./attestorIamPolicy"));
+utilities.lazyLoad(exports, ["getAttestor","getAttestorOutput"], () => require("./getAttestor"));
+utilities.lazyLoad(exports, ["getAttestorIamPolicy","getAttestorIamPolicyOutput"], () => require("./getAttestorIamPolicy"));
+utilities.lazyLoad(exports, ["getPolicyIamPolicy","getPolicyIamPolicyOutput"], () => require("./getPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["PolicyIamPolicy"], () => require("./policyIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/binaryauthorization/v1";
-
-// Import resources to register:
-import { Attestor } from "./attestor";
-import { AttestorIamPolicy } from "./attestorIamPolicy";
-import { PolicyIamPolicy } from "./policyIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

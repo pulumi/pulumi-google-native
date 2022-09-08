@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getTraceSink";
-export * from "./traceSink";
+export { GetTraceSinkArgs, GetTraceSinkResult, GetTraceSinkOutputArgs } from "./getTraceSink";
+export const getTraceSink: typeof import("./getTraceSink").getTraceSink = null as any;
+export const getTraceSinkOutput: typeof import("./getTraceSink").getTraceSinkOutput = null as any;
 
-// Import resources to register:
-import { TraceSink } from "./traceSink";
+export { TraceSinkArgs } from "./traceSink";
+export type TraceSink = import("./traceSink").TraceSink;
+export const TraceSink: typeof import("./traceSink").TraceSink = null as any;
+
+utilities.lazyLoad(exports, ["getTraceSink","getTraceSinkOutput"], () => require("./getTraceSink"));
+utilities.lazyLoad(exports, ["TraceSink"], () => require("./traceSink"));
 
 const _module = {
     version: utilities.getVersion(),

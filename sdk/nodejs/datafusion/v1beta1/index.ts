@@ -5,20 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getInstance";
-export * from "./getInstanceIamPolicy";
-export * from "./getInstanceNamespaceIamPolicy";
-export * from "./instance";
-export * from "./instanceIamPolicy";
-export * from "./instanceNamespaceIamPolicy";
+export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
+export const getInstance: typeof import("./getInstance").getInstance = null as any;
+export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+
+export { GetInstanceIamPolicyArgs, GetInstanceIamPolicyResult, GetInstanceIamPolicyOutputArgs } from "./getInstanceIamPolicy";
+export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getInstanceIamPolicy = null as any;
+export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;
+
+export { GetInstanceNamespaceIamPolicyArgs, GetInstanceNamespaceIamPolicyResult, GetInstanceNamespaceIamPolicyOutputArgs } from "./getInstanceNamespaceIamPolicy";
+export const getInstanceNamespaceIamPolicy: typeof import("./getInstanceNamespaceIamPolicy").getInstanceNamespaceIamPolicy = null as any;
+export const getInstanceNamespaceIamPolicyOutput: typeof import("./getInstanceNamespaceIamPolicy").getInstanceNamespaceIamPolicyOutput = null as any;
+
+export { InstanceArgs } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+
+export { InstanceIamPolicyArgs } from "./instanceIamPolicy";
+export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
+export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
+
+export { InstanceNamespaceIamPolicyArgs } from "./instanceNamespaceIamPolicy";
+export type InstanceNamespaceIamPolicy = import("./instanceNamespaceIamPolicy").InstanceNamespaceIamPolicy;
+export const InstanceNamespaceIamPolicy: typeof import("./instanceNamespaceIamPolicy").InstanceNamespaceIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
+utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
+utilities.lazyLoad(exports, ["getInstanceNamespaceIamPolicy","getInstanceNamespaceIamPolicyOutput"], () => require("./getInstanceNamespaceIamPolicy"));
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
+utilities.lazyLoad(exports, ["InstanceNamespaceIamPolicy"], () => require("./instanceNamespaceIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/datafusion/v1beta1";
-
-// Import resources to register:
-import { Instance } from "./instance";
-import { InstanceIamPolicy } from "./instanceIamPolicy";
-import { InstanceNamespaceIamPolicy } from "./instanceNamespaceIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

@@ -5,20 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getInstance";
-export * from "./getNfsShare";
-export * from "./getProvisioningConfig";
-export * from "./instance";
-export * from "./nfsShare";
-export * from "./provisioningConfig";
+export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
+export const getInstance: typeof import("./getInstance").getInstance = null as any;
+export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+
+export { GetNfsShareArgs, GetNfsShareResult, GetNfsShareOutputArgs } from "./getNfsShare";
+export const getNfsShare: typeof import("./getNfsShare").getNfsShare = null as any;
+export const getNfsShareOutput: typeof import("./getNfsShare").getNfsShareOutput = null as any;
+
+export { GetProvisioningConfigArgs, GetProvisioningConfigResult, GetProvisioningConfigOutputArgs } from "./getProvisioningConfig";
+export const getProvisioningConfig: typeof import("./getProvisioningConfig").getProvisioningConfig = null as any;
+export const getProvisioningConfigOutput: typeof import("./getProvisioningConfig").getProvisioningConfigOutput = null as any;
+
+export { InstanceArgs } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+
+export { NfsShareArgs } from "./nfsShare";
+export type NfsShare = import("./nfsShare").NfsShare;
+export const NfsShare: typeof import("./nfsShare").NfsShare = null as any;
+
+export { ProvisioningConfigArgs } from "./provisioningConfig";
+export type ProvisioningConfig = import("./provisioningConfig").ProvisioningConfig;
+export const ProvisioningConfig: typeof import("./provisioningConfig").ProvisioningConfig = null as any;
+
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
+utilities.lazyLoad(exports, ["getNfsShare","getNfsShareOutput"], () => require("./getNfsShare"));
+utilities.lazyLoad(exports, ["getProvisioningConfig","getProvisioningConfigOutput"], () => require("./getProvisioningConfig"));
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["NfsShare"], () => require("./nfsShare"));
+utilities.lazyLoad(exports, ["ProvisioningConfig"], () => require("./provisioningConfig"));
 
 // Export enums:
 export * from "../../types/enums/baremetalsolution/v2";
-
-// Import resources to register:
-import { Instance } from "./instance";
-import { NfsShare } from "./nfsShare";
-import { ProvisioningConfig } from "./provisioningConfig";
 
 const _module = {
     version: utilities.getVersion(),

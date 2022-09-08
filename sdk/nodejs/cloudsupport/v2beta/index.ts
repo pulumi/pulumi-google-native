@@ -5,14 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./case";
-export * from "./getCase";
+export { CaseArgs } from "./case";
+export type Case = import("./case").Case;
+export const Case: typeof import("./case").Case = null as any;
+
+export { GetCaseArgs, GetCaseResult, GetCaseOutputArgs } from "./getCase";
+export const getCase: typeof import("./getCase").getCase = null as any;
+export const getCaseOutput: typeof import("./getCase").getCaseOutput = null as any;
+
+utilities.lazyLoad(exports, ["Case"], () => require("./case"));
+utilities.lazyLoad(exports, ["getCase","getCaseOutput"], () => require("./getCase"));
 
 // Export enums:
 export * from "../../types/enums/cloudsupport/v2beta";
-
-// Import resources to register:
-import { Case } from "./case";
 
 const _module = {
     version: utilities.getVersion(),

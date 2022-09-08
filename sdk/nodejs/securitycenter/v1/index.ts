@@ -5,35 +5,89 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./folderBigQueryExport";
-export * from "./getFolderBigQueryExport";
-export * from "./getMuteConfig";
-export * from "./getNotificationConfig";
-export * from "./getOrganizationBigQueryExport";
-export * from "./getOrganizationMuteConfig";
-export * from "./getOrganizationSourceIamPolicy";
-export * from "./getProjectBigQueryExport";
-export * from "./getSource";
-export * from "./muteConfig";
-export * from "./notificationConfig";
-export * from "./organizationBigQueryExport";
-export * from "./organizationMuteConfig";
-export * from "./organizationSourceIamPolicy";
-export * from "./projectBigQueryExport";
-export * from "./source";
+export { FolderBigQueryExportArgs } from "./folderBigQueryExport";
+export type FolderBigQueryExport = import("./folderBigQueryExport").FolderBigQueryExport;
+export const FolderBigQueryExport: typeof import("./folderBigQueryExport").FolderBigQueryExport = null as any;
+
+export { GetFolderBigQueryExportArgs, GetFolderBigQueryExportResult, GetFolderBigQueryExportOutputArgs } from "./getFolderBigQueryExport";
+export const getFolderBigQueryExport: typeof import("./getFolderBigQueryExport").getFolderBigQueryExport = null as any;
+export const getFolderBigQueryExportOutput: typeof import("./getFolderBigQueryExport").getFolderBigQueryExportOutput = null as any;
+
+export { GetMuteConfigArgs, GetMuteConfigResult, GetMuteConfigOutputArgs } from "./getMuteConfig";
+export const getMuteConfig: typeof import("./getMuteConfig").getMuteConfig = null as any;
+export const getMuteConfigOutput: typeof import("./getMuteConfig").getMuteConfigOutput = null as any;
+
+export { GetNotificationConfigArgs, GetNotificationConfigResult, GetNotificationConfigOutputArgs } from "./getNotificationConfig";
+export const getNotificationConfig: typeof import("./getNotificationConfig").getNotificationConfig = null as any;
+export const getNotificationConfigOutput: typeof import("./getNotificationConfig").getNotificationConfigOutput = null as any;
+
+export { GetOrganizationBigQueryExportArgs, GetOrganizationBigQueryExportResult, GetOrganizationBigQueryExportOutputArgs } from "./getOrganizationBigQueryExport";
+export const getOrganizationBigQueryExport: typeof import("./getOrganizationBigQueryExport").getOrganizationBigQueryExport = null as any;
+export const getOrganizationBigQueryExportOutput: typeof import("./getOrganizationBigQueryExport").getOrganizationBigQueryExportOutput = null as any;
+
+export { GetOrganizationMuteConfigArgs, GetOrganizationMuteConfigResult, GetOrganizationMuteConfigOutputArgs } from "./getOrganizationMuteConfig";
+export const getOrganizationMuteConfig: typeof import("./getOrganizationMuteConfig").getOrganizationMuteConfig = null as any;
+export const getOrganizationMuteConfigOutput: typeof import("./getOrganizationMuteConfig").getOrganizationMuteConfigOutput = null as any;
+
+export { GetOrganizationSourceIamPolicyArgs, GetOrganizationSourceIamPolicyResult, GetOrganizationSourceIamPolicyOutputArgs } from "./getOrganizationSourceIamPolicy";
+export const getOrganizationSourceIamPolicy: typeof import("./getOrganizationSourceIamPolicy").getOrganizationSourceIamPolicy = null as any;
+export const getOrganizationSourceIamPolicyOutput: typeof import("./getOrganizationSourceIamPolicy").getOrganizationSourceIamPolicyOutput = null as any;
+
+export { GetProjectBigQueryExportArgs, GetProjectBigQueryExportResult, GetProjectBigQueryExportOutputArgs } from "./getProjectBigQueryExport";
+export const getProjectBigQueryExport: typeof import("./getProjectBigQueryExport").getProjectBigQueryExport = null as any;
+export const getProjectBigQueryExportOutput: typeof import("./getProjectBigQueryExport").getProjectBigQueryExportOutput = null as any;
+
+export { GetSourceArgs, GetSourceResult, GetSourceOutputArgs } from "./getSource";
+export const getSource: typeof import("./getSource").getSource = null as any;
+export const getSourceOutput: typeof import("./getSource").getSourceOutput = null as any;
+
+export { MuteConfigArgs } from "./muteConfig";
+export type MuteConfig = import("./muteConfig").MuteConfig;
+export const MuteConfig: typeof import("./muteConfig").MuteConfig = null as any;
+
+export { NotificationConfigArgs } from "./notificationConfig";
+export type NotificationConfig = import("./notificationConfig").NotificationConfig;
+export const NotificationConfig: typeof import("./notificationConfig").NotificationConfig = null as any;
+
+export { OrganizationBigQueryExportArgs } from "./organizationBigQueryExport";
+export type OrganizationBigQueryExport = import("./organizationBigQueryExport").OrganizationBigQueryExport;
+export const OrganizationBigQueryExport: typeof import("./organizationBigQueryExport").OrganizationBigQueryExport = null as any;
+
+export { OrganizationMuteConfigArgs } from "./organizationMuteConfig";
+export type OrganizationMuteConfig = import("./organizationMuteConfig").OrganizationMuteConfig;
+export const OrganizationMuteConfig: typeof import("./organizationMuteConfig").OrganizationMuteConfig = null as any;
+
+export { OrganizationSourceIamPolicyArgs } from "./organizationSourceIamPolicy";
+export type OrganizationSourceIamPolicy = import("./organizationSourceIamPolicy").OrganizationSourceIamPolicy;
+export const OrganizationSourceIamPolicy: typeof import("./organizationSourceIamPolicy").OrganizationSourceIamPolicy = null as any;
+
+export { ProjectBigQueryExportArgs } from "./projectBigQueryExport";
+export type ProjectBigQueryExport = import("./projectBigQueryExport").ProjectBigQueryExport;
+export const ProjectBigQueryExport: typeof import("./projectBigQueryExport").ProjectBigQueryExport = null as any;
+
+export { SourceArgs } from "./source";
+export type Source = import("./source").Source;
+export const Source: typeof import("./source").Source = null as any;
+
+utilities.lazyLoad(exports, ["FolderBigQueryExport"], () => require("./folderBigQueryExport"));
+utilities.lazyLoad(exports, ["getFolderBigQueryExport","getFolderBigQueryExportOutput"], () => require("./getFolderBigQueryExport"));
+utilities.lazyLoad(exports, ["getMuteConfig","getMuteConfigOutput"], () => require("./getMuteConfig"));
+utilities.lazyLoad(exports, ["getNotificationConfig","getNotificationConfigOutput"], () => require("./getNotificationConfig"));
+utilities.lazyLoad(exports, ["getOrganizationBigQueryExport","getOrganizationBigQueryExportOutput"], () => require("./getOrganizationBigQueryExport"));
+utilities.lazyLoad(exports, ["getOrganizationMuteConfig","getOrganizationMuteConfigOutput"], () => require("./getOrganizationMuteConfig"));
+utilities.lazyLoad(exports, ["getOrganizationSourceIamPolicy","getOrganizationSourceIamPolicyOutput"], () => require("./getOrganizationSourceIamPolicy"));
+utilities.lazyLoad(exports, ["getProjectBigQueryExport","getProjectBigQueryExportOutput"], () => require("./getProjectBigQueryExport"));
+utilities.lazyLoad(exports, ["getSource","getSourceOutput"], () => require("./getSource"));
+utilities.lazyLoad(exports, ["MuteConfig"], () => require("./muteConfig"));
+utilities.lazyLoad(exports, ["NotificationConfig"], () => require("./notificationConfig"));
+utilities.lazyLoad(exports, ["OrganizationBigQueryExport"], () => require("./organizationBigQueryExport"));
+utilities.lazyLoad(exports, ["OrganizationMuteConfig"], () => require("./organizationMuteConfig"));
+utilities.lazyLoad(exports, ["OrganizationSourceIamPolicy"], () => require("./organizationSourceIamPolicy"));
+utilities.lazyLoad(exports, ["ProjectBigQueryExport"], () => require("./projectBigQueryExport"));
+utilities.lazyLoad(exports, ["Source"], () => require("./source"));
 
 // Export enums:
 export * from "../../types/enums/securitycenter/v1";
-
-// Import resources to register:
-import { FolderBigQueryExport } from "./folderBigQueryExport";
-import { MuteConfig } from "./muteConfig";
-import { NotificationConfig } from "./notificationConfig";
-import { OrganizationBigQueryExport } from "./organizationBigQueryExport";
-import { OrganizationMuteConfig } from "./organizationMuteConfig";
-import { OrganizationSourceIamPolicy } from "./organizationSourceIamPolicy";
-import { ProjectBigQueryExport } from "./projectBigQueryExport";
-import { Source } from "./source";
 
 const _module = {
     version: utilities.getVersion(),

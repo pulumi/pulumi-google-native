@@ -5,14 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./gameServerDeploymentIamPolicy";
-export * from "./getGameServerDeploymentIamPolicy";
+export { GameServerDeploymentIamPolicyArgs } from "./gameServerDeploymentIamPolicy";
+export type GameServerDeploymentIamPolicy = import("./gameServerDeploymentIamPolicy").GameServerDeploymentIamPolicy;
+export const GameServerDeploymentIamPolicy: typeof import("./gameServerDeploymentIamPolicy").GameServerDeploymentIamPolicy = null as any;
+
+export { GetGameServerDeploymentIamPolicyArgs, GetGameServerDeploymentIamPolicyResult, GetGameServerDeploymentIamPolicyOutputArgs } from "./getGameServerDeploymentIamPolicy";
+export const getGameServerDeploymentIamPolicy: typeof import("./getGameServerDeploymentIamPolicy").getGameServerDeploymentIamPolicy = null as any;
+export const getGameServerDeploymentIamPolicyOutput: typeof import("./getGameServerDeploymentIamPolicy").getGameServerDeploymentIamPolicyOutput = null as any;
+
+utilities.lazyLoad(exports, ["GameServerDeploymentIamPolicy"], () => require("./gameServerDeploymentIamPolicy"));
+utilities.lazyLoad(exports, ["getGameServerDeploymentIamPolicy","getGameServerDeploymentIamPolicyOutput"], () => require("./getGameServerDeploymentIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/gameservices/v1";
-
-// Import resources to register:
-import { GameServerDeploymentIamPolicy } from "./gameServerDeploymentIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

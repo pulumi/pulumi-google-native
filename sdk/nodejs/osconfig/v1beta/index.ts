@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getGuestPolicy";
-export * from "./getPatchDeployment";
-export * from "./guestPolicy";
-export * from "./patchDeployment";
+export { GetGuestPolicyArgs, GetGuestPolicyResult, GetGuestPolicyOutputArgs } from "./getGuestPolicy";
+export const getGuestPolicy: typeof import("./getGuestPolicy").getGuestPolicy = null as any;
+export const getGuestPolicyOutput: typeof import("./getGuestPolicy").getGuestPolicyOutput = null as any;
+
+export { GetPatchDeploymentArgs, GetPatchDeploymentResult, GetPatchDeploymentOutputArgs } from "./getPatchDeployment";
+export const getPatchDeployment: typeof import("./getPatchDeployment").getPatchDeployment = null as any;
+export const getPatchDeploymentOutput: typeof import("./getPatchDeployment").getPatchDeploymentOutput = null as any;
+
+export { GuestPolicyArgs } from "./guestPolicy";
+export type GuestPolicy = import("./guestPolicy").GuestPolicy;
+export const GuestPolicy: typeof import("./guestPolicy").GuestPolicy = null as any;
+
+export { PatchDeploymentArgs } from "./patchDeployment";
+export type PatchDeployment = import("./patchDeployment").PatchDeployment;
+export const PatchDeployment: typeof import("./patchDeployment").PatchDeployment = null as any;
+
+utilities.lazyLoad(exports, ["getGuestPolicy","getGuestPolicyOutput"], () => require("./getGuestPolicy"));
+utilities.lazyLoad(exports, ["getPatchDeployment","getPatchDeploymentOutput"], () => require("./getPatchDeployment"));
+utilities.lazyLoad(exports, ["GuestPolicy"], () => require("./guestPolicy"));
+utilities.lazyLoad(exports, ["PatchDeployment"], () => require("./patchDeployment"));
 
 // Export enums:
 export * from "../../types/enums/osconfig/v1beta";
-
-// Import resources to register:
-import { GuestPolicy } from "./guestPolicy";
-import { PatchDeployment } from "./patchDeployment";
 
 const _module = {
     version: utilities.getVersion(),

@@ -5,14 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getScanConfig";
-export * from "./scanConfig";
+export { GetScanConfigArgs, GetScanConfigResult, GetScanConfigOutputArgs } from "./getScanConfig";
+export const getScanConfig: typeof import("./getScanConfig").getScanConfig = null as any;
+export const getScanConfigOutput: typeof import("./getScanConfig").getScanConfigOutput = null as any;
+
+export { ScanConfigArgs } from "./scanConfig";
+export type ScanConfig = import("./scanConfig").ScanConfig;
+export const ScanConfig: typeof import("./scanConfig").ScanConfig = null as any;
+
+utilities.lazyLoad(exports, ["getScanConfig","getScanConfigOutput"], () => require("./getScanConfig"));
+utilities.lazyLoad(exports, ["ScanConfig"], () => require("./scanConfig"));
 
 // Export enums:
 export * from "../../types/enums/websecurityscanner/v1alpha";
-
-// Import resources to register:
-import { ScanConfig } from "./scanConfig";
 
 const _module = {
     version: utilities.getVersion(),

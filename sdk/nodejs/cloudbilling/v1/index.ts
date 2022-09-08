@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./billingAccount";
-export * from "./billingAccountIamPolicy";
-export * from "./getBillingAccount";
-export * from "./getBillingAccountIamPolicy";
+export { BillingAccountArgs } from "./billingAccount";
+export type BillingAccount = import("./billingAccount").BillingAccount;
+export const BillingAccount: typeof import("./billingAccount").BillingAccount = null as any;
+
+export { BillingAccountIamPolicyArgs } from "./billingAccountIamPolicy";
+export type BillingAccountIamPolicy = import("./billingAccountIamPolicy").BillingAccountIamPolicy;
+export const BillingAccountIamPolicy: typeof import("./billingAccountIamPolicy").BillingAccountIamPolicy = null as any;
+
+export { GetBillingAccountArgs, GetBillingAccountResult, GetBillingAccountOutputArgs } from "./getBillingAccount";
+export const getBillingAccount: typeof import("./getBillingAccount").getBillingAccount = null as any;
+export const getBillingAccountOutput: typeof import("./getBillingAccount").getBillingAccountOutput = null as any;
+
+export { GetBillingAccountIamPolicyArgs, GetBillingAccountIamPolicyResult, GetBillingAccountIamPolicyOutputArgs } from "./getBillingAccountIamPolicy";
+export const getBillingAccountIamPolicy: typeof import("./getBillingAccountIamPolicy").getBillingAccountIamPolicy = null as any;
+export const getBillingAccountIamPolicyOutput: typeof import("./getBillingAccountIamPolicy").getBillingAccountIamPolicyOutput = null as any;
+
+utilities.lazyLoad(exports, ["BillingAccount"], () => require("./billingAccount"));
+utilities.lazyLoad(exports, ["BillingAccountIamPolicy"], () => require("./billingAccountIamPolicy"));
+utilities.lazyLoad(exports, ["getBillingAccount","getBillingAccountOutput"], () => require("./getBillingAccount"));
+utilities.lazyLoad(exports, ["getBillingAccountIamPolicy","getBillingAccountIamPolicyOutput"], () => require("./getBillingAccountIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/cloudbilling/v1";
-
-// Import resources to register:
-import { BillingAccount } from "./billingAccount";
-import { BillingAccountIamPolicy } from "./billingAccountIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

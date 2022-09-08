@@ -5,35 +5,89 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./deidentifyTemplate";
-export * from "./dlpJob";
-export * from "./getDeidentifyTemplate";
-export * from "./getDlpJob";
-export * from "./getInspectTemplate";
-export * from "./getJobTrigger";
-export * from "./getOrganizationInspectTemplate";
-export * from "./getOrganizationJobTrigger";
-export * from "./getOrganizationsDeidentifyTemplate";
-export * from "./getStoredInfoType";
-export * from "./inspectTemplate";
-export * from "./jobTrigger";
-export * from "./organizationInspectTemplate";
-export * from "./organizationJobTrigger";
-export * from "./organizationsDeidentifyTemplate";
-export * from "./storedInfoType";
+export { DeidentifyTemplateArgs } from "./deidentifyTemplate";
+export type DeidentifyTemplate = import("./deidentifyTemplate").DeidentifyTemplate;
+export const DeidentifyTemplate: typeof import("./deidentifyTemplate").DeidentifyTemplate = null as any;
+
+export { DlpJobArgs } from "./dlpJob";
+export type DlpJob = import("./dlpJob").DlpJob;
+export const DlpJob: typeof import("./dlpJob").DlpJob = null as any;
+
+export { GetDeidentifyTemplateArgs, GetDeidentifyTemplateResult, GetDeidentifyTemplateOutputArgs } from "./getDeidentifyTemplate";
+export const getDeidentifyTemplate: typeof import("./getDeidentifyTemplate").getDeidentifyTemplate = null as any;
+export const getDeidentifyTemplateOutput: typeof import("./getDeidentifyTemplate").getDeidentifyTemplateOutput = null as any;
+
+export { GetDlpJobArgs, GetDlpJobResult, GetDlpJobOutputArgs } from "./getDlpJob";
+export const getDlpJob: typeof import("./getDlpJob").getDlpJob = null as any;
+export const getDlpJobOutput: typeof import("./getDlpJob").getDlpJobOutput = null as any;
+
+export { GetInspectTemplateArgs, GetInspectTemplateResult, GetInspectTemplateOutputArgs } from "./getInspectTemplate";
+export const getInspectTemplate: typeof import("./getInspectTemplate").getInspectTemplate = null as any;
+export const getInspectTemplateOutput: typeof import("./getInspectTemplate").getInspectTemplateOutput = null as any;
+
+export { GetJobTriggerArgs, GetJobTriggerResult, GetJobTriggerOutputArgs } from "./getJobTrigger";
+export const getJobTrigger: typeof import("./getJobTrigger").getJobTrigger = null as any;
+export const getJobTriggerOutput: typeof import("./getJobTrigger").getJobTriggerOutput = null as any;
+
+export { GetOrganizationInspectTemplateArgs, GetOrganizationInspectTemplateResult, GetOrganizationInspectTemplateOutputArgs } from "./getOrganizationInspectTemplate";
+export const getOrganizationInspectTemplate: typeof import("./getOrganizationInspectTemplate").getOrganizationInspectTemplate = null as any;
+export const getOrganizationInspectTemplateOutput: typeof import("./getOrganizationInspectTemplate").getOrganizationInspectTemplateOutput = null as any;
+
+export { GetOrganizationJobTriggerArgs, GetOrganizationJobTriggerResult, GetOrganizationJobTriggerOutputArgs } from "./getOrganizationJobTrigger";
+export const getOrganizationJobTrigger: typeof import("./getOrganizationJobTrigger").getOrganizationJobTrigger = null as any;
+export const getOrganizationJobTriggerOutput: typeof import("./getOrganizationJobTrigger").getOrganizationJobTriggerOutput = null as any;
+
+export { GetOrganizationsDeidentifyTemplateArgs, GetOrganizationsDeidentifyTemplateResult, GetOrganizationsDeidentifyTemplateOutputArgs } from "./getOrganizationsDeidentifyTemplate";
+export const getOrganizationsDeidentifyTemplate: typeof import("./getOrganizationsDeidentifyTemplate").getOrganizationsDeidentifyTemplate = null as any;
+export const getOrganizationsDeidentifyTemplateOutput: typeof import("./getOrganizationsDeidentifyTemplate").getOrganizationsDeidentifyTemplateOutput = null as any;
+
+export { GetStoredInfoTypeArgs, GetStoredInfoTypeResult, GetStoredInfoTypeOutputArgs } from "./getStoredInfoType";
+export const getStoredInfoType: typeof import("./getStoredInfoType").getStoredInfoType = null as any;
+export const getStoredInfoTypeOutput: typeof import("./getStoredInfoType").getStoredInfoTypeOutput = null as any;
+
+export { InspectTemplateArgs } from "./inspectTemplate";
+export type InspectTemplate = import("./inspectTemplate").InspectTemplate;
+export const InspectTemplate: typeof import("./inspectTemplate").InspectTemplate = null as any;
+
+export { JobTriggerArgs } from "./jobTrigger";
+export type JobTrigger = import("./jobTrigger").JobTrigger;
+export const JobTrigger: typeof import("./jobTrigger").JobTrigger = null as any;
+
+export { OrganizationInspectTemplateArgs } from "./organizationInspectTemplate";
+export type OrganizationInspectTemplate = import("./organizationInspectTemplate").OrganizationInspectTemplate;
+export const OrganizationInspectTemplate: typeof import("./organizationInspectTemplate").OrganizationInspectTemplate = null as any;
+
+export { OrganizationJobTriggerArgs } from "./organizationJobTrigger";
+export type OrganizationJobTrigger = import("./organizationJobTrigger").OrganizationJobTrigger;
+export const OrganizationJobTrigger: typeof import("./organizationJobTrigger").OrganizationJobTrigger = null as any;
+
+export { OrganizationsDeidentifyTemplateArgs } from "./organizationsDeidentifyTemplate";
+export type OrganizationsDeidentifyTemplate = import("./organizationsDeidentifyTemplate").OrganizationsDeidentifyTemplate;
+export const OrganizationsDeidentifyTemplate: typeof import("./organizationsDeidentifyTemplate").OrganizationsDeidentifyTemplate = null as any;
+
+export { StoredInfoTypeArgs } from "./storedInfoType";
+export type StoredInfoType = import("./storedInfoType").StoredInfoType;
+export const StoredInfoType: typeof import("./storedInfoType").StoredInfoType = null as any;
+
+utilities.lazyLoad(exports, ["DeidentifyTemplate"], () => require("./deidentifyTemplate"));
+utilities.lazyLoad(exports, ["DlpJob"], () => require("./dlpJob"));
+utilities.lazyLoad(exports, ["getDeidentifyTemplate","getDeidentifyTemplateOutput"], () => require("./getDeidentifyTemplate"));
+utilities.lazyLoad(exports, ["getDlpJob","getDlpJobOutput"], () => require("./getDlpJob"));
+utilities.lazyLoad(exports, ["getInspectTemplate","getInspectTemplateOutput"], () => require("./getInspectTemplate"));
+utilities.lazyLoad(exports, ["getJobTrigger","getJobTriggerOutput"], () => require("./getJobTrigger"));
+utilities.lazyLoad(exports, ["getOrganizationInspectTemplate","getOrganizationInspectTemplateOutput"], () => require("./getOrganizationInspectTemplate"));
+utilities.lazyLoad(exports, ["getOrganizationJobTrigger","getOrganizationJobTriggerOutput"], () => require("./getOrganizationJobTrigger"));
+utilities.lazyLoad(exports, ["getOrganizationsDeidentifyTemplate","getOrganizationsDeidentifyTemplateOutput"], () => require("./getOrganizationsDeidentifyTemplate"));
+utilities.lazyLoad(exports, ["getStoredInfoType","getStoredInfoTypeOutput"], () => require("./getStoredInfoType"));
+utilities.lazyLoad(exports, ["InspectTemplate"], () => require("./inspectTemplate"));
+utilities.lazyLoad(exports, ["JobTrigger"], () => require("./jobTrigger"));
+utilities.lazyLoad(exports, ["OrganizationInspectTemplate"], () => require("./organizationInspectTemplate"));
+utilities.lazyLoad(exports, ["OrganizationJobTrigger"], () => require("./organizationJobTrigger"));
+utilities.lazyLoad(exports, ["OrganizationsDeidentifyTemplate"], () => require("./organizationsDeidentifyTemplate"));
+utilities.lazyLoad(exports, ["StoredInfoType"], () => require("./storedInfoType"));
 
 // Export enums:
 export * from "../../types/enums/dlp/v2";
-
-// Import resources to register:
-import { DeidentifyTemplate } from "./deidentifyTemplate";
-import { DlpJob } from "./dlpJob";
-import { InspectTemplate } from "./inspectTemplate";
-import { JobTrigger } from "./jobTrigger";
-import { OrganizationInspectTemplate } from "./organizationInspectTemplate";
-import { OrganizationJobTrigger } from "./organizationJobTrigger";
-import { OrganizationsDeidentifyTemplate } from "./organizationsDeidentifyTemplate";
-import { StoredInfoType } from "./storedInfoType";
 
 const _module = {
     version: utilities.getVersion(),

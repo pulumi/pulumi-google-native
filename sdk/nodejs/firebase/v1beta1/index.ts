@@ -5,17 +5,36 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./androidApp";
-export * from "./getAndroidApp";
-export * from "./getIosApp";
-export * from "./getWebApp";
-export * from "./iosApp";
-export * from "./webApp";
+export { AndroidAppArgs } from "./androidApp";
+export type AndroidApp = import("./androidApp").AndroidApp;
+export const AndroidApp: typeof import("./androidApp").AndroidApp = null as any;
 
-// Import resources to register:
-import { AndroidApp } from "./androidApp";
-import { IosApp } from "./iosApp";
-import { WebApp } from "./webApp";
+export { GetAndroidAppArgs, GetAndroidAppResult, GetAndroidAppOutputArgs } from "./getAndroidApp";
+export const getAndroidApp: typeof import("./getAndroidApp").getAndroidApp = null as any;
+export const getAndroidAppOutput: typeof import("./getAndroidApp").getAndroidAppOutput = null as any;
+
+export { GetIosAppArgs, GetIosAppResult, GetIosAppOutputArgs } from "./getIosApp";
+export const getIosApp: typeof import("./getIosApp").getIosApp = null as any;
+export const getIosAppOutput: typeof import("./getIosApp").getIosAppOutput = null as any;
+
+export { GetWebAppArgs, GetWebAppResult, GetWebAppOutputArgs } from "./getWebApp";
+export const getWebApp: typeof import("./getWebApp").getWebApp = null as any;
+export const getWebAppOutput: typeof import("./getWebApp").getWebAppOutput = null as any;
+
+export { IosAppArgs } from "./iosApp";
+export type IosApp = import("./iosApp").IosApp;
+export const IosApp: typeof import("./iosApp").IosApp = null as any;
+
+export { WebAppArgs } from "./webApp";
+export type WebApp = import("./webApp").WebApp;
+export const WebApp: typeof import("./webApp").WebApp = null as any;
+
+utilities.lazyLoad(exports, ["AndroidApp"], () => require("./androidApp"));
+utilities.lazyLoad(exports, ["getAndroidApp","getAndroidAppOutput"], () => require("./getAndroidApp"));
+utilities.lazyLoad(exports, ["getIosApp","getIosAppOutput"], () => require("./getIosApp"));
+utilities.lazyLoad(exports, ["getWebApp","getWebAppOutput"], () => require("./getWebApp"));
+utilities.lazyLoad(exports, ["IosApp"], () => require("./iosApp"));
+utilities.lazyLoad(exports, ["WebApp"], () => require("./webApp"));
 
 const _module = {
     version: utilities.getVersion(),

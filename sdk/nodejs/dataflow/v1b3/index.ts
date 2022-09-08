@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getJob";
-export * from "./getTemplate";
-export * from "./job";
-export * from "./template";
+export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
+export const getJob: typeof import("./getJob").getJob = null as any;
+export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
+
+export { GetTemplateArgs, GetTemplateResult, GetTemplateOutputArgs } from "./getTemplate";
+export const getTemplate: typeof import("./getTemplate").getTemplate = null as any;
+export const getTemplateOutput: typeof import("./getTemplate").getTemplateOutput = null as any;
+
+export { JobArgs } from "./job";
+export type Job = import("./job").Job;
+export const Job: typeof import("./job").Job = null as any;
+
+export { TemplateArgs } from "./template";
+export type Template = import("./template").Template;
+export const Template: typeof import("./template").Template = null as any;
+
+utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
+utilities.lazyLoad(exports, ["getTemplate","getTemplateOutput"], () => require("./getTemplate"));
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
+utilities.lazyLoad(exports, ["Template"], () => require("./template"));
 
 // Export enums:
 export * from "../../types/enums/dataflow/v1b3";
-
-// Import resources to register:
-import { Job } from "./job";
-import { Template } from "./template";
 
 const _module = {
     version: utilities.getVersion(),

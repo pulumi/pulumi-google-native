@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getV1beta1IamPolicy";
-export * from "./v1beta1IamPolicy";
+export { GetV1beta1IamPolicyArgs, GetV1beta1IamPolicyResult, GetV1beta1IamPolicyOutputArgs } from "./getV1beta1IamPolicy";
+export const getV1beta1IamPolicy: typeof import("./getV1beta1IamPolicy").getV1beta1IamPolicy = null as any;
+export const getV1beta1IamPolicyOutput: typeof import("./getV1beta1IamPolicy").getV1beta1IamPolicyOutput = null as any;
 
-// Import resources to register:
-import { V1beta1IamPolicy } from "./v1beta1IamPolicy";
+export { V1beta1IamPolicyArgs } from "./v1beta1IamPolicy";
+export type V1beta1IamPolicy = import("./v1beta1IamPolicy").V1beta1IamPolicy;
+export const V1beta1IamPolicy: typeof import("./v1beta1IamPolicy").V1beta1IamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["getV1beta1IamPolicy","getV1beta1IamPolicyOutput"], () => require("./getV1beta1IamPolicy"));
+utilities.lazyLoad(exports, ["V1beta1IamPolicy"], () => require("./v1beta1IamPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

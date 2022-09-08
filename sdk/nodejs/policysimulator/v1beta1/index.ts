@@ -5,20 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./folderReplay";
-export * from "./getFolderReplay";
-export * from "./getOrganizationReplay";
-export * from "./getReplay";
-export * from "./organizationReplay";
-export * from "./replay";
+export { FolderReplayArgs } from "./folderReplay";
+export type FolderReplay = import("./folderReplay").FolderReplay;
+export const FolderReplay: typeof import("./folderReplay").FolderReplay = null as any;
+
+export { GetFolderReplayArgs, GetFolderReplayResult, GetFolderReplayOutputArgs } from "./getFolderReplay";
+export const getFolderReplay: typeof import("./getFolderReplay").getFolderReplay = null as any;
+export const getFolderReplayOutput: typeof import("./getFolderReplay").getFolderReplayOutput = null as any;
+
+export { GetOrganizationReplayArgs, GetOrganizationReplayResult, GetOrganizationReplayOutputArgs } from "./getOrganizationReplay";
+export const getOrganizationReplay: typeof import("./getOrganizationReplay").getOrganizationReplay = null as any;
+export const getOrganizationReplayOutput: typeof import("./getOrganizationReplay").getOrganizationReplayOutput = null as any;
+
+export { GetReplayArgs, GetReplayResult, GetReplayOutputArgs } from "./getReplay";
+export const getReplay: typeof import("./getReplay").getReplay = null as any;
+export const getReplayOutput: typeof import("./getReplay").getReplayOutput = null as any;
+
+export { OrganizationReplayArgs } from "./organizationReplay";
+export type OrganizationReplay = import("./organizationReplay").OrganizationReplay;
+export const OrganizationReplay: typeof import("./organizationReplay").OrganizationReplay = null as any;
+
+export { ReplayArgs } from "./replay";
+export type Replay = import("./replay").Replay;
+export const Replay: typeof import("./replay").Replay = null as any;
+
+utilities.lazyLoad(exports, ["FolderReplay"], () => require("./folderReplay"));
+utilities.lazyLoad(exports, ["getFolderReplay","getFolderReplayOutput"], () => require("./getFolderReplay"));
+utilities.lazyLoad(exports, ["getOrganizationReplay","getOrganizationReplayOutput"], () => require("./getOrganizationReplay"));
+utilities.lazyLoad(exports, ["getReplay","getReplayOutput"], () => require("./getReplay"));
+utilities.lazyLoad(exports, ["OrganizationReplay"], () => require("./organizationReplay"));
+utilities.lazyLoad(exports, ["Replay"], () => require("./replay"));
 
 // Export enums:
 export * from "../../types/enums/policysimulator/v1beta1";
-
-// Import resources to register:
-import { FolderReplay } from "./folderReplay";
-import { OrganizationReplay } from "./organizationReplay";
-import { Replay } from "./replay";
 
 const _module = {
     version: utilities.getVersion(),

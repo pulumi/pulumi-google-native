@@ -5,26 +5,59 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./channelPartnerLink";
-export * from "./channelPartnerRepricingConfig";
-export * from "./customer";
-export * from "./customerRepricingConfig";
-export * from "./entitlement";
-export * from "./getChannelPartnerLink";
-export * from "./getChannelPartnerRepricingConfig";
-export * from "./getCustomer";
-export * from "./getCustomerRepricingConfig";
-export * from "./getEntitlement";
+export { ChannelPartnerLinkArgs } from "./channelPartnerLink";
+export type ChannelPartnerLink = import("./channelPartnerLink").ChannelPartnerLink;
+export const ChannelPartnerLink: typeof import("./channelPartnerLink").ChannelPartnerLink = null as any;
+
+export { ChannelPartnerRepricingConfigArgs } from "./channelPartnerRepricingConfig";
+export type ChannelPartnerRepricingConfig = import("./channelPartnerRepricingConfig").ChannelPartnerRepricingConfig;
+export const ChannelPartnerRepricingConfig: typeof import("./channelPartnerRepricingConfig").ChannelPartnerRepricingConfig = null as any;
+
+export { CustomerArgs } from "./customer";
+export type Customer = import("./customer").Customer;
+export const Customer: typeof import("./customer").Customer = null as any;
+
+export { CustomerRepricingConfigArgs } from "./customerRepricingConfig";
+export type CustomerRepricingConfig = import("./customerRepricingConfig").CustomerRepricingConfig;
+export const CustomerRepricingConfig: typeof import("./customerRepricingConfig").CustomerRepricingConfig = null as any;
+
+export { EntitlementArgs } from "./entitlement";
+export type Entitlement = import("./entitlement").Entitlement;
+export const Entitlement: typeof import("./entitlement").Entitlement = null as any;
+
+export { GetChannelPartnerLinkArgs, GetChannelPartnerLinkResult, GetChannelPartnerLinkOutputArgs } from "./getChannelPartnerLink";
+export const getChannelPartnerLink: typeof import("./getChannelPartnerLink").getChannelPartnerLink = null as any;
+export const getChannelPartnerLinkOutput: typeof import("./getChannelPartnerLink").getChannelPartnerLinkOutput = null as any;
+
+export { GetChannelPartnerRepricingConfigArgs, GetChannelPartnerRepricingConfigResult, GetChannelPartnerRepricingConfigOutputArgs } from "./getChannelPartnerRepricingConfig";
+export const getChannelPartnerRepricingConfig: typeof import("./getChannelPartnerRepricingConfig").getChannelPartnerRepricingConfig = null as any;
+export const getChannelPartnerRepricingConfigOutput: typeof import("./getChannelPartnerRepricingConfig").getChannelPartnerRepricingConfigOutput = null as any;
+
+export { GetCustomerArgs, GetCustomerResult, GetCustomerOutputArgs } from "./getCustomer";
+export const getCustomer: typeof import("./getCustomer").getCustomer = null as any;
+export const getCustomerOutput: typeof import("./getCustomer").getCustomerOutput = null as any;
+
+export { GetCustomerRepricingConfigArgs, GetCustomerRepricingConfigResult, GetCustomerRepricingConfigOutputArgs } from "./getCustomerRepricingConfig";
+export const getCustomerRepricingConfig: typeof import("./getCustomerRepricingConfig").getCustomerRepricingConfig = null as any;
+export const getCustomerRepricingConfigOutput: typeof import("./getCustomerRepricingConfig").getCustomerRepricingConfigOutput = null as any;
+
+export { GetEntitlementArgs, GetEntitlementResult, GetEntitlementOutputArgs } from "./getEntitlement";
+export const getEntitlement: typeof import("./getEntitlement").getEntitlement = null as any;
+export const getEntitlementOutput: typeof import("./getEntitlement").getEntitlementOutput = null as any;
+
+utilities.lazyLoad(exports, ["ChannelPartnerLink"], () => require("./channelPartnerLink"));
+utilities.lazyLoad(exports, ["ChannelPartnerRepricingConfig"], () => require("./channelPartnerRepricingConfig"));
+utilities.lazyLoad(exports, ["Customer"], () => require("./customer"));
+utilities.lazyLoad(exports, ["CustomerRepricingConfig"], () => require("./customerRepricingConfig"));
+utilities.lazyLoad(exports, ["Entitlement"], () => require("./entitlement"));
+utilities.lazyLoad(exports, ["getChannelPartnerLink","getChannelPartnerLinkOutput"], () => require("./getChannelPartnerLink"));
+utilities.lazyLoad(exports, ["getChannelPartnerRepricingConfig","getChannelPartnerRepricingConfigOutput"], () => require("./getChannelPartnerRepricingConfig"));
+utilities.lazyLoad(exports, ["getCustomer","getCustomerOutput"], () => require("./getCustomer"));
+utilities.lazyLoad(exports, ["getCustomerRepricingConfig","getCustomerRepricingConfigOutput"], () => require("./getCustomerRepricingConfig"));
+utilities.lazyLoad(exports, ["getEntitlement","getEntitlementOutput"], () => require("./getEntitlement"));
 
 // Export enums:
 export * from "../../types/enums/cloudchannel/v1";
-
-// Import resources to register:
-import { ChannelPartnerLink } from "./channelPartnerLink";
-import { ChannelPartnerRepricingConfig } from "./channelPartnerRepricingConfig";
-import { Customer } from "./customer";
-import { CustomerRepricingConfig } from "./customerRepricingConfig";
-import { Entitlement } from "./entitlement";
 
 const _module = {
     version: utilities.getVersion(),

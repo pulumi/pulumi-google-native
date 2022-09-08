@@ -5,26 +5,59 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getHub";
-export * from "./getHubIamPolicy";
-export * from "./getPolicyBasedRouteIamPolicy";
-export * from "./getSpoke";
-export * from "./getSpokeIamPolicy";
-export * from "./hub";
-export * from "./hubIamPolicy";
-export * from "./policyBasedRouteIamPolicy";
-export * from "./spoke";
-export * from "./spokeIamPolicy";
+export { GetHubArgs, GetHubResult, GetHubOutputArgs } from "./getHub";
+export const getHub: typeof import("./getHub").getHub = null as any;
+export const getHubOutput: typeof import("./getHub").getHubOutput = null as any;
+
+export { GetHubIamPolicyArgs, GetHubIamPolicyResult, GetHubIamPolicyOutputArgs } from "./getHubIamPolicy";
+export const getHubIamPolicy: typeof import("./getHubIamPolicy").getHubIamPolicy = null as any;
+export const getHubIamPolicyOutput: typeof import("./getHubIamPolicy").getHubIamPolicyOutput = null as any;
+
+export { GetPolicyBasedRouteIamPolicyArgs, GetPolicyBasedRouteIamPolicyResult, GetPolicyBasedRouteIamPolicyOutputArgs } from "./getPolicyBasedRouteIamPolicy";
+export const getPolicyBasedRouteIamPolicy: typeof import("./getPolicyBasedRouteIamPolicy").getPolicyBasedRouteIamPolicy = null as any;
+export const getPolicyBasedRouteIamPolicyOutput: typeof import("./getPolicyBasedRouteIamPolicy").getPolicyBasedRouteIamPolicyOutput = null as any;
+
+export { GetSpokeArgs, GetSpokeResult, GetSpokeOutputArgs } from "./getSpoke";
+export const getSpoke: typeof import("./getSpoke").getSpoke = null as any;
+export const getSpokeOutput: typeof import("./getSpoke").getSpokeOutput = null as any;
+
+export { GetSpokeIamPolicyArgs, GetSpokeIamPolicyResult, GetSpokeIamPolicyOutputArgs } from "./getSpokeIamPolicy";
+export const getSpokeIamPolicy: typeof import("./getSpokeIamPolicy").getSpokeIamPolicy = null as any;
+export const getSpokeIamPolicyOutput: typeof import("./getSpokeIamPolicy").getSpokeIamPolicyOutput = null as any;
+
+export { HubArgs } from "./hub";
+export type Hub = import("./hub").Hub;
+export const Hub: typeof import("./hub").Hub = null as any;
+
+export { HubIamPolicyArgs } from "./hubIamPolicy";
+export type HubIamPolicy = import("./hubIamPolicy").HubIamPolicy;
+export const HubIamPolicy: typeof import("./hubIamPolicy").HubIamPolicy = null as any;
+
+export { PolicyBasedRouteIamPolicyArgs } from "./policyBasedRouteIamPolicy";
+export type PolicyBasedRouteIamPolicy = import("./policyBasedRouteIamPolicy").PolicyBasedRouteIamPolicy;
+export const PolicyBasedRouteIamPolicy: typeof import("./policyBasedRouteIamPolicy").PolicyBasedRouteIamPolicy = null as any;
+
+export { SpokeArgs } from "./spoke";
+export type Spoke = import("./spoke").Spoke;
+export const Spoke: typeof import("./spoke").Spoke = null as any;
+
+export { SpokeIamPolicyArgs } from "./spokeIamPolicy";
+export type SpokeIamPolicy = import("./spokeIamPolicy").SpokeIamPolicy;
+export const SpokeIamPolicy: typeof import("./spokeIamPolicy").SpokeIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["getHub","getHubOutput"], () => require("./getHub"));
+utilities.lazyLoad(exports, ["getHubIamPolicy","getHubIamPolicyOutput"], () => require("./getHubIamPolicy"));
+utilities.lazyLoad(exports, ["getPolicyBasedRouteIamPolicy","getPolicyBasedRouteIamPolicyOutput"], () => require("./getPolicyBasedRouteIamPolicy"));
+utilities.lazyLoad(exports, ["getSpoke","getSpokeOutput"], () => require("./getSpoke"));
+utilities.lazyLoad(exports, ["getSpokeIamPolicy","getSpokeIamPolicyOutput"], () => require("./getSpokeIamPolicy"));
+utilities.lazyLoad(exports, ["Hub"], () => require("./hub"));
+utilities.lazyLoad(exports, ["HubIamPolicy"], () => require("./hubIamPolicy"));
+utilities.lazyLoad(exports, ["PolicyBasedRouteIamPolicy"], () => require("./policyBasedRouteIamPolicy"));
+utilities.lazyLoad(exports, ["Spoke"], () => require("./spoke"));
+utilities.lazyLoad(exports, ["SpokeIamPolicy"], () => require("./spokeIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/networkconnectivity/v1";
-
-// Import resources to register:
-import { Hub } from "./hub";
-import { HubIamPolicy } from "./hubIamPolicy";
-import { PolicyBasedRouteIamPolicy } from "./policyBasedRouteIamPolicy";
-import { Spoke } from "./spoke";
-import { SpokeIamPolicy } from "./spokeIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

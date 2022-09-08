@@ -5,14 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getOsPolicyAssignment";
-export * from "./osPolicyAssignment";
+export { GetOsPolicyAssignmentArgs, GetOsPolicyAssignmentResult, GetOsPolicyAssignmentOutputArgs } from "./getOsPolicyAssignment";
+export const getOsPolicyAssignment: typeof import("./getOsPolicyAssignment").getOsPolicyAssignment = null as any;
+export const getOsPolicyAssignmentOutput: typeof import("./getOsPolicyAssignment").getOsPolicyAssignmentOutput = null as any;
+
+export { OsPolicyAssignmentArgs } from "./osPolicyAssignment";
+export type OsPolicyAssignment = import("./osPolicyAssignment").OsPolicyAssignment;
+export const OsPolicyAssignment: typeof import("./osPolicyAssignment").OsPolicyAssignment = null as any;
+
+utilities.lazyLoad(exports, ["getOsPolicyAssignment","getOsPolicyAssignmentOutput"], () => require("./getOsPolicyAssignment"));
+utilities.lazyLoad(exports, ["OsPolicyAssignment"], () => require("./osPolicyAssignment"));
 
 // Export enums:
 export * from "../../types/enums/osconfig/v1alpha";
-
-// Import resources to register:
-import { OsPolicyAssignment } from "./osPolicyAssignment";
 
 const _module = {
     version: utilities.getVersion(),

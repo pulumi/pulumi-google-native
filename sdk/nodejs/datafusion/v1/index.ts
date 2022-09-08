@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getInstance";
-export * from "./getInstanceIamPolicy";
-export * from "./instance";
-export * from "./instanceIamPolicy";
+export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
+export const getInstance: typeof import("./getInstance").getInstance = null as any;
+export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+
+export { GetInstanceIamPolicyArgs, GetInstanceIamPolicyResult, GetInstanceIamPolicyOutputArgs } from "./getInstanceIamPolicy";
+export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getInstanceIamPolicy = null as any;
+export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;
+
+export { InstanceArgs } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+
+export { InstanceIamPolicyArgs } from "./instanceIamPolicy";
+export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
+export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
+utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/datafusion/v1";
-
-// Import resources to register:
-import { Instance } from "./instance";
-import { InstanceIamPolicy } from "./instanceIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

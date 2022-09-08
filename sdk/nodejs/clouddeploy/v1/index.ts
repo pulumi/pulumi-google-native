@@ -5,29 +5,69 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./deliveryPipeline";
-export * from "./deliveryPipelineIamPolicy";
-export * from "./getDeliveryPipeline";
-export * from "./getDeliveryPipelineIamPolicy";
-export * from "./getRelease";
-export * from "./getRollout";
-export * from "./getTarget";
-export * from "./getTargetIamPolicy";
-export * from "./release";
-export * from "./rollout";
-export * from "./target";
-export * from "./targetIamPolicy";
+export { DeliveryPipelineArgs } from "./deliveryPipeline";
+export type DeliveryPipeline = import("./deliveryPipeline").DeliveryPipeline;
+export const DeliveryPipeline: typeof import("./deliveryPipeline").DeliveryPipeline = null as any;
+
+export { DeliveryPipelineIamPolicyArgs } from "./deliveryPipelineIamPolicy";
+export type DeliveryPipelineIamPolicy = import("./deliveryPipelineIamPolicy").DeliveryPipelineIamPolicy;
+export const DeliveryPipelineIamPolicy: typeof import("./deliveryPipelineIamPolicy").DeliveryPipelineIamPolicy = null as any;
+
+export { GetDeliveryPipelineArgs, GetDeliveryPipelineResult, GetDeliveryPipelineOutputArgs } from "./getDeliveryPipeline";
+export const getDeliveryPipeline: typeof import("./getDeliveryPipeline").getDeliveryPipeline = null as any;
+export const getDeliveryPipelineOutput: typeof import("./getDeliveryPipeline").getDeliveryPipelineOutput = null as any;
+
+export { GetDeliveryPipelineIamPolicyArgs, GetDeliveryPipelineIamPolicyResult, GetDeliveryPipelineIamPolicyOutputArgs } from "./getDeliveryPipelineIamPolicy";
+export const getDeliveryPipelineIamPolicy: typeof import("./getDeliveryPipelineIamPolicy").getDeliveryPipelineIamPolicy = null as any;
+export const getDeliveryPipelineIamPolicyOutput: typeof import("./getDeliveryPipelineIamPolicy").getDeliveryPipelineIamPolicyOutput = null as any;
+
+export { GetReleaseArgs, GetReleaseResult, GetReleaseOutputArgs } from "./getRelease";
+export const getRelease: typeof import("./getRelease").getRelease = null as any;
+export const getReleaseOutput: typeof import("./getRelease").getReleaseOutput = null as any;
+
+export { GetRolloutArgs, GetRolloutResult, GetRolloutOutputArgs } from "./getRollout";
+export const getRollout: typeof import("./getRollout").getRollout = null as any;
+export const getRolloutOutput: typeof import("./getRollout").getRolloutOutput = null as any;
+
+export { GetTargetArgs, GetTargetResult, GetTargetOutputArgs } from "./getTarget";
+export const getTarget: typeof import("./getTarget").getTarget = null as any;
+export const getTargetOutput: typeof import("./getTarget").getTargetOutput = null as any;
+
+export { GetTargetIamPolicyArgs, GetTargetIamPolicyResult, GetTargetIamPolicyOutputArgs } from "./getTargetIamPolicy";
+export const getTargetIamPolicy: typeof import("./getTargetIamPolicy").getTargetIamPolicy = null as any;
+export const getTargetIamPolicyOutput: typeof import("./getTargetIamPolicy").getTargetIamPolicyOutput = null as any;
+
+export { ReleaseArgs } from "./release";
+export type Release = import("./release").Release;
+export const Release: typeof import("./release").Release = null as any;
+
+export { RolloutArgs } from "./rollout";
+export type Rollout = import("./rollout").Rollout;
+export const Rollout: typeof import("./rollout").Rollout = null as any;
+
+export { TargetArgs } from "./target";
+export type Target = import("./target").Target;
+export const Target: typeof import("./target").Target = null as any;
+
+export { TargetIamPolicyArgs } from "./targetIamPolicy";
+export type TargetIamPolicy = import("./targetIamPolicy").TargetIamPolicy;
+export const TargetIamPolicy: typeof import("./targetIamPolicy").TargetIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["DeliveryPipeline"], () => require("./deliveryPipeline"));
+utilities.lazyLoad(exports, ["DeliveryPipelineIamPolicy"], () => require("./deliveryPipelineIamPolicy"));
+utilities.lazyLoad(exports, ["getDeliveryPipeline","getDeliveryPipelineOutput"], () => require("./getDeliveryPipeline"));
+utilities.lazyLoad(exports, ["getDeliveryPipelineIamPolicy","getDeliveryPipelineIamPolicyOutput"], () => require("./getDeliveryPipelineIamPolicy"));
+utilities.lazyLoad(exports, ["getRelease","getReleaseOutput"], () => require("./getRelease"));
+utilities.lazyLoad(exports, ["getRollout","getRolloutOutput"], () => require("./getRollout"));
+utilities.lazyLoad(exports, ["getTarget","getTargetOutput"], () => require("./getTarget"));
+utilities.lazyLoad(exports, ["getTargetIamPolicy","getTargetIamPolicyOutput"], () => require("./getTargetIamPolicy"));
+utilities.lazyLoad(exports, ["Release"], () => require("./release"));
+utilities.lazyLoad(exports, ["Rollout"], () => require("./rollout"));
+utilities.lazyLoad(exports, ["Target"], () => require("./target"));
+utilities.lazyLoad(exports, ["TargetIamPolicy"], () => require("./targetIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/clouddeploy/v1";
-
-// Import resources to register:
-import { DeliveryPipeline } from "./deliveryPipeline";
-import { DeliveryPipelineIamPolicy } from "./deliveryPipelineIamPolicy";
-import { Release } from "./release";
-import { Rollout } from "./rollout";
-import { Target } from "./target";
-import { TargetIamPolicy } from "./targetIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getWorkflow";
-export * from "./workflow";
+export { GetWorkflowArgs, GetWorkflowResult, GetWorkflowOutputArgs } from "./getWorkflow";
+export const getWorkflow: typeof import("./getWorkflow").getWorkflow = null as any;
+export const getWorkflowOutput: typeof import("./getWorkflow").getWorkflowOutput = null as any;
 
-// Import resources to register:
-import { Workflow } from "./workflow";
+export { WorkflowArgs } from "./workflow";
+export type Workflow = import("./workflow").Workflow;
+export const Workflow: typeof import("./workflow").Workflow = null as any;
+
+utilities.lazyLoad(exports, ["getWorkflow","getWorkflowOutput"], () => require("./getWorkflow"));
+utilities.lazyLoad(exports, ["Workflow"], () => require("./workflow"));
 
 const _module = {
     version: utilities.getVersion(),

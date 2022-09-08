@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getOrganizationSourceIamPolicy";
-export * from "./getSource";
-export * from "./organizationSourceIamPolicy";
-export * from "./source";
+export { GetOrganizationSourceIamPolicyArgs, GetOrganizationSourceIamPolicyResult, GetOrganizationSourceIamPolicyOutputArgs } from "./getOrganizationSourceIamPolicy";
+export const getOrganizationSourceIamPolicy: typeof import("./getOrganizationSourceIamPolicy").getOrganizationSourceIamPolicy = null as any;
+export const getOrganizationSourceIamPolicyOutput: typeof import("./getOrganizationSourceIamPolicy").getOrganizationSourceIamPolicyOutput = null as any;
+
+export { GetSourceArgs, GetSourceResult, GetSourceOutputArgs } from "./getSource";
+export const getSource: typeof import("./getSource").getSource = null as any;
+export const getSourceOutput: typeof import("./getSource").getSourceOutput = null as any;
+
+export { OrganizationSourceIamPolicyArgs } from "./organizationSourceIamPolicy";
+export type OrganizationSourceIamPolicy = import("./organizationSourceIamPolicy").OrganizationSourceIamPolicy;
+export const OrganizationSourceIamPolicy: typeof import("./organizationSourceIamPolicy").OrganizationSourceIamPolicy = null as any;
+
+export { SourceArgs } from "./source";
+export type Source = import("./source").Source;
+export const Source: typeof import("./source").Source = null as any;
+
+utilities.lazyLoad(exports, ["getOrganizationSourceIamPolicy","getOrganizationSourceIamPolicyOutput"], () => require("./getOrganizationSourceIamPolicy"));
+utilities.lazyLoad(exports, ["getSource","getSourceOutput"], () => require("./getSource"));
+utilities.lazyLoad(exports, ["OrganizationSourceIamPolicy"], () => require("./organizationSourceIamPolicy"));
+utilities.lazyLoad(exports, ["Source"], () => require("./source"));
 
 // Export enums:
 export * from "../../types/enums/securitycenter/v1beta1";
-
-// Import resources to register:
-import { OrganizationSourceIamPolicy } from "./organizationSourceIamPolicy";
-import { Source } from "./source";
 
 const _module = {
     version: utilities.getVersion(),

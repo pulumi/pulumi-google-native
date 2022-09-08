@@ -5,23 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./connectionProfile";
-export * from "./connectionProfileIamPolicy";
-export * from "./getConnectionProfile";
-export * from "./getConnectionProfileIamPolicy";
-export * from "./getMigrationJob";
-export * from "./getMigrationJobIamPolicy";
-export * from "./migrationJob";
-export * from "./migrationJobIamPolicy";
+export { ConnectionProfileArgs } from "./connectionProfile";
+export type ConnectionProfile = import("./connectionProfile").ConnectionProfile;
+export const ConnectionProfile: typeof import("./connectionProfile").ConnectionProfile = null as any;
+
+export { ConnectionProfileIamPolicyArgs } from "./connectionProfileIamPolicy";
+export type ConnectionProfileIamPolicy = import("./connectionProfileIamPolicy").ConnectionProfileIamPolicy;
+export const ConnectionProfileIamPolicy: typeof import("./connectionProfileIamPolicy").ConnectionProfileIamPolicy = null as any;
+
+export { GetConnectionProfileArgs, GetConnectionProfileResult, GetConnectionProfileOutputArgs } from "./getConnectionProfile";
+export const getConnectionProfile: typeof import("./getConnectionProfile").getConnectionProfile = null as any;
+export const getConnectionProfileOutput: typeof import("./getConnectionProfile").getConnectionProfileOutput = null as any;
+
+export { GetConnectionProfileIamPolicyArgs, GetConnectionProfileIamPolicyResult, GetConnectionProfileIamPolicyOutputArgs } from "./getConnectionProfileIamPolicy";
+export const getConnectionProfileIamPolicy: typeof import("./getConnectionProfileIamPolicy").getConnectionProfileIamPolicy = null as any;
+export const getConnectionProfileIamPolicyOutput: typeof import("./getConnectionProfileIamPolicy").getConnectionProfileIamPolicyOutput = null as any;
+
+export { GetMigrationJobArgs, GetMigrationJobResult, GetMigrationJobOutputArgs } from "./getMigrationJob";
+export const getMigrationJob: typeof import("./getMigrationJob").getMigrationJob = null as any;
+export const getMigrationJobOutput: typeof import("./getMigrationJob").getMigrationJobOutput = null as any;
+
+export { GetMigrationJobIamPolicyArgs, GetMigrationJobIamPolicyResult, GetMigrationJobIamPolicyOutputArgs } from "./getMigrationJobIamPolicy";
+export const getMigrationJobIamPolicy: typeof import("./getMigrationJobIamPolicy").getMigrationJobIamPolicy = null as any;
+export const getMigrationJobIamPolicyOutput: typeof import("./getMigrationJobIamPolicy").getMigrationJobIamPolicyOutput = null as any;
+
+export { MigrationJobArgs } from "./migrationJob";
+export type MigrationJob = import("./migrationJob").MigrationJob;
+export const MigrationJob: typeof import("./migrationJob").MigrationJob = null as any;
+
+export { MigrationJobIamPolicyArgs } from "./migrationJobIamPolicy";
+export type MigrationJobIamPolicy = import("./migrationJobIamPolicy").MigrationJobIamPolicy;
+export const MigrationJobIamPolicy: typeof import("./migrationJobIamPolicy").MigrationJobIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["ConnectionProfile"], () => require("./connectionProfile"));
+utilities.lazyLoad(exports, ["ConnectionProfileIamPolicy"], () => require("./connectionProfileIamPolicy"));
+utilities.lazyLoad(exports, ["getConnectionProfile","getConnectionProfileOutput"], () => require("./getConnectionProfile"));
+utilities.lazyLoad(exports, ["getConnectionProfileIamPolicy","getConnectionProfileIamPolicyOutput"], () => require("./getConnectionProfileIamPolicy"));
+utilities.lazyLoad(exports, ["getMigrationJob","getMigrationJobOutput"], () => require("./getMigrationJob"));
+utilities.lazyLoad(exports, ["getMigrationJobIamPolicy","getMigrationJobIamPolicyOutput"], () => require("./getMigrationJobIamPolicy"));
+utilities.lazyLoad(exports, ["MigrationJob"], () => require("./migrationJob"));
+utilities.lazyLoad(exports, ["MigrationJobIamPolicy"], () => require("./migrationJobIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/datamigration/v1beta1";
-
-// Import resources to register:
-import { ConnectionProfile } from "./connectionProfile";
-import { ConnectionProfileIamPolicy } from "./connectionProfileIamPolicy";
-import { MigrationJob } from "./migrationJob";
-import { MigrationJobIamPolicy } from "./migrationJobIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getJob";
-export * from "./getJobTemplate";
-export * from "./job";
-export * from "./jobTemplate";
+export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
+export const getJob: typeof import("./getJob").getJob = null as any;
+export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
+
+export { GetJobTemplateArgs, GetJobTemplateResult, GetJobTemplateOutputArgs } from "./getJobTemplate";
+export const getJobTemplate: typeof import("./getJobTemplate").getJobTemplate = null as any;
+export const getJobTemplateOutput: typeof import("./getJobTemplate").getJobTemplateOutput = null as any;
+
+export { JobArgs } from "./job";
+export type Job = import("./job").Job;
+export const Job: typeof import("./job").Job = null as any;
+
+export { JobTemplateArgs } from "./jobTemplate";
+export type JobTemplate = import("./jobTemplate").JobTemplate;
+export const JobTemplate: typeof import("./jobTemplate").JobTemplate = null as any;
+
+utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
+utilities.lazyLoad(exports, ["getJobTemplate","getJobTemplateOutput"], () => require("./getJobTemplate"));
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
+utilities.lazyLoad(exports, ["JobTemplate"], () => require("./jobTemplate"));
 
 // Export enums:
 export * from "../../types/enums/transcoder/v1";
-
-// Import resources to register:
-import { Job } from "./job";
-import { JobTemplate } from "./jobTemplate";
 
 const _module = {
     version: utilities.getVersion(),

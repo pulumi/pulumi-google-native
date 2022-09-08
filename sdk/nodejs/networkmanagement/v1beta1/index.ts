@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./connectivityTest";
-export * from "./connectivityTestIamPolicy";
-export * from "./getConnectivityTest";
-export * from "./getConnectivityTestIamPolicy";
+export { ConnectivityTestArgs } from "./connectivityTest";
+export type ConnectivityTest = import("./connectivityTest").ConnectivityTest;
+export const ConnectivityTest: typeof import("./connectivityTest").ConnectivityTest = null as any;
+
+export { ConnectivityTestIamPolicyArgs } from "./connectivityTestIamPolicy";
+export type ConnectivityTestIamPolicy = import("./connectivityTestIamPolicy").ConnectivityTestIamPolicy;
+export const ConnectivityTestIamPolicy: typeof import("./connectivityTestIamPolicy").ConnectivityTestIamPolicy = null as any;
+
+export { GetConnectivityTestArgs, GetConnectivityTestResult, GetConnectivityTestOutputArgs } from "./getConnectivityTest";
+export const getConnectivityTest: typeof import("./getConnectivityTest").getConnectivityTest = null as any;
+export const getConnectivityTestOutput: typeof import("./getConnectivityTest").getConnectivityTestOutput = null as any;
+
+export { GetConnectivityTestIamPolicyArgs, GetConnectivityTestIamPolicyResult, GetConnectivityTestIamPolicyOutputArgs } from "./getConnectivityTestIamPolicy";
+export const getConnectivityTestIamPolicy: typeof import("./getConnectivityTestIamPolicy").getConnectivityTestIamPolicy = null as any;
+export const getConnectivityTestIamPolicyOutput: typeof import("./getConnectivityTestIamPolicy").getConnectivityTestIamPolicyOutput = null as any;
+
+utilities.lazyLoad(exports, ["ConnectivityTest"], () => require("./connectivityTest"));
+utilities.lazyLoad(exports, ["ConnectivityTestIamPolicy"], () => require("./connectivityTestIamPolicy"));
+utilities.lazyLoad(exports, ["getConnectivityTest","getConnectivityTestOutput"], () => require("./getConnectivityTest"));
+utilities.lazyLoad(exports, ["getConnectivityTestIamPolicy","getConnectivityTestIamPolicyOutput"], () => require("./getConnectivityTestIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/networkmanagement/v1beta1";
-
-// Import resources to register:
-import { ConnectivityTest } from "./connectivityTest";
-import { ConnectivityTestIamPolicy } from "./connectivityTestIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

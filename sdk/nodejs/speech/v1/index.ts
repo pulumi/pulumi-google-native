@@ -5,14 +5,26 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./customClass";
-export * from "./getCustomClass";
-export * from "./getPhraseSet";
-export * from "./phraseSet";
+export { CustomClassArgs } from "./customClass";
+export type CustomClass = import("./customClass").CustomClass;
+export const CustomClass: typeof import("./customClass").CustomClass = null as any;
 
-// Import resources to register:
-import { CustomClass } from "./customClass";
-import { PhraseSet } from "./phraseSet";
+export { GetCustomClassArgs, GetCustomClassResult, GetCustomClassOutputArgs } from "./getCustomClass";
+export const getCustomClass: typeof import("./getCustomClass").getCustomClass = null as any;
+export const getCustomClassOutput: typeof import("./getCustomClass").getCustomClassOutput = null as any;
+
+export { GetPhraseSetArgs, GetPhraseSetResult, GetPhraseSetOutputArgs } from "./getPhraseSet";
+export const getPhraseSet: typeof import("./getPhraseSet").getPhraseSet = null as any;
+export const getPhraseSetOutput: typeof import("./getPhraseSet").getPhraseSetOutput = null as any;
+
+export { PhraseSetArgs } from "./phraseSet";
+export type PhraseSet = import("./phraseSet").PhraseSet;
+export const PhraseSet: typeof import("./phraseSet").PhraseSet = null as any;
+
+utilities.lazyLoad(exports, ["CustomClass"], () => require("./customClass"));
+utilities.lazyLoad(exports, ["getCustomClass","getCustomClassOutput"], () => require("./getCustomClass"));
+utilities.lazyLoad(exports, ["getPhraseSet","getPhraseSetOutput"], () => require("./getPhraseSet"));
+utilities.lazyLoad(exports, ["PhraseSet"], () => require("./phraseSet"));
 
 const _module = {
     version: utilities.getVersion(),

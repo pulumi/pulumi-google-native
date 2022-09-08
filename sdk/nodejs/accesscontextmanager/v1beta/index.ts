@@ -5,20 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./accessLevel";
-export * from "./accessPolicy";
-export * from "./getAccessLevel";
-export * from "./getAccessPolicy";
-export * from "./getServicePerimeter";
-export * from "./servicePerimeter";
+export { AccessLevelArgs } from "./accessLevel";
+export type AccessLevel = import("./accessLevel").AccessLevel;
+export const AccessLevel: typeof import("./accessLevel").AccessLevel = null as any;
+
+export { AccessPolicyArgs } from "./accessPolicy";
+export type AccessPolicy = import("./accessPolicy").AccessPolicy;
+export const AccessPolicy: typeof import("./accessPolicy").AccessPolicy = null as any;
+
+export { GetAccessLevelArgs, GetAccessLevelResult, GetAccessLevelOutputArgs } from "./getAccessLevel";
+export const getAccessLevel: typeof import("./getAccessLevel").getAccessLevel = null as any;
+export const getAccessLevelOutput: typeof import("./getAccessLevel").getAccessLevelOutput = null as any;
+
+export { GetAccessPolicyArgs, GetAccessPolicyResult, GetAccessPolicyOutputArgs } from "./getAccessPolicy";
+export const getAccessPolicy: typeof import("./getAccessPolicy").getAccessPolicy = null as any;
+export const getAccessPolicyOutput: typeof import("./getAccessPolicy").getAccessPolicyOutput = null as any;
+
+export { GetServicePerimeterArgs, GetServicePerimeterResult, GetServicePerimeterOutputArgs } from "./getServicePerimeter";
+export const getServicePerimeter: typeof import("./getServicePerimeter").getServicePerimeter = null as any;
+export const getServicePerimeterOutput: typeof import("./getServicePerimeter").getServicePerimeterOutput = null as any;
+
+export { ServicePerimeterArgs } from "./servicePerimeter";
+export type ServicePerimeter = import("./servicePerimeter").ServicePerimeter;
+export const ServicePerimeter: typeof import("./servicePerimeter").ServicePerimeter = null as any;
+
+utilities.lazyLoad(exports, ["AccessLevel"], () => require("./accessLevel"));
+utilities.lazyLoad(exports, ["AccessPolicy"], () => require("./accessPolicy"));
+utilities.lazyLoad(exports, ["getAccessLevel","getAccessLevelOutput"], () => require("./getAccessLevel"));
+utilities.lazyLoad(exports, ["getAccessPolicy","getAccessPolicyOutput"], () => require("./getAccessPolicy"));
+utilities.lazyLoad(exports, ["getServicePerimeter","getServicePerimeterOutput"], () => require("./getServicePerimeter"));
+utilities.lazyLoad(exports, ["ServicePerimeter"], () => require("./servicePerimeter"));
 
 // Export enums:
 export * from "../../types/enums/accesscontextmanager/v1beta";
-
-// Import resources to register:
-import { AccessLevel } from "./accessLevel";
-import { AccessPolicy } from "./accessPolicy";
-import { ServicePerimeter } from "./servicePerimeter";
 
 const _module = {
     version: utilities.getVersion(),

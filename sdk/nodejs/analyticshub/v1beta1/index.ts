@@ -5,23 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./dataExchange";
-export * from "./dataExchangeIamPolicy";
-export * from "./dataExchangeListingIamPolicy";
-export * from "./getDataExchange";
-export * from "./getDataExchangeIamPolicy";
-export * from "./getDataExchangeListingIamPolicy";
-export * from "./getListing";
-export * from "./listing";
+export { DataExchangeArgs } from "./dataExchange";
+export type DataExchange = import("./dataExchange").DataExchange;
+export const DataExchange: typeof import("./dataExchange").DataExchange = null as any;
+
+export { DataExchangeIamPolicyArgs } from "./dataExchangeIamPolicy";
+export type DataExchangeIamPolicy = import("./dataExchangeIamPolicy").DataExchangeIamPolicy;
+export const DataExchangeIamPolicy: typeof import("./dataExchangeIamPolicy").DataExchangeIamPolicy = null as any;
+
+export { DataExchangeListingIamPolicyArgs } from "./dataExchangeListingIamPolicy";
+export type DataExchangeListingIamPolicy = import("./dataExchangeListingIamPolicy").DataExchangeListingIamPolicy;
+export const DataExchangeListingIamPolicy: typeof import("./dataExchangeListingIamPolicy").DataExchangeListingIamPolicy = null as any;
+
+export { GetDataExchangeArgs, GetDataExchangeResult, GetDataExchangeOutputArgs } from "./getDataExchange";
+export const getDataExchange: typeof import("./getDataExchange").getDataExchange = null as any;
+export const getDataExchangeOutput: typeof import("./getDataExchange").getDataExchangeOutput = null as any;
+
+export { GetDataExchangeIamPolicyArgs, GetDataExchangeIamPolicyResult, GetDataExchangeIamPolicyOutputArgs } from "./getDataExchangeIamPolicy";
+export const getDataExchangeIamPolicy: typeof import("./getDataExchangeIamPolicy").getDataExchangeIamPolicy = null as any;
+export const getDataExchangeIamPolicyOutput: typeof import("./getDataExchangeIamPolicy").getDataExchangeIamPolicyOutput = null as any;
+
+export { GetDataExchangeListingIamPolicyArgs, GetDataExchangeListingIamPolicyResult, GetDataExchangeListingIamPolicyOutputArgs } from "./getDataExchangeListingIamPolicy";
+export const getDataExchangeListingIamPolicy: typeof import("./getDataExchangeListingIamPolicy").getDataExchangeListingIamPolicy = null as any;
+export const getDataExchangeListingIamPolicyOutput: typeof import("./getDataExchangeListingIamPolicy").getDataExchangeListingIamPolicyOutput = null as any;
+
+export { GetListingArgs, GetListingResult, GetListingOutputArgs } from "./getListing";
+export const getListing: typeof import("./getListing").getListing = null as any;
+export const getListingOutput: typeof import("./getListing").getListingOutput = null as any;
+
+export { ListingArgs } from "./listing";
+export type Listing = import("./listing").Listing;
+export const Listing: typeof import("./listing").Listing = null as any;
+
+utilities.lazyLoad(exports, ["DataExchange"], () => require("./dataExchange"));
+utilities.lazyLoad(exports, ["DataExchangeIamPolicy"], () => require("./dataExchangeIamPolicy"));
+utilities.lazyLoad(exports, ["DataExchangeListingIamPolicy"], () => require("./dataExchangeListingIamPolicy"));
+utilities.lazyLoad(exports, ["getDataExchange","getDataExchangeOutput"], () => require("./getDataExchange"));
+utilities.lazyLoad(exports, ["getDataExchangeIamPolicy","getDataExchangeIamPolicyOutput"], () => require("./getDataExchangeIamPolicy"));
+utilities.lazyLoad(exports, ["getDataExchangeListingIamPolicy","getDataExchangeListingIamPolicyOutput"], () => require("./getDataExchangeListingIamPolicy"));
+utilities.lazyLoad(exports, ["getListing","getListingOutput"], () => require("./getListing"));
+utilities.lazyLoad(exports, ["Listing"], () => require("./listing"));
 
 // Export enums:
 export * from "../../types/enums/analyticshub/v1beta1";
-
-// Import resources to register:
-import { DataExchange } from "./dataExchange";
-import { DataExchangeIamPolicy } from "./dataExchangeIamPolicy";
-import { DataExchangeListingIamPolicy } from "./dataExchangeListingIamPolicy";
-import { Listing } from "./listing";
 
 const _module = {
     version: utilities.getVersion(),

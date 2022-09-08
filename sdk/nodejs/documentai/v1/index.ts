@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getProcessor";
-export * from "./processor";
+export { GetProcessorArgs, GetProcessorResult, GetProcessorOutputArgs } from "./getProcessor";
+export const getProcessor: typeof import("./getProcessor").getProcessor = null as any;
+export const getProcessorOutput: typeof import("./getProcessor").getProcessorOutput = null as any;
 
-// Import resources to register:
-import { Processor } from "./processor";
+export { ProcessorArgs } from "./processor";
+export type Processor = import("./processor").Processor;
+export const Processor: typeof import("./processor").Processor = null as any;
+
+utilities.lazyLoad(exports, ["getProcessor","getProcessorOutput"], () => require("./getProcessor"));
+utilities.lazyLoad(exports, ["Processor"], () => require("./processor"));
 
 const _module = {
     version: utilities.getVersion(),

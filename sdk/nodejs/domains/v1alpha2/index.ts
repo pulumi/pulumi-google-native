@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getRegistration";
-export * from "./getRegistrationIamPolicy";
-export * from "./registration";
-export * from "./registrationIamPolicy";
+export { GetRegistrationArgs, GetRegistrationResult, GetRegistrationOutputArgs } from "./getRegistration";
+export const getRegistration: typeof import("./getRegistration").getRegistration = null as any;
+export const getRegistrationOutput: typeof import("./getRegistration").getRegistrationOutput = null as any;
+
+export { GetRegistrationIamPolicyArgs, GetRegistrationIamPolicyResult, GetRegistrationIamPolicyOutputArgs } from "./getRegistrationIamPolicy";
+export const getRegistrationIamPolicy: typeof import("./getRegistrationIamPolicy").getRegistrationIamPolicy = null as any;
+export const getRegistrationIamPolicyOutput: typeof import("./getRegistrationIamPolicy").getRegistrationIamPolicyOutput = null as any;
+
+export { RegistrationArgs } from "./registration";
+export type Registration = import("./registration").Registration;
+export const Registration: typeof import("./registration").Registration = null as any;
+
+export { RegistrationIamPolicyArgs } from "./registrationIamPolicy";
+export type RegistrationIamPolicy = import("./registrationIamPolicy").RegistrationIamPolicy;
+export const RegistrationIamPolicy: typeof import("./registrationIamPolicy").RegistrationIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["getRegistration","getRegistrationOutput"], () => require("./getRegistration"));
+utilities.lazyLoad(exports, ["getRegistrationIamPolicy","getRegistrationIamPolicyOutput"], () => require("./getRegistrationIamPolicy"));
+utilities.lazyLoad(exports, ["Registration"], () => require("./registration"));
+utilities.lazyLoad(exports, ["RegistrationIamPolicy"], () => require("./registrationIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/domains/v1alpha2";
-
-// Import resources to register:
-import { Registration } from "./registration";
-import { RegistrationIamPolicy } from "./registrationIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

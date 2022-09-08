@@ -5,26 +5,59 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./feature";
-export * from "./featureIamPolicy";
-export * from "./fleet";
-export * from "./getFeature";
-export * from "./getFeatureIamPolicy";
-export * from "./getFleet";
-export * from "./getMembership";
-export * from "./getMembershipIamPolicy";
-export * from "./membership";
-export * from "./membershipIamPolicy";
+export { FeatureArgs } from "./feature";
+export type Feature = import("./feature").Feature;
+export const Feature: typeof import("./feature").Feature = null as any;
+
+export { FeatureIamPolicyArgs } from "./featureIamPolicy";
+export type FeatureIamPolicy = import("./featureIamPolicy").FeatureIamPolicy;
+export const FeatureIamPolicy: typeof import("./featureIamPolicy").FeatureIamPolicy = null as any;
+
+export { FleetArgs } from "./fleet";
+export type Fleet = import("./fleet").Fleet;
+export const Fleet: typeof import("./fleet").Fleet = null as any;
+
+export { GetFeatureArgs, GetFeatureResult, GetFeatureOutputArgs } from "./getFeature";
+export const getFeature: typeof import("./getFeature").getFeature = null as any;
+export const getFeatureOutput: typeof import("./getFeature").getFeatureOutput = null as any;
+
+export { GetFeatureIamPolicyArgs, GetFeatureIamPolicyResult, GetFeatureIamPolicyOutputArgs } from "./getFeatureIamPolicy";
+export const getFeatureIamPolicy: typeof import("./getFeatureIamPolicy").getFeatureIamPolicy = null as any;
+export const getFeatureIamPolicyOutput: typeof import("./getFeatureIamPolicy").getFeatureIamPolicyOutput = null as any;
+
+export { GetFleetArgs, GetFleetResult, GetFleetOutputArgs } from "./getFleet";
+export const getFleet: typeof import("./getFleet").getFleet = null as any;
+export const getFleetOutput: typeof import("./getFleet").getFleetOutput = null as any;
+
+export { GetMembershipArgs, GetMembershipResult, GetMembershipOutputArgs } from "./getMembership";
+export const getMembership: typeof import("./getMembership").getMembership = null as any;
+export const getMembershipOutput: typeof import("./getMembership").getMembershipOutput = null as any;
+
+export { GetMembershipIamPolicyArgs, GetMembershipIamPolicyResult, GetMembershipIamPolicyOutputArgs } from "./getMembershipIamPolicy";
+export const getMembershipIamPolicy: typeof import("./getMembershipIamPolicy").getMembershipIamPolicy = null as any;
+export const getMembershipIamPolicyOutput: typeof import("./getMembershipIamPolicy").getMembershipIamPolicyOutput = null as any;
+
+export { MembershipArgs } from "./membership";
+export type Membership = import("./membership").Membership;
+export const Membership: typeof import("./membership").Membership = null as any;
+
+export { MembershipIamPolicyArgs } from "./membershipIamPolicy";
+export type MembershipIamPolicy = import("./membershipIamPolicy").MembershipIamPolicy;
+export const MembershipIamPolicy: typeof import("./membershipIamPolicy").MembershipIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["Feature"], () => require("./feature"));
+utilities.lazyLoad(exports, ["FeatureIamPolicy"], () => require("./featureIamPolicy"));
+utilities.lazyLoad(exports, ["Fleet"], () => require("./fleet"));
+utilities.lazyLoad(exports, ["getFeature","getFeatureOutput"], () => require("./getFeature"));
+utilities.lazyLoad(exports, ["getFeatureIamPolicy","getFeatureIamPolicyOutput"], () => require("./getFeatureIamPolicy"));
+utilities.lazyLoad(exports, ["getFleet","getFleetOutput"], () => require("./getFleet"));
+utilities.lazyLoad(exports, ["getMembership","getMembershipOutput"], () => require("./getMembership"));
+utilities.lazyLoad(exports, ["getMembershipIamPolicy","getMembershipIamPolicyOutput"], () => require("./getMembershipIamPolicy"));
+utilities.lazyLoad(exports, ["Membership"], () => require("./membership"));
+utilities.lazyLoad(exports, ["MembershipIamPolicy"], () => require("./membershipIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/gkehub/v1alpha";
-
-// Import resources to register:
-import { Feature } from "./feature";
-import { FeatureIamPolicy } from "./featureIamPolicy";
-import { Fleet } from "./fleet";
-import { Membership } from "./membership";
-import { MembershipIamPolicy } from "./membershipIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

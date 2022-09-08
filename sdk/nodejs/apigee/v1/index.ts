@@ -5,118 +5,369 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./alias";
-export * from "./api";
-export * from "./apiProduct";
-export * from "./app";
-export * from "./archiveDeployment";
-export * from "./canaryEvaluation";
-export * from "./dataCollector";
-export * from "./datastore";
-export * from "./debugSession";
-export * from "./developer";
-export * from "./endpointAttachment";
-export * from "./entry";
-export * from "./envgroup";
-export * from "./envgroupAttachment";
-export * from "./environment";
-export * from "./environmentEntry";
-export * from "./export";
-export * from "./getAlias";
-export * from "./getApi";
-export * from "./getApiProduct";
-export * from "./getApicategory";
-export * from "./getApp";
-export * from "./getArchiveDeployment";
-export * from "./getCanaryEvaluation";
-export * from "./getDataCollector";
-export * from "./getDatastore";
-export * from "./getDebugSession";
-export * from "./getDeveloper";
-export * from "./getEndpointAttachment";
-export * from "./getEntry";
-export * from "./getEnvgroup";
-export * from "./getEnvgroupAttachment";
-export * from "./getEnvironment";
-export * from "./getEnvironmentEntry";
-export * from "./getExport";
-export * from "./getHostQuery";
-export * from "./getHostSecurityReport";
-export * from "./getInstance";
-export * from "./getInstanceAttachment";
-export * from "./getKey";
-export * from "./getKeystore";
-export * from "./getNatAddress";
-export * from "./getOrganization";
-export * from "./getOrganizationEnvironmentIamPolicy";
-export * from "./getOverride";
-export * from "./getQuery";
-export * from "./getRatePlan";
-export * from "./getReference";
-export * from "./getReport";
-export * from "./getResourcefile";
-export * from "./getSecurityReport";
-export * from "./getSharedflow";
-export * from "./getSubscription";
-export * from "./getTargetServer";
-export * from "./hostQuery";
-export * from "./hostSecurityReport";
-export * from "./instance";
-export * from "./instanceAttachment";
-export * from "./keystore";
-export * from "./natAddress";
-export * from "./organization";
-export * from "./organizationEnvironmentIamPolicy";
-export * from "./override";
-export * from "./query";
-export * from "./ratePlan";
-export * from "./reference";
-export * from "./report";
-export * from "./resourcefile";
-export * from "./securityReport";
-export * from "./sharedflow";
-export * from "./subscription";
-export * from "./targetServer";
+export { AliasArgs } from "./alias";
+export type Alias = import("./alias").Alias;
+export const Alias: typeof import("./alias").Alias = null as any;
+
+export { ApiArgs } from "./api";
+export type Api = import("./api").Api;
+export const Api: typeof import("./api").Api = null as any;
+
+export { ApiProductArgs } from "./apiProduct";
+export type ApiProduct = import("./apiProduct").ApiProduct;
+export const ApiProduct: typeof import("./apiProduct").ApiProduct = null as any;
+
+export { AppArgs } from "./app";
+export type App = import("./app").App;
+export const App: typeof import("./app").App = null as any;
+
+export { ArchiveDeploymentArgs } from "./archiveDeployment";
+export type ArchiveDeployment = import("./archiveDeployment").ArchiveDeployment;
+export const ArchiveDeployment: typeof import("./archiveDeployment").ArchiveDeployment = null as any;
+
+export { CanaryEvaluationArgs } from "./canaryEvaluation";
+export type CanaryEvaluation = import("./canaryEvaluation").CanaryEvaluation;
+export const CanaryEvaluation: typeof import("./canaryEvaluation").CanaryEvaluation = null as any;
+
+export { DataCollectorArgs } from "./dataCollector";
+export type DataCollector = import("./dataCollector").DataCollector;
+export const DataCollector: typeof import("./dataCollector").DataCollector = null as any;
+
+export { DatastoreArgs } from "./datastore";
+export type Datastore = import("./datastore").Datastore;
+export const Datastore: typeof import("./datastore").Datastore = null as any;
+
+export { DebugSessionArgs } from "./debugSession";
+export type DebugSession = import("./debugSession").DebugSession;
+export const DebugSession: typeof import("./debugSession").DebugSession = null as any;
+
+export { DeveloperArgs } from "./developer";
+export type Developer = import("./developer").Developer;
+export const Developer: typeof import("./developer").Developer = null as any;
+
+export { EndpointAttachmentArgs } from "./endpointAttachment";
+export type EndpointAttachment = import("./endpointAttachment").EndpointAttachment;
+export const EndpointAttachment: typeof import("./endpointAttachment").EndpointAttachment = null as any;
+
+export { EntryArgs } from "./entry";
+export type Entry = import("./entry").Entry;
+export const Entry: typeof import("./entry").Entry = null as any;
+
+export { EnvgroupArgs } from "./envgroup";
+export type Envgroup = import("./envgroup").Envgroup;
+export const Envgroup: typeof import("./envgroup").Envgroup = null as any;
+
+export { EnvgroupAttachmentArgs } from "./envgroupAttachment";
+export type EnvgroupAttachment = import("./envgroupAttachment").EnvgroupAttachment;
+export const EnvgroupAttachment: typeof import("./envgroupAttachment").EnvgroupAttachment = null as any;
+
+export { EnvironmentArgs } from "./environment";
+export type Environment = import("./environment").Environment;
+export const Environment: typeof import("./environment").Environment = null as any;
+
+export { EnvironmentEntryArgs } from "./environmentEntry";
+export type EnvironmentEntry = import("./environmentEntry").EnvironmentEntry;
+export const EnvironmentEntry: typeof import("./environmentEntry").EnvironmentEntry = null as any;
+
+export { ExportArgs } from "./export";
+export type Export = import("./export").Export;
+export const Export: typeof import("./export").Export = null as any;
+
+export { GetAliasArgs, GetAliasResult, GetAliasOutputArgs } from "./getAlias";
+export const getAlias: typeof import("./getAlias").getAlias = null as any;
+export const getAliasOutput: typeof import("./getAlias").getAliasOutput = null as any;
+
+export { GetApiArgs, GetApiResult, GetApiOutputArgs } from "./getApi";
+export const getApi: typeof import("./getApi").getApi = null as any;
+export const getApiOutput: typeof import("./getApi").getApiOutput = null as any;
+
+export { GetApiProductArgs, GetApiProductResult, GetApiProductOutputArgs } from "./getApiProduct";
+export const getApiProduct: typeof import("./getApiProduct").getApiProduct = null as any;
+export const getApiProductOutput: typeof import("./getApiProduct").getApiProductOutput = null as any;
+
+export { GetApicategoryArgs, GetApicategoryResult, GetApicategoryOutputArgs } from "./getApicategory";
+export const getApicategory: typeof import("./getApicategory").getApicategory = null as any;
+export const getApicategoryOutput: typeof import("./getApicategory").getApicategoryOutput = null as any;
+
+export { GetAppArgs, GetAppResult, GetAppOutputArgs } from "./getApp";
+export const getApp: typeof import("./getApp").getApp = null as any;
+export const getAppOutput: typeof import("./getApp").getAppOutput = null as any;
+
+export { GetArchiveDeploymentArgs, GetArchiveDeploymentResult, GetArchiveDeploymentOutputArgs } from "./getArchiveDeployment";
+export const getArchiveDeployment: typeof import("./getArchiveDeployment").getArchiveDeployment = null as any;
+export const getArchiveDeploymentOutput: typeof import("./getArchiveDeployment").getArchiveDeploymentOutput = null as any;
+
+export { GetCanaryEvaluationArgs, GetCanaryEvaluationResult, GetCanaryEvaluationOutputArgs } from "./getCanaryEvaluation";
+export const getCanaryEvaluation: typeof import("./getCanaryEvaluation").getCanaryEvaluation = null as any;
+export const getCanaryEvaluationOutput: typeof import("./getCanaryEvaluation").getCanaryEvaluationOutput = null as any;
+
+export { GetDataCollectorArgs, GetDataCollectorResult, GetDataCollectorOutputArgs } from "./getDataCollector";
+export const getDataCollector: typeof import("./getDataCollector").getDataCollector = null as any;
+export const getDataCollectorOutput: typeof import("./getDataCollector").getDataCollectorOutput = null as any;
+
+export { GetDatastoreArgs, GetDatastoreResult, GetDatastoreOutputArgs } from "./getDatastore";
+export const getDatastore: typeof import("./getDatastore").getDatastore = null as any;
+export const getDatastoreOutput: typeof import("./getDatastore").getDatastoreOutput = null as any;
+
+export { GetDebugSessionArgs, GetDebugSessionResult, GetDebugSessionOutputArgs } from "./getDebugSession";
+export const getDebugSession: typeof import("./getDebugSession").getDebugSession = null as any;
+export const getDebugSessionOutput: typeof import("./getDebugSession").getDebugSessionOutput = null as any;
+
+export { GetDeveloperArgs, GetDeveloperResult, GetDeveloperOutputArgs } from "./getDeveloper";
+export const getDeveloper: typeof import("./getDeveloper").getDeveloper = null as any;
+export const getDeveloperOutput: typeof import("./getDeveloper").getDeveloperOutput = null as any;
+
+export { GetEndpointAttachmentArgs, GetEndpointAttachmentResult, GetEndpointAttachmentOutputArgs } from "./getEndpointAttachment";
+export const getEndpointAttachment: typeof import("./getEndpointAttachment").getEndpointAttachment = null as any;
+export const getEndpointAttachmentOutput: typeof import("./getEndpointAttachment").getEndpointAttachmentOutput = null as any;
+
+export { GetEntryArgs, GetEntryResult, GetEntryOutputArgs } from "./getEntry";
+export const getEntry: typeof import("./getEntry").getEntry = null as any;
+export const getEntryOutput: typeof import("./getEntry").getEntryOutput = null as any;
+
+export { GetEnvgroupArgs, GetEnvgroupResult, GetEnvgroupOutputArgs } from "./getEnvgroup";
+export const getEnvgroup: typeof import("./getEnvgroup").getEnvgroup = null as any;
+export const getEnvgroupOutput: typeof import("./getEnvgroup").getEnvgroupOutput = null as any;
+
+export { GetEnvgroupAttachmentArgs, GetEnvgroupAttachmentResult, GetEnvgroupAttachmentOutputArgs } from "./getEnvgroupAttachment";
+export const getEnvgroupAttachment: typeof import("./getEnvgroupAttachment").getEnvgroupAttachment = null as any;
+export const getEnvgroupAttachmentOutput: typeof import("./getEnvgroupAttachment").getEnvgroupAttachmentOutput = null as any;
+
+export { GetEnvironmentArgs, GetEnvironmentResult, GetEnvironmentOutputArgs } from "./getEnvironment";
+export const getEnvironment: typeof import("./getEnvironment").getEnvironment = null as any;
+export const getEnvironmentOutput: typeof import("./getEnvironment").getEnvironmentOutput = null as any;
+
+export { GetEnvironmentEntryArgs, GetEnvironmentEntryResult, GetEnvironmentEntryOutputArgs } from "./getEnvironmentEntry";
+export const getEnvironmentEntry: typeof import("./getEnvironmentEntry").getEnvironmentEntry = null as any;
+export const getEnvironmentEntryOutput: typeof import("./getEnvironmentEntry").getEnvironmentEntryOutput = null as any;
+
+export { GetExportArgs, GetExportResult, GetExportOutputArgs } from "./getExport";
+export const getExport: typeof import("./getExport").getExport = null as any;
+export const getExportOutput: typeof import("./getExport").getExportOutput = null as any;
+
+export { GetHostQueryArgs, GetHostQueryResult, GetHostQueryOutputArgs } from "./getHostQuery";
+export const getHostQuery: typeof import("./getHostQuery").getHostQuery = null as any;
+export const getHostQueryOutput: typeof import("./getHostQuery").getHostQueryOutput = null as any;
+
+export { GetHostSecurityReportArgs, GetHostSecurityReportResult, GetHostSecurityReportOutputArgs } from "./getHostSecurityReport";
+export const getHostSecurityReport: typeof import("./getHostSecurityReport").getHostSecurityReport = null as any;
+export const getHostSecurityReportOutput: typeof import("./getHostSecurityReport").getHostSecurityReportOutput = null as any;
+
+export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
+export const getInstance: typeof import("./getInstance").getInstance = null as any;
+export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+
+export { GetInstanceAttachmentArgs, GetInstanceAttachmentResult, GetInstanceAttachmentOutputArgs } from "./getInstanceAttachment";
+export const getInstanceAttachment: typeof import("./getInstanceAttachment").getInstanceAttachment = null as any;
+export const getInstanceAttachmentOutput: typeof import("./getInstanceAttachment").getInstanceAttachmentOutput = null as any;
+
+export { GetKeyArgs, GetKeyResult, GetKeyOutputArgs } from "./getKey";
+export const getKey: typeof import("./getKey").getKey = null as any;
+export const getKeyOutput: typeof import("./getKey").getKeyOutput = null as any;
+
+export { GetKeystoreArgs, GetKeystoreResult, GetKeystoreOutputArgs } from "./getKeystore";
+export const getKeystore: typeof import("./getKeystore").getKeystore = null as any;
+export const getKeystoreOutput: typeof import("./getKeystore").getKeystoreOutput = null as any;
+
+export { GetNatAddressArgs, GetNatAddressResult, GetNatAddressOutputArgs } from "./getNatAddress";
+export const getNatAddress: typeof import("./getNatAddress").getNatAddress = null as any;
+export const getNatAddressOutput: typeof import("./getNatAddress").getNatAddressOutput = null as any;
+
+export { GetOrganizationArgs, GetOrganizationResult, GetOrganizationOutputArgs } from "./getOrganization";
+export const getOrganization: typeof import("./getOrganization").getOrganization = null as any;
+export const getOrganizationOutput: typeof import("./getOrganization").getOrganizationOutput = null as any;
+
+export { GetOrganizationEnvironmentIamPolicyArgs, GetOrganizationEnvironmentIamPolicyResult, GetOrganizationEnvironmentIamPolicyOutputArgs } from "./getOrganizationEnvironmentIamPolicy";
+export const getOrganizationEnvironmentIamPolicy: typeof import("./getOrganizationEnvironmentIamPolicy").getOrganizationEnvironmentIamPolicy = null as any;
+export const getOrganizationEnvironmentIamPolicyOutput: typeof import("./getOrganizationEnvironmentIamPolicy").getOrganizationEnvironmentIamPolicyOutput = null as any;
+
+export { GetOverrideArgs, GetOverrideResult, GetOverrideOutputArgs } from "./getOverride";
+export const getOverride: typeof import("./getOverride").getOverride = null as any;
+export const getOverrideOutput: typeof import("./getOverride").getOverrideOutput = null as any;
+
+export { GetQueryArgs, GetQueryResult, GetQueryOutputArgs } from "./getQuery";
+export const getQuery: typeof import("./getQuery").getQuery = null as any;
+export const getQueryOutput: typeof import("./getQuery").getQueryOutput = null as any;
+
+export { GetRatePlanArgs, GetRatePlanResult, GetRatePlanOutputArgs } from "./getRatePlan";
+export const getRatePlan: typeof import("./getRatePlan").getRatePlan = null as any;
+export const getRatePlanOutput: typeof import("./getRatePlan").getRatePlanOutput = null as any;
+
+export { GetReferenceArgs, GetReferenceResult, GetReferenceOutputArgs } from "./getReference";
+export const getReference: typeof import("./getReference").getReference = null as any;
+export const getReferenceOutput: typeof import("./getReference").getReferenceOutput = null as any;
+
+export { GetReportArgs, GetReportResult, GetReportOutputArgs } from "./getReport";
+export const getReport: typeof import("./getReport").getReport = null as any;
+export const getReportOutput: typeof import("./getReport").getReportOutput = null as any;
+
+export { GetResourcefileArgs, GetResourcefileResult, GetResourcefileOutputArgs } from "./getResourcefile";
+export const getResourcefile: typeof import("./getResourcefile").getResourcefile = null as any;
+export const getResourcefileOutput: typeof import("./getResourcefile").getResourcefileOutput = null as any;
+
+export { GetSecurityReportArgs, GetSecurityReportResult, GetSecurityReportOutputArgs } from "./getSecurityReport";
+export const getSecurityReport: typeof import("./getSecurityReport").getSecurityReport = null as any;
+export const getSecurityReportOutput: typeof import("./getSecurityReport").getSecurityReportOutput = null as any;
+
+export { GetSharedflowArgs, GetSharedflowResult, GetSharedflowOutputArgs } from "./getSharedflow";
+export const getSharedflow: typeof import("./getSharedflow").getSharedflow = null as any;
+export const getSharedflowOutput: typeof import("./getSharedflow").getSharedflowOutput = null as any;
+
+export { GetSubscriptionArgs, GetSubscriptionResult, GetSubscriptionOutputArgs } from "./getSubscription";
+export const getSubscription: typeof import("./getSubscription").getSubscription = null as any;
+export const getSubscriptionOutput: typeof import("./getSubscription").getSubscriptionOutput = null as any;
+
+export { GetTargetServerArgs, GetTargetServerResult, GetTargetServerOutputArgs } from "./getTargetServer";
+export const getTargetServer: typeof import("./getTargetServer").getTargetServer = null as any;
+export const getTargetServerOutput: typeof import("./getTargetServer").getTargetServerOutput = null as any;
+
+export { HostQueryArgs } from "./hostQuery";
+export type HostQuery = import("./hostQuery").HostQuery;
+export const HostQuery: typeof import("./hostQuery").HostQuery = null as any;
+
+export { HostSecurityReportArgs } from "./hostSecurityReport";
+export type HostSecurityReport = import("./hostSecurityReport").HostSecurityReport;
+export const HostSecurityReport: typeof import("./hostSecurityReport").HostSecurityReport = null as any;
+
+export { InstanceArgs } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+
+export { InstanceAttachmentArgs } from "./instanceAttachment";
+export type InstanceAttachment = import("./instanceAttachment").InstanceAttachment;
+export const InstanceAttachment: typeof import("./instanceAttachment").InstanceAttachment = null as any;
+
+export { KeystoreArgs } from "./keystore";
+export type Keystore = import("./keystore").Keystore;
+export const Keystore: typeof import("./keystore").Keystore = null as any;
+
+export { NatAddressArgs } from "./natAddress";
+export type NatAddress = import("./natAddress").NatAddress;
+export const NatAddress: typeof import("./natAddress").NatAddress = null as any;
+
+export { OrganizationArgs } from "./organization";
+export type Organization = import("./organization").Organization;
+export const Organization: typeof import("./organization").Organization = null as any;
+
+export { OrganizationEnvironmentIamPolicyArgs } from "./organizationEnvironmentIamPolicy";
+export type OrganizationEnvironmentIamPolicy = import("./organizationEnvironmentIamPolicy").OrganizationEnvironmentIamPolicy;
+export const OrganizationEnvironmentIamPolicy: typeof import("./organizationEnvironmentIamPolicy").OrganizationEnvironmentIamPolicy = null as any;
+
+export { OverrideArgs } from "./override";
+export type Override = import("./override").Override;
+export const Override: typeof import("./override").Override = null as any;
+
+export { QueryArgs } from "./query";
+export type Query = import("./query").Query;
+export const Query: typeof import("./query").Query = null as any;
+
+export { RatePlanArgs } from "./ratePlan";
+export type RatePlan = import("./ratePlan").RatePlan;
+export const RatePlan: typeof import("./ratePlan").RatePlan = null as any;
+
+export { ReferenceArgs } from "./reference";
+export type Reference = import("./reference").Reference;
+export const Reference: typeof import("./reference").Reference = null as any;
+
+export { ReportArgs } from "./report";
+export type Report = import("./report").Report;
+export const Report: typeof import("./report").Report = null as any;
+
+export { ResourcefileArgs } from "./resourcefile";
+export type Resourcefile = import("./resourcefile").Resourcefile;
+export const Resourcefile: typeof import("./resourcefile").Resourcefile = null as any;
+
+export { SecurityReportArgs } from "./securityReport";
+export type SecurityReport = import("./securityReport").SecurityReport;
+export const SecurityReport: typeof import("./securityReport").SecurityReport = null as any;
+
+export { SharedflowArgs } from "./sharedflow";
+export type Sharedflow = import("./sharedflow").Sharedflow;
+export const Sharedflow: typeof import("./sharedflow").Sharedflow = null as any;
+
+export { SubscriptionArgs } from "./subscription";
+export type Subscription = import("./subscription").Subscription;
+export const Subscription: typeof import("./subscription").Subscription = null as any;
+
+export { TargetServerArgs } from "./targetServer";
+export type TargetServer = import("./targetServer").TargetServer;
+export const TargetServer: typeof import("./targetServer").TargetServer = null as any;
+
+utilities.lazyLoad(exports, ["Alias"], () => require("./alias"));
+utilities.lazyLoad(exports, ["Api"], () => require("./api"));
+utilities.lazyLoad(exports, ["ApiProduct"], () => require("./apiProduct"));
+utilities.lazyLoad(exports, ["App"], () => require("./app"));
+utilities.lazyLoad(exports, ["ArchiveDeployment"], () => require("./archiveDeployment"));
+utilities.lazyLoad(exports, ["CanaryEvaluation"], () => require("./canaryEvaluation"));
+utilities.lazyLoad(exports, ["DataCollector"], () => require("./dataCollector"));
+utilities.lazyLoad(exports, ["Datastore"], () => require("./datastore"));
+utilities.lazyLoad(exports, ["DebugSession"], () => require("./debugSession"));
+utilities.lazyLoad(exports, ["Developer"], () => require("./developer"));
+utilities.lazyLoad(exports, ["EndpointAttachment"], () => require("./endpointAttachment"));
+utilities.lazyLoad(exports, ["Entry"], () => require("./entry"));
+utilities.lazyLoad(exports, ["Envgroup"], () => require("./envgroup"));
+utilities.lazyLoad(exports, ["EnvgroupAttachment"], () => require("./envgroupAttachment"));
+utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
+utilities.lazyLoad(exports, ["EnvironmentEntry"], () => require("./environmentEntry"));
+utilities.lazyLoad(exports, ["Export"], () => require("./export"));
+utilities.lazyLoad(exports, ["getAlias","getAliasOutput"], () => require("./getAlias"));
+utilities.lazyLoad(exports, ["getApi","getApiOutput"], () => require("./getApi"));
+utilities.lazyLoad(exports, ["getApiProduct","getApiProductOutput"], () => require("./getApiProduct"));
+utilities.lazyLoad(exports, ["getApicategory","getApicategoryOutput"], () => require("./getApicategory"));
+utilities.lazyLoad(exports, ["getApp","getAppOutput"], () => require("./getApp"));
+utilities.lazyLoad(exports, ["getArchiveDeployment","getArchiveDeploymentOutput"], () => require("./getArchiveDeployment"));
+utilities.lazyLoad(exports, ["getCanaryEvaluation","getCanaryEvaluationOutput"], () => require("./getCanaryEvaluation"));
+utilities.lazyLoad(exports, ["getDataCollector","getDataCollectorOutput"], () => require("./getDataCollector"));
+utilities.lazyLoad(exports, ["getDatastore","getDatastoreOutput"], () => require("./getDatastore"));
+utilities.lazyLoad(exports, ["getDebugSession","getDebugSessionOutput"], () => require("./getDebugSession"));
+utilities.lazyLoad(exports, ["getDeveloper","getDeveloperOutput"], () => require("./getDeveloper"));
+utilities.lazyLoad(exports, ["getEndpointAttachment","getEndpointAttachmentOutput"], () => require("./getEndpointAttachment"));
+utilities.lazyLoad(exports, ["getEntry","getEntryOutput"], () => require("./getEntry"));
+utilities.lazyLoad(exports, ["getEnvgroup","getEnvgroupOutput"], () => require("./getEnvgroup"));
+utilities.lazyLoad(exports, ["getEnvgroupAttachment","getEnvgroupAttachmentOutput"], () => require("./getEnvgroupAttachment"));
+utilities.lazyLoad(exports, ["getEnvironment","getEnvironmentOutput"], () => require("./getEnvironment"));
+utilities.lazyLoad(exports, ["getEnvironmentEntry","getEnvironmentEntryOutput"], () => require("./getEnvironmentEntry"));
+utilities.lazyLoad(exports, ["getExport","getExportOutput"], () => require("./getExport"));
+utilities.lazyLoad(exports, ["getHostQuery","getHostQueryOutput"], () => require("./getHostQuery"));
+utilities.lazyLoad(exports, ["getHostSecurityReport","getHostSecurityReportOutput"], () => require("./getHostSecurityReport"));
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
+utilities.lazyLoad(exports, ["getInstanceAttachment","getInstanceAttachmentOutput"], () => require("./getInstanceAttachment"));
+utilities.lazyLoad(exports, ["getKey","getKeyOutput"], () => require("./getKey"));
+utilities.lazyLoad(exports, ["getKeystore","getKeystoreOutput"], () => require("./getKeystore"));
+utilities.lazyLoad(exports, ["getNatAddress","getNatAddressOutput"], () => require("./getNatAddress"));
+utilities.lazyLoad(exports, ["getOrganization","getOrganizationOutput"], () => require("./getOrganization"));
+utilities.lazyLoad(exports, ["getOrganizationEnvironmentIamPolicy","getOrganizationEnvironmentIamPolicyOutput"], () => require("./getOrganizationEnvironmentIamPolicy"));
+utilities.lazyLoad(exports, ["getOverride","getOverrideOutput"], () => require("./getOverride"));
+utilities.lazyLoad(exports, ["getQuery","getQueryOutput"], () => require("./getQuery"));
+utilities.lazyLoad(exports, ["getRatePlan","getRatePlanOutput"], () => require("./getRatePlan"));
+utilities.lazyLoad(exports, ["getReference","getReferenceOutput"], () => require("./getReference"));
+utilities.lazyLoad(exports, ["getReport","getReportOutput"], () => require("./getReport"));
+utilities.lazyLoad(exports, ["getResourcefile","getResourcefileOutput"], () => require("./getResourcefile"));
+utilities.lazyLoad(exports, ["getSecurityReport","getSecurityReportOutput"], () => require("./getSecurityReport"));
+utilities.lazyLoad(exports, ["getSharedflow","getSharedflowOutput"], () => require("./getSharedflow"));
+utilities.lazyLoad(exports, ["getSubscription","getSubscriptionOutput"], () => require("./getSubscription"));
+utilities.lazyLoad(exports, ["getTargetServer","getTargetServerOutput"], () => require("./getTargetServer"));
+utilities.lazyLoad(exports, ["HostQuery"], () => require("./hostQuery"));
+utilities.lazyLoad(exports, ["HostSecurityReport"], () => require("./hostSecurityReport"));
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["InstanceAttachment"], () => require("./instanceAttachment"));
+utilities.lazyLoad(exports, ["Keystore"], () => require("./keystore"));
+utilities.lazyLoad(exports, ["NatAddress"], () => require("./natAddress"));
+utilities.lazyLoad(exports, ["Organization"], () => require("./organization"));
+utilities.lazyLoad(exports, ["OrganizationEnvironmentIamPolicy"], () => require("./organizationEnvironmentIamPolicy"));
+utilities.lazyLoad(exports, ["Override"], () => require("./override"));
+utilities.lazyLoad(exports, ["Query"], () => require("./query"));
+utilities.lazyLoad(exports, ["RatePlan"], () => require("./ratePlan"));
+utilities.lazyLoad(exports, ["Reference"], () => require("./reference"));
+utilities.lazyLoad(exports, ["Report"], () => require("./report"));
+utilities.lazyLoad(exports, ["Resourcefile"], () => require("./resourcefile"));
+utilities.lazyLoad(exports, ["SecurityReport"], () => require("./securityReport"));
+utilities.lazyLoad(exports, ["Sharedflow"], () => require("./sharedflow"));
+utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
+utilities.lazyLoad(exports, ["TargetServer"], () => require("./targetServer"));
 
 // Export enums:
 export * from "../../types/enums/apigee/v1";
-
-// Import resources to register:
-import { Alias } from "./alias";
-import { Api } from "./api";
-import { ApiProduct } from "./apiProduct";
-import { App } from "./app";
-import { ArchiveDeployment } from "./archiveDeployment";
-import { CanaryEvaluation } from "./canaryEvaluation";
-import { DataCollector } from "./dataCollector";
-import { Datastore } from "./datastore";
-import { DebugSession } from "./debugSession";
-import { Developer } from "./developer";
-import { EndpointAttachment } from "./endpointAttachment";
-import { Entry } from "./entry";
-import { Envgroup } from "./envgroup";
-import { EnvgroupAttachment } from "./envgroupAttachment";
-import { Environment } from "./environment";
-import { EnvironmentEntry } from "./environmentEntry";
-import { Export } from "./export";
-import { HostQuery } from "./hostQuery";
-import { HostSecurityReport } from "./hostSecurityReport";
-import { Instance } from "./instance";
-import { InstanceAttachment } from "./instanceAttachment";
-import { Keystore } from "./keystore";
-import { NatAddress } from "./natAddress";
-import { Organization } from "./organization";
-import { OrganizationEnvironmentIamPolicy } from "./organizationEnvironmentIamPolicy";
-import { Override } from "./override";
-import { Query } from "./query";
-import { RatePlan } from "./ratePlan";
-import { Reference } from "./reference";
-import { Report } from "./report";
-import { Resourcefile } from "./resourcefile";
-import { SecurityReport } from "./securityReport";
-import { Sharedflow } from "./sharedflow";
-import { Subscription } from "./subscription";
-import { TargetServer } from "./targetServer";
 
 const _module = {
     version: utilities.getVersion(),

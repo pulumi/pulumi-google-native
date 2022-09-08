@@ -5,14 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getJob";
-export * from "./job";
+export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
+export const getJob: typeof import("./getJob").getJob = null as any;
+export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
+
+export { JobArgs } from "./job";
+export type Job = import("./job").Job;
+export const Job: typeof import("./job").Job = null as any;
+
+utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 
 // Export enums:
 export * from "../../types/enums/cloudscheduler/v1beta1";
-
-// Import resources to register:
-import { Job } from "./job";
 
 const _module = {
     version: utilities.getVersion(),

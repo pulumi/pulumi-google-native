@@ -5,26 +5,59 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./backupRun";
-export * from "./database";
-export * from "./getBackupRun";
-export * from "./getDatabase";
-export * from "./getInstance";
-export * from "./getSslCert";
-export * from "./getUser";
-export * from "./instance";
-export * from "./sslCert";
-export * from "./user";
+export { BackupRunArgs } from "./backupRun";
+export type BackupRun = import("./backupRun").BackupRun;
+export const BackupRun: typeof import("./backupRun").BackupRun = null as any;
+
+export { DatabaseArgs } from "./database";
+export type Database = import("./database").Database;
+export const Database: typeof import("./database").Database = null as any;
+
+export { GetBackupRunArgs, GetBackupRunResult, GetBackupRunOutputArgs } from "./getBackupRun";
+export const getBackupRun: typeof import("./getBackupRun").getBackupRun = null as any;
+export const getBackupRunOutput: typeof import("./getBackupRun").getBackupRunOutput = null as any;
+
+export { GetDatabaseArgs, GetDatabaseResult, GetDatabaseOutputArgs } from "./getDatabase";
+export const getDatabase: typeof import("./getDatabase").getDatabase = null as any;
+export const getDatabaseOutput: typeof import("./getDatabase").getDatabaseOutput = null as any;
+
+export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
+export const getInstance: typeof import("./getInstance").getInstance = null as any;
+export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+
+export { GetSslCertArgs, GetSslCertResult, GetSslCertOutputArgs } from "./getSslCert";
+export const getSslCert: typeof import("./getSslCert").getSslCert = null as any;
+export const getSslCertOutput: typeof import("./getSslCert").getSslCertOutput = null as any;
+
+export { GetUserArgs, GetUserResult, GetUserOutputArgs } from "./getUser";
+export const getUser: typeof import("./getUser").getUser = null as any;
+export const getUserOutput: typeof import("./getUser").getUserOutput = null as any;
+
+export { InstanceArgs } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+
+export { SslCertArgs } from "./sslCert";
+export type SslCert = import("./sslCert").SslCert;
+export const SslCert: typeof import("./sslCert").SslCert = null as any;
+
+export { UserArgs } from "./user";
+export type User = import("./user").User;
+export const User: typeof import("./user").User = null as any;
+
+utilities.lazyLoad(exports, ["BackupRun"], () => require("./backupRun"));
+utilities.lazyLoad(exports, ["Database"], () => require("./database"));
+utilities.lazyLoad(exports, ["getBackupRun","getBackupRunOutput"], () => require("./getBackupRun"));
+utilities.lazyLoad(exports, ["getDatabase","getDatabaseOutput"], () => require("./getDatabase"));
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
+utilities.lazyLoad(exports, ["getSslCert","getSslCertOutput"], () => require("./getSslCert"));
+utilities.lazyLoad(exports, ["getUser","getUserOutput"], () => require("./getUser"));
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["SslCert"], () => require("./sslCert"));
+utilities.lazyLoad(exports, ["User"], () => require("./user"));
 
 // Export enums:
 export * from "../../types/enums/sqladmin/v1";
-
-// Import resources to register:
-import { BackupRun } from "./backupRun";
-import { Database } from "./database";
-import { Instance } from "./instance";
-import { SslCert } from "./sslCert";
-import { User } from "./user";
 
 const _module = {
     version: utilities.getVersion(),

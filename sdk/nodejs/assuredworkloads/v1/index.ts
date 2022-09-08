@@ -5,14 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getWorkload";
-export * from "./workload";
+export { GetWorkloadArgs, GetWorkloadResult, GetWorkloadOutputArgs } from "./getWorkload";
+export const getWorkload: typeof import("./getWorkload").getWorkload = null as any;
+export const getWorkloadOutput: typeof import("./getWorkload").getWorkloadOutput = null as any;
+
+export { WorkloadArgs } from "./workload";
+export type Workload = import("./workload").Workload;
+export const Workload: typeof import("./workload").Workload = null as any;
+
+utilities.lazyLoad(exports, ["getWorkload","getWorkloadOutput"], () => require("./getWorkload"));
+utilities.lazyLoad(exports, ["Workload"], () => require("./workload"));
 
 // Export enums:
 export * from "../../types/enums/assuredworkloads/v1";
-
-// Import resources to register:
-import { Workload } from "./workload";
 
 const _module = {
     version: utilities.getVersion(),

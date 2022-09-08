@@ -5,23 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getNote";
-export * from "./getNoteIamPolicy";
-export * from "./getOccurrence";
-export * from "./getOccurrenceIamPolicy";
-export * from "./note";
-export * from "./noteIamPolicy";
-export * from "./occurrence";
-export * from "./occurrenceIamPolicy";
+export { GetNoteArgs, GetNoteResult, GetNoteOutputArgs } from "./getNote";
+export const getNote: typeof import("./getNote").getNote = null as any;
+export const getNoteOutput: typeof import("./getNote").getNoteOutput = null as any;
+
+export { GetNoteIamPolicyArgs, GetNoteIamPolicyResult, GetNoteIamPolicyOutputArgs } from "./getNoteIamPolicy";
+export const getNoteIamPolicy: typeof import("./getNoteIamPolicy").getNoteIamPolicy = null as any;
+export const getNoteIamPolicyOutput: typeof import("./getNoteIamPolicy").getNoteIamPolicyOutput = null as any;
+
+export { GetOccurrenceArgs, GetOccurrenceResult, GetOccurrenceOutputArgs } from "./getOccurrence";
+export const getOccurrence: typeof import("./getOccurrence").getOccurrence = null as any;
+export const getOccurrenceOutput: typeof import("./getOccurrence").getOccurrenceOutput = null as any;
+
+export { GetOccurrenceIamPolicyArgs, GetOccurrenceIamPolicyResult, GetOccurrenceIamPolicyOutputArgs } from "./getOccurrenceIamPolicy";
+export const getOccurrenceIamPolicy: typeof import("./getOccurrenceIamPolicy").getOccurrenceIamPolicy = null as any;
+export const getOccurrenceIamPolicyOutput: typeof import("./getOccurrenceIamPolicy").getOccurrenceIamPolicyOutput = null as any;
+
+export { NoteArgs } from "./note";
+export type Note = import("./note").Note;
+export const Note: typeof import("./note").Note = null as any;
+
+export { NoteIamPolicyArgs } from "./noteIamPolicy";
+export type NoteIamPolicy = import("./noteIamPolicy").NoteIamPolicy;
+export const NoteIamPolicy: typeof import("./noteIamPolicy").NoteIamPolicy = null as any;
+
+export { OccurrenceArgs } from "./occurrence";
+export type Occurrence = import("./occurrence").Occurrence;
+export const Occurrence: typeof import("./occurrence").Occurrence = null as any;
+
+export { OccurrenceIamPolicyArgs } from "./occurrenceIamPolicy";
+export type OccurrenceIamPolicy = import("./occurrenceIamPolicy").OccurrenceIamPolicy;
+export const OccurrenceIamPolicy: typeof import("./occurrenceIamPolicy").OccurrenceIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["getNote","getNoteOutput"], () => require("./getNote"));
+utilities.lazyLoad(exports, ["getNoteIamPolicy","getNoteIamPolicyOutput"], () => require("./getNoteIamPolicy"));
+utilities.lazyLoad(exports, ["getOccurrence","getOccurrenceOutput"], () => require("./getOccurrence"));
+utilities.lazyLoad(exports, ["getOccurrenceIamPolicy","getOccurrenceIamPolicyOutput"], () => require("./getOccurrenceIamPolicy"));
+utilities.lazyLoad(exports, ["Note"], () => require("./note"));
+utilities.lazyLoad(exports, ["NoteIamPolicy"], () => require("./noteIamPolicy"));
+utilities.lazyLoad(exports, ["Occurrence"], () => require("./occurrence"));
+utilities.lazyLoad(exports, ["OccurrenceIamPolicy"], () => require("./occurrenceIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/containeranalysis/v1";
-
-// Import resources to register:
-import { Note } from "./note";
-import { NoteIamPolicy } from "./noteIamPolicy";
-import { Occurrence } from "./occurrence";
-import { OccurrenceIamPolicy } from "./occurrenceIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

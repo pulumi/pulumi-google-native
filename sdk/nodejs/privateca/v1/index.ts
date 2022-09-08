@@ -5,32 +5,79 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./caPool";
-export * from "./caPoolCertificateAuthorityCertificateRevocationListIamPolicy";
-export * from "./caPoolIamPolicy";
-export * from "./certificate";
-export * from "./certificateAuthority";
-export * from "./certificateTemplate";
-export * from "./certificateTemplateIamPolicy";
-export * from "./getCaPool";
-export * from "./getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy";
-export * from "./getCaPoolIamPolicy";
-export * from "./getCertificate";
-export * from "./getCertificateAuthority";
-export * from "./getCertificateTemplate";
-export * from "./getCertificateTemplateIamPolicy";
+export { CaPoolArgs } from "./caPool";
+export type CaPool = import("./caPool").CaPool;
+export const CaPool: typeof import("./caPool").CaPool = null as any;
+
+export { CaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs } from "./caPoolCertificateAuthorityCertificateRevocationListIamPolicy";
+export type CaPoolCertificateAuthorityCertificateRevocationListIamPolicy = import("./caPoolCertificateAuthorityCertificateRevocationListIamPolicy").CaPoolCertificateAuthorityCertificateRevocationListIamPolicy;
+export const CaPoolCertificateAuthorityCertificateRevocationListIamPolicy: typeof import("./caPoolCertificateAuthorityCertificateRevocationListIamPolicy").CaPoolCertificateAuthorityCertificateRevocationListIamPolicy = null as any;
+
+export { CaPoolIamPolicyArgs } from "./caPoolIamPolicy";
+export type CaPoolIamPolicy = import("./caPoolIamPolicy").CaPoolIamPolicy;
+export const CaPoolIamPolicy: typeof import("./caPoolIamPolicy").CaPoolIamPolicy = null as any;
+
+export { CertificateArgs } from "./certificate";
+export type Certificate = import("./certificate").Certificate;
+export const Certificate: typeof import("./certificate").Certificate = null as any;
+
+export { CertificateAuthorityArgs } from "./certificateAuthority";
+export type CertificateAuthority = import("./certificateAuthority").CertificateAuthority;
+export const CertificateAuthority: typeof import("./certificateAuthority").CertificateAuthority = null as any;
+
+export { CertificateTemplateArgs } from "./certificateTemplate";
+export type CertificateTemplate = import("./certificateTemplate").CertificateTemplate;
+export const CertificateTemplate: typeof import("./certificateTemplate").CertificateTemplate = null as any;
+
+export { CertificateTemplateIamPolicyArgs } from "./certificateTemplateIamPolicy";
+export type CertificateTemplateIamPolicy = import("./certificateTemplateIamPolicy").CertificateTemplateIamPolicy;
+export const CertificateTemplateIamPolicy: typeof import("./certificateTemplateIamPolicy").CertificateTemplateIamPolicy = null as any;
+
+export { GetCaPoolArgs, GetCaPoolResult, GetCaPoolOutputArgs } from "./getCaPool";
+export const getCaPool: typeof import("./getCaPool").getCaPool = null as any;
+export const getCaPoolOutput: typeof import("./getCaPool").getCaPoolOutput = null as any;
+
+export { GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyArgs, GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyResult, GetCaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutputArgs } from "./getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy";
+export const getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy: typeof import("./getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy").getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy = null as any;
+export const getCaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput: typeof import("./getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy").getCaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput = null as any;
+
+export { GetCaPoolIamPolicyArgs, GetCaPoolIamPolicyResult, GetCaPoolIamPolicyOutputArgs } from "./getCaPoolIamPolicy";
+export const getCaPoolIamPolicy: typeof import("./getCaPoolIamPolicy").getCaPoolIamPolicy = null as any;
+export const getCaPoolIamPolicyOutput: typeof import("./getCaPoolIamPolicy").getCaPoolIamPolicyOutput = null as any;
+
+export { GetCertificateArgs, GetCertificateResult, GetCertificateOutputArgs } from "./getCertificate";
+export const getCertificate: typeof import("./getCertificate").getCertificate = null as any;
+export const getCertificateOutput: typeof import("./getCertificate").getCertificateOutput = null as any;
+
+export { GetCertificateAuthorityArgs, GetCertificateAuthorityResult, GetCertificateAuthorityOutputArgs } from "./getCertificateAuthority";
+export const getCertificateAuthority: typeof import("./getCertificateAuthority").getCertificateAuthority = null as any;
+export const getCertificateAuthorityOutput: typeof import("./getCertificateAuthority").getCertificateAuthorityOutput = null as any;
+
+export { GetCertificateTemplateArgs, GetCertificateTemplateResult, GetCertificateTemplateOutputArgs } from "./getCertificateTemplate";
+export const getCertificateTemplate: typeof import("./getCertificateTemplate").getCertificateTemplate = null as any;
+export const getCertificateTemplateOutput: typeof import("./getCertificateTemplate").getCertificateTemplateOutput = null as any;
+
+export { GetCertificateTemplateIamPolicyArgs, GetCertificateTemplateIamPolicyResult, GetCertificateTemplateIamPolicyOutputArgs } from "./getCertificateTemplateIamPolicy";
+export const getCertificateTemplateIamPolicy: typeof import("./getCertificateTemplateIamPolicy").getCertificateTemplateIamPolicy = null as any;
+export const getCertificateTemplateIamPolicyOutput: typeof import("./getCertificateTemplateIamPolicy").getCertificateTemplateIamPolicyOutput = null as any;
+
+utilities.lazyLoad(exports, ["CaPool"], () => require("./caPool"));
+utilities.lazyLoad(exports, ["CaPoolCertificateAuthorityCertificateRevocationListIamPolicy"], () => require("./caPoolCertificateAuthorityCertificateRevocationListIamPolicy"));
+utilities.lazyLoad(exports, ["CaPoolIamPolicy"], () => require("./caPoolIamPolicy"));
+utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
+utilities.lazyLoad(exports, ["CertificateAuthority"], () => require("./certificateAuthority"));
+utilities.lazyLoad(exports, ["CertificateTemplate"], () => require("./certificateTemplate"));
+utilities.lazyLoad(exports, ["CertificateTemplateIamPolicy"], () => require("./certificateTemplateIamPolicy"));
+utilities.lazyLoad(exports, ["getCaPool","getCaPoolOutput"], () => require("./getCaPool"));
+utilities.lazyLoad(exports, ["getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy","getCaPoolCertificateAuthorityCertificateRevocationListIamPolicyOutput"], () => require("./getCaPoolCertificateAuthorityCertificateRevocationListIamPolicy"));
+utilities.lazyLoad(exports, ["getCaPoolIamPolicy","getCaPoolIamPolicyOutput"], () => require("./getCaPoolIamPolicy"));
+utilities.lazyLoad(exports, ["getCertificate","getCertificateOutput"], () => require("./getCertificate"));
+utilities.lazyLoad(exports, ["getCertificateAuthority","getCertificateAuthorityOutput"], () => require("./getCertificateAuthority"));
+utilities.lazyLoad(exports, ["getCertificateTemplate","getCertificateTemplateOutput"], () => require("./getCertificateTemplate"));
+utilities.lazyLoad(exports, ["getCertificateTemplateIamPolicy","getCertificateTemplateIamPolicyOutput"], () => require("./getCertificateTemplateIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/privateca/v1";
-
-// Import resources to register:
-import { CaPool } from "./caPool";
-import { CaPoolCertificateAuthorityCertificateRevocationListIamPolicy } from "./caPoolCertificateAuthorityCertificateRevocationListIamPolicy";
-import { CaPoolIamPolicy } from "./caPoolIamPolicy";
-import { Certificate } from "./certificate";
-import { CertificateAuthority } from "./certificateAuthority";
-import { CertificateTemplate } from "./certificateTemplate";
-import { CertificateTemplateIamPolicy } from "./certificateTemplateIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

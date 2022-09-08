@@ -5,23 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getLien";
-export * from "./getOrganizationIamPolicy";
-export * from "./getProject";
-export * from "./getProjectIamPolicy";
-export * from "./lien";
-export * from "./organizationIamPolicy";
-export * from "./project";
-export * from "./projectIamPolicy";
+export { GetLienArgs, GetLienResult, GetLienOutputArgs } from "./getLien";
+export const getLien: typeof import("./getLien").getLien = null as any;
+export const getLienOutput: typeof import("./getLien").getLienOutput = null as any;
+
+export { GetOrganizationIamPolicyArgs, GetOrganizationIamPolicyResult, GetOrganizationIamPolicyOutputArgs } from "./getOrganizationIamPolicy";
+export const getOrganizationIamPolicy: typeof import("./getOrganizationIamPolicy").getOrganizationIamPolicy = null as any;
+export const getOrganizationIamPolicyOutput: typeof import("./getOrganizationIamPolicy").getOrganizationIamPolicyOutput = null as any;
+
+export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
+export const getProject: typeof import("./getProject").getProject = null as any;
+export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
+
+export { GetProjectIamPolicyArgs, GetProjectIamPolicyResult, GetProjectIamPolicyOutputArgs } from "./getProjectIamPolicy";
+export const getProjectIamPolicy: typeof import("./getProjectIamPolicy").getProjectIamPolicy = null as any;
+export const getProjectIamPolicyOutput: typeof import("./getProjectIamPolicy").getProjectIamPolicyOutput = null as any;
+
+export { LienArgs } from "./lien";
+export type Lien = import("./lien").Lien;
+export const Lien: typeof import("./lien").Lien = null as any;
+
+export { OrganizationIamPolicyArgs } from "./organizationIamPolicy";
+export type OrganizationIamPolicy = import("./organizationIamPolicy").OrganizationIamPolicy;
+export const OrganizationIamPolicy: typeof import("./organizationIamPolicy").OrganizationIamPolicy = null as any;
+
+export { ProjectArgs } from "./project";
+export type Project = import("./project").Project;
+export const Project: typeof import("./project").Project = null as any;
+
+export { ProjectIamPolicyArgs } from "./projectIamPolicy";
+export type ProjectIamPolicy = import("./projectIamPolicy").ProjectIamPolicy;
+export const ProjectIamPolicy: typeof import("./projectIamPolicy").ProjectIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["getLien","getLienOutput"], () => require("./getLien"));
+utilities.lazyLoad(exports, ["getOrganizationIamPolicy","getOrganizationIamPolicyOutput"], () => require("./getOrganizationIamPolicy"));
+utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
+utilities.lazyLoad(exports, ["getProjectIamPolicy","getProjectIamPolicyOutput"], () => require("./getProjectIamPolicy"));
+utilities.lazyLoad(exports, ["Lien"], () => require("./lien"));
+utilities.lazyLoad(exports, ["OrganizationIamPolicy"], () => require("./organizationIamPolicy"));
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+utilities.lazyLoad(exports, ["ProjectIamPolicy"], () => require("./projectIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/cloudresourcemanager/v1";
-
-// Import resources to register:
-import { Lien } from "./lien";
-import { OrganizationIamPolicy } from "./organizationIamPolicy";
-import { Project } from "./project";
-import { ProjectIamPolicy } from "./projectIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

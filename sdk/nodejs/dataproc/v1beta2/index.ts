@@ -5,44 +5,119 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./autoscalingPolicy";
-export * from "./autoscalingPolicyIamPolicy";
-export * from "./cluster";
-export * from "./getAutoscalingPolicy";
-export * from "./getAutoscalingPolicyIamPolicy";
-export * from "./getCluster";
-export * from "./getJob";
-export * from "./getRegionAutoscalingPolicyIamPolicy";
-export * from "./getRegionClusterIamPolicy";
-export * from "./getRegionJobIamPolicy";
-export * from "./getRegionOperationIamPolicy";
-export * from "./getRegionWorkflowTemplateIamPolicy";
-export * from "./getWorkflowTemplate";
-export * from "./getWorkflowTemplateIamPolicy";
-export * from "./job";
-export * from "./regionAutoscalingPolicyIamPolicy";
-export * from "./regionClusterIamPolicy";
-export * from "./regionJobIamPolicy";
-export * from "./regionOperationIamPolicy";
-export * from "./regionWorkflowTemplateIamPolicy";
-export * from "./workflowTemplate";
-export * from "./workflowTemplateIamPolicy";
+export { AutoscalingPolicyArgs } from "./autoscalingPolicy";
+export type AutoscalingPolicy = import("./autoscalingPolicy").AutoscalingPolicy;
+export const AutoscalingPolicy: typeof import("./autoscalingPolicy").AutoscalingPolicy = null as any;
+
+export { AutoscalingPolicyIamPolicyArgs } from "./autoscalingPolicyIamPolicy";
+export type AutoscalingPolicyIamPolicy = import("./autoscalingPolicyIamPolicy").AutoscalingPolicyIamPolicy;
+export const AutoscalingPolicyIamPolicy: typeof import("./autoscalingPolicyIamPolicy").AutoscalingPolicyIamPolicy = null as any;
+
+export { ClusterArgs } from "./cluster";
+export type Cluster = import("./cluster").Cluster;
+export const Cluster: typeof import("./cluster").Cluster = null as any;
+
+export { GetAutoscalingPolicyArgs, GetAutoscalingPolicyResult, GetAutoscalingPolicyOutputArgs } from "./getAutoscalingPolicy";
+export const getAutoscalingPolicy: typeof import("./getAutoscalingPolicy").getAutoscalingPolicy = null as any;
+export const getAutoscalingPolicyOutput: typeof import("./getAutoscalingPolicy").getAutoscalingPolicyOutput = null as any;
+
+export { GetAutoscalingPolicyIamPolicyArgs, GetAutoscalingPolicyIamPolicyResult, GetAutoscalingPolicyIamPolicyOutputArgs } from "./getAutoscalingPolicyIamPolicy";
+export const getAutoscalingPolicyIamPolicy: typeof import("./getAutoscalingPolicyIamPolicy").getAutoscalingPolicyIamPolicy = null as any;
+export const getAutoscalingPolicyIamPolicyOutput: typeof import("./getAutoscalingPolicyIamPolicy").getAutoscalingPolicyIamPolicyOutput = null as any;
+
+export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getCluster";
+export const getCluster: typeof import("./getCluster").getCluster = null as any;
+export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
+
+export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
+export const getJob: typeof import("./getJob").getJob = null as any;
+export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
+
+export { GetRegionAutoscalingPolicyIamPolicyArgs, GetRegionAutoscalingPolicyIamPolicyResult, GetRegionAutoscalingPolicyIamPolicyOutputArgs } from "./getRegionAutoscalingPolicyIamPolicy";
+export const getRegionAutoscalingPolicyIamPolicy: typeof import("./getRegionAutoscalingPolicyIamPolicy").getRegionAutoscalingPolicyIamPolicy = null as any;
+export const getRegionAutoscalingPolicyIamPolicyOutput: typeof import("./getRegionAutoscalingPolicyIamPolicy").getRegionAutoscalingPolicyIamPolicyOutput = null as any;
+
+export { GetRegionClusterIamPolicyArgs, GetRegionClusterIamPolicyResult, GetRegionClusterIamPolicyOutputArgs } from "./getRegionClusterIamPolicy";
+export const getRegionClusterIamPolicy: typeof import("./getRegionClusterIamPolicy").getRegionClusterIamPolicy = null as any;
+export const getRegionClusterIamPolicyOutput: typeof import("./getRegionClusterIamPolicy").getRegionClusterIamPolicyOutput = null as any;
+
+export { GetRegionJobIamPolicyArgs, GetRegionJobIamPolicyResult, GetRegionJobIamPolicyOutputArgs } from "./getRegionJobIamPolicy";
+export const getRegionJobIamPolicy: typeof import("./getRegionJobIamPolicy").getRegionJobIamPolicy = null as any;
+export const getRegionJobIamPolicyOutput: typeof import("./getRegionJobIamPolicy").getRegionJobIamPolicyOutput = null as any;
+
+export { GetRegionOperationIamPolicyArgs, GetRegionOperationIamPolicyResult, GetRegionOperationIamPolicyOutputArgs } from "./getRegionOperationIamPolicy";
+export const getRegionOperationIamPolicy: typeof import("./getRegionOperationIamPolicy").getRegionOperationIamPolicy = null as any;
+export const getRegionOperationIamPolicyOutput: typeof import("./getRegionOperationIamPolicy").getRegionOperationIamPolicyOutput = null as any;
+
+export { GetRegionWorkflowTemplateIamPolicyArgs, GetRegionWorkflowTemplateIamPolicyResult, GetRegionWorkflowTemplateIamPolicyOutputArgs } from "./getRegionWorkflowTemplateIamPolicy";
+export const getRegionWorkflowTemplateIamPolicy: typeof import("./getRegionWorkflowTemplateIamPolicy").getRegionWorkflowTemplateIamPolicy = null as any;
+export const getRegionWorkflowTemplateIamPolicyOutput: typeof import("./getRegionWorkflowTemplateIamPolicy").getRegionWorkflowTemplateIamPolicyOutput = null as any;
+
+export { GetWorkflowTemplateArgs, GetWorkflowTemplateResult, GetWorkflowTemplateOutputArgs } from "./getWorkflowTemplate";
+export const getWorkflowTemplate: typeof import("./getWorkflowTemplate").getWorkflowTemplate = null as any;
+export const getWorkflowTemplateOutput: typeof import("./getWorkflowTemplate").getWorkflowTemplateOutput = null as any;
+
+export { GetWorkflowTemplateIamPolicyArgs, GetWorkflowTemplateIamPolicyResult, GetWorkflowTemplateIamPolicyOutputArgs } from "./getWorkflowTemplateIamPolicy";
+export const getWorkflowTemplateIamPolicy: typeof import("./getWorkflowTemplateIamPolicy").getWorkflowTemplateIamPolicy = null as any;
+export const getWorkflowTemplateIamPolicyOutput: typeof import("./getWorkflowTemplateIamPolicy").getWorkflowTemplateIamPolicyOutput = null as any;
+
+export { JobArgs } from "./job";
+export type Job = import("./job").Job;
+export const Job: typeof import("./job").Job = null as any;
+
+export { RegionAutoscalingPolicyIamPolicyArgs } from "./regionAutoscalingPolicyIamPolicy";
+export type RegionAutoscalingPolicyIamPolicy = import("./regionAutoscalingPolicyIamPolicy").RegionAutoscalingPolicyIamPolicy;
+export const RegionAutoscalingPolicyIamPolicy: typeof import("./regionAutoscalingPolicyIamPolicy").RegionAutoscalingPolicyIamPolicy = null as any;
+
+export { RegionClusterIamPolicyArgs } from "./regionClusterIamPolicy";
+export type RegionClusterIamPolicy = import("./regionClusterIamPolicy").RegionClusterIamPolicy;
+export const RegionClusterIamPolicy: typeof import("./regionClusterIamPolicy").RegionClusterIamPolicy = null as any;
+
+export { RegionJobIamPolicyArgs } from "./regionJobIamPolicy";
+export type RegionJobIamPolicy = import("./regionJobIamPolicy").RegionJobIamPolicy;
+export const RegionJobIamPolicy: typeof import("./regionJobIamPolicy").RegionJobIamPolicy = null as any;
+
+export { RegionOperationIamPolicyArgs } from "./regionOperationIamPolicy";
+export type RegionOperationIamPolicy = import("./regionOperationIamPolicy").RegionOperationIamPolicy;
+export const RegionOperationIamPolicy: typeof import("./regionOperationIamPolicy").RegionOperationIamPolicy = null as any;
+
+export { RegionWorkflowTemplateIamPolicyArgs } from "./regionWorkflowTemplateIamPolicy";
+export type RegionWorkflowTemplateIamPolicy = import("./regionWorkflowTemplateIamPolicy").RegionWorkflowTemplateIamPolicy;
+export const RegionWorkflowTemplateIamPolicy: typeof import("./regionWorkflowTemplateIamPolicy").RegionWorkflowTemplateIamPolicy = null as any;
+
+export { WorkflowTemplateArgs } from "./workflowTemplate";
+export type WorkflowTemplate = import("./workflowTemplate").WorkflowTemplate;
+export const WorkflowTemplate: typeof import("./workflowTemplate").WorkflowTemplate = null as any;
+
+export { WorkflowTemplateIamPolicyArgs } from "./workflowTemplateIamPolicy";
+export type WorkflowTemplateIamPolicy = import("./workflowTemplateIamPolicy").WorkflowTemplateIamPolicy;
+export const WorkflowTemplateIamPolicy: typeof import("./workflowTemplateIamPolicy").WorkflowTemplateIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["AutoscalingPolicy"], () => require("./autoscalingPolicy"));
+utilities.lazyLoad(exports, ["AutoscalingPolicyIamPolicy"], () => require("./autoscalingPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
+utilities.lazyLoad(exports, ["getAutoscalingPolicy","getAutoscalingPolicyOutput"], () => require("./getAutoscalingPolicy"));
+utilities.lazyLoad(exports, ["getAutoscalingPolicyIamPolicy","getAutoscalingPolicyIamPolicyOutput"], () => require("./getAutoscalingPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
+utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
+utilities.lazyLoad(exports, ["getRegionAutoscalingPolicyIamPolicy","getRegionAutoscalingPolicyIamPolicyOutput"], () => require("./getRegionAutoscalingPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["getRegionClusterIamPolicy","getRegionClusterIamPolicyOutput"], () => require("./getRegionClusterIamPolicy"));
+utilities.lazyLoad(exports, ["getRegionJobIamPolicy","getRegionJobIamPolicyOutput"], () => require("./getRegionJobIamPolicy"));
+utilities.lazyLoad(exports, ["getRegionOperationIamPolicy","getRegionOperationIamPolicyOutput"], () => require("./getRegionOperationIamPolicy"));
+utilities.lazyLoad(exports, ["getRegionWorkflowTemplateIamPolicy","getRegionWorkflowTemplateIamPolicyOutput"], () => require("./getRegionWorkflowTemplateIamPolicy"));
+utilities.lazyLoad(exports, ["getWorkflowTemplate","getWorkflowTemplateOutput"], () => require("./getWorkflowTemplate"));
+utilities.lazyLoad(exports, ["getWorkflowTemplateIamPolicy","getWorkflowTemplateIamPolicyOutput"], () => require("./getWorkflowTemplateIamPolicy"));
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
+utilities.lazyLoad(exports, ["RegionAutoscalingPolicyIamPolicy"], () => require("./regionAutoscalingPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["RegionClusterIamPolicy"], () => require("./regionClusterIamPolicy"));
+utilities.lazyLoad(exports, ["RegionJobIamPolicy"], () => require("./regionJobIamPolicy"));
+utilities.lazyLoad(exports, ["RegionOperationIamPolicy"], () => require("./regionOperationIamPolicy"));
+utilities.lazyLoad(exports, ["RegionWorkflowTemplateIamPolicy"], () => require("./regionWorkflowTemplateIamPolicy"));
+utilities.lazyLoad(exports, ["WorkflowTemplate"], () => require("./workflowTemplate"));
+utilities.lazyLoad(exports, ["WorkflowTemplateIamPolicy"], () => require("./workflowTemplateIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/dataproc/v1beta2";
-
-// Import resources to register:
-import { AutoscalingPolicy } from "./autoscalingPolicy";
-import { AutoscalingPolicyIamPolicy } from "./autoscalingPolicyIamPolicy";
-import { Cluster } from "./cluster";
-import { Job } from "./job";
-import { RegionAutoscalingPolicyIamPolicy } from "./regionAutoscalingPolicyIamPolicy";
-import { RegionClusterIamPolicy } from "./regionClusterIamPolicy";
-import { RegionJobIamPolicy } from "./regionJobIamPolicy";
-import { RegionOperationIamPolicy } from "./regionOperationIamPolicy";
-import { RegionWorkflowTemplateIamPolicy } from "./regionWorkflowTemplateIamPolicy";
-import { WorkflowTemplate } from "./workflowTemplate";
-import { WorkflowTemplateIamPolicy } from "./workflowTemplateIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

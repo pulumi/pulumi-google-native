@@ -5,20 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./device";
-export * from "./getDevice";
-export * from "./getGroup";
-export * from "./getMembership";
-export * from "./group";
-export * from "./membership";
+export { DeviceArgs } from "./device";
+export type Device = import("./device").Device;
+export const Device: typeof import("./device").Device = null as any;
+
+export { GetDeviceArgs, GetDeviceResult, GetDeviceOutputArgs } from "./getDevice";
+export const getDevice: typeof import("./getDevice").getDevice = null as any;
+export const getDeviceOutput: typeof import("./getDevice").getDeviceOutput = null as any;
+
+export { GetGroupArgs, GetGroupResult, GetGroupOutputArgs } from "./getGroup";
+export const getGroup: typeof import("./getGroup").getGroup = null as any;
+export const getGroupOutput: typeof import("./getGroup").getGroupOutput = null as any;
+
+export { GetMembershipArgs, GetMembershipResult, GetMembershipOutputArgs } from "./getMembership";
+export const getMembership: typeof import("./getMembership").getMembership = null as any;
+export const getMembershipOutput: typeof import("./getMembership").getMembershipOutput = null as any;
+
+export { GroupArgs } from "./group";
+export type Group = import("./group").Group;
+export const Group: typeof import("./group").Group = null as any;
+
+export { MembershipArgs } from "./membership";
+export type Membership = import("./membership").Membership;
+export const Membership: typeof import("./membership").Membership = null as any;
+
+utilities.lazyLoad(exports, ["Device"], () => require("./device"));
+utilities.lazyLoad(exports, ["getDevice","getDeviceOutput"], () => require("./getDevice"));
+utilities.lazyLoad(exports, ["getGroup","getGroupOutput"], () => require("./getGroup"));
+utilities.lazyLoad(exports, ["getMembership","getMembershipOutput"], () => require("./getMembership"));
+utilities.lazyLoad(exports, ["Group"], () => require("./group"));
+utilities.lazyLoad(exports, ["Membership"], () => require("./membership"));
 
 // Export enums:
 export * from "../../types/enums/cloudidentity/v1";
-
-// Import resources to register:
-import { Device } from "./device";
-import { Group } from "./group";
-import { Membership } from "./membership";
 
 const _module = {
     version: utilities.getVersion(),

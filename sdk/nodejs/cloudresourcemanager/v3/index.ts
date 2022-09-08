@@ -5,41 +5,109 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./folder";
-export * from "./folderIamPolicy";
-export * from "./getFolder";
-export * from "./getFolderIamPolicy";
-export * from "./getLien";
-export * from "./getOrganizationIamPolicy";
-export * from "./getProject";
-export * from "./getProjectIamPolicy";
-export * from "./getTagKey";
-export * from "./getTagKeyIamPolicy";
-export * from "./getTagValue";
-export * from "./getTagValueIamPolicy";
-export * from "./lien";
-export * from "./organizationIamPolicy";
-export * from "./project";
-export * from "./projectIamPolicy";
-export * from "./tagKey";
-export * from "./tagKeyIamPolicy";
-export * from "./tagValue";
-export * from "./tagValueIamPolicy";
+export { FolderArgs } from "./folder";
+export type Folder = import("./folder").Folder;
+export const Folder: typeof import("./folder").Folder = null as any;
+
+export { FolderIamPolicyArgs } from "./folderIamPolicy";
+export type FolderIamPolicy = import("./folderIamPolicy").FolderIamPolicy;
+export const FolderIamPolicy: typeof import("./folderIamPolicy").FolderIamPolicy = null as any;
+
+export { GetFolderArgs, GetFolderResult, GetFolderOutputArgs } from "./getFolder";
+export const getFolder: typeof import("./getFolder").getFolder = null as any;
+export const getFolderOutput: typeof import("./getFolder").getFolderOutput = null as any;
+
+export { GetFolderIamPolicyArgs, GetFolderIamPolicyResult, GetFolderIamPolicyOutputArgs } from "./getFolderIamPolicy";
+export const getFolderIamPolicy: typeof import("./getFolderIamPolicy").getFolderIamPolicy = null as any;
+export const getFolderIamPolicyOutput: typeof import("./getFolderIamPolicy").getFolderIamPolicyOutput = null as any;
+
+export { GetLienArgs, GetLienResult, GetLienOutputArgs } from "./getLien";
+export const getLien: typeof import("./getLien").getLien = null as any;
+export const getLienOutput: typeof import("./getLien").getLienOutput = null as any;
+
+export { GetOrganizationIamPolicyArgs, GetOrganizationIamPolicyResult, GetOrganizationIamPolicyOutputArgs } from "./getOrganizationIamPolicy";
+export const getOrganizationIamPolicy: typeof import("./getOrganizationIamPolicy").getOrganizationIamPolicy = null as any;
+export const getOrganizationIamPolicyOutput: typeof import("./getOrganizationIamPolicy").getOrganizationIamPolicyOutput = null as any;
+
+export { GetProjectArgs, GetProjectResult, GetProjectOutputArgs } from "./getProject";
+export const getProject: typeof import("./getProject").getProject = null as any;
+export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
+
+export { GetProjectIamPolicyArgs, GetProjectIamPolicyResult, GetProjectIamPolicyOutputArgs } from "./getProjectIamPolicy";
+export const getProjectIamPolicy: typeof import("./getProjectIamPolicy").getProjectIamPolicy = null as any;
+export const getProjectIamPolicyOutput: typeof import("./getProjectIamPolicy").getProjectIamPolicyOutput = null as any;
+
+export { GetTagKeyArgs, GetTagKeyResult, GetTagKeyOutputArgs } from "./getTagKey";
+export const getTagKey: typeof import("./getTagKey").getTagKey = null as any;
+export const getTagKeyOutput: typeof import("./getTagKey").getTagKeyOutput = null as any;
+
+export { GetTagKeyIamPolicyArgs, GetTagKeyIamPolicyResult, GetTagKeyIamPolicyOutputArgs } from "./getTagKeyIamPolicy";
+export const getTagKeyIamPolicy: typeof import("./getTagKeyIamPolicy").getTagKeyIamPolicy = null as any;
+export const getTagKeyIamPolicyOutput: typeof import("./getTagKeyIamPolicy").getTagKeyIamPolicyOutput = null as any;
+
+export { GetTagValueArgs, GetTagValueResult, GetTagValueOutputArgs } from "./getTagValue";
+export const getTagValue: typeof import("./getTagValue").getTagValue = null as any;
+export const getTagValueOutput: typeof import("./getTagValue").getTagValueOutput = null as any;
+
+export { GetTagValueIamPolicyArgs, GetTagValueIamPolicyResult, GetTagValueIamPolicyOutputArgs } from "./getTagValueIamPolicy";
+export const getTagValueIamPolicy: typeof import("./getTagValueIamPolicy").getTagValueIamPolicy = null as any;
+export const getTagValueIamPolicyOutput: typeof import("./getTagValueIamPolicy").getTagValueIamPolicyOutput = null as any;
+
+export { LienArgs } from "./lien";
+export type Lien = import("./lien").Lien;
+export const Lien: typeof import("./lien").Lien = null as any;
+
+export { OrganizationIamPolicyArgs } from "./organizationIamPolicy";
+export type OrganizationIamPolicy = import("./organizationIamPolicy").OrganizationIamPolicy;
+export const OrganizationIamPolicy: typeof import("./organizationIamPolicy").OrganizationIamPolicy = null as any;
+
+export { ProjectArgs } from "./project";
+export type Project = import("./project").Project;
+export const Project: typeof import("./project").Project = null as any;
+
+export { ProjectIamPolicyArgs } from "./projectIamPolicy";
+export type ProjectIamPolicy = import("./projectIamPolicy").ProjectIamPolicy;
+export const ProjectIamPolicy: typeof import("./projectIamPolicy").ProjectIamPolicy = null as any;
+
+export { TagKeyArgs } from "./tagKey";
+export type TagKey = import("./tagKey").TagKey;
+export const TagKey: typeof import("./tagKey").TagKey = null as any;
+
+export { TagKeyIamPolicyArgs } from "./tagKeyIamPolicy";
+export type TagKeyIamPolicy = import("./tagKeyIamPolicy").TagKeyIamPolicy;
+export const TagKeyIamPolicy: typeof import("./tagKeyIamPolicy").TagKeyIamPolicy = null as any;
+
+export { TagValueArgs } from "./tagValue";
+export type TagValue = import("./tagValue").TagValue;
+export const TagValue: typeof import("./tagValue").TagValue = null as any;
+
+export { TagValueIamPolicyArgs } from "./tagValueIamPolicy";
+export type TagValueIamPolicy = import("./tagValueIamPolicy").TagValueIamPolicy;
+export const TagValueIamPolicy: typeof import("./tagValueIamPolicy").TagValueIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["Folder"], () => require("./folder"));
+utilities.lazyLoad(exports, ["FolderIamPolicy"], () => require("./folderIamPolicy"));
+utilities.lazyLoad(exports, ["getFolder","getFolderOutput"], () => require("./getFolder"));
+utilities.lazyLoad(exports, ["getFolderIamPolicy","getFolderIamPolicyOutput"], () => require("./getFolderIamPolicy"));
+utilities.lazyLoad(exports, ["getLien","getLienOutput"], () => require("./getLien"));
+utilities.lazyLoad(exports, ["getOrganizationIamPolicy","getOrganizationIamPolicyOutput"], () => require("./getOrganizationIamPolicy"));
+utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
+utilities.lazyLoad(exports, ["getProjectIamPolicy","getProjectIamPolicyOutput"], () => require("./getProjectIamPolicy"));
+utilities.lazyLoad(exports, ["getTagKey","getTagKeyOutput"], () => require("./getTagKey"));
+utilities.lazyLoad(exports, ["getTagKeyIamPolicy","getTagKeyIamPolicyOutput"], () => require("./getTagKeyIamPolicy"));
+utilities.lazyLoad(exports, ["getTagValue","getTagValueOutput"], () => require("./getTagValue"));
+utilities.lazyLoad(exports, ["getTagValueIamPolicy","getTagValueIamPolicyOutput"], () => require("./getTagValueIamPolicy"));
+utilities.lazyLoad(exports, ["Lien"], () => require("./lien"));
+utilities.lazyLoad(exports, ["OrganizationIamPolicy"], () => require("./organizationIamPolicy"));
+utilities.lazyLoad(exports, ["Project"], () => require("./project"));
+utilities.lazyLoad(exports, ["ProjectIamPolicy"], () => require("./projectIamPolicy"));
+utilities.lazyLoad(exports, ["TagKey"], () => require("./tagKey"));
+utilities.lazyLoad(exports, ["TagKeyIamPolicy"], () => require("./tagKeyIamPolicy"));
+utilities.lazyLoad(exports, ["TagValue"], () => require("./tagValue"));
+utilities.lazyLoad(exports, ["TagValueIamPolicy"], () => require("./tagValueIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/cloudresourcemanager/v3";
-
-// Import resources to register:
-import { Folder } from "./folder";
-import { FolderIamPolicy } from "./folderIamPolicy";
-import { Lien } from "./lien";
-import { OrganizationIamPolicy } from "./organizationIamPolicy";
-import { Project } from "./project";
-import { ProjectIamPolicy } from "./projectIamPolicy";
-import { TagKey } from "./tagKey";
-import { TagKeyIamPolicy } from "./tagKeyIamPolicy";
-import { TagValue } from "./tagValue";
-import { TagValueIamPolicy } from "./tagValueIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

@@ -5,23 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./execution";
-export * from "./getExecution";
-export * from "./getHistory";
-export * from "./getPerfSampleSeries";
-export * from "./getStep";
-export * from "./history";
-export * from "./perfSampleSeries";
-export * from "./step";
+export { ExecutionArgs } from "./execution";
+export type Execution = import("./execution").Execution;
+export const Execution: typeof import("./execution").Execution = null as any;
+
+export { GetExecutionArgs, GetExecutionResult, GetExecutionOutputArgs } from "./getExecution";
+export const getExecution: typeof import("./getExecution").getExecution = null as any;
+export const getExecutionOutput: typeof import("./getExecution").getExecutionOutput = null as any;
+
+export { GetHistoryArgs, GetHistoryResult, GetHistoryOutputArgs } from "./getHistory";
+export const getHistory: typeof import("./getHistory").getHistory = null as any;
+export const getHistoryOutput: typeof import("./getHistory").getHistoryOutput = null as any;
+
+export { GetPerfSampleSeriesArgs, GetPerfSampleSeriesResult, GetPerfSampleSeriesOutputArgs } from "./getPerfSampleSeries";
+export const getPerfSampleSeries: typeof import("./getPerfSampleSeries").getPerfSampleSeries = null as any;
+export const getPerfSampleSeriesOutput: typeof import("./getPerfSampleSeries").getPerfSampleSeriesOutput = null as any;
+
+export { GetStepArgs, GetStepResult, GetStepOutputArgs } from "./getStep";
+export const getStep: typeof import("./getStep").getStep = null as any;
+export const getStepOutput: typeof import("./getStep").getStepOutput = null as any;
+
+export { HistoryArgs } from "./history";
+export type History = import("./history").History;
+export const History: typeof import("./history").History = null as any;
+
+export { PerfSampleSeriesArgs } from "./perfSampleSeries";
+export type PerfSampleSeries = import("./perfSampleSeries").PerfSampleSeries;
+export const PerfSampleSeries: typeof import("./perfSampleSeries").PerfSampleSeries = null as any;
+
+export { StepArgs } from "./step";
+export type Step = import("./step").Step;
+export const Step: typeof import("./step").Step = null as any;
+
+utilities.lazyLoad(exports, ["Execution"], () => require("./execution"));
+utilities.lazyLoad(exports, ["getExecution","getExecutionOutput"], () => require("./getExecution"));
+utilities.lazyLoad(exports, ["getHistory","getHistoryOutput"], () => require("./getHistory"));
+utilities.lazyLoad(exports, ["getPerfSampleSeries","getPerfSampleSeriesOutput"], () => require("./getPerfSampleSeries"));
+utilities.lazyLoad(exports, ["getStep","getStepOutput"], () => require("./getStep"));
+utilities.lazyLoad(exports, ["History"], () => require("./history"));
+utilities.lazyLoad(exports, ["PerfSampleSeries"], () => require("./perfSampleSeries"));
+utilities.lazyLoad(exports, ["Step"], () => require("./step"));
 
 // Export enums:
 export * from "../../types/enums/toolresults/v1beta3";
-
-// Import resources to register:
-import { Execution } from "./execution";
-import { History } from "./history";
-import { PerfSampleSeries } from "./perfSampleSeries";
-import { Step } from "./step";
 
 const _module = {
     version: utilities.getVersion(),

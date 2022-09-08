@@ -5,62 +5,179 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./billingAccountBucket";
-export * from "./billingAccountBucketView";
-export * from "./billingAccountExclusion";
-export * from "./billingAccountSink";
-export * from "./bucket";
-export * from "./bucketView";
-export * from "./exclusion";
-export * from "./folderBucket";
-export * from "./folderBucketView";
-export * from "./folderExclusion";
-export * from "./folderSink";
-export * from "./getBillingAccountBucket";
-export * from "./getBillingAccountBucketView";
-export * from "./getBillingAccountExclusion";
-export * from "./getBillingAccountSink";
-export * from "./getBucket";
-export * from "./getBucketView";
-export * from "./getExclusion";
-export * from "./getFolderBucket";
-export * from "./getFolderBucketView";
-export * from "./getFolderExclusion";
-export * from "./getFolderSink";
-export * from "./getMetric";
-export * from "./getOrganizationBucket";
-export * from "./getOrganizationBucketView";
-export * from "./getOrganizationExclusion";
-export * from "./getOrganizationSink";
-export * from "./getSink";
-export * from "./metric";
-export * from "./organizationBucket";
-export * from "./organizationBucketView";
-export * from "./organizationExclusion";
-export * from "./organizationSink";
-export * from "./sink";
+export { BillingAccountBucketArgs } from "./billingAccountBucket";
+export type BillingAccountBucket = import("./billingAccountBucket").BillingAccountBucket;
+export const BillingAccountBucket: typeof import("./billingAccountBucket").BillingAccountBucket = null as any;
+
+export { BillingAccountBucketViewArgs } from "./billingAccountBucketView";
+export type BillingAccountBucketView = import("./billingAccountBucketView").BillingAccountBucketView;
+export const BillingAccountBucketView: typeof import("./billingAccountBucketView").BillingAccountBucketView = null as any;
+
+export { BillingAccountExclusionArgs } from "./billingAccountExclusion";
+export type BillingAccountExclusion = import("./billingAccountExclusion").BillingAccountExclusion;
+export const BillingAccountExclusion: typeof import("./billingAccountExclusion").BillingAccountExclusion = null as any;
+
+export { BillingAccountSinkArgs } from "./billingAccountSink";
+export type BillingAccountSink = import("./billingAccountSink").BillingAccountSink;
+export const BillingAccountSink: typeof import("./billingAccountSink").BillingAccountSink = null as any;
+
+export { BucketArgs } from "./bucket";
+export type Bucket = import("./bucket").Bucket;
+export const Bucket: typeof import("./bucket").Bucket = null as any;
+
+export { BucketViewArgs } from "./bucketView";
+export type BucketView = import("./bucketView").BucketView;
+export const BucketView: typeof import("./bucketView").BucketView = null as any;
+
+export { ExclusionArgs } from "./exclusion";
+export type Exclusion = import("./exclusion").Exclusion;
+export const Exclusion: typeof import("./exclusion").Exclusion = null as any;
+
+export { FolderBucketArgs } from "./folderBucket";
+export type FolderBucket = import("./folderBucket").FolderBucket;
+export const FolderBucket: typeof import("./folderBucket").FolderBucket = null as any;
+
+export { FolderBucketViewArgs } from "./folderBucketView";
+export type FolderBucketView = import("./folderBucketView").FolderBucketView;
+export const FolderBucketView: typeof import("./folderBucketView").FolderBucketView = null as any;
+
+export { FolderExclusionArgs } from "./folderExclusion";
+export type FolderExclusion = import("./folderExclusion").FolderExclusion;
+export const FolderExclusion: typeof import("./folderExclusion").FolderExclusion = null as any;
+
+export { FolderSinkArgs } from "./folderSink";
+export type FolderSink = import("./folderSink").FolderSink;
+export const FolderSink: typeof import("./folderSink").FolderSink = null as any;
+
+export { GetBillingAccountBucketArgs, GetBillingAccountBucketResult, GetBillingAccountBucketOutputArgs } from "./getBillingAccountBucket";
+export const getBillingAccountBucket: typeof import("./getBillingAccountBucket").getBillingAccountBucket = null as any;
+export const getBillingAccountBucketOutput: typeof import("./getBillingAccountBucket").getBillingAccountBucketOutput = null as any;
+
+export { GetBillingAccountBucketViewArgs, GetBillingAccountBucketViewResult, GetBillingAccountBucketViewOutputArgs } from "./getBillingAccountBucketView";
+export const getBillingAccountBucketView: typeof import("./getBillingAccountBucketView").getBillingAccountBucketView = null as any;
+export const getBillingAccountBucketViewOutput: typeof import("./getBillingAccountBucketView").getBillingAccountBucketViewOutput = null as any;
+
+export { GetBillingAccountExclusionArgs, GetBillingAccountExclusionResult, GetBillingAccountExclusionOutputArgs } from "./getBillingAccountExclusion";
+export const getBillingAccountExclusion: typeof import("./getBillingAccountExclusion").getBillingAccountExclusion = null as any;
+export const getBillingAccountExclusionOutput: typeof import("./getBillingAccountExclusion").getBillingAccountExclusionOutput = null as any;
+
+export { GetBillingAccountSinkArgs, GetBillingAccountSinkResult, GetBillingAccountSinkOutputArgs } from "./getBillingAccountSink";
+export const getBillingAccountSink: typeof import("./getBillingAccountSink").getBillingAccountSink = null as any;
+export const getBillingAccountSinkOutput: typeof import("./getBillingAccountSink").getBillingAccountSinkOutput = null as any;
+
+export { GetBucketArgs, GetBucketResult, GetBucketOutputArgs } from "./getBucket";
+export const getBucket: typeof import("./getBucket").getBucket = null as any;
+export const getBucketOutput: typeof import("./getBucket").getBucketOutput = null as any;
+
+export { GetBucketViewArgs, GetBucketViewResult, GetBucketViewOutputArgs } from "./getBucketView";
+export const getBucketView: typeof import("./getBucketView").getBucketView = null as any;
+export const getBucketViewOutput: typeof import("./getBucketView").getBucketViewOutput = null as any;
+
+export { GetExclusionArgs, GetExclusionResult, GetExclusionOutputArgs } from "./getExclusion";
+export const getExclusion: typeof import("./getExclusion").getExclusion = null as any;
+export const getExclusionOutput: typeof import("./getExclusion").getExclusionOutput = null as any;
+
+export { GetFolderBucketArgs, GetFolderBucketResult, GetFolderBucketOutputArgs } from "./getFolderBucket";
+export const getFolderBucket: typeof import("./getFolderBucket").getFolderBucket = null as any;
+export const getFolderBucketOutput: typeof import("./getFolderBucket").getFolderBucketOutput = null as any;
+
+export { GetFolderBucketViewArgs, GetFolderBucketViewResult, GetFolderBucketViewOutputArgs } from "./getFolderBucketView";
+export const getFolderBucketView: typeof import("./getFolderBucketView").getFolderBucketView = null as any;
+export const getFolderBucketViewOutput: typeof import("./getFolderBucketView").getFolderBucketViewOutput = null as any;
+
+export { GetFolderExclusionArgs, GetFolderExclusionResult, GetFolderExclusionOutputArgs } from "./getFolderExclusion";
+export const getFolderExclusion: typeof import("./getFolderExclusion").getFolderExclusion = null as any;
+export const getFolderExclusionOutput: typeof import("./getFolderExclusion").getFolderExclusionOutput = null as any;
+
+export { GetFolderSinkArgs, GetFolderSinkResult, GetFolderSinkOutputArgs } from "./getFolderSink";
+export const getFolderSink: typeof import("./getFolderSink").getFolderSink = null as any;
+export const getFolderSinkOutput: typeof import("./getFolderSink").getFolderSinkOutput = null as any;
+
+export { GetMetricArgs, GetMetricResult, GetMetricOutputArgs } from "./getMetric";
+export const getMetric: typeof import("./getMetric").getMetric = null as any;
+export const getMetricOutput: typeof import("./getMetric").getMetricOutput = null as any;
+
+export { GetOrganizationBucketArgs, GetOrganizationBucketResult, GetOrganizationBucketOutputArgs } from "./getOrganizationBucket";
+export const getOrganizationBucket: typeof import("./getOrganizationBucket").getOrganizationBucket = null as any;
+export const getOrganizationBucketOutput: typeof import("./getOrganizationBucket").getOrganizationBucketOutput = null as any;
+
+export { GetOrganizationBucketViewArgs, GetOrganizationBucketViewResult, GetOrganizationBucketViewOutputArgs } from "./getOrganizationBucketView";
+export const getOrganizationBucketView: typeof import("./getOrganizationBucketView").getOrganizationBucketView = null as any;
+export const getOrganizationBucketViewOutput: typeof import("./getOrganizationBucketView").getOrganizationBucketViewOutput = null as any;
+
+export { GetOrganizationExclusionArgs, GetOrganizationExclusionResult, GetOrganizationExclusionOutputArgs } from "./getOrganizationExclusion";
+export const getOrganizationExclusion: typeof import("./getOrganizationExclusion").getOrganizationExclusion = null as any;
+export const getOrganizationExclusionOutput: typeof import("./getOrganizationExclusion").getOrganizationExclusionOutput = null as any;
+
+export { GetOrganizationSinkArgs, GetOrganizationSinkResult, GetOrganizationSinkOutputArgs } from "./getOrganizationSink";
+export const getOrganizationSink: typeof import("./getOrganizationSink").getOrganizationSink = null as any;
+export const getOrganizationSinkOutput: typeof import("./getOrganizationSink").getOrganizationSinkOutput = null as any;
+
+export { GetSinkArgs, GetSinkResult, GetSinkOutputArgs } from "./getSink";
+export const getSink: typeof import("./getSink").getSink = null as any;
+export const getSinkOutput: typeof import("./getSink").getSinkOutput = null as any;
+
+export { MetricArgs } from "./metric";
+export type Metric = import("./metric").Metric;
+export const Metric: typeof import("./metric").Metric = null as any;
+
+export { OrganizationBucketArgs } from "./organizationBucket";
+export type OrganizationBucket = import("./organizationBucket").OrganizationBucket;
+export const OrganizationBucket: typeof import("./organizationBucket").OrganizationBucket = null as any;
+
+export { OrganizationBucketViewArgs } from "./organizationBucketView";
+export type OrganizationBucketView = import("./organizationBucketView").OrganizationBucketView;
+export const OrganizationBucketView: typeof import("./organizationBucketView").OrganizationBucketView = null as any;
+
+export { OrganizationExclusionArgs } from "./organizationExclusion";
+export type OrganizationExclusion = import("./organizationExclusion").OrganizationExclusion;
+export const OrganizationExclusion: typeof import("./organizationExclusion").OrganizationExclusion = null as any;
+
+export { OrganizationSinkArgs } from "./organizationSink";
+export type OrganizationSink = import("./organizationSink").OrganizationSink;
+export const OrganizationSink: typeof import("./organizationSink").OrganizationSink = null as any;
+
+export { SinkArgs } from "./sink";
+export type Sink = import("./sink").Sink;
+export const Sink: typeof import("./sink").Sink = null as any;
+
+utilities.lazyLoad(exports, ["BillingAccountBucket"], () => require("./billingAccountBucket"));
+utilities.lazyLoad(exports, ["BillingAccountBucketView"], () => require("./billingAccountBucketView"));
+utilities.lazyLoad(exports, ["BillingAccountExclusion"], () => require("./billingAccountExclusion"));
+utilities.lazyLoad(exports, ["BillingAccountSink"], () => require("./billingAccountSink"));
+utilities.lazyLoad(exports, ["Bucket"], () => require("./bucket"));
+utilities.lazyLoad(exports, ["BucketView"], () => require("./bucketView"));
+utilities.lazyLoad(exports, ["Exclusion"], () => require("./exclusion"));
+utilities.lazyLoad(exports, ["FolderBucket"], () => require("./folderBucket"));
+utilities.lazyLoad(exports, ["FolderBucketView"], () => require("./folderBucketView"));
+utilities.lazyLoad(exports, ["FolderExclusion"], () => require("./folderExclusion"));
+utilities.lazyLoad(exports, ["FolderSink"], () => require("./folderSink"));
+utilities.lazyLoad(exports, ["getBillingAccountBucket","getBillingAccountBucketOutput"], () => require("./getBillingAccountBucket"));
+utilities.lazyLoad(exports, ["getBillingAccountBucketView","getBillingAccountBucketViewOutput"], () => require("./getBillingAccountBucketView"));
+utilities.lazyLoad(exports, ["getBillingAccountExclusion","getBillingAccountExclusionOutput"], () => require("./getBillingAccountExclusion"));
+utilities.lazyLoad(exports, ["getBillingAccountSink","getBillingAccountSinkOutput"], () => require("./getBillingAccountSink"));
+utilities.lazyLoad(exports, ["getBucket","getBucketOutput"], () => require("./getBucket"));
+utilities.lazyLoad(exports, ["getBucketView","getBucketViewOutput"], () => require("./getBucketView"));
+utilities.lazyLoad(exports, ["getExclusion","getExclusionOutput"], () => require("./getExclusion"));
+utilities.lazyLoad(exports, ["getFolderBucket","getFolderBucketOutput"], () => require("./getFolderBucket"));
+utilities.lazyLoad(exports, ["getFolderBucketView","getFolderBucketViewOutput"], () => require("./getFolderBucketView"));
+utilities.lazyLoad(exports, ["getFolderExclusion","getFolderExclusionOutput"], () => require("./getFolderExclusion"));
+utilities.lazyLoad(exports, ["getFolderSink","getFolderSinkOutput"], () => require("./getFolderSink"));
+utilities.lazyLoad(exports, ["getMetric","getMetricOutput"], () => require("./getMetric"));
+utilities.lazyLoad(exports, ["getOrganizationBucket","getOrganizationBucketOutput"], () => require("./getOrganizationBucket"));
+utilities.lazyLoad(exports, ["getOrganizationBucketView","getOrganizationBucketViewOutput"], () => require("./getOrganizationBucketView"));
+utilities.lazyLoad(exports, ["getOrganizationExclusion","getOrganizationExclusionOutput"], () => require("./getOrganizationExclusion"));
+utilities.lazyLoad(exports, ["getOrganizationSink","getOrganizationSinkOutput"], () => require("./getOrganizationSink"));
+utilities.lazyLoad(exports, ["getSink","getSinkOutput"], () => require("./getSink"));
+utilities.lazyLoad(exports, ["Metric"], () => require("./metric"));
+utilities.lazyLoad(exports, ["OrganizationBucket"], () => require("./organizationBucket"));
+utilities.lazyLoad(exports, ["OrganizationBucketView"], () => require("./organizationBucketView"));
+utilities.lazyLoad(exports, ["OrganizationExclusion"], () => require("./organizationExclusion"));
+utilities.lazyLoad(exports, ["OrganizationSink"], () => require("./organizationSink"));
+utilities.lazyLoad(exports, ["Sink"], () => require("./sink"));
 
 // Export enums:
 export * from "../../types/enums/logging/v2";
-
-// Import resources to register:
-import { BillingAccountBucket } from "./billingAccountBucket";
-import { BillingAccountBucketView } from "./billingAccountBucketView";
-import { BillingAccountExclusion } from "./billingAccountExclusion";
-import { BillingAccountSink } from "./billingAccountSink";
-import { Bucket } from "./bucket";
-import { BucketView } from "./bucketView";
-import { Exclusion } from "./exclusion";
-import { FolderBucket } from "./folderBucket";
-import { FolderBucketView } from "./folderBucketView";
-import { FolderExclusion } from "./folderExclusion";
-import { FolderSink } from "./folderSink";
-import { Metric } from "./metric";
-import { OrganizationBucket } from "./organizationBucket";
-import { OrganizationBucketView } from "./organizationBucketView";
-import { OrganizationExclusion } from "./organizationExclusion";
-import { OrganizationSink } from "./organizationSink";
-import { Sink } from "./sink";
 
 const _module = {
     version: utilities.getVersion(),

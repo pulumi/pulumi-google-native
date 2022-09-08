@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./debugToken";
-export * from "./getDebugToken";
+export { DebugTokenArgs } from "./debugToken";
+export type DebugToken = import("./debugToken").DebugToken;
+export const DebugToken: typeof import("./debugToken").DebugToken = null as any;
 
-// Import resources to register:
-import { DebugToken } from "./debugToken";
+export { GetDebugTokenArgs, GetDebugTokenResult, GetDebugTokenOutputArgs } from "./getDebugToken";
+export const getDebugToken: typeof import("./getDebugToken").getDebugToken = null as any;
+export const getDebugTokenOutput: typeof import("./getDebugToken").getDebugTokenOutput = null as any;
+
+utilities.lazyLoad(exports, ["DebugToken"], () => require("./debugToken"));
+utilities.lazyLoad(exports, ["getDebugToken","getDebugTokenOutput"], () => require("./getDebugToken"));
 
 const _module = {
     version: utilities.getVersion(),
