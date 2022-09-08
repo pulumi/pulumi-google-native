@@ -5,29 +5,69 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./channel";
-export * from "./channelConnection";
-export * from "./channelConnectionIamPolicy";
-export * from "./channelIamPolicy";
-export * from "./getChannel";
-export * from "./getChannelConnection";
-export * from "./getChannelConnectionIamPolicy";
-export * from "./getChannelIamPolicy";
-export * from "./getTrigger";
-export * from "./getTriggerIamPolicy";
-export * from "./trigger";
-export * from "./triggerIamPolicy";
+export { ChannelArgs } from "./channel";
+export type Channel = import("./channel").Channel;
+export const Channel: typeof import("./channel").Channel = null as any;
+
+export { ChannelConnectionArgs } from "./channelConnection";
+export type ChannelConnection = import("./channelConnection").ChannelConnection;
+export const ChannelConnection: typeof import("./channelConnection").ChannelConnection = null as any;
+
+export { ChannelConnectionIamPolicyArgs } from "./channelConnectionIamPolicy";
+export type ChannelConnectionIamPolicy = import("./channelConnectionIamPolicy").ChannelConnectionIamPolicy;
+export const ChannelConnectionIamPolicy: typeof import("./channelConnectionIamPolicy").ChannelConnectionIamPolicy = null as any;
+
+export { ChannelIamPolicyArgs } from "./channelIamPolicy";
+export type ChannelIamPolicy = import("./channelIamPolicy").ChannelIamPolicy;
+export const ChannelIamPolicy: typeof import("./channelIamPolicy").ChannelIamPolicy = null as any;
+
+export { GetChannelArgs, GetChannelResult, GetChannelOutputArgs } from "./getChannel";
+export const getChannel: typeof import("./getChannel").getChannel = null as any;
+export const getChannelOutput: typeof import("./getChannel").getChannelOutput = null as any;
+
+export { GetChannelConnectionArgs, GetChannelConnectionResult, GetChannelConnectionOutputArgs } from "./getChannelConnection";
+export const getChannelConnection: typeof import("./getChannelConnection").getChannelConnection = null as any;
+export const getChannelConnectionOutput: typeof import("./getChannelConnection").getChannelConnectionOutput = null as any;
+
+export { GetChannelConnectionIamPolicyArgs, GetChannelConnectionIamPolicyResult, GetChannelConnectionIamPolicyOutputArgs } from "./getChannelConnectionIamPolicy";
+export const getChannelConnectionIamPolicy: typeof import("./getChannelConnectionIamPolicy").getChannelConnectionIamPolicy = null as any;
+export const getChannelConnectionIamPolicyOutput: typeof import("./getChannelConnectionIamPolicy").getChannelConnectionIamPolicyOutput = null as any;
+
+export { GetChannelIamPolicyArgs, GetChannelIamPolicyResult, GetChannelIamPolicyOutputArgs } from "./getChannelIamPolicy";
+export const getChannelIamPolicy: typeof import("./getChannelIamPolicy").getChannelIamPolicy = null as any;
+export const getChannelIamPolicyOutput: typeof import("./getChannelIamPolicy").getChannelIamPolicyOutput = null as any;
+
+export { GetTriggerArgs, GetTriggerResult, GetTriggerOutputArgs } from "./getTrigger";
+export const getTrigger: typeof import("./getTrigger").getTrigger = null as any;
+export const getTriggerOutput: typeof import("./getTrigger").getTriggerOutput = null as any;
+
+export { GetTriggerIamPolicyArgs, GetTriggerIamPolicyResult, GetTriggerIamPolicyOutputArgs } from "./getTriggerIamPolicy";
+export const getTriggerIamPolicy: typeof import("./getTriggerIamPolicy").getTriggerIamPolicy = null as any;
+export const getTriggerIamPolicyOutput: typeof import("./getTriggerIamPolicy").getTriggerIamPolicyOutput = null as any;
+
+export { TriggerArgs } from "./trigger";
+export type Trigger = import("./trigger").Trigger;
+export const Trigger: typeof import("./trigger").Trigger = null as any;
+
+export { TriggerIamPolicyArgs } from "./triggerIamPolicy";
+export type TriggerIamPolicy = import("./triggerIamPolicy").TriggerIamPolicy;
+export const TriggerIamPolicy: typeof import("./triggerIamPolicy").TriggerIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["Channel"], () => require("./channel"));
+utilities.lazyLoad(exports, ["ChannelConnection"], () => require("./channelConnection"));
+utilities.lazyLoad(exports, ["ChannelConnectionIamPolicy"], () => require("./channelConnectionIamPolicy"));
+utilities.lazyLoad(exports, ["ChannelIamPolicy"], () => require("./channelIamPolicy"));
+utilities.lazyLoad(exports, ["getChannel","getChannelOutput"], () => require("./getChannel"));
+utilities.lazyLoad(exports, ["getChannelConnection","getChannelConnectionOutput"], () => require("./getChannelConnection"));
+utilities.lazyLoad(exports, ["getChannelConnectionIamPolicy","getChannelConnectionIamPolicyOutput"], () => require("./getChannelConnectionIamPolicy"));
+utilities.lazyLoad(exports, ["getChannelIamPolicy","getChannelIamPolicyOutput"], () => require("./getChannelIamPolicy"));
+utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
+utilities.lazyLoad(exports, ["getTriggerIamPolicy","getTriggerIamPolicyOutput"], () => require("./getTriggerIamPolicy"));
+utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
+utilities.lazyLoad(exports, ["TriggerIamPolicy"], () => require("./triggerIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/eventarc/v1";
-
-// Import resources to register:
-import { Channel } from "./channel";
-import { ChannelConnection } from "./channelConnection";
-import { ChannelConnectionIamPolicy } from "./channelConnectionIamPolicy";
-import { ChannelIamPolicy } from "./channelIamPolicy";
-import { Trigger } from "./trigger";
-import { TriggerIamPolicy } from "./triggerIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

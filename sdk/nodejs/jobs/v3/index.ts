@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./company";
-export * from "./getCompany";
-export * from "./getJob";
-export * from "./job";
+export { CompanyArgs } from "./company";
+export type Company = import("./company").Company;
+export const Company: typeof import("./company").Company = null as any;
+
+export { GetCompanyArgs, GetCompanyResult, GetCompanyOutputArgs } from "./getCompany";
+export const getCompany: typeof import("./getCompany").getCompany = null as any;
+export const getCompanyOutput: typeof import("./getCompany").getCompanyOutput = null as any;
+
+export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
+export const getJob: typeof import("./getJob").getJob = null as any;
+export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
+
+export { JobArgs } from "./job";
+export type Job = import("./job").Job;
+export const Job: typeof import("./job").Job = null as any;
+
+utilities.lazyLoad(exports, ["Company"], () => require("./company"));
+utilities.lazyLoad(exports, ["getCompany","getCompanyOutput"], () => require("./getCompany"));
+utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
 
 // Export enums:
 export * from "../../types/enums/jobs/v3";
-
-// Import resources to register:
-import { Company } from "./company";
-import { Job } from "./job";
 
 const _module = {
     version: utilities.getVersion(),

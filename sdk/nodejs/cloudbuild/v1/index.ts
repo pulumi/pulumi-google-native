@@ -5,26 +5,59 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./bitbucketServerConfig";
-export * from "./build";
-export * from "./getBitbucketServerConfig";
-export * from "./getBuild";
-export * from "./getGithubEnterpriseConfig";
-export * from "./getTrigger";
-export * from "./getWorkerPool";
-export * from "./githubEnterpriseConfig";
-export * from "./trigger";
-export * from "./workerPool";
+export { BitbucketServerConfigArgs } from "./bitbucketServerConfig";
+export type BitbucketServerConfig = import("./bitbucketServerConfig").BitbucketServerConfig;
+export const BitbucketServerConfig: typeof import("./bitbucketServerConfig").BitbucketServerConfig = null as any;
+
+export { BuildArgs } from "./build";
+export type Build = import("./build").Build;
+export const Build: typeof import("./build").Build = null as any;
+
+export { GetBitbucketServerConfigArgs, GetBitbucketServerConfigResult, GetBitbucketServerConfigOutputArgs } from "./getBitbucketServerConfig";
+export const getBitbucketServerConfig: typeof import("./getBitbucketServerConfig").getBitbucketServerConfig = null as any;
+export const getBitbucketServerConfigOutput: typeof import("./getBitbucketServerConfig").getBitbucketServerConfigOutput = null as any;
+
+export { GetBuildArgs, GetBuildResult, GetBuildOutputArgs } from "./getBuild";
+export const getBuild: typeof import("./getBuild").getBuild = null as any;
+export const getBuildOutput: typeof import("./getBuild").getBuildOutput = null as any;
+
+export { GetGithubEnterpriseConfigArgs, GetGithubEnterpriseConfigResult, GetGithubEnterpriseConfigOutputArgs } from "./getGithubEnterpriseConfig";
+export const getGithubEnterpriseConfig: typeof import("./getGithubEnterpriseConfig").getGithubEnterpriseConfig = null as any;
+export const getGithubEnterpriseConfigOutput: typeof import("./getGithubEnterpriseConfig").getGithubEnterpriseConfigOutput = null as any;
+
+export { GetTriggerArgs, GetTriggerResult, GetTriggerOutputArgs } from "./getTrigger";
+export const getTrigger: typeof import("./getTrigger").getTrigger = null as any;
+export const getTriggerOutput: typeof import("./getTrigger").getTriggerOutput = null as any;
+
+export { GetWorkerPoolArgs, GetWorkerPoolResult, GetWorkerPoolOutputArgs } from "./getWorkerPool";
+export const getWorkerPool: typeof import("./getWorkerPool").getWorkerPool = null as any;
+export const getWorkerPoolOutput: typeof import("./getWorkerPool").getWorkerPoolOutput = null as any;
+
+export { GithubEnterpriseConfigArgs } from "./githubEnterpriseConfig";
+export type GithubEnterpriseConfig = import("./githubEnterpriseConfig").GithubEnterpriseConfig;
+export const GithubEnterpriseConfig: typeof import("./githubEnterpriseConfig").GithubEnterpriseConfig = null as any;
+
+export { TriggerArgs } from "./trigger";
+export type Trigger = import("./trigger").Trigger;
+export const Trigger: typeof import("./trigger").Trigger = null as any;
+
+export { WorkerPoolArgs } from "./workerPool";
+export type WorkerPool = import("./workerPool").WorkerPool;
+export const WorkerPool: typeof import("./workerPool").WorkerPool = null as any;
+
+utilities.lazyLoad(exports, ["BitbucketServerConfig"], () => require("./bitbucketServerConfig"));
+utilities.lazyLoad(exports, ["Build"], () => require("./build"));
+utilities.lazyLoad(exports, ["getBitbucketServerConfig","getBitbucketServerConfigOutput"], () => require("./getBitbucketServerConfig"));
+utilities.lazyLoad(exports, ["getBuild","getBuildOutput"], () => require("./getBuild"));
+utilities.lazyLoad(exports, ["getGithubEnterpriseConfig","getGithubEnterpriseConfigOutput"], () => require("./getGithubEnterpriseConfig"));
+utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
+utilities.lazyLoad(exports, ["getWorkerPool","getWorkerPoolOutput"], () => require("./getWorkerPool"));
+utilities.lazyLoad(exports, ["GithubEnterpriseConfig"], () => require("./githubEnterpriseConfig"));
+utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
+utilities.lazyLoad(exports, ["WorkerPool"], () => require("./workerPool"));
 
 // Export enums:
 export * from "../../types/enums/cloudbuild/v1";
-
-// Import resources to register:
-import { BitbucketServerConfig } from "./bitbucketServerConfig";
-import { Build } from "./build";
-import { GithubEnterpriseConfig } from "./githubEnterpriseConfig";
-import { Trigger } from "./trigger";
-import { WorkerPool } from "./workerPool";
 
 const _module = {
     version: utilities.getVersion(),

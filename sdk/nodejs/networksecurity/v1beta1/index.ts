@@ -5,29 +5,69 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./authorizationPolicy";
-export * from "./authorizationPolicyIamPolicy";
-export * from "./clientTlsPolicy";
-export * from "./clientTlsPolicyIamPolicy";
-export * from "./getAuthorizationPolicy";
-export * from "./getAuthorizationPolicyIamPolicy";
-export * from "./getClientTlsPolicy";
-export * from "./getClientTlsPolicyIamPolicy";
-export * from "./getServerTlsPolicy";
-export * from "./getServerTlsPolicyIamPolicy";
-export * from "./serverTlsPolicy";
-export * from "./serverTlsPolicyIamPolicy";
+export { AuthorizationPolicyArgs } from "./authorizationPolicy";
+export type AuthorizationPolicy = import("./authorizationPolicy").AuthorizationPolicy;
+export const AuthorizationPolicy: typeof import("./authorizationPolicy").AuthorizationPolicy = null as any;
+
+export { AuthorizationPolicyIamPolicyArgs } from "./authorizationPolicyIamPolicy";
+export type AuthorizationPolicyIamPolicy = import("./authorizationPolicyIamPolicy").AuthorizationPolicyIamPolicy;
+export const AuthorizationPolicyIamPolicy: typeof import("./authorizationPolicyIamPolicy").AuthorizationPolicyIamPolicy = null as any;
+
+export { ClientTlsPolicyArgs } from "./clientTlsPolicy";
+export type ClientTlsPolicy = import("./clientTlsPolicy").ClientTlsPolicy;
+export const ClientTlsPolicy: typeof import("./clientTlsPolicy").ClientTlsPolicy = null as any;
+
+export { ClientTlsPolicyIamPolicyArgs } from "./clientTlsPolicyIamPolicy";
+export type ClientTlsPolicyIamPolicy = import("./clientTlsPolicyIamPolicy").ClientTlsPolicyIamPolicy;
+export const ClientTlsPolicyIamPolicy: typeof import("./clientTlsPolicyIamPolicy").ClientTlsPolicyIamPolicy = null as any;
+
+export { GetAuthorizationPolicyArgs, GetAuthorizationPolicyResult, GetAuthorizationPolicyOutputArgs } from "./getAuthorizationPolicy";
+export const getAuthorizationPolicy: typeof import("./getAuthorizationPolicy").getAuthorizationPolicy = null as any;
+export const getAuthorizationPolicyOutput: typeof import("./getAuthorizationPolicy").getAuthorizationPolicyOutput = null as any;
+
+export { GetAuthorizationPolicyIamPolicyArgs, GetAuthorizationPolicyIamPolicyResult, GetAuthorizationPolicyIamPolicyOutputArgs } from "./getAuthorizationPolicyIamPolicy";
+export const getAuthorizationPolicyIamPolicy: typeof import("./getAuthorizationPolicyIamPolicy").getAuthorizationPolicyIamPolicy = null as any;
+export const getAuthorizationPolicyIamPolicyOutput: typeof import("./getAuthorizationPolicyIamPolicy").getAuthorizationPolicyIamPolicyOutput = null as any;
+
+export { GetClientTlsPolicyArgs, GetClientTlsPolicyResult, GetClientTlsPolicyOutputArgs } from "./getClientTlsPolicy";
+export const getClientTlsPolicy: typeof import("./getClientTlsPolicy").getClientTlsPolicy = null as any;
+export const getClientTlsPolicyOutput: typeof import("./getClientTlsPolicy").getClientTlsPolicyOutput = null as any;
+
+export { GetClientTlsPolicyIamPolicyArgs, GetClientTlsPolicyIamPolicyResult, GetClientTlsPolicyIamPolicyOutputArgs } from "./getClientTlsPolicyIamPolicy";
+export const getClientTlsPolicyIamPolicy: typeof import("./getClientTlsPolicyIamPolicy").getClientTlsPolicyIamPolicy = null as any;
+export const getClientTlsPolicyIamPolicyOutput: typeof import("./getClientTlsPolicyIamPolicy").getClientTlsPolicyIamPolicyOutput = null as any;
+
+export { GetServerTlsPolicyArgs, GetServerTlsPolicyResult, GetServerTlsPolicyOutputArgs } from "./getServerTlsPolicy";
+export const getServerTlsPolicy: typeof import("./getServerTlsPolicy").getServerTlsPolicy = null as any;
+export const getServerTlsPolicyOutput: typeof import("./getServerTlsPolicy").getServerTlsPolicyOutput = null as any;
+
+export { GetServerTlsPolicyIamPolicyArgs, GetServerTlsPolicyIamPolicyResult, GetServerTlsPolicyIamPolicyOutputArgs } from "./getServerTlsPolicyIamPolicy";
+export const getServerTlsPolicyIamPolicy: typeof import("./getServerTlsPolicyIamPolicy").getServerTlsPolicyIamPolicy = null as any;
+export const getServerTlsPolicyIamPolicyOutput: typeof import("./getServerTlsPolicyIamPolicy").getServerTlsPolicyIamPolicyOutput = null as any;
+
+export { ServerTlsPolicyArgs } from "./serverTlsPolicy";
+export type ServerTlsPolicy = import("./serverTlsPolicy").ServerTlsPolicy;
+export const ServerTlsPolicy: typeof import("./serverTlsPolicy").ServerTlsPolicy = null as any;
+
+export { ServerTlsPolicyIamPolicyArgs } from "./serverTlsPolicyIamPolicy";
+export type ServerTlsPolicyIamPolicy = import("./serverTlsPolicyIamPolicy").ServerTlsPolicyIamPolicy;
+export const ServerTlsPolicyIamPolicy: typeof import("./serverTlsPolicyIamPolicy").ServerTlsPolicyIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["AuthorizationPolicy"], () => require("./authorizationPolicy"));
+utilities.lazyLoad(exports, ["AuthorizationPolicyIamPolicy"], () => require("./authorizationPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["ClientTlsPolicy"], () => require("./clientTlsPolicy"));
+utilities.lazyLoad(exports, ["ClientTlsPolicyIamPolicy"], () => require("./clientTlsPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["getAuthorizationPolicy","getAuthorizationPolicyOutput"], () => require("./getAuthorizationPolicy"));
+utilities.lazyLoad(exports, ["getAuthorizationPolicyIamPolicy","getAuthorizationPolicyIamPolicyOutput"], () => require("./getAuthorizationPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["getClientTlsPolicy","getClientTlsPolicyOutput"], () => require("./getClientTlsPolicy"));
+utilities.lazyLoad(exports, ["getClientTlsPolicyIamPolicy","getClientTlsPolicyIamPolicyOutput"], () => require("./getClientTlsPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["getServerTlsPolicy","getServerTlsPolicyOutput"], () => require("./getServerTlsPolicy"));
+utilities.lazyLoad(exports, ["getServerTlsPolicyIamPolicy","getServerTlsPolicyIamPolicyOutput"], () => require("./getServerTlsPolicyIamPolicy"));
+utilities.lazyLoad(exports, ["ServerTlsPolicy"], () => require("./serverTlsPolicy"));
+utilities.lazyLoad(exports, ["ServerTlsPolicyIamPolicy"], () => require("./serverTlsPolicyIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/networksecurity/v1beta1";
-
-// Import resources to register:
-import { AuthorizationPolicy } from "./authorizationPolicy";
-import { AuthorizationPolicyIamPolicy } from "./authorizationPolicyIamPolicy";
-import { ClientTlsPolicy } from "./clientTlsPolicy";
-import { ClientTlsPolicyIamPolicy } from "./clientTlsPolicyIamPolicy";
-import { ServerTlsPolicy } from "./serverTlsPolicy";
-import { ServerTlsPolicyIamPolicy } from "./serverTlsPolicyIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

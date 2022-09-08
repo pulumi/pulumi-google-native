@@ -5,20 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getRepository";
-export * from "./getRepositoryIamPolicy";
-export * from "./getTag";
-export * from "./repository";
-export * from "./repositoryIamPolicy";
-export * from "./tag";
+export { GetRepositoryArgs, GetRepositoryResult, GetRepositoryOutputArgs } from "./getRepository";
+export const getRepository: typeof import("./getRepository").getRepository = null as any;
+export const getRepositoryOutput: typeof import("./getRepository").getRepositoryOutput = null as any;
+
+export { GetRepositoryIamPolicyArgs, GetRepositoryIamPolicyResult, GetRepositoryIamPolicyOutputArgs } from "./getRepositoryIamPolicy";
+export const getRepositoryIamPolicy: typeof import("./getRepositoryIamPolicy").getRepositoryIamPolicy = null as any;
+export const getRepositoryIamPolicyOutput: typeof import("./getRepositoryIamPolicy").getRepositoryIamPolicyOutput = null as any;
+
+export { GetTagArgs, GetTagResult, GetTagOutputArgs } from "./getTag";
+export const getTag: typeof import("./getTag").getTag = null as any;
+export const getTagOutput: typeof import("./getTag").getTagOutput = null as any;
+
+export { RepositoryArgs } from "./repository";
+export type Repository = import("./repository").Repository;
+export const Repository: typeof import("./repository").Repository = null as any;
+
+export { RepositoryIamPolicyArgs } from "./repositoryIamPolicy";
+export type RepositoryIamPolicy = import("./repositoryIamPolicy").RepositoryIamPolicy;
+export const RepositoryIamPolicy: typeof import("./repositoryIamPolicy").RepositoryIamPolicy = null as any;
+
+export { TagArgs } from "./tag";
+export type Tag = import("./tag").Tag;
+export const Tag: typeof import("./tag").Tag = null as any;
+
+utilities.lazyLoad(exports, ["getRepository","getRepositoryOutput"], () => require("./getRepository"));
+utilities.lazyLoad(exports, ["getRepositoryIamPolicy","getRepositoryIamPolicyOutput"], () => require("./getRepositoryIamPolicy"));
+utilities.lazyLoad(exports, ["getTag","getTagOutput"], () => require("./getTag"));
+utilities.lazyLoad(exports, ["Repository"], () => require("./repository"));
+utilities.lazyLoad(exports, ["RepositoryIamPolicy"], () => require("./repositoryIamPolicy"));
+utilities.lazyLoad(exports, ["Tag"], () => require("./tag"));
 
 // Export enums:
 export * from "../../types/enums/artifactregistry/v1beta1";
-
-// Import resources to register:
-import { Repository } from "./repository";
-import { RepositoryIamPolicy } from "./repositoryIamPolicy";
-import { Tag } from "./tag";
 
 const _module = {
     version: utilities.getVersion(),

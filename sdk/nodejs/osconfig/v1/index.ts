@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getOsPolicyAssignment";
-export * from "./getPatchDeployment";
-export * from "./osPolicyAssignment";
-export * from "./patchDeployment";
+export { GetOsPolicyAssignmentArgs, GetOsPolicyAssignmentResult, GetOsPolicyAssignmentOutputArgs } from "./getOsPolicyAssignment";
+export const getOsPolicyAssignment: typeof import("./getOsPolicyAssignment").getOsPolicyAssignment = null as any;
+export const getOsPolicyAssignmentOutput: typeof import("./getOsPolicyAssignment").getOsPolicyAssignmentOutput = null as any;
+
+export { GetPatchDeploymentArgs, GetPatchDeploymentResult, GetPatchDeploymentOutputArgs } from "./getPatchDeployment";
+export const getPatchDeployment: typeof import("./getPatchDeployment").getPatchDeployment = null as any;
+export const getPatchDeploymentOutput: typeof import("./getPatchDeployment").getPatchDeploymentOutput = null as any;
+
+export { OsPolicyAssignmentArgs } from "./osPolicyAssignment";
+export type OsPolicyAssignment = import("./osPolicyAssignment").OsPolicyAssignment;
+export const OsPolicyAssignment: typeof import("./osPolicyAssignment").OsPolicyAssignment = null as any;
+
+export { PatchDeploymentArgs } from "./patchDeployment";
+export type PatchDeployment = import("./patchDeployment").PatchDeployment;
+export const PatchDeployment: typeof import("./patchDeployment").PatchDeployment = null as any;
+
+utilities.lazyLoad(exports, ["getOsPolicyAssignment","getOsPolicyAssignmentOutput"], () => require("./getOsPolicyAssignment"));
+utilities.lazyLoad(exports, ["getPatchDeployment","getPatchDeploymentOutput"], () => require("./getPatchDeployment"));
+utilities.lazyLoad(exports, ["OsPolicyAssignment"], () => require("./osPolicyAssignment"));
+utilities.lazyLoad(exports, ["PatchDeployment"], () => require("./patchDeployment"));
 
 // Export enums:
 export * from "../../types/enums/osconfig/v1";
-
-// Import resources to register:
-import { OsPolicyAssignment } from "./osPolicyAssignment";
-import { PatchDeployment } from "./patchDeployment";
 
 const _module = {
     version: utilities.getVersion(),

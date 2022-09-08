@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./endpoint";
-export * from "./endpointIamPolicy";
-export * from "./getEndpoint";
-export * from "./getEndpointIamPolicy";
+export { EndpointArgs } from "./endpoint";
+export type Endpoint = import("./endpoint").Endpoint;
+export const Endpoint: typeof import("./endpoint").Endpoint = null as any;
+
+export { EndpointIamPolicyArgs } from "./endpointIamPolicy";
+export type EndpointIamPolicy = import("./endpointIamPolicy").EndpointIamPolicy;
+export const EndpointIamPolicy: typeof import("./endpointIamPolicy").EndpointIamPolicy = null as any;
+
+export { GetEndpointArgs, GetEndpointResult, GetEndpointOutputArgs } from "./getEndpoint";
+export const getEndpoint: typeof import("./getEndpoint").getEndpoint = null as any;
+export const getEndpointOutput: typeof import("./getEndpoint").getEndpointOutput = null as any;
+
+export { GetEndpointIamPolicyArgs, GetEndpointIamPolicyResult, GetEndpointIamPolicyOutputArgs } from "./getEndpointIamPolicy";
+export const getEndpointIamPolicy: typeof import("./getEndpointIamPolicy").getEndpointIamPolicy = null as any;
+export const getEndpointIamPolicyOutput: typeof import("./getEndpointIamPolicy").getEndpointIamPolicyOutput = null as any;
+
+utilities.lazyLoad(exports, ["Endpoint"], () => require("./endpoint"));
+utilities.lazyLoad(exports, ["EndpointIamPolicy"], () => require("./endpointIamPolicy"));
+utilities.lazyLoad(exports, ["getEndpoint","getEndpointOutput"], () => require("./getEndpoint"));
+utilities.lazyLoad(exports, ["getEndpointIamPolicy","getEndpointIamPolicyOutput"], () => require("./getEndpointIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/ids/v1";
-
-// Import resources to register:
-import { Endpoint } from "./endpoint";
-import { EndpointIamPolicy } from "./endpointIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

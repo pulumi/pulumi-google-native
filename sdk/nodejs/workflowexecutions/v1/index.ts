@@ -5,14 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./execution";
-export * from "./getExecution";
+export { ExecutionArgs } from "./execution";
+export type Execution = import("./execution").Execution;
+export const Execution: typeof import("./execution").Execution = null as any;
+
+export { GetExecutionArgs, GetExecutionResult, GetExecutionOutputArgs } from "./getExecution";
+export const getExecution: typeof import("./getExecution").getExecution = null as any;
+export const getExecutionOutput: typeof import("./getExecution").getExecutionOutput = null as any;
+
+utilities.lazyLoad(exports, ["Execution"], () => require("./execution"));
+utilities.lazyLoad(exports, ["getExecution","getExecutionOutput"], () => require("./getExecution"));
 
 // Export enums:
 export * from "../../types/enums/workflowexecutions/v1";
-
-// Import resources to register:
-import { Execution } from "./execution";
 
 const _module = {
     version: utilities.getVersion(),

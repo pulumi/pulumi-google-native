@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getKey";
-export * from "./key";
+export { GetKeyArgs, GetKeyResult, GetKeyOutputArgs } from "./getKey";
+export const getKey: typeof import("./getKey").getKey = null as any;
+export const getKeyOutput: typeof import("./getKey").getKeyOutput = null as any;
 
-// Import resources to register:
-import { Key } from "./key";
+export { KeyArgs } from "./key";
+export type Key = import("./key").Key;
+export const Key: typeof import("./key").Key = null as any;
+
+utilities.lazyLoad(exports, ["getKey","getKeyOutput"], () => require("./getKey"));
+utilities.lazyLoad(exports, ["Key"], () => require("./key"));
 
 const _module = {
     version: utilities.getVersion(),

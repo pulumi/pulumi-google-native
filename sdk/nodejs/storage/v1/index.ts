@@ -5,35 +5,96 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./bucket";
-export * from "./bucketAccessControl";
-export * from "./bucketIamPolicy";
-export * from "./bucketObject";
-export * from "./defaultObjectAccessControl";
-export * from "./getBucket";
-export * from "./getBucketAccessControl";
-export * from "./getBucketIamPolicy";
-export * from "./getBucketObject";
-export * from "./getDefaultObjectAccessControl";
-export * from "./getHmacKey";
-export * from "./getNotification";
-export * from "./getObjectAccessControl";
-export * from "./getObjectIamPolicy";
-export * from "./hmacKey";
-export * from "./notification";
-export * from "./objectAccessControl";
-export * from "./objectIamPolicy";
+export { BucketArgs } from "./bucket";
+export type Bucket = import("./bucket").Bucket;
+export const Bucket: typeof import("./bucket").Bucket = null as any;
 
-// Import resources to register:
-import { Bucket } from "./bucket";
-import { BucketAccessControl } from "./bucketAccessControl";
-import { BucketIamPolicy } from "./bucketIamPolicy";
-import { BucketObject } from "./bucketObject";
-import { DefaultObjectAccessControl } from "./defaultObjectAccessControl";
-import { HmacKey } from "./hmacKey";
-import { Notification } from "./notification";
-import { ObjectAccessControl } from "./objectAccessControl";
-import { ObjectIamPolicy } from "./objectIamPolicy";
+export { BucketAccessControlArgs } from "./bucketAccessControl";
+export type BucketAccessControl = import("./bucketAccessControl").BucketAccessControl;
+export const BucketAccessControl: typeof import("./bucketAccessControl").BucketAccessControl = null as any;
+
+export { BucketIamPolicyArgs } from "./bucketIamPolicy";
+export type BucketIamPolicy = import("./bucketIamPolicy").BucketIamPolicy;
+export const BucketIamPolicy: typeof import("./bucketIamPolicy").BucketIamPolicy = null as any;
+
+export { BucketObjectArgs } from "./bucketObject";
+export type BucketObject = import("./bucketObject").BucketObject;
+export const BucketObject: typeof import("./bucketObject").BucketObject = null as any;
+
+export { DefaultObjectAccessControlArgs } from "./defaultObjectAccessControl";
+export type DefaultObjectAccessControl = import("./defaultObjectAccessControl").DefaultObjectAccessControl;
+export const DefaultObjectAccessControl: typeof import("./defaultObjectAccessControl").DefaultObjectAccessControl = null as any;
+
+export { GetBucketArgs, GetBucketResult, GetBucketOutputArgs } from "./getBucket";
+export const getBucket: typeof import("./getBucket").getBucket = null as any;
+export const getBucketOutput: typeof import("./getBucket").getBucketOutput = null as any;
+
+export { GetBucketAccessControlArgs, GetBucketAccessControlResult, GetBucketAccessControlOutputArgs } from "./getBucketAccessControl";
+export const getBucketAccessControl: typeof import("./getBucketAccessControl").getBucketAccessControl = null as any;
+export const getBucketAccessControlOutput: typeof import("./getBucketAccessControl").getBucketAccessControlOutput = null as any;
+
+export { GetBucketIamPolicyArgs, GetBucketIamPolicyResult, GetBucketIamPolicyOutputArgs } from "./getBucketIamPolicy";
+export const getBucketIamPolicy: typeof import("./getBucketIamPolicy").getBucketIamPolicy = null as any;
+export const getBucketIamPolicyOutput: typeof import("./getBucketIamPolicy").getBucketIamPolicyOutput = null as any;
+
+export { GetBucketObjectArgs, GetBucketObjectResult, GetBucketObjectOutputArgs } from "./getBucketObject";
+export const getBucketObject: typeof import("./getBucketObject").getBucketObject = null as any;
+export const getBucketObjectOutput: typeof import("./getBucketObject").getBucketObjectOutput = null as any;
+
+export { GetDefaultObjectAccessControlArgs, GetDefaultObjectAccessControlResult, GetDefaultObjectAccessControlOutputArgs } from "./getDefaultObjectAccessControl";
+export const getDefaultObjectAccessControl: typeof import("./getDefaultObjectAccessControl").getDefaultObjectAccessControl = null as any;
+export const getDefaultObjectAccessControlOutput: typeof import("./getDefaultObjectAccessControl").getDefaultObjectAccessControlOutput = null as any;
+
+export { GetHmacKeyArgs, GetHmacKeyResult, GetHmacKeyOutputArgs } from "./getHmacKey";
+export const getHmacKey: typeof import("./getHmacKey").getHmacKey = null as any;
+export const getHmacKeyOutput: typeof import("./getHmacKey").getHmacKeyOutput = null as any;
+
+export { GetNotificationArgs, GetNotificationResult, GetNotificationOutputArgs } from "./getNotification";
+export const getNotification: typeof import("./getNotification").getNotification = null as any;
+export const getNotificationOutput: typeof import("./getNotification").getNotificationOutput = null as any;
+
+export { GetObjectAccessControlArgs, GetObjectAccessControlResult, GetObjectAccessControlOutputArgs } from "./getObjectAccessControl";
+export const getObjectAccessControl: typeof import("./getObjectAccessControl").getObjectAccessControl = null as any;
+export const getObjectAccessControlOutput: typeof import("./getObjectAccessControl").getObjectAccessControlOutput = null as any;
+
+export { GetObjectIamPolicyArgs, GetObjectIamPolicyResult, GetObjectIamPolicyOutputArgs } from "./getObjectIamPolicy";
+export const getObjectIamPolicy: typeof import("./getObjectIamPolicy").getObjectIamPolicy = null as any;
+export const getObjectIamPolicyOutput: typeof import("./getObjectIamPolicy").getObjectIamPolicyOutput = null as any;
+
+export { HmacKeyArgs } from "./hmacKey";
+export type HmacKey = import("./hmacKey").HmacKey;
+export const HmacKey: typeof import("./hmacKey").HmacKey = null as any;
+
+export { NotificationArgs } from "./notification";
+export type Notification = import("./notification").Notification;
+export const Notification: typeof import("./notification").Notification = null as any;
+
+export { ObjectAccessControlArgs } from "./objectAccessControl";
+export type ObjectAccessControl = import("./objectAccessControl").ObjectAccessControl;
+export const ObjectAccessControl: typeof import("./objectAccessControl").ObjectAccessControl = null as any;
+
+export { ObjectIamPolicyArgs } from "./objectIamPolicy";
+export type ObjectIamPolicy = import("./objectIamPolicy").ObjectIamPolicy;
+export const ObjectIamPolicy: typeof import("./objectIamPolicy").ObjectIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["Bucket"], () => require("./bucket"));
+utilities.lazyLoad(exports, ["BucketAccessControl"], () => require("./bucketAccessControl"));
+utilities.lazyLoad(exports, ["BucketIamPolicy"], () => require("./bucketIamPolicy"));
+utilities.lazyLoad(exports, ["BucketObject"], () => require("./bucketObject"));
+utilities.lazyLoad(exports, ["DefaultObjectAccessControl"], () => require("./defaultObjectAccessControl"));
+utilities.lazyLoad(exports, ["getBucket","getBucketOutput"], () => require("./getBucket"));
+utilities.lazyLoad(exports, ["getBucketAccessControl","getBucketAccessControlOutput"], () => require("./getBucketAccessControl"));
+utilities.lazyLoad(exports, ["getBucketIamPolicy","getBucketIamPolicyOutput"], () => require("./getBucketIamPolicy"));
+utilities.lazyLoad(exports, ["getBucketObject","getBucketObjectOutput"], () => require("./getBucketObject"));
+utilities.lazyLoad(exports, ["getDefaultObjectAccessControl","getDefaultObjectAccessControlOutput"], () => require("./getDefaultObjectAccessControl"));
+utilities.lazyLoad(exports, ["getHmacKey","getHmacKeyOutput"], () => require("./getHmacKey"));
+utilities.lazyLoad(exports, ["getNotification","getNotificationOutput"], () => require("./getNotification"));
+utilities.lazyLoad(exports, ["getObjectAccessControl","getObjectAccessControlOutput"], () => require("./getObjectAccessControl"));
+utilities.lazyLoad(exports, ["getObjectIamPolicy","getObjectIamPolicyOutput"], () => require("./getObjectIamPolicy"));
+utilities.lazyLoad(exports, ["HmacKey"], () => require("./hmacKey"));
+utilities.lazyLoad(exports, ["Notification"], () => require("./notification"));
+utilities.lazyLoad(exports, ["ObjectAccessControl"], () => require("./objectAccessControl"));
+utilities.lazyLoad(exports, ["ObjectIamPolicy"], () => require("./objectIamPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

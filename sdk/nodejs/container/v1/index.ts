@@ -6,17 +6,31 @@ import * as utilities from "../../utilities";
 
 // Export members:
 export * from "./cluster";
-export * from "./getCluster";
-export * from "./getNodePool";
-export * from "./getServerConfig";
-export * from "./nodePool";
+import { Cluster } from "./cluster";
+
+export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getCluster";
+export const getCluster: typeof import("./getCluster").getCluster = null as any;
+export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
+
+export { GetNodePoolArgs, GetNodePoolResult, GetNodePoolOutputArgs } from "./getNodePool";
+export const getNodePool: typeof import("./getNodePool").getNodePool = null as any;
+export const getNodePoolOutput: typeof import("./getNodePool").getNodePoolOutput = null as any;
+
+export { GetServerConfigArgs, GetServerConfigResult, GetServerConfigOutputArgs } from "./getServerConfig";
+export const getServerConfig: typeof import("./getServerConfig").getServerConfig = null as any;
+export const getServerConfigOutput: typeof import("./getServerConfig").getServerConfigOutput = null as any;
+
+export { NodePoolArgs } from "./nodePool";
+export type NodePool = import("./nodePool").NodePool;
+export const NodePool: typeof import("./nodePool").NodePool = null as any;
+
+utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
+utilities.lazyLoad(exports, ["getNodePool","getNodePoolOutput"], () => require("./getNodePool"));
+utilities.lazyLoad(exports, ["getServerConfig","getServerConfigOutput"], () => require("./getServerConfig"));
+utilities.lazyLoad(exports, ["NodePool"], () => require("./nodePool"));
 
 // Export enums:
 export * from "../../types/enums/container/v1";
-
-// Import resources to register:
-import { Cluster } from "./cluster";
-import { NodePool } from "./nodePool";
 
 const _module = {
     version: utilities.getVersion(),

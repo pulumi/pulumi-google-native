@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getSecret";
-export * from "./getSecretIamPolicy";
-export * from "./secret";
-export * from "./secretIamPolicy";
+export { GetSecretArgs, GetSecretResult, GetSecretOutputArgs } from "./getSecret";
+export const getSecret: typeof import("./getSecret").getSecret = null as any;
+export const getSecretOutput: typeof import("./getSecret").getSecretOutput = null as any;
+
+export { GetSecretIamPolicyArgs, GetSecretIamPolicyResult, GetSecretIamPolicyOutputArgs } from "./getSecretIamPolicy";
+export const getSecretIamPolicy: typeof import("./getSecretIamPolicy").getSecretIamPolicy = null as any;
+export const getSecretIamPolicyOutput: typeof import("./getSecretIamPolicy").getSecretIamPolicyOutput = null as any;
+
+export { SecretArgs } from "./secret";
+export type Secret = import("./secret").Secret;
+export const Secret: typeof import("./secret").Secret = null as any;
+
+export { SecretIamPolicyArgs } from "./secretIamPolicy";
+export type SecretIamPolicy = import("./secretIamPolicy").SecretIamPolicy;
+export const SecretIamPolicy: typeof import("./secretIamPolicy").SecretIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["getSecret","getSecretOutput"], () => require("./getSecret"));
+utilities.lazyLoad(exports, ["getSecretIamPolicy","getSecretIamPolicyOutput"], () => require("./getSecretIamPolicy"));
+utilities.lazyLoad(exports, ["Secret"], () => require("./secret"));
+utilities.lazyLoad(exports, ["SecretIamPolicy"], () => require("./secretIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/secretmanager/v1beta1";
-
-// Import resources to register:
-import { Secret } from "./secret";
-import { SecretIamPolicy } from "./secretIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

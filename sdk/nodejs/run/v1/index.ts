@@ -5,24 +5,54 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./domainMapping";
-export * from "./getDomainMapping";
-export * from "./getJob";
-export * from "./getJobIamPolicy";
-export * from "./getService";
-export * from "./getServiceIamPolicy";
-export * from "./jobIamPolicy";
-export * from "./service";
-export * from "./serviceIamPolicy";
+export { DomainMappingArgs } from "./domainMapping";
+export type DomainMapping = import("./domainMapping").DomainMapping;
+export const DomainMapping: typeof import("./domainMapping").DomainMapping = null as any;
+
+export { GetDomainMappingArgs, GetDomainMappingResult, GetDomainMappingOutputArgs } from "./getDomainMapping";
+export const getDomainMapping: typeof import("./getDomainMapping").getDomainMapping = null as any;
+export const getDomainMappingOutput: typeof import("./getDomainMapping").getDomainMappingOutput = null as any;
+
+export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
+export const getJob: typeof import("./getJob").getJob = null as any;
+export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
+
+export { GetJobIamPolicyArgs, GetJobIamPolicyResult, GetJobIamPolicyOutputArgs } from "./getJobIamPolicy";
+export const getJobIamPolicy: typeof import("./getJobIamPolicy").getJobIamPolicy = null as any;
+export const getJobIamPolicyOutput: typeof import("./getJobIamPolicy").getJobIamPolicyOutput = null as any;
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+
+export { GetServiceIamPolicyArgs, GetServiceIamPolicyResult, GetServiceIamPolicyOutputArgs } from "./getServiceIamPolicy";
+export const getServiceIamPolicy: typeof import("./getServiceIamPolicy").getServiceIamPolicy = null as any;
+export const getServiceIamPolicyOutput: typeof import("./getServiceIamPolicy").getServiceIamPolicyOutput = null as any;
+
+export { JobIamPolicyArgs } from "./jobIamPolicy";
+export type JobIamPolicy = import("./jobIamPolicy").JobIamPolicy;
+export const JobIamPolicy: typeof import("./jobIamPolicy").JobIamPolicy = null as any;
+
+export { ServiceArgs } from "./service";
+export type Service = import("./service").Service;
+export const Service: typeof import("./service").Service = null as any;
+
+export { ServiceIamPolicyArgs } from "./serviceIamPolicy";
+export type ServiceIamPolicy = import("./serviceIamPolicy").ServiceIamPolicy;
+export const ServiceIamPolicy: typeof import("./serviceIamPolicy").ServiceIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["DomainMapping"], () => require("./domainMapping"));
+utilities.lazyLoad(exports, ["getDomainMapping","getDomainMappingOutput"], () => require("./getDomainMapping"));
+utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
+utilities.lazyLoad(exports, ["getJobIamPolicy","getJobIamPolicyOutput"], () => require("./getJobIamPolicy"));
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+utilities.lazyLoad(exports, ["getServiceIamPolicy","getServiceIamPolicyOutput"], () => require("./getServiceIamPolicy"));
+utilities.lazyLoad(exports, ["JobIamPolicy"], () => require("./jobIamPolicy"));
+utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+utilities.lazyLoad(exports, ["ServiceIamPolicy"], () => require("./serviceIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/run/v1";
-
-// Import resources to register:
-import { DomainMapping } from "./domainMapping";
-import { JobIamPolicy } from "./jobIamPolicy";
-import { Service } from "./service";
-import { ServiceIamPolicy } from "./serviceIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

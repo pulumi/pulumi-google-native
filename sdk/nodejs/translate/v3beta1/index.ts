@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getGlossary";
-export * from "./glossary";
+export { GetGlossaryArgs, GetGlossaryResult, GetGlossaryOutputArgs } from "./getGlossary";
+export const getGlossary: typeof import("./getGlossary").getGlossary = null as any;
+export const getGlossaryOutput: typeof import("./getGlossary").getGlossaryOutput = null as any;
 
-// Import resources to register:
-import { Glossary } from "./glossary";
+export { GlossaryArgs } from "./glossary";
+export type Glossary = import("./glossary").Glossary;
+export const Glossary: typeof import("./glossary").Glossary = null as any;
+
+utilities.lazyLoad(exports, ["getGlossary","getGlossaryOutput"], () => require("./getGlossary"));
+utilities.lazyLoad(exports, ["Glossary"], () => require("./glossary"));
 
 const _module = {
     version: utilities.getVersion(),

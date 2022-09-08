@@ -5,26 +5,59 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./analysis";
-export * from "./conversation";
-export * from "./getAnalysis";
-export * from "./getConversation";
-export * from "./getIssueModel";
-export * from "./getPhraseMatcher";
-export * from "./getView";
-export * from "./issueModel";
-export * from "./phraseMatcher";
-export * from "./view";
+export { AnalysisArgs } from "./analysis";
+export type Analysis = import("./analysis").Analysis;
+export const Analysis: typeof import("./analysis").Analysis = null as any;
+
+export { ConversationArgs } from "./conversation";
+export type Conversation = import("./conversation").Conversation;
+export const Conversation: typeof import("./conversation").Conversation = null as any;
+
+export { GetAnalysisArgs, GetAnalysisResult, GetAnalysisOutputArgs } from "./getAnalysis";
+export const getAnalysis: typeof import("./getAnalysis").getAnalysis = null as any;
+export const getAnalysisOutput: typeof import("./getAnalysis").getAnalysisOutput = null as any;
+
+export { GetConversationArgs, GetConversationResult, GetConversationOutputArgs } from "./getConversation";
+export const getConversation: typeof import("./getConversation").getConversation = null as any;
+export const getConversationOutput: typeof import("./getConversation").getConversationOutput = null as any;
+
+export { GetIssueModelArgs, GetIssueModelResult, GetIssueModelOutputArgs } from "./getIssueModel";
+export const getIssueModel: typeof import("./getIssueModel").getIssueModel = null as any;
+export const getIssueModelOutput: typeof import("./getIssueModel").getIssueModelOutput = null as any;
+
+export { GetPhraseMatcherArgs, GetPhraseMatcherResult, GetPhraseMatcherOutputArgs } from "./getPhraseMatcher";
+export const getPhraseMatcher: typeof import("./getPhraseMatcher").getPhraseMatcher = null as any;
+export const getPhraseMatcherOutput: typeof import("./getPhraseMatcher").getPhraseMatcherOutput = null as any;
+
+export { GetViewArgs, GetViewResult, GetViewOutputArgs } from "./getView";
+export const getView: typeof import("./getView").getView = null as any;
+export const getViewOutput: typeof import("./getView").getViewOutput = null as any;
+
+export { IssueModelArgs } from "./issueModel";
+export type IssueModel = import("./issueModel").IssueModel;
+export const IssueModel: typeof import("./issueModel").IssueModel = null as any;
+
+export { PhraseMatcherArgs } from "./phraseMatcher";
+export type PhraseMatcher = import("./phraseMatcher").PhraseMatcher;
+export const PhraseMatcher: typeof import("./phraseMatcher").PhraseMatcher = null as any;
+
+export { ViewArgs } from "./view";
+export type View = import("./view").View;
+export const View: typeof import("./view").View = null as any;
+
+utilities.lazyLoad(exports, ["Analysis"], () => require("./analysis"));
+utilities.lazyLoad(exports, ["Conversation"], () => require("./conversation"));
+utilities.lazyLoad(exports, ["getAnalysis","getAnalysisOutput"], () => require("./getAnalysis"));
+utilities.lazyLoad(exports, ["getConversation","getConversationOutput"], () => require("./getConversation"));
+utilities.lazyLoad(exports, ["getIssueModel","getIssueModelOutput"], () => require("./getIssueModel"));
+utilities.lazyLoad(exports, ["getPhraseMatcher","getPhraseMatcherOutput"], () => require("./getPhraseMatcher"));
+utilities.lazyLoad(exports, ["getView","getViewOutput"], () => require("./getView"));
+utilities.lazyLoad(exports, ["IssueModel"], () => require("./issueModel"));
+utilities.lazyLoad(exports, ["PhraseMatcher"], () => require("./phraseMatcher"));
+utilities.lazyLoad(exports, ["View"], () => require("./view"));
 
 // Export enums:
 export * from "../../types/enums/contactcenterinsights/v1";
-
-// Import resources to register:
-import { Analysis } from "./analysis";
-import { Conversation } from "./conversation";
-import { IssueModel } from "./issueModel";
-import { PhraseMatcher } from "./phraseMatcher";
-import { View } from "./view";
 
 const _module = {
     version: utilities.getVersion(),

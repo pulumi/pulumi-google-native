@@ -5,28 +5,69 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./change";
-export * from "./getChange";
-export * from "./getManagedZone";
-export * from "./getManagedZoneIamPolicy";
-export * from "./getPolicy";
-export * from "./getResourceRecordSet";
-export * from "./getResponsePolicy";
-export * from "./getResponsePolicyRule";
-export * from "./managedZone";
-export * from "./managedZoneIamPolicy";
-export * from "./policy";
-export * from "./resourceRecordSet";
+export { ChangeArgs } from "./change";
+export type Change = import("./change").Change;
+export const Change: typeof import("./change").Change = null as any;
+
+export { GetChangeArgs, GetChangeResult, GetChangeOutputArgs } from "./getChange";
+export const getChange: typeof import("./getChange").getChange = null as any;
+export const getChangeOutput: typeof import("./getChange").getChangeOutput = null as any;
+
+export { GetManagedZoneArgs, GetManagedZoneResult, GetManagedZoneOutputArgs } from "./getManagedZone";
+export const getManagedZone: typeof import("./getManagedZone").getManagedZone = null as any;
+export const getManagedZoneOutput: typeof import("./getManagedZone").getManagedZoneOutput = null as any;
+
+export { GetManagedZoneIamPolicyArgs, GetManagedZoneIamPolicyResult, GetManagedZoneIamPolicyOutputArgs } from "./getManagedZoneIamPolicy";
+export const getManagedZoneIamPolicy: typeof import("./getManagedZoneIamPolicy").getManagedZoneIamPolicy = null as any;
+export const getManagedZoneIamPolicyOutput: typeof import("./getManagedZoneIamPolicy").getManagedZoneIamPolicyOutput = null as any;
+
+export { GetPolicyArgs, GetPolicyResult, GetPolicyOutputArgs } from "./getPolicy";
+export const getPolicy: typeof import("./getPolicy").getPolicy = null as any;
+export const getPolicyOutput: typeof import("./getPolicy").getPolicyOutput = null as any;
+
+export { GetResourceRecordSetArgs, GetResourceRecordSetResult, GetResourceRecordSetOutputArgs } from "./getResourceRecordSet";
+export const getResourceRecordSet: typeof import("./getResourceRecordSet").getResourceRecordSet = null as any;
+export const getResourceRecordSetOutput: typeof import("./getResourceRecordSet").getResourceRecordSetOutput = null as any;
+
+export { GetResponsePolicyArgs, GetResponsePolicyResult, GetResponsePolicyOutputArgs } from "./getResponsePolicy";
+export const getResponsePolicy: typeof import("./getResponsePolicy").getResponsePolicy = null as any;
+export const getResponsePolicyOutput: typeof import("./getResponsePolicy").getResponsePolicyOutput = null as any;
+
+export { GetResponsePolicyRuleArgs, GetResponsePolicyRuleResult, GetResponsePolicyRuleOutputArgs } from "./getResponsePolicyRule";
+export const getResponsePolicyRule: typeof import("./getResponsePolicyRule").getResponsePolicyRule = null as any;
+export const getResponsePolicyRuleOutput: typeof import("./getResponsePolicyRule").getResponsePolicyRuleOutput = null as any;
+
+export { ManagedZoneArgs } from "./managedZone";
+export type ManagedZone = import("./managedZone").ManagedZone;
+export const ManagedZone: typeof import("./managedZone").ManagedZone = null as any;
+
+export { ManagedZoneIamPolicyArgs } from "./managedZoneIamPolicy";
+export type ManagedZoneIamPolicy = import("./managedZoneIamPolicy").ManagedZoneIamPolicy;
+export const ManagedZoneIamPolicy: typeof import("./managedZoneIamPolicy").ManagedZoneIamPolicy = null as any;
+
+export { PolicyArgs } from "./policy";
+export type Policy = import("./policy").Policy;
+export const Policy: typeof import("./policy").Policy = null as any;
+
+export { ResourceRecordSetArgs } from "./resourceRecordSet";
+export type ResourceRecordSet = import("./resourceRecordSet").ResourceRecordSet;
+export const ResourceRecordSet: typeof import("./resourceRecordSet").ResourceRecordSet = null as any;
+
+utilities.lazyLoad(exports, ["Change"], () => require("./change"));
+utilities.lazyLoad(exports, ["getChange","getChangeOutput"], () => require("./getChange"));
+utilities.lazyLoad(exports, ["getManagedZone","getManagedZoneOutput"], () => require("./getManagedZone"));
+utilities.lazyLoad(exports, ["getManagedZoneIamPolicy","getManagedZoneIamPolicyOutput"], () => require("./getManagedZoneIamPolicy"));
+utilities.lazyLoad(exports, ["getPolicy","getPolicyOutput"], () => require("./getPolicy"));
+utilities.lazyLoad(exports, ["getResourceRecordSet","getResourceRecordSetOutput"], () => require("./getResourceRecordSet"));
+utilities.lazyLoad(exports, ["getResponsePolicy","getResponsePolicyOutput"], () => require("./getResponsePolicy"));
+utilities.lazyLoad(exports, ["getResponsePolicyRule","getResponsePolicyRuleOutput"], () => require("./getResponsePolicyRule"));
+utilities.lazyLoad(exports, ["ManagedZone"], () => require("./managedZone"));
+utilities.lazyLoad(exports, ["ManagedZoneIamPolicy"], () => require("./managedZoneIamPolicy"));
+utilities.lazyLoad(exports, ["Policy"], () => require("./policy"));
+utilities.lazyLoad(exports, ["ResourceRecordSet"], () => require("./resourceRecordSet"));
 
 // Export enums:
 export * from "../../types/enums/dns/v1";
-
-// Import resources to register:
-import { Change } from "./change";
-import { ManagedZone } from "./managedZone";
-import { ManagedZoneIamPolicy } from "./managedZoneIamPolicy";
-import { Policy } from "./policy";
-import { ResourceRecordSet } from "./resourceRecordSet";
 
 const _module = {
     version: utilities.getVersion(),

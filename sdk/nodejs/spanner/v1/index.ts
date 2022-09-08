@@ -5,32 +5,79 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./backup";
-export * from "./database";
-export * from "./getBackup";
-export * from "./getDatabase";
-export * from "./getInstance";
-export * from "./getInstanceBackupIamPolicy";
-export * from "./getInstanceDatabaseIamPolicy";
-export * from "./getInstanceIamPolicy";
-export * from "./getSession";
-export * from "./instance";
-export * from "./instanceBackupIamPolicy";
-export * from "./instanceDatabaseIamPolicy";
-export * from "./instanceIamPolicy";
-export * from "./session";
+export { BackupArgs } from "./backup";
+export type Backup = import("./backup").Backup;
+export const Backup: typeof import("./backup").Backup = null as any;
+
+export { DatabaseArgs } from "./database";
+export type Database = import("./database").Database;
+export const Database: typeof import("./database").Database = null as any;
+
+export { GetBackupArgs, GetBackupResult, GetBackupOutputArgs } from "./getBackup";
+export const getBackup: typeof import("./getBackup").getBackup = null as any;
+export const getBackupOutput: typeof import("./getBackup").getBackupOutput = null as any;
+
+export { GetDatabaseArgs, GetDatabaseResult, GetDatabaseOutputArgs } from "./getDatabase";
+export const getDatabase: typeof import("./getDatabase").getDatabase = null as any;
+export const getDatabaseOutput: typeof import("./getDatabase").getDatabaseOutput = null as any;
+
+export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
+export const getInstance: typeof import("./getInstance").getInstance = null as any;
+export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+
+export { GetInstanceBackupIamPolicyArgs, GetInstanceBackupIamPolicyResult, GetInstanceBackupIamPolicyOutputArgs } from "./getInstanceBackupIamPolicy";
+export const getInstanceBackupIamPolicy: typeof import("./getInstanceBackupIamPolicy").getInstanceBackupIamPolicy = null as any;
+export const getInstanceBackupIamPolicyOutput: typeof import("./getInstanceBackupIamPolicy").getInstanceBackupIamPolicyOutput = null as any;
+
+export { GetInstanceDatabaseIamPolicyArgs, GetInstanceDatabaseIamPolicyResult, GetInstanceDatabaseIamPolicyOutputArgs } from "./getInstanceDatabaseIamPolicy";
+export const getInstanceDatabaseIamPolicy: typeof import("./getInstanceDatabaseIamPolicy").getInstanceDatabaseIamPolicy = null as any;
+export const getInstanceDatabaseIamPolicyOutput: typeof import("./getInstanceDatabaseIamPolicy").getInstanceDatabaseIamPolicyOutput = null as any;
+
+export { GetInstanceIamPolicyArgs, GetInstanceIamPolicyResult, GetInstanceIamPolicyOutputArgs } from "./getInstanceIamPolicy";
+export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getInstanceIamPolicy = null as any;
+export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;
+
+export { GetSessionArgs, GetSessionResult, GetSessionOutputArgs } from "./getSession";
+export const getSession: typeof import("./getSession").getSession = null as any;
+export const getSessionOutput: typeof import("./getSession").getSessionOutput = null as any;
+
+export { InstanceArgs } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+
+export { InstanceBackupIamPolicyArgs } from "./instanceBackupIamPolicy";
+export type InstanceBackupIamPolicy = import("./instanceBackupIamPolicy").InstanceBackupIamPolicy;
+export const InstanceBackupIamPolicy: typeof import("./instanceBackupIamPolicy").InstanceBackupIamPolicy = null as any;
+
+export { InstanceDatabaseIamPolicyArgs } from "./instanceDatabaseIamPolicy";
+export type InstanceDatabaseIamPolicy = import("./instanceDatabaseIamPolicy").InstanceDatabaseIamPolicy;
+export const InstanceDatabaseIamPolicy: typeof import("./instanceDatabaseIamPolicy").InstanceDatabaseIamPolicy = null as any;
+
+export { InstanceIamPolicyArgs } from "./instanceIamPolicy";
+export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
+export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
+
+export { SessionArgs } from "./session";
+export type Session = import("./session").Session;
+export const Session: typeof import("./session").Session = null as any;
+
+utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
+utilities.lazyLoad(exports, ["Database"], () => require("./database"));
+utilities.lazyLoad(exports, ["getBackup","getBackupOutput"], () => require("./getBackup"));
+utilities.lazyLoad(exports, ["getDatabase","getDatabaseOutput"], () => require("./getDatabase"));
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
+utilities.lazyLoad(exports, ["getInstanceBackupIamPolicy","getInstanceBackupIamPolicyOutput"], () => require("./getInstanceBackupIamPolicy"));
+utilities.lazyLoad(exports, ["getInstanceDatabaseIamPolicy","getInstanceDatabaseIamPolicyOutput"], () => require("./getInstanceDatabaseIamPolicy"));
+utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
+utilities.lazyLoad(exports, ["getSession","getSessionOutput"], () => require("./getSession"));
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["InstanceBackupIamPolicy"], () => require("./instanceBackupIamPolicy"));
+utilities.lazyLoad(exports, ["InstanceDatabaseIamPolicy"], () => require("./instanceDatabaseIamPolicy"));
+utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
+utilities.lazyLoad(exports, ["Session"], () => require("./session"));
 
 // Export enums:
 export * from "../../types/enums/spanner/v1";
-
-// Import resources to register:
-import { Backup } from "./backup";
-import { Database } from "./database";
-import { Instance } from "./instance";
-import { InstanceBackupIamPolicy } from "./instanceBackupIamPolicy";
-import { InstanceDatabaseIamPolicy } from "./instanceDatabaseIamPolicy";
-import { InstanceIamPolicy } from "./instanceIamPolicy";
-import { Session } from "./session";
 
 const _module = {
     version: utilities.getVersion(),

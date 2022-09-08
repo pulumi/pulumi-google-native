@@ -5,35 +5,89 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getSchema";
-export * from "./getSchemaIamPolicy";
-export * from "./getSnapshot";
-export * from "./getSnapshotIamPolicy";
-export * from "./getSubscription";
-export * from "./getSubscriptionIamPolicy";
-export * from "./getTopic";
-export * from "./getTopicIamPolicy";
-export * from "./schema";
-export * from "./schemaIamPolicy";
-export * from "./snapshot";
-export * from "./snapshotIamPolicy";
-export * from "./subscription";
-export * from "./subscriptionIamPolicy";
-export * from "./topic";
-export * from "./topicIamPolicy";
+export { GetSchemaArgs, GetSchemaResult, GetSchemaOutputArgs } from "./getSchema";
+export const getSchema: typeof import("./getSchema").getSchema = null as any;
+export const getSchemaOutput: typeof import("./getSchema").getSchemaOutput = null as any;
+
+export { GetSchemaIamPolicyArgs, GetSchemaIamPolicyResult, GetSchemaIamPolicyOutputArgs } from "./getSchemaIamPolicy";
+export const getSchemaIamPolicy: typeof import("./getSchemaIamPolicy").getSchemaIamPolicy = null as any;
+export const getSchemaIamPolicyOutput: typeof import("./getSchemaIamPolicy").getSchemaIamPolicyOutput = null as any;
+
+export { GetSnapshotArgs, GetSnapshotResult, GetSnapshotOutputArgs } from "./getSnapshot";
+export const getSnapshot: typeof import("./getSnapshot").getSnapshot = null as any;
+export const getSnapshotOutput: typeof import("./getSnapshot").getSnapshotOutput = null as any;
+
+export { GetSnapshotIamPolicyArgs, GetSnapshotIamPolicyResult, GetSnapshotIamPolicyOutputArgs } from "./getSnapshotIamPolicy";
+export const getSnapshotIamPolicy: typeof import("./getSnapshotIamPolicy").getSnapshotIamPolicy = null as any;
+export const getSnapshotIamPolicyOutput: typeof import("./getSnapshotIamPolicy").getSnapshotIamPolicyOutput = null as any;
+
+export { GetSubscriptionArgs, GetSubscriptionResult, GetSubscriptionOutputArgs } from "./getSubscription";
+export const getSubscription: typeof import("./getSubscription").getSubscription = null as any;
+export const getSubscriptionOutput: typeof import("./getSubscription").getSubscriptionOutput = null as any;
+
+export { GetSubscriptionIamPolicyArgs, GetSubscriptionIamPolicyResult, GetSubscriptionIamPolicyOutputArgs } from "./getSubscriptionIamPolicy";
+export const getSubscriptionIamPolicy: typeof import("./getSubscriptionIamPolicy").getSubscriptionIamPolicy = null as any;
+export const getSubscriptionIamPolicyOutput: typeof import("./getSubscriptionIamPolicy").getSubscriptionIamPolicyOutput = null as any;
+
+export { GetTopicArgs, GetTopicResult, GetTopicOutputArgs } from "./getTopic";
+export const getTopic: typeof import("./getTopic").getTopic = null as any;
+export const getTopicOutput: typeof import("./getTopic").getTopicOutput = null as any;
+
+export { GetTopicIamPolicyArgs, GetTopicIamPolicyResult, GetTopicIamPolicyOutputArgs } from "./getTopicIamPolicy";
+export const getTopicIamPolicy: typeof import("./getTopicIamPolicy").getTopicIamPolicy = null as any;
+export const getTopicIamPolicyOutput: typeof import("./getTopicIamPolicy").getTopicIamPolicyOutput = null as any;
+
+export { SchemaArgs } from "./schema";
+export type Schema = import("./schema").Schema;
+export const Schema: typeof import("./schema").Schema = null as any;
+
+export { SchemaIamPolicyArgs } from "./schemaIamPolicy";
+export type SchemaIamPolicy = import("./schemaIamPolicy").SchemaIamPolicy;
+export const SchemaIamPolicy: typeof import("./schemaIamPolicy").SchemaIamPolicy = null as any;
+
+export { SnapshotArgs } from "./snapshot";
+export type Snapshot = import("./snapshot").Snapshot;
+export const Snapshot: typeof import("./snapshot").Snapshot = null as any;
+
+export { SnapshotIamPolicyArgs } from "./snapshotIamPolicy";
+export type SnapshotIamPolicy = import("./snapshotIamPolicy").SnapshotIamPolicy;
+export const SnapshotIamPolicy: typeof import("./snapshotIamPolicy").SnapshotIamPolicy = null as any;
+
+export { SubscriptionArgs } from "./subscription";
+export type Subscription = import("./subscription").Subscription;
+export const Subscription: typeof import("./subscription").Subscription = null as any;
+
+export { SubscriptionIamPolicyArgs } from "./subscriptionIamPolicy";
+export type SubscriptionIamPolicy = import("./subscriptionIamPolicy").SubscriptionIamPolicy;
+export const SubscriptionIamPolicy: typeof import("./subscriptionIamPolicy").SubscriptionIamPolicy = null as any;
+
+export { TopicArgs } from "./topic";
+export type Topic = import("./topic").Topic;
+export const Topic: typeof import("./topic").Topic = null as any;
+
+export { TopicIamPolicyArgs } from "./topicIamPolicy";
+export type TopicIamPolicy = import("./topicIamPolicy").TopicIamPolicy;
+export const TopicIamPolicy: typeof import("./topicIamPolicy").TopicIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["getSchema","getSchemaOutput"], () => require("./getSchema"));
+utilities.lazyLoad(exports, ["getSchemaIamPolicy","getSchemaIamPolicyOutput"], () => require("./getSchemaIamPolicy"));
+utilities.lazyLoad(exports, ["getSnapshot","getSnapshotOutput"], () => require("./getSnapshot"));
+utilities.lazyLoad(exports, ["getSnapshotIamPolicy","getSnapshotIamPolicyOutput"], () => require("./getSnapshotIamPolicy"));
+utilities.lazyLoad(exports, ["getSubscription","getSubscriptionOutput"], () => require("./getSubscription"));
+utilities.lazyLoad(exports, ["getSubscriptionIamPolicy","getSubscriptionIamPolicyOutput"], () => require("./getSubscriptionIamPolicy"));
+utilities.lazyLoad(exports, ["getTopic","getTopicOutput"], () => require("./getTopic"));
+utilities.lazyLoad(exports, ["getTopicIamPolicy","getTopicIamPolicyOutput"], () => require("./getTopicIamPolicy"));
+utilities.lazyLoad(exports, ["Schema"], () => require("./schema"));
+utilities.lazyLoad(exports, ["SchemaIamPolicy"], () => require("./schemaIamPolicy"));
+utilities.lazyLoad(exports, ["Snapshot"], () => require("./snapshot"));
+utilities.lazyLoad(exports, ["SnapshotIamPolicy"], () => require("./snapshotIamPolicy"));
+utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
+utilities.lazyLoad(exports, ["SubscriptionIamPolicy"], () => require("./subscriptionIamPolicy"));
+utilities.lazyLoad(exports, ["Topic"], () => require("./topic"));
+utilities.lazyLoad(exports, ["TopicIamPolicy"], () => require("./topicIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/pubsub/v1";
-
-// Import resources to register:
-import { Schema } from "./schema";
-import { SchemaIamPolicy } from "./schemaIamPolicy";
-import { Snapshot } from "./snapshot";
-import { SnapshotIamPolicy } from "./snapshotIamPolicy";
-import { Subscription } from "./subscription";
-import { SubscriptionIamPolicy } from "./subscriptionIamPolicy";
-import { Topic } from "./topic";
-import { TopicIamPolicy } from "./topicIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

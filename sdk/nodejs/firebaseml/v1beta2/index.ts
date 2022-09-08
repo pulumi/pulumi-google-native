@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getModel";
-export * from "./model";
+export { GetModelArgs, GetModelResult, GetModelOutputArgs } from "./getModel";
+export const getModel: typeof import("./getModel").getModel = null as any;
+export const getModelOutput: typeof import("./getModel").getModelOutput = null as any;
 
-// Import resources to register:
-import { Model } from "./model";
+export { ModelArgs } from "./model";
+export type Model = import("./model").Model;
+export const Model: typeof import("./model").Model = null as any;
+
+utilities.lazyLoad(exports, ["getModel","getModelOutput"], () => require("./getModel"));
+utilities.lazyLoad(exports, ["Model"], () => require("./model"));
 
 const _module = {
     version: utilities.getVersion(),

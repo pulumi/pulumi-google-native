@@ -5,38 +5,99 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./backup";
-export * from "./federation";
-export * from "./federationIamPolicy";
-export * from "./getBackup";
-export * from "./getFederation";
-export * from "./getFederationIamPolicy";
-export * from "./getMetadataImport";
-export * from "./getService";
-export * from "./getServiceBackupIamPolicy";
-export * from "./getServiceDatabaseIamPolicy";
-export * from "./getServiceDatabaseTableIamPolicy";
-export * from "./getServiceIamPolicy";
-export * from "./metadataImport";
-export * from "./service";
-export * from "./serviceBackupIamPolicy";
-export * from "./serviceDatabaseIamPolicy";
-export * from "./serviceDatabaseTableIamPolicy";
-export * from "./serviceIamPolicy";
+export { BackupArgs } from "./backup";
+export type Backup = import("./backup").Backup;
+export const Backup: typeof import("./backup").Backup = null as any;
+
+export { FederationArgs } from "./federation";
+export type Federation = import("./federation").Federation;
+export const Federation: typeof import("./federation").Federation = null as any;
+
+export { FederationIamPolicyArgs } from "./federationIamPolicy";
+export type FederationIamPolicy = import("./federationIamPolicy").FederationIamPolicy;
+export const FederationIamPolicy: typeof import("./federationIamPolicy").FederationIamPolicy = null as any;
+
+export { GetBackupArgs, GetBackupResult, GetBackupOutputArgs } from "./getBackup";
+export const getBackup: typeof import("./getBackup").getBackup = null as any;
+export const getBackupOutput: typeof import("./getBackup").getBackupOutput = null as any;
+
+export { GetFederationArgs, GetFederationResult, GetFederationOutputArgs } from "./getFederation";
+export const getFederation: typeof import("./getFederation").getFederation = null as any;
+export const getFederationOutput: typeof import("./getFederation").getFederationOutput = null as any;
+
+export { GetFederationIamPolicyArgs, GetFederationIamPolicyResult, GetFederationIamPolicyOutputArgs } from "./getFederationIamPolicy";
+export const getFederationIamPolicy: typeof import("./getFederationIamPolicy").getFederationIamPolicy = null as any;
+export const getFederationIamPolicyOutput: typeof import("./getFederationIamPolicy").getFederationIamPolicyOutput = null as any;
+
+export { GetMetadataImportArgs, GetMetadataImportResult, GetMetadataImportOutputArgs } from "./getMetadataImport";
+export const getMetadataImport: typeof import("./getMetadataImport").getMetadataImport = null as any;
+export const getMetadataImportOutput: typeof import("./getMetadataImport").getMetadataImportOutput = null as any;
+
+export { GetServiceArgs, GetServiceResult, GetServiceOutputArgs } from "./getService";
+export const getService: typeof import("./getService").getService = null as any;
+export const getServiceOutput: typeof import("./getService").getServiceOutput = null as any;
+
+export { GetServiceBackupIamPolicyArgs, GetServiceBackupIamPolicyResult, GetServiceBackupIamPolicyOutputArgs } from "./getServiceBackupIamPolicy";
+export const getServiceBackupIamPolicy: typeof import("./getServiceBackupIamPolicy").getServiceBackupIamPolicy = null as any;
+export const getServiceBackupIamPolicyOutput: typeof import("./getServiceBackupIamPolicy").getServiceBackupIamPolicyOutput = null as any;
+
+export { GetServiceDatabaseIamPolicyArgs, GetServiceDatabaseIamPolicyResult, GetServiceDatabaseIamPolicyOutputArgs } from "./getServiceDatabaseIamPolicy";
+export const getServiceDatabaseIamPolicy: typeof import("./getServiceDatabaseIamPolicy").getServiceDatabaseIamPolicy = null as any;
+export const getServiceDatabaseIamPolicyOutput: typeof import("./getServiceDatabaseIamPolicy").getServiceDatabaseIamPolicyOutput = null as any;
+
+export { GetServiceDatabaseTableIamPolicyArgs, GetServiceDatabaseTableIamPolicyResult, GetServiceDatabaseTableIamPolicyOutputArgs } from "./getServiceDatabaseTableIamPolicy";
+export const getServiceDatabaseTableIamPolicy: typeof import("./getServiceDatabaseTableIamPolicy").getServiceDatabaseTableIamPolicy = null as any;
+export const getServiceDatabaseTableIamPolicyOutput: typeof import("./getServiceDatabaseTableIamPolicy").getServiceDatabaseTableIamPolicyOutput = null as any;
+
+export { GetServiceIamPolicyArgs, GetServiceIamPolicyResult, GetServiceIamPolicyOutputArgs } from "./getServiceIamPolicy";
+export const getServiceIamPolicy: typeof import("./getServiceIamPolicy").getServiceIamPolicy = null as any;
+export const getServiceIamPolicyOutput: typeof import("./getServiceIamPolicy").getServiceIamPolicyOutput = null as any;
+
+export { MetadataImportArgs } from "./metadataImport";
+export type MetadataImport = import("./metadataImport").MetadataImport;
+export const MetadataImport: typeof import("./metadataImport").MetadataImport = null as any;
+
+export { ServiceArgs } from "./service";
+export type Service = import("./service").Service;
+export const Service: typeof import("./service").Service = null as any;
+
+export { ServiceBackupIamPolicyArgs } from "./serviceBackupIamPolicy";
+export type ServiceBackupIamPolicy = import("./serviceBackupIamPolicy").ServiceBackupIamPolicy;
+export const ServiceBackupIamPolicy: typeof import("./serviceBackupIamPolicy").ServiceBackupIamPolicy = null as any;
+
+export { ServiceDatabaseIamPolicyArgs } from "./serviceDatabaseIamPolicy";
+export type ServiceDatabaseIamPolicy = import("./serviceDatabaseIamPolicy").ServiceDatabaseIamPolicy;
+export const ServiceDatabaseIamPolicy: typeof import("./serviceDatabaseIamPolicy").ServiceDatabaseIamPolicy = null as any;
+
+export { ServiceDatabaseTableIamPolicyArgs } from "./serviceDatabaseTableIamPolicy";
+export type ServiceDatabaseTableIamPolicy = import("./serviceDatabaseTableIamPolicy").ServiceDatabaseTableIamPolicy;
+export const ServiceDatabaseTableIamPolicy: typeof import("./serviceDatabaseTableIamPolicy").ServiceDatabaseTableIamPolicy = null as any;
+
+export { ServiceIamPolicyArgs } from "./serviceIamPolicy";
+export type ServiceIamPolicy = import("./serviceIamPolicy").ServiceIamPolicy;
+export const ServiceIamPolicy: typeof import("./serviceIamPolicy").ServiceIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
+utilities.lazyLoad(exports, ["Federation"], () => require("./federation"));
+utilities.lazyLoad(exports, ["FederationIamPolicy"], () => require("./federationIamPolicy"));
+utilities.lazyLoad(exports, ["getBackup","getBackupOutput"], () => require("./getBackup"));
+utilities.lazyLoad(exports, ["getFederation","getFederationOutput"], () => require("./getFederation"));
+utilities.lazyLoad(exports, ["getFederationIamPolicy","getFederationIamPolicyOutput"], () => require("./getFederationIamPolicy"));
+utilities.lazyLoad(exports, ["getMetadataImport","getMetadataImportOutput"], () => require("./getMetadataImport"));
+utilities.lazyLoad(exports, ["getService","getServiceOutput"], () => require("./getService"));
+utilities.lazyLoad(exports, ["getServiceBackupIamPolicy","getServiceBackupIamPolicyOutput"], () => require("./getServiceBackupIamPolicy"));
+utilities.lazyLoad(exports, ["getServiceDatabaseIamPolicy","getServiceDatabaseIamPolicyOutput"], () => require("./getServiceDatabaseIamPolicy"));
+utilities.lazyLoad(exports, ["getServiceDatabaseTableIamPolicy","getServiceDatabaseTableIamPolicyOutput"], () => require("./getServiceDatabaseTableIamPolicy"));
+utilities.lazyLoad(exports, ["getServiceIamPolicy","getServiceIamPolicyOutput"], () => require("./getServiceIamPolicy"));
+utilities.lazyLoad(exports, ["MetadataImport"], () => require("./metadataImport"));
+utilities.lazyLoad(exports, ["Service"], () => require("./service"));
+utilities.lazyLoad(exports, ["ServiceBackupIamPolicy"], () => require("./serviceBackupIamPolicy"));
+utilities.lazyLoad(exports, ["ServiceDatabaseIamPolicy"], () => require("./serviceDatabaseIamPolicy"));
+utilities.lazyLoad(exports, ["ServiceDatabaseTableIamPolicy"], () => require("./serviceDatabaseTableIamPolicy"));
+utilities.lazyLoad(exports, ["ServiceIamPolicy"], () => require("./serviceIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/metastore/v1beta";
-
-// Import resources to register:
-import { Backup } from "./backup";
-import { Federation } from "./federation";
-import { FederationIamPolicy } from "./federationIamPolicy";
-import { MetadataImport } from "./metadataImport";
-import { Service } from "./service";
-import { ServiceBackupIamPolicy } from "./serviceBackupIamPolicy";
-import { ServiceDatabaseIamPolicy } from "./serviceDatabaseIamPolicy";
-import { ServiceDatabaseTableIamPolicy } from "./serviceDatabaseTableIamPolicy";
-import { ServiceIamPolicy } from "./serviceIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

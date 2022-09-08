@@ -5,38 +5,99 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./cryptoKey";
-export * from "./cryptoKeyVersion";
-export * from "./ekmConnection";
-export * from "./ekmConnectionIamPolicy";
-export * from "./getCryptoKey";
-export * from "./getCryptoKeyVersion";
-export * from "./getEkmConnection";
-export * from "./getEkmConnectionIamPolicy";
-export * from "./getImportJob";
-export * from "./getKeyRing";
-export * from "./getKeyRingCryptoKeyIamPolicy";
-export * from "./getKeyRingIamPolicy";
-export * from "./getKeyRingImportJobIamPolicy";
-export * from "./importJob";
-export * from "./keyRing";
-export * from "./keyRingCryptoKeyIamPolicy";
-export * from "./keyRingIamPolicy";
-export * from "./keyRingImportJobIamPolicy";
+export { CryptoKeyArgs } from "./cryptoKey";
+export type CryptoKey = import("./cryptoKey").CryptoKey;
+export const CryptoKey: typeof import("./cryptoKey").CryptoKey = null as any;
+
+export { CryptoKeyVersionArgs } from "./cryptoKeyVersion";
+export type CryptoKeyVersion = import("./cryptoKeyVersion").CryptoKeyVersion;
+export const CryptoKeyVersion: typeof import("./cryptoKeyVersion").CryptoKeyVersion = null as any;
+
+export { EkmConnectionArgs } from "./ekmConnection";
+export type EkmConnection = import("./ekmConnection").EkmConnection;
+export const EkmConnection: typeof import("./ekmConnection").EkmConnection = null as any;
+
+export { EkmConnectionIamPolicyArgs } from "./ekmConnectionIamPolicy";
+export type EkmConnectionIamPolicy = import("./ekmConnectionIamPolicy").EkmConnectionIamPolicy;
+export const EkmConnectionIamPolicy: typeof import("./ekmConnectionIamPolicy").EkmConnectionIamPolicy = null as any;
+
+export { GetCryptoKeyArgs, GetCryptoKeyResult, GetCryptoKeyOutputArgs } from "./getCryptoKey";
+export const getCryptoKey: typeof import("./getCryptoKey").getCryptoKey = null as any;
+export const getCryptoKeyOutput: typeof import("./getCryptoKey").getCryptoKeyOutput = null as any;
+
+export { GetCryptoKeyVersionArgs, GetCryptoKeyVersionResult, GetCryptoKeyVersionOutputArgs } from "./getCryptoKeyVersion";
+export const getCryptoKeyVersion: typeof import("./getCryptoKeyVersion").getCryptoKeyVersion = null as any;
+export const getCryptoKeyVersionOutput: typeof import("./getCryptoKeyVersion").getCryptoKeyVersionOutput = null as any;
+
+export { GetEkmConnectionArgs, GetEkmConnectionResult, GetEkmConnectionOutputArgs } from "./getEkmConnection";
+export const getEkmConnection: typeof import("./getEkmConnection").getEkmConnection = null as any;
+export const getEkmConnectionOutput: typeof import("./getEkmConnection").getEkmConnectionOutput = null as any;
+
+export { GetEkmConnectionIamPolicyArgs, GetEkmConnectionIamPolicyResult, GetEkmConnectionIamPolicyOutputArgs } from "./getEkmConnectionIamPolicy";
+export const getEkmConnectionIamPolicy: typeof import("./getEkmConnectionIamPolicy").getEkmConnectionIamPolicy = null as any;
+export const getEkmConnectionIamPolicyOutput: typeof import("./getEkmConnectionIamPolicy").getEkmConnectionIamPolicyOutput = null as any;
+
+export { GetImportJobArgs, GetImportJobResult, GetImportJobOutputArgs } from "./getImportJob";
+export const getImportJob: typeof import("./getImportJob").getImportJob = null as any;
+export const getImportJobOutput: typeof import("./getImportJob").getImportJobOutput = null as any;
+
+export { GetKeyRingArgs, GetKeyRingResult, GetKeyRingOutputArgs } from "./getKeyRing";
+export const getKeyRing: typeof import("./getKeyRing").getKeyRing = null as any;
+export const getKeyRingOutput: typeof import("./getKeyRing").getKeyRingOutput = null as any;
+
+export { GetKeyRingCryptoKeyIamPolicyArgs, GetKeyRingCryptoKeyIamPolicyResult, GetKeyRingCryptoKeyIamPolicyOutputArgs } from "./getKeyRingCryptoKeyIamPolicy";
+export const getKeyRingCryptoKeyIamPolicy: typeof import("./getKeyRingCryptoKeyIamPolicy").getKeyRingCryptoKeyIamPolicy = null as any;
+export const getKeyRingCryptoKeyIamPolicyOutput: typeof import("./getKeyRingCryptoKeyIamPolicy").getKeyRingCryptoKeyIamPolicyOutput = null as any;
+
+export { GetKeyRingIamPolicyArgs, GetKeyRingIamPolicyResult, GetKeyRingIamPolicyOutputArgs } from "./getKeyRingIamPolicy";
+export const getKeyRingIamPolicy: typeof import("./getKeyRingIamPolicy").getKeyRingIamPolicy = null as any;
+export const getKeyRingIamPolicyOutput: typeof import("./getKeyRingIamPolicy").getKeyRingIamPolicyOutput = null as any;
+
+export { GetKeyRingImportJobIamPolicyArgs, GetKeyRingImportJobIamPolicyResult, GetKeyRingImportJobIamPolicyOutputArgs } from "./getKeyRingImportJobIamPolicy";
+export const getKeyRingImportJobIamPolicy: typeof import("./getKeyRingImportJobIamPolicy").getKeyRingImportJobIamPolicy = null as any;
+export const getKeyRingImportJobIamPolicyOutput: typeof import("./getKeyRingImportJobIamPolicy").getKeyRingImportJobIamPolicyOutput = null as any;
+
+export { ImportJobArgs } from "./importJob";
+export type ImportJob = import("./importJob").ImportJob;
+export const ImportJob: typeof import("./importJob").ImportJob = null as any;
+
+export { KeyRingArgs } from "./keyRing";
+export type KeyRing = import("./keyRing").KeyRing;
+export const KeyRing: typeof import("./keyRing").KeyRing = null as any;
+
+export { KeyRingCryptoKeyIamPolicyArgs } from "./keyRingCryptoKeyIamPolicy";
+export type KeyRingCryptoKeyIamPolicy = import("./keyRingCryptoKeyIamPolicy").KeyRingCryptoKeyIamPolicy;
+export const KeyRingCryptoKeyIamPolicy: typeof import("./keyRingCryptoKeyIamPolicy").KeyRingCryptoKeyIamPolicy = null as any;
+
+export { KeyRingIamPolicyArgs } from "./keyRingIamPolicy";
+export type KeyRingIamPolicy = import("./keyRingIamPolicy").KeyRingIamPolicy;
+export const KeyRingIamPolicy: typeof import("./keyRingIamPolicy").KeyRingIamPolicy = null as any;
+
+export { KeyRingImportJobIamPolicyArgs } from "./keyRingImportJobIamPolicy";
+export type KeyRingImportJobIamPolicy = import("./keyRingImportJobIamPolicy").KeyRingImportJobIamPolicy;
+export const KeyRingImportJobIamPolicy: typeof import("./keyRingImportJobIamPolicy").KeyRingImportJobIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["CryptoKey"], () => require("./cryptoKey"));
+utilities.lazyLoad(exports, ["CryptoKeyVersion"], () => require("./cryptoKeyVersion"));
+utilities.lazyLoad(exports, ["EkmConnection"], () => require("./ekmConnection"));
+utilities.lazyLoad(exports, ["EkmConnectionIamPolicy"], () => require("./ekmConnectionIamPolicy"));
+utilities.lazyLoad(exports, ["getCryptoKey","getCryptoKeyOutput"], () => require("./getCryptoKey"));
+utilities.lazyLoad(exports, ["getCryptoKeyVersion","getCryptoKeyVersionOutput"], () => require("./getCryptoKeyVersion"));
+utilities.lazyLoad(exports, ["getEkmConnection","getEkmConnectionOutput"], () => require("./getEkmConnection"));
+utilities.lazyLoad(exports, ["getEkmConnectionIamPolicy","getEkmConnectionIamPolicyOutput"], () => require("./getEkmConnectionIamPolicy"));
+utilities.lazyLoad(exports, ["getImportJob","getImportJobOutput"], () => require("./getImportJob"));
+utilities.lazyLoad(exports, ["getKeyRing","getKeyRingOutput"], () => require("./getKeyRing"));
+utilities.lazyLoad(exports, ["getKeyRingCryptoKeyIamPolicy","getKeyRingCryptoKeyIamPolicyOutput"], () => require("./getKeyRingCryptoKeyIamPolicy"));
+utilities.lazyLoad(exports, ["getKeyRingIamPolicy","getKeyRingIamPolicyOutput"], () => require("./getKeyRingIamPolicy"));
+utilities.lazyLoad(exports, ["getKeyRingImportJobIamPolicy","getKeyRingImportJobIamPolicyOutput"], () => require("./getKeyRingImportJobIamPolicy"));
+utilities.lazyLoad(exports, ["ImportJob"], () => require("./importJob"));
+utilities.lazyLoad(exports, ["KeyRing"], () => require("./keyRing"));
+utilities.lazyLoad(exports, ["KeyRingCryptoKeyIamPolicy"], () => require("./keyRingCryptoKeyIamPolicy"));
+utilities.lazyLoad(exports, ["KeyRingIamPolicy"], () => require("./keyRingIamPolicy"));
+utilities.lazyLoad(exports, ["KeyRingImportJobIamPolicy"], () => require("./keyRingImportJobIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/cloudkms/v1";
-
-// Import resources to register:
-import { CryptoKey } from "./cryptoKey";
-import { CryptoKeyVersion } from "./cryptoKeyVersion";
-import { EkmConnection } from "./ekmConnection";
-import { EkmConnectionIamPolicy } from "./ekmConnectionIamPolicy";
-import { ImportJob } from "./importJob";
-import { KeyRing } from "./keyRing";
-import { KeyRingCryptoKeyIamPolicy } from "./keyRingCryptoKeyIamPolicy";
-import { KeyRingIamPolicy } from "./keyRingIamPolicy";
-import { KeyRingImportJobIamPolicy } from "./keyRingImportJobIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

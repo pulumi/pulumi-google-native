@@ -5,23 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./certificate";
-export * from "./certificateMap";
-export * from "./certificateMapEntry";
-export * from "./dnsAuthorization";
-export * from "./getCertificate";
-export * from "./getCertificateMap";
-export * from "./getCertificateMapEntry";
-export * from "./getDnsAuthorization";
+export { CertificateArgs } from "./certificate";
+export type Certificate = import("./certificate").Certificate;
+export const Certificate: typeof import("./certificate").Certificate = null as any;
+
+export { CertificateMapArgs } from "./certificateMap";
+export type CertificateMap = import("./certificateMap").CertificateMap;
+export const CertificateMap: typeof import("./certificateMap").CertificateMap = null as any;
+
+export { CertificateMapEntryArgs } from "./certificateMapEntry";
+export type CertificateMapEntry = import("./certificateMapEntry").CertificateMapEntry;
+export const CertificateMapEntry: typeof import("./certificateMapEntry").CertificateMapEntry = null as any;
+
+export { DnsAuthorizationArgs } from "./dnsAuthorization";
+export type DnsAuthorization = import("./dnsAuthorization").DnsAuthorization;
+export const DnsAuthorization: typeof import("./dnsAuthorization").DnsAuthorization = null as any;
+
+export { GetCertificateArgs, GetCertificateResult, GetCertificateOutputArgs } from "./getCertificate";
+export const getCertificate: typeof import("./getCertificate").getCertificate = null as any;
+export const getCertificateOutput: typeof import("./getCertificate").getCertificateOutput = null as any;
+
+export { GetCertificateMapArgs, GetCertificateMapResult, GetCertificateMapOutputArgs } from "./getCertificateMap";
+export const getCertificateMap: typeof import("./getCertificateMap").getCertificateMap = null as any;
+export const getCertificateMapOutput: typeof import("./getCertificateMap").getCertificateMapOutput = null as any;
+
+export { GetCertificateMapEntryArgs, GetCertificateMapEntryResult, GetCertificateMapEntryOutputArgs } from "./getCertificateMapEntry";
+export const getCertificateMapEntry: typeof import("./getCertificateMapEntry").getCertificateMapEntry = null as any;
+export const getCertificateMapEntryOutput: typeof import("./getCertificateMapEntry").getCertificateMapEntryOutput = null as any;
+
+export { GetDnsAuthorizationArgs, GetDnsAuthorizationResult, GetDnsAuthorizationOutputArgs } from "./getDnsAuthorization";
+export const getDnsAuthorization: typeof import("./getDnsAuthorization").getDnsAuthorization = null as any;
+export const getDnsAuthorizationOutput: typeof import("./getDnsAuthorization").getDnsAuthorizationOutput = null as any;
+
+utilities.lazyLoad(exports, ["Certificate"], () => require("./certificate"));
+utilities.lazyLoad(exports, ["CertificateMap"], () => require("./certificateMap"));
+utilities.lazyLoad(exports, ["CertificateMapEntry"], () => require("./certificateMapEntry"));
+utilities.lazyLoad(exports, ["DnsAuthorization"], () => require("./dnsAuthorization"));
+utilities.lazyLoad(exports, ["getCertificate","getCertificateOutput"], () => require("./getCertificate"));
+utilities.lazyLoad(exports, ["getCertificateMap","getCertificateMapOutput"], () => require("./getCertificateMap"));
+utilities.lazyLoad(exports, ["getCertificateMapEntry","getCertificateMapEntryOutput"], () => require("./getCertificateMapEntry"));
+utilities.lazyLoad(exports, ["getDnsAuthorization","getDnsAuthorizationOutput"], () => require("./getDnsAuthorization"));
 
 // Export enums:
 export * from "../../types/enums/certificatemanager/v1";
-
-// Import resources to register:
-import { Certificate } from "./certificate";
-import { CertificateMap } from "./certificateMap";
-import { CertificateMapEntry } from "./certificateMapEntry";
-import { DnsAuthorization } from "./dnsAuthorization";
 
 const _module = {
     version: utilities.getVersion(),

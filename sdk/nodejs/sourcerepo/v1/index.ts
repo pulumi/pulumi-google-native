@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getRepo";
-export * from "./getRepoIamPolicy";
-export * from "./repo";
-export * from "./repoIamPolicy";
+export { GetRepoArgs, GetRepoResult, GetRepoOutputArgs } from "./getRepo";
+export const getRepo: typeof import("./getRepo").getRepo = null as any;
+export const getRepoOutput: typeof import("./getRepo").getRepoOutput = null as any;
+
+export { GetRepoIamPolicyArgs, GetRepoIamPolicyResult, GetRepoIamPolicyOutputArgs } from "./getRepoIamPolicy";
+export const getRepoIamPolicy: typeof import("./getRepoIamPolicy").getRepoIamPolicy = null as any;
+export const getRepoIamPolicyOutput: typeof import("./getRepoIamPolicy").getRepoIamPolicyOutput = null as any;
+
+export { RepoArgs } from "./repo";
+export type Repo = import("./repo").Repo;
+export const Repo: typeof import("./repo").Repo = null as any;
+
+export { RepoIamPolicyArgs } from "./repoIamPolicy";
+export type RepoIamPolicy = import("./repoIamPolicy").RepoIamPolicy;
+export const RepoIamPolicy: typeof import("./repoIamPolicy").RepoIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["getRepo","getRepoOutput"], () => require("./getRepo"));
+utilities.lazyLoad(exports, ["getRepoIamPolicy","getRepoIamPolicyOutput"], () => require("./getRepoIamPolicy"));
+utilities.lazyLoad(exports, ["Repo"], () => require("./repo"));
+utilities.lazyLoad(exports, ["RepoIamPolicy"], () => require("./repoIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/sourcerepo/v1";
-
-// Import resources to register:
-import { Repo } from "./repo";
-import { RepoIamPolicy } from "./repoIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

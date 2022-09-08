@@ -5,14 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./catalogItem";
-export * from "./getCatalogItem";
+export { CatalogItemArgs } from "./catalogItem";
+export type CatalogItem = import("./catalogItem").CatalogItem;
+export const CatalogItem: typeof import("./catalogItem").CatalogItem = null as any;
+
+export { GetCatalogItemArgs, GetCatalogItemResult, GetCatalogItemOutputArgs } from "./getCatalogItem";
+export const getCatalogItem: typeof import("./getCatalogItem").getCatalogItem = null as any;
+export const getCatalogItemOutput: typeof import("./getCatalogItem").getCatalogItemOutput = null as any;
+
+utilities.lazyLoad(exports, ["CatalogItem"], () => require("./catalogItem"));
+utilities.lazyLoad(exports, ["getCatalogItem","getCatalogItemOutput"], () => require("./getCatalogItem"));
 
 // Export enums:
 export * from "../../types/enums/recommendationengine/v1beta1";
-
-// Import resources to register:
-import { CatalogItem } from "./catalogItem";
 
 const _module = {
     version: utilities.getVersion(),

@@ -5,26 +5,66 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./backup";
-export * from "./domain";
-export * from "./domainBackupIamPolicy";
-export * from "./domainIamPolicy";
-export * from "./getBackup";
-export * from "./getDomain";
-export * from "./getDomainBackupIamPolicy";
-export * from "./getDomainIamPolicy";
-export * from "./getPeering";
-export * from "./getPeeringIamPolicy";
-export * from "./peering";
-export * from "./peeringIamPolicy";
+export { BackupArgs } from "./backup";
+export type Backup = import("./backup").Backup;
+export const Backup: typeof import("./backup").Backup = null as any;
 
-// Import resources to register:
-import { Backup } from "./backup";
-import { Domain } from "./domain";
-import { DomainBackupIamPolicy } from "./domainBackupIamPolicy";
-import { DomainIamPolicy } from "./domainIamPolicy";
-import { Peering } from "./peering";
-import { PeeringIamPolicy } from "./peeringIamPolicy";
+export { DomainArgs } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+
+export { DomainBackupIamPolicyArgs } from "./domainBackupIamPolicy";
+export type DomainBackupIamPolicy = import("./domainBackupIamPolicy").DomainBackupIamPolicy;
+export const DomainBackupIamPolicy: typeof import("./domainBackupIamPolicy").DomainBackupIamPolicy = null as any;
+
+export { DomainIamPolicyArgs } from "./domainIamPolicy";
+export type DomainIamPolicy = import("./domainIamPolicy").DomainIamPolicy;
+export const DomainIamPolicy: typeof import("./domainIamPolicy").DomainIamPolicy = null as any;
+
+export { GetBackupArgs, GetBackupResult, GetBackupOutputArgs } from "./getBackup";
+export const getBackup: typeof import("./getBackup").getBackup = null as any;
+export const getBackupOutput: typeof import("./getBackup").getBackupOutput = null as any;
+
+export { GetDomainArgs, GetDomainResult, GetDomainOutputArgs } from "./getDomain";
+export const getDomain: typeof import("./getDomain").getDomain = null as any;
+export const getDomainOutput: typeof import("./getDomain").getDomainOutput = null as any;
+
+export { GetDomainBackupIamPolicyArgs, GetDomainBackupIamPolicyResult, GetDomainBackupIamPolicyOutputArgs } from "./getDomainBackupIamPolicy";
+export const getDomainBackupIamPolicy: typeof import("./getDomainBackupIamPolicy").getDomainBackupIamPolicy = null as any;
+export const getDomainBackupIamPolicyOutput: typeof import("./getDomainBackupIamPolicy").getDomainBackupIamPolicyOutput = null as any;
+
+export { GetDomainIamPolicyArgs, GetDomainIamPolicyResult, GetDomainIamPolicyOutputArgs } from "./getDomainIamPolicy";
+export const getDomainIamPolicy: typeof import("./getDomainIamPolicy").getDomainIamPolicy = null as any;
+export const getDomainIamPolicyOutput: typeof import("./getDomainIamPolicy").getDomainIamPolicyOutput = null as any;
+
+export { GetPeeringArgs, GetPeeringResult, GetPeeringOutputArgs } from "./getPeering";
+export const getPeering: typeof import("./getPeering").getPeering = null as any;
+export const getPeeringOutput: typeof import("./getPeering").getPeeringOutput = null as any;
+
+export { GetPeeringIamPolicyArgs, GetPeeringIamPolicyResult, GetPeeringIamPolicyOutputArgs } from "./getPeeringIamPolicy";
+export const getPeeringIamPolicy: typeof import("./getPeeringIamPolicy").getPeeringIamPolicy = null as any;
+export const getPeeringIamPolicyOutput: typeof import("./getPeeringIamPolicy").getPeeringIamPolicyOutput = null as any;
+
+export { PeeringArgs } from "./peering";
+export type Peering = import("./peering").Peering;
+export const Peering: typeof import("./peering").Peering = null as any;
+
+export { PeeringIamPolicyArgs } from "./peeringIamPolicy";
+export type PeeringIamPolicy = import("./peeringIamPolicy").PeeringIamPolicy;
+export const PeeringIamPolicy: typeof import("./peeringIamPolicy").PeeringIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["Backup"], () => require("./backup"));
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+utilities.lazyLoad(exports, ["DomainBackupIamPolicy"], () => require("./domainBackupIamPolicy"));
+utilities.lazyLoad(exports, ["DomainIamPolicy"], () => require("./domainIamPolicy"));
+utilities.lazyLoad(exports, ["getBackup","getBackupOutput"], () => require("./getBackup"));
+utilities.lazyLoad(exports, ["getDomain","getDomainOutput"], () => require("./getDomain"));
+utilities.lazyLoad(exports, ["getDomainBackupIamPolicy","getDomainBackupIamPolicyOutput"], () => require("./getDomainBackupIamPolicy"));
+utilities.lazyLoad(exports, ["getDomainIamPolicy","getDomainIamPolicyOutput"], () => require("./getDomainIamPolicy"));
+utilities.lazyLoad(exports, ["getPeering","getPeeringOutput"], () => require("./getPeering"));
+utilities.lazyLoad(exports, ["getPeeringIamPolicy","getPeeringIamPolicyOutput"], () => require("./getPeeringIamPolicy"));
+utilities.lazyLoad(exports, ["Peering"], () => require("./peering"));
+utilities.lazyLoad(exports, ["PeeringIamPolicy"], () => require("./peeringIamPolicy"));
 
 const _module = {
     version: utilities.getVersion(),

@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getTrigger";
-export * from "./getTriggerIamPolicy";
-export * from "./trigger";
-export * from "./triggerIamPolicy";
+export { GetTriggerArgs, GetTriggerResult, GetTriggerOutputArgs } from "./getTrigger";
+export const getTrigger: typeof import("./getTrigger").getTrigger = null as any;
+export const getTriggerOutput: typeof import("./getTrigger").getTriggerOutput = null as any;
+
+export { GetTriggerIamPolicyArgs, GetTriggerIamPolicyResult, GetTriggerIamPolicyOutputArgs } from "./getTriggerIamPolicy";
+export const getTriggerIamPolicy: typeof import("./getTriggerIamPolicy").getTriggerIamPolicy = null as any;
+export const getTriggerIamPolicyOutput: typeof import("./getTriggerIamPolicy").getTriggerIamPolicyOutput = null as any;
+
+export { TriggerArgs } from "./trigger";
+export type Trigger = import("./trigger").Trigger;
+export const Trigger: typeof import("./trigger").Trigger = null as any;
+
+export { TriggerIamPolicyArgs } from "./triggerIamPolicy";
+export type TriggerIamPolicy = import("./triggerIamPolicy").TriggerIamPolicy;
+export const TriggerIamPolicy: typeof import("./triggerIamPolicy").TriggerIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["getTrigger","getTriggerOutput"], () => require("./getTrigger"));
+utilities.lazyLoad(exports, ["getTriggerIamPolicy","getTriggerIamPolicyOutput"], () => require("./getTriggerIamPolicy"));
+utilities.lazyLoad(exports, ["Trigger"], () => require("./trigger"));
+utilities.lazyLoad(exports, ["TriggerIamPolicy"], () => require("./triggerIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/eventarc/v1beta1";
-
-// Import resources to register:
-import { Trigger } from "./trigger";
-import { TriggerIamPolicy } from "./triggerIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

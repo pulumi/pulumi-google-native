@@ -5,29 +5,69 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./api";
-export * from "./apiConfigIamPolicy";
-export * from "./apiIamPolicy";
-export * from "./config";
-export * from "./gateway";
-export * from "./gatewayIamPolicy";
-export * from "./getApi";
-export * from "./getApiConfigIamPolicy";
-export * from "./getApiIamPolicy";
-export * from "./getConfig";
-export * from "./getGateway";
-export * from "./getGatewayIamPolicy";
+export { ApiArgs } from "./api";
+export type Api = import("./api").Api;
+export const Api: typeof import("./api").Api = null as any;
+
+export { ApiConfigIamPolicyArgs } from "./apiConfigIamPolicy";
+export type ApiConfigIamPolicy = import("./apiConfigIamPolicy").ApiConfigIamPolicy;
+export const ApiConfigIamPolicy: typeof import("./apiConfigIamPolicy").ApiConfigIamPolicy = null as any;
+
+export { ApiIamPolicyArgs } from "./apiIamPolicy";
+export type ApiIamPolicy = import("./apiIamPolicy").ApiIamPolicy;
+export const ApiIamPolicy: typeof import("./apiIamPolicy").ApiIamPolicy = null as any;
+
+export { ConfigArgs } from "./config";
+export type Config = import("./config").Config;
+export const Config: typeof import("./config").Config = null as any;
+
+export { GatewayArgs } from "./gateway";
+export type Gateway = import("./gateway").Gateway;
+export const Gateway: typeof import("./gateway").Gateway = null as any;
+
+export { GatewayIamPolicyArgs } from "./gatewayIamPolicy";
+export type GatewayIamPolicy = import("./gatewayIamPolicy").GatewayIamPolicy;
+export const GatewayIamPolicy: typeof import("./gatewayIamPolicy").GatewayIamPolicy = null as any;
+
+export { GetApiArgs, GetApiResult, GetApiOutputArgs } from "./getApi";
+export const getApi: typeof import("./getApi").getApi = null as any;
+export const getApiOutput: typeof import("./getApi").getApiOutput = null as any;
+
+export { GetApiConfigIamPolicyArgs, GetApiConfigIamPolicyResult, GetApiConfigIamPolicyOutputArgs } from "./getApiConfigIamPolicy";
+export const getApiConfigIamPolicy: typeof import("./getApiConfigIamPolicy").getApiConfigIamPolicy = null as any;
+export const getApiConfigIamPolicyOutput: typeof import("./getApiConfigIamPolicy").getApiConfigIamPolicyOutput = null as any;
+
+export { GetApiIamPolicyArgs, GetApiIamPolicyResult, GetApiIamPolicyOutputArgs } from "./getApiIamPolicy";
+export const getApiIamPolicy: typeof import("./getApiIamPolicy").getApiIamPolicy = null as any;
+export const getApiIamPolicyOutput: typeof import("./getApiIamPolicy").getApiIamPolicyOutput = null as any;
+
+export { GetConfigArgs, GetConfigResult, GetConfigOutputArgs } from "./getConfig";
+export const getConfig: typeof import("./getConfig").getConfig = null as any;
+export const getConfigOutput: typeof import("./getConfig").getConfigOutput = null as any;
+
+export { GetGatewayArgs, GetGatewayResult, GetGatewayOutputArgs } from "./getGateway";
+export const getGateway: typeof import("./getGateway").getGateway = null as any;
+export const getGatewayOutput: typeof import("./getGateway").getGatewayOutput = null as any;
+
+export { GetGatewayIamPolicyArgs, GetGatewayIamPolicyResult, GetGatewayIamPolicyOutputArgs } from "./getGatewayIamPolicy";
+export const getGatewayIamPolicy: typeof import("./getGatewayIamPolicy").getGatewayIamPolicy = null as any;
+export const getGatewayIamPolicyOutput: typeof import("./getGatewayIamPolicy").getGatewayIamPolicyOutput = null as any;
+
+utilities.lazyLoad(exports, ["Api"], () => require("./api"));
+utilities.lazyLoad(exports, ["ApiConfigIamPolicy"], () => require("./apiConfigIamPolicy"));
+utilities.lazyLoad(exports, ["ApiIamPolicy"], () => require("./apiIamPolicy"));
+utilities.lazyLoad(exports, ["Config"], () => require("./config"));
+utilities.lazyLoad(exports, ["Gateway"], () => require("./gateway"));
+utilities.lazyLoad(exports, ["GatewayIamPolicy"], () => require("./gatewayIamPolicy"));
+utilities.lazyLoad(exports, ["getApi","getApiOutput"], () => require("./getApi"));
+utilities.lazyLoad(exports, ["getApiConfigIamPolicy","getApiConfigIamPolicyOutput"], () => require("./getApiConfigIamPolicy"));
+utilities.lazyLoad(exports, ["getApiIamPolicy","getApiIamPolicyOutput"], () => require("./getApiIamPolicy"));
+utilities.lazyLoad(exports, ["getConfig","getConfigOutput"], () => require("./getConfig"));
+utilities.lazyLoad(exports, ["getGateway","getGatewayOutput"], () => require("./getGateway"));
+utilities.lazyLoad(exports, ["getGatewayIamPolicy","getGatewayIamPolicyOutput"], () => require("./getGatewayIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/apigateway/v1";
-
-// Import resources to register:
-import { Api } from "./api";
-import { ApiConfigIamPolicy } from "./apiConfigIamPolicy";
-import { ApiIamPolicy } from "./apiIamPolicy";
-import { Config } from "./config";
-import { Gateway } from "./gateway";
-import { GatewayIamPolicy } from "./gatewayIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

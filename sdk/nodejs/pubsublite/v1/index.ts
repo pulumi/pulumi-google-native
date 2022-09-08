@@ -5,20 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getReservation";
-export * from "./getSubscription";
-export * from "./getTopic";
-export * from "./reservation";
-export * from "./subscription";
-export * from "./topic";
+export { GetReservationArgs, GetReservationResult, GetReservationOutputArgs } from "./getReservation";
+export const getReservation: typeof import("./getReservation").getReservation = null as any;
+export const getReservationOutput: typeof import("./getReservation").getReservationOutput = null as any;
+
+export { GetSubscriptionArgs, GetSubscriptionResult, GetSubscriptionOutputArgs } from "./getSubscription";
+export const getSubscription: typeof import("./getSubscription").getSubscription = null as any;
+export const getSubscriptionOutput: typeof import("./getSubscription").getSubscriptionOutput = null as any;
+
+export { GetTopicArgs, GetTopicResult, GetTopicOutputArgs } from "./getTopic";
+export const getTopic: typeof import("./getTopic").getTopic = null as any;
+export const getTopicOutput: typeof import("./getTopic").getTopicOutput = null as any;
+
+export { ReservationArgs } from "./reservation";
+export type Reservation = import("./reservation").Reservation;
+export const Reservation: typeof import("./reservation").Reservation = null as any;
+
+export { SubscriptionArgs } from "./subscription";
+export type Subscription = import("./subscription").Subscription;
+export const Subscription: typeof import("./subscription").Subscription = null as any;
+
+export { TopicArgs } from "./topic";
+export type Topic = import("./topic").Topic;
+export const Topic: typeof import("./topic").Topic = null as any;
+
+utilities.lazyLoad(exports, ["getReservation","getReservationOutput"], () => require("./getReservation"));
+utilities.lazyLoad(exports, ["getSubscription","getSubscriptionOutput"], () => require("./getSubscription"));
+utilities.lazyLoad(exports, ["getTopic","getTopicOutput"], () => require("./getTopic"));
+utilities.lazyLoad(exports, ["Reservation"], () => require("./reservation"));
+utilities.lazyLoad(exports, ["Subscription"], () => require("./subscription"));
+utilities.lazyLoad(exports, ["Topic"], () => require("./topic"));
 
 // Export enums:
 export * from "../../types/enums/pubsublite/v1";
-
-// Import resources to register:
-import { Reservation } from "./reservation";
-import { Subscription } from "./subscription";
-import { Topic } from "./topic";
 
 const _module = {
     version: utilities.getVersion(),

@@ -5,14 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getNode";
-export * from "./node";
+export { GetNodeArgs, GetNodeResult, GetNodeOutputArgs } from "./getNode";
+export const getNode: typeof import("./getNode").getNode = null as any;
+export const getNodeOutput: typeof import("./getNode").getNodeOutput = null as any;
+
+export { NodeArgs } from "./node";
+export type Node = import("./node").Node;
+export const Node: typeof import("./node").Node = null as any;
+
+utilities.lazyLoad(exports, ["getNode","getNodeOutput"], () => require("./getNode"));
+utilities.lazyLoad(exports, ["Node"], () => require("./node"));
 
 // Export enums:
 export * from "../../types/enums/tpu/v1";
-
-// Import resources to register:
-import { Node } from "./node";
 
 const _module = {
     version: utilities.getVersion(),

@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./function";
-export * from "./functionIamPolicy";
-export * from "./getFunction";
-export * from "./getFunctionIamPolicy";
+export { FunctionArgs } from "./function";
+export type Function = import("./function").Function;
+export const Function: typeof import("./function").Function = null as any;
+
+export { FunctionIamPolicyArgs } from "./functionIamPolicy";
+export type FunctionIamPolicy = import("./functionIamPolicy").FunctionIamPolicy;
+export const FunctionIamPolicy: typeof import("./functionIamPolicy").FunctionIamPolicy = null as any;
+
+export { GetFunctionArgs, GetFunctionResult, GetFunctionOutputArgs } from "./getFunction";
+export const getFunction: typeof import("./getFunction").getFunction = null as any;
+export const getFunctionOutput: typeof import("./getFunction").getFunctionOutput = null as any;
+
+export { GetFunctionIamPolicyArgs, GetFunctionIamPolicyResult, GetFunctionIamPolicyOutputArgs } from "./getFunctionIamPolicy";
+export const getFunctionIamPolicy: typeof import("./getFunctionIamPolicy").getFunctionIamPolicy = null as any;
+export const getFunctionIamPolicyOutput: typeof import("./getFunctionIamPolicy").getFunctionIamPolicyOutput = null as any;
+
+utilities.lazyLoad(exports, ["Function"], () => require("./function"));
+utilities.lazyLoad(exports, ["FunctionIamPolicy"], () => require("./functionIamPolicy"));
+utilities.lazyLoad(exports, ["getFunction","getFunctionOutput"], () => require("./getFunction"));
+utilities.lazyLoad(exports, ["getFunctionIamPolicy","getFunctionIamPolicyOutput"], () => require("./getFunctionIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/cloudfunctions/v1";
-
-// Import resources to register:
-import { Function } from "./function";
-import { FunctionIamPolicy } from "./functionIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

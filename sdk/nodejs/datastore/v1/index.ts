@@ -5,14 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getIndex";
-export * from "./index_";
+export { GetIndexArgs, GetIndexResult, GetIndexOutputArgs } from "./getIndex";
+export const getIndex: typeof import("./getIndex").getIndex = null as any;
+export const getIndexOutput: typeof import("./getIndex").getIndexOutput = null as any;
+
+export { IndexArgs } from "./index_";
+export type Index = import("./index_").Index;
+export const Index: typeof import("./index_").Index = null as any;
+
+utilities.lazyLoad(exports, ["getIndex","getIndexOutput"], () => require("./getIndex"));
+utilities.lazyLoad(exports, ["Index"], () => require("./index_"));
 
 // Export enums:
 export * from "../../types/enums/datastore/v1";
-
-// Import resources to register:
-import { Index } from "./index_";
 
 const _module = {
     version: utilities.getVersion(),

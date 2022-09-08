@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getTransferConfig";
-export * from "./transferConfig";
+export { GetTransferConfigArgs, GetTransferConfigResult, GetTransferConfigOutputArgs } from "./getTransferConfig";
+export const getTransferConfig: typeof import("./getTransferConfig").getTransferConfig = null as any;
+export const getTransferConfigOutput: typeof import("./getTransferConfig").getTransferConfigOutput = null as any;
 
-// Import resources to register:
-import { TransferConfig } from "./transferConfig";
+export { TransferConfigArgs } from "./transferConfig";
+export type TransferConfig = import("./transferConfig").TransferConfig;
+export const TransferConfig: typeof import("./transferConfig").TransferConfig = null as any;
+
+utilities.lazyLoad(exports, ["getTransferConfig","getTransferConfigOutput"], () => require("./getTransferConfig"));
+utilities.lazyLoad(exports, ["TransferConfig"], () => require("./transferConfig"));
 
 const _module = {
     version: utilities.getVersion(),

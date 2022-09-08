@@ -5,20 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./control";
-export * from "./getControl";
-export * from "./getProduct";
-export * from "./getServingConfig";
-export * from "./product";
-export * from "./servingConfig";
+export { ControlArgs } from "./control";
+export type Control = import("./control").Control;
+export const Control: typeof import("./control").Control = null as any;
+
+export { GetControlArgs, GetControlResult, GetControlOutputArgs } from "./getControl";
+export const getControl: typeof import("./getControl").getControl = null as any;
+export const getControlOutput: typeof import("./getControl").getControlOutput = null as any;
+
+export { GetProductArgs, GetProductResult, GetProductOutputArgs } from "./getProduct";
+export const getProduct: typeof import("./getProduct").getProduct = null as any;
+export const getProductOutput: typeof import("./getProduct").getProductOutput = null as any;
+
+export { GetServingConfigArgs, GetServingConfigResult, GetServingConfigOutputArgs } from "./getServingConfig";
+export const getServingConfig: typeof import("./getServingConfig").getServingConfig = null as any;
+export const getServingConfigOutput: typeof import("./getServingConfig").getServingConfigOutput = null as any;
+
+export { ProductArgs } from "./product";
+export type Product = import("./product").Product;
+export const Product: typeof import("./product").Product = null as any;
+
+export { ServingConfigArgs } from "./servingConfig";
+export type ServingConfig = import("./servingConfig").ServingConfig;
+export const ServingConfig: typeof import("./servingConfig").ServingConfig = null as any;
+
+utilities.lazyLoad(exports, ["Control"], () => require("./control"));
+utilities.lazyLoad(exports, ["getControl","getControlOutput"], () => require("./getControl"));
+utilities.lazyLoad(exports, ["getProduct","getProductOutput"], () => require("./getProduct"));
+utilities.lazyLoad(exports, ["getServingConfig","getServingConfigOutput"], () => require("./getServingConfig"));
+utilities.lazyLoad(exports, ["Product"], () => require("./product"));
+utilities.lazyLoad(exports, ["ServingConfig"], () => require("./servingConfig"));
 
 // Export enums:
 export * from "../../types/enums/retail/v2alpha";
-
-// Import resources to register:
-import { Control } from "./control";
-import { Product } from "./product";
-import { ServingConfig } from "./servingConfig";
 
 const _module = {
     version: utilities.getVersion(),

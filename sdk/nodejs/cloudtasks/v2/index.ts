@@ -5,20 +5,39 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getQueue";
-export * from "./getQueueIamPolicy";
-export * from "./getTask";
-export * from "./queue";
-export * from "./queueIamPolicy";
-export * from "./task";
+export { GetQueueArgs, GetQueueResult, GetQueueOutputArgs } from "./getQueue";
+export const getQueue: typeof import("./getQueue").getQueue = null as any;
+export const getQueueOutput: typeof import("./getQueue").getQueueOutput = null as any;
+
+export { GetQueueIamPolicyArgs, GetQueueIamPolicyResult, GetQueueIamPolicyOutputArgs } from "./getQueueIamPolicy";
+export const getQueueIamPolicy: typeof import("./getQueueIamPolicy").getQueueIamPolicy = null as any;
+export const getQueueIamPolicyOutput: typeof import("./getQueueIamPolicy").getQueueIamPolicyOutput = null as any;
+
+export { GetTaskArgs, GetTaskResult, GetTaskOutputArgs } from "./getTask";
+export const getTask: typeof import("./getTask").getTask = null as any;
+export const getTaskOutput: typeof import("./getTask").getTaskOutput = null as any;
+
+export { QueueArgs } from "./queue";
+export type Queue = import("./queue").Queue;
+export const Queue: typeof import("./queue").Queue = null as any;
+
+export { QueueIamPolicyArgs } from "./queueIamPolicy";
+export type QueueIamPolicy = import("./queueIamPolicy").QueueIamPolicy;
+export const QueueIamPolicy: typeof import("./queueIamPolicy").QueueIamPolicy = null as any;
+
+export { TaskArgs } from "./task";
+export type Task = import("./task").Task;
+export const Task: typeof import("./task").Task = null as any;
+
+utilities.lazyLoad(exports, ["getQueue","getQueueOutput"], () => require("./getQueue"));
+utilities.lazyLoad(exports, ["getQueueIamPolicy","getQueueIamPolicyOutput"], () => require("./getQueueIamPolicy"));
+utilities.lazyLoad(exports, ["getTask","getTaskOutput"], () => require("./getTask"));
+utilities.lazyLoad(exports, ["Queue"], () => require("./queue"));
+utilities.lazyLoad(exports, ["QueueIamPolicy"], () => require("./queueIamPolicy"));
+utilities.lazyLoad(exports, ["Task"], () => require("./task"));
 
 // Export enums:
 export * from "../../types/enums/cloudtasks/v2";
-
-// Import resources to register:
-import { Queue } from "./queue";
-import { QueueIamPolicy } from "./queueIamPolicy";
-import { Task } from "./task";
 
 const _module = {
     version: utilities.getVersion(),

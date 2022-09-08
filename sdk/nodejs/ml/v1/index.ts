@@ -5,32 +5,79 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getJob";
-export * from "./getJobIamPolicy";
-export * from "./getModel";
-export * from "./getModelIamPolicy";
-export * from "./getStudy";
-export * from "./getTrial";
-export * from "./getVersion";
-export * from "./job";
-export * from "./jobIamPolicy";
-export * from "./model";
-export * from "./modelIamPolicy";
-export * from "./study";
-export * from "./trial";
-export * from "./version";
+export { GetJobArgs, GetJobResult, GetJobOutputArgs } from "./getJob";
+export const getJob: typeof import("./getJob").getJob = null as any;
+export const getJobOutput: typeof import("./getJob").getJobOutput = null as any;
+
+export { GetJobIamPolicyArgs, GetJobIamPolicyResult, GetJobIamPolicyOutputArgs } from "./getJobIamPolicy";
+export const getJobIamPolicy: typeof import("./getJobIamPolicy").getJobIamPolicy = null as any;
+export const getJobIamPolicyOutput: typeof import("./getJobIamPolicy").getJobIamPolicyOutput = null as any;
+
+export { GetModelArgs, GetModelResult, GetModelOutputArgs } from "./getModel";
+export const getModel: typeof import("./getModel").getModel = null as any;
+export const getModelOutput: typeof import("./getModel").getModelOutput = null as any;
+
+export { GetModelIamPolicyArgs, GetModelIamPolicyResult, GetModelIamPolicyOutputArgs } from "./getModelIamPolicy";
+export const getModelIamPolicy: typeof import("./getModelIamPolicy").getModelIamPolicy = null as any;
+export const getModelIamPolicyOutput: typeof import("./getModelIamPolicy").getModelIamPolicyOutput = null as any;
+
+export { GetStudyArgs, GetStudyResult, GetStudyOutputArgs } from "./getStudy";
+export const getStudy: typeof import("./getStudy").getStudy = null as any;
+export const getStudyOutput: typeof import("./getStudy").getStudyOutput = null as any;
+
+export { GetTrialArgs, GetTrialResult, GetTrialOutputArgs } from "./getTrial";
+export const getTrial: typeof import("./getTrial").getTrial = null as any;
+export const getTrialOutput: typeof import("./getTrial").getTrialOutput = null as any;
+
+export { GetVersionArgs, GetVersionResult, GetVersionOutputArgs } from "./getVersion";
+export const getVersion: typeof import("./getVersion").getVersion = null as any;
+export const getVersionOutput: typeof import("./getVersion").getVersionOutput = null as any;
+
+export { JobArgs } from "./job";
+export type Job = import("./job").Job;
+export const Job: typeof import("./job").Job = null as any;
+
+export { JobIamPolicyArgs } from "./jobIamPolicy";
+export type JobIamPolicy = import("./jobIamPolicy").JobIamPolicy;
+export const JobIamPolicy: typeof import("./jobIamPolicy").JobIamPolicy = null as any;
+
+export { ModelArgs } from "./model";
+export type Model = import("./model").Model;
+export const Model: typeof import("./model").Model = null as any;
+
+export { ModelIamPolicyArgs } from "./modelIamPolicy";
+export type ModelIamPolicy = import("./modelIamPolicy").ModelIamPolicy;
+export const ModelIamPolicy: typeof import("./modelIamPolicy").ModelIamPolicy = null as any;
+
+export { StudyArgs } from "./study";
+export type Study = import("./study").Study;
+export const Study: typeof import("./study").Study = null as any;
+
+export { TrialArgs } from "./trial";
+export type Trial = import("./trial").Trial;
+export const Trial: typeof import("./trial").Trial = null as any;
+
+export { VersionArgs } from "./version";
+export type Version = import("./version").Version;
+export const Version: typeof import("./version").Version = null as any;
+
+utilities.lazyLoad(exports, ["getJob","getJobOutput"], () => require("./getJob"));
+utilities.lazyLoad(exports, ["getJobIamPolicy","getJobIamPolicyOutput"], () => require("./getJobIamPolicy"));
+utilities.lazyLoad(exports, ["getModel","getModelOutput"], () => require("./getModel"));
+utilities.lazyLoad(exports, ["getModelIamPolicy","getModelIamPolicyOutput"], () => require("./getModelIamPolicy"));
+utilities.lazyLoad(exports, ["getStudy","getStudyOutput"], () => require("./getStudy"));
+utilities.lazyLoad(exports, ["getTrial","getTrialOutput"], () => require("./getTrial"));
+utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
+utilities.lazyLoad(exports, ["Job"], () => require("./job"));
+utilities.lazyLoad(exports, ["JobIamPolicy"], () => require("./jobIamPolicy"));
+utilities.lazyLoad(exports, ["Model"], () => require("./model"));
+utilities.lazyLoad(exports, ["ModelIamPolicy"], () => require("./modelIamPolicy"));
+utilities.lazyLoad(exports, ["Study"], () => require("./study"));
+utilities.lazyLoad(exports, ["Trial"], () => require("./trial"));
+utilities.lazyLoad(exports, ["Version"], () => require("./version"));
 
 // Export enums:
 export * from "../../types/enums/ml/v1";
-
-// Import resources to register:
-import { Job } from "./job";
-import { JobIamPolicy } from "./jobIamPolicy";
-import { Model } from "./model";
-import { ModelIamPolicy } from "./modelIamPolicy";
-import { Study } from "./study";
-import { Trial } from "./trial";
-import { Version } from "./version";
 
 const _module = {
     version: utilities.getVersion(),

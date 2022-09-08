@@ -5,14 +5,19 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getTestMatrix";
-export * from "./testMatrix";
+export { GetTestMatrixArgs, GetTestMatrixResult, GetTestMatrixOutputArgs } from "./getTestMatrix";
+export const getTestMatrix: typeof import("./getTestMatrix").getTestMatrix = null as any;
+export const getTestMatrixOutput: typeof import("./getTestMatrix").getTestMatrixOutput = null as any;
+
+export { TestMatrixArgs } from "./testMatrix";
+export type TestMatrix = import("./testMatrix").TestMatrix;
+export const TestMatrix: typeof import("./testMatrix").TestMatrix = null as any;
+
+utilities.lazyLoad(exports, ["getTestMatrix","getTestMatrixOutput"], () => require("./getTestMatrix"));
+utilities.lazyLoad(exports, ["TestMatrix"], () => require("./testMatrix"));
 
 // Export enums:
 export * from "../../types/enums/testing/v1";
-
-// Import resources to register:
-import { TestMatrix } from "./testMatrix";
 
 const _module = {
     version: utilities.getVersion(),

@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./dataSource";
-export * from "./getDataSource";
-export * from "./getSearchApplication";
-export * from "./searchApplication";
+export { DataSourceArgs } from "./dataSource";
+export type DataSource = import("./dataSource").DataSource;
+export const DataSource: typeof import("./dataSource").DataSource = null as any;
+
+export { GetDataSourceArgs, GetDataSourceResult, GetDataSourceOutputArgs } from "./getDataSource";
+export const getDataSource: typeof import("./getDataSource").getDataSource = null as any;
+export const getDataSourceOutput: typeof import("./getDataSource").getDataSourceOutput = null as any;
+
+export { GetSearchApplicationArgs, GetSearchApplicationResult, GetSearchApplicationOutputArgs } from "./getSearchApplication";
+export const getSearchApplication: typeof import("./getSearchApplication").getSearchApplication = null as any;
+export const getSearchApplicationOutput: typeof import("./getSearchApplication").getSearchApplicationOutput = null as any;
+
+export { SearchApplicationArgs } from "./searchApplication";
+export type SearchApplication = import("./searchApplication").SearchApplication;
+export const SearchApplication: typeof import("./searchApplication").SearchApplication = null as any;
+
+utilities.lazyLoad(exports, ["DataSource"], () => require("./dataSource"));
+utilities.lazyLoad(exports, ["getDataSource","getDataSourceOutput"], () => require("./getDataSource"));
+utilities.lazyLoad(exports, ["getSearchApplication","getSearchApplicationOutput"], () => require("./getSearchApplication"));
+utilities.lazyLoad(exports, ["SearchApplication"], () => require("./searchApplication"));
 
 // Export enums:
 export * from "../../types/enums/cloudsearch/v1";
-
-// Import resources to register:
-import { DataSource } from "./dataSource";
-import { SearchApplication } from "./searchApplication";
 
 const _module = {
     version: utilities.getVersion(),

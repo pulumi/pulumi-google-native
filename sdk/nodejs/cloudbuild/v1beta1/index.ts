@@ -5,11 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./getWorkerPool";
-export * from "./workerPool";
+export { GetWorkerPoolArgs, GetWorkerPoolResult, GetWorkerPoolOutputArgs } from "./getWorkerPool";
+export const getWorkerPool: typeof import("./getWorkerPool").getWorkerPool = null as any;
+export const getWorkerPoolOutput: typeof import("./getWorkerPool").getWorkerPoolOutput = null as any;
 
-// Import resources to register:
-import { WorkerPool } from "./workerPool";
+export { WorkerPoolArgs } from "./workerPool";
+export type WorkerPool = import("./workerPool").WorkerPool;
+export const WorkerPool: typeof import("./workerPool").WorkerPool = null as any;
+
+utilities.lazyLoad(exports, ["getWorkerPool","getWorkerPoolOutput"], () => require("./getWorkerPool"));
+utilities.lazyLoad(exports, ["WorkerPool"], () => require("./workerPool"));
 
 const _module = {
     version: utilities.getVersion(),

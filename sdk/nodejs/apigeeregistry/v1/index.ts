@@ -5,62 +5,186 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./api";
-export * from "./apiArtifactIamPolicy";
-export * from "./apiDeploymentIamPolicy";
-export * from "./apiIamPolicy";
-export * from "./apiVersionArtifactIamPolicy";
-export * from "./apiVersionIamPolicy";
-export * from "./apiVersionSpecArtifactIamPolicy";
-export * from "./apiVersionSpecIamPolicy";
-export * from "./artifact";
-export * from "./artifactIamPolicy";
-export * from "./deployment";
-export * from "./deploymentArtifact";
-export * from "./getApi";
-export * from "./getApiArtifactIamPolicy";
-export * from "./getApiDeploymentIamPolicy";
-export * from "./getApiIamPolicy";
-export * from "./getApiVersionArtifactIamPolicy";
-export * from "./getApiVersionIamPolicy";
-export * from "./getApiVersionSpecArtifactIamPolicy";
-export * from "./getApiVersionSpecIamPolicy";
-export * from "./getArtifact";
-export * from "./getArtifactIamPolicy";
-export * from "./getDeployment";
-export * from "./getDeploymentArtifact";
-export * from "./getInstance";
-export * from "./getInstanceIamPolicy";
-export * from "./getRuntimeIamPolicy";
-export * from "./getSpec";
-export * from "./getVersion";
-export * from "./getVersionArtifact";
-export * from "./instance";
-export * from "./instanceIamPolicy";
-export * from "./runtimeIamPolicy";
-export * from "./spec";
-export * from "./version";
-export * from "./versionArtifact";
+export { ApiArgs } from "./api";
+export type Api = import("./api").Api;
+export const Api: typeof import("./api").Api = null as any;
 
-// Import resources to register:
-import { Api } from "./api";
-import { ApiArtifactIamPolicy } from "./apiArtifactIamPolicy";
-import { ApiDeploymentIamPolicy } from "./apiDeploymentIamPolicy";
-import { ApiIamPolicy } from "./apiIamPolicy";
-import { ApiVersionArtifactIamPolicy } from "./apiVersionArtifactIamPolicy";
-import { ApiVersionIamPolicy } from "./apiVersionIamPolicy";
-import { ApiVersionSpecArtifactIamPolicy } from "./apiVersionSpecArtifactIamPolicy";
-import { ApiVersionSpecIamPolicy } from "./apiVersionSpecIamPolicy";
-import { Artifact } from "./artifact";
-import { ArtifactIamPolicy } from "./artifactIamPolicy";
-import { Deployment } from "./deployment";
-import { DeploymentArtifact } from "./deploymentArtifact";
-import { Instance } from "./instance";
-import { InstanceIamPolicy } from "./instanceIamPolicy";
-import { RuntimeIamPolicy } from "./runtimeIamPolicy";
-import { Spec } from "./spec";
-import { Version } from "./version";
-import { VersionArtifact } from "./versionArtifact";
+export { ApiArtifactIamPolicyArgs } from "./apiArtifactIamPolicy";
+export type ApiArtifactIamPolicy = import("./apiArtifactIamPolicy").ApiArtifactIamPolicy;
+export const ApiArtifactIamPolicy: typeof import("./apiArtifactIamPolicy").ApiArtifactIamPolicy = null as any;
+
+export { ApiDeploymentIamPolicyArgs } from "./apiDeploymentIamPolicy";
+export type ApiDeploymentIamPolicy = import("./apiDeploymentIamPolicy").ApiDeploymentIamPolicy;
+export const ApiDeploymentIamPolicy: typeof import("./apiDeploymentIamPolicy").ApiDeploymentIamPolicy = null as any;
+
+export { ApiIamPolicyArgs } from "./apiIamPolicy";
+export type ApiIamPolicy = import("./apiIamPolicy").ApiIamPolicy;
+export const ApiIamPolicy: typeof import("./apiIamPolicy").ApiIamPolicy = null as any;
+
+export { ApiVersionArtifactIamPolicyArgs } from "./apiVersionArtifactIamPolicy";
+export type ApiVersionArtifactIamPolicy = import("./apiVersionArtifactIamPolicy").ApiVersionArtifactIamPolicy;
+export const ApiVersionArtifactIamPolicy: typeof import("./apiVersionArtifactIamPolicy").ApiVersionArtifactIamPolicy = null as any;
+
+export { ApiVersionIamPolicyArgs } from "./apiVersionIamPolicy";
+export type ApiVersionIamPolicy = import("./apiVersionIamPolicy").ApiVersionIamPolicy;
+export const ApiVersionIamPolicy: typeof import("./apiVersionIamPolicy").ApiVersionIamPolicy = null as any;
+
+export { ApiVersionSpecArtifactIamPolicyArgs } from "./apiVersionSpecArtifactIamPolicy";
+export type ApiVersionSpecArtifactIamPolicy = import("./apiVersionSpecArtifactIamPolicy").ApiVersionSpecArtifactIamPolicy;
+export const ApiVersionSpecArtifactIamPolicy: typeof import("./apiVersionSpecArtifactIamPolicy").ApiVersionSpecArtifactIamPolicy = null as any;
+
+export { ApiVersionSpecIamPolicyArgs } from "./apiVersionSpecIamPolicy";
+export type ApiVersionSpecIamPolicy = import("./apiVersionSpecIamPolicy").ApiVersionSpecIamPolicy;
+export const ApiVersionSpecIamPolicy: typeof import("./apiVersionSpecIamPolicy").ApiVersionSpecIamPolicy = null as any;
+
+export { ArtifactArgs } from "./artifact";
+export type Artifact = import("./artifact").Artifact;
+export const Artifact: typeof import("./artifact").Artifact = null as any;
+
+export { ArtifactIamPolicyArgs } from "./artifactIamPolicy";
+export type ArtifactIamPolicy = import("./artifactIamPolicy").ArtifactIamPolicy;
+export const ArtifactIamPolicy: typeof import("./artifactIamPolicy").ArtifactIamPolicy = null as any;
+
+export { DeploymentArgs } from "./deployment";
+export type Deployment = import("./deployment").Deployment;
+export const Deployment: typeof import("./deployment").Deployment = null as any;
+
+export { DeploymentArtifactArgs } from "./deploymentArtifact";
+export type DeploymentArtifact = import("./deploymentArtifact").DeploymentArtifact;
+export const DeploymentArtifact: typeof import("./deploymentArtifact").DeploymentArtifact = null as any;
+
+export { GetApiArgs, GetApiResult, GetApiOutputArgs } from "./getApi";
+export const getApi: typeof import("./getApi").getApi = null as any;
+export const getApiOutput: typeof import("./getApi").getApiOutput = null as any;
+
+export { GetApiArtifactIamPolicyArgs, GetApiArtifactIamPolicyResult, GetApiArtifactIamPolicyOutputArgs } from "./getApiArtifactIamPolicy";
+export const getApiArtifactIamPolicy: typeof import("./getApiArtifactIamPolicy").getApiArtifactIamPolicy = null as any;
+export const getApiArtifactIamPolicyOutput: typeof import("./getApiArtifactIamPolicy").getApiArtifactIamPolicyOutput = null as any;
+
+export { GetApiDeploymentIamPolicyArgs, GetApiDeploymentIamPolicyResult, GetApiDeploymentIamPolicyOutputArgs } from "./getApiDeploymentIamPolicy";
+export const getApiDeploymentIamPolicy: typeof import("./getApiDeploymentIamPolicy").getApiDeploymentIamPolicy = null as any;
+export const getApiDeploymentIamPolicyOutput: typeof import("./getApiDeploymentIamPolicy").getApiDeploymentIamPolicyOutput = null as any;
+
+export { GetApiIamPolicyArgs, GetApiIamPolicyResult, GetApiIamPolicyOutputArgs } from "./getApiIamPolicy";
+export const getApiIamPolicy: typeof import("./getApiIamPolicy").getApiIamPolicy = null as any;
+export const getApiIamPolicyOutput: typeof import("./getApiIamPolicy").getApiIamPolicyOutput = null as any;
+
+export { GetApiVersionArtifactIamPolicyArgs, GetApiVersionArtifactIamPolicyResult, GetApiVersionArtifactIamPolicyOutputArgs } from "./getApiVersionArtifactIamPolicy";
+export const getApiVersionArtifactIamPolicy: typeof import("./getApiVersionArtifactIamPolicy").getApiVersionArtifactIamPolicy = null as any;
+export const getApiVersionArtifactIamPolicyOutput: typeof import("./getApiVersionArtifactIamPolicy").getApiVersionArtifactIamPolicyOutput = null as any;
+
+export { GetApiVersionIamPolicyArgs, GetApiVersionIamPolicyResult, GetApiVersionIamPolicyOutputArgs } from "./getApiVersionIamPolicy";
+export const getApiVersionIamPolicy: typeof import("./getApiVersionIamPolicy").getApiVersionIamPolicy = null as any;
+export const getApiVersionIamPolicyOutput: typeof import("./getApiVersionIamPolicy").getApiVersionIamPolicyOutput = null as any;
+
+export { GetApiVersionSpecArtifactIamPolicyArgs, GetApiVersionSpecArtifactIamPolicyResult, GetApiVersionSpecArtifactIamPolicyOutputArgs } from "./getApiVersionSpecArtifactIamPolicy";
+export const getApiVersionSpecArtifactIamPolicy: typeof import("./getApiVersionSpecArtifactIamPolicy").getApiVersionSpecArtifactIamPolicy = null as any;
+export const getApiVersionSpecArtifactIamPolicyOutput: typeof import("./getApiVersionSpecArtifactIamPolicy").getApiVersionSpecArtifactIamPolicyOutput = null as any;
+
+export { GetApiVersionSpecIamPolicyArgs, GetApiVersionSpecIamPolicyResult, GetApiVersionSpecIamPolicyOutputArgs } from "./getApiVersionSpecIamPolicy";
+export const getApiVersionSpecIamPolicy: typeof import("./getApiVersionSpecIamPolicy").getApiVersionSpecIamPolicy = null as any;
+export const getApiVersionSpecIamPolicyOutput: typeof import("./getApiVersionSpecIamPolicy").getApiVersionSpecIamPolicyOutput = null as any;
+
+export { GetArtifactArgs, GetArtifactResult, GetArtifactOutputArgs } from "./getArtifact";
+export const getArtifact: typeof import("./getArtifact").getArtifact = null as any;
+export const getArtifactOutput: typeof import("./getArtifact").getArtifactOutput = null as any;
+
+export { GetArtifactIamPolicyArgs, GetArtifactIamPolicyResult, GetArtifactIamPolicyOutputArgs } from "./getArtifactIamPolicy";
+export const getArtifactIamPolicy: typeof import("./getArtifactIamPolicy").getArtifactIamPolicy = null as any;
+export const getArtifactIamPolicyOutput: typeof import("./getArtifactIamPolicy").getArtifactIamPolicyOutput = null as any;
+
+export { GetDeploymentArgs, GetDeploymentResult, GetDeploymentOutputArgs } from "./getDeployment";
+export const getDeployment: typeof import("./getDeployment").getDeployment = null as any;
+export const getDeploymentOutput: typeof import("./getDeployment").getDeploymentOutput = null as any;
+
+export { GetDeploymentArtifactArgs, GetDeploymentArtifactResult, GetDeploymentArtifactOutputArgs } from "./getDeploymentArtifact";
+export const getDeploymentArtifact: typeof import("./getDeploymentArtifact").getDeploymentArtifact = null as any;
+export const getDeploymentArtifactOutput: typeof import("./getDeploymentArtifact").getDeploymentArtifactOutput = null as any;
+
+export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
+export const getInstance: typeof import("./getInstance").getInstance = null as any;
+export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
+
+export { GetInstanceIamPolicyArgs, GetInstanceIamPolicyResult, GetInstanceIamPolicyOutputArgs } from "./getInstanceIamPolicy";
+export const getInstanceIamPolicy: typeof import("./getInstanceIamPolicy").getInstanceIamPolicy = null as any;
+export const getInstanceIamPolicyOutput: typeof import("./getInstanceIamPolicy").getInstanceIamPolicyOutput = null as any;
+
+export { GetRuntimeIamPolicyArgs, GetRuntimeIamPolicyResult, GetRuntimeIamPolicyOutputArgs } from "./getRuntimeIamPolicy";
+export const getRuntimeIamPolicy: typeof import("./getRuntimeIamPolicy").getRuntimeIamPolicy = null as any;
+export const getRuntimeIamPolicyOutput: typeof import("./getRuntimeIamPolicy").getRuntimeIamPolicyOutput = null as any;
+
+export { GetSpecArgs, GetSpecResult, GetSpecOutputArgs } from "./getSpec";
+export const getSpec: typeof import("./getSpec").getSpec = null as any;
+export const getSpecOutput: typeof import("./getSpec").getSpecOutput = null as any;
+
+export { GetVersionArgs, GetVersionResult, GetVersionOutputArgs } from "./getVersion";
+export const getVersion: typeof import("./getVersion").getVersion = null as any;
+export const getVersionOutput: typeof import("./getVersion").getVersionOutput = null as any;
+
+export { GetVersionArtifactArgs, GetVersionArtifactResult, GetVersionArtifactOutputArgs } from "./getVersionArtifact";
+export const getVersionArtifact: typeof import("./getVersionArtifact").getVersionArtifact = null as any;
+export const getVersionArtifactOutput: typeof import("./getVersionArtifact").getVersionArtifactOutput = null as any;
+
+export { InstanceArgs } from "./instance";
+export type Instance = import("./instance").Instance;
+export const Instance: typeof import("./instance").Instance = null as any;
+
+export { InstanceIamPolicyArgs } from "./instanceIamPolicy";
+export type InstanceIamPolicy = import("./instanceIamPolicy").InstanceIamPolicy;
+export const InstanceIamPolicy: typeof import("./instanceIamPolicy").InstanceIamPolicy = null as any;
+
+export { RuntimeIamPolicyArgs } from "./runtimeIamPolicy";
+export type RuntimeIamPolicy = import("./runtimeIamPolicy").RuntimeIamPolicy;
+export const RuntimeIamPolicy: typeof import("./runtimeIamPolicy").RuntimeIamPolicy = null as any;
+
+export { SpecArgs } from "./spec";
+export type Spec = import("./spec").Spec;
+export const Spec: typeof import("./spec").Spec = null as any;
+
+export { VersionArgs } from "./version";
+export type Version = import("./version").Version;
+export const Version: typeof import("./version").Version = null as any;
+
+export { VersionArtifactArgs } from "./versionArtifact";
+export type VersionArtifact = import("./versionArtifact").VersionArtifact;
+export const VersionArtifact: typeof import("./versionArtifact").VersionArtifact = null as any;
+
+utilities.lazyLoad(exports, ["Api"], () => require("./api"));
+utilities.lazyLoad(exports, ["ApiArtifactIamPolicy"], () => require("./apiArtifactIamPolicy"));
+utilities.lazyLoad(exports, ["ApiDeploymentIamPolicy"], () => require("./apiDeploymentIamPolicy"));
+utilities.lazyLoad(exports, ["ApiIamPolicy"], () => require("./apiIamPolicy"));
+utilities.lazyLoad(exports, ["ApiVersionArtifactIamPolicy"], () => require("./apiVersionArtifactIamPolicy"));
+utilities.lazyLoad(exports, ["ApiVersionIamPolicy"], () => require("./apiVersionIamPolicy"));
+utilities.lazyLoad(exports, ["ApiVersionSpecArtifactIamPolicy"], () => require("./apiVersionSpecArtifactIamPolicy"));
+utilities.lazyLoad(exports, ["ApiVersionSpecIamPolicy"], () => require("./apiVersionSpecIamPolicy"));
+utilities.lazyLoad(exports, ["Artifact"], () => require("./artifact"));
+utilities.lazyLoad(exports, ["ArtifactIamPolicy"], () => require("./artifactIamPolicy"));
+utilities.lazyLoad(exports, ["Deployment"], () => require("./deployment"));
+utilities.lazyLoad(exports, ["DeploymentArtifact"], () => require("./deploymentArtifact"));
+utilities.lazyLoad(exports, ["getApi","getApiOutput"], () => require("./getApi"));
+utilities.lazyLoad(exports, ["getApiArtifactIamPolicy","getApiArtifactIamPolicyOutput"], () => require("./getApiArtifactIamPolicy"));
+utilities.lazyLoad(exports, ["getApiDeploymentIamPolicy","getApiDeploymentIamPolicyOutput"], () => require("./getApiDeploymentIamPolicy"));
+utilities.lazyLoad(exports, ["getApiIamPolicy","getApiIamPolicyOutput"], () => require("./getApiIamPolicy"));
+utilities.lazyLoad(exports, ["getApiVersionArtifactIamPolicy","getApiVersionArtifactIamPolicyOutput"], () => require("./getApiVersionArtifactIamPolicy"));
+utilities.lazyLoad(exports, ["getApiVersionIamPolicy","getApiVersionIamPolicyOutput"], () => require("./getApiVersionIamPolicy"));
+utilities.lazyLoad(exports, ["getApiVersionSpecArtifactIamPolicy","getApiVersionSpecArtifactIamPolicyOutput"], () => require("./getApiVersionSpecArtifactIamPolicy"));
+utilities.lazyLoad(exports, ["getApiVersionSpecIamPolicy","getApiVersionSpecIamPolicyOutput"], () => require("./getApiVersionSpecIamPolicy"));
+utilities.lazyLoad(exports, ["getArtifact","getArtifactOutput"], () => require("./getArtifact"));
+utilities.lazyLoad(exports, ["getArtifactIamPolicy","getArtifactIamPolicyOutput"], () => require("./getArtifactIamPolicy"));
+utilities.lazyLoad(exports, ["getDeployment","getDeploymentOutput"], () => require("./getDeployment"));
+utilities.lazyLoad(exports, ["getDeploymentArtifact","getDeploymentArtifactOutput"], () => require("./getDeploymentArtifact"));
+utilities.lazyLoad(exports, ["getInstance","getInstanceOutput"], () => require("./getInstance"));
+utilities.lazyLoad(exports, ["getInstanceIamPolicy","getInstanceIamPolicyOutput"], () => require("./getInstanceIamPolicy"));
+utilities.lazyLoad(exports, ["getRuntimeIamPolicy","getRuntimeIamPolicyOutput"], () => require("./getRuntimeIamPolicy"));
+utilities.lazyLoad(exports, ["getSpec","getSpecOutput"], () => require("./getSpec"));
+utilities.lazyLoad(exports, ["getVersion","getVersionOutput"], () => require("./getVersion"));
+utilities.lazyLoad(exports, ["getVersionArtifact","getVersionArtifactOutput"], () => require("./getVersionArtifact"));
+utilities.lazyLoad(exports, ["Instance"], () => require("./instance"));
+utilities.lazyLoad(exports, ["InstanceIamPolicy"], () => require("./instanceIamPolicy"));
+utilities.lazyLoad(exports, ["RuntimeIamPolicy"], () => require("./runtimeIamPolicy"));
+utilities.lazyLoad(exports, ["Spec"], () => require("./spec"));
+utilities.lazyLoad(exports, ["Version"], () => require("./version"));
+utilities.lazyLoad(exports, ["VersionArtifact"], () => require("./versionArtifact"));
 
 const _module = {
     version: utilities.getVersion(),

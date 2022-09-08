@@ -5,23 +5,49 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./device";
-export * from "./getDevice";
-export * from "./getRegistry";
-export * from "./getRegistryGroupIamPolicy";
-export * from "./getRegistryIamPolicy";
-export * from "./registry";
-export * from "./registryGroupIamPolicy";
-export * from "./registryIamPolicy";
+export { DeviceArgs } from "./device";
+export type Device = import("./device").Device;
+export const Device: typeof import("./device").Device = null as any;
+
+export { GetDeviceArgs, GetDeviceResult, GetDeviceOutputArgs } from "./getDevice";
+export const getDevice: typeof import("./getDevice").getDevice = null as any;
+export const getDeviceOutput: typeof import("./getDevice").getDeviceOutput = null as any;
+
+export { GetRegistryArgs, GetRegistryResult, GetRegistryOutputArgs } from "./getRegistry";
+export const getRegistry: typeof import("./getRegistry").getRegistry = null as any;
+export const getRegistryOutput: typeof import("./getRegistry").getRegistryOutput = null as any;
+
+export { GetRegistryGroupIamPolicyArgs, GetRegistryGroupIamPolicyResult, GetRegistryGroupIamPolicyOutputArgs } from "./getRegistryGroupIamPolicy";
+export const getRegistryGroupIamPolicy: typeof import("./getRegistryGroupIamPolicy").getRegistryGroupIamPolicy = null as any;
+export const getRegistryGroupIamPolicyOutput: typeof import("./getRegistryGroupIamPolicy").getRegistryGroupIamPolicyOutput = null as any;
+
+export { GetRegistryIamPolicyArgs, GetRegistryIamPolicyResult, GetRegistryIamPolicyOutputArgs } from "./getRegistryIamPolicy";
+export const getRegistryIamPolicy: typeof import("./getRegistryIamPolicy").getRegistryIamPolicy = null as any;
+export const getRegistryIamPolicyOutput: typeof import("./getRegistryIamPolicy").getRegistryIamPolicyOutput = null as any;
+
+export { RegistryArgs } from "./registry";
+export type Registry = import("./registry").Registry;
+export const Registry: typeof import("./registry").Registry = null as any;
+
+export { RegistryGroupIamPolicyArgs } from "./registryGroupIamPolicy";
+export type RegistryGroupIamPolicy = import("./registryGroupIamPolicy").RegistryGroupIamPolicy;
+export const RegistryGroupIamPolicy: typeof import("./registryGroupIamPolicy").RegistryGroupIamPolicy = null as any;
+
+export { RegistryIamPolicyArgs } from "./registryIamPolicy";
+export type RegistryIamPolicy = import("./registryIamPolicy").RegistryIamPolicy;
+export const RegistryIamPolicy: typeof import("./registryIamPolicy").RegistryIamPolicy = null as any;
+
+utilities.lazyLoad(exports, ["Device"], () => require("./device"));
+utilities.lazyLoad(exports, ["getDevice","getDeviceOutput"], () => require("./getDevice"));
+utilities.lazyLoad(exports, ["getRegistry","getRegistryOutput"], () => require("./getRegistry"));
+utilities.lazyLoad(exports, ["getRegistryGroupIamPolicy","getRegistryGroupIamPolicyOutput"], () => require("./getRegistryGroupIamPolicy"));
+utilities.lazyLoad(exports, ["getRegistryIamPolicy","getRegistryIamPolicyOutput"], () => require("./getRegistryIamPolicy"));
+utilities.lazyLoad(exports, ["Registry"], () => require("./registry"));
+utilities.lazyLoad(exports, ["RegistryGroupIamPolicy"], () => require("./registryGroupIamPolicy"));
+utilities.lazyLoad(exports, ["RegistryIamPolicy"], () => require("./registryIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/cloudiot/v1";
-
-// Import resources to register:
-import { Device } from "./device";
-import { Registry } from "./registry";
-import { RegistryGroupIamPolicy } from "./registryGroupIamPolicy";
-import { RegistryIamPolicy } from "./registryIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

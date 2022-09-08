@@ -5,17 +5,29 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./folder";
-export * from "./folderIamPolicy";
-export * from "./getFolder";
-export * from "./getFolderIamPolicy";
+export { FolderArgs } from "./folder";
+export type Folder = import("./folder").Folder;
+export const Folder: typeof import("./folder").Folder = null as any;
+
+export { FolderIamPolicyArgs } from "./folderIamPolicy";
+export type FolderIamPolicy = import("./folderIamPolicy").FolderIamPolicy;
+export const FolderIamPolicy: typeof import("./folderIamPolicy").FolderIamPolicy = null as any;
+
+export { GetFolderArgs, GetFolderResult, GetFolderOutputArgs } from "./getFolder";
+export const getFolder: typeof import("./getFolder").getFolder = null as any;
+export const getFolderOutput: typeof import("./getFolder").getFolderOutput = null as any;
+
+export { GetFolderIamPolicyArgs, GetFolderIamPolicyResult, GetFolderIamPolicyOutputArgs } from "./getFolderIamPolicy";
+export const getFolderIamPolicy: typeof import("./getFolderIamPolicy").getFolderIamPolicy = null as any;
+export const getFolderIamPolicyOutput: typeof import("./getFolderIamPolicy").getFolderIamPolicyOutput = null as any;
+
+utilities.lazyLoad(exports, ["Folder"], () => require("./folder"));
+utilities.lazyLoad(exports, ["FolderIamPolicy"], () => require("./folderIamPolicy"));
+utilities.lazyLoad(exports, ["getFolder","getFolderOutput"], () => require("./getFolder"));
+utilities.lazyLoad(exports, ["getFolderIamPolicy","getFolderIamPolicyOutput"], () => require("./getFolderIamPolicy"));
 
 // Export enums:
 export * from "../../types/enums/cloudresourcemanager/v2";
-
-// Import resources to register:
-import { Folder } from "./folder";
-import { FolderIamPolicy } from "./folderIamPolicy";
 
 const _module = {
     version: utilities.getVersion(),

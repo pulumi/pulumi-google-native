@@ -5,20 +5,46 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 // Export members:
-export * from "./config";
-export * from "./configIamPolicy";
-export * from "./getConfig";
-export * from "./getConfigIamPolicy";
-export * from "./getVariable";
-export * from "./getWaiter";
-export * from "./variable";
-export * from "./waiter";
+export { ConfigArgs } from "./config";
+export type Config = import("./config").Config;
+export const Config: typeof import("./config").Config = null as any;
 
-// Import resources to register:
-import { Config } from "./config";
-import { ConfigIamPolicy } from "./configIamPolicy";
-import { Variable } from "./variable";
-import { Waiter } from "./waiter";
+export { ConfigIamPolicyArgs } from "./configIamPolicy";
+export type ConfigIamPolicy = import("./configIamPolicy").ConfigIamPolicy;
+export const ConfigIamPolicy: typeof import("./configIamPolicy").ConfigIamPolicy = null as any;
+
+export { GetConfigArgs, GetConfigResult, GetConfigOutputArgs } from "./getConfig";
+export const getConfig: typeof import("./getConfig").getConfig = null as any;
+export const getConfigOutput: typeof import("./getConfig").getConfigOutput = null as any;
+
+export { GetConfigIamPolicyArgs, GetConfigIamPolicyResult, GetConfigIamPolicyOutputArgs } from "./getConfigIamPolicy";
+export const getConfigIamPolicy: typeof import("./getConfigIamPolicy").getConfigIamPolicy = null as any;
+export const getConfigIamPolicyOutput: typeof import("./getConfigIamPolicy").getConfigIamPolicyOutput = null as any;
+
+export { GetVariableArgs, GetVariableResult, GetVariableOutputArgs } from "./getVariable";
+export const getVariable: typeof import("./getVariable").getVariable = null as any;
+export const getVariableOutput: typeof import("./getVariable").getVariableOutput = null as any;
+
+export { GetWaiterArgs, GetWaiterResult, GetWaiterOutputArgs } from "./getWaiter";
+export const getWaiter: typeof import("./getWaiter").getWaiter = null as any;
+export const getWaiterOutput: typeof import("./getWaiter").getWaiterOutput = null as any;
+
+export { VariableArgs } from "./variable";
+export type Variable = import("./variable").Variable;
+export const Variable: typeof import("./variable").Variable = null as any;
+
+export { WaiterArgs } from "./waiter";
+export type Waiter = import("./waiter").Waiter;
+export const Waiter: typeof import("./waiter").Waiter = null as any;
+
+utilities.lazyLoad(exports, ["Config"], () => require("./config"));
+utilities.lazyLoad(exports, ["ConfigIamPolicy"], () => require("./configIamPolicy"));
+utilities.lazyLoad(exports, ["getConfig","getConfigOutput"], () => require("./getConfig"));
+utilities.lazyLoad(exports, ["getConfigIamPolicy","getConfigIamPolicyOutput"], () => require("./getConfigIamPolicy"));
+utilities.lazyLoad(exports, ["getVariable","getVariableOutput"], () => require("./getVariable"));
+utilities.lazyLoad(exports, ["getWaiter","getWaiterOutput"], () => require("./getWaiter"));
+utilities.lazyLoad(exports, ["Variable"], () => require("./variable"));
+utilities.lazyLoad(exports, ["Waiter"], () => require("./waiter"));
 
 const _module = {
     version: utilities.getVersion(),
