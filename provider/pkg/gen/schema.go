@@ -921,6 +921,11 @@ func (g *packageGenerator) genResource(typeName string, dd discoveryDocumentReso
 	// For resources with a `setIamPolicy` method defined, also generate Binding and Member resources to provide
 	// more granular alternatives to overwriting the entire policy.
 	if dd.hasIAMOverlays {
+		// Delete for policy is the same operation as an update.
+		resourceMeta.Delete.Endpoint = resourceMeta.Update.Endpoint
+		resourceMeta.Delete.SDKProperties = resourceMeta.Update.SDKProperties
+		resourceMeta.Delete.Verb = resourceMeta.Update.Verb
+
 		iamBindingToken := strings.TrimSuffix(resourceTok, "Policy") + "Binding"
 		g.pkg.Resources[iamBindingToken] = iamBindingSpec
 		g.metadata.Resources[iamBindingToken] = resourceMeta
