@@ -108,12 +108,13 @@ func getIAMState(
 	inputs resource.PropertyMap,
 	client *googleclient.GoogleClient,
 ) (*iamPolicyArgs, error) {
-	uri, err := buildURL(metadata.Read.Endpoint, inputs, iamPolicyVersionArg)
+	//uri, err := buildURL(metadata.Read.Endpoint, inputs, iamPolicyVersionArg)
+	uri, err := buildURL(metadata.Read.Endpoint, inputs, nil)
 	if err != nil {
 		return nil, err
 	}
 
-	stateMap, err := retryRequest(client, "GET", uri, "", nil)
+	stateMap, err := retryRequest(client, metadata.Read.Verb, uri, "", nil)
 	if err != nil {
 		return nil, fmt.Errorf("error fetching existing IAM Policy: %w", err)
 	}

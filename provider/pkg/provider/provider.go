@@ -612,7 +612,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 		if idErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / calculate ID %s", idErr)
 		}
-		readResp, getErr := p.client.RequestWithTimeout("GET", resources.AssembleURL(res.RootURL, id), "", nil, 0)
+		readResp, getErr := p.client.RequestWithTimeout(res.Read.Verb, resources.AssembleURL(res.RootURL, id), "", nil, 0)
 		if getErr != nil {
 			return nil, errors.Wrapf(err, "waiting for completion / read state %s", getErr)
 		}
@@ -642,7 +642,7 @@ func (p *googleCloudProvider) Create(ctx context.Context, req *rpc.CreateRequest
 	if !strings.HasPrefix(url, "http") {
 		url = resources.AssembleURL(res.RootURL, url)
 	}
-	resp, err = p.client.RequestWithTimeout("GET", url, "", nil, 0)
+	resp, err = p.client.RequestWithTimeout(res.Read.Verb, url, "", nil, 0)
 	if err != nil {
 		return nil, fmt.Errorf("object retrieval failure after successful create / read state: %w", err)
 	}
