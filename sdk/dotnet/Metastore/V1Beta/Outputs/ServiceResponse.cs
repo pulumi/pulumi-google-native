@@ -57,7 +57,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta.Outputs
         /// </summary>
         public readonly Outputs.MetadataManagementActivityResponse MetadataManagementActivity;
         /// <summary>
-        /// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+        /// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
         /// </summary>
         public readonly string Name;
         /// <summary>

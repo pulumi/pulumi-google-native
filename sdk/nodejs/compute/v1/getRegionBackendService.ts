@@ -43,6 +43,10 @@ export interface GetRegionBackendServiceResult {
      */
     readonly cdnPolicy: outputs.compute.v1.BackendServiceCdnPolicyResponse;
     readonly circuitBreakers: outputs.compute.v1.CircuitBreakersResponse;
+    /**
+     * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+     */
+    readonly compressionMode: string;
     readonly connectionDraining: outputs.compute.v1.ConnectionDrainingResponse;
     /**
      * Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.

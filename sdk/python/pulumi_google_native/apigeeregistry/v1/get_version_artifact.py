@@ -120,7 +120,7 @@ def get_version_artifact(api_id: Optional[str] = None,
                          version_id: Optional[str] = None,
                          opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVersionArtifactResult:
     """
-    GetArtifact returns a specified artifact.
+    Returns a specified artifact.
     """
     __args__ = dict()
     __args__['apiId'] = api_id
@@ -149,6 +149,6 @@ def get_version_artifact_output(api_id: Optional[pulumi.Input[str]] = None,
                                 version_id: Optional[pulumi.Input[str]] = None,
                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVersionArtifactResult]:
     """
-    GetArtifact returns a specified artifact.
+    Returns a specified artifact.
     """
     ...

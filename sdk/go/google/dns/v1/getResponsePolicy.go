@@ -29,7 +29,9 @@ type GetResponsePolicyArgs struct {
 type GetResponsePolicyResult struct {
 	// User-provided description for this Response Policy.
 	Description string `pulumi:"description"`
-	Kind        string `pulumi:"kind"`
+	// The list of Google Kubernetes Engine clusters to which this response policy is applied.
+	GkeClusters []ResponsePolicyGKEClusterResponse `pulumi:"gkeClusters"`
+	Kind        string                             `pulumi:"kind"`
 	// List of network names specifying networks to which this policy is applied.
 	Networks []ResponsePolicyNetworkResponse `pulumi:"networks"`
 	// User assigned name for this Response Policy.
@@ -76,6 +78,11 @@ func (o GetResponsePolicyResultOutput) ToGetResponsePolicyResultOutputWithContex
 // User-provided description for this Response Policy.
 func (o GetResponsePolicyResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetResponsePolicyResult) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The list of Google Kubernetes Engine clusters to which this response policy is applied.
+func (o GetResponsePolicyResultOutput) GkeClusters() ResponsePolicyGKEClusterResponseArrayOutput {
+	return o.ApplyT(func(v GetResponsePolicyResult) []ResponsePolicyGKEClusterResponse { return v.GkeClusters }).(ResponsePolicyGKEClusterResponseArrayOutput)
 }
 
 func (o GetResponsePolicyResultOutput) Kind() pulumi.StringOutput {

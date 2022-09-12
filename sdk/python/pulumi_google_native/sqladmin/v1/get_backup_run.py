@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackupRunResult:
-    def __init__(__self__, backup_kind=None, description=None, disk_encryption_configuration=None, disk_encryption_status=None, end_time=None, enqueued_time=None, error=None, instance=None, kind=None, location=None, self_link=None, start_time=None, status=None, type=None, window_start_time=None):
+    def __init__(__self__, backup_kind=None, description=None, disk_encryption_configuration=None, disk_encryption_status=None, end_time=None, enqueued_time=None, error=None, instance=None, kind=None, location=None, self_link=None, start_time=None, status=None, time_zone=None, type=None, window_start_time=None):
         if backup_kind and not isinstance(backup_kind, str):
             raise TypeError("Expected argument 'backup_kind' to be a str")
         pulumi.set(__self__, "backup_kind", backup_kind)
@@ -59,6 +59,9 @@ class GetBackupRunResult:
         if status and not isinstance(status, str):
             raise TypeError("Expected argument 'status' to be a str")
         pulumi.set(__self__, "status", status)
+        if time_zone and not isinstance(time_zone, str):
+            raise TypeError("Expected argument 'time_zone' to be a str")
+        pulumi.set(__self__, "time_zone", time_zone)
         if type and not isinstance(type, str):
             raise TypeError("Expected argument 'type' to be a str")
         pulumi.set(__self__, "type", type)
@@ -171,6 +174,14 @@ class GetBackupRunResult:
         return pulumi.get(self, "status")
 
     @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> str:
+        """
+        Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @property
     @pulumi.getter
     def type(self) -> str:
         """
@@ -206,6 +217,7 @@ class AwaitableGetBackupRunResult(GetBackupRunResult):
             self_link=self.self_link,
             start_time=self.start_time,
             status=self.status,
+            time_zone=self.time_zone,
             type=self.type,
             window_start_time=self.window_start_time)
 
@@ -238,6 +250,7 @@ def get_backup_run(id: Optional[str] = None,
         self_link=__ret__.self_link,
         start_time=__ret__.start_time,
         status=__ret__.status,
+        time_zone=__ret__.time_zone,
         type=__ret__.type,
         window_start_time=__ret__.window_start_time)
 

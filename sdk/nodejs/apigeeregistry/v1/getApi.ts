@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * GetApi returns a specified API.
+ * Returns a specified API.
  */
 export function getApi(args: GetApiArgs, opts?: pulumi.InvokeOptions): Promise<GetApiResult> {
     if (!opts) {
@@ -32,7 +32,7 @@ export interface GetApiResult {
      */
     readonly annotations: {[key: string]: string};
     /**
-     * A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
+     * A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
      */
     readonly availability: string;
     /**
@@ -48,7 +48,7 @@ export interface GetApiResult {
      */
     readonly displayName: string;
     /**
-     * Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+     * Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
      */
     readonly labels: {[key: string]: string};
     /**
@@ -56,11 +56,11 @@ export interface GetApiResult {
      */
     readonly name: string;
     /**
-     * The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}
+     * The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
      */
     readonly recommendedDeployment: string;
     /**
-     * The recommended version of the API. Format: apis/{api}/versions/{version}
+     * The recommended version of the API. Format: `apis/{api}/versions/{version}`
      */
     readonly recommendedVersion: string;
     /**

@@ -242,6 +242,26 @@ export const NfsShareStorageType = {
  */
 export type NfsShareStorageType = (typeof NfsShareStorageType)[keyof typeof NfsShareStorageType];
 
+export const VolumeConfigPerformanceTier = {
+    /**
+     * Value is not specified.
+     */
+    VolumePerformanceTierUnspecified: "VOLUME_PERFORMANCE_TIER_UNSPECIFIED",
+    /**
+     * Regular volumes, shared aggregates.
+     */
+    VolumePerformanceTierShared: "VOLUME_PERFORMANCE_TIER_SHARED",
+    /**
+     * Dedicated (assigned) aggregates.
+     */
+    VolumePerformanceTierDedicated: "VOLUME_PERFORMANCE_TIER_DEDICATED",
+} as const;
+
+/**
+ * Performance tier of the Volume. Default is SHARED.
+ */
+export type VolumeConfigPerformanceTier = (typeof VolumeConfigPerformanceTier)[keyof typeof VolumeConfigPerformanceTier];
+
 export const VolumeConfigProtocol = {
     /**
      * Unspecified value.
@@ -281,6 +301,26 @@ export const VolumeConfigType = {
  * The type of this Volume.
  */
 export type VolumeConfigType = (typeof VolumeConfigType)[keyof typeof VolumeConfigType];
+
+export const VolumePerformanceTier = {
+    /**
+     * Value is not specified.
+     */
+    VolumePerformanceTierUnspecified: "VOLUME_PERFORMANCE_TIER_UNSPECIFIED",
+    /**
+     * Regular volumes, shared aggregates.
+     */
+    VolumePerformanceTierShared: "VOLUME_PERFORMANCE_TIER_SHARED",
+    /**
+     * Dedicated (assigned) aggregates.
+     */
+    VolumePerformanceTierDedicated: "VOLUME_PERFORMANCE_TIER_DEDICATED",
+} as const;
+
+/**
+ * Immutable. Performance tier of the Volume. Default is SHARED.
+ */
+export type VolumePerformanceTier = (typeof VolumePerformanceTier)[keyof typeof VolumePerformanceTier];
 
 export const VolumeSnapshotAutoDeleteBehavior = {
     /**

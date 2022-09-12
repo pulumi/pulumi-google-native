@@ -114,6 +114,10 @@ class RoutineLanguage(str, Enum):
     """
     JavaScript language.
     """
+    PYTHON = "PYTHON"
+    """
+    Python language.
+    """
 
 
 class RoutineRoutineType(str, Enum):

@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     public static class GetVersionArtifact
     {
         /// <summary>
-        /// GetArtifact returns a specified artifact.
+        /// Returns a specified artifact.
         /// </summary>
         public static Task<GetVersionArtifactResult> InvokeAsync(GetVersionArtifactArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVersionArtifactResult>("google-native:apigeeregistry/v1:getVersionArtifact", args ?? new GetVersionArtifactArgs(), options.WithDefaults());
 
         /// <summary>
-        /// GetArtifact returns a specified artifact.
+        /// Returns a specified artifact.
         /// </summary>
         public static Output<GetVersionArtifactResult> Invoke(GetVersionArtifactInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetVersionArtifactResult>("google-native:apigeeregistry/v1:getVersionArtifact", args ?? new GetVersionArtifactInvokeArgs(), options.WithDefaults());

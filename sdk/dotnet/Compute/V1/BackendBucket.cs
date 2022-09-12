@@ -28,6 +28,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<Outputs.BackendBucketCdnPolicyResponse> CdnPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        /// </summary>
+        [Output("compressionMode")]
+        public Output<string> CompressionMode { get; private set; } = null!;
+
+        /// <summary>
         /// Creation timestamp in RFC3339 text format.
         /// </summary>
         [Output("creationTimestamp")]
@@ -144,6 +150,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         [Input("cdnPolicy")]
         public Input<Inputs.BackendBucketCdnPolicyArgs>? CdnPolicy { get; set; }
+
+        /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        /// </summary>
+        [Input("compressionMode")]
+        public Input<Pulumi.GoogleNative.Compute.V1.BackendBucketCompressionMode>? CompressionMode { get; set; }
 
         [Input("customResponseHeaders")]
         private InputList<string>? _customResponseHeaders;

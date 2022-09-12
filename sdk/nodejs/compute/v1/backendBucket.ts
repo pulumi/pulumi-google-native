@@ -46,6 +46,10 @@ export class BackendBucket extends pulumi.CustomResource {
      */
     public readonly cdnPolicy!: pulumi.Output<outputs.compute.v1.BackendBucketCdnPolicyResponse>;
     /**
+     * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+     */
+    public readonly compressionMode!: pulumi.Output<string>;
+    /**
      * Creation timestamp in RFC3339 text format.
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
@@ -96,6 +100,7 @@ export class BackendBucket extends pulumi.CustomResource {
         if (!opts.id) {
             resourceInputs["bucketName"] = args ? args.bucketName : undefined;
             resourceInputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
+            resourceInputs["compressionMode"] = args ? args.compressionMode : undefined;
             resourceInputs["customResponseHeaders"] = args ? args.customResponseHeaders : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["enableCdn"] = args ? args.enableCdn : undefined;
@@ -109,6 +114,7 @@ export class BackendBucket extends pulumi.CustomResource {
         } else {
             resourceInputs["bucketName"] = undefined /*out*/;
             resourceInputs["cdnPolicy"] = undefined /*out*/;
+            resourceInputs["compressionMode"] = undefined /*out*/;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["customResponseHeaders"] = undefined /*out*/;
             resourceInputs["description"] = undefined /*out*/;
@@ -139,6 +145,10 @@ export interface BackendBucketArgs {
      * Cloud CDN configuration for this BackendBucket.
      */
     cdnPolicy?: pulumi.Input<inputs.compute.v1.BackendBucketCdnPolicyArgs>;
+    /**
+     * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+     */
+    compressionMode?: pulumi.Input<enums.compute.v1.BackendBucketCompressionMode>;
     /**
      * Headers that the HTTP/S load balancer should add to proxied responses.
      */

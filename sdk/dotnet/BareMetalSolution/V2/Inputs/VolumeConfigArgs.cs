@@ -64,6 +64,12 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         }
 
         /// <summary>
+        /// Performance tier of the Volume. Default is SHARED.
+        /// </summary>
+        [Input("performanceTier")]
+        public Input<Pulumi.GoogleNative.BareMetalSolution.V2.VolumeConfigPerformanceTier>? PerformanceTier { get; set; }
+
+        /// <summary>
         /// Volume protocol.
         /// </summary>
         [Input("protocol")]

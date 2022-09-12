@@ -64,6 +64,10 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
         /// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
         /// </summary>
         public readonly string StepId;
+        /// <summary>
+        /// Optional. Job is a Trino job.
+        /// </summary>
+        public readonly Outputs.TrinoJobResponse TrinoJob;
 
         [OutputConstructor]
         private OrderedJobResponse(
@@ -89,7 +93,9 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
 
             Outputs.SparkSqlJobResponse sparkSqlJob,
 
-            string stepId)
+            string stepId,
+
+            Outputs.TrinoJobResponse trinoJob)
         {
             HadoopJob = hadoopJob;
             HiveJob = hiveJob;
@@ -103,6 +109,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
             SparkRJob = sparkRJob;
             SparkSqlJob = sparkSqlJob;
             StepId = stepId;
+            TrinoJob = trinoJob;
         }
     }
 }

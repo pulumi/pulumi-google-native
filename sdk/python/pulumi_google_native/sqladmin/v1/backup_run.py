@@ -31,6 +31,7 @@ class BackupRunArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['BackupRunType']] = None,
                  window_start_time: Optional[pulumi.Input[str]] = None):
         """
@@ -48,6 +49,7 @@ class BackupRunArgs:
         :param pulumi.Input[str] location: Location of the backups.
         :param pulumi.Input[str] self_link: The URI of this resource.
         :param pulumi.Input[str] start_time: The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
+        :param pulumi.Input[str] time_zone: Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
         :param pulumi.Input['BackupRunType'] type: The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         :param pulumi.Input[str] window_start_time: The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
@@ -78,6 +80,8 @@ class BackupRunArgs:
             pulumi.set(__self__, "self_link", self_link)
         if start_time is not None:
             pulumi.set(__self__, "start_time", start_time)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if window_start_time is not None:
@@ -249,6 +253,18 @@ class BackupRunArgs:
         pulumi.set(self, "start_time", value)
 
     @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
+
+    @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input['BackupRunType']]:
         """
@@ -292,6 +308,7 @@ class BackupRun(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['BackupRunType']] = None,
                  window_start_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -314,6 +331,7 @@ class BackupRun(pulumi.CustomResource):
         :param pulumi.Input[str] location: Location of the backups.
         :param pulumi.Input[str] self_link: The URI of this resource.
         :param pulumi.Input[str] start_time: The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
+        :param pulumi.Input[str] time_zone: Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
         :param pulumi.Input['BackupRunType'] type: The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         :param pulumi.Input[str] window_start_time: The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
         """
@@ -356,6 +374,7 @@ class BackupRun(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input['BackupRunType']] = None,
                  window_start_time: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -383,6 +402,7 @@ class BackupRun(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["self_link"] = self_link
             __props__.__dict__["start_time"] = start_time
+            __props__.__dict__["time_zone"] = time_zone
             __props__.__dict__["type"] = type
             __props__.__dict__["window_start_time"] = window_start_time
             __props__.__dict__["status"] = None
@@ -424,6 +444,7 @@ class BackupRun(pulumi.CustomResource):
         __props__.__dict__["self_link"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["status"] = None
+        __props__.__dict__["time_zone"] = None
         __props__.__dict__["type"] = None
         __props__.__dict__["window_start_time"] = None
         return BackupRun(resource_name, opts=opts, __props__=__props__)
@@ -533,6 +554,14 @@ class BackupRun(pulumi.CustomResource):
         The status of this run.
         """
         return pulumi.get(self, "status")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> pulumi.Output[str]:
+        """
+        Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+        """
+        return pulumi.get(self, "time_zone")
 
     @property
     @pulumi.getter

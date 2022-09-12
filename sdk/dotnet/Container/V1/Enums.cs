@@ -453,6 +453,47 @@ namespace Pulumi.GoogleNative.Container.V1
     }
 
     /// <summary>
+    /// Logging variant deployed on nodes.
+    /// </summary>
+    [EnumType]
+    public readonly struct LoggingVariantConfigVariant : IEquatable<LoggingVariantConfigVariant>
+    {
+        private readonly string _value;
+
+        private LoggingVariantConfigVariant(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Default value. This shouldn't be used.
+        /// </summary>
+        public static LoggingVariantConfigVariant VariantUnspecified { get; } = new LoggingVariantConfigVariant("VARIANT_UNSPECIFIED");
+        /// <summary>
+        /// default logging variant.
+        /// </summary>
+        public static LoggingVariantConfigVariant Default { get; } = new LoggingVariantConfigVariant("DEFAULT");
+        /// <summary>
+        /// maximum logging throughput variant.
+        /// </summary>
+        public static LoggingVariantConfigVariant MaxThroughput { get; } = new LoggingVariantConfigVariant("MAX_THROUGHPUT");
+
+        public static bool operator ==(LoggingVariantConfigVariant left, LoggingVariantConfigVariant right) => left.Equals(right);
+        public static bool operator !=(LoggingVariantConfigVariant left, LoggingVariantConfigVariant right) => !left.Equals(right);
+
+        public static explicit operator string(LoggingVariantConfigVariant value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is LoggingVariantConfigVariant other && Equals(other);
+        public bool Equals(LoggingVariantConfigVariant other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
     /// </summary>
     [EnumType]

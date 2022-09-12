@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetJobResult:
-    def __init__(__self__, done=None, driver_control_files_uri=None, driver_output_resource_uri=None, hadoop_job=None, hive_job=None, job_uuid=None, labels=None, pig_job=None, placement=None, presto_job=None, pyspark_job=None, reference=None, scheduling=None, spark_job=None, spark_r_job=None, spark_sql_job=None, status=None, status_history=None, yarn_applications=None):
+    def __init__(__self__, done=None, driver_control_files_uri=None, driver_output_resource_uri=None, hadoop_job=None, hive_job=None, job_uuid=None, labels=None, pig_job=None, placement=None, presto_job=None, pyspark_job=None, reference=None, scheduling=None, spark_job=None, spark_r_job=None, spark_sql_job=None, status=None, status_history=None, trino_job=None, yarn_applications=None):
         if done and not isinstance(done, bool):
             raise TypeError("Expected argument 'done' to be a bool")
         pulumi.set(__self__, "done", done)
@@ -74,6 +74,9 @@ class GetJobResult:
         if status_history and not isinstance(status_history, list):
             raise TypeError("Expected argument 'status_history' to be a list")
         pulumi.set(__self__, "status_history", status_history)
+        if trino_job and not isinstance(trino_job, dict):
+            raise TypeError("Expected argument 'trino_job' to be a dict")
+        pulumi.set(__self__, "trino_job", trino_job)
         if yarn_applications and not isinstance(yarn_applications, list):
             raise TypeError("Expected argument 'yarn_applications' to be a list")
         pulumi.set(__self__, "yarn_applications", yarn_applications)
@@ -223,6 +226,14 @@ class GetJobResult:
         return pulumi.get(self, "status_history")
 
     @property
+    @pulumi.getter(name="trinoJob")
+    def trino_job(self) -> 'outputs.TrinoJobResponse':
+        """
+        Optional. Job is a Trino job.
+        """
+        return pulumi.get(self, "trino_job")
+
+    @property
     @pulumi.getter(name="yarnApplications")
     def yarn_applications(self) -> Sequence['outputs.YarnApplicationResponse']:
         """
@@ -255,6 +266,7 @@ class AwaitableGetJobResult(GetJobResult):
             spark_sql_job=self.spark_sql_job,
             status=self.status,
             status_history=self.status_history,
+            trino_job=self.trino_job,
             yarn_applications=self.yarn_applications)
 
 
@@ -291,6 +303,7 @@ def get_job(job_id: Optional[str] = None,
         spark_sql_job=__ret__.spark_sql_job,
         status=__ret__.status,
         status_history=__ret__.status_history,
+        trino_job=__ret__.trino_job,
         yarn_applications=__ret__.yarn_applications)
 
 

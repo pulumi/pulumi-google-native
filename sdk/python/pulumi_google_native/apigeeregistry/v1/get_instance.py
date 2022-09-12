@@ -59,7 +59,7 @@ class GetInstanceResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
+        Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
         """
         return pulumi.get(self, "name")
 

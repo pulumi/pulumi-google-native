@@ -886,6 +886,172 @@ func (o ServiceAccountResponseOutput) Scope() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServiceAccountResponse) []string { return v.Scope }).(pulumi.StringArrayOutput)
 }
 
+// A set of Shielded Instance options.
+type ShieldedInstanceConfig struct {
+	// Defines whether the instance has Secure Boot enabled.
+	EnableSecureBoot *bool `pulumi:"enableSecureBoot"`
+}
+
+// ShieldedInstanceConfigInput is an input type that accepts ShieldedInstanceConfigArgs and ShieldedInstanceConfigOutput values.
+// You can construct a concrete instance of `ShieldedInstanceConfigInput` via:
+//
+//	ShieldedInstanceConfigArgs{...}
+type ShieldedInstanceConfigInput interface {
+	pulumi.Input
+
+	ToShieldedInstanceConfigOutput() ShieldedInstanceConfigOutput
+	ToShieldedInstanceConfigOutputWithContext(context.Context) ShieldedInstanceConfigOutput
+}
+
+// A set of Shielded Instance options.
+type ShieldedInstanceConfigArgs struct {
+	// Defines whether the instance has Secure Boot enabled.
+	EnableSecureBoot pulumi.BoolPtrInput `pulumi:"enableSecureBoot"`
+}
+
+func (ShieldedInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i ShieldedInstanceConfigArgs) ToShieldedInstanceConfigOutput() ShieldedInstanceConfigOutput {
+	return i.ToShieldedInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i ShieldedInstanceConfigArgs) ToShieldedInstanceConfigOutputWithContext(ctx context.Context) ShieldedInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShieldedInstanceConfigOutput)
+}
+
+func (i ShieldedInstanceConfigArgs) ToShieldedInstanceConfigPtrOutput() ShieldedInstanceConfigPtrOutput {
+	return i.ToShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ShieldedInstanceConfigArgs) ToShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShieldedInstanceConfigOutput).ToShieldedInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// ShieldedInstanceConfigPtrInput is an input type that accepts ShieldedInstanceConfigArgs, ShieldedInstanceConfigPtr and ShieldedInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `ShieldedInstanceConfigPtrInput` via:
+//
+//	        ShieldedInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ShieldedInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToShieldedInstanceConfigPtrOutput() ShieldedInstanceConfigPtrOutput
+	ToShieldedInstanceConfigPtrOutputWithContext(context.Context) ShieldedInstanceConfigPtrOutput
+}
+
+type shieldedInstanceConfigPtrType ShieldedInstanceConfigArgs
+
+func ShieldedInstanceConfigPtr(v *ShieldedInstanceConfigArgs) ShieldedInstanceConfigPtrInput {
+	return (*shieldedInstanceConfigPtrType)(v)
+}
+
+func (*shieldedInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (i *shieldedInstanceConfigPtrType) ToShieldedInstanceConfigPtrOutput() ShieldedInstanceConfigPtrOutput {
+	return i.ToShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *shieldedInstanceConfigPtrType) ToShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ShieldedInstanceConfigPtrOutput)
+}
+
+// A set of Shielded Instance options.
+type ShieldedInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (ShieldedInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o ShieldedInstanceConfigOutput) ToShieldedInstanceConfigOutput() ShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o ShieldedInstanceConfigOutput) ToShieldedInstanceConfigOutputWithContext(ctx context.Context) ShieldedInstanceConfigOutput {
+	return o
+}
+
+func (o ShieldedInstanceConfigOutput) ToShieldedInstanceConfigPtrOutput() ShieldedInstanceConfigPtrOutput {
+	return o.ToShieldedInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ShieldedInstanceConfigOutput) ToShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ShieldedInstanceConfig) *ShieldedInstanceConfig {
+		return &v
+	}).(ShieldedInstanceConfigPtrOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled.
+func (o ShieldedInstanceConfigOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ShieldedInstanceConfig) *bool { return v.EnableSecureBoot }).(pulumi.BoolPtrOutput)
+}
+
+type ShieldedInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ShieldedInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ShieldedInstanceConfig)(nil)).Elem()
+}
+
+func (o ShieldedInstanceConfigPtrOutput) ToShieldedInstanceConfigPtrOutput() ShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o ShieldedInstanceConfigPtrOutput) ToShieldedInstanceConfigPtrOutputWithContext(ctx context.Context) ShieldedInstanceConfigPtrOutput {
+	return o
+}
+
+func (o ShieldedInstanceConfigPtrOutput) Elem() ShieldedInstanceConfigOutput {
+	return o.ApplyT(func(v *ShieldedInstanceConfig) ShieldedInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ShieldedInstanceConfig
+		return ret
+	}).(ShieldedInstanceConfigOutput)
+}
+
+// Defines whether the instance has Secure Boot enabled.
+func (o ShieldedInstanceConfigPtrOutput) EnableSecureBoot() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ShieldedInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecureBoot
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A set of Shielded Instance options.
+type ShieldedInstanceConfigResponse struct {
+	// Defines whether the instance has Secure Boot enabled.
+	EnableSecureBoot bool `pulumi:"enableSecureBoot"`
+}
+
+// A set of Shielded Instance options.
+type ShieldedInstanceConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (ShieldedInstanceConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ShieldedInstanceConfigResponse)(nil)).Elem()
+}
+
+func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponseOutput() ShieldedInstanceConfigResponseOutput {
+	return o
+}
+
+func (o ShieldedInstanceConfigResponseOutput) ToShieldedInstanceConfigResponseOutputWithContext(ctx context.Context) ShieldedInstanceConfigResponseOutput {
+	return o
+}
+
+// Defines whether the instance has Secure Boot enabled.
+func (o ShieldedInstanceConfigResponseOutput) EnableSecureBoot() pulumi.BoolOutput {
+	return o.ApplyT(func(v ShieldedInstanceConfigResponse) bool { return v.EnableSecureBoot }).(pulumi.BoolOutput)
+}
+
 // A Symptom instance.
 type SymptomResponse struct {
 	// Timestamp when the Symptom is created.
@@ -962,6 +1128,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SchedulingConfigPtrInput)(nil)).Elem(), SchedulingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountInput)(nil)).Elem(), ServiceAccountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceAccountPtrInput)(nil)).Elem(), ServiceAccountArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ShieldedInstanceConfigPtrInput)(nil)).Elem(), ShieldedInstanceConfigArgs{})
 	pulumi.RegisterOutputType(AccessConfigResponseOutput{})
 	pulumi.RegisterOutputType(AttachedDiskOutput{})
 	pulumi.RegisterOutputType(AttachedDiskArrayOutput{})
@@ -978,6 +1146,9 @@ func init() {
 	pulumi.RegisterOutputType(ServiceAccountOutput{})
 	pulumi.RegisterOutputType(ServiceAccountPtrOutput{})
 	pulumi.RegisterOutputType(ServiceAccountResponseOutput{})
+	pulumi.RegisterOutputType(ShieldedInstanceConfigOutput{})
+	pulumi.RegisterOutputType(ShieldedInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ShieldedInstanceConfigResponseOutput{})
 	pulumi.RegisterOutputType(SymptomResponseOutput{})
 	pulumi.RegisterOutputType(SymptomResponseArrayOutput{})
 }

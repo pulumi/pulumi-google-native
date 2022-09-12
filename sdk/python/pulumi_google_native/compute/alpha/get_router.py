@@ -99,7 +99,7 @@ class GetRouterResult:
     @pulumi.getter(name="encryptedInterconnectRouter")
     def encrypted_interconnect_router(self) -> bool:
         """
-        Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly. 
+        Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
         """
         return pulumi.get(self, "encrypted_interconnect_router")
 

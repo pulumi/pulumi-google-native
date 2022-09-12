@@ -3642,6 +3642,8 @@ type PipelineDescription struct {
 	ExecutionPipelineStage []ExecutionStageSummary `pulumi:"executionPipelineStage"`
 	// Description of each transform in the pipeline and collections between them.
 	OriginalPipelineTransform []TransformSummary `pulumi:"originalPipelineTransform"`
+	// A hash value of the submitted pipeline portable graph step names if exists.
+	StepNamesHash *string `pulumi:"stepNamesHash"`
 }
 
 // PipelineDescriptionInput is an input type that accepts PipelineDescriptionArgs and PipelineDescriptionOutput values.
@@ -3663,6 +3665,8 @@ type PipelineDescriptionArgs struct {
 	ExecutionPipelineStage ExecutionStageSummaryArrayInput `pulumi:"executionPipelineStage"`
 	// Description of each transform in the pipeline and collections between them.
 	OriginalPipelineTransform TransformSummaryArrayInput `pulumi:"originalPipelineTransform"`
+	// A hash value of the submitted pipeline portable graph step names if exists.
+	StepNamesHash pulumi.StringPtrInput `pulumi:"stepNamesHash"`
 }
 
 func (PipelineDescriptionArgs) ElementType() reflect.Type {
@@ -3758,6 +3762,11 @@ func (o PipelineDescriptionOutput) OriginalPipelineTransform() TransformSummaryA
 	return o.ApplyT(func(v PipelineDescription) []TransformSummary { return v.OriginalPipelineTransform }).(TransformSummaryArrayOutput)
 }
 
+// A hash value of the submitted pipeline portable graph step names if exists.
+func (o PipelineDescriptionOutput) StepNamesHash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PipelineDescription) *string { return v.StepNamesHash }).(pulumi.StringPtrOutput)
+}
+
 type PipelineDescriptionPtrOutput struct{ *pulumi.OutputState }
 
 func (PipelineDescriptionPtrOutput) ElementType() reflect.Type {
@@ -3812,6 +3821,16 @@ func (o PipelineDescriptionPtrOutput) OriginalPipelineTransform() TransformSumma
 	}).(TransformSummaryArrayOutput)
 }
 
+// A hash value of the submitted pipeline portable graph step names if exists.
+func (o PipelineDescriptionPtrOutput) StepNamesHash() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PipelineDescription) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StepNamesHash
+	}).(pulumi.StringPtrOutput)
+}
+
 // A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics.
 type PipelineDescriptionResponse struct {
 	// Pipeline level display data.
@@ -3820,6 +3839,8 @@ type PipelineDescriptionResponse struct {
 	ExecutionPipelineStage []ExecutionStageSummaryResponse `pulumi:"executionPipelineStage"`
 	// Description of each transform in the pipeline and collections between them.
 	OriginalPipelineTransform []TransformSummaryResponse `pulumi:"originalPipelineTransform"`
+	// A hash value of the submitted pipeline portable graph step names if exists.
+	StepNamesHash string `pulumi:"stepNamesHash"`
 }
 
 // A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics.
@@ -3850,6 +3871,11 @@ func (o PipelineDescriptionResponseOutput) ExecutionPipelineStage() ExecutionSta
 // Description of each transform in the pipeline and collections between them.
 func (o PipelineDescriptionResponseOutput) OriginalPipelineTransform() TransformSummaryResponseArrayOutput {
 	return o.ApplyT(func(v PipelineDescriptionResponse) []TransformSummaryResponse { return v.OriginalPipelineTransform }).(TransformSummaryResponseArrayOutput)
+}
+
+// A hash value of the submitted pipeline portable graph step names if exists.
+func (o PipelineDescriptionResponseOutput) StepNamesHash() pulumi.StringOutput {
+	return o.ApplyT(func(v PipelineDescriptionResponse) string { return v.StepNamesHash }).(pulumi.StringOutput)
 }
 
 // Metadata for a Pub/Sub connector used by the job.

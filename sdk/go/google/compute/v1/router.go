@@ -23,7 +23,7 @@ type Router struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringOutput `pulumi:"description"`
-	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly.
+	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
 	EncryptedInterconnectRouter pulumi.BoolOutput `pulumi:"encryptedInterconnectRouter"`
 	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
 	Interfaces RouterInterfaceResponseArrayOutput `pulumi:"interfaces"`
@@ -96,7 +96,7 @@ type routerArgs struct {
 	BgpPeers []RouterBgpPeer `pulumi:"bgpPeers"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description *string `pulumi:"description"`
-	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly.
+	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
 	EncryptedInterconnectRouter *bool `pulumi:"encryptedInterconnectRouter"`
 	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
 	Interfaces []RouterInterface `pulumi:"interfaces"`
@@ -120,7 +120,7 @@ type RouterArgs struct {
 	BgpPeers RouterBgpPeerArrayInput
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description pulumi.StringPtrInput
-	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly.
+	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
 	EncryptedInterconnectRouter pulumi.BoolPtrInput
 	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
 	Interfaces RouterInterfaceArrayInput
@@ -193,7 +193,7 @@ func (o RouterOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v *Router) pulumi.StringOutput { return v.Description }).(pulumi.StringOutput)
 }
 
-// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly.
+// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
 func (o RouterOutput) EncryptedInterconnectRouter() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Router) pulumi.BoolOutput { return v.EncryptedInterconnectRouter }).(pulumi.BoolOutput)
 }

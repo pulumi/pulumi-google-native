@@ -63,6 +63,8 @@ type LookupJobResult struct {
 	Status JobStatusResponse `pulumi:"status"`
 	// The previous job status.
 	StatusHistory []JobStatusResponse `pulumi:"statusHistory"`
+	// Optional. Job is a Trino job.
+	TrinoJob TrinoJobResponse `pulumi:"trinoJob"`
 	// The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
 	YarnApplications []YarnApplicationResponse `pulumi:"yarnApplications"`
 }
@@ -192,6 +194,11 @@ func (o LookupJobResultOutput) Status() JobStatusResponseOutput {
 // The previous job status.
 func (o LookupJobResultOutput) StatusHistory() JobStatusResponseArrayOutput {
 	return o.ApplyT(func(v LookupJobResult) []JobStatusResponse { return v.StatusHistory }).(JobStatusResponseArrayOutput)
+}
+
+// Optional. Job is a Trino job.
+func (o LookupJobResultOutput) TrinoJob() TrinoJobResponseOutput {
+	return o.ApplyT(func(v LookupJobResult) TrinoJobResponse { return v.TrinoJob }).(TrinoJobResponseOutput)
 }
 
 // The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.

@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Outputs
     public sealed class ExecutionConfigResponse
     {
         /// <summary>
-        /// Optional. The duration to keep the underlying cluster alive while idling Passing this threshold will cause the cluster to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        /// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         /// </summary>
         public readonly string IdleTtl;
         /// <summary>

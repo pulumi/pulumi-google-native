@@ -152,7 +152,7 @@ class GetNetworkResult:
     @pulumi.getter
     def mtu(self) -> int:
         """
-        Maximum Transmission Unit in bytes. The minimum value for this field is 1460 and the maximum value is 1500 bytes. If unspecified, defaults to 1460.
+        Maximum Transmission Unit in bytes. The minimum value for this field is 1300 and the maximum value is 8896. The suggested value is 1500, which is the default MTU used on the Internet, or 8896 if you want to use Jumbo frames. If unspecified, the value defaults to 1460.
         """
         return pulumi.get(self, "mtu")
 

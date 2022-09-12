@@ -36,6 +36,12 @@ namespace Pulumi.GoogleNative.Compute.V1
         [Output("circuitBreakers")]
         public Output<Outputs.CircuitBreakersResponse> CircuitBreakers { get; private set; } = null!;
 
+        /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        /// </summary>
+        [Output("compressionMode")]
+        public Output<string> CompressionMode { get; private set; } = null!;
+
         [Output("connectionDraining")]
         public Output<Outputs.ConnectionDrainingResponse> ConnectionDraining { get; private set; } = null!;
 
@@ -312,6 +318,12 @@ namespace Pulumi.GoogleNative.Compute.V1
 
         [Input("circuitBreakers")]
         public Input<Inputs.CircuitBreakersArgs>? CircuitBreakers { get; set; }
+
+        /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        /// </summary>
+        [Input("compressionMode")]
+        public Input<Pulumi.GoogleNative.Compute.V1.BackendServiceCompressionMode>? CompressionMode { get; set; }
 
         [Input("connectionDraining")]
         public Input<Inputs.ConnectionDrainingArgs>? ConnectionDraining { get; set; }

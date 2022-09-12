@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly. 
+        /// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
         /// </summary>
         [Output("encryptedInterconnectRouter")]
         public Output<bool> EncryptedInterconnectRouter { get; private set; } = null!;
@@ -174,7 +174,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly. 
+        /// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
         /// </summary>
         [Input("encryptedInterconnectRouter")]
         public Input<bool>? EncryptedInterconnectRouter { get; set; }

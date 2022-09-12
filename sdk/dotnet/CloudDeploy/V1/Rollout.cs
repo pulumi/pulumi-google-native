@@ -103,6 +103,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
+        /// Metadata contains information about the rollout.
+        /// </summary>
+        [Output("metadata")]
+        public Output<Outputs.MetadataResponse> Metadata { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
         /// </summary>
         [Output("name")]

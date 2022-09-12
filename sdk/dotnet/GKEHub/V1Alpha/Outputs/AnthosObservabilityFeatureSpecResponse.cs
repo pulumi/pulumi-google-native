@@ -17,7 +17,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Outputs
     public sealed class AnthosObservabilityFeatureSpecResponse
     {
         /// <summary>
-        /// default membership spec for unconfigured memberships
+        /// Default membership spec for unconfigured memberships
         /// </summary>
         public readonly Outputs.AnthosObservabilityMembershipSpecResponse DefaultMembershipSpec;
 

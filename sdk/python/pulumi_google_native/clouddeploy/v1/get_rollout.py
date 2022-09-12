@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = [
     'GetRolloutResult',
@@ -18,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRolloutResult:
-    def __init__(__self__, annotations=None, approval_state=None, approve_time=None, create_time=None, deploy_end_time=None, deploy_failure_cause=None, deploy_start_time=None, deploying_build=None, description=None, enqueue_time=None, etag=None, failure_reason=None, labels=None, name=None, state=None, target_id=None, uid=None):
+    def __init__(__self__, annotations=None, approval_state=None, approve_time=None, create_time=None, deploy_end_time=None, deploy_failure_cause=None, deploy_start_time=None, deploying_build=None, description=None, enqueue_time=None, etag=None, failure_reason=None, labels=None, metadata=None, name=None, state=None, target_id=None, uid=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -58,6 +59,9 @@ class GetRolloutResult:
         if labels and not isinstance(labels, dict):
             raise TypeError("Expected argument 'labels' to be a dict")
         pulumi.set(__self__, "labels", labels)
+        if metadata and not isinstance(metadata, dict):
+            raise TypeError("Expected argument 'metadata' to be a dict")
+        pulumi.set(__self__, "metadata", metadata)
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
@@ -177,6 +181,14 @@ class GetRolloutResult:
 
     @property
     @pulumi.getter
+    def metadata(self) -> 'outputs.MetadataResponse':
+        """
+        Metadata contains information about the rollout.
+        """
+        return pulumi.get(self, "metadata")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
@@ -227,6 +239,7 @@ class AwaitableGetRolloutResult(GetRolloutResult):
             etag=self.etag,
             failure_reason=self.failure_reason,
             labels=self.labels,
+            metadata=self.metadata,
             name=self.name,
             state=self.state,
             target_id=self.target_id,
@@ -265,6 +278,7 @@ def get_rollout(delivery_pipeline_id: Optional[str] = None,
         etag=__ret__.etag,
         failure_reason=__ret__.failure_reason,
         labels=__ret__.labels,
+        metadata=__ret__.metadata,
         name=__ret__.name,
         state=__ret__.state,
         target_id=__ret__.target_id,

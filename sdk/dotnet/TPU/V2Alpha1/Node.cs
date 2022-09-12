@@ -131,6 +131,12 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         public Output<Outputs.ServiceAccountResponse> ServiceAccount { get; private set; } = null!;
 
         /// <summary>
+        /// Shielded Instance options.
+        /// </summary>
+        [Output("shieldedInstanceConfig")]
+        public Output<Outputs.ShieldedInstanceConfigResponse> ShieldedInstanceConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The current state for the TPU Node.
         /// </summary>
         [Output("state")]
@@ -299,6 +305,12 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// </summary>
         [Input("serviceAccount")]
         public Input<Inputs.ServiceAccountArgs>? ServiceAccount { get; set; }
+
+        /// <summary>
+        /// Shielded Instance options.
+        /// </summary>
+        [Input("shieldedInstanceConfig")]
+        public Input<Inputs.ShieldedInstanceConfigArgs>? ShieldedInstanceConfig { get; set; }
 
         [Input("tags")]
         private InputList<string>? _tags;

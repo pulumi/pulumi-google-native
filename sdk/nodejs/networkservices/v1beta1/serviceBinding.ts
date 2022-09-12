@@ -48,12 +48,12 @@ export class ServiceBinding extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Name of the ServiceBinding resource. It matches pattern `projects/*&#47;locations/global/serviceBindings/service_binding_name>`.
+     * Name of the ServiceBinding resource. It matches pattern `projects/*&#47;locations/global/serviceBindings/service_binding_name`.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
     /**
-     * The full service directory service name of the format /projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
+     * The full Service Directory Service name of the format projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
      */
     public readonly service!: pulumi.Output<string>;
     /**
@@ -123,12 +123,12 @@ export interface ServiceBindingArgs {
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     location?: pulumi.Input<string>;
     /**
-     * Name of the ServiceBinding resource. It matches pattern `projects/*&#47;locations/global/serviceBindings/service_binding_name>`.
+     * Name of the ServiceBinding resource. It matches pattern `projects/*&#47;locations/global/serviceBindings/service_binding_name`.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * The full service directory service name of the format /projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
+     * The full Service Directory Service name of the format projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
      */
     service: pulumi.Input<string>;
     /**

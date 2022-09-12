@@ -59,6 +59,8 @@ type LookupNodeResult struct {
 	SchedulingConfig SchedulingConfigResponse `pulumi:"schedulingConfig"`
 	// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
 	ServiceAccount ServiceAccountResponse `pulumi:"serviceAccount"`
+	// Shielded Instance options.
+	ShieldedInstanceConfig ShieldedInstanceConfigResponse `pulumi:"shieldedInstanceConfig"`
 	// The current state for the TPU Node.
 	State string `pulumi:"state"`
 	// The Symptoms that have occurred to the TPU Node.
@@ -182,6 +184,11 @@ func (o LookupNodeResultOutput) SchedulingConfig() SchedulingConfigResponseOutpu
 // The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
 func (o LookupNodeResultOutput) ServiceAccount() ServiceAccountResponseOutput {
 	return o.ApplyT(func(v LookupNodeResult) ServiceAccountResponse { return v.ServiceAccount }).(ServiceAccountResponseOutput)
+}
+
+// Shielded Instance options.
+func (o LookupNodeResultOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {
+	return o.ApplyT(func(v LookupNodeResult) ShieldedInstanceConfigResponse { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigResponseOutput)
 }
 
 // The current state for the TPU Node.

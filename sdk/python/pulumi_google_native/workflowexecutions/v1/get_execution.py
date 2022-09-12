@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetExecutionResult:
-    def __init__(__self__, argument=None, call_log_level=None, end_time=None, error=None, name=None, result=None, start_time=None, state=None, workflow_revision_id=None):
+    def __init__(__self__, argument=None, call_log_level=None, end_time=None, error=None, name=None, result=None, start_time=None, state=None, status=None, workflow_revision_id=None):
         if argument and not isinstance(argument, str):
             raise TypeError("Expected argument 'argument' to be a str")
         pulumi.set(__self__, "argument", argument)
@@ -44,6 +44,9 @@ class GetExecutionResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if status and not isinstance(status, dict):
+            raise TypeError("Expected argument 'status' to be a dict")
+        pulumi.set(__self__, "status", status)
         if workflow_revision_id and not isinstance(workflow_revision_id, str):
             raise TypeError("Expected argument 'workflow_revision_id' to be a str")
         pulumi.set(__self__, "workflow_revision_id", workflow_revision_id)
@@ -113,6 +116,14 @@ class GetExecutionResult:
         return pulumi.get(self, "state")
 
     @property
+    @pulumi.getter
+    def status(self) -> 'outputs.StatusResponse':
+        """
+        Status tracks the current steps and progress data of this execution. > **Preview:** This field is covered by the > [Pre-GA Offerings Terms](https://cloud.google.com/terms/service-terms) of > the Google Cloud Terms of Service. Pre-GA features might have limited > support, and changes to pre-GA features might not be compatible with > other pre-GA versions. For more information, see the > [launch stage descriptions](https://cloud.google.com/products#product-launch-stages). > This field is usable only if your project has access. See the > [access request page](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform).
+        """
+        return pulumi.get(self, "status")
+
+    @property
     @pulumi.getter(name="workflowRevisionId")
     def workflow_revision_id(self) -> str:
         """
@@ -135,6 +146,7 @@ class AwaitableGetExecutionResult(GetExecutionResult):
             result=self.result,
             start_time=self.start_time,
             state=self.state,
+            status=self.status,
             workflow_revision_id=self.workflow_revision_id)
 
 
@@ -165,6 +177,7 @@ def get_execution(execution_id: Optional[str] = None,
         result=__ret__.result,
         start_time=__ret__.start_time,
         state=__ret__.state,
+        status=__ret__.status,
         workflow_revision_id=__ret__.workflow_revision_id)
 
 

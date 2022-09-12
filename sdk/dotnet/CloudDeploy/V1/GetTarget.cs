@@ -104,6 +104,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly bool RequireApproval;
         /// <summary>
+        /// Information specifying a Cloud Run deployment target.
+        /// </summary>
+        public readonly Outputs.CloudRunLocationResponse Run;
+        /// <summary>
         /// Resource id of the `Target`.
         /// </summary>
         public readonly string TargetId;
@@ -138,6 +142,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 
             bool requireApproval,
 
+            Outputs.CloudRunLocationResponse run,
+
             string targetId,
 
             string uid,
@@ -154,6 +160,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
             Labels = labels;
             Name = name;
             RequireApproval = requireApproval;
+            Run = run;
             TargetId = targetId;
             Uid = uid;
             UpdateTime = updateTime;

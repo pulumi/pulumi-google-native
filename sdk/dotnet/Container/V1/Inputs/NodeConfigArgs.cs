@@ -106,6 +106,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         public Input<int>? LocalSsdCount { get; set; }
 
         /// <summary>
+        /// Logging configuration.
+        /// </summary>
+        [Input("loggingConfig")]
+        public Input<Inputs.NodePoolLoggingConfigArgs>? LoggingConfig { get; set; }
+
+        /// <summary>
         /// The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types) If unspecified, the default machine type is `e2-medium`.
         /// </summary>
         [Input("machineType")]

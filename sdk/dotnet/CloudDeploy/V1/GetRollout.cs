@@ -128,6 +128,10 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
+        /// Metadata contains information about the rollout.
+        /// </summary>
+        public readonly Outputs.MetadataResponse Metadata;
+        /// <summary>
         /// Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
         /// </summary>
         public readonly string Name;
@@ -172,6 +176,8 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
 
             ImmutableDictionary<string, string> labels,
 
+            Outputs.MetadataResponse metadata,
+
             string name,
 
             string state,
@@ -193,6 +199,7 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
             Etag = etag;
             FailureReason = failureReason;
             Labels = labels;
+            Metadata = metadata;
             Name = name;
             State = state;
             TargetId = targetId;

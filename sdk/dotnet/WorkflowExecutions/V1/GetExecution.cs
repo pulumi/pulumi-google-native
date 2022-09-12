@@ -108,6 +108,10 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
         /// </summary>
         public readonly string State;
         /// <summary>
+        /// Status tracks the current steps and progress data of this execution. &gt; **Preview:** This field is covered by the &gt; [Pre-GA Offerings Terms](https://cloud.google.com/terms/service-terms) of &gt; the Google Cloud Terms of Service. Pre-GA features might have limited &gt; support, and changes to pre-GA features might not be compatible with &gt; other pre-GA versions. For more information, see the &gt; [launch stage descriptions](https://cloud.google.com/products#product-launch-stages). &gt; This field is usable only if your project has access. See the &gt; [access request page](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform).
+        /// </summary>
+        public readonly Outputs.StatusResponse Status;
+        /// <summary>
         /// Revision of the workflow this execution is using.
         /// </summary>
         public readonly string WorkflowRevisionId;
@@ -130,6 +134,8 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
 
             string state,
 
+            Outputs.StatusResponse status,
+
             string workflowRevisionId)
         {
             Argument = argument;
@@ -140,6 +146,7 @@ namespace Pulumi.GoogleNative.WorkflowExecutions.V1
             Result = result;
             StartTime = startTime;
             State = state;
+            Status = status;
             WorkflowRevisionId = workflowRevisionId;
         }
     }

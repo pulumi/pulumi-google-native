@@ -474,7 +474,7 @@ namespace Pulumi.GoogleNative.Notebooks.V1
         /// </summary>
         public static RuntimeAcceleratorConfigType AcceleratorTypeUnspecified { get; } = new RuntimeAcceleratorConfigType("ACCELERATOR_TYPE_UNSPECIFIED");
         /// <summary>
-        /// Accelerator type is Nvidia Tesla K80.
+        /// b/241005111 K80 deprecation in Google Managed Notebooks Accelerator type is Nvidia Tesla K80.
         /// </summary>
         public static RuntimeAcceleratorConfigType NvidiaTeslaK80 { get; } = new RuntimeAcceleratorConfigType("NVIDIA_TESLA_K80");
         /// <summary>

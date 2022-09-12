@@ -504,7 +504,7 @@ func (o AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) AuditLogConf
 type Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -525,7 +525,7 @@ type BindingInput interface {
 type BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -588,7 +588,7 @@ func (o BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -622,7 +622,7 @@ func (o BindingArrayOutput) Index(i pulumi.IntInput) BindingOutput {
 type BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -648,7 +648,7 @@ func (o BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -838,6 +838,212 @@ func (o BuildArtifactResponseArrayOutput) Index(i pulumi.IntInput) BuildArtifact
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BuildArtifactResponse {
 		return vs[0].([]BuildArtifactResponse)[vs[1].(int)]
 	}).(BuildArtifactResponseOutput)
+}
+
+// Information specifying where to deploy a Cloud Run Service.
+type CloudRunLocation struct {
+	// The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+	Location string `pulumi:"location"`
+}
+
+// CloudRunLocationInput is an input type that accepts CloudRunLocationArgs and CloudRunLocationOutput values.
+// You can construct a concrete instance of `CloudRunLocationInput` via:
+//
+//	CloudRunLocationArgs{...}
+type CloudRunLocationInput interface {
+	pulumi.Input
+
+	ToCloudRunLocationOutput() CloudRunLocationOutput
+	ToCloudRunLocationOutputWithContext(context.Context) CloudRunLocationOutput
+}
+
+// Information specifying where to deploy a Cloud Run Service.
+type CloudRunLocationArgs struct {
+	// The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+	Location pulumi.StringInput `pulumi:"location"`
+}
+
+func (CloudRunLocationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunLocation)(nil)).Elem()
+}
+
+func (i CloudRunLocationArgs) ToCloudRunLocationOutput() CloudRunLocationOutput {
+	return i.ToCloudRunLocationOutputWithContext(context.Background())
+}
+
+func (i CloudRunLocationArgs) ToCloudRunLocationOutputWithContext(ctx context.Context) CloudRunLocationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunLocationOutput)
+}
+
+func (i CloudRunLocationArgs) ToCloudRunLocationPtrOutput() CloudRunLocationPtrOutput {
+	return i.ToCloudRunLocationPtrOutputWithContext(context.Background())
+}
+
+func (i CloudRunLocationArgs) ToCloudRunLocationPtrOutputWithContext(ctx context.Context) CloudRunLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunLocationOutput).ToCloudRunLocationPtrOutputWithContext(ctx)
+}
+
+// CloudRunLocationPtrInput is an input type that accepts CloudRunLocationArgs, CloudRunLocationPtr and CloudRunLocationPtrOutput values.
+// You can construct a concrete instance of `CloudRunLocationPtrInput` via:
+//
+//	        CloudRunLocationArgs{...}
+//
+//	or:
+//
+//	        nil
+type CloudRunLocationPtrInput interface {
+	pulumi.Input
+
+	ToCloudRunLocationPtrOutput() CloudRunLocationPtrOutput
+	ToCloudRunLocationPtrOutputWithContext(context.Context) CloudRunLocationPtrOutput
+}
+
+type cloudRunLocationPtrType CloudRunLocationArgs
+
+func CloudRunLocationPtr(v *CloudRunLocationArgs) CloudRunLocationPtrInput {
+	return (*cloudRunLocationPtrType)(v)
+}
+
+func (*cloudRunLocationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRunLocation)(nil)).Elem()
+}
+
+func (i *cloudRunLocationPtrType) ToCloudRunLocationPtrOutput() CloudRunLocationPtrOutput {
+	return i.ToCloudRunLocationPtrOutputWithContext(context.Background())
+}
+
+func (i *cloudRunLocationPtrType) ToCloudRunLocationPtrOutputWithContext(ctx context.Context) CloudRunLocationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CloudRunLocationPtrOutput)
+}
+
+// Information specifying where to deploy a Cloud Run Service.
+type CloudRunLocationOutput struct{ *pulumi.OutputState }
+
+func (CloudRunLocationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunLocation)(nil)).Elem()
+}
+
+func (o CloudRunLocationOutput) ToCloudRunLocationOutput() CloudRunLocationOutput {
+	return o
+}
+
+func (o CloudRunLocationOutput) ToCloudRunLocationOutputWithContext(ctx context.Context) CloudRunLocationOutput {
+	return o
+}
+
+func (o CloudRunLocationOutput) ToCloudRunLocationPtrOutput() CloudRunLocationPtrOutput {
+	return o.ToCloudRunLocationPtrOutputWithContext(context.Background())
+}
+
+func (o CloudRunLocationOutput) ToCloudRunLocationPtrOutputWithContext(ctx context.Context) CloudRunLocationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v CloudRunLocation) *CloudRunLocation {
+		return &v
+	}).(CloudRunLocationPtrOutput)
+}
+
+// The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+func (o CloudRunLocationOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunLocation) string { return v.Location }).(pulumi.StringOutput)
+}
+
+type CloudRunLocationPtrOutput struct{ *pulumi.OutputState }
+
+func (CloudRunLocationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**CloudRunLocation)(nil)).Elem()
+}
+
+func (o CloudRunLocationPtrOutput) ToCloudRunLocationPtrOutput() CloudRunLocationPtrOutput {
+	return o
+}
+
+func (o CloudRunLocationPtrOutput) ToCloudRunLocationPtrOutputWithContext(ctx context.Context) CloudRunLocationPtrOutput {
+	return o
+}
+
+func (o CloudRunLocationPtrOutput) Elem() CloudRunLocationOutput {
+	return o.ApplyT(func(v *CloudRunLocation) CloudRunLocation {
+		if v != nil {
+			return *v
+		}
+		var ret CloudRunLocation
+		return ret
+	}).(CloudRunLocationOutput)
+}
+
+// The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+func (o CloudRunLocationPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *CloudRunLocation) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Information specifying where to deploy a Cloud Run Service.
+type CloudRunLocationResponse struct {
+	// The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+	Location string `pulumi:"location"`
+}
+
+// Information specifying where to deploy a Cloud Run Service.
+type CloudRunLocationResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudRunLocationResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunLocationResponse)(nil)).Elem()
+}
+
+func (o CloudRunLocationResponseOutput) ToCloudRunLocationResponseOutput() CloudRunLocationResponseOutput {
+	return o
+}
+
+func (o CloudRunLocationResponseOutput) ToCloudRunLocationResponseOutputWithContext(ctx context.Context) CloudRunLocationResponseOutput {
+	return o
+}
+
+// The location where the Cloud Run Service should be located. Format is `projects/{project}/locations/{location}`.
+func (o CloudRunLocationResponseOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunLocationResponse) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// CloudRunMetadata contains information from a Cloud Run deployment.
+type CloudRunMetadataResponse struct {
+	// The Cloud Run Revision id associated with a `Rollout`.
+	Revision string `pulumi:"revision"`
+	// The name of the Cloud Run Service that is associated with a `Rollout`. Format is projects/{project}/locations/{location}/services/{service}.
+	Service string `pulumi:"service"`
+	// The Cloud Run Service urls that are associated with a `Rollout`.
+	ServiceUrls []string `pulumi:"serviceUrls"`
+}
+
+// CloudRunMetadata contains information from a Cloud Run deployment.
+type CloudRunMetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (CloudRunMetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CloudRunMetadataResponse)(nil)).Elem()
+}
+
+func (o CloudRunMetadataResponseOutput) ToCloudRunMetadataResponseOutput() CloudRunMetadataResponseOutput {
+	return o
+}
+
+func (o CloudRunMetadataResponseOutput) ToCloudRunMetadataResponseOutputWithContext(ctx context.Context) CloudRunMetadataResponseOutput {
+	return o
+}
+
+// The Cloud Run Revision id associated with a `Rollout`.
+func (o CloudRunMetadataResponseOutput) Revision() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunMetadataResponse) string { return v.Revision }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud Run Service that is associated with a `Rollout`. Format is projects/{project}/locations/{location}/services/{service}.
+func (o CloudRunMetadataResponseOutput) Service() pulumi.StringOutput {
+	return o.ApplyT(func(v CloudRunMetadataResponse) string { return v.Service }).(pulumi.StringOutput)
+}
+
+// The Cloud Run Service urls that are associated with a `Rollout`.
+func (o CloudRunMetadataResponseOutput) ServiceUrls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v CloudRunMetadataResponse) []string { return v.ServiceUrls }).(pulumi.StringArrayOutput)
 }
 
 // Execution using the default Cloud Build pool.
@@ -1806,6 +2012,32 @@ func (o GkeClusterResponseOutput) InternalIp() pulumi.BoolOutput {
 	return o.ApplyT(func(v GkeClusterResponse) bool { return v.InternalIp }).(pulumi.BoolOutput)
 }
 
+// Metadata surfaces information associated with a `Rollout` to the user.
+type MetadataResponse struct {
+	// The name of the Cloud Run Service that is associated with a `Rollout`.
+	CloudRun CloudRunMetadataResponse `pulumi:"cloudRun"`
+}
+
+// Metadata surfaces information associated with a `Rollout` to the user.
+type MetadataResponseOutput struct{ *pulumi.OutputState }
+
+func (MetadataResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MetadataResponse)(nil)).Elem()
+}
+
+func (o MetadataResponseOutput) ToMetadataResponseOutput() MetadataResponseOutput {
+	return o
+}
+
+func (o MetadataResponseOutput) ToMetadataResponseOutputWithContext(ctx context.Context) MetadataResponseOutput {
+	return o
+}
+
+// The name of the Cloud Run Service that is associated with a `Rollout`.
+func (o MetadataResponseOutput) CloudRun() CloudRunMetadataResponseOutput {
+	return o.ApplyT(func(v MetadataResponse) CloudRunMetadataResponse { return v.CloudRun }).(CloudRunMetadataResponseOutput)
+}
+
 // PipelineCondition contains all conditions relevant to a Delivery Pipeline.
 type PipelineConditionResponse struct {
 	// Details around the Pipeline's overall status.
@@ -2440,6 +2672,8 @@ type TargetResponse struct {
 	Name string `pulumi:"name"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval bool `pulumi:"requireApproval"`
+	// Information specifying a Cloud Run deployment target.
+	Run CloudRunLocationResponse `pulumi:"run"`
 	// Resource id of the `Target`.
 	TargetId string `pulumi:"targetId"`
 	// Unique identifier of the `Target`.
@@ -2511,6 +2745,11 @@ func (o TargetResponseOutput) Name() pulumi.StringOutput {
 // Optional. Whether or not the `Target` requires approval.
 func (o TargetResponseOutput) RequireApproval() pulumi.BoolOutput {
 	return o.ApplyT(func(v TargetResponse) bool { return v.RequireApproval }).(pulumi.BoolOutput)
+}
+
+// Information specifying a Cloud Run deployment target.
+func (o TargetResponseOutput) Run() CloudRunLocationResponseOutput {
+	return o.ApplyT(func(v TargetResponse) CloudRunLocationResponse { return v.Run }).(CloudRunLocationResponseOutput)
 }
 
 // Resource id of the `Target`.
@@ -2599,6 +2838,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BindingArrayInput)(nil)).Elem(), BindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildArtifactInput)(nil)).Elem(), BuildArtifactArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BuildArtifactArrayInput)(nil)).Elem(), BuildArtifactArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunLocationInput)(nil)).Elem(), CloudRunLocationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CloudRunLocationPtrInput)(nil)).Elem(), CloudRunLocationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPoolInput)(nil)).Elem(), DefaultPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DefaultPoolPtrInput)(nil)).Elem(), DefaultPoolArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ExecutionConfigInput)(nil)).Elem(), ExecutionConfigArgs{})
@@ -2632,6 +2873,10 @@ func init() {
 	pulumi.RegisterOutputType(BuildArtifactArrayOutput{})
 	pulumi.RegisterOutputType(BuildArtifactResponseOutput{})
 	pulumi.RegisterOutputType(BuildArtifactResponseArrayOutput{})
+	pulumi.RegisterOutputType(CloudRunLocationOutput{})
+	pulumi.RegisterOutputType(CloudRunLocationPtrOutput{})
+	pulumi.RegisterOutputType(CloudRunLocationResponseOutput{})
+	pulumi.RegisterOutputType(CloudRunMetadataResponseOutput{})
 	pulumi.RegisterOutputType(DefaultPoolOutput{})
 	pulumi.RegisterOutputType(DefaultPoolPtrOutput{})
 	pulumi.RegisterOutputType(DefaultPoolResponseOutput{})
@@ -2646,6 +2891,7 @@ func init() {
 	pulumi.RegisterOutputType(GkeClusterOutput{})
 	pulumi.RegisterOutputType(GkeClusterPtrOutput{})
 	pulumi.RegisterOutputType(GkeClusterResponseOutput{})
+	pulumi.RegisterOutputType(MetadataResponseOutput{})
 	pulumi.RegisterOutputType(PipelineConditionResponseOutput{})
 	pulumi.RegisterOutputType(PipelineReadyConditionResponseOutput{})
 	pulumi.RegisterOutputType(PrivatePoolOutput{})

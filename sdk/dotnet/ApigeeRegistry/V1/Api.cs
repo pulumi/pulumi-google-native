@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ApigeeRegistry.V1
 {
     /// <summary>
-    /// CreateApi creates a specified API.
+    /// Creates a specified API.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigeeregistry/v1:Api")]
     public partial class Api : global::Pulumi.CustomResource
@@ -22,13 +22,13 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Output<ImmutableDictionary<string, string>> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Required. The ID to use for the api, which will become the final component of the api's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        /// Required. The ID to use for the API, which will become the final component of the API's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
         /// </summary>
         [Output("apiId")]
         public Output<string> ApiId { get; private set; } = null!;
 
         /// <summary>
-        /// A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
+        /// A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
         /// </summary>
         [Output("availability")]
         public Output<string> Availability { get; private set; } = null!;
@@ -52,7 +52,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Output<string> DisplayName { get; private set; } = null!;
 
         /// <summary>
-        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -70,13 +70,13 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}
+        /// The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
         /// </summary>
         [Output("recommendedDeployment")]
         public Output<string> RecommendedDeployment { get; private set; } = null!;
 
         /// <summary>
-        /// The recommended version of the API. Format: apis/{api}/versions/{version}
+        /// The recommended version of the API. Format: `apis/{api}/versions/{version}`
         /// </summary>
         [Output("recommendedVersion")]
         public Output<string> RecommendedVersion { get; private set; } = null!;
@@ -151,13 +151,13 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         }
 
         /// <summary>
-        /// Required. The ID to use for the api, which will become the final component of the api's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        /// Required. The ID to use for the API, which will become the final component of the API's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
         /// </summary>
         [Input("apiId", required: true)]
         public Input<string> ApiId { get; set; } = null!;
 
         /// <summary>
-        /// A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
+        /// A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
         /// </summary>
         [Input("availability")]
         public Input<string>? Availability { get; set; }
@@ -178,7 +178,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         /// </summary>
         public InputMap<string> Labels
         {
@@ -199,13 +199,13 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}
+        /// The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
         /// </summary>
         [Input("recommendedDeployment")]
         public Input<string>? RecommendedDeployment { get; set; }
 
         /// <summary>
-        /// The recommended version of the API. Format: apis/{api}/versions/{version}
+        /// The recommended version of the API. Format: `apis/{api}/versions/{version}`
         /// </summary>
         [Input("recommendedVersion")]
         public Input<string>? RecommendedVersion { get; set; }

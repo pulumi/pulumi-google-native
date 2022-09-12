@@ -84,6 +84,7 @@ __all__ = [
     'SparkStandaloneAutoscalingConfigResponse',
     'StateHistoryResponse',
     'TemplateParameterResponse',
+    'TrinoJobResponse',
     'ValueValidationResponse',
     'VirtualClusterConfigResponse',
     'WorkflowTemplatePlacementResponse',
@@ -1164,7 +1165,7 @@ class ExecutionConfigResponse(dict):
                  subnetwork_uri: str):
         """
         Execution configuration for a workload.
-        :param str idle_ttl: Optional. The duration to keep the underlying cluster alive while idling Passing this threshold will cause the cluster to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        :param str idle_ttl: Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         :param str kms_key: Optional. The Cloud KMS key to use for encryption.
         :param Sequence[str] network_tags: Optional. Tags used for network traffic control.
         :param str network_uri: Optional. Network URI to connect workload to.
@@ -1182,7 +1183,7 @@ class ExecutionConfigResponse(dict):
     @pulumi.getter(name="idleTtl")
     def idle_ttl(self) -> str:
         """
-        Optional. The duration to keep the underlying cluster alive while idling Passing this threshold will cause the cluster to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+        Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
         """
         return pulumi.get(self, "idle_ttl")
 
@@ -3511,6 +3512,8 @@ class OrderedJobResponse(dict):
             suggest = "spark_sql_job"
         elif key == "stepId":
             suggest = "step_id"
+        elif key == "trinoJob":
+            suggest = "trino_job"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in OrderedJobResponse. Access the value via the '{suggest}' property getter instead.")
@@ -3535,7 +3538,8 @@ class OrderedJobResponse(dict):
                  spark_job: 'outputs.SparkJobResponse',
                  spark_r_job: 'outputs.SparkRJobResponse',
                  spark_sql_job: 'outputs.SparkSqlJobResponse',
-                 step_id: str):
+                 step_id: str,
+                 trino_job: 'outputs.TrinoJobResponse'):
         """
         A job executed by the workflow.
         :param 'HadoopJobResponse' hadoop_job: Optional. Job is a Hadoop job.
@@ -3550,6 +3554,7 @@ class OrderedJobResponse(dict):
         :param 'SparkRJobResponse' spark_r_job: Optional. Job is a SparkR job.
         :param 'SparkSqlJobResponse' spark_sql_job: Optional. Job is a SparkSql job.
         :param str step_id: The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
+        :param 'TrinoJobResponse' trino_job: Optional. Job is a Trino job.
         """
         pulumi.set(__self__, "hadoop_job", hadoop_job)
         pulumi.set(__self__, "hive_job", hive_job)
@@ -3563,6 +3568,7 @@ class OrderedJobResponse(dict):
         pulumi.set(__self__, "spark_r_job", spark_r_job)
         pulumi.set(__self__, "spark_sql_job", spark_sql_job)
         pulumi.set(__self__, "step_id", step_id)
+        pulumi.set(__self__, "trino_job", trino_job)
 
     @property
     @pulumi.getter(name="hadoopJob")
@@ -3659,6 +3665,14 @@ class OrderedJobResponse(dict):
         The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
         """
         return pulumi.get(self, "step_id")
+
+    @property
+    @pulumi.getter(name="trinoJob")
+    def trino_job(self) -> 'outputs.TrinoJobResponse':
+        """
+        Optional. Job is a Trino job.
+        """
+        return pulumi.get(self, "trino_job")
 
 
 @pulumi.output_type
@@ -5430,6 +5444,121 @@ class TemplateParameterResponse(dict):
         Optional. Validation rules to be applied to this parameter's value.
         """
         return pulumi.get(self, "validation")
+
+
+@pulumi.output_type
+class TrinoJobResponse(dict):
+    """
+    A Dataproc job for running Trino (https://trino.io/) queries. IMPORTANT: The Dataproc Trino Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/trino) must be enabled when the cluster is created to submit a Trino job to the cluster.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clientTags":
+            suggest = "client_tags"
+        elif key == "continueOnFailure":
+            suggest = "continue_on_failure"
+        elif key == "loggingConfig":
+            suggest = "logging_config"
+        elif key == "outputFormat":
+            suggest = "output_format"
+        elif key == "queryFileUri":
+            suggest = "query_file_uri"
+        elif key == "queryList":
+            suggest = "query_list"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TrinoJobResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TrinoJobResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TrinoJobResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 client_tags: Sequence[str],
+                 continue_on_failure: bool,
+                 logging_config: 'outputs.LoggingConfigResponse',
+                 output_format: str,
+                 properties: Mapping[str, str],
+                 query_file_uri: str,
+                 query_list: 'outputs.QueryListResponse'):
+        """
+        A Dataproc job for running Trino (https://trino.io/) queries. IMPORTANT: The Dataproc Trino Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/trino) must be enabled when the cluster is created to submit a Trino job to the cluster.
+        :param Sequence[str] client_tags: Optional. Trino client tags to attach to this query
+        :param bool continue_on_failure: Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+        :param 'LoggingConfigResponse' logging_config: Optional. The runtime log config for job execution.
+        :param str output_format: Optional. The format in which query output will be displayed. See the Trino documentation for supported output formats
+        :param Mapping[str, str] properties: Optional. A mapping of property names to values. Used to set Trino session properties (https://trino.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Trino CLI
+        :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
+        :param 'QueryListResponse' query_list: A list of queries.
+        """
+        pulumi.set(__self__, "client_tags", client_tags)
+        pulumi.set(__self__, "continue_on_failure", continue_on_failure)
+        pulumi.set(__self__, "logging_config", logging_config)
+        pulumi.set(__self__, "output_format", output_format)
+        pulumi.set(__self__, "properties", properties)
+        pulumi.set(__self__, "query_file_uri", query_file_uri)
+        pulumi.set(__self__, "query_list", query_list)
+
+    @property
+    @pulumi.getter(name="clientTags")
+    def client_tags(self) -> Sequence[str]:
+        """
+        Optional. Trino client tags to attach to this query
+        """
+        return pulumi.get(self, "client_tags")
+
+    @property
+    @pulumi.getter(name="continueOnFailure")
+    def continue_on_failure(self) -> bool:
+        """
+        Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+        """
+        return pulumi.get(self, "continue_on_failure")
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> 'outputs.LoggingConfigResponse':
+        """
+        Optional. The runtime log config for job execution.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @property
+    @pulumi.getter(name="outputFormat")
+    def output_format(self) -> str:
+        """
+        Optional. The format in which query output will be displayed. See the Trino documentation for supported output formats
+        """
+        return pulumi.get(self, "output_format")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Mapping[str, str]:
+        """
+        Optional. A mapping of property names to values. Used to set Trino session properties (https://trino.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Trino CLI
+        """
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter(name="queryFileUri")
+    def query_file_uri(self) -> str:
+        """
+        The HCFS URI of the script that contains SQL queries.
+        """
+        return pulumi.get(self, "query_file_uri")
+
+    @property
+    @pulumi.getter(name="queryList")
+    def query_list(self) -> 'outputs.QueryListResponse':
+        """
+        A list of queries.
+        """
+        return pulumi.get(self, "query_list")
 
 
 @pulumi.output_type

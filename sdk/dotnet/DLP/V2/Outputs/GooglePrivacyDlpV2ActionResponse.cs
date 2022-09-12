@@ -25,7 +25,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Outputs
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2JobNotificationEmailsResponse JobNotificationEmails;
         /// <summary>
-        /// Publish a notification to a pubsub topic.
+        /// Publish a notification to a Pub/Sub topic.
         /// </summary>
         public readonly Outputs.GooglePrivacyDlpV2PublishToPubSubResponse PubSub;
         /// <summary>

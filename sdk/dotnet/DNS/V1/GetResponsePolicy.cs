@@ -67,6 +67,10 @@ namespace Pulumi.GoogleNative.DNS.V1
         /// User-provided description for this Response Policy.
         /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// The list of Google Kubernetes Engine clusters to which this response policy is applied.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ResponsePolicyGKEClusterResponse> GkeClusters;
         public readonly string Kind;
         /// <summary>
         /// List of network names specifying networks to which this policy is applied.
@@ -81,6 +85,8 @@ namespace Pulumi.GoogleNative.DNS.V1
         private GetResponsePolicyResult(
             string description,
 
+            ImmutableArray<Outputs.ResponsePolicyGKEClusterResponse> gkeClusters,
+
             string kind,
 
             ImmutableArray<Outputs.ResponsePolicyNetworkResponse> networks,
@@ -88,6 +94,7 @@ namespace Pulumi.GoogleNative.DNS.V1
             string responsePolicyName)
         {
             Description = description;
+            GkeClusters = gkeClusters;
             Kind = kind;
             Networks = networks;
             ResponsePolicyName = responsePolicyName;

@@ -120,7 +120,7 @@ def get_deployment_artifact(api_id: Optional[str] = None,
                             project: Optional[str] = None,
                             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDeploymentArtifactResult:
     """
-    GetArtifact returns a specified artifact.
+    Returns a specified artifact.
     """
     __args__ = dict()
     __args__['apiId'] = api_id
@@ -149,6 +149,6 @@ def get_deployment_artifact_output(api_id: Optional[pulumi.Input[str]] = None,
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeploymentArtifactResult]:
     """
-    GetArtifact returns a specified artifact.
+    Returns a specified artifact.
     """
     ...

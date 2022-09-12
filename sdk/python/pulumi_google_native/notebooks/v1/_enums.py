@@ -277,7 +277,7 @@ class RuntimeAcceleratorConfigType(str, Enum):
     """
     NVIDIA_TESLA_K80 = "NVIDIA_TESLA_K80"
     """
-    Accelerator type is Nvidia Tesla K80.
+    b/241005111 K80 deprecation in Google Managed Notebooks Accelerator type is Nvidia Tesla K80.
     """
     NVIDIA_TESLA_P100 = "NVIDIA_TESLA_P100"
     """

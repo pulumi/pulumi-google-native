@@ -62,7 +62,7 @@ class GetApiResult:
     @pulumi.getter
     def availability(self) -> str:
         """
-        A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
+        A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
         """
         return pulumi.get(self, "availability")
 
@@ -94,7 +94,7 @@ class GetApiResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         """
         return pulumi.get(self, "labels")
 
@@ -110,7 +110,7 @@ class GetApiResult:
     @pulumi.getter(name="recommendedDeployment")
     def recommended_deployment(self) -> str:
         """
-        The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}
+        The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
         """
         return pulumi.get(self, "recommended_deployment")
 
@@ -118,7 +118,7 @@ class GetApiResult:
     @pulumi.getter(name="recommendedVersion")
     def recommended_version(self) -> str:
         """
-        The recommended version of the API. Format: apis/{api}/versions/{version}
+        The recommended version of the API. Format: `apis/{api}/versions/{version}`
         """
         return pulumi.get(self, "recommended_version")
 
@@ -154,7 +154,7 @@ def get_api(api_id: Optional[str] = None,
             project: Optional[str] = None,
             opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetApiResult:
     """
-    GetApi returns a specified API.
+    Returns a specified API.
     """
     __args__ = dict()
     __args__['apiId'] = api_id
@@ -182,6 +182,6 @@ def get_api_output(api_id: Optional[pulumi.Input[str]] = None,
                    project: Optional[pulumi.Input[Optional[str]]] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiResult]:
     """
-    GetApi returns a specified API.
+    Returns a specified API.
     """
     ...

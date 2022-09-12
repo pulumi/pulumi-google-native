@@ -22,6 +22,7 @@ class RegionBackendServiceArgs:
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input['BackendArgs']]]] = None,
                  cdn_policy: Optional[pulumi.Input['BackendServiceCdnPolicyArgs']] = None,
                  circuit_breakers: Optional[pulumi.Input['CircuitBreakersArgs']] = None,
+                 compression_mode: Optional[pulumi.Input['RegionBackendServiceCompressionMode']] = None,
                  connection_draining: Optional[pulumi.Input['ConnectionDrainingArgs']] = None,
                  connection_tracking_policy: Optional[pulumi.Input['BackendServiceConnectionTrackingPolicyArgs']] = None,
                  consistent_hash: Optional[pulumi.Input['ConsistentHashLoadBalancerSettingsArgs']] = None,
@@ -55,6 +56,7 @@ class RegionBackendServiceArgs:
         :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[Sequence[pulumi.Input['BackendArgs']]] backends: The list of backends that serve this BackendService.
         :param pulumi.Input['BackendServiceCdnPolicyArgs'] cdn_policy: Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
+        :param pulumi.Input['RegionBackendServiceCompressionMode'] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
         :param pulumi.Input['BackendServiceConnectionTrackingPolicyArgs'] connection_tracking_policy: Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
         :param pulumi.Input['ConsistentHashLoadBalancerSettingsArgs'] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_request_headers: Headers that the load balancer adds to proxied requests. See [Creating custom headers](https://cloud.google.com/load-balancing/docs/custom-headers).
@@ -90,6 +92,8 @@ class RegionBackendServiceArgs:
             pulumi.set(__self__, "cdn_policy", cdn_policy)
         if circuit_breakers is not None:
             pulumi.set(__self__, "circuit_breakers", circuit_breakers)
+        if compression_mode is not None:
+            pulumi.set(__self__, "compression_mode", compression_mode)
         if connection_draining is not None:
             pulumi.set(__self__, "connection_draining", connection_draining)
         if connection_tracking_policy is not None:
@@ -203,6 +207,18 @@ class RegionBackendServiceArgs:
     @circuit_breakers.setter
     def circuit_breakers(self, value: Optional[pulumi.Input['CircuitBreakersArgs']]):
         pulumi.set(self, "circuit_breakers", value)
+
+    @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> Optional[pulumi.Input['RegionBackendServiceCompressionMode']]:
+        """
+        Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        """
+        return pulumi.get(self, "compression_mode")
+
+    @compression_mode.setter
+    def compression_mode(self, value: Optional[pulumi.Input['RegionBackendServiceCompressionMode']]):
+        pulumi.set(self, "compression_mode", value)
 
     @property
     @pulumi.getter(name="connectionDraining")
@@ -541,6 +557,7 @@ class RegionBackendService(pulumi.CustomResource):
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendArgs']]]]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']]] = None,
                  circuit_breakers: Optional[pulumi.Input[pulumi.InputType['CircuitBreakersArgs']]] = None,
+                 compression_mode: Optional[pulumi.Input['RegionBackendServiceCompressionMode']] = None,
                  connection_draining: Optional[pulumi.Input[pulumi.InputType['ConnectionDrainingArgs']]] = None,
                  connection_tracking_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceConnectionTrackingPolicyArgs']]] = None,
                  consistent_hash: Optional[pulumi.Input[pulumi.InputType['ConsistentHashLoadBalancerSettingsArgs']]] = None,
@@ -579,6 +596,7 @@ class RegionBackendService(pulumi.CustomResource):
         :param pulumi.Input[int] affinity_cookie_ttl_sec: Lifetime of cookies in seconds. This setting is applicable to external and internal HTTP(S) load balancers and Traffic Director and requires GENERATED_COOKIE or HTTP_COOKIE session affinity. If set to 0, the cookie is non-persistent and lasts only until the end of the browser session (or equivalent). The maximum allowed value is two weeks (1,209,600). Not supported when the backend service is referenced by a URL map that is bound to target gRPC proxy that has validateForProxyless field set to true.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendArgs']]]] backends: The list of backends that serve this BackendService.
         :param pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']] cdn_policy: Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
+        :param pulumi.Input['RegionBackendServiceCompressionMode'] compression_mode: Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
         :param pulumi.Input[pulumi.InputType['BackendServiceConnectionTrackingPolicyArgs']] connection_tracking_policy: Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
         :param pulumi.Input[pulumi.InputType['ConsistentHashLoadBalancerSettingsArgs']] consistent_hash: Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED. 
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_request_headers: Headers that the load balancer adds to proxied requests. See [Creating custom headers](https://cloud.google.com/load-balancing/docs/custom-headers).
@@ -633,6 +651,7 @@ class RegionBackendService(pulumi.CustomResource):
                  backends: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['BackendArgs']]]]] = None,
                  cdn_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceCdnPolicyArgs']]] = None,
                  circuit_breakers: Optional[pulumi.Input[pulumi.InputType['CircuitBreakersArgs']]] = None,
+                 compression_mode: Optional[pulumi.Input['RegionBackendServiceCompressionMode']] = None,
                  connection_draining: Optional[pulumi.Input[pulumi.InputType['ConnectionDrainingArgs']]] = None,
                  connection_tracking_policy: Optional[pulumi.Input[pulumi.InputType['BackendServiceConnectionTrackingPolicyArgs']]] = None,
                  consistent_hash: Optional[pulumi.Input[pulumi.InputType['ConsistentHashLoadBalancerSettingsArgs']]] = None,
@@ -675,6 +694,7 @@ class RegionBackendService(pulumi.CustomResource):
             __props__.__dict__["backends"] = backends
             __props__.__dict__["cdn_policy"] = cdn_policy
             __props__.__dict__["circuit_breakers"] = circuit_breakers
+            __props__.__dict__["compression_mode"] = compression_mode
             __props__.__dict__["connection_draining"] = connection_draining
             __props__.__dict__["connection_tracking_policy"] = connection_tracking_policy
             __props__.__dict__["consistent_hash"] = consistent_hash
@@ -743,6 +763,7 @@ class RegionBackendService(pulumi.CustomResource):
         __props__.__dict__["backends"] = None
         __props__.__dict__["cdn_policy"] = None
         __props__.__dict__["circuit_breakers"] = None
+        __props__.__dict__["compression_mode"] = None
         __props__.__dict__["connection_draining"] = None
         __props__.__dict__["connection_tracking_policy"] = None
         __props__.__dict__["consistent_hash"] = None
@@ -808,6 +829,14 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="circuitBreakers")
     def circuit_breakers(self) -> pulumi.Output['outputs.CircuitBreakersResponse']:
         return pulumi.get(self, "circuit_breakers")
+
+    @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> pulumi.Output[str]:
+        """
+        Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        """
+        return pulumi.get(self, "compression_mode")
 
     @property
     @pulumi.getter(name="connectionDraining")

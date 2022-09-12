@@ -143,7 +143,7 @@ class VersionArtifact(pulumi.CustomResource):
                  version_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        CreateArtifact creates a specified artifact.
+        Creates a specified artifact.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -159,7 +159,7 @@ class VersionArtifact(pulumi.CustomResource):
                  args: VersionArtifactArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        CreateArtifact creates a specified artifact.
+        Creates a specified artifact.
 
         :param str resource_name: The name of the resource.
         :param VersionArtifactArgs args: The arguments to use to populate this resource's properties.

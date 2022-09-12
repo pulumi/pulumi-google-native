@@ -39,7 +39,7 @@ export interface GetInstanceResult {
      */
     readonly createTime: string;
     /**
-     * Format: `projects/*&#47;locations/*&#47;instance`. Currently only locations/global is supported.
+     * Format: `projects/*&#47;locations/*&#47;instance`. Currently only `locations/global` is supported.
      */
     readonly name: string;
     /**

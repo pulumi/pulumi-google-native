@@ -76,7 +76,7 @@ namespace Pulumi.GoogleNative.Spanner.V1
         /// </summary>
         public readonly string DatabaseDialect;
         /// <summary>
-        /// The encryption information for the backup.
+        /// The encryption information for the backup. .
         /// </summary>
         public readonly Outputs.EncryptionInfoResponse EncryptionInfo;
         /// <summary>

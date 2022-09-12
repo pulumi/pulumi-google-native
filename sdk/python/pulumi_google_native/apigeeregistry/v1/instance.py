@@ -25,7 +25,7 @@ class InstanceArgs:
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input['ConfigArgs'] config: Config of the Instance.
         :param pulumi.Input[str] instance_id: Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource.
-        :param pulumi.Input[str] name: Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
+        :param pulumi.Input[str] name: Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
         """
         pulumi.set(__self__, "config", config)
         pulumi.set(__self__, "instance_id", instance_id)
@@ -73,7 +73,7 @@ class InstanceArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
+        Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
         """
         return pulumi.get(self, "name")
 
@@ -110,7 +110,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['ConfigArgs']] config: Config of the Instance.
         :param pulumi.Input[str] instance_id: Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource.
-        :param pulumi.Input[str] name: Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
+        :param pulumi.Input[str] name: Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
         """
         ...
     @overload
@@ -232,7 +232,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
+        Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
         """
         return pulumi.get(self, "name")
 

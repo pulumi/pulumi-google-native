@@ -229,6 +229,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2
         /// JavaScript language.
         /// </summary>
         public static RoutineLanguage Javascript { get; } = new RoutineLanguage("JAVASCRIPT");
+        /// <summary>
+        /// Python language.
+        /// </summary>
+        public static RoutineLanguage Python { get; } = new RoutineLanguage("PYTHON");
 
         public static bool operator ==(RoutineLanguage left, RoutineLanguage right) => left.Equals(right);
         public static bool operator !=(RoutineLanguage left, RoutineLanguage right) => !left.Equals(right);

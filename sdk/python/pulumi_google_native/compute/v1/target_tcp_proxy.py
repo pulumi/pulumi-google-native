@@ -202,6 +202,7 @@ class TargetTcpProxy(pulumi.CustomResource):
             __props__.__dict__["service"] = service
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["kind"] = None
+            __props__.__dict__["region"] = None
             __props__.__dict__["self_link"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -234,6 +235,7 @@ class TargetTcpProxy(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["proxy_bind"] = None
         __props__.__dict__["proxy_header"] = None
+        __props__.__dict__["region"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["self_link"] = None
         __props__.__dict__["service"] = None
@@ -291,6 +293,14 @@ class TargetTcpProxy(pulumi.CustomResource):
         Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
         """
         return pulumi.get(self, "proxy_header")
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Output[str]:
+        """
+        URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.
+        """
+        return pulumi.get(self, "region")
 
     @property
     @pulumi.getter(name="requestId")

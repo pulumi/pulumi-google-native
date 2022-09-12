@@ -35,6 +35,7 @@ class EntryArgs:
                  schema: Optional[pulumi.Input['GoogleCloudDatacatalogV1SchemaArgs']] = None,
                  source_system_timestamps: Optional[pulumi.Input['GoogleCloudDatacatalogV1SystemTimestampsArgs']] = None,
                  type: Optional[pulumi.Input['EntryType']] = None,
+                 usage_signal: Optional[pulumi.Input['GoogleCloudDatacatalogV1UsageSignalArgs']] = None,
                  user_specified_system: Optional[pulumi.Input[str]] = None,
                  user_specified_type: Optional[pulumi.Input[str]] = None):
         """
@@ -54,6 +55,7 @@ class EntryArgs:
         :param pulumi.Input['GoogleCloudDatacatalogV1SchemaArgs'] schema: Schema of the entry. An entry might not have any schema attached to it.
         :param pulumi.Input['GoogleCloudDatacatalogV1SystemTimestampsArgs'] source_system_timestamps: Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
         :param pulumi.Input['EntryType'] type: The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+        :param pulumi.Input['GoogleCloudDatacatalogV1UsageSignalArgs'] usage_signal: Resource usage statistics.
         :param pulumi.Input[str] user_specified_system: Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
         :param pulumi.Input[str] user_specified_type: Custom entry type that doesn't match any of the values allowed for input and listed in the `EntryType` enum. When creating an entry, first check the type values in the enum. If there are no appropriate types for the new entry, provide a custom value, for example, `my_special_type`. The `user_specified_type` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
         """
@@ -91,6 +93,8 @@ class EntryArgs:
             pulumi.set(__self__, "source_system_timestamps", source_system_timestamps)
         if type is not None:
             pulumi.set(__self__, "type", type)
+        if usage_signal is not None:
+            pulumi.set(__self__, "usage_signal", usage_signal)
         if user_specified_system is not None:
             pulumi.set(__self__, "user_specified_system", user_specified_system)
         if user_specified_type is not None:
@@ -304,6 +308,18 @@ class EntryArgs:
         pulumi.set(self, "type", value)
 
     @property
+    @pulumi.getter(name="usageSignal")
+    def usage_signal(self) -> Optional[pulumi.Input['GoogleCloudDatacatalogV1UsageSignalArgs']]:
+        """
+        Resource usage statistics.
+        """
+        return pulumi.get(self, "usage_signal")
+
+    @usage_signal.setter
+    def usage_signal(self, value: Optional[pulumi.Input['GoogleCloudDatacatalogV1UsageSignalArgs']]):
+        pulumi.set(self, "usage_signal", value)
+
+    @property
     @pulumi.getter(name="userSpecifiedSystem")
     def user_specified_system(self) -> Optional[pulumi.Input[str]]:
         """
@@ -351,6 +367,7 @@ class Entry(pulumi.CustomResource):
                  schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SchemaArgs']]] = None,
                  source_system_timestamps: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SystemTimestampsArgs']]] = None,
                  type: Optional[pulumi.Input['EntryType']] = None,
+                 usage_signal: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1UsageSignalArgs']]] = None,
                  user_specified_system: Optional[pulumi.Input[str]] = None,
                  user_specified_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -375,6 +392,7 @@ class Entry(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SchemaArgs']] schema: Schema of the entry. An entry might not have any schema attached to it.
         :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SystemTimestampsArgs']] source_system_timestamps: Timestamps from the underlying resource, not from the Data Catalog entry. Output only when the entry has a type listed in the `EntryType` enum. For entries with `user_specified_type`, this field is optional and defaults to an empty timestamp.
         :param pulumi.Input['EntryType'] type: The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1UsageSignalArgs']] usage_signal: Resource usage statistics.
         :param pulumi.Input[str] user_specified_system: Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
         :param pulumi.Input[str] user_specified_type: Custom entry type that doesn't match any of the values allowed for input and listed in the `EntryType` enum. When creating an entry, first check the type values in the enum. If there are no appropriate types for the new entry, provide a custom value, for example, `my_special_type`. The `user_specified_type` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
         """
@@ -421,6 +439,7 @@ class Entry(pulumi.CustomResource):
                  schema: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SchemaArgs']]] = None,
                  source_system_timestamps: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1SystemTimestampsArgs']]] = None,
                  type: Optional[pulumi.Input['EntryType']] = None,
+                 usage_signal: Optional[pulumi.Input[pulumi.InputType['GoogleCloudDatacatalogV1UsageSignalArgs']]] = None,
                  user_specified_system: Optional[pulumi.Input[str]] = None,
                  user_specified_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -454,6 +473,7 @@ class Entry(pulumi.CustomResource):
             __props__.__dict__["schema"] = schema
             __props__.__dict__["source_system_timestamps"] = source_system_timestamps
             __props__.__dict__["type"] = type
+            __props__.__dict__["usage_signal"] = usage_signal
             __props__.__dict__["user_specified_system"] = user_specified_system
             __props__.__dict__["user_specified_type"] = user_specified_type
             __props__.__dict__["bigquery_date_sharded_spec"] = None
@@ -462,7 +482,6 @@ class Entry(pulumi.CustomResource):
             __props__.__dict__["integrated_system"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["personal_details"] = None
-            __props__.__dict__["usage_signal"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["entry_group_id", "entry_id", "location", "project"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
         super(Entry, __self__).__init__(

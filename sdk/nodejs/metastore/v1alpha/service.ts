@@ -79,7 +79,7 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly metadataManagementActivity!: pulumi.Output<outputs.metastore.v1alpha.MetadataManagementActivityResponse>;
     /**
-     * Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+     * Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -229,7 +229,7 @@ export interface ServiceArgs {
      */
     metadataIntegration?: pulumi.Input<inputs.metastore.v1alpha.MetadataIntegrationArgs>;
     /**
-     * Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+     * Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
      */
     name?: pulumi.Input<string>;
     /**

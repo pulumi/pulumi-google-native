@@ -82,7 +82,7 @@ class GetDeploymentResult:
     @pulumi.getter(name="apiSpecRevision")
     def api_spec_revision(self) -> str:
         """
-        The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+        The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
         """
         return pulumi.get(self, "api_spec_revision")
 
@@ -122,7 +122,7 @@ class GetDeploymentResult:
     @pulumi.getter(name="externalChannelUri")
     def external_channel_uri(self) -> str:
         """
-        The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+        The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
         """
         return pulumi.get(self, "external_channel_uri")
 
@@ -138,7 +138,7 @@ class GetDeploymentResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         """
         return pulumi.get(self, "labels")
 
@@ -203,7 +203,7 @@ def get_deployment(api_id: Optional[str] = None,
                    project: Optional[str] = None,
                    opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetDeploymentResult:
     """
-    GetApiDeployment returns a specified deployment.
+    Returns a specified deployment.
     """
     __args__ = dict()
     __args__['apiId'] = api_id
@@ -237,6 +237,6 @@ def get_deployment_output(api_id: Optional[pulumi.Input[str]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeploymentResult]:
     """
-    GetApiDeployment returns a specified deployment.
+    Returns a specified deployment.
     """
     ...

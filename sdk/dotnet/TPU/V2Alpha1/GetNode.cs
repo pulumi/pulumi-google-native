@@ -128,6 +128,10 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
         /// </summary>
         public readonly Outputs.ServiceAccountResponse ServiceAccount;
         /// <summary>
+        /// Shielded Instance options.
+        /// </summary>
+        public readonly Outputs.ShieldedInstanceConfigResponse ShieldedInstanceConfig;
+        /// <summary>
         /// The current state for the TPU Node.
         /// </summary>
         public readonly string State;
@@ -174,6 +178,8 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
 
             Outputs.ServiceAccountResponse serviceAccount,
 
+            Outputs.ShieldedInstanceConfigResponse shieldedInstanceConfig,
+
             string state,
 
             ImmutableArray<Outputs.SymptomResponse> symptoms,
@@ -196,6 +202,7 @@ namespace Pulumi.GoogleNative.TPU.V2Alpha1
             RuntimeVersion = runtimeVersion;
             SchedulingConfig = schedulingConfig;
             ServiceAccount = serviceAccount;
+            ShieldedInstanceConfig = shieldedInstanceConfig;
             State = state;
             Symptoms = symptoms;
             Tags = tags;

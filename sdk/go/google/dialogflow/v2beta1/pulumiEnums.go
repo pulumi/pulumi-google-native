@@ -2967,6 +2967,8 @@ const (
 	GoogleCloudDialogflowV2beta1SuggestionFeatureTypeFaq = GoogleCloudDialogflowV2beta1SuggestionFeatureType("FAQ")
 	// Run smart reply model for chat.
 	GoogleCloudDialogflowV2beta1SuggestionFeatureTypeSmartReply = GoogleCloudDialogflowV2beta1SuggestionFeatureType("SMART_REPLY")
+	// Run conversation summarization model for chat.
+	GoogleCloudDialogflowV2beta1SuggestionFeatureTypeConversationSummarization = GoogleCloudDialogflowV2beta1SuggestionFeatureType("CONVERSATION_SUMMARIZATION")
 )
 
 func (GoogleCloudDialogflowV2beta1SuggestionFeatureType) ElementType() reflect.Type {

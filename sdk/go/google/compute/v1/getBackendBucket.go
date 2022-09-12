@@ -30,6 +30,8 @@ type LookupBackendBucketResult struct {
 	BucketName string `pulumi:"bucketName"`
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy BackendBucketCdnPolicyResponse `pulumi:"cdnPolicy"`
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	CompressionMode string `pulumi:"compressionMode"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// Headers that the HTTP/S load balancer should add to proxied responses.
@@ -92,6 +94,11 @@ func (o LookupBackendBucketResultOutput) BucketName() pulumi.StringOutput {
 // Cloud CDN configuration for this BackendBucket.
 func (o LookupBackendBucketResultOutput) CdnPolicy() BackendBucketCdnPolicyResponseOutput {
 	return o.ApplyT(func(v LookupBackendBucketResult) BackendBucketCdnPolicyResponse { return v.CdnPolicy }).(BackendBucketCdnPolicyResponseOutput)
+}
+
+// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+func (o LookupBackendBucketResultOutput) CompressionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackendBucketResult) string { return v.CompressionMode }).(pulumi.StringOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

@@ -51,6 +51,12 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Inputs
             set => _originalPipelineTransform = value;
         }
 
+        /// <summary>
+        /// A hash value of the submitted pipeline portable graph step names if exists.
+        /// </summary>
+        [Input("stepNamesHash")]
+        public Input<string>? StepNamesHash { get; set; }
+
         public PipelineDescriptionArgs()
         {
         }

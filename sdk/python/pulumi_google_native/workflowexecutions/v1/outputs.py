@@ -16,6 +16,8 @@ __all__ = [
     'PositionResponse',
     'StackTraceElementResponse',
     'StackTraceResponse',
+    'StatusResponse',
+    'StepResponse',
 ]
 
 @pulumi.output_type
@@ -187,5 +189,77 @@ class StackTraceResponse(dict):
         An array of stack elements.
         """
         return pulumi.get(self, "elements")
+
+
+@pulumi.output_type
+class StatusResponse(dict):
+    """
+    > **Preview:** This field is covered by the > [Pre-GA Offerings Terms](https://cloud.google.com/terms/service-terms) of > the Google Cloud Terms of Service. Pre-GA features might have limited > support, and changes to pre-GA features might not be compatible with > other pre-GA versions. For more information, see the > [launch stage descriptions](https://cloud.google.com/products#product-launch-stages). > This field is usable only if your project has access. See the > [access request page](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform). Represents the current status of this execution.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "currentSteps":
+            suggest = "current_steps"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in StatusResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        StatusResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        StatusResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 current_steps: Sequence['outputs.StepResponse']):
+        """
+        > **Preview:** This field is covered by the > [Pre-GA Offerings Terms](https://cloud.google.com/terms/service-terms) of > the Google Cloud Terms of Service. Pre-GA features might have limited > support, and changes to pre-GA features might not be compatible with > other pre-GA versions. For more information, see the > [launch stage descriptions](https://cloud.google.com/products#product-launch-stages). > This field is usable only if your project has access. See the > [access request page](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform). Represents the current status of this execution.
+        :param Sequence['StepResponse'] current_steps: A list of currently executing or last executed step names for the workflow execution currently running. If the workflow has succeeded or failed, this is the last attempted or executed step. Presently, if the current step is inside a subworkflow, the list only includes that step. In the future, the list will contain items for each step in the call stack, starting with the outermost step in the `main` subworkflow, and ending with the most deeply nested step.
+        """
+        pulumi.set(__self__, "current_steps", current_steps)
+
+    @property
+    @pulumi.getter(name="currentSteps")
+    def current_steps(self) -> Sequence['outputs.StepResponse']:
+        """
+        A list of currently executing or last executed step names for the workflow execution currently running. If the workflow has succeeded or failed, this is the last attempted or executed step. Presently, if the current step is inside a subworkflow, the list only includes that step. In the future, the list will contain items for each step in the call stack, starting with the outermost step in the `main` subworkflow, and ending with the most deeply nested step.
+        """
+        return pulumi.get(self, "current_steps")
+
+
+@pulumi.output_type
+class StepResponse(dict):
+    """
+    Represents a step of the workflow this execution is running.
+    """
+    def __init__(__self__, *,
+                 routine: str,
+                 step: str):
+        """
+        Represents a step of the workflow this execution is running.
+        :param str routine: Name of a routine within the workflow.
+        :param str step: Name of a step within the routine.
+        """
+        pulumi.set(__self__, "routine", routine)
+        pulumi.set(__self__, "step", step)
+
+    @property
+    @pulumi.getter
+    def routine(self) -> str:
+        """
+        Name of a routine within the workflow.
+        """
+        return pulumi.get(self, "routine")
+
+    @property
+    @pulumi.getter
+    def step(self) -> str:
+        """
+        Name of a step within the routine.
+        """
+        return pulumi.get(self, "step")
 
 

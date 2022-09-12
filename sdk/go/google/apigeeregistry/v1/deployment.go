@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// CreateApiDeployment creates a specified deployment.
+// Creates a specified deployment.
 type Deployment struct {
 	pulumi.CustomResourceState
 
@@ -22,7 +22,7 @@ type Deployment struct {
 	// Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
 	ApiDeploymentId pulumi.StringOutput `pulumi:"apiDeploymentId"`
 	ApiId           pulumi.StringOutput `pulumi:"apiId"`
-	// The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+	// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
 	ApiSpecRevision pulumi.StringOutput `pulumi:"apiSpecRevision"`
 	// Creation timestamp; when the deployment resource was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
@@ -32,11 +32,11 @@ type Deployment struct {
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// The address where the deployment is serving. Changes to this value will update the revision.
 	EndpointUri pulumi.StringOutput `pulumi:"endpointUri"`
-	// The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+	// The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
 	ExternalChannelUri pulumi.StringOutput `pulumi:"externalChannelUri"`
 	// Text briefly identifying the intended audience of the API. Changes to this value will not affect the revision.
 	IntendedAudience pulumi.StringOutput `pulumi:"intendedAudience"`
-	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
 	// Resource name.
@@ -109,7 +109,7 @@ type deploymentArgs struct {
 	// Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
 	ApiDeploymentId string `pulumi:"apiDeploymentId"`
 	ApiId           string `pulumi:"apiId"`
-	// The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+	// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
 	ApiSpecRevision *string `pulumi:"apiSpecRevision"`
 	// A detailed description.
 	Description *string `pulumi:"description"`
@@ -117,11 +117,11 @@ type deploymentArgs struct {
 	DisplayName *string `pulumi:"displayName"`
 	// The address where the deployment is serving. Changes to this value will update the revision.
 	EndpointUri *string `pulumi:"endpointUri"`
-	// The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+	// The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
 	ExternalChannelUri *string `pulumi:"externalChannelUri"`
 	// Text briefly identifying the intended audience of the API. Changes to this value will not affect the revision.
 	IntendedAudience *string `pulumi:"intendedAudience"`
-	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
 	// Resource name.
@@ -138,7 +138,7 @@ type DeploymentArgs struct {
 	// Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
 	ApiDeploymentId pulumi.StringInput
 	ApiId           pulumi.StringInput
-	// The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+	// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
 	ApiSpecRevision pulumi.StringPtrInput
 	// A detailed description.
 	Description pulumi.StringPtrInput
@@ -146,11 +146,11 @@ type DeploymentArgs struct {
 	DisplayName pulumi.StringPtrInput
 	// The address where the deployment is serving. Changes to this value will update the revision.
 	EndpointUri pulumi.StringPtrInput
-	// The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+	// The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
 	ExternalChannelUri pulumi.StringPtrInput
 	// Text briefly identifying the intended audience of the API. Changes to this value will not affect the revision.
 	IntendedAudience pulumi.StringPtrInput
-	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
 	// Resource name.
@@ -214,7 +214,7 @@ func (o DeploymentOutput) ApiId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.ApiId }).(pulumi.StringOutput)
 }
 
-// The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
 func (o DeploymentOutput) ApiSpecRevision() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.ApiSpecRevision }).(pulumi.StringOutput)
 }
@@ -239,7 +239,7 @@ func (o DeploymentOutput) EndpointUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.EndpointUri }).(pulumi.StringOutput)
 }
 
-// The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+// The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
 func (o DeploymentOutput) ExternalChannelUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.ExternalChannelUri }).(pulumi.StringOutput)
 }
@@ -249,7 +249,7 @@ func (o DeploymentOutput) IntendedAudience() pulumi.StringOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringOutput { return v.IntendedAudience }).(pulumi.StringOutput)
 }
 
-// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
 func (o DeploymentOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Deployment) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }

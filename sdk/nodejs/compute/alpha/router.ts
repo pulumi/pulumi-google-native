@@ -54,7 +54,7 @@ export class Router extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string>;
     /**
-     * Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly. 
+     * Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
      */
     public readonly encryptedInterconnectRouter!: pulumi.Output<boolean>;
     /**
@@ -168,7 +168,7 @@ export interface RouterArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly. 
+     * Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
      */
     encryptedInterconnectRouter?: pulumi.Input<boolean>;
     /**

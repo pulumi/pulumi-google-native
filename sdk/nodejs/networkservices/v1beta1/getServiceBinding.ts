@@ -40,11 +40,11 @@ export interface GetServiceBindingResult {
      */
     readonly labels: {[key: string]: string};
     /**
-     * Name of the ServiceBinding resource. It matches pattern `projects/*&#47;locations/global/serviceBindings/service_binding_name>`.
+     * Name of the ServiceBinding resource. It matches pattern `projects/*&#47;locations/global/serviceBindings/service_binding_name`.
      */
     readonly name: string;
     /**
-     * The full service directory service name of the format /projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
+     * The full Service Directory Service name of the format projects/*&#47;locations/*&#47;namespaces/*&#47;services/*
      */
     readonly service: string;
     /**

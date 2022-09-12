@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetRegionBackendServiceResult:
-    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, service_bindings=None, session_affinity=None, subsetting=None, timeout_sec=None):
+    def __init__(__self__, affinity_cookie_ttl_sec=None, backends=None, cdn_policy=None, circuit_breakers=None, compression_mode=None, connection_draining=None, connection_tracking_policy=None, consistent_hash=None, creation_timestamp=None, custom_request_headers=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, failover_policy=None, fingerprint=None, health_checks=None, iap=None, kind=None, load_balancing_scheme=None, locality_lb_policies=None, locality_lb_policy=None, log_config=None, max_stream_duration=None, name=None, network=None, outlier_detection=None, port=None, port_name=None, protocol=None, region=None, security_policy=None, security_settings=None, self_link=None, service_bindings=None, session_affinity=None, subsetting=None, timeout_sec=None):
         if affinity_cookie_ttl_sec and not isinstance(affinity_cookie_ttl_sec, int):
             raise TypeError("Expected argument 'affinity_cookie_ttl_sec' to be a int")
         pulumi.set(__self__, "affinity_cookie_ttl_sec", affinity_cookie_ttl_sec)
@@ -32,6 +32,9 @@ class GetRegionBackendServiceResult:
         if circuit_breakers and not isinstance(circuit_breakers, dict):
             raise TypeError("Expected argument 'circuit_breakers' to be a dict")
         pulumi.set(__self__, "circuit_breakers", circuit_breakers)
+        if compression_mode and not isinstance(compression_mode, str):
+            raise TypeError("Expected argument 'compression_mode' to be a str")
+        pulumi.set(__self__, "compression_mode", compression_mode)
         if connection_draining and not isinstance(connection_draining, dict):
             raise TypeError("Expected argument 'connection_draining' to be a dict")
         pulumi.set(__self__, "connection_draining", connection_draining)
@@ -164,6 +167,14 @@ class GetRegionBackendServiceResult:
     @pulumi.getter(name="circuitBreakers")
     def circuit_breakers(self) -> 'outputs.CircuitBreakersResponse':
         return pulumi.get(self, "circuit_breakers")
+
+    @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> str:
+        """
+        Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        """
+        return pulumi.get(self, "compression_mode")
 
     @property
     @pulumi.getter(name="connectionDraining")
@@ -434,6 +445,7 @@ class AwaitableGetRegionBackendServiceResult(GetRegionBackendServiceResult):
             backends=self.backends,
             cdn_policy=self.cdn_policy,
             circuit_breakers=self.circuit_breakers,
+            compression_mode=self.compression_mode,
             connection_draining=self.connection_draining,
             connection_tracking_policy=self.connection_tracking_policy,
             consistent_hash=self.consistent_hash,
@@ -488,6 +500,7 @@ def get_region_backend_service(backend_service: Optional[str] = None,
         backends=__ret__.backends,
         cdn_policy=__ret__.cdn_policy,
         circuit_breakers=__ret__.circuit_breakers,
+        compression_mode=__ret__.compression_mode,
         connection_draining=__ret__.connection_draining,
         connection_tracking_policy=__ret__.connection_tracking_policy,
         consistent_hash=__ret__.consistent_hash,

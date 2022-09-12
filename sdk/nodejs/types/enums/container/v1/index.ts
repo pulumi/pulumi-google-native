@@ -216,6 +216,26 @@ export const LoggingComponentConfigEnableComponentsItem = {
 
 export type LoggingComponentConfigEnableComponentsItem = (typeof LoggingComponentConfigEnableComponentsItem)[keyof typeof LoggingComponentConfigEnableComponentsItem];
 
+export const LoggingVariantConfigVariant = {
+    /**
+     * Default value. This shouldn't be used.
+     */
+    VariantUnspecified: "VARIANT_UNSPECIFIED",
+    /**
+     * default logging variant.
+     */
+    Default: "DEFAULT",
+    /**
+     * maximum logging throughput variant.
+     */
+    MaxThroughput: "MAX_THROUGHPUT",
+} as const;
+
+/**
+ * Logging variant deployed on nodes.
+ */
+export type LoggingVariantConfigVariant = (typeof LoggingVariantConfigVariant)[keyof typeof LoggingVariantConfigVariant];
+
 export const MaintenanceExclusionOptionsScope = {
     /**
      * NO_UPGRADES excludes all upgrades, including patch upgrades and minor upgrades across control planes and nodes. This is the default exclusion behavior.

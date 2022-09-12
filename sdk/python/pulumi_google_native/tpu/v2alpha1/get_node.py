@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetNodeResult:
-    def __init__(__self__, accelerator_type=None, api_version=None, cidr_block=None, create_time=None, data_disks=None, description=None, health=None, health_description=None, labels=None, metadata=None, name=None, network_config=None, network_endpoints=None, runtime_version=None, scheduling_config=None, service_account=None, state=None, symptoms=None, tags=None):
+    def __init__(__self__, accelerator_type=None, api_version=None, cidr_block=None, create_time=None, data_disks=None, description=None, health=None, health_description=None, labels=None, metadata=None, name=None, network_config=None, network_endpoints=None, runtime_version=None, scheduling_config=None, service_account=None, shielded_instance_config=None, state=None, symptoms=None, tags=None):
         if accelerator_type and not isinstance(accelerator_type, str):
             raise TypeError("Expected argument 'accelerator_type' to be a str")
         pulumi.set(__self__, "accelerator_type", accelerator_type)
@@ -68,6 +68,9 @@ class GetNodeResult:
         if service_account and not isinstance(service_account, dict):
             raise TypeError("Expected argument 'service_account' to be a dict")
         pulumi.set(__self__, "service_account", service_account)
+        if shielded_instance_config and not isinstance(shielded_instance_config, dict):
+            raise TypeError("Expected argument 'shielded_instance_config' to be a dict")
+        pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -207,6 +210,14 @@ class GetNodeResult:
         return pulumi.get(self, "service_account")
 
     @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> 'outputs.ShieldedInstanceConfigResponse':
+        """
+        Shielded Instance options.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @property
     @pulumi.getter
     def state(self) -> str:
         """
@@ -253,6 +264,7 @@ class AwaitableGetNodeResult(GetNodeResult):
             runtime_version=self.runtime_version,
             scheduling_config=self.scheduling_config,
             service_account=self.service_account,
+            shielded_instance_config=self.shielded_instance_config,
             state=self.state,
             symptoms=self.symptoms,
             tags=self.tags)
@@ -289,6 +301,7 @@ def get_node(location: Optional[str] = None,
         runtime_version=__ret__.runtime_version,
         scheduling_config=__ret__.scheduling_config,
         service_account=__ret__.service_account,
+        shielded_instance_config=__ret__.shielded_instance_config,
         state=__ret__.state,
         symptoms=__ret__.symptoms,
         tags=__ret__.tags)

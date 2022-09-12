@@ -30,7 +30,8 @@ class JobArgs:
                  scheduling: Optional[pulumi.Input['JobSchedulingArgs']] = None,
                  spark_job: Optional[pulumi.Input['SparkJobArgs']] = None,
                  spark_r_job: Optional[pulumi.Input['SparkRJobArgs']] = None,
-                 spark_sql_job: Optional[pulumi.Input['SparkSqlJobArgs']] = None):
+                 spark_sql_job: Optional[pulumi.Input['SparkSqlJobArgs']] = None,
+                 trino_job: Optional[pulumi.Input['TrinoJobArgs']] = None):
         """
         The set of arguments for constructing a Job resource.
         :param pulumi.Input['JobPlacementArgs'] placement: Job information, including how, when, and where to run the job.
@@ -46,6 +47,7 @@ class JobArgs:
         :param pulumi.Input['SparkJobArgs'] spark_job: Optional. Job is a Spark job.
         :param pulumi.Input['SparkRJobArgs'] spark_r_job: Optional. Job is a SparkR job.
         :param pulumi.Input['SparkSqlJobArgs'] spark_sql_job: Optional. Job is a SparkSql job.
+        :param pulumi.Input['TrinoJobArgs'] trino_job: Optional. Job is a Trino job.
         """
         pulumi.set(__self__, "placement", placement)
         pulumi.set(__self__, "region", region)
@@ -75,6 +77,8 @@ class JobArgs:
             pulumi.set(__self__, "spark_r_job", spark_r_job)
         if spark_sql_job is not None:
             pulumi.set(__self__, "spark_sql_job", spark_sql_job)
+        if trino_job is not None:
+            pulumi.set(__self__, "trino_job", trino_job)
 
     @property
     @pulumi.getter
@@ -250,6 +254,18 @@ class JobArgs:
     def spark_sql_job(self, value: Optional[pulumi.Input['SparkSqlJobArgs']]):
         pulumi.set(self, "spark_sql_job", value)
 
+    @property
+    @pulumi.getter(name="trinoJob")
+    def trino_job(self) -> Optional[pulumi.Input['TrinoJobArgs']]:
+        """
+        Optional. Job is a Trino job.
+        """
+        return pulumi.get(self, "trino_job")
+
+    @trino_job.setter
+    def trino_job(self, value: Optional[pulumi.Input['TrinoJobArgs']]):
+        pulumi.set(self, "trino_job", value)
+
 
 class Job(pulumi.CustomResource):
     @overload
@@ -271,6 +287,7 @@ class Job(pulumi.CustomResource):
                  spark_job: Optional[pulumi.Input[pulumi.InputType['SparkJobArgs']]] = None,
                  spark_r_job: Optional[pulumi.Input[pulumi.InputType['SparkRJobArgs']]] = None,
                  spark_sql_job: Optional[pulumi.Input[pulumi.InputType['SparkSqlJobArgs']]] = None,
+                 trino_job: Optional[pulumi.Input[pulumi.InputType['TrinoJobArgs']]] = None,
                  __props__=None):
         """
         Submits a job to a cluster.
@@ -291,6 +308,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['SparkJobArgs']] spark_job: Optional. Job is a Spark job.
         :param pulumi.Input[pulumi.InputType['SparkRJobArgs']] spark_r_job: Optional. Job is a SparkR job.
         :param pulumi.Input[pulumi.InputType['SparkSqlJobArgs']] spark_sql_job: Optional. Job is a SparkSql job.
+        :param pulumi.Input[pulumi.InputType['TrinoJobArgs']] trino_job: Optional. Job is a Trino job.
         """
         ...
     @overload
@@ -332,6 +350,7 @@ class Job(pulumi.CustomResource):
                  spark_job: Optional[pulumi.Input[pulumi.InputType['SparkJobArgs']]] = None,
                  spark_r_job: Optional[pulumi.Input[pulumi.InputType['SparkRJobArgs']]] = None,
                  spark_sql_job: Optional[pulumi.Input[pulumi.InputType['SparkSqlJobArgs']]] = None,
+                 trino_job: Optional[pulumi.Input[pulumi.InputType['TrinoJobArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -360,6 +379,7 @@ class Job(pulumi.CustomResource):
             __props__.__dict__["spark_job"] = spark_job
             __props__.__dict__["spark_r_job"] = spark_r_job
             __props__.__dict__["spark_sql_job"] = spark_sql_job
+            __props__.__dict__["trino_job"] = trino_job
             __props__.__dict__["done"] = None
             __props__.__dict__["driver_control_files_uri"] = None
             __props__.__dict__["driver_output_resource_uri"] = None
@@ -411,6 +431,7 @@ class Job(pulumi.CustomResource):
         __props__.__dict__["spark_sql_job"] = None
         __props__.__dict__["status"] = None
         __props__.__dict__["status_history"] = None
+        __props__.__dict__["trino_job"] = None
         __props__.__dict__["yarn_applications"] = None
         return Job(resource_name, opts=opts, __props__=__props__)
 
@@ -567,6 +588,14 @@ class Job(pulumi.CustomResource):
         The previous job status.
         """
         return pulumi.get(self, "status_history")
+
+    @property
+    @pulumi.getter(name="trinoJob")
+    def trino_job(self) -> pulumi.Output['outputs.TrinoJobResponse']:
+        """
+        Optional. Job is a Trino job.
+        """
+        return pulumi.get(self, "trino_job")
 
     @property
     @pulumi.getter(name="yarnApplications")

@@ -37,6 +37,10 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.NfsExportResponse> NfsExports;
         /// <summary>
+        /// Performance tier of the Volume. Default is SHARED.
+        /// </summary>
+        public readonly string PerformanceTier;
+        /// <summary>
         /// Volume protocol.
         /// </summary>
         public readonly string Protocol;
@@ -69,6 +73,8 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             ImmutableArray<Outputs.NfsExportResponse> nfsExports,
 
+            string performanceTier,
+
             string protocol,
 
             int sizeGb,
@@ -84,6 +90,7 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             MachineIds = machineIds;
             Name = name;
             NfsExports = nfsExports;
+            PerformanceTier = performanceTier;
             Protocol = protocol;
             SizeGb = sizeGb;
             SnapshotsEnabled = snapshotsEnabled;

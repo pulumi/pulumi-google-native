@@ -45,9 +45,17 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
         /// </summary>
         public readonly string Name;
         /// <summary>
+        /// Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
+        /// </summary>
+        public readonly string Notes;
+        /// <summary>
         /// Originally requested size, in GiB.
         /// </summary>
         public readonly string OriginallyRequestedSizeGib;
+        /// <summary>
+        /// Immutable. Performance tier of the Volume. Default is SHARED.
+        /// </summary>
+        public readonly string PerformanceTier;
         /// <summary>
         /// Immutable. Pod name.
         /// </summary>
@@ -105,7 +113,11 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
 
             string name,
 
+            string notes,
+
             string originallyRequestedSizeGib,
+
+            string performanceTier,
 
             string pod,
 
@@ -134,7 +146,9 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Outputs
             Labels = labels;
             MaxSizeGib = maxSizeGib;
             Name = name;
+            Notes = notes;
             OriginallyRequestedSizeGib = originallyRequestedSizeGib;
+            PerformanceTier = performanceTier;
             Pod = pod;
             Protocol = protocol;
             RemainingSpaceGib = remainingSpaceGib;

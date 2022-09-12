@@ -143,7 +143,7 @@ class DeploymentArtifact(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        CreateArtifact creates a specified artifact.
+        Creates a specified artifact.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -159,7 +159,7 @@ class DeploymentArtifact(pulumi.CustomResource):
                  args: DeploymentArtifactArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        CreateArtifact creates a specified artifact.
+        Creates a specified artifact.
 
         :param str resource_name: The name of the resource.
         :param DeploymentArtifactArgs args: The arguments to use to populate this resource's properties.

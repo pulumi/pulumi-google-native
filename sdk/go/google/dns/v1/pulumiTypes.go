@@ -771,7 +771,7 @@ func (o GoogleIamV1AuditLogConfigResponseArrayOutput) Index(i pulumi.IntInput) G
 type GoogleIamV1Binding struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition *Expr `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role *string `pulumi:"role"`
@@ -792,7 +792,7 @@ type GoogleIamV1BindingInput interface {
 type GoogleIamV1BindingArgs struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprPtrInput `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members pulumi.StringArrayInput `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role pulumi.StringPtrInput `pulumi:"role"`
@@ -855,7 +855,7 @@ func (o GoogleIamV1BindingOutput) Condition() ExprPtrOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) *Expr { return v.Condition }).(ExprPtrOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o GoogleIamV1BindingOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1Binding) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -889,7 +889,7 @@ func (o GoogleIamV1BindingArrayOutput) Index(i pulumi.IntInput) GoogleIamV1Bindi
 type GoogleIamV1BindingResponse struct {
 	// The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
 	Condition ExprResponse `pulumi:"condition"`
-	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+	// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 	Members []string `pulumi:"members"`
 	// Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
 	Role string `pulumi:"role"`
@@ -915,7 +915,7 @@ func (o GoogleIamV1BindingResponseOutput) Condition() ExprResponseOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) ExprResponse { return v.Condition }).(ExprResponseOutput)
 }
 
-// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
+// Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`.
 func (o GoogleIamV1BindingResponseOutput) Members() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GoogleIamV1BindingResponse) []string { return v.Members }).(pulumi.StringArrayOutput)
 }
@@ -2110,7 +2110,9 @@ func (o ManagedZonePeeringConfigTargetNetworkResponseOutput) NetworkUrl() pulumi
 }
 
 type ManagedZonePrivateVisibilityConfig struct {
-	Kind *string `pulumi:"kind"`
+	// The list of Google Kubernetes Engine clusters that can see this zone.
+	GkeClusters []ManagedZonePrivateVisibilityConfigGKECluster `pulumi:"gkeClusters"`
+	Kind        *string                                        `pulumi:"kind"`
 	// The list of VPC networks that can see this zone.
 	Networks []ManagedZonePrivateVisibilityConfigNetwork `pulumi:"networks"`
 }
@@ -2127,7 +2129,9 @@ type ManagedZonePrivateVisibilityConfigInput interface {
 }
 
 type ManagedZonePrivateVisibilityConfigArgs struct {
-	Kind pulumi.StringPtrInput `pulumi:"kind"`
+	// The list of Google Kubernetes Engine clusters that can see this zone.
+	GkeClusters ManagedZonePrivateVisibilityConfigGKEClusterArrayInput `pulumi:"gkeClusters"`
+	Kind        pulumi.StringPtrInput                                  `pulumi:"kind"`
 	// The list of VPC networks that can see this zone.
 	Networks ManagedZonePrivateVisibilityConfigNetworkArrayInput `pulumi:"networks"`
 }
@@ -2209,6 +2213,13 @@ func (o ManagedZonePrivateVisibilityConfigOutput) ToManagedZonePrivateVisibility
 	}).(ManagedZonePrivateVisibilityConfigPtrOutput)
 }
 
+// The list of Google Kubernetes Engine clusters that can see this zone.
+func (o ManagedZonePrivateVisibilityConfigOutput) GkeClusters() ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfig) []ManagedZonePrivateVisibilityConfigGKECluster {
+		return v.GkeClusters
+	}).(ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput)
+}
+
 func (o ManagedZonePrivateVisibilityConfigOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfig) *string { return v.Kind }).(pulumi.StringPtrOutput)
 }
@@ -2244,6 +2255,16 @@ func (o ManagedZonePrivateVisibilityConfigPtrOutput) Elem() ManagedZonePrivateVi
 	}).(ManagedZonePrivateVisibilityConfigOutput)
 }
 
+// The list of Google Kubernetes Engine clusters that can see this zone.
+func (o ManagedZonePrivateVisibilityConfigPtrOutput) GkeClusters() ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput {
+	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfig) []ManagedZonePrivateVisibilityConfigGKECluster {
+		if v == nil {
+			return nil
+		}
+		return v.GkeClusters
+	}).(ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput)
+}
+
 func (o ManagedZonePrivateVisibilityConfigPtrOutput) Kind() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ManagedZonePrivateVisibilityConfig) *string {
 		if v == nil {
@@ -2261,6 +2282,158 @@ func (o ManagedZonePrivateVisibilityConfigPtrOutput) Networks() ManagedZonePriva
 		}
 		return v.Networks
 	}).(ManagedZonePrivateVisibilityConfigNetworkArrayOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigGKECluster struct {
+	// The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+	GkeClusterName *string `pulumi:"gkeClusterName"`
+	Kind           *string `pulumi:"kind"`
+}
+
+// ManagedZonePrivateVisibilityConfigGKEClusterInput is an input type that accepts ManagedZonePrivateVisibilityConfigGKEClusterArgs and ManagedZonePrivateVisibilityConfigGKEClusterOutput values.
+// You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigGKEClusterInput` via:
+//
+//	ManagedZonePrivateVisibilityConfigGKEClusterArgs{...}
+type ManagedZonePrivateVisibilityConfigGKEClusterInput interface {
+	pulumi.Input
+
+	ToManagedZonePrivateVisibilityConfigGKEClusterOutput() ManagedZonePrivateVisibilityConfigGKEClusterOutput
+	ToManagedZonePrivateVisibilityConfigGKEClusterOutputWithContext(context.Context) ManagedZonePrivateVisibilityConfigGKEClusterOutput
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterArgs struct {
+	// The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+	GkeClusterName pulumi.StringPtrInput `pulumi:"gkeClusterName"`
+	Kind           pulumi.StringPtrInput `pulumi:"kind"`
+}
+
+func (ManagedZonePrivateVisibilityConfigGKEClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePrivateVisibilityConfigGKECluster)(nil)).Elem()
+}
+
+func (i ManagedZonePrivateVisibilityConfigGKEClusterArgs) ToManagedZonePrivateVisibilityConfigGKEClusterOutput() ManagedZonePrivateVisibilityConfigGKEClusterOutput {
+	return i.ToManagedZonePrivateVisibilityConfigGKEClusterOutputWithContext(context.Background())
+}
+
+func (i ManagedZonePrivateVisibilityConfigGKEClusterArgs) ToManagedZonePrivateVisibilityConfigGKEClusterOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGKEClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigGKEClusterOutput)
+}
+
+// ManagedZonePrivateVisibilityConfigGKEClusterArrayInput is an input type that accepts ManagedZonePrivateVisibilityConfigGKEClusterArray and ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput values.
+// You can construct a concrete instance of `ManagedZonePrivateVisibilityConfigGKEClusterArrayInput` via:
+//
+//	ManagedZonePrivateVisibilityConfigGKEClusterArray{ ManagedZonePrivateVisibilityConfigGKEClusterArgs{...} }
+type ManagedZonePrivateVisibilityConfigGKEClusterArrayInput interface {
+	pulumi.Input
+
+	ToManagedZonePrivateVisibilityConfigGKEClusterArrayOutput() ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput
+	ToManagedZonePrivateVisibilityConfigGKEClusterArrayOutputWithContext(context.Context) ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterArray []ManagedZonePrivateVisibilityConfigGKEClusterInput
+
+func (ManagedZonePrivateVisibilityConfigGKEClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedZonePrivateVisibilityConfigGKECluster)(nil)).Elem()
+}
+
+func (i ManagedZonePrivateVisibilityConfigGKEClusterArray) ToManagedZonePrivateVisibilityConfigGKEClusterArrayOutput() ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput {
+	return i.ToManagedZonePrivateVisibilityConfigGKEClusterArrayOutputWithContext(context.Background())
+}
+
+func (i ManagedZonePrivateVisibilityConfigGKEClusterArray) ToManagedZonePrivateVisibilityConfigGKEClusterArrayOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePrivateVisibilityConfigGKEClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePrivateVisibilityConfigGKECluster)(nil)).Elem()
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterOutput) ToManagedZonePrivateVisibilityConfigGKEClusterOutput() ManagedZonePrivateVisibilityConfigGKEClusterOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterOutput) ToManagedZonePrivateVisibilityConfigGKEClusterOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGKEClusterOutput {
+	return o
+}
+
+// The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+func (o ManagedZonePrivateVisibilityConfigGKEClusterOutput) GkeClusterName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigGKECluster) *string { return v.GkeClusterName }).(pulumi.StringPtrOutput)
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterOutput) Kind() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigGKECluster) *string { return v.Kind }).(pulumi.StringPtrOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedZonePrivateVisibilityConfigGKECluster)(nil)).Elem()
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput) ToManagedZonePrivateVisibilityConfigGKEClusterArrayOutput() ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput) ToManagedZonePrivateVisibilityConfigGKEClusterArrayOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput) Index(i pulumi.IntInput) ManagedZonePrivateVisibilityConfigGKEClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedZonePrivateVisibilityConfigGKECluster {
+		return vs[0].([]ManagedZonePrivateVisibilityConfigGKECluster)[vs[1].(int)]
+	}).(ManagedZonePrivateVisibilityConfigGKEClusterOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterResponse struct {
+	// The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+	GkeClusterName string `pulumi:"gkeClusterName"`
+	Kind           string `pulumi:"kind"`
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ManagedZonePrivateVisibilityConfigGKEClusterResponse)(nil)).Elem()
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput) ToManagedZonePrivateVisibilityConfigGKEClusterResponseOutput() ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput) ToManagedZonePrivateVisibilityConfigGKEClusterResponseOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput {
+	return o
+}
+
+// The resource name of the cluster to bind this ManagedZone to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+func (o ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput) GkeClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigGKEClusterResponse) string { return v.GkeClusterName }).(pulumi.StringOutput)
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigGKEClusterResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ManagedZonePrivateVisibilityConfigGKEClusterResponse)(nil)).Elem()
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput) ToManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput() ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput) ToManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput {
+	return o
+}
+
+func (o ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput) Index(i pulumi.IntInput) ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ManagedZonePrivateVisibilityConfigGKEClusterResponse {
+		return vs[0].([]ManagedZonePrivateVisibilityConfigGKEClusterResponse)[vs[1].(int)]
+	}).(ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput)
 }
 
 type ManagedZonePrivateVisibilityConfigNetwork struct {
@@ -2416,7 +2589,9 @@ func (o ManagedZonePrivateVisibilityConfigNetworkResponseArrayOutput) Index(i pu
 }
 
 type ManagedZonePrivateVisibilityConfigResponse struct {
-	Kind string `pulumi:"kind"`
+	// The list of Google Kubernetes Engine clusters that can see this zone.
+	GkeClusters []ManagedZonePrivateVisibilityConfigGKEClusterResponse `pulumi:"gkeClusters"`
+	Kind        string                                                 `pulumi:"kind"`
 	// The list of VPC networks that can see this zone.
 	Networks []ManagedZonePrivateVisibilityConfigNetworkResponse `pulumi:"networks"`
 }
@@ -2433,6 +2608,13 @@ func (o ManagedZonePrivateVisibilityConfigResponseOutput) ToManagedZonePrivateVi
 
 func (o ManagedZonePrivateVisibilityConfigResponseOutput) ToManagedZonePrivateVisibilityConfigResponseOutputWithContext(ctx context.Context) ManagedZonePrivateVisibilityConfigResponseOutput {
 	return o
+}
+
+// The list of Google Kubernetes Engine clusters that can see this zone.
+func (o ManagedZonePrivateVisibilityConfigResponseOutput) GkeClusters() ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput {
+	return o.ApplyT(func(v ManagedZonePrivateVisibilityConfigResponse) []ManagedZonePrivateVisibilityConfigGKEClusterResponse {
+		return v.GkeClusters
+	}).(ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput)
 }
 
 func (o ManagedZonePrivateVisibilityConfigResponseOutput) Kind() pulumi.StringOutput {
@@ -5412,6 +5594,61 @@ func (o ResourceRecordSetResponseArrayOutput) Index(i pulumi.IntInput) ResourceR
 	}).(ResourceRecordSetResponseOutput)
 }
 
+type ResponsePolicyGKECluster struct {
+	// The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+	GkeClusterName *string `pulumi:"gkeClusterName"`
+	Kind           *string `pulumi:"kind"`
+}
+
+type ResponsePolicyGKEClusterResponse struct {
+	// The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+	GkeClusterName string `pulumi:"gkeClusterName"`
+	Kind           string `pulumi:"kind"`
+}
+
+type ResponsePolicyGKEClusterResponseOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyGKEClusterResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ResponsePolicyGKEClusterResponse)(nil)).Elem()
+}
+
+func (o ResponsePolicyGKEClusterResponseOutput) ToResponsePolicyGKEClusterResponseOutput() ResponsePolicyGKEClusterResponseOutput {
+	return o
+}
+
+func (o ResponsePolicyGKEClusterResponseOutput) ToResponsePolicyGKEClusterResponseOutputWithContext(ctx context.Context) ResponsePolicyGKEClusterResponseOutput {
+	return o
+}
+
+// The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/*/locations/*/clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get
+func (o ResponsePolicyGKEClusterResponseOutput) GkeClusterName() pulumi.StringOutput {
+	return o.ApplyT(func(v ResponsePolicyGKEClusterResponse) string { return v.GkeClusterName }).(pulumi.StringOutput)
+}
+
+func (o ResponsePolicyGKEClusterResponseOutput) Kind() pulumi.StringOutput {
+	return o.ApplyT(func(v ResponsePolicyGKEClusterResponse) string { return v.Kind }).(pulumi.StringOutput)
+}
+
+type ResponsePolicyGKEClusterResponseArrayOutput struct{ *pulumi.OutputState }
+
+func (ResponsePolicyGKEClusterResponseArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ResponsePolicyGKEClusterResponse)(nil)).Elem()
+}
+
+func (o ResponsePolicyGKEClusterResponseArrayOutput) ToResponsePolicyGKEClusterResponseArrayOutput() ResponsePolicyGKEClusterResponseArrayOutput {
+	return o
+}
+
+func (o ResponsePolicyGKEClusterResponseArrayOutput) ToResponsePolicyGKEClusterResponseArrayOutputWithContext(ctx context.Context) ResponsePolicyGKEClusterResponseArrayOutput {
+	return o
+}
+
+func (o ResponsePolicyGKEClusterResponseArrayOutput) Index(i pulumi.IntInput) ResponsePolicyGKEClusterResponseOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ResponsePolicyGKEClusterResponse {
+		return vs[0].([]ResponsePolicyGKEClusterResponse)[vs[1].(int)]
+	}).(ResponsePolicyGKEClusterResponseOutput)
+}
+
 type ResponsePolicyNetwork struct {
 	Kind *string `pulumi:"kind"`
 	// The fully qualified URL of the VPC network to bind to. This should be formatted like https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}
@@ -5521,6 +5758,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZonePeeringConfigTargetNetworkPtrInput)(nil)).Elem(), ManagedZonePeeringConfigTargetNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZonePrivateVisibilityConfigInput)(nil)).Elem(), ManagedZonePrivateVisibilityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZonePrivateVisibilityConfigPtrInput)(nil)).Elem(), ManagedZonePrivateVisibilityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZonePrivateVisibilityConfigGKEClusterInput)(nil)).Elem(), ManagedZonePrivateVisibilityConfigGKEClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZonePrivateVisibilityConfigGKEClusterArrayInput)(nil)).Elem(), ManagedZonePrivateVisibilityConfigGKEClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZonePrivateVisibilityConfigNetworkInput)(nil)).Elem(), ManagedZonePrivateVisibilityConfigNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZonePrivateVisibilityConfigNetworkArrayInput)(nil)).Elem(), ManagedZonePrivateVisibilityConfigNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagedZoneReverseLookupConfigInput)(nil)).Elem(), ManagedZoneReverseLookupConfigArgs{})
@@ -5593,6 +5832,10 @@ func init() {
 	pulumi.RegisterOutputType(ManagedZonePeeringConfigTargetNetworkResponseOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigPtrOutput{})
+	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigGKEClusterOutput{})
+	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigGKEClusterArrayOutput{})
+	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigGKEClusterResponseOutput{})
+	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigGKEClusterResponseArrayOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigNetworkOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigNetworkArrayOutput{})
 	pulumi.RegisterOutputType(ManagedZonePrivateVisibilityConfigNetworkResponseOutput{})
@@ -5649,6 +5892,8 @@ func init() {
 	pulumi.RegisterOutputType(ResourceRecordSetTypeArrayOutput{})
 	pulumi.RegisterOutputType(ResourceRecordSetResponseOutput{})
 	pulumi.RegisterOutputType(ResourceRecordSetResponseArrayOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyGKEClusterResponseOutput{})
+	pulumi.RegisterOutputType(ResponsePolicyGKEClusterResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyNetworkResponseOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyNetworkResponseArrayOutput{})
 	pulumi.RegisterOutputType(ResponsePolicyRuleLocalDataResponseOutput{})

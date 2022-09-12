@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     public static class GetVersion
     {
         /// <summary>
-        /// GetApiVersion returns a specified version.
+        /// Returns a specified version.
         /// </summary>
         public static Task<GetVersionResult> InvokeAsync(GetVersionArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetVersionResult>("google-native:apigeeregistry/v1:getVersion", args ?? new GetVersionArgs(), options.WithDefaults());
 
         /// <summary>
-        /// GetApiVersion returns a specified version.
+        /// Returns a specified version.
         /// </summary>
         public static Output<GetVersionResult> Invoke(GetVersionInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetVersionResult>("google-native:apigeeregistry/v1:getVersion", args ?? new GetVersionInvokeArgs(), options.WithDefaults());
@@ -86,7 +86,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// </summary>
         public readonly string DisplayName;
         /// <summary>
-        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
@@ -94,7 +94,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g. "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
+        /// A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
         /// </summary>
         public readonly string State;
         /// <summary>

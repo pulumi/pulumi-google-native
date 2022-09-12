@@ -16,7 +16,7 @@ type GooglePrivacyDlpV2Action struct {
 	Deidentify *GooglePrivacyDlpV2Deidentify `pulumi:"deidentify"`
 	// Enable email notification for project owners and editors on job's completion/failure.
 	JobNotificationEmails *GooglePrivacyDlpV2JobNotificationEmails `pulumi:"jobNotificationEmails"`
-	// Publish a notification to a pubsub topic.
+	// Publish a notification to a Pub/Sub topic.
 	PubSub *GooglePrivacyDlpV2PublishToPubSub `pulumi:"pubSub"`
 	// Publish findings to Cloud Datahub.
 	PublishFindingsToCloudDataCatalog *GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog `pulumi:"publishFindingsToCloudDataCatalog"`
@@ -45,7 +45,7 @@ type GooglePrivacyDlpV2ActionArgs struct {
 	Deidentify GooglePrivacyDlpV2DeidentifyPtrInput `pulumi:"deidentify"`
 	// Enable email notification for project owners and editors on job's completion/failure.
 	JobNotificationEmails GooglePrivacyDlpV2JobNotificationEmailsPtrInput `pulumi:"jobNotificationEmails"`
-	// Publish a notification to a pubsub topic.
+	// Publish a notification to a Pub/Sub topic.
 	PubSub GooglePrivacyDlpV2PublishToPubSubPtrInput `pulumi:"pubSub"`
 	// Publish findings to Cloud Datahub.
 	PublishFindingsToCloudDataCatalog GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogPtrInput `pulumi:"publishFindingsToCloudDataCatalog"`
@@ -121,7 +121,7 @@ func (o GooglePrivacyDlpV2ActionOutput) JobNotificationEmails() GooglePrivacyDlp
 	}).(GooglePrivacyDlpV2JobNotificationEmailsPtrOutput)
 }
 
-// Publish a notification to a pubsub topic.
+// Publish a notification to a Pub/Sub topic.
 func (o GooglePrivacyDlpV2ActionOutput) PubSub() GooglePrivacyDlpV2PublishToPubSubPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2Action) *GooglePrivacyDlpV2PublishToPubSub { return v.PubSub }).(GooglePrivacyDlpV2PublishToPubSubPtrOutput)
 }
@@ -178,7 +178,7 @@ type GooglePrivacyDlpV2ActionResponse struct {
 	Deidentify GooglePrivacyDlpV2DeidentifyResponse `pulumi:"deidentify"`
 	// Enable email notification for project owners and editors on job's completion/failure.
 	JobNotificationEmails GooglePrivacyDlpV2JobNotificationEmailsResponse `pulumi:"jobNotificationEmails"`
-	// Publish a notification to a pubsub topic.
+	// Publish a notification to a Pub/Sub topic.
 	PubSub GooglePrivacyDlpV2PublishToPubSubResponse `pulumi:"pubSub"`
 	// Publish findings to Cloud Datahub.
 	PublishFindingsToCloudDataCatalog GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogResponse `pulumi:"publishFindingsToCloudDataCatalog"`
@@ -217,7 +217,7 @@ func (o GooglePrivacyDlpV2ActionResponseOutput) JobNotificationEmails() GooglePr
 	}).(GooglePrivacyDlpV2JobNotificationEmailsResponseOutput)
 }
 
-// Publish a notification to a pubsub topic.
+// Publish a notification to a Pub/Sub topic.
 func (o GooglePrivacyDlpV2ActionResponseOutput) PubSub() GooglePrivacyDlpV2PublishToPubSubResponseOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2ActionResponse) GooglePrivacyDlpV2PublishToPubSubResponse { return v.PubSub }).(GooglePrivacyDlpV2PublishToPubSubResponseOutput)
 }
@@ -20497,7 +20497,7 @@ func (o GooglePrivacyDlpV2TimePartConfigResponseOutput) PartToExtract() pulumi.S
 
 // Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Cloud Storage and BigQuery.
 type GooglePrivacyDlpV2TimespanConfig struct {
-	// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
+	// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger or the timespan end_time used in the last run of the JobTrigger.
 	EnableAutoPopulationOfTimespanConfig *bool `pulumi:"enableAutoPopulationOfTimespanConfig"`
 	// Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
 	EndTime *string `pulumi:"endTime"`
@@ -20520,7 +20520,7 @@ type GooglePrivacyDlpV2TimespanConfigInput interface {
 
 // Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Cloud Storage and BigQuery.
 type GooglePrivacyDlpV2TimespanConfigArgs struct {
-	// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
+	// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger or the timespan end_time used in the last run of the JobTrigger.
 	EnableAutoPopulationOfTimespanConfig pulumi.BoolPtrInput `pulumi:"enableAutoPopulationOfTimespanConfig"`
 	// Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
 	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
@@ -20608,7 +20608,7 @@ func (o GooglePrivacyDlpV2TimespanConfigOutput) ToGooglePrivacyDlpV2TimespanConf
 	}).(GooglePrivacyDlpV2TimespanConfigPtrOutput)
 }
 
-// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
+// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger or the timespan end_time used in the last run of the JobTrigger.
 func (o GooglePrivacyDlpV2TimespanConfigOutput) EnableAutoPopulationOfTimespanConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2TimespanConfig) *bool { return v.EnableAutoPopulationOfTimespanConfig }).(pulumi.BoolPtrOutput)
 }
@@ -20652,7 +20652,7 @@ func (o GooglePrivacyDlpV2TimespanConfigPtrOutput) Elem() GooglePrivacyDlpV2Time
 	}).(GooglePrivacyDlpV2TimespanConfigOutput)
 }
 
-// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
+// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger or the timespan end_time used in the last run of the JobTrigger.
 func (o GooglePrivacyDlpV2TimespanConfigPtrOutput) EnableAutoPopulationOfTimespanConfig() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GooglePrivacyDlpV2TimespanConfig) *bool {
 		if v == nil {
@@ -20694,7 +20694,7 @@ func (o GooglePrivacyDlpV2TimespanConfigPtrOutput) TimestampField() GooglePrivac
 
 // Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Cloud Storage and BigQuery.
 type GooglePrivacyDlpV2TimespanConfigResponse struct {
-	// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
+	// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger or the timespan end_time used in the last run of the JobTrigger.
 	EnableAutoPopulationOfTimespanConfig bool `pulumi:"enableAutoPopulationOfTimespanConfig"`
 	// Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
 	EndTime string `pulumi:"endTime"`
@@ -20719,7 +20719,7 @@ func (o GooglePrivacyDlpV2TimespanConfigResponseOutput) ToGooglePrivacyDlpV2Time
 	return o
 }
 
-// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
+// When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger or the timespan end_time used in the last run of the JobTrigger.
 func (o GooglePrivacyDlpV2TimespanConfigResponseOutput) EnableAutoPopulationOfTimespanConfig() pulumi.BoolOutput {
 	return o.ApplyT(func(v GooglePrivacyDlpV2TimespanConfigResponse) bool { return v.EnableAutoPopulationOfTimespanConfig }).(pulumi.BoolOutput)
 }

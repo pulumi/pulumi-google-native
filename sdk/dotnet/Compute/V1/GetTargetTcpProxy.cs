@@ -82,6 +82,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly string ProxyHeader;
         /// <summary>
+        /// URL of the region where the regional TCP proxy resides. This field is not applicable to global TCP proxy.
+        /// </summary>
+        public readonly string Region;
+        /// <summary>
         /// Server-defined URL for the resource.
         /// </summary>
         public readonly string SelfLink;
@@ -104,6 +108,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             string proxyHeader,
 
+            string region,
+
             string selfLink,
 
             string service)
@@ -114,6 +120,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             Name = name;
             ProxyBind = proxyBind;
             ProxyHeader = proxyHeader;
+            Region = region;
             SelfLink = selfLink;
             Service = service;
         }

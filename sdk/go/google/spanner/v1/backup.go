@@ -27,7 +27,7 @@ type Backup struct {
 	EncryptionConfigEncryptionType pulumi.StringOutput `pulumi:"encryptionConfigEncryptionType"`
 	// Optional. The Cloud KMS key that will be used to protect the backup. This field should be set only when encryption_type is `CUSTOMER_MANAGED_ENCRYPTION`. Values are of the form `projects//locations//keyRings//cryptoKeys/`.
 	EncryptionConfigKmsKeyName pulumi.StringPtrOutput `pulumi:"encryptionConfigKmsKeyName"`
-	// The encryption information for the backup.
+	// The encryption information for the backup. .
 	EncryptionInfo EncryptionInfoResponseOutput `pulumi:"encryptionInfo"`
 	// Required for the CreateBackup operation. The expiration time of the backup, with microseconds granularity that must be at least 6 hours and at most 366 days from the time the CreateBackup request is processed. Once the `expire_time` has passed, the backup is eligible to be automatically deleted by Cloud Spanner to free the resources used by the backup.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
@@ -209,7 +209,7 @@ func (o BackupOutput) EncryptionConfigKmsKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringPtrOutput { return v.EncryptionConfigKmsKeyName }).(pulumi.StringPtrOutput)
 }
 
-// The encryption information for the backup.
+// The encryption information for the backup. .
 func (o BackupOutput) EncryptionInfo() EncryptionInfoResponseOutput {
 	return o.ApplyT(func(v *Backup) EncryptionInfoResponseOutput { return v.EncryptionInfo }).(EncryptionInfoResponseOutput)
 }

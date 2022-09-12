@@ -41,7 +41,7 @@ class FirewallArgs:
         :param pulumi.Input[Sequence[pulumi.Input['FirewallDeniedItemArgs']]] denied: The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ranges: If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Both IPv4 and IPv6 are supported.
-        :param pulumi.Input['FirewallDirection'] direction: Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+        :param pulumi.Input['FirewallDirection'] direction: Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
         :param pulumi.Input[bool] enable_logging: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
         :param pulumi.Input['FirewallLogConfigArgs'] log_config: This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
@@ -147,7 +147,7 @@ class FirewallArgs:
     @pulumi.getter
     def direction(self) -> Optional[pulumi.Input['FirewallDirection']]:
         """
-        Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+        Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
         """
         return pulumi.get(self, "direction")
 
@@ -342,7 +342,7 @@ class Firewall(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FirewallDeniedItemArgs']]]] denied: The list of DENY rules specified by this firewall. Each rule specifies a protocol and port-range tuple that describes a denied connection.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this field when you create the resource.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ranges: If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Both IPv4 and IPv6 are supported.
-        :param pulumi.Input['FirewallDirection'] direction: Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+        :param pulumi.Input['FirewallDirection'] direction: Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
         :param pulumi.Input[bool] disabled: Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
         :param pulumi.Input[bool] enable_logging: Deprecated in favor of enable in LogConfig. This field denotes whether to enable logging for a particular firewall rule. If logging is enabled, logs will be exported t Cloud Logging.
         :param pulumi.Input[pulumi.InputType['FirewallLogConfigArgs']] log_config: This field denotes the logging options for a particular firewall rule. If logging is enabled, logs will be exported to Cloud Logging.
@@ -522,7 +522,7 @@ class Firewall(pulumi.CustomResource):
     @pulumi.getter
     def direction(self) -> pulumi.Output[str]:
         """
-        Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+        Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
         """
         return pulumi.get(self, "direction")
 

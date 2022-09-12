@@ -40,7 +40,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Output<int> AvailableQuantity { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp when this Product becomes available for SearchService.Search.
+        /// The timestamp when this Product becomes available for SearchService.Search. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT.
         /// </summary>
         [Output("availableTime")]
         public Output<string> AvailableTime { get; private set; } = null!;
@@ -88,7 +88,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Output<string> Description { get; private set; } = null!;
 
         /// <summary>
-        /// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+        /// The timestamp when this product becomes unavailable for SearchService.Search. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the users to delete the stale products explicitly, instead of using this field to determine staleness. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
         /// </summary>
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
@@ -118,7 +118,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Output<string> LanguageCode { get; private set; } = null!;
 
         /// <summary>
-        /// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by AddLocalInventories and RemoveLocalInventories APIs.
+        /// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
         /// </summary>
         [Output("localInventories")]
         public Output<ImmutableArray<Outputs.GoogleCloudRetailV2alphaLocalInventoryResponse>> LocalInventories { get; private set; } = null!;
@@ -208,7 +208,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Output<string> Title { get; private set; } = null!;
 
         /// <summary>
-        /// Input only. The TTL (time to live) of the product. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
+        /// Input only. The TTL (time to live) of the product. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the users to delete the stale products explicitly, instead of using this field to determine staleness. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
         /// </summary>
         [Output("ttl")]
         public Output<string> Ttl { get; private set; } = null!;
@@ -315,7 +315,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Input<int>? AvailableQuantity { get; set; }
 
         /// <summary>
-        /// The timestamp when this Product becomes available for SearchService.Search.
+        /// The timestamp when this Product becomes available for SearchService.Search. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT.
         /// </summary>
         [Input("availableTime")]
         public Input<string>? AvailableTime { get; set; }
@@ -387,7 +387,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+        /// The timestamp when this product becomes unavailable for SearchService.Search. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the users to delete the stale products explicitly, instead of using this field to determine staleness. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }
@@ -549,7 +549,7 @@ namespace Pulumi.GoogleNative.Retail.V2Alpha
         public Input<string> Title { get; set; } = null!;
 
         /// <summary>
-        /// Input only. The TTL (time to live) of the product. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
+        /// Input only. The TTL (time to live) of the product. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the users to delete the stale products explicitly, instead of using this field to determine staleness. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
         /// </summary>
         [Input("ttl")]
         public Input<string>? Ttl { get; set; }

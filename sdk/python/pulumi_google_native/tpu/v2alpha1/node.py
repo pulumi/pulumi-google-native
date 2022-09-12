@@ -32,6 +32,7 @@ class NodeArgs:
                  request_id: Optional[pulumi.Input[str]] = None,
                  scheduling_config: Optional[pulumi.Input['SchedulingConfigArgs']] = None,
                  service_account: Optional[pulumi.Input['ServiceAccountArgs']] = None,
+                 shielded_instance_config: Optional[pulumi.Input['ShieldedInstanceConfigArgs']] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Node resource.
@@ -48,6 +49,7 @@ class NodeArgs:
         :param pulumi.Input[str] request_id: Idempotent request UUID.
         :param pulumi.Input['SchedulingConfigArgs'] scheduling_config: The scheduling options for this node.
         :param pulumi.Input['ServiceAccountArgs'] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
+        :param pulumi.Input['ShieldedInstanceConfigArgs'] shielded_instance_config: Shielded Instance options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
         """
         pulumi.set(__self__, "runtime_version", runtime_version)
@@ -79,6 +81,8 @@ class NodeArgs:
             pulumi.set(__self__, "scheduling_config", scheduling_config)
         if service_account is not None:
             pulumi.set(__self__, "service_account", service_account)
+        if shielded_instance_config is not None:
+            pulumi.set(__self__, "shielded_instance_config", shielded_instance_config)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -257,6 +261,18 @@ class NodeArgs:
         pulumi.set(self, "service_account", value)
 
     @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> Optional[pulumi.Input['ShieldedInstanceConfigArgs']]:
+        """
+        Shielded Instance options.
+        """
+        return pulumi.get(self, "shielded_instance_config")
+
+    @shielded_instance_config.setter
+    def shielded_instance_config(self, value: Optional[pulumi.Input['ShieldedInstanceConfigArgs']]):
+        pulumi.set(self, "shielded_instance_config", value)
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -289,6 +305,7 @@ class Node(pulumi.CustomResource):
                  runtime_version: Optional[pulumi.Input[str]] = None,
                  scheduling_config: Optional[pulumi.Input[pulumi.InputType['SchedulingConfigArgs']]] = None,
                  service_account: Optional[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -310,6 +327,7 @@ class Node(pulumi.CustomResource):
         :param pulumi.Input[str] runtime_version: The runtime version running in the Node.
         :param pulumi.Input[pulumi.InputType['SchedulingConfigArgs']] scheduling_config: The scheduling options for this node.
         :param pulumi.Input[pulumi.InputType['ServiceAccountArgs']] service_account: The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
+        :param pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']] shielded_instance_config: Shielded Instance options.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] tags: Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
         """
         ...
@@ -352,6 +370,7 @@ class Node(pulumi.CustomResource):
                  runtime_version: Optional[pulumi.Input[str]] = None,
                  scheduling_config: Optional[pulumi.Input[pulumi.InputType['SchedulingConfigArgs']]] = None,
                  service_account: Optional[pulumi.Input[pulumi.InputType['ServiceAccountArgs']]] = None,
+                 shielded_instance_config: Optional[pulumi.Input[pulumi.InputType['ShieldedInstanceConfigArgs']]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -379,6 +398,7 @@ class Node(pulumi.CustomResource):
             __props__.__dict__["runtime_version"] = runtime_version
             __props__.__dict__["scheduling_config"] = scheduling_config
             __props__.__dict__["service_account"] = service_account
+            __props__.__dict__["shielded_instance_config"] = shielded_instance_config
             __props__.__dict__["tags"] = tags
             __props__.__dict__["api_version"] = None
             __props__.__dict__["create_time"] = None
@@ -431,6 +451,7 @@ class Node(pulumi.CustomResource):
         __props__.__dict__["runtime_version"] = None
         __props__.__dict__["scheduling_config"] = None
         __props__.__dict__["service_account"] = None
+        __props__.__dict__["shielded_instance_config"] = None
         __props__.__dict__["state"] = None
         __props__.__dict__["symptoms"] = None
         __props__.__dict__["tags"] = None
@@ -589,6 +610,14 @@ class Node(pulumi.CustomResource):
         The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
         """
         return pulumi.get(self, "service_account")
+
+    @property
+    @pulumi.getter(name="shieldedInstanceConfig")
+    def shielded_instance_config(self) -> pulumi.Output['outputs.ShieldedInstanceConfigResponse']:
+        """
+        Shielded Instance options.
+        """
+        return pulumi.get(self, "shielded_instance_config")
 
     @property
     @pulumi.getter

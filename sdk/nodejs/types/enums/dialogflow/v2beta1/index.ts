@@ -412,6 +412,10 @@ export const GoogleCloudDialogflowV2beta1SuggestionFeatureType = {
      * Run smart reply model for chat.
      */
     SmartReply: "SMART_REPLY",
+    /**
+     * Run conversation summarization model for chat.
+     */
+    ConversationSummarization: "CONVERSATION_SUMMARIZATION",
 } as const;
 
 /**

@@ -16,7 +16,7 @@ namespace Pulumi.GoogleNative.GKEHub.V1Alpha.Inputs
     public sealed class AnthosObservabilityFeatureSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// default membership spec for unconfigured memberships
+        /// Default membership spec for unconfigured memberships
         /// </summary>
         [Input("defaultMembershipSpec")]
         public Input<Inputs.AnthosObservabilityMembershipSpecArgs>? DefaultMembershipSpec { get; set; }

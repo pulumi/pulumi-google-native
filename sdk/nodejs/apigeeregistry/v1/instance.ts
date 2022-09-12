@@ -52,7 +52,7 @@ export class Instance extends pulumi.CustomResource {
     public readonly instanceId!: pulumi.Output<string>;
     public readonly location!: pulumi.Output<string>;
     /**
-     * Format: `projects/*&#47;locations/*&#47;instance`. Currently only locations/global is supported.
+     * Format: `projects/*&#47;locations/*&#47;instance`. Currently only `locations/global` is supported.
      */
     public readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -127,7 +127,7 @@ export interface InstanceArgs {
     instanceId: pulumi.Input<string>;
     location?: pulumi.Input<string>;
     /**
-     * Format: `projects/*&#47;locations/*&#47;instance`. Currently only locations/global is supported.
+     * Format: `projects/*&#47;locations/*&#47;instance`. Currently only `locations/global` is supported.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

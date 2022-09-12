@@ -84,6 +84,10 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly requireApproval!: pulumi.Output<boolean>;
     /**
+     * Information specifying a Cloud Run deployment target.
+     */
+    public readonly run!: pulumi.Output<outputs.clouddeploy.v1.CloudRunLocationResponse>;
+    /**
      * Required. ID of the `Target`.
      */
     public readonly targetId!: pulumi.Output<string>;
@@ -126,6 +130,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["requestId"] = args ? args.requestId : undefined;
             resourceInputs["requireApproval"] = args ? args.requireApproval : undefined;
+            resourceInputs["run"] = args ? args.run : undefined;
             resourceInputs["targetId"] = args ? args.targetId : undefined;
             resourceInputs["validateOnly"] = args ? args.validateOnly : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -145,6 +150,7 @@ export class Target extends pulumi.CustomResource {
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["requestId"] = undefined /*out*/;
             resourceInputs["requireApproval"] = undefined /*out*/;
+            resourceInputs["run"] = undefined /*out*/;
             resourceInputs["targetId"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
@@ -203,6 +209,10 @@ export interface TargetArgs {
      * Optional. Whether or not the `Target` requires approval.
      */
     requireApproval?: pulumi.Input<boolean>;
+    /**
+     * Information specifying a Cloud Run deployment target.
+     */
+    run?: pulumi.Input<inputs.clouddeploy.v1.CloudRunLocationArgs>;
     /**
      * Required. ID of the `Target`.
      */

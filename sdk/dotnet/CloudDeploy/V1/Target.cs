@@ -88,6 +88,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         public Output<bool> RequireApproval { get; private set; } = null!;
 
         /// <summary>
+        /// Information specifying a Cloud Run deployment target.
+        /// </summary>
+        [Output("run")]
+        public Output<Outputs.CloudRunLocationResponse> Run { get; private set; } = null!;
+
+        /// <summary>
         /// Required. ID of the `Target`.
         /// </summary>
         [Output("targetId")]
@@ -245,6 +251,12 @@ namespace Pulumi.GoogleNative.CloudDeploy.V1
         /// </summary>
         [Input("requireApproval")]
         public Input<bool>? RequireApproval { get; set; }
+
+        /// <summary>
+        /// Information specifying a Cloud Run deployment target.
+        /// </summary>
+        [Input("run")]
+        public Input<Inputs.CloudRunLocationArgs>? Run { get; set; }
 
         /// <summary>
         /// Required. ID of the `Target`.

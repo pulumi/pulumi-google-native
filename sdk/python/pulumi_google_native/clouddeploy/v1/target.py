@@ -30,6 +30,7 @@ class TargetArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  require_approval: Optional[pulumi.Input[bool]] = None,
+                 run: Optional[pulumi.Input['CloudRunLocationArgs']] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Target resource.
@@ -44,6 +45,7 @@ class TargetArgs:
         :param pulumi.Input[str] name: Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
+        :param pulumi.Input['CloudRunLocationArgs'] run: Information specifying a Cloud Run deployment target.
         :param pulumi.Input[bool] validate_only: Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
         """
         pulumi.set(__self__, "target_id", target_id)
@@ -71,6 +73,8 @@ class TargetArgs:
             pulumi.set(__self__, "request_id", request_id)
         if require_approval is not None:
             pulumi.set(__self__, "require_approval", require_approval)
+        if run is not None:
+            pulumi.set(__self__, "run", run)
         if validate_only is not None:
             pulumi.set(__self__, "validate_only", validate_only)
 
@@ -225,6 +229,18 @@ class TargetArgs:
         pulumi.set(self, "require_approval", value)
 
     @property
+    @pulumi.getter
+    def run(self) -> Optional[pulumi.Input['CloudRunLocationArgs']]:
+        """
+        Information specifying a Cloud Run deployment target.
+        """
+        return pulumi.get(self, "run")
+
+    @run.setter
+    def run(self, value: Optional[pulumi.Input['CloudRunLocationArgs']]):
+        pulumi.set(self, "run", value)
+
+    @property
     @pulumi.getter(name="validateOnly")
     def validate_only(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -254,6 +270,7 @@ class Target(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  require_approval: Optional[pulumi.Input[bool]] = None,
+                 run: Optional[pulumi.Input[pulumi.InputType['CloudRunLocationArgs']]] = None,
                  target_id: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -272,6 +289,7 @@ class Target(pulumi.CustomResource):
         :param pulumi.Input[str] name: Optional. Name of the `Target`. Format is projects/{project}/locations/{location}/targets/a-z{0,62}.
         :param pulumi.Input[str] request_id: Optional. A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000).
         :param pulumi.Input[bool] require_approval: Optional. Whether or not the `Target` requires approval.
+        :param pulumi.Input[pulumi.InputType['CloudRunLocationArgs']] run: Information specifying a Cloud Run deployment target.
         :param pulumi.Input[str] target_id: Required. ID of the `Target`.
         :param pulumi.Input[bool] validate_only: Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
         """
@@ -311,6 +329,7 @@ class Target(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  request_id: Optional[pulumi.Input[str]] = None,
                  require_approval: Optional[pulumi.Input[bool]] = None,
+                 run: Optional[pulumi.Input[pulumi.InputType['CloudRunLocationArgs']]] = None,
                  target_id: Optional[pulumi.Input[str]] = None,
                  validate_only: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -334,6 +353,7 @@ class Target(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["request_id"] = request_id
             __props__.__dict__["require_approval"] = require_approval
+            __props__.__dict__["run"] = run
             if target_id is None and not opts.urn:
                 raise TypeError("Missing required property 'target_id'")
             __props__.__dict__["target_id"] = target_id
@@ -378,6 +398,7 @@ class Target(pulumi.CustomResource):
         __props__.__dict__["project"] = None
         __props__.__dict__["request_id"] = None
         __props__.__dict__["require_approval"] = None
+        __props__.__dict__["run"] = None
         __props__.__dict__["target_id"] = None
         __props__.__dict__["uid"] = None
         __props__.__dict__["update_time"] = None
@@ -481,6 +502,14 @@ class Target(pulumi.CustomResource):
         Optional. Whether or not the `Target` requires approval.
         """
         return pulumi.get(self, "require_approval")
+
+    @property
+    @pulumi.getter
+    def run(self) -> pulumi.Output['outputs.CloudRunLocationResponse']:
+        """
+        Information specifying a Cloud Run deployment target.
+        """
+        return pulumi.get(self, "run")
 
     @property
     @pulumi.getter(name="targetId")

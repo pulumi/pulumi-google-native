@@ -18,6 +18,7 @@ __all__ = [
     'NetworkEndpointResponse',
     'SchedulingConfigResponse',
     'ServiceAccountResponse',
+    'ShieldedInstanceConfigResponse',
     'SymptomResponse',
 ]
 
@@ -311,6 +312,45 @@ class ServiceAccountResponse(dict):
         The list of scopes to be made available for this service account. If empty, access to all Cloud APIs will be allowed.
         """
         return pulumi.get(self, "scope")
+
+
+@pulumi.output_type
+class ShieldedInstanceConfigResponse(dict):
+    """
+    A set of Shielded Instance options.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableSecureBoot":
+            suggest = "enable_secure_boot"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ShieldedInstanceConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ShieldedInstanceConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ShieldedInstanceConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_secure_boot: bool):
+        """
+        A set of Shielded Instance options.
+        :param bool enable_secure_boot: Defines whether the instance has Secure Boot enabled.
+        """
+        pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> bool:
+        """
+        Defines whether the instance has Secure Boot enabled.
+        """
+        return pulumi.get(self, "enable_secure_boot")
 
 
 @pulumi.output_type

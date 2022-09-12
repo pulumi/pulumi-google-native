@@ -116,6 +116,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
         /// </summary>
         public readonly string Status;
         /// <summary>
+        /// Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+        /// </summary>
+        public readonly string TimeZone;
+        /// <summary>
         /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         /// </summary>
         public readonly string Type;
@@ -152,6 +156,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
 
             string status,
 
+            string timeZone,
+
             string type,
 
             string windowStartTime)
@@ -169,6 +175,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1
             SelfLink = selfLink;
             StartTime = startTime;
             Status = status;
+            TimeZone = timeZone;
             Type = type;
             WindowStartTime = windowStartTime;
         }

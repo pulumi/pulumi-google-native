@@ -27,15 +27,15 @@ class ApiArgs:
                  recommended_version: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Api resource.
-        :param pulumi.Input[str] api_id: Required. The ID to use for the api, which will become the final component of the api's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        :param pulumi.Input[str] api_id: Required. The ID to use for the API, which will become the final component of the API's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
-        :param pulumi.Input[str] availability: A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
+        :param pulumi.Input[str] availability: A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
         :param pulumi.Input[str] description: A detailed description.
         :param pulumi.Input[str] display_name: Human-meaningful name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         :param pulumi.Input[str] name: Resource name.
-        :param pulumi.Input[str] recommended_deployment: The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}
-        :param pulumi.Input[str] recommended_version: The recommended version of the API. Format: apis/{api}/versions/{version}
+        :param pulumi.Input[str] recommended_deployment: The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
+        :param pulumi.Input[str] recommended_version: The recommended version of the API. Format: `apis/{api}/versions/{version}`
         """
         pulumi.set(__self__, "api_id", api_id)
         if annotations is not None:
@@ -63,7 +63,7 @@ class ApiArgs:
     @pulumi.getter(name="apiId")
     def api_id(self) -> pulumi.Input[str]:
         """
-        Required. The ID to use for the api, which will become the final component of the api's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        Required. The ID to use for the API, which will become the final component of the API's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
         """
         return pulumi.get(self, "api_id")
 
@@ -87,7 +87,7 @@ class ApiArgs:
     @pulumi.getter
     def availability(self) -> Optional[pulumi.Input[str]]:
         """
-        A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
+        A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
         """
         return pulumi.get(self, "availability")
 
@@ -123,7 +123,7 @@ class ApiArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         """
         return pulumi.get(self, "labels")
 
@@ -165,7 +165,7 @@ class ApiArgs:
     @pulumi.getter(name="recommendedDeployment")
     def recommended_deployment(self) -> Optional[pulumi.Input[str]]:
         """
-        The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}
+        The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
         """
         return pulumi.get(self, "recommended_deployment")
 
@@ -177,7 +177,7 @@ class ApiArgs:
     @pulumi.getter(name="recommendedVersion")
     def recommended_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The recommended version of the API. Format: apis/{api}/versions/{version}
+        The recommended version of the API. Format: `apis/{api}/versions/{version}`
         """
         return pulumi.get(self, "recommended_version")
 
@@ -204,19 +204,19 @@ class Api(pulumi.CustomResource):
                  recommended_version: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        CreateApi creates a specified API.
+        Creates a specified API.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
-        :param pulumi.Input[str] api_id: Required. The ID to use for the api, which will become the final component of the api's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
-        :param pulumi.Input[str] availability: A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
+        :param pulumi.Input[str] api_id: Required. The ID to use for the API, which will become the final component of the API's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        :param pulumi.Input[str] availability: A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
         :param pulumi.Input[str] description: A detailed description.
         :param pulumi.Input[str] display_name: Human-meaningful name.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         :param pulumi.Input[str] name: Resource name.
-        :param pulumi.Input[str] recommended_deployment: The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}
-        :param pulumi.Input[str] recommended_version: The recommended version of the API. Format: apis/{api}/versions/{version}
+        :param pulumi.Input[str] recommended_deployment: The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
+        :param pulumi.Input[str] recommended_version: The recommended version of the API. Format: `apis/{api}/versions/{version}`
         """
         ...
     @overload
@@ -225,7 +225,7 @@ class Api(pulumi.CustomResource):
                  args: ApiArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        CreateApi creates a specified API.
+        Creates a specified API.
 
         :param str resource_name: The name of the resource.
         :param ApiArgs args: The arguments to use to populate this resource's properties.
@@ -328,7 +328,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="apiId")
     def api_id(self) -> pulumi.Output[str]:
         """
-        Required. The ID to use for the api, which will become the final component of the api's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
+        Required. The ID to use for the API, which will become the final component of the API's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
         """
         return pulumi.get(self, "api_id")
 
@@ -336,7 +336,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter
     def availability(self) -> pulumi.Output[str]:
         """
-        A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
+        A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
         """
         return pulumi.get(self, "availability")
 
@@ -368,7 +368,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         """
         return pulumi.get(self, "labels")
 
@@ -394,7 +394,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="recommendedDeployment")
     def recommended_deployment(self) -> pulumi.Output[str]:
         """
-        The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}
+        The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
         """
         return pulumi.get(self, "recommended_deployment")
 
@@ -402,7 +402,7 @@ class Api(pulumi.CustomResource):
     @pulumi.getter(name="recommendedVersion")
     def recommended_version(self) -> pulumi.Output[str]:
         """
-        The recommended version of the API. Format: apis/{api}/versions/{version}
+        The recommended version of the API. Format: `apis/{api}/versions/{version}`
         """
         return pulumi.get(self, "recommended_version")
 

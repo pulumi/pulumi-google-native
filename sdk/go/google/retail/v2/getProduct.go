@@ -37,7 +37,7 @@ type LookupProductResult struct {
 	Availability string `pulumi:"availability"`
 	// The available quantity of the item.
 	AvailableQuantity int `pulumi:"availableQuantity"`
-	// The timestamp when this Product becomes available for SearchService.Search.
+	// The timestamp when this Product becomes available for SearchService.Search. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT.
 	AvailableTime string `pulumi:"availableTime"`
 	// The brands of the product. A maximum of 30 brands are allowed. Each brand must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [brand](https://support.google.com/merchants/answer/6324351). Schema.org property [Product.brand](https://schema.org/brand).
 	Brands []string `pulumi:"brands"`
@@ -51,7 +51,7 @@ type LookupProductResult struct {
 	Conditions []string `pulumi:"conditions"`
 	// Product description. This field must be a UTF-8 encoded string with a length limit of 5,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [description](https://support.google.com/merchants/answer/6324468). Schema.org property [Product.description](https://schema.org/description).
 	Description string `pulumi:"description"`
-	// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+	// The timestamp when this product becomes unavailable for SearchService.Search. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the users to delete the stale products explicitly, instead of using this field to determine staleness. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
 	ExpireTime string `pulumi:"expireTime"`
 	// Fulfillment information, such as the store IDs for in-store pickup or region IDs for different shipping methods. All the elements must have distinct FulfillmentInfo.type. Otherwise, an INVALID_ARGUMENT error is returned.
 	FulfillmentInfo []GoogleCloudRetailV2FulfillmentInfoResponse `pulumi:"fulfillmentInfo"`
@@ -61,7 +61,7 @@ type LookupProductResult struct {
 	Images []GoogleCloudRetailV2ImageResponse `pulumi:"images"`
 	// Language of the title/description and other string attributes. Use language tags defined by [BCP 47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt). For product prediction, this field is ignored and the model automatically detects the text language. The Product can include text in different languages, but duplicating Products to provide text in multiple languages can result in degraded model performance. For product search this field is in use. It defaults to "en-US" if unset.
 	LanguageCode string `pulumi:"languageCode"`
-	// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by AddLocalInventories and RemoveLocalInventories APIs.
+	// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
 	LocalInventories []GoogleCloudRetailV2LocalInventoryResponse `pulumi:"localInventories"`
 	// The material of the product. For example, "leather", "wooden". A maximum of 20 values are allowed. Each value must be a UTF-8 encoded string with a length limit of 200 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [material](https://support.google.com/merchants/answer/6324410). Schema.org property [Product.material](https://schema.org/material).
 	Materials []string `pulumi:"materials"`
@@ -87,7 +87,7 @@ type LookupProductResult struct {
 	Tags []string `pulumi:"tags"`
 	// Product title. This field must be a UTF-8 encoded string with a length limit of 1,000 characters. Otherwise, an INVALID_ARGUMENT error is returned. Corresponding properties: Google Merchant Center property [title](https://support.google.com/merchants/answer/6324415). Schema.org property [Product.name](https://schema.org/name).
 	Title string `pulumi:"title"`
-	// Input only. The TTL (time to live) of the product. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
+	// Input only. The TTL (time to live) of the product. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the users to delete the stale products explicitly, instead of using this field to determine staleness. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
 	Ttl string `pulumi:"ttl"`
 	// Immutable. The type of the product. Default to Catalog.product_level_config.ingestion_product_type if unset.
 	Type string `pulumi:"type"`
@@ -156,7 +156,7 @@ func (o LookupProductResultOutput) AvailableQuantity() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupProductResult) int { return v.AvailableQuantity }).(pulumi.IntOutput)
 }
 
-// The timestamp when this Product becomes available for SearchService.Search.
+// The timestamp when this Product becomes available for SearchService.Search. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT.
 func (o LookupProductResultOutput) AvailableTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductResult) string { return v.AvailableTime }).(pulumi.StringOutput)
 }
@@ -191,7 +191,7 @@ func (o LookupProductResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+// The timestamp when this product becomes unavailable for SearchService.Search. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the users to delete the stale products explicitly, instead of using this field to determine staleness. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
 func (o LookupProductResultOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductResult) string { return v.ExpireTime }).(pulumi.StringOutput)
 }
@@ -216,7 +216,7 @@ func (o LookupProductResultOutput) LanguageCode() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductResult) string { return v.LanguageCode }).(pulumi.StringOutput)
 }
 
-// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by AddLocalInventories and RemoveLocalInventories APIs.
+// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
 func (o LookupProductResultOutput) LocalInventories() GoogleCloudRetailV2LocalInventoryResponseArrayOutput {
 	return o.ApplyT(func(v LookupProductResult) []GoogleCloudRetailV2LocalInventoryResponse { return v.LocalInventories }).(GoogleCloudRetailV2LocalInventoryResponseArrayOutput)
 }
@@ -281,7 +281,7 @@ func (o LookupProductResultOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductResult) string { return v.Title }).(pulumi.StringOutput)
 }
 
-// Input only. The TTL (time to live) of the product. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
+// Input only. The TTL (time to live) of the product. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the users to delete the stale products explicitly, instead of using this field to determine staleness. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
 func (o LookupProductResultOutput) Ttl() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupProductResult) string { return v.Ttl }).(pulumi.StringOutput)
 }

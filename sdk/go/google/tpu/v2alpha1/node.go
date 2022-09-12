@@ -54,6 +54,8 @@ type Node struct {
 	SchedulingConfig SchedulingConfigResponseOutput `pulumi:"schedulingConfig"`
 	// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
 	ServiceAccount ServiceAccountResponseOutput `pulumi:"serviceAccount"`
+	// Shielded Instance options.
+	ShieldedInstanceConfig ShieldedInstanceConfigResponseOutput `pulumi:"shieldedInstanceConfig"`
 	// The current state for the TPU Node.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The Symptoms that have occurred to the TPU Node.
@@ -137,6 +139,8 @@ type nodeArgs struct {
 	SchedulingConfig *SchedulingConfig `pulumi:"schedulingConfig"`
 	// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
 	ServiceAccount *ServiceAccount `pulumi:"serviceAccount"`
+	// Shielded Instance options.
+	ShieldedInstanceConfig *ShieldedInstanceConfig `pulumi:"shieldedInstanceConfig"`
 	// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
 	Tags []string `pulumi:"tags"`
 }
@@ -171,6 +175,8 @@ type NodeArgs struct {
 	SchedulingConfig SchedulingConfigPtrInput
 	// The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
 	ServiceAccount ServiceAccountPtrInput
+	// Shielded Instance options.
+	ShieldedInstanceConfig ShieldedInstanceConfigPtrInput
 	// Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
 	Tags pulumi.StringArrayInput
 }
@@ -308,6 +314,11 @@ func (o NodeOutput) SchedulingConfig() SchedulingConfigResponseOutput {
 // The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
 func (o NodeOutput) ServiceAccount() ServiceAccountResponseOutput {
 	return o.ApplyT(func(v *Node) ServiceAccountResponseOutput { return v.ServiceAccount }).(ServiceAccountResponseOutput)
+}
+
+// Shielded Instance options.
+func (o NodeOutput) ShieldedInstanceConfig() ShieldedInstanceConfigResponseOutput {
+	return o.ApplyT(func(v *Node) ShieldedInstanceConfigResponseOutput { return v.ShieldedInstanceConfig }).(ShieldedInstanceConfigResponseOutput)
 }
 
 // The current state for the TPU Node.

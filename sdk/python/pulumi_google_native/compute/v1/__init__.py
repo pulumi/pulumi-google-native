@@ -10,6 +10,7 @@ from .address import *
 from .autoscaler import *
 from .backend_bucket import *
 from .backend_service import *
+from .backend_service_iam_policy import *
 from .disk import *
 from .disk_iam_policy import *
 from .external_vpn_gateway import *
@@ -21,6 +22,7 @@ from .get_address import *
 from .get_autoscaler import *
 from .get_backend_bucket import *
 from .get_backend_service import *
+from .get_backend_service_iam_policy import *
 from .get_disk import *
 from .get_disk_iam_policy import *
 from .get_external_vpn_gateway import *
@@ -63,6 +65,7 @@ from .get_public_advertised_prefix import *
 from .get_public_delegated_prefix import *
 from .get_region_autoscaler import *
 from .get_region_backend_service import *
+from .get_region_backend_service_iam_policy import *
 from .get_region_commitment import *
 from .get_region_disk import *
 from .get_region_disk_iam_policy import *
@@ -78,6 +81,7 @@ from .get_region_ssl_certificate import *
 from .get_region_ssl_policy import *
 from .get_region_target_http_proxy import *
 from .get_region_target_https_proxy import *
+from .get_region_target_tcp_proxy import *
 from .get_region_url_map import *
 from .get_reservation import *
 from .get_reservation_iam_policy import *
@@ -140,6 +144,7 @@ from .public_advertised_prefix import *
 from .public_delegated_prefix import *
 from .region_autoscaler import *
 from .region_backend_service import *
+from .region_backend_service_iam_policy import *
 from .region_commitment import *
 from .region_disk import *
 from .region_disk_iam_policy import *
@@ -155,6 +160,7 @@ from .region_ssl_certificate import *
 from .region_ssl_policy import *
 from .region_target_http_proxy import *
 from .region_target_https_proxy import *
+from .region_target_tcp_proxy import *
 from .region_url_map import *
 from .reservation import *
 from .reservation_iam_policy import *

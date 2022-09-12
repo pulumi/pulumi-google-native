@@ -82,7 +82,9 @@ __all__ = [
     'SearchStatisticsResponse',
     'SessionInfoResponse',
     'SnapshotDefinitionResponse',
+    'SparkLoggingInfoResponse',
     'SparkOptionsResponse',
+    'SparkStatisticsResponse',
     'StandardSqlDataTypeResponse',
     'StandardSqlFieldResponse',
     'StandardSqlStructTypeResponse',
@@ -681,7 +683,7 @@ class BindingResponse(dict):
         """
         Associates `members`, or principals, with a `role`.
         :param 'ExprResponse' condition: The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies).
-        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        :param Sequence[str] members: Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         :param str role: Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`.
         """
         pulumi.set(__self__, "condition", condition)
@@ -700,7 +702,7 @@ class BindingResponse(dict):
     @pulumi.getter
     def members(self) -> Sequence[str]:
         """
-        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
+        Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. 
         """
         return pulumi.get(self, "members")
 
@@ -2800,6 +2802,8 @@ class JobConfigurationLoadResponse(dict):
             suggest = "allow_jagged_rows"
         elif key == "allowQuotedNewlines":
             suggest = "allow_quoted_newlines"
+        elif key == "connectionProperties":
+            suggest = "connection_properties"
         elif key == "createDisposition":
             suggest = "create_disposition"
         elif key == "decimalTargetTypes":
@@ -2867,6 +2871,7 @@ class JobConfigurationLoadResponse(dict):
                  allow_quoted_newlines: bool,
                  autodetect: bool,
                  clustering: 'outputs.ClusteringResponse',
+                 connection_properties: Sequence['outputs.ConnectionPropertyResponse'],
                  create_disposition: str,
                  decimal_target_types: Sequence[str],
                  destination_encryption_configuration: 'outputs.EncryptionConfigurationResponse',
@@ -2900,6 +2905,7 @@ class JobConfigurationLoadResponse(dict):
         :param bool allow_quoted_newlines: Indicates if BigQuery should allow quoted data sections that contain newline characters in a CSV file. The default value is false.
         :param bool autodetect: [Optional] Indicates if we should automatically infer the options and schema for CSV and JSON sources.
         :param 'ClusteringResponse' clustering: [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
+        :param Sequence['ConnectionPropertyResponse'] connection_properties: Connection properties.
         :param str create_disposition: [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
         :param Sequence[str] decimal_target_types: [Optional] Defines the list of possible SQL data types to which the source decimal values are converted. This list and the precision and the scale parameters of the decimal field determine the target type. In the order of NUMERIC, BIGNUMERIC, and STRING, a type is picked if it is in the specified list and if it supports the precision and the scale. STRING supports all precision and scale values. If none of the listed types supports the precision and the scale, the type supporting the widest range in the specified list is picked, and if a value exceeds the supported range when reading the data, an error will be thrown. Example: Suppose the value of this field is ["NUMERIC", "BIGNUMERIC"]. If (precision,scale) is: (38,9) -> NUMERIC; (39,9) -> BIGNUMERIC (NUMERIC cannot hold 30 integer digits); (38,10) -> BIGNUMERIC (NUMERIC cannot hold 10 fractional digits); (76,38) -> BIGNUMERIC; (77,38) -> BIGNUMERIC (error if value exeeds supported range). This field cannot contain duplicate types. The order of the types in this field is ignored. For example, ["BIGNUMERIC", "NUMERIC"] is the same as ["NUMERIC", "BIGNUMERIC"] and NUMERIC always takes precedence over BIGNUMERIC. Defaults to ["NUMERIC", "STRING"] for ORC and ["NUMERIC"] for the other file formats.
         :param 'EncryptionConfigurationResponse' destination_encryption_configuration: Custom encryption configuration (e.g., Cloud KMS keys).
@@ -2933,6 +2939,7 @@ class JobConfigurationLoadResponse(dict):
         pulumi.set(__self__, "allow_quoted_newlines", allow_quoted_newlines)
         pulumi.set(__self__, "autodetect", autodetect)
         pulumi.set(__self__, "clustering", clustering)
+        pulumi.set(__self__, "connection_properties", connection_properties)
         pulumi.set(__self__, "create_disposition", create_disposition)
         pulumi.set(__self__, "decimal_target_types", decimal_target_types)
         pulumi.set(__self__, "destination_encryption_configuration", destination_encryption_configuration)
@@ -2993,6 +3000,14 @@ class JobConfigurationLoadResponse(dict):
         [Beta] Clustering specification for the destination table. Must be specified with time-based partitioning, data in the table will be first partitioned and subsequently clustered.
         """
         return pulumi.get(self, "clustering")
+
+    @property
+    @pulumi.getter(name="connectionProperties")
+    def connection_properties(self) -> Sequence['outputs.ConnectionPropertyResponse']:
+        """
+        Connection properties.
+        """
+        return pulumi.get(self, "connection_properties")
 
     @property
     @pulumi.getter(name="createDisposition")
@@ -3941,6 +3956,8 @@ class JobStatistics2Response(dict):
             suggest = "reservation_usage"
         elif key == "searchStatistics":
             suggest = "search_statistics"
+        elif key == "sparkStatistics":
+            suggest = "spark_statistics"
         elif key == "statementType":
             suggest = "statement_type"
         elif key == "totalBytesBilled":
@@ -3991,6 +4008,7 @@ class JobStatistics2Response(dict):
                  reservation_usage: Sequence['outputs.JobStatistics2ReservationUsageItemResponse'],
                  schema: 'outputs.TableSchemaResponse',
                  search_statistics: 'outputs.SearchStatisticsResponse',
+                 spark_statistics: 'outputs.SparkStatisticsResponse',
                  statement_type: str,
                  timeline: Sequence['outputs.QueryTimelineSampleResponse'],
                  total_bytes_billed: str,
@@ -4023,6 +4041,7 @@ class JobStatistics2Response(dict):
         :param Sequence['JobStatistics2ReservationUsageItemResponse'] reservation_usage: Job resource usage breakdown by reservation.
         :param 'TableSchemaResponse' schema: The schema of the results. Present only for successful dry run of non-legacy SQL queries.
         :param 'SearchStatisticsResponse' search_statistics: Search query specific statistics.
+        :param 'SparkStatisticsResponse' spark_statistics: Statistics of a Spark procedure job.
         :param str statement_type: The type of query statement, if valid. Possible values (new values might be added in the future): "SELECT": SELECT query. "INSERT": INSERT query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "UPDATE": UPDATE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "DELETE": DELETE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "MERGE": MERGE query; see https://cloud.google.com/bigquery/docs/reference/standard-sql/data-manipulation-language. "ALTER_TABLE": ALTER TABLE query. "ALTER_VIEW": ALTER VIEW query. "ASSERT": ASSERT condition AS 'description'. "CREATE_FUNCTION": CREATE FUNCTION query. "CREATE_MODEL": CREATE [OR REPLACE] MODEL ... AS SELECT ... . "CREATE_PROCEDURE": CREATE PROCEDURE query. "CREATE_TABLE": CREATE [OR REPLACE] TABLE without AS SELECT. "CREATE_TABLE_AS_SELECT": CREATE [OR REPLACE] TABLE ... AS SELECT ... . "CREATE_VIEW": CREATE [OR REPLACE] VIEW ... AS SELECT ... . "DROP_FUNCTION" : DROP FUNCTION query. "DROP_PROCEDURE": DROP PROCEDURE query. "DROP_TABLE": DROP TABLE query. "DROP_VIEW": DROP VIEW query.
         :param Sequence['QueryTimelineSampleResponse'] timeline: [Beta] Describes a timeline of job execution.
         :param str total_bytes_billed: Total bytes billed for the job.
@@ -4055,6 +4074,7 @@ class JobStatistics2Response(dict):
         pulumi.set(__self__, "reservation_usage", reservation_usage)
         pulumi.set(__self__, "schema", schema)
         pulumi.set(__self__, "search_statistics", search_statistics)
+        pulumi.set(__self__, "spark_statistics", spark_statistics)
         pulumi.set(__self__, "statement_type", statement_type)
         pulumi.set(__self__, "timeline", timeline)
         pulumi.set(__self__, "total_bytes_billed", total_bytes_billed)
@@ -4247,6 +4267,14 @@ class JobStatistics2Response(dict):
         Search query specific statistics.
         """
         return pulumi.get(self, "search_statistics")
+
+    @property
+    @pulumi.getter(name="sparkStatistics")
+    def spark_statistics(self) -> 'outputs.SparkStatisticsResponse':
+        """
+        Statistics of a Spark procedure job.
+        """
+        return pulumi.get(self, "spark_statistics")
 
     @property
     @pulumi.getter(name="statementType")
@@ -6107,6 +6135,54 @@ class SnapshotDefinitionResponse(dict):
 
 
 @pulumi.output_type
+class SparkLoggingInfoResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "projectId":
+            suggest = "project_id"
+        elif key == "resourceType":
+            suggest = "resource_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SparkLoggingInfoResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SparkLoggingInfoResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SparkLoggingInfoResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 project_id: str,
+                 resource_type: str):
+        """
+        :param str project_id: Project ID used for logging
+        :param str resource_type: Resource type used for logging
+        """
+        pulumi.set(__self__, "project_id", project_id)
+        pulumi.set(__self__, "resource_type", resource_type)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        """
+        Project ID used for logging
+        """
+        return pulumi.get(self, "project_id")
+
+    @property
+    @pulumi.getter(name="resourceType")
+    def resource_type(self) -> str:
+        """
+        Resource type used for logging
+        """
+        return pulumi.get(self, "resource_type")
+
+
+@pulumi.output_type
 class SparkOptionsResponse(dict):
     """
     Options for a user-defined Spark routine.
@@ -6246,9 +6322,81 @@ class SparkOptionsResponse(dict):
 
 
 @pulumi.output_type
+class SparkStatisticsResponse(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "loggingInfo":
+            suggest = "logging_info"
+        elif key == "sparkJobId":
+            suggest = "spark_job_id"
+        elif key == "sparkJobLocation":
+            suggest = "spark_job_location"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SparkStatisticsResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SparkStatisticsResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SparkStatisticsResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 endpoints: Mapping[str, str],
+                 logging_info: 'outputs.SparkLoggingInfoResponse',
+                 spark_job_id: str,
+                 spark_job_location: str):
+        """
+        :param Mapping[str, str] endpoints: Endpoints generated for the Spark job.
+        :param 'SparkLoggingInfoResponse' logging_info: Logging info is used to generate a link to Cloud Logging.
+        :param str spark_job_id: Spark job id if a Spark job is created successfully.
+        :param str spark_job_location: Location where the Spark job is executed.
+        """
+        pulumi.set(__self__, "endpoints", endpoints)
+        pulumi.set(__self__, "logging_info", logging_info)
+        pulumi.set(__self__, "spark_job_id", spark_job_id)
+        pulumi.set(__self__, "spark_job_location", spark_job_location)
+
+    @property
+    @pulumi.getter
+    def endpoints(self) -> Mapping[str, str]:
+        """
+        Endpoints generated for the Spark job.
+        """
+        return pulumi.get(self, "endpoints")
+
+    @property
+    @pulumi.getter(name="loggingInfo")
+    def logging_info(self) -> 'outputs.SparkLoggingInfoResponse':
+        """
+        Logging info is used to generate a link to Cloud Logging.
+        """
+        return pulumi.get(self, "logging_info")
+
+    @property
+    @pulumi.getter(name="sparkJobId")
+    def spark_job_id(self) -> str:
+        """
+        Spark job id if a Spark job is created successfully.
+        """
+        return pulumi.get(self, "spark_job_id")
+
+    @property
+    @pulumi.getter(name="sparkJobLocation")
+    def spark_job_location(self) -> str:
+        """
+        Location where the Spark job is executed.
+        """
+        return pulumi.get(self, "spark_job_location")
+
+
+@pulumi.output_type
 class StandardSqlDataTypeResponse(dict):
     """
-    The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
+    The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind": "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "DATE"} } } ] } }
     """
     @staticmethod
     def __key_warning(key: str):
@@ -6276,7 +6424,7 @@ class StandardSqlDataTypeResponse(dict):
                  struct_type: 'outputs.StandardSqlStructTypeResponse',
                  type_kind: str):
         """
-        The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind: "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typekind": "DATE"} } } ] } }
+        The data type of a variable such as a function argument. Examples include: * INT64: `{"typeKind": "INT64"}` * ARRAY: { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "STRING"} } * STRUCT>: { "typeKind": "STRUCT", "structType": { "fields": [ { "name": "x", "type": {"typeKind": "STRING"} }, { "name": "y", "type": { "typeKind": "ARRAY", "arrayElementType": {"typeKind": "DATE"} } } ] } }
         :param 'StandardSqlDataTypeResponse' array_element_type: The type of the array's elements, if type_kind = "ARRAY".
         :param 'StandardSqlStructTypeResponse' struct_type: The fields of this struct, in order, if type_kind = "STRUCT".
         :param str type_kind: The top level type of this field. Can be any standard SQL data type (e.g., "INT64", "DATE", "ARRAY").

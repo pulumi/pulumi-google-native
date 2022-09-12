@@ -32,9 +32,11 @@ type LookupRegionBackendServiceResult struct {
 	// The list of backends that serve this BackendService.
 	Backends []BackendResponse `pulumi:"backends"`
 	// Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
-	CdnPolicy          BackendServiceCdnPolicyResponse `pulumi:"cdnPolicy"`
-	CircuitBreakers    CircuitBreakersResponse         `pulumi:"circuitBreakers"`
-	ConnectionDraining ConnectionDrainingResponse      `pulumi:"connectionDraining"`
+	CdnPolicy       BackendServiceCdnPolicyResponse `pulumi:"cdnPolicy"`
+	CircuitBreakers CircuitBreakersResponse         `pulumi:"circuitBreakers"`
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	CompressionMode    string                     `pulumi:"compressionMode"`
+	ConnectionDraining ConnectionDrainingResponse `pulumi:"connectionDraining"`
 	// Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
 	ConnectionTrackingPolicy BackendServiceConnectionTrackingPolicyResponse `pulumi:"connectionTrackingPolicy"`
 	// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
@@ -156,6 +158,11 @@ func (o LookupRegionBackendServiceResultOutput) CdnPolicy() BackendServiceCdnPol
 
 func (o LookupRegionBackendServiceResultOutput) CircuitBreakers() CircuitBreakersResponseOutput {
 	return o.ApplyT(func(v LookupRegionBackendServiceResult) CircuitBreakersResponse { return v.CircuitBreakers }).(CircuitBreakersResponseOutput)
+}
+
+// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+func (o LookupRegionBackendServiceResultOutput) CompressionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupRegionBackendServiceResult) string { return v.CompressionMode }).(pulumi.StringOutput)
 }
 
 func (o LookupRegionBackendServiceResultOutput) ConnectionDraining() ConnectionDrainingResponseOutput {

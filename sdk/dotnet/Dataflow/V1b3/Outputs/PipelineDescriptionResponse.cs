@@ -28,6 +28,10 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
         /// Description of each transform in the pipeline and collections between them.
         /// </summary>
         public readonly ImmutableArray<Outputs.TransformSummaryResponse> OriginalPipelineTransform;
+        /// <summary>
+        /// A hash value of the submitted pipeline portable graph step names if exists.
+        /// </summary>
+        public readonly string StepNamesHash;
 
         [OutputConstructor]
         private PipelineDescriptionResponse(
@@ -35,11 +39,14 @@ namespace Pulumi.GoogleNative.Dataflow.V1b3.Outputs
 
             ImmutableArray<Outputs.ExecutionStageSummaryResponse> executionPipelineStage,
 
-            ImmutableArray<Outputs.TransformSummaryResponse> originalPipelineTransform)
+            ImmutableArray<Outputs.TransformSummaryResponse> originalPipelineTransform,
+
+            string stepNamesHash)
         {
             DisplayData = displayData;
             ExecutionPipelineStage = executionPipelineStage;
             OriginalPipelineTransform = originalPipelineTransform;
+            StepNamesHash = stepNamesHash;
         }
     }
 }

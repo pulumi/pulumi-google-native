@@ -1022,7 +1022,7 @@ func (in *addressNetworkTierPtr) ToAddressNetworkTierPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AddressNetworkTierPtrOutput)
 }
 
-// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
+// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *HA VPN over Cloud Interconnect* configuration. These addresses are regional resources. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
 type AddressPurpose string
 
 const (
@@ -1030,7 +1030,7 @@ const (
 	AddressPurposeDnsResolver = AddressPurpose("DNS_RESOLVER")
 	// VM internal/alias IP, Internal LB service IP, etc.
 	AddressPurposeGceEndpoint = AddressPurpose("GCE_ENDPOINT")
-	// A regional internal IP address range reserved for the VLAN attachment that is used in IPsec-encrypted Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
+	// A regional internal IP address range reserved for the VLAN attachment that is used in HA VPN over Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
 	AddressPurposeIpsecInterconnect = AddressPurpose("IPSEC_INTERCONNECT")
 	// External IP automatically reserved for Cloud NAT.
 	AddressPurposeNatAuto = AddressPurpose("NAT_AUTO")
@@ -2036,7 +2036,7 @@ func (in *attachedDiskInitializeParamsOnUpdateActionPtr) ToAttachedDiskInitializ
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskInitializeParamsOnUpdateActionPtrOutput)
 }
 
-// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
+// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. For most machine types, the default is SCSI. Local SSDs can use either NVME or SCSI. In certain configurations, persistent disks can use NVMe. For more information, see About persistent disks.
 type AttachedDiskInterface string
 
 const (
@@ -5428,6 +5428,176 @@ func (in *backendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtr) ToBacken
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput)
 }
 
+// This field can only be specified if logging is enabled for this backend service. Configures whether all, none or a subset of optional fields should be added to the reported logs. One of [INCLUDE_ALL_OPTIONAL, EXCLUDE_ALL_OPTIONAL, CUSTOM]. Default is EXCLUDE_ALL_OPTIONAL.
+type BackendServiceLogConfigOptional string
+
+const (
+	// A subset of optional fields.
+	BackendServiceLogConfigOptionalCustom = BackendServiceLogConfigOptional("CUSTOM")
+	// None optional fields.
+	BackendServiceLogConfigOptionalExcludeAllOptional = BackendServiceLogConfigOptional("EXCLUDE_ALL_OPTIONAL")
+	// All optional fields.
+	BackendServiceLogConfigOptionalIncludeAllOptional      = BackendServiceLogConfigOptional("INCLUDE_ALL_OPTIONAL")
+	BackendServiceLogConfigOptionalUnspecifiedOptionalMode = BackendServiceLogConfigOptional("UNSPECIFIED_OPTIONAL_MODE")
+)
+
+func (BackendServiceLogConfigOptional) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLogConfigOptional)(nil)).Elem()
+}
+
+func (e BackendServiceLogConfigOptional) ToBackendServiceLogConfigOptionalOutput() BackendServiceLogConfigOptionalOutput {
+	return pulumi.ToOutput(e).(BackendServiceLogConfigOptionalOutput)
+}
+
+func (e BackendServiceLogConfigOptional) ToBackendServiceLogConfigOptionalOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BackendServiceLogConfigOptionalOutput)
+}
+
+func (e BackendServiceLogConfigOptional) ToBackendServiceLogConfigOptionalPtrOutput() BackendServiceLogConfigOptionalPtrOutput {
+	return e.ToBackendServiceLogConfigOptionalPtrOutputWithContext(context.Background())
+}
+
+func (e BackendServiceLogConfigOptional) ToBackendServiceLogConfigOptionalPtrOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalPtrOutput {
+	return BackendServiceLogConfigOptional(e).ToBackendServiceLogConfigOptionalOutputWithContext(ctx).ToBackendServiceLogConfigOptionalPtrOutputWithContext(ctx)
+}
+
+func (e BackendServiceLogConfigOptional) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendServiceLogConfigOptional) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendServiceLogConfigOptional) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BackendServiceLogConfigOptional) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BackendServiceLogConfigOptionalOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLogConfigOptionalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceLogConfigOptional)(nil)).Elem()
+}
+
+func (o BackendServiceLogConfigOptionalOutput) ToBackendServiceLogConfigOptionalOutput() BackendServiceLogConfigOptionalOutput {
+	return o
+}
+
+func (o BackendServiceLogConfigOptionalOutput) ToBackendServiceLogConfigOptionalOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalOutput {
+	return o
+}
+
+func (o BackendServiceLogConfigOptionalOutput) ToBackendServiceLogConfigOptionalPtrOutput() BackendServiceLogConfigOptionalPtrOutput {
+	return o.ToBackendServiceLogConfigOptionalPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLogConfigOptionalOutput) ToBackendServiceLogConfigOptionalPtrOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendServiceLogConfigOptional) *BackendServiceLogConfigOptional {
+		return &v
+	}).(BackendServiceLogConfigOptionalPtrOutput)
+}
+
+func (o BackendServiceLogConfigOptionalOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLogConfigOptionalOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendServiceLogConfigOptional) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BackendServiceLogConfigOptionalOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLogConfigOptionalOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendServiceLogConfigOptional) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackendServiceLogConfigOptionalPtrOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceLogConfigOptionalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceLogConfigOptional)(nil)).Elem()
+}
+
+func (o BackendServiceLogConfigOptionalPtrOutput) ToBackendServiceLogConfigOptionalPtrOutput() BackendServiceLogConfigOptionalPtrOutput {
+	return o
+}
+
+func (o BackendServiceLogConfigOptionalPtrOutput) ToBackendServiceLogConfigOptionalPtrOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalPtrOutput {
+	return o
+}
+
+func (o BackendServiceLogConfigOptionalPtrOutput) Elem() BackendServiceLogConfigOptionalOutput {
+	return o.ApplyT(func(v *BackendServiceLogConfigOptional) BackendServiceLogConfigOptional {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceLogConfigOptional
+		return ret
+	}).(BackendServiceLogConfigOptionalOutput)
+}
+
+func (o BackendServiceLogConfigOptionalPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceLogConfigOptionalPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BackendServiceLogConfigOptional) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BackendServiceLogConfigOptionalInput is an input type that accepts BackendServiceLogConfigOptionalArgs and BackendServiceLogConfigOptionalOutput values.
+// You can construct a concrete instance of `BackendServiceLogConfigOptionalInput` via:
+//
+//	BackendServiceLogConfigOptionalArgs{...}
+type BackendServiceLogConfigOptionalInput interface {
+	pulumi.Input
+
+	ToBackendServiceLogConfigOptionalOutput() BackendServiceLogConfigOptionalOutput
+	ToBackendServiceLogConfigOptionalOutputWithContext(context.Context) BackendServiceLogConfigOptionalOutput
+}
+
+var backendServiceLogConfigOptionalPtrType = reflect.TypeOf((**BackendServiceLogConfigOptional)(nil)).Elem()
+
+type BackendServiceLogConfigOptionalPtrInput interface {
+	pulumi.Input
+
+	ToBackendServiceLogConfigOptionalPtrOutput() BackendServiceLogConfigOptionalPtrOutput
+	ToBackendServiceLogConfigOptionalPtrOutputWithContext(context.Context) BackendServiceLogConfigOptionalPtrOutput
+}
+
+type backendServiceLogConfigOptionalPtr string
+
+func BackendServiceLogConfigOptionalPtr(v string) BackendServiceLogConfigOptionalPtrInput {
+	return (*backendServiceLogConfigOptionalPtr)(&v)
+}
+
+func (*backendServiceLogConfigOptionalPtr) ElementType() reflect.Type {
+	return backendServiceLogConfigOptionalPtrType
+}
+
+func (in *backendServiceLogConfigOptionalPtr) ToBackendServiceLogConfigOptionalPtrOutput() BackendServiceLogConfigOptionalPtrOutput {
+	return pulumi.ToOutput(in).(BackendServiceLogConfigOptionalPtrOutput)
+}
+
+func (in *backendServiceLogConfigOptionalPtr) ToBackendServiceLogConfigOptionalPtrOutputWithContext(ctx context.Context) BackendServiceLogConfigOptionalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceLogConfigOptionalPtrOutput)
+}
+
 // The protocol this BackendService uses to communicate with backends. Possible values are HTTP, HTTPS, HTTP2, TCP, SSL, UDP or GRPC. depending on the chosen load balancer or Traffic Director configuration. Refer to the documentation for the load balancers or for Traffic Director for more information. Must be set to GRPC when the backend service is referenced by a URL map that is bound to target gRPC proxy.
 type BackendServiceProtocol string
 
@@ -8505,7 +8675,7 @@ func (in *fileContentBufferFileTypePtr) ToFileContentBufferFileTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(FileContentBufferFileTypePtrOutput)
 }
 
-// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
 type FirewallDirection string
 
 const (
@@ -11032,7 +11202,7 @@ func (in *globalAddressNetworkTierPtr) ToGlobalAddressNetworkTierPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressNetworkTierPtrOutput)
 }
 
-// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
+// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *HA VPN over Cloud Interconnect* configuration. These addresses are regional resources. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
 type GlobalAddressPurpose string
 
 const (
@@ -11040,7 +11210,7 @@ const (
 	GlobalAddressPurposeDnsResolver = GlobalAddressPurpose("DNS_RESOLVER")
 	// VM internal/alias IP, Internal LB service IP, etc.
 	GlobalAddressPurposeGceEndpoint = GlobalAddressPurpose("GCE_ENDPOINT")
-	// A regional internal IP address range reserved for the VLAN attachment that is used in IPsec-encrypted Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
+	// A regional internal IP address range reserved for the VLAN attachment that is used in HA VPN over Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
 	GlobalAddressPurposeIpsecInterconnect = GlobalAddressPurpose("IPSEC_INTERCONNECT")
 	// External IP automatically reserved for Cloud NAT.
 	GlobalAddressPurposeNatAuto = GlobalAddressPurpose("NAT_AUTO")
@@ -17805,11 +17975,11 @@ func (in *interconnectAttachmentEdgeAvailabilityDomainPtr) ToInterconnectAttachm
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectAttachmentEdgeAvailabilityDomainPtrOutput)
 }
 
-// Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly.
+// Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *HA VPN over Cloud Interconnect*, the VLAN attachment must be created with this option.
 type InterconnectAttachmentEncryption string
 
 const (
-	// The interconnect attachment will carry only encrypted traffic that is encrypted by an IPsec device such as HA VPN gateway; VMs cannot directly send traffic to or receive traffic from such an interconnect attachment. To use IPsec-encrypted Cloud Interconnect, the interconnect attachment must be created with this option.
+	// The interconnect attachment will carry only encrypted traffic that is encrypted by an IPsec device such as HA VPN gateway; VMs cannot directly send traffic to or receive traffic from such an interconnect attachment. To use HA VPN over Cloud Interconnect, the interconnect attachment must be created with this option.
 	InterconnectAttachmentEncryptionIpsec = InterconnectAttachmentEncryption("IPSEC")
 	// This is the default value, which means the Interconnect Attachment will carry unencrypted traffic. VMs will be able to send traffic to or receive traffic from such interconnect attachment.
 	InterconnectAttachmentEncryptionNone = InterconnectAttachmentEncryption("NONE")
@@ -19484,6 +19654,171 @@ func (in *mutualTlsModePtr) ToMutualTlsModePtrOutput() MutualTlsModePtrOutput {
 
 func (in *mutualTlsModePtr) ToMutualTlsModePtrOutputWithContext(ctx context.Context) MutualTlsModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(MutualTlsModePtrOutput)
+}
+
+type NetworkAttachmentConnectionPreference string
+
+const (
+	NetworkAttachmentConnectionPreferenceAcceptAutomatic = NetworkAttachmentConnectionPreference("ACCEPT_AUTOMATIC")
+	NetworkAttachmentConnectionPreferenceAcceptManual    = NetworkAttachmentConnectionPreference("ACCEPT_MANUAL")
+	NetworkAttachmentConnectionPreferenceInvalid         = NetworkAttachmentConnectionPreference("INVALID")
+)
+
+func (NetworkAttachmentConnectionPreference) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAttachmentConnectionPreference)(nil)).Elem()
+}
+
+func (e NetworkAttachmentConnectionPreference) ToNetworkAttachmentConnectionPreferenceOutput() NetworkAttachmentConnectionPreferenceOutput {
+	return pulumi.ToOutput(e).(NetworkAttachmentConnectionPreferenceOutput)
+}
+
+func (e NetworkAttachmentConnectionPreference) ToNetworkAttachmentConnectionPreferenceOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(NetworkAttachmentConnectionPreferenceOutput)
+}
+
+func (e NetworkAttachmentConnectionPreference) ToNetworkAttachmentConnectionPreferencePtrOutput() NetworkAttachmentConnectionPreferencePtrOutput {
+	return e.ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(context.Background())
+}
+
+func (e NetworkAttachmentConnectionPreference) ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferencePtrOutput {
+	return NetworkAttachmentConnectionPreference(e).ToNetworkAttachmentConnectionPreferenceOutputWithContext(ctx).ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx)
+}
+
+func (e NetworkAttachmentConnectionPreference) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkAttachmentConnectionPreference) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e NetworkAttachmentConnectionPreference) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e NetworkAttachmentConnectionPreference) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type NetworkAttachmentConnectionPreferenceOutput struct{ *pulumi.OutputState }
+
+func (NetworkAttachmentConnectionPreferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkAttachmentConnectionPreference)(nil)).Elem()
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToNetworkAttachmentConnectionPreferenceOutput() NetworkAttachmentConnectionPreferenceOutput {
+	return o
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToNetworkAttachmentConnectionPreferenceOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferenceOutput {
+	return o
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToNetworkAttachmentConnectionPreferencePtrOutput() NetworkAttachmentConnectionPreferencePtrOutput {
+	return o.ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkAttachmentConnectionPreference) *NetworkAttachmentConnectionPreference {
+		return &v
+	}).(NetworkAttachmentConnectionPreferencePtrOutput)
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkAttachmentConnectionPreference) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAttachmentConnectionPreferenceOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e NetworkAttachmentConnectionPreference) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkAttachmentConnectionPreferencePtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkAttachmentConnectionPreferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkAttachmentConnectionPreference)(nil)).Elem()
+}
+
+func (o NetworkAttachmentConnectionPreferencePtrOutput) ToNetworkAttachmentConnectionPreferencePtrOutput() NetworkAttachmentConnectionPreferencePtrOutput {
+	return o
+}
+
+func (o NetworkAttachmentConnectionPreferencePtrOutput) ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferencePtrOutput {
+	return o
+}
+
+func (o NetworkAttachmentConnectionPreferencePtrOutput) Elem() NetworkAttachmentConnectionPreferenceOutput {
+	return o.ApplyT(func(v *NetworkAttachmentConnectionPreference) NetworkAttachmentConnectionPreference {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkAttachmentConnectionPreference
+		return ret
+	}).(NetworkAttachmentConnectionPreferenceOutput)
+}
+
+func (o NetworkAttachmentConnectionPreferencePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkAttachmentConnectionPreferencePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *NetworkAttachmentConnectionPreference) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// NetworkAttachmentConnectionPreferenceInput is an input type that accepts NetworkAttachmentConnectionPreferenceArgs and NetworkAttachmentConnectionPreferenceOutput values.
+// You can construct a concrete instance of `NetworkAttachmentConnectionPreferenceInput` via:
+//
+//	NetworkAttachmentConnectionPreferenceArgs{...}
+type NetworkAttachmentConnectionPreferenceInput interface {
+	pulumi.Input
+
+	ToNetworkAttachmentConnectionPreferenceOutput() NetworkAttachmentConnectionPreferenceOutput
+	ToNetworkAttachmentConnectionPreferenceOutputWithContext(context.Context) NetworkAttachmentConnectionPreferenceOutput
+}
+
+var networkAttachmentConnectionPreferencePtrType = reflect.TypeOf((**NetworkAttachmentConnectionPreference)(nil)).Elem()
+
+type NetworkAttachmentConnectionPreferencePtrInput interface {
+	pulumi.Input
+
+	ToNetworkAttachmentConnectionPreferencePtrOutput() NetworkAttachmentConnectionPreferencePtrOutput
+	ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(context.Context) NetworkAttachmentConnectionPreferencePtrOutput
+}
+
+type networkAttachmentConnectionPreferencePtr string
+
+func NetworkAttachmentConnectionPreferencePtr(v string) NetworkAttachmentConnectionPreferencePtrInput {
+	return (*networkAttachmentConnectionPreferencePtr)(&v)
+}
+
+func (*networkAttachmentConnectionPreferencePtr) ElementType() reflect.Type {
+	return networkAttachmentConnectionPreferencePtrType
+}
+
+func (in *networkAttachmentConnectionPreferencePtr) ToNetworkAttachmentConnectionPreferencePtrOutput() NetworkAttachmentConnectionPreferencePtrOutput {
+	return pulumi.ToOutput(in).(NetworkAttachmentConnectionPreferencePtrOutput)
+}
+
+func (in *networkAttachmentConnectionPreferencePtr) ToNetworkAttachmentConnectionPreferencePtrOutputWithContext(ctx context.Context) NetworkAttachmentConnectionPreferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(NetworkAttachmentConnectionPreferencePtrOutput)
 }
 
 // Type of network endpoints in this network endpoint group. Can be one of GCE_VM_IP, GCE_VM_IP_PORT, NON_GCP_PRIVATE_IP_PORT, INTERNET_FQDN_PORT, INTERNET_IP_PORT, SERVERLESS, PRIVATE_SERVICE_CONNECT.
@@ -39076,6 +39411,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLbPolicyPtrInput)(nil)).Elem(), BackendServiceLocalityLbPolicy("INVALID_LB_POLICY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("INVALID_LB_POLICY"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrInput)(nil)).Elem(), BackendServiceLocalityLoadBalancingPolicyConfigPolicyName("INVALID_LB_POLICY"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigOptionalInput)(nil)).Elem(), BackendServiceLogConfigOptional("CUSTOM"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceLogConfigOptionalPtrInput)(nil)).Elem(), BackendServiceLogConfigOptional("CUSTOM"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceProtocolInput)(nil)).Elem(), BackendServiceProtocol("ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceProtocolPtrInput)(nil)).Elem(), BackendServiceProtocol("ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceSessionAffinityInput)(nil)).Elem(), BackendServiceSessionAffinity("CLIENT_IP"))
@@ -39242,6 +39579,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MetadataFilterFilterMatchCriteriaPtrInput)(nil)).Elem(), MetadataFilterFilterMatchCriteria("MATCH_ALL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MutualTlsModeInput)(nil)).Elem(), MutualTlsMode("INVALID"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MutualTlsModePtrInput)(nil)).Elem(), MutualTlsMode("INVALID"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAttachmentConnectionPreferenceInput)(nil)).Elem(), NetworkAttachmentConnectionPreference("ACCEPT_AUTOMATIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkAttachmentConnectionPreferencePtrInput)(nil)).Elem(), NetworkAttachmentConnectionPreference("ACCEPT_AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupNetworkEndpointTypeInput)(nil)).Elem(), NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupNetworkEndpointTypePtrInput)(nil)).Elem(), NetworkEndpointGroupNetworkEndpointType("GCE_VM_IP"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkEndpointGroupTypeInput)(nil)).Elem(), NetworkEndpointGroupType("LOAD_BALANCING"))
@@ -39540,6 +39879,8 @@ func init() {
 	pulumi.RegisterOutputType(BackendServiceLocalityLbPolicyPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNameOutput{})
 	pulumi.RegisterOutputType(BackendServiceLocalityLoadBalancingPolicyConfigPolicyNamePtrOutput{})
+	pulumi.RegisterOutputType(BackendServiceLogConfigOptionalOutput{})
+	pulumi.RegisterOutputType(BackendServiceLogConfigOptionalPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceProtocolOutput{})
 	pulumi.RegisterOutputType(BackendServiceProtocolPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceSessionAffinityOutput{})
@@ -39706,6 +40047,8 @@ func init() {
 	pulumi.RegisterOutputType(MetadataFilterFilterMatchCriteriaPtrOutput{})
 	pulumi.RegisterOutputType(MutualTlsModeOutput{})
 	pulumi.RegisterOutputType(MutualTlsModePtrOutput{})
+	pulumi.RegisterOutputType(NetworkAttachmentConnectionPreferenceOutput{})
+	pulumi.RegisterOutputType(NetworkAttachmentConnectionPreferencePtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupNetworkEndpointTypeOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupNetworkEndpointTypePtrOutput{})
 	pulumi.RegisterOutputType(NetworkEndpointGroupTypeOutput{})

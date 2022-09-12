@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * GetApiDeployment returns a specified deployment.
+ * Returns a specified deployment.
  */
 export function getDeployment(args: GetDeploymentArgs, opts?: pulumi.InvokeOptions): Promise<GetDeploymentResult> {
     if (!opts) {
@@ -38,7 +38,7 @@ export interface GetDeploymentResult {
      */
     readonly annotations: {[key: string]: string};
     /**
-     * The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+     * The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
      */
     readonly apiSpecRevision: string;
     /**
@@ -58,7 +58,7 @@ export interface GetDeploymentResult {
      */
     readonly endpointUri: string;
     /**
-     * The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+     * The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
      */
     readonly externalChannelUri: string;
     /**
@@ -66,7 +66,7 @@ export interface GetDeploymentResult {
      */
     readonly intendedAudience: string;
     /**
-     * Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+     * Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
      */
     readonly labels: {[key: string]: string};
     /**

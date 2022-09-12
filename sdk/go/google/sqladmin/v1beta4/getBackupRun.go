@@ -53,6 +53,8 @@ type LookupBackupRunResult struct {
 	StartTime string `pulumi:"startTime"`
 	// The status of this run.
 	Status string `pulumi:"status"`
+	// Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+	TimeZone string `pulumi:"timeZone"`
 	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
 	Type string `pulumi:"type"`
 	// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
@@ -161,6 +163,11 @@ func (o LookupBackupRunResultOutput) StartTime() pulumi.StringOutput {
 // The status of this run.
 func (o LookupBackupRunResultOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupBackupRunResult) string { return v.Status }).(pulumi.StringOutput)
+}
+
+// Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+func (o LookupBackupRunResultOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBackupRunResult) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
 // The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.

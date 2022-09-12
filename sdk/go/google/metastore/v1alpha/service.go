@@ -36,7 +36,7 @@ type Service struct {
 	MetadataIntegration MetadataIntegrationResponseOutput `pulumi:"metadataIntegration"`
 	// The metadata management activities of the metastore service.
 	MetadataManagementActivity MetadataManagementActivityResponseOutput `pulumi:"metadataManagementActivity"`
-	// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+	// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network pulumi.StringOutput `pulumi:"network"`
@@ -124,7 +124,7 @@ type serviceArgs struct {
 	MaintenanceWindow *MaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration *MetadataIntegration `pulumi:"metadataIntegration"`
-	// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+	// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
 	Name *string `pulumi:"name"`
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network *string `pulumi:"network"`
@@ -158,7 +158,7 @@ type ServiceArgs struct {
 	MaintenanceWindow MaintenanceWindowPtrInput
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
 	MetadataIntegration MetadataIntegrationPtrInput
-	// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+	// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
 	Name pulumi.StringPtrInput
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network pulumi.StringPtrInput
@@ -268,7 +268,7 @@ func (o ServiceOutput) MetadataManagementActivity() MetadataManagementActivityRe
 	return o.ApplyT(func(v *Service) MetadataManagementActivityResponseOutput { return v.MetadataManagementActivity }).(MetadataManagementActivityResponseOutput)
 }
 
-// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
 func (o ServiceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

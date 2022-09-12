@@ -80,7 +80,7 @@ namespace Pulumi.GoogleNative.Compute.Beta
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly. 
+        /// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
         /// </summary>
         public readonly bool EncryptedInterconnectRouter;
         /// <summary>

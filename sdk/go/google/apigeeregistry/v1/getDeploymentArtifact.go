@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// GetArtifact returns a specified artifact.
+// Returns a specified artifact.
 func LookupDeploymentArtifact(ctx *pulumi.Context, args *LookupDeploymentArtifactArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentArtifactResult, error) {
 	var rv LookupDeploymentArtifactResult
 	err := ctx.Invoke("google-native:apigeeregistry/v1:getDeploymentArtifact", args, &rv, opts...)

@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ApigeeRegistry.V1
 {
     /// <summary>
-    /// CreateApiDeployment creates a specified deployment.
+    /// Creates a specified deployment.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigeeregistry/v1:Deployment")]
     public partial class Deployment : global::Pulumi.CustomResource
@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Output<string> ApiId { get; private set; } = null!;
 
         /// <summary>
-        /// The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+        /// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
         /// </summary>
         [Output("apiSpecRevision")]
         public Output<string> ApiSpecRevision { get; private set; } = null!;
@@ -67,7 +67,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Output<string> EndpointUri { get; private set; } = null!;
 
         /// <summary>
-        /// The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+        /// The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
         /// </summary>
         [Output("externalChannelUri")]
         public Output<string> ExternalChannelUri { get; private set; } = null!;
@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Output<string> IntendedAudience { get; private set; } = null!;
 
         /// <summary>
-        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         /// </summary>
         [Output("labels")]
         public Output<ImmutableDictionary<string, string>> Labels { get; private set; } = null!;
@@ -194,7 +194,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Input<string> ApiId { get; set; } = null!;
 
         /// <summary>
-        /// The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+        /// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
         /// </summary>
         [Input("apiSpecRevision")]
         public Input<string>? ApiSpecRevision { get; set; }
@@ -218,7 +218,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Input<string>? EndpointUri { get; set; }
 
         /// <summary>
-        /// The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+        /// The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
         /// </summary>
         [Input("externalChannelUri")]
         public Input<string>? ExternalChannelUri { get; set; }
@@ -233,7 +233,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         /// </summary>
         public InputMap<string> Labels
         {

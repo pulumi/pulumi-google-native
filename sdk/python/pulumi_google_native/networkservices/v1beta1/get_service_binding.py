@@ -66,7 +66,7 @@ class GetServiceBindingResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
+        Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
         """
         return pulumi.get(self, "name")
 
@@ -74,7 +74,7 @@ class GetServiceBindingResult:
     @pulumi.getter
     def service(self) -> str:
         """
-        The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+        The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
         """
         return pulumi.get(self, "service")
 

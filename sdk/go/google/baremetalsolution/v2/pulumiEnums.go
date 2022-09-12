@@ -1879,6 +1879,175 @@ func (in *nfsShareStorageTypePtr) ToNfsShareStorageTypePtrOutputWithContext(ctx 
 	return pulumi.ToOutputWithContext(ctx, in).(NfsShareStorageTypePtrOutput)
 }
 
+// Performance tier of the Volume. Default is SHARED.
+type VolumeConfigPerformanceTier string
+
+const (
+	// Value is not specified.
+	VolumeConfigPerformanceTierVolumePerformanceTierUnspecified = VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_UNSPECIFIED")
+	// Regular volumes, shared aggregates.
+	VolumeConfigPerformanceTierVolumePerformanceTierShared = VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_SHARED")
+	// Dedicated (assigned) aggregates.
+	VolumeConfigPerformanceTierVolumePerformanceTierDedicated = VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_DEDICATED")
+)
+
+func (VolumeConfigPerformanceTier) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeConfigPerformanceTier)(nil)).Elem()
+}
+
+func (e VolumeConfigPerformanceTier) ToVolumeConfigPerformanceTierOutput() VolumeConfigPerformanceTierOutput {
+	return pulumi.ToOutput(e).(VolumeConfigPerformanceTierOutput)
+}
+
+func (e VolumeConfigPerformanceTier) ToVolumeConfigPerformanceTierOutputWithContext(ctx context.Context) VolumeConfigPerformanceTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VolumeConfigPerformanceTierOutput)
+}
+
+func (e VolumeConfigPerformanceTier) ToVolumeConfigPerformanceTierPtrOutput() VolumeConfigPerformanceTierPtrOutput {
+	return e.ToVolumeConfigPerformanceTierPtrOutputWithContext(context.Background())
+}
+
+func (e VolumeConfigPerformanceTier) ToVolumeConfigPerformanceTierPtrOutputWithContext(ctx context.Context) VolumeConfigPerformanceTierPtrOutput {
+	return VolumeConfigPerformanceTier(e).ToVolumeConfigPerformanceTierOutputWithContext(ctx).ToVolumeConfigPerformanceTierPtrOutputWithContext(ctx)
+}
+
+func (e VolumeConfigPerformanceTier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VolumeConfigPerformanceTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VolumeConfigPerformanceTier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VolumeConfigPerformanceTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VolumeConfigPerformanceTierOutput struct{ *pulumi.OutputState }
+
+func (VolumeConfigPerformanceTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumeConfigPerformanceTier)(nil)).Elem()
+}
+
+func (o VolumeConfigPerformanceTierOutput) ToVolumeConfigPerformanceTierOutput() VolumeConfigPerformanceTierOutput {
+	return o
+}
+
+func (o VolumeConfigPerformanceTierOutput) ToVolumeConfigPerformanceTierOutputWithContext(ctx context.Context) VolumeConfigPerformanceTierOutput {
+	return o
+}
+
+func (o VolumeConfigPerformanceTierOutput) ToVolumeConfigPerformanceTierPtrOutput() VolumeConfigPerformanceTierPtrOutput {
+	return o.ToVolumeConfigPerformanceTierPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeConfigPerformanceTierOutput) ToVolumeConfigPerformanceTierPtrOutputWithContext(ctx context.Context) VolumeConfigPerformanceTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumeConfigPerformanceTier) *VolumeConfigPerformanceTier {
+		return &v
+	}).(VolumeConfigPerformanceTierPtrOutput)
+}
+
+func (o VolumeConfigPerformanceTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VolumeConfigPerformanceTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VolumeConfigPerformanceTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VolumeConfigPerformanceTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeConfigPerformanceTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VolumeConfigPerformanceTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VolumeConfigPerformanceTierPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumeConfigPerformanceTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumeConfigPerformanceTier)(nil)).Elem()
+}
+
+func (o VolumeConfigPerformanceTierPtrOutput) ToVolumeConfigPerformanceTierPtrOutput() VolumeConfigPerformanceTierPtrOutput {
+	return o
+}
+
+func (o VolumeConfigPerformanceTierPtrOutput) ToVolumeConfigPerformanceTierPtrOutputWithContext(ctx context.Context) VolumeConfigPerformanceTierPtrOutput {
+	return o
+}
+
+func (o VolumeConfigPerformanceTierPtrOutput) Elem() VolumeConfigPerformanceTierOutput {
+	return o.ApplyT(func(v *VolumeConfigPerformanceTier) VolumeConfigPerformanceTier {
+		if v != nil {
+			return *v
+		}
+		var ret VolumeConfigPerformanceTier
+		return ret
+	}).(VolumeConfigPerformanceTierOutput)
+}
+
+func (o VolumeConfigPerformanceTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VolumeConfigPerformanceTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VolumeConfigPerformanceTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VolumeConfigPerformanceTierInput is an input type that accepts VolumeConfigPerformanceTierArgs and VolumeConfigPerformanceTierOutput values.
+// You can construct a concrete instance of `VolumeConfigPerformanceTierInput` via:
+//
+//	VolumeConfigPerformanceTierArgs{...}
+type VolumeConfigPerformanceTierInput interface {
+	pulumi.Input
+
+	ToVolumeConfigPerformanceTierOutput() VolumeConfigPerformanceTierOutput
+	ToVolumeConfigPerformanceTierOutputWithContext(context.Context) VolumeConfigPerformanceTierOutput
+}
+
+var volumeConfigPerformanceTierPtrType = reflect.TypeOf((**VolumeConfigPerformanceTier)(nil)).Elem()
+
+type VolumeConfigPerformanceTierPtrInput interface {
+	pulumi.Input
+
+	ToVolumeConfigPerformanceTierPtrOutput() VolumeConfigPerformanceTierPtrOutput
+	ToVolumeConfigPerformanceTierPtrOutputWithContext(context.Context) VolumeConfigPerformanceTierPtrOutput
+}
+
+type volumeConfigPerformanceTierPtr string
+
+func VolumeConfigPerformanceTierPtr(v string) VolumeConfigPerformanceTierPtrInput {
+	return (*volumeConfigPerformanceTierPtr)(&v)
+}
+
+func (*volumeConfigPerformanceTierPtr) ElementType() reflect.Type {
+	return volumeConfigPerformanceTierPtrType
+}
+
+func (in *volumeConfigPerformanceTierPtr) ToVolumeConfigPerformanceTierPtrOutput() VolumeConfigPerformanceTierPtrOutput {
+	return pulumi.ToOutput(in).(VolumeConfigPerformanceTierPtrOutput)
+}
+
+func (in *volumeConfigPerformanceTierPtr) ToVolumeConfigPerformanceTierPtrOutputWithContext(ctx context.Context) VolumeConfigPerformanceTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VolumeConfigPerformanceTierPtrOutput)
+}
+
 // Volume protocol.
 type VolumeConfigProtocol string
 
@@ -2215,6 +2384,175 @@ func (in *volumeConfigTypePtr) ToVolumeConfigTypePtrOutput() VolumeConfigTypePtr
 
 func (in *volumeConfigTypePtr) ToVolumeConfigTypePtrOutputWithContext(ctx context.Context) VolumeConfigTypePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(VolumeConfigTypePtrOutput)
+}
+
+// Immutable. Performance tier of the Volume. Default is SHARED.
+type VolumePerformanceTier string
+
+const (
+	// Value is not specified.
+	VolumePerformanceTierVolumePerformanceTierUnspecified = VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_UNSPECIFIED")
+	// Regular volumes, shared aggregates.
+	VolumePerformanceTierVolumePerformanceTierShared = VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_SHARED")
+	// Dedicated (assigned) aggregates.
+	VolumePerformanceTierVolumePerformanceTierDedicated = VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_DEDICATED")
+)
+
+func (VolumePerformanceTier) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumePerformanceTier)(nil)).Elem()
+}
+
+func (e VolumePerformanceTier) ToVolumePerformanceTierOutput() VolumePerformanceTierOutput {
+	return pulumi.ToOutput(e).(VolumePerformanceTierOutput)
+}
+
+func (e VolumePerformanceTier) ToVolumePerformanceTierOutputWithContext(ctx context.Context) VolumePerformanceTierOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(VolumePerformanceTierOutput)
+}
+
+func (e VolumePerformanceTier) ToVolumePerformanceTierPtrOutput() VolumePerformanceTierPtrOutput {
+	return e.ToVolumePerformanceTierPtrOutputWithContext(context.Background())
+}
+
+func (e VolumePerformanceTier) ToVolumePerformanceTierPtrOutputWithContext(ctx context.Context) VolumePerformanceTierPtrOutput {
+	return VolumePerformanceTier(e).ToVolumePerformanceTierOutputWithContext(ctx).ToVolumePerformanceTierPtrOutputWithContext(ctx)
+}
+
+func (e VolumePerformanceTier) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VolumePerformanceTier) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e VolumePerformanceTier) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e VolumePerformanceTier) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type VolumePerformanceTierOutput struct{ *pulumi.OutputState }
+
+func (VolumePerformanceTierOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VolumePerformanceTier)(nil)).Elem()
+}
+
+func (o VolumePerformanceTierOutput) ToVolumePerformanceTierOutput() VolumePerformanceTierOutput {
+	return o
+}
+
+func (o VolumePerformanceTierOutput) ToVolumePerformanceTierOutputWithContext(ctx context.Context) VolumePerformanceTierOutput {
+	return o
+}
+
+func (o VolumePerformanceTierOutput) ToVolumePerformanceTierPtrOutput() VolumePerformanceTierPtrOutput {
+	return o.ToVolumePerformanceTierPtrOutputWithContext(context.Background())
+}
+
+func (o VolumePerformanceTierOutput) ToVolumePerformanceTierPtrOutputWithContext(ctx context.Context) VolumePerformanceTierPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VolumePerformanceTier) *VolumePerformanceTier {
+		return &v
+	}).(VolumePerformanceTierPtrOutput)
+}
+
+func (o VolumePerformanceTierOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o VolumePerformanceTierOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VolumePerformanceTier) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o VolumePerformanceTierOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VolumePerformanceTierOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e VolumePerformanceTier) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type VolumePerformanceTierPtrOutput struct{ *pulumi.OutputState }
+
+func (VolumePerformanceTierPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VolumePerformanceTier)(nil)).Elem()
+}
+
+func (o VolumePerformanceTierPtrOutput) ToVolumePerformanceTierPtrOutput() VolumePerformanceTierPtrOutput {
+	return o
+}
+
+func (o VolumePerformanceTierPtrOutput) ToVolumePerformanceTierPtrOutputWithContext(ctx context.Context) VolumePerformanceTierPtrOutput {
+	return o
+}
+
+func (o VolumePerformanceTierPtrOutput) Elem() VolumePerformanceTierOutput {
+	return o.ApplyT(func(v *VolumePerformanceTier) VolumePerformanceTier {
+		if v != nil {
+			return *v
+		}
+		var ret VolumePerformanceTier
+		return ret
+	}).(VolumePerformanceTierOutput)
+}
+
+func (o VolumePerformanceTierPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o VolumePerformanceTierPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *VolumePerformanceTier) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// VolumePerformanceTierInput is an input type that accepts VolumePerformanceTierArgs and VolumePerformanceTierOutput values.
+// You can construct a concrete instance of `VolumePerformanceTierInput` via:
+//
+//	VolumePerformanceTierArgs{...}
+type VolumePerformanceTierInput interface {
+	pulumi.Input
+
+	ToVolumePerformanceTierOutput() VolumePerformanceTierOutput
+	ToVolumePerformanceTierOutputWithContext(context.Context) VolumePerformanceTierOutput
+}
+
+var volumePerformanceTierPtrType = reflect.TypeOf((**VolumePerformanceTier)(nil)).Elem()
+
+type VolumePerformanceTierPtrInput interface {
+	pulumi.Input
+
+	ToVolumePerformanceTierPtrOutput() VolumePerformanceTierPtrOutput
+	ToVolumePerformanceTierPtrOutputWithContext(context.Context) VolumePerformanceTierPtrOutput
+}
+
+type volumePerformanceTierPtr string
+
+func VolumePerformanceTierPtr(v string) VolumePerformanceTierPtrInput {
+	return (*volumePerformanceTierPtr)(&v)
+}
+
+func (*volumePerformanceTierPtr) ElementType() reflect.Type {
+	return volumePerformanceTierPtrType
+}
+
+func (in *volumePerformanceTierPtr) ToVolumePerformanceTierPtrOutput() VolumePerformanceTierPtrOutput {
+	return pulumi.ToOutput(in).(VolumePerformanceTierPtrOutput)
+}
+
+func (in *volumePerformanceTierPtr) ToVolumePerformanceTierPtrOutputWithContext(ctx context.Context) VolumePerformanceTierPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(VolumePerformanceTierPtrOutput)
 }
 
 // The behavior to use when snapshot reserved space is full.
@@ -2751,10 +3089,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsExportPermissionsPtrInput)(nil)).Elem(), NfsExportPermissions("PERMISSIONS_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsShareStorageTypeInput)(nil)).Elem(), NfsShareStorageType("STORAGE_TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*NfsShareStorageTypePtrInput)(nil)).Elem(), NfsShareStorageType("STORAGE_TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigPerformanceTierInput)(nil)).Elem(), VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigPerformanceTierPtrInput)(nil)).Elem(), VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigProtocolInput)(nil)).Elem(), VolumeConfigProtocol("PROTOCOL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigProtocolPtrInput)(nil)).Elem(), VolumeConfigProtocol("PROTOCOL_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigTypeInput)(nil)).Elem(), VolumeConfigType("TYPE_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeConfigTypePtrInput)(nil)).Elem(), VolumeConfigType("TYPE_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumePerformanceTierInput)(nil)).Elem(), VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*VolumePerformanceTierPtrInput)(nil)).Elem(), VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotAutoDeleteBehaviorInput)(nil)).Elem(), VolumeSnapshotAutoDeleteBehavior("SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeSnapshotAutoDeleteBehaviorPtrInput)(nil)).Elem(), VolumeSnapshotAutoDeleteBehavior("SNAPSHOT_AUTO_DELETE_BEHAVIOR_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*VolumeStateInput)(nil)).Elem(), VolumeState("STATE_UNSPECIFIED"))
@@ -2783,10 +3125,14 @@ func init() {
 	pulumi.RegisterOutputType(NfsExportPermissionsPtrOutput{})
 	pulumi.RegisterOutputType(NfsShareStorageTypeOutput{})
 	pulumi.RegisterOutputType(NfsShareStorageTypePtrOutput{})
+	pulumi.RegisterOutputType(VolumeConfigPerformanceTierOutput{})
+	pulumi.RegisterOutputType(VolumeConfigPerformanceTierPtrOutput{})
 	pulumi.RegisterOutputType(VolumeConfigProtocolOutput{})
 	pulumi.RegisterOutputType(VolumeConfigProtocolPtrOutput{})
 	pulumi.RegisterOutputType(VolumeConfigTypeOutput{})
 	pulumi.RegisterOutputType(VolumeConfigTypePtrOutput{})
+	pulumi.RegisterOutputType(VolumePerformanceTierOutput{})
+	pulumi.RegisterOutputType(VolumePerformanceTierPtrOutput{})
 	pulumi.RegisterOutputType(VolumeSnapshotAutoDeleteBehaviorOutput{})
 	pulumi.RegisterOutputType(VolumeSnapshotAutoDeleteBehaviorPtrOutput{})
 	pulumi.RegisterOutputType(VolumeStateOutput{})

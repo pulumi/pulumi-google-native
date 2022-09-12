@@ -92,7 +92,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         /// </summary>
         public readonly int AvailableQuantity;
         /// <summary>
-        /// The timestamp when this Product becomes available for SearchService.Search.
+        /// The timestamp when this Product becomes available for SearchService.Search. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT.
         /// </summary>
         public readonly string AvailableTime;
         /// <summary>
@@ -120,7 +120,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// The timestamp when this product becomes unavailable for SearchService.Search. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
+        /// The timestamp when this product becomes unavailable for SearchService.Search. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the users to delete the stale products explicitly, instead of using this field to determine staleness. If it is set, the Product is not available for SearchService.Search after expire_time. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts. expire_time must be later than available_time and publish_time, otherwise an INVALID_ARGUMENT error is thrown. Corresponding properties: Google Merchant Center property [expiration_date](https://support.google.com/merchants/answer/6324499).
         /// </summary>
         public readonly string ExpireTime;
         /// <summary>
@@ -140,7 +140,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         /// </summary>
         public readonly string LanguageCode;
         /// <summary>
-        /// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by AddLocalInventories and RemoveLocalInventories APIs.
+        /// A list of local inventories specific to different places. This is only available for users who have Retail Search enabled, and it can be managed by ProductService.AddLocalInventories and ProductService.RemoveLocalInventories APIs.
         /// </summary>
         public readonly ImmutableArray<Outputs.GoogleCloudRetailV2betaLocalInventoryResponse> LocalInventories;
         /// <summary>
@@ -192,7 +192,7 @@ namespace Pulumi.GoogleNative.Retail.V2Beta
         /// </summary>
         public readonly string Title;
         /// <summary>
-        /// Input only. The TTL (time to live) of the product. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
+        /// Input only. The TTL (time to live) of the product. Note that this is only applicable to Type.PRIMARY and Type.COLLECTION, and ignored for Type.VARIANT. In general, we suggest the users to delete the stale products explicitly, instead of using this field to determine staleness. If it is set, it must be a non-negative value, and expire_time is set as current timestamp plus ttl. The derived expire_time is returned in the output and ttl is left blank when retrieving the Product. If it is set, the product is not available for SearchService.Search after current timestamp plus ttl. However, the product can still be retrieved by ProductService.GetProduct and ProductService.ListProducts.
         /// </summary>
         public readonly string Ttl;
         /// <summary>

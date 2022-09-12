@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * GetArtifact returns a specified artifact.
+ * Returns a specified artifact.
  */
 export function getDeploymentArtifact(args: GetDeploymentArtifactArgs, opts?: pulumi.InvokeOptions): Promise<GetDeploymentArtifactResult> {
     if (!opts) {

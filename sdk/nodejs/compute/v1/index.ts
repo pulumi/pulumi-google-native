@@ -21,6 +21,10 @@ export { BackendServiceArgs } from "./backendService";
 export type BackendService = import("./backendService").BackendService;
 export const BackendService: typeof import("./backendService").BackendService = null as any;
 
+export { BackendServiceIamPolicyArgs } from "./backendServiceIamPolicy";
+export type BackendServiceIamPolicy = import("./backendServiceIamPolicy").BackendServiceIamPolicy;
+export const BackendServiceIamPolicy: typeof import("./backendServiceIamPolicy").BackendServiceIamPolicy = null as any;
+
 export { DiskArgs } from "./disk";
 export type Disk = import("./disk").Disk;
 export const Disk: typeof import("./disk").Disk = null as any;
@@ -64,6 +68,10 @@ export const getBackendBucketOutput: typeof import("./getBackendBucket").getBack
 export { GetBackendServiceArgs, GetBackendServiceResult, GetBackendServiceOutputArgs } from "./getBackendService";
 export const getBackendService: typeof import("./getBackendService").getBackendService = null as any;
 export const getBackendServiceOutput: typeof import("./getBackendService").getBackendServiceOutput = null as any;
+
+export { GetBackendServiceIamPolicyArgs, GetBackendServiceIamPolicyResult, GetBackendServiceIamPolicyOutputArgs } from "./getBackendServiceIamPolicy";
+export const getBackendServiceIamPolicy: typeof import("./getBackendServiceIamPolicy").getBackendServiceIamPolicy = null as any;
+export const getBackendServiceIamPolicyOutput: typeof import("./getBackendServiceIamPolicy").getBackendServiceIamPolicyOutput = null as any;
 
 export { GetDiskArgs, GetDiskResult, GetDiskOutputArgs } from "./getDisk";
 export const getDisk: typeof import("./getDisk").getDisk = null as any;
@@ -233,6 +241,10 @@ export { GetRegionBackendServiceArgs, GetRegionBackendServiceResult, GetRegionBa
 export const getRegionBackendService: typeof import("./getRegionBackendService").getRegionBackendService = null as any;
 export const getRegionBackendServiceOutput: typeof import("./getRegionBackendService").getRegionBackendServiceOutput = null as any;
 
+export { GetRegionBackendServiceIamPolicyArgs, GetRegionBackendServiceIamPolicyResult, GetRegionBackendServiceIamPolicyOutputArgs } from "./getRegionBackendServiceIamPolicy";
+export const getRegionBackendServiceIamPolicy: typeof import("./getRegionBackendServiceIamPolicy").getRegionBackendServiceIamPolicy = null as any;
+export const getRegionBackendServiceIamPolicyOutput: typeof import("./getRegionBackendServiceIamPolicy").getRegionBackendServiceIamPolicyOutput = null as any;
+
 export { GetRegionCommitmentArgs, GetRegionCommitmentResult, GetRegionCommitmentOutputArgs } from "./getRegionCommitment";
 export const getRegionCommitment: typeof import("./getRegionCommitment").getRegionCommitment = null as any;
 export const getRegionCommitmentOutput: typeof import("./getRegionCommitment").getRegionCommitmentOutput = null as any;
@@ -292,6 +304,10 @@ export const getRegionTargetHttpProxyOutput: typeof import("./getRegionTargetHtt
 export { GetRegionTargetHttpsProxyArgs, GetRegionTargetHttpsProxyResult, GetRegionTargetHttpsProxyOutputArgs } from "./getRegionTargetHttpsProxy";
 export const getRegionTargetHttpsProxy: typeof import("./getRegionTargetHttpsProxy").getRegionTargetHttpsProxy = null as any;
 export const getRegionTargetHttpsProxyOutput: typeof import("./getRegionTargetHttpsProxy").getRegionTargetHttpsProxyOutput = null as any;
+
+export { GetRegionTargetTcpProxyArgs, GetRegionTargetTcpProxyResult, GetRegionTargetTcpProxyOutputArgs } from "./getRegionTargetTcpProxy";
+export const getRegionTargetTcpProxy: typeof import("./getRegionTargetTcpProxy").getRegionTargetTcpProxy = null as any;
+export const getRegionTargetTcpProxyOutput: typeof import("./getRegionTargetTcpProxy").getRegionTargetTcpProxyOutput = null as any;
 
 export { GetRegionUrlMapArgs, GetRegionUrlMapResult, GetRegionUrlMapOutputArgs } from "./getRegionUrlMap";
 export const getRegionUrlMap: typeof import("./getRegionUrlMap").getRegionUrlMap = null as any;
@@ -541,6 +557,10 @@ export { RegionBackendServiceArgs } from "./regionBackendService";
 export type RegionBackendService = import("./regionBackendService").RegionBackendService;
 export const RegionBackendService: typeof import("./regionBackendService").RegionBackendService = null as any;
 
+export { RegionBackendServiceIamPolicyArgs } from "./regionBackendServiceIamPolicy";
+export type RegionBackendServiceIamPolicy = import("./regionBackendServiceIamPolicy").RegionBackendServiceIamPolicy;
+export const RegionBackendServiceIamPolicy: typeof import("./regionBackendServiceIamPolicy").RegionBackendServiceIamPolicy = null as any;
+
 export { RegionCommitmentArgs } from "./regionCommitment";
 export type RegionCommitment = import("./regionCommitment").RegionCommitment;
 export const RegionCommitment: typeof import("./regionCommitment").RegionCommitment = null as any;
@@ -600,6 +620,10 @@ export const RegionTargetHttpProxy: typeof import("./regionTargetHttpProxy").Reg
 export { RegionTargetHttpsProxyArgs } from "./regionTargetHttpsProxy";
 export type RegionTargetHttpsProxy = import("./regionTargetHttpsProxy").RegionTargetHttpsProxy;
 export const RegionTargetHttpsProxy: typeof import("./regionTargetHttpsProxy").RegionTargetHttpsProxy = null as any;
+
+export { RegionTargetTcpProxyArgs } from "./regionTargetTcpProxy";
+export type RegionTargetTcpProxy = import("./regionTargetTcpProxy").RegionTargetTcpProxy;
+export const RegionTargetTcpProxy: typeof import("./regionTargetTcpProxy").RegionTargetTcpProxy = null as any;
 
 export { RegionUrlMapArgs } from "./regionUrlMap";
 export type RegionUrlMap = import("./regionUrlMap").RegionUrlMap;
@@ -713,6 +737,7 @@ utilities.lazyLoad(exports, ["Address"], () => require("./address"));
 utilities.lazyLoad(exports, ["Autoscaler"], () => require("./autoscaler"));
 utilities.lazyLoad(exports, ["BackendBucket"], () => require("./backendBucket"));
 utilities.lazyLoad(exports, ["BackendService"], () => require("./backendService"));
+utilities.lazyLoad(exports, ["BackendServiceIamPolicy"], () => require("./backendServiceIamPolicy"));
 utilities.lazyLoad(exports, ["Disk"], () => require("./disk"));
 utilities.lazyLoad(exports, ["DiskIamPolicy"], () => require("./diskIamPolicy"));
 utilities.lazyLoad(exports, ["ExternalVpnGateway"], () => require("./externalVpnGateway"));
@@ -724,6 +749,7 @@ utilities.lazyLoad(exports, ["getAddress","getAddressOutput"], () => require("./
 utilities.lazyLoad(exports, ["getAutoscaler","getAutoscalerOutput"], () => require("./getAutoscaler"));
 utilities.lazyLoad(exports, ["getBackendBucket","getBackendBucketOutput"], () => require("./getBackendBucket"));
 utilities.lazyLoad(exports, ["getBackendService","getBackendServiceOutput"], () => require("./getBackendService"));
+utilities.lazyLoad(exports, ["getBackendServiceIamPolicy","getBackendServiceIamPolicyOutput"], () => require("./getBackendServiceIamPolicy"));
 utilities.lazyLoad(exports, ["getDisk","getDiskOutput"], () => require("./getDisk"));
 utilities.lazyLoad(exports, ["getDiskIamPolicy","getDiskIamPolicyOutput"], () => require("./getDiskIamPolicy"));
 utilities.lazyLoad(exports, ["getExternalVpnGateway","getExternalVpnGatewayOutput"], () => require("./getExternalVpnGateway"));
@@ -766,6 +792,7 @@ utilities.lazyLoad(exports, ["getPublicAdvertisedPrefix","getPublicAdvertisedPre
 utilities.lazyLoad(exports, ["getPublicDelegatedPrefix","getPublicDelegatedPrefixOutput"], () => require("./getPublicDelegatedPrefix"));
 utilities.lazyLoad(exports, ["getRegionAutoscaler","getRegionAutoscalerOutput"], () => require("./getRegionAutoscaler"));
 utilities.lazyLoad(exports, ["getRegionBackendService","getRegionBackendServiceOutput"], () => require("./getRegionBackendService"));
+utilities.lazyLoad(exports, ["getRegionBackendServiceIamPolicy","getRegionBackendServiceIamPolicyOutput"], () => require("./getRegionBackendServiceIamPolicy"));
 utilities.lazyLoad(exports, ["getRegionCommitment","getRegionCommitmentOutput"], () => require("./getRegionCommitment"));
 utilities.lazyLoad(exports, ["getRegionDisk","getRegionDiskOutput"], () => require("./getRegionDisk"));
 utilities.lazyLoad(exports, ["getRegionDiskIamPolicy","getRegionDiskIamPolicyOutput"], () => require("./getRegionDiskIamPolicy"));
@@ -781,6 +808,7 @@ utilities.lazyLoad(exports, ["getRegionSslCertificate","getRegionSslCertificateO
 utilities.lazyLoad(exports, ["getRegionSslPolicy","getRegionSslPolicyOutput"], () => require("./getRegionSslPolicy"));
 utilities.lazyLoad(exports, ["getRegionTargetHttpProxy","getRegionTargetHttpProxyOutput"], () => require("./getRegionTargetHttpProxy"));
 utilities.lazyLoad(exports, ["getRegionTargetHttpsProxy","getRegionTargetHttpsProxyOutput"], () => require("./getRegionTargetHttpsProxy"));
+utilities.lazyLoad(exports, ["getRegionTargetTcpProxy","getRegionTargetTcpProxyOutput"], () => require("./getRegionTargetTcpProxy"));
 utilities.lazyLoad(exports, ["getRegionUrlMap","getRegionUrlMapOutput"], () => require("./getRegionUrlMap"));
 utilities.lazyLoad(exports, ["getReservation","getReservationOutput"], () => require("./getReservation"));
 utilities.lazyLoad(exports, ["getReservationIamPolicy","getReservationIamPolicyOutput"], () => require("./getReservationIamPolicy"));
@@ -843,6 +871,7 @@ utilities.lazyLoad(exports, ["PublicAdvertisedPrefix"], () => require("./publicA
 utilities.lazyLoad(exports, ["PublicDelegatedPrefix"], () => require("./publicDelegatedPrefix"));
 utilities.lazyLoad(exports, ["RegionAutoscaler"], () => require("./regionAutoscaler"));
 utilities.lazyLoad(exports, ["RegionBackendService"], () => require("./regionBackendService"));
+utilities.lazyLoad(exports, ["RegionBackendServiceIamPolicy"], () => require("./regionBackendServiceIamPolicy"));
 utilities.lazyLoad(exports, ["RegionCommitment"], () => require("./regionCommitment"));
 utilities.lazyLoad(exports, ["RegionDisk"], () => require("./regionDisk"));
 utilities.lazyLoad(exports, ["RegionDiskIamPolicy"], () => require("./regionDiskIamPolicy"));
@@ -858,6 +887,7 @@ utilities.lazyLoad(exports, ["RegionSslCertificate"], () => require("./regionSsl
 utilities.lazyLoad(exports, ["RegionSslPolicy"], () => require("./regionSslPolicy"));
 utilities.lazyLoad(exports, ["RegionTargetHttpProxy"], () => require("./regionTargetHttpProxy"));
 utilities.lazyLoad(exports, ["RegionTargetHttpsProxy"], () => require("./regionTargetHttpsProxy"));
+utilities.lazyLoad(exports, ["RegionTargetTcpProxy"], () => require("./regionTargetTcpProxy"));
 utilities.lazyLoad(exports, ["RegionUrlMap"], () => require("./regionUrlMap"));
 utilities.lazyLoad(exports, ["Reservation"], () => require("./reservation"));
 utilities.lazyLoad(exports, ["ReservationIamPolicy"], () => require("./reservationIamPolicy"));
@@ -901,6 +931,8 @@ const _module = {
                 return new BackendBucket(name, <any>undefined, { urn })
             case "google-native:compute/v1:BackendService":
                 return new BackendService(name, <any>undefined, { urn })
+            case "google-native:compute/v1:BackendServiceIamPolicy":
+                return new BackendServiceIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:Disk":
                 return new Disk(name, <any>undefined, { urn })
             case "google-native:compute/v1:DiskIamPolicy":
@@ -985,6 +1017,8 @@ const _module = {
                 return new RegionAutoscaler(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionBackendService":
                 return new RegionBackendService(name, <any>undefined, { urn })
+            case "google-native:compute/v1:RegionBackendServiceIamPolicy":
+                return new RegionBackendServiceIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionCommitment":
                 return new RegionCommitment(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionDisk":
@@ -1015,6 +1049,8 @@ const _module = {
                 return new RegionTargetHttpProxy(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionTargetHttpsProxy":
                 return new RegionTargetHttpsProxy(name, <any>undefined, { urn })
+            case "google-native:compute/v1:RegionTargetTcpProxy":
+                return new RegionTargetTcpProxy(name, <any>undefined, { urn })
             case "google-native:compute/v1:RegionUrlMap":
                 return new RegionUrlMap(name, <any>undefined, { urn })
             case "google-native:compute/v1:Reservation":

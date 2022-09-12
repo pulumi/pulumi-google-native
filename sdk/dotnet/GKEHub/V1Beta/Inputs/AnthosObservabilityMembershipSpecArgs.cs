@@ -16,13 +16,13 @@ namespace Pulumi.GoogleNative.GKEHub.V1Beta.Inputs
     public sealed class AnthosObservabilityMembershipSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
+        /// Use full of metrics rather than optimized metrics. See https://cloud.google.com/anthos/clusters/docs/on-prem/1.8/concepts/logging-and-monitoring#optimized_metrics_default_metrics
         /// </summary>
         [Input("doNotOptimizeMetrics")]
         public Input<bool>? DoNotOptimizeMetrics { get; set; }
 
         /// <summary>
-        /// enable collecting and reporting metrics and logs from user apps See go/onyx-application-metrics-logs-user-guide
+        /// Enable collecting and reporting metrics and logs from user apps.
         /// </summary>
         [Input("enableStackdriverOnApplications")]
         public Input<bool>? EnableStackdriverOnApplications { get; set; }

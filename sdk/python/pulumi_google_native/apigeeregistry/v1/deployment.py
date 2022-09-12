@@ -33,13 +33,13 @@ class DeploymentArgs:
         :param pulumi.Input[str] api_deployment_id: Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
         :param pulumi.Input[str] access_guidance: Text briefly describing how to access the endpoint. Changes to this value will not affect the revision.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
-        :param pulumi.Input[str] api_spec_revision: The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+        :param pulumi.Input[str] api_spec_revision: The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
         :param pulumi.Input[str] description: A detailed description.
         :param pulumi.Input[str] display_name: Human-meaningful name.
         :param pulumi.Input[str] endpoint_uri: The address where the deployment is serving. Changes to this value will update the revision.
-        :param pulumi.Input[str] external_channel_uri: The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+        :param pulumi.Input[str] external_channel_uri: The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
         :param pulumi.Input[str] intended_audience: Text briefly identifying the intended audience of the API. Changes to this value will not affect the revision.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         :param pulumi.Input[str] name: Resource name.
         """
         pulumi.set(__self__, "api_deployment_id", api_deployment_id)
@@ -118,7 +118,7 @@ class DeploymentArgs:
     @pulumi.getter(name="apiSpecRevision")
     def api_spec_revision(self) -> Optional[pulumi.Input[str]]:
         """
-        The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+        The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
         """
         return pulumi.get(self, "api_spec_revision")
 
@@ -166,7 +166,7 @@ class DeploymentArgs:
     @pulumi.getter(name="externalChannelUri")
     def external_channel_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+        The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
         """
         return pulumi.get(self, "external_channel_uri")
 
@@ -190,7 +190,7 @@ class DeploymentArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         """
         return pulumi.get(self, "labels")
 
@@ -250,20 +250,20 @@ class Deployment(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        CreateApiDeployment creates a specified deployment.
+        Creates a specified deployment.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] access_guidance: Text briefly describing how to access the endpoint. Changes to this value will not affect the revision.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
         :param pulumi.Input[str] api_deployment_id: Required. The ID to use for the deployment, which will become the final component of the deployment's resource name. This value should be 4-63 characters, and valid characters are /a-z-/. Following AIP-162, IDs must not have the form of a UUID.
-        :param pulumi.Input[str] api_spec_revision: The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+        :param pulumi.Input[str] api_spec_revision: The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
         :param pulumi.Input[str] description: A detailed description.
         :param pulumi.Input[str] display_name: Human-meaningful name.
         :param pulumi.Input[str] endpoint_uri: The address where the deployment is serving. Changes to this value will update the revision.
-        :param pulumi.Input[str] external_channel_uri: The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+        :param pulumi.Input[str] external_channel_uri: The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
         :param pulumi.Input[str] intended_audience: Text briefly identifying the intended audience of the API. Changes to this value will not affect the revision.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         :param pulumi.Input[str] name: Resource name.
         """
         ...
@@ -273,7 +273,7 @@ class Deployment(pulumi.CustomResource):
                  args: DeploymentArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        CreateApiDeployment creates a specified deployment.
+        Creates a specified deployment.
 
         :param str resource_name: The name of the resource.
         :param DeploymentArgs args: The arguments to use to populate this resource's properties.
@@ -412,7 +412,7 @@ class Deployment(pulumi.CustomResource):
     @pulumi.getter(name="apiSpecRevision")
     def api_spec_revision(self) -> pulumi.Output[str]:
         """
-        The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+        The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
         """
         return pulumi.get(self, "api_spec_revision")
 
@@ -452,7 +452,7 @@ class Deployment(pulumi.CustomResource):
     @pulumi.getter(name="externalChannelUri")
     def external_channel_uri(self) -> pulumi.Output[str]:
         """
-        The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+        The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
         """
         return pulumi.get(self, "external_channel_uri")
 
@@ -468,7 +468,7 @@ class Deployment(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         """
         return pulumi.get(self, "labels")
 

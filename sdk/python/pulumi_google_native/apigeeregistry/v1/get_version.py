@@ -80,7 +80,7 @@ class GetVersionResult:
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         """
         return pulumi.get(self, "labels")
 
@@ -96,7 +96,7 @@ class GetVersionResult:
     @pulumi.getter
     def state(self) -> str:
         """
-        A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g. "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
+        A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
         """
         return pulumi.get(self, "state")
 
@@ -131,7 +131,7 @@ def get_version(api_id: Optional[str] = None,
                 version_id: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetVersionResult:
     """
-    GetApiVersion returns a specified version.
+    Returns a specified version.
     """
     __args__ = dict()
     __args__['apiId'] = api_id
@@ -159,6 +159,6 @@ def get_version_output(api_id: Optional[pulumi.Input[str]] = None,
                        version_id: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVersionResult]:
     """
-    GetApiVersion returns a specified version.
+    Returns a specified version.
     """
     ...

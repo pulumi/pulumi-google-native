@@ -42,6 +42,8 @@ type BackupRun struct {
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// The status of this run.
 	Status pulumi.StringOutput `pulumi:"status"`
+	// Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+	TimeZone pulumi.StringOutput `pulumi:"timeZone"`
 	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
@@ -122,6 +124,8 @@ type backupRunArgs struct {
 	SelfLink *string `pulumi:"selfLink"`
 	// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	StartTime *string `pulumi:"startTime"`
+	// Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+	TimeZone *string `pulumi:"timeZone"`
 	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
 	Type *BackupRunType `pulumi:"type"`
 	// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
@@ -157,6 +161,8 @@ type BackupRunArgs struct {
 	SelfLink pulumi.StringPtrInput
 	// The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
 	StartTime pulumi.StringPtrInput
+	// Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+	TimeZone pulumi.StringPtrInput
 	// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
 	Type BackupRunTypePtrInput
 	// The start time of the backup window during which this the backup was attempted in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
@@ -266,6 +272,11 @@ func (o BackupRunOutput) StartTime() pulumi.StringOutput {
 // The status of this run.
 func (o BackupRunOutput) Status() pulumi.StringOutput {
 	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.Status }).(pulumi.StringOutput)
+}
+
+// Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+func (o BackupRunOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackupRun) pulumi.StringOutput { return v.TimeZone }).(pulumi.StringOutput)
 }
 
 // The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.

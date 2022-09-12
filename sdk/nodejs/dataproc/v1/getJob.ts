@@ -103,6 +103,10 @@ export interface GetJobResult {
      */
     readonly statusHistory: outputs.dataproc.v1.JobStatusResponse[];
     /**
+     * Optional. Job is a Trino job.
+     */
+    readonly trinoJob: outputs.dataproc.v1.TrinoJobResponse;
+    /**
      * The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
      */
     readonly yarnApplications: outputs.dataproc.v1.YarnApplicationResponse[];

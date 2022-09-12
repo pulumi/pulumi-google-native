@@ -131,6 +131,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         public Output<ImmutableArray<Outputs.JobStatusResponse>> StatusHistory { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Job is a Trino job.
+        /// </summary>
+        [Output("trinoJob")]
+        public Output<Outputs.TrinoJobResponse> TrinoJob { get; private set; } = null!;
+
+        /// <summary>
         /// The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
         /// </summary>
         [Output("yarnApplications")]
@@ -275,6 +281,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1
         /// </summary>
         [Input("sparkSqlJob")]
         public Input<Inputs.SparkSqlJobArgs>? SparkSqlJob { get; set; }
+
+        /// <summary>
+        /// Optional. Job is a Trino job.
+        /// </summary>
+        [Input("trinoJob")]
+        public Input<Inputs.TrinoJobArgs>? TrinoJob { get; set; }
 
         public JobArgs()
         {

@@ -4693,7 +4693,7 @@ type Settings struct {
 	BackupConfiguration *BackupConfiguration `pulumi:"backupConfiguration"`
 	// The name of server Instance collation.
 	Collation *string `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+	// Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors). Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
 	ConnectorEnforcement *SettingsConnectorEnforcement `pulumi:"connectorEnforcement"`
 	// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
 	CrashSafeReplicationEnabled *bool `pulumi:"crashSafeReplicationEnabled"`
@@ -4737,6 +4737,8 @@ type Settings struct {
 	StorageAutoResizeLimit *string `pulumi:"storageAutoResizeLimit"`
 	// The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
 	Tier *string `pulumi:"tier"`
+	// Server timezone, relevant only for Cloud SQL for SQL Server.
+	TimeZone *string `pulumi:"timeZone"`
 	// User-provided labels, represented as a dictionary where each label is a single key value pair.
 	UserLabels map[string]string `pulumi:"userLabels"`
 }
@@ -4768,7 +4770,7 @@ type SettingsArgs struct {
 	BackupConfiguration BackupConfigurationPtrInput `pulumi:"backupConfiguration"`
 	// The name of server Instance collation.
 	Collation pulumi.StringPtrInput `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+	// Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors). Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
 	ConnectorEnforcement SettingsConnectorEnforcementPtrInput `pulumi:"connectorEnforcement"`
 	// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
 	CrashSafeReplicationEnabled pulumi.BoolPtrInput `pulumi:"crashSafeReplicationEnabled"`
@@ -4812,6 +4814,8 @@ type SettingsArgs struct {
 	StorageAutoResizeLimit pulumi.StringPtrInput `pulumi:"storageAutoResizeLimit"`
 	// The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
 	Tier pulumi.StringPtrInput `pulumi:"tier"`
+	// Server timezone, relevant only for Cloud SQL for SQL Server.
+	TimeZone pulumi.StringPtrInput `pulumi:"timeZone"`
 	// User-provided labels, represented as a dictionary where each label is a single key value pair.
 	UserLabels pulumi.StringMapInput `pulumi:"userLabels"`
 }
@@ -4926,7 +4930,7 @@ func (o SettingsOutput) Collation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.Collation }).(pulumi.StringPtrOutput)
 }
 
-// Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+// Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors). Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
 func (o SettingsOutput) ConnectorEnforcement() SettingsConnectorEnforcementPtrOutput {
 	return o.ApplyT(func(v Settings) *SettingsConnectorEnforcement { return v.ConnectorEnforcement }).(SettingsConnectorEnforcementPtrOutput)
 }
@@ -5033,6 +5037,11 @@ func (o SettingsOutput) Tier() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Settings) *string { return v.Tier }).(pulumi.StringPtrOutput)
 }
 
+// Server timezone, relevant only for Cloud SQL for SQL Server.
+func (o SettingsOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Settings) *string { return v.TimeZone }).(pulumi.StringPtrOutput)
+}
+
 // User-provided labels, represented as a dictionary where each label is a single key value pair.
 func (o SettingsOutput) UserLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v Settings) map[string]string { return v.UserLabels }).(pulumi.StringMapOutput)
@@ -5124,7 +5133,7 @@ func (o SettingsPtrOutput) Collation() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+// Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors). Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
 func (o SettingsPtrOutput) ConnectorEnforcement() SettingsConnectorEnforcementPtrOutput {
 	return o.ApplyT(func(v *Settings) *SettingsConnectorEnforcement {
 		if v == nil {
@@ -5336,6 +5345,16 @@ func (o SettingsPtrOutput) Tier() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+// Server timezone, relevant only for Cloud SQL for SQL Server.
+func (o SettingsPtrOutput) TimeZone() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Settings) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TimeZone
+	}).(pulumi.StringPtrOutput)
+}
+
 // User-provided labels, represented as a dictionary where each label is a single key value pair.
 func (o SettingsPtrOutput) UserLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Settings) map[string]string {
@@ -5362,7 +5381,7 @@ type SettingsResponse struct {
 	BackupConfiguration BackupConfigurationResponse `pulumi:"backupConfiguration"`
 	// The name of server Instance collation.
 	Collation string `pulumi:"collation"`
-	// Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+	// Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors). Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
 	ConnectorEnforcement string `pulumi:"connectorEnforcement"`
 	// Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
 	CrashSafeReplicationEnabled bool `pulumi:"crashSafeReplicationEnabled"`
@@ -5406,6 +5425,8 @@ type SettingsResponse struct {
 	StorageAutoResizeLimit string `pulumi:"storageAutoResizeLimit"`
 	// The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
 	Tier string `pulumi:"tier"`
+	// Server timezone, relevant only for Cloud SQL for SQL Server.
+	TimeZone string `pulumi:"timeZone"`
 	// User-provided labels, represented as a dictionary where each label is a single key value pair.
 	UserLabels map[string]string `pulumi:"userLabels"`
 }
@@ -5457,7 +5478,7 @@ func (o SettingsResponseOutput) Collation() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.Collation }).(pulumi.StringOutput)
 }
 
-// Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+// Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors). Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
 func (o SettingsResponseOutput) ConnectorEnforcement() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.ConnectorEnforcement }).(pulumi.StringOutput)
 }
@@ -5562,6 +5583,11 @@ func (o SettingsResponseOutput) StorageAutoResizeLimit() pulumi.StringOutput {
 // The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
 func (o SettingsResponseOutput) Tier() pulumi.StringOutput {
 	return o.ApplyT(func(v SettingsResponse) string { return v.Tier }).(pulumi.StringOutput)
+}
+
+// Server timezone, relevant only for Cloud SQL for SQL Server.
+func (o SettingsResponseOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v SettingsResponse) string { return v.TimeZone }).(pulumi.StringOutput)
 }
 
 // User-provided labels, represented as a dictionary where each label is a single key value pair.

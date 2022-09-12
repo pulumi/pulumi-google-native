@@ -50,6 +50,10 @@ export class BackendService extends pulumi.CustomResource {
      */
     public readonly cdnPolicy!: pulumi.Output<outputs.compute.v1.BackendServiceCdnPolicyResponse>;
     public readonly circuitBreakers!: pulumi.Output<outputs.compute.v1.CircuitBreakersResponse>;
+    /**
+     * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+     */
+    public readonly compressionMode!: pulumi.Output<string>;
     public readonly connectionDraining!: pulumi.Output<outputs.compute.v1.ConnectionDrainingResponse>;
     /**
      * Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
@@ -199,6 +203,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["backends"] = args ? args.backends : undefined;
             resourceInputs["cdnPolicy"] = args ? args.cdnPolicy : undefined;
             resourceInputs["circuitBreakers"] = args ? args.circuitBreakers : undefined;
+            resourceInputs["compressionMode"] = args ? args.compressionMode : undefined;
             resourceInputs["connectionDraining"] = args ? args.connectionDraining : undefined;
             resourceInputs["connectionTrackingPolicy"] = args ? args.connectionTrackingPolicy : undefined;
             resourceInputs["consistentHash"] = args ? args.consistentHash : undefined;
@@ -239,6 +244,7 @@ export class BackendService extends pulumi.CustomResource {
             resourceInputs["backends"] = undefined /*out*/;
             resourceInputs["cdnPolicy"] = undefined /*out*/;
             resourceInputs["circuitBreakers"] = undefined /*out*/;
+            resourceInputs["compressionMode"] = undefined /*out*/;
             resourceInputs["connectionDraining"] = undefined /*out*/;
             resourceInputs["connectionTrackingPolicy"] = undefined /*out*/;
             resourceInputs["consistentHash"] = undefined /*out*/;
@@ -299,6 +305,10 @@ export interface BackendServiceArgs {
      */
     cdnPolicy?: pulumi.Input<inputs.compute.v1.BackendServiceCdnPolicyArgs>;
     circuitBreakers?: pulumi.Input<inputs.compute.v1.CircuitBreakersArgs>;
+    /**
+     * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+     */
+    compressionMode?: pulumi.Input<enums.compute.v1.BackendServiceCompressionMode>;
     connectionDraining?: pulumi.Input<inputs.compute.v1.ConnectionDrainingArgs>;
     /**
      * Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.

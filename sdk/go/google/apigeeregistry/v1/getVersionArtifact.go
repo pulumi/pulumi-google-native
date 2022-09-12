@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// GetArtifact returns a specified artifact.
+// Returns a specified artifact.
 func LookupVersionArtifact(ctx *pulumi.Context, args *LookupVersionArtifactArgs, opts ...pulumi.InvokeOption) (*LookupVersionArtifactResult, error) {
 	var rv LookupVersionArtifactResult
 	err := ctx.Invoke("google-native:apigeeregistry/v1:getVersionArtifact", args, &rv, opts...)

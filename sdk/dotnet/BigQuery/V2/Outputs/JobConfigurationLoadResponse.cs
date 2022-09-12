@@ -30,6 +30,10 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
         /// </summary>
         public readonly Outputs.ClusteringResponse Clustering;
         /// <summary>
+        /// Connection properties.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ConnectionPropertyResponse> ConnectionProperties;
+        /// <summary>
         /// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
         /// </summary>
         public readonly string CreateDisposition;
@@ -152,6 +156,8 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
 
             Outputs.ClusteringResponse clustering,
 
+            ImmutableArray<Outputs.ConnectionPropertyResponse> connectionProperties,
+
             string createDisposition,
 
             ImmutableArray<string> decimalTargetTypes,
@@ -212,6 +218,7 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Outputs
             AllowQuotedNewlines = allowQuotedNewlines;
             Autodetect = autodetect;
             Clustering = clustering;
+            ConnectionProperties = connectionProperties;
             CreateDisposition = createDisposition;
             DecimalTargetTypes = decimalTargetTypes;
             DestinationEncryptionConfiguration = destinationEncryptionConfiguration;

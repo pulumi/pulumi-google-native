@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// CreateArtifact creates a specified artifact.
+// Creates a specified artifact.
 type DeploymentArtifact struct {
 	pulumi.CustomResourceState
 

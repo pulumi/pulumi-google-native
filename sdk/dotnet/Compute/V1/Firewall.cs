@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         public Output<ImmutableArray<string>> DestinationRanges { get; private set; } = null!;
 
         /// <summary>
-        /// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+        /// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
         /// </summary>
         [Output("direction")]
         public Output<string> Direction { get; private set; } = null!;
@@ -224,7 +224,7 @@ namespace Pulumi.GoogleNative.Compute.V1
         }
 
         /// <summary>
-        /// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+        /// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
         /// </summary>
         [Input("direction")]
         public Input<Pulumi.GoogleNative.Compute.V1.FirewallDirection>? Direction { get; set; }

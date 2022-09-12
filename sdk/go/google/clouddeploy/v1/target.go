@@ -39,6 +39,8 @@ type Target struct {
 	RequestId pulumi.StringPtrOutput `pulumi:"requestId"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolOutput `pulumi:"requireApproval"`
+	// Information specifying a Cloud Run deployment target.
+	Run CloudRunLocationResponseOutput `pulumi:"run"`
 	// Required. ID of the `Target`.
 	TargetId pulumi.StringOutput `pulumi:"targetId"`
 	// Unique identifier of the `Target`.
@@ -119,6 +121,8 @@ type targetArgs struct {
 	RequestId *string `pulumi:"requestId"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval *bool `pulumi:"requireApproval"`
+	// Information specifying a Cloud Run deployment target.
+	Run *CloudRunLocation `pulumi:"run"`
 	// Required. ID of the `Target`.
 	TargetId string `pulumi:"targetId"`
 	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
@@ -149,6 +153,8 @@ type TargetArgs struct {
 	RequestId pulumi.StringPtrInput
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval pulumi.BoolPtrInput
+	// Information specifying a Cloud Run deployment target.
+	Run CloudRunLocationPtrInput
 	// Required. ID of the `Target`.
 	TargetId pulumi.StringInput
 	// Optional. If set to true, the request is validated and the user is provided with an expected result, but no actual change is made.
@@ -253,6 +259,11 @@ func (o TargetOutput) RequestId() pulumi.StringPtrOutput {
 // Optional. Whether or not the `Target` requires approval.
 func (o TargetOutput) RequireApproval() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Target) pulumi.BoolOutput { return v.RequireApproval }).(pulumi.BoolOutput)
+}
+
+// Information specifying a Cloud Run deployment target.
+func (o TargetOutput) Run() CloudRunLocationResponseOutput {
+	return o.ApplyT(func(v *Target) CloudRunLocationResponseOutput { return v.Run }).(CloudRunLocationResponseOutput)
 }
 
 // Required. ID of the `Target`.

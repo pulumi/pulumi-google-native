@@ -19,13 +19,16 @@ __all__ = [
 
 @pulumi.output_type
 class GetBackendBucketResult:
-    def __init__(__self__, bucket_name=None, cdn_policy=None, creation_timestamp=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, kind=None, name=None, self_link=None):
+    def __init__(__self__, bucket_name=None, cdn_policy=None, compression_mode=None, creation_timestamp=None, custom_response_headers=None, description=None, edge_security_policy=None, enable_cdn=None, kind=None, name=None, self_link=None):
         if bucket_name and not isinstance(bucket_name, str):
             raise TypeError("Expected argument 'bucket_name' to be a str")
         pulumi.set(__self__, "bucket_name", bucket_name)
         if cdn_policy and not isinstance(cdn_policy, dict):
             raise TypeError("Expected argument 'cdn_policy' to be a dict")
         pulumi.set(__self__, "cdn_policy", cdn_policy)
+        if compression_mode and not isinstance(compression_mode, str):
+            raise TypeError("Expected argument 'compression_mode' to be a str")
+        pulumi.set(__self__, "compression_mode", compression_mode)
         if creation_timestamp and not isinstance(creation_timestamp, str):
             raise TypeError("Expected argument 'creation_timestamp' to be a str")
         pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -66,6 +69,14 @@ class GetBackendBucketResult:
         Cloud CDN configuration for this BackendBucket.
         """
         return pulumi.get(self, "cdn_policy")
+
+    @property
+    @pulumi.getter(name="compressionMode")
+    def compression_mode(self) -> str:
+        """
+        Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        """
+        return pulumi.get(self, "compression_mode")
 
     @property
     @pulumi.getter(name="creationTimestamp")
@@ -140,6 +151,7 @@ class AwaitableGetBackendBucketResult(GetBackendBucketResult):
         return GetBackendBucketResult(
             bucket_name=self.bucket_name,
             cdn_policy=self.cdn_policy,
+            compression_mode=self.compression_mode,
             creation_timestamp=self.creation_timestamp,
             custom_response_headers=self.custom_response_headers,
             description=self.description,
@@ -165,6 +177,7 @@ def get_backend_bucket(backend_bucket: Optional[str] = None,
     return AwaitableGetBackendBucketResult(
         bucket_name=__ret__.bucket_name,
         cdn_policy=__ret__.cdn_policy,
+        compression_mode=__ret__.compression_mode,
         creation_timestamp=__ret__.creation_timestamp,
         custom_response_headers=__ret__.custom_response_headers,
         description=__ret__.description,

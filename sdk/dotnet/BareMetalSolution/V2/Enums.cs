@@ -479,6 +479,47 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
     }
 
     /// <summary>
+    /// Performance tier of the Volume. Default is SHARED.
+    /// </summary>
+    [EnumType]
+    public readonly struct VolumeConfigPerformanceTier : IEquatable<VolumeConfigPerformanceTier>
+    {
+        private readonly string _value;
+
+        private VolumeConfigPerformanceTier(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Value is not specified.
+        /// </summary>
+        public static VolumeConfigPerformanceTier VolumePerformanceTierUnspecified { get; } = new VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_UNSPECIFIED");
+        /// <summary>
+        /// Regular volumes, shared aggregates.
+        /// </summary>
+        public static VolumeConfigPerformanceTier VolumePerformanceTierShared { get; } = new VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_SHARED");
+        /// <summary>
+        /// Dedicated (assigned) aggregates.
+        /// </summary>
+        public static VolumeConfigPerformanceTier VolumePerformanceTierDedicated { get; } = new VolumeConfigPerformanceTier("VOLUME_PERFORMANCE_TIER_DEDICATED");
+
+        public static bool operator ==(VolumeConfigPerformanceTier left, VolumeConfigPerformanceTier right) => left.Equals(right);
+        public static bool operator !=(VolumeConfigPerformanceTier left, VolumeConfigPerformanceTier right) => !left.Equals(right);
+
+        public static explicit operator string(VolumeConfigPerformanceTier value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VolumeConfigPerformanceTier other && Equals(other);
+        public bool Equals(VolumeConfigPerformanceTier other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
     /// Volume protocol.
     /// </summary>
     [EnumType]
@@ -553,6 +594,47 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override bool Equals(object? obj) => obj is VolumeConfigType other && Equals(other);
         public bool Equals(VolumeConfigType other) => string.Equals(_value, other._value, StringComparison.Ordinal);
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override int GetHashCode() => _value?.GetHashCode() ?? 0;
+
+        public override string ToString() => _value;
+    }
+
+    /// <summary>
+    /// Immutable. Performance tier of the Volume. Default is SHARED.
+    /// </summary>
+    [EnumType]
+    public readonly struct VolumePerformanceTier : IEquatable<VolumePerformanceTier>
+    {
+        private readonly string _value;
+
+        private VolumePerformanceTier(string value)
+        {
+            _value = value ?? throw new ArgumentNullException(nameof(value));
+        }
+
+        /// <summary>
+        /// Value is not specified.
+        /// </summary>
+        public static VolumePerformanceTier VolumePerformanceTierUnspecified { get; } = new VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_UNSPECIFIED");
+        /// <summary>
+        /// Regular volumes, shared aggregates.
+        /// </summary>
+        public static VolumePerformanceTier VolumePerformanceTierShared { get; } = new VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_SHARED");
+        /// <summary>
+        /// Dedicated (assigned) aggregates.
+        /// </summary>
+        public static VolumePerformanceTier VolumePerformanceTierDedicated { get; } = new VolumePerformanceTier("VOLUME_PERFORMANCE_TIER_DEDICATED");
+
+        public static bool operator ==(VolumePerformanceTier left, VolumePerformanceTier right) => left.Equals(right);
+        public static bool operator !=(VolumePerformanceTier left, VolumePerformanceTier right) => !left.Equals(right);
+
+        public static explicit operator string(VolumePerformanceTier value) => value._value;
+
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public override bool Equals(object? obj) => obj is VolumePerformanceTier other && Equals(other);
+        public bool Equals(VolumePerformanceTier other) => string.Equals(_value, other._value, StringComparison.Ordinal);
 
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override int GetHashCode() => _value?.GetHashCode() ?? 0;

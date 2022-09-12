@@ -3451,6 +3451,8 @@ type ClusterUpdate struct {
 	DesiredNodePoolAutoscaling *NodePoolAutoscaling `pulumi:"desiredNodePoolAutoscaling"`
 	// The node pool to be upgraded. This field is mandatory if "desired_node_version", "desired_image_family", "desired_node_pool_autoscaling", or "desired_workload_metadata_config" is specified and there is more than one node pool on the cluster.
 	DesiredNodePoolId *string `pulumi:"desiredNodePoolId"`
+	// The desired node pool logging configuration defaults for the cluster.
+	DesiredNodePoolLoggingConfig *NodePoolLoggingConfig `pulumi:"desiredNodePoolLoggingConfig"`
 	// The Kubernetes version to change the nodes to (typically an upgrade). Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the Kubernetes master version
 	DesiredNodeVersion *string `pulumi:"desiredNodeVersion"`
 	// The desired notification configuration.
@@ -8592,6 +8594,172 @@ func (o LoggingConfigResponseOutput) ComponentConfig() LoggingComponentConfigRes
 	return o.ApplyT(func(v LoggingConfigResponse) LoggingComponentConfigResponse { return v.ComponentConfig }).(LoggingComponentConfigResponseOutput)
 }
 
+// LoggingVariantConfig specifies the behaviour of the logging component.
+type LoggingVariantConfig struct {
+	// Logging variant deployed on nodes.
+	Variant *LoggingVariantConfigVariant `pulumi:"variant"`
+}
+
+// LoggingVariantConfigInput is an input type that accepts LoggingVariantConfigArgs and LoggingVariantConfigOutput values.
+// You can construct a concrete instance of `LoggingVariantConfigInput` via:
+//
+//	LoggingVariantConfigArgs{...}
+type LoggingVariantConfigInput interface {
+	pulumi.Input
+
+	ToLoggingVariantConfigOutput() LoggingVariantConfigOutput
+	ToLoggingVariantConfigOutputWithContext(context.Context) LoggingVariantConfigOutput
+}
+
+// LoggingVariantConfig specifies the behaviour of the logging component.
+type LoggingVariantConfigArgs struct {
+	// Logging variant deployed on nodes.
+	Variant LoggingVariantConfigVariantPtrInput `pulumi:"variant"`
+}
+
+func (LoggingVariantConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingVariantConfig)(nil)).Elem()
+}
+
+func (i LoggingVariantConfigArgs) ToLoggingVariantConfigOutput() LoggingVariantConfigOutput {
+	return i.ToLoggingVariantConfigOutputWithContext(context.Background())
+}
+
+func (i LoggingVariantConfigArgs) ToLoggingVariantConfigOutputWithContext(ctx context.Context) LoggingVariantConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingVariantConfigOutput)
+}
+
+func (i LoggingVariantConfigArgs) ToLoggingVariantConfigPtrOutput() LoggingVariantConfigPtrOutput {
+	return i.ToLoggingVariantConfigPtrOutputWithContext(context.Background())
+}
+
+func (i LoggingVariantConfigArgs) ToLoggingVariantConfigPtrOutputWithContext(ctx context.Context) LoggingVariantConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingVariantConfigOutput).ToLoggingVariantConfigPtrOutputWithContext(ctx)
+}
+
+// LoggingVariantConfigPtrInput is an input type that accepts LoggingVariantConfigArgs, LoggingVariantConfigPtr and LoggingVariantConfigPtrOutput values.
+// You can construct a concrete instance of `LoggingVariantConfigPtrInput` via:
+//
+//	        LoggingVariantConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type LoggingVariantConfigPtrInput interface {
+	pulumi.Input
+
+	ToLoggingVariantConfigPtrOutput() LoggingVariantConfigPtrOutput
+	ToLoggingVariantConfigPtrOutputWithContext(context.Context) LoggingVariantConfigPtrOutput
+}
+
+type loggingVariantConfigPtrType LoggingVariantConfigArgs
+
+func LoggingVariantConfigPtr(v *LoggingVariantConfigArgs) LoggingVariantConfigPtrInput {
+	return (*loggingVariantConfigPtrType)(v)
+}
+
+func (*loggingVariantConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingVariantConfig)(nil)).Elem()
+}
+
+func (i *loggingVariantConfigPtrType) ToLoggingVariantConfigPtrOutput() LoggingVariantConfigPtrOutput {
+	return i.ToLoggingVariantConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *loggingVariantConfigPtrType) ToLoggingVariantConfigPtrOutputWithContext(ctx context.Context) LoggingVariantConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(LoggingVariantConfigPtrOutput)
+}
+
+// LoggingVariantConfig specifies the behaviour of the logging component.
+type LoggingVariantConfigOutput struct{ *pulumi.OutputState }
+
+func (LoggingVariantConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingVariantConfig)(nil)).Elem()
+}
+
+func (o LoggingVariantConfigOutput) ToLoggingVariantConfigOutput() LoggingVariantConfigOutput {
+	return o
+}
+
+func (o LoggingVariantConfigOutput) ToLoggingVariantConfigOutputWithContext(ctx context.Context) LoggingVariantConfigOutput {
+	return o
+}
+
+func (o LoggingVariantConfigOutput) ToLoggingVariantConfigPtrOutput() LoggingVariantConfigPtrOutput {
+	return o.ToLoggingVariantConfigPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingVariantConfigOutput) ToLoggingVariantConfigPtrOutputWithContext(ctx context.Context) LoggingVariantConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingVariantConfig) *LoggingVariantConfig {
+		return &v
+	}).(LoggingVariantConfigPtrOutput)
+}
+
+// Logging variant deployed on nodes.
+func (o LoggingVariantConfigOutput) Variant() LoggingVariantConfigVariantPtrOutput {
+	return o.ApplyT(func(v LoggingVariantConfig) *LoggingVariantConfigVariant { return v.Variant }).(LoggingVariantConfigVariantPtrOutput)
+}
+
+type LoggingVariantConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingVariantConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingVariantConfig)(nil)).Elem()
+}
+
+func (o LoggingVariantConfigPtrOutput) ToLoggingVariantConfigPtrOutput() LoggingVariantConfigPtrOutput {
+	return o
+}
+
+func (o LoggingVariantConfigPtrOutput) ToLoggingVariantConfigPtrOutputWithContext(ctx context.Context) LoggingVariantConfigPtrOutput {
+	return o
+}
+
+func (o LoggingVariantConfigPtrOutput) Elem() LoggingVariantConfigOutput {
+	return o.ApplyT(func(v *LoggingVariantConfig) LoggingVariantConfig {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingVariantConfig
+		return ret
+	}).(LoggingVariantConfigOutput)
+}
+
+// Logging variant deployed on nodes.
+func (o LoggingVariantConfigPtrOutput) Variant() LoggingVariantConfigVariantPtrOutput {
+	return o.ApplyT(func(v *LoggingVariantConfig) *LoggingVariantConfigVariant {
+		if v == nil {
+			return nil
+		}
+		return v.Variant
+	}).(LoggingVariantConfigVariantPtrOutput)
+}
+
+// LoggingVariantConfig specifies the behaviour of the logging component.
+type LoggingVariantConfigResponse struct {
+	// Logging variant deployed on nodes.
+	Variant string `pulumi:"variant"`
+}
+
+// LoggingVariantConfig specifies the behaviour of the logging component.
+type LoggingVariantConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (LoggingVariantConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingVariantConfigResponse)(nil)).Elem()
+}
+
+func (o LoggingVariantConfigResponseOutput) ToLoggingVariantConfigResponseOutput() LoggingVariantConfigResponseOutput {
+	return o
+}
+
+func (o LoggingVariantConfigResponseOutput) ToLoggingVariantConfigResponseOutputWithContext(ctx context.Context) LoggingVariantConfigResponseOutput {
+	return o
+}
+
+// Logging variant deployed on nodes.
+func (o LoggingVariantConfigResponseOutput) Variant() pulumi.StringOutput {
+	return o.ApplyT(func(v LoggingVariantConfigResponse) string { return v.Variant }).(pulumi.StringOutput)
+}
+
 // Represents the Maintenance exclusion option.
 type MaintenanceExclusionOptions struct {
 	// Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
@@ -11696,6 +11864,8 @@ type NodeConfig struct {
 	LinuxNodeConfig *LinuxNodeConfig `pulumi:"linuxNodeConfig"`
 	// The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
+	// Logging configuration.
+	LoggingConfig *NodePoolLoggingConfig `pulumi:"loggingConfig"`
 	// The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types). If unspecified, the default machine type is `e2-medium`.
 	MachineType *string `pulumi:"machineType"`
 	// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
@@ -11767,6 +11937,8 @@ type NodeConfigArgs struct {
 	LinuxNodeConfig LinuxNodeConfigPtrInput `pulumi:"linuxNodeConfig"`
 	// The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
+	// Logging configuration.
+	LoggingConfig NodePoolLoggingConfigPtrInput `pulumi:"loggingConfig"`
 	// The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types). If unspecified, the default machine type is `e2-medium`.
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
@@ -11943,6 +12115,11 @@ func (o NodeConfigOutput) LinuxNodeConfig() LinuxNodeConfigPtrOutput {
 // The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
 func (o NodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
+// Logging configuration.
+func (o NodeConfigOutput) LoggingConfig() NodePoolLoggingConfigPtrOutput {
+	return o.ApplyT(func(v NodeConfig) *NodePoolLoggingConfig { return v.LoggingConfig }).(NodePoolLoggingConfigPtrOutput)
 }
 
 // The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types). If unspecified, the default machine type is `e2-medium`.
@@ -12179,6 +12356,16 @@ func (o NodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
+// Logging configuration.
+func (o NodeConfigPtrOutput) LoggingConfig() NodePoolLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *NodeConfig) *NodePoolLoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(NodePoolLoggingConfigPtrOutput)
+}
+
 // The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types). If unspecified, the default machine type is `e2-medium`.
 func (o NodeConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeConfig) *string {
@@ -12323,6 +12510,8 @@ func (o NodeConfigPtrOutput) WorkloadMetadataConfig() WorkloadMetadataConfigPtrO
 type NodeConfigDefaults struct {
 	// GCFS (Google Container File System, also known as Riptide) options.
 	GcfsConfig *GcfsConfig `pulumi:"gcfsConfig"`
+	// Logging configuration for node pools.
+	LoggingConfig *NodePoolLoggingConfig `pulumi:"loggingConfig"`
 }
 
 // NodeConfigDefaultsInput is an input type that accepts NodeConfigDefaultsArgs and NodeConfigDefaultsOutput values.
@@ -12340,6 +12529,8 @@ type NodeConfigDefaultsInput interface {
 type NodeConfigDefaultsArgs struct {
 	// GCFS (Google Container File System, also known as Riptide) options.
 	GcfsConfig GcfsConfigPtrInput `pulumi:"gcfsConfig"`
+	// Logging configuration for node pools.
+	LoggingConfig NodePoolLoggingConfigPtrInput `pulumi:"loggingConfig"`
 }
 
 func (NodeConfigDefaultsArgs) ElementType() reflect.Type {
@@ -12425,6 +12616,11 @@ func (o NodeConfigDefaultsOutput) GcfsConfig() GcfsConfigPtrOutput {
 	return o.ApplyT(func(v NodeConfigDefaults) *GcfsConfig { return v.GcfsConfig }).(GcfsConfigPtrOutput)
 }
 
+// Logging configuration for node pools.
+func (o NodeConfigDefaultsOutput) LoggingConfig() NodePoolLoggingConfigPtrOutput {
+	return o.ApplyT(func(v NodeConfigDefaults) *NodePoolLoggingConfig { return v.LoggingConfig }).(NodePoolLoggingConfigPtrOutput)
+}
+
 type NodeConfigDefaultsPtrOutput struct{ *pulumi.OutputState }
 
 func (NodeConfigDefaultsPtrOutput) ElementType() reflect.Type {
@@ -12459,10 +12655,22 @@ func (o NodeConfigDefaultsPtrOutput) GcfsConfig() GcfsConfigPtrOutput {
 	}).(GcfsConfigPtrOutput)
 }
 
+// Logging configuration for node pools.
+func (o NodeConfigDefaultsPtrOutput) LoggingConfig() NodePoolLoggingConfigPtrOutput {
+	return o.ApplyT(func(v *NodeConfigDefaults) *NodePoolLoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(NodePoolLoggingConfigPtrOutput)
+}
+
 // Subset of NodeConfig message that has defaults.
 type NodeConfigDefaultsResponse struct {
 	// GCFS (Google Container File System, also known as Riptide) options.
 	GcfsConfig GcfsConfigResponse `pulumi:"gcfsConfig"`
+	// Logging configuration for node pools.
+	LoggingConfig NodePoolLoggingConfigResponse `pulumi:"loggingConfig"`
 }
 
 // Subset of NodeConfig message that has defaults.
@@ -12483,6 +12691,11 @@ func (o NodeConfigDefaultsResponseOutput) ToNodeConfigDefaultsResponseOutputWith
 // GCFS (Google Container File System, also known as Riptide) options.
 func (o NodeConfigDefaultsResponseOutput) GcfsConfig() GcfsConfigResponseOutput {
 	return o.ApplyT(func(v NodeConfigDefaultsResponse) GcfsConfigResponse { return v.GcfsConfig }).(GcfsConfigResponseOutput)
+}
+
+// Logging configuration for node pools.
+func (o NodeConfigDefaultsResponseOutput) LoggingConfig() NodePoolLoggingConfigResponseOutput {
+	return o.ApplyT(func(v NodeConfigDefaultsResponse) NodePoolLoggingConfigResponse { return v.LoggingConfig }).(NodePoolLoggingConfigResponseOutput)
 }
 
 // Parameters that describe the nodes in a cluster. GKE Autopilot clusters do not recognize parameters in `NodeConfig`. Use AutoprovisioningNodePoolDefaults instead.
@@ -12515,6 +12728,8 @@ type NodeConfigResponse struct {
 	LinuxNodeConfig LinuxNodeConfigResponse `pulumi:"linuxNodeConfig"`
 	// The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
 	LocalSsdCount int `pulumi:"localSsdCount"`
+	// Logging configuration.
+	LoggingConfig NodePoolLoggingConfigResponse `pulumi:"loggingConfig"`
 	// The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types). If unspecified, the default machine type is `e2-medium`.
 	MachineType string `pulumi:"machineType"`
 	// The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
@@ -12628,6 +12843,11 @@ func (o NodeConfigResponseOutput) LinuxNodeConfig() LinuxNodeConfigResponseOutpu
 // The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
 func (o NodeConfigResponseOutput) LocalSsdCount() pulumi.IntOutput {
 	return o.ApplyT(func(v NodeConfigResponse) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+// Logging configuration.
+func (o NodeConfigResponseOutput) LoggingConfig() NodePoolLoggingConfigResponseOutput {
+	return o.ApplyT(func(v NodeConfigResponse) NodePoolLoggingConfigResponse { return v.LoggingConfig }).(NodePoolLoggingConfigResponseOutput)
 }
 
 // The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types). If unspecified, the default machine type is `e2-medium`.
@@ -14263,6 +14483,172 @@ func (o NodePoolDefaultsResponseOutput) ToNodePoolDefaultsResponseOutputWithCont
 // Subset of NodeConfig message that has defaults.
 func (o NodePoolDefaultsResponseOutput) NodeConfigDefaults() NodeConfigDefaultsResponseOutput {
 	return o.ApplyT(func(v NodePoolDefaultsResponse) NodeConfigDefaultsResponse { return v.NodeConfigDefaults }).(NodeConfigDefaultsResponseOutput)
+}
+
+// NodePoolLoggingConfig specifies logging configuration for nodepools.
+type NodePoolLoggingConfig struct {
+	// Logging variant configuration.
+	VariantConfig *LoggingVariantConfig `pulumi:"variantConfig"`
+}
+
+// NodePoolLoggingConfigInput is an input type that accepts NodePoolLoggingConfigArgs and NodePoolLoggingConfigOutput values.
+// You can construct a concrete instance of `NodePoolLoggingConfigInput` via:
+//
+//	NodePoolLoggingConfigArgs{...}
+type NodePoolLoggingConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolLoggingConfigOutput() NodePoolLoggingConfigOutput
+	ToNodePoolLoggingConfigOutputWithContext(context.Context) NodePoolLoggingConfigOutput
+}
+
+// NodePoolLoggingConfig specifies logging configuration for nodepools.
+type NodePoolLoggingConfigArgs struct {
+	// Logging variant configuration.
+	VariantConfig LoggingVariantConfigPtrInput `pulumi:"variantConfig"`
+}
+
+func (NodePoolLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolLoggingConfig)(nil)).Elem()
+}
+
+func (i NodePoolLoggingConfigArgs) ToNodePoolLoggingConfigOutput() NodePoolLoggingConfigOutput {
+	return i.ToNodePoolLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolLoggingConfigArgs) ToNodePoolLoggingConfigOutputWithContext(ctx context.Context) NodePoolLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolLoggingConfigOutput)
+}
+
+func (i NodePoolLoggingConfigArgs) ToNodePoolLoggingConfigPtrOutput() NodePoolLoggingConfigPtrOutput {
+	return i.ToNodePoolLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolLoggingConfigArgs) ToNodePoolLoggingConfigPtrOutputWithContext(ctx context.Context) NodePoolLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolLoggingConfigOutput).ToNodePoolLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolLoggingConfigPtrInput is an input type that accepts NodePoolLoggingConfigArgs, NodePoolLoggingConfigPtr and NodePoolLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolLoggingConfigPtrInput` via:
+//
+//	        NodePoolLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolLoggingConfigPtrOutput() NodePoolLoggingConfigPtrOutput
+	ToNodePoolLoggingConfigPtrOutputWithContext(context.Context) NodePoolLoggingConfigPtrOutput
+}
+
+type nodePoolLoggingConfigPtrType NodePoolLoggingConfigArgs
+
+func NodePoolLoggingConfigPtr(v *NodePoolLoggingConfigArgs) NodePoolLoggingConfigPtrInput {
+	return (*nodePoolLoggingConfigPtrType)(v)
+}
+
+func (*nodePoolLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolLoggingConfig)(nil)).Elem()
+}
+
+func (i *nodePoolLoggingConfigPtrType) ToNodePoolLoggingConfigPtrOutput() NodePoolLoggingConfigPtrOutput {
+	return i.ToNodePoolLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolLoggingConfigPtrType) ToNodePoolLoggingConfigPtrOutputWithContext(ctx context.Context) NodePoolLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolLoggingConfigPtrOutput)
+}
+
+// NodePoolLoggingConfig specifies logging configuration for nodepools.
+type NodePoolLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolLoggingConfig)(nil)).Elem()
+}
+
+func (o NodePoolLoggingConfigOutput) ToNodePoolLoggingConfigOutput() NodePoolLoggingConfigOutput {
+	return o
+}
+
+func (o NodePoolLoggingConfigOutput) ToNodePoolLoggingConfigOutputWithContext(ctx context.Context) NodePoolLoggingConfigOutput {
+	return o
+}
+
+func (o NodePoolLoggingConfigOutput) ToNodePoolLoggingConfigPtrOutput() NodePoolLoggingConfigPtrOutput {
+	return o.ToNodePoolLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolLoggingConfigOutput) ToNodePoolLoggingConfigPtrOutputWithContext(ctx context.Context) NodePoolLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolLoggingConfig) *NodePoolLoggingConfig {
+		return &v
+	}).(NodePoolLoggingConfigPtrOutput)
+}
+
+// Logging variant configuration.
+func (o NodePoolLoggingConfigOutput) VariantConfig() LoggingVariantConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolLoggingConfig) *LoggingVariantConfig { return v.VariantConfig }).(LoggingVariantConfigPtrOutput)
+}
+
+type NodePoolLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolLoggingConfig)(nil)).Elem()
+}
+
+func (o NodePoolLoggingConfigPtrOutput) ToNodePoolLoggingConfigPtrOutput() NodePoolLoggingConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolLoggingConfigPtrOutput) ToNodePoolLoggingConfigPtrOutputWithContext(ctx context.Context) NodePoolLoggingConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolLoggingConfigPtrOutput) Elem() NodePoolLoggingConfigOutput {
+	return o.ApplyT(func(v *NodePoolLoggingConfig) NodePoolLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolLoggingConfig
+		return ret
+	}).(NodePoolLoggingConfigOutput)
+}
+
+// Logging variant configuration.
+func (o NodePoolLoggingConfigPtrOutput) VariantConfig() LoggingVariantConfigPtrOutput {
+	return o.ApplyT(func(v *NodePoolLoggingConfig) *LoggingVariantConfig {
+		if v == nil {
+			return nil
+		}
+		return v.VariantConfig
+	}).(LoggingVariantConfigPtrOutput)
+}
+
+// NodePoolLoggingConfig specifies logging configuration for nodepools.
+type NodePoolLoggingConfigResponse struct {
+	// Logging variant configuration.
+	VariantConfig LoggingVariantConfigResponse `pulumi:"variantConfig"`
+}
+
+// NodePoolLoggingConfig specifies logging configuration for nodepools.
+type NodePoolLoggingConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (NodePoolLoggingConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolLoggingConfigResponse)(nil)).Elem()
+}
+
+func (o NodePoolLoggingConfigResponseOutput) ToNodePoolLoggingConfigResponseOutput() NodePoolLoggingConfigResponseOutput {
+	return o
+}
+
+func (o NodePoolLoggingConfigResponseOutput) ToNodePoolLoggingConfigResponseOutputWithContext(ctx context.Context) NodePoolLoggingConfigResponseOutput {
+	return o
+}
+
+// Logging variant configuration.
+func (o NodePoolLoggingConfigResponseOutput) VariantConfig() LoggingVariantConfigResponseOutput {
+	return o.ApplyT(func(v NodePoolLoggingConfigResponse) LoggingVariantConfigResponse { return v.VariantConfig }).(LoggingVariantConfigResponseOutput)
 }
 
 // NodePool contains the name and configuration for a cluster's node pool. Node pools are a set of nodes (i.e. VM's), with a common configuration and specification, under the control of the cluster master. They may have a set of Kubernetes labels applied to them, which may be used to reference them during pod scheduling. They may also be resized up or down, to accommodate the workload. These upgrade settings control the level of parallelism and the level of disruption caused by an upgrade. maxUnavailable controls the number of nodes that can be simultaneously unavailable. maxSurge controls the number of additional nodes that can be added to the node pool temporarily for the time of the upgrade to increase the number of available nodes. (maxUnavailable + maxSurge) determines the level of parallelism (how many nodes are being upgraded at the same time). Note: upgrades inevitably introduce some disruption since workloads need to be moved from old nodes to new, upgraded ones. Even if maxUnavailable=0, this holds true. (Disruption stays within the limits of PodDisruptionBudget, if it is configured.) Consider a hypothetical node pool with 5 nodes having maxSurge=2, maxUnavailable=1. This means the upgrade process upgrades 3 nodes simultaneously. It creates 2 additional (upgraded) nodes, then it brings down 3 old (not yet upgraded) nodes at the same time. This ensures that there are always at least 4 nodes available.
@@ -20135,6 +20521,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigPtrInput)(nil)).Elem(), LoggingComponentConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigInput)(nil)).Elem(), LoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingConfigPtrInput)(nil)).Elem(), LoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingVariantConfigInput)(nil)).Elem(), LoggingVariantConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingVariantConfigPtrInput)(nil)).Elem(), LoggingVariantConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceExclusionOptionsInput)(nil)).Elem(), MaintenanceExclusionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceExclusionOptionsPtrInput)(nil)).Elem(), MaintenanceExclusionOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenancePolicyInput)(nil)).Elem(), MaintenancePolicyArgs{})
@@ -20185,6 +20573,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingPtrInput)(nil)).Elem(), NodePoolAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDefaultsInput)(nil)).Elem(), NodePoolDefaultsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolDefaultsPtrInput)(nil)).Elem(), NodePoolDefaultsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolLoggingConfigInput)(nil)).Elem(), NodePoolLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolLoggingConfigPtrInput)(nil)).Elem(), NodePoolLoggingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintInput)(nil)).Elem(), NodeTaintArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeTaintArrayInput)(nil)).Elem(), NodeTaintArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NotificationConfigInput)(nil)).Elem(), NotificationConfigArgs{})
@@ -20374,6 +20764,9 @@ func init() {
 	pulumi.RegisterOutputType(LoggingConfigOutput{})
 	pulumi.RegisterOutputType(LoggingConfigPtrOutput{})
 	pulumi.RegisterOutputType(LoggingConfigResponseOutput{})
+	pulumi.RegisterOutputType(LoggingVariantConfigOutput{})
+	pulumi.RegisterOutputType(LoggingVariantConfigPtrOutput{})
+	pulumi.RegisterOutputType(LoggingVariantConfigResponseOutput{})
 	pulumi.RegisterOutputType(MaintenanceExclusionOptionsOutput{})
 	pulumi.RegisterOutputType(MaintenanceExclusionOptionsPtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceExclusionOptionsResponseOutput{})
@@ -20448,6 +20841,9 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolDefaultsOutput{})
 	pulumi.RegisterOutputType(NodePoolDefaultsPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolDefaultsResponseOutput{})
+	pulumi.RegisterOutputType(NodePoolLoggingConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolLoggingConfigResponseOutput{})
 	pulumi.RegisterOutputType(NodePoolResponseOutput{})
 	pulumi.RegisterOutputType(NodePoolResponseArrayOutput{})
 	pulumi.RegisterOutputType(NodeTaintOutput{})

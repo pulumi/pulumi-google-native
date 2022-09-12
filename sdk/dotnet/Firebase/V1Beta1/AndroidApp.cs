@@ -51,6 +51,18 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The SHA1 certificate hashes for the AndroidApp.
+        /// </summary>
+        [Output("sha1Hashes")]
+        public Output<ImmutableArray<string>> Sha1Hashes { get; private set; } = null!;
+
+        /// <summary>
+        /// The SHA256 certificate hashes for the AndroidApp.
+        /// </summary>
+        [Output("sha256Hashes")]
+        public Output<ImmutableArray<string>> Sha256Hashes { get; private set; } = null!;
+
+        /// <summary>
         /// The lifecycle state of the App.
         /// </summary>
         [Output("state")]
@@ -131,6 +143,30 @@ namespace Pulumi.GoogleNative.Firebase.V1Beta1
 
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("sha1Hashes")]
+        private InputList<string>? _sha1Hashes;
+
+        /// <summary>
+        /// The SHA1 certificate hashes for the AndroidApp.
+        /// </summary>
+        public InputList<string> Sha1Hashes
+        {
+            get => _sha1Hashes ?? (_sha1Hashes = new InputList<string>());
+            set => _sha1Hashes = value;
+        }
+
+        [Input("sha256Hashes")]
+        private InputList<string>? _sha256Hashes;
+
+        /// <summary>
+        /// The SHA256 certificate hashes for the AndroidApp.
+        /// </summary>
+        public InputList<string> Sha256Hashes
+        {
+            get => _sha256Hashes ?? (_sha256Hashes = new InputList<string>());
+            set => _sha256Hashes = value;
+        }
 
         public AndroidAppArgs()
         {

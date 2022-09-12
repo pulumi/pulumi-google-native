@@ -21,6 +21,12 @@ namespace Pulumi.GoogleNative.Container.V1.Inputs
         [Input("gcfsConfig")]
         public Input<Inputs.GcfsConfigArgs>? GcfsConfig { get; set; }
 
+        /// <summary>
+        /// Logging configuration for node pools.
+        /// </summary>
+        [Input("loggingConfig")]
+        public Input<Inputs.NodePoolLoggingConfigArgs>? LoggingConfig { get; set; }
+
         public NodeConfigDefaultsArgs()
         {
         }

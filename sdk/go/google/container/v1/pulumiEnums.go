@@ -1643,6 +1643,175 @@ func (o LoggingComponentConfigEnableComponentsItemArrayOutput) Index(i pulumi.In
 	}).(LoggingComponentConfigEnableComponentsItemOutput)
 }
 
+// Logging variant deployed on nodes.
+type LoggingVariantConfigVariant string
+
+const (
+	// Default value. This shouldn't be used.
+	LoggingVariantConfigVariantVariantUnspecified = LoggingVariantConfigVariant("VARIANT_UNSPECIFIED")
+	// default logging variant.
+	LoggingVariantConfigVariantDefault = LoggingVariantConfigVariant("DEFAULT")
+	// maximum logging throughput variant.
+	LoggingVariantConfigVariantMaxThroughput = LoggingVariantConfigVariant("MAX_THROUGHPUT")
+)
+
+func (LoggingVariantConfigVariant) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingVariantConfigVariant)(nil)).Elem()
+}
+
+func (e LoggingVariantConfigVariant) ToLoggingVariantConfigVariantOutput() LoggingVariantConfigVariantOutput {
+	return pulumi.ToOutput(e).(LoggingVariantConfigVariantOutput)
+}
+
+func (e LoggingVariantConfigVariant) ToLoggingVariantConfigVariantOutputWithContext(ctx context.Context) LoggingVariantConfigVariantOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(LoggingVariantConfigVariantOutput)
+}
+
+func (e LoggingVariantConfigVariant) ToLoggingVariantConfigVariantPtrOutput() LoggingVariantConfigVariantPtrOutput {
+	return e.ToLoggingVariantConfigVariantPtrOutputWithContext(context.Background())
+}
+
+func (e LoggingVariantConfigVariant) ToLoggingVariantConfigVariantPtrOutputWithContext(ctx context.Context) LoggingVariantConfigVariantPtrOutput {
+	return LoggingVariantConfigVariant(e).ToLoggingVariantConfigVariantOutputWithContext(ctx).ToLoggingVariantConfigVariantPtrOutputWithContext(ctx)
+}
+
+func (e LoggingVariantConfigVariant) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LoggingVariantConfigVariant) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e LoggingVariantConfigVariant) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e LoggingVariantConfigVariant) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type LoggingVariantConfigVariantOutput struct{ *pulumi.OutputState }
+
+func (LoggingVariantConfigVariantOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LoggingVariantConfigVariant)(nil)).Elem()
+}
+
+func (o LoggingVariantConfigVariantOutput) ToLoggingVariantConfigVariantOutput() LoggingVariantConfigVariantOutput {
+	return o
+}
+
+func (o LoggingVariantConfigVariantOutput) ToLoggingVariantConfigVariantOutputWithContext(ctx context.Context) LoggingVariantConfigVariantOutput {
+	return o
+}
+
+func (o LoggingVariantConfigVariantOutput) ToLoggingVariantConfigVariantPtrOutput() LoggingVariantConfigVariantPtrOutput {
+	return o.ToLoggingVariantConfigVariantPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingVariantConfigVariantOutput) ToLoggingVariantConfigVariantPtrOutputWithContext(ctx context.Context) LoggingVariantConfigVariantPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v LoggingVariantConfigVariant) *LoggingVariantConfigVariant {
+		return &v
+	}).(LoggingVariantConfigVariantPtrOutput)
+}
+
+func (o LoggingVariantConfigVariantOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o LoggingVariantConfigVariantOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LoggingVariantConfigVariant) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o LoggingVariantConfigVariantOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingVariantConfigVariantOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e LoggingVariantConfigVariant) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type LoggingVariantConfigVariantPtrOutput struct{ *pulumi.OutputState }
+
+func (LoggingVariantConfigVariantPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**LoggingVariantConfigVariant)(nil)).Elem()
+}
+
+func (o LoggingVariantConfigVariantPtrOutput) ToLoggingVariantConfigVariantPtrOutput() LoggingVariantConfigVariantPtrOutput {
+	return o
+}
+
+func (o LoggingVariantConfigVariantPtrOutput) ToLoggingVariantConfigVariantPtrOutputWithContext(ctx context.Context) LoggingVariantConfigVariantPtrOutput {
+	return o
+}
+
+func (o LoggingVariantConfigVariantPtrOutput) Elem() LoggingVariantConfigVariantOutput {
+	return o.ApplyT(func(v *LoggingVariantConfigVariant) LoggingVariantConfigVariant {
+		if v != nil {
+			return *v
+		}
+		var ret LoggingVariantConfigVariant
+		return ret
+	}).(LoggingVariantConfigVariantOutput)
+}
+
+func (o LoggingVariantConfigVariantPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o LoggingVariantConfigVariantPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *LoggingVariantConfigVariant) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// LoggingVariantConfigVariantInput is an input type that accepts LoggingVariantConfigVariantArgs and LoggingVariantConfigVariantOutput values.
+// You can construct a concrete instance of `LoggingVariantConfigVariantInput` via:
+//
+//	LoggingVariantConfigVariantArgs{...}
+type LoggingVariantConfigVariantInput interface {
+	pulumi.Input
+
+	ToLoggingVariantConfigVariantOutput() LoggingVariantConfigVariantOutput
+	ToLoggingVariantConfigVariantOutputWithContext(context.Context) LoggingVariantConfigVariantOutput
+}
+
+var loggingVariantConfigVariantPtrType = reflect.TypeOf((**LoggingVariantConfigVariant)(nil)).Elem()
+
+type LoggingVariantConfigVariantPtrInput interface {
+	pulumi.Input
+
+	ToLoggingVariantConfigVariantPtrOutput() LoggingVariantConfigVariantPtrOutput
+	ToLoggingVariantConfigVariantPtrOutputWithContext(context.Context) LoggingVariantConfigVariantPtrOutput
+}
+
+type loggingVariantConfigVariantPtr string
+
+func LoggingVariantConfigVariantPtr(v string) LoggingVariantConfigVariantPtrInput {
+	return (*loggingVariantConfigVariantPtr)(&v)
+}
+
+func (*loggingVariantConfigVariantPtr) ElementType() reflect.Type {
+	return loggingVariantConfigVariantPtrType
+}
+
+func (in *loggingVariantConfigVariantPtr) ToLoggingVariantConfigVariantPtrOutput() LoggingVariantConfigVariantPtrOutput {
+	return pulumi.ToOutput(in).(LoggingVariantConfigVariantPtrOutput)
+}
+
+func (in *loggingVariantConfigVariantPtr) ToLoggingVariantConfigVariantPtrOutputWithContext(ctx context.Context) LoggingVariantConfigVariantPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(LoggingVariantConfigVariantPtrOutput)
+}
+
 // Scope specifies the upgrade scope which upgrades are blocked by the exclusion.
 type MaintenanceExclusionOptionsScope string
 
@@ -4285,6 +4454,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemPtrInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*LoggingComponentConfigEnableComponentsItemArrayInput)(nil)).Elem(), LoggingComponentConfigEnableComponentsItemArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingVariantConfigVariantInput)(nil)).Elem(), LoggingVariantConfigVariant("VARIANT_UNSPECIFIED"))
+	pulumi.RegisterInputType(reflect.TypeOf((*LoggingVariantConfigVariantPtrInput)(nil)).Elem(), LoggingVariantConfigVariant("VARIANT_UNSPECIFIED"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceExclusionOptionsScopeInput)(nil)).Elem(), MaintenanceExclusionOptionsScope("NO_UPGRADES"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MaintenanceExclusionOptionsScopePtrInput)(nil)).Elem(), MaintenanceExclusionOptionsScope("NO_UPGRADES"))
 	pulumi.RegisterInputType(reflect.TypeOf((*MonitoringComponentConfigEnableComponentsItemInput)(nil)).Elem(), MonitoringComponentConfigEnableComponentsItem("COMPONENT_UNSPECIFIED"))
@@ -4336,6 +4507,8 @@ func init() {
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemPtrOutput{})
 	pulumi.RegisterOutputType(LoggingComponentConfigEnableComponentsItemArrayOutput{})
+	pulumi.RegisterOutputType(LoggingVariantConfigVariantOutput{})
+	pulumi.RegisterOutputType(LoggingVariantConfigVariantPtrOutput{})
 	pulumi.RegisterOutputType(MaintenanceExclusionOptionsScopeOutput{})
 	pulumi.RegisterOutputType(MaintenanceExclusionOptionsScopePtrOutput{})
 	pulumi.RegisterOutputType(MonitoringComponentConfigEnableComponentsItemOutput{})

@@ -83,6 +83,10 @@ export interface GetBackupRunResult {
      */
     readonly status: string;
     /**
+     * Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+     */
+    readonly timeZone: string;
+    /**
      * The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
      */
     readonly type: string;

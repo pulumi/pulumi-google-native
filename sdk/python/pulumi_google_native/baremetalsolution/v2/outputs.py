@@ -1642,6 +1642,8 @@ class VolumeConfigResponse(dict):
             suggest = "machine_ids"
         elif key == "nfsExports":
             suggest = "nfs_exports"
+        elif key == "performanceTier":
+            suggest = "performance_tier"
         elif key == "sizeGb":
             suggest = "size_gb"
         elif key == "snapshotsEnabled":
@@ -1666,6 +1668,7 @@ class VolumeConfigResponse(dict):
                  machine_ids: Sequence[str],
                  name: str,
                  nfs_exports: Sequence['outputs.NfsExportResponse'],
+                 performance_tier: str,
                  protocol: str,
                  size_gb: int,
                  snapshots_enabled: bool,
@@ -1678,6 +1681,7 @@ class VolumeConfigResponse(dict):
         :param Sequence[str] machine_ids: Machine ids connected to this volume. Set only when protocol is PROTOCOL_FC.
         :param str name: The name of the volume config.
         :param Sequence['NfsExportResponse'] nfs_exports: NFS exports. Set only when protocol is PROTOCOL_NFS.
+        :param str performance_tier: Performance tier of the Volume. Default is SHARED.
         :param str protocol: Volume protocol.
         :param int size_gb: The requested size of this volume, in GB.
         :param bool snapshots_enabled: Whether snapshots should be enabled.
@@ -1689,6 +1693,7 @@ class VolumeConfigResponse(dict):
         pulumi.set(__self__, "machine_ids", machine_ids)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "nfs_exports", nfs_exports)
+        pulumi.set(__self__, "performance_tier", performance_tier)
         pulumi.set(__self__, "protocol", protocol)
         pulumi.set(__self__, "size_gb", size_gb)
         pulumi.set(__self__, "snapshots_enabled", snapshots_enabled)
@@ -1734,6 +1739,14 @@ class VolumeConfigResponse(dict):
         NFS exports. Set only when protocol is PROTOCOL_NFS.
         """
         return pulumi.get(self, "nfs_exports")
+
+    @property
+    @pulumi.getter(name="performanceTier")
+    def performance_tier(self) -> str:
+        """
+        Performance tier of the Volume. Default is SHARED.
+        """
+        return pulumi.get(self, "performance_tier")
 
     @property
     @pulumi.getter
@@ -1796,6 +1809,8 @@ class VolumeResponse(dict):
             suggest = "max_size_gib"
         elif key == "originallyRequestedSizeGib":
             suggest = "originally_requested_size_gib"
+        elif key == "performanceTier":
+            suggest = "performance_tier"
         elif key == "remainingSpaceGib":
             suggest = "remaining_space_gib"
         elif key == "requestedSizeGib":
@@ -1830,7 +1845,9 @@ class VolumeResponse(dict):
                  labels: Mapping[str, str],
                  max_size_gib: str,
                  name: str,
+                 notes: str,
                  originally_requested_size_gib: str,
+                 performance_tier: str,
                  pod: str,
                  protocol: str,
                  remaining_space_gib: str,
@@ -1850,7 +1867,9 @@ class VolumeResponse(dict):
         :param Mapping[str, str] labels: Labels as key value pairs.
         :param str max_size_gib: Maximum size volume can be expanded to in case of evergency, in GiB.
         :param str name: The resource name of this `Volume`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/volumes/{volume}`
+        :param str notes: Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
         :param str originally_requested_size_gib: Originally requested size, in GiB.
+        :param str performance_tier: Immutable. Performance tier of the Volume. Default is SHARED.
         :param str pod: Immutable. Pod name.
         :param str protocol: Storage protocol for the Volume.
         :param str remaining_space_gib: The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots.
@@ -1869,7 +1888,9 @@ class VolumeResponse(dict):
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "max_size_gib", max_size_gib)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "notes", notes)
         pulumi.set(__self__, "originally_requested_size_gib", originally_requested_size_gib)
+        pulumi.set(__self__, "performance_tier", performance_tier)
         pulumi.set(__self__, "pod", pod)
         pulumi.set(__self__, "protocol", protocol)
         pulumi.set(__self__, "remaining_space_gib", remaining_space_gib)
@@ -1938,12 +1959,28 @@ class VolumeResponse(dict):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def notes(self) -> str:
+        """
+        Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
+        """
+        return pulumi.get(self, "notes")
+
+    @property
     @pulumi.getter(name="originallyRequestedSizeGib")
     def originally_requested_size_gib(self) -> str:
         """
         Originally requested size, in GiB.
         """
         return pulumi.get(self, "originally_requested_size_gib")
+
+    @property
+    @pulumi.getter(name="performanceTier")
+    def performance_tier(self) -> str:
+        """
+        Immutable. Performance tier of the Volume. Default is SHARED.
+        """
+        return pulumi.get(self, "performance_tier")
 
     @property
     @pulumi.getter

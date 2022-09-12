@@ -15,6 +15,7 @@ __all__ = [
     'NetworkConfigArgs',
     'SchedulingConfigArgs',
     'ServiceAccountArgs',
+    'ShieldedInstanceConfigArgs',
 ]
 
 @pulumi.input_type
@@ -207,5 +208,29 @@ class ServiceAccountArgs:
     @scope.setter
     def scope(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "scope", value)
+
+
+@pulumi.input_type
+class ShieldedInstanceConfigArgs:
+    def __init__(__self__, *,
+                 enable_secure_boot: Optional[pulumi.Input[bool]] = None):
+        """
+        A set of Shielded Instance options.
+        :param pulumi.Input[bool] enable_secure_boot: Defines whether the instance has Secure Boot enabled.
+        """
+        if enable_secure_boot is not None:
+            pulumi.set(__self__, "enable_secure_boot", enable_secure_boot)
+
+    @property
+    @pulumi.getter(name="enableSecureBoot")
+    def enable_secure_boot(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the instance has Secure Boot enabled.
+        """
+        return pulumi.get(self, "enable_secure_boot")
+
+    @enable_secure_boot.setter
+    def enable_secure_boot(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_secure_boot", value)
 
 

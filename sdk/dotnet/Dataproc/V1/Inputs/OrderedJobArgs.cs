@@ -99,6 +99,12 @@ namespace Pulumi.GoogleNative.Dataproc.V1.Inputs
         [Input("stepId", required: true)]
         public Input<string> StepId { get; set; } = null!;
 
+        /// <summary>
+        /// Optional. Job is a Trino job.
+        /// </summary>
+        [Input("trinoJob")]
+        public Input<Inputs.TrinoJobArgs>? TrinoJob { get; set; }
+
         public OrderedJobArgs()
         {
         }

@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// GetApiVersion returns a specified version.
+// Returns a specified version.
 func LookupVersion(ctx *pulumi.Context, args *LookupVersionArgs, opts ...pulumi.InvokeOption) (*LookupVersionResult, error) {
 	var rv LookupVersionResult
 	err := ctx.Invoke("google-native:apigeeregistry/v1:getVersion", args, &rv, opts...)
@@ -36,11 +36,11 @@ type LookupVersionResult struct {
 	Description string `pulumi:"description"`
 	// Human-meaningful name.
 	DisplayName string `pulumi:"displayName"`
-	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
 	Labels map[string]string `pulumi:"labels"`
 	// Resource name.
 	Name string `pulumi:"name"`
-	// A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g. "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
+	// A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
 	State string `pulumi:"state"`
 	// Last update timestamp.
 	UpdateTime string `pulumi:"updateTime"`
@@ -104,7 +104,7 @@ func (o LookupVersionResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVersionResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
 func (o LookupVersionResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupVersionResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -114,7 +114,7 @@ func (o LookupVersionResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVersionResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g. "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
+// A user-definable description of the lifecycle phase of this API version. Format: free-form, but we expect single words that describe API maturity, e.g., "CONCEPT", "DESIGN", "DEVELOPMENT", "STAGING", "PRODUCTION", "DEPRECATED", "RETIRED".
 func (o LookupVersionResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupVersionResult) string { return v.State }).(pulumi.StringOutput)
 }

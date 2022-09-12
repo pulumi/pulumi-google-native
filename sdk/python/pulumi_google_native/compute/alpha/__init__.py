@@ -62,6 +62,8 @@ from .get_license_iam_policy import *
 from .get_machine_image import *
 from .get_machine_image_iam_policy import *
 from .get_network import *
+from .get_network_attachment import *
+from .get_network_attachment_iam_policy import *
 from .get_network_edge_security_service import *
 from .get_network_endpoint_group import *
 from .get_network_firewall_policy import *
@@ -152,6 +154,8 @@ from .license_iam_policy import *
 from .machine_image import *
 from .machine_image_iam_policy import *
 from .network import *
+from .network_attachment import *
+from .network_attachment_iam_policy import *
 from .network_edge_security_service import *
 from .network_endpoint_group import *
 from .network_firewall_policy import *

@@ -79,7 +79,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public Output<Outputs.MetadataManagementActivityResponse> MetadataManagementActivity { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+        /// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -250,7 +250,7 @@ namespace Pulumi.GoogleNative.Metastore.V1Beta
         public Input<Inputs.MetadataIntegrationArgs>? MetadataIntegration { get; set; }
 
         /// <summary>
-        /// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+        /// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

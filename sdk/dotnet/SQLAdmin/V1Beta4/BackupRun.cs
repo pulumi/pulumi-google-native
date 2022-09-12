@@ -95,6 +95,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         public Output<string> Status { get; private set; } = null!;
 
         /// <summary>
+        /// Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+        /// </summary>
+        [Output("timeZone")]
+        public Output<string> TimeZone { get; private set; } = null!;
+
+        /// <summary>
         /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
         /// </summary>
         [Output("type")]
@@ -236,6 +242,12 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
+
+        /// <summary>
+        /// Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+        /// </summary>
+        [Input("timeZone")]
+        public Input<string>? TimeZone { get; set; }
 
         /// <summary>
         /// The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.

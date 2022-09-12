@@ -165,7 +165,7 @@ class GetServiceResult:
     @pulumi.getter
     def name(self) -> str:
         """
-        Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+        Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
         """
         return pulumi.get(self, "name")
 

@@ -113,6 +113,10 @@ export class Node extends pulumi.CustomResource {
      */
     public readonly serviceAccount!: pulumi.Output<outputs.tpu.v2alpha1.ServiceAccountResponse>;
     /**
+     * Shielded Instance options.
+     */
+    public readonly shieldedInstanceConfig!: pulumi.Output<outputs.tpu.v2alpha1.ShieldedInstanceConfigResponse>;
+    /**
      * The current state for the TPU Node.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -154,6 +158,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
             resourceInputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
+            resourceInputs["shieldedInstanceConfig"] = args ? args.shieldedInstanceConfig : undefined;
             resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["apiVersion"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -183,6 +188,7 @@ export class Node extends pulumi.CustomResource {
             resourceInputs["runtimeVersion"] = undefined /*out*/;
             resourceInputs["schedulingConfig"] = undefined /*out*/;
             resourceInputs["serviceAccount"] = undefined /*out*/;
+            resourceInputs["shieldedInstanceConfig"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["symptoms"] = undefined /*out*/;
             resourceInputs["tags"] = undefined /*out*/;
@@ -252,6 +258,10 @@ export interface NodeArgs {
      * The Google Cloud Platform Service Account to be used by the TPU node VMs. If None is specified, the default compute service account will be used.
      */
     serviceAccount?: pulumi.Input<inputs.tpu.v2alpha1.ServiceAccountArgs>;
+    /**
+     * Shielded Instance options.
+     */
+    shieldedInstanceConfig?: pulumi.Input<inputs.tpu.v2alpha1.ShieldedInstanceConfigArgs>;
     /**
      * Tags to apply to the TPU Node. Tags are used to identify valid sources or targets for network firewalls.
      */

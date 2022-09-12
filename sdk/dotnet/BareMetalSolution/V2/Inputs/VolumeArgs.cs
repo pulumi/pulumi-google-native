@@ -58,10 +58,22 @@ namespace Pulumi.GoogleNative.BareMetalSolution.V2.Inputs
         public Input<string>? MaxSizeGib { get; set; }
 
         /// <summary>
+        /// Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
+        /// </summary>
+        [Input("notes")]
+        public Input<string>? Notes { get; set; }
+
+        /// <summary>
         /// Originally requested size, in GiB.
         /// </summary>
         [Input("originallyRequestedSizeGib")]
         public Input<string>? OriginallyRequestedSizeGib { get; set; }
+
+        /// <summary>
+        /// Immutable. Performance tier of the Volume. Default is SHARED.
+        /// </summary>
+        [Input("performanceTier")]
+        public Input<Pulumi.GoogleNative.BareMetalSolution.V2.VolumePerformanceTier>? PerformanceTier { get; set; }
 
         /// <summary>
         /// Immutable. Pod name.

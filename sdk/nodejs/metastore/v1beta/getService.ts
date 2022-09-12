@@ -71,7 +71,7 @@ export interface GetServiceResult {
      */
     readonly metadataManagementActivity: outputs.metastore.v1beta.MetadataManagementActivityResponse;
     /**
-     * Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+     * Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
      */
     readonly name: string;
     /**

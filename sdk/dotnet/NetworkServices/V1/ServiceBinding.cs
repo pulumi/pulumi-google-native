@@ -37,7 +37,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name&gt;`.
+        /// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -46,7 +46,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+        /// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
         /// </summary>
         [Output("service")]
         public Output<string> Service { get; private set; } = null!;
@@ -136,7 +136,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name&gt;`.
+        /// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -145,7 +145,7 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+        /// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
         /// </summary>
         [Input("service", required: true)]
         public Input<string> Service { get; set; } = null!;

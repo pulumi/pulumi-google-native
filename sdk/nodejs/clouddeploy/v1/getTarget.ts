@@ -71,6 +71,10 @@ export interface GetTargetResult {
      */
     readonly requireApproval: boolean;
     /**
+     * Information specifying a Cloud Run deployment target.
+     */
+    readonly run: outputs.clouddeploy.v1.CloudRunLocationResponse;
+    /**
      * Resource id of the `Target`.
      */
     readonly targetId: string;

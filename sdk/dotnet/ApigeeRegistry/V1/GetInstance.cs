@@ -72,7 +72,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// </summary>
         public readonly string CreateTime;
         /// <summary>
-        /// Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
+        /// Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
         /// </summary>
         public readonly string Name;
         /// <summary>

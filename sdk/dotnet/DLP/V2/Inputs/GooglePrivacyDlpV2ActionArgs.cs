@@ -28,7 +28,7 @@ namespace Pulumi.GoogleNative.DLP.V2.Inputs
         public Input<Inputs.GooglePrivacyDlpV2JobNotificationEmailsArgs>? JobNotificationEmails { get; set; }
 
         /// <summary>
-        /// Publish a notification to a pubsub topic.
+        /// Publish a notification to a Pub/Sub topic.
         /// </summary>
         [Input("pubSub")]
         public Input<Inputs.GooglePrivacyDlpV2PublishToPubSubArgs>? PubSub { get; set; }

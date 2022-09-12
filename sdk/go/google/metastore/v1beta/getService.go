@@ -47,7 +47,7 @@ type LookupServiceResult struct {
 	MetadataIntegration MetadataIntegrationResponse `pulumi:"metadataIntegration"`
 	// The metadata management activities of the metastore service.
 	MetadataManagementActivity MetadataManagementActivityResponse `pulumi:"metadataManagementActivity"`
-	// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+	// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
 	Name string `pulumi:"name"`
 	// Immutable. The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:projects/{project_number}/global/networks/{network_id}.
 	Network string `pulumi:"network"`
@@ -156,7 +156,7 @@ func (o LookupServiceResultOutput) MetadataManagementActivity() MetadataManageme
 	return o.ApplyT(func(v LookupServiceResult) MetadataManagementActivityResponse { return v.MetadataManagementActivity }).(MetadataManagementActivityResponseOutput)
 }
 
-// Immutable. The relative resource name of the metastore service, of the form:projects/{project_number}/locations/{location_id}/services/{service_id}.
+// Immutable. The relative resource name of the metastore service, in the following format:projects/{project_number}/locations/{location_id}/services/{service_id}.
 func (o LookupServiceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceResult) string { return v.Name }).(pulumi.StringOutput)
 }

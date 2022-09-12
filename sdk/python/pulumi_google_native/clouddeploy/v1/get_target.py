@@ -19,7 +19,7 @@ __all__ = [
 
 @pulumi.output_type
 class GetTargetResult:
-    def __init__(__self__, annotations=None, anthos_cluster=None, create_time=None, description=None, etag=None, execution_configs=None, gke=None, labels=None, name=None, require_approval=None, target_id=None, uid=None, update_time=None):
+    def __init__(__self__, annotations=None, anthos_cluster=None, create_time=None, description=None, etag=None, execution_configs=None, gke=None, labels=None, name=None, require_approval=None, run=None, target_id=None, uid=None, update_time=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -50,6 +50,9 @@ class GetTargetResult:
         if require_approval and not isinstance(require_approval, bool):
             raise TypeError("Expected argument 'require_approval' to be a bool")
         pulumi.set(__self__, "require_approval", require_approval)
+        if run and not isinstance(run, dict):
+            raise TypeError("Expected argument 'run' to be a dict")
+        pulumi.set(__self__, "run", run)
         if target_id and not isinstance(target_id, str):
             raise TypeError("Expected argument 'target_id' to be a str")
         pulumi.set(__self__, "target_id", target_id)
@@ -141,6 +144,14 @@ class GetTargetResult:
         return pulumi.get(self, "require_approval")
 
     @property
+    @pulumi.getter
+    def run(self) -> 'outputs.CloudRunLocationResponse':
+        """
+        Information specifying a Cloud Run deployment target.
+        """
+        return pulumi.get(self, "run")
+
+    @property
     @pulumi.getter(name="targetId")
     def target_id(self) -> str:
         """
@@ -181,6 +192,7 @@ class AwaitableGetTargetResult(GetTargetResult):
             labels=self.labels,
             name=self.name,
             require_approval=self.require_approval,
+            run=self.run,
             target_id=self.target_id,
             uid=self.uid,
             update_time=self.update_time)
@@ -211,6 +223,7 @@ def get_target(location: Optional[str] = None,
         labels=__ret__.labels,
         name=__ret__.name,
         require_approval=__ret__.require_approval,
+        run=__ret__.run,
         target_id=__ret__.target_id,
         uid=__ret__.uid,
         update_time=__ret__.update_time)

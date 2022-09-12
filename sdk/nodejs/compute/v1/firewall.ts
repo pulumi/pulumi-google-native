@@ -58,7 +58,7 @@ export class Firewall extends pulumi.CustomResource {
      */
     public readonly destinationRanges!: pulumi.Output<string[]>;
     /**
-     * Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+     * Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
      */
     public readonly direction!: pulumi.Output<string>;
     /**
@@ -196,7 +196,7 @@ export interface FirewallArgs {
      */
     destinationRanges?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+     * Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
      */
     direction?: pulumi.Input<enums.compute.v1.FirewallDirection>;
     /**

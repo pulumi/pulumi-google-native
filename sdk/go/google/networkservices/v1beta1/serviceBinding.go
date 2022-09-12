@@ -22,10 +22,10 @@ type ServiceBinding struct {
 	// Optional. Set of label tags associated with the ServiceBinding resource.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
-	// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
+	// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+	// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
 	Service pulumi.StringOutput `pulumi:"service"`
 	// Required. Short name of the ServiceBinding resource to be created.
 	ServiceBindingId pulumi.StringOutput `pulumi:"serviceBindingId"`
@@ -89,10 +89,10 @@ type serviceBindingArgs struct {
 	// Optional. Set of label tags associated with the ServiceBinding resource.
 	Labels   map[string]string `pulumi:"labels"`
 	Location *string           `pulumi:"location"`
-	// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
+	// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
-	// The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+	// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
 	Service string `pulumi:"service"`
 	// Required. Short name of the ServiceBinding resource to be created.
 	ServiceBindingId string `pulumi:"serviceBindingId"`
@@ -105,10 +105,10 @@ type ServiceBindingArgs struct {
 	// Optional. Set of label tags associated with the ServiceBinding resource.
 	Labels   pulumi.StringMapInput
 	Location pulumi.StringPtrInput
-	// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
+	// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
-	// The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+	// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
 	Service pulumi.StringInput
 	// Required. Short name of the ServiceBinding resource to be created.
 	ServiceBindingId pulumi.StringInput
@@ -170,7 +170,7 @@ func (o ServiceBindingOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceBinding) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
+// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
 func (o ServiceBindingOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceBinding) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -179,7 +179,7 @@ func (o ServiceBindingOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceBinding) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
 func (o ServiceBindingOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v *ServiceBinding) pulumi.StringOutput { return v.Service }).(pulumi.StringOutput)
 }

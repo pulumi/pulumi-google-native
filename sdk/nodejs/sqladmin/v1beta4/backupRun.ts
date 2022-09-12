@@ -89,6 +89,10 @@ export class BackupRun extends pulumi.CustomResource {
      */
     public /*out*/ readonly status!: pulumi.Output<string>;
     /**
+     * Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+     */
+    public readonly timeZone!: pulumi.Output<string>;
+    /**
      * The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
      */
     public readonly type!: pulumi.Output<string>;
@@ -125,6 +129,7 @@ export class BackupRun extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["selfLink"] = args ? args.selfLink : undefined;
             resourceInputs["startTime"] = args ? args.startTime : undefined;
+            resourceInputs["timeZone"] = args ? args.timeZone : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["windowStartTime"] = args ? args.windowStartTime : undefined;
             resourceInputs["status"] = undefined /*out*/;
@@ -143,6 +148,7 @@ export class BackupRun extends pulumi.CustomResource {
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["startTime"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
+            resourceInputs["timeZone"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
             resourceInputs["windowStartTime"] = undefined /*out*/;
         }
@@ -210,6 +216,10 @@ export interface BackupRunArgs {
      * The time the backup operation actually started in UTC timezone in [RFC 3339](https://tools.ietf.org/html/rfc3339) format, for example `2012-11-15T16:19:00.094Z`.
      */
     startTime?: pulumi.Input<string>;
+    /**
+     * Backup time zone to prevent restores to an instance with a different time zone. Now relevant only for SQL Server.
+     */
+    timeZone?: pulumi.Input<string>;
     /**
      * The type of this run; can be either "AUTOMATED" or "ON_DEMAND" or "FINAL". This field defaults to "ON_DEMAND" and is ignored, when specified for insert requests.
      */

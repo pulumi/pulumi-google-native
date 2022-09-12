@@ -2963,8 +2963,12 @@ type Volume struct {
 	Labels map[string]string `pulumi:"labels"`
 	// Maximum size volume can be expanded to in case of evergency, in GiB.
 	MaxSizeGib *string `pulumi:"maxSizeGib"`
+	// Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
+	Notes *string `pulumi:"notes"`
 	// Originally requested size, in GiB.
 	OriginallyRequestedSizeGib *string `pulumi:"originallyRequestedSizeGib"`
+	// Immutable. Performance tier of the Volume. Default is SHARED.
+	PerformanceTier *VolumePerformanceTier `pulumi:"performanceTier"`
 	// Immutable. Pod name.
 	Pod *string `pulumi:"pod"`
 	// The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots.
@@ -3010,8 +3014,12 @@ type VolumeArgs struct {
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Maximum size volume can be expanded to in case of evergency, in GiB.
 	MaxSizeGib pulumi.StringPtrInput `pulumi:"maxSizeGib"`
+	// Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
+	Notes pulumi.StringPtrInput `pulumi:"notes"`
 	// Originally requested size, in GiB.
 	OriginallyRequestedSizeGib pulumi.StringPtrInput `pulumi:"originallyRequestedSizeGib"`
+	// Immutable. Performance tier of the Volume. Default is SHARED.
+	PerformanceTier VolumePerformanceTierPtrInput `pulumi:"performanceTier"`
 	// Immutable. Pod name.
 	Pod pulumi.StringPtrInput `pulumi:"pod"`
 	// The space remaining in the storage volume for new LUNs, in GiB, excluding space reserved for snapshots.
@@ -3114,9 +3122,19 @@ func (o VolumeOutput) MaxSizeGib() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Volume) *string { return v.MaxSizeGib }).(pulumi.StringPtrOutput)
 }
 
+// Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
+func (o VolumeOutput) Notes() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v Volume) *string { return v.Notes }).(pulumi.StringPtrOutput)
+}
+
 // Originally requested size, in GiB.
 func (o VolumeOutput) OriginallyRequestedSizeGib() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v Volume) *string { return v.OriginallyRequestedSizeGib }).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Performance tier of the Volume. Default is SHARED.
+func (o VolumeOutput) PerformanceTier() VolumePerformanceTierPtrOutput {
+	return o.ApplyT(func(v Volume) *VolumePerformanceTier { return v.PerformanceTier }).(VolumePerformanceTierPtrOutput)
 }
 
 // Immutable. Pod name.
@@ -3196,6 +3214,8 @@ type VolumeConfig struct {
 	MachineIds []string `pulumi:"machineIds"`
 	// NFS exports. Set only when protocol is PROTOCOL_NFS.
 	NfsExports []NfsExport `pulumi:"nfsExports"`
+	// Performance tier of the Volume. Default is SHARED.
+	PerformanceTier *VolumeConfigPerformanceTier `pulumi:"performanceTier"`
 	// Volume protocol.
 	Protocol *VolumeConfigProtocol `pulumi:"protocol"`
 	// The requested size of this volume, in GB.
@@ -3231,6 +3251,8 @@ type VolumeConfigArgs struct {
 	MachineIds pulumi.StringArrayInput `pulumi:"machineIds"`
 	// NFS exports. Set only when protocol is PROTOCOL_NFS.
 	NfsExports NfsExportArrayInput `pulumi:"nfsExports"`
+	// Performance tier of the Volume. Default is SHARED.
+	PerformanceTier VolumeConfigPerformanceTierPtrInput `pulumi:"performanceTier"`
 	// Volume protocol.
 	Protocol VolumeConfigProtocolPtrInput `pulumi:"protocol"`
 	// The requested size of this volume, in GB.
@@ -3320,6 +3342,11 @@ func (o VolumeConfigOutput) NfsExports() NfsExportArrayOutput {
 	return o.ApplyT(func(v VolumeConfig) []NfsExport { return v.NfsExports }).(NfsExportArrayOutput)
 }
 
+// Performance tier of the Volume. Default is SHARED.
+func (o VolumeConfigOutput) PerformanceTier() VolumeConfigPerformanceTierPtrOutput {
+	return o.ApplyT(func(v VolumeConfig) *VolumeConfigPerformanceTier { return v.PerformanceTier }).(VolumeConfigPerformanceTierPtrOutput)
+}
+
 // Volume protocol.
 func (o VolumeConfigOutput) Protocol() VolumeConfigProtocolPtrOutput {
 	return o.ApplyT(func(v VolumeConfig) *VolumeConfigProtocol { return v.Protocol }).(VolumeConfigProtocolPtrOutput)
@@ -3377,6 +3404,8 @@ type VolumeConfigResponse struct {
 	Name string `pulumi:"name"`
 	// NFS exports. Set only when protocol is PROTOCOL_NFS.
 	NfsExports []NfsExportResponse `pulumi:"nfsExports"`
+	// Performance tier of the Volume. Default is SHARED.
+	PerformanceTier string `pulumi:"performanceTier"`
 	// Volume protocol.
 	Protocol string `pulumi:"protocol"`
 	// The requested size of this volume, in GB.
@@ -3427,6 +3456,11 @@ func (o VolumeConfigResponseOutput) Name() pulumi.StringOutput {
 // NFS exports. Set only when protocol is PROTOCOL_NFS.
 func (o VolumeConfigResponseOutput) NfsExports() NfsExportResponseArrayOutput {
 	return o.ApplyT(func(v VolumeConfigResponse) []NfsExportResponse { return v.NfsExports }).(NfsExportResponseArrayOutput)
+}
+
+// Performance tier of the Volume. Default is SHARED.
+func (o VolumeConfigResponseOutput) PerformanceTier() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeConfigResponse) string { return v.PerformanceTier }).(pulumi.StringOutput)
 }
 
 // Volume protocol.
@@ -3490,8 +3524,12 @@ type VolumeResponse struct {
 	MaxSizeGib string `pulumi:"maxSizeGib"`
 	// The resource name of this `Volume`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/volumes/{volume}`
 	Name string `pulumi:"name"`
+	// Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
+	Notes string `pulumi:"notes"`
 	// Originally requested size, in GiB.
 	OriginallyRequestedSizeGib string `pulumi:"originallyRequestedSizeGib"`
+	// Immutable. Performance tier of the Volume. Default is SHARED.
+	PerformanceTier string `pulumi:"performanceTier"`
 	// Immutable. Pod name.
 	Pod string `pulumi:"pod"`
 	// Storage protocol for the Volume.
@@ -3564,9 +3602,19 @@ func (o VolumeResponseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeResponse) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Input only. User-specified notes for new Volume. Used to provision Volumes that require manual intervention.
+func (o VolumeResponseOutput) Notes() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeResponse) string { return v.Notes }).(pulumi.StringOutput)
+}
+
 // Originally requested size, in GiB.
 func (o VolumeResponseOutput) OriginallyRequestedSizeGib() pulumi.StringOutput {
 	return o.ApplyT(func(v VolumeResponse) string { return v.OriginallyRequestedSizeGib }).(pulumi.StringOutput)
+}
+
+// Immutable. Performance tier of the Volume. Default is SHARED.
+func (o VolumeResponseOutput) PerformanceTier() pulumi.StringOutput {
+	return o.ApplyT(func(v VolumeResponse) string { return v.PerformanceTier }).(pulumi.StringOutput)
 }
 
 // Immutable. Pod name.

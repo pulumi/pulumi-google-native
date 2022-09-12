@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.GoogleNative.ApigeeRegistry.V1
 {
     /// <summary>
-    /// CreateArtifact creates a specified artifact.
+    /// Creates a specified artifact.
     /// </summary>
     [GoogleNativeResourceType("google-native:apigeeregistry/v1:VersionArtifact")]
     public partial class VersionArtifact : global::Pulumi.CustomResource

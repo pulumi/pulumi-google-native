@@ -1406,6 +1406,8 @@ class PipelineDescriptionResponse(dict):
             suggest = "execution_pipeline_stage"
         elif key == "originalPipelineTransform":
             suggest = "original_pipeline_transform"
+        elif key == "stepNamesHash":
+            suggest = "step_names_hash"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in PipelineDescriptionResponse. Access the value via the '{suggest}' property getter instead.")
@@ -1421,16 +1423,19 @@ class PipelineDescriptionResponse(dict):
     def __init__(__self__, *,
                  display_data: Sequence['outputs.DisplayDataResponse'],
                  execution_pipeline_stage: Sequence['outputs.ExecutionStageSummaryResponse'],
-                 original_pipeline_transform: Sequence['outputs.TransformSummaryResponse']):
+                 original_pipeline_transform: Sequence['outputs.TransformSummaryResponse'],
+                 step_names_hash: str):
         """
         A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics.
         :param Sequence['DisplayDataResponse'] display_data: Pipeline level display data.
         :param Sequence['ExecutionStageSummaryResponse'] execution_pipeline_stage: Description of each stage of execution of the pipeline.
         :param Sequence['TransformSummaryResponse'] original_pipeline_transform: Description of each transform in the pipeline and collections between them.
+        :param str step_names_hash: A hash value of the submitted pipeline portable graph step names if exists.
         """
         pulumi.set(__self__, "display_data", display_data)
         pulumi.set(__self__, "execution_pipeline_stage", execution_pipeline_stage)
         pulumi.set(__self__, "original_pipeline_transform", original_pipeline_transform)
+        pulumi.set(__self__, "step_names_hash", step_names_hash)
 
     @property
     @pulumi.getter(name="displayData")
@@ -1455,6 +1460,14 @@ class PipelineDescriptionResponse(dict):
         Description of each transform in the pipeline and collections between them.
         """
         return pulumi.get(self, "original_pipeline_transform")
+
+    @property
+    @pulumi.getter(name="stepNamesHash")
+    def step_names_hash(self) -> str:
+        """
+        A hash value of the submitted pipeline portable graph step names if exists.
+        """
+        return pulumi.get(self, "step_names_hash")
 
 
 @pulumi.output_type

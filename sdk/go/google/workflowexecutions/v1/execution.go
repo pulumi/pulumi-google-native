@@ -35,8 +35,10 @@ type Execution struct {
 	// Marks the beginning of execution.
 	StartTime pulumi.StringOutput `pulumi:"startTime"`
 	// Current state of the execution.
-	State      pulumi.StringOutput `pulumi:"state"`
-	WorkflowId pulumi.StringOutput `pulumi:"workflowId"`
+	State pulumi.StringOutput `pulumi:"state"`
+	// Status tracks the current steps and progress data of this execution. > **Preview:** This field is covered by the > [Pre-GA Offerings Terms](https://cloud.google.com/terms/service-terms) of > the Google Cloud Terms of Service. Pre-GA features might have limited > support, and changes to pre-GA features might not be compatible with > other pre-GA versions. For more information, see the > [launch stage descriptions](https://cloud.google.com/products#product-launch-stages). > This field is usable only if your project has access. See the > [access request page](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform).
+	Status     StatusResponseOutput `pulumi:"status"`
+	WorkflowId pulumi.StringOutput  `pulumi:"workflowId"`
 	// Revision of the workflow this execution is using.
 	WorkflowRevisionId pulumi.StringOutput `pulumi:"workflowRevisionId"`
 }
@@ -192,6 +194,11 @@ func (o ExecutionOutput) StartTime() pulumi.StringOutput {
 // Current state of the execution.
 func (o ExecutionOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Execution) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Status tracks the current steps and progress data of this execution. > **Preview:** This field is covered by the > [Pre-GA Offerings Terms](https://cloud.google.com/terms/service-terms) of > the Google Cloud Terms of Service. Pre-GA features might have limited > support, and changes to pre-GA features might not be compatible with > other pre-GA versions. For more information, see the > [launch stage descriptions](https://cloud.google.com/products#product-launch-stages). > This field is usable only if your project has access. See the > [access request page](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform).
+func (o ExecutionOutput) Status() StatusResponseOutput {
+	return o.ApplyT(func(v *Execution) StatusResponseOutput { return v.Status }).(StatusResponseOutput)
 }
 
 func (o ExecutionOutput) WorkflowId() pulumi.StringOutput {

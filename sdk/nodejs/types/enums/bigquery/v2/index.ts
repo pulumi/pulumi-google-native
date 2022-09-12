@@ -107,6 +107,10 @@ export const RoutineLanguage = {
      * JavaScript language.
      */
     Javascript: "JAVASCRIPT",
+    /**
+     * Python language.
+     */
+    Python: "PYTHON",
 } as const;
 
 /**

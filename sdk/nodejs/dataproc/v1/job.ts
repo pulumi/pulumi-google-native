@@ -113,6 +113,10 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly statusHistory!: pulumi.Output<outputs.dataproc.v1.JobStatusResponse[]>;
     /**
+     * Optional. Job is a Trino job.
+     */
+    public readonly trinoJob!: pulumi.Output<outputs.dataproc.v1.TrinoJobResponse>;
+    /**
      * The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
      */
     public /*out*/ readonly yarnApplications!: pulumi.Output<outputs.dataproc.v1.YarnApplicationResponse[]>;
@@ -149,6 +153,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["sparkJob"] = args ? args.sparkJob : undefined;
             resourceInputs["sparkRJob"] = args ? args.sparkRJob : undefined;
             resourceInputs["sparkSqlJob"] = args ? args.sparkSqlJob : undefined;
+            resourceInputs["trinoJob"] = args ? args.trinoJob : undefined;
             resourceInputs["done"] = undefined /*out*/;
             resourceInputs["driverControlFilesUri"] = undefined /*out*/;
             resourceInputs["driverOutputResourceUri"] = undefined /*out*/;
@@ -177,6 +182,7 @@ export class Job extends pulumi.CustomResource {
             resourceInputs["sparkSqlJob"] = undefined /*out*/;
             resourceInputs["status"] = undefined /*out*/;
             resourceInputs["statusHistory"] = undefined /*out*/;
+            resourceInputs["trinoJob"] = undefined /*out*/;
             resourceInputs["yarnApplications"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -244,4 +250,8 @@ export interface JobArgs {
      * Optional. Job is a SparkSql job.
      */
     sparkSqlJob?: pulumi.Input<inputs.dataproc.v1.SparkSqlJobArgs>;
+    /**
+     * Optional. Job is a Trino job.
+     */
+    trinoJob?: pulumi.Input<inputs.dataproc.v1.TrinoJobArgs>;
 }

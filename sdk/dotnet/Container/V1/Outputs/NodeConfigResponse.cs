@@ -69,6 +69,10 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// </summary>
         public readonly int LocalSsdCount;
         /// <summary>
+        /// Logging configuration.
+        /// </summary>
+        public readonly Outputs.NodePoolLoggingConfigResponse LoggingConfig;
+        /// <summary>
         /// The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types) If unspecified, the default machine type is `e2-medium`.
         /// </summary>
         public readonly string MachineType;
@@ -153,6 +157,8 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
 
             int localSsdCount,
 
+            Outputs.NodePoolLoggingConfigResponse loggingConfig,
+
             string machineType,
 
             ImmutableDictionary<string, string> metadata,
@@ -194,6 +200,7 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
             Labels = labels;
             LinuxNodeConfig = linuxNodeConfig;
             LocalSsdCount = localSsdCount;
+            LoggingConfig = loggingConfig;
             MachineType = machineType;
             Metadata = metadata;
             MinCpuPlatform = minCpuPlatform;

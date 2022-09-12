@@ -12,13 +12,13 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
     public static class GetDeployment
     {
         /// <summary>
-        /// GetApiDeployment returns a specified deployment.
+        /// Returns a specified deployment.
         /// </summary>
         public static Task<GetDeploymentResult> InvokeAsync(GetDeploymentArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.InvokeAsync<GetDeploymentResult>("google-native:apigeeregistry/v1:getDeployment", args ?? new GetDeploymentArgs(), options.WithDefaults());
 
         /// <summary>
-        /// GetApiDeployment returns a specified deployment.
+        /// Returns a specified deployment.
         /// </summary>
         public static Output<GetDeploymentResult> Invoke(GetDeploymentInvokeArgs args, InvokeOptions? options = null)
             => Pulumi.Deployment.Instance.Invoke<GetDeploymentResult>("google-native:apigeeregistry/v1:getDeployment", args ?? new GetDeploymentInvokeArgs(), options.WithDefaults());
@@ -78,7 +78,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Annotations;
         /// <summary>
-        /// The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+        /// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
         /// </summary>
         public readonly string ApiSpecRevision;
         /// <summary>
@@ -98,7 +98,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// </summary>
         public readonly string EndpointUri;
         /// <summary>
-        /// The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+        /// The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
         /// </summary>
         public readonly string ExternalChannelUri;
         /// <summary>
@@ -106,7 +106,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         /// </summary>
         public readonly string IntendedAudience;
         /// <summary>
-        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+        /// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>

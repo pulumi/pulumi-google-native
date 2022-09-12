@@ -41,7 +41,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly string Collation;
         /// <summary>
-        /// Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+        /// Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors) Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
         /// </summary>
         public readonly string ConnectorEnforcement;
         /// <summary>
@@ -125,6 +125,10 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
         /// </summary>
         public readonly string Tier;
         /// <summary>
+        /// Server timezone, relevant only for Cloud SQL for SQL Server.
+        /// </summary>
+        public readonly string TimeZone;
+        /// <summary>
         /// User-provided labels, represented as a dictionary where each label is a single key value pair.
         /// </summary>
         public readonly ImmutableDictionary<string, string> UserLabels;
@@ -185,6 +189,8 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
 
             string tier,
 
+            string timeZone,
+
             ImmutableDictionary<string, string> userLabels)
         {
             ActivationPolicy = activationPolicy;
@@ -214,6 +220,7 @@ namespace Pulumi.GoogleNative.SQLAdmin.V1Beta4.Outputs
             StorageAutoResize = storageAutoResize;
             StorageAutoResizeLimit = storageAutoResizeLimit;
             Tier = tier;
+            TimeZone = timeZone;
             UserLabels = userLabels;
         }
     }

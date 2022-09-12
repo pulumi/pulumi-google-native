@@ -12,6 +12,18 @@ namespace Pulumi.GoogleNative.DNS.V1.Inputs
 
     public sealed class ManagedZonePrivateVisibilityConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("gkeClusters")]
+        private InputList<Inputs.ManagedZonePrivateVisibilityConfigGKEClusterArgs>? _gkeClusters;
+
+        /// <summary>
+        /// The list of Google Kubernetes Engine clusters that can see this zone.
+        /// </summary>
+        public InputList<Inputs.ManagedZonePrivateVisibilityConfigGKEClusterArgs> GkeClusters
+        {
+            get => _gkeClusters ?? (_gkeClusters = new InputList<Inputs.ManagedZonePrivateVisibilityConfigGKEClusterArgs>());
+            set => _gkeClusters = value;
+        }
+
         [Input("kind")]
         public Input<string>? Kind { get; set; }
 

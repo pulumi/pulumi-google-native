@@ -98,7 +98,7 @@ export const AddressPurpose = {
      */
     GceEndpoint: "GCE_ENDPOINT",
     /**
-     * A regional internal IP address range reserved for the VLAN attachment that is used in IPsec-encrypted Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
+     * A regional internal IP address range reserved for the VLAN attachment that is used in HA VPN over Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
      */
     IpsecInterconnect: "IPSEC_INTERCONNECT",
     /**
@@ -124,7 +124,7 @@ export const AddressPurpose = {
 } as const;
 
 /**
- * The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
+ * The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *HA VPN over Cloud Interconnect* configuration. These addresses are regional resources. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
  */
 export type AddressPurpose = (typeof AddressPurpose)[keyof typeof AddressPurpose];
 
@@ -184,7 +184,7 @@ export const AttachedDiskInterface = {
 } as const;
 
 /**
- * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
+ * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. For most machine types, the default is SCSI. Local SSDs can use either NVME or SCSI. In certain configurations, persistent disks can use NVMe. For more information, see About persistent disks.
  */
 export type AttachedDiskInterface = (typeof AttachedDiskInterface)[keyof typeof AttachedDiskInterface];
 
@@ -367,6 +367,22 @@ export const BackendBucketCdnPolicyCacheMode = {
  */
 export type BackendBucketCdnPolicyCacheMode = (typeof BackendBucketCdnPolicyCacheMode)[keyof typeof BackendBucketCdnPolicyCacheMode];
 
+export const BackendBucketCompressionMode = {
+    /**
+     * Automatically uses the best compression based on the Accept-Encoding header sent by the client.
+     */
+    Automatic: "AUTOMATIC",
+    /**
+     * Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients.
+     */
+    Disabled: "DISABLED",
+} as const;
+
+/**
+ * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+ */
+export type BackendBucketCompressionMode = (typeof BackendBucketCompressionMode)[keyof typeof BackendBucketCompressionMode];
+
 export const BackendServiceCdnPolicyCacheMode = {
     /**
      * Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
@@ -387,6 +403,22 @@ export const BackendServiceCdnPolicyCacheMode = {
  * Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
  */
 export type BackendServiceCdnPolicyCacheMode = (typeof BackendServiceCdnPolicyCacheMode)[keyof typeof BackendServiceCdnPolicyCacheMode];
+
+export const BackendServiceCompressionMode = {
+    /**
+     * Automatically uses the best compression based on the Accept-Encoding header sent by the client.
+     */
+    Automatic: "AUTOMATIC",
+    /**
+     * Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients.
+     */
+    Disabled: "DISABLED",
+} as const;
+
+/**
+ * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+ */
+export type BackendServiceCompressionMode = (typeof BackendServiceCompressionMode)[keyof typeof BackendServiceCompressionMode];
 
 export const BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends = {
     AlwaysPersist: "ALWAYS_PERSIST",
@@ -810,7 +842,7 @@ export const FirewallDirection = {
 } as const;
 
 /**
- * Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+ * Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
  */
 export type FirewallDirection = (typeof FirewallDirection)[keyof typeof FirewallDirection];
 
@@ -1006,7 +1038,7 @@ export const GlobalAddressPurpose = {
      */
     GceEndpoint: "GCE_ENDPOINT",
     /**
-     * A regional internal IP address range reserved for the VLAN attachment that is used in IPsec-encrypted Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
+     * A regional internal IP address range reserved for the VLAN attachment that is used in HA VPN over Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
      */
     IpsecInterconnect: "IPSEC_INTERCONNECT",
     /**
@@ -1032,7 +1064,7 @@ export const GlobalAddressPurpose = {
 } as const;
 
 /**
- * The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
+ * The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *HA VPN over Cloud Interconnect* configuration. These addresses are regional resources. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose. 
  */
 export type GlobalAddressPurpose = (typeof GlobalAddressPurpose)[keyof typeof GlobalAddressPurpose];
 
@@ -1594,7 +1626,7 @@ export type InterconnectAttachmentEdgeAvailabilityDomain = (typeof InterconnectA
 
 export const InterconnectAttachmentEncryption = {
     /**
-     * The interconnect attachment will carry only encrypted traffic that is encrypted by an IPsec device such as HA VPN gateway; VMs cannot directly send traffic to or receive traffic from such an interconnect attachment. To use IPsec-encrypted Cloud Interconnect, the interconnect attachment must be created with this option.
+     * The interconnect attachment will carry only encrypted traffic that is encrypted by an IPsec device such as HA VPN gateway; VMs cannot directly send traffic to or receive traffic from such an interconnect attachment. To use HA VPN over Cloud Interconnect, the interconnect attachment must be created with this option.
      */
     Ipsec: "IPSEC",
     /**
@@ -1604,7 +1636,7 @@ export const InterconnectAttachmentEncryption = {
 } as const;
 
 /**
- * Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly. 
+ * Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *HA VPN over Cloud Interconnect*, the VLAN attachment must be created with this option. 
  */
 export type InterconnectAttachmentEncryption = (typeof InterconnectAttachmentEncryption)[keyof typeof InterconnectAttachmentEncryption];
 
@@ -1963,6 +1995,22 @@ export const PublicAdvertisedPrefixStatus = {
  */
 export type PublicAdvertisedPrefixStatus = (typeof PublicAdvertisedPrefixStatus)[keyof typeof PublicAdvertisedPrefixStatus];
 
+export const RegionBackendServiceCompressionMode = {
+    /**
+     * Automatically uses the best compression based on the Accept-Encoding header sent by the client.
+     */
+    Automatic: "AUTOMATIC",
+    /**
+     * Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients.
+     */
+    Disabled: "DISABLED",
+} as const;
+
+/**
+ * Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+ */
+export type RegionBackendServiceCompressionMode = (typeof RegionBackendServiceCompressionMode)[keyof typeof RegionBackendServiceCompressionMode];
+
 export const RegionBackendServiceLoadBalancingScheme = {
     /**
      * Signifies that this will be used for external HTTP(S), SSL Proxy, TCP Proxy, or Network Load Balancing
@@ -2318,6 +2366,16 @@ export const RegionTargetHttpsProxyQuicOverride = {
  * Specifies the QUIC override policy for this TargetHttpsProxy resource. This setting determines whether the load balancer attempts to negotiate QUIC with clients. You can specify NONE, ENABLE, or DISABLE. - When quic-override is set to NONE, Google manages whether QUIC is used. - When quic-override is set to ENABLE, the load balancer uses QUIC when possible. - When quic-override is set to DISABLE, the load balancer doesn't use QUIC. - If the quic-override flag is not specified, NONE is implied. 
  */
 export type RegionTargetHttpsProxyQuicOverride = (typeof RegionTargetHttpsProxyQuicOverride)[keyof typeof RegionTargetHttpsProxyQuicOverride];
+
+export const RegionTargetTcpProxyProxyHeader = {
+    None: "NONE",
+    ProxyV1: "PROXY_V1",
+} as const;
+
+/**
+ * Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+ */
+export type RegionTargetTcpProxyProxyHeader = (typeof RegionTargetTcpProxyProxyHeader)[keyof typeof RegionTargetTcpProxyProxyHeader];
 
 export const ReservationAffinityConsumeReservationType = {
     /**

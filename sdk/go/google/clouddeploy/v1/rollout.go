@@ -46,6 +46,8 @@ type Rollout struct {
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels   pulumi.StringMapOutput `pulumi:"labels"`
 	Location pulumi.StringOutput    `pulumi:"location"`
+	// Metadata contains information about the rollout.
+	Metadata MetadataResponseOutput `pulumi:"metadata"`
 	// Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
 	Name      pulumi.StringOutput `pulumi:"name"`
 	Project   pulumi.StringOutput `pulumi:"project"`
@@ -281,6 +283,11 @@ func (o RolloutOutput) Labels() pulumi.StringMapOutput {
 
 func (o RolloutOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Rollout) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
+}
+
+// Metadata contains information about the rollout.
+func (o RolloutOutput) Metadata() MetadataResponseOutput {
+	return o.ApplyT(func(v *Rollout) MetadataResponseOutput { return v.Metadata }).(MetadataResponseOutput)
 }
 
 // Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.

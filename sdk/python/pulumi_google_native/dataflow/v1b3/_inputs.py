@@ -1310,12 +1310,14 @@ class PipelineDescriptionArgs:
     def __init__(__self__, *,
                  display_data: Optional[pulumi.Input[Sequence[pulumi.Input['DisplayDataArgs']]]] = None,
                  execution_pipeline_stage: Optional[pulumi.Input[Sequence[pulumi.Input['ExecutionStageSummaryArgs']]]] = None,
-                 original_pipeline_transform: Optional[pulumi.Input[Sequence[pulumi.Input['TransformSummaryArgs']]]] = None):
+                 original_pipeline_transform: Optional[pulumi.Input[Sequence[pulumi.Input['TransformSummaryArgs']]]] = None,
+                 step_names_hash: Optional[pulumi.Input[str]] = None):
         """
         A descriptive representation of submitted pipeline as well as the executed form. This data is provided by the Dataflow service for ease of visualizing the pipeline and interpreting Dataflow provided metrics.
         :param pulumi.Input[Sequence[pulumi.Input['DisplayDataArgs']]] display_data: Pipeline level display data.
         :param pulumi.Input[Sequence[pulumi.Input['ExecutionStageSummaryArgs']]] execution_pipeline_stage: Description of each stage of execution of the pipeline.
         :param pulumi.Input[Sequence[pulumi.Input['TransformSummaryArgs']]] original_pipeline_transform: Description of each transform in the pipeline and collections between them.
+        :param pulumi.Input[str] step_names_hash: A hash value of the submitted pipeline portable graph step names if exists.
         """
         if display_data is not None:
             pulumi.set(__self__, "display_data", display_data)
@@ -1323,6 +1325,8 @@ class PipelineDescriptionArgs:
             pulumi.set(__self__, "execution_pipeline_stage", execution_pipeline_stage)
         if original_pipeline_transform is not None:
             pulumi.set(__self__, "original_pipeline_transform", original_pipeline_transform)
+        if step_names_hash is not None:
+            pulumi.set(__self__, "step_names_hash", step_names_hash)
 
     @property
     @pulumi.getter(name="displayData")
@@ -1359,6 +1363,18 @@ class PipelineDescriptionArgs:
     @original_pipeline_transform.setter
     def original_pipeline_transform(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TransformSummaryArgs']]]]):
         pulumi.set(self, "original_pipeline_transform", value)
+
+    @property
+    @pulumi.getter(name="stepNamesHash")
+    def step_names_hash(self) -> Optional[pulumi.Input[str]]:
+        """
+        A hash value of the submitted pipeline portable graph step names if exists.
+        """
+        return pulumi.get(self, "step_names_hash")
+
+    @step_names_hash.setter
+    def step_names_hash(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "step_names_hash", value)
 
 
 @pulumi.input_type

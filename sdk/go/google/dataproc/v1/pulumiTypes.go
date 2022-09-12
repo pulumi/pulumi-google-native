@@ -3157,7 +3157,7 @@ func (o EnvironmentConfigResponseOutput) PeripheralsConfig() PeripheralsConfigRe
 
 // Execution configuration for a workload.
 type ExecutionConfig struct {
-	// Optional. The duration to keep the underlying cluster alive while idling Passing this threshold will cause the cluster to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	IdleTtl *string `pulumi:"idleTtl"`
 	// Optional. The Cloud KMS key to use for encryption.
 	KmsKey *string `pulumi:"kmsKey"`
@@ -3184,7 +3184,7 @@ type ExecutionConfigInput interface {
 
 // Execution configuration for a workload.
 type ExecutionConfigArgs struct {
-	// Optional. The duration to keep the underlying cluster alive while idling Passing this threshold will cause the cluster to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	IdleTtl pulumi.StringPtrInput `pulumi:"idleTtl"`
 	// Optional. The Cloud KMS key to use for encryption.
 	KmsKey pulumi.StringPtrInput `pulumi:"kmsKey"`
@@ -3276,7 +3276,7 @@ func (o ExecutionConfigOutput) ToExecutionConfigPtrOutputWithContext(ctx context
 	}).(ExecutionConfigPtrOutput)
 }
 
-// Optional. The duration to keep the underlying cluster alive while idling Passing this threshold will cause the cluster to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 func (o ExecutionConfigOutput) IdleTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ExecutionConfig) *string { return v.IdleTtl }).(pulumi.StringPtrOutput)
 }
@@ -3330,7 +3330,7 @@ func (o ExecutionConfigPtrOutput) Elem() ExecutionConfigOutput {
 	}).(ExecutionConfigOutput)
 }
 
-// Optional. The duration to keep the underlying cluster alive while idling Passing this threshold will cause the cluster to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 func (o ExecutionConfigPtrOutput) IdleTtl() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ExecutionConfig) *string {
 		if v == nil {
@@ -3392,7 +3392,7 @@ func (o ExecutionConfigPtrOutput) SubnetworkUri() pulumi.StringPtrOutput {
 
 // Execution configuration for a workload.
 type ExecutionConfigResponse struct {
-	// Optional. The duration to keep the underlying cluster alive while idling Passing this threshold will cause the cluster to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+	// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 	IdleTtl string `pulumi:"idleTtl"`
 	// Optional. The Cloud KMS key to use for encryption.
 	KmsKey string `pulumi:"kmsKey"`
@@ -3421,7 +3421,7 @@ func (o ExecutionConfigResponseOutput) ToExecutionConfigResponseOutputWithContex
 	return o
 }
 
-// Optional. The duration to keep the underlying cluster alive while idling Passing this threshold will cause the cluster to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
+// Optional. The duration to keep the session alive while it's idling. Passing this threshold will cause the session to be terminated. Minimum value is 30 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)).
 func (o ExecutionConfigResponseOutput) IdleTtl() pulumi.StringOutput {
 	return o.ApplyT(func(v ExecutionConfigResponse) string { return v.IdleTtl }).(pulumi.StringOutput)
 }
@@ -9953,6 +9953,8 @@ type OrderedJob struct {
 	SparkSqlJob *SparkSqlJob `pulumi:"sparkSqlJob"`
 	// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
 	StepId string `pulumi:"stepId"`
+	// Optional. Job is a Trino job.
+	TrinoJob *TrinoJob `pulumi:"trinoJob"`
 }
 
 // OrderedJobInput is an input type that accepts OrderedJobArgs and OrderedJobOutput values.
@@ -9992,6 +9994,8 @@ type OrderedJobArgs struct {
 	SparkSqlJob SparkSqlJobPtrInput `pulumi:"sparkSqlJob"`
 	// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
 	StepId pulumi.StringInput `pulumi:"stepId"`
+	// Optional. Job is a Trino job.
+	TrinoJob TrinoJobPtrInput `pulumi:"trinoJob"`
 }
 
 func (OrderedJobArgs) ElementType() reflect.Type {
@@ -10106,6 +10110,11 @@ func (o OrderedJobOutput) StepId() pulumi.StringOutput {
 	return o.ApplyT(func(v OrderedJob) string { return v.StepId }).(pulumi.StringOutput)
 }
 
+// Optional. Job is a Trino job.
+func (o OrderedJobOutput) TrinoJob() TrinoJobPtrOutput {
+	return o.ApplyT(func(v OrderedJob) *TrinoJob { return v.TrinoJob }).(TrinoJobPtrOutput)
+}
+
 type OrderedJobArrayOutput struct{ *pulumi.OutputState }
 
 func (OrderedJobArrayOutput) ElementType() reflect.Type {
@@ -10152,6 +10161,8 @@ type OrderedJobResponse struct {
 	SparkSqlJob SparkSqlJobResponse `pulumi:"sparkSqlJob"`
 	// The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
 	StepId string `pulumi:"stepId"`
+	// Optional. Job is a Trino job.
+	TrinoJob TrinoJobResponse `pulumi:"trinoJob"`
 }
 
 // A job executed by the workflow.
@@ -10227,6 +10238,11 @@ func (o OrderedJobResponseOutput) SparkSqlJob() SparkSqlJobResponseOutput {
 // The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters.
 func (o OrderedJobResponseOutput) StepId() pulumi.StringOutput {
 	return o.ApplyT(func(v OrderedJobResponse) string { return v.StepId }).(pulumi.StringOutput)
+}
+
+// Optional. Job is a Trino job.
+func (o OrderedJobResponseOutput) TrinoJob() TrinoJobResponseOutput {
+	return o.ApplyT(func(v OrderedJobResponse) TrinoJobResponse { return v.TrinoJob }).(TrinoJobResponseOutput)
 }
 
 type OrderedJobResponseArrayOutput struct{ *pulumi.OutputState }
@@ -15747,6 +15763,328 @@ func (o TemplateParameterResponseArrayOutput) Index(i pulumi.IntInput) TemplateP
 	}).(TemplateParameterResponseOutput)
 }
 
+// A Dataproc job for running Trino (https://trino.io/) queries. IMPORTANT: The Dataproc Trino Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/trino) must be enabled when the cluster is created to submit a Trino job to the cluster.
+type TrinoJob struct {
+	// Optional. Trino client tags to attach to this query
+	ClientTags []string `pulumi:"clientTags"`
+	// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+	ContinueOnFailure *bool `pulumi:"continueOnFailure"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig *LoggingConfig `pulumi:"loggingConfig"`
+	// Optional. The format in which query output will be displayed. See the Trino documentation for supported output formats
+	OutputFormat *string `pulumi:"outputFormat"`
+	// Optional. A mapping of property names to values. Used to set Trino session properties (https://trino.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Trino CLI
+	Properties map[string]string `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri *string `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList *QueryList `pulumi:"queryList"`
+}
+
+// TrinoJobInput is an input type that accepts TrinoJobArgs and TrinoJobOutput values.
+// You can construct a concrete instance of `TrinoJobInput` via:
+//
+//	TrinoJobArgs{...}
+type TrinoJobInput interface {
+	pulumi.Input
+
+	ToTrinoJobOutput() TrinoJobOutput
+	ToTrinoJobOutputWithContext(context.Context) TrinoJobOutput
+}
+
+// A Dataproc job for running Trino (https://trino.io/) queries. IMPORTANT: The Dataproc Trino Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/trino) must be enabled when the cluster is created to submit a Trino job to the cluster.
+type TrinoJobArgs struct {
+	// Optional. Trino client tags to attach to this query
+	ClientTags pulumi.StringArrayInput `pulumi:"clientTags"`
+	// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+	ContinueOnFailure pulumi.BoolPtrInput `pulumi:"continueOnFailure"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigPtrInput `pulumi:"loggingConfig"`
+	// Optional. The format in which query output will be displayed. See the Trino documentation for supported output formats
+	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
+	// Optional. A mapping of property names to values. Used to set Trino session properties (https://trino.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Trino CLI
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri pulumi.StringPtrInput `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList QueryListPtrInput `pulumi:"queryList"`
+}
+
+func (TrinoJobArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrinoJob)(nil)).Elem()
+}
+
+func (i TrinoJobArgs) ToTrinoJobOutput() TrinoJobOutput {
+	return i.ToTrinoJobOutputWithContext(context.Background())
+}
+
+func (i TrinoJobArgs) ToTrinoJobOutputWithContext(ctx context.Context) TrinoJobOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrinoJobOutput)
+}
+
+func (i TrinoJobArgs) ToTrinoJobPtrOutput() TrinoJobPtrOutput {
+	return i.ToTrinoJobPtrOutputWithContext(context.Background())
+}
+
+func (i TrinoJobArgs) ToTrinoJobPtrOutputWithContext(ctx context.Context) TrinoJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrinoJobOutput).ToTrinoJobPtrOutputWithContext(ctx)
+}
+
+// TrinoJobPtrInput is an input type that accepts TrinoJobArgs, TrinoJobPtr and TrinoJobPtrOutput values.
+// You can construct a concrete instance of `TrinoJobPtrInput` via:
+//
+//	        TrinoJobArgs{...}
+//
+//	or:
+//
+//	        nil
+type TrinoJobPtrInput interface {
+	pulumi.Input
+
+	ToTrinoJobPtrOutput() TrinoJobPtrOutput
+	ToTrinoJobPtrOutputWithContext(context.Context) TrinoJobPtrOutput
+}
+
+type trinoJobPtrType TrinoJobArgs
+
+func TrinoJobPtr(v *TrinoJobArgs) TrinoJobPtrInput {
+	return (*trinoJobPtrType)(v)
+}
+
+func (*trinoJobPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrinoJob)(nil)).Elem()
+}
+
+func (i *trinoJobPtrType) ToTrinoJobPtrOutput() TrinoJobPtrOutput {
+	return i.ToTrinoJobPtrOutputWithContext(context.Background())
+}
+
+func (i *trinoJobPtrType) ToTrinoJobPtrOutputWithContext(ctx context.Context) TrinoJobPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TrinoJobPtrOutput)
+}
+
+// A Dataproc job for running Trino (https://trino.io/) queries. IMPORTANT: The Dataproc Trino Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/trino) must be enabled when the cluster is created to submit a Trino job to the cluster.
+type TrinoJobOutput struct{ *pulumi.OutputState }
+
+func (TrinoJobOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrinoJob)(nil)).Elem()
+}
+
+func (o TrinoJobOutput) ToTrinoJobOutput() TrinoJobOutput {
+	return o
+}
+
+func (o TrinoJobOutput) ToTrinoJobOutputWithContext(ctx context.Context) TrinoJobOutput {
+	return o
+}
+
+func (o TrinoJobOutput) ToTrinoJobPtrOutput() TrinoJobPtrOutput {
+	return o.ToTrinoJobPtrOutputWithContext(context.Background())
+}
+
+func (o TrinoJobOutput) ToTrinoJobPtrOutputWithContext(ctx context.Context) TrinoJobPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TrinoJob) *TrinoJob {
+		return &v
+	}).(TrinoJobPtrOutput)
+}
+
+// Optional. Trino client tags to attach to this query
+func (o TrinoJobOutput) ClientTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TrinoJob) []string { return v.ClientTags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+func (o TrinoJobOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TrinoJob) *bool { return v.ContinueOnFailure }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o TrinoJobOutput) LoggingConfig() LoggingConfigPtrOutput {
+	return o.ApplyT(func(v TrinoJob) *LoggingConfig { return v.LoggingConfig }).(LoggingConfigPtrOutput)
+}
+
+// Optional. The format in which query output will be displayed. See the Trino documentation for supported output formats
+func (o TrinoJobOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrinoJob) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Optional. A mapping of property names to values. Used to set Trino session properties (https://trino.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Trino CLI
+func (o TrinoJobOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TrinoJob) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o TrinoJobOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TrinoJob) *string { return v.QueryFileUri }).(pulumi.StringPtrOutput)
+}
+
+// A list of queries.
+func (o TrinoJobOutput) QueryList() QueryListPtrOutput {
+	return o.ApplyT(func(v TrinoJob) *QueryList { return v.QueryList }).(QueryListPtrOutput)
+}
+
+type TrinoJobPtrOutput struct{ *pulumi.OutputState }
+
+func (TrinoJobPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TrinoJob)(nil)).Elem()
+}
+
+func (o TrinoJobPtrOutput) ToTrinoJobPtrOutput() TrinoJobPtrOutput {
+	return o
+}
+
+func (o TrinoJobPtrOutput) ToTrinoJobPtrOutputWithContext(ctx context.Context) TrinoJobPtrOutput {
+	return o
+}
+
+func (o TrinoJobPtrOutput) Elem() TrinoJobOutput {
+	return o.ApplyT(func(v *TrinoJob) TrinoJob {
+		if v != nil {
+			return *v
+		}
+		var ret TrinoJob
+		return ret
+	}).(TrinoJobOutput)
+}
+
+// Optional. Trino client tags to attach to this query
+func (o TrinoJobPtrOutput) ClientTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TrinoJob) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientTags
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+func (o TrinoJobPtrOutput) ContinueOnFailure() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TrinoJob) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ContinueOnFailure
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o TrinoJobPtrOutput) LoggingConfig() LoggingConfigPtrOutput {
+	return o.ApplyT(func(v *TrinoJob) *LoggingConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LoggingConfig
+	}).(LoggingConfigPtrOutput)
+}
+
+// Optional. The format in which query output will be displayed. See the Trino documentation for supported output formats
+func (o TrinoJobPtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrinoJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. A mapping of property names to values. Used to set Trino session properties (https://trino.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Trino CLI
+func (o TrinoJobPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TrinoJob) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o TrinoJobPtrOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TrinoJob) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of queries.
+func (o TrinoJobPtrOutput) QueryList() QueryListPtrOutput {
+	return o.ApplyT(func(v *TrinoJob) *QueryList {
+		if v == nil {
+			return nil
+		}
+		return v.QueryList
+	}).(QueryListPtrOutput)
+}
+
+// A Dataproc job for running Trino (https://trino.io/) queries. IMPORTANT: The Dataproc Trino Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/trino) must be enabled when the cluster is created to submit a Trino job to the cluster.
+type TrinoJobResponse struct {
+	// Optional. Trino client tags to attach to this query
+	ClientTags []string `pulumi:"clientTags"`
+	// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+	ContinueOnFailure bool `pulumi:"continueOnFailure"`
+	// Optional. The runtime log config for job execution.
+	LoggingConfig LoggingConfigResponse `pulumi:"loggingConfig"`
+	// Optional. The format in which query output will be displayed. See the Trino documentation for supported output formats
+	OutputFormat string `pulumi:"outputFormat"`
+	// Optional. A mapping of property names to values. Used to set Trino session properties (https://trino.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Trino CLI
+	Properties map[string]string `pulumi:"properties"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri string `pulumi:"queryFileUri"`
+	// A list of queries.
+	QueryList QueryListResponse `pulumi:"queryList"`
+}
+
+// A Dataproc job for running Trino (https://trino.io/) queries. IMPORTANT: The Dataproc Trino Optional Component (https://cloud.google.com/dataproc/docs/concepts/components/trino) must be enabled when the cluster is created to submit a Trino job to the cluster.
+type TrinoJobResponseOutput struct{ *pulumi.OutputState }
+
+func (TrinoJobResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TrinoJobResponse)(nil)).Elem()
+}
+
+func (o TrinoJobResponseOutput) ToTrinoJobResponseOutput() TrinoJobResponseOutput {
+	return o
+}
+
+func (o TrinoJobResponseOutput) ToTrinoJobResponseOutputWithContext(ctx context.Context) TrinoJobResponseOutput {
+	return o
+}
+
+// Optional. Trino client tags to attach to this query
+func (o TrinoJobResponseOutput) ClientTags() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TrinoJobResponse) []string { return v.ClientTags }).(pulumi.StringArrayOutput)
+}
+
+// Optional. Whether to continue executing queries if a query fails. The default value is false. Setting to true can be useful when executing independent parallel queries.
+func (o TrinoJobResponseOutput) ContinueOnFailure() pulumi.BoolOutput {
+	return o.ApplyT(func(v TrinoJobResponse) bool { return v.ContinueOnFailure }).(pulumi.BoolOutput)
+}
+
+// Optional. The runtime log config for job execution.
+func (o TrinoJobResponseOutput) LoggingConfig() LoggingConfigResponseOutput {
+	return o.ApplyT(func(v TrinoJobResponse) LoggingConfigResponse { return v.LoggingConfig }).(LoggingConfigResponseOutput)
+}
+
+// Optional. The format in which query output will be displayed. See the Trino documentation for supported output formats
+func (o TrinoJobResponseOutput) OutputFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v TrinoJobResponse) string { return v.OutputFormat }).(pulumi.StringOutput)
+}
+
+// Optional. A mapping of property names to values. Used to set Trino session properties (https://trino.io/docs/current/sql/set-session.html) Equivalent to using the --session flag in the Trino CLI
+func (o TrinoJobResponseOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TrinoJobResponse) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o TrinoJobResponseOutput) QueryFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v TrinoJobResponse) string { return v.QueryFileUri }).(pulumi.StringOutput)
+}
+
+// A list of queries.
+func (o TrinoJobResponseOutput) QueryList() QueryListResponseOutput {
+	return o.ApplyT(func(v TrinoJobResponse) QueryListResponse { return v.QueryList }).(QueryListResponseOutput)
+}
+
 // Validation based on a list of allowed values.
 type ValueValidation struct {
 	// List of allowed values for the parameter.
@@ -16425,6 +16763,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SparkStandaloneAutoscalingConfigPtrInput)(nil)).Elem(), SparkStandaloneAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateParameterInput)(nil)).Elem(), TemplateParameterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TemplateParameterArrayInput)(nil)).Elem(), TemplateParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrinoJobInput)(nil)).Elem(), TrinoJobArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TrinoJobPtrInput)(nil)).Elem(), TrinoJobArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValueValidationInput)(nil)).Elem(), ValueValidationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ValueValidationPtrInput)(nil)).Elem(), ValueValidationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VirtualClusterConfigInput)(nil)).Elem(), VirtualClusterConfigArgs{})
@@ -16643,6 +16983,9 @@ func init() {
 	pulumi.RegisterOutputType(TemplateParameterArrayOutput{})
 	pulumi.RegisterOutputType(TemplateParameterResponseOutput{})
 	pulumi.RegisterOutputType(TemplateParameterResponseArrayOutput{})
+	pulumi.RegisterOutputType(TrinoJobOutput{})
+	pulumi.RegisterOutputType(TrinoJobPtrOutput{})
+	pulumi.RegisterOutputType(TrinoJobResponseOutput{})
 	pulumi.RegisterOutputType(ValueValidationOutput{})
 	pulumi.RegisterOutputType(ValueValidationPtrOutput{})
 	pulumi.RegisterOutputType(ValueValidationResponseOutput{})

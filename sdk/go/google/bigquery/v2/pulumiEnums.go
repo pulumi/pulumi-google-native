@@ -908,6 +908,8 @@ const (
 	RoutineLanguageSql = RoutineLanguage("SQL")
 	// JavaScript language.
 	RoutineLanguageJavascript = RoutineLanguage("JAVASCRIPT")
+	// Python language.
+	RoutineLanguagePython = RoutineLanguage("PYTHON")
 )
 
 func (RoutineLanguage) ElementType() reflect.Type {

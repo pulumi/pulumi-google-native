@@ -8,6 +8,7 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from ... import _utilities
+from . import outputs
 
 __all__ = ['RolloutArgs', 'Rollout']
 
@@ -323,6 +324,7 @@ class Rollout(pulumi.CustomResource):
             __props__.__dict__["deploying_build"] = None
             __props__.__dict__["enqueue_time"] = None
             __props__.__dict__["failure_reason"] = None
+            __props__.__dict__["metadata"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["uid"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["delivery_pipeline_id", "location", "project", "release_id", "rollout_id"])
@@ -364,6 +366,7 @@ class Rollout(pulumi.CustomResource):
         __props__.__dict__["failure_reason"] = None
         __props__.__dict__["labels"] = None
         __props__.__dict__["location"] = None
+        __props__.__dict__["metadata"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["release_id"] = None
@@ -488,6 +491,14 @@ class Rollout(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def metadata(self) -> pulumi.Output['outputs.MetadataResponse']:
+        """
+        Metadata contains information about the rollout.
+        """
+        return pulumi.get(self, "metadata")
 
     @property
     @pulumi.getter

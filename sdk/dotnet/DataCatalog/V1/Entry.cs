@@ -327,6 +327,12 @@ namespace Pulumi.GoogleNative.DataCatalog.V1
         public Input<Pulumi.GoogleNative.DataCatalog.V1.EntryType>? Type { get; set; }
 
         /// <summary>
+        /// Resource usage statistics.
+        /// </summary>
+        [Input("usageSignal")]
+        public Input<Inputs.GoogleCloudDatacatalogV1UsageSignalArgs>? UsageSignal { get; set; }
+
+        /// <summary>
         /// Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
         /// </summary>
         [Input("userSpecifiedSystem")]

@@ -164,6 +164,7 @@ class Execution(pulumi.CustomResource):
             __props__.__dict__["result"] = None
             __props__.__dict__["start_time"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["status"] = None
             __props__.__dict__["workflow_revision_id"] = None
         replace_on_changes = pulumi.ResourceOptions(replace_on_changes=["location", "project", "workflow_id"])
         opts = pulumi.ResourceOptions.merge(opts, replace_on_changes)
@@ -199,6 +200,7 @@ class Execution(pulumi.CustomResource):
         __props__.__dict__["result"] = None
         __props__.__dict__["start_time"] = None
         __props__.__dict__["state"] = None
+        __props__.__dict__["status"] = None
         __props__.__dict__["workflow_id"] = None
         __props__.__dict__["workflow_revision_id"] = None
         return Execution(resource_name, opts=opts, __props__=__props__)
@@ -276,6 +278,14 @@ class Execution(pulumi.CustomResource):
         Current state of the execution.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def status(self) -> pulumi.Output['outputs.StatusResponse']:
+        """
+        Status tracks the current steps and progress data of this execution. > **Preview:** This field is covered by the > [Pre-GA Offerings Terms](https://cloud.google.com/terms/service-terms) of > the Google Cloud Terms of Service. Pre-GA features might have limited > support, and changes to pre-GA features might not be compatible with > other pre-GA versions. For more information, see the > [launch stage descriptions](https://cloud.google.com/products#product-launch-stages). > This field is usable only if your project has access. See the > [access request page](https://docs.google.com/forms/d/e/1FAIpQLSdgwrSV8Y4xZv_tvI6X2JEGX1-ty9yizv3_EAOVHWVKXvDLEA/viewform).
+        """
+        return pulumi.get(self, "status")
 
     @property
     @pulumi.getter(name="workflowId")

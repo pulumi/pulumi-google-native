@@ -35,7 +35,7 @@ type LookupRouterResult struct {
 	CreationTimestamp string `pulumi:"creationTimestamp"`
 	// An optional description of this resource. Provide this property when you create the resource.
 	Description string `pulumi:"description"`
-	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly.
+	// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
 	EncryptedInterconnectRouter bool `pulumi:"encryptedInterconnectRouter"`
 	// Router interfaces. Each interface requires either one linked resource, (for example, linkedVpnTunnel), or IP address and IP address range (for example, ipRange), or both.
 	Interfaces []RouterInterfaceResponse `pulumi:"interfaces"`
@@ -112,7 +112,7 @@ func (o LookupRouterResultOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRouterResult) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly.
+// Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
 func (o LookupRouterResultOutput) EncryptedInterconnectRouter() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupRouterResult) bool { return v.EncryptedInterconnectRouter }).(pulumi.BoolOutput)
 }

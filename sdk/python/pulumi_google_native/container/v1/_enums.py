@@ -16,6 +16,7 @@ __all__ = [
     'FilterEventTypeItem',
     'GPUSharingConfigGpuSharingStrategy',
     'LoggingComponentConfigEnableComponentsItem',
+    'LoggingVariantConfigVariant',
     'MaintenanceExclusionOptionsScope',
     'MonitoringComponentConfigEnableComponentsItem',
     'NetworkConfigDatapathProvider',
@@ -223,6 +224,24 @@ class LoggingComponentConfigEnableComponentsItem(str, Enum):
     WORKLOADS = "WORKLOADS"
     """
     workloads
+    """
+
+
+class LoggingVariantConfigVariant(str, Enum):
+    """
+    Logging variant deployed on nodes.
+    """
+    VARIANT_UNSPECIFIED = "VARIANT_UNSPECIFIED"
+    """
+    Default value. This shouldn't be used.
+    """
+    DEFAULT = "DEFAULT"
+    """
+    default logging variant.
+    """
+    MAX_THROUGHPUT = "MAX_THROUGHPUT"
+    """
+    maximum logging throughput variant.
     """
 
 

@@ -128,7 +128,7 @@ export class Entry extends pulumi.CustomResource {
     /**
      * Resource usage statistics.
      */
-    public /*out*/ readonly usageSignal!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1UsageSignalResponse>;
+    public readonly usageSignal!: pulumi.Output<outputs.datacatalog.v1.GoogleCloudDatacatalogV1UsageSignalResponse>;
     /**
      * Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
      */
@@ -173,6 +173,7 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["sourceSystemTimestamps"] = args ? args.sourceSystemTimestamps : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
+            resourceInputs["usageSignal"] = args ? args.usageSignal : undefined;
             resourceInputs["userSpecifiedSystem"] = args ? args.userSpecifiedSystem : undefined;
             resourceInputs["userSpecifiedType"] = args ? args.userSpecifiedType : undefined;
             resourceInputs["bigqueryDateShardedSpec"] = undefined /*out*/;
@@ -181,7 +182,6 @@ export class Entry extends pulumi.CustomResource {
             resourceInputs["integratedSystem"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["personalDetails"] = undefined /*out*/;
-            resourceInputs["usageSignal"] = undefined /*out*/;
         } else {
             resourceInputs["bigqueryDateShardedSpec"] = undefined /*out*/;
             resourceInputs["bigqueryTableSpec"] = undefined /*out*/;
@@ -285,6 +285,10 @@ export interface EntryArgs {
      * The type of the entry. Only used for entries with types listed in the `EntryType` enum. Currently, only `FILESET` enum value is allowed. All other entries created in Data Catalog must use the `user_specified_type`.
      */
     type?: pulumi.Input<enums.datacatalog.v1.EntryType>;
+    /**
+     * Resource usage statistics.
+     */
+    usageSignal?: pulumi.Input<inputs.datacatalog.v1.GoogleCloudDatacatalogV1UsageSignalArgs>;
     /**
      * Indicates the entry's source system that Data Catalog doesn't automatically integrate with. The `user_specified_system` string has the following limitations: * Is case insensitive. * Must begin with a letter or underscore. * Can only contain letters, numbers, and underscores. * Must be at least 1 character and at most 64 characters long.
      */

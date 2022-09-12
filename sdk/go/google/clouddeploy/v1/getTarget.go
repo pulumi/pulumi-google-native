@@ -47,6 +47,8 @@ type LookupTargetResult struct {
 	Name string `pulumi:"name"`
 	// Optional. Whether or not the `Target` requires approval.
 	RequireApproval bool `pulumi:"requireApproval"`
+	// Information specifying a Cloud Run deployment target.
+	Run CloudRunLocationResponse `pulumi:"run"`
 	// Resource id of the `Target`.
 	TargetId string `pulumi:"targetId"`
 	// Unique identifier of the `Target`.
@@ -140,6 +142,11 @@ func (o LookupTargetResultOutput) Name() pulumi.StringOutput {
 // Optional. Whether or not the `Target` requires approval.
 func (o LookupTargetResultOutput) RequireApproval() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupTargetResult) bool { return v.RequireApproval }).(pulumi.BoolOutput)
+}
+
+// Information specifying a Cloud Run deployment target.
+func (o LookupTargetResultOutput) Run() CloudRunLocationResponseOutput {
+	return o.ApplyT(func(v LookupTargetResult) CloudRunLocationResponse { return v.Run }).(CloudRunLocationResponseOutput)
 }
 
 // Resource id of the `Target`.

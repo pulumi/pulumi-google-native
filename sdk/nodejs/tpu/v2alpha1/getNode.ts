@@ -95,6 +95,10 @@ export interface GetNodeResult {
      */
     readonly serviceAccount: outputs.tpu.v2alpha1.ServiceAccountResponse;
     /**
+     * Shielded Instance options.
+     */
+    readonly shieldedInstanceConfig: outputs.tpu.v2alpha1.ShieldedInstanceConfigResponse;
+    /**
      * The current state for the TPU Node.
      */
     readonly state: string;

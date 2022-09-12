@@ -76,11 +76,11 @@ namespace Pulumi.GoogleNative.NetworkServices.V1
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>
-        /// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name&gt;`.
+        /// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
         /// </summary>
         public readonly string Name;
         /// <summary>
-        /// The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+        /// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
         /// </summary>
         public readonly string Service;
         /// <summary>

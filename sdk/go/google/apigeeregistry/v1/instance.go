@@ -23,7 +23,7 @@ type Instance struct {
 	// Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource.
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
 	Location   pulumi.StringOutput `pulumi:"location"`
-	// Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
+	// Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The current state of the Instance.
@@ -90,7 +90,7 @@ type instanceArgs struct {
 	// Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource.
 	InstanceId string  `pulumi:"instanceId"`
 	Location   *string `pulumi:"location"`
-	// Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
+	// Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 }
@@ -102,7 +102,7 @@ type InstanceArgs struct {
 	// Required. Identifier to assign to the Instance. Must be unique within scope of the parent resource.
 	InstanceId pulumi.StringInput
 	Location   pulumi.StringPtrInput
-	// Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
+	// Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 }
@@ -163,7 +163,7 @@ func (o InstanceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
+// Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
 func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

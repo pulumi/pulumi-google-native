@@ -19,9 +19,11 @@ type BackendService struct {
 	// The list of backends that serve this BackendService.
 	Backends BackendResponseArrayOutput `pulumi:"backends"`
 	// Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
-	CdnPolicy          BackendServiceCdnPolicyResponseOutput `pulumi:"cdnPolicy"`
-	CircuitBreakers    CircuitBreakersResponseOutput         `pulumi:"circuitBreakers"`
-	ConnectionDraining ConnectionDrainingResponseOutput      `pulumi:"connectionDraining"`
+	CdnPolicy       BackendServiceCdnPolicyResponseOutput `pulumi:"cdnPolicy"`
+	CircuitBreakers CircuitBreakersResponseOutput         `pulumi:"circuitBreakers"`
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	CompressionMode    pulumi.StringOutput              `pulumi:"compressionMode"`
+	ConnectionDraining ConnectionDrainingResponseOutput `pulumi:"connectionDraining"`
 	// Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
 	ConnectionTrackingPolicy BackendServiceConnectionTrackingPolicyResponseOutput `pulumi:"connectionTrackingPolicy"`
 	// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
@@ -140,9 +142,11 @@ type backendServiceArgs struct {
 	// The list of backends that serve this BackendService.
 	Backends []Backend `pulumi:"backends"`
 	// Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
-	CdnPolicy          *BackendServiceCdnPolicy `pulumi:"cdnPolicy"`
-	CircuitBreakers    *CircuitBreakers         `pulumi:"circuitBreakers"`
-	ConnectionDraining *ConnectionDraining      `pulumi:"connectionDraining"`
+	CdnPolicy       *BackendServiceCdnPolicy `pulumi:"cdnPolicy"`
+	CircuitBreakers *CircuitBreakers         `pulumi:"circuitBreakers"`
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	CompressionMode    *BackendServiceCompressionMode `pulumi:"compressionMode"`
+	ConnectionDraining *ConnectionDraining            `pulumi:"connectionDraining"`
 	// Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
 	ConnectionTrackingPolicy *BackendServiceConnectionTrackingPolicy `pulumi:"connectionTrackingPolicy"`
 	// Consistent Hash-based load balancing can be used to provide soft session affinity based on HTTP headers, cookies or other properties. This load balancing policy is applicable only for HTTP connections. The affinity to a particular destination host will be lost when one or more hosts are added/removed from the destination service. This field specifies parameters that control consistent hashing. This field is only applicable when localityLbPolicy is set to MAGLEV or RING_HASH. This field is applicable to either: - A regional backend service with the service_protocol set to HTTP, HTTPS, or HTTP2, and load_balancing_scheme set to INTERNAL_MANAGED. - A global backend service with the load_balancing_scheme set to INTERNAL_SELF_MANAGED.
@@ -206,8 +210,10 @@ type BackendServiceArgs struct {
 	// The list of backends that serve this BackendService.
 	Backends BackendArrayInput
 	// Cloud CDN configuration for this BackendService. Only available for specified load balancer types.
-	CdnPolicy          BackendServiceCdnPolicyPtrInput
-	CircuitBreakers    CircuitBreakersPtrInput
+	CdnPolicy       BackendServiceCdnPolicyPtrInput
+	CircuitBreakers CircuitBreakersPtrInput
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	CompressionMode    BackendServiceCompressionModePtrInput
 	ConnectionDraining ConnectionDrainingPtrInput
 	// Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
 	ConnectionTrackingPolicy BackendServiceConnectionTrackingPolicyPtrInput
@@ -319,6 +325,11 @@ func (o BackendServiceOutput) CdnPolicy() BackendServiceCdnPolicyResponseOutput 
 
 func (o BackendServiceOutput) CircuitBreakers() CircuitBreakersResponseOutput {
 	return o.ApplyT(func(v *BackendService) CircuitBreakersResponseOutput { return v.CircuitBreakers }).(CircuitBreakersResponseOutput)
+}
+
+// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+func (o BackendServiceOutput) CompressionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackendService) pulumi.StringOutput { return v.CompressionMode }).(pulumi.StringOutput)
 }
 
 func (o BackendServiceOutput) ConnectionDraining() ConnectionDrainingResponseOutput {

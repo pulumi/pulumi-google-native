@@ -55,6 +55,8 @@ type LookupRolloutResult struct {
 	FailureReason string `pulumi:"failureReason"`
 	// Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 	Labels map[string]string `pulumi:"labels"`
+	// Metadata contains information about the rollout.
+	Metadata MetadataResponse `pulumi:"metadata"`
 	// Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
 	Name string `pulumi:"name"`
 	// Current state of the `Rollout`.
@@ -167,6 +169,11 @@ func (o LookupRolloutResultOutput) FailureReason() pulumi.StringOutput {
 // Labels are attributes that can be set and used by both the user and by Google Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes.
 func (o LookupRolloutResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupRolloutResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// Metadata contains information about the rollout.
+func (o LookupRolloutResultOutput) Metadata() MetadataResponseOutput {
+	return o.ApplyT(func(v LookupRolloutResult) MetadataResponse { return v.Metadata }).(MetadataResponseOutput)
 }
 
 // Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.

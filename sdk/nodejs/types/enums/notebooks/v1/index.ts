@@ -268,7 +268,7 @@ export const RuntimeAcceleratorConfigType = {
      */
     AcceleratorTypeUnspecified: "ACCELERATOR_TYPE_UNSPECIFIED",
     /**
-     * Accelerator type is Nvidia Tesla K80.
+     * b/241005111 K80 deprecation in Google Managed Notebooks Accelerator type is Nvidia Tesla K80.
      */
     NvidiaTeslaK80: "NVIDIA_TESLA_K80",
     /**

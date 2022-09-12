@@ -23,11 +23,11 @@ class ServiceBindingArgs:
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ServiceBinding resource.
-        :param pulumi.Input[str] service: The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+        :param pulumi.Input[str] service: The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
         :param pulumi.Input[str] service_binding_id: Required. Short name of the ServiceBinding resource to be created.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the ServiceBinding resource.
-        :param pulumi.Input[str] name: Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
+        :param pulumi.Input[str] name: Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
         """
         pulumi.set(__self__, "service", service)
         pulumi.set(__self__, "service_binding_id", service_binding_id)
@@ -46,7 +46,7 @@ class ServiceBindingArgs:
     @pulumi.getter
     def service(self) -> pulumi.Input[str]:
         """
-        The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+        The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
         """
         return pulumi.get(self, "service")
 
@@ -103,7 +103,7 @@ class ServiceBindingArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
+        Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
         """
         return pulumi.get(self, "name")
 
@@ -141,8 +141,8 @@ class ServiceBinding(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: Optional. A free-text description of the resource. Max length 1024 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Set of label tags associated with the ServiceBinding resource.
-        :param pulumi.Input[str] name: Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
-        :param pulumi.Input[str] service: The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+        :param pulumi.Input[str] name: Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
+        :param pulumi.Input[str] service: The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
         :param pulumi.Input[str] service_binding_id: Required. Short name of the ServiceBinding resource to be created.
         """
         ...
@@ -266,7 +266,7 @@ class ServiceBinding(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
+        Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
         """
         return pulumi.get(self, "name")
 
@@ -279,7 +279,7 @@ class ServiceBinding(pulumi.CustomResource):
     @pulumi.getter
     def service(self) -> pulumi.Output[str]:
         """
-        The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+        The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
         """
         return pulumi.get(self, "service")
 

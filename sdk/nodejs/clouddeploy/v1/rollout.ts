@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../../types/input";
+import * as outputs from "../../types/output";
+import * as enums from "../../types/enums";
 import * as utilities from "../../utilities";
 
 /**
@@ -92,6 +95,10 @@ export class Rollout extends pulumi.CustomResource {
     public readonly labels!: pulumi.Output<{[key: string]: string}>;
     public readonly location!: pulumi.Output<string>;
     /**
+     * Metadata contains information about the rollout.
+     */
+    public /*out*/ readonly metadata!: pulumi.Output<outputs.clouddeploy.v1.MetadataResponse>;
+    /**
      * Optional. Name of the `Rollout`. Format is projects/{project}/ locations/{location}/deliveryPipelines/{deliveryPipeline}/ releases/{release}/rollouts/a-z{0,62}.
      */
     public readonly name!: pulumi.Output<string>;
@@ -167,6 +174,7 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["deployingBuild"] = undefined /*out*/;
             resourceInputs["enqueueTime"] = undefined /*out*/;
             resourceInputs["failureReason"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["uid"] = undefined /*out*/;
         } else {
@@ -185,6 +193,7 @@ export class Rollout extends pulumi.CustomResource {
             resourceInputs["failureReason"] = undefined /*out*/;
             resourceInputs["labels"] = undefined /*out*/;
             resourceInputs["location"] = undefined /*out*/;
+            resourceInputs["metadata"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["releaseId"] = undefined /*out*/;

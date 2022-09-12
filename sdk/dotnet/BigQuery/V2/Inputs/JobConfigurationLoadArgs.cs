@@ -36,6 +36,18 @@ namespace Pulumi.GoogleNative.BigQuery.V2.Inputs
         [Input("clustering")]
         public Input<Inputs.ClusteringArgs>? Clustering { get; set; }
 
+        [Input("connectionProperties")]
+        private InputList<Inputs.ConnectionPropertyArgs>? _connectionProperties;
+
+        /// <summary>
+        /// Connection properties.
+        /// </summary>
+        public InputList<Inputs.ConnectionPropertyArgs> ConnectionProperties
+        {
+            get => _connectionProperties ?? (_connectionProperties = new InputList<Inputs.ConnectionPropertyArgs>());
+            set => _connectionProperties = value;
+        }
+
         /// <summary>
         /// [Optional] Specifies whether the job is allowed to create new tables. The following values are supported: CREATE_IF_NEEDED: If the table does not exist, BigQuery creates the table. CREATE_NEVER: The table must already exist. If it does not, a 'notFound' error is returned in the job result. The default value is CREATE_IF_NEEDED. Creation, truncation and append actions occur as one atomic update upon job completion.
         /// </summary>

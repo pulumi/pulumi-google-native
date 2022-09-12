@@ -851,7 +851,7 @@ func (in *addressNetworkTierPtr) ToAddressNetworkTierPtrOutputWithContext(ctx co
 	return pulumi.ToOutputWithContext(ctx, in).(AddressNetworkTierPtrOutput)
 }
 
-// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
+// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *HA VPN over Cloud Interconnect* configuration. These addresses are regional resources. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
 type AddressPurpose string
 
 const (
@@ -859,7 +859,7 @@ const (
 	AddressPurposeDnsResolver = AddressPurpose("DNS_RESOLVER")
 	// VM internal/alias IP, Internal LB service IP, etc.
 	AddressPurposeGceEndpoint = AddressPurpose("GCE_ENDPOINT")
-	// A regional internal IP address range reserved for the VLAN attachment that is used in IPsec-encrypted Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
+	// A regional internal IP address range reserved for the VLAN attachment that is used in HA VPN over Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
 	AddressPurposeIpsecInterconnect = AddressPurpose("IPSEC_INTERCONNECT")
 	// External IP automatically reserved for Cloud NAT.
 	AddressPurposeNatAuto = AddressPurpose("NAT_AUTO")
@@ -1533,7 +1533,7 @@ func (in *attachedDiskInitializeParamsOnUpdateActionPtr) ToAttachedDiskInitializ
 	return pulumi.ToOutputWithContext(ctx, in).(AttachedDiskInitializeParamsOnUpdateActionPtrOutput)
 }
 
-// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
+// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. For most machine types, the default is SCSI. Local SSDs can use either NVME or SCSI. In certain configurations, persistent disks can use NVMe. For more information, see About persistent disks.
 type AttachedDiskInterface string
 
 const (
@@ -3220,6 +3220,173 @@ func (in *backendBucketCdnPolicyCacheModePtr) ToBackendBucketCdnPolicyCacheModeP
 	return pulumi.ToOutputWithContext(ctx, in).(BackendBucketCdnPolicyCacheModePtrOutput)
 }
 
+// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+type BackendBucketCompressionMode string
+
+const (
+	// Automatically uses the best compression based on the Accept-Encoding header sent by the client.
+	BackendBucketCompressionModeAutomatic = BackendBucketCompressionMode("AUTOMATIC")
+	// Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients.
+	BackendBucketCompressionModeDisabled = BackendBucketCompressionMode("DISABLED")
+)
+
+func (BackendBucketCompressionMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBucketCompressionMode)(nil)).Elem()
+}
+
+func (e BackendBucketCompressionMode) ToBackendBucketCompressionModeOutput() BackendBucketCompressionModeOutput {
+	return pulumi.ToOutput(e).(BackendBucketCompressionModeOutput)
+}
+
+func (e BackendBucketCompressionMode) ToBackendBucketCompressionModeOutputWithContext(ctx context.Context) BackendBucketCompressionModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BackendBucketCompressionModeOutput)
+}
+
+func (e BackendBucketCompressionMode) ToBackendBucketCompressionModePtrOutput() BackendBucketCompressionModePtrOutput {
+	return e.ToBackendBucketCompressionModePtrOutputWithContext(context.Background())
+}
+
+func (e BackendBucketCompressionMode) ToBackendBucketCompressionModePtrOutputWithContext(ctx context.Context) BackendBucketCompressionModePtrOutput {
+	return BackendBucketCompressionMode(e).ToBackendBucketCompressionModeOutputWithContext(ctx).ToBackendBucketCompressionModePtrOutputWithContext(ctx)
+}
+
+func (e BackendBucketCompressionMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendBucketCompressionMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendBucketCompressionMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BackendBucketCompressionMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BackendBucketCompressionModeOutput struct{ *pulumi.OutputState }
+
+func (BackendBucketCompressionModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendBucketCompressionMode)(nil)).Elem()
+}
+
+func (o BackendBucketCompressionModeOutput) ToBackendBucketCompressionModeOutput() BackendBucketCompressionModeOutput {
+	return o
+}
+
+func (o BackendBucketCompressionModeOutput) ToBackendBucketCompressionModeOutputWithContext(ctx context.Context) BackendBucketCompressionModeOutput {
+	return o
+}
+
+func (o BackendBucketCompressionModeOutput) ToBackendBucketCompressionModePtrOutput() BackendBucketCompressionModePtrOutput {
+	return o.ToBackendBucketCompressionModePtrOutputWithContext(context.Background())
+}
+
+func (o BackendBucketCompressionModeOutput) ToBackendBucketCompressionModePtrOutputWithContext(ctx context.Context) BackendBucketCompressionModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendBucketCompressionMode) *BackendBucketCompressionMode {
+		return &v
+	}).(BackendBucketCompressionModePtrOutput)
+}
+
+func (o BackendBucketCompressionModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BackendBucketCompressionModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendBucketCompressionMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BackendBucketCompressionModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendBucketCompressionModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendBucketCompressionMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackendBucketCompressionModePtrOutput struct{ *pulumi.OutputState }
+
+func (BackendBucketCompressionModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendBucketCompressionMode)(nil)).Elem()
+}
+
+func (o BackendBucketCompressionModePtrOutput) ToBackendBucketCompressionModePtrOutput() BackendBucketCompressionModePtrOutput {
+	return o
+}
+
+func (o BackendBucketCompressionModePtrOutput) ToBackendBucketCompressionModePtrOutputWithContext(ctx context.Context) BackendBucketCompressionModePtrOutput {
+	return o
+}
+
+func (o BackendBucketCompressionModePtrOutput) Elem() BackendBucketCompressionModeOutput {
+	return o.ApplyT(func(v *BackendBucketCompressionMode) BackendBucketCompressionMode {
+		if v != nil {
+			return *v
+		}
+		var ret BackendBucketCompressionMode
+		return ret
+	}).(BackendBucketCompressionModeOutput)
+}
+
+func (o BackendBucketCompressionModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendBucketCompressionModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BackendBucketCompressionMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BackendBucketCompressionModeInput is an input type that accepts BackendBucketCompressionModeArgs and BackendBucketCompressionModeOutput values.
+// You can construct a concrete instance of `BackendBucketCompressionModeInput` via:
+//
+//	BackendBucketCompressionModeArgs{...}
+type BackendBucketCompressionModeInput interface {
+	pulumi.Input
+
+	ToBackendBucketCompressionModeOutput() BackendBucketCompressionModeOutput
+	ToBackendBucketCompressionModeOutputWithContext(context.Context) BackendBucketCompressionModeOutput
+}
+
+var backendBucketCompressionModePtrType = reflect.TypeOf((**BackendBucketCompressionMode)(nil)).Elem()
+
+type BackendBucketCompressionModePtrInput interface {
+	pulumi.Input
+
+	ToBackendBucketCompressionModePtrOutput() BackendBucketCompressionModePtrOutput
+	ToBackendBucketCompressionModePtrOutputWithContext(context.Context) BackendBucketCompressionModePtrOutput
+}
+
+type backendBucketCompressionModePtr string
+
+func BackendBucketCompressionModePtr(v string) BackendBucketCompressionModePtrInput {
+	return (*backendBucketCompressionModePtr)(&v)
+}
+
+func (*backendBucketCompressionModePtr) ElementType() reflect.Type {
+	return backendBucketCompressionModePtrType
+}
+
+func (in *backendBucketCompressionModePtr) ToBackendBucketCompressionModePtrOutput() BackendBucketCompressionModePtrOutput {
+	return pulumi.ToOutput(in).(BackendBucketCompressionModePtrOutput)
+}
+
+func (in *backendBucketCompressionModePtr) ToBackendBucketCompressionModePtrOutputWithContext(ctx context.Context) BackendBucketCompressionModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BackendBucketCompressionModePtrOutput)
+}
+
 // Specifies the cache setting for all responses from this backend. The possible values are: USE_ORIGIN_HEADERS Requires the origin to set valid caching headers to cache content. Responses without these headers will not be cached at Google's edge, and will require a full trip to the origin on every request, potentially impacting performance and increasing load on the origin server. FORCE_CACHE_ALL Cache all content, ignoring any "private", "no-store" or "no-cache" directives in Cache-Control response headers. Warning: this may result in Cloud CDN caching private, per-user (user identifiable) content. CACHE_ALL_STATIC Automatically cache static content, including common image formats, media (video and audio), and web assets (JavaScript and CSS). Requests and responses that are marked as uncacheable, as well as dynamic content (including HTML), will not be cached.
 type BackendServiceCdnPolicyCacheMode string
 
@@ -3388,6 +3555,173 @@ func (in *backendServiceCdnPolicyCacheModePtr) ToBackendServiceCdnPolicyCacheMod
 
 func (in *backendServiceCdnPolicyCacheModePtr) ToBackendServiceCdnPolicyCacheModePtrOutputWithContext(ctx context.Context) BackendServiceCdnPolicyCacheModePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceCdnPolicyCacheModePtrOutput)
+}
+
+// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+type BackendServiceCompressionMode string
+
+const (
+	// Automatically uses the best compression based on the Accept-Encoding header sent by the client.
+	BackendServiceCompressionModeAutomatic = BackendServiceCompressionMode("AUTOMATIC")
+	// Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients.
+	BackendServiceCompressionModeDisabled = BackendServiceCompressionMode("DISABLED")
+)
+
+func (BackendServiceCompressionMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceCompressionMode)(nil)).Elem()
+}
+
+func (e BackendServiceCompressionMode) ToBackendServiceCompressionModeOutput() BackendServiceCompressionModeOutput {
+	return pulumi.ToOutput(e).(BackendServiceCompressionModeOutput)
+}
+
+func (e BackendServiceCompressionMode) ToBackendServiceCompressionModeOutputWithContext(ctx context.Context) BackendServiceCompressionModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(BackendServiceCompressionModeOutput)
+}
+
+func (e BackendServiceCompressionMode) ToBackendServiceCompressionModePtrOutput() BackendServiceCompressionModePtrOutput {
+	return e.ToBackendServiceCompressionModePtrOutputWithContext(context.Background())
+}
+
+func (e BackendServiceCompressionMode) ToBackendServiceCompressionModePtrOutputWithContext(ctx context.Context) BackendServiceCompressionModePtrOutput {
+	return BackendServiceCompressionMode(e).ToBackendServiceCompressionModeOutputWithContext(ctx).ToBackendServiceCompressionModePtrOutputWithContext(ctx)
+}
+
+func (e BackendServiceCompressionMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendServiceCompressionMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e BackendServiceCompressionMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e BackendServiceCompressionMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type BackendServiceCompressionModeOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceCompressionModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackendServiceCompressionMode)(nil)).Elem()
+}
+
+func (o BackendServiceCompressionModeOutput) ToBackendServiceCompressionModeOutput() BackendServiceCompressionModeOutput {
+	return o
+}
+
+func (o BackendServiceCompressionModeOutput) ToBackendServiceCompressionModeOutputWithContext(ctx context.Context) BackendServiceCompressionModeOutput {
+	return o
+}
+
+func (o BackendServiceCompressionModeOutput) ToBackendServiceCompressionModePtrOutput() BackendServiceCompressionModePtrOutput {
+	return o.ToBackendServiceCompressionModePtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceCompressionModeOutput) ToBackendServiceCompressionModePtrOutputWithContext(ctx context.Context) BackendServiceCompressionModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackendServiceCompressionMode) *BackendServiceCompressionMode {
+		return &v
+	}).(BackendServiceCompressionModePtrOutput)
+}
+
+func (o BackendServiceCompressionModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o BackendServiceCompressionModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendServiceCompressionMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o BackendServiceCompressionModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceCompressionModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e BackendServiceCompressionMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type BackendServiceCompressionModePtrOutput struct{ *pulumi.OutputState }
+
+func (BackendServiceCompressionModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackendServiceCompressionMode)(nil)).Elem()
+}
+
+func (o BackendServiceCompressionModePtrOutput) ToBackendServiceCompressionModePtrOutput() BackendServiceCompressionModePtrOutput {
+	return o
+}
+
+func (o BackendServiceCompressionModePtrOutput) ToBackendServiceCompressionModePtrOutputWithContext(ctx context.Context) BackendServiceCompressionModePtrOutput {
+	return o
+}
+
+func (o BackendServiceCompressionModePtrOutput) Elem() BackendServiceCompressionModeOutput {
+	return o.ApplyT(func(v *BackendServiceCompressionMode) BackendServiceCompressionMode {
+		if v != nil {
+			return *v
+		}
+		var ret BackendServiceCompressionMode
+		return ret
+	}).(BackendServiceCompressionModeOutput)
+}
+
+func (o BackendServiceCompressionModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o BackendServiceCompressionModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *BackendServiceCompressionMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// BackendServiceCompressionModeInput is an input type that accepts BackendServiceCompressionModeArgs and BackendServiceCompressionModeOutput values.
+// You can construct a concrete instance of `BackendServiceCompressionModeInput` via:
+//
+//	BackendServiceCompressionModeArgs{...}
+type BackendServiceCompressionModeInput interface {
+	pulumi.Input
+
+	ToBackendServiceCompressionModeOutput() BackendServiceCompressionModeOutput
+	ToBackendServiceCompressionModeOutputWithContext(context.Context) BackendServiceCompressionModeOutput
+}
+
+var backendServiceCompressionModePtrType = reflect.TypeOf((**BackendServiceCompressionMode)(nil)).Elem()
+
+type BackendServiceCompressionModePtrInput interface {
+	pulumi.Input
+
+	ToBackendServiceCompressionModePtrOutput() BackendServiceCompressionModePtrOutput
+	ToBackendServiceCompressionModePtrOutputWithContext(context.Context) BackendServiceCompressionModePtrOutput
+}
+
+type backendServiceCompressionModePtr string
+
+func BackendServiceCompressionModePtr(v string) BackendServiceCompressionModePtrInput {
+	return (*backendServiceCompressionModePtr)(&v)
+}
+
+func (*backendServiceCompressionModePtr) ElementType() reflect.Type {
+	return backendServiceCompressionModePtrType
+}
+
+func (in *backendServiceCompressionModePtr) ToBackendServiceCompressionModePtrOutput() BackendServiceCompressionModePtrOutput {
+	return pulumi.ToOutput(in).(BackendServiceCompressionModePtrOutput)
+}
+
+func (in *backendServiceCompressionModePtr) ToBackendServiceCompressionModePtrOutputWithContext(ctx context.Context) BackendServiceCompressionModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(BackendServiceCompressionModePtrOutput)
 }
 
 // Specifies connection persistence when backends are unhealthy. The default value is DEFAULT_FOR_PROTOCOL. If set to DEFAULT_FOR_PROTOCOL, the existing connections persist on unhealthy backends only for connection-oriented protocols (TCP and SCTP) and only if the Tracking Mode is PER_CONNECTION (default tracking mode) or the Session Affinity is configured for 5-tuple. They do not persist for UDP. If set to NEVER_PERSIST, after a backend becomes unhealthy, the existing connections on the unhealthy backend are never persisted on the unhealthy backend. They are always diverted to newly selected healthy backends (unless all backends are unhealthy). If set to ALWAYS_PERSIST, existing connections always persist on unhealthy backends regardless of protocol and session affinity. It is generally not recommended to use this mode overriding the default. For more details, see [Connection Persistence for Network Load Balancing](https://cloud.google.com/load-balancing/docs/network/networklb-backend-service#connection-persistence) and [Connection Persistence for Internal TCP/UDP Load Balancing](https://cloud.google.com/load-balancing/docs/internal#connection-persistence).
@@ -6148,7 +6482,7 @@ func (in *fileContentBufferFileTypePtr) ToFileContentBufferFileTypePtrOutputWith
 	return pulumi.ToOutputWithContext(ctx, in).(FileContentBufferFileTypePtrOutput)
 }
 
-// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
 type FirewallDirection string
 
 const (
@@ -8168,7 +8502,7 @@ func (in *globalAddressNetworkTierPtr) ToGlobalAddressNetworkTierPtrOutputWithCo
 	return pulumi.ToOutputWithContext(ctx, in).(GlobalAddressNetworkTierPtrOutput)
 }
 
-// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *IPsec-encrypted Cloud Interconnect* configuration. These addresses are regional resources. Not currently available publicly. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
+// The purpose of this resource, which can be one of the following values: - GCE_ENDPOINT for addresses that are used by VM instances, alias IP ranges, load balancers, and similar resources. - DNS_RESOLVER for a DNS resolver address in a subnetwork for a Cloud DNS inbound forwarder IP addresses (regional internal IP address in a subnet of a VPC network) - VPC_PEERING for global internal IP addresses used for private services access allocated ranges. - NAT_AUTO for the regional external IP addresses used by Cloud NAT when allocating addresses using automatic NAT IP address allocation. - IPSEC_INTERCONNECT for addresses created from a private IP range that are reserved for a VLAN attachment in an *HA VPN over Cloud Interconnect* configuration. These addresses are regional resources. - `SHARED_LOADBALANCER_VIP` for an internal IP address that is assigned to multiple internal forwarding rules. - `PRIVATE_SERVICE_CONNECT` for a private network address that is used to configure Private Service Connect. Only global internal addresses can use this purpose.
 type GlobalAddressPurpose string
 
 const (
@@ -8176,7 +8510,7 @@ const (
 	GlobalAddressPurposeDnsResolver = GlobalAddressPurpose("DNS_RESOLVER")
 	// VM internal/alias IP, Internal LB service IP, etc.
 	GlobalAddressPurposeGceEndpoint = GlobalAddressPurpose("GCE_ENDPOINT")
-	// A regional internal IP address range reserved for the VLAN attachment that is used in IPsec-encrypted Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
+	// A regional internal IP address range reserved for the VLAN attachment that is used in HA VPN over Cloud Interconnect. This regional internal IP address range must not overlap with any IP address range of subnet/route in the VPC network and its peering networks. After the VLAN attachment is created with the reserved IP address range, when creating a new VPN gateway, its interface IP address is allocated from the associated VLAN attachment’s IP address range.
 	GlobalAddressPurposeIpsecInterconnect = GlobalAddressPurpose("IPSEC_INTERCONNECT")
 	// External IP automatically reserved for Cloud NAT.
 	GlobalAddressPurposeNatAuto = GlobalAddressPurpose("NAT_AUTO")
@@ -13258,11 +13592,11 @@ func (in *interconnectAttachmentEdgeAvailabilityDomainPtr) ToInterconnectAttachm
 	return pulumi.ToOutputWithContext(ctx, in).(InterconnectAttachmentEdgeAvailabilityDomainPtrOutput)
 }
 
-// Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *IPsec-encrypted Cloud Interconnect*, the VLAN attachment must be created with this option. Not currently available publicly.
+// Indicates the user-supplied encryption option of this VLAN attachment (interconnectAttachment). Can only be specified at attachment creation for PARTNER or DEDICATED attachments. Possible values are: - NONE - This is the default value, which means that the VLAN attachment carries unencrypted traffic. VMs are able to send traffic to, or receive traffic from, such a VLAN attachment. - IPSEC - The VLAN attachment carries only encrypted traffic that is encrypted by an IPsec device, such as an HA VPN gateway or third-party IPsec VPN. VMs cannot directly send traffic to, or receive traffic from, such a VLAN attachment. To use *HA VPN over Cloud Interconnect*, the VLAN attachment must be created with this option.
 type InterconnectAttachmentEncryption string
 
 const (
-	// The interconnect attachment will carry only encrypted traffic that is encrypted by an IPsec device such as HA VPN gateway; VMs cannot directly send traffic to or receive traffic from such an interconnect attachment. To use IPsec-encrypted Cloud Interconnect, the interconnect attachment must be created with this option.
+	// The interconnect attachment will carry only encrypted traffic that is encrypted by an IPsec device such as HA VPN gateway; VMs cannot directly send traffic to or receive traffic from such an interconnect attachment. To use HA VPN over Cloud Interconnect, the interconnect attachment must be created with this option.
 	InterconnectAttachmentEncryptionIpsec = InterconnectAttachmentEncryption("IPSEC")
 	// This is the default value, which means the Interconnect Attachment will carry unencrypted traffic. VMs will be able to send traffic to or receive traffic from such interconnect attachment.
 	InterconnectAttachmentEncryptionNone = InterconnectAttachmentEncryption("NONE")
@@ -16635,6 +16969,173 @@ func (in *publicAdvertisedPrefixStatusPtr) ToPublicAdvertisedPrefixStatusPtrOutp
 	return pulumi.ToOutputWithContext(ctx, in).(PublicAdvertisedPrefixStatusPtrOutput)
 }
 
+// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+type RegionBackendServiceCompressionMode string
+
+const (
+	// Automatically uses the best compression based on the Accept-Encoding header sent by the client.
+	RegionBackendServiceCompressionModeAutomatic = RegionBackendServiceCompressionMode("AUTOMATIC")
+	// Disables compression. Existing compressed responses cached by Cloud CDN will not be served to clients.
+	RegionBackendServiceCompressionModeDisabled = RegionBackendServiceCompressionMode("DISABLED")
+)
+
+func (RegionBackendServiceCompressionMode) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionBackendServiceCompressionMode)(nil)).Elem()
+}
+
+func (e RegionBackendServiceCompressionMode) ToRegionBackendServiceCompressionModeOutput() RegionBackendServiceCompressionModeOutput {
+	return pulumi.ToOutput(e).(RegionBackendServiceCompressionModeOutput)
+}
+
+func (e RegionBackendServiceCompressionMode) ToRegionBackendServiceCompressionModeOutputWithContext(ctx context.Context) RegionBackendServiceCompressionModeOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionBackendServiceCompressionModeOutput)
+}
+
+func (e RegionBackendServiceCompressionMode) ToRegionBackendServiceCompressionModePtrOutput() RegionBackendServiceCompressionModePtrOutput {
+	return e.ToRegionBackendServiceCompressionModePtrOutputWithContext(context.Background())
+}
+
+func (e RegionBackendServiceCompressionMode) ToRegionBackendServiceCompressionModePtrOutputWithContext(ctx context.Context) RegionBackendServiceCompressionModePtrOutput {
+	return RegionBackendServiceCompressionMode(e).ToRegionBackendServiceCompressionModeOutputWithContext(ctx).ToRegionBackendServiceCompressionModePtrOutputWithContext(ctx)
+}
+
+func (e RegionBackendServiceCompressionMode) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionBackendServiceCompressionMode) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionBackendServiceCompressionMode) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionBackendServiceCompressionMode) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionBackendServiceCompressionModeOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceCompressionModeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionBackendServiceCompressionMode)(nil)).Elem()
+}
+
+func (o RegionBackendServiceCompressionModeOutput) ToRegionBackendServiceCompressionModeOutput() RegionBackendServiceCompressionModeOutput {
+	return o
+}
+
+func (o RegionBackendServiceCompressionModeOutput) ToRegionBackendServiceCompressionModeOutputWithContext(ctx context.Context) RegionBackendServiceCompressionModeOutput {
+	return o
+}
+
+func (o RegionBackendServiceCompressionModeOutput) ToRegionBackendServiceCompressionModePtrOutput() RegionBackendServiceCompressionModePtrOutput {
+	return o.ToRegionBackendServiceCompressionModePtrOutputWithContext(context.Background())
+}
+
+func (o RegionBackendServiceCompressionModeOutput) ToRegionBackendServiceCompressionModePtrOutputWithContext(ctx context.Context) RegionBackendServiceCompressionModePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionBackendServiceCompressionMode) *RegionBackendServiceCompressionMode {
+		return &v
+	}).(RegionBackendServiceCompressionModePtrOutput)
+}
+
+func (o RegionBackendServiceCompressionModeOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionBackendServiceCompressionModeOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionBackendServiceCompressionMode) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionBackendServiceCompressionModeOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionBackendServiceCompressionModeOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionBackendServiceCompressionMode) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionBackendServiceCompressionModePtrOutput struct{ *pulumi.OutputState }
+
+func (RegionBackendServiceCompressionModePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionBackendServiceCompressionMode)(nil)).Elem()
+}
+
+func (o RegionBackendServiceCompressionModePtrOutput) ToRegionBackendServiceCompressionModePtrOutput() RegionBackendServiceCompressionModePtrOutput {
+	return o
+}
+
+func (o RegionBackendServiceCompressionModePtrOutput) ToRegionBackendServiceCompressionModePtrOutputWithContext(ctx context.Context) RegionBackendServiceCompressionModePtrOutput {
+	return o
+}
+
+func (o RegionBackendServiceCompressionModePtrOutput) Elem() RegionBackendServiceCompressionModeOutput {
+	return o.ApplyT(func(v *RegionBackendServiceCompressionMode) RegionBackendServiceCompressionMode {
+		if v != nil {
+			return *v
+		}
+		var ret RegionBackendServiceCompressionMode
+		return ret
+	}).(RegionBackendServiceCompressionModeOutput)
+}
+
+func (o RegionBackendServiceCompressionModePtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionBackendServiceCompressionModePtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionBackendServiceCompressionMode) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionBackendServiceCompressionModeInput is an input type that accepts RegionBackendServiceCompressionModeArgs and RegionBackendServiceCompressionModeOutput values.
+// You can construct a concrete instance of `RegionBackendServiceCompressionModeInput` via:
+//
+//	RegionBackendServiceCompressionModeArgs{...}
+type RegionBackendServiceCompressionModeInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceCompressionModeOutput() RegionBackendServiceCompressionModeOutput
+	ToRegionBackendServiceCompressionModeOutputWithContext(context.Context) RegionBackendServiceCompressionModeOutput
+}
+
+var regionBackendServiceCompressionModePtrType = reflect.TypeOf((**RegionBackendServiceCompressionMode)(nil)).Elem()
+
+type RegionBackendServiceCompressionModePtrInput interface {
+	pulumi.Input
+
+	ToRegionBackendServiceCompressionModePtrOutput() RegionBackendServiceCompressionModePtrOutput
+	ToRegionBackendServiceCompressionModePtrOutputWithContext(context.Context) RegionBackendServiceCompressionModePtrOutput
+}
+
+type regionBackendServiceCompressionModePtr string
+
+func RegionBackendServiceCompressionModePtr(v string) RegionBackendServiceCompressionModePtrInput {
+	return (*regionBackendServiceCompressionModePtr)(&v)
+}
+
+func (*regionBackendServiceCompressionModePtr) ElementType() reflect.Type {
+	return regionBackendServiceCompressionModePtrType
+}
+
+func (in *regionBackendServiceCompressionModePtr) ToRegionBackendServiceCompressionModePtrOutput() RegionBackendServiceCompressionModePtrOutput {
+	return pulumi.ToOutput(in).(RegionBackendServiceCompressionModePtrOutput)
+}
+
+func (in *regionBackendServiceCompressionModePtr) ToRegionBackendServiceCompressionModePtrOutputWithContext(ctx context.Context) RegionBackendServiceCompressionModePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionBackendServiceCompressionModePtrOutput)
+}
+
 // Specifies the load balancer type. A backend service created for one type of load balancer cannot be used with another. For more information, refer to Choosing a load balancer.
 type RegionBackendServiceLoadBalancingScheme string
 
@@ -19371,6 +19872,171 @@ func (in *regionTargetHttpsProxyQuicOverridePtr) ToRegionTargetHttpsProxyQuicOve
 
 func (in *regionTargetHttpsProxyQuicOverridePtr) ToRegionTargetHttpsProxyQuicOverridePtrOutputWithContext(ctx context.Context) RegionTargetHttpsProxyQuicOverridePtrOutput {
 	return pulumi.ToOutputWithContext(ctx, in).(RegionTargetHttpsProxyQuicOverridePtrOutput)
+}
+
+// Specifies the type of proxy header to append before sending data to the backend, either NONE or PROXY_V1. The default is NONE.
+type RegionTargetTcpProxyProxyHeader string
+
+const (
+	RegionTargetTcpProxyProxyHeaderNone    = RegionTargetTcpProxyProxyHeader("NONE")
+	RegionTargetTcpProxyProxyHeaderProxyV1 = RegionTargetTcpProxyProxyHeader("PROXY_V1")
+)
+
+func (RegionTargetTcpProxyProxyHeader) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionTargetTcpProxyProxyHeader)(nil)).Elem()
+}
+
+func (e RegionTargetTcpProxyProxyHeader) ToRegionTargetTcpProxyProxyHeaderOutput() RegionTargetTcpProxyProxyHeaderOutput {
+	return pulumi.ToOutput(e).(RegionTargetTcpProxyProxyHeaderOutput)
+}
+
+func (e RegionTargetTcpProxyProxyHeader) ToRegionTargetTcpProxyProxyHeaderOutputWithContext(ctx context.Context) RegionTargetTcpProxyProxyHeaderOutput {
+	return pulumi.ToOutputWithContext(ctx, e).(RegionTargetTcpProxyProxyHeaderOutput)
+}
+
+func (e RegionTargetTcpProxyProxyHeader) ToRegionTargetTcpProxyProxyHeaderPtrOutput() RegionTargetTcpProxyProxyHeaderPtrOutput {
+	return e.ToRegionTargetTcpProxyProxyHeaderPtrOutputWithContext(context.Background())
+}
+
+func (e RegionTargetTcpProxyProxyHeader) ToRegionTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx context.Context) RegionTargetTcpProxyProxyHeaderPtrOutput {
+	return RegionTargetTcpProxyProxyHeader(e).ToRegionTargetTcpProxyProxyHeaderOutputWithContext(ctx).ToRegionTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx)
+}
+
+func (e RegionTargetTcpProxyProxyHeader) ToStringOutput() pulumi.StringOutput {
+	return pulumi.ToOutput(pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionTargetTcpProxyProxyHeader) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return pulumi.ToOutputWithContext(ctx, pulumi.String(e)).(pulumi.StringOutput)
+}
+
+func (e RegionTargetTcpProxyProxyHeader) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringPtrOutputWithContext(context.Background())
+}
+
+func (e RegionTargetTcpProxyProxyHeader) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return pulumi.String(e).ToStringOutputWithContext(ctx).ToStringPtrOutputWithContext(ctx)
+}
+
+type RegionTargetTcpProxyProxyHeaderOutput struct{ *pulumi.OutputState }
+
+func (RegionTargetTcpProxyProxyHeaderOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RegionTargetTcpProxyProxyHeader)(nil)).Elem()
+}
+
+func (o RegionTargetTcpProxyProxyHeaderOutput) ToRegionTargetTcpProxyProxyHeaderOutput() RegionTargetTcpProxyProxyHeaderOutput {
+	return o
+}
+
+func (o RegionTargetTcpProxyProxyHeaderOutput) ToRegionTargetTcpProxyProxyHeaderOutputWithContext(ctx context.Context) RegionTargetTcpProxyProxyHeaderOutput {
+	return o
+}
+
+func (o RegionTargetTcpProxyProxyHeaderOutput) ToRegionTargetTcpProxyProxyHeaderPtrOutput() RegionTargetTcpProxyProxyHeaderPtrOutput {
+	return o.ToRegionTargetTcpProxyProxyHeaderPtrOutputWithContext(context.Background())
+}
+
+func (o RegionTargetTcpProxyProxyHeaderOutput) ToRegionTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx context.Context) RegionTargetTcpProxyProxyHeaderPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RegionTargetTcpProxyProxyHeader) *RegionTargetTcpProxyProxyHeader {
+		return &v
+	}).(RegionTargetTcpProxyProxyHeaderPtrOutput)
+}
+
+func (o RegionTargetTcpProxyProxyHeaderOutput) ToStringOutput() pulumi.StringOutput {
+	return o.ToStringOutputWithContext(context.Background())
+}
+
+func (o RegionTargetTcpProxyProxyHeaderOutput) ToStringOutputWithContext(ctx context.Context) pulumi.StringOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionTargetTcpProxyProxyHeader) string {
+		return string(e)
+	}).(pulumi.StringOutput)
+}
+
+func (o RegionTargetTcpProxyProxyHeaderOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionTargetTcpProxyProxyHeaderOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e RegionTargetTcpProxyProxyHeader) *string {
+		v := string(e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+type RegionTargetTcpProxyProxyHeaderPtrOutput struct{ *pulumi.OutputState }
+
+func (RegionTargetTcpProxyProxyHeaderPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RegionTargetTcpProxyProxyHeader)(nil)).Elem()
+}
+
+func (o RegionTargetTcpProxyProxyHeaderPtrOutput) ToRegionTargetTcpProxyProxyHeaderPtrOutput() RegionTargetTcpProxyProxyHeaderPtrOutput {
+	return o
+}
+
+func (o RegionTargetTcpProxyProxyHeaderPtrOutput) ToRegionTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx context.Context) RegionTargetTcpProxyProxyHeaderPtrOutput {
+	return o
+}
+
+func (o RegionTargetTcpProxyProxyHeaderPtrOutput) Elem() RegionTargetTcpProxyProxyHeaderOutput {
+	return o.ApplyT(func(v *RegionTargetTcpProxyProxyHeader) RegionTargetTcpProxyProxyHeader {
+		if v != nil {
+			return *v
+		}
+		var ret RegionTargetTcpProxyProxyHeader
+		return ret
+	}).(RegionTargetTcpProxyProxyHeaderOutput)
+}
+
+func (o RegionTargetTcpProxyProxyHeaderPtrOutput) ToStringPtrOutput() pulumi.StringPtrOutput {
+	return o.ToStringPtrOutputWithContext(context.Background())
+}
+
+func (o RegionTargetTcpProxyProxyHeaderPtrOutput) ToStringPtrOutputWithContext(ctx context.Context) pulumi.StringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, e *RegionTargetTcpProxyProxyHeader) *string {
+		if e == nil {
+			return nil
+		}
+		v := string(*e)
+		return &v
+	}).(pulumi.StringPtrOutput)
+}
+
+// RegionTargetTcpProxyProxyHeaderInput is an input type that accepts RegionTargetTcpProxyProxyHeaderArgs and RegionTargetTcpProxyProxyHeaderOutput values.
+// You can construct a concrete instance of `RegionTargetTcpProxyProxyHeaderInput` via:
+//
+//	RegionTargetTcpProxyProxyHeaderArgs{...}
+type RegionTargetTcpProxyProxyHeaderInput interface {
+	pulumi.Input
+
+	ToRegionTargetTcpProxyProxyHeaderOutput() RegionTargetTcpProxyProxyHeaderOutput
+	ToRegionTargetTcpProxyProxyHeaderOutputWithContext(context.Context) RegionTargetTcpProxyProxyHeaderOutput
+}
+
+var regionTargetTcpProxyProxyHeaderPtrType = reflect.TypeOf((**RegionTargetTcpProxyProxyHeader)(nil)).Elem()
+
+type RegionTargetTcpProxyProxyHeaderPtrInput interface {
+	pulumi.Input
+
+	ToRegionTargetTcpProxyProxyHeaderPtrOutput() RegionTargetTcpProxyProxyHeaderPtrOutput
+	ToRegionTargetTcpProxyProxyHeaderPtrOutputWithContext(context.Context) RegionTargetTcpProxyProxyHeaderPtrOutput
+}
+
+type regionTargetTcpProxyProxyHeaderPtr string
+
+func RegionTargetTcpProxyProxyHeaderPtr(v string) RegionTargetTcpProxyProxyHeaderPtrInput {
+	return (*regionTargetTcpProxyProxyHeaderPtr)(&v)
+}
+
+func (*regionTargetTcpProxyProxyHeaderPtr) ElementType() reflect.Type {
+	return regionTargetTcpProxyProxyHeaderPtrType
+}
+
+func (in *regionTargetTcpProxyProxyHeaderPtr) ToRegionTargetTcpProxyProxyHeaderPtrOutput() RegionTargetTcpProxyProxyHeaderPtrOutput {
+	return pulumi.ToOutput(in).(RegionTargetTcpProxyProxyHeaderPtrOutput)
+}
+
+func (in *regionTargetTcpProxyProxyHeaderPtr) ToRegionTargetTcpProxyProxyHeaderPtrOutputWithContext(ctx context.Context) RegionTargetTcpProxyProxyHeaderPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, in).(RegionTargetTcpProxyProxyHeaderPtrOutput)
 }
 
 // Specifies the type of reservation from which this instance can consume resources: ANY_RESERVATION (default), SPECIFIC_RESERVATION, or NO_RESERVATION. See Consuming reserved instances for examples.
@@ -28626,8 +29292,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBalancingModePtrInput)(nil)).Elem(), BackendBalancingMode("CONNECTION"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyCacheModeInput)(nil)).Elem(), BackendBucketCdnPolicyCacheMode("CACHE_ALL_STATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCdnPolicyCacheModePtrInput)(nil)).Elem(), BackendBucketCdnPolicyCacheMode("CACHE_ALL_STATIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCompressionModeInput)(nil)).Elem(), BackendBucketCompressionMode("AUTOMATIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendBucketCompressionModePtrInput)(nil)).Elem(), BackendBucketCompressionMode("AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyCacheModeInput)(nil)).Elem(), BackendServiceCdnPolicyCacheMode("CACHE_ALL_STATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCdnPolicyCacheModePtrInput)(nil)).Elem(), BackendServiceCdnPolicyCacheMode("CACHE_ALL_STATIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCompressionModeInput)(nil)).Elem(), BackendServiceCompressionMode("AUTOMATIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceCompressionModePtrInput)(nil)).Elem(), BackendServiceCompressionMode("AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsInput)(nil)).Elem(), BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends("ALWAYS_PERSIST"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrInput)(nil)).Elem(), BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackends("ALWAYS_PERSIST"))
 	pulumi.RegisterInputType(reflect.TypeOf((*BackendServiceConnectionTrackingPolicyTrackingModeInput)(nil)).Elem(), BackendServiceConnectionTrackingPolicyTrackingMode("INVALID_TRACKING_MODE"))
@@ -28784,6 +29454,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PacketMirroringFilterDirectionPtrInput)(nil)).Elem(), PacketMirroringFilterDirection("BOTH"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicAdvertisedPrefixStatusInput)(nil)).Elem(), PublicAdvertisedPrefixStatus("INITIAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*PublicAdvertisedPrefixStatusPtrInput)(nil)).Elem(), PublicAdvertisedPrefixStatus("INITIAL"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceCompressionModeInput)(nil)).Elem(), RegionBackendServiceCompressionMode("AUTOMATIC"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceCompressionModePtrInput)(nil)).Elem(), RegionBackendServiceCompressionMode("AUTOMATIC"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceLoadBalancingSchemeInput)(nil)).Elem(), RegionBackendServiceLoadBalancingScheme("EXTERNAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceLoadBalancingSchemePtrInput)(nil)).Elem(), RegionBackendServiceLoadBalancingScheme("EXTERNAL"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionBackendServiceLocalityLbPolicyInput)(nil)).Elem(), RegionBackendServiceLocalityLbPolicy("INVALID_LB_POLICY"))
@@ -28816,6 +29488,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionSslPolicyProfilePtrInput)(nil)).Elem(), RegionSslPolicyProfile("COMPATIBLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetHttpsProxyQuicOverrideInput)(nil)).Elem(), RegionTargetHttpsProxyQuicOverride("DISABLE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetHttpsProxyQuicOverridePtrInput)(nil)).Elem(), RegionTargetHttpsProxyQuicOverride("DISABLE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetTcpProxyProxyHeaderInput)(nil)).Elem(), RegionTargetTcpProxyProxyHeader("NONE"))
+	pulumi.RegisterInputType(reflect.TypeOf((*RegionTargetTcpProxyProxyHeaderPtrInput)(nil)).Elem(), RegionTargetTcpProxyProxyHeader("NONE"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypeInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("ANY_RESERVATION"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAffinityConsumeReservationTypePtrInput)(nil)).Elem(), ReservationAffinityConsumeReservationType("ANY_RESERVATION"))
 	pulumi.RegisterInputType(reflect.TypeOf((*ResourceCommitmentTypeInput)(nil)).Elem(), ResourceCommitmentType("ACCELERATOR"))
@@ -28966,8 +29640,12 @@ func init() {
 	pulumi.RegisterOutputType(BackendBalancingModePtrOutput{})
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyCacheModeOutput{})
 	pulumi.RegisterOutputType(BackendBucketCdnPolicyCacheModePtrOutput{})
+	pulumi.RegisterOutputType(BackendBucketCompressionModeOutput{})
+	pulumi.RegisterOutputType(BackendBucketCompressionModePtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceCdnPolicyCacheModeOutput{})
 	pulumi.RegisterOutputType(BackendServiceCdnPolicyCacheModePtrOutput{})
+	pulumi.RegisterOutputType(BackendServiceCompressionModeOutput{})
+	pulumi.RegisterOutputType(BackendServiceCompressionModePtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsOutput{})
 	pulumi.RegisterOutputType(BackendServiceConnectionTrackingPolicyConnectionPersistenceOnUnhealthyBackendsPtrOutput{})
 	pulumi.RegisterOutputType(BackendServiceConnectionTrackingPolicyTrackingModeOutput{})
@@ -29124,6 +29802,8 @@ func init() {
 	pulumi.RegisterOutputType(PacketMirroringFilterDirectionPtrOutput{})
 	pulumi.RegisterOutputType(PublicAdvertisedPrefixStatusOutput{})
 	pulumi.RegisterOutputType(PublicAdvertisedPrefixStatusPtrOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceCompressionModeOutput{})
+	pulumi.RegisterOutputType(RegionBackendServiceCompressionModePtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceLoadBalancingSchemeOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceLoadBalancingSchemePtrOutput{})
 	pulumi.RegisterOutputType(RegionBackendServiceLocalityLbPolicyOutput{})
@@ -29156,6 +29836,8 @@ func init() {
 	pulumi.RegisterOutputType(RegionSslPolicyProfilePtrOutput{})
 	pulumi.RegisterOutputType(RegionTargetHttpsProxyQuicOverrideOutput{})
 	pulumi.RegisterOutputType(RegionTargetHttpsProxyQuicOverridePtrOutput{})
+	pulumi.RegisterOutputType(RegionTargetTcpProxyProxyHeaderOutput{})
+	pulumi.RegisterOutputType(RegionTargetTcpProxyProxyHeaderPtrOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypeOutput{})
 	pulumi.RegisterOutputType(ReservationAffinityConsumeReservationTypePtrOutput{})
 	pulumi.RegisterOutputType(ResourceCommitmentTypeOutput{})

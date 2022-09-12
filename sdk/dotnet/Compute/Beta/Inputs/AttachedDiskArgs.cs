@@ -70,7 +70,7 @@ namespace Pulumi.GoogleNative.Compute.Beta.Inputs
         public Input<Inputs.AttachedDiskInitializeParamsArgs>? InitializeParams { get; set; }
 
         /// <summary>
-        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI. Persistent disks must always use SCSI and the request will fail if you attempt to attach a persistent disk in any other format than SCSI. Local SSDs can use either NVME or SCSI. For performance characteristics of SCSI over NVMe, see Local SSD performance.
+        /// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. For most machine types, the default is SCSI. Local SSDs can use either NVME or SCSI. In certain configurations, persistent disks can use NVMe. For more information, see About persistent disks.
         /// </summary>
         [Input("interface")]
         public Input<Pulumi.GoogleNative.Compute.Beta.AttachedDiskInterface>? Interface { get; set; }

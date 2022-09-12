@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../../utilities";
 
 /**
- * CreateArtifact creates a specified artifact.
+ * Creates a specified artifact.
  */
 export class VersionArtifact extends pulumi.CustomResource {
     /**

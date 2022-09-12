@@ -76,6 +76,10 @@ namespace Pulumi.GoogleNative.Compute.V1
         /// </summary>
         public readonly Outputs.BackendServiceCdnPolicyResponse CdnPolicy;
         public readonly Outputs.CircuitBreakersResponse CircuitBreakers;
+        /// <summary>
+        /// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+        /// </summary>
+        public readonly string CompressionMode;
         public readonly Outputs.ConnectionDrainingResponse ConnectionDraining;
         /// <summary>
         /// Connection Tracking configuration for this BackendService. Connection tracking policy settings are only available for Network Load Balancing and Internal TCP/UDP Load Balancing.
@@ -213,6 +217,8 @@ namespace Pulumi.GoogleNative.Compute.V1
 
             Outputs.CircuitBreakersResponse circuitBreakers,
 
+            string compressionMode,
+
             Outputs.ConnectionDrainingResponse connectionDraining,
 
             Outputs.BackendServiceConnectionTrackingPolicyResponse connectionTrackingPolicy,
@@ -283,6 +289,7 @@ namespace Pulumi.GoogleNative.Compute.V1
             Backends = backends;
             CdnPolicy = cdnPolicy;
             CircuitBreakers = circuitBreakers;
+            CompressionMode = compressionMode;
             ConnectionDraining = connectionDraining;
             ConnectionTrackingPolicy = connectionTrackingPolicy;
             ConsistentHash = consistentHash;

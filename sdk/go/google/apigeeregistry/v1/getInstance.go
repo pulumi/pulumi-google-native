@@ -31,7 +31,7 @@ type LookupInstanceResult struct {
 	Config ConfigResponse `pulumi:"config"`
 	// Creation timestamp.
 	CreateTime string `pulumi:"createTime"`
-	// Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
+	// Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
 	Name string `pulumi:"name"`
 	// The current state of the Instance.
 	State string `pulumi:"state"`
@@ -88,7 +88,7 @@ func (o LookupInstanceResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
+// Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
 func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceResult) string { return v.Name }).(pulumi.StringOutput)
 }

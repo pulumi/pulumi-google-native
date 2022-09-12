@@ -229,6 +229,14 @@ export { GetNetworkArgs, GetNetworkResult, GetNetworkOutputArgs } from "./getNet
 export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
 export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
 
+export { GetNetworkAttachmentArgs, GetNetworkAttachmentResult, GetNetworkAttachmentOutputArgs } from "./getNetworkAttachment";
+export const getNetworkAttachment: typeof import("./getNetworkAttachment").getNetworkAttachment = null as any;
+export const getNetworkAttachmentOutput: typeof import("./getNetworkAttachment").getNetworkAttachmentOutput = null as any;
+
+export { GetNetworkAttachmentIamPolicyArgs, GetNetworkAttachmentIamPolicyResult, GetNetworkAttachmentIamPolicyOutputArgs } from "./getNetworkAttachmentIamPolicy";
+export const getNetworkAttachmentIamPolicy: typeof import("./getNetworkAttachmentIamPolicy").getNetworkAttachmentIamPolicy = null as any;
+export const getNetworkAttachmentIamPolicyOutput: typeof import("./getNetworkAttachmentIamPolicy").getNetworkAttachmentIamPolicyOutput = null as any;
+
 export { GetNetworkEdgeSecurityServiceArgs, GetNetworkEdgeSecurityServiceResult, GetNetworkEdgeSecurityServiceOutputArgs } from "./getNetworkEdgeSecurityService";
 export const getNetworkEdgeSecurityService: typeof import("./getNetworkEdgeSecurityService").getNetworkEdgeSecurityService = null as any;
 export const getNetworkEdgeSecurityServiceOutput: typeof import("./getNetworkEdgeSecurityService").getNetworkEdgeSecurityServiceOutput = null as any;
@@ -589,6 +597,14 @@ export { NetworkArgs } from "./network";
 export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
 
+export { NetworkAttachmentArgs } from "./networkAttachment";
+export type NetworkAttachment = import("./networkAttachment").NetworkAttachment;
+export const NetworkAttachment: typeof import("./networkAttachment").NetworkAttachment = null as any;
+
+export { NetworkAttachmentIamPolicyArgs } from "./networkAttachmentIamPolicy";
+export type NetworkAttachmentIamPolicy = import("./networkAttachmentIamPolicy").NetworkAttachmentIamPolicy;
+export const NetworkAttachmentIamPolicy: typeof import("./networkAttachmentIamPolicy").NetworkAttachmentIamPolicy = null as any;
+
 export { NetworkEdgeSecurityServiceArgs } from "./networkEdgeSecurityService";
 export type NetworkEdgeSecurityService = import("./networkEdgeSecurityService").NetworkEdgeSecurityService;
 export const NetworkEdgeSecurityService: typeof import("./networkEdgeSecurityService").NetworkEdgeSecurityService = null as any;
@@ -893,6 +909,8 @@ utilities.lazyLoad(exports, ["getLicenseIamPolicy","getLicenseIamPolicyOutput"],
 utilities.lazyLoad(exports, ["getMachineImage","getMachineImageOutput"], () => require("./getMachineImage"));
 utilities.lazyLoad(exports, ["getMachineImageIamPolicy","getMachineImageIamPolicyOutput"], () => require("./getMachineImageIamPolicy"));
 utilities.lazyLoad(exports, ["getNetwork","getNetworkOutput"], () => require("./getNetwork"));
+utilities.lazyLoad(exports, ["getNetworkAttachment","getNetworkAttachmentOutput"], () => require("./getNetworkAttachment"));
+utilities.lazyLoad(exports, ["getNetworkAttachmentIamPolicy","getNetworkAttachmentIamPolicyOutput"], () => require("./getNetworkAttachmentIamPolicy"));
 utilities.lazyLoad(exports, ["getNetworkEdgeSecurityService","getNetworkEdgeSecurityServiceOutput"], () => require("./getNetworkEdgeSecurityService"));
 utilities.lazyLoad(exports, ["getNetworkEndpointGroup","getNetworkEndpointGroupOutput"], () => require("./getNetworkEndpointGroup"));
 utilities.lazyLoad(exports, ["getNetworkFirewallPolicy","getNetworkFirewallPolicyOutput"], () => require("./getNetworkFirewallPolicy"));
@@ -983,6 +1001,8 @@ utilities.lazyLoad(exports, ["LicenseIamPolicy"], () => require("./licenseIamPol
 utilities.lazyLoad(exports, ["MachineImage"], () => require("./machineImage"));
 utilities.lazyLoad(exports, ["MachineImageIamPolicy"], () => require("./machineImageIamPolicy"));
 utilities.lazyLoad(exports, ["Network"], () => require("./network"));
+utilities.lazyLoad(exports, ["NetworkAttachment"], () => require("./networkAttachment"));
+utilities.lazyLoad(exports, ["NetworkAttachmentIamPolicy"], () => require("./networkAttachmentIamPolicy"));
 utilities.lazyLoad(exports, ["NetworkEdgeSecurityService"], () => require("./networkEdgeSecurityService"));
 utilities.lazyLoad(exports, ["NetworkEndpointGroup"], () => require("./networkEndpointGroup"));
 utilities.lazyLoad(exports, ["NetworkFirewallPolicy"], () => require("./networkFirewallPolicy"));
@@ -1137,6 +1157,10 @@ const _module = {
                 return new MachineImageIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:Network":
                 return new Network(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:NetworkAttachment":
+                return new NetworkAttachment(name, <any>undefined, { urn })
+            case "google-native:compute/alpha:NetworkAttachmentIamPolicy":
+                return new NetworkAttachmentIamPolicy(name, <any>undefined, { urn })
             case "google-native:compute/alpha:NetworkEdgeSecurityService":
                 return new NetworkEdgeSecurityService(name, <any>undefined, { urn })
             case "google-native:compute/alpha:NetworkEndpointGroup":

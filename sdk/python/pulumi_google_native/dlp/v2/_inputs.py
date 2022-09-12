@@ -135,7 +135,7 @@ class GooglePrivacyDlpV2ActionArgs:
         A task to execute on the completion of a job. See https://cloud.google.com/dlp/docs/concepts-actions to learn more.
         :param pulumi.Input['GooglePrivacyDlpV2DeidentifyArgs'] deidentify: Create a de-identified copy of the input data.
         :param pulumi.Input['GooglePrivacyDlpV2JobNotificationEmailsArgs'] job_notification_emails: Enable email notification for project owners and editors on job's completion/failure.
-        :param pulumi.Input['GooglePrivacyDlpV2PublishToPubSubArgs'] pub_sub: Publish a notification to a pubsub topic.
+        :param pulumi.Input['GooglePrivacyDlpV2PublishToPubSubArgs'] pub_sub: Publish a notification to a Pub/Sub topic.
         :param pulumi.Input['GooglePrivacyDlpV2PublishFindingsToCloudDataCatalogArgs'] publish_findings_to_cloud_data_catalog: Publish findings to Cloud Datahub.
         :param pulumi.Input['GooglePrivacyDlpV2PublishSummaryToCsccArgs'] publish_summary_to_cscc: Publish summary to Cloud Security Command Center (Alpha).
         :param pulumi.Input['GooglePrivacyDlpV2PublishToStackdriverArgs'] publish_to_stackdriver: Enable Stackdriver metric dlp.googleapis.com/finding_count.
@@ -184,7 +184,7 @@ class GooglePrivacyDlpV2ActionArgs:
     @pulumi.getter(name="pubSub")
     def pub_sub(self) -> Optional[pulumi.Input['GooglePrivacyDlpV2PublishToPubSubArgs']]:
         """
-        Publish a notification to a pubsub topic.
+        Publish a notification to a Pub/Sub topic.
         """
         return pulumi.get(self, "pub_sub")
 
@@ -4583,7 +4583,7 @@ class GooglePrivacyDlpV2TimespanConfigArgs:
                  timestamp_field: Optional[pulumi.Input['GooglePrivacyDlpV2FieldIdArgs']] = None):
         """
         Configuration of the timespan of the items to include in scanning. Currently only supported when inspecting Cloud Storage and BigQuery.
-        :param pulumi.Input[bool] enable_auto_population_of_timespan_config: When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
+        :param pulumi.Input[bool] enable_auto_population_of_timespan_config: When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger or the timespan end_time used in the last run of the JobTrigger.
         :param pulumi.Input[str] end_time: Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
         :param pulumi.Input[str] start_time: Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
         :param pulumi.Input['GooglePrivacyDlpV2FieldIdArgs'] timestamp_field: Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. *For BigQuery* If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - _PARTITIONTIME - _PARTITIONDATE - _PARTITION_LOAD_TIME *For Datastore* If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/dlp/docs/known-issues#bq-timespan) related to this operation.
@@ -4601,7 +4601,7 @@ class GooglePrivacyDlpV2TimespanConfigArgs:
     @pulumi.getter(name="enableAutoPopulationOfTimespanConfig")
     def enable_auto_population_of_timespan_config(self) -> Optional[pulumi.Input[bool]]:
         """
-        When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger.
+        When the job is started by a JobTrigger we will automatically figure out a valid start_time to avoid scanning files that have not been modified since the last time the JobTrigger executed. This will be based on the time of the execution of the last run of the JobTrigger or the timespan end_time used in the last run of the JobTrigger.
         """
         return pulumi.get(self, "enable_auto_population_of_timespan_config")
 

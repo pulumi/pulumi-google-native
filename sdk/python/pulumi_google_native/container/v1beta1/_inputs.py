@@ -53,6 +53,7 @@ __all__ = [
     'LinuxNodeConfigArgs',
     'LoggingComponentConfigArgs',
     'LoggingConfigArgs',
+    'LoggingVariantConfigArgs',
     'MaintenanceExclusionOptionsArgs',
     'MaintenancePolicyArgs',
     'MaintenanceWindowArgs',
@@ -77,6 +78,7 @@ __all__ = [
     'NodePoolAutoConfigArgs',
     'NodePoolAutoscalingArgs',
     'NodePoolDefaultsArgs',
+    'NodePoolLoggingConfigArgs',
     'NodePoolArgs',
     'NodeTaintArgs',
     'NotificationConfigArgs',
@@ -1985,6 +1987,30 @@ class LoggingConfigArgs:
 
 
 @pulumi.input_type
+class LoggingVariantConfigArgs:
+    def __init__(__self__, *,
+                 variant: Optional[pulumi.Input['LoggingVariantConfigVariant']] = None):
+        """
+        LoggingVariantConfig specifies the behaviour of the logging component.
+        :param pulumi.Input['LoggingVariantConfigVariant'] variant: Logging variant deployed on nodes.
+        """
+        if variant is not None:
+            pulumi.set(__self__, "variant", variant)
+
+    @property
+    @pulumi.getter
+    def variant(self) -> Optional[pulumi.Input['LoggingVariantConfigVariant']]:
+        """
+        Logging variant deployed on nodes.
+        """
+        return pulumi.get(self, "variant")
+
+    @variant.setter
+    def variant(self, value: Optional[pulumi.Input['LoggingVariantConfigVariant']]):
+        pulumi.set(self, "variant", value)
+
+
+@pulumi.input_type
 class MaintenanceExclusionOptionsArgs:
     def __init__(__self__, *,
                  scope: Optional[pulumi.Input['MaintenanceExclusionOptionsScope']] = None):
@@ -2608,13 +2634,17 @@ class NetworkTagsArgs:
 @pulumi.input_type
 class NodeConfigDefaultsArgs:
     def __init__(__self__, *,
-                 gcfs_config: Optional[pulumi.Input['GcfsConfigArgs']] = None):
+                 gcfs_config: Optional[pulumi.Input['GcfsConfigArgs']] = None,
+                 logging_config: Optional[pulumi.Input['NodePoolLoggingConfigArgs']] = None):
         """
         Subset of NodeConfig message that has defaults.
         :param pulumi.Input['GcfsConfigArgs'] gcfs_config: GCFS (Google Container File System, also known as Riptide) options.
+        :param pulumi.Input['NodePoolLoggingConfigArgs'] logging_config: Logging configuration for node pools.
         """
         if gcfs_config is not None:
             pulumi.set(__self__, "gcfs_config", gcfs_config)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
 
     @property
     @pulumi.getter(name="gcfsConfig")
@@ -2627,6 +2657,18 @@ class NodeConfigDefaultsArgs:
     @gcfs_config.setter
     def gcfs_config(self, value: Optional[pulumi.Input['GcfsConfigArgs']]):
         pulumi.set(self, "gcfs_config", value)
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['NodePoolLoggingConfigArgs']]:
+        """
+        Logging configuration for node pools.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['NodePoolLoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
 
 
 @pulumi.input_type
@@ -2646,6 +2688,7 @@ class NodeConfigArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linux_node_config: Optional[pulumi.Input['LinuxNodeConfigArgs']] = None,
                  local_ssd_count: Optional[pulumi.Input[int]] = None,
+                 logging_config: Optional[pulumi.Input['NodePoolLoggingConfigArgs']] = None,
                  machine_type: Optional[pulumi.Input[str]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  min_cpu_platform: Optional[pulumi.Input[str]] = None,
@@ -2676,6 +2719,7 @@ class NodeConfigArgs:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The map of Kubernetes labels (key/value pairs) to be applied to each node. These will added in addition to any default label(s) that Kubernetes may apply to the node. In case of conflict in label keys, the applied set may differ depending on the Kubernetes version -- it's best to assume the behavior is undefined and conflicts should be avoided. For more information, including usage and the valid values, see: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
         :param pulumi.Input['LinuxNodeConfigArgs'] linux_node_config: Parameters that can be configured on Linux nodes.
         :param pulumi.Input[int] local_ssd_count: The number of local SSD disks to be attached to the node. The limit for this value is dependent upon the maximum number of disks available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information.
+        :param pulumi.Input['NodePoolLoggingConfigArgs'] logging_config: Logging configuration.
         :param pulumi.Input[str] machine_type: The name of a Google Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-types). If unspecified, the default machine type is `e2-medium`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: The metadata key/value pairs assigned to instances in the cluster. Keys must conform to the regexp `[a-zA-Z0-9-_]+` and be less than 128 bytes in length. These are reflected as part of a URL in the metadata server. Additionally, to avoid ambiguity, keys must not conflict with any other metadata keys for the project or be one of the reserved keys: - "cluster-location" - "cluster-name" - "cluster-uid" - "configure-sh" - "containerd-configure-sh" - "enable-oslogin" - "gci-ensure-gke-docker" - "gci-metrics-enabled" - "gci-update-strategy" - "instance-template" - "kube-env" - "startup-script" - "user-data" - "disable-address-manager" - "windows-startup-script-ps1" - "common-psm1" - "k8s-node-setup-psm1" - "install-ssh-psm1" - "user-profile-psm1" Values are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on them is that each value's size must be less than or equal to 32 KB. The total size of all keys and values must be less than 512 KB.
         :param pulumi.Input[str] min_cpu_platform: Minimum CPU platform to be used by this instance. The instance may be scheduled on the specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such as `minCpuPlatform: "Intel Haswell"` or `minCpuPlatform: "Intel Sandy Bridge"`. For more information, read [how to specify min CPU platform](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
@@ -2719,6 +2763,8 @@ class NodeConfigArgs:
             pulumi.set(__self__, "linux_node_config", linux_node_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if logging_config is not None:
+            pulumi.set(__self__, "logging_config", logging_config)
         if machine_type is not None:
             pulumi.set(__self__, "machine_type", machine_type)
         if metadata is not None:
@@ -2915,6 +2961,18 @@ class NodeConfigArgs:
     @local_ssd_count.setter
     def local_ssd_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "local_ssd_count", value)
+
+    @property
+    @pulumi.getter(name="loggingConfig")
+    def logging_config(self) -> Optional[pulumi.Input['NodePoolLoggingConfigArgs']]:
+        """
+        Logging configuration.
+        """
+        return pulumi.get(self, "logging_config")
+
+    @logging_config.setter
+    def logging_config(self, value: Optional[pulumi.Input['NodePoolLoggingConfigArgs']]):
+        pulumi.set(self, "logging_config", value)
 
     @property
     @pulumi.getter(name="machineType")
@@ -3451,6 +3509,30 @@ class NodePoolDefaultsArgs:
     @node_config_defaults.setter
     def node_config_defaults(self, value: Optional[pulumi.Input['NodeConfigDefaultsArgs']]):
         pulumi.set(self, "node_config_defaults", value)
+
+
+@pulumi.input_type
+class NodePoolLoggingConfigArgs:
+    def __init__(__self__, *,
+                 variant_config: Optional[pulumi.Input['LoggingVariantConfigArgs']] = None):
+        """
+        NodePoolLoggingConfig specifies logging configuration for nodepools.
+        :param pulumi.Input['LoggingVariantConfigArgs'] variant_config: Logging variant configuration.
+        """
+        if variant_config is not None:
+            pulumi.set(__self__, "variant_config", variant_config)
+
+    @property
+    @pulumi.getter(name="variantConfig")
+    def variant_config(self) -> Optional[pulumi.Input['LoggingVariantConfigArgs']]:
+        """
+        Logging variant configuration.
+        """
+        return pulumi.get(self, "variant_config")
+
+    @variant_config.setter
+    def variant_config(self, value: Optional[pulumi.Input['LoggingVariantConfigArgs']]):
+        pulumi.set(self, "variant_config", value)
 
 
 @pulumi.input_type

@@ -410,6 +410,10 @@ class GoogleCloudDialogflowV2beta1SuggestionFeatureType(str, Enum):
     """
     Run smart reply model for chat.
     """
+    CONVERSATION_SUMMARIZATION = "CONVERSATION_SUMMARIZATION"
+    """
+    Run conversation summarization model for chat.
+    """
 
 
 class GoogleCloudDialogflowV2beta1TextToSpeechSettingsOutputAudioEncoding(str, Enum):

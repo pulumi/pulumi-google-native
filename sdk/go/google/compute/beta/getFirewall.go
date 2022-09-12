@@ -36,7 +36,7 @@ type LookupFirewallResult struct {
 	Description string `pulumi:"description"`
 	// If destination ranges are specified, the firewall rule applies only to traffic that has destination IP address in these ranges. These ranges must be expressed in CIDR format. Both IPv4 and IPv6 are supported.
 	DestinationRanges []string `pulumi:"destinationRanges"`
-	// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+	// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
 	Direction string `pulumi:"direction"`
 	// Denotes whether the firewall rule is disabled. When set to true, the firewall rule is not enforced and the network behaves as if it did not exist. If this is unspecified, the firewall rule will be enabled.
 	Disabled bool `pulumi:"disabled"`
@@ -129,7 +129,7 @@ func (o LookupFirewallResultOutput) DestinationRanges() pulumi.StringArrayOutput
 	return o.ApplyT(func(v LookupFirewallResult) []string { return v.DestinationRanges }).(pulumi.StringArrayOutput)
 }
 
-// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `INGRESS` traffic, you cannot specify the destinationRanges field, and for `EGRESS` traffic, you cannot specify the sourceRanges or sourceTags fields.
+// Direction of traffic to which this firewall applies, either `INGRESS` or `EGRESS`. The default is `INGRESS`. For `EGRESS` traffic, you cannot specify the sourceTags fields.
 func (o LookupFirewallResultOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupFirewallResult) string { return v.Direction }).(pulumi.StringOutput)
 }

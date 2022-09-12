@@ -20,11 +20,19 @@ namespace Pulumi.GoogleNative.Container.V1.Outputs
         /// GCFS (Google Container File System, also known as Riptide) options.
         /// </summary>
         public readonly Outputs.GcfsConfigResponse GcfsConfig;
+        /// <summary>
+        /// Logging configuration for node pools.
+        /// </summary>
+        public readonly Outputs.NodePoolLoggingConfigResponse LoggingConfig;
 
         [OutputConstructor]
-        private NodeConfigDefaultsResponse(Outputs.GcfsConfigResponse gcfsConfig)
+        private NodeConfigDefaultsResponse(
+            Outputs.GcfsConfigResponse gcfsConfig,
+
+            Outputs.NodePoolLoggingConfigResponse loggingConfig)
         {
             GcfsConfig = gcfsConfig;
+            LoggingConfig = loggingConfig;
         }
     }
 }

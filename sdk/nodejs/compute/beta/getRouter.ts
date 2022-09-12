@@ -47,7 +47,7 @@ export interface GetRouterResult {
      */
     readonly description: string;
     /**
-     * Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments). Not currently available publicly. 
+     * Indicates if a router is dedicated for use with encrypted VLAN attachments (interconnectAttachments).
      */
     readonly encryptedInterconnectRouter: boolean;
     /**

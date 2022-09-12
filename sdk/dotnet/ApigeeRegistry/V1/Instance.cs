@@ -38,7 +38,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
+        /// Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -131,7 +131,7 @@ namespace Pulumi.GoogleNative.ApigeeRegistry.V1
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Format: `projects/*/locations/*/instance`. Currently only locations/global is supported.
+        /// Format: `projects/*/locations/*/instance`. Currently only `locations/global` is supported.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

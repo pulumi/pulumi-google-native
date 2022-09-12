@@ -38,6 +38,10 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
         /// </summary>
         public readonly int None;
         /// <summary>
+        /// The number of instances that the managed instance group is currently queuing.
+        /// </summary>
+        public readonly int Queuing;
+        /// <summary>
         /// The number of instances in the managed instance group that are scheduled to be recreated or are currently being being recreated. Recreating an instance deletes the existing root persistent disk and creates a new disk from the image that is defined in the instance template.
         /// </summary>
         public readonly int Recreating;
@@ -84,6 +88,8 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
 
             int none,
 
+            int queuing,
+
             int recreating,
 
             int refreshing,
@@ -106,6 +112,7 @@ namespace Pulumi.GoogleNative.Compute.Alpha.Outputs
             CreatingWithoutRetries = creatingWithoutRetries;
             Deleting = deleting;
             None = none;
+            Queuing = queuing;
             Recreating = recreating;
             Refreshing = refreshing;
             Restarting = restarting;

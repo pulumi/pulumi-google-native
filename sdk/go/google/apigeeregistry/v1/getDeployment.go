@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// GetApiDeployment returns a specified deployment.
+// Returns a specified deployment.
 func LookupDeployment(ctx *pulumi.Context, args *LookupDeploymentArgs, opts ...pulumi.InvokeOption) (*LookupDeploymentResult, error) {
 	var rv LookupDeploymentResult
 	err := ctx.Invoke("google-native:apigeeregistry/v1:getDeployment", args, &rv, opts...)
@@ -32,7 +32,7 @@ type LookupDeploymentResult struct {
 	AccessGuidance string `pulumi:"accessGuidance"`
 	// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
 	Annotations map[string]string `pulumi:"annotations"`
-	// The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+	// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
 	ApiSpecRevision string `pulumi:"apiSpecRevision"`
 	// Creation timestamp; when the deployment resource was created.
 	CreateTime string `pulumi:"createTime"`
@@ -42,11 +42,11 @@ type LookupDeploymentResult struct {
 	DisplayName string `pulumi:"displayName"`
 	// The address where the deployment is serving. Changes to this value will update the revision.
 	EndpointUri string `pulumi:"endpointUri"`
-	// The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+	// The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
 	ExternalChannelUri string `pulumi:"externalChannelUri"`
 	// Text briefly identifying the intended audience of the API. Changes to this value will not affect the revision.
 	IntendedAudience string `pulumi:"intendedAudience"`
-	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
 	Labels map[string]string `pulumi:"labels"`
 	// Resource name.
 	Name string `pulumi:"name"`
@@ -106,7 +106,7 @@ func (o LookupDeploymentResultOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// The full resource name (including revision id) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: apis/{api}/deployments/{deployment}
+// The full resource name (including revision ID) of the spec of the API being served by the deployment. Changes to this value will update the revision. Format: `apis/{api}/deployments/{deployment}`
 func (o LookupDeploymentResultOutput) ApiSpecRevision() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) string { return v.ApiSpecRevision }).(pulumi.StringOutput)
 }
@@ -131,7 +131,7 @@ func (o LookupDeploymentResultOutput) EndpointUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) string { return v.EndpointUri }).(pulumi.StringOutput)
 }
 
-// The address of the external channel of the API (e.g. the Developer Portal). Changes to this value will not affect the revision.
+// The address of the external channel of the API (e.g., the Developer Portal). Changes to this value will not affect the revision.
 func (o LookupDeploymentResultOutput) ExternalChannelUri() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) string { return v.ExternalChannelUri }).(pulumi.StringOutput)
 }
@@ -141,7 +141,7 @@ func (o LookupDeploymentResultOutput) IntendedAudience() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) string { return v.IntendedAudience }).(pulumi.StringOutput)
 }
 
-// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
 func (o LookupDeploymentResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupDeploymentResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

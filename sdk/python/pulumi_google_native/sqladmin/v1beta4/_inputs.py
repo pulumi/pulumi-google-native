@@ -1535,6 +1535,7 @@ class SettingsArgs:
                  storage_auto_resize: Optional[pulumi.Input[bool]] = None,
                  storage_auto_resize_limit: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
+                 time_zone: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Database instance settings.
@@ -1544,7 +1545,7 @@ class SettingsArgs:
         :param pulumi.Input['SettingsAvailabilityType'] availability_type: Availability type. Potential values: * `ZONAL`: The instance serves data from only one zone. Outages in that zone affect data accessibility. * `REGIONAL`: The instance can serve data from more than one zone in a region (it is highly available)./ For more information, see [Overview of the High Availability Configuration](https://cloud.google.com/sql/docs/mysql/high-availability).
         :param pulumi.Input['BackupConfigurationArgs'] backup_configuration: The daily backup configuration for the instance.
         :param pulumi.Input[str] collation: The name of server Instance collation.
-        :param pulumi.Input['SettingsConnectorEnforcement'] connector_enforcement: Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+        :param pulumi.Input['SettingsConnectorEnforcement'] connector_enforcement: Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors) Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
         :param pulumi.Input[bool] crash_safe_replication_enabled: Configuration specific to read replica instances. Indicates whether database flags for crash-safe replication are enabled. This property was only applicable to First Generation instances.
         :param pulumi.Input[str] data_disk_size_gb: The size of data disk, in GB. The data disk size minimum is 10GB.
         :param pulumi.Input['SettingsDataDiskType'] data_disk_type: The type of data disk: `PD_SSD` (default) or `PD_HDD`. Not used for First Generation instances.
@@ -1565,6 +1566,7 @@ class SettingsArgs:
         :param pulumi.Input[bool] storage_auto_resize: Configuration to increase storage size automatically. The default value is true.
         :param pulumi.Input[str] storage_auto_resize_limit: The maximum size to which storage capacity can be automatically increased. The default value is 0, which specifies that there is no limit.
         :param pulumi.Input[str] tier: The tier (or machine type) for this instance, for example `db-custom-1-3840`. WARNING: Changing this restarts the instance.
+        :param pulumi.Input[str] time_zone: Server timezone, relevant only for Cloud SQL for SQL Server.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: User-provided labels, represented as a dictionary where each label is a single key value pair.
         """
         if activation_policy is not None:
@@ -1627,6 +1629,8 @@ class SettingsArgs:
             pulumi.set(__self__, "storage_auto_resize_limit", storage_auto_resize_limit)
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
+        if time_zone is not None:
+            pulumi.set(__self__, "time_zone", time_zone)
         if user_labels is not None:
             pulumi.set(__self__, "user_labels", user_labels)
 
@@ -1706,7 +1710,7 @@ class SettingsArgs:
     @pulumi.getter(name="connectorEnforcement")
     def connector_enforcement(self) -> Optional[pulumi.Input['SettingsConnectorEnforcement']]:
         """
-        Specifies if connections must use Cloud SQL connectors. Option values include the following: * `NOT_REQUIRED`: Cloud SQL instances can be connected without Cloud SQL Connectors. * `REQUIRED`: Only allow connections that use Cloud SQL Connectors. Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
+        Specifies if connections must use Cloud SQL connectors. Option values include the following: `NOT_REQUIRED` (Cloud SQL instances can be connected without Cloud SQL Connectors) and `REQUIRED` (Only allow connections that use Cloud SQL Connectors) Note that using REQUIRED disables all existing authorized networks. If this field is not specified when creating a new instance, NOT_REQUIRED is used. If this field is not specified when patching or updating an existing instance, it is left unchanged in the instance.
         """
         return pulumi.get(self, "connector_enforcement")
 
@@ -1953,6 +1957,18 @@ class SettingsArgs:
     @tier.setter
     def tier(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "tier", value)
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> Optional[pulumi.Input[str]]:
+        """
+        Server timezone, relevant only for Cloud SQL for SQL Server.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @time_zone.setter
+    def time_zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "time_zone", value)
 
     @property
     @pulumi.getter(name="userLabels")

@@ -16,8 +16,10 @@ __all__ = [
     'NetworkConfigType',
     'NfsExportPermissions',
     'NfsShareStorageType',
+    'VolumeConfigPerformanceTier',
     'VolumeConfigProtocol',
     'VolumeConfigType',
+    'VolumePerformanceTier',
     'VolumeSnapshotAutoDeleteBehavior',
     'VolumeState',
     'VolumeStorageType',
@@ -242,6 +244,24 @@ class NfsShareStorageType(str, Enum):
     """
 
 
+class VolumeConfigPerformanceTier(str, Enum):
+    """
+    Performance tier of the Volume. Default is SHARED.
+    """
+    VOLUME_PERFORMANCE_TIER_UNSPECIFIED = "VOLUME_PERFORMANCE_TIER_UNSPECIFIED"
+    """
+    Value is not specified.
+    """
+    VOLUME_PERFORMANCE_TIER_SHARED = "VOLUME_PERFORMANCE_TIER_SHARED"
+    """
+    Regular volumes, shared aggregates.
+    """
+    VOLUME_PERFORMANCE_TIER_DEDICATED = "VOLUME_PERFORMANCE_TIER_DEDICATED"
+    """
+    Dedicated (assigned) aggregates.
+    """
+
+
 class VolumeConfigProtocol(str, Enum):
     """
     Volume protocol.
@@ -275,6 +295,24 @@ class VolumeConfigType(str, Enum):
     DISK = "DISK"
     """
     This Volume is on disk.
+    """
+
+
+class VolumePerformanceTier(str, Enum):
+    """
+    Immutable. Performance tier of the Volume. Default is SHARED.
+    """
+    VOLUME_PERFORMANCE_TIER_UNSPECIFIED = "VOLUME_PERFORMANCE_TIER_UNSPECIFIED"
+    """
+    Value is not specified.
+    """
+    VOLUME_PERFORMANCE_TIER_SHARED = "VOLUME_PERFORMANCE_TIER_SHARED"
+    """
+    Regular volumes, shared aggregates.
+    """
+    VOLUME_PERFORMANCE_TIER_DEDICATED = "VOLUME_PERFORMANCE_TIER_DEDICATED"
+    """
+    Dedicated (assigned) aggregates.
     """
 
 

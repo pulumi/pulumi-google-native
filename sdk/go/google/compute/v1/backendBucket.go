@@ -18,6 +18,8 @@ type BackendBucket struct {
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy BackendBucketCdnPolicyResponseOutput `pulumi:"cdnPolicy"`
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	CompressionMode pulumi.StringOutput `pulumi:"compressionMode"`
 	// Creation timestamp in RFC3339 text format.
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// Headers that the HTTP/S load balancer should add to proxied responses.
@@ -86,6 +88,8 @@ type backendBucketArgs struct {
 	BucketName *string `pulumi:"bucketName"`
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy *BackendBucketCdnPolicy `pulumi:"cdnPolicy"`
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	CompressionMode *BackendBucketCompressionMode `pulumi:"compressionMode"`
 	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders []string `pulumi:"customResponseHeaders"`
 	// An optional textual description of the resource; provided by the client when the resource is created.
@@ -107,6 +111,8 @@ type BackendBucketArgs struct {
 	BucketName pulumi.StringPtrInput
 	// Cloud CDN configuration for this BackendBucket.
 	CdnPolicy BackendBucketCdnPolicyPtrInput
+	// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+	CompressionMode BackendBucketCompressionModePtrInput
 	// Headers that the HTTP/S load balancer should add to proxied responses.
 	CustomResponseHeaders pulumi.StringArrayInput
 	// An optional textual description of the resource; provided by the client when the resource is created.
@@ -167,6 +173,11 @@ func (o BackendBucketOutput) BucketName() pulumi.StringOutput {
 // Cloud CDN configuration for this BackendBucket.
 func (o BackendBucketOutput) CdnPolicy() BackendBucketCdnPolicyResponseOutput {
 	return o.ApplyT(func(v *BackendBucket) BackendBucketCdnPolicyResponseOutput { return v.CdnPolicy }).(BackendBucketCdnPolicyResponseOutput)
+}
+
+// Compress text responses using Brotli or gzip compression, based on the client's Accept-Encoding header.
+func (o BackendBucketOutput) CompressionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v *BackendBucket) pulumi.StringOutput { return v.CompressionMode }).(pulumi.StringOutput)
 }
 
 // Creation timestamp in RFC3339 text format.

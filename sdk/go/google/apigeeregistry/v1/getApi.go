@@ -10,7 +10,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// GetApi returns a specified API.
+// Returns a specified API.
 func LookupApi(ctx *pulumi.Context, args *LookupApiArgs, opts ...pulumi.InvokeOption) (*LookupApiResult, error) {
 	var rv LookupApiResult
 	err := ctx.Invoke("google-native:apigeeregistry/v1:getApi", args, &rv, opts...)
@@ -29,7 +29,7 @@ type LookupApiArgs struct {
 type LookupApiResult struct {
 	// Annotations attach non-identifying metadata to resources. Annotation keys and values are less restricted than those of labels, but should be generally used for small values of broad interest. Larger, topic- specific metadata should be stored in Artifacts.
 	Annotations map[string]string `pulumi:"annotations"`
-	// A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
+	// A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
 	Availability string `pulumi:"availability"`
 	// Creation timestamp.
 	CreateTime string `pulumi:"createTime"`
@@ -37,13 +37,13 @@ type LookupApiResult struct {
 	Description string `pulumi:"description"`
 	// Human-meaningful name.
 	DisplayName string `pulumi:"displayName"`
-	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+	// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
 	Labels map[string]string `pulumi:"labels"`
 	// Resource name.
 	Name string `pulumi:"name"`
-	// The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}
+	// The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
 	RecommendedDeployment string `pulumi:"recommendedDeployment"`
-	// The recommended version of the API. Format: apis/{api}/versions/{version}
+	// The recommended version of the API. Format: `apis/{api}/versions/{version}`
 	RecommendedVersion string `pulumi:"recommendedVersion"`
 	// Last update timestamp.
 	UpdateTime string `pulumi:"updateTime"`
@@ -91,7 +91,7 @@ func (o LookupApiResultOutput) Annotations() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApiResult) map[string]string { return v.Annotations }).(pulumi.StringMapOutput)
 }
 
-// A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g. "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
+// A user-definable description of the availability of this service. Format: free-form, but we expect single words that describe availability, e.g., "NONE", "TESTING", "PREVIEW", "GENERAL", "DEPRECATED", "SHUTDOWN".
 func (o LookupApiResultOutput) Availability() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiResult) string { return v.Availability }).(pulumi.StringOutput)
 }
@@ -111,7 +111,7 @@ func (o LookupApiResultOutput) DisplayName() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiResult) string { return v.DisplayName }).(pulumi.StringOutput)
 }
 
-// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with "apigeeregistry.googleapis.com/" and cannot be changed.
+// Labels attach identifying metadata to resources. Identifying metadata can be used to filter list operations. Label keys and values can be no longer than 64 characters (Unicode codepoints), can only contain lowercase letters, numeric characters, underscores, and dashes. International characters are allowed. No more than 64 user labels can be associated with one resource (System labels are excluded). See https://goo.gl/xmQnxf for more information and examples of labels. System reserved label keys are prefixed with `apigeeregistry.googleapis.com/` and cannot be changed.
 func (o LookupApiResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupApiResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
@@ -121,12 +121,12 @@ func (o LookupApiResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The recommended deployment of the API. Format: apis/{api}/deployments/{deployment}
+// The recommended deployment of the API. Format: `apis/{api}/deployments/{deployment}`
 func (o LookupApiResultOutput) RecommendedDeployment() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiResult) string { return v.RecommendedDeployment }).(pulumi.StringOutput)
 }
 
-// The recommended version of the API. Format: apis/{api}/versions/{version}
+// The recommended version of the API. Format: `apis/{api}/versions/{version}`
 func (o LookupApiResultOutput) RecommendedVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupApiResult) string { return v.RecommendedVersion }).(pulumi.StringOutput)
 }

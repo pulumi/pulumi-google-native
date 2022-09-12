@@ -54,6 +54,8 @@ type Job struct {
 	Status JobStatusResponseOutput `pulumi:"status"`
 	// The previous job status.
 	StatusHistory JobStatusResponseArrayOutput `pulumi:"statusHistory"`
+	// Optional. Job is a Trino job.
+	TrinoJob TrinoJobResponseOutput `pulumi:"trinoJob"`
 	// The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.
 	YarnApplications YarnApplicationResponseArrayOutput `pulumi:"yarnApplications"`
 }
@@ -136,6 +138,8 @@ type jobArgs struct {
 	SparkRJob *SparkRJob `pulumi:"sparkRJob"`
 	// Optional. Job is a SparkSql job.
 	SparkSqlJob *SparkSqlJob `pulumi:"sparkSqlJob"`
+	// Optional. Job is a Trino job.
+	TrinoJob *TrinoJob `pulumi:"trinoJob"`
 }
 
 // The set of arguments for constructing a Job resource.
@@ -168,6 +172,8 @@ type JobArgs struct {
 	SparkRJob SparkRJobPtrInput
 	// Optional. Job is a SparkSql job.
 	SparkSqlJob SparkSqlJobPtrInput
+	// Optional. Job is a Trino job.
+	TrinoJob TrinoJobPtrInput
 }
 
 func (JobArgs) ElementType() reflect.Type {
@@ -303,6 +309,11 @@ func (o JobOutput) Status() JobStatusResponseOutput {
 // The previous job status.
 func (o JobOutput) StatusHistory() JobStatusResponseArrayOutput {
 	return o.ApplyT(func(v *Job) JobStatusResponseArrayOutput { return v.StatusHistory }).(JobStatusResponseArrayOutput)
+}
+
+// Optional. Job is a Trino job.
+func (o JobOutput) TrinoJob() TrinoJobResponseOutput {
+	return o.ApplyT(func(v *Job) TrinoJobResponseOutput { return v.TrinoJob }).(TrinoJobResponseOutput)
 }
 
 // The collection of YARN applications spun up by this job.Beta Feature: This report is available for testing purposes only. It may be changed before final release.

@@ -29,7 +29,7 @@ namespace Pulumi.GoogleNative.Dialogflow.V3.Outputs
         /// </summary>
         public readonly bool EnableAudioRedaction;
         /// <summary>
-        /// Cloud Storage bucket to export audio record to. You need to grant `service-@gcp-sa-dialogflow.iam.gserviceaccount.com` the `Storage Object Admin` role in this bucket.
+        /// Cloud Storage bucket to export audio record to. Settings this field would grant the Storage Object Creator role to the Dialogflow Service Agent. API caller that tries to modify this field should have the permission of storage.buckets.setIamPolicy.
         /// </summary>
         public readonly string GcsBucket;
 

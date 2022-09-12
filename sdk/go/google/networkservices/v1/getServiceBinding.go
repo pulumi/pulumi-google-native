@@ -33,9 +33,9 @@ type LookupServiceBindingResult struct {
 	Description string `pulumi:"description"`
 	// Optional. Set of label tags associated with the ServiceBinding resource.
 	Labels map[string]string `pulumi:"labels"`
-	// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
+	// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
 	Name string `pulumi:"name"`
-	// The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+	// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
 	Service string `pulumi:"service"`
 	// The timestamp when the resource was updated.
 	UpdateTime string `pulumi:"updateTime"`
@@ -93,12 +93,12 @@ func (o LookupServiceBindingResultOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupServiceBindingResult) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name>`.
+// Name of the ServiceBinding resource. It matches pattern `projects/*/locations/global/serviceBindings/service_binding_name`.
 func (o LookupServiceBindingResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceBindingResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-// The full service directory service name of the format /projects/*/locations/*/namespaces/*/services/*
+// The full Service Directory Service name of the format projects/*/locations/*/namespaces/*/services/*
 func (o LookupServiceBindingResultOutput) Service() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupServiceBindingResult) string { return v.Service }).(pulumi.StringOutput)
 }
