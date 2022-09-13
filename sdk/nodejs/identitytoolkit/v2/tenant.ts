@@ -79,6 +79,10 @@ export class Tenant extends pulumi.CustomResource {
      */
     public readonly mfaConfig!: pulumi.Output<outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse>;
     /**
+     * Configuration related to monitoring project activity.
+     */
+    public readonly monitoring!: pulumi.Output<outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse>;
+    /**
      * Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
@@ -108,6 +112,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["enableEmailLinkSignin"] = args ? args.enableEmailLinkSignin : undefined;
             resourceInputs["inheritance"] = args ? args.inheritance : undefined;
             resourceInputs["mfaConfig"] = args ? args.mfaConfig : undefined;
+            resourceInputs["monitoring"] = args ? args.monitoring : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["testPhoneNumbers"] = args ? args.testPhoneNumbers : undefined;
             resourceInputs["hashConfig"] = undefined /*out*/;
@@ -123,6 +128,7 @@ export class Tenant extends pulumi.CustomResource {
             resourceInputs["hashConfig"] = undefined /*out*/;
             resourceInputs["inheritance"] = undefined /*out*/;
             resourceInputs["mfaConfig"] = undefined /*out*/;
+            resourceInputs["monitoring"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["project"] = undefined /*out*/;
             resourceInputs["testPhoneNumbers"] = undefined /*out*/;
@@ -174,6 +180,10 @@ export interface TenantArgs {
      * The tenant-level configuration of MFA options.
      */
     mfaConfig?: pulumi.Input<inputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs>;
+    /**
+     * Configuration related to monitoring project activity.
+     */
+    monitoring?: pulumi.Input<inputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs>;
     project?: pulumi.Input<string>;
     /**
      * A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).

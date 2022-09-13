@@ -69,6 +69,10 @@ export interface GetTenantResult {
      */
     readonly mfaConfig: outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse;
     /**
+     * Configuration related to monitoring project activity.
+     */
+    readonly monitoring: outputs.identitytoolkit.v2.GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse;
+    /**
      * Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
      */
     readonly name: string;

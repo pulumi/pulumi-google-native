@@ -4,6 +4,9 @@ import * as pulumi from "@pulumi/pulumi";
 import * as google from "@pulumi/google-native";
 import * as random from "@pulumi/random"
 
+const config = new pulumi.Config("google-native");
+const project  = config.require("project");
+
 const randomString = new random.RandomString("service-name", {
     upper: false,
     number: false,
@@ -17,6 +20,7 @@ const service = new google.run.v1.Service("service", {
     kind: "Service",
     metadata: {
         name: serviceName,
+        namespace: project,
     },
     spec: {
         template: {

@@ -46,6 +46,8 @@ type LookupTenantResult struct {
 	Inheritance GoogleCloudIdentitytoolkitAdminV2InheritanceResponse `pulumi:"inheritance"`
 	// The tenant-level configuration of MFA options.
 	MfaConfig GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse `pulumi:"mfaConfig"`
+	// Configuration related to monitoring project activity.
+	Monitoring GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse `pulumi:"monitoring"`
 	// Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"
 	Name string `pulumi:"name"`
 	// A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
@@ -140,6 +142,13 @@ func (o LookupTenantResultOutput) MfaConfig() GoogleCloudIdentitytoolkitAdminV2M
 	return o.ApplyT(func(v LookupTenantResult) GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse {
 		return v.MfaConfig
 	}).(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponseOutput)
+}
+
+// Configuration related to monitoring project activity.
+func (o LookupTenantResultOutput) Monitoring() GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput {
+	return o.ApplyT(func(v LookupTenantResult) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse {
+		return v.Monitoring
+	}).(GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput)
 }
 
 // Resource name of a tenant. For example: "projects/{project-id}/tenants/{tenant-id}"

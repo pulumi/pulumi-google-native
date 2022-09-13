@@ -20,8 +20,10 @@ __all__ = [
     'GoogleCloudIdentitytoolkitAdminV2IdpCertificateResponse',
     'GoogleCloudIdentitytoolkitAdminV2IdpConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2InheritanceResponse',
+    'GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse',
     'GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse',
+    'GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse',
     'GoogleCloudIdentitytoolkitAdminV2SpCertificateResponse',
     'GoogleCloudIdentitytoolkitAdminV2SpConfigResponse',
     'GoogleIamV1AuditConfigResponse',
@@ -461,6 +463,45 @@ class GoogleCloudIdentitytoolkitAdminV2InheritanceResponse(dict):
 
 
 @pulumi.output_type
+class GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse(dict):
+    """
+    Configuration related to monitoring project activity.
+    """
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "requestLogging":
+            suggest = "request_logging"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 request_logging: 'outputs.GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse'):
+        """
+        Configuration related to monitoring project activity.
+        :param 'GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse' request_logging: Configuration for logging requests made to this project to Stackdriver Logging
+        """
+        pulumi.set(__self__, "request_logging", request_logging)
+
+    @property
+    @pulumi.getter(name="requestLogging")
+    def request_logging(self) -> 'outputs.GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse':
+        """
+        Configuration for logging requests made to this project to Stackdriver Logging
+        """
+        return pulumi.get(self, "request_logging")
+
+
+@pulumi.output_type
 class GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponse(dict):
     """
     Options related to MultiFactor Authentication for the project.
@@ -569,6 +610,28 @@ class GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse(dict):
         Do not use. The `token` response type is not supported at the moment.
         """
         return pulumi.get(self, "token")
+
+
+@pulumi.output_type
+class GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse(dict):
+    """
+    Configuration for logging requests made to this project to Stackdriver Logging
+    """
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        Configuration for logging requests made to this project to Stackdriver Logging
+        :param bool enabled: Whether logging is enabled for this project or not.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Whether logging is enabled for this project or not.
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

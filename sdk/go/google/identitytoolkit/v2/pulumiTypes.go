@@ -1394,6 +1394,176 @@ func (o GoogleCloudIdentitytoolkitAdminV2InheritanceResponseOutput) EmailSending
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2InheritanceResponse) bool { return v.EmailSendingConfig }).(pulumi.BoolOutput)
 }
 
+// Configuration related to monitoring project activity.
+type GoogleCloudIdentitytoolkitAdminV2MonitoringConfig struct {
+	// Configuration for logging requests made to this project to Stackdriver Logging
+	RequestLogging *GoogleCloudIdentitytoolkitAdminV2RequestLogging `pulumi:"requestLogging"`
+}
+
+// GoogleCloudIdentitytoolkitAdminV2MonitoringConfigInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs and GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2MonitoringConfigInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2MonitoringConfigInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput() GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput
+	ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput
+}
+
+// Configuration related to monitoring project activity.
+type GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs struct {
+	// Configuration for logging requests made to this project to Stackdriver Logging
+	RequestLogging GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrInput `pulumi:"requestLogging"`
+}
+
+func (GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2MonitoringConfig)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput() GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput)
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput).ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs, GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtr and GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrInput` via:
+//
+//	        GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput
+	ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput
+}
+
+type googleCloudIdentitytoolkitAdminV2MonitoringConfigPtrType GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs
+
+func GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtr(v *GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrInput {
+	return (*googleCloudIdentitytoolkitAdminV2MonitoringConfigPtrType)(v)
+}
+
+func (*googleCloudIdentitytoolkitAdminV2MonitoringConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2MonitoringConfig)(nil)).Elem()
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2MonitoringConfigPtrType) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2MonitoringConfigPtrType) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput)
+}
+
+// Configuration related to monitoring project activity.
+type GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2MonitoringConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput() GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput {
+	return o.ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2MonitoringConfig) *GoogleCloudIdentitytoolkitAdminV2MonitoringConfig {
+		return &v
+	}).(GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput)
+}
+
+// Configuration for logging requests made to this project to Stackdriver Logging
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput) RequestLogging() GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2MonitoringConfig) *GoogleCloudIdentitytoolkitAdminV2RequestLogging {
+		return v.RequestLogging
+	}).(GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2MonitoringConfig)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput() GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2MonitoringConfig) GoogleCloudIdentitytoolkitAdminV2MonitoringConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIdentitytoolkitAdminV2MonitoringConfig
+		return ret
+	}).(GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput)
+}
+
+// Configuration for logging requests made to this project to Stackdriver Logging
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput) RequestLogging() GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2MonitoringConfig) *GoogleCloudIdentitytoolkitAdminV2RequestLogging {
+		if v == nil {
+			return nil
+		}
+		return v.RequestLogging
+	}).(GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput)
+}
+
+// Configuration related to monitoring project activity.
+type GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse struct {
+	// Configuration for logging requests made to this project to Stackdriver Logging
+	RequestLogging GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse `pulumi:"requestLogging"`
+}
+
+// Configuration related to monitoring project activity.
+type GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput() GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput {
+	return o
+}
+
+// Configuration for logging requests made to this project to Stackdriver Logging
+func (o GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput) RequestLogging() GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse) GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse {
+		return v.RequestLogging
+	}).(GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput)
+}
+
 // Options related to MultiFactor Authentication for the project.
 type GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfig struct {
 	// A list of usable second factors for this project.
@@ -1808,6 +1978,172 @@ func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponseOutput) IdToke
 // Do not use. The `token` response type is not supported at the moment.
 func (o GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponseOutput) Token() pulumi.BoolOutput {
 	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponse) bool { return v.Token }).(pulumi.BoolOutput)
+}
+
+// Configuration for logging requests made to this project to Stackdriver Logging
+type GoogleCloudIdentitytoolkitAdminV2RequestLogging struct {
+	// Whether logging is enabled for this project or not.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// GoogleCloudIdentitytoolkitAdminV2RequestLoggingInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs and GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2RequestLoggingInput` via:
+//
+//	GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs{...}
+type GoogleCloudIdentitytoolkitAdminV2RequestLoggingInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput() GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput
+	ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput
+}
+
+// Configuration for logging requests made to this project to Stackdriver Logging
+type GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs struct {
+	// Whether logging is enabled for this project or not.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RequestLogging)(nil)).Elem()
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput() GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput)
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput() GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput).ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutputWithContext(ctx)
+}
+
+// GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrInput is an input type that accepts GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs, GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtr and GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput values.
+// You can construct a concrete instance of `GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrInput` via:
+//
+//	        GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs{...}
+//
+//	or:
+//
+//	        nil
+type GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrInput interface {
+	pulumi.Input
+
+	ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput() GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput
+	ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutputWithContext(context.Context) GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput
+}
+
+type googleCloudIdentitytoolkitAdminV2RequestLoggingPtrType GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs
+
+func GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtr(v *GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs) GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrInput {
+	return (*googleCloudIdentitytoolkitAdminV2RequestLoggingPtrType)(v)
+}
+
+func (*googleCloudIdentitytoolkitAdminV2RequestLoggingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2RequestLogging)(nil)).Elem()
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2RequestLoggingPtrType) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput() GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput {
+	return i.ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutputWithContext(context.Background())
+}
+
+func (i *googleCloudIdentitytoolkitAdminV2RequestLoggingPtrType) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput)
+}
+
+// Configuration for logging requests made to this project to Stackdriver Logging
+type GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RequestLogging)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput() GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput() GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput {
+	return o.ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutputWithContext(context.Background())
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GoogleCloudIdentitytoolkitAdminV2RequestLogging) *GoogleCloudIdentitytoolkitAdminV2RequestLogging {
+		return &v
+	}).(GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput)
+}
+
+// Whether logging is enabled for this project or not.
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RequestLogging) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GoogleCloudIdentitytoolkitAdminV2RequestLogging)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput() GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput) Elem() GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2RequestLogging) GoogleCloudIdentitytoolkitAdminV2RequestLogging {
+		if v != nil {
+			return *v
+		}
+		var ret GoogleCloudIdentitytoolkitAdminV2RequestLogging
+		return ret
+	}).(GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput)
+}
+
+// Whether logging is enabled for this project or not.
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *GoogleCloudIdentitytoolkitAdminV2RequestLogging) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Configuration for logging requests made to this project to Stackdriver Logging
+type GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse struct {
+	// Whether logging is enabled for this project or not.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// Configuration for logging requests made to this project to Stackdriver Logging
+type GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput struct{ *pulumi.OutputState }
+
+func (GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse)(nil)).Elem()
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput() GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput {
+	return o
+}
+
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput) ToGoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutputWithContext(ctx context.Context) GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput {
+	return o
+}
+
+// Whether logging is enabled for this project or not.
+func (o GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponse) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
 
 // The SP's certificate data for IDP to verify the SAMLRequest generated by the SP.
@@ -2825,10 +3161,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2IdpConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2IdpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2InheritanceInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2InheritanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2InheritancePtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2InheritanceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2MonitoringConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RequestLoggingInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2RequestLoggingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2SpConfigInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2SpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleCloudIdentitytoolkitAdminV2SpConfigPtrInput)(nil)).Elem(), GoogleCloudIdentitytoolkitAdminV2SpConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GoogleIamV1AuditConfigInput)(nil)).Elem(), GoogleIamV1AuditConfigArgs{})
@@ -2862,12 +3202,18 @@ func init() {
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2InheritanceOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2InheritancePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2InheritanceResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2MonitoringConfigOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2MonitoringConfigPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigPtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypePtrOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2OAuthResponseTypeResponseOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RequestLoggingOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RequestLoggingPtrOutput{})
+	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2RequestLoggingResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2SpCertificateResponseOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2SpCertificateResponseArrayOutput{})
 	pulumi.RegisterOutputType(GoogleCloudIdentitytoolkitAdminV2SpConfigOutput{})

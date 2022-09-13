@@ -26,6 +26,7 @@ class TenantArgs:
                  enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
                  inheritance: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']] = None,
                  mfa_config: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs']] = None,
+                 monitoring: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  test_phone_numbers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
@@ -39,6 +40,7 @@ class TenantArgs:
         :param pulumi.Input[bool] enable_email_link_signin: Whether to enable email link user authentication.
         :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs'] inheritance: Specify the settings that the tenant could inherit.
         :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs'] mfa_config: The tenant-level configuration of MFA options.
+        :param pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs'] monitoring: Configuration related to monitoring project activity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] test_phone_numbers: A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
         """
         if allow_password_signup is not None:
@@ -59,6 +61,8 @@ class TenantArgs:
             pulumi.set(__self__, "inheritance", inheritance)
         if mfa_config is not None:
             pulumi.set(__self__, "mfa_config", mfa_config)
+        if monitoring is not None:
+            pulumi.set(__self__, "monitoring", monitoring)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if test_phone_numbers is not None:
@@ -174,6 +178,18 @@ class TenantArgs:
 
     @property
     @pulumi.getter
+    def monitoring(self) -> Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs']]:
+        """
+        Configuration related to monitoring project activity.
+        """
+        return pulumi.get(self, "monitoring")
+
+    @monitoring.setter
+    def monitoring(self, value: Optional[pulumi.Input['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs']]):
+        pulumi.set(self, "monitoring", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
 
@@ -208,6 +224,7 @@ class Tenant(pulumi.CustomResource):
                  enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
                  inheritance: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']]] = None,
                  mfa_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs']]] = None,
+                 monitoring: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  test_phone_numbers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -226,6 +243,7 @@ class Tenant(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_email_link_signin: Whether to enable email link user authentication.
         :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']] inheritance: Specify the settings that the tenant could inherit.
         :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs']] mfa_config: The tenant-level configuration of MFA options.
+        :param pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs']] monitoring: Configuration related to monitoring project activity.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] test_phone_numbers: A map of pairs that can be used for MFA. The phone number should be in E.164 format (https://www.itu.int/rec/T-REC-E.164/) and a maximum of 10 pairs can be added (error will be thrown once exceeded).
         """
         ...
@@ -262,6 +280,7 @@ class Tenant(pulumi.CustomResource):
                  enable_email_link_signin: Optional[pulumi.Input[bool]] = None,
                  inheritance: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2InheritanceArgs']]] = None,
                  mfa_config: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MultiFactorAuthConfigArgs']]] = None,
+                 monitoring: Optional[pulumi.Input[pulumi.InputType['GoogleCloudIdentitytoolkitAdminV2MonitoringConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  test_phone_numbers: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
@@ -282,6 +301,7 @@ class Tenant(pulumi.CustomResource):
             __props__.__dict__["enable_email_link_signin"] = enable_email_link_signin
             __props__.__dict__["inheritance"] = inheritance
             __props__.__dict__["mfa_config"] = mfa_config
+            __props__.__dict__["monitoring"] = monitoring
             __props__.__dict__["project"] = project
             __props__.__dict__["test_phone_numbers"] = test_phone_numbers
             __props__.__dict__["hash_config"] = None
@@ -320,6 +340,7 @@ class Tenant(pulumi.CustomResource):
         __props__.__dict__["hash_config"] = None
         __props__.__dict__["inheritance"] = None
         __props__.__dict__["mfa_config"] = None
+        __props__.__dict__["monitoring"] = None
         __props__.__dict__["name"] = None
         __props__.__dict__["project"] = None
         __props__.__dict__["test_phone_numbers"] = None
@@ -404,6 +425,14 @@ class Tenant(pulumi.CustomResource):
         The tenant-level configuration of MFA options.
         """
         return pulumi.get(self, "mfa_config")
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> pulumi.Output['outputs.GoogleCloudIdentitytoolkitAdminV2MonitoringConfigResponse']:
+        """
+        Configuration related to monitoring project activity.
+        """
+        return pulumi.get(self, "monitoring")
 
     @property
     @pulumi.getter
